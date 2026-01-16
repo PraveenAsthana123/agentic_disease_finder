@@ -1517,8 +1517,40 @@ Human-AI collaboration patterns:
 \item \textbf{Augmented Intelligence}: AI enhances human capabilities
 \end{itemize}
 
+\subsection{5-Pillar RAI Deep Audit Framework}
+
+We introduce a comprehensive 5-pillar audit framework with 97 audit dimensions for healthcare AI governance:
+
+\begin{table}[htbp]
+\centering
+\caption{5-Pillar RAI Audit Framework Summary}
+\begin{tabular}{lccc}
+\hline
+\textbf{Pillar} & \textbf{Dimensions} & \textbf{High Risk} & \textbf{Focus} \\
+\hline
+1. Data Responsibility & 18 & 78\% & PHI, De-ID \\
+2. Model Responsibility & 19 & 74\% & Fairness, XAI \\
+3. Output Responsibility & 20 & 65\% & Safety, HITL \\
+4. Monitoring \& Drift & 20 & 80\% & Drift, IR \\
+5. Governance & 20 & 80\% & Audit Trail \\
+\hline
+\textbf{Total} & \textbf{97} & \textbf{75\%} & -- \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Pillar 1 -- Data Responsibility \& PHI Governance:} Covers data inventory, lineage, PHI/PII classification, consent management, de-identification, encryption, access control, and incident response aligned with HIPAA, PHIPA, and GDPR.
+
+\textbf{Pillar 2 -- Model Responsibility:} Addresses model purpose, performance metrics, fairness metrics, bias mitigation, explainability (SHAP/LIME), human-in-the-loop, confidence calibration, robustness, and versioning per FDA SaMD and ISO 14971.
+
+\textbf{Pillar 3 -- Output Responsibility \& Clinical Safety:} Ensures advisory-only decision role, override logging, confidence disclosure, harm scenario analysis, safety guardrails, contraindication blocking, and false positive/negative risk management.
+
+\textbf{Pillar 4 -- Monitoring \& Drift:} Implements data drift, concept drift, performance monitoring, bias drift detection, calibration drift, incident response, rollback capability, and ground truth pipelines per MLOps best practices.
+
+\textbf{Pillar 5 -- Governance \& Compliance:} Establishes AI governance structure, accountability, regulatory mapping (HIPAA, FDA, ISO 42001), model cards, risk registers, bias registers, and decommission policies.
+
 %% ============================================
-%% VIII. CONCLUSIONS
+%% IX. CONCLUSIONS
 %% ============================================
 \section{Conclusions}
 \label{sec:conclusions}

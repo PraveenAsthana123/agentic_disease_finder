@@ -348,6 +348,89 @@ The framework implements Human-AI collaboration patterns:
 | **Shared Responsibility** | Clear accountability split | Governance |
 | **Augmented Intelligence** | AI enhances human capabilities | Productivity |
 
+## 5-Pillar RAI Deep Audit Framework
+
+A comprehensive healthcare AI governance framework with **97 audit dimensions** across 5 pillars.
+
+### Pillar Summary
+
+| Pillar | Dimensions | High Risk | Focus Areas |
+|--------|------------|-----------|-------------|
+| **1. Data Responsibility** | 18 | 78% | PHI/PII, De-identification, Encryption |
+| **2. Model Responsibility** | 19 | 74% | Fairness, Explainability, HITL |
+| **3. Output Responsibility** | 20 | 65% | Clinical Safety, Confidence, Harm |
+| **4. Monitoring & Drift** | 20 | 80% | Data/Concept Drift, Incident Response |
+| **5. Governance & Compliance** | 20 | 80% | Audit Trail, Risk Register |
+| **TOTAL** | **97** | **75%** | -- |
+
+### Pillar 1: Data Responsibility & PHI Governance
+
+Key audit dimensions:
+- **Data Inventory** - Complete field-level data dictionary
+- **PHI/PII Classification** - Field tagging with Presidio
+- **De-identification** - HIPAA Safe Harbor compliance
+- **Consent Management** - Purpose limitation alignment
+- **Encryption** - Data at rest & in transit (AES-256)
+- **Access Control** - Role-based (RBAC) with least privilege
+- **Incident Response** - Data breach readiness (IR playbook)
+
+### Pillar 2: Model Responsibility
+
+Key audit dimensions:
+- **Fairness Metrics** - Demographic parity, equalized odds
+- **Bias Mitigation** - Reweighing, threshold adjustment
+- **Explainability** - Global (SHAP) + Local (LIME)
+- **Human-in-the-Loop** - Mandatory clinician override
+- **Confidence Calibration** - Reliability diagrams
+- **Robustness** - OOD detection, adversarial testing
+- **Versioning** - MLflow/DVC with rollback capability
+
+### Pillar 3: Output Responsibility & Clinical Safety
+
+Key audit dimensions:
+- **Decision Role** - Advisory-only (not autonomous)
+- **Override Logging** - All overrides tracked & reviewed
+- **Harm Scenarios** - HAZOP-lite hazard analysis
+- **Safety Guardrails** - Contraindication blocking
+- **False Negative Risk** - Sensitivity-first tuning
+- **Edge Cases** - Rare population testing
+- **Output Logging** - End-to-end decision trace
+
+### Pillar 4: Monitoring & Drift
+
+Key audit dimensions:
+- **Data Drift** - PSI/KS statistics per feature
+- **Concept Drift** - Performance decay detection
+- **Bias Drift** - Fairness metrics over time
+- **Calibration Drift** - Confidence reliability tracking
+- **Ground Truth Pipeline** - Outcome label collection
+- **Retraining Triggers** - Automated drift alerts
+- **Rollback** - Versioned model rollback capability
+
+### Pillar 5: Governance & Compliance
+
+Key audit dimensions:
+- **AI Governance Structure** - Formal governance body
+- **Accountability** - Single accountable owner (RACI)
+- **Regulatory Mapping** - HIPAA, FDA SaMD, ISO 42001
+- **Model Card** - Standardized documentation
+- **Risk Register** - AI-specific risk tracking
+- **Bias Register** - Known bias documentation
+- **Audit Trail** - End-to-end traceability
+
+### Regulatory Standards
+
+| Standard | Domain | Pillars |
+|----------|--------|---------|
+| HIPAA | US Healthcare Privacy | 1, 4, 5 |
+| FDA SaMD | Medical Device Software | 2, 3, 5 |
+| ISO 14971 | Medical Device Risk | 3, 5 |
+| ISO/IEC 42001 | AI Management System | 5 |
+| ISO 27001 | Information Security | 1, 4 |
+| GDPR | EU Data Protection | 1, 5 |
+
+> Full audit framework documentation: [docs/RAI_AUDIT_FRAMEWORK.md](docs/RAI_AUDIT_FRAMEWORK.md)
+
 ## Responsible AI Framework
 
 ### Framework Architecture (46 Modules, 1300+ Analysis Types)
