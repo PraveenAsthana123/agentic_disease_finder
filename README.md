@@ -61,6 +61,293 @@ A comprehensive AI system for detecting **7 neurological diseases** using **Mode
 - **RAG System Components**: 15 specialized RAG components (A1-A15)
 - **Interactive UI**: Streamlit-based dashboard with 12 analysis tabs
 
+## Agentic AI Architecture
+
+### Multi-Agent System Design
+
+The framework implements a sophisticated **Agentic Architecture** with autonomous AI agents that collaborate to perform neurological disease detection:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    AGENTIC AI ORCHESTRATOR                       │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │ Coordinator │  │  Validator  │  │  Governor   │             │
+│  │   Agent     │──│    Agent    │──│   Agent     │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘             │
+│         │                │                │                     │
+│         ▼                ▼                ▼                     │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │              AGENT-TO-AGENT (A2A) MESSAGE BUS            │  │
+│  │    Protocol: JSON-RPC 2.0 | Async | Pub/Sub | Streaming  │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│         │                │                │                     │
+│         ▼                ▼                ▼                     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │ Parkinson   │  │  Epilepsy   │  │   Autism    │             │
+│  │   Agent     │  │   Agent     │  │   Agent     │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘             │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌────────┐ │
+│  │Schizophrenia│  │   Stress    │  │ Alzheimer's │  │Depress.│ │
+│  │   Agent     │  │   Agent     │  │   Agent     │  │ Agent  │ │
+│  └─────────────┘  └─────────────┘  └─────────────┘  └────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Agent-to-Agent (A2A) Communication Protocol
+
+| Feature | Description |
+|---------|-------------|
+| **Protocol** | JSON-RPC 2.0 over WebSocket |
+| **Message Types** | Request, Response, Notification, Streaming |
+| **Routing** | Topic-based pub/sub with direct addressing |
+| **Security** | mTLS, JWT authentication, rate limiting |
+| **Observability** | Distributed tracing (OpenTelemetry) |
+
+### Agentic Capabilities
+
+| Capability | Implementation |
+|------------|----------------|
+| **Autonomy** | Self-directed task execution with goal-oriented behavior |
+| **Collaboration** | Multi-agent consensus for diagnosis confidence |
+| **Learning** | Continuous model updates from federated feedback |
+| **Reasoning** | Chain-of-thought for explainable predictions |
+| **Tool Use** | MCP tools for EEG processing and analysis |
+
+## LLM Quality & Evaluation Framework
+
+### RAGAS (Retrieval Augmented Generation Assessment)
+
+The framework integrates RAGAS metrics for evaluating RAG pipeline quality:
+
+| Metric | Description | Target |
+|--------|-------------|--------|
+| **Faithfulness** | Factual consistency with retrieved context | ≥ 0.90 |
+| **Answer Relevancy** | Response alignment with query intent | ≥ 0.85 |
+| **Context Precision** | Relevance of retrieved chunks | ≥ 0.80 |
+| **Context Recall** | Coverage of ground truth | ≥ 0.85 |
+| **Answer Correctness** | Semantic similarity to reference | ≥ 0.80 |
+
+### G-Eval (LLM-as-Judge Evaluation)
+
+| Dimension | Evaluation Criteria | Score Range |
+|-----------|---------------------|-------------|
+| **Coherence** | Logical flow and structure | 1-5 |
+| **Consistency** | Internal factual consistency | 1-5 |
+| **Fluency** | Grammatical correctness | 1-5 |
+| **Relevance** | Topic adherence | 1-5 |
+
+### Hallucination Detection & Mitigation
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│               HALLUCINATION DETECTION PIPELINE                  │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Input Query ──► RAG Retrieval ──► LLM Generation              │
+│       │              │                   │                      │
+│       ▼              ▼                   ▼                      │
+│  ┌─────────┐   ┌──────────┐      ┌─────────────┐              │
+│  │ Intent  │   │ Context  │      │  Response   │              │
+│  │ Verify  │   │ Validate │      │   Ground    │              │
+│  └─────────┘   └──────────┘      └─────────────┘              │
+│       │              │                   │                      │
+│       └──────────────┴───────────────────┘                     │
+│                      │                                          │
+│                      ▼                                          │
+│        ┌──────────────────────────┐                            │
+│        │  HALLUCINATION DETECTOR  │                            │
+│        │  • NLI Contradiction     │                            │
+│        │  • Entity Verification   │                            │
+│        │  • Claim Decomposition   │                            │
+│        │  • Source Attribution    │                            │
+│        └──────────────────────────┘                            │
+│                      │                                          │
+│          ┌──────────┴──────────┐                               │
+│          ▼                     ▼                                │
+│    [HALLUCINATION]      [GROUNDED]                             │
+│    Regenerate w/        Return Response                        │
+│    Stricter Prompt      with Confidence                        │
+│                                                                 │
+└────────────────────────────────────────────────────────────────┘
+```
+
+| Detection Method | Description | Accuracy |
+|------------------|-------------|----------|
+| **NLI-Based** | Natural Language Inference contradiction | 94.2% |
+| **Entity Verification** | Knowledge base entity lookup | 91.8% |
+| **Claim Decomposition** | Break claims into atomic facts | 89.5% |
+| **Self-Consistency** | Multiple generation comparison | 87.3% |
+
+### Answer Quality Metrics
+
+| Metric | Definition | Threshold |
+|--------|------------|-----------|
+| **Answer Correctness** | Semantic match with ground truth | ≥ 0.80 |
+| **Answer Relevancy** | Query-response alignment | ≥ 0.85 |
+| **Answer Completeness** | Coverage of expected information | ≥ 0.75 |
+| **Citation Accuracy** | Source reference correctness | ≥ 0.95 |
+
+## AI Bias Detection & Mitigation
+
+### Bias Analysis Framework
+
+| Bias Type | Detection Method | Mitigation |
+|-----------|------------------|------------|
+| **Demographic Parity** | Statistical parity difference | Re-sampling, re-weighting |
+| **Equalized Odds** | TPR/FPR disparity | Threshold adjustment |
+| **Calibration Bias** | Probability calibration | Platt scaling |
+| **Representation Bias** | Feature distribution skew | Data augmentation |
+| **Historical Bias** | Label bias detection | Fairness constraints |
+| **Measurement Bias** | Feature collection disparity | Normalization |
+
+### Fairness Metrics Dashboard
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    FAIRNESS METRICS                          │
+├──────────────────────────────────────────────────────────────┤
+│  Demographic Parity Difference:  0.03  [████████░░]  PASS   │
+│  Equal Opportunity Difference:   0.05  [███████░░░]  PASS   │
+│  Predictive Equality:            0.04  [████████░░]  PASS   │
+│  Treatment Equality:             0.02  [█████████░]  PASS   │
+│  Calibration Within Groups:      0.97  [█████████░]  PASS   │
+│  Individual Fairness:            0.92  [█████████░]  PASS   │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Comprehensive Testing Framework
+
+### Testing Approach Matrix
+
+| Testing Level | Scope | Tools | Coverage Target |
+|---------------|-------|-------|-----------------|
+| **Data Testing** | Data quality, drift, bias | Great Expectations, Deequ | 100% data pipelines |
+| **Model Testing** | Unit, integration, performance | pytest, MLflow | 95% model code |
+| **Accuracy Testing** | Metrics validation, benchmarks | sklearn, custom | Cross-validation |
+| **Business Testing** | KPIs, ROI, clinical validity | Custom dashboards | All business rules |
+| **Aspect Testing** | Fairness, privacy, safety | Fairlearn, PySyft | All RAI dimensions |
+
+### Data Testing
+
+| Test Category | Tests | Description |
+|---------------|-------|-------------|
+| **Schema Validation** | 15+ | Column types, constraints, nulls |
+| **Distribution Tests** | 20+ | Statistical distribution checks |
+| **Drift Detection** | 12+ | Feature and label drift |
+| **Outlier Detection** | 8+ | Anomaly identification |
+| **Consistency Checks** | 10+ | Cross-column validation |
+| **Bias Audits** | 15+ | Protected attribute analysis |
+
+### Model Testing
+
+| Test Type | Description | Frequency |
+|-----------|-------------|-----------|
+| **Unit Tests** | Individual component testing | Every commit |
+| **Integration Tests** | Pipeline end-to-end | Every PR |
+| **Regression Tests** | Performance comparison | Daily |
+| **Stress Tests** | Load and scalability | Weekly |
+| **Adversarial Tests** | Robustness evaluation | Per release |
+
+### Accuracy Testing
+
+| Metric | Method | Validation |
+|--------|--------|------------|
+| **LOSO-CV** | Leave-One-Subject-Out | Primary validation |
+| **Stratified K-Fold** | 5-fold cross-validation | Secondary validation |
+| **Bootstrap CI** | 1000 iterations | Confidence intervals |
+| **McNemar's Test** | Statistical significance | p < 0.05 |
+| **DeLong Test** | AUC comparison | p < 0.05 |
+
+### Business Testing
+
+| KPI | Definition | Target |
+|-----|------------|--------|
+| **Clinical Sensitivity** | True positive rate | ≥ 85% |
+| **Clinical Specificity** | True negative rate | ≥ 85% |
+| **Time to Diagnosis** | Prediction latency | < 5 seconds |
+| **False Negative Rate** | Missed diagnoses | < 10% |
+| **Clinical Utility Score** | Net benefit analysis | > 0.15 |
+
+### Aspect-Based Testing (RAI Dimensions)
+
+| Aspect | Tests | Metrics |
+|--------|-------|---------|
+| **Fairness** | Demographic parity, equalized odds | SPD < 0.1 |
+| **Privacy** | Differential privacy, data leakage | ε ≤ 1.0 |
+| **Safety** | Failure modes, uncertainty | Coverage ≥ 95% |
+| **Transparency** | Explainability, interpretability | SHAP coverage |
+| **Robustness** | Adversarial, distributional shift | Accuracy drop < 5% |
+
+## Trustworthy AI & Governance
+
+### AI Governance Framework
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    AI GOVERNANCE STRUCTURE                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │                    GOVERNANCE BOARD                        │  │
+│  │    Policy | Ethics | Compliance | Risk | Audit            │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│         ┌────────────────────┼────────────────────┐             │
+│         ▼                    ▼                    ▼             │
+│  ┌─────────────┐      ┌─────────────┐      ┌─────────────┐     │
+│  │   ETHICAL   │      │    SAFE     │      │   SYMBIOTIC │     │
+│  │     AI      │      │     AI      │      │      AI     │     │
+│  │             │      │             │      │             │     │
+│  │ • Fairness  │      │ • Fail-safe │      │ • Human-AI  │     │
+│  │ • Privacy   │      │ • Bounded   │      │   Collab    │     │
+│  │ • Autonomy  │      │ • Monitored │      │ • Augment   │     │
+│  │ • Dignity   │      │ • Verified  │      │ • Feedback  │     │
+│  └─────────────┘      └─────────────┘      └─────────────┘     │
+│                                                                  │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │                MODEL CONTROL PORTAL (MCP)                  │  │
+│  │   • Model Registry    • Version Control   • Audit Logs   │  │
+│  │   • Access Control    • Deployment Gates  • Rollback     │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Ethical AI Principles
+
+| Principle | Implementation | Verification |
+|-----------|----------------|--------------|
+| **Beneficence** | Clinical benefit analysis | IRB approval |
+| **Non-maleficence** | Risk-benefit assessment | Safety testing |
+| **Autonomy** | Informed consent workflows | User controls |
+| **Justice** | Fair access and outcomes | Equity audits |
+| **Transparency** | Explainable predictions | Model cards |
+| **Accountability** | Audit trails | Governance logs |
+
+### Safe AI Implementation
+
+| Safety Layer | Description | Status |
+|--------------|-------------|--------|
+| **Input Validation** | Reject out-of-distribution inputs | Active |
+| **Uncertainty Quantification** | Confidence calibration | Active |
+| **Fail-Safe Defaults** | Conservative predictions on error | Active |
+| **Human-in-the-Loop** | Clinician review for edge cases | Active |
+| **Kill Switch** | Emergency model deactivation | Available |
+| **Bounded Autonomy** | Constrained decision scope | Enforced |
+
+### Symbiotic AI Design
+
+The framework implements Human-AI collaboration patterns:
+
+| Pattern | Description | Benefit |
+|---------|-------------|---------|
+| **AI-Assisted Diagnosis** | AI suggests, clinician decides | Accuracy + Trust |
+| **Clinician Override** | Human can override AI | Safety |
+| **Collaborative Learning** | Feedback improves model | Continuous improvement |
+| **Shared Responsibility** | Clear accountability split | Governance |
+| **Augmented Intelligence** | AI enhances human capabilities | Productivity |
+
 ## Responsible AI Framework
 
 ### Framework Architecture (46 Modules, 1300+ Analysis Types)
