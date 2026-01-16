@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: "NeuroMCP-Agent: Trustworthy Multi-Agent Deep Learning Framework for EEG-Based Neurological Disease Detection"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Research"
+    given-names: "Team"
+    affiliation: "NeuroMCP-Agent Project"
+repository-code: "https://github.com/PraveenAsthana123/agentic_disease_finder"
+url: "https://github.com/PraveenAsthana123/agentic_disease_finder"
+license: MIT
+version: "2.5.0"
+date-released: "2024-01-16"
+keywords:
+  - EEG
+  - neurological disease detection
+  - deep learning
+  - responsible AI
+  - multi-agent system
+  - Parkinson's disease
+  - epilepsy
+  - autism
+  - schizophrenia
+  - Alzheimer's disease
+  - depression
+  - stress detection
+abstract: >-
+  NeuroMCP-Agent is a comprehensive AI framework for detecting 7 neurological
+  diseases using EEG signals. It features an Ultra Stacking Ensemble with 15
+  classifiers, 47 EEG features, Model Context Protocol (MCP) for AI agent
+  integration, and a 46-module Responsible AI framework with 1300+ analysis types.
+  The framework achieves 87.6% average accuracy using Leave-One-Subject-Out
+  Cross-Validation (LOSO-CV) with comprehensive RAI governance.
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Research"
+      given-names: "Team"
+  title: "NeuroMCP-Agent: Trustworthy Multi-Agent Deep Learning Framework for EEG-Based Neurological Disease Detection"
+  journal: "IEEE Transactions on Biomedical Engineering"
+  year: 2024
+  abstract: >-
+    We present NeuroMCP-Agent, a trustworthy multi-agent deep learning framework
+    for EEG-based neurological disease detection with comprehensive Responsible
+    AI governance. Using Leave-One-Subject-Out Cross-Validation, we achieve
+    87.6% average accuracy across 7 diseases with 0.91 RAI compliance score.

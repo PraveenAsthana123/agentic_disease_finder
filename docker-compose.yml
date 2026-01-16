@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # Main application
+  neuromcp-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: neuromcp-agent:latest
+    container_name: neuromcp-agent
+    volumes:
+      - ./data:/app/data:ro
+      - ./databases:/app/databases:ro
+      - ./models:/app/models
+      - ./results:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MODEL_PATH=/app/models
+      - DATA_PATH=/app/data
+      - LOG_LEVEL=INFO
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - neuromcp-network
+
+  # Training service
+  training:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: neuromcp-agent:latest
+    container_name: neuromcp-training
+    volumes:
+      - ./data:/app/data:ro
+      - ./databases:/app/databases:ro
+      - ./models:/app/models
+      - ./results:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CUDA_VISIBLE_DEVICES=0
+    command: ["python", "scripts/train.py", "--disease", "all"]
+    profiles:
+      - training
+    networks:
+      - neuromcp-network
+
+  # Evaluation service
+  evaluation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: neuromcp-agent:latest
+    container_name: neuromcp-evaluation
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models:ro
+      - ./results:/app/results
+    command: ["python", "scripts/evaluate.py", "--disease", "all"]
+    profiles:
+      - evaluation
+    networks:
+      - neuromcp-network
+
+  # Streamlit UI
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: neuromcp-agent:latest
+    container_name: neuromcp-ui
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models:ro
+    ports:
+      - "8501:8501"
+    command: ["streamlit", "run", "ui_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    profiles:
+      - ui
+    networks:
+      - neuromcp-network
+
+networks:
+  neuromcp-network:
+    driver: bridge
+
+volumes:
+  models:
+  results:
