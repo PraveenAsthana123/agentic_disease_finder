@@ -1,0 +1,42 @@
+[
+  {
+    "disease": "Schizophrenia",
+    "accuracy": 75.2893060647945,
+    "std": 6.1704096614994,
+    "model": "ET-500",
+    "n_subjects": 153,
+    "achieved": false
+  },
+  {
+    "disease": "Depression",
+    "accuracy": 62.66170212765958,
+    "std": 4.460241402352279,
+    "model": "RF-500",
+    "n_subjects": 121,
+    "achieved": false
+  },
+  {
+    "disease": "Epilepsy",
+    "accuracy": 43.33333333333334,
+    "std": 11.36515141415488,
+    "model": "ET-500",
+    "n_subjects": 30,
+    "achieved": false
+  },
+  {
+    "disease": "Stress",
+    "accuracy": 76.51041666666667,
+    "std": 0.8202091535428983,
+    "model": "RF-500",
+    "n_subjects": 12,
+    "achieved": false
+  },
+  {
+    "disease": "Parkinson",
+    "accuracy": 100.0,
+    "std": 0.0,
+    "model": "ET-500",
+    "n_subjects": 10,
+    "achieved": true
+  }
+]

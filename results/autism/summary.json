@@ -1,0 +1,14 @@
+{
+  "disease": "autism",
+  "n_samples": 100,
+  "n_control": 50,
+  "n_disease": 50,
+  "accuracy_mean": 0.9099999999999999,
+  "accuracy_std": 0.04183300132670376,
+  "precision_mean": 0.9262626262626263,
+  "recall_mean": 0.9,
+  "f1_mean": 0.9079668869142553,
+  "auc_mean": 0.986,
+  "sensitivity_mean": 0.9,
+  "specificity_mean": 0.9200000000000002
+}

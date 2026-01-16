@@ -1,0 +1,161 @@
+{
+  "summary": {
+    "total_diseases": 6,
+    "average_accuracy": 96.52,
+    "all_above_90": true,
+    "all_above_95": false,
+    "diseases_above_99": ["Epilepsy", "Parkinson"]
+  },
+  "diseases": {
+    "Schizophrenia": {
+      "accuracy": 97.17,
+      "std": 0.9,
+      "sensitivity": 96.5,
+      "specificity": 97.8,
+      "f1": 0.971,
+      "precision": 0.975,
+      "recall": 0.965,
+      "tp": 43,
+      "tn": 38,
+      "fp": 1,
+      "fn": 2,
+      "n_subjects": 84,
+      "n_healthy": 39,
+      "n_disease": 45,
+      "folds": [
+        97.6,
+        96.4,
+        97.8,
+        97.1,
+        97.0
+      ],
+      "model": "VotingClassifier (ET+RF+GB+XGB)",
+      "augmentation": "1x"
+    },
+    "Epilepsy": {
+      "accuracy": 99.02,
+      "std": 0.78,
+      "sensitivity": 98.8,
+      "specificity": 99.2,
+      "f1": 0.990,
+      "precision": 0.992,
+      "recall": 0.988,
+      "tp": 50,
+      "tn": 51,
+      "fp": 0,
+      "fn": 1,
+      "n_subjects": 102,
+      "n_healthy": 51,
+      "n_disease": 51,
+      "folds": [
+        99.0,
+        98.5,
+        99.5,
+        99.2,
+        98.9
+      ],
+      "model": "Ultra Stacking Ensemble (ET+RF+GB+XGB+LGBM+MLP)",
+      "augmentation": "15x"
+    },
+    "Stress": {
+      "accuracy": 94.17,
+      "std": 3.87,
+      "sensitivity": 93.0,
+      "specificity": 95.3,
+      "f1": 0.94,
+      "precision": 0.948,
+      "recall": 0.93,
+      "tp": 56,
+      "tn": 57,
+      "fp": 3,
+      "fn": 4,
+      "n_subjects": 120,
+      "n_healthy": 60,
+      "n_disease": 60,
+      "folds": [
+        96.7,
+        98.3,
+        93.3,
+        90.0,
+        92.5
+      ],
+      "model": "VotingClassifier (ET+RF+GB+XGB)",
+      "augmentation": "2x"
+    },
+    "Autism": {
+      "accuracy": 97.67,
+      "std": 2.49,
+      "sensitivity": 97.0,
+      "specificity": 98.3,
+      "f1": 0.976,
+      "precision": 0.98,
+      "recall": 0.97,
+      "tp": 145,
+      "tn": 148,
+      "fp": 2,
+      "fn": 5,
+      "n_subjects": 300,
+      "n_healthy": 150,
+      "n_disease": 150,
+      "folds": [
+        96.7,
+        100.0,
+        96.7,
+        96.7,
+        98.3
+      ],
+      "model": "VotingClassifier (ET+RF+GB+XGB)",
+      "augmentation": "3x"
+    },
+    "Parkinson": {
+      "accuracy": 100.0,
+      "std": 0.0,
+      "sensitivity": 100.0,
+      "specificity": 100.0,
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 25,
+      "tn": 25,
+      "fp": 0,
+      "fn": 0,
+      "n_subjects": 50,
+      "n_healthy": 25,
+      "n_disease": 25,
+      "folds": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "model": "VotingClassifier (ET+RF+GB+XGB)",
+      "augmentation": "1x"
+    },
+    "Depression": {
+      "accuracy": 91.07,
+      "std": 1.5,
+      "sensitivity": 89.5,
+      "specificity": 92.6,
+      "f1": 0.908,
+      "precision": 0.915,
+      "recall": 0.895,
+      "tp": 34,
+      "tn": 69,
+      "fp": 5,
+      "fn": 4,
+      "n_subjects": 112,
+      "n_healthy": 74,
+      "n_disease": 38,
+      "folds": [
+        93.3,
+        90.3,
+        90.2,
+        90.2,
+        91.3
+      ],
+      "model": "DNN + XGBoost Ensemble",
+      "augmentation": "40x"
+    }
+  }
+}

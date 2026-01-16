@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-01-04T17:16:40.052057",
+  "disease": null,
+  "overall_status": "FAIL",
+  "tests_passed": 2,
+  "total_tests": 5,
+  "pass_rate": 0.4,
+  "test_results": {
+    "consistency": {
+      "test": "Consistency",
+      "status": "PASS",
+      "n_runs": 5,
+      "mean_accuracy": 0.944,
+      "std_accuracy": 0.004898979485566361,
+      "consistency_score": 0.9948104030873238,
+      "agreement_rate": 0.9880000000000001,
+      "threshold": 0.95
+    },
+    "robustness": {
+      "test": "Robustness",
+      "status": "PASS",
+      "base_accuracy": 0.48,
+      "robustness_score": 0.998,
+      "results_by_noise": {
+        "0.001": {
+          "noise_level": 0.001,
+          "accuracy": 0.48,
+          "accuracy_drop": 0.0,
+          "prediction_change_rate": 0.0
+        },
+        "0.005": {
+          "noise_level": 0.005,
+          "accuracy": 0.48,
+          "accuracy_drop": 0.0,
+          "prediction_change_rate": 0.0
+        },
+        "0.01": {
+          "noise_level": 0.01,
+          "accuracy": 0.48,
+          "accuracy_drop": 0.0,
+          "prediction_change_rate": 0.0
+        },
+        "0.02": {
+          "noise_level": 0.02,
+          "accuracy": 0.47,
+          "accuracy_drop": 0.010000000000000009,
+          "prediction_change_rate": 0.01
+        },
+        "0.05": {
+          "noise_level": 0.05,
+          "accuracy": 0.48,
+          "accuracy_drop": 0.0,
+          "prediction_change_rate": 0.02
+        }
+      },
+      "threshold": 0.9
+    },
+    "fairness": {
+      "test": "Fairness",
+      "status": "NEEDS_ATTENTION",
+      "total_tests": 8,
+      "tests_passed": 7,
+      "pass_rate": 0.875,
+      "attributes_tested": [
+        "gender",
+        "age_group"
+      ],
+      "recommendations": [
+        "Review model errors across 'age_group' groups. Consider threshold adjustment or reweighting for affected groups."
+      ]
+    },
+    "drift_detection": {
+      "test": "Drift Detection",
+      "status": "FAIL",
+      "scenarios_tested": [
+        "no_drift",
+        "mild_drift",
+        "severe_drift"
+      ],
+      "results_by_scenario": {
+        "no_drift": {
+          "status": "ATTENTION",
+          "alert_count": 7,
+          "critical_alerts": 0
+        },
+        "mild_drift": {
+          "status": "CRITICAL",
+          "alert_count": 8,
+          "critical_alerts": 1
+        },
+        "severe_drift": {
+          "status": "CRITICAL",
+          "alert_count": 11,
+          "critical_alerts": 11
+        }
+      },
+      "detection_rate": 0.6666666666666666
+    },
+    "calibration": {
+      "test": "Calibration",
+      "status": "FAIL",
+      "ece": 0.21688455745847024,
+      "overconfidence": -0.10397859731548253,
+      "underconfidence": -0.24860050660867886,
+      "n_bins": 10,
+      "bin_results": [
+        {
+          "bin": "0.2-0.3",
+          "confidence": 0.24860050660867886,
+          "accuracy": 0.0,
+          "error": 0.24860050660867886,
+          "samples": 153
+        },
+        {
+          "bin": "0.3-0.4",
+          "confidence": 0.34916308267001683,
+          "accuracy": 0.0,
+          "error": 0.34916308267001683,
+          "samples": 140
+        },
+        {
+          "bin": "0.8-0.9",
+          "confidence": 0.8503858294041529,
+          "accuracy": 1.0,
+          "error": 0.14961417059584714,
+          "samples": 109
+        },
+        {
+          "bin": "0.9-1.0",
+          "confidence": 0.9467793362310455,
+          "accuracy": 1.0,
+          "error": 0.05322066376895451,
+          "samples": 98
+        }
+      ],
+      "threshold": 0.1
+    }
+  }
+}

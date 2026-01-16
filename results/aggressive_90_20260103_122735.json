@@ -1,0 +1,37 @@
+[
+  {
+    "disease": "Schizophrenia",
+    "accuracy": 97.1725018032514,
+    "std": 0.8987459720276526,
+    "model": "Voting_aug1",
+    "achieved": true
+  },
+  {
+    "disease": "Epilepsy",
+    "accuracy": 94.21875,
+    "std": 1.1692679333668565,
+    "model": "Voting_aug2",
+    "achieved": true
+  },
+  {
+    "disease": "Stress",
+    "accuracy": 94.16666666666667,
+    "std": 3.8689967436622577,
+    "model": "Voting_aug2",
+    "achieved": true
+  },
+  {
+    "disease": "Autism",
+    "accuracy": 97.66666666666666,
+    "std": 2.4944382578492936,
+    "model": "Voting_aug3",
+    "achieved": true
+  },
+  {
+    "disease": "Parkinson",
+    "accuracy": 100.0,
+    "std": 0.0,
+    "model": "Voting_aug1",
+    "achieved": true
+  }
+]

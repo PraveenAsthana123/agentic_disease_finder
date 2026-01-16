@@ -1,0 +1,86 @@
+{
+  "epilepsy": {
+    "name": "Epilepsy",
+    "status": "failed",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": "18:40:57",
+    "end_time": null,
+    "error": "Insufficient data: 0 samples",
+    "model_path": null
+  },
+  "schizophrenia": {
+    "name": "Schizophrenia",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  },
+  "depression": {
+    "name": "Depression",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  },
+  "stress": {
+    "name": "Stress",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  },
+  "autism": {
+    "name": "Autism",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  },
+  "parkinson": {
+    "name": "Parkinson",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  },
+  "dementia": {
+    "name": "Dementia",
+    "status": "pending",
+    "data_samples": 0,
+    "model_type": "VotingClassifier",
+    "accuracy": 0.0,
+    "std": 0.0,
+    "start_time": null,
+    "end_time": null,
+    "error": null,
+    "model_path": null
+  }
+}

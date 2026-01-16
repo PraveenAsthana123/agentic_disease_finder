@@ -1,0 +1,70 @@
+{
+  "overall_accuracy": 1.0,
+  "overall_f1": 1.0,
+  "per_disease": {
+    "schizophrenia": 1.0,
+    "autism": 1.0,
+    "parkinson": 1.0,
+    "stress": 1.0,
+    "epilepsy": 1.0
+  },
+  "individual_models": {
+    "rf": {
+      "accuracy": 1.0,
+      "f1": 1.0
+    },
+    "gb": {
+      "accuracy": 0.9821428571428571,
+      "f1": 0.9817653890824624
+    },
+    "svm": {
+      "accuracy": 0.9285714285714286,
+      "f1": 0.9325864611578897
+    },
+    "mlp": {
+      "accuracy": 1.0,
+      "f1": 1.0
+    },
+    "ensemble": {
+      "accuracy": 1.0,
+      "f1": 1.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      20,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      20,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      4
+    ]
+  ]
+}

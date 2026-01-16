@@ -1,0 +1,30 @@
+[
+  {
+    "disease": "Schizophrenia",
+    "accuracy": 94.04788326027852,
+    "std": 1.1975865808345798,
+    "model": "ET-300",
+    "achieved": true
+  },
+  {
+    "disease": "Epilepsy",
+    "accuracy": 82.5,
+    "std": 5.0775240028974755,
+    "model": "ET-500",
+    "achieved": false
+  },
+  {
+    "disease": "Autism",
+    "accuracy": 71.0,
+    "std": 13.564659966250536,
+    "model": "ET-500",
+    "achieved": false
+  },
+  {
+    "disease": "Parkinson",
+    "accuracy": 100.0,
+    "std": 0.0,
+    "model": "ET-300",
+    "achieved": true
+  }
+]

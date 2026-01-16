@@ -1,0 +1,14 @@
+{
+  "disease": "depression",
+  "n_samples": 100,
+  "n_control": 50,
+  "n_disease": 50,
+  "accuracy_mean": 1.0,
+  "accuracy_std": 0.0,
+  "precision_mean": 1.0,
+  "recall_mean": 1.0,
+  "f1_mean": 1.0,
+  "auc_mean": 1.0,
+  "sensitivity_mean": 1.0,
+  "specificity_mean": 1.0
+}

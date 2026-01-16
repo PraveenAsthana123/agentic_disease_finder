@@ -1,0 +1,45 @@
+{
+  "disease": "depression",
+  "accuracy": 60.638209219858155,
+  "std": 3.4245854905375226,
+  "augmentation": 4,
+  "n_subjects": 121,
+  "achieved": false,
+  "confusion_matrix": [
+    [
+      1451,
+      361
+    ],
+    [
+      776,
+      304
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.651549169286035,
+      "recall": 0.8007726269315674,
+      "f1-score": 0.7184946769002228,
+      "support": 1812.0
+    },
+    "1": {
+      "precision": 0.45714285714285713,
+      "recall": 0.2814814814814815,
+      "f1-score": 0.3484240687679083,
+      "support": 1080.0
+    },
+    "accuracy": 0.6068464730290456,
+    "macro avg": {
+      "precision": 0.5543460132144461,
+      "recall": 0.5411270542065244,
+      "f1-score": 0.5334593728340655,
+      "support": 2892.0
+    },
+    "weighted avg": {
+      "precision": 0.5789493016806989,
+      "recall": 0.6068464730290456,
+      "f1-score": 0.5802940348591095,
+      "support": 2892.0
+    }
+  }
+}

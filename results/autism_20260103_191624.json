@@ -1,0 +1,45 @@
+{
+  "disease": "autism",
+  "accuracy": 64.0,
+  "std": 3.741657386773941,
+  "augmentation": 4,
+  "n_subjects": 100,
+  "achieved": false,
+  "confusion_matrix": [
+    [
+      34,
+      16
+    ],
+    [
+      20,
+      30
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.6296296296296297,
+      "recall": 0.68,
+      "f1-score": 0.6538461538461539,
+      "support": 50.0
+    },
+    "1": {
+      "precision": 0.6521739130434783,
+      "recall": 0.6,
+      "f1-score": 0.625,
+      "support": 50.0
+    },
+    "accuracy": 0.64,
+    "macro avg": {
+      "precision": 0.6409017713365539,
+      "recall": 0.64,
+      "f1-score": 0.6394230769230769,
+      "support": 100.0
+    },
+    "weighted avg": {
+      "precision": 0.640901771336554,
+      "recall": 0.64,
+      "f1-score": 0.639423076923077,
+      "support": 100.0
+    }
+  }
+}

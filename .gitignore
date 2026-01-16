@@ -1,0 +1,107 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Large data files (keep samples only)
+*.edf
+*.bdf
+*.mat
+*.h5
+*.hdf5
+
+# Model checkpoints (keep small models)
+# *.joblib
+# *.pkl
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Environment files
+.env
+.env.local
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Large directories to exclude
+chroma_db/
+datasets/
+eeg-stress-rag/.git/
+neuro_wearable_system/
+*.zip
+*.sqlite3
+*.bin
+
+# Keep only sample data
+!data/*/sample/
+
+# Exclude nested git repos
+eeg-stress-rag/
+eeg_stress_code/
+
+# Large model files
+*.pt
+*.pth
+*.onnx

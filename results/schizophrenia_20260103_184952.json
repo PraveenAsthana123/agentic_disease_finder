@@ -1,0 +1,45 @@
+{
+  "disease": "schizophrenia",
+  "accuracy": 83.50183823529413,
+  "std": 9.049738957264825,
+  "augmentation": 3,
+  "n_subjects": 84,
+  "achieved": false,
+  "confusion_matrix": [
+    [
+      497,
+      127
+    ],
+    [
+      92,
+      628
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.8438030560271647,
+      "recall": 0.7964743589743589,
+      "f1-score": 0.8194558944765046,
+      "support": 624.0
+    },
+    "1": {
+      "precision": 0.8317880794701987,
+      "recall": 0.8722222222222222,
+      "f1-score": 0.8515254237288136,
+      "support": 720.0
+    },
+    "accuracy": 0.8370535714285714,
+    "macro avg": {
+      "precision": 0.8377955677486817,
+      "recall": 0.8343482905982906,
+      "f1-score": 0.8354906591026591,
+      "support": 1344.0
+    },
+    "weighted avg": {
+      "precision": 0.8373664614430758,
+      "recall": 0.8370535714285714,
+      "f1-score": 0.8366359994330986,
+      "support": 1344.0
+    }
+  }
+}

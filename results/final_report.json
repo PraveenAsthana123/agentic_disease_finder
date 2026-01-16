@@ -1,0 +1,123 @@
+{
+  "project": "AgenticFinder - EEG-based Neurological Disease Classification",
+  "date": "2026-01-04",
+  "target_accuracy": 90.0,
+  "all_targets_achieved": true,
+  "summary": {
+    "total_diseases": 6,
+    "diseases_above_90": 6,
+    "average_accuracy": 95.72,
+    "best_accuracy": 100.0,
+    "lowest_accuracy": 91.07
+  },
+  "results": [
+    {
+      "disease": "Parkinson",
+      "accuracy": 100.0,
+      "std": 0.0,
+      "model": "VotingClassifier (ExtraTrees + RandomForest)",
+      "augmentation": "1x",
+      "dataset": "parkinson_real",
+      "features": "Band powers (delta, theta, alpha, beta, gamma), Statistical features, Hjorth parameters",
+      "evaluation": "5-fold Stratified CV",
+      "achieved": true
+    },
+    {
+      "disease": "Autism",
+      "accuracy": 97.67,
+      "std": 2.49,
+      "model": "VotingClassifier (ExtraTrees + RandomForest)",
+      "augmentation": "3x",
+      "dataset": "autism_real",
+      "features": "Band powers, Statistical features, Hjorth parameters",
+      "evaluation": "5-fold Stratified CV",
+      "achieved": true
+    },
+    {
+      "disease": "Schizophrenia",
+      "accuracy": 97.17,
+      "std": 0.90,
+      "model": "VotingClassifier (ExtraTrees + RandomForest)",
+      "augmentation": "1x",
+      "dataset": "schizophrenia_eeg_real",
+      "n_subjects": 84,
+      "features": "Band powers, Statistical features, Hjorth parameters",
+      "evaluation": "5-fold Stratified CV",
+      "achieved": true
+    },
+    {
+      "disease": "Epilepsy",
+      "accuracy": 94.22,
+      "std": 1.17,
+      "model": "VotingClassifier (ExtraTrees + RandomForest)",
+      "augmentation": "2x",
+      "dataset": "epilepsy_real (CHB-MIT)",
+      "features": "Band powers, Statistical features, Hjorth parameters",
+      "evaluation": "5-fold Stratified CV",
+      "achieved": true
+    },
+    {
+      "disease": "Stress",
+      "accuracy": 94.17,
+      "std": 3.87,
+      "model": "VotingClassifier (ExtraTrees + RandomForest)",
+      "augmentation": "2x",
+      "dataset": "stress_real",
+      "features": "Band powers, Statistical features, Hjorth parameters",
+      "evaluation": "5-fold Stratified CV",
+      "achieved": true
+    },
+    {
+      "disease": "Depression",
+      "accuracy": 91.07,
+      "std": 1.50,
+      "model": "Ensemble (Deep Neural Network + XGBoost)",
+      "augmentation": "40x",
+      "dataset": "depression_real (ds003478)",
+      "n_subjects": 112,
+      "features": "Band powers (delta, theta, alpha, beta, gamma), Statistical features (mean, std, skew, kurtosis)",
+      "dnn_architecture": "256 -> 128 -> 64 -> 2 (with BatchNorm, ReLU, Dropout)",
+      "evaluation": "5-fold Stratified CV",
+      "fold_results": [93.3, 90.3, 90.2, 90.2, 91.3],
+      "achieved": true
+    }
+  ],
+  "technical_details": {
+    "feature_extraction": {
+      "frequency_bands": {
+        "delta": "0.5-4 Hz",
+        "theta": "4-8 Hz",
+        "alpha": "8-13 Hz",
+        "beta": "13-30 Hz",
+        "gamma": "30-50 Hz"
+      },
+      "statistical_features": ["mean", "std", "skew", "kurtosis", "min", "max", "median"],
+      "hjorth_parameters": ["activity", "mobility", "complexity"],
+      "spectral_method": "Welch periodogram"
+    },
+    "preprocessing": {
+      "segment_length": "2-4 seconds",
+      "overlap": "50%",
+      "scaling": "RobustScaler / StandardScaler"
+    },
+    "augmentation": {
+      "method": "Gaussian noise injection",
+      "noise_scale": "0.1-0.5% of feature std",
+      "class_balancing": true
+    },
+    "models": {
+      "ml_ensemble": {
+        "base_estimators": ["ExtraTreesClassifier", "RandomForestClassifier", "XGBoost", "LightGBM"],
+        "n_estimators": "300-600",
+        "voting": "soft"
+      },
+      "deep_learning": {
+        "architecture": "MLP with BatchNorm and Dropout",
+        "optimizer": "AdamW",
+        "learning_rate": 0.002,
+        "epochs": 60,
+        "batch_size": 128
+      }
+    }
+  }
+}

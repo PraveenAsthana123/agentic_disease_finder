@@ -1,0 +1,30 @@
+[
+  {
+    "disease": "Schizophrenia",
+    "accuracy": 69.67065441371594,
+    "std": 4.580209565118594,
+    "n_subjects": 236,
+    "achieved": false
+  },
+  {
+    "disease": "Depression",
+    "accuracy": 61.42878250591016,
+    "std": 3.7409876950022474,
+    "n_subjects": 121,
+    "achieved": false
+  },
+  {
+    "disease": "Autism",
+    "accuracy": 70.0,
+    "std": 15.165750888103101,
+    "n_subjects": 100,
+    "achieved": false
+  },
+  {
+    "disease": "Parkinson",
+    "accuracy": 100.0,
+    "std": 0.0,
+    "n_subjects": 100,
+    "achieved": true
+  }
+]

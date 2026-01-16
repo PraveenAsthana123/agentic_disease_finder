@@ -1,0 +1,45 @@
+{
+  "disease": "epilepsy",
+  "accuracy": 81.66666666666667,
+  "std": 8.881941729649487,
+  "augmentation": 4,
+  "n_subjects": 30,
+  "achieved": false,
+  "confusion_matrix": [
+    [
+      111,
+      39
+    ],
+    [
+      16,
+      134
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.8740157480314961,
+      "recall": 0.74,
+      "f1-score": 0.8014440433212996,
+      "support": 150.0
+    },
+    "1": {
+      "precision": 0.7745664739884393,
+      "recall": 0.8933333333333333,
+      "f1-score": 0.8297213622291022,
+      "support": 150.0
+    },
+    "accuracy": 0.8166666666666667,
+    "macro avg": {
+      "precision": 0.8242911110099677,
+      "recall": 0.8166666666666667,
+      "f1-score": 0.815582702775201,
+      "support": 300.0
+    },
+    "weighted avg": {
+      "precision": 0.8242911110099677,
+      "recall": 0.8166666666666667,
+      "f1-score": 0.8155827027752008,
+      "support": 300.0
+    }
+  }
+}
