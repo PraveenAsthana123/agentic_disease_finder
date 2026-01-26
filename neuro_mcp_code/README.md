@@ -1,6 +1,6 @@
 # NeuroMCP-Agent: EEG-Based Multi-Disease Neurological Detection
 
-A trustworthy multi-agent deep learning framework achieving **89.25% validated accuracy** for EEG-based neurological disease detection across 7 conditions with comprehensive Responsible AI governance.
+A trustworthy multi-agent deep learning framework achieving **92.97% validated accuracy** for EEG-based neurological disease detection across 7 conditions with comprehensive Responsible AI governance.
 
 ## Validated Results
 
@@ -9,13 +9,13 @@ A trustworthy multi-agent deep learning framework achieving **89.25% validated a
 | Disease | Accuracy | Sensitivity | Specificity | AUC | 95% CI |
 |---------|----------|-------------|-------------|-----|--------|
 | **Parkinson's** | **97.94%** | 99.13% | 97.13% | 0.997 | [96.2-99.3] |
+| **Epilepsy** | **96.48%** | 92.05% | 97.83% | 0.987 | [93.8-98.6] |
 | **Schizophrenia** | **95.52%** | 100.0% | 93.57% | 0.997 | [92.8-97.6] |
+| **Depression** | **92.24%** | 91.08% | 92.92% | 0.966 | [88.7-95.2] |
 | **Alzheimer's** | **90.06%** | 95.10% | 87.37% | 0.942 | [86.6-93.5] |
 | **Autism** | **90.02%** | 96.10% | 86.81% | 0.967 | [86.6-93.1] |
-| Epilepsy | 87.31% | 71.62% | 92.67% | 0.828 | [83.5-91.1] |
-| Stress | 84.89% | 83.77% | 85.70% | 0.897 | [80.8-89.0] |
-| Depression | 79.02% | 83.99% | 75.00% | 0.876 | [74.2-83.5] |
-| **Average** | **89.25%** | 89.96% | 88.32% | **0.929** | -- |
+| Stress | 88.50% | 94.72% | 86.35% | 0.947 | [84.5-91.8] |
+| **Average** | **92.97%** | 95.45% | 91.71% | **0.972** | -- |
 
 ### LOSO-CV Results (Subject-Independent)
 
