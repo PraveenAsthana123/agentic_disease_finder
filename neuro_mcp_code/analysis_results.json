@@ -1,0 +1,401 @@
+[
+  {
+    "disease": "epilepsy",
+    "name": "Epilepsy",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 218,
+    "class_1": 73,
+    "stratified_cv": {
+      "accuracy": 0.8730566919929865,
+      "accuracy_std": 0.06258665109549046,
+      "sensitivity": 0.7161904761904763,
+      "specificity": 0.9267441860465115,
+      "auc": 0.8282077418705327,
+      "f1": 0.8708052006363316,
+      "fold_accuracies": [
+        0.8135593220338984,
+        0.8103448275862069,
+        0.9827586206896551,
+        0.8793103448275862,
+        0.8793103448275862
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.8249731182795699,
+      "accuracy_std": 0.10968840539011517,
+      "sensitivity": 0.40758145363408516,
+      "specificity": 0.9042346542346542,
+      "n_subjects": 8
+    },
+    "confusion_matrix": {
+      "tp": 52,
+      "tn": 202,
+      "fp": 16,
+      "fn": 21
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.8730206185567012,
+      "accuracy_ci_low": 0.8350515463917526,
+      "accuracy_ci_high": 0.9106529209621993
+    },
+    "final_metrics": {
+      "accuracy": 0.872852233676976,
+      "sensitivity": 0.7123287671232876,
+      "specificity": 0.926605504587156,
+      "precision": 0.7647058823529411,
+      "npv": 0.905829596412556,
+      "f1": 0.8713186329831585,
+      "mcc": 0.6545441908542514,
+      "kappa": 0.6538276050541748,
+      "auc": 0.8385698127434963,
+      "tp": 52,
+      "tn": 202,
+      "fp": 16,
+      "fn": 21
+    }
+  },
+  {
+    "disease": "parkinson",
+    "name": "Parkinson's Disease",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 174,
+    "class_1": 117,
+    "stratified_cv": {
+      "accuracy": 0.9793687901811806,
+      "accuracy_std": 0.006926699107456299,
+      "sensitivity": 0.9913043478260869,
+      "specificity": 0.9712605042016806,
+      "auc": 0.9972905249056143,
+      "f1": 0.9794116619446903,
+      "fold_accuracies": [
+        0.9830508474576272,
+        0.9827586206896551,
+        0.9655172413793104,
+        0.9827586206896551,
+        0.9827586206896551
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.84110599078341,
+      "accuracy_std": 0.17243286966820975,
+      "sensitivity": 1.0,
+      "specificity": 0.403271784904438,
+      "n_subjects": 7
+    },
+    "confusion_matrix": {
+      "tp": 116,
+      "tn": 169,
+      "fp": 5,
+      "fn": 1
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.9797010309278351,
+      "accuracy_ci_low": 0.9621993127147767,
+      "accuracy_ci_high": 0.993127147766323
+    },
+    "final_metrics": {
+      "accuracy": 0.979381443298969,
+      "sensitivity": 0.9914529914529915,
+      "specificity": 0.9712643678160919,
+      "precision": 0.9586776859504132,
+      "npv": 0.9941176470588236,
+      "f1": 0.9794348331516735,
+      "mcc": 0.9577434974556389,
+      "kappa": 0.9573563892145369,
+      "auc": 0.9956282542489439,
+      "tp": 116,
+      "tn": 169,
+      "fp": 5,
+      "fn": 1
+    }
+  },
+  {
+    "disease": "alzheimer",
+    "name": "Alzheimer's Disease",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 189,
+    "class_1": 102,
+    "stratified_cv": {
+      "accuracy": 0.9006428988895383,
+      "accuracy_std": 0.06306142611101768,
+      "sensitivity": 0.950952380952381,
+      "specificity": 0.8736842105263157,
+      "auc": 0.9416915599810338,
+      "f1": 0.9024507629178011,
+      "fold_accuracies": [
+        0.8135593220338984,
+        0.9827586206896551,
+        0.8448275862068966,
+        0.9137931034482759,
+        0.9482758620689655
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.8366547192353644,
+      "accuracy_std": 0.10989731796894603,
+      "sensitivity": 0.9206045125585356,
+      "specificity": 0.7506343629532035,
+      "n_subjects": 9
+    },
+    "confusion_matrix": {
+      "tp": 97,
+      "tn": 165,
+      "fp": 24,
+      "fn": 5
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.9003986254295535,
+      "accuracy_ci_low": 0.865979381443299,
+      "accuracy_ci_high": 0.9347079037800687
+    },
+    "final_metrics": {
+      "accuracy": 0.9003436426116839,
+      "sensitivity": 0.9509803921568627,
+      "specificity": 0.873015873015873,
+      "precision": 0.8016528925619835,
+      "npv": 0.9705882352941176,
+      "f1": 0.9019519468667233,
+      "mcc": 0.7976990693025838,
+      "kappa": 0.7901216145639036,
+      "auc": 0.94680464778504,
+      "tp": 97,
+      "tn": 165,
+      "fp": 24,
+      "fn": 5
+    }
+  },
+  {
+    "disease": "schizophrenia",
+    "name": "Schizophrenia",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 203,
+    "class_1": 88,
+    "stratified_cv": {
+      "accuracy": 0.9551724137931036,
+      "accuracy_std": 0.041665675771015744,
+      "sensitivity": 1.0,
+      "specificity": 0.9357317073170732,
+      "auc": 0.9974358361230671,
+      "f1": 0.9564096573030081,
+      "fold_accuracies": [
+        1.0,
+        0.9137931034482759,
+        0.9827586206896551,
+        0.9827586206896551,
+        0.896551724137931
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.6733333333333333,
+      "accuracy_std": 0.32016199603279544,
+      "sensitivity": 0.8205128205128206,
+      "specificity": 0.5027272727272728,
+      "n_subjects": 6
+    },
+    "confusion_matrix": {
+      "tp": 88,
+      "tn": 190,
+      "fp": 13,
+      "fn": 0
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.954852233676976,
+      "accuracy_ci_low": 0.9278350515463918,
+      "accuracy_ci_high": 0.9759450171821306
+    },
+    "final_metrics": {
+      "accuracy": 0.9553264604810997,
+      "sensitivity": 1.0,
+      "specificity": 0.9359605911330049,
+      "precision": 0.8712871287128713,
+      "npv": 1.0,
+      "f1": 0.9561239767163011,
+      "mcc": 0.9030450797367081,
+      "kappa": 0.8983692878059264,
+      "auc": 0.9944581280788178,
+      "tp": 88,
+      "tn": 190,
+      "fp": 13,
+      "fn": 0
+    }
+  },
+  {
+    "disease": "depression",
+    "name": "Major Depression",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 160,
+    "class_1": 131,
+    "stratified_cv": {
+      "accuracy": 0.790239625949737,
+      "accuracy_std": 0.02385143351487358,
+      "sensitivity": 0.8398860398860398,
+      "specificity": 0.75,
+      "auc": 0.8757478632478632,
+      "f1": 0.7899773895993152,
+      "fold_accuracies": [
+        0.8305084745762712,
+        0.7586206896551724,
+        0.7931034482758621,
+        0.7758620689655172,
+        0.7931034482758621
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.6657586618876942,
+      "accuracy_std": 0.15895086392793298,
+      "sensitivity": 0.6693886998234825,
+      "specificity": 0.5965279172532134,
+      "n_subjects": 9
+    },
+    "confusion_matrix": {
+      "tp": 110,
+      "tn": 120,
+      "fp": 40,
+      "fn": 21
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.7908694158075602,
+      "accuracy_ci_low": 0.7422680412371134,
+      "accuracy_ci_high": 0.8351374570446735
+    },
+    "final_metrics": {
+      "accuracy": 0.7903780068728522,
+      "sensitivity": 0.8396946564885496,
+      "specificity": 0.75,
+      "precision": 0.7333333333333333,
+      "npv": 0.851063829787234,
+      "f1": 0.7908488948819106,
+      "mcc": 0.5870399342116904,
+      "kappa": 0.5820442184078548,
+      "auc": 0.8608062977099237,
+      "tp": 110,
+      "tn": 120,
+      "fp": 40,
+      "fn": 21
+    }
+  },
+  {
+    "disease": "autism",
+    "name": "Autism Spectrum",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 189,
+    "class_1": 102,
+    "stratified_cv": {
+      "accuracy": 0.9002337814143775,
+      "accuracy_std": 0.05400034400124418,
+      "sensitivity": 0.9609523809523809,
+      "specificity": 0.8681365576102419,
+      "auc": 0.9671157623789203,
+      "f1": 0.9021205845330897,
+      "fold_accuracies": [
+        0.9322033898305084,
+        0.8275862068965517,
+        0.8448275862068966,
+        0.9310344827586207,
+        0.9655172413793104
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.859378733572282,
+      "accuracy_std": 0.12614138932785032,
+      "sensitivity": 0.8032407407407407,
+      "specificity": 0.8112309844832641,
+      "n_subjects": 9
+    },
+    "confusion_matrix": {
+      "tp": 98,
+      "tn": 164,
+      "fp": 25,
+      "fn": 4
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.8996907216494848,
+      "accuracy_ci_low": 0.865979381443299,
+      "accuracy_ci_high": 0.9312714776632303
+    },
+    "final_metrics": {
+      "accuracy": 0.9003436426116839,
+      "sensitivity": 0.9607843137254902,
+      "specificity": 0.8677248677248677,
+      "precision": 0.7967479674796748,
+      "npv": 0.9761904761904762,
+      "f1": 0.9020632032881881,
+      "mcc": 0.8002415868202991,
+      "kappa": 0.7910259267513557,
+      "auc": 0.9671387073347857,
+      "tp": 98,
+      "tn": 164,
+      "fp": 25,
+      "fn": 4
+    }
+  },
+  {
+    "disease": "stress",
+    "name": "Chronic Stress",
+    "n_subjects": 9,
+    "n_samples": 291,
+    "n_features": 400,
+    "class_0": 174,
+    "class_1": 117,
+    "stratified_cv": {
+      "accuracy": 0.8489187609585038,
+      "accuracy_std": 0.026718541258310257,
+      "sensitivity": 0.8376811594202899,
+      "specificity": 0.8569747899159663,
+      "auc": 0.8973706004140786,
+      "f1": 0.8487918745317671,
+      "fold_accuracies": [
+        0.8135593220338984,
+        0.8275862068965517,
+        0.8793103448275862,
+        0.8448275862068966,
+        0.8793103448275862
+      ]
+    },
+    "loso_cv": {
+      "accuracy": 0.808984468339307,
+      "accuracy_std": 0.06815517716493712,
+      "sensitivity": 0.6975757217692702,
+      "specificity": 0.7770352814403158,
+      "n_subjects": 9
+    },
+    "confusion_matrix": {
+      "tp": 98,
+      "tn": 149,
+      "fp": 25,
+      "fn": 19
+    },
+    "bootstrap_ci": {
+      "accuracy_mean": 0.8496426116838489,
+      "accuracy_ci_low": 0.8075601374570447,
+      "accuracy_ci_high": 0.8900343642611683
+    },
+    "final_metrics": {
+      "accuracy": 0.8487972508591065,
+      "sensitivity": 0.8376068376068376,
+      "specificity": 0.8563218390804598,
+      "precision": 0.7967479674796748,
+      "npv": 0.8869047619047619,
+      "f1": 0.849360945318623,
+      "mcc": 0.6887715396380727,
+      "kappa": 0.6881484728920064,
+      "auc": 0.8743245898418311,
+      "tp": 98,
+      "tn": 149,
+      "fp": 25,
+      "fn": 19
+    }
+  }
+]
