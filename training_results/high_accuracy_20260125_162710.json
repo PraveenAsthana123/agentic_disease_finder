@@ -1,0 +1,72 @@
+[
+  {
+    "disease": "epilepsy",
+    "name": "Epilepsy",
+    "accuracy": 0.9311513734658096,
+    "accuracy_std": 0.045050185053885874,
+    "f1": 0.9696441324653092,
+    "samples": 291,
+    "features": 400,
+    "duration": 113.49935984611511
+  },
+  {
+    "disease": "parkinson",
+    "name": "Parkinson's Disease",
+    "accuracy": 0.9690824079485679,
+    "accuracy_std": 0.020088034479586184,
+    "f1": 1.0,
+    "samples": 291,
+    "features": 400,
+    "duration": 378.8416712284088
+  },
+  {
+    "disease": "alzheimer",
+    "name": "Alzheimer's Disease",
+    "accuracy": 0.9278784336645236,
+    "accuracy_std": 0.025186760501973573,
+    "f1": 1.0,
+    "samples": 291,
+    "features": 400,
+    "duration": 549.2149956226349
+  },
+  {
+    "disease": "schizophrenia",
+    "name": "Schizophrenia",
+    "accuracy": 0.9828755113968439,
+    "accuracy_std": 0.015291699321110953,
+    "f1": 1.0,
+    "samples": 291,
+    "features": 400,
+    "duration": 438.59522819519043
+  },
+  {
+    "disease": "depression",
+    "name": "Major Depression",
+    "accuracy": 0.8351256575102279,
+    "accuracy_std": 0.03674135439311706,
+    "f1": 0.9828423846725711,
+    "samples": 291,
+    "features": 400,
+    "duration": 321.65554547309875
+  },
+  {
+    "disease": "autism",
+    "name": "Autism Spectrum",
+    "accuracy": 0.9862068965517242,
+    "accuracy_std": 0.012902266850944616,
+    "f1": 0.9965673978159564,
+    "samples": 291,
+    "features": 400,
+    "duration": 173.60466814041138
+  },
+  {
+    "disease": "stress",
+    "name": "Chronic Stress",
+    "accuracy": 0.934833430742256,
+    "accuracy_std": 0.027108817421941954,
+    "f1": 1.0,
+    "samples": 291,
+    "features": 400,
+    "duration": 459.1477792263031
+  }
+]

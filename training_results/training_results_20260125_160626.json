@@ -1,0 +1,7 @@
+{
+  "epilepsy": {
+    "disease": "epilepsy",
+    "samples": 291,
+    "features": 200,
+    "class_distribution": {
+      

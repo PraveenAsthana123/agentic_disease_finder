@@ -1,0 +1,296 @@
+# ============================================================
+# DATA SOURCES CATALOG
+# Agentic Disease Finder Project
+# Updated: 2026-01-26
+# ============================================================
+
+# ============================================================
+# INTERNAL DATASETS (USED IN TRAINING)
+# ============================================================
+internal_datasets:
+  epilepsy:
+    name: "Epilepsy EEG Dataset"
+    path: "data/epilepsy/sample"
+    original_file: "epilepsy_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 50
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Epilepsy"
+    source: "Synthetic based on Bonn dataset patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  parkinson:
+    name: "Parkinson's Disease EEG Dataset"
+    path: "data/parkinson/sample"
+    original_file: "parkinson_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 50
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Parkinson"
+    source: "Synthetic based on UCSD PD patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  alzheimer:
+    name: "Alzheimer's Disease EEG Dataset"
+    path: "data/alzheimer/sample"
+    original_file: "alzheimer_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 50
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Alzheimer"
+    source: "Synthetic based on ADNI patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  schizophrenia:
+    name: "Schizophrenia EEG Dataset"
+    path: "data/schizophrenia/sample"
+    original_file: "schizophrenia_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 100
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Schizophrenia"
+    source: "Synthetic based on MSU patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  depression:
+    name: "Major Depression EEG Dataset"
+    path: "data/depression/sample"
+    original_file: "depression_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 50
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Depression"
+    source: "Synthetic based on Figshare MDD patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  autism:
+    name: "Autism Spectrum EEG Dataset"
+    path: "data/autism/sample"
+    original_file: "autism_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 50
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Autism"
+    source: "Synthetic based on OpenNeuro patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+  stress:
+    name: "Chronic Stress EEG Dataset"
+    path: "data/stress/sample"
+    original_file: "stress_50rows.csv"
+    augmented_file: "sample_augmented_200.csv"
+    samples:
+      original: 100
+      augmented: 200
+    features: 47
+    classes:
+      0: "Control"
+      1: "Stress"
+    source: "Synthetic based on DEAP patterns"
+    preprocessing: "StandardScaler, noise injection augmentation"
+
+# ============================================================
+# EXTERNAL VALIDATION DATASETS
+# ============================================================
+external_validation:
+  epilepsy_bonn:
+    name: "Bonn University Epilepsy Dataset"
+    path: "data/external_validation/epilepsy_bonn"
+    samples: 200
+    url: "https://www.ukbonn.de/epileptologie/"
+    citation: "Andrzejak RG, et al. (2001)"
+    status: "simulated"
+
+  parkinson_ucsd:
+    name: "UCSD Parkinson's EEG"
+    path: "data/external_validation/parkinson_ucsd"
+    samples: 200
+    url: "https://physionet.org/"
+    status: "simulated"
+
+  alzheimer_external:
+    name: "External Alzheimer's EEG"
+    path: "data/external_validation/alzheimer_external"
+    samples: 200
+    url: "https://openneuro.org/datasets/ds004504"
+    status: "simulated"
+
+# ============================================================
+# PUBLIC EEG DATASETS (RECOMMENDED FOR VALIDATION)
+# ============================================================
+public_datasets:
+  bonn_epilepsy:
+    name: "Bonn Epilepsy EEG Dataset"
+    url: "https://www.ukbonn.de/epileptologie/arbeitsgruppen/ag-lehnertz-neurophysik/downloads/"
+    samples: 500
+    disease: "epilepsy"
+    format: "TXT"
+    access: "Free download"
+    kaggle: "harunshimanto/epileptic-seizure-recognition"
+
+  chb_mit:
+    name: "CHB-MIT Scalp EEG Database"
+    url: "https://physionet.org/content/chbmit/1.0.0/"
+    samples: 664
+    disease: "epilepsy"
+    format: "EDF"
+    access: "PhysioNet (free)"
+    physionet_id: "chbmit/1.0.0"
+
+  tuh_eeg:
+    name: "Temple University Hospital EEG Corpus"
+    url: "https://isip.piconepress.com/projects/tuh_eeg/"
+    samples: 25000
+    disease: "multiple"
+    format: "EDF"
+    access: "Registration required"
+
+  deap:
+    name: "DEAP Emotion Dataset"
+    url: "https://www.eecs.qmul.ac.uk/mmv/datasets/deap/"
+    samples: 1280
+    disease: "emotion/stress"
+    format: "BDF"
+    access: "Registration required"
+
+  openneuro_alzheimer:
+    name: "OpenNeuro Alzheimer's EEG"
+    url: "https://openneuro.org/datasets/ds004504"
+    samples: 88
+    disease: "alzheimer"
+    format: "BIDS"
+    access: "Free"
+    openneuro_id: "ds004504"
+
+  openneuro_parkinson:
+    name: "OpenNeuro Parkinson's EEG"
+    url: "https://openneuro.org/datasets/ds002778"
+    samples: 52
+    disease: "parkinson"
+    format: "BIDS"
+    access: "Free"
+    openneuro_id: "ds002778"
+
+  openneuro_autism:
+    name: "OpenNeuro Autism EEG"
+    url: "https://openneuro.org/datasets/ds004141"
+    samples: 36
+    disease: "autism"
+    format: "BIDS"
+    access: "Free"
+    openneuro_id: "ds004141"
+
+  msu_schizophrenia:
+    name: "MSU Schizophrenia EEG"
+    url: "http://brain.bio.msu.ru/eeg_schizophrenia.htm"
+    samples: 84
+    disease: "schizophrenia"
+    format: "TXT"
+    access: "Free"
+
+  figshare_depression:
+    name: "Figshare Depression EEG"
+    url: "https://figshare.com/articles/dataset/EEG_Depression_rest_state/19782175"
+    samples: 64
+    disease: "depression"
+    format: "CSV"
+    access: "Free"
+
+  uci_eye_state:
+    name: "UCI EEG Eye State"
+    url: "https://archive.ics.uci.edu/ml/datasets/EEG+Eye+State"
+    samples: 14980
+    disease: "general"
+    format: "ARFF"
+    access: "Free"
+    downloaded: true
+    local_path: "data/real_eeg/uci_eye_state"
+
+# ============================================================
+# FEATURE EXTRACTION PARAMETERS
+# ============================================================
+feature_extraction:
+  sampling_rate: 256  # Hz
+  window_size: 256  # samples
+  overlap: 0.5  # 50%
+
+  frequency_bands:
+    delta: [0.5, 4]
+    theta: [4, 8]
+    alpha: [8, 13]
+    beta: [13, 30]
+    gamma: [30, 100]
+
+  time_domain_features:
+    - mean
+    - std
+    - var
+    - min
+    - max
+    - median
+    - ptp (peak-to-peak)
+    - skewness
+    - kurtosis
+    - rms
+    - mav
+
+  frequency_domain_features:
+    - band_power (delta, theta, alpha, beta, gamma)
+    - total_power
+    - dominant_freq
+    - spectral_entropy
+    - spectral_centroid
+    - spectral_bandwidth
+    - spectral_rolloff
+    - spectral_flatness
+
+  nonlinear_features:
+    - hjorth_mobility
+    - hjorth_complexity
+    - hurst_exponent
+    - dfa_alpha
+    - lz_complexity
+    - approx_entropy
+    - sample_entropy
+
+# ============================================================
+# DATA SPLIT SUMMARY
+# ============================================================
+data_split:
+  training_validation:
+    method: "5-fold stratified cross-validation"
+    train_ratio: 0.8
+    validation_ratio: 0.2
+
+  external_validation:
+    method: "holdout"
+    ratio: 0.2
+    purpose: "Overfitting detection"
+
+  total_samples_per_disease: 200
+  total_diseases: 7
+  total_samples: 1400

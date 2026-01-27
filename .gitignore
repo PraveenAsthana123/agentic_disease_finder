@@ -105,3 +105,13 @@ eeg_stress_code/
 *.pt
 *.pth
 *.onnx
+
+# Large joblib models (>50MB)
+saved_models/*_model.joblib
+saved_models/*_stacking*.joblib
+saved_models/*_deep_model.joblib
+saved_models/*_ultra_*.joblib
+
+# Keep only robust models (smaller, <5MB each)
+!saved_models/*_robust_model.joblib
+!saved_models/*_improved_model.joblib

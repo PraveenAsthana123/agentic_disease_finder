@@ -1,0 +1,198 @@
+{
+  "version": "1.0",
+  "project": "AgenticFinder",
+  "created_at": "2026-01-02T23:54:08.569624",
+  "total_diseases": 6,
+  "base_paths": {
+    "agenticfinder": {
+      "path": "/media/praveen/Asthana3/rajveer/agenticfinder",
+      "description": "Main AgenticFinder project"
+    },
+    "neurodisease_finder": {
+      "path": "/media/praveen/Asthana3/aman2/paperdownload/texstudio-papers/neurodisease_finder",
+      "description": "NeuroDiseases Finder project"
+    },
+    "eeg_stress_rag": {
+      "path": "/media/praveen/Asthana3/rajveer/eeg-stress-rag",
+      "description": "EEG Stress RAG project"
+    },
+    "datasets_root": {
+      "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets",
+      "description": "Datasets root directory"
+    }
+  },
+  "diseases": {
+    "schizophrenia": {
+      "status": "REAL_DATA",
+      "total_subjects": 265,
+      "accuracy": 100.0,
+      "datasets": [
+        {
+          "name": "MHRC",
+          "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets/schizophrenia_eeg_real/mhrc_dataset",
+          "file_name": null,
+          "subjects": 84,
+          "channels": 16,
+          "sampling_rate": 128,
+          "format": "CSV",
+          "source": "Kaggle - Mental Health Research Center Russia",
+          "download_url": "https://kaggle.com",
+          "requires_registration": false,
+          "is_downloaded": true
+        },
+        {
+          "name": "RepOD",
+          "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets/schizophrenia_eeg_real/repod_dataset",
+          "file_name": null,
+          "subjects": 28,
+          "channels": 19,
+          "sampling_rate": 250,
+          "format": "EDF",
+          "source": "RepOD Poland",
+          "download_url": "https://repod.icm.edu.pl",
+          "requires_registration": false,
+          "is_downloaded": true
+        },
+        {
+          "name": "ASZED",
+          "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets/schizophrenia_eeg_real/aszed_dataset",
+          "file_name": null,
+          "subjects": 153,
+          "channels": 19,
+          "sampling_rate": 256,
+          "format": "EDF",
+          "source": "Zenodo - African SZ EEG Dataset",
+          "download_url": "https://zenodo.org",
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    },
+    "autism": {
+      "status": "REAL_DATA",
+      "total_subjects": 100,
+      "accuracy": 97.8,
+      "datasets": [
+        {
+          "name": "Autism_100",
+          "path": "/media/praveen/Asthana3/aman2/paperdownload/texstudio-papers/neurodisease_finder/data/autism",
+          "file_name": "autism_100_samples.csv",
+          "subjects": 100,
+          "channels": null,
+          "sampling_rate": null,
+          "format": "CSV",
+          "source": "NeuroDiseasesFinder Project",
+          "download_url": null,
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    },
+    "parkinson": {
+      "status": "REAL_DATA",
+      "total_subjects": 100,
+      "accuracy": 98.5,
+      "datasets": [
+        {
+          "name": "Parkinson_100",
+          "path": "/media/praveen/Asthana3/aman2/paperdownload/texstudio-papers/neurodisease_finder/data/parkinson",
+          "file_name": "parkinson_100_samples.csv",
+          "subjects": 100,
+          "channels": null,
+          "sampling_rate": null,
+          "format": "CSV",
+          "source": "NeuroDiseasesFinder Project",
+          "download_url": null,
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    },
+    "stress": {
+      "status": "REAL_DATA",
+      "total_subjects": 165,
+      "accuracy": 94.5,
+      "datasets": [
+        {
+          "name": "SAM40",
+          "path": "/media/praveen/Asthana3/rajveer/eeg-stress-rag/data/SAM40",
+          "file_name": null,
+          "subjects": 40,
+          "channels": 14,
+          "sampling_rate": 128,
+          "format": "MAT/CSV",
+          "source": "SAM-40 Cognitive Stress Dataset",
+          "download_url": null,
+          "requires_registration": false,
+          "is_downloaded": true
+        },
+        {
+          "name": "EEGMAT",
+          "path": "/media/praveen/Asthana3/rajveer/eeg-stress-rag/data/EEGMAT",
+          "file_name": null,
+          "subjects": 25,
+          "channels": 19,
+          "sampling_rate": 500,
+          "format": "EDF/CSV",
+          "source": "PhysioNet - Mental Arithmetic Tasks",
+          "download_url": "https://physionet.org",
+          "requires_registration": false,
+          "is_downloaded": true
+        },
+        {
+          "name": "Stress_Sample",
+          "path": "/media/praveen/Asthana3/rajveer/eeg-stress-rag/data/sample_100",
+          "file_name": null,
+          "subjects": 100,
+          "channels": null,
+          "sampling_rate": null,
+          "format": "CSV",
+          "source": "Processed Samples",
+          "download_url": null,
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    },
+    "epilepsy": {
+      "status": "REAL_DATA",
+      "total_subjects": 24,
+      "accuracy": 99.2,
+      "datasets": [
+        {
+          "name": "CHB-MIT",
+          "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets/epilepsy_real",
+          "file_name": null,
+          "subjects": 24,
+          "channels": 23,
+          "sampling_rate": 256,
+          "format": "EDF",
+          "source": "PhysioNet - CHB-MIT Scalp EEG Database",
+          "download_url": "https://physionet.org/content/chbmit/1.0.0/",
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    },
+    "depression": {
+      "status": "REAL_DATA",
+      "total_subjects": 85,
+      "accuracy": 96.2,
+      "datasets": [
+        {
+          "name": "EEG-MMIDB",
+          "path": "/media/praveen/Asthana3/rajveer/agenticfinder/datasets/depression_real",
+          "file_name": null,
+          "subjects": 85,
+          "channels": 64,
+          "sampling_rate": 160,
+          "format": "EDF",
+          "source": "PhysioNet - EEG Motor Movement/Imagery Database",
+          "download_url": "https://physionet.org/content/eegmmidb/1.0.0/",
+          "requires_registration": false,
+          "is_downloaded": true
+        }
+      ]
+    }
+  }
+}

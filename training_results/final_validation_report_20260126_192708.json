@@ -1,0 +1,226 @@
+{
+  "epilepsy": {
+    "disease": "epilepsy",
+    "name": "Epilepsy",
+    "original_samples": 50,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.49936,
+      "accuracy_ci_lower": 0.43,
+      "accuracy_ci_upper": 0.575,
+      "f1": 0.6653269906070587,
+      "f1_ci_lower": 0.6013986013986014,
+      "f1_ci_upper": 0.7301587301587301
+    },
+    "sample_size_analysis": {
+      "n": 50,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Small sample size"
+    }
+  },
+  "parkinson": {
+    "disease": "parkinson",
+    "name": "Parkinson's Disease",
+    "original_samples": 50,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.499425,
+      "accuracy_ci_lower": 0.43,
+      "accuracy_ci_upper": 0.57,
+      "f1": 0.6653913922253661,
+      "f1_ci_lower": 0.6013986013986014,
+      "f1_ci_upper": 0.7261146496815286
+    },
+    "sample_size_analysis": {
+      "n": 50,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Small sample size"
+    }
+  },
+  "alzheimer": {
+    "disease": "alzheimer",
+    "name": "Alzheimer's Disease",
+    "original_samples": 50,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.500625,
+      "accuracy_ci_lower": 0.435,
+      "accuracy_ci_upper": 0.57,
+      "f1": 0.6665066926377609,
+      "f1_ci_lower": 0.6062717770034843,
+      "f1_ci_upper": 0.7261146496815286
+    },
+    "sample_size_analysis": {
+      "n": 50,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Small sample size"
+    }
+  },
+  "schizophrenia": {
+    "disease": "schizophrenia",
+    "name": "Schizophrenia",
+    "original_samples": 100,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.49923500000000004,
+      "accuracy_ci_lower": 0.43,
+      "accuracy_ci_upper": 0.565,
+      "f1": 0.6652675289471236,
+      "f1_ci_lower": 0.6013986013986014,
+      "f1_ci_upper": 0.7220447284345048
+    },
+    "sample_size_analysis": {
+      "n": 100,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Adequate"
+    }
+  },
+  "depression": {
+    "disease": "depression",
+    "name": "Major Depression",
+    "original_samples": 50,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.499125,
+      "accuracy_ci_lower": 0.435,
+      "accuracy_ci_upper": 0.565,
+      "f1": 0.6651806110825048,
+      "f1_ci_lower": 0.6062717770034843,
+      "f1_ci_upper": 0.7220447284345048
+    },
+    "sample_size_analysis": {
+      "n": 50,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Small sample size"
+    }
+  },
+  "autism": {
+    "disease": "autism",
+    "name": "Autism Spectrum",
+    "original_samples": 50,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 0.89786,
+      "accuracy_ci_lower": 0.82,
+      "accuracy_ci_upper": 0.98,
+      "f1": 0.8976175979024807,
+      "f1_ci_lower": 0.8076754385964913,
+      "f1_ci_upper": 0.9795918367346939,
+      "mcc": 0.7963646447343433,
+      "mcc_ci_lower": 0.6333586398944717,
+      "mcc_ci_upper": 0.958846614378016
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.5097200000000001,
+      "accuracy_ci_lower": 0.44,
+      "accuracy_ci_upper": 0.58,
+      "f1": 0.03918863626152607,
+      "f1_ci_lower": 0.0,
+      "f1_ci_upper": 0.09711117456691412
+    },
+    "sample_size_analysis": {
+      "n": 50,
+      "standard_error": 0.04282695889273484,
+      "margin_of_error": 0.08394083942976029,
+      "warning": "Small sample size"
+    }
+  },
+  "stress": {
+    "disease": "stress",
+    "name": "Chronic Stress",
+    "original_samples": 100,
+    "original_features": 47,
+    "original_cv": {
+      "accuracy": 1.0,
+      "accuracy_ci_lower": 1.0,
+      "accuracy_ci_upper": 1.0,
+      "f1": 1.0,
+      "f1_ci_lower": 1.0,
+      "f1_ci_upper": 1.0,
+      "mcc": 1.0,
+      "mcc_ci_lower": 1.0,
+      "mcc_ci_upper": 1.0
+    },
+    "external_samples": 200,
+    "external_validation": {
+      "accuracy": 0.19993,
+      "accuracy_ci_lower": 0.145,
+      "accuracy_ci_upper": 0.2551249999999999,
+      "f1": 0.3322482674815532,
+      "f1_ci_lower": 0.25327510917030566,
+      "f1_ci_upper": 0.40653259975969125
+    },
+    "sample_size_analysis": {
+      "n": 100,
+      "standard_error": 0.0,
+      "margin_of_error": 0.0,
+      "warning": "Adequate"
+    }
+  }
+}

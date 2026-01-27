@@ -1,0 +1,415 @@
+{
+  "epilepsy": {
+    "disease": "epilepsy",
+    "name": "Epilepsy",
+    "samples": 100,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 0.98125,
+        "overfit_gap": -0.018750000000000044
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "parkinson": {
+    "disease": "parkinson",
+    "name": "Parkinson's Disease",
+    "samples": 100,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.9854166666666666,
+        "cv_std": 0.029166666666666653,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "alzheimer": {
+    "disease": "alzheimer",
+    "name": "Alzheimer's Disease",
+    "samples": 100,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.9958333333333333,
+        "cv_std": 0.008333333333333349,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "schizophrenia": {
+    "disease": "schizophrenia",
+    "name": "Schizophrenia",
+    "samples": 50,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.9958333333333333,
+        "cv_std": 0.00510310363079827,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "depression": {
+    "disease": "depression",
+    "name": "Major Depression",
+    "samples": 50,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.9958333333333332,
+        "cv_std": 0.008333333333333349,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "autism": {
+    "disease": "autism",
+    "name": "Autism Spectrum",
+    "samples": 50,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.9770833333333332,
+        "cv_std": 0.03632415786283895,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 0.975,
+        "overfit_gap": -0.025000000000000022
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  },
+  "stress": {
+    "disease": "stress",
+    "name": "Chronic Stress",
+    "samples": 50,
+    "features_original": 47,
+    "features_selected": 47,
+    "models": {
+      "Stacking": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "RandomForest": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "ExtraTrees": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "GradientBoosting": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "SVM": {
+        "cv_accuracy": 1.0,
+        "cv_std": 0.0,
+        "test_accuracy": 1.0,
+        "test_f1": 1.0,
+        "train_accuracy": 1.0,
+        "overfit_gap": 0.0
+      },
+      "MLP": {
+        "cv_accuracy": 0.98125,
+        "cv_std": 0.02319901817845843,
+        "test_accuracy": 0.9,
+        "test_f1": 0.898989898989899,
+        "train_accuracy": 0.975,
+        "overfit_gap": 0.07499999999999996
+      }
+    },
+    "best_model": "Stacking",
+    "best_test_accuracy": 1.0
+  }
+}

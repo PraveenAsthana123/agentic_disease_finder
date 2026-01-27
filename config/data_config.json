@@ -1,0 +1,366 @@
+{
+  "version": "2.0",
+  "project": "NeuroMCP-Agent",
+  "total_datasets": 70,
+  "total_diseases": 7,
+  "compatibility": {
+    "python": "3.6+",
+    "platforms": ["Windows", "Linux", "macOS"]
+  },
+  "diseases": [
+    {
+      "name": "epilepsy",
+      "display_name": "Epilepsy",
+      "description": "Seizure detection and classification",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "chb_mit",
+          "name": "CHB-MIT Scalp EEG",
+          "source": "PhysioNet",
+          "subjects": 23,
+          "channels": 23,
+          "sampling_rate": 256,
+          "format": "EDF",
+          "url": "https://physionet.org/content/chbmit/1.0.0/",
+          "license": "ODC-BY",
+          "auto_download": true
+        },
+        {
+          "id": "bonn_university",
+          "name": "Bonn University Epilepsy",
+          "source": "UCI Repository",
+          "subjects": 500,
+          "format": "TXT",
+          "license": "Research",
+          "auto_download": false
+        },
+        {
+          "id": "tuh_seizure",
+          "name": "TUH EEG Seizure Corpus",
+          "source": "Temple University",
+          "subjects": 642,
+          "format": "EDF",
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "siena_scalp",
+          "name": "SIENA Scalp EEG",
+          "source": "PhysioNet",
+          "subjects": 14,
+          "format": "EDF",
+          "license": "ODC-BY",
+          "auto_download": true
+        }
+      ]
+    },
+    {
+      "name": "parkinson",
+      "display_name": "Parkinson's Disease",
+      "description": "Motor dysfunction and tremor detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "ppmi",
+          "name": "PPMI",
+          "source": "Michael J. Fox Foundation",
+          "subjects": 423,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "physionet_gait",
+          "name": "PhysioNet Gait PD",
+          "source": "PhysioNet",
+          "subjects": 93,
+          "format": "TXT",
+          "license": "ODC-BY",
+          "auto_download": true
+        },
+        {
+          "id": "motor_imagery",
+          "name": "Motor Imagery EEG",
+          "source": "PhysioNet",
+          "subjects": 109,
+          "format": "EDF",
+          "license": "ODC-BY",
+          "auto_download": true
+        },
+        {
+          "id": "openneuro_ds003490",
+          "name": "OpenNeuro PD ds003490",
+          "source": "OpenNeuro",
+          "subjects": 31,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        }
+      ]
+    },
+    {
+      "name": "alzheimer",
+      "display_name": "Alzheimer's Disease",
+      "description": "Cognitive decline and dementia detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "adni",
+          "name": "ADNI",
+          "source": "LONI USC",
+          "subjects": 1200,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "openneuro_ds004504",
+          "name": "OpenNeuro AD ds004504",
+          "source": "OpenNeuro",
+          "subjects": 88,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "eeg_ad_kaggle",
+          "name": "EEG-AD Kaggle",
+          "source": "Kaggle",
+          "subjects": 36,
+          "format": "CSV",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "oasis3",
+          "name": "OASIS-3",
+          "source": "WUSTL",
+          "subjects": 1098,
+          "format": "NIfTI",
+          "license": "DUA Required",
+          "auto_download": false
+        }
+      ]
+    },
+    {
+      "name": "schizophrenia",
+      "display_name": "Schizophrenia",
+      "description": "Psychosis and cognitive deficit detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "cobre",
+          "name": "COBRE",
+          "source": "NITRC",
+          "subjects": 145,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "ucla_cnp",
+          "name": "UCLA CNP",
+          "source": "OpenNeuro ds000030",
+          "subjects": 130,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "openneuro_ds002761",
+          "name": "OpenNeuro SZ ds002761",
+          "source": "OpenNeuro",
+          "subjects": 36,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "kaggle_sz",
+          "name": "Kaggle SZ EEG",
+          "source": "Kaggle",
+          "subjects": 84,
+          "format": "CSV",
+          "license": "CC0",
+          "auto_download": true
+        }
+      ]
+    },
+    {
+      "name": "autism",
+      "display_name": "Autism Spectrum Disorder",
+      "description": "Social and behavioral pattern detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "abide_i",
+          "name": "ABIDE I",
+          "source": "NITRC",
+          "subjects": 539,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "abide_ii",
+          "name": "ABIDE II",
+          "source": "NITRC",
+          "subjects": 521,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "openneuro_ds004186",
+          "name": "OpenNeuro ASD ds004186",
+          "source": "OpenNeuro",
+          "subjects": 36,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "openneuro_ds002843",
+          "name": "OpenNeuro ASD ds002843",
+          "source": "OpenNeuro",
+          "subjects": 50,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        }
+      ]
+    },
+    {
+      "name": "depression",
+      "display_name": "Major Depression",
+      "description": "Mood disorder and MDD detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "tdbrain",
+          "name": "TDBRAIN",
+          "source": "Brainclinics",
+          "subjects": 1274,
+          "license": "Research",
+          "auto_download": false
+        },
+        {
+          "id": "modma",
+          "name": "MODMA",
+          "source": "Lanzhou University",
+          "subjects": 53,
+          "license": "Research",
+          "auto_download": false
+        },
+        {
+          "id": "openneuro_ds003478",
+          "name": "OpenNeuro MDD ds003478",
+          "source": "OpenNeuro",
+          "subjects": 122,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        },
+        {
+          "id": "openneuro_ds002748",
+          "name": "OpenNeuro MDD ds002748",
+          "source": "OpenNeuro",
+          "subjects": 384,
+          "format": "BIDS",
+          "license": "CC0",
+          "auto_download": true
+        }
+      ]
+    },
+    {
+      "name": "stress",
+      "display_name": "Chronic Stress",
+      "description": "Stress and anxiety detection",
+      "datasets_count": 10,
+      "primary_datasets": [
+        {
+          "id": "wesad",
+          "name": "WESAD",
+          "source": "UCI",
+          "subjects": 15,
+          "license": "CC-BY",
+          "auto_download": true
+        },
+        {
+          "id": "dreamer",
+          "name": "DREAMER",
+          "source": "Zenodo",
+          "subjects": 23,
+          "license": "CC-BY",
+          "auto_download": true
+        },
+        {
+          "id": "deap",
+          "name": "DEAP",
+          "source": "QMUL",
+          "subjects": 32,
+          "license": "DUA Required",
+          "auto_download": false
+        },
+        {
+          "id": "seed",
+          "name": "SEED/SEED-IV",
+          "source": "SJTU",
+          "subjects": 15,
+          "license": "DUA Required",
+          "auto_download": false
+        }
+      ]
+    }
+  ],
+  "validation_datasets": {
+    "epilepsy_chbmit": {
+      "path": "validation/epilepsy_chbmit",
+      "files": ["chb01_03.edf", "chb01_04.edf"],
+      "size_mb": 77,
+      "status": "downloaded"
+    },
+    "motor_imagery": {
+      "path": "validation/motor_imagery",
+      "files": ["S001R01.edf", "S001R02.edf", "S001R03.edf", "S002R01.edf", "S002R02.edf"],
+      "size_mb": 7.7,
+      "status": "downloaded"
+    },
+    "sleep_edf": {
+      "path": "validation/sleep_edf",
+      "files": ["SC4001E0-PSG.edf", "SC4002E0-PSG.edf"],
+      "size_mb": 59,
+      "status": "downloaded"
+    }
+  },
+  "features": {
+    "total_count": 47,
+    "categories": {
+      "statistical": ["mean", "variance", "std", "skewness", "kurtosis", "min", "max", "range", "rms", "zero_crossings"],
+      "spectral": {
+        "bands": {
+          "delta": [0.5, 4],
+          "theta": [4, 8],
+          "alpha": [8, 13],
+          "beta": [13, 30],
+          "gamma": [30, 100]
+        },
+        "features": ["band_power", "relative_power", "spectral_entropy", "spectral_edge", "peak_frequency"]
+      },
+      "temporal": ["hjorth_activity", "hjorth_mobility", "hjorth_complexity", "line_length", "nonlinear_energy"],
+      "nonlinear": ["sample_entropy", "approximate_entropy", "hurst_exponent", "fractal_dimension", "lyapunov_exponent"]
+    }
+  },
+  "download_urls": {
+    "physionet": {
+      "chb_mit": "https://physionet.org/files/chbmit/1.0.0/",
+      "motor_imagery": "https://physionet.org/files/eegmmidb/1.0.0/",
+      "sleep_edf": "https://physionet.org/files/sleep-edfx/1.0.0/",
+      "gait_pd": "https://physionet.org/files/gaitpdb/1.0.0/",
+      "siena_eeg": "https://physionet.org/files/siena-scalp-eeg/1.0.0/"
+    },
+    "openneuro": {
+      "alzheimer": "https://openneuro.org/datasets/ds004504",
+      "parkinson": "https://openneuro.org/datasets/ds003490",
+      "schizophrenia": "https://openneuro.org/datasets/ds000030",
+      "autism": "https://openneuro.org/datasets/ds004186",
+      "depression": "https://openneuro.org/datasets/ds003478"
+    }
+  }
+}

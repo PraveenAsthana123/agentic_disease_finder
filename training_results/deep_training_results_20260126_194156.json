@@ -1,0 +1,65 @@
+{
+  "epilepsy": {
+    "disease": "epilepsy",
+    "name": "Epilepsy",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  },
+  "parkinson": {
+    "disease": "parkinson",
+    "name": "Parkinson's Disease",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  },
+  "alzheimer": {
+    "disease": "alzheimer",
+    "name": "Alzheimer's Disease",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  },
+  "schizophrenia": {
+    "disease": "schizophrenia",
+    "name": "Schizophrenia",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  },
+  "depression": {
+    "disease": "depression",
+    "name": "Major Depression",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  },
+  "autism": {
+    "disease": "autism",
+    "name": "Autism Spectrum",
+    "accuracy": 0.9935064935064936,
+    "accuracy_ci_lower": 0.9805194805194806,
+    "accuracy_ci_upper": 1.0,
+    "f1": 0.9934640522875817,
+    "fold_std": 0.0129032258064516
+  },
+  "stress": {
+    "disease": "stress",
+    "name": "Chronic Stress",
+    "accuracy": 1.0,
+    "accuracy_ci_lower": 1.0,
+    "accuracy_ci_upper": 1.0,
+    "f1": 1.0,
+    "fold_std": 0.0
+  }
+}
