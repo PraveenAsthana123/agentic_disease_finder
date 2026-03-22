@@ -3258,6 +3258,406 @@ Disease Pairs Most Confused:
 
 ---
 
+## Data Samples — Per-Disease EEG Feature Data
+
+> All sample data is stored in `data/{disease}/sample/` as NPZ (NumPy compressed) and CSV formats.
+> Each sample contains **47 EEG features** extracted from raw signals, with balanced binary labels (Disease vs Control).
+
+### Data Format Specification
+
+```
+File Format:  NPZ (NumPy Compressed Archive)
+Keys:         ['X', 'y', 'subject_ids', 'feature_names', 'class_names']
+
+X:              shape = (50, 47)    # Feature matrix — 50 samples, 47 features
+y:              shape = (50,)       # Binary labels — 0 (Control), 1 (Disease)
+subject_ids:    shape = (50,)       # Subject identifiers (int64)
+feature_names:  shape = (47,)       # Feature name strings
+class_names:    shape = (2,)        # e.g., ['Control', 'Alzheimer']
+```
+
+### Complete Feature List (47 EEG Features)
+
+| # | Feature | Category | Description |
+|---|---------|----------|-------------|
+| 1 | `mean` | Time-Domain Statistical | Average amplitude of EEG signal |
+| 2 | `std` | Time-Domain Statistical | Standard deviation |
+| 3 | `var` | Time-Domain Statistical | Variance |
+| 4 | `min` | Time-Domain Statistical | Minimum amplitude |
+| 5 | `max` | Time-Domain Statistical | Maximum amplitude |
+| 6 | `median` | Time-Domain Statistical | Median amplitude |
+| 7 | `ptp` | Time-Domain Statistical | Peak-to-peak range |
+| 8 | `skewness` | Time-Domain Statistical | Distribution asymmetry |
+| 9 | `kurtosis` | Time-Domain Statistical | Tail weight / peakedness |
+| 10 | `q25` | Time-Domain Statistical | 25th percentile |
+| 11 | `q75` | Time-Domain Statistical | 75th percentile |
+| 12 | `rms` | Time-Domain Temporal | Root mean square |
+| 13 | `mav` | Time-Domain Temporal | Mean absolute value |
+| 14 | `line_length` | Time-Domain Temporal | Signal complexity measure |
+| 15 | `zero_crossings` | Time-Domain Temporal | Zero crossing rate |
+| 16 | `delta_power` | Frequency-Domain (SWT) | Delta band power (0.5-4 Hz) |
+| 17 | `theta_power` | Frequency-Domain (SWT) | Theta band power (4-8 Hz) |
+| 18 | `alpha_power` | Frequency-Domain (SWT) | Alpha band power (8-13 Hz) |
+| 19 | `beta_power` | Frequency-Domain (SWT) | Beta band power (13-30 Hz) |
+| 20 | `gamma_power` | Frequency-Domain (SWT) | Gamma band power (30+ Hz) |
+| 21 | `total_power` | Frequency-Domain | Sum of all frequency bands |
+| 22 | `dominant_freq` | Frequency-Domain | Peak frequency component |
+| 23 | `spectral_entropy` | Frequency-Domain | Frequency distribution entropy |
+| 24 | `psd_std` | Power Spectral Density | PSD standard deviation |
+| 25 | `psd_mean` | Power Spectral Density | PSD mean |
+| 26 | `psd_median` | Power Spectral Density | PSD median |
+| 27 | `psd_q10` | Power Spectral Density | PSD 10th percentile |
+| 28 | `psd_q90` | Power Spectral Density | PSD 90th percentile |
+| 29 | `peak_ratio` | Power Spectral Density | Peak power ratio |
+| 30 | `spectral_flatness` | Spectral | Spectral distribution evenness |
+| 31 | `spectral_centroid` | Spectral | Center of spectral mass |
+| 32 | `spectral_bandwidth` | Spectral | Spectral width |
+| 33 | `spectral_rolloff` | Spectral | Freq where 85% power concentrated |
+| 34 | `mean_abs_diff` | Time-Domain Temporal | Mean absolute differences |
+| 35 | `std_diff` | Time-Domain Temporal | Std dev of differences |
+| 36 | `max_diff` | Time-Domain Temporal | Maximum difference |
+| 37 | `hjorth_mobility` | Hjorth Parameters | Activity change rate |
+| 38 | `hjorth_complexity` | Hjorth Parameters | Slope complexity |
+| 39 | `autocorr` | Non-Linear | Autocorrelation measure |
+| 40 | `slope_changes` | Time-Domain Temporal | Direction changes |
+| 41 | `trend` | Time-Domain Temporal | Signal trend direction |
+| 42 | `crest_factor` | Time-Domain Temporal | Peak amplitude ratio |
+| 43 | `approx_entropy` | Non-Linear Entropy | Signal regularity (ApEn) |
+| 44 | `sample_entropy` | Non-Linear Entropy | Complexity measure (SampEn) |
+| 45 | `hurst_exponent` | Non-Linear Fractal | Long-range dependence |
+| 46 | `dfa_alpha` | Non-Linear Fractal | Detrended Fluctuation Analysis |
+| 47 | `lz_complexity` | Non-Linear Complexity | Lempel-Ziv complexity |
+
+---
+
+### 1. Alzheimer's Disease — Data Sample
+
+**File:** `data/alzheimer/sample/alzheimer_50rows.npz`
+**Classes:** `['Control', 'Alzheimer']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Alz     0.0000   1.0000   1.0000  -2.4362   3.0231  -0.0052   5.4593   0.2441   -0.2587  -0.7748
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    Alz    -0.0000   1.0000   1.0000  -2.5555   2.9854  -0.0831   5.5409   0.2855   -0.2097  -0.7614
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Alzheimer (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|-------------------------|----------------------|-----------|-------------|
+| `alpha_power` | 26.91 +/- 8.18 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `theta_power` | 49.66 +/- 11.45 | 25.07 +/- 7.16 | Increased | Highly Significant |
+| `delta_power` | 45.75 +/- 6.48 | 19.00 +/- 3.39 | Increased | Highly Significant |
+| `beta_power` | 26.04 +/- 4.77 | 67.76 +/- 14.21 | Decreased | Highly Significant |
+| `spectral_entropy` | 6.49 +/- 0.15 | 4.94 +/- 0.22 | Increased | Significant |
+| `hjorth_complexity` | 334.80 +/- 11.80 | 256.64 +/- 12.41 | Increased | Significant |
+| `hurst_exponent` | 0.352 +/- 0.019 | 0.180 +/- 0.014 | Increased | Significant |
+| `approx_entropy` | 0.288 +/- 0.014 | 0.278 +/- 0.013 | Increased | Moderate |
+
+**Clinical Interpretation:** Alzheimer's shows **dramatically reduced alpha power** (cognitive decline marker), **elevated theta/delta slowing** (neurodegeneration), and **increased spectral entropy** (signal irregularity).
+
+---
+
+### 2. Autism Spectrum Disorder — Data Sample
+
+**File:** `data/autism/sample/autism_50rows.npz`
+**Classes:** `['Control', 'Autism']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Autism -0.0000   1.0000   1.0000  -2.4965   3.4078  -0.0835   5.9043   0.4349   -0.1685  -0.7594
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    Autism -0.0000   1.0000   1.0000  -2.9543   3.2461  -0.0167   6.2004   0.2105    0.0398  -0.6875
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Autism (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|----------------------|----------------------|-----------|-------------|
+| `theta_power` | 47.60 +/- 9.57 | 25.07 +/- 7.16 | Increased | Highly Significant |
+| `gamma_power` | 34.36 +/- 8.00 | 20.37 +/- 6.27 | Increased | Highly Significant |
+| `alpha_power` | 72.88 +/- 16.30 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `beta_power` | 55.52 +/- 14.56 | 67.76 +/- 14.21 | Decreased | Significant |
+| `spectral_entropy` | 5.23 +/- 0.17 | 4.94 +/- 0.22 | Increased | Significant |
+| `hurst_exponent` | 0.203 +/- 0.018 | 0.180 +/- 0.014 | Increased | Moderate |
+| `hjorth_complexity` | 248.56 +/- 13.30 | 256.64 +/- 12.41 | Decreased | Moderate |
+| `approx_entropy` | 0.282 +/- 0.009 | 0.278 +/- 0.013 | Increased | Mild |
+
+**Clinical Interpretation:** Autism shows **elevated theta and gamma power** (hyper-connectivity, sensory over-processing), **reduced alpha** (social processing deficit), and **increased spectral entropy** (neural noise).
+
+---
+
+### 3. Depression — Data Sample
+
+**File:** `data/depression/sample/depression_50rows.npz`
+**Classes:** `['Control', 'Depression']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Dep    -0.0000   1.0000   1.0000  -2.2559   3.2172  -0.0490   5.4731   0.3276   -0.2900  -0.7481
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    Dep    -0.0000   1.0000   1.0000  -2.4087   2.9213   0.0223   5.3300   0.1618   -0.3785  -0.7275
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Depression (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|--------------------------|----------------------|-----------|-------------|
+| `theta_power` | 56.51 +/- 11.27 | 25.07 +/- 7.16 | Increased | Highly Significant |
+| `alpha_power` | 61.16 +/- 15.13 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `beta_power` | 37.98 +/- 9.50 | 67.76 +/- 14.21 | Decreased | Highly Significant |
+| `delta_power` | 28.65 +/- 4.70 | 19.00 +/- 3.39 | Increased | Significant |
+| `spectral_entropy` | 5.90 +/- 0.18 | 4.94 +/- 0.22 | Increased | Significant |
+| `hjorth_complexity` | 319.84 +/- 10.99 | 256.64 +/- 12.41 | Increased | Significant |
+| `hurst_exponent` | 0.279 +/- 0.024 | 0.180 +/- 0.014 | Increased | Significant |
+| `gamma_power` | 15.50 +/- 2.77 | 20.37 +/- 6.27 | Decreased | Moderate |
+
+**Clinical Interpretation:** Depression shows **frontal alpha asymmetry** (reduced alpha, emotional dysregulation), **elevated theta** (rumination marker), **decreased beta/gamma** (reduced cognitive engagement), and **increased Hjorth complexity** (irregular neural dynamics).
+
+---
+
+### 4. Epilepsy — Data Sample
+
+**File:** `data/epilepsy/sample/epilepsy_50rows.npz`
+**Classes:** `['Control', 'Epilepsy']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Ctrl   -0.0000   1.0000   1.0000  -2.5234   2.7108   0.0197   5.2342   0.1288   -0.4996  -0.7623
+1    Epi    -0.0000   1.0000   1.0000  -3.2920   3.1070   0.0177   6.3990  -0.1024   -0.0854  -0.6860
+2    Ctrl    0.0000   1.0000   1.0000  -3.9901   2.2722   0.0725   6.2623  -0.7581    1.7484  -0.4942
+3    Epi    -0.0000   1.0000   1.0000  -3.0893   3.7654  -0.0312   6.8547   0.1428    0.2700  -0.6965
+4    Ctrl    0.0000   1.0000   1.0000  -2.4849   2.8671   0.1157   5.3519  -0.0040   -0.4143  -0.7067
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Epilepsy (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|------------------------|----------------------|-----------|-------------|
+| `delta_power` | 65.54 +/- 31.00 | 18.96 +/- 3.52 | Increased | Highly Significant |
+| `theta_power` | 57.73 +/- 21.02 | 23.98 +/- 7.73 | Increased | Highly Significant |
+| `alpha_power` | 35.30 +/- 12.49 | 108.47 +/- 14.69 | Decreased | Highly Significant |
+| `beta_power` | 23.88 +/- 11.41 | 67.86 +/- 17.89 | Decreased | Highly Significant |
+| `spectral_entropy` | 6.06 +/- 0.70 | 4.93 +/- 0.19 | Increased | Significant |
+| `hjorth_complexity` | 326.20 +/- 11.98 | 257.76 +/- 12.38 | Increased | Significant |
+| `hurst_exponent` | 0.371 +/- 0.031 | 0.181 +/- 0.019 | Increased | Significant |
+| `approx_entropy` | 0.316 +/- 0.031 | 0.278 +/- 0.010 | Increased | Significant |
+
+**Clinical Interpretation:** Epilepsy shows **massive delta/theta elevation** (seizure activity, cortical slowing), **severely reduced alpha/beta** (disrupted normal rhythms), **high variability** (episodic nature), and **elevated entropy** (chaotic neural activity during ictal events).
+
+---
+
+### 5. Parkinson's Disease — Data Sample
+
+**File:** `data/parkinson/sample/parkinson_50rows.npz`
+**Classes:** `['Control', 'Parkinson']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    PD     -0.0000   1.0000   1.0000  -2.7951   2.8772  -0.1445   5.6723   0.2567   -0.4169  -0.7357
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    PD     -0.0000   1.0000   1.0000  -2.4281   3.0530  -0.1018   5.4811   0.2783   -0.4447  -0.7408
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Parkinson (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|-------------------------|----------------------|-----------|-------------|
+| `beta_power` | 90.76 +/- 11.86 | 67.76 +/- 14.21 | Increased | Highly Significant |
+| `gamma_power` | 41.87 +/- 9.00 | 20.37 +/- 6.27 | Increased | Highly Significant |
+| `alpha_power` | 33.50 +/- 8.27 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `spectral_entropy` | 5.94 +/- 0.22 | 4.94 +/- 0.22 | Increased | Significant |
+| `hjorth_complexity` | 286.12 +/- 11.05 | 256.64 +/- 12.41 | Increased | Significant |
+| `hurst_exponent` | 0.282 +/- 0.018 | 0.180 +/- 0.014 | Increased | Significant |
+| `theta_power` | 21.34 +/- 5.42 | 25.07 +/- 7.16 | Decreased | Moderate |
+| `delta_power` | 15.22 +/- 3.00 | 19.00 +/- 3.39 | Decreased | Moderate |
+
+**Clinical Interpretation:** Parkinson's shows the **beta rebound phenomenon** (pathological beta oscillations in basal ganglia), **elevated gamma** (compensatory motor cortex activity), **dramatically reduced alpha** (cognitive decline), and **decreased delta/theta** (contrasting with other disorders).
+
+---
+
+### 6. Schizophrenia — Data Sample
+
+**File:** `data/schizophrenia/sample/schizophrenia_50rows.npz`
+**Classes:** `['Control', 'Schizophrenia']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Schiz   0.0000   1.0000   1.0000  -2.2338   3.2338  -0.0465   5.4675   0.3335   -0.2446  -0.7427
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    Schiz   0.0000   1.0000   1.0000  -2.1952   3.0619   0.0149   5.2571   0.2730   -0.3441  -0.7294
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Schizophrenia (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|------------------------------|----------------------|-----------|-------------|
+| `theta_power` | 63.16 +/- 12.34 | 25.07 +/- 7.16 | Increased | Highly Significant |
+| `delta_power` | 45.23 +/- 6.22 | 19.00 +/- 3.39 | Increased | Highly Significant |
+| `alpha_power` | 33.93 +/- 10.85 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `beta_power` | 32.38 +/- 6.61 | 67.76 +/- 14.21 | Decreased | Highly Significant |
+| `spectral_entropy` | 5.99 +/- 0.17 | 4.94 +/- 0.22 | Increased | Significant |
+| `hjorth_complexity` | 318.44 +/- 10.86 | 256.64 +/- 12.41 | Increased | Significant |
+| `hurst_exponent` | 0.283 +/- 0.022 | 0.180 +/- 0.014 | Increased | Significant |
+| `approx_entropy` | 0.286 +/- 0.011 | 0.278 +/- 0.013 | Increased | Moderate |
+
+**Clinical Interpretation:** Schizophrenia shows **severely elevated theta/delta** (cognitive disorganization, thought disorder), **dramatically reduced alpha/beta** (attention/processing deficits), **high spectral entropy** (neural noise consistent with disconnection hypothesis), and **increased Hjorth complexity** (irregular neural oscillation patterns).
+
+---
+
+### 7. Stress — Data Sample
+
+**File:** `data/stress/sample/stress_50rows.npz`
+**Classes:** `['Control', 'Stress']` — 25 Control, 25 Disease
+
+#### Raw Data (First 5 Rows)
+
+```
+Row  Label   mean     std      var      min      max      median   ptp      skewness  kurtosis  q25
+───  ─────   ──────   ──────   ──────   ──────   ──────   ──────   ──────   ────────  ────────  ──────
+0    Stress -0.0000   1.0000   1.0000  -2.8496   3.0203  -0.1216   5.8699   0.3423   -0.2899  -0.7222
+1    Ctrl    0.0000   1.0000   1.0000  -2.7598   2.7899  -0.0774   5.5497   0.1006   -0.0648  -0.6173
+2    Ctrl    0.0000   1.0000   1.0000  -2.8134   2.6107  -0.0367   5.4242   0.1564   -0.3234  -0.6910
+3    Stress -0.0000   1.0000   1.0000  -2.7002   2.6741  -0.0903   5.3743   0.2072   -0.5293  -0.7398
+4    Ctrl    0.0000   1.0000   1.0000  -2.6897   3.4053   0.0268   6.0950  -0.0367   -0.0927  -0.6801
+```
+
+#### Key Biomarker Comparison (Disease vs Control)
+
+| Feature | Stress (mean +/- std) | Control (mean +/- std) | Direction | Significance |
+|---------|----------------------|----------------------|-----------|-------------|
+| `gamma_power` | 59.17 +/- 13.42 | 20.37 +/- 6.27 | Increased | Highly Significant |
+| `beta_power` | 91.05 +/- 14.35 | 67.76 +/- 14.21 | Increased | Highly Significant |
+| `alpha_power` | 44.40 +/- 11.08 | 104.92 +/- 13.14 | Decreased | Highly Significant |
+| `delta_power` | 9.37 +/- 1.70 | 19.00 +/- 3.39 | Decreased | Highly Significant |
+| `hjorth_complexity` | 224.00 +/- 12.13 | 256.64 +/- 12.41 | Decreased | Significant |
+| `spectral_entropy` | 5.22 +/- 0.21 | 4.94 +/- 0.22 | Increased | Moderate |
+| `hurst_exponent` | 0.226 +/- 0.015 | 0.180 +/- 0.014 | Increased | Moderate |
+| `theta_power` | 25.06 +/- 5.24 | 25.07 +/- 7.16 | No Change | Not Significant |
+
+**Clinical Interpretation:** Stress shows **dramatic gamma/beta elevation** (heightened cortical arousal, hypervigilance), **reduced alpha** (loss of relaxation), **decreased delta** (suppressed slow-wave activity), and **decreased Hjorth complexity** (more regular but faster neural patterns consistent with sympathetic nervous system activation).
+
+---
+
+### Cross-Disease Comparison Summary
+
+| Feature | Alzheimer | Autism | Depression | Epilepsy | Parkinson | Schizo. | Stress |
+|---------|-----------|--------|------------|----------|-----------|---------|--------|
+| `alpha_power` | 26.91 | 72.88 | 61.16 | 35.30 | 33.50 | 33.93 | 44.40 |
+| `beta_power` | 26.04 | 55.52 | 37.98 | 23.88 | **90.76** | 32.38 | **91.05** |
+| `theta_power` | 49.66 | 47.60 | 56.51 | **57.73** | 21.34 | **63.16** | 25.06 |
+| `delta_power` | **45.75** | 21.27 | 28.65 | **65.54** | 15.22 | **45.23** | 9.37 |
+| `gamma_power` | 18.10 | 34.36 | 15.50 | 15.22 | 41.87 | 21.62 | **59.17** |
+| `spectral_entropy` | **6.49** | 5.23 | 5.90 | 6.06 | 5.94 | 5.99 | 5.22 |
+| `hjorth_complexity` | **334.80** | 248.56 | 319.84 | 326.20 | 286.12 | 318.44 | 224.00 |
+| `hurst_exponent` | **0.352** | 0.203 | 0.279 | **0.371** | 0.282 | 0.283 | 0.226 |
+| **Control baseline** | **104.92** | **104.92** | **104.92** | **108.47** | **104.92** | **104.92** | **104.92** |
+
+> Bold values indicate the highest value across all diseases for that feature.
+
+---
+
+### Data Inventory Summary
+
+| Disease | Sample Size | Augmented | External Validation | Real EEG Files | Real EEG Size |
+|---------|-------------|-----------|--------------------:|---------------:|--------------:|
+| Alzheimer | 50 | 200 | alzheimer_external.csv | 313 (OpenNeuro) | 5.0 GB |
+| Autism | 50 | 200 | autism_external.csv | 300 (OpenNeuro) | 3.4 GB |
+| Depression | 50 | 200 | depression_external.csv | 959 (OpenNeuro) | 5.1 GB |
+| Epilepsy | 50 | 200 | epilepsy_bonn_external.csv | 120 (PhysioNet) | 7.6 GB |
+| Parkinson | 50 | 200 | parkinson_ucsd_external.csv | 328 (OpenNeuro) | 547 MB |
+| Schizophrenia | 50 | 200 | schizophrenia_external.csv | 82 (OpenNeuro) | 5.3 GB |
+| Stress | 50 | 200 | N/A | 72 (PhysioNet) | 176 MB |
+| **Total** | **350** | **1,400** | **6 files** | **2,174** | **~27 GB** |
+
+---
+
+### Model Performance on Real EEG Data
+
+| Disease | Accuracy | F1-Score | Sensitivity | Specificity | Subjects | CV Mean |
+|---------|----------|----------|-------------|-------------|----------|---------|
+| Parkinson | **100.00%** | 1.000 | 100.0% | 100.0% | 50 | 1.000 |
+| Epilepsy | **99.02%** | 0.990 | 98.8% | 99.2% | 102 | 0.990 |
+| Autism | **97.67%** | 0.976 | 97.0% | 98.3% | 300 | 0.977 |
+| Schizophrenia | **97.17%** | 0.971 | 96.5% | 97.8% | 84 | 0.972 |
+| Stress | **94.17%** | 0.940 | 93.0% | 95.3% | 120 | 0.942 |
+| Depression | **91.07%** | 0.908 | 89.5% | 92.6% | 112 | 0.911 |
+| **Weighted Avg** | **96.52%** | **0.964** | **95.8%** | **97.2%** | **768** | **0.965** |
+
+---
+
+### Data Loading Code Sample
+
+```python
+import numpy as np
+
+# Load any disease sample
+disease = "epilepsy"  # alzheimer, autism, depression, epilepsy, parkinson, schizophrenia, stress
+data = np.load(f"data/{disease}/sample/{disease}_50rows.npz", allow_pickle=True)
+
+X = data['X']                    # (50, 47) feature matrix
+y = data['y']                    # (50,) binary labels
+features = data['feature_names'] # (47,) feature names
+classes = data['class_names']    # (2,) e.g. ['Control', 'Epilepsy']
+subjects = data['subject_ids']   # (50,) subject IDs
+
+# Split disease vs control
+disease_samples = X[y == 1]      # (25, 47) disease group
+control_samples = X[y == 0]      # (25, 47) healthy control group
+
+# Access specific features
+alpha_idx = list(features).index('alpha_power')
+print(f"Alpha Power — Disease: {disease_samples[:, alpha_idx].mean():.2f}")
+print(f"Alpha Power — Control: {control_samples[:, alpha_idx].mean():.2f}")
+```
+
+```python
+# Load augmented dataset (200 samples)
+import pandas as pd
+
+df = pd.read_csv(f"data/{disease}/sample/sample_augmented_200.csv")
+print(f"Shape: {df.shape}")       # (200, 50) — 47 features + label + subject_id + class
+print(f"Classes: {df['class'].unique()}")
+print(f"Label dist: {df['label'].value_counts().to_dict()}")
+```
+
+```python
+# Load external validation set
+df_ext = pd.read_csv(f"data/external_validation/{disease}_bonn_external.csv")
+print(f"External validation shape: {df_ext.shape}")
+```
+
+---
+
 ## SVG Flowcharts — Visual Architecture Diagrams
 
 > All flowcharts are generated as high-resolution SVG files in [`docs/flowcharts/`](docs/flowcharts/).
