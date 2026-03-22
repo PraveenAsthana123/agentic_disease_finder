@@ -3258,6 +3258,66 @@ Disease Pairs Most Confused:
 
 ---
 
+## SVG Flowcharts — Visual Architecture Diagrams
+
+> All flowcharts are generated as high-resolution SVG files in [`docs/flowcharts/`](docs/flowcharts/).
+
+### 1. System Architecture Flowchart
+
+![System Architecture](docs/flowcharts/01_system_architecture.svg)
+
+**Covers:** EEG Data Sources → Preprocessing → Feature Extraction → Agent Orchestration → Model Ensemble → Inference → RAG Pipeline → API/UI Delivery.
+
+---
+
+### 2. Data Flow Pipeline Flowchart
+
+![Data Flow Pipeline](docs/flowcharts/02_data_flow_pipeline.svg)
+
+**Covers:** Raw EEG Acquisition → Band-pass Filtering → Artifact Removal → SWT Decomposition (db4, 5 levels) → Feature Extraction (47 features) → Feature Selection (25 selected) → Feature Evaluation → Data Versioning.
+
+---
+
+### 3. Model Pipeline Flowchart
+
+![Model Pipeline](docs/flowcharts/03_model_pipeline.svg)
+
+**Covers:** Data Splitting (70/15/15) → Model Selection (15 classifiers) → Hyperparameter Tuning → Training → Validation → Stacking Ensemble → Model Registry → Continuous Monitoring → Data Drift (PSI/KS) → Model Drift (ADWIN) → Auto-Retrain.
+
+---
+
+### 4. Inference Pipeline Flowchart
+
+![Inference Pipeline](docs/flowcharts/04_inference_pipeline.svg)
+
+**Covers:** EEG Input → Preprocessing → Feature Extraction → Model Loading → Ensemble Prediction → Confidence Scoring → Threshold Check → RAG Augmentation → Clinical Report → API Response.
+
+---
+
+### 5. RAG Pipeline Flowchart
+
+![RAG Pipeline](docs/flowcharts/05_rag_pipeline.svg)
+
+**Covers:** Medical Knowledge Ingestion → Chunking (512 tokens, 50 overlap) → Embedding (BioBERT/PubMedBERT) → ChromaDB Vector Store → Query Processing → Pre-Retrieval Expansion → Similarity Search → Post-Retrieval Re-ranking → Context Assembly → LLM Generation → Citation Attachment.
+
+---
+
+### 6. Agent Orchestration Flowchart
+
+![Agent Orchestration](docs/flowcharts/06_agent_orchestration.svg)
+
+**Covers:** MCP Server → Agent Registry → Task Router → Specialized Agents (PreprocessingAgent, FeatureAgent, TrainingAgent, InferenceAgent, RAGAgent, GovernanceAgent) → A2A MessageBus → Result Aggregation → Consensus Protocol.
+
+---
+
+### 7. CI/CD Pipeline Flowchart
+
+![CI/CD Pipeline](docs/flowcharts/07_cicd_pipeline.svg)
+
+**Covers:** Code Commit → Lint (ruff/black/mypy) → Unit Tests → Integration Tests → Security Scan (bandit/pip-audit) → Model Validation → Docker Build → Staging Deploy → Smoke Tests → Production Deploy → Health Monitoring.
+
+---
+
 ## Visual Architecture Infographics
 
 ### System Architecture Overview
