@@ -200,6 +200,8 @@ function subTabsFor(dept) {
     { id: 'data', label: 'Data' },
     { id: 'kpi', label: 'KPI' },
   ]
+  // Neurologist-centric clinical workbench (first for clinical roles).
+  if (dept.clinical) base.unshift({ id: 'workbench', label: '🩺 Clinical Workbench' })
   // Rich operational tabs for EVERY department (clinical + governance/ops roles).
   base.push(
     { id: 'r_dashboard', label: 'Dashboard & Reports' },
@@ -560,6 +562,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
+        {activeSub === 'workbench' && <NeurologistWorkbench roleName={dept.name} disease={selectedDisease} />}
         {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
         {activeSub === 'r_components' && <ComponentAnalysis roleName={dept.name} />}
         {activeSub === 'r_ipo' && <RolePipeline roleName={dept.name} />}
@@ -1509,6 +1512,124 @@ function GenAiBotPanel({ roleName }) {
         <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
       </div>
       {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
+    </div>
+  )
+}
+
+function NeurologistWorkbench({ roleName, disease }) {
+  const [pid, setPid] = useState('P0001')
+  const [d, setD] = useState(null)
+  const [override, setOverride] = useState('')
+  const load = (p) => axios.get(`${API_URL}/neurologist-workbench/${p}`).then(r => setD(r.data)).catch(() => setD(null))
+  useEffect(() => { load(pid) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Loading… (backend :8010)</div></div>
+  const ps = d.patient_summary, ai = d.ai_findings
+  const sec = (title, n) => <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', margin: '4px 0 8px' }}>{n}. {title}</div>
+  const stColor = (s) => /high|elevated|present|reduced/i.test(s) ? '#f44336' : '#4caf50'
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
+        <span style={{ fontSize: 15, fontWeight: 700, color: '#0f172a' }}>🩺 Clinical Workbench</span>
+        <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 110 }} />
+        <button onClick={() => load(pid)} style={{ padding: '6px 14px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load patient</button>
+        {ps.demo && <span style={{ fontSize: 10, color: '#92400e', background: '#fef3c7', borderRadius: 4, padding: '2px 6px' }}>demo patient · §57.7</span>}
+      </div>
+
+      {/* 1. Patient Summary — single screen */}
+      <div style={card}>
+        {sec('Patient Summary (saves 15-20 min vs 5 systems)', 1)}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))', gap: 10 }}>
+          {[['Age', ps.age], ['Gender', ps.gender], ['Diagnosis', ps.diagnosis], ['Duration', ps.duration_years + ' yr'],
+            ['Seizure freq', ps.seizure_frequency], ['Last seizure', ps.last_seizure_days + ' days ago'], ['Medication', ps.current_medication]].map(([k, v], i) => (
+            <div key={i} style={{ padding: 10, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+              <div style={{ fontSize: 11, color: '#64748b' }}>{k}</div><div style={{ fontSize: 14, fontWeight: 600, color: '#0f172a' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. AI Findings + 4. Explainability */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={card}>
+          {sec('AI Findings (show me the evidence)', 2)}
+          {ai.available ? (
+            <div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: '#1e88e5' }}>{ai.predicted} <span style={{ fontSize: 14, color: '#64748b' }}>@ {ai.confidence}</span></div>
+              <div style={{ fontSize: 12, color: '#475569' }}>Signal quality: {ai.signal_quality}</div>
+            </div>
+          ) : <div style={{ color: '#94a3b8' }}>No AI analysis — upload EEG in Data tab.</div>}
+        </div>
+        <div style={card}>
+          {sec('Explainability — why? (not just SHAP=0.23)', 4)}
+          {d.explainability.map((e, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 12, color: '#0f172a', minWidth: 120 }}>{e.feature}</span>
+              <div style={{ flex: 1, height: 14, background: '#eef2f7', borderRadius: 7, overflow: 'hidden' }}>
+                <div style={{ width: `${e.pct}%`, height: '100%', background: '#8e24aa' }} /></div>
+              <span style={{ fontSize: 12, fontWeight: 600, color: '#8e24aa' }}>{e.pct}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 5. Biomarker + 6. Localization */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={card}>
+          {sec('Biomarker Dashboard', 5)}
+          {d.biomarkers.map((b, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 0', borderBottom: '1px solid #f1f5f9', fontSize: 13 }}>
+              <span style={{ color: '#0f172a' }}>{b.marker}</span><span style={{ fontWeight: 600, color: stColor(b.status) }}>{b.status}</span>
+            </div>
+          ))}
+        </div>
+        <div style={card}>
+          {sec('Localization (brain map)', 6)}
+          {d.localization.map((l, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 13, color: i === 0 ? '#f44336' : '#475569', fontWeight: i === 0 ? 700 : 400, minWidth: 80 }}>{l.region}{i === 0 ? ' ◀' : ''}</span>
+              <div style={{ flex: 1, height: 14, background: '#eef2f7', borderRadius: 7, overflow: 'hidden' }}>
+                <div style={{ width: `${l.prob}%`, height: '100%', background: i === 0 ? '#f44336' : '#1e88e5' }} /></div>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>{l.prob}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 7. MRI + 8. Medication */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={card}>
+          {sec('MRI Correlation', 7)}
+          {d.mri_correlation.map((m, i) => (
+            <div key={i} style={{ fontSize: 13, color: '#0f172a', padding: '4px 0' }}>🩻 {m.fields_json || JSON.stringify(m)} {m.match && <span style={{ color: '#4caf50', fontWeight: 600 }}>· {m.match}</span>}</div>
+          ))}
+        </div>
+        <div style={card}>
+          {sec('Medication', 8)}
+          {d.medications.map((m, i) => (
+            <div key={i} style={{ fontSize: 13, color: '#0f172a', padding: '4px 0' }}>💊 {m.fields_json || JSON.stringify(m)}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* 9. Human Override + 10. Audit */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={{ ...card, borderLeft: '4px solid #f44336' }}>
+          {sec('Human Override (Responsible AI — mandatory)', 9)}
+          <div style={{ fontSize: 13, color: '#475569', marginBottom: 6 }}>AI: <strong>{ai.predicted || '—'}</strong>. Disagree? Record your decision:</div>
+          <textarea value={override} onChange={e => setOverride(e.target.value)} placeholder="Override reason (e.g. artifact misclassified)…"
+            style={{ width: '100%', minHeight: 44, padding: 6, borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }} />
+          <button onClick={() => { axios.post(`${API_URL}/study-review/expert`, { patient_id: pid, role: roleName, finding: 'OVERRIDE: ' + override, agree_with_ai: 'disagree', expert: roleName }).then(() => setOverride('')) }}
+            style={{ marginTop: 6, padding: '6px 14px', borderRadius: 6, border: 'none', background: '#f44336', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>Record override</button>
+        </div>
+        <div style={card}>
+          {sec('Audit', 10)}
+          {Object.entries(d.audit).map(([k, v], i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', fontSize: 12, borderBottom: '1px solid #f1f5f9' }}>
+              <span style={{ color: '#64748b' }}>{k.replace(/_/g, ' ')}</span><span style={{ color: '#0f172a', fontWeight: 600 }}>{String(v)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
