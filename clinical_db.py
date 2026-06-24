@@ -199,6 +199,14 @@ def init_db() -> None:
                 interpretation TEXT, level TEXT, alert TEXT, examiner TEXT,
                 created_at TEXT NOT NULL, updated_at TEXT
             );
+            -- Multi-expert review of a study: each role attaches their assessment + agree/disagree with AI.
+            CREATE TABLE IF NOT EXISTS expert_reviews (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL, analysis_id INTEGER,
+                role TEXT NOT NULL, expert TEXT, finding TEXT,
+                agree_with_ai TEXT, note TEXT,
+                created_at TEXT NOT NULL
+            );
             -- Forms an expert sends to a patient to fill via the self-service portal.
             CREATE TABLE IF NOT EXISTS form_assignments (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -710,6 +718,46 @@ def delete_assessment(aid: int) -> bool:
     log_transaction(cur["patient_id"], component="assessment", action="delete", ref_id=aid,
                     detail=f"{cur['instrument']} deleted")
     return True
+
+
+def add_expert_review(patient_id: str, role: str, finding: str, agree_with_ai: str = "",
+                      note: str = "", expert: str = "", analysis_id: int | None = None) -> dict:
+    """An expert (any role) attaches their assessment/finding to a patient's study."""
+    init_db()
+    now = _now()
+    with _connect() as c:
+        if analysis_id is None:
+            a = c.execute("SELECT id FROM analyses WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
+            analysis_id = a["id"] if a else None
+        cur = c.execute(
+            "INSERT INTO expert_reviews(patient_id,analysis_id,role,expert,finding,agree_with_ai,note,created_at)"
+            " VALUES(?,?,?,?,?,?,?,?)", (patient_id, analysis_id, role, expert, finding, agree_with_ai, note, now))
+        rid = cur.lastrowid
+    log_transaction(patient_id, component="expert_review", action="add", ref_id=rid,
+                    detail=f"{role}: {finding[:60]} (agree_ai={agree_with_ai})")
+    return {"id": rid, "patient_id": patient_id, "role": role, "finding": finding,
+            "agree_with_ai": agree_with_ai, "created_at": now}
+
+
+def study_review(patient_id: str) -> dict:
+    """Full study review: AI assessment detail + every expert's attached review."""
+    init_db()
+    with _connect() as c:
+        a = c.execute("SELECT * FROM analyses WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
+        reviews = c.execute("SELECT * FROM expert_reviews WHERE patient_id=? ORDER BY id DESC", (patient_id,)).fetchall()
+        upl = c.execute("SELECT * FROM uploads WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
+    ai = dict(a) if a else None
+    return {
+        "patient_id": patient_id,
+        "ai_assessment": {
+            "predicted": ai.get("predicted_label") if ai else None,
+            "confidence": ai.get("confidence") if ai else None,
+            "signal_quality": ai.get("signal_quality") if ai else None,
+            "source_file": (dict(upl).get("filename") if upl else None),
+        } if ai else None,
+        "expert_reviews": [dict(r) for r in reviews],
+        "n_experts": len(reviews),
+    }
 
 
 def assign_form(patient_id: str, instrument: str, assigned_by: str = "", message: str = "") -> dict:

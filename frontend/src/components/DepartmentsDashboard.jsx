@@ -152,7 +152,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -411,6 +411,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'neurolab' && <NeuroLabPanel />}
         {activeSub === 'tab_taxonomy' && <TabTaxonomyPanel />}
         {activeSub === 'portal' && <PatientPortalPanel />}
+        {activeSub === 'study_review' && <StudyReviewPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -2501,6 +2502,74 @@ function AiTypesPanel() {
           <div style={{ fontSize: 12, color: '#64748b', marginTop: 10 }}>Transaction history: <code>{d.transaction_history_endpoint}</code> · {d.note}</div>
         </div>
       )}
+    </div>
+  )
+}
+
+function StudyReviewPanel() {
+  const [pid, setPid] = useState('P0001')
+  const [sr, setSr] = useState(null)
+  const [form, setForm] = useState({ role: 'Neurologist', finding: '', agree_with_ai: 'agree', note: '', expert: '' })
+  const roles = ['Neurologist', 'EEG Technician', 'Psychiatrist', 'Occupational Therapist', 'Clinical Psychologist', 'Radiologist']
+  const load = (p) => axios.get(`${API_URL}/study-review/${p}`).then(r => setSr(r.data)).catch(() => setSr(null))
+  useEffect(() => { load(pid) }, [])
+  const submit = () => {
+    if (!form.finding.trim()) return
+    axios.post(`${API_URL}/study-review/expert`, { patient_id: pid, ...form })
+      .then(() => { setForm({ ...form, finding: '', note: '', expert: '' }); load(pid) }).catch(() => {})
+  }
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔬 Study Review — upload → AI assessment → multi-expert</h3>
+        <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id"
+          style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 120 }} />
+        <button onClick={() => load(pid)} style={{ marginLeft: 8, padding: '6px 14px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load study</button>
+        <div style={{ fontSize: 12, color: '#64748b', marginTop: 6 }}>Upload a new EEG/video-EEG via the EEG Analysis module (POST /api/analyze-upload); it appears here as the AI assessment.</div>
+      </div>
+      {sr && sr.ai_assessment && (
+        <div style={{ ...card, borderLeft: '4px solid #4caf50' }}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>🤖 AI Assessment (detail)</h3>
+          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', fontSize: 14 }}>
+            <div>Prediction: <strong style={{ color: '#1e88e5' }}>{sr.ai_assessment.predicted}</strong></div>
+            <div>Confidence: <strong>{sr.ai_assessment.confidence}</strong></div>
+            <div>Signal quality: <strong>{sr.ai_assessment.signal_quality}</strong></div>
+            <div>File: <strong>{sr.ai_assessment.source_file || '—'}</strong></div>
+          </div>
+        </div>
+      )}
+      {sr && !sr.ai_assessment && <div style={card}><div style={{ color: '#94a3b8' }}>No AI analysis on file for {pid}. Upload an EEG first.</div></div>}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👨‍⚕️ Add Expert Assessment</h3>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginBottom: 8 }}>
+          <select value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+            {roles.map(r => <option key={r}>{r}</option>)}
+          </select>
+          <select value={form.agree_with_ai} onChange={e => setForm({ ...form, agree_with_ai: e.target.value })} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+            <option value="agree">✓ agree with AI</option><option value="disagree">✗ disagree</option><option value="partial">~ partial</option>
+          </select>
+          <input value={form.expert} onChange={e => setForm({ ...form, expert: e.target.value })} placeholder="your name" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 120 }} />
+        </div>
+        <textarea value={form.finding} onChange={e => setForm({ ...form, finding: e.target.value })} placeholder="Your finding / assessment…"
+          style={{ width: '100%', minHeight: 60, padding: 8, borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }} />
+        <button onClick={submit} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#4caf50', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>＋ Add my assessment</button>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📋 All Expert Reviews ({sr?.n_experts || 0})</h3>
+        {(sr?.expert_reviews || []).map((r, i) => (
+          <div key={r.id} style={{ padding: 10, borderBottom: '1px solid #f1f5f9' }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <strong style={{ color: '#0f172a' }}>{r.role}</strong>
+              <span style={{ fontSize: 11, padding: '1px 6px', borderRadius: 4, background: r.agree_with_ai === 'agree' ? '#dcfce7' : r.agree_with_ai === 'disagree' ? '#fee2e2' : '#fef3c7', color: '#475569' }}>{r.agree_with_ai}</span>
+              {r.expert && <span style={{ fontSize: 11, color: '#64748b' }}>by {r.expert}</span>}
+              <span style={{ marginLeft: 'auto', fontSize: 11, color: '#94a3b8' }}>{(r.created_at || '').slice(0, 16).replace('T', ' ')}</span>
+            </div>
+            <div style={{ fontSize: 13, color: '#0f172a', marginTop: 3 }}>{r.finding}</div>
+            {r.note && <div style={{ fontSize: 12, color: '#64748b' }}>note: {r.note}</div>}
+          </div>
+        ))}
+        {!sr?.expert_reviews?.length && <div style={{ color: '#94a3b8' }}>No expert reviews yet.</div>}
+      </div>
     </div>
   )
 }

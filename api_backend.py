@@ -647,6 +647,28 @@ async def form_submit(form_id: int, body: FormSubmitIn):
     return r
 
 
+class ExpertReviewIn(BaseModel):
+    patient_id: str
+    role: str
+    finding: str
+    agree_with_ai: str = ""
+    note: str = ""
+    expert: str = ""
+
+
+@app.get("/api/study-review/{patient_id}")
+async def get_study_review(patient_id: str):
+    """Upload→AI assessment detail + every expert's review for a patient's study."""
+    return cdb.study_review(patient_id)
+
+
+@app.post("/api/study-review/expert")
+async def add_study_expert(body: ExpertReviewIn):
+    """An expert (doctor or other role) adds their assessment to the study."""
+    return cdb.add_expert_review(body.patient_id, body.role, body.finding,
+                                 body.agree_with_ai, body.note, body.expert)
+
+
 @app.get("/api/portal-tabs")
 async def portal_tabs():
     """Self-service patient portal tab registry (forms/campaign/notification/alert/inbox/medication/therapy)."""
