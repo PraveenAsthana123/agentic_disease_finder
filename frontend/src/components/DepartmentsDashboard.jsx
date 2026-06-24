@@ -166,7 +166,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -563,6 +563,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'study_review' && <StudyReviewPanel />}
         {activeSub === 'flowcharts' && <FlowchartsPanel />}
         {activeSub === 'role_specs' && <RoleSpecsPanel />}
+        {activeSub === 'data_formats' && <DataFormatsPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -3524,6 +3525,48 @@ function RoleGraph({ roleName }) {
             ))}{!(g.edges || []).length && <tr><td style={cellTd} colSpan={3}>No relationships yet for this role.</td></tr>}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function DataFormatsPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/data-formats`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const routeCol = { signal: '#43a047', rag: '#1e88e5', cv: '#7c3aed', extract: '#94a3b8' }
+  const dr = d.data_request || {}
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧠 EEG Data Formats — AI-readiness & routing</h3>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Format</th><th style={cellTh}>AI-ready</th><th style={cellTh}>Rating</th><th style={cellTh}>Route</th><th style={cellTh}>Supported</th><th style={cellTh}>Contains</th></tr></thead>
+            <tbody>{d.formats.map((f, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontWeight: 600 }}>{f.ext} <span style={{ color: '#94a3b8', fontWeight: 400 }}>{f.name}</span></td>
+                <td style={cellTd}>{f.ai_ready === true ? '✅' : f.ai_ready === 'partial' ? '⚠️' : '❌'}</td>
+                <td style={cellTd}>{'⭐'.repeat(f.stars)}</td>
+                <td style={{ ...cellTd, color: routeCol[f.route], fontWeight: 600 }}>{f.route}</td>
+                <td style={cellTd}>{f.supported ? '✓' : '—'}</td>
+                <td style={{ ...cellTd, fontSize: 11, color: '#475569' }}>{f.contains}{f.bad_for ? ` · ✗ ${f.bad_for}` : ''}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+        <div style={{ display: 'flex', gap: 14, fontSize: 11, marginTop: 6 }}>
+          {Object.entries(d.routing || {}).map(([k, v]) => <span key={k} style={{ color: routeCol[k] }}>● {k}: {v}</span>)}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📋 Data Request (for the doctor)</h3>
+        <div style={{ fontSize: 12, fontWeight: 600, color: '#43a047' }}>MUST HAVE</div>
+        {(dr.must_have || []).map((r, i) => <div key={i} style={{ fontSize: 12, padding: '3px 0' }}><strong>{r.data}</strong> — <span style={{ color: '#1e88e5' }}>{r.format}</span> <span style={{ color: '#64748b' }}>({r.purpose})</span></div>)}
+        <div style={{ fontSize: 12, fontWeight: 600, color: '#fb8c00', marginTop: 8 }}>GOOD TO HAVE</div>
+        {(dr.good_to_have || []).map((r, i) => <div key={i} style={{ fontSize: 12, padding: '3px 0' }}><strong>{r.data}</strong> — <span style={{ color: '#1e88e5' }}>{r.format}</span> <span style={{ color: '#64748b' }}>({r.purpose})</span></div>)}
+        <div style={{ fontSize: 12, color: '#166534', background: '#dcfce7', borderRadius: 6, padding: 10, marginTop: 10 }}>✅ <strong>Minimum DBA dataset:</strong> {dr.minimum_dbA}</div>
+        <div style={{ fontSize: 12, color: '#991b1b', background: '#fee2e2', borderRadius: 6, padding: 10, marginTop: 8 }}>⚠ <strong>Rule:</strong> {dr.rule}</div>
       </div>
     </div>
   )

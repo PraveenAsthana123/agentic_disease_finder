@@ -343,7 +343,7 @@ async def analyze_upload(
     """Parse an uploaded EEG file, run the full analysis pipeline, persist it
     per patient, write a report, and return the result."""
     suffix = (Path(file.filename or "upload.edf").suffix or ".edf").lower()
-    EEG_EXTS = {".edf", ".bdf", ".csv", ".tsv", ".txt", ".dat"}
+    EEG_EXTS = {".edf", ".bdf", ".fif", ".fiff", ".mat", ".npz", ".csv", ".tsv", ".txt", ".dat"}
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
     try:
         shutil.copyfileobj(file.file, tmp)
@@ -636,6 +636,13 @@ async def seizure_log(body: SeizureIn):
 async def seizure_list(patient_id: str):
     """Seizure diary + monthly trend + severity distribution + stats."""
     return cdb.list_seizures(patient_id)
+
+
+@app.get("/api/data-formats")
+async def data_formats():
+    """EEG data-format ranking, AI-readiness, routing, and data-request guidance."""
+    p = Path(__file__).parent / "config" / "eeg_data_formats.json"
+    return json.loads(p.read_text()) if p.exists() else {"formats": []}
 
 
 @app.get("/api/tab-scaffold")

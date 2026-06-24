@@ -1,0 +1,42 @@
+{
+  "title": "EEG Data Formats — AI-readiness, routing & data-request guidance",
+  "note": "EDF/BDF are gold standard for signal AI. PDF=RAG/ground-truth. Images=CV/validation. Routing is enforced in /api/analyze-upload.",
+  "updated_at": "2026-06-24",
+  "formats": [
+    {"ext": ".edf", "name": "European Data Format", "ai_ready": true, "stars": 5, "route": "signal", "contains": "Raw signals + sfreq + channel names + duration", "supported": true},
+    {"ext": ".bdf", "name": "BioSemi Data Format", "ai_ready": true, "stars": 5, "route": "signal", "contains": "Raw signals (24-bit) + metadata", "supported": true},
+    {"ext": ".fif", "name": "MNE/Elekta FIF", "ai_ready": true, "stars": 4, "route": "signal", "contains": "Processed raw + full metadata (MNE-native)", "supported": true},
+    {"ext": ".mat", "name": "MATLAB", "ai_ready": true, "stars": 4, "route": "signal", "contains": "Signal matrix + sometimes fs (research datasets)", "supported": true},
+    {"ext": ".csv", "name": "CSV", "ai_ready": true, "stars": 3, "route": "signal", "contains": "Numeric channels (sfreq often assumed 256)", "supported": true},
+    {"ext": ".npz", "name": "NumPy archive", "ai_ready": true, "stars": 3, "route": "signal", "contains": "Raw array OR feature matrix", "supported": true},
+    {"ext": ".xml", "name": "XML", "ai_ready": "partial", "stars": 2, "route": "extract", "contains": "Structured metadata; signal rarely embedded", "supported": false},
+    {"ext": ".pdf", "name": "EEG Report PDF", "ai_ready": false, "stars": 1, "route": "rag", "contains": "Neurologist interpretation, findings, diagnosis, screenshots", "supported": true,
+     "good_for": "RAG, clinical interpretation, GROUND-TRUTH labels", "bad_for": "Signal processing, deep learning, seizure prediction"},
+    {"ext": ".png", "name": "EEG screenshot", "ai_ready": false, "stars": 1, "route": "cv", "contains": "Rendered EEG image (signal/time/sfreq LOST)", "supported": true,
+     "good_for": "Computer-vision research, OCR, clinician validation", "bad_for": "Signal analysis (resolution + sfreq unavailable)"},
+    {"ext": ".jpg", "name": "EEG screenshot", "ai_ready": false, "stars": 1, "route": "cv", "contains": "Rendered EEG image", "supported": true,
+     "good_for": "CV / validation", "bad_for": "Signal analysis"}
+  ],
+  "routing": {
+    "signal": "→ run_pipeline (band power, biomarkers, classification, seizure analysis)",
+    "rag": "→ extract_file → text → vector DB (RAG + ground-truth labels)",
+    "cv": "→ extract_file → image (computer-vision / OCR / validation)",
+    "extract": "→ extract_file (metadata parse)"
+  },
+  "data_request": {
+    "must_have": [
+      {"data": "Raw EEG", "format": "EDF / BDF", "purpose": "AI model development (signal)"},
+      {"data": "EEG Report", "format": "PDF", "purpose": "RAG + ground-truth labels"},
+      {"data": "Diagnosis", "format": "Excel / CSV", "purpose": "Training labels"}
+    ],
+    "good_to_have": [
+      {"data": "EEG screenshots", "format": "PNG / JPG", "purpose": "CV / Explainable-AI dashboards / clinician review"},
+      {"data": "Video EEG", "format": "video", "purpose": "Electroclinical concordance"},
+      {"data": "MRI report", "format": "PDF", "purpose": "MRI-EEG concordance"},
+      {"data": "Medication history", "format": "Excel / CSV", "purpose": "Treatment-response features"},
+      {"data": "Demographics", "format": "Excel / CSV", "purpose": "Stratification"}
+    ],
+    "minimum_dbA": "EDF (raw) + PDF (report) + Excel (diagnosis) from 200-300 patients → enables Explainable AI, Responsible-AI governance, classification, HITL validation, RAG clinical explanation.",
+    "rule": "Do NOT accept only PDF reports if the goal includes AI model development. Always ask whether the EEG machine can export EDF/BDF — that is where the brain signal lives."
+  }
+}
