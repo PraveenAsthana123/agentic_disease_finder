@@ -542,7 +542,15 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
                     const active = s.id === activeSub
                     return (
                       <button key={s.id} data-tab={s.id} onClick={() => setActiveSub(s.id)}
-                        ref={active ? (el => el && el.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })) : null}
+                        ref={active ? (el => {
+                          // Center the active pill in the strip ONLY (horizontal scrollLeft) —
+                          // never scrollIntoView (that yanks the whole page + re-fires every render).
+                          const strip = el && el.parentElement
+                          if (strip) {
+                            const target = el.offsetLeft - strip.clientWidth / 2 + el.clientWidth / 2
+                            if (Math.abs(strip.scrollLeft - target) > 4) strip.scrollLeft = target
+                          }
+                        }) : null}
                         style={{
                           border: active ? '1px solid #1e88e5' : '1px solid #e2e8f0', cursor: 'pointer',
                           borderRadius: 16, padding: '6px 12px', fontSize: 12, flexShrink: 0,
@@ -1664,8 +1672,8 @@ function TabScaffold({ tabId, label, dept, children }) {
         ))}
       </div>
 
-      {/* MAIN CONTENT */}
-      <div>{children}</div>
+      {/* MAIN CONTENT — keyed on tab so it cleanly fades once per switch (no jank) */}
+      <div className="tab-content" key={tabId}>{children}</div>
 
       {/* 7. Visualization hint */}
       {viz && (

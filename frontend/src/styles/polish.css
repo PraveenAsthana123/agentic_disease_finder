@@ -55,9 +55,10 @@ tbody tr:hover { background: #eff6ff !important; }
 /* Headings: tighter, more confident */
 h1, h2, h3, h4 { letter-spacing: -0.01em; line-height: 1.25; }
 
-/* Smooth content fade-in when switching tabs (applied to the content section) */
-section > div { animation: fadeIn 240ms ease both; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+/* Subtle opacity-only fade for the tab content (no transform → no layout shift / jank).
+   Scoped to the TabScaffold wrapper so it plays once per tab switch, not on every child. */
+.tab-content { animation: fadeIn 150ms ease both; }
+@keyframes fadeIn { from { opacity: 0.4; } to { opacity: 1; } }
 
 /* Bootstrap reboot safety: keep links from turning everything blue/underlined inside the app */
 a { color: inherit; text-decoration: none; }
