@@ -152,7 +152,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -409,6 +409,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'ent_pipelines' && <EnterprisePipelinesPanel />}
         {activeSub === 'stories_tests' && <StoriesTestsPanel />}
         {activeSub === 'neurolab' && <NeuroLabPanel />}
+        {activeSub === 'tab_taxonomy' && <TabTaxonomyPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -2499,6 +2500,44 @@ function AiTypesPanel() {
           <div style={{ fontSize: 12, color: '#64748b', marginTop: 10 }}>Transaction history: <code>{d.transaction_history_endpoint}</code> · {d.note}</div>
         </div>
       )}
+    </div>
+  )
+}
+
+function TabTaxonomyPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/tab-taxonomy`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  const Sec = ({ title, items, kind }) => (
+    <div style={card}>
+      <h3 style={{ marginTop: 0, color: '#0f172a' }}>{title} ({items.length})</h3>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 8 }}>
+        {items.map((t, i) => (
+          <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{t.label}</span>
+              <span style={{ fontSize: 11, fontWeight: 600, color: col[t.status] }}>● {t.status}</span>
+            </div>
+            <div style={{ fontSize: 11, color: '#64748b', marginTop: 3 }}>{t.captures || t.metric || ''}</div>
+            {t.maps_to && <div style={{ fontSize: 10, color: '#1e88e5', marginTop: 2 }}><code>{t.maps_to}</code></div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🗂️ Tab Taxonomy — Patient Master + Per-Role + AI</h3>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13, flexWrap: 'wrap' }}>
+          <div><strong>AS-IS:</strong> <span style={{ color: '#991b1b' }}>{d.as_is_to_be?.as_is}</span></div>
+        </div>
+        <div style={{ fontSize: 13, marginTop: 6 }}><strong>TO-BE:</strong> <span style={{ color: '#166534' }}>{d.as_is_to_be?.to_be}</span></div>
+      </div>
+      <Sec title="🧑 Patient Master — Self-Service Portal Tabs" items={d.patient_master_tabs || []} />
+      <Sec title="👨‍⚕️ Per-Role Operational Tabs" items={d.role_operational_tabs || []} />
+      <Sec title="🤖 AI Capability Tabs (per role)" items={d.ai_capability_tabs || []} />
     </div>
   )
 }

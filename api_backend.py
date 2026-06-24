@@ -614,6 +614,13 @@ async def role_challenges():
     return json.loads(p.read_text()) if p.exists() else {"roles": []}
 
 
+@app.get("/api/tab-taxonomy")
+async def tab_taxonomy():
+    """Tab taxonomy: Patient Master self-service tabs + per-role operational + AI capability tabs."""
+    p = Path(__file__).parent / "config" / "tab_taxonomy.json"
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
 @app.get("/api/report-layout")
 async def report_layout():
     """EEG/video-EEG summary report layout (components + AI finding/recommendation + expert summary)."""
