@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-24T12:18:59-06:00",
+  "model": "EEGNetv4 (braindecode) on raw EEG, patient-specific temporal split",
+  "architecture": "EEGNet \u2014 field-standard CNN for raw EEG (no hand-crafted features)",
+  "n_channels": 18,
+  "epochs": 25,
+  "mean_accuracy": 0.7202,
+  "mean_sensitivity": 0.2315,
+  "per_subject": [
+    {
+      "subject": "chb01",
+      "n_train": 98,
+      "n_test": 42,
+      "accuracy": 0.8571,
+      "sensitivity": 0.0
+    },
+    {
+      "subject": "chb02",
+      "n_train": 144,
+      "n_test": 63,
+      "accuracy": 0.6349,
+      "sensitivity": 0.1481
+    },
+    {
+      "subject": "chb03",
+      "n_train": 168,
+      "n_test": 72,
+      "accuracy": 0.8056,
+      "sensitivity": 0.6111
+    },
+    {
+      "subject": "chb04",
+      "n_train": 168,
+      "n_test": 72,
+      "accuracy": 0.5833,
+      "sensitivity": 0.1667
+    }
+  ],
+  "note": "Deep learning on raw signal vs the 47-feature classical models. Compare both for the thesis."
+}

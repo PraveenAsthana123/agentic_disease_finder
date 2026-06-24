@@ -585,15 +585,36 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
 }
 
 function ListPanel({ title, items, icon, ordered }) {
+  const [done, setDone] = useState({})
+  const list = items || []
+  const completed = Object.values(done).filter(Boolean).length
+  const accent = icon === '⚠️' ? '#f44336' : '#1e88e5'
   return (
     <div style={card}>
-      <h3 style={{ marginTop: 0, color: '#0f172a' }}>{title}</h3>
-      {items.map((it, i) => (
-        <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 6, marginBottom: 8 }}>
-          <span style={{ color: '#1e88e5', fontWeight: 600, minWidth: 18 }}>{ordered ? `${i + 1}.` : (icon || '•')}</span>
-          <span style={{ color: '#1f2937' }}>{it}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+        <h3 style={{ margin: 0, color: '#0f172a' }}>{title}</h3>
+        <span style={{ fontSize: 12, color: '#64748b', background: '#f1f5f9', borderRadius: 12, padding: '2px 10px' }}>{list.length} items</span>
+        {ordered && <span style={{ marginLeft: 'auto', fontSize: 12, color: '#43a047' }}>{completed}/{list.length} done</span>}
+      </div>
+      {ordered && list.length > 0 && (
+        <div style={{ height: 6, background: '#eef2f7', borderRadius: 3, marginBottom: 12, overflow: 'hidden' }}>
+          <div style={{ width: `${list.length ? (completed / list.length) * 100 : 0}%`, height: '100%', background: '#43a047', transition: 'width .3s' }} />
+        </div>
+      )}
+      {list.map((it, i) => (
+        <div key={i} onClick={() => ordered && setDone({ ...done, [i]: !done[i] })}
+          style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '11px 12px', marginBottom: 8,
+            background: done[i] ? '#f0fdf4' : '#f8fafc', border: '1px solid ' + (done[i] ? '#bbf7d0' : '#e5e7eb'),
+            borderLeft: `4px solid ${done[i] ? '#43a047' : accent}`, borderRadius: 8, cursor: ordered ? 'pointer' : 'default',
+            transition: 'all .15s' }}>
+          <span style={{ fontWeight: 700, minWidth: 22, color: done[i] ? '#43a047' : accent }}>
+            {ordered ? (done[i] ? '✓' : `${i + 1}.`) : (icon || '•')}
+          </span>
+          <span style={{ color: '#1f2937', textDecoration: done[i] ? 'line-through' : 'none', flex: 1 }}>{it}</span>
+          {icon === '⚠️' && <span style={{ fontSize: 10, fontWeight: 600, color: '#f44336', background: '#fee2e2', borderRadius: 4, padding: '2px 6px' }}>{i < 2 ? 'HIGH' : 'MED'}</span>}
         </div>
       ))}
+      {!list.length && <div style={{ color: '#94a3b8', fontStyle: 'italic' }}>No items.</div>}
     </div>
   )
 }
@@ -713,10 +734,10 @@ function AnalysisResult({ result }) {
   return (
     <div style={{ marginTop: 16 }}>
       <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 12 }}>
-        <Stat label="Channels" value={a.n_channels} />
-        <Stat label="Sampling" value={`${a.sampling_rate} Hz`} />
-        <Stat label="Duration" value={`${a.duration_seconds}s`} />
-        <Stat label="Quality" value={a.signal_quality} />
+        <Stat label="Channels" value={a.n_channels ?? '—'} />
+        <Stat label="Sampling" value={a.sampling_rate ? `${a.sampling_rate} Hz` : '—'} />
+        <Stat label="Duration" value={a.duration_seconds ? `${a.duration_seconds}s` : '—'} />
+        <Stat label="Quality" value={a.signal_quality || '—'} />
         {p.available && <Stat label="Prediction" value={p.predicted_label} accent />}
         {p.available && <Stat label="Confidence" value={p.confidence} accent />}
       </div>
