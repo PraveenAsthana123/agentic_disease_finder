@@ -515,28 +515,30 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         })}
       </aside>}
 
-      {/* SUB MENU (hidden for tool-departments that render a full component) */}
-      {!extra && <aside style={{ width: 150, flexShrink: 0, background: '#f1f5f9', borderRadius: 8, padding: 10 }}>
-        <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: '#64748b', marginBottom: 8 }}>Sub Menu</div>
-        {subs.map(s => {
-          const active = s.id === activeSub
-          return (
-            <button key={s.id} onClick={() => setActiveSub(s.id)} style={{
-              display: 'block', width: '100%', textAlign: 'left', border: 'none', cursor: 'pointer',
-              borderRadius: 6, padding: '9px 10px', marginBottom: 3, fontSize: 13,
-              background: active ? '#1e88e5' : 'transparent', color: active ? '#fff' : '#475569', fontWeight: active ? 600 : 400,
-            }}>{s.label}</button>
-          )
-        })}
-      </aside>}
-
       {/* CONTENT */}
       <section style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
           <span style={{ fontSize: 22 }}>{dept.icon}</span>
           <h2 style={{ margin: 0, color: '#0f172a' }}>{dept.name}</h2>
           <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>disease context: <strong>{selectedDisease}</strong></span>
         </div>
+
+        {/* SUB MENU — horizontal tab bar at top (was left aside) */}
+        {!extra && subs.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: '8px 0 12px', borderBottom: '1px solid #e5e7eb', marginBottom: 14 }}>
+            {subs.map(s => {
+              const active = s.id === activeSub
+              return (
+                <button key={s.id} onClick={() => setActiveSub(s.id)} style={{
+                  border: active ? '1px solid #1e88e5' : '1px solid #e2e8f0', cursor: 'pointer',
+                  borderRadius: 16, padding: '6px 12px', fontSize: 12,
+                  background: active ? '#1e88e5' : '#f8fafc', color: active ? '#fff' : '#475569',
+                  fontWeight: active ? 600 : 400, whiteSpace: 'nowrap',
+                }}>{s.label}</button>
+              )
+            })}
+          </div>
+        )}
 
         <TabScaffold tabId={activeSub} label={(subs.find(t => t.id === activeSub) || {}).label} dept={dept}>
         {extra && extra.element}
