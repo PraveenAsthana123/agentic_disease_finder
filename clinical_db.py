@@ -199,6 +199,22 @@ def init_db() -> None:
                 interpretation TEXT, level TEXT, alert TEXT, examiner TEXT,
                 created_at TEXT NOT NULL, updated_at TEXT
             );
+            -- Team chat: roles message each other in channels; AI bot can reply.
+            CREATE TABLE IF NOT EXISTS team_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                channel TEXT NOT NULL, from_role TEXT NOT NULL,
+                text TEXT NOT NULL, is_bot INTEGER DEFAULT 0,
+                patient_id TEXT, topic TEXT, attachment TEXT,
+                read_by TEXT DEFAULT '[]', created_at TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS chat_groups (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL UNIQUE, members TEXT DEFAULT '[]',
+                topic TEXT, created_by TEXT, created_at TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS chat_presence (
+                role TEXT PRIMARY KEY, status TEXT DEFAULT 'active', updated_at TEXT NOT NULL
+            );
             -- Multi-expert review of a study: each role attaches their assessment + agree/disagree with AI.
             CREATE TABLE IF NOT EXISTS expert_reviews (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -718,6 +734,169 @@ def delete_assessment(aid: int) -> bool:
     log_transaction(cur["patient_id"], component="assessment", action="delete", ref_id=aid,
                     detail=f"{cur['instrument']} deleted")
     return True
+
+
+def _ensure_chat_columns():
+    """Add advanced-chat columns to a pre-existing team_messages table (idempotent)."""
+    with _connect() as c:
+        cols = {r[1] for r in c.execute("PRAGMA table_info(team_messages)").fetchall()}
+        for col, ddl in [("topic", "topic TEXT"), ("attachment", "attachment TEXT"),
+                         ("read_by", "read_by TEXT DEFAULT '[]'")]:
+            if col not in cols:
+                try:
+                    c.execute(f"ALTER TABLE team_messages ADD COLUMN {ddl}")
+                except Exception:
+                    pass
+
+
+def post_team_message(channel: str, from_role: str, text: str, patient_id: str = "",
+                      topic: str = "", attachment: str = "") -> dict:
+    """A role posts a message to a team channel. @bot triggers an AI reply. Supports topic + attachment."""
+    init_db(); _ensure_chat_columns()
+    now = _now()
+    with _connect() as c:
+        cur = c.execute("INSERT INTO team_messages(channel,from_role,text,is_bot,patient_id,topic,attachment,read_by,created_at)"
+                        " VALUES(?,?,?,0,?,?,?,?,?)",
+                        (channel, from_role, text, patient_id or None, topic or None, attachment or None,
+                         json.dumps([from_role]), now))
+        mid = cur.lastrowid
+    log_transaction(patient_id or channel, component="team_chat", action="message", ref_id=mid,
+                    detail=f"[{channel}] {from_role}: {text[:60]}")
+    out = {"id": mid, "channel": channel, "from_role": from_role, "text": text, "is_bot": 0, "created_at": now}
+    bot = None
+    if "@bot" in text.lower():
+        bot = _team_bot_reply(channel, text, patient_id)
+    return {"message": out, "bot_reply": bot}
+
+
+def _team_bot_reply(channel: str, query: str, patient_id: str = "") -> dict:
+    """Team bot: answers using Ollama, grounded in patient records if a patient is in context."""
+    context = ""
+    if patient_id:
+        try:
+            r = patient_chat(patient_id, query)
+            ctx_rows = (r.get("vector_results") or [])[:4] or (r.get("results") or [])[:4]
+            context = "\n".join(str(x.get("text") or x.get("data")) for x in ctx_rows)
+        except Exception:
+            context = ""
+    answer = None
+    try:
+        import ollama_agent
+        resp = ollama_agent.answer(query.replace("@bot", "").strip(),
+                                   context=context, layout="passage")
+        # ollama_agent.answer may return a str or a dict — coerce to text
+        if isinstance(resp, dict):
+            answer = resp.get("answer") or resp.get("text") or resp.get("response") or json.dumps(resp)[:500]
+        else:
+            answer = str(resp) if resp else None
+    except Exception:
+        answer = None
+    if not answer:
+        answer = ("(Bot offline — Ollama unavailable. Grounded context retrieved: "
+                  + (context[:200] if context else "none") + ")")
+    now = _now()
+    with _connect() as c:
+        cur = c.execute("INSERT INTO team_messages(channel,from_role,text,is_bot,patient_id,created_at) VALUES(?,?,?,1,?,?)",
+                        (channel, "TeamBot", answer, patient_id or None, now))
+        bid = cur.lastrowid
+    return {"id": bid, "channel": channel, "from_role": "TeamBot", "text": answer, "is_bot": 1, "created_at": now}
+
+
+def list_team_messages(channel: str | None = None, limit: int = 100) -> list:
+    init_db()
+    with _connect() as c:
+        if channel:
+            rows = c.execute("SELECT * FROM team_messages WHERE channel=? ORDER BY id ASC LIMIT ?", (channel, limit)).fetchall()
+        else:
+            rows = c.execute("SELECT * FROM team_messages ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def list_team_channels() -> list:
+    init_db()
+    with _connect() as c:
+        rows = c.execute("SELECT channel, COUNT(*) n, MAX(created_at) last FROM team_messages GROUP BY channel ORDER BY last DESC").fetchall()
+    return [dict(r) for r in rows]
+
+
+def create_chat_group(name: str, members: list, topic: str = "", created_by: str = "") -> dict:
+    """Create a group + post a welcome message into its channel."""
+    init_db()
+    now = _now()
+    with _connect() as c:
+        try:
+            c.execute("INSERT INTO chat_groups(name,members,topic,created_by,created_at) VALUES(?,?,?,?,?)",
+                      (name, json.dumps(members), topic, created_by, now))
+        except Exception:
+            c.execute("UPDATE chat_groups SET members=?,topic=? WHERE name=?", (json.dumps(members), topic, name))
+    # welcome message
+    post_team_message(name, "TeamBot",
+                      f"👋 Welcome to '{name}'! Members: {', '.join(members)}. Topic: {topic or 'general'}. Type @bot to ask the AI.",
+                      topic=topic)
+    log_transaction(name, component="chat_group", action="create", detail=f"{name} by {created_by}")
+    return {"name": name, "members": members, "topic": topic, "created_at": now}
+
+
+def list_chat_groups() -> list:
+    init_db()
+    with _connect() as c:
+        rows = c.execute("SELECT * FROM chat_groups ORDER BY id DESC").fetchall()
+    return [{**dict(r), "members": json.loads(r["members"] or "[]")} for r in rows]
+
+
+def set_presence(role: str, status: str) -> dict:
+    """status: active | away | desk | break | offline."""
+    init_db()
+    now = _now()
+    with _connect() as c:
+        c.execute("INSERT INTO chat_presence(role,status,updated_at) VALUES(?,?,?) "
+                  "ON CONFLICT(role) DO UPDATE SET status=?,updated_at=?", (role, status, now, status, now))
+    return {"role": role, "status": status, "updated_at": now}
+
+
+def get_presence() -> list:
+    init_db()
+    with _connect() as c:
+        rows = c.execute("SELECT * FROM chat_presence ORDER BY role").fetchall()
+    return [dict(r) for r in rows]
+
+
+def mark_read(channel: str, role: str) -> dict:
+    """Mark all messages in a channel as read by this role."""
+    init_db(); _ensure_chat_columns()
+    n = 0
+    with _connect() as c:
+        for r in c.execute("SELECT id, read_by FROM team_messages WHERE channel=?", (channel,)).fetchall():
+            rb = json.loads(r["read_by"] or "[]")
+            if role not in rb:
+                rb.append(role)
+                c.execute("UPDATE team_messages SET read_by=? WHERE id=?", (json.dumps(rb), r["id"])); n += 1
+    return {"channel": channel, "role": role, "marked": n}
+
+
+def genai_bot(role: str, query: str, layout: str = "passage", patient_id: str = "") -> dict:
+    """Generative-AI bot per department role. Answers free-text with report access,
+    formatted as passage | table | list | graph (layout via the Ollama agent)."""
+    context = ""
+    if patient_id:
+        try:
+            r = patient_chat(patient_id, query)
+            rows = (r.get("vector_results") or [])[:5] or (r.get("results") or [])[:5]
+            context = "\n".join(str(x.get("text") or x.get("data")) for x in rows)
+        except Exception:
+            context = ""
+    answer = None
+    try:
+        import ollama_agent
+        resp = ollama_agent.answer(query, context=context, layout=layout)
+        answer = resp if isinstance(resp, (dict, list)) else str(resp)
+    except Exception:
+        answer = None
+    if answer is None:
+        answer = f"(GenAI bot offline. Role={role}, layout={layout}. Context: {context[:200] or 'none'})"
+    log_transaction(patient_id or "genai", component="genai_bot", action="ask",
+                    detail=f"{role} [{layout}]: {query[:60]}")
+    return {"role": role, "layout": layout, "query": query, "answer": answer}
 
 
 def add_expert_review(patient_id: str, role: str, finding: str, agree_with_ai: str = "",

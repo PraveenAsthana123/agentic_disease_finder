@@ -206,6 +206,8 @@ function subTabsFor(dept) {
     { id: 'r_expai', label: 'ExpAI' },
     { id: 'r_challenges_ai', label: 'Challenges→AI' },
     { id: 'r_assessments', label: 'Assessments' },
+    { id: 'r_chat', label: '💬 Team Chat' },
+    { id: 'r_genai', label: '🤖 GenAI Bot' },
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
     { id: 'clinical', label: 'Clinical' },
@@ -445,6 +447,8 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'r_expai' && <ShapView disease={selectedDisease} />}
         {activeSub === 'r_challenges_ai' && <RoleChallengesAI roleName={dept.name} />}
         {activeSub === 'r_assessments' && <RoleAssessments roleName={dept.name} />}
+        {activeSub === 'r_chat' && <RoleChat roleName={dept.name} />}
+        {activeSub === 'r_genai' && <GenAiBotPanel roleName={dept.name} />}
         {activeSub === 'challenges' && <ListPanel title="Key Challenges" items={dept.challenges} icon="⚠️" />}
         {activeSub === 'tasks' && <ListPanel title="Responsibilities & Tasks" items={dept.tasks} ordered />}
         {activeSub === 'data' && <DataPanel disease={selectedDisease} dept={dept} />}
@@ -1230,6 +1234,121 @@ function RolePicker({ roles, role, setPick }) {
       <select value={role.role} onChange={e => setPick(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
         {roles.map(r => <option key={r.role} value={r.role}>{r.icon} {r.role}</option>)}
       </select>
+    </div>
+  )
+}
+
+function RoleChat({ roleName }) {
+  const [channel, setChannel] = useState('general')
+  const [msgs, setMsgs] = useState([])
+  const [text, setText] = useState('')
+  const [presence, setPresence] = useState([])
+  const [groups, setGroups] = useState([])
+  const [status, setStatus] = useState('active')
+  const [newGroup, setNewGroup] = useState('')
+  const load = () => {
+    axios.get(`${API_URL}/team-chat`, { params: { channel } }).then(r => setMsgs(r.data.messages || [])).catch(() => setMsgs([]))
+    axios.post(`${API_URL}/team-chat/read`, null, { params: { channel, role: roleName } }).catch(() => {})
+  }
+  const loadMeta = () => {
+    axios.get(`${API_URL}/team-chat/presence`).then(r => setPresence(r.data.presence || [])).catch(() => {})
+    axios.get(`${API_URL}/team-chat/groups`).then(r => setGroups(r.data.groups || [])).catch(() => {})
+  }
+  useEffect(() => { axios.post(`${API_URL}/team-chat/presence`, { role: roleName, status }).catch(() => {}); loadMeta() }, [roleName, status])
+  useEffect(() => { load() }, [channel])
+  const send = () => {
+    if (!text.trim()) return
+    axios.post(`${API_URL}/team-chat`, { channel, from_role: roleName, text }).then(() => { setText(''); load() }).catch(() => {})
+  }
+  const makeGroup = () => {
+    if (!newGroup.trim()) return
+    axios.post(`${API_URL}/team-chat/group`, { name: newGroup, members: [roleName], created_by: roleName })
+      .then(() => { setNewGroup(''); loadMeta(); setChannel(newGroup) }).catch(() => {})
+  }
+  const pColor = { active: '#4caf50', desk: '#1e88e5', away: '#ff9800', break: '#fb8c00', offline: '#94a3b8' }
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+          <strong style={{ color: '#0f172a' }}>💬 Team Chat — you are {roleName}</strong>
+          <select value={status} onChange={e => setStatus(e.target.value)} style={{ padding: '4px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12 }}>
+            {['active', 'desk', 'away', 'break', 'offline'].map(s => <option key={s}>{s}</option>)}
+          </select>
+          <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>Channel:</span>
+          <select value={channel} onChange={e => setChannel(e.target.value)} style={{ padding: '4px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12 }}>
+            <option value="general">general</option>
+            {groups.map(g => <option key={g.name} value={g.name}>{g.name}</option>)}
+          </select>
+        </div>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 8 }}>
+          {presence.map((p, i) => <span key={i} style={{ fontSize: 11, padding: '2px 8px', borderRadius: 10, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <span style={{ color: pColor[p.status] }}>●</span> {p.role} <span style={{ color: '#94a3b8' }}>{p.status}</span></span>)}
+        </div>
+        <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
+          <input value={newGroup} onChange={e => setNewGroup(e.target.value)} placeholder="new group name" style={{ padding: '4px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12 }} />
+          <button onClick={makeGroup} style={{ padding: '4px 10px', borderRadius: 6, border: 'none', background: '#8e24aa', color: '#fff', cursor: 'pointer', fontSize: 12 }}>＋ Create group</button>
+        </div>
+      </div>
+      <div style={card}>
+        <div style={{ maxHeight: 360, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {msgs.map((m, i) => {
+            const mine = m.from_role === roleName, bot = m.is_bot
+            return (
+              <div key={i} style={{ alignSelf: mine ? 'flex-end' : 'flex-start', maxWidth: '75%',
+                padding: 8, borderRadius: 8, background: bot ? '#ecfdf5' : mine ? '#dbeafe' : '#f8fafc', border: '1px solid #e5e7eb' }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: bot ? '#166534' : '#1e88e5' }}>{bot ? '🤖 ' : ''}{m.from_role}{m.topic ? ` · ${m.topic}` : ''}</div>
+                <div style={{ fontSize: 13, color: '#0f172a', whiteSpace: 'pre-wrap' }}>{m.text}</div>
+                <div style={{ fontSize: 9, color: '#94a3b8', textAlign: 'right' }}>{(m.created_at || '').slice(11, 16)} · read {(JSON.parse(m.read_by || '[]')).length}</div>
+              </div>
+            )
+          })}
+          {!msgs.length && <div style={{ color: '#94a3b8' }}>No messages. Say hi — or type @bot to ask the AI.</div>}
+        </div>
+        <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
+          <input value={text} onChange={e => setText(e.target.value)} onKeyDown={e => e.key === 'Enter' && send()}
+            placeholder="Message… (@bot to ask AI)" style={{ flex: 1, padding: '8px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }} />
+          <button onClick={send} style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Send</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function GenAiBotPanel({ roleName }) {
+  const [query, setQuery] = useState('')
+  const [layout, setLayout] = useState('passage')
+  const [pid, setPid] = useState('P0001')
+  const [resp, setResp] = useState(null)
+  const [busy, setBusy] = useState(false)
+  const ask = () => {
+    if (!query.trim()) return
+    setBusy(true)
+    axios.post(`${API_URL}/genai-bot`, { role: roleName, query, layout, patient_id: pid })
+      .then(r => setResp(r.data)).catch(() => setResp({ answer: 'bot offline' })).finally(() => setBusy(false))
+  }
+  const ans = resp?.answer
+  const renderAns = () => {
+    if (!ans) return null
+    if (typeof ans === 'string') return <div style={{ whiteSpace: 'pre-wrap', fontSize: 13, color: '#0f172a' }}>{ans}</div>
+    const body = ans.content || ans.text || ans.answer || ans.items || ans.rows || ans
+    return <pre style={{ whiteSpace: 'pre-wrap', fontSize: 12, color: '#0f172a', background: '#f8fafc', padding: 10, borderRadius: 6 }}>{typeof body === 'string' ? body : JSON.stringify(body, null, 2)}</pre>
+  }
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🤖 GenAI Bot — {roleName}</h3>
+        <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8 }}>Free-text + report access (RAG), formatted as passage / table / list / graph.</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginBottom: 8 }}>
+          <select value={layout} onChange={e => setLayout(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+            {['passage', 'table', 'list', 'graph'].map(l => <option key={l}>{l}</option>)}
+          </select>
+          <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id (optional)" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 130 }} />
+        </div>
+        <textarea value={query} onChange={e => setQuery(e.target.value)} placeholder="Ask anything about patient records / reports…"
+          style={{ width: '100%', minHeight: 60, padding: 8, borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }} />
+        <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
+      </div>
+      {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
     </div>
   )
 }

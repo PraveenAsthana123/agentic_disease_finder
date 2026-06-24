@@ -669,6 +669,84 @@ async def add_study_expert(body: ExpertReviewIn):
                                  body.agree_with_ai, body.note, body.expert)
 
 
+class TeamMsgIn(BaseModel):
+    channel: str = "general"
+    from_role: str
+    text: str
+    patient_id: str = ""
+
+
+@app.post("/api/team-chat")
+async def team_chat_post(body: TeamMsgIn):
+    """A role posts to a team channel. @bot in the text triggers an AI (Ollama) reply."""
+    return cdb.post_team_message(body.channel, body.from_role, body.text, body.patient_id)
+
+
+@app.get("/api/team-chat")
+async def team_chat_list(channel: str = "general", limit: int = 100):
+    """Channel message thread."""
+    return {"channel": channel, "messages": cdb.list_team_messages(channel, limit)}
+
+
+@app.get("/api/team-chat/channels")
+async def team_chat_channels():
+    """All channels with message counts."""
+    return {"channels": cdb.list_team_channels()}
+
+
+class GroupIn(BaseModel):
+    name: str
+    members: List[str] = []
+    topic: str = ""
+    created_by: str = ""
+
+
+class PresenceIn(BaseModel):
+    role: str
+    status: str = "active"
+
+
+@app.post("/api/team-chat/group")
+async def team_chat_group_create(body: GroupIn):
+    """Create a chat group (+ welcome message)."""
+    return cdb.create_chat_group(body.name, body.members, body.topic, body.created_by)
+
+
+@app.get("/api/team-chat/groups")
+async def team_chat_groups():
+    return {"groups": cdb.list_chat_groups()}
+
+
+@app.post("/api/team-chat/presence")
+async def team_chat_presence_set(body: PresenceIn):
+    """Set role presence: active | away | desk | break | offline."""
+    return cdb.set_presence(body.role, body.status)
+
+
+@app.get("/api/team-chat/presence")
+async def team_chat_presence_get():
+    return {"presence": cdb.get_presence()}
+
+
+@app.post("/api/team-chat/read")
+async def team_chat_read(channel: str, role: str):
+    """Mark channel messages read by a role."""
+    return cdb.mark_read(channel, role)
+
+
+class GenAiBotIn(BaseModel):
+    role: str
+    query: str
+    layout: str = "passage"
+    patient_id: str = ""
+
+
+@app.post("/api/genai-bot")
+async def genai_bot(body: GenAiBotIn):
+    """Generative-AI bot per role: free-text + report access, layout passage|table|list|graph."""
+    return cdb.genai_bot(body.role, body.query, body.layout, body.patient_id)
+
+
 @app.get("/api/admin/dashboards")
 async def admin_dashboards():
     """ADMIN: aggregate every dashboard in the system from all registries + system views."""
