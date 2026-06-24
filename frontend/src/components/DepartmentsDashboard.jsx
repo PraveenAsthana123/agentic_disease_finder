@@ -766,6 +766,9 @@ function DataPanel({ disease, dept }) {
   const [analyzing, setAnalyzing] = useState(false)
   const [analyzeErr, setAnalyzeErr] = useState(null)
   const [txns, setTxns] = useState([])
+  const [log, setLog] = useState([])  // phase-by-phase activity log
+  const addLog = (phase, detail, level = 'info') =>
+    setLog(prev => [{ t: new Date().toLocaleTimeString(), phase, detail, level }, ...prev].slice(0, 40))
   const loadTxns = useCallback(() => {
     axios.get(`${API_URL}/transactions`, { params: { limit: 25 } })
       .then(r => setTxns(r.data.items || r.data || [])).catch(() => setTxns([]))
@@ -787,19 +790,37 @@ function DataPanel({ disease, dept }) {
 
   const handleUpload = async (e) => {
     const file = e.target.files?.[0]
-    if (!file) return
+    if (!file) { addLog('select', 'no file chosen', 'warn'); return }
+    addLog('1. file selected', `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown'}`)
     setAnalyzing(true); setAnalyzeErr(null); setAnalysis(null)
     const fd = new FormData()
-    fd.append('file', file)
-    fd.append('disease', disease)
-    fd.append('department', dept.name)
+    fd.append('file', file); fd.append('disease', disease); fd.append('department', dept.name)
+    const url = `${API_URL}/analyze-upload`
+    addLog('2. POST sending', `→ ${url} (disease=${disease})`)
+    const t0 = performance.now()
     try {
-      const res = await axios.post(`${API_URL}/analyze-upload`, fd, { headers: { 'Content-Type': 'multipart/form-data' } })
-      if (res.data.status !== 'success') setAnalyzeErr(res.data.message || 'Analysis failed')
-      else setAnalysis(res.data)
-      loadTxns()  // refresh the transaction table so the new upload appears immediately
+      const res = await axios.post(url, fd, { headers: { 'Content-Type': 'multipart/form-data' }, timeout: 120000 })
+      const ms = Math.round(performance.now() - t0)
+      addLog('3. response', `HTTP ${res.status} in ${ms}ms · status=${res.data?.status}`, res.data?.status === 'success' ? 'ok' : 'warn')
+      if (res.data.status !== 'success') {
+        setAnalyzeErr(res.data.message || 'Analysis failed')
+        addLog('4. result', res.data.message || 'analysis failed', 'warn')
+      } else {
+        setAnalysis(res.data)
+        const pred = res.data?.prediction?.predicted_label || res.data?.mode || 'done'
+        addLog('4. success', `result: ${pred}`, 'ok')
+      }
+      loadTxns()
+      addLog('5. tx refreshed', 'transaction table updated', 'ok')
     } catch (e) {
-      setAnalyzeErr(e?.response?.data?.detail || 'Upload failed — is the backend running on :8010?')
+      const ms = Math.round(performance.now() - t0)
+      // distinguish: no response (network/proxy/port) vs server error (has response)
+      let why
+      if (e.response) why = `server error HTTP ${e.response.status}: ${e.response.data?.detail || e.response.data?.message || e.message}`
+      else if (e.code === 'ECONNABORTED') why = `timeout after ${ms}ms — file too large or backend slow`
+      else why = `NO response (${e.message}) — request never reached backend. Likely wrong port (use :3003, NOT :3000) or backend down on :8010.`
+      setAnalyzeErr(why)
+      addLog('✗ ERROR', why, 'err')
     } finally { setAnalyzing(false) }
   }
 
@@ -816,6 +837,22 @@ function DataPanel({ disease, dept }) {
         </label>
         {analyzeErr && <div style={{ marginTop: 12, background: '#fee2e2', border: '1px solid #fca5a5', color: '#991b1b', borderRadius: 6, padding: 12 }}>{analyzeErr}</div>}
         {analysis && <AnalysisResult result={analysis} />}
+
+        {/* Activity log — shows each upload phase so you can see exactly where it fails */}
+        <div style={{ marginTop: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#475569' }}>🪵 Activity Log (per phase)</span>
+            {log.length > 0 && <button onClick={() => setLog([])} style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>clear</button>}
+          </div>
+          <div style={{ background: '#0f172a', borderRadius: 6, padding: 8, maxHeight: 180, overflow: 'auto', fontFamily: 'monospace', fontSize: 11 }}>
+            {log.length === 0 && <div style={{ color: '#64748b' }}>Upload a file — each phase (select → POST → response → result) logs here.</div>}
+            {log.map((l, i) => (
+              <div key={i} style={{ color: l.level === 'err' ? '#f87171' : l.level === 'warn' ? '#fbbf24' : l.level === 'ok' ? '#4ade80' : '#93c5fd', marginBottom: 2 }}>
+                <span style={{ color: '#64748b' }}>{l.t}</span> [{l.phase}] {l.detail}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Transaction history — every upload appears here with date+time stamp */}
