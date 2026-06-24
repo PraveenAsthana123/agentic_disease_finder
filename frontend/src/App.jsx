@@ -68,6 +68,32 @@ function App() {
   const [trainingSamples, setTrainingSamples] = useState(300)
   const [epochs, setEpochs] = useState(30)
 
+  // Global REAL-error capture — surfaces server 5xx, network failures, and JS errors on the UI.
+  const [globalErrors, setGlobalErrors] = useState([])
+  const pushErr = useCallback((source, message) => {
+    setGlobalErrors(prev => [{ t: new Date().toLocaleTimeString(), source, message: String(message).slice(0, 300) },
+      ...prev.filter(e => e.message !== String(message).slice(0, 300))].slice(0, 8))
+  }, [])
+  useEffect(() => {
+    // axios interceptor — only REAL errors (5xx server errors + network/timeouts), not expected 4xx
+    const id = axios.interceptors.response.use(r => r, (err) => {
+      const url = err.config?.url || ''
+      if (err.response) {
+        if (err.response.status >= 500) pushErr(`API ${err.response.status}`, `${url} → ${err.response.data?.detail || err.response.data?.message || 'server error'}`)
+      } else if (err.code === 'ECONNABORTED') {
+        pushErr('API timeout', `${url} timed out`)
+      } else {
+        pushErr('No backend', `${url} → request failed (backend down on :8010 or wrong port — use :3003)`)
+      }
+      return Promise.reject(err)
+    })
+    const onErr = (e) => pushErr('JS error', e.message || e.error?.message || 'script error')
+    const onRej = (e) => pushErr('Unhandled', e.reason?.message || String(e.reason))
+    window.addEventListener('error', onErr)
+    window.addEventListener('unhandledrejection', onRej)
+    return () => { axios.interceptors.response.eject(id); window.removeEventListener('error', onErr); window.removeEventListener('unhandledrejection', onRej) }
+  }, [pushErr])
+
   // Results state
   const [isLoading, setIsLoading] = useState(false)
   const [classificationResult, setClassificationResult] = useState(null)
@@ -1168,6 +1194,20 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* GLOBAL REAL-ERROR banner — fixed, shows server 5xx / network / JS errors */}
+      {globalErrors.length > 0 && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999, background: '#7f1d1d', color: '#fff', padding: '8px 14px', boxShadow: '0 2px 8px rgba(0,0,0,0.3)', maxHeight: 180, overflow: 'auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+            <strong style={{ fontSize: 13 }}>⚠ {globalErrors.length} error{globalErrors.length > 1 ? 's' : ''}</strong>
+            <button onClick={() => setGlobalErrors([])} style={{ marginLeft: 'auto', fontSize: 11, padding: '2px 10px', borderRadius: 4, border: '1px solid #fca5a5', background: 'transparent', color: '#fff', cursor: 'pointer' }}>dismiss all</button>
+          </div>
+          {globalErrors.map((e, i) => (
+            <div key={i} style={{ fontSize: 12, fontFamily: 'monospace', padding: '2px 0', borderTop: i ? '1px solid #991b1b' : 'none' }}>
+              <span style={{ opacity: 0.7 }}>{e.t}</span> <strong>[{e.source}]</strong> {e.message}
+            </div>
+          ))}
+        </div>
+      )}
       {renderSidebar()}
 
       <main className="main-content">
