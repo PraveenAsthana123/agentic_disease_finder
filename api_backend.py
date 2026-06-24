@@ -638,6 +638,13 @@ async def seizure_list(patient_id: str):
     return cdb.list_seizures(patient_id)
 
 
+@app.get("/api/tab-scaffold")
+async def tab_scaffold():
+    """Standard 8-section scaffold per tab (goal/todo/flow/IPO/viz). Default + per-tab overrides."""
+    p = Path(__file__).parent / "config" / "tab_scaffold.json"
+    return json.loads(p.read_text()) if p.exists() else {"default": {}, "tabs": {}}
+
+
 @app.get("/api/onboarding-intake")
 async def onboarding_intake():
     """Patient onboarding: intake-vs-deferred field classification (the 15x time reduction)."""

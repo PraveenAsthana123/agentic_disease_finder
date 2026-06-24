@@ -538,6 +538,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
           <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>disease context: <strong>{selectedDisease}</strong></span>
         </div>
 
+        <TabScaffold tabId={activeSub} label={(subs.find(t => t.id === activeSub) || {}).label} dept={dept}>
         {extra && extra.element}
         {activeSub === 'admin_dash' && <AdminDashboardsPanel />}
         {activeSub === 'admin_team' && <AdminTeamPanel />}
@@ -588,6 +589,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'survey' && <SurveyPanel dept={dept} />}
         {activeSub === 'clinical' && <ClinicalFormsPanel />}
         {activeSub === 'report' && <ReportPanel dept={dept} />}
+        </TabScaffold>
       </section>
     </div>
   )
@@ -1518,6 +1520,110 @@ function GenAiBotPanel({ roleName }) {
         <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
       </div>
       {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
+    </div>
+  )
+}
+
+let _scaffoldCache = null
+function TabScaffold({ tabId, label, dept, children }) {
+  const [cfg, setCfg] = useState(_scaffoldCache)
+  const [todoDone, setTodoDone] = useState({})
+  const [txns, setTxns] = useState(null)
+  const [showTx, setShowTx] = useState(false)
+  useEffect(() => {
+    if (_scaffoldCache) { setCfg(_scaffoldCache); return }
+    axios.get(`${API_URL}/tab-scaffold`).then(r => { _scaffoldCache = r.data; setCfg(r.data) }).catch(() => setCfg({ default: {}, tabs: {} }))
+  }, [])
+  useEffect(() => { setTodoDone({}) }, [tabId])
+  const loadTx = () => {
+    setShowTx(true)
+    axios.get(`${API_URL}/transactions?limit=20`).then(r => setTxns(r.data.items || r.data || [])).catch(() => setTxns([]))
+  }
+  if (!cfg) return <div>{children}</div>
+  const d = cfg.default || {}
+  const t = (cfg.tabs || {})[tabId] || {}
+  const niceLabel = (label || tabId || 'this tab').replace(/^[^\w]+\s*/, '')
+  const goal = t.goal || `${d.goal || 'Provide an auditable workflow.'} (${niceLabel})`
+  const todos = t.todos || d.todos || []
+  const flow = t.flow || d.flow || ['Input', 'Process', 'Output']
+  const ipo = [['Input', t.input || d.input], ['Process', t.process || d.process], ['Output', t.output || d.output]]
+  const viz = t.viz || d.viz
+  const sec = { background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, marginBottom: 10 }
+
+  return (
+    <div>
+      {/* 1. Goal */}
+      <div style={{ ...sec, borderLeft: '4px solid #1e88e5', background: '#f8fafc' }}>
+        <span style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase' }}>🎯 Goal</span>
+        <div style={{ fontSize: 13, color: '#0f172a', marginTop: 2 }}>{goal}</div>
+      </div>
+
+      {/* 2. ToDo + 3. Process flow (horizontal) side by side */}
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+        <div style={{ ...sec, flex: '1 1 280px' }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed', textTransform: 'uppercase' }}>✅ ToDo</span>
+          {todos.map((td, i) => (
+            <label key={i} style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 12, color: todoDone[i] ? '#94a3b8' : '#334155', textDecoration: todoDone[i] ? 'line-through' : 'none', marginTop: 3, cursor: 'pointer' }}>
+              <input type="checkbox" checked={!!todoDone[i]} onChange={() => setTodoDone({ ...todoDone, [i]: !todoDone[i] })} />{td}
+            </label>
+          ))}
+        </div>
+        <div style={{ ...sec, flex: '1 1 320px' }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#0891b2', textTransform: 'uppercase' }}>➡️ Process Flow</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap', marginTop: 6 }}>
+            {flow.map((step, i) => (
+              <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ fontSize: 11, padding: '4px 9px', background: '#e0f2fe', color: '#0c4a6e', borderRadius: 14, fontWeight: 600, whiteSpace: 'nowrap' }}>{step}</span>
+                {i < flow.length - 1 && <span style={{ color: '#94a3b8' }}>→</span>}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 4-6. Input / Process / Output */}
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
+        {ipo.map(([k, v], i) => (
+          <div key={i} style={{ ...sec, flex: '1 1 200px', marginBottom: 0, borderTop: `3px solid ${['#43a047', '#fb8c00', '#1e88e5'][i]}` }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: ['#43a047', '#fb8c00', '#1e88e5'][i], textTransform: 'uppercase' }}>{['📥 Input', '⚙️ Process', '📤 Output'][i]}</span>
+            <div style={{ fontSize: 12, color: '#475569', marginTop: 3 }}>{v || '—'}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div>{children}</div>
+
+      {/* 7. Visualization hint */}
+      {viz && (
+        <div style={{ ...sec, background: '#f8fafc', marginTop: 10 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#d97706', textTransform: 'uppercase' }}>📊 Visualization</span>
+          <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>{viz}</div>
+        </div>
+      )}
+
+      {/* 8. Transaction history (real, on demand) */}
+      <div style={sec}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#475569', textTransform: 'uppercase' }}>🧾 Transaction History</span>
+          <button onClick={loadTx} style={{ marginLeft: 'auto', fontSize: 11, padding: '3px 10px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>{showTx ? 'Refresh' : 'Load recent'}</button>
+        </div>
+        {showTx && (
+          <div style={{ marginTop: 8, maxHeight: 220, overflow: 'auto' }}>
+            {txns === null ? <div style={{ fontSize: 12, color: '#64748b' }}>Loading…</div> :
+              txns.length === 0 ? <div style={{ fontSize: 12, color: '#64748b' }}>No transactions yet.</div> :
+                <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 11 }}>
+                  <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>When (local)</th><th style={cellTh}>Patient</th><th style={cellTh}>Component</th><th style={cellTh}>Action</th><th style={cellTh}>Detail</th></tr></thead>
+                  <tbody>{txns.map((x, i) => (
+                    <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                      <td style={cellTd}>{x.ts_local || x.ts_utc || '—'}</td><td style={cellTd}>{x.patient_id || '—'}</td>
+                      <td style={cellTd}>{x.component || '—'}</td><td style={cellTd}>{x.action || '—'}</td><td style={cellTd}>{x.detail || '—'}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
