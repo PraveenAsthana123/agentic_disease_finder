@@ -552,7 +552,7 @@ function DataPanel({ disease, dept }) {
       if (res.data.status !== 'success') setAnalyzeErr(res.data.message || 'Analysis failed')
       else setAnalysis(res.data)
     } catch (e) {
-      setAnalyzeErr(e?.response?.data?.detail || 'Upload failed — is the backend running on :8000?')
+      setAnalyzeErr(e?.response?.data?.detail || 'Upload failed — is the backend running on :8010?')
     } finally { setAnalyzing(false) }
   }
 
@@ -666,7 +666,7 @@ function PatientsPanel({ dept, disease }) {
       const res = await axios.get(`${API_URL}/patients`, { params: { department: dept.name } })
       setPatients(res.data.items || [])
     } catch (e) {
-      setError(e?.response?.data?.detail || 'Backend offline — start api_backend.py on :8000')
+      setError(e?.response?.data?.detail || 'Backend offline — start api_backend.py on :8010')
     }
   }, [dept.name])
 
