@@ -1,0 +1,76 @@
+{
+  "title": "Enterprise AI Control-Tower Pipeline Catalog (~40)",
+  "note": "Full enterprise pipeline taxonomy grouped by category. status: built (real here) / partial / planned. Most enterprise-ops pipelines are planned for a single-study DBA.",
+  "updated_at": "2026-06-23",
+  "groups": [
+    {"group": "Data", "pipelines": [
+      {"name": "Data Acquisition", "stages": ["source discovery", "access request", "consent", "DSA/licensing", "classification"], "status": "partial", "maps_to": "clinical_data drop zones + open_science folders"},
+      {"name": "Data Ingestion", "stages": ["batch/stream", "schema check", "validation"], "status": "built", "maps_to": "eeg_ingest multi-format"},
+      {"name": "Data Privacy", "stages": ["PII/PHI detect", "mask", "tokenize", "de-identify", "consent enforce"], "status": "partial", "maps_to": "PII scanner (mask/tokenize planned)"},
+      {"name": "Data Quality/Cleaning", "stages": ["dedup", "null handling", "outlier", "profiling"], "status": "partial", "maps_to": "Model Lab (SMOTE/feature); cleaning planned"},
+      {"name": "Synthetic Data", "stages": ["generate", "privacy validate", "distribution compare", "approve"], "status": "built", "maps_to": "generate_synthetic_epilepsy.py"},
+      {"name": "Data Lineage", "stages": ["source→transform→feature→model→output track", "audit"], "status": "partial", "maps_to": "transaction_log (OpenLineage planned)"},
+      {"name": "Data Versioning/Catalog", "stages": ["DVC", "metadata catalog"], "status": "planned"}
+    ]},
+    {"group": "Feature", "pipelines": [
+      {"name": "Feature Engineering", "stages": ["extract", "select", "transform", "leakage check", "feature store"], "status": "built", "maps_to": "47-feature extractor + Model Lab feature-selection"},
+      {"name": "Feature Drift", "stages": ["distribution", "importance shift", "correlation shift"], "status": "partial", "maps_to": "PCA + stats (drift monitor planned)"},
+      {"name": "Embedding", "stages": ["model select", "generate", "validate", "refresh", "monitor"], "status": "planned"}
+    ]},
+    {"group": "Training", "pipelines": [
+      {"name": "Training", "stages": ["split", "balance", "tune", "train", "track", "register"], "status": "built", "maps_to": "Model Lab + deep DNN + subject-wise"},
+      {"name": "Fine-Tuning", "stages": ["dataset prep", "LoRA", "SFT", "RLHF/DPO", "safety eval"], "status": "planned"},
+      {"name": "Continuous Learning", "stages": ["feedback", "error analysis", "retrain trigger", "redeploy"], "status": "partial", "maps_to": "feedback table (retrain loop planned)"}
+    ]},
+    {"group": "Evaluation", "pipelines": [
+      {"name": "Model Evaluation", "stages": ["accuracy", "robustness", "bias", "explainability", "compliance"], "status": "built", "maps_to": "subject-wise eval + SHAP + fairness"},
+      {"name": "Cross-Patient Benchmark", "stages": ["leave-subjects-out", "FAR/hr", "sensitivity"], "status": "built", "maps_to": "cross_patient_benchmark.py"}
+    ]},
+    {"group": "RAG", "pipelines": [
+      {"name": "RAG Pipeline", "stages": ["ingest", "OCR", "chunk", "embed", "vector store", "hybrid search", "rerank", "generate", "cite"], "status": "partial", "maps_to": "patient-chat retrieval + Ollama (chunk/embed/rerank planned)"},
+      {"name": "Knowledge Management", "stages": ["create", "approve", "publish", "expiry", "archive"], "status": "planned"},
+      {"name": "Vector DB", "stages": ["index create", "optimize", "reindex", "cleanup"], "status": "planned"},
+      {"name": "Grounding", "stages": ["retrieve", "citation map", "source verify", "grounded gen"], "status": "partial", "maps_to": "RAG citation + SHAP concordance"},
+      {"name": "Hallucination Detection", "stages": ["claim extract", "fact verify", "citation validate", "score", "escalate"], "status": "partial", "maps_to": "guardrails + grounding (full detector planned)"}
+    ]},
+    {"group": "Agentic + MCP", "pipelines": [
+      {"name": "Agentic AI", "stages": ["intent", "plan", "tool select", "execute", "collaborate", "HITL"], "status": "built", "maps_to": "Council + MoA + goal-loop"},
+      {"name": "Multi-Agent Coordination", "stages": ["discovery", "register", "route", "collaborate", "conflict resolve", "consensus"], "status": "built", "maps_to": "MoA + consensus"},
+      {"name": "MCP Governance", "stages": ["tool register", "certify", "access control", "monitor", "retire"], "status": "partial", "maps_to": "agent/tool registry + MCP analysis"},
+      {"name": "Human-in-the-Loop", "stages": ["assign", "validate", "escalate", "override", "feedback"], "status": "built", "maps_to": "hitl_reviews + feedback + decision"}
+    ]},
+    {"group": "Inference", "pipelines": [
+      {"name": "Inference", "stages": ["validate", "auth", "feature retrieve", "model select", "predict", "confidence", "explain", "deliver"], "status": "built", "maps_to": "analyze-upload + classify + SHAP"}
+    ]},
+    {"group": "Drift", "pipelines": [
+      {"name": "Data Drift", "stages": ["schema", "PSI", "KS test"], "status": "planned"},
+      {"name": "Model Drift", "stages": ["accuracy/precision/recall drop"], "status": "planned"},
+      {"name": "Output/RAG Drift", "stages": ["quality", "hallucination", "grounding drift"], "status": "planned"},
+      {"name": "Prompt Drift", "stages": ["performance", "success rate", "relevance"], "status": "planned"}
+    ]},
+    {"group": "Security & Red Team", "pipelines": [
+      {"name": "AI Security", "stages": ["threat detect", "injection detect", "jailbreak detect", "leakage detect"], "status": "partial", "maps_to": "guardrails (injection+PII)"},
+      {"name": "AI Red Team", "stages": ["adversarial", "jailbreak", "prompt attack", "tool abuse"], "status": "planned"}
+    ]},
+    {"group": "Responsible AI & Explainability", "pipelines": [
+      {"name": "Responsible AI", "stages": ["bias", "fairness", "explainability", "privacy", "oversight", "audit"], "status": "built", "maps_to": "/api/responsible-ai"},
+      {"name": "Model Explainability", "stages": ["SHAP", "LIME", "GradCAM", "feature importance", "clinical explanation"], "status": "partial", "maps_to": "SHAP + surrogate (LIME/GradCAM planned)"}
+    ]},
+    {"group": "Governance, Risk & Compliance", "pipelines": [
+      {"name": "AI Governance", "stages": ["use-case register", "risk classify", "approve", "review", "retire approve"], "status": "partial", "maps_to": "consultant matrix + decision + audit"},
+      {"name": "AI Risk Management", "stages": ["identify", "assess", "mitigate", "residual", "monitor"], "status": "partial", "maps_to": "risk_management table"},
+      {"name": "AI Compliance", "stages": ["regulation map", "policy map", "validate", "evidence", "audit report"], "status": "partial", "maps_to": "compliance docs per role"},
+      {"name": "AI Inventory", "stages": ["model/agent/prompt/tool/use-case register"], "status": "built", "maps_to": "agent_tasks + ai_type_coverage registries"}
+    ]},
+    {"group": "Ops (FinOps / Observability / Incident / Release / Lifecycle)", "pipelines": [
+      {"name": "AI FinOps", "stages": ["GPU/token/agent/model/cloud cost", "optimize"], "status": "planned"},
+      {"name": "AI Observability", "stages": ["traces", "logs", "metrics", "agent flows", "RCA"], "status": "partial", "maps_to": "transaction trace (OTel/Langfuse planned)"},
+      {"name": "AI Incident Management", "stages": ["detect", "classify", "escalate", "RCA", "remediate", "postmortem"], "status": "planned"},
+      {"name": "AI Change Management", "stages": ["change request", "impact", "approve", "deploy", "rollback"], "status": "planned"},
+      {"name": "AI Release", "stages": ["dev", "test", "UAT", "staging", "canary", "prod"], "status": "planned"},
+      {"name": "Shadow AI Detection", "stages": ["discover", "classify", "risk", "control"], "status": "planned"},
+      {"name": "Model Retirement", "stages": ["retire trigger", "approve", "archive", "knowledge transfer", "audit close"], "status": "planned"},
+      {"name": "AI Lifecycle Mgmt", "stages": ["ideation", "dev", "validate", "deploy", "monitor", "retire"], "status": "partial", "maps_to": "agent registry status lifecycle"}
+    ]}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Per-Role End-to-End Process Simulations",
+  "note": "Each role: ordered steps explaining the full process. layer = backend/process/data/accuracy/reporting. mode = manual (human step) or auto (AI/pipeline). maps_to = real endpoint when built.",
+  "updated_at": "2026-06-24",
+  "roles": [
+    {"role": "Neurologist", "icon": "🧠", "process": "Governed EEG read",
+     "steps": [
+       {"layer": "data", "mode": "manual", "actor": "Neurologist", "input": "patient EEG file", "process": "upload via UI", "output": "stored recording", "maps_to": "POST /api/analyze-upload"},
+       {"layer": "data", "mode": "auto", "actor": "Pipeline", "input": "EDF/CSV", "process": "parse + 47-feature extract", "output": "feature vector", "maps_to": "eeg_analysis_pipeline"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "signal", "process": "band-power + signal quality", "output": "quality + bands", "maps_to": "analyze_signal"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "features", "process": "trained RF predict", "output": "seizure-risk + confidence", "maps_to": "classify"},
+       {"layer": "accuracy", "mode": "auto", "actor": "XAI", "input": "model+sample", "process": "SHAP TreeExplainer", "output": "top-feature evidence", "maps_to": "GET /api/explain"},
+       {"layer": "process", "mode": "manual", "actor": "Neurologist", "input": "AI reading + SHAP", "process": "confirm or OVERRIDE", "output": "human decision", "maps_to": "hitl_reviews"},
+       {"layer": "reporting", "mode": "auto", "actor": "System", "input": "decision", "process": "write report + audit", "output": "signed report + audit row", "maps_to": "transaction_log"}]},
+    {"role": "EEG Technician", "icon": "📡", "process": "Acquisition QC",
+     "steps": [
+       {"layer": "data", "mode": "manual", "actor": "Technician", "input": "10-20 electrodes", "process": "place + check impedance", "output": "live recording", "maps_to": "eeg_acquisition"},
+       {"layer": "data", "mode": "auto", "actor": "Pipeline", "input": "raw channels", "process": "signal-quality scan", "output": "per-channel quality", "maps_to": "channel_quality"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "channels", "process": "artifact detection", "output": "flagged segments", "maps_to": "artifact_annotations"},
+       {"layer": "process", "mode": "manual", "actor": "Technician", "input": "flags", "process": "re-record bad channels", "output": "clean study", "maps_to": "manual"},
+       {"layer": "reporting", "mode": "auto", "actor": "System", "input": "QC results", "process": "acquisition quality report", "output": "PDF → neurologist", "maps_to": "transaction_log"}]},
+    {"role": "Psychiatrist", "icon": "💬", "process": "Comorbidity screen",
+     "steps": [
+       {"layer": "data", "mode": "manual", "actor": "Psychiatrist", "input": "patient interview", "process": "administer mood/anxiety survey", "output": "survey answers", "maps_to": "surveys"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "answers", "process": "score + flag thresholds", "output": "risk flags", "maps_to": "partial"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "features", "process": "psychogenic-vs-epileptic differential", "output": "likelihood", "maps_to": "planned"},
+       {"layer": "process", "mode": "manual", "actor": "Psychiatrist", "input": "AI flags", "process": "clinical judgment", "output": "assessment", "maps_to": "hitl_reviews"},
+       {"layer": "reporting", "mode": "auto", "actor": "System", "input": "assessment", "process": "psychiatric report", "output": "PDF + audit", "maps_to": "transaction_log"}]},
+    {"role": "Occupational Therapist", "icon": "🖐️", "process": "Functional outcome tracking",
+     "steps": [
+       {"layer": "data", "mode": "manual", "actor": "OT", "input": "ADL assessment", "process": "record functional scores", "output": "outcome record", "maps_to": "outcomes"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "scores over time", "process": "trend + goal-attainment", "output": "progress curve", "maps_to": "partial"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "history", "process": "recovery trajectory forecast", "output": "projected ADL index", "maps_to": "planned"},
+       {"layer": "process", "mode": "manual", "actor": "OT", "input": "trend", "process": "adjust rehab plan", "output": "updated plan", "maps_to": "manual"},
+       {"layer": "reporting", "mode": "auto", "actor": "System", "input": "plan", "process": "functional outcome report", "output": "PDF + audit", "maps_to": "transaction_log"}]},
+    {"role": "IRB / Governance Reviewer", "icon": "⚖️", "process": "AI decision audit",
+     "steps": [
+       {"layer": "process", "mode": "auto", "actor": "Council", "input": "clinical query", "process": "Security guardrail gate", "output": "pass/block", "maps_to": "council_orchestrator"},
+       {"layer": "accuracy", "mode": "auto", "actor": "RAG+Eval", "input": "query", "process": "retrieve → generate → evaluate", "output": "grounded answer", "maps_to": "POST /api/council/run"},
+       {"layer": "process", "mode": "auto", "actor": "Compliance", "input": "decision", "process": "fairness + PII check", "output": "RAI verdict", "maps_to": "GET /api/responsible-ai"},
+       {"layer": "process", "mode": "manual", "actor": "Reviewer", "input": "audit trail", "process": "review overrides + guardrails", "output": "approval", "maps_to": "decision"},
+       {"layer": "reporting", "mode": "auto", "actor": "System", "input": "all events", "process": "governance audit report", "output": "audit trail (UTC+local)", "maps_to": "transaction_log"}]},
+    {"role": "Patient", "icon": "🧑", "process": "Onboarding (step-by-step)",
+     "steps": [
+       {"layer": "process", "mode": "manual", "actor": "Patient", "input": "consent form", "process": "give informed consent", "output": "consent record", "maps_to": "patient onboarding wizard"},
+       {"layer": "data", "mode": "manual", "actor": "Patient", "input": "demographics + history", "process": "fill profile", "output": "patient master", "maps_to": "patient_master"},
+       {"layer": "data", "mode": "auto", "actor": "Pipeline", "input": "uploaded docs", "process": "extract (pdf/image/video/edf)", "output": "structured records", "maps_to": "eeg_ingest"},
+       {"layer": "reporting", "mode": "auto", "actor": "RAG", "input": "query by any clinician", "process": "retrieve + answer", "output": "grounded patient summary", "maps_to": "POST /api/patient-chat"}]}
+  ]
+}

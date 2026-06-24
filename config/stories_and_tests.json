@@ -1,0 +1,27 @@
+{
+  "title": "User Stories · Demo Stories · 9-Dimension Testing Matrix",
+  "updated_at": "2026-06-24",
+  "user_stories": [
+    {"persona": "Neurologist", "story": "As a neurologist, I upload a patient's EEG so the AI gives a seizure-risk reading with SHAP evidence I can confirm or override before signing off.", "endpoint": "POST /api/analyze-upload"},
+    {"persona": "EEG Technician", "story": "As an EEG technician, I upload a recording so the system flags signal-quality and artifact issues before the neurologist reads it.", "endpoint": "POST /api/analyze-upload + channel_quality"},
+    {"persona": "Governance Reviewer", "story": "As an IRB/governance reviewer, I open the audit trail so every AI decision shows who/what/when, guardrail triggers, and fairness gate status.", "endpoint": "GET /api/transactions + /api/responsible-ai"},
+    {"persona": "Patient", "story": "As a patient, I am onboarded step-by-step (consent, demographics, history) and any clinician can ask the RAG chat about my records.", "endpoint": "patient onboarding wizard + POST /api/patient-chat"},
+    {"persona": "Researcher (DBA)", "story": "As the researcher, I run a cross-patient benchmark so I get a leakage-free accuracy number defensible to my committee.", "endpoint": "scripts/cross_patient_benchmark.py"}
+  ],
+  "demo_stories": [
+    {"title": "Governed EEG read (30s)", "script": "Upload EEG → AI predicts seizure-risk + confidence → SHAP shows top features → neurologist confirms/overrides → decision audited.", "shows": "the full Responsible-AI-under-oversight loop"},
+    {"title": "Why oversight matters (45s)", "script": "Show in-sample 0.99 accuracy, then cross-patient CHB-MIT 0.70 (chb04=0.46) → prove leakage inflates numbers → human review is required.", "shows": "the thesis's core evidence"},
+    {"title": "Council of Agents (30s)", "script": "Ask a clinical query → Security gate → Planner → RAG → Eval → Review → Compliance → Audit, each step traced by request_id.", "shows": "governed multi-agent flow"}
+  ],
+  "testing": [
+    {"dim": "API", "tests": "all routes importable + respond; schema validation", "how": "import api_backend; route count; curl /api/*", "status": "built"},
+    {"dim": "Process", "tests": "end-to-end pipelines run (upload→predict→report; council)", "how": "drill / analyze-upload smoke", "status": "partial"},
+    {"dim": "Data", "tests": "EDF/CSV parse, 47-feature extract, no NaN, schema", "how": "eeg_analysis_pipeline.extract_features", "status": "built"},
+    {"dim": "Model", "tests": "models load + predict on held-out samples", "how": "scripts/test_multi_disease_accuracy.py", "status": "built"},
+    {"dim": "Accuracy", "tests": "subject-wise + cross-patient (leakage-free) metrics", "how": "scripts/cross_patient_benchmark.py", "status": "built"},
+    {"dim": "Frontend", "tests": "Vite build passes, components render", "how": "npm run build", "status": "built"},
+    {"dim": "Backend", "tests": "FastAPI boots, 69 routes, DB connects", "how": "import api_backend + clinical_db.init_db", "status": "built"},
+    {"dim": "Pipeline", "tests": "automatic pipelines chain end-to-end", "how": "automatic_pipelines registry + endpoints", "status": "partial"},
+    {"dim": "Manual", "tests": "manual-mode step-by-step (wizard/interview) flows", "how": "UI onboarding wizard + role interview tabs", "status": "partial"}
+  ]
+}

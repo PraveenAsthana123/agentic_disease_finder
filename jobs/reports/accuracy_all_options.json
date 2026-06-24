@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-06-24T00:49:37-06:00",
+  "subjects": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb04"
+  ],
+  "options": {
+    "1_patient_specific": {
+      "method": "per-subject temporal split, ensemble",
+      "per_subject": [
+        {
+          "subject": "chb01",
+          "accuracy": 1.0,
+          "n_test": 20
+        },
+        {
+          "subject": "chb02",
+          "accuracy": 0.8462,
+          "n_test": 13
+        },
+        {
+          "subject": "chb03",
+          "accuracy": 1.0,
+          "n_test": 18
+        },
+        {
+          "subject": "chb04",
+          "accuracy": 0.7273,
+          "n_test": 22
+        }
+      ],
+      "mean_accuracy": 0.8934
+    },
+    "2_cross_patient_rf": {
+      "folds": [
+        {
+          "held_out": "chb01",
+          "accuracy": 0.96,
+          "f1": 0.96
+        },
+        {
+          "held_out": "chb02",
+          "accuracy": 0.8276,
+          "f1": 0.8306
+        },
+        {
+          "held_out": "chb03",
+          "accuracy": 0.878,
+          "f1": 0.8685
+        },
+        {
+          "held_out": "chb04",
+          "accuracy": 0.2453,
+          "f1": 0.2901
+        }
+      ],
+      "mean_accuracy": 0.7277
+    },
+    "3_cross_patient_ensemble": {
+      "folds": [
+        {
+          "held_out": "chb01",
+          "accuracy": 0.94,
+          "f1": 0.941
+        },
+        {
+          "held_out": "chb02",
+          "accuracy": 0.5862,
+          "f1": 0.6065
+        },
+        {
+          "held_out": "chb03",
+          "accuracy": 0.8537,
+          "f1": 0.8388
+        },
+        {
+          "held_out": "chb04",
+          "accuracy": 0.2642,
+          "f1": 0.3103
+        }
+      ],
+      "mean_accuracy": 0.661
+    },
+    "4_cross_patient_ensemble_normed": {
+      "folds": [
+        {
+          "held_out": "chb01",
+          "accuracy": 0.88,
+          "f1": 0.889
+        },
+        {
+          "held_out": "chb02",
+          "accuracy": 0.3793,
+          "f1": 0.369
+        },
+        {
+          "held_out": "chb03",
+          "accuracy": 0.9268,
+          "f1": 0.926
+        },
+        {
+          "held_out": "chb04",
+          "accuracy": 0.3396,
+          "f1": 0.3614
+        }
+      ],
+      "mean_accuracy": 0.6314
+    }
+  }
+}

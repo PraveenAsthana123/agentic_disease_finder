@@ -1,0 +1,40 @@
+{
+  "title": "Per-Role Testing Matrix",
+  "note": "Each role: test rows scoped to that role's flow across api/data/model/accuracy/process/frontend/manual. status: pass (verified) / partial / planned.",
+  "updated_at": "2026-06-24",
+  "roles": [
+    {"role": "Neurologist", "tests": [
+      {"dim": "API", "case": "POST /api/analyze-upload returns prediction+confidence", "status": "pass"},
+      {"dim": "Data", "case": "EDF parses, 47 features, no NaN", "status": "pass"},
+      {"dim": "Model", "case": "RF predicts seizure label on held-out sample", "status": "pass"},
+      {"dim": "Accuracy", "case": "SHAP top features returned for prediction", "status": "pass"},
+      {"dim": "Process", "case": "override writes hitl_reviews row", "status": "partial"},
+      {"dim": "Manual", "case": "neurologist can confirm/override in UI", "status": "partial"}]},
+    {"role": "EEG Technician", "tests": [
+      {"dim": "API", "case": "upload returns channel_quality", "status": "pass"},
+      {"dim": "Data", "case": "per-channel quality computed", "status": "pass"},
+      {"dim": "Process", "case": "artifact segments flagged", "status": "partial"},
+      {"dim": "Manual", "case": "re-record bad channels flow", "status": "partial"}]},
+    {"role": "Psychiatrist", "tests": [
+      {"dim": "Data", "case": "survey answers persist", "status": "pass"},
+      {"dim": "Process", "case": "mood/anxiety thresholds flag", "status": "partial"},
+      {"dim": "Model", "case": "psychogenic-vs-epileptic differential", "status": "planned"},
+      {"dim": "Manual", "case": "clinical judgment recorded", "status": "partial"}]},
+    {"role": "Occupational Therapist", "tests": [
+      {"dim": "Data", "case": "outcome scores persist", "status": "partial"},
+      {"dim": "Process", "case": "goal-attainment trend", "status": "planned"},
+      {"dim": "Model", "case": "recovery trajectory forecast", "status": "planned"},
+      {"dim": "Manual", "case": "rehab plan update", "status": "planned"}]},
+    {"role": "IRB / Governance Reviewer", "tests": [
+      {"dim": "API", "case": "POST /api/council/run completes governed flow", "status": "pass"},
+      {"dim": "Process", "case": "security guardrail blocks injection", "status": "pass"},
+      {"dim": "Accuracy", "case": "fairness gate (DI/EO) computed", "status": "pass"},
+      {"dim": "Process", "case": "PII scan flags sensitive data", "status": "pass"},
+      {"dim": "Manual", "case": "reviewer approves via decision route", "status": "pass"}]},
+    {"role": "Patient", "tests": [
+      {"dim": "Process", "case": "consent recorded before data capture", "status": "partial"},
+      {"dim": "Data", "case": "multi-format ingest → per-patient folder", "status": "pass"},
+      {"dim": "API", "case": "POST /api/patient-chat returns grounded answer", "status": "pass"},
+      {"dim": "Manual", "case": "step-by-step onboarding wizard", "status": "partial"}]}
+  ]
+}
