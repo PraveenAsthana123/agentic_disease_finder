@@ -166,7 +166,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -564,6 +564,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'flowcharts' && <FlowchartsPanel />}
         {activeSub === 'role_specs' && <RoleSpecsPanel />}
         {activeSub === 'data_formats' && <DataFormatsPanel />}
+        {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -3566,6 +3567,77 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function SystemHealthPanel() {
+  const [h, setH] = useState(null)
+  const [ts, setTs] = useState('')
+  const load = () => axios.get(`${API_URL}/system-health`).then(r => { setH(r.data); setTs(new Date().toLocaleTimeString()) }).catch(() => setH(null))
+  useEffect(() => { load() }, [])
+  if (!h) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010) — restart with: python3 api_backend.py</div></div>
+  const dot = (up) => <span style={{ color: up ? '#16a34a' : '#f44336', fontWeight: 700 }}>{up ? '● UP' : '● DOWN'}</span>
+  const Tile = ({ label, value, sub, up }) => (
+    <div style={{ flex: '1 1 160px', padding: 14, background: '#fff', border: '1px solid #e5e7eb', borderRadius: 10, borderTop: `3px solid ${up === false ? '#f44336' : '#16a34a'}` }}>
+      <div style={{ fontSize: 11, color: '#64748b' }}>{label}</div>
+      <div style={{ fontSize: 22, fontWeight: 700, color: '#0f172a' }}>{value}</div>
+      {sub && <div style={{ fontSize: 11, color: '#475569' }}>{sub}</div>}
+    </div>
+  )
+  const reg = h.registries || {}
+  const regCard = (name, r) => (
+    <div key={name} style={{ flex: '1 1 180px', padding: 10, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8 }}>
+      <div style={{ fontSize: 12, fontWeight: 600, color: '#0f172a' }}>{name}</div>
+      <div style={{ fontSize: 11, color: '#475569' }}>total {r.total}</div>
+      <div style={{ display: 'flex', gap: 8, fontSize: 11, marginTop: 2 }}>
+        {r.built != null && <span style={{ color: '#16a34a' }}>built {r.built}</span>}
+        {r.partial != null && <span style={{ color: '#fb8c00' }}>partial {r.partial}</span>}
+        {r.planned != null && <span style={{ color: '#94a3b8' }}>planned {r.planned}</span>}
+      </div>
+    </div>
+  )
+  const db = h.database || {}
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>💚 System Health</h3>
+          <span style={{ fontSize: 11, color: '#64748b' }}>checked {ts}</span>
+          <button onClick={load} style={{ marginLeft: 'auto', padding: '5px 12px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 12 }}>↻ Refresh</button>
+        </div>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 12 }}>
+          <Tile label="Backend (:8010)" value={dot(h.backend?.up)} sub={`${h.backend?.routes || 0} routes`} up={h.backend?.up} />
+          <Tile label="Ollama (:11434)" value={dot(h.ollama?.up)} sub={`${h.ollama?.model_count || 0} models`} up={h.ollama?.up} />
+          <Tile label="Database" value={dot(db.up)} sub={`${db.tables || 0} tables · ${db.populated || 0} populated`} up={db.up} />
+          <Tile label="Agents working" value={reg.agents?.built || 0} sub={`of ${reg.agents?.total || 0} registered`} />
+        </div>
+      </div>
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📋 Feature registries (built / partial / planned)</div>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          {regCard('Agents', reg.agents || {})}{regCard('Roles (17)', reg.roles || {})}
+          {regCard('Patient sections', reg.patient_sections || {})}{regCard('Data formats', reg.data_formats || {})}
+        </div>
+      </div>
+      {h.ollama?.up && (
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>🦙 Ollama models</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            {(h.ollama.models || []).map((m, i) => <span key={i} style={{ fontSize: 11, padding: '2px 8px', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, color: '#166534' }}>{m}</span>)}
+          </div>
+        </div>
+      )}
+      {db.row_counts && (
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>🗄️ Database tables ({db.tables})</div>
+          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+            {Object.entries(db.row_counts).sort((a, b) => b[1] - a[1]).map(([t, n]) => (
+              <span key={t} style={{ fontSize: 10, padding: '2px 6px', borderRadius: 4, background: n > 0 ? '#dcfce7' : '#f1f5f9', color: n > 0 ? '#166534' : '#94a3b8' }}>{t}:{n}</span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

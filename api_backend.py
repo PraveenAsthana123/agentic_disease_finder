@@ -592,6 +592,52 @@ async def agent_tasks():
     return json.loads(p.read_text())
 
 
+@app.get("/api/system-health")
+async def system_health():
+    """Live status of every sub-system — answers 'what is working?' in one call."""
+    import urllib.request
+    from collections import Counter
+    root = Path(__file__).parent
+    out = {"backend": {"up": True, "routes": len(app.routes)}}
+
+    # Ollama
+    try:
+        with urllib.request.urlopen("http://localhost:11434/api/tags", timeout=3) as r:
+            models = [m["name"] for m in json.loads(r.read()).get("models", [])]
+        out["ollama"] = {"up": True, "model_count": len(models), "models": models[:10]}
+    except Exception:
+        out["ollama"] = {"up": False, "models": []}
+
+    # DB
+    try:
+        tbls = cdb.list_transactions(limit=1)  # touches DB
+        with cdb._connect() as c:
+            names = [r[0] for r in c.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").fetchall()]
+            counts = {t: c.execute(f"SELECT count(*) FROM {t}").fetchone()[0] for t in names}
+        out["database"] = {"up": True, "tables": len(names), "populated": sum(1 for v in counts.values() if v > 0),
+                           "row_counts": counts}
+    except Exception as e:
+        out["database"] = {"up": False, "error": str(e)[:120]}
+
+    # Registries (built/partial/planned tallies)
+    def tally(fname, key):
+        try:
+            d = json.loads((root / "config" / fname).read_text())
+            items = d.get(key, [])
+            c = Counter(i.get("status") or i.get("in_project") for i in items)
+            return {"total": len(items), **{k: v for k, v in c.items() if k}}
+        except Exception:
+            return {"total": 0}
+    out["registries"] = {
+        "agents": tally("agent_tasks.json", "agents"),
+        "roles": tally("role_specs.json", "roles"),
+        "patient_sections": tally("patient_module.json", "sections"),
+        "data_formats": tally("eeg_data_formats.json", "formats"),
+    }
+    return out
+
+
 @app.get("/api/production-issues")
 async def production_issues():
     """Enterprise production-issue troubleshooting catalog (18 layers) + detection mapping."""
