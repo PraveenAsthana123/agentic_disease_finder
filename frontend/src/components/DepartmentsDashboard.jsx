@@ -860,7 +860,6 @@ function DataPanel({ disease, dept }) {
           <input type="file" accept=".edf,.bdf,.fif,.mat,.csv,.tsv,.txt,.dat,.pdf,.png,.jpg,.jpeg,.docx,.mp4,.mov,.avi,.webm,.mkv,.3gp,.m4v,.flv,.wmv" onChange={handleUpload} disabled={analyzing} style={{ display: 'none' }} />
         </label>
         {analyzeErr && <div style={{ marginTop: 12, background: '#fee2e2', border: '1px solid #fca5a5', color: '#991b1b', borderRadius: 6, padding: 12 }}>{analyzeErr}</div>}
-        {analysis && <AnalysisResult result={analysis} />}
 
         {/* Activity log — shows each upload phase so you can see exactly where it fails */}
         <div style={{ marginTop: 12 }}>
@@ -878,6 +877,18 @@ function DataPanel({ disease, dept }) {
           </div>
         </div>
       </div>
+
+      {/* 📋 OUTPUT REPORT — appears right after upload, BEFORE transaction history */}
+      {analysis && (
+        <div style={{ ...card, borderLeft: '4px solid #16a34a' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <h3 style={{ margin: 0, color: '#0f172a' }}>📋 Output Report</h3>
+            <span style={{ fontSize: 12, color: '#16a34a' }}>✓ {analysis.file || 'uploaded'} analyzed</span>
+            <span style={{ marginLeft: 'auto', fontSize: 11, color: '#64748b' }}>full component report → 📋 EEG / VEEG Report tab</span>
+          </div>
+          <AnalysisResult result={analysis} />
+        </div>
+      )}
 
       {/* Transaction history — every upload appears here with date+time stamp */}
       <div style={card}>
@@ -1762,16 +1773,22 @@ function TabScaffold({ tabId, label, dept, children }) {
   const ipo = [['Input', t.input || d.input], ['Process', t.process || d.process], ['Output', t.output || d.output]]
   const viz = t.viz || d.viz
   const sec = { background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, marginBottom: 10 }
+  // Dashboard-type tabs don't need ToDo / Process Flow / Input-Process-Output scaffolding.
+  const dashIds = ['r_dashboard', 'kpi', 'admin_dash', 'dash_catalog', 'sys_health']
+  const isDashboard = dashIds.includes(tabId) || /dashboard/i.test(label || '')
 
   return (
     <div>
-      {/* 1. Goal */}
-      <div style={{ ...sec, borderLeft: '4px solid #1e88e5', background: '#f8fafc' }}>
-        <span style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase' }}>🎯 Goal</span>
-        <div style={{ fontSize: 13, color: '#0f172a', marginTop: 2 }}>{goal}</div>
-      </div>
+      {/* 1. Goal — NOT on dashboard tabs */}
+      {!isDashboard && (
+        <div style={{ ...sec, borderLeft: '4px solid #1e88e5', background: '#f8fafc' }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase' }}>🎯 Goal</span>
+          <div style={{ fontSize: 13, color: '#0f172a', marginTop: 2 }}>{goal}</div>
+        </div>
+      )}
 
-      {/* 2. ToDo + 3. Process flow (horizontal) side by side */}
+      {/* 2. ToDo + 3. Process flow — NOT on dashboard tabs */}
+      {!isDashboard && (
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         <div style={{ ...sec, flex: '1 1 280px' }}>
           <span style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed', textTransform: 'uppercase' }}>✅ ToDo</span>
@@ -1793,8 +1810,10 @@ function TabScaffold({ tabId, label, dept, children }) {
           </div>
         </div>
       </div>
+      )}
 
-      {/* 4-6. Input / Process / Output */}
+      {/* 4-6. Input / Process / Output — NOT on dashboard tabs */}
+      {!isDashboard && (
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
         {ipo.map(([k, v], i) => (
           <div key={i} style={{ ...sec, flex: '1 1 200px', marginBottom: 0, borderTop: `3px solid ${['#43a047', '#fb8c00', '#1e88e5'][i]}` }}>
@@ -1803,6 +1822,7 @@ function TabScaffold({ tabId, label, dept, children }) {
           </div>
         ))}
       </div>
+      )}
 
       {/* MAIN CONTENT — keyed on tab so it cleanly fades once per switch (no jank) */}
       <div className="tab-content" key={tabId}>{children}</div>
