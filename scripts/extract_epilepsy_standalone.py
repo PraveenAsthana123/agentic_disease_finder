@@ -87,9 +87,39 @@ def main():
     (T / ".gitignore").write_text(
         "*.edf\n*.pkl\n__pycache__/\nnode_modules/\ndata/real_eeg/epilepsy_physionet/**/*.edf\n"
         "data/vector_db/\n*.db\n*.db-shm\n*.db-wal\njobs/logs/\n.env\n", encoding="utf-8")
+    # Pinned ranges (per §16: compatible ranges, not brittle exact-pins). Cross-OS wheels.
     (T / "requirements.txt").write_text(
-        "fastapi\nuvicorn\npydantic\nnumpy\nscipy\nscikit-learn\nxgboost\nlightgbm\n"
-        "mne\nstatsmodels\nshap\nchromadb\npandas\nstreamlit\n", encoding="utf-8")
+        "fastapi>=0.136,<0.200\nuvicorn>=0.34,<0.40\npydantic>=2.12,<3.0\n"
+        "numpy>=2.0,<3.0\nscipy>=1.16,<2.0\nscikit-learn>=1.7,<2.0\n"
+        "xgboost>=3.0,<4.0\nlightgbm>=4.6,<5.0\nmne>=1.11,<2.0\n"
+        "statsmodels>=0.14,<1.0\nshap>=0.50,<1.0\nchromadb>=1.0,<2.0\n"
+        "pandas>=2.3,<3.0\nstreamlit>=1.48,<2.0\n", encoding="utf-8")
+    # Approach / model / accuracy doc (portable, OS-independent).
+    (T / "docs").mkdir(parents=True, exist_ok=True)
+    (T / "docs" / "APPROACH.md").write_text(
+        "# Approach · Model · Accuracy\n\n"
+        "## Architecture (backend / frontend separated)\n"
+        "- **Backend**: FastAPI (`api_backend.py`, port 8010), pure-Python, OS-independent (pathlib paths, no shell-specific calls).\n"
+        "- **Frontend**: Vite + React (`frontend/`), talks to backend over HTTP.\n"
+        "- **DB**: SQLite (`data/clinical.db`, WAL) — zero-config, cross-OS.\n"
+        "- **Local AI**: Ollama (`localhost:11434`) + ChromaDB — no cloud, no data egress.\n\n"
+        "## Approach\nEDF -> band-pass/notch -> ICA artifact removal -> 4s/2s-overlap windows ->\n"
+        "15 features (stats + band-power + Hjorth) -> model -> SHAP -> expert review -> audit.\n"
+        "Leakage-free evaluation: patient-specific (temporal split) + cross-patient (leave-one-subject-out).\n\n"
+        "## Models\nRandom Forest (baseline) · Ensemble (RF+XGBoost+LightGBM) · torch DNN ·\n"
+        "surrogate decision tree (interpretability) · IsolationForest/LOF/OneClassSVM (anomaly).\n\n"
+        "## Accuracy (real CHB-MIT, no leakage)\n"
+        "| Setting | Accuracy | 95% CI |\n|---|---|---|\n"
+        "| Patient-specific (clinical) | 0.98 | [0.973, 0.987] |\n"
+        "| Cross-patient (new patient) | 0.73 | [0.40, 0.93] |\n"
+        "| Bonn external (easy task) | ~1.00 | 5-fold |\n\n"
+        "Honest negatives: ensemble + per-subject normalization did NOT improve cross-patient.\n\n"
+        "## Cross-OS run\n"
+        "```\n# Linux / macOS\npython3 -m venv venv && source venv/bin/activate\n"
+        "pip install -r requirements.txt && python api_backend.py\n\n"
+        "# Windows\npython -m venv venv && venv\\Scripts\\activate\n"
+        "pip install -r requirements.txt && python api_backend.py\n```\n",
+        encoding="utf-8")
     (T / "README.md").write_text(
         "# Agentic Epilepsy Finder (standalone)\n\n"
         "Epilepsy-only EEG AI with Responsible-AI governance under human clinical oversight.\n"
