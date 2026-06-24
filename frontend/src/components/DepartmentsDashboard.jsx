@@ -302,7 +302,7 @@ const CLINICAL_FORMS = {
     label: 'Risk Management', table: 'risk_management',
     fields: [
       { k: 'risk_type', label: 'Risk type', type: 'select', options: ['False Negative', 'False Positive', 'Wrong Classification', 'Data Quality', 'Bias'] },
-      { k: 'severity', label: 'Severity', type: 'select', options: ['Low', 'Medium', 'High'] },
+      { k: 'severity', label: 'Severity', type: 'select', options: ['Low', 'Medium', 'High'], req: true },
       { k: 'likelihood', label: 'Likelihood', type: 'select', options: ['Low', 'Medium', 'High'] },
       { k: 'impact', label: 'Impact', type: 'text', placeholder: 'Patient harm' },
       { k: 'mitigation', label: 'Mitigation', type: 'text', placeholder: 'Neurologist review' },
@@ -375,9 +375,9 @@ const CLINICAL_FORMS = {
     fields: [
       { k: 'study_id', label: 'Study ID', type: 'text', placeholder: 'EEG2026-001' },
       { k: 'eeg_date', label: 'EEG Date', type: 'text', placeholder: '2026-06-23' },
-      { k: 'start_time', label: 'Start Time', type: 'text', placeholder: '14:30' },
-      { k: 'end_time', label: 'End Time', type: 'text', placeholder: '15:15' },
-      { k: 'duration_min', label: 'Duration (min)', type: 'number' },
+      { k: 'start_time', label: 'Start Time', type: 'text', placeholder: '14:30', req: true },
+      { k: 'end_time', label: 'End Time', type: 'text', placeholder: '15:15', req: true },
+      { k: 'duration_min', label: 'Duration (min)', type: 'number', req: true },
       { k: 'hospital', label: 'Hospital', type: 'text' },
       { k: 'technician', label: 'Technician Name', type: 'text' },
       { k: 'neurologist', label: 'Neurologist Name', type: 'text' },
@@ -386,12 +386,12 @@ const CLINICAL_FORMS = {
       { k: 'serial', label: 'Serial Number', type: 'text' },
       { k: 'software_version', label: 'Software Version', type: 'text' },
       { k: 'calibration', label: 'Calibration Status', type: 'select', options: ['Pass', 'Fail'] },
-      { k: 'sampling_rate', label: 'Sampling Rate (Hz)', type: 'number', placeholder: '256' },
+      { k: 'sampling_rate', label: 'Sampling Rate (Hz)', type: 'number', placeholder: '256', req: true },
       { k: 'resolution_bit', label: 'Resolution (bit)', type: 'number', placeholder: '16' },
       { k: 'high_pass', label: 'High Pass Filter (Hz)', type: 'number' },
       { k: 'low_pass', label: 'Low Pass Filter (Hz)', type: 'number' },
       { k: 'notch', label: 'Notch Filter', type: 'select', options: ['50 Hz', '60 Hz', 'OFF'] },
-      { k: 'file_format', label: 'File Format', type: 'select', options: ['EDF', 'BDF', 'FIF'] },
+      { k: 'file_format', label: 'File Format', type: 'select', options: ['EDF', 'BDF', 'FIF'], req: true },
       { k: 'file_size_mb', label: 'File Size (MB)', type: 'number' },
     ],
   },
@@ -399,23 +399,23 @@ const CLINICAL_FORMS = {
     label: 'Channel + Electrode Quality', table: 'channel_quality',
     fields: [
       { k: 'electrode_system', label: 'Electrode System', type: 'select', options: ['10-20', '10-10', 'Custom'] },
-      { k: 'n_channels', label: 'Number of Channels', type: 'number', placeholder: '21' },
+      { k: 'n_channels', label: 'Number of Channels', type: 'number', placeholder: '21', req: true },
       { k: 'montage', label: 'Montage Type', type: 'select', options: ['Bipolar', 'Referential', 'Average', 'Laplacian'] },
-      { k: 'channel_list', label: 'Channel Names', type: 'text', placeholder: 'Fp1,Fp2,F3,F4,C3,C4…' },
+      { k: 'channel_list', label: 'Channel Names', type: 'text', placeholder: 'Fp1,Fp2,F3,F4,C3,C4…', req: true },
       { k: 'missing_channels', label: 'Missing Channels', type: 'text', placeholder: 'None' },
-      { k: 'impedance', label: 'Electrode Impedance', type: 'text', placeholder: '<5 kΩ' },
+      { k: 'impedance', label: 'Electrode Impedance', type: 'text', placeholder: '<5 kΩ', req: true },
       { k: 'bad_channels', label: 'Bad / Poor-contact Channels', type: 'text', placeholder: 'T5' },
       { k: 'disconnected', label: 'Disconnected Electrodes', type: 'select', options: ['No', 'Yes'] },
       { k: 'reposition', label: 'Reposition Required', type: 'select', options: ['No', 'Yes'] },
-      { k: 'qc_pass', label: 'Signal QC Pass', type: 'select', options: ['Yes', 'No'] },
+      { k: 'qc_pass', label: 'Signal QC Pass', type: 'select', options: ['Yes', 'No'], req: true },
     ],
   },
   recording_conditions: {
     label: 'Recording Conditions + Provocative', table: 'recording_conditions',
     fields: [
-      { k: 'awake', label: 'Awake', type: 'select', options: ['Yes', 'No'] },
+      { k: 'awake', label: 'Awake', type: 'select', options: ['Yes', 'No'], req: true },
       { k: 'drowsy', label: 'Drowsy', type: 'select', options: ['No', 'Yes'] },
-      { k: 'sleep_stage', label: 'Sleep Stage', type: 'select', options: ['Awake', 'N1', 'N2', 'N3', 'REM'] },
+      { k: 'sleep_stage', label: 'Sleep Stage', type: 'select', options: ['Awake', 'N1', 'N2', 'N3', 'REM'], req: true },
       { k: 'sleep_deprived', label: 'Sleep Deprived', type: 'select', options: ['No', 'Yes'] },
       { k: 'sedation', label: 'Sedation Used', type: 'select', options: ['No', 'Yes'] },
       { k: 'cooperative', label: 'Patient Cooperative', type: 'select', options: ['Yes', 'No'] },
@@ -429,7 +429,7 @@ const CLINICAL_FORMS = {
   clinical_history: {
     label: 'Clinical History', table: 'clinical_history',
     fields: [
-      { k: 'previous_eeg', label: 'Previous EEG', type: 'select', options: ['No', 'Yes'] },
+      { k: 'previous_eeg', label: 'Previous EEG', type: 'select', options: ['No', 'Yes'], req: true },
       { k: 'previous_mri', label: 'Previous MRI', type: 'select', options: ['No', 'Yes'] },
       { k: 'family_history', label: 'Family History', type: 'select', options: ['No', 'Yes'] },
       { k: 'head_trauma', label: 'Head Trauma', type: 'select', options: ['No', 'Yes'] },
@@ -440,11 +440,11 @@ const CLINICAL_FORMS = {
   event_annotations: {
     label: 'Event Annotation (AI label source)', table: 'event_annotations',
     fields: [
-      { k: 'event_id', label: 'Event ID', type: 'text', placeholder: 'EVT001' },
-      { k: 'event_type', label: 'Event Type', type: 'select', options: ['Seizure', 'IED/Spike', 'Sharp Wave', 'Artifact', 'Normal Variant'] },
+      { k: 'event_id', label: 'Event ID', type: 'text', placeholder: 'EVT001', req: true },
+      { k: 'event_type', label: 'Event Type', type: 'select', options: ['Seizure', 'IED/Spike', 'Sharp Wave', 'Artifact', 'Normal Variant'], req: true },
       { k: 'start_time', label: 'Start Time', type: 'text', placeholder: '00:12:15' },
       { k: 'end_time', label: 'End Time', type: 'text', placeholder: '00:13:04' },
-      { k: 'duration_sec', label: 'Duration (sec)', type: 'number' },
+      { k: 'duration_sec', label: 'Duration (sec)', type: 'number', req: true },
       { k: 'clinical_correlation', label: 'Clinical Correlation', type: 'text', placeholder: 'Right arm jerk' },
       { k: 'video_available', label: 'Video Available', type: 'select', options: ['Yes', 'No'] },
     ],
@@ -452,12 +452,12 @@ const CLINICAL_FORMS = {
   artifact_annotations: {
     label: 'Artifact Annotation', table: 'artifact_annotations',
     fields: [
-      { k: 'eye_blink', label: 'Eye Blink', type: 'select', options: ['None', 'Present'] },
-      { k: 'muscle', label: 'Muscle Artifact', type: 'select', options: ['None', 'Present'] },
+      { k: 'eye_blink', label: 'Eye Blink', type: 'select', options: ['None', 'Present'], req: true },
+      { k: 'muscle', label: 'Muscle Artifact', type: 'select', options: ['None', 'Present'], req: true },
       { k: 'ecg', label: 'ECG Artifact', type: 'select', options: ['None', 'Present'] },
-      { k: 'movement', label: 'Movement Artifact', type: 'select', options: ['None', 'Present'] },
+      { k: 'movement', label: 'Movement Artifact', type: 'select', options: ['None', 'Present'], req: true },
       { k: 'electrode_pop', label: 'Electrode Pop', type: 'select', options: ['None', 'Present'] },
-      { k: 'power_line', label: 'Power Line Noise', type: 'select', options: ['None', 'Mild', 'Moderate', 'Severe'] },
+      { k: 'power_line', label: 'Power Line Noise', type: 'select', options: ['None', 'Mild', 'Moderate', 'Severe'], req: true },
       { k: 'severity', label: 'Overall Severity (0-4)', type: 'select', options: ['0 None', '1 Mild', '2 Moderate', '3 Severe', '4 Unusable'] },
       { k: 'artifact_pct', label: 'Artifact Percentage', type: 'number' },
     ],
@@ -465,12 +465,12 @@ const CLINICAL_FORMS = {
   eeg_interpretation: {
     label: 'Neurologist Interpretation', table: 'eeg_interpretation',
     fields: [
-      { k: 'background_rhythm', label: 'Background Rhythm', type: 'text', placeholder: 'Alpha 10 Hz' },
+      { k: 'background_rhythm', label: 'Background Rhythm', type: 'text', placeholder: 'Alpha 10 Hz', req: true },
       { k: 'focal_abnormality', label: 'Focal Abnormality', type: 'text', placeholder: 'Left Temporal' },
       { k: 'generalized_abnormality', label: 'Generalized Abnormality', type: 'select', options: ['No', 'Yes'] },
-      { k: 'epileptiform', label: 'Epileptiform Discharge', type: 'select', options: ['None', 'Present'] },
-      { k: 'seizure_captured', label: 'Seizure Captured', type: 'select', options: ['No', 'Yes'] },
-      { k: 'impression', label: 'Impression', type: 'text', placeholder: 'Temporal Lobe Epilepsy' },
+      { k: 'epileptiform', label: 'Epileptiform Discharge', type: 'select', options: ['None', 'Present'], req: true },
+      { k: 'seizure_captured', label: 'Seizure Captured', type: 'select', options: ['No', 'Yes'], req: true },
+      { k: 'impression', label: 'Impression', type: 'text', placeholder: 'Temporal Lobe Epilepsy', req: true },
     ],
   },
 }
@@ -950,8 +950,12 @@ function ClinicalFormsPanel() {
   const [status, setStatus] = useState(null)
   const [saving, setSaving] = useState(false)
   const [history, setHistory] = useState([])
+  const [mode, setMode] = useState('required')  // 'required' | 'full'
 
   const cfg = CLINICAL_FORMS[active]
+  const hasReq = (cfg.fields || []).some(f => f.req)
+  // 'required' → only fields flagged req (if the form marks any); 'full' → everything.
+  const shownFields = (mode === 'required' && hasReq) ? cfg.fields.filter(f => f.req) : cfg.fields
 
   const loadHistory = useCallback(async () => {
     if (!patientId) { setHistory([]); return }
@@ -992,15 +996,28 @@ function ClinicalFormsPanel() {
       </div>
 
       <div style={card}>
-        <h3 style={{ marginTop: 0, color: '#0f172a' }}>{cfg.label}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>{cfg.label}</h3>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 0, border: '1px solid #cbd5e1', borderRadius: 6, overflow: 'hidden' }}>
+            {['required', 'full'].map(m => (
+              <button key={m} onClick={() => setMode(m)} style={{
+                border: 'none', cursor: 'pointer', padding: '6px 14px', fontSize: 12, fontWeight: 600,
+                background: mode === m ? '#1e88e5' : '#fff', color: mode === m ? '#fff' : '#475569',
+              }}>{m === 'required' ? '★ Required' : 'Full'}</button>
+            ))}
+          </div>
+        </div>
+        <div style={{ fontSize: 11, color: '#64748b', margin: '4px 0 12px' }}>
+          {mode === 'required' && hasReq ? `Showing ${shownFields.length} required (AI-mandatory) of ${cfg.fields.length} fields` : `Showing all ${cfg.fields.length} fields`}
+        </div>
         <div style={{ marginBottom: 14, maxWidth: 260 }}>
           <label style={lbl}>Patient ID *</label>
           <input style={inp} value={patientId} onChange={e => setPatientId(e.target.value)} placeholder="P0001" />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 14 }}>
-          {cfg.fields.map(f => (
+          {shownFields.map(f => (
             <div key={f.k}>
-              <label style={lbl}>{f.label}</label>
+              <label style={lbl}>{f.label}{f.req && <span style={{ color: '#f44336' }}> *</span>}</label>
               {f.type === 'select' ? (
                 <select style={inp} value={values[f.k] ?? ''} onChange={e => setValues({ ...values, [f.k]: e.target.value })}>
                   {f.options.map(o => <option key={o} value={o}>{o || '—'}</option>)}
