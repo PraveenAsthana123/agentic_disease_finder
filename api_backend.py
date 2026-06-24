@@ -31,6 +31,7 @@ import eeg_anomaly
 import eeg_datascience
 import eeg_timeseries_stats
 import council_orchestrator
+import knowledge_graph as kg
 
 # Ensure the clinical database/tables exist on import.
 cdb.init_db()
@@ -818,6 +819,12 @@ async def admin_module():
     """ADMIN: team roles + ops dashboards (cloud/devops/db/model/llmops/mlops/secops)."""
     p = Path(__file__).parent / "config" / "admin_module.json"
     return json.loads(p.read_text()) if p.exists() else {"team_roles": [], "ops_dashboards": []}
+
+
+@app.get("/api/knowledge-graph")
+async def knowledge_graph(role: str = "", patient_id: str = ""):
+    """RDF/RDFS relationship graph (per role / per patient) — nodes, edges, Mermaid."""
+    return kg.build_graph(role or None, patient_id or None)
 
 
 @app.get("/api/flowcharts")

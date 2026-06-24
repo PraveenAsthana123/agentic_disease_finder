@@ -210,6 +210,7 @@ function subTabsFor(dept) {
     { id: 'r_assessments', label: 'Assessments' },
     { id: 'r_chat', label: '💬 Team Chat' },
     { id: 'r_genai', label: '🤖 GenAI Bot' },
+    { id: 'r_graph', label: '🕸️ Relationship Graph' },
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
     { id: 'clinical', label: 'Clinical' },
@@ -452,6 +453,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'r_assessments' && <RoleAssessments roleName={dept.name} />}
         {activeSub === 'r_chat' && <RoleChat roleName={dept.name} />}
         {activeSub === 'r_genai' && <GenAiBotPanel roleName={dept.name} />}
+        {activeSub === 'r_graph' && <RoleGraph roleName={dept.name} />}
         {activeSub === 'challenges' && <ListPanel title="Key Challenges" items={dept.challenges} icon="⚠️" />}
         {activeSub === 'tasks' && <ListPanel title="Responsibilities & Tasks" items={dept.tasks} ordered />}
         {activeSub === 'data' && <DataPanel disease={selectedDisease} dept={dept} />}
@@ -2762,6 +2764,53 @@ function StudyReviewPanel() {
           </div>
         ))}
         {!sr?.expert_reviews?.length && <div style={{ color: '#94a3b8' }}>No expert reviews yet.</div>}
+      </div>
+    </div>
+  )
+}
+
+function RoleGraph({ roleName }) {
+  const [g, setG] = useState(null)
+  const [pid, setPid] = useState('')
+  const ref = React.useRef(null)
+  const load = () => axios.get(`${API_URL}/knowledge-graph`, { params: { role: roleName, patient_id: pid } }).then(r => setG(r.data)).catch(() => setG(null))
+  useEffect(() => { load() }, [roleName])
+  useEffect(() => {
+    if (g && g.mermaid && ref.current) {
+      ref.current.removeAttribute('data-processed')
+      ref.current.textContent = g.mermaid
+      try { mermaid.run({ nodes: [ref.current] }) } catch (e) { /* noop */ }
+    }
+  }, [g])
+  if (!g) return <div style={card}><div style={{ color: '#64748b' }}>Loading… (backend :8010)</div></div>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🕸️ Relationship Graph — {roleName}</h3>
+        <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8 }}>
+          RDF/RDFS knowledge graph ({g.engine}, {g.triples_count} triples). Entities relevant to this role: {(g.schema?.classes || []).join(', ')}.
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <input value={pid} onChange={e => setPid(e.target.value)} placeholder="filter by patient id (optional)" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 180 }} />
+          <button onClick={load} style={{ padding: '6px 14px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load graph</button>
+          <span style={{ fontSize: 12, color: '#64748b' }}>{g.nodes?.length || 0} nodes · {g.edges?.length || 0} relationships</span>
+        </div>
+      </div>
+      <div style={card}>
+        <div ref={ref} className="mermaid" style={{ overflowX: 'auto' }}>{g.mermaid}</div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Relationships (triples)</h4>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Subject</th><th style={cellTh}>Relationship</th><th style={cellTh}>Object</th></tr></thead>
+            <tbody>{(g.edges || []).map((e, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={cellTd}>{e.from}</td><td style={{ ...cellTd, color: '#8e24aa', fontWeight: 600 }}>{e.rel}</td><td style={cellTd}>{e.to}</td>
+              </tr>
+            ))}{!(g.edges || []).length && <tr><td style={cellTd} colSpan={3}>No relationships yet for this role.</td></tr>}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
