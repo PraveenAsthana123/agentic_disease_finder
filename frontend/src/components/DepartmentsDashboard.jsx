@@ -523,22 +523,43 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
           <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>disease context: <strong>{selectedDisease}</strong></span>
         </div>
 
-        {/* SUB MENU — horizontal tab bar at top (was left aside) */}
-        {!extra && subs.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: '8px 0 12px', borderBottom: '1px solid #e5e7eb', marginBottom: 14 }}>
-            {subs.map(s => {
-              const active = s.id === activeSub
-              return (
-                <button key={s.id} onClick={() => setActiveSub(s.id)} style={{
-                  border: active ? '1px solid #1e88e5' : '1px solid #e2e8f0', cursor: 'pointer',
-                  borderRadius: 16, padding: '6px 12px', fontSize: 12,
-                  background: active ? '#1e88e5' : '#f8fafc', color: active ? '#fff' : '#475569',
-                  fontWeight: active ? 600 : 400, whiteSpace: 'nowrap',
-                }}>{s.label}</button>
-              )
-            })}
-          </div>
-        )}
+        {/* SUB MENU — horizontal scrollable tab bar at top, with Prev/Next sequencing */}
+        {!extra && subs.length > 0 && (() => {
+          const idx = Math.max(0, subs.findIndex(s => s.id === activeSub))
+          const go = (delta) => { const n = (idx + delta + subs.length) % subs.length; setActiveSub(subs[n].id) }
+          const navBtn = (label, delta) => (
+            <button onClick={() => go(delta)} title={delta < 0 ? 'Previous tab' : 'Next tab'} style={{
+              border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer', borderRadius: 6,
+              padding: '6px 10px', fontSize: 13, fontWeight: 600, color: '#1e88e5', flexShrink: 0,
+            }}>{label}</button>
+          )
+          return (
+            <div style={{ marginBottom: 14, borderBottom: '1px solid #e5e7eb', paddingBottom: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                {navBtn('◀ Prev', -1)}
+                <div style={{ display: 'flex', gap: 6, overflowX: 'auto', flex: 1, padding: '2px 0', scrollbarWidth: 'thin' }}>
+                  {subs.map((s, i) => {
+                    const active = s.id === activeSub
+                    return (
+                      <button key={s.id} data-tab={s.id} onClick={() => setActiveSub(s.id)}
+                        ref={active ? (el => el && el.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })) : null}
+                        style={{
+                          border: active ? '1px solid #1e88e5' : '1px solid #e2e8f0', cursor: 'pointer',
+                          borderRadius: 16, padding: '6px 12px', fontSize: 12, flexShrink: 0,
+                          background: active ? '#1e88e5' : '#f8fafc', color: active ? '#fff' : '#475569',
+                          fontWeight: active ? 600 : 400, whiteSpace: 'nowrap',
+                        }}><span style={{ opacity: 0.6, fontSize: 10 }}>{i + 1}</span> {s.label}</button>
+                    )
+                  })}
+                </div>
+                {navBtn('Next ▶', 1)}
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 4, textAlign: 'center' }}>
+                Tab {idx + 1} of {subs.length} — <strong>{(subs[idx] || {}).label}</strong> · use ◀ Prev / Next ▶ to sequence
+              </div>
+            </div>
+          )
+        })()}
 
         <TabScaffold tabId={activeSub} label={(subs.find(t => t.id === activeSub) || {}).label} dept={dept}>
         {extra && extra.element}
