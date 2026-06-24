@@ -765,6 +765,12 @@ function DataPanel({ disease, dept }) {
   const [analysis, setAnalysis] = useState(null)
   const [analyzing, setAnalyzing] = useState(false)
   const [analyzeErr, setAnalyzeErr] = useState(null)
+  const [txns, setTxns] = useState([])
+  const loadTxns = useCallback(() => {
+    axios.get(`${API_URL}/transactions`, { params: { limit: 25 } })
+      .then(r => setTxns(r.data.items || r.data || [])).catch(() => setTxns([]))
+  }, [])
+  useEffect(() => { loadTxns() }, [loadTxns])
 
   const loadSample = useCallback(async () => {
     setError(null)
@@ -791,6 +797,7 @@ function DataPanel({ disease, dept }) {
       const res = await axios.post(`${API_URL}/analyze-upload`, fd, { headers: { 'Content-Type': 'multipart/form-data' } })
       if (res.data.status !== 'success') setAnalyzeErr(res.data.message || 'Analysis failed')
       else setAnalysis(res.data)
+      loadTxns()  // refresh the transaction table so the new upload appears immediately
     } catch (e) {
       setAnalyzeErr(e?.response?.data?.detail || 'Upload failed — is the backend running on :8010?')
     } finally { setAnalyzing(false) }
@@ -805,10 +812,40 @@ function DataPanel({ disease, dept }) {
           <div style={{ fontSize: 26 }}>📁</div>
           <div style={{ color: '#1f2937', fontWeight: 600 }}>{analyzing ? 'Analyzing…' : 'Click to upload EEG / Video-EEG / PDF / Image / Doc'}</div>
           <div style={{ color: '#64748b', fontSize: 13 }}>EDF/BDF/CSV → parse → 47 features → model → report. PDF/image/video/docx → extract (OCR/CV) → patient DB.</div>
-          <input type="file" accept=".edf,.bdf,.csv,.tsv,.txt,.dat,.pdf,.png,.jpg,.jpeg,.mp4,.avi,.mov,.docx" onChange={handleUpload} disabled={analyzing} style={{ display: 'none' }} />
+          <input type="file" accept=".edf,.bdf,.fif,.mat,.csv,.tsv,.txt,.dat,.pdf,.png,.jpg,.jpeg,.docx,.mp4,.mov,.avi,.webm,.mkv,.3gp,.m4v,.flv,.wmv" onChange={handleUpload} disabled={analyzing} style={{ display: 'none' }} />
         </label>
         {analyzeErr && <div style={{ marginTop: 12, background: '#fee2e2', border: '1px solid #fca5a5', color: '#991b1b', borderRadius: 6, padding: 12 }}>{analyzeErr}</div>}
         {analysis && <AnalysisResult result={analysis} />}
+      </div>
+
+      {/* Transaction history — every upload appears here with date+time stamp */}
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>🧾 Transaction History</h3>
+          <span style={{ fontSize: 12, color: '#64748b' }}>every upload / action, with timestamp</span>
+          <button onClick={loadTxns} style={{ marginLeft: 'auto', fontSize: 12, padding: '5px 12px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer' }}>↻ Refresh</button>
+        </div>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto', maxHeight: 320 }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}>
+              <th style={cellTh}>When (local)</th><th style={cellTh}>UTC</th><th style={cellTh}>Patient</th>
+              <th style={cellTh}>Component</th><th style={cellTh}>Action</th><th style={cellTh}>Detail</th>
+            </tr></thead>
+            <tbody>
+              {txns.map((t, i) => (
+                <tr key={t.id || i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ ...cellTd, whiteSpace: 'nowrap' }}>{t.ts_local || '—'}</td>
+                  <td style={{ ...cellTd, whiteSpace: 'nowrap', color: '#94a3b8' }}>{t.ts_utc || '—'}</td>
+                  <td style={cellTd}>{t.patient_id || '—'}</td>
+                  <td style={{ ...cellTd, fontWeight: 600, color: '#1e88e5' }}>{t.component || '—'}</td>
+                  <td style={cellTd}>{t.action || '—'}</td>
+                  <td style={cellTd}>{t.detail || '—'}</td>
+                </tr>
+              ))}
+              {!txns.length && <tr><td style={cellTd} colSpan={6}>No transactions yet — upload a file to create the first row.</td></tr>}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* As-is reference sample */}

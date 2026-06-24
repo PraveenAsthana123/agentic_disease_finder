@@ -378,6 +378,10 @@ async def analyze_upload(
                 cdb.upsert_patient(patient_id, disease=disease, department=department)
             saved = cdb.save_analysis(result, department=department)
             result["saved"] = saved
+            # Log the EEG upload to transaction history (UTC + local) so it appears in the table
+            pred = (result.get("prediction") or {}).get("predicted_label", "?")
+            cdb.log_transaction(patient_id or "_unassigned", component="eeg_upload", action="analyze",
+                                detail=f"{file.filename or Path(tmp.name).name} ({suffix}) → {disease} pred={pred}")
             return result
         else:
             # PDF / image / video / docx → extract (CV/OCR/parse), persist to patient
