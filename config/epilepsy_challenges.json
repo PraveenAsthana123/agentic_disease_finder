@@ -1,0 +1,41 @@
+{
+  "title": "Epilepsy / EEG Challenges — 30, by difficulty",
+  "note": "Real clinical + technical + AI/governance challenges across Basic / Intermediate / High, each with the AI mitigation.",
+  "updated_at": "2026-06-24",
+  "levels": ["basic", "intermediate", "high"],
+  "challenges": [
+    {"n": 1,  "level": "basic", "challenge": "Poor electrode contact / high impedance (>10 kΩ)", "ai_help": "Real-time impedance alerts + signal-quality scoring before recording"},
+    {"n": 2,  "level": "basic", "challenge": "Eye-blink and muscle (EMG) artifacts contaminate signal", "ai_help": "Auto artifact classifier (ICA) + per-channel artifact heatmap"},
+    {"n": 3,  "level": "basic", "challenge": "Missing or incomplete recording metadata", "ai_help": "Smart-form completion + required-field gating at intake"},
+    {"n": 4,  "level": "basic", "challenge": "Inconsistent / incomplete seizure diary entries", "ai_help": "Mobile quick-entry + auto-severity scoring + reminders"},
+    {"n": 5,  "level": "basic", "challenge": "Patient movement during recording", "ai_help": "Motion detection from accelerometer + flag noisy epochs"},
+    {"n": 6,  "level": "basic", "challenge": "Short routine EEG misses interictal events", "ai_help": "Sleep-deprived / prolonged protocols + activation procedures"},
+    {"n": 7,  "level": "basic", "challenge": "Variable sampling rates across machines", "ai_help": "Resampling + sampling-rate normalization in the pipeline"},
+    {"n": 8,  "level": "basic", "challenge": "Mislabeled channels / wrong montage", "ai_help": "10-20 channel validation + montage auto-detect"},
+    {"n": 9,  "level": "basic", "challenge": "Incomplete medication history", "ai_help": "EMR/document extraction + medication reconciliation"},
+    {"n": 10, "level": "basic", "challenge": "Patient anxiety degrades recording quality", "ai_help": "Calm-protocol checklist + quality re-take prompts"},
+
+    {"n": 11, "level": "intermediate", "challenge": "Inter-rater variability in IED interpretation", "ai_help": "Consensus AI across reviewers + Cohen's kappa tracking"},
+    {"n": 12, "level": "intermediate", "challenge": "Distinguishing artifact from true epileptiform activity", "ai_help": "Spike detector with morphology features + expert validation loop"},
+    {"n": 13, "level": "intermediate", "challenge": "Class imbalance — few seizure vs many normal epochs", "ai_help": "SMOTE / class-weighting + cost-sensitive metrics (recall-first)"},
+    {"n": 14, "level": "intermediate", "challenge": "Subject-wise vs sample-wise data leakage", "ai_help": "GroupKFold by subject + patient-specific temporal split"},
+    {"n": 15, "level": "intermediate", "challenge": "Localizing focal onset zone from scalp EEG", "ai_help": "Band-power topography + GNN connectivity (candidate regions)"},
+    {"n": 16, "level": "intermediate", "challenge": "Correlating EEG with clinical semiology", "ai_help": "Electroclinical concordance scoring + video-EEG alignment"},
+    {"n": 17, "level": "intermediate", "challenge": "Long-term VEEG review is time-consuming", "ai_help": "AI summarization + event pre-flagging for reviewer"},
+    {"n": 18, "level": "intermediate", "challenge": "Cross-patient generalization drop (0.98→0.73)", "ai_help": "Domain adaptation + transfer learning + honest reporting"},
+    {"n": 19, "level": "intermediate", "challenge": "Feature selection from high-dimensional EEG", "ai_help": "Mutual information + RFE + PCA dimensionality reduction"},
+    {"n": 20, "level": "intermediate", "challenge": "Modeling multi-channel temporal dependencies", "ai_help": "1D-CNN / LSTM / Transformer on windowed signals"},
+
+    {"n": 21, "level": "high", "challenge": "Seizure PREDICTION (pre-ictal) vs detection", "ai_help": "Pre-ictal forecasting models + lead-time evaluation"},
+    {"n": 22, "level": "high", "challenge": "Identifying drug-resistant epilepsy (DRE) early", "ai_help": "Treatment-response features + DRE-criteria alerting"},
+    {"n": 23, "level": "high", "challenge": "Deep models underperform on small clinical data", "ai_help": "Classical 47-feature RF baseline + spectrogram CNN when data grows"},
+    {"n": 24, "level": "high", "challenge": "Explainability of black-box predictions for clinical trust", "ai_help": "SHAP / Grad-CAM vs expert ground-truth + interpretable surrogate"},
+    {"n": 25, "level": "high", "challenge": "Fairness across age / sex / site", "ai_help": "Disparate-impact + equal-opportunity gates per subgroup"},
+    {"n": 26, "level": "high", "challenge": "Real-time closed-loop alerting when offline", "ai_help": "On-device edge inference + buffer-and-sync + SOS"},
+    {"n": 27, "level": "high", "challenge": "Multimodal fusion (EEG + MRI + video + clinical)", "ai_help": "Late-fusion ensemble + concordance scoring"},
+    {"n": 28, "level": "high", "challenge": "Foundation-model transfer to epilepsy EEG", "ai_help": "Self-supervised pretraining + fine-tune on labeled subset"},
+    {"n": 29, "level": "high", "challenge": "Regulatory validation + human-in-the-loop governance", "ai_help": "Decision audit rows + HITL override + EU AI Act mapping"},
+    {"n": 30, "level": "high", "challenge": "Federated learning across hospitals (privacy)", "ai_help": "Federated training + no raw-data egress + secure aggregation"}
+  ],
+  "summary": {"total": 30, "basic": 10, "intermediate": 10, "high": 10}
+}

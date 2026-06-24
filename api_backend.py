@@ -592,6 +592,13 @@ async def agent_tasks():
     return json.loads(p.read_text())
 
 
+@app.get("/api/challenges")
+async def challenges_catalog():
+    """30 epilepsy/EEG challenges grouped by difficulty (basic/intermediate/high) + AI mitigation."""
+    p = Path(__file__).parent / "config" / "epilepsy_challenges.json"
+    return json.loads(p.read_text()) if p.exists() else {"challenges": []}
+
+
 @app.get("/api/system-health")
 async def system_health():
     """Live status of every sub-system — answers 'what is working?' in one call."""

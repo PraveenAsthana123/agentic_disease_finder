@@ -606,7 +606,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'r_chat' && <RoleChat roleName={dept.name} />}
         {activeSub === 'r_genai' && <GenAiBotPanel roleName={dept.name} />}
         {activeSub === 'r_graph' && <RoleGraph roleName={dept.name} />}
-        {activeSub === 'challenges' && <ListPanel title="Key Challenges" items={dept.challenges} icon="⚠️" />}
+        {activeSub === 'challenges' && <ChallengesPanel deptChallenges={dept.challenges} />}
         {activeSub === 'tasks' && <ListPanel title="Responsibilities & Tasks" items={dept.tasks} ordered />}
         {activeSub === 'data' && <DataPanel disease={selectedDisease} dept={dept} />}
         {activeSub === 'kpi' && <KpiPanel kpis={dept.kpis} />}
@@ -616,6 +616,54 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'report' && <ReportPanel dept={dept} />}
         </TabScaffold>
       </section>
+    </div>
+  )
+}
+
+function ChallengesPanel({ deptChallenges }) {
+  const [d, setD] = useState(null)
+  const [filter, setFilter] = useState('all')
+  const [done, setDone] = useState({})
+  useEffect(() => { axios.get(`${API_URL}/challenges`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  const lvlCol = { basic: '#43a047', intermediate: '#fb8c00', high: '#f44336' }
+  const items = d?.challenges || []
+  const shown = filter === 'all' ? items : items.filter(c => c.level === filter)
+  const s = d?.summary || {}
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>⚠️ Key Challenges — {items.length || (deptChallenges || []).length}</h3>
+          {d && <span style={{ fontSize: 12, color: '#64748b' }}>
+            <span style={{ color: lvlCol.basic }}>● basic {s.basic}</span> · <span style={{ color: lvlCol.intermediate }}>● intermediate {s.intermediate}</span> · <span style={{ color: lvlCol.high }}>● high {s.high}</span>
+          </span>}
+        </div>
+        {d && (
+          <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
+            {['all', 'basic', 'intermediate', 'high'].map(f => (
+              <button key={f} onClick={() => setFilter(f)} style={{
+                border: '1px solid ' + (filter === f ? '#1e88e5' : '#e2e8f0'), cursor: 'pointer', borderRadius: 14,
+                padding: '4px 12px', fontSize: 12, textTransform: 'capitalize',
+                background: filter === f ? '#1e88e5' : '#f8fafc', color: filter === f ? '#fff' : '#475569',
+              }}>{f}</button>
+            ))}
+          </div>
+        )}
+      </div>
+      {!d && (deptChallenges || []).map((c, i) => (
+        <div key={i} style={{ ...card, borderLeft: '4px solid #f44336' }}><div style={{ fontSize: 13, color: '#0f172a' }}>{c}</div></div>
+      ))}
+      {shown.map((c) => (
+        <div key={c.n} style={{ ...card, borderLeft: `4px solid ${lvlCol[c.level]}`, marginBottom: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <input type="checkbox" checked={!!done[c.n]} onChange={() => setDone({ ...done, [c.n]: !done[c.n] })} />
+            <span style={{ fontSize: 11, color: '#94a3b8' }}>#{c.n}</span>
+            <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', color: lvlCol[c.level], padding: '1px 7px', borderRadius: 10, background: lvlCol[c.level] + '18' }}>{c.level}</span>
+            <span style={{ fontSize: 13, color: '#0f172a', textDecoration: done[c.n] ? 'line-through' : 'none' }}>{c.challenge}</span>
+          </div>
+          {c.ai_help && <div style={{ fontSize: 12, color: '#166534', marginTop: 4, marginLeft: 26 }}>🤖 {c.ai_help}</div>}
+        </div>
+      ))}
     </div>
   )
 }
