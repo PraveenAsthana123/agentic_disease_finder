@@ -614,6 +614,33 @@ async def role_challenges():
     return json.loads(p.read_text()) if p.exists() else {"roles": []}
 
 
+@app.get("/api/report-layout")
+async def report_layout():
+    """EEG/video-EEG summary report layout (components + AI finding/recommendation + expert summary)."""
+    p = Path(__file__).parent / "config" / "report_layout.json"
+    return json.loads(p.read_text()) if p.exists() else {"components": [], "sections": []}
+
+
+@app.get("/api/eeg-report/{patient_id}")
+async def eeg_report(patient_id: str):
+    """Assemble a populated EEG summary report for a patient from real analysis data."""
+    layout = json.loads((Path(__file__).parent / "config" / "report_layout.json").read_text())
+    analyses = cdb.list_assessments  # noqa (placeholder import guard)
+    report = {"patient_id": patient_id, "components": [], "expert_summary": "", "final_summary": ""}
+    with cdb._connect() as c:  # type: ignore
+        a = c.execute("SELECT * FROM analyses WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
+        latest = dict(a) if a else None
+    for comp in layout["components"]:
+        finding = comp["ai_finding"]
+        if comp["id"] == "epileptiform" and latest:
+            finding = f"Predicted {latest.get('predicted_label')} (confidence {latest.get('confidence')})"
+        report["components"].append({"label": comp["label"], "ai_finding": finding,
+                                     "ai_recommendation": comp["ai_recommendation"]})
+    report["ai_summary"] = (f"Latest analysis: {latest.get('predicted_label')} "
+                            f"(conf {latest.get('confidence')}, quality {latest.get('signal_quality')})") if latest else "No analysis on file."
+    return report
+
+
 # ---- Standardized clinical assessments (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) + CRUD ----
 @app.get("/api/assessments/instruments")
 async def assessment_instruments():
