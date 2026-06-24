@@ -322,35 +322,6 @@ function App() {
         </div>
       </div>
 
-      {(() => {
-        const navBtn = (tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            style={{
-              textAlign: 'left', padding: '7px 10px', borderRadius: 6, fontSize: 13, cursor: 'pointer',
-              border: 'none', background: activeTab === tab.id ? '#1e88e5' : 'transparent',
-              color: activeTab === tab.id ? '#fff' : '#475569', fontWeight: activeTab === tab.id ? 600 : 400,
-            }}
-          >{tab.label}</button>
-        )
-        const main = tabs.filter(t => t.id === 'departments')
-        const second = tabs.filter(t => t.id !== 'departments')
-        return (
-          <>
-            <div className="sidebar-section">
-              <div className="sidebar-section-title">Main Menu</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>{main.map(navBtn)}</div>
-            </div>
-            <div className="sidebar-divider" />
-            <div className="sidebar-section">
-              <div className="sidebar-section-title">Views &amp; AI Types</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>{second.map(navBtn)}</div>
-            </div>
-            <div className="sidebar-divider" />
-          </>
-        )
-      })()}
 
       <div className="sidebar-section">
         <div className="sidebar-section-title">Disease Selection</div>
@@ -1117,11 +1088,23 @@ function App() {
     )
   }
 
+  // Departments-only app: tool views are folded into the department (first) menu.
+  const extraDepartments = [
+    { id: 'tool_metrics', name: 'Metrics Dashboard', icon: '📈', element: <MetricsDashboard /> },
+    { id: 'tool_analysis', name: 'AI Analysis', icon: '🔬', element: <AnalysisUI /> },
+    { id: 'tool_monitoring', name: 'RAG Monitoring', icon: '📡', element: <MonitoringDashboard /> },
+    { id: 'tool_pipelines', name: 'Pipelines', icon: '🛠️', element: <PipelineManager /> },
+    { id: 'tool_jobs', name: 'Jobs', icon: '⏱️', element: <JobScheduler /> },
+    { id: 'tool_inference', name: 'Inference Testing', icon: '🧪', element: <InferenceDashboard /> },
+    { id: 'tool_integrations', name: 'Integrations', icon: '🔌', element: <IntegrationHub /> },
+    { id: 'tool_infographics', name: 'Infographics', icon: '📊', element: <InfographicsDashboard /> },
+  ]
+
   // Render active tab content
   const renderTabContent = () => {
     switch (activeTab) {
       case 'departments':
-        return <DepartmentsDashboard selectedDisease={selectedDisease} />
+        return <DepartmentsDashboard selectedDisease={selectedDisease} extraDepartments={extraDepartments} />
       case 'classification':
         return renderClassificationTab()
       case 'analysis':

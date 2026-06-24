@@ -366,12 +366,14 @@ const CLINICAL_FORMS = {
   },
 }
 
-function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
+function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments = [] }) {
   const [activeDept, setActiveDept] = useState(DEPARTMENTS[0].id)
   const [activeSub, setActiveSub] = useState('challenges')
 
-  const dept = DEPARTMENTS.find(d => d.id === activeDept) || DEPARTMENTS[0]
-  const subs = subTabsFor(dept)
+  const allDepts = [...DEPARTMENTS, ...extraDepartments]
+  const extra = extraDepartments.find(d => d.id === activeDept)
+  const dept = allDepts.find(d => d.id === activeDept) || DEPARTMENTS[0]
+  const subs = extra ? [] : subTabsFor(dept)
   // Keep sub-tab valid when switching departments.
   useEffect(() => {
     if (!subs.find(s => s.id === activeSub)) setActiveSub('challenges')
@@ -382,7 +384,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
       {/* MAIN MENU — Departments (first menu) */}
       <aside style={{ width: 210, flexShrink: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, color: '#475569' }}>
         <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: '#64748b', marginBottom: 10 }}>Main Menu · Departments</div>
-        {DEPARTMENTS.map(d => {
+        {allDepts.map(d => {
           const active = d.id === activeDept
           return (
             <button key={d.id} onClick={() => setActiveDept(d.id)} style={{
@@ -396,8 +398,8 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         })}
       </aside>
 
-      {/* SUB MENU */}
-      <aside style={{ width: 150, flexShrink: 0, background: '#f1f5f9', borderRadius: 8, padding: 10 }}>
+      {/* SUB MENU (hidden for tool-departments that render a full component) */}
+      {!extra && <aside style={{ width: 150, flexShrink: 0, background: '#f1f5f9', borderRadius: 8, padding: 10 }}>
         <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: '#64748b', marginBottom: 8 }}>Sub Menu</div>
         {subs.map(s => {
           const active = s.id === activeSub
@@ -409,7 +411,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
             }}>{s.label}</button>
           )
         })}
-      </aside>
+      </aside>}
 
       {/* CONTENT */}
       <section style={{ flex: 1, minWidth: 0 }}>
@@ -419,6 +421,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
           <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>disease context: <strong>{selectedDisease}</strong></span>
         </div>
 
+        {extra && extra.element}
         {activeSub === 'admin_dash' && <AdminDashboardsPanel />}
         {activeSub === 'admin_team' && <AdminTeamPanel />}
         {activeSub === 'admin_access' && <AdminAccessPanel />}
