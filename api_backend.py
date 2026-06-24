@@ -633,6 +633,13 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/eeg-ai-rag-pipeline")
+async def eeg_ai_rag_pipeline():
+    """Complete 23-step EEG→AI→RAG pipeline with honest per-step status + where-it-lives."""
+    p = Path(__file__).parent / "config" / "eeg_ai_rag_pipeline.json"
+    return json.loads(p.read_text()) if p.exists() else {"steps": []}
+
+
 @app.get("/api/ai-dark-factory")
 async def ai_dark_factory():
     """AI Dark Factory reference: BMAD→Archon→OpenHands→Playwright→DeepEval→Temporal→OTel

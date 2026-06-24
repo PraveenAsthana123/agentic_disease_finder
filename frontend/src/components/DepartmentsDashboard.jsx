@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -622,6 +622,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'data_formats' && <DataFormatsPanel />}
         {activeSub === 'jobs_cron' && <JobsCronPanel />}
         {activeSub === 'dark_factory' && <DarkFactoryPanel />}
+        {activeSub === 'eeg_pipeline' && <EegAiRagPipelinePanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -3966,6 +3967,40 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function EegAiRagPipelinePanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/eeg-ai-rag-pipeline`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#16a34a', partial: '#fb8c00', planned: '#94a3b8' }
+  const s = d.summary || {}
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔬 EEG → AI → RAG Pipeline — {d.steps?.length} steps</h3>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+          <span style={{ color: col.built }}>● built {s.built}</span>
+          <span style={{ color: col.partial }}>● partial {s.partial}</span>
+          <span style={{ color: col.planned }}>● planned {s.planned}</span>
+        </div>
+        <div style={{ fontSize: 12, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8, marginTop: 8 }}>⚠ {s.honest_note}</div>
+      </div>
+      {(d.steps || []).map((st, i) => (
+        <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 6 }}>
+          <div style={{ width: 28, textAlign: 'center', fontWeight: 700, color: '#94a3b8', fontSize: 13, paddingTop: 10 }}>{st.n}</div>
+          <div style={{ flex: 1, ...card, marginBottom: 0, borderLeft: `4px solid ${col[st.status]}`, padding: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <strong style={{ color: '#0f172a' }}>{st.step}</strong>
+              <span style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 700, color: col[st.status], textTransform: 'uppercase' }}>● {st.status}</span>
+            </div>
+            <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>{st.detail}</div>
+            {st.where && <div style={{ fontSize: 11, color: '#166534', marginTop: 2 }}>📍 {st.where}</div>}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

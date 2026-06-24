@@ -1,0 +1,32 @@
+{
+  "title": "Complete EEG → AI → RAG Pipeline (23 steps)",
+  "note": "End-to-end flow (schizophrenia-derived, applies to all diseases). Honest per-step status (§155): built / partial / planned. Maps each step to where it lives in the platform.",
+  "updated_at": "2026-06-24",
+  "steps": [
+    {"n": 1, "step": "Research Objective", "detail": "screening support / biomarker discovery / severity tracking", "status": "built", "where": "operator + disease selector"},
+    {"n": 2, "step": "Data Collection", "detail": "EEG + clinical metadata + PANSS + medication + age/gender + diagnosis label", "status": "partial", "where": "upload + patient master; PANSS/severity scale form planned"},
+    {"n": 3, "step": "Data Standardization", "detail": "EDF/BDF/CSV/MAT → uniform array (BIDS/FIF target)", "status": "built", "where": "eeg_analysis_pipeline.parse_eeg"},
+    {"n": 4, "step": "Raw EEG Quality Check", "detail": "sampling rate · missing channel · noise · bad-channel detection", "status": "built", "where": "signal_quality + channel validation"},
+    {"n": 5, "step": "Preprocessing", "detail": "bandpass 0.5-45Hz · notch 50/60 · re-reference · bad-channel removal · ICA", "status": "built", "where": "ica_noise_cleaning.py"},
+    {"n": 6, "step": "Epoching / Segmentation", "detail": "2s/4s/8s windows · subject-level split (no leakage)", "status": "built", "where": "accuracy_patient_specific (4s/2s)"},
+    {"n": 7, "step": "1D EEG Signal Prep", "detail": "clean channel × time matrix", "status": "built"},
+    {"n": 8, "step": "Time-Frequency Transform", "detail": "STFT→spectrogram · CWT→scalogram · SPWVD", "status": "partial", "where": "/api/spectrogram; CWT/SPWVD planned"},
+    {"n": 9, "step": "1D → 2D Image Conversion", "detail": "spectrogram · scalogram · topomap · connectivity matrix · band heatmap", "status": "partial", "where": "spectrogram built; topomap/connectivity planned"},
+    {"n": 10, "step": "Normalization + Standardization", "detail": "log-power norm · MinMax · z-score · subject/session norm", "status": "built"},
+    {"n": 11, "step": "Feature Extraction", "detail": "spectral/relative band power · entropy · coherence · PLV · Hjorth · fractal · asymmetry · CNN embeddings", "status": "built", "where": "47/15-feature vector; coherence/PLV partial"},
+    {"n": 12, "step": "Feature Evaluation", "detail": "ANOVA · mutual information · correlation · SHAP ranking · clinical relevance", "status": "partial", "where": "MI + SHAP built; ANOVA/clinical-check planned"},
+    {"n": 13, "step": "Feature Selection", "detail": "LASSO · RFE · PCA · Boruta · SelectKBest", "status": "partial", "where": "PCA + SelectKBest + RFE built; LASSO/Boruta planned"},
+    {"n": 14, "step": "Model Training", "detail": "SVM/RF/XGBoost · EEGNet/CNN/LSTM/Transformer/ViT", "status": "built", "where": "classical ensemble + EEGNet benchmark"},
+    {"n": 15, "step": "Model Validation", "detail": "subject-level CV · train/val/test · external dataset", "status": "built", "where": "GroupKFold + Bonn external validation"},
+    {"n": 16, "step": "Model Evaluation", "detail": "accuracy · precision · recall · F1 · AUC · sensitivity · specificity · confusion", "status": "built", "where": "accuracy reports"},
+    {"n": 17, "step": "Explainable AI", "detail": "SHAP features · saliency EEG-image · attention map · channel/band importance", "status": "partial", "where": "SHAP built; saliency/attention planned"},
+    {"n": 18, "step": "RAG Knowledge Layer", "detail": "index papers · SOPs · clinical notes · guidelines · model cards · experiment logs", "status": "built", "where": "ChromaDB + vector_ingest cron"},
+    {"n": 19, "step": "Retrieval", "detail": "hybrid: vector + keyword + metadata filter", "status": "partial", "where": "vector + keyword fallback; metadata filter planned"},
+    {"n": 20, "step": "RAG Report Generation", "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata", "status": "partial", "where": "EEG/VEEG report + patient_chat RAG"},
+    {"n": 21, "step": "Human Review", "detail": "psychiatrist/neurophysiologist · approve/reject/request more", "status": "built", "where": "HITL override + study-review + consensus"},
+    {"n": 22, "step": "Final Output", "detail": "doctor report (risk score, abnormality, biomarkers, citations, limits, next step) + patient report (simple, no Dx claim, follow-up)", "status": "partial", "where": "EEG/VEEG report; patient-facing report planned"},
+    {"n": 23, "step": "Governance + Monitoring", "detail": "audit logs · PII protection · bias/model/data drift · performance · human override · model versioning", "status": "built", "where": "transaction_log + guardrails + governance"}
+  ],
+  "summary": {"total": 23, "built": 13, "partial": 9, "planned": 0,
+              "honest_note": "13/23 steps built, 9 partial, 1 (research objective) operator. The signal→feature→model→eval→governance spine is built; gaps are advanced time-frequency 2D imaging (CWT/topomap/connectivity), saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned — all have at least partial implementation."}
+}
