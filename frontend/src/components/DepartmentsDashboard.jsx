@@ -563,9 +563,9 @@ function DataPanel({ disease, dept }) {
         <h3 style={{ marginTop: 0, color: '#0f172a' }}>Upload EEG → Analyze ({disease})</h3>
         <label style={{ display: 'block', border: '2px dashed #cbd5e1', borderRadius: 8, padding: 22, textAlign: 'center', cursor: 'pointer', background: '#f8fafc' }}>
           <div style={{ fontSize: 26 }}>📁</div>
-          <div style={{ color: '#1f2937', fontWeight: 600 }}>{analyzing ? 'Analyzing…' : 'Click to upload EDF / BDF / CSV'}</div>
-          <div style={{ color: '#64748b', fontSize: 13 }}>Runs: parse → 47 features → trained model → report saved to patient DB</div>
-          <input type="file" accept=".edf,.bdf,.csv,.tsv,.txt" onChange={handleUpload} disabled={analyzing} style={{ display: 'none' }} />
+          <div style={{ color: '#1f2937', fontWeight: 600 }}>{analyzing ? 'Analyzing…' : 'Click to upload EEG / Video-EEG / PDF / Image / Doc'}</div>
+          <div style={{ color: '#64748b', fontSize: 13 }}>EDF/BDF/CSV → parse → 47 features → model → report. PDF/image/video/docx → extract (OCR/CV) → patient DB.</div>
+          <input type="file" accept=".edf,.bdf,.csv,.tsv,.txt,.dat,.pdf,.png,.jpg,.jpeg,.mp4,.avi,.mov,.docx" onChange={handleUpload} disabled={analyzing} style={{ display: 'none' }} />
         </label>
         {analyzeErr && <div style={{ marginTop: 12, background: '#fee2e2', border: '1px solid #fca5a5', color: '#991b1b', borderRadius: 6, padding: 12 }}>{analyzeErr}</div>}
         {analysis && <AnalysisResult result={analysis} />}

@@ -342,20 +342,33 @@ async def analyze_upload(
 ):
     """Parse an uploaded EEG file, run the full analysis pipeline, persist it
     per patient, write a report, and return the result."""
-    suffix = Path(file.filename or "upload.edf").suffix or ".edf"
+    suffix = (Path(file.filename or "upload.edf").suffix or ".edf").lower()
+    EEG_EXTS = {".edf", ".bdf", ".csv", ".tsv", ".txt", ".dat"}
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
     try:
         shutil.copyfileobj(file.file, tmp)
         tmp.close()
-        result = eeg.run_pipeline(tmp.name, disease, patient_id=patient_id or None)
-        result["file"] = file.filename or Path(tmp.name).name
-        if result.get("status") != "success":
+        if suffix in EEG_EXTS:
+            # EEG signal → full analysis pipeline
+            result = eeg.run_pipeline(tmp.name, disease, patient_id=patient_id or None)
+            result["file"] = file.filename or Path(tmp.name).name
+            if result.get("status") != "success":
+                return result
+            if patient_id:
+                cdb.upsert_patient(patient_id, disease=disease, department=department)
+            saved = cdb.save_analysis(result, department=department)
+            result["saved"] = saved
             return result
-        if patient_id:
-            cdb.upsert_patient(patient_id, disease=disease, department=department)
-        saved = cdb.save_analysis(result, department=department)
-        result["saved"] = saved
-        return result
+        else:
+            # PDF / image / video / docx → extract (CV/OCR/parse), persist to patient
+            extracted = ingest.extract_file(Path(tmp.name))
+            if patient_id:
+                cdb.upsert_patient(patient_id, disease=disease, department=department)
+                cdb.log_transaction(patient_id, component="ingest", action="extract",
+                                    detail=f"{file.filename} ({suffix}) → {extracted.get('type', 'extracted')}")
+            return {"status": "success", "mode": "extraction", "file": file.filename,
+                    "file_type": suffix, "extracted": extracted,
+                    "note": "Non-EEG file: data extracted (CV/OCR/parse) and saved. Run EEG file for seizure analysis."}
     except Exception as exc:  # noqa: BLE001 - return a clean error envelope to the UI
         raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}") from exc
     finally:
