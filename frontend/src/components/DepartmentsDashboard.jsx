@@ -379,16 +379,16 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
 
   return (
     <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-      {/* MAIN MENU */}
-      <aside style={{ width: 210, flexShrink: 0, background: '#16162a', borderRadius: 8, padding: 12, color: '#e5e7eb' }}>
-        <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, opacity: 0.7, marginBottom: 10 }}>Main Menu</div>
+      {/* MAIN MENU — Departments (first menu) */}
+      <aside style={{ width: 210, flexShrink: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, color: '#475569' }}>
+        <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: '#64748b', marginBottom: 10 }}>Main Menu · Departments</div>
         {DEPARTMENTS.map(d => {
           const active = d.id === activeDept
           return (
             <button key={d.id} onClick={() => setActiveDept(d.id)} style={{
               display: 'flex', alignItems: 'center', gap: 8, width: '100%', textAlign: 'left',
               border: 'none', cursor: 'pointer', borderRadius: 6, padding: '9px 10px', marginBottom: 3,
-              fontSize: 13, background: active ? '#1e88e5' : 'transparent', color: active ? '#fff' : '#cbd5e1',
+              fontSize: 13, background: active ? '#1e88e5' : 'transparent', color: active ? '#fff' : '#475569',
             }}>
               <span style={{ fontSize: 16 }}>{d.icon}</span><span>{d.name}</span>
             </button>
