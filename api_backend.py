@@ -638,6 +638,13 @@ async def seizure_list(patient_id: str):
     return cdb.list_seizures(patient_id)
 
 
+@app.get("/api/iot-devices")
+async def iot_devices():
+    """Emotiv + IoT + mobile device fleet with online/offline handling model."""
+    p = Path(__file__).parent / "config" / "iot_devices.json"
+    return json.loads(p.read_text()) if p.exists() else {"devices": []}
+
+
 @app.get("/api/patient-module")
 async def patient_module():
     """Patient module spec: 8 sections, ~1250 fields, honest status."""

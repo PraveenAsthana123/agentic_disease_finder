@@ -1,0 +1,51 @@
+{
+  "title": "Emotiv + IoT + Mobile — Device Fleet & Online/Offline Handling",
+  "note": "Device connectivity model. online=live stream; offline=buffer+sync. status: built/partial/planned.",
+  "updated_at": "2026-06-24",
+  "connectivity_model": {
+    "online": "Device streams live → gateway → backend (real-time inference + alerts). Lowest latency, needs connection.",
+    "offline": "Device buffers locally (ring buffer + local store) → syncs on reconnect. No data loss; delayed inference.",
+    "hybrid": "Edge inference on-device (offline-capable) + sync raw + results when online. Best for seizure alerts."
+  },
+  "devices": [
+    {"id": "emotiv_insight", "name": "Emotiv Insight", "type": "EEG headset", "channels": 5,
+     "modes": ["online", "offline"], "data": ["raw EEG", "band power", "motion"],
+     "online": "BLE → mobile/gateway → backend stream", "offline": "on-device buffer → sync on pairing",
+     "alert": "seizure-risk via edge model", "status": "partial"},
+    {"id": "emotiv_epocx", "name": "Emotiv EPOC X", "type": "EEG headset", "channels": 14,
+     "modes": ["online", "offline"], "data": ["raw EEG 14ch", "contact quality"],
+     "online": "USB dongle / BLE stream", "offline": "SD/on-device record → upload EDF",
+     "alert": "post-hoc analysis", "status": "partial"},
+    {"id": "emotiv_flex", "name": "Emotiv EPOC Flex", "type": "EEG cap", "channels": 32,
+     "modes": ["online", "offline"], "data": ["raw EEG 32ch"], "status": "planned"},
+    {"id": "smartwatch", "name": "Smartwatch (Apple/Wear OS)", "type": "wearable", "channels": null,
+     "modes": ["online", "offline"], "data": ["HR", "HRV", "SpO2", "accelerometer", "sleep"],
+     "online": "phone app → cloud sync", "offline": "watch buffers → sync when phone connects",
+     "alert": "HR spike → possible seizure signal", "status": "partial"},
+    {"id": "ecg_patch", "name": "ECG Patch", "type": "wearable", "modes": ["offline"],
+     "data": ["ECG", "HR"], "offline": "records continuously → upload at clinic", "status": "planned"},
+    {"id": "seizure_band", "name": "Seizure-detection wristband (Embrace-style)", "type": "wearable",
+     "modes": ["online", "hybrid"], "data": ["EDA", "accelerometer", "temperature"],
+     "online": "BLE → phone → SOS alert", "alert": "convulsive seizure → caregiver SOS", "status": "partial"},
+    {"id": "mobile_app", "name": "Patient Mobile App", "type": "mobile (online)", "modes": ["online", "offline"],
+     "data": ["seizure diary", "medication log", "symptoms", "device pairing", "SOS"],
+     "online": "syncs to backend live", "offline": "local SQLite → queue → sync on reconnect (offline-first)",
+     "alert": "medication reminders, SOS, risk alerts", "status": "partial"},
+    {"id": "caregiver_app", "name": "Caregiver Mobile App", "type": "mobile (online)", "modes": ["online"],
+     "data": ["seizure record", "video upload", "med confirmation", "emergency alert"],
+     "online": "receives patient alerts + SOS", "alert": "real-time seizure/SOS push", "status": "planned"},
+    {"id": "gateway", "name": "Home Gateway / Hub", "type": "gateway", "modes": ["online", "offline"],
+     "data": ["aggregates all device streams"], "online": "forwards to backend",
+     "offline": "stores + forwards on reconnect (store-and-forward)", "alert": "local alarm if cloud down", "status": "partial"}
+  ],
+  "offline_strategy": {
+    "buffer": "Ring buffer on device (last N minutes) + persistent local store (SQLite/flash)",
+    "edge_inference": "On-device seizure model runs offline → alert fires without cloud",
+    "sync": "On reconnect: upload buffered raw + results, dedupe by event timestamp/idempotency key",
+    "conflict": "Last-write-wins on metadata; events are append-only (no conflict)",
+    "data_loss": "Zero — buffer persists across power cycles; sync is at-least-once + idempotent"
+  },
+  "alert_pipeline": "device → (edge model OR gateway) → confidence gate → SOS (phone/SMS/caregiver) → audit",
+  "summary": {"devices": 9, "built": 0, "partial": 6, "planned": 3,
+              "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."}
+}

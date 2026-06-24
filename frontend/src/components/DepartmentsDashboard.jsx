@@ -163,7 +163,7 @@ function subTabsFor(dept) {
     ]
   }
   if (dept.custom === 'iot') {
-    return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
+    return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
     return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }]
@@ -548,6 +548,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {['fb_council', 'fb_capture', 'fb_consensus', 'fb_decision', 'fb_guardrails'].includes(activeSub) && <FeedbackGovPanel view={activeSub} />}
         {activeSub === 'iot_sim' && <EmotivIotSim />}
         {activeSub === 'iot_devices' && <IotDevices />}
+        {activeSub === 'iot_fleet' && <IotFleet />}
         {['sc_advance', 'sc_scenario', 'sc_observe'].includes(activeSub) && <SpecialCasePanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'ai_types_view' && <AiTypesPanel />}
         {activeSub === 'dash_catalog' && <DashboardCatalogPanel />}
@@ -4404,6 +4405,57 @@ const IOT_DEVICES = [
   { name: 'Room camera', type: 'video', channels: '-', status: 'offline' },
   { name: 'Microphone', type: 'audio', channels: '-', status: 'online' },
 ]
+
+function IotFleet() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/iot-devices`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  const modeChip = (m) => <span key={m} style={{ fontSize: 10, fontWeight: 600, padding: '1px 6px', borderRadius: 4, marginRight: 4,
+    background: m === 'online' ? '#dcfce7' : m === 'offline' ? '#fef3c7' : '#dbeafe', color: '#334155' }}>{m}</span>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📶 Device Fleet — Emotiv + IoT + Mobile ({d.devices.length})</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8, fontSize: 12 }}>
+          {Object.entries(d.connectivity_model || {}).map(([k, v]) => (
+            <div key={k} style={{ padding: 8, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+              <strong style={{ color: '#1e88e5' }}>{k}</strong><div style={{ color: '#475569' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Devices</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 8 }}>
+          {d.devices.map((dev, i) => (
+            <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 8, background: '#f8fafc', borderLeft: `4px solid ${col[dev.status]}` }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <strong style={{ color: '#0f172a', fontSize: 13 }}>{dev.name}</strong>
+                <span style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 600, color: col[dev.status] }}>● {dev.status}</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', margin: '2px 0' }}>{dev.type}{dev.channels ? ` · ${dev.channels}ch` : ''}</div>
+              <div style={{ margin: '4px 0' }}>{(dev.modes || []).map(modeChip)}</div>
+              <div style={{ fontSize: 11, color: '#475569' }}>{(dev.data || []).join(' · ')}</div>
+              {dev.online && <div style={{ fontSize: 10, color: '#166534', marginTop: 3 }}>🟢 {dev.online}</div>}
+              {dev.offline && <div style={{ fontSize: 10, color: '#92400e' }}>🟡 {dev.offline}</div>}
+              {dev.alert && <div style={{ fontSize: 10, color: '#f44336' }}>🚨 {dev.alert}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔌 Offline Strategy</h3>
+        {Object.entries(d.offline_strategy || {}).map(([k, v]) => (
+          <div key={k} style={{ fontSize: 12, padding: '4px 0', borderBottom: '1px solid #f1f5f9' }}>
+            <strong style={{ color: '#1e88e5' }}>{k}:</strong> <span style={{ color: '#475569' }}>{v}</span>
+          </div>
+        ))}
+        <div style={{ fontSize: 12, color: '#166534', marginTop: 8 }}>⛓️ Alert pipeline: {d.alert_pipeline}</div>
+      </div>
+    </div>
+  )
+}
 
 function EmotivIotSim() {
   const [running, setRunning] = useState(false)
