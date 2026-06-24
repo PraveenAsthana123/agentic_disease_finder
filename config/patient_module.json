@@ -1,0 +1,30 @@
+{
+  "title": "Patient Module — 8-Section Spec (~1,250 fields)",
+  "note": "The foundation role. Honest section-by-section status (§155). Seizure Diary built as real CRUD; others tracked.",
+  "updated_at": "2026-06-24",
+  "sections": [
+    {"n": 1, "section": "Demographics", "fields": "30-40", "status": "partial",
+     "items": ["Patient ID", "Study ID", "Name", "DOB", "Age", "Sex", "Height", "Weight", "Language", "Occupation", "Education", "Marital status"],
+     "note": "patient_master + patients tables exist"},
+    {"n": 2, "section": "Emergency Contact & Caregiver", "fields": "90-100", "status": "planned",
+     "items": ["Emergency contact", "Relationship", "Caregiver profile", "Caregiver education", "First-aid training", "Caregiver burden (stress/sleep/work/burnout)", "Safety/emergency plan"]},
+    {"n": 3, "section": "Seizure Diary", "fields": "140-160", "status": "built",
+     "items": ["Event date/time", "Duration", "Location", "Witnessed", "Aura", "Awareness", "Motor signs", "Injury", "Post-ictal", "Recovery time", "ER visit", "Rescue med", "auto-Severity", "Trigger"],
+     "note": "REAL CRUD: /api/seizure-diary — auto severity score + monthly trend + stats"},
+    {"n": 4, "section": "Trigger Tracking & Forecasting", "fields": "130-150", "status": "planned",
+     "items": ["Sleep", "Medication", "Stress", "Illness", "Hormonal", "Environmental", "Lifestyle", "Diet", "Trigger correlation engine", "Daily/24h/7d/30d risk score"]},
+    {"n": 5, "section": "Medication Self-Management", "fields": "160-180", "status": "partial",
+     "items": ["Med master list", "Daily tracking", "Missed/late dose", "Refill", "Side effects (8)", "Effectiveness", "Rescue med"],
+     "note": "medications form exists; daily adherence tracking planned"},
+    {"n": 6, "section": "Sleep/Mood/Cognition/QoL (PRO)", "fields": "150-170", "status": "partial",
+     "items": ["Sleep", "Fatigue", "Mood", "Anxiety", "Memory", "Attention", "Daily function", "Social function", "Quality of Life"],
+     "note": "assessments (PHQ-9/GAD-7) cover mood/anxiety; full PRO planned"},
+    {"n": 7, "section": "Self-Service / Communication / Education / Emergency", "fields": "175-200", "status": "partial",
+     "items": ["Appointments", "Secure messaging", "Telehealth", "Document center", "Education", "Emergency SOS", "Wearables", "AI assistant", "Daily plan", "Notifications"],
+     "note": "portal-tabs registry + patient-chat (AI assistant) exist; full self-service planned"},
+    {"n": 8, "section": "Wearables & Digital Twin", "fields": "220-250", "status": "planned",
+     "items": ["Device registration", "Heart biomarkers (HR/HRV)", "Sleep biomarkers", "Activity", "Stress", "Seizure detection signals", "Health score", "Seizure risk score", "Digital Twin", "Longitudinal outcomes (1yr/5yr)"]}
+  ],
+  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 1, "partial": 4, "planned": 3,
+              "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."}
+}

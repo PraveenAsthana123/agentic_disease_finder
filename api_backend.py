@@ -621,6 +621,30 @@ async def neurolab_readiness():
     return json.loads(p.read_text()) if p.exists() else {"stakeholders": []}
 
 
+class SeizureIn(BaseModel):
+    patient_id: str
+    fields: Dict[str, Any] = {}
+
+
+@app.post("/api/seizure-diary")
+async def seizure_log(body: SeizureIn):
+    """Patient/caregiver logs a seizure event (auto-scored severity)."""
+    return cdb.save_seizure(body.patient_id, body.fields)
+
+
+@app.get("/api/seizure-diary/{patient_id}")
+async def seizure_list(patient_id: str):
+    """Seizure diary + monthly trend + severity distribution + stats."""
+    return cdb.list_seizures(patient_id)
+
+
+@app.get("/api/patient-module")
+async def patient_module():
+    """Patient module spec: 8 sections, ~1250 fields, honest status."""
+    p = Path(__file__).parent / "config" / "patient_module.json"
+    return json.loads(p.read_text()) if p.exists() else {"sections": []}
+
+
 @app.get("/api/role-specs")
 async def role_specs():
     """Full 17-role epilepsy platform spec registry (sections + field counts + status)."""

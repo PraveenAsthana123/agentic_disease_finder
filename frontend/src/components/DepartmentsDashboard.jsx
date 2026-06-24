@@ -218,6 +218,7 @@ function subTabsFor(dept) {
   )
   // Patient-data tabs only for clinical roles.
   if (dept.clinical) base.push(
+    { id: 'seizure_diary', label: '📔 Seizure Diary' },
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
     { id: 'clinical', label: 'Clinical' },
@@ -564,6 +565,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'workbench' && <NeurologistWorkbench roleName={dept.name} disease={selectedDisease} />}
+        {activeSub === 'seizure_diary' && <SeizureDiary />}
         {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
         {activeSub === 'r_components' && <ComponentAnalysis roleName={dept.name} />}
         {activeSub === 'r_ipo' && <RolePipeline roleName={dept.name} />}
@@ -1513,6 +1515,97 @@ function GenAiBotPanel({ roleName }) {
         <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
       </div>
       {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
+    </div>
+  )
+}
+
+function SeizureDiary() {
+  const [pid, setPid] = useState('P0001')
+  const [d, setD] = useState(null)
+  const [f, setF] = useState({})
+  const load = (p) => axios.get(`${API_URL}/seizure-diary/${p}`).then(r => setD(r.data)).catch(() => setD(null))
+  useEffect(() => { load(pid) }, [])
+  const add = () => {
+    if (!f.event_date) return
+    axios.post(`${API_URL}/seizure-diary`, { patient_id: pid, fields: f }).then(() => { setF({}); load(pid) }).catch(() => {})
+  }
+  const sevCol = { Mild: '#4caf50', Moderate: '#ff9800', Severe: '#f44336' }
+  const trend = d ? Object.entries(d.monthly || {}).map(([m, v]) => ({ month: m, count: v })) : []
+  const fld = (k, label, type = 'text', opts) => (
+    <div>
+      <label style={{ fontSize: 11, color: '#64748b' }}>{label}</label>
+      {opts ? (
+        <select value={f[k] ?? ''} onChange={e => setF({ ...f, [k]: e.target.value })} style={{ width: '100%', padding: '6px 8px', borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 13 }}>
+          <option value="">—</option>{opts.map(o => <option key={o}>{o}</option>)}
+        </select>
+      ) : <input type={type} value={f[k] ?? ''} onChange={e => setF({ ...f, [k]: e.target.value })} style={{ width: '100%', padding: '6px 8px', borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }} />}
+    </div>
+  )
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>📔 Seizure Diary — the #1 patient dataset</h3>
+          <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 110 }} />
+          <button onClick={() => load(pid)} style={{ padding: '6px 12px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load</button>
+        </div>
+        {d && (
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', fontSize: 13 }}>
+            <span>Total: <strong>{d.count}</strong></span>
+            <span>Avg duration: <strong>{d.avg_duration_sec}s</strong></span>
+            <span>ER visits: <strong style={{ color: '#f44336' }}>{d.er_visits}</strong></span>
+            {Object.entries(d.severity_dist || {}).map(([k, v]) => <span key={k} style={{ color: sevCol[k] }}>{k}: {v}</span>)}
+          </div>
+        )}
+      </div>
+
+      {trend.length > 0 && (
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📈 Monthly seizure trend</div>
+          <div style={{ height: 180 }}><ResponsiveContainer width="100%" height="100%">
+            <BarChart data={trend}><CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="month" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
+              <Bar dataKey="count" fill="#1e88e5" radius={[4, 4, 0, 0]} /></BarChart>
+          </ResponsiveContainer></div>
+        </div>
+      )}
+
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 10 }}>➕ Log a seizure event</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))', gap: 10 }}>
+          {fld('event_date', 'Date *', 'date')}
+          {fld('event_time', 'Time', 'time')}
+          {fld('duration_sec', 'Duration (sec)', 'number')}
+          {fld('location', 'Location', 'text', ['Home', 'School', 'Work', 'Driving', 'Outside', 'Hospital'])}
+          {fld('witnessed', 'Witnessed', 'text', ['Yes', 'No'])}
+          {fld('aura', 'Aura', 'text', ['None', 'Smell', 'Taste', 'Fear', 'Déjà vu', 'Visual', 'Tingling'])}
+          {fld('awareness', 'Loss of awareness', 'text', ['Yes', 'No', 'Unsure'])}
+          {fld('motor_signs', 'Motor signs', 'text', ['None', 'Tonic', 'Clonic', 'Myoclonic', 'Automatism'])}
+          {fld('injury', 'Injury', 'text', ['No', 'Fall', 'Head injury', 'Tongue bite'])}
+          {fld('post_ictal', 'Post-ictal', 'text', ['None', 'Confusion', 'Sleepiness', 'Headache', 'Weakness'])}
+          {fld('recovery_min', 'Recovery (min)', 'number')}
+          {fld('er_visit', 'ER visit', 'text', ['No', 'Yes'])}
+          {fld('rescue_med', 'Rescue med used', 'text', ['No', 'Yes'])}
+          {fld('trigger', 'Suspected trigger', 'text', ['Sleep deprivation', 'Missed medication', 'Stress', 'Alcohol', 'Fever', 'Flashing lights'])}
+        </div>
+        {fld('notes', 'Notes', 'text')}
+        <button onClick={add} style={{ marginTop: 10, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>＋ Log seizure (auto-scores severity)</button>
+      </div>
+
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>Seizure events ({d?.count || 0})</div>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Date</th><th style={cellTh}>Dur</th><th style={cellTh}>Aura</th><th style={cellTh}>Injury</th><th style={cellTh}>ER</th><th style={cellTh}>Severity</th><th style={cellTh}>Trigger</th></tr></thead>
+            <tbody>{(d?.items || []).map((s, i) => (
+              <tr key={s.id} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={cellTd}>{s.event_date} {s.event_time || ''}</td><td style={cellTd}>{s.duration_sec}s</td>
+                <td style={cellTd}>{s.aura || '—'}</td><td style={cellTd}>{s.injury || '—'}</td><td style={cellTd}>{s.er_visit || '—'}</td>
+                <td style={{ ...cellTd, color: sevCol[s.severity], fontWeight: 600 }}>{s.severity}</td><td style={cellTd}>{s.trigger || '—'}</td>
+              </tr>
+            ))}{!(d?.items || []).length && <tr><td style={cellTd} colSpan={7}>No seizures logged.</td></tr>}</tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }

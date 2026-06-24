@@ -215,6 +215,16 @@ def init_db() -> None:
             CREATE TABLE IF NOT EXISTS chat_presence (
                 role TEXT PRIMARY KEY, status TEXT DEFAULT 'active', updated_at TEXT NOT NULL
             );
+            -- Patient seizure diary — the most valuable patient dataset (one row per seizure event).
+            CREATE TABLE IF NOT EXISTS seizure_diary (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL, event_date TEXT, event_time TEXT,
+                duration_sec INTEGER, location TEXT, witnessed TEXT,
+                aura TEXT, awareness TEXT, motor_signs TEXT,
+                injury TEXT, post_ictal TEXT, recovery_min INTEGER,
+                er_visit TEXT, rescue_med TEXT, severity TEXT,
+                trigger TEXT, notes TEXT, created_at TEXT NOT NULL
+            );
             -- Per-component doctor findings (AI finding vs doctor finding, per EEG component).
             CREATE TABLE IF NOT EXISTS component_findings (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -924,6 +934,56 @@ def add_expert_review(patient_id: str, role: str, finding: str, agree_with_ai: s
                     detail=f"{role}: {finding[:60]} (agree_ai={agree_with_ai})")
     return {"id": rid, "patient_id": patient_id, "role": role, "finding": finding,
             "agree_with_ai": agree_with_ai, "created_at": now}
+
+
+def save_seizure(patient_id: str, fields: dict) -> dict:
+    """Log a seizure event. Auto-scores severity from duration + injury + ER + recovery."""
+    init_db()
+    now = _now()
+    # auto severity score
+    score = 0
+    dur = int(fields.get("duration_sec") or 0)
+    if dur > 300:
+        score += 3
+    elif dur > 120:
+        score += 2
+    elif dur > 30:
+        score += 1
+    if str(fields.get("injury", "")).lower() in ("yes", "true", "fall", "head injury"):
+        score += 3
+    if str(fields.get("er_visit", "")).lower() in ("yes", "true"):
+        score += 5
+    rec = int(fields.get("recovery_min") or 0)
+    if rec > 30:
+        score += 2
+    severity = "Severe" if score >= 6 else "Moderate" if score >= 3 else "Mild"
+    cols = ["patient_id", "event_date", "event_time", "duration_sec", "location", "witnessed",
+            "aura", "awareness", "motor_signs", "injury", "post_ictal", "recovery_min",
+            "er_visit", "rescue_med", "severity", "trigger", "notes", "created_at"]
+    # cols[1:14] = event_date..rescue_med (13 fields); then severity, trigger, notes, created_at
+    vals = [patient_id] + [fields.get(c) for c in cols[1:14]] + [severity, fields.get("trigger"), fields.get("notes"), now]
+    with _connect() as c:
+        cur = c.execute(f"INSERT INTO seizure_diary({','.join(cols)}) VALUES({','.join(['?'] * len(cols))})", vals)
+        sid = cur.lastrowid
+    log_transaction(patient_id, component="seizure_diary", action="log", ref_id=sid,
+                    detail=f"seizure {fields.get('event_date')} {dur}s severity={severity}")
+    return {"id": sid, "patient_id": patient_id, "severity": severity, "severity_score": score, "created_at": now}
+
+
+def list_seizures(patient_id: str, limit: int = 200) -> dict:
+    init_db()
+    with _connect() as c:
+        rows = [dict(r) for r in c.execute("SELECT * FROM seizure_diary WHERE patient_id=? ORDER BY id DESC LIMIT ?", (patient_id, limit)).fetchall()]
+    # monthly trend + stats
+    from collections import Counter
+    months = Counter((r.get("event_date") or "")[:7] for r in rows if r.get("event_date"))
+    sev = Counter(r.get("severity") for r in rows)
+    durs = [r["duration_sec"] for r in rows if r.get("duration_sec")]
+    return {"items": rows, "count": len(rows),
+            "monthly": dict(sorted(months.items())),
+            "severity_dist": dict(sev),
+            "avg_duration_sec": round(sum(durs) / len(durs), 1) if durs else 0,
+            "er_visits": sum(1 for r in rows if str(r.get("er_visit", "")).lower() in ("yes", "true"))}
 
 
 def save_component_finding(patient_id: str, component: str, doctor_finding: str,
