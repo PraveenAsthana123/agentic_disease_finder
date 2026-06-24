@@ -218,6 +218,7 @@ function subTabsFor(dept) {
   )
   // Patient-data tabs only for clinical roles.
   if (dept.clinical) base.push(
+    { id: 'eeg_veeg_report', label: '📋 EEG / VEEG Report' },
     { id: 'onboarding', label: '🚀 Onboarding Wizard' },
     { id: 'seizure_diary', label: '📔 Seizure Diary' },
     { id: 'patients', label: 'Patients' },
@@ -601,6 +602,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'workbench' && <NeurologistWorkbench roleName={dept.name} disease={selectedDisease} />}
+        {activeSub === 'eeg_veeg_report' && <EegVeegReport />}
         {activeSub === 'onboarding' && <OnboardingWizard />}
         {activeSub === 'seizure_diary' && <SeizureDiary />}
         {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
@@ -1760,6 +1762,87 @@ function TabScaffold({ tabId, label, dept, children }) {
                 </table>}
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+function EegVeegReport() {
+  const [pid, setPid] = useState('P0001')
+  const [rep, setRep] = useState(null)
+  const [reportType, setReportType] = useState('routine EEG')
+  const [edits, setEdits] = useState({})
+  const [expertSummary, setExpertSummary] = useState('')
+  const [finalImpression, setFinalImpression] = useState('')
+  const load = (p) => axios.get(`${API_URL}/eeg-report/${p}`).then(r => { setRep(r.data); setEdits({}) }).catch(() => setRep(null))
+  useEffect(() => { load(pid) }, [])
+  const saveComp = (comp, finding, agree) => {
+    axios.post(`${API_URL}/eeg-report/component-finding`, { patient_id: pid, component: comp, doctor_finding: finding, doctor: 'reviewer', agree_with_ai: agree })
+      .then(() => load(pid)).catch(() => {})
+  }
+  const isVideo = reportType === 'video-EEG'
+  // split components: signal components always; 'video' only relevant for VEEG
+  const comps = (rep?.components || [])
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>📋 EEG / Video-EEG Output Report</h3>
+          <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', width: 100, fontSize: 13 }} />
+          <button onClick={() => load(pid)} style={{ padding: '6px 12px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load</button>
+          <select value={reportType} onChange={e => setReportType(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+            <option>routine EEG</option><option>video-EEG</option><option>ambulatory EEG</option><option>long-term monitoring (LTM)</option>
+          </select>
+          <button onClick={() => window.print()} style={{ marginLeft: 'auto', padding: '6px 12px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer', fontSize: 13 }}>🖨 Print / PDF</button>
+        </div>
+        {rep && <div style={{ fontSize: 12, color: '#475569', marginTop: 8 }}>Patient <strong>{rep.patient_id}</strong> · Report type: <strong>{reportType}</strong> · 🤖 {rep.ai_summary}</div>}
+        {!rep && <div style={{ color: '#64748b', marginTop: 8 }}>Backend offline or no data for this patient. Upload an EEG on the Data tab first.</div>}
+      </div>
+
+      {/* Per-component: AI finding | AI recommendation | expert manual summary */}
+      {comps.filter(c => isVideo || c.id !== 'video').map((c) => {
+        const e = edits[c.id] || {}
+        return (
+          <div key={c.id} style={{ ...card, borderLeft: c.id === 'video' ? '4px solid #7c3aed' : '4px solid #1e88e5' }}>
+            <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>{c.id === 'video' ? '🎥 ' : '🧠 '}{c.label}</div>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div style={{ flex: '1 1 220px', padding: 10, background: '#eff6ff', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase' }}>🤖 AI Finding</div>
+                <div style={{ fontSize: 12, color: '#334155', marginTop: 3 }}>{c.ai_finding}</div>
+              </div>
+              <div style={{ flex: '1 1 220px', padding: 10, background: '#ecfdf5', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: '#16a34a', textTransform: 'uppercase' }}>💡 AI Recommendation</div>
+                <div style={{ fontSize: 12, color: '#334155', marginTop: 3 }}>{c.ai_recommendation}</div>
+              </div>
+              <div style={{ flex: '1 1 240px', padding: 10, background: '#fef9f3', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: '#b45309', textTransform: 'uppercase' }}>🧑‍⚕️ Expert Manual Summary</div>
+                {c.doctor_finding ? (
+                  <div style={{ fontSize: 12, color: '#334155', marginTop: 3 }}>{c.doctor_finding} <span style={{ fontSize: 10, color: '#94a3b8' }}>({c.agree_with_ai || 'reviewed'})</span></div>
+                ) : (
+                  <div style={{ marginTop: 4 }}>
+                    <textarea value={e.finding || ''} onChange={ev => setEdits({ ...edits, [c.id]: { ...e, finding: ev.target.value } })} placeholder="Expert note…" style={{ width: '100%', fontSize: 12, padding: 5, borderRadius: 4, border: '1px solid #cbd5e1', boxSizing: 'border-box', minHeight: 40 }} />
+                    <div style={{ display: 'flex', gap: 4, marginTop: 4 }}>
+                      <select value={e.agree || ''} onChange={ev => setEdits({ ...edits, [c.id]: { ...e, agree: ev.target.value } })} style={{ fontSize: 11, padding: '2px 6px', borderRadius: 4, border: '1px solid #cbd5e1' }}>
+                        <option value="">agree?</option><option>agree</option><option>partially</option><option>disagree</option>
+                      </select>
+                      <button onClick={() => saveComp(c.id, e.finding || '', e.agree || '')} style={{ fontSize: 11, padding: '2px 10px', borderRadius: 4, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer' }}>Save</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )
+      })}
+
+      {/* Expert overall summary + final impression */}
+      <div style={card}>
+        <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>🧑‍⚕️ Expert Overall Summary (Human-in-the-Loop)</div>
+        <textarea value={expertSummary} onChange={e => setExpertSummary(e.target.value)} placeholder="Reviewing neurologist's overall interpretation across all components…" style={{ width: '100%', minHeight: 60, fontSize: 13, padding: 8, borderRadius: 6, border: '1px solid #cbd5e1', boxSizing: 'border-box' }} />
+        <div style={{ fontWeight: 700, color: '#0f172a', margin: '12px 0 8px' }}>✅ Final Impression (AI + Expert reconciled)</div>
+        <textarea value={finalImpression} onChange={e => setFinalImpression(e.target.value)} placeholder="Normal / Abnormal / Focal / Generalized epilepsy + recommendation (repeat EEG, MRI, surgical eval…)" style={{ width: '100%', minHeight: 50, fontSize: 13, padding: 8, borderRadius: 6, border: '1px solid #cbd5e1', boxSizing: 'border-box' }} />
+        <button onClick={() => expertSummary && axios.post(`${API_URL}/study-review/expert`, { patient_id: pid, role: 'Neurologist', finding: expertSummary, note: `Final impression: ${finalImpression}`, expert: 'reviewer' }).then(() => alert('Expert summary saved to study review + audit')).catch(() => {})}
+          style={{ marginTop: 10, padding: '8px 16px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Sign off report (→ audit)</button>
       </div>
     </div>
   )

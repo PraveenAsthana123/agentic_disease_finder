@@ -618,6 +618,14 @@ async def agent_tasks():
     return json.loads(p.read_text())
 
 
+@app.get("/api/data-requirements")
+async def data_requirements():
+    """DBA dataset requirements & gap (EEG signal, clinical, meds, imaging, neuropsych, outcome,
+    governance, quality, demographics) + tiers + control groups + artifact template."""
+    p = Path(__file__).parent / "config" / "data_requirements.json"
+    return json.loads(p.read_text()) if p.exists() else {"categories": []}
+
+
 @app.get("/api/challenges")
 async def challenges_catalog():
     """30 epilepsy/EEG challenges grouped by difficulty (basic/intermediate/high) + AI mitigation."""
