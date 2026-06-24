@@ -664,25 +664,23 @@ function ChallengesPanel({ deptChallenges }) {
       {shown.map((c) => {
         const star = c.star || {}
         const starRow = (k, label, color) => star[k] ? (
-          <div style={{ display: 'flex', gap: 8, fontSize: 12, marginBottom: 4 }}>
-            <span style={{ flexShrink: 0, width: 78, fontWeight: 700, color }}>{label}</span>
+          <div style={{ display: 'flex', gap: 8, fontSize: 12, marginBottom: 5 }}>
+            <span style={{ flexShrink: 0, width: 84, fontWeight: 700, color }}>{label}</span>
             <span style={{ color: '#334155' }}>{star[k]}</span>
           </div>
         ) : null
+        // ONE component per full-width row: challenge header on top, STAR stacked below.
         return (
-          <div key={c.n} style={{ display: 'flex', gap: 12, alignItems: 'stretch', marginBottom: 10, flexWrap: 'wrap' }}>
-            {/* LEFT: the challenge */}
-            <div style={{ flex: '1 1 280px', padding: 14, border: '1px solid #fecaca', borderLeft: `4px solid ${lvlCol[c.level]}`, borderRadius: 8, background: '#fff5f5' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <input type="checkbox" checked={!!done[c.n]} onChange={() => setDone({ ...done, [c.n]: !done[c.n] })} />
-                <span style={{ fontSize: 11, color: '#94a3b8' }}>#{c.n}</span>
-                <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', color: lvlCol[c.level], padding: '1px 7px', borderRadius: 10, background: lvlCol[c.level] + '18' }}>{c.level}</span>
-              </div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#0f172a', textDecoration: done[c.n] ? 'line-through' : 'none' }}>⚠ {c.challenge}</div>
-              {c.ai_help && <div style={{ fontSize: 12, color: '#166534', marginTop: 8 }}>🤖 <strong>AI:</strong> {c.ai_help}</div>}
+          <div key={c.n} style={{ ...card, borderLeft: `4px solid ${lvlCol[c.level]}`, marginBottom: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <input type="checkbox" checked={!!done[c.n]} onChange={() => setDone({ ...done, [c.n]: !done[c.n] })} />
+              <span style={{ fontSize: 11, color: '#94a3b8' }}>#{c.n}</span>
+              <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', color: lvlCol[c.level], padding: '1px 7px', borderRadius: 10, background: lvlCol[c.level] + '18' }}>{c.level}</span>
+              <span style={{ fontSize: 15, fontWeight: 600, color: '#0f172a', textDecoration: done[c.n] ? 'line-through' : 'none' }}>⚠ {c.challenge}</span>
             </div>
-            {/* RIGHT: STAR justification in detail */}
-            <div style={{ flex: '1 1 340px', padding: 14, border: '1px solid #bfdbfe', borderLeft: '4px solid #1e88e5', borderRadius: 8, background: '#f0f9ff' }}>
+            {c.ai_help && <div style={{ fontSize: 12, color: '#166534', marginBottom: 10, paddingLeft: 26 }}>🤖 <strong>AI mitigation:</strong> {c.ai_help}</div>}
+            {/* STAR justification — stacked, full width */}
+            <div style={{ padding: 12, border: '1px solid #bfdbfe', borderRadius: 8, background: '#f0f9ff' }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase', marginBottom: 6 }}>★ STAR justification</div>
               {starRow('s', 'Situation', '#b45309')}
               {starRow('t', 'Task', '#7c3aed')}
