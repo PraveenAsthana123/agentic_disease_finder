@@ -15,7 +15,7 @@ import MonitoringDashboard from './components/MonitoringDashboard'
 import AnalysisUI from './components/AnalysisUI'
 import MetricsDashboard from './components/MetricsDashboard'
 import InfographicsDashboard from './components/InfographicsDashboard'
-import DepartmentsDashboard from './components/DepartmentsDashboard'
+import DepartmentsDashboard, { DEPARTMENTS } from './components/DepartmentsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -52,6 +52,18 @@ const CHANNEL_CONFIGS = [
 function App() {
   // State
   const [activeTab, setActiveTab] = useState('departments')
+  const [activeDept, setActiveDept] = useState(DEPARTMENTS[0].id)
+  // Departments-only app: tool views folded into the department (first) menu.
+  const extraDepartments = [
+    { id: 'tool_metrics', name: 'Metrics Dashboard', icon: '📈', element: <MetricsDashboard /> },
+    { id: 'tool_analysis', name: 'AI Analysis', icon: '🔬', element: <AnalysisUI /> },
+    { id: 'tool_monitoring', name: 'RAG Monitoring', icon: '📡', element: <MonitoringDashboard /> },
+    { id: 'tool_pipelines', name: 'Pipelines', icon: '🛠️', element: <PipelineManager /> },
+    { id: 'tool_jobs', name: 'Jobs', icon: '⏱️', element: <JobScheduler /> },
+    { id: 'tool_inference', name: 'Inference Testing', icon: '🧪', element: <InferenceDashboard /> },
+    { id: 'tool_integrations', name: 'Integrations', icon: '🔌', element: <IntegrationHub /> },
+    { id: 'tool_infographics', name: 'Infographics', icon: '📊', element: <InfographicsDashboard /> },
+  ]
   const [selectedDisease, setSelectedDisease] = useState('depression')
   const [modality, setModality] = useState('eeg')
   const [channelConfig, setChannelConfig] = useState(22)
@@ -335,6 +347,26 @@ function App() {
               <option key={d.id} value={d.id}>{d.name}</option>
             ))}
           </select>
+        </div>
+      </div>
+
+      <div className="sidebar-divider" />
+
+      <div className="sidebar-section">
+        <div className="sidebar-section-title">Main Menu · Departments</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, maxHeight: 360, overflowY: 'auto' }}>
+          {[...DEPARTMENTS, ...extraDepartments].map(d => (
+            <button
+              key={d.id}
+              onClick={() => setActiveDept(d.id)}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8, width: '100%', textAlign: 'left',
+                border: 'none', cursor: 'pointer', borderRadius: 6, padding: '8px 10px', fontSize: 13,
+                background: activeDept === d.id ? '#1e88e5' : 'transparent',
+                color: activeDept === d.id ? '#fff' : '#475569', fontWeight: activeDept === d.id ? 600 : 400,
+              }}
+            ><span style={{ fontSize: 15 }}>{d.icon}</span><span>{d.name}</span></button>
+          ))}
         </div>
       </div>
 
@@ -1088,23 +1120,12 @@ function App() {
     )
   }
 
-  // Departments-only app: tool views are folded into the department (first) menu.
-  const extraDepartments = [
-    { id: 'tool_metrics', name: 'Metrics Dashboard', icon: '📈', element: <MetricsDashboard /> },
-    { id: 'tool_analysis', name: 'AI Analysis', icon: '🔬', element: <AnalysisUI /> },
-    { id: 'tool_monitoring', name: 'RAG Monitoring', icon: '📡', element: <MonitoringDashboard /> },
-    { id: 'tool_pipelines', name: 'Pipelines', icon: '🛠️', element: <PipelineManager /> },
-    { id: 'tool_jobs', name: 'Jobs', icon: '⏱️', element: <JobScheduler /> },
-    { id: 'tool_inference', name: 'Inference Testing', icon: '🧪', element: <InferenceDashboard /> },
-    { id: 'tool_integrations', name: 'Integrations', icon: '🔌', element: <IntegrationHub /> },
-    { id: 'tool_infographics', name: 'Infographics', icon: '📊', element: <InfographicsDashboard /> },
-  ]
-
   // Render active tab content
   const renderTabContent = () => {
     switch (activeTab) {
       case 'departments':
-        return <DepartmentsDashboard selectedDisease={selectedDisease} extraDepartments={extraDepartments} />
+        return <DepartmentsDashboard selectedDisease={selectedDisease} extraDepartments={extraDepartments}
+                 activeDept={activeDept} setActiveDept={setActiveDept} />
       case 'classification':
         return renderClassificationTab()
       case 'analysis':

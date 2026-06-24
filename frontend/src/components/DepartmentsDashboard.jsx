@@ -16,7 +16,7 @@ const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4'
 // `clinical: true` enables patient onboarding + EEG upload analysis.
 // Edit challenges/tasks/kpis here — this is the domain-content plug-in point.
 // ---------------------------------------------------------------------------
-const DEPARTMENTS = [
+export const DEPARTMENTS = [
   {
     id: 'neurologist', name: 'Neurologist', icon: '⚕️', clinical: true,
     challenges: ['Inter-rater variability in seizure/IED interpretation', 'Long-term monitoring review is time-consuming', 'Subtle focal abnormalities missed visually', 'Correlating EEG with clinical semiology'],
@@ -366,8 +366,12 @@ const CLINICAL_FORMS = {
   },
 }
 
-function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments = [] }) {
-  const [activeDept, setActiveDept] = useState(DEPARTMENTS[0].id)
+function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments = [],
+                               activeDept: activeDeptProp, setActiveDept: setActiveDeptProp }) {
+  const [activeDeptLocal, setActiveDeptLocal] = useState(DEPARTMENTS[0].id)
+  const controlled = activeDeptProp !== undefined  // App owns the department menu
+  const activeDept = controlled ? activeDeptProp : activeDeptLocal
+  const setActiveDept = controlled ? setActiveDeptProp : setActiveDeptLocal
   const [activeSub, setActiveSub] = useState('challenges')
 
   const allDepts = [...DEPARTMENTS, ...extraDepartments]
@@ -381,8 +385,8 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
 
   return (
     <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-      {/* MAIN MENU — Departments (first menu) */}
-      <aside style={{ width: 210, flexShrink: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, color: '#475569' }}>
+      {/* MAIN MENU — Departments (first menu). Hidden when App sidebar owns it. */}
+      {!controlled && <aside style={{ width: 210, flexShrink: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, color: '#475569' }}>
         <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: '#64748b', marginBottom: 10 }}>Main Menu · Departments</div>
         {allDepts.map(d => {
           const active = d.id === activeDept
@@ -396,7 +400,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
             </button>
           )
         })}
-      </aside>
+      </aside>}
 
       {/* SUB MENU (hidden for tool-departments that render a full component) */}
       {!extra && <aside style={{ width: 150, flexShrink: 0, background: '#f1f5f9', borderRadius: 8, padding: 10 }}>
