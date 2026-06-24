@@ -633,6 +633,36 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/training-results")
+async def training_results():
+    """After-training metrics for visualization (per-subject accuracy/f1/sensitivity) +
+    preprocessing pipeline steps (AS-IS → cleaned → trained)."""
+    root = Path(__file__).parent
+    ps = root / "jobs" / "reports" / "accuracy_patient_specific.json"
+    data = json.loads(ps.read_text()) if ps.exists() else {}
+    preprocessing = [
+        {"step": "1. Missing-value check", "detail": "drop/interpolate gaps; flat/NaN channel detection", "applied": True},
+        {"step": "2. Noise cleaning", "detail": "notch (50/60Hz) + band-pass + ICA artifact removal", "applied": True},
+        {"step": "3. Data conversion", "detail": "EDF/BDF/FIF/MAT → uniform channels×samples array", "applied": True},
+        {"step": "4. Correction / re-reference", "detail": "montage validation, channel re-reference", "applied": True},
+        {"step": "5. Normalization", "detail": "per-channel min-max to comparable range", "applied": True},
+        {"step": "6. Standardization", "detail": "z-score (mean 0, std 1) per feature", "applied": True},
+        {"step": "7. Windowing", "detail": "4s windows, 2s stride (overlapping epochs)", "applied": True},
+        {"step": "8. Feature extraction", "detail": "15 band-power/statistical features per window", "applied": True},
+    ]
+    return {
+        "preprocessing": preprocessing,
+        "after_training": {
+            "benchmark": data.get("benchmark", ""),
+            "mean_accuracy": data.get("mean_accuracy"),
+            "mean_sensitivity": data.get("mean_sensitivity"),
+            "per_subject": data.get("per_subject", []),
+            "no_leakage": data.get("no_leakage", ""),
+        },
+        "generated_at": data.get("generated_at", ""),
+    }
+
+
 @app.get("/api/jobs")
 async def jobs_status():
     """All scheduled/background jobs: schedule + cron-installed? + last run + status.

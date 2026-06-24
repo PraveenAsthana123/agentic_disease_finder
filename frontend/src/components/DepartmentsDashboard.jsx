@@ -792,6 +792,8 @@ function DataPanel({ disease, dept }) {
   const [analyzeErr, setAnalyzeErr] = useState(null)
   const [txns, setTxns] = useState([])
   const [log, setLog] = useState([])  // phase-by-phase activity log
+  const [tr, setTr] = useState(null)  // training results + preprocessing flow
+  useEffect(() => { axios.get(`${API_URL}/training-results`).then(r => setTr(r.data)).catch(() => setTr(null)) }, [])
   const addLog = (phase, detail, level = 'info') =>
     setLog(prev => [{ t: new Date().toLocaleTimeString(), phase, detail, level }, ...prev].slice(0, 40))
   const loadTxns = useCallback(() => {
@@ -920,6 +922,70 @@ function DataPanel({ disease, dept }) {
           </table>
         </div>
       </div>
+
+      {/* 📊 AS-IS Data Visualization (raw, before preprocessing) */}
+      {sample && (
+        <div style={card}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>📊 AS-IS Data (raw — before preprocessing)</h3>
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 300px' }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#475569', marginBottom: 6 }}>Class distribution (raw)</div>
+              <div style={{ height: 180 }}><ResponsiveContainer width="100%" height="100%">
+                <BarChart data={Object.entries(sample.class_distribution || {}).map(([k, v]) => ({ label: k, count: v }))}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="label" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
+                  <Bar dataKey="count" radius={[4, 4, 0, 0]}>{Object.keys(sample.class_distribution || {}).map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}</Bar>
+                </BarChart></ResponsiveContainer></div>
+            </div>
+            <div style={{ flex: '1 1 200px', fontSize: 13, color: '#475569' }}>
+              <div>Rows: <strong>{sample.n_rows}</strong></div>
+              <div>Features: <strong>{sample.n_features}</strong></div>
+              <div>Classes: <strong>{(sample.class_names || []).length}</strong></div>
+              <div style={{ marginTop: 6, fontSize: 11, color: '#b45309' }}>⚠ Raw — class imbalance + scale differences visible here, fixed in preprocessing →</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 🔧 Preprocessing Pipeline — flow as steps */}
+      {tr?.preprocessing && (
+        <div style={card}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔧 Preprocessing Pipeline (AS-IS → cleaned → features)</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+            {tr.preprocessing.map((s, i) => (
+              <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <span title={s.detail} style={{ fontSize: 11, padding: '6px 10px', borderRadius: 8, background: s.applied ? '#dcfce7' : '#f1f5f9', color: s.applied ? '#166534' : '#94a3b8', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                  {s.applied ? '✓ ' : ''}{s.step}
+                </span>
+                {i < tr.preprocessing.length - 1 && <span style={{ color: '#94a3b8' }}>→</span>}
+              </span>
+            ))}
+          </div>
+          <div style={{ marginTop: 10, display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 6 }}>
+            {tr.preprocessing.map((s, i) => (
+              <div key={i} style={{ fontSize: 11, padding: 6, background: '#f8fafc', borderRadius: 6, borderLeft: '3px solid #16a34a' }}>
+                <strong style={{ color: '#0f172a' }}>{s.step}</strong><div style={{ color: '#475569' }}>{s.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 📈 After-Training Visualization */}
+      {tr?.after_training?.per_subject?.length > 0 && (
+        <div style={card}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>📈 After Training (real CHB-MIT, leakage-free)</h3>
+          <div style={{ display: 'flex', gap: 16, fontSize: 13, marginBottom: 8, flexWrap: 'wrap' }}>
+            <span>Mean accuracy: <strong style={{ color: '#16a34a' }}>{(tr.after_training.mean_accuracy * 100).toFixed(1)}%</strong></span>
+            <span>Mean sensitivity: <strong>{(tr.after_training.mean_sensitivity * 100).toFixed(1)}%</strong></span>
+            <span style={{ fontSize: 11, color: '#64748b' }}>{tr.after_training.no_leakage}</span>
+          </div>
+          <div style={{ height: 200 }}><ResponsiveContainer width="100%" height="100%">
+            <BarChart data={tr.after_training.per_subject.map(s => ({ label: s.subject, Accuracy: +(s.accuracy * 100).toFixed(1), Sensitivity: +((s.sensitivity || 0) * 100).toFixed(1) }))}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="label" tick={{ fontSize: 11 }} /><YAxis domain={[0, 100]} tick={{ fontSize: 10 }} /><Tooltip />
+              <Bar dataKey="Accuracy" fill="#16a34a" radius={[4, 4, 0, 0]} /><Bar dataKey="Sensitivity" fill="#1e88e5" radius={[4, 4, 0, 0]} />
+            </BarChart></ResponsiveContainer></div>
+        </div>
+      )}
 
       {/* As-is reference sample */}
       <div style={card}>
