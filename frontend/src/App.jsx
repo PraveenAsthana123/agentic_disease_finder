@@ -81,7 +81,6 @@ function App() {
   // Tab options
   const tabs = [
     { id: 'departments', label: 'Departments' },
-    { id: 'classification', label: 'Classification' },
     { id: 'analysis', label: 'AI Analysis' },
     { id: 'metrics', label: 'Metrics Dashboard' },
     { id: 'asis', label: 'AS-IS Analysis' },
