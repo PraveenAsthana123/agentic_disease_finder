@@ -2084,15 +2084,26 @@ function RoleChallengesAI({ roleName }) {
   return (
     <div>
       <RolePicker roles={roles} role={role} setPick={setPick} />
-      <div style={{ fontSize: 13, color: '#475569', marginBottom: 10 }}>Each workflow challenge → how AI mitigates it</div>
+      <div style={{ fontSize: 13, color: '#475569', marginBottom: 10 }}>Challenge (left) → AI answer / mitigation (right)</div>
+      {/* header row */}
+      <div style={{ display: 'flex', gap: 10, fontSize: 11, fontWeight: 700, color: '#64748b', padding: '0 4px 4px' }}>
+        <div style={{ flex: 1 }}>⚠ CHALLENGE</div>
+        <div style={{ width: 28 }}></div>
+        <div style={{ flex: 1 }}>🤖 AI ANSWER / MITIGATION</div>
+      </div>
       {role.items.map((it, i) => (
-        <div key={i} style={{ padding: 12, border: '1px solid #e5e7eb', borderRadius: 8, marginBottom: 8, background: '#f8fafc' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontWeight: 600, color: '#f44336' }}>⚠ Challenge</span>
-            <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: col[it.status] }}>● {it.status}</span>
+        <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 10, marginBottom: 8 }}>
+          {/* LEFT: challenge */}
+          <div style={{ flex: 1, padding: 12, border: '1px solid #fecaca', borderLeft: '4px solid #f44336', borderRadius: 8, background: '#fff5f5' }}>
+            <div style={{ fontSize: 13, color: '#0f172a' }}>{it.challenge}</div>
+            <span style={{ fontSize: 10, fontWeight: 600, color: col[it.status] }}>● {it.status}</span>
           </div>
-          <div style={{ fontSize: 13, color: '#0f172a', margin: '3px 0 8px' }}>{it.challenge}</div>
-          <div style={{ fontSize: 12, color: '#166534' }}>🤖 <strong>AI mitigation:</strong> {it.ai}</div>
+          {/* arrow */}
+          <div style={{ width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', fontSize: 18 }}>→</div>
+          {/* RIGHT: AI answer */}
+          <div style={{ flex: 1, padding: 12, border: '1px solid #bbf7d0', borderLeft: '4px solid #16a34a', borderRadius: 8, background: '#f0fdf4' }}>
+            <div style={{ fontSize: 13, color: '#166534' }}>{it.ai}</div>
+          </div>
         </div>
       ))}
     </div>
