@@ -1,0 +1,249 @@
+{
+  "policy_id": "agenticfinder-global-approval-policy",
+  "name": "AgenticFinder Global Approval Policy",
+  "version": "1.0.0",
+  "status": "submitted",
+  "submitted_at": "2026-06-24",
+  "owner": "governance",
+  "classification": "research_use_only",
+  "applies_to": [
+    "agentic_planning",
+    "tool_execution",
+    "mcp_actions",
+    "clinical_decision_support",
+    "data_operations",
+    "model_lifecycle",
+    "rag_and_report_generation"
+  ],
+  "default_decision": "require_human_approval",
+  "decisions": {
+    "allow": "Action may proceed with audit logging.",
+    "deny": "Action must not proceed.",
+    "require_human_approval": "Action must be queued for reviewer approval before execution."
+  },
+  "approval_roles": {
+    "clinical_reviewer": {
+      "can_approve": [
+        "clinical_decision_support",
+        "patient_report_release",
+        "high_risk_prediction_review"
+      ]
+    },
+    "data_steward": {
+      "can_approve": [
+        "dataset_ingest",
+        "data_export",
+        "retention_change",
+        "de_identification_exception"
+      ]
+    },
+    "model_owner": {
+      "can_approve": [
+        "model_training",
+        "model_promotion",
+        "threshold_change",
+        "performance_claim_update"
+      ]
+    },
+    "security_officer": {
+      "can_approve": [
+        "external_integration",
+        "credential_rotation",
+        "privileged_tool_use",
+        "production_access"
+      ]
+    },
+    "governance_lead": {
+      "can_approve": [
+        "policy_change",
+        "override",
+        "kill_switch_disable",
+        "regulatory_exception"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "GAP-001",
+      "name": "Read-only public actions",
+      "match": {
+        "scope_prefix": "public:read",
+        "reversible": true,
+        "risk_band": "low"
+      },
+      "decision": "allow",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-002",
+      "name": "Scoped read actions",
+      "match": {
+        "scope_prefix": "read:",
+        "contains_phi_or_pii": false,
+        "risk_band": "low"
+      },
+      "decision": "allow",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-003",
+      "name": "Clinical or patient-facing output",
+      "match": {
+        "domain": "clinical_decision_support"
+      },
+      "decision": "require_human_approval",
+      "required_role": "clinical_reviewer",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-004",
+      "name": "Write, submit, send, or publish actions",
+      "match": {
+        "action_any": [
+          "write",
+          "submit",
+          "send",
+          "publish",
+          "release"
+        ]
+      },
+      "decision": "require_human_approval",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-005",
+      "name": "Admin or irreversible actions",
+      "match": {
+        "scope_prefix": "admin:",
+        "reversible": false
+      },
+      "decision": "require_human_approval",
+      "required_role": "governance_lead",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-006",
+      "name": "Protected data export",
+      "match": {
+        "action_any": [
+          "export",
+          "download",
+          "share"
+        ],
+        "contains_phi_or_pii": true
+      },
+      "decision": "require_human_approval",
+      "required_role": "data_steward",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-007",
+      "name": "Model promotion or threshold changes",
+      "match": {
+        "domain": "model_lifecycle",
+        "action_any": [
+          "promote",
+          "deploy",
+          "change_threshold",
+          "update_claim"
+        ]
+      },
+      "decision": "require_human_approval",
+      "required_role": "model_owner",
+      "required_audit": true
+    },
+    {
+      "rule_id": "GAP-008",
+      "name": "Deny destructive production patterns",
+      "match": {
+        "target_pattern_any": [
+          "production.*\\.delete",
+          "prod-db.*\\.drop",
+          ".*force.*push",
+          "admin\\.dangerous_.*"
+        ]
+      },
+      "decision": "deny",
+      "required_audit": true
+    }
+  ],
+  "risk_bands": {
+    "low": {
+      "examples": [
+        "read documentation",
+        "view non-sensitive metrics",
+        "run local validation"
+      ],
+      "default_decision": "allow"
+    },
+    "medium": {
+      "examples": [
+        "write local reports",
+        "run non-production training",
+        "update non-sensitive configuration"
+      ],
+      "default_decision": "require_human_approval"
+    },
+    "high": {
+      "examples": [
+        "patient-facing clinical output",
+        "external sharing",
+        "model deployment",
+        "admin action"
+      ],
+      "default_decision": "require_human_approval"
+    },
+    "critical": {
+      "examples": [
+        "delete production data",
+        "disable kill switch",
+        "bypass audit",
+        "change approval policy without review"
+      ],
+      "default_decision": "deny"
+    }
+  },
+  "audit_requirements": {
+    "required_fields": [
+      "request_id",
+      "actor",
+      "agent_id",
+      "action_kind",
+      "target",
+      "scope_required",
+      "risk_band",
+      "policy_rule_id",
+      "policy_decision",
+      "policy_reason",
+      "timestamp"
+    ],
+    "approval_fields": [
+      "approval_id",
+      "requested_by",
+      "reviewer_role",
+      "decision",
+      "decision_reason",
+      "decided_at",
+      "sla_due_at"
+    ],
+    "retention_days": 2555
+  },
+  "human_approval": {
+    "queue": "kernel_approval_queue",
+    "request_endpoint": "/api/v1/agent-kernel/hitl/request",
+    "decision_endpoint": "/api/v1/agent-kernel/hitl/{approval_id}/decide",
+    "default_sla_minutes": 60,
+    "critical_sla_minutes": 15,
+    "allowed_decisions": [
+      "approved",
+      "denied",
+      "escalated"
+    ]
+  },
+  "change_control": {
+    "policy_changes_require_role": "governance_lead",
+    "emergency_override_requires_reason": true,
+    "rollback_required": true,
+    "test_before_activation": true
+  }
+}
