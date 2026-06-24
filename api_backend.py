@@ -607,6 +607,64 @@ async def neurolab_readiness():
     return json.loads(p.read_text()) if p.exists() else {"stakeholders": []}
 
 
+@app.get("/api/role-challenges")
+async def role_challenges():
+    """Per-role workflow challenges + how AI in this project mitigates each."""
+    p = Path(__file__).parent / "config" / "role_challenges.json"
+    return json.loads(p.read_text()) if p.exists() else {"roles": []}
+
+
+# ---- Standardized clinical assessments (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) + CRUD ----
+@app.get("/api/assessments/instruments")
+async def assessment_instruments():
+    """Catalog of validated assessment instruments (items + scoring + bands) per role."""
+    p = Path(__file__).parent / "config" / "assessments.json"
+    return json.loads(p.read_text()) if p.exists() else {"instruments": []}
+
+
+class AssessmentIn(BaseModel):
+    patient_id: str
+    instrument: str
+    answers: Dict[str, Any]
+    examiner: str = ""
+
+
+@app.post("/api/assessments")
+async def assessment_create(body: AssessmentIn):
+    """CREATE: score answers + persist a completed assessment."""
+    return cdb.save_assessment(body.patient_id, body.instrument, body.answers, body.examiner)
+
+
+@app.get("/api/assessments")
+async def assessment_list(patient_id: str = "", limit: int = 50):
+    """VIEW (list): completed assessments, optionally filtered by patient."""
+    return {"items": cdb.list_assessments(patient_id or None, limit)}
+
+
+@app.get("/api/assessments/{aid}")
+async def assessment_get(aid: int):
+    """VIEW (one)."""
+    r = cdb.get_assessment(aid)
+    if not r:
+        raise HTTPException(404, "assessment not found")
+    return r
+
+
+@app.put("/api/assessments/{aid}")
+async def assessment_update(aid: int, body: AssessmentIn):
+    """CHANGE/EDIT: re-score updated answers."""
+    r = cdb.update_assessment(aid, body.answers, body.examiner)
+    if not r:
+        raise HTTPException(404, "assessment not found")
+    return r
+
+
+@app.delete("/api/assessments/{aid}")
+async def assessment_delete(aid: int):
+    """DELETE."""
+    return {"deleted": cdb.delete_assessment(aid)}
+
+
 @app.get("/api/automatic-pipelines")
 async def automatic_pipelines():
     """Catalog of automatic (end-to-end) pipelines per process + status."""

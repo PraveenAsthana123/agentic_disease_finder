@@ -1157,6 +1157,8 @@ const ROLE_SUBTABS = [
   { id: 'pipeline', label: 'Pipeline' },
   { id: 'simulation', label: 'Simulation' },
   { id: 'testing', label: 'Testing' },
+  { id: 'challenges_ai', label: 'Challenges → AI' },
+  { id: 'assessments', label: 'Assessments' },
   { id: 'todo', label: 'To-Do' },
   { id: 'tools', label: 'Tools' },
   { id: 'ai_solutions', label: 'AI Solves Challenges' },
@@ -1199,6 +1201,120 @@ function RolePicker({ roles, role, setPick }) {
     </div>
   )
 }
+
+function RoleChallengesAI({ roleName }) {
+  const r = useRoleReg('/role-challenges', roleName)
+  if (r.loading) return <div style={{ color: '#64748b' }}>Loading…</div>
+  if (r.empty) return <div style={{ color: '#64748b' }}>Backend offline (:8010).</div>
+  const { roles, role, setPick } = r
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  return (
+    <div>
+      <RolePicker roles={roles} role={role} setPick={setPick} />
+      <div style={{ fontSize: 13, color: '#475569', marginBottom: 10 }}>Each workflow challenge → how AI mitigates it</div>
+      {role.items.map((it, i) => (
+        <div key={i} style={{ padding: 12, border: '1px solid #e5e7eb', borderRadius: 8, marginBottom: 8, background: '#f8fafc' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontWeight: 600, color: '#f44336' }}>⚠ Challenge</span>
+            <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: col[it.status] }}>● {it.status}</span>
+          </div>
+          <div style={{ fontSize: 13, color: '#0f172a', margin: '3px 0 8px' }}>{it.challenge}</div>
+          <div style={{ fontSize: 12, color: '#166534' }}>🤖 <strong>AI mitigation:</strong> {it.ai}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function RoleAssessments({ roleName }) {
+  const [inst, setInst] = useState(null)
+  const [chosen, setChosen] = useState(null)
+  const [pid, setPid] = useState('P0001')
+  const [answers, setAnswers] = useState({})
+  const [list, setList] = useState([])
+  const [result, setResult] = useState(null)
+  const [editId, setEditId] = useState(null)
+  const norm = (s) => (s || '').toLowerCase()
+  const loadList = (p) => axios.get(`${API_URL}/assessments`, { params: { patient_id: p } }).then(r => setList(r.data.items || [])).catch(() => setList([]))
+  useEffect(() => {
+    axios.get(`${API_URL}/assessments/instruments`).then(r => {
+      const all = r.data.instruments || []
+      setInst(all)
+      const mine = all.filter(x => norm(roleName).split(' ').some(w => w.length > 3 && norm(x.role).includes(w)))
+      setChosen((mine[0] || all[0])?.id)
+    }).catch(() => setInst([]))
+    loadList(pid)
+  }, [roleName])
+  if (!inst) return <div style={{ color: '#64748b' }}>Loading…</div>
+  if (!inst.length) return <div style={{ color: '#64748b' }}>Backend offline (:8010).</div>
+  const cur = inst.find(i => i.id === chosen) || inst[0]
+  const fields = cur.items ? cur.items.map((t, i) => ({ id: `item${i + 1}`, label: t, scale: cur.scale }))
+    : (cur.domains || []).map(d => ({ id: d.id, label: d.label, max: d.max }))
+  const submit = () => {
+    const body = { patient_id: pid, instrument: cur.id, answers, examiner: 'UI' }
+    const req = editId ? axios.put(`${API_URL}/assessments/${editId}`, body) : axios.post(`${API_URL}/assessments`, body)
+    req.then(r => { setResult(r.data); setEditId(null); setAnswers({}); loadList(pid) }).catch(() => setResult({ error: 'failed' }))
+  }
+  const view = (a) => { setResult(a); setChosen(a.instrument); setAnswers(JSON.parse(a.answers_json || '{}')); setEditId(null) }
+  const edit = (a) => { setChosen(a.instrument); setAnswers(JSON.parse(a.answers_json || '{}')); setEditId(a.id); setResult(null) }
+  const del = (a) => axios.delete(`${API_URL}/assessments/${a.id}`).then(() => loadList(pid))
+  const lvlColor = { normal: '#4caf50', mild: '#ff9800', moderate: '#fb8c00', severe: '#f44336' }
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginBottom: 12 }}>
+        <select value={cur.id} onChange={e => { setChosen(e.target.value); setAnswers({}); setEditId(null); setResult(null) }} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+          {inst.map(i => <option key={i.id} value={i.id}>{i.icon} {i.name}</option>)}
+        </select>
+        <input value={pid} onChange={e => { setPid(e.target.value); loadList(e.target.value) }} placeholder="patient id" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 110 }} />
+        <span style={{ fontSize: 12, color: editId ? '#ff9800' : '#1e88e5', fontWeight: 600 }}>{editId ? `✏️ EDIT #${editId}` : '➕ CREATE'} mode</span>
+      </div>
+      {cur.note && <div style={{ fontSize: 11, color: '#64748b', marginBottom: 8 }}>ℹ {cur.note}</div>}
+      {/* item inputs */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 8, marginBottom: 12 }}>
+        {fields.map(f => (
+          <div key={f.id} style={{ padding: 8, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+            <div style={{ fontSize: 12, color: '#0f172a', marginBottom: 4 }}>{f.label}</div>
+            <input type="number" min="0" max={f.max || (f.scale ? f.scale[f.scale.length - 1] : 10)}
+              value={answers[f.id] ?? ''} onChange={e => setAnswers({ ...answers, [f.id]: Number(e.target.value) })}
+              style={{ width: 70, padding: '4px 6px', borderRadius: 4, border: '1px solid #cbd5e1' }} />
+            <span style={{ fontSize: 11, color: '#94a3b8' }}> / {f.max || (f.scale ? f.scale[f.scale.length - 1] : 10)}</span>
+          </div>
+        ))}
+      </div>
+      <button onClick={submit} style={{ padding: '8px 18px', borderRadius: 6, border: 'none', background: editId ? '#ff9800' : '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+        {editId ? '💾 Save changes' : '✓ Score & Save'}
+      </button>
+      {result && !result.error && (
+        <div style={{ marginTop: 12, padding: 12, borderRadius: 8, border: `2px solid ${lvlColor[result.level] || '#cbd5e1'}`, background: '#fff' }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>Score: {result.score}{result.max_score ? ` / ${result.max_score}` : ''}</div>
+          <div style={{ fontSize: 14, color: lvlColor[result.level] || '#475569', fontWeight: 600 }}>{result.interpretation}</div>
+          {result.alert && <div style={{ fontSize: 13, color: '#f44336', fontWeight: 600, marginTop: 4 }}>🚨 {result.alert}</div>}
+        </div>
+      )}
+      {/* CRUD list */}
+      <div style={{ marginTop: 18, fontSize: 13, fontWeight: 600, color: '#0f172a' }}>📋 Patient assessments ({list.length})</div>
+      <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden', marginTop: 6 }}>
+        <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+          <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Instr.</th><th style={cellTh}>Score</th><th style={cellTh}>Interpretation</th><th style={cellTh}>When</th><th style={cellTh}>Actions</th></tr></thead>
+          <tbody>{list.map((a, i) => (
+            <tr key={a.id} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+              <td style={{ ...cellTd, fontWeight: 600 }}>{a.instrument}</td>
+              <td style={cellTd}>{a.score}{a.max_score ? `/${a.max_score}` : ''}</td>
+              <td style={{ ...cellTd, color: lvlColor[a.level] || '#475569' }}>{a.interpretation}{a.alert ? ' 🚨' : ''}</td>
+              <td style={{ ...cellTd, fontSize: 11, color: '#94a3b8' }}>{(a.created_at || '').slice(0, 16).replace('T', ' ')}</td>
+              <td style={cellTd}>
+                <button onClick={() => view(a)} style={crudBtn('#1e88e5')}>view</button>
+                <button onClick={() => edit(a)} style={crudBtn('#ff9800')}>edit</button>
+                <button onClick={() => del(a)} style={crudBtn('#f44336')}>del</button>
+              </td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+const crudBtn = (c) => ({ marginRight: 4, padding: '2px 8px', fontSize: 11, border: `1px solid ${c}`, color: c, background: '#fff', borderRadius: 4, cursor: 'pointer' })
 
 function RolePipeline({ roleName }) {
   const r = useRoleReg('/simulations', roleName)
@@ -1420,6 +1536,8 @@ function RoleDetail({ role, core, workflow }) {
       {sub === 'pipeline' && <RolePipeline roleName={role.name} />}
       {sub === 'simulation' && <RoleSimulation roleName={role.name} />}
       {sub === 'testing' && <RoleTesting roleName={role.name} />}
+      {sub === 'challenges_ai' && <RoleChallengesAI roleName={role.name} />}
+      {sub === 'assessments' && <RoleAssessments roleName={role.name} />}
       {sub === 'todo' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 16 }}>
           <DetailList title="Tasks" items={role.tasks} />

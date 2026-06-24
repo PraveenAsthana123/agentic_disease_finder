@@ -191,6 +191,14 @@ def init_db() -> None:
                 rating INTEGER, correction TEXT, reason TEXT,
                 created_at TEXT NOT NULL
             );
+            -- Standardized clinical assessments (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) — auto-scored, CRUD.
+            CREATE TABLE IF NOT EXISTS assessments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL, instrument TEXT NOT NULL,
+                answers_json TEXT NOT NULL, score REAL, max_score REAL,
+                interpretation TEXT, level TEXT, alert TEXT, examiner TEXT,
+                created_at TEXT NOT NULL, updated_at TEXT
+            );
             -- Transaction history: every write stamped with UTC+local time + actor.
             CREATE TABLE IF NOT EXISTS transaction_log (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -607,6 +615,93 @@ def decision_route(confidence: float, role: str = "", task: str = "") -> dict:
     return {"role": role, "task": task, "confidence": round(float(confidence), 3),
             "decision": action, "rationale": why,
             "thresholds": {"auto": 0.8, "review": 0.5}}
+
+
+def _load_instruments():
+    from pathlib import Path as _P
+    p = _P(__file__).resolve().parent / "config" / "assessments.json"
+    return {i["id"]: i for i in (json.loads(p.read_text()).get("instruments", []) if p.exists() else [])}
+
+
+def score_assessment(instrument: str, answers: dict) -> dict:
+    """Auto-score answers against the validated instrument's rules + interpretation band."""
+    inst = _load_instruments().get(instrument)
+    if not inst:
+        return {"score": None, "interpretation": "unknown instrument", "level": "", "alert": ""}
+    vals = [float(v) for v in answers.values() if isinstance(v, (int, float)) or str(v).replace(".", "").isdigit()]
+    vals = [float(v) for v in answers.values() if str(v).replace(".", "").replace("-", "").isdigit()]
+    score = (sum(vals) / len(vals)) if (inst.get("scoring") == "mean" and vals) else sum(vals)
+    score = round(float(score), 2)
+    band = next((b for b in inst.get("bands", []) if b["min"] <= score <= b["max"]), None)
+    # alert: suicidality items
+    alert = ""
+    if instrument == "PHQ9" and float(answers.get("item9", answers.get("9", 0)) or 0) > 0:
+        alert = "PHQ-9 item 9 (self-harm) positive — escalate"
+    if instrument == "NDDIE" and float(answers.get("item4", answers.get("4", 0)) or 0) >= 2:
+        alert = "NDDI-E item 4 (suicidality) positive — escalate"
+    return {"score": score, "max_score": inst.get("max"),
+            "interpretation": band["label"] if band else "out of range",
+            "level": band["level"] if band else "", "alert": alert}
+
+
+def save_assessment(patient_id: str, instrument: str, answers: dict, examiner: str = "") -> dict:
+    init_db()
+    s = score_assessment(instrument, answers)
+    now = _now()
+    with _connect() as c:
+        cur = c.execute(
+            "INSERT INTO assessments(patient_id,instrument,answers_json,score,max_score,interpretation,level,alert,examiner,created_at)"
+            " VALUES(?,?,?,?,?,?,?,?,?,?)",
+            (patient_id, instrument, json.dumps(answers), s["score"], s["max_score"],
+             s["interpretation"], s["level"], s["alert"], examiner, now))
+        aid = cur.lastrowid
+    log_transaction(patient_id, component="assessment", action="create", ref_id=aid,
+                    detail=f"{instrument} score={s['score']} ({s['interpretation']})")
+    return {"id": aid, "patient_id": patient_id, "instrument": instrument, **s, "created_at": now}
+
+
+def list_assessments(patient_id: str | None = None, limit: int = 50) -> list:
+    init_db()
+    with _connect() as c:
+        if patient_id:
+            rows = c.execute("SELECT * FROM assessments WHERE patient_id=? ORDER BY id DESC LIMIT ?", (patient_id, limit)).fetchall()
+        else:
+            rows = c.execute("SELECT * FROM assessments ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_assessment(aid: int):
+    init_db()
+    with _connect() as c:
+        r = c.execute("SELECT * FROM assessments WHERE id=?", (aid,)).fetchone()
+    return dict(r) if r else None
+
+
+def update_assessment(aid: int, answers: dict, examiner: str = ""):
+    init_db()
+    cur = get_assessment(aid)
+    if not cur:
+        return None
+    s = score_assessment(cur["instrument"], answers)
+    now = _now()
+    with _connect() as c:
+        c.execute("UPDATE assessments SET answers_json=?,score=?,max_score=?,interpretation=?,level=?,alert=?,examiner=?,updated_at=? WHERE id=?",
+                  (json.dumps(answers), s["score"], s["max_score"], s["interpretation"], s["level"], s["alert"], examiner, now, aid))
+    log_transaction(cur["patient_id"], component="assessment", action="update", ref_id=aid,
+                    detail=f"{cur['instrument']} re-scored={s['score']}")
+    return {"id": aid, "instrument": cur["instrument"], **s, "updated_at": now}
+
+
+def delete_assessment(aid: int) -> bool:
+    init_db()
+    cur = get_assessment(aid)
+    if not cur:
+        return False
+    with _connect() as c:
+        c.execute("DELETE FROM assessments WHERE id=?", (aid,))
+    log_transaction(cur["patient_id"], component="assessment", action="delete", ref_id=aid,
+                    detail=f"{cur['instrument']} deleted")
+    return True
 
 
 def _vector_retrieve(patient_id: str, query: str, k: int = 6):
