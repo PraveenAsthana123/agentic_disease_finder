@@ -130,7 +130,7 @@ const cellTd = { padding: '6px 10px', color: '#1f2937', borderBottom: '1px solid
 
 function subTabsFor(dept) {
   if (dept.custom === 'admin') {
-    return [{ id: 'admin_dash', label: 'All Dashboards' }, { id: 'admin_team', label: 'Team Roles' }]
+    return [{ id: 'admin_dash', label: 'All Dashboards' }, { id: 'admin_team', label: 'Team Roles & Ops' }, { id: 'admin_access', label: 'Access & Integrations' }]
   }
   if (dept.custom === 'master') {
     return [{ id: 'master', label: 'Master Data' }, { id: 'chat', label: 'Patient Chat (RAG)' }, { id: 'agents', label: 'Agent Registry' }]
@@ -403,6 +403,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
 
         {activeSub === 'admin_dash' && <AdminDashboardsPanel />}
         {activeSub === 'admin_team' && <AdminTeamPanel />}
+        {activeSub === 'admin_access' && <AdminAccessPanel />}
         {activeSub === 'master' && <PatientMasterPanel />}
         {activeSub === 'chat' && <PatientChatPanel />}
         {activeSub === 'agents' && <AgentRegistryPanel />}
@@ -2655,6 +2656,49 @@ function AdminDashboardsPanel() {
           </div>
         </div>
       ))}
+    </div>
+  )
+}
+
+function AdminAccessPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/admin/module`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8', 'n/a': '#cbd5e1' }
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔐 Access Control ({(d.access_control || []).length})</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 8 }}>
+          {(d.access_control || []).map((a, i) => (
+            <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{a.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: col[a.status] }}>● {a.status}</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>{a.purpose}</div>
+              {a.note && <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 2, fontStyle: 'italic' }}>{a.note}</div>}
+              {a.maps_to && <div style={{ fontSize: 10, color: '#1e88e5', marginTop: 2 }}><code>{a.maps_to}</code></div>}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔌 Integrations (via MCP) ({(d.integrations || []).length})</h3>
+        <div style={{ fontSize: 12, color: '#64748b', marginBottom: 10 }}>{d.integration_note}</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 8 }}>
+          {(d.integrations || []).map((it, i) => (
+            <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{it.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: col[it.status] }}>● {it.status}</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>{it.purpose}</div>
+              <div style={{ fontSize: 10, color: '#8e24aa', marginTop: 2 }}>via {it.via}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

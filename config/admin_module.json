@@ -22,5 +22,26 @@
     {"id": "dataops", "label": "📦 DataOps", "purpose": "ingestion, data quality, lineage, vector ingest", "status": "partial", "maps_to": "eeg_ingest + VECTOR-INGEST cron"},
     {"id": "finops", "label": "💰 FinOps", "purpose": "token/GPU/cloud cost per request/user/model", "status": "planned"},
     {"id": "observability", "label": "👁️ Observability", "purpose": "logs, traces, metrics, request_id", "status": "partial", "maps_to": "transaction_log (OTel planned)"}
-  ]
+  ],
+  "access_control": [
+    {"id": "user_mgmt", "label": "👤 User Management", "purpose": "create/disable users, assign roles, lifecycle", "status": "planned"},
+    {"id": "rbac", "label": "🔑 RBAC", "purpose": "role-based access (Neurologist/Tech/Admin/Reviewer)", "status": "planned", "note": "single-user now; roles are UI tabs"},
+    {"id": "abac", "label": "🧬 ABAC", "purpose": "attribute-based (tenant/dept/clearance) — N/A for single-tenant", "status": "n/a", "note": "single-tenant study; ABAC is for multi-tenant"},
+    {"id": "groups", "label": "👥 Groups / Teams", "purpose": "group membership + group permissions", "status": "planned"},
+    {"id": "pii", "label": "🔒 PII Management", "purpose": "PII detection + masking + redaction", "status": "built", "maps_to": "PII scanner in guardrails"},
+    {"id": "consensus", "label": "🤝 Consensus Management", "purpose": "multi-agent/expert consensus + voting", "status": "built", "maps_to": "consensus + council + study-review"},
+    {"id": "audit", "label": "📜 Access Audit", "purpose": "who accessed what, when (UTC+local)", "status": "built", "maps_to": "transaction_log"}
+  ],
+  "integrations": [
+    {"id": "slack", "label": "Slack", "via": "MCP connector", "purpose": "alerts/notifications to channels", "status": "planned"},
+    {"id": "whatsapp", "label": "WhatsApp", "via": "MCP / Business API", "purpose": "patient SOS/reminders", "status": "planned"},
+    {"id": "gdrive", "label": "Google Drive", "via": "MCP", "purpose": "report/document storage", "status": "planned"},
+    {"id": "gsheet", "label": "Google Sheets", "via": "MCP", "purpose": "data export / cohort tracking", "status": "planned"},
+    {"id": "gdocs", "label": "Google Docs", "via": "MCP", "purpose": "report drafting", "status": "planned"},
+    {"id": "dropbox", "label": "Dropbox", "via": "MCP", "purpose": "file storage", "status": "planned"},
+    {"id": "onedrive", "label": "OneDrive", "via": "MCP", "purpose": "file storage (MS)", "status": "planned"},
+    {"id": "email_google", "label": "Email (Gmail/Google)", "via": "MCP / SMTP", "purpose": "report delivery, notifications", "status": "planned"},
+    {"id": "email_o365", "label": "Email (Office365)", "via": "MCP / Graph API", "purpose": "report delivery (enterprise)", "status": "planned"}
+  ],
+  "integration_note": "All external integrations route through MCP connectors (standardized tool protocol). None wired yet — each needs OAuth + the MCP server. Local-first by default (no data egress until explicitly connected)."
 }
