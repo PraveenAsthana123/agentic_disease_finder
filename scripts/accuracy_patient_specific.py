@@ -24,7 +24,16 @@ from scipy import signal as sp
 ROOT = Path(__file__).resolve().parent.parent
 CHB = ROOT / "data" / "real_eeg" / "epilepsy_physionet"
 OUT = ROOT / "jobs" / "reports"
-SUBJECTS = ["chb01", "chb02", "chb03", "chb04"]
+def _discover_subjects():
+    """Auto-discover all CHB-MIT subjects with a summary + EDFs (scales when more are downloaded)."""
+    if not CHB.exists():
+        return ["chb01", "chb02", "chb03", "chb04"]
+    subs = sorted(d.name for d in CHB.iterdir()
+                  if d.is_dir() and (d / f"{d.name}-summary.txt").exists() and list(d.glob("*.edf")))
+    return subs or ["chb01", "chb02", "chb03", "chb04"]
+
+
+SUBJECTS = _discover_subjects()
 WIN_S = 4
 STRIDE = 2                # 50% overlap -> 2x seizure samples
 MAX_SEIZ = 200

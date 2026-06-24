@@ -21,6 +21,7 @@ SCRIPTS = [
     "accuracy_all_options.py",
     "bonn_external_validation.py",
     "ica_noise_cleaning.py",
+    "concordance_analysis.py",
     "bootstrap_ci_baselines.py",  # last — consumes the others' outputs
 ]
 
