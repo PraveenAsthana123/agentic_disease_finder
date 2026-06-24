@@ -1,0 +1,22 @@
+{
+  "title": "Scheduled / Background Jobs Registry",
+  "note": "Every cron + background job, its schedule, script, and where its result lands. /api/jobs reads this + each job's latest report.",
+  "updated_at": "2026-06-24",
+  "jobs": [
+    {"id": "training", "label": "🧠 EEG Training (CHB-MIT)", "script": "scripts/scheduled_train.py",
+     "schedule": "daily 02:30", "cron_tag": "AGENTICFINDER-TRAIN", "report": "jobs/reports/training_latest.json",
+     "purpose": "Leakage-free epilepsy accuracy on real CHB-MIT signal data"},
+    {"id": "vector", "label": "🔎 Vector DB Ingest (RAG)", "script": "scripts/vector_ingest.py",
+     "schedule": "07:00 + 19:00 daily", "cron_tag": "VECTOR-INGEST", "report": "jobs/reports/vector_latest.json",
+     "purpose": "Embed clinical records + reports → ChromaDB for RAG"},
+    {"id": "video_frames", "label": "🎞️ Video → Image Frames", "script": "scripts/video_to_frames.py",
+     "schedule": "hourly", "cron_tag": "VIDEO-FRAMES", "report": "jobs/reports/video_frames_latest.json",
+     "purpose": "Extract keyframes from uploaded EEG/seizure videos for CV analysis"},
+    {"id": "validation", "label": "✅ Validation Suite", "script": "scripts/run_validation_suite.py",
+     "schedule": "daily 03:00", "cron_tag": "VALIDATION", "report": "jobs/reports/validation_latest.json",
+     "purpose": "External validation (Bonn) + bootstrap CIs"},
+    {"id": "graph_db", "label": "🕸️ Knowledge Graph (RDF) Build", "script": "scripts/build_graph.py",
+     "schedule": "06:00 daily", "cron_tag": "GRAPH-DB", "report": "jobs/reports/graph_latest.json",
+     "purpose": "Rebuild RDF relationship graph (patient→EEG→finding→diagnosis) from clinical DB"}
+  ]
+}

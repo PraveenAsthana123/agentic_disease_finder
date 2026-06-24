@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -620,6 +620,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'flowcharts' && <FlowchartsPanel />}
         {activeSub === 'role_specs' && <RoleSpecsPanel />}
         {activeSub === 'data_formats' && <DataFormatsPanel />}
+        {activeSub === 'jobs_cron' && <JobsCronPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -3898,6 +3899,43 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function JobsCronPanel() {
+  const [d, setD] = useState(null)
+  const load = () => axios.get(`${API_URL}/jobs`).then(r => setD(r.data)).catch(() => setD(null))
+  useEffect(() => { load() }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  return (
+    <div>
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>⏰ Jobs / Cron — {d.total} jobs</h3>
+          <span style={{ fontSize: 12, color: '#16a34a' }}>{d.installed} cron-installed</span>
+          <button onClick={load} style={{ marginLeft: 'auto', fontSize: 12, padding: '5px 12px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer' }}>↻ Refresh</button>
+        </div>
+        <div style={{ fontSize: 11, color: '#64748b', marginTop: 4 }}>{d.note}</div>
+      </div>
+      {(d.jobs || []).map((j) => (
+        <div key={j.id} style={{ ...card, borderLeft: `4px solid ${j.cron_installed ? '#16a34a' : '#94a3b8'}` }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <strong style={{ color: '#0f172a' }}>{j.label}</strong>
+            <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 10, background: j.cron_installed ? '#dcfce7' : '#f1f5f9', color: j.cron_installed ? '#166534' : '#64748b' }}>
+              {j.cron_installed ? '● cron installed' : '○ not scheduled'}
+            </span>
+            <span style={{ fontSize: 11, color: '#475569' }}>🗓 {j.schedule}</span>
+          </div>
+          <div style={{ fontSize: 12, color: '#475569', marginTop: 4 }}>{j.purpose}</div>
+          <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>script: <code>{j.script}</code> · report: <code>{j.report}</code></div>
+          {j.last_run ? (
+            <div style={{ fontSize: 12, marginTop: 6, padding: 8, borderRadius: 6, background: j.last_run.ok ? '#f0fdf4' : '#fef2f2', color: j.last_run.ok ? '#166534' : '#991b1b' }}>
+              {j.last_run.ok ? '✓' : '✗'} last run: {j.last_run.run_at || '?'} · {j.last_run.summary || ''}
+            </div>
+          ) : <div style={{ fontSize: 12, marginTop: 6, color: '#b45309' }}>⚠ never run yet — install cron + run once</div>}
+        </div>
+      ))}
     </div>
   )
 }

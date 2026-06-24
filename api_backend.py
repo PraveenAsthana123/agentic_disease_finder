@@ -633,6 +633,35 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/jobs")
+async def jobs_status():
+    """All scheduled/background jobs: schedule + cron-installed? + last run + status.
+    So every job is visible on the UI (Cron/Jobs tab)."""
+    import subprocess
+    root = Path(__file__).parent
+    reg = json.loads((root / "config" / "jobs.json").read_text()) if (root / "config" / "jobs.json").exists() else {"jobs": []}
+    try:
+        crontab = subprocess.run(["crontab", "-l"], capture_output=True, text=True, timeout=5).stdout
+    except Exception:
+        crontab = ""
+    out = []
+    for j in reg.get("jobs", []):
+        rep_path = root / j.get("report", "")
+        last = None
+        if rep_path.exists():
+            try:
+                d = json.loads(rep_path.read_text())
+                last = {"run_at": d.get("run_at_local") or d.get("run_at_utc"),
+                        "summary": d.get("summary") or d.get("note") or f"{d.get('total_frames', d.get('processed', ''))}",
+                        "ok": all(r.get("ok", True) for r in d.get("results", [])) if d.get("results") else True}
+            except Exception:
+                last = {"run_at": "?", "summary": "report unreadable"}
+        out.append({**j, "cron_installed": j.get("cron_tag", "") in crontab, "last_run": last})
+    return {"jobs": out, "total": len(out),
+            "installed": sum(1 for x in out if x["cron_installed"]),
+            "note": reg.get("note", "")}
+
+
 @app.get("/api/system-health")
 async def system_health():
     """Live status of every sub-system — answers 'what is working?' in one call."""
