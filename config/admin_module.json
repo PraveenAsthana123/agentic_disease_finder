@@ -1,0 +1,26 @@
+{
+  "title": "Admin Module — Team Roles + Ops Dashboards",
+  "note": "Technical/ops roles + their dashboards. status: built / partial / planned. Most ops dashboards are planned for a single-study research project (no cloud/k8s).",
+  "updated_at": "2026-06-24",
+  "team_roles": [
+    {"role": "Admin", "icon": "🛠️", "owns": ["user management", "feature flags", "system health", "config"], "status": "partial"},
+    {"role": "Tester / QA", "icon": "🧪", "owns": ["test suites", "coverage", "regression", "defect tracking"], "status": "partial", "maps_to": "role_tests + stories-tests"},
+    {"role": "Security", "icon": "🛡️", "owns": ["guardrails", "PII/injection scan", "vuln tracking", "audit"], "status": "built", "maps_to": "/api/guardrails-check + PII"},
+    {"role": "Integration", "icon": "🔌", "owns": ["EMR/FHIR", "device streaming", "API contracts", "webhooks"], "status": "planned"},
+    {"role": "Functional / BA", "icon": "📋", "owns": ["requirements", "use cases", "acceptance criteria", "UAT"], "status": "partial", "maps_to": "stories-tests"},
+    {"role": "Product Manager", "icon": "📊", "owns": ["roadmap", "KPIs", "ROI", "adoption"], "status": "partial", "maps_to": "neurolab-readiness"},
+    {"role": "AI Reviewer", "icon": "🔍", "owns": ["model accuracy drift", "fairness", "override rate", "audit volume"], "status": "built", "maps_to": "responsible-ai + concordance"}
+  ],
+  "ops_dashboards": [
+    {"id": "cloud", "label": "☁️ Cloud", "purpose": "infra cost, regions, autoscaling, uptime", "status": "planned"},
+    {"id": "devops", "label": "🔧 DevOps / CI-CD", "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status", "status": "planned"},
+    {"id": "db", "label": "🗄️ Database", "purpose": "query latency, slow queries, size, backups, WAL", "status": "partial", "maps_to": "clinical-db-audit cron"},
+    {"id": "model", "label": "🧠 Model Ops", "purpose": "model registry, versions, accuracy, drift, retrain", "status": "partial", "maps_to": "validation suite + accuracy reports"},
+    {"id": "llmops", "label": "💬 LLMOps", "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval", "status": "partial", "maps_to": "council + Ollama (cost/drift planned)"},
+    {"id": "mlops", "label": "⚙️ MLOps", "purpose": "training pipeline, experiment tracking, feature store, CV metrics", "status": "partial", "maps_to": "Model Lab + benchmarks"},
+    {"id": "secops", "label": "🔒 SecOps", "purpose": "threat detection, injection/jailbreak, access audit, incident", "status": "partial", "maps_to": "guardrails + audit (SIEM planned)"},
+    {"id": "dataops", "label": "📦 DataOps", "purpose": "ingestion, data quality, lineage, vector ingest", "status": "partial", "maps_to": "eeg_ingest + VECTOR-INGEST cron"},
+    {"id": "finops", "label": "💰 FinOps", "purpose": "token/GPU/cloud cost per request/user/model", "status": "planned"},
+    {"id": "observability", "label": "👁️ Observability", "purpose": "logs, traces, metrics, request_id", "status": "partial", "maps_to": "transaction_log (OTel planned)"}
+  ]
+}

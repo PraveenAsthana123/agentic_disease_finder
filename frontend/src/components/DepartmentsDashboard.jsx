@@ -119,6 +119,9 @@ const DEPARTMENTS = [
     tasks: ['Coordinate federated rounds', 'Aggregate site models', 'Validate per-site performance', 'Align governance across sites'],
     kpis: [{ label: 'Sites onboarded', value: 4, target: 8 }, { label: 'Rounds / month', value: 6, target: 10 }, { label: 'Global accuracy (%)', value: 89, target: 92 }, { label: 'Site drift (open)', value: 1, target: 0 }],
   },
+  {
+    id: 'admin', name: 'Admin', icon: '🛠️', clinical: false, custom: 'admin',
+  },
 ]
 
 const card = { background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 8, padding: 16, marginBottom: 16 }
@@ -126,6 +129,9 @@ const cellTh = { padding: '8px 10px', textAlign: 'left', color: '#334155', borde
 const cellTd = { padding: '6px 10px', color: '#1f2937', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap' }
 
 function subTabsFor(dept) {
+  if (dept.custom === 'admin') {
+    return [{ id: 'admin_dash', label: 'All Dashboards' }, { id: 'admin_team', label: 'Team Roles' }]
+  }
   if (dept.custom === 'master') {
     return [{ id: 'master', label: 'Master Data' }, { id: 'chat', label: 'Patient Chat (RAG)' }, { id: 'agents', label: 'Agent Registry' }]
   }
@@ -395,6 +401,8 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
           <span style={{ marginLeft: 'auto', fontSize: 12, color: '#64748b' }}>disease context: <strong>{selectedDisease}</strong></span>
         </div>
 
+        {activeSub === 'admin_dash' && <AdminDashboardsPanel />}
+        {activeSub === 'admin_team' && <AdminTeamPanel />}
         {activeSub === 'master' && <PatientMasterPanel />}
         {activeSub === 'chat' && <PatientChatPanel />}
         {activeSub === 'agents' && <AgentRegistryPanel />}
@@ -2613,6 +2621,77 @@ function PatientPortalPanel() {
               </tr>
             ))}{!forms.length && <tr><td style={cellTd} colSpan={4}>No forms assigned. Experts assign via /api/forms/assign; patients fill via /api/forms/{'{id}'}/submit.</td></tr>}</tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function AdminDashboardsPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/admin/dashboards`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const sc = (s) => s === 'built' ? '#4caf50' : s === 'partial' ? '#ff9800' : s === 'catalog' ? '#1e88e5' : '#94a3b8'
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🛠️ Admin — All Dashboards ({d.total_entries})</h3>
+        <div style={{ fontSize: 13, color: '#475569' }}><strong style={{ color: '#4caf50' }}>{d.built}</strong> built system views · plus per-role · enterprise catalog · registries</div>
+        <div style={{ fontSize: 11, color: '#64748b', marginTop: 4 }}>{d.note}</div>
+      </div>
+      {d.groups.map((g, i) => (
+        <div key={i} style={card}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>{g.group} ({g.items.length})</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 8 }}>
+            {g.items.map((it, j) => (
+              <div key={j} style={{ padding: 9, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{it.name}</span>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: sc(it.status) }}>● {it.status}</span>
+                </div>
+                <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>{it.where}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function AdminTeamPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/admin/module`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👨‍💻 Team Roles ({(d.team_roles || []).length})</h3>
+        {(d.team_roles || []).map((r, i) => (
+          <div key={i} style={{ padding: 10, borderBottom: '1px solid #f1f5f9' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <strong style={{ color: '#0f172a' }}>{r.icon} {r.role}</strong>
+              <span style={{ fontSize: 11, fontWeight: 600, color: col[r.status] }}>● {r.status}</span>
+              {r.maps_to && <span style={{ marginLeft: 'auto', fontSize: 11, color: '#1e88e5' }}><code>{r.maps_to}</code></span>}
+            </div>
+            <div style={{ fontSize: 12, color: '#475569', marginTop: 3 }}>owns: {(r.owns || []).join(' · ')}</div>
+          </div>
+        ))}
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>⚙️ Ops Dashboards ({(d.ops_dashboards || []).length})</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 8 }}>
+          {(d.ops_dashboards || []).map((o, i) => (
+            <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{o.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: col[o.status] }}>● {o.status}</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>{o.purpose}</div>
+              {o.maps_to && <div style={{ fontSize: 10, color: '#1e88e5', marginTop: 2 }}><code>{o.maps_to}</code></div>}
+            </div>
+          ))}
         </div>
       </div>
     </div>

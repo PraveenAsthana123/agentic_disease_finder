@@ -669,6 +669,79 @@ async def add_study_expert(body: ExpertReviewIn):
                                  body.agree_with_ai, body.note, body.expert)
 
 
+@app.get("/api/admin/dashboards")
+async def admin_dashboards():
+    """ADMIN: aggregate every dashboard in the system from all registries + system views."""
+    cfg = Path(__file__).parent / "config"
+
+    def load(name):
+        p = cfg / name
+        return json.loads(p.read_text()) if p.exists() else {}
+
+    groups = []
+
+    # 1. System dashboards (real working views)
+    system = [
+        {"name": "EEG / Epilepsy Analysis", "status": "built", "where": "EEG module"},
+        {"name": "SHAP Explainability", "status": "built", "where": "per-disease"},
+        {"name": "Interpretable AI (surrogate)", "status": "built", "where": "per-disease"},
+        {"name": "Responsible AI (fairness)", "status": "built", "where": "/api/responsible-ai"},
+        {"name": "Model Lab (XGB/LGBM/SMOTE/PCA)", "status": "built", "where": "Special Case"},
+        {"name": "Anomaly Detection", "status": "built", "where": "Special Case"},
+        {"name": "Time-Series + Statistics", "status": "built", "where": "Special Case"},
+        {"name": "Council of Agents trace", "status": "built", "where": "Feedback & Governance"},
+        {"name": "Study Review (multi-expert)", "status": "built", "where": "AI Types hub"},
+        {"name": "Patient Master + Chat (RAG)", "status": "built", "where": "Patient module"},
+        {"name": "NeuroLab Readiness", "status": "built", "where": "AI Types hub"},
+        {"name": "Tab Taxonomy", "status": "built", "where": "AI Types hub"},
+        {"name": "Accuracy / Validation", "status": "built", "where": "VALIDATION_SUMMARY"},
+    ]
+    groups.append({"group": "System Dashboards (working)", "items": system})
+
+    # 2. Per-role dashboards (from registry)
+    rd = load("role_dashboards.json").get("roles", [])
+    role_items = []
+    for r in rd:
+        built = sum(1 for k in r.get("kpis", []) if k.get("status") == "built")
+        role_items.append({"name": f"{r['icon']} {r['role']} dashboard", "status": "built" if built else "partial",
+                           "where": f"{len(r.get('kpis', []))} KPIs, {len(r.get('reports', []))} reports"})
+    groups.append({"group": "Per-Role Dashboards", "items": role_items})
+
+    # 3. Dashboard catalog (the ~400 enterprise spec) — counts per phase
+    dc = load("dashboard_catalog.json")
+    cat_phases = dc.get("phases", []) if isinstance(dc, dict) else []
+    cat_items = []
+    for ph in cat_phases:
+        ds = ph.get("dashboards", [])
+        b = sum(1 for d in ds if d.get("status") == "built")
+        cat_items.append({"name": ph.get("name", "phase"), "status": f"{b}/{len(ds)} built", "where": "dashboard_catalog"})
+    groups.append({"group": "Enterprise Dashboard Catalog (spec)", "items": cat_items})
+
+    # 4. Coverage registries
+    registries = [
+        {"name": "AI Types (201)", "status": "catalog", "where": "/api/ai-type-coverage"},
+        {"name": "Automatic Pipelines (20)", "status": "catalog", "where": "/api/automatic-pipelines"},
+        {"name": "Enterprise Pipelines (45)", "status": "catalog", "where": "/api/enterprise-pipelines"},
+        {"name": "Production Issues (16 layers)", "status": "catalog", "where": "/api/production-issues"},
+        {"name": "Stories & Tests", "status": "catalog", "where": "/api/stories-tests"},
+        {"name": "Simulations (per role)", "status": "catalog", "where": "/api/simulations"},
+        {"name": "Portal Tabs", "status": "catalog", "where": "/api/portal-tabs"},
+    ]
+    groups.append({"group": "Coverage Registries", "items": registries})
+
+    total = sum(len(g["items"]) for g in groups)
+    built = sum(1 for g in groups for i in g["items"] if i["status"] == "built")
+    return {"groups": groups, "total_entries": total, "built": built,
+            "note": "Admin aggregate of every dashboard surface. status: built=real view / partial / catalog=registry / X/Y=spec coverage."}
+
+
+@app.get("/api/admin/module")
+async def admin_module():
+    """ADMIN: team roles + ops dashboards (cloud/devops/db/model/llmops/mlops/secops)."""
+    p = Path(__file__).parent / "config" / "admin_module.json"
+    return json.loads(p.read_text()) if p.exists() else {"team_roles": [], "ops_dashboards": []}
+
+
 @app.get("/api/portal-tabs")
 async def portal_tabs():
     """Self-service patient portal tab registry (forms/campaign/notification/alert/inbox/medication/therapy)."""
