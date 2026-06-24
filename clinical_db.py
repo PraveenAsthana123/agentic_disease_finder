@@ -215,6 +215,14 @@ def init_db() -> None:
             CREATE TABLE IF NOT EXISTS chat_presence (
                 role TEXT PRIMARY KEY, status TEXT DEFAULT 'active', updated_at TEXT NOT NULL
             );
+            -- Per-component doctor findings (AI finding vs doctor finding, per EEG component).
+            CREATE TABLE IF NOT EXISTS component_findings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL, component TEXT NOT NULL,
+                doctor_finding TEXT, doctor TEXT, agree_with_ai TEXT,
+                created_at TEXT NOT NULL, updated_at TEXT,
+                UNIQUE(patient_id, component)
+            );
             -- Multi-expert review of a study: each role attaches their assessment + agree/disagree with AI.
             CREATE TABLE IF NOT EXISTS expert_reviews (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -916,6 +924,31 @@ def add_expert_review(patient_id: str, role: str, finding: str, agree_with_ai: s
                     detail=f"{role}: {finding[:60]} (agree_ai={agree_with_ai})")
     return {"id": rid, "patient_id": patient_id, "role": role, "finding": finding,
             "agree_with_ai": agree_with_ai, "created_at": now}
+
+
+def save_component_finding(patient_id: str, component: str, doctor_finding: str,
+                           doctor: str = "", agree_with_ai: str = "") -> dict:
+    """Doctor records their finding for one EEG component (upsert per component)."""
+    init_db()
+    now = _now()
+    with _connect() as c:
+        c.execute(
+            "INSERT INTO component_findings(patient_id,component,doctor_finding,doctor,agree_with_ai,created_at,updated_at)"
+            " VALUES(?,?,?,?,?,?,?) ON CONFLICT(patient_id,component) DO UPDATE SET"
+            " doctor_finding=excluded.doctor_finding, doctor=excluded.doctor,"
+            " agree_with_ai=excluded.agree_with_ai, updated_at=excluded.updated_at",
+            (patient_id, component, doctor_finding, doctor, agree_with_ai, now, now))
+    log_transaction(patient_id, component="component_finding", action="save",
+                    detail=f"{component}: {doctor_finding[:50]} (agree={agree_with_ai})")
+    return {"patient_id": patient_id, "component": component, "doctor_finding": doctor_finding,
+            "agree_with_ai": agree_with_ai, "updated_at": now}
+
+
+def get_component_findings(patient_id: str) -> dict:
+    init_db()
+    with _connect() as c:
+        rows = c.execute("SELECT * FROM component_findings WHERE patient_id=?", (patient_id,)).fetchall()
+    return {r["component"]: dict(r) for r in rows}
 
 
 def study_review(patient_id: str) -> dict:

@@ -203,6 +203,7 @@ function subTabsFor(dept) {
   // Rich operational tabs for EVERY department (clinical + governance/ops roles).
   base.push(
     { id: 'r_dashboard', label: 'Dashboard & Reports' },
+    { id: 'r_components', label: 'Component Analysis' },
     { id: 'r_ipo', label: 'Input·Process·Output' },
     { id: 'r_monitoring', label: 'Monitoring' },
     { id: 'r_resai', label: 'ResAI' },
@@ -456,6 +457,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
+        {activeSub === 'r_components' && <ComponentAnalysis roleName={dept.name} />}
         {activeSub === 'r_ipo' && <RolePipeline roleName={dept.name} />}
         {activeSub === 'r_monitoring' && <RoleMonitoring roleName={dept.name} disease={selectedDisease} />}
         {activeSub === 'r_resai' && <ResponsibleAiView disease={selectedDisease} />}
@@ -1365,6 +1367,63 @@ function GenAiBotPanel({ roleName }) {
         <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
       </div>
       {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
+    </div>
+  )
+}
+
+function ComponentAnalysis({ roleName }) {
+  const [pid, setPid] = useState('P0001')
+  const [rep, setRep] = useState(null)
+  const [edits, setEdits] = useState({})
+  const load = (p) => axios.get(`${API_URL}/eeg-report/${p}`).then(r => { setRep(r.data); setEdits({}) }).catch(() => setRep(null))
+  useEffect(() => { load(pid) }, [])
+  const save = (comp) => {
+    const e = edits[comp.id] || {}
+    axios.post(`${API_URL}/eeg-report/component-finding`, {
+      patient_id: pid, component: comp.id, doctor_finding: e.finding ?? comp.doctor_finding,
+      doctor: roleName, agree_with_ai: e.agree ?? comp.agree_with_ai,
+    }).then(() => load(pid)).catch(() => {})
+  }
+  if (!rep) return <div style={card}><div style={{ color: '#64748b' }}>Loading… (backend :8010)</div></div>
+  const ag = { agree: '#dcfce7', disagree: '#fee2e2', partial: '#fef3c7' }
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔬 Component Analysis — AI finding vs {roleName} finding</h3>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
+          <input value={pid} onChange={e => setPid(e.target.value)} placeholder="patient id" style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, width: 120 }} />
+          <button onClick={() => load(pid)} style={{ padding: '6px 14px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontSize: 13 }}>Load</button>
+          <span style={{ fontSize: 12, color: '#64748b' }}>{rep.ai_summary}</span>
+        </div>
+      </div>
+      {(rep.components || []).map((c, i) => {
+        const e = edits[c.id] || {}
+        return (
+          <div key={i} style={{ ...card, borderLeft: '4px solid #1e88e5' }}>
+            <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>{c.label}</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <div style={{ background: '#f0f9ff', borderRadius: 6, padding: 10 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#0369a1' }}>🤖 AI FINDING</div>
+                <div style={{ fontSize: 13, color: '#0f172a', margin: '4px 0' }}>{c.ai_finding}</div>
+                <div style={{ fontSize: 11, color: '#0369a1' }}>↳ recommendation: {c.ai_recommendation}</div>
+              </div>
+              <div style={{ background: '#f0fdf4', borderRadius: 6, padding: 10 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#166534' }}>👨‍⚕️ {roleName.toUpperCase()} FINDING</div>
+                <textarea value={e.finding ?? c.doctor_finding ?? ''} onChange={ev => setEdits({ ...edits, [c.id]: { ...e, finding: ev.target.value } })}
+                  placeholder="Enter your finding…" style={{ width: '100%', minHeight: 44, marginTop: 4, padding: 6, borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }} />
+                <div style={{ display: 'flex', gap: 6, marginTop: 6, alignItems: 'center' }}>
+                  <select value={e.agree ?? c.agree_with_ai ?? ''} onChange={ev => setEdits({ ...edits, [c.id]: { ...e, agree: ev.target.value } })}
+                    style={{ padding: '4px 8px', borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 12, background: ag[e.agree ?? c.agree_with_ai] || '#fff' }}>
+                    <option value="">— vs AI —</option><option value="agree">✓ agree</option><option value="disagree">✗ disagree</option><option value="partial">~ partial</option>
+                  </select>
+                  <button onClick={() => save(c)} style={{ padding: '4px 12px', borderRadius: 4, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>Save</button>
+                  {c.doctor && <span style={{ fontSize: 11, color: '#64748b' }}>by {c.doctor}</span>}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

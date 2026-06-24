@@ -870,22 +870,43 @@ async def report_layout():
 
 @app.get("/api/eeg-report/{patient_id}")
 async def eeg_report(patient_id: str):
-    """Assemble a populated EEG summary report for a patient from real analysis data."""
+    """Component-by-component EEG report: AI finding + AI recommendation + doctor finding."""
     layout = json.loads((Path(__file__).parent / "config" / "report_layout.json").read_text())
-    analyses = cdb.list_assessments  # noqa (placeholder import guard)
     report = {"patient_id": patient_id, "components": [], "expert_summary": "", "final_summary": ""}
     with cdb._connect() as c:  # type: ignore
         a = c.execute("SELECT * FROM analyses WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
         latest = dict(a) if a else None
+    doctor = cdb.get_component_findings(patient_id)
     for comp in layout["components"]:
         finding = comp["ai_finding"]
         if comp["id"] == "epileptiform" and latest:
             finding = f"Predicted {latest.get('predicted_label')} (confidence {latest.get('confidence')})"
-        report["components"].append({"label": comp["label"], "ai_finding": finding,
-                                     "ai_recommendation": comp["ai_recommendation"]})
+        if comp["id"] == "background" and latest:
+            finding = f"Signal quality {latest.get('signal_quality')}; band power computed"
+        df = doctor.get(comp["id"], {})
+        report["components"].append({
+            "id": comp["id"], "label": comp["label"],
+            "ai_finding": finding, "ai_recommendation": comp["ai_recommendation"],
+            "doctor_finding": df.get("doctor_finding", ""), "doctor": df.get("doctor", ""),
+            "agree_with_ai": df.get("agree_with_ai", "")})
     report["ai_summary"] = (f"Latest analysis: {latest.get('predicted_label')} "
                             f"(conf {latest.get('confidence')}, quality {latest.get('signal_quality')})") if latest else "No analysis on file."
     return report
+
+
+class ComponentFindingIn(BaseModel):
+    patient_id: str
+    component: str
+    doctor_finding: str
+    doctor: str = ""
+    agree_with_ai: str = ""
+
+
+@app.post("/api/eeg-report/component-finding")
+async def save_component_finding(body: ComponentFindingIn):
+    """Doctor saves their finding for one EEG component."""
+    return cdb.save_component_finding(body.patient_id, body.component, body.doctor_finding,
+                                      body.doctor, body.agree_with_ai)
 
 
 # ---- Standardized clinical assessments (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) + CRUD ----
