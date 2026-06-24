@@ -199,6 +199,14 @@ def init_db() -> None:
                 interpretation TEXT, level TEXT, alert TEXT, examiner TEXT,
                 created_at TEXT NOT NULL, updated_at TEXT
             );
+            -- Forms an expert sends to a patient to fill via the self-service portal.
+            CREATE TABLE IF NOT EXISTS form_assignments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL, instrument TEXT NOT NULL,
+                assigned_by TEXT, status TEXT DEFAULT 'pending',
+                assessment_id INTEGER, message TEXT,
+                created_at TEXT NOT NULL, completed_at TEXT
+            );
             -- Transaction history: every write stamped with UTC+local time + actor.
             CREATE TABLE IF NOT EXISTS transaction_log (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -702,6 +710,53 @@ def delete_assessment(aid: int) -> bool:
     log_transaction(cur["patient_id"], component="assessment", action="delete", ref_id=aid,
                     detail=f"{cur['instrument']} deleted")
     return True
+
+
+def assign_form(patient_id: str, instrument: str, assigned_by: str = "", message: str = "") -> dict:
+    """Expert assigns an assessment form to a patient (pending until patient fills it)."""
+    init_db()
+    now = _now()
+    with _connect() as c:
+        cur = c.execute(
+            "INSERT INTO form_assignments(patient_id,instrument,assigned_by,status,message,created_at)"
+            " VALUES(?,?,?,'pending',?,?)", (patient_id, instrument, assigned_by, message, now))
+        fid = cur.lastrowid
+    log_transaction(patient_id, component="form", action="assign", ref_id=fid,
+                    detail=f"{instrument} assigned by {assigned_by}")
+    return {"id": fid, "patient_id": patient_id, "instrument": instrument, "status": "pending", "created_at": now}
+
+
+def list_forms(patient_id: str | None = None, status: str | None = None, limit: int = 50) -> list:
+    init_db()
+    q = "SELECT * FROM form_assignments"
+    cond, args = [], []
+    if patient_id:
+        cond.append("patient_id=?"); args.append(patient_id)
+    if status:
+        cond.append("status=?"); args.append(status)
+    if cond:
+        q += " WHERE " + " AND ".join(cond)
+    q += " ORDER BY id DESC LIMIT ?"; args.append(limit)
+    with _connect() as c:
+        return [dict(r) for r in c.execute(q, args).fetchall()]
+
+
+def submit_form(form_id: int, answers: dict) -> dict | None:
+    """Patient fills a pending form via the portal -> auto-score + save assessment + mark complete."""
+    init_db()
+    with _connect() as c:
+        f = c.execute("SELECT * FROM form_assignments WHERE id=?", (form_id,)).fetchone()
+    if not f:
+        return None
+    f = dict(f)
+    saved = save_assessment(f["patient_id"], f["instrument"], answers, examiner="patient(self-service)")
+    now = _now()
+    with _connect() as c:
+        c.execute("UPDATE form_assignments SET status='completed',assessment_id=?,completed_at=? WHERE id=?",
+                  (saved["id"], now, form_id))
+    log_transaction(f["patient_id"], component="form", action="submit", ref_id=form_id,
+                    detail=f"{f['instrument']} completed -> score {saved['score']}")
+    return {"form_id": form_id, "status": "completed", **saved}
 
 
 def _vector_retrieve(patient_id: str, query: str, k: int = 6):

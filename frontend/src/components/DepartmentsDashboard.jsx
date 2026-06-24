@@ -152,7 +152,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -410,6 +410,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'stories_tests' && <StoriesTestsPanel />}
         {activeSub === 'neurolab' && <NeuroLabPanel />}
         {activeSub === 'tab_taxonomy' && <TabTaxonomyPanel />}
+        {activeSub === 'portal' && <PatientPortalPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -2500,6 +2501,51 @@ function AiTypesPanel() {
           <div style={{ fontSize: 12, color: '#64748b', marginTop: 10 }}>Transaction history: <code>{d.transaction_history_endpoint}</code> · {d.note}</div>
         </div>
       )}
+    </div>
+  )
+}
+
+function PatientPortalPanel() {
+  const [tabs, setTabs] = useState(null)
+  const [forms, setForms] = useState([])
+  const [pid, setPid] = useState('P0001')
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  const loadForms = (p) => axios.get(`${API_URL}/forms`, { params: { patient_id: p } }).then(r => setForms(r.data.items || [])).catch(() => setForms([]))
+  useEffect(() => { axios.get(`${API_URL}/portal-tabs`).then(r => setTabs(r.data.tabs || [])).catch(() => setTabs([])); loadForms(pid) }, [])
+  if (!tabs) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧑 Patient Self-Service Portal — {tabs.length} tabs</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 8 }}>
+          {tabs.map((t, i) => (
+            <div key={i} style={{ padding: 10, border: '1px solid #e5e7eb', borderRadius: 6, background: '#f8fafc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontWeight: 600, color: '#0f172a', fontSize: 13 }}>{t.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: col[t.status] }}>● {t.status}</span>
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 3 }}>{t.purpose}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📋 Forms assigned to patient</h3>
+        <input value={pid} onChange={e => { setPid(e.target.value); loadForms(e.target.value) }} placeholder="patient id"
+          style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, marginBottom: 8, width: 120 }} />
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Form</th><th style={cellTh}>Assigned by</th><th style={cellTh}>Status</th><th style={cellTh}>When</th></tr></thead>
+            <tbody>{forms.map((f, i) => (
+              <tr key={f.id} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontWeight: 600 }}>{f.instrument}</td><td style={cellTd}>{f.assigned_by || '—'}</td>
+                <td style={{ ...cellTd, color: f.status === 'completed' ? '#4caf50' : '#ff9800', fontWeight: 600 }}>● {f.status}</td>
+                <td style={{ ...cellTd, fontSize: 11, color: '#94a3b8' }}>{(f.created_at || '').slice(0, 16).replace('T', ' ')}</td>
+              </tr>
+            ))}{!forms.length && <tr><td style={cellTd} colSpan={4}>No forms assigned. Experts assign via /api/forms/assign; patients fill via /api/forms/{'{id}'}/submit.</td></tr>}</tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }

@@ -614,6 +614,46 @@ async def role_challenges():
     return json.loads(p.read_text()) if p.exists() else {"roles": []}
 
 
+# ---- Patient forms (expert assigns -> patient fills via self-service portal) ----
+class FormAssignIn(BaseModel):
+    patient_id: str
+    instrument: str
+    assigned_by: str = ""
+    message: str = ""
+
+
+class FormSubmitIn(BaseModel):
+    answers: Dict[str, Any]
+
+
+@app.post("/api/forms/assign")
+async def form_assign(body: FormAssignIn):
+    """Expert assigns an assessment form to a patient."""
+    return cdb.assign_form(body.patient_id, body.instrument, body.assigned_by, body.message)
+
+
+@app.get("/api/forms")
+async def form_list(patient_id: str = "", status: str = ""):
+    """List assigned forms (optionally filter by patient / status)."""
+    return {"items": cdb.list_forms(patient_id or None, status or None)}
+
+
+@app.post("/api/forms/{form_id}/submit")
+async def form_submit(form_id: int, body: FormSubmitIn):
+    """Patient submits a filled form via self-service portal -> auto-scored."""
+    r = cdb.submit_form(form_id, body.answers)
+    if not r:
+        raise HTTPException(404, "form not found")
+    return r
+
+
+@app.get("/api/portal-tabs")
+async def portal_tabs():
+    """Self-service patient portal tab registry (forms/campaign/notification/alert/inbox/medication/therapy)."""
+    p = Path(__file__).parent / "config" / "portal_tabs.json"
+    return json.loads(p.read_text()) if p.exists() else {"tabs": []}
+
+
 @app.get("/api/tab-taxonomy")
 async def tab_taxonomy():
     """Tab taxonomy: Patient Master self-service tabs + per-role operational + AI capability tabs."""
