@@ -1,0 +1,49 @@
+{
+  "title": "AI Dark Factory — Autonomous Software Factory Reference",
+  "note": "BMAD → Archon → OpenHands → Playwright → DeepEval → Temporal → Deploy → OTel. Honest status (§155): built (in this project) / adapter / cataloged / planned.",
+  "updated_at": "2026-06-24",
+  "full_flow": [
+    {"n": 1, "stage": "Idea", "tool": "operator", "status": "built"},
+    {"n": 2, "stage": "BMAD Analyst Agent", "tool": "BMAD", "produces": "PRD", "status": "cataloged"},
+    {"n": 3, "stage": "BMAD Architect Agent", "tool": "BMAD", "produces": "System Design", "status": "cataloged"},
+    {"n": 4, "stage": "BMAD Scrum Agent", "tool": "BMAD", "produces": "Stories", "status": "cataloged"},
+    {"n": 5, "stage": "Archon Workflow", "tool": "Archon", "produces": "deterministic coding workflow", "status": "cataloged"},
+    {"n": 6, "stage": "OpenHands Coding", "tool": "OpenHands", "produces": "code", "status": "cataloged"},
+    {"n": 7, "stage": "Playwright Testing", "tool": "Playwright", "produces": "E2E test results", "status": "built", "note": "used this session for live tab/upload testing"},
+    {"n": 8, "stage": "DeepEval Validation", "tool": "DeepEval", "produces": "eval scores", "status": "cataloged"},
+    {"n": 9, "stage": "Temporal Approval Workflow", "tool": "Temporal", "produces": "durable approval", "status": "planned"},
+    {"n": 10, "stage": "Deployment", "tool": "Harness/CI", "status": "planned"},
+    {"n": 11, "stage": "OpenTelemetry Monitoring", "tool": "OTel + OpenLIT", "status": "planned"}
+  ],
+  "planes": [
+    {"plane": "AI Dark Factory", "components": ["BMAD", "Archon", "OpenHands", "Playwright", "Harness"]},
+    {"plane": "Governance Plane", "components": ["Policy AI", "Guardrails", "Human Approval"], "status": "built", "note": "council + guardrails + HITL override built"},
+    {"plane": "DevOps Plane", "components": ["Harness"], "status": "planned"}
+  ],
+  "tool_catalog": [
+    {"category": "Orchestration", "tool": "Temporal", "for": "Durable workflows — retries, pause/resume, approval", "status": "planned"},
+    {"category": "Orchestration", "tool": "Prefect", "for": "AI/data workflows + monitoring UI", "status": "cataloged"},
+    {"category": "Orchestration", "tool": "Dagster", "for": "data/asset workflows — lineage + observability", "status": "cataloged"},
+    {"category": "Orchestration", "tool": "Kestra", "for": "event-driven orchestration — visual workflow", "status": "cataloged"},
+    {"category": "Orchestration", "tool": "Windmill", "for": "workflow UI + approval — scripts + flows", "status": "cataloged"},
+    {"category": "DevOps", "tool": "Harness", "for": "CI/CD workflow monitoring — deployment pipelines", "status": "cataloged"},
+    {"category": "Agent factory", "tool": "BMAD", "for": "Analyst/Architect/Scrum agents — PRD→Design→Stories", "status": "cataloged"},
+    {"category": "Agent factory", "tool": "Archon", "for": "deterministic AI coding workflow control", "status": "cataloged"},
+    {"category": "Agent factory", "tool": "OpenHands", "for": "autonomous coding agent", "status": "cataloged"},
+    {"category": "Agent mgmt", "tool": "Paperclip", "for": "manage agent teams/goals/budgets/tasks (org-chart for agents)", "status": "cataloged"},
+    {"category": "LLM observability", "tool": "OpenLIT", "for": "OpenTelemetry for LLMs — tracing + metrics", "status": "planned"},
+    {"category": "LLM observability", "tool": "Helicone", "for": "LLM request monitoring — latency, tokens, caching", "status": "cataloged"},
+    {"category": "LLM observability", "tool": "Laminar", "for": "distributed AI traces", "status": "cataloged"},
+    {"category": "AI eval", "tool": "DeepEval", "for": "LLM/agent evaluation", "status": "cataloged"},
+    {"category": "AI eval", "tool": "Braintrust", "for": "AI eval + monitoring — experiment tracking", "status": "cataloged"},
+    {"category": "AI eval", "tool": "Humanloop", "for": "prompt + agent evaluation — human feedback workflows", "status": "cataloged"},
+    {"category": "RAG/agent debug", "tool": "Phoenix (Arize)", "for": "RAG + agent debugging — hallucination + retrieval analysis", "status": "cataloged"},
+    {"category": "Agent observability", "tool": "AgentOps", "for": "multi-agent observability — sessions, tool tracking, failures", "status": "cataloged"}
+  ],
+  "patterns": {
+    "hub_and_spoke": {"desc": "Central orchestrator controls workers", "best_for": "enterprise workflow fan-out", "failure_mode": "single bottleneck / SPOF", "status": "built", "note": "Redis queue + worker fleet"},
+    "council_of_agents": {"desc": "author + reviewer + chair consensus", "best_for": "governance + validation", "failure_mode": "group-think / correlated bias", "status": "built", "note": "3-stage council built"}
+  },
+  "summary": {"flow_stages": 11, "built": 2, "tools_cataloged": 18,
+              "honest_note": "Dark Factory is a REFERENCE architecture. Built in THIS project: Playwright testing, Council pattern, Hub-and-Spoke fleet, Governance plane (guardrails+HITL). The BMAD→Archon→OpenHands coding factory + Temporal + OTel observability are cataloged/planned, not installed — adopting any needs §56 6-gate review."}
+}

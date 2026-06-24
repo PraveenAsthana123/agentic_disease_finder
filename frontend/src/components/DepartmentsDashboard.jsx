@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -621,6 +621,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'role_specs' && <RoleSpecsPanel />}
         {activeSub === 'data_formats' && <DataFormatsPanel />}
         {activeSub === 'jobs_cron' && <JobsCronPanel />}
+        {activeSub === 'dark_factory' && <DarkFactoryPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -3964,6 +3965,76 @@ function RoleGraph({ roleName }) {
             ))}{!(g.edges || []).length && <tr><td style={cellTd} colSpan={3}>No relationships yet for this role.</td></tr>}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function DarkFactoryPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/ai-dark-factory`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#16a34a', adapter: '#0891b2', cataloged: '#fb8c00', planned: '#94a3b8' }
+  const chip = (s) => <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 10, background: (col[s] || '#94a3b8') + '22', color: col[s] || '#94a3b8' }}>{s}</span>
+  const cats = [...new Set((d.tool_catalog || []).map(t => t.category))]
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🏭 AI Dark Factory — autonomous software factory</h3>
+        <div style={{ fontSize: 12, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8 }}>⚠ {d.summary?.honest_note}</div>
+      </div>
+      {/* Full flow */}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Full Flow ({d.full_flow?.length} stages)</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          {(d.full_flow || []).map((s, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13 }}>
+              <span style={{ width: 22, color: '#94a3b8', fontSize: 11 }}>{s.n}</span>
+              <span style={{ fontWeight: 600, color: '#0f172a', minWidth: 200 }}>{s.stage}</span>
+              <span style={{ fontSize: 11, color: '#475569' }}>{s.tool}{s.produces ? ` → ${s.produces}` : ''}</span>
+              <span style={{ marginLeft: 'auto' }}>{chip(s.status)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Planes */}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Planes</h3>
+        {(d.planes || []).map((p, i) => (
+          <div key={i} style={{ fontSize: 12, padding: '4px 0', borderBottom: '1px solid #f1f5f9' }}>
+            <strong style={{ color: '#1e88e5' }}>{p.plane}</strong> {p.status && chip(p.status)} <span style={{ color: '#475569' }}>— {(p.components || []).join(' · ')}</span>
+          </div>
+        ))}
+      </div>
+      {/* Patterns */}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Hub-and-Spoke vs Council of Agents</h3>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          {Object.entries(d.patterns || {}).map(([k, p]) => (
+            <div key={k} style={{ flex: '1 1 280px', padding: 10, border: '1px solid #e5e7eb', borderRadius: 8, background: '#f8fafc' }}>
+              <div style={{ fontWeight: 700, color: '#0f172a' }}>{k.replace(/_/g, ' ')} {chip(p.status)}</div>
+              <div style={{ fontSize: 12, color: '#475569', marginTop: 3 }}>{p.desc}</div>
+              <div style={{ fontSize: 11, color: '#166534', marginTop: 3 }}>✓ best for: {p.best_for}</div>
+              <div style={{ fontSize: 11, color: '#f44336' }}>⚠ failure: {p.failure_mode}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Tool catalog by category */}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Tool Catalog ({d.tool_catalog?.length})</h3>
+        {cats.map(cat => (
+          <div key={cat} style={{ marginBottom: 8 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#7c3aed', marginBottom: 2 }}>{cat}</div>
+            {(d.tool_catalog || []).filter(t => t.category === cat).map((t, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, padding: '2px 0' }}>
+                <strong style={{ color: '#0f172a', minWidth: 110 }}>{t.tool}</strong>
+                <span style={{ color: '#475569', flex: 1 }}>{t.for}</span>
+                {chip(t.status)}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   )

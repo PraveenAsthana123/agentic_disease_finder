@@ -633,6 +633,14 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/ai-dark-factory")
+async def ai_dark_factory():
+    """AI Dark Factory reference: BMAD→Archon→OpenHands→Playwright→DeepEval→Temporal→OTel
+    flow + tool catalog + planes + agent patterns, with honest built/cataloged/planned status."""
+    p = Path(__file__).parent / "config" / "ai_dark_factory.json"
+    return json.loads(p.read_text()) if p.exists() else {"full_flow": []}
+
+
 @app.get("/api/training-results")
 async def training_results():
     """After-training metrics for visualization (per-subject accuracy/f1/sensitivity) +
