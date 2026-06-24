@@ -152,7 +152,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -408,6 +408,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'auto_pipelines' && <AutoPipelinesPanel />}
         {activeSub === 'ent_pipelines' && <EnterprisePipelinesPanel />}
         {activeSub === 'stories_tests' && <StoriesTestsPanel />}
+        {activeSub === 'neurolab' && <NeuroLabPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -2380,6 +2381,91 @@ function AiTypesPanel() {
           <div style={{ fontSize: 12, color: '#64748b', marginTop: 10 }}>Transaction history: <code>{d.transaction_history_endpoint}</code> · {d.note}</div>
         </div>
       )}
+    </div>
+  )
+}
+
+function NeuroLabPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/neurolab-readiness`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const sc = { built: '#4caf50', partial: '#ff9800', missing: '#f44336' }
+  const all = [...(d.processes || []), ...(d.functionality || [])]
+  const built = all.filter(x => x.status === 'built').length
+  const Chip = ({ s }) => <span style={{ fontSize: 11, fontWeight: 600, color: sc[s] }}>● {s}</span>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🏥 NeuroLab AI — Deployment Readiness</h3>
+        <p style={{ color: '#475569', fontSize: 13, marginTop: 0 }}>{d.strategy}</p>
+        <div style={{ fontSize: 13 }}>Readiness: <strong style={{ color: '#4caf50' }}>{built}</strong> built / {all.length} capabilities+processes</div>
+      </div>
+
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👥 Per-Stakeholder Gaps</h3>
+        {d.stakeholders.map((s, i) => (
+          <div key={i} style={{ padding: 10, borderBottom: '1px solid #f1f5f9' }}>
+            <div style={{ fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>{s.icon} {s.role}</div>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <div style={{ flex: 1, minWidth: 220 }}>
+                <div style={{ fontSize: 11, color: '#4caf50', fontWeight: 600, marginBottom: 3 }}>✅ BUILT</div>
+                {s.built.map((b, j) => <div key={j} style={{ fontSize: 12, color: '#166534' }}>• {b}</div>)}
+              </div>
+              <div style={{ flex: 1, minWidth: 220 }}>
+                <div style={{ fontSize: 11, color: '#f44336', fontWeight: 600, marginBottom: 3 }}>❌ MISSING</div>
+                {s.missing.map((m, j) => <div key={j} style={{ fontSize: 12, color: '#991b1b' }}>• {m}</div>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        <div style={{ ...card, flex: 1, minWidth: 280 }}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>⚙️ Processes</h3>
+          {d.processes.map((p, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 0', fontSize: 12, borderBottom: '1px solid #f8fafc' }}>
+              <span style={{ color: '#0f172a' }}>{p.name}</span><Chip s={p.status} />
+            </div>
+          ))}
+        </div>
+        <div style={{ ...card, flex: 1, minWidth: 280 }}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>🛠️ Functionality</h3>
+          {d.functionality.map((f, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 0', fontSize: 12, borderBottom: '1px solid #f8fafc' }}>
+              <span style={{ color: '#0f172a' }}>{f.capability}</span><Chip s={f.status} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>💼 Business Case</h3>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+          {[['💰 Cost ↓', d.business_case.cost_decrease], ['📈 Revenue ↑', d.business_case.revenue_increase], ['⚡ Productivity ↑', d.business_case.productivity_increase]].map(([t, arr], i) => (
+            <div key={i} style={{ flex: 1, minWidth: 240 }}>
+              <div style={{ fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>{t}</div>
+              {arr.map((x, j) => (
+                <div key={j} style={{ padding: 8, marginBottom: 6, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: '#1e88e5' }}>{x.lever}</div>
+                  <div style={{ fontSize: 12, color: '#475569' }}>{x.impact}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🚀 Implementation Phases</h3>
+        {d.implementation_phases.map((p, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 0', borderBottom: '1px solid #f8fafc' }}>
+            <span style={{ fontWeight: 600, color: '#0f172a', minWidth: 120, fontSize: 13 }}>{p.phase}</span>
+            <span style={{ flex: 1, fontSize: 12, color: '#475569' }}>{p.scope}</span>
+            <Chip s={p.status} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-06-24T01:13:09-06:00",
+  "method": "subject-level bootstrap (resample subjects, 2000 iters) \u2014 correct for non-independent windows",
+  "patient_specific_accuracy_ci": {
+    "mean": 0.9805,
+    "ci95_low": 0.973,
+    "ci95_high": 0.9866,
+    "n_subjects": 4,
+    "n_boot": 2000
+  },
+  "patient_specific_sensitivity_ci": {
+    "mean": 0.9403,
+    "ci95_low": 0.8662,
+    "ci95_high": 0.9908,
+    "n_subjects": 4,
+    "n_boot": 2000
+  },
+  "cross_patient_rf_accuracy_ci": {
+    "mean": 0.7277,
+    "ci95_low": 0.4035,
+    "ci95_high": 0.9269,
+    "n_subjects": 4,
+    "n_boot": 2000
+  },
+  "baseline_comparison": {
+    "note": "Comparison is indicative; methods differ in windows/channels/metrics. Our patient-specific uses temporal split + ensemble; cross-patient is leave-one-subject-out.",
+    "methods": [
+      {
+        "method": "Shoeb (2010) patient-specific SVM",
+        "setting": "patient-specific",
+        "reported": "~0.96 sensitivity",
+        "source": "MIT thesis / CHB-MIT origin"
+      },
+      {
+        "method": "Truong et al. (2018) CNN",
+        "setting": "patient-specific",
+        "reported": "~0.97 AUC",
+        "source": "Neural Networks"
+      },
+      {
+        "method": "Ours (ensemble, temporal split)",
+        "setting": "patient-specific",
+        "reported": "0.9805 acc / 0.9403 sens",
+        "source": "this project (4 subjects)"
+      },
+      {
+        "method": "Typical cross-patient (literature)",
+        "setting": "cross-patient",
+        "reported": "0.65-0.85",
+        "source": "various"
+      },
+      {
+        "method": "Ours RF (leave-one-subject-out)",
+        "setting": "cross-patient",
+        "reported": "0.7277 acc",
+        "source": "this project (4 subjects)"
+      }
+    ]
+  }
+}

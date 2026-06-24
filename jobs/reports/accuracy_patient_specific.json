@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-06-24T01:07:54-06:00",
+  "benchmark": "CHB-MIT patient-specific (per-subject temporal split, overlapping windows, ensemble)",
+  "no_leakage": "train=early windows, test=late windows; never the same window",
+  "window_seconds": 4,
+  "stride_seconds": 2,
+  "features": 15,
+  "mean_accuracy": 0.9805,
+  "mean_sensitivity": 0.9403,
+  "per_subject": [
+    {
+      "subject": "chb01",
+      "n_total": 220,
+      "n_seizure": 20,
+      "n_test": 66,
+      "accuracy": 0.9697,
+      "f1": 0.9697,
+      "sensitivity": 0.8333
+    },
+    {
+      "subject": "chb02",
+      "n_total": 287,
+      "n_seizure": 87,
+      "n_test": 87,
+      "accuracy": 0.9885,
+      "f1": 0.9884,
+      "sensitivity": 0.963
+    },
+    {
+      "subject": "chb03",
+      "n_total": 344,
+      "n_seizure": 144,
+      "n_test": 104,
+      "accuracy": 0.9808,
+      "f1": 0.9808,
+      "sensitivity": 1.0
+    },
+    {
+      "subject": "chb04",
+      "n_total": 390,
+      "n_seizure": 190,
+      "n_test": 117,
+      "accuracy": 0.9829,
+      "f1": 0.9829,
+      "sensitivity": 0.9649
+    }
+  ]
+}

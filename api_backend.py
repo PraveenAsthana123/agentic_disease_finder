@@ -600,6 +600,13 @@ async def role_tests():
     return json.loads(p.read_text()) if p.exists() else {"roles": []}
 
 
+@app.get("/api/neurolab-readiness")
+async def neurolab_readiness():
+    """NeuroLab deployment readiness: per-stakeholder gaps, processes, functionality, business case."""
+    p = Path(__file__).parent / "config" / "neurolab_readiness.json"
+    return json.loads(p.read_text()) if p.exists() else {"stakeholders": []}
+
+
 @app.get("/api/automatic-pipelines")
 async def automatic_pipelines():
     """Catalog of automatic (end-to-end) pipelines per process + status."""

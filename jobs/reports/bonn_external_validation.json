@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-06-24T01:11:55-06:00",
+  "dataset": "Bonn University epilepsy EEG (external validation)",
+  "n_samples": 200,
+  "n_features": 14,
+  "balance": "100/100",
+  "cv": "stratified 5-fold",
+  "results": {
+    "rf": {
+      "accuracy_mean": 1.0,
+      "accuracy_std": 0.0,
+      "f1_mean": 1.0,
+      "auc_mean": 1.0,
+      "fold_acc": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "ensemble": {
+      "accuracy_mean": 1.0,
+      "accuracy_std": 0.0,
+      "f1_mean": 1.0,
+      "auc_mean": 1.0,
+      "fold_acc": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "purpose": "Second-dataset evidence the approach generalizes beyond CHB-MIT (the #1 Q1 reviewer objection)."
+}

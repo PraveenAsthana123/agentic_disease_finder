@@ -1,0 +1,82 @@
+{
+  "title": "NeuroLab AI — Deployment Readiness & Business Case",
+  "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
+  "updated_at": "2026-06-24",
+  "stakeholders": [
+    {"role": "Neurologist", "icon": "🧠",
+     "built": ["AI EEG read + confidence", "SHAP explainability", "confirm/override gate", "per-role dashboard"],
+     "missing": ["real-time video-EEG sync player", "EMR/HIS integration (HL7/FHIR)", "e-signature on reports", "on-call mobile alerts", "DICOM/MRI side-by-side", "ICD-10 coding", "referral workflow"]},
+    {"role": "EEG Technician", "icon": "📡",
+     "built": ["acquisition QC", "channel quality", "artifact flags", "daily worklog (partial)"],
+     "missing": ["live amplifier streaming (Natus/Nihon Kohden/Compumedics)", "real-time impedance display", "montage editor", "HV/photic-stimulation protocols", "scheduling worklist"]},
+    {"role": "Occupational Therapist", "icon": "🖐️",
+     "built": ["functional-outcome tracking (partial)"],
+     "missing": ["standardized instruments (COPM/FIM)", "rehab goal tracking", "home-program builder", "tele-rehab notes"]},
+    {"role": "Psychiatrist", "icon": "💬",
+     "built": ["comorbidity/mood surveys"],
+     "missing": ["validated scales (PHQ-9/GAD-7/NDDI-E)", "PNES differential tooling", "medication-interaction checker"]},
+    {"role": "Radiologist", "icon": "🩻",
+     "built": ["MRI findings capture (partial)"],
+     "missing": ["DICOM viewer", "structured reporting", "EEG-MRI concordance view"]},
+    {"role": "Clinical Psychologist", "icon": "🧩",
+     "built": ["neuropsych capture (partial)"],
+     "missing": ["battery scoring (WAIS/WMS)", "normative comparison", "cognitive profile reports"]},
+    {"role": "Admin / Compliance / Billing", "icon": "⚖️",
+     "built": ["AI governance + decision audit", "guardrails", "fairness gate"],
+     "missing": ["scheduling", "billing/claims", "consent management", "HIPAA audit pack", "multi-user auth/RBAC", "patient portal", "insurance pre-auth"]}
+  ],
+  "processes": [
+    {"name": "Referral intake → triage", "status": "missing"},
+    {"name": "Appointment scheduling → worklist", "status": "missing"},
+    {"name": "Patient registration → consent", "status": "partial"},
+    {"name": "EEG acquisition (routine/ambulatory/video/LTM)", "status": "partial"},
+    {"name": "QC → AI pre-read → neurologist read → override → sign-off", "status": "built"},
+    {"name": "Report generation → EMR push → referrer notify", "status": "partial"},
+    {"name": "Multidisciplinary epilepsy board review", "status": "partial"},
+    {"name": "Follow-up → medication titration → outcome", "status": "partial"},
+    {"name": "Billing → claims → reconciliation", "status": "missing"},
+    {"name": "Audit → compliance reporting", "status": "built"}
+  ],
+  "functionality": [
+    {"capability": "AI governance + decision audit", "status": "built"},
+    {"capability": "Explainability (SHAP) + fairness", "status": "built"},
+    {"capability": "Vector RAG patient chat", "status": "built"},
+    {"capability": "Multi-user auth + RBAC", "status": "missing"},
+    {"capability": "EMR/HIS integration (HL7/FHIR)", "status": "missing"},
+    {"capability": "Real device streaming", "status": "missing"},
+    {"capability": "Video-EEG sync player", "status": "missing"},
+    {"capability": "DICOM imaging", "status": "missing"},
+    {"capability": "Scheduling / worklist", "status": "missing"},
+    {"capability": "Billing / claims", "status": "missing"},
+    {"capability": "Patient portal", "status": "missing"},
+    {"capability": "Mobile alerts / SOS", "status": "partial"},
+    {"capability": "Clinical validation / regulatory (FDA/CE)", "status": "missing"}
+  ],
+  "business_case": {
+    "cost_decrease": [
+      {"lever": "AI pre-read", "impact": "30-50% less neurologist reading time/study"},
+      {"lever": "Auto QC", "impact": "fewer repeat recordings (tech time saved)"},
+      {"lever": "Artifact auto-flagging", "impact": "faster review cycle"},
+      {"lever": "Auto-reporting", "impact": "60-70% less transcription"},
+      {"lever": "Triage AI", "impact": "reduce unnecessary studies"}],
+    "revenue_increase": [
+      {"lever": "Higher throughput", "impact": "more studies/day, same staff"},
+      {"lever": "Ambulatory/home-EEG program", "impact": "new revenue line"},
+      {"lever": "Tele-EEG reads", "impact": "serve remote/rural referrals"},
+      {"lever": "Faster turnaround", "impact": "more referrals via reputation"},
+      {"lever": "Reduced no-shows", "impact": "scheduling + reminders"}],
+    "productivity_increase": [
+      {"lever": "Neurologist", "impact": "AI pre-read + templates → 2-3x reads/day"},
+      {"lever": "Technician", "impact": "auto-QC + worklist → more studies/shift"},
+      {"lever": "Lab-wide", "impact": "digital workflow → fewer handoff delays"}]
+  },
+  "implementation_phases": [
+    {"phase": "0. Pilot (now)", "scope": "AI read + governance + explainability", "status": "built"},
+    {"phase": "1. Foundation", "scope": "auth/RBAC, scheduling, consent, audit", "status": "missing"},
+    {"phase": "2. Integration", "scope": "EMR (FHIR), device streaming, report push", "status": "missing"},
+    {"phase": "3. Clinical", "scope": "video-EEG player, DICOM, validated scales", "status": "missing"},
+    {"phase": "4. Business", "scope": "billing, patient portal, analytics", "status": "missing"},
+    {"phase": "5. Regulatory", "scope": "clinical validation, HIPAA, FDA/CE", "status": "missing"}
+  ],
+  "strategy": "Partner with an existing EEG platform / hospital IT and plug in the governed-AI layer. Don't rebuild a full HIS. The governed explainable-AI layer is the IP; the clinical-IT plumbing is buyable/integrable."
+}
