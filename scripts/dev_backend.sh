@@ -1,32 +1,29 @@
 #!/bin/bash
-# Dev backend with AUTO-RELOAD — eliminates the §120 stale-backend problem.
-# With --reload, editing any .py file auto-restarts the server, so new endpoints
-# appear in the UI immediately (no manual `kill + python3 api_backend.py`).
+# Stable backend launcher (NO --reload).
+#
+# Why no --reload: this repo's data/ dir is ~247GB and the app writes to clinical.db +
+# data/uploads/ on every upload. uvicorn --reload (WatchFiles) traverses the project to
+# watch files; data/DB writes then trigger reloads that KILL in-flight upload requests
+# ("upload failed"). So we run the plain, stable server. After adding/editing ENDPOINTS,
+# re-run this script to pick them up (code is frozen at process start — §120).
 #
 # Usage:  ./scripts/dev_backend.sh        (foreground, Ctrl-C to stop)
 #         ./scripts/dev_backend.sh bg     (background, logs to jobs/logs/backend.log)
-#
-# Why: this session repeatedly hit "data gone / still see 4 / backend offline" because
-# the prod-style launch (uvicorn.run(app) — no reload) froze code at process start, so
-# every new route 404'd until a manual restart. --reload fixes that class of problem.
 
 set -e
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 PORT="${PORT:-8010}"
 
-# free the port if something is already bound
 OLD="$(fuser ${PORT}/tcp 2>/dev/null | tr -d ' ' || true)"
 [ -n "$OLD" ] && { echo "stopping existing backend (pid $OLD)"; kill -9 $OLD 2>/dev/null || true; sleep 2; }
 
 mkdir -p jobs/logs
-CMD="python3 -m uvicorn api_backend:app --host 0.0.0.0 --port ${PORT} --reload --reload-include '*.py' --reload-include '*.json'"
-
 if [ "$1" = "bg" ]; then
-  nohup bash -c "$CMD" >> jobs/logs/backend.log 2>&1 &
+  nohup python3 api_backend.py >> jobs/logs/backend.log 2>&1 &
   disown
-  echo "dev backend (auto-reload) starting in background on :${PORT} — logs: jobs/logs/backend.log"
+  echo "backend starting in background on :${PORT} (~30-40s for ML imports) — logs: jobs/logs/backend.log"
 else
-  echo "dev backend (auto-reload) on :${PORT} — edit .py/.json and it reloads automatically. Ctrl-C to stop."
-  exec bash -c "$CMD"
+  echo "backend on :${PORT} (~30-40s for ML imports). Ctrl-C to stop."
+  exec python3 api_backend.py
 fi

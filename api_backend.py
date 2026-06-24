@@ -42,6 +42,20 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
+def _json_safe(obj):
+    """Recursively replace NaN/Inf (not JSON-compliant → FastAPI 500) with None.
+    Degenerate signals (flat channels, tiny files) yield NaN features that crash
+    serialization; this makes any result safely returnable."""
+    import math
+    if isinstance(obj, float):
+        return None if (math.isnan(obj) or math.isinf(obj)) else obj
+    if isinstance(obj, dict):
+        return {k: _json_safe(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_safe(v) for v in obj]
+    return obj
+
 # Enable CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
@@ -382,7 +396,7 @@ async def analyze_upload(
             pred = (result.get("prediction") or {}).get("predicted_label", "?")
             cdb.log_transaction(patient_id or "_unassigned", component="eeg_upload", action="analyze",
                                 detail=f"{file.filename or Path(tmp.name).name} ({suffix}) → {disease} pred={pred}")
-            return result
+            return _json_safe(result)  # strip NaN/Inf so JSON serialization never 500s
         else:
             # PDF / image / video / docx → extract (CV/OCR/parse), persist to patient
             extracted = ingest.extract_file(Path(tmp.name))
@@ -393,8 +407,15 @@ async def analyze_upload(
             return {"status": "success", "mode": "extraction", "file": file.filename,
                     "file_type": suffix, "extracted": extracted,
                     "note": "Non-EEG file: data extracted (CV/OCR/parse) and saved. Run EEG file for seizure analysis."}
-    except Exception as exc:  # noqa: BLE001 - return a clean error envelope to the UI
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}") from exc
+    except Exception as exc:  # noqa: BLE001 - return a clean error envelope to the UI (HTTP 200)
+        msg = str(exc)
+        hint = ("File could not be processed. "
+                "For signal analysis upload EDF/BDF/CSV/FIF/MAT with enough samples "
+                "(a few seconds of multi-channel signal). The reference-sample .npz is a "
+                "feature matrix, not a raw signal. PDF/image/video are extracted, not analyzed.")
+        # Return 200 with status=error so the UI shows the real reason, not "backend offline".
+        return {"status": "error", "mode": "upload", "file": file.filename,
+                "file_type": suffix, "message": f"{hint}  (detail: {msg[:200]})"}
     finally:
         Path(tmp.name).unlink(missing_ok=True)
 
