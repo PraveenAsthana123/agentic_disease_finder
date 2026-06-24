@@ -166,7 +166,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -558,6 +558,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'portal' && <PatientPortalPanel />}
         {activeSub === 'study_review' && <StudyReviewPanel />}
         {activeSub === 'flowcharts' && <FlowchartsPanel />}
+        {activeSub === 'role_specs' && <RoleSpecsPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -3213,6 +3214,41 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function RoleSpecsPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/role-specs`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  const s = d.summary || {}
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👥 Role Specs — {d.roles.length} roles, ~{s.total_fields_estimate} fields</h3>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+          <span style={{ color: col.built }}>● built {s.built}</span>
+          <span style={{ color: col.partial }}>● partial {s.partial}</span>
+          <span style={{ color: col.planned }}>● planned {s.planned}</span>
+        </div>
+        <div style={{ fontSize: 12, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8, marginTop: 8 }}>⚠ {s.honest_note}</div>
+      </div>
+      {d.roles.map((r, i) => (
+        <div key={i} style={{ ...card, borderLeft: `4px solid ${col[r.status]}` }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <strong style={{ color: '#0f172a' }}>{r.role}</strong>
+            <span style={{ fontSize: 11, fontWeight: 600, color: '#1e88e5' }}>{r.priority}</span>
+            <span style={{ fontSize: 11, color: '#64748b' }}>~{r.fields} fields</span>
+            <span style={{ marginLeft: 'auto', fontSize: 12, fontWeight: 600, color: col[r.status] }}>● {r.status}</span>
+          </div>
+          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginTop: 6 }}>
+            {r.sections.map((sec, j) => <span key={j} style={{ fontSize: 10, padding: '2px 6px', background: '#f1f5f9', borderRadius: 4, color: '#475569' }}>{sec}</span>)}
+          </div>
+          {r.note && <div style={{ fontSize: 11, color: '#166534', marginTop: 4 }}>✓ {r.note}</div>}
+        </div>
+      ))}
     </div>
   )
 }

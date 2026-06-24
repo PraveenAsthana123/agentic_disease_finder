@@ -621,6 +621,13 @@ async def neurolab_readiness():
     return json.loads(p.read_text()) if p.exists() else {"stakeholders": []}
 
 
+@app.get("/api/role-specs")
+async def role_specs():
+    """Full 17-role epilepsy platform spec registry (sections + field counts + status)."""
+    p = Path(__file__).parent / "config" / "role_specs.json"
+    return json.loads(p.read_text()) if p.exists() else {"roles": []}
+
+
 @app.get("/api/neurologist-workbench/{patient_id}")
 async def neurologist_workbench(patient_id: str):
     """Neurologist-centric single screen: Patient → EEG evidence → AI findings →
