@@ -200,7 +200,8 @@ function subTabsFor(dept) {
     { id: 'data', label: 'Data' },
     { id: 'kpi', label: 'KPI' },
   ]
-  if (dept.clinical) base.push(
+  // Rich operational tabs for EVERY department (clinical + governance/ops roles).
+  base.push(
     { id: 'r_dashboard', label: 'Dashboard & Reports' },
     { id: 'r_ipo', label: 'Input·Process·Output' },
     { id: 'r_monitoring', label: 'Monitoring' },
@@ -211,6 +212,9 @@ function subTabsFor(dept) {
     { id: 'r_chat', label: '💬 Team Chat' },
     { id: 'r_genai', label: '🤖 GenAI Bot' },
     { id: 'r_graph', label: '🕸️ Relationship Graph' },
+  )
+  // Patient-data tabs only for clinical roles.
+  if (dept.clinical) base.push(
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
     { id: 'clinical', label: 'Clinical' },
