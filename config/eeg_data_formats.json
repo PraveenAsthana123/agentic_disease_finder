@@ -15,7 +15,11 @@
     {"ext": ".png", "name": "EEG screenshot", "ai_ready": false, "stars": 1, "route": "cv", "contains": "Rendered EEG image (signal/time/sfreq LOST)", "supported": true,
      "good_for": "Computer-vision research, OCR, clinician validation", "bad_for": "Signal analysis (resolution + sfreq unavailable)"},
     {"ext": ".jpg", "name": "EEG screenshot", "ai_ready": false, "stars": 1, "route": "cv", "contains": "Rendered EEG image", "supported": true,
-     "good_for": "CV / validation", "bad_for": "Signal analysis"}
+     "good_for": "CV / validation", "bad_for": "Signal analysis"},
+    {"ext": ".mp4", "name": "Video (incl. WhatsApp)", "ai_ready": false, "stars": 2, "route": "video", "contains": "Seizure video / Video-EEG (behavioral semiology)", "supported": true,
+     "good_for": "Video-EEG concordance, behavioral semiology, caregiver-recorded seizures (WhatsApp)", "bad_for": "EEG signal analysis"},
+    {"ext": ".mov/.3gp/.webm/.avi/.mkv/.flv/.ts/.wmv/.f4v/.m2ts", "name": "Video variants (phone/WhatsApp/YouTube)", "ai_ready": false, "stars": 2, "route": "video", "contains": "Phone/WhatsApp/YouTube seizure video", "supported": true,
+     "good_for": "Caregiver seizure capture, clinician review, YouTube reference clips", "bad_for": "EEG signal analysis"}
   ],
   "routing": {
     "signal": "→ run_pipeline (band power, biomarkers, classification, seizure analysis)",

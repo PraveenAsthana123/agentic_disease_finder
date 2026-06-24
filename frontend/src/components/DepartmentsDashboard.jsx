@@ -1741,8 +1741,12 @@ function OnboardingWizard() {
 function SeizureDiary() {
   const [pid, setPid] = useState('P0001')
   const [d, setD] = useState(null)
+  const [corr, setCorr] = useState(null)
   const [f, setF] = useState({})
-  const load = (p) => axios.get(`${API_URL}/seizure-diary/${p}`).then(r => setD(r.data)).catch(() => setD(null))
+  const load = (p) => {
+    axios.get(`${API_URL}/seizure-diary/${p}`).then(r => setD(r.data)).catch(() => setD(null))
+    axios.get(`${API_URL}/correlation/${p}`).then(r => setCorr(r.data)).catch(() => setCorr(null))
+  }
   useEffect(() => { load(pid) }, [])
   const add = () => {
     if (!f.event_date) return
@@ -1785,6 +1789,31 @@ function SeizureDiary() {
             <BarChart data={trend}><CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="month" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
               <Bar dataKey="count" fill="#1e88e5" radius={[4, 4, 0, 0]} /></BarChart>
           </ResponsiveContainer></div>
+        </div>
+      )}
+
+      {corr && corr.count > 0 && (
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>🎯 Trigger Analysis — "why did my seizure happen?"</div>
+          <div style={{ fontSize: 12, color: '#166534', background: '#dcfce7', borderRadius: 6, padding: 8, marginBottom: 8 }}>{corr.insight}</div>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 240px' }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Triggers (% of logged seizures)</div>
+              {(corr.triggers || []).map((t, i) => (
+                <div key={i} style={{ marginBottom: 4 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11 }}><span>{t.trigger}</span><span>{t.pct}%</span></div>
+                  <div style={{ height: 6, background: '#eef2f7', borderRadius: 3 }}><div style={{ width: `${t.pct}%`, height: '100%', background: '#fb8c00', borderRadius: 3 }} /></div>
+                </div>
+              ))}
+            </div>
+            <div style={{ flex: '1 1 200px' }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Time of day</div>
+              {Object.entries(corr.time_of_day || {}).map(([k, v]) => (
+                <div key={k} style={{ fontSize: 11, display: 'flex', justifyContent: 'space-between' }}><span>{k}</span><strong>{v}</strong></div>
+              ))}
+            </div>
+          </div>
+          <div style={{ fontSize: 10, color: '#92400e', marginTop: 6 }}>ⓘ {corr.note}</div>
         </div>
       )}
 

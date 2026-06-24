@@ -344,10 +344,30 @@ async def analyze_upload(
     per patient, write a report, and return the result."""
     suffix = (Path(file.filename or "upload.edf").suffix or ".edf").lower()
     EEG_EXTS = {".edf", ".bdf", ".fif", ".fiff", ".mat", ".npz", ".csv", ".tsv", ".txt", ".dat"}
+    # Video (incl. WhatsApp .mp4/.3gp, phone .mov) → Video-EEG / seizure-video for clinician review
+    # Video: phone, WhatsApp (.mp4/.3gp), and all common YouTube/download containers
+    VIDEO_EXTS = {".mp4", ".mov", ".avi", ".webm", ".mkv", ".3gp", ".3gpp", ".m4v", ".mpeg", ".mpg",
+                  ".flv", ".ts", ".ogv", ".wmv", ".f4v", ".m2ts", ".vob"}
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
     try:
         shutil.copyfileobj(file.file, tmp)
         tmp.close()
+        if suffix in VIDEO_EXTS:
+            # Persist video to data/uploads/videos/<patient>/ and log for clinician review
+            base = Path(__file__).parent / "data" / "uploads" / "videos" / (patient_id or "_unassigned")
+            base.mkdir(parents=True, exist_ok=True)
+            safe_name = Path(file.filename or f"video{suffix}").name
+            dest = base / safe_name
+            shutil.copyfile(tmp.name, dest)
+            size_mb = round(dest.stat().st_size / 1e6, 2)
+            if patient_id:
+                cdb.upsert_patient(patient_id, disease=disease, department=department)
+                cdb.log_transaction(patient_id, component="video", action="upload",
+                                    detail=f"{safe_name} ({suffix}, {size_mb} MB) → Video-EEG / seizure video")
+            return {"status": "success", "mode": "video", "file": safe_name, "file_type": suffix,
+                    "size_mb": size_mb, "stored_at": str(dest.relative_to(Path(__file__).parent)),
+                    "note": "Video stored for clinician review / Video-EEG concordance / behavioral-event capture. "
+                            "Not a signal-AI input — pair with EDF/BDF for seizure analysis."}
         if suffix in EEG_EXTS:
             # EEG signal → full analysis pipeline
             result = eeg.run_pipeline(tmp.name, disease, patient_id=patient_id or None)
@@ -636,6 +656,12 @@ async def seizure_log(body: SeizureIn):
 async def seizure_list(patient_id: str):
     """Seizure diary + monthly trend + severity distribution + stats."""
     return cdb.list_seizures(patient_id)
+
+
+@app.get("/api/correlation/{patient_id}")
+async def correlation(patient_id: str):
+    """Trigger/pattern analysis from the seizure diary (answers 'why did my seizure happen?')."""
+    return cdb.analyze_correlations(patient_id)
 
 
 @app.get("/api/data-formats")

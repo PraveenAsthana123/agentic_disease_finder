@@ -986,6 +986,49 @@ def list_seizures(patient_id: str, limit: int = 200) -> dict:
             "er_visits": sum(1 for r in rows if str(r.get("er_visit", "")).lower() in ("yes", "true"))}
 
 
+def analyze_correlations(patient_id: str) -> dict:
+    """Trigger/pattern analysis from the seizure diary — answers 'why did my seizure happen?'.
+    Honest: computed from LOGGED events only (no non-seizure baseline → frequencies, not true risk ratios)."""
+    init_db()
+    from collections import Counter
+    with _connect() as c:
+        rows = [dict(r) for r in c.execute(
+            "SELECT trigger, event_time, severity, aura, location, duration_sec FROM seizure_diary WHERE patient_id=?",
+            (patient_id,)).fetchall()]
+    n = len(rows)
+    if n == 0:
+        return {"patient_id": patient_id, "count": 0, "triggers": [], "time_of_day": {},
+                "by_trigger_severity": {}, "top_trigger": None,
+                "note": "No seizures logged yet. Log events in the Seizure Diary to enable correlation."}
+
+    def tod(t):
+        try:
+            h = int((t or "")[:2])
+        except (ValueError, TypeError):
+            return "unknown"
+        return "night" if h < 6 else "morning" if h < 12 else "afternoon" if h < 18 else "evening"
+
+    trig_ct = Counter((r.get("trigger") or "none") for r in rows)
+    triggers = [{"trigger": k, "count": v, "pct": round(100 * v / n)} for k, v in trig_ct.most_common() if k and k != "none"]
+    time_ct = Counter(tod(r.get("event_time")) for r in rows)
+    # severity mix per trigger (does a trigger lead to worse seizures?)
+    by_ts = {}
+    for r in rows:
+        tg = r.get("trigger") or "none"
+        by_ts.setdefault(tg, Counter())[r.get("severity") or "?"] += 1
+    by_trigger_severity = {k: dict(v) for k, v in by_ts.items() if k and k != "none"}
+    aura_ct = Counter((r.get("aura") or "none") for r in rows if r.get("aura") and r.get("aura") != "None")
+    loc_ct = Counter((r.get("location") or "?") for r in rows if r.get("location"))
+    top = triggers[0]["trigger"] if triggers else None
+    return {"patient_id": patient_id, "count": n,
+            "triggers": triggers, "time_of_day": dict(time_ct),
+            "by_trigger_severity": by_trigger_severity,
+            "aura_dist": dict(aura_ct), "location_dist": dict(loc_ct),
+            "top_trigger": top,
+            "insight": f"Your most frequent trigger is '{top}' ({triggers[0]['pct']}% of logged seizures)." if top else "No trigger pattern yet — log triggers with each seizure.",
+            "note": "Frequencies among logged seizures (not true risk ratios — needs non-seizure baseline for that)."}
+
+
 def save_component_finding(patient_id: str, component: str, doctor_finding: str,
                            doctor: str = "", agree_with_ai: str = "") -> dict:
     """Doctor records their finding for one EEG component (upsert per component)."""
