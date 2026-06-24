@@ -193,6 +193,13 @@ function subTabsFor(dept) {
     { id: 'kpi', label: 'KPI' },
   ]
   if (dept.clinical) base.push(
+    { id: 'r_dashboard', label: 'Dashboard & Reports' },
+    { id: 'r_ipo', label: 'Input·Process·Output' },
+    { id: 'r_monitoring', label: 'Monitoring' },
+    { id: 'r_resai', label: 'ResAI' },
+    { id: 'r_expai', label: 'ExpAI' },
+    { id: 'r_challenges_ai', label: 'Challenges→AI' },
+    { id: 'r_assessments', label: 'Assessments' },
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
     { id: 'clinical', label: 'Clinical' },
@@ -425,6 +432,13 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
+        {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
+        {activeSub === 'r_ipo' && <RolePipeline roleName={dept.name} />}
+        {activeSub === 'r_monitoring' && <RoleMonitoring roleName={dept.name} disease={selectedDisease} />}
+        {activeSub === 'r_resai' && <ResponsibleAiView disease={selectedDisease} />}
+        {activeSub === 'r_expai' && <ShapView disease={selectedDisease} />}
+        {activeSub === 'r_challenges_ai' && <RoleChallengesAI roleName={dept.name} />}
+        {activeSub === 'r_assessments' && <RoleAssessments roleName={dept.name} />}
         {activeSub === 'challenges' && <ListPanel title="Key Challenges" items={dept.challenges} icon="⚠️" />}
         {activeSub === 'tasks' && <ListPanel title="Responsibilities & Tasks" items={dept.tasks} ordered />}
         {activeSub === 'data' && <DataPanel disease={selectedDisease} dept={dept} />}
@@ -1210,6 +1224,48 @@ function RolePicker({ roles, role, setPick }) {
       <select value={role.role} onChange={e => setPick(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
         {roles.map(r => <option key={r.role} value={r.role}>{r.icon} {r.role}</option>)}
       </select>
+    </div>
+  )
+}
+
+function RoleMonitoring({ roleName, disease }) {
+  const [txns, setTxns] = useState([])
+  useEffect(() => { axios.get(`${API_URL}/transactions`).then(r => setTxns((r.data.items || r.data || []).slice(0, 30))).catch(() => setTxns([])) }, [])
+  const tiles = [
+    { label: 'Active monitoring', value: 'live', note: 'continuous patient/study watch' },
+    { label: 'Recent actions (24h)', value: txns.length, note: 'from transaction log' },
+    { label: 'Alerts pending', value: txns.filter(t => (t.action || '').includes('alert')).length, note: 'escalations' },
+    { label: 'Disease focus', value: disease || 'epilepsy', note: 'current cohort' },
+  ]
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📡 {roleName} — Monitoring</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 12 }}>
+          {tiles.map((t, i) => (
+            <div key={i} style={{ padding: 14, border: '1px solid #e5e7eb', borderRadius: 8, background: '#f8fafc' }}>
+              <div style={{ fontSize: 22, fontWeight: 700, color: '#1e88e5' }}>{t.value}</div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a' }}>{t.label}</div>
+              <div style={{ fontSize: 11, color: '#64748b' }}>{t.note}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🕐 Recent Activity (transaction monitor)</h3>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Component</th><th style={cellTh}>Action</th><th style={cellTh}>Patient</th><th style={cellTh}>When</th></tr></thead>
+            <tbody>{txns.map((t, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontWeight: 600 }}>{t.component}</td><td style={cellTd}>{t.action}</td>
+                <td style={cellTd}>{t.patient_id || '—'}</td>
+                <td style={{ ...cellTd, fontSize: 11, color: '#94a3b8' }}>{(t.ts_local || t.ts_utc || '').slice(0, 16).replace('T', ' ')}</td>
+              </tr>
+            ))}{!txns.length && <tr><td style={cellTd} colSpan={4}>No activity logged yet.</td></tr>}</tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }
