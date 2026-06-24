@@ -661,17 +661,38 @@ function ChallengesPanel({ deptChallenges }) {
       {!d && (deptChallenges || []).map((c, i) => (
         <div key={i} style={{ ...card, borderLeft: '4px solid #f44336' }}><div style={{ fontSize: 13, color: '#0f172a' }}>{c}</div></div>
       ))}
-      {shown.map((c) => (
-        <div key={c.n} style={{ ...card, borderLeft: `4px solid ${lvlCol[c.level]}`, marginBottom: 8 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <input type="checkbox" checked={!!done[c.n]} onChange={() => setDone({ ...done, [c.n]: !done[c.n] })} />
-            <span style={{ fontSize: 11, color: '#94a3b8' }}>#{c.n}</span>
-            <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', color: lvlCol[c.level], padding: '1px 7px', borderRadius: 10, background: lvlCol[c.level] + '18' }}>{c.level}</span>
-            <span style={{ fontSize: 13, color: '#0f172a', textDecoration: done[c.n] ? 'line-through' : 'none' }}>{c.challenge}</span>
+      {shown.map((c) => {
+        const star = c.star || {}
+        const starRow = (k, label, color) => star[k] ? (
+          <div style={{ display: 'flex', gap: 8, fontSize: 12, marginBottom: 4 }}>
+            <span style={{ flexShrink: 0, width: 78, fontWeight: 700, color }}>{label}</span>
+            <span style={{ color: '#334155' }}>{star[k]}</span>
           </div>
-          {c.ai_help && <div style={{ fontSize: 12, color: '#166534', marginTop: 4, marginLeft: 26 }}>🤖 {c.ai_help}</div>}
-        </div>
-      ))}
+        ) : null
+        return (
+          <div key={c.n} style={{ display: 'flex', gap: 12, alignItems: 'stretch', marginBottom: 10, flexWrap: 'wrap' }}>
+            {/* LEFT: the challenge */}
+            <div style={{ flex: '1 1 280px', padding: 14, border: '1px solid #fecaca', borderLeft: `4px solid ${lvlCol[c.level]}`, borderRadius: 8, background: '#fff5f5' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <input type="checkbox" checked={!!done[c.n]} onChange={() => setDone({ ...done, [c.n]: !done[c.n] })} />
+                <span style={{ fontSize: 11, color: '#94a3b8' }}>#{c.n}</span>
+                <span style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', color: lvlCol[c.level], padding: '1px 7px', borderRadius: 10, background: lvlCol[c.level] + '18' }}>{c.level}</span>
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#0f172a', textDecoration: done[c.n] ? 'line-through' : 'none' }}>⚠ {c.challenge}</div>
+              {c.ai_help && <div style={{ fontSize: 12, color: '#166534', marginTop: 8 }}>🤖 <strong>AI:</strong> {c.ai_help}</div>}
+            </div>
+            {/* RIGHT: STAR justification in detail */}
+            <div style={{ flex: '1 1 340px', padding: 14, border: '1px solid #bfdbfe', borderLeft: '4px solid #1e88e5', borderRadius: 8, background: '#f0f9ff' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase', marginBottom: 6 }}>★ STAR justification</div>
+              {starRow('s', 'Situation', '#b45309')}
+              {starRow('t', 'Task', '#7c3aed')}
+              {starRow('a', 'Action', '#0891b2')}
+              {starRow('r', 'Result', '#16a34a')}
+              {!star.s && <div style={{ fontSize: 12, color: '#94a3b8' }}>STAR detail pending for this item.</div>}
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
