@@ -1826,49 +1826,117 @@ function RoleTesting({ roleName }) {
   )
 }
 
+// deterministic demo value from a string (stable across renders) — §57.7 marked as demo
+function demoVal(seed, lo, hi) {
+  let h = 0
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 100000
+  return lo + (h % (hi - lo + 1))
+}
+
 function RoleDashReports({ roleName }) {
   const [roles, setRoles] = useState(null)
   const [pick, setPick] = useState(null)
+  const [openReport, setOpenReport] = useState(null)
   useEffect(() => { axios.get(`${API_URL}/role-dashboards`).then(r => setRoles(r.data.roles || [])).catch(() => setRoles([])) }, [])
   if (!roles) return <div style={{ color: '#64748b' }}>Loading…</div>
   if (!roles.length) return <div style={{ color: '#64748b' }}>Backend offline (:8010).</div>
   const norm = (s) => (s || '').toLowerCase()
-  // fuzzy match consultant name → clinical role (e.g. "EEG Advisor" → "EEG Technician")
   const match = roles.find(r => norm(r.role) === norm(roleName))
     || roles.find(r => norm(roleName).split(' ').some(w => w.length > 3 && norm(r.role).includes(w)))
   const role = roles.find(r => r.role === pick) || match || roles[0]
   const col = { built: '#4caf50', partial: '#ff9800', planned: '#94a3b8' }
+  // demo values per KPI (deterministic) for the charts
+  const kpiData = role.kpis.map(k => ({ name: k.label.slice(0, 14), value: demoVal(role.role + k.label, 40, 95), target: 90, status: k.status }))
+  const trend = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((m, i) => ({ month: m, value: demoVal(role.role + m, 55, 92) + i }))
+
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 13, color: '#475569' }}>Role dashboard:</span>
-        <select value={role.role} onChange={e => setPick(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+        <select value={role.role} onChange={e => { setPick(e.target.value); setOpenReport(null) }} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
           {roles.map(r => <option key={r.role} value={r.role}>{r.icon} {r.role}</option>)}
         </select>
+        <span style={{ fontSize: 10, color: '#92400e', background: '#fef3c7', borderRadius: 4, padding: '2px 6px' }}>demo values · §57.7</span>
       </div>
-      {/* KPI tiles */}
-      <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📊 KPI Dashboard</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 12, marginBottom: 20 }}>
-        {role.kpis.map((k, i) => (
-          <div key={i} style={{ padding: 14, border: '1px solid #e5e7eb', borderRadius: 8, background: '#f8fafc' }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: '#0f172a' }}>{k.label}</div>
-            <div style={{ fontSize: 11, color: '#64748b', marginTop: 4 }}>source: {k.source}</div>
-            <div style={{ fontSize: 11, color: col[k.status], fontWeight: 600, marginTop: 4 }}>● {k.status}</div>
+
+      {/* KPI hero tiles with values + target bar */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(170px,1fr))', gap: 12, marginBottom: 16 }}>
+        {kpiData.map((k, i) => {
+          const onTarget = k.value >= k.target
+          return (
+            <div key={i} style={{ padding: 14, border: '1px solid #e5e7eb', borderRadius: 8, background: '#fff', borderTop: `3px solid ${col[k.status]}` }}>
+              <div style={{ fontSize: 12, color: '#475569' }}>{role.kpis[i].label}</div>
+              <div style={{ fontSize: 26, fontWeight: 700, color: '#0f172a' }}>{k.value}<span style={{ fontSize: 12, color: '#94a3b8' }}>/{k.target}</span></div>
+              <div style={{ height: 6, background: '#eef2f7', borderRadius: 3, marginTop: 6, overflow: 'hidden' }}>
+                <div style={{ width: `${Math.min(100, k.value)}%`, height: '100%', background: onTarget ? '#4caf50' : '#ff9800' }} />
+              </div>
+              <div style={{ fontSize: 10, color: col[k.status], marginTop: 4 }}>● {k.status} · {role.kpis[i].source}</div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Charts row: KPI bar + 6-month trend */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📊 KPI vs Target</div>
+          <div style={{ height: 200 }}><ResponsiveContainer width="100%" height="100%">
+            <BarChart data={kpiData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="name" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
+              <Bar dataKey="value" radius={[4, 4, 0, 0]}>{kpiData.map((k, i) => <Cell key={i} fill={k.value >= k.target ? '#4caf50' : '#1e88e5'} />)}</Bar>
+            </BarChart>
+          </ResponsiveContainer></div>
+        </div>
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📈 6-Month Trend</div>
+          <div style={{ height: 200 }}><ResponsiveContainer width="100%" height="100%">
+            <LineChart data={trend}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="month" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
+              <Line type="monotone" dataKey="value" stroke="#1e88e5" strokeWidth={2} dot={{ r: 3 }} />
+            </LineChart>
+          </ResponsiveContainer></div>
+        </div>
+      </div>
+
+      {/* Reports — clickable to open a structured preview */}
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📄 Standard Reports (click to open)</div>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Report</th><th style={cellTh}>Cadence</th><th style={cellTh}>Format</th><th style={cellTh}>Status</th><th style={cellTh}></th></tr></thead>
+            <tbody>{role.reports.map((rp, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontWeight: 600 }}>{rp.name}</td><td style={cellTd}>{rp.cadence}</td>
+                <td style={cellTd}>{rp.format}</td><td style={{ ...cellTd, color: col[rp.status], fontWeight: 600 }}>● {rp.status}</td>
+                <td style={cellTd}><button onClick={() => setOpenReport(rp)} style={{ ...crudBtn('#1e88e5') }}>open</button></td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+        {openReport && (
+          <div style={{ marginTop: 12, padding: 14, border: '1px solid #cbd5e1', borderRadius: 8, background: '#f8fafc' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <h4 style={{ margin: 0, color: '#0f172a' }}>{openReport.name}</h4>
+              <span style={{ marginLeft: 'auto', fontSize: 11, color: '#92400e', background: '#fef3c7', borderRadius: 4, padding: '2px 6px' }}>demo report · §57.7</span>
+            </div>
+            <div style={{ fontSize: 12, color: '#64748b', margin: '4px 0 10px' }}>{role.role} · {openReport.cadence} · {openReport.format} · status {openReport.status}</div>
+            <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+              <tbody>
+                {role.kpis.map((k, i) => (
+                  <tr key={i} style={{ borderBottom: '1px solid #e5e7eb' }}>
+                    <td style={{ padding: '6px 8px', color: '#475569' }}>{k.label}</td>
+                    <td style={{ padding: '6px 8px', fontWeight: 600, color: '#0f172a' }}>{kpiData[i].value}</td>
+                    <td style={{ padding: '6px 8px', color: col[k.status] }}>● {k.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{ fontSize: 12, color: '#475569', marginTop: 10 }}>
+              Summary: {role.role} {openReport.name.toLowerCase()} — {role.kpis.length} metrics tracked, generated {openReport.cadence}.
+              Export as {openReport.format}. (Demo content; wire to real data source per KPI.)
+            </div>
           </div>
-        ))}
-      </div>
-      {/* Reports */}
-      <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>📄 Standard Reports</div>
-      <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'hidden' }}>
-        <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13 }}>
-          <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Report</th><th style={cellTh}>Cadence</th><th style={cellTh}>Format</th><th style={cellTh}>Status</th></tr></thead>
-          <tbody>{role.reports.map((rp, i) => (
-            <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
-              <td style={{ ...cellTd, fontWeight: 600 }}>{rp.name}</td><td style={cellTd}>{rp.cadence}</td>
-              <td style={cellTd}>{rp.format}</td><td style={{ ...cellTd, color: col[rp.status], fontWeight: 600 }}>● {rp.status}</td>
-            </tr>
-          ))}</tbody>
-        </table>
+        )}
       </div>
     </div>
   )
