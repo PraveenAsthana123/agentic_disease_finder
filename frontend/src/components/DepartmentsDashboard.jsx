@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
+import mermaid from 'mermaid'
+mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' })
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
   LineChart, Line
@@ -164,7 +166,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -436,6 +438,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy' }) {
         {activeSub === 'tab_taxonomy' && <TabTaxonomyPanel />}
         {activeSub === 'portal' && <PatientPortalPanel />}
         {activeSub === 'study_review' && <StudyReviewPanel />}
+        {activeSub === 'flowcharts' && <FlowchartsPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
@@ -2760,6 +2763,32 @@ function StudyReviewPanel() {
         ))}
         {!sr?.expert_reviews?.length && <div style={{ color: '#94a3b8' }}>No expert reviews yet.</div>}
       </div>
+    </div>
+  )
+}
+
+function FlowchartsPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/flowcharts`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  useEffect(() => {
+    if (d && d.flowcharts) {
+      // mermaid processes elements with class "mermaid" and renders SVG internally
+      try { mermaid.run({ querySelector: '.mermaid' }) } catch (e) { /* noop */ }
+    }
+  }, [d])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📊 Process Flowcharts ({(d.flowcharts || []).length})</h3>
+        <div style={{ fontSize: 12, color: '#64748b' }}>Real flowcharts with branches/decisions, rendered via Mermaid.</div>
+      </div>
+      {(d.flowcharts || []).map((f, i) => (
+        <div key={i} style={card}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>{f.title}</h3>
+          <div className="mermaid" style={{ overflowX: 'auto' }}>{f.mermaid}</div>
+        </div>
+      ))}
     </div>
   )
 }

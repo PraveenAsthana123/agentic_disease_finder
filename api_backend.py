@@ -820,6 +820,13 @@ async def admin_module():
     return json.loads(p.read_text()) if p.exists() else {"team_roles": [], "ops_dashboards": []}
 
 
+@app.get("/api/flowcharts")
+async def flowcharts():
+    """Process flowcharts (Mermaid source) for key workflows."""
+    p = Path(__file__).parent / "config" / "flowcharts.json"
+    return json.loads(p.read_text()) if p.exists() else {"flowcharts": []}
+
+
 @app.get("/api/portal-tabs")
 async def portal_tabs():
     """Self-service patient portal tab registry (forms/campaign/notification/alert/inbox/medication/therapy)."""

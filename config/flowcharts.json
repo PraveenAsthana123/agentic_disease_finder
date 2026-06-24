@@ -1,0 +1,19 @@
+{
+  "title": "Process Flowcharts (Mermaid)",
+  "note": "Real flowcharts (with branches/decisions) for key processes. Rendered via mermaid.",
+  "updated_at": "2026-06-24",
+  "flowcharts": [
+    {"id": "eeg_read", "title": "Governed EEG Read",
+     "mermaid": "flowchart TD\n  A[Upload EEG/video-EEG] --> B[Parse + 47 features]\n  B --> C[Signal quality + bands]\n  C --> D{Quality OK?}\n  D -- No --> E[Flag re-record] --> A\n  D -- Yes --> F[Model predict seizure-risk]\n  F --> G[SHAP explanation]\n  G --> H{Neurologist agrees?}\n  H -- Override --> I[Record override]\n  H -- Confirm --> J[Sign-off]\n  I --> K[Audit + report]\n  J --> K"},
+    {"id": "council", "title": "Council of Agents (governed)",
+     "mermaid": "flowchart TD\n  Q[Clinical query] --> S{Security guardrail}\n  S -- Block --> X[Reject + audit]\n  S -- Pass --> P[Planner]\n  P --> R[RAG retrieve + generate]\n  R --> E[Evaluation]\n  E --> RV[Review / consensus]\n  RV --> C{Compliance + fairness}\n  C -- Fail --> H[Escalate to human]\n  C -- Pass --> O[Answer + audit]\n  H --> O"},
+    {"id": "study_review", "title": "Multi-Expert Study Review",
+     "mermaid": "flowchart TD\n  A[AI assessment] --> B[Neurologist review]\n  A --> C[EEG Tech review]\n  A --> D[Psychiatrist review]\n  B --> E{Agree with AI?}\n  C --> E\n  D --> E\n  E -- Disagree --> F[Flag + discuss]\n  E -- Agree --> G[Reconciled final]\n  F --> G\n  G --> H[Audit trail]"},
+    {"id": "iot", "title": "IoT Device → Alert",
+     "mermaid": "flowchart TD\n  D[Wearable/Emotiv] --> G[Gateway heartbeat+buffer]\n  G --> E[Edge: PII scrub + features]\n  E --> M[Edge model inference]\n  M --> C{Confidence > threshold?}\n  C -- No --> L[Log only]\n  C -- Yes --> A[SOS alert + escalation]\n  A --> N[Caregiver notified + audit]"},
+    {"id": "onboarding", "title": "Patient Onboarding",
+     "mermaid": "flowchart TD\n  A[Consent] --> B[Demographics + history]\n  B --> C[Upload docs]\n  C --> D[Extract pdf/image/video/edf]\n  D --> E[Build patient master]\n  E --> F[Vector ingest]\n  F --> G[Ready: any role can query via RAG]"},
+    {"id": "assessment", "title": "Assessment Form Flow",
+     "mermaid": "flowchart TD\n  A[Expert assigns form] --> B[Patient fills via portal]\n  B --> C[Auto-score]\n  C --> D{Alert item positive?}\n  D -- Yes --> E[Escalate]\n  D -- No --> F[Save + interpret band]\n  E --> F\n  F --> G[Transaction audit]"}
+  ]
+}
