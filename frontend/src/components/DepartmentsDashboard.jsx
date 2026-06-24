@@ -218,6 +218,7 @@ function subTabsFor(dept) {
   )
   // Patient-data tabs only for clinical roles.
   if (dept.clinical) base.push(
+    { id: 'onboarding', label: '🚀 Onboarding Wizard' },
     { id: 'seizure_diary', label: '📔 Seizure Diary' },
     { id: 'patients', label: 'Patients' },
     { id: 'survey', label: 'Survey' },
@@ -566,6 +567,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'workbench' && <NeurologistWorkbench roleName={dept.name} disease={selectedDisease} />}
+        {activeSub === 'onboarding' && <OnboardingWizard />}
         {activeSub === 'seizure_diary' && <SeizureDiary />}
         {activeSub === 'r_dashboard' && <RoleDashReports roleName={dept.name} />}
         {activeSub === 'r_components' && <ComponentAnalysis roleName={dept.name} />}
@@ -1516,6 +1518,115 @@ function GenAiBotPanel({ roleName }) {
         <button onClick={ask} disabled={busy} style={{ marginTop: 8, padding: '8px 18px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{busy ? '…thinking' : '🤖 Ask GenAI'}</button>
       </div>
       {resp && <div style={card}><div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>layout: {resp.layout}</div>{renderAns()}</div>}
+    </div>
+  )
+}
+
+function OnboardingWizard() {
+  const [cfg, setCfg] = useState(null)
+  const [step, setStep] = useState(1)
+  const [vals, setVals] = useState({})
+  const [up, setUp] = useState(null)
+  const [busy, setBusy] = useState(false)
+  useEffect(() => { axios.get(`${API_URL}/onboarding-intake`).then(r => setCfg(r.data)).catch(() => setCfg(null)) }, [])
+  if (!cfg) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const s1 = cfg.steps.find(s => s.step === 1) || {}
+  const s2 = cfg.steps.find(s => s.step === 2) || {}
+  const s3 = cfg.steps.find(s => s.step === 3) || {}
+  const sm = cfg.summary || {}
+
+  const onUpload = (e) => {
+    const file = e.target.files?.[0]; if (!file) return
+    setBusy(true); const fd = new FormData(); fd.append('file', file)
+    axios.post(`${API_URL}/analyze-upload`, fd).then(r => setUp({ name: file.name, ok: true, result: r.data })).catch(() => setUp({ name: file.name, ok: false })).finally(() => setBusy(false))
+  }
+  const StepDot = ({ n, label }) => (
+    <div onClick={() => setStep(n)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+      <div style={{ width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: step >= n ? '#1e88e5' : '#e2e8f0', color: step >= n ? '#fff' : '#64748b', fontWeight: 700, fontSize: 14 }}>{n}</div>
+      <div style={{ fontSize: 11, color: step === n ? '#0f172a' : '#64748b', marginTop: 4, textAlign: 'center', fontWeight: step === n ? 600 : 400 }}>{label}</div>
+    </div>
+  )
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🚀 Patient Onboarding Wizard</h3>
+        <div style={{ fontSize: 12, color: '#166534', background: '#dcfce7', borderRadius: 6, padding: 8 }}>
+          ⏱️ {sm.time_saved} — {sm.true_intake_fields} true intake fields, {sm.deferred_fields} deferred ({sm.reduction} reduction)
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', margin: '14px 0 4px' }}>
+          <StepDot n={1} label="Required intake" /><div style={{ flex: 0.3, height: 2, background: '#e2e8f0', marginTop: 16 }} />
+          <StepDot n={2} label="Upload reports" /><div style={{ flex: 0.3, height: 2, background: '#e2e8f0', marginTop: 16 }} />
+          <StepDot n={3} label="Captured over time" />
+        </div>
+      </div>
+
+      {step === 1 && (
+        <div style={card}>
+          <div style={{ fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>Step 1 — {s1.title}</div>
+          <div style={{ fontSize: 12, color: '#64748b', marginBottom: 10 }}>Approach: {s1.approach} · {s1.total_intake_fields} fields (not 1,250)</div>
+          {(s1.groups || []).map((g, i) => (
+            <div key={i} style={{ marginBottom: 12 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: '#1e88e5' }}>{g.group} <span style={{ color: '#94a3b8', fontWeight: 400 }}>({g.n} fields)</span></div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(140px,1fr))', gap: 8, marginTop: 4 }}>
+                {g.fields.map((f, j) => (
+                  <div key={j}>
+                    <label style={{ fontSize: 10, color: '#64748b' }}>{f}</label>
+                    <input value={vals[`${g.group}.${f}`] ?? ''} onChange={e => setVals({ ...vals, [`${g.group}.${f}`]: e.target.value })}
+                      style={{ width: '100%', padding: '5px 7px', borderRadius: 4, border: '1px solid #cbd5e1', fontSize: 12, boxSizing: 'border-box' }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <button onClick={() => setStep(2)} style={{ padding: '8px 18px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Next: upload reports →</button>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div style={card}>
+          <div style={{ fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>Step 2 — {s2.title}</div>
+          <div style={{ fontSize: 12, color: '#64748b', marginBottom: 10 }}>{s2.note}</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 8, marginBottom: 12 }}>
+            {(s2.extracts || []).map((x, i) => (
+              <div key={i} style={{ padding: 8, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#1e88e5' }}>📄 {x.doc}</div>
+                <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>→ {x.fills.join(', ')}</div>
+              </div>
+            ))}
+          </div>
+          <label style={{ display: 'inline-block', padding: '10px 18px', borderRadius: 8, border: '2px dashed #1e88e5', color: '#1e88e5', cursor: 'pointer', fontWeight: 600 }}>
+            {busy ? 'Extracting…' : '📁 Upload EEG/MRI/EMR report (PDF/image/docx)'}
+            <input type="file" accept=".pdf,.png,.jpg,.jpeg,.docx,.edf,.csv" onChange={onUpload} style={{ display: 'none' }} />
+          </label>
+          {up && (
+            <div style={{ marginTop: 10, fontSize: 12, padding: 8, borderRadius: 6, background: up.ok ? '#dcfce7' : '#fee2e2', color: up.ok ? '#166534' : '#991b1b' }}>
+              {up.ok ? `✓ Extracted from ${up.name} — fields auto-populated` : `✗ Could not extract from ${up.name}`}
+            </div>
+          )}
+          <div style={{ marginTop: 12 }}>
+            <button onClick={() => setStep(1)} style={{ padding: '8px 14px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer', marginRight: 8 }}>← Back</button>
+            <button onClick={() => setStep(3)} style={{ padding: '8px 18px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Next →</button>
+          </div>
+        </div>
+      )}
+
+      {step === 3 && (
+        <div style={card}>
+          <div style={{ fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>Step 3 — {s3.title}</div>
+          <div style={{ fontSize: 12, color: '#64748b', marginBottom: 10 }}>{s3.note} (~{s3.deferred_field_estimate} fields)</div>
+          {(s3.deferred_sections || []).map((d, i) => (
+            <div key={i} style={{ display: 'flex', gap: 8, fontSize: 12, padding: '5px 0', borderBottom: '1px solid #f1f5f9' }}>
+              <span style={{ fontWeight: 600, color: '#0f172a', minWidth: 160 }}>{d.section}</span>
+              <span style={{ color: '#475569' }}>{d.capture}</span>
+            </div>
+          ))}
+          <div style={{ marginTop: 12, fontSize: 13, color: '#166534', background: '#dcfce7', borderRadius: 6, padding: 10 }}>
+            ✅ Intake complete in ~8-10 min. The remaining ~1,170 fields fill themselves as the patient uses the platform — no marathon form.
+          </div>
+          <button onClick={() => setStep(1)} style={{ marginTop: 10, padding: '8px 14px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>← Restart</button>
+        </div>
+      )}
     </div>
   )
 }

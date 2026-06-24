@@ -638,6 +638,13 @@ async def seizure_list(patient_id: str):
     return cdb.list_seizures(patient_id)
 
 
+@app.get("/api/onboarding-intake")
+async def onboarding_intake():
+    """Patient onboarding: intake-vs-deferred field classification (the 15x time reduction)."""
+    p = Path(__file__).parent / "config" / "onboarding_intake.json"
+    return json.loads(p.read_text()) if p.exists() else {"steps": []}
+
+
 @app.get("/api/iot-devices")
 async def iot_devices():
     """Emotiv + IoT + mobile device fleet with online/offline handling model."""
