@@ -457,8 +457,9 @@ async def patient_clinical(patient_id: str):
     return cdb.patient_clinical_summary(patient_id)
 
 
-@app.get("/api/department-report/{department}")
+@app.get("/api/department-report/{department:path}")
 async def department_report(department: str, save: bool = False):
+    # :path converter accepts department names containing '/' (e.g. "EEG / Epilepsy Analysis")
     rep = cdb.department_report(department)
     if save:
         rep["report_path"] = cdb.write_department_report(department)
