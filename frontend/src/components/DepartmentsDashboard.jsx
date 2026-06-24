@@ -120,6 +120,12 @@ const DEPARTMENTS = [
     kpis: [{ label: 'Sites onboarded', value: 4, target: 8 }, { label: 'Rounds / month', value: 6, target: 10 }, { label: 'Global accuracy (%)', value: 89, target: 92 }, { label: 'Site drift (open)', value: 1, target: 0 }],
   },
   {
+    id: 'iot_engineer', name: 'IoT Engineer', icon: '📡', clinical: true,
+    challenges: ['Wearable/Emotiv disconnects mid-recording', 'Real-time seizure detection on noisy streams', 'Battery/signal degradation unnoticed', 'Reliable fast SOS to caregiver', 'Device data privacy (no leak)'],
+    tasks: ['Provision + monitor devices', 'Maintain gateway uptime', 'Tune edge inference', 'Configure alert/SOS routing', 'Ensure local-first PII handling'],
+    kpis: [{ label: 'Devices online', value: 6, target: 8 }, { label: 'Gateway uptime (%)', value: 98, target: 99 }, { label: 'Stream latency (ms)', value: 120, target: 100 }, { label: 'SOS alerts (24h)', value: 2, target: 0 }],
+  },
+  {
     id: 'admin', name: 'Admin', icon: '🛠️', clinical: false, custom: 'admin',
   },
 ]

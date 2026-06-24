@@ -61,6 +61,18 @@
      "reports": [
        {"name": "Neuroimaging Report", "cadence": "per scan", "format": "PDF", "status": "partial"},
        {"name": "Structural Findings Summary", "cadence": "monthly", "format": "PDF", "status": "planned"}]},
+    {"role": "IoT Engineer", "icon": "📡",
+     "kpis": [
+       {"label": "Devices online", "source": "device registry (sim)", "status": "partial"},
+       {"label": "Gateway uptime", "source": "gateway monitor (sim)", "status": "partial"},
+       {"label": "Stream latency (ms)", "source": "device stream", "status": "planned"},
+       {"label": "SOS alerts fired", "source": "transaction_log (alert)", "status": "partial"},
+       {"label": "Battery/signal low", "source": "device telemetry", "status": "planned"}],
+     "reports": [
+       {"name": "Device Fleet Status", "cadence": "real-time", "format": "dashboard", "status": "partial"},
+       {"name": "Gateway Health Report", "cadence": "daily", "format": "PDF/CSV", "status": "partial"},
+       {"name": "Continuous Monitoring Summary", "cadence": "per patient", "format": "PDF", "status": "partial"},
+       {"name": "Alert/SOS Audit", "cadence": "on-demand", "format": "CSV", "status": "partial"}]},
     {"role": "IRB / Governance Reviewer", "icon": "⚖️",
      "kpis": [
        {"label": "Decisions audited", "source": "transaction_log", "status": "built"},

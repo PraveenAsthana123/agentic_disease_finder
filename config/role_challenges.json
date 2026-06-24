@@ -28,6 +28,12 @@
     {"role": "Radiologist", "icon": "🩻", "items": [
       {"challenge": "Correlating MRI lesions with EEG focus", "ai": "EEG-MRI concordance view (planned)", "status": "planned"},
       {"challenge": "Structured reporting overhead", "ai": "Template + finding capture (partial)", "status": "partial"}]},
+    {"role": "IoT Engineer", "icon": "📡", "items": [
+      {"challenge": "Wearable/Emotiv devices drop connection mid-recording", "ai": "Gateway monitors heartbeat + auto-reconnect + flags gaps", "status": "partial"},
+      {"challenge": "Detecting a seizure in real-time from a noisy wearable stream", "ai": "Edge model on streamed windows + confidence gate (sim)", "status": "partial"},
+      {"challenge": "Battery/signal degradation goes unnoticed", "ai": "Telemetry anomaly alerts before failure", "status": "planned"},
+      {"challenge": "SOS must reach caregiver fast + reliably", "ai": "Multi-channel alert (phone/SMS) with escalation", "status": "partial"},
+      {"challenge": "Device data must not leak (privacy)", "ai": "Local-first gateway + PII scrub before any cloud", "status": "partial"}]},
     {"role": "IRB / Governance Reviewer", "icon": "⚖️", "items": [
       {"challenge": "Proving AI decisions were governed", "ai": "Immutable decision audit (who/what/when, UTC+local)", "status": "built"},
       {"challenge": "Catching unsafe/biased AI outputs", "ai": "Guardrails (injection/PII) + fairness gate (DI/EO) per decision", "status": "built"},

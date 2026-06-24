@@ -40,6 +40,14 @@
        {"layer": "process", "mode": "auto", "actor": "Compliance", "input": "decision", "process": "fairness + PII check", "output": "RAI verdict", "maps_to": "GET /api/responsible-ai"},
        {"layer": "process", "mode": "manual", "actor": "Reviewer", "input": "audit trail", "process": "review overrides + guardrails", "output": "approval", "maps_to": "decision"},
        {"layer": "reporting", "mode": "auto", "actor": "System", "input": "all events", "process": "governance audit report", "output": "audit trail (UTC+local)", "maps_to": "transaction_log"}]},
+    {"role": "IoT Engineer", "icon": "📡", "process": "Device → gateway → alert flow",
+     "steps": [
+       {"layer": "data", "mode": "auto", "actor": "Wearable/Emotiv", "input": "scalp/wearable signal", "process": "stream to gateway", "output": "live data packets", "maps_to": "Emotiv/IoT sim"},
+       {"layer": "process", "mode": "auto", "actor": "Gateway", "input": "packets", "process": "heartbeat + quality + buffer", "output": "validated stream", "maps_to": "gateway monitor"},
+       {"layer": "data", "mode": "auto", "actor": "Edge", "input": "windows", "process": "PII scrub + feature extract", "output": "features", "maps_to": "local-first"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Edge model", "input": "features", "process": "seizure-risk inference", "output": "risk + confidence", "maps_to": "classify (planned edge)"},
+       {"layer": "process", "mode": "auto", "actor": "Decision", "input": "risk", "process": "confidence gate", "output": "alert/no-alert", "maps_to": "decision route"},
+       {"layer": "reporting", "mode": "auto", "actor": "Alert", "input": "alert", "process": "multi-channel SOS + escalation", "output": "caregiver notified + audit", "maps_to": "transaction_log"}]},
     {"role": "Patient", "icon": "🧑", "process": "Onboarding (step-by-step)",
      "steps": [
        {"layer": "process", "mode": "manual", "actor": "Patient", "input": "consent form", "process": "give informed consent", "output": "consent record", "maps_to": "patient onboarding wizard"},
