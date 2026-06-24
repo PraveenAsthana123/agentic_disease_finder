@@ -11,6 +11,29 @@ const API_URL = '/api'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4']
 
 // ---------------------------------------------------------------------------
+// PER-TAB ACTIVITY LOG — a module-level ring buffer that captures EVERY API call
+// (method/url/status/ms) + tab-open events. The TabScaffold renders the slice for
+// the currently-open tab, so logging is visible at each tab level.
+// ---------------------------------------------------------------------------
+const _activityLog = []           // {t, tab, kind, detail, level}
+const _activitySubs = new Set()   // re-render subscribers
+let _activeTabId = ''
+function logActivity(kind, detail, level = 'info') {
+  _activityLog.unshift({ t: new Date().toLocaleTimeString(), tab: _activeTabId, kind, detail, level })
+  if (_activityLog.length > 200) _activityLog.pop()
+  _activitySubs.forEach(fn => { try { fn() } catch { /* noop */ } })
+}
+// One-time global interceptor: log every API request outcome, tagged with the active tab.
+if (!window.__nai_interceptor) {
+  window.__nai_interceptor = true
+  axios.interceptors.request.use(c => { c.__t0 = performance.now(); return c })
+  axios.interceptors.response.use(
+    r => { const ms = Math.round(performance.now() - (r.config.__t0 || performance.now())); logActivity('api', `${(r.config.method || 'get').toUpperCase()} ${r.config.url} → ${r.status} (${ms}ms)`, r.status >= 400 ? 'warn' : 'ok'); return r },
+    e => { const u = e.config?.url || '?'; const s = e.response?.status || (e.code === 'ECONNABORTED' ? 'timeout' : 'no-response'); logActivity('api', `${(e.config?.method || 'get').toUpperCase()} ${u} → ${s}`, 'err'); return Promise.reject(e) }
+  )
+}
+
+// ---------------------------------------------------------------------------
 // MAIN MENU: departments + governance offices.
 // Each entry drives the SUB MENU (Challenges · Tasks · Data · KPI · Patients).
 // `clinical: true` enables patient onboarding + EEG upload analysis.
@@ -166,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -194,8 +217,9 @@ function subTabsFor(dept) {
       { id: 'ai_must_know', label: 'What AI Must Know' },
     ]
   }
+  // NOTE: 'challenges' (30 epilepsy-wide STAR challenges) is NOT here — it's platform-wide,
+  // not per-role, so it lives once in the AI Types hub, not repeated on every page.
   const base = [
-    { id: 'challenges', label: 'Challenges' },
     { id: 'tasks', label: 'Tasks' },
     { id: 'data', label: 'Data' },
     { id: 'kpi', label: 'KPI' },
@@ -1706,9 +1730,22 @@ function TabScaffold({ tabId, label, dept, children }) {
   const [todoDone, setTodoDone] = useState({})
   const [txns, setTxns] = useState(null)
   const [showTx, setShowTx] = useState(false)
+  const [, forceRender] = useState(0)        // re-render when activity log changes
+  const [showAct, setShowAct] = useState(false)
   useEffect(() => {
     if (_scaffoldCache) { setCfg(_scaffoldCache); return }
     axios.get(`${API_URL}/tab-scaffold`).then(r => { _scaffoldCache = r.data; setCfg(r.data) }).catch(() => setCfg({ default: {}, tabs: {} }))
+  }, [])
+  // set active tab + log the tab-open event so each tab's activity is captured
+  useEffect(() => {
+    _activeTabId = tabId
+    logActivity('tab', `opened ${label || tabId} (${dept?.name || ''})`, 'info')
+  }, [tabId, label, dept])
+  // subscribe to the activity buffer so the per-tab log re-renders live
+  useEffect(() => {
+    const sub = () => forceRender(n => n + 1)
+    _activitySubs.add(sub)
+    return () => _activitySubs.delete(sub)
   }, [])
   useEffect(() => { setTodoDone({}) }, [tabId])
   const loadTx = () => {
@@ -1777,6 +1814,25 @@ function TabScaffold({ tabId, label, dept, children }) {
           <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>{viz}</div>
         </div>
       )}
+
+      {/* Per-tab Activity Log — client-side log of THIS tab's events (open + API calls) */}
+      <div style={sec}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: '#475569', textTransform: 'uppercase' }}>🪵 Tab Activity Log</span>
+          <span style={{ fontSize: 10, color: '#94a3b8' }}>{_activityLog.filter(a => a.tab === tabId).length} events on this tab</span>
+          <button onClick={() => setShowAct(s => !s)} style={{ marginLeft: 'auto', fontSize: 11, padding: '3px 10px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>{showAct ? 'Hide' : 'Show'}</button>
+        </div>
+        {showAct && (
+          <div style={{ marginTop: 8, background: '#0f172a', borderRadius: 6, padding: 8, maxHeight: 200, overflow: 'auto', fontFamily: 'monospace', fontSize: 11 }}>
+            {_activityLog.filter(a => a.tab === tabId).slice(0, 30).map((a, i) => (
+              <div key={i} style={{ color: a.level === 'err' ? '#f87171' : a.level === 'warn' ? '#fbbf24' : a.level === 'ok' ? '#4ade80' : '#93c5fd', marginBottom: 2 }}>
+                <span style={{ color: '#64748b' }}>{a.t}</span> [{a.kind}] {a.detail}
+              </div>
+            ))}
+            {!_activityLog.filter(a => a.tab === tabId).length && <div style={{ color: '#64748b' }}>No activity captured for this tab yet.</div>}
+          </div>
+        )}
+      </div>
 
       {/* 8. Transaction history (real, on demand) */}
       <div style={sec}>
