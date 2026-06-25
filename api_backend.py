@@ -947,6 +947,23 @@ async def eeg_viz_artifacts(file: str = None, seconds: float = 60.0):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/seizure-annotations")
+async def eeg_seizure_annotations():
+    """Ictal/Interictal — CHB-MIT seizure annotations (per-file seizure counts + time windows)."""
+    import scripts.ictal_analysis as ia
+    return _json_safe({"available": True, "files": ia.parse_seizure_annotations()})
+
+
+@app.get("/api/eeg-viz/ictal-interictal")
+async def eeg_ictal_interictal(file: str = None):
+    """Ictal vs Interictal — band-power contrast (ictal delta-dominance) from annotated seizures."""
+    import scripts.ictal_analysis as ia
+    key = f"ictal:{file}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(ia.ictal_interictal(file))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
