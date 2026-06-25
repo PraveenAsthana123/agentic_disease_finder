@@ -356,12 +356,13 @@
    "role": "Clinical Dietitian / Nutritionist",
    "icon": "🥗",
    "mission": "Ketogenic/MAD/LGIT diets, malnutrition, AED-nutrition interactions.",
-   "data_hook": "planned",
+   "data_hook": "medications (9) + patients (40) + assessments (BARTHEL) + seizure_diary (25) live",
    "tasks": [
     {
      "name": "Ketogenic Diet Eligibility/Monitoring",
      "ai_feature": "Keto eligibility + ketosis tracking",
-     "status": "planned",
+     "status": "built",
+     "endpoints": ["/api/dietitian", "/api/dietitian/ketogenic"],
      "steps": [
       "Eligibility scoring",
       "Fat:protein:carb ratio",
@@ -377,7 +378,8 @@
     {
      "name": "Malnutrition Screening (MNA/MUST)",
      "ai_feature": "AI malnutrition score",
-     "status": "planned",
+     "status": "built",
+     "endpoints": ["/api/dietitian/malnutrition"],
      "steps": [
       "MNA/MUST/NRS-2002",
       "Anthropometrics + BMI",
@@ -393,7 +395,8 @@
     {
      "name": "Nutrient/Vitamin Analysis",
      "ai_feature": "AI nutrient calculator",
-     "status": "planned",
+     "status": "built",
+     "endpoints": ["/api/dietitian/nutrient"],
      "steps": [
       "24h recall / FFQ",
       "Macro/micro analysis",
@@ -409,7 +412,8 @@
     {
      "name": "Medication-Nutrition Interaction",
      "ai_feature": "AI interaction engine",
-     "status": "planned",
+     "status": "built",
+     "endpoints": ["/api/dietitian/medication-nutrition"],
      "steps": [
       "ASM-food interactions",
       "Supplement recommendations",
