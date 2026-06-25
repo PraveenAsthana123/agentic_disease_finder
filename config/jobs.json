@@ -92,6 +92,15 @@
    "cron_tag": "STATUS-REPORT",
    "report": "jobs/reports/status_latest.json",
    "purpose": "Regenerate STATUS.md \u2014 single Done/Pending view from registries+git+crons"
+  },
+  {
+   "id": "consistency",
+   "label": "\ud83d\udd17 Prediction-Consistency Guard",
+   "script": "scripts/consistency_check.py",
+   "schedule": "05:30 daily",
+   "cron_tag": "CONSISTENCY",
+   "report": "jobs/reports/consistency_latest.json",
+   "purpose": "Verify SHAP explains the SAME model classify/Trust-Panel uses (guards model-bundle drift, commit 5c2b039)"
   }
  ]
 }
