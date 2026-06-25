@@ -2529,6 +2529,8 @@ function RoleAssessments({ roleName }) {
   const [list, setList] = useState([])
   const [result, setResult] = useState(null)
   const [editId, setEditId] = useState(null)
+  const [cat, setCat] = useState(null)  // full assessment catalog (27 instruments)
+  useEffect(() => { axios.get(`${API_URL}/assessment-catalog`).then(r => setCat(r.data)).catch(() => setCat(null)) }, [])
   const norm = (s) => (s || '').toLowerCase()
   const loadList = (p) => axios.get(`${API_URL}/assessments`, { params: { patient_id: p } }).then(r => setList(r.data.items || [])).catch(() => setList([]))
   useEffect(() => {
@@ -2554,8 +2556,27 @@ function RoleAssessments({ roleName }) {
   const edit = (a) => { setChosen(a.instrument); setAnswers(JSON.parse(a.answers_json || '{}')); setEditId(a.id); setResult(null) }
   const del = (a) => axios.delete(`${API_URL}/assessments/${a.id}`).then(() => loadList(pid))
   const lvlColor = { normal: '#4caf50', mild: '#ff9800', moderate: '#fb8c00', severe: '#f44336' }
+  // catalog instruments relevant to this role (by specialist match), else all
+  const catItems = cat ? (cat.categories || []).flatMap(c => c.items.map(it => ({ ...it, cat: c.category }))) : []
   return (
     <div>
+      {/* Assessment catalog for this role — list of instruments + status */}
+      {cat && (
+        <div style={card}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>📋 Assessment Catalog ({catItems.length}) — {cat.summary?.built} live, {cat.summary?.planned} to collect</div>
+          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+            {catItems.map((it, i) => (
+              <span key={i} title={`${it.purpose} · ${it.specialist} · ${it.priority}`} style={{
+                fontSize: 10, padding: '2px 7px', borderRadius: 10, whiteSpace: 'nowrap',
+                background: it.status === 'built' ? '#dcfce7' : it.status === 'partial' ? '#fef3c7' : '#f1f5f9',
+                color: it.status === 'built' ? '#166534' : it.status === 'partial' ? '#92400e' : '#64748b',
+                border: it.status === 'built' ? '1px solid #86efac' : '1px solid #e5e7eb',
+              }}>{it.status === 'built' ? '✓ ' : ''}{it.name}</span>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: '#64748b', marginTop: 6 }}>✓ green = live (fillable below) · amber = partial · grey = collect from hospital. Top-10 thesis: {(cat.top10_for_thesis || []).slice(0, 5).join(', ')}…</div>
+        </div>
+      )}
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginBottom: 12 }}>
         <select value={cur.id} onChange={e => { setChosen(e.target.value); setAnswers({}); setEditId(null); setResult(null) }} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
           {inst.map(i => <option key={i.id} value={i.id}>{i.icon} {i.name}</option>)}

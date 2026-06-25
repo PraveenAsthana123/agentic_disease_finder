@@ -633,6 +633,14 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/assessment-catalog")
+async def assessment_catalog():
+    """Full ranked clinical-assessment catalog (27 instruments) for the epilepsy thesis,
+    with built/partial/planned status + priority + specialist + top-10 ranking."""
+    p = Path(__file__).parent / "config" / "assessment_catalog.json"
+    return json.loads(p.read_text()) if p.exists() else {"categories": []}
+
+
 @app.get("/api/assessment-dashboard")
 async def assessment_dashboard():
     """Assessment analytics sliced by type / level / examiner(user) / disease / date."""
