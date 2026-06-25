@@ -689,6 +689,13 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
+@app.get("/api/model-performance")
+async def model_performance():
+    """Real model performance (ROC/PR/confusion/metrics), subject-wise CV on aligned features."""
+    import scripts.model_performance as mp
+    return _json_safe(mp.build())
+
+
 @app.get("/api/expert-roles")
 async def expert_roles():
     """8 multidisciplinary expert roles (Pharmacist/Nurse/SLP/OT/Dietitian/Psychologist/MSW/Coordinator) — tasks w/ steps+challenges+status."""

@@ -272,7 +272,7 @@
    "feature": "Accuracy, recall, specificity",
    "why": "Model evaluation",
    "priority": "P1",
-   "status": "partial"
+   "status": "built"
   },
   {
    "role": "AI Governance",
@@ -295,8 +295,8 @@
  ],
  "summary": {
   "total": 30,
-  "built": 17,
-  "partial": 6,
+  "built": 18,
+  "partial": 5,
   "planned": 7
  }
 }

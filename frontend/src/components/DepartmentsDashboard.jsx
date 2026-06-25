@@ -647,6 +647,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
         {activeSub === 'drift' && <DriftPanel />}
+        {activeSub === 'model_perf' && <ModelPerformancePanel />}
         {activeSub === 'data_manager' && <DataManagerPanel />}
         {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
         {activeSub === 'patient_compare' && <PatientComparePanel />}
@@ -4424,6 +4425,59 @@ function DriftPanel() {
             ))}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function ModelPerformancePanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/model-performance`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  if (!d.available) return <div style={card}><div style={{ color: '#64748b' }}>{d.error}</div></div>
+  const m = d.metrics, cm = d.confusion_matrix
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #1e88e5' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📈 Model Performance <span style={{ fontSize: 12, color: '#64748b' }}>— {d.cv}, n={d.n_samples}</span></h3>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          {Object.entries(m).map(([k, v]) => (
+            <div key={k} style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569', textTransform: 'uppercase' }}>{k}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: v >= 0.8 ? '#16a34a' : v >= 0.6 ? '#f59e0b' : '#dc2626' }}>{(v * 100).toFixed(1)}%</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 8 }}>{d.note}</div>
+      </div>
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div style={{ ...card, flex: 1, minWidth: 280 }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>ROC curve (AUC {m.auc})</h4>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={d.roc}><CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis dataKey="fpr" tick={{ fontSize: 10 }} label={{ value: 'FPR', position: 'insideBottom', offset: -2, fontSize: 10 }} domain={[0, 1]} type="number" />
+              <YAxis tick={{ fontSize: 10 }} domain={[0, 1]} /><Tooltip />
+              <Line type="monotone" dataKey="tpr" stroke="#1e88e5" dot={false} strokeWidth={2} /></LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div style={{ ...card, flex: 1, minWidth: 280 }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Precision-Recall</h4>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={d.pr}><CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis dataKey="recall" tick={{ fontSize: 10 }} domain={[0, 1]} type="number" /><YAxis tick={{ fontSize: 10 }} domain={[0, 1]} /><Tooltip />
+              <Line type="monotone" dataKey="precision" stroke="#16a34a" dot={false} strokeWidth={2} /></LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Confusion matrix</h4>
+        <table style={{ borderCollapse: 'collapse', fontSize: 13 }}>
+          <thead><tr><th style={cellTh}></th><th style={cellTh}>Pred {d.classes[0]}</th><th style={cellTh}>Pred {d.classes[1]}</th></tr></thead>
+          <tbody>{cm.map((row, i) => (
+            <tr key={i}><td style={{ ...cellTh, textAlign: 'left' }}>True {d.classes[i]}</td>
+              {row.map((val, j) => <td key={j} style={{ ...cellTd, fontWeight: 700, textAlign: 'center', background: i === j ? '#ecfdf5' : '#fee2e2', color: i === j ? '#166534' : '#991b1b' }}>{val}</td>)}</tr>
+          ))}</tbody>
+        </table>
       </div>
     </div>
   )
