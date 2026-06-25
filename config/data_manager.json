@@ -1,7 +1,7 @@
 {
  "role": "Clinical Data Manager (CDM)",
  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:43:24Z",
+ "updated_at": "2026-06-25T19:45:35Z",
  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
@@ -151,7 +151,7 @@
    "name": "MRI Validation",
    "ai_feature": "AI DICOM QC",
    "deliverable": "MRI QC",
-   "status": "planned",
+   "status": "built",
    "steps": [
     "Validate DICOM tags",
     "Check sequence completeness (T1/T2/FLAIR)",
@@ -162,6 +162,9 @@
     "DICOM not yet ingested (only 1 MRI finding on record)",
     "Pixel-level PHI",
     "Needs a DICOM toolkit"
+   ],
+   "endpoints": [
+    "/api/data-manager/mri-validation"
    ]
   },
   {

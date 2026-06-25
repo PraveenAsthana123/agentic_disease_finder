@@ -738,6 +738,13 @@ async def data_manager_video_validation():
     return _json_safe(vv.validate_frames())
 
 
+@app.get("/api/data-manager/mri-validation")
+async def data_manager_mri_validation():
+    """MRI Validation — schema + conditional-logic QC over real mri_findings records."""
+    import scripts.mri_validation as mv
+    return _json_safe(mv.validate())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():
