@@ -9,3 +9,4 @@
 8. bash scripts/track.sh "built+pushed: <item name>" "autobuild"
 If you cannot complete + verify, do NOT commit; run scripts/track.sh with the failure reason and exit. NEVER force-push, NEVER first-publish, NEVER fabricate data, NEVER fake done.
 - [ ] **#25** [2026-06-25 09:55:03 MDT] how do I know plan  got created or not , cron job got ceated or not , how many job going to run, which system , are all independing, sequence, if system crash all will stop or still run , will that complete the complete, will that reflect ion UI
+- [ ] **#26** [2026-06-25 10:05:52 MDT] have one agent allocated who can file list of issue which I a mnot aware off and guiding

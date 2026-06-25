@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -645,6 +645,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'neuro_ecosystem' && <NeuroAiEcosystemPanel />}
         {activeSub === 'request_inbox' && <RequestInboxPanel />}
         {activeSub === 'automation_status' && <AutomationStatusPanel />}
+        {activeSub === 'db_status' && <DBStatusPanel />}
         {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
@@ -4427,6 +4428,34 @@ function DriftPanel() {
               </tr>
             ))}</tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DBStatusPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => {
+    const f = () => axios.get(`${API_URL}/db-status`).then(r => setD(r.data)).catch(() => setD(null))
+    f(); const t = setInterval(f, 20000); return () => clearInterval(t)
+  }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const row = (k, v) => <tr><td style={{ ...cellTd, color: '#475569' }}>{k}</td><td style={{ ...cellTd, fontWeight: 700, color: '#0f172a' }}>{v ?? '—'}</td></tr>
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #0891b2' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🗃️ DB / Record Status <span style={{ fontSize: 11, color: '#94a3b8' }}>(live 20s)</span></h3>
+        <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+          <div><h4 style={{ color: '#0f172a' }}>Clinical DB tables</h4>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12 }}><tbody>{Object.entries(d.tables || {}).map(([k, v]) => row(k, v))}</tbody></table></div>
+          <div><h4 style={{ color: '#0f172a' }}>Stores + raw data</h4>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12 }}><tbody>
+              {row('Vector DB (embeddings)', d.vector_db)}{row('Graph DB (triples)', d.graph_db)}
+              {row('EEG datasets', d.raw_data?.eeg_datasets)}{row('EEG .edf files', d.raw_data?.edf_files)}
+            </tbody></table>
+            <h4 style={{ color: '#0f172a', marginTop: 12 }}>Last job runs</h4>
+            <table style={{ borderCollapse: 'collapse', fontSize: 11 }}><tbody>{Object.entries(d.last_jobs || {}).map(([k, v]) => row(k.replace('_latest', ''), v))}</tbody></table></div>
         </div>
       </div>
     </div>
