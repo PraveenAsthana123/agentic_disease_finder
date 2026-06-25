@@ -1883,6 +1883,45 @@ async def nurse_education(patient_id: str = None):
     return _json_safe(nurse.education_assessment(patient_id))
 
 
+# ─── Speech-Language Pathologist (SLP) ────────────────────────────────────
+
+@app.get("/api/slp")
+async def slp_dashboard(patient_id: str = None):
+    """Speech-Language Pathologist (SLP) — full dashboard: language assessment (BNT+WAB),
+    verbal fluency, swallowing (MASA), pre/post-surgical language comparison.
+    All built from REAL BNT, WAB, VERBAL_FLUENCY, MASA assessments in clinical.db."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.full_dashboard(patient_id))
+
+
+@app.get("/api/slp/language-assessment")
+async def slp_language(patient_id: str = None):
+    """Language assessment: BNT (Boston Naming Test) + WAB (Western Aphasia Battery)."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.language_assessment(patient_id))
+
+
+@app.get("/api/slp/speech-analysis")
+async def slp_speech(patient_id: str = None):
+    """Speech analysis: verbal fluency (phonemic FAS + semantic animals/fruits), clustering, switching."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.speech_analysis(patient_id))
+
+
+@app.get("/api/slp/swallowing")
+async def slp_swallowing(patient_id: str = None):
+    """Swallowing assessment: MASA score, aspiration risk, post-ictal risk flags."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.swallowing_assessment(patient_id))
+
+
+@app.get("/api/slp/pre-post-surgical")
+async def slp_prepost(patient_id: str = None):
+    """Pre/post-surgical language comparison: baseline scores, risk estimates, Wada test recommendations."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.pre_post_surgical(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

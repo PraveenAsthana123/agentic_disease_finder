@@ -199,12 +199,12 @@
       "role": "Speech-Language Pathologist (SLP)",
       "icon": "\ud83d\udde3\ufe0f",
       "mission": "Language, communication, swallowing \u2014 esp. dominant temporal-lobe + pre/post-surgery.",
-      "data_hook": "planned",
+      "data_hook": "LIVE: /api/slp (5 endpoints, real BNT+WAB+VERBAL_FLUENCY+MASA assessments in clinical.db)",
       "tasks": [
         {
           "name": "Language Assessment (BNT/WAB)",
           "ai_feature": "NLP-assisted scoring",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "Boston Naming Test",
             "Western Aphasia Battery",
@@ -219,8 +219,8 @@
         },
         {
           "name": "Speech Analysis",
-          "ai_feature": "Acoustic AI (waveform/spectrogram)",
-          "status": "planned",
+          "ai_feature": "Verbal fluency analytics (phonemic+semantic, clustering, switching)",
+          "status": "built",
           "steps": [
             "Record speech",
             "Articulation/fluency/prosody",
@@ -236,7 +236,7 @@
         {
           "name": "Swallowing (MASA/EAT-10)",
           "ai_feature": "Dysphagia risk",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "EAT-10 screen",
             "MASA assessment",
@@ -252,7 +252,7 @@
         {
           "name": "Pre/Post-Surgical Language",
           "ai_feature": "Lateralization + recovery prediction",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "Baseline language map",
             "Integrate EEG/fMRI dominance",
@@ -632,6 +632,6 @@
     "roles": 8,
     "total_tasks": 35,
     "partial": 5,
-    "planned": 30
+    "planned": 26
   }
 }
