@@ -633,6 +633,13 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/fairness")
+async def fairness():
+    """Real Fairlearn fairness analysis (demographic-parity by sex) on assessment outcomes."""
+    p = Path(__file__).parent / "jobs" / "reports" / "fairness_latest.json"
+    return json.loads(p.read_text()) if p.exists() else {"error": "run scripts/fairness_analysis.py"}
+
+
 @app.get("/api/eeg-ai-stack")
 async def eeg_ai_stack():
     """EEG AI tool ecosystem (16 layers) + EDC/assessment tools, with honest installed status."""

@@ -3223,17 +3223,39 @@ function InterpretView({ disease }) {
 function ResponsibleAiView({ disease }) {
   const [d, setD] = useState(null)
   const [fair, setFair] = useState(null)
+  const [realFair, setRealFair] = useState(null)
   const [pii, setPii] = useState(null)
   const [piiText, setPiiText] = useState('Patient john@example.com, SSN 123-45-6789, MRN:445566')
   useEffect(() => {
     axios.get(`${API_URL}/responsible-ai/${disease}`).then(r => setD(r.data)).catch(() => setD(null))
     axios.get(`${API_URL}/fairness/${disease}`).then(r => setFair(r.data)).catch(() => setFair(null))
+    axios.get(`${API_URL}/fairness`).then(r => setRealFair(r.data)).catch(() => setRealFair(null))
   }, [disease])
   const runPii = () => axios.post(`${API_URL}/pii-scan`, { text: piiText }).then(r => setPii(r.data)).catch(() => setPii(null))
 
   const phaseColor = { built: '#4caf50', scaffold: '#ff9800', planned: '#94a3b8' }
   return (
     <div>
+      {realFair && !realFair.error && (
+        <div style={{ ...card, borderLeft: '4px solid #16a34a' }}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>⚖️ Real fairness audit <span style={{ fontSize: 12, color: '#166534', fontWeight: 600 }}>({realFair.library} · live on clinical DB, n={realFair.n})</span></h3>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ padding: '10px 16px', borderRadius: 8, background: realFair.fairness_gate === 'PASS' ? '#ecfdf5' : '#fef3c7', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>Demographic-parity diff (by {realFair.protected_attribute})</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: realFair.fairness_gate === 'PASS' ? '#166534' : '#92400e' }}>{realFair.demographic_parity_difference} <span style={{ fontSize: 13 }}>({realFair.fairness_gate})</span></div>
+            </div>
+            {Object.entries(realFair.by_group || {}).map(([g, m]) => (
+              <div key={g} style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+                <div style={{ fontSize: 11, color: '#475569' }}>{g} (n={m.count})</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: '#0f172a' }}>{(m.selection_rate * 100).toFixed(1)}%</div>
+                <div style={{ fontSize: 10, color: '#64748b' }}>adverse-outcome rate</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: 12, color: '#475569', marginTop: 10 }}>{realFair.interpretation}</div>
+          <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>Outcome: {realFair.outcome} · runs daily 04:00 (FAIRNESS cron) · gate threshold |DPD| &lt; 0.2</div>
+        </div>
+      )}
       <div style={card}>
         <h3 style={{ marginTop: 0, color: '#0f172a' }}>Responsible AI — per-phase coverage ({disease})</h3>
         {d ? (

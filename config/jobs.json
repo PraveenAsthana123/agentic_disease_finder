@@ -1,25 +1,70 @@
 {
-  "title": "Scheduled / Background Jobs Registry",
-  "note": "Every cron + background job, its schedule, script, and where its result lands. /api/jobs reads this + each job's latest report.",
-  "updated_at": "2026-06-24",
-  "jobs": [
-    {"id": "training", "label": "🧠 EEG Training (CHB-MIT)", "script": "scripts/scheduled_train.py",
-     "schedule": "daily 02:30", "cron_tag": "AGENTICFINDER-TRAIN", "report": "jobs/reports/training_latest.json",
-     "purpose": "Leakage-free epilepsy accuracy on real CHB-MIT signal data"},
-    {"id": "vector", "label": "🔎 Vector DB Ingest (RAG)", "script": "scripts/vector_ingest.py",
-     "schedule": "07:00 + 19:00 daily", "cron_tag": "VECTOR-INGEST", "report": "jobs/reports/vector_latest.json",
-     "purpose": "Embed clinical records + reports → ChromaDB for RAG"},
-    {"id": "video_frames", "label": "🎞️ Video → Image Frames", "script": "scripts/video_to_frames.py",
-     "schedule": "hourly", "cron_tag": "VIDEO-FRAMES", "report": "jobs/reports/video_frames_latest.json",
-     "purpose": "Extract keyframes from uploaded EEG/seizure videos for CV analysis"},
-    {"id": "validation", "label": "✅ Validation Suite", "script": "scripts/run_validation_suite.py",
-     "schedule": "daily 03:00", "cron_tag": "VALIDATION", "report": "jobs/reports/validation_latest.json",
-     "purpose": "External validation (Bonn) + bootstrap CIs"},
-    {"id": "graph_db", "label": "🕸️ Knowledge Graph (RDF) Build", "script": "scripts/build_graph.py",
-     "schedule": "06:00 daily", "cron_tag": "GRAPH-DB", "report": "jobs/reports/graph_latest.json",
-     "purpose": "Rebuild RDF relationship graph (patient→EEG→finding→diagnosis) from clinical DB"},
-    {"id": "cv_pipeline", "label": "🖼️ CV Pipeline (denoise/segment/detect/classify)", "script": "scripts/cv_pipeline.py",
-     "schedule": "hourly", "cron_tag": "CV-PIPELINE", "report": "jobs/reports/cv_pipeline_latest.json",
-     "purpose": "Image noise-cleaning + segmentation + YOLO detection + vision classification on video frames/EEG images"}
-  ]
+ "title": "Scheduled / Background Jobs Registry",
+ "note": "Every cron + background job, its schedule, script, and where its result lands. /api/jobs reads this + each job's latest report.",
+ "updated_at": "2026-06-24",
+ "jobs": [
+  {
+   "id": "training",
+   "label": "\ud83e\udde0 EEG Training (CHB-MIT)",
+   "script": "scripts/scheduled_train.py",
+   "schedule": "daily 02:30",
+   "cron_tag": "AGENTICFINDER-TRAIN",
+   "report": "jobs/reports/training_latest.json",
+   "purpose": "Leakage-free epilepsy accuracy on real CHB-MIT signal data"
+  },
+  {
+   "id": "vector",
+   "label": "\ud83d\udd0e Vector DB Ingest (RAG)",
+   "script": "scripts/vector_ingest.py",
+   "schedule": "07:00 + 19:00 daily",
+   "cron_tag": "VECTOR-INGEST",
+   "report": "jobs/reports/vector_latest.json",
+   "purpose": "Embed clinical records + reports \u2192 ChromaDB for RAG"
+  },
+  {
+   "id": "video_frames",
+   "label": "\ud83c\udf9e\ufe0f Video \u2192 Image Frames",
+   "script": "scripts/video_to_frames.py",
+   "schedule": "hourly",
+   "cron_tag": "VIDEO-FRAMES",
+   "report": "jobs/reports/video_frames_latest.json",
+   "purpose": "Extract keyframes from uploaded EEG/seizure videos for CV analysis"
+  },
+  {
+   "id": "validation",
+   "label": "\u2705 Validation Suite",
+   "script": "scripts/run_validation_suite.py",
+   "schedule": "daily 03:00",
+   "cron_tag": "VALIDATION",
+   "report": "jobs/reports/validation_latest.json",
+   "purpose": "External validation (Bonn) + bootstrap CIs"
+  },
+  {
+   "id": "graph_db",
+   "label": "\ud83d\udd78\ufe0f Knowledge Graph (RDF) Build",
+   "script": "scripts/build_graph.py",
+   "schedule": "06:00 daily",
+   "cron_tag": "GRAPH-DB",
+   "report": "jobs/reports/graph_latest.json",
+   "purpose": "Rebuild RDF relationship graph (patient\u2192EEG\u2192finding\u2192diagnosis) from clinical DB"
+  },
+  {
+   "id": "cv_pipeline",
+   "label": "\ud83d\uddbc\ufe0f CV Pipeline (denoise/segment/detect/classify)",
+   "script": "scripts/cv_pipeline.py",
+   "schedule": "hourly",
+   "cron_tag": "CV-PIPELINE",
+   "report": "jobs/reports/cv_pipeline_latest.json",
+   "purpose": "Image noise-cleaning + segmentation + YOLO detection + vision classification on video frames/EEG images"
+  },
+  {
+   "id": "fairness",
+   "label": "\u2696\ufe0f Fairlearn Fairness Audit",
+   "script": "scripts/fairness_analysis.py",
+   "schedule": "04:00 daily",
+   "cron_tag": "FAIRNESS",
+   "report": "jobs/reports/fairness_latest.json",
+   "purpose": "Demographic-parity fairness audit by sex (Responsible-AI governance)"
+  }
+ ]
 }
