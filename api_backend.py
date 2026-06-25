@@ -1041,6 +1041,16 @@ async def eeg_connectivity(file: str = None, band: str = "alpha"):
     return _eeg_viz_cache[key]
 
 
+_catboost_cache: dict = {}
+@app.get("/api/catboost-model")
+async def catboost_model(disease: str = "epilepsy"):
+    """CatBoost alternative model — subject-wise CV metrics + feature importance + comparison to deployed."""
+    import scripts.catboost_model as cb
+    if disease not in _catboost_cache:
+        _catboost_cache[disease] = _json_safe(cb.build(disease))
+    return _catboost_cache[disease]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
@@ -2424,6 +2434,41 @@ async def neuro_scales_gcs_definitions():
     pupil reactivity scoring, and epilepsy-specific clinical context."""
     import scripts.neuro_scales_gcs as gcs
     return _json_safe(gcs.scale_definitions())
+
+
+# ─── Neuro AI Ecosystem: Modified Rankin Scale (mRS) ───────────────
+
+@app.get("/api/neuro-scales/rankin")
+async def neuro_scales_rankin_dashboard(patient_id: str = None):
+    """mRS dashboard — Modified Rankin Scale (0-6 disability) for one patient
+    or all patients.  Scores derived from REAL Barthel, cognition, seizure
+    diary, and medication data in clinical.db."""
+    import scripts.neuro_scales_rankin as rankin
+    return _json_safe(rankin.mrs_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/rankin/detail")
+async def neuro_scales_rankin_detail(patient_id: str):
+    """mRS detail — full grade breakdown + contributing factors + clinical
+    note for a single patient."""
+    import scripts.neuro_scales_rankin as rankin
+    return _json_safe(rankin.mrs_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/rankin/trend")
+async def neuro_scales_rankin_trend(patient_id: str):
+    """mRS trend — 6-month modeled trajectory based on functional and
+    seizure profile.  For outcomes tracking visualization."""
+    import scripts.neuro_scales_rankin as rankin
+    return _json_safe(rankin.mrs_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/rankin/definitions")
+async def neuro_scales_rankin_definitions():
+    """Scale definitions — mRS grade descriptions, outcome thresholds,
+    reliability data, and epilepsy-specific clinical context."""
+    import scripts.neuro_scales_rankin as rankin
+    return _json_safe(rankin.scale_definitions())
 
 
 if __name__ == "__main__":
