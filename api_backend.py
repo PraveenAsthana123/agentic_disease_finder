@@ -633,6 +633,32 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/assessment-dashboard")
+async def assessment_dashboard():
+    """Assessment analytics sliced by type / level / examiner(user) / disease / date."""
+    from collections import Counter, defaultdict
+    with cdb._connect() as c:  # type: ignore
+        rows = [dict(r) for r in c.execute("SELECT * FROM assessments").fetchall()]
+        pdis = {r["patient_id"]: r["disease"] for r in
+                [dict(x) for x in c.execute("SELECT patient_id, disease FROM patients").fetchall()]}
+    by_type = Counter(r.get("instrument") for r in rows)
+    by_level = Counter(r.get("level") for r in rows)
+    by_user = Counter(r.get("examiner") or "unspecified" for r in rows)
+    by_disease = Counter(pdis.get(r.get("patient_id"), "unknown") for r in rows)
+    by_date = Counter((r.get("created_at") or "")[:10] for r in rows if r.get("created_at"))
+    # avg score per instrument
+    sums = defaultdict(lambda: [0.0, 0])
+    for r in rows:
+        if r.get("score") is not None:
+            sums[r["instrument"]][0] += r["score"]; sums[r["instrument"]][1] += 1
+    avg_score = {k: round(v[0] / v[1], 1) for k, v in sums.items() if v[1]}
+    alerts = sum(1 for r in rows if r.get("alert"))
+    return {"total": len(rows), "by_type": dict(by_type), "by_level": dict(by_level),
+            "by_user": dict(by_user), "by_disease": dict(by_disease),
+            "by_date": dict(sorted(by_date.items())), "avg_score": avg_score, "alerts": alerts,
+            "recent": sorted(rows, key=lambda r: r.get("created_at", ""), reverse=True)[:15]}
+
+
 @app.get("/api/role-process-flow/{role}")
 async def role_process_flow(role: str):
     """End-to-end process flow (steps + mermaid) for a given role; default if not specific."""

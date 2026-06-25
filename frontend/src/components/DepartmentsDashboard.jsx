@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -624,6 +624,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'dark_factory' && <DarkFactoryPanel />}
         {activeSub === 'eeg_pipeline' && <EegAiRagPipelinePanel />}
         {activeSub === 'patient_registry' && <PatientRegistry />}
+        {activeSub === 'assess_dash' && <AssessmentDashboard />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -3966,6 +3967,73 @@ function RoleGraph({ roleName }) {
                 <td style={cellTd}>{e.from}</td><td style={{ ...cellTd, color: '#8e24aa', fontWeight: 600 }}>{e.rel}</td><td style={cellTd}>{e.to}</td>
               </tr>
             ))}{!(g.edges || []).length && <tr><td style={cellTd} colSpan={3}>No relationships yet for this role.</td></tr>}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function AssessmentDashboard() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/assessment-dashboard`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const bars = (obj) => Object.entries(obj || {}).map(([k, v]) => ({ label: k, count: v }))
+  const Block = ({ title, obj, color }) => (
+    <div style={{ flex: '1 1 280px', ...card, marginBottom: 0 }}>
+      <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>{title}</div>
+      {Object.keys(obj || {}).length === 0 ? <div style={{ fontSize: 12, color: '#94a3b8' }}>no data</div> : (
+        <div style={{ height: 150 }}><ResponsiveContainer width="100%" height="100%">
+          <BarChart data={bars(obj)} layout="vertical"><XAxis type="number" tick={{ fontSize: 10 }} /><YAxis type="category" dataKey="label" width={90} tick={{ fontSize: 10 }} /><Tooltip />
+            <Bar dataKey="count" fill={color} radius={[0, 4, 4, 0]} /></BarChart>
+        </ResponsiveContainer></div>
+      )}
+    </div>
+  )
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📊 Assessment Dashboards — {d.total} assessments</h3>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+          <span>Total: <strong>{d.total}</strong></span>
+          <span>Alerts: <strong style={{ color: '#f44336' }}>{d.alerts}</strong></span>
+          <span>Types: <strong>{Object.keys(d.by_type || {}).length}</strong></span>
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
+        <Block title="By Assessment Type" obj={d.by_type} color="#1e88e5" />
+        <Block title="By Level (severity)" obj={d.by_level} color="#fb8c00" />
+      </div>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
+        <Block title="By User (examiner)" obj={d.by_user} color="#7c3aed" />
+        <Block title="By Disease" obj={d.by_disease} color="#16a34a" />
+      </div>
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>Over time (by date)</div>
+        {Object.keys(d.by_date || {}).length ? (
+          <div style={{ height: 140 }}><ResponsiveContainer width="100%" height="100%">
+            <LineChart data={bars(d.by_date)}><CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" /><XAxis dataKey="label" tick={{ fontSize: 10 }} /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
+              <Line dataKey="count" stroke="#1e88e5" strokeWidth={2} /></LineChart>
+          </ResponsiveContainer></div>
+        ) : <div style={{ fontSize: 12, color: '#94a3b8' }}>no dated data</div>}
+      </div>
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>Avg score per instrument</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {Object.entries(d.avg_score || {}).map(([k, v]) => <span key={k} style={{ fontSize: 12, padding: '3px 10px', background: '#f1f5f9', borderRadius: 12 }}>{k}: <strong>{v}</strong></span>)}
+        </div>
+      </div>
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 6 }}>Recent assessments</div>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto', maxHeight: 200 }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Patient</th><th style={cellTh}>Type</th><th style={cellTh}>Score</th><th style={cellTh}>Level</th><th style={cellTh}>Examiner</th></tr></thead>
+            <tbody>{(d.recent || []).map((r, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={cellTd}>{r.patient_id}</td><td style={cellTd}>{r.instrument}</td><td style={cellTd}>{r.score}/{r.max_score}</td>
+                <td style={{ ...cellTd, color: r.level === 'severe' ? '#f44336' : r.level === 'moderate' ? '#fb8c00' : '#16a34a' }}>{r.level}</td><td style={cellTd}>{r.examiner || '—'}</td>
+              </tr>
+            ))}</tbody>
           </table>
         </div>
       </div>
