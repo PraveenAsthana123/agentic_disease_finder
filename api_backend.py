@@ -695,7 +695,11 @@ async def model_performance():
     """Real model performance (ROC/PR/confusion/metrics), subject-wise CV — cached (CV is slow)."""
     import scripts.model_performance as mp
     if "r" not in _mp_cache:
-        _mp_cache["r"] = _json_safe(mp.build())
+        try:
+            _mp_cache["r"] = _json_safe(mp.build())
+        except Exception as e:  # honest degradation (§57.7) — never a 500 from a recoverable load/CV error
+            _mp_cache["r"] = {"available": False, "error": f"{type(e).__name__}: {e}",
+                              "note": "model-performance unavailable (model load or CV failed); see backend log for traceback"}
     return _mp_cache["r"]
 
 
@@ -1931,6 +1935,44 @@ async def slp_prepost(patient_id: str = None):
     """Pre/post-surgical language comparison: baseline scores, risk estimates, Wada test recommendations."""
     import scripts.slp_module as slp
     return _json_safe(slp.pre_post_surgical(patient_id))
+
+
+# ── Occupational Therapist (OT) endpoints ────────────────────────────
+# Real data: BARTHEL (24 records) + MOCA + MMSE + seizure_diary + medications + patients
+
+@app.get("/api/ot")
+async def ot_dashboard(patient_id: str = None):
+    """Full OT dashboard: ADL/IADL + Fall Risk + Return-to-Work + Cognitive-Functional."""
+    import scripts.ot_module as ot
+    return _json_safe(ot.full_dashboard(patient_id))
+
+
+@app.get("/api/ot/adl-assessment")
+async def ot_adl(patient_id: str = None):
+    """ADL/IADL assessment: Barthel Index per-domain breakdown with OT recommendations."""
+    import scripts.ot_module as ot
+    return _json_safe(ot.adl_assessment(patient_id))
+
+
+@app.get("/api/ot/fall-risk")
+async def ot_fall_risk(patient_id: str = None):
+    """Home Safety / Fall Risk: seizure injuries + Barthel mobility + medication sedation."""
+    import scripts.ot_module as ot
+    return _json_safe(ot.fall_risk_assessment(patient_id))
+
+
+@app.get("/api/ot/return-to-work")
+async def ot_rtw(patient_id: str = None):
+    """Return-to-Work Planner: composite score (functional + seizure control + cognitive)."""
+    import scripts.ot_module as ot
+    return _json_safe(ot.return_to_work(patient_id))
+
+
+@app.get("/api/ot/cognitive-function")
+async def ot_cognitive(patient_id: str = None):
+    """Cognitive-Function OT: MoCA + MMSE with OT-specific domain mapping and interventions."""
+    import scripts.ot_module as ot
+    return _json_safe(ot.cognitive_function_ot(patient_id))
 
 
 if __name__ == "__main__":

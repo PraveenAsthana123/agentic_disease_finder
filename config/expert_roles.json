@@ -276,7 +276,7 @@
         {
           "name": "ADL/IADL Assessment",
           "ai_feature": "AI scoring",
-          "status": "partial",
+          "status": "built",
           "steps": [
             "Barthel Index (live)",
             "Katz/Lawton IADL",
@@ -287,12 +287,16 @@
             "Self-report vs observed",
             "Fluctuating capacity (post-ictal)",
             "Environmental factors"
+          ],
+          "endpoints": [
+            "/api/ot",
+            "/api/ot/adl-assessment"
           ]
         },
         {
           "name": "Home Safety / Fall Risk",
           "ai_feature": "AI risk checklist",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "Seizure-risk home audit",
             "Morse Fall Scale",
@@ -303,12 +307,15 @@
             "Self-reported environment",
             "Seizure unpredictability",
             "Cost of modifications"
+          ],
+          "endpoints": [
+            "/api/ot/fall-risk"
           ]
         },
         {
           "name": "Return-to-Work Planner",
           "ai_feature": "RTW prediction",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "Integrate seizure control + cognition",
             "Workplace accommodation",
@@ -319,12 +326,15 @@
             "Driving-law thresholds",
             "Employer disclosure",
             "Cognitive-job fit"
+          ],
+          "endpoints": [
+            "/api/ot/return-to-work"
           ]
         },
         {
           "name": "Cognitive-Function OT",
           "ai_feature": "Cognition analytics",
-          "status": "planned",
+          "status": "built",
           "steps": [
             "Executive/attention screen",
             "Compensatory strategies",
@@ -335,6 +345,9 @@
             "Overlaps neuropsych",
             "AED cognitive effects",
             "Measuring real-world transfer"
+          ],
+          "endpoints": [
+            "/api/ot/cognitive-function"
           ]
         }
       ]
