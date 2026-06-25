@@ -981,6 +981,16 @@ async def eeg_sleep_architecture(hypnogram: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/montage-comparison")
+async def eeg_montage_comparison(file: str = None):
+    """Montage Comparison — same EEG under referential / CAR / bipolar montages with band-power contrast."""
+    import scripts.montage_compare as mc
+    key = f"montage:{file}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(mc.compare(file))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
@@ -2329,6 +2339,41 @@ async def neuro_scales_adl_definitions():
     for Katz ADL and Lawton IADL. For frontend rendering of scale info panels."""
     import scripts.neuro_scales_adl as adl
     return _json_safe(adl.scale_definitions())
+
+
+# ─── Neuro AI Ecosystem: Glasgow Coma Scale (GCS) ────────────────────
+
+@app.get("/api/neuro-scales/gcs")
+async def neuro_scales_gcs_dashboard(patient_id: str = None):
+    """GCS dashboard — Glasgow Coma Scale (E+V+M, 3-15) for one patient
+    or all patients. Scores derived from REAL Barthel, cognition, seizure
+    diary, and medication data in clinical.db."""
+    import scripts.neuro_scales_gcs as gcs
+    return _json_safe(gcs.gcs_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/gcs/detail")
+async def neuro_scales_gcs_detail(patient_id: str):
+    """GCS detail — Eye (1-4), Verbal (1-5), Motor (1-6) component
+    breakdown + pupil reactivity + GCS-P score for a single patient."""
+    import scripts.neuro_scales_gcs as gcs
+    return _json_safe(gcs.gcs_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/gcs/trend")
+async def neuro_scales_gcs_trend(patient_id: str):
+    """GCS trend — 7-day modeled trajectory based on seizure burden and
+    sedation profile. For serial monitoring visualization."""
+    import scripts.neuro_scales_gcs as gcs
+    return _json_safe(gcs.gcs_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/gcs/definitions")
+async def neuro_scales_gcs_definitions():
+    """Scale definitions — GCS component descriptions, severity thresholds,
+    pupil reactivity scoring, and epilepsy-specific clinical context."""
+    import scripts.neuro_scales_gcs as gcs
+    return _json_safe(gcs.scale_definitions())
 
 
 if __name__ == "__main__":
