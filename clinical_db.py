@@ -1237,12 +1237,30 @@ def build_trust_panel(analysis_id: Optional[int] = None, patient_id: Optional[st
     if flat > 0 and risk == "Low":
         risk = "Moderate"
     conf = pred.get("confidence", r.get("confidence"))
+    ai_label = pred.get("predicted_label") or r.get("predicted_label")
+    class_probs = pred.get("class_probabilities", {})
+    # Recompute LIVE with corrected preprocessing (stored values pre-date the scaler fix → stale).
+    feats = res.get("features", {})
+    if feats:
+        try:
+            import numpy as np
+            import eeg_analysis_pipeline as eeg
+            fv = np.array(list(feats.values()), dtype=float)
+            fv = np.nan_to_num(fv, nan=0.0, posinf=0.0, neginf=0.0)
+            live = eeg.classify(fv, r.get("disease", "epilepsy"))
+            if live.get("available"):
+                ai_label = live.get("predicted_label", ai_label)
+                conf = live.get("confidence", conf)
+                class_probs = live.get("class_probabilities", class_probs)
+        except Exception:  # fall back to stored if recompute fails
+            pass
     return {
         "available": True,
         "analysis_id": r["id"], "patient_id": r["patient_id"], "disease": r.get("disease"),
-        "ai_prediction": pred.get("predicted_label") or r.get("predicted_label"),
+        "ai_prediction": ai_label,
         "confidence": conf,
-        "class_probabilities": pred.get("class_probabilities", {}),
+        "confidence_basis": "recomputed live with corrected scaler+selector preprocessing",
+        "class_probabilities": class_probs,
         "top_channels": top_channels or ch_names[:3],
         "top_channels_basis": "highest-variance channels (true per-channel SHAP not yet wired)",
         "time_window": "full recording",

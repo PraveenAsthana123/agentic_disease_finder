@@ -40,7 +40,7 @@ def explain(analysis_id=None, patient_id=None, top_n: int = 8) -> dict:
         return {"available": False, "error": "No analysis with feature vector found."}
 
     npz_path = ROOT / "data" / disease.lower() / "sample" / f"{disease.lower()}_sample_100.npz"
-    model_path = ROOT / "saved_models" / f"{disease.lower()}_model.joblib"
+    model_path = ROOT / "models" / f"{disease.lower()}_model.joblib"   # SAME bundle classify() uses (eeg.MODELS_DIR)
     if not npz_path.exists() or not model_path.exists():
         return {"available": False, "error": f"Missing reference samples or model for '{disease}'."}
 
@@ -58,11 +58,21 @@ def explain(analysis_id=None, patient_id=None, top_n: int = 8) -> dict:
     if instance.shape[0] != getattr(model, "n_features_in_", instance.shape[0]):
         return {"available": False, "error": f"Feature mismatch: {instance.shape[0]} vs model {model.n_features_in_}"}
 
-    proba = model.predict_proba(instance.reshape(1, -1))[0]
+    scaler = bundle.get("scaler"); selector = bundle.get("selector")
+
+    def predict_fn(raw):                 # same transform chain as eeg_analysis_pipeline.classify()
+        Xq = np.asarray(raw, dtype=float)
+        if scaler is not None:
+            Xq = scaler.transform(Xq)
+        if selector is not None:
+            Xq = selector.transform(Xq)
+        return model.predict_proba(Xq)
+
+    proba = predict_fn(instance.reshape(1, -1))[0]
     pred_idx = int(np.argmax(proba))
 
-    bg = shap.kmeans(X_bg, 15)
-    expl = shap.KernelExplainer(model.predict_proba, bg, silent=True)
+    bg = shap.kmeans(X_bg, 15)           # X_bg = raw training samples (model's native input space)
+    expl = shap.KernelExplainer(predict_fn, bg, silent=True)
     sv = expl.shap_values(instance.reshape(1, -1), nsamples=120, silent=True)
     if isinstance(sv, list):
         vals = np.asarray(sv[pred_idx]).reshape(-1)

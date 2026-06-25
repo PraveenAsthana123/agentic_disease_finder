@@ -332,6 +332,13 @@ def classify(features: np.ndarray, disease: str) -> dict:
         return {"available": False, "reason": f"Feature mismatch: got {len(features)}, model expects {n_expected}"}
 
     X = features.reshape(1, -1)
+    # CRITICAL: the model was trained on scaler.fit_transform → selector.fit_transform
+    # (see train_aggressive_final.py). Inference MUST apply the same transforms or
+    # confidence is wrong (raw-input predictions are inflated). Apply if present.
+    if bundle.get("scaler") is not None:
+        X = bundle["scaler"].transform(X)
+    if bundle.get("selector") is not None:
+        X = bundle["selector"].transform(X)
     pred = int(model.predict(X)[0])
     proba = model.predict_proba(X)[0].tolist() if hasattr(model, "predict_proba") else None
     confidence = round(float(max(proba)), 4) if proba else None
@@ -342,6 +349,7 @@ def classify(features: np.ndarray, disease: str) -> dict:
         "predicted_index": pred,
         "confidence": confidence,
         "class_probabilities": {class_names[i]: round(p, 4) for i, p in enumerate(proba)} if proba else None,
+        "preprocessing_applied": [k for k in ("scaler", "selector") if bundle.get(k) is not None],
         "model_metrics": bundle.get("metrics", {}),
         "model_trained": bundle.get("training_date", "unknown"),
         "note": "Demonstrator model trained on reference feature samples. Validate before clinical use (see leakage caveat).",
