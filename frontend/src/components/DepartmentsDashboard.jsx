@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -651,6 +651,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'model_perf' && <ModelPerformancePanel />}
         {activeSub === 'data_manager' && <DataManagerPanel />}
         {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
+        {activeSub === 'cognitive_tests' && <CognitiveTestsPanel />}
         {activeSub === 'patient_compare' && <PatientComparePanel />}
         {activeSub === 'expert_roles' && <ExpertRolesPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
@@ -4690,6 +4691,122 @@ function SeizureTimelinePanel() {
             ))}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function CognitiveTestsPanel() {
+  const [d, setD] = useState(null)
+  const [expanded, setExpanded] = useState(null)
+  const [scoreInput, setScoreInput] = useState({})
+  const [scoreResult, setScoreResult] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/cognitive-tests`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  if (!d.available) return <div style={card}><div style={{ color: '#64748b' }}>Cognitive tests module unavailable.</div></div>
+  const domainColors = { 'Executive Function / Inhibition': '#7c3aed', 'Processing Speed / Visual Scanning': '#0ea5e9', 'Executive Function / Set-Shifting': '#6366f1', 'Working Memory / Attention': '#f59e0b', 'Executive Function / Cognitive Flexibility': '#8b5cf6', 'Working Memory / Sustained Attention': '#f97316', 'Response Inhibition / Impulsivity': '#ef4444', 'Sustained Attention / Vigilance': '#14b8a6', 'Visuospatial / Executive / Semantic Memory': '#ec4899', 'Verbal Learning & Memory': '#22c55e', 'Language / Executive Function': '#06b6d4' }
+  const handleScore = (testId) => {
+    axios.post(`${API_URL}/cognitive-tests/score`, { test_id: testId, raw: scoreInput[testId] || {} })
+      .then(r => setScoreResult(r.data)).catch(() => setScoreResult({ error: 'Scoring failed' }))
+  }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #7c3aed' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧠 Digital Cognitive Tests <span style={{ fontSize: 12, color: '#64748b' }}>— {d.n_tests} standardized tests</span></h3>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 10 }}>
+          {[['Tests', d.n_tests], ['Domains', d.domains.length], ['Battery time', `~${d.total_duration_min} min`], ['Saved results', d.saved_results_count]].map(([k, v]) => (
+            <div key={k} style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>{k}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 11, color: '#94a3b8' }}>{d.source}</div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Cognitive domains covered</h4>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {d.domains.map(dm => (
+            <span key={dm} style={{ padding: '4px 10px', borderRadius: 12, fontSize: 11, fontWeight: 600, background: (domainColors[dm] || '#94a3b8') + '18', color: domainColors[dm] || '#475569', border: `1px solid ${domainColors[dm] || '#cbd5e1'}40` }}>{dm}</span>
+          ))}
+        </div>
+      </div>
+      {d.tests.map(t => (
+        <div key={t.id} style={{ ...card, borderLeft: `3px solid ${domainColors[t.domain] || '#94a3b8'}`, cursor: 'pointer' }} onClick={() => setExpanded(expanded === t.id ? null : t.id)}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h4 style={{ marginTop: 0, marginBottom: 4, color: '#0f172a' }}>{t.name} <span style={{ fontSize: 11, color: '#64748b' }}>~{t.duration_min} min</span></h4>
+              <div style={{ fontSize: 12, color: '#475569' }}>{t.description}</div>
+            </div>
+            <span style={{ padding: '3px 8px', borderRadius: 8, fontSize: 10, fontWeight: 600, background: (domainColors[t.domain] || '#94a3b8') + '18', color: domainColors[t.domain] || '#475569', whiteSpace: 'nowrap' }}>{t.domain}</span>
+          </div>
+          {expanded === t.id && (
+            <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid #e5e7eb' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Metrics</div>
+                  <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>{t.metrics.map(m => <span key={m} style={{ padding: '2px 6px', borderRadius: 4, fontSize: 10, background: '#f1f5f9', fontFamily: 'monospace' }}>{m}</span>)}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Clinical use</div>
+                  <div style={{ fontSize: 12, color: '#0f172a' }}>{t.clinical_use}</div>
+                </div>
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Scoring</div>
+                <div style={{ fontSize: 12, color: '#0f172a' }}>{t.scoring}</div>
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Normative data</div>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                  {Object.entries(t.norms).map(([k, v]) => (
+                    <div key={k} style={{ padding: '4px 8px', borderRadius: 6, background: '#ecfdf5', fontSize: 11 }}>
+                      <span style={{ color: '#475569' }}>{k.replace(/_/g, ' ')}: </span>
+                      <span style={{ fontWeight: 600, color: '#0f172a' }}>{typeof v === 'object' ? `μ=${v.mean}, σ=${v.sd}` : v}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ marginTop: 12, padding: 10, background: '#f8fafc', borderRadius: 8, border: '1px solid #e5e7eb' }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 6 }}>Quick score (enter raw values)</div>
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+                  {t.metrics.slice(0, 4).map(m => (
+                    <input key={m} type="number" placeholder={m} style={{ width: 110, padding: '4px 6px', border: '1px solid #cbd5e1', borderRadius: 4, fontSize: 11 }}
+                      onChange={e => setScoreInput(prev => ({ ...prev, [t.id]: { ...(prev[t.id] || {}), [m]: parseFloat(e.target.value) || 0 } }))}
+                      onClick={e => e.stopPropagation()} />
+                  ))}
+                  <button onClick={e => { e.stopPropagation(); handleScore(t.id) }} style={{ padding: '4px 12px', borderRadius: 6, border: 'none', background: '#7c3aed', color: '#fff', fontSize: 11, cursor: 'pointer' }}>Score</button>
+                </div>
+                {scoreResult && scoreResult.test_id === t.id && (
+                  <div style={{ marginTop: 8, padding: 8, borderRadius: 6, background: scoreResult.severity === 'impaired' ? '#fef2f2' : scoreResult.severity === 'borderline' ? '#fffbeb' : '#f0fdf4', border: `1px solid ${scoreResult.severity === 'impaired' ? '#fecaca' : scoreResult.severity === 'borderline' ? '#fde68a' : '#bbf7d0'}` }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: scoreResult.severity === 'impaired' ? '#dc2626' : scoreResult.severity === 'borderline' ? '#d97706' : '#16a34a' }}>{scoreResult.severity?.toUpperCase()}</div>
+                    {scoreResult.flags?.map((f, i) => <div key={i} style={{ fontSize: 11, color: '#0f172a', marginTop: 2 }}>{f}</div>)}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+      {d.saved_results_count > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Recent saved results ({d.saved_results_count})</h4>
+          <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+              <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Patient</th><th style={cellTh}>Test</th><th style={cellTh}>Score</th><th style={cellTh}>Level</th><th style={cellTh}>Date</th></tr></thead>
+              <tbody>{d.saved_results.map((r, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={cellTd}>{r.patient_id}</td><td style={cellTd}>{r.instrument}</td>
+                  <td style={cellTd}>{r.score}/{r.max_score}</td><td style={cellTd}>{r.level}</td>
+                  <td style={cellTd}>{r.created_at}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        </div>
+      )}
+      <div style={{ ...card, background: '#fffbeb', borderLeft: '3px solid #f59e0b' }}>
+        <div style={{ fontSize: 11, color: '#92400e' }}>{d.note}</div>
       </div>
     </div>
   )

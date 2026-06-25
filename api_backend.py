@@ -732,6 +732,22 @@ async def seizure_timeline():
     return _json_safe(st.build())
 
 
+@app.get("/api/cognitive-tests")
+async def cognitive_tests():
+    """Digital cognitive test catalog (Stroop, Trail Making, Digit Span, WCST, N-Back, Go/No-Go, CPT, Clock Drawing, RAVLT, Verbal Fluency) + scoring + patient results."""
+    import scripts.cognitive_tests as ct
+    return _json_safe(ct.build())
+
+
+@app.post("/api/cognitive-tests/score")
+async def cognitive_test_score(body: dict = Body(...)):
+    """Score a cognitive test result against published norms. Body: {test_id, raw: {metric: value}}."""
+    import scripts.cognitive_tests as ct
+    test_id = body.get("test_id", "")
+    raw = body.get("raw", {})
+    return ct.score_result(test_id, raw)
+
+
 @app.get("/api/drift")
 async def drift():
     """Drift monitor (PSI+KS): training reference vs live extractor features. Detects train/serve skew."""

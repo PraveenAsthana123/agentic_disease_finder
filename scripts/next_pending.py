@@ -9,16 +9,14 @@ ROOT = Path(__file__).resolve().parent.parent
 # Curated buildable queue (highest value first). Blocked/gated items excluded by design.
 BUILDABLE = [
     {"id": "ictal_interictal", "title": "Ictal/interictal retrain (same-setup, removes dataset confound)", "value": "P0", "effort": "high"},
-    {"id": "seizure_timeline", "title": "Seizure timeline from CHB-MIT summary/.seizures annotations", "value": "P0", "effort": "med"},
-    {"id": "spike_overlay", "title": "Spike/sharp-wave overlay (threshold on filtered signal)", "value": "P0", "effort": "med"},
-    {"id": "lateralization", "title": "Lateralization dashboard (L/R hemisphere asymmetry index)", "value": "P1", "effort": "med"},
-    {"id": "patient_compare", "title": "Patient Comparison UI (2 patients EEG+assessments side-by-side)", "value": "P1", "effort": "med"},
-    {"id": "cognitive_tests", "title": "Digital cognitive tests (Stroop/Digit-Span/Trail-Making)", "value": "P1", "effort": "med"},
     {"id": "expert_pharmacist", "title": "Expert module: Clinical Pharmacist (meds table is real)", "value": "P1", "effort": "med"},
     {"id": "expert_nurse", "title": "Expert module: Epilepsy Nurse (seizure-diary analytics exist)", "value": "P1", "effort": "med"},
     {"id": "cdm_label_val", "title": "CDM: Label/Annotation validation (κ when multi-rater)", "value": "P2", "effort": "med"},
     {"id": "expert_more", "title": "Expert modules: SLP / OT / Dietitian / Psychologist / Social Worker / Coordinator", "value": "P2", "effort": "high"},
 ]
+# Already built (removed from queue):
+# seizure_timeline, spike_overlay (in eeg_viz), lateralization (in eeg_viz),
+# patient_compare, cognitive_tests (endpoint + panel + scoring)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
