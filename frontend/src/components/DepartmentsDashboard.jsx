@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -648,6 +648,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'eeg_viz' && <EegVizPanel />}
         {activeSub === 'drift' && <DriftPanel />}
         {activeSub === 'data_manager' && <DataManagerPanel />}
+        {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4389,6 +4390,56 @@ function DriftPanel() {
                 <td style={cellTd}>{f.ks_stat}</td>
                 <td style={cellTd}>{f.ks_p}</td>
                 <td style={{ ...cellTd, fontWeight: 600, color: scol[f.severity] }}>{f.severity}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SeizureTimelinePanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/seizure-timeline`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  if (!d.available) return <div style={card}><div style={{ color: '#64748b' }}>No CHB-MIT annotations found.</div></div>
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #dc2626' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>⏱️ Seizure Timeline <span style={{ fontSize: 12, color: '#64748b' }}>— {d.source}</span></h3>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          {[['Total seizures', d.total_seizures], ['Subjects', d.n_subjects], ['Total minutes', d.total_seizure_minutes], ['Mean (s)', d.mean_seizure_sec], ['Range (s)', `${d.min_seizure_sec}–${d.max_seizure_sec}`]].map(([k, v]) => (
+            <div key={k} style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>{k}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 8 }}>{d.note}</div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Seizure burden by subject</h4>
+        <ResponsiveContainer width="100%" height={200}>
+          <BarChart data={d.by_subject}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis dataKey="subject" tick={{ fontSize: 11 }} />
+            <YAxis tick={{ fontSize: 11 }} />
+            <Tooltip />
+            <Bar dataKey="n_seizures" fill="#dc2626" name="seizures" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Seizure events (top by duration)</h4>
+        <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+          <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Subject</th><th style={cellTh}>File</th><th style={cellTh}>Start (s)</th><th style={cellTh}>End (s)</th><th style={cellTh}>Duration (s)</th></tr></thead>
+            <tbody>{d.events.slice(0, 20).map((e, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={cellTd}>{e.subject}</td><td style={{ ...cellTd, fontFamily: 'monospace' }}>{e.file}</td>
+                <td style={cellTd}>{e.start_sec}</td><td style={cellTd}>{e.end_sec}</td>
+                <td style={{ ...cellTd, fontWeight: 600, color: '#dc2626' }}>{e.duration_sec}</td>
               </tr>
             ))}</tbody>
           </table>

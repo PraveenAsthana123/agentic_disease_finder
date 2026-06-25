@@ -689,6 +689,13 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
+@app.get("/api/seizure-timeline")
+async def seizure_timeline():
+    """Real seizure timeline from CHB-MIT ground-truth annotations (per-subject events + burden)."""
+    import scripts.seizure_timeline as st
+    return _json_safe(st.build())
+
+
 @app.get("/api/drift")
 async def drift():
     """Drift monitor (PSI+KS): training reference vs live extractor features. Detects train/serve skew."""
