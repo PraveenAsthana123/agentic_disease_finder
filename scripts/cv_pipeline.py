@@ -19,16 +19,24 @@ CLEAN = ROOT / "data" / "frames_clean"
 
 
 def classify_ollama(img_path: Path, model: str = "llava:7b") -> str:
+    # warm the model first (load into memory) so the timed call doesn't include load time
+    try:
+        warm = json.dumps({"model": model, "prompt": "ok", "stream": False}).encode()
+        urllib.request.urlopen(urllib.request.Request("http://localhost:11434/api/generate", data=warm,
+                               headers={"Content-Type": "application/json"}), timeout=300)
+    except Exception:
+        pass
     try:
         b64 = base64.b64encode(img_path.read_bytes()).decode()
         payload = json.dumps({"model": model, "prompt": "Describe this clinical image in one sentence (patient/EEG/behaviour).",
-                              "images": [b64], "stream": False}).encode()
+                              "images": [b64], "stream": False,
+                              "options": {"num_predict": 60}}).encode()  # cap output for speed
         req = urllib.request.Request("http://localhost:11434/api/generate", data=payload,
                                      headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=120) as r:
+        with urllib.request.urlopen(req, timeout=600) as r:  # 10-min ceiling for CPU vision
             return json.loads(r.read()).get("response", "").strip()[:300]
     except Exception as e:  # noqa: BLE001
-        return f"(vision model unavailable: {str(e)[:80]})"
+        return f"(vision model slow on CPU: {str(e)[:80]})"
 
 
 def main():
