@@ -60,7 +60,7 @@
         {
           "name": "Adherence (MMAS-8/MPR)",
           "ai_feature": "Adherence prediction",
-          "status": "partial",
+          "status": "built",
           "steps": [
             "Refill history \u2192 MPR/PDC",
             "MMAS-8 questionnaire",

@@ -364,15 +364,194 @@ def pregnancy_safety(patient_id: str = None):
 
 
 # ════════════════════════════════════════════════════════════════════════
-# 6. Full Dashboard (all modules combined)
+# 6. Medication Adherence (MMAS-8 proxy + MPR heuristic)
+# ════════════════════════════════════════════════════════════════════════
+def adherence_assessment(patient_id: str = None):
+    """
+    Medication adherence scoring per patient using real medication + seizure data.
+
+    MMAS-8 proxy: scored from observable risk factors (polypharmacy complexity,
+    BID/TID burden, known ADR burden, seizure-medication gap correlation).
+    Range 0-8: 8=high adherence, 6-7=medium, <6=low.
+
+    MPR heuristic: Medication Possession Ratio approximated from prescription
+    record density. MPR >= 0.80 = adherent.
+
+    Cross-references seizure_diary to flag seizure-cluster events that
+    correlate with medication gaps (no recent med record = possible non-adherence).
+    """
+    conn = _connect()
+    cursor = conn.cursor()
+
+    # Get meds
+    if patient_id:
+        cursor.execute("SELECT * FROM medications WHERE patient_id = ?", (patient_id,))
+    else:
+        cursor.execute("SELECT * FROM medications")
+    med_rows = [dict(r) for r in cursor.fetchall()]
+
+    # Get seizure diary entries
+    if patient_id:
+        cursor.execute("SELECT * FROM seizure_diary WHERE patient_id = ?", (patient_id,))
+    else:
+        cursor.execute("SELECT * FROM seizure_diary")
+    diary_rows = [dict(r) for r in cursor.fetchall()]
+    conn.close()
+
+    # Group by patient
+    from collections import defaultdict
+    meds_by_patient = defaultdict(list)
+    for row in med_rows:
+        parsed = _parse_med_record(row)
+        meds_by_patient[parsed["patient_id"]].append(parsed)
+
+    diary_by_patient = defaultdict(list)
+    for row in diary_rows:
+        diary_by_patient[row["patient_id"]].append(row)
+
+    results = []
+    for pid, meds in meds_by_patient.items():
+        unique_drugs = list({m["drug_name"] for m in meds})
+        drug_count = len(unique_drugs)
+        total_records = len(meds)
+
+        # --- MPR heuristic ---
+        # With limited refill data, approximate from record density.
+        # More records per drug = more engagement with pharmacy.
+        records_per_drug = total_records / max(drug_count, 1)
+        mpr_estimate = min(1.0, records_per_drug * 0.5)  # 2+ records/drug => MPR ~1.0
+        mpr_adherent = mpr_estimate >= 0.80
+
+        # --- MMAS-8 proxy scoring (8 risk-factor questions) ---
+        # Each factor scored 0 (risk present) or 1 (risk absent).
+        mmas_score = 8  # Start perfect, deduct for risk factors
+
+        # Q1: Polypharmacy complexity (>= 3 ASMs = higher non-adherence risk)
+        if drug_count >= 3:
+            mmas_score -= 1
+
+        # Q2: High-frequency dosing (TID or more = harder to maintain)
+        high_freq = any(m["frequency"] in ("TID", "QID") for m in meds)
+        if high_freq:
+            mmas_score -= 1
+
+        # Q3: Known ADR burden (drugs with >= 4 common ADRs)
+        adr_burden = 0
+        for d in unique_drugs:
+            info = ASM_CATALOG.get(d, {})
+            if len(info.get("common_adr", [])) >= 4:
+                adr_burden += 1
+        if adr_burden >= 2:
+            mmas_score -= 1
+
+        # Q4: Pregnancy category D or X drug present (may cause fear-based non-adherence)
+        preg_risk = any(ASM_CATALOG.get(d, {}).get("pregnancy_cat") in ("D", "X") for d in unique_drugs)
+        if preg_risk:
+            mmas_score -= 1
+
+        # Q5: Seizure events despite medication (may indicate gaps)
+        patient_seizures = diary_by_patient.get(pid, [])
+        seizure_count = len(patient_seizures)
+        if seizure_count >= 3:
+            mmas_score -= 1
+
+        # Q6: Single medication record only (no refill engagement)
+        if total_records <= 1:
+            mmas_score -= 1
+
+        # Q7: No frequency documented (ambiguous dosing instruction)
+        no_freq = any(m["frequency"] == "Unknown" for m in meds)
+        if no_freq:
+            mmas_score -= 1
+
+        # Q8: Drug interaction present (complex regimen = adherence challenge)
+        interaction_count = 0
+        for i, d1 in enumerate(unique_drugs):
+            for d2 in unique_drugs[i+1:]:
+                pair = tuple(sorted([d1, d2]))
+                if pair in INTERACTIONS:
+                    interaction_count += 1
+        if interaction_count >= 1:
+            mmas_score -= 1
+
+        mmas_score = max(0, mmas_score)
+        if mmas_score >= 8:
+            mmas_level = "high"
+        elif mmas_score >= 6:
+            mmas_level = "medium"
+        else:
+            mmas_level = "low"
+
+        # --- Seizure-gap correlation ---
+        # Flag if seizures happened and medication records are sparse
+        gap_flag = seizure_count > 0 and total_records <= drug_count
+        coaching_notes = []
+        if mmas_level == "low":
+            coaching_notes.append("Low adherence risk — consider pillbox/alarm reminders")
+        if gap_flag:
+            coaching_notes.append(f"Seizure events ({seizure_count}) with sparse med records — possible non-adherence")
+        if high_freq:
+            coaching_notes.append("High-frequency dosing (TID+) — consider extended-release formulation")
+        if drug_count >= 3:
+            coaching_notes.append(f"Polypharmacy ({drug_count} ASMs) — simplification review recommended")
+        if no_freq:
+            coaching_notes.append("Missing frequency on some prescriptions — clarify dosing instructions")
+
+        results.append({
+            "patient_id": pid,
+            "medications": unique_drugs,
+            "drug_count": drug_count,
+            "total_med_records": total_records,
+            "mpr_estimate": round(mpr_estimate, 2),
+            "mpr_adherent": mpr_adherent,
+            "mmas8_proxy_score": mmas_score,
+            "mmas8_level": mmas_level,
+            "mmas8_risk_factors": {
+                "polypharmacy": drug_count >= 3,
+                "high_freq_dosing": high_freq,
+                "high_adr_burden": adr_burden >= 2,
+                "pregnancy_risk_drug": preg_risk,
+                "frequent_seizures": seizure_count >= 3,
+                "single_record_only": total_records <= 1,
+                "missing_frequency": no_freq,
+                "drug_interactions": interaction_count >= 1,
+            },
+            "seizure_count": seizure_count,
+            "seizure_gap_flag": gap_flag,
+            "coaching_notes": coaching_notes,
+        })
+
+    # Summary stats
+    high_adh = sum(1 for r in results if r["mmas8_level"] == "high")
+    med_adh = sum(1 for r in results if r["mmas8_level"] == "medium")
+    low_adh = sum(1 for r in results if r["mmas8_level"] == "low")
+    gap_flagged = sum(1 for r in results if r["seizure_gap_flag"])
+
+    return {
+        "total_patients": len(results),
+        "summary": {
+            "high_adherence": high_adh,
+            "medium_adherence": med_adh,
+            "low_adherence": low_adh,
+            "seizure_gap_flagged": gap_flagged,
+            "avg_mmas8": round(sum(r["mmas8_proxy_score"] for r in results) / max(len(results), 1), 1),
+            "avg_mpr": round(sum(r["mpr_estimate"] for r in results) / max(len(results), 1), 2),
+        },
+        "results": results,
+    }
+
+
+# ════════════════════════════════════════════════════════════════════════
+# 7. Full Dashboard (all modules combined)
 # ════════════════════════════════════════════════════════════════════════
 def full_dashboard(patient_id: str = None):
-    """Combined pharmacist dashboard — all 5 modules for the patient(s)."""
+    """Combined pharmacist dashboard — all 6 modules for the patient(s)."""
     recon = medication_reconciliation(patient_id)
     interactions = drug_interaction_check(patient_id)
     tdm = therapeutic_drug_monitoring(patient_id)
     adr = adr_monitoring(patient_id)
     preg = pregnancy_safety(patient_id)
+    adh = adherence_assessment(patient_id)
 
     # Summary stats
     total_patients = recon["total_patients"]
@@ -381,6 +560,7 @@ def full_dashboard(patient_id: str = None):
     major_interactions = sum(r["severity_summary"]["major"] for r in interactions["results"])
     total_contraindicated = sum(r["contraindicated_count"] for r in preg["results"])
     total_overlapping_adrs = sum(len(r["overlapping_adrs"]) for r in adr["results"])
+    low_adherence = adh["summary"]["low_adherence"]
 
     return {
         "module": "Clinical Pharmacist (Epilepsy)",
@@ -391,6 +571,7 @@ def full_dashboard(patient_id: str = None):
             "major_interactions": major_interactions,
             "contraindicated_in_pregnancy": total_contraindicated,
             "overlapping_adr_count": total_overlapping_adrs,
+            "low_adherence_patients": low_adherence,
             "asm_catalog_size": len(ASM_CATALOG),
             "interaction_kb_size": len(INTERACTIONS),
         },
@@ -399,4 +580,5 @@ def full_dashboard(patient_id: str = None):
         "tdm": tdm,
         "adr": adr,
         "pregnancy_safety": preg,
+        "adherence": adh,
     }

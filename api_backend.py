@@ -1842,6 +1842,14 @@ async def pharmacist_pregnancy(patient_id: str = None):
     return _json_safe(pharm.pregnancy_safety(patient_id))
 
 
+@app.get("/api/pharmacist/adherence")
+async def pharmacist_adherence(patient_id: str = None):
+    """Medication adherence: MMAS-8 proxy score + MPR heuristic + seizure-gap correlation.
+    Real data from medications + seizure_diary tables in clinical.db."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.adherence_assessment(patient_id))
+
+
 @app.get("/api/nurse")
 async def nurse_dashboard(patient_id: str = None):
     """Epilepsy Nurse Specialist (ENS) — full dashboard: seizure diary analysis, adherence coaching,
