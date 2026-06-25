@@ -114,8 +114,42 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
     per_channel_alpha = [{"channel": ch_names[i], "alpha_rel": round(float(pch[i, am].sum() / tot[i]), 4)}
                          for i in range(n_ch)]
 
+    # ── Lateralization: L/R hemisphere band-power asymmetry (10-20: odd=Left, even=Right) ──
+    import re as _re
+    def _hemi(nm):
+        m = _re.search(r"(\d+)", _clean_name(nm) or nm)
+        if not m:
+            return None
+        return "L" if int(m.group(1)) % 2 == 1 else "R"
+    lat = None
+    try:
+        bp_ch, _ = sps.welch(data, fs=sf, nperseg=int(min(sf * 2, data.shape[1])))
+        fb, pb = bp_ch, _
+        f2, p2 = sps.welch(data, fs=sf, nperseg=int(min(sf * 2, data.shape[1])))
+        bands_idx = {b: (f2 >= lo) & (f2 < hi) for b, (lo, hi) in BANDS.items()}
+        L = [i for i in range(n_ch) if _hemi(ch_names[i]) == "L"]
+        R = [i for i in range(n_ch) if _hemi(ch_names[i]) == "R"]
+        if L and R:
+            rows = []
+            for b, idx in bands_idx.items():
+                lp = float(p2[L][:, idx].sum()); rp = float(p2[R][:, idx].sum())
+                ai = round((lp - rp) / (lp + rp + 1e-12), 4)  # +ve = left-dominant
+                rows.append({"band": b, "left": round(lp, 4), "right": round(rp, 4), "asymmetry_index": ai,
+                             "lateralization": "Left" if ai > 0.1 else "Right" if ai < -0.1 else "Symmetric"})
+            overall = round(sum(r["asymmetry_index"] for r in rows) / len(rows), 4)
+            lat = {"available": True, "n_left": len(L), "n_right": len(R), "by_band": rows,
+                   "overall_index": overall,
+                   "focus": "Left-hemisphere" if overall > 0.1 else "Right-hemisphere" if overall < -0.1 else "Symmetric",
+                   "basis": "(L-R)/(L+R) band power; odd electrodes=Left, even=Right; +ve=left-dominant",
+                   "note": "Screening asymmetry only — not seizure localization (needs ictal recording + clinician)."}
+        else:
+            lat = {"available": False, "note": "Bipolar/non-standard montage — hemisphere split needs monopolar 10-20."}
+    except Exception as _e:
+        lat = {"available": False, "note": f"lateralization failed: {str(_e)[:60]}"}
+
     return {
         "available": True, "file": p.name, "sfreq": sf, "n_channels": n_ch,
+        "lateralization": lat,
         "seconds_analyzed": round(min(seconds, raw.times[-1]), 1),
         "channels": ch_names,
         "psd_curve": psd_curve,

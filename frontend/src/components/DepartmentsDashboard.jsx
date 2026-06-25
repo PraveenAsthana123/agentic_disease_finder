@@ -4315,6 +4315,27 @@ function EegVizPanel() {
             <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spectrogram (P0) — time-frequency evolution</h4>
             <img src={v.spectrogram_png} alt="spectrogram" style={{ width: '100%', maxWidth: 640, borderRadius: 6, border: '1px solid #e5e7eb' }} />
           </div>
+          {v.lateralization?.available && (
+            <div style={card}>
+              <h4 style={{ marginTop: 0, color: '#0f172a' }}>Lateralization — L/R hemisphere asymmetry</h4>
+              <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 8 }}>
+                <div style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+                  <div style={{ fontSize: 11, color: '#475569' }}>Focus ({v.lateralization.n_left}L / {v.lateralization.n_right}R)</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>{v.lateralization.focus} <span style={{ fontSize: 12 }}>({v.lateralization.overall_index})</span></div>
+                </div>
+              </div>
+              <ResponsiveContainer width="100%" height={180}>
+                <BarChart data={v.lateralization.by_band}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="band" tick={{ fontSize: 11 }} />
+                  <YAxis tick={{ fontSize: 11 }} domain={[-1, 1]} />
+                  <Tooltip />
+                  <Bar dataKey="asymmetry_index" fill="#7c3aed" />
+                </BarChart>
+              </ResponsiveContainer>
+              <div style={{ fontSize: 11, color: '#94a3b8' }}>{v.lateralization.basis} · {v.lateralization.note}</div>
+            </div>
+          )}
           <div style={card}>
             <h4 style={{ marginTop: 0, color: '#0f172a' }}>10-20 Scalp Topomap (P0)</h4>
             {v.topomap_png

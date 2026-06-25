@@ -110,7 +110,7 @@
    "feature": "Asymmetry index",
    "why": "Focus detection",
    "priority": "P1",
-   "status": "planned"
+   "status": "built"
   },
   {
    "role": "Neurologist",
@@ -295,8 +295,8 @@
  ],
  "summary": {
   "total": 30,
-  "built": 13,
+  "built": 14,
   "partial": 7,
-  "planned": 10
+  "planned": 9
  }
 }
