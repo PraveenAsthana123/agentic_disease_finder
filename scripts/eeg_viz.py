@@ -123,8 +123,6 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
         return "L" if int(m.group(1)) % 2 == 1 else "R"
     lat = None
     try:
-        bp_ch, _ = sps.welch(data, fs=sf, nperseg=int(min(sf * 2, data.shape[1])))
-        fb, pb = bp_ch, _
         f2, p2 = sps.welch(data, fs=sf, nperseg=int(min(sf * 2, data.shape[1])))
         bands_idx = {b: (f2 >= lo) & (f2 < hi) for b, (lo, hi) in BANDS.items()}
         L = [i for i in range(n_ch) if _hemi(ch_names[i]) == "L"]
