@@ -387,7 +387,7 @@ async def analyze_upload(
             result = eeg.run_pipeline(tmp.name, disease, patient_id=patient_id or None)
             result["file"] = file.filename or Path(tmp.name).name
             if result.get("status") != "success":
-                return result
+                return _json_safe(result)  # strip NaN/Inf even on failure path
             if patient_id:
                 cdb.upsert_patient(patient_id, disease=disease, department=department)
             saved = cdb.save_analysis(result, department=department)

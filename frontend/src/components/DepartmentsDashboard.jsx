@@ -888,7 +888,7 @@ function DataPanel({ disease, dept }) {
             <span style={{ fontSize: 12, fontWeight: 700, color: '#475569' }}>🪵 Activity Log (per phase)</span>
             {log.length > 0 && <button onClick={() => setLog([])} style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>clear</button>}
           </div>
-          <div style={{ background: '#0f172a', borderRadius: 6, padding: 8, maxHeight: 180, overflow: 'auto', fontFamily: 'monospace', fontSize: 11 }}>
+          <div style={{ background: '#f1f5f9', color: '#334155', borderRadius: 6, padding: 8, maxHeight: 180, overflow: 'auto', fontFamily: 'monospace', fontSize: 11, border: '1px solid #e5e7eb' }}>
             {log.length === 0 && <div style={{ color: '#64748b' }}>Upload a file — each phase (select → POST → response → result) logs here.</div>}
             {log.map((l, i) => (
               <div key={i} style={{ color: l.level === 'err' ? '#f87171' : l.level === 'warn' ? '#fbbf24' : l.level === 'ok' ? '#4ade80' : '#93c5fd', marginBottom: 2 }}>
@@ -1929,7 +1929,7 @@ function TabScaffold({ tabId, label, dept, children }) {
           <button onClick={() => setShowAct(s => !s)} style={{ marginLeft: 'auto', fontSize: 11, padding: '3px 10px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>{showAct ? 'Hide' : 'Show'}</button>
         </div>
         {showAct && (
-          <div style={{ marginTop: 8, background: '#0f172a', borderRadius: 6, padding: 8, maxHeight: 200, overflow: 'auto', fontFamily: 'monospace', fontSize: 11 }}>
+          <div style={{ marginTop: 8, background: '#f1f5f9', color: '#334155', borderRadius: 6, padding: 8, maxHeight: 200, overflow: 'auto', fontFamily: 'monospace', fontSize: 11, border: '1px solid #e5e7eb' }}>
             {_activityLog.filter(a => a.tab === tabId).slice(0, 30).map((a, i) => (
               <div key={i} style={{ color: a.level === 'err' ? '#f87171' : a.level === 'warn' ? '#fbbf24' : a.level === 'ok' ? '#4ade80' : '#93c5fd', marginBottom: 2 }}>
                 <span style={{ color: '#64748b' }}>{a.t}</span> [{a.kind}] {a.detail}
@@ -3217,7 +3217,7 @@ function InterpretView({ disease }) {
       </div>
       <div style={card}>
         <h3 style={{ marginTop: 0, color: '#0f172a' }}>Extracted decision rules (human-readable)</h3>
-        <pre style={{ background: '#0f172a', color: '#cbd5e1', padding: 14, borderRadius: 8, overflow: 'auto', fontSize: 12, maxHeight: 320 }}>{d.rules_text}</pre>
+        <pre style={{ background: '#f1f5f9', color: '#334155', padding: 14, borderRadius: 8, overflow: 'auto', fontSize: 12, maxHeight: 320, border: '1px solid #e5e7eb' }}>{d.rules_text}</pre>
       </div>
     </div>
   )
