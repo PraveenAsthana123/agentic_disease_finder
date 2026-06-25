@@ -1031,6 +1031,16 @@ async def eeg_false_alarm(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/connectivity")
+async def eeg_connectivity(file: str = None, band: str = "alpha"):
+    """EEG Connectivity — pairwise spectral coherence (functional connectivity) + hub channels."""
+    import scripts.connectivity as conn
+    key = f"connectivity:{file}:{band}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(conn.connectivity(file, band=band))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
