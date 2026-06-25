@@ -678,6 +678,13 @@ async def fairness():
     return json.loads(p.read_text()) if p.exists() else {"error": "run scripts/fairness_analysis.py"}
 
 
+@app.get("/api/drift")
+async def drift():
+    """Drift monitor (PSI+KS): training reference vs live extractor features. Detects train/serve skew."""
+    p = Path(__file__).parent / "jobs" / "reports" / "drift_latest.json"
+    return json.loads(p.read_text()) if p.exists() else {"available": False, "error": "run scripts/drift_job.py"}
+
+
 @app.get("/api/eeg-ai-stack")
 async def eeg_ai_stack():
     """EEG AI tool ecosystem (16 layers) + EDC/assessment tools, with honest installed status."""

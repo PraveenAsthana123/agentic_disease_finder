@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -635,6 +635,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
+        {activeSub === 'drift' && <DriftPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4311,6 +4312,55 @@ function EegVizPanel() {
           </div>
         </>
       )}
+    </div>
+  )
+}
+
+function DriftPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/drift`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  if (!d.available) return <div style={card}><div style={{ color: '#64748b' }}>{d.error}</div></div>
+  const vcol = d.verdict?.startsWith('SEVERE') ? '#dc2626' : d.verdict?.startsWith('MODERATE') ? '#f59e0b' : '#16a34a'
+  const scol = { high: '#dc2626', moderate: '#f59e0b', low: '#16a34a' }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: `4px solid ${vcol}` }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📉 Drift Monitor <span style={{ fontSize: 12, color: '#64748b' }}>(PSI + KS · DRIFT cron 05:00 daily)</span></h3>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: vcol + '15', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Verdict</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: vcol }}>{d.verdict}</div>
+          </div>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>High-drift features</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: '#0f172a' }}>{d.n_high_drift}/{d.n_features} <span style={{ fontSize: 12 }}>({Math.round(d.frac_drifted * 100)}%)</span></div>
+          </div>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Samples</div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: '#0f172a' }}>ref {d.n_reference} vs live {d.n_live}</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 12, color: '#475569', marginTop: 10 }}>{d.interpretation}</div>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>{d.method} · PSI≥0.25 high</div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Top drifting features</h4>
+        <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+          <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Feature</th><th style={cellTh}>PSI</th><th style={cellTh}>KS stat</th><th style={cellTh}>KS p</th><th style={cellTh}>Severity</th></tr></thead>
+            <tbody>{d.top_drift.map((f, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontFamily: 'monospace' }}>{f.feature}</td>
+                <td style={cellTd}>{f.psi}</td>
+                <td style={cellTd}>{f.ks_stat}</td>
+                <td style={cellTd}>{f.ks_p}</td>
+                <td style={{ ...cellTd, fontWeight: 600, color: scol[f.severity] }}>{f.severity}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }

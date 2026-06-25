@@ -1,0 +1,103 @@
+{
+  "available": true,
+  "run_at_local": "2026-06-24T22:37:16-06:00",
+  "disease": "epilepsy",
+  "n_reference": 100,
+  "n_live": 21,
+  "n_features": 47,
+  "n_high_drift": 45,
+  "frac_drifted": 0.957,
+  "verdict": "SEVERE drift",
+  "top_drift": [
+    {
+      "feature": "dominant_freq",
+      "psi": 26.8185,
+      "ks_stat": 0.5243,
+      "ks_p": 0.0001,
+      "severity": "high"
+    },
+    {
+      "feature": "spectral_flatness",
+      "psi": 26.123,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "spectral_centroid",
+      "psi": 25.4732,
+      "ks_stat": 0.7619,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "hjorth_complexity",
+      "psi": 23.4684,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "hurst_exponent",
+      "psi": 23.4643,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "delta_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "theta_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "alpha_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "beta_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "gamma_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "total_power",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "psd_std",
+      "psi": 23.4633,
+      "ks_stat": 1.0,
+      "ks_p": 0.0,
+      "severity": "high"
+    }
+  ],
+  "method": "PSI (>=0.25 high) + KS-test, training-reference vs live-extractor features",
+  "interpretation": "Live EEG features differ substantially from the model's training distribution (train/serve skew) \u2014 model confidence is not trustworthy; human oversight required.",
+  "thresholds": {
+    "psi_high": 0.25,
+    "psi_moderate": 0.1
+  }
+}
