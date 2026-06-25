@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -623,6 +623,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'jobs_cron' && <JobsCronPanel />}
         {activeSub === 'dark_factory' && <DarkFactoryPanel />}
         {activeSub === 'eeg_pipeline' && <EegAiRagPipelinePanel />}
+        {activeSub === 'patient_registry' && <PatientRegistry />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -3968,6 +3969,113 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function PatientRegistry() {
+  const [list, setList] = useState([])
+  const [f, setF] = useState({ patient_id: '', name: '', age: '', gender: '', disease: 'epilepsy' })
+  const [sel, setSel] = useState(null)        // selected patient id
+  const [report, setReport] = useState(null)  // their EEG report
+  const [reviews, setReviews] = useState(null)
+  const [comment, setComment] = useState({ role: 'Neurologist', finding: '', agree_with_ai: '', expert: '' })
+  const loadList = () => axios.get(`${API_URL}/patients`).then(r => setList(r.data.items || r.data || [])).catch(() => setList([]))
+  useEffect(() => { loadList() }, [])
+  const addPatient = () => {
+    if (!f.patient_id) return
+    axios.post(`${API_URL}/patients`, { ...f, age: f.age ? +f.age : null }).then(() => { setF({ patient_id: '', name: '', age: '', gender: '', disease: 'epilepsy' }); loadList() }).catch(() => {})
+  }
+  const openPatient = (pid) => {
+    setSel(pid)
+    axios.get(`${API_URL}/eeg-report/${pid}`).then(r => setReport(r.data)).catch(() => setReport(null))
+    axios.get(`${API_URL}/study-review/${pid}`).then(r => setReviews(r.data)).catch(() => setReviews(null))
+  }
+  const addComment = () => {
+    if (!sel || !comment.finding) return
+    axios.post(`${API_URL}/study-review/expert`, { patient_id: sel, ...comment }).then(() => { setComment({ ...comment, finding: '', expert: '' }); openPatient(sel) }).catch(() => {})
+  }
+  const inp = (k, ph, type = 'text') => <input value={f[k]} onChange={e => setF({ ...f, [k]: e.target.value })} placeholder={ph} type={type} style={{ padding: '7px 9px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13, flex: '1 1 120px', boxSizing: 'border-box' }} />
+  return (
+    <div>
+      {/* Add patient — manual */}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👥 Patient Registry — add manually</h3>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {inp('patient_id', 'Patient ID *')}{inp('name', 'Name')}{inp('age', 'Age', 'number')}
+          <select value={f.gender} onChange={e => setF({ ...f, gender: e.target.value })} style={{ padding: '7px 9px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}><option value="">Sex</option><option>Male</option><option>Female</option></select>
+          <select value={f.disease} onChange={e => setF({ ...f, disease: e.target.value })} style={{ padding: '7px 9px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}><option>epilepsy</option><option>depression</option><option>schizophrenia</option><option>parkinson</option><option>alzheimer</option></select>
+          <button onClick={addPatient} style={{ padding: '7px 16px', borderRadius: 6, border: 'none', background: '#43a047', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>＋ Add</button>
+        </div>
+        <div style={{ fontSize: 11, color: '#64748b', marginTop: 8 }}>By code: <code>POST /api/patients {'{patient_id,name,age,gender,disease}'}</code> · bulk: loop the endpoint · or upload EEG on the Data tab (auto-creates patient)</div>
+      </div>
+
+      {/* Patient list */}
+      <div style={card}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+          <h3 style={{ margin: 0, color: '#0f172a' }}>All Patients ({list.length})</h3>
+          <button onClick={loadList} style={{ marginLeft: 'auto', fontSize: 12, padding: '4px 10px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}>↻</button>
+        </div>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto', maxHeight: 240 }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>ID</th><th style={cellTh}>Name</th><th style={cellTh}>Age</th><th style={cellTh}>Sex</th><th style={cellTh}>Disease</th><th style={cellTh}></th></tr></thead>
+            <tbody>{list.map((p, i) => (
+              <tr key={p.patient_id || i} style={{ background: sel === p.patient_id ? '#e0f2fe' : i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={cellTd}>{p.patient_id}</td><td style={cellTd}>{p.name || '—'}</td><td style={cellTd}>{p.age || '—'}</td><td style={cellTd}>{p.gender || '—'}</td><td style={cellTd}>{p.disease || '—'}</td>
+                <td style={cellTd}><button onClick={() => openPatient(p.patient_id)} style={{ fontSize: 11, padding: '3px 10px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer' }}>View report ▾</button></td>
+              </tr>
+            ))}{!list.length && <tr><td style={cellTd} colSpan={6}>No patients — add one above.</td></tr>}</tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Report detail at the bottom (when a patient is selected) */}
+      {sel && (
+        <div style={{ ...card, borderLeft: '4px solid #1e88e5' }}>
+          <h3 style={{ marginTop: 0, color: '#0f172a' }}>📋 Report — {sel}</h3>
+          {report ? (
+            <>
+              <div style={{ fontSize: 12, color: '#475569', marginBottom: 8 }}>🤖 {report.ai_summary}</div>
+              {(report.components || []).map((c, i) => (
+                <div key={i} style={{ padding: 8, background: '#f8fafc', borderRadius: 6, marginBottom: 6 }}>
+                  <strong style={{ fontSize: 13, color: '#0f172a' }}>{c.label}</strong>
+                  <div style={{ fontSize: 12, color: '#1e88e5' }}>🤖 {c.ai_finding}</div>
+                  {c.doctor_finding && <div style={{ fontSize: 12, color: '#166534' }}>🧑‍⚕️ {c.doctor_finding} ({c.agree_with_ai})</div>}
+                </div>
+              ))}
+            </>
+          ) : <div style={{ color: '#64748b' }}>No report (patient has no EEG analysis yet).</div>}
+
+          {/* EXPERT COMMENT BOX — where each doctor/expert adds their comment */}
+          <div style={{ marginTop: 12, padding: 12, border: '1px solid #bfdbfe', borderRadius: 8, background: '#f0f9ff' }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#1e88e5', marginBottom: 8 }}>🧑‍⚕️ Add Expert Comment</div>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+              <select value={comment.role} onChange={e => setComment({ ...comment, role: e.target.value })} style={{ padding: '6px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12 }}>
+                <option>Neurologist</option><option>Clinical Neurophysiologist</option><option>EEG Technician</option><option>Psychiatrist</option><option>Neurosurgeon</option><option>Pharmacist</option>
+              </select>
+              <input value={comment.expert} onChange={e => setComment({ ...comment, expert: e.target.value })} placeholder="Your name" style={{ padding: '6px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12, flex: '1 1 120px' }} />
+              <select value={comment.agree_with_ai} onChange={e => setComment({ ...comment, agree_with_ai: e.target.value })} style={{ padding: '6px 8px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 12 }}>
+                <option value="">agree w/ AI?</option><option>agree</option><option>partially</option><option>disagree</option>
+              </select>
+            </div>
+            <textarea value={comment.finding} onChange={e => setComment({ ...comment, finding: e.target.value })} placeholder="Your clinical comment / assessment…" style={{ width: '100%', minHeight: 50, fontSize: 13, padding: 8, borderRadius: 6, border: '1px solid #cbd5e1', boxSizing: 'border-box' }} />
+            <button onClick={addComment} style={{ marginTop: 6, padding: '7px 16px', borderRadius: 6, border: 'none', background: '#1e88e5', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Add comment → audit</button>
+          </div>
+
+          {/* existing expert comments */}
+          {reviews?.expert_reviews?.length > 0 && (
+            <div style={{ marginTop: 10 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>Expert comments ({reviews.expert_reviews.length})</div>
+              {reviews.expert_reviews.map((r, i) => (
+                <div key={i} style={{ fontSize: 12, padding: 6, borderBottom: '1px solid #f1f5f9' }}>
+                  <strong style={{ color: '#1e88e5' }}>{r.role}</strong> {r.expert ? `(${r.expert})` : ''} <span style={{ fontSize: 10, color: '#94a3b8' }}>{r.agree_with_ai}</span>
+                  <div style={{ color: '#334155' }}>{r.finding} {r.note}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
