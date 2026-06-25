@@ -145,9 +145,45 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
     except Exception as _e:
         lat = {"available": False, "note": f"lateralization failed: {str(_e)[:60]}"}
 
+    # ── Spike / sharp-wave detection (high-pass + MAD threshold; screening method) ──
+    spikes = None
+    try:
+        from scipy.signal import butter, filtfilt
+        nyq = sf / 2.0
+        b, a = butter(4, [max(1.0, 10.0) / nyq, min(70.0, nyq - 1) / nyq], btype="band")
+        per_ch_spikes, total = [], 0
+        dur_min = data.shape[1] / sf / 60.0
+        _nonEEG = _re.compile(r"(ecg|ekg|emg|eog|resp|chin|abd|pulse|spo2|hr|loc|roc)", _re.I)
+        for i in range(n_ch):
+            if _nonEEG.search(ch_names[i]):   # exclude non-EEG (ECG QRS etc. inflate spike counts)
+                continue
+            sig = filtfilt(b, a, data[i])
+            mad = np.median(np.abs(sig - np.median(sig))) + 1e-12
+            thr = 6.0 * mad  # 6×MAD = robust spike threshold
+            crossings = np.where(np.abs(sig) > thr)[0]
+            # collapse consecutive samples into discrete events (>= 20ms apart)
+            n_ev = 0
+            last = -1e9
+            for c in crossings:
+                if c - last > 0.02 * sf:
+                    n_ev += 1
+                last = c
+            per_ch_spikes.append({"channel": ch_names[i], "spikes": n_ev,
+                                  "rate_per_min": round(n_ev / dur_min, 1) if dur_min else 0})
+            total += n_ev
+        per_ch_spikes.sort(key=lambda x: x["spikes"], reverse=True)
+        spikes = {"available": True, "total_spikes": total,
+                  "rate_per_min": round(total / dur_min, 1) if dur_min else 0,
+                  "top_channels": per_ch_spikes[:8],
+                  "method": "band-pass 10-70Hz + 6×MAD amplitude threshold, >=20ms refractory",
+                  "note": "Screening spike-count only (non-EEG channels ECG/EMG/EOG excluded). Not clinician-validated epileptiform detection."}
+    except Exception as _e:
+        spikes = {"available": False, "note": f"spike detection failed: {str(_e)[:60]}"}
+
     return {
         "available": True, "file": p.name, "sfreq": sf, "n_channels": n_ch,
         "lateralization": lat,
+        "spikes": spikes,
         "seconds_analyzed": round(min(seconds, raw.times[-1]), 1),
         "channels": ch_names,
         "psd_curve": psd_curve,

@@ -4316,6 +4316,27 @@ function EegVizPanel() {
             <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spectrogram (P0) — time-frequency evolution</h4>
             <img src={v.spectrogram_png} alt="spectrogram" style={{ width: '100%', maxWidth: 640, borderRadius: 6, border: '1px solid #e5e7eb' }} />
           </div>
+          {v.spikes?.available && (
+            <div style={card}>
+              <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spike / sharp-wave detection (screening)</h4>
+              <div style={{ display: 'flex', gap: 14, marginBottom: 8 }}>
+                <div style={{ padding: '8px 14px', borderRadius: 8, background: '#fef3c7', border: '1px solid #e5e7eb' }}>
+                  <div style={{ fontSize: 11, color: '#475569' }}>Total spikes / rate</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: '#92400e' }}>{v.spikes.total_spikes} <span style={{ fontSize: 12 }}>({v.spikes.rate_per_min}/min)</span></div>
+                </div>
+              </div>
+              <ResponsiveContainer width="100%" height={180}>
+                <BarChart data={v.spikes.top_channels}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="channel" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
+                  <YAxis tick={{ fontSize: 11 }} />
+                  <Tooltip />
+                  <Bar dataKey="spikes" fill="#f59e0b" />
+                </BarChart>
+              </ResponsiveContainer>
+              <div style={{ fontSize: 11, color: '#94a3b8' }}>{v.spikes.method} · {v.spikes.note}</div>
+            </div>
+          )}
           {v.lateralization?.available && (
             <div style={card}>
               <h4 style={{ marginTop: 0, color: '#0f172a' }}>Lateralization — L/R hemisphere asymmetry</h4>
