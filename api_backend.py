@@ -964,6 +964,23 @@ async def eeg_ictal_interictal(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/sleep-recordings")
+async def eeg_sleep_recordings():
+    """Sleep State — list real Sleep-EDF PSG+Hypnogram recording pairs."""
+    import scripts.sleep_staging as ss
+    return _json_safe(ss.list_sleep_recordings())
+
+
+@app.get("/api/eeg-viz/sleep-architecture")
+async def eeg_sleep_architecture(hypnogram: str = None):
+    """Sleep State Dashboard — sleep architecture (stages, efficiency, REM/N3%) from real hypnogram."""
+    import scripts.sleep_staging as ss
+    key = f"sleep:{hypnogram}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(ss.sleep_architecture(hypnogram))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
