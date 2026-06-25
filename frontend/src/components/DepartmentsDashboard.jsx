@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -630,6 +630,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'patient_registry' && <PatientRegistry />}
         {activeSub === 'assess_dash' && <AssessmentDashboard />}
         {activeSub === 'integrations_set' && <IntegrationsSettings />}
+        {activeSub === 'eeg_stack' && <EegAiStackPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4000,6 +4001,40 @@ function RoleGraph({ roleName }) {
             ))}{!(g.edges || []).length && <tr><td style={cellTd} colSpan={3}>No relationships yet for this role.</td></tr>}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function EegAiStackPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/eeg-ai-stack`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { installed: '#16a34a', cataloged: '#f59e0b', external: '#7c3aed' }
+  const chip = (t) => <span key={t.name} title={t.use || ''} style={{ fontSize: 10, padding: '2px 7px', borderRadius: 10, margin: 2, display: 'inline-block',
+    background: (col[t.status] || '#94a3b8') + '22', color: col[t.status] || '#94a3b8', border: `1px solid ${(col[t.status] || '#94a3b8')}55` }}>{t.status === 'installed' ? '✓ ' : ''}{t.name}</span>
+  const s = d.summary || {}
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧰 EEG AI Stack — {d.layers.length} layers</h3>
+        <div style={{ display: 'flex', gap: 14, fontSize: 13 }}>
+          <span style={{ color: col.installed }}>✓ installed {s.installed}</span>
+          <span style={{ color: col.cataloged }}>● cataloged {s.cataloged}</span>
+          <span style={{ color: col.external }}>● external {s.external}</span>
+        </div>
+        <div style={{ fontSize: 12, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8, marginTop: 8 }}>⚠ {s.honest_note}</div>
+        <div style={{ fontSize: 11, color: '#166534', marginTop: 6 }}>🔗 Pipeline: {d.recommended_pipeline}</div>
+      </div>
+      {d.layers.map((L, i) => (
+        <div key={i} style={{ ...card, marginBottom: 8 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>{L.layer}</div>
+          <div>{L.tools.map(chip)}</div>
+        </div>
+      ))}
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>EDC / Assessment / Annotation tools</h3>
+        <div>{(d.edc_assessment_tools || []).map(chip)}</div>
       </div>
     </div>
   )

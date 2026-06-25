@@ -633,6 +633,13 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/eeg-ai-stack")
+async def eeg_ai_stack():
+    """EEG AI tool ecosystem (16 layers) + EDC/assessment tools, with honest installed status."""
+    p = Path(__file__).parent / "config" / "eeg_ai_stack.json"
+    return json.loads(p.read_text()) if p.exists() else {"layers": []}
+
+
 @app.get("/api/integrations")
 async def integrations_settings():
     """Integrations + delivery channels with honest status + the credential needed to activate."""

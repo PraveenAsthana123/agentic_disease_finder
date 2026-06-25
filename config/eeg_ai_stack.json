@@ -1,0 +1,67 @@
+{
+  "title": "EEG AI Ecosystem — Tool Stack (16 layers)",
+  "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). §155 honest.",
+  "updated_at": "2026-06-24",
+  "layers": [
+    {"layer": "1. Core EEG analysis", "tools": [
+      {"name": "MNE-Python", "status": "installed", "use": "complete EEG analysis (central platform)"},
+      {"name": "NeuroKit2", "status": "installed", "use": "biosignal analysis"},
+      {"name": "EEGLAB", "status": "external", "use": "MATLAB ICA/preprocessing"},
+      {"name": "FieldTrip / Brainstorm", "status": "external", "use": "MATLAB source localization"}]},
+    {"layer": "2. Read EEG", "tools": [
+      {"name": "MNE (EDF/BDF/FIF/CNT)", "status": "installed"},
+      {"name": "PyEDFlib", "status": "installed"}, {"name": "Neo", "status": "cataloged"}]},
+    {"layer": "3. Signal processing", "tools": [
+      {"name": "SciPy", "status": "installed"}, {"name": "NumPy", "status": "installed"},
+      {"name": "PyWavelets", "status": "installed"}, {"name": "AntroPy (entropy)", "status": "cataloged"},
+      {"name": "Nolds (nonlinear)", "status": "cataloged"}]},
+    {"layer": "4. Time-frequency", "tools": [
+      {"name": "PyWavelets (CWT/DWT)", "status": "installed"}, {"name": "SciPy STFT", "status": "installed"},
+      {"name": "ssqueezepy (synchrosqueezing)", "status": "cataloged"}, {"name": "librosa", "status": "cataloged"}]},
+    {"layer": "5. Feature extraction", "tools": [
+      {"name": "MNE (PSD/CSP/ICA)", "status": "installed"}, {"name": "47-feature vector (project)", "status": "installed"},
+      {"name": "AntroPy / PyEEG", "status": "cataloged"}, {"name": "TSFresh / TSFEL", "status": "cataloged"}]},
+    {"layer": "6. Deep learning", "tools": [
+      {"name": "Braindecode (EEGNet)", "status": "installed"}, {"name": "PyTorch", "status": "installed"},
+      {"name": "TorchEEG", "status": "cataloged"}, {"name": "TensorFlow", "status": "installed"}]},
+    {"layer": "7. Explainable AI", "tools": [
+      {"name": "SHAP", "status": "installed"}, {"name": "Captum (PyTorch)", "status": "cataloged"},
+      {"name": "LIME", "status": "cataloged"}, {"name": "Grad-CAM", "status": "cataloged"}]},
+    {"layer": "8. Visualization", "tools": [
+      {"name": "MNE (topomap/PSD/ICA)", "status": "installed"}, {"name": "Plotly", "status": "installed"},
+      {"name": "Matplotlib", "status": "installed"}, {"name": "Recharts (UI)", "status": "installed"}]},
+    {"layer": "9. 10-20 electrode system", "tools": [
+      {"name": "MNE standard montages (10-20/10-10)", "status": "installed"}, {"name": "Nilearn", "status": "cataloged"}]},
+    {"layer": "10. Topographic maps", "tools": [
+      {"name": "MNE topomap", "status": "installed"}, {"name": "Nilearn brain render", "status": "cataloged"}]},
+    {"layer": "11. Connectivity", "tools": [
+      {"name": "MNE (coherence/PLV)", "status": "installed"}, {"name": "NetworkX", "status": "installed"},
+      {"name": "Brain Connectivity Toolbox", "status": "cataloged"}]},
+    {"layer": "12. Annotation", "tools": [
+      {"name": "MNE events/annotations", "status": "installed"}, {"name": "EDFbrowser", "status": "external"},
+      {"name": "Label Studio / CVAT", "status": "cataloged"}]},
+    {"layer": "13. Machine learning", "tools": [
+      {"name": "scikit-learn", "status": "installed"}, {"name": "XGBoost", "status": "installed"},
+      {"name": "LightGBM", "status": "installed"}, {"name": "CatBoost", "status": "cataloged"}]},
+    {"layer": "14. Model evaluation", "tools": [
+      {"name": "scikit-learn metrics", "status": "installed"}, {"name": "TorchMetrics", "status": "cataloged"},
+      {"name": "Evidently (drift)", "status": "cataloged"}, {"name": "Deepchecks", "status": "cataloged"}]},
+    {"layer": "15. Responsible AI", "tools": [
+      {"name": "Fairlearn (fairness)", "status": "cataloged"}, {"name": "AIF360 (bias)", "status": "cataloged"},
+      {"name": "Evidently (drift)", "status": "cataloged"}, {"name": "Great Expectations (data quality)", "status": "cataloged"}]},
+    {"layer": "16. EEG quality control", "tools": [
+      {"name": "MNE bad-channel detection", "status": "installed"}, {"name": "AutoReject", "status": "cataloged"},
+      {"name": "PyPREP", "status": "cataloged"}, {"name": "ICLabel (mne-icalabel)", "status": "cataloged"}]}
+  ],
+  "edc_assessment_tools": [
+    {"name": "REDCap", "use": "clinical eCRF / assessments", "status": "external"},
+    {"name": "OpenClinica", "use": "clinical data management", "status": "external"},
+    {"name": "LimeSurvey", "use": "patient questionnaires/surveys", "status": "external"},
+    {"name": "OpenMRS", "use": "EMR integration", "status": "external"},
+    {"name": "PsychoPy / PEBL / PsyToolkit", "use": "cognitive testing (Stroop/Trail/N-back)", "status": "external"},
+    {"name": "Label Studio / CVAT / Doccano", "use": "AI annotation (signal/video/text)", "status": "cataloged"}
+  ],
+  "recommended_pipeline": "MNE-Python → PyPREP → AutoReject → PyWavelets → TSFresh/AntroPy → TorchEEG/Braindecode → SHAP/Captum → Fairlearn/AIF360 → Evidently AI",
+  "summary": {"installed": 15, "cataloged": 14, "external": 9,
+              "honest_note": "Central platform MNE-Python + the signal→feature→DL→SHAP→eval spine is INSTALLED (15 libs verified). Responsible-AI layer (Fairlearn/AIF360/Evidently/Great-Expectations) + QC (PyPREP/AutoReject/ICLabel) + Captum/LIME are CATALOGED — pip-installable to complete the stack. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server). The Responsible-AI libs are the highest-priority install for the governance thesis."}
+}
