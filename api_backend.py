@@ -689,8 +689,8 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
-@app.get("/api/model-performance")
 _mp_cache = {}
+@app.get("/api/model-performance")
 async def model_performance():
     """Real model performance (ROC/PR/confusion/metrics), subject-wise CV — cached (CV is slow)."""
     import scripts.model_performance as mp
