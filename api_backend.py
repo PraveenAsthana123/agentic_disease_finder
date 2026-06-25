@@ -592,10 +592,16 @@ _shap_cache: dict = {}
 @app.get("/api/shap-explain")
 async def shap_explain(analysis_id: int = None, patient_id: str = None):
     """Real local SHAP explanation — which features drove THIS prediction (Explainable-AI core)."""
-    import scripts.shap_explain as sx
     key = f"{analysis_id}:{patient_id}"
     if key not in _shap_cache:
-        _shap_cache[key] = _json_safe(sx.explain(analysis_id=analysis_id, patient_id=patient_id))
+        try:
+            import scripts.shap_explain as sx
+            _shap_cache[key] = _json_safe(sx.explain(analysis_id=analysis_id, patient_id=patient_id))
+        except Exception as e:  # honest degradation (§57.7) — shap is an optional heavy dep (numba/llvmlite)
+            _shap_cache[key] = {"available": False, "error": f"{type(e).__name__}: {e}",
+                                "note": "SHAP explainability unavailable in backend python (shap/numba not importable); "
+                                        "install shap into the backend interpreter to enable. Other explainability "
+                                        "surfaces (feature importance, eeg_explainability) remain available."}
     return _shap_cache[key]
 
 
