@@ -932,6 +932,21 @@ async def eeg_viz_bad_channels(file: str = None, seconds: float = 30.0):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/artifacts")
+async def eeg_viz_artifacts(file: str = None, seconds: float = 60.0):
+    """Artifact Review — window-based eye-blink/muscle/line-noise/movement detection from real EDF."""
+    import scripts.eeg_viz as viz
+    import scripts.eeg_quality as q
+    if not file:
+        file = viz.list_presets().get("default")
+    if not file:
+        return {"available": False, "error": "No EDF recordings found on disk."}
+    key = f"artifacts:{file}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(q.artifact_review(file, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
@@ -2243,6 +2258,43 @@ async def social_worker_barriers(patient_id: str = None):
     severity scoring and targeted intervention recommendations."""
     import scripts.social_worker_module as msw
     return _json_safe(msw.treatment_barrier_detection(patient_id))
+
+
+# ─── Neuro AI Ecosystem: ADL / IADL (Katz / Lawton) ──────────────────
+
+@app.get("/api/neuro-scales/adl")
+async def neuro_scales_adl_dashboard(patient_id: str = None):
+    """ADL/IADL dashboard — Katz Index (6-item ADL, 0-6) + Lawton IADL (8-item,
+    0-8) for one patient or all patients. Scores derived from REAL Barthel,
+    cognition (MoCA/MMSE), seizure diary, and medication data in clinical.db."""
+    import scripts.neuro_scales_adl as adl
+    return _json_safe(adl.adl_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/adl/katz")
+async def neuro_scales_katz(patient_id: str):
+    """Katz Index of ADL detail — 6 binary items (bathing, dressing, toileting,
+    transferring, continence, feeding). Grade A (6/6, fully independent) to
+    G (0/6, fully dependent). Derived from real patient data."""
+    import scripts.neuro_scales_adl as adl
+    return _json_safe(adl.katz_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/adl/lawton")
+async def neuro_scales_lawton(patient_id: str):
+    """Lawton Instrumental ADL detail — 8 binary items (telephone, shopping,
+    food prep, housekeeping, laundry, transport, medications, finances).
+    Sensitive to cognitive decline and seizure-related driving restrictions."""
+    import scripts.neuro_scales_adl as adl
+    return _json_safe(adl.lawton_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/adl/definitions")
+async def neuro_scales_adl_definitions():
+    """Scale definitions — item descriptions, scoring rules, and references
+    for Katz ADL and Lawton IADL. For frontend rendering of scale info panels."""
+    import scripts.neuro_scales_adl as adl
+    return _json_safe(adl.scale_definitions())
 
 
 if __name__ == "__main__":

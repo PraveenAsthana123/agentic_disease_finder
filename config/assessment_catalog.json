@@ -208,19 +208,21 @@
     },
     {
      "name": "Katz ADL",
-     "purpose": "Basic daily activities",
-     "output": "Independence",
+     "purpose": "Basic daily activities (6-item, grade A-G)",
+     "output": "0-6 + grade",
      "specialist": "OT",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "endpoint": "/api/neuro-scales/adl/katz"
     },
     {
      "name": "Lawton IADL",
-     "purpose": "Instrumental ADL",
-     "output": "Score",
+     "purpose": "Instrumental ADL (8-item, phone/shop/cook/house/laundry/transport/meds/finance)",
+     "output": "0-8",
      "specialist": "OT",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "endpoint": "/api/neuro-scales/adl/lawton"
     },
     {
      "name": "FIM",
