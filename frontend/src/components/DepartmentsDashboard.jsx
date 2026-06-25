@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -632,6 +632,8 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'integrations_set' && <IntegrationsSettings />}
         {activeSub === 'eeg_stack' && <EegAiStackPanel />}
         {activeSub === 'neuro_ecosystem' && <NeuroAiEcosystemPanel />}
+        {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
+        {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4092,6 +4094,125 @@ function NeuroAiEcosystemPanel() {
           <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 4 }}>{c.category}</div>
           {c.note && <div style={{ fontSize: 11, color: '#92400e', marginBottom: 4 }}>{c.note}</div>}
           <div>{c.tools.map(chip)}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ClinicalTrustPanel() {
+  const [t, setT] = useState(null)
+  const [audit, setAudit] = useState(null)
+  const [note, setNote] = useState('')
+  const [saved, setSaved] = useState('')
+  const load = () => {
+    axios.get(`${API_URL}/clinical-trust`).then(r => setT(r.data)).catch(() => setT(null))
+    axios.get(`${API_URL}/clinical-decisions`).then(r => setAudit(r.data)).catch(() => setAudit(null))
+  }
+  useEffect(load, [])
+  const decide = (decision) => {
+    if (!t?.available) return
+    const agree = decision === 'Confirm' ? 'Yes' : decision === 'Reject' ? 'No' : 'Unsure'
+    axios.post(`${API_URL}/clinical-trust/decision`, {
+      patient_id: t.patient_id, analysis_id: t.analysis_id, ai_prediction: t.ai_prediction,
+      ai_confidence: t.confidence, top_channels: t.top_channels, artifact_risk: t.artifact_risk,
+      time_window: t.time_window, neurologist_agreement: agree, final_decision: decision,
+      reviewer: 'neurologist', note,
+    }).then(() => { setSaved(`Recorded: ${decision}`); setNote(''); load() }).catch(() => setSaved('Save failed (backend offline)'))
+  }
+  if (!t) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  if (!t.available) return <div style={card}><div style={{ color: '#64748b' }}>{t.note}</div></div>
+  const confPct = t.confidence != null ? Math.round(t.confidence * 100) : null
+  const riskCol = { Low: '#16a34a', Moderate: '#f59e0b', High: '#dc2626', Unknown: '#94a3b8' }[t.artifact_risk] || '#94a3b8'
+  const row = (k, v, sub) => (
+    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
+      <span style={{ color: '#475569', fontSize: 13 }}>{k}</span>
+      <span style={{ textAlign: 'right' }}><strong style={{ color: '#0f172a' }}>{v}</strong>{sub && <div style={{ fontSize: 10, color: '#94a3b8' }}>{sub}</div>}</span>
+    </div>
+  )
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #1e88e5' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🩺 Clinical Trust Panel <span style={{ fontSize: 12, color: '#64748b' }}>— patient {t.patient_id} · analysis #{t.analysis_id}</span></h3>
+        <div style={{ fontSize: 12, color: '#1e3a8a', background: '#dbeafe', borderRadius: 6, padding: 8, marginBottom: 10 }}>ℹ {t.guidance}</div>
+        {row('AI Prediction', t.ai_prediction || '—')}
+        {row('Confidence', confPct != null ? `${confPct}%` : '—', Object.entries(t.class_probabilities || {}).map(([k, v]) => `${k} ${Math.round(v * 100)}%`).join(' · '))}
+        {row('Top Channels', (t.top_channels || []).join(', ') || '—', t.top_channels_basis)}
+        {row('Top Time Window', t.time_window, t.time_window_basis)}
+        {row('Artifact Risk', <span style={{ color: riskCol }}>{t.artifact_risk}</span>, t.artifact_basis)}
+        {row('Signal Quality', t.signal_quality)}
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Neurologist decision (human oversight)</h4>
+        <textarea value={note} onChange={e => setNote(e.target.value)} placeholder="Optional clinical note…" style={{ width: '100%', minHeight: 50, padding: 8, border: '1px solid #cbd5e1', borderRadius: 6, fontSize: 13 }} />
+        <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
+          <button onClick={() => decide('Confirm')} style={{ flex: 1, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '10px', fontWeight: 600, cursor: 'pointer' }}>✓ Confirm</button>
+          <button onClick={() => decide('Reject')} style={{ flex: 1, background: '#dc2626', color: '#fff', border: 'none', borderRadius: 6, padding: '10px', fontWeight: 600, cursor: 'pointer' }}>✗ Reject</button>
+          <button onClick={() => decide('Needs Review')} style={{ flex: 1, background: '#f59e0b', color: '#fff', border: 'none', borderRadius: 6, padding: '10px', fontWeight: 600, cursor: 'pointer' }}>⟳ Needs Review</button>
+        </div>
+        {saved && <div style={{ marginTop: 8, fontSize: 13, color: '#166534' }}>{saved}</div>}
+      </div>
+      {audit && audit.count > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Oversight audit trail <span style={{ fontSize: 12, color: '#64748b' }}>({audit.count} decisions · AI confirm-rate {audit.ai_confirm_rate != null ? Math.round(audit.ai_confirm_rate * 100) + '%' : '—'})</span></h4>
+          <div style={{ display: 'flex', gap: 10, fontSize: 12, marginBottom: 8 }}>
+            {Object.entries(audit.decision_dist || {}).map(([k, v]) => <span key={k} style={{ padding: '2px 8px', borderRadius: 10, background: '#f1f5f9', color: '#0f172a' }}>{k}: {v}</span>)}
+          </div>
+          <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+              <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>When</th><th style={cellTh}>Patient</th><th style={cellTh}>AI</th><th style={cellTh}>Decision</th><th style={cellTh}>Note</th></tr></thead>
+              <tbody>{audit.items.slice(0, 15).map((r, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={cellTd}>{(r.created_at || '').slice(0, 16).replace('T', ' ')}</td>
+                  <td style={cellTd}>{r.patient_id}</td>
+                  <td style={cellTd}>{r.ai_prediction} ({r.ai_confidence != null ? Math.round(r.ai_confidence * 100) + '%' : '—'})</td>
+                  <td style={{ ...cellTd, fontWeight: 600, color: r.final_decision === 'Confirm' ? '#16a34a' : r.final_decision === 'Reject' ? '#dc2626' : '#f59e0b' }}>{r.final_decision}</td>
+                  <td style={cellTd}>{r.note || '—'}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ExpertDashboardCatalog() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/expert-dashboards`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d || d.error) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#16a34a', partial: '#f59e0b', planned: '#94a3b8' }
+  const s = d.summary || {}
+  const roles = [...new Set(d.dashboards.map(x => x.role))]
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🖥️ Expert Dashboard Catalog — {s.total} dashboards</h3>
+        <div style={{ display: 'flex', gap: 14, fontSize: 13 }}>
+          <span style={{ color: col.built }}>✓ built {s.built}</span>
+          <span style={{ color: col.partial }}>◐ partial {s.partial}</span>
+          <span style={{ color: col.planned }}>○ planned {s.planned}</span>
+        </div>
+        <div style={{ fontSize: 11, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8, marginTop: 8 }}>⚠ {d.note}</div>
+      </div>
+      {roles.map(role => (
+        <div key={role} style={{ ...card, marginBottom: 8 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>{role}</div>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+              <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Dashboard</th><th style={cellTh}>Visualization</th><th style={cellTh}>Why</th><th style={cellTh}>Pri</th><th style={cellTh}>Status</th></tr></thead>
+              <tbody>{d.dashboards.filter(x => x.role === role).map((x, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ ...cellTd, fontWeight: 600 }}>{x.name}</td>
+                  <td style={cellTd}>{x.viz}</td>
+                  <td style={{ ...cellTd, color: '#64748b' }}>{x.why}</td>
+                  <td style={{ ...cellTd, fontWeight: 600, color: x.priority === 'P0' ? '#dc2626' : x.priority === 'P1' ? '#f59e0b' : '#94a3b8' }}>{x.priority}</td>
+                  <td style={{ ...cellTd, fontWeight: 600, color: col[x.status] }}>{x.status === 'built' ? '✓' : x.status === 'partial' ? '◐' : '○'} {x.status}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
         </div>
       ))}
     </div>

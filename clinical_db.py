@@ -1191,6 +1191,113 @@ def patient_chat(patient_id: str, query: str) -> dict:
     }
 
 
+# ── Clinical Trust Panel + Human Oversight audit (thesis core) ──────────────
+def _ensure_decisions() -> None:
+    with _connect() as c:
+        c.execute("""CREATE TABLE IF NOT EXISTS clinical_decisions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            patient_id TEXT, analysis_id INTEGER,
+            ai_prediction TEXT, ai_confidence REAL,
+            top_channels TEXT, artifact_risk TEXT, time_window TEXT,
+            neurologist_agreement TEXT, final_decision TEXT,
+            reviewer TEXT, note TEXT, created_at TEXT)""")
+        c.execute("CREATE INDEX IF NOT EXISTS idx_cd_patient ON clinical_decisions(patient_id)")
+
+
+def build_trust_panel(analysis_id: Optional[int] = None, patient_id: Optional[str] = None) -> dict:
+    """Clinical Trust Panel — per-prediction summary a neurologist confirms/rejects.
+    Built from the REAL stored analysis. Honest about what is derived vs not yet available."""
+    init_db()
+    with _connect() as c:
+        if analysis_id:
+            row = c.execute("SELECT * FROM analyses WHERE id=?", (analysis_id,)).fetchone()
+        elif patient_id:
+            row = c.execute("SELECT * FROM analyses WHERE patient_id=? ORDER BY id DESC LIMIT 1", (patient_id,)).fetchone()
+        else:
+            row = c.execute("SELECT * FROM analyses ORDER BY id DESC LIMIT 1").fetchone()
+    if not row:
+        return {"available": False, "note": "No analysis on record. Run an EEG analysis first."}
+    r = dict(row)
+    try:
+        res = json.loads(r.get("result_json") or "{}")
+    except (ValueError, TypeError):
+        res = {}
+    analysis = res.get("analysis", {})
+    pred = res.get("prediction", {})
+    per_ch = analysis.get("per_channel", []) or []
+    ch_names = analysis.get("channels", []) or []
+    # top channels = highest-variance (std) — honest proxy for "most active"; true per-channel SHAP not yet wired
+    ranked = sorted(per_ch, key=lambda x: x.get("std", 0) or 0, reverse=True)[:3]
+    top_channels = [ch_names[ci["channel"]] if ci.get("channel", 0) < len(ch_names) else f"ch{ci.get('channel')}"
+                    for ci in ranked]
+    # artifact risk from signal quality + flat channels (real)
+    q = analysis.get("signal_quality") or r.get("signal_quality") or "Unknown"
+    flat = analysis.get("flat_channels", 0) or 0
+    risk = {"Good": "Low", "Fair": "Moderate", "Poor": "High"}.get(q, "Unknown")
+    if flat > 0 and risk == "Low":
+        risk = "Moderate"
+    conf = pred.get("confidence", r.get("confidence"))
+    return {
+        "available": True,
+        "analysis_id": r["id"], "patient_id": r["patient_id"], "disease": r.get("disease"),
+        "ai_prediction": pred.get("predicted_label") or r.get("predicted_label"),
+        "confidence": conf,
+        "class_probabilities": pred.get("class_probabilities", {}),
+        "top_channels": top_channels or ch_names[:3],
+        "top_channels_basis": "highest-variance channels (true per-channel SHAP not yet wired)",
+        "time_window": "full recording",
+        "time_window_basis": "window-level seizure localization not yet implemented — whole-record prediction",
+        "artifact_risk": risk,
+        "artifact_basis": f"signal quality={q}, flat channels={flat}",
+        "signal_quality": q,
+        "model_note": pred.get("note", ""),
+        "created_at": r.get("created_at"),
+        "decision_options": ["Confirm", "Reject", "Needs Review"],
+        "guidance": "AI is a decision-support tool. Neurologist confirmation is required before any clinical use (human oversight).",
+    }
+
+
+def save_clinical_decision(fields: dict) -> dict:
+    """Record the neurologist's Confirm/Reject/Needs-Review decision → human-oversight audit trail."""
+    _ensure_decisions()
+    now = _now()
+    cols = ["patient_id", "analysis_id", "ai_prediction", "ai_confidence", "top_channels",
+            "artifact_risk", "time_window", "neurologist_agreement", "final_decision",
+            "reviewer", "note", "created_at"]
+    tc = fields.get("top_channels")
+    if isinstance(tc, list):
+        tc = ", ".join(map(str, tc))
+    vals = [fields.get("patient_id"), fields.get("analysis_id"), fields.get("ai_prediction"),
+            fields.get("ai_confidence"), tc, fields.get("artifact_risk"), fields.get("time_window"),
+            fields.get("neurologist_agreement"), fields.get("final_decision"),
+            fields.get("reviewer", "neurologist"), fields.get("note"), now]
+    with _connect() as c:
+        cur = c.execute(f"INSERT INTO clinical_decisions({','.join(cols)}) VALUES({','.join(['?'] * len(cols))})", vals)
+        did = cur.lastrowid
+    log_transaction(fields.get("patient_id", "_unknown"), component="clinical_trust", action="human_decision",
+                    actor=fields.get("reviewer", "neurologist"), ref_id=did,
+                    detail=f"{fields.get('final_decision')} (AI={fields.get('ai_prediction')} conf={fields.get('ai_confidence')})")
+    return {"id": did, "final_decision": fields.get("final_decision"), "created_at": now}
+
+
+def list_clinical_decisions(patient_id: Optional[str] = None, limit: int = 200) -> dict:
+    """Human-oversight audit trail (Confirm/Reject/Needs-Review history)."""
+    _ensure_decisions()
+    with _connect() as c:
+        if patient_id:
+            rows = [dict(r) for r in c.execute("SELECT * FROM clinical_decisions WHERE patient_id=? ORDER BY id DESC LIMIT ?", (patient_id, limit)).fetchall()]
+        else:
+            rows = [dict(r) for r in c.execute("SELECT * FROM clinical_decisions ORDER BY id DESC LIMIT ?", (limit,)).fetchall()]
+    from collections import Counter
+    dist = Counter(r.get("final_decision") for r in rows)
+    agree = Counter(r.get("neurologist_agreement") for r in rows)
+    n = len(rows)
+    confirmed = dist.get("Confirm", 0)
+    return {"items": rows, "count": n, "decision_dist": dict(dist), "agreement_dist": dict(agree),
+            "ai_confirm_rate": round(confirmed / n, 3) if n else None,
+            "note": "Human-in-the-loop oversight audit — every AI prediction a neurologist accepted/rejected."}
+
+
 if __name__ == "__main__":
     init_db()
     print(f"Initialized {DB_PATH}")

@@ -4,7 +4,7 @@ FastAPI Backend for NeuroAI EEG Analysis
 REST API endpoints for EEG data analysis and classification.
 """
 
-from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Form
+from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Form, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, List, Optional, Any
@@ -578,6 +578,31 @@ async def get_consensus():
 async def get_decision(confidence: float, role: str = "", task: str = ""):
     """Decision AI (per role/task) — route by confidence: auto/review/escalate."""
     return cdb.decision_route(confidence, role=role, task=task)
+
+
+@app.get("/api/clinical-trust")
+async def clinical_trust(analysis_id: int = None, patient_id: str = None):
+    """Clinical Trust Panel — per-prediction summary (AI label, confidence, top channels, artifact risk) for neurologist sign-off."""
+    return _json_safe(cdb.build_trust_panel(analysis_id=analysis_id, patient_id=patient_id))
+
+
+@app.post("/api/clinical-trust/decision")
+async def clinical_trust_decision(payload: dict = Body(...)):
+    """Record the neurologist's Confirm/Reject/Needs-Review decision (human-oversight audit trail)."""
+    return cdb.save_clinical_decision(payload)
+
+
+@app.get("/api/clinical-decisions")
+async def clinical_decisions(patient_id: str = None):
+    """Human-in-the-loop oversight audit trail (decision + agreement distribution)."""
+    return cdb.list_clinical_decisions(patient_id=patient_id)
+
+
+@app.get("/api/expert-dashboards")
+async def expert_dashboards():
+    """Expert dashboard catalog (~45 dashboards across roles) with honest built/planned status."""
+    p = Path(__file__).parent / "config" / "expert_dashboards.json"
+    return json.loads(p.read_text()) if p.exists() else {"error": "missing config"}
 
 
 @app.post("/api/guardrails-check")

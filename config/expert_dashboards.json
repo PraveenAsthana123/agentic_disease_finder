@@ -1,0 +1,302 @@
+{
+ "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
+ "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+ "updated_at": "2026-06-24",
+ "must_have_p0": [
+  "Raw EEG waveform",
+  "Event timeline",
+  "Artifact overlay",
+  "PSD graph",
+  "Spectrogram",
+  "10-20 topomap",
+  "Spike/sharp-wave overlay"
+ ],
+ "libraries": {
+  "EEG waveform/topomap/spectrogram": "MNE-Python",
+  "Wavelet": "PyWavelets",
+  "Charts": "Plotly/Recharts",
+  "Brain graph": "NetworkX",
+  "AI model": "PyTorch/Braindecode",
+  "XAI": "SHAP/Captum",
+  "Fairness": "Fairlearn",
+  "Drift": "Evidently"
+ },
+ "dashboards": [
+  {
+   "role": "Neurologist",
+   "name": "Raw EEG Viewer",
+   "viz": "Multi-channel waveform",
+   "feature": "Zoom, filter, montage switch",
+   "why": "Clinical EEG review",
+   "priority": "P0",
+   "status": "partial"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Seizure Timeline",
+   "viz": "Event timeline",
+   "feature": "Seizure start/end, duration",
+   "why": "Fast event review",
+   "priority": "P0",
+   "status": "partial"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Spike Detection",
+   "viz": "Spike overlay",
+   "feature": "Spike/sharp-wave detection",
+   "why": "Identify epileptiform activity",
+   "priority": "P0",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Brain Topomap",
+   "viz": "10-20 scalp heatmap",
+   "feature": "Channel power/location",
+   "why": "Localize abnormal areas",
+   "priority": "P0",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Frequency Band Dashboard",
+   "viz": "Delta/theta/alpha/beta/gamma charts",
+   "feature": "Band power comparison",
+   "why": "Detect abnormal rhythm",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "Neurologist",
+   "name": "PSD Graph",
+   "viz": "Power spectral density",
+   "feature": "Dominant frequency",
+   "why": "Quantify EEG background",
+   "priority": "P0",
+   "status": "partial"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Spectrogram",
+   "viz": "Time-frequency heatmap",
+   "feature": "Seizure evolution",
+   "why": "See rhythm change",
+   "priority": "P0",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Wavelet Scalogram",
+   "viz": "Wavelet heatmap",
+   "feature": "Transient seizure patterns",
+   "why": "Better than FFT",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Montage Comparison",
+   "viz": "Bipolar vs referential",
+   "feature": "Compare abnormality location",
+   "why": "Reduce interpretation error",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Lateralization Dashboard",
+   "viz": "Left vs right hemisphere",
+   "feature": "Asymmetry index",
+   "why": "Focus detection",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Localization Dashboard",
+   "viz": "Scalp/source map",
+   "feature": "Focal abnormality region",
+   "why": "Support diagnosis",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "AI Explanation",
+   "viz": "SHAP/Grad-CAM heatmap",
+   "feature": "Why AI predicted seizure",
+   "why": "Trust + validation",
+   "priority": "P1",
+   "status": "partial"
+  },
+  {
+   "role": "Neurologist",
+   "name": "AI vs Doctor",
+   "viz": "Agreement table",
+   "feature": "AI label vs neurologist",
+   "why": "Clinical validation",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Confidence Dashboard",
+   "viz": "Probability gauge",
+   "feature": "Prediction confidence",
+   "why": "Avoid blind AI use",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Clinical Trust Panel",
+   "viz": "Per-prediction card + decision",
+   "feature": "Confirm/Reject/Needs-Review",
+   "why": "Makes AI clinically believable (human oversight)",
+   "priority": "P0",
+   "status": "built"
+  },
+  {
+   "role": "Neurologist",
+   "name": "False Alarm Review",
+   "viz": "Event table",
+   "feature": "FP/FN review",
+   "why": "Model improvement",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Medication Impact",
+   "viz": "Before/after chart",
+   "feature": "AED effect on EEG",
+   "why": "Treatment monitoring",
+   "priority": "P2",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Sleep State Dashboard",
+   "viz": "Awake/drowsy/sleep graph",
+   "feature": "State-based EEG changes",
+   "why": "Avoid misinterpretation",
+   "priority": "P2",
+   "status": "planned"
+  },
+  {
+   "role": "Neurologist",
+   "name": "Artifact Review",
+   "viz": "Artifact timeline",
+   "feature": "Eye/muscle/movement/ECG",
+   "why": "Avoid false seizure detection",
+   "priority": "P0",
+   "status": "partial"
+  },
+  {
+   "role": "Epileptologist",
+   "name": "Seizure Propagation Map",
+   "viz": "Time-evolving scalp map",
+   "feature": "Spread pattern",
+   "why": "Surgical planning",
+   "priority": "P2",
+   "status": "planned"
+  },
+  {
+   "role": "Epileptologist",
+   "name": "Ictal vs Interictal",
+   "viz": "Split waveform",
+   "feature": "Compare seizure/non-seizure",
+   "why": "Epilepsy classification",
+   "priority": "P1",
+   "status": "planned"
+  },
+  {
+   "role": "Epileptologist",
+   "name": "Seizure Burden Dashboard",
+   "viz": "Trend chart",
+   "feature": "Events per hour/day",
+   "why": "Severity measurement",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "Neurophysiologist",
+   "name": "Signal Quality Dashboard",
+   "viz": "Channel QC heatmap",
+   "feature": "Impedance, noise, flat channels",
+   "why": "Recording quality",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "Neurophysiologist",
+   "name": "Bad Channel Dashboard",
+   "viz": "Electrode map",
+   "feature": "Bad/missing channel detection",
+   "why": "Data cleaning",
+   "priority": "P1",
+   "status": "partial"
+  },
+  {
+   "role": "Neuropsychologist",
+   "name": "Cognition Link Dashboard",
+   "viz": "MoCA/MMSE trend",
+   "feature": "EEG vs cognition",
+   "why": "Cognitive impact",
+   "priority": "P2",
+   "status": "partial"
+  },
+  {
+   "role": "Psychiatrist",
+   "name": "Mood-Comorbidity View",
+   "viz": "PHQ-9/GAD-7 chart",
+   "feature": "EEG + depression/anxiety",
+   "why": "Neuropsychiatric correlation",
+   "priority": "P2",
+   "status": "built"
+  },
+  {
+   "role": "Researcher",
+   "name": "Cohort Dashboard",
+   "viz": "Distribution charts",
+   "feature": "Age, sex, diagnosis, device",
+   "why": "Dataset balance",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "AI Team",
+   "name": "Model Performance",
+   "viz": "ROC, PR, confusion matrix",
+   "feature": "Accuracy, recall, specificity",
+   "why": "Model evaluation",
+   "priority": "P1",
+   "status": "partial"
+  },
+  {
+   "role": "AI Governance",
+   "name": "Fairness Dashboard",
+   "viz": "Group comparison chart",
+   "feature": "Age/sex/site/device bias",
+   "why": "Responsible AI",
+   "priority": "P1",
+   "status": "built"
+  },
+  {
+   "role": "MLOps",
+   "name": "Drift Dashboard",
+   "viz": "Trend chart",
+   "feature": "Data/model/output drift",
+   "why": "Production monitoring",
+   "priority": "P2",
+   "status": "partial"
+  }
+ ],
+ "summary": {
+  "total": 30,
+  "built": 9,
+  "partial": 9,
+  "planned": 12
+ }
+}
