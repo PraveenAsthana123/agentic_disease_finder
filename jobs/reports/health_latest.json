@@ -1,0 +1,11 @@
+{
+ "now": "2026-06-25 09:59 MDT",
+ "backend_http": "200",
+ "api_errors": 0,
+ "api_total": 12,
+ "backend_500s": 0,
+ "tracebacks": 0,
+ "db": "ok",
+ "frontend_http": "000",
+ "total_errors": 0
+}

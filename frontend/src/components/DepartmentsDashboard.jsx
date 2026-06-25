@@ -4510,7 +4510,7 @@ function RequestInboxPanel() {
                 <td style={{ ...cellTd, whiteSpace: 'nowrap', fontSize: 10 }}>{(r.ts_local || '').slice(0, 16).replace('T', ' ')}</td>
                 <td style={{ ...cellTd, textAlign: 'left' }}>{(r.status === 'done' || r.status === 'addressed') ? <s style={{ color: '#64748b' }}>{r.request_text}</s> : r.request_text}</td>
                 <td style={{ ...cellTd, fontWeight: 700, color: scol[r.status] }}>{r.status}</td>
-                <td style={{ ...cellTd, textAlign:'left', fontSize:10, color:'#475569' }}>{r.impl_tab ? `${r.impl_tab} · ${r.impl_api||'-'} · ${r.tested||'?'}` : '—'}</td>
+                <td style={{ ...cellTd, textAlign:'left', fontSize:10 }}>{r.impl_tab ? <span style={{ display:'inline-block', background:'#dcfce7', color:'#166534', fontWeight:700, padding:'2px 8px', borderRadius:10, border:'1px solid #16a34a' }}>✓ BUILT → {r.impl_tab}{r.tested && r.tested.startsWith('yes') ? ' ·✅tested' : ''}</span> : <span style={{color:'#94a3b8'}}>—</span>}<div style={{fontSize:9,color:'#94a3b8',marginTop:2}}>{r.impl_api && r.impl_api!=='-' ? r.impl_api : ''}</div></td>
                 <td style={{ ...cellTd, whiteSpace: 'nowrap' }}>
                   <button onClick={() => setStatus(r.id, 'addressed')} title="addressed" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>✅</button>
                   <button onClick={() => setStatus(r.id, 'pending')} title="pending" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>⏳</button>
