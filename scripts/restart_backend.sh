@@ -17,7 +17,7 @@ disown 2>/dev/null
 # 4. wait for health 200 (max ~120s; heavy ML imports)
 for i in $(seq 1 60); do
   [ "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:${PORT}/api/data-manager -m 5 2>/dev/null)" = "200" ] && {
-    echo "backend UP (~$((i*2))s, $(pgrep -cf 'python3 api_backend.py') proc)"; exit 0; }
+    bash scripts/track.sh "backend restarted + healthy" "ops"; echo "backend UP (~$((i*2))s, $(pgrep -cf 'python3 api_backend.py') proc)"; exit 0; }
   sleep 2
 done
 echo "backend FAILED to come up in 120s"; exit 1

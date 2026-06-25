@@ -10,5 +10,5 @@ ahead=$(git rev-list --count origin/"$br".."$br" 2>/dev/null || echo 0)
 [ "$ahead" = "0" ] && { echo "nothing to push"; exit 0; }
 # fast-forward check: local must contain remote tip (no force needed)
 git merge-base --is-ancestor origin/"$br" "$br" 2>/dev/null || { echo "SKIP: not fast-forward — operator-gated (would need force)"; exit 3; }
-echo "auto-push: $ahead commit(s) → origin/$br (fast-forward)"
+bash scripts/track.sh "auto-push $ahead commits" "git"; echo "auto-push: $ahead commit(s) → origin/$br (fast-forward)"
 git push origin "$br" 2>&1 | tail -2
