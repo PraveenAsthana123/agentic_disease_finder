@@ -1,0 +1,35 @@
+{
+  "title": "Per-Role End-to-End Process Flows",
+  "note": "Each role's complete workflow as a mermaid flowchart. Patient → … → audit. Default flow for roles without a specific one.",
+  "updated_at": "2026-06-24",
+  "default": {
+    "steps": ["Receive case", "Review inputs", "Run AI analysis", "Validate findings", "Record decision", "Sign-off + audit"],
+    "mermaid": "graph LR\n  A[Receive case]-->B[Review inputs]\n  B-->C[AI analysis]\n  C-->D[Validate]\n  D-->E[Decision]\n  E-->F[Sign-off + audit]"
+  },
+  "roles": {
+    "Neurologist": {
+      "steps": ["Patient referral", "Load EEG + history", "AI seizure analysis", "Explainability (SHAP)", "Review biomarkers + localization", "MRI/EEG concordance", "Human validation / override", "Final impression", "Sign-off → audit"],
+      "mermaid": "graph LR\n  A[Patient referral]-->B[Load EEG + history]\n  B-->C[AI seizure analysis]\n  C-->D[Explainability SHAP]\n  D-->E[Biomarkers + localization]\n  E-->F[MRI/EEG concordance]\n  F-->G{Human validate}\n  G-->|agree|H[Final impression]\n  G-->|override|H\n  H-->I[Sign-off + audit]"
+    },
+    "EEG Technician": {
+      "steps": ["Patient prep + consent", "Electrode placement (10-20)", "Impedance check", "Recording + activation", "Event + artifact annotation", "Signal QC", "Export EDF + report", "Hand-off to neurologist"],
+      "mermaid": "graph LR\n  A[Prep + consent]-->B[10-20 placement]\n  B-->C[Impedance check]\n  C-->D[Record + activation]\n  D-->E[Event + artifact annotation]\n  E-->F{Signal QC}\n  F-->|pass|G[Export EDF + report]\n  F-->|fail|D\n  G-->H[Hand-off]"
+    },
+    "Clinical Neurophysiologist": {
+      "steps": ["Receive study", "Background rhythm assessment", "Interictal/epileptiform review", "Localization", "Seizure review + evolution", "Artifact review", "AI label validation", "Interpretation report", "Deliver labels to AI/research"],
+      "mermaid": "graph LR\n  A[Receive study]-->B[Background rhythm]\n  B-->C[Epileptiform review]\n  C-->D[Localization]\n  D-->E[Seizure review]\n  E-->F[Artifact review]\n  F-->G[AI label validation]\n  G-->H[Interpretation report]\n  H-->I[Deliver labels]"
+    },
+    "Patient": {
+      "steps": ["Onboarding", "Log seizure diary", "Track triggers/sleep/meds", "Wearable sync", "View risk + reports", "Telehealth / messaging", "Follow-up"],
+      "mermaid": "graph LR\n  A[Onboarding]-->B[Seizure diary]\n  B-->C[Track triggers/sleep/meds]\n  C-->D[Wearable sync]\n  D-->E[Risk + reports]\n  E-->F[Telehealth]\n  F-->G[Follow-up]"
+    },
+    "AI Governance": {
+      "steps": ["Model registration", "Training-data governance", "Explainability check", "Fairness + bias scan", "Human-oversight gate", "Clinical validation", "Risk review", "Approve/reject", "Audit + monitor drift"],
+      "mermaid": "graph LR\n  A[Model registration]-->B[Data governance]\n  B-->C[Explainability]\n  C-->D[Fairness scan]\n  D-->E{Human oversight}\n  E-->F[Clinical validation]\n  F-->G[Risk review]\n  G-->H{Approve?}\n  H-->|yes|I[Deploy + monitor]\n  H-->|no|A"
+    },
+    "Pharmacist": {
+      "steps": ["Medication review", "Adherence check", "Drug-interaction scan", "TDM levels", "Side-effect assessment", "Recommendation", "Counsel patient", "Document + audit"],
+      "mermaid": "graph LR\n  A[Med review]-->B[Adherence]\n  B-->C[Interaction scan]\n  C-->D[TDM levels]\n  D-->E[Side effects]\n  E-->F[Recommendation]\n  F-->G[Counsel]\n  G-->H[Document]"
+    }
+  }
+}

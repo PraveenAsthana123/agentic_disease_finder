@@ -633,6 +633,17 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/role-process-flow/{role}")
+async def role_process_flow(role: str):
+    """End-to-end process flow (steps + mermaid) for a given role; default if not specific."""
+    p = Path(__file__).parent / "config" / "role_process_flows.json"
+    cfg = json.loads(p.read_text()) if p.exists() else {"default": {}, "roles": {}}
+    roles = cfg.get("roles", {})
+    # match by substring (e.g. "Neurologist / Epileptologist" → "Neurologist")
+    match = next((v for k, v in roles.items() if k.lower() in role.lower() or role.lower() in k.lower()), None)
+    return {"role": role, "flow": match or cfg.get("default", {})}
+
+
 @app.get("/api/eeg-ai-rag-pipeline")
 async def eeg_ai_rag_pipeline():
     """Complete 23-step EEG→AI→RAG pipeline with honest per-step status + where-it-lives."""

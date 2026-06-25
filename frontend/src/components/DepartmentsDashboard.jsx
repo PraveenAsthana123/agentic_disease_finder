@@ -225,7 +225,7 @@ function subTabsFor(dept) {
     { id: 'kpi', label: 'KPI' },
   ]
   // Neurologist-centric clinical workbench (first for clinical roles).
-  if (dept.clinical) base.unshift({ id: 'workbench', label: '🩺 Clinical Workbench' })
+  if (dept.clinical) base.unshift({ id: 'workbench', label: '🩺 Clinical Workbench' }, { id: 'process_flow', label: '🔀 Process Flow (end-to-end)' })
   // Rich operational tabs for EVERY department (clinical + governance/ops roles).
   base.push(
     { id: 'r_dashboard', label: 'Dashboard & Reports' },
@@ -629,6 +629,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'psych_process' && <StepProcess steps={PSYCH_STEPS} title="Psychiatric Process" disease={selectedDisease} />}
         {['regions', 'bands', 'waves', 'signature', 'phases', 'deep', 'shap', 'interpret', 'rai', 'ai_must_know'].includes(activeSub) && <EegAnalysisPanel view={activeSub} disease={selectedDisease} />}
         {activeSub === 'workbench' && <NeurologistWorkbench roleName={dept.name} disease={selectedDisease} />}
+        {activeSub === 'process_flow' && <RoleProcessFlow roleName={dept.name} />}
         {activeSub === 'eeg_veeg_report' && <EegVeegReport />}
         {activeSub === 'onboarding' && <OnboardingWizard />}
         {activeSub === 'seizure_diary' && <SeizureDiary />}
@@ -4256,6 +4257,38 @@ function RoleSpecsPanel() {
           {r.note && <div style={{ fontSize: 11, color: '#166534', marginTop: 4 }}>✓ {r.note}</div>}
         </div>
       ))}
+    </div>
+  )
+}
+
+function RoleProcessFlow({ roleName }) {
+  const [d, setD] = useState(null)
+  const ref = React.useRef(null)
+  useEffect(() => { axios.get(`${API_URL}/role-process-flow/${encodeURIComponent(roleName)}`).then(r => setD(r.data)).catch(() => setD(null)) }, [roleName])
+  useEffect(() => {
+    const m = d?.flow?.mermaid
+    if (m && ref.current) {
+      ref.current.removeAttribute('data-processed'); ref.current.textContent = m
+      try { mermaid.run({ nodes: [ref.current] }) } catch (e) { /* noop */ }
+    }
+  }, [d])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Loading… (backend :8010)</div></div>
+  const steps = d.flow?.steps || []
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔀 {roleName} — End-to-End Process Flow</h3>
+        <div ref={ref} className="mermaid" style={{ overflowX: 'auto', background: '#f8fafc', borderRadius: 8, padding: 12, textAlign: 'center' }}>{d.flow?.mermaid}</div>
+      </div>
+      <div style={card}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 8 }}>Steps ({steps.length})</div>
+        {steps.map((s, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '5px 0', borderBottom: i < steps.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
+            <span style={{ width: 24, height: 24, borderRadius: '50%', background: '#1e88e5', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{i + 1}</span>
+            <span style={{ fontSize: 13, color: '#334155' }}>{s}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
