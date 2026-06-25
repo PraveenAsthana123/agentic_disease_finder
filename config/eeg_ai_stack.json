@@ -1,7 +1,7 @@
 {
  "title": "EEG AI Ecosystem — Tool Stack (16 layers)",
  "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). §155 honest.",
- "updated_at": "2026-06-25T20:38:06Z",
+ "updated_at": "2026-06-25T20:43:41Z",
  "layers": [
   {
    "layer": "1. Core EEG analysis",
@@ -110,7 +110,8 @@
     },
     {
      "name": "TSFresh / TSFEL",
-     "status": "cataloged"
+     "status": "installed",
+     "endpoint": "/api/eeg-viz/tsfel-features"
     }
    ]
   },

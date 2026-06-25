@@ -1051,6 +1051,16 @@ async def catboost_model(disease: str = "epilepsy"):
     return _catboost_cache[disease]
 
 
+@app.get("/api/eeg-viz/tsfel-features")
+async def eeg_tsfel(file: str = None, seconds: float = 10.0):
+    """TSFEL features — automated statistical+temporal feature bank per channel from real EDF."""
+    import scripts.tsfel_features as tf
+    key = f"tsfel:{file}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(tf.extract(file, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
