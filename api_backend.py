@@ -586,6 +586,19 @@ async def clinical_trust(analysis_id: int = None, patient_id: str = None):
     return _json_safe(cdb.build_trust_panel(analysis_id=analysis_id, patient_id=patient_id))
 
 
+_shap_cache: dict = {}
+
+
+@app.get("/api/shap-explain")
+async def shap_explain(analysis_id: int = None, patient_id: str = None):
+    """Real local SHAP explanation — which features drove THIS prediction (Explainable-AI core)."""
+    import scripts.shap_explain as sx
+    key = f"{analysis_id}:{patient_id}"
+    if key not in _shap_cache:
+        _shap_cache[key] = _json_safe(sx.explain(analysis_id=analysis_id, patient_id=patient_id))
+    return _shap_cache[key]
+
+
 @app.post("/api/clinical-trust/decision")
 async def clinical_trust_decision(payload: dict = Body(...)):
     """Record the neurologist's Confirm/Reject/Needs-Review decision (human-oversight audit trail)."""

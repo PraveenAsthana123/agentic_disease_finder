@@ -4104,10 +4104,14 @@ function NeuroAiEcosystemPanel() {
 function ClinicalTrustPanel() {
   const [t, setT] = useState(null)
   const [audit, setAudit] = useState(null)
+  const [shap, setShap] = useState(null)
   const [note, setNote] = useState('')
   const [saved, setSaved] = useState('')
   const load = () => {
-    axios.get(`${API_URL}/clinical-trust`).then(r => setT(r.data)).catch(() => setT(null))
+    axios.get(`${API_URL}/clinical-trust`).then(r => {
+      setT(r.data)
+      if (r.data?.available) axios.get(`${API_URL}/shap-explain`, { params: { analysis_id: r.data.analysis_id } }).then(s => setShap(s.data)).catch(() => setShap(null))
+    }).catch(() => setT(null))
     axios.get(`${API_URL}/clinical-decisions`).then(r => setAudit(r.data)).catch(() => setAudit(null))
   }
   useEffect(load, [])
@@ -4143,6 +4147,26 @@ function ClinicalTrustPanel() {
         {row('Artifact Risk', <span style={{ color: riskCol }}>{t.artifact_risk}</span>, t.artifact_basis)}
         {row('Signal Quality', t.signal_quality)}
       </div>
+      {shap?.available && (
+        <div style={{ ...card, borderLeft: '4px solid #7c3aed' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>🔍 Why this prediction? <span style={{ fontSize: 12, color: '#7c3aed' }}>(real SHAP — {shap.method})</span></h4>
+          <div style={{ fontSize: 12, color: '#475569', marginBottom: 8 }}>{shap.interpretation}</div>
+          {shap.top_features.map((f, i) => {
+            const up = f.shap > 0
+            const w = Math.min(100, Math.abs(f.shap) / Math.abs(shap.top_features[0].shap) * 100)
+            return (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '3px 0' }}>
+                <span style={{ width: 130, fontSize: 12, color: '#0f172a', fontFamily: 'monospace' }}>{f.feature}</span>
+                <div style={{ flex: 1, background: '#f1f5f9', borderRadius: 4, height: 16, position: 'relative' }}>
+                  <div style={{ width: `${w}%`, height: '100%', background: up ? '#16a34a' : '#dc2626', borderRadius: 4 }} />
+                </div>
+                <span style={{ width: 110, fontSize: 11, color: up ? '#16a34a' : '#dc2626', textAlign: 'right' }}>{f.direction} ({f.shap > 0 ? '+' : ''}{f.shap})</span>
+              </div>
+            )
+          })}
+          <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 6 }}>Background: {shap.background} · base {shap.base_value} · {shap.note}</div>
+        </div>
+      )}
       <div style={card}>
         <h4 style={{ marginTop: 0, color: '#0f172a' }}>Neurologist decision (human oversight)</h4>
         <textarea value={note} onChange={e => setNote(e.target.value)} placeholder="Optional clinical note…" style={{ width: '100%', minHeight: 50, padding: 8, border: '1px solid #cbd5e1', borderRadius: 6, fontSize: 13 }} />

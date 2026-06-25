@@ -128,7 +128,7 @@
    "feature": "Why AI predicted seizure",
    "why": "Trust + validation",
    "priority": "P1",
-   "status": "partial"
+   "status": "built"
   },
   {
    "role": "Neurologist",
@@ -295,8 +295,8 @@
  ],
  "summary": {
   "total": 30,
-  "built": 12,
-  "partial": 8,
+  "built": 13,
+  "partial": 7,
   "planned": 10
  }
 }
