@@ -689,6 +689,13 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
+@app.get("/api/expert-roles")
+async def expert_roles():
+    """8 multidisciplinary expert roles (Pharmacist/Nurse/SLP/OT/Dietitian/Psychologist/MSW/Coordinator) — tasks w/ steps+challenges+status."""
+    p = Path(__file__).parent / "config" / "expert_roles.json"
+    return json.loads(p.read_text()) if p.exists() else {"roles": []}
+
+
 @app.get("/api/patient-compare")
 async def patient_compare(a: str, b: str):
     """Side-by-side comparison of two patients (demographics + assessments + EEG + seizures)."""

@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -650,6 +650,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'data_manager' && <DataManagerPanel />}
         {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
         {activeSub === 'patient_compare' && <PatientComparePanel />}
+        {activeSub === 'expert_roles' && <ExpertRolesPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4417,6 +4418,57 @@ function DriftPanel() {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function ExpertRolesPanel() {
+  const [d, setD] = useState(null)
+  const [openR, setOpenR] = useState(0)
+  const [openT, setOpenT] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/expert-roles`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const scol = { built: '#16a34a', partial: '#f59e0b', planned: '#94a3b8' }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #0891b2' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>👨‍⚕️ Multidisciplinary Expert Roles ({d.summary?.roles})</h3>
+        <div style={{ fontSize: 12, color: '#475569' }}>{d.note}</div>
+        <div style={{ fontSize: 13, marginTop: 6 }}>tasks: <b style={{ color: scol.partial }}>{d.summary?.partial} partial</b> · <b style={{ color: scol.planned }}>{d.summary?.planned} planned</b> ({d.summary?.total_tasks} total)</div>
+      </div>
+      {(d.roles || []).map((r, ri) => (
+        <div key={ri} style={{ ...card, marginBottom: 8 }}>
+          <div onClick={() => setOpenR(openR === ri ? -1 : ri)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+            <span style={{ fontSize: 18 }}>{r.icon}</span>
+            <strong style={{ color: '#0f172a', flex: 1 }}>{r.role}</strong>
+            <span style={{ fontSize: 11, color: '#64748b' }}>{r.tasks.length} tasks</span>
+            <span style={{ color: '#94a3b8' }}>{openR === ri ? '▾' : '▸'}</span>
+          </div>
+          {openR === ri && (
+            <div style={{ marginTop: 8 }}>
+              <div style={{ fontSize: 12, color: '#475569', marginBottom: 8 }}>{r.mission} <span style={{ color: '#0891b2' }}>· {r.data_hook}</span></div>
+              {r.tasks.map((t, ti) => {
+                const key = `${ri}-${ti}`
+                return (
+                  <div key={ti} style={{ border: '1px solid #e5e7eb', borderRadius: 6, marginBottom: 5 }}>
+                    <div onClick={() => setOpenT(openT === key ? null : key)} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 10px', cursor: 'pointer', background: '#f8fafc' }}>
+                      <span style={{ fontSize: 12, fontWeight: 600, color: '#0f172a', flex: 1 }}>{t.name}</span>
+                      <span style={{ fontSize: 10, color: '#64748b' }}>{t.ai_feature}</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: scol[t.status], textTransform: 'uppercase' }}>● {t.status}</span>
+                    </div>
+                    {openT === key && (
+                      <div style={{ padding: '8px 12px', fontSize: 12 }}>
+                        <b style={{ color: '#16a34a' }}>Steps:</b><ol style={{ margin: '3px 0', paddingLeft: 18, color: '#334155' }}>{t.steps.map((s, j) => <li key={j}>{s}</li>)}</ol>
+                        <b style={{ color: '#dc2626' }}>Challenges:</b><ul style={{ margin: '3px 0', paddingLeft: 18, color: '#334155' }}>{t.challenges.map((s, j) => <li key={j}>{s}</li>)}</ul>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   )
 }
