@@ -696,6 +696,19 @@ async def model_performance():
     return _json_safe(mp.build())
 
 
+@app.get("/api/conversation")
+async def conversation():
+    """Full I/O chain — operator inputs + assistant responses, timestamped."""
+    return _json_safe(cdb.list_convo())
+
+
+@app.get("/api/automation-status")
+async def automation_status():
+    """How do I know the automation works — plan/crons/count/system/crash-survival/completion."""
+    import scripts.automation_status as a
+    return _json_safe(a.build())
+
+
 @app.get("/api/requests")
 async def list_requests(status: str = None):
     """Operator request inbox — every input logged, with status (open/done/blocked)."""

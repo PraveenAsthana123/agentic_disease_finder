@@ -1500,3 +1500,29 @@ def update_request(rid: int, status: str = None, notes: str = None) -> dict:
         if notes is not None:
             c.execute("UPDATE operator_requests SET notes=?, updated_at=? WHERE id=?", (notes, _now(), rid))
     return {"id": rid, "status": status, "updated": True}
+
+
+# ── Conversation Log (both operator inputs + assistant responses) ───────────
+def _ensure_convo():
+    with _connect() as c:
+        c.execute("""CREATE TABLE IF NOT EXISTS conversation_log (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, role TEXT, text TEXT,
+            ts_utc TEXT, ts_local TEXT)""")
+
+
+def log_convo(role: str, text: str) -> dict:
+    _ensure_convo()
+    text = (text or "").strip()
+    if not text:
+        return {}
+    with _connect() as c:
+        cur = c.execute("INSERT INTO conversation_log(role,text,ts_utc,ts_local) VALUES(?,?,?,?)",
+                        (role, text[:8000], _utc(), _now()))
+    return {"id": cur.lastrowid}
+
+
+def list_convo(limit: int = 200) -> dict:
+    _ensure_convo()
+    with _connect() as c:
+        rows = [dict(r) for r in c.execute("SELECT * FROM conversation_log ORDER BY id DESC LIMIT ?", (limit,)).fetchall()]
+    return {"items": rows, "count": len(rows)}

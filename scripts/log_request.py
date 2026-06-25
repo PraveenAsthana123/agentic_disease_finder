@@ -19,6 +19,9 @@ if any(k in text for k in ("scripts/","§159","NEVER force-push","safe_push.sh")
 if not text:
     sys.exit(0)
 
+cdb.log_convo("operator", text)
+_cm=__import__("pathlib").Path("/media/praveen/Asthana4/rajveer/agenticfinder/prompt_inputs/CONVERSATION.md")
+open(_cm,"a").write(f"\n### OPERATOR\n{text}\n")
 res = cdb.save_request(text, source="chat")
 if res.get("deduped"):
     sys.exit(0)

@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -644,6 +644,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'eeg_stack' && <EegAiStackPanel />}
         {activeSub === 'neuro_ecosystem' && <NeuroAiEcosystemPanel />}
         {activeSub === 'request_inbox' && <RequestInboxPanel />}
+        {activeSub === 'automation_status' && <AutomationStatusPanel />}
         {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
@@ -4427,6 +4428,48 @@ function DriftPanel() {
             ))}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function AutomationStatusPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => {
+    const f = () => axios.get(`${API_URL}/automation-status`).then(r => setD(r.data)).catch(() => setD(null))
+    f(); const t = setInterval(f, 15000); return () => clearInterval(t)
+  }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const yn = (b) => b ? <span style={{ color: '#16a34a', fontWeight: 700 }}>✅ YES</span> : <span style={{ color: '#dc2626', fontWeight: 700 }}>❌ NO</span>
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #16a34a' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🤖 Automation Status <span style={{ fontSize: 11, color: '#94a3b8' }}>(live 15s · {d.now})</span></h3>
+        <table style={{ fontSize: 13, borderCollapse: 'collapse' }}><tbody>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Plan created</td><td style={cellTd}>{yn(d.plan_created)} <span style={{ fontSize: 11, color: '#94a3b8' }}>{d.plan_updated}</span></td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Cron daemon running</td><td style={cellTd}>{yn(d.cron_daemon_running)} — {d.system}</td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Jobs (this project)</td><td style={{ ...cellTd, fontWeight: 700 }}>{d.n_jobs_this_project}</td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Survives crash/reboot</td><td style={cellTd}>{yn(d.survives_crash)}</td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>AUTO-BUILD armed</td><td style={cellTd}>{yn(d.autobuild_armed)}</td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Independent</td><td style={{ ...cellTd, fontSize: 11 }}>{d.independent}</td></tr>
+          <tr><td style={{ ...cellTd, color: '#475569' }}>Completion</td><td style={{ ...cellTd, fontSize: 11 }}>{d.completion}</td></tr>
+        </tbody></table>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Scheduled jobs ({d.n_jobs_this_project})</h4>
+        <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+          <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Schedule</th><th style={{ ...cellTh, textAlign: 'left' }}>Job</th></tr></thead>
+          <tbody>{d.jobs.map((j, i) => (
+            <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+              <td style={{ ...cellTd, fontFamily: 'monospace' }}>{j.schedule}</td>
+              <td style={{ ...cellTd, textAlign: 'left', fontWeight: 600 }}>{j.tag}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Recent activity (timestamped)</h4>
+        <pre style={{ background: '#f1f5f9', color: '#334155', padding: 10, borderRadius: 6, fontSize: 11, overflow: 'auto', maxHeight: 200, border: '1px solid #e5e7eb' }}>{(d.recent_events || []).join('\n') || '(none)'}</pre>
       </div>
     </div>
   )

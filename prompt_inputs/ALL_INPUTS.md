@@ -8,3 +8,4 @@
 7. bash scripts/safe_push.sh (auto-push, fast-forward only).
 8. bash scripts/track.sh "built+pushed: <item name>" "autobuild"
 If you cannot complete + verify, do NOT commit; run scripts/track.sh with the failure reason and exit. NEVER force-push, NEVER first-publish, NEVER fabricate data, NEVER fake done.
+- [ ] **#25** [2026-06-25 09:55:03 MDT] how do I know plan  got created or not , cron job got ceated or not , how many job going to run, which system , are all independing, sequence, if system crash all will stop or still run , will that complete the complete, will that reflect ion UI
