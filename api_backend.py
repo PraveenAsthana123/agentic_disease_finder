@@ -917,6 +917,21 @@ async def eeg_viz_traces(file: str = None, start: float = 0.0, seconds: float = 
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/bad-channels")
+async def eeg_viz_bad_channels(file: str = None, seconds: float = 30.0):
+    """Bad Channel Dashboard — per-channel signal-quality QC (flat/disconnected/noisy/line-noise)."""
+    import scripts.eeg_viz as viz
+    import scripts.eeg_quality as q
+    if not file:
+        file = viz.list_presets().get("default")
+    if not file:
+        return {"available": False, "error": "No EDF recordings found on disk."}
+    key = f"badch:{file}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(q.bad_channels(file, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
