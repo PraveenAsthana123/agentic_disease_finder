@@ -92,7 +92,7 @@
    "feature": "Transient seizure patterns",
    "why": "Better than FFT",
    "priority": "P1",
-   "status": "planned"
+   "status": "built"
   },
   {
    "role": "Neurologist",
@@ -295,8 +295,8 @@
  ],
  "summary": {
   "total": 30,
-  "built": 16,
+  "built": 17,
   "partial": 6,
-  "planned": 8
+  "planned": 7
  }
 }

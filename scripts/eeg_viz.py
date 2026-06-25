@@ -79,6 +79,27 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
     ax1.set_title(f"Spectrogram — {ch_names[var_ch]} (highest-variance channel)", fontsize=9)
     spectrogram_png = _png_b64(fig1)
 
+    # ── Wavelet scalogram (CWT via PyWavelets — transient/seizure patterns, better than FFT) ──
+    scalogram_png = None
+    try:
+        import pywt
+        sigw = data[var_ch]
+        # downsample long signals for tractable CWT
+        step = max(1, len(sigw) // 2000)
+        sigw = sigw[::step]
+        fs_w = sf / step
+        scales = np.arange(1, 64)
+        coef, _ = pywt.cwt(sigw, scales, "morl", sampling_period=1.0 / fs_w)
+        freqs_w = pywt.scale2frequency("morl", scales) * fs_w
+        tw = np.arange(sigw.shape[0]) / fs_w
+        figw, axw = plt.subplots(figsize=(6, 2.6))
+        axw.pcolormesh(tw, freqs_w, np.abs(coef), shading="gouraud", cmap="magma")
+        axw.set_ylabel("Hz"); axw.set_xlabel("Time (s)"); axw.set_ylim(0.5, 45)
+        axw.set_title(f"Wavelet scalogram (Morlet CWT) — {ch_names[var_ch]}", fontsize=9)
+        scalogram_png = _png_b64(figw)
+    except Exception as _e:
+        scalogram_png = None
+
     # ── Topomap (only if monopolar 10-20) ──
     cleaned = [_clean_name(c) for c in ch_names]
     montage = mne.channels.make_standard_montage("standard_1020")
@@ -189,6 +210,7 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
         "psd_curve": psd_curve,
         "band_power": band_power,
         "spectrogram_png": spectrogram_png,
+        "scalogram_png": scalogram_png,
         "topomap_png": topomap_png, "topomap_note": topomap_note,
         "per_channel_alpha": per_channel_alpha,
         "source": "Real EDF via MNE-Python + SciPy (no synthetic data).",

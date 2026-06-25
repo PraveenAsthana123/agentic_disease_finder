@@ -4318,6 +4318,13 @@ function EegVizPanel() {
             <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spectrogram (P0) — time-frequency evolution</h4>
             <img src={v.spectrogram_png} alt="spectrogram" style={{ width: '100%', maxWidth: 640, borderRadius: 6, border: '1px solid #e5e7eb' }} />
           </div>
+          {v.scalogram_png && (
+            <div style={card}>
+              <h4 style={{ marginTop: 0, color: '#0f172a' }}>Wavelet Scalogram — Morlet CWT (transient patterns)</h4>
+              <img src={v.scalogram_png} alt="scalogram" style={{ width: '100%', maxWidth: 640, borderRadius: 6, border: '1px solid #e5e7eb' }} />
+              <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>Continuous wavelet transform (PyWavelets) — resolves brief seizure transients better than FFT.</div>
+            </div>
+          )}
           {v.spikes?.available && (
             <div style={card}>
               <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spike / sharp-wave detection (screening)</h4>
