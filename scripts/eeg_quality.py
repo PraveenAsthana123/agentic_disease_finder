@@ -87,3 +87,73 @@ if __name__ == "__main__":
     print("Bad channel QC:", r["verdict_distribution"], "| quality:", r["quality"])
     for c in r["bad_channels"][:6]:
         print(f"  {c['channel']}: {c['verdict']} (std={c['std_uv']}µV line={c['line_noise_rel']})")
+
+
+def artifact_review(edf_path: str, seconds: float = 60.0, window_s: float = 2.0) -> dict:
+    """Window-based artifact detection from real EDF — eye-blink (frontal transients),
+    muscle/EMG (high-freq power), line-noise (50/60 Hz), and movement (broadband
+    high amplitude). Returns per-window flags + clean-data percentage."""
+    import mne
+    import numpy as np
+    from scipy import signal as sps
+
+    p = Path(edf_path)
+    if not p.is_absolute():
+        p = ROOT / edf_path
+    if not p.exists():
+        return {"available": False, "error": f"EDF not found: {edf_path}"}
+
+    raw = mne.io.read_raw_edf(str(p), preload=True, verbose="ERROR")
+    sf = float(raw.info["sfreq"])
+    raw.crop(tmin=0, tmax=min(seconds, raw.times[-1]))
+    uv = raw.get_data() * 1e6
+    ch = raw.ch_names
+    frontal = [i for i, c in enumerate(ch) if "FP" in c.upper() or "FT" in c.upper()]
+    win = int(window_s * sf)
+    n_win = max(1, uv.shape[1] // win)
+
+    types = {"eye_blink": 0, "muscle": 0, "line_noise": 0, "movement": 0}
+    windows = []
+    for w in range(n_win):
+        seg = uv[:, w * win:(w + 1) * win]
+        if seg.shape[1] < win // 2:
+            break
+        flags = []
+        # eye-blink: large low-freq deflection in frontal channels
+        if frontal:
+            fseg = seg[frontal]
+            if float(np.abs(fseg).max()) > 150 and float(fseg.std()) > 40:
+                flags.append("eye_blink")
+        # muscle: high-freq (>30Hz) power ratio elevated
+        f, ps = sps.welch(seg, fs=sf, nperseg=int(min(sf, seg.shape[1])))
+        hf = ps[:, (f >= 30) & (f < 70)].sum(axis=1)
+        lf = ps[:, (f >= 1) & (f < 30)].sum(axis=1) + 1e-20
+        if float((hf / lf).max()) > 1.0:
+            flags.append("muscle")
+        # line noise: 50/60 Hz dominant
+        ln = np.maximum(ps[:, (f >= 48) & (f < 52)].sum(axis=1),
+                        ps[:, (f >= 58) & (f < 62)].sum(axis=1))
+        tot = ps[:, f <= 70].sum(axis=1) + 1e-20
+        if float((ln / tot).max()) > 0.30:
+            flags.append("line_noise")
+        # movement: broadband high amplitude across many channels
+        if float(np.median(np.abs(seg).max(axis=1))) > 300:
+            flags.append("movement")
+        for fl in flags:
+            types[fl] += 1
+        windows.append({"window": w, "start_s": round(w * window_s, 1),
+                        "artifacts": flags, "clean": not flags})
+
+    clean = sum(1 for w in windows if w["clean"])
+    return {
+        "available": True, "file": p.name, "sfreq": sf, "n_channels": len(ch),
+        "window_s": window_s, "n_windows": len(windows),
+        "clean_windows": clean,
+        "clean_pct": round(100 * clean / len(windows), 1) if windows else 0.0,
+        "artifact_type_counts": types,
+        "windows": windows[:60],
+        "frontal_channels": [ch[i] for i in frontal],
+        "quality": "PASS" if windows and clean / len(windows) >= 0.8 else "REVIEW",
+        "note": ("Screening-grade artifact detection (eye-blink/muscle/line-noise/movement) "
+                 "over real EDF windows. Not ICA-based clinician artifact rejection."),
+    }
