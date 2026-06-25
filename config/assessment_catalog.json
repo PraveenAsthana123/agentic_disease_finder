@@ -1,56 +1,310 @@
 {
-  "title": "Clinical Assessment Catalog — Epilepsy EEG Thesis",
-  "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). §155 honest.",
-  "updated_at": "2026-06-24",
-  "top10_for_thesis": ["EEG Report", "Video EEG", "ILAE Seizure Classification", "MoCA", "MMSE", "MRI Brain Findings", "QOLIE-31", "PHQ-9", "GAD-7", "Barthel Index"],
-  "categories": [
-    {"category": "Neurologist / Epileptologist", "items": [
-      {"name": "EEG Report", "purpose": "Electrical brain activity", "output": "Normal/Abnormal", "specialist": "Neurologist", "priority": "mandatory", "status": "built"},
-      {"name": "Video EEG", "purpose": "Seizure confirmation", "output": "Seizure classification", "specialist": "Epileptologist", "priority": "mandatory", "status": "partial"},
-      {"name": "ILAE Seizure Classification", "purpose": "Standard epilepsy classification", "output": "Focal/Generalized", "specialist": "Neurologist", "priority": "mandatory", "status": "partial"},
-      {"name": "Seizure Frequency Diary", "purpose": "Disease severity", "output": "Seizures/month", "specialist": "Neurologist", "priority": "mandatory", "status": "built"},
-      {"name": "MRI Brain Review", "purpose": "Structural abnormalities", "output": "Lesion findings", "specialist": "Radiologist", "priority": "preferred", "status": "partial"},
-      {"name": "SUDEP Risk Assessment", "purpose": "Sudden death risk", "output": "Risk category", "specialist": "Neurologist", "priority": "valuable", "status": "planned"}
-    ]},
-    {"category": "Cognitive (Neuro / Neuropsych)", "items": [
-      {"name": "MoCA", "purpose": "Cognitive impairment screening", "output": "0-30", "specialist": "Neupropsychologist", "priority": "highly valuable", "status": "built"},
-      {"name": "MMSE", "purpose": "Global cognition", "output": "0-30", "specialist": "Neurologist", "priority": "valuable", "status": "planned"},
-      {"name": "WAIS (IQ)", "purpose": "IQ assessment", "output": "IQ score", "specialist": "Neuropsychologist", "priority": "valuable", "status": "planned"},
-      {"name": "Trail Making A/B", "purpose": "Executive function", "output": "Completion time", "specialist": "Neuropsychologist", "priority": "valuable", "status": "planned"},
-      {"name": "Digit Span", "purpose": "Working memory", "output": "Score", "specialist": "Neuropsychologist", "priority": "valuable", "status": "planned"}
-    ]},
-    {"category": "Psychiatric", "items": [
-      {"name": "PHQ-9", "purpose": "Depression screening", "output": "0-27", "specialist": "Psychiatrist", "priority": "valuable", "status": "built"},
-      {"name": "GAD-7", "purpose": "Anxiety screening", "output": "0-21", "specialist": "Psychiatrist", "priority": "valuable", "status": "built"},
-      {"name": "NDDI-E", "purpose": "Depression in epilepsy", "output": "Score", "specialist": "Psychiatrist", "priority": "valuable", "status": "built"},
-      {"name": "Beck Depression Inventory (BDI)", "purpose": "Depression", "output": "Severity", "specialist": "Psychiatrist", "priority": "valuable", "status": "planned"},
-      {"name": "Columbia Suicide Severity (C-SSRS)", "purpose": "Suicide risk", "output": "Risk category", "specialist": "Psychiatrist", "priority": "valuable", "status": "planned"}
-    ]},
-    {"category": "Epilepsy-specific", "items": [
-      {"name": "QOLIE-31", "purpose": "Quality of life in epilepsy", "output": "0-100", "specialist": "Epileptologist", "priority": "very valuable", "status": "planned"},
-      {"name": "Liverpool Seizure Severity Scale", "purpose": "Seizure severity", "output": "Score", "specialist": "Neurologist", "priority": "valuable", "status": "planned"},
-      {"name": "Epworth Sleepiness Scale", "purpose": "Daytime sleepiness", "output": "0-24", "specialist": "Neurologist", "priority": "valuable", "status": "planned"},
-      {"name": "Pittsburgh Sleep Quality Index (PSQI)", "purpose": "Sleep quality", "output": "Score", "specialist": "Neurologist", "priority": "valuable", "status": "planned"}
-    ]},
-    {"category": "Functional / ADL", "items": [
-      {"name": "Barthel Index", "purpose": "Activities of daily living", "output": "0-100", "specialist": "OT", "priority": "valuable", "status": "planned"},
-      {"name": "Katz ADL", "purpose": "Basic daily activities", "output": "Independence", "specialist": "OT", "priority": "valuable", "status": "planned"},
-      {"name": "Lawton IADL", "purpose": "Instrumental ADL", "output": "Score", "specialist": "OT", "priority": "valuable", "status": "planned"},
-      {"name": "FIM", "purpose": "Functional status", "output": "18-126", "specialist": "OT", "priority": "valuable", "status": "planned"}
-    ]},
-    {"category": "Occupational Therapy", "items": [
-      {"name": "COPM", "purpose": "Occupational performance", "output": "Score", "specialist": "OT", "priority": "valuable", "status": "built"},
-      {"name": "AMPS", "purpose": "Functional skills", "output": "Score", "specialist": "OT", "priority": "valuable", "status": "planned"}
-    ]}
-  ],
-  "research_variables": [
-    {"variable": "EEG Raw Data (EDF/EDF+)", "priority": "mandatory"},
-    {"variable": "Seizure Type", "priority": "mandatory"}, {"variable": "Age", "priority": "mandatory"},
-    {"variable": "Gender", "priority": "mandatory"}, {"variable": "Diagnosis", "priority": "mandatory"},
-    {"variable": "EEG Report", "priority": "mandatory"}, {"variable": "MRI Findings", "priority": "preferred"},
-    {"variable": "Medication History", "priority": "preferred"}, {"variable": "MoCA", "priority": "highly valuable"},
-    {"variable": "QOLIE-31", "priority": "very valuable"}, {"variable": "Neuropsych Reports", "priority": "very valuable"}
-  ],
-  "summary": {"total_instruments": 27, "built": 5, "partial": 4, "planned": 18,
-              "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets — each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."}
+ "title": "Clinical Assessment Catalog \u2014 Epilepsy EEG Thesis",
+ "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). \u00a7155 honest.",
+ "updated_at": "2026-06-24",
+ "top10_for_thesis": [
+  "EEG Report",
+  "Video EEG",
+  "ILAE Seizure Classification",
+  "MoCA",
+  "MMSE",
+  "MRI Brain Findings",
+  "QOLIE-31",
+  "PHQ-9",
+  "GAD-7",
+  "Barthel Index"
+ ],
+ "categories": [
+  {
+   "category": "Neurologist / Epileptologist",
+   "items": [
+    {
+     "name": "EEG Report",
+     "purpose": "Electrical brain activity",
+     "output": "Normal/Abnormal",
+     "specialist": "Neurologist",
+     "priority": "mandatory",
+     "status": "built"
+    },
+    {
+     "name": "Video EEG",
+     "purpose": "Seizure confirmation",
+     "output": "Seizure classification",
+     "specialist": "Epileptologist",
+     "priority": "mandatory",
+     "status": "partial"
+    },
+    {
+     "name": "ILAE Seizure Classification",
+     "purpose": "Standard epilepsy classification",
+     "output": "Focal/Generalized",
+     "specialist": "Neurologist",
+     "priority": "mandatory",
+     "status": "partial"
+    },
+    {
+     "name": "Seizure Frequency Diary",
+     "purpose": "Disease severity",
+     "output": "Seizures/month",
+     "specialist": "Neurologist",
+     "priority": "mandatory",
+     "status": "built"
+    },
+    {
+     "name": "MRI Brain Review",
+     "purpose": "Structural abnormalities",
+     "output": "Lesion findings",
+     "specialist": "Radiologist",
+     "priority": "preferred",
+     "status": "partial"
+    },
+    {
+     "name": "SUDEP Risk Assessment",
+     "purpose": "Sudden death risk",
+     "output": "Risk category",
+     "specialist": "Neurologist",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Cognitive (Neuro / Neuropsych)",
+   "items": [
+    {
+     "name": "MoCA",
+     "purpose": "Cognitive impairment screening",
+     "output": "0-30",
+     "specialist": "Neupropsychologist",
+     "priority": "highly valuable",
+     "status": "built"
+    },
+    {
+     "name": "MMSE",
+     "purpose": "Global cognition",
+     "output": "0-30",
+     "specialist": "Neurologist",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "WAIS (IQ)",
+     "purpose": "IQ assessment",
+     "output": "IQ score",
+     "specialist": "Neuropsychologist",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "Trail Making A/B",
+     "purpose": "Executive function",
+     "output": "Completion time",
+     "specialist": "Neuropsychologist",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "Digit Span",
+     "purpose": "Working memory",
+     "output": "Score",
+     "specialist": "Neuropsychologist",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Psychiatric",
+   "items": [
+    {
+     "name": "PHQ-9",
+     "purpose": "Depression screening",
+     "output": "0-27",
+     "specialist": "Psychiatrist",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "GAD-7",
+     "purpose": "Anxiety screening",
+     "output": "0-21",
+     "specialist": "Psychiatrist",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "NDDI-E",
+     "purpose": "Depression in epilepsy",
+     "output": "Score",
+     "specialist": "Psychiatrist",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "Beck Depression Inventory (BDI)",
+     "purpose": "Depression",
+     "output": "Severity",
+     "specialist": "Psychiatrist",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "Columbia Suicide Severity (C-SSRS)",
+     "purpose": "Suicide risk",
+     "output": "Risk category",
+     "specialist": "Psychiatrist",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Epilepsy-specific",
+   "items": [
+    {
+     "name": "QOLIE-31",
+     "purpose": "Quality of life in epilepsy",
+     "output": "0-100",
+     "specialist": "Epileptologist",
+     "priority": "very valuable",
+     "status": "built"
+    },
+    {
+     "name": "Liverpool Seizure Severity Scale",
+     "purpose": "Seizure severity",
+     "output": "Score",
+     "specialist": "Neurologist",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "Epworth Sleepiness Scale",
+     "purpose": "Daytime sleepiness",
+     "output": "0-24",
+     "specialist": "Neurologist",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "Pittsburgh Sleep Quality Index (PSQI)",
+     "purpose": "Sleep quality",
+     "output": "Score",
+     "specialist": "Neurologist",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Functional / ADL",
+   "items": [
+    {
+     "name": "Barthel Index",
+     "purpose": "Activities of daily living",
+     "output": "0-100",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "Katz ADL",
+     "purpose": "Basic daily activities",
+     "output": "Independence",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "Lawton IADL",
+     "purpose": "Instrumental ADL",
+     "output": "Score",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "planned"
+    },
+    {
+     "name": "FIM",
+     "purpose": "Functional status",
+     "output": "18-126",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Occupational Therapy",
+   "items": [
+    {
+     "name": "COPM",
+     "purpose": "Occupational performance",
+     "output": "Score",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "built"
+    },
+    {
+     "name": "AMPS",
+     "purpose": "Functional skills",
+     "output": "Score",
+     "specialist": "OT",
+     "priority": "valuable",
+     "status": "planned"
+    }
+   ]
+  }
+ ],
+ "research_variables": [
+  {
+   "variable": "EEG Raw Data (EDF/EDF+)",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "Seizure Type",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "Age",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "Gender",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "Diagnosis",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "EEG Report",
+   "priority": "mandatory"
+  },
+  {
+   "variable": "MRI Findings",
+   "priority": "preferred"
+  },
+  {
+   "variable": "Medication History",
+   "priority": "preferred"
+  },
+  {
+   "variable": "MoCA",
+   "priority": "highly valuable"
+  },
+  {
+   "variable": "QOLIE-31",
+   "priority": "very valuable"
+  },
+  {
+   "variable": "Neuropsych Reports",
+   "priority": "very valuable"
+  }
+ ],
+ "summary": {
+  "total_instruments": 27,
+  "built": 9,
+  "partial": 4,
+  "planned": 14,
+  "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets \u2014 each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."
+ }
 }
