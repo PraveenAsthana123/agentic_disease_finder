@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -634,6 +634,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'neuro_ecosystem' && <NeuroAiEcosystemPanel />}
         {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
+        {activeSub === 'eeg_viz' && <EegVizPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4215,6 +4216,77 @@ function ExpertDashboardCatalog() {
           </div>
         </div>
       ))}
+    </div>
+  )
+}
+
+function EegVizPanel() {
+  const [presets, setPresets] = useState(null)
+  const [file, setFile] = useState('')
+  const [v, setV] = useState(null)
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    axios.get(`${API_URL}/eeg-viz/presets`).then(r => { setPresets(r.data); setFile(r.data.default || '') }).catch(() => setPresets(null))
+  }, [])
+  useEffect(() => {
+    if (!file) return
+    setLoading(true); setV(null)
+    axios.get(`${API_URL}/eeg-viz`, { params: { file } }).then(r => { setV(r.data); setLoading(false) }).catch(() => { setV(null); setLoading(false) })
+  }, [file])
+  if (!presets) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧠 EEG Analysis Visuals <span style={{ fontSize: 12, color: '#166534' }}>(P0 — real MNE/SciPy on raw EDF)</span></h3>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 13, color: '#475569' }}>Recording:</span>
+          <select value={file} onChange={e => setFile(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+            {presets.presets.map(p => <option key={p.key} value={p.file}>{p.label}</option>)}
+          </select>
+          {loading && <span style={{ fontSize: 12, color: '#f59e0b' }}>⟳ rendering (real MNE pipeline, ~3-5s)…</span>}
+        </div>
+        {v?.available && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 6 }}>{v.file} · {v.n_channels} channels · {v.sfreq}Hz · {v.seconds_analyzed}s · {v.source}</div>}
+      </div>
+      {v && !v.available && <div style={card}><div style={{ color: '#dc2626' }}>{v.error || 'Render unavailable.'}</div></div>}
+      {v?.available && (
+        <>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>PSD — Power Spectral Density (P0)</h4>
+            <ResponsiveContainer width="100%" height={220}>
+              <LineChart data={v.psd_curve}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="freq" tick={{ fontSize: 11 }} label={{ value: 'Hz', position: 'insideBottom', offset: -2, fontSize: 11 }} />
+                <YAxis tick={{ fontSize: 11 }} label={{ value: 'dB', angle: -90, position: 'insideLeft', fontSize: 11 }} />
+                <Tooltip />
+                <Line type="monotone" dataKey="power_db" stroke="#1e88e5" dot={false} strokeWidth={2} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>Frequency Band Power (relative)</h4>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={v.band_power}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="band" tick={{ fontSize: 11 }} />
+                <YAxis tick={{ fontSize: 11 }} />
+                <Tooltip />
+                <Bar dataKey="rel_power" fill="#16a34a" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>Spectrogram (P0) — time-frequency evolution</h4>
+            <img src={v.spectrogram_png} alt="spectrogram" style={{ width: '100%', maxWidth: 640, borderRadius: 6, border: '1px solid #e5e7eb' }} />
+          </div>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>10-20 Scalp Topomap (P0)</h4>
+            {v.topomap_png
+              ? <img src={v.topomap_png} alt="topomap" style={{ maxWidth: 340, borderRadius: 6, border: '1px solid #e5e7eb' }} />
+              : <div style={{ fontSize: 13, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 10 }}>⚠ {v.topomap_note}</div>}
+            {v.topomap_note && v.topomap_png && <div style={{ fontSize: 11, color: '#64748b', marginTop: 4 }}>{v.topomap_note}</div>}
+          </div>
+        </>
+      )}
     </div>
   )
 }

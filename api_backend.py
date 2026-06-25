@@ -672,6 +672,30 @@ async def eeg_ai_stack():
     return json.loads(p.read_text()) if p.exists() else {"layers": []}
 
 
+_eeg_viz_cache: dict = {}
+
+
+@app.get("/api/eeg-viz/presets")
+async def eeg_viz_presets():
+    """Real EDF presets for the P0 clinical visuals (PSD/spectrogram/topomap)."""
+    import scripts.eeg_viz as viz
+    return viz.list_presets()
+
+
+@app.get("/api/eeg-viz")
+async def eeg_viz(file: str = None, seconds: float = 10):
+    """Real EEG P0 visuals from raw EDF (MNE/SciPy): PSD curve, band power, spectrogram PNG, scalp topomap PNG."""
+    import scripts.eeg_viz as viz
+    if not file:
+        file = viz.list_presets().get("default")
+    if not file:
+        return {"available": False, "error": "No EDF presets found on disk."}
+    key = f"{file}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(viz.render(file, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
