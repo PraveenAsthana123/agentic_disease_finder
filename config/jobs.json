@@ -101,6 +101,15 @@
    "cron_tag": "CONSISTENCY",
    "report": "jobs/reports/consistency_latest.json",
    "purpose": "Verify SHAP explains the SAME model classify/Trust-Panel uses (guards model-bundle drift, commit 5c2b039)"
+  },
+  {
+   "id": "auto_plan",
+   "label": "\ud83e\udd16 Auto-Plan (pending+plan+cron-coverage)",
+   "script": "scripts/auto_plan.py",
+   "schedule": "08:00 + 20:00 daily",
+   "cron_tag": "AUTO-PLAN",
+   "report": "jobs/reports/auto_plan.md",
+   "purpose": "Auto-maintain full pending enumeration + ordered build plan + cron-coverage check (\u00a7158/\u00a7159)"
   }
  ]
 }
