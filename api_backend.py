@@ -717,6 +717,13 @@ async def data_manager_standardization(patient_id: str = None):
     return _json_safe(ts.standardize_levels(patient_id))
 
 
+@app.get("/api/data-manager/dataset-version")
+async def data_manager_dataset_version():
+    """Dataset Versioning — SHA-256 manifest of real dataset/model artifacts + composite fingerprint."""
+    import scripts.dataset_versioning as dv
+    return _json_safe(dv.version_manifest())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():

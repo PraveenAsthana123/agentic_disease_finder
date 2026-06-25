@@ -1,7 +1,7 @@
 {
  "role": "Clinical Data Manager (CDM)",
  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:33:51Z",
+ "updated_at": "2026-06-25T19:36:08Z",
  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
@@ -219,7 +219,7 @@
    "name": "Dataset Versioning",
    "ai_feature": "Dataset registry",
    "deliverable": "Version history",
-   "status": "partial",
+   "status": "built",
    "steps": [
     "Snapshot dataset + hash",
     "Record schema + row count + date",
@@ -230,6 +230,9 @@
     "No DVC wired (manual npz versioning)",
     "Large artifacts in git",
     "Reproducing an old dataset state"
+   ],
+   "endpoints": [
+    "/api/data-manager/dataset-version"
    ]
   },
   {
