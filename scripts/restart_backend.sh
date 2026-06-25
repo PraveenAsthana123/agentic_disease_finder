@@ -3,6 +3,9 @@
 # Exit 0 only when serving. Prevents zombie pile-up + commit-before-verify (loop gates on this).
 cd /media/praveen/Asthana4/rajveer/agenticfinder || exit 1
 PORT=8010
+# Canonical project venv (one-venv-per-project policy §61.11). Single source of truth.
+VENV_PY=/home/praveen/venv-ardupilot/bin/python3
+[ -x "$VENV_PY" ] || VENV_PY=python3   # fallback only if venv unreachable (§60)
 # 1. kill every instance
 pkill -9 -f "api_backend.py" 2>/dev/null
 fuser -k ${PORT}/tcp 2>/dev/null
@@ -11,11 +14,11 @@ for i in $(seq 1 20); do
   ss -ltn 2>/dev/null | grep -q ":${PORT} " || break
   sleep 1
 done
-# 3. launch detached
-setsid nohup python3 api_backend.py >> jobs/logs/backend.log 2>&1 < /dev/null &
+# 3. launch detached under the canonical venv
+setsid nohup "$VENV_PY" api_backend.py >> jobs/logs/backend.log 2>&1 < /dev/null &
 disown 2>/dev/null
 # 4. wait for health 200 (max ~120s; heavy ML imports)
-for i in $(seq 1 60); do
+for i in $(seq 1 90); do
   [ "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:${PORT}/api/data-manager -m 5 2>/dev/null)" = "200" ] && {
     bash scripts/track.sh "backend restarted + healthy" "ops"; echo "backend UP (~$((i*2))s, $(pgrep -cf 'python3 api_backend.py') proc)"; exit 0; }
   sleep 2

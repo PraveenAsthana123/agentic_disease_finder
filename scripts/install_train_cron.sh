@@ -5,7 +5,9 @@
 set -e
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TAG="# AGENTICFINDER-TRAIN"
-LINE="30 2 * * * cd $ROOT && /usr/bin/python3 scripts/scheduled_train.py >> jobs/logs/train.log 2>&1 $TAG"
+# Canonical project venv (one-venv-per-project policy §61.11)
+VENV_PY=/home/praveen/venv-ardupilot/bin/python3
+LINE="30 2 * * * cd $ROOT && $VENV_PY scripts/scheduled_train.py >> jobs/logs/train.log 2>&1 $TAG"
 mkdir -p "$ROOT/jobs/logs"
 case "${1:-install}" in
   install)
@@ -18,6 +20,6 @@ case "${1:-install}" in
   status)
     crontab -l 2>/dev/null | grep "$TAG" && echo "(installed)" || echo "(not installed)" ;;
   run)
-    cd "$ROOT" && python3 scripts/scheduled_train.py ;;
+    cd "$ROOT" && "$VENV_PY" scripts/scheduled_train.py ;;
   *) echo "usage: $0 [install|remove|status|run]"; exit 1 ;;
 esac
