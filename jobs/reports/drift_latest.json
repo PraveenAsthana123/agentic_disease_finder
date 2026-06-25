@@ -1,95 +1,95 @@
 {
   "available": true,
-  "run_at_local": "2026-06-24T22:37:16-06:00",
+  "run_at_local": "2026-06-24T22:51:04-06:00",
   "disease": "epilepsy",
-  "n_reference": 100,
+  "n_reference": 78,
   "n_live": 21,
   "n_features": 47,
-  "n_high_drift": 45,
-  "frac_drifted": 0.957,
+  "n_high_drift": 47,
+  "frac_drifted": 1.0,
   "verdict": "SEVERE drift",
   "top_drift": [
     {
-      "feature": "dominant_freq",
-      "psi": 26.8185,
-      "ks_stat": 0.5243,
+      "feature": "mean",
+      "psi": 21.725,
+      "ks_stat": 0.5256,
       "ks_p": 0.0001,
       "severity": "high"
     },
     {
-      "feature": "spectral_flatness",
-      "psi": 26.123,
-      "ks_stat": 1.0,
+      "feature": "line_length",
+      "psi": 20.5406,
+      "ks_stat": 0.641,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
-      "feature": "spectral_centroid",
-      "psi": 25.4732,
+      "feature": "spectral_entropy",
+      "psi": 20.2634,
+      "ks_stat": 0.6374,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "std",
+      "psi": 20.2164,
+      "ks_stat": 0.6667,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "rms",
+      "psi": 20.2164,
+      "ks_stat": 0.6667,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "lz_complexity",
+      "psi": 18.3255,
+      "ks_stat": 0.7143,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "peak_ratio",
+      "psi": 18.1126,
       "ks_stat": 0.7619,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
-      "feature": "hjorth_complexity",
-      "psi": 23.4684,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "hurst_exponent",
-      "psi": 23.4643,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "delta_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "theta_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "alpha_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "beta_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "gamma_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "total_power",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
+      "feature": "dfa_alpha",
+      "psi": 18.1126,
+      "ks_stat": 0.7619,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "psd_std",
-      "psi": 23.4633,
-      "ks_stat": 1.0,
+      "psi": 18.1011,
+      "ks_stat": 0.7619,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "hurst_exponent",
+      "psi": 18.1011,
+      "ks_stat": 0.7619,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "slope_changes",
+      "psi": 17.7877,
+      "ks_stat": 0.7619,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "max",
+      "psi": 17.7859,
+      "ks_stat": 0.685,
       "ks_p": 0.0,
       "severity": "high"
     }
