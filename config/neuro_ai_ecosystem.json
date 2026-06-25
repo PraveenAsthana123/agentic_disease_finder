@@ -1,0 +1,407 @@
+{
+ "title": "Neuro AI Platform \u2014 Open-Source Ecosystem (epilepsy / EEG / cognitive / neuropsychiatry)",
+ "note": "No single OSS platform exists; this is the practical combined stack. status: built (live in THIS platform) / installed (Python import verified) / cataloged (recommended, not wired) / external (server/desktop/MATLAB) / commercial. \u00a7155 honest.",
+ "updated_at": "2026-06-24",
+ "recommended_stack": {
+  "Clinical Assessments": "REDCap",
+  "Patient Questionnaires": "LimeSurvey",
+  "EEG Review": "MNE-Python + EDFbrowser",
+  "Cognitive Testing": "PsychoPy + PEBL + PsyToolkit",
+  "Annotation": "Label Studio + CVAT",
+  "AI Explainability": "SHAP + Captum",
+  "Fairness": "Fairlearn + AIF360",
+  "Data Quality": "Great Expectations",
+  "Model Monitoring": "Evidently AI",
+  "Clinical Database": "OpenClinica"
+ },
+ "categories": [
+  {
+   "category": "Electronic Data Capture (eCRF / EDC)",
+   "tools": [
+    {
+     "name": "REDCap",
+     "purpose": "Clinical assessments, questionnaires (eCRF)",
+     "rating": 5,
+     "status": "external"
+    },
+    {
+     "name": "OpenClinica",
+     "purpose": "Clinical data management / trials",
+     "rating": 4,
+     "status": "external"
+    },
+    {
+     "name": "Open Data Kit (ODK)",
+     "purpose": "Mobile field assessments",
+     "rating": 4,
+     "status": "external"
+    },
+    {
+     "name": "LimeSurvey",
+     "purpose": "Patient questionnaires / surveys",
+     "rating": 4,
+     "status": "external"
+    },
+    {
+     "name": "OpenMRS",
+     "purpose": "EMR integration",
+     "rating": 4,
+     "status": "external"
+    }
+   ]
+  },
+  {
+   "category": "Neuropsychological / Cognitive Platforms",
+   "tools": [
+    {
+     "name": "PsyToolkit",
+     "purpose": "Web cognitive tests",
+     "status": "external"
+    },
+    {
+     "name": "PEBL",
+     "purpose": "Memory / executive function / attention battery",
+     "status": "external"
+    },
+    {
+     "name": "OpenSesame",
+     "purpose": "Behavioral experiments",
+     "status": "external"
+    },
+    {
+     "name": "PsychoPy",
+     "purpose": "Reaction-time / cognitive tasks",
+     "status": "external"
+    }
+   ]
+  },
+  {
+   "category": "EEG Annotation / Review",
+   "tools": [
+    {
+     "name": "MNE-Python",
+     "purpose": "EEG events + annotations",
+     "status": "installed"
+    },
+    {
+     "name": "EDFbrowser",
+     "purpose": "Manual EEG annotation",
+     "status": "external"
+    },
+    {
+     "name": "EEGLAB",
+     "purpose": "Artifact labeling (MATLAB)",
+     "status": "external"
+    },
+    {
+     "name": "Brainstorm",
+     "purpose": "EEG review / source (MATLAB)",
+     "status": "external"
+    }
+   ]
+  },
+  {
+   "category": "Clinical Rating Scales (digitize into eCRF)",
+   "note": "9 already fillable+scored live in this platform; rest are cataloged/planned.",
+   "tools": [
+    {
+     "name": "MoCA",
+     "disease": "Cognitive impairment",
+     "status": "built"
+    },
+    {
+     "name": "MMSE",
+     "disease": "Dementia / global cognition",
+     "status": "built"
+    },
+    {
+     "name": "PHQ-9",
+     "disease": "Depression",
+     "status": "built"
+    },
+    {
+     "name": "GAD-7",
+     "disease": "Anxiety",
+     "status": "built"
+    },
+    {
+     "name": "NDDI-E",
+     "disease": "Depression in epilepsy",
+     "status": "built"
+    },
+    {
+     "name": "QOLIE-31",
+     "disease": "Epilepsy quality of life",
+     "status": "built"
+    },
+    {
+     "name": "Barthel Index",
+     "disease": "Daily living (ADL)",
+     "status": "built"
+    },
+    {
+     "name": "Epworth Sleepiness Scale",
+     "disease": "Daytime sleepiness",
+     "status": "built"
+    },
+    {
+     "name": "COPM",
+     "disease": "Occupational performance",
+     "status": "built"
+    },
+    {
+     "name": "ADL / IADL (Katz / Lawton)",
+     "disease": "Functional ability",
+     "status": "planned"
+    },
+    {
+     "name": "Glasgow Coma Scale",
+     "disease": "Brain injury",
+     "status": "planned"
+    },
+    {
+     "name": "Modified Rankin Scale",
+     "disease": "Stroke outcome",
+     "status": "planned"
+    },
+    {
+     "name": "NIH Stroke Scale",
+     "disease": "Stroke severity",
+     "status": "planned"
+    },
+    {
+     "name": "PANSS",
+     "disease": "Schizophrenia",
+     "status": "planned"
+    },
+    {
+     "name": "HAM-D",
+     "disease": "Depression",
+     "status": "planned"
+    },
+    {
+     "name": "Beck Depression Inventory (BDI)",
+     "disease": "Depression",
+     "status": "planned"
+    },
+    {
+     "name": "Engel Classification",
+     "disease": "Epilepsy surgery outcome",
+     "status": "planned"
+    },
+    {
+     "name": "ILAE Outcome Scale",
+     "disease": "Epilepsy surgery outcome",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Epilepsy-Specific Assessments",
+   "tools": [
+    {
+     "name": "Seizure Diary",
+     "purpose": "Seizure frequency",
+     "status": "built"
+    },
+    {
+     "name": "QOLIE-31",
+     "purpose": "Quality of life",
+     "status": "built"
+    },
+    {
+     "name": "ILAE Seizure Classification",
+     "purpose": "Seizure classification",
+     "status": "partial"
+    },
+    {
+     "name": "Engel Outcome Scale",
+     "purpose": "Surgery outcome",
+     "status": "planned"
+    },
+    {
+     "name": "Liverpool Adverse Events Profile",
+     "purpose": "AED side effects",
+     "status": "planned"
+    },
+    {
+     "name": "SUDEP Risk Inventory",
+     "purpose": "Sudden death risk",
+     "status": "planned"
+    },
+    {
+     "name": "Medication Adherence Scale",
+     "purpose": "AED compliance",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "Digital Cognitive Tests (buildable)",
+   "note": "None built yet \u2014 strongest greenfield extension; each is a small timed task with scoring.",
+   "tools": [
+    {
+     "name": "Stroop Test",
+     "domain": "Executive function",
+     "status": "planned"
+    },
+    {
+     "name": "Trail Making A/B",
+     "domain": "Attention / processing speed",
+     "status": "planned"
+    },
+    {
+     "name": "Digit Span",
+     "domain": "Working memory",
+     "status": "planned"
+    },
+    {
+     "name": "Wisconsin Card Sorting",
+     "domain": "Executive function",
+     "status": "planned"
+    },
+    {
+     "name": "N-Back",
+     "domain": "Working memory",
+     "status": "planned"
+    },
+    {
+     "name": "Go/No-Go",
+     "domain": "Impulse control",
+     "status": "planned"
+    },
+    {
+     "name": "Continuous Performance Test",
+     "domain": "Sustained attention",
+     "status": "planned"
+    },
+    {
+     "name": "Clock Drawing Test",
+     "domain": "Cognition / visuospatial",
+     "status": "planned"
+    },
+    {
+     "name": "Rey Auditory Verbal Learning (RAVLT)",
+     "domain": "Memory",
+     "status": "planned"
+    },
+    {
+     "name": "Verbal Fluency",
+     "domain": "Language",
+     "status": "planned"
+    }
+   ]
+  },
+  {
+   "category": "AI Annotation",
+   "tools": [
+    {
+     "name": "Label Studio",
+     "purpose": "Signal / image / text annotation",
+     "status": "cataloged"
+    },
+    {
+     "name": "CVAT",
+     "purpose": "Video annotation",
+     "status": "cataloged"
+    },
+    {
+     "name": "Doccano",
+     "purpose": "Text annotation",
+     "status": "cataloged"
+    },
+    {
+     "name": "Prodigy",
+     "purpose": "NLP annotation",
+     "status": "commercial"
+    }
+   ]
+  },
+  {
+   "category": "EEG AI Quality Control",
+   "tools": [
+    {
+     "name": "MNE-Python",
+     "purpose": "Bad-channel detection",
+     "status": "installed"
+    },
+    {
+     "name": "PyPREP",
+     "purpose": "EEG preprocessing (PREP pipeline)",
+     "status": "installed"
+    },
+    {
+     "name": "AutoReject",
+     "purpose": "Artifact rejection",
+     "status": "installed"
+    },
+    {
+     "name": "ICLabel (mne-icalabel)",
+     "purpose": "ICA artifact classification",
+     "status": "cataloged"
+    }
+   ]
+  },
+  {
+   "category": "Explainable AI",
+   "tools": [
+    {
+     "name": "SHAP",
+     "purpose": "Feature importance",
+     "status": "installed"
+    },
+    {
+     "name": "Captum",
+     "purpose": "Deep-learning attributions",
+     "status": "cataloged"
+    },
+    {
+     "name": "LIME",
+     "purpose": "Local explanations",
+     "status": "cataloged"
+    },
+    {
+     "name": "Grad-CAM",
+     "purpose": "CNN visualization",
+     "status": "cataloged"
+    }
+   ]
+  },
+  {
+   "category": "Responsible AI",
+   "tools": [
+    {
+     "name": "Fairlearn",
+     "purpose": "Fairness metrics",
+     "status": "installed"
+    },
+    {
+     "name": "AIF360",
+     "purpose": "Bias assessment",
+     "status": "cataloged"
+    },
+    {
+     "name": "Evidently AI",
+     "purpose": "Drift monitoring",
+     "status": "installed"
+    },
+    {
+     "name": "Great Expectations",
+     "purpose": "Data quality",
+     "status": "cataloged"
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "built": 11,
+  "cataloged": 9,
+  "commercial": 1,
+  "external": 12,
+  "installed": 7,
+  "partial": 1,
+  "planned": 23,
+  "total_tools": 64,
+  "categories": 10
+ }
+}

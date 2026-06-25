@@ -647,6 +647,13 @@ async def eeg_ai_stack():
     return json.loads(p.read_text()) if p.exists() else {"layers": []}
 
 
+@app.get("/api/neuro-ai-ecosystem")
+async def neuro_ai_ecosystem():
+    """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
+    p = Path(__file__).parent / "config" / "neuro_ai_ecosystem.json"
+    return json.loads(p.read_text()) if p.exists() else {"error": "missing config"}
+
+
 @app.get("/api/integrations")
 async def integrations_settings():
     """Integrations + delivery channels with honest status + the credential needed to activate."""
