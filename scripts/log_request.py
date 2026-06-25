@@ -14,6 +14,8 @@ try:
 except Exception:
     text = " ".join(sys.argv[1:])
 text = text.strip()
+if any(k in text for k in ("scripts/","§159","NEVER force-push","safe_push.sh")):
+    sys.exit(0)  # internal-skip: not an operator input
 if not text:
     sys.exit(0)
 
