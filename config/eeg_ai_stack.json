@@ -1,7 +1,7 @@
 {
- "title": "EEG AI Ecosystem \u2014 Tool Stack (16 layers)",
- "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). \u00a7155 honest.",
- "updated_at": "2026-06-24",
+ "title": "EEG AI Ecosystem — Tool Stack (16 layers)",
+ "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). §155 honest.",
+ "updated_at": "2026-06-25T20:20:09Z",
  "layers": [
   {
    "layer": "1. Core EEG analysis",
@@ -62,11 +62,13 @@
     },
     {
      "name": "AntroPy (entropy)",
-     "status": "cataloged"
+     "status": "installed",
+     "endpoint": "/api/eeg-viz/complexity"
     },
     {
      "name": "Nolds (nonlinear)",
-     "status": "cataloged"
+     "status": "installed",
+     "endpoint": "/api/eeg-viz/complexity"
     }
    ]
   },
@@ -352,11 +354,11 @@
    "status": "cataloged"
   }
  ],
- "recommended_pipeline": "MNE-Python \u2192 PyPREP \u2192 AutoReject \u2192 PyWavelets \u2192 TSFresh/AntroPy \u2192 TorchEEG/Braindecode \u2192 SHAP/Captum \u2192 Fairlearn/AIF360 \u2192 Evidently AI",
+ "recommended_pipeline": "MNE-Python → PyPREP → AutoReject → PyWavelets → TSFresh/AntroPy → TorchEEG/Braindecode → SHAP/Captum → Fairlearn/AIF360 → Evidently AI",
  "summary": {
   "installed": 19,
   "cataloged": 10,
   "external": 9,
-  "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED (15 libs verified). Responsible-AI layer (Fairlearn/AIF360/Evidently/Great-Expectations) + QC (PyPREP/AutoReject/ICLabel) + Captum/LIME are CATALOGED \u2014 pip-installable to complete the stack. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server). The Responsible-AI libs are the highest-priority install for the governance thesis."
+  "honest_note": "Central platform MNE-Python + the signal→feature→DL→SHAP→eval spine is INSTALLED (15 libs verified). Responsible-AI layer (Fairlearn/AIF360/Evidently/Great-Expectations) + QC (PyPREP/AutoReject/ICLabel) + Captum/LIME are CATALOGED — pip-installable to complete the stack. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server). The Responsible-AI libs are the highest-priority install for the governance thesis."
  }
 }

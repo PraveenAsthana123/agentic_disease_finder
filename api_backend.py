@@ -991,6 +991,16 @@ async def eeg_montage_comparison(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/complexity")
+async def eeg_complexity_features(file: str = None, seconds: float = 10.0):
+    """EEG Complexity — entropy (AntroPy: spectral/permutation/sample) + fractal (Nolds: DFA/Hurst) per channel."""
+    import scripts.eeg_complexity as ec
+    key = f"complexity:{file}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(ec.complexity(file, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
