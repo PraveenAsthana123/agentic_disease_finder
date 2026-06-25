@@ -689,6 +689,12 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
+@app.get("/api/patient-compare")
+async def patient_compare(a: str, b: str):
+    """Side-by-side comparison of two patients (demographics + assessments + EEG + seizures)."""
+    return _json_safe(cdb.compare_patients(a, b))
+
+
 @app.get("/api/seizure-timeline")
 async def seizure_timeline():
     """Real seizure timeline from CHB-MIT ground-truth annotations (per-subject events + burden)."""

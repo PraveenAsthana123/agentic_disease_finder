@@ -1403,3 +1403,49 @@ def data_manager_report() -> dict:
         "note": "Completeness/uniqueness/validity computed live. Consistency/accuracy need EMR/source-of-truth "
                 "integration (honestly null). AI-readiness = weighted real signals.",
     }
+
+
+# ── Patient Comparison (side-by-side EEG + assessments + disease) ────────────
+def compare_patients(pid_a: str, pid_b: str) -> dict:
+    """Side-by-side comparison of two patients: demographics, assessments (per instrument),
+    seizure-diary stats, latest EEG prediction. Real data from clinical.db."""
+    init_db()
+
+    def snapshot(pid):
+        with _connect() as c:
+            pat = c.execute("SELECT * FROM patients WHERE patient_id=?", (pid,)).fetchone()
+            if not pat:
+                return None
+            pat = dict(pat)
+            assess = {r["instrument"]: {"score": r["score"], "level": r["level"]}
+                      for r in c.execute("SELECT instrument, score, level FROM assessments WHERE patient_id=? "
+                                         "ORDER BY id DESC", (pid,)).fetchall()}
+            ana = c.execute("SELECT predicted_label, confidence, signal_quality FROM analyses "
+                            "WHERE patient_id=? ORDER BY id DESC LIMIT 1", (pid,)).fetchone()
+            sz = c.execute("SELECT COUNT(*), AVG(duration_sec) FROM seizure_diary WHERE patient_id=?", (pid,)).fetchone()
+        return {
+            "patient_id": pid, "name": pat.get("name"), "age": pat.get("age"),
+            "gender": pat.get("gender"), "disease": pat.get("disease"),
+            "assessments": assess,
+            "eeg": ({"predicted": ana["predicted_label"], "confidence": ana["confidence"],
+                     "quality": ana["signal_quality"]} if ana else None),
+            "seizures": {"count": sz[0] or 0, "mean_duration_sec": round(sz[1], 1) if sz[1] else 0},
+        }
+
+    a, b = snapshot(pid_a), snapshot(pid_b)
+    if not a or not b:
+        return {"available": False, "error": f"Patient not found: {pid_a if not a else pid_b}"}
+
+    # assessment deltas (shared instruments)
+    shared = sorted(set(a["assessments"]) & set(b["assessments"]))
+    deltas = []
+    for inst in shared:
+        sa, sb = a["assessments"][inst].get("score"), b["assessments"][inst].get("score")
+        try:
+            d = round(float(sa) - float(sb), 2) if sa is not None and sb is not None else None
+        except (TypeError, ValueError):
+            d = None
+        deltas.append({"instrument": inst, "a_score": sa, "a_level": a["assessments"][inst].get("level"),
+                       "b_score": sb, "b_level": b["assessments"][inst].get("level"), "delta": d})
+    return {"available": True, "a": a, "b": b, "shared_assessments": deltas,
+            "note": "Side-by-side real clinical data. Delta = A − B on shared instruments."}

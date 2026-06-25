@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -649,6 +649,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'drift' && <DriftPanel />}
         {activeSub === 'data_manager' && <DataManagerPanel />}
         {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
+        {activeSub === 'patient_compare' && <PatientComparePanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4416,6 +4417,65 @@ function DriftPanel() {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function PatientComparePanel() {
+  const [pats, setPats] = useState([])
+  const [a, setA] = useState(''); const [b, setB] = useState('')
+  const [cmp, setCmp] = useState(null)
+  useEffect(() => {
+    axios.get(`${API_URL}/patients`, { params: { limit: 200 } }).then(r => {
+      const items = r.data?.items || r.data || []
+      setPats(items)
+      if (items.length >= 2) { setA(items[0].patient_id); setB(items[1].patient_id) }
+    }).catch(() => setPats([]))
+  }, [])
+  useEffect(() => {
+    if (a && b && a !== b) axios.get(`${API_URL}/patient-compare`, { params: { a, b } }).then(r => setCmp(r.data)).catch(() => setCmp(null))
+  }, [a, b])
+  const sel = (val, set, other) => (
+    <select value={val} onChange={e => set(e.target.value)} style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #cbd5e1', fontSize: 13 }}>
+      {pats.map(p => <option key={p.patient_id} value={p.patient_id} disabled={p.patient_id === other}>{p.patient_id} — {p.name || '?'}</option>)}
+    </select>
+  )
+  const demo = (p) => p && (
+    <div style={{ fontSize: 12, color: '#475569' }}>{p.name} · {p.age || '?'}y · {p.gender || '?'} · {p.disease || '?'}
+      {p.eeg && <div>EEG: {p.eeg.predicted} ({p.eeg.confidence != null ? Math.round(p.eeg.confidence * 100) + '%' : '—'}) · {p.eeg.quality}</div>}
+      <div>Seizures: {p.seizures.count} (mean {p.seizures.mean_duration_sec}s)</div>
+    </div>
+  )
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #0891b2' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔀 Patient Comparison</h3>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          <div><div style={{ fontSize: 11, color: '#64748b', marginBottom: 4 }}>Patient A</div>{sel(a, setA, b)}<div style={{ marginTop: 6 }}>{cmp?.available && demo(cmp.a)}</div></div>
+          <div style={{ fontSize: 20, color: '#94a3b8', alignSelf: 'center' }}>vs</div>
+          <div><div style={{ fontSize: 11, color: '#64748b', marginBottom: 4 }}>Patient B</div>{sel(b, setB, a)}<div style={{ marginTop: 6 }}>{cmp?.available && demo(cmp.b)}</div></div>
+        </div>
+      </div>
+      {cmp?.available && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Shared assessments ({cmp.shared_assessments.length})</h4>
+          <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 6 }}>
+            <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+              <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Instrument</th><th style={cellTh}>A score</th><th style={cellTh}>A level</th><th style={cellTh}>B score</th><th style={cellTh}>B level</th><th style={cellTh}>Δ (A−B)</th></tr></thead>
+              <tbody>{cmp.shared_assessments.map((r, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ ...cellTd, fontWeight: 600 }}>{r.instrument}</td>
+                  <td style={cellTd}>{r.a_score ?? '—'}</td><td style={cellTd}>{r.a_level ?? '—'}</td>
+                  <td style={cellTd}>{r.b_score ?? '—'}</td><td style={cellTd}>{r.b_level ?? '—'}</td>
+                  <td style={{ ...cellTd, fontWeight: 600, color: r.delta == null ? '#94a3b8' : r.delta > 0 ? '#16a34a' : r.delta < 0 ? '#dc2626' : '#475569' }}>{r.delta ?? '—'}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+          <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 6 }}>{cmp.note}</div>
+        </div>
+      )}
+      {cmp && !cmp.available && <div style={card}><div style={{ color: '#dc2626' }}>{cmp.error}</div></div>}
     </div>
   )
 }
