@@ -239,6 +239,9 @@ function subTabsFor(dept) {
     { id: 'r_chat', label: '💬 Team Chat' },
     { id: 'r_genai', label: '🤖 GenAI Bot' },
     { id: 'r_graph', label: '🕸️ Relationship Graph' },
+    { id: 'r_governance', label: '⚖️ Governance AI' },
+    { id: 'r_control_tower', label: '🗼 AI Control Tower' },
+    { id: 'r_auto_pipeline', label: '⚙️ Pipeline (Automatic)' },
   )
   // Patient-data tabs only for clinical roles.
   if (dept.clinical) base.push(
@@ -646,6 +649,9 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'r_chat' && <RoleChat roleName={dept.name} />}
         {activeSub === 'r_genai' && <GenAiBotPanel roleName={dept.name} />}
         {activeSub === 'r_graph' && <RoleGraph roleName={dept.name} />}
+        {activeSub === 'r_governance' && <FeedbackGovPanel view="fb_guardrails" />}
+        {activeSub === 'r_control_tower' && <SystemHealthPanel />}
+        {activeSub === 'r_auto_pipeline' && <EegAiRagPipelinePanel />}
         {activeSub === 'challenges' && <ChallengesPanel deptChallenges={dept.challenges} />}
         {activeSub === 'tasks' && <ListPanel title="Responsibilities & Tasks" items={dept.tasks} ordered />}
         {activeSub === 'data' && <DataPanel disease={selectedDisease} dept={dept} />}
@@ -1838,29 +1844,30 @@ function TabScaffold({ tabId, label, dept, children }) {
   if (!cfg) return <div>{children}</div>
   const d = cfg.default || {}
   const t = (cfg.tabs || {})[tabId] || {}
-  const niceLabel = (label || tabId || 'this tab').replace(/^[^\w]+\s*/, '')
-  const goal = t.goal || `${d.goal || 'Provide an auditable workflow.'} (${niceLabel})`
-  const todos = t.todos || d.todos || []
-  const flow = t.flow || d.flow || ['Input', 'Process', 'Output']
-  const ipo = [['Input', t.input || d.input], ['Process', t.process || d.process], ['Output', t.output || d.output]]
-  const viz = t.viz || d.viz
+  const goal = t.goal || ''
+  const todos = t.todos || []
+  const flow = t.flow || []
+  const ipo = [['Input', t.input], ['Process', t.process], ['Output', t.output]]
+  const viz = t.viz || ''
   const sec = { background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, marginBottom: 10 }
-  // Dashboard-type tabs don't need ToDo / Process Flow / Input-Process-Output scaffolding.
-  const dashIds = ['r_dashboard', 'kpi', 'admin_dash', 'dash_catalog', 'sys_health']
-  const isDashboard = dashIds.includes(tabId) || /dashboard/i.test(label || '')
+  // Operator: remove generic Goal/ToDo/Process-Flow/IPO from EVERY page. Show these ONLY
+  // when the tab has SPECIFIC config (real content) — never the generic placeholder.
+  const hasGoal = !!t.goal
+  const hasTodoFlow = (t.todos && t.todos.length) || (t.flow && t.flow.length)
+  const hasIpo = !!(t.input || t.process || t.output)
 
   return (
     <div>
-      {/* 1. Goal — NOT on dashboard tabs */}
-      {!isDashboard && (
+      {/* 1. Goal — ONLY when specifically configured (no generic placeholder on any page) */}
+      {hasGoal && (
         <div style={{ ...sec, borderLeft: '4px solid #1e88e5', background: '#f8fafc' }}>
           <span style={{ fontSize: 11, fontWeight: 700, color: '#1e88e5', textTransform: 'uppercase' }}>🎯 Goal</span>
           <div style={{ fontSize: 13, color: '#0f172a', marginTop: 2 }}>{goal}</div>
         </div>
       )}
 
-      {/* 2. ToDo + 3. Process flow — NOT on dashboard tabs */}
-      {!isDashboard && (
+      {/* 2. ToDo + 3. Process flow — ONLY when specifically configured */}
+      {hasTodoFlow && (
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         <div style={{ ...sec, flex: '1 1 280px' }}>
           <span style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed', textTransform: 'uppercase' }}>✅ ToDo</span>
@@ -1884,8 +1891,8 @@ function TabScaffold({ tabId, label, dept, children }) {
       </div>
       )}
 
-      {/* 4-6. Input / Process / Output — NOT on dashboard tabs */}
-      {!isDashboard && (
+      {/* 4-6. Input / Process / Output — ONLY when specifically configured */}
+      {hasIpo && (
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
         {ipo.map(([k, v], i) => (
           <div key={i} style={{ ...sec, flex: '1 1 200px', marginBottom: 0, borderTop: `3px solid ${['#43a047', '#fb8c00', '#1e88e5'][i]}` }}>
