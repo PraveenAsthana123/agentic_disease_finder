@@ -738,6 +738,13 @@ async def data_manager_video_validation():
     return _json_safe(vv.validate_frames())
 
 
+@app.get("/api/data-manager/annotation-qc")
+async def data_manager_annotation_qc():
+    """Annotation QC — inter-rater κ (Cohen/Fleiss), AI-human agreement, annotation coverage + flags."""
+    import scripts.annotation_qc as aqc
+    return _json_safe(aqc.full_report())
+
+
 @app.get("/api/data-manager/mri-validation")
 async def data_manager_mri_validation():
     """MRI Validation — schema + conditional-logic QC over real mri_findings records."""
