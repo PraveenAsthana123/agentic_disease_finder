@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-25T16:09:33Z",
+  "generated": "2026-06-25T16:24:33Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 7,
@@ -28,7 +28,7 @@
   },
   "endpoints": {
     "fairness": "200",
-    "shap-explain": "200",
+    "shap-explain": "500",
     "clinical-trust": "200",
     "drift": "200",
     "data-manager": "200",

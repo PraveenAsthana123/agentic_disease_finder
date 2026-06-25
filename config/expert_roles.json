@@ -1,637 +1,637 @@
 {
- "title": "Multidisciplinary Expert Roles \u2014 Epilepsy AI Platform",
- "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). \u00a7155 honest.",
- "updated_at": "2026-06-25",
- "roles": [
-  {
-   "role": "Clinical Pharmacist (Epilepsy)",
-   "icon": "\ud83d\udc8a",
-   "mission": "Safe, effective, individualized anti-seizure medication management.",
-   "data_hook": "medications table is real + 16-drug ASM catalog + 12-pair interaction KB (LIVE)",
-   "tasks": [
+  "title": "Multidisciplinary Expert Roles \u2014 Epilepsy AI Platform",
+  "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). \u00a7155 honest.",
+  "updated_at": "2026-06-25",
+  "roles": [
     {
-     "name": "Medication Reconciliation",
-     "ai_feature": "AI med reconciliation",
-     "status": "built",
-     "steps": [
-      "Pull all meds from clinical.db",
-      "De-duplicate + normalize names",
-      "Flag gaps vs prescription",
-      "Timeline view"
-     ],
-     "challenges": [
-      "Multiple sources disagree",
-      "Brand vs generic names",
-      "Discontinued vs active ambiguity"
-     ]
+      "role": "Clinical Pharmacist (Epilepsy)",
+      "icon": "\ud83d\udc8a",
+      "mission": "Safe, effective, individualized anti-seizure medication management.",
+      "data_hook": "medications table is real + 16-drug ASM catalog + 12-pair interaction KB (LIVE)",
+      "tasks": [
+        {
+          "name": "Medication Reconciliation",
+          "ai_feature": "AI med reconciliation",
+          "status": "built",
+          "steps": [
+            "Pull all meds from clinical.db",
+            "De-duplicate + normalize names",
+            "Flag gaps vs prescription",
+            "Timeline view"
+          ],
+          "challenges": [
+            "Multiple sources disagree",
+            "Brand vs generic names",
+            "Discontinued vs active ambiguity"
+          ]
+        },
+        {
+          "name": "Drug Interaction Check",
+          "ai_feature": "AI interaction engine",
+          "status": "built",
+          "steps": [
+            "Extract med list",
+            "Cross-check pairwise (ASM + psych + other)",
+            "Severity-rank (major/mod/minor)",
+            "Network graph"
+          ],
+          "challenges": [
+            "Needs interaction DB (DrugBank/RxNorm)",
+            "CYP450 enzyme effects",
+            "QT-risk combinations"
+          ]
+        },
+        {
+          "name": "Therapeutic Drug Monitoring",
+          "ai_feature": "TDM analytics",
+          "status": "built",
+          "steps": [
+            "Capture serum levels",
+            "Compare to therapeutic range",
+            "Trend over dose changes",
+            "Flag sub/supra-therapeutic"
+          ],
+          "challenges": [
+            "Lab integration",
+            "Timing of draws vs dose",
+            "Free vs total levels"
+          ]
+        },
+        {
+          "name": "Adherence (MMAS-8/MPR)",
+          "ai_feature": "Adherence prediction",
+          "status": "partial",
+          "steps": [
+            "Refill history \u2192 MPR/PDC",
+            "MMAS-8 questionnaire",
+            "Predict non-adherence risk",
+            "Flag high-risk"
+          ],
+          "challenges": [
+            "Refill \u2260 ingestion",
+            "Recall bias",
+            "No pharmacy-claims feed"
+          ]
+        },
+        {
+          "name": "ADR / Side-effect Monitoring",
+          "ai_feature": "Liverpool AEP + ADR prediction",
+          "status": "built",
+          "steps": [
+            "Liverpool Adverse Events Profile",
+            "Naranjo ADR probability",
+            "Cognitive/mood/weight tracking",
+            "Trend"
+          ],
+          "challenges": [
+            "Underreporting",
+            "Distinguishing AED effect from disease",
+            "Subjective symptoms"
+          ]
+        },
+        {
+          "name": "Pregnancy/Special-Population Safety",
+          "ai_feature": "Teratogenic risk dashboard",
+          "status": "built",
+          "steps": [
+            "Flag teratogenic ASMs (valproate)",
+            "Renal/hepatic dose adjust",
+            "Pediatric/geriatric dosing",
+            "Counsel"
+          ],
+          "challenges": [
+            "Risk-benefit in pregnancy",
+            "Limited pediatric data",
+            "Folate supplementation timing"
+          ]
+        }
+      ]
     },
     {
-     "name": "Drug Interaction Check",
-     "ai_feature": "AI interaction engine",
-     "status": "built",
-     "steps": [
-      "Extract med list",
-      "Cross-check pairwise (ASM + psych + other)",
-      "Severity-rank (major/mod/minor)",
-      "Network graph"
-     ],
-     "challenges": [
-      "Needs interaction DB (DrugBank/RxNorm)",
-      "CYP450 enzyme effects",
-      "QT-risk combinations"
-     ]
+      "role": "Epilepsy Nurse Specialist (ENS)",
+      "icon": "\ud83e\ude79",
+      "mission": "Continuous care: education, adherence, seizure safety, follow-up coordination.",
+      "data_hook": "LIVE: /api/nurse (6 endpoints, real seizure_diary + medications data)",
+      "tasks": [
+        {
+          "name": "Seizure Diary Analysis",
+          "ai_feature": "Pattern/trigger detection",
+          "status": "built",
+          "steps": [
+            "Log events (live diary)",
+            "Monthly trend + severity dist",
+            "Trigger correlation",
+            "Surface to team"
+          ],
+          "challenges": [
+            "Under-reporting of minor seizures",
+            "No non-seizure baseline (frequencies not risk-ratios)",
+            "Recall accuracy"
+          ]
+        },
+        {
+          "name": "Medication Adherence Coaching",
+          "ai_feature": "Adherence prediction",
+          "status": "built",
+          "steps": [
+            "MARS/MMAS-8",
+            "Missed-dose pattern",
+            "Personalized reminders",
+            "Escalate non-adherence"
+          ],
+          "challenges": [
+            "Patient honesty",
+            "Complex regimens",
+            "Reminder fatigue"
+          ]
+        },
+        {
+          "name": "Patient/Caregiver Education",
+          "ai_feature": "Personalized education + analytics",
+          "status": "built",
+          "steps": [
+            "Assess knowledge gaps",
+            "Deliver targeted modules",
+            "Track completion + comprehension",
+            "Re-test"
+          ],
+          "challenges": [
+            "Measuring understanding not just completion",
+            "Literacy/language",
+            "Retention over time"
+          ]
+        },
+        {
+          "name": "SUDEP / Safety Counseling",
+          "ai_feature": "Risk panel + decision support",
+          "status": "built",
+          "steps": [
+            "SUDEP risk inventory",
+            "Home/work/driving safety checklist",
+            "Rescue-med plan",
+            "Document"
+          ],
+          "challenges": [
+            "Sensitive topic",
+            "Balancing alarm vs awareness",
+            "Driving-law variation"
+          ]
+        },
+        {
+          "name": "Follow-up / Telephone Triage",
+          "ai_feature": "AI triage + prioritization",
+          "status": "built",
+          "steps": [
+            "Capture call/symptoms",
+            "Risk-stratify",
+            "Route urgent \u2192 neurologist",
+            "Log + schedule"
+          ],
+          "challenges": [
+            "High call volume",
+            "Distinguishing emergency",
+            "Documentation burden"
+          ]
+        }
+      ]
     },
     {
-     "name": "Therapeutic Drug Monitoring",
-     "ai_feature": "TDM analytics",
-     "status": "built",
-     "steps": [
-      "Capture serum levels",
-      "Compare to therapeutic range",
-      "Trend over dose changes",
-      "Flag sub/supra-therapeutic"
-     ],
-     "challenges": [
-      "Lab integration",
-      "Timing of draws vs dose",
-      "Free vs total levels"
-     ]
+      "role": "Speech-Language Pathologist (SLP)",
+      "icon": "\ud83d\udde3\ufe0f",
+      "mission": "Language, communication, swallowing \u2014 esp. dominant temporal-lobe + pre/post-surgery.",
+      "data_hook": "planned",
+      "tasks": [
+        {
+          "name": "Language Assessment (BNT/WAB)",
+          "ai_feature": "NLP-assisted scoring",
+          "status": "planned",
+          "steps": [
+            "Boston Naming Test",
+            "Western Aphasia Battery",
+            "Expressive/receptive scoring",
+            "Radar profile"
+          ],
+          "challenges": [
+            "Standardized administration",
+            "Education/language norms",
+            "Subtle deficits"
+          ]
+        },
+        {
+          "name": "Speech Analysis",
+          "ai_feature": "Acoustic AI (waveform/spectrogram)",
+          "status": "planned",
+          "steps": [
+            "Record speech",
+            "Articulation/fluency/prosody",
+            "Acoustic features",
+            "Trend"
+          ],
+          "challenges": [
+            "Recording quality",
+            "Dialect variation",
+            "Reliable acoustic biomarkers"
+          ]
+        },
+        {
+          "name": "Swallowing (MASA/EAT-10)",
+          "ai_feature": "Dysphagia risk",
+          "status": "planned",
+          "steps": [
+            "EAT-10 screen",
+            "MASA assessment",
+            "Aspiration risk",
+            "Diet recommendation (FOIS)"
+          ],
+          "challenges": [
+            "Silent aspiration",
+            "Instrumental confirmation (VFSS)",
+            "Diet adherence"
+          ]
+        },
+        {
+          "name": "Pre/Post-Surgical Language",
+          "ai_feature": "Lateralization + recovery prediction",
+          "status": "planned",
+          "steps": [
+            "Baseline language map",
+            "Integrate EEG/fMRI dominance",
+            "Post-op comparison",
+            "Recovery trajectory"
+          ],
+          "challenges": [
+            "Wada/fMRI integration",
+            "Plasticity variability",
+            "Predicting deficits"
+          ]
+        }
+      ]
     },
     {
-     "name": "Adherence (MMAS-8/MPR)",
-     "ai_feature": "Adherence prediction",
-     "status": "partial",
-     "steps": [
-      "Refill history \u2192 MPR/PDC",
-      "MMAS-8 questionnaire",
-      "Predict non-adherence risk",
-      "Flag high-risk"
-     ],
-     "challenges": [
-      "Refill \u2260 ingestion",
-      "Recall bias",
-      "No pharmacy-claims feed"
-     ]
+      "role": "Occupational Therapist (OT)",
+      "icon": "\ud83e\uddae",
+      "mission": "Independence, safety, ADL/IADL, return-to-work/education with cognitive deficits.",
+      "data_hook": "Barthel/COPM assessments live (partial live)",
+      "tasks": [
+        {
+          "name": "ADL/IADL Assessment",
+          "ai_feature": "AI scoring",
+          "status": "partial",
+          "steps": [
+            "Barthel Index (live)",
+            "Katz/Lawton IADL",
+            "FIM",
+            "Radar profile"
+          ],
+          "challenges": [
+            "Self-report vs observed",
+            "Fluctuating capacity (post-ictal)",
+            "Environmental factors"
+          ]
+        },
+        {
+          "name": "Home Safety / Fall Risk",
+          "ai_feature": "AI risk checklist",
+          "status": "planned",
+          "steps": [
+            "Seizure-risk home audit",
+            "Morse Fall Scale",
+            "Hazard heatmap",
+            "Mitigation plan"
+          ],
+          "challenges": [
+            "Self-reported environment",
+            "Seizure unpredictability",
+            "Cost of modifications"
+          ]
+        },
+        {
+          "name": "Return-to-Work Planner",
+          "ai_feature": "RTW prediction",
+          "status": "planned",
+          "steps": [
+            "Integrate seizure control + cognition",
+            "Workplace accommodation",
+            "Vocational rehab",
+            "Driving eligibility"
+          ],
+          "challenges": [
+            "Driving-law thresholds",
+            "Employer disclosure",
+            "Cognitive-job fit"
+          ]
+        },
+        {
+          "name": "Cognitive-Function OT",
+          "ai_feature": "Cognition analytics",
+          "status": "planned",
+          "steps": [
+            "Executive/attention screen",
+            "Compensatory strategies",
+            "Track function",
+            "Goal dashboard"
+          ],
+          "challenges": [
+            "Overlaps neuropsych",
+            "AED cognitive effects",
+            "Measuring real-world transfer"
+          ]
+        }
+      ]
     },
     {
-     "name": "ADR / Side-effect Monitoring",
-     "ai_feature": "Liverpool AEP + ADR prediction",
-     "status": "built",
-     "steps": [
-      "Liverpool Adverse Events Profile",
-      "Naranjo ADR probability",
-      "Cognitive/mood/weight tracking",
-      "Trend"
-     ],
-     "challenges": [
-      "Underreporting",
-      "Distinguishing AED effect from disease",
-      "Subjective symptoms"
-     ]
+      "role": "Clinical Dietitian / Nutritionist",
+      "icon": "\ud83e\udd57",
+      "mission": "Ketogenic/MAD/LGIT diets, malnutrition, AED-nutrition interactions.",
+      "data_hook": "planned",
+      "tasks": [
+        {
+          "name": "Ketogenic Diet Eligibility/Monitoring",
+          "ai_feature": "Keto eligibility + ketosis tracking",
+          "status": "planned",
+          "steps": [
+            "Eligibility scoring",
+            "Fat:protein:carb ratio",
+            "Ketone trend",
+            "Seizure correlation"
+          ],
+          "challenges": [
+            "Compliance is hard",
+            "Metabolic monitoring (lipids/LFTs)",
+            "Pediatric growth impact"
+          ]
+        },
+        {
+          "name": "Malnutrition Screening (MNA/MUST)",
+          "ai_feature": "AI malnutrition score",
+          "status": "planned",
+          "steps": [
+            "MNA/MUST/NRS-2002",
+            "Anthropometrics + BMI",
+            "Risk dashboard",
+            "Intervention"
+          ],
+          "challenges": [
+            "Pediatric vs adult tools",
+            "Edema confounds weight",
+            "Intake recall"
+          ]
+        },
+        {
+          "name": "Nutrient/Vitamin Analysis",
+          "ai_feature": "AI nutrient calculator",
+          "status": "planned",
+          "steps": [
+            "24h recall / FFQ",
+            "Macro/micro analysis",
+            "Vit D/B12/folate trends",
+            "Deficiency prediction"
+          ],
+          "challenges": [
+            "Recall accuracy",
+            "Food database coverage",
+            "AED-induced deficiencies"
+          ]
+        },
+        {
+          "name": "Medication-Nutrition Interaction",
+          "ai_feature": "AI interaction engine",
+          "status": "planned",
+          "steps": [
+            "ASM-food interactions",
+            "Supplement recommendations",
+            "Folate for valproate",
+            "Timeline"
+          ],
+          "challenges": [
+            "Evidence gaps",
+            "Supplement-drug interactions",
+            "Patient adherence"
+          ]
+        }
+      ]
     },
     {
-     "name": "Pregnancy/Special-Population Safety",
-     "ai_feature": "Teratogenic risk dashboard",
-     "status": "built",
-     "steps": [
-      "Flag teratogenic ASMs (valproate)",
-      "Renal/hepatic dose adjust",
-      "Pediatric/geriatric dosing",
-      "Counsel"
-     ],
-     "challenges": [
-      "Risk-benefit in pregnancy",
-      "Limited pediatric data",
-      "Folate supplementation timing"
-     ]
+      "role": "Clinical Psychologist",
+      "icon": "\ud83e\udde0",
+      "mission": "Cognition, emotion, behavior, coping, psychotherapy (CBT/ACT) \u2014 psychological impact of epilepsy.",
+      "data_hook": "PHQ-9/GAD-7/NDDI-E assessments live (partial live)",
+      "tasks": [
+        {
+          "name": "Depression/Anxiety Assessment",
+          "ai_feature": "Auto scoring + trend",
+          "status": "partial",
+          "steps": [
+            "PHQ-9/GAD-7/NDDI-E (live)",
+            "BDI-II/BAI",
+            "Severity trend",
+            "Risk flag"
+          ],
+          "challenges": [
+            "Overlap with AED side-effects",
+            "Suicide-risk escalation (C-SSRS)",
+            "Stigma"
+          ]
+        },
+        {
+          "name": "Coping & Resilience",
+          "ai_feature": "AI coping profile",
+          "status": "planned",
+          "steps": [
+            "Brief COPE / AAQ-II",
+            "Resilience score",
+            "Spider chart",
+            "Therapy targeting"
+          ],
+          "challenges": [
+            "Self-report bias",
+            "Cultural coping differences",
+            "Dynamic over time"
+          ]
+        },
+        {
+          "name": "Seizure-Emotion Correlation",
+          "ai_feature": "Correlation engine",
+          "status": "planned",
+          "steps": [
+            "Link diary + mood logs",
+            "Timeline overlay",
+            "Identify patterns",
+            "Surface"
+          ],
+          "challenges": [
+            "Bidirectional causality",
+            "Confounding (sleep/meds)",
+            "Sparse mood data"
+          ]
+        },
+        {
+          "name": "Therapy Planning (CBT/ACT)",
+          "ai_feature": "Personalized therapy suggestions",
+          "status": "planned",
+          "steps": [
+            "Goal setting",
+            "Session/homework tracking",
+            "Outcome scores",
+            "Progress dashboard"
+          ],
+          "challenges": [
+            "Engagement",
+            "Measuring therapeutic change",
+            "Access to therapy"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "Medical Social Worker (MSW)",
+      "icon": "\ud83e\udd1d",
+      "mission": "Social determinants: employment, finances, family, transport, disability benefits.",
+      "data_hook": "planned",
+      "tasks": [
+        {
+          "name": "Social Determinants Screening",
+          "ai_feature": "Social vulnerability score",
+          "status": "planned",
+          "steps": [
+            "SDOH screen",
+            "Housing/food/transport/finance",
+            "Vulnerability heatmap",
+            "Prioritize"
+          ],
+          "challenges": [
+            "Disclosure sensitivity",
+            "Resource availability varies",
+            "Dynamic situations"
+          ]
+        },
+        {
+          "name": "Caregiver Burden (ZBI/CSI)",
+          "ai_feature": "Burnout prediction",
+          "status": "planned",
+          "steps": [
+            "Zarit Burden Interview",
+            "Caregiver Strain Index",
+            "Burnout-risk trend",
+            "Support referral"
+          ],
+          "challenges": [
+            "Caregiver reluctance",
+            "Hidden burden",
+            "Limited respite resources"
+          ]
+        },
+        {
+          "name": "Benefits / Vocational Support",
+          "ai_feature": "Eligibility + job matching",
+          "status": "planned",
+          "steps": [
+            "Disability eligibility",
+            "Employment readiness",
+            "Vocational rehab",
+            "Track"
+          ],
+          "challenges": [
+            "Complex paperwork",
+            "Jurisdiction rules",
+            "Employer stigma"
+          ]
+        },
+        {
+          "name": "Treatment-Barrier Detection",
+          "ai_feature": "Adherence-risk from social factors",
+          "status": "planned",
+          "steps": [
+            "Link missed appts \u2192 social cause",
+            "Transport/finance flags",
+            "Intervention",
+            "Monitor"
+          ],
+          "challenges": [
+            "Attributing cause",
+            "Multi-factor barriers",
+            "Follow-through"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "Epilepsy Program Coordinator",
+      "icon": "\ud83e\udded",
+      "mission": "Oversee the care pathway: referral\u2192diagnostics\u2192MDT\u2192treatment\u2192surgery\u2192follow-up; KPIs + resources.",
+      "data_hook": "patient registry + jobs are live (partial live)",
+      "tasks": [
+        {
+          "name": "Patient Journey / Pathway Tracking",
+          "ai_feature": "Journey engine (Sankey)",
+          "status": "partial",
+          "steps": [
+            "Map referral\u2192follow-up stages",
+            "Track each patient's position",
+            "Flag delays/bottlenecks",
+            "Timeline"
+          ],
+          "challenges": [
+            "Multi-system data",
+            "Defining stage transitions",
+            "Cross-dept coordination"
+          ]
+        },
+        {
+          "name": "MDT Coordination",
+          "ai_feature": "MDT case prep + tracking",
+          "status": "planned",
+          "steps": [
+            "Assemble case summary",
+            "Required specialists/investigations",
+            "Decisions + actions",
+            "Kanban"
+          ],
+          "challenges": [
+            "Scheduling specialists",
+            "Incomplete investigations",
+            "Action follow-through"
+          ]
+        },
+        {
+          "name": "KPI / Operational Dashboard",
+          "ai_feature": "KPI engine",
+          "status": "planned",
+          "steps": [
+            "Time-to-diagnosis/EEG/MRI/surgery",
+            "Follow-up compliance",
+            "Readmission rate",
+            "Executive view"
+          ],
+          "challenges": [
+            "Data completeness",
+            "Defining KPIs",
+            "Attribution"
+          ]
+        },
+        {
+          "name": "Resource / Capacity Planning",
+          "ai_feature": "Capacity optimizer",
+          "status": "planned",
+          "steps": [
+            "EEG/MRI/VEEG utilization",
+            "Demand forecast",
+            "Staff allocation",
+            "Utilization dashboard"
+          ],
+          "challenges": [
+            "Demand variability",
+            "Equipment downtime",
+            "Staffing constraints"
+          ]
+        }
+      ]
     }
-   ]
-  },
-  {
-   "role": "Epilepsy Nurse Specialist (ENS)",
-   "icon": "\ud83e\ude79",
-   "mission": "Continuous care: education, adherence, seizure safety, follow-up coordination.",
-   "data_hook": "seizure_diary analytics are live (partial live)",
-   "tasks": [
-    {
-     "name": "Seizure Diary Analysis",
-     "ai_feature": "Pattern/trigger detection",
-     "status": "partial",
-     "steps": [
-      "Log events (live diary)",
-      "Monthly trend + severity dist",
-      "Trigger correlation",
-      "Surface to team"
-     ],
-     "challenges": [
-      "Under-reporting of minor seizures",
-      "No non-seizure baseline (frequencies not risk-ratios)",
-      "Recall accuracy"
-     ]
-    },
-    {
-     "name": "Medication Adherence Coaching",
-     "ai_feature": "Adherence prediction",
-     "status": "planned",
-     "steps": [
-      "MARS/MMAS-8",
-      "Missed-dose pattern",
-      "Personalized reminders",
-      "Escalate non-adherence"
-     ],
-     "challenges": [
-      "Patient honesty",
-      "Complex regimens",
-      "Reminder fatigue"
-     ]
-    },
-    {
-     "name": "Patient/Caregiver Education",
-     "ai_feature": "Personalized education + analytics",
-     "status": "planned",
-     "steps": [
-      "Assess knowledge gaps",
-      "Deliver targeted modules",
-      "Track completion + comprehension",
-      "Re-test"
-     ],
-     "challenges": [
-      "Measuring understanding not just completion",
-      "Literacy/language",
-      "Retention over time"
-     ]
-    },
-    {
-     "name": "SUDEP / Safety Counseling",
-     "ai_feature": "Risk panel + decision support",
-     "status": "planned",
-     "steps": [
-      "SUDEP risk inventory",
-      "Home/work/driving safety checklist",
-      "Rescue-med plan",
-      "Document"
-     ],
-     "challenges": [
-      "Sensitive topic",
-      "Balancing alarm vs awareness",
-      "Driving-law variation"
-     ]
-    },
-    {
-     "name": "Follow-up / Telephone Triage",
-     "ai_feature": "AI triage + prioritization",
-     "status": "planned",
-     "steps": [
-      "Capture call/symptoms",
-      "Risk-stratify",
-      "Route urgent \u2192 neurologist",
-      "Log + schedule"
-     ],
-     "challenges": [
-      "High call volume",
-      "Distinguishing emergency",
-      "Documentation burden"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Speech-Language Pathologist (SLP)",
-   "icon": "\ud83d\udde3\ufe0f",
-   "mission": "Language, communication, swallowing \u2014 esp. dominant temporal-lobe + pre/post-surgery.",
-   "data_hook": "planned",
-   "tasks": [
-    {
-     "name": "Language Assessment (BNT/WAB)",
-     "ai_feature": "NLP-assisted scoring",
-     "status": "planned",
-     "steps": [
-      "Boston Naming Test",
-      "Western Aphasia Battery",
-      "Expressive/receptive scoring",
-      "Radar profile"
-     ],
-     "challenges": [
-      "Standardized administration",
-      "Education/language norms",
-      "Subtle deficits"
-     ]
-    },
-    {
-     "name": "Speech Analysis",
-     "ai_feature": "Acoustic AI (waveform/spectrogram)",
-     "status": "planned",
-     "steps": [
-      "Record speech",
-      "Articulation/fluency/prosody",
-      "Acoustic features",
-      "Trend"
-     ],
-     "challenges": [
-      "Recording quality",
-      "Dialect variation",
-      "Reliable acoustic biomarkers"
-     ]
-    },
-    {
-     "name": "Swallowing (MASA/EAT-10)",
-     "ai_feature": "Dysphagia risk",
-     "status": "planned",
-     "steps": [
-      "EAT-10 screen",
-      "MASA assessment",
-      "Aspiration risk",
-      "Diet recommendation (FOIS)"
-     ],
-     "challenges": [
-      "Silent aspiration",
-      "Instrumental confirmation (VFSS)",
-      "Diet adherence"
-     ]
-    },
-    {
-     "name": "Pre/Post-Surgical Language",
-     "ai_feature": "Lateralization + recovery prediction",
-     "status": "planned",
-     "steps": [
-      "Baseline language map",
-      "Integrate EEG/fMRI dominance",
-      "Post-op comparison",
-      "Recovery trajectory"
-     ],
-     "challenges": [
-      "Wada/fMRI integration",
-      "Plasticity variability",
-      "Predicting deficits"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Occupational Therapist (OT)",
-   "icon": "\ud83e\uddae",
-   "mission": "Independence, safety, ADL/IADL, return-to-work/education with cognitive deficits.",
-   "data_hook": "Barthel/COPM assessments live (partial live)",
-   "tasks": [
-    {
-     "name": "ADL/IADL Assessment",
-     "ai_feature": "AI scoring",
-     "status": "partial",
-     "steps": [
-      "Barthel Index (live)",
-      "Katz/Lawton IADL",
-      "FIM",
-      "Radar profile"
-     ],
-     "challenges": [
-      "Self-report vs observed",
-      "Fluctuating capacity (post-ictal)",
-      "Environmental factors"
-     ]
-    },
-    {
-     "name": "Home Safety / Fall Risk",
-     "ai_feature": "AI risk checklist",
-     "status": "planned",
-     "steps": [
-      "Seizure-risk home audit",
-      "Morse Fall Scale",
-      "Hazard heatmap",
-      "Mitigation plan"
-     ],
-     "challenges": [
-      "Self-reported environment",
-      "Seizure unpredictability",
-      "Cost of modifications"
-     ]
-    },
-    {
-     "name": "Return-to-Work Planner",
-     "ai_feature": "RTW prediction",
-     "status": "planned",
-     "steps": [
-      "Integrate seizure control + cognition",
-      "Workplace accommodation",
-      "Vocational rehab",
-      "Driving eligibility"
-     ],
-     "challenges": [
-      "Driving-law thresholds",
-      "Employer disclosure",
-      "Cognitive-job fit"
-     ]
-    },
-    {
-     "name": "Cognitive-Function OT",
-     "ai_feature": "Cognition analytics",
-     "status": "planned",
-     "steps": [
-      "Executive/attention screen",
-      "Compensatory strategies",
-      "Track function",
-      "Goal dashboard"
-     ],
-     "challenges": [
-      "Overlaps neuropsych",
-      "AED cognitive effects",
-      "Measuring real-world transfer"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Clinical Dietitian / Nutritionist",
-   "icon": "\ud83e\udd57",
-   "mission": "Ketogenic/MAD/LGIT diets, malnutrition, AED-nutrition interactions.",
-   "data_hook": "planned",
-   "tasks": [
-    {
-     "name": "Ketogenic Diet Eligibility/Monitoring",
-     "ai_feature": "Keto eligibility + ketosis tracking",
-     "status": "planned",
-     "steps": [
-      "Eligibility scoring",
-      "Fat:protein:carb ratio",
-      "Ketone trend",
-      "Seizure correlation"
-     ],
-     "challenges": [
-      "Compliance is hard",
-      "Metabolic monitoring (lipids/LFTs)",
-      "Pediatric growth impact"
-     ]
-    },
-    {
-     "name": "Malnutrition Screening (MNA/MUST)",
-     "ai_feature": "AI malnutrition score",
-     "status": "planned",
-     "steps": [
-      "MNA/MUST/NRS-2002",
-      "Anthropometrics + BMI",
-      "Risk dashboard",
-      "Intervention"
-     ],
-     "challenges": [
-      "Pediatric vs adult tools",
-      "Edema confounds weight",
-      "Intake recall"
-     ]
-    },
-    {
-     "name": "Nutrient/Vitamin Analysis",
-     "ai_feature": "AI nutrient calculator",
-     "status": "planned",
-     "steps": [
-      "24h recall / FFQ",
-      "Macro/micro analysis",
-      "Vit D/B12/folate trends",
-      "Deficiency prediction"
-     ],
-     "challenges": [
-      "Recall accuracy",
-      "Food database coverage",
-      "AED-induced deficiencies"
-     ]
-    },
-    {
-     "name": "Medication-Nutrition Interaction",
-     "ai_feature": "AI interaction engine",
-     "status": "planned",
-     "steps": [
-      "ASM-food interactions",
-      "Supplement recommendations",
-      "Folate for valproate",
-      "Timeline"
-     ],
-     "challenges": [
-      "Evidence gaps",
-      "Supplement-drug interactions",
-      "Patient adherence"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Clinical Psychologist",
-   "icon": "\ud83e\udde0",
-   "mission": "Cognition, emotion, behavior, coping, psychotherapy (CBT/ACT) \u2014 psychological impact of epilepsy.",
-   "data_hook": "PHQ-9/GAD-7/NDDI-E assessments live (partial live)",
-   "tasks": [
-    {
-     "name": "Depression/Anxiety Assessment",
-     "ai_feature": "Auto scoring + trend",
-     "status": "partial",
-     "steps": [
-      "PHQ-9/GAD-7/NDDI-E (live)",
-      "BDI-II/BAI",
-      "Severity trend",
-      "Risk flag"
-     ],
-     "challenges": [
-      "Overlap with AED side-effects",
-      "Suicide-risk escalation (C-SSRS)",
-      "Stigma"
-     ]
-    },
-    {
-     "name": "Coping & Resilience",
-     "ai_feature": "AI coping profile",
-     "status": "planned",
-     "steps": [
-      "Brief COPE / AAQ-II",
-      "Resilience score",
-      "Spider chart",
-      "Therapy targeting"
-     ],
-     "challenges": [
-      "Self-report bias",
-      "Cultural coping differences",
-      "Dynamic over time"
-     ]
-    },
-    {
-     "name": "Seizure-Emotion Correlation",
-     "ai_feature": "Correlation engine",
-     "status": "planned",
-     "steps": [
-      "Link diary + mood logs",
-      "Timeline overlay",
-      "Identify patterns",
-      "Surface"
-     ],
-     "challenges": [
-      "Bidirectional causality",
-      "Confounding (sleep/meds)",
-      "Sparse mood data"
-     ]
-    },
-    {
-     "name": "Therapy Planning (CBT/ACT)",
-     "ai_feature": "Personalized therapy suggestions",
-     "status": "planned",
-     "steps": [
-      "Goal setting",
-      "Session/homework tracking",
-      "Outcome scores",
-      "Progress dashboard"
-     ],
-     "challenges": [
-      "Engagement",
-      "Measuring therapeutic change",
-      "Access to therapy"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Medical Social Worker (MSW)",
-   "icon": "\ud83e\udd1d",
-   "mission": "Social determinants: employment, finances, family, transport, disability benefits.",
-   "data_hook": "planned",
-   "tasks": [
-    {
-     "name": "Social Determinants Screening",
-     "ai_feature": "Social vulnerability score",
-     "status": "planned",
-     "steps": [
-      "SDOH screen",
-      "Housing/food/transport/finance",
-      "Vulnerability heatmap",
-      "Prioritize"
-     ],
-     "challenges": [
-      "Disclosure sensitivity",
-      "Resource availability varies",
-      "Dynamic situations"
-     ]
-    },
-    {
-     "name": "Caregiver Burden (ZBI/CSI)",
-     "ai_feature": "Burnout prediction",
-     "status": "planned",
-     "steps": [
-      "Zarit Burden Interview",
-      "Caregiver Strain Index",
-      "Burnout-risk trend",
-      "Support referral"
-     ],
-     "challenges": [
-      "Caregiver reluctance",
-      "Hidden burden",
-      "Limited respite resources"
-     ]
-    },
-    {
-     "name": "Benefits / Vocational Support",
-     "ai_feature": "Eligibility + job matching",
-     "status": "planned",
-     "steps": [
-      "Disability eligibility",
-      "Employment readiness",
-      "Vocational rehab",
-      "Track"
-     ],
-     "challenges": [
-      "Complex paperwork",
-      "Jurisdiction rules",
-      "Employer stigma"
-     ]
-    },
-    {
-     "name": "Treatment-Barrier Detection",
-     "ai_feature": "Adherence-risk from social factors",
-     "status": "planned",
-     "steps": [
-      "Link missed appts \u2192 social cause",
-      "Transport/finance flags",
-      "Intervention",
-      "Monitor"
-     ],
-     "challenges": [
-      "Attributing cause",
-      "Multi-factor barriers",
-      "Follow-through"
-     ]
-    }
-   ]
-  },
-  {
-   "role": "Epilepsy Program Coordinator",
-   "icon": "\ud83e\udded",
-   "mission": "Oversee the care pathway: referral\u2192diagnostics\u2192MDT\u2192treatment\u2192surgery\u2192follow-up; KPIs + resources.",
-   "data_hook": "patient registry + jobs are live (partial live)",
-   "tasks": [
-    {
-     "name": "Patient Journey / Pathway Tracking",
-     "ai_feature": "Journey engine (Sankey)",
-     "status": "partial",
-     "steps": [
-      "Map referral\u2192follow-up stages",
-      "Track each patient's position",
-      "Flag delays/bottlenecks",
-      "Timeline"
-     ],
-     "challenges": [
-      "Multi-system data",
-      "Defining stage transitions",
-      "Cross-dept coordination"
-     ]
-    },
-    {
-     "name": "MDT Coordination",
-     "ai_feature": "MDT case prep + tracking",
-     "status": "planned",
-     "steps": [
-      "Assemble case summary",
-      "Required specialists/investigations",
-      "Decisions + actions",
-      "Kanban"
-     ],
-     "challenges": [
-      "Scheduling specialists",
-      "Incomplete investigations",
-      "Action follow-through"
-     ]
-    },
-    {
-     "name": "KPI / Operational Dashboard",
-     "ai_feature": "KPI engine",
-     "status": "planned",
-     "steps": [
-      "Time-to-diagnosis/EEG/MRI/surgery",
-      "Follow-up compliance",
-      "Readmission rate",
-      "Executive view"
-     ],
-     "challenges": [
-      "Data completeness",
-      "Defining KPIs",
-      "Attribution"
-     ]
-    },
-    {
-     "name": "Resource / Capacity Planning",
-     "ai_feature": "Capacity optimizer",
-     "status": "planned",
-     "steps": [
-      "EEG/MRI/VEEG utilization",
-      "Demand forecast",
-      "Staff allocation",
-      "Utilization dashboard"
-     ],
-     "challenges": [
-      "Demand variability",
-      "Equipment downtime",
-      "Staffing constraints"
-     ]
-    }
-   ]
+  ],
+  "summary": {
+    "roles": 8,
+    "total_tasks": 35,
+    "partial": 5,
+    "planned": 30
   }
- ],
- "summary": {
-  "roles": 8,
-  "total_tasks": 35,
-  "partial": 5,
-  "planned": 30
- }
 }

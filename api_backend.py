@@ -1839,6 +1839,50 @@ async def pharmacist_pregnancy(patient_id: str = None):
     return _json_safe(pharm.pregnancy_safety(patient_id))
 
 
+@app.get("/api/nurse")
+async def nurse_dashboard(patient_id: str = None):
+    """Epilepsy Nurse Specialist (ENS) — full dashboard: seizure diary analysis, adherence coaching,
+    SUDEP/safety counseling, follow-up triage, education assessment.
+    All built from REAL seizure_diary + medications tables in clinical.db."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.full_dashboard(patient_id))
+
+
+@app.get("/api/nurse/diary-analysis")
+async def nurse_diary_analysis(patient_id: str = None):
+    """Seizure diary analysis: monthly trend, severity distribution, trigger correlation, injury/ER rates."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.seizure_diary_analysis(patient_id))
+
+
+@app.get("/api/nurse/adherence")
+async def nurse_adherence(patient_id: str = None):
+    """Medication adherence coaching: cross-reference meds with seizure frequency, identify gaps."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.adherence_coaching(patient_id))
+
+
+@app.get("/api/nurse/safety")
+async def nurse_safety(patient_id: str = None):
+    """SUDEP risk assessment + safety counseling checklist (evidence-based risk factors)."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.safety_counseling(patient_id))
+
+
+@app.get("/api/nurse/triage")
+async def nurse_triage(patient_id: str = None):
+    """Follow-up triage: risk-stratified patient list for telephone/clinic follow-up."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.follow_up_triage(patient_id))
+
+
+@app.get("/api/nurse/education")
+async def nurse_education(patient_id: str = None):
+    """Patient/caregiver education: gap assessment + prioritized module recommendations."""
+    import scripts.nurse_module as nurse
+    return _json_safe(nurse.education_assessment(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -24,6 +24,8 @@ try:
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
+    DataLoader = None  # allow type annotations without PyTorch installed
+    Dataset = None
     logger.warning("PyTorch not available")
 
 try:
