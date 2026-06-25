@@ -633,6 +633,13 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/integrations")
+async def integrations_settings():
+    """Integrations + delivery channels with honest status + the credential needed to activate."""
+    p = Path(__file__).parent / "config" / "integrations.json"
+    return json.loads(p.read_text()) if p.exists() else {"integrations": []}
+
+
 @app.get("/api/neuro-tests")
 async def neuro_tests():
     """Neurophysiology/electrodiagnostic test catalog (EEG/NCV/EMG/VEP/BERA/SSEP/blink/RNS/

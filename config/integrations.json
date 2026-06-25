@@ -1,0 +1,23 @@
+{
+  "title": "Integrations & Delivery Channels — Settings",
+  "note": "External integrations + assessment-delivery channels. Honest status (§56 Stage-1, §155): live / adapter / needs-credentials / planned. Each shows the credential/env var to activate.",
+  "updated_at": "2026-06-24",
+  "integrations": [
+    {"id": "gdrive", "name": "Google Drive", "category": "storage", "purpose": "Pull/store patient files + EEG reports", "status": "needs-credentials", "config": "GOOGLE_OAUTH_CLIENT_ID + GOOGLE_OAUTH_SECRET (OAuth2)", "scope": "drive.file"},
+    {"id": "onedrive", "name": "OneDrive / Office365", "category": "storage", "purpose": "Pull/store clinical documents", "status": "needs-credentials", "config": "MS_GRAPH_CLIENT_ID + MS_GRAPH_SECRET (MSAL)", "scope": "Files.ReadWrite"},
+    {"id": "slack", "name": "Slack", "category": "messaging", "purpose": "Team alerts (severe assessment, seizure SOS)", "status": "needs-credentials", "config": "SLACK_BOT_TOKEN (xoxb-...)", "scope": "chat:write"},
+    {"id": "gchat", "name": "Google Chat Bot", "category": "messaging", "purpose": "Conversational AI + team chat", "status": "needs-credentials", "config": "GCHAT_WEBHOOK_URL or service-account", "scope": "chat.bot"},
+    {"id": "gmail", "name": "Gmail / Email (SMTP)", "category": "email", "purpose": "Email assessment links, reports, campaigns", "status": "needs-credentials", "config": "SMTP_HOST + SMTP_USER + SMTP_APP_PASSWORD (Gmail app password)", "scope": "send"},
+    {"id": "whatsapp", "name": "WhatsApp", "category": "messaging", "purpose": "Patient reminders + seizure-video intake", "status": "needs-credentials", "config": "WHATSAPP_API_TOKEN (Meta Cloud API)", "scope": "messages"}
+  ],
+  "delivery_channels": [
+    {"id": "voice_ai", "name": "Voice AI intake", "purpose": "Patient answers assessment by voice (STT → structured)", "status": "partial", "config": "Whisper STT (local) + form mapping", "note": "STT available; assessment-mapping planned"},
+    {"id": "conversational_ai", "name": "Conversational AI intake", "purpose": "Chat-based assessment (LLM asks items conversationally)", "status": "partial", "config": "Ollama (live) + assessment item flow", "note": "patient-chat built; guided assessment flow planned"},
+    {"id": "form_ai", "name": "Form AI intake", "purpose": "Smart web form (the Assessments tab)", "status": "built", "config": "none", "note": "live — create/edit/view + auto-score + history"},
+    {"id": "email_form_link", "name": "Email form link", "purpose": "Email a unique assessment link to the patient", "status": "needs-credentials", "config": "gmail/SMTP + tokenized link generator"},
+    {"id": "survey_link", "name": "Survey link", "purpose": "Shareable survey URL for self-service assessment", "status": "planned", "config": "tokenized public survey route"},
+    {"id": "email_campaign", "name": "Email campaign", "purpose": "Bulk reminders / follow-up assessment requests", "status": "planned", "config": "gmail/SMTP + recipient list + scheduler (cron)"}
+  ],
+  "summary": {"integrations": 6, "delivery_channels": 6, "live": 1, "partial": 2, "needs_credentials": 7, "planned": 2,
+              "honest_note": "Form AI intake is LIVE (the Assessments tab). Voice/Conversational are partial (STT + Ollama exist, assessment-flow mapping planned). Google Drive/OneDrive/Slack/Gchat/Gmail/WhatsApp need real OAuth/API credentials — they're §56 Stage-1 adapters: wired to activate once credentials are set, NOT live without them. Email campaign + survey link need the email integration first."}
+}

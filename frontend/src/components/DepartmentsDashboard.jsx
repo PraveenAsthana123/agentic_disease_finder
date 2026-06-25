@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -629,6 +629,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'eeg_pipeline' && <EegAiRagPipelinePanel />}
         {activeSub === 'patient_registry' && <PatientRegistry />}
         {activeSub === 'assess_dash' && <AssessmentDashboard />}
+        {activeSub === 'integrations_set' && <IntegrationsSettings />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4000,6 +4001,40 @@ function RoleGraph({ roleName }) {
           </table>
         </div>
       </div>
+    </div>
+  )
+}
+
+function IntegrationsSettings() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/integrations`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { live: '#16a34a', built: '#16a34a', adapter: '#0891b2', partial: '#fb8c00', 'needs-credentials': '#f59e0b', planned: '#94a3b8' }
+  const Row = ({ it, kind }) => (
+    <div style={{ ...card, marginBottom: 8, borderLeft: `4px solid ${col[it.status] || '#94a3b8'}` }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+        <strong style={{ color: '#0f172a' }}>{it.name}</strong>
+        <span style={{ fontSize: 10, color: '#94a3b8' }}>{it.category || kind}</span>
+        <span style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 700, color: col[it.status] || '#94a3b8', textTransform: 'uppercase' }}>● {it.status}</span>
+      </div>
+      <div style={{ fontSize: 12, color: '#475569', marginTop: 3 }}>{it.purpose}</div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 6 }}>
+        <span style={{ fontSize: 11, color: '#92400e', background: '#fef3c7', borderRadius: 4, padding: '3px 8px', flex: 1 }}>🔑 {it.config}</span>
+        <button disabled style={{ fontSize: 11, padding: '4px 12px', borderRadius: 6, border: '1px solid #cbd5e1', background: '#f8fafc', color: '#94a3b8', cursor: 'not-allowed' }}>{it.status === 'built' || it.status === 'live' ? '✓ active' : 'Configure'}</button>
+      </div>
+      {it.note && <div style={{ fontSize: 11, color: '#166534', marginTop: 3 }}>ℹ {it.note}</div>}
+    </div>
+  )
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔌 Integrations Settings</h3>
+        <div style={{ fontSize: 12, color: '#92400e', background: '#fef3c7', borderRadius: 6, padding: 8 }}>⚠ {d.summary?.honest_note}</div>
+      </div>
+      <div style={card}><h3 style={{ marginTop: 0, color: '#0f172a' }}>External Integrations ({(d.integrations || []).length})</h3></div>
+      {(d.integrations || []).map((it, i) => <Row key={i} it={it} kind="integration" />)}
+      <div style={card}><h3 style={{ marginTop: 0, color: '#0f172a' }}>Assessment Delivery Channels ({(d.delivery_channels || []).length})</h3></div>
+      {(d.delivery_channels || []).map((it, i) => <Row key={i} it={it} kind="channel" />)}
     </div>
   )
 }
