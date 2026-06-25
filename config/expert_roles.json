@@ -1,18 +1,18 @@
 {
  "title": "Multidisciplinary Expert Roles \u2014 Epilepsy AI Platform",
  "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). \u00a7155 honest.",
- "updated_at": "2026-06-24",
+ "updated_at": "2026-06-25",
  "roles": [
   {
    "role": "Clinical Pharmacist (Epilepsy)",
    "icon": "\ud83d\udc8a",
    "mission": "Safe, effective, individualized anti-seizure medication management.",
-   "data_hook": "medications table is real (partial live)",
+   "data_hook": "medications table is real + 16-drug ASM catalog + 12-pair interaction KB (LIVE)",
    "tasks": [
     {
      "name": "Medication Reconciliation",
      "ai_feature": "AI med reconciliation",
-     "status": "partial",
+     "status": "built",
      "steps": [
       "Pull all meds from clinical.db",
       "De-duplicate + normalize names",
@@ -28,7 +28,7 @@
     {
      "name": "Drug Interaction Check",
      "ai_feature": "AI interaction engine",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Extract med list",
       "Cross-check pairwise (ASM + psych + other)",
@@ -44,7 +44,7 @@
     {
      "name": "Therapeutic Drug Monitoring",
      "ai_feature": "TDM analytics",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Capture serum levels",
       "Compare to therapeutic range",
@@ -60,7 +60,7 @@
     {
      "name": "Adherence (MMAS-8/MPR)",
      "ai_feature": "Adherence prediction",
-     "status": "planned",
+     "status": "partial",
      "steps": [
       "Refill history \u2192 MPR/PDC",
       "MMAS-8 questionnaire",
@@ -76,7 +76,7 @@
     {
      "name": "ADR / Side-effect Monitoring",
      "ai_feature": "Liverpool AEP + ADR prediction",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Liverpool Adverse Events Profile",
       "Naranjo ADR probability",
@@ -92,7 +92,7 @@
     {
      "name": "Pregnancy/Special-Population Safety",
      "ai_feature": "Teratogenic risk dashboard",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Flag teratogenic ASMs (valproate)",
       "Renal/hepatic dose adjust",

@@ -702,6 +702,33 @@ async def conversation():
     return _json_safe(cdb.list_convo())
 
 
+@app.get("/api/db-status")
+async def db_status():
+    """Mandatory DB record-count status — clinical tables + vector DB + graph DB + raw data + last job runs."""
+    import sqlite3, glob, os
+    from datetime import datetime
+    base = Path(__file__).parent
+    out = {"tables": {}, "vector_db": None, "graph_db": None, "raw_data": {}, "last_jobs": {}}
+    c = sqlite3.connect(str(base / "data" / "clinical.db"))
+    for t in ["patients","analyses","assessments","seizure_diary","clinical_decisions",
+              "operator_requests","conversation_log","medications","mri_findings","advisor_issues"]:
+        try: out["tables"][t] = c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+        except Exception: pass
+    try:
+        import chromadb
+        out["vector_db"] = chromadb.PersistentClient(path=str(base/"data/vector_db")).get_or_create_collection("clinical").count()
+    except Exception: pass
+    g = base / "jobs/reports/graph_latest.json"
+    if g.exists():
+        gd = json.loads(g.read_text()); out["graph_db"] = gd.get("triples", gd.get("nodes"))
+    out["raw_data"] = {"eeg_datasets": len(glob.glob(str(base/"data/real_eeg/*/"))),
+                       "edf_files": len(glob.glob(str(base/"data/real_eeg/**/*.edf"), recursive=True))}
+    for r in ["training_latest","vector_latest","graph_latest","drift_latest","fairness_latest","data_quality_latest","cv_pipeline_latest"]:
+        f = base / f"jobs/reports/{r}.json"
+        if f.exists(): out["last_jobs"][r] = datetime.fromtimestamp(f.stat().st_mtime).strftime("%Y-%m-%d %H:%M")
+    return _json_safe(out)
+
+
 @app.get("/api/automation-status")
 async def automation_status():
     """How do I know the automation works — plan/crons/count/system/crash-survival/completion."""
@@ -1767,6 +1794,49 @@ async def consultant_workflows():
     if not p.exists():
         return {"workflows": {}}
     return json.loads(p.read_text())
+
+
+@app.get("/api/pharmacist")
+async def pharmacist_dashboard(patient_id: str = None):
+    """Clinical Pharmacist (Epilepsy) — full dashboard: med reconciliation, drug interactions, TDM, ADR, pregnancy safety.
+    All built from REAL medication data in clinical.db + ASM pharmacology knowledge base."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.full_dashboard(patient_id))
+
+
+@app.get("/api/pharmacist/reconciliation")
+async def pharmacist_reconciliation(patient_id: str = None):
+    """Medication reconciliation: dedup, normalize, gap detection, timeline."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.medication_reconciliation(patient_id))
+
+
+@app.get("/api/pharmacist/interactions")
+async def pharmacist_interactions(patient_id: str = None):
+    """Drug interaction check: pairwise ASM interactions, CYP450 overlaps, severity ranking."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.drug_interaction_check(patient_id))
+
+
+@app.get("/api/pharmacist/tdm")
+async def pharmacist_tdm(patient_id: str = None):
+    """Therapeutic Drug Monitoring: serum level targets per ASM."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.therapeutic_drug_monitoring(patient_id))
+
+
+@app.get("/api/pharmacist/adr")
+async def pharmacist_adr(patient_id: str = None):
+    """ADR / side-effect monitoring: per-drug ADR profiles + overlapping risk."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.adr_monitoring(patient_id))
+
+
+@app.get("/api/pharmacist/pregnancy-safety")
+async def pharmacist_pregnancy(patient_id: str = None):
+    """Pregnancy / special-population safety: category flags + guidance."""
+    import scripts.pharmacist_module as pharm
+    return _json_safe(pharm.pregnancy_safety(patient_id))
 
 
 if __name__ == "__main__":
