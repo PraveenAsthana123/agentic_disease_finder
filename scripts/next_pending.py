@@ -9,14 +9,15 @@ ROOT = Path(__file__).resolve().parent.parent
 # Curated buildable queue (highest value first). Blocked/gated items excluded by design.
 BUILDABLE = [
     {"id": "ictal_interictal", "title": "Ictal/interictal retrain (same-setup, removes dataset confound)", "value": "P0", "effort": "high"},
-    {"id": "expert_pharmacist", "title": "Expert module: Clinical Pharmacist (meds table is real)", "value": "P1", "effort": "med"},
-    {"id": "expert_nurse", "title": "Expert module: Epilepsy Nurse (seizure-diary analytics exist)", "value": "P1", "effort": "med"},
     {"id": "cdm_label_val", "title": "CDM: Label/Annotation validation (κ when multi-rater)", "value": "P2", "effort": "med"},
-    {"id": "expert_more", "title": "Expert modules: SLP / OT / Dietitian / Psychologist / Social Worker / Coordinator", "value": "P2", "effort": "high"},
+    {"id": "neuro_scales", "title": "Neuro AI ecosystem: clinical scales (ADL/IADL, Glasgow, Rankin, NIHSS, etc.)", "value": "P2", "effort": "high"},
+    {"id": "expert_dashboards", "title": "Expert dashboards: Montage Comparison, Localization, False Alarm Review", "value": "P2", "effort": "high"},
 ]
 # Already built (removed from queue):
 # seizure_timeline, spike_overlay (in eeg_viz), lateralization (in eeg_viz),
 # patient_compare, cognitive_tests (endpoint + panel + scoring)
+# expert_pharmacist, expert_nurse, expert_slp, expert_ot, expert_dietitian,
+# expert_psychologist, expert_coordinator, expert_social_worker, data_archival
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

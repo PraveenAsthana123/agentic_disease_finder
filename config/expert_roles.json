@@ -517,12 +517,15 @@
    "role": "Medical Social Worker (MSW)",
    "icon": "🤝",
    "mission": "Social determinants: employment, finances, family, transport, disability benefits.",
-   "data_hook": "planned",
+   "data_hook": "built",
    "tasks": [
     {
      "name": "Social Determinants Screening",
      "ai_feature": "Social vulnerability score",
-     "status": "planned",
+     "status": "built",
+     "endpoints": [
+      "/api/social-worker/sdoh-screening"
+     ],
      "steps": [
       "SDOH screen",
       "Housing/food/transport/finance",
@@ -538,7 +541,10 @@
     {
      "name": "Caregiver Burden (ZBI/CSI)",
      "ai_feature": "Burnout prediction",
-     "status": "planned",
+     "status": "built",
+     "endpoints": [
+      "/api/social-worker/caregiver-burden"
+     ],
      "steps": [
       "Zarit Burden Interview",
       "Caregiver Strain Index",
@@ -554,7 +560,10 @@
     {
      "name": "Benefits / Vocational Support",
      "ai_feature": "Eligibility + job matching",
-     "status": "planned",
+     "status": "built",
+     "endpoints": [
+      "/api/social-worker/benefits-vocational"
+     ],
      "steps": [
       "Disability eligibility",
       "Employment readiness",
@@ -570,7 +579,10 @@
     {
      "name": "Treatment-Barrier Detection",
      "ai_feature": "Adherence-risk from social factors",
-     "status": "planned",
+     "status": "built",
+     "endpoints": [
+      "/api/social-worker/treatment-barriers"
+     ],
      "steps": [
       "Link missed appts → social cause",
       "Transport/finance flags",
