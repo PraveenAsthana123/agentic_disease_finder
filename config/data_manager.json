@@ -1,8 +1,8 @@
 {
  "role": "Clinical Data Manager (CDM)",
- "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out \u2014 the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-24",
- "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). \u00a7155 honest.",
+ "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
+ "updated_at": "2026-06-25T19:27:58Z",
+ "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
    "name": "Data Intake",
@@ -11,14 +11,14 @@
    "status": "built",
    "steps": [
     "Receive EEG (EDF/BDF/FIF/MAT) / MRI / video / CSV upload",
-    "Detect file type + route (EEG\u2192pipeline, video\u2192frames, doc\u2192extract)",
+    "Detect file type + route (EEG→pipeline, video→frames, doc→extract)",
     "Validate header (channels, sfreq, duration)",
     "Persist to clinical.db + transaction log"
    ],
    "challenges": [
     "Many vendor formats (NeuroMax/Neurosoft/EDF+ variants)",
     "Bipolar vs monopolar montage",
-    "Large EDFs (GB) \u2014 streaming vs load",
+    "Large EDFs (GB) — streaming vs load",
     "Corrupt/truncated uploads"
    ]
   },
@@ -70,7 +70,7 @@
    "challenges": [
     "Imputation can leak/bias (avoid for labels)",
     "MRI legitimately absent for many patients",
-    "Missing \u2260 random (MNAR)"
+    "Missing ≠ random (MNAR)"
    ]
   },
   {
@@ -96,7 +96,7 @@
    "deliverable": "Standard dataset",
    "status": "partial",
    "steps": [
-    "Normalize channel names (EEG Fp1-LE \u2192 Fp1)",
+    "Normalize channel names (EEG Fp1-LE → Fp1)",
     "Resample to common sfreq",
     "Unify units + montage",
     "Map to canonical 47-feature schema"
@@ -138,7 +138,7 @@
    "challenges": [
     "Vendor metadata inconsistencies",
     "Reference montage assumptions",
-    "Short recordings \u2192 unstable features"
+    "Short recordings → unstable features"
    ]
   },
   {
@@ -165,7 +165,7 @@
    "status": "partial",
    "steps": [
     "Validate video stored + playable",
-    "Check EEG\u2194video time sync",
+    "Check EEG↔video time sync",
     "Extract keyframes (VIDEO-FRAMES cron)",
     "Flag desync"
    ],
@@ -182,13 +182,13 @@
    "status": "partial",
    "steps": [
     "Collect seizure/dx labels per recording",
-    "Compute inter-rater agreement (Cohen/Fleiss \u03ba)",
+    "Compute inter-rater agreement (Cohen/Fleiss κ)",
     "Flag disagreements",
     "Route to consensus review"
    ],
    "challenges": [
     "Multiple reviewers disagree on seizure onset",
-    "Single-rater labels (no \u03ba possible)",
+    "Single-rater labels (no κ possible)",
     "Label confidence rarely captured"
    ]
   },
@@ -233,7 +233,7 @@
    "status": "built",
    "steps": [
     "Record each transform stage",
-    "Link raw\u2192clean\u2192features\u2192model\u2192inference",
+    "Link raw→clean→features→model→inference",
     "Attach request_id/correlation_id",
     "Render lineage DAG"
    ],
@@ -257,7 +257,7 @@
    "challenges": [
     "Threshold selection (what's 'ready'?)",
     "Confounds not caught by score (e.g. dataset bias)",
-    "Approval \u2260 clinical validity"
+    "Approval ≠ clinical validity"
    ]
   },
   {
@@ -281,7 +281,7 @@
    "name": "Data Archival",
    "ai_feature": "Lifecycle management",
    "deliverable": "Archive report",
-   "status": "planned",
+   "status": "built",
    "steps": [
     "Define retention policy (7y regulated)",
     "Cold-archive old datasets",
@@ -292,6 +292,9 @@
     "Retention compliance per jurisdiction",
     "Restore-drill discipline",
     "Storage cost vs access speed"
+   ],
+   "endpoints": [
+    "/api/data-manager/archival"
    ]
   }
  ],
@@ -323,7 +326,7 @@
   },
   {
    "name": "Lineage",
-   "shows": "raw\u2192clean\u2192features\u2192model\u2192inference DAG",
+   "shows": "raw→clean→features→model→inference DAG",
    "status": "built"
   },
   {
@@ -344,7 +347,7 @@
   "Timeliness Score",
   "Validity Score",
   "Uniqueness Score",
-  "Label Agreement (Cohen/Fleiss \u03ba)",
+  "Label Agreement (Cohen/Fleiss κ)",
   "Metadata Completeness",
   "FAIR Compliance",
   "AI Readiness Score"

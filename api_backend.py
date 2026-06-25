@@ -695,6 +695,14 @@ async def data_manager():
             "quality_assessments": cfg.get("quality_assessments", []), "live": live}
 
 
+@app.get("/api/data-manager/archival")
+async def data_manager_archival():
+    """Data Archival / Retention report — per-table row count, record age, and archival
+    candidates under the §7.4/§41.2 retention policy. Report only (no destructive action)."""
+    import scripts.data_archival as da
+    return _json_safe(da.archival_report())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():
