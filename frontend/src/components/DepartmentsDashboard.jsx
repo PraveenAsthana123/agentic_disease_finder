@@ -75,7 +75,7 @@ export const DEPARTMENTS = [
     challenges: [], tasks: [], kpis: [],
   },
   {
-    id: 'ai_types', name: 'AI Types Catalog', icon: '🤖', clinical: false, custom: 'aitypes',
+    id: 'ai_types', name: 'Governance & Ops', icon: '🧭', clinical: false, custom: 'aitypes',
     challenges: [], tasks: [], kpis: [],
   },
   {
@@ -189,7 +189,18 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [
+      // ── 🩺 Clinical & Governance (thesis core) ──
+      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      // ── 🧠 EEG & AI ──
+      { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
+      // ── 👥 Patients & Data ──
+      { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'portal', label: '🧑 Patient Portal' },
+      // ── ⏰ Ops & Jobs ──
+      { id: 'jobs_cron', label: '⏰ Jobs / Cron (14)' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'sys_health', label: '💚 System Health' }, { id: 'integrations_set', label: '🔌 Integrations Settings' },
+      // ── 📋 Catalogs & Planning ──
+      { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' },
+    ]
   }
   if (dept.custom === 'special') {
     return [
