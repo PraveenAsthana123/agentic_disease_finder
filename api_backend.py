@@ -1021,6 +1021,16 @@ async def eeg_propagation(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/false-alarm")
+async def eeg_false_alarm(file: str = None):
+    """False Alarm Review — power detector vs ground-truth annotations (sensitivity + FA/hour)."""
+    import scripts.false_alarm as fa
+    key = f"falsealarm:{file}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(fa.review(file))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
