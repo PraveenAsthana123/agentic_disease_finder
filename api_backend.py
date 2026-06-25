@@ -1981,6 +1981,44 @@ async def ot_cognitive(patient_id: str = None):
     return _json_safe(ot.cognitive_function_ot(patient_id))
 
 
+# ── Clinical Psychologist endpoints ──────────────────────────────────
+# Real data: PHQ-9 (26) + GAD-7 (25) + NDDI-E (3) + QOLIE-31 (23) + seizure_diary (25)
+
+@app.get("/api/psychologist")
+async def psychologist_dashboard(patient_id: str = None):
+    """Full Clinical Psychologist dashboard: depression/anxiety + coping + seizure-emotion + therapy."""
+    import scripts.psychologist_module as ps
+    return _json_safe(ps.full_dashboard(patient_id))
+
+
+@app.get("/api/psychologist/depression-anxiety")
+async def psychologist_depression_anxiety(patient_id: str = None):
+    """PHQ-9 + GAD-7 + NDDI-E auto-scoring, severity bands, suicide-risk (C-SSRS) escalation flags."""
+    import scripts.psychologist_module as ps
+    return _json_safe(ps.depression_anxiety(patient_id))
+
+
+@app.get("/api/psychologist/coping-resilience")
+async def psychologist_coping(patient_id: str = None):
+    """Coping & Resilience profile from live QOLIE-31 wellbeing dimensions."""
+    import scripts.psychologist_module as ps
+    return _json_safe(ps.coping_resilience(patient_id))
+
+
+@app.get("/api/psychologist/seizure-emotion")
+async def psychologist_seizure_emotion(patient_id: str = None):
+    """Seizure-Emotion correlation: seizure_diary burden vs PHQ-9/GAD-7 mood scores."""
+    import scripts.psychologist_module as ps
+    return _json_safe(ps.seizure_emotion_correlation(patient_id))
+
+
+@app.get("/api/psychologist/therapy-planning")
+async def psychologist_therapy(patient_id: str = None):
+    """CBT/ACT therapy planning — transparent rule-based targeting from live PHQ-9/GAD-7 severity."""
+    import scripts.psychologist_module as ps
+    return _json_safe(ps.therapy_planning(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
