@@ -83,6 +83,15 @@
    "cron_tag": "DATA-QUALITY",
    "report": "jobs/reports/data_quality_latest.json",
    "purpose": "Live completeness/uniqueness/validity + AI-readiness score (Clinical Data Manager)"
+  },
+  {
+   "id": "status_report",
+   "label": "\ud83d\udcca STATUS.md (done/pending)",
+   "script": "scripts/status_report.py",
+   "schedule": "07:30 daily",
+   "cron_tag": "STATUS-REPORT",
+   "report": "jobs/reports/status_latest.json",
+   "purpose": "Regenerate STATUS.md \u2014 single Done/Pending view from registries+git+crons"
   }
  ]
 }
