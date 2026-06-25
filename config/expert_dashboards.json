@@ -1,7 +1,7 @@
 {
- "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
- "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
- "updated_at": "2026-06-24",
+ "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
+ "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+ "updated_at": "2026-06-25T20:00:46Z",
  "must_have_p0": [
   "Raw EEG waveform",
   "Event timeline",
@@ -29,7 +29,12 @@
    "feature": "Zoom, filter, montage switch",
    "why": "Clinical EEG review",
    "priority": "P0",
-   "status": "partial"
+   "status": "built",
+   "endpoints": [
+    "/api/eeg-viz",
+    "/api/eeg-viz/traces",
+    "/api/eeg-viz/recordings"
+   ]
   },
   {
    "role": "Neurologist",

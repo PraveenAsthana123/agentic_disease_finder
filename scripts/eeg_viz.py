@@ -217,6 +217,66 @@ def render(edf_path: str, seconds: float = 10.0) -> dict:
     }
 
 
+def list_recordings(limit: int = 60) -> dict:
+    """List real .edf recordings on disk, grouped by dataset (the strip-chart source)."""
+    out, by_group = [], {}
+    for p in sorted(ROOT.glob("data/**/*.edf")):
+        rel = str(p.relative_to(ROOT))
+        group = rel.split("/")[1] if "/" in rel else "root"
+        by_group[group] = by_group.get(group, 0) + 1
+        if len(out) < limit:
+            try:
+                size = p.stat().st_size
+            except OSError:
+                size = None
+            out.append({"file": rel, "group": group, "bytes": size})
+    return {"available": bool(out), "n_total": sum(by_group.values()),
+            "by_dataset": by_group, "recordings": out,
+            "note": f"{sum(by_group.values())} real .edf recordings on disk (showing up to {limit})."}
+
+
+def raw_traces(edf_path: str, start: float = 0.0, seconds: float = 10.0,
+               max_points: int = 1500, max_channels: int = 24) -> dict:
+    """Downsampled time-domain waveform traces per channel — the classic raw EEG
+    strip-chart. Real signal from EDF via MNE; decimated to <=max_points for the UI."""
+    import mne
+    import numpy as np
+
+    p = Path(edf_path)
+    if not p.is_absolute():
+        p = ROOT / edf_path
+    if not p.exists():
+        return {"available": False, "error": f"EDF not found: {edf_path}"}
+
+    raw = mne.io.read_raw_edf(str(p), preload=False, verbose="ERROR")
+    sf = float(raw.info["sfreq"])
+    dur = float(raw.times[-1])
+    start = max(0.0, min(start, max(0.0, dur - 1.0)))
+    seconds = min(seconds, dur - start)
+    raw.crop(tmin=start, tmax=start + seconds)
+    raw.load_data(verbose="ERROR")
+    data = raw.get_data()  # (n_ch, n_samples), volts
+    ch_names = raw.ch_names[:max_channels]
+    data = data[:max_channels]
+
+    n_samples = data.shape[1]
+    step = max(1, n_samples // max_points)
+    idx = np.arange(0, n_samples, step)
+    t = (idx / sf + start).round(4).tolist()
+    # convert to microvolts for display scale
+    traces = [{"channel": ch_names[i],
+               "uv": np.round(data[i, idx] * 1e6, 2).tolist()}
+              for i in range(len(ch_names))]
+    return {
+        "available": True, "file": p.name, "sfreq": sf, "duration_s": round(dur, 1),
+        "window": {"start_s": round(start, 2), "seconds": round(seconds, 2)},
+        "n_channels": len(ch_names), "n_points": len(idx),
+        "downsample_step": step, "time_s": t, "traces": traces,
+        "units": "microvolts (µV)",
+        "source": "Real EDF via MNE-Python (decimated for display, no synthetic).",
+    }
+
+
 def list_presets() -> dict:
     """Real EDF presets the viz can render (epilepsy bipolar + monopolar for topomap)."""
     presets = []

@@ -896,6 +896,27 @@ async def eeg_viz(file: str = None, seconds: float = 10):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/recordings")
+async def eeg_viz_recordings(limit: int = 60):
+    """Raw EEG Viewer — list real .edf recordings on disk grouped by dataset."""
+    import scripts.eeg_viz as viz
+    return _json_safe(viz.list_recordings(limit=limit))
+
+
+@app.get("/api/eeg-viz/traces")
+async def eeg_viz_traces(file: str = None, start: float = 0.0, seconds: float = 10.0):
+    """Raw EEG Viewer — downsampled time-domain waveform traces (the multi-channel strip chart)."""
+    import scripts.eeg_viz as viz
+    if not file:
+        file = viz.list_presets().get("default")
+    if not file:
+        return {"available": False, "error": "No EDF recordings found on disk."}
+    key = f"traces:{file}:{start}:{seconds}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(viz.raw_traces(file, start=start, seconds=seconds))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
