@@ -1,7 +1,7 @@
 {
  "title": "Multidisciplinary Expert Roles — Epilepsy AI Platform",
  "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). §155 honest.",
- "updated_at": "2026-06-25T19:21:26Z",
+ "updated_at": "2026-06-25T19:24:35Z",
  "roles": [
   {
    "role": "Clinical Pharmacist (Epilepsy)",
@@ -585,12 +585,12 @@
    "role": "Epilepsy Program Coordinator",
    "icon": "🧭",
    "mission": "Oversee the care pathway: referral→diagnostics→MDT→treatment→surgery→follow-up; KPIs + resources.",
-   "data_hook": "patient registry + jobs are live (partial live)",
+   "data_hook": "patients/analyses/assessments/seizure_diary/reviews live",
    "tasks": [
     {
      "name": "Patient Journey / Pathway Tracking",
      "ai_feature": "Journey engine (Sankey)",
-     "status": "partial",
+     "status": "built",
      "steps": [
       "Map referral→follow-up stages",
       "Track each patient's position",
@@ -601,12 +601,16 @@
       "Multi-system data",
       "Defining stage transitions",
       "Cross-dept coordination"
+     ],
+     "endpoints": [
+      "/api/coordinator",
+      "/api/coordinator/journey"
      ]
     },
     {
      "name": "MDT Coordination",
      "ai_feature": "MDT case prep + tracking",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Assemble case summary",
       "Required specialists/investigations",
@@ -617,12 +621,15 @@
       "Scheduling specialists",
       "Incomplete investigations",
       "Action follow-through"
+     ],
+     "endpoints": [
+      "/api/coordinator/mdt"
      ]
     },
     {
      "name": "KPI / Operational Dashboard",
      "ai_feature": "KPI engine",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "Time-to-diagnosis/EEG/MRI/surgery",
       "Follow-up compliance",
@@ -633,12 +640,15 @@
       "Data completeness",
       "Defining KPIs",
       "Attribution"
+     ],
+     "endpoints": [
+      "/api/coordinator/kpi"
      ]
     },
     {
      "name": "Resource / Capacity Planning",
      "ai_feature": "Capacity optimizer",
-     "status": "planned",
+     "status": "built",
      "steps": [
       "EEG/MRI/VEEG utilization",
       "Demand forecast",
@@ -649,6 +659,9 @@
       "Demand variability",
       "Equipment downtime",
       "Staffing constraints"
+     ],
+     "endpoints": [
+      "/api/coordinator/resource-planning"
      ]
     }
    ]

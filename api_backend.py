@@ -2019,6 +2019,92 @@ async def psychologist_therapy(patient_id: str = None):
     return _json_safe(ps.therapy_planning(patient_id))
 
 
+# ── Epilepsy Program Coordinator endpoints ───────────────────────────
+# Real data: patients (40) + uploads + analyses + assessments + seizure_diary + reviews
+
+@app.get("/api/coordinator")
+async def coordinator_dashboard(patient_id: str = None):
+    """Full Coordinator dashboard: patient journey + MDT coordination + KPIs + resource planning."""
+    import scripts.coordinator_module as co
+    return _json_safe(co.full_dashboard(patient_id))
+
+
+@app.get("/api/coordinator/journey")
+async def coordinator_journey(patient_id: str = None):
+    """Patient Journey / Pathway: per-patient care-pipeline stage + next action + funnel."""
+    import scripts.coordinator_module as co
+    return _json_safe(co.patient_journey(patient_id))
+
+
+@app.get("/api/coordinator/mdt")
+async def coordinator_mdt(patient_id: str = None):
+    """MDT Coordination: review status, pending queue (low-confidence first), per-role load."""
+    import scripts.coordinator_module as co
+    return _json_safe(co.mdt_coordination(patient_id))
+
+
+@app.get("/api/coordinator/kpi")
+async def coordinator_kpi():
+    """Operational KPI dashboard: enrollment, analyses, coverage rates, confidence, flags."""
+    import scripts.coordinator_module as co
+    return _json_safe(co.kpi_dashboard())
+
+
+@app.get("/api/coordinator/resource-planning")
+async def coordinator_resources():
+    """Resource / Capacity Planning: backlog by stage + primary bottleneck + recommendation."""
+    import scripts.coordinator_module as co
+    return _json_safe(co.resource_planning())
+
+
+# ── Clinical Dietitian / Nutritionist endpoints ─────────────────────
+# Real data: medications (9, AED drug names+doses) + patients (40, age/gender) +
+# assessments (BARTHEL for ADL/feeding) + seizure_diary (25, seizure frequency).
+# AED nutrient depletions + food interactions from published clinical pharmacology.
+
+@app.get("/api/dietitian")
+async def dietitian_dashboard(patient_id: str = None):
+    """Clinical Dietitian / Nutritionist — full dashboard: ketogenic diet eligibility,
+    malnutrition screening, nutrient/vitamin analysis, medication-nutrition interactions.
+    All from REAL medications + patients + assessments + seizure_diary in data/clinical.db."""
+    import scripts.dietitian_module as diet
+    return _json_safe(diet.full_dashboard(patient_id))
+
+
+@app.get("/api/dietitian/ketogenic")
+async def dietitian_ketogenic(patient_id: str = None):
+    """Ketogenic diet eligibility: composite score from seizure frequency, drug resistance,
+    age, AED-keto contraindications. Recommends Classic 4:1 / MAD / MCT / LGIT."""
+    import scripts.dietitian_module as diet
+    return _json_safe(diet.ketogenic_diet_eligibility(patient_id))
+
+
+@app.get("/api/dietitian/malnutrition")
+async def dietitian_malnutrition(patient_id: str = None):
+    """Malnutrition screening (MNA/MUST-style): age risk + appetite-suppressing AEDs +
+    Barthel feeding/ADL impairment + polypharmacy. Risk: Low/Medium/High."""
+    import scripts.dietitian_module as diet
+    return _json_safe(diet.malnutrition_screening(patient_id))
+
+
+@app.get("/api/dietitian/nutrient")
+async def dietitian_nutrient(patient_id: str = None):
+    """Nutrient/Vitamin deficiency analysis: cross-references each patient's AEDs against
+    published depletion table (carnitine, folate, vitamin D, B6, B12, calcium, bicarbonate).
+    Produces per-patient supplement recommendations."""
+    import scripts.dietitian_module as diet
+    return _json_safe(diet.nutrient_analysis(patient_id))
+
+
+@app.get("/api/dietitian/medication-nutrition")
+async def dietitian_med_nutrition(patient_id: str = None):
+    """Medication-Nutrition interactions: AED-food interactions from clinical pharmacology
+    (grapefruit/CYP3A4, enteral feed binding, GI effects, kidney stone hydration risk).
+    Per-patient dietary counseling points."""
+    import scripts.dietitian_module as diet
+    return _json_safe(diet.medication_nutrition_interaction(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
