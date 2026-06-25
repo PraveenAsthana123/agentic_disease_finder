@@ -17,6 +17,9 @@
      "purpose": "External validation (Bonn) + bootstrap CIs"},
     {"id": "graph_db", "label": "🕸️ Knowledge Graph (RDF) Build", "script": "scripts/build_graph.py",
      "schedule": "06:00 daily", "cron_tag": "GRAPH-DB", "report": "jobs/reports/graph_latest.json",
-     "purpose": "Rebuild RDF relationship graph (patient→EEG→finding→diagnosis) from clinical DB"}
+     "purpose": "Rebuild RDF relationship graph (patient→EEG→finding→diagnosis) from clinical DB"},
+    {"id": "cv_pipeline", "label": "🖼️ CV Pipeline (denoise/segment/detect/classify)", "script": "scripts/cv_pipeline.py",
+     "schedule": "hourly", "cron_tag": "CV-PIPELINE", "report": "jobs/reports/cv_pipeline_latest.json",
+     "purpose": "Image noise-cleaning + segmentation + YOLO detection + vision classification on video frames/EEG images"}
   ]
 }
