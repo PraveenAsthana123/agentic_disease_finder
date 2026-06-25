@@ -724,6 +724,13 @@ async def data_manager_dataset_version():
     return _json_safe(dv.version_manifest())
 
 
+@app.get("/api/data-manager/label-validation")
+async def data_manager_label_validation():
+    """Label Validation — analyses label consistency + reference dataset class-balance QC."""
+    import scripts.label_validation as lv
+    return _json_safe(lv.full_report())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():
@@ -2132,6 +2139,53 @@ async def dietitian_med_nutrition(patient_id: str = None):
     Per-patient dietary counseling points."""
     import scripts.dietitian_module as diet
     return _json_safe(diet.medication_nutrition_interaction(patient_id))
+
+
+# ─── Medical Social Worker (MSW) ──────────────────────────────────────
+
+@app.get("/api/social-worker")
+async def social_worker_dashboard(patient_id: str = None):
+    """Medical Social Worker (MSW) — full dashboard: SDOH screening, caregiver burden
+    (ZBI/CSI proxy), benefits/vocational support, treatment-barrier detection.
+    All built from REAL patients + seizure_diary + medications + assessments in clinical.db."""
+    import scripts.social_worker_module as msw
+    return _json_safe(msw.full_dashboard(patient_id))
+
+
+@app.get("/api/social-worker/sdoh-screening")
+async def social_worker_sdoh(patient_id: str = None):
+    """Social Determinants of Health screening: 6-domain scoring (Employment, Housing,
+    Transportation, Financial, Social Support, Education) from real demographics,
+    seizure frequency, medication burden. Composite vulnerability score 0-100."""
+    import scripts.social_worker_module as msw
+    return _json_safe(msw.social_determinants_screening(patient_id))
+
+
+@app.get("/api/social-worker/caregiver-burden")
+async def social_worker_caregiver(patient_id: str = None):
+    """Caregiver Burden: ZBI proxy (0-88) + CSI proxy (0-13) scored from seizure
+    severity/frequency, nocturnal seizures, injury history, polypharmacy, age factor.
+    Burnout risk levels + respite referral flags."""
+    import scripts.social_worker_module as msw
+    return _json_safe(msw.caregiver_burden(patient_id))
+
+
+@app.get("/api/social-worker/benefits-vocational")
+async def social_worker_benefits(patient_id: str = None):
+    """Benefits / Vocational Support: driving eligibility (seizure-free period),
+    employment readiness score, disability benefit flags (SSA listing 11.02),
+    cognitive/sedation load, vocational recommendations."""
+    import scripts.social_worker_module as msw
+    return _json_safe(msw.benefits_vocational(patient_id))
+
+
+@app.get("/api/social-worker/treatment-barriers")
+async def social_worker_barriers(patient_id: str = None):
+    """Treatment-Barrier Detection: 8 barrier categories (Financial, Lifestyle,
+    Safety fear, Sleep, Cognitive, Stigma, Transportation, Medication gap) with
+    severity scoring and targeted intervention recommendations."""
+    import scripts.social_worker_module as msw
+    return _json_safe(msw.treatment_barrier_detection(patient_id))
 
 
 if __name__ == "__main__":

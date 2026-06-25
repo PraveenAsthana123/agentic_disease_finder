@@ -1,7 +1,7 @@
 {
  "role": "Clinical Data Manager (CDM)",
  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:36:08Z",
+ "updated_at": "2026-06-25T19:38:37Z",
  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
@@ -185,7 +185,7 @@
    "name": "Label Validation",
    "ai_feature": "Consensus engine",
    "deliverable": "Label quality",
-   "status": "partial",
+   "status": "built",
    "steps": [
     "Collect seizure/dx labels per recording",
     "Compute inter-rater agreement (Cohen/Fleiss κ)",
@@ -196,6 +196,9 @@
     "Multiple reviewers disagree on seizure onset",
     "Single-rater labels (no κ possible)",
     "Label confidence rarely captured"
+   ],
+   "endpoints": [
+    "/api/data-manager/label-validation"
    ]
   },
   {
