@@ -690,10 +690,13 @@ async def data_manager():
 
 
 @app.get("/api/model-performance")
+_mp_cache = {}
 async def model_performance():
-    """Real model performance (ROC/PR/confusion/metrics), subject-wise CV on aligned features."""
+    """Real model performance (ROC/PR/confusion/metrics), subject-wise CV — cached (CV is slow)."""
     import scripts.model_performance as mp
-    return _json_safe(mp.build())
+    if "r" not in _mp_cache:
+        _mp_cache["r"] = _json_safe(mp.build())
+    return _mp_cache["r"]
 
 
 @app.get("/api/conversation")
