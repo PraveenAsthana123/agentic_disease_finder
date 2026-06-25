@@ -74,6 +74,15 @@
    "cron_tag": "DRIFT",
    "report": "jobs/reports/drift_latest.json",
    "purpose": "PSI+KS drift: training reference vs live feature extractor (detects train/serve skew)"
+  },
+  {
+   "id": "data_quality",
+   "label": "\ud83d\uddc2\ufe0f CDM Data-Quality Audit",
+   "script": "scripts/data_quality_job.py",
+   "schedule": "06:30 daily",
+   "cron_tag": "DATA-QUALITY",
+   "report": "jobs/reports/data_quality_latest.json",
+   "purpose": "Live completeness/uniqueness/validity + AI-readiness score (Clinical Data Manager)"
   }
  ]
 }

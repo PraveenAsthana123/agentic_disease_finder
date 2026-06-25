@@ -1319,3 +1319,87 @@ def list_clinical_decisions(patient_id: Optional[str] = None, limit: int = 200) 
 if __name__ == "__main__":
     init_db()
     print(f"Initialized {DB_PATH}")
+
+
+# ── Clinical Data Manager (CDM) — real data-quality engine ──────────────────
+def data_manager_report() -> dict:
+    """REAL data-quality + AI-readiness metrics computed live on clinical.db.
+    Completeness/uniqueness/validity are computed; consistency/accuracy/timeliness
+    are partially computed with honest notes. The data-governance backbone (§ thesis)."""
+    init_db()
+    with _connect() as c:
+        def cnt(t):
+            try:
+                return c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+            except sqlite3.Error:
+                return 0
+
+        def distinct_pid(t):
+            try:
+                return c.execute(f"SELECT COUNT(DISTINCT patient_id) FROM {t}").fetchone()[0]
+            except sqlite3.Error:
+                return 0
+
+        n_pat = cnt("patients")
+        counts = {k: cnt(k) for k in ["patients", "analyses", "mri_findings", "assessments",
+                                      "seizure_diary", "medications", "neuropsych", "clinical_decisions"]}
+        # modality coverage (% of patients with each)
+        mods = {"EEG analysis": distinct_pid("analyses"), "Assessment": distinct_pid("assessments"),
+                "Seizure diary": distinct_pid("seizure_diary"), "MRI": distinct_pid("mri_findings"),
+                "Medication": distinct_pid("medications")}
+        coverage = {k: round(100 * v / n_pat, 1) if n_pat else 0 for k, v in mods.items()}
+
+        # validity: patients with age + gender + disease populated
+        valid = c.execute("SELECT COUNT(*) FROM patients WHERE age IS NOT NULL AND gender IN ('Male','Female') "
+                          "AND disease IS NOT NULL AND disease!=''").fetchone()[0] if n_pat else 0
+        validity = round(100 * valid / n_pat, 1) if n_pat else 0
+        # uniqueness: duplicate patient_ids
+        dups = len(c.execute("SELECT patient_id FROM patients GROUP BY patient_id HAVING COUNT(*)>1").fetchall())
+        uniqueness = round(100 * (1 - dups / n_pat), 1) if n_pat else 100
+        # completeness: mean modality coverage across core modalities
+        completeness = round(sum(coverage.values()) / len(coverage), 1) if coverage else 0
+        # timeliness: % analyses with a created_at (real); freshness honest-noted
+        ts = c.execute("SELECT COUNT(*) FROM analyses WHERE created_at IS NOT NULL").fetchone()[0]
+        timeliness = round(100 * ts / counts["analyses"], 1) if counts["analyses"] else 0
+        # label/annotation coverage: analyses with a predicted_label
+        labeled = c.execute("SELECT COUNT(*) FROM analyses WHERE predicted_label IS NOT NULL AND predicted_label!=''").fetchone()[0]
+        label_cov = round(100 * labeled / counts["analyses"], 1) if counts["analyses"] else 0
+        # signal quality coverage
+        goodq = c.execute("SELECT COUNT(*) FROM analyses WHERE signal_quality='Good'").fetchone()[0]
+        sigq = round(100 * goodq / counts["analyses"], 1) if counts["analyses"] else 0
+
+    dims = {
+        "Completeness": {"score": completeness, "basis": f"mean modality coverage across {len(coverage)} modalities", "real": True},
+        "Uniqueness": {"score": uniqueness, "basis": f"{dups} duplicate patient_ids of {n_pat}", "real": True},
+        "Validity": {"score": validity, "basis": f"{valid}/{n_pat} patients have age+gender+disease", "real": True},
+        "Timeliness": {"score": timeliness, "basis": "analyses with timestamp; freshness-window not yet enforced", "real": "partial"},
+        "Consistency": {"score": None, "basis": "cross-system consistency needs EMR integration (not wired)", "real": False},
+        "Accuracy": {"score": None, "basis": "value-correctness needs source-of-truth comparison (not wired)", "real": False},
+    }
+    # AI readiness = weighted composite of the REAL signals
+    ai_components = {"completeness": completeness, "uniqueness": uniqueness, "validity": validity,
+                    "label_coverage": label_cov, "signal_quality": sigq}
+    weights = {"completeness": 0.25, "uniqueness": 0.15, "validity": 0.2, "label_coverage": 0.2, "signal_quality": 0.2}
+    ai_readiness = round(sum(ai_components[k] * weights[k] for k in weights), 1)
+    grade = "A (AI-ready)" if ai_readiness >= 85 else "B (usable, gaps)" if ai_readiness >= 70 else \
+            "C (needs work)" if ai_readiness >= 50 else "D (not AI-ready)"
+
+    # missing-data matrix (per modality, count missing)
+    missing = [{"modality": k, "present": v, "missing": n_pat - v, "pct_missing": round(100 * (n_pat - v) / n_pat, 1) if n_pat else 0}
+               for k, v in mods.items()]
+
+    lineage = ["Raw EDF/CSV upload", "Parse + validate", "Signal QC (AutoReject/PyPREP)", "Feature extraction (47)",
+               "Model classify (scaled)", "SHAP explanation", "Decision audit (human oversight)", "Vector ingest (RAG)"]
+
+    return {
+        "available": True, "run_at": _now(), "n_patients": n_pat,
+        "counts": counts, "modality_coverage_pct": coverage,
+        "quality_dimensions": dims,
+        "ai_readiness_score": ai_readiness, "ai_readiness_grade": grade,
+        "ai_readiness_components": ai_components,
+        "missing_matrix": missing,
+        "label_coverage_pct": label_cov, "signal_quality_pct": sigq,
+        "data_lineage": lineage,
+        "note": "Completeness/uniqueness/validity computed live. Consistency/accuracy need EMR/source-of-truth "
+                "integration (honestly null). AI-readiness = weighted real signals.",
+    }

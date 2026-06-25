@@ -1,0 +1,108 @@
+{
+  "available": true,
+  "run_at": "2026-06-24T23:07:23-06:00",
+  "n_patients": 40,
+  "counts": {
+    "patients": 40,
+    "analyses": 21,
+    "mri_findings": 1,
+    "assessments": 171,
+    "seizure_diary": 25,
+    "medications": 5,
+    "neuropsych": 1,
+    "clinical_decisions": 1
+  },
+  "modality_coverage_pct": {
+    "EEG analysis": 35.0,
+    "Assessment": 65.0,
+    "Seizure diary": 55.0,
+    "MRI": 2.5,
+    "Medication": 10.0
+  },
+  "quality_dimensions": {
+    "Completeness": {
+      "score": 33.5,
+      "basis": "mean modality coverage across 5 modalities",
+      "real": true
+    },
+    "Uniqueness": {
+      "score": 100.0,
+      "basis": "0 duplicate patient_ids of 40",
+      "real": true
+    },
+    "Validity": {
+      "score": 57.5,
+      "basis": "23/40 patients have age+gender+disease",
+      "real": true
+    },
+    "Timeliness": {
+      "score": 100.0,
+      "basis": "analyses with timestamp; freshness-window not yet enforced",
+      "real": "partial"
+    },
+    "Consistency": {
+      "score": null,
+      "basis": "cross-system consistency needs EMR integration (not wired)",
+      "real": false
+    },
+    "Accuracy": {
+      "score": null,
+      "basis": "value-correctness needs source-of-truth comparison (not wired)",
+      "real": false
+    }
+  },
+  "ai_readiness_score": 70.1,
+  "ai_readiness_grade": "B (usable, gaps)",
+  "ai_readiness_components": {
+    "completeness": 33.5,
+    "uniqueness": 100.0,
+    "validity": 57.5,
+    "label_coverage": 100.0,
+    "signal_quality": 76.2
+  },
+  "missing_matrix": [
+    {
+      "modality": "EEG analysis",
+      "present": 14,
+      "missing": 26,
+      "pct_missing": 65.0
+    },
+    {
+      "modality": "Assessment",
+      "present": 26,
+      "missing": 14,
+      "pct_missing": 35.0
+    },
+    {
+      "modality": "Seizure diary",
+      "present": 22,
+      "missing": 18,
+      "pct_missing": 45.0
+    },
+    {
+      "modality": "MRI",
+      "present": 1,
+      "missing": 39,
+      "pct_missing": 97.5
+    },
+    {
+      "modality": "Medication",
+      "present": 4,
+      "missing": 36,
+      "pct_missing": 90.0
+    }
+  ],
+  "label_coverage_pct": 100.0,
+  "signal_quality_pct": 76.2,
+  "data_lineage": [
+    "Raw EDF/CSV upload",
+    "Parse + validate",
+    "Signal QC (AutoReject/PyPREP)",
+    "Feature extraction (47)",
+    "Model classify (scaled)",
+    "SHAP explanation",
+    "Decision audit (human oversight)",
+    "Vector ingest (RAG)"
+  ],
+  "note": "Completeness/uniqueness/validity computed live. Consistency/accuracy need EMR/source-of-truth integration (honestly null). AI-readiness = weighted real signals."
+}

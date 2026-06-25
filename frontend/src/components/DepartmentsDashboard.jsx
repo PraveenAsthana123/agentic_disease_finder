@@ -189,7 +189,7 @@ function subTabsFor(dept) {
     return [{ id: 'iot_sim', label: 'Device Flow Simulation' }, { id: 'iot_devices', label: 'Devices' }, { id: 'iot_fleet', label: '📶 Fleet (online/offline)' }]
   }
   if (dept.custom === 'aitypes') {
-    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'sys_health', label: '💚 System Health' }]
+    return [{ id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' }, { id: 'stories_tests', label: 'Stories & Tests' }, { id: 'neurolab', label: '🏥 NeuroLab Readiness' }, { id: 'tab_taxonomy', label: '🗂️ Tab Taxonomy' }, { id: 'portal', label: '🧑 Patient Portal' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' }, { id: 'flowcharts', label: '📊 Flowcharts' }, { id: 'role_specs', label: '👥 Role Specs (17 roles)' }, { id: 'data_formats', label: '🧠 EEG Data Formats' }, { id: 'challenges', label: '⚠️ Challenges (30 · STAR)' }, { id: 'jobs_cron', label: '⏰ Jobs / Cron' }, { id: 'dark_factory', label: '🏭 AI Dark Factory' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'patient_registry', label: '👥 Patient Registry' }, { id: 'assess_dash', label: '📊 Assessment Dashboards' }, { id: 'integrations_set', label: '🔌 Integrations Settings' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'sys_health', label: '💚 System Health' }]
   }
   if (dept.custom === 'special') {
     return [
@@ -636,6 +636,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
         {activeSub === 'drift' && <DriftPanel />}
+        {activeSub === 'data_manager' && <DataManagerPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
         {activeSub === 'wizard' && <PatientOnboardingWizard disease={selectedDisease} />}
         {activeSub === 'neuro_process' && <StepProcess steps={NEURO_STEPS} title="Neuro Analysis Process" disease={selectedDisease} />}
@@ -4360,6 +4361,99 @@ function DriftPanel() {
             ))}</tbody>
           </table>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function DataManagerPanel() {
+  const [d, setD] = useState(null)
+  const [open, setOpen] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/data-manager`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const L = d.live || {}
+  const scol = { built: '#16a34a', partial: '#f59e0b', planned: '#94a3b8' }
+  const grColor = (L.ai_readiness_score || 0) >= 85 ? '#16a34a' : (L.ai_readiness_score || 0) >= 70 ? '#f59e0b' : '#dc2626'
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #0891b2' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🗂️ {d.role} <span style={{ fontSize: 12, color: '#64748b' }}>— data-governance backbone</span></h3>
+        <div style={{ fontSize: 12, color: '#475569', marginBottom: 10 }}>{d.mission}</div>
+        {L.available && (
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ padding: '10px 16px', borderRadius: 8, background: grColor + '15', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>AI Readiness</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: grColor }}>{L.ai_readiness_score} <span style={{ fontSize: 13 }}>{L.ai_readiness_grade}</span></div>
+            </div>
+            <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>Patients</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: '#0f172a' }}>{L.n_patients}</div>
+            </div>
+            <div style={{ fontSize: 12, color: '#475569' }}>tasks: <b style={{ color: scol.built }}>{d.summary?.built} built</b> · <b style={{ color: scol.partial }}>{d.summary?.partial} partial</b> · <b style={{ color: scol.planned }}>{d.summary?.planned} planned</b></div>
+          </div>
+        )}
+      </div>
+      {L.available && (
+        <>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>Data Quality Dimensions (live)</h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))', gap: 10 }}>
+              {Object.entries(L.quality_dimensions || {}).map(([k, v]) => (
+                <div key={k} style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 10, background: '#f8fafc' }}>
+                  <div style={{ fontSize: 12, color: '#0f172a', fontWeight: 600 }}>{k}</div>
+                  <div style={{ fontSize: 20, fontWeight: 700, color: v.score == null ? '#94a3b8' : v.score >= 80 ? '#16a34a' : v.score >= 50 ? '#f59e0b' : '#dc2626' }}>{v.score == null ? 'N/A' : v.score + '%'}</div>
+                  <div style={{ fontSize: 10, color: '#94a3b8' }}>{v.basis}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>Missing-Data Matrix (per modality)</h4>
+            {(L.missing_matrix || []).map((m, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '3px 0' }}>
+                <span style={{ width: 110, fontSize: 12, color: '#0f172a' }}>{m.modality}</span>
+                <div style={{ flex: 1, background: '#fee2e2', borderRadius: 4, height: 16, position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ width: `${100 - m.pct_missing}%`, height: '100%', background: '#16a34a' }} />
+                </div>
+                <span style={{ width: 130, fontSize: 11, color: '#475569', textAlign: 'right' }}>{m.present}/{L.n_patients} present ({m.pct_missing}% missing)</span>
+              </div>
+            ))}
+          </div>
+          <div style={card}>
+            <h4 style={{ marginTop: 0, color: '#0f172a' }}>Data Lineage (DAG)</h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+              {(L.data_lineage || []).map((s, i) => (
+                <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ fontSize: 11, padding: '4px 8px', borderRadius: 6, background: '#ecfeff', color: '#0e7490', border: '1px solid #a5f3fc' }}>{s}</span>
+                  {i < L.data_lineage.length - 1 && <span style={{ color: '#94a3b8' }}>→</span>}
+                </span>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>CDM Tasks — steps + challenges ({d.tasks?.length})</h4>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginBottom: 8 }}>{d.live?.note}</div>
+        {(d.tasks || []).map((t, i) => (
+          <div key={i} style={{ border: '1px solid #e5e7eb', borderRadius: 8, marginBottom: 6, overflow: 'hidden' }}>
+            <div onClick={() => setOpen(open === i ? null : i)} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', cursor: 'pointer', background: '#f8fafc' }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', flex: 1 }}>{t.name}</span>
+              <span style={{ fontSize: 11, color: '#64748b' }}>{t.ai_feature}</span>
+              <span style={{ fontSize: 10, fontWeight: 700, color: scol[t.status], textTransform: 'uppercase' }}>● {t.status}</span>
+              <span style={{ color: '#94a3b8' }}>{open === i ? '▾' : '▸'}</span>
+            </div>
+            {open === i && (
+              <div style={{ padding: '10px 14px', fontSize: 12 }}>
+                <div style={{ marginBottom: 8 }}><b style={{ color: '#16a34a' }}>Steps:</b>
+                  <ol style={{ margin: '4px 0', paddingLeft: 20, color: '#334155' }}>{t.steps.map((s, j) => <li key={j}>{s}</li>)}</ol></div>
+                <div style={{ marginBottom: 8 }}><b style={{ color: '#dc2626' }}>Challenges:</b>
+                  <ul style={{ margin: '4px 0', paddingLeft: 20, color: '#334155' }}>{t.challenges.map((s, j) => <li key={j}>{s}</li>)}</ul></div>
+                <div style={{ color: '#64748b' }}><b>Deliverable:</b> {t.deliverable}</div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   )

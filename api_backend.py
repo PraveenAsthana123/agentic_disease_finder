@@ -678,6 +678,17 @@ async def fairness():
     return json.loads(p.read_text()) if p.exists() else {"error": "run scripts/fairness_analysis.py"}
 
 
+@app.get("/api/data-manager")
+async def data_manager():
+    """Clinical Data Manager — live data-quality engine + detailed task catalog (steps+challenges)."""
+    cfg_p = Path(__file__).parent / "config" / "data_manager.json"
+    cfg = json.loads(cfg_p.read_text()) if cfg_p.exists() else {}
+    live = _json_safe(cdb.data_manager_report())
+    return {"role": cfg.get("role"), "mission": cfg.get("mission"), "summary": cfg.get("summary"),
+            "tasks": cfg.get("tasks", []), "dashboards": cfg.get("dashboards", []),
+            "quality_assessments": cfg.get("quality_assessments", []), "live": live}
+
+
 @app.get("/api/drift")
 async def drift():
     """Drift monitor (PSI+KS): training reference vs live extractor features. Detects train/serve skew."""
