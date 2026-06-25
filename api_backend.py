@@ -696,6 +696,22 @@ async def model_performance():
     return _json_safe(mp.build())
 
 
+@app.get("/api/requests")
+async def list_requests(status: str = None):
+    """Operator request inbox — every input logged, with status (open/done/blocked)."""
+    return _json_safe(cdb.list_requests(status=status))
+
+
+@app.post("/api/requests")
+async def add_request(payload: dict = Body(...)):
+    return cdb.save_request(payload.get("text", ""), payload.get("category", "general"), "ui")
+
+
+@app.post("/api/requests/update")
+async def update_request(payload: dict = Body(...)):
+    return cdb.update_request(payload.get("id"), payload.get("status"), payload.get("notes"))
+
+
 @app.get("/api/expert-roles")
 async def expert_roles():
     """8 multidisciplinary expert roles (Pharmacist/Nurse/SLP/OT/Dietitian/Psychologist/MSW/Coordinator) — tasks w/ steps+challenges+status."""

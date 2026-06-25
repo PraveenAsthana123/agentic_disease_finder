@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -643,6 +643,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'integrations_set' && <IntegrationsSettings />}
         {activeSub === 'eeg_stack' && <EegAiStackPanel />}
         {activeSub === 'neuro_ecosystem' && <NeuroAiEcosystemPanel />}
+        {activeSub === 'request_inbox' && <RequestInboxPanel />}
         {activeSub === 'clinical_trust' && <ClinicalTrustPanel />}
         {activeSub === 'expert_dashboards' && <ExpertDashboardCatalog />}
         {activeSub === 'eeg_viz' && <EegVizPanel />}
@@ -4421,6 +4422,57 @@ function DriftPanel() {
                 <td style={cellTd}>{f.ks_stat}</td>
                 <td style={cellTd}>{f.ks_p}</td>
                 <td style={{ ...cellTd, fontWeight: 600, color: scol[f.severity] }}>{f.severity}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function RequestInboxPanel() {
+  const [d, setD] = useState(null)
+  const [newReq, setNewReq] = useState('')
+  const load = () => axios.get(`${API_URL}/requests`).then(r => setD(r.data)).catch(() => setD(null))
+  useEffect(load, [])
+  const setStatus = (id, status) => axios.post(`${API_URL}/requests/update`, { id, status }).then(load).catch(() => {})
+  const add = () => { if (newReq.trim()) axios.post(`${API_URL}/requests`, { text: newReq, category: 'manual' }).then(() => { setNewReq(''); load() }) }
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const scol = { pending: '#f59e0b', open: '#f59e0b', addressed: '#16a34a', done: '#16a34a', 'not-implemented': '#94a3b8', rejected: '#dc2626', blocked: '#dc2626' }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #f59e0b' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>📥 Request Inbox <span style={{ fontSize: 12, color: '#64748b' }}>— every input you've given (DB + MD + prompt_inputs/)</span></h3>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
+          {Object.entries(d.by_status || {}).map(([k, v]) => (
+            <div key={k} style={{ padding: '6px 12px', borderRadius: 8, background: (scol[k] || '#94a3b8') + '18', color: scol[k] || '#475569', fontWeight: 700 }}>{k}: {v}</div>
+          ))}
+          {d.open_count > 0 && <div style={{ padding: '6px 12px', borderRadius: 8, background: '#fef3c7', color: '#92400e', fontWeight: 700 }}>🔔 {d.open_count} reminders (not addressed)</div>}
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <input value={newReq} onChange={e => setNewReq(e.target.value)} onKeyDown={e => e.key === 'Enter' && add()} placeholder="Add a request/input manually…" style={{ flex: 1, padding: '8px 10px', border: '1px solid #cbd5e1', borderRadius: 6, fontSize: 13 }} />
+          <button onClick={add} style={{ background: '#1e88e5', color: '#fff', border: 'none', borderRadius: 6, padding: '8px 16px', fontWeight: 600, cursor: 'pointer' }}>+ Add</button>
+        </div>
+      </div>
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Checklist — all inputs ({d.count})</h4>
+        <div style={{ maxHeight: 520, overflow: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', fontSize: 12, width: '100%' }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>#</th><th style={cellTh}>When</th><th style={{ ...cellTh, textAlign: 'left' }}>Input</th><th style={cellTh}>Status</th><th style={{...cellTh,textAlign:'left'}}>Where (tab · API · tested)</th><th style={cellTh}>Mark</th></tr></thead>
+            <tbody>{d.items.map((r) => (
+              <tr key={r.id} style={{ background: (r.status==='done'||r.status==='addressed') ? '#f0fdf4' : (r.status==='rejected'||r.status==='blocked') ? '#fef2f2' : r.status==='not-implemented' ? '#f8fafc' : '#fffbeb' }}>
+                <td style={cellTd}>{r.id}</td>
+                <td style={{ ...cellTd, whiteSpace: 'nowrap', fontSize: 10 }}>{(r.ts_local || '').slice(0, 16).replace('T', ' ')}</td>
+                <td style={{ ...cellTd, textAlign: 'left' }}>{(r.status === 'done' || r.status === 'addressed') ? <s style={{ color: '#64748b' }}>{r.request_text}</s> : r.request_text}</td>
+                <td style={{ ...cellTd, fontWeight: 700, color: scol[r.status] }}>{r.status}</td>
+                <td style={{ ...cellTd, textAlign:'left', fontSize:10, color:'#475569' }}>{r.impl_tab ? `${r.impl_tab} · ${r.impl_api||'-'} · ${r.tested||'?'}` : '—'}</td>
+                <td style={{ ...cellTd, whiteSpace: 'nowrap' }}>
+                  <button onClick={() => setStatus(r.id, 'addressed')} title="addressed" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>✅</button>
+                  <button onClick={() => setStatus(r.id, 'pending')} title="pending" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>⏳</button>
+                  <button onClick={() => setStatus(r.id, 'not-implemented')} title="not implemented" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>🚫</button>
+                  <button onClick={() => setStatus(r.id, 'rejected')} title="rejected" style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: 14 }}>❌</button>
+                </td>
               </tr>
             ))}</tbody>
           </table>

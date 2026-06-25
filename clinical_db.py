@@ -1449,3 +1449,54 @@ def compare_patients(pid_a: str, pid_b: str) -> dict:
                        "b_score": sb, "b_level": b["assessments"][inst].get("level"), "delta": d})
     return {"available": True, "a": a, "b": b, "shared_assessments": deltas,
             "note": "Side-by-side real clinical data. Delta = A − B on shared instruments."}
+
+
+# ── Operator Request Inbox (every input → DB → UI + reminders) ──────────────
+def _ensure_requests():
+    with _connect() as c:
+        c.execute("""CREATE TABLE IF NOT EXISTS operator_requests (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            request_text TEXT, category TEXT, status TEXT DEFAULT 'open',
+            notes TEXT, source TEXT, ts_utc TEXT, ts_local TEXT, updated_at TEXT)""")
+        c.execute("CREATE INDEX IF NOT EXISTS idx_req_status ON operator_requests(status)")
+
+
+def save_request(text: str, category: str = "general", source: str = "chat") -> dict:
+    """Log an operator input/request. Dedupe near-identical recent ones."""
+    _ensure_requests()
+    text = (text or "").strip()
+    if not text:
+        return {"skipped": "empty"}
+    with _connect() as c:
+        dup = c.execute("SELECT id FROM operator_requests WHERE request_text=? AND ts_local > datetime('now','-1 hour','localtime')",
+                        (text,)).fetchone()
+        if dup:
+            return {"id": dup[0], "deduped": True}
+        cur = c.execute("INSERT INTO operator_requests(request_text,category,status,source,ts_utc,ts_local,updated_at) "
+                        "VALUES(?,?,'open',?,?,?,?)", (text, category, source, _utc(), _now(), _now()))
+        return {"id": cur.lastrowid, "status": "open", "ts_local": _now()}
+
+
+def list_requests(status: str = None, limit: int = 500) -> dict:
+    _ensure_requests()
+    with _connect() as c:
+        if status:
+            rows = [dict(r) for r in c.execute("SELECT * FROM operator_requests WHERE status=? ORDER BY id DESC LIMIT ?", (status, limit)).fetchall()]
+        else:
+            rows = [dict(r) for r in c.execute("SELECT * FROM operator_requests ORDER BY id DESC LIMIT ?", (limit,)).fetchall()]
+    from collections import Counter
+    dist = Counter(r["status"] for r in rows)
+    return {"items": rows, "count": len(rows), "by_status": dict(dist),
+            "open_count": dist.get("open",0)+dist.get("pending",0),
+            "reminders": [r for r in rows if r["status"] in ("open","pending")][:20],
+            "note": "Every operator input is logged here (UserPromptSubmit hook). Open = not yet addressed."}
+
+
+def update_request(rid: int, status: str = None, notes: str = None) -> dict:
+    _ensure_requests()
+    with _connect() as c:
+        if status:
+            c.execute("UPDATE operator_requests SET status=?, updated_at=? WHERE id=?", (status, _now(), rid))
+        if notes is not None:
+            c.execute("UPDATE operator_requests SET notes=?, updated_at=? WHERE id=?", (notes, _now(), rid))
+    return {"id": rid, "status": status, "updated": True}
