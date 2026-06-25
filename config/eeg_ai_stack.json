@@ -1,7 +1,7 @@
 {
  "title": "EEG AI Ecosystem — Tool Stack (16 layers)",
  "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). §155 honest.",
- "updated_at": "2026-06-25T20:35:43Z",
+ "updated_at": "2026-06-25T20:38:06Z",
  "layers": [
   {
    "layer": "1. Core EEG analysis",
@@ -255,7 +255,8 @@
     },
     {
      "name": "CatBoost",
-     "status": "cataloged"
+     "status": "installed",
+     "endpoint": "/api/catboost-model"
     }
    ]
   },
