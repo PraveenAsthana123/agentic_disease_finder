@@ -1,0 +1,28 @@
+{
+  "title": "Neurophysiology / Electrodiagnostic Test Catalog",
+  "note": "Tests run by Clinical Neurophysiologist / Neurologist. Each with purpose, role, EEG-linkage (when it depends-on or complements EEG), and status. §155 honest.",
+  "updated_at": "2026-06-24",
+  "tests": [
+    {"id": "EEG", "name": "EEG", "purpose": "Cortical electrical activity / seizures", "role": "Neurologist / Neurophysiologist", "output": "Normal/Abnormal/Epileptiform", "eeg_link": "core", "status": "built"},
+    {"id": "VEEG", "name": "Video EEG", "purpose": "Seizure confirmation + semiology", "role": "Epileptologist", "output": "Seizure classification", "eeg_link": "core (EEG + video)", "status": "partial"},
+    {"id": "NCV", "name": "NCV (Nerve Conduction Velocity)", "purpose": "Peripheral nerve conduction", "role": "Neurophysiologist", "output": "Latency/amplitude/velocity", "eeg_link": "independent — pairs with EEG for systemic/peripheral involvement", "status": "cataloged", "case_data": "MRS.VEENA CHANDRA NCV.pdf, MR RAMKESH NCV-EMG.pdf"},
+    {"id": "EMG", "name": "EMG (Electromyography)", "purpose": "Muscle + motor-unit activity", "role": "Neurophysiologist", "output": "Denervation/myopathy", "eeg_link": "complements EEG in epilepsy with motor signs / myoclonus", "status": "cataloged", "case_data": "MR RAMKESH NCV-EMG.pdf"},
+    {"id": "BLINK", "name": "Blink Reflex", "purpose": "Trigeminal–facial brainstem circuit", "role": "Neurophysiologist", "output": "R1/R2 latency", "eeg_link": "complements EEG for brainstem assessment", "status": "cataloged"},
+    {"id": "SSEP", "name": "SSEP (Somatosensory Evoked Potentials)", "purpose": "Sensory pathway integrity", "role": "Neurophysiologist", "output": "Latency/amplitude", "eeg_link": "evoked-potential — giant SSEP linked to cortical myoclonus/epilepsy", "status": "cataloged"},
+    {"id": "VEP", "name": "VEP (Visual Evoked Potentials)", "purpose": "Visual pathway (optic nerve→cortex)", "role": "Neurophysiologist", "output": "P100 latency", "eeg_link": "evoked-potential — photosensitive epilepsy / occipital involvement", "status": "cataloged", "case_data": "BABY KYRA KAPOOR VEP REPORT.pdf"},
+    {"id": "BERA", "name": "BERA / ABR (Brainstem Evoked Response)", "purpose": "Auditory brainstem pathway", "role": "Neurophysiologist", "output": "Wave I-V latencies", "eeg_link": "evoked-potential — brainstem integrity alongside EEG", "status": "cataloged", "case_data": "MASTER ABBAS BERA REPORT.pdf"},
+    {"id": "RNST", "name": "RNS/RNST (Repetitive Nerve Stimulation)", "purpose": "Neuromuscular junction", "role": "Neurophysiologist", "output": "Decrement %", "eeg_link": "independent (MG differential)", "status": "cataloged"},
+    {"id": "AUTONOMIC", "name": "Autonomic Function Tests", "purpose": "Autonomic nervous system", "role": "Neurologist", "output": "Battery", "eeg_link": "SUDEP risk — autonomic dysfunction is a key EEG-epilepsy comorbidity", "status": "cataloged"},
+    {"id": "RR", "name": "RR Variation (HRV)", "purpose": "Cardiac autonomic / parasympathetic", "role": "Neurologist", "output": "RR interval variation", "eeg_link": "STRONG — peri-ictal HR change + SUDEP risk; pairs with EEG seizure timing", "status": "partial", "note": "wearable HR/HRV in IoT fleet"},
+    {"id": "ABPM", "name": "ABPM / Holter", "purpose": "24h BP + ECG monitoring", "role": "Cardiologist / Neurologist", "output": "BP/ECG trends", "eeg_link": "ictal arrhythmia detection alongside EEG (SUDEP)", "status": "cataloged"},
+    {"id": "SSR", "name": "SSR (Sympathetic Skin Response)", "purpose": "Sympathetic sudomotor function", "role": "Neurophysiologist", "output": "Latency/amplitude", "eeg_link": "autonomic involvement in epilepsy", "status": "cataloged"}
+  ],
+  "eeg_linkage_summary": [
+    {"test": "VEP / BERA / SSEP", "link": "Evoked potentials — same electrophysiology family as EEG; assess specific pathways EEG can't isolate"},
+    {"test": "RR variation / ABPM / SSR / Autonomic", "link": "Autonomic — SUDEP risk; peri-ictal cardiac/autonomic change time-locked to EEG seizures"},
+    {"test": "EMG", "link": "Motor — distinguishes epileptic myoclonus (cortical, EEG-correlated) from non-epileptic"},
+    {"test": "NCV / RNS", "link": "Peripheral — independent of EEG; rules out systemic/peripheral mimics"}
+  ],
+  "summary": {"total": 13, "built": 1, "partial": 3, "cataloged": 9,
+              "honest_note": "EEG built; VEEG/RR/autonomic partial. NCV/EMG/BERA/VEP/BLINK/SSEP/RNS/ABPM/SSR cataloged — Case 1 already has real NCV/EMG/BERA/VEP report PDFs (extractable via RAG). EEG-linkage column shows which tests depend-on/complement EEG (evoked potentials + autonomic = strongest linkage for epilepsy/SUDEP)."}
+}

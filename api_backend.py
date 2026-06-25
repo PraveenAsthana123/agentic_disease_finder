@@ -633,6 +633,14 @@ async def challenges_catalog():
     return json.loads(p.read_text()) if p.exists() else {"challenges": []}
 
 
+@app.get("/api/neuro-tests")
+async def neuro_tests():
+    """Neurophysiology/electrodiagnostic test catalog (EEG/NCV/EMG/VEP/BERA/SSEP/blink/RNS/
+    autonomic/RR/ABPM/SSR) with per-test EEG-linkage + status."""
+    p = Path(__file__).parent / "config" / "neuro_tests.json"
+    return json.loads(p.read_text()) if p.exists() else {"tests": []}
+
+
 @app.get("/api/assessment-catalog")
 async def assessment_catalog():
     """Full ranked clinical-assessment catalog (27 instruments) for the epilepsy thesis,

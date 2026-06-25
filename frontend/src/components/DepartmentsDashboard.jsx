@@ -239,6 +239,7 @@ function subTabsFor(dept) {
     { id: 'r_chat', label: '💬 Team Chat' },
     { id: 'r_genai', label: '🤖 GenAI Bot' },
     { id: 'r_graph', label: '🕸️ Relationship Graph' },
+    { id: 'r_neuro_tests', label: '🩻 Neuro Tests (EEG-linked)' },
     { id: 'r_governance', label: '⚖️ Governance AI' },
     { id: 'r_control_tower', label: '🗼 AI Control Tower' },
     { id: 'r_auto_pipeline', label: '⚙️ Pipeline (Automatic)' },
@@ -649,6 +650,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'r_chat' && <RoleChat roleName={dept.name} />}
         {activeSub === 'r_genai' && <GenAiBotPanel roleName={dept.name} />}
         {activeSub === 'r_graph' && <RoleGraph roleName={dept.name} />}
+        {activeSub === 'r_neuro_tests' && <NeuroTestsPanel />}
         {activeSub === 'r_governance' && <FeedbackGovPanel view="fb_guardrails" />}
         {activeSub === 'r_control_tower' && <SystemHealthPanel />}
         {activeSub === 'r_auto_pipeline' && <EegAiRagPipelinePanel />}
@@ -4461,6 +4463,47 @@ function RoleSpecsPanel() {
           {r.note && <div style={{ fontSize: 11, color: '#166534', marginTop: 4 }}>✓ {r.note}</div>}
         </div>
       ))}
+    </div>
+  )
+}
+
+function NeuroTestsPanel() {
+  const [d, setD] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/neuro-tests`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Backend offline (:8010).</div></div>
+  const col = { built: '#16a34a', partial: '#fb8c00', cataloged: '#94a3b8' }
+  const linkCol = (l) => /STRONG|core/i.test(l) ? '#f44336' : /evoked|autonomic|complement/i.test(l) ? '#fb8c00' : '#94a3b8'
+  return (
+    <div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🩻 Neurophysiology Tests — {d.tests.length} (EEG-linked)</h3>
+        <div style={{ fontSize: 12, color: '#64748b' }}>{d.summary?.honest_note}</div>
+      </div>
+      <div style={card}>
+        <div style={{ border: '1px solid #e5e7eb', borderRadius: 6, overflow: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
+            <thead><tr style={{ background: '#f1f5f9' }}><th style={cellTh}>Test</th><th style={cellTh}>Purpose</th><th style={cellTh}>Role</th><th style={cellTh}>🔗 EEG linkage</th><th style={cellTh}>Status</th></tr></thead>
+            <tbody>{d.tests.map((t, i) => (
+              <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                <td style={{ ...cellTd, fontWeight: 600 }}>{t.name}{t.case_data ? ' 📄' : ''}</td>
+                <td style={cellTd}>{t.purpose}</td>
+                <td style={{ ...cellTd, fontSize: 11 }}>{t.role}</td>
+                <td style={{ ...cellTd, fontSize: 11, color: linkCol(t.eeg_link) }}>{t.eeg_link}</td>
+                <td style={{ ...cellTd, color: col[t.status], fontWeight: 600 }}>● {t.status}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+        <div style={{ fontSize: 11, color: '#64748b', marginTop: 4 }}>📄 = Case 1 has a real report for this test (NCV/EMG/BERA/VEP)</div>
+      </div>
+      <div style={card}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🔗 EEG Linkage Groups</h3>
+        {(d.eeg_linkage_summary || []).map((g, i) => (
+          <div key={i} style={{ fontSize: 12, padding: '5px 0', borderBottom: '1px solid #f1f5f9' }}>
+            <strong style={{ color: '#1e88e5' }}>{g.test}</strong> — <span style={{ color: '#475569' }}>{g.link}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
