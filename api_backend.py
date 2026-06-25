@@ -1001,6 +1001,16 @@ async def eeg_complexity_features(file: str = None, seconds: float = 10.0):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/localization")
+async def eeg_localization(file: str = None):
+    """Localization Dashboard — seizure-focus localization by per-channel ictal power increase."""
+    import scripts.localization as loc
+    key = f"localize:{file}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(loc.localize(file))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""
