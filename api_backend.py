@@ -1011,6 +1011,16 @@ async def eeg_localization(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/propagation")
+async def eeg_propagation(file: str = None):
+    """Seizure Propagation Map — per-channel onset order during ictal (spread sequence)."""
+    import scripts.propagation as prop
+    key = f"propagation:{file}"
+    if key not in _eeg_viz_cache:
+        _eeg_viz_cache[key] = _json_safe(prop.propagation(file))
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/neuro-ai-ecosystem")
 async def neuro_ai_ecosystem():
     """Full Neuro AI open-source ecosystem (EDC, cognitive platforms, rating scales, cognitive tests, annotation, XAI, RAI) with honest status."""

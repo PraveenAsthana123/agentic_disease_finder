@@ -1,7 +1,7 @@
 {
  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
- "updated_at": "2026-06-25T20:26:23Z",
+ "updated_at": "2026-06-25T20:28:56Z",
  "must_have_p0": [
   "Raw EEG waveform",
   "Event timeline",
@@ -218,7 +218,10 @@
    "feature": "Spread pattern",
    "why": "Surgical planning",
    "priority": "P2",
-   "status": "planned"
+   "status": "built",
+   "endpoints": [
+    "/api/eeg-viz/propagation"
+   ]
   },
   {
    "role": "Epileptologist",
