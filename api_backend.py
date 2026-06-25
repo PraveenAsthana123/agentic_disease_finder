@@ -731,6 +731,13 @@ async def data_manager_label_validation():
     return _json_safe(lv.full_report())
 
 
+@app.get("/api/data-manager/video-validation")
+async def data_manager_video_validation():
+    """Video Validation — per-frame integrity/blank/dimension QC over real extracted frames."""
+    import scripts.video_validation as vv
+    return _json_safe(vv.validate_frames())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():

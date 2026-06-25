@@ -1,7 +1,7 @@
 {
  "role": "Clinical Data Manager (CDM)",
  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:38:37Z",
+ "updated_at": "2026-06-25T19:43:24Z",
  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
@@ -168,7 +168,7 @@
    "name": "Video Validation",
    "ai_feature": "Auto sync validation",
    "deliverable": "Video QC",
-   "status": "partial",
+   "status": "built",
    "steps": [
     "Validate video stored + playable",
     "Check EEG↔video time sync",
@@ -179,6 +179,9 @@
     "EEG-video clock drift",
     "Large video files",
     "Sync metadata often missing"
+   ],
+   "endpoints": [
+    "/api/data-manager/video-validation"
    ]
   },
   {
