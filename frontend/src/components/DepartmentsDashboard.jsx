@@ -4024,10 +4024,11 @@ function AssessmentDashboard() {
     <div>
       <div style={card}>
         <h3 style={{ marginTop: 0, color: '#0f172a' }}>📊 Assessment Dashboards — {d.total} assessments</h3>
-        <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+        <div style={{ display: 'flex', gap: 16, fontSize: 13, flexWrap: 'wrap' }}>
           <span>Total: <strong>{d.total}</strong></span>
           <span>Alerts: <strong style={{ color: '#f44336' }}>{d.alerts}</strong></span>
           <span>Types: <strong>{Object.keys(d.by_type || {}).length}</strong></span>
+          {d.by_source && <span>Source: {Object.entries(d.by_source).map(([k, v]) => <span key={k} style={{ marginLeft: 6, fontSize: 11, padding: '1px 8px', borderRadius: 10, background: k === 'REAL' ? '#dcfce7' : k === 'SYNTHETIC' ? '#fef3c7' : '#f1f5f9', color: k === 'REAL' ? '#166534' : '#92400e' }}>{k} {v}</span>)}</span>}
         </div>
       </div>
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>

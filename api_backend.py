@@ -660,6 +660,11 @@ async def assessment_dashboard():
     by_type = Counter(r.get("instrument") for r in rows)
     by_level = Counter(r.get("level") for r in rows)
     by_user = Counter(r.get("examiner") or "unspecified" for r in rows)
+    # data provenance — synthetic vs real (operator: tag synthetic; real data comes from folder/UI upload)
+    def src(r):
+        e = (r.get("examiner") or "").upper()
+        return "SYNTHETIC" if "SYNTH" in e else ("REAL" if "REAL" in e else "other")
+    by_source = Counter(src(r) for r in rows)
     by_disease = Counter(pdis.get(r.get("patient_id"), "unknown") for r in rows)
     by_date = Counter((r.get("created_at") or "")[:10] for r in rows if r.get("created_at"))
     # avg score per instrument
@@ -670,7 +675,7 @@ async def assessment_dashboard():
     avg_score = {k: round(v[0] / v[1], 1) for k, v in sums.items() if v[1]}
     alerts = sum(1 for r in rows if r.get("alert"))
     return {"total": len(rows), "by_type": dict(by_type), "by_level": dict(by_level),
-            "by_user": dict(by_user), "by_disease": dict(by_disease),
+            "by_user": dict(by_user), "by_disease": dict(by_disease), "by_source": dict(by_source),
             "by_date": dict(sorted(by_date.items())), "avg_score": avg_score, "alerts": alerts,
             "recent": sorted(rows, key=lambda r: r.get("created_at", ""), reverse=True)[:15]}
 
