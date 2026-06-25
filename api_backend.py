@@ -703,6 +703,20 @@ async def data_manager_archival():
     return _json_safe(da.archival_report())
 
 
+@app.get("/api/data-manager/terminology")
+async def data_manager_terminology(patient_id: str = None):
+    """Terminology Mapping — instruments → canonical category/domain taxonomy + coverage."""
+    import scripts.terminology_standardization as ts
+    return _json_safe(ts.terminology_map(patient_id))
+
+
+@app.get("/api/data-manager/standardization")
+async def data_manager_standardization(patient_id: str = None):
+    """Data Standardization — normalize level vocab to canonical ordinal; flag non-conforming."""
+    import scripts.terminology_standardization as ts
+    return _json_safe(ts.standardize_levels(patient_id))
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():

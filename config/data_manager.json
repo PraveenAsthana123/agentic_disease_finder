@@ -1,7 +1,7 @@
 {
  "role": "Clinical Data Manager (CDM)",
  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out — the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:27:58Z",
+ "updated_at": "2026-06-25T19:33:51Z",
  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). §155 honest.",
  "tasks": [
   {
@@ -94,7 +94,7 @@
    "name": "Data Standardization",
    "ai_feature": "AI schema mapping",
    "deliverable": "Standard dataset",
-   "status": "partial",
+   "status": "built",
    "steps": [
     "Normalize channel names (EEG Fp1-LE → Fp1)",
     "Resample to common sfreq",
@@ -105,13 +105,16 @@
     "Different hospital schemas",
     "Bipolar montages can't map to single electrodes",
     "Resampling alters frequency features"
+   ],
+   "endpoints": [
+    "/api/data-manager/standardization"
    ]
   },
   {
    "name": "Terminology Mapping",
    "ai_feature": "Auto ICD/LOINC/SNOMED mapping",
    "deliverable": "Mapping report",
-   "status": "planned",
+   "status": "built",
    "steps": [
     "Extract dx/finding terms",
     "Map to ICD-10/SNOMED-CT/LOINC",
@@ -122,6 +125,9 @@
     "Ambiguous free-text terms",
     "Ontology version drift",
     "No mapping without a terminology service"
+   ],
+   "endpoints": [
+    "/api/data-manager/terminology"
    ]
   },
   {
