@@ -2853,6 +2853,36 @@ async def neuro_scales_tmt_definitions():
     return _json_safe(tmt.scale_definitions())
 
 
+# ── Digit Span (Forward, Backward, Sequencing) ────────────────────────
+@app.get("/api/neuro-scales/digit-span")
+async def neuro_scales_digit_span_dashboard(patient_id: str = None):
+    """Digit Span dashboard — Forward (attention), Backward (working memory),
+    Sequencing (executive). All data derived from real clinical.db patient features."""
+    import scripts.neuro_scales_digit_span as ds
+    return _json_safe(ds.digit_span_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/digit-span/detail")
+async def neuro_scales_digit_span_detail(patient_id: str):
+    """Per-patient Digit Span detail with all 3 conditions, contributing factors,
+    Forward-Backward difference, disproportionate WM flag, and recommendations."""
+    import scripts.neuro_scales_digit_span as ds
+    return _json_safe(ds.digit_span_detail(patient_id))
+
+@app.get("/api/neuro-scales/digit-span/trend")
+async def neuro_scales_digit_span_trend(patient_id: str):
+    """12-month projected Backward span trajectory based on AED optimisation,
+    seizure control, and age-related decline."""
+    import scripts.neuro_scales_digit_span as ds
+    return _json_safe(ds.digit_span_trend(patient_id))
+
+@app.get("/api/neuro-scales/digit-span/definitions")
+async def neuro_scales_digit_span_definitions():
+    """Scale definitions — conditions, scoring, psychometrics,
+    epilepsy-specific lateralisation guide, AED effects, data derivation."""
+    import scripts.neuro_scales_digit_span as ds
+    return _json_safe(ds.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
