@@ -882,6 +882,49 @@ async def drift():
     return json.loads(p.read_text()) if p.exists() else {"available": False, "error": "run scripts/drift_job.py"}
 
 
+# ── Drift Dashboard (MLOps) ──────────────────────────────────────────────────
+@app.get("/api/drift/dashboard")
+async def drift_dashboard():
+    """Drift dashboard overview — verdict, severity breakdown, sample sizes, recommendation."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.drift_overview())
+
+
+@app.get("/api/drift/features")
+async def drift_features(sort_by: str = "psi", limit: int = 20):
+    """Per-feature drift table — PSI, KS-stat, severity band, sorted by PSI or KS."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.drift_features(sort_by=sort_by, limit=limit))
+
+
+@app.get("/api/drift/severity")
+async def drift_severity():
+    """Severity distribution for chart rendering (pie/bar data)."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.drift_severity_distribution())
+
+
+@app.get("/api/drift/alerts")
+async def drift_alerts(psi_threshold: float = 0.25):
+    """Actionable drift alerts — features exceeding PSI threshold with recommended actions."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.drift_alerts(psi_threshold=psi_threshold))
+
+
+@app.get("/api/drift/trend")
+async def drift_trend():
+    """Historical drift trend — fraction drifted + high-drift count over time from report archive."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.drift_trend())
+
+
+@app.get("/api/drift/definitions")
+async def drift_definitions():
+    """Drift scale definitions — PSI thresholds, KS-test interpretation, severity levels."""
+    import scripts.drift_dashboard as dd
+    return _json_safe(dd.scale_definitions())
+
+
 @app.get("/api/eeg-ai-stack")
 async def eeg_ai_stack():
     """EEG AI tool ecosystem (16 layers) + EDC/assessment tools, with honest installed status."""

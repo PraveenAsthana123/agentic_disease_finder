@@ -1,0 +1,257 @@
+{
+  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
+  "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
+  "updated_at": "2026-06-23",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Executive AI Governance & Business",
+      "count": 23,
+      "dashboards": [
+        {
+          "name": "Executive AI Dashboard",
+          "status": "partial",
+          "maps_to": "department-report KPIs"
+        },
+        {
+          "name": "AI Cost Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "AI Usage Dashboard",
+          "status": "partial",
+          "maps_to": "transaction_log volume"
+        },
+        {
+          "name": "AI Governance Dashboard",
+          "status": "built",
+          "maps_to": "Feedback&Governance + consultant matrix"
+        },
+        {
+          "name": "Responsible AI Dashboard",
+          "status": "built",
+          "maps_to": "/api/responsible-ai (fairness/PII)"
+        },
+        {
+          "name": "AI Risk Dashboard",
+          "status": "partial",
+          "maps_to": "risk_management table"
+        },
+        {
+          "name": "AI Compliance Dashboard",
+          "status": "partial",
+          "maps_to": "compliance docs per role"
+        },
+        {
+          "name": "Executive Scorecard",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "LLM & Model Operations",
+      "count": 40,
+      "dashboards": [
+        {
+          "name": "Model Comparison Dashboard",
+          "status": "built",
+          "maps_to": "/api/modellab/compare (RF/XGB/LGBM)"
+        },
+        {
+          "name": "Evaluation Dashboard",
+          "status": "built",
+          "maps_to": "subject-wise CV + metrics"
+        },
+        {
+          "name": "Hallucination Dashboard",
+          "status": "partial",
+          "maps_to": "RAG grounding (citation)"
+        },
+        {
+          "name": "Drift Dashboard",
+          "status": "built",
+          "maps_to": "/api/drift/dashboard + /api/drift/features + /api/drift/severity + /api/drift/alerts"
+        },
+        {
+          "name": "Token / Cost Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Response Quality Dashboard",
+          "status": "partial",
+          "maps_to": "SHAP + responsible-ai"
+        },
+        {
+          "name": "Routing Dashboard",
+          "status": "partial",
+          "maps_to": "decision routing"
+        },
+        {
+          "name": "Inference / GPU Dashboard",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "RAG & Retrieval Operations",
+      "count": 160,
+      "dashboards": [
+        {
+          "name": "Retrieval Dashboard",
+          "status": "partial",
+          "maps_to": "patient-chat retrieval"
+        },
+        {
+          "name": "Vector DB Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Embedding Drift Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Chunking Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Citation Dashboard",
+          "status": "partial",
+          "maps_to": "RAG citation note"
+        },
+        {
+          "name": "Knowledge Graph Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Retrieval Evaluation Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Content Freshness Dashboard",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Agentic AI & Multi-Agent Operations",
+      "count": 80,
+      "dashboards": [
+        {
+          "name": "Agent Operations Dashboard",
+          "status": "built",
+          "maps_to": "agent registry + council"
+        },
+        {
+          "name": "Council of Agents Dashboard",
+          "status": "built",
+          "maps_to": "/api/council/run"
+        },
+        {
+          "name": "Agent Reasoning Trace Dashboard",
+          "status": "built",
+          "maps_to": "council step trace"
+        },
+        {
+          "name": "HITL Dashboard",
+          "status": "built",
+          "maps_to": "hitl_reviews + feedback"
+        },
+        {
+          "name": "Agent Safety / Guardrail Dashboard",
+          "status": "built",
+          "maps_to": "guardrails-check"
+        },
+        {
+          "name": "Agent Memory Dashboard",
+          "status": "partial",
+          "maps_to": "patient master / clinical DB"
+        },
+        {
+          "name": "Agent Evaluation Dashboard",
+          "status": "partial",
+          "maps_to": "consensus + decision"
+        },
+        {
+          "name": "Agent Loop / Goal-Drift Dashboard",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "MCP, Tooling, Workflow & Integration",
+      "count": 100,
+      "dashboards": [
+        {
+          "name": "MCP Overview Dashboard",
+          "status": "partial",
+          "maps_to": "MCP analysis (mcp_analysis.py)"
+        },
+        {
+          "name": "Tool Registry Dashboard",
+          "status": "built",
+          "maps_to": "agent registry / AI tools"
+        },
+        {
+          "name": "Tool Execution Dashboard",
+          "status": "partial",
+          "maps_to": "transaction_log"
+        },
+        {
+          "name": "Workflow Dashboard",
+          "status": "partial",
+          "maps_to": "council flow / consultant workflows"
+        },
+        {
+          "name": "Event / Kafka / Queue Dashboard",
+          "status": "planned"
+        },
+        {
+          "name": "Integration Dashboard",
+          "status": "partial",
+          "maps_to": "multi-format ingest"
+        },
+        {
+          "name": "MCP Security Dashboard",
+          "status": "partial",
+          "maps_to": "guardrails + audit"
+        },
+        {
+          "name": "MCP Federation Dashboard",
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "visualization_vocabulary": [
+    "line",
+    "area",
+    "bar",
+    "stacked-bar",
+    "pie",
+    "donut",
+    "gauge",
+    "heatmap",
+    "treemap",
+    "sankey",
+    "network-graph",
+    "radar",
+    "scatter",
+    "PCA/UMAP",
+    "box-plot",
+    "histogram",
+    "funnel",
+    "timeline",
+    "geo-map",
+    "waterfall",
+    "pareto",
+    "sunburst",
+    "decision-tree",
+    "chord",
+    "leaderboard"
+  ],
+  "golden_rule": "Every dashboard maps to a layer (Executive/LLMOps/RAG/Agents/MCP) + a KPI + a visualization + an audience + a refresh frequency."
+}
