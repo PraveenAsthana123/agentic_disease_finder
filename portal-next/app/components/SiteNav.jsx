@@ -21,6 +21,7 @@ export default function SiteNav() {
           {dd('Agentic AI', AGENTIC, '/agentic')}
           {dd('Ops & Governance', OPS, '/ops')}
           <li className="nav-item"><Link className="nav-link text-white" href="/drift">📉 Drift</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/cognition-link">🔗 Cognition</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-types">AI Types</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stack">Tech Stack</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/classify">Classify</Link></li>

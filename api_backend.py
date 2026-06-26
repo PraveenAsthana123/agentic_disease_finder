@@ -3205,6 +3205,49 @@ async def neuro_scales_psqi_definitions():
     return _json_safe(psqi.scale_definitions())
 
 
+# ── Cognition Link Dashboard (Neuropsychologist) ─────────────────────────────
+@app.get("/api/cognition-link/overview")
+async def cognition_link_overview():
+    """Overview — EEG ↔ cognitive test correlation summary, top pairs, domain breakdown."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.overview())
+
+
+@app.get("/api/cognition-link/matrix")
+async def cognition_link_matrix():
+    """Full correlation matrix — every (EEG feature, cognitive test) pair with r, p, effect size."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.correlation_matrix())
+
+
+@app.get("/api/cognition-link/heatmap")
+async def cognition_link_heatmap():
+    """Heatmap data — rows=EEG features, cols=cognitive tests, values=Pearson r."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.heatmap_data())
+
+
+@app.get("/api/cognition-link/domains")
+async def cognition_link_domains():
+    """Per cognitive-domain profile — strongest EEG predictors per domain."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.domain_profile())
+
+
+@app.get("/api/cognition-link/alerts")
+async def cognition_link_alerts():
+    """Clinical alerts — strong correlations (|r| ≥ 0.45, p < 0.01) with recommendations."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.clinical_alerts())
+
+
+@app.get("/api/cognition-link/definitions")
+async def cognition_link_definitions():
+    """Definitions — effect size thresholds, EEG bands, cognitive domains, references."""
+    import scripts.cognition_link_dashboard as cld
+    return _json_safe(cld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
