@@ -3102,6 +3102,37 @@ async def neuro_scales_verbal_fluency_definitions():
     return _json_safe(vf.scale_definitions())
 
 
+# ── Medication Impact (Expert · Neurologist) ──────────────────────────────────
+
+@app.get("/api/expert/medication-impact")
+async def expert_medication_impact_dashboard(patient_id: str = None):
+    """Medication Impact dashboard — AED seizure-reduction rates, side-effect
+    burden (LAEP), drug interactions, adherence proxy, EEG spectral shifts."""
+    import scripts.neuro_medication_impact as mi
+    return _json_safe(mi.dashboard(patient_id))
+
+@app.get("/api/expert/medication-impact/detail")
+async def expert_medication_impact_detail(patient_id: str):
+    """Per-patient medication impact detail — AED profiles, interaction matrix,
+    EEG band shifts, clinical recommendations."""
+    import scripts.neuro_medication_impact as mi
+    return _json_safe(mi.detail(patient_id))
+
+@app.get("/api/expert/medication-impact/trend")
+async def expert_medication_impact_trend(patient_id: str, months: int = 12):
+    """Medication impact trend — seizure-frequency + side-effect trajectory
+    projected from Kwan & Brodie first-AED response curves."""
+    import scripts.neuro_medication_impact as mi
+    return _json_safe(mi.trend(patient_id, months))
+
+@app.get("/api/expert/medication-impact/definitions")
+async def expert_medication_impact_definitions():
+    """Metric definitions — seizure reduction, LAEP, interaction risk, EEG
+    band shifts, adherence. Published AED profiles + references."""
+    import scripts.neuro_medication_impact as mi
+    return _json_safe(mi.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
