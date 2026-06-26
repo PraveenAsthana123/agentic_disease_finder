@@ -2550,6 +2550,34 @@ async def neuro_scales_panss_definitions():
     return _json_safe(panss.scale_definitions())
 
 
+# ── HAM-D (Hamilton Depression Rating Scale) ─────────────────────────
+@app.get("/api/neuro-scales/hamd")
+async def neuro_scales_hamd_dashboard(patient_id: str = None):
+    """HAM-D-17 depression severity dashboard — all patients or one.
+    Scores derived from real clinical.db data (cognition, Barthel, meds, seizures)."""
+    import scripts.neuro_scales_hamd as hamd
+    return _json_safe(hamd.hamd_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/hamd/detail")
+async def neuro_scales_hamd_detail(patient_id: str):
+    """Per-item HAM-D-17 detail for a single patient with contributing factors."""
+    import scripts.neuro_scales_hamd as hamd
+    return _json_safe(hamd.hamd_detail(patient_id))
+
+@app.get("/api/neuro-scales/hamd/trend")
+async def neuro_scales_hamd_trend(patient_id: str):
+    """6-month modeled HAM-D trajectory based on treatment response."""
+    import scripts.neuro_scales_hamd as hamd
+    return _json_safe(hamd.hamd_trend(patient_id))
+
+@app.get("/api/neuro-scales/hamd/definitions")
+async def neuro_scales_hamd_definitions():
+    """Scale definitions — HAM-D-17 item descriptions, severity thresholds,
+    subscale structure, reliability data, clinical utility references."""
+    import scripts.neuro_scales_hamd as hamd
+    return _json_safe(hamd.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
