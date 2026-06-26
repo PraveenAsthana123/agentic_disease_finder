@@ -13,11 +13,13 @@ if [ "$code" = "200" ]; then
   if [ "$prev" != "up" ]; then
     echo "{\"ts\":\"$NOW\",\"event\":\"RECOVERED\",\"prev\":\"$prev\"}" >> jobs/logs/uptime.jsonl
     bash scripts/track.sh "server RECOVERED (was $prev)" "watchdog"
+    bash scripts/slack_notify.sh --level warn "server RECOVERED (was $prev)" >/dev/null 2>&1 &
   fi
 else
   cur=down
   echo "{\"ts\":\"$NOW\",\"event\":\"DOWN\",\"http\":\"$code\"}" >> jobs/logs/uptime.jsonl
   bash scripts/track.sh "server DOWN (http=$code) — auto-restarting" "watchdog"
+  bash scripts/slack_notify.sh --level error "server DOWN (http=$code) — auto-restarting" >/dev/null 2>&1 &
   bash scripts/restart_backend.sh >> jobs/logs/backend.log 2>&1
   code2=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8010/api/data-manager -m 8 2>/dev/null)
   [ "$code2" = "200" ] && { cur=up; echo "{\"ts\":\"$NOW\",\"event\":\"AUTO-RESTARTED\"}" >> jobs/logs/uptime.jsonl; bash scripts/track.sh "server auto-restarted OK" "watchdog"; }

@@ -20,5 +20,6 @@ if printf '%s' "$msg" | grep -qE 'session limit|token limit|usage limit|limit re
   # log the event for the record
   mkdir -p "$ROOT/jobs/logs"
   printf '{"ts":"%s","event":"claude_limit_detected"}\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$ROOT/jobs/logs/failover.jsonl" 2>/dev/null
+  bash "$ROOT/scripts/slack_notify.sh" --level warn "Claude limit reached → local Ollama failover available" >/dev/null 2>&1 &
 fi
 exit 0
