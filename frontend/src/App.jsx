@@ -20,6 +20,7 @@ import EntropyDashboard from './components/EntropyDashboard'
 import TopomapDashboard from './components/TopomapDashboard'
 import ExpertDashboard from './components/ExpertDashboard'
 import DataCleaningDashboard from './components/DataCleaningDashboard'
+import ICLabelDashboard from './components/ICLabelDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -127,7 +128,8 @@ function App() {
     { id: 'entropy', label: 'Entropy Analysis' },
     { id: 'topomap', label: 'Topographic Maps' },
     { id: 'expert', label: 'Expert Dashboards' },
-    { id: 'datacleaning', label: 'Data Cleaning' }
+    { id: 'datacleaning', label: 'Data Cleaning' },
+    { id: 'icalabel', label: 'ICLabel QC' }
   ]
 
   // API Calls
@@ -1203,6 +1205,8 @@ function App() {
         return <ExpertDashboard />
       case 'datacleaning':
         return <DataCleaningDashboard />
+      case 'icalabel':
+        return <ICLabelDashboard />
       default:
         return renderClassificationTab()
     }

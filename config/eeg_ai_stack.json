@@ -330,7 +330,10 @@
         },
         {
           "name": "ICLabel (mne-icalabel)",
-          "status": "cataloged"
+          "status": "installed",
+          "use": "automatic ICA component classification (brain/eye/muscle/heart/line_noise/channel_noise/other)",
+          "dashboard": "/api/icalabel",
+          "note": "Real CHB-MIT EEG data → ICA → ICLabel neural-net classifier"
         }
       ]
     }

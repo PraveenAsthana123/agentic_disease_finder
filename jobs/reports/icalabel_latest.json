@@ -1,0 +1,373 @@
+{
+  "available": true,
+  "tool": "mne-icalabel",
+  "method": "ICLabel neural-net classifier",
+  "classes": [
+    "brain",
+    "muscle",
+    "eye",
+    "heart",
+    "line_noise",
+    "channel_noise",
+    "other"
+  ],
+  "files_analyzed": 3,
+  "files_errored": 0,
+  "total_components": 45,
+  "total_brain": 24,
+  "total_artifact": 21,
+  "brain_ratio": 0.5333,
+  "aggregate_class_distribution": {
+    "brain": 24,
+    "muscle": 4,
+    "eye": 8,
+    "heart": 0,
+    "line_noise": 0,
+    "channel_noise": 0,
+    "other": 9
+  },
+  "per_file": [
+    {
+      "available": true,
+      "file": "chb01_01.edf",
+      "subject": "chb01",
+      "n_channels": 18,
+      "n_components": 15,
+      "duration_sec": 60.0,
+      "sfreq": 256.0,
+      "brain_components": 9,
+      "artifact_components": 6,
+      "brain_ratio": 0.6,
+      "class_distribution": {
+        "brain": 9,
+        "muscle": 1,
+        "eye": 4,
+        "heart": 0,
+        "line_noise": 0,
+        "channel_noise": 0,
+        "other": 1
+      },
+      "components": [
+        {
+          "index": 0,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.9939
+        },
+        {
+          "index": 1,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.8378
+        },
+        {
+          "index": 2,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.4755
+        },
+        {
+          "index": 3,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.4685
+        },
+        {
+          "index": 4,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9521
+        },
+        {
+          "index": 5,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.5291
+        },
+        {
+          "index": 6,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.5027
+        },
+        {
+          "index": 7,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.3468
+        },
+        {
+          "index": 8,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.4778
+        },
+        {
+          "index": 9,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9191
+        },
+        {
+          "index": 10,
+          "label": "muscle",
+          "original_label": "muscle artifact",
+          "confidence": 0.7675
+        },
+        {
+          "index": 11,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.8471
+        },
+        {
+          "index": 12,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.8812
+        },
+        {
+          "index": 13,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.7482
+        },
+        {
+          "index": 14,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.7333
+        }
+      ]
+    },
+    {
+      "available": true,
+      "file": "chb02_01.edf",
+      "subject": "chb02",
+      "n_channels": 18,
+      "n_components": 15,
+      "duration_sec": 60.0,
+      "sfreq": 256.0,
+      "brain_components": 6,
+      "artifact_components": 9,
+      "brain_ratio": 0.4,
+      "class_distribution": {
+        "brain": 6,
+        "muscle": 3,
+        "eye": 2,
+        "heart": 0,
+        "line_noise": 0,
+        "channel_noise": 0,
+        "other": 4
+      },
+      "components": [
+        {
+          "index": 0,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.9437
+        },
+        {
+          "index": 1,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.9141
+        },
+        {
+          "index": 2,
+          "label": "muscle",
+          "original_label": "muscle artifact",
+          "confidence": 0.8915
+        },
+        {
+          "index": 3,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9564
+        },
+        {
+          "index": 4,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9548
+        },
+        {
+          "index": 5,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.3781
+        },
+        {
+          "index": 6,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.9616
+        },
+        {
+          "index": 7,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.8622
+        },
+        {
+          "index": 8,
+          "label": "muscle",
+          "original_label": "muscle artifact",
+          "confidence": 0.4436
+        },
+        {
+          "index": 9,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.5414
+        },
+        {
+          "index": 10,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.7621
+        },
+        {
+          "index": 11,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.6531
+        },
+        {
+          "index": 12,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.8279
+        },
+        {
+          "index": 13,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.5493
+        },
+        {
+          "index": 14,
+          "label": "muscle",
+          "original_label": "muscle artifact",
+          "confidence": 0.6973
+        }
+      ]
+    },
+    {
+      "available": true,
+      "file": "chb03_01.edf",
+      "subject": "chb03",
+      "n_channels": 18,
+      "n_components": 15,
+      "duration_sec": 60.0,
+      "sfreq": 256.0,
+      "brain_components": 9,
+      "artifact_components": 6,
+      "brain_ratio": 0.6,
+      "class_distribution": {
+        "brain": 9,
+        "muscle": 0,
+        "eye": 2,
+        "heart": 0,
+        "line_noise": 0,
+        "channel_noise": 0,
+        "other": 4
+      },
+      "components": [
+        {
+          "index": 0,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.9962
+        },
+        {
+          "index": 1,
+          "label": "eye",
+          "original_label": "eye blink",
+          "confidence": 0.9565
+        },
+        {
+          "index": 2,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9251
+        },
+        {
+          "index": 3,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.8002
+        },
+        {
+          "index": 4,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9878
+        },
+        {
+          "index": 5,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9754
+        },
+        {
+          "index": 6,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.4256
+        },
+        {
+          "index": 7,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.6648
+        },
+        {
+          "index": 8,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.6741
+        },
+        {
+          "index": 9,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.5436
+        },
+        {
+          "index": 10,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.646
+        },
+        {
+          "index": 11,
+          "label": "other",
+          "original_label": "other",
+          "confidence": 0.3912
+        },
+        {
+          "index": 12,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9231
+        },
+        {
+          "index": 13,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9989
+        },
+        {
+          "index": 14,
+          "label": "brain",
+          "original_label": "brain",
+          "confidence": 0.9291
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "elapsed_sec": 15.94,
+  "generated_at": "2026-06-26T21:49:08Z"
+}
