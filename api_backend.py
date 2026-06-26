@@ -2790,6 +2790,37 @@ async def neuro_scales_mmas_definitions():
     return _json_safe(mmas.scale_definitions())
 
 
+# ── Stroop Color-Word Test ────────────────────────────────────────────
+@app.get("/api/neuro-scales/stroop")
+async def neuro_scales_stroop_dashboard(patient_id: str = None):
+    """Stroop Color-Word Test dashboard — selective attention and inhibitory control.
+    Three conditions (word/color/interference); interference score is primary metric.
+    All data derived from real clinical.db patient features."""
+    import scripts.neuro_scales_stroop as stroop
+    return _json_safe(stroop.stroop_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/stroop/detail")
+async def neuro_scales_stroop_detail(patient_id: str):
+    """Per-patient Stroop detail with all 3 conditions, contributing factors,
+    z-score, percentile, and clinical recommendations."""
+    import scripts.neuro_scales_stroop as stroop
+    return _json_safe(stroop.stroop_detail(patient_id))
+
+@app.get("/api/neuro-scales/stroop/trend")
+async def neuro_scales_stroop_trend(patient_id: str):
+    """12-month projected Stroop interference trajectory based on AED
+    optimisation, seizure control, and age-related decline."""
+    import scripts.neuro_scales_stroop as stroop
+    return _json_safe(stroop.stroop_trend(patient_id))
+
+@app.get("/api/neuro-scales/stroop/definitions")
+async def neuro_scales_stroop_definitions():
+    """Scale definitions — Stroop conditions, scoring, psychometrics,
+    epilepsy-specific context, AED cognitive burden, data derivation."""
+    import scripts.neuro_scales_stroop as stroop
+    return _json_safe(stroop.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

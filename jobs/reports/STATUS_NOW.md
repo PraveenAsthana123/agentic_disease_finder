@@ -1,6 +1,6 @@
-# ⚡ STATUS NOW — 2026-06-25 18:20:01 MDT
+# ⚡ STATUS NOW — 2026-06-25 23:40:02 MDT
 - Backend: ✅ UP  ·  Frontend: ⚠ 000
-- Inputs: 217 total · 21 unaddressed
+- Inputs: 222 total · 26 unaddressed
 - Advisor P0/P1 issues: 3
 - **Do you need to input?** 🔴 INPUT NEEDED
 - Refreshed every 5 min (STATUS-NOW cron). Run anytime: bash scripts/status.sh
