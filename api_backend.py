@@ -3009,6 +3009,37 @@ async def neuro_scales_cpt_definitions():
     return _json_safe(cpt.scale_definitions())
 
 
+# ── Clock Drawing Test (CDT) ──────────────────────────────────────────
+
+@app.get("/api/neuro-scales/clock-drawing")
+async def neuro_scales_clock_drawing_dashboard(patient_id: str = None):
+    """Population or single-patient Clock Drawing Test dashboard —
+    visuospatial, executive, contour/numbers/hands/center subscores."""
+    import scripts.neuro_scales_clock_drawing as cdt
+    return _json_safe(cdt.clock_drawing_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/clock-drawing/detail")
+async def neuro_scales_clock_drawing_detail(patient_id: str):
+    """Detailed CDT profile for one patient: total (Shulman 0-5),
+    contour/numbers/hands/center subscores, clinical interpretation."""
+    import scripts.neuro_scales_clock_drawing as cdt
+    return _json_safe(cdt.clock_drawing_detail(patient_id))
+
+@app.get("/api/neuro-scales/clock-drawing/trend")
+async def neuro_scales_clock_drawing_trend(patient_id: str):
+    """12-month projected CDT trajectory: total + component scores
+    improve as AED burden reduces and seizure control improves."""
+    import scripts.neuro_scales_clock_drawing as cdt
+    return _json_safe(cdt.clock_drawing_trend(patient_id))
+
+@app.get("/api/neuro-scales/clock-drawing/definitions")
+async def neuro_scales_clock_drawing_definitions():
+    """Scale definitions — CDT Shulman scoring, norms, severity bands,
+    visuospatial/executive components, epilepsy-specific context."""
+    import scripts.neuro_scales_clock_drawing as cdt
+    return _json_safe(cdt.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
