@@ -2607,6 +2607,41 @@ async def neuro_scales_bdi_definitions():
     return _json_safe(bdi.scale_definitions())
 
 
+# ── Engel Classification (Epilepsy Surgery Outcome) ───────────────────
+@app.get("/api/neuro-scales/engel")
+async def neuro_scales_engel_dashboard(patient_id: str = None):
+    """Engel classification dashboard — 4-class epilepsy surgery outcome
+    (I-IV with sub-classifications) for one patient or all patients.
+    Scores derived from REAL seizure diary, Barthel, and medication data
+    in clinical.db."""
+    import scripts.neuro_scales_engel as engel
+    return _json_safe(engel.engel_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/engel/detail")
+async def neuro_scales_engel_detail(patient_id: str):
+    """Engel detail — per-patient classification with sub-class, rationale,
+    contributing factors (seizure types, AEDs, Barthel, disease context)."""
+    import scripts.neuro_scales_engel as engel
+    return _json_safe(engel.engel_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/engel/trend")
+async def neuro_scales_engel_trend(patient_id: str):
+    """Engel trend — 12-month projected outcome trajectory based on
+    published relapse curves and current seizure control."""
+    import scripts.neuro_scales_engel as engel
+    return _json_safe(engel.engel_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/engel/definitions")
+async def neuro_scales_engel_definitions():
+    """Scale definitions — Engel 4-class descriptions, sub-classifications,
+    outcome frequencies, reliability data, clinical use references."""
+    import scripts.neuro_scales_engel as engel
+    return _json_safe(engel.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
