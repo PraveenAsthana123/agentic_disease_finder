@@ -3071,6 +3071,37 @@ async def neuro_scales_ravlt_definitions():
     return _json_safe(ravlt.scale_definitions())
 
 
+# ── Verbal Fluency (FAS + Category) ──────────────────────────────────────────
+
+@app.get("/api/neuro-scales/verbal-fluency")
+async def neuro_scales_verbal_fluency_dashboard(patient_id: str = None):
+    """Verbal Fluency dashboard — phonemic (FAS), semantic (Animals), switching,
+    clustering, phonemic-semantic ratio across all or one patient."""
+    import scripts.neuro_scales_verbal_fluency as vf
+    return _json_safe(vf.verbal_fluency_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/verbal-fluency/detail")
+async def neuro_scales_verbal_fluency_detail(patient_id: str):
+    """Per-patient verbal fluency detail — contributing factors, clinical
+    interpretation (frontal/temporal dissociation), recommendations."""
+    import scripts.neuro_scales_verbal_fluency as vf
+    return _json_safe(vf.verbal_fluency_detail(patient_id))
+
+@app.get("/api/neuro-scales/verbal-fluency/trend")
+async def neuro_scales_verbal_fluency_trend(patient_id: str, months: int = 12):
+    """Verbal fluency longitudinal trend — FAS + Animals projected trajectory
+    with AED optimisation and seizure-control modifiers."""
+    import scripts.neuro_scales_verbal_fluency as vf
+    return _json_safe(vf.verbal_fluency_trend(patient_id, months))
+
+@app.get("/api/neuro-scales/verbal-fluency/definitions")
+async def neuro_scales_verbal_fluency_definitions():
+    """Scale definitions — verbal fluency scoring, norms, severity bands,
+    phonemic/semantic/switching components, epilepsy-specific context."""
+    import scripts.neuro_scales_verbal_fluency as vf
+    return _json_safe(vf.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
