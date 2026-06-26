@@ -3040,6 +3040,37 @@ async def neuro_scales_clock_drawing_definitions():
     return _json_safe(cdt.scale_definitions())
 
 
+# ── Rey Auditory Verbal Learning Test (RAVLT) ────────────────────────
+
+@app.get("/api/neuro-scales/ravlt")
+async def neuro_scales_ravlt_dashboard(patient_id: str = None):
+    """Population or single-patient RAVLT dashboard —
+    verbal learning, memory, retention, interference metrics."""
+    import scripts.neuro_scales_ravlt as ravlt
+    return _json_safe(ravlt.ravlt_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/ravlt/detail")
+async def neuro_scales_ravlt_detail(patient_id: str):
+    """Detailed RAVLT profile for one patient: trial-by-trial learning curve,
+    delayed recall, recognition, forgetting rate, clinical interpretation."""
+    import scripts.neuro_scales_ravlt as ravlt
+    return _json_safe(ravlt.ravlt_detail(patient_id))
+
+@app.get("/api/neuro-scales/ravlt/trend")
+async def neuro_scales_ravlt_trend(patient_id: str):
+    """12-month projected RAVLT trajectory: delayed recall + total learning
+    improve as AED burden reduces and seizure control improves."""
+    import scripts.neuro_scales_ravlt as ravlt
+    return _json_safe(ravlt.ravlt_trend(patient_id))
+
+@app.get("/api/neuro-scales/ravlt/definitions")
+async def neuro_scales_ravlt_definitions():
+    """Scale definitions — RAVLT scoring, norms, severity bands,
+    verbal learning/memory components, epilepsy-specific context."""
+    import scripts.neuro_scales_ravlt as ravlt
+    return _json_safe(ravlt.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
