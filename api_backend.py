@@ -3133,6 +3133,35 @@ async def expert_medication_impact_definitions():
     return _json_safe(mi.definitions())
 
 
+# ── Pittsburgh Sleep Quality Index (PSQI) ─────────────────────────────
+
+@app.get("/api/neuro-scales/psqi")
+async def neuro_scales_psqi_dashboard(patient_id: str = None):
+    """PSQI sleep quality dashboard — 7-component global score (0-21).
+    Scores derived from real clinical.db data (disease, seizures, meds, age)."""
+    import scripts.neuro_scales_psqi as psqi
+    return _json_safe(psqi.psqi_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/psqi/detail")
+async def neuro_scales_psqi_detail(patient_id: str):
+    """Per-component PSQI detail for a single patient with contributing factors."""
+    import scripts.neuro_scales_psqi as psqi
+    return _json_safe(psqi.psqi_detail(patient_id))
+
+@app.get("/api/neuro-scales/psqi/trend")
+async def neuro_scales_psqi_trend(patient_id: str):
+    """6-month modeled PSQI trajectory based on treatment and seizure control."""
+    import scripts.neuro_scales_psqi as psqi
+    return _json_safe(psqi.psqi_trend(patient_id))
+
+@app.get("/api/neuro-scales/psqi/definitions")
+async def neuro_scales_psqi_definitions():
+    """Scale definitions — PSQI 7-component structure, clinical cutoff (>5),
+    reliability data, epilepsy relevance references."""
+    import scripts.neuro_scales_psqi as psqi
+    return _json_safe(psqi.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

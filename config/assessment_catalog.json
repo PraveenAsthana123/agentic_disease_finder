@@ -1,7 +1,7 @@
 {
  "title": "Clinical Assessment Catalog \u2014 Epilepsy EEG Thesis",
  "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). \u00a7155 honest.",
- "updated_at": "2026-06-24",
+ "updated_at": "2026-06-26",
  "top10_for_thesis": [
   "EEG Report",
   "Video EEG",
@@ -64,7 +64,8 @@
      "output": "Risk category",
      "specialist": "Neurologist",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "note": "SUDEP risk assessment \u2014 endpoints live (/api/neuro-scales/sudep/*), real clinical.db data"
     }
    ]
   },
@@ -146,7 +147,8 @@
      "output": "Severity",
      "specialist": "Psychiatrist",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "note": "BDI-II 21-item depression \u2014 4 endpoints live (/api/neuro-scales/bdi/*), real clinical.db data"
     },
     {
      "name": "Columbia Suicide Severity (C-SSRS)",
@@ -191,7 +193,8 @@
      "output": "Score",
      "specialist": "Neurologist",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "note": "PSQI 7-component sleep quality \u2014 4 endpoints live (/api/neuro-scales/psqi/*), real clinical.db data"
     }
    ]
   },
