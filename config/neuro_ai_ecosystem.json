@@ -276,12 +276,12 @@
         {
           "name": "Go/No-Go",
           "domain": "Impulse control",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Continuous Performance Test",
           "domain": "Sustained attention",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Clock Drawing Test",

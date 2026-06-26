@@ -2978,6 +2978,37 @@ async def neuro_scales_gonogo_definitions():
     return _json_safe(gonogo.scale_definitions())
 
 
+# ── CPT (Continuous Performance Test) ──────────────────────────────────
+
+@app.get("/api/neuro-scales/cpt")
+async def neuro_scales_cpt_dashboard(patient_id: str = None):
+    """Population or single-patient CPT dashboard — sustained attention,
+    vigilance, omissions, commissions, d-prime, signal-detection metrics."""
+    import scripts.neuro_scales_cpt as cpt
+    return _json_safe(cpt.cpt_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/cpt/detail")
+async def neuro_scales_cpt_detail(patient_id: str):
+    """Detailed CPT profile for one patient: omission/commission rates,
+    hit RT, d-prime, beta, clinical interpretation, AED/absence notes."""
+    import scripts.neuro_scales_cpt as cpt
+    return _json_safe(cpt.cpt_detail(patient_id))
+
+@app.get("/api/neuro-scales/cpt/trend")
+async def neuro_scales_cpt_trend(patient_id: str):
+    """12-month projected CPT trajectory: omissions decrease, d-prime
+    increases as AED burden reduces and seizure control improves."""
+    import scripts.neuro_scales_cpt as cpt
+    return _json_safe(cpt.cpt_trend(patient_id))
+
+@app.get("/api/neuro-scales/cpt/definitions")
+async def neuro_scales_cpt_definitions():
+    """Scale definitions — CPT paradigm, metrics, scoring, norms,
+    severity bands, signal-detection theory, epilepsy-specific context."""
+    import scripts.neuro_scales_cpt as cpt
+    return _json_safe(cpt.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
