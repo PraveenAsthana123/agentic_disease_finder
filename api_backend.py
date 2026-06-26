@@ -2434,6 +2434,68 @@ async def social_worker_barriers(patient_id: str = None):
     return _json_safe(msw.treatment_barrier_detection(patient_id))
 
 
+# ─── Epilepsy Specialist Nurse ─────────────────────────────────────────
+
+@app.get("/api/epilepsy-nurse")
+async def epilepsy_nurse_dashboard(patient_id: str = None):
+    """Epilepsy Specialist Nurse — full dashboard: seizure diary analysis,
+    AED adherence monitoring, SUDEP-7 risk assessment, seizure action plans,
+    patient education checklist. All from REAL clinical.db data."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.full_dashboard(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/seizure-diary")
+async def epilepsy_nurse_seizure_diary(patient_id: str = None):
+    """Seizure diary analysis: frequency, severity distribution, triggers,
+    temporal patterns, injury rates, ER visits, nocturnal events."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.seizure_diary_analysis(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/adherence")
+async def epilepsy_nurse_adherence(patient_id: str = None):
+    """AED adherence monitoring: polytherapy complexity score (0-10),
+    dosing burden, titration load, monitoring demands. Faught 2008."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.adherence_monitoring(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/sudep-risk")
+async def epilepsy_nurse_sudep(patient_id: str = None):
+    """SUDEP-7 risk assessment: composite 0-10 score from GTCS frequency,
+    nocturnal seizures, AED adherence, duration, polytherapy failure,
+    sex, age. Hesdorffer 2011 + Devinsky 2016 + MORTEMUS."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.sudep_risk_assessment(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/action-plan")
+async def epilepsy_nurse_action_plan(patient_id: str = None):
+    """Seizure action plans: per-patient first-aid plan, rescue medication
+    (midazolam/diazepam), emergency criteria, recovery guidance.
+    Epilepsy Foundation guidelines + NICE CG137."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.seizure_action_plan(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/education")
+async def epilepsy_nurse_education(patient_id: str = None):
+    """Patient/family education: 12-domain checklist (driving, swimming,
+    pregnancy, SUDEP, medication, mental health, etc.) with patient-specific
+    priority levels. NICE CG137 + Epilepsy Foundation."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.education_assessment(patient_id))
+
+
+@app.get("/api/epilepsy-nurse/definitions")
+async def epilepsy_nurse_definitions():
+    """Metric definitions, scoring rules, and clinical references for all
+    Epilepsy Specialist Nurse sub-modules."""
+    import scripts.epilepsy_nurse_module as enm
+    return _json_safe(enm.definitions())
+
+
 # ─── Neuro AI Ecosystem: ADL / IADL (Katz / Lawton) ──────────────────
 
 @app.get("/api/neuro-scales/adl")
