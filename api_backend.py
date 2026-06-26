@@ -2821,6 +2821,38 @@ async def neuro_scales_stroop_definitions():
     return _json_safe(stroop.scale_definitions())
 
 
+# ── Trail Making Test (TMT) A & B ──────────────────────────────────────
+@app.get("/api/neuro-scales/tmt")
+async def neuro_scales_tmt_dashboard(patient_id: str = None):
+    """Trail Making Test A & B dashboard — visuomotor speed (A) and
+    executive function / cognitive flexibility (B). B/A ratio is the
+    key discriminant for frontal dysfunction. All data derived from
+    real clinical.db patient features."""
+    import scripts.neuro_scales_tmt as tmt
+    return _json_safe(tmt.tmt_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/tmt/detail")
+async def neuro_scales_tmt_detail(patient_id: str):
+    """Per-patient TMT detail with Part A & B times, B-A difference,
+    B/A ratio, contributing factors, and clinical recommendations."""
+    import scripts.neuro_scales_tmt as tmt
+    return _json_safe(tmt.tmt_detail(patient_id))
+
+@app.get("/api/neuro-scales/tmt/trend")
+async def neuro_scales_tmt_trend(patient_id: str):
+    """12-month projected TMT-B trajectory based on AED optimisation,
+    seizure control, and age-related decline."""
+    import scripts.neuro_scales_tmt as tmt
+    return _json_safe(tmt.tmt_trend(patient_id))
+
+@app.get("/api/neuro-scales/tmt/definitions")
+async def neuro_scales_tmt_definitions():
+    """Scale definitions — TMT parts, scoring, psychometrics,
+    epilepsy-specific context, AED effects, data derivation."""
+    import scripts.neuro_scales_tmt as tmt
+    return _json_safe(tmt.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
