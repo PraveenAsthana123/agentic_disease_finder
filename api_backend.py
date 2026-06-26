@@ -3300,6 +3300,64 @@ async def neuro_scales_catalog():
     }
 
 
+# ── ICLabel ICA Component Classification ─────────────────────────────
+
+@app.get("/api/ica-label/overview")
+async def ica_label_overview():
+    """ICLabel overview — aggregate ICA component classification across subjects.
+    Uses mne-icalabel CNN to label each component as brain/muscle/eye/heart/
+    line_noise/channel_noise/other with confidence probabilities."""
+    import scripts.ica_label_classify as icl
+    return _json_safe(icl.overview())
+
+
+@app.get("/api/ica-label/classify")
+async def ica_label_classify(subject: str = "chb01"):
+    """Per-subject ICLabel classification — full component-by-component labels
+    with 7-class probability vectors from the ICLabel neural network."""
+    import scripts.ica_label_classify as icl
+    return _json_safe(icl.classify(subject))
+
+
+@app.get("/api/ica-label/detail")
+async def ica_label_detail(subject: str = "chb01"):
+    """Deep-dive — per-component labels + probability matrix + recommended
+    exclusions (artifact probability > brain probability)."""
+    import scripts.ica_label_classify as icl
+    return _json_safe(icl.detail(subject))
+
+
+@app.get("/api/ica-label/definitions")
+async def ica_label_definitions():
+    """ICLabel category definitions — 7-class taxonomy, interpretation guide,
+    confidence thresholds, and references (Pion-Tonachini et al. 2019)."""
+    import scripts.ica_label_classify as icl
+    return _json_safe(icl.definitions())
+
+
+# ── Entropy & Complexity Dashboard (AntroPy) ──────────────────────────
+
+@app.get("/api/entropy/overview")
+async def entropy_overview(file: str = None, seconds: float = 30.0):
+    """Entropy dashboard — per-channel SampEn, PE, SpEn, ApEn, HFD, DFA
+    computed from real EDF data via AntroPy (Vallat 2023)."""
+    import scripts.entropy_dashboard as ent
+    return _json_safe(ent.overview(file, seconds))
+
+@app.get("/api/entropy/heatmap")
+async def entropy_heatmap(file: str = None, seconds: float = 30.0):
+    """Channels × metrics entropy heatmap matrix for visualization."""
+    import scripts.entropy_dashboard as ent
+    return _json_safe(ent.heatmap(file, seconds))
+
+@app.get("/api/entropy/definitions")
+async def entropy_definitions():
+    """Entropy metric definitions, clinical interpretation, ranges,
+    and references (Richman 2000, Bandt 2002, Higuchi 1988, Peng 1994)."""
+    import scripts.entropy_dashboard as ent
+    return _json_safe(ent.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

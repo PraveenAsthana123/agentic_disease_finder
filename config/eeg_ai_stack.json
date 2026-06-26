@@ -63,7 +63,7 @@
     {
      "name": "AntroPy (entropy)",
      "status": "installed",
-     "endpoint": "/api/eeg-viz/complexity"
+     "endpoints": ["/api/entropy/overview", "/api/entropy/heatmap", "/api/entropy/definitions"]
     },
     {
      "name": "Nolds (nonlinear)",
@@ -106,7 +106,9 @@
     },
     {
      "name": "AntroPy / PyEEG",
-     "status": "cataloged"
+     "status": "installed",
+     "endpoints": ["/api/entropy/overview", "/api/entropy/heatmap", "/api/entropy/definitions"],
+     "dashboard": "Entropy & Complexity Dashboard (SampEn, PE, SpEn, ApEn, HFD, DFA)"
     },
     {
      "name": "TSFresh / TSFEL",
