@@ -3358,6 +3358,36 @@ async def entropy_definitions():
     return _json_safe(ent.definitions())
 
 
+# ── Nilearn Topographic Maps Dashboard ──────────────────────────────
+
+@app.get("/api/topomap/overview")
+async def topomap_overview(file: str = None, seconds: float = 30.0):
+    """Topographic power maps — per-channel band power (delta/theta/alpha/beta/gamma)
+    mapped to standard 10-20 electrode positions using Nilearn + MNE."""
+    import scripts.nilearn_topomap as topo
+    return _json_safe(topo.overview(file, seconds))
+
+@app.get("/api/topomap/electrodes")
+async def topomap_electrodes():
+    """Standard 10-20 electrode position map (Jasper 1958)."""
+    import scripts.nilearn_topomap as topo
+    return _json_safe(topo.electrode_map())
+
+@app.get("/api/topomap/asymmetry")
+async def topomap_asymmetry(file: str = None, seconds: float = 30.0):
+    """Hemispheric alpha asymmetry — frontal/parietal/occipital/central/temporal
+    pairs. Key depression biomarker (Davidson 1998)."""
+    import scripts.nilearn_topomap as topo
+    return _json_safe(topo.asymmetry(file, seconds))
+
+@app.get("/api/topomap/definitions")
+async def topomap_definitions():
+    """Band definitions, asymmetry interpretation, clinical references,
+    and tool attributions (Nilearn, MNE)."""
+    import scripts.nilearn_topomap as topo
+    return _json_safe(topo.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

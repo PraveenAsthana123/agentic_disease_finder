@@ -17,6 +17,7 @@ import MetricsDashboard from './components/MetricsDashboard'
 import InfographicsDashboard from './components/InfographicsDashboard'
 import DepartmentsDashboard, { DEPARTMENTS } from './components/DepartmentsDashboard'
 import EntropyDashboard from './components/EntropyDashboard'
+import TopomapDashboard from './components/TopomapDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -121,7 +122,8 @@ function App() {
     { id: 'inference', label: 'Inference Testing' },
     { id: 'integrations', label: 'Integrations' },
     { id: 'infographics', label: 'Infographics' },
-    { id: 'entropy', label: 'Entropy Analysis' }
+    { id: 'entropy', label: 'Entropy Analysis' },
+    { id: 'topomap', label: 'Topographic Maps' }
   ]
 
   // API Calls
@@ -1191,6 +1193,8 @@ function App() {
         return <InfographicsDashboard />
       case 'entropy':
         return <EntropyDashboard />
+      case 'topomap':
+        return <TopomapDashboard />
       default:
         return renderClassificationTab()
     }
