@@ -2883,6 +2883,38 @@ async def neuro_scales_digit_span_definitions():
     return _json_safe(ds.scale_definitions())
 
 
+# ── Wisconsin Card Sorting Test (WCST) ────────────────────────────────
+@app.get("/api/neuro-scales/wcst")
+async def neuro_scales_wcst_dashboard(patient_id: str = None):
+    """WCST dashboard — executive function: cognitive flexibility, set-shifting,
+    perseverative responding. 128 cards sorted by color/form/number with covert
+    rule shifts. Gold-standard frontal-lobe screen in epilepsy neuropsych.
+    All data derived from real clinical.db patient features."""
+    import scripts.neuro_scales_wcst as wcst
+    return _json_safe(wcst.wcst_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/wcst/detail")
+async def neuro_scales_wcst_detail(patient_id: str):
+    """Per-patient WCST detail with all 5 metrics (CC, PE, TE, CLR%, FMS),
+    contributing factors, z-scores, percentiles, and clinical recommendations."""
+    import scripts.neuro_scales_wcst as wcst
+    return _json_safe(wcst.wcst_detail(patient_id))
+
+@app.get("/api/neuro-scales/wcst/trend")
+async def neuro_scales_wcst_trend(patient_id: str):
+    """12-month projected perseverative-error trajectory based on AED
+    optimisation, seizure control, and age-related decline."""
+    import scripts.neuro_scales_wcst as wcst
+    return _json_safe(wcst.wcst_trend(patient_id))
+
+@app.get("/api/neuro-scales/wcst/definitions")
+async def neuro_scales_wcst_definitions():
+    """Scale definitions — WCST metrics, scoring, psychometrics,
+    epilepsy-specific context, AED cognitive burden, data derivation."""
+    import scripts.neuro_scales_wcst as wcst
+    return _json_safe(wcst.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
