@@ -2516,6 +2516,40 @@ async def neuro_scales_nihss_definitions():
     return _json_safe(nihss.scale_definitions())
 
 
+# ── PANSS (Positive and Negative Syndrome Scale) ─────────────────────
+@app.get("/api/neuro-scales/panss")
+async def neuro_scales_panss_dashboard(patient_id: str = None):
+    """PANSS dashboard — 30-item schizophrenia severity (30-210) for one
+    patient or all patients.  Scores derived from REAL Barthel, cognition,
+    seizure diary, and medication data in clinical.db."""
+    import scripts.neuro_scales_panss as panss
+    return _json_safe(panss.panss_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/panss/detail")
+async def neuro_scales_panss_detail(patient_id: str):
+    """PANSS detail — per-item (30-item) breakdown + contributing factors
+    + remission check for a single patient."""
+    import scripts.neuro_scales_panss as panss
+    return _json_safe(panss.panss_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/panss/trend")
+async def neuro_scales_panss_trend(patient_id: str):
+    """PANSS trend — 6-month modeled trajectory based on treatment
+    response curve and disease profile."""
+    import scripts.neuro_scales_panss as panss
+    return _json_safe(panss.panss_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/panss/definitions")
+async def neuro_scales_panss_definitions():
+    """Scale definitions — PANSS 30-item descriptions, severity thresholds,
+    factor structure, remission criteria, reliability data, references."""
+    import scripts.neuro_scales_panss as panss
+    return _json_safe(panss.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
