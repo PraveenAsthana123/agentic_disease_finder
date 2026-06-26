@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-25T20:39:28Z",
+  "generated": "2026-06-26T00:06:03Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 15,
@@ -14,16 +14,16 @@
     "Neuro AI ecosystem tools": {
       "external": 12,
       "installed": 7,
-      "built": 11,
-      "planned": 23,
+      "built": 14,
+      "planned": 20,
       "partial": 1,
       "cataloged": 9,
       "commercial": 1
     },
     "EEG AI stack tools": {
-      "installed": 38,
+      "installed": 39,
       "external": 3,
-      "cataloged": 17
+      "cataloged": 16
     }
   },
   "endpoints": {
@@ -37,6 +37,6 @@
     "neuro-ai-ecosystem": "200",
     "jobs": "200"
   },
-  "commits_ahead": "28",
+  "commits_ahead": "32",
   "jobs": 12
 }

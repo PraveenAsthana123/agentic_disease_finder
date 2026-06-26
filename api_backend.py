@@ -2481,6 +2481,41 @@ async def neuro_scales_rankin_definitions():
     return _json_safe(rankin.scale_definitions())
 
 
+# ─── Neuro AI Ecosystem: NIH Stroke Scale (NIHSS) ──────────────────
+
+@app.get("/api/neuro-scales/nihss")
+async def neuro_scales_nihss_dashboard(patient_id: str = None):
+    """NIHSS dashboard — NIH Stroke Scale (0-42 severity) for one patient
+    or all patients.  Scores derived from REAL Barthel, cognition, seizure
+    diary, and medication data in clinical.db."""
+    import scripts.neuro_scales_nihss as nihss
+    return _json_safe(nihss.nihss_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/nihss/detail")
+async def neuro_scales_nihss_detail(patient_id: str):
+    """NIHSS detail — per-item (15-item) breakdown + contributing factors
+    + clinical note for a single patient."""
+    import scripts.neuro_scales_nihss as nihss
+    return _json_safe(nihss.nihss_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/nihss/trend")
+async def neuro_scales_nihss_trend(patient_id: str):
+    """NIHSS trend — 6-month modeled trajectory based on stroke recovery
+    curve and neurological profile."""
+    import scripts.neuro_scales_nihss as nihss
+    return _json_safe(nihss.nihss_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/nihss/definitions")
+async def neuro_scales_nihss_definitions():
+    """Scale definitions — NIHSS 15-item descriptions, severity thresholds,
+    clinical decision points, reliability data, and references."""
+    import scripts.neuro_scales_nihss as nihss
+    return _json_safe(nihss.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -157,17 +157,17 @@
     {
      "name": "Glasgow Coma Scale",
      "disease": "Brain injury",
-     "status": "planned"
+     "status": "built"
     },
     {
      "name": "Modified Rankin Scale",
      "disease": "Stroke outcome",
-     "status": "planned"
+     "status": "built"
     },
     {
      "name": "NIH Stroke Scale",
      "disease": "Stroke severity",
-     "status": "planned"
+     "status": "built"
     },
     {
      "name": "PANSS",
