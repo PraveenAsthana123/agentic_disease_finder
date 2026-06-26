@@ -2947,6 +2947,37 @@ async def neuro_scales_nback_definitions():
     return _json_safe(nback.scale_definitions())
 
 
+@app.get("/api/neuro-scales/gonogo")
+async def neuro_scales_gonogo_dashboard():
+    """Go/No-Go dashboard — response inhibition: commission errors (false alarms
+    on No-Go trials), omission errors, and reaction time.  Core paradigm in
+    epilepsy neuropsych for frontal inhibitory control assessment.
+    All data derived from real clinical.db patient features."""
+    import scripts.neuro_scales_gonogo as gonogo
+    return _json_safe(gonogo.gonogo_dashboard())
+
+@app.get("/api/neuro-scales/gonogo/detail")
+async def neuro_scales_gonogo_detail(patient_id: str):
+    """Per-patient Go/No-Go detail with commission/omission rates, RT,
+    contributing factors, z-scores, and clinical recommendations."""
+    import scripts.neuro_scales_gonogo as gonogo
+    return _json_safe(gonogo.gonogo_detail(patient_id))
+
+@app.get("/api/neuro-scales/gonogo/trend")
+async def neuro_scales_gonogo_trend(patient_id: str):
+    """12-month projected Go/No-Go trajectory based on AED optimisation,
+    seizure control, and age-related cognitive changes."""
+    import scripts.neuro_scales_gonogo as gonogo
+    return _json_safe(gonogo.gonogo_trend(patient_id))
+
+@app.get("/api/neuro-scales/gonogo/definitions")
+async def neuro_scales_gonogo_definitions():
+    """Scale definitions — Go/No-Go metrics, scoring, psychometrics,
+    epilepsy-specific context, AED cognitive burden, data derivation."""
+    import scripts.neuro_scales_gonogo as gonogo
+    return _json_safe(gonogo.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

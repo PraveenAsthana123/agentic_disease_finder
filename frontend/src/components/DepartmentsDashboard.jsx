@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (10)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'gonogo_dashboard', label: '🚦 Go/No-Go (Inhibition)' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -658,6 +658,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'tmt_dashboard' && <TMTDashboardPanel />}
         {activeSub === 'wcst_dashboard' && <WCSTDashboardPanel />}
         {activeSub === 'nback_dashboard' && <NBackDashboardPanel />}
+        {activeSub === 'gonogo_dashboard' && <GoNoGoDashboardPanel />}
         {activeSub === 'patient_compare' && <PatientComparePanel />}
         {activeSub === 'expert_roles' && <ExpertRolesPanel />}
         {activeSub === 'sys_health' && <SystemHealthPanel />}
@@ -5697,6 +5698,164 @@ function NBackDashboardPanel() {
           )}
           {defs.data_derivation && (
             <div style={{ marginTop: 8, fontSize: 10, color: '#94a3b8', fontStyle: 'italic' }}>{defs.data_derivation}</div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function GoNoGoDashboardPanel() {
+  const [d, setD] = useState(null)
+  const [detail, setDetail] = useState(null)
+  const [defs, setDefs] = useState(null)
+  const [trend, setTrend] = useState(null)
+  const [selPid, setSelPid] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/neuro-scales/gonogo`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  useEffect(() => { axios.get(`${API_URL}/neuro-scales/gonogo/definitions`).then(r => setDefs(r.data)).catch(() => {}) }, [])
+  useEffect(() => {
+    if (!selPid) { setDetail(null); setTrend(null); return }
+    axios.get(`${API_URL}/neuro-scales/gonogo/detail?patient_id=${selPid}`).then(r => setDetail(r.data)).catch(() => setDetail(null))
+    axios.get(`${API_URL}/neuro-scales/gonogo/trend?patient_id=${selPid}`).then(r => setTrend(r.data)).catch(() => setTrend(null))
+  }, [selPid])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Loading Go/No-Go data from :8010…</div></div>
+  if (d.error) return <div style={card}><div style={{ color: '#ef4444' }}>{d.error}</div></div>
+  const sevColors = { Normal: '#22c55e', Mild: '#84cc16', Borderline: '#f59e0b', Impaired: '#ef4444' }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #dc2626' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🚦 Go/No-Go Test <span style={{ fontSize: 12, color: '#64748b' }}>— response inhibition: commission errors (false alarms on No-Go trials)</span></h3>
+        <div style={{ fontSize: 12, color: '#475569', marginBottom: 12 }}>
+          Subjects press for Go stimuli (80%) and withhold for No-Go (20%). Commission errors = pressing on No-Go = failed inhibition. Gold-standard frontal inhibitory control screen in epilepsy neuropsych.
+        </div>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 10 }}>
+          {[['Patients', d.n_patients], ['Mean Commission', `${d.mean_commission}%`], ['Mean Omission', `${d.mean_omission}%`], ['Mean Go RT', `${d.mean_go_rt_ms} ms`], ['Commission Impaired', `${d.pct_commission_impaired}%`]].map(([k, v]) => (
+            <div key={k} style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>{k}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        {d.severity_distribution && (
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {Object.entries(d.severity_distribution).map(([k, v]) => (
+              <span key={k} style={{ padding: '3px 10px', borderRadius: 12, fontSize: 11, fontWeight: 600, background: (sevColors[k] || '#94a3b8') + '18', color: sevColors[k] || '#475569', border: `1px solid ${sevColors[k] || '#cbd5e1'}40` }}>
+                {k}: {v}
+              </span>
+            ))}
+          </div>
+        )}
+        <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 8 }}>Norms: Bezdjian 2009; Garavan 1999 — healthy adults: commission &lt; 10%, omission &lt; 5%, Go RT 260–330 ms</div>
+      </div>
+
+      {/* Patient list */}
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Patient results <span style={{ fontSize: 11, color: '#64748b' }}>— click a row for detail + trend</span></h4>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f8fafc', borderBottom: '2px solid #e5e7eb' }}>
+                {['Patient', 'Age', 'Disease', 'Commission%', 'Omission%', 'Go RT (ms)', 'RT SD', 'AEDs', 'Sz 6m', 'Overall'].map(h => (
+                  <th key={h} style={{ padding: '6px 8px', textAlign: 'left', fontWeight: 600, color: '#475569', fontSize: 11 }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {(d.patients || []).map(p => (
+                <tr key={p.patient_id} onClick={() => setSelPid(p.patient_id === selPid ? null : p.patient_id)}
+                    style={{ cursor: 'pointer', borderBottom: '1px solid #f1f5f9', background: p.patient_id === selPid ? '#fef2f2' : 'transparent' }}>
+                  <td style={{ padding: '5px 8px', fontWeight: 600, color: '#0f172a' }}>{p.patient_id}</td>
+                  <td style={{ padding: '5px 8px', color: '#475569' }}>{p.age || '—'}</td>
+                  <td style={{ padding: '5px 8px', color: '#475569' }}>{p.epilepsy_type || '—'}</td>
+                  <td style={{ padding: '5px 8px', fontWeight: 700, fontFamily: 'monospace' }}>{p.commission_rate}</td>
+                  <td style={{ padding: '5px 8px', fontFamily: 'monospace' }}>{p.omission_rate}</td>
+                  <td style={{ padding: '5px 8px', fontWeight: 700 }}>{p.go_rt_ms}</td>
+                  <td style={{ padding: '5px 8px' }}>{p.rt_sd_ms}</td>
+                  <td style={{ padding: '5px 8px' }}>{p.known_aeds}</td>
+                  <td style={{ padding: '5px 8px' }}>{p.seizure_count_6m}</td>
+                  <td style={{ padding: '5px 8px' }}>
+                    <span style={{ padding: '2px 8px', borderRadius: 8, fontSize: 10, fontWeight: 600, background: (sevColors[p.overall_severity] || '#94a3b8') + '18', color: sevColors[p.overall_severity] || '#475569' }}>{p.overall_severity}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Detail panel */}
+      {detail && !detail.error && (
+        <div style={{ ...card, borderLeft: '4px solid #ef4444' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📋 Detail — {detail.patient_name || detail.patient_id}</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 10, marginBottom: 12 }}>
+            {detail.estimated && ['commission_rate', 'omission_rate', 'go_rt_ms', 'rt_sd_ms'].map(k => {
+              const v = detail.estimated[k]
+              const unit = k.includes('rate') ? '%' : k.includes('ms') ? ' ms' : ''
+              const band = k === 'commission_rate' ? detail.estimated.commission_band
+                          : k === 'omission_rate' ? detail.estimated.omission_band
+                          : k === 'go_rt_ms' ? detail.estimated.rt_band : null
+              return (
+                <div key={k} style={{ padding: 10, borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: '#475569' }}>{k.replace(/_/g, ' ')}</div>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: '#0f172a' }}>{v}{unit}</div>
+                  {band && <span style={{ padding: '2px 8px', borderRadius: 8, fontSize: 10, fontWeight: 600, background: (sevColors[band.label] || '#94a3b8') + '18', color: sevColors[band.label] || '#475569' }}>{band.label}</span>}
+                </div>
+              )
+            })}
+          </div>
+          <div style={{ fontSize: 12, color: '#0f172a', marginBottom: 8, lineHeight: 1.6 }}>{detail.interpretation}</div>
+          {detail.aed_note && <div style={{ fontSize: 11, color: '#b45309', marginBottom: 6 }}>💊 {detail.aed_note}</div>}
+          {detail.frontal_note && <div style={{ fontSize: 11, color: '#7c3aed', marginBottom: 6 }}>🧠 {detail.frontal_note}</div>}
+        </div>
+      )}
+
+      {/* Trend panel */}
+      {trend && !trend.error && (
+        <div style={{ ...card, borderLeft: '4px solid #10b981' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📈 12-month commission trend — {trend.patient_id}</h4>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
+            {(trend.time_points || []).map(t => (
+              <div key={t.month} style={{ padding: '4px 8px', borderRadius: 6, fontSize: 10, background: (sevColors[t.commission_severity] || '#94a3b8') + '18', color: sevColors[t.commission_severity] || '#475569', textAlign: 'center', minWidth: 55 }}>
+                <div style={{ fontWeight: 600 }}>M{t.month}</div>
+                <div style={{ fontSize: 14, fontWeight: 700 }}>{t.commission_rate}%</div>
+                <div>{t.commission_severity}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: '#475569' }}>
+            Direction: <strong>{trend.trend_direction}</strong> · Δ commission: {trend.change_commission_pct}% · Δ RT: {trend.change_rt_ms} ms
+          </div>
+          {trend.clinical_note && <div style={{ fontSize: 11, color: '#0f172a', marginTop: 4 }}>{trend.clinical_note}</div>}
+        </div>
+      )}
+
+      {/* Scale definitions */}
+      {defs && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📖 Scale definitions — {defs.scale_name}</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569' }}>Domain</div>
+              <div style={{ fontSize: 12 }}>{defs.domain}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569' }}>Primary metric</div>
+              <div style={{ fontSize: 12 }}>{defs.primary_metric}</div>
+            </div>
+          </div>
+          <div style={{ fontSize: 11, color: '#475569', marginBottom: 8 }}>{defs.paradigm}</div>
+          {defs.references && (
+            <div style={{ fontSize: 10, color: '#94a3b8' }}>
+              {(Array.isArray(defs.references) ? defs.references : [defs.references]).map((r, i) => <div key={i}>• {typeof r === 'string' ? r : r.citation || JSON.stringify(r)}</div>)}
+            </div>
+          )}
+          {defs.clinical_relevance && (
+            <div style={{ marginTop: 8, fontSize: 11, color: '#475569' }}>
+              <div style={{ fontWeight: 600, marginBottom: 4 }}>Clinical relevance</div>
+              {Array.isArray(defs.clinical_relevance)
+                ? defs.clinical_relevance.map((c, i) => <div key={i}>• {c}</div>)
+                : <div>{defs.clinical_relevance}</div>}
+            </div>
           )}
         </div>
       )}
