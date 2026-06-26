@@ -769,6 +769,15 @@ async def data_manager_mri_validation():
     return _json_safe(mv.validate())
 
 
+@app.get("/api/data-manager/cleaning")
+async def data_manager_cleaning():
+    """Clinical Data Manager — Data Cleaning dashboard.
+    Runs real signal-quality analysis on CHB-MIT EEG recordings:
+    flat/saturated detection, NaN/Inf stats, ICA summary, quality re-score."""
+    import scripts.data_cleaning as dc
+    return _json_safe(dc.cleaning_report())
+
+
 _mp_cache = {}
 @app.get("/api/model-performance")
 async def model_performance():

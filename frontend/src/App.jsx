@@ -19,6 +19,7 @@ import DepartmentsDashboard, { DEPARTMENTS } from './components/DepartmentsDashb
 import EntropyDashboard from './components/EntropyDashboard'
 import TopomapDashboard from './components/TopomapDashboard'
 import ExpertDashboard from './components/ExpertDashboard'
+import DataCleaningDashboard from './components/DataCleaningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -125,7 +126,8 @@ function App() {
     { id: 'infographics', label: 'Infographics' },
     { id: 'entropy', label: 'Entropy Analysis' },
     { id: 'topomap', label: 'Topographic Maps' },
-    { id: 'expert', label: 'Expert Dashboards' }
+    { id: 'expert', label: 'Expert Dashboards' },
+    { id: 'datacleaning', label: 'Data Cleaning' }
   ]
 
   // API Calls
@@ -1199,6 +1201,8 @@ function App() {
         return <TopomapDashboard />
       case 'expert':
         return <ExpertDashboard />
+      case 'datacleaning':
+        return <DataCleaningDashboard />
       default:
         return renderClassificationTab()
     }

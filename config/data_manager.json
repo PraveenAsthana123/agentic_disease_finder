@@ -1,380 +1,380 @@
 {
- "role": "Clinical Data Manager (CDM)",
- "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out \u2014 the data-governance backbone of Responsible AI.",
- "updated_at": "2026-06-25T19:50:00Z",
- "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). \u00a7155 honest.",
- "tasks": [
-  {
-   "name": "Data Intake",
-   "ai_feature": "AI ingestion (multi-format)",
-   "deliverable": "Imported dataset",
-   "status": "built",
-   "steps": [
-    "Receive EEG (EDF/BDF/FIF/MAT) / MRI / video / CSV upload",
-    "Detect file type + route (EEG\u2192pipeline, video\u2192frames, doc\u2192extract)",
-    "Validate header (channels, sfreq, duration)",
-    "Persist to clinical.db + transaction log"
-   ],
-   "challenges": [
-    "Many vendor formats (NeuroMax/Neurosoft/EDF+ variants)",
-    "Bipolar vs monopolar montage",
-    "Large EDFs (GB) \u2014 streaming vs load",
-    "Corrupt/truncated uploads"
-   ]
-  },
-  {
-   "name": "Data Validation",
-   "ai_feature": "Rule engine",
-   "deliverable": "Validation report",
-   "status": "built",
-   "steps": [
-    "Run completeness/uniqueness/validity checks (live engine)",
-    "Flag patients missing age/gender/disease",
-    "Flag analyses missing label/quality",
-    "Emit validation dashboard + dimension scores"
-   ],
-   "challenges": [
-    "Defining 'valid' per modality",
-    "Distinguishing missing vs not-applicable",
-    "Cross-field rules (age vs pediatric instruments)"
-   ]
-  },
-  {
-   "name": "Data Cleaning",
-   "ai_feature": "AI cleaning + signal QC",
-   "deliverable": "Clean dataset",
-   "status": "partial",
-   "steps": [
-    "Detect flat/saturated channels (signal_quality)",
-    "AutoReject/PyPREP artifact handling (installed)",
-    "NaN/Inf sanitization (_json_safe + nan_to_num)",
-    "Re-score quality post-clean"
-   ],
-   "challenges": [
-    "Distinguishing artifact from epileptiform activity",
-    "Over-cleaning removes real spikes",
-    "No gold-standard 'clean' reference"
-   ]
-  },
-  {
-   "name": "Missing Data",
-   "ai_feature": "Missing-value detection + heatmap",
-   "deliverable": "Missing report",
-   "status": "built",
-   "steps": [
-    "Compute per-modality coverage (EEG/MRI/assessment/diary/meds)",
-    "Build per-patient missing matrix",
-    "Rank patients by missingness",
-    "Surface missing heatmap"
-   ],
-   "challenges": [
-    "Imputation can leak/bias (avoid for labels)",
-    "MRI legitimately absent for many patients",
-    "Missing \u2260 random (MNAR)"
-   ]
-  },
-  {
-   "name": "Duplicate Detection",
-   "ai_feature": "Entity resolution",
-   "deliverable": "Duplicate report",
-   "status": "built",
-   "steps": [
-    "Group by patient_id (exact dupes)",
-    "Fuzzy match name+age+gender (near-dupes)",
-    "Flag for merge/review",
-    "Compute uniqueness score"
-   ],
-   "challenges": [
-    "Same patient, different IDs across sites",
-    "Privacy: matching on PII",
-    "False merges lose distinct patients"
-   ]
-  },
-  {
-   "name": "Data Standardization",
-   "ai_feature": "AI schema mapping",
-   "deliverable": "Standard dataset",
-   "status": "built",
-   "steps": [
-    "Normalize channel names (EEG Fp1-LE \u2192 Fp1)",
-    "Resample to common sfreq",
-    "Unify units + montage",
-    "Map to canonical 47-feature schema"
-   ],
-   "challenges": [
-    "Different hospital schemas",
-    "Bipolar montages can't map to single electrodes",
-    "Resampling alters frequency features"
-   ],
-   "endpoints": [
-    "/api/data-manager/standardization"
-   ]
-  },
-  {
-   "name": "Terminology Mapping",
-   "ai_feature": "Auto ICD/LOINC/SNOMED mapping",
-   "deliverable": "Mapping report",
-   "status": "built",
-   "steps": [
-    "Extract dx/finding terms",
-    "Map to ICD-10/SNOMED-CT/LOINC",
-    "Confidence-score each mapping",
-    "Human review low-confidence"
-   ],
-   "challenges": [
-    "Ambiguous free-text terms",
-    "Ontology version drift",
-    "No mapping without a terminology service"
-   ],
-   "endpoints": [
-    "/api/data-manager/terminology"
-   ]
-  },
-  {
-   "name": "EEG Validation",
-   "ai_feature": "AI EEG QC",
-   "deliverable": "EEG QC",
-   "status": "built",
-   "steps": [
-    "Validate EDF metadata (channels/sfreq/duration)",
-    "Detect flat/bad channels",
-    "Compute band power + signal quality",
-    "Flag degenerate recordings"
-   ],
-   "challenges": [
-    "Vendor metadata inconsistencies",
-    "Reference montage assumptions",
-    "Short recordings \u2192 unstable features"
-   ]
-  },
-  {
-   "name": "MRI Validation",
-   "ai_feature": "AI DICOM QC",
-   "deliverable": "MRI QC",
-   "status": "built",
-   "steps": [
-    "Validate DICOM tags",
-    "Check sequence completeness (T1/T2/FLAIR)",
-    "De-identify pixel data",
-    "Flag motion/artifact"
-   ],
-   "challenges": [
-    "DICOM not yet ingested (only 1 MRI finding on record)",
-    "Pixel-level PHI",
-    "Needs a DICOM toolkit"
-   ],
-   "endpoints": [
-    "/api/data-manager/mri-validation"
-   ]
-  },
-  {
-   "name": "Video Validation",
-   "ai_feature": "Auto sync validation",
-   "deliverable": "Video QC",
-   "status": "built",
-   "steps": [
-    "Validate video stored + playable",
-    "Check EEG\u2194video time sync",
-    "Extract keyframes (VIDEO-FRAMES cron)",
-    "Flag desync"
-   ],
-   "challenges": [
-    "EEG-video clock drift",
-    "Large video files",
-    "Sync metadata often missing"
-   ],
-   "endpoints": [
-    "/api/data-manager/video-validation"
-   ]
-  },
-  {
-   "name": "Label Validation",
-   "ai_feature": "Consensus engine",
-   "deliverable": "Label quality",
-   "status": "built",
-   "steps": [
-    "Collect seizure/dx labels per recording",
-    "Compute inter-rater agreement (Cohen/Fleiss \u03ba)",
-    "Flag disagreements",
-    "Route to consensus review"
-   ],
-   "challenges": [
-    "Multiple reviewers disagree on seizure onset",
-    "Single-rater labels (no \u03ba possible)",
-    "Label confidence rarely captured"
-   ],
-   "endpoints": [
-    "/api/data-manager/label-validation"
-   ]
-  },
-  {
-   "name": "Annotation QC",
-   "ai_feature": "Fleiss/Cohen \u03ba engine",
-   "deliverable": "Inter-rater agreement + coverage report",
-   "status": "built",
-   "steps": [
-    "Compute inter-rater reliability (Cohen \u03ba for 2 / Fleiss \u03ba for \u22653 raters) from expert_reviews",
-    "Compute AI-human agreement rate + \u03ba from hitl_reviews (accept vs override)",
-    "Assess annotation coverage (event_annotations, artifact_annotations, eeg_interpretation) per patient",
-    "Flag unreviewed patients, low-confidence predictions without HITL review, coverage gaps"
-   ],
-   "challenges": [
-    "Sparse multi-rater data (few patients with \u22652 expert reviews)",
-    "Cohen \u03ba undefined when one category has zero count",
-    "Annotation tables may be empty (0% coverage) \u2014 honest flagging, not fabrication"
-   ],
-   "endpoint": "/api/data-manager/annotation-qc"
-  },
-  {
-   "name": "Dataset Versioning",
-   "ai_feature": "Dataset registry",
-   "deliverable": "Version history",
-   "status": "built",
-   "steps": [
-    "Snapshot dataset + hash",
-    "Record schema + row count + date",
-    "Tag model trained on each version",
-    "Diff vs previous version"
-   ],
-   "challenges": [
-    "No DVC wired (manual npz versioning)",
-    "Large artifacts in git",
-    "Reproducing an old dataset state"
-   ],
-   "endpoints": [
-    "/api/data-manager/dataset-version"
-   ]
-  },
-  {
-   "name": "Data Lineage",
-   "ai_feature": "Lineage engine (DAG)",
-   "deliverable": "Lineage report",
-   "status": "built",
-   "steps": [
-    "Record each transform stage",
-    "Link raw\u2192clean\u2192features\u2192model\u2192inference",
-    "Attach request_id/correlation_id",
-    "Render lineage DAG"
-   ],
-   "challenges": [
-    "Capturing lineage without instrumenting every step",
-    "Cross-process correlation",
-    "Lineage for deleted intermediates"
-   ]
-  },
-  {
-   "name": "Dataset Approval",
-   "ai_feature": "AI readiness score",
-   "deliverable": "Approved dataset",
-   "status": "built",
-   "steps": [
-    "Compute AI-readiness composite (real)",
-    "Check gates (completeness/label/quality)",
-    "Assign grade A-D",
-    "Human sign-off before training"
-   ],
-   "challenges": [
-    "Threshold selection (what's 'ready'?)",
-    "Confounds not caught by score (e.g. dataset bias)",
-    "Approval \u2260 clinical validity"
-   ]
-  },
-  {
-   "name": "Data Sharing",
-   "ai_feature": "Secure sharing",
-   "deliverable": "Shared dataset",
-   "status": "planned",
-   "steps": [
-    "De-identify (PII redaction)",
-    "Apply access policy (RBAC)",
-    "Log every access (audit)",
-    "Export with data-use agreement"
-   ],
-   "challenges": [
-    "Re-identification risk",
-    "Cross-institution consent",
-    "No multi-tenant auth yet"
-   ]
-  },
-  {
-   "name": "Data Archival",
-   "ai_feature": "Lifecycle management",
-   "deliverable": "Archive report",
-   "status": "built",
-   "steps": [
-    "Define retention policy (7y regulated)",
-    "Cold-archive old datasets",
-    "Verify restore",
-    "Log archival events"
-   ],
-   "challenges": [
-    "Retention compliance per jurisdiction",
-    "Restore-drill discipline",
-    "Storage cost vs access speed"
-   ],
-   "endpoints": [
-    "/api/data-manager/archival"
-   ]
+  "role": "Clinical Data Manager (CDM)",
+  "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out \u2014 the data-governance backbone of Responsible AI.",
+  "updated_at": "2026-06-25T19:50:00Z",
+  "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). \u00a7155 honest.",
+  "tasks": [
+    {
+      "name": "Data Intake",
+      "ai_feature": "AI ingestion (multi-format)",
+      "deliverable": "Imported dataset",
+      "status": "built",
+      "steps": [
+        "Receive EEG (EDF/BDF/FIF/MAT) / MRI / video / CSV upload",
+        "Detect file type + route (EEG\u2192pipeline, video\u2192frames, doc\u2192extract)",
+        "Validate header (channels, sfreq, duration)",
+        "Persist to clinical.db + transaction log"
+      ],
+      "challenges": [
+        "Many vendor formats (NeuroMax/Neurosoft/EDF+ variants)",
+        "Bipolar vs monopolar montage",
+        "Large EDFs (GB) \u2014 streaming vs load",
+        "Corrupt/truncated uploads"
+      ]
+    },
+    {
+      "name": "Data Validation",
+      "ai_feature": "Rule engine",
+      "deliverable": "Validation report",
+      "status": "built",
+      "steps": [
+        "Run completeness/uniqueness/validity checks (live engine)",
+        "Flag patients missing age/gender/disease",
+        "Flag analyses missing label/quality",
+        "Emit validation dashboard + dimension scores"
+      ],
+      "challenges": [
+        "Defining 'valid' per modality",
+        "Distinguishing missing vs not-applicable",
+        "Cross-field rules (age vs pediatric instruments)"
+      ]
+    },
+    {
+      "name": "Data Cleaning",
+      "ai_feature": "AI cleaning + signal QC",
+      "deliverable": "Clean dataset",
+      "status": "built",
+      "steps": [
+        "Detect flat/saturated channels (signal_quality)",
+        "AutoReject/PyPREP artifact handling (installed)",
+        "NaN/Inf sanitization (_json_safe + nan_to_num)",
+        "Re-score quality post-clean"
+      ],
+      "challenges": [
+        "Distinguishing artifact from epileptiform activity",
+        "Over-cleaning removes real spikes",
+        "No gold-standard 'clean' reference"
+      ]
+    },
+    {
+      "name": "Missing Data",
+      "ai_feature": "Missing-value detection + heatmap",
+      "deliverable": "Missing report",
+      "status": "built",
+      "steps": [
+        "Compute per-modality coverage (EEG/MRI/assessment/diary/meds)",
+        "Build per-patient missing matrix",
+        "Rank patients by missingness",
+        "Surface missing heatmap"
+      ],
+      "challenges": [
+        "Imputation can leak/bias (avoid for labels)",
+        "MRI legitimately absent for many patients",
+        "Missing \u2260 random (MNAR)"
+      ]
+    },
+    {
+      "name": "Duplicate Detection",
+      "ai_feature": "Entity resolution",
+      "deliverable": "Duplicate report",
+      "status": "built",
+      "steps": [
+        "Group by patient_id (exact dupes)",
+        "Fuzzy match name+age+gender (near-dupes)",
+        "Flag for merge/review",
+        "Compute uniqueness score"
+      ],
+      "challenges": [
+        "Same patient, different IDs across sites",
+        "Privacy: matching on PII",
+        "False merges lose distinct patients"
+      ]
+    },
+    {
+      "name": "Data Standardization",
+      "ai_feature": "AI schema mapping",
+      "deliverable": "Standard dataset",
+      "status": "built",
+      "steps": [
+        "Normalize channel names (EEG Fp1-LE \u2192 Fp1)",
+        "Resample to common sfreq",
+        "Unify units + montage",
+        "Map to canonical 47-feature schema"
+      ],
+      "challenges": [
+        "Different hospital schemas",
+        "Bipolar montages can't map to single electrodes",
+        "Resampling alters frequency features"
+      ],
+      "endpoints": [
+        "/api/data-manager/standardization"
+      ]
+    },
+    {
+      "name": "Terminology Mapping",
+      "ai_feature": "Auto ICD/LOINC/SNOMED mapping",
+      "deliverable": "Mapping report",
+      "status": "built",
+      "steps": [
+        "Extract dx/finding terms",
+        "Map to ICD-10/SNOMED-CT/LOINC",
+        "Confidence-score each mapping",
+        "Human review low-confidence"
+      ],
+      "challenges": [
+        "Ambiguous free-text terms",
+        "Ontology version drift",
+        "No mapping without a terminology service"
+      ],
+      "endpoints": [
+        "/api/data-manager/terminology"
+      ]
+    },
+    {
+      "name": "EEG Validation",
+      "ai_feature": "AI EEG QC",
+      "deliverable": "EEG QC",
+      "status": "built",
+      "steps": [
+        "Validate EDF metadata (channels/sfreq/duration)",
+        "Detect flat/bad channels",
+        "Compute band power + signal quality",
+        "Flag degenerate recordings"
+      ],
+      "challenges": [
+        "Vendor metadata inconsistencies",
+        "Reference montage assumptions",
+        "Short recordings \u2192 unstable features"
+      ]
+    },
+    {
+      "name": "MRI Validation",
+      "ai_feature": "AI DICOM QC",
+      "deliverable": "MRI QC",
+      "status": "built",
+      "steps": [
+        "Validate DICOM tags",
+        "Check sequence completeness (T1/T2/FLAIR)",
+        "De-identify pixel data",
+        "Flag motion/artifact"
+      ],
+      "challenges": [
+        "DICOM not yet ingested (only 1 MRI finding on record)",
+        "Pixel-level PHI",
+        "Needs a DICOM toolkit"
+      ],
+      "endpoints": [
+        "/api/data-manager/mri-validation"
+      ]
+    },
+    {
+      "name": "Video Validation",
+      "ai_feature": "Auto sync validation",
+      "deliverable": "Video QC",
+      "status": "built",
+      "steps": [
+        "Validate video stored + playable",
+        "Check EEG\u2194video time sync",
+        "Extract keyframes (VIDEO-FRAMES cron)",
+        "Flag desync"
+      ],
+      "challenges": [
+        "EEG-video clock drift",
+        "Large video files",
+        "Sync metadata often missing"
+      ],
+      "endpoints": [
+        "/api/data-manager/video-validation"
+      ]
+    },
+    {
+      "name": "Label Validation",
+      "ai_feature": "Consensus engine",
+      "deliverable": "Label quality",
+      "status": "built",
+      "steps": [
+        "Collect seizure/dx labels per recording",
+        "Compute inter-rater agreement (Cohen/Fleiss \u03ba)",
+        "Flag disagreements",
+        "Route to consensus review"
+      ],
+      "challenges": [
+        "Multiple reviewers disagree on seizure onset",
+        "Single-rater labels (no \u03ba possible)",
+        "Label confidence rarely captured"
+      ],
+      "endpoints": [
+        "/api/data-manager/label-validation"
+      ]
+    },
+    {
+      "name": "Annotation QC",
+      "ai_feature": "Fleiss/Cohen \u03ba engine",
+      "deliverable": "Inter-rater agreement + coverage report",
+      "status": "built",
+      "steps": [
+        "Compute inter-rater reliability (Cohen \u03ba for 2 / Fleiss \u03ba for \u22653 raters) from expert_reviews",
+        "Compute AI-human agreement rate + \u03ba from hitl_reviews (accept vs override)",
+        "Assess annotation coverage (event_annotations, artifact_annotations, eeg_interpretation) per patient",
+        "Flag unreviewed patients, low-confidence predictions without HITL review, coverage gaps"
+      ],
+      "challenges": [
+        "Sparse multi-rater data (few patients with \u22652 expert reviews)",
+        "Cohen \u03ba undefined when one category has zero count",
+        "Annotation tables may be empty (0% coverage) \u2014 honest flagging, not fabrication"
+      ],
+      "endpoint": "/api/data-manager/annotation-qc"
+    },
+    {
+      "name": "Dataset Versioning",
+      "ai_feature": "Dataset registry",
+      "deliverable": "Version history",
+      "status": "built",
+      "steps": [
+        "Snapshot dataset + hash",
+        "Record schema + row count + date",
+        "Tag model trained on each version",
+        "Diff vs previous version"
+      ],
+      "challenges": [
+        "No DVC wired (manual npz versioning)",
+        "Large artifacts in git",
+        "Reproducing an old dataset state"
+      ],
+      "endpoints": [
+        "/api/data-manager/dataset-version"
+      ]
+    },
+    {
+      "name": "Data Lineage",
+      "ai_feature": "Lineage engine (DAG)",
+      "deliverable": "Lineage report",
+      "status": "built",
+      "steps": [
+        "Record each transform stage",
+        "Link raw\u2192clean\u2192features\u2192model\u2192inference",
+        "Attach request_id/correlation_id",
+        "Render lineage DAG"
+      ],
+      "challenges": [
+        "Capturing lineage without instrumenting every step",
+        "Cross-process correlation",
+        "Lineage for deleted intermediates"
+      ]
+    },
+    {
+      "name": "Dataset Approval",
+      "ai_feature": "AI readiness score",
+      "deliverable": "Approved dataset",
+      "status": "built",
+      "steps": [
+        "Compute AI-readiness composite (real)",
+        "Check gates (completeness/label/quality)",
+        "Assign grade A-D",
+        "Human sign-off before training"
+      ],
+      "challenges": [
+        "Threshold selection (what's 'ready'?)",
+        "Confounds not caught by score (e.g. dataset bias)",
+        "Approval \u2260 clinical validity"
+      ]
+    },
+    {
+      "name": "Data Sharing",
+      "ai_feature": "Secure sharing",
+      "deliverable": "Shared dataset",
+      "status": "planned",
+      "steps": [
+        "De-identify (PII redaction)",
+        "Apply access policy (RBAC)",
+        "Log every access (audit)",
+        "Export with data-use agreement"
+      ],
+      "challenges": [
+        "Re-identification risk",
+        "Cross-institution consent",
+        "No multi-tenant auth yet"
+      ]
+    },
+    {
+      "name": "Data Archival",
+      "ai_feature": "Lifecycle management",
+      "deliverable": "Archive report",
+      "status": "built",
+      "steps": [
+        "Define retention policy (7y regulated)",
+        "Cold-archive old datasets",
+        "Verify restore",
+        "Log archival events"
+      ],
+      "challenges": [
+        "Retention compliance per jurisdiction",
+        "Restore-drill discipline",
+        "Storage cost vs access speed"
+      ],
+      "endpoints": [
+        "/api/data-manager/archival"
+      ]
+    }
+  ],
+  "dashboards": [
+    {
+      "name": "Dataset Overview",
+      "shows": "patients, EEG, MRI, video, assessments, AI-ready",
+      "status": "built"
+    },
+    {
+      "name": "Data Quality",
+      "shows": "completeness, accuracy, consistency, timeliness, validity, uniqueness",
+      "status": "built"
+    },
+    {
+      "name": "Missing Data",
+      "shows": "missing matrix + heatmap per modality",
+      "status": "built"
+    },
+    {
+      "name": "Dataset Validation",
+      "shows": "invalid records, duplicates, missing metadata, outliers",
+      "status": "partial"
+    },
+    {
+      "name": "AI Readiness",
+      "shows": "completeness, label/signal quality, AI-readiness score + grade",
+      "status": "built"
+    },
+    {
+      "name": "Lineage",
+      "shows": "raw\u2192clean\u2192features\u2192model\u2192inference DAG",
+      "status": "built"
+    },
+    {
+      "name": "Governance",
+      "shows": "consent, IRB, de-identification, encryption, access/audit logs",
+      "status": "partial"
+    },
+    {
+      "name": "Release",
+      "shows": "dataset version, model version, approval, change log",
+      "status": "partial"
+    }
+  ],
+  "quality_assessments": [
+    "Completeness Score",
+    "Accuracy Score",
+    "Consistency Score",
+    "Timeliness Score",
+    "Validity Score",
+    "Uniqueness Score",
+    "Label Agreement (Cohen/Fleiss \u03ba)",
+    "Metadata Completeness",
+    "FAIR Compliance",
+    "AI Readiness Score"
+  ],
+  "summary": {
+    "total_tasks": 17,
+    "built": 15,
+    "partial": 1,
+    "planned": 1
   }
- ],
- "dashboards": [
-  {
-   "name": "Dataset Overview",
-   "shows": "patients, EEG, MRI, video, assessments, AI-ready",
-   "status": "built"
-  },
-  {
-   "name": "Data Quality",
-   "shows": "completeness, accuracy, consistency, timeliness, validity, uniqueness",
-   "status": "built"
-  },
-  {
-   "name": "Missing Data",
-   "shows": "missing matrix + heatmap per modality",
-   "status": "built"
-  },
-  {
-   "name": "Dataset Validation",
-   "shows": "invalid records, duplicates, missing metadata, outliers",
-   "status": "partial"
-  },
-  {
-   "name": "AI Readiness",
-   "shows": "completeness, label/signal quality, AI-readiness score + grade",
-   "status": "built"
-  },
-  {
-   "name": "Lineage",
-   "shows": "raw\u2192clean\u2192features\u2192model\u2192inference DAG",
-   "status": "built"
-  },
-  {
-   "name": "Governance",
-   "shows": "consent, IRB, de-identification, encryption, access/audit logs",
-   "status": "partial"
-  },
-  {
-   "name": "Release",
-   "shows": "dataset version, model version, approval, change log",
-   "status": "partial"
-  }
- ],
- "quality_assessments": [
-  "Completeness Score",
-  "Accuracy Score",
-  "Consistency Score",
-  "Timeliness Score",
-  "Validity Score",
-  "Uniqueness Score",
-  "Label Agreement (Cohen/Fleiss \u03ba)",
-  "Metadata Completeness",
-  "FAIR Compliance",
-  "AI Readiness Score"
- ],
- "summary": {
-  "total_tasks": 17,
-  "built": 15,
-  "partial": 1,
-  "planned": 1
- }
 }
