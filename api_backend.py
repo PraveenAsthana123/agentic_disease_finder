@@ -2727,6 +2727,69 @@ async def neuro_scales_laep_definitions():
     return _json_safe(laep.scale_definitions())
 
 
+# ── SUDEP-7 Risk Inventory ─────────────────────────────────────────────
+@app.get("/api/neuro-scales/sudep")
+async def neuro_scales_sudep_dashboard(patient_id: str = None):
+    """SUDEP-7 dashboard — 7-item sudden-death risk inventory (0-12)
+    for one patient or all patients, derived from clinical.db."""
+    import scripts.neuro_scales_sudep as sudep
+    return _json_safe(sudep.sudep_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/sudep/detail")
+async def neuro_scales_sudep_detail(patient_id: str):
+    """SUDEP-7 detail — per-patient 7-item breakdown, evidence,
+    risk factors, and prevention recommendations."""
+    import scripts.neuro_scales_sudep as sudep
+    return _json_safe(sudep.sudep_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/sudep/trend")
+async def neuro_scales_sudep_trend(patient_id: str):
+    """SUDEP-7 trend — 12-month projected risk trajectory based on
+    published intervention efficacy and risk modification data."""
+    import scripts.neuro_scales_sudep as sudep
+    return _json_safe(sudep.sudep_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/sudep/definitions")
+async def neuro_scales_sudep_definitions():
+    """Scale definitions — SUDEP-7 items, weights, severity bands,
+    prevention strategies, epidemiology, clinical use references."""
+    import scripts.neuro_scales_sudep as sudep
+    return _json_safe(sudep.scale_definitions())
+
+
+# ── Medication Adherence Scale (MMAS-4) ──────────────────────────────
+@app.get("/api/neuro-scales/mmas")
+async def neuro_scales_mmas_dashboard(patient_id: str = None):
+    """MMAS-4 medication adherence dashboard — all patients or single.
+    Morisky DE et al. Medical Care 1986; 4 yes/no items (0=high, 3-4=low)."""
+    import scripts.neuro_scales_mmas as mmas
+    return _json_safe(mmas.mmas_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/mmas/detail")
+async def neuro_scales_mmas_detail(patient_id: str):
+    """Per-patient MMAS-4 detail with all 4 items, domains,
+    contributing factors, and clinical recommendations."""
+    import scripts.neuro_scales_mmas as mmas
+    return _json_safe(mmas.mmas_detail(patient_id))
+
+@app.get("/api/neuro-scales/mmas/trend")
+async def neuro_scales_mmas_trend(patient_id: str):
+    """12-month projected medication adherence trajectory based on
+    baseline adherence, AED regimen, and intervention effects."""
+    import scripts.neuro_scales_mmas as mmas
+    return _json_safe(mmas.mmas_trend(patient_id))
+
+@app.get("/api/neuro-scales/mmas/definitions")
+async def neuro_scales_mmas_definitions():
+    """Scale definitions — MMAS-4 items, scoring, psychometrics,
+    epilepsy context, interventions, data derivation."""
+    import scripts.neuro_scales_mmas as mmas
+    return _json_safe(mmas.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -232,7 +232,15 @@
         {
           "name": "Medication Adherence Scale",
           "purpose": "AED compliance",
-          "status": "planned"
+          "status": "built",
+          "endpoints": [
+            "/api/neuro-scales/mmas",
+            "/api/neuro-scales/mmas/detail",
+            "/api/neuro-scales/mmas/trend",
+            "/api/neuro-scales/mmas/definitions"
+          ],
+          "implementation": "scripts/neuro_scales_mmas.py",
+          "scale_type": "MMAS-4 (Morisky 1986)"
         }
       ]
     },
