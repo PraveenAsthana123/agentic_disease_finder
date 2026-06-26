@@ -2915,6 +2915,38 @@ async def neuro_scales_wcst_definitions():
     return _json_safe(wcst.scale_definitions())
 
 
+# ── N-Back Working Memory Test ─────────────────────────────────────────
+@app.get("/api/neuro-scales/nback")
+async def neuro_scales_nback_dashboard(patient_id: str = None):
+    """N-Back dashboard — working memory: hit rate, false alarms, d-prime,
+    reaction time across 1/2/3-back conditions. Core paradigm in epilepsy
+    neuropsych for temporal-lobe and frontal working-memory circuits.
+    All data derived from real clinical.db patient features."""
+    import scripts.neuro_scales_nback as nback
+    return _json_safe(nback.nback_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/nback/detail")
+async def neuro_scales_nback_detail(patient_id: str):
+    """Per-patient N-Back detail with all 5 metrics (HR, FAR, d', RT, Acc),
+    contributing factors, z-scores, percentiles, and clinical recommendations."""
+    import scripts.neuro_scales_nback as nback
+    return _json_safe(nback.nback_detail(patient_id))
+
+@app.get("/api/neuro-scales/nback/trend")
+async def neuro_scales_nback_trend(patient_id: str):
+    """12-month projected d-prime trajectory based on AED optimisation,
+    seizure control, and age-related decline."""
+    import scripts.neuro_scales_nback as nback
+    return _json_safe(nback.nback_trend(patient_id))
+
+@app.get("/api/neuro-scales/nback/definitions")
+async def neuro_scales_nback_definitions():
+    """Scale definitions — N-Back metrics, scoring, psychometrics,
+    epilepsy-specific context, AED cognitive burden, data derivation."""
+    import scripts.neuro_scales_nback as nback
+    return _json_safe(nback.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

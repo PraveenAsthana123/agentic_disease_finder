@@ -256,7 +256,7 @@
         {
           "name": "Trail Making A/B",
           "domain": "Attention / processing speed",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Digit Span",
@@ -271,7 +271,7 @@
         {
           "name": "N-Back",
           "domain": "Working memory",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Go/No-Go",
