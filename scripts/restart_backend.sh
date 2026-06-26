@@ -3,6 +3,15 @@
 # Exit 0 only when serving. Prevents zombie pile-up + commit-before-verify (loop gates on this).
 cd /media/praveen/Asthana4/rajveer/agenticfinder || exit 1
 PORT=8010
+# Serialize restarts: the auto_build_loop AND the watchdog can both call this. Without a
+# lock, two restarts race and kill each other's booting process → extended downtime / flapping.
+# flock makes a concurrent caller wait for the in-progress restart instead of stomping it.
+mkdir -p jobs/logs
+exec 9>jobs/logs/.restart.lock
+if ! flock -w 150 9; then echo "restart already in progress (lock busy)"; exit 0; fi
+# Got the lock — if a concurrent restart already brought the backend up, don't stomp it.
+[ "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:${PORT}/api/data-manager -m 5 2>/dev/null)" = "200" ] && {
+  echo "backend already healthy (concurrent restart won) — skipping"; exit 0; }
 # Canonical project venv (one-venv-per-project policy §61.11). Single source of truth.
 VENV_PY=/home/praveen/venv-ardupilot/bin/python3
 [ -x "$VENV_PY" ] || VENV_PY=python3   # fallback only if venv unreachable (§60)
