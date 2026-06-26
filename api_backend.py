@@ -684,6 +684,23 @@ async def fairness():
     return json.loads(p.read_text()) if p.exists() else {"error": "run scripts/fairness_analysis.py"}
 
 
+from fastapi.responses import HTMLResponse as _HTMLResponse
+
+@app.get("/api/integration-status")
+async def integration_status_live():
+    """Live status of every local-AI integration (Ollama, OpenClaw, agents, Slack, MCP, failover)."""
+    import scripts.integration_status as ist
+    return _json_safe(ist.collect())
+
+
+@app.get("/integration-hub", response_class=_HTMLResponse)
+async def integration_hub_ui():
+    """Integration Hub UI — single-page dashboard of all integrations."""
+    from pathlib import Path as _P
+    html = _P(__file__).parent / "frontend" / "integration-hub.html"
+    return _HTMLResponse(html.read_text() if html.exists() else "<h1>integration-hub.html missing</h1>")
+
+
 @app.get("/api/data-manager")
 async def data_manager():
     """Clinical Data Manager — live data-quality engine + detailed task catalog (steps+challenges)."""
@@ -2640,6 +2657,41 @@ async def neuro_scales_engel_definitions():
     outcome frequencies, reliability data, clinical use references."""
     import scripts.neuro_scales_engel as engel
     return _json_safe(engel.scale_definitions())
+
+
+# ── ILAE Outcome Scale (Epilepsy Surgery Outcome) ─────────────────────
+@app.get("/api/neuro-scales/ilae")
+async def neuro_scales_ilae_dashboard(patient_id: str = None):
+    """ILAE outcome dashboard — 6-class epilepsy surgery outcome
+    (1-6, seizure-day-based) for one patient or all patients.
+    Scores derived from REAL seizure diary, Barthel, and medication data
+    in clinical.db."""
+    import scripts.neuro_scales_ilae as ilae
+    return _json_safe(ilae.ilae_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/ilae/detail")
+async def neuro_scales_ilae_detail(patient_id: str):
+    """ILAE detail — per-patient classification with class rationale,
+    contributing factors (seizure types, AEDs, Barthel, aura analysis)."""
+    import scripts.neuro_scales_ilae as ilae
+    return _json_safe(ilae.ilae_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/ilae/trend")
+async def neuro_scales_ilae_trend(patient_id: str):
+    """ILAE trend — 12-month projected outcome trajectory based on
+    published outcome curves and current seizure control."""
+    import scripts.neuro_scales_ilae as ilae
+    return _json_safe(ilae.ilae_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/ilae/definitions")
+async def neuro_scales_ilae_definitions():
+    """Scale definitions — ILAE 6-class descriptions, outcome frequencies,
+    reliability data, comparison to Engel, clinical use references."""
+    import scripts.neuro_scales_ilae as ilae
+    return _json_safe(ilae.scale_definitions())
 
 
 if __name__ == "__main__":
