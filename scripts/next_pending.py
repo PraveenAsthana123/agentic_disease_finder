@@ -9,7 +9,6 @@ ROOT = Path(__file__).resolve().parent.parent
 # Curated buildable queue (highest value first). Blocked/gated items excluded by design.
 BUILDABLE = [
     {"id": "ictal_interictal", "title": "Ictal/interictal retrain (same-setup, removes dataset confound)", "value": "P0", "effort": "high"},
-    {"id": "expert_dashboards", "title": "Expert dashboards: Montage Comparison, Localization, False Alarm Review", "value": "P2", "effort": "high"},
 ]
 # Already built (removed from queue):
 # seizure_timeline, spike_overlay (in eeg_viz), lateralization (in eeg_viz),
@@ -19,6 +18,7 @@ BUILDABLE = [
 # cdm_label_val (Label/Annotation QC — endpoints live on :8010)
 # verbal_fluency (Verbal Fluency FAS+Category dashboard — 4 endpoints + panel)
 # neuro_scales (Clinical Scales dashboard — catalog endpoint + 23 scales + Next.js page)
+# expert_dashboards (Montage Comparison + Localization + False Alarm Review — ExpertDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
