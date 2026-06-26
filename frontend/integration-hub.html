@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integration Hub · agenticfinder</title>
+<style>
+  :root{--bg:#f8fafc;--card:#fff;--ink:#1f2937;--mut:#64748b;--bd:#e5e7eb;
+        --ok:#16a34a;--warn:#d97706;--down:#dc2626;--accent:#2563eb}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);
+    font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+  header{background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+  header h1{margin:0;font-size:18px} header .sub{color:#94a3b8;font-size:12px}
+  .wrap{max-width:1100px;margin:24px auto;padding:0 20px}
+  .kpis{display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+  .kpi{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;flex:1;min-width:150px}
+  .kpi .n{font-size:28px;font-weight:700} .kpi .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .card h3{margin:0 0 4px;font-size:15px;display:flex;align-items:center;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .live .dot,.ready .dot,.active .dot,.present .dot{background:var(--ok)}
+  .needs_webhook .dot,.partial .dot{background:var(--warn)}
+  .down .dot,.missing .dot{background:var(--down)}
+  .badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;margin-left:auto}
+  .live .badge,.ready .badge,.active .badge,.present .badge{background:#dcfce7;color:#166534}
+  .needs_webhook .badge,.partial .badge{background:#fef3c7;color:#92400e}
+  .down .badge,.missing .badge{background:#fee2e2;color:#991b1b}
+  .card .row{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid #f1f5f9;font-size:13px;gap:10px}
+  .card .row:first-of-type{border-top:none} .card .row .k{color:var(--mut)}
+  .chips{margin-top:4px;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+  .chip{background:#eff6ff;color:#1d4ed8;font-size:11px;padding:2px 8px;border-radius:6px}
+  .hint{margin-top:10px;font-size:12px;background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:8px 10px;border-radius:8px}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:12px;word-break:break-all}
+  footer{max-width:1100px;margin:20px auto;padding:0 20px;color:var(--mut);font-size:12px}
+</style></head>
+<body>
+<header>
+  <div><h1>🔌 Integration Hub</h1><div class="sub">local-AI + agentic integrations · agenticfinder</div></div>
+  <div class="sub" id="ts">loading…</div>
+</header>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><div class="n" id="k-healthy">–</div><div class="l">Healthy</div></div>
+    <div class="kpi"><div class="n" id="k-models">–</div><div class="l">Ollama models</div></div>
+    <div class="kpi"><div class="n" id="k-agents">–</div><div class="l">Agentic editors</div></div>
+    <div class="kpi"><div class="n" id="k-loaded">–</div><div class="l">Loaded now</div></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+<footer>Auto-refreshes every 10s · GET /api/integration-status · light theme (§137)</footer>
+<script>
+const LABELS={ollama:"🦙 Ollama",openclaw:"🐾 OpenClaw Gateway",agentic_extensions:"🧩 Agentic Editors",
+  claude_ollama_failover:"🔁 Claude→Ollama Failover",slack:"💬 Slack",mcp:"🛠️ MCP",project_backend:"⚙️ Project Backend"};
+const E=s=>String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmt(v){
+  if(Array.isArray(v))return v.length?`<span class="chips">${v.map(x=>`<span class="chip">${E(x)}</span>`).join('')}</span>`:'—';
+  if(v===true)return'✅';if(v===false)return'—';
+  if(v&&typeof v==='object')return Object.entries(v).map(([k,x])=>`${E(k)}:${x?'✅':'—'}`).join(' ');
+  return E(v);
+}
+function rows(o){return Object.entries(o).filter(([k])=>k!=='status')
+  .map(([k,v])=>`<div class="row"><span class="k">${E(k)}</span><span>${fmt(v)}</span></div>`).join('')}
+async function load(){
+  let d; try{d=await (await fetch('/api/integration-status')).json()}catch(e){document.getElementById('ts').textContent='backend down';return}
+  document.getElementById('ts').textContent=E(d.generated_at);
+  const I=d.integrations;
+  document.getElementById('k-healthy').textContent=d.summary.healthy+'/'+d.summary.total;
+  document.getElementById('k-models').textContent=I.ollama&&I.ollama.n_models!=null?I.ollama.n_models:'–';
+  document.getElementById('k-loaded').textContent=((I.ollama&&I.ollama.loaded_now)||[]).length;
+  const ax=I.agentic_extensions||{};const cnt=o=>Object.values(o||{}).filter(Boolean).length;
+  document.getElementById('k-agents').textContent=cnt(ax.vscode)+cnt(ax.antigravity);
+  const g=document.getElementById('grid');g.innerHTML='';
+  for(const key of Object.keys(I)){
+    const v=I[key]; const st=v.status||'partial';
+    let hint='';
+    if(key==='slack'&&st==='needs_webhook')hint=`<div class="hint">⚠ Needs webhook:<br><code>echo 'https://hooks.slack.com/services/...' &gt; ~/.config/agenticfinder/slack_webhook</code></div>`;
+    if(key==='mcp'&&st!=='present')hint=`<div class="hint">MCP exists but not wired to editors — TOP_1PCT plan #3</div>`;
+    g.insertAdjacentHTML('beforeend',
+      `<div class="card ${E(st)}"><h3><span class="dot"></span>${LABELS[key]||E(key)}<span class="badge">${E(st)}</span></h3>${rows(v)}${hint}</div>`);
+  }
+}
+load();setInterval(load,10000);
+</script>
+</body></html>
