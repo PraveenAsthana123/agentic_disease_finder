@@ -182,7 +182,7 @@
         {
           "name": "Beck Depression Inventory (BDI)",
           "disease": "Depression",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Engel Classification",

@@ -2578,6 +2578,35 @@ async def neuro_scales_hamd_definitions():
     return _json_safe(hamd.scale_definitions())
 
 
+# ─── Neuro AI Ecosystem: Beck Depression Inventory-II (BDI-II) ─────
+
+@app.get("/api/neuro-scales/bdi")
+async def neuro_scales_bdi_dashboard(patient_id: str = None):
+    """BDI-II depression severity dashboard — all patients or one.
+    21-item self-report scale; scores derived from real clinical.db data."""
+    import scripts.neuro_scales_bdi as bdi
+    return _json_safe(bdi.bdi_dashboard(patient_id))
+
+@app.get("/api/neuro-scales/bdi/detail")
+async def neuro_scales_bdi_detail(patient_id: str):
+    """Per-item BDI-II detail for a single patient with contributing factors."""
+    import scripts.neuro_scales_bdi as bdi
+    return _json_safe(bdi.bdi_detail(patient_id))
+
+@app.get("/api/neuro-scales/bdi/trend")
+async def neuro_scales_bdi_trend(patient_id: str):
+    """6-month modeled BDI-II trajectory based on treatment response."""
+    import scripts.neuro_scales_bdi as bdi
+    return _json_safe(bdi.bdi_trend(patient_id))
+
+@app.get("/api/neuro-scales/bdi/definitions")
+async def neuro_scales_bdi_definitions():
+    """Scale definitions — BDI-II item descriptions, severity thresholds,
+    subscale structure, reliability data, clinical utility references."""
+    import scripts.neuro_scales_bdi as bdi
+    return _json_safe(bdi.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
