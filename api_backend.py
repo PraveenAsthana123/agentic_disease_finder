@@ -2694,6 +2694,39 @@ async def neuro_scales_ilae_definitions():
     return _json_safe(ilae.scale_definitions())
 
 
+# ── Liverpool Adverse Events Profile (LAEP) ───────────────────────────
+@app.get("/api/neuro-scales/laep")
+async def neuro_scales_laep_dashboard(patient_id: str = None):
+    """LAEP dashboard — 19-item AED side-effect profile
+    (Baker et al., Epilepsy Research 1995). Total 19-76."""
+    import scripts.neuro_scales_laep as laep
+    return _json_safe(laep.laep_dashboard(patient_id))
+
+
+@app.get("/api/neuro-scales/laep/detail")
+async def neuro_scales_laep_detail(patient_id: str):
+    """LAEP detail — per-patient 19-item breakdown, domain scores,
+    contributing factors, recommendations."""
+    import scripts.neuro_scales_laep as laep
+    return _json_safe(laep.laep_detail(patient_id))
+
+
+@app.get("/api/neuro-scales/laep/trend")
+async def neuro_scales_laep_trend(patient_id: str):
+    """LAEP trend — 12-month projected side-effect trajectory based on
+    AED tolerance curves (Perucca & Meador, Lancet Neurol 2005)."""
+    import scripts.neuro_scales_laep as laep
+    return _json_safe(laep.laep_trend(patient_id))
+
+
+@app.get("/api/neuro-scales/laep/definitions")
+async def neuro_scales_laep_definitions():
+    """Scale definitions — LAEP 19 items, domains, severity bands,
+    reliability data, norms, clinical use references."""
+    import scripts.neuro_scales_laep as laep
+    return _json_safe(laep.scale_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

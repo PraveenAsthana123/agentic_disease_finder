@@ -217,12 +217,12 @@
         {
           "name": "Engel Outcome Scale",
           "purpose": "Surgery outcome",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Liverpool Adverse Events Profile",
           "purpose": "AED side effects",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "SUDEP Risk Inventory",
