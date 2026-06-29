@@ -3481,6 +3481,72 @@ async def topomap_definitions():
     return _json_safe(topo.definitions())
 
 
+# ── Librosa Spectral Features Dashboard ──────────────────────────────
+
+@app.get("/api/librosa/overview")
+async def librosa_overview(file: str = None, seconds: float = 30.0):
+    """Librosa spectral features — per-channel centroid, bandwidth, rolloff,
+    flatness, ZCR, MFCC, spectral contrast from real EDF data."""
+    import scripts.librosa_spectral_dashboard as lib
+    return _json_safe(lib.overview(file, seconds))
+
+@app.get("/api/librosa/heatmap")
+async def librosa_heatmap(file: str = None, seconds: float = 30.0):
+    """Channels × spectral-metrics heatmap matrix for visualization."""
+    import scripts.librosa_spectral_dashboard as lib
+    return _json_safe(lib.heatmap(file, seconds))
+
+@app.get("/api/librosa/mel-spectrogram")
+async def librosa_mel_spectrogram(file: str = None, seconds: float = 30.0):
+    """Mel spectrogram — mean dB power per mel bin across channels."""
+    import scripts.librosa_spectral_dashboard as lib
+    return _json_safe(lib.mel_spectrogram(file, seconds))
+
+@app.get("/api/librosa/mfcc")
+async def librosa_mfcc(file: str = None, seconds: float = 30.0):
+    """MFCC profile — mean of first 13 MFCCs per channel."""
+    import scripts.librosa_spectral_dashboard as lib
+    return _json_safe(lib.mfcc_profile(file, seconds))
+
+@app.get("/api/librosa/definitions")
+async def librosa_definitions():
+    """Spectral feature definitions, clinical interpretation, ranges,
+    and references (McFee 2015, Davis 1980, Dubnov 2004)."""
+    import scripts.librosa_spectral_dashboard as lib
+    return _json_safe(lib.definitions())
+
+
+# ── Neo Multi-Format Reader Dashboard ──────────────────────────────
+
+@app.get("/api/neo/formats")
+async def neo_formats():
+    """Neo supported format catalog — all 54 IO classes with extensions,
+    descriptions, and key EEG formats (Garcia et al. 2014)."""
+    import scripts.neo_reader_dashboard as neo_dash
+    return _json_safe(neo_dash.supported_formats())
+
+@app.get("/api/neo/inspect")
+async def neo_inspect(file: str = None):
+    """Inspect an EDF file via Neo — hierarchical Block/Segment/Signal
+    structure with per-signal shape, sampling rate, and summary stats."""
+    import scripts.neo_reader_dashboard as neo_dash
+    return _json_safe(neo_dash.inspect_file(file))
+
+@app.get("/api/neo/signals")
+async def neo_signals(file: str = None, seconds: float = 30.0):
+    """Per-channel signal statistics from real EDF data read via Neo —
+    mean, std, RMS, peak-to-peak, kurtosis, skewness per channel."""
+    import scripts.neo_reader_dashboard as neo_dash
+    return _json_safe(neo_dash.signal_overview(file, seconds))
+
+@app.get("/api/neo/definitions")
+async def neo_definitions():
+    """Neo terminology, data model, EEG format guide, comparison with
+    MNE, and references (Garcia et al. 2014, Kemp 1992, Rubel 2022)."""
+    import scripts.neo_reader_dashboard as neo_dash
+    return _json_safe(neo_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

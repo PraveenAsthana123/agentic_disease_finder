@@ -41,7 +41,14 @@
         },
         {
           "name": "Neo",
-          "status": "cataloged"
+          "status": "installed",
+          "use": "multi-format electrophysiology reader (54 formats)",
+          "endpoints": [
+            "/api/neo/formats",
+            "/api/neo/inspect",
+            "/api/neo/signals",
+            "/api/neo/definitions"
+          ]
         }
       ]
     },
@@ -93,7 +100,9 @@
         },
         {
           "name": "librosa",
-          "status": "cataloged"
+          "status": "installed",
+          "use": "spectral features (centroid, bandwidth, rolloff, flatness, ZCR, MFCC, mel spectrogram)",
+          "dashboard": "/api/librosa/*"
         }
       ]
     },
@@ -333,7 +342,7 @@
           "status": "installed",
           "use": "automatic ICA component classification (brain/eye/muscle/heart/line_noise/channel_noise/other)",
           "dashboard": "/api/icalabel",
-          "note": "Real CHB-MIT EEG data → ICA → ICLabel neural-net classifier"
+          "note": "Real CHB-MIT EEG data \u2192 ICA \u2192 ICLabel neural-net classifier"
         }
       ]
     }
@@ -372,8 +381,8 @@
   ],
   "recommended_pipeline": "MNE-Python \u2192 PyPREP \u2192 AutoReject \u2192 PyWavelets \u2192 TSFresh/AntroPy \u2192 TorchEEG/Braindecode \u2192 SHAP/Captum \u2192 Fairlearn/AIF360 \u2192 Evidently AI",
   "summary": {
-    "installed": 19,
-    "cataloged": 10,
+    "installed": 20,
+    "cataloged": 9,
     "external": 9,
     "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED (15 libs verified). Responsible-AI layer (Fairlearn/AIF360/Evidently/Great-Expectations) + QC (PyPREP/AutoReject/ICLabel) + Captum/LIME are CATALOGED \u2014 pip-installable to complete the stack. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server). The Responsible-AI libs are the highest-priority install for the governance thesis."
   }
