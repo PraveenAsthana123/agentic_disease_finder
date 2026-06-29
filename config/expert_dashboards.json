@@ -1,6 +1,6 @@
 {
-  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
-  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+  "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
+  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
   "updated_at": "2026-06-26T15:53:08Z",
   "must_have_p0": [
     "Raw EEG waveform",
@@ -321,6 +321,11 @@
       "feature": "Data/model/output drift",
       "why": "Production monitoring",
       "priority": "P2",
+      "status": "built"
+    },
+    {
+      "role": "Clinical Dietitian / Nutritionist",
+      "label": "Dietitian Dashboard",
       "status": "built"
     }
   ],
