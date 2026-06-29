@@ -3617,6 +3617,13 @@ async def xai_dashboard_comparison(file: str = None, seconds: float = 10.0):
     import scripts.xai_dashboard as xd
     return _json_safe(xd.xai_comparison(file, seconds))
 
+@app.get("/api/xai-dashboard/gradcam")
+async def xai_dashboard_gradcam(file: str = None, seconds: float = 10.0):
+    """Grad-CAM visual explanations — gradient-weighted class activation
+    maps on a 1D CNN over EEG channel features (Selvaraju et al. 2017)."""
+    import scripts.xai_dashboard as xd
+    return _json_safe(xd.xai_gradcam(file, seconds))
+
 @app.get("/api/xai-dashboard/definitions")
 async def xai_dashboard_definitions():
     """XAI method definitions, citations, clinical relevance, and
@@ -3643,6 +3650,47 @@ async def great_expectations_dashboard():
     except Exception as e:
         return {"available": False, "error": f"{type(e).__name__}: {e}",
                 "note": "Run: python scripts/great_expectations_dashboard.py to generate the report"}
+
+
+@app.get("/api/deepchecks/overview")
+async def deepchecks_overview(file: str = None, seconds: float = 10.0):
+    """Deepchecks data integrity + model performance validation on real EEG data."""
+    import scripts.deepchecks_dashboard as dcd
+    return _json_safe(dcd.deepchecks_overview(file, seconds))
+
+@app.get("/api/deepchecks/suites")
+async def deepchecks_suites(file: str = None, seconds: float = 10.0):
+    """Deepchecks full validation suites with per-condition pass/fail details."""
+    import scripts.deepchecks_dashboard as dcd
+    return _json_safe(dcd.deepchecks_suites(file, seconds))
+
+@app.get("/api/deepchecks/definitions")
+async def deepchecks_definitions():
+    """Deepchecks check definitions and clinical relevance for EEG-AI."""
+    import scripts.deepchecks_dashboard as dcd
+    return _json_safe(dcd.deepchecks_definitions())
+
+
+@app.get("/api/torchmetrics/overview")
+async def torchmetrics_overview(file: str = None, seconds: float = 10.0):
+    """TorchMetrics model evaluation overview — accuracy, precision, recall,
+    F1, AUROC, Cohen's kappa, MCC, confusion matrix on real EEG features."""
+    import scripts.torchmetrics_dashboard as tmd
+    return _json_safe(tmd.torchmetrics_overview(file, seconds))
+
+@app.get("/api/torchmetrics/curves")
+async def torchmetrics_curves(file: str = None, seconds: float = 10.0):
+    """TorchMetrics ROC curve, precision-recall curve, and calibration
+    data for a PyTorch EEG classifier."""
+    import scripts.torchmetrics_dashboard as tmd
+    return _json_safe(tmd.torchmetrics_curves(file, seconds))
+
+@app.get("/api/torchmetrics/definitions")
+async def torchmetrics_definitions():
+    """TorchMetrics metric definitions, citations, and clinical relevance
+    for EEG-AI evaluation."""
+    import scripts.torchmetrics_dashboard as tmd
+    return _json_safe(tmd.torchmetrics_definitions())
 
 
 if __name__ == "__main__":

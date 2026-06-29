@@ -373,8 +373,9 @@
         },
         {
           "name": "Grad-CAM",
-          "purpose": "CNN visualization",
-          "status": "cataloged"
+          "purpose": "CNN visualization — Grad-CAM heatmaps on EEG channel×feature grid",
+          "status": "built",
+          "endpoint": "/api/xai-dashboard/gradcam"
         }
       ]
     },
