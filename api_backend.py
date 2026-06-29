@@ -3693,6 +3693,27 @@ async def torchmetrics_definitions():
     return _json_safe(tmd.torchmetrics_definitions())
 
 
+@app.get("/api/aif360/overview")
+async def aif360_overview(file: str = None, seconds: float = 10.0):
+    """AIF360 bias detection overview — dataset bias metrics, classification
+    fairness metrics, and Reweighing mitigation before/after on real EEG data."""
+    import scripts.aif360_dashboard as afd
+    return _json_safe(afd.aif360_overview(file, seconds))
+
+@app.get("/api/aif360/groups")
+async def aif360_groups(file: str = None, seconds: float = 10.0):
+    """AIF360 per-group breakdown — privileged vs unprivileged stats,
+    base rates, prediction rates, confusion matrices."""
+    import scripts.aif360_dashboard as afd
+    return _json_safe(afd.aif360_groups(file, seconds))
+
+@app.get("/api/aif360/definitions")
+async def aif360_definitions():
+    """AIF360 metric definitions and clinical relevance for EEG-AI fairness."""
+    import scripts.aif360_dashboard as afd
+    return _json_safe(afd.aif360_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

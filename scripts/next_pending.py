@@ -22,6 +22,7 @@ BUILDABLE = [
 # captum_lime_xai (Captum IG+FA + LIME endpoints verified 200 — registry updated cataloged→built)
 # torchmetrics_deepchecks (TorchMetrics + Deepchecks dashboards + endpoints verified 200)
 # icalabel_ge (ICLabel + Great Expectations dashboards verified 200)
+# aif360_bias (AIF360 bias detection dashboard — 3 endpoints verified 200, registry cataloged→built)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

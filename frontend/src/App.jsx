@@ -26,6 +26,9 @@ import SynchrosqueezingDashboard from './components/SynchrosqueezingDashboard'
 import XAIDashboard from './components/XAIDashboard'
 import GreatExpectationsDashboard from './components/GreatExpectationsDashboard'
 import DataSharingDashboard from './components/DataSharingDashboard'
+import TorchMetricsDashboard from './components/TorchMetricsDashboard'
+import DeepchecksDashboard from './components/DeepchecksDashboard'
+import AIF360Dashboard from './components/AIF360Dashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -139,7 +142,10 @@ function App() {
     { id: 'synchrosqueezing', label: 'Synchrosqueezing' },
     { id: 'xai', label: 'Explainable AI' },
     { id: 'great-expectations', label: 'Data Quality (GE)' },
-    { id: 'datasharing', label: 'Data Sharing' }
+    { id: 'datasharing', label: 'Data Sharing' },
+    { id: 'torchmetrics', label: 'TorchMetrics' },
+    { id: 'deepchecks', label: 'Deepchecks' },
+    { id: 'aif360', label: 'AIF360 Bias' }
   ]
 
   // API Calls
@@ -1227,6 +1233,12 @@ function App() {
         return <GreatExpectationsDashboard />
       case 'datasharing':
         return <DataSharingDashboard />
+      case 'torchmetrics':
+        return <TorchMetricsDashboard />
+      case 'deepchecks':
+        return <DeepchecksDashboard />
+      case 'aif360':
+        return <AIF360Dashboard />
       default:
         return renderClassificationTab()
     }

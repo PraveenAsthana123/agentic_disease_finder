@@ -390,7 +390,8 @@
         {
           "name": "AIF360",
           "purpose": "Bias assessment",
-          "status": "cataloged"
+          "status": "built",
+          "endpoints": ["/api/aif360/overview", "/api/aif360/groups", "/api/aif360/definitions"]
         },
         {
           "name": "Evidently AI",

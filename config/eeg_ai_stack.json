@@ -322,7 +322,9 @@
         },
         {
           "name": "AIF360 (bias)",
-          "status": "cataloged"
+          "status": "built",
+          "use": "IBM AI Fairness 360 bias detection and Reweighing mitigation on EEG classification",
+          "endpoints": ["/api/aif360/overview", "/api/aif360/groups", "/api/aif360/definitions"]
         },
         {
           "name": "Evidently (drift)",
@@ -396,9 +398,9 @@
   "recommended_pipeline": "MNE-Python \u2192 PyPREP \u2192 AutoReject \u2192 PyWavelets \u2192 TSFresh/AntroPy \u2192 TorchEEG/Braindecode \u2192 SHAP/Captum \u2192 Fairlearn/AIF360 \u2192 Evidently AI",
   "summary": {
     "installed": 16,
-    "built": 9,
-    "cataloged": 4,
+    "built": 10,
+    "cataloged": 3,
     "external": 9,
-    "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built) all have live endpoints. Remaining CATALOGED: TorchEEG, AIF360, Label Studio/CVAT/Doccano. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
+    "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built), AIF360 (built) all have live endpoints. Remaining CATALOGED: TorchEEG, Label Studio/CVAT/Doccano. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
   }
 }
