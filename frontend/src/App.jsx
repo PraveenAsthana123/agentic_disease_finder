@@ -42,6 +42,7 @@ import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
 import DietitianDashboard from './components/DietitianDashboard'
 import MedicationDashboard from './components/MedicationDashboard'
+import ExecutiveScorecardDashboard from './components/ExecutiveScorecardDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -171,7 +172,8 @@ function App() {
     { id: 'slp', label: 'SLP' },
     { id: 'psychologist', label: 'Psychologist' },
     { id: 'dietitian', label: 'Dietitian' },
-    { id: 'medication', label: 'Medication' }
+    { id: 'medication', label: 'Medication' },
+    { id: 'executive-scorecard', label: 'Executive Scorecard' }
   ]
 
   // API Calls
@@ -1291,6 +1293,8 @@ function App() {
         return <DietitianDashboard />
       case 'medication':
         return <MedicationDashboard />
+      case 'executive-scorecard':
+        return <ExecutiveScorecardDashboard />
       default:
         return renderClassificationTab()
     }

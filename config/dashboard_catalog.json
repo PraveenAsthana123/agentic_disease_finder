@@ -45,7 +45,8 @@
         },
         {
           "name": "Executive Scorecard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/executive-scorecard/overview + /api/executive-scorecard/breakdown + /api/executive-scorecard/definitions"
         }
       ]
     },

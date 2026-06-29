@@ -4123,6 +4123,30 @@ async def medication_side_effects(patient_id: str = None):
     return _json_safe(med.side_effect_profile(patient_id))
 
 
+# ── Executive Scorecard ───────────────────────────────────────────
+
+@app.get("/api/executive-scorecard/overview")
+async def executive_scorecard_overview():
+    """Executive scorecard — aggregated KPIs: patient census, clinical activity,
+    AI operations, quality indicators, and 7-day trend."""
+    import scripts.executive_scorecard as esc
+    return _json_safe(esc.scorecard_overview())
+
+
+@app.get("/api/executive-scorecard/breakdown")
+async def executive_scorecard_breakdown():
+    """Per-department and per-instrument drill-down for executive scorecard."""
+    import scripts.executive_scorecard as esc
+    return _json_safe(esc.scorecard_breakdown())
+
+
+@app.get("/api/executive-scorecard/definitions")
+async def executive_scorecard_definitions():
+    """Metric definitions for executive scorecard tooltip overlays."""
+    import scripts.executive_scorecard as esc
+    return _json_safe(esc.scorecard_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
