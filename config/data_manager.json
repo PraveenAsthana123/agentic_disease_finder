@@ -335,8 +335,9 @@
     },
     {
       "name": "Dataset Validation",
-      "shows": "invalid records, duplicates, missing metadata, outliers",
-      "status": "partial"
+      "shows": "invalid records, duplicates, missing metadata, outliers, EEG file integrity, distributions",
+      "status": "built",
+      "endpoint": "/api/data-manager/dataset-validation"
     },
     {
       "name": "AI Readiness",

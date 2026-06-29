@@ -786,6 +786,14 @@ async def data_manager_data_sharing():
     return _json_safe(ds.sharing_report())
 
 
+@app.get("/api/data-manager/dataset-validation")
+async def data_manager_dataset_validation():
+    """Clinical Data Manager — Dataset Validation dashboard.
+    Invalid records, duplicates, missing metadata, outliers, EEG file integrity."""
+    import scripts.dataset_validation as dv
+    return _json_safe(dv.validation_report())
+
+
 @app.get("/api/icalabel")
 async def icalabel_dashboard():
     """ICLabel ICA Component Classification Dashboard.

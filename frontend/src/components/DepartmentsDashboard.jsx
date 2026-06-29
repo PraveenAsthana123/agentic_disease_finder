@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (11)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'gonogo_dashboard', label: '🚦 Go/No-Go (Inhibition)' }, { id: 'ravlt_dashboard', label: '📝 RAVLT (Verbal Memory)' }, { id: 'verbal_fluency_dashboard', label: '🗣️ Verbal Fluency (FAS)' }, { id: 'medication_impact_dashboard', label: '💊 Medication Impact' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (11)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'gonogo_dashboard', label: '🚦 Go/No-Go (Inhibition)' }, { id: 'ravlt_dashboard', label: '📝 RAVLT (Verbal Memory)' }, { id: 'verbal_fluency_dashboard', label: '🗣️ Verbal Fluency (FAS)' }, { id: 'medication_impact_dashboard', label: '💊 Medication Impact' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'dataset_validation', label: '✅ Dataset Validation' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -652,6 +652,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'drift' && <DriftPanel />}
         {activeSub === 'model_perf' && <ModelPerformancePanel />}
         {activeSub === 'data_manager' && <DataManagerPanel />}
+        {activeSub === 'dataset_validation' && <DatasetValidationPanel />}
         {activeSub === 'seizure_timeline' && <SeizureTimelinePanel />}
         {activeSub === 'cognitive_tests' && <CognitiveTestsPanel />}
         {activeSub === 'stroop_dashboard' && <StroopDashboardPanel />}
@@ -8393,5 +8394,222 @@ function IotDevices() {
     </div>
   )
 }
+
+/* ─── Dataset Validation Panel ──────────────────────────────────── */
+function DatasetValidationPanel() {
+  const [d, setD] = useState(null)
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    axios.get(`${API_URL}/data-manager/dataset-validation`)
+      .then(r => { setD(r.data); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [])
+
+  if (loading) return <div style={card}><div style={{ color: '#64748b' }}>Loading dataset validation...</div></div>
+  if (!d || !d.available) return <div style={card}><div style={{ color: '#dc2626' }}>Dataset validation unavailable: {d?.error || 'backend offline'}</div></div>
+
+  const qColor = d.quality_score >= 80 ? '#16a34a' : d.quality_score >= 50 ? '#f59e0b' : '#dc2626'
+  const inv = d.inventory || {}
+  const missing = d.missing_metadata || {}
+  const outliers = d.outliers || {}
+  const dups = d.duplicates || {}
+  const invalid = d.invalid_records || {}
+  const eeg = d.eeg_integrity || {}
+
+  return (
+    <div>
+      {/* Header + Quality Score */}
+      <div style={{ ...card, borderLeft: `4px solid ${qColor}` }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>Dataset Validation <span style={{ fontSize: 12, color: '#64748b' }}>-- clinical.db + CHB-MIT EEG</span></h3>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: qColor + '15', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Quality Score</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: qColor }}>{d.quality_score}/100</div>
+          </div>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Total Issues</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: '#0f172a' }}>{d.total_issues}</div>
+          </div>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Tables</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: '#0f172a' }}>{inv.total_tables}</div>
+          </div>
+          <div style={{ padding: '10px 16px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+            <div style={{ fontSize: 11, color: '#475569' }}>Total Rows</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: '#0f172a' }}>{inv.total_rows?.toLocaleString()}</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 8 }}>Generated: {d.generated_at}</div>
+      </div>
+
+      {/* Issue Breakdown */}
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Issue Breakdown</h4>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 10 }}>
+          {[
+            { label: 'Missing Metadata', count: missing.summary?.total_missing || 0, color: '#f59e0b', icon: '⚠' },
+            { label: 'Duplicates', count: dups.summary?.total_duplicates || 0, color: '#7c4dff', icon: '🔁' },
+            { label: 'Invalid Records', count: invalid.summary?.total_invalid || 0, color: '#dc2626', icon: '❌' },
+            { label: 'Outliers (z>3)', count: outliers.summary?.total_outliers || 0, color: '#0891b2', icon: '📊' },
+            { label: 'EEG File Issues', count: eeg.issues?.length || 0, color: '#64748b', icon: '🧠' },
+          ].map(item => (
+            <div key={item.label} style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 12, background: item.count > 0 ? item.color + '08' : '#f8fafc' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>{item.icon} {item.label}</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: item.count > 0 ? item.color : '#16a34a' }}>{item.count}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Missing Metadata Details */}
+      {(missing.details || []).length > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Missing Metadata</h4>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+              <th style={thSt}>Table</th><th style={thSt}>Column</th><th style={thSt}>Missing</th><th style={thSt}>Total</th><th style={thSt}>%</th>
+            </tr></thead>
+            <tbody>{(missing.details || []).map((m, i) => (
+              <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                <td style={tdSt}>{m.table}</td>
+                <td style={tdSt}><code style={{ background: '#f1f5f9', padding: '1px 4px', borderRadius: 3 }}>{m.column}</code></td>
+                <td style={{ ...tdSt, fontWeight: 600, color: '#f59e0b' }}>{m.missing_count}</td>
+                <td style={tdSt}>{m.total_rows}</td>
+                <td style={tdSt}>{m.pct}%</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Duplicates */}
+      {(dups.details || []).length > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Duplicate Records</h4>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+              <th style={thSt}>Table</th><th style={thSt}>Key Fields</th><th style={thSt}>Count</th>
+            </tr></thead>
+            <tbody>{(dups.details || []).map((dup, i) => {
+              const keys = Object.entries(dup).filter(([k]) => !['table','count'].includes(k)).map(([k,v]) => `${k}=${v}`).join(', ')
+              return (
+                <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                  <td style={tdSt}>{dup.table}</td>
+                  <td style={tdSt}><code style={{ background: '#f1f5f9', padding: '1px 4px', borderRadius: 3, fontSize: 11 }}>{keys}</code></td>
+                  <td style={{ ...tdSt, fontWeight: 600, color: '#7c4dff' }}>{dup.count}</td>
+                </tr>
+              )
+            })}</tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Outliers */}
+      {(outliers.details || []).length > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Statistical Outliers (z-score &gt; 3)</h4>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+              <th style={thSt}>Table</th><th style={thSt}>Column</th><th style={thSt}>Value</th><th style={thSt}>Z-Score</th><th style={thSt}>Mean</th><th style={thSt}>Std</th>
+            </tr></thead>
+            <tbody>{(outliers.details || []).map((o, i) => (
+              <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                <td style={tdSt}>{o.table}</td>
+                <td style={tdSt}><code style={{ background: '#f1f5f9', padding: '1px 4px', borderRadius: 3 }}>{o.column}</code></td>
+                <td style={{ ...tdSt, fontWeight: 600, color: '#0891b2' }}>{o.value}</td>
+                <td style={{ ...tdSt, color: '#dc2626' }}>{o.z_score}</td>
+                <td style={tdSt}>{o.mean}</td>
+                <td style={tdSt}>{o.std}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Distributions */}
+      {(outliers.distributions || []).length > 0 && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>Numeric Column Distributions</h4>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+              <th style={thSt}>Table</th><th style={thSt}>Column</th><th style={thSt}>N</th><th style={thSt}>Mean</th><th style={thSt}>Std</th><th style={thSt}>Min</th><th style={thSt}>Q1</th><th style={thSt}>Median</th><th style={thSt}>Q3</th><th style={thSt}>Max</th>
+            </tr></thead>
+            <tbody>{(outliers.distributions || []).map((dist, i) => (
+              <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                <td style={tdSt}>{dist.table}</td>
+                <td style={tdSt}><code style={{ background: '#f1f5f9', padding: '1px 4px', borderRadius: 3 }}>{dist.column}</code></td>
+                <td style={tdSt}>{dist.count}</td>
+                <td style={tdSt}>{dist.mean}</td>
+                <td style={tdSt}>{dist.std}</td>
+                <td style={tdSt}>{dist.min}</td>
+                <td style={tdSt}>{dist.q1}</td>
+                <td style={tdSt}>{dist.median}</td>
+                <td style={tdSt}>{dist.q3}</td>
+                <td style={tdSt}>{dist.max}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      )}
+
+      {/* EEG File Integrity */}
+      {eeg.available && (
+        <div style={card}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>EEG File Integrity (CHB-MIT)</h4>
+          <div style={{ fontSize: 12, color: '#475569', marginBottom: 8 }}>
+            {eeg.total_subjects} subjects, {eeg.total_edfs} EDFs, {eeg.total_gb} GB total
+          </div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+              <th style={thSt}>Subject</th><th style={thSt}>EDFs</th><th style={thSt}>Size (MB)</th><th style={thSt}>Summary</th>
+            </tr></thead>
+            <tbody>{(eeg.subjects || []).map((s, i) => (
+              <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                <td style={tdSt}>{s.subject}</td>
+                <td style={tdSt}>{s.edf_count}</td>
+                <td style={tdSt}>{s.total_mb}</td>
+                <td style={tdSt}>{s.has_summary ? <span style={{ color: '#16a34a' }}>yes</span> : <span style={{ color: '#dc2626' }}>MISSING</span>}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+          {(eeg.issues || []).length > 0 && (
+            <div style={{ marginTop: 8 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#dc2626', marginBottom: 4 }}>Issues:</div>
+              {eeg.issues.map((issue, i) => (
+                <div key={i} style={{ fontSize: 11, color: '#dc2626', padding: '2px 0' }}>
+                  {issue.subject} / {issue.file || '--'}: {issue.issue}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Table Inventory */}
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Table Inventory ({inv.total_tables} tables)</h4>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+          <thead><tr style={{ borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
+            <th style={thSt}>Table</th><th style={thSt}>Rows</th><th style={thSt}>Columns</th>
+          </tr></thead>
+          <tbody>{(inv.tables || []).map((t, i) => (
+            <tr key={i} style={{ borderBottom: '1px solid #f1f5f9', background: t.rows === 0 ? '#fef3c7' : 'transparent' }}>
+              <td style={tdSt}><code style={{ background: '#f1f5f9', padding: '1px 4px', borderRadius: 3 }}>{t.table}</code></td>
+              <td style={{ ...tdSt, fontWeight: 600, color: t.rows === 0 ? '#f59e0b' : '#0f172a' }}>{t.rows}</td>
+              <td style={tdSt}>{t.columns}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+
+      <div style={{ textAlign: 'center', fontSize: 11, color: '#94a3b8', marginTop: 8 }}>
+        Data source: clinical.db + CHB-MIT PhysioNet EEG corpus
+      </div>
+    </div>
+  )
+}
+
+const thSt = { textAlign: 'left', padding: '6px 8px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }
+const tdSt = { padding: '5px 8px', whiteSpace: 'nowrap' }
 
 export default DepartmentsDashboard
