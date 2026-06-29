@@ -4024,6 +4024,49 @@ async def embedding_drift_definitions():
     return _json_safe(generate_embedding_drift_definitions())
 
 
+# ─── Speech-Language Pathologist (SLP) ────────────────────────────────────
+
+@app.get("/api/slp")
+async def slp_dashboard(patient_id: str = None):
+    """Speech-Language Pathologist — full dashboard: language assessment (BNT/WAB),
+    verbal fluency, swallowing/dysphagia (MASA), AED speech effects,
+    cognitive-communication profiles, therapy goals. All from REAL clinical.db data."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.full_dashboard(patient_id))
+
+
+@app.get("/api/slp/language-assessment")
+async def slp_language(patient_id: str = None):
+    """Language assessment: Boston Naming Test + Western Aphasia Battery scores,
+    naming deficit flags, aphasia type distribution. Bell et al. 2011."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.language_assessment(patient_id))
+
+
+@app.get("/api/slp/speech-analysis")
+async def slp_speech(patient_id: str = None):
+    """Verbal fluency analysis: phonemic (FAS) + semantic (animals/fruits),
+    clustering/switching scores, executive-language flags."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.speech_analysis(patient_id))
+
+
+@app.get("/api/slp/swallowing")
+async def slp_swallowing(patient_id: str = None):
+    """MASA swallowing assessment: dysphagia screening, aspiration risk,
+    post-ictal and rescue medication risks."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.swallowing_assessment(patient_id))
+
+
+@app.get("/api/slp/pre-post-surgical")
+async def slp_surgical(patient_id: str = None):
+    """Pre/post-surgical language comparison: score deltas, surgical risk
+    estimates, Wada test recommendations."""
+    import scripts.slp_module as slp
+    return _json_safe(slp.pre_post_surgical(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -38,6 +38,7 @@ import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
 import PharmacistDashboard from './components/PharmacistDashboard'
 import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
+import SLPDashboard from './components/SLPDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -163,7 +164,8 @@ function App() {
     { id: 'spike-overlay', label: 'Spike Overlay' },
     { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' },
     { id: 'pharmacist', label: 'Pharmacist' },
-    { id: 'embedding-drift', label: 'Embedding Drift' }
+    { id: 'embedding-drift', label: 'Embedding Drift' },
+    { id: 'slp', label: 'SLP' }
   ]
 
   // API Calls
@@ -1275,6 +1277,8 @@ function App() {
         return <PharmacistDashboard />
       case 'embedding-drift':
         return <EmbeddingDriftDashboard />
+      case 'slp':
+        return <SLPDashboard />
       default:
         return renderClassificationTab()
     }
