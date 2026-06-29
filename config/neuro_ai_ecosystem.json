@@ -346,7 +346,8 @@
         {
           "name": "ICLabel (mne-icalabel)",
           "purpose": "ICA artifact classification",
-          "status": "cataloged"
+          "status": "built",
+          "endpoints": ["/api/icalabel"]
         }
       ]
     },
@@ -361,12 +362,14 @@
         {
           "name": "Captum",
           "purpose": "Deep-learning attributions",
-          "status": "cataloged"
+          "status": "built",
+          "endpoints": ["/api/xai-dashboard/captum"]
         },
         {
           "name": "LIME",
           "purpose": "Local explanations",
-          "status": "cataloged"
+          "status": "built",
+          "endpoints": ["/api/xai-dashboard/lime"]
         },
         {
           "name": "Grad-CAM",
@@ -396,14 +399,15 @@
         {
           "name": "Great Expectations",
           "purpose": "Data quality",
-          "status": "cataloged"
+          "status": "built",
+          "endpoints": ["/api/great-expectations"]
         }
       ]
     }
   ],
   "summary": {
-    "built": 11,
-    "cataloged": 9,
+    "built": 15,
+    "cataloged": 5,
     "commercial": 1,
     "external": 12,
     "installed": 7,

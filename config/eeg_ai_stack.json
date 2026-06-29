@@ -166,11 +166,15 @@
         },
         {
           "name": "Captum (PyTorch)",
-          "status": "cataloged"
+          "status": "built",
+          "use": "Integrated Gradients + Feature Ablation attributions on EEG seizure classifier",
+          "endpoints": ["/api/xai-dashboard/captum"]
         },
         {
           "name": "LIME",
-          "status": "cataloged"
+          "status": "built",
+          "use": "Local surrogate model explanations on EEG feature vectors",
+          "endpoints": ["/api/xai-dashboard/lime"]
         },
         {
           "name": "Grad-CAM",
@@ -291,7 +295,9 @@
         },
         {
           "name": "TorchMetrics",
-          "status": "cataloged"
+          "status": "built",
+          "use": "PyTorch model evaluation metrics (AUROC, F1, precision, recall, confusion matrix)",
+          "endpoints": ["/api/torchmetrics/overview", "/api/torchmetrics/curves"]
         },
         {
           "name": "Evidently (drift)",
@@ -299,7 +305,9 @@
         },
         {
           "name": "Deepchecks",
-          "status": "cataloged"
+          "status": "built",
+          "use": "Data integrity + model evaluation checks on EEG datasets",
+          "endpoints": ["/api/deepchecks/overview", "/api/deepchecks/suites", "/api/deepchecks/definitions"]
         }
       ]
     },
@@ -385,9 +393,10 @@
   ],
   "recommended_pipeline": "MNE-Python \u2192 PyPREP \u2192 AutoReject \u2192 PyWavelets \u2192 TSFresh/AntroPy \u2192 TorchEEG/Braindecode \u2192 SHAP/Captum \u2192 Fairlearn/AIF360 \u2192 Evidently AI",
   "summary": {
-    "installed": 20,
-    "cataloged": 9,
+    "installed": 16,
+    "built": 8,
+    "cataloged": 5,
     "external": 9,
-    "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED (15 libs verified). Responsible-AI layer (Fairlearn/AIF360/Evidently/Great-Expectations) + QC (PyPREP/AutoReject/ICLabel) + Captum/LIME are CATALOGED \u2014 pip-installable to complete the stack. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server). The Responsible-AI libs are the highest-priority install for the governance thesis."
+    "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built) all have live endpoints. Remaining CATALOGED: TorchEEG, Grad-CAM, AIF360, Label Studio/CVAT/Doccano. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
   }
 }

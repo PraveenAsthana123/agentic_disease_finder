@@ -19,6 +19,9 @@ BUILDABLE = [
 # verbal_fluency (Verbal Fluency FAS+Category dashboard — 4 endpoints + panel)
 # neuro_scales (Clinical Scales dashboard — catalog endpoint + 23 scales + Next.js page)
 # expert_dashboards (Montage Comparison + Localization + False Alarm Review — ExpertDashboard.jsx + nav wired)
+# captum_lime_xai (Captum IG+FA + LIME endpoints verified 200 — registry updated cataloged→built)
+# torchmetrics_deepchecks (TorchMetrics + Deepchecks dashboards + endpoints verified 200)
+# icalabel_ge (ICLabel + Great Expectations dashboards verified 200)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
