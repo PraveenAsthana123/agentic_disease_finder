@@ -4171,6 +4171,52 @@ async def ai_usage_definitions():
     return _json_safe(aud.usage_definitions())
 
 
+# ── Therapy / Meditation / Physio Portal Tab ─────────────────────────
+
+@app.get("/api/therapy")
+async def therapy_dashboard(patient_id: str = None):
+    """Patient Therapy Portal — full dashboard: rehab programs, exercises,
+    meditation, physiotherapy. All derived from REAL assessments + seizure diary
+    in data/clinical.db."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.therapy_overview(patient_id))
+
+
+@app.get("/api/therapy/rehab")
+async def therapy_rehab(patient_id: str = None):
+    """Rehabilitation programs derived from BARTHEL, MOCA, MMSE, EPWORTH scores."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.rehab_programs(patient_id))
+
+
+@app.get("/api/therapy/exercises")
+async def therapy_exercises(patient_id: str = None):
+    """Evidence-based exercise prescriptions adapted to seizure profile."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.exercise_plans(patient_id))
+
+
+@app.get("/api/therapy/meditation")
+async def therapy_meditation(patient_id: str = None):
+    """Mindfulness / meditation programs based on PHQ9, GAD7, QOLIE31 scores."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.meditation_programs(patient_id))
+
+
+@app.get("/api/therapy/physio")
+async def therapy_physio(patient_id: str = None):
+    """Physiotherapy protocols for motor recovery, balance, swallowing, speech."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.physio_protocols(patient_id))
+
+
+@app.get("/api/therapy/definitions")
+async def therapy_definitions():
+    """Therapy metric definitions for tooltip overlays."""
+    import scripts.therapy_module as thx
+    return _json_safe(thx.therapy_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
