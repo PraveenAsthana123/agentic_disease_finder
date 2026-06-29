@@ -5,7 +5,7 @@
   "tabs": [
     {"id": "forms", "label": "📋 Forms", "purpose": "assessment forms experts sent me to fill (MoCA/PHQ-9/etc.) → auto-scored on submit", "status": "built", "maps_to": "/api/forms, /api/forms/{id}/submit"},
     {"id": "campaign", "label": "📣 Campaigns", "purpose": "health campaigns / education / reminders pushed to me", "status": "planned"},
-    {"id": "notification", "label": "🔔 Notifications", "purpose": "results-ready, appointment, follow-up notices", "status": "planned"},
+    {"id": "notification", "label": "🔔 Notifications", "purpose": "results-ready, appointment, follow-up notices", "status": "built", "maps_to": "/api/notifications + /api/notifications/{category,unread,definitions}"},
     {"id": "alert", "label": "🚨 Alerts", "purpose": "urgent: seizure alert, suicidality escalation, SOS, temperature", "status": "partial", "maps_to": "assessment alerts + IoT sim"},
     {"id": "inbox", "label": "✉️ Message Inbox", "purpose": "secure messages between me and my care team", "status": "planned"},
     {"id": "medication", "label": "💊 Medication", "purpose": "my current meds, recommendations, schedule, adherence", "status": "built", "maps_to": "/api/medication + /api/medication/{list,schedule,adherence,recommendations,side-effects}"},

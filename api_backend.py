@@ -4217,6 +4217,38 @@ async def therapy_definitions():
     return _json_safe(thx.therapy_definitions())
 
 
+# ── Notification Portal Tab ───────────────────────────────────────────
+
+@app.get("/api/notifications")
+async def notification_dashboard(patient_id: str = None):
+    """Patient Notification Centre — all notifications: assessment results,
+    form assignments, seizure follow-ups, medication updates, clinical
+    activity.  All derived from REAL data in data/clinical.db."""
+    import scripts.notification_module as ntf
+    return _json_safe(ntf.notification_overview(patient_id))
+
+
+@app.get("/api/notifications/category/{category}")
+async def notification_by_category(category: str, patient_id: str = None):
+    """Notifications filtered by category (result/form/seizure/medication/activity/alert)."""
+    import scripts.notification_module as ntf
+    return _json_safe(ntf.notification_by_category(category, patient_id))
+
+
+@app.get("/api/notifications/unread")
+async def notification_unread(patient_id: str = None):
+    """Unread notifications only."""
+    import scripts.notification_module as ntf
+    return _json_safe(ntf.notification_unread(patient_id))
+
+
+@app.get("/api/notifications/definitions")
+async def notification_definitions():
+    """Notification metric definitions for tooltip overlays."""
+    import scripts.notification_module as ntf
+    return _json_safe(ntf.notification_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

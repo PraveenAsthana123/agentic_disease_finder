@@ -6,7 +6,7 @@
     {"id": "assessments_all", "label": "Assessments (all experts)", "captures": "every role's completed assessment (MoCA/PHQ-9/etc.)", "status": "built", "maps_to": "/api/assessments"},
     {"id": "medications", "label": "Medication Recommendations", "captures": "AED + psychotropic recommendations + history", "status": "partial", "maps_to": "medications table"},
     {"id": "exercise", "label": "Exercise / Rehab Recommendations", "captures": "OT/PT home-program + ADL plan", "status": "planned"},
-    {"id": "notifications", "label": "Notifications", "captures": "results-ready, appointment, follow-up", "status": "planned"},
+    {"id": "notifications", "label": "Notifications", "captures": "results-ready, appointment, follow-up", "status": "built", "maps_to": "/api/notifications"},
     {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "partial", "maps_to": "assessment alerts + IoT sim"},
     {"id": "monitoring", "label": "Continuous Monitoring", "captures": "wearable/IoT vitals + seizure stream", "status": "partial", "maps_to": "Emotiv/IoT sim"},
     {"id": "feedback", "label": "Continuous Feedback", "captures": "patient + expert feedback loop", "status": "built", "maps_to": "feedback table"},

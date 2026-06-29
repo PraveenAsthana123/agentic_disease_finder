@@ -45,6 +45,7 @@ import MedicationDashboard from './components/MedicationDashboard'
 import ExecutiveScorecardDashboard from './components/ExecutiveScorecardDashboard'
 import AIUsageDashboard from './components/AIUsageDashboard'
 import TherapyDashboard from './components/TherapyDashboard'
+import NotificationDashboard from './components/NotificationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -177,7 +178,8 @@ function App() {
     { id: 'medication', label: 'Medication' },
     { id: 'executive-scorecard', label: 'Executive Scorecard' },
     { id: 'ai-usage', label: 'AI Usage' },
-    { id: 'therapy', label: 'Therapy' }
+    { id: 'therapy', label: 'Therapy' },
+    { id: 'notifications', label: 'Notifications' }
   ]
 
   // API Calls
@@ -1303,6 +1305,8 @@ function App() {
         return <AIUsageDashboard />
       case 'therapy':
         return <TherapyDashboard />
+      case 'notifications':
+        return <NotificationDashboard />
       default:
         return renderClassificationTab()
     }
