@@ -153,7 +153,13 @@
         },
         {
           "name": "TorchEEG",
-          "status": "cataloged"
+          "status": "built",
+          "use": "EEG feature extraction transforms (DE, PSD, Hjorth, kurtosis, skewness) for seizure/emotion/BCI classification",
+          "endpoints": [
+            "/api/torcheeg/overview",
+            "/api/torcheeg/features",
+            "/api/torcheeg/definitions"
+          ]
         },
         {
           "name": "TensorFlow",
@@ -435,6 +441,6 @@
     "built": 12,
     "cataloged": 1,
     "external": 9,
-    "honest_note": "Central platform MNE-Python + the signal→feature→DL→SHAP→eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built), AIF360 (built), Label Studio/CVAT (built) all have live endpoints. Remaining CATALOGED: TorchEEG. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
+    "honest_note": "Central platform MNE-Python + the signal→feature→DL→SHAP→eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built), AIF360 (built), Label Studio/CVAT (built), TorchEEG (built) all have live endpoints. Zero CATALOGED remaining. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
   }
 }
