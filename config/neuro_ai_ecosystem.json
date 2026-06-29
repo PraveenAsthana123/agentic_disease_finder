@@ -305,18 +305,21 @@
       "tools": [
         {
           "name": "Label Studio",
-          "purpose": "Signal / image / text annotation",
-          "status": "cataloged"
+          "purpose": "Signal / image / text annotation — annotation quality dashboard with inter-annotator agreement",
+          "status": "built",
+          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
         },
         {
           "name": "CVAT",
-          "purpose": "Video annotation",
-          "status": "cataloged"
+          "purpose": "Video / spectrogram annotation — integrated in annotation quality dashboard",
+          "status": "built",
+          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
         },
         {
           "name": "Doccano",
-          "purpose": "Text annotation",
-          "status": "cataloged"
+          "purpose": "Text annotation — integrated in annotation quality dashboard",
+          "status": "built",
+          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
         },
         {
           "name": "Prodigy",
@@ -408,8 +411,8 @@
     }
   ],
   "summary": {
-    "built": 15,
-    "cataloged": 5,
+    "built": 18,
+    "cataloged": 2,
     "commercial": 1,
     "external": 12,
     "installed": 7,

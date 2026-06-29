@@ -3744,6 +3744,27 @@ async def torcheeg_definitions():
     return _json_safe(ted.torcheeg_definitions())
 
 
+# ── Label Studio / CVAT Annotation Quality ───────────────────────────
+
+@app.get("/api/annotation/overview")
+async def annotation_overview():
+    """Annotation quality overview — stats, agreement, coverage from CHB-MIT annotations."""
+    import scripts.label_studio_dashboard as lsd
+    return _json_safe(lsd.annotation_overview())
+
+@app.get("/api/annotation/agreement")
+async def annotation_agreement():
+    """Inter-annotator agreement — Cohen's kappa, Krippendorff's alpha, pairwise matrix."""
+    import scripts.label_studio_dashboard as lsd
+    return _json_safe(lsd.annotation_agreement())
+
+@app.get("/api/annotation/definitions")
+async def annotation_definitions():
+    """Annotation label taxonomy, metric definitions, and tool documentation."""
+    import scripts.label_studio_dashboard as lsd
+    return _json_safe(lsd.annotation_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

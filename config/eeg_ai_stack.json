@@ -1,6 +1,6 @@
 {
-  "title": "EEG AI Ecosystem \u2014 Tool Stack (16 layers)",
-  "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). \u00a7155 honest.",
+  "title": "EEG AI Ecosystem — Tool Stack (16 layers)",
+  "note": "Complete EEG AI stack for the DBA. status: installed (verified import) / cataloged (recommended, not installed) / external (MATLAB/desktop/server). §155 honest.",
   "updated_at": "2026-06-25T20:43:41Z",
   "layers": [
     {
@@ -98,7 +98,11 @@
           "name": "ssqueezepy (synchrosqueezing)",
           "status": "built",
           "use": "synchrosqueezing CWT time-frequency dashboard",
-          "endpoints": ["/api/synchrosqueezing/overview", "/api/synchrosqueezing/spectrum", "/api/synchrosqueezing/definitions"]
+          "endpoints": [
+            "/api/synchrosqueezing/overview",
+            "/api/synchrosqueezing/spectrum",
+            "/api/synchrosqueezing/definitions"
+          ]
         },
         {
           "name": "librosa",
@@ -168,19 +172,25 @@
           "name": "Captum (PyTorch)",
           "status": "built",
           "use": "Integrated Gradients + Feature Ablation attributions on EEG seizure classifier",
-          "endpoints": ["/api/xai-dashboard/captum"]
+          "endpoints": [
+            "/api/xai-dashboard/captum"
+          ]
         },
         {
           "name": "LIME",
           "status": "built",
           "use": "Local surrogate model explanations on EEG feature vectors",
-          "endpoints": ["/api/xai-dashboard/lime"]
+          "endpoints": [
+            "/api/xai-dashboard/lime"
+          ]
         },
         {
           "name": "Grad-CAM",
           "status": "built",
           "use": "Gradient-weighted Class Activation Mapping on 2D CNN over EEG channel×feature grid",
-          "endpoints": ["/api/xai-dashboard/gradcam"]
+          "endpoints": [
+            "/api/xai-dashboard/gradcam"
+          ]
         }
       ]
     },
@@ -262,7 +272,13 @@
         },
         {
           "name": "Label Studio / CVAT",
-          "status": "cataloged"
+          "status": "built",
+          "use": "Annotation quality dashboard — inter-annotator agreement (Cohen's κ, Krippendorff's α) on CHB-MIT seizure annotations",
+          "endpoints": [
+            "/api/annotation/overview",
+            "/api/annotation/agreement",
+            "/api/annotation/definitions"
+          ]
         }
       ]
     },
@@ -299,7 +315,10 @@
           "name": "TorchMetrics",
           "status": "built",
           "use": "PyTorch model evaluation metrics (AUROC, F1, precision, recall, confusion matrix)",
-          "endpoints": ["/api/torchmetrics/overview", "/api/torchmetrics/curves"]
+          "endpoints": [
+            "/api/torchmetrics/overview",
+            "/api/torchmetrics/curves"
+          ]
         },
         {
           "name": "Evidently (drift)",
@@ -309,7 +328,11 @@
           "name": "Deepchecks",
           "status": "built",
           "use": "Data integrity + model evaluation checks on EEG datasets",
-          "endpoints": ["/api/deepchecks/overview", "/api/deepchecks/suites", "/api/deepchecks/definitions"]
+          "endpoints": [
+            "/api/deepchecks/overview",
+            "/api/deepchecks/suites",
+            "/api/deepchecks/definitions"
+          ]
         }
       ]
     },
@@ -324,7 +347,11 @@
           "name": "AIF360 (bias)",
           "status": "built",
           "use": "IBM AI Fairness 360 bias detection and Reweighing mitigation on EEG classification",
-          "endpoints": ["/api/aif360/overview", "/api/aif360/groups", "/api/aif360/definitions"]
+          "endpoints": [
+            "/api/aif360/overview",
+            "/api/aif360/groups",
+            "/api/aif360/definitions"
+          ]
         },
         {
           "name": "Evidently (drift)",
@@ -334,7 +361,9 @@
           "name": "Great Expectations (data quality)",
           "status": "built",
           "use": "Data quality validation suite on EEG feature datasets",
-          "endpoints": ["/api/great-expectations"]
+          "endpoints": [
+            "/api/great-expectations"
+          ]
         }
       ]
     },
@@ -358,7 +387,7 @@
           "status": "installed",
           "use": "automatic ICA component classification (brain/eye/muscle/heart/line_noise/channel_noise/other)",
           "dashboard": "/api/icalabel",
-          "note": "Real CHB-MIT EEG data \u2192 ICA \u2192 ICLabel neural-net classifier"
+          "note": "Real CHB-MIT EEG data → ICA → ICLabel neural-net classifier"
         }
       ]
     }
@@ -391,16 +420,21 @@
     },
     {
       "name": "Label Studio / CVAT / Doccano",
-      "use": "AI annotation (signal/video/text)",
-      "status": "cataloged"
+      "use": "AI annotation (signal/video/text) — annotation quality dashboard built",
+      "status": "built",
+      "endpoints": [
+        "/api/annotation/overview",
+        "/api/annotation/agreement",
+        "/api/annotation/definitions"
+      ]
     }
   ],
-  "recommended_pipeline": "MNE-Python \u2192 PyPREP \u2192 AutoReject \u2192 PyWavelets \u2192 TSFresh/AntroPy \u2192 TorchEEG/Braindecode \u2192 SHAP/Captum \u2192 Fairlearn/AIF360 \u2192 Evidently AI",
+  "recommended_pipeline": "MNE-Python → PyPREP → AutoReject → PyWavelets → TSFresh/AntroPy → TorchEEG/Braindecode → SHAP/Captum → Fairlearn/AIF360 → Evidently AI",
   "summary": {
     "installed": 16,
-    "built": 10,
-    "cataloged": 3,
+    "built": 12,
+    "cataloged": 1,
     "external": 9,
-    "honest_note": "Central platform MNE-Python + the signal\u2192feature\u2192DL\u2192SHAP\u2192eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built), AIF360 (built) all have live endpoints. Remaining CATALOGED: TorchEEG, Label Studio/CVAT/Doccano. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
+    "honest_note": "Central platform MNE-Python + the signal→feature→DL→SHAP→eval spine is INSTALLED. Captum (installed+built), LIME (installed+built), Grad-CAM (installed+built), TorchMetrics (built), Deepchecks (built), Great Expectations (built), AIF360 (built), Label Studio/CVAT (built) all have live endpoints. Remaining CATALOGED: TorchEEG. EEGLAB/FieldTrip/Brainstorm/REDCap are EXTERNAL (MATLAB/server)."
   }
 }
