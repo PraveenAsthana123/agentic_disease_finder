@@ -6,6 +6,8 @@
   {
    "role": "Clinical Pharmacist (Epilepsy)",
    "icon": "💊",
+   "dashboard_status": "built",
+   "dashboard_component": "PharmacistDashboard.jsx",
    "mission": "Safe, effective, individualized anti-seizure medication management.",
    "data_hook": "medications table is real + 16-drug ASM catalog + 12-pair interaction KB (LIVE)",
    "tasks": [
