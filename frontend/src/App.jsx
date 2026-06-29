@@ -49,6 +49,7 @@ import NotificationDashboard from './components/NotificationDashboard'
 import AlertsDashboard from './components/AlertsDashboard'
 import ToolExecutionDashboard from './components/ToolExecutionDashboard'
 import ReportsDashboard from './components/ReportsDashboard'
+import DatabaseOpsDashboard from './components/DatabaseOpsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -185,7 +186,8 @@ function App() {
     { id: 'notifications', label: 'Notifications' },
     { id: 'alerts', label: 'Alerts' },
     { id: 'tool-execution', label: 'Tool Execution' },
-    { id: 'reports', label: 'My Reports' }
+    { id: 'reports', label: 'My Reports' },
+    { id: 'database-ops', label: 'Database Ops' }
   ]
 
   // API Calls
@@ -1319,6 +1321,8 @@ function App() {
         return <ToolExecutionDashboard />
       case 'reports':
         return <ReportsDashboard />
+      case 'database-ops':
+        return <DatabaseOpsDashboard />
       default:
         return renderClassificationTab()
     }

@@ -4333,6 +4333,29 @@ async def patient_reports_definitions():
     return _json_safe(rpm.reports_definitions())
 
 
+# ── Database Ops Dashboard ─────────────────────────────────────────
+
+@app.get("/api/database-ops/overview")
+async def database_ops_overview():
+    """Database health overview — size, tables, rows, WAL, integrity, backups."""
+    import scripts.database_ops_dashboard as dod
+    return _json_safe(dod.db_overview())
+
+
+@app.get("/api/database-ops/breakdown")
+async def database_ops_breakdown():
+    """Per-table breakdown: rows, columns, indexes, last activity."""
+    import scripts.database_ops_dashboard as dod
+    return _json_safe(dod.db_breakdown())
+
+
+@app.get("/api/database-ops/definitions")
+async def database_ops_definitions():
+    """Database ops metric definitions for tooltip overlays."""
+    import scripts.database_ops_dashboard as dod
+    return _json_safe(dod.db_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
