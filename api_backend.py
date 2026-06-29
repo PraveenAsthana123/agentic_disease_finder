@@ -4147,6 +4147,30 @@ async def executive_scorecard_definitions():
     return _json_safe(esc.scorecard_definitions())
 
 
+# ── AI Usage Dashboard ────────────────────────────────────────────
+
+@app.get("/api/ai-usage/overview")
+async def ai_usage_overview():
+    """AI usage overview — total operations, daily trend, component/action/actor
+    distributions from real transaction_log in clinical.db."""
+    import scripts.ai_usage_dashboard as aud
+    return _json_safe(aud.usage_overview())
+
+
+@app.get("/api/ai-usage/breakdown")
+async def ai_usage_breakdown():
+    """Per-component usage breakdown — operations, actions, actors, last activity."""
+    import scripts.ai_usage_dashboard as aud
+    return _json_safe(aud.usage_breakdown())
+
+
+@app.get("/api/ai-usage/definitions")
+async def ai_usage_definitions():
+    """AI usage metric definitions for tooltip overlays."""
+    import scripts.ai_usage_dashboard as aud
+    return _json_safe(aud.usage_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
