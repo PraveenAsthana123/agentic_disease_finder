@@ -11,7 +11,7 @@
     {"id": "medication", "label": "💊 Medication", "purpose": "my current meds, recommendations, schedule, adherence", "status": "built", "maps_to": "/api/medication + /api/medication/{list,schedule,adherence,recommendations,side-effects}"},
     {"id": "therapy", "label": "🧘 Meditation / Physio / Therapy", "purpose": "rehab plans, exercises, meditation/physio programs assigned to me", "status": "built", "maps_to": "/api/therapy + /api/therapy/{rehab,exercises,meditation,physio,definitions}"},
     {"id": "assessments", "label": "🧩 My Assessments", "purpose": "history of my completed assessments + scores", "status": "built", "maps_to": "/api/assessments?patient_id"},
-    {"id": "reports", "label": "📄 My Reports", "purpose": "my EEG/summary reports", "status": "partial", "maps_to": "/api/eeg-report/{patient_id}"},
+    {"id": "reports", "label": "📄 My Reports", "purpose": "my EEG/summary reports", "status": "built", "maps_to": "/api/patient-reports + /api/patient-reports/{summary,definitions}"},
     {"id": "chat", "label": "💬 Ask AI (about my records)", "purpose": "RAG conversational AI grounded in my records", "status": "built", "maps_to": "/api/patient-chat"},
     {"id": "history", "label": "🕐 My History", "purpose": "timeline of everything (UTC+local stamped)", "status": "built", "maps_to": "/api/transactions"}
   ]

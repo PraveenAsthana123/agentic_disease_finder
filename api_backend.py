@@ -4311,6 +4311,28 @@ async def alerts_definitions():
     return _json_safe(alm.alerts_definitions())
 
 
+# ── Patient Reports — real EEG/summary reports from clinical.db ──────────
+@app.get("/api/patient-reports")
+async def patient_reports(patient_id: str = None):
+    """All patient report cards (or one patient). Real data from clinical.db."""
+    import scripts.reports_module as rpm
+    return _json_safe(rpm.reports_overview(patient_id or None))
+
+
+@app.get("/api/patient-reports/summary")
+async def patient_reports_summary():
+    """Aggregate report stats: totals, breakdowns by disease/instrument/prediction."""
+    import scripts.reports_module as rpm
+    return _json_safe(rpm.reports_summary())
+
+
+@app.get("/api/patient-reports/definitions")
+async def patient_reports_definitions():
+    """Report metric definitions for tooltip overlays."""
+    import scripts.reports_module as rpm
+    return _json_safe(rpm.reports_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

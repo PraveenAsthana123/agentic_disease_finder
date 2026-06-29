@@ -48,6 +48,7 @@ import TherapyDashboard from './components/TherapyDashboard'
 import NotificationDashboard from './components/NotificationDashboard'
 import AlertsDashboard from './components/AlertsDashboard'
 import ToolExecutionDashboard from './components/ToolExecutionDashboard'
+import ReportsDashboard from './components/ReportsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -183,7 +184,8 @@ function App() {
     { id: 'therapy', label: 'Therapy' },
     { id: 'notifications', label: 'Notifications' },
     { id: 'alerts', label: 'Alerts' },
-    { id: 'tool-execution', label: 'Tool Execution' }
+    { id: 'tool-execution', label: 'Tool Execution' },
+    { id: 'reports', label: 'My Reports' }
   ]
 
   // API Calls
@@ -1315,6 +1317,8 @@ function App() {
         return <AlertsDashboard />
       case 'tool-execution':
         return <ToolExecutionDashboard />
+      case 'reports':
+        return <ReportsDashboard />
       default:
         return renderClassificationTab()
     }
