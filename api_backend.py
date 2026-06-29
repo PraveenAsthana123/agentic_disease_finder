@@ -4075,6 +4075,54 @@ async def slp_surgical(patient_id: str = None):
     return _json_safe(slp.pre_post_surgical(patient_id))
 
 
+# ── Patient Portal: Medication Tab ──────────────────────────────────
+# Real data: medications (9, AED drug names+doses+frequency) + patients (40) +
+# seizure_diary (25). Patient-facing view: current meds, daily schedule,
+# adherence scores, side-effect profile, and medication recommendations.
+
+@app.get("/api/medication")
+async def medication_dashboard(patient_id: str = None):
+    """Patient Medication Portal — full dashboard: current meds, schedule, adherence,
+    side effects, recommendations. All from REAL medications + seizure_diary in data/clinical.db."""
+    import scripts.medication_module as med
+    return _json_safe(med.full_dashboard(patient_id))
+
+
+@app.get("/api/medication/list")
+async def medication_list(patient_id: str = None):
+    """Current medications list with drug info, dose, frequency, class, side effects."""
+    import scripts.medication_module as med
+    return _json_safe(med.my_medications(patient_id))
+
+
+@app.get("/api/medication/schedule")
+async def medication_schedule(patient_id: str = None):
+    """Daily medication schedule: morning/noon/evening/bedtime time slots."""
+    import scripts.medication_module as med
+    return _json_safe(med.medication_schedule(patient_id))
+
+
+@app.get("/api/medication/adherence")
+async def medication_adherence(patient_id: str = None):
+    """Adherence scores per patient + seizure correlation."""
+    import scripts.medication_module as med
+    return _json_safe(med.adherence_summary(patient_id))
+
+
+@app.get("/api/medication/recommendations")
+async def medication_recommendations(patient_id: str = None):
+    """Medication recommendations: pregnancy warnings, interaction flags, dose suggestions."""
+    import scripts.medication_module as med
+    return _json_safe(med.medication_recommendations(patient_id))
+
+
+@app.get("/api/medication/side-effects")
+async def medication_side_effects(patient_id: str = None):
+    """Side effect profile: ranked effects, overlapping risks across medications."""
+    import scripts.medication_module as med
+    return _json_safe(med.side_effect_profile(patient_id))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

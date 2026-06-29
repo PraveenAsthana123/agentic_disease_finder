@@ -8,7 +8,7 @@
     {"id": "notification", "label": "🔔 Notifications", "purpose": "results-ready, appointment, follow-up notices", "status": "planned"},
     {"id": "alert", "label": "🚨 Alerts", "purpose": "urgent: seizure alert, suicidality escalation, SOS, temperature", "status": "partial", "maps_to": "assessment alerts + IoT sim"},
     {"id": "inbox", "label": "✉️ Message Inbox", "purpose": "secure messages between me and my care team", "status": "planned"},
-    {"id": "medication", "label": "💊 Medication", "purpose": "my current meds, recommendations, schedule, adherence", "status": "partial", "maps_to": "medications table"},
+    {"id": "medication", "label": "💊 Medication", "purpose": "my current meds, recommendations, schedule, adherence", "status": "built", "maps_to": "/api/medication + /api/medication/{list,schedule,adherence,recommendations,side-effects}"},
     {"id": "therapy", "label": "🧘 Meditation / Physio / Therapy", "purpose": "rehab plans, exercises, meditation/physio programs assigned to me", "status": "planned"},
     {"id": "assessments", "label": "🧩 My Assessments", "purpose": "history of my completed assessments + scores", "status": "built", "maps_to": "/api/assessments?patient_id"},
     {"id": "reports", "label": "📄 My Reports", "purpose": "my EEG/summary reports", "status": "partial", "maps_to": "/api/eeg-report/{patient_id}"},

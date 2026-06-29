@@ -41,6 +41,7 @@ import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
 import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
 import DietitianDashboard from './components/DietitianDashboard'
+import MedicationDashboard from './components/MedicationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -169,7 +170,8 @@ function App() {
     { id: 'embedding-drift', label: 'Embedding Drift' },
     { id: 'slp', label: 'SLP' },
     { id: 'psychologist', label: 'Psychologist' },
-    { id: 'dietitian', label: 'Dietitian' }
+    { id: 'dietitian', label: 'Dietitian' },
+    { id: 'medication', label: 'Medication' }
   ]
 
   // API Calls
@@ -1287,6 +1289,8 @@ function App() {
         return <PsychologistDashboard />
       case 'dietitian':
         return <DietitianDashboard />
+      case 'medication':
+        return <MedicationDashboard />
       default:
         return renderClassificationTab()
     }
