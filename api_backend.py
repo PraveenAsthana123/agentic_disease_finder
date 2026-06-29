@@ -4249,6 +4249,45 @@ async def notification_definitions():
     return _json_safe(ntf.notification_definitions())
 
 
+# ── Alerts Portal Tab ─────────────────────────────────────────────────
+
+@app.get("/api/alerts")
+async def alerts_dashboard(patient_id: str = None):
+    """Clinical Alerts Dashboard — all alert categories: assessment threshold
+    breaches, seizure events, medication risks, vitals concerns.
+    All derived from REAL data in data/clinical.db."""
+    import scripts.alerts_module as alm
+    return _json_safe(alm.alerts_overview(patient_id))
+
+
+@app.get("/api/alerts/category/{category}")
+async def alerts_by_category(category: str, patient_id: str = None):
+    """Alerts filtered by category (assessment/seizure/medication/vitals)."""
+    import scripts.alerts_module as alm
+    return _json_safe(alm.alerts_by_category(category, patient_id))
+
+
+@app.get("/api/alerts/severity/{severity}")
+async def alerts_by_severity(severity: str, patient_id: str = None):
+    """Alerts filtered by severity (critical/high/medium/low)."""
+    import scripts.alerts_module as alm
+    return _json_safe(alm.alerts_by_severity(severity, patient_id))
+
+
+@app.get("/api/alerts/summary")
+async def alerts_summary(patient_id: str = None):
+    """Compact alert summary: counts + top 5 critical."""
+    import scripts.alerts_module as alm
+    return _json_safe(alm.alerts_summary(patient_id))
+
+
+@app.get("/api/alerts/definitions")
+async def alerts_definitions():
+    """Alert metric definitions for tooltip overlays."""
+    import scripts.alerts_module as alm
+    return _json_safe(alm.alerts_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
