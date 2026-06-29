@@ -22,6 +22,7 @@ import ExpertDashboard from './components/ExpertDashboard'
 import DataCleaningDashboard from './components/DataCleaningDashboard'
 import ICLabelDashboard from './components/ICLabelDashboard'
 import SeizureTimelineDashboard from './components/SeizureTimelineDashboard'
+import SynchrosqueezingDashboard from './components/SynchrosqueezingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -131,7 +132,8 @@ function App() {
     { id: 'expert', label: 'Expert Dashboards' },
     { id: 'datacleaning', label: 'Data Cleaning' },
     { id: 'icalabel', label: 'ICLabel QC' },
-    { id: 'seizuretimeline', label: 'Seizure Timeline' }
+    { id: 'seizuretimeline', label: 'Seizure Timeline' },
+    { id: 'synchrosqueezing', label: 'Synchrosqueezing' }
   ]
 
   // API Calls
@@ -1211,6 +1213,8 @@ function App() {
         return <ICLabelDashboard />
       case 'seizuretimeline':
         return <SeizureTimelineDashboard />
+      case 'synchrosqueezing':
+        return <SynchrosqueezingDashboard />
       default:
         return renderClassificationTab()
     }

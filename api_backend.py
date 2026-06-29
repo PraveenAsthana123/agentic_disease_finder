@@ -3547,6 +3547,31 @@ async def neo_definitions():
     return _json_safe(neo_dash.definitions())
 
 
+# ── Synchrosqueezing Dashboard (ssqueezepy) ──────────────────────────
+
+@app.get("/api/synchrosqueezing/overview")
+async def synchrosqueezing_overview(file: str = None, seconds: float = 10.0):
+    """Synchrosqueezing CWT dashboard — per-channel peak frequency, energy,
+    bandwidth, dominant band, and frequency-band breakdown from real EDF data
+    via ssqueezepy (Muradeli 2020)."""
+    import scripts.synchrosqueezing_dashboard as ssq
+    return _json_safe(ssq.synchrosqueezing_overview(file, seconds))
+
+@app.get("/api/synchrosqueezing/spectrum")
+async def synchrosqueezing_spectrum(file: str = None, seconds: float = 10.0):
+    """Marginal frequency spectrum from the SSQ transform for each channel
+    (up to 5 channels, 200 frequency points each)."""
+    import scripts.synchrosqueezing_dashboard as ssq
+    return _json_safe(ssq.synchrosqueezing_spectrum(file, seconds))
+
+@app.get("/api/synchrosqueezing/definitions")
+async def synchrosqueezing_definitions():
+    """Synchrosqueezing transform definitions, clinical relevance to EEG,
+    and references (Daubechies et al. 2011, Muradeli 2020)."""
+    import scripts.synchrosqueezing_dashboard as ssq
+    return _json_safe(ssq.synchrosqueezing_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

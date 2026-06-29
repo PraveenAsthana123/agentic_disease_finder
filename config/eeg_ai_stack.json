@@ -96,7 +96,9 @@
         },
         {
           "name": "ssqueezepy (synchrosqueezing)",
-          "status": "cataloged"
+          "status": "built",
+          "use": "synchrosqueezing CWT time-frequency dashboard",
+          "endpoints": ["/api/synchrosqueezing/overview", "/api/synchrosqueezing/spectrum", "/api/synchrosqueezing/definitions"]
         },
         {
           "name": "librosa",
