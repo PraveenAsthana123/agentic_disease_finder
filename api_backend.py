@@ -4003,6 +4003,27 @@ async def inference_gpu_definitions():
     })
 
 
+@app.get("/api/embedding-drift/overview")
+async def embedding_drift_overview():
+    """Embedding Drift Dashboard — drift monitoring for RAG embedding vectors."""
+    from scripts.embedding_drift_dashboard import generate_embedding_drift_overview
+    return _json_safe(generate_embedding_drift_overview())
+
+
+@app.get("/api/embedding-drift/breakdown")
+async def embedding_drift_breakdown():
+    """Embedding drift breakdown by corpus segment + stale vector detection."""
+    from scripts.embedding_drift_dashboard import generate_embedding_drift_breakdown
+    return _json_safe(generate_embedding_drift_breakdown())
+
+
+@app.get("/api/embedding-drift/definitions")
+async def embedding_drift_definitions():
+    """Metric definitions for the Embedding Drift dashboard."""
+    from scripts.embedding_drift_dashboard import generate_embedding_drift_definitions
+    return _json_safe(generate_embedding_drift_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

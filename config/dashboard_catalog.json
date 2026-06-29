@@ -110,7 +110,8 @@
         },
         {
           "name": "Embedding Drift Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/embedding-drift/overview + /api/embedding-drift/breakdown + /api/embedding-drift/definitions"
         },
         {
           "name": "Chunking Dashboard",

@@ -37,6 +37,7 @@ import InferenceGPUDashboard from './components/InferenceGPUDashboard'
 import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
 import PharmacistDashboard from './components/PharmacistDashboard'
+import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -161,7 +162,8 @@ function App() {
     { id: 'inference-gpu', label: 'Inference/GPU' },
     { id: 'spike-overlay', label: 'Spike Overlay' },
     { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' },
-    { id: 'pharmacist', label: 'Pharmacist' }
+    { id: 'pharmacist', label: 'Pharmacist' },
+    { id: 'embedding-drift', label: 'Embedding Drift' }
   ]
 
   // API Calls
@@ -1271,6 +1273,8 @@ function App() {
         return <EpilepsyNurseDashboard />
       case 'pharmacist':
         return <PharmacistDashboard />
+      case 'embedding-drift':
+        return <EmbeddingDriftDashboard />
       default:
         return renderClassificationTab()
     }
