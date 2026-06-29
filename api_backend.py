@@ -778,6 +778,14 @@ async def data_manager_cleaning():
     return _json_safe(dc.cleaning_report())
 
 
+@app.get("/api/data-manager/data-sharing")
+async def data_manager_data_sharing():
+    """Clinical Data Manager — Data Sharing dashboard.
+    PII scan, access-policy matrix, audit summary, export readiness, DUA terms."""
+    import scripts.data_sharing as ds
+    return _json_safe(ds.sharing_report())
+
+
 @app.get("/api/icalabel")
 async def icalabel_dashboard():
     """ICLabel ICA Component Classification Dashboard.

@@ -283,7 +283,7 @@
       "name": "Data Sharing",
       "ai_feature": "Secure sharing",
       "deliverable": "Shared dataset",
-      "status": "planned",
+      "status": "built",
       "steps": [
         "De-identify (PII redaction)",
         "Apply access policy (RBAC)",

@@ -25,6 +25,7 @@ import SeizureTimelineDashboard from './components/SeizureTimelineDashboard'
 import SynchrosqueezingDashboard from './components/SynchrosqueezingDashboard'
 import XAIDashboard from './components/XAIDashboard'
 import GreatExpectationsDashboard from './components/GreatExpectationsDashboard'
+import DataSharingDashboard from './components/DataSharingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -137,7 +138,8 @@ function App() {
     { id: 'seizuretimeline', label: 'Seizure Timeline' },
     { id: 'synchrosqueezing', label: 'Synchrosqueezing' },
     { id: 'xai', label: 'Explainable AI' },
-    { id: 'great-expectations', label: 'Data Quality (GE)' }
+    { id: 'great-expectations', label: 'Data Quality (GE)' },
+    { id: 'datasharing', label: 'Data Sharing' }
   ]
 
   // API Calls
@@ -1223,6 +1225,8 @@ function App() {
         return <XAIDashboard />
       case 'great-expectations':
         return <GreatExpectationsDashboard />
+      case 'datasharing':
+        return <DataSharingDashboard />
       default:
         return renderClassificationTab()
     }
