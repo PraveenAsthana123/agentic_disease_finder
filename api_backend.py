@@ -3714,6 +3714,29 @@ async def aif360_definitions():
     return _json_safe(afd.aif360_definitions())
 
 
+# ── TorchEEG Dashboard ──────────────────────────────────────────────
+
+@app.get("/api/torcheeg/overview")
+async def torcheeg_overview(file: str = None, seconds: float = 10.0):
+    """TorchEEG feature extraction + classification overview on real EEG data.
+    Applies BandDifferentialEntropy, BandPSD, BandHjorth, BandKurtosis,
+    BandSkewness transforms and trains an EEGNet-Mini classifier."""
+    import scripts.torcheeg_dashboard as ted
+    return _json_safe(ted.torcheeg_overview(file, seconds))
+
+@app.get("/api/torcheeg/features")
+async def torcheeg_features(file: str = None, seconds: float = 10.0):
+    """Per-channel, per-band feature heatmaps from torcheeg transforms."""
+    import scripts.torcheeg_dashboard as ted
+    return _json_safe(ted.torcheeg_features(file, seconds))
+
+@app.get("/api/torcheeg/definitions")
+async def torcheeg_definitions():
+    """TorchEEG transform definitions, library info, and clinical relevance."""
+    import scripts.torcheeg_dashboard as ted
+    return _json_safe(ted.torcheeg_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

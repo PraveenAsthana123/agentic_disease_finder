@@ -29,6 +29,7 @@ import DataSharingDashboard from './components/DataSharingDashboard'
 import TorchMetricsDashboard from './components/TorchMetricsDashboard'
 import DeepchecksDashboard from './components/DeepchecksDashboard'
 import AIF360Dashboard from './components/AIF360Dashboard'
+import TorchEEGDashboard from './components/TorchEEGDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -145,7 +146,8 @@ function App() {
     { id: 'datasharing', label: 'Data Sharing' },
     { id: 'torchmetrics', label: 'TorchMetrics' },
     { id: 'deepchecks', label: 'Deepchecks' },
-    { id: 'aif360', label: 'AIF360 Bias' }
+    { id: 'aif360', label: 'AIF360 Bias' },
+    { id: 'torcheeg', label: 'TorchEEG' }
   ]
 
   // API Calls
@@ -1239,6 +1241,8 @@ function App() {
         return <DeepchecksDashboard />
       case 'aif360':
         return <AIF360Dashboard />
+      case 'torcheeg':
+        return <TorchEEGDashboard />
       default:
         return renderClassificationTab()
     }
