@@ -200,8 +200,8 @@
         },
         {
           "name": "Tool Execution Dashboard",
-          "status": "partial",
-          "maps_to": "transaction_log"
+          "status": "built",
+          "maps_to": "/api/tool-execution/overview + /api/tool-execution/breakdown + /api/tool-execution/definitions"
         },
         {
           "name": "Workflow Dashboard",

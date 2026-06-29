@@ -4171,6 +4171,29 @@ async def ai_usage_definitions():
     return _json_safe(aud.usage_definitions())
 
 
+# ── Tool Execution Dashboard ──────────────────────────────────────────
+
+@app.get("/api/tool-execution/overview")
+async def tool_execution_overview():
+    """Tool execution overview — totals, success rate, top tools, actors, trend."""
+    import scripts.tool_execution_dashboard as ted
+    return _json_safe(ted.tool_execution_overview())
+
+
+@app.get("/api/tool-execution/breakdown")
+async def tool_execution_breakdown():
+    """Per-tool execution breakdown — action mix, actors, first/last seen."""
+    import scripts.tool_execution_dashboard as ted
+    return _json_safe(ted.tool_execution_breakdown())
+
+
+@app.get("/api/tool-execution/definitions")
+async def tool_execution_definitions():
+    """Tool execution metric definitions for tooltip overlays."""
+    import scripts.tool_execution_dashboard as ted
+    return _json_safe(ted.tool_execution_definitions())
+
+
 # ── Therapy / Meditation / Physio Portal Tab ─────────────────────────
 
 @app.get("/api/therapy")

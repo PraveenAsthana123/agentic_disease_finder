@@ -47,6 +47,7 @@ import AIUsageDashboard from './components/AIUsageDashboard'
 import TherapyDashboard from './components/TherapyDashboard'
 import NotificationDashboard from './components/NotificationDashboard'
 import AlertsDashboard from './components/AlertsDashboard'
+import ToolExecutionDashboard from './components/ToolExecutionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -181,7 +182,8 @@ function App() {
     { id: 'ai-usage', label: 'AI Usage' },
     { id: 'therapy', label: 'Therapy' },
     { id: 'notifications', label: 'Notifications' },
-    { id: 'alerts', label: 'Alerts' }
+    { id: 'alerts', label: 'Alerts' },
+    { id: 'tool-execution', label: 'Tool Execution' }
   ]
 
   // API Calls
@@ -1311,6 +1313,8 @@ function App() {
         return <NotificationDashboard />
       case 'alerts':
         return <AlertsDashboard />
+      case 'tool-execution':
+        return <ToolExecutionDashboard />
       default:
         return renderClassificationTab()
     }
