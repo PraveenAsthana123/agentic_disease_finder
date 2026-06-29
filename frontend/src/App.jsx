@@ -30,6 +30,7 @@ import TorchMetricsDashboard from './components/TorchMetricsDashboard'
 import DeepchecksDashboard from './components/DeepchecksDashboard'
 import AIF360Dashboard from './components/AIF360Dashboard'
 import TorchEEGDashboard from './components/TorchEEGDashboard'
+import ILAEClassificationDashboard from './components/ILAEClassificationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -147,7 +148,8 @@ function App() {
     { id: 'torchmetrics', label: 'TorchMetrics' },
     { id: 'deepchecks', label: 'Deepchecks' },
     { id: 'aif360', label: 'AIF360 Bias' },
-    { id: 'torcheeg', label: 'TorchEEG' }
+    { id: 'torcheeg', label: 'TorchEEG' },
+    { id: 'ilae-classification', label: 'ILAE Classification' }
   ]
 
   // API Calls
@@ -1243,6 +1245,8 @@ function App() {
         return <AIF360Dashboard />
       case 'torcheeg':
         return <TorchEEGDashboard />
+      case 'ilae-classification':
+        return <ILAEClassificationDashboard />
       default:
         return renderClassificationTab()
     }

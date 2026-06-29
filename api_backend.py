@@ -898,6 +898,13 @@ async def seizure_timeline():
     return _json_safe(generate_seizure_timeline_report())
 
 
+@app.get("/api/ilae-classification")
+async def ilae_classification():
+    """ILAE 2017 Seizure Classification — real CHB-MIT EEG features → focal/generalized/unknown onset typing."""
+    from scripts.ilae_seizure_classification import generate_ilae_classification_report
+    return _json_safe(generate_ilae_classification_report())
+
+
 @app.get("/api/cognitive-tests")
 async def cognitive_tests():
     """Digital cognitive test catalog (Stroop, Trail Making, Digit Span, WCST, N-Back, Go/No-Go, CPT, Clock Drawing, RAVLT, Verbal Fluency) + scoring + patient results."""
