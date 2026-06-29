@@ -33,6 +33,8 @@ import TorchEEGDashboard from './components/TorchEEGDashboard'
 import ILAEClassificationDashboard from './components/ILAEClassificationDashboard'
 import AnnotationDashboard from './components/AnnotationDashboard'
 import AICostDashboard from './components/AICostDashboard'
+import InferenceGPUDashboard from './components/InferenceGPUDashboard'
+import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -153,7 +155,9 @@ function App() {
     { id: 'torcheeg', label: 'TorchEEG' },
     { id: 'ilae-classification', label: 'ILAE Classification' },
     { id: 'annotation', label: 'Annotation QC' },
-    { id: 'ai-cost', label: 'AI Cost' }
+    { id: 'ai-cost', label: 'AI Cost' },
+    { id: 'inference-gpu', label: 'Inference/GPU' },
+    { id: 'spike-overlay', label: 'Spike Overlay' }
   ]
 
   // API Calls
@@ -1255,6 +1259,10 @@ function App() {
         return <AnnotationDashboard />
       case 'ai-cost':
         return <AICostDashboard />
+      case 'inference-gpu':
+        return <InferenceGPUDashboard />
+      case 'spike-overlay':
+        return <SpikeOverlayDashboard />
       default:
         return renderClassificationTab()
     }

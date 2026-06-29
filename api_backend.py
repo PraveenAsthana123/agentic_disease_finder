@@ -898,6 +898,13 @@ async def seizure_timeline():
     return _json_safe(generate_seizure_timeline_report())
 
 
+@app.get("/api/spike-overlay")
+async def spike_overlay():
+    """Spike / Sharp-Wave Overlay — individual spike & sharp-wave detection with morphological features from CHB-MIT EEG."""
+    from scripts.spike_overlay_dashboard import generate_spike_overlay_report
+    return _json_safe(generate_spike_overlay_report())
+
+
 @app.get("/api/ilae-classification")
 async def ilae_classification():
     """ILAE 2017 Seizure Classification — real CHB-MIT EEG features → focal/generalized/unknown onset typing."""
@@ -3828,6 +3835,172 @@ async def ai_cost_definitions():
     """AI cost metric definitions, rate tables, and regulatory context."""
     import scripts.ai_cost_dashboard as acd
     return _json_safe(acd.cost_definitions())
+
+
+# ── Inference & GPU Dashboard ──────────────────────────────────────
+
+@app.get("/api/inference-gpu/overview")
+async def inference_gpu_overview():
+    """GPU status via nvidia-smi, inference summary from transaction log, system info."""
+    import subprocess, sys, os
+    from datetime import datetime, timezone
+    from collections import Counter
+
+    # ── GPU via nvidia-smi ──
+    gpu_available = False
+    gpu_info = {}
+    try:
+        result = subprocess.run(
+            ['nvidia-smi',
+             '--query-gpu=name,memory.total,memory.used,memory.free,utilization.gpu,utilization.memory,temperature.gpu,power.draw',
+             '--format=csv,noheader,nounits'],
+            capture_output=True, text=True, timeout=5)
+        if result.returncode == 0 and result.stdout.strip():
+            parts = [p.strip() for p in result.stdout.strip().split(',')]
+            if len(parts) >= 8:
+                gpu_available = True
+                gpu_info = {
+                    "name": parts[0],
+                    "memory_total_mb": float(parts[1]),
+                    "memory_used_mb": float(parts[2]),
+                    "memory_free_mb": float(parts[3]),
+                    "utilization_gpu_pct": float(parts[4]),
+                    "utilization_memory_pct": float(parts[5]),
+                    "temperature_c": float(parts[6]),
+                    "power_draw_w": float(parts[7]),
+                }
+    except Exception:
+        pass
+
+    # ── Inference summary from transaction log ──
+    inference_actions = {'process', 'predict', 'classify', 'inference', 'evaluate', 'train'}
+    total_inferences = 0
+    components = set()
+    last_ts = None
+    earliest_ts = None
+    try:
+        txn = cdb.list_transactions(limit=9999)
+        rows = txn.get("rows", [])
+        for r in rows:
+            action = (r.get("action") or "").lower()
+            if action in inference_actions:
+                total_inferences += 1
+                comp = r.get("component") or r.get("ref_id") or ""
+                if comp:
+                    components.add(comp)
+                ts = r.get("created_utc") or r.get("created_local") or ""
+                if ts:
+                    if last_ts is None or ts > last_ts:
+                        last_ts = ts
+                    if earliest_ts is None or ts < earliest_ts:
+                        earliest_ts = ts
+    except Exception:
+        rows = []
+
+    # Calculate avg throughput
+    avg_throughput = 0
+    if total_inferences > 0 and earliest_ts and last_ts and earliest_ts != last_ts:
+        try:
+            fmt_str = "%Y-%m-%d %H:%M:%S"
+            t0 = datetime.strptime(earliest_ts[:19], fmt_str)
+            t1 = datetime.strptime(last_ts[:19], fmt_str)
+            hours = max((t1 - t0).total_seconds() / 3600, 1)
+            avg_throughput = round(total_inferences / hours, 2)
+        except Exception:
+            avg_throughput = 0
+
+    # ── System info ──
+    cpu_count = os.cpu_count()
+    ram_total_gb = 0
+    ram_used_gb = 0
+    try:
+        with open("/proc/meminfo") as f:
+            meminfo = {}
+            for line in f:
+                parts = line.split(":")
+                if len(parts) == 2:
+                    key = parts[0].strip()
+                    val = parts[1].strip().split()[0]
+                    meminfo[key] = int(val)
+            ram_total_gb = round(meminfo.get("MemTotal", 0) / 1048576, 2)
+            mem_avail = meminfo.get("MemAvailable", meminfo.get("MemFree", 0))
+            ram_used_gb = round((meminfo.get("MemTotal", 0) - mem_avail) / 1048576, 2)
+    except Exception:
+        pass
+
+    torch_version = "--"
+    cuda_available = False
+    try:
+        import torch
+        torch_version = torch.__version__
+        cuda_available = torch.cuda.is_available()
+    except Exception:
+        pass
+
+    return _json_safe({
+        "available": gpu_available,
+        "gpu": gpu_info,
+        "inference_summary": {
+            "total_inferences": total_inferences,
+            "models_loaded": len(components),
+            "avg_throughput_per_hour": avg_throughput,
+            "last_inference_at": last_ts or "",
+        },
+        "system": {
+            "cpu_count": cpu_count,
+            "ram_total_gb": ram_total_gb,
+            "ram_used_gb": ram_used_gb,
+            "python_version": sys.version.split()[0],
+            "torch_version": torch_version,
+            "cuda_available": cuda_available,
+            "cuda_note": "Driver too old for PyTorch CUDA; nvidia-smi reports GPU directly" if not cuda_available else "",
+        },
+        "note": "" if gpu_available else "nvidia-smi not found or GPU not detected",
+    })
+
+
+@app.get("/api/inference-gpu/models")
+async def inference_gpu_models():
+    """List model files found in the models/ directory."""
+    from pathlib import Path
+    from datetime import datetime
+
+    model_dir = Path(__file__).parent / "models"
+    extensions = {'.pkl', '.pt', '.pth', '.onnx', '.joblib'}
+    models = []
+    if model_dir.is_dir():
+        for ext in extensions:
+            for f in model_dir.glob(f"*{ext}"):
+                if f.is_file():
+                    stat = f.stat()
+                    models.append({
+                        "name": f.name,
+                        "size_mb": round(stat.st_size / (1024 * 1024), 2),
+                        "path": str(f.relative_to(Path(__file__).parent)),
+                        "modified": datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M:%S"),
+                    })
+    models.sort(key=lambda m: m["name"])
+    return _json_safe({"models": models})
+
+
+@app.get("/api/inference-gpu/definitions")
+async def inference_gpu_definitions():
+    """Metric definitions for the Inference & GPU dashboard."""
+    return _json_safe({
+        "metrics": [
+            {"name": "GPU Utilization", "description": "Percentage of GPU compute cores actively processing work, reported by nvidia-smi.", "unit": "%"},
+            {"name": "VRAM Used", "description": "Video RAM currently allocated by all processes on the GPU.", "unit": "MB"},
+            {"name": "VRAM Free", "description": "Video RAM available for new allocations.", "unit": "MB"},
+            {"name": "GPU Temperature", "description": "Current thermal reading of the GPU die.", "unit": "\u00b0C"},
+            {"name": "Power Draw", "description": "Current power consumption of the GPU.", "unit": "W"},
+            {"name": "Total Inferences", "description": "Count of process/predict/classify/inference/evaluate/train actions in the transaction log.", "unit": "count"},
+            {"name": "Models Loaded", "description": "Number of unique model components referenced in inference transactions.", "unit": "count"},
+            {"name": "Avg Throughput/Hour", "description": "Average number of inference operations per hour across the logged time window.", "unit": "ops/hr"},
+            {"name": "CPU Cores", "description": "Number of logical CPU cores available to the system.", "unit": "cores"},
+            {"name": "RAM Used", "description": "System RAM currently in use (total minus available).", "unit": "GB"},
+            {"name": "CUDA Available", "description": "Whether PyTorch can access CUDA GPU acceleration.", "unit": "boolean"},
+        ]
+    })
 
 
 if __name__ == "__main__":

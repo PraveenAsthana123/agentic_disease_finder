@@ -24,6 +24,7 @@ BUILDABLE = [
 # icalabel_ge (ICLabel + Great Expectations dashboards verified 200)
 # aif360_bias (AIF360 bias detection dashboard — 3 endpoints verified 200, registry cataloged→built)
 # torcheeg (TorchEEG dashboard — 5 transforms + EEGNet-Mini classifier, 3 endpoints verified 200)
+# inference_gpu (Inference/GPU Dashboard — real nvidia-smi + model scan + system info, 3 endpoints verified 200)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
