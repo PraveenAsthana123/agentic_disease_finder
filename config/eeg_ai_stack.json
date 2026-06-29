@@ -320,7 +320,9 @@
         },
         {
           "name": "Great Expectations (data quality)",
-          "status": "cataloged"
+          "status": "built",
+          "use": "Data quality validation suite on EEG feature datasets",
+          "endpoints": ["/api/great-expectations"]
         }
       ]
     },

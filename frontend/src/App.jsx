@@ -23,6 +23,8 @@ import DataCleaningDashboard from './components/DataCleaningDashboard'
 import ICLabelDashboard from './components/ICLabelDashboard'
 import SeizureTimelineDashboard from './components/SeizureTimelineDashboard'
 import SynchrosqueezingDashboard from './components/SynchrosqueezingDashboard'
+import XAIDashboard from './components/XAIDashboard'
+import GreatExpectationsDashboard from './components/GreatExpectationsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -133,7 +135,9 @@ function App() {
     { id: 'datacleaning', label: 'Data Cleaning' },
     { id: 'icalabel', label: 'ICLabel QC' },
     { id: 'seizuretimeline', label: 'Seizure Timeline' },
-    { id: 'synchrosqueezing', label: 'Synchrosqueezing' }
+    { id: 'synchrosqueezing', label: 'Synchrosqueezing' },
+    { id: 'xai', label: 'Explainable AI' },
+    { id: 'great-expectations', label: 'Data Quality (GE)' }
   ]
 
   // API Calls
@@ -1215,6 +1219,10 @@ function App() {
         return <SeizureTimelineDashboard />
       case 'synchrosqueezing':
         return <SynchrosqueezingDashboard />
+      case 'xai':
+        return <XAIDashboard />
+      case 'great-expectations':
+        return <GreatExpectationsDashboard />
       default:
         return renderClassificationTab()
     }
