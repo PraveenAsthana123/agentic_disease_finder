@@ -4356,6 +4356,38 @@ async def database_ops_definitions():
     return _json_safe(dod.db_definitions())
 
 
+# ── Campaigns Portal Tab ─────────────────────────────────────────────
+
+@app.get("/api/campaigns")
+async def campaigns_dashboard(patient_id: str = None):
+    """Campaigns Dashboard — health campaigns, screening programs, education,
+    medication adherence, seizure safety.
+    All derived from REAL data in data/clinical.db."""
+    import scripts.campaigns_module as cmp
+    return _json_safe(cmp.campaigns_overview(patient_id))
+
+
+@app.get("/api/campaigns/type/{campaign_type}")
+async def campaigns_by_type(campaign_type: str, patient_id: str = None):
+    """Campaigns filtered by type (screening/adherence/safety/form_completion/education)."""
+    import scripts.campaigns_module as cmp
+    return _json_safe(cmp.campaigns_by_type(campaign_type, patient_id))
+
+
+@app.get("/api/campaigns/summary")
+async def campaigns_summary(patient_id: str = None):
+    """Compact campaign summary: counts + top 5 active."""
+    import scripts.campaigns_module as cmp
+    return _json_safe(cmp.campaigns_summary(patient_id))
+
+
+@app.get("/api/campaigns/definitions")
+async def campaigns_definitions():
+    """Campaign metric definitions for tooltip overlays."""
+    import scripts.campaigns_module as cmp
+    return _json_safe(cmp.campaigns_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

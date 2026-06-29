@@ -4,7 +4,7 @@
   "updated_at": "2026-06-29",
   "tabs": [
     {"id": "forms", "label": "📋 Forms", "purpose": "assessment forms experts sent me to fill (MoCA/PHQ-9/etc.) → auto-scored on submit", "status": "built", "maps_to": "/api/forms, /api/forms/{id}/submit"},
-    {"id": "campaign", "label": "📣 Campaigns", "purpose": "health campaigns / education / reminders pushed to me", "status": "planned"},
+    {"id": "campaign", "label": "📣 Campaigns", "purpose": "health campaigns / education / reminders pushed to me", "status": "built", "maps_to": "/api/campaigns + /api/campaigns/{type,summary,definitions}"},
     {"id": "notification", "label": "🔔 Notifications", "purpose": "results-ready, appointment, follow-up notices", "status": "built", "maps_to": "/api/notifications + /api/notifications/{category,unread,definitions}"},
     {"id": "alert", "label": "🚨 Alerts", "purpose": "urgent: seizure alert, suicidality escalation, SOS, temperature", "status": "built", "maps_to": "/api/alerts + /api/alerts/{category,severity,summary,definitions}"},
     {"id": "inbox", "label": "✉️ Message Inbox", "purpose": "secure messages between me and my care team", "status": "planned"},
