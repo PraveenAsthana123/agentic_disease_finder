@@ -35,6 +35,7 @@ import AnnotationDashboard from './components/AnnotationDashboard'
 import AICostDashboard from './components/AICostDashboard'
 import InferenceGPUDashboard from './components/InferenceGPUDashboard'
 import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
+import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -157,7 +158,8 @@ function App() {
     { id: 'annotation', label: 'Annotation QC' },
     { id: 'ai-cost', label: 'AI Cost' },
     { id: 'inference-gpu', label: 'Inference/GPU' },
-    { id: 'spike-overlay', label: 'Spike Overlay' }
+    { id: 'spike-overlay', label: 'Spike Overlay' },
+    { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' }
   ]
 
   // API Calls
@@ -1263,6 +1265,8 @@ function App() {
         return <InferenceGPUDashboard />
       case 'spike-overlay':
         return <SpikeOverlayDashboard />
+      case 'epilepsy-nurse':
+        return <EpilepsyNurseDashboard />
       default:
         return renderClassificationTab()
     }
