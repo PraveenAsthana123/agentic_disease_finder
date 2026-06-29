@@ -32,6 +32,7 @@ import AIF360Dashboard from './components/AIF360Dashboard'
 import TorchEEGDashboard from './components/TorchEEGDashboard'
 import ILAEClassificationDashboard from './components/ILAEClassificationDashboard'
 import AnnotationDashboard from './components/AnnotationDashboard'
+import AICostDashboard from './components/AICostDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -151,7 +152,8 @@ function App() {
     { id: 'aif360', label: 'AIF360 Bias' },
     { id: 'torcheeg', label: 'TorchEEG' },
     { id: 'ilae-classification', label: 'ILAE Classification' },
-    { id: 'annotation', label: 'Annotation QC' }
+    { id: 'annotation', label: 'Annotation QC' },
+    { id: 'ai-cost', label: 'AI Cost' }
   ]
 
   // API Calls
@@ -1251,6 +1253,8 @@ function App() {
         return <ILAEClassificationDashboard />
       case 'annotation':
         return <AnnotationDashboard />
+      case 'ai-cost':
+        return <AICostDashboard />
       default:
         return renderClassificationTab()
     }

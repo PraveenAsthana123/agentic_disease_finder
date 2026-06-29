@@ -15,7 +15,8 @@
         },
         {
           "name": "AI Cost Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/ai-cost/overview + /api/ai-cost/breakdown + /api/ai-cost/definitions"
         },
         {
           "name": "AI Usage Dashboard",

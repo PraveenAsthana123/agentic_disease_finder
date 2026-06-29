@@ -3765,6 +3765,71 @@ async def annotation_definitions():
     return _json_safe(lsd.annotation_definitions())
 
 
+# ── AI Cost & Resource Dashboard ───────────────────────────────────
+
+@app.get("/api/ai-cost/overview")
+async def ai_cost_overview():
+    """AI cost overview — transaction volume, cost estimates, compute resources,
+    carbon footprint, and daily trend from real project data."""
+    import scripts.ai_cost_dashboard as acd
+    raw = acd.cost_overview()
+    txn = raw.get("transaction_log", {})
+    cost = raw.get("cost_breakdown", {})
+    comp = raw.get("compute_resources", {})
+    mdl = raw.get("model_files", {})
+    trn = raw.get("trends", {})
+    carbon = raw.get("carbon_tracking", {})
+    return _json_safe({
+        "available": raw.get("available", False),
+        "summary": {
+            "total_operations": txn.get("total_operations", 0),
+            "estimated_monthly_cost": cost.get("total_estimated_usd", 0),
+            "carbon_footprint_kg": carbon.get("total_kg_co2", 0) if isinstance(carbon, dict) else 0,
+            "active_models": mdl.get("count", 0),
+        },
+        "resources": {
+            "cpu_utilization_pct": comp.get("cpu_percent"),
+            "memory_used_gb": comp.get("memory_used_gb"),
+            "memory_total_gb": comp.get("memory_total_gb"),
+        },
+        "cost_by_category": cost,
+        "ops_by_component": txn.get("ops_by_component", {}),
+        "ops_by_action": txn.get("ops_by_action", {}),
+        "daily_trend": [
+            {"date": d.get("date", ""), "operations": d.get("ops", 0), "cost": d.get("ops", 0) * 0.002}
+            for d in trn.get("daily_last_7d", [])
+        ],
+        "metadata": raw.get("metadata", {}),
+    })
+
+@app.get("/api/ai-cost/breakdown")
+async def ai_cost_breakdown():
+    """Per-component cost breakdown — operations, estimated cost, category."""
+    import scripts.ai_cost_dashboard as acd
+    raw = acd.cost_breakdown()
+    components = [
+        {
+            "component": c.get("component", "unknown"),
+            "operations": c.get("operations", 0),
+            "estimated_cost": c.get("estimated_cost_usd", 0),
+            "category": c.get("cost_category", ""),
+            "top_actions": c.get("top_actions", {}),
+        }
+        for c in raw.get("top_components", [])
+    ]
+    return _json_safe({
+        "available": raw.get("available", True),
+        "components": components,
+        "total_estimated_cost_usd": raw.get("total_estimated_cost_usd", 0),
+    })
+
+@app.get("/api/ai-cost/definitions")
+async def ai_cost_definitions():
+    """AI cost metric definitions, rate tables, and regulatory context."""
+    import scripts.ai_cost_dashboard as acd
+    return _json_safe(acd.cost_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
