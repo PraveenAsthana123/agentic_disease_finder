@@ -885,9 +885,9 @@ async def patient_compare(a: str, b: str):
 
 @app.get("/api/seizure-timeline")
 async def seizure_timeline():
-    """Real seizure timeline from CHB-MIT ground-truth annotations (per-subject events + burden)."""
-    import scripts.seizure_timeline as st
-    return _json_safe(st.build())
+    """Seizure Timeline Dashboard — real CHB-MIT annotations + spike detection + peri-onset EEG."""
+    from scripts.seizure_timeline_dashboard import generate_seizure_timeline_report
+    return _json_safe(generate_seizure_timeline_report())
 
 
 @app.get("/api/cognitive-tests")

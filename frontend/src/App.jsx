@@ -21,6 +21,7 @@ import TopomapDashboard from './components/TopomapDashboard'
 import ExpertDashboard from './components/ExpertDashboard'
 import DataCleaningDashboard from './components/DataCleaningDashboard'
 import ICLabelDashboard from './components/ICLabelDashboard'
+import SeizureTimelineDashboard from './components/SeizureTimelineDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -129,7 +130,8 @@ function App() {
     { id: 'topomap', label: 'Topographic Maps' },
     { id: 'expert', label: 'Expert Dashboards' },
     { id: 'datacleaning', label: 'Data Cleaning' },
-    { id: 'icalabel', label: 'ICLabel QC' }
+    { id: 'icalabel', label: 'ICLabel QC' },
+    { id: 'seizuretimeline', label: 'Seizure Timeline' }
   ]
 
   // API Calls
@@ -1207,6 +1209,8 @@ function App() {
         return <DataCleaningDashboard />
       case 'icalabel':
         return <ICLabelDashboard />
+      case 'seizuretimeline':
+        return <SeizureTimelineDashboard />
       default:
         return renderClassificationTab()
     }
