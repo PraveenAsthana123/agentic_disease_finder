@@ -103,8 +103,8 @@
       "dashboards": [
         {
           "name": "Retrieval Dashboard",
-          "status": "partial",
-          "maps_to": "patient-chat retrieval"
+          "status": "built",
+          "maps_to": "/api/retrieval/overview + /api/retrieval/breakdown + /api/retrieval/definitions"
         },
         {
           "name": "Vector DB Dashboard",

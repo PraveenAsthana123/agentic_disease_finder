@@ -4736,6 +4736,33 @@ async def retrieval_eval_definitions():
     return _json_safe(red.retrieval_definitions())
 
 
+# ── Retrieval Dashboard ──────────────────────────────────────────────
+# Real data: clinical.db transaction_log (patient_chat), conversation_log,
+# ChromaDB vector store — query volume, patient coverage, vector health.
+
+@app.get("/api/retrieval/overview")
+async def retrieval_overview():
+    """Retrieval overview — query volume, patient coverage, vector store
+    health, queue status, collection stats from real data."""
+    import scripts.retrieval_dashboard as rtv
+    return _json_safe(rtv.retrieval_overview())
+
+
+@app.get("/api/retrieval/breakdown")
+async def retrieval_breakdown():
+    """Per-patient retrieval activity, query text analysis, embedding
+    timeline, collection detail, top queries."""
+    import scripts.retrieval_dashboard as rtv
+    return _json_safe(rtv.retrieval_breakdown())
+
+
+@app.get("/api/retrieval/definitions")
+async def retrieval_definitions():
+    """Metric definitions for the Retrieval dashboard."""
+    import scripts.retrieval_dashboard as rtv
+    return _json_safe(rtv.retrieval_definitions())
+
+
 # ── Agent Loop / Goal-Drift Dashboard ────────────────────────────────
 
 @app.get("/api/agent-loop/overview")
