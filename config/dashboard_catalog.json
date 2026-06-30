@@ -122,8 +122,8 @@
         },
         {
           "name": "Citation Dashboard",
-          "status": "partial",
-          "maps_to": "RAG citation note"
+          "status": "built",
+          "maps_to": "CitationDashboard.jsx + scripts/citation_dashboard.py"
         },
         {
           "name": "Knowledge Graph Dashboard",

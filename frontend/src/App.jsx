@@ -64,6 +64,7 @@ import AgentLoopDashboard from './components/AgentLoopDashboard'
 import ExecutiveAIDashboard from './components/ExecutiveAIDashboard'
 import EventQueueDashboard from './components/EventQueueDashboard'
 import RoutingDashboard from './components/RoutingDashboard'
+import CitationDashboard from './components/CitationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -215,7 +216,8 @@ function App() {
     { id: 'agent-loop', label: 'Agent Loop / Goal-Drift' },
     { id: 'executive-ai', label: 'Executive AI' },
     { id: 'event-queue', label: 'Event / Queue' },
-    { id: 'routing', label: 'Routing' }
+    { id: 'routing', label: 'Routing' },
+    { id: 'citation', label: 'Citation' }
   ]
 
   // API Calls
@@ -1379,6 +1381,8 @@ function App() {
         return <EventQueueDashboard />
       case 'routing':
         return <RoutingDashboard />
+      case 'citation':
+        return <CitationDashboard />
       default:
         return renderClassificationTab()
     }

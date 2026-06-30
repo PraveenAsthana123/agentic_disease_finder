@@ -4810,6 +4810,33 @@ async def routing_definitions():
     return _json_safe(rtd.routing_definitions())
 
 
+# ── Citation Dashboard ────────────────────────────────────────────
+# Real data: ChromaDB embeddings (75 docs) + clinical.db conversation_log (225),
+# analyses (21), transaction_log (558) — citation coverage, grounding, faithfulness.
+
+@app.get("/api/citation/overview")
+async def citation_overview():
+    """Citation overview — citation rate, source coverage, quality score,
+    per-type stats, daily volume, faithfulness from real data."""
+    import scripts.citation_dashboard as citd
+    return _json_safe(citd.citation_overview())
+
+
+@app.get("/api/citation/breakdown")
+async def citation_breakdown():
+    """Per-response citation detail, per-disease coverage, document mapping,
+    gap analysis, component rates, temporal trends, expert alignment."""
+    import scripts.citation_dashboard as citd
+    return _json_safe(citd.citation_breakdown())
+
+
+@app.get("/api/citation/definitions")
+async def citation_definitions():
+    """Metric definitions for the Citation dashboard."""
+    import scripts.citation_dashboard as citd
+    return _json_safe(citd.citation_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
