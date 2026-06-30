@@ -4388,6 +4388,30 @@ async def campaigns_definitions():
     return _json_safe(cmp.campaigns_definitions())
 
 
+# ── AI Risk Dashboard ────────────────────────────────────────────
+
+@app.get("/api/ai-risk/overview")
+async def ai_risk_overview():
+    """AI risk overview — risk register, severity distribution, daily trend,
+    alert/guardrail/seizure counts from real clinical.db data."""
+    import scripts.ai_risk_dashboard as ard
+    return _json_safe(ard.risk_overview())
+
+
+@app.get("/api/ai-risk/breakdown")
+async def ai_risk_breakdown():
+    """Per-category risk breakdown — grouped risks with severity tallies."""
+    import scripts.ai_risk_dashboard as ard
+    return _json_safe(ard.risk_breakdown())
+
+
+@app.get("/api/ai-risk/definitions")
+async def ai_risk_definitions():
+    """AI risk metric definitions for tooltip overlays."""
+    import scripts.ai_risk_dashboard as ard
+    return _json_safe(ard.risk_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

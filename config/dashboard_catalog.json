@@ -35,8 +35,8 @@
         },
         {
           "name": "AI Risk Dashboard",
-          "status": "partial",
-          "maps_to": "risk_management table"
+          "status": "built",
+          "maps_to": "/api/ai-risk/overview + /api/ai-risk/breakdown + /api/ai-risk/definitions"
         },
         {
           "name": "AI Compliance Dashboard",
