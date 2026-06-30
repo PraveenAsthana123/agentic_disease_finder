@@ -173,8 +173,8 @@
         },
         {
           "name": "Agent Memory Dashboard",
-          "status": "partial",
-          "maps_to": "patient master / clinical DB"
+          "status": "built",
+          "maps_to": "/api/agent-memory/overview + /api/agent-memory/breakdown + /api/agent-memory/definitions"
         },
         {
           "name": "Agent Evaluation Dashboard",

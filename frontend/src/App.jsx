@@ -65,6 +65,7 @@ import ExecutiveAIDashboard from './components/ExecutiveAIDashboard'
 import EventQueueDashboard from './components/EventQueueDashboard'
 import RoutingDashboard from './components/RoutingDashboard'
 import CitationDashboard from './components/CitationDashboard'
+import AgentMemoryDashboard from './components/AgentMemoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -217,7 +218,8 @@ function App() {
     { id: 'executive-ai', label: 'Executive AI' },
     { id: 'event-queue', label: 'Event / Queue' },
     { id: 'routing', label: 'Routing' },
-    { id: 'citation', label: 'Citation' }
+    { id: 'citation', label: 'Citation' },
+    { id: 'agent-memory', label: 'Agent Memory' }
   ]
 
   // API Calls
@@ -1383,6 +1385,8 @@ function App() {
         return <RoutingDashboard />
       case 'citation':
         return <CitationDashboard />
+      case 'agent-memory':
+        return <AgentMemoryDashboard />
       default:
         return renderClassificationTab()
     }

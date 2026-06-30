@@ -4837,6 +4837,29 @@ async def citation_definitions():
     return _json_safe(citd.citation_definitions())
 
 
+@app.get("/api/agent-memory/overview")
+async def agent_memory_overview():
+    """Agent memory overview — coverage, completeness, staleness,
+    domain fill rates, conversation depth from real data."""
+    import scripts.agent_memory_dashboard as amd
+    return _json_safe(amd.memory_overview())
+
+
+@app.get("/api/agent-memory/breakdown")
+async def agent_memory_breakdown():
+    """Per-patient memory profiles, domain co-occurrence, coverage gaps,
+    component attribution, disease memory depth, recent writes."""
+    import scripts.agent_memory_dashboard as amd
+    return _json_safe(amd.memory_breakdown())
+
+
+@app.get("/api/agent-memory/definitions")
+async def agent_memory_definitions():
+    """Metric definitions for the Agent Memory dashboard."""
+    import scripts.agent_memory_dashboard as amd
+    return _json_safe(amd.memory_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
