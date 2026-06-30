@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-06-23",
+  "updated_at": "2026-06-29",
   "phases": [
     {
       "phase": 1,
@@ -127,7 +127,8 @@
         },
         {
           "name": "Knowledge Graph Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/knowledge-graph/overview + /api/knowledge-graph/breakdown + /api/knowledge-graph/definitions"
         },
         {
           "name": "Retrieval Evaluation Dashboard",

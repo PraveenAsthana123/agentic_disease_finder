@@ -4554,6 +4554,29 @@ async def hallucination_definitions():
     return _json_safe(hal.hallucination_definitions())
 
 
+# ── Knowledge Graph Dashboard ────────────────────────────────────────
+# Real data: clinical.db entity-relationship graph (patients, diseases,
+# medications, analyses, MRI, neuropsych, HITL reviews) + ChromaDB embeddings.
+
+@app.get("/api/knowledge-graph/overview")
+async def knowledge_graph_overview():
+    """Knowledge graph overview — node/edge counts, entity types, hub nodes."""
+    import scripts.knowledge_graph_dashboard as kgd
+    return _json_safe(kgd.knowledge_graph_overview())
+
+@app.get("/api/knowledge-graph/breakdown")
+async def knowledge_graph_breakdown():
+    """Per-patient subgraphs, disease clusters, medication network, full graph."""
+    import scripts.knowledge_graph_dashboard as kgd
+    return _json_safe(kgd.knowledge_graph_breakdown())
+
+@app.get("/api/knowledge-graph/definitions")
+async def knowledge_graph_definitions():
+    """Metric definitions for the Knowledge Graph dashboard."""
+    import scripts.knowledge_graph_dashboard as kgd
+    return _json_safe(kgd.knowledge_graph_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
