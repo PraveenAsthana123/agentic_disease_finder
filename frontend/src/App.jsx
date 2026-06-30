@@ -69,6 +69,7 @@ import AgentMemoryDashboard from './components/AgentMemoryDashboard'
 import MCPFederationDashboard from './components/MCPFederationDashboard'
 import ReleaseDashboard from './components/ReleaseDashboard'
 import RetrievalDashboard from './components/RetrievalDashboard'
+import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -1257,6 +1258,7 @@ function App() {
     { id: 'tool_inference', name: 'Inference Testing', icon: '🧪', element: <InferenceDashboard /> },
     { id: 'tool_integrations', name: 'Integrations', icon: '🔌', element: <IntegrationHub /> },
     { id: 'tool_infographics', name: 'Infographics', icon: '📊', element: <InfographicsDashboard /> },
+    { id: 'tool_agent_eval', name: 'Agent Evaluation', icon: '🔍', element: <AgentEvaluationDashboard /> },
   ]
 
   // Render active tab content
@@ -1399,6 +1401,8 @@ function App() {
         return <MCPFederationDashboard />
       case 'release':
         return <ReleaseDashboard />
+      case 'agent-eval':
+        return <AgentEvaluationDashboard />
       default:
         return renderClassificationTab()
     }

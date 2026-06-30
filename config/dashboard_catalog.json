@@ -178,8 +178,10 @@
         },
         {
           "name": "Agent Evaluation Dashboard",
-          "status": "partial",
-          "maps_to": "consensus + decision"
+          "status": "built",
+          "maps_to": "consensus + decision",
+          "endpoint": "/api/agent-eval/overview",
+          "component": "AgentEvaluationDashboard.jsx"
         },
         {
           "name": "Agent Loop / Goal-Drift Dashboard",

@@ -4941,6 +4941,28 @@ async def release_definitions():
     return _json_safe(rld.release_definitions())
 
 
+# ── Agent Evaluation Dashboard ──────────────────────────────────────────
+@app.get("/api/agent-eval/overview")
+async def agent_eval_overview():
+    """Agent Evaluation — AI analysis confidence, expert/HITL agreement, decision routing, coverage."""
+    import scripts.agent_eval_dashboard as aed
+    return _json_safe(aed.agent_eval_overview())
+
+
+@app.get("/api/agent-eval/breakdown")
+async def agent_eval_breakdown():
+    """Agent Evaluation — expert review logs, HITL logs, clinical decision logs, event logs."""
+    import scripts.agent_eval_dashboard as aed
+    return _json_safe(aed.agent_eval_breakdown())
+
+
+@app.get("/api/agent-eval/definitions")
+async def agent_eval_definitions():
+    """Metric definitions for the Agent Evaluation dashboard."""
+    import scripts.agent_eval_dashboard as aed
+    return _json_safe(aed.agent_eval_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
