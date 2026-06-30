@@ -76,6 +76,7 @@ import ResponsibleAIDashboard from './components/ResponsibleAIDashboard'
 import AppointmentsDashboard from './components/AppointmentsDashboard'
 import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
+import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -238,7 +239,8 @@ function App() {
     { id: 'responsible-ai', label: 'Responsible AI' },
     { id: 'appointments', label: 'Appointments' },
     { id: 'finops', label: 'FinOps' },
-    { id: 'cssrs', label: 'C-SSRS' }
+    { id: 'cssrs', label: 'C-SSRS' },
+    { id: 'ica-noise-cleaning', label: 'ICA Cleaning' }
   ]
 
   // API Calls
@@ -1427,6 +1429,8 @@ function App() {
         return <FinOpsDashboard />
       case 'cssrs':
         return <CSSRSDashboard />
+      case 'ica-noise-cleaning':
+        return <ICANoiseCleaningDashboard />
       default:
         return renderClassificationTab()
     }

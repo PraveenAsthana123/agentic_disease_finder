@@ -5183,6 +5183,28 @@ async def cssrs_definitions():
     return _json_safe(cssd.definitions())
 
 
+# ── ICA Noise Cleaning Dashboard ──────────────────────────────────────
+@app.get("/api/ica-noise-cleaning/overview")
+async def ica_noise_overview():
+    """ICA noise cleaning summary: KPIs, per-subject, variance distribution."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.overview())
+
+
+@app.get("/api/ica-noise-cleaning/breakdown")
+async def ica_noise_breakdown():
+    """ICA per-file detail, component analysis, pipeline stages."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.breakdown())
+
+
+@app.get("/api/ica-noise-cleaning/definitions")
+async def ica_noise_definitions():
+    """Metric definitions for the ICA Noise Cleaning dashboard."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
