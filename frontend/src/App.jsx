@@ -57,6 +57,7 @@ import HallucinationDashboard from './components/HallucinationDashboard'
 import DevOpsDashboard from './components/DevOpsDashboard'
 import ContentFreshnessDashboard from './components/ContentFreshnessDashboard'
 import AIComplianceDashboard from './components/AIComplianceDashboard'
+import ResponseQualityDashboard from './components/ResponseQualityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -201,7 +202,8 @@ function App() {
     { id: 'hallucination', label: 'Hallucination' },
     { id: 'devops', label: 'DevOps / CI-CD' },
     { id: 'content-freshness', label: 'Content Freshness' },
-    { id: 'ai-compliance', label: 'AI Compliance' }
+    { id: 'ai-compliance', label: 'AI Compliance' },
+    { id: 'response-quality', label: 'Response Quality' }
   ]
 
   // API Calls
@@ -1351,6 +1353,8 @@ function App() {
         return <ContentFreshnessDashboard />
       case 'ai-compliance':
         return <AIComplianceDashboard />
+      case 'response-quality':
+        return <ResponseQualityDashboard />
       default:
         return renderClassificationTab()
     }

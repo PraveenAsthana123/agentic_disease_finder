@@ -4650,6 +4650,33 @@ async def ai_compliance_definitions():
     return _json_safe(acd.compliance_definitions())
 
 
+# ── Response Quality Dashboard ─────────────────────────────────────
+# Real data: clinical.db conversation_log (213 messages), analyses (21),
+# feedback ratings, transaction_log (549), ChromaDB RAG coverage.
+
+@app.get("/api/response-quality/overview")
+async def response_quality_overview():
+    """Response quality overview — quality scores, confidence distribution,
+    structure/data/citation rates, daily timeline from real conversation data."""
+    import scripts.response_quality_dashboard as rqd
+    return _json_safe(rqd.response_quality_overview())
+
+
+@app.get("/api/response-quality/breakdown")
+async def response_quality_breakdown():
+    """Per-response detail, per-disease analysis quality, component reliability,
+    RAG coverage, and feedback drill-down."""
+    import scripts.response_quality_dashboard as rqd
+    return _json_safe(rqd.response_quality_breakdown())
+
+
+@app.get("/api/response-quality/definitions")
+async def response_quality_definitions():
+    """Metric definitions for the Response Quality dashboard."""
+    import scripts.response_quality_dashboard as rqd
+    return _json_safe(rqd.response_quality_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

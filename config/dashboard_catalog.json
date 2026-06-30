@@ -82,8 +82,8 @@
         },
         {
           "name": "Response Quality Dashboard",
-          "status": "partial",
-          "maps_to": "SHAP + responsible-ai"
+          "status": "built",
+          "maps_to": "/api/response-quality/overview + /api/response-quality/breakdown + /api/response-quality/definitions"
         },
         {
           "name": "Routing Dashboard",
