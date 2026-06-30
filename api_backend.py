@@ -5062,6 +5062,33 @@ async def responsible_ai_dash_definitions():
     return _json_safe(rad.responsible_ai_definitions())
 
 
+# ── MCP Security Dashboard ────────────────────────────────────
+# Real data: guardrail enforcement, actor privilege matrix, security agent
+# activity, access audit, attack surface, temporal patterns from clinical.db.
+
+@app.get("/api/mcp-security/overview")
+async def mcp_security_overview():
+    """MCP Security overview — guardrail events, blocked count, sign-offs,
+    actor privileges, security agent activity, attack surface from real data."""
+    import scripts.mcp_security_dashboard as msd
+    return _json_safe(msd.mcp_security_overview())
+
+
+@app.get("/api/mcp-security/breakdown")
+async def mcp_security_breakdown():
+    """MCP Security breakdown — patient access audit, actor-component matrix,
+    daily security trend, hourly pattern, privileged event log."""
+    import scripts.mcp_security_dashboard as msd
+    return _json_safe(msd.mcp_security_breakdown())
+
+
+@app.get("/api/mcp-security/definitions")
+async def mcp_security_definitions():
+    """Metric definitions for the MCP Security dashboard."""
+    import scripts.mcp_security_dashboard as msd
+    return _json_safe(msd.mcp_security_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -227,8 +227,8 @@
         },
         {
           "name": "MCP Security Dashboard",
-          "status": "partial",
-          "maps_to": "guardrails + audit"
+          "status": "built",
+          "maps_to": "/api/mcp-security/{overview,breakdown,definitions} + /mcp-security"
         },
         {
           "name": "MCP Federation Dashboard",
