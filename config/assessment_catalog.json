@@ -1,6 +1,6 @@
 {
-  "title": "Clinical Assessment Catalog \u2014 Epilepsy EEG Thesis",
-  "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). \u00a7155 honest.",
+  "title": "Clinical Assessment Catalog — Epilepsy EEG Thesis",
+  "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). §155 honest.",
   "updated_at": "2026-06-26",
   "top10_for_thesis": [
     "EEG Report",
@@ -56,7 +56,7 @@
           "output": "Lesion findings",
           "specialist": "Radiologist",
           "priority": "preferred",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "SUDEP Risk Assessment",
@@ -65,7 +65,7 @@
           "specialist": "Neurologist",
           "priority": "valuable",
           "status": "built",
-          "note": "SUDEP risk assessment \u2014 endpoints live (/api/neuro-scales/sudep/*), real clinical.db data"
+          "note": "SUDEP risk assessment — endpoints live (/api/neuro-scales/sudep/*), real clinical.db data"
         }
       ]
     },
@@ -148,7 +148,7 @@
           "specialist": "Psychiatrist",
           "priority": "valuable",
           "status": "built",
-          "note": "BDI-II 21-item depression \u2014 4 endpoints live (/api/neuro-scales/bdi/*), real clinical.db data"
+          "note": "BDI-II 21-item depression — 4 endpoints live (/api/neuro-scales/bdi/*), real clinical.db data"
         },
         {
           "name": "Columbia Suicide Severity (C-SSRS)",
@@ -157,7 +157,7 @@
           "specialist": "Psychiatrist",
           "priority": "valuable",
           "status": "built",
-          "note": "C-SSRS dashboard \u2014 endpoints live (/api/cssrs-dashboard/*), real clinical.db data, 54 assessments across 20 patients"
+          "note": "C-SSRS dashboard — endpoints live (/api/cssrs-dashboard/*), real clinical.db data, 54 assessments across 20 patients"
         }
       ]
     },
@@ -197,7 +197,7 @@
           "specialist": "Neurologist",
           "priority": "valuable",
           "status": "built",
-          "note": "PSQI 7-component sleep quality \u2014 4 endpoints live (/api/neuro-scales/psqi/*), real clinical.db data"
+          "note": "PSQI 7-component sleep quality — 4 endpoints live (/api/neuro-scales/psqi/*), real clinical.db data"
         }
       ]
     },
@@ -239,7 +239,7 @@
           "status": "built",
           "endpoint": "/api/fim-dashboard/overview",
           "frontend": "FIM tab in nav",
-          "note": "FIM 18-item functional independence \u2014 3 endpoints live (/api/fim-dashboard/*), real clinical.db data, 23 patients"
+          "note": "FIM 18-item functional independence — 3 endpoints live (/api/fim-dashboard/*), real clinical.db data, 23 patients"
         }
       ]
     },
@@ -316,6 +316,6 @@
     "built": 21,
     "partial": 3,
     "planned": 2,
-    "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets \u2014 each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."
+    "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets — each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."
   }
 }

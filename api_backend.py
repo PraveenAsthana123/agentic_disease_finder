@@ -5269,6 +5269,36 @@ async def digit_span_definitions():
     return _json_safe(ds.definitions())
 
 
+# ── MRI Brain Review (Epilepsy Pre-Surgical Evaluation) ────────────
+
+@app.get("/api/mri-review/overview")
+async def mri_review_overview(patient_id: str = None):
+    """MRI Brain Review overview — structural MRI findings for epilepsy
+    pre-surgical evaluation. Lesion types (HS/FCD/tumour/cavernoma/AVM),
+    classification (lesional/non-lesional/equivocal/normal), lobe and
+    laterality distribution. All from REAL mri_findings in clinical.db."""
+    import scripts.mri_brain_review as mri
+    return _json_safe(mri.mri_overview(patient_id))
+
+
+@app.get("/api/mri-review/breakdown")
+async def mri_review_breakdown(patient_id: str = None):
+    """MRI per-patient breakdown — detailed findings, volumetric analysis
+    (hippocampal volume asymmetry), T2/FLAIR signal, enhancement, quality,
+    EEG-MRI concordance check against seizure diary data."""
+    import scripts.mri_brain_review as mri
+    return _json_safe(mri.mri_breakdown(patient_id))
+
+
+@app.get("/api/mri-review/definitions")
+async def mri_review_definitions():
+    """MRI Brain Review definitions — lesion types, classification criteria,
+    epilepsy MRI protocol (3T sequences), volumetric thresholds, clinical
+    significance references."""
+    import scripts.mri_brain_review as mri
+    return _json_safe(mri.mri_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
