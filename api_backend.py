@@ -5299,6 +5299,28 @@ async def mri_review_definitions():
     return _json_safe(mri.mri_definitions())
 
 
+# ── AMPS (Assessment of Motor and Process Skills) Dashboard ──────────
+@app.get("/api/amps-dashboard/overview")
+async def amps_overview(patient_id: str = None):
+    """AMPS overview: KPIs, performance distribution, per-patient summaries."""
+    import scripts.neuro_scales_amps as amps
+    return _json_safe(amps.overview(patient_id))
+
+
+@app.get("/api/amps-dashboard/breakdown")
+async def amps_breakdown(patient_id: str = None):
+    """AMPS breakdown: motor/process group averages, item heatmap, logit scatter."""
+    import scripts.neuro_scales_amps as amps
+    return _json_safe(amps.breakdown(patient_id))
+
+
+@app.get("/api/amps-dashboard/definitions")
+async def amps_definitions():
+    """Metric definitions for the AMPS dashboard."""
+    import scripts.neuro_scales_amps as amps
+    return _json_safe(amps.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

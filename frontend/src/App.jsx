@@ -80,6 +80,7 @@ import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import WAISDashboard from './components/WAISDashboard'
 import DigitSpanDashboard from './components/DigitSpanDashboard'
+import AMPSDashboard from './components/AMPSDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -246,7 +247,8 @@ function App() {
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
     { id: 'fim', label: 'FIM' },
     { id: 'wais', label: 'WAIS (IQ)' },
-    { id: 'digit-span', label: 'Digit Span' }
+    { id: 'digit-span', label: 'Digit Span' },
+    { id: 'amps', label: 'AMPS' }
   ]
 
   // API Calls
@@ -1443,6 +1445,8 @@ function App() {
         return <WAISDashboard />
       case 'digit-span':
         return <DigitSpanDashboard />
+      case 'amps':
+        return <AMPSDashboard />
       default:
         return renderClassificationTab()
     }

@@ -260,7 +260,7 @@
           "output": "Score",
           "specialist": "OT",
           "priority": "valuable",
-          "status": "planned"
+          "status": "built"
         }
       ]
     }
@@ -313,9 +313,9 @@
   ],
   "summary": {
     "total_instruments": 27,
-    "built": 21,
+    "built": 22,
     "partial": 3,
-    "planned": 2,
+    "planned": 1,
     "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets — each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."
   }
 }
