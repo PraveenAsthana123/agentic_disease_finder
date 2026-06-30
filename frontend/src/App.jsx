@@ -79,6 +79,7 @@ import CSSRSDashboard from './components/CSSRSDashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import WAISDashboard from './components/WAISDashboard'
+import DigitSpanDashboard from './components/DigitSpanDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -244,7 +245,8 @@ function App() {
     { id: 'cssrs', label: 'C-SSRS' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
     { id: 'fim', label: 'FIM' },
-    { id: 'wais', label: 'WAIS (IQ)' }
+    { id: 'wais', label: 'WAIS (IQ)' },
+    { id: 'digit-span', label: 'Digit Span' }
   ]
 
   // API Calls
@@ -1439,6 +1441,8 @@ function App() {
         return <FIMDashboard />
       case 'wais':
         return <WAISDashboard />
+      case 'digit-span':
+        return <DigitSpanDashboard />
       default:
         return renderClassificationTab()
     }

@@ -5248,6 +5248,27 @@ async def wais_definitions():
     return _json_safe(wais.definitions())
 
 
+@app.get("/api/digit-span-dashboard/overview")
+async def digit_span_overview():
+    """Digit Span overview: KPIs, performance distribution, per-patient summaries."""
+    import scripts.digit_span_dashboard as ds
+    return _json_safe(ds.overview())
+
+
+@app.get("/api/digit-span-dashboard/breakdown")
+async def digit_span_breakdown():
+    """Digit Span breakdown: condition analysis, asymmetry, per-patient history."""
+    import scripts.digit_span_dashboard as ds
+    return _json_safe(ds.breakdown())
+
+
+@app.get("/api/digit-span-dashboard/definitions")
+async def digit_span_definitions():
+    """Metric definitions for the Digit Span dashboard."""
+    import scripts.digit_span_dashboard as ds
+    return _json_safe(ds.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
