@@ -26,6 +26,7 @@ BUILDABLE = [
 # aif360_bias (AIF360 bias detection dashboard — 3 endpoints verified 200, registry cataloged→built)
 # torcheeg (TorchEEG dashboard — 5 transforms + EEGNet-Mini classifier, 3 endpoints verified 200)
 # inference_gpu (Inference/GPU Dashboard — real nvidia-smi + model scan + system info, 3 endpoints verified 200)
+# medication_dashboard (Medication Dashboard — 6 endpoints + Next.js page + nav wired, real clinical.db prescriptions/schedule/adherence/warnings/side-effects)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
