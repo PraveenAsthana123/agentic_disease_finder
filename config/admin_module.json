@@ -20,7 +20,7 @@
     {"id": "mlops", "label": "⚙️ MLOps", "purpose": "training pipeline, experiment tracking, feature store, CV metrics", "status": "partial", "maps_to": "Model Lab + benchmarks"},
     {"id": "secops", "label": "🔒 SecOps", "purpose": "threat detection, injection/jailbreak, access audit, incident", "status": "partial", "maps_to": "guardrails + audit (SIEM planned)"},
     {"id": "dataops", "label": "📦 DataOps", "purpose": "ingestion, data quality, lineage, vector ingest", "status": "partial", "maps_to": "eeg_ingest + VECTOR-INGEST cron"},
-    {"id": "finops", "label": "💰 FinOps", "purpose": "token/GPU/cloud cost per request/user/model", "status": "planned"},
+    {"id": "finops", "label": "💰 FinOps", "purpose": "token/GPU/cloud cost per request/user/model", "status": "built", "maps_to": "/api/finops/* + FinOpsDashboard.jsx"},
     {"id": "observability", "label": "👁️ Observability", "purpose": "logs, traces, metrics, request_id", "status": "partial", "maps_to": "transaction_log (OTel planned)"}
   ],
   "access_control": [

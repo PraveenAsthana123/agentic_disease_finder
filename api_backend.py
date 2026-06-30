@@ -5136,6 +5136,31 @@ async def seizure_severity_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── FinOps Dashboard ─────────────────────────────────────────
+
+@app.get("/api/finops/overview")
+async def finops_overview():
+    """FinOps cost overview — total spend, budget, category breakdown,
+    top services, daily trend, cost per request/patient."""
+    import scripts.finops_dashboard as fod
+    return _json_safe(fod.overview())
+
+
+@app.get("/api/finops/breakdown")
+async def finops_breakdown():
+    """FinOps detailed breakdown — model token costs, GPU utilization,
+    component spend, per-patient costs, weekly comparison, cloud services."""
+    import scripts.finops_dashboard as fod
+    return _json_safe(fod.breakdown())
+
+
+@app.get("/api/finops/definitions")
+async def finops_definitions():
+    """Metric definitions for the FinOps dashboard."""
+    import scripts.finops_dashboard as fod
+    return _json_safe(fod.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

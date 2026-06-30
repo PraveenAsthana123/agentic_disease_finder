@@ -74,6 +74,7 @@ import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
 import IntegrationDashboard from './components/IntegrationDashboard'
 import ResponsibleAIDashboard from './components/ResponsibleAIDashboard'
 import AppointmentsDashboard from './components/AppointmentsDashboard'
+import FinOpsDashboard from './components/FinOpsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -234,7 +235,8 @@ function App() {
     { id: 'release', label: 'Release Mgmt' },
     { id: 'integration-dash', label: 'Integration' },
     { id: 'responsible-ai', label: 'Responsible AI' },
-    { id: 'appointments', label: 'Appointments' }
+    { id: 'appointments', label: 'Appointments' },
+    { id: 'finops', label: 'FinOps' }
   ]
 
   // API Calls
@@ -1419,6 +1421,8 @@ function App() {
         return <ResponsibleAIDashboard />
       case 'appointments':
         return <AppointmentsDashboard />
+      case 'finops':
+        return <FinOpsDashboard />
       default:
         return renderClassificationTab()
     }
