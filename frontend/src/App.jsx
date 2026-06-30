@@ -72,6 +72,7 @@ import ReleaseDashboard from './components/ReleaseDashboard'
 import RetrievalDashboard from './components/RetrievalDashboard'
 import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
 import IntegrationDashboard from './components/IntegrationDashboard'
+import ResponsibleAIDashboard from './components/ResponsibleAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -230,7 +231,8 @@ function App() {
     { id: 'mcp-overview', label: 'MCP Overview' },
     { id: 'mcp-federation', label: 'MCP Federation' },
     { id: 'release', label: 'Release Mgmt' },
-    { id: 'integration-dash', label: 'Integration' }
+    { id: 'integration-dash', label: 'Integration' },
+    { id: 'responsible-ai', label: 'Responsible AI' }
   ]
 
   // API Calls
@@ -1411,6 +1413,8 @@ function App() {
         return <AgentEvaluationDashboard />
       case 'integration-dash':
         return <IntegrationDashboard />
+      case 'responsible-ai':
+        return <ResponsibleAIDashboard />
       default:
         return renderClassificationTab()
     }

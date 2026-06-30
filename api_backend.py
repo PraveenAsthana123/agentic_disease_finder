@@ -5038,6 +5038,30 @@ async def integration_dashboard_definitions():
     return _json_safe(igd.integration_definitions())
 
 
+# ── Responsible AI Dashboard ─────────────────────────────────────
+
+@app.get("/api/responsible-ai-dashboard/overview")
+async def responsible_ai_dash_overview():
+    """Responsible AI dashboard overview — overall score, framework breakdown,
+    test pass rate, fairness gate, disease accuracy, calibration from real data."""
+    import scripts.responsible_ai_dashboard as rad
+    return _json_safe(rad.responsible_ai_overview())
+
+
+@app.get("/api/responsible-ai-dashboard/breakdown")
+async def responsible_ai_dash_breakdown():
+    """Per-framework detail, robustness curves, consistency, error patterns."""
+    import scripts.responsible_ai_dashboard as rad
+    return _json_safe(rad.responsible_ai_breakdown())
+
+
+@app.get("/api/responsible-ai-dashboard/definitions")
+async def responsible_ai_dash_definitions():
+    """Responsible AI metric definitions for tooltip overlays."""
+    import scripts.responsible_ai_dashboard as rad
+    return _json_safe(rad.responsible_ai_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

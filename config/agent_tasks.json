@@ -1,0 +1,388 @@
+{
+  "domain": "epilepsy",
+  "description": "Agent/task registry for the EEG epilepsy master-data + analysis pipeline. Status is HONEST: built = code exists and is verified; scaffold = stub/partial; planned = not yet built.",
+  "updated_at": "2026-06-23",
+  "agents": [
+    {
+      "id": "ingest_router",
+      "task": "Route uploaded files by type to the right extractor",
+      "module": "eeg_ingest.extract_file",
+      "status": "built"
+    },
+    {
+      "id": "video_extractor",
+      "task": "Video-EEG: fps/frames/duration + high-motion event timestamps (OpenCV)",
+      "module": "eeg_ingest.extract_video",
+      "status": "built"
+    },
+    {
+      "id": "image_ocr",
+      "task": "EEG report image OCR + dimensions (pytesseract + Pillow)",
+      "module": "eeg_ingest.extract_image",
+      "status": "built"
+    },
+    {
+      "id": "pdf_extractor",
+      "task": "PDF report text extraction (PyMuPDF/pdfplumber)",
+      "module": "eeg_ingest.extract_pdf",
+      "status": "built"
+    },
+    {
+      "id": "docx_extractor",
+      "task": "Word document text extraction (python-docx)",
+      "module": "eeg_ingest.extract_docx",
+      "status": "built"
+    },
+    {
+      "id": "dat_extractor",
+      "task": "Binary .dat peek (float32 preview + size)",
+      "module": "eeg_ingest.extract_dat",
+      "status": "scaffold"
+    },
+    {
+      "id": "edf_extractor",
+      "task": "EDF/BDF parse + signal analysis + band power (MNE)",
+      "module": "eeg_analysis_pipeline.parse_eeg",
+      "status": "built"
+    },
+    {
+      "id": "text_extractor",
+      "task": "Plain text / CSV ingestion",
+      "module": "eeg_ingest.extract_text",
+      "status": "built"
+    },
+    {
+      "id": "master_data_builder",
+      "task": "Per-patient folder + aggregate master_data.json + DB registry",
+      "module": "eeg_ingest.ingest_patient",
+      "status": "built"
+    },
+    {
+      "id": "feature_extractor",
+      "task": "47-feature EEG vector (canonical)",
+      "module": "eeg_analysis_pipeline.extract_features",
+      "status": "built"
+    },
+    {
+      "id": "disease_classifier",
+      "task": "Trained epilepsy model prediction + confidence",
+      "module": "eeg_analysis_pipeline.classify",
+      "status": "built"
+    },
+    {
+      "id": "moa_ensemble",
+      "task": "Mixture-of-Agents: multi-disease agents + MCP orchestration",
+      "module": "scripts/test_agentic_mcp.py",
+      "status": "built"
+    },
+    {
+      "id": "subjectwise_eval",
+      "task": "Leakage-free subject-wise accuracy",
+      "module": "scripts/test_subjectwise_accuracy.py",
+      "status": "built"
+    },
+    {
+      "id": "transaction_logger",
+      "task": "Timestamped transaction history (UTC + local) per write",
+      "module": "clinical_db.log_transaction",
+      "status": "built"
+    },
+    {
+      "id": "synthetic_generator",
+      "task": "Synthetic epilepsy dataset (EEG + video-EEG, all sections)",
+      "module": "scripts/generate_synthetic_epilepsy.py",
+      "status": "built"
+    },
+    {
+      "id": "audio_converter",
+      "task": "Audio extraction/conversion from video-EEG (speech/sound markers)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "ffmpeg + librosa pipeline"
+    },
+    {
+      "id": "video_converter",
+      "task": "Video format/codec normalization + frame export pipeline",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "ffmpeg transcode wrapper"
+    },
+    {
+      "id": "body_movement_classifier",
+      "task": "Classify seizure-related body movement from video (pose/action)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "MediaPipe/pose model + labeled clips"
+    },
+    {
+      "id": "object_detector",
+      "task": "Detect patient/limbs/regions of interest in video frames",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "YOLO/detection model"
+    },
+    {
+      "id": "segmentation",
+      "task": "Segment EEG trace from scanned report images (waveform digitization)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "U-Net / classical trace extraction"
+    },
+    {
+      "id": "noise_cleaning",
+      "task": "EEG artifact removal / denoising (ICA, filtering)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "MNE ICA + artifact rejection"
+    },
+    {
+      "id": "explainability_xai",
+      "task": "SHAP / Grad-CAM on signals + compare vs expert ground-truth",
+      "module": "explainability_gt table (capture) + (compute planned)",
+      "status": "scaffold"
+    },
+    {
+      "id": "responsible_ai",
+      "task": "Fairness / privacy / safety gates per decision",
+      "module": "(planned)",
+      "status": "built",
+      "needs": "Fairlearn/AIF360 gates"
+    },
+    {
+      "id": "accountability_ai",
+      "task": "Per-decision audit row (actor/version/override) + transaction log",
+      "module": "clinical_db.hitl_reviews + transaction_log",
+      "status": "built"
+    },
+    {
+      "id": "interpretable_ai",
+      "task": "Surrogate tree / rule extraction approximating the model",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "surrogate model + rule export"
+    },
+    {
+      "id": "hitl_governance",
+      "task": "Human-in-the-loop accept/override + reason codes + KPIs",
+      "module": "clinical_db.hitl_reviews + department_report",
+      "status": "built"
+    },
+    {
+      "id": "iot_gateway",
+      "task": "IoT device gateway (MQTT/BLE) for wearables/embedded sensors",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "MQTT broker + device SDK"
+    },
+    {
+      "id": "emotiv_wearable",
+      "task": "Emotiv / consumer EEG wearable live stream ingestion",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "Emotiv Cortex API / LSL"
+    },
+    {
+      "id": "online_offline_device",
+      "task": "Online (streaming) + offline (batch) device modes",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "device state manager"
+    },
+    {
+      "id": "camera_stream",
+      "task": "Camera live video for seizure/movement monitoring",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "RTSP + OpenCV + pose model"
+    },
+    {
+      "id": "microphone_audio",
+      "task": "Microphone audio capture (vocalization during seizure)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "audio stream + classifier"
+    },
+    {
+      "id": "continuous_monitoring",
+      "task": "Continuous patient monitoring loop + thresholds",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "stream processor + rules"
+    },
+    {
+      "id": "phone_alerts_sos",
+      "task": "Phone alerts / SOS / body-temperature notifications",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "push (FCM/Twilio) + on-call escalation"
+    },
+    {
+      "id": "voice_ai",
+      "task": "Voice AI (speech in/out for patient interaction)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "STT + TTS"
+    },
+    {
+      "id": "conversational_ai",
+      "task": "Conversational AI assistant (patient/clinician Q&A)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "LLM + RAG over clinical corpus"
+    },
+    {
+      "id": "decision_ai",
+      "task": "Decision AI (rule + confidence + HITL routing)",
+      "module": "agentic_analysis/decision_analysis.py (analysis lib)",
+      "status": "scaffold"
+    },
+    {
+      "id": "analytics_ai",
+      "task": "Analytics AI (descriptive dashboards + KPIs)",
+      "module": "department_report + dashboards",
+      "status": "scaffold"
+    },
+    {
+      "id": "patient_dashboard",
+      "task": "Patient self-service dashboard + continuous reporting",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "auth/role-scoped read-only portal"
+    },
+    {
+      "id": "patient_reporting",
+      "task": "Scheduled patient reports (monitoring summaries)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "report scheduler + delivery"
+    },
+    {
+      "id": "feedback_ai",
+      "task": "Feedback AI (per role) \u2014 rating + correction capture (HITL signal)",
+      "module": "clinical_db.save_feedback + /api/feedback",
+      "status": "built"
+    },
+    {
+      "id": "correction_ai",
+      "task": "Correction AI (per role) \u2014 expert corrects AI output",
+      "module": "feedback.correction field + transaction_log",
+      "status": "built"
+    },
+    {
+      "id": "consensus_ai",
+      "task": "Consensus AI (per role) \u2014 agreement across reviewers",
+      "module": "clinical_db.consensus + /api/consensus",
+      "status": "built"
+    },
+    {
+      "id": "decision_ai",
+      "task": "Decision AI (per role/task) \u2014 route auto/review/escalate by confidence",
+      "module": "clinical_db.decision_route + /api/decision",
+      "status": "built"
+    },
+    {
+      "id": "guardrails_ai",
+      "task": "Guardrails (per phase) \u2014 PII + prompt-injection input/output filter",
+      "module": "rai_checks + /api/guardrails-check",
+      "status": "built"
+    },
+    {
+      "id": "assistant_ai",
+      "task": "Assistant AI (per role) \u2014 Ollama RAG chat over patient records",
+      "module": "ollama_agent + /api/patient-chat",
+      "status": "built"
+    },
+    {
+      "id": "nemo_guardrails",
+      "task": "NeMo Guardrails production rail engine (per phase)",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "nemoguardrails lib + rail configs"
+    },
+    {
+      "id": "rlhf_training",
+      "task": "RLHF \u2014 train from captured feedback/corrections",
+      "module": "(planned)",
+      "status": "planned",
+      "needs": "preference dataset + reward model"
+    },
+    {
+      "id": "model_lab",
+      "task": "Model Lab: SMOTE + feature selection + XGBoost/LightGBM + PCA",
+      "module": "eeg_datascience + /api/modellab",
+      "status": "built"
+    },
+    {
+      "id": "xgboost_lightgbm",
+      "task": "Boosted-tree model selection (XGBoost, LightGBM)",
+      "module": "eeg_datascience.model_compare",
+      "status": "built"
+    },
+    {
+      "id": "dim_reduction",
+      "task": "PCA dimensionality reduction",
+      "module": "eeg_datascience.pca",
+      "status": "built"
+    },
+    {
+      "id": "class_balancing",
+      "task": "SMOTE class balancing",
+      "module": "eeg_datascience.balance",
+      "status": "built"
+    },
+    {
+      "id": "council_of_agents",
+      "task": "Council of agents (author/reviewer/chair)",
+      "module": "(planned) \u2014 have MoA+consensus",
+      "status": "planned"
+    },
+    {
+      "id": "bmad",
+      "task": "BMAD spec-driven agent method",
+      "module": "(planned, in global ai-agents catalog)",
+      "status": "planned"
+    },
+    {
+      "id": "paperclip",
+      "task": "Paperclip business orchestration OS",
+      "module": "(planned)",
+      "status": "planned"
+    },
+    {
+      "id": "openclaw",
+      "task": "OpenClaw execution orchestration OS",
+      "module": "(planned)",
+      "status": "planned"
+    },
+    {
+      "id": "mcp_server",
+      "task": "Real MCP server (not just analysis)",
+      "module": "(planned) \u2014 have MCP analysis",
+      "status": "planned"
+    },
+    {
+      "id": "noise_cleaning_ica",
+      "task": "MNE-ICA noise cleaning",
+      "module": "(planned)",
+      "status": "planned"
+    },
+    {
+      "id": "cnn_resnet",
+      "task": "CNN/ResNet on spectrograms",
+      "module": "(planned)",
+      "status": "planned"
+    },
+    {
+      "id": "rnn_lstm",
+      "task": "RNN/LSTM temporal model",
+      "module": "(planned)",
+      "status": "planned"
+    },
+    {
+      "id": "yolo_detection",
+      "task": "YOLO object/movement detection (video)",
+      "module": "(planned)",
+      "status": "planned"
+    }
+  ]
+}
