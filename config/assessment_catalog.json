@@ -174,10 +174,12 @@
     {
      "name": "Liverpool Seizure Severity Scale",
      "purpose": "Seizure severity",
-     "output": "Score",
+     "output": "Score (20-80)",
      "specialist": "Neurologist",
      "priority": "valuable",
-     "status": "planned"
+     "status": "built",
+     "endpoint": "/api/seizure-severity-dashboard/overview",
+     "frontend": "/seizure-severity"
     },
     {
      "name": "Epworth Sleepiness Scale",

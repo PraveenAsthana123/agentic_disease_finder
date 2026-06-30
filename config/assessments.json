@@ -469,6 +469,50 @@
      "level": "severe"
     }
    ]
+  },
+  {
+   "id": "LSSS",
+   "name": "Liverpool Seizure Severity Scale (LSSS)",
+   "role": "Neurologist",
+   "icon": "\u26a1",
+   "max": 80,
+   "scoring": "sum",
+   "direction": "lower_better",
+   "scale": [1, 2, 3, 4],
+   "domains": [
+    {"id": "perception_control", "label": "Perception of Control", "max": 12, "items": 3},
+    {"id": "ictal", "label": "Ictal (During Seizure)", "max": 44, "items": 11},
+    {"id": "postictal", "label": "Post-Ictal (After Seizure)", "max": 24, "items": 6}
+   ],
+   "items": [
+    "Warning before seizure",
+    "Ability to fight off seizure",
+    "Control during seizure",
+    "Loss of consciousness",
+    "Severity of body movements",
+    "Incontinence during seizure",
+    "Biting tongue or cheek",
+    "Injury during seizure",
+    "Duration of seizure",
+    "Difficulty breathing",
+    "Severity of confusion after",
+    "Falling during seizure",
+    "Automatisms during seizure",
+    "Vocalization during seizure",
+    "Duration of recovery",
+    "Headache after seizure",
+    "Sleepiness after seizure",
+    "Muscle soreness after seizure",
+    "Difficulty speaking after",
+    "Weakness after seizure"
+   ],
+   "bands": [
+    {"min": 20, "max": 35, "label": "Mild seizure severity", "level": "mild"},
+    {"min": 36, "max": 50, "label": "Moderate seizure severity", "level": "moderate"},
+    {"min": 51, "max": 65, "label": "Severe seizures", "level": "severe"},
+    {"min": 66, "max": 80, "label": "Very severe seizures", "level": "critical"}
+   ],
+   "note": "Self-report measure. 20 items scored 1-4 (1=least severe, 4=most severe). Validated for adult epilepsy patients. Lower scores indicate better seizure control."
   }
  ]
 }

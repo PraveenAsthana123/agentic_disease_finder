@@ -5114,6 +5114,28 @@ async def appointments_definitions():
     return _json_safe(apd.appointments_definitions())
 
 
+# ── Seizure Severity Dashboard (Liverpool Seizure Severity Scale / LSSS) ──
+@app.get("/api/seizure-severity-dashboard/overview")
+async def seizure_severity_overview():
+    """LSSS summary: KPIs, severity distribution, per-patient latest scores."""
+    import scripts.seizure_severity_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/seizure-severity-dashboard/breakdown")
+async def seizure_severity_breakdown():
+    """LSSS domain analysis, per-item heatmap, trend, per-patient history."""
+    import scripts.seizure_severity_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/seizure-severity-dashboard/definitions")
+async def seizure_severity_definitions():
+    """Metric definitions for the Seizure Severity dashboard."""
+    import scripts.seizure_severity_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
