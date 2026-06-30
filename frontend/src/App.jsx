@@ -53,6 +53,7 @@ import DatabaseOpsDashboard from './components/DatabaseOpsDashboard'
 import CampaignsDashboard from './components/CampaignsDashboard'
 import AIRiskDashboard from './components/AIRiskDashboard'
 import ChunkingDashboard from './components/ChunkingDashboard'
+import HallucinationDashboard from './components/HallucinationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -193,7 +194,8 @@ function App() {
     { id: 'database-ops', label: 'Database Ops' },
     { id: 'campaigns', label: 'Campaigns' },
     { id: 'ai-risk', label: 'AI Risk' },
-    { id: 'chunking', label: 'Chunking' }
+    { id: 'chunking', label: 'Chunking' },
+    { id: 'hallucination', label: 'Hallucination' }
   ]
 
   // API Calls
@@ -1335,6 +1337,8 @@ function App() {
         return <AIRiskDashboard />
       case 'chunking':
         return <ChunkingDashboard />
+      case 'hallucination':
+        return <HallucinationDashboard />
       default:
         return renderClassificationTab()
     }

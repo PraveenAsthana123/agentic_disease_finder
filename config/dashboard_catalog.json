@@ -67,8 +67,8 @@
         },
         {
           "name": "Hallucination Dashboard",
-          "status": "partial",
-          "maps_to": "RAG grounding (citation)"
+          "status": "built",
+          "maps_to": "/api/hallucination/overview + /api/hallucination/breakdown + /api/hallucination/definitions"
         },
         {
           "name": "Drift Dashboard",

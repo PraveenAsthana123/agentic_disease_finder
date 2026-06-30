@@ -4523,6 +4523,29 @@ async def chunking_definitions():
     return _json_safe(chk.chunking_definitions())
 
 
+# ── Hallucination Dashboard ───────────────────────────────────────────
+# Real data: ChromaDB grounding analysis, clinical.db citation coverage,
+# conversation faithfulness scoring, HITL verification.
+
+@app.get("/api/hallucination/overview")
+async def hallucination_overview():
+    """Hallucination overview — risk score, grounding, citation rate, faithfulness."""
+    import scripts.hallucination_dashboard as hal
+    return _json_safe(hal.hallucination_overview())
+
+@app.get("/api/hallucination/breakdown")
+async def hallucination_breakdown():
+    """Per-patient grounding, disease coverage, mitigation strategies."""
+    import scripts.hallucination_dashboard as hal
+    return _json_safe(hal.hallucination_breakdown())
+
+@app.get("/api/hallucination/definitions")
+async def hallucination_definitions():
+    """Metric definitions for the Hallucination dashboard."""
+    import scripts.hallucination_dashboard as hal
+    return _json_safe(hal.hallucination_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
