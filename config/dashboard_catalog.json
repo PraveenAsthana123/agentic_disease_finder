@@ -117,7 +117,8 @@
         },
         {
           "name": "Chunking Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/chunking/overview + /api/chunking/breakdown + /api/chunking/definitions"
         },
         {
           "name": "Citation Dashboard",

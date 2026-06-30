@@ -4500,6 +4500,29 @@ async def vector_db_definitions():
     return _json_safe(vdb.vector_db_definitions())
 
 
+# ── Chunking Dashboard ─────────────────────────────────────────────────
+# Real data: ChromaDB chunk texts + lengths, production chunking config,
+# 5 strategy definitions, per-patient/per-type chunk stats.
+
+@app.get("/api/chunking/overview")
+async def chunking_overview():
+    """Chunking overview — KPIs, size distribution, doc-type mix, production config."""
+    import scripts.chunking_dashboard as chk
+    return _json_safe(chk.chunking_overview())
+
+@app.get("/api/chunking/breakdown")
+async def chunking_breakdown():
+    """Per-strategy config, per-patient chunk counts, per-type length stats."""
+    import scripts.chunking_dashboard as chk
+    return _json_safe(chk.chunking_breakdown())
+
+@app.get("/api/chunking/definitions")
+async def chunking_definitions():
+    """Metric definitions for the Chunking dashboard."""
+    import scripts.chunking_dashboard as chk
+    return _json_safe(chk.chunking_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
