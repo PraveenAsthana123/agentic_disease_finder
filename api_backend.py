@@ -4887,6 +4887,33 @@ async def mcp_federation_definitions():
     return _json_safe(mfd.federation_definitions())
 
 
+# ── Release Management Dashboard ────────────────────────────────
+# Real data: models/*.joblib, uploads (21), analyses (21), expert_reviews (3),
+# hitl_reviews (2), clinical_decisions (1), transaction_log change actions.
+
+@app.get("/api/release/overview")
+async def release_overview():
+    """Release overview — model inventory, dataset stats, approval rate,
+    training runs, change trend from real data."""
+    import scripts.release_dashboard as rld
+    return _json_safe(rld.release_overview())
+
+
+@app.get("/api/release/breakdown")
+async def release_breakdown():
+    """Per-patient uploads, expert review log, HITL overrides, training
+    schedule, component change log, hourly pattern."""
+    import scripts.release_dashboard as rld
+    return _json_safe(rld.release_breakdown())
+
+
+@app.get("/api/release/definitions")
+async def release_definitions():
+    """Metric definitions for the Release Management dashboard."""
+    import scripts.release_dashboard as rld
+    return _json_safe(rld.release_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -67,6 +67,7 @@ import RoutingDashboard from './components/RoutingDashboard'
 import CitationDashboard from './components/CitationDashboard'
 import AgentMemoryDashboard from './components/AgentMemoryDashboard'
 import MCPFederationDashboard from './components/MCPFederationDashboard'
+import ReleaseDashboard from './components/ReleaseDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -221,7 +222,8 @@ function App() {
     { id: 'routing', label: 'Routing' },
     { id: 'citation', label: 'Citation' },
     { id: 'agent-memory', label: 'Agent Memory' },
-    { id: 'mcp-federation', label: 'MCP Federation' }
+    { id: 'mcp-federation', label: 'MCP Federation' },
+    { id: 'release', label: 'Release Mgmt' }
   ]
 
   // API Calls
@@ -1391,6 +1393,8 @@ function App() {
         return <AgentMemoryDashboard />
       case 'mcp-federation':
         return <MCPFederationDashboard />
+      case 'release':
+        return <ReleaseDashboard />
       default:
         return renderClassificationTab()
     }

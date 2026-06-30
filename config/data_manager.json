@@ -358,7 +358,8 @@
     {
       "name": "Release",
       "shows": "dataset version, model version, approval, change log",
-      "status": "partial"
+      "status": "built",
+      "endpoint": "/api/release/overview"
     }
   ],
   "quality_assessments": [
@@ -375,8 +376,8 @@
   ],
   "summary": {
     "total_tasks": 17,
-    "built": 15,
-    "partial": 1,
+    "built": 16,
+    "partial": 0,
     "planned": 1
   }
 }
