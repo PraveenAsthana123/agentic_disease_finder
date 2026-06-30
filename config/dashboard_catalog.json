@@ -40,8 +40,8 @@
         },
         {
           "name": "AI Compliance Dashboard",
-          "status": "partial",
-          "maps_to": "compliance docs per role"
+          "status": "built",
+          "maps_to": "hitl_reviews + expert_reviews + clinical_decisions + transaction_log + EU AI Act mapping"
         },
         {
           "name": "Executive Scorecard",

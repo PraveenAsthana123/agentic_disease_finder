@@ -4625,6 +4625,31 @@ async def content_freshness_definitions():
     return _json_safe(cfd.content_freshness_definitions())
 
 
+# ── AI Compliance Dashboard ────────────────────────────────────────
+
+@app.get("/api/ai-compliance/overview")
+async def ai_compliance_overview():
+    """AI compliance overview — HITL reviews, expert agreement, audit trail,
+    EU AI Act risk tiers, governance checklist from real clinical.db data."""
+    import scripts.ai_compliance_dashboard as acd
+    return _json_safe(acd.compliance_overview())
+
+
+@app.get("/api/ai-compliance/breakdown")
+async def ai_compliance_breakdown():
+    """Per-role and per-component compliance drill-down — HITL details,
+    expert reviews, clinical decisions, component audit trail."""
+    import scripts.ai_compliance_dashboard as acd
+    return _json_safe(acd.compliance_breakdown())
+
+
+@app.get("/api/ai-compliance/definitions")
+async def ai_compliance_definitions():
+    """AI compliance metric definitions for tooltip overlays."""
+    import scripts.ai_compliance_dashboard as acd
+    return _json_safe(acd.compliance_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

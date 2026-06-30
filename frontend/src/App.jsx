@@ -56,6 +56,7 @@ import ChunkingDashboard from './components/ChunkingDashboard'
 import HallucinationDashboard from './components/HallucinationDashboard'
 import DevOpsDashboard from './components/DevOpsDashboard'
 import ContentFreshnessDashboard from './components/ContentFreshnessDashboard'
+import AIComplianceDashboard from './components/AIComplianceDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -199,7 +200,8 @@ function App() {
     { id: 'chunking', label: 'Chunking' },
     { id: 'hallucination', label: 'Hallucination' },
     { id: 'devops', label: 'DevOps / CI-CD' },
-    { id: 'content-freshness', label: 'Content Freshness' }
+    { id: 'content-freshness', label: 'Content Freshness' },
+    { id: 'ai-compliance', label: 'AI Compliance' }
   ]
 
   // API Calls
@@ -1347,6 +1349,8 @@ function App() {
         return <DevOpsDashboard />
       case 'content-freshness':
         return <ContentFreshnessDashboard />
+      case 'ai-compliance':
+        return <AIComplianceDashboard />
       default:
         return renderClassificationTab()
     }
