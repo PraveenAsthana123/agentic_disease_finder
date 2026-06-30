@@ -4761,6 +4761,30 @@ async def agent_loop_definitions():
     return _json_safe(ald.loop_definitions())
 
 
+# ── Event / Kafka / Queue Dashboard ────────────────────────────
+@app.get("/api/event-queue/overview")
+async def event_queue_overview():
+    """Event queue overview — throughput, action distribution,
+    component queues, daily volume from clinical.db."""
+    import scripts.event_queue_dashboard as eqd
+    return _json_safe(eqd.event_queue_overview())
+
+
+@app.get("/api/event-queue/breakdown")
+async def event_queue_breakdown():
+    """Per-queue breakdown — cross-tab, recent events, patient events,
+    queue stats, conversation timeline."""
+    import scripts.event_queue_dashboard as eqd
+    return _json_safe(eqd.event_queue_breakdown())
+
+
+@app.get("/api/event-queue/definitions")
+async def event_queue_definitions():
+    """Metric definitions for the Event / Queue dashboard."""
+    import scripts.event_queue_dashboard as eqd
+    return _json_safe(eqd.event_queue_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

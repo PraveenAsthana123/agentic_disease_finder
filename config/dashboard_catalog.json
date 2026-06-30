@@ -215,7 +215,8 @@
         },
         {
           "name": "Event / Kafka / Queue Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/event-queue/overview + /api/event-queue/breakdown + /api/event-queue/definitions"
         },
         {
           "name": "Integration Dashboard",
