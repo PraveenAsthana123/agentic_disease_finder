@@ -4713,6 +4713,31 @@ async def retrieval_eval_definitions():
     return _json_safe(red.retrieval_definitions())
 
 
+# ── Agent Loop / Goal-Drift Dashboard ────────────────────────────────
+
+@app.get("/api/agent-loop/overview")
+async def agent_loop_overview():
+    """Agent loop overview — component cycles, conversation turns,
+    goal-drift score, confidence & agreement drift from clinical.db."""
+    import scripts.agent_loop_dashboard as ald
+    return _json_safe(ald.loop_overview())
+
+
+@app.get("/api/agent-loop/breakdown")
+async def agent_loop_breakdown():
+    """Per-component loop detail — action counts, corrections,
+    decision disagreements."""
+    import scripts.agent_loop_dashboard as ald
+    return _json_safe(ald.loop_breakdown())
+
+
+@app.get("/api/agent-loop/definitions")
+async def agent_loop_definitions():
+    """Metric definitions for the Agent Loop / Goal-Drift dashboard."""
+    import scripts.agent_loop_dashboard as ald
+    return _json_safe(ald.loop_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -183,7 +183,8 @@
         },
         {
           "name": "Agent Loop / Goal-Drift Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/agent-loop/overview + /api/agent-loop/breakdown + /api/agent-loop/definitions"
         }
       ]
     },

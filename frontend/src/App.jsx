@@ -60,6 +60,7 @@ import ContentFreshnessDashboard from './components/ContentFreshnessDashboard'
 import AIComplianceDashboard from './components/AIComplianceDashboard'
 import ResponseQualityDashboard from './components/ResponseQualityDashboard'
 import RetrievalEvalDashboard from './components/RetrievalEvalDashboard'
+import AgentLoopDashboard from './components/AgentLoopDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -207,7 +208,8 @@ function App() {
     { id: 'content-freshness', label: 'Content Freshness' },
     { id: 'ai-compliance', label: 'AI Compliance' },
     { id: 'response-quality', label: 'Response Quality' },
-    { id: 'retrieval-eval', label: 'Retrieval Evaluation' }
+    { id: 'retrieval-eval', label: 'Retrieval Evaluation' },
+    { id: 'agent-loop', label: 'Agent Loop / Goal-Drift' }
   ]
 
   // API Calls
@@ -1363,6 +1365,8 @@ function App() {
         return <ResponseQualityDashboard />
       case 'retrieval-eval':
         return <RetrievalEvalDashboard />
+      case 'agent-loop':
+        return <AgentLoopDashboard />
       default:
         return renderClassificationTab()
     }
