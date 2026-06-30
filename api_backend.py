@@ -5321,6 +5321,27 @@ async def amps_definitions():
     return _json_safe(amps.definitions())
 
 
+@app.get("/api/incident-management/overview")
+async def incident_mgmt_overview():
+    """AI Incident Management overview: KPIs, timeline, severity."""
+    import scripts.ai_incident_management as im
+    return _json_safe(im.overview())
+
+
+@app.get("/api/incident-management/breakdown")
+async def incident_mgmt_breakdown():
+    """AI Incident Management breakdown: heatmap, trends, track events."""
+    import scripts.ai_incident_management as im
+    return _json_safe(im.breakdown())
+
+
+@app.get("/api/incident-management/definitions")
+async def incident_mgmt_definitions():
+    """AI Incident Management metric definitions."""
+    import scripts.ai_incident_management as im
+    return _json_safe(im.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
