@@ -59,6 +59,7 @@ import DevOpsDashboard from './components/DevOpsDashboard'
 import ContentFreshnessDashboard from './components/ContentFreshnessDashboard'
 import AIComplianceDashboard from './components/AIComplianceDashboard'
 import ResponseQualityDashboard from './components/ResponseQualityDashboard'
+import RetrievalEvalDashboard from './components/RetrievalEvalDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -205,7 +206,8 @@ function App() {
     { id: 'devops', label: 'DevOps / CI-CD' },
     { id: 'content-freshness', label: 'Content Freshness' },
     { id: 'ai-compliance', label: 'AI Compliance' },
-    { id: 'response-quality', label: 'Response Quality' }
+    { id: 'response-quality', label: 'Response Quality' },
+    { id: 'retrieval-eval', label: 'Retrieval Evaluation' }
   ]
 
   // API Calls
@@ -1359,6 +1361,8 @@ function App() {
         return <AIComplianceDashboard />
       case 'response-quality':
         return <ResponseQualityDashboard />
+      case 'retrieval-eval':
+        return <RetrievalEvalDashboard />
       default:
         return renderClassificationTab()
     }

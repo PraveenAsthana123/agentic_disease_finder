@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-06-29",
+  "updated_at": "2026-06-30",
   "phases": [
     {
       "phase": 1,
@@ -132,7 +132,8 @@
         },
         {
           "name": "Retrieval Evaluation Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/retrieval-eval/overview + /api/retrieval-eval/breakdown + /api/retrieval-eval/definitions"
         },
         {
           "name": "Content Freshness Dashboard",

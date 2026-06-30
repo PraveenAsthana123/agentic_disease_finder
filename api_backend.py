@@ -4686,6 +4686,33 @@ async def response_quality_definitions():
     return _json_safe(rqd.response_quality_definitions())
 
 
+# ── Retrieval Evaluation Dashboard ─────────────────────────────────
+# Real data: ChromaDB (75 embeddings, 709 queue entries) + clinical.db
+# cross-reference for coverage, queue health, type diversity.
+
+@app.get("/api/retrieval-eval/overview")
+async def retrieval_eval_overview():
+    """Retrieval evaluation overview — quality score, patient coverage,
+    queue health, type distribution from real ChromaDB + clinical.db data."""
+    import scripts.retrieval_evaluation_dashboard as red
+    return _json_safe(red.retrieval_overview())
+
+
+@app.get("/api/retrieval-eval/breakdown")
+async def retrieval_eval_breakdown():
+    """Per-patient vector coverage, document inventory, analysis cross-reference,
+    queue detail drill-down."""
+    import scripts.retrieval_evaluation_dashboard as red
+    return _json_safe(red.retrieval_breakdown())
+
+
+@app.get("/api/retrieval-eval/definitions")
+async def retrieval_eval_definitions():
+    """Metric definitions for the Retrieval Evaluation dashboard."""
+    import scripts.retrieval_evaluation_dashboard as red
+    return _json_safe(red.retrieval_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
