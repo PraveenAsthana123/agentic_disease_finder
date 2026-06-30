@@ -197,8 +197,8 @@
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
-          "status": "partial",
-          "maps_to": "MCP analysis (mcp_analysis.py)"
+          "status": "built",
+          "maps_to": "/api/mcp-overview/overview + /api/mcp-overview/breakdown + /api/mcp-overview/definitions + MCPOverviewDashboard.jsx"
         },
         {
           "name": "Tool Registry Dashboard",

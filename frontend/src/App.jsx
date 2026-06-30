@@ -67,6 +67,7 @@ import RoutingDashboard from './components/RoutingDashboard'
 import CitationDashboard from './components/CitationDashboard'
 import AgentMemoryDashboard from './components/AgentMemoryDashboard'
 import MCPFederationDashboard from './components/MCPFederationDashboard'
+import MCPOverviewDashboard from './components/MCPOverviewDashboard'
 import ReleaseDashboard from './components/ReleaseDashboard'
 import RetrievalDashboard from './components/RetrievalDashboard'
 import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
@@ -225,6 +226,7 @@ function App() {
     { id: 'routing', label: 'Routing' },
     { id: 'citation', label: 'Citation' },
     { id: 'agent-memory', label: 'Agent Memory' },
+    { id: 'mcp-overview', label: 'MCP Overview' },
     { id: 'mcp-federation', label: 'MCP Federation' },
     { id: 'release', label: 'Release Mgmt' }
   ]
@@ -1397,6 +1399,8 @@ function App() {
         return <CitationDashboard />
       case 'agent-memory':
         return <AgentMemoryDashboard />
+      case 'mcp-overview':
+        return <MCPOverviewDashboard />
       case 'mcp-federation':
         return <MCPFederationDashboard />
       case 'release':

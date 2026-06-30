@@ -4887,6 +4887,33 @@ async def agent_memory_definitions():
     return _json_safe(amd.memory_definitions())
 
 
+# ── MCP Overview Dashboard ────────────────────────────────────────
+# Real data: component health, action catalog, protocol compliance,
+# actor summary, patient coverage, security audit trail from clinical.db.
+
+@app.get("/api/mcp-overview/overview")
+async def mcp_overview_overview():
+    """MCP Overview — component health, action catalog, compliance rate,
+    daily activity, hourly heatmap, actor summary from real data."""
+    import scripts.mcp_overview_dashboard as mod
+    return _json_safe(mod.mcp_overview())
+
+
+@app.get("/api/mcp-overview/breakdown")
+async def mcp_overview_breakdown():
+    """MCP Overview breakdown — component-action matrix, conversation roles,
+    patient coverage, security audit log, component interconnections."""
+    import scripts.mcp_overview_dashboard as mod
+    return _json_safe(mod.mcp_overview_breakdown())
+
+
+@app.get("/api/mcp-overview/definitions")
+async def mcp_overview_definitions():
+    """Metric definitions for the MCP Overview dashboard."""
+    import scripts.mcp_overview_dashboard as mod
+    return _json_safe(mod.mcp_overview_definitions())
+
+
 # ── MCP Federation Dashboard ─────────────────────────────────────
 # Real data: transaction_log (558), conversation_log (225+), analyses (21),
 # expert_reviews (3), hitl_reviews (2) — cross-component federation topology.
