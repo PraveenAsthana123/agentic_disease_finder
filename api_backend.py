@@ -4600,6 +4600,31 @@ async def devops_definitions():
     return _json_safe(dvd.devops_definitions())
 
 
+# ── Content Freshness Dashboard ─────────────────────────────────────
+# Real data: ChromaDB document ages, staleness scores, ingestion timeline,
+# content decay risk, and refresh recommendations from chroma.sqlite3 + clinical.db.
+
+@app.get("/api/content-freshness/overview")
+async def content_freshness_overview():
+    """Content freshness overview — document ages, staleness, decay risk, queue stats."""
+    import scripts.content_freshness_dashboard as cfd
+    return _json_safe(cfd.content_freshness_overview())
+
+
+@app.get("/api/content-freshness/breakdown")
+async def content_freshness_breakdown():
+    """Per-patient freshness, per-type detail, update activity, refresh recommendations."""
+    import scripts.content_freshness_dashboard as cfd
+    return _json_safe(cfd.content_freshness_breakdown())
+
+
+@app.get("/api/content-freshness/definitions")
+async def content_freshness_definitions():
+    """Metric definitions for the Content Freshness dashboard."""
+    import scripts.content_freshness_dashboard as cfd
+    return _json_safe(cfd.content_freshness_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
