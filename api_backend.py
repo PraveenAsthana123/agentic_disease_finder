@@ -5367,6 +5367,31 @@ async def video_eeg_definitions():
     return _json_safe(veeg.definitions())
 
 
+# ── Shadow AI Detection Dashboard ───────────────────────────────────
+
+@app.get("/api/shadow-ai/overview")
+async def shadow_ai_overview():
+    """Shadow AI Detection overview: KPIs, shadow rate, risk level,
+    detection timeline, top shadow sources. Real track.jsonl data."""
+    import scripts.shadow_ai_detection as sad
+    return _json_safe(sad.overview())
+
+
+@app.get("/api/shadow-ai/breakdown")
+async def shadow_ai_breakdown():
+    """Shadow AI Detection breakdown: hourly heatmap, source analysis,
+    recent shadow events, level distribution, temporal pattern."""
+    import scripts.shadow_ai_detection as sad
+    return _json_safe(sad.breakdown())
+
+
+@app.get("/api/shadow-ai/definitions")
+async def shadow_ai_definitions():
+    """Shadow AI Detection metric definitions, methodology, risk levels."""
+    import scripts.shadow_ai_detection as sad
+    return _json_safe(sad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

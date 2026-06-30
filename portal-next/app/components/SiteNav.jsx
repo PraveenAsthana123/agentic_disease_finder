@@ -37,6 +37,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-risk">&#x26a0;&#xfe0f; AI Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/workflow">Workflow</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mcp-security">MCP Security</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/shadow-ai">&#x1f575;&#xfe0f; Shadow AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stack">Tech Stack</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/classify">Classify</Link></li>
         </ul>
