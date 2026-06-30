@@ -61,6 +61,7 @@ import AIComplianceDashboard from './components/AIComplianceDashboard'
 import ResponseQualityDashboard from './components/ResponseQualityDashboard'
 import RetrievalEvalDashboard from './components/RetrievalEvalDashboard'
 import AgentLoopDashboard from './components/AgentLoopDashboard'
+import ExecutiveAIDashboard from './components/ExecutiveAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -209,7 +210,8 @@ function App() {
     { id: 'ai-compliance', label: 'AI Compliance' },
     { id: 'response-quality', label: 'Response Quality' },
     { id: 'retrieval-eval', label: 'Retrieval Evaluation' },
-    { id: 'agent-loop', label: 'Agent Loop / Goal-Drift' }
+    { id: 'agent-loop', label: 'Agent Loop / Goal-Drift' },
+    { id: 'executive-ai', label: 'Executive AI' }
   ]
 
   // API Calls
@@ -1367,6 +1369,8 @@ function App() {
         return <RetrievalEvalDashboard />
       case 'agent-loop':
         return <AgentLoopDashboard />
+      case 'executive-ai':
+        return <ExecutiveAIDashboard />
       default:
         return renderClassificationTab()
     }

@@ -10,8 +10,8 @@
       "dashboards": [
         {
           "name": "Executive AI Dashboard",
-          "status": "partial",
-          "maps_to": "department-report KPIs"
+          "status": "built",
+          "maps_to": "/api/executive-ai/overview + /api/executive-ai/breakdown + /api/executive-ai/definitions"
         },
         {
           "name": "AI Cost Dashboard",

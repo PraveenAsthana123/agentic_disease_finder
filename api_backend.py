@@ -4164,6 +4164,29 @@ async def executive_scorecard_definitions():
     return _json_safe(esc.scorecard_definitions())
 
 
+# ── Executive AI Dashboard ────────────────────────────────────────
+
+@app.get("/api/executive-ai/overview")
+async def executive_ai_overview():
+    """Executive AI — AI adoption, utilization, oversight, throughput KPIs."""
+    import scripts.executive_ai_dashboard as ead
+    return _json_safe(ead.executive_ai_overview())
+
+
+@app.get("/api/executive-ai/breakdown")
+async def executive_ai_breakdown():
+    """Per-component and per-department AI drill-down."""
+    import scripts.executive_ai_dashboard as ead
+    return _json_safe(ead.executive_ai_breakdown())
+
+
+@app.get("/api/executive-ai/definitions")
+async def executive_ai_definitions():
+    """Metric definitions for Executive AI Dashboard."""
+    import scripts.executive_ai_dashboard as ead
+    return _json_safe(ead.executive_ai_definitions())
+
+
 # ── AI Usage Dashboard ────────────────────────────────────────────
 
 @app.get("/api/ai-usage/overview")
