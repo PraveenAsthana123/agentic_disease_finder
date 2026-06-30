@@ -40,7 +40,7 @@
           "output": "Focal/Generalized",
           "specialist": "Neurologist",
           "priority": "mandatory",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Seizure Frequency Diary",
