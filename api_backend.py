@@ -794,6 +794,15 @@ async def data_manager_dataset_validation():
     return _json_safe(dv.validation_report())
 
 
+@app.get("/api/data-manager/governance")
+async def data_manager_governance():
+    """Clinical Data Manager — Governance dashboard.
+    Consent tracking, IRB protocol status, de-identification audit,
+    encryption posture, and access/audit log analysis from real clinical.db."""
+    import scripts.data_governance as dgov
+    return _json_safe(dgov.governance_report())
+
+
 @app.get("/api/icalabel")
 async def icalabel_dashboard():
     """ICLabel ICA Component Classification Dashboard.

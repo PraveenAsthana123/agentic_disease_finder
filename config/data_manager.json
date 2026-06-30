@@ -352,7 +352,8 @@
     {
       "name": "Governance",
       "shows": "consent, IRB, de-identification, encryption, access/audit logs",
-      "status": "partial"
+      "status": "built",
+      "endpoint": "/api/data-manager/governance"
     },
     {
       "name": "Release",
