@@ -5015,6 +5015,29 @@ async def workflow_definitions():
     return _json_safe(wfd.workflow_definitions())
 
 
+# ── Integration Dashboard (multi-format ingest) ─────────────────────
+
+@app.get("/api/integration-dashboard/overview")
+async def integration_dashboard_overview():
+    """Multi-format ingest overview — upload volume, format distribution, coverage."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.integration_overview())
+
+
+@app.get("/api/integration-dashboard/breakdown")
+async def integration_dashboard_breakdown():
+    """Per-patient, per-format, daily trend drill-down."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.integration_breakdown())
+
+
+@app.get("/api/integration-dashboard/definitions")
+async def integration_dashboard_definitions():
+    """Integration dashboard metric definitions for tooltip overlays."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.integration_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

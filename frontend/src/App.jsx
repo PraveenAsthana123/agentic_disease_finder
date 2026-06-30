@@ -71,6 +71,7 @@ import MCPOverviewDashboard from './components/MCPOverviewDashboard'
 import ReleaseDashboard from './components/ReleaseDashboard'
 import RetrievalDashboard from './components/RetrievalDashboard'
 import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
+import IntegrationDashboard from './components/IntegrationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -228,7 +229,8 @@ function App() {
     { id: 'agent-memory', label: 'Agent Memory' },
     { id: 'mcp-overview', label: 'MCP Overview' },
     { id: 'mcp-federation', label: 'MCP Federation' },
-    { id: 'release', label: 'Release Mgmt' }
+    { id: 'release', label: 'Release Mgmt' },
+    { id: 'integration-dash', label: 'Integration' }
   ]
 
   // API Calls
@@ -1407,6 +1409,8 @@ function App() {
         return <ReleaseDashboard />
       case 'agent-eval':
         return <AgentEvaluationDashboard />
+      case 'integration-dash':
+        return <IntegrationDashboard />
       default:
         return renderClassificationTab()
     }

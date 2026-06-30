@@ -222,7 +222,7 @@
         },
         {
           "name": "Integration Dashboard",
-          "status": "partial",
+          "status": "built",
           "maps_to": "multi-format ingest"
         },
         {
