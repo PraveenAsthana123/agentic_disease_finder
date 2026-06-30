@@ -19,7 +19,7 @@
   ],
   "role_operational_tabs": [
     {"id": "patients_seen", "label": "Patients Seen", "metric": "count of patients viewed", "status": "partial"},
-    {"id": "appointments", "label": "Appointment Booking", "metric": "booked vs completed", "status": "planned"},
+    {"id": "appointments", "label": "Appointment Booking", "metric": "booked vs completed", "status": "built", "maps_to": "/api/appointments"},
     {"id": "visits", "label": "True Visits", "metric": "actual visits logged", "status": "planned"},
     {"id": "prescriptions", "label": "Medications Prescribed", "metric": "scripts written", "status": "partial"},
     {"id": "adl", "label": "ADL (Activities of Daily Living)", "metric": "ADL assessment scores", "status": "partial"},

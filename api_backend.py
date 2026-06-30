@@ -5089,6 +5089,31 @@ async def mcp_security_definitions():
     return _json_safe(msd.mcp_security_definitions())
 
 
+# ── Appointments Dashboard ────────────────────────────────────
+
+@app.get("/api/appointments/overview")
+async def appointments_overview():
+    """Appointment booking overview — total bookings, completion rate,
+    no-show rate, provider workload, department distribution."""
+    import scripts.appointments_dashboard as apd
+    return _json_safe(apd.appointments_overview())
+
+
+@app.get("/api/appointments/breakdown")
+async def appointments_breakdown():
+    """Per-patient appointments, daily trend, hourly pattern,
+    provider-department cross-tab, recent appointments, no-show analysis."""
+    import scripts.appointments_dashboard as apd
+    return _json_safe(apd.appointments_breakdown())
+
+
+@app.get("/api/appointments/definitions")
+async def appointments_definitions():
+    """Metric definitions for the Appointments dashboard."""
+    import scripts.appointments_dashboard as apd
+    return _json_safe(apd.appointments_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
