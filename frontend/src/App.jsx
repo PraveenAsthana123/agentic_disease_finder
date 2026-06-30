@@ -81,6 +81,7 @@ import FIMDashboard from './components/FIMDashboard'
 import WAISDashboard from './components/WAISDashboard'
 import DigitSpanDashboard from './components/DigitSpanDashboard'
 import AMPSDashboard from './components/AMPSDashboard'
+import VideoEEGDashboard from './components/VideoEEGDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -248,7 +249,8 @@ function App() {
     { id: 'fim', label: 'FIM' },
     { id: 'wais', label: 'WAIS (IQ)' },
     { id: 'digit-span', label: 'Digit Span' },
-    { id: 'amps', label: 'AMPS' }
+    { id: 'amps', label: 'AMPS' },
+    { id: 'video-eeg', label: 'Video EEG' }
   ]
 
   // API Calls
@@ -1447,6 +1449,8 @@ function App() {
         return <DigitSpanDashboard />
       case 'amps':
         return <AMPSDashboard />
+      case 'video-eeg':
+        return <VideoEEGDashboard />
       default:
         return renderClassificationTab()
     }

@@ -5342,6 +5342,31 @@ async def incident_mgmt_definitions():
     return _json_safe(im.definitions())
 
 
+# ── Video EEG Monitoring Dashboard ──────────────────────────────────
+
+@app.get("/api/video-eeg/overview")
+async def video_eeg_overview():
+    """Video EEG Monitoring overview: KPIs, monitoring distribution,
+    severity, per-patient summary. Real seizure_diary + CHB-MIT data."""
+    import scripts.video_eeg_dashboard as veeg
+    return _json_safe(veeg.overview())
+
+
+@app.get("/api/video-eeg/breakdown")
+async def video_eeg_breakdown():
+    """Video EEG breakdown: seizure timeline, duration histogram,
+    aura/trigger analysis, temporal pattern, EEG features, concordance."""
+    import scripts.video_eeg_dashboard as veeg
+    return _json_safe(veeg.breakdown())
+
+
+@app.get("/api/video-eeg/definitions")
+async def video_eeg_definitions():
+    """Video EEG Monitoring metric definitions, protocol, semiology."""
+    import scripts.video_eeg_dashboard as veeg
+    return _json_safe(veeg.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

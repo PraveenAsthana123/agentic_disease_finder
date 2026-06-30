@@ -32,7 +32,8 @@
           "output": "Seizure classification",
           "specialist": "Epileptologist",
           "priority": "mandatory",
-          "status": "partial"
+          "status": "built",
+          "note": "Video EEG Monitoring dashboard — endpoints live (/api/video-eeg/*), real seizure_diary + CHB-MIT data, 4-tab UI"
         },
         {
           "name": "ILAE Seizure Classification",
