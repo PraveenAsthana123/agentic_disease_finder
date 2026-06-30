@@ -5227,6 +5227,27 @@ async def fim_definitions():
     return _json_safe(fim.definitions())
 
 
+@app.get("/api/wais-dashboard/overview")
+async def wais_overview():
+    """WAIS overview: KPIs, IQ distribution, per-patient summaries."""
+    import scripts.wais_dashboard as wais
+    return _json_safe(wais.overview())
+
+
+@app.get("/api/wais-dashboard/breakdown")
+async def wais_breakdown():
+    """WAIS breakdown: index profiles, subtest analysis, per-patient history."""
+    import scripts.wais_dashboard as wais
+    return _json_safe(wais.breakdown())
+
+
+@app.get("/api/wais-dashboard/definitions")
+async def wais_definitions():
+    """Metric definitions for the WAIS dashboard."""
+    import scripts.wais_dashboard as wais
+    return _json_safe(wais.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
