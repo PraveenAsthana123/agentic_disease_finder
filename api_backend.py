@@ -4785,6 +4785,31 @@ async def event_queue_definitions():
     return _json_safe(eqd.event_queue_definitions())
 
 
+# ── Routing Dashboard ─────────────────────────────────────────
+
+@app.get("/api/routing/overview")
+async def routing_overview():
+    """Routing overview — component fanout, actor workload,
+    automation rate, decision outcomes from clinical.db."""
+    import scripts.routing_dashboard as rtd
+    return _json_safe(rtd.routing_overview())
+
+
+@app.get("/api/routing/breakdown")
+async def routing_breakdown():
+    """Per-route breakdown — cross-tab, recent events, patient
+    routing paths, decision detail, component stats."""
+    import scripts.routing_dashboard as rtd
+    return _json_safe(rtd.routing_breakdown())
+
+
+@app.get("/api/routing/definitions")
+async def routing_definitions():
+    """Metric definitions for the Routing dashboard."""
+    import scripts.routing_dashboard as rtd
+    return _json_safe(rtd.routing_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -87,8 +87,8 @@
         },
         {
           "name": "Routing Dashboard",
-          "status": "partial",
-          "maps_to": "decision routing"
+          "status": "built",
+          "maps_to": "/api/routing/overview + /api/routing/breakdown + /api/routing/definitions"
         },
         {
           "name": "Inference / GPU Dashboard",
