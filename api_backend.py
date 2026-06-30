@@ -899,11 +899,19 @@ async def patient_compare(a: str, b: str):
     return _json_safe(cdb.compare_patients(a, b))
 
 
+_seizure_tl_cache: dict = {}
+
 @app.get("/api/seizure-timeline")
 async def seizure_timeline():
     """Seizure Timeline Dashboard — real CHB-MIT annotations + spike detection + peri-onset EEG."""
-    from scripts.seizure_timeline_dashboard import generate_seizure_timeline_report
-    return _json_safe(generate_seizure_timeline_report())
+    if "r" not in _seizure_tl_cache:
+        from scripts.seizure_timeline_dashboard import generate_seizure_timeline_report
+        try:
+            _seizure_tl_cache["r"] = _json_safe(generate_seizure_timeline_report())
+        except Exception as e:
+            _seizure_tl_cache["r"] = {"available": False, "error": f"{type(e).__name__}: {e}",
+                                       "total_seizures": 0}
+    return _seizure_tl_cache["r"]
 
 
 @app.get("/api/spike-overlay")

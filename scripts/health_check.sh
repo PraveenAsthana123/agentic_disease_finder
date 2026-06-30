@@ -13,11 +13,18 @@ betb=$(tail -n +$since jobs/logs/backend.log 2>/dev/null | grep -c "Traceback (m
 echo "BACKEND : http=$be · 500s=$be500 · tracebacks=$betb $([ "$be" = 200 ]&&echo ✅||echo ❌)"
 
 # API — probe key endpoints, count non-200
+# Fast endpoints first (10s timeout), heavy EEG endpoints last (60s timeout)
 apifail=0; apitot=0
-for e in data-manager requests automation-status clinical-trust drift eeg-viz/presets expert-roles seizure-timeline patient-compare?a=EPAT001\&b=EPAT002 fairness conversation ot ot/fall-risk psychologist psychologist/depression-anxiety coordinator coordinator/kpi data-manager/archival data-manager/terminology data-manager/standardization data-manager/dataset-version data-manager/label-validation data-manager/video-validation data-manager/mri-validation data-manager/dataset-validation eeg-viz/recordings eeg-viz/traces; do
+for e in data-manager requests automation-status clinical-trust drift eeg-viz/presets expert-roles patient-compare?a=EPAT001\&b=EPAT002 fairness conversation ot ot/fall-risk psychologist psychologist/depression-anxiety coordinator coordinator/kpi data-manager/archival data-manager/terminology data-manager/standardization data-manager/dataset-version data-manager/label-validation data-manager/video-validation data-manager/mri-validation data-manager/dataset-validation eeg-viz/recordings eeg-viz/traces; do
   apitot=$((apitot+1))
   c=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8010/api/$e" -m 10 2>/dev/null)
   [ "$c" = 200 ] || { apifail=$((apifail+1)); echo "  ✗ /api/${e%%\?*} → $c"; }
+done
+# Heavy EEG endpoints — longer timeout (first call computes ~37s, cached after)
+for e in seizure-timeline; do
+  apitot=$((apitot+1))
+  c=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8010/api/$e" -m 60 2>/dev/null)
+  [ "$c" = 200 ] || { apifail=$((apifail+1)); echo "  ✗ /api/$e → $c"; }
 done
 echo "API     : $((apitot-apifail))/$apitot OK · errors=$apifail $([ $apifail = 0 ]&&echo ✅||echo ❌)"
 
