@@ -514,7 +514,8 @@
             "deploy",
             "rollback"
           ],
-          "status": "planned"
+          "status": "built",
+          "note": "AI Change Management dashboard — real git log + track.jsonl + uptime.jsonl data, 200 commits analyzed, change type/risk classification, deploy success rate, rollback tracking, 6 KPIs, hourly heatmap, risk trend, velocity, deploy log, 13 metric definitions, 5 stage definitions, 3 API endpoints (/api/change-management/overview|breakdown|definitions) all verified 200, 4-tab UI, Next.js page + nav wiring"
         },
         {
           "name": "AI Release",

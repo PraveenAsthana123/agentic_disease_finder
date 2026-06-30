@@ -5392,6 +5392,31 @@ async def shadow_ai_definitions():
     return _json_safe(sad.definitions())
 
 
+# ── AI Change Management Dashboard ──────────────────────────────
+
+@app.get("/api/change-management/overview")
+async def change_mgmt_overview():
+    """Change Management overview: KPIs, change types, risk distribution,
+    daily counts, contributors. Real git log + track.jsonl data."""
+    import scripts.ai_change_management as acm
+    return _json_safe(acm.overview())
+
+
+@app.get("/api/change-management/breakdown")
+async def change_mgmt_breakdown():
+    """Change Management breakdown: impact by type, hourly heatmap,
+    deploy timeline, risk trend, velocity, rollback events."""
+    import scripts.ai_change_management as acm
+    return _json_safe(acm.breakdown())
+
+
+@app.get("/api/change-management/definitions")
+async def change_mgmt_definitions():
+    """Change Management stages, metric definitions, risk criteria."""
+    import scripts.ai_change_management as acm
+    return _json_safe(acm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
