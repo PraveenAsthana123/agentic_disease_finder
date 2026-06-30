@@ -75,6 +75,7 @@ import IntegrationDashboard from './components/IntegrationDashboard'
 import ResponsibleAIDashboard from './components/ResponsibleAIDashboard'
 import AppointmentsDashboard from './components/AppointmentsDashboard'
 import FinOpsDashboard from './components/FinOpsDashboard'
+import CSSRSDashboard from './components/CSSRSDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -236,7 +237,8 @@ function App() {
     { id: 'integration-dash', label: 'Integration' },
     { id: 'responsible-ai', label: 'Responsible AI' },
     { id: 'appointments', label: 'Appointments' },
-    { id: 'finops', label: 'FinOps' }
+    { id: 'finops', label: 'FinOps' },
+    { id: 'cssrs', label: 'C-SSRS' }
   ]
 
   // API Calls
@@ -1423,6 +1425,8 @@ function App() {
         return <AppointmentsDashboard />
       case 'finops':
         return <FinOpsDashboard />
+      case 'cssrs':
+        return <CSSRSDashboard />
       default:
         return renderClassificationTab()
     }

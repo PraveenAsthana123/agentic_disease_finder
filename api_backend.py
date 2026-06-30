@@ -5161,6 +5161,28 @@ async def finops_definitions():
     return _json_safe(fod.definitions())
 
 
+# ── C-SSRS Dashboard (Columbia Suicide Severity Rating Scale) ──────────
+@app.get("/api/cssrs-dashboard/overview")
+async def cssrs_overview():
+    """C-SSRS summary: KPIs, risk distribution, per-patient latest scores, alerts."""
+    import scripts.cssrs_dashboard as cssd
+    return _json_safe(cssd.overview())
+
+
+@app.get("/api/cssrs-dashboard/breakdown")
+async def cssrs_breakdown():
+    """C-SSRS screening endorsement rates, intensity analysis, trend, patient history."""
+    import scripts.cssrs_dashboard as cssd
+    return _json_safe(cssd.breakdown())
+
+
+@app.get("/api/cssrs-dashboard/definitions")
+async def cssrs_definitions():
+    """Metric definitions for the C-SSRS dashboard."""
+    import scripts.cssrs_dashboard as cssd
+    return _json_safe(cssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
