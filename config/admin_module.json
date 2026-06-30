@@ -13,7 +13,7 @@
   ],
   "ops_dashboards": [
     {"id": "cloud", "label": "☁️ Cloud", "purpose": "infra cost, regions, autoscaling, uptime", "status": "planned"},
-    {"id": "devops", "label": "🔧 DevOps / CI-CD", "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status", "status": "planned"},
+    {"id": "devops", "label": "🔧 DevOps / CI-CD", "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status", "status": "built", "maps_to": "devops endpoints + DevOpsDashboard.jsx"},
     {"id": "db", "label": "🗄️ Database", "purpose": "query latency, slow queries, size, backups, WAL", "status": "built", "maps_to": "database-ops endpoints + DatabaseOpsDashboard.jsx"},
     {"id": "model", "label": "🧠 Model Ops", "purpose": "model registry, versions, accuracy, drift, retrain", "status": "partial", "maps_to": "validation suite + accuracy reports"},
     {"id": "llmops", "label": "💬 LLMOps", "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval", "status": "partial", "maps_to": "council + Ollama (cost/drift planned)"},

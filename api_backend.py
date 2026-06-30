@@ -4577,6 +4577,29 @@ async def knowledge_graph_definitions():
     return _json_safe(kgd.knowledge_graph_definitions())
 
 
+# ── DevOps / CI-CD Dashboard ─────────────────────────────────────────
+
+@app.get("/api/devops/overview")
+async def devops_overview():
+    """DevOps metrics — deploy frequency, change-fail rate, MTTR, commit velocity from real git data."""
+    import scripts.devops_dashboard as dvd
+    return _json_safe(dvd.devops_overview())
+
+
+@app.get("/api/devops/pipelines")
+async def devops_pipelines():
+    """Pipeline / cron job status — real cron definitions and running process checks."""
+    import scripts.devops_dashboard as dvd
+    return _json_safe(dvd.devops_pipelines())
+
+
+@app.get("/api/devops/definitions")
+async def devops_definitions():
+    """Metric definitions for the DevOps/CI-CD dashboard."""
+    import scripts.devops_dashboard as dvd
+    return _json_safe(dvd.devops_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
