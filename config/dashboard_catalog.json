@@ -77,7 +77,8 @@
         },
         {
           "name": "Token / Cost Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/token-cost/overview + /api/token-cost/breakdown + /api/token-cost/budget + /api/token-cost/definitions"
         },
         {
           "name": "Response Quality Dashboard",

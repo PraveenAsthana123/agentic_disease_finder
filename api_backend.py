@@ -4443,6 +4443,34 @@ async def inbox_definitions():
     return _json_safe(inm.inbox_definitions())
 
 
+# ── Token / Cost Dashboard ────────────────────────────────────────────
+
+@app.get("/api/token-cost/overview")
+async def token_cost_overview():
+    """Token usage overview — LLM tokens, operation costs, budget status,
+    and daily trend from real clinical.db data."""
+    import scripts.token_cost_dashboard as tcd
+    return _json_safe(tcd.token_cost_overview())
+
+@app.get("/api/token-cost/breakdown")
+async def token_cost_breakdown():
+    """Per-component token/cost breakdown — role tokens, component ops, model inferences."""
+    import scripts.token_cost_dashboard as tcd
+    return _json_safe(tcd.token_cost_breakdown())
+
+@app.get("/api/token-cost/budget")
+async def token_cost_budget():
+    """Budget allocation, utilization, alerts, and local-LLM savings."""
+    import scripts.token_cost_dashboard as tcd
+    return _json_safe(tcd.token_cost_budget())
+
+@app.get("/api/token-cost/definitions")
+async def token_cost_definitions():
+    """Token/cost metric definitions, rate cards, and budget tiers."""
+    import scripts.token_cost_dashboard as tcd
+    return _json_safe(tcd.token_cost_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
