@@ -4860,6 +4860,33 @@ async def agent_memory_definitions():
     return _json_safe(amd.memory_definitions())
 
 
+# ── MCP Federation Dashboard ─────────────────────────────────────
+# Real data: transaction_log (558), conversation_log (225+), analyses (21),
+# expert_reviews (3), hitl_reviews (2) — cross-component federation topology.
+
+@app.get("/api/mcp-federation/overview")
+async def mcp_federation_overview():
+    """MCP Federation overview — node count, edge count, throughput,
+    cross-component rate, actor distribution, daily trend from real data."""
+    import scripts.mcp_federation_dashboard as mfd
+    return _json_safe(mfd.federation_overview())
+
+
+@app.get("/api/mcp-federation/breakdown")
+async def mcp_federation_breakdown():
+    """Per-patient federation profile, service mesh adjacency, protocol verb
+    matrix, component pair analysis, actor cross-tab, recent events."""
+    import scripts.mcp_federation_dashboard as mfd
+    return _json_safe(mfd.federation_breakdown())
+
+
+@app.get("/api/mcp-federation/definitions")
+async def mcp_federation_definitions():
+    """Metric definitions for the MCP Federation dashboard."""
+    import scripts.mcp_federation_dashboard as mfd
+    return _json_safe(mfd.federation_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

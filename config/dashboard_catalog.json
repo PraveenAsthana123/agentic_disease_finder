@@ -230,7 +230,8 @@
         },
         {
           "name": "MCP Federation Dashboard",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "cross-component federation topology (mcp_federation_dashboard.py)"
         }
       ]
     }
