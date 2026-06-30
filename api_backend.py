@@ -4412,6 +4412,37 @@ async def ai_risk_definitions():
     return _json_safe(ard.risk_definitions())
 
 
+# ── Message Inbox — secure messages from clinical.db ─────────────
+
+@app.get("/api/inbox")
+async def inbox_dashboard(patient_id: str = None):
+    """Message Inbox — all message categories: care team messages, clinical
+    decisions, expert reviews, form assignments from clinical.db."""
+    import scripts.inbox_module as inm
+    return _json_safe(inm.inbox_overview(patient_id))
+
+
+@app.get("/api/inbox/category/{category}")
+async def inbox_by_category(category: str, patient_id: str = None):
+    """Inbox messages filtered by category (team_message/clinical_decision/expert_review/form_assignment)."""
+    import scripts.inbox_module as inm
+    return _json_safe(inm.inbox_by_category(category, patient_id))
+
+
+@app.get("/api/inbox/summary")
+async def inbox_summary(patient_id: str = None):
+    """Compact inbox summary: counts + latest 5 messages."""
+    import scripts.inbox_module as inm
+    return _json_safe(inm.inbox_summary(patient_id))
+
+
+@app.get("/api/inbox/definitions")
+async def inbox_definitions():
+    """Inbox metric definitions for tooltip overlays."""
+    import scripts.inbox_module as inm
+    return _json_safe(inm.inbox_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
