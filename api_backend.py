@@ -4471,6 +4471,35 @@ async def token_cost_definitions():
     return _json_safe(tcd.token_cost_definitions())
 
 
+# ── Vector DB Dashboard ───────────────────────────────────────────────
+# Real data: ChromaDB (data/vector_db/chroma.sqlite3) with 75 embeddings,
+# 768-dim vectors, 42 patients, 7 document types, HNSW index.
+
+@app.get("/api/vector-db/overview")
+async def vector_db_overview():
+    """Vector DB Dashboard — KPIs, collection stats, storage, health from ChromaDB."""
+    import scripts.vector_db_dashboard as vdb
+    return _json_safe(vdb.vector_db_overview())
+
+@app.get("/api/vector-db/collections")
+async def vector_db_collections():
+    """Per-collection breakdown: dimension, count, sample records, patient distribution."""
+    import scripts.vector_db_dashboard as vdb
+    return _json_safe(vdb.vector_db_collections())
+
+@app.get("/api/vector-db/operations")
+async def vector_db_operations():
+    """Queue operations, ingestion timeline, throughput metrics."""
+    import scripts.vector_db_dashboard as vdb
+    return _json_safe(vdb.vector_db_operations())
+
+@app.get("/api/vector-db/definitions")
+async def vector_db_definitions():
+    """Metric definitions for the Vector DB dashboard."""
+    import scripts.vector_db_dashboard as vdb
+    return _json_safe(vdb.vector_db_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

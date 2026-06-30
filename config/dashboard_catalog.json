@@ -108,7 +108,7 @@
         },
         {
           "name": "Vector DB Dashboard",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Embedding Drift Dashboard",

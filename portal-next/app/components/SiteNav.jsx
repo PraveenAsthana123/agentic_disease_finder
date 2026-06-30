@@ -28,6 +28,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/medication">&#x1f48a; Medication</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/inbox">&#x2709;&#xfe0f; Inbox</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/token-cost">&#x1f4b0; Token/Cost</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/vector-db">&#x1f5c4;&#xfe0f; Vector DB</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stack">Tech Stack</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/classify">Classify</Link></li>
         </ul>
