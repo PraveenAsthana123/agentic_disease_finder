@@ -4963,6 +4963,31 @@ async def agent_eval_definitions():
     return _json_safe(aed.agent_eval_definitions())
 
 
+# ── Workflow Dashboard ────────────────────────────────────────
+
+@app.get("/api/workflow/overview")
+async def workflow_overview():
+    """Workflow overview — consultant role coverage, phase/step counts,
+    sign-off status, activity volume, actor distribution from clinical.db."""
+    import scripts.workflow_dashboard as wfd
+    return _json_safe(wfd.workflow_overview())
+
+
+@app.get("/api/workflow/breakdown")
+async def workflow_breakdown():
+    """Per-role workflow breakdown — phases, steps, signoffs,
+    component-action cross-tab, recent events, patient depth."""
+    import scripts.workflow_dashboard as wfd
+    return _json_safe(wfd.workflow_breakdown())
+
+
+@app.get("/api/workflow/definitions")
+async def workflow_definitions():
+    """Metric definitions for the Workflow dashboard."""
+    import scripts.workflow_dashboard as wfd
+    return _json_safe(wfd.workflow_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

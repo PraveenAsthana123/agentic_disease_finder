@@ -31,6 +31,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/vector-db">&#x1f5c4;&#xfe0f; Vector DB</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/knowledge-graph">&#x1f578;&#xfe0f; Knowledge Graph</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-risk">&#x26a0;&#xfe0f; AI Risk</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/workflow">Workflow</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stack">Tech Stack</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/classify">Classify</Link></li>
         </ul>

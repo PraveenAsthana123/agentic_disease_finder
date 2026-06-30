@@ -212,8 +212,8 @@
         },
         {
           "name": "Workflow Dashboard",
-          "status": "partial",
-          "maps_to": "council flow / consultant workflows"
+          "status": "built",
+          "maps_to": "/api/workflow/overview + /api/workflow/breakdown + /api/workflow/definitions"
         },
         {
           "name": "Event / Kafka / Queue Dashboard",
