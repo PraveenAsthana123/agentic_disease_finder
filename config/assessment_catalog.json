@@ -236,7 +236,10 @@
           "output": "18-126",
           "specialist": "OT",
           "priority": "valuable",
-          "status": "planned"
+          "status": "built",
+          "endpoint": "/api/fim-dashboard/overview",
+          "frontend": "FIM tab in nav",
+          "note": "FIM 18-item functional independence — 3 endpoints live (/api/fim-dashboard/*), real clinical.db data, 23 patients"
         }
       ]
     },

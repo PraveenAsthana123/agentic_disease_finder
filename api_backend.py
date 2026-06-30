@@ -5205,6 +5205,28 @@ async def ica_noise_definitions():
     return _json_safe(ica.definitions())
 
 
+# ── FIM (Functional Independence Measure) Dashboard ─────────────────
+@app.get("/api/fim-dashboard/overview")
+async def fim_overview(patient_id: str = None):
+    """FIM overview: KPIs, independence distribution, per-patient summaries."""
+    import scripts.neuro_scales_fim as fim
+    return _json_safe(fim.overview(patient_id))
+
+
+@app.get("/api/fim-dashboard/breakdown")
+async def fim_breakdown(patient_id: str = None):
+    """FIM domain breakdown: subdomain averages, item heatmap, motor vs cognitive."""
+    import scripts.neuro_scales_fim as fim
+    return _json_safe(fim.breakdown(patient_id))
+
+
+@app.get("/api/fim-dashboard/definitions")
+async def fim_definitions():
+    """Metric definitions for the FIM dashboard."""
+    import scripts.neuro_scales_fim as fim
+    return _json_safe(fim.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

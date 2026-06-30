@@ -77,6 +77,7 @@ import AppointmentsDashboard from './components/AppointmentsDashboard'
 import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
+import FIMDashboard from './components/FIMDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -240,7 +241,8 @@ function App() {
     { id: 'appointments', label: 'Appointments' },
     { id: 'finops', label: 'FinOps' },
     { id: 'cssrs', label: 'C-SSRS' },
-    { id: 'ica-noise-cleaning', label: 'ICA Cleaning' }
+    { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
+    { id: 'fim', label: 'FIM' }
   ]
 
   // API Calls
@@ -1431,6 +1433,8 @@ function App() {
         return <CSSRSDashboard />
       case 'ica-noise-cleaning':
         return <ICANoiseCleaningDashboard />
+      case 'fim':
+        return <FIMDashboard />
       default:
         return renderClassificationTab()
     }
