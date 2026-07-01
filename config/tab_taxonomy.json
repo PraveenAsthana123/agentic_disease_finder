@@ -33,7 +33,7 @@
     {"id": "generative_ai", "label": "Generative AI", "status": "partial", "maps_to": "Ollama"},
     {"id": "decision_ai", "label": "Decision AI", "status": "built", "maps_to": "decision route + confidence"},
     {"id": "responsible_ai", "label": "Responsible AI (ResAI)", "status": "built", "maps_to": "/api/responsible-ai"},
-    {"id": "ethical_ai", "label": "Ethical AI", "status": "partial", "maps_to": "fairness + guardrails"},
+    {"id": "ethical_ai", "label": "Ethical AI", "status": "built", "maps_to": "/api/ethical-ai/* + EthicalAIDashboard.jsx"},
     {"id": "secure_ai", "label": "Secure AI", "status": "built", "maps_to": "guardrails (PII/injection)"},
     {"id": "governance_ai", "label": "Governance AI", "status": "built", "maps_to": "audit + council"},
     {"id": "trust_ai", "label": "Trust AI", "status": "built", "maps_to": "/api/trust-ai/* + TrustAIDashboard.jsx"},

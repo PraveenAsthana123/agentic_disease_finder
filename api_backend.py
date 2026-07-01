@@ -5982,6 +5982,30 @@ async def trust_ai_definitions():
     return _json_safe(tad.definitions())
 
 
+@app.get("/api/ethical-ai/overview")
+async def ethical_ai_overview():
+    """Ethical AI overview — fairness gate, bias metrics, guardrail stats,
+    consent/transparency coverage, composite ethics score."""
+    import scripts.ethical_ai_dashboard as ead
+    return _json_safe(ead.overview())
+
+
+@app.get("/api/ethical-ai/breakdown")
+async def ethical_ai_breakdown():
+    """Ethical AI breakdown — per-group fairness, outcome distribution by gender,
+    guardrail events, HITL decisions, ethical principle adherence."""
+    import scripts.ethical_ai_dashboard as ead
+    return _json_safe(ead.breakdown())
+
+
+@app.get("/api/ethical-ai/definitions")
+async def ethical_ai_definitions():
+    """Ethical AI definitions — fairness metrics, guardrails, bioethics principles,
+    transparency, oversight, clinical relevance."""
+    import scripts.ethical_ai_dashboard as ead
+    return _json_safe(ead.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
