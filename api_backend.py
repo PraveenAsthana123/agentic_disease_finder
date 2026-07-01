@@ -5646,6 +5646,32 @@ async def vep_definitions():
     return _json_safe(vep.definitions())
 
 
+# ── Brainstem Evoked Response Audiometry (BERA) Dashboard ─────────
+
+@app.get("/api/bera/overview")
+async def bera_overview():
+    """BERA overview: KPIs, severity distribution, diagnostic patterns,
+    per-ear abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.bera_dashboard as bera
+    return _json_safe(bera.overview())
+
+
+@app.get("/api/bera/breakdown")
+async def bera_breakdown():
+    """BERA breakdown: left & right ear summaries, Wave V latency/amplitude
+    histograms, I-V IPL histogram, ear comparison, per-patient detail."""
+    import scripts.bera_dashboard as bera
+    return _json_safe(bera.breakdown())
+
+
+@app.get("/api/bera/definitions")
+async def bera_definitions():
+    """BERA metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.bera_dashboard as bera
+    return _json_safe(bera.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
