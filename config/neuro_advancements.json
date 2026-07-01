@@ -111,7 +111,7 @@
         "XGBoost"
       ],
       "biomarker": "SDNN, RMSSD, LF/HF",
-      "status": "planned"
+      "status": "built"
     },
     {
       "code": "ABPM_HOLTER",

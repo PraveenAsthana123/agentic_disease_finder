@@ -5672,6 +5672,32 @@ async def bera_definitions():
     return _json_safe(bera.definitions())
 
 
+# ── HRV / RR Variation Dashboard ─────────────────────────────────
+
+@app.get("/api/hrv/overview")
+async def hrv_overview():
+    """HRV overview: KPIs, severity distribution, diagnostic patterns,
+    autonomic dysfunction scores, per-patient summary. Real clinical.db data."""
+    import scripts.hrv_dashboard as hrv
+    return _json_safe(hrv.overview())
+
+
+@app.get("/api/hrv/breakdown")
+async def hrv_breakdown():
+    """HRV breakdown: time & frequency domain summaries, SDNN/RMSSD/LF-HF
+    histograms, autonomic score histogram, per-patient detail."""
+    import scripts.hrv_dashboard as hrv
+    return _json_safe(hrv.breakdown())
+
+
+@app.get("/api/hrv/definitions")
+async def hrv_definitions():
+    """HRV metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.hrv_dashboard as hrv
+    return _json_safe(hrv.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
