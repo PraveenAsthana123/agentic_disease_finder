@@ -5466,6 +5466,32 @@ async def ncv_definitions():
     return _json_safe(ncv.definitions())
 
 
+# ── Blink Reflex Dashboard ────────────────────────────────────────
+
+@app.get("/api/blink-reflex/overview")
+async def blink_reflex_overview():
+    """Blink reflex overview: KPIs, severity distribution, diagnostic patterns,
+    per-side abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.blink_reflex_dashboard as brd
+    return _json_safe(brd.overview())
+
+
+@app.get("/api/blink-reflex/breakdown")
+async def blink_reflex_breakdown():
+    """Blink reflex breakdown: side summary with R1/R2 parameters,
+    R1 latency histogram, ipsi vs contra R2 comparison, per-patient detail."""
+    import scripts.blink_reflex_dashboard as brd
+    return _json_safe(brd.breakdown())
+
+
+@app.get("/api/blink-reflex/definitions")
+async def blink_reflex_definitions():
+    """Blink reflex metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.blink_reflex_dashboard as brd
+    return _json_safe(brd.definitions())
+
+
 # ── AI FinOps Dashboard ──────────────────────────────────────────
 
 @app.get("/api/ai-finops/overview")
