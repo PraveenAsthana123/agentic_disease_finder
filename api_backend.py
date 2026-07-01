@@ -5440,6 +5440,32 @@ async def model_retirement_definitions():
     return _json_safe(mr.definitions())
 
 
+# ── Nerve Conduction Velocity (NCV) Dashboard ────────────────────
+
+@app.get("/api/ncv/overview")
+async def ncv_overview():
+    """NCV overview: KPIs, severity distribution, neuropathy types,
+    per-nerve abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.overview())
+
+
+@app.get("/api/ncv/breakdown")
+async def ncv_breakdown():
+    """NCV breakdown: motor & sensory nerve summaries, MCV histogram,
+    motor vs sensory comparison, limb comparison, per-patient detail."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.breakdown())
+
+
+@app.get("/api/ncv/definitions")
+async def ncv_definitions():
+    """NCV metric definitions, reference ranges, neuropathy types,
+    severity levels, clinical significance."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

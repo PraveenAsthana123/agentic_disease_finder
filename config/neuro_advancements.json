@@ -1,0 +1,145 @@
+{
+  "title": "Neuro AI \u2014 Advancement Opportunities per Modality",
+  "updated_at": "2026-06-23",
+  "modalities": [
+    {
+      "code": "VIDEO",
+      "name": "Patient Video",
+      "advancement": "Pose/action models for seizure semiology + fall detection",
+      "ai_models": [
+        "3D-CNN",
+        "ViT",
+        "SlowFast",
+        "MediaPipe pose"
+      ],
+      "biomarker": "Motor pattern, automatisms",
+      "status": "scaffold"
+    },
+    {
+      "code": "EEG",
+      "name": "EEG",
+      "advancement": "Deep temporal models + HFO detection + self-supervised pretraining",
+      "ai_models": [
+        "EEGNet",
+        "Transformer",
+        "TCN",
+        "Contrastive SSL"
+      ],
+      "biomarker": "Spikes, HFOs, band power",
+      "status": "built"
+    },
+    {
+      "code": "NCV",
+      "name": "Nerve Conduction Velocity",
+      "advancement": "Automated latency/amplitude/CV extraction + neuropathy grading",
+      "ai_models": [
+        "1D-CNN",
+        "GBM"
+      ],
+      "biomarker": "Conduction velocity, latency",
+      "status": "built"
+    },
+    {
+      "code": "BLINK",
+      "name": "Blink Reflex",
+      "advancement": "R1/R2 latency auto-measure + brainstem dysfunction screen",
+      "ai_models": [
+        "Signal CNN"
+      ],
+      "biomarker": "R1/R2 latency",
+      "status": "planned"
+    },
+    {
+      "code": "SSEP",
+      "name": "Somatosensory Evoked Potentials",
+      "advancement": "Peak detection + sensory-pathway integrity scoring",
+      "ai_models": [
+        "1D-CNN",
+        "peak-RNN"
+      ],
+      "biomarker": "N20 latency/amplitude",
+      "status": "planned"
+    },
+    {
+      "code": "EMG",
+      "name": "Electromyography",
+      "advancement": "MUAP classification + neuromuscular disorder detection",
+      "ai_models": [
+        "CNN",
+        "LSTM"
+      ],
+      "biomarker": "MUAP morphology, recruitment",
+      "status": "planned"
+    },
+    {
+      "code": "RNST",
+      "name": "Repetitive Nerve Stimulation",
+      "advancement": "Decrement/increment % auto-quant + myasthenia screen",
+      "ai_models": [
+        "GBM",
+        "rules+ML"
+      ],
+      "biomarker": "Decrement %",
+      "status": "planned"
+    },
+    {
+      "code": "VEP",
+      "name": "Visual Evoked Potential",
+      "advancement": "P100 latency auto-detect + optic-neuritis/MS screen",
+      "ai_models": [
+        "1D-CNN"
+      ],
+      "biomarker": "P100 latency",
+      "status": "planned"
+    },
+    {
+      "code": "BERA",
+      "name": "Brainstem Evoked Response Audiometry",
+      "advancement": "Wave I-V peak ID + inter-peak latency + brainstem screen",
+      "ai_models": [
+        "peak-RNN"
+      ],
+      "biomarker": "Wave I-V, IPL",
+      "status": "planned"
+    },
+    {
+      "code": "RR_VAR",
+      "name": "RR Variation / HRV",
+      "advancement": "HRV time/freq features + autonomic dysfunction score",
+      "ai_models": [
+        "TS-Transformer",
+        "XGBoost"
+      ],
+      "biomarker": "SDNN, RMSSD, LF/HF",
+      "status": "planned"
+    },
+    {
+      "code": "ABPM_HOLTER",
+      "name": "ABPM / Holter",
+      "advancement": "Dipping-status + arrhythmia + cardiac-autonomic correlation",
+      "ai_models": [
+        "TS models",
+        "ECG-CNN"
+      ],
+      "biomarker": "Dipping, QT, arrhythmia",
+      "status": "planned"
+    },
+    {
+      "code": "SSR",
+      "name": "Sympathetic Skin Response",
+      "advancement": "Latency/amplitude auto-measure + dysautonomia screen",
+      "ai_models": [
+        "Signal CNN"
+      ],
+      "biomarker": "SSR latency/amplitude",
+      "status": "planned"
+    }
+  ],
+  "cross_modal_advancements": [
+    "Multimodal fusion: EEG + video + autonomic \u2192 interpretable seizure-risk (your novel DBA question)",
+    "Foundation model pretrained on unlabeled neurophysiology, fine-tuned per test",
+    "Federated learning across sites (no raw signal sharing)",
+    "Neurophysiology knowledge graph linking tests \u2192 findings \u2192 etiology",
+    "Digital neuro-twin: simulate disease progression per patient"
+  ]
+}
