@@ -6271,6 +6271,30 @@ async def ai_observability_definitions():
     return _json_safe(aod.observability_definitions())
 
 
+@app.get("/api/model-monitoring/overview")
+async def model_monitoring_overview():
+    """Model Monitoring overview — drift verdicts, confidence distribution,
+    system health, data quality, training summaries, monitoring timeline."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.monitoring_overview())
+
+
+@app.get("/api/model-monitoring/breakdown")
+async def model_monitoring_breakdown():
+    """Model Monitoring breakdown — consistency checks, all drift features,
+    training runs, missing matrix, per-patient predictions, accuracy."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.monitoring_breakdown())
+
+
+@app.get("/api/model-monitoring/definitions")
+async def model_monitoring_definitions():
+    """Model Monitoring definitions — monitoring methods, metric definitions,
+    severity levels, clinical relevance, remediation strategies."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

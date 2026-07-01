@@ -592,8 +592,8 @@
     },
     {
       "type": "model-monitoring-ai",
-      "status": "scaffold",
-      "note": "Department report KPIs; drift monitor planned"
+      "status": "built",
+      "note": "Model Monitoring Dashboard — drift verdicts, confidence distribution, system health, data quality, training summaries, per-patient predictions, accuracy, consistency checks, definitions; 3 API endpoints + frontend + nav wiring"
     },
     {
       "type": "mr-ai",
