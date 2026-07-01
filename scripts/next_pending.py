@@ -31,6 +31,7 @@ BUILDABLE = [
 # devops_cicd (DevOps/CI-CD Dashboard — real git analytics, DORA metrics, pipeline/cron status, 3 endpoints verified 200)
 # ai_risk (AI Risk Dashboard — real clinical.db risk register, severity scoring, alert trends, guardrail blocks, 3 endpoints verified 200)
 # mri_brain_review (MRI Brain Review Dashboard — real clinical.db mri_findings, 40 patients, lesion types/classification/volumetrics/concordance, 3 endpoints verified 200, Next.js page + nav wired)
+# observability (Observability Dashboard — real transaction_log 596 events, 25 components, log levels + latency percentiles + trace correlation + alerts, 3 endpoints verified 200, Next.js page + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

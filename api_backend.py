@@ -5876,6 +5876,32 @@ async def data_ops_definitions():
     return _json_safe(dops.definitions())
 
 
+# ── Observability Dashboard ─────────────────────────────────────────
+
+@app.get("/api/observability/overview")
+async def observability_overview():
+    """Observability overview: KPIs, component health, daily volume,
+    log-level distribution, active alerts. Real data from transaction_log."""
+    import scripts.observability_dashboard as obs
+    return _json_safe(obs.overview())
+
+
+@app.get("/api/observability/breakdown")
+async def observability_breakdown():
+    """Observability breakdown: recent logs, sample traces, latency
+    percentiles, action/actor distributions, per-component detail."""
+    import scripts.observability_dashboard as obs
+    return _json_safe(obs.breakdown())
+
+
+@app.get("/api/observability/definitions")
+async def observability_definitions():
+    """Observability definitions: log levels, trace span types, metric
+    thresholds, alert rules, instrumentation standards, clinical relevance."""
+    import scripts.observability_dashboard as obs
+    return _json_safe(obs.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

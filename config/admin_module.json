@@ -1,11 +1,11 @@
 {
-  "title": "Admin Module — Team Roles + Ops Dashboards",
+  "title": "Admin Module \u2014 Team Roles + Ops Dashboards",
   "note": "Technical/ops roles + their dashboards. status: built / partial / planned. Most ops dashboards are planned for a single-study research project (no cloud/k8s).",
   "updated_at": "2026-07-01",
   "team_roles": [
     {
       "role": "Admin",
-      "icon": "🛠️",
+      "icon": "\ud83d\udee0\ufe0f",
       "owns": [
         "user management",
         "feature flags",
@@ -16,7 +16,7 @@
     },
     {
       "role": "Tester / QA",
-      "icon": "🧪",
+      "icon": "\ud83e\uddea",
       "owns": [
         "test suites",
         "coverage",
@@ -28,7 +28,7 @@
     },
     {
       "role": "Security",
-      "icon": "🛡️",
+      "icon": "\ud83d\udee1\ufe0f",
       "owns": [
         "guardrails",
         "PII/injection scan",
@@ -40,7 +40,7 @@
     },
     {
       "role": "Integration",
-      "icon": "🔌",
+      "icon": "\ud83d\udd0c",
       "owns": [
         "EMR/FHIR",
         "device streaming",
@@ -51,7 +51,7 @@
     },
     {
       "role": "Functional / BA",
-      "icon": "📋",
+      "icon": "\ud83d\udccb",
       "owns": [
         "requirements",
         "use cases",
@@ -63,7 +63,7 @@
     },
     {
       "role": "Product Manager",
-      "icon": "📊",
+      "icon": "\ud83d\udcca",
       "owns": [
         "roadmap",
         "KPIs",
@@ -75,7 +75,7 @@
     },
     {
       "role": "AI Reviewer",
-      "icon": "🔍",
+      "icon": "\ud83d\udd0d",
       "owns": [
         "model accuracy drift",
         "fairness",
@@ -89,119 +89,119 @@
   "ops_dashboards": [
     {
       "id": "cloud",
-      "label": "☁️ Cloud",
+      "label": "\u2601\ufe0f Cloud",
       "purpose": "infra cost, regions, autoscaling, uptime",
       "status": "built",
       "maps_to": "/api/cloud-ops/* + /cloud-ops page"
     },
     {
       "id": "devops",
-      "label": "🔧 DevOps / CI-CD",
+      "label": "\ud83d\udd27 DevOps / CI-CD",
       "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status",
       "status": "built",
       "maps_to": "devops endpoints + DevOpsDashboard.jsx"
     },
     {
       "id": "db",
-      "label": "🗄️ Database",
+      "label": "\ud83d\uddc4\ufe0f Database",
       "purpose": "query latency, slow queries, size, backups, WAL",
       "status": "built",
       "maps_to": "database-ops endpoints + DatabaseOpsDashboard.jsx"
     },
     {
       "id": "model",
-      "label": "🧠 Model Ops",
+      "label": "\ud83e\udde0 Model Ops",
       "purpose": "model registry, versions, accuracy, drift, retrain",
       "status": "built",
       "maps_to": "/api/model-ops/* + ModelOpsDashboard.jsx"
     },
     {
       "id": "llmops",
-      "label": "💬 LLMOps",
+      "label": "\ud83d\udcac LLMOps",
       "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval",
       "status": "built",
       "maps_to": "council + Ollama (cost/drift planned)"
     },
     {
       "id": "mlops",
-      "label": "⚙️ MLOps",
+      "label": "\u2699\ufe0f MLOps",
       "purpose": "training pipeline, experiment tracking, feature store, CV metrics",
       "status": "partial",
       "maps_to": "Model Lab + benchmarks"
     },
     {
       "id": "secops",
-      "label": "🔒 SecOps",
+      "label": "\ud83d\udd12 SecOps",
       "purpose": "threat detection, injection/jailbreak, access audit, incident",
       "status": "partial",
       "maps_to": "guardrails + audit (SIEM planned)"
     },
     {
       "id": "dataops",
-      "label": "📦 DataOps",
+      "label": "\ud83d\udce6 DataOps",
       "purpose": "ingestion, data quality, lineage, vector ingest",
       "status": "built",
       "maps_to": "eeg_ingest + VECTOR-INGEST cron"
     },
     {
       "id": "finops",
-      "label": "💰 FinOps",
+      "label": "\ud83d\udcb0 FinOps",
       "purpose": "token/GPU/cloud cost per request/user/model",
       "status": "built",
       "maps_to": "/api/finops/* + FinOpsDashboard.jsx"
     },
     {
       "id": "observability",
-      "label": "👁️ Observability",
+      "label": "\ud83d\udc41\ufe0f Observability",
       "purpose": "logs, traces, metrics, request_id",
-      "status": "partial",
+      "status": "built",
       "maps_to": "transaction_log (OTel planned)"
     }
   ],
   "access_control": [
     {
       "id": "user_mgmt",
-      "label": "👤 User Management",
+      "label": "\ud83d\udc64 User Management",
       "purpose": "create/disable users, assign roles, lifecycle",
       "status": "planned"
     },
     {
       "id": "rbac",
-      "label": "🔑 RBAC",
+      "label": "\ud83d\udd11 RBAC",
       "purpose": "role-based access (Neurologist/Tech/Admin/Reviewer)",
       "status": "planned",
       "note": "single-user now; roles are UI tabs"
     },
     {
       "id": "abac",
-      "label": "🧬 ABAC",
-      "purpose": "attribute-based (tenant/dept/clearance) — N/A for single-tenant",
+      "label": "\ud83e\uddec ABAC",
+      "purpose": "attribute-based (tenant/dept/clearance) \u2014 N/A for single-tenant",
       "status": "n/a",
       "note": "single-tenant study; ABAC is for multi-tenant"
     },
     {
       "id": "groups",
-      "label": "👥 Groups / Teams",
+      "label": "\ud83d\udc65 Groups / Teams",
       "purpose": "group membership + group permissions",
       "status": "planned"
     },
     {
       "id": "pii",
-      "label": "🔒 PII Management",
+      "label": "\ud83d\udd12 PII Management",
       "purpose": "PII detection + masking + redaction",
       "status": "built",
       "maps_to": "PII scanner in guardrails"
     },
     {
       "id": "consensus",
-      "label": "🤝 Consensus Management",
+      "label": "\ud83e\udd1d Consensus Management",
       "purpose": "multi-agent/expert consensus + voting",
       "status": "built",
       "maps_to": "consensus + council + study-review"
     },
     {
       "id": "audit",
-      "label": "📜 Access Audit",
+      "label": "\ud83d\udcdc Access Audit",
       "purpose": "who accessed what, when (UTC+local)",
       "status": "built",
       "maps_to": "transaction_log"
@@ -272,5 +272,5 @@
       "status": "planned"
     }
   ],
-  "integration_note": "All external integrations route through MCP connectors (standardized tool protocol). None wired yet — each needs OAuth + the MCP server. Local-first by default (no data egress until explicitly connected)."
+  "integration_note": "All external integrations route through MCP connectors (standardized tool protocol). None wired yet \u2014 each needs OAuth + the MCP server. Local-first by default (no data egress until explicitly connected)."
 }
