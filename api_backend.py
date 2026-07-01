@@ -5594,6 +5594,32 @@ async def emg_definitions():
     return _json_safe(emg.definitions())
 
 
+# ── Repetitive Nerve Stimulation (RNS) Dashboard ─────────────────
+
+@app.get("/api/rns/overview")
+async def rns_overview():
+    """RNS overview: KPIs, severity distribution, diagnostic patterns,
+    per-site abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.rns_dashboard as rns
+    return _json_safe(rns.overview())
+
+
+@app.get("/api/rns/breakdown")
+async def rns_breakdown():
+    """RNS breakdown: per-site summary, decrement & facilitation histograms,
+    proximal vs distal comparison, per-patient detail with CMAP trains."""
+    import scripts.rns_dashboard as rns
+    return _json_safe(rns.breakdown())
+
+
+@app.get("/api/rns/definitions")
+async def rns_definitions():
+    """RNS metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.rns_dashboard as rns
+    return _json_safe(rns.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

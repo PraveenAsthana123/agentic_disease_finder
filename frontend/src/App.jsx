@@ -85,6 +85,7 @@ import VideoEEGDashboard from './components/VideoEEGDashboard'
 import NCVDashboard from './components/NCVDashboard'
 import BlinkReflexDashboard from './components/BlinkReflexDashboard'
 import EMGDashboard from './components/EMGDashboard'
+import RNSDashboard from './components/RNSDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 
 // API Base URL
@@ -258,6 +259,7 @@ function App() {
     { id: 'ncv', label: 'NCV' },
     { id: 'blink-reflex', label: 'Blink Reflex' },
     { id: 'emg', label: 'EMG' },
+    { id: 'rns', label: 'RNS' },
     { id: 'data-versioning', label: 'Data Versioning' }
   ]
 
@@ -1465,6 +1467,8 @@ function App() {
         return <BlinkReflexDashboard />
       case 'emg':
         return <EMGDashboard />
+      case 'rns':
+        return <RNSDashboard />
       case 'data-versioning':
         return <DataVersioningDashboard />
       default:
