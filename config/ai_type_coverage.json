@@ -72,8 +72,8 @@
     },
     {
       "type": "ai-observability",
-      "status": "scaffold",
-      "note": "Transaction log + audit reports"
+      "status": "built",
+      "note": "AI Observability Dashboard \u2014 transaction logging, cost tracking, conversation monitoring, analysis auditing from real clinical.db data (619 transactions, 978 cost records, 314 conversations, 21 analyses)"
     },
     {
       "type": "aiops",

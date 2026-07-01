@@ -6247,6 +6247,30 @@ async def explainable_ai_definitions():
     return _json_safe(xaid.definitions())
 
 
+@app.get("/api/ai-observability/overview")
+async def ai_observability_overview():
+    """AI Observability overview — transaction volume, component/action/actor
+    distributions, cost aggregates, conversation metrics, analysis confidence."""
+    import scripts.ai_observability_dashboard as aod
+    return _json_safe(aod.observability_overview())
+
+
+@app.get("/api/ai-observability/breakdown")
+async def ai_observability_breakdown():
+    """AI Observability breakdown — per-component actions, per-actor components,
+    transaction/cost timelines, cost by service, patient profiles, error actions."""
+    import scripts.ai_observability_dashboard as aod
+    return _json_safe(aod.observability_breakdown())
+
+
+@app.get("/api/ai-observability/definitions")
+async def ai_observability_definitions():
+    """AI Observability definitions — methods, system components, metrics/KPIs,
+    clinical relevance, remediation strategies."""
+    import scripts.ai_observability_dashboard as aod
+    return _json_safe(aod.observability_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

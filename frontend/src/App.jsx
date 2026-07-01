@@ -104,6 +104,7 @@ import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
 import CausalAIDashboard from './components/CausalAIDashboard'
 import BiasDetectionDashboard from './components/BiasDetectionDashboard'
 import DigitalTwinDashboard from './components/DigitalTwinDashboard'
+import AIObservabilityDashboard from './components/AIObservabilityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -294,7 +295,8 @@ function App() {
     { id: 'anomaly-detection', label: 'Anomaly Detection' },
     { id: 'causal-ai', label: 'Causal AI' },
     { id: 'bias-detection', label: 'Bias Detection' },
-    { id: 'digital-twin', label: 'Digital Twin' }
+    { id: 'digital-twin', label: 'Digital Twin' },
+    { id: 'ai-observability', label: 'AI Observability' }
   ]
 
   // API Calls
@@ -1539,6 +1541,8 @@ function App() {
         return <BiasDetectionDashboard />
       case 'digital-twin':
         return <DigitalTwinDashboard />
+      case 'ai-observability':
+        return <AIObservabilityDashboard />
       default:
         return renderClassificationTab()
     }
