@@ -95,6 +95,7 @@ import TrustAIDashboard from './components/TrustAIDashboard'
 import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
 import ModelDriftDashboard from './components/ModelDriftDashboard'
+import FeatureDriftDashboard from './components/FeatureDriftDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -276,6 +277,7 @@ function App() {
     { id: 'trust-ai', label: 'Trust AI' },
     { id: 'ethical-ai', label: 'Ethical AI' },
     { id: 'data-drift', label: 'Data Drift' },
+    { id: 'feature-drift', label: 'Feature Drift' },
     { id: 'model-drift', label: 'Model Drift' }
   ]
 
@@ -1501,6 +1503,8 @@ function App() {
         return <EthicalAIDashboard />
       case 'data-drift':
         return <DataDriftDashboard />
+      case 'feature-drift':
+        return <FeatureDriftDashboard />
       case 'model-drift':
         return <ModelDriftDashboard />
       default:

@@ -6030,6 +6030,30 @@ async def data_drift_definitions():
     return _json_safe(ddd.definitions())
 
 
+@app.get("/api/feature-drift/overview")
+async def feature_drift_overview():
+    """Feature Drift overview — importance-weighted drift score, category breakdown,
+    cross-model importance analysis, prioritised remediation list."""
+    import scripts.feature_drift_dashboard as fdd
+    return _json_safe(fdd.overview())
+
+
+@app.get("/api/feature-drift/breakdown")
+async def feature_drift_breakdown():
+    """Feature Drift breakdown — per-feature importance + drift detail, category charts,
+    cross-model comparison, training event correlation."""
+    import scripts.feature_drift_dashboard as fdd
+    return _json_safe(fdd.breakdown())
+
+
+@app.get("/api/feature-drift/definitions")
+async def feature_drift_definitions():
+    """Feature Drift definitions — feature importance, categories, category-level drift,
+    cross-model comparison, remediation priority, clinical relevance."""
+    import scripts.feature_drift_dashboard as fdd
+    return _json_safe(fdd.definitions())
+
+
 @app.get("/api/model-drift/overview")
 async def model_drift_overview():
     """Model Drift overview — drift score, performance verdict, accuracy/sensitivity
