@@ -162,8 +162,8 @@
     },
     {
       "type": "causal-ai",
-      "status": "planned",
-      "note": "Causal seizure analysis \u2014 registry"
+      "status": "built",
+      "note": "Causal seizure analysis \u2014 medication pathways, trigger chains, demographic associations, causal graph, intervention effectiveness from real clinical.db data"
     },
     {
       "type": "chain-of-thought-ai",

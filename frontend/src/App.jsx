@@ -101,6 +101,7 @@ import ExerciseDashboard from './components/ExerciseDashboard'
 import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
 import PromptDriftDashboard from './components/PromptDriftDashboard'
 import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
+import CausalAIDashboard from './components/CausalAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -288,7 +289,8 @@ function App() {
     { id: 'prompt-drift', label: 'Prompt Drift' },
     { id: 'exercise', label: 'Exercise / Rehab' },
     { id: 'knowledge-graph', label: 'Knowledge Graph' },
-    { id: 'anomaly-detection', label: 'Anomaly Detection' }
+    { id: 'anomaly-detection', label: 'Anomaly Detection' },
+    { id: 'causal-ai', label: 'Causal AI' }
   ]
 
   // API Calls
@@ -1527,6 +1529,8 @@ function App() {
         return <KnowledgeGraphDashboard />
       case 'anomaly-detection':
         return <AnomalyDetectionDashboard />
+      case 'causal-ai':
+        return <CausalAIDashboard />
       default:
         return renderClassificationTab()
     }

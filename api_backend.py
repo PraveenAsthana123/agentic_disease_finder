@@ -6150,6 +6150,30 @@ async def anomaly_detection_definitions():
     return _json_safe(add.anomaly_detection_definitions())
 
 
+@app.get("/api/causal-ai/overview")
+async def causal_ai_overview():
+    """Causal AI overview — medication→seizure pathways, trigger→seizure
+    chains, age/gender associations, causal graph summary."""
+    import scripts.causal_ai_dashboard as cad
+    return _json_safe(cad.causal_overview())
+
+
+@app.get("/api/causal-ai/breakdown")
+async def causal_ai_breakdown():
+    """Causal AI breakdown — per-patient causal profiles, MRI correlations,
+    assessment links, seizure timeline, intervention effectiveness."""
+    import scripts.causal_ai_dashboard as cad
+    return _json_safe(cad.causal_breakdown())
+
+
+@app.get("/api/causal-ai/definitions")
+async def causal_ai_definitions():
+    """Causal AI definitions — causal inference methods, factor categories,
+    graph notation, clinical relevance, remediation strategies."""
+    import scripts.causal_ai_dashboard as cad
+    return _json_safe(cad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
