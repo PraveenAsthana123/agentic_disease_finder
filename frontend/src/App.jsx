@@ -100,6 +100,7 @@ import OutputDriftDashboard from './components/OutputDriftDashboard'
 import ExerciseDashboard from './components/ExerciseDashboard'
 import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
 import PromptDriftDashboard from './components/PromptDriftDashboard'
+import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -286,7 +287,8 @@ function App() {
     { id: 'output-drift', label: 'Output/RAG Drift' },
     { id: 'prompt-drift', label: 'Prompt Drift' },
     { id: 'exercise', label: 'Exercise / Rehab' },
-    { id: 'knowledge-graph', label: 'Knowledge Graph' }
+    { id: 'knowledge-graph', label: 'Knowledge Graph' },
+    { id: 'anomaly-detection', label: 'Anomaly Detection' }
   ]
 
   // API Calls
@@ -1523,6 +1525,8 @@ function App() {
         return <ExerciseDashboard />
       case 'knowledge-graph':
         return <KnowledgeGraphDashboard />
+      case 'anomaly-detection':
+        return <AnomalyDetectionDashboard />
       default:
         return renderClassificationTab()
     }

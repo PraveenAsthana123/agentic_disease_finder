@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 13,
+    "built": 14,
     "scaffold": 13,
-    "planned": 17
+    "planned": 16
   },
   "rows": [
     {
@@ -102,8 +102,8 @@
     },
     {
       "type": "anomaly-detection-ai",
-      "status": "planned",
-      "note": "EEG anomaly detection \u2014 registry"
+      "status": "built",
+      "note": "EEG anomaly detection \u2014 z-score + IQR on 47 features from 21 analyses (14 patients), severity distribution, category breakdown, patient/feature drill-down, seizure diary cross-reference, 3 API endpoints (/api/anomaly-detection/overview|breakdown|definitions) all verified 200, AnomalyDetectionDashboard.jsx + nav wiring"
     },
     {
       "type": "ar-ai",

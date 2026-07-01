@@ -6126,6 +6126,30 @@ async def prompt_drift_definitions():
     return _json_safe(pdd.definitions())
 
 
+@app.get("/api/anomaly-detection/overview")
+async def anomaly_detection_overview():
+    """Anomaly Detection overview — z-score and IQR anomaly counts,
+    severity distribution, category breakdown, top anomalous features."""
+    import scripts.anomaly_detection_dashboard as add
+    return _json_safe(add.anomaly_detection_overview())
+
+
+@app.get("/api/anomaly-detection/breakdown")
+async def anomaly_detection_breakdown():
+    """Anomaly Detection breakdown — per-patient anomalies, per-feature
+    statistics, anomaly timeline, feature correlations, signal quality."""
+    import scripts.anomaly_detection_dashboard as add
+    return _json_safe(add.anomaly_detection_breakdown())
+
+
+@app.get("/api/anomaly-detection/definitions")
+async def anomaly_detection_definitions():
+    """Anomaly Detection definitions — detection methods, EEG feature
+    categories, clinical relevance, remediation strategies."""
+    import scripts.anomaly_detection_dashboard as add
+    return _json_safe(add.anomaly_detection_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
