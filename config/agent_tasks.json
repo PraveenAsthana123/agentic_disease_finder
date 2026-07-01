@@ -157,9 +157,8 @@
     {
       "id": "interpretable_ai",
       "task": "Surrogate tree / rule extraction approximating the model",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "surrogate model + rule export"
+      "module": "scripts.interpretable_ai_dashboard",
+      "status": "built"
     },
     {
       "id": "hitl_governance",

@@ -6535,6 +6535,31 @@ async def analytics_ai_definitions():
     return _json_safe(aad.definitions())
 
 
+# ── Interpretable AI ────────────────────────────────────────
+@app.get("/api/interpretable-ai/overview")
+async def interpretable_ai_overview():
+    """Interpretable AI overview — decision trees, rule lists, logistic regression
+    coefficients, accuracy vs black-box comparison."""
+    import scripts.interpretable_ai_dashboard as iad
+    return _json_safe(iad.interpretable_overview())
+
+
+@app.get("/api/interpretable-ai/breakdown")
+async def interpretable_ai_breakdown():
+    """Interpretable AI breakdown — per-disease models, decision paths,
+    rule extraction, per-patient interpretable predictions."""
+    import scripts.interpretable_ai_dashboard as iad
+    return _json_safe(iad.interpretable_breakdown())
+
+
+@app.get("/api/interpretable-ai/definitions")
+async def interpretable_ai_definitions():
+    """Interpretable AI definitions — interpretability concepts, model types,
+    clinical relevance, regulatory standards, remediation strategies."""
+    import scripts.interpretable_ai_dashboard as iad
+    return _json_safe(iad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
