@@ -6030,6 +6030,30 @@ async def data_drift_definitions():
     return _json_safe(ddd.definitions())
 
 
+@app.get("/api/model-drift/overview")
+async def model_drift_overview():
+    """Model Drift overview — drift score, performance verdict, accuracy/sensitivity
+    trends, bootstrap CIs, evaluation strategy comparison."""
+    import scripts.model_drift_dashboard as mdd
+    return _json_safe(mdd.overview())
+
+
+@app.get("/api/model-drift/breakdown")
+async def model_drift_breakdown():
+    """Model Drift breakdown — per-subject metrics, cross-validation folds,
+    training timeline, literature comparison, model inventory."""
+    import scripts.model_drift_dashboard as mdd
+    return _json_safe(mdd.breakdown())
+
+
+@app.get("/api/model-drift/definitions")
+async def model_drift_definitions():
+    """Model Drift definitions — model drift, performance metrics, evaluation
+    strategies, bootstrap CIs, external validation, clinical relevance."""
+    import scripts.model_drift_dashboard as mdd
+    return _json_safe(mdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

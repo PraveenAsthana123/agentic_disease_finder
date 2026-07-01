@@ -345,7 +345,8 @@
           "stages": [
             "accuracy/precision/recall drop"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/model-drift/* + ModelDriftDashboard.jsx"
         },
         {
           "name": "Output/RAG Drift",

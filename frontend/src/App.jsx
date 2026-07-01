@@ -94,6 +94,7 @@ import MLOpsDashboard from './components/MLOpsDashboard'
 import TrustAIDashboard from './components/TrustAIDashboard'
 import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
+import ModelDriftDashboard from './components/ModelDriftDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -274,7 +275,8 @@ function App() {
     { id: 'mlops', label: 'MLOps' },
     { id: 'trust-ai', label: 'Trust AI' },
     { id: 'ethical-ai', label: 'Ethical AI' },
-    { id: 'data-drift', label: 'Data Drift' }
+    { id: 'data-drift', label: 'Data Drift' },
+    { id: 'model-drift', label: 'Model Drift' }
   ]
 
   // API Calls
@@ -1499,6 +1501,8 @@ function App() {
         return <EthicalAIDashboard />
       case 'data-drift':
         return <DataDriftDashboard />
+      case 'model-drift':
+        return <ModelDriftDashboard />
       default:
         return renderClassificationTab()
     }
