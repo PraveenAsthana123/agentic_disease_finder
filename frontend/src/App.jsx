@@ -107,6 +107,7 @@ import DigitalTwinDashboard from './components/DigitalTwinDashboard'
 import AIObservabilityDashboard from './components/AIObservabilityDashboard'
 import ModelMonitoringDashboard from './components/ModelMonitoringDashboard'
 import AIControlTowerDashboard from './components/AIControlTowerDashboard'
+import HumanEvaluationDashboard from './components/HumanEvaluationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -300,7 +301,8 @@ function App() {
     { id: 'digital-twin', label: 'Digital Twin' },
     { id: 'ai-observability', label: 'AI Observability' },
     { id: 'model-monitoring', label: 'Model Monitoring' },
-    { id: 'ai-control-tower', label: 'AI Control Tower' }
+    { id: 'ai-control-tower', label: 'AI Control Tower' },
+    { id: 'human-evaluation', label: 'Human Evaluation' }
   ]
 
   // API Calls
@@ -1551,6 +1553,8 @@ function App() {
         return <ModelMonitoringDashboard />
       case 'ai-control-tower':
         return <AIControlTowerDashboard />
+      case 'human-evaluation':
+        return <HumanEvaluationDashboard />
       default:
         return renderClassificationTab()
     }

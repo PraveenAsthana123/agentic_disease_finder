@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-23T18:02:41-06:00",
+  "generated_at": "2026-07-01T10:58:42-06:00",
   "source": "insur_project (201 AI types)",
   "project": "agenticfinder (epilepsy EEG)",
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 21,
-    "scaffold": 9,
-    "planned": 13
+    "built": 13,
+    "scaffold": 12,
+    "planned": 18
   },
   "rows": [
     {
@@ -62,8 +62,8 @@
     },
     {
       "type": "ai-control-tower",
-      "status": "built",
-      "note": "Centralized oversight dashboard \u2014 component registry, transaction log, HITL/clinical decisions, cost tracking, system health"
+      "status": "scaffold",
+      "note": "Department reports + transaction log"
     },
     {
       "type": "ai-guardrails",
@@ -72,8 +72,8 @@
     },
     {
       "type": "ai-observability",
-      "status": "built",
-      "note": "AI Observability Dashboard \u2014 transaction logging, cost tracking, conversation monitoring, analysis auditing from real clinical.db data (619 transactions, 978 cost records, 314 conversations, 21 analyses)"
+      "status": "scaffold",
+      "note": "Transaction log + audit reports"
     },
     {
       "type": "aiops",
@@ -102,8 +102,8 @@
     },
     {
       "type": "anomaly-detection-ai",
-      "status": "built",
-      "note": "EEG anomaly detection \u2014 z-score + IQR on 47 features from 21 analyses (14 patients), severity distribution, category breakdown, patient/feature drill-down, seizure diary cross-reference, 3 API endpoints (/api/anomaly-detection/overview|breakdown|definitions) all verified 200, AnomalyDetectionDashboard.jsx + nav wiring"
+      "status": "planned",
+      "note": "EEG anomaly detection \u2014 registry"
     },
     {
       "type": "ar-ai",
@@ -147,8 +147,8 @@
     },
     {
       "type": "bias-detection-ai",
-      "status": "built",
-      "note": "Bias Detection AI Dashboard \u2014 demographic parity, confidence disparity, assessment coverage, medication access analysis from real clinical.db data (40 patients, 3 gender groups, 5 age brackets), 3 API endpoints verified 200"
+      "status": "planned",
+      "note": "Bias assessment \u2014 registry"
     },
     {
       "type": "bioinformatics-ai",
@@ -162,8 +162,8 @@
     },
     {
       "type": "causal-ai",
-      "status": "built",
-      "note": "Causal seizure analysis \u2014 medication pathways, trigger chains, demographic associations, causal graph, intervention effectiveness from real clinical.db data"
+      "status": "planned",
+      "note": "Causal seizure analysis \u2014 registry"
     },
     {
       "type": "chain-of-thought-ai",
@@ -292,8 +292,8 @@
     },
     {
       "type": "digital-twin-ai",
-      "status": "built",
-      "note": "Patient digital twin \u2014 completeness scoring, domain coverage, per-patient twin profiles, cross-domain correlation from clinical.db (40 patients, 6 data domains)"
+      "status": "planned",
+      "note": "Patient digital twin \u2014 registry"
     },
     {
       "type": "distributed-ai",
@@ -362,8 +362,8 @@
     },
     {
       "type": "explainable-ai",
-      "status": "built",
-      "note": "XAI dashboard with feature importance, SHAP-like direction analysis, counterfactual explanations, per-patient profiles, band power contribution, feature correlations from 21 EEG analyses (14 patients, 47 features), 3 API endpoints verified 200, ExplainableAIDashboard.jsx + nav wiring"
+      "status": "scaffold",
+      "note": "Ground-truth capture table; SHAP/Grad-CAM compute planned"
     },
     {
       "type": "face-recognition-ai",
@@ -457,8 +457,8 @@
     },
     {
       "type": "human-evaluation-ai",
-      "status": "scaffold",
-      "note": "HITL accept/override + reason codes"
+      "status": "built",
+      "note": "Human Evaluation AI Dashboard \u2014 HITL reviews, expert agreement, clinical decisions, component findings, clinician feedback from real clinical.db data (2 HITL reviews, 3 expert reviews, 1 clinical decision, 66.7% agreement rate)"
     },
     {
       "type": "humanoid-ai",
@@ -517,8 +517,8 @@
     },
     {
       "type": "knowledge-graph-ai",
-      "status": "built",
-      "note": "knowledge_graph_dashboard.py + /api/knowledge-graph/* + KnowledgeGraphDashboard.jsx"
+      "status": "planned",
+      "note": "Neurophysiology KG \u2014 registry"
     },
     {
       "type": "legal-ai",
@@ -592,8 +592,8 @@
     },
     {
       "type": "model-monitoring-ai",
-      "status": "built",
-      "note": "Model Monitoring Dashboard \u2014 drift verdicts, confidence distribution, system health, data quality, training summaries, per-patient predictions, accuracy, consistency checks, definitions; 3 API endpoints + frontend + nav wiring"
+      "status": "scaffold",
+      "note": "Department report KPIs; drift monitor planned"
     },
     {
       "type": "mr-ai",

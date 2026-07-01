@@ -6319,6 +6319,30 @@ async def ai_control_tower_definitions():
     return _json_safe(ctd.control_tower_definitions())
 
 
+@app.get("/api/human-evaluation/overview")
+async def human_evaluation_overview():
+    """Human Evaluation overview — HITL reviews, expert agreement,
+    clinical decisions, feedback ratings."""
+    import scripts.human_evaluation_dashboard as hed
+    return _json_safe(hed.human_eval_overview())
+
+
+@app.get("/api/human-evaluation/breakdown")
+async def human_evaluation_breakdown():
+    """Human Evaluation breakdown — review details, patient profiles,
+    role agreement matrix, component findings."""
+    import scripts.human_evaluation_dashboard as hed
+    return _json_safe(hed.human_eval_breakdown())
+
+
+@app.get("/api/human-evaluation/definitions")
+async def human_evaluation_definitions():
+    """Human Evaluation definitions — concept, review types, agreement metrics,
+    clinical relevance, remediation strategies."""
+    import scripts.human_evaluation_dashboard as hed
+    return _json_safe(hed.human_eval_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
