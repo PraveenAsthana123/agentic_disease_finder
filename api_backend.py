@@ -6343,6 +6343,30 @@ async def human_evaluation_definitions():
     return _json_safe(hed.human_eval_definitions())
 
 
+@app.get("/api/model-governance/overview")
+async def model_governance_overview():
+    """Model Governance overview — consultant matrix, sign-off rates, approval
+    chain, model lifecycle, compliance status, governance timeline."""
+    import scripts.model_governance_dashboard as mgd
+    return _json_safe(mgd.governance_overview())
+
+
+@app.get("/api/model-governance/breakdown")
+async def model_governance_breakdown():
+    """Model Governance breakdown — per-expert reviews, HITL detail, clinical
+    decision chain, component findings, feedback log, patient profiles."""
+    import scripts.model_governance_dashboard as mgd
+    return _json_safe(mgd.governance_breakdown())
+
+
+@app.get("/api/model-governance/definitions")
+async def model_governance_definitions():
+    """Model Governance definitions — governance concepts, approval workflows,
+    compliance frameworks, clinical relevance, remediation strategies."""
+    import scripts.model_governance_dashboard as mgd
+    return _json_safe(mgd.governance_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

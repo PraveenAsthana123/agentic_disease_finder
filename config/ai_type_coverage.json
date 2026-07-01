@@ -587,8 +587,8 @@
     },
     {
       "type": "model-governance",
-      "status": "scaffold",
-      "note": "Consultant matrix + HITL sign-off"
+      "status": "built",
+      "note": "Consultant matrix + HITL sign-off + approval chain + compliance audit dashboard"
     },
     {
       "type": "model-monitoring-ai",
