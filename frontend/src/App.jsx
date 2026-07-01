@@ -111,6 +111,7 @@ import HumanEvaluationDashboard from './components/HumanEvaluationDashboard'
 import ModelGovernanceDashboard from './components/ModelGovernanceDashboard'
 import MultimodalAIDashboard from './components/MultimodalAIDashboard'
 import DriftDetectionDashboard from './components/DriftDetectionDashboard'
+import ExplainableAIDashboard from './components/ExplainableAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -308,7 +309,8 @@ function App() {
     { id: 'human-evaluation', label: 'Human Evaluation' },
     { id: 'model-governance', label: 'Model Governance' },
     { id: 'multimodal-ai', label: 'Multimodal AI' },
-    { id: 'drift-detection', label: 'Drift Detection' }
+    { id: 'drift-detection', label: 'Drift Detection' },
+    { id: 'explainable-ai', label: 'Explainable AI' }
   ]
 
   // API Calls
@@ -1567,6 +1569,8 @@ function App() {
         return <MultimodalAIDashboard />
       case 'drift-detection':
         return <DriftDetectionDashboard />
+      case 'explainable-ai':
+        return <ExplainableAIDashboard />
       default:
         return renderClassificationTab()
     }

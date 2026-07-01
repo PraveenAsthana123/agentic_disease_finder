@@ -5,8 +5,8 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 17,
-    "scaffold": 11,
+    "built": 18,
+    "scaffold": 10,
     "planned": 15
   },
   "rows": [
@@ -362,8 +362,8 @@
     },
     {
       "type": "explainable-ai",
-      "status": "scaffold",
-      "note": "Ground-truth capture table; SHAP/Grad-CAM compute planned"
+      "status": "built",
+      "note": "Feature importance (correlation-based), SHAP-like direction analysis, counterfactual analysis, per-patient explainability profiles (14 patients, 47 features, 21 analyses), category importance radar, band power contribution, confidence distribution, feature correlations (top 15 pairs), per-feature z-score extremes, disease-wise top features, 3 API endpoints (/api/explainable-ai/overview|breakdown|definitions) all verified 200, ExplainableAIDashboard.jsx + nav wiring"
     },
     {
       "type": "face-recognition-ai",
