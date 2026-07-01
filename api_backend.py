@@ -5466,6 +5466,31 @@ async def ncv_definitions():
     return _json_safe(ncv.definitions())
 
 
+# ── AI FinOps Dashboard ──────────────────────────────────────────
+
+@app.get("/api/ai-finops/overview")
+async def ai_finops_overview():
+    """AI FinOps overview: KPIs, cost breakdown, daily cost trend,
+    model storage costs. Real track.jsonl + model file data."""
+    import scripts.ai_finops as af
+    return _json_safe(af.overview())
+
+
+@app.get("/api/ai-finops/breakdown")
+async def ai_finops_breakdown():
+    """AI FinOps breakdown: build session log, hourly cost heatmap,
+    cost velocity, storage breakdown, efficiency metrics."""
+    import scripts.ai_finops as af
+    return _json_safe(af.breakdown())
+
+
+@app.get("/api/ai-finops/definitions")
+async def ai_finops_definitions():
+    """AI FinOps cost model, metric definitions, optimization strategies."""
+    import scripts.ai_finops as af
+    return _json_safe(af.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
