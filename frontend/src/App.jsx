@@ -102,6 +102,7 @@ import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
 import PromptDriftDashboard from './components/PromptDriftDashboard'
 import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
 import CausalAIDashboard from './components/CausalAIDashboard'
+import BiasDetectionDashboard from './components/BiasDetectionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -290,7 +291,8 @@ function App() {
     { id: 'exercise', label: 'Exercise / Rehab' },
     { id: 'knowledge-graph', label: 'Knowledge Graph' },
     { id: 'anomaly-detection', label: 'Anomaly Detection' },
-    { id: 'causal-ai', label: 'Causal AI' }
+    { id: 'causal-ai', label: 'Causal AI' },
+    { id: 'bias-detection', label: 'Bias Detection' }
   ]
 
   // API Calls
@@ -1531,6 +1533,8 @@ function App() {
         return <AnomalyDetectionDashboard />
       case 'causal-ai':
         return <CausalAIDashboard />
+      case 'bias-detection':
+        return <BiasDetectionDashboard />
       default:
         return renderClassificationTab()
     }

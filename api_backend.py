@@ -6174,6 +6174,31 @@ async def causal_ai_definitions():
     return _json_safe(cad.definitions())
 
 
+@app.get("/api/bias-detection/overview")
+async def bias_detection_overview():
+    """Bias Detection overview — demographic parity, representation gaps,
+    confidence disparities, assessment coverage, medication access by gender/age."""
+    import scripts.bias_detection_dashboard as bdd
+    return _json_safe(bdd.bias_detection_overview())
+
+
+@app.get("/api/bias-detection/breakdown")
+async def bias_detection_breakdown():
+    """Bias Detection breakdown — per-patient bias profiles, instrument scores
+    by gender, confidence histograms, MRI coverage, disparity metrics,
+    intersectional analysis."""
+    import scripts.bias_detection_dashboard as bdd
+    return _json_safe(bdd.bias_detection_breakdown())
+
+
+@app.get("/api/bias-detection/definitions")
+async def bias_detection_definitions():
+    """Bias Detection definitions — detection methods, protected attributes,
+    fairness metrics, clinical relevance, remediation strategies."""
+    import scripts.bias_detection_dashboard as bdd
+    return _json_safe(bdd.bias_detection_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

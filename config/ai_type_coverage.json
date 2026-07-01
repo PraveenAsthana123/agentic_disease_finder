@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 14,
+    "built": 15,
     "scaffold": 13,
-    "planned": 16
+    "planned": 15
   },
   "rows": [
     {
@@ -147,8 +147,8 @@
     },
     {
       "type": "bias-detection-ai",
-      "status": "planned",
-      "note": "Bias assessment \u2014 registry"
+      "status": "built",
+      "note": "Bias Detection AI Dashboard \u2014 demographic parity, confidence disparity, assessment coverage, medication access analysis from real clinical.db data (40 patients, 3 gender groups, 5 age brackets), 3 API endpoints verified 200"
     },
     {
       "type": "bioinformatics-ai",
