@@ -5851,6 +5851,31 @@ async def llmops_definitions():
     return _json_safe(llm.definitions())
 
 
+# ── DataOps Dashboard ─────────────────────────────────────────────────
+@app.get("/api/data-ops/overview")
+async def data_ops_overview():
+    """DataOps overview: ingestion KPIs, data quality summary, storage stats,
+    modality coverage, signal quality distribution."""
+    import scripts.data_ops_dashboard as dops
+    return _json_safe(dops.overview())
+
+
+@app.get("/api/data-ops/breakdown")
+async def data_ops_breakdown():
+    """DataOps breakdown: pipeline activity, daily volume, quality dimensions,
+    missing matrix, data lineage, storage inventory, AI readiness components."""
+    import scripts.data_ops_dashboard as dops
+    return _json_safe(dops.breakdown())
+
+
+@app.get("/api/data-ops/definitions")
+async def data_ops_definitions():
+    """DataOps definitions: pipelines, quality dimensions (ISO 25012),
+    AI readiness scoring, storage, lineage steps, clinical relevance."""
+    import scripts.data_ops_dashboard as dops
+    return _json_safe(dops.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

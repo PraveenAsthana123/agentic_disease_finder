@@ -140,7 +140,7 @@
       "id": "dataops",
       "label": "📦 DataOps",
       "purpose": "ingestion, data quality, lineage, vector ingest",
-      "status": "partial",
+      "status": "built",
       "maps_to": "eeg_ingest + VECTOR-INGEST cron"
     },
     {
