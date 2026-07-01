@@ -98,6 +98,7 @@ import ModelDriftDashboard from './components/ModelDriftDashboard'
 import FeatureDriftDashboard from './components/FeatureDriftDashboard'
 import OutputDriftDashboard from './components/OutputDriftDashboard'
 import ExerciseDashboard from './components/ExerciseDashboard'
+import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -282,7 +283,8 @@ function App() {
     { id: 'feature-drift', label: 'Feature Drift' },
     { id: 'model-drift', label: 'Model Drift' },
     { id: 'output-drift', label: 'Output/RAG Drift' },
-    { id: 'exercise', label: 'Exercise / Rehab' }
+    { id: 'exercise', label: 'Exercise / Rehab' },
+    { id: 'knowledge-graph', label: 'Knowledge Graph' }
   ]
 
   // API Calls
@@ -1515,6 +1517,8 @@ function App() {
         return <OutputDriftDashboard />
       case 'exercise':
         return <ExerciseDashboard />
+      case 'knowledge-graph':
+        return <KnowledgeGraphDashboard />
       default:
         return renderClassificationTab()
     }

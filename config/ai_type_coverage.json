@@ -1,0 +1,1019 @@
+{
+  "generated_at": "2026-06-23T18:02:41-06:00",
+  "source": "insur_project (201 AI types)",
+  "project": "agenticfinder (epilepsy EEG)",
+  "total": 201,
+  "counts": {
+    "not-pulled": 158,
+    "built": 13,
+    "scaffold": 13,
+    "planned": 17
+  },
+  "rows": [
+    {
+      "type": "active-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "adaptive-rag",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "adversarial-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "agent-governance",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "agentic-ai",
+      "status": "built",
+      "note": "Mixture-of-Agents ensemble (test_agentic_mcp.py)"
+    },
+    {
+      "type": "agentic-rag",
+      "status": "scaffold",
+      "note": "Analysis module present; not wired to a live corpus"
+    },
+    {
+      "type": "agentops",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "agent-swarm-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "agi",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-alignment",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-control-tower",
+      "status": "scaffold",
+      "note": "Department reports + transaction log"
+    },
+    {
+      "type": "ai-guardrails",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-observability",
+      "status": "scaffold",
+      "note": "Transaction log + audit reports"
+    },
+    {
+      "type": "aiops",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-red-teaming",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-safety",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ai-workforce",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "aml-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "anomaly-detection-ai",
+      "status": "planned",
+      "note": "EEG anomaly detection \u2014 registry"
+    },
+    {
+      "type": "ar-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "asi",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "audit-ai",
+      "status": "built",
+      "note": "Transaction log (UTC+local) on every write"
+    },
+    {
+      "type": "autonomous-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "autonomous-enterprise-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "autonomous-vehicle-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "banking-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "benchmarking-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "bias-detection-ai",
+      "status": "planned",
+      "note": "Bias assessment \u2014 registry"
+    },
+    {
+      "type": "bioinformatics-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "business-rule-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "causal-ai",
+      "status": "planned",
+      "note": "Causal seizure analysis \u2014 registry"
+    },
+    {
+      "type": "chain-of-thought-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "climate-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "clinical-ai",
+      "status": "built",
+      "note": "Clinical capture tables + per-patient analysis"
+    },
+    {
+      "type": "cloud-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "cognitive-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "collaborative-filtering-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "compliance-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "computer-vision-ai",
+      "status": "scaffold",
+      "note": "Video frame + motion extraction; classification planned"
+    },
+    {
+      "type": "contact-center-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "content-based-recommendation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "contract-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "conversational-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "corrective-rag",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "customer-service-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "cybersecurity-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "data-governance-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "data-observability-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "dataops-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "data-quality-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "decision-intelligence",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "deep-learning",
+      "status": "planned",
+      "note": "CNN/LSTM/Transformer on EEG \u2014 agent registry"
+    },
+    {
+      "type": "defect-detection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "demand-forecasting-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "descriptive-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "diagnostic-ai",
+      "status": "built",
+      "note": "Epilepsy diagnosis prediction + confidence"
+    },
+    {
+      "type": "digital-twin-ai",
+      "status": "planned",
+      "note": "Patient digital twin \u2014 registry"
+    },
+    {
+      "type": "distributed-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "document-ai",
+      "status": "built",
+      "note": "PDF/DOCX/text extraction (eeg_ingest)"
+    },
+    {
+      "type": "drift-detection-ai",
+      "status": "planned",
+      "note": "Model drift monitoring \u2014 registry"
+    },
+    {
+      "type": "drone-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "drug-discovery-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "edge-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "eeg-ai",
+      "status": "built",
+      "note": "EEG pipeline: parse + 47 features + analysis (eeg_analysis_pipeline.py)"
+    },
+    {
+      "type": "email-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "embodied-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "energy-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "entity-extraction-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ethical-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "evaluation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "explainable-ai",
+      "status": "scaffold",
+      "note": "Ground-truth capture table; SHAP/Grad-CAM compute planned"
+    },
+    {
+      "type": "face-recognition-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "fairness-ai",
+      "status": "planned",
+      "note": "Fairness gates \u2014 registry"
+    },
+    {
+      "type": "federated-learning",
+      "status": "planned",
+      "note": "Multi-site federation \u2014 registry"
+    },
+    {
+      "type": "finance-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "financial-forecasting-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "finops-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "forecasting-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "foundation-models",
+      "status": "planned",
+      "note": "Clinical foundation model \u2014 registry"
+    },
+    {
+      "type": "fraud-detection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "generative-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "genomics-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "geospatial-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "governance-ai",
+      "status": "scaffold",
+      "note": "Governance dept + consultant oversight registry"
+    },
+    {
+      "type": "graph-of-thought-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "graphrag",
+      "status": "scaffold",
+      "note": "Analysis module present; graph not built"
+    },
+    {
+      "type": "healthcare-ai",
+      "status": "built",
+      "note": "EEG epilepsy clinical workflow"
+    },
+    {
+      "type": "hpc-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "hr-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "human-evaluation-ai",
+      "status": "scaffold",
+      "note": "HITL accept/override + reason codes"
+    },
+    {
+      "type": "humanoid-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "hybrid-recommendation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "hybrid-search-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "image-classification-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "image-segmentation-ai",
+      "status": "planned",
+      "note": "EEG trace digitization from images \u2014 registry"
+    },
+    {
+      "type": "industrial-robotics-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "information-retrieval-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "insurance-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "intrusion-detection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "inventory-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "iot-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "knowledge-graph-ai",
+      "status": "built",
+      "note": "knowledge_graph_dashboard.py + /api/knowledge-graph/* + KnowledgeGraphDashboard.jsx"
+    },
+    {
+      "type": "legal-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "limited-memory-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "lineage-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "llm",
+      "status": "planned",
+      "note": "LLM-backed explanation \u2014 registry"
+    },
+    {
+      "type": "llmops",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "machine-learning",
+      "status": "built",
+      "note": "RandomForest models trained"
+    },
+    {
+      "type": "manufacturing-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "marketing-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "materials-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "medical-imaging-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "meeting-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "metadata-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "mlops",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "model-governance",
+      "status": "scaffold",
+      "note": "Consultant matrix + HITL sign-off"
+    },
+    {
+      "type": "model-monitoring-ai",
+      "status": "scaffold",
+      "note": "Department report KPIs; drift monitor planned"
+    },
+    {
+      "type": "mr-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "multi-agent-systems",
+      "status": "built",
+      "note": "7 disease agents + orchestrator (MCP)"
+    },
+    {
+      "type": "multimodal-ai",
+      "status": "scaffold",
+      "note": "Multi-format ingest (video/pdf/img/edf); fusion model planned"
+    },
+    {
+      "type": "multimodal-rag",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "neuro-ai",
+      "status": "planned",
+      "note": "Neuro-specific modeling \u2014 registry"
+    },
+    {
+      "type": "neuro-symbolic-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "nlg",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "nlp-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "nlu",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "object-detection-ai",
+      "status": "planned",
+      "note": "Body-movement detection in video \u2014 registry"
+    },
+    {
+      "type": "ocr-ai",
+      "status": "built",
+      "note": "pytesseract OCR in ingest (eeg_ingest.extract_image)"
+    },
+    {
+      "type": "odysseus-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "oil-and-gas-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "online-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "ontology-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "optimization-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "personalization-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "physical-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "pii-detection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "planning-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "policy-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "predictive-ai",
+      "status": "built",
+      "note": "Per-disease classifiers (models/*.joblib)"
+    },
+    {
+      "type": "prescriptive-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "pricing-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "privacy-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "procurement-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "quantum-machine-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "question-answering-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "rag",
+      "status": "scaffold",
+      "note": "agentic_rag_analysis/ modules present; live RAG pipeline not wired"
+    },
+    {
+      "type": "ragops",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "react-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "reactive-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "reasoning-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "recommendation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "recruitment-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "reflection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "reinforcement-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "responsible-ai",
+      "status": "scaffold",
+      "note": "HITL + governance reports; fairness gates not enforced"
+    },
+    {
+      "type": "retail-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "risk-scoring-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "rlhf",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "robotics-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "route-optimization-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "sales-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "sales-forecasting-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "satellite-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "schedule-optimization-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "scientific-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "self-rag",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "self-supervised-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "semantic-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "semantic-search-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "semi-supervised-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "sentiment-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "simulation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "slm",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "spatial-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "speech-ai",
+      "status": "planned",
+      "note": "Audio conversion from video-EEG \u2014 registry"
+    },
+    {
+      "type": "sql-rag",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "summarization-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "supervised-learning",
+      "status": "built",
+      "note": "Labeled disease classification"
+    },
+    {
+      "type": "supply-chain-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "symbolic-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "synthetic-data-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "taxonomy-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "text-to-audio-ai",
+      "status": "planned",
+      "note": "Audio conversion \u2014 registry"
+    },
+    {
+      "type": "text-to-image-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "text-to-video-ai",
+      "status": "planned",
+      "note": "Video conversion \u2014 registry"
+    },
+    {
+      "type": "theory-of-mind-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "threat-detection-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "time-series-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "tinyml",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "transfer-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "translation-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "tree-of-thought-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "unsupervised-learning",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "vector-search-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "video-analytics-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "vision-language-models",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "voice-ai",
+      "status": "planned",
+      "note": "Audio markers \u2014 registry"
+    },
+    {
+      "type": "vr-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "what-if-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "world-models",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    },
+    {
+      "type": "xr-ai",
+      "status": "not-pulled",
+      "note": "in insur_project; not applicable / not imported"
+    }
+  ]
+}
