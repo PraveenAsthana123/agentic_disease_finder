@@ -58,7 +58,7 @@
         "peak-RNN"
       ],
       "biomarker": "N20 latency/amplitude",
-      "status": "planned"
+      "status": "built"
     },
     {
       "code": "EMG",

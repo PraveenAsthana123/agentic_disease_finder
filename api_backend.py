@@ -5542,6 +5542,32 @@ async def data_versioning_definitions():
     return _json_safe(dvc.definitions())
 
 
+# ── Somatosensory Evoked Potentials (SSEP) Dashboard ──────────────
+
+@app.get("/api/ssep/overview")
+async def ssep_overview():
+    """SSEP overview: KPIs, severity distribution, diagnostic patterns,
+    per-limb abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.ssep_dashboard as ssep
+    return _json_safe(ssep.overview())
+
+
+@app.get("/api/ssep/breakdown")
+async def ssep_breakdown():
+    """SSEP breakdown: upper & lower limb summaries, N20/P37 histograms,
+    limb comparison, per-patient detail with full upper+lower results."""
+    import scripts.ssep_dashboard as ssep
+    return _json_safe(ssep.breakdown())
+
+
+@app.get("/api/ssep/definitions")
+async def ssep_definitions():
+    """SSEP metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.ssep_dashboard as ssep
+    return _json_safe(ssep.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
