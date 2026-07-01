@@ -5724,6 +5724,32 @@ async def ssr_definitions():
     return _json_safe(ssr.definitions())
 
 
+# ── ABPM / Holter Dashboard ──────────────────────────────────────────────
+
+@app.get("/api/abpm/overview")
+async def abpm_overview():
+    """ABPM/Holter overview: KPIs, severity distribution, diagnostic patterns,
+    dipping distribution, per-patient summary. Real clinical.db data."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.overview())
+
+
+@app.get("/api/abpm/breakdown")
+async def abpm_breakdown():
+    """ABPM/Holter breakdown: BP & ECG parameter tables, systolic/dipping/QTc/PVC
+    histograms, cardiac-autonomic score histogram, per-patient detail."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.breakdown())
+
+
+@app.get("/api/abpm/definitions")
+async def abpm_definitions():
+    """ABPM/Holter definitions, reference ranges, dipping categories, diagnostic
+    patterns, severity levels, clinical significance."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
