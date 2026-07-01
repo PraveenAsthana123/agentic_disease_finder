@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 18,
+    "built": 19,
     "scaffold": 10,
-    "planned": 15
+    "planned": 14
   },
   "rows": [
     {
@@ -267,8 +267,8 @@
     },
     {
       "type": "deep-learning",
-      "status": "planned",
-      "note": "CNN/LSTM/Transformer on EEG \u2014 agent registry"
+      "status": "built",
+      "note": "Deep Learning Dashboard \u2014 7 architectures (3D CNN/Transformer/LSTM/1D CNN/EEGNet/GNN/Ensemble), training history, 98.05% patient-specific accuracy, 4-method comparison, per-patient metrics, 5-tab frontend, 3 API endpoints verified 200"
     },
     {
       "type": "defect-detection-ai",

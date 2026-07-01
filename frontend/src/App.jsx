@@ -102,6 +102,7 @@ import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
 import PromptDriftDashboard from './components/PromptDriftDashboard'
 import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
 import CausalAIDashboard from './components/CausalAIDashboard'
+import DeepLearningDashboard from './components/DeepLearningDashboard'
 import BiasDetectionDashboard from './components/BiasDetectionDashboard'
 import DigitalTwinDashboard from './components/DigitalTwinDashboard'
 import AIObservabilityDashboard from './components/AIObservabilityDashboard'
@@ -301,6 +302,7 @@ function App() {
     { id: 'knowledge-graph', label: 'Knowledge Graph' },
     { id: 'anomaly-detection', label: 'Anomaly Detection' },
     { id: 'causal-ai', label: 'Causal AI' },
+    { id: 'deep-learning', label: 'Deep Learning' },
     { id: 'bias-detection', label: 'Bias Detection' },
     { id: 'digital-twin', label: 'Digital Twin' },
     { id: 'ai-observability', label: 'AI Observability' },
@@ -1551,6 +1553,8 @@ function App() {
         return <AnomalyDetectionDashboard />
       case 'causal-ai':
         return <CausalAIDashboard />
+      case 'deep-learning':
+        return <DeepLearningDashboard />
       case 'bias-detection':
         return <BiasDetectionDashboard />
       case 'digital-twin':

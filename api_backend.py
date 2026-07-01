@@ -6416,6 +6416,27 @@ async def drift_detection_definitions():
     return _json_safe(ddd.definitions())
 
 
+@app.get("/api/deep-learning/overview")
+async def deep_learning_overview():
+    """Deep Learning overview — model architectures, training history, accuracy metrics."""
+    import scripts.deep_learning_dashboard as dld
+    return _json_safe(dld.deep_learning_overview())
+
+
+@app.get("/api/deep-learning/breakdown")
+async def deep_learning_breakdown():
+    """Deep Learning breakdown — per-patient metrics, model comparison, training details."""
+    import scripts.deep_learning_dashboard as dld
+    return _json_safe(dld.deep_learning_breakdown())
+
+
+@app.get("/api/deep-learning/definitions")
+async def deep_learning_definitions():
+    """Deep Learning definitions — architectures, metrics, clinical relevance."""
+    import scripts.deep_learning_dashboard as dld
+    return _json_safe(dld.definitions())
+
+
 @app.get("/api/model-monitoring/overview")
 async def model_monitoring_overview():
     """Model Monitoring overview — drift verdict, consistency, data quality,
