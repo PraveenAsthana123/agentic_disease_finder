@@ -6461,6 +6461,31 @@ async def model_monitoring_definitions():
     return _json_safe(mmd.definitions())
 
 
+# ── Communication AI ───────────────────────────────────────
+@app.get("/api/communication-ai/overview")
+async def communication_ai_overview():
+    """Communication AI overview — auto-generated patient messages,
+    urgency distribution, delivery channels, communication timeline."""
+    import scripts.communication_ai_dashboard as cad
+    return _json_safe(cad.communication_overview())
+
+
+@app.get("/api/communication-ai/breakdown")
+async def communication_ai_breakdown():
+    """Communication AI breakdown — per-patient profiles, message templates,
+    appointment/medication/seizure communications."""
+    import scripts.communication_ai_dashboard as cad
+    return _json_safe(cad.communication_breakdown())
+
+
+@app.get("/api/communication-ai/definitions")
+async def communication_ai_definitions():
+    """Communication AI definitions — communication concepts, message categories,
+    delivery methods, clinical relevance, remediation strategies."""
+    import scripts.communication_ai_dashboard as cad
+    return _json_safe(cad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

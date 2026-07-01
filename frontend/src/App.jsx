@@ -113,6 +113,7 @@ import ModelGovernanceDashboard from './components/ModelGovernanceDashboard'
 import MultimodalAIDashboard from './components/MultimodalAIDashboard'
 import DriftDetectionDashboard from './components/DriftDetectionDashboard'
 import ExplainableAIDashboard from './components/ExplainableAIDashboard'
+import CommunicationAIDashboard from './components/CommunicationAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -312,7 +313,8 @@ function App() {
     { id: 'model-governance', label: 'Model Governance' },
     { id: 'multimodal-ai', label: 'Multimodal AI' },
     { id: 'drift-detection', label: 'Drift Detection' },
-    { id: 'explainable-ai', label: 'Explainable AI' }
+    { id: 'explainable-ai', label: 'Explainable AI' },
+    { id: 'communication-ai', label: 'Communication AI' }
   ]
 
   // API Calls
@@ -1575,6 +1577,8 @@ function App() {
         return <DriftDetectionDashboard />
       case 'explainable-ai':
         return <ExplainableAIDashboard />
+      case 'communication-ai':
+        return <CommunicationAIDashboard />
       default:
         return renderClassificationTab()
     }

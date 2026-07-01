@@ -12,7 +12,7 @@
     {"id": "feedback", "label": "Continuous Feedback", "captures": "patient + expert feedback loop", "status": "built", "maps_to": "feedback table"},
     {"id": "reporting", "label": "Reports", "captures": "EEG report, assessment reports, summaries", "status": "partial", "maps_to": "/api/eeg-report"},
     {"id": "dashboard", "label": "Dashboard", "captures": "patient KPIs + trends", "status": "partial", "maps_to": "patient master panel"},
-    {"id": "comm_ai", "label": "Communication AI", "captures": "auto messages/digests to patient", "status": "planned"},
+    {"id": "comm_ai", "label": "Communication AI", "captures": "auto messages/digests to patient", "status": "built", "maps_to": "/api/communication-ai/* + CommunicationAIDashboard.jsx"},
     {"id": "conversational_ai", "label": "Conversational AI", "captures": "RAG chat over patient records", "status": "built", "maps_to": "/api/patient-chat (vector RAG)"},
     {"id": "generative_ai", "label": "Generative AI", "captures": "GenAI patient summary/report", "status": "partial", "maps_to": "Ollama generation"},
     {"id": "transactions", "label": "Transaction History", "captures": "every action, UTC+local stamp", "status": "built", "maps_to": "/api/transactions"}
