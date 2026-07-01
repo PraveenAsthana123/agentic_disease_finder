@@ -5491,6 +5491,31 @@ async def ai_finops_definitions():
     return _json_safe(af.definitions())
 
 
+# ── Data Versioning & Catalog Dashboard ──────────────────────────
+
+@app.get("/api/data-versioning/overview")
+async def data_versioning_overview():
+    """Data Versioning & Catalog overview: KPIs, catalog, format distribution,
+    size by dataset. Real filesystem + git data."""
+    import scripts.data_versioning_catalog as dvc
+    return _json_safe(dvc.overview())
+
+
+@app.get("/api/data-versioning/breakdown")
+async def data_versioning_breakdown():
+    """Data Versioning & Catalog breakdown: databases, model artifacts,
+    staleness, lineage, recent changes, data events."""
+    import scripts.data_versioning_catalog as dvc
+    return _json_safe(dvc.breakdown())
+
+
+@app.get("/api/data-versioning/definitions")
+async def data_versioning_definitions():
+    """Data Versioning & Catalog metric definitions, concepts, stages."""
+    import scripts.data_versioning_catalog as dvc
+    return _json_safe(dvc.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

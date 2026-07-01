@@ -77,7 +77,8 @@
             "DVC",
             "metadata catalog"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "data_versioning_catalog.py + /api/data-versioning/* + DataVersioningDashboard.jsx"
         }
       ]
     },

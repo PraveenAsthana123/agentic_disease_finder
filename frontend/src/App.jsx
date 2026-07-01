@@ -83,6 +83,7 @@ import DigitSpanDashboard from './components/DigitSpanDashboard'
 import AMPSDashboard from './components/AMPSDashboard'
 import VideoEEGDashboard from './components/VideoEEGDashboard'
 import NCVDashboard from './components/NCVDashboard'
+import DataVersioningDashboard from './components/DataVersioningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -252,7 +253,8 @@ function App() {
     { id: 'digit-span', label: 'Digit Span' },
     { id: 'amps', label: 'AMPS' },
     { id: 'video-eeg', label: 'Video EEG' },
-    { id: 'ncv', label: 'NCV' }
+    { id: 'ncv', label: 'NCV' },
+    { id: 'data-versioning', label: 'Data Versioning' }
   ]
 
   // API Calls
@@ -1455,6 +1457,8 @@ function App() {
         return <VideoEEGDashboard />
       case 'ncv':
         return <NCVDashboard />
+      case 'data-versioning':
+        return <DataVersioningDashboard />
       default:
         return renderClassificationTab()
     }
