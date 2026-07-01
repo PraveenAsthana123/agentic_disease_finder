@@ -6560,6 +6560,30 @@ async def interpretable_ai_definitions():
     return _json_safe(iad.definitions())
 
 
+@app.get("/api/ica-noise-cleaning/overview")
+async def ica_noise_cleaning_overview():
+    """ICA Noise Cleaning overview — method summary, per-file artifact removal,
+    variance removed, signal quality distribution, aggregate stats."""
+    import scripts.ica_noise_cleaning_dashboard as icd
+    return _json_safe(icd.overview())
+
+
+@app.get("/api/ica-noise-cleaning/breakdown")
+async def ica_noise_cleaning_breakdown():
+    """ICA Noise Cleaning breakdown — per-subject detail, component counts,
+    artifact types, cleaning quality metrics."""
+    import scripts.ica_noise_cleaning_dashboard as icd
+    return _json_safe(icd.breakdown())
+
+
+@app.get("/api/ica-noise-cleaning/definitions")
+async def ica_noise_cleaning_definitions():
+    """ICA Noise Cleaning definitions — ICA concepts, artifact types,
+    clinical relevance, regulatory standards, remediation strategies."""
+    import scripts.ica_noise_cleaning_dashboard as icd
+    return _json_safe(icd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

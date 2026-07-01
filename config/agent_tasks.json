@@ -362,8 +362,8 @@
     {
       "id": "noise_cleaning_ica",
       "task": "MNE-ICA noise cleaning",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts/ica_noise_cleaning_dashboard.py + /api/ica-noise-cleaning/{overview,breakdown,definitions}",
+      "status": "built"
     },
     {
       "id": "cnn_resnet",
