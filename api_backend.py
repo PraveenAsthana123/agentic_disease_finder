@@ -6199,6 +6199,30 @@ async def bias_detection_definitions():
     return _json_safe(bdd.bias_detection_definitions())
 
 
+@app.get("/api/digital-twin/overview")
+async def digital_twin_overview():
+    """Digital Twin overview — patient completeness scores, domain coverage,
+    twin readiness levels, demographic distributions."""
+    import scripts.digital_twin_dashboard as dtd
+    return _json_safe(dtd.digital_twin_overview())
+
+
+@app.get("/api/digital-twin/breakdown")
+async def digital_twin_breakdown():
+    """Digital Twin breakdown — per-patient twin profiles, domain correlation,
+    top complete patients, medication-EEG cross-analysis."""
+    import scripts.digital_twin_dashboard as dtd
+    return _json_safe(dtd.digital_twin_breakdown())
+
+
+@app.get("/api/digital-twin/definitions")
+async def digital_twin_definitions():
+    """Digital Twin definitions — concept, data domains, completeness methodology,
+    clinical relevance, remediation strategies."""
+    import scripts.digital_twin_dashboard as dtd
+    return _json_safe(dtd.digital_twin_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

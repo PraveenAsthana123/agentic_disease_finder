@@ -103,6 +103,7 @@ import PromptDriftDashboard from './components/PromptDriftDashboard'
 import AnomalyDetectionDashboard from './components/AnomalyDetectionDashboard'
 import CausalAIDashboard from './components/CausalAIDashboard'
 import BiasDetectionDashboard from './components/BiasDetectionDashboard'
+import DigitalTwinDashboard from './components/DigitalTwinDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -292,7 +293,8 @@ function App() {
     { id: 'knowledge-graph', label: 'Knowledge Graph' },
     { id: 'anomaly-detection', label: 'Anomaly Detection' },
     { id: 'causal-ai', label: 'Causal AI' },
-    { id: 'bias-detection', label: 'Bias Detection' }
+    { id: 'bias-detection', label: 'Bias Detection' },
+    { id: 'digital-twin', label: 'Digital Twin' }
   ]
 
   // API Calls
@@ -1535,6 +1537,8 @@ function App() {
         return <CausalAIDashboard />
       case 'bias-detection':
         return <BiasDetectionDashboard />
+      case 'digital-twin':
+        return <DigitalTwinDashboard />
       default:
         return renderClassificationTab()
     }

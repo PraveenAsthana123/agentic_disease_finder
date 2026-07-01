@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 15,
+    "built": 16,
     "scaffold": 13,
-    "planned": 15
+    "planned": 14
   },
   "rows": [
     {
@@ -292,8 +292,8 @@
     },
     {
       "type": "digital-twin-ai",
-      "status": "planned",
-      "note": "Patient digital twin \u2014 registry"
+      "status": "built",
+      "note": "Patient digital twin — completeness scoring, domain coverage, per-patient twin profiles, cross-domain correlation from clinical.db (40 patients, 6 data domains)"
     },
     {
       "type": "distributed-ai",
