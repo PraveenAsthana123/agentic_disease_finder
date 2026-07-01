@@ -5089,6 +5089,33 @@ async def mcp_security_definitions():
     return _json_safe(msd.mcp_security_definitions())
 
 
+# ── SecOps Dashboard ─────────────────────────────────────────
+# Threat detection, injection/jailbreak scanning, PII protection,
+# access audit, incident tracking, OWASP LLM Top-10 coverage.
+
+@app.get("/api/sec-ops/overview")
+async def sec_ops_overview():
+    """SecOps overview — threat summary, guardrail posture, PII/injection
+    pattern inventory, compliance score, security agent activity."""
+    import scripts.sec_ops_dashboard as sod
+    return _json_safe(sod.overview())
+
+
+@app.get("/api/sec-ops/breakdown")
+async def sec_ops_breakdown():
+    """SecOps breakdown — access audit, actor privileges, attack surface,
+    daily trend, conversation roles, incident timeline, OWASP coverage."""
+    import scripts.sec_ops_dashboard as sod
+    return _json_safe(sod.breakdown())
+
+
+@app.get("/api/sec-ops/definitions")
+async def sec_ops_definitions():
+    """Metric definitions for the SecOps dashboard."""
+    import scripts.sec_ops_dashboard as sod
+    return _json_safe(sod.definitions())
+
+
 # ── Appointments Dashboard ────────────────────────────────────
 
 @app.get("/api/appointments/overview")

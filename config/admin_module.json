@@ -133,8 +133,8 @@
       "id": "secops",
       "label": "\ud83d\udd12 SecOps",
       "purpose": "threat detection, injection/jailbreak, access audit, incident",
-      "status": "partial",
-      "maps_to": "guardrails + audit (SIEM planned)"
+      "status": "built",
+      "maps_to": "/api/sec-ops/* + SecOpsDashboard"
     },
     {
       "id": "dataops",
