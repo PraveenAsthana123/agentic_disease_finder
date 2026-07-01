@@ -90,7 +90,7 @@
         "1D-CNN"
       ],
       "biomarker": "P100 latency",
-      "status": "planned"
+      "status": "built"
     },
     {
       "code": "BERA",

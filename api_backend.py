@@ -5620,6 +5620,32 @@ async def rns_definitions():
     return _json_safe(rns.definitions())
 
 
+# ── Visual Evoked Potentials (VEP) Dashboard ──────────────────────
+
+@app.get("/api/vep/overview")
+async def vep_overview():
+    """VEP overview: KPIs, severity distribution, diagnostic patterns,
+    per-eye abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.vep_dashboard as vep
+    return _json_safe(vep.overview())
+
+
+@app.get("/api/vep/breakdown")
+async def vep_breakdown():
+    """VEP breakdown: left & right eye summaries, P100 latency/amplitude
+    histograms, eye comparison, inter-eye difference, per-patient detail."""
+    import scripts.vep_dashboard as vep
+    return _json_safe(vep.breakdown())
+
+
+@app.get("/api/vep/definitions")
+async def vep_definitions():
+    """VEP metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.vep_dashboard as vep
+    return _json_safe(vep.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
