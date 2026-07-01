@@ -6486,6 +6486,30 @@ async def communication_ai_definitions():
     return _json_safe(cad.definitions())
 
 
+@app.get("/api/foundation-models/overview")
+async def foundation_models_overview():
+    """Foundation Models overview — model catalog, disease coverage,
+    architecture inventory, framework distribution, tier breakdown."""
+    import scripts.foundation_models_dashboard as fmd
+    return _json_safe(fmd.foundation_models_overview())
+
+
+@app.get("/api/foundation-models/breakdown")
+async def foundation_models_breakdown():
+    """Foundation Models breakdown — per-disease model summaries, top models
+    by accuracy, largest models, prediction performance by disease."""
+    import scripts.foundation_models_dashboard as fmd
+    return _json_safe(fmd.foundation_models_breakdown())
+
+
+@app.get("/api/foundation-models/definitions")
+async def foundation_models_definitions():
+    """Foundation Models definitions — concepts, architectures, clinical
+    relevance, governance, remediation strategies."""
+    import scripts.foundation_models_dashboard as fmd
+    return _json_safe(fmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

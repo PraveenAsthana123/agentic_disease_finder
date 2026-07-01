@@ -114,6 +114,7 @@ import MultimodalAIDashboard from './components/MultimodalAIDashboard'
 import DriftDetectionDashboard from './components/DriftDetectionDashboard'
 import ExplainableAIDashboard from './components/ExplainableAIDashboard'
 import CommunicationAIDashboard from './components/CommunicationAIDashboard'
+import FoundationModelsDashboard from './components/FoundationModelsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -314,7 +315,8 @@ function App() {
     { id: 'multimodal-ai', label: 'Multimodal AI' },
     { id: 'drift-detection', label: 'Drift Detection' },
     { id: 'explainable-ai', label: 'Explainable AI' },
-    { id: 'communication-ai', label: 'Communication AI' }
+    { id: 'communication-ai', label: 'Communication AI' },
+    { id: 'foundation-models', label: 'Foundation Models' }
   ]
 
   // API Calls
@@ -1579,6 +1581,8 @@ function App() {
         return <ExplainableAIDashboard />
       case 'communication-ai':
         return <CommunicationAIDashboard />
+      case 'foundation-models':
+        return <FoundationModelsDashboard />
       default:
         return renderClassificationTab()
     }
