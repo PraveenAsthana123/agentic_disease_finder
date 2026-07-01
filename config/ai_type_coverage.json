@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-01T10:58:42-06:00",
+  "generated_at": "2026-07-01T11:21:00-06:00",
   "source": "insur_project (201 AI types)",
   "project": "agenticfinder (epilepsy EEG)",
   "total": 201,
   "counts": {
     "not-pulled": 158,
     "built": 13,
-    "scaffold": 12,
-    "planned": 18
+    "scaffold": 13,
+    "planned": 17
   },
   "rows": [
     {
@@ -102,8 +102,8 @@
     },
     {
       "type": "anomaly-detection-ai",
-      "status": "planned",
-      "note": "EEG anomaly detection \u2014 registry"
+      "status": "built",
+      "note": "IQR+z-score anomaly detection on 47 EEG features (scripts/anomaly_detection_dashboard.py, 3 API endpoints, AnomalyDetectionDashboard.jsx)"
     },
     {
       "type": "ar-ai",
@@ -457,8 +457,8 @@
     },
     {
       "type": "human-evaluation-ai",
-      "status": "built",
-      "note": "Human Evaluation AI Dashboard \u2014 HITL reviews, expert agreement, clinical decisions, component findings, clinician feedback from real clinical.db data (2 HITL reviews, 3 expert reviews, 1 clinical decision, 66.7% agreement rate)"
+      "status": "scaffold",
+      "note": "HITL accept/override + reason codes"
     },
     {
       "type": "humanoid-ai",
@@ -587,8 +587,8 @@
     },
     {
       "type": "model-governance",
-      "status": "built",
-      "note": "Consultant matrix + HITL sign-off + approval chain + compliance audit dashboard"
+      "status": "scaffold",
+      "note": "Consultant matrix + HITL sign-off"
     },
     {
       "type": "model-monitoring-ai",
