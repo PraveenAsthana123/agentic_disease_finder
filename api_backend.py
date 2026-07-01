@@ -5826,6 +5826,31 @@ async def model_ops_definitions():
     return _json_safe(mo.definitions())
 
 
+# ── LLMOps Dashboard ────────────────────────────────────────────────
+@app.get("/api/llmops/overview")
+async def llmops_overview():
+    """LLMOps overview: prompt health, token/cost KPIs, hallucination summary,
+    cost by provider/model."""
+    import scripts.llmops_dashboard as llm
+    return _json_safe(llm.overview())
+
+
+@app.get("/api/llmops/breakdown")
+async def llmops_breakdown():
+    """LLMOps breakdown: prompt version history, daily token usage, latency
+    percentiles, hallucination detail, RAG evaluation."""
+    import scripts.llmops_dashboard as llm
+    return _json_safe(llm.breakdown())
+
+
+@app.get("/api/llmops/definitions")
+async def llmops_definitions():
+    """LLMOps definitions: models, prompts, RAG pipelines, hallucination
+    categories, thresholds, clinical relevance."""
+    import scripts.llmops_dashboard as llm
+    return _json_safe(llm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

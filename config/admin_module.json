@@ -119,7 +119,7 @@
       "id": "llmops",
       "label": "💬 LLMOps",
       "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval",
-      "status": "partial",
+      "status": "built",
       "maps_to": "council + Ollama (cost/drift planned)"
     },
     {
