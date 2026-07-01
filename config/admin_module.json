@@ -112,8 +112,8 @@
       "id": "model",
       "label": "🧠 Model Ops",
       "purpose": "model registry, versions, accuracy, drift, retrain",
-      "status": "partial",
-      "maps_to": "validation suite + accuracy reports"
+      "status": "built",
+      "maps_to": "/api/model-ops/* + ModelOpsDashboard.jsx"
     },
     {
       "id": "llmops",

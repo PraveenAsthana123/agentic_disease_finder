@@ -5802,6 +5802,30 @@ async def cloud_ops_definitions():
     return _json_safe(cloud.definitions())
 
 
+# ── Model Ops Dashboard ──────────────────────────────────────────────
+@app.get("/api/model-ops/overview")
+async def model_ops_overview():
+    """Model Ops overview: model registry, accuracy KPIs, drift status,
+    consistency, external validation."""
+    import scripts.model_ops_dashboard as mo
+    return _json_safe(mo.overview())
+
+
+@app.get("/api/model-ops/breakdown")
+async def model_ops_breakdown():
+    """Model Ops breakdown: accuracy distribution, size comparison,
+    usage activity, retrain history."""
+    import scripts.model_ops_dashboard as mo
+    return _json_safe(mo.breakdown())
+
+
+@app.get("/api/model-ops/definitions")
+async def model_ops_definitions():
+    """Model Ops definitions: registry fields, metrics, drift, consistency."""
+    import scripts.model_ops_dashboard as mo
+    return _json_safe(mo.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
