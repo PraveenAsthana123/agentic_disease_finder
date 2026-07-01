@@ -5568,6 +5568,32 @@ async def ssep_definitions():
     return _json_safe(ssep.definitions())
 
 
+# ── Electromyography (EMG) Dashboard ──────────────────────────────
+
+@app.get("/api/emg/overview")
+async def emg_overview():
+    """EMG overview: KPIs, severity distribution, diagnostic patterns,
+    per-muscle abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.emg_dashboard as emg
+    return _json_safe(emg.overview())
+
+
+@app.get("/api/emg/breakdown")
+async def emg_breakdown():
+    """EMG breakdown: MUAP summary, recruitment/spontaneous activity distribution,
+    duration & amplitude histograms, limb comparison, per-patient detail."""
+    import scripts.emg_dashboard as emg
+    return _json_safe(emg.breakdown())
+
+
+@app.get("/api/emg/definitions")
+async def emg_definitions():
+    """EMG metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.emg_dashboard as emg
+    return _json_safe(emg.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

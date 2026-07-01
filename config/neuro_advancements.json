@@ -69,7 +69,7 @@
         "LSTM"
       ],
       "biomarker": "MUAP morphology, recruitment",
-      "status": "planned"
+      "status": "built"
     },
     {
       "code": "RNST",
