@@ -337,7 +337,8 @@
             "PSI",
             "KS test"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/data-drift/* + DataDriftDashboard.jsx"
         },
         {
           "name": "Model Drift",

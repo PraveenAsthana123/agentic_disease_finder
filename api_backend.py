@@ -6006,6 +6006,30 @@ async def ethical_ai_definitions():
     return _json_safe(ead.definitions())
 
 
+@app.get("/api/data-drift/overview")
+async def data_drift_overview():
+    """Data Drift overview — health score, verdict, severity distribution,
+    PSI/KS statistics, worst-drifted features, monitoring event count."""
+    import scripts.data_drift_dashboard as ddd
+    return _json_safe(ddd.overview())
+
+
+@app.get("/api/data-drift/breakdown")
+async def data_drift_breakdown():
+    """Data Drift breakdown — per-feature PSI and KS detail, severity chart,
+    event timeline, threshold reference lines."""
+    import scripts.data_drift_dashboard as ddd
+    return _json_safe(ddd.breakdown())
+
+
+@app.get("/api/data-drift/definitions")
+async def data_drift_definitions():
+    """Data Drift definitions — PSI, KS test, severity levels, reference vs live,
+    feature categories, clinical relevance (IEC 62304, FDA AI/ML, EU AI Act)."""
+    import scripts.data_drift_dashboard as ddd
+    return _json_safe(ddd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
