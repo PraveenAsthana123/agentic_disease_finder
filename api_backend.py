@@ -5902,6 +5902,31 @@ async def observability_definitions():
     return _json_safe(obs.definitions())
 
 
+# ── MLOps Dashboard ────────────────────────────────────────────────
+@app.get("/api/mlops/overview")
+async def mlops_overview():
+    """MLOps overview: training pipeline KPIs, experiment history,
+    CV summary, evaluation strategy comparison."""
+    import scripts.mlops_dashboard as mlops
+    return _json_safe(mlops.overview())
+
+
+@app.get("/api/mlops/breakdown")
+async def mlops_breakdown():
+    """MLOps breakdown: multi-disease accuracy, cross-validation detail,
+    pipeline events, feature inventory, model files, daily activity."""
+    import scripts.mlops_dashboard as mlops
+    return _json_safe(mlops.breakdown())
+
+
+@app.get("/api/mlops/definitions")
+async def mlops_definitions():
+    """MLOps definitions: training pipeline, evaluation types, CV strategies,
+    EEG features, metrics, clinical relevance."""
+    import scripts.mlops_dashboard as mlops
+    return _json_safe(mlops.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

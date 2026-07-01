@@ -126,8 +126,8 @@
       "id": "mlops",
       "label": "\u2699\ufe0f MLOps",
       "purpose": "training pipeline, experiment tracking, feature store, CV metrics",
-      "status": "partial",
-      "maps_to": "Model Lab + benchmarks"
+      "status": "built",
+      "maps_to": "/api/mlops/* + MLOpsDashboard.jsx"
     },
     {
       "id": "secops",

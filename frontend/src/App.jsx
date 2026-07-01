@@ -90,6 +90,7 @@ import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
+import MLOpsDashboard from './components/MLOpsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -266,7 +267,8 @@ function App() {
     { id: 'bera', label: 'BERA' },
     { id: 'ssr', label: 'SSR' },
     { id: 'data-versioning', label: 'Data Versioning' },
-    { id: 'model-ops', label: 'Model Ops' }
+    { id: 'model-ops', label: 'Model Ops' },
+    { id: 'mlops', label: 'MLOps' }
   ]
 
   // API Calls
@@ -1483,6 +1485,8 @@ function App() {
         return <DataVersioningDashboard />
       case 'model-ops':
         return <ModelOpsDashboard />
+      case 'mlops':
+        return <MLOpsDashboard />
       default:
         return renderClassificationTab()
     }
