@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 16,
-    "scaffold": 13,
-    "planned": 14
+    "built": 18,
+    "scaffold": 12,
+    "planned": 13
   },
   "rows": [
     {
@@ -293,7 +293,7 @@
     {
       "type": "digital-twin-ai",
       "status": "built",
-      "note": "Patient digital twin — completeness scoring, domain coverage, per-patient twin profiles, cross-domain correlation from clinical.db (40 patients, 6 data domains)"
+      "note": "Patient digital twin \u2014 completeness scoring, domain coverage, per-patient twin profiles, cross-domain correlation from clinical.db (40 patients, 6 data domains)"
     },
     {
       "type": "distributed-ai",
@@ -362,8 +362,8 @@
     },
     {
       "type": "explainable-ai",
-      "status": "scaffold",
-      "note": "Ground-truth capture table; SHAP/Grad-CAM compute planned"
+      "status": "built",
+      "note": "XAI dashboard with feature importance, SHAP-like direction analysis, counterfactual explanations, per-patient profiles, band power contribution, feature correlations from 21 EEG analyses (14 patients, 47 features), 3 API endpoints verified 200, ExplainableAIDashboard.jsx + nav wiring"
     },
     {
       "type": "face-recognition-ai",

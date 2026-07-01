@@ -6223,6 +6223,30 @@ async def digital_twin_definitions():
     return _json_safe(dtd.digital_twin_definitions())
 
 
+@app.get("/api/explainable-ai/overview")
+async def explainable_ai_overview():
+    """Explainable AI overview — global feature importance, category breakdown,
+    band power contribution, confidence distribution, disease-wise importance."""
+    import scripts.explainable_ai_dashboard as xaid
+    return _json_safe(xaid.xai_overview())
+
+
+@app.get("/api/explainable-ai/breakdown")
+async def explainable_ai_breakdown():
+    """Explainable AI breakdown — per-patient profiles, per-feature stats,
+    counterfactual analysis, feature correlations, SHAP direction analysis."""
+    import scripts.explainable_ai_dashboard as xaid
+    return _json_safe(xaid.xai_breakdown())
+
+
+@app.get("/api/explainable-ai/definitions")
+async def explainable_ai_definitions():
+    """Explainable AI definitions — methods, EEG feature categories,
+    interpretation guide, clinical relevance, remediation strategies."""
+    import scripts.explainable_ai_dashboard as xaid
+    return _json_safe(xaid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
