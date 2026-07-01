@@ -87,6 +87,7 @@ import BlinkReflexDashboard from './components/BlinkReflexDashboard'
 import EMGDashboard from './components/EMGDashboard'
 import RNSDashboard from './components/RNSDashboard'
 import BeraDashboard from './components/BeraDashboard'
+import SSRDashboard from './components/SSRDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 
 // API Base URL
@@ -262,6 +263,7 @@ function App() {
     { id: 'emg', label: 'EMG' },
     { id: 'rns', label: 'RNS' },
     { id: 'bera', label: 'BERA' },
+    { id: 'ssr', label: 'SSR' },
     { id: 'data-versioning', label: 'Data Versioning' }
   ]
 
@@ -1473,6 +1475,8 @@ function App() {
         return <RNSDashboard />
       case 'bera':
         return <BeraDashboard />
+      case 'ssr':
+        return <SSRDashboard />
       case 'data-versioning':
         return <DataVersioningDashboard />
       default:

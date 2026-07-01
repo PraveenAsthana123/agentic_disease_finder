@@ -5698,6 +5698,32 @@ async def hrv_definitions():
     return _json_safe(hrv.definitions())
 
 
+# ── Sympathetic Skin Response (SSR) Dashboard ──────────────────────
+
+@app.get("/api/ssr/overview")
+async def ssr_overview():
+    """SSR overview: KPIs, severity distribution, diagnostic patterns,
+    per-site abnormality rates, per-patient summary. Real clinical.db data."""
+    import scripts.ssr_dashboard as ssr
+    return _json_safe(ssr.overview())
+
+
+@app.get("/api/ssr/breakdown")
+async def ssr_breakdown():
+    """SSR breakdown: hand & foot summaries, latency & amplitude histograms,
+    dysautonomia score histogram, site comparison, per-patient detail."""
+    import scripts.ssr_dashboard as ssr
+    return _json_safe(ssr.breakdown())
+
+
+@app.get("/api/ssr/definitions")
+async def ssr_definitions():
+    """SSR metric definitions, reference ranges, diagnostic patterns,
+    severity levels, clinical significance."""
+    import scripts.ssr_dashboard as ssr
+    return _json_safe(ssr.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
