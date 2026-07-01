@@ -5,8 +5,8 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 18,
-    "scaffold": 12,
+    "built": 21,
+    "scaffold": 9,
     "planned": 13
   },
   "rows": [
@@ -62,8 +62,8 @@
     },
     {
       "type": "ai-control-tower",
-      "status": "scaffold",
-      "note": "Department reports + transaction log"
+      "status": "built",
+      "note": "Centralized oversight dashboard \u2014 component registry, transaction log, HITL/clinical decisions, cost tracking, system health"
     },
     {
       "type": "ai-guardrails",
@@ -593,7 +593,7 @@
     {
       "type": "model-monitoring-ai",
       "status": "built",
-      "note": "Model Monitoring Dashboard — drift verdicts, confidence distribution, system health, data quality, training summaries, per-patient predictions, accuracy, consistency checks, definitions; 3 API endpoints + frontend + nav wiring"
+      "note": "Model Monitoring Dashboard \u2014 drift verdicts, confidence distribution, system health, data quality, training summaries, per-patient predictions, accuracy, consistency checks, definitions; 3 API endpoints + frontend + nav wiring"
     },
     {
       "type": "mr-ai",

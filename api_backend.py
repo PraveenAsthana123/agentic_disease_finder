@@ -6295,6 +6295,30 @@ async def model_monitoring_definitions():
     return _json_safe(mmd.definitions())
 
 
+@app.get("/api/ai-control-tower/overview")
+async def ai_control_tower_overview():
+    """AI Control Tower overview — component registry, transaction volume,
+    system health, cost summary, oversight stats, drift/quality status."""
+    import scripts.ai_control_tower_dashboard as ctd
+    return _json_safe(ctd.control_tower_overview())
+
+
+@app.get("/api/ai-control-tower/breakdown")
+async def ai_control_tower_breakdown():
+    """AI Control Tower breakdown — component-action map, recent transactions,
+    HITL reviews, clinical decisions, cost by service, patient profiles."""
+    import scripts.ai_control_tower_dashboard as ctd
+    return _json_safe(ctd.control_tower_breakdown())
+
+
+@app.get("/api/ai-control-tower/definitions")
+async def ai_control_tower_definitions():
+    """AI Control Tower definitions — concept, system components, metrics,
+    clinical relevance, remediation strategies."""
+    import scripts.ai_control_tower_dashboard as ctd
+    return _json_safe(ctd.control_tower_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

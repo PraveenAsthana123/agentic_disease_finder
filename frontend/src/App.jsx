@@ -106,6 +106,7 @@ import BiasDetectionDashboard from './components/BiasDetectionDashboard'
 import DigitalTwinDashboard from './components/DigitalTwinDashboard'
 import AIObservabilityDashboard from './components/AIObservabilityDashboard'
 import ModelMonitoringDashboard from './components/ModelMonitoringDashboard'
+import AIControlTowerDashboard from './components/AIControlTowerDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -298,7 +299,8 @@ function App() {
     { id: 'bias-detection', label: 'Bias Detection' },
     { id: 'digital-twin', label: 'Digital Twin' },
     { id: 'ai-observability', label: 'AI Observability' },
-    { id: 'model-monitoring', label: 'Model Monitoring' }
+    { id: 'model-monitoring', label: 'Model Monitoring' },
+    { id: 'ai-control-tower', label: 'AI Control Tower' }
   ]
 
   // API Calls
@@ -1547,6 +1549,8 @@ function App() {
         return <AIObservabilityDashboard />
       case 'model-monitoring':
         return <ModelMonitoringDashboard />
+      case 'ai-control-tower':
+        return <AIControlTowerDashboard />
       default:
         return renderClassificationTab()
     }
