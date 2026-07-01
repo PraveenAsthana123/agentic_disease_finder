@@ -99,6 +99,7 @@ import FeatureDriftDashboard from './components/FeatureDriftDashboard'
 import OutputDriftDashboard from './components/OutputDriftDashboard'
 import ExerciseDashboard from './components/ExerciseDashboard'
 import KnowledgeGraphDashboard from './components/KnowledgeGraphDashboard'
+import PromptDriftDashboard from './components/PromptDriftDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -283,6 +284,7 @@ function App() {
     { id: 'feature-drift', label: 'Feature Drift' },
     { id: 'model-drift', label: 'Model Drift' },
     { id: 'output-drift', label: 'Output/RAG Drift' },
+    { id: 'prompt-drift', label: 'Prompt Drift' },
     { id: 'exercise', label: 'Exercise / Rehab' },
     { id: 'knowledge-graph', label: 'Knowledge Graph' }
   ]
@@ -1515,6 +1517,8 @@ function App() {
         return <ModelDriftDashboard />
       case 'output-drift':
         return <OutputDriftDashboard />
+      case 'prompt-drift':
+        return <PromptDriftDashboard />
       case 'exercise':
         return <ExerciseDashboard />
       case 'knowledge-graph':

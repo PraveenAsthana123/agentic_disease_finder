@@ -106,7 +106,7 @@
           ],
           "status": "built",
           "maps_to": "/api/feature-drift/* + FeatureDriftDashboard.jsx",
-          "note": "Feature Drift dashboard — importance-weighted drift scoring from saved epilepsy models (8 RF/ensemble .joblib), category-level analysis (Time-Domain/Complexity/Spectral), 12 features monitored across 3 categories, cross-model importance comparison with Gini concentration, radar chart for KS by category, category bar chart with PSI thresholds, drift + training event timeline, 6 definition sections, 8 KPI cards, 5-tab UI (overview/category analysis/model importance/drift history/definitions), 3 API endpoints all verified 200"
+          "note": "Feature Drift dashboard \u2014 importance-weighted drift scoring from saved epilepsy models (8 RF/ensemble .joblib), category-level analysis (Time-Domain/Complexity/Spectral), 12 features monitored across 3 categories, cross-model importance comparison with Gini concentration, radar chart for KS by category, category bar chart with PSI thresholds, drift + training event timeline, 6 definition sections, 8 KPI cards, 5-tab UI (overview/category analysis/model importance/drift history/definitions), 3 API endpoints all verified 200"
         },
         {
           "name": "Embedding",
@@ -365,7 +365,7 @@
             "success rate",
             "relevance"
           ],
-          "status": "planned"
+          "status": "built"
         }
       ]
     },

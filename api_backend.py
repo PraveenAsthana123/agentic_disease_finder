@@ -6078,6 +6078,54 @@ async def model_drift_definitions():
     return _json_safe(mdd.definitions())
 
 
+@app.get("/api/output-drift/overview")
+async def output_drift_overview():
+    """Output/RAG Drift overview — output drift score, confidence shift,
+    label distribution JSD, RAG success rate, input-output correlation."""
+    import scripts.output_drift_dashboard as odd
+    return _json_safe(odd.overview())
+
+
+@app.get("/api/output-drift/breakdown")
+async def output_drift_breakdown():
+    """Output/RAG Drift breakdown — confidence timeline, histogram,
+    per-patient summary, RAG event log, input-output correlation."""
+    import scripts.output_drift_dashboard as odd
+    return _json_safe(odd.breakdown())
+
+
+@app.get("/api/output-drift/definitions")
+async def output_drift_definitions():
+    """Output/RAG Drift definitions — output drift, JSD, RAG pipeline,
+    correlation, monitoring methodology, clinical relevance."""
+    import scripts.output_drift_dashboard as odd
+    return _json_safe(odd.definitions())
+
+
+@app.get("/api/prompt-drift/overview")
+async def prompt_drift_overview():
+    """Prompt Drift overview — prompt/response volume, length drift,
+    role distribution, temporal length trends."""
+    import scripts.prompt_drift_dashboard as pdd
+    return _json_safe(pdd.overview())
+
+
+@app.get("/api/prompt-drift/breakdown")
+async def prompt_drift_breakdown():
+    """Prompt Drift breakdown — length histograms, daily volume,
+    topic keywords, prompt file stats, weekly drift aggregation."""
+    import scripts.prompt_drift_dashboard as pdd
+    return _json_safe(pdd.breakdown())
+
+
+@app.get("/api/prompt-drift/definitions")
+async def prompt_drift_definitions():
+    """Prompt Drift definitions — drift metrics, prompt categories,
+    detection methods, clinical relevance, remediation."""
+    import scripts.prompt_drift_dashboard as pdd
+    return _json_safe(pdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
