@@ -6510,6 +6510,31 @@ async def foundation_models_definitions():
     return _json_safe(fmd.definitions())
 
 
+# ── Analytics AI ──────────────────────────────────────────
+@app.get("/api/analytics-ai/overview")
+async def analytics_ai_overview():
+    """Analytics AI overview — patient demographics, clinical activity KPIs,
+    disease distribution, department workload, signal quality."""
+    import scripts.analytics_ai_dashboard as aad
+    return _json_safe(aad.analytics_overview())
+
+
+@app.get("/api/analytics-ai/breakdown")
+async def analytics_ai_breakdown():
+    """Analytics AI breakdown — per-patient summaries, instrument distribution,
+    seizure severity, appointment status, medication coverage, monthly trends."""
+    import scripts.analytics_ai_dashboard as aad
+    return _json_safe(aad.analytics_breakdown())
+
+
+@app.get("/api/analytics-ai/definitions")
+async def analytics_ai_definitions():
+    """Analytics AI definitions — analytics concepts, clinical metrics,
+    data quality, regulatory standards, remediation strategies."""
+    import scripts.analytics_ai_dashboard as aad
+    return _json_safe(aad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

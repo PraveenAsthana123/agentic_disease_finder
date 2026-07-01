@@ -240,7 +240,7 @@
       "id": "analytics_ai",
       "task": "Analytics AI (descriptive dashboards + KPIs)",
       "module": "department_report + dashboards",
-      "status": "scaffold"
+      "status": "built"
     },
     {
       "id": "patient_dashboard",
