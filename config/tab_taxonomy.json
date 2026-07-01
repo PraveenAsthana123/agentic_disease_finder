@@ -36,7 +36,7 @@
     {"id": "ethical_ai", "label": "Ethical AI", "status": "partial", "maps_to": "fairness + guardrails"},
     {"id": "secure_ai", "label": "Secure AI", "status": "built", "maps_to": "guardrails (PII/injection)"},
     {"id": "governance_ai", "label": "Governance AI", "status": "built", "maps_to": "audit + council"},
-    {"id": "trust_ai", "label": "Trust AI", "status": "partial", "maps_to": "confidence + concordance"},
+    {"id": "trust_ai", "label": "Trust AI", "status": "built", "maps_to": "/api/trust-ai/* + TrustAIDashboard.jsx"},
     {"id": "interpretable_ai", "label": "Interpretable AI", "status": "built", "maps_to": "surrogate tree"},
     {"id": "explainable_ai", "label": "Explainable AI", "status": "built", "maps_to": "SHAP"},
     {"id": "fairness_ai", "label": "Fairness AI", "status": "built", "maps_to": "disparate impact / EO"},

@@ -5954,6 +5954,34 @@ async def mlops_definitions():
     return _json_safe(mlops.definitions())
 
 
+# ── Trust AI Dashboard ───────────────────────────────────────
+# AI confidence, concordance (AI-human agreement), HITL oversight,
+# clinical decision audit, composite trust score from clinical.db.
+
+@app.get("/api/trust-ai/overview")
+async def trust_ai_overview():
+    """Trust AI overview — confidence stats, concordance rate, HITL accept/override,
+    clinical decisions, composite trust score."""
+    import scripts.trust_ai_dashboard as tad
+    return _json_safe(tad.overview())
+
+
+@app.get("/api/trust-ai/breakdown")
+async def trust_ai_breakdown():
+    """Trust AI breakdown — confidence distribution, expert reviews by role,
+    concordance by confidence band, HITL decisions, clinical decision log."""
+    import scripts.trust_ai_dashboard as tad
+    return _json_safe(tad.breakdown())
+
+
+@app.get("/api/trust-ai/definitions")
+async def trust_ai_definitions():
+    """Trust AI definitions — trust score, confidence, concordance, HITL,
+    clinical decision audit, trust dimensions, clinical relevance."""
+    import scripts.trust_ai_dashboard as tad
+    return _json_safe(tad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

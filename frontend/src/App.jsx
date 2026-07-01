@@ -91,6 +91,7 @@ import SSRDashboard from './components/SSRDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
+import TrustAIDashboard from './components/TrustAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -268,7 +269,8 @@ function App() {
     { id: 'ssr', label: 'SSR' },
     { id: 'data-versioning', label: 'Data Versioning' },
     { id: 'model-ops', label: 'Model Ops' },
-    { id: 'mlops', label: 'MLOps' }
+    { id: 'mlops', label: 'MLOps' },
+    { id: 'trust-ai', label: 'Trust AI' }
   ]
 
   // API Calls
@@ -1487,6 +1489,8 @@ function App() {
         return <ModelOpsDashboard />
       case 'mlops':
         return <MLOpsDashboard />
+      case 'trust-ai':
+        return <TrustAIDashboard />
       default:
         return renderClassificationTab()
     }
