@@ -6416,6 +6416,30 @@ async def drift_detection_definitions():
     return _json_safe(ddd.definitions())
 
 
+@app.get("/api/model-monitoring/overview")
+async def model_monitoring_overview():
+    """Model Monitoring overview — drift verdict, consistency, data quality,
+    prediction stats, system health, severity distribution, monitoring timeline."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.monitoring_overview())
+
+
+@app.get("/api/model-monitoring/breakdown")
+async def model_monitoring_breakdown():
+    """Model Monitoring breakdown — all drift features, consistency checks,
+    training runs, per-patient predictions, accuracy breakdown, missing matrix."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.monitoring_breakdown())
+
+
+@app.get("/api/model-monitoring/definitions")
+async def model_monitoring_definitions():
+    """Model Monitoring definitions — monitoring concepts, metrics & thresholds,
+    severity levels, clinical relevance, remediation strategies."""
+    import scripts.model_monitoring_dashboard as mmd
+    return _json_safe(mmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

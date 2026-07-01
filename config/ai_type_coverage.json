@@ -5,8 +5,8 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 14,
-    "scaffold": 13,
+    "built": 16,
+    "scaffold": 11,
     "planned": 16
   },
   "rows": [
@@ -592,8 +592,8 @@
     },
     {
       "type": "model-monitoring-ai",
-      "status": "scaffold",
-      "note": "Department report KPIs; drift monitor planned"
+      "status": "built",
+      "note": "Drift+consistency+data-quality+training+accuracy monitoring, 3 API endpoints verified 200"
     },
     {
       "type": "mr-ai",
