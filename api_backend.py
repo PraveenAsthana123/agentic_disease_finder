@@ -6392,6 +6392,30 @@ async def multimodal_ai_definitions():
     return _json_safe(mad.multimodal_definitions())
 
 
+@app.get("/api/drift-detection/overview")
+async def drift_detection_overview():
+    """Drift Detection overview — PSI/KS drift verdicts, severity distribution,
+    top drifted features, category breakdown, drift timeline."""
+    import scripts.drift_detection_dashboard as ddd
+    return _json_safe(ddd.drift_detection_overview())
+
+
+@app.get("/api/drift-detection/breakdown")
+async def drift_detection_breakdown():
+    """Drift Detection breakdown — per-feature drift stats, per-category summary,
+    per-patient profiles, feature correlations, confidence vs drift, heatmap."""
+    import scripts.drift_detection_dashboard as ddd
+    return _json_safe(ddd.drift_detection_breakdown())
+
+
+@app.get("/api/drift-detection/definitions")
+async def drift_detection_definitions():
+    """Drift Detection definitions — drift concepts, EEG feature categories,
+    metrics & thresholds, clinical relevance, remediation strategies."""
+    import scripts.drift_detection_dashboard as ddd
+    return _json_safe(ddd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 13,
+    "built": 14,
     "scaffold": 13,
-    "planned": 17
+    "planned": 16
   },
   "rows": [
     {
@@ -307,8 +307,8 @@
     },
     {
       "type": "drift-detection-ai",
-      "status": "planned",
-      "note": "Model drift monitoring \u2014 registry"
+      "status": "built",
+      "note": "PSI/KS drift detection on 47 EEG features (reference vs live), 3 API endpoints verified 200, DriftDetectionDashboard.jsx + nav wiring"
     },
     {
       "type": "drone-ai",
