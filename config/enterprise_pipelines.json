@@ -548,7 +548,8 @@
             "knowledge transfer",
             "audit close"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "model_retirement 5-stage pipeline, 7 real .joblib models, accuracy + drift triggers"
         },
         {
           "name": "AI Lifecycle Mgmt",

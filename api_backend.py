@@ -5417,6 +5417,29 @@ async def change_mgmt_definitions():
     return _json_safe(acm.definitions())
 
 
+# ── Model Retirement Dashboard ──────────────────────────────────
+
+@app.get("/api/model-retirement/overview")
+async def model_retirement_overview():
+    """Model Retirement overview: KPIs, model inventory, pipeline stages."""
+    import scripts.model_retirement as mr
+    return _json_safe(mr.overview())
+
+
+@app.get("/api/model-retirement/breakdown")
+async def model_retirement_breakdown():
+    """Model Retirement breakdown: timeline, accuracy vs drift, training history."""
+    import scripts.model_retirement as mr
+    return _json_safe(mr.breakdown())
+
+
+@app.get("/api/model-retirement/definitions")
+async def model_retirement_definitions():
+    """Model Retirement stages, metric definitions, retirement criteria."""
+    import scripts.model_retirement as mr
+    return _json_safe(mr.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
