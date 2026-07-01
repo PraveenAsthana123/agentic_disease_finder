@@ -1,47 +1,276 @@
 {
   "title": "Admin Module — Team Roles + Ops Dashboards",
   "note": "Technical/ops roles + their dashboards. status: built / partial / planned. Most ops dashboards are planned for a single-study research project (no cloud/k8s).",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-07-01",
   "team_roles": [
-    {"role": "Admin", "icon": "🛠️", "owns": ["user management", "feature flags", "system health", "config"], "status": "partial"},
-    {"role": "Tester / QA", "icon": "🧪", "owns": ["test suites", "coverage", "regression", "defect tracking"], "status": "partial", "maps_to": "role_tests + stories-tests"},
-    {"role": "Security", "icon": "🛡️", "owns": ["guardrails", "PII/injection scan", "vuln tracking", "audit"], "status": "built", "maps_to": "/api/guardrails-check + PII"},
-    {"role": "Integration", "icon": "🔌", "owns": ["EMR/FHIR", "device streaming", "API contracts", "webhooks"], "status": "planned"},
-    {"role": "Functional / BA", "icon": "📋", "owns": ["requirements", "use cases", "acceptance criteria", "UAT"], "status": "partial", "maps_to": "stories-tests"},
-    {"role": "Product Manager", "icon": "📊", "owns": ["roadmap", "KPIs", "ROI", "adoption"], "status": "partial", "maps_to": "neurolab-readiness"},
-    {"role": "AI Reviewer", "icon": "🔍", "owns": ["model accuracy drift", "fairness", "override rate", "audit volume"], "status": "built", "maps_to": "responsible-ai + concordance"}
+    {
+      "role": "Admin",
+      "icon": "🛠️",
+      "owns": [
+        "user management",
+        "feature flags",
+        "system health",
+        "config"
+      ],
+      "status": "partial"
+    },
+    {
+      "role": "Tester / QA",
+      "icon": "🧪",
+      "owns": [
+        "test suites",
+        "coverage",
+        "regression",
+        "defect tracking"
+      ],
+      "status": "partial",
+      "maps_to": "role_tests + stories-tests"
+    },
+    {
+      "role": "Security",
+      "icon": "🛡️",
+      "owns": [
+        "guardrails",
+        "PII/injection scan",
+        "vuln tracking",
+        "audit"
+      ],
+      "status": "built",
+      "maps_to": "/api/guardrails-check + PII"
+    },
+    {
+      "role": "Integration",
+      "icon": "🔌",
+      "owns": [
+        "EMR/FHIR",
+        "device streaming",
+        "API contracts",
+        "webhooks"
+      ],
+      "status": "planned"
+    },
+    {
+      "role": "Functional / BA",
+      "icon": "📋",
+      "owns": [
+        "requirements",
+        "use cases",
+        "acceptance criteria",
+        "UAT"
+      ],
+      "status": "partial",
+      "maps_to": "stories-tests"
+    },
+    {
+      "role": "Product Manager",
+      "icon": "📊",
+      "owns": [
+        "roadmap",
+        "KPIs",
+        "ROI",
+        "adoption"
+      ],
+      "status": "partial",
+      "maps_to": "neurolab-readiness"
+    },
+    {
+      "role": "AI Reviewer",
+      "icon": "🔍",
+      "owns": [
+        "model accuracy drift",
+        "fairness",
+        "override rate",
+        "audit volume"
+      ],
+      "status": "built",
+      "maps_to": "responsible-ai + concordance"
+    }
   ],
   "ops_dashboards": [
-    {"id": "cloud", "label": "☁️ Cloud", "purpose": "infra cost, regions, autoscaling, uptime", "status": "planned"},
-    {"id": "devops", "label": "🔧 DevOps / CI-CD", "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status", "status": "built", "maps_to": "devops endpoints + DevOpsDashboard.jsx"},
-    {"id": "db", "label": "🗄️ Database", "purpose": "query latency, slow queries, size, backups, WAL", "status": "built", "maps_to": "database-ops endpoints + DatabaseOpsDashboard.jsx"},
-    {"id": "model", "label": "🧠 Model Ops", "purpose": "model registry, versions, accuracy, drift, retrain", "status": "partial", "maps_to": "validation suite + accuracy reports"},
-    {"id": "llmops", "label": "💬 LLMOps", "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval", "status": "partial", "maps_to": "council + Ollama (cost/drift planned)"},
-    {"id": "mlops", "label": "⚙️ MLOps", "purpose": "training pipeline, experiment tracking, feature store, CV metrics", "status": "partial", "maps_to": "Model Lab + benchmarks"},
-    {"id": "secops", "label": "🔒 SecOps", "purpose": "threat detection, injection/jailbreak, access audit, incident", "status": "partial", "maps_to": "guardrails + audit (SIEM planned)"},
-    {"id": "dataops", "label": "📦 DataOps", "purpose": "ingestion, data quality, lineage, vector ingest", "status": "partial", "maps_to": "eeg_ingest + VECTOR-INGEST cron"},
-    {"id": "finops", "label": "💰 FinOps", "purpose": "token/GPU/cloud cost per request/user/model", "status": "built", "maps_to": "/api/finops/* + FinOpsDashboard.jsx"},
-    {"id": "observability", "label": "👁️ Observability", "purpose": "logs, traces, metrics, request_id", "status": "partial", "maps_to": "transaction_log (OTel planned)"}
+    {
+      "id": "cloud",
+      "label": "☁️ Cloud",
+      "purpose": "infra cost, regions, autoscaling, uptime",
+      "status": "built",
+      "maps_to": "/api/cloud-ops/* + /cloud-ops page"
+    },
+    {
+      "id": "devops",
+      "label": "🔧 DevOps / CI-CD",
+      "purpose": "deploy frequency, change-fail rate, MTTR, pipeline status",
+      "status": "built",
+      "maps_to": "devops endpoints + DevOpsDashboard.jsx"
+    },
+    {
+      "id": "db",
+      "label": "🗄️ Database",
+      "purpose": "query latency, slow queries, size, backups, WAL",
+      "status": "built",
+      "maps_to": "database-ops endpoints + DatabaseOpsDashboard.jsx"
+    },
+    {
+      "id": "model",
+      "label": "🧠 Model Ops",
+      "purpose": "model registry, versions, accuracy, drift, retrain",
+      "status": "partial",
+      "maps_to": "validation suite + accuracy reports"
+    },
+    {
+      "id": "llmops",
+      "label": "💬 LLMOps",
+      "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval",
+      "status": "partial",
+      "maps_to": "council + Ollama (cost/drift planned)"
+    },
+    {
+      "id": "mlops",
+      "label": "⚙️ MLOps",
+      "purpose": "training pipeline, experiment tracking, feature store, CV metrics",
+      "status": "partial",
+      "maps_to": "Model Lab + benchmarks"
+    },
+    {
+      "id": "secops",
+      "label": "🔒 SecOps",
+      "purpose": "threat detection, injection/jailbreak, access audit, incident",
+      "status": "partial",
+      "maps_to": "guardrails + audit (SIEM planned)"
+    },
+    {
+      "id": "dataops",
+      "label": "📦 DataOps",
+      "purpose": "ingestion, data quality, lineage, vector ingest",
+      "status": "partial",
+      "maps_to": "eeg_ingest + VECTOR-INGEST cron"
+    },
+    {
+      "id": "finops",
+      "label": "💰 FinOps",
+      "purpose": "token/GPU/cloud cost per request/user/model",
+      "status": "built",
+      "maps_to": "/api/finops/* + FinOpsDashboard.jsx"
+    },
+    {
+      "id": "observability",
+      "label": "👁️ Observability",
+      "purpose": "logs, traces, metrics, request_id",
+      "status": "partial",
+      "maps_to": "transaction_log (OTel planned)"
+    }
   ],
   "access_control": [
-    {"id": "user_mgmt", "label": "👤 User Management", "purpose": "create/disable users, assign roles, lifecycle", "status": "planned"},
-    {"id": "rbac", "label": "🔑 RBAC", "purpose": "role-based access (Neurologist/Tech/Admin/Reviewer)", "status": "planned", "note": "single-user now; roles are UI tabs"},
-    {"id": "abac", "label": "🧬 ABAC", "purpose": "attribute-based (tenant/dept/clearance) — N/A for single-tenant", "status": "n/a", "note": "single-tenant study; ABAC is for multi-tenant"},
-    {"id": "groups", "label": "👥 Groups / Teams", "purpose": "group membership + group permissions", "status": "planned"},
-    {"id": "pii", "label": "🔒 PII Management", "purpose": "PII detection + masking + redaction", "status": "built", "maps_to": "PII scanner in guardrails"},
-    {"id": "consensus", "label": "🤝 Consensus Management", "purpose": "multi-agent/expert consensus + voting", "status": "built", "maps_to": "consensus + council + study-review"},
-    {"id": "audit", "label": "📜 Access Audit", "purpose": "who accessed what, when (UTC+local)", "status": "built", "maps_to": "transaction_log"}
+    {
+      "id": "user_mgmt",
+      "label": "👤 User Management",
+      "purpose": "create/disable users, assign roles, lifecycle",
+      "status": "planned"
+    },
+    {
+      "id": "rbac",
+      "label": "🔑 RBAC",
+      "purpose": "role-based access (Neurologist/Tech/Admin/Reviewer)",
+      "status": "planned",
+      "note": "single-user now; roles are UI tabs"
+    },
+    {
+      "id": "abac",
+      "label": "🧬 ABAC",
+      "purpose": "attribute-based (tenant/dept/clearance) — N/A for single-tenant",
+      "status": "n/a",
+      "note": "single-tenant study; ABAC is for multi-tenant"
+    },
+    {
+      "id": "groups",
+      "label": "👥 Groups / Teams",
+      "purpose": "group membership + group permissions",
+      "status": "planned"
+    },
+    {
+      "id": "pii",
+      "label": "🔒 PII Management",
+      "purpose": "PII detection + masking + redaction",
+      "status": "built",
+      "maps_to": "PII scanner in guardrails"
+    },
+    {
+      "id": "consensus",
+      "label": "🤝 Consensus Management",
+      "purpose": "multi-agent/expert consensus + voting",
+      "status": "built",
+      "maps_to": "consensus + council + study-review"
+    },
+    {
+      "id": "audit",
+      "label": "📜 Access Audit",
+      "purpose": "who accessed what, when (UTC+local)",
+      "status": "built",
+      "maps_to": "transaction_log"
+    }
   ],
   "integrations": [
-    {"id": "slack", "label": "Slack", "via": "MCP connector", "purpose": "alerts/notifications to channels", "status": "planned"},
-    {"id": "whatsapp", "label": "WhatsApp", "via": "MCP / Business API", "purpose": "patient SOS/reminders", "status": "planned"},
-    {"id": "gdrive", "label": "Google Drive", "via": "MCP", "purpose": "report/document storage", "status": "planned"},
-    {"id": "gsheet", "label": "Google Sheets", "via": "MCP", "purpose": "data export / cohort tracking", "status": "planned"},
-    {"id": "gdocs", "label": "Google Docs", "via": "MCP", "purpose": "report drafting", "status": "planned"},
-    {"id": "dropbox", "label": "Dropbox", "via": "MCP", "purpose": "file storage", "status": "planned"},
-    {"id": "onedrive", "label": "OneDrive", "via": "MCP", "purpose": "file storage (MS)", "status": "planned"},
-    {"id": "email_google", "label": "Email (Gmail/Google)", "via": "MCP / SMTP", "purpose": "report delivery, notifications", "status": "planned"},
-    {"id": "email_o365", "label": "Email (Office365)", "via": "MCP / Graph API", "purpose": "report delivery (enterprise)", "status": "planned"}
+    {
+      "id": "slack",
+      "label": "Slack",
+      "via": "MCP connector",
+      "purpose": "alerts/notifications to channels",
+      "status": "planned"
+    },
+    {
+      "id": "whatsapp",
+      "label": "WhatsApp",
+      "via": "MCP / Business API",
+      "purpose": "patient SOS/reminders",
+      "status": "planned"
+    },
+    {
+      "id": "gdrive",
+      "label": "Google Drive",
+      "via": "MCP",
+      "purpose": "report/document storage",
+      "status": "planned"
+    },
+    {
+      "id": "gsheet",
+      "label": "Google Sheets",
+      "via": "MCP",
+      "purpose": "data export / cohort tracking",
+      "status": "planned"
+    },
+    {
+      "id": "gdocs",
+      "label": "Google Docs",
+      "via": "MCP",
+      "purpose": "report drafting",
+      "status": "planned"
+    },
+    {
+      "id": "dropbox",
+      "label": "Dropbox",
+      "via": "MCP",
+      "purpose": "file storage",
+      "status": "planned"
+    },
+    {
+      "id": "onedrive",
+      "label": "OneDrive",
+      "via": "MCP",
+      "purpose": "file storage (MS)",
+      "status": "planned"
+    },
+    {
+      "id": "email_google",
+      "label": "Email (Gmail/Google)",
+      "via": "MCP / SMTP",
+      "purpose": "report delivery, notifications",
+      "status": "planned"
+    },
+    {
+      "id": "email_o365",
+      "label": "Email (Office365)",
+      "via": "MCP / Graph API",
+      "purpose": "report delivery (enterprise)",
+      "status": "planned"
+    }
   ],
   "integration_note": "All external integrations route through MCP connectors (standardized tool protocol). None wired yet — each needs OAuth + the MCP server. Local-first by default (no data egress until explicitly connected)."
 }

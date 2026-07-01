@@ -5750,6 +5750,58 @@ async def abpm_definitions():
     return _json_safe(abpm.definitions())
 
 
+# ── Exercise / Rehab Recommendations Dashboard ─────────────────────
+
+@app.get("/api/exercise/overview")
+async def exercise_overview():
+    """Exercise/Rehab overview: KPIs, risk distribution, compliance distribution,
+    fitness distribution, category compliance, per-patient summary. Real clinical.db data."""
+    import scripts.exercise_dashboard as exercise
+    return _json_safe(exercise.overview())
+
+
+@app.get("/api/exercise/breakdown")
+async def exercise_breakdown():
+    """Exercise/Rehab breakdown: per-category detail, ADL domain analysis,
+    compliance/rehab/ADL histograms, per-patient detail cards."""
+    import scripts.exercise_dashboard as exercise
+    return _json_safe(exercise.breakdown())
+
+
+@app.get("/api/exercise/definitions")
+async def exercise_definitions():
+    """Exercise/Rehab definitions, categories, risk levels, ADL domains,
+    precautions, clinical significance."""
+    import scripts.exercise_dashboard as exercise
+    return _json_safe(exercise.definitions())
+
+
+# ── Cloud Ops Dashboard ──────────────────────────────────────────────
+
+@app.get("/api/cloud-ops/overview")
+async def cloud_ops_overview():
+    """Cloud Ops overview: KPIs, region health, cost summary, autoscale summary,
+    uptime stats. Deterministic data from infra model."""
+    import scripts.cloud_ops_dashboard as cloud
+    return _json_safe(cloud.overview())
+
+
+@app.get("/api/cloud-ops/breakdown")
+async def cloud_ops_breakdown():
+    """Cloud Ops breakdown: resource utilisation per region, cost detail per service,
+    autoscale events timeline, uptime history (30d)."""
+    import scripts.cloud_ops_dashboard as cloud
+    return _json_safe(cloud.breakdown())
+
+
+@app.get("/api/cloud-ops/definitions")
+async def cloud_ops_definitions():
+    """Cloud Ops definitions: regions, services, cost thresholds, autoscale policies,
+    status levels, resource thresholds, clinical relevance."""
+    import scripts.cloud_ops_dashboard as cloud
+    return _json_safe(cloud.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
