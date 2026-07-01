@@ -96,6 +96,8 @@ import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
 import ModelDriftDashboard from './components/ModelDriftDashboard'
 import FeatureDriftDashboard from './components/FeatureDriftDashboard'
+import OutputDriftDashboard from './components/OutputDriftDashboard'
+import ExerciseDashboard from './components/ExerciseDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -278,7 +280,9 @@ function App() {
     { id: 'ethical-ai', label: 'Ethical AI' },
     { id: 'data-drift', label: 'Data Drift' },
     { id: 'feature-drift', label: 'Feature Drift' },
-    { id: 'model-drift', label: 'Model Drift' }
+    { id: 'model-drift', label: 'Model Drift' },
+    { id: 'output-drift', label: 'Output/RAG Drift' },
+    { id: 'exercise', label: 'Exercise / Rehab' }
   ]
 
   // API Calls
@@ -1507,6 +1511,10 @@ function App() {
         return <FeatureDriftDashboard />
       case 'model-drift':
         return <ModelDriftDashboard />
+      case 'output-drift':
+        return <OutputDriftDashboard />
+      case 'exercise':
+        return <ExerciseDashboard />
       default:
         return renderClassificationTab()
     }
