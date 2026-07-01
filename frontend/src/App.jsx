@@ -109,6 +109,7 @@ import ModelMonitoringDashboard from './components/ModelMonitoringDashboard'
 import AIControlTowerDashboard from './components/AIControlTowerDashboard'
 import HumanEvaluationDashboard from './components/HumanEvaluationDashboard'
 import ModelGovernanceDashboard from './components/ModelGovernanceDashboard'
+import MultimodalAIDashboard from './components/MultimodalAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -304,7 +305,8 @@ function App() {
     { id: 'model-monitoring', label: 'Model Monitoring' },
     { id: 'ai-control-tower', label: 'AI Control Tower' },
     { id: 'human-evaluation', label: 'Human Evaluation' },
-    { id: 'model-governance', label: 'Model Governance' }
+    { id: 'model-governance', label: 'Model Governance' },
+    { id: 'multimodal-ai', label: 'Multimodal AI' }
   ]
 
   // API Calls
@@ -1559,6 +1561,8 @@ function App() {
         return <HumanEvaluationDashboard />
       case 'model-governance':
         return <ModelGovernanceDashboard />
+      case 'multimodal-ai':
+        return <MultimodalAIDashboard />
       default:
         return renderClassificationTab()
     }

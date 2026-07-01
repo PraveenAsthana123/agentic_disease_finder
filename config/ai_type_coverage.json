@@ -607,8 +607,8 @@
     },
     {
       "type": "multimodal-ai",
-      "status": "scaffold",
-      "note": "Multi-format ingest (video/pdf/img/edf); fusion model planned"
+      "status": "built",
+      "note": "Multimodal AI Dashboard built with 3 API endpoints verified 200"
     },
     {
       "type": "multimodal-rag",

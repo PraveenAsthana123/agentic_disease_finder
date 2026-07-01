@@ -6367,6 +6367,31 @@ async def model_governance_definitions():
     return _json_safe(mgd.governance_definitions())
 
 
+@app.get("/api/multimodal-ai/overview")
+async def multimodal_ai_overview():
+    """Multimodal AI overview — modality coverage, concordance summary,
+    coverage distribution, modality timeline, KPIs."""
+    import scripts.multimodal_ai_dashboard as mad
+    return _json_safe(mad.multimodal_overview())
+
+
+@app.get("/api/multimodal-ai/breakdown")
+async def multimodal_ai_breakdown():
+    """Multimodal AI breakdown — per-patient profiles, modality correlation
+    matrix, MRI lesion distribution, EEG disease distribution, confidence
+    by modality count."""
+    import scripts.multimodal_ai_dashboard as mad
+    return _json_safe(mad.multimodal_breakdown())
+
+
+@app.get("/api/multimodal-ai/definitions")
+async def multimodal_ai_definitions():
+    """Multimodal AI definitions — integration concepts, data modalities,
+    concordance metrics, clinical relevance, remediation strategies."""
+    import scripts.multimodal_ai_dashboard as mad
+    return _json_safe(mad.multimodal_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
