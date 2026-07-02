@@ -6894,6 +6894,35 @@ async def ai_security_definitions():
     return _json_safe(asd.ai_security_definitions())
 
 
+# ── Data Acquisition Dashboard ──────────────────────────────────────
+# Real data: uploads (21 files, 15 patients), analyses (21 with signal quality
+# + confidence), transaction_log eeg_upload + ingest events — ingestion metrics,
+# format coverage, signal quality, analysis pipeline tracking.
+
+@app.get("/api/data-acquisition/overview")
+async def data_acquisition_overview():
+    """Data acquisition overview — upload KPIs, format distribution, signal
+    quality, daily trend, confidence buckets, hourly pattern."""
+    import scripts.data_acquisition_dashboard as dad
+    return _json_safe(dad.data_acquisition_overview())
+
+
+@app.get("/api/data-acquisition/breakdown")
+async def data_acquisition_breakdown():
+    """Data acquisition breakdown — per-patient profiles, recent analyses,
+    file analysis, activity log, department + disease distribution."""
+    import scripts.data_acquisition_dashboard as dad
+    return _json_safe(dad.data_acquisition_breakdown())
+
+
+@app.get("/api/data-acquisition/definitions")
+async def data_acquisition_definitions():
+    """Data acquisition definitions — acquisition concepts, quality metrics,
+    clinical relevance (ILAE, IEC 62304, FDA AI/ML, HIPAA, EU AI Act), remediation."""
+    import scripts.data_acquisition_dashboard as dad
+    return _json_safe(dad.data_acquisition_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

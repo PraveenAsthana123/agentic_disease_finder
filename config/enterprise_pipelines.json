@@ -15,8 +15,8 @@
             "DSA/licensing",
             "classification"
           ],
-          "status": "partial",
-          "maps_to": "clinical_data drop zones + open_science folders"
+          "status": "built",
+          "maps_to": "DataAcquisitionDashboard.jsx — uploads, analyses, eeg_upload transactions, format coverage, signal quality, patient ingestion profiles"
         },
         {
           "name": "Data Ingestion",

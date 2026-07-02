@@ -128,6 +128,7 @@ import PatientSeenDashboard from './components/PatientSeenDashboard'
 import PatientDashboardPanel from './components/PatientDashboardPanel'
 import DataLineageDashboard from './components/DataLineageDashboard'
 import AISecurityDashboard from './components/AISecurityDashboard'
+import DataAcquisitionDashboard from './components/DataAcquisitionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -342,7 +343,8 @@ function App() {
     { id: 'patients-seen', label: 'Patients Seen' },
     { id: 'patient-dashboard', label: 'Patient Dashboard' },
     { id: 'data-lineage', label: 'Data Lineage' },
-    { id: 'ai-security', label: 'AI Security' }
+    { id: 'ai-security', label: 'AI Security' },
+    { id: 'data-acquisition', label: 'Data Acquisition' }
   ]
 
   // API Calls
@@ -1635,6 +1637,8 @@ function App() {
         return <DataLineageDashboard />
       case 'ai-security':
         return <AISecurityDashboard />
+      case 'data-acquisition':
+        return <DataAcquisitionDashboard />
       default:
         return renderClassificationTab()
     }
