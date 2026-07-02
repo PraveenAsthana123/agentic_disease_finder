@@ -54,6 +54,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/classify">Classify</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/xai">XAI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/interpretable-ai">Interpretable AI</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/decision-ai">Decision AI</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

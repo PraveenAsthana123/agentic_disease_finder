@@ -232,8 +232,8 @@
     {
       "id": "decision_ai",
       "task": "Decision AI (rule + confidence + HITL routing)",
-      "module": "agentic_analysis/decision_analysis.py (analysis lib)",
-      "status": "scaffold"
+      "module": "scripts/decision_ai_dashboard.py + /api/decision-ai/* + DecisionAIDashboard.jsx",
+      "status": "built"
     },
     {
       "id": "analytics_ai",

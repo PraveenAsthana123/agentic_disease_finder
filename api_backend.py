@@ -6609,6 +6609,30 @@ async def agentic_rag_definitions():
     return _json_safe(ard.definitions())
 
 
+@app.get("/api/decision-ai/overview")
+async def decision_ai_overview():
+    """Decision AI overview — routing distribution, confidence histogram,
+    HITL override stats, audit summary, disease breakdown."""
+    import scripts.decision_ai_dashboard as dad
+    return _json_safe(dad.decision_overview())
+
+
+@app.get("/api/decision-ai/breakdown")
+async def decision_ai_breakdown():
+    """Decision AI breakdown — per-patient decision summaries, per-analysis
+    routing, HITL reviews, confidence calibration, audit timeline."""
+    import scripts.decision_ai_dashboard as dad
+    return _json_safe(dad.decision_breakdown())
+
+
+@app.get("/api/decision-ai/definitions")
+async def decision_ai_definitions():
+    """Decision AI definitions — routing concepts, thresholds, quality metrics,
+    clinical relevance (IEC 62304, FDA, ILAE, ISO 14971, EU AI Act), remediation."""
+    import scripts.decision_ai_dashboard as dad
+    return _json_safe(dad.decision_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
