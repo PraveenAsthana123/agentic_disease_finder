@@ -68,8 +68,8 @@
             "source\u2192transform\u2192feature\u2192model\u2192output track",
             "audit"
           ],
-          "status": "partial",
-          "maps_to": "transaction_log (OpenLineage planned)"
+          "status": "built",
+          "maps_to": "scripts/data_lineage_dashboard.py + DataLineageDashboard.jsx + /api/data-lineage/* (3 endpoints verified 200)"
         },
         {
           "name": "Data Versioning/Catalog",

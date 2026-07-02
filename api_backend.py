@@ -6840,6 +6840,32 @@ async def generative_ai_definitions():
     return _json_safe(gad.definitions())
 
 
+# ── Data Lineage Dashboard ─────────────────────────────────────
+
+@app.get("/api/data-lineage/overview")
+async def data_lineage_overview():
+    """Data lineage overview — pipeline stage distribution, component graph,
+    actor audit, lineage edges, daily/hourly activity patterns."""
+    import scripts.data_lineage_dashboard as dld
+    return _json_safe(dld.data_lineage_overview())
+
+
+@app.get("/api/data-lineage/breakdown")
+async def data_lineage_breakdown():
+    """Data lineage breakdown — per-patient lineage chains, per-component
+    action breakdown, audit trail, action-stage mapping."""
+    import scripts.data_lineage_dashboard as dld
+    return _json_safe(dld.data_lineage_breakdown())
+
+
+@app.get("/api/data-lineage/definitions")
+async def data_lineage_definitions():
+    """Data lineage definitions — lineage concepts, quality metrics,
+    clinical relevance (IEC 62304, FDA AI/ML, HIPAA, EU AI Act), remediation."""
+    import scripts.data_lineage_dashboard as dld
+    return _json_safe(dld.data_lineage_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
