@@ -7498,6 +7498,31 @@ async def slp_definitions():
     return _json_safe(slpd.definitions())
 
 
+# ---------------------------------------------------------------------------
+# CNN/ResNet Spectrogram Dashboard
+# ---------------------------------------------------------------------------
+
+@app.get("/api/cnn-resnet/overview")
+async def cnn_resnet_overview():
+    """CNN/ResNet Spectrogram — KPIs, band power, quality, classification, activity."""
+    import scripts.cnn_resnet_dashboard as crd
+    return _json_safe(crd.overview())
+
+
+@app.get("/api/cnn-resnet/breakdown")
+async def cnn_resnet_breakdown():
+    """CNN/ResNet Spectrogram — spectrogram inventory, patient profiles, model architectures."""
+    import scripts.cnn_resnet_dashboard as crd
+    return _json_safe(crd.breakdown())
+
+
+@app.get("/api/cnn-resnet/definitions")
+async def cnn_resnet_definitions():
+    """CNN/ResNet Spectrogram — CNN, ResNet, spectrogram, EEG band definitions."""
+    import scripts.cnn_resnet_dashboard as crd
+    return _json_safe(crd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

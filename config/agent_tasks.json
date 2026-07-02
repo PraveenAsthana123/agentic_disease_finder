@@ -369,8 +369,9 @@
     {
       "id": "cnn_resnet",
       "task": "CNN/ResNet on spectrograms",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts/cnn_resnet_dashboard.py + /api/cnn-resnet/{overview,breakdown,definitions} + CNNResNetDashboard.jsx",
+      "status": "built",
+      "note": "CNN/ResNet Spectrogram dashboard — spectrogram generation from EEG, model architecture specs (1D-CNN/2D-CNN/ResNet-18/ResNet-50/EEGNet), training readiness, band power analysis, 21 real analyses from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "rnn_lstm",
