@@ -18,7 +18,7 @@
     {"id": "transactions", "label": "Transaction History", "captures": "every action, UTC+local stamp", "status": "built", "maps_to": "/api/transactions"}
   ],
   "role_operational_tabs": [
-    {"id": "patients_seen", "label": "Patients Seen", "metric": "count of patients viewed", "status": "partial"},
+    {"id": "patients_seen", "label": "Patients Seen", "metric": "count of patients viewed", "status": "built", "maps_to": "/api/patients-seen/* + PatientSeenDashboard.jsx"},
     {"id": "appointments", "label": "Appointment Booking", "metric": "booked vs completed", "status": "built", "maps_to": "/api/appointments"},
     {"id": "visits", "label": "True Visits", "metric": "actual visits logged", "status": "built", "maps_to": "/api/visits/* + VisitsDashboard.jsx"},
     {"id": "prescriptions", "label": "Medications Prescribed", "metric": "scripts written", "status": "built", "maps_to": "/api/prescriptions/* + PrescriptionsDashboard.jsx"},

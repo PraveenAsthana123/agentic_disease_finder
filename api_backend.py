@@ -6741,6 +6741,29 @@ async def clinical_tasks_definitions():
     return _json_safe(ctd.clinical_tasks_definitions())
 
 
+# ── Patients Seen Dashboard ─────────────────────────────────────
+
+@app.get("/api/patients-seen/overview")
+async def patients_seen_overview():
+    """Patients Seen KPIs: unique patients with completed appointments,
+    completion rate, no-show rate, provider load, department distribution."""
+    import scripts.patients_seen_dashboard as psd
+    return _json_safe(psd.patients_seen_overview())
+
+@app.get("/api/patients-seen/breakdown")
+async def patients_seen_breakdown():
+    """Per-provider, per-department, per-patient breakdown, daily trend,
+    appointment type distribution, recent completed appointments."""
+    import scripts.patients_seen_dashboard as psd
+    return _json_safe(psd.patients_seen_breakdown())
+
+@app.get("/api/patients-seen/definitions")
+async def patients_seen_definitions():
+    """Metric definitions for the Patients Seen dashboard."""
+    import scripts.patients_seen_dashboard as psd
+    return _json_safe(psd.patients_seen_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

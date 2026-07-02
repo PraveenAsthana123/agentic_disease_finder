@@ -122,6 +122,7 @@ import VisitsDashboard from './components/VisitsDashboard'
 import PrescriptionsDashboard from './components/PrescriptionsDashboard'
 import ADLDashboard from './components/ADLDashboard'
 import ClinicalTasksDashboard from './components/ClinicalTasksDashboard'
+import PatientSeenDashboard from './components/PatientSeenDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -330,7 +331,8 @@ function App() {
     { id: 'agentic-rag', label: 'Agentic RAG' },
     { id: 'prescriptions', label: 'Prescriptions' },
     { id: 'adl', label: 'ADL' },
-    { id: 'clinical-tasks', label: 'Clinical Tasks' }
+    { id: 'clinical-tasks', label: 'Clinical Tasks' },
+    { id: 'patients-seen', label: 'Patients Seen' }
   ]
 
   // API Calls
@@ -1611,6 +1613,8 @@ function App() {
         return <ADLDashboard />
       case 'clinical-tasks':
         return <ClinicalTasksDashboard />
+      case 'patients-seen':
+        return <PatientSeenDashboard />
       default:
         return renderClassificationTab()
     }
