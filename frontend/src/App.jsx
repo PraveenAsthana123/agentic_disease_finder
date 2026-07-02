@@ -145,6 +145,7 @@ import ImageSegmentationDashboard from './components/ImageSegmentationDashboard'
 import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
 import SpeechAIDashboard from './components/SpeechAIDashboard'
 import VoiceAIDashboard from './components/VoiceAIDashboard'
+import TextToAudioDashboard from './components/TextToAudioDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -376,7 +377,8 @@ function App() {
     { id: 'image-segmentation', label: 'Image Segmentation' },
     { id: 'object-detection', label: 'Object Detection' },
     { id: 'speech-ai', label: 'Speech AI' },
-    { id: 'voice-ai', label: 'Voice AI' }
+    { id: 'voice-ai', label: 'Voice AI' },
+    { id: 'text-to-audio', label: 'Text-to-Audio AI' }
   ]
 
   // API Calls
@@ -1703,6 +1705,8 @@ function App() {
         return <SpeechAIDashboard />
       case 'voice-ai':
         return <VoiceAIDashboard />
+      case 'text-to-audio':
+        return <TextToAudioDashboard />
       default:
         return renderClassificationTab()
     }

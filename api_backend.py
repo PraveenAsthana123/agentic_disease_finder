@@ -7322,6 +7322,31 @@ async def voice_ai_definitions():
     return _json_safe(vad.definitions())
 
 
+# ── Text-to-Audio AI Dashboard ────────────────────────────────────────
+@app.get("/api/text-to-audio/overview")
+async def text_to_audio_overview():
+    """Text-to-Audio AI overview — TTS synthesis pipeline monitoring,
+    synthesizable text corpus, audio duration estimates, cost tracking."""
+    import scripts.text_to_audio_dashboard as ttad
+    return _json_safe(ttad.overview())
+
+
+@app.get("/api/text-to-audio/breakdown")
+async def text_to_audio_breakdown():
+    """Text-to-Audio AI breakdown — text inventory, report inventory,
+    per-patient audio profiles, pipeline events."""
+    import scripts.text_to_audio_dashboard as ttad
+    return _json_safe(ttad.breakdown())
+
+
+@app.get("/api/text-to-audio/definitions")
+async def text_to_audio_definitions():
+    """Text-to-Audio AI definitions — TTS concepts, quality metrics,
+    audio categories, compliance, remediation."""
+    import scripts.text_to_audio_dashboard as ttad
+    return _json_safe(ttad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
