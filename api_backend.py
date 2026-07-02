@@ -7248,6 +7248,30 @@ async def image_segmentation_definitions():
     return _json_safe(isd.definitions())
 
 
+# ── Object Detection AI Dashboard ─────────────────────────────────────
+@app.get("/api/object-detection/overview")
+async def object_detection_overview():
+    """Object Detection AI overview — body-movement and lesion detection from
+    video-EEG and MRI imaging, detection classes, confidence, IoU scores."""
+    import scripts.object_detection_dashboard as odd
+    return _json_safe(odd.overview())
+
+
+@app.get("/api/object-detection/breakdown")
+async def object_detection_breakdown():
+    """Object Detection AI breakdown — detection inventory, per-patient details,
+    class stats, location heatmap, pipeline events."""
+    import scripts.object_detection_dashboard as odd
+    return _json_safe(odd.breakdown())
+
+
+@app.get("/api/object-detection/definitions")
+async def object_detection_definitions():
+    """Object Detection AI definitions — concepts, compliance, remediation."""
+    import scripts.object_detection_dashboard as odd
+    return _json_safe(odd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

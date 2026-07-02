@@ -142,6 +142,7 @@ import KnowledgeManagementDashboard from './components/KnowledgeManagementDashbo
 import FineTuningDashboard from './components/FineTuningDashboard'
 import VectorDBDashboard from './components/VectorDBDashboard'
 import ImageSegmentationDashboard from './components/ImageSegmentationDashboard'
+import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -370,7 +371,8 @@ function App() {
     { id: 'mcp-governance', label: 'MCP Governance' },
     { id: 'agent-council', label: 'Agent Council' },
     { id: 'vector-db', label: 'Vector DB' },
-    { id: 'image-segmentation', label: 'Image Segmentation' }
+    { id: 'image-segmentation', label: 'Image Segmentation' },
+    { id: 'object-detection', label: 'Object Detection' }
   ]
 
   // API Calls
@@ -1691,6 +1693,8 @@ function App() {
         return <VectorDBDashboard />
       case 'image-segmentation':
         return <ImageSegmentationDashboard />
+      case 'object-detection':
+        return <ObjectDetectionDashboard />
       default:
         return renderClassificationTab()
     }

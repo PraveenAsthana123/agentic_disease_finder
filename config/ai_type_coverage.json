@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 38,
+    "built": 39,
     "scaffold": 0,
-    "planned": 5
+    "planned": 4
   },
   "rows": [
     {
@@ -642,8 +642,8 @@
     },
     {
       "type": "object-detection-ai",
-      "status": "planned",
-      "note": "Body-movement detection in video \u2014 registry"
+      "status": "built",
+      "note": "Object Detection AI dashboard \u2014 body-movement and lesion detection from video-EEG/MRI, detection classes, IoU, confidence; 3 endpoints verified 200"
     },
     {
       "type": "ocr-ai",
