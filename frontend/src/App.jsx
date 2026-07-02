@@ -135,6 +135,7 @@ import ContinuousLearningDashboard from './components/ContinuousLearningDashboar
 import EmbeddingDashboard from './components/EmbeddingDashboard'
 import AILifecycleDashboard from './components/AILifecycleDashboard'
 import MCPGovernanceDashboard from './components/MCPGovernanceDashboard'
+import AgentCouncilDashboard from './components/AgentCouncilDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -356,7 +357,8 @@ function App() {
     { id: 'data-quality', label: 'Data Quality' },
     { id: 'embedding', label: 'Embedding & Features' },
     { id: 'ai-lifecycle', label: 'AI Lifecycle Mgmt' },
-    { id: 'mcp-governance', label: 'MCP Governance' }
+    { id: 'mcp-governance', label: 'MCP Governance' },
+    { id: 'agent-council', label: 'Agent Council' }
   ]
 
   // API Calls
@@ -1663,6 +1665,8 @@ function App() {
         return <AILifecycleDashboard />
       case 'mcp-governance':
         return <MCPGovernanceDashboard />
+      case 'agent-council':
+        return <AgentCouncilDashboard />
       default:
         return renderClassificationTab()
     }

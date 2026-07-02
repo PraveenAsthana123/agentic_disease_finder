@@ -7106,6 +7106,28 @@ async def mcp_governance_definitions():
     return _json_safe(mgd.mcp_governance_definitions())
 
 
+# ── Council of Agents — multi-agent consensus, author/reviewer/chair ──
+
+@app.get("/api/agent-council/overview")
+async def agent_council_overview():
+    """Council of Agents overview — role distribution, consensus metrics,
+    decision quality from real clinical.db + agent registry."""
+    import scripts.council_of_agents_dashboard as cad
+    return _json_safe(cad.council_overview())
+
+@app.get("/api/agent-council/breakdown")
+async def agent_council_breakdown():
+    """Council breakdown — per-agent roles, review sessions, voting history."""
+    import scripts.council_of_agents_dashboard as cad
+    return _json_safe(cad.council_breakdown())
+
+@app.get("/api/agent-council/definitions")
+async def agent_council_definitions():
+    """Council definitions — roles, consensus types, clinical compliance."""
+    import scripts.council_of_agents_dashboard as cad
+    return _json_safe(cad.council_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

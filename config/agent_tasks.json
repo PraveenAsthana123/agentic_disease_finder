@@ -332,8 +332,8 @@
     {
       "id": "council_of_agents",
       "task": "Council of agents (author/reviewer/chair)",
-      "module": "(planned) \u2014 have MoA+consensus",
-      "status": "planned"
+      "module": "scripts.council_of_agents_dashboard",
+      "status": "built"
     },
     {
       "id": "bmad",
