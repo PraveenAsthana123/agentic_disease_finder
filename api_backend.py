@@ -6866,6 +6866,34 @@ async def data_lineage_definitions():
     return _json_safe(dld.data_lineage_definitions())
 
 
+# ── AI Security Dashboard ──
+# Real data: transaction_log (647 events, 7 actors, 25 components), hitl_reviews,
+# operator_requests — access control, PHI tracking, risk classification, audit trail.
+
+@app.get("/api/ai-security/overview")
+async def ai_security_overview():
+    """AI security overview — risk posture, PHI access, actor coverage,
+    human oversight rate, daily trend, hourly pattern."""
+    import scripts.ai_security_dashboard as asd
+    return _json_safe(asd.ai_security_overview())
+
+
+@app.get("/api/ai-security/breakdown")
+async def ai_security_breakdown():
+    """AI security breakdown — PHI access log, actor profiles, high-risk
+    actions, anomaly indicators, governance events."""
+    import scripts.ai_security_dashboard as asd
+    return _json_safe(asd.ai_security_breakdown())
+
+
+@app.get("/api/ai-security/definitions")
+async def ai_security_definitions():
+    """AI security definitions — security concepts, quality metrics,
+    clinical relevance (HIPAA, FDA AI/ML, IEC 62304, EU AI Act, NIST AI RMF), remediation."""
+    import scripts.ai_security_dashboard as asd
+    return _json_safe(asd.ai_security_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

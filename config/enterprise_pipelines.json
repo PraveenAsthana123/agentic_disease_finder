@@ -380,7 +380,7 @@
             "jailbreak detect",
             "leakage detect"
           ],
-          "status": "partial",
+          "status": "built",
           "maps_to": "guardrails (injection+PII)"
         },
         {
