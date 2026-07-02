@@ -6952,6 +6952,34 @@ async def data_privacy_definitions():
     return _json_safe(dpd.data_privacy_definitions())
 
 
+# ── Data Quality Dashboard ─────────────────────────────────────────
+# Real data: patients (40, field completeness), uploads (21, dedup/format),
+# analyses (21, signal quality/confidence), transaction_log (quality events).
+
+@app.get("/api/data-quality/overview")
+async def data_quality_overview():
+    """Data quality overview — completeness KPIs, signal quality distribution,
+    confidence stats, duplicate counts, daily trend, format distribution."""
+    import scripts.data_quality_dashboard as dqd
+    return _json_safe(dqd.data_quality_overview())
+
+
+@app.get("/api/data-quality/breakdown")
+async def data_quality_breakdown():
+    """Data quality breakdown — per-patient profiles, duplicate log, upload
+    quality detail, outlier analyses, quality event log."""
+    import scripts.data_quality_dashboard as dqd
+    return _json_safe(dqd.data_quality_breakdown())
+
+
+@app.get("/api/data-quality/definitions")
+async def data_quality_definitions():
+    """Data quality definitions — quality concepts, metrics, clinical relevance
+    (ILAE, IEC 62304, FDA AI-ML, HIPAA, EU AI Act), remediation strategies."""
+    import scripts.data_quality_dashboard as dqd
+    return _json_safe(dqd.data_quality_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

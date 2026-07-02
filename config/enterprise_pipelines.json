@@ -48,8 +48,8 @@
             "outlier",
             "profiling"
           ],
-          "status": "partial",
-          "maps_to": "Model Lab (SMOTE/feature); cleaning planned"
+          "status": "built",
+          "maps_to": "DataQualityDashboard.jsx — field completeness (5 fields, 70.5% overall), dedup detection (6 duplicate files), signal quality (76.2% Good), confidence profiling (mean 0.596, outliers), patient coverage (35%), daily trend, format distribution, per-patient profiles, 3 API endpoints (/api/data-quality/overview|breakdown|definitions) all verified 200"
         },
         {
           "name": "Synthetic Data",

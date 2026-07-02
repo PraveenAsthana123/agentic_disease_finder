@@ -130,6 +130,7 @@ import DataLineageDashboard from './components/DataLineageDashboard'
 import AISecurityDashboard from './components/AISecurityDashboard'
 import DataAcquisitionDashboard from './components/DataAcquisitionDashboard'
 import DataPrivacyDashboard from './components/DataPrivacyDashboard'
+import DataQualityDashboard from './components/DataQualityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -346,7 +347,8 @@ function App() {
     { id: 'data-lineage', label: 'Data Lineage' },
     { id: 'ai-security', label: 'AI Security' },
     { id: 'data-acquisition', label: 'Data Acquisition' },
-    { id: 'data-privacy', label: 'Data Privacy' }
+    { id: 'data-privacy', label: 'Data Privacy' },
+    { id: 'data-quality', label: 'Data Quality' }
   ]
 
   // API Calls
@@ -1643,6 +1645,8 @@ function App() {
         return <DataAcquisitionDashboard />
       case 'data-privacy':
         return <DataPrivacyDashboard />
+      case 'data-quality':
+        return <DataQualityDashboard />
       default:
         return renderClassificationTab()
     }
