@@ -7394,6 +7394,32 @@ async def cognitive_profile_definitions():
     return _json_safe(cpd.definitions())
 
 
+# ── Time-Series AI Dashboard ──────────────────────────────────────────
+@app.get("/api/time-series-ai/overview")
+async def time_series_ai_overview():
+    """Time-Series AI overview — EEG spectral decomposition, band power analysis,
+    complexity metrics (Hurst, entropy, DFA), temporal feature extraction,
+    signal quality, seizure event timelines."""
+    import scripts.time_series_ai_dashboard as tsad
+    return _json_safe(tsad.overview())
+
+
+@app.get("/api/time-series-ai/breakdown")
+async def time_series_ai_breakdown():
+    """Time-Series AI breakdown — per-recording feature inventory, feature matrix,
+    band power details, patient profiles, seizure inventory, pipeline events."""
+    import scripts.time_series_ai_dashboard as tsad
+    return _json_safe(tsad.breakdown())
+
+
+@app.get("/api/time-series-ai/definitions")
+async def time_series_ai_definitions():
+    """Time-Series AI definitions — spectral/complexity concepts, quality metrics,
+    feature categories, compliance, remediation."""
+    import scripts.time_series_ai_dashboard as tsad
+    return _json_safe(tsad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

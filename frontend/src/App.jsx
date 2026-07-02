@@ -148,6 +148,7 @@ import VoiceAIDashboard from './components/VoiceAIDashboard'
 import TextToAudioDashboard from './components/TextToAudioDashboard'
 import TextToVideoDashboard from './components/TextToVideoDashboard'
 import CognitiveProfileDashboard from './components/CognitiveProfileDashboard'
+import TimeSeriesAIDashboard from './components/TimeSeriesAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -382,7 +383,8 @@ function App() {
     { id: 'voice-ai', label: 'Voice AI' },
     { id: 'text-to-audio', label: 'Text-to-Audio AI' },
     { id: 'text-to-video', label: 'Text-to-Video AI' },
-    { id: 'cognitive-profile', label: 'Cognitive Profile Summary' }
+    { id: 'cognitive-profile', label: 'Cognitive Profile Summary' },
+    { id: 'time-series-ai', label: 'Time-Series AI' }
   ]
 
   // API Calls
@@ -1715,6 +1717,8 @@ function App() {
         return <TextToVideoDashboard />
       case 'cognitive-profile':
         return <CognitiveProfileDashboard />
+      case 'time-series-ai':
+        return <TimeSeriesAIDashboard />
       default:
         return renderClassificationTab()
     }
