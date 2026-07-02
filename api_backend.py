@@ -6633,6 +6633,31 @@ async def decision_ai_definitions():
     return _json_safe(dad.decision_definitions())
 
 
+# ── True Visits Dashboard ─────────────────────────────────────
+
+@app.get("/api/visits/overview")
+async def visits_overview():
+    """True Visits overview — total completed visits, completion rate,
+    no-show rate, provider visit load, department distribution, visit types."""
+    import scripts.visits_dashboard as vsd
+    return _json_safe(vsd.visits_overview())
+
+
+@app.get("/api/visits/breakdown")
+async def visits_breakdown():
+    """Per-patient visit history, daily/monthly trends, duration distribution,
+    provider-department cross-tab, recent visits."""
+    import scripts.visits_dashboard as vsd
+    return _json_safe(vsd.visits_breakdown())
+
+
+@app.get("/api/visits/definitions")
+async def visits_definitions():
+    """Metric definitions for the True Visits dashboard."""
+    import scripts.visits_dashboard as vsd
+    return _json_safe(vsd.visits_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

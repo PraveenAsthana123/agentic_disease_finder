@@ -118,6 +118,7 @@ import FoundationModelsDashboard from './components/FoundationModelsDashboard'
 import AnalyticsAIDashboard from './components/AnalyticsAIDashboard'
 import InterpretableAIDashboard from './components/InterpretableAIDashboard'
 import AgenticRAGDashboard from './components/AgenticRAGDashboard'
+import VisitsDashboard from './components/VisitsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -279,6 +280,7 @@ function App() {
     { id: 'integration-dash', label: 'Integration' },
     { id: 'responsible-ai', label: 'Responsible AI' },
     { id: 'appointments', label: 'Appointments' },
+    { id: 'visits', label: 'True Visits' },
     { id: 'finops', label: 'FinOps' },
     { id: 'cssrs', label: 'C-SSRS' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
@@ -1595,6 +1597,8 @@ function App() {
         return <InterpretableAIDashboard />
       case 'agentic-rag':
         return <AgenticRAGDashboard />
+      case 'visits':
+        return <VisitsDashboard />
       default:
         return renderClassificationTab()
     }
