@@ -531,7 +531,8 @@
             "canary",
             "prod"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "ReleaseDashboard.jsx — model artefact inventory (7 models, 1247 KB), dataset uploads (21), inference runs (21, avg conf 0.596), expert reviews (3, 66.7% agreement), HITL overrides (2, 50% override rate), clinical decisions (1), training runs (8), sign-offs (1), daily change trend (10 days), actor distribution, component changes, hourly pattern, 3 API endpoints (/api/release/overview|breakdown|definitions) verified 200"
         },
         {
           "name": "Shadow AI Detection",
