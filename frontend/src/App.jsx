@@ -155,6 +155,7 @@ import PatientReportingDashboard from './components/PatientReportingDashboard'
 import ResearchCoordinatorDashboard from './components/ResearchCoordinatorDashboard'
 import NeurosurgeonDashboard from './components/NeurosurgeonDashboard'
 import CNNResNetDashboard from './components/CNNResNetDashboard'
+import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -396,7 +397,8 @@ function App() {
     { id: 'patient-reporting', label: 'Patient Reporting' },
     { id: 'research-coordinator', label: 'Research Coordinator' },
     { id: 'neurosurgeon', label: 'Neurosurgeon / Epilepsy Surgery' },
-    { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' }
+    { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' },
+    { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' }
   ]
 
   // API Calls
@@ -1743,6 +1745,8 @@ function App() {
         return <NeurosurgeonDashboard />
       case 'cnn-resnet':
         return <CNNResNetDashboard />
+      case 'neurophysiologist':
+        return <NeurophysiologistDashboard />
       default:
         return renderClassificationTab()
     }

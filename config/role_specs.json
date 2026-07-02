@@ -26,7 +26,7 @@
       "role": "Clinical Neurophysiologist / EEG Reviewer",
       "priority": "10/10",
       "fields": "250-300",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Background Rhythm",
         "Interictal Activity",
@@ -39,7 +39,7 @@
         "Clinical Correlation",
         "AI Label Validation"
       ],
-      "note": "eeg_interpretation + artifact forms exist; dedicated reviewer workbench planned"
+      "note": "NeurophysiologistDashboard.jsx built (7 tabs: overview/recordings/band power/spectral/AI validation/seizures/definitions), 3 API endpoints verified 200, 21 EEG recordings, 12 definitions"
     },
     {
       "role": "EEG Technician",

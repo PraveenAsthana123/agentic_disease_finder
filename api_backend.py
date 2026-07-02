@@ -7523,6 +7523,31 @@ async def cnn_resnet_definitions():
     return _json_safe(crd.definitions())
 
 
+# ── Clinical Neurophysiologist / EEG Reviewer Dashboard ────────────────────
+@app.get("/api/neurophysiologist/overview")
+async def neurophysiologist_overview():
+    """Neurophysiologist overview — EEG recordings, band power, signal quality,
+    background rhythm, AI predictions, spectral entropy."""
+    import scripts.neurophysiologist_dashboard as npd
+    return _json_safe(npd.overview())
+
+
+@app.get("/api/neurophysiologist/breakdown")
+async def neurophysiologist_breakdown():
+    """Neurophysiologist breakdown — recording inventory, band power table,
+    spectral features, AI validation, channel stats, seizure log."""
+    import scripts.neurophysiologist_dashboard as npd
+    return _json_safe(npd.breakdown())
+
+
+@app.get("/api/neurophysiologist/definitions")
+async def neurophysiologist_definitions():
+    """Neurophysiologist definitions — EEG concepts, band power, signal quality,
+    entropy, Hjorth, complexity measures."""
+    import scripts.neurophysiologist_dashboard as npd
+    return _json_safe(npd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
