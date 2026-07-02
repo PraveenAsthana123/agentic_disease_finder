@@ -603,3 +603,61 @@ def full_dashboard(patient_id=None):
         "medication_recommendations": recommendations,
         "side_effect_profile": side_effects,
     }
+
+
+# ════════════════════════════════════════════════════════════════════════
+# 7. Definitions
+# ════════════════════════════════════════════════════════════════════════
+def definitions():
+    """Medication terminology, clinical relevance, and remediation strategies."""
+    return {
+        'sections': [
+            {
+                'title': 'Medication Concepts',
+                'items': [
+                    {'term': 'AED (Anti-Epileptic Drug)', 'definition': 'Medications used to prevent or reduce the frequency of epileptic seizures. First-line agents include Levetiracetam, Lamotrigine, and Valproate. Selection depends on seizure type, patient demographics, and comorbidities.'},
+                    {'term': 'Polypharmacy', 'definition': 'Use of 3 or more concurrent AEDs. Increases risk of drug interactions, side effects, and non-adherence. ILAE recommends monotherapy when possible.'},
+                    {'term': 'Drug Class', 'definition': 'Pharmacological mechanism of action — e.g., SV2A ligand (Levetiracetam), sodium channel blocker (Carbamazepine, Lamotrigine), GABA enhancer (Valproate). Guides combination therapy choices.'},
+                    {'term': 'BID / TID Dosing', 'definition': 'BID = twice daily, TID = three times daily. Dosing frequency affects adherence; once-daily or BID regimens are preferred for adherence.'},
+                    {'term': 'Medication Schedule', 'definition': 'Time-of-day mapping of each drug dose (morning, noon, evening, bedtime). Proper scheduling avoids peak-trough interactions and maximizes seizure coverage.'}
+                ]
+            },
+            {
+                'title': 'Adherence & Monitoring',
+                'items': [
+                    {'term': 'Adherence Score', 'definition': 'Percentage measure of medication-taking consistency derived from seizure diary entries and prescription refill patterns. Scores below 80% correlate with increased seizure risk.'},
+                    {'term': 'Seizure-Adherence Correlation', 'definition': 'Relationship between missed doses and seizure occurrence. Non-adherence is the most common cause of breakthrough seizures in controlled epilepsy.'},
+                    {'term': 'Concern Flag', 'definition': 'Automated alert triggered when a patient shows low adherence combined with recent seizure activity. Requires clinical follow-up.'},
+                    {'term': 'Therapeutic Drug Monitoring', 'definition': 'Blood-level testing to ensure AED concentrations remain within the therapeutic window. Required for narrow-therapeutic-index drugs (Carbamazepine, Valproate).'}
+                ]
+            },
+            {
+                'title': 'Safety & Side Effects',
+                'items': [
+                    {'term': 'Common Side Effects', 'definition': 'Effects occurring in >10% of patients — drowsiness, dizziness, GI upset, weight changes. Ranked by frequency across the patient cohort.'},
+                    {'term': 'Overlapping Side Effect Risks', 'definition': 'When multiple drugs share the same serious side effect (e.g., hepatotoxicity from both Valproate and Carbamazepine), cumulative risk increases.'},
+                    {'term': 'Pregnancy Warnings', 'definition': 'Valproate is contraindicated in pregnancy (high teratogenicity risk — neural tube defects). Lamotrigine and Levetiracetam are preferred for women of childbearing potential.'},
+                    {'term': 'Drug Interactions', 'definition': 'Enzyme-inducing AEDs (Carbamazepine) can reduce effectiveness of hormonal contraceptives, other AEDs, and warfarin. Interaction checking is mandatory for polypharmacy patients.'}
+                ]
+            },
+            {
+                'title': 'Clinical Relevance',
+                'items': [
+                    {'term': 'ILAE Treatment Guidelines', 'definition': 'International League Against Epilepsy recommends evidence-based AED selection by seizure type: Levetiracetam/Lamotrigine for focal onset, Valproate for generalized onset. Monotherapy first, rational polytherapy second.'},
+                    {'term': 'IEC 62304 (SaMD)', 'definition': 'Medication management software must maintain prescription data integrity, audit trails, and dose-calculation accuracy per medical device software standards.'},
+                    {'term': 'FDA Medication Safety', 'definition': 'AED labeling must include black-box warnings (suicidality risk for all AEDs, hepatotoxicity for Valproate). Software must surface these warnings.'},
+                    {'term': 'HIPAA Compliance', 'definition': 'Prescription data is Protected Health Information (PHI). Access controls, encryption, and audit logging are required for all medication records.'}
+                ]
+            },
+            {
+                'title': 'Remediation Strategies',
+                'items': [
+                    {'term': 'Low adherence', 'definition': 'Simplify regimen (reduce to BID or once-daily), use pill organizers or smart dispensers, schedule adherence counseling. Consider extended-release formulations.'},
+                    {'term': 'Polypharmacy detected', 'definition': 'Review seizure control with epileptologist. Attempt sequential AED withdrawal if seizure-free for 2+ years. Monitor for withdrawal seizures.'},
+                    {'term': 'Side effect burden', 'definition': 'Rank side effects by impact on QoL (QOLIE-31 cross-reference). Consider dose reduction, timing adjustment, or switch to better-tolerated AED.'},
+                    {'term': 'Missing pregnancy screening', 'definition': 'Flag all patients of childbearing potential on Valproate. Ensure documented informed consent and active contraception plan per ILAE/FDA guidance.'},
+                    {'term': 'Drug interaction risk', 'definition': 'Run automated interaction checks at prescription entry. Flag enzyme-inducing combinations. Consult clinical pharmacist for complex polytherapy.'}
+                ]
+            }
+        ]
+    }

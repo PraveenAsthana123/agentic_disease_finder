@@ -4140,6 +4140,13 @@ async def medication_side_effects(patient_id: str = None):
     return _json_safe(med.side_effect_profile(patient_id))
 
 
+@app.get("/api/medication/definitions")
+async def medication_definitions():
+    """Medication terminology, clinical relevance, and remediation strategies."""
+    import scripts.medication_module as med
+    return _json_safe(med.definitions())
+
+
 # ── Patients Seen Dashboard ──────────────────────────────────────
 # Real data: appointments (120 rows, 6 providers, 4 depts, 34 patients) +
 # patients (40). Role operational view: patients seen per provider/dept,

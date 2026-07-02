@@ -4,7 +4,7 @@
   "updated_at": "2026-06-24",
   "patient_master_tabs": [
     {"id": "assessments_all", "label": "Assessments (all experts)", "captures": "every role's completed assessment (MoCA/PHQ-9/etc.)", "status": "built", "maps_to": "/api/assessments"},
-    {"id": "medications", "label": "Medication Recommendations", "captures": "AED + psychotropic recommendations + history", "status": "partial", "maps_to": "medications table"},
+    {"id": "medications", "label": "Medication Recommendations", "captures": "AED + psychotropic recommendations + history", "status": "built", "maps_to": "/api/medication/* + MedicationDashboard.jsx"},
     {"id": "exercise", "label": "Exercise / Rehab Recommendations", "captures": "OT/PT home-program + ADL plan", "status": "built", "maps_to": "/api/exercise"},
     {"id": "notifications", "label": "Notifications", "captures": "results-ready, appointment, follow-up", "status": "built", "maps_to": "/api/notifications"},
     {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "built", "maps_to": "/api/alerts"},
