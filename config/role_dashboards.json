@@ -52,7 +52,7 @@
        {"label": "Memory/attention deciles", "source": "neuropsych", "status": "planned"}],
      "reports": [
        {"name": "Neuropsychological Assessment", "cadence": "per battery", "format": "PDF", "status": "partial"},
-       {"name": "Cognitive Profile Summary", "cadence": "monthly", "format": "PDF", "status": "planned"}]},
+       {"name": "Cognitive Profile Summary", "cadence": "monthly", "format": "PDF", "status": "built"}]},
     {"role": "Radiologist", "icon": "🩻",
      "kpis": [
        {"label": "MRI findings logged", "source": "mri_findings", "status": "partial"},

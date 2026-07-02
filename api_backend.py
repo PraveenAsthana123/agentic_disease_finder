@@ -7372,6 +7372,28 @@ async def text_to_video_definitions():
     return _json_safe(ttvd.definitions())
 
 
+# ── Cognitive Profile Summary Dashboard ──────────────────────────────────
+@app.get("/api/cognitive-profile/overview")
+async def cognitive_profile_overview():
+    """Cognitive Profile Summary — MoCA, MMSE, WAIS, Digit Span, PHQ9, GAD7, QOLIE-31, NDDIE."""
+    import scripts.cognitive_profile_dashboard as cpd
+    return _json_safe(cpd.overview())
+
+
+@app.get("/api/cognitive-profile/breakdown")
+async def cognitive_profile_breakdown():
+    """Cognitive Profile breakdown — assessment inventory, per-patient profiles, domain scores, alerts."""
+    import scripts.cognitive_profile_dashboard as cpd
+    return _json_safe(cpd.breakdown())
+
+
+@app.get("/api/cognitive-profile/definitions")
+async def cognitive_profile_definitions():
+    """Cognitive Profile definitions — test concepts, scoring norms, compliance, remediation."""
+    import scripts.cognitive_profile_dashboard as cpd
+    return _json_safe(cpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
