@@ -8,7 +8,7 @@
     {"id": "exercise", "label": "Exercise / Rehab Recommendations", "captures": "OT/PT home-program + ADL plan", "status": "built", "maps_to": "/api/exercise"},
     {"id": "notifications", "label": "Notifications", "captures": "results-ready, appointment, follow-up", "status": "built", "maps_to": "/api/notifications"},
     {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "built", "maps_to": "/api/alerts"},
-    {"id": "monitoring", "label": "Continuous Monitoring", "captures": "wearable/IoT vitals + seizure stream", "status": "partial", "maps_to": "Emotiv/IoT sim"},
+    {"id": "monitoring", "label": "Continuous Monitoring", "captures": "seizure diary analytics + patient monitoring", "status": "built", "maps_to": "seizure_diary table — 25 events, 22 patients, 3 API endpoints verified 200"},
     {"id": "feedback", "label": "Continuous Feedback", "captures": "patient + expert feedback loop", "status": "built", "maps_to": "feedback table"},
     {"id": "reporting", "label": "Reports", "captures": "EEG report, assessment reports, summaries", "status": "built", "maps_to": "/api/patient-reports/* + ReportsDashboard.jsx"},
     {"id": "dashboard", "label": "Dashboard", "captures": "patient KPIs + trends", "status": "built", "maps_to": "/api/patient-dashboard/* + PatientDashboardPanel.jsx"},

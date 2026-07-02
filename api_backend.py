@@ -6794,6 +6794,29 @@ async def patient_dashboard_definitions():
     return _json_safe(pdash.patient_dashboard_definitions())
 
 
+# ── Continuous Monitoring Dashboard (seizure diary analytics) ──
+
+@app.get("/api/continuous-monitoring/overview")
+async def continuous_monitoring_overview():
+    """Seizure diary KPIs: frequency, severity, triggers, ER rate, durations."""
+    import scripts.continuous_monitoring_dashboard as cmd
+    return _json_safe(cmd.overview())
+
+
+@app.get("/api/continuous-monitoring/breakdown")
+async def continuous_monitoring_breakdown():
+    """Per-patient profiles, daily trend, duration buckets, recent events."""
+    import scripts.continuous_monitoring_dashboard as cmd
+    return _json_safe(cmd.breakdown())
+
+
+@app.get("/api/continuous-monitoring/definitions")
+async def continuous_monitoring_definitions():
+    """Metric definitions for the Continuous Monitoring dashboard."""
+    import scripts.continuous_monitoring_dashboard as cmd
+    return _json_safe(cmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -107,6 +107,7 @@ import BiasDetectionDashboard from './components/BiasDetectionDashboard'
 import DigitalTwinDashboard from './components/DigitalTwinDashboard'
 import AIObservabilityDashboard from './components/AIObservabilityDashboard'
 import ModelMonitoringDashboard from './components/ModelMonitoringDashboard'
+import ContinuousMonitoringDashboard from './components/ContinuousMonitoringDashboard'
 import AIControlTowerDashboard from './components/AIControlTowerDashboard'
 import HumanEvaluationDashboard from './components/HumanEvaluationDashboard'
 import ModelGovernanceDashboard from './components/ModelGovernanceDashboard'
@@ -319,6 +320,7 @@ function App() {
     { id: 'digital-twin', label: 'Digital Twin' },
     { id: 'ai-observability', label: 'AI Observability' },
     { id: 'model-monitoring', label: 'Model Monitoring' },
+    { id: 'continuous-monitoring', label: 'Continuous Monitoring' },
     { id: 'ai-control-tower', label: 'AI Control Tower' },
     { id: 'human-evaluation', label: 'Human Evaluation' },
     { id: 'model-governance', label: 'Model Governance' },
@@ -1585,6 +1587,8 @@ function App() {
         return <AIObservabilityDashboard />
       case 'model-monitoring':
         return <ModelMonitoringDashboard />
+      case 'continuous-monitoring':
+        return <ContinuousMonitoringDashboard />
       case 'ai-control-tower':
         return <AIControlTowerDashboard />
       case 'human-evaluation':
