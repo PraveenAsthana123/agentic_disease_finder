@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 39,
+    "built": 40,
     "scaffold": 0,
-    "planned": 4
+    "planned": 3
   },
   "rows": [
     {
@@ -882,8 +882,8 @@
     },
     {
       "type": "speech-ai",
-      "status": "planned",
-      "note": "Audio conversion from video-EEG \u2014 registry"
+      "status": "built",
+      "note": "Speech AI dashboard \u2014 transcription counts, interaction types, transcript lengths, audio files, patient profiles, pipeline events, ASR/NLP definitions; 3 endpoints verified 200, SpeechAIDashboard.jsx + nav wiring"
     },
     {
       "type": "sql-rag",
