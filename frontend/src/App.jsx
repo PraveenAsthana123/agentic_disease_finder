@@ -140,6 +140,7 @@ import GroundingDashboard from './components/GroundingDashboard'
 import AIRedTeamDashboard from './components/AIRedTeamDashboard'
 import KnowledgeManagementDashboard from './components/KnowledgeManagementDashboard'
 import FineTuningDashboard from './components/FineTuningDashboard'
+import VectorDBDashboard from './components/VectorDBDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -366,7 +367,8 @@ function App() {
     { id: 'embedding', label: 'Embedding & Features' },
     { id: 'ai-lifecycle', label: 'AI Lifecycle Mgmt' },
     { id: 'mcp-governance', label: 'MCP Governance' },
-    { id: 'agent-council', label: 'Agent Council' }
+    { id: 'agent-council', label: 'Agent Council' },
+    { id: 'vector-db', label: 'Vector DB' }
   ]
 
   // API Calls
@@ -1683,6 +1685,8 @@ function App() {
         return <MCPGovernanceDashboard />
       case 'agent-council':
         return <AgentCouncilDashboard />
+      case 'vector-db':
+        return <VectorDBDashboard />
       default:
         return renderClassificationTab()
     }

@@ -227,7 +227,7 @@
             "reindex",
             "cleanup"
           ],
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Grounding",
