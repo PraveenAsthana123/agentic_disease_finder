@@ -7201,6 +7201,29 @@ async def knowledge_mgmt_definitions():
     return _json_safe(kmd.knowledge_definitions())
 
 
+# ── Fine-Tuning Pipeline Dashboard ─────────────────────────────────
+@app.get("/api/fine-tuning/overview")
+async def fine_tuning_overview():
+    """Fine-Tuning Pipeline overview — model inventory, training runs,
+    accuracy distribution, pipeline stage tracking from saved_models + clinical.db."""
+    import scripts.fine_tuning_dashboard as ftd
+    return _json_safe(ftd.fine_tuning_overview())
+
+
+@app.get("/api/fine-tuning/breakdown")
+async def fine_tuning_breakdown():
+    """Per-model, per-disease, per-type fine-tuning drill-down."""
+    import scripts.fine_tuning_dashboard as ftd
+    return _json_safe(ftd.fine_tuning_breakdown())
+
+
+@app.get("/api/fine-tuning/definitions")
+async def fine_tuning_definitions():
+    """Fine-Tuning Pipeline metric definitions."""
+    import scripts.fine_tuning_dashboard as ftd
+    return _json_safe(ftd.fine_tuning_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

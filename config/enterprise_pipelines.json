@@ -146,7 +146,7 @@
             "RLHF/DPO",
             "safety eval"
           ],
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Continuous Learning",
