@@ -291,8 +291,8 @@
             "monitor",
             "retire"
           ],
-          "status": "partial",
-          "maps_to": "agent/tool registry + MCP analysis"
+          "status": "built",
+          "maps_to": "MCPGovernanceDashboard.jsx — agent inventory (60 agents, 20 module groups), tool certification (52% certified), MCP/A2A protocol health, pipeline governance (76% coverage), access control events from transaction_log, consensus voting from MCP report"
         },
         {
           "name": "Human-in-the-Loop",

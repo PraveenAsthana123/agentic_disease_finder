@@ -7081,6 +7081,31 @@ async def ai_governance_definitions():
     return _json_safe(agd.governance_definitions())
 
 
+# ── MCP Governance — agent/tool registry, access control, MCP health ──
+
+@app.get("/api/mcp-governance/overview")
+async def mcp_governance_overview():
+    """MCP Governance overview — agent inventory, tool certification,
+    access control events, MCP/A2A health, pipeline governance coverage."""
+    import scripts.mcp_governance_dashboard as mgd
+    return _json_safe(mgd.mcp_governance_overview())
+
+
+@app.get("/api/mcp-governance/breakdown")
+async def mcp_governance_breakdown():
+    """Per-agent inventory, pipeline-level status, MCP consensus voting."""
+    import scripts.mcp_governance_dashboard as mgd
+    return _json_safe(mgd.mcp_governance_breakdown())
+
+
+@app.get("/api/mcp-governance/definitions")
+async def mcp_governance_definitions():
+    """MCP Governance definitions — MCP protocol, agent certification,
+    access control, compliance refs (EU AI Act, ISO 14971, NIST AI RMF)."""
+    import scripts.mcp_governance_dashboard as mgd
+    return _json_safe(mgd.mcp_governance_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
