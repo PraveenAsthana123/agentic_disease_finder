@@ -494,8 +494,8 @@
             "agent flows",
             "RCA"
           ],
-          "status": "partial",
-          "maps_to": "transaction trace (OTel/Langfuse planned)"
+          "status": "built",
+          "maps_to": "AIObservabilityDashboard.jsx — transaction traces (654 txns, 25 components, 7 actors), system activity (daily volume + hourly heatmap + per-component/actor drilldowns), cost analytics (978 records, $1302 total, GPU/cloud/LLM breakdown, cost timeline + token usage), audit trail (21 analyses with confidence/signal quality, 46 patient transaction profiles, error actions, 371 conversation messages with role distribution + timeline), 5-tab navigation (overview/activity/cost/audit/definitions), definitions with 4 sections (observability concepts/metrics/clinical relevance IEC 62304+FDA AI-ML+EU AI Act Art.12+ISO 14971+HIPAA+ILAE/remediation strategies), 3 API endpoints (/api/ai-observability/overview|breakdown|definitions) all verified 200"
         },
         {
           "name": "AI Incident Management",
