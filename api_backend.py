@@ -7057,6 +7057,30 @@ async def ai_lifecycle_definitions():
     return _json_safe(ald.lifecycle_definitions())
 
 
+@app.get("/api/ai-governance/overview")
+async def ai_governance_overview():
+    """AI Governance overview — decision audit trail, expert reviews,
+    HITL oversight, feedback loop, consultant coverage from real clinical.db."""
+    import scripts.ai_governance_dashboard as agd
+    return _json_safe(agd.governance_overview())
+
+
+@app.get("/api/ai-governance/breakdown")
+async def ai_governance_breakdown():
+    """AI Governance breakdown — consultant matrix, role coverage,
+    governance health scores, use-case risk classification."""
+    import scripts.ai_governance_dashboard as agd
+    return _json_safe(agd.governance_breakdown())
+
+
+@app.get("/api/ai-governance/definitions")
+async def ai_governance_definitions():
+    """AI Governance definitions — concepts, metrics, clinical
+    relevance (EU AI Act, FDA AI-ML, IEC 62304, ISO 14971), remediation."""
+    import scripts.ai_governance_dashboard as agd
+    return _json_safe(agd.governance_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

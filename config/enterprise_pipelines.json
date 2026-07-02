@@ -437,7 +437,7 @@
             "review",
             "retire approve"
           ],
-          "status": "partial",
+          "status": "built",
           "maps_to": "consultant matrix + decision + audit"
         },
         {
@@ -567,7 +567,7 @@
             "retire"
           ],
           "status": "built",
-          "maps_to": "ai_lifecycle_dashboard.py + AILifecycleDashboard.jsx + /api/ai-lifecycle/* (3 endpoints verified 200) — 112 AI assets tracked across ideation→dev→validate→deploy→monitor→retire, 60 agents + 45 pipelines + 7 models, lifecycle health radar, daily event timeline, validation + monitoring logs"
+          "maps_to": "ai_lifecycle_dashboard.py + AILifecycleDashboard.jsx + /api/ai-lifecycle/* (3 endpoints verified 200) \u2014 112 AI assets tracked across ideation\u2192dev\u2192validate\u2192deploy\u2192monitor\u2192retire, 60 agents + 45 pipelines + 7 models, lifecycle health radar, daily event timeline, validation + monitoring logs"
         }
       ]
     }
