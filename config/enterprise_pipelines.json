@@ -420,8 +420,8 @@
             "feature importance",
             "clinical explanation"
           ],
-          "status": "partial",
-          "maps_to": "SHAP + surrogate (LIME/GradCAM planned)"
+          "status": "built",
+          "maps_to": "Correlation-based importance + SHAP direction + counterfactual + feature correlation (scripts/explainable_ai_dashboard.py, 3 endpoints verified 200)"
         }
       ]
     },
