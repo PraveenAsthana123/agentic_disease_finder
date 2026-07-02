@@ -1,61 +1,327 @@
 {
-  "title": "Epilepsy Platform — Full Role Specification Registry",
-  "note": "Every clinical/research/governance role with its assessment-field count + key sections + build status. Honest scope tracker for the enterprise spec (§155). status: built (workbench/forms live) / partial / planned.",
-  "updated_at": "2026-06-24",
+  "title": "Epilepsy Platform \u2014 Full Role Specification Registry",
+  "note": "Every clinical/research/governance role with its assessment-field count + key sections + build status. Honest scope tracker for the enterprise spec (\u00a7155). status: built (workbench/forms live) / partial / planned.",
+  "updated_at": "2026-07-02",
   "roles": [
-    {"role": "Neurologist / Epileptologist", "priority": "10/10", "fields": "300-350", "status": "built",
-     "sections": ["Patient Summary", "EEG Evidence", "AI Findings", "Explainability", "Biomarkers", "Localization", "MRI Correlation", "Medication", "Human Override", "Audit"],
-     "note": "Clinical Workbench built (10 sections, patient-centric)"},
-    {"role": "Clinical Neurophysiologist / EEG Reviewer", "priority": "10/10", "fields": "250-300", "status": "partial",
-     "sections": ["Background Rhythm", "Interictal Activity", "Localization", "Seizure Capture", "Evolution", "Sleep EEG", "Activation", "Artifact Review", "Clinical Correlation", "AI Label Validation"],
-     "note": "eeg_interpretation + artifact forms exist; dedicated reviewer workbench planned"},
-    {"role": "EEG Technician", "priority": "10/10", "fields": "220-250", "status": "built",
-     "sections": ["Acquisition", "Device", "Signal Params", "Channel/Electrode QC", "Recording Conditions", "Provocative", "Event Annotation", "Artifact Annotation"],
-     "note": "7 capture forms built (13-section spec) + Required/Full toggle + workbench tab"},
-    {"role": "Patient / Caregiver", "priority": "10/10", "fields": "250-300", "status": "partial",
-     "sections": ["Master Profile", "Self-Service Portal", "Seizure Diary", "Symptom/Aura/Sleep/Stress/Trigger Tracking", "QoL", "Patient Dashboard", "Caregiver Dashboard", "Digital Twin"],
-     "note": "Patient Master + portal tabs registry exist; full self-service portal + diary + digital twin planned"},
-    {"role": "Clinical Psychologist", "priority": "9/10", "fields": "180-200", "status": "built",
-     "sections": ["Referral", "Emotional Wellbeing", "Anxiety", "Trauma", "Coping", "Self-Esteem", "Social", "Family", "School/Work", "Behavioral", "Resilience", "QoL", "Therapy", "Progress"],
-     "endpoints": ["/api/psychologist", "/api/psychologist/depression-anxiety", "/api/psychologist/coping-resilience", "/api/psychologist/seizure-emotion", "/api/psychologist/therapy-planning"],
-     "frontend": "PsychologistDashboard.jsx",
-     "note": "PHQ-9/GAD-7/NDDIE depression+anxiety, QOLIE-31 coping+resilience, seizure-emotion correlation, CBT/ACT therapy planning"},
-    {"role": "Clinical Pharmacist", "priority": "9/10", "fields": "180-200", "status": "partial",
-     "sections": ["Medication Inventory", "Adherence", "Side Effects", "Drug Interactions", "TDM", "Seizure Control", "Cost/Access", "Pregnancy", "Rescue Med", "Education", "Risk", "Recommendation"],
-     "note": "medications form exists; pharmacist workbench (interactions/TDM/MTM) planned"},
-    {"role": "Epilepsy Nurse Coordinator", "priority": "10/10", "fields": "190-210", "status": "built",
-     "sections": ["Initial Assessment", "Seizure Monitoring", "Med Follow-up", "Side Effects", "Safety", "Action Plan", "Education", "Lifestyle", "Care Coordination", "Caregiver", "QoL", "Triage"],
-     "endpoints": ["/api/epilepsy-nurse", "/api/epilepsy-nurse/seizure-diary", "/api/epilepsy-nurse/adherence", "/api/epilepsy-nurse/sudep-risk", "/api/epilepsy-nurse/action-plan", "/api/epilepsy-nurse/education", "/api/epilepsy-nurse/definitions"],
-     "frontend": "EpilepsyNurseDashboard.jsx"},
-    {"role": "Neurosurgeon / Epilepsy Surgery", "priority": "10/10", "fields": "220-250", "status": "planned",
-     "sections": ["Surgical Referral", "DRE Assessment", "Localization", "MRI Surgical", "VEEG Concordance", "Neuropsych", "Language/Memory", "Wada", "Stereo-EEG", "Surgery Type", "Neuromodulation", "Risk", "Outcomes", "Engel", "ILAE"]},
-    {"role": "Speech-Language Pathologist (SLP)", "priority": "8/10", "fields": "190-220", "status": "planned",
-     "sections": ["Communication", "Naming", "Verbal Fluency", "Receptive/Expressive Language", "Verbal Memory", "Reading/Writing", "Cognitive Communication", "School/Work", "Social", "Rehab Goals"]},
-    {"role": "Neuropsychologist", "priority": "9/10", "fields": "200-250", "status": "partial",
-     "sections": ["Cognition", "Memory", "Executive Function", "Attention", "Processing Speed", "IQ"],
-     "note": "neuropsych form exists; full battery scoring planned"},
-    {"role": "Psychiatrist", "priority": "8/10", "fields": "150-200", "status": "partial",
-     "sections": ["Comorbidity", "Mood/Anxiety", "PNES Differential", "Medication Interaction"],
-     "note": "surveys + assessments (PHQ-9/GAD-7/NDDI-E) exist"},
-    {"role": "Occupational Therapist", "priority": "8/10", "fields": "200-250", "status": "partial",
-     "sections": ["Functional Outcome", "ADL", "Rehab Plan", "Goal Attainment"],
-     "note": "outcomes form + role dashboard exist"},
-    {"role": "AI Governance / Responsible AI Officer", "priority": "10/10", "fields": "210-230", "status": "built",
-     "sections": ["Model Registration", "Training Data Governance", "Explainability", "Human Oversight", "Clinical Validation", "Fairness", "Risk", "Audit"],
-     "note": "governance + responsible-ai + audit + council all built"},
-    {"role": "Data Steward / Privacy Officer", "priority": "10/10", "fields": "180-200", "status": "partial",
-     "sections": ["Dataset Registration", "PHI Assessment", "EEG/Video Privacy", "De-identification", "Access Control", "Data Sharing", "Audit Logs", "Incidents", "Retention", "Risk"],
-     "note": "PII scan + guardrails + audit exist; full privacy workflow planned"},
-    {"role": "IRB / Ethics Officer", "priority": "10/10", "fields": "160-180", "status": "partial",
-     "sections": ["Protocol Review", "Consent", "Risk-Benefit", "Approval Workflow"],
-     "note": "IRB Board dept exists; full review workflow planned"},
-    {"role": "Clinical Data Manager", "priority": "10/10", "fields": "200-220", "status": "partial",
-     "sections": ["Data Quality", "Schema", "Lineage", "Validation Rules", "Versioning"],
-     "note": "clinical DB + transaction log + vector ingest exist"},
-    {"role": "Research Coordinator", "priority": "9/10", "fields": "150-200", "status": "planned",
-     "sections": ["Study Enrollment", "Protocol Tracking", "Cohort Mgmt", "Outcomes Collection"]}
+    {
+      "role": "Neurologist / Epileptologist",
+      "priority": "10/10",
+      "fields": "300-350",
+      "status": "built",
+      "sections": [
+        "Patient Summary",
+        "EEG Evidence",
+        "AI Findings",
+        "Explainability",
+        "Biomarkers",
+        "Localization",
+        "MRI Correlation",
+        "Medication",
+        "Human Override",
+        "Audit"
+      ],
+      "note": "Clinical Workbench built (10 sections, patient-centric)"
+    },
+    {
+      "role": "Clinical Neurophysiologist / EEG Reviewer",
+      "priority": "10/10",
+      "fields": "250-300",
+      "status": "partial",
+      "sections": [
+        "Background Rhythm",
+        "Interictal Activity",
+        "Localization",
+        "Seizure Capture",
+        "Evolution",
+        "Sleep EEG",
+        "Activation",
+        "Artifact Review",
+        "Clinical Correlation",
+        "AI Label Validation"
+      ],
+      "note": "eeg_interpretation + artifact forms exist; dedicated reviewer workbench planned"
+    },
+    {
+      "role": "EEG Technician",
+      "priority": "10/10",
+      "fields": "220-250",
+      "status": "built",
+      "sections": [
+        "Acquisition",
+        "Device",
+        "Signal Params",
+        "Channel/Electrode QC",
+        "Recording Conditions",
+        "Provocative",
+        "Event Annotation",
+        "Artifact Annotation"
+      ],
+      "note": "7 capture forms built (13-section spec) + Required/Full toggle + workbench tab"
+    },
+    {
+      "role": "Patient / Caregiver",
+      "priority": "10/10",
+      "fields": "250-300",
+      "status": "partial",
+      "sections": [
+        "Master Profile",
+        "Self-Service Portal",
+        "Seizure Diary",
+        "Symptom/Aura/Sleep/Stress/Trigger Tracking",
+        "QoL",
+        "Patient Dashboard",
+        "Caregiver Dashboard",
+        "Digital Twin"
+      ],
+      "note": "Patient Master + portal tabs registry exist; full self-service portal + diary + digital twin planned"
+    },
+    {
+      "role": "Clinical Psychologist",
+      "priority": "9/10",
+      "fields": "180-200",
+      "status": "built",
+      "sections": [
+        "Referral",
+        "Emotional Wellbeing",
+        "Anxiety",
+        "Trauma",
+        "Coping",
+        "Self-Esteem",
+        "Social",
+        "Family",
+        "School/Work",
+        "Behavioral",
+        "Resilience",
+        "QoL",
+        "Therapy",
+        "Progress"
+      ],
+      "endpoints": [
+        "/api/psychologist",
+        "/api/psychologist/depression-anxiety",
+        "/api/psychologist/coping-resilience",
+        "/api/psychologist/seizure-emotion",
+        "/api/psychologist/therapy-planning"
+      ],
+      "frontend": "PsychologistDashboard.jsx",
+      "note": "PHQ-9/GAD-7/NDDIE depression+anxiety, QOLIE-31 coping+resilience, seizure-emotion correlation, CBT/ACT therapy planning"
+    },
+    {
+      "role": "Clinical Pharmacist",
+      "priority": "9/10",
+      "fields": "180-200",
+      "status": "partial",
+      "sections": [
+        "Medication Inventory",
+        "Adherence",
+        "Side Effects",
+        "Drug Interactions",
+        "TDM",
+        "Seizure Control",
+        "Cost/Access",
+        "Pregnancy",
+        "Rescue Med",
+        "Education",
+        "Risk",
+        "Recommendation"
+      ],
+      "note": "medications form exists; pharmacist workbench (interactions/TDM/MTM) planned"
+    },
+    {
+      "role": "Epilepsy Nurse Coordinator",
+      "priority": "10/10",
+      "fields": "190-210",
+      "status": "built",
+      "sections": [
+        "Initial Assessment",
+        "Seizure Monitoring",
+        "Med Follow-up",
+        "Side Effects",
+        "Safety",
+        "Action Plan",
+        "Education",
+        "Lifestyle",
+        "Care Coordination",
+        "Caregiver",
+        "QoL",
+        "Triage"
+      ],
+      "endpoints": [
+        "/api/epilepsy-nurse",
+        "/api/epilepsy-nurse/seizure-diary",
+        "/api/epilepsy-nurse/adherence",
+        "/api/epilepsy-nurse/sudep-risk",
+        "/api/epilepsy-nurse/action-plan",
+        "/api/epilepsy-nurse/education",
+        "/api/epilepsy-nurse/definitions"
+      ],
+      "frontend": "EpilepsyNurseDashboard.jsx"
+    },
+    {
+      "role": "Neurosurgeon / Epilepsy Surgery",
+      "priority": "10/10",
+      "fields": "220-250",
+      "status": "planned",
+      "sections": [
+        "Surgical Referral",
+        "DRE Assessment",
+        "Localization",
+        "MRI Surgical",
+        "VEEG Concordance",
+        "Neuropsych",
+        "Language/Memory",
+        "Wada",
+        "Stereo-EEG",
+        "Surgery Type",
+        "Neuromodulation",
+        "Risk",
+        "Outcomes",
+        "Engel",
+        "ILAE"
+      ]
+    },
+    {
+      "role": "Speech-Language Pathologist (SLP)",
+      "priority": "8/10",
+      "fields": "190-220",
+      "status": "planned",
+      "sections": [
+        "Communication",
+        "Naming",
+        "Verbal Fluency",
+        "Receptive/Expressive Language",
+        "Verbal Memory",
+        "Reading/Writing",
+        "Cognitive Communication",
+        "School/Work",
+        "Social",
+        "Rehab Goals"
+      ]
+    },
+    {
+      "role": "Neuropsychologist",
+      "priority": "9/10",
+      "fields": "200-250",
+      "status": "partial",
+      "sections": [
+        "Cognition",
+        "Memory",
+        "Executive Function",
+        "Attention",
+        "Processing Speed",
+        "IQ"
+      ],
+      "note": "neuropsych form exists; full battery scoring planned"
+    },
+    {
+      "role": "Psychiatrist",
+      "priority": "8/10",
+      "fields": "150-200",
+      "status": "partial",
+      "sections": [
+        "Comorbidity",
+        "Mood/Anxiety",
+        "PNES Differential",
+        "Medication Interaction"
+      ],
+      "note": "surveys + assessments (PHQ-9/GAD-7/NDDI-E) exist"
+    },
+    {
+      "role": "Occupational Therapist",
+      "priority": "8/10",
+      "fields": "200-250",
+      "status": "partial",
+      "sections": [
+        "Functional Outcome",
+        "ADL",
+        "Rehab Plan",
+        "Goal Attainment"
+      ],
+      "note": "outcomes form + role dashboard exist"
+    },
+    {
+      "role": "AI Governance / Responsible AI Officer",
+      "priority": "10/10",
+      "fields": "210-230",
+      "status": "built",
+      "sections": [
+        "Model Registration",
+        "Training Data Governance",
+        "Explainability",
+        "Human Oversight",
+        "Clinical Validation",
+        "Fairness",
+        "Risk",
+        "Audit"
+      ],
+      "note": "governance + responsible-ai + audit + council all built"
+    },
+    {
+      "role": "Data Steward / Privacy Officer",
+      "priority": "10/10",
+      "fields": "180-200",
+      "status": "partial",
+      "sections": [
+        "Dataset Registration",
+        "PHI Assessment",
+        "EEG/Video Privacy",
+        "De-identification",
+        "Access Control",
+        "Data Sharing",
+        "Audit Logs",
+        "Incidents",
+        "Retention",
+        "Risk"
+      ],
+      "note": "PII scan + guardrails + audit exist; full privacy workflow planned"
+    },
+    {
+      "role": "IRB / Ethics Officer",
+      "priority": "10/10",
+      "fields": "160-180",
+      "status": "partial",
+      "sections": [
+        "Protocol Review",
+        "Consent",
+        "Risk-Benefit",
+        "Approval Workflow"
+      ],
+      "note": "IRB Board dept exists; full review workflow planned"
+    },
+    {
+      "role": "Clinical Data Manager",
+      "priority": "10/10",
+      "fields": "200-220",
+      "status": "partial",
+      "sections": [
+        "Data Quality",
+        "Schema",
+        "Lineage",
+        "Validation Rules",
+        "Versioning"
+      ],
+      "note": "clinical DB + transaction log + vector ingest exist"
+    },
+    {
+      "role": "Research Coordinator",
+      "priority": "9/10",
+      "fields": "150-200",
+      "status": "built",
+      "sections": [
+        "Study Enrollment",
+        "Protocol Tracking",
+        "Cohort Mgmt",
+        "Outcomes Collection"
+      ],
+      "note": "Research Coordinator Dashboard built (7 tabs, 3 API endpoints, real clinical.db data)"
+    }
   ],
-  "summary": {"total_roles": 17, "total_fields_estimate": "3200-3900",
-              "built": 3, "partial": 9, "planned": 5,
-              "honest_note": "Full build = multi-month enterprise effort (~3500 structured fields across 17 roles). Neurologist + EEG Technician + AI Governance built; rest tracked honestly here, built sequentially."}
+  "summary": {
+    "total_roles": 17,
+    "total_fields_estimate": "3200-3900",
+    "built": 3,
+    "partial": 9,
+    "planned": 5,
+    "honest_note": "Full build = multi-month enterprise effort (~3500 structured fields across 17 roles). Neurologist + EEG Technician + AI Governance built; rest tracked honestly here, built sequentially."
+  }
 }

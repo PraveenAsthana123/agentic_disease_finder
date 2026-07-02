@@ -7495,6 +7495,28 @@ async def patient_reporting_definitions():
     return _json_safe(prd.definitions())
 
 
+# ── Research Coordinator Dashboard ──────────────────────────────────
+@app.get("/api/research-coordinator/overview")
+async def research_coordinator_overview():
+    """Research Coordinator — enrollment, protocol compliance, cohort management."""
+    import scripts.research_coordinator_dashboard as rcd
+    return _json_safe(rcd.overview())
+
+
+@app.get("/api/research-coordinator/breakdown")
+async def research_coordinator_breakdown():
+    """Research Coordinator breakdown — subject inventory, protocol matrix, visits, outcomes."""
+    import scripts.research_coordinator_dashboard as rcd
+    return _json_safe(rcd.breakdown())
+
+
+@app.get("/api/research-coordinator/definitions")
+async def research_coordinator_definitions():
+    """Research Coordinator definitions — concepts, study phases, compliance, remediation."""
+    import scripts.research_coordinator_dashboard as rcd
+    return _json_safe(rcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
