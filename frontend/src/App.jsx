@@ -116,6 +116,8 @@ import ExplainableAIDashboard from './components/ExplainableAIDashboard'
 import CommunicationAIDashboard from './components/CommunicationAIDashboard'
 import FoundationModelsDashboard from './components/FoundationModelsDashboard'
 import AnalyticsAIDashboard from './components/AnalyticsAIDashboard'
+import InterpretableAIDashboard from './components/InterpretableAIDashboard'
+import AgenticRAGDashboard from './components/AgenticRAGDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -318,7 +320,9 @@ function App() {
     { id: 'explainable-ai', label: 'Explainable AI' },
     { id: 'communication-ai', label: 'Communication AI' },
     { id: 'foundation-models', label: 'Foundation Models' },
-    { id: 'analytics-ai', label: 'Analytics AI' }
+    { id: 'analytics-ai', label: 'Analytics AI' },
+    { id: 'interpretable-ai', label: 'Interpretable AI' },
+    { id: 'agentic-rag', label: 'Agentic RAG' }
   ]
 
   // API Calls
@@ -1587,6 +1591,10 @@ function App() {
         return <FoundationModelsDashboard />
       case 'analytics-ai':
         return <AnalyticsAIDashboard />
+      case 'interpretable-ai':
+        return <InterpretableAIDashboard />
+      case 'agentic-rag':
+        return <AgenticRAGDashboard />
       default:
         return renderClassificationTab()
     }

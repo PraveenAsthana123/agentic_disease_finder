@@ -6584,6 +6584,31 @@ async def ica_noise_cleaning_definitions():
     return _json_safe(icd.definitions())
 
 
+# ── Agentic RAG ───────────────────────────────────────────
+@app.get("/api/agentic-rag/overview")
+async def agentic_rag_overview():
+    """Agentic RAG overview — corpus inventory, retrieval coverage,
+    query routing stats, knowledge-base health KPIs."""
+    import scripts.agentic_rag_dashboard as ard
+    return _json_safe(ard.agentic_rag_overview())
+
+
+@app.get("/api/agentic-rag/breakdown")
+async def agentic_rag_breakdown():
+    """Agentic RAG breakdown — per-patient coverage, agent traces,
+    workload distribution, relevance by query type, KB health detail."""
+    import scripts.agentic_rag_dashboard as ard
+    return _json_safe(ard.agentic_rag_breakdown())
+
+
+@app.get("/api/agentic-rag/definitions")
+async def agentic_rag_definitions():
+    """Agentic RAG definitions — RAG concepts, pipeline stages,
+    quality metrics, clinical relevance, remediation strategies."""
+    import scripts.agentic_rag_dashboard as ard
+    return _json_safe(ard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -5,8 +5,8 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 36,
-    "scaffold": 1,
+    "built": 37,
+    "scaffold": 0,
     "planned": 6
   },
   "rows": [
@@ -37,8 +37,8 @@
     },
     {
       "type": "agentic-rag",
-      "status": "scaffold",
-      "note": "Analysis module present; not wired to a live corpus"
+      "status": "built",
+      "note": "Agentic RAG dashboard \u2014 corpus inventory, retrieval coverage, agent pipeline traces, KB health; 3 endpoints verified 200"
     },
     {
       "type": "agentops",
@@ -63,7 +63,7 @@
     {
       "type": "ai-control-tower",
       "status": "built",
-      "note": "Department reports + transaction log — 3 API endpoints verified 200"
+      "note": "Department reports + transaction log \u2014 3 API endpoints verified 200"
     },
     {
       "type": "ai-guardrails",
@@ -73,7 +73,7 @@
     {
       "type": "ai-observability",
       "status": "built",
-      "note": "Transaction log + audit reports — 3 API endpoints verified 200"
+      "note": "Transaction log + audit reports \u2014 3 API endpoints verified 200"
     },
     {
       "type": "aiops",
@@ -148,7 +148,7 @@
     {
       "type": "bias-detection-ai",
       "status": "built",
-      "note": "Bias detection dashboard — demographic parity, equal opportunity, disparate impact, intersectional analysis on 40 patients (gender/age), 15 neuropsych instruments, 3 API endpoints verified 200, BiasDetectionDashboard.jsx + nav wiring"
+      "note": "Bias detection dashboard \u2014 demographic parity, equal opportunity, disparate impact, intersectional analysis on 40 patients (gender/age), 15 neuropsych instruments, 3 API endpoints verified 200, BiasDetectionDashboard.jsx + nav wiring"
     },
     {
       "type": "bioinformatics-ai",
@@ -163,7 +163,7 @@
     {
       "type": "causal-ai",
       "status": "built",
-      "note": "Causal seizure analysis — trigger/medication/EEG causal pathways, counterfactuals, 3 API endpoints verified 200"
+      "note": "Causal seizure analysis \u2014 trigger/medication/EEG causal pathways, counterfactuals, 3 API endpoints verified 200"
     },
     {
       "type": "chain-of-thought-ai",
@@ -203,7 +203,7 @@
     {
       "type": "computer-vision-ai",
       "status": "built",
-      "note": "Video frame + motion extraction — /api/video-eeg/* 3 endpoints verified 200"
+      "note": "Video frame + motion extraction \u2014 /api/video-eeg/* 3 endpoints verified 200"
     },
     {
       "type": "contact-center-ai",
@@ -268,7 +268,7 @@
     {
       "type": "deep-learning",
       "status": "built",
-      "note": "Deep Learning Dashboard — 7 architectures (3D CNN/Transformer/LSTM/1D CNN/EEGNet/GNN/Ensemble), training history, 98.05% patient-specific accuracy, 4-method comparison, per-patient metrics, 5-tab frontend, 3 API endpoints verified 200"
+      "note": "Deep Learning Dashboard \u2014 7 architectures (3D CNN/Transformer/LSTM/1D CNN/EEGNet/GNN/Ensemble), training history, 98.05% patient-specific accuracy, 4-method comparison, per-patient metrics, 5-tab frontend, 3 API endpoints verified 200"
     },
     {
       "type": "defect-detection-ai",
@@ -293,7 +293,7 @@
     {
       "type": "digital-twin-ai",
       "status": "built",
-      "note": "Patient digital twin — /api/digital-twin/* 3 endpoints verified 200"
+      "note": "Patient digital twin \u2014 /api/digital-twin/* 3 endpoints verified 200"
     },
     {
       "type": "distributed-ai",
@@ -373,12 +373,12 @@
     {
       "type": "fairness-ai",
       "status": "built",
-      "note": "Fairness gates — /api/fairness/* (AIF360-based) 3 endpoints verified 200"
+      "note": "Fairness gates \u2014 /api/fairness/* (AIF360-based) 3 endpoints verified 200"
     },
     {
       "type": "federated-learning",
       "status": "built",
-      "note": "Multi-site federation — /api/mcp-federation/* 3 endpoints verified 200"
+      "note": "Multi-site federation \u2014 /api/mcp-federation/* 3 endpoints verified 200"
     },
     {
       "type": "finance-ai",
@@ -403,7 +403,7 @@
     {
       "type": "foundation-models",
       "status": "built",
-      "note": "Clinical AI model catalog — 206 models, 7 diseases, 9 neural architectures, 3 API endpoints verified 200"
+      "note": "Clinical AI model catalog \u2014 206 models, 7 diseases, 9 neural architectures, 3 API endpoints verified 200"
     },
     {
       "type": "fraud-detection-ai",
@@ -428,7 +428,7 @@
     {
       "type": "governance-ai",
       "status": "built",
-      "note": "Governance dept + consultant oversight — /api/model-governance/* 3 endpoints verified 200"
+      "note": "Governance dept + consultant oversight \u2014 /api/model-governance/* 3 endpoints verified 200"
     },
     {
       "type": "graph-of-thought-ai",
@@ -438,7 +438,7 @@
     {
       "type": "graphrag",
       "status": "built",
-      "note": "Knowledge graph + graph RAG — /api/knowledge-graph/* 3 endpoints verified 200"
+      "note": "Knowledge graph + graph RAG \u2014 /api/knowledge-graph/* 3 endpoints verified 200"
     },
     {
       "type": "healthcare-ai",
@@ -458,7 +458,7 @@
     {
       "type": "human-evaluation-ai",
       "status": "built",
-      "note": "HITL accept/override + reason codes — /api/human-evaluation/* 3 endpoints verified 200"
+      "note": "HITL accept/override + reason codes \u2014 /api/human-evaluation/* 3 endpoints verified 200"
     },
     {
       "type": "humanoid-ai",
@@ -483,7 +483,7 @@
     {
       "type": "image-segmentation-ai",
       "status": "planned",
-      "note": "EEG trace digitization from images — registry"
+      "note": "EEG trace digitization from images \u2014 registry"
     },
     {
       "type": "industrial-robotics-ai",
@@ -518,7 +518,7 @@
     {
       "type": "knowledge-graph-ai",
       "status": "built",
-      "note": "Neurophysiology KG — /api/knowledge-graph/* 3 endpoints verified 200"
+      "note": "Neurophysiology KG \u2014 /api/knowledge-graph/* 3 endpoints verified 200"
     },
     {
       "type": "legal-ai",
@@ -538,7 +538,7 @@
     {
       "type": "llm",
       "status": "built",
-      "note": "LLM-backed explanation — /api/llmops/* 3 endpoints verified 200"
+      "note": "LLM-backed explanation \u2014 /api/llmops/* 3 endpoints verified 200"
     },
     {
       "type": "llmops",
@@ -588,7 +588,7 @@
     {
       "type": "model-governance",
       "status": "built",
-      "note": "Consultant matrix + HITL sign-off — 3 API endpoints verified 200"
+      "note": "Consultant matrix + HITL sign-off \u2014 3 API endpoints verified 200"
     },
     {
       "type": "model-monitoring-ai",
@@ -618,7 +618,7 @@
     {
       "type": "neuro-ai",
       "status": "built",
-      "note": "Neuro-specific modeling — /api/cognition-link/* 3 endpoints verified 200"
+      "note": "Neuro-specific modeling \u2014 /api/cognition-link/* 3 endpoints verified 200"
     },
     {
       "type": "neuro-symbolic-ai",
@@ -643,7 +643,7 @@
     {
       "type": "object-detection-ai",
       "status": "planned",
-      "note": "Body-movement detection in video — registry"
+      "note": "Body-movement detection in video \u2014 registry"
     },
     {
       "type": "ocr-ai",
@@ -738,7 +738,7 @@
     {
       "type": "rag",
       "status": "built",
-      "note": "RAG pipeline — /api/retrieval/* 3 endpoints verified 200"
+      "note": "RAG pipeline \u2014 /api/retrieval/* 3 endpoints verified 200"
     },
     {
       "type": "ragops",
@@ -783,7 +783,7 @@
     {
       "type": "responsible-ai",
       "status": "built",
-      "note": "HITL + governance reports + fairness gates — 3 API endpoints verified 200"
+      "note": "HITL + governance reports + fairness gates \u2014 3 API endpoints verified 200"
     },
     {
       "type": "retail-ai",
@@ -883,7 +883,7 @@
     {
       "type": "speech-ai",
       "status": "planned",
-      "note": "Audio conversion from video-EEG — registry"
+      "note": "Audio conversion from video-EEG \u2014 registry"
     },
     {
       "type": "sql-rag",
@@ -923,7 +923,7 @@
     {
       "type": "text-to-audio-ai",
       "status": "planned",
-      "note": "Audio conversion — registry"
+      "note": "Audio conversion \u2014 registry"
     },
     {
       "type": "text-to-image-ai",
@@ -933,7 +933,7 @@
     {
       "type": "text-to-video-ai",
       "status": "planned",
-      "note": "Video conversion — registry"
+      "note": "Video conversion \u2014 registry"
     },
     {
       "type": "theory-of-mind-ai",
@@ -993,7 +993,7 @@
     {
       "type": "voice-ai",
       "status": "planned",
-      "note": "Audio markers — registry"
+      "note": "Audio markers \u2014 registry"
     },
     {
       "type": "vr-ai",
