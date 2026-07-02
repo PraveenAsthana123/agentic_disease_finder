@@ -7155,6 +7155,29 @@ async def grounding_definitions():
     return _json_safe(grd.definitions())
 
 
+# ── AI Red Team Dashboard ─────────────────────────────────────────
+@app.get("/api/ai-red-team/overview")
+async def ai_red_team_overview():
+    """AI Red Team overview — adversarial testing, jailbreak detection,
+    prompt attack analysis, tool abuse monitoring from real clinical.db data."""
+    import scripts.ai_red_team_dashboard as art
+    return _json_safe(art.red_team_overview())
+
+
+@app.get("/api/ai-red-team/breakdown")
+async def ai_red_team_breakdown():
+    """Per-attack-type and per-component red team drill-down."""
+    import scripts.ai_red_team_dashboard as art
+    return _json_safe(art.red_team_breakdown())
+
+
+@app.get("/api/ai-red-team/definitions")
+async def ai_red_team_definitions():
+    """AI Red Team metric definitions."""
+    import scripts.ai_red_team_dashboard as art
+    return _json_safe(art.red_team_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
