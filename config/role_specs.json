@@ -186,7 +186,7 @@
       "role": "Speech-Language Pathologist (SLP)",
       "priority": "8/10",
       "fields": "190-220",
-      "status": "planned",
+      "status": "built",
       "sections": [
         "Communication",
         "Naming",
@@ -198,7 +198,8 @@
         "School/Work",
         "Social",
         "Rehab Goals"
-      ]
+      ],
+      "note": "SLP Dashboard \u2014 language assessment (BNT/WAB/VF), swallowing/dysphagia (MASA), AED speech effects, cognitive-communication profiles, therapy goals; 25 patients, 141 assessments, 4 endpoints verified 200"
     },
     {
       "role": "Neuropsychologist",

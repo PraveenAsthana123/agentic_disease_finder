@@ -2264,43 +2264,8 @@ async def nurse_education(patient_id: str = None):
     return _json_safe(nurse.education_assessment(patient_id))
 
 
-# ─── Speech-Language Pathologist (SLP) ────────────────────────────────────
-
-@app.get("/api/slp")
-async def slp_dashboard(patient_id: str = None):
-    """Speech-Language Pathologist (SLP) — full dashboard: language assessment (BNT+WAB),
-    verbal fluency, swallowing (MASA), pre/post-surgical language comparison.
-    All built from REAL BNT, WAB, VERBAL_FLUENCY, MASA assessments in clinical.db."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.full_dashboard(patient_id))
-
-
-@app.get("/api/slp/language-assessment")
-async def slp_language(patient_id: str = None):
-    """Language assessment: BNT (Boston Naming Test) + WAB (Western Aphasia Battery)."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.language_assessment(patient_id))
-
-
-@app.get("/api/slp/speech-analysis")
-async def slp_speech(patient_id: str = None):
-    """Speech analysis: verbal fluency (phonemic FAS + semantic animals/fruits), clustering, switching."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.speech_analysis(patient_id))
-
-
-@app.get("/api/slp/swallowing")
-async def slp_swallowing(patient_id: str = None):
-    """Swallowing assessment: MASA score, aspiration risk, post-ictal risk flags."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.swallowing_assessment(patient_id))
-
-
-@app.get("/api/slp/pre-post-surgical")
-async def slp_prepost(patient_id: str = None):
-    """Pre/post-surgical language comparison: baseline scores, risk estimates, Wada test recommendations."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.pre_post_surgical(patient_id))
+# ─── Speech-Language Pathologist (SLP) — see bottom-of-file block ─────────
+# (routes moved to consolidated SLP Dashboard section near EOF)
 
 
 # ── Occupational Therapist (OT) endpoints ────────────────────────────
@@ -4049,47 +4014,7 @@ async def embedding_drift_definitions():
     return _json_safe(generate_embedding_drift_definitions())
 
 
-# ─── Speech-Language Pathologist (SLP) ────────────────────────────────────
-
-@app.get("/api/slp")
-async def slp_dashboard(patient_id: str = None):
-    """Speech-Language Pathologist — full dashboard: language assessment (BNT/WAB),
-    verbal fluency, swallowing/dysphagia (MASA), AED speech effects,
-    cognitive-communication profiles, therapy goals. All from REAL clinical.db data."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.full_dashboard(patient_id))
-
-
-@app.get("/api/slp/language-assessment")
-async def slp_language(patient_id: str = None):
-    """Language assessment: Boston Naming Test + Western Aphasia Battery scores,
-    naming deficit flags, aphasia type distribution. Bell et al. 2011."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.language_assessment(patient_id))
-
-
-@app.get("/api/slp/speech-analysis")
-async def slp_speech(patient_id: str = None):
-    """Verbal fluency analysis: phonemic (FAS) + semantic (animals/fruits),
-    clustering/switching scores, executive-language flags."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.speech_analysis(patient_id))
-
-
-@app.get("/api/slp/swallowing")
-async def slp_swallowing(patient_id: str = None):
-    """MASA swallowing assessment: dysphagia screening, aspiration risk,
-    post-ictal and rescue medication risks."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.swallowing_assessment(patient_id))
-
-
-@app.get("/api/slp/pre-post-surgical")
-async def slp_surgical(patient_id: str = None):
-    """Pre/post-surgical language comparison: score deltas, surgical risk
-    estimates, Wada test recommendations."""
-    import scripts.slp_module as slp
-    return _json_safe(slp.pre_post_surgical(patient_id))
+# ─── SLP routes — see consolidated block near EOF ─────────────────────────
 
 
 # ── Patient Portal: Medication Tab ──────────────────────────────────
@@ -7540,6 +7465,37 @@ async def neurosurgeon_definitions():
     compliance, remediation."""
     import scripts.neurosurgeon_dashboard as nsd
     return _json_safe(nsd.definitions())
+
+
+# ── Speech-Language Pathologist (SLP) Dashboard ───────────────────────────
+@app.get("/api/slp")
+async def slp_combined():
+    """SLP combined — language assessment, swallowing/dysphagia risk,
+    AED speech effects, cognitive-communication, therapy goals, definitions."""
+    import scripts.slp_dashboard as slpd
+    return _json_safe(slpd.combined())
+
+
+@app.get("/api/slp/overview")
+async def slp_overview():
+    """SLP overview — KPIs, severity distribution."""
+    import scripts.slp_dashboard as slpd
+    return _json_safe(slpd.overview())
+
+
+@app.get("/api/slp/breakdown")
+async def slp_breakdown():
+    """SLP breakdown — language test scores, lateralization, swallowing patients,
+    AED effects, cognitive profiles, therapy goals."""
+    import scripts.slp_dashboard as slpd
+    return _json_safe(slpd.breakdown())
+
+
+@app.get("/api/slp/definitions")
+async def slp_definitions():
+    """SLP definitions — BNT, WAB, MASA, dysphagia, cognitive-communication concepts."""
+    import scripts.slp_dashboard as slpd
+    return _json_safe(slpd.definitions())
 
 
 if __name__ == "__main__":
