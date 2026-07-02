@@ -277,7 +277,7 @@ function App() {
     { id: 'reports', label: 'My Reports' },
     { id: 'database-ops', label: 'Database Ops' },
     { id: 'campaigns', label: 'Campaigns' },
-    { id: 'ai-risk', label: 'AI Risk' },
+    { id: 'ai-risk', label: 'AI Risk Mgmt' },
     { id: 'chunking', label: 'Chunking' },
     { id: 'hallucination', label: 'Hallucination' },
     { id: 'devops', label: 'DevOps / CI-CD' },

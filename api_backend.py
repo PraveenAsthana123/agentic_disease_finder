@@ -4461,26 +4461,28 @@ async def campaigns_definitions():
     return _json_safe(cmp.campaigns_definitions())
 
 
-# ── AI Risk Dashboard ────────────────────────────────────────────
+# ── AI Risk Management — risk identification, assessment, mitigation ──
 
 @app.get("/api/ai-risk/overview")
 async def ai_risk_overview():
-    """AI risk overview — risk register, severity distribution, daily trend,
-    alert/guardrail/seizure counts from real clinical.db data."""
+    """AI Risk Management overview — risk posture, severity distribution,
+    risk categories, trend from real clinical.db."""
     import scripts.ai_risk_dashboard as ard
     return _json_safe(ard.risk_overview())
 
 
 @app.get("/api/ai-risk/breakdown")
 async def ai_risk_breakdown():
-    """Per-category risk breakdown — grouped risks with severity tallies."""
+    """AI Risk Management breakdown — per-patient risk profiles,
+    risk register, risk matrix, mitigation log."""
     import scripts.ai_risk_dashboard as ard
     return _json_safe(ard.risk_breakdown())
 
 
 @app.get("/api/ai-risk/definitions")
 async def ai_risk_definitions():
-    """AI risk metric definitions for tooltip overlays."""
+    """AI Risk Management definitions — risk concepts, metrics,
+    clinical relevance (ISO 14971, EU AI Act, FDA AI-ML), remediation."""
     import scripts.ai_risk_dashboard as ard
     return _json_safe(ard.risk_definitions())
 

@@ -205,7 +205,7 @@
             "cite"
           ],
           "status": "built",
-          "maps_to": "agentic_rag_dashboard.py + AgenticRAGDashboard.jsx + /api/agentic-rag/* (3 endpoints verified 200) — corpus inventory (1717 docs, 2774 chunks, 10 sources), retrieval coverage (47.5% full), query routing (8 types, 8 agents), KB health, agent pipeline traces, 5-tab navigation"
+          "maps_to": "agentic_rag_dashboard.py + AgenticRAGDashboard.jsx + /api/agentic-rag/* (3 endpoints verified 200) \u2014 corpus inventory (1717 docs, 2774 chunks, 10 sources), retrieval coverage (47.5% full), query routing (8 types, 8 agents), KB health, agent pipeline traces, 5-tab navigation"
         },
         {
           "name": "Knowledge Management",
@@ -237,7 +237,7 @@
             "grounded gen"
           ],
           "status": "built",
-          "maps_to": "grounding_dashboard.py + GroundingDashboard.jsx + /api/grounding/* (3 endpoints verified 200) — source verification rates (6 source types, 331 claims, 100% grounding rate), citation coverage (100% analyses linked), confidence distribution, per-patient grounding scores (40 patients), claim traces (50 AI outputs with source verification), expert verification (3 reviews), verification event log from transaction_log, 5-tab navigation (overview/patient grounding/claim traces/verification log/definitions)"
+          "maps_to": "grounding_dashboard.py + GroundingDashboard.jsx + /api/grounding/* (3 endpoints verified 200) \u2014 source verification rates (6 source types, 331 claims, 100% grounding rate), citation coverage (100% analyses linked), confidence distribution, per-patient grounding scores (40 patients), claim traces (50 AI outputs with source verification), expert verification (3 reviews), verification event log from transaction_log, 5-tab navigation (overview/patient grounding/claim traces/verification log/definitions)"
         },
         {
           "name": "Hallucination Detection",
@@ -292,7 +292,7 @@
             "retire"
           ],
           "status": "built",
-          "maps_to": "MCPGovernanceDashboard.jsx — agent inventory (60 agents, 20 module groups), tool certification (52% certified), MCP/A2A protocol health, pipeline governance (76% coverage), access control events from transaction_log, consensus voting from MCP report"
+          "maps_to": "MCPGovernanceDashboard.jsx \u2014 agent inventory (60 agents, 20 module groups), tool certification (52% certified), MCP/A2A protocol health, pipeline governance (76% coverage), access control events from transaction_log, consensus voting from MCP report"
         },
         {
           "name": "Human-in-the-Loop",
@@ -449,7 +449,7 @@
             "residual",
             "monitor"
           ],
-          "status": "partial",
+          "status": "built",
           "maps_to": "risk_management table"
         },
         {
@@ -495,7 +495,7 @@
             "RCA"
           ],
           "status": "built",
-          "maps_to": "AIObservabilityDashboard.jsx — transaction traces (654 txns, 25 components, 7 actors), system activity (daily volume + hourly heatmap + per-component/actor drilldowns), cost analytics (978 records, $1302 total, GPU/cloud/LLM breakdown, cost timeline + token usage), audit trail (21 analyses with confidence/signal quality, 46 patient transaction profiles, error actions, 371 conversation messages with role distribution + timeline), 5-tab navigation (overview/activity/cost/audit/definitions), definitions with 4 sections (observability concepts/metrics/clinical relevance IEC 62304+FDA AI-ML+EU AI Act Art.12+ISO 14971+HIPAA+ILAE/remediation strategies), 3 API endpoints (/api/ai-observability/overview|breakdown|definitions) all verified 200"
+          "maps_to": "AIObservabilityDashboard.jsx \u2014 transaction traces (654 txns, 25 components, 7 actors), system activity (daily volume + hourly heatmap + per-component/actor drilldowns), cost analytics (978 records, $1302 total, GPU/cloud/LLM breakdown, cost timeline + token usage), audit trail (21 analyses with confidence/signal quality, 46 patient transaction profiles, error actions, 371 conversation messages with role distribution + timeline), 5-tab navigation (overview/activity/cost/audit/definitions), definitions with 4 sections (observability concepts/metrics/clinical relevance IEC 62304+FDA AI-ML+EU AI Act Art.12+ISO 14971+HIPAA+ILAE/remediation strategies), 3 API endpoints (/api/ai-observability/overview|breakdown|definitions) all verified 200"
         },
         {
           "name": "AI Incident Management",
