@@ -138,6 +138,7 @@ import MCPGovernanceDashboard from './components/MCPGovernanceDashboard'
 import AgentCouncilDashboard from './components/AgentCouncilDashboard'
 import GroundingDashboard from './components/GroundingDashboard'
 import AIRedTeamDashboard from './components/AIRedTeamDashboard'
+import KnowledgeManagementDashboard from './components/KnowledgeManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -285,6 +286,7 @@ function App() {
     { id: 'content-freshness', label: 'Content Freshness' },
     { id: 'ai-compliance', label: 'AI Compliance' },
     { id: 'ai-red-team', label: 'AI Red Team' },
+    { id: 'knowledge-mgmt', label: 'Knowledge Management' },
     { id: 'response-quality', label: 'Response Quality' },
     { id: 'retrieval', label: 'Retrieval' },
     { id: 'retrieval-eval', label: 'Retrieval Evaluation' },
@@ -1517,6 +1519,8 @@ function App() {
         return <AIComplianceDashboard />
       case 'ai-red-team':
         return <AIRedTeamDashboard />
+      case 'knowledge-mgmt':
+        return <KnowledgeManagementDashboard />
       case 'response-quality':
         return <ResponseQualityDashboard />
       case 'retrieval':

@@ -7178,6 +7178,29 @@ async def ai_red_team_definitions():
     return _json_safe(art.red_team_definitions())
 
 
+# ── Knowledge Management Dashboard ───────────────────────────────
+@app.get("/api/knowledge-mgmt/overview")
+async def knowledge_mgmt_overview():
+    """Knowledge Management overview — lifecycle tracking: create, approve,
+    publish, expiry, archive from real clinical.db data."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_overview())
+
+
+@app.get("/api/knowledge-mgmt/breakdown")
+async def knowledge_mgmt_breakdown():
+    """Per-item knowledge register, patient profiles, lifecycle events."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_breakdown())
+
+
+@app.get("/api/knowledge-mgmt/definitions")
+async def knowledge_mgmt_definitions():
+    """Knowledge Management metric definitions."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

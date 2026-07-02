@@ -216,7 +216,8 @@
             "expiry",
             "archive"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/knowledge-mgmt/* + KnowledgeManagementDashboard.jsx"
         },
         {
           "name": "Vector DB",
