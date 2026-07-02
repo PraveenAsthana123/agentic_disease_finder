@@ -7517,6 +7517,31 @@ async def research_coordinator_definitions():
     return _json_safe(rcd.definitions())
 
 
+# ── Neurosurgeon / Epilepsy Surgery Dashboard ────────────────────────────
+@app.get("/api/neurosurgeon/overview")
+async def neurosurgeon_overview():
+    """Neurosurgeon overview — MRI lesion classification, surgical candidacy,
+    seizure burden, EEG analyses, laterality/location distribution."""
+    import scripts.neurosurgeon_dashboard as nsd
+    return _json_safe(nsd.overview())
+
+
+@app.get("/api/neurosurgeon/breakdown")
+async def neurosurgeon_breakdown():
+    """Neurosurgeon breakdown — MRI inventory, patient surgical profiles,
+    seizure log, EEG summary."""
+    import scripts.neurosurgeon_dashboard as nsd
+    return _json_safe(nsd.breakdown())
+
+
+@app.get("/api/neurosurgeon/definitions")
+async def neurosurgeon_definitions():
+    """Neurosurgeon definitions — surgical concepts, procedures, quality metrics,
+    compliance, remediation."""
+    import scripts.neurosurgeon_dashboard as nsd
+    return _json_safe(nsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

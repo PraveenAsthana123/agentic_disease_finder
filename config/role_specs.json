@@ -161,7 +161,7 @@
       "role": "Neurosurgeon / Epilepsy Surgery",
       "priority": "10/10",
       "fields": "220-250",
-      "status": "planned",
+      "status": "built",
       "sections": [
         "Surgical Referral",
         "DRE Assessment",
@@ -178,7 +178,9 @@
         "Outcomes",
         "Engel",
         "ILAE"
-      ]
+      ],
+      "dashboard": "NeurosurgeonDashboard",
+      "api_prefix": "/api/neurosurgeon"
     },
     {
       "role": "Speech-Language Pathologist (SLP)",

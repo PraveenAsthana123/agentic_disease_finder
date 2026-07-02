@@ -153,6 +153,7 @@ import TimeSeriesAIDashboard from './components/TimeSeriesAIDashboard'
 import MedicationInteractionDashboard from './components/MedicationInteractionDashboard'
 import PatientReportingDashboard from './components/PatientReportingDashboard'
 import ResearchCoordinatorDashboard from './components/ResearchCoordinatorDashboard'
+import NeurosurgeonDashboard from './components/NeurosurgeonDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -392,7 +393,8 @@ function App() {
     { id: 'medication-interaction', label: 'Medication Interaction Checker' },
     { id: 'conversational-ai', label: 'Conversational AI' },
     { id: 'patient-reporting', label: 'Patient Reporting' },
-    { id: 'research-coordinator', label: 'Research Coordinator' }
+    { id: 'research-coordinator', label: 'Research Coordinator' },
+    { id: 'neurosurgeon', label: 'Neurosurgeon / Epilepsy Surgery' }
   ]
 
   // API Calls
@@ -1735,6 +1737,8 @@ function App() {
         return <PatientReportingDashboard />
       case 'research-coordinator':
         return <ResearchCoordinatorDashboard />
+      case 'neurosurgeon':
+        return <NeurosurgeonDashboard />
       default:
         return renderClassificationTab()
     }
