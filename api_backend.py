@@ -7224,6 +7224,30 @@ async def fine_tuning_definitions():
     return _json_safe(ftd.fine_tuning_definitions())
 
 
+# ── Image Segmentation AI Dashboard ──────────────────────────────────
+@app.get("/api/image-segmentation/overview")
+async def image_segmentation_overview():
+    """Image Segmentation AI overview — EEG trace digitization from images,
+    segmentation tasks, quality scores, segment classes, patient coverage."""
+    import scripts.image_segmentation_dashboard as isd
+    return _json_safe(isd.overview())
+
+
+@app.get("/api/image-segmentation/breakdown")
+async def image_segmentation_breakdown():
+    """Image Segmentation AI breakdown — per-patient details, segment type
+    distribution, timeline, quality matrix, file inventory."""
+    import scripts.image_segmentation_dashboard as isd
+    return _json_safe(isd.breakdown())
+
+
+@app.get("/api/image-segmentation/definitions")
+async def image_segmentation_definitions():
+    """Image Segmentation AI definitions — concepts, compliance, remediation."""
+    import scripts.image_segmentation_dashboard as isd
+    return _json_safe(isd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

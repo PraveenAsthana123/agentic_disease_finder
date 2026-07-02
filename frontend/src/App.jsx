@@ -141,6 +141,7 @@ import AIRedTeamDashboard from './components/AIRedTeamDashboard'
 import KnowledgeManagementDashboard from './components/KnowledgeManagementDashboard'
 import FineTuningDashboard from './components/FineTuningDashboard'
 import VectorDBDashboard from './components/VectorDBDashboard'
+import ImageSegmentationDashboard from './components/ImageSegmentationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -368,7 +369,8 @@ function App() {
     { id: 'ai-lifecycle', label: 'AI Lifecycle Mgmt' },
     { id: 'mcp-governance', label: 'MCP Governance' },
     { id: 'agent-council', label: 'Agent Council' },
-    { id: 'vector-db', label: 'Vector DB' }
+    { id: 'vector-db', label: 'Vector DB' },
+    { id: 'image-segmentation', label: 'Image Segmentation' }
   ]
 
   // API Calls
@@ -1687,6 +1689,8 @@ function App() {
         return <AgentCouncilDashboard />
       case 'vector-db':
         return <VectorDBDashboard />
+      case 'image-segmentation':
+        return <ImageSegmentationDashboard />
       default:
         return renderClassificationTab()
     }

@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 37,
+    "built": 38,
     "scaffold": 0,
-    "planned": 6
+    "planned": 5
   },
   "rows": [
     {
@@ -482,8 +482,8 @@
     },
     {
       "type": "image-segmentation-ai",
-      "status": "planned",
-      "note": "EEG trace digitization from images \u2014 registry"
+      "status": "built",
+      "note": "Image Segmentation AI Dashboard \u2014 EEG trace digitization, ROI extraction, segmentation quality from real clinical.db (21 uploads, 40 MRI findings, 21 analyses, 203 pipeline events, 8 segment classes, 40 patients), 3 API endpoints verified 200"
     },
     {
       "type": "industrial-robotics-ai",
