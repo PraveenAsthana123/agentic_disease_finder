@@ -357,7 +357,8 @@
             "hallucination",
             "grounding drift"
           ],
-          "status": "planned"
+          "status": "built",
+          "maps_to": "/api/output-drift/* + OutputDriftDashboard.jsx"
         },
         {
           "name": "Prompt Drift",
