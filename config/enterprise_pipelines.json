@@ -566,8 +566,8 @@
             "monitor",
             "retire"
           ],
-          "status": "partial",
-          "maps_to": "agent registry status lifecycle"
+          "status": "built",
+          "maps_to": "ai_lifecycle_dashboard.py + AILifecycleDashboard.jsx + /api/ai-lifecycle/* (3 endpoints verified 200) — 112 AI assets tracked across ideation→dev→validate→deploy→monitor→retire, 60 agents + 45 pipelines + 7 models, lifecycle health radar, daily event timeline, validation + monitoring logs"
         }
       ]
     }

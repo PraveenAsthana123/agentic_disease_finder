@@ -7033,6 +7033,30 @@ async def embedding_definitions():
     return _json_safe(ebd.embedding_definitions())
 
 
+@app.get("/api/ai-lifecycle/overview")
+async def ai_lifecycle_overview():
+    """AI Lifecycle Management overview — asset inventory, stage distribution,
+    daily events, health radar across ideation→deploy→monitor→retire."""
+    import scripts.ai_lifecycle_dashboard as ald
+    return _json_safe(ald.lifecycle_overview())
+
+
+@app.get("/api/ai-lifecycle/breakdown")
+async def ai_lifecycle_breakdown():
+    """AI Lifecycle breakdown — agent/pipeline/model inventory, validation log,
+    monitoring events, training history, lifecycle transitions."""
+    import scripts.ai_lifecycle_dashboard as ald
+    return _json_safe(ald.lifecycle_breakdown())
+
+
+@app.get("/api/ai-lifecycle/definitions")
+async def ai_lifecycle_definitions():
+    """AI Lifecycle definitions — lifecycle concepts, metrics, clinical
+    relevance (IEC 62304, FDA AI-ML, EU AI Act, ISO 14971), remediation."""
+    import scripts.ai_lifecycle_dashboard as ald
+    return _json_safe(ald.lifecycle_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

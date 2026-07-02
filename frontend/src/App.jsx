@@ -133,6 +133,7 @@ import DataPrivacyDashboard from './components/DataPrivacyDashboard'
 import DataQualityDashboard from './components/DataQualityDashboard'
 import ContinuousLearningDashboard from './components/ContinuousLearningDashboard'
 import EmbeddingDashboard from './components/EmbeddingDashboard'
+import AILifecycleDashboard from './components/AILifecycleDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -352,7 +353,8 @@ function App() {
     { id: 'data-acquisition', label: 'Data Acquisition' },
     { id: 'data-privacy', label: 'Data Privacy' },
     { id: 'data-quality', label: 'Data Quality' },
-    { id: 'embedding', label: 'Embedding & Features' }
+    { id: 'embedding', label: 'Embedding & Features' },
+    { id: 'ai-lifecycle', label: 'AI Lifecycle Mgmt' }
   ]
 
   // API Calls
@@ -1655,6 +1657,8 @@ function App() {
         return <DataQualityDashboard />
       case 'embedding':
         return <EmbeddingDashboard />
+      case 'ai-lifecycle':
+        return <AILifecycleDashboard />
       default:
         return renderClassificationTab()
     }
