@@ -123,6 +123,7 @@ import PrescriptionsDashboard from './components/PrescriptionsDashboard'
 import ADLDashboard from './components/ADLDashboard'
 import ClinicalTasksDashboard from './components/ClinicalTasksDashboard'
 import PatientSeenDashboard from './components/PatientSeenDashboard'
+import PatientDashboardPanel from './components/PatientDashboardPanel'
 
 // API Base URL
 const API_URL = '/api'
@@ -332,7 +333,8 @@ function App() {
     { id: 'prescriptions', label: 'Prescriptions' },
     { id: 'adl', label: 'ADL' },
     { id: 'clinical-tasks', label: 'Clinical Tasks' },
-    { id: 'patients-seen', label: 'Patients Seen' }
+    { id: 'patients-seen', label: 'Patients Seen' },
+    { id: 'patient-dashboard', label: 'Patient Dashboard' }
   ]
 
   // API Calls
@@ -1615,6 +1617,8 @@ function App() {
         return <ClinicalTasksDashboard />
       case 'patients-seen':
         return <PatientSeenDashboard />
+      case 'patient-dashboard':
+        return <PatientDashboardPanel />
       default:
         return renderClassificationTab()
     }

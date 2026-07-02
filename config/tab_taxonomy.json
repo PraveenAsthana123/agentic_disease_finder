@@ -10,8 +10,8 @@
     {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "built", "maps_to": "/api/alerts"},
     {"id": "monitoring", "label": "Continuous Monitoring", "captures": "wearable/IoT vitals + seizure stream", "status": "partial", "maps_to": "Emotiv/IoT sim"},
     {"id": "feedback", "label": "Continuous Feedback", "captures": "patient + expert feedback loop", "status": "built", "maps_to": "feedback table"},
-    {"id": "reporting", "label": "Reports", "captures": "EEG report, assessment reports, summaries", "status": "partial", "maps_to": "/api/eeg-report"},
-    {"id": "dashboard", "label": "Dashboard", "captures": "patient KPIs + trends", "status": "partial", "maps_to": "patient master panel"},
+    {"id": "reporting", "label": "Reports", "captures": "EEG report, assessment reports, summaries", "status": "built", "maps_to": "/api/patient-reports/* + ReportsDashboard.jsx"},
+    {"id": "dashboard", "label": "Dashboard", "captures": "patient KPIs + trends", "status": "built", "maps_to": "/api/patient-dashboard/* + PatientDashboardPanel.jsx"},
     {"id": "comm_ai", "label": "Communication AI", "captures": "auto messages/digests to patient", "status": "built", "maps_to": "/api/communication-ai/* + CommunicationAIDashboard.jsx"},
     {"id": "conversational_ai", "label": "Conversational AI", "captures": "RAG chat over patient records", "status": "built", "maps_to": "/api/patient-chat (vector RAG)"},
     {"id": "generative_ai", "label": "Generative AI", "captures": "GenAI patient summary/report", "status": "partial", "maps_to": "Ollama generation"},
@@ -25,7 +25,7 @@
     {"id": "adl", "label": "ADL (Activities of Daily Living)", "metric": "ADL assessment scores", "status": "built", "maps_to": "/api/adl/* + ADLDashboard.jsx"},
     {"id": "assessments_done", "label": "Assessments Done", "metric": "instruments completed by this role", "status": "built"},
     {"id": "tasks", "label": "Tasks / Checklist", "metric": "role tasks done vs pending", "status": "built", "maps_to": "/api/clinical-tasks"},
-    {"id": "reporting", "label": "Reporting", "metric": "reports generated", "status": "partial"},
+    {"id": "reporting", "label": "Reporting", "metric": "reports generated", "status": "built", "maps_to": "/api/patient-reports/* + ReportsDashboard.jsx"},
     {"id": "dashboard", "label": "Dashboard", "metric": "role KPIs", "status": "built"}
   ],
   "ai_capability_tabs": [

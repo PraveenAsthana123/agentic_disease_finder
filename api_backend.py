@@ -6771,6 +6771,29 @@ async def patients_seen_definitions():
     return _json_safe(psd.patients_seen_definitions())
 
 
+# ── Patient Dashboard (patient KPIs + trends) ──────────────────────
+
+@app.get("/api/patient-dashboard/overview")
+async def patient_dashboard_overview():
+    """Cross-domain KPIs: patients, assessments, appointments, meds, seizures, analyses."""
+    import scripts.patient_dashboard as pdash
+    return _json_safe(pdash.patient_dashboard_overview())
+
+
+@app.get("/api/patient-dashboard/breakdown")
+async def patient_dashboard_breakdown():
+    """Breakdowns: per-disease, per-instrument, severity, trends, patient summary."""
+    import scripts.patient_dashboard as pdash
+    return _json_safe(pdash.patient_dashboard_breakdown())
+
+
+@app.get("/api/patient-dashboard/definitions")
+async def patient_dashboard_definitions():
+    """Patient dashboard metric definitions for tooltip overlays."""
+    import scripts.patient_dashboard as pdash
+    return _json_safe(pdash.patient_dashboard_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
