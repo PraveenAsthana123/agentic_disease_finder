@@ -121,6 +121,7 @@ import AgenticRAGDashboard from './components/AgenticRAGDashboard'
 import VisitsDashboard from './components/VisitsDashboard'
 import PrescriptionsDashboard from './components/PrescriptionsDashboard'
 import ADLDashboard from './components/ADLDashboard'
+import ClinicalTasksDashboard from './components/ClinicalTasksDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -328,7 +329,8 @@ function App() {
     { id: 'interpretable-ai', label: 'Interpretable AI' },
     { id: 'agentic-rag', label: 'Agentic RAG' },
     { id: 'prescriptions', label: 'Prescriptions' },
-    { id: 'adl', label: 'ADL' }
+    { id: 'adl', label: 'ADL' },
+    { id: 'clinical-tasks', label: 'Clinical Tasks' }
   ]
 
   // API Calls
@@ -1607,6 +1609,8 @@ function App() {
         return <PrescriptionsDashboard />
       case 'adl':
         return <ADLDashboard />
+      case 'clinical-tasks':
+        return <ClinicalTasksDashboard />
       default:
         return renderClassificationTab()
     }

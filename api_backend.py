@@ -6722,6 +6722,25 @@ async def adl_definitions():
     return _json_safe(adl.adl_definitions())
 
 
+@app.get("/api/clinical-tasks/overview")
+async def clinical_tasks_overview():
+    """Clinical task KPIs: operator requests, form assignments, workflow events."""
+    import scripts.clinical_tasks_dashboard as ctd
+    return _json_safe(ctd.clinical_tasks_overview())
+
+@app.get("/api/clinical-tasks/breakdown")
+async def clinical_tasks_breakdown():
+    """Per-category task breakdown, daily activity, component-action cross-tab."""
+    import scripts.clinical_tasks_dashboard as ctd
+    return _json_safe(ctd.clinical_tasks_breakdown())
+
+@app.get("/api/clinical-tasks/definitions")
+async def clinical_tasks_definitions():
+    """Clinical tasks metric definitions and clinical relevance."""
+    import scripts.clinical_tasks_dashboard as ctd
+    return _json_safe(ctd.clinical_tasks_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

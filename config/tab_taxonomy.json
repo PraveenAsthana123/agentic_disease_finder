@@ -7,7 +7,7 @@
     {"id": "medications", "label": "Medication Recommendations", "captures": "AED + psychotropic recommendations + history", "status": "partial", "maps_to": "medications table"},
     {"id": "exercise", "label": "Exercise / Rehab Recommendations", "captures": "OT/PT home-program + ADL plan", "status": "built", "maps_to": "/api/exercise"},
     {"id": "notifications", "label": "Notifications", "captures": "results-ready, appointment, follow-up", "status": "built", "maps_to": "/api/notifications"},
-    {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "partial", "maps_to": "assessment alerts + IoT sim"},
+    {"id": "alerts", "label": "Alerts / SOS", "captures": "seizure alert, suicidality escalation, temperature/SOS", "status": "built", "maps_to": "/api/alerts"},
     {"id": "monitoring", "label": "Continuous Monitoring", "captures": "wearable/IoT vitals + seizure stream", "status": "partial", "maps_to": "Emotiv/IoT sim"},
     {"id": "feedback", "label": "Continuous Feedback", "captures": "patient + expert feedback loop", "status": "built", "maps_to": "feedback table"},
     {"id": "reporting", "label": "Reports", "captures": "EEG report, assessment reports, summaries", "status": "partial", "maps_to": "/api/eeg-report"},
@@ -24,7 +24,7 @@
     {"id": "prescriptions", "label": "Medications Prescribed", "metric": "scripts written", "status": "built", "maps_to": "/api/prescriptions/* + PrescriptionsDashboard.jsx"},
     {"id": "adl", "label": "ADL (Activities of Daily Living)", "metric": "ADL assessment scores", "status": "built", "maps_to": "/api/adl/* + ADLDashboard.jsx"},
     {"id": "assessments_done", "label": "Assessments Done", "metric": "instruments completed by this role", "status": "built"},
-    {"id": "tasks", "label": "Tasks / Checklist", "metric": "role tasks done vs pending", "status": "partial"},
+    {"id": "tasks", "label": "Tasks / Checklist", "metric": "role tasks done vs pending", "status": "built", "maps_to": "/api/clinical-tasks"},
     {"id": "reporting", "label": "Reporting", "metric": "reports generated", "status": "partial"},
     {"id": "dashboard", "label": "Dashboard", "metric": "role KPIs", "status": "built"}
   ],
