@@ -132,6 +132,7 @@ import DataAcquisitionDashboard from './components/DataAcquisitionDashboard'
 import DataPrivacyDashboard from './components/DataPrivacyDashboard'
 import DataQualityDashboard from './components/DataQualityDashboard'
 import ContinuousLearningDashboard from './components/ContinuousLearningDashboard'
+import EmbeddingDashboard from './components/EmbeddingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -350,7 +351,8 @@ function App() {
     { id: 'ai-security', label: 'AI Security' },
     { id: 'data-acquisition', label: 'Data Acquisition' },
     { id: 'data-privacy', label: 'Data Privacy' },
-    { id: 'data-quality', label: 'Data Quality' }
+    { id: 'data-quality', label: 'Data Quality' },
+    { id: 'embedding', label: 'Embedding & Features' }
   ]
 
   // API Calls
@@ -1651,6 +1653,8 @@ function App() {
         return <DataPrivacyDashboard />
       case 'data-quality':
         return <DataQualityDashboard />
+      case 'embedding':
+        return <EmbeddingDashboard />
       default:
         return renderClassificationTab()
     }

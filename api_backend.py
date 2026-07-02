@@ -7004,6 +7004,35 @@ async def continuous_learning_definitions():
     return _json_safe(cld.definitions())
 
 
+# ── Embedding & Feature Engineering Dashboard ────────────────────────
+# Real data: analyses (21, feature extractions with confidence + signal quality),
+# uploads (21, input files), patients (40, coverage tracking),
+# transaction_log (368+ embedding-related events).
+
+@app.get("/api/embedding/overview")
+async def embedding_overview():
+    """Embedding overview — feature extraction KPIs, type distribution,
+    confidence histogram, daily trend, signal quality, disease coverage."""
+    import scripts.embedding_dashboard as ebd
+    return _json_safe(ebd.embedding_overview())
+
+
+@app.get("/api/embedding/breakdown")
+async def embedding_breakdown():
+    """Embedding breakdown — per-patient feature profiles, recent extractions,
+    dimension analysis, extraction event log, staleness analysis."""
+    import scripts.embedding_dashboard as ebd
+    return _json_safe(ebd.embedding_breakdown())
+
+
+@app.get("/api/embedding/definitions")
+async def embedding_definitions():
+    """Embedding definitions — feature concepts, quality metrics, clinical
+    relevance (ILAE, IEC 62304, FDA AI-ML, HIPAA, EU AI Act), remediation."""
+    import scripts.embedding_dashboard as ebd
+    return _json_safe(ebd.embedding_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

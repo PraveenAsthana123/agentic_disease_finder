@@ -16,7 +16,7 @@
             "classification"
           ],
           "status": "built",
-          "maps_to": "DataAcquisitionDashboard.jsx — uploads, analyses, eeg_upload transactions, format coverage, signal quality, patient ingestion profiles"
+          "maps_to": "DataAcquisitionDashboard.jsx \u2014 uploads, analyses, eeg_upload transactions, format coverage, signal quality, patient ingestion profiles"
         },
         {
           "name": "Data Ingestion",
@@ -38,7 +38,7 @@
             "consent enforce"
           ],
           "status": "built",
-          "maps_to": "DataPrivacyDashboard.jsx — PII exposure (141 fields, 27/40 patients), PHI access (646 events, 5 actors), de-ID coverage, conversation PHI scan, component sensitivity, 3 API endpoints verified 200"
+          "maps_to": "DataPrivacyDashboard.jsx \u2014 PII exposure (141 fields, 27/40 patients), PHI access (646 events, 5 actors), de-ID coverage, conversation PHI scan, component sensitivity, 3 API endpoints verified 200"
         },
         {
           "name": "Data Quality/Cleaning",
@@ -49,7 +49,7 @@
             "profiling"
           ],
           "status": "built",
-          "maps_to": "DataQualityDashboard.jsx — field completeness (5 fields, 70.5% overall), dedup detection (6 duplicate files), signal quality (76.2% Good), confidence profiling (mean 0.596, outliers), patient coverage (35%), daily trend, format distribution, per-patient profiles, 3 API endpoints (/api/data-quality/overview|breakdown|definitions) all verified 200"
+          "maps_to": "DataQualityDashboard.jsx \u2014 field completeness (5 fields, 70.5% overall), dedup detection (6 duplicate files), signal quality (76.2% Good), confidence profiling (mean 0.596, outliers), patient coverage (35%), daily trend, format distribution, per-patient profiles, 3 API endpoints (/api/data-quality/overview|breakdown|definitions) all verified 200"
         },
         {
           "name": "Synthetic Data",
@@ -117,7 +117,7 @@
             "refresh",
             "monitor"
           ],
-          "status": "planned"
+          "status": "built"
         }
       ]
     },
@@ -157,7 +157,7 @@
             "redeploy"
           ],
           "status": "built",
-          "maps_to": "continuous_learning_dashboard.py + ContinuousLearningDashboard.jsx + /api/continuous-learning/* (3 endpoints verified 200) — feedback collection (1 clinician rating), 8 training runs (100% success), drift monitoring (9 events, SEVERE verdict), consistency checks (8, PASS), fairness tests (7), HITL reviews (2: 1 override + 1 accept), expert reviews (3, 66.7% agreement), per-patient error analysis (21 analyses), confidence distribution, retrain trigger analysis, daily ML event timeline"
+          "maps_to": "continuous_learning_dashboard.py + ContinuousLearningDashboard.jsx + /api/continuous-learning/* (3 endpoints verified 200) \u2014 feedback collection (1 clinician rating), 8 training runs (100% success), drift monitoring (9 events, SEVERE verdict), consistency checks (8, PASS), fairness tests (7), HITL reviews (2: 1 override + 1 accept), expert reviews (3, 66.7% agreement), per-patient error analysis (21 analyses), confidence distribution, retrain trigger analysis, daily ML event timeline"
         }
       ]
     },
@@ -532,7 +532,7 @@
             "prod"
           ],
           "status": "built",
-          "maps_to": "ReleaseDashboard.jsx — model artefact inventory (7 models, 1247 KB), dataset uploads (21), inference runs (21, avg conf 0.596), expert reviews (3, 66.7% agreement), HITL overrides (2, 50% override rate), clinical decisions (1), training runs (8), sign-offs (1), daily change trend (10 days), actor distribution, component changes, hourly pattern, 3 API endpoints (/api/release/overview|breakdown|definitions) verified 200"
+          "maps_to": "ReleaseDashboard.jsx \u2014 model artefact inventory (7 models, 1247 KB), dataset uploads (21), inference runs (21, avg conf 0.596), expert reviews (3, 66.7% agreement), HITL overrides (2, 50% override rate), clinical decisions (1), training runs (8), sign-offs (1), daily change trend (10 days), actor distribution, component changes, hourly pattern, 3 API endpoints (/api/release/overview|breakdown|definitions) verified 200"
         },
         {
           "name": "Shadow AI Detection",
