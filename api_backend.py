@@ -6817,6 +6817,29 @@ async def continuous_monitoring_definitions():
     return _json_safe(cmd.definitions())
 
 
+# ── Generative AI Dashboard (GenAI bot + conversation analytics) ──
+
+@app.get("/api/generative-ai/overview")
+async def generative_ai_overview():
+    """GenAI KPIs: conversations, bot queries, safety score, response quality."""
+    import scripts.generative_ai_dashboard as gad
+    return _json_safe(gad.overview())
+
+
+@app.get("/api/generative-ai/breakdown")
+async def generative_ai_breakdown():
+    """Per-role breakdown, recent conversations, hourly patterns, AI transactions."""
+    import scripts.generative_ai_dashboard as gad
+    return _json_safe(gad.breakdown())
+
+
+@app.get("/api/generative-ai/definitions")
+async def generative_ai_definitions():
+    """Metric definitions for the Generative AI dashboard."""
+    import scripts.generative_ai_dashboard as gad
+    return _json_safe(gad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

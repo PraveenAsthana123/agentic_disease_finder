@@ -109,6 +109,7 @@ import AIObservabilityDashboard from './components/AIObservabilityDashboard'
 import ModelMonitoringDashboard from './components/ModelMonitoringDashboard'
 import ContinuousMonitoringDashboard from './components/ContinuousMonitoringDashboard'
 import AIControlTowerDashboard from './components/AIControlTowerDashboard'
+import GenerativeAIDashboard from './components/GenerativeAIDashboard'
 import HumanEvaluationDashboard from './components/HumanEvaluationDashboard'
 import ModelGovernanceDashboard from './components/ModelGovernanceDashboard'
 import MultimodalAIDashboard from './components/MultimodalAIDashboard'
@@ -322,6 +323,7 @@ function App() {
     { id: 'model-monitoring', label: 'Model Monitoring' },
     { id: 'continuous-monitoring', label: 'Continuous Monitoring' },
     { id: 'ai-control-tower', label: 'AI Control Tower' },
+    { id: 'generative-ai', label: 'Generative AI' },
     { id: 'human-evaluation', label: 'Human Evaluation' },
     { id: 'model-governance', label: 'Model Governance' },
     { id: 'multimodal-ai', label: 'Multimodal AI' },
@@ -1591,6 +1593,8 @@ function App() {
         return <ContinuousMonitoringDashboard />
       case 'ai-control-tower':
         return <AIControlTowerDashboard />
+      case 'generative-ai':
+        return <GenerativeAIDashboard />
       case 'human-evaluation':
         return <HumanEvaluationDashboard />
       case 'model-governance':
