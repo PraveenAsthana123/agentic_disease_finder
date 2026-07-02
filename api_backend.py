@@ -4140,6 +4140,32 @@ async def medication_side_effects(patient_id: str = None):
     return _json_safe(med.side_effect_profile(patient_id))
 
 
+# ── Patients Seen Dashboard ──────────────────────────────────────
+# Real data: appointments (120 rows, 6 providers, 4 depts, 34 patients) +
+# patients (40). Role operational view: patients seen per provider/dept,
+# completion rates, no-show analysis, daily trends.
+
+@app.get("/api/patients-seen/overview")
+async def patients_seen_overview():
+    """Patients Seen — summary KPIs: patients seen, completion rate, no-show rate."""
+    import scripts.patients_seen_module as ps
+    return _json_safe(ps.overview())
+
+
+@app.get("/api/patients-seen/breakdown")
+async def patients_seen_breakdown():
+    """Patients Seen — breakdown by provider, department, appt type, daily trend, per-patient."""
+    import scripts.patients_seen_module as ps
+    return _json_safe(ps.breakdown())
+
+
+@app.get("/api/patients-seen/definitions")
+async def patients_seen_definitions():
+    """Patients Seen — clinical definitions, quality metrics, standards, remediation."""
+    import scripts.patients_seen_module as ps
+    return _json_safe(ps.definitions())
+
+
 # ── Executive Scorecard ───────────────────────────────────────────
 
 @app.get("/api/executive-scorecard/overview")
@@ -6656,6 +6682,25 @@ async def visits_definitions():
     """Metric definitions for the True Visits dashboard."""
     import scripts.visits_dashboard as vsd
     return _json_safe(vsd.visits_definitions())
+
+
+@app.get("/api/prescriptions/overview")
+async def prescriptions_overview():
+    """Prescriptions overview KPIs from real medications table."""
+    import scripts.prescriptions_dashboard as prd
+    return _json_safe(prd.prescriptions_overview())
+
+@app.get("/api/prescriptions/breakdown")
+async def prescriptions_breakdown():
+    """Prescriptions per-patient and per-drug breakdown."""
+    import scripts.prescriptions_dashboard as prd
+    return _json_safe(prd.prescriptions_breakdown())
+
+@app.get("/api/prescriptions/definitions")
+async def prescriptions_definitions():
+    """Metric definitions for prescriptions dashboard."""
+    import scripts.prescriptions_dashboard as prd
+    return _json_safe(prd.prescriptions_definitions())
 
 
 if __name__ == "__main__":

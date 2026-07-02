@@ -119,6 +119,7 @@ import AnalyticsAIDashboard from './components/AnalyticsAIDashboard'
 import InterpretableAIDashboard from './components/InterpretableAIDashboard'
 import AgenticRAGDashboard from './components/AgenticRAGDashboard'
 import VisitsDashboard from './components/VisitsDashboard'
+import PrescriptionsDashboard from './components/PrescriptionsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -324,7 +325,8 @@ function App() {
     { id: 'foundation-models', label: 'Foundation Models' },
     { id: 'analytics-ai', label: 'Analytics AI' },
     { id: 'interpretable-ai', label: 'Interpretable AI' },
-    { id: 'agentic-rag', label: 'Agentic RAG' }
+    { id: 'agentic-rag', label: 'Agentic RAG' },
+    { id: 'prescriptions', label: 'Prescriptions' }
   ]
 
   // API Calls
@@ -1599,6 +1601,8 @@ function App() {
         return <AgenticRAGDashboard />
       case 'visits':
         return <VisitsDashboard />
+      case 'prescriptions':
+        return <PrescriptionsDashboard />
       default:
         return renderClassificationTab()
     }
