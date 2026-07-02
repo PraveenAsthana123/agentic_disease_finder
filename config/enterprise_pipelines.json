@@ -37,8 +37,8 @@
             "de-identify",
             "consent enforce"
           ],
-          "status": "partial",
-          "maps_to": "PII scanner (mask/tokenize planned)"
+          "status": "built",
+          "maps_to": "DataPrivacyDashboard.jsx — PII exposure (141 fields, 27/40 patients), PHI access (646 events, 5 actors), de-ID coverage, conversation PHI scan, component sensitivity, 3 API endpoints verified 200"
         },
         {
           "name": "Data Quality/Cleaning",

@@ -6923,6 +6923,35 @@ async def data_acquisition_definitions():
     return _json_safe(dad.data_acquisition_definitions())
 
 
+# ── Data Privacy Dashboard ──────────────────────────────────────────
+# Real data: patients (40, PII fields), transaction_log (645+ PHI access events),
+# conversation_log (360 messages, PHI leakage scan), uploads (21 files),
+# actor-patient access matrix, component sensitivity classification.
+
+@app.get("/api/data-privacy/overview")
+async def data_privacy_overview():
+    """Data privacy overview — PII exposure KPIs, PHI access trends,
+    field distribution, component access, action breakdown."""
+    import scripts.data_privacy_dashboard as dpd
+    return _json_safe(dpd.data_privacy_overview())
+
+
+@app.get("/api/data-privacy/breakdown")
+async def data_privacy_breakdown():
+    """Data privacy breakdown — per-patient profiles, conversation PHI scan,
+    actor matrix, component sensitivity, recent PHI log, upload privacy."""
+    import scripts.data_privacy_dashboard as dpd
+    return _json_safe(dpd.data_privacy_breakdown())
+
+
+@app.get("/api/data-privacy/definitions")
+async def data_privacy_definitions():
+    """Data privacy definitions — privacy concepts, quality metrics,
+    clinical relevance (HIPAA, GDPR, FDA, EU AI Act, IEC 62304), remediation."""
+    import scripts.data_privacy_dashboard as dpd
+    return _json_safe(dpd.data_privacy_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
