@@ -204,8 +204,8 @@
             "generate",
             "cite"
           ],
-          "status": "partial",
-          "maps_to": "patient-chat retrieval + Ollama (chunk/embed/rerank planned)"
+          "status": "built",
+          "maps_to": "agentic_rag_dashboard.py + AgenticRAGDashboard.jsx + /api/agentic-rag/* (3 endpoints verified 200) — corpus inventory (1717 docs, 2774 chunks, 10 sources), retrieval coverage (47.5% full), query routing (8 types, 8 agents), KB health, agent pipeline traces, 5-tab navigation"
         },
         {
           "name": "Knowledge Management",
@@ -236,8 +236,8 @@
             "source verify",
             "grounded gen"
           ],
-          "status": "partial",
-          "maps_to": "RAG citation + SHAP concordance"
+          "status": "built",
+          "maps_to": "grounding_dashboard.py + GroundingDashboard.jsx + /api/grounding/* (3 endpoints verified 200) — source verification rates (6 source types, 331 claims, 100% grounding rate), citation coverage (100% analyses linked), confidence distribution, per-patient grounding scores (40 patients), claim traces (50 AI outputs with source verification), expert verification (3 reviews), verification event log from transaction_log, 5-tab navigation (overview/patient grounding/claim traces/verification log/definitions)"
         },
         {
           "name": "Hallucination Detection",
@@ -248,8 +248,8 @@
             "score",
             "escalate"
           ],
-          "status": "partial",
-          "maps_to": "guardrails + grounding (full detector planned)"
+          "status": "built",
+          "maps_to": "hallucination_dashboard.py + HallucinationDashboard.jsx + /api/hallucination/* (3 endpoints verified 200)"
         }
       ]
     },

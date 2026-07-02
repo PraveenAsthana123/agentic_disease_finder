@@ -136,6 +136,7 @@ import EmbeddingDashboard from './components/EmbeddingDashboard'
 import AILifecycleDashboard from './components/AILifecycleDashboard'
 import MCPGovernanceDashboard from './components/MCPGovernanceDashboard'
 import AgentCouncilDashboard from './components/AgentCouncilDashboard'
+import GroundingDashboard from './components/GroundingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -345,6 +346,7 @@ function App() {
     { id: 'analytics-ai', label: 'Analytics AI' },
     { id: 'interpretable-ai', label: 'Interpretable AI' },
     { id: 'agentic-rag', label: 'Agentic RAG' },
+    { id: 'grounding', label: 'Grounding' },
     { id: 'prescriptions', label: 'Prescriptions' },
     { id: 'adl', label: 'ADL' },
     { id: 'clinical-tasks', label: 'Clinical Tasks' },
@@ -1637,6 +1639,8 @@ function App() {
         return <InterpretableAIDashboard />
       case 'agentic-rag':
         return <AgenticRAGDashboard />
+      case 'grounding':
+        return <GroundingDashboard />
       case 'visits':
         return <VisitsDashboard />
       case 'prescriptions':

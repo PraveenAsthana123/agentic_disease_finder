@@ -7128,6 +7128,31 @@ async def agent_council_definitions():
     return _json_safe(cad.council_definitions())
 
 
+# ── Grounding ─────────────────────────────────────────────
+@app.get("/api/grounding/overview")
+async def grounding_overview():
+    """Grounding overview — source verification rates, citation coverage,
+    confidence distribution, grounding KPIs."""
+    import scripts.grounding_dashboard as grd
+    return _json_safe(grd.grounding_overview())
+
+
+@app.get("/api/grounding/breakdown")
+async def grounding_breakdown():
+    """Grounding breakdown — per-patient grounding scores, claim traces,
+    source verification log, expert verification detail."""
+    import scripts.grounding_dashboard as grd
+    return _json_safe(grd.grounding_breakdown())
+
+
+@app.get("/api/grounding/definitions")
+async def grounding_definitions():
+    """Grounding definitions — grounding concepts, metrics,
+    clinical relevance, remediation strategies."""
+    import scripts.grounding_dashboard as grd
+    return _json_safe(grd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
