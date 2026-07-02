@@ -144,6 +144,7 @@ import VectorDBDashboard from './components/VectorDBDashboard'
 import ImageSegmentationDashboard from './components/ImageSegmentationDashboard'
 import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
 import SpeechAIDashboard from './components/SpeechAIDashboard'
+import VoiceAIDashboard from './components/VoiceAIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -374,7 +375,8 @@ function App() {
     { id: 'vector-db', label: 'Vector DB' },
     { id: 'image-segmentation', label: 'Image Segmentation' },
     { id: 'object-detection', label: 'Object Detection' },
-    { id: 'speech-ai', label: 'Speech AI' }
+    { id: 'speech-ai', label: 'Speech AI' },
+    { id: 'voice-ai', label: 'Voice AI' }
   ]
 
   // API Calls
@@ -1699,6 +1701,8 @@ function App() {
         return <ObjectDetectionDashboard />
       case 'speech-ai':
         return <SpeechAIDashboard />
+      case 'voice-ai':
+        return <VoiceAIDashboard />
       default:
         return renderClassificationTab()
     }

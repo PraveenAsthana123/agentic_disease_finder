@@ -7272,6 +7272,56 @@ async def object_detection_definitions():
     return _json_safe(odd.definitions())
 
 
+# ── Speech AI Dashboard ────────────────────────────────────────────────
+@app.get("/api/speech-ai/overview")
+async def speech_ai_overview():
+    """Speech AI overview — transcription counts, interaction types,
+    transcript lengths, daily activity, pipeline health."""
+    import scripts.speech_ai_dashboard as sad
+    return _json_safe(sad.overview())
+
+
+@app.get("/api/speech-ai/breakdown")
+async def speech_ai_breakdown():
+    """Speech AI breakdown — transcription inventory, audio files,
+    patient profiles, pipeline events, role stats."""
+    import scripts.speech_ai_dashboard as sad
+    return _json_safe(sad.breakdown())
+
+
+@app.get("/api/speech-ai/definitions")
+async def speech_ai_definitions():
+    """Speech AI definitions — ASR, NLP, voice biomarkers, compliance."""
+    import scripts.speech_ai_dashboard as sad
+    return _json_safe(sad.definitions())
+
+
+# ── Voice AI Dashboard ─────────────────────────────────────────────────
+@app.get("/api/voice-ai/overview")
+async def voice_ai_overview():
+    """Voice AI overview — vocal biomarker extraction, prosody analysis,
+    articulation/fluency/swallowing assessments (WAB, VERBAL_FLUENCY, MASA,
+    BNT, DIGIT_SPAN), severity distribution, per-instrument scores."""
+    import scripts.voice_ai_dashboard as vad
+    return _json_safe(vad.overview())
+
+
+@app.get("/api/voice-ai/breakdown")
+async def voice_ai_breakdown():
+    """Voice AI breakdown — assessment inventory, per-patient vocal profiles,
+    instrument statistics, clinical alerts, pipeline events."""
+    import scripts.voice_ai_dashboard as vad
+    return _json_safe(vad.breakdown())
+
+
+@app.get("/api/voice-ai/definitions")
+async def voice_ai_definitions():
+    """Voice AI definitions — voice biomarker concepts, assessment instruments,
+    quality metrics, compliance, remediation."""
+    import scripts.voice_ai_dashboard as vad
+    return _json_safe(vad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

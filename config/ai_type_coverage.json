@@ -992,8 +992,8 @@
     },
     {
       "type": "voice-ai",
-      "status": "planned",
-      "note": "Audio markers \u2014 registry"
+      "status": "built",
+      "note": "Voice AI dashboard — vocal biomarker analysis, articulation/fluency/swallowing assessments (WAB/VERBAL_FLUENCY/MASA/BNT/DIGIT_SPAN from real clinical.db, 116 voice-relevant assessments, 5 instruments, severity distribution, per-instrument scores, per-patient profiles, clinical alerts, pipeline events, 8 KPI cards, 6-tab navigation (overview/assessment inventory/patient profiles/clinical alerts/pipeline log/definitions), definitions with 8 voice concepts + 4 quality metrics + 5 assessment instruments + 5 compliance refs + 4 remediation strategies; 3 endpoints verified 200, VoiceAIDashboard.jsx + nav wiring"
     },
     {
       "type": "vr-ai",
