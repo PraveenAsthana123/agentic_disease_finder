@@ -6980,6 +6980,30 @@ async def data_quality_definitions():
     return _json_safe(dqd.data_quality_definitions())
 
 
+@app.get("/api/continuous-learning/overview")
+async def continuous_learning_overview():
+    """Continuous Learning overview — feedback volume, training runs, drift
+    events, retrain triggers, HITL overrides, confidence distribution."""
+    import scripts.continuous_learning_dashboard as cld
+    return _json_safe(cld.cl_overview())
+
+
+@app.get("/api/continuous-learning/breakdown")
+async def continuous_learning_breakdown():
+    """Continuous Learning breakdown — feedback log, HITL review detail,
+    expert concordance, per-patient error analysis, training run detail."""
+    import scripts.continuous_learning_dashboard as cld
+    return _json_safe(cld.cl_breakdown())
+
+
+@app.get("/api/continuous-learning/definitions")
+async def continuous_learning_definitions():
+    """Continuous Learning definitions — concepts, quality metrics, clinical
+    relevance (FDA AI-ML, ILAE, IEC 62304, EU AI Act), remediation strategies."""
+    import scripts.continuous_learning_dashboard as cld
+    return _json_safe(cld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

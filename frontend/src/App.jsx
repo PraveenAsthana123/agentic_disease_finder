@@ -131,6 +131,7 @@ import AISecurityDashboard from './components/AISecurityDashboard'
 import DataAcquisitionDashboard from './components/DataAcquisitionDashboard'
 import DataPrivacyDashboard from './components/DataPrivacyDashboard'
 import DataQualityDashboard from './components/DataQualityDashboard'
+import ContinuousLearningDashboard from './components/ContinuousLearningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -331,6 +332,7 @@ function App() {
     { id: 'generative-ai', label: 'Generative AI' },
     { id: 'human-evaluation', label: 'Human Evaluation' },
     { id: 'model-governance', label: 'Model Governance' },
+    { id: 'continuous-learning', label: 'Continuous Learning' },
     { id: 'multimodal-ai', label: 'Multimodal AI' },
     { id: 'drift-detection', label: 'Drift Detection' },
     { id: 'explainable-ai', label: 'Explainable AI' },
@@ -1609,6 +1611,8 @@ function App() {
         return <HumanEvaluationDashboard />
       case 'model-governance':
         return <ModelGovernanceDashboard />
+      case 'continuous-learning':
+        return <ContinuousLearningDashboard />
       case 'multimodal-ai':
         return <MultimodalAIDashboard />
       case 'drift-detection':

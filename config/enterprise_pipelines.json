@@ -156,8 +156,8 @@
             "retrain trigger",
             "redeploy"
           ],
-          "status": "partial",
-          "maps_to": "feedback table (retrain loop planned)"
+          "status": "built",
+          "maps_to": "continuous_learning_dashboard.py + ContinuousLearningDashboard.jsx + /api/continuous-learning/* (3 endpoints verified 200) — feedback collection (1 clinician rating), 8 training runs (100% success), drift monitoring (9 events, SEVERE verdict), consistency checks (8, PASS), fairness tests (7), HITL reviews (2: 1 override + 1 accept), expert reviews (3, 66.7% agreement), per-patient error analysis (21 analyses), confidence distribution, retrain trigger analysis, daily ML event timeline"
         }
       ]
     },
