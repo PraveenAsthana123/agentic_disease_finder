@@ -146,6 +146,7 @@ import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
 import SpeechAIDashboard from './components/SpeechAIDashboard'
 import VoiceAIDashboard from './components/VoiceAIDashboard'
 import TextToAudioDashboard from './components/TextToAudioDashboard'
+import TextToVideoDashboard from './components/TextToVideoDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -378,7 +379,8 @@ function App() {
     { id: 'object-detection', label: 'Object Detection' },
     { id: 'speech-ai', label: 'Speech AI' },
     { id: 'voice-ai', label: 'Voice AI' },
-    { id: 'text-to-audio', label: 'Text-to-Audio AI' }
+    { id: 'text-to-audio', label: 'Text-to-Audio AI' },
+    { id: 'text-to-video', label: 'Text-to-Video AI' }
   ]
 
   // API Calls
@@ -1707,6 +1709,8 @@ function App() {
         return <VoiceAIDashboard />
       case 'text-to-audio':
         return <TextToAudioDashboard />
+      case 'text-to-video':
+        return <TextToVideoDashboard />
       default:
         return renderClassificationTab()
     }

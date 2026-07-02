@@ -5,9 +5,9 @@
   "total": 201,
   "counts": {
     "not-pulled": 158,
-    "built": 40,
+    "built": 41,
     "scaffold": 0,
-    "planned": 3
+    "planned": 2
   },
   "rows": [
     {
@@ -932,8 +932,8 @@
     },
     {
       "type": "text-to-video-ai",
-      "status": "planned",
-      "note": "Video conversion \u2014 registry"
+      "status": "built",
+      "note": "Text-to-Video AI dashboard \u2014 EEG timelapse, seizure event clips, MRI 3D flythrough rendering from real clinical.db (21 uploads, 25 seizure events, 40 MRI findings, 42 patients); 3 endpoints verified 200, TextToVideoDashboard.jsx + nav wiring"
     },
     {
       "type": "theory-of-mind-ai",

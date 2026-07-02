@@ -7347,6 +7347,31 @@ async def text_to_audio_definitions():
     return _json_safe(ttad.definitions())
 
 
+# ── Text-to-Video AI Dashboard ────────────────────────────────────────
+@app.get("/api/text-to-video/overview")
+async def text_to_video_overview():
+    """Text-to-Video AI overview — video synthesis pipeline monitoring,
+    EEG timelapse, seizure event clips, MRI flythrough rendering."""
+    import scripts.text_to_video_dashboard as ttvd
+    return _json_safe(ttvd.overview())
+
+
+@app.get("/api/text-to-video/breakdown")
+async def text_to_video_breakdown():
+    """Text-to-Video AI breakdown — source inventory, seizure clips,
+    MRI renders, per-patient video profiles, pipeline events."""
+    import scripts.text_to_video_dashboard as ttvd
+    return _json_safe(ttvd.breakdown())
+
+
+@app.get("/api/text-to-video/definitions")
+async def text_to_video_definitions():
+    """Text-to-Video AI definitions — video synthesis concepts, quality metrics,
+    video categories, compliance, remediation."""
+    import scripts.text_to_video_dashboard as ttvd
+    return _json_safe(ttvd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
