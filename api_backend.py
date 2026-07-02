@@ -7470,6 +7470,31 @@ async def conversational_ai_definitions():
     return _json_safe(cad.definitions())
 
 
+# ── Patient Reporting Dashboard ──────────────────────────────────────
+@app.get("/api/patient-reporting/overview")
+async def patient_reporting_overview():
+    """Patient Reporting overview — report generation metrics, coverage,
+    assessment summaries, appointment tracking, seizure diary stats."""
+    import scripts.patient_reporting_dashboard as prd
+    return _json_safe(prd.overview())
+
+
+@app.get("/api/patient-reporting/breakdown")
+async def patient_reporting_breakdown():
+    """Patient Reporting breakdown — per-patient report inventory,
+    appointment schedule, assessment list, seizure log, pipeline events."""
+    import scripts.patient_reporting_dashboard as prd
+    return _json_safe(prd.breakdown())
+
+
+@app.get("/api/patient-reporting/definitions")
+async def patient_reporting_definitions():
+    """Patient Reporting definitions — report types, quality metrics,
+    compliance, remediation."""
+    import scripts.patient_reporting_dashboard as prd
+    return _json_safe(prd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

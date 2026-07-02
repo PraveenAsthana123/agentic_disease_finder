@@ -151,6 +151,7 @@ import ConversationalAIDashboard from './components/ConversationalAIDashboard'
 import CognitiveProfileDashboard from './components/CognitiveProfileDashboard'
 import TimeSeriesAIDashboard from './components/TimeSeriesAIDashboard'
 import MedicationInteractionDashboard from './components/MedicationInteractionDashboard'
+import PatientReportingDashboard from './components/PatientReportingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -388,7 +389,8 @@ function App() {
     { id: 'cognitive-profile', label: 'Cognitive Profile Summary' },
     { id: 'time-series-ai', label: 'Time-Series AI' },
     { id: 'medication-interaction', label: 'Medication Interaction Checker' },
-    { id: 'conversational-ai', label: 'Conversational AI' }
+    { id: 'conversational-ai', label: 'Conversational AI' },
+    { id: 'patient-reporting', label: 'Patient Reporting' }
   ]
 
   // API Calls
@@ -1727,6 +1729,8 @@ function App() {
         return <MedicationInteractionDashboard />
       case 'conversational-ai':
         return <ConversationalAIDashboard />
+      case 'patient-reporting':
+        return <PatientReportingDashboard />
       default:
         return renderClassificationTab()
     }

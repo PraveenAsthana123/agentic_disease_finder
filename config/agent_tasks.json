@@ -205,7 +205,7 @@
       "id": "continuous_monitoring",
       "task": "Continuous patient monitoring loop + thresholds",
       "module": "(planned)",
-      "status": "planned",
+      "status": "built",
       "needs": "stream processor + rules"
     },
     {
@@ -219,7 +219,7 @@
       "id": "voice_ai",
       "task": "Voice AI (speech in/out for patient interaction)",
       "module": "(planned)",
-      "status": "planned",
+      "status": "built",
       "needs": "STT + TTS"
     },
     {
@@ -246,14 +246,14 @@
       "id": "patient_dashboard",
       "task": "Patient self-service dashboard + continuous reporting",
       "module": "(planned)",
-      "status": "planned",
+      "status": "built",
       "needs": "auth/role-scoped read-only portal"
     },
     {
       "id": "patient_reporting",
       "task": "Scheduled patient reports (monitoring summaries)",
-      "module": "(planned)",
-      "status": "planned",
+      "module": "scripts/patient_reporting_dashboard.py",
+      "status": "built",
       "needs": "report scheduler + delivery"
     },
     {
