@@ -22,7 +22,7 @@
     {"id": "appointments", "label": "Appointment Booking", "metric": "booked vs completed", "status": "built", "maps_to": "/api/appointments"},
     {"id": "visits", "label": "True Visits", "metric": "actual visits logged", "status": "built", "maps_to": "/api/visits/* + VisitsDashboard.jsx"},
     {"id": "prescriptions", "label": "Medications Prescribed", "metric": "scripts written", "status": "built", "maps_to": "/api/prescriptions/* + PrescriptionsDashboard.jsx"},
-    {"id": "adl", "label": "ADL (Activities of Daily Living)", "metric": "ADL assessment scores", "status": "partial"},
+    {"id": "adl", "label": "ADL (Activities of Daily Living)", "metric": "ADL assessment scores", "status": "built", "maps_to": "/api/adl/* + ADLDashboard.jsx"},
     {"id": "assessments_done", "label": "Assessments Done", "metric": "instruments completed by this role", "status": "built"},
     {"id": "tasks", "label": "Tasks / Checklist", "metric": "role tasks done vs pending", "status": "partial"},
     {"id": "reporting", "label": "Reporting", "metric": "reports generated", "status": "partial"},

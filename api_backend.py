@@ -6703,6 +6703,25 @@ async def prescriptions_definitions():
     return _json_safe(prd.prescriptions_definitions())
 
 
+@app.get("/api/adl/overview")
+async def adl_overview():
+    """ADL functional assessment KPIs from real assessments table (BARTHEL/QOLIE31/EPWORTH)."""
+    import scripts.adl_dashboard as adl
+    return _json_safe(adl.adl_overview())
+
+@app.get("/api/adl/breakdown")
+async def adl_breakdown():
+    """Per-patient ADL profiles and score distributions."""
+    import scripts.adl_dashboard as adl
+    return _json_safe(adl.adl_breakdown())
+
+@app.get("/api/adl/definitions")
+async def adl_definitions():
+    """ADL metric definitions and clinical relevance."""
+    import scripts.adl_dashboard as adl
+    return _json_safe(adl.adl_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
