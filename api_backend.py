@@ -7420,6 +7420,56 @@ async def time_series_ai_definitions():
     return _json_safe(tsad.definitions())
 
 
+# ── Medication Interaction Checker Dashboard ──────────────────────────────
+@app.get("/api/medication-interaction/overview")
+async def medication_interaction_overview():
+    """Medication Interaction Checker — AED polytherapy risk, drug-drug
+    interaction screening, psychiatric comorbidity cross-reference."""
+    import scripts.medication_interaction_dashboard as mid
+    return _json_safe(mid.overview())
+
+
+@app.get("/api/medication-interaction/breakdown")
+async def medication_interaction_breakdown():
+    """Medication Interaction breakdown — medication inventory, interaction
+    results, patient profiles, ADR flags, psychiatric alerts."""
+    import scripts.medication_interaction_dashboard as mid
+    return _json_safe(mid.breakdown())
+
+
+@app.get("/api/medication-interaction/definitions")
+async def medication_interaction_definitions():
+    """Medication Interaction definitions — AED concepts, DDI mechanisms,
+    drug classes, compliance, remediation."""
+    import scripts.medication_interaction_dashboard as mid
+    return _json_safe(mid.definitions())
+
+
+# ── Conversational AI Dashboard ───────────────────────────────────────
+@app.get("/api/conversational-ai/overview")
+async def conversational_ai_overview():
+    """Conversational AI overview — turn analytics, role distribution,
+    daily activity, response length distribution, hourly patterns."""
+    import scripts.conversational_ai_dashboard as cad
+    return _json_safe(cad.overview())
+
+
+@app.get("/api/conversational-ai/breakdown")
+async def conversational_ai_breakdown():
+    """Conversational AI breakdown — conversation log, daily summaries,
+    role stats, topic analysis, pipeline events."""
+    import scripts.conversational_ai_dashboard as cad
+    return _json_safe(cad.breakdown())
+
+
+@app.get("/api/conversational-ai/definitions")
+async def conversational_ai_definitions():
+    """Conversational AI definitions — NLU concepts, quality metrics,
+    interaction types, compliance, remediation."""
+    import scripts.conversational_ai_dashboard as cad
+    return _json_safe(cad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

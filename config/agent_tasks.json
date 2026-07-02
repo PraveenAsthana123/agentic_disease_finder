@@ -226,8 +226,9 @@
       "id": "conversational_ai",
       "task": "Conversational AI assistant (patient/clinician Q&A)",
       "module": "(planned)",
-      "status": "planned",
-      "needs": "LLM + RAG over clinical corpus"
+      "status": "built",
+      "needs": "LLM + RAG over clinical corpus",
+      "note": "Conversational AI dashboard \u2014 turn analytics, role distribution, daily activity, topic analysis, 407 real conversations from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "decision_ai",
