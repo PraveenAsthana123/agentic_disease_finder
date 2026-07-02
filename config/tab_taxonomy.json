@@ -40,7 +40,7 @@
     {"id": "interpretable_ai", "label": "Interpretable AI", "status": "built", "maps_to": "surrogate tree"},
     {"id": "explainable_ai", "label": "Explainable AI", "status": "built", "maps_to": "SHAP"},
     {"id": "fairness_ai", "label": "Fairness AI", "status": "built", "maps_to": "disparate impact / EO"},
-    {"id": "reporting_ai", "label": "Reporting AI", "status": "partial", "maps_to": "report assembler"},
+    {"id": "reporting_ai", "label": "Reporting AI", "status": "built", "maps_to": "report assembler"},
     {"id": "transactional_ai", "label": "Transactional AI", "status": "built", "maps_to": "transaction_log"}
   ],
   "as_is_to_be": {
