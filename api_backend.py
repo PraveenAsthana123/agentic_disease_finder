@@ -7903,6 +7903,34 @@ async def eeg_mri_concordance_definitions():
     return _json_safe(emc.definitions())
 
 
+# ── Neurologist Dashboard ─────────────────────────────────────────────
+@app.get("/api/neurologist/overview")
+async def neurologist_overview():
+    """Neurologist overview — EEG reads pending, seizure-positive rate,
+    avg model confidence, HITL overrides, mean turnaround time, prediction
+    distribution, confidence histogram, turnaround histogram, weekly volume."""
+    import scripts.neurologist_dashboard as nrd
+    return _json_safe(nrd.overview())
+
+
+@app.get("/api/neurologist/breakdown")
+async def neurologist_breakdown():
+    """Neurologist breakdown — per-patient EEG analysis detail, HITL reviews,
+    turnaround hours, medications, seizure diary, response grade, seizure
+    classification summary, medication summary."""
+    import scripts.neurologist_dashboard as nrd
+    return _json_safe(nrd.breakdown())
+
+
+@app.get("/api/neurologist/definitions")
+async def neurologist_definitions():
+    """Neurologist definitions — ACNS/IFCN EEG standards, ILAE 2017 seizure
+    classification, turnaround benchmarks, HITL override categories,
+    medication response grading, signal quality grades."""
+    import scripts.neurologist_dashboard as nrd
+    return _json_safe(nrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

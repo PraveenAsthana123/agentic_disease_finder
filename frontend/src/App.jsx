@@ -162,6 +162,7 @@ import TimeSeriesAIDashboard from './components/TimeSeriesAIDashboard'
 import MedicationInteractionDashboard from './components/MedicationInteractionDashboard'
 import PatientReportingDashboard from './components/PatientReportingDashboard'
 import ResearchCoordinatorDashboard from './components/ResearchCoordinatorDashboard'
+import NeurologistDashboard from './components/NeurologistDashboard'
 import NeurosurgeonDashboard from './components/NeurosurgeonDashboard'
 import CNNResNetDashboard from './components/CNNResNetDashboard'
 import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
@@ -418,6 +419,7 @@ function App() {
     { id: 'conversational-ai', label: 'Conversational AI' },
     { id: 'patient-reporting', label: 'Patient Reporting' },
     { id: 'research-coordinator', label: 'Research Coordinator' },
+    { id: 'neurologist', label: 'Neurologist' },
     { id: 'neurosurgeon', label: 'Neurosurgeon / Epilepsy Surgery' },
     { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' },
     { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
@@ -1785,6 +1787,8 @@ function App() {
         return <PatientReportingDashboard />
       case 'research-coordinator':
         return <ResearchCoordinatorDashboard />
+      case 'neurologist':
+        return <NeurologistDashboard />
       case 'neurosurgeon':
         return <NeurosurgeonDashboard />
       case 'cnn-resnet':
