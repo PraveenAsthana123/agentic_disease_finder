@@ -8206,6 +8206,30 @@ async def wearables_digital_twin_definitions():
     return _json_safe(wdt.definitions())
 
 
+@app.get("/api/self-service/overview")
+async def self_service_overview():
+    """Self-Service Portal overview — appointments, messaging, telehealth,
+    documents, education modules, emergency SOS, daily plan metrics."""
+    import scripts.self_service_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/self-service/breakdown")
+async def self_service_breakdown():
+    """Self-Service Portal breakdown — per-patient portal usage, recent
+    appointments, recent messages."""
+    import scripts.self_service_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/self-service/definitions")
+async def self_service_definitions():
+    """Self-Service Portal definitions — patient portal, secure messaging,
+    telehealth, document center, education, emergency SOS, daily plan."""
+    import scripts.self_service_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

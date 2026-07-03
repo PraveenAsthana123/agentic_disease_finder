@@ -120,7 +120,7 @@
       "n": 7,
       "section": "Self-Service / Communication / Education / Emergency",
       "fields": "175-200",
-      "status": "partial",
+      "status": "built",
       "items": [
         "Appointments",
         "Secure messaging",
@@ -133,7 +133,7 @@
         "Daily plan",
         "Notifications"
       ],
-      "note": "portal-tabs registry + patient-chat (AI assistant) exist; full self-service planned"
+      "note": "REAL: /api/self-service — 7 tables (patient_appointments 191 rows, secure_messages 170, telehealth_sessions 109, patient_documents 193, education_modules 179, emergency_sos_events 41, daily_plans 900) across 30 patients, 8 appointment types, 8 message categories, 4 telehealth session types, 10 document types, 12 education modules, 5 SOS event types, daily plan tracking with AI suggestions, 10 clinical definitions, SelfServiceDashboard.jsx + nav wiring"
     },
     {
       "n": 8,

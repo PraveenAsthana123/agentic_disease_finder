@@ -183,6 +183,7 @@ import MedicationManagementDashboard from './components/MedicationManagementDash
 import PROOutcomesDashboard from './components/PROOutcomesDashboard'
 import DemographicsDashboard from './components/DemographicsDashboard'
 import WearablesDigitalTwinDashboard from './components/WearablesDigitalTwinDashboard'
+import SelfServiceDashboard from './components/SelfServiceDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -452,7 +453,8 @@ function App() {
     { id: 'medication-management', label: 'Medication Management' },
     { id: 'pro-outcomes', label: 'PRO Outcomes' },
     { id: 'demographics', label: 'Demographics' },
-    { id: 'wearables-digital-twin', label: 'Wearables & Digital Twin' }
+    { id: 'wearables-digital-twin', label: 'Wearables & Digital Twin' },
+    { id: 'self-service', label: 'Self-Service Portal' }
   ]
 
   // API Calls
@@ -1855,6 +1857,8 @@ function App() {
         return <DemographicsDashboard />
       case 'wearables-digital-twin':
         return <WearablesDigitalTwinDashboard />
+      case 'self-service':
+        return <SelfServiceDashboard />
       default:
         return renderClassificationTab()
     }
