@@ -7648,6 +7648,35 @@ async def occupational_therapist_definitions():
     return _json_safe(otd.definitions())
 
 
+# ── EEG Technician Dashboard ──────────────────────────────────────────
+@app.get("/api/eeg-technician/overview")
+async def eeg_technician_overview():
+    """EEG Technician overview — KPI cards (recordings, signal quality pass rate,
+    artifact rate, impedance failure rate), recording type distribution, artifact
+    type breakdown, quality histogram, impedance histogram. ACNS standards."""
+    import scripts.eeg_technician_dashboard as etd
+    return _json_safe(etd.overview())
+
+
+@app.get("/api/eeg-technician/breakdown")
+async def eeg_technician_breakdown():
+    """EEG Technician breakdown — per-patient acquisition detail: recording type,
+    duration, sampling rate, montage, channel quality counts, artifact count,
+    dominant artifact, impedance pass, photic/HV/sleep flags, overall quality grade,
+    per-channel impedance/SNR detail, artifact annotation list."""
+    import scripts.eeg_technician_dashboard as etd
+    return _json_safe(etd.breakdown())
+
+
+@app.get("/api/eeg-technician/definitions")
+async def eeg_technician_definitions():
+    """EEG Technician definitions — 10-20 system, impedance standards, recording
+    types, montages, artifact recognition, activation procedures, ACNS minimum
+    technical standards, signal quality metrics."""
+    import scripts.eeg_technician_dashboard as etd
+    return _json_safe(etd.definitions())
+
+
 # ── Clinical Pharmacist Dashboard ──────────────────────────────────────
 @app.get("/api/clinical-pharmacist/overview")
 async def clinical_pharmacist_overview():

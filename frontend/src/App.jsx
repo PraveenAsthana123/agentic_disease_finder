@@ -167,6 +167,7 @@ import CNNResNetDashboard from './components/CNNResNetDashboard'
 import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
 import RNNLSTMDashboard from './components/RNNLSTMDashboard'
 import OccupationalTherapistDashboard from './components/OccupationalTherapistDashboard'
+import EEGTechnicianDashboard from './components/EEGTechnicianDashboard'
 import IRBEthicsDashboard from './components/IRBEthicsDashboard'
 import ClinicalDataManagerDashboard from './components/ClinicalDataManagerDashboard'
 import PatientCaregiverDashboard from './components/PatientCaregiverDashboard'
@@ -424,6 +425,7 @@ function App() {
     { id: 'neuropsychologist', label: 'Neuropsychologist' },
     { id: 'psychiatrist', label: 'Psychiatrist' },
     { id: 'occupational-therapist', label: 'Occupational Therapist' },
+    { id: 'eeg-technician', label: 'EEG Technician QC' },
     { id: 'irb-ethics', label: 'IRB / Ethics Officer' },
     { id: 'clinical-data-manager', label: 'Clinical Data Manager' },
     { id: 'patient-caregiver', label: 'Patient / Caregiver' }
@@ -1797,6 +1799,8 @@ function App() {
         return <PsychiatristDashboard />
       case 'occupational-therapist':
         return <OccupationalTherapistDashboard />
+      case 'eeg-technician':
+        return <EEGTechnicianDashboard />
       case 'irb-ethics':
         return <IRBEthicsDashboard />
       case 'clinical-data-manager':

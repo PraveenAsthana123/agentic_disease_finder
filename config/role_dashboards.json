@@ -169,12 +169,12 @@
         {
           "label": "Artifact-flagged channels",
           "source": "artifact_annotations",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Impedance failures",
           "source": "eeg_acquisition",
-          "status": "partial"
+          "status": "built"
         }
       ],
       "reports": [
@@ -194,7 +194,7 @@
           "name": "Daily Recording Log",
           "cadence": "daily",
           "format": "CSV",
-          "status": "partial"
+          "status": "built"
         }
       ]
     },
