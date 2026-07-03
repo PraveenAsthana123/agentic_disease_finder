@@ -3,119 +3,568 @@
   "note": "Each role: KPI dashboard tiles + standard report list (with cadence + format). status: built (data exists) / partial / planned.",
   "updated_at": "2026-06-23",
   "roles": [
-    {"role": "Neurologist", "icon": "🧠",
-     "kpis": [
-       {"label": "EEG reads pending", "source": "analyses (unreviewed)", "status": "built"},
-       {"label": "Seizure-positive rate", "source": "analyses.predicted_label", "status": "built"},
-       {"label": "Avg model confidence", "source": "analyses.confidence", "status": "built"},
-       {"label": "HITL overrides", "source": "hitl_reviews", "status": "built"},
-       {"label": "Mean turnaround time", "source": "transaction_log", "status": "partial"}],
-     "reports": [
-       {"name": "EEG Interpretation Report", "cadence": "per study", "format": "PDF", "status": "built"},
-       {"name": "Seizure Classification Summary", "cadence": "weekly", "format": "PDF/CSV", "status": "partial"},
-       {"name": "Medication Response Tracking", "cadence": "monthly", "format": "CSV", "status": "partial"},
-       {"name": "AI-vs-Expert Concordance", "cadence": "monthly", "format": "PDF", "status": "built"}]},
-    {"role": "Psychiatrist", "icon": "💬",
-     "kpis": [
-       {"label": "Comorbidity screen rate", "source": "comorbidities", "status": "partial"},
-       {"label": "Depression/anxiety flags", "source": "surveys", "status": "built"},
-       {"label": "Behavioral risk score", "source": "neuropsych", "status": "partial"},
-       {"label": "Referrals to neurology", "source": "transaction_log", "status": "partial"}],
-     "reports": [
-       {"name": "Psychiatric Assessment Report", "cadence": "per visit", "format": "PDF", "status": "partial"},
-       {"name": "Mood/Anxiety Survey Summary", "cadence": "weekly", "format": "PDF", "status": "built"},
-       {"name": "Psychogenic vs Epileptic Differential", "cadence": "per case", "format": "PDF", "status": "built"}]},
-    {"role": "Occupational Therapist", "icon": "🖐️",
-     "kpis": [
-       {"label": "Functional outcome scores", "source": "outcomes", "status": "partial"},
-       {"label": "ADL independence index", "source": "outcomes", "status": "partial"},
-       {"label": "Rehab sessions logged", "source": "transaction_log", "status": "partial"},
-       {"label": "Goal attainment rate", "source": "outcomes", "status": "planned"}],
-     "reports": [
-       {"name": "Functional Outcome Report", "cadence": "monthly", "format": "PDF", "status": "partial"},
-       {"name": "ADL Progress Tracking", "cadence": "weekly", "format": "CSV", "status": "planned"},
-       {"name": "Rehabilitation Plan Summary", "cadence": "per plan", "format": "PDF", "status": "planned"}]},
-    {"role": "EEG Technician", "icon": "📡",
-     "kpis": [
-       {"label": "Recordings acquired", "source": "uploads", "status": "built"},
-       {"label": "Signal quality pass rate", "source": "channel_quality", "status": "built"},
-       {"label": "Artifact-flagged channels", "source": "artifact_annotations", "status": "partial"},
-       {"label": "Impedance failures", "source": "eeg_acquisition", "status": "partial"}],
-     "reports": [
-       {"name": "Acquisition Quality Report", "cadence": "per study", "format": "PDF", "status": "built"},
-       {"name": "Channel Quality Matrix", "cadence": "per study", "format": "CSV", "status": "built"},
-       {"name": "Daily Recording Log", "cadence": "daily", "format": "CSV", "status": "partial"}]},
-    {"role": "Clinical Psychologist", "icon": "🧩",
-     "kpis": [
-       {"label": "Neuropsych batteries done", "source": "neuropsych", "status": "partial"},
-       {"label": "Cognitive impairment flags", "source": "neuropsych", "status": "partial"},
-       {"label": "Memory/attention deciles", "source": "neuropsych", "status": "planned"}],
-     "reports": [
-       {"name": "Neuropsychological Assessment", "cadence": "per battery", "format": "PDF", "status": "partial"},
-       {"name": "Cognitive Profile Summary", "cadence": "monthly", "format": "PDF", "status": "built"}]},
-    {"role": "Radiologist", "icon": "🩻",
-     "kpis": [
-       {"label": "MRI findings logged", "source": "mri_findings", "status": "partial"},
-       {"label": "Lesion-positive rate", "source": "mri_findings", "status": "partial"},
-       {"label": "EEG-MRI concordance", "source": "mri_findings + analyses", "status": "planned"}],
-     "reports": [
-       {"name": "Neuroimaging Report", "cadence": "per scan", "format": "PDF", "status": "partial"},
-       {"name": "Structural Findings Summary", "cadence": "monthly", "format": "PDF", "status": "planned"}]},
-    {"role": "IoT Engineer", "icon": "📡",
-     "kpis": [
-       {"label": "Devices online", "source": "device registry (sim)", "status": "partial"},
-       {"label": "Gateway uptime", "source": "gateway monitor (sim)", "status": "partial"},
-       {"label": "Stream latency (ms)", "source": "device stream", "status": "planned"},
-       {"label": "SOS alerts fired", "source": "transaction_log (alert)", "status": "partial"},
-       {"label": "Battery/signal low", "source": "device telemetry", "status": "planned"}],
-     "reports": [
-       {"name": "Device Fleet Status", "cadence": "real-time", "format": "dashboard", "status": "partial"},
-       {"name": "Gateway Health Report", "cadence": "daily", "format": "PDF/CSV", "status": "partial"},
-       {"name": "Continuous Monitoring Summary", "cadence": "per patient", "format": "PDF", "status": "partial"},
-       {"name": "Alert/SOS Audit", "cadence": "on-demand", "format": "CSV", "status": "partial"}]},
-    {"role": "AI Control Tower", "icon": "🗼",
-     "kpis": [{"label": "Models monitored", "source": "model registry", "status": "partial"},
-              {"label": "Drift alerts", "source": "drift monitor", "status": "planned"},
-              {"label": "SLA breaches", "source": "transaction_log", "status": "partial"},
-              {"label": "Cost / day", "source": "FinOps", "status": "planned"}],
-     "reports": [{"name": "Control Tower Daily", "cadence": "daily", "format": "dashboard", "status": "partial"},
-                 {"name": "Model Health Report", "cadence": "weekly", "format": "PDF", "status": "partial"}]},
-    {"role": "AI Security", "icon": "🛡️",
-     "kpis": [{"label": "Injection blocks", "source": "guardrails", "status": "built"},
-              {"label": "PII flags", "source": "PII scan", "status": "built"},
-              {"label": "Access denials", "source": "transaction_log", "status": "partial"},
-              {"label": "Open vulnerabilities", "source": "scan", "status": "planned"}],
-     "reports": [{"name": "Security Posture", "cadence": "weekly", "format": "PDF", "status": "partial"},
-                 {"name": "Threat / Injection Log", "cadence": "on-demand", "format": "CSV", "status": "built"}]},
-    {"role": "AI Risk", "icon": "⚠️",
-     "kpis": [{"label": "Risks identified", "source": "risk_management", "status": "partial"},
-              {"label": "High-risk open", "source": "risk_management", "status": "partial"},
-              {"label": "Mitigations done", "source": "risk_management", "status": "planned"},
-              {"label": "Residual risk", "source": "risk_management", "status": "planned"}],
-     "reports": [{"name": "AI Risk Register", "cadence": "monthly", "format": "PDF", "status": "partial"},
-                 {"name": "Risk Heatmap", "cadence": "monthly", "format": "dashboard", "status": "planned"}]},
-    {"role": "AI Federation", "icon": "🌐",
-     "kpis": [{"label": "Sites onboarded", "source": "federation", "status": "partial"},
-              {"label": "Rounds / month", "source": "federation", "status": "partial"},
-              {"label": "Global accuracy", "source": "benchmarks", "status": "partial"},
-              {"label": "Site drift", "source": "drift", "status": "planned"}],
-     "reports": [{"name": "Federation Round Report", "cadence": "per round", "format": "PDF", "status": "partial"},
-                 {"name": "Per-Site Performance", "cadence": "monthly", "format": "CSV", "status": "partial"}]},
-    {"role": "IS SOP", "icon": "📑",
-     "kpis": [{"label": "SOPs published", "source": "docs", "status": "partial"},
-              {"label": "Reviews due", "source": "docs", "status": "planned"},
-              {"label": "Compliance %", "source": "audit", "status": "partial"}],
-     "reports": [{"name": "SOP Compliance", "cadence": "monthly", "format": "PDF", "status": "partial"},
-                 {"name": "Procedure Index", "cadence": "on-demand", "format": "MD", "status": "partial"}]},
-    {"role": "IRB / Governance Reviewer", "icon": "⚖️",
-     "kpis": [
-       {"label": "Decisions audited", "source": "transaction_log", "status": "built"},
-       {"label": "Guardrail triggers", "source": "guardrails", "status": "built"},
-       {"label": "Fairness gate pass", "source": "responsible-ai", "status": "built"},
-       {"label": "Pending approvals", "source": "hitl_reviews + decision", "status": "built"}],
-     "reports": [
-       {"name": "AI Governance Audit Report", "cadence": "monthly", "format": "PDF", "status": "built"},
-       {"name": "Fairness & Bias Report", "cadence": "monthly", "format": "PDF", "status": "built"},
-       {"name": "Decision Audit Trail", "cadence": "on-demand", "format": "CSV", "status": "built"}]}
+    {
+      "role": "Neurologist",
+      "icon": "\ud83e\udde0",
+      "kpis": [
+        {
+          "label": "EEG reads pending",
+          "source": "analyses (unreviewed)",
+          "status": "built"
+        },
+        {
+          "label": "Seizure-positive rate",
+          "source": "analyses.predicted_label",
+          "status": "built"
+        },
+        {
+          "label": "Avg model confidence",
+          "source": "analyses.confidence",
+          "status": "built"
+        },
+        {
+          "label": "HITL overrides",
+          "source": "hitl_reviews",
+          "status": "built"
+        },
+        {
+          "label": "Mean turnaround time",
+          "source": "transaction_log",
+          "status": "partial"
+        }
+      ],
+      "reports": [
+        {
+          "name": "EEG Interpretation Report",
+          "cadence": "per study",
+          "format": "PDF",
+          "status": "built"
+        },
+        {
+          "name": "Seizure Classification Summary",
+          "cadence": "weekly",
+          "format": "PDF/CSV",
+          "status": "partial"
+        },
+        {
+          "name": "Medication Response Tracking",
+          "cadence": "monthly",
+          "format": "CSV",
+          "status": "partial"
+        },
+        {
+          "name": "AI-vs-Expert Concordance",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "Psychiatrist",
+      "icon": "\ud83d\udcac",
+      "kpis": [
+        {
+          "label": "Comorbidity screen rate",
+          "source": "comorbidities",
+          "status": "partial"
+        },
+        {
+          "label": "Depression/anxiety flags",
+          "source": "surveys",
+          "status": "built"
+        },
+        {
+          "label": "Behavioral risk score",
+          "source": "neuropsych",
+          "status": "partial"
+        },
+        {
+          "label": "Referrals to neurology",
+          "source": "transaction_log",
+          "status": "partial"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Psychiatric Assessment Report",
+          "cadence": "per visit",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Mood/Anxiety Survey Summary",
+          "cadence": "weekly",
+          "format": "PDF",
+          "status": "built"
+        },
+        {
+          "name": "Psychogenic vs Epileptic Differential",
+          "cadence": "per case",
+          "format": "PDF",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "Occupational Therapist",
+      "icon": "\ud83d\udd90\ufe0f",
+      "kpis": [
+        {
+          "label": "Functional outcome scores",
+          "source": "outcomes",
+          "status": "partial"
+        },
+        {
+          "label": "ADL independence index",
+          "source": "outcomes",
+          "status": "partial"
+        },
+        {
+          "label": "Rehab sessions logged",
+          "source": "transaction_log",
+          "status": "partial"
+        },
+        {
+          "label": "Goal attainment rate",
+          "source": "outcomes",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Functional Outcome Report",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "ADL Progress Tracking",
+          "cadence": "weekly",
+          "format": "CSV",
+          "status": "planned"
+        },
+        {
+          "name": "Rehabilitation Plan Summary",
+          "cadence": "per plan",
+          "format": "PDF",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "role": "EEG Technician",
+      "icon": "\ud83d\udce1",
+      "kpis": [
+        {
+          "label": "Recordings acquired",
+          "source": "uploads",
+          "status": "built"
+        },
+        {
+          "label": "Signal quality pass rate",
+          "source": "channel_quality",
+          "status": "built"
+        },
+        {
+          "label": "Artifact-flagged channels",
+          "source": "artifact_annotations",
+          "status": "partial"
+        },
+        {
+          "label": "Impedance failures",
+          "source": "eeg_acquisition",
+          "status": "partial"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Acquisition Quality Report",
+          "cadence": "per study",
+          "format": "PDF",
+          "status": "built"
+        },
+        {
+          "name": "Channel Quality Matrix",
+          "cadence": "per study",
+          "format": "CSV",
+          "status": "built"
+        },
+        {
+          "name": "Daily Recording Log",
+          "cadence": "daily",
+          "format": "CSV",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Clinical Psychologist",
+      "icon": "\ud83e\udde9",
+      "kpis": [
+        {
+          "label": "Neuropsych batteries done",
+          "source": "neuropsych",
+          "status": "partial"
+        },
+        {
+          "label": "Cognitive impairment flags",
+          "source": "neuropsych",
+          "status": "partial"
+        },
+        {
+          "label": "Memory/attention deciles",
+          "source": "neuropsych",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Neuropsychological Assessment",
+          "cadence": "per battery",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Cognitive Profile Summary",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "Radiologist",
+      "icon": "\ud83e\ude7b",
+      "kpis": [
+        {
+          "label": "MRI findings logged",
+          "source": "mri_findings",
+          "status": "partial"
+        },
+        {
+          "label": "Lesion-positive rate",
+          "source": "mri_findings",
+          "status": "partial"
+        },
+        {
+          "label": "EEG-MRI concordance",
+          "source": "mri_findings + analyses",
+          "status": "built"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Neuroimaging Report",
+          "cadence": "per scan",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Structural Findings Summary",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "role": "IoT Engineer",
+      "icon": "\ud83d\udce1",
+      "kpis": [
+        {
+          "label": "Devices online",
+          "source": "device registry (sim)",
+          "status": "partial"
+        },
+        {
+          "label": "Gateway uptime",
+          "source": "gateway monitor (sim)",
+          "status": "partial"
+        },
+        {
+          "label": "Stream latency (ms)",
+          "source": "device stream",
+          "status": "planned"
+        },
+        {
+          "label": "SOS alerts fired",
+          "source": "transaction_log (alert)",
+          "status": "partial"
+        },
+        {
+          "label": "Battery/signal low",
+          "source": "device telemetry",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Device Fleet Status",
+          "cadence": "real-time",
+          "format": "dashboard",
+          "status": "partial"
+        },
+        {
+          "name": "Gateway Health Report",
+          "cadence": "daily",
+          "format": "PDF/CSV",
+          "status": "partial"
+        },
+        {
+          "name": "Continuous Monitoring Summary",
+          "cadence": "per patient",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Alert/SOS Audit",
+          "cadence": "on-demand",
+          "format": "CSV",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "AI Control Tower",
+      "icon": "\ud83d\uddfc",
+      "kpis": [
+        {
+          "label": "Models monitored",
+          "source": "model registry",
+          "status": "partial"
+        },
+        {
+          "label": "Drift alerts",
+          "source": "drift monitor",
+          "status": "planned"
+        },
+        {
+          "label": "SLA breaches",
+          "source": "transaction_log",
+          "status": "partial"
+        },
+        {
+          "label": "Cost / day",
+          "source": "FinOps",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Control Tower Daily",
+          "cadence": "daily",
+          "format": "dashboard",
+          "status": "partial"
+        },
+        {
+          "name": "Model Health Report",
+          "cadence": "weekly",
+          "format": "PDF",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "AI Security",
+      "icon": "\ud83d\udee1\ufe0f",
+      "kpis": [
+        {
+          "label": "Injection blocks",
+          "source": "guardrails",
+          "status": "built"
+        },
+        {
+          "label": "PII flags",
+          "source": "PII scan",
+          "status": "built"
+        },
+        {
+          "label": "Access denials",
+          "source": "transaction_log",
+          "status": "partial"
+        },
+        {
+          "label": "Open vulnerabilities",
+          "source": "scan",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Security Posture",
+          "cadence": "weekly",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Threat / Injection Log",
+          "cadence": "on-demand",
+          "format": "CSV",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "AI Risk",
+      "icon": "\u26a0\ufe0f",
+      "kpis": [
+        {
+          "label": "Risks identified",
+          "source": "risk_management",
+          "status": "partial"
+        },
+        {
+          "label": "High-risk open",
+          "source": "risk_management",
+          "status": "partial"
+        },
+        {
+          "label": "Mitigations done",
+          "source": "risk_management",
+          "status": "planned"
+        },
+        {
+          "label": "Residual risk",
+          "source": "risk_management",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "AI Risk Register",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Risk Heatmap",
+          "cadence": "monthly",
+          "format": "dashboard",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "role": "AI Federation",
+      "icon": "\ud83c\udf10",
+      "kpis": [
+        {
+          "label": "Sites onboarded",
+          "source": "federation",
+          "status": "partial"
+        },
+        {
+          "label": "Rounds / month",
+          "source": "federation",
+          "status": "partial"
+        },
+        {
+          "label": "Global accuracy",
+          "source": "benchmarks",
+          "status": "partial"
+        },
+        {
+          "label": "Site drift",
+          "source": "drift",
+          "status": "planned"
+        }
+      ],
+      "reports": [
+        {
+          "name": "Federation Round Report",
+          "cadence": "per round",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Per-Site Performance",
+          "cadence": "monthly",
+          "format": "CSV",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "IS SOP",
+      "icon": "\ud83d\udcd1",
+      "kpis": [
+        {
+          "label": "SOPs published",
+          "source": "docs",
+          "status": "partial"
+        },
+        {
+          "label": "Reviews due",
+          "source": "docs",
+          "status": "planned"
+        },
+        {
+          "label": "Compliance %",
+          "source": "audit",
+          "status": "partial"
+        }
+      ],
+      "reports": [
+        {
+          "name": "SOP Compliance",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "partial"
+        },
+        {
+          "name": "Procedure Index",
+          "cadence": "on-demand",
+          "format": "MD",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "IRB / Governance Reviewer",
+      "icon": "\u2696\ufe0f",
+      "kpis": [
+        {
+          "label": "Decisions audited",
+          "source": "transaction_log",
+          "status": "built"
+        },
+        {
+          "label": "Guardrail triggers",
+          "source": "guardrails",
+          "status": "built"
+        },
+        {
+          "label": "Fairness gate pass",
+          "source": "responsible-ai",
+          "status": "built"
+        },
+        {
+          "label": "Pending approvals",
+          "source": "hitl_reviews + decision",
+          "status": "built"
+        }
+      ],
+      "reports": [
+        {
+          "name": "AI Governance Audit Report",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "built"
+        },
+        {
+          "name": "Fairness & Bias Report",
+          "cadence": "monthly",
+          "format": "PDF",
+          "status": "built"
+        },
+        {
+          "name": "Decision Audit Trail",
+          "cadence": "on-demand",
+          "format": "CSV",
+          "status": "built"
+        }
+      ]
+    }
   ]
 }

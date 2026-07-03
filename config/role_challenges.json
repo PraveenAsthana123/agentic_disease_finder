@@ -3,45 +3,214 @@
   "note": "Each clinical role: real workflow challenges + how AI in this project mitigates each. status: built (real here) / partial / planned.",
   "updated_at": "2026-06-24",
   "roles": [
-    {"role": "Neurologist", "icon": "🧠", "items": [
-      {"challenge": "Reading EEG is slow (20-60 min/study), creating backlog", "ai": "AI pre-read flags seizure-risk windows + confidence so reading focuses on flagged segments", "status": "built"},
-      {"challenge": "Inter-reader variability between neurologists", "ai": "Consistent AI baseline + SHAP evidence anchors reads; concordance tracked", "status": "built"},
-      {"challenge": "Subtle/short seizures missed under fatigue", "ai": "Model surfaces low-salience events for human confirmation", "status": "partial"},
-      {"challenge": "Defending a diagnosis (medico-legal)", "ai": "Decision audit trail + SHAP + override record = defensible evidence", "status": "built"},
-      {"challenge": "Trusting a black-box AI", "ai": "Surrogate decision tree + SHAP make the model interpretable", "status": "built"}]},
-    {"role": "EEG Technician", "icon": "📡", "items": [
-      {"challenge": "Bad signal quality discovered only after the neurologist reads", "ai": "Auto signal-quality + impedance scan flags issues during acquisition", "status": "built"},
-      {"challenge": "Artifacts (blink/muscle/line) contaminate the recording", "ai": "ICA auto-detects + removes artifact components (42% variance removed)", "status": "built"},
-      {"challenge": "Manual artifact marking is tedious", "ai": "Auto artifact-segment flagging", "status": "partial"},
-      {"challenge": "Repeat recordings waste tech + patient time", "ai": "Real-time QC catches problems before the session ends", "status": "partial"}]},
-    {"role": "Psychiatrist", "icon": "💬", "items": [
-      {"challenge": "Distinguishing epileptic seizures from PNES (psychogenic)", "ai": "Differential model + survey-flag fusion (planned)", "status": "planned"},
-      {"challenge": "Depression/anxiety in epilepsy underdiagnosed", "ai": "Auto-scored mood/anxiety surveys flag at-risk patients", "status": "built"},
-      {"challenge": "Medication interaction risk (AED + psychotropic)", "ai": "Interaction checker (planned)", "status": "planned"}]},
-    {"role": "Occupational Therapist", "icon": "🖐️", "items": [
-      {"challenge": "Tracking functional recovery over time is manual", "ai": "Outcome trend + goal-attainment analytics", "status": "partial"},
-      {"challenge": "Predicting which patients need intensive rehab", "ai": "Recovery-trajectory forecast (planned)", "status": "planned"},
-      {"challenge": "Inconsistent assessment scoring", "ai": "Standardized auto-scored instruments (COPM/FIM — planned)", "status": "planned"}]},
-    {"role": "Clinical Psychologist", "icon": "🧩", "items": [
-      {"challenge": "Neuropsych battery scoring is slow + error-prone", "ai": "Auto-scoring + normative comparison (MoCA/WAIS — planned)", "status": "planned"},
-      {"challenge": "Detecting cognitive decline early", "ai": "Cognitive-profile trend flags decline (partial)", "status": "partial"}]},
-    {"role": "Radiologist", "icon": "🩻", "items": [
-      {"challenge": "Correlating MRI lesions with EEG focus", "ai": "EEG-MRI concordance view (planned)", "status": "planned"},
-      {"challenge": "Structured reporting overhead", "ai": "Template + finding capture (partial)", "status": "partial"}]},
-    {"role": "IoT Engineer", "icon": "📡", "items": [
-      {"challenge": "Wearable/Emotiv devices drop connection mid-recording", "ai": "Gateway monitors heartbeat + auto-reconnect + flags gaps", "status": "partial"},
-      {"challenge": "Detecting a seizure in real-time from a noisy wearable stream", "ai": "Edge model on streamed windows + confidence gate (sim)", "status": "partial"},
-      {"challenge": "Battery/signal degradation goes unnoticed", "ai": "Telemetry anomaly alerts before failure", "status": "planned"},
-      {"challenge": "SOS must reach caregiver fast + reliably", "ai": "Multi-channel alert (phone/SMS) with escalation", "status": "partial"},
-      {"challenge": "Device data must not leak (privacy)", "ai": "Local-first gateway + PII scrub before any cloud", "status": "partial"}]},
-    {"role": "IRB / Governance Reviewer", "icon": "⚖️", "items": [
-      {"challenge": "Proving AI decisions were governed", "ai": "Immutable decision audit (who/what/when, UTC+local)", "status": "built"},
-      {"challenge": "Catching unsafe/biased AI outputs", "ai": "Guardrails (injection/PII) + fairness gate (DI/EO) per decision", "status": "built"},
-      {"challenge": "Ensuring human stayed in the loop", "ai": "HITL override records + decision routing enforce oversight", "status": "built"},
-      {"challenge": "Reconstructing a past decision for audit", "ai": "Council request_id trace + SHAP + audit row = full reconstruction", "status": "built"}]},
-    {"role": "Patient", "icon": "🧑", "items": [
-      {"challenge": "Not understanding their own condition/records", "ai": "RAG conversation AI answers questions grounded in their records", "status": "built"},
-      {"challenge": "Delays in getting results", "ai": "Faster AI-assisted turnaround", "status": "partial"},
-      {"challenge": "Seizure safety between visits", "ai": "Continuous monitoring + SOS alert (simulated)", "status": "partial"}]}
+    {
+      "role": "Neurologist",
+      "icon": "\ud83e\udde0",
+      "items": [
+        {
+          "challenge": "Reading EEG is slow (20-60 min/study), creating backlog",
+          "ai": "AI pre-read flags seizure-risk windows + confidence so reading focuses on flagged segments",
+          "status": "built"
+        },
+        {
+          "challenge": "Inter-reader variability between neurologists",
+          "ai": "Consistent AI baseline + SHAP evidence anchors reads; concordance tracked",
+          "status": "built"
+        },
+        {
+          "challenge": "Subtle/short seizures missed under fatigue",
+          "ai": "Model surfaces low-salience events for human confirmation",
+          "status": "partial"
+        },
+        {
+          "challenge": "Defending a diagnosis (medico-legal)",
+          "ai": "Decision audit trail + SHAP + override record = defensible evidence",
+          "status": "built"
+        },
+        {
+          "challenge": "Trusting a black-box AI",
+          "ai": "Surrogate decision tree + SHAP make the model interpretable",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "EEG Technician",
+      "icon": "\ud83d\udce1",
+      "items": [
+        {
+          "challenge": "Bad signal quality discovered only after the neurologist reads",
+          "ai": "Auto signal-quality + impedance scan flags issues during acquisition",
+          "status": "built"
+        },
+        {
+          "challenge": "Artifacts (blink/muscle/line) contaminate the recording",
+          "ai": "ICA auto-detects + removes artifact components (42% variance removed)",
+          "status": "built"
+        },
+        {
+          "challenge": "Manual artifact marking is tedious",
+          "ai": "Auto artifact-segment flagging",
+          "status": "partial"
+        },
+        {
+          "challenge": "Repeat recordings waste tech + patient time",
+          "ai": "Real-time QC catches problems before the session ends",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Psychiatrist",
+      "icon": "\ud83d\udcac",
+      "items": [
+        {
+          "challenge": "Distinguishing epileptic seizures from PNES (psychogenic)",
+          "ai": "Differential model + survey-flag fusion (planned)",
+          "status": "planned"
+        },
+        {
+          "challenge": "Depression/anxiety in epilepsy underdiagnosed",
+          "ai": "Auto-scored mood/anxiety surveys flag at-risk patients",
+          "status": "built"
+        },
+        {
+          "challenge": "Medication interaction risk (AED + psychotropic)",
+          "ai": "Interaction checker (planned)",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "role": "Occupational Therapist",
+      "icon": "\ud83d\udd90\ufe0f",
+      "items": [
+        {
+          "challenge": "Tracking functional recovery over time is manual",
+          "ai": "Outcome trend + goal-attainment analytics",
+          "status": "partial"
+        },
+        {
+          "challenge": "Predicting which patients need intensive rehab",
+          "ai": "Recovery-trajectory forecast (planned)",
+          "status": "planned"
+        },
+        {
+          "challenge": "Inconsistent assessment scoring",
+          "ai": "Standardized auto-scored instruments (COPM/FIM \u2014 planned)",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "role": "Clinical Psychologist",
+      "icon": "\ud83e\udde9",
+      "items": [
+        {
+          "challenge": "Neuropsych battery scoring is slow + error-prone",
+          "ai": "Auto-scoring + normative comparison (MoCA/WAIS \u2014 planned)",
+          "status": "planned"
+        },
+        {
+          "challenge": "Detecting cognitive decline early",
+          "ai": "Cognitive-profile trend flags decline (partial)",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Radiologist",
+      "icon": "\ud83e\ude7b",
+      "items": [
+        {
+          "challenge": "Correlating MRI lesions with EEG focus",
+          "ai": "EEG-MRI concordance view (planned)",
+          "status": "built"
+        },
+        {
+          "challenge": "Structured reporting overhead",
+          "ai": "Template + finding capture (partial)",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "IoT Engineer",
+      "icon": "\ud83d\udce1",
+      "items": [
+        {
+          "challenge": "Wearable/Emotiv devices drop connection mid-recording",
+          "ai": "Gateway monitors heartbeat + auto-reconnect + flags gaps",
+          "status": "partial"
+        },
+        {
+          "challenge": "Detecting a seizure in real-time from a noisy wearable stream",
+          "ai": "Edge model on streamed windows + confidence gate (sim)",
+          "status": "partial"
+        },
+        {
+          "challenge": "Battery/signal degradation goes unnoticed",
+          "ai": "Telemetry anomaly alerts before failure",
+          "status": "planned"
+        },
+        {
+          "challenge": "SOS must reach caregiver fast + reliably",
+          "ai": "Multi-channel alert (phone/SMS) with escalation",
+          "status": "partial"
+        },
+        {
+          "challenge": "Device data must not leak (privacy)",
+          "ai": "Local-first gateway + PII scrub before any cloud",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "IRB / Governance Reviewer",
+      "icon": "\u2696\ufe0f",
+      "items": [
+        {
+          "challenge": "Proving AI decisions were governed",
+          "ai": "Immutable decision audit (who/what/when, UTC+local)",
+          "status": "built"
+        },
+        {
+          "challenge": "Catching unsafe/biased AI outputs",
+          "ai": "Guardrails (injection/PII) + fairness gate (DI/EO) per decision",
+          "status": "built"
+        },
+        {
+          "challenge": "Ensuring human stayed in the loop",
+          "ai": "HITL override records + decision routing enforce oversight",
+          "status": "built"
+        },
+        {
+          "challenge": "Reconstructing a past decision for audit",
+          "ai": "Council request_id trace + SHAP + audit row = full reconstruction",
+          "status": "built"
+        }
+      ]
+    },
+    {
+      "role": "Patient",
+      "icon": "\ud83e\uddd1",
+      "items": [
+        {
+          "challenge": "Not understanding their own condition/records",
+          "ai": "RAG conversation AI answers questions grounded in their records",
+          "status": "built"
+        },
+        {
+          "challenge": "Delays in getting results",
+          "ai": "Faster AI-assisted turnaround",
+          "status": "partial"
+        },
+        {
+          "challenge": "Seizure safety between visits",
+          "ai": "Continuous monitoring + SOS alert (simulated)",
+          "status": "partial"
+        }
+      ]
+    }
   ]
 }

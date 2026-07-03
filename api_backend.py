@@ -7848,6 +7848,32 @@ async def pnes_differential_definitions():
     return _json_safe(pnes.definitions())
 
 
+# ── EEG-MRI Concordance Dashboard ────────────────────────────────────
+
+@app.get("/api/eeg-mri-concordance/overview")
+async def eeg_mri_concordance_overview():
+    """EEG-MRI Concordance overview: concordance rate, lesion type breakdown,
+    surgical candidacy distribution, lobe match matrix."""
+    import scripts.eeg_mri_concordance_dashboard as emc
+    return _json_safe(emc.overview())
+
+
+@app.get("/api/eeg-mri-concordance/breakdown")
+async def eeg_mri_concordance_breakdown():
+    """EEG-MRI Concordance breakdown: per-patient MRI lesion vs EEG focus,
+    concordance classification, surgical candidacy, additional workup."""
+    import scripts.eeg_mri_concordance_dashboard as emc
+    return _json_safe(emc.breakdown())
+
+
+@app.get("/api/eeg-mri-concordance/definitions")
+async def eeg_mri_concordance_definitions():
+    """EEG-MRI Concordance definitions: concordance categories, lesion types,
+    surgical candidacy tiers, workup modalities, references."""
+    import scripts.eeg_mri_concordance_dashboard as emc
+    return _json_safe(emc.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

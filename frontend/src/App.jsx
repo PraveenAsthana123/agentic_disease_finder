@@ -96,6 +96,7 @@ import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
 import HRVDashboard from './components/HRVDashboard'
 import PNESDifferentialDashboard from './components/PNESDifferentialDashboard'
+import EEGMRIConcordanceDashboard from './components/EEGMRIConcordanceDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
@@ -354,6 +355,7 @@ function App() {
     { id: 'autonomic', label: 'Autonomic' },
     { id: 'hrv', label: 'HRV / RR Variation' },
     { id: 'pnes-differential', label: 'PNES Differential' },
+    { id: 'eeg-mri-concordance', label: 'EEG-MRI Concordance' },
     { id: 'data-versioning', label: 'Data Versioning' },
     { id: 'model-ops', label: 'Model Ops' },
     { id: 'mlops', label: 'MLOps' },
@@ -1655,6 +1657,8 @@ function App() {
         return <HRVDashboard />
       case 'pnes-differential':
         return <PNESDifferentialDashboard />
+      case 'eeg-mri-concordance':
+        return <EEGMRIConcordanceDashboard />
       case 'data-versioning':
         return <DataVersioningDashboard />
       case 'model-ops':
