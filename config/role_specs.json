@@ -233,14 +233,16 @@
       "role": "Occupational Therapist",
       "priority": "8/10",
       "fields": "200-250",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Functional Outcome",
         "ADL",
         "Rehab Plan",
         "Goal Attainment"
       ],
-      "note": "outcomes form + role dashboard exist"
+      "note": "outcomes form + role dashboard exist",
+      "api_prefix": "/api/occupational-therapist",
+      "component": "OccupationalTherapistDashboard.jsx"
     },
     {
       "role": "AI Governance / Responsible AI Officer",

@@ -7623,6 +7623,31 @@ async def psychiatrist_definitions():
     return _json_safe(psd.definitions())
 
 
+# ── Occupational Therapist Dashboard ──────────────────────────────────────
+@app.get("/api/occupational-therapist/overview")
+async def occupational_therapist_overview():
+    """OT overview — Barthel ADL distribution, QOLIE-31 QoL, Epworth
+    sleepiness, LSSS seizure severity, AED functional risk, item-level analysis."""
+    import scripts.occupational_therapist_dashboard as otd
+    return _json_safe(otd.overview())
+
+
+@app.get("/api/occupational-therapist/breakdown")
+async def occupational_therapist_breakdown():
+    """OT breakdown — per-patient functional profiles, rehab candidates,
+    ADL item breakdown, QOLIE domain scores, suggested goals."""
+    import scripts.occupational_therapist_dashboard as otd
+    return _json_safe(otd.breakdown())
+
+
+@app.get("/api/occupational-therapist/definitions")
+async def occupational_therapist_definitions():
+    """OT definitions — Barthel Index, QOLIE-31, ESS, LSSS, ADLs, IADLs,
+    functional rehabilitation, AED functional effects."""
+    import scripts.occupational_therapist_dashboard as otd
+    return _json_safe(otd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

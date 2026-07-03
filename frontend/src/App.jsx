@@ -159,6 +159,7 @@ import NeurosurgeonDashboard from './components/NeurosurgeonDashboard'
 import CNNResNetDashboard from './components/CNNResNetDashboard'
 import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
 import RNNLSTMDashboard from './components/RNNLSTMDashboard'
+import OccupationalTherapistDashboard from './components/OccupationalTherapistDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -404,7 +405,8 @@ function App() {
     { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
     { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' },
     { id: 'neuropsychologist', label: 'Neuropsychologist' },
-    { id: 'psychiatrist', label: 'Psychiatrist' }
+    { id: 'psychiatrist', label: 'Psychiatrist' },
+    { id: 'occupational-therapist', label: 'Occupational Therapist' }
   ]
 
   // API Calls
@@ -1759,6 +1761,8 @@ function App() {
         return <NeuropsychologistDashboard />
       case 'psychiatrist':
         return <PsychiatristDashboard />
+      case 'occupational-therapist':
+        return <OccupationalTherapistDashboard />
       default:
         return renderClassificationTab()
     }
