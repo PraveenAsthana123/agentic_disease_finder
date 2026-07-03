@@ -86,6 +86,7 @@ import AMPSDashboard from './components/AMPSDashboard'
 import VideoEEGDashboard from './components/VideoEEGDashboard'
 import NCVDashboard from './components/NCVDashboard'
 import BlinkReflexDashboard from './components/BlinkReflexDashboard'
+import SSEPDashboard from './components/SSEPDashboard'
 import EMGDashboard from './components/EMGDashboard'
 import RNSDashboard from './components/RNSDashboard'
 import BeraDashboard from './components/BeraDashboard'
@@ -338,6 +339,7 @@ function App() {
     { id: 'video-eeg', label: 'Video EEG' },
     { id: 'ncv', label: 'NCV' },
     { id: 'blink-reflex', label: 'Blink Reflex' },
+    { id: 'ssep', label: 'SSEP' },
     { id: 'emg', label: 'EMG' },
     { id: 'rns', label: 'RNS' },
     { id: 'bera', label: 'BERA' },
@@ -1623,6 +1625,8 @@ function App() {
         return <NCVDashboard />
       case 'blink-reflex':
         return <BlinkReflexDashboard />
+      case 'ssep':
+        return <SSEPDashboard />
       case 'emg':
         return <EMGDashboard />
       case 'rns':
