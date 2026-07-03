@@ -8157,6 +8157,30 @@ async def pro_outcomes_definitions():
     return _json_safe(pod.definitions())
 
 
+@app.get("/api/demographics/overview")
+async def demographics_overview():
+    """Demographics overview — age/sex/ethnicity/race distributions,
+    BMI categories, epilepsy types, insurance, employment, education."""
+    import scripts.demographics_dashboard as dd
+    return _json_safe(dd.overview())
+
+
+@app.get("/api/demographics/breakdown")
+async def demographics_breakdown():
+    """Demographics breakdown — per-patient demographic data, age/onset stats,
+    referral sources."""
+    import scripts.demographics_dashboard as dd
+    return _json_safe(dd.breakdown())
+
+
+@app.get("/api/demographics/definitions")
+async def demographics_definitions():
+    """Demographics definitions — BMI categories, ILAE classification,
+    blood types, interpreter services, social determinants of health."""
+    import scripts.demographics_dashboard as dd
+    return _json_safe(dd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

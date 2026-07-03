@@ -1,32 +1,165 @@
 {
-  "title": "Patient Module — 8-Section Spec (~1,250 fields)",
-  "note": "The foundation role. Honest section-by-section status (§155). Seizure Diary built as real CRUD; others tracked.",
+  "title": "Patient Module \u2014 8-Section Spec (~1,250 fields)",
+  "note": "The foundation role. Honest section-by-section status (\u00a7155). Seizure Diary built as real CRUD; others tracked.",
   "updated_at": "2026-07-03",
   "sections": [
-    {"n": 1, "section": "Demographics", "fields": "30-40", "status": "partial",
-     "items": ["Patient ID", "Study ID", "Name", "DOB", "Age", "Sex", "Height", "Weight", "Language", "Occupation", "Education", "Marital status"],
-     "note": "patient_master + patients tables exist"},
-    {"n": 2, "section": "Emergency Contact & Caregiver", "fields": "90-100", "status": "built",
-     "items": ["Emergency contact", "Relationship", "Caregiver profile", "Caregiver education", "First-aid training", "Caregiver burden (stress/sleep/work/burnout)", "Safety/emergency plan"],
-     "note": "REAL: /api/emergency-caregiver — 30 contacts + 30 caregivers, training status, burden scoring, safety plans, EmergencyCaregiverDashboard.jsx"},
-    {"n": 3, "section": "Seizure Diary", "fields": "140-160", "status": "built",
-     "items": ["Event date/time", "Duration", "Location", "Witnessed", "Aura", "Awareness", "Motor signs", "Injury", "Post-ictal", "Recovery time", "ER visit", "Rescue med", "auto-Severity", "Trigger"],
-     "note": "REAL CRUD: /api/seizure-diary — auto severity score + monthly trend + stats"},
-    {"n": 4, "section": "Trigger Tracking & Forecasting", "fields": "130-150", "status": "built",
-     "items": ["Sleep", "Medication", "Stress", "Illness", "Hormonal", "Environmental", "Lifestyle", "Diet", "Trigger correlation engine", "Daily/24h/7d/30d risk score"],
-     "note": "REAL: /api/trigger-tracking — 300 daily logs across 30 patients, trigger-seizure correlations, risk scoring, adherence impact, TriggerTrackingDashboard.jsx"},
-    {"n": 5, "section": "Medication Self-Management", "fields": "160-180", "status": "built",
-     "items": ["Med master list", "Daily tracking", "Missed/late dose", "Refill", "Side effects (8)", "Effectiveness", "Rescue med"],
-     "note": "REAL: /api/medication-management — 12,600 adherence logs across 30 patients × 90 days × 2-3 AEDs, side effect tracking (12 types), refill management, adherence by drug/time-of-day, rescue med usage, MedicationManagementDashboard.jsx"},
-    {"n": 6, "section": "Sleep/Mood/Cognition/QoL (PRO)", "fields": "150-170", "status": "built",
-     "items": ["Sleep", "Fatigue", "Mood", "Anxiety", "Memory", "Attention", "Daily function", "Social function", "Quality of Life"],
-     "note": "REAL: /api/pro-outcomes — 180 assessments across 30 patients × 6 months, 8 validated instruments (PSQI/ESS/PHQ-9/GAD-7/QOLIE-31/MoCA/NDDI-E/WPAI), sleep quality distribution, depression/anxiety severity, cognitive status, QoL trend, domain averages, PROOutcomesDashboard.jsx"},
-    {"n": 7, "section": "Self-Service / Communication / Education / Emergency", "fields": "175-200", "status": "partial",
-     "items": ["Appointments", "Secure messaging", "Telehealth", "Document center", "Education", "Emergency SOS", "Wearables", "AI assistant", "Daily plan", "Notifications"],
-     "note": "portal-tabs registry + patient-chat (AI assistant) exist; full self-service planned"},
-    {"n": 8, "section": "Wearables & Digital Twin", "fields": "220-250", "status": "planned",
-     "items": ["Device registration", "Heart biomarkers (HR/HRV)", "Sleep biomarkers", "Activity", "Stress", "Seizure detection signals", "Health score", "Seizure risk score", "Digital Twin", "Longitudinal outcomes (1yr/5yr)"]}
+    {
+      "n": 1,
+      "section": "Demographics",
+      "fields": "30-40",
+      "status": "built",
+      "items": [
+        "Patient ID",
+        "Study ID",
+        "Name",
+        "DOB",
+        "Age",
+        "Sex",
+        "Height",
+        "Weight",
+        "Language",
+        "Occupation",
+        "Education",
+        "Marital status"
+      ],
+      "note": "patient_demographics table (30 patients seeded), 3 API endpoints, DemographicsDashboard.jsx + nav wiring"
+    },
+    {
+      "n": 2,
+      "section": "Emergency Contact & Caregiver",
+      "fields": "90-100",
+      "status": "built",
+      "items": [
+        "Emergency contact",
+        "Relationship",
+        "Caregiver profile",
+        "Caregiver education",
+        "First-aid training",
+        "Caregiver burden (stress/sleep/work/burnout)",
+        "Safety/emergency plan"
+      ],
+      "note": "REAL: /api/emergency-caregiver \u2014 30 contacts + 30 caregivers, training status, burden scoring, safety plans, EmergencyCaregiverDashboard.jsx"
+    },
+    {
+      "n": 3,
+      "section": "Seizure Diary",
+      "fields": "140-160",
+      "status": "built",
+      "items": [
+        "Event date/time",
+        "Duration",
+        "Location",
+        "Witnessed",
+        "Aura",
+        "Awareness",
+        "Motor signs",
+        "Injury",
+        "Post-ictal",
+        "Recovery time",
+        "ER visit",
+        "Rescue med",
+        "auto-Severity",
+        "Trigger"
+      ],
+      "note": "REAL CRUD: /api/seizure-diary \u2014 auto severity score + monthly trend + stats"
+    },
+    {
+      "n": 4,
+      "section": "Trigger Tracking & Forecasting",
+      "fields": "130-150",
+      "status": "built",
+      "items": [
+        "Sleep",
+        "Medication",
+        "Stress",
+        "Illness",
+        "Hormonal",
+        "Environmental",
+        "Lifestyle",
+        "Diet",
+        "Trigger correlation engine",
+        "Daily/24h/7d/30d risk score"
+      ],
+      "note": "REAL: /api/trigger-tracking \u2014 300 daily logs across 30 patients, trigger-seizure correlations, risk scoring, adherence impact, TriggerTrackingDashboard.jsx"
+    },
+    {
+      "n": 5,
+      "section": "Medication Self-Management",
+      "fields": "160-180",
+      "status": "built",
+      "items": [
+        "Med master list",
+        "Daily tracking",
+        "Missed/late dose",
+        "Refill",
+        "Side effects (8)",
+        "Effectiveness",
+        "Rescue med"
+      ],
+      "note": "REAL: /api/medication-management \u2014 12,600 adherence logs across 30 patients \u00d7 90 days \u00d7 2-3 AEDs, side effect tracking (12 types), refill management, adherence by drug/time-of-day, rescue med usage, MedicationManagementDashboard.jsx"
+    },
+    {
+      "n": 6,
+      "section": "Sleep/Mood/Cognition/QoL (PRO)",
+      "fields": "150-170",
+      "status": "built",
+      "items": [
+        "Sleep",
+        "Fatigue",
+        "Mood",
+        "Anxiety",
+        "Memory",
+        "Attention",
+        "Daily function",
+        "Social function",
+        "Quality of Life"
+      ],
+      "note": "REAL: /api/pro-outcomes \u2014 180 assessments across 30 patients \u00d7 6 months, 8 validated instruments (PSQI/ESS/PHQ-9/GAD-7/QOLIE-31/MoCA/NDDI-E/WPAI), sleep quality distribution, depression/anxiety severity, cognitive status, QoL trend, domain averages, PROOutcomesDashboard.jsx"
+    },
+    {
+      "n": 7,
+      "section": "Self-Service / Communication / Education / Emergency",
+      "fields": "175-200",
+      "status": "partial",
+      "items": [
+        "Appointments",
+        "Secure messaging",
+        "Telehealth",
+        "Document center",
+        "Education",
+        "Emergency SOS",
+        "Wearables",
+        "AI assistant",
+        "Daily plan",
+        "Notifications"
+      ],
+      "note": "portal-tabs registry + patient-chat (AI assistant) exist; full self-service planned"
+    },
+    {
+      "n": 8,
+      "section": "Wearables & Digital Twin",
+      "fields": "220-250",
+      "status": "planned",
+      "items": [
+        "Device registration",
+        "Heart biomarkers (HR/HRV)",
+        "Sleep biomarkers",
+        "Activity",
+        "Stress",
+        "Seizure detection signals",
+        "Health score",
+        "Seizure risk score",
+        "Digital Twin",
+        "Longitudinal outcomes (1yr/5yr)"
+      ]
+    }
   ],
-  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 4, "partial": 2, "planned": 2,
-              "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."}
+  "summary": {
+    "total_sections": 8,
+    "total_fields": "~1250",
+    "built": 4,
+    "partial": 2,
+    "planned": 2,
+    "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."
+  }
 }
