@@ -376,8 +376,9 @@
     {
       "id": "rnn_lstm",
       "task": "RNN/LSTM temporal model",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts.rnn_lstm_dashboard",
+      "status": "built",
+      "note": "RNN/LSTM Temporal Model dashboard — temporal sequence analysis from EEG, model architecture specs (Vanilla-RNN/LSTM/GRU/BiLSTM/Attention-LSTM), training readiness, seizure temporal patterns, band power analysis, 21 real analyses + 25 seizure events from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "yolo_detection",

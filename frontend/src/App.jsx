@@ -156,6 +156,7 @@ import ResearchCoordinatorDashboard from './components/ResearchCoordinatorDashbo
 import NeurosurgeonDashboard from './components/NeurosurgeonDashboard'
 import CNNResNetDashboard from './components/CNNResNetDashboard'
 import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
+import RNNLSTMDashboard from './components/RNNLSTMDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -398,7 +399,8 @@ function App() {
     { id: 'research-coordinator', label: 'Research Coordinator' },
     { id: 'neurosurgeon', label: 'Neurosurgeon / Epilepsy Surgery' },
     { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' },
-    { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' }
+    { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
+    { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' }
   ]
 
   // API Calls
@@ -1747,6 +1749,8 @@ function App() {
         return <CNNResNetDashboard />
       case 'neurophysiologist':
         return <NeurophysiologistDashboard />
+      case 'rnn-lstm':
+        return <RNNLSTMDashboard />
       default:
         return renderClassificationTab()
     }

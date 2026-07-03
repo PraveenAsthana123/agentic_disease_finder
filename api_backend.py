@@ -7548,6 +7548,31 @@ async def neurophysiologist_definitions():
     return _json_safe(npd.definitions())
 
 
+# ---------------------------------------------------------------------------
+# RNN/LSTM Temporal Model Dashboard
+# ---------------------------------------------------------------------------
+
+@app.get("/api/rnn-lstm/overview")
+async def rnn_lstm_overview():
+    """RNN/LSTM Temporal Model — KPIs, band power, quality, temporal patterns."""
+    import scripts.rnn_lstm_dashboard as rld
+    return _json_safe(rld.overview())
+
+
+@app.get("/api/rnn-lstm/breakdown")
+async def rnn_lstm_breakdown():
+    """RNN/LSTM Temporal Model — sequence inventory, patient profiles, architectures."""
+    import scripts.rnn_lstm_dashboard as rld
+    return _json_safe(rld.breakdown())
+
+
+@app.get("/api/rnn-lstm/definitions")
+async def rnn_lstm_definitions():
+    """RNN/LSTM Temporal Model — RNN, LSTM, GRU, attention definitions."""
+    import scripts.rnn_lstm_dashboard as rld
+    return _json_safe(rld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
