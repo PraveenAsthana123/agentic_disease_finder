@@ -8009,6 +8009,31 @@ async def clinical_psychologist_definitions():
     return _json_safe(cpd.definitions())
 
 
+# ── AI Federation Dashboard ─────────────────────────────────────────
+@app.get("/api/ai-federation/overview")
+async def ai_federation_overview():
+    """AI Federation overview — sites onboarded, round history, global
+    accuracy, drift monitoring, data quality across federated sites."""
+    import scripts.federation_dashboard as fd
+    return _json_safe(fd.overview())
+
+
+@app.get("/api/ai-federation/breakdown")
+async def ai_federation_breakdown():
+    """AI Federation breakdown — per-site detail with accuracy, drift,
+    data quality, sync status, and per-round aggregation results."""
+    import scripts.federation_dashboard as fd
+    return _json_safe(fd.breakdown())
+
+
+@app.get("/api/ai-federation/definitions")
+async def ai_federation_definitions():
+    """AI Federation definitions — federated learning, aggregation methods,
+    differential privacy, HIPAA multi-site compliance."""
+    import scripts.federation_dashboard as fd
+    return _json_safe(fd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

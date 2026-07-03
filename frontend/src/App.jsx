@@ -175,6 +175,7 @@ import ClinicalDataManagerDashboard from './components/ClinicalDataManagerDashbo
 import PatientCaregiverDashboard from './components/PatientCaregiverDashboard'
 import ClinicalPsychologistDashboard from './components/ClinicalPsychologistDashboard'
 import IoTEngineerDashboard from './components/IoTEngineerDashboard'
+import AIFederationDashboard from './components/AIFederationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -436,7 +437,8 @@ function App() {
     { id: 'clinical-data-manager', label: 'Clinical Data Manager' },
     { id: 'patient-caregiver', label: 'Patient / Caregiver' },
     { id: 'clinical-psychologist', label: 'Clinical Psychologist' },
-    { id: 'iot-engineer', label: 'IoT Engineer' }
+    { id: 'iot-engineer', label: 'IoT Engineer' },
+    { id: 'ai-federation', label: 'AI Federation' }
   ]
 
   // API Calls
@@ -1823,6 +1825,8 @@ function App() {
         return <ClinicalPsychologistDashboard />
       case 'iot-engineer':
         return <IoTEngineerDashboard />
+      case 'ai-federation':
+        return <AIFederationDashboard />
       default:
         return renderClassificationTab()
     }
