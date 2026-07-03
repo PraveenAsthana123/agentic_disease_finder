@@ -265,7 +265,7 @@
       "role": "Data Steward / Privacy Officer",
       "priority": "10/10",
       "fields": "180-200",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Dataset Registration",
         "PHI Assessment",
