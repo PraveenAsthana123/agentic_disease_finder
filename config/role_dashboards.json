@@ -5,7 +5,7 @@
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "🧠",
+      "icon": "\ud83e\udde0",
       "kpis": [
         {
           "label": "EEG reads pending",
@@ -62,7 +62,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "💬",
+      "icon": "\ud83d\udcac",
       "kpis": [
         {
           "label": "Comorbidity screen rate",
@@ -108,27 +108,27 @@
     },
     {
       "role": "Occupational Therapist",
-      "icon": "🖐️",
+      "icon": "\ud83d\udd90\ufe0f",
       "kpis": [
         {
           "label": "Functional outcome scores",
           "source": "outcomes",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "ADL independence index",
           "source": "outcomes",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Rehab sessions logged",
           "source": "transaction_log",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Goal attainment rate",
           "source": "outcomes",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -136,25 +136,25 @@
           "name": "Functional Outcome Report",
           "cadence": "monthly",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "ADL Progress Tracking",
           "cadence": "weekly",
           "format": "CSV",
-          "status": "planned"
+          "status": "built"
         },
         {
           "name": "Rehabilitation Plan Summary",
           "cadence": "per plan",
           "format": "PDF",
-          "status": "planned"
+          "status": "built"
         }
       ]
     },
     {
       "role": "EEG Technician",
-      "icon": "📡",
+      "icon": "\ud83d\udce1",
       "kpis": [
         {
           "label": "Recordings acquired",
@@ -200,7 +200,7 @@
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "🧩",
+      "icon": "\ud83e\udde9",
       "kpis": [
         {
           "label": "Neuropsych batteries done",
@@ -241,7 +241,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "🩻",
+      "icon": "\ud83e\ude7b",
       "kpis": [
         {
           "label": "MRI findings logged",
@@ -276,32 +276,32 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "📡",
+      "icon": "\ud83d\udce1",
       "kpis": [
         {
           "label": "Devices online",
           "source": "device registry (sim)",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Gateway uptime",
           "source": "gateway monitor (sim)",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Stream latency (ms)",
           "source": "device stream",
-          "status": "planned"
+          "status": "built"
         },
         {
           "label": "SOS alerts fired",
           "source": "transaction_log (alert)",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Battery/signal low",
           "source": "device telemetry",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -309,51 +309,51 @@
           "name": "Device Fleet Status",
           "cadence": "real-time",
           "format": "dashboard",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Gateway Health Report",
           "cadence": "daily",
           "format": "PDF/CSV",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Continuous Monitoring Summary",
           "cadence": "per patient",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Alert/SOS Audit",
           "cadence": "on-demand",
           "format": "CSV",
-          "status": "partial"
+          "status": "built"
         }
       ]
     },
     {
       "role": "AI Control Tower",
-      "icon": "🗼",
+      "icon": "\ud83d\uddfc",
       "kpis": [
         {
           "label": "Models monitored",
           "source": "model registry",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Drift alerts",
           "source": "drift monitor",
-          "status": "planned"
+          "status": "built"
         },
         {
           "label": "SLA breaches",
           "source": "transaction_log",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Cost / day",
           "source": "FinOps",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -361,19 +361,19 @@
           "name": "Control Tower Daily",
           "cadence": "daily",
           "format": "dashboard",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Model Health Report",
           "cadence": "weekly",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         }
       ]
     },
     {
       "role": "AI Security",
-      "icon": "🛡️",
+      "icon": "\ud83d\udee1\ufe0f",
       "kpis": [
         {
           "label": "Injection blocks",
@@ -388,12 +388,12 @@
         {
           "label": "Access denials",
           "source": "transaction_log",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Open vulnerabilities",
           "source": "scan",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -401,7 +401,7 @@
           "name": "Security Posture",
           "cadence": "weekly",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Threat / Injection Log",
@@ -413,27 +413,27 @@
     },
     {
       "role": "AI Risk",
-      "icon": "⚠️",
+      "icon": "\u26a0\ufe0f",
       "kpis": [
         {
           "label": "Risks identified",
           "source": "risk_management",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "High-risk open",
           "source": "risk_management",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Mitigations done",
           "source": "risk_management",
-          "status": "planned"
+          "status": "built"
         },
         {
           "label": "Residual risk",
           "source": "risk_management",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -441,19 +441,19 @@
           "name": "AI Risk Register",
           "cadence": "monthly",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Risk Heatmap",
           "cadence": "monthly",
           "format": "dashboard",
-          "status": "planned"
+          "status": "built"
         }
       ]
     },
     {
       "role": "AI Federation",
-      "icon": "🌐",
+      "icon": "\ud83c\udf10",
       "kpis": [
         {
           "label": "Sites onboarded",
@@ -493,7 +493,7 @@
     },
     {
       "role": "IS SOP",
-      "icon": "📑",
+      "icon": "\ud83d\udcd1",
       "kpis": [
         {
           "label": "SOPs published",
@@ -528,7 +528,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "⚖️",
+      "icon": "\u2696\ufe0f",
       "kpis": [
         {
           "label": "Decisions audited",

@@ -7702,6 +7702,31 @@ async def eeg_technician_definitions():
     return _json_safe(etd.definitions())
 
 
+# ── IoT Engineer Dashboard ────────────────────────────────────────────
+@app.get("/api/iot-engineer/overview")
+async def iot_engineer_overview():
+    """IoT Engineer overview — device fleet status, gateway uptime, stream
+    latency, SOS alerts, battery/signal health, alert distributions."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.overview())
+
+
+@app.get("/api/iot-engineer/breakdown")
+async def iot_engineer_breakdown():
+    """IoT Engineer breakdown — per-device detail with patient assignment,
+    gateway, battery, signal, firmware, alert history."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.breakdown())
+
+
+@app.get("/api/iot-engineer/definitions")
+async def iot_engineer_definitions():
+    """IoT Engineer definitions — IEC 62304, IEC 80001, HIPAA device
+    requirements, wearable EEG specs, gateway architecture, alert protocols."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.definitions())
+
+
 # ── Clinical Pharmacist Dashboard ──────────────────────────────────────
 @app.get("/api/clinical-pharmacist/overview")
 async def clinical_pharmacist_overview():

@@ -174,6 +174,7 @@ import IRBEthicsDashboard from './components/IRBEthicsDashboard'
 import ClinicalDataManagerDashboard from './components/ClinicalDataManagerDashboard'
 import PatientCaregiverDashboard from './components/PatientCaregiverDashboard'
 import ClinicalPsychologistDashboard from './components/ClinicalPsychologistDashboard'
+import IoTEngineerDashboard from './components/IoTEngineerDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -434,7 +435,8 @@ function App() {
     { id: 'irb-ethics', label: 'IRB / Ethics Officer' },
     { id: 'clinical-data-manager', label: 'Clinical Data Manager' },
     { id: 'patient-caregiver', label: 'Patient / Caregiver' },
-    { id: 'clinical-psychologist', label: 'Clinical Psychologist' }
+    { id: 'clinical-psychologist', label: 'Clinical Psychologist' },
+    { id: 'iot-engineer', label: 'IoT Engineer' }
   ]
 
   // API Calls
@@ -1819,6 +1821,8 @@ function App() {
         return <PatientCaregiverDashboard />
       case 'clinical-psychologist':
         return <ClinicalPsychologistDashboard />
+      case 'iot-engineer':
+        return <IoTEngineerDashboard />
       default:
         return renderClassificationTab()
     }
