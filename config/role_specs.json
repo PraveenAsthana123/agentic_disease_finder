@@ -291,13 +291,13 @@
         "Risk-Benefit",
         "Approval Workflow"
       ],
-      "note": "IRB Ethics Officer dashboard built — protocol compliance funnel, consent tracking, risk-benefit analysis, AI oversight, audit trail, vulnerable population flags, 8 KPI cards, 8-tab nav, 3 API endpoints verified 200"
+      "note": "IRB Ethics Officer dashboard built \u2014 protocol compliance funnel, consent tracking, risk-benefit analysis, AI oversight, audit trail, vulnerable population flags, 8 KPI cards, 8-tab nav, 3 API endpoints verified 200"
     },
     {
       "role": "Clinical Data Manager",
       "priority": "10/10",
       "fields": "200-220",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Data Quality",
         "Schema",
@@ -305,7 +305,7 @@
         "Validation Rules",
         "Versioning"
       ],
-      "note": "clinical DB + transaction log + vector ingest exist"
+      "note": "Clinical Data Manager Dashboard with 8-tab UI (overview/data quality/modality coverage/task catalog/dataset inventory/patient coverage/data lineage/definitions), 3 API endpoints, real data from clinical.db"
     },
     {
       "role": "Research Coordinator",

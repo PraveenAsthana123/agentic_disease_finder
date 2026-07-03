@@ -7697,6 +7697,54 @@ async def irb_ethics_definitions():
     return _json_safe(irb.definitions())
 
 
+@app.get("/api/data-steward/overview")
+async def data_steward_overview():
+    """Data Steward / Privacy Officer overview — PHI exposure, de-identification,
+    access control, audit trail, privacy risk scoring."""
+    import scripts.data_steward_dashboard as ds
+    return _json_safe(ds.overview())
+
+
+@app.get("/api/data-steward/breakdown")
+async def data_steward_breakdown():
+    """Data Steward / Privacy Officer breakdown — per-patient PHI assessment,
+    access logs, file analysis, incidents, retention."""
+    import scripts.data_steward_dashboard as ds
+    return _json_safe(ds.breakdown())
+
+
+@app.get("/api/data-steward/definitions")
+async def data_steward_definitions():
+    """Data Steward / Privacy Officer definitions — PHI, HIPAA Safe Harbor,
+    de-identification, data retention, privacy impact assessment."""
+    import scripts.data_steward_dashboard as ds
+    return _json_safe(ds.definitions())
+
+
+@app.get("/api/clinical-data-manager/overview")
+async def clinical_data_manager_overview():
+    """Clinical Data Manager overview — data quality dimensions, AI readiness,
+    modality coverage, missing data matrix, lineage, task status."""
+    import scripts.clinical_data_manager_dashboard as cdm
+    return _json_safe(cdm.overview())
+
+
+@app.get("/api/clinical-data-manager/breakdown")
+async def clinical_data_manager_breakdown():
+    """Clinical Data Manager breakdown — task catalog, dataset inventory,
+    per-patient coverage matrix, instrument distribution, archival."""
+    import scripts.clinical_data_manager_dashboard as cdm
+    return _json_safe(cdm.breakdown())
+
+
+@app.get("/api/clinical-data-manager/definitions")
+async def clinical_data_manager_definitions():
+    """Clinical Data Manager definitions — data quality concepts, AI readiness,
+    lineage, versioning, terminology mapping, compliance references."""
+    import scripts.clinical_data_manager_dashboard as cdm
+    return _json_safe(cdm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

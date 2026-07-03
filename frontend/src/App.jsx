@@ -161,6 +161,7 @@ import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
 import RNNLSTMDashboard from './components/RNNLSTMDashboard'
 import OccupationalTherapistDashboard from './components/OccupationalTherapistDashboard'
 import IRBEthicsDashboard from './components/IRBEthicsDashboard'
+import ClinicalDataManagerDashboard from './components/ClinicalDataManagerDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -408,7 +409,8 @@ function App() {
     { id: 'neuropsychologist', label: 'Neuropsychologist' },
     { id: 'psychiatrist', label: 'Psychiatrist' },
     { id: 'occupational-therapist', label: 'Occupational Therapist' },
-    { id: 'irb-ethics', label: 'IRB / Ethics Officer' }
+    { id: 'irb-ethics', label: 'IRB / Ethics Officer' },
+    { id: 'clinical-data-manager', label: 'Clinical Data Manager' }
   ]
 
   // API Calls
@@ -1767,6 +1769,8 @@ function App() {
         return <OccupationalTherapistDashboard />
       case 'irb-ethics':
         return <IRBEthicsDashboard />
+      case 'clinical-data-manager':
+        return <ClinicalDataManagerDashboard />
       default:
         return renderClassificationTab()
     }
