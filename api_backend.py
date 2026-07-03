@@ -8111,6 +8111,30 @@ async def emergency_caregiver_definitions():
     return _json_safe(ecd.definitions())
 
 
+@app.get("/api/medication-management/overview")
+async def medication_management_overview():
+    """Medication Self-Management overview — adherence rates, side effect profiles,
+    drug distribution, refill tracking, rescue medication usage, time-of-day adherence."""
+    import scripts.medication_management_dashboard as mmd
+    return _json_safe(mmd.overview())
+
+
+@app.get("/api/medication-management/breakdown")
+async def medication_management_breakdown():
+    """Medication Self-Management breakdown — per-patient drug lists, adherence rates,
+    missed doses, side effects, refill history, and recent adherence logs."""
+    import scripts.medication_management_dashboard as mmd
+    return _json_safe(mmd.breakdown())
+
+
+@app.get("/api/medication-management/definitions")
+async def medication_management_definitions():
+    """Medication Self-Management definitions — AED, therapeutic drug monitoring,
+    medication adherence, rescue medication, polytherapy, titration."""
+    import scripts.medication_management_dashboard as mmd
+    return _json_safe(mmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

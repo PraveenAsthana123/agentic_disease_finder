@@ -1,7 +1,7 @@
 {
   "title": "Patient Module — 8-Section Spec (~1,250 fields)",
   "note": "The foundation role. Honest section-by-section status (§155). Seizure Diary built as real CRUD; others tracked.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-07-03",
   "sections": [
     {"n": 1, "section": "Demographics", "fields": "30-40", "status": "partial",
      "items": ["Patient ID", "Study ID", "Name", "DOB", "Age", "Sex", "Height", "Weight", "Language", "Occupation", "Education", "Marital status"],
@@ -15,9 +15,9 @@
     {"n": 4, "section": "Trigger Tracking & Forecasting", "fields": "130-150", "status": "built",
      "items": ["Sleep", "Medication", "Stress", "Illness", "Hormonal", "Environmental", "Lifestyle", "Diet", "Trigger correlation engine", "Daily/24h/7d/30d risk score"],
      "note": "REAL: /api/trigger-tracking — 300 daily logs across 30 patients, trigger-seizure correlations, risk scoring, adherence impact, TriggerTrackingDashboard.jsx"},
-    {"n": 5, "section": "Medication Self-Management", "fields": "160-180", "status": "partial",
+    {"n": 5, "section": "Medication Self-Management", "fields": "160-180", "status": "built",
      "items": ["Med master list", "Daily tracking", "Missed/late dose", "Refill", "Side effects (8)", "Effectiveness", "Rescue med"],
-     "note": "medications form exists; daily adherence tracking planned"},
+     "note": "REAL: /api/medication-management — 12,600 adherence logs across 30 patients × 90 days × 2-3 AEDs, side effect tracking (12 types), refill management, adherence by drug/time-of-day, rescue med usage, MedicationManagementDashboard.jsx"},
     {"n": 6, "section": "Sleep/Mood/Cognition/QoL (PRO)", "fields": "150-170", "status": "partial",
      "items": ["Sleep", "Fatigue", "Mood", "Anxiety", "Memory", "Attention", "Daily function", "Social function", "Quality of Life"],
      "note": "assessments (PHQ-9/GAD-7) cover mood/anxiety; full PRO planned"},
@@ -27,6 +27,6 @@
     {"n": 8, "section": "Wearables & Digital Twin", "fields": "220-250", "status": "planned",
      "items": ["Device registration", "Heart biomarkers (HR/HRV)", "Sleep biomarkers", "Activity", "Stress", "Seizure detection signals", "Health score", "Seizure risk score", "Digital Twin", "Longitudinal outcomes (1yr/5yr)"]}
   ],
-  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 2, "partial": 4, "planned": 2,
+  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 3, "partial": 3, "planned": 2,
               "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."}
 }

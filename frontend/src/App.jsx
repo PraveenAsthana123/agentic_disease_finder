@@ -179,6 +179,7 @@ import AIFederationDashboard from './components/AIFederationDashboard'
 import ISSopDashboard from './components/ISSopDashboard'
 import TriggerTrackingDashboard from './components/TriggerTrackingDashboard'
 import EmergencyCaregiverDashboard from './components/EmergencyCaregiverDashboard'
+import MedicationManagementDashboard from './components/MedicationManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -444,7 +445,8 @@ function App() {
     { id: 'ai-federation', label: 'AI Federation' },
     { id: 'is-sop', label: 'IS SOP' },
     { id: 'trigger-tracking', label: 'Trigger Tracking' },
-    { id: 'emergency-caregiver', label: 'Emergency / Caregiver' }
+    { id: 'emergency-caregiver', label: 'Emergency / Caregiver' },
+    { id: 'medication-management', label: 'Medication Management' }
   ]
 
   // API Calls
@@ -1839,6 +1841,8 @@ function App() {
         return <TriggerTrackingDashboard />
       case 'emergency-caregiver':
         return <EmergencyCaregiverDashboard />
+      case 'medication-management':
+        return <MedicationManagementDashboard />
       default:
         return renderClassificationTab()
     }
