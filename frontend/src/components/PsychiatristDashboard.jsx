@@ -59,12 +59,29 @@ const AED_SEV_COLORS = {
   'high': '#ef4444',
 }
 
+const RISK_COLORS = {
+  'minimal': '#10b981',
+  'mild': '#f59e0b',
+  'moderate': '#f97316',
+  'severe': '#ef4444',
+}
+
+const TREATMENT_COLORS = {
+  'untreated': '#ef4444',
+  'under_treatment': '#f59e0b',
+  'stable': '#10b981',
+  'treatment_resistant': '#991b1b',
+  'none': '#94a3b8',
+}
+
 const TABS = [
   { id: 'overview', label: 'Overview' },
+  { id: 'comorbidity', label: 'Comorbidity & Risk' },
   { id: 'depression', label: 'Depression (PHQ-9)' },
   { id: 'anxiety', label: 'Anxiety (GAD-7)' },
   { id: 'suicidality', label: 'Suicidality (C-SSRS)' },
   { id: 'profiles', label: 'Patient Profiles' },
+  { id: 'assessment', label: 'Assessment Report' },
   { id: 'pnes', label: 'PNES Screening' },
   { id: 'aed-psych', label: 'AED Psychiatric Risk' },
   { id: 'definitions', label: 'Definitions' },
@@ -125,6 +142,12 @@ export default function PsychiatristDashboard() {
             <Card><KPI label="Avg GAD-7 Score" value={kpis.avg_gad7} sub="/21" color="#f59e0b" /></Card>
             <Card><KPI label="PNES Candidates" value={bd?.pnes_candidates?.length ?? '--'} color="#ec4899" /></Card>
           </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 20 }}>
+            <Card><KPI label="Comorbidity Screen Rate" value={kpis.comorbidity_screen_rate != null ? `${kpis.comorbidity_screen_rate}%` : '--'} sub={`${kpis.screened_patients || 0} screened`} color="#06b6d4" /></Card>
+            <Card><KPI label="Avg Behavioral Risk" value={kpis.avg_behavioral_risk} sub="/100" color="#f97316" /></Card>
+            <Card><KPI label="Referrals to Neurology" value={kpis.referrals_to_neurology} sub="AED review" color="#3b82f6" /></Card>
+            <Card><KPI label="High-Risk Patients" value={kpis.high_risk_patients} sub="risk ≥ 60" color="#ef4444" /></Card>
+          </div>
 
           {/* Charts Row */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 20 }}>
@@ -173,6 +196,120 @@ export default function PsychiatristDashboard() {
             </Card>
           </div>
         </>
+      )}
+
+      {/* Comorbidity & Risk Tab */}
+      {tab === 'comorbidity' && ov && bd && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <Card title="Psychiatric Comorbidity Distribution">
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={(ov.comorbidity_distribution || []).slice(0, 10)} layout="vertical"
+                margin={{ left: 120, right: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" allowDecimals={false} />
+                <YAxis type="category" dataKey="condition" tick={{ fontSize: 11 }} width={120} />
+                <Tooltip />
+                <Bar dataKey="count" fill="#06b6d4" radius={[0,4,4,0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card title="Behavioral Risk Severity">
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie data={ov.risk_severity_distribution || []} dataKey="count" nameKey="level"
+                  cx="50%" cy="50%" outerRadius={100}
+                  label={({ level, count }) => count > 0 ? `${level}: ${count}` : ''}>
+                  {(ov.risk_severity_distribution || []).map((e, i) => (
+                    <Cell key={i} fill={RISK_COLORS[e.level] || COLORS[i]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card title="Treatment Status" span={1}>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={ov.treatment_status || []}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="status" tick={{ fontSize: 11 }} />
+                <YAxis allowDecimals={false} />
+                <Tooltip />
+                <Bar dataKey="count" radius={[4,4,0,0]}>
+                  {(ov.treatment_status || []).map((e, i) => (
+                    <Cell key={i} fill={TREATMENT_COLORS[e.status] || COLORS[i]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card title={`Referral Summary (${ov.referral_summary?.total || 0} total)`}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+              <div style={{ textAlign: 'center', padding: 16, background: '#eff6ff', borderRadius: 8 }}>
+                <div style={{ fontSize: 32, fontWeight: 700, color: '#3b82f6' }}>{ov.referral_summary?.to_neurology || 0}</div>
+                <div style={{ fontSize: 12, color: '#64748b', marginTop: 4 }}>To Neurology</div>
+                <div style={{ fontSize: 11, color: '#94a3b8' }}>AED psychiatric review</div>
+              </div>
+              <div style={{ textAlign: 'center', padding: 16, background: '#f0fdf4', borderRadius: 8 }}>
+                <div style={{ fontSize: 32, fontWeight: 700, color: '#10b981' }}>{ov.referral_summary?.from_neurology || 0}</div>
+                <div style={{ fontSize: 12, color: '#64748b', marginTop: 4 }}>From Neurology</div>
+                <div style={{ fontSize: 11, color: '#94a3b8' }}>Comorbidity assessment</div>
+              </div>
+            </div>
+          </Card>
+          <Card title="Patient Comorbidity Detail" span={2}>
+            <div style={{ maxHeight: 400, overflow: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #e2e8f0', textAlign: 'left' }}>
+                    <th style={{ padding: '8px 6px' }}>Patient</th>
+                    <th style={{ padding: '8px 6px' }}>Comorbidities</th>
+                    <th style={{ padding: '8px 6px' }}>Risk Score</th>
+                    <th style={{ padding: '8px 6px' }}>Severity</th>
+                    <th style={{ padding: '8px 6px' }}>Treatment</th>
+                    <th style={{ padding: '8px 6px' }}>Screened</th>
+                    <th style={{ padding: '8px 6px' }}>Referrals</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bd.patient_profiles.filter(p => p.comorbidity_count > 0 || p.behavioral_risk_score != null).map(p => (
+                    <tr key={p.patient_id} style={{ borderBottom: '1px solid #f1f5f9',
+                      background: p.behavioral_risk_score >= 60 ? '#fef2f218' : undefined }}>
+                      <td style={{ padding: '6px', fontWeight: 600 }}>{p.patient_id}</td>
+                      <td style={{ padding: '6px', fontSize: 11, maxWidth: 200 }}>
+                        {p.comorbidities.length > 0
+                          ? p.comorbidities.map((c, i) => <div key={i}>{c}</div>)
+                          : <span style={{ color: '#94a3b8' }}>None identified</span>}
+                      </td>
+                      <td style={{ padding: '6px', fontWeight: 600,
+                        color: p.behavioral_risk_score >= 60 ? '#ef4444' : p.behavioral_risk_score >= 35 ? '#f97316' : '#10b981' }}>
+                        {p.behavioral_risk_score != null ? p.behavioral_risk_score : '--'}
+                      </td>
+                      <td style={{ padding: '6px' }}>
+                        {p.risk_severity && <Badge text={p.risk_severity} color={RISK_COLORS[p.risk_severity] || '#64748b'} />}
+                      </td>
+                      <td style={{ padding: '6px' }}>
+                        {p.treatment_status && p.treatment_status !== 'none' && (
+                          <Badge text={p.treatment_status.replace('_', ' ')} color={TREATMENT_COLORS[p.treatment_status] || '#64748b'} />
+                        )}
+                      </td>
+                      <td style={{ padding: '6px', textAlign: 'center' }}>
+                        {p.screened ? <span style={{ color: '#10b981', fontWeight: 600 }}>Yes</span>
+                          : <span style={{ color: '#ef4444' }}>No</span>}
+                      </td>
+                      <td style={{ padding: '6px', fontSize: 11 }}>
+                        {p.referrals.length > 0
+                          ? p.referrals.map((r, i) => (
+                            <div key={i}><Badge text={r.action.replace('refer_to_', '→ ')} color="#3b82f6" /></div>
+                          ))
+                          : '--'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </div>
       )}
 
       {/* Depression Tab */}
@@ -381,6 +518,104 @@ export default function PsychiatristDashboard() {
             </table>
           </div>
         </Card>
+      )}
+
+      {/* Assessment Report Tab */}
+      {tab === 'assessment' && bd && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
+          <Card title="Psychiatric Assessment Report — Per-Patient Summary">
+            <p style={{ fontSize: 12, color: '#64748b', margin: '0 0 12px' }}>
+              Comprehensive psychiatric assessment integrating PHQ-9, GAD-7, C-SSRS, NDDI-E, comorbidity screening, behavioral risk, and referral history.
+            </p>
+            <div style={{ maxHeight: 700, overflow: 'auto' }}>
+              {bd.patient_profiles.map(p => (
+                <div key={p.patient_id} style={{
+                  border: '1px solid #e2e8f0', borderRadius: 10, padding: 16, marginBottom: 12,
+                  background: p.behavioral_risk_score >= 60 ? '#fef2f208' : '#fff'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                    <div>
+                      <strong style={{ fontSize: 15, color: '#1e293b' }}>{p.patient_id}</strong>
+                      <span style={{ fontSize: 12, color: '#64748b', marginLeft: 8 }}>
+                        {p.age ? `${p.age}y` : ''} {p.gender || ''} — {p.disease || 'epilepsy'}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      {p.risk_severity && <Badge text={`Risk: ${p.risk_severity}`} color={RISK_COLORS[p.risk_severity] || '#64748b'} />}
+                      {p.behavioral_risk_score != null && (
+                        <Badge text={`Score: ${p.behavioral_risk_score}`}
+                          color={p.behavioral_risk_score >= 60 ? '#ef4444' : p.behavioral_risk_score >= 35 ? '#f97316' : '#10b981'} />
+                      )}
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, marginBottom: 10 }}>
+                    <div style={{ padding: 8, background: '#f8fafc', borderRadius: 6, textAlign: 'center' }}>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>PHQ-9</div>
+                      <div style={{ fontSize: 18, fontWeight: 700, color: SEVERITY_COLORS[p.phq9_level] || '#334155' }}>
+                        {p.latest_phq9 ?? '--'}
+                      </div>
+                      {p.phq9_level && <div style={{ fontSize: 10, color: '#94a3b8' }}>{p.phq9_level}</div>}
+                    </div>
+                    <div style={{ padding: 8, background: '#f8fafc', borderRadius: 6, textAlign: 'center' }}>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>GAD-7</div>
+                      <div style={{ fontSize: 18, fontWeight: 700, color: SEVERITY_COLORS[p.gad7_level] || '#334155' }}>
+                        {p.latest_gad7 ?? '--'}
+                      </div>
+                      {p.gad7_level && <div style={{ fontSize: 10, color: '#94a3b8' }}>{p.gad7_level}</div>}
+                    </div>
+                    <div style={{ padding: 8, background: '#f8fafc', borderRadius: 6, textAlign: 'center' }}>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>C-SSRS</div>
+                      <div style={{ fontSize: 18, fontWeight: 700, color: p.latest_cssrs > 0 ? '#ef4444' : '#10b981' }}>
+                        {p.latest_cssrs ?? '--'}
+                      </div>
+                    </div>
+                    <div style={{ padding: 8, background: '#f8fafc', borderRadius: 6, textAlign: 'center' }}>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>NDDI-E</div>
+                      <div style={{ fontSize: 18, fontWeight: 700, color: (p.latest_nddie || 0) >= 15 ? '#ef4444' : '#334155' }}>
+                        {p.latest_nddie ?? '--'}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, fontSize: 12 }}>
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#334155', marginBottom: 4 }}>Comorbidities</div>
+                      {p.comorbidities.length > 0
+                        ? p.comorbidities.map((c, i) => <div key={i} style={{ color: '#475569' }}>• {c}</div>)
+                        : <div style={{ color: '#94a3b8' }}>None identified</div>}
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#334155', marginBottom: 4 }}>Risk Flags</div>
+                      {p.risk_flags.length > 0
+                        ? p.risk_flags.map((f, i) => <div key={i} style={{ color: '#dc2626' }}>• {f}</div>)
+                        : <div style={{ color: '#10b981' }}>No flags</div>}
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#334155', marginBottom: 4 }}>Referrals & Status</div>
+                      {p.treatment_status && p.treatment_status !== 'none' && (
+                        <div style={{ marginBottom: 4 }}>
+                          Treatment: <Badge text={p.treatment_status.replace('_', ' ')} color={TREATMENT_COLORS[p.treatment_status] || '#64748b'} />
+                        </div>
+                      )}
+                      {p.referrals.length > 0
+                        ? p.referrals.map((r, i) => (
+                          <div key={i} style={{ color: '#475569' }}>• {r.action.replace('refer_to_', '→ ')} ({r.actor})</div>
+                        ))
+                        : <div style={{ color: '#94a3b8' }}>No referrals</div>}
+                      {p.screening_date && (
+                        <div style={{ color: '#94a3b8', marginTop: 4 }}>Screened: {p.screening_date}</div>
+                      )}
+                    </div>
+                  </div>
+                  {p.medications.length > 0 && (
+                    <div style={{ marginTop: 8, fontSize: 11, color: '#64748b' }}>
+                      <strong>Medications:</strong> {p.medications.join(', ')}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       )}
 
       {/* PNES Screening Tab */}

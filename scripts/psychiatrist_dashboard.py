@@ -163,6 +163,27 @@ def _load_daily_activity():
     return [{'date': d, **dict(v)} for d, v in sorted(timeline.items())]
 
 
+def _load_comorbidities():
+    """Load comorbidity screening records keyed by patient_id."""
+    rows = _db_query('SELECT patient_id, fields_json, created_at FROM comorbidities ORDER BY created_at DESC')
+    by_pt = {}
+    for r in rows:
+        pid = r['patient_id']
+        if pid not in by_pt:
+            by_pt[pid] = _safe_json(r['fields_json'])
+            by_pt[pid]['created_at'] = r['created_at']
+    return by_pt
+
+
+def _load_referrals():
+    """Load referral entries from transaction_log."""
+    rows = _db_query(
+        "SELECT patient_id, action, actor, detail, ts_local "
+        "FROM transaction_log WHERE component = 'referral' ORDER BY ts_utc DESC"
+    )
+    return rows
+
+
 def overview():
     """Return KPI cards + chart data for the psychiatrist overview tab."""
     phq9 = _load_assessments('PHQ9')
@@ -225,6 +246,36 @@ def overview():
     # Timeline
     timeline = _load_daily_activity()
 
+    # Comorbidity screening KPIs
+    comorb = _load_comorbidities()
+    screened_count = sum(1 for c in comorb.values() if c.get('screened'))
+    screen_rate = round(screened_count / len(psych_patients) * 100, 1) if psych_patients else 0
+    all_conditions = []
+    for c in comorb.values():
+        all_conditions.extend(c.get('comorbidities', []))
+    condition_dist = Counter(all_conditions)
+    condition_chart = [{'condition': k, 'count': v} for k, v in
+                       sorted(condition_dist.items(), key=lambda x: -x[1])]
+
+    # Behavioral risk score KPIs
+    risk_scores = [c.get('behavioral_risk_score', 0) for c in comorb.values()
+                   if c.get('behavioral_risk_score') is not None]
+    avg_risk = _avg(risk_scores)
+    risk_severity_dist = Counter(c.get('risk_severity', 'minimal') for c in comorb.values())
+    risk_chart = [{'level': lbl, 'count': risk_severity_dist.get(lbl, 0)}
+                  for lbl in ['minimal', 'mild', 'moderate', 'severe']]
+    high_risk_count = sum(1 for s in risk_scores if s >= 60)
+
+    # Referrals KPIs
+    referrals = _load_referrals()
+    refs_to_neuro = [r for r in referrals if r['action'] == 'refer_to_neurology']
+    refs_to_psych = [r for r in referrals if r['action'] == 'refer_to_psychiatry']
+
+    # Treatment status distribution
+    treatment_dist = Counter(c.get('treatment_status', 'none') for c in comorb.values()
+                             if c.get('comorbidity_count', 0) > 0)
+    treatment_chart = [{'status': k, 'count': v} for k, v in treatment_dist.items()]
+
     return {
         'kpis': {
             'total_patients': len(psych_patients),
@@ -237,12 +288,28 @@ def overview():
             'cssrs_positive': cssrs_positive,
             'avg_phq9': _avg(phq9_scores),
             'avg_gad7': _avg(gad7_scores),
+            'comorbidity_screen_rate': screen_rate,
+            'screened_patients': screened_count,
+            'avg_behavioral_risk': avg_risk,
+            'high_risk_patients': high_risk_count,
+            'referrals_to_neurology': len(refs_to_neuro),
+            'referrals_from_neurology': len(refs_to_psych),
+            'total_comorbidities': len(all_conditions),
+            'unique_conditions': len(condition_dist),
         },
         'phq9_severity': phq9_dist,
         'gad7_severity': gad7_dist,
         'cssrs_risk': cssrs_dist,
         'aed_psychiatric_risk': aed_risk_summary,
         'timeline': timeline,
+        'comorbidity_distribution': condition_chart,
+        'risk_severity_distribution': risk_chart,
+        'treatment_status': treatment_chart,
+        'referral_summary': {
+            'to_neurology': len(refs_to_neuro),
+            'from_neurology': len(refs_to_psych),
+            'total': len(referrals),
+        },
     }
 
 
@@ -255,6 +322,12 @@ def breakdown():
     patients = _load_patients()
     meds = _load_medications()
     seizure_counts = _load_seizure_counts()
+
+    comorb = _load_comorbidities()
+    referrals = _load_referrals()
+    refs_by_pt = defaultdict(list)
+    for r in referrals:
+        refs_by_pt[r['patient_id']].append(r)
 
     # Index by patient
     phq9_by_pt = defaultdict(list)
@@ -335,6 +408,10 @@ def breakdown():
                 if val is not None:
                     gad7_items.append({'item': label, 'score': val})
 
+        # Comorbidity data
+        pt_comorb = comorb.get(pid, {})
+        pt_refs = refs_by_pt.get(pid, [])
+
         profiles.append({
             'patient_id': pid,
             'name': pt.get('name', ''),
@@ -354,6 +431,18 @@ def breakdown():
             'gad7_items': gad7_items,
             'assessments_count': (len(phq9_by_pt[pid]) + len(gad7_by_pt[pid])
                                   + len(cssrs_by_pt[pid]) + len(nddie_by_pt[pid])),
+            'comorbidities': pt_comorb.get('comorbidities', []),
+            'comorbidity_count': pt_comorb.get('comorbidity_count', 0),
+            'behavioral_risk_score': pt_comorb.get('behavioral_risk_score'),
+            'risk_severity': pt_comorb.get('risk_severity'),
+            'screening_instruments': pt_comorb.get('screening_instruments', []),
+            'screened': pt_comorb.get('screened', False),
+            'screening_date': pt_comorb.get('screening_date'),
+            'treatment_status': pt_comorb.get('treatment_status'),
+            'functional_impact': pt_comorb.get('functional_impact'),
+            'referrals': [{'action': r['action'], 'actor': r['actor'],
+                           'detail': r['detail'], 'date': r['ts_local']}
+                          for r in pt_refs],
         })
 
     # PNES screening candidates: patients with high seizure burden + psychiatric flags

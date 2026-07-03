@@ -67,7 +67,7 @@
         {
           "label": "Comorbidity screen rate",
           "source": "comorbidities",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Depression/anxiety flags",
@@ -77,12 +77,12 @@
         {
           "label": "Behavioral risk score",
           "source": "neuropsych",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Referrals to neurology",
           "source": "transaction_log",
-          "status": "partial"
+          "status": "built"
         }
       ],
       "reports": [
@@ -90,7 +90,7 @@
           "name": "Psychiatric Assessment Report",
           "cadence": "per visit",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Mood/Anxiety Survey Summary",
