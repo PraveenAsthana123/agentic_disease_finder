@@ -8181,6 +8181,31 @@ async def demographics_definitions():
     return _json_safe(dd.definitions())
 
 
+@app.get("/api/wearables-digital-twin/overview")
+async def wearables_digital_twin_overview():
+    """Wearables & Digital Twin overview — device fleet status, biomarker averages,
+    seizure detection rate, health/risk scores, HRV distribution, sleep quality,
+    digital twin trajectory summaries."""
+    import scripts.wearables_digital_twin_dashboard as wdt
+    return _json_safe(wdt.overview())
+
+
+@app.get("/api/wearables-digital-twin/breakdown")
+async def wearables_digital_twin_breakdown():
+    """Wearables & Digital Twin breakdown — per-patient device info, reading summaries,
+    digital twin profiles with physiological baselines and longitudinal projections."""
+    import scripts.wearables_digital_twin_dashboard as wdt
+    return _json_safe(wdt.breakdown())
+
+
+@app.get("/api/wearables-digital-twin/definitions")
+async def wearables_digital_twin_definitions():
+    """Wearables & Digital Twin definitions — HRV, PPG, EDA, seizure detection,
+    digital twin, health/risk scores, sleep architecture, fall detection."""
+    import scripts.wearables_digital_twin_dashboard as wdt
+    return _json_safe(wdt.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -182,6 +182,7 @@ import EmergencyCaregiverDashboard from './components/EmergencyCaregiverDashboar
 import MedicationManagementDashboard from './components/MedicationManagementDashboard'
 import PROOutcomesDashboard from './components/PROOutcomesDashboard'
 import DemographicsDashboard from './components/DemographicsDashboard'
+import WearablesDigitalTwinDashboard from './components/WearablesDigitalTwinDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -450,7 +451,8 @@ function App() {
     { id: 'emergency-caregiver', label: 'Emergency / Caregiver' },
     { id: 'medication-management', label: 'Medication Management' },
     { id: 'pro-outcomes', label: 'PRO Outcomes' },
-    { id: 'demographics', label: 'Demographics' }
+    { id: 'demographics', label: 'Demographics' },
+    { id: 'wearables-digital-twin', label: 'Wearables & Digital Twin' }
   ]
 
   // API Calls
@@ -1851,6 +1853,8 @@ function App() {
         return <PROOutcomesDashboard />
       case 'demographics':
         return <DemographicsDashboard />
+      case 'wearables-digital-twin':
+        return <WearablesDigitalTwinDashboard />
       default:
         return renderClassificationTab()
     }

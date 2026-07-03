@@ -139,7 +139,7 @@
       "n": 8,
       "section": "Wearables & Digital Twin",
       "fields": "220-250",
-      "status": "planned",
+      "status": "built",
       "items": [
         "Device registration",
         "Heart biomarkers (HR/HRV)",
@@ -151,15 +151,16 @@
         "Seizure risk score",
         "Digital Twin",
         "Longitudinal outcomes (1yr/5yr)"
-      ]
+      ],
+      "note": "REAL: /api/wearables-digital-twin — 30 devices (6 types, 8 brands), 900 biomarker readings (30 patients × 30 days), HR/HRV/sleep/activity/stress/SpO2/skin temp, seizure+fall detection, health score (0-100), seizure risk score (0-100), digital twin with physiological baseline + sleep/activity/risk profiles + health trajectory + 1yr/5yr projections, 11 clinical definitions, WearablesDigitalTwinDashboard.jsx + nav wiring"
     }
   ],
   "summary": {
     "total_sections": 8,
     "total_fields": "~1250",
-    "built": 4,
-    "partial": 2,
-    "planned": 2,
+    "built": 7,
+    "partial": 1,
+    "planned": 0,
     "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."
   }
 }
