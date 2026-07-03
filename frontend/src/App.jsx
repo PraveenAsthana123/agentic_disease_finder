@@ -184,6 +184,7 @@ import PROOutcomesDashboard from './components/PROOutcomesDashboard'
 import DemographicsDashboard from './components/DemographicsDashboard'
 import WearablesDigitalTwinDashboard from './components/WearablesDigitalTwinDashboard'
 import SelfServiceDashboard from './components/SelfServiceDashboard'
+import QATestSuiteDashboard from './components/QATestSuiteDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -454,7 +455,8 @@ function App() {
     { id: 'pro-outcomes', label: 'PRO Outcomes' },
     { id: 'demographics', label: 'Demographics' },
     { id: 'wearables-digital-twin', label: 'Wearables & Digital Twin' },
-    { id: 'self-service', label: 'Self-Service Portal' }
+    { id: 'self-service', label: 'Self-Service Portal' },
+    { id: 'qa-test-suite', label: 'QA Test Suite' }
   ]
 
   // API Calls
@@ -1859,6 +1861,8 @@ function App() {
         return <WearablesDigitalTwinDashboard />
       case 'self-service':
         return <SelfServiceDashboard />
+      case 'qa-test-suite':
+        return <QATestSuiteDashboard />
       default:
         return renderClassificationTab()
     }

@@ -23,8 +23,8 @@
         "regression",
         "defect tracking"
       ],
-      "status": "partial",
-      "maps_to": "role_tests + stories-tests"
+      "status": "built",
+      "maps_to": "role_tests + stories-tests + /api/qa-test-suite/* + QATestSuiteDashboard.jsx"
     },
     {
       "role": "Security",

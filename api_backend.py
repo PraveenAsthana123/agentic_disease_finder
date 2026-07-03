@@ -8230,6 +8230,30 @@ async def self_service_definitions():
     return _json_safe(ssd.definitions())
 
 
+@app.get("/api/qa-test-suite/overview")
+async def qa_test_suite_overview():
+    """QA Test Suite overview — total tests, pass/partial/planned counts,
+    coverage %, per-dimension breakdown, per-role pass rates."""
+    import scripts.qa_test_suite_dashboard as qtsd
+    return _json_safe(qtsd.overview())
+
+
+@app.get("/api/qa-test-suite/breakdown")
+async def qa_test_suite_breakdown():
+    """QA Test Suite breakdown — per-role test cases with dimension/status,
+    user stories with persona/endpoint mapping, demo stories."""
+    import scripts.qa_test_suite_dashboard as qtsd
+    return _json_safe(qtsd.breakdown())
+
+
+@app.get("/api/qa-test-suite/definitions")
+async def qa_test_suite_definitions():
+    """QA Test Suite definitions — testing dimensions, coverage metrics,
+    pass/partial/planned methodology, role matrix, 9-dimension framework."""
+    import scripts.qa_test_suite_dashboard as qtsd
+    return _json_safe(qtsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
