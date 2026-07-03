@@ -9,7 +9,7 @@
     {"id": "EMG", "name": "EMG (Electromyography)", "purpose": "Muscle + motor-unit activity", "role": "Neurophysiologist", "output": "Denervation/myopathy", "eeg_link": "complements EEG in epilepsy with motor signs / myoclonus", "status": "built", "case_data": "MR RAMKESH NCV-EMG.pdf"},
     {"id": "BLINK", "name": "Blink Reflex", "purpose": "Trigeminal–facial brainstem circuit", "role": "Neurophysiologist", "output": "R1/R2 latency", "eeg_link": "complements EEG for brainstem assessment", "status": "built"},
     {"id": "SSEP", "name": "SSEP (Somatosensory Evoked Potentials)", "purpose": "Sensory pathway integrity", "role": "Neurophysiologist", "output": "Latency/amplitude", "eeg_link": "evoked-potential — giant SSEP linked to cortical myoclonus/epilepsy", "status": "built"},
-    {"id": "VEP", "name": "VEP (Visual Evoked Potentials)", "purpose": "Visual pathway (optic nerve→cortex)", "role": "Neurophysiologist", "output": "P100 latency", "eeg_link": "evoked-potential — photosensitive epilepsy / occipital involvement", "status": "partial", "case_data": "BABY KYRA KAPOOR VEP REPORT.pdf", "note": "backend endpoints built, frontend dashboard pending"},
+    {"id": "VEP", "name": "VEP (Visual Evoked Potentials)", "purpose": "Visual pathway (optic nerve→cortex)", "role": "Neurophysiologist", "output": "P100 latency", "eeg_link": "evoked-potential — photosensitive epilepsy / occipital involvement", "status": "built", "case_data": "BABY KYRA KAPOOR VEP REPORT.pdf"},
     {"id": "BERA", "name": "BERA / ABR (Brainstem Evoked Response)", "purpose": "Auditory brainstem pathway", "role": "Neurophysiologist", "output": "Wave I-V latencies", "eeg_link": "evoked-potential — brainstem integrity alongside EEG", "status": "built", "case_data": "MASTER ABBAS BERA REPORT.pdf"},
     {"id": "RNST", "name": "RNS/RNST (Repetitive Nerve Stimulation)", "purpose": "Neuromuscular junction", "role": "Neurophysiologist", "output": "Decrement %", "eeg_link": "independent (MG differential)", "status": "built"},
     {"id": "AUTONOMIC", "name": "Autonomic Function Tests", "purpose": "Autonomic nervous system", "role": "Neurologist", "output": "Battery", "eeg_link": "SUDEP risk — autonomic dysfunction is a key EEG-epilepsy comorbidity", "status": "cataloged"},
@@ -23,6 +23,6 @@
     {"test": "EMG", "link": "Motor — distinguishes epileptic myoclonus (cortical, EEG-correlated) from non-epileptic"},
     {"test": "NCV / RNS", "link": "Peripheral — independent of EEG; rules out systemic/peripheral mimics"}
   ],
-  "summary": {"total": 13, "built": 9, "partial": 3, "cataloged": 1,
-              "honest_note": "Built (9): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR — all have backend endpoints + frontend dashboards. Partial (3): VEP, ABPM (endpoints built, frontend pending), RR (wearable IoT). Cataloged (1): Autonomic (no endpoints/dashboard yet)."}
+  "summary": {"total": 13, "built": 10, "partial": 2, "cataloged": 1,
+              "honest_note": "Built (10): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP — all have backend endpoints + frontend dashboards. Partial (2): ABPM (endpoints built, frontend pending), RR (wearable IoT). Cataloged (1): Autonomic (no endpoints/dashboard yet)."}
 }
