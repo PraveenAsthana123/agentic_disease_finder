@@ -14,7 +14,7 @@
     {"id": "RNST", "name": "RNS/RNST (Repetitive Nerve Stimulation)", "purpose": "Neuromuscular junction", "role": "Neurophysiologist", "output": "Decrement %", "eeg_link": "independent (MG differential)", "status": "built"},
     {"id": "AUTONOMIC", "name": "Autonomic Function Tests", "purpose": "Autonomic nervous system", "role": "Neurologist", "output": "Battery", "eeg_link": "SUDEP risk — autonomic dysfunction is a key EEG-epilepsy comorbidity", "status": "cataloged"},
     {"id": "RR", "name": "RR Variation (HRV)", "purpose": "Cardiac autonomic / parasympathetic", "role": "Neurologist", "output": "RR interval variation", "eeg_link": "STRONG — peri-ictal HR change + SUDEP risk; pairs with EEG seizure timing", "status": "partial", "note": "wearable HR/HRV in IoT fleet"},
-    {"id": "ABPM", "name": "ABPM / Holter", "purpose": "24h BP + ECG monitoring", "role": "Cardiologist / Neurologist", "output": "BP/ECG trends", "eeg_link": "ictal arrhythmia detection alongside EEG (SUDEP)", "status": "partial", "note": "backend endpoints built, frontend dashboard pending"},
+    {"id": "ABPM", "name": "ABPM / Holter", "purpose": "24h BP + ECG monitoring", "role": "Cardiologist / Neurologist", "output": "BP/ECG trends", "eeg_link": "ictal arrhythmia detection alongside EEG (SUDEP)", "status": "built", "note": "ABPM/Holter dashboard — dipping status, arrhythmia burden, cardiac-autonomic scoring, 30 patients from clinical.db; 3 API endpoints verified 200, ABPMHolterDashboard.jsx + nav wired"},
     {"id": "SSR", "name": "SSR (Sympathetic Skin Response)", "purpose": "Sympathetic sudomotor function", "role": "Neurophysiologist", "output": "Latency/amplitude", "eeg_link": "autonomic involvement in epilepsy", "status": "built"}
   ],
   "eeg_linkage_summary": [
@@ -23,6 +23,6 @@
     {"test": "EMG", "link": "Motor — distinguishes epileptic myoclonus (cortical, EEG-correlated) from non-epileptic"},
     {"test": "NCV / RNS", "link": "Peripheral — independent of EEG; rules out systemic/peripheral mimics"}
   ],
-  "summary": {"total": 13, "built": 10, "partial": 2, "cataloged": 1,
-              "honest_note": "Built (10): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP — all have backend endpoints + frontend dashboards. Partial (2): ABPM (endpoints built, frontend pending), RR (wearable IoT). Cataloged (1): Autonomic (no endpoints/dashboard yet)."}
+  "summary": {"total": 13, "built": 11, "partial": 1, "cataloged": 1,
+              "honest_note": "Built (11): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP, ABPM/Holter — all have backend endpoints + frontend dashboards. Partial (1): RR (wearable IoT). Cataloged (1): Autonomic (no endpoints/dashboard yet)."}
 }

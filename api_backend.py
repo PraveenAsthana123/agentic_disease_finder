@@ -7770,6 +7770,32 @@ async def patient_caregiver_definitions():
     return _json_safe(pcd.definitions())
 
 
+# ── ABPM / Holter Dashboard ─────────────────────────────────────
+
+@app.get("/api/abpm-holter/overview")
+async def abpm_holter_overview():
+    """ABPM/Holter overview: KPIs, severity distribution, diagnostic patterns,
+    dipping distribution, per-patient summary. Real clinical.db data."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.overview())
+
+
+@app.get("/api/abpm-holter/breakdown")
+async def abpm_holter_breakdown():
+    """ABPM/Holter breakdown: ABPM parameter summaries, Holter parameter summaries,
+    histograms (systolic/dipping/QTc/PVC/cardiac score), per-patient detail cards."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.breakdown())
+
+
+@app.get("/api/abpm-holter/definitions")
+async def abpm_holter_definitions():
+    """ABPM/Holter definitions — protocol, parameters, reference ranges,
+    dipping categories, diagnostic patterns, severity levels, clinical significance."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -92,6 +92,7 @@ import EMGDashboard from './components/EMGDashboard'
 import RNSDashboard from './components/RNSDashboard'
 import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
+import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
@@ -346,6 +347,7 @@ function App() {
     { id: 'rns', label: 'RNS' },
     { id: 'bera', label: 'BERA' },
     { id: 'ssr', label: 'SSR' },
+    { id: 'abpm-holter', label: 'ABPM / Holter' },
     { id: 'data-versioning', label: 'Data Versioning' },
     { id: 'model-ops', label: 'Model Ops' },
     { id: 'mlops', label: 'MLOps' },
@@ -1639,6 +1641,8 @@ function App() {
         return <BeraDashboard />
       case 'ssr':
         return <SSRDashboard />
+      case 'abpm-holter':
+        return <ABPMHolterDashboard />
       case 'data-versioning':
         return <DataVersioningDashboard />
       case 'model-ops':
