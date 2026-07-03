@@ -7796,6 +7796,32 @@ async def abpm_holter_definitions():
     return _json_safe(abpm.definitions())
 
 
+# ── Autonomic Function Tests Dashboard ───────────────────────────
+
+@app.get("/api/autonomic/overview")
+async def autonomic_overview():
+    """Autonomic function tests overview: KPIs, severity distribution,
+    diagnostic patterns, histograms. Real clinical.db data."""
+    import scripts.autonomic_dashboard as aut
+    return _json_safe(aut.overview())
+
+
+@app.get("/api/autonomic/breakdown")
+async def autonomic_breakdown():
+    """Autonomic breakdown: per-patient parasympathetic + sympathetic test
+    results, CASI scores, SUDEP risk flags, expandable detail."""
+    import scripts.autonomic_dashboard as aut
+    return _json_safe(aut.breakdown())
+
+
+@app.get("/api/autonomic/definitions")
+async def autonomic_definitions():
+    """Autonomic definitions — Ewing battery, CASI, SUDEP risk assessment,
+    reference ranges, diagnostic patterns, clinical significance."""
+    import scripts.autonomic_dashboard as aut
+    return _json_safe(aut.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
