@@ -8278,6 +8278,32 @@ async def product_manager_definitions():
     return _json_safe(pmd.definitions())
 
 
+# ── Admin Panel Dashboard ────────────────────────────────────────────────
+
+@app.get("/api/admin-panel/overview")
+async def admin_panel_overview():
+    """Admin Panel overview — user management, feature flags, system health,
+    and configuration summary KPIs and distributions."""
+    import scripts.admin_dashboard as adm
+    return _json_safe(adm.overview())
+
+
+@app.get("/api/admin-panel/breakdown")
+async def admin_panel_breakdown():
+    """Admin Panel breakdown — full user list, feature flag details, system
+    health log, and configuration entries."""
+    import scripts.admin_dashboard as adm
+    return _json_safe(adm.breakdown())
+
+
+@app.get("/api/admin-panel/definitions")
+async def admin_panel_definitions():
+    """Admin Panel definitions — user management, feature flags, MFA,
+    system health, configuration management terminology."""
+    import scripts.admin_dashboard as adm
+    return _json_safe(adm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

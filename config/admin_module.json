@@ -12,7 +12,8 @@
         "system health",
         "config"
       ],
-      "status": "partial"
+      "status": "built",
+      "maps_to": "admin_users + feature_flags + system_health_log + system_config tables + /api/admin-panel/* + AdminDashboard.jsx"
     },
     {
       "role": "Tester / QA",

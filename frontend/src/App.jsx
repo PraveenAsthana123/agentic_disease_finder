@@ -186,6 +186,7 @@ import WearablesDigitalTwinDashboard from './components/WearablesDigitalTwinDash
 import SelfServiceDashboard from './components/SelfServiceDashboard'
 import QATestSuiteDashboard from './components/QATestSuiteDashboard'
 import ProductManagerDashboard from './components/ProductManagerDashboard'
+import AdminDashboard from './components/AdminDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -458,7 +459,8 @@ function App() {
     { id: 'wearables-digital-twin', label: 'Wearables & Digital Twin' },
     { id: 'self-service', label: 'Self-Service Portal' },
     { id: 'qa-test-suite', label: 'QA Test Suite' },
-    { id: 'product-manager', label: 'Product Manager' }
+    { id: 'product-manager', label: 'Product Manager' },
+    { id: 'admin-panel', label: 'Admin Panel' }
   ]
 
   // API Calls
@@ -1867,6 +1869,8 @@ function App() {
         return <QATestSuiteDashboard />
       case 'product-manager':
         return <ProductManagerDashboard />
+      case 'admin-panel':
+        return <AdminDashboard />
       default:
         return renderClassificationTab()
     }
