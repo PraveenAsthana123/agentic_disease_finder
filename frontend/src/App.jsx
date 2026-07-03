@@ -173,6 +173,7 @@ import EEGTechnicianDashboard from './components/EEGTechnicianDashboard'
 import IRBEthicsDashboard from './components/IRBEthicsDashboard'
 import ClinicalDataManagerDashboard from './components/ClinicalDataManagerDashboard'
 import PatientCaregiverDashboard from './components/PatientCaregiverDashboard'
+import ClinicalPsychologistDashboard from './components/ClinicalPsychologistDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -432,7 +433,8 @@ function App() {
     { id: 'eeg-technician', label: 'EEG Technician QC' },
     { id: 'irb-ethics', label: 'IRB / Ethics Officer' },
     { id: 'clinical-data-manager', label: 'Clinical Data Manager' },
-    { id: 'patient-caregiver', label: 'Patient / Caregiver' }
+    { id: 'patient-caregiver', label: 'Patient / Caregiver' },
+    { id: 'clinical-psychologist', label: 'Clinical Psychologist' }
   ]
 
   // API Calls
@@ -1815,6 +1817,8 @@ function App() {
         return <ClinicalDataManagerDashboard />
       case 'patient-caregiver':
         return <PatientCaregiverDashboard />
+      case 'clinical-psychologist':
+        return <ClinicalPsychologistDashboard />
       default:
         return renderClassificationTab()
     }

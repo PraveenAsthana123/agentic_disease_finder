@@ -5,7 +5,7 @@
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "\ud83e\udde0",
+      "icon": "🧠",
       "kpis": [
         {
           "label": "EEG reads pending",
@@ -62,7 +62,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "\ud83d\udcac",
+      "icon": "💬",
       "kpis": [
         {
           "label": "Comorbidity screen rate",
@@ -108,7 +108,7 @@
     },
     {
       "role": "Occupational Therapist",
-      "icon": "\ud83d\udd90\ufe0f",
+      "icon": "🖐️",
       "kpis": [
         {
           "label": "Functional outcome scores",
@@ -154,7 +154,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "kpis": [
         {
           "label": "Recordings acquired",
@@ -200,22 +200,22 @@
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "\ud83e\udde9",
+      "icon": "🧩",
       "kpis": [
         {
           "label": "Neuropsych batteries done",
           "source": "neuropsych",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Cognitive impairment flags",
           "source": "neuropsych",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Memory/attention deciles",
           "source": "neuropsych",
-          "status": "planned"
+          "status": "built"
         }
       ],
       "reports": [
@@ -223,7 +223,7 @@
           "name": "Neuropsychological Assessment",
           "cadence": "per battery",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Cognitive Profile Summary",
@@ -231,11 +231,17 @@
           "format": "PDF",
           "status": "built"
         }
+      ],
+      "dashboard_component": "ClinicalPsychologistDashboard",
+      "api_endpoints": [
+        "/api/clinical-psychologist/overview",
+        "/api/clinical-psychologist/breakdown",
+        "/api/clinical-psychologist/definitions"
       ]
     },
     {
       "role": "Radiologist",
-      "icon": "\ud83e\ude7b",
+      "icon": "🩻",
       "kpis": [
         {
           "label": "MRI findings logged",
@@ -270,7 +276,7 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "kpis": [
         {
           "label": "Devices online",
@@ -327,7 +333,7 @@
     },
     {
       "role": "AI Control Tower",
-      "icon": "\ud83d\uddfc",
+      "icon": "🗼",
       "kpis": [
         {
           "label": "Models monitored",
@@ -367,7 +373,7 @@
     },
     {
       "role": "AI Security",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "kpis": [
         {
           "label": "Injection blocks",
@@ -407,7 +413,7 @@
     },
     {
       "role": "AI Risk",
-      "icon": "\u26a0\ufe0f",
+      "icon": "⚠️",
       "kpis": [
         {
           "label": "Risks identified",
@@ -447,7 +453,7 @@
     },
     {
       "role": "AI Federation",
-      "icon": "\ud83c\udf10",
+      "icon": "🌐",
       "kpis": [
         {
           "label": "Sites onboarded",
@@ -487,7 +493,7 @@
     },
     {
       "role": "IS SOP",
-      "icon": "\ud83d\udcd1",
+      "icon": "📑",
       "kpis": [
         {
           "label": "SOPs published",
@@ -522,7 +528,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "\u2696\ufe0f",
+      "icon": "⚖️",
       "kpis": [
         {
           "label": "Decisions audited",

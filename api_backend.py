@@ -7956,6 +7956,34 @@ async def neurologist_definitions():
     return _json_safe(nrd.definitions())
 
 
+# ── Clinical Psychologist Dashboard ────────────────────────────────────
+@app.get("/api/clinical-psychologist/overview")
+async def clinical_psychologist_overview():
+    """Clinical Psychologist overview — neuropsych assessment counts, MoCA/MMSE
+    impairment rates, PHQ-9/GAD-7 distributions, cognitive index means,
+    lateralization hypothesis, referral reason distribution."""
+    import scripts.clinical_psychologist_dashboard as cpd
+    return _json_safe(cpd.overview())
+
+
+@app.get("/api/clinical-psychologist/breakdown")
+async def clinical_psychologist_breakdown():
+    """Clinical Psychologist breakdown — per-patient neuropsych detail with all
+    cognitive indices, mood scores, trail making, digit span, impairment flag,
+    lateralization, cognitive profile chart, memory lateralization cross-tab."""
+    import scripts.clinical_psychologist_dashboard as cpd
+    return _json_safe(cpd.breakdown())
+
+
+@app.get("/api/clinical-psychologist/definitions")
+async def clinical_psychologist_definitions():
+    """Clinical Psychologist definitions — PHQ-9, GAD-7, MoCA, MMSE, cognitive
+    indices, trail making, digit span, impairment levels, pre-surgical evaluation,
+    ILAE neuropsychology references."""
+    import scripts.clinical_psychologist_dashboard as cpd
+    return _json_safe(cpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
