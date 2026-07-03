@@ -8254,6 +8254,30 @@ async def qa_test_suite_definitions():
     return _json_safe(qtsd.definitions())
 
 
+@app.get("/api/product-manager/overview")
+async def product_manager_overview():
+    """Product Manager overview — overall readiness, stakeholder coverage,
+    process maturity, module completion, business-case levers."""
+    import scripts.product_manager_dashboard as pmd
+    return _json_safe(pmd.overview())
+
+
+@app.get("/api/product-manager/breakdown")
+async def product_manager_breakdown():
+    """Product Manager breakdown — per-stakeholder built/missing lists,
+    business-case levers, implementation phases, module details."""
+    import scripts.product_manager_dashboard as pmd
+    return _json_safe(pmd.breakdown())
+
+
+@app.get("/api/product-manager/definitions")
+async def product_manager_definitions():
+    """Product Manager definitions — readiness, maturity, business-case,
+    module completion, implementation phase terminology."""
+    import scripts.product_manager_dashboard as pmd
+    return _json_safe(pmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

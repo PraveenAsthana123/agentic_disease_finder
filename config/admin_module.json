@@ -70,8 +70,8 @@
         "ROI",
         "adoption"
       ],
-      "status": "partial",
-      "maps_to": "neurolab-readiness"
+      "status": "built",
+      "maps_to": "/api/product-manager/* + ProductManagerDashboard.jsx"
     },
     {
       "role": "AI Reviewer",
