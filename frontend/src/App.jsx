@@ -178,6 +178,7 @@ import IoTEngineerDashboard from './components/IoTEngineerDashboard'
 import AIFederationDashboard from './components/AIFederationDashboard'
 import ISSopDashboard from './components/ISSopDashboard'
 import TriggerTrackingDashboard from './components/TriggerTrackingDashboard'
+import EmergencyCaregiverDashboard from './components/EmergencyCaregiverDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -442,7 +443,8 @@ function App() {
     { id: 'iot-engineer', label: 'IoT Engineer' },
     { id: 'ai-federation', label: 'AI Federation' },
     { id: 'is-sop', label: 'IS SOP' },
-    { id: 'trigger-tracking', label: 'Trigger Tracking' }
+    { id: 'trigger-tracking', label: 'Trigger Tracking' },
+    { id: 'emergency-caregiver', label: 'Emergency / Caregiver' }
   ]
 
   // API Calls
@@ -1835,6 +1837,8 @@ function App() {
         return <ISSopDashboard />
       case 'trigger-tracking':
         return <TriggerTrackingDashboard />
+      case 'emergency-caregiver':
+        return <EmergencyCaregiverDashboard />
       default:
         return renderClassificationTab()
     }

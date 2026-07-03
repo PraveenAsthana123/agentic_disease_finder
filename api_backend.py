@@ -8087,6 +8087,30 @@ async def trigger_tracking_definitions():
     return _json_safe(ttd.definitions())
 
 
+@app.get("/api/emergency-caregiver/overview")
+async def emergency_caregiver_overview():
+    """Emergency Contact & Caregiver overview — contact coverage, caregiver training,
+    burden scores, safety plan rates, availability and role distributions."""
+    import scripts.emergency_caregiver_dashboard as ecd
+    return _json_safe(ecd.overview())
+
+
+@app.get("/api/emergency-caregiver/breakdown")
+async def emergency_caregiver_breakdown():
+    """Emergency Contact & Caregiver breakdown — per-patient emergency contacts,
+    caregiver profiles, training status, burden scores, and safety plans."""
+    import scripts.emergency_caregiver_dashboard as ecd
+    return _json_safe(ecd.breakdown())
+
+
+@app.get("/api/emergency-caregiver/definitions")
+async def emergency_caregiver_definitions():
+    """Emergency Contact & Caregiver definitions — seizure first aid, rescue medication,
+    caregiver burden, seizure action plan, emergency protocol, SUDEP awareness."""
+    import scripts.emergency_caregiver_dashboard as ecd
+    return _json_safe(ecd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

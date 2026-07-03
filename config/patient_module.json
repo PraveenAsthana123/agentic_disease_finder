@@ -6,8 +6,9 @@
     {"n": 1, "section": "Demographics", "fields": "30-40", "status": "partial",
      "items": ["Patient ID", "Study ID", "Name", "DOB", "Age", "Sex", "Height", "Weight", "Language", "Occupation", "Education", "Marital status"],
      "note": "patient_master + patients tables exist"},
-    {"n": 2, "section": "Emergency Contact & Caregiver", "fields": "90-100", "status": "planned",
-     "items": ["Emergency contact", "Relationship", "Caregiver profile", "Caregiver education", "First-aid training", "Caregiver burden (stress/sleep/work/burnout)", "Safety/emergency plan"]},
+    {"n": 2, "section": "Emergency Contact & Caregiver", "fields": "90-100", "status": "built",
+     "items": ["Emergency contact", "Relationship", "Caregiver profile", "Caregiver education", "First-aid training", "Caregiver burden (stress/sleep/work/burnout)", "Safety/emergency plan"],
+     "note": "REAL: /api/emergency-caregiver — 30 contacts + 30 caregivers, training status, burden scoring, safety plans, EmergencyCaregiverDashboard.jsx"},
     {"n": 3, "section": "Seizure Diary", "fields": "140-160", "status": "built",
      "items": ["Event date/time", "Duration", "Location", "Witnessed", "Aura", "Awareness", "Motor signs", "Injury", "Post-ictal", "Recovery time", "ER visit", "Rescue med", "auto-Severity", "Trigger"],
      "note": "REAL CRUD: /api/seizure-diary — auto severity score + monthly trend + stats"},
@@ -26,6 +27,6 @@
     {"n": 8, "section": "Wearables & Digital Twin", "fields": "220-250", "status": "planned",
      "items": ["Device registration", "Heart biomarkers (HR/HRV)", "Sleep biomarkers", "Activity", "Stress", "Seizure detection signals", "Health score", "Seizure risk score", "Digital Twin", "Longitudinal outcomes (1yr/5yr)"]}
   ],
-  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 1, "partial": 4, "planned": 3,
+  "summary": {"total_sections": 8, "total_fields": "~1250", "built": 2, "partial": 4, "planned": 2,
               "honest_note": "Seizure Diary (the #1 dataset) built as real CRUD. Full patient module ~1250 fields = multi-week; tracked here, built section by section."}
 }
