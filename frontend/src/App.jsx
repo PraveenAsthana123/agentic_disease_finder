@@ -187,6 +187,7 @@ import SelfServiceDashboard from './components/SelfServiceDashboard'
 import QATestSuiteDashboard from './components/QATestSuiteDashboard'
 import ProductManagerDashboard from './components/ProductManagerDashboard'
 import AdminDashboard from './components/AdminDashboard'
+import FunctionalBADashboard from './components/FunctionalBADashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -460,7 +461,8 @@ function App() {
     { id: 'self-service', label: 'Self-Service Portal' },
     { id: 'qa-test-suite', label: 'QA Test Suite' },
     { id: 'product-manager', label: 'Product Manager' },
-    { id: 'admin-panel', label: 'Admin Panel' }
+    { id: 'admin-panel', label: 'Admin Panel' },
+    { id: 'functional-ba', label: 'Functional / BA' }
   ]
 
   // API Calls
@@ -1871,6 +1873,8 @@ function App() {
         return <ProductManagerDashboard />
       case 'admin-panel':
         return <AdminDashboard />
+      case 'functional-ba':
+        return <FunctionalBADashboard />
       default:
         return renderClassificationTab()
     }

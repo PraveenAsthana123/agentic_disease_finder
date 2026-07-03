@@ -8304,6 +8304,30 @@ async def admin_panel_definitions():
     return _json_safe(adm.definitions())
 
 
+@app.get("/api/functional-ba/overview")
+async def functional_ba_overview():
+    """Functional/BA overview — requirements count, acceptance coverage,
+    UAT readiness by role, process maturity, functionality coverage."""
+    import scripts.functional_ba_dashboard as fbd
+    return _json_safe(fbd.overview())
+
+
+@app.get("/api/functional-ba/breakdown")
+async def functional_ba_breakdown():
+    """Functional/BA breakdown — requirements traceability, process detail,
+    functionality gaps, stakeholder gap analysis, per-role acceptance criteria."""
+    import scripts.functional_ba_dashboard as fbd
+    return _json_safe(fbd.breakdown())
+
+
+@app.get("/api/functional-ba/definitions")
+async def functional_ba_definitions():
+    """Functional/BA definitions — requirements traceability, acceptance criteria,
+    UAT readiness, process maturity, stakeholder gap analysis terminology."""
+    import scripts.functional_ba_dashboard as fbd
+    return _json_safe(fbd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -59,8 +59,8 @@
         "acceptance criteria",
         "UAT"
       ],
-      "status": "partial",
-      "maps_to": "stories-tests"
+      "status": "built",
+      "maps_to": "/api/functional-ba/* + FunctionalBADashboard.jsx — reads stories_and_tests.json + role_tests.json + neurolab_readiness.json + patient_module.json + admin_module.json"
     },
     {
       "role": "Product Manager",
