@@ -180,6 +180,7 @@ import ISSopDashboard from './components/ISSopDashboard'
 import TriggerTrackingDashboard from './components/TriggerTrackingDashboard'
 import EmergencyCaregiverDashboard from './components/EmergencyCaregiverDashboard'
 import MedicationManagementDashboard from './components/MedicationManagementDashboard'
+import PROOutcomesDashboard from './components/PROOutcomesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -446,7 +447,8 @@ function App() {
     { id: 'is-sop', label: 'IS SOP' },
     { id: 'trigger-tracking', label: 'Trigger Tracking' },
     { id: 'emergency-caregiver', label: 'Emergency / Caregiver' },
-    { id: 'medication-management', label: 'Medication Management' }
+    { id: 'medication-management', label: 'Medication Management' },
+    { id: 'pro-outcomes', label: 'PRO Outcomes' }
   ]
 
   // API Calls
@@ -1843,6 +1845,8 @@ function App() {
         return <EmergencyCaregiverDashboard />
       case 'medication-management':
         return <MedicationManagementDashboard />
+      case 'pro-outcomes':
+        return <PROOutcomesDashboard />
       default:
         return renderClassificationTab()
     }

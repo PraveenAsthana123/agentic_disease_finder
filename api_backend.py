@@ -8135,6 +8135,28 @@ async def medication_management_definitions():
     return _json_safe(mmd.definitions())
 
 
+@app.get("/api/pro-outcomes/overview")
+async def pro_outcomes_overview():
+    """PRO (Sleep/Mood/Cognition/QoL) overview — validated instrument scores,
+    depression/anxiety severity, sleep quality, QoL trends, domain averages."""
+    import scripts.pro_outcomes_dashboard as pod
+    return _json_safe(pod.overview())
+
+
+@app.get("/api/pro-outcomes/breakdown")
+async def pro_outcomes_breakdown():
+    """PRO breakdown — per-patient instrument scores, trends, and all assessments."""
+    import scripts.pro_outcomes_dashboard as pod
+    return _json_safe(pod.breakdown())
+
+
+@app.get("/api/pro-outcomes/definitions")
+async def pro_outcomes_definitions():
+    """PRO definitions — PSQI, ESS, PHQ-9, GAD-7, QOLIE-31, MoCA, NDDI-E, WPAI."""
+    import scripts.pro_outcomes_dashboard as pod
+    return _json_safe(pod.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
