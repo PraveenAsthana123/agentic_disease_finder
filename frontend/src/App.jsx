@@ -160,6 +160,7 @@ import CNNResNetDashboard from './components/CNNResNetDashboard'
 import NeurophysiologistDashboard from './components/NeurophysiologistDashboard'
 import RNNLSTMDashboard from './components/RNNLSTMDashboard'
 import OccupationalTherapistDashboard from './components/OccupationalTherapistDashboard'
+import IRBEthicsDashboard from './components/IRBEthicsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -406,7 +407,8 @@ function App() {
     { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' },
     { id: 'neuropsychologist', label: 'Neuropsychologist' },
     { id: 'psychiatrist', label: 'Psychiatrist' },
-    { id: 'occupational-therapist', label: 'Occupational Therapist' }
+    { id: 'occupational-therapist', label: 'Occupational Therapist' },
+    { id: 'irb-ethics', label: 'IRB / Ethics Officer' }
   ]
 
   // API Calls
@@ -1763,6 +1765,8 @@ function App() {
         return <PsychiatristDashboard />
       case 'occupational-therapist':
         return <OccupationalTherapistDashboard />
+      case 'irb-ethics':
+        return <IRBEthicsDashboard />
       default:
         return renderClassificationTab()
     }

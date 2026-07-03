@@ -284,14 +284,14 @@
       "role": "IRB / Ethics Officer",
       "priority": "10/10",
       "fields": "160-180",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Protocol Review",
         "Consent",
         "Risk-Benefit",
         "Approval Workflow"
       ],
-      "note": "IRB Board dept exists; full review workflow planned"
+      "note": "IRB Ethics Officer dashboard built — protocol compliance funnel, consent tracking, risk-benefit analysis, AI oversight, audit trail, vulnerable population flags, 8 KPI cards, 8-tab nav, 3 API endpoints verified 200"
     },
     {
       "role": "Clinical Data Manager",

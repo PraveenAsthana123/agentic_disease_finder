@@ -7672,6 +7672,31 @@ async def clinical_pharmacist_definitions():
     return _json_safe(pm.definitions())
 
 
+# ── IRB / Ethics Officer Dashboard ──────────────────────────────────────
+@app.get("/api/irb-ethics/overview")
+async def irb_ethics_overview():
+    """IRB/Ethics overview — protocol compliance, consent tracking, risk-benefit,
+    AI oversight, audit trail completeness."""
+    import scripts.irb_ethics_dashboard as irb
+    return _json_safe(irb.overview())
+
+
+@app.get("/api/irb-ethics/breakdown")
+async def irb_ethics_breakdown():
+    """IRB/Ethics breakdown — per-patient ethics profiles, component/actor audit,
+    data access log, vulnerable population flags."""
+    import scripts.irb_ethics_dashboard as irb
+    return _json_safe(irb.breakdown())
+
+
+@app.get("/api/irb-ethics/definitions")
+async def irb_ethics_definitions():
+    """IRB/Ethics definitions — IRB, informed consent, HITL, audit trail,
+    vulnerable populations, protocol compliance, AI oversight."""
+    import scripts.irb_ethics_dashboard as irb
+    return _json_safe(irb.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
