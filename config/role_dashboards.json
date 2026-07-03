@@ -494,21 +494,27 @@
     {
       "role": "IS SOP",
       "icon": "📑",
+      "dashboard_component": "ISSopDashboard",
+      "api_endpoints": [
+        "/api/is-sop/overview",
+        "/api/is-sop/breakdown",
+        "/api/is-sop/definitions"
+      ],
       "kpis": [
         {
           "label": "SOPs published",
-          "source": "docs",
-          "status": "partial"
+          "source": "is_sop_procedures",
+          "status": "built"
         },
         {
           "label": "Reviews due",
-          "source": "docs",
-          "status": "planned"
+          "source": "is_sop_procedures",
+          "status": "built"
         },
         {
           "label": "Compliance %",
-          "source": "audit",
-          "status": "partial"
+          "source": "is_sop_procedures",
+          "status": "built"
         }
       ],
       "reports": [
@@ -516,13 +522,13 @@
           "name": "SOP Compliance",
           "cadence": "monthly",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Procedure Index",
           "cadence": "on-demand",
           "format": "MD",
-          "status": "partial"
+          "status": "built"
         }
       ]
     },

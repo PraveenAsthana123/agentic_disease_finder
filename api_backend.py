@@ -8034,6 +8034,33 @@ async def ai_federation_definitions():
     return _json_safe(fd.definitions())
 
 
+# ── IS SOP Dashboard ──────────────────────────────────────────────────
+@app.get("/api/is-sop/overview")
+async def is_sop_overview():
+    """IS SOP overview — total SOPs, published/draft/review/retired counts,
+    reviews due, overdue, avg compliance score, audit finding summary,
+    compliance by category, status/category/finding/severity distributions."""
+    import scripts.is_sop_dashboard as isd
+    return _json_safe(isd.overview())
+
+
+@app.get("/api/is-sop/breakdown")
+async def is_sop_breakdown():
+    """IS SOP breakdown — per-procedure detail with associated audit records,
+    compliance scores, review dates, version history, and corrective actions."""
+    import scripts.is_sop_dashboard as isd
+    return _json_safe(isd.breakdown())
+
+
+@app.get("/api/is-sop/definitions")
+async def is_sop_definitions():
+    """IS SOP definitions — HIPAA Security Rule, 21 CFR Part 11, IEC 62443,
+    NIST CSF, ISO 27001, SOP lifecycle, compliance scoring, audit classifications,
+    EEG data security, AI model security, network segmentation."""
+    import scripts.is_sop_dashboard as isd
+    return _json_safe(isd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
