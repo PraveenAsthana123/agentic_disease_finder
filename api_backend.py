@@ -8061,6 +8061,32 @@ async def is_sop_definitions():
     return _json_safe(isd.definitions())
 
 
+@app.get("/api/trigger-tracking/overview")
+async def trigger_tracking_overview():
+    """Trigger Tracking & Forecasting overview — seizure trigger distribution,
+    daily factor logging stats, risk levels, factor-seizure correlations,
+    medication adherence impact, sleep vs seizure rate analysis."""
+    import scripts.trigger_tracking_dashboard as ttd
+    return _json_safe(ttd.overview())
+
+
+@app.get("/api/trigger-tracking/breakdown")
+async def trigger_tracking_breakdown():
+    """Trigger Tracking breakdown — per-patient trigger profiles, recent logs,
+    seizure rates, risk levels, adherence rates, and all raw log entries."""
+    import scripts.trigger_tracking_dashboard as ttd
+    return _json_safe(ttd.breakdown())
+
+
+@app.get("/api/trigger-tracking/definitions")
+async def trigger_tracking_definitions():
+    """Trigger Tracking definitions — seizure triggers, trigger diary, risk scoring,
+    medication adherence, sleep hygiene, photosensitivity, hormonal triggers,
+    trigger correlation engine, ILAE trigger classification."""
+    import scripts.trigger_tracking_dashboard as ttd
+    return _json_safe(ttd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
