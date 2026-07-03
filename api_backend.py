@@ -7648,6 +7648,30 @@ async def occupational_therapist_definitions():
     return _json_safe(otd.definitions())
 
 
+# ── Clinical Pharmacist Dashboard ──────────────────────────────────────
+@app.get("/api/clinical-pharmacist/overview")
+async def clinical_pharmacist_overview():
+    """Clinical pharmacist overview — medication inventory, adherence distribution,
+    drug interactions, pregnancy risk, ASM class breakdown."""
+    import scripts.pharmacist_module as pm
+    return _json_safe(pm.overview())
+
+
+@app.get("/api/clinical-pharmacist/breakdown")
+async def clinical_pharmacist_breakdown():
+    """Clinical pharmacist breakdown — per-patient medication profiles, interactions,
+    TDM, ADR, adherence, pregnancy safety."""
+    import scripts.pharmacist_module as pm
+    return _json_safe(pm.breakdown())
+
+
+@app.get("/api/clinical-pharmacist/definitions")
+async def clinical_pharmacist_definitions():
+    """Clinical pharmacist definitions — DDI, TDM, MMAS-8, CYP450, pregnancy categories."""
+    import scripts.pharmacist_module as pm
+    return _json_safe(pm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

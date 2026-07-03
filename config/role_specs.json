@@ -110,7 +110,7 @@
       "role": "Clinical Pharmacist",
       "priority": "9/10",
       "fields": "180-200",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Medication Inventory",
         "Adherence",
@@ -125,7 +125,7 @@
         "Risk",
         "Recommendation"
       ],
-      "note": "medications form exists; pharmacist workbench (interactions/TDM/MTM) planned"
+      "note": "Clinical Pharmacist dashboard \u2014 medication reconciliation, drug interaction check (12-pair KB, CYP450 overlaps), TDM with therapeutic ranges, ADR monitoring with overlapping ADR detection, pregnancy safety flags (Cat X/D/C), adherence assessment (MMAS-8 proxy + MPR heuristic), 16-drug ASM catalog, real data from clinical.db (5 patients, 9 medication records), 3 API endpoints (/api/clinical-pharmacist/overview|breakdown|definitions) verified 200, PharmacistDashboard.jsx + nav wiring"
     },
     {
       "role": "Epilepsy Nurse Coordinator",

@@ -582,3 +582,231 @@ def full_dashboard(patient_id: str = None):
         "pregnancy_safety": preg,
         "adherence": adh,
     }
+
+
+# ════════════════════════════════════════════════════════════════════════
+# 8. API Functions — overview / breakdown / definitions
+# ════════════════════════════════════════════════════════════════════════
+
+def overview():
+    """KPI cards + chart data for the Clinical Pharmacist dashboard."""
+    recon = medication_reconciliation()
+    interactions = drug_interaction_check()
+    adh = adherence_assessment()
+    preg = pregnancy_safety()
+    adr_data = adr_monitoring()
+
+    total_patients = recon["total_patients"]
+    total_meds = recon["total_medication_records"]
+
+    # Interaction totals
+    total_interactions = sum(r["interactions_found"] for r in interactions["results"])
+    major_ix = sum(r["severity_summary"]["major"] for r in interactions["results"])
+    moderate_ix = sum(r["severity_summary"]["moderate"] for r in interactions["results"])
+    minor_ix = sum(r["severity_summary"]["minor"] for r in interactions["results"])
+
+    # Adherence distribution
+    adh_summary = adh.get("summary", {})
+    adherence_distribution = [
+        {"name": "High", "value": adh_summary.get("high_adherence", 0)},
+        {"name": "Medium", "value": adh_summary.get("medium_adherence", 0)},
+        {"name": "Low", "value": adh_summary.get("low_adherence", 0)},
+    ]
+
+    # Drug class distribution
+    class_counts = {}
+    for pat in recon.get("reconciled", []):
+        for m in pat["medications"]:
+            cls = m.get("drug_class", "Unknown")
+            class_counts[cls] = class_counts.get(cls, 0) + 1
+    drug_class_distribution = [{"name": k, "value": v} for k, v in sorted(class_counts.items(), key=lambda x: -x[1])]
+
+    # Pregnancy risk distribution
+    preg_counts = {"contraindicated": 0, "high_risk": 0, "caution": 0, "unknown": 0}
+    for pat in preg.get("results", []):
+        for med in pat["medications"]:
+            rl = med.get("risk_level", "unknown")
+            preg_counts[rl] = preg_counts.get(rl, 0) + 1
+    pregnancy_risk_distribution = [{"name": k.replace("_", " ").title(), "value": v} for k, v in preg_counts.items() if v > 0]
+
+    # Interaction severity breakdown
+    interaction_severity = [
+        {"name": "Major", "value": major_ix},
+        {"name": "Moderate", "value": moderate_ix},
+        {"name": "Minor", "value": minor_ix},
+    ]
+
+    # ADR overlap count
+    total_overlapping = sum(len(r["overlapping_adrs"]) for r in adr_data["results"])
+
+    return {
+        "kpis": {
+            "total_patients": total_patients,
+            "total_medication_records": total_meds,
+            "total_interactions": total_interactions,
+            "major_interactions": major_ix,
+            "asm_catalog_size": len(ASM_CATALOG),
+            "interaction_kb_size": len(INTERACTIONS),
+            "low_adherence_patients": adh_summary.get("low_adherence", 0),
+            "avg_mmas8": adh_summary.get("avg_mmas8", 0),
+            "avg_mpr": adh_summary.get("avg_mpr", 0),
+            "overlapping_adr_count": total_overlapping,
+        },
+        "adherence_distribution": adherence_distribution,
+        "drug_class_distribution": drug_class_distribution,
+        "pregnancy_risk_distribution": pregnancy_risk_distribution,
+        "interaction_severity": interaction_severity,
+    }
+
+
+def breakdown():
+    """Per-patient detail tables for the Clinical Pharmacist dashboard."""
+    recon = medication_reconciliation()
+    interactions = drug_interaction_check()
+    adh = adherence_assessment()
+    preg = pregnancy_safety()
+    adr_data = adr_monitoring()
+    tdm = therapeutic_drug_monitoring()
+
+    # Per-patient medication list
+    medication_inventory = []
+    for pat in recon.get("reconciled", []):
+        entries = []
+        for m in pat["medications"]:
+            entries.append({
+                "drug": m["drug_name"],
+                "brand": m.get("brand", "—"),
+                "drug_class": m.get("drug_class", "Unknown"),
+                "dose_mg": m.get("dose_mg"),
+                "frequency": m.get("frequency", "Unknown"),
+                "therapeutic_range": m.get("therapeutic_range_mcg_ml"),
+            })
+        medication_inventory.append({
+            "patient_id": pat["patient_id"],
+            "medications": entries,
+        })
+
+    # Per-patient interactions
+    interaction_details = []
+    for pat in interactions.get("results", []):
+        interaction_details.append({
+            "patient_id": pat["patient_id"],
+            "drugs_checked": pat["drugs_checked"],
+            "interactions": pat["interactions"],
+            "severity_summary": pat["severity_summary"],
+            "cyp_enzyme_overlaps": pat.get("cyp_enzyme_overlaps", {}),
+        })
+
+    # Per-patient adherence
+    adherence_details = []
+    for pat in adh.get("results", []):
+        adherence_details.append({
+            "patient_id": pat["patient_id"],
+            "medications": pat["medications"],
+            "drug_count": pat["drug_count"],
+            "mpr_estimate": pat["mpr_estimate"],
+            "mpr_adherent": pat["mpr_adherent"],
+            "mmas8_proxy_score": pat["mmas8_proxy_score"],
+            "mmas8_level": pat["mmas8_level"],
+            "coaching_notes": pat["coaching_notes"],
+            "seizure_gap_flag": pat["seizure_gap_flag"],
+        })
+
+    # Per-patient ADR profiles
+    adr_profiles = []
+    for pat in adr_data.get("results", []):
+        adr_profiles.append({
+            "patient_id": pat["patient_id"],
+            "medications": pat["medications"],
+            "total_unique_adrs": pat["total_unique_adrs"],
+            "overlapping_adrs": pat["overlapping_adrs"],
+            "high_risk_flags": pat.get("high_risk_flags", []),
+        })
+
+    # Per-patient pregnancy safety
+    pregnancy_details = []
+    for pat in preg.get("results", []):
+        pregnancy_details.append({
+            "patient_id": pat["patient_id"],
+            "medications": pat["medications"],
+            "contraindicated_count": pat["contraindicated_count"],
+            "high_risk_count": pat["high_risk_count"],
+            "urgent_alert": pat["urgent_alert"],
+            "folate_supplementation_needed": pat["folate_supplementation_needed"],
+        })
+
+    # Per-patient TDM
+    tdm_details = []
+    for pat in tdm.get("results", []):
+        tdm_details.append({
+            "patient_id": pat["patient_id"],
+            "medications_monitored": pat["medications_monitored"],
+            "tdm": pat["tdm"],
+        })
+
+    return {
+        "medication_inventory": medication_inventory,
+        "interaction_details": interaction_details,
+        "adherence_details": adherence_details,
+        "adr_profiles": adr_profiles,
+        "pregnancy_details": pregnancy_details,
+        "tdm_details": tdm_details,
+    }
+
+
+def definitions():
+    """Pharmacology concepts, quality metrics, compliance refs, remediation."""
+    return {
+        "concepts": [
+            {
+                "term": "Medication Reconciliation",
+                "definition": "The process of comparing a patient's medication orders to all medications the patient has been taking, identifying discrepancies, and documenting changes to ensure accurate and complete medication information at each transition of care.",
+            },
+            {
+                "term": "Drug Interaction (DDI)",
+                "definition": "A change in a drug's effect when taken with another drug, food, or supplement. In epilepsy, ASM-ASM interactions are common due to shared CYP450 metabolism pathways and can cause toxicity or loss of seizure control.",
+            },
+            {
+                "term": "Therapeutic Drug Monitoring (TDM)",
+                "definition": "Laboratory measurement of drug concentrations in blood/serum to optimize dosing, ensure therapeutic efficacy, and avoid toxicity. Essential for ASMs with narrow therapeutic indices (phenytoin, carbamazepine, valproate).",
+            },
+            {
+                "term": "MMAS-8 (Morisky Medication Adherence Scale)",
+                "definition": "A validated 8-item self-report measure of medication-taking behavior. Scores range from 0 to 8: high adherence (8), medium (6-7), low (<6). Used as a proxy here via observable risk factors.",
+            },
+            {
+                "term": "MPR (Medication Possession Ratio)",
+                "definition": "The ratio of days' supply of medication dispensed to the number of days in the measurement period. MPR >= 0.80 is generally considered adherent. Approximated from prescription record density.",
+            },
+            {
+                "term": "ADR (Adverse Drug Reaction)",
+                "definition": "An unwanted or harmful reaction experienced after administration of a drug, suspected to be related to the drug. ADR profiling identifies overlapping side effects from polypharmacy that compound patient burden.",
+            },
+            {
+                "term": "CYP450 Enzyme System",
+                "definition": "The cytochrome P450 superfamily of enzymes responsible for metabolizing most ASMs. Key isoforms: CYP3A4, CYP2C9, CYP2C19, UGT1A4. Enzyme induction/inhibition is the primary mechanism of ASM-ASM interactions.",
+            },
+            {
+                "term": "Pregnancy Risk Categories",
+                "definition": "FDA categories rating teratogenic risk: Category C (animal risk, no human data), Category D (positive human fetal risk evidence), Category X (contraindicated — known teratogen). Valproate is Category X due to neural tube defect risk.",
+            },
+        ],
+        "quality_metrics": [
+            {"metric": "Interaction Detection Rate", "description": "Percentage of patients screened for pairwise drug interactions from the ASM knowledge base.", "target": "100%"},
+            {"metric": "Adherence Screening Rate", "description": "Percentage of patients with MMAS-8 and MPR adherence assessment completed.", "target": "100%"},
+            {"metric": "TDM Compliance", "description": "Percentage of patients on narrow-therapeutic-index drugs with serum level monitoring documented.", "target": ">90%"},
+            {"metric": "Pregnancy Flag Rate", "description": "Percentage of reproductive-age patients on Category D/X drugs with documented counseling.", "target": "100%"},
+        ],
+        "compliance_references": [
+            {"standard": "ASHP Guidelines", "description": "American Society of Health-System Pharmacists guidelines on medication reconciliation and pharmacist-led medication management."},
+            {"standard": "ILAE Pharmacology", "description": "International League Against Epilepsy commission on therapeutic strategies and pharmacological treatment of epilepsy."},
+            {"standard": "FDA AED Labels", "description": "FDA-approved prescribing information for anti-epileptic drugs including black box warnings, drug interactions, and pregnancy categories."},
+            {"standard": "HIPAA", "description": "Health Insurance Portability and Accountability Act — patient medication data privacy and security requirements."},
+        ],
+        "remediation_strategies": [
+            {"strategy": "Polypharmacy Simplification", "description": "Review patients on 3+ ASMs for potential simplification: switch to broad-spectrum monotherapy or rational duotherapy to reduce interaction burden and improve adherence."},
+            {"strategy": "TDM-Guided Dose Optimization", "description": "Implement routine trough-level monitoring for phenytoin, carbamazepine, and valproate. Adjust doses to target therapeutic range. Recheck after co-medication changes."},
+            {"strategy": "Adherence Intervention Program", "description": "For low-adherence patients: implement pillbox dispensing, medication reminders, simplify to once/twice-daily formulations, address ADR burden driving non-adherence."},
+            {"strategy": "Reproductive Counseling Protocol", "description": "Flag all reproductive-age patients on Category D/X ASMs. Ensure documented contraception plan, folate supplementation, and pre-conception ASM review."},
+        ],
+    }
