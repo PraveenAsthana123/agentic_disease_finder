@@ -38,6 +38,7 @@ import InferenceGPUDashboard from './components/InferenceGPUDashboard'
 import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
 import PharmacistDashboard from './components/PharmacistDashboard'
+import NeuropsychologistDashboard from './components/NeuropsychologistDashboard'
 import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
 import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
@@ -400,7 +401,8 @@ function App() {
     { id: 'neurosurgeon', label: 'Neurosurgeon / Epilepsy Surgery' },
     { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' },
     { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
-    { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' }
+    { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' },
+    { id: 'neuropsychologist', label: 'Neuropsychologist' }
   ]
 
   // API Calls
@@ -1751,6 +1753,8 @@ function App() {
         return <NeurophysiologistDashboard />
       case 'rnn-lstm':
         return <RNNLSTMDashboard />
+      case 'neuropsychologist':
+        return <NeuropsychologistDashboard />
       default:
         return renderClassificationTab()
     }

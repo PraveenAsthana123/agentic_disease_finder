@@ -205,7 +205,7 @@
       "role": "Neuropsychologist",
       "priority": "9/10",
       "fields": "200-250",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Cognition",
         "Memory",
@@ -214,7 +214,7 @@
         "Processing Speed",
         "IQ"
       ],
-      "note": "neuropsych form exists; full battery scoring planned"
+      "note": "Neuropsychologist dashboard built: WAIS-IV profiles (FSIQ + VCI/PRI/WMI/PSI index scores), Digit Span (forward/backward/sequencing), MoCA/MMSE cognitive screening, per-patient cognitive profiles with risk factors, AED cognitive side-effect analysis, mood comorbidity (PHQ-9/GAD-7), IQ distribution, radar index chart, 8 neuropsychology definitions + 4 quality metrics + 3 compliance + 4 remediation, 3 API endpoints, NeuropsychologistDashboard.jsx + nav wiring"
     },
     {
       "role": "Psychiatrist",

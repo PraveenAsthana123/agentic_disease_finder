@@ -7573,6 +7573,31 @@ async def rnn_lstm_definitions():
     return _json_safe(rld.definitions())
 
 
+# ── Neuropsychologist Dashboard ────────────────────────────────────────────
+@app.get("/api/neuropsychologist/overview")
+async def neuropsychologist_overview():
+    """Neuropsychologist overview — IQ distribution, WAIS index profile,
+    MoCA/MMSE screening, digit span, AED cognitive risk, mood comorbidity."""
+    import scripts.neuropsychologist_dashboard as npsd
+    return _json_safe(npsd.overview())
+
+
+@app.get("/api/neuropsychologist/breakdown")
+async def neuropsychologist_breakdown():
+    """Neuropsychologist breakdown — WAIS profiles, digit span detail,
+    cognitive screening, per-patient cognitive profiles with risk factors."""
+    import scripts.neuropsychologist_dashboard as npsd
+    return _json_safe(npsd.breakdown())
+
+
+@app.get("/api/neuropsychologist/definitions")
+async def neuropsychologist_definitions():
+    """Neuropsychologist definitions — WAIS, MoCA, MMSE, digit span,
+    executive function, processing speed, AED cognitive effects."""
+    import scripts.neuropsychologist_dashboard as npsd
+    return _json_safe(npsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
