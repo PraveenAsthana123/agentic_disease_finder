@@ -240,12 +240,12 @@
         {
           "label": "MRI findings logged",
           "source": "mri_findings",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "Lesion-positive rate",
           "source": "mri_findings",
-          "status": "partial"
+          "status": "built"
         },
         {
           "label": "EEG-MRI concordance",
@@ -258,13 +258,13 @@
           "name": "Neuroimaging Report",
           "cadence": "per scan",
           "format": "PDF",
-          "status": "partial"
+          "status": "built"
         },
         {
           "name": "Structural Findings Summary",
           "cadence": "monthly",
           "format": "PDF",
-          "status": "planned"
+          "status": "built"
         }
       ]
     },

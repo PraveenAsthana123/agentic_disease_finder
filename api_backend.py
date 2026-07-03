@@ -7598,6 +7598,31 @@ async def neuropsychologist_definitions():
     return _json_safe(npsd.definitions())
 
 
+# ── Radiologist Dashboard ──────────────────────────────────────────────────
+@app.get("/api/radiologist/overview")
+async def radiologist_overview():
+    """Radiologist overview — MRI findings, lesion-positive rate, lesion type
+    distribution, location/laterality breakdown, hippocampal sclerosis stats."""
+    import scripts.radiologist_dashboard as rdd
+    return _json_safe(rdd.overview())
+
+
+@app.get("/api/radiologist/breakdown")
+async def radiologist_breakdown():
+    """Radiologist breakdown — per-patient MRI findings with lesion type, location,
+    laterality, volume asymmetry, T2/FLAIR signal, linked EEG analysis."""
+    import scripts.radiologist_dashboard as rdd
+    return _json_safe(rdd.breakdown())
+
+
+@app.get("/api/radiologist/definitions")
+async def radiologist_definitions():
+    """Radiologist definitions — neuroradiology concepts: MRI protocol, hippocampal
+    sclerosis, FCD, cavernoma, AVM, lesional classification, ILAE references."""
+    import scripts.radiologist_dashboard as rdd
+    return _json_safe(rdd.definitions())
+
+
 # ── Psychiatrist Dashboard ─────────────────────────────────────────────────
 @app.get("/api/psychiatrist/overview")
 async def psychiatrist_overview():

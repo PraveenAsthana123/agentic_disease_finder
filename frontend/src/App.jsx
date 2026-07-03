@@ -39,6 +39,7 @@ import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
 import PharmacistDashboard from './components/PharmacistDashboard'
 import NeuropsychologistDashboard from './components/NeuropsychologistDashboard'
+import RadiologistDashboard from './components/RadiologistDashboard'
 import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
 import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
@@ -425,6 +426,7 @@ function App() {
     { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
     { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' },
     { id: 'neuropsychologist', label: 'Neuropsychologist' },
+    { id: 'radiologist', label: 'Radiologist' },
     { id: 'psychiatrist', label: 'Psychiatrist' },
     { id: 'occupational-therapist', label: 'Occupational Therapist' },
     { id: 'eeg-technician', label: 'EEG Technician QC' },
@@ -1799,6 +1801,8 @@ function App() {
         return <RNNLSTMDashboard />
       case 'neuropsychologist':
         return <NeuropsychologistDashboard />
+      case 'radiologist':
+        return <RadiologistDashboard />
       case 'psychiatrist':
         return <PsychiatristDashboard />
       case 'occupational-therapist':
