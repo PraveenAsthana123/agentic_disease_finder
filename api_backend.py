@@ -7745,6 +7745,31 @@ async def clinical_data_manager_definitions():
     return _json_safe(cdm.definitions())
 
 
+# ── Patient / Caregiver Dashboard ──────────────────────────────────────
+@app.get("/api/patient-caregiver/overview")
+async def patient_caregiver_overview():
+    """Patient/Caregiver overview — seizure summary, mood overview, QoL,
+    trigger distribution, appointment status."""
+    import scripts.patient_caregiver_dashboard as pcd
+    return _json_safe(pcd.overview())
+
+
+@app.get("/api/patient-caregiver/breakdown")
+async def patient_caregiver_breakdown():
+    """Patient/Caregiver breakdown — seizure diary, patient profiles,
+    medication list, appointment list, seizure timeline, risk alerts."""
+    import scripts.patient_caregiver_dashboard as pcd
+    return _json_safe(pcd.breakdown())
+
+
+@app.get("/api/patient-caregiver/definitions")
+async def patient_caregiver_definitions():
+    """Patient/Caregiver definitions — seizure diary, PHQ-9, GAD-7,
+    QOLIE-31, triggers, rescue meds, Barthel, adherence."""
+    import scripts.patient_caregiver_dashboard as pcd
+    return _json_safe(pcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

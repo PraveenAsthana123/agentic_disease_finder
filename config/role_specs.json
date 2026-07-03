@@ -62,7 +62,7 @@
       "role": "Patient / Caregiver",
       "priority": "10/10",
       "fields": "250-300",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Master Profile",
         "Self-Service Portal",
@@ -73,7 +73,7 @@
         "Caregiver Dashboard",
         "Digital Twin"
       ],
-      "note": "Patient Master + portal tabs registry exist; full self-service portal + diary + digital twin planned"
+      "note": "Patient & Caregiver dashboard with seizure diary, mood/QoL tracking, medication overview, appointments, patient profiles, risk alerts; 3 API endpoints verified 200"
     },
     {
       "role": "Clinical Psychologist",
