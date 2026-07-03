@@ -13,7 +13,7 @@
     {"id": "BERA", "name": "BERA / ABR (Brainstem Evoked Response)", "purpose": "Auditory brainstem pathway", "role": "Neurophysiologist", "output": "Wave I-V latencies", "eeg_link": "evoked-potential — brainstem integrity alongside EEG", "status": "built", "case_data": "MASTER ABBAS BERA REPORT.pdf"},
     {"id": "RNST", "name": "RNS/RNST (Repetitive Nerve Stimulation)", "purpose": "Neuromuscular junction", "role": "Neurophysiologist", "output": "Decrement %", "eeg_link": "independent (MG differential)", "status": "built"},
     {"id": "AUTONOMIC", "name": "Autonomic Function Tests", "purpose": "Autonomic nervous system", "role": "Neurologist", "output": "Battery", "eeg_link": "SUDEP risk — autonomic dysfunction is a key EEG-epilepsy comorbidity", "status": "built"},
-    {"id": "RR", "name": "RR Variation (HRV)", "purpose": "Cardiac autonomic / parasympathetic", "role": "Neurologist", "output": "RR interval variation", "eeg_link": "STRONG — peri-ictal HR change + SUDEP risk; pairs with EEG seizure timing", "status": "partial", "note": "wearable HR/HRV in IoT fleet"},
+    {"id": "RR", "name": "RR Variation (HRV)", "purpose": "Cardiac autonomic / parasympathetic", "role": "Neurologist", "output": "RR interval variation", "eeg_link": "STRONG — peri-ictal HR change + SUDEP risk; pairs with EEG seizure timing", "status": "built", "note": "HRV dashboard — time/freq domain analysis (SDNN/RMSSD/LF-HF/pNN50/total power), 6 diagnostic patterns, autonomic dysfunction scoring (0-100), 30 patients from clinical.db; 3 API endpoints (/api/hrv/overview|breakdown|definitions) verified 200, HRVDashboard.jsx + nav wired"},
     {"id": "ABPM", "name": "ABPM / Holter", "purpose": "24h BP + ECG monitoring", "role": "Cardiologist / Neurologist", "output": "BP/ECG trends", "eeg_link": "ictal arrhythmia detection alongside EEG (SUDEP)", "status": "built", "note": "ABPM/Holter dashboard — dipping status, arrhythmia burden, cardiac-autonomic scoring, 30 patients from clinical.db; 3 API endpoints verified 200, ABPMHolterDashboard.jsx + nav wired"},
     {"id": "SSR", "name": "SSR (Sympathetic Skin Response)", "purpose": "Sympathetic sudomotor function", "role": "Neurophysiologist", "output": "Latency/amplitude", "eeg_link": "autonomic involvement in epilepsy", "status": "built"}
   ],
@@ -23,6 +23,6 @@
     {"test": "EMG", "link": "Motor — distinguishes epileptic myoclonus (cortical, EEG-correlated) from non-epileptic"},
     {"test": "NCV / RNS", "link": "Peripheral — independent of EEG; rules out systemic/peripheral mimics"}
   ],
-  "summary": {"total": 13, "built": 12, "partial": 1, "cataloged": 0,
-              "honest_note": "Built (12): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP, ABPM/Holter, Autonomic — all have backend endpoints + frontend dashboards. Partial (1): RR (wearable IoT)."}
+  "summary": {"total": 13, "built": 13, "partial": 0, "cataloged": 0,
+              "honest_note": "Built (13): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP, ABPM/Holter, Autonomic, RR/HRV — all have backend endpoints + frontend dashboards."}
 }

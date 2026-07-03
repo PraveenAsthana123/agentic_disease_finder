@@ -94,6 +94,7 @@ import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
 import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
+import HRVDashboard from './components/HRVDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
@@ -350,6 +351,7 @@ function App() {
     { id: 'ssr', label: 'SSR' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
     { id: 'autonomic', label: 'Autonomic' },
+    { id: 'hrv', label: 'HRV / RR Variation' },
     { id: 'data-versioning', label: 'Data Versioning' },
     { id: 'model-ops', label: 'Model Ops' },
     { id: 'mlops', label: 'MLOps' },
@@ -1647,6 +1649,8 @@ function App() {
         return <ABPMHolterDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
+      case 'hrv':
+        return <HRVDashboard />
       case 'data-versioning':
         return <DataVersioningDashboard />
       case 'model-ops':
