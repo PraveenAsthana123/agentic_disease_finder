@@ -220,14 +220,14 @@
       "role": "Psychiatrist",
       "priority": "8/10",
       "fields": "150-200",
-      "status": "partial",
+      "status": "built",
       "sections": [
         "Comorbidity",
         "Mood/Anxiety",
         "PNES Differential",
         "Medication Interaction"
       ],
-      "note": "surveys + assessments (PHQ-9/GAD-7/NDDI-E) exist"
+      "note": "PsychiatristDashboard.jsx built (8 tabs: overview/depression/anxiety/suicidality/profiles/PNES/AED-psych/definitions), 3 API endpoints (/api/psychiatrist/overview|breakdown|definitions) all verified 200, 27 patients, 108 assessments (26 PHQ-9, 25 GAD-7, 54 C-SSRS, 3 NDDI-E), 11 PNES candidates, AED psychiatric risk profiling, 8 definitions, mood-seizure correlation"
     },
     {
       "role": "Occupational Therapist",

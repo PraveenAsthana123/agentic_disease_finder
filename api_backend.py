@@ -7598,6 +7598,31 @@ async def neuropsychologist_definitions():
     return _json_safe(npsd.definitions())
 
 
+# ── Psychiatrist Dashboard ─────────────────────────────────────────────────
+@app.get("/api/psychiatrist/overview")
+async def psychiatrist_overview():
+    """Psychiatrist overview — depression/anxiety severity, C-SSRS risk,
+    AED psychiatric effects, mood screening KPIs."""
+    import scripts.psychiatrist_dashboard as psd
+    return _json_safe(psd.overview())
+
+
+@app.get("/api/psychiatrist/breakdown")
+async def psychiatrist_breakdown():
+    """Psychiatrist breakdown — per-patient psychiatric profiles, PNES
+    candidates, mood-seizure correlation, item-level analysis."""
+    import scripts.psychiatrist_dashboard as psd
+    return _json_safe(psd.breakdown())
+
+
+@app.get("/api/psychiatrist/definitions")
+async def psychiatrist_definitions():
+    """Psychiatrist definitions — PHQ-9, GAD-7, C-SSRS, NDDI-E, PNES,
+    psychiatric comorbidity, AED effects, interictal dysphoric disorder."""
+    import scripts.psychiatrist_dashboard as psd
+    return _json_safe(psd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

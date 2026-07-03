@@ -42,6 +42,7 @@ import NeuropsychologistDashboard from './components/NeuropsychologistDashboard'
 import EmbeddingDriftDashboard from './components/EmbeddingDriftDashboard'
 import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
+import PsychiatristDashboard from './components/PsychiatristDashboard'
 import DietitianDashboard from './components/DietitianDashboard'
 import MedicationDashboard from './components/MedicationDashboard'
 import ExecutiveScorecardDashboard from './components/ExecutiveScorecardDashboard'
@@ -402,7 +403,8 @@ function App() {
     { id: 'cnn-resnet', label: 'CNN/ResNet Spectrogram' },
     { id: 'neurophysiologist', label: 'Neurophysiologist / EEG Reviewer' },
     { id: 'rnn-lstm', label: 'RNN/LSTM Temporal Model' },
-    { id: 'neuropsychologist', label: 'Neuropsychologist' }
+    { id: 'neuropsychologist', label: 'Neuropsychologist' },
+    { id: 'psychiatrist', label: 'Psychiatrist' }
   ]
 
   // API Calls
@@ -1755,6 +1757,8 @@ function App() {
         return <RNNLSTMDashboard />
       case 'neuropsychologist':
         return <NeuropsychologistDashboard />
+      case 'psychiatrist':
+        return <PsychiatristDashboard />
       default:
         return renderClassificationTab()
     }
