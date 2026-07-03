@@ -7822,6 +7822,32 @@ async def autonomic_definitions():
     return _json_safe(aut.definitions())
 
 
+# ── PNES Differential Dashboard ─────────────────────────────────────
+
+@app.get("/api/pnes-differential/overview")
+async def pnes_differential_overview():
+    """PNES Differential overview: classification distribution, risk factor
+    analysis, semiology scoring, diagnostic certainty, vEEG priority KPIs."""
+    import scripts.pnes_differential_dashboard as pnes
+    return _json_safe(pnes.overview())
+
+
+@app.get("/api/pnes-differential/breakdown")
+async def pnes_differential_breakdown():
+    """PNES Differential breakdown: per-patient semiology profiles, PNES vs
+    epileptic scoring, risk factors, diagnostic certainty, vEEG priority."""
+    import scripts.pnes_differential_dashboard as pnes
+    return _json_safe(pnes.breakdown())
+
+
+@app.get("/api/pnes-differential/definitions")
+async def pnes_differential_definitions():
+    """PNES Differential definitions: PNES clinical concepts, semiology table,
+    diagnostic levels (ILAE 2013), management pathways, quality metrics."""
+    import scripts.pnes_differential_dashboard as pnes
+    return _json_safe(pnes.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

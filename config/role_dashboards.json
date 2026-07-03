@@ -24,7 +24,7 @@
      "reports": [
        {"name": "Psychiatric Assessment Report", "cadence": "per visit", "format": "PDF", "status": "partial"},
        {"name": "Mood/Anxiety Survey Summary", "cadence": "weekly", "format": "PDF", "status": "built"},
-       {"name": "Psychogenic vs Epileptic Differential", "cadence": "per case", "format": "PDF", "status": "planned"}]},
+       {"name": "Psychogenic vs Epileptic Differential", "cadence": "per case", "format": "PDF", "status": "built"}]},
     {"role": "Occupational Therapist", "icon": "🖐️",
      "kpis": [
        {"label": "Functional outcome scores", "source": "outcomes", "status": "partial"},
