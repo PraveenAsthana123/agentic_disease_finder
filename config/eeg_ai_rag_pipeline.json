@@ -15,7 +15,7 @@
     {"n": 10, "step": "Normalization + Standardization", "detail": "log-power norm · MinMax · z-score · subject/session norm", "status": "built"},
     {"n": 11, "step": "Feature Extraction", "detail": "spectral/relative band power · entropy · coherence · PLV · Hjorth · fractal · asymmetry · CNN embeddings", "status": "built", "where": "47/15-feature vector; coherence/PLV partial"},
     {"n": 12, "step": "Feature Evaluation", "detail": "ANOVA · mutual information · correlation · SHAP ranking · clinical relevance", "status": "built", "where": "MI + SHAP + ANOVA F-test + correlation + clinical-check — Feature Evaluation Dashboard 3 endpoints verified 200"},
-    {"n": 13, "step": "Feature Selection", "detail": "LASSO · RFE · PCA · Boruta · SelectKBest", "status": "partial", "where": "PCA + SelectKBest + RFE built; LASSO/Boruta planned"},
+    {"n": 13, "step": "Feature Selection", "detail": "LASSO · RFE · PCA · Boruta · SelectKBest", "status": "built", "where": "scripts/feature_selection_dashboard.py + /api/feature-selection/{overview,breakdown,definitions} + FeatureSelectionDashboard.jsx — all 5 methods (LASSO, RFE, PCA, SelectKBest, Boruta) with consensus voting; 3 endpoints verified 200"},
     {"n": 14, "step": "Model Training", "detail": "SVM/RF/XGBoost · EEGNet/CNN/LSTM/Transformer/ViT", "status": "built", "where": "classical ensemble + EEGNet benchmark"},
     {"n": 15, "step": "Model Validation", "detail": "subject-level CV · train/val/test · external dataset", "status": "built", "where": "GroupKFold + Bonn external validation"},
     {"n": 16, "step": "Model Evaluation", "detail": "accuracy · precision · recall · F1 · AUC · sensitivity · specificity · confusion", "status": "built", "where": "accuracy reports"},
@@ -27,6 +27,6 @@
     {"n": 22, "step": "Final Output", "detail": "doctor report (risk score, abnormality, biomarkers, citations, limits, next step) + patient report (simple, no Dx claim, follow-up)", "status": "partial", "where": "EEG/VEEG report; patient-facing report planned"},
     {"n": 23, "step": "Governance + Monitoring", "detail": "audit logs · PII protection · bias/model/data drift · performance · human override · model versioning", "status": "built", "where": "transaction_log + guardrails + governance"}
   ],
-  "summary": {"total": 23, "built": 13, "partial": 9, "planned": 0,
-              "honest_note": "13/23 steps built, 9 partial, 1 (research objective) operator. The signal→feature→model→eval→governance spine is built; gaps are advanced time-frequency 2D imaging (CWT/topomap/connectivity), saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned — all have at least partial implementation."}
+  "summary": {"total": 23, "built": 14, "partial": 8, "planned": 0,
+              "honest_note": "14/23 steps built, 8 partial, 1 (research objective) operator. The signal→feature→model→eval→governance spine is built; gaps are advanced time-frequency 2D imaging (CWT/topomap/connectivity), saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned — all have at least partial implementation."}
 }

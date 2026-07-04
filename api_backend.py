@@ -8511,6 +8511,29 @@ async def transfer_learning_definitions():
     return _json_safe(tld.definitions())
 
 
+# ── Feature Selection Dashboard ──────────────────────────────────────────
+
+@app.get("/api/feature-selection/overview")
+async def feature_selection_overview():
+    """Feature Selection overview — consensus counts, method summary, category selection rates."""
+    import scripts.feature_selection_dashboard as fsd
+    return _json_safe(fsd.overview())
+
+
+@app.get("/api/feature-selection/breakdown")
+async def feature_selection_breakdown():
+    """Feature Selection breakdown — full feature table, method details, agreement matrix."""
+    import scripts.feature_selection_dashboard as fsd
+    return _json_safe(fsd.breakdown())
+
+
+@app.get("/api/feature-selection/definitions")
+async def feature_selection_definitions():
+    """Feature Selection definitions — LASSO, RFE, PCA, SelectKBest, Boruta methodology."""
+    import scripts.feature_selection_dashboard as fsd
+    return _json_safe(fsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

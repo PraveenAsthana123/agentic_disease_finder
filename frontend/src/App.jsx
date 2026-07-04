@@ -96,6 +96,7 @@ import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
 import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
+import FeatureSelectionDashboard from './components/FeatureSelectionDashboard'
 import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -384,6 +385,7 @@ function App() {
     { id: 'ssr', label: 'SSR' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
     { id: 'feature-evaluation', label: 'Feature Evaluation' },
+    { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'autonomic', label: 'Autonomic' },
     { id: 'hrv', label: 'HRV / RR Variation' },
     { id: 'pnes-differential', label: 'PNES Differential' },
@@ -486,6 +488,7 @@ function App() {
     { id: 'seizure-severity', label: 'Seizure Severity' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
     { id: 'feature-evaluation', label: 'Feature Evaluation' },
+    { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
     { id: 'transfer-learning', label: 'Transfer Learning' }
   ]
@@ -1716,6 +1719,8 @@ function App() {
         return <ABPMHolterDashboard />
       case 'feature-evaluation':
         return <FeatureEvaluationDashboard />
+      case 'feature-selection':
+        return <FeatureSelectionDashboard />
       case 'automatic-pipelines':
         return <AutomaticPipelinesDashboard />
       case 'transfer-learning':
