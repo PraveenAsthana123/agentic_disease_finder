@@ -195,6 +195,7 @@ import AIDarkFactoryDashboard from './components/AIDarkFactoryDashboard'
 import SeizureRiskForecastingDashboard from './components/SeizureRiskForecastingDashboard'
 import CloudOpsDashboard from './components/CloudOpsDashboard'
 import ObservabilityDashboard from './components/ObservabilityDashboard'
+import SeizureSeverityDashboard from './components/SeizureSeverityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -476,7 +477,8 @@ function App() {
     { id: 'dark-factory', label: 'AI Dark Factory' },
     { id: 'seizure-risk-forecast', label: 'Seizure Risk Forecasting' },
     { id: 'cloud-ops', label: 'Cloud Ops' },
-    { id: 'observability', label: 'Observability' }
+    { id: 'observability', label: 'Observability' },
+    { id: 'seizure-severity', label: 'Seizure Severity' }
   ]
 
   // API Calls
@@ -1903,6 +1905,8 @@ function App() {
         return <CloudOpsDashboard />
       case 'observability':
         return <ObservabilityDashboard />
+      case 'seizure-severity':
+        return <SeizureSeverityDashboard />
       default:
         return renderClassificationTab()
     }
