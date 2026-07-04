@@ -37,6 +37,7 @@ BUILDABLE = [
 # time_series_ai (Time-Series AI Dashboard — EEG spectral decomposition, band power, complexity metrics, 47 features, 21 analyses, 14 patients, 3 endpoints verified 200, TimeSeriesAIDashboard.jsx + nav wired)
 # feature_evaluation (Feature Evaluation Dashboard — ANOVA F-test + correlation + clinical relevance, 3 endpoints verified 200, FeatureEvaluationDashboard.jsx + nav wired)
 # data_augmentation (Data Augmentation Dashboard — Jitter/Scale/TimeWarp/Mixup/SMOTE, 3 endpoints verified 200, DataAugmentationDashboard.jsx + nav wired)
+# seizure_prediction (Seizure Prediction Dashboard — wearable biomarker risk analysis + pre-ictal comparison + threshold ROC, 3 endpoints verified 200, SeizurePredictionDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

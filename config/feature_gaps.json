@@ -23,8 +23,8 @@
     {
       "category": "functional",
       "feature": "Seizure PREDICTION / forecasting (pre-ictal)",
-      "in_project": "partial",
-      "why": "Project does detection (is-seizure) only; review emphasizes forecasting seizure probability ahead of onset",
+      "in_project": "built",
+      "why": "Seizure Prediction Dashboard — wearable biomarker analysis, risk thresholds, pre-ictal biomarker comparison, patient-level performance (3 endpoints verified 200)",
       "priority": "high"
     },
     {
