@@ -8421,6 +8421,29 @@ async def seizure_risk_forecast_definitions():
     return _json_safe(srf.definitions())
 
 
+# ── ABPM / Holter Dashboard ────────────────────────────────────────────────
+
+@app.get("/api/abpm-holter/overview")
+async def abpm_holter_overview():
+    """ABPM/Holter overview — KPIs, severity/pattern/dipping distributions, patient summary."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.overview())
+
+
+@app.get("/api/abpm-holter/breakdown")
+async def abpm_holter_breakdown():
+    """ABPM/Holter breakdown — parameter tables, histograms, per-patient detail cards."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.breakdown())
+
+
+@app.get("/api/abpm-holter/definitions")
+async def abpm_holter_definitions():
+    """ABPM/Holter definitions — protocol, parameters, reference ranges, diagnostic patterns."""
+    import scripts.abpm_dashboard as abpm
+    return _json_safe(abpm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

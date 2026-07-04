@@ -196,6 +196,7 @@ import SeizureRiskForecastingDashboard from './components/SeizureRiskForecasting
 import CloudOpsDashboard from './components/CloudOpsDashboard'
 import ObservabilityDashboard from './components/ObservabilityDashboard'
 import SeizureSeverityDashboard from './components/SeizureSeverityDashboard'
+import AbpmDashboard from './components/AbpmDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -478,7 +479,8 @@ function App() {
     { id: 'seizure-risk-forecast', label: 'Seizure Risk Forecasting' },
     { id: 'cloud-ops', label: 'Cloud Ops' },
     { id: 'observability', label: 'Observability' },
-    { id: 'seizure-severity', label: 'Seizure Severity' }
+    { id: 'seizure-severity', label: 'Seizure Severity' },
+    { id: 'abpm-holter', label: 'ABPM / Holter' }
   ]
 
   // API Calls
@@ -1907,6 +1909,8 @@ function App() {
         return <ObservabilityDashboard />
       case 'seizure-severity':
         return <SeizureSeverityDashboard />
+      case 'abpm-holter':
+        return <AbpmDashboard />
       default:
         return renderClassificationTab()
     }
