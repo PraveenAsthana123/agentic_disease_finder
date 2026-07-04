@@ -96,6 +96,7 @@ import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
 import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
+import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
 import HRVDashboard from './components/HRVDashboard'
 import PNESDifferentialDashboard from './components/PNESDifferentialDashboard'
@@ -483,7 +484,8 @@ function App() {
     { id: 'observability', label: 'Observability' },
     { id: 'seizure-severity', label: 'Seizure Severity' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
-    { id: 'feature-evaluation', label: 'Feature Evaluation' }
+    { id: 'feature-evaluation', label: 'Feature Evaluation' },
+    { id: 'automatic-pipelines', label: 'Automatic Pipelines' }
   ]
 
   // API Calls
@@ -1712,6 +1714,8 @@ function App() {
         return <ABPMHolterDashboard />
       case 'feature-evaluation':
         return <FeatureEvaluationDashboard />
+      case 'automatic-pipelines':
+        return <AutomaticPipelinesDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

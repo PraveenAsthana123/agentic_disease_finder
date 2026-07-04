@@ -8465,6 +8465,29 @@ async def feature_evaluation_definitions():
     return _json_safe(fed.definitions())
 
 
+# ── Automatic Pipelines Dashboard ──────────────────────────────────────────
+
+@app.get("/api/automatic-pipelines/overview")
+async def automatic_pipelines_overview():
+    """Automatic Pipelines overview — status counts, trigger distribution, automation rate."""
+    import scripts.automatic_pipelines_dashboard as apd
+    return _json_safe(apd.overview())
+
+
+@app.get("/api/automatic-pipelines/breakdown")
+async def automatic_pipelines_breakdown():
+    """Automatic Pipelines breakdown — all pipelines with stages, triggers, endpoints."""
+    import scripts.automatic_pipelines_dashboard as apd
+    return _json_safe(apd.breakdown())
+
+
+@app.get("/api/automatic-pipelines/definitions")
+async def automatic_pipelines_definitions():
+    """Automatic Pipelines definitions — pipeline, trigger, stage terminology."""
+    import scripts.automatic_pipelines_dashboard as apd
+    return _json_safe(apd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
