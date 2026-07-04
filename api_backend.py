@@ -8375,6 +8375,29 @@ async def dataset_coverage_definitions():
     return _json_safe(dcd.definitions())
 
 
+# ── AI Dark Factory Dashboard ─────────────────────────────────────────────
+
+@app.get("/api/dark-factory/overview")
+async def dark_factory_overview():
+    """AI Dark Factory overview — flow stages, tool catalog size, patterns, planes."""
+    import scripts.ai_dark_factory_dashboard as dfd
+    return _json_safe(dfd.overview())
+
+
+@app.get("/api/dark-factory/breakdown")
+async def dark_factory_breakdown():
+    """AI Dark Factory breakdown — full flow stages, tool catalog, patterns, planes."""
+    import scripts.ai_dark_factory_dashboard as dfd
+    return _json_safe(dfd.breakdown())
+
+
+@app.get("/api/dark-factory/definitions")
+async def dark_factory_definitions():
+    """AI Dark Factory definitions — dark factory, flow stage, tool terminology."""
+    import scripts.ai_dark_factory_dashboard as dfd
+    return _json_safe(dfd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

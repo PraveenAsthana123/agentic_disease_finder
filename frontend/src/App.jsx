@@ -191,6 +191,7 @@ import AdminDashboard from './components/AdminDashboard'
 import FunctionalBADashboard from './components/FunctionalBADashboard'
 import IntegrationRoleDashboard from './components/IntegrationRoleDashboard'
 import DatasetCoverageDashboard from './components/DatasetCoverageDashboard'
+import AIDarkFactoryDashboard from './components/AIDarkFactoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -468,7 +469,8 @@ function App() {
     { id: 'admin-panel', label: 'Admin Panel' },
     { id: 'functional-ba', label: 'Functional / BA' },
     { id: 'integration-role', label: 'Integration' },
-    { id: 'dataset-coverage', label: 'Dataset Coverage' }
+    { id: 'dataset-coverage', label: 'Dataset Coverage' },
+    { id: 'dark-factory', label: 'AI Dark Factory' }
   ]
 
   // API Calls
@@ -1887,6 +1889,8 @@ function App() {
         return <IntegrationRoleDashboard />
       case 'dataset-coverage':
         return <DatasetCoverageDashboard />
+      case 'dark-factory':
+        return <AIDarkFactoryDashboard />
       default:
         return renderClassificationTab()
     }
