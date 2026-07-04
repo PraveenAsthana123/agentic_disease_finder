@@ -8599,6 +8599,28 @@ async def seizure_prediction_definitions():
     return _json_safe(spd.definitions())
 
 
+# ── Hybrid CNN-LSTM / CNN-Transformer Pipeline Dashboard ────────────────────
+@app.get("/api/hybrid-pipeline/overview")
+async def hybrid_pipeline_overview():
+    """Hybrid pipeline overview — architecture comparison, feature importance, confidence distribution."""
+    import scripts.hybrid_pipeline_dashboard as hpd
+    return _json_safe(hpd.overview())
+
+
+@app.get("/api/hybrid-pipeline/breakdown")
+async def hybrid_pipeline_breakdown():
+    """Hybrid pipeline breakdown — per-patient, layer analysis, attention weights, LSTM gates."""
+    import scripts.hybrid_pipeline_dashboard as hpd
+    return _json_safe(hpd.breakdown())
+
+
+@app.get("/api/hybrid-pipeline/definitions")
+async def hybrid_pipeline_definitions():
+    """Hybrid pipeline definitions — architecture specs, hyperparameters, clinical references."""
+    import scripts.hybrid_pipeline_dashboard as hpd
+    return _json_safe(hpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

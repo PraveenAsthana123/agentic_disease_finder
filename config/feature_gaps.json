@@ -24,7 +24,7 @@
       "category": "functional",
       "feature": "Seizure PREDICTION / forecasting (pre-ictal)",
       "in_project": "built",
-      "why": "Seizure Prediction Dashboard — wearable biomarker analysis, risk thresholds, pre-ictal biomarker comparison, patient-level performance (3 endpoints verified 200)",
+      "why": "Seizure Prediction Dashboard \u2014 wearable biomarker analysis, risk thresholds, pre-ictal biomarker comparison, patient-level performance (3 endpoints verified 200)",
       "priority": "high"
     },
     {
@@ -122,8 +122,8 @@
     {
       "category": "architecture",
       "feature": "Hybrid CNN-LSTM / CNN-Transformer pipeline",
-      "in_project": false,
-      "why": "Spatial (CNN) + temporal (LSTM/attention) is review's best-performing class",
+      "in_project": "built",
+      "why": "Hybrid Pipeline Dashboard \u2014 CNN-LSTM vs CNN-Transformer architecture comparison, layer analysis, attention weights, LSTM gates, training curves (3 endpoints verified 200)",
       "priority": "high"
     },
     {

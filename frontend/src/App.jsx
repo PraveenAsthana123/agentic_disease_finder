@@ -110,6 +110,7 @@ import LLMOpsDashboard from './components/LLMOpsDashboard'
 import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
+import HybridPipelineDashboard from './components/HybridPipelineDashboard'
 import TrustAIDashboard from './components/TrustAIDashboard'
 import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
@@ -500,7 +501,8 @@ function App() {
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'data-augmentation', label: 'Data Augmentation' },
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
-    { id: 'data-steward', label: 'Data Steward' }
+    { id: 'data-steward', label: 'Data Steward' },
+    { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' }
   ]
 
   // API Calls
@@ -1741,6 +1743,8 @@ function App() {
         return <SeizurePredictionDashboard />
       case 'data-steward':
         return <DataStewardDashboard />
+      case 'hybrid-pipeline':
+        return <HybridPipelineDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
