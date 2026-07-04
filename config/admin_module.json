@@ -122,7 +122,7 @@
       "label": "\ud83d\udcac LLMOps",
       "purpose": "prompt versions, token/cost, latency, hallucination, RAG eval",
       "status": "built",
-      "maps_to": "council + Ollama (cost/drift planned)"
+      "maps_to": "/api/llmops/* + LLMOpsDashboard.jsx"
     },
     {
       "id": "mlops",

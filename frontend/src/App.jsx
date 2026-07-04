@@ -106,6 +106,7 @@ import EEGMRIConcordanceDashboard from './components/EEGMRIConcordanceDashboard'
 import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
+import LLMOpsDashboard from './components/LLMOpsDashboard'
 import TrustAIDashboard from './components/TrustAIDashboard'
 import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
@@ -393,6 +394,7 @@ function App() {
     { id: 'data-versioning', label: 'Data Versioning' },
     { id: 'model-ops', label: 'Model Ops' },
     { id: 'mlops', label: 'MLOps' },
+    { id: 'llmops', label: 'LLMOps' },
     { id: 'trust-ai', label: 'Trust AI' },
     { id: 'ethical-ai', label: 'Ethical AI' },
     { id: 'data-drift', label: 'Data Drift' },
@@ -1739,6 +1741,8 @@ function App() {
         return <ModelOpsDashboard />
       case 'mlops':
         return <MLOpsDashboard />
+      case 'llmops':
+        return <LLMOpsDashboard />
       case 'trust-ai':
         return <TrustAIDashboard />
       case 'ethical-ai':
