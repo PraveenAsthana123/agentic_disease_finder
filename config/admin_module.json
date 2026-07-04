@@ -48,7 +48,8 @@
         "API contracts",
         "webhooks"
       ],
-      "status": "planned"
+      "status": "built",
+      "maps_to": "/api/integration/* + IntegrationRoleDashboard.jsx — reads integrations.json + iot_devices.json + admin_module.json + neurolab_readiness.json"
     },
     {
       "role": "Functional / BA",

@@ -188,6 +188,7 @@ import QATestSuiteDashboard from './components/QATestSuiteDashboard'
 import ProductManagerDashboard from './components/ProductManagerDashboard'
 import AdminDashboard from './components/AdminDashboard'
 import FunctionalBADashboard from './components/FunctionalBADashboard'
+import IntegrationRoleDashboard from './components/IntegrationRoleDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -462,7 +463,8 @@ function App() {
     { id: 'qa-test-suite', label: 'QA Test Suite' },
     { id: 'product-manager', label: 'Product Manager' },
     { id: 'admin-panel', label: 'Admin Panel' },
-    { id: 'functional-ba', label: 'Functional / BA' }
+    { id: 'functional-ba', label: 'Functional / BA' },
+    { id: 'integration-role', label: 'Integration' }
   ]
 
   // API Calls
@@ -1875,6 +1877,8 @@ function App() {
         return <AdminDashboard />
       case 'functional-ba':
         return <FunctionalBADashboard />
+      case 'integration-role':
+        return <IntegrationRoleDashboard />
       default:
         return renderClassificationTab()
     }

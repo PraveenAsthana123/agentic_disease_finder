@@ -8328,6 +8328,32 @@ async def functional_ba_definitions():
     return _json_safe(fbd.definitions())
 
 
+# ── Integration Dashboard ─────────────────────────────────────────
+
+@app.get("/api/integration/overview")
+async def integration_overview():
+    """Integration overview — integration counts, device counts, readiness
+    percentage, status distributions by category."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.overview())
+
+
+@app.get("/api/integration/breakdown")
+async def integration_breakdown():
+    """Integration breakdown — full integration lists, device fleet, admin
+    integrations, and stakeholder integration gaps."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.breakdown())
+
+
+@app.get("/api/integration/definitions")
+async def integration_definitions():
+    """Integration definitions — integration, delivery channel, IoT device,
+    API contract, webhook, EMR/FHIR, OAuth, MCP terminology."""
+    import scripts.integration_dashboard as igd
+    return _json_safe(igd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
