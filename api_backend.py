@@ -8708,6 +8708,28 @@ async def guardrails_definitions():
     return _json_safe(grd.definitions())
 
 
+# ── SPWVD Dashboard ─────────────────────────────────────────────────────────
+@app.get("/api/spwvd/overview")
+async def spwvd_overview():
+    """SPWVD overview — energy distribution, cross-term suppression, resolution metrics."""
+    import scripts.spwvd_dashboard as spd
+    return _json_safe(spd.overview())
+
+
+@app.get("/api/spwvd/breakdown")
+async def spwvd_breakdown():
+    """SPWVD breakdown — per-band statistics, instantaneous frequency, interference."""
+    import scripts.spwvd_dashboard as spd
+    return _json_safe(spd.breakdown())
+
+
+@app.get("/api/spwvd/definitions")
+async def spwvd_definitions():
+    """SPWVD definitions — WVD/SPWVD methodology, kernel design, clinical relevance."""
+    import scripts.spwvd_dashboard as spd
+    return _json_safe(spd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

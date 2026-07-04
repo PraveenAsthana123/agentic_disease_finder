@@ -212,6 +212,7 @@ import ChangeManagementDashboard from './components/ChangeManagementDashboard'
 import ScalogramDashboard from './components/ScalogramDashboard'
 import SaliencyAttentionDashboard from './components/SaliencyAttentionDashboard'
 import GuardrailsDashboard from './components/GuardrailsDashboard'
+import SpwvdDashboard from './components/SpwvdDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -512,7 +513,8 @@ function App() {
     { id: 'change-management', label: 'Change Management' },
     { id: 'scalogram', label: 'Scalogram (CWT)' },
     { id: 'saliency-attention', label: 'Saliency & Attention' },
-    { id: 'guardrails', label: 'NeMo Guardrails' }
+    { id: 'guardrails', label: 'NeMo Guardrails' },
+    { id: 'spwvd', label: 'SPWVD' }
   ]
 
   // API Calls
@@ -1765,6 +1767,8 @@ function App() {
         return <SaliencyAttentionDashboard />
       case 'guardrails':
         return <GuardrailsDashboard />
+      case 'spwvd':
+        return <SpwvdDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
