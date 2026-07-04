@@ -295,8 +295,8 @@
     {
       "id": "nemo_guardrails",
       "task": "NeMo Guardrails production rail engine (per phase)",
-      "module": "(planned)",
-      "status": "planned",
+      "module": "scripts/guardrails_dashboard.py",
+      "status": "built",
       "needs": "nemoguardrails lib + rail configs"
     },
     {
@@ -371,14 +371,14 @@
       "task": "CNN/ResNet on spectrograms",
       "module": "scripts/cnn_resnet_dashboard.py + /api/cnn-resnet/{overview,breakdown,definitions} + CNNResNetDashboard.jsx",
       "status": "built",
-      "note": "CNN/ResNet Spectrogram dashboard — spectrogram generation from EEG, model architecture specs (1D-CNN/2D-CNN/ResNet-18/ResNet-50/EEGNet), training readiness, band power analysis, 21 real analyses from clinical.db; 3 endpoints verified 200"
+      "note": "CNN/ResNet Spectrogram dashboard \u2014 spectrogram generation from EEG, model architecture specs (1D-CNN/2D-CNN/ResNet-18/ResNet-50/EEGNet), training readiness, band power analysis, 21 real analyses from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "rnn_lstm",
       "task": "RNN/LSTM temporal model",
       "module": "scripts.rnn_lstm_dashboard",
       "status": "built",
-      "note": "RNN/LSTM Temporal Model dashboard — temporal sequence analysis from EEG, model architecture specs (Vanilla-RNN/LSTM/GRU/BiLSTM/Attention-LSTM), training readiness, seizure temporal patterns, band power analysis, 21 real analyses + 25 seizure events from clinical.db; 3 endpoints verified 200"
+      "note": "RNN/LSTM Temporal Model dashboard \u2014 temporal sequence analysis from EEG, model architecture specs (Vanilla-RNN/LSTM/GRU/BiLSTM/Attention-LSTM), training readiness, seizure temporal patterns, band power analysis, 21 real analyses + 25 seizure events from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "yolo_detection",

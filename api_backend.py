@@ -8687,6 +8687,27 @@ async def saliency_attention_definitions():
     return _json_safe(sad.definitions())
 
 
+@app.get("/api/guardrails/overview")
+async def guardrails_overview():
+    """Guardrails overview — rail trigger rates, block rates, latency."""
+    import scripts.guardrails_dashboard as grd
+    return _json_safe(grd.overview())
+
+
+@app.get("/api/guardrails/breakdown")
+async def guardrails_breakdown():
+    """Guardrails breakdown — input/output rails, dialog flows, severity."""
+    import scripts.guardrails_dashboard as grd
+    return _json_safe(grd.breakdown())
+
+
+@app.get("/api/guardrails/definitions")
+async def guardrails_definitions():
+    """Guardrails definitions — methodology, rail types, clinical relevance."""
+    import scripts.guardrails_dashboard as grd
+    return _json_safe(grd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

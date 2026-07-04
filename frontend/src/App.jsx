@@ -211,6 +211,7 @@ import AbpmDashboard from './components/AbpmDashboard'
 import ChangeManagementDashboard from './components/ChangeManagementDashboard'
 import ScalogramDashboard from './components/ScalogramDashboard'
 import SaliencyAttentionDashboard from './components/SaliencyAttentionDashboard'
+import GuardrailsDashboard from './components/GuardrailsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -510,7 +511,8 @@ function App() {
     { id: 'connectivity', label: 'Connectivity Analysis' },
     { id: 'change-management', label: 'Change Management' },
     { id: 'scalogram', label: 'Scalogram (CWT)' },
-    { id: 'saliency-attention', label: 'Saliency & Attention' }
+    { id: 'saliency-attention', label: 'Saliency & Attention' },
+    { id: 'guardrails', label: 'NeMo Guardrails' }
   ]
 
   // API Calls
@@ -1761,6 +1763,8 @@ function App() {
         return <ScalogramDashboard />
       case 'saliency-attention':
         return <SaliencyAttentionDashboard />
+      case 'guardrails':
+        return <GuardrailsDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
