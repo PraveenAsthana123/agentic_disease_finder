@@ -45,6 +45,7 @@ import SLPDashboard from './components/SLPDashboard'
 import PsychologistDashboard from './components/PsychologistDashboard'
 import PsychiatristDashboard from './components/PsychiatristDashboard'
 import DietitianDashboard from './components/DietitianDashboard'
+import SocialWorkerDashboard from './components/SocialWorkerDashboard'
 import MedicationDashboard from './components/MedicationDashboard'
 import ExecutiveScorecardDashboard from './components/ExecutiveScorecardDashboard'
 import AIUsageDashboard from './components/AIUsageDashboard'
@@ -320,6 +321,7 @@ function App() {
     { id: 'slp', label: 'SLP' },
     { id: 'psychologist', label: 'Psychologist' },
     { id: 'dietitian', label: 'Dietitian' },
+    { id: 'social-worker', label: 'Social Worker' },
     { id: 'medication', label: 'Medication' },
     { id: 'executive-scorecard', label: 'Executive Scorecard' },
     { id: 'ai-usage', label: 'AI Usage' },
@@ -1587,6 +1589,8 @@ function App() {
         return <PsychologistDashboard />
       case 'dietitian':
         return <DietitianDashboard />
+      case 'social-worker':
+        return <SocialWorkerDashboard />
       case 'medication':
         return <MedicationDashboard />
       case 'executive-scorecard':
