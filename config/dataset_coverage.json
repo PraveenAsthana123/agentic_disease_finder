@@ -1,0 +1,51 @@
+{
+  "title": "Neurophysiology Dataset & Modality Coverage Map",
+  "dba_topic": "Responsible Explainable AI Governance for Retrospective EEG-Based Neuropsychiatric Analytics Under Human Clinical Oversight",
+  "focus": "epilepsy-first",
+  "updated_at": "2026-07-04",
+  "target_scale": {"patients": "500-1000", "eeg_studies": "2000-5000", "video_eeg": "500+", "retrospective_years": "3-5"},
+  "novel_research_question": "Can autonomic biomarkers combined with EEG improve interpretable seizure-risk prediction under clinician oversight?",
+
+  "modalities": [
+    {"code": "VIDEO", "name": "Patient Video", "measures": "Clinical behavior, seizures, movement", "ai_potential": "Computer vision, behavioral analysis", "tier": 1, "phase": 2, "status": "built", "where": "eeg_ingest video extractor + modality"},
+    {"code": "EEG", "name": "Electroencephalography", "measures": "Brain electrical activity", "ai_potential": "Epilepsy, biomarkers, cognitive state", "tier": 1, "phase": 1, "status": "built", "where": "eeg_acquisition + pipeline + models"},
+    {"code": "VEEG", "name": "Video-EEG (synchronized)", "measures": "Behavior + brain activity", "ai_potential": "Multimodal, explainable AI", "tier": 2, "phase": 2, "status": "scaffold", "where": "modality=video-EEG; sync timestamps planned"},
+    {"code": "SEIZURE_META", "name": "Seizure Metadata (ILAE)", "measures": "Type, duration, frequency, trigger, aura, postictal", "ai_potential": "Subtype prediction, semiology", "tier": 1, "phase": 1, "status": "built", "where": "seizure_metadata table"},
+    {"code": "MEDICATION", "name": "Medication / AED", "measures": "Drug, dose, response, adherence", "ai_potential": "Treatment-response modeling", "tier": 1, "phase": 1, "status": "built", "where": "medications table"},
+    {"code": "MRI", "name": "MRI / Imaging", "measures": "Lesion, structural findings", "ai_potential": "Multimodal fusion", "tier": 2, "phase": 2, "status": "built", "where": "mri_findings table"},
+    {"code": "NEUROPSYCH", "name": "Neuropsych (MoCA/MMSE/PHQ-9/GAD-7/QOLIE-31)", "measures": "Cognition, mood, QoL", "ai_potential": "Explainability, outcomes", "tier": 2, "phase": 2, "status": "built", "where": "neuropsych table"},
+    {"code": "OUTCOME", "name": "Outcome / Follow-up", "measures": "Recurrence, hospitalization, mortality", "ai_potential": "Outcome prediction, survival", "tier": 1, "phase": 1, "status": "built", "where": "outcomes table"},
+    {"code": "NCV", "name": "Nerve Conduction Velocity", "measures": "Peripheral nerve function", "ai_potential": "Neuropathy detection", "tier": 3, "phase": 4, "status": "built", "where": "/api/ncv/* — 3 endpoints + NCVDashboard.jsx"},
+    {"code": "EMG", "name": "Electromyography", "measures": "Muscle electrical activity", "ai_potential": "Neuromuscular disorders", "tier": 3, "phase": 4, "status": "built", "where": "/api/emg/* — 3 endpoints + EMGDashboard.jsx"},
+    {"code": "BLINK", "name": "Blink Reflex", "measures": "Cranial nerve / brainstem", "ai_potential": "Neurodegenerative", "tier": 3, "phase": 4, "status": "built", "where": "/api/blink-reflex/* — 3 endpoints + BlinkReflexDashboard.jsx"},
+    {"code": "RNST", "name": "Repetitive Nerve Stimulation", "measures": "Neuromuscular junction", "ai_potential": "Myasthenia gravis", "tier": 3, "phase": 4, "status": "built", "where": "/api/rns/* — 3 endpoints + RNSDashboard.jsx"},
+    {"code": "SSEP", "name": "Somatosensory Evoked Potentials", "measures": "Sensory pathways", "ai_potential": "MS, spinal disorders", "tier": 3, "phase": 4, "status": "built", "where": "/api/ssep/* — 3 endpoints + SSEPDashboard.jsx"},
+    {"code": "VEP", "name": "Visual Evoked Potential", "measures": "Visual pathway", "ai_potential": "Optic neuritis, MS", "tier": 3, "phase": 4, "status": "built", "where": "/api/vep/* — 3 endpoints + VEPDashboard.jsx"},
+    {"code": "BERA", "name": "Brainstem Evoked Response Audiometry", "measures": "Auditory pathway", "ai_potential": "Brainstem disorders", "tier": 3, "phase": 4, "status": "built", "where": "/api/bera/* — 3 endpoints + BERADashboard.jsx"},
+    {"code": "SSR", "name": "Sympathetic Skin Response", "measures": "Autonomic function", "ai_potential": "Dysautonomia", "tier": 3, "phase": 3, "status": "built", "where": "/api/ssr/* — 3 endpoints + SSRDashboard.jsx"},
+    {"code": "RR_VAR", "name": "RR Variation / HRV", "measures": "Parasympathetic activity", "ai_potential": "Autonomic dysfunction", "tier": 3, "phase": 3, "status": "built", "where": "/api/hrv/* — 3 endpoints + HRVDashboard.jsx"},
+    {"code": "ABPM_HOLTER", "name": "ABPM / Holter", "measures": "BP / ECG monitoring", "ai_potential": "Cardiac-autonomic correlation", "tier": 3, "phase": 3, "status": "built", "where": "/api/abpm-holter/* — 3 endpoints + ABPMHolterDashboard.jsx"}
+  ],
+
+  "ai_streams": [
+    {"id": "eeg_analytics", "input": "Raw EEG, qEEG", "output": "Seizure classification/detection, biomarkers", "models": ["CNN", "Transformer", "EEGNet", "TCN", "LSTM"], "status": "built (RF baseline; deep models planned)"},
+    {"id": "video_analytics", "input": "Patient video", "output": "Seizure-type, motor pattern, fall detection", "models": ["3D-CNN", "ViT", "SlowFast"], "status": "scaffold (motion extraction built; classifiers planned)"},
+    {"id": "multimodal", "input": "EEG + video + notes + medication", "output": "Explanation, risk score, subtype", "models": ["Multimodal Transformer", "Fusion Nets"], "status": "planned"},
+    {"id": "autonomic", "input": "Holter, RR variation, SSR, ABPM", "output": "Autonomic dysfunction score, seizure-related patterns", "models": ["TS-Transformer", "XGBoost", "Survival"], "status": "planned"}
+  ],
+
+  "phases": [
+    {"phase": 1, "name": "Core (EEG + diagnosis + demographics + medication + outcome)", "status": "built"},
+    {"phase": 2, "name": "Multimodal (patient video + video-EEG + MRI + neuropsych)", "status": "partial"},
+    {"phase": 3, "name": "Autonomic (Holter, RR variation, SSR, ABPM)", "status": "built"},
+    {"phase": 4, "name": "Neuromuscular/EP (EMG, NCV, VEP, BERA, SSEP, Blink, RNST)", "status": "built"}
+  ],
+
+  "provider_questions": [
+    "How many patients?", "How many years of data?", "Number of EEG studies?",
+    "Raw EEG (EDF/BDF) available?", "Video synchronized with EEG?", "Diagnosis labels?",
+    "Seizure annotations?", "Medication history?", "MRI reports?",
+    "Neuropsychological assessments?", "Follow-up outcomes?", "Data de-identified?",
+    "Ethics approval requirements?", "Usable for publication?", "Clinicians available for validation?"
+  ]
+}

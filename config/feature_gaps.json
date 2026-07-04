@@ -65,8 +65,8 @@
     {
       "category": "technology",
       "feature": "Transfer learning / cross-patient adaptation",
-      "in_project": false,
-      "why": "Cross-patient generalization is the review's central challenge",
+      "in_project": "built",
+      "why": "Transfer Learning Dashboard — 3 endpoints (/api/transfer-learning/*) + TransferLearningDashboard.jsx with 4 strategies (subject-independent, fine-tune, DANN, multi-task), per-patient adaptation metrics, domain shift analysis",
       "priority": "high"
     },
     {

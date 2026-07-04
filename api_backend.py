@@ -8488,6 +8488,29 @@ async def automatic_pipelines_definitions():
     return _json_safe(apd.definitions())
 
 
+# ── Transfer Learning Dashboard ──────────────────────────────────────────
+
+@app.get("/api/transfer-learning/overview")
+async def transfer_learning_overview():
+    """Transfer Learning overview — adaptation KPIs, strategy distribution, improvement histogram."""
+    import scripts.transfer_learning_dashboard as tld
+    return _json_safe(tld.overview())
+
+
+@app.get("/api/transfer-learning/breakdown")
+async def transfer_learning_breakdown():
+    """Transfer Learning breakdown — per-patient detail, strategy comparison, convergence analysis."""
+    import scripts.transfer_learning_dashboard as tld
+    return _json_safe(tld.breakdown())
+
+
+@app.get("/api/transfer-learning/definitions")
+async def transfer_learning_definitions():
+    """Transfer Learning definitions — concepts, strategies, metrics, literature."""
+    import scripts.transfer_learning_dashboard as tld
+    return _json_safe(tld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
