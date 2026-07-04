@@ -8643,6 +8643,28 @@ async def connectivity_definitions():
     return _json_safe(cnd.definitions())
 
 
+# ── Scalogram (CWT) Dashboard ───────────────────────────────────────────────
+@app.get("/api/scalogram/overview")
+async def scalogram_overview():
+    """Scalogram overview — CWT energy distribution, dominant bands, spectral entropy."""
+    import scripts.scalogram_dashboard as scd
+    return _json_safe(scd.overview())
+
+
+@app.get("/api/scalogram/breakdown")
+async def scalogram_breakdown():
+    """Scalogram breakdown — per-band wavelet statistics, cross-band ratios."""
+    import scripts.scalogram_dashboard as scd
+    return _json_safe(scd.breakdown())
+
+
+@app.get("/api/scalogram/definitions")
+async def scalogram_definitions():
+    """Scalogram definitions — CWT methodology, Morlet wavelets, clinical relevance."""
+    import scripts.scalogram_dashboard as scd
+    return _json_safe(scd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

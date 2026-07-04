@@ -209,6 +209,7 @@ import SeizureSeverityDashboard from './components/SeizureSeverityDashboard'
 import SeizureDiaryDashboard from './components/SeizureDiaryDashboard'
 import AbpmDashboard from './components/AbpmDashboard'
 import ChangeManagementDashboard from './components/ChangeManagementDashboard'
+import ScalogramDashboard from './components/ScalogramDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -506,7 +507,8 @@ function App() {
     { id: 'data-steward', label: 'Data Steward' },
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
     { id: 'connectivity', label: 'Connectivity Analysis' },
-    { id: 'change-management', label: 'Change Management' }
+    { id: 'change-management', label: 'Change Management' },
+    { id: 'scalogram', label: 'Scalogram (CWT)' }
   ]
 
   // API Calls
@@ -1753,6 +1755,8 @@ function App() {
         return <ConnectivityDashboard />
       case 'change-management':
         return <ChangeManagementDashboard />
+      case 'scalogram':
+        return <ScalogramDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
