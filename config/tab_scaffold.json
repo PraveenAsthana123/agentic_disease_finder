@@ -13,6 +13,7 @@
   },
   "tabs": {
     "seizure_diary": {
+      "status": "built",
       "goal": "Capture every seizure event and surface trends so risk is visible early.",
       "todos": ["Log new seizure events", "Verify duration & injury", "Review monthly trend", "Flag severe events to neurologist"],
       "flow": ["Patient logs event", "Auto-score severity", "Aggregate trend", "Neurologist review", "Audit"],

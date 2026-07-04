@@ -5123,6 +5123,28 @@ async def seizure_severity_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── Seizure Diary Dashboard ──────────────────────────────────
+@app.get("/api/seizure-diary-dashboard/overview")
+async def seizure_diary_dashboard_overview():
+    """Seizure diary summary: KPIs, severity distribution, monthly trend, ER stats."""
+    import scripts.seizure_diary_dashboard as sdd
+    return _json_safe(sdd.overview())
+
+
+@app.get("/api/seizure-diary-dashboard/breakdown")
+async def seizure_diary_dashboard_breakdown():
+    """Per-patient history, event log, trigger analysis."""
+    import scripts.seizure_diary_dashboard as sdd
+    return _json_safe(sdd.breakdown())
+
+
+@app.get("/api/seizure-diary-dashboard/definitions")
+async def seizure_diary_dashboard_definitions():
+    """Metric definitions for the Seizure Diary dashboard."""
+    import scripts.seizure_diary_dashboard as sdd
+    return _json_safe(sdd.definitions())
+
+
 # ── FinOps Dashboard ─────────────────────────────────────────
 
 @app.get("/api/finops/overview")
