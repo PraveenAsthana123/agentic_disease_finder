@@ -8773,6 +8773,27 @@ async def rlhf_training_definitions():
     return _json_safe(rlhf.definitions())
 
 
+@app.get("/api/ica-noise-cleaning/overview")
+async def ica_noise_cleaning_overview():
+    """ICA Noise Cleaning overview: KPIs, quality distribution, per-subject summary."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.overview())
+
+
+@app.get("/api/ica-noise-cleaning/breakdown")
+async def ica_noise_cleaning_breakdown():
+    """ICA Noise Cleaning breakdown: per-file detail, component stats, pipeline stages."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.breakdown())
+
+
+@app.get("/api/ica-noise-cleaning/definitions")
+async def ica_noise_cleaning_definitions():
+    """ICA Noise Cleaning definitions: ICA terminology and quality metrics."""
+    import scripts.ica_noise_cleaning_dashboard as ica
+    return _json_safe(ica.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
