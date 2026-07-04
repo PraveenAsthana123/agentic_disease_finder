@@ -189,6 +189,7 @@ import ProductManagerDashboard from './components/ProductManagerDashboard'
 import AdminDashboard from './components/AdminDashboard'
 import FunctionalBADashboard from './components/FunctionalBADashboard'
 import IntegrationRoleDashboard from './components/IntegrationRoleDashboard'
+import DatasetCoverageDashboard from './components/DatasetCoverageDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -464,7 +465,8 @@ function App() {
     { id: 'product-manager', label: 'Product Manager' },
     { id: 'admin-panel', label: 'Admin Panel' },
     { id: 'functional-ba', label: 'Functional / BA' },
-    { id: 'integration-role', label: 'Integration' }
+    { id: 'integration-role', label: 'Integration' },
+    { id: 'dataset-coverage', label: 'Dataset Coverage' }
   ]
 
   // API Calls
@@ -1879,6 +1881,8 @@ function App() {
         return <FunctionalBADashboard />
       case 'integration-role':
         return <IntegrationRoleDashboard />
+      case 'dataset-coverage':
+        return <DatasetCoverageDashboard />
       default:
         return renderClassificationTab()
     }

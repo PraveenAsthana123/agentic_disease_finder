@@ -8354,6 +8354,27 @@ async def integration_definitions():
     return _json_safe(igd.definitions())
 
 
+@app.get("/api/dataset-coverage/overview")
+async def dataset_coverage_overview():
+    """Dataset Coverage overview — modality counts, AI streams, phases, target scale."""
+    import scripts.dataset_coverage_dashboard as dcd
+    return _json_safe(dcd.overview())
+
+
+@app.get("/api/dataset-coverage/breakdown")
+async def dataset_coverage_breakdown():
+    """Dataset Coverage breakdown — all modalities, AI streams, phases, provider questions."""
+    import scripts.dataset_coverage_dashboard as dcd
+    return _json_safe(dcd.breakdown())
+
+
+@app.get("/api/dataset-coverage/definitions")
+async def dataset_coverage_definitions():
+    """Dataset Coverage definitions — modality, tier, phase, AI stream terminology."""
+    import scripts.dataset_coverage_dashboard as dcd
+    return _json_safe(dcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
