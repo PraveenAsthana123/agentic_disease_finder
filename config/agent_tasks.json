@@ -302,9 +302,10 @@
     {
       "id": "rlhf_training",
       "task": "RLHF \u2014 train from captured feedback/corrections",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "preference dataset + reward model"
+      "module": "scripts/rlhf_training_dashboard.py + /api/rlhf-training/{overview,breakdown,definitions} + RLHFTrainingDashboard.jsx",
+      "status": "built",
+      "needs": "preference dataset + reward model",
+      "note": "RLHF Training dashboard \u2014 feedback collection analytics, preference pair generation from HITL overrides + expert disagreements, reward model readiness, PPO training config, pipeline stages; real data from clinical.db (feedback, hitl_reviews, expert_reviews); 3 endpoints verified 200"
     },
     {
       "id": "model_lab",

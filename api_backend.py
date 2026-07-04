@@ -8730,26 +8730,47 @@ async def spwvd_definitions():
     return _json_safe(spd.definitions())
 
 
-# ── WAIS Dashboard ───────────────────────────────────────────────────────────
-@app.get("/api/wais-dashboard/overview")
-async def wais_dashboard_overview():
-    """WAIS overview — FSIQ distribution, index scores, classification breakdown."""
-    import scripts.wais_dashboard as wd
-    return _json_safe(wd.overview())
+# ── Patient-Facing Report Dashboard ─────────────────────────────────────────
+@app.get("/api/patient-facing-report/overview")
+async def patient_facing_report_overview():
+    """Patient-facing report overview — simplified risk, recent reports, follow-ups."""
+    import scripts.patient_facing_report_dashboard as pfr
+    return _json_safe(pfr.overview())
 
 
-@app.get("/api/wais-dashboard/breakdown")
-async def wais_dashboard_breakdown():
-    """WAIS breakdown — subtest profiles, index comparisons, score distributions."""
-    import scripts.wais_dashboard as wd
-    return _json_safe(wd.breakdown())
+@app.get("/api/patient-facing-report/breakdown")
+async def patient_facing_report_breakdown():
+    """Patient-facing report breakdown — medications, biomarkers, next steps."""
+    import scripts.patient_facing_report_dashboard as pfr
+    return _json_safe(pfr.breakdown())
 
 
-@app.get("/api/wais-dashboard/definitions")
-async def wais_dashboard_definitions():
-    """WAIS definitions — methodology, index/subtest structure, clinical relevance."""
-    import scripts.wais_dashboard as wd
-    return _json_safe(wd.definitions())
+@app.get("/api/patient-facing-report/definitions")
+async def patient_facing_report_definitions():
+    """Patient-facing report definitions — glossary, disclaimers, plain-language guide."""
+    import scripts.patient_facing_report_dashboard as pfr
+    return _json_safe(pfr.definitions())
+
+
+@app.get("/api/rlhf-training/overview")
+async def rlhf_training_overview():
+    """RLHF Training overview: feedback stats, preference pairs, readiness score."""
+    import scripts.rlhf_training_dashboard as rlhf
+    return _json_safe(rlhf.overview())
+
+
+@app.get("/api/rlhf-training/breakdown")
+async def rlhf_training_breakdown():
+    """RLHF Training breakdown: preference pairs, trends, reward model readiness."""
+    import scripts.rlhf_training_dashboard as rlhf
+    return _json_safe(rlhf.breakdown())
+
+
+@app.get("/api/rlhf-training/definitions")
+async def rlhf_training_definitions():
+    """RLHF Training definitions: RLHF terminology and clinical context."""
+    import scripts.rlhf_training_dashboard as rlhf
+    return _json_safe(rlhf.definitions())
 
 
 if __name__ == "__main__":

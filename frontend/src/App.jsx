@@ -213,6 +213,8 @@ import ScalogramDashboard from './components/ScalogramDashboard'
 import SaliencyAttentionDashboard from './components/SaliencyAttentionDashboard'
 import GuardrailsDashboard from './components/GuardrailsDashboard'
 import SpwvdDashboard from './components/SpwvdDashboard'
+import PatientFacingReportDashboard from './components/PatientFacingReportDashboard'
+import RLHFTrainingDashboard from './components/RLHFTrainingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -514,7 +516,9 @@ function App() {
     { id: 'scalogram', label: 'Scalogram (CWT)' },
     { id: 'saliency-attention', label: 'Saliency & Attention' },
     { id: 'guardrails', label: 'NeMo Guardrails' },
-    { id: 'spwvd', label: 'SPWVD' }
+    { id: 'spwvd', label: 'SPWVD' },
+    { id: 'patient-facing-report', label: 'Patient Report' },
+    { id: 'rlhf-training', label: 'RLHF Training' }
   ]
 
   // API Calls
@@ -1769,6 +1773,10 @@ function App() {
         return <GuardrailsDashboard />
       case 'spwvd':
         return <SpwvdDashboard />
+      case 'patient-facing-report':
+        return <PatientFacingReportDashboard />
+      case 'rlhf-training':
+        return <RLHFTrainingDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
