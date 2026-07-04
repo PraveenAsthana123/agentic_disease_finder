@@ -192,6 +192,7 @@ import FunctionalBADashboard from './components/FunctionalBADashboard'
 import IntegrationRoleDashboard from './components/IntegrationRoleDashboard'
 import DatasetCoverageDashboard from './components/DatasetCoverageDashboard'
 import AIDarkFactoryDashboard from './components/AIDarkFactoryDashboard'
+import SeizureRiskForecastingDashboard from './components/SeizureRiskForecastingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -470,7 +471,8 @@ function App() {
     { id: 'functional-ba', label: 'Functional / BA' },
     { id: 'integration-role', label: 'Integration' },
     { id: 'dataset-coverage', label: 'Dataset Coverage' },
-    { id: 'dark-factory', label: 'AI Dark Factory' }
+    { id: 'dark-factory', label: 'AI Dark Factory' },
+    { id: 'seizure-risk-forecast', label: 'Seizure Risk Forecasting' }
   ]
 
   // API Calls
@@ -1891,6 +1893,8 @@ function App() {
         return <DatasetCoverageDashboard />
       case 'dark-factory':
         return <AIDarkFactoryDashboard />
+      case 'seizure-risk-forecast':
+        return <SeizureRiskForecastingDashboard />
       default:
         return renderClassificationTab()
     }

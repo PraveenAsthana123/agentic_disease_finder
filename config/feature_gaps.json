@@ -1,0 +1,157 @@
+{
+  "title": "Epilepsy DL Review (50 papers) \u2192 Project Gap Analysis",
+  "source": "Epilepsy/paper/epilepsy-dl-review.pdf (50 references)",
+  "updated_at": "2026-06-23",
+  "review_covers": [
+    "CNN",
+    "RNN/LSTM",
+    "GNN",
+    "Transformer",
+    "SNN",
+    "Hybrid",
+    "time-frequency (STFT/wavelet/spectrogram)",
+    "transfer/cross-patient",
+    "federated learning",
+    "explainable AI",
+    "edge/wearable",
+    "seizure prediction/forecasting",
+    "closed-loop neurostimulation",
+    "foundation models",
+    "datasets: CHB-MIT/TUH-TUSZ/Bonn/Siena/EPILEPSIAE/Helsinki"
+  ],
+  "gaps": [
+    {
+      "category": "functional",
+      "feature": "Seizure PREDICTION / forecasting (pre-ictal)",
+      "in_project": "partial",
+      "why": "Project does detection (is-seizure) only; review emphasizes forecasting seizure probability ahead of onset",
+      "priority": "high"
+    },
+    {
+      "category": "functional",
+      "feature": "Time-frequency representations (STFT / wavelet / spectrogram)",
+      "in_project": "built",
+      "why": "Project uses 47 hand-crafted features only; review uses spectrograms as CNN/ViT input",
+      "priority": "high"
+    },
+    {
+      "category": "functional",
+      "feature": "Closed-loop responsive alert (pre-ictal \u2192 stimulation/SOS)",
+      "in_project": "partial",
+      "why": "IoT sim has SOS; no pre-ictal trigger logic",
+      "priority": "medium"
+    },
+    {
+      "category": "technology",
+      "feature": "Deep learning models (EEGNet / 1D-CNN / LSTM / Transformer)",
+      "in_project": "built",
+      "why": "Project ships RandomForest only; review's SOTA is deep models",
+      "priority": "high"
+    },
+    {
+      "category": "technology",
+      "feature": "Graph Neural Network (electrode connectivity)",
+      "in_project": false,
+      "why": "GNN models inter-channel connectivity \u2014 strong for focal localization",
+      "priority": "medium"
+    },
+    {
+      "category": "technology",
+      "feature": "Spiking Neural Network (ultra-low-power, implantable)",
+      "in_project": false,
+      "why": "Review: sub-microwatt neuromorphic for wearables",
+      "priority": "low"
+    },
+    {
+      "category": "technology",
+      "feature": "Transfer learning / cross-patient adaptation",
+      "in_project": false,
+      "why": "Cross-patient generalization is the review's central challenge",
+      "priority": "high"
+    },
+    {
+      "category": "technology",
+      "feature": "Federated learning (privacy-preserving multi-site)",
+      "in_project": "planned",
+      "why": "Registered as planned; review dedicates a full section",
+      "priority": "medium"
+    },
+    {
+      "category": "data",
+      "feature": "Standard benchmark datasets: TUH/TUSZ, Bonn",
+      "in_project": false,
+      "why": "Project has CHB-MIT/Siena/OpenNeuro; review benchmarks on TUSZ + Bonn",
+      "priority": "high"
+    },
+    {
+      "category": "data",
+      "feature": "Data augmentation (GAN / time-warp / mixup)",
+      "in_project": false,
+      "why": "Addresses class imbalance (rare ictal) \u2014 review highlights",
+      "priority": "medium"
+    },
+    {
+      "category": "data",
+      "feature": "Neonatal EEG (Helsinki)",
+      "in_project": false,
+      "why": "Distinct population in review",
+      "priority": "low"
+    },
+    {
+      "category": "gap",
+      "feature": "Cross-patient (leave-subjects-out) benchmark on full data",
+      "in_project": "partial",
+      "why": "Real leave-subjects-out benchmark RUN on CHB-MIT (chb02/03/04): cross-patient mean acc 0.705 vs in-sample 0.99. Full-dataset version pending.",
+      "priority": "high"
+    },
+    {
+      "category": "gap",
+      "feature": "Foundation model pretraining (self-supervised on unlabeled EEG)",
+      "in_project": false,
+      "why": "Review's top future direction (TUEG 1.5TB pretraining)",
+      "priority": "medium"
+    },
+    {
+      "category": "gap",
+      "feature": "Prediction-horizon + false-alarm-rate metrics (per hour)",
+      "in_project": "built",
+      "why": "Forecasting needs FAR/hr + sensitivity@horizon, not just accuracy",
+      "priority": "high"
+    },
+    {
+      "category": "architecture",
+      "feature": "Hybrid CNN-LSTM / CNN-Transformer pipeline",
+      "in_project": false,
+      "why": "Spatial (CNN) + temporal (LSTM/attention) is review's best-performing class",
+      "priority": "high"
+    },
+    {
+      "category": "architecture",
+      "feature": "Edge deployment (quantized model on device)",
+      "in_project": "partial",
+      "why": "IoT sim only; no quantized/ONNX edge model",
+      "priority": "medium"
+    },
+    {
+      "category": "decision_ai",
+      "feature": "Seizure-risk forecasting decision layer (alert thresholds + escalation)",
+      "in_project": "built",
+      "why": "Dashboard with 4-tier risk scoring (low/moderate/high/critical), 5 forecast horizons, threshold config, per-patient forecasts, escalation log, and gap analysis",
+      "priority": "high"
+    },
+    {
+      "category": "decision_ai",
+      "feature": "Closed-loop decision (pre-ictal \u2192 caregiver/stim action) with audit",
+      "in_project": "partial",
+      "why": "SOS sim exists; no governed closed-loop action record",
+      "priority": "medium"
+    }
+  ],
+  "top_recommendations": [
+    "Add a deep-learning model (EEGNet/1D-CNN) trained on CHB-MIT with subject-wise split \u2014 closes the #1 technology gap and gives a defensible deep-model baseline.",
+    "Add spectrogram (STFT/wavelet) representation + 2D-CNN \u2014 unlocks the review's main input modality.",
+    "Add seizure FORECASTING (pre-ictal classification) with FAR/hr + sensitivity@horizon metrics \u2014 moves from detection to prediction (novel for DBA).",
+    "Run cross-patient (leave-subjects-out) benchmark on full CHB-MIT \u2014 the honest generalization number.",
+    "Add TUSZ/Bonn dataset loaders \u2014 standard benchmarks reviewers expect."
+  ]
+}

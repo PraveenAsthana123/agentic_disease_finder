@@ -8398,6 +8398,29 @@ async def dark_factory_definitions():
     return _json_safe(dfd.definitions())
 
 
+# ── Seizure Risk Forecasting Dashboard ─────────────────────────────────────
+
+@app.get("/api/seizure-risk-forecast/overview")
+async def seizure_risk_forecast_overview():
+    """Seizure-risk forecasting overview — risk tiers, horizons, thresholds, KPIs."""
+    import scripts.seizure_risk_forecasting_dashboard as srf
+    return _json_safe(srf.overview())
+
+
+@app.get("/api/seizure-risk-forecast/breakdown")
+async def seizure_risk_forecast_breakdown():
+    """Seizure-risk forecasting breakdown — per-patient forecasts, escalation log, gaps."""
+    import scripts.seizure_risk_forecasting_dashboard as srf
+    return _json_safe(srf.breakdown())
+
+
+@app.get("/api/seizure-risk-forecast/definitions")
+async def seizure_risk_forecast_definitions():
+    """Seizure-risk forecasting definitions — pre-ictal, risk tier, escalation terminology."""
+    import scripts.seizure_risk_forecasting_dashboard as srf
+    return _json_safe(srf.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
