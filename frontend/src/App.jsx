@@ -208,6 +208,7 @@ import ObservabilityDashboard from './components/ObservabilityDashboard'
 import SeizureSeverityDashboard from './components/SeizureSeverityDashboard'
 import SeizureDiaryDashboard from './components/SeizureDiaryDashboard'
 import AbpmDashboard from './components/AbpmDashboard'
+import ChangeManagementDashboard from './components/ChangeManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -504,7 +505,8 @@ function App() {
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'data-steward', label: 'Data Steward' },
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
-    { id: 'connectivity', label: 'Connectivity Analysis' }
+    { id: 'connectivity', label: 'Connectivity Analysis' },
+    { id: 'change-management', label: 'Change Management' }
   ]
 
   // API Calls
@@ -1749,6 +1751,8 @@ function App() {
         return <HybridPipelineDashboard />
       case 'connectivity':
         return <ConnectivityDashboard />
+      case 'change-management':
+        return <ChangeManagementDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
