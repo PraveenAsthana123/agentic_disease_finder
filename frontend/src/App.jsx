@@ -107,6 +107,7 @@ import DataVersioningDashboard from './components/DataVersioningDashboard'
 import ModelOpsDashboard from './components/ModelOpsDashboard'
 import MLOpsDashboard from './components/MLOpsDashboard'
 import LLMOpsDashboard from './components/LLMOpsDashboard'
+import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import TrustAIDashboard from './components/TrustAIDashboard'
 import EthicalAIDashboard from './components/EthicalAIDashboard'
 import DataDriftDashboard from './components/DataDriftDashboard'
@@ -492,7 +493,8 @@ function App() {
     { id: 'feature-evaluation', label: 'Feature Evaluation' },
     { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
-    { id: 'transfer-learning', label: 'Transfer Learning' }
+    { id: 'transfer-learning', label: 'Transfer Learning' },
+    { id: 'data-augmentation', label: 'Data Augmentation' }
   ]
 
   // API Calls
@@ -1727,6 +1729,8 @@ function App() {
         return <AutomaticPipelinesDashboard />
       case 'transfer-learning':
         return <TransferLearningDashboard />
+      case 'data-augmentation':
+        return <DataAugmentationDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

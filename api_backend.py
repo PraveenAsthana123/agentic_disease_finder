@@ -8534,6 +8534,27 @@ async def feature_selection_definitions():
     return _json_safe(fsd.definitions())
 
 
+@app.get("/api/data-augmentation/overview")
+async def data_augmentation_overview():
+    """Data Augmentation overview — technique comparison, accuracy deltas, class balance."""
+    import scripts.data_augmentation_dashboard as dad
+    return _json_safe(dad.overview())
+
+
+@app.get("/api/data-augmentation/breakdown")
+async def data_augmentation_breakdown():
+    """Data Augmentation breakdown — per-technique parameter sweep, accuracy by variant."""
+    import scripts.data_augmentation_dashboard as dad
+    return _json_safe(dad.breakdown())
+
+
+@app.get("/api/data-augmentation/definitions")
+async def data_augmentation_definitions():
+    """Data Augmentation definitions — technique methodology, clinical relevance, references."""
+    import scripts.data_augmentation_dashboard as dad
+    return _json_safe(dad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

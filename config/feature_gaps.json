@@ -66,7 +66,7 @@
       "category": "technology",
       "feature": "Transfer learning / cross-patient adaptation",
       "in_project": "built",
-      "why": "Transfer Learning Dashboard — 3 endpoints (/api/transfer-learning/*) + TransferLearningDashboard.jsx with 4 strategies (subject-independent, fine-tune, DANN, multi-task), per-patient adaptation metrics, domain shift analysis",
+      "why": "Transfer Learning Dashboard \u2014 3 endpoints (/api/transfer-learning/*) + TransferLearningDashboard.jsx with 4 strategies (subject-independent, fine-tune, DANN, multi-task), per-patient adaptation metrics, domain shift analysis",
       "priority": "high"
     },
     {
@@ -86,9 +86,10 @@
     {
       "category": "data",
       "feature": "Data augmentation (GAN / time-warp / mixup)",
-      "in_project": false,
+      "in_project": "built",
       "why": "Addresses class imbalance (rare ictal) \u2014 review highlights",
-      "priority": "medium"
+      "priority": "medium",
+      "dashboard": "/api/data-augmentation/*"
     },
     {
       "category": "data",
