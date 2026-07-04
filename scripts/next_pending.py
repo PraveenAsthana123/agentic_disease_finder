@@ -35,6 +35,7 @@ BUILDABLE = [
 # decision_ai (Decision AI Dashboard — real clinical.db decision routing + HITL overrides + audit trail, 3 endpoints verified 200, DecisionAIDashboard.jsx + nav wired)
 # data_lineage (Data Lineage Dashboard — real transaction_log 645 events, 25 components, pipeline stages + lineage edges + audit trail, 3 endpoints verified 200, DataLineageDashboard.jsx + nav wired)
 # time_series_ai (Time-Series AI Dashboard — EEG spectral decomposition, band power, complexity metrics, 47 features, 21 analyses, 14 patients, 3 endpoints verified 200, TimeSeriesAIDashboard.jsx + nav wired)
+# feature_evaluation (Feature Evaluation Dashboard — ANOVA F-test + correlation + clinical relevance, 3 endpoints verified 200, FeatureEvaluationDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

@@ -95,6 +95,7 @@ import RNSDashboard from './components/RNSDashboard'
 import BeraDashboard from './components/BeraDashboard'
 import SSRDashboard from './components/SSRDashboard'
 import ABPMHolterDashboard from './components/ABPMHolterDashboard'
+import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
 import HRVDashboard from './components/HRVDashboard'
 import PNESDifferentialDashboard from './components/PNESDifferentialDashboard'
@@ -380,6 +381,7 @@ function App() {
     { id: 'bera', label: 'BERA' },
     { id: 'ssr', label: 'SSR' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
+    { id: 'feature-evaluation', label: 'Feature Evaluation' },
     { id: 'autonomic', label: 'Autonomic' },
     { id: 'hrv', label: 'HRV / RR Variation' },
     { id: 'pnes-differential', label: 'PNES Differential' },
@@ -480,7 +482,8 @@ function App() {
     { id: 'cloud-ops', label: 'Cloud Ops' },
     { id: 'observability', label: 'Observability' },
     { id: 'seizure-severity', label: 'Seizure Severity' },
-    { id: 'abpm-holter', label: 'ABPM / Holter' }
+    { id: 'abpm-holter', label: 'ABPM / Holter' },
+    { id: 'feature-evaluation', label: 'Feature Evaluation' }
   ]
 
   // API Calls
@@ -1707,6 +1710,8 @@ function App() {
         return <SSRDashboard />
       case 'abpm-holter':
         return <ABPMHolterDashboard />
+      case 'feature-evaluation':
+        return <FeatureEvaluationDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

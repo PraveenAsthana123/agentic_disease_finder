@@ -14,7 +14,7 @@
     {"n": 9, "step": "1D → 2D Image Conversion", "detail": "spectrogram · scalogram · topomap · connectivity matrix · band heatmap", "status": "partial", "where": "spectrogram built; topomap/connectivity planned"},
     {"n": 10, "step": "Normalization + Standardization", "detail": "log-power norm · MinMax · z-score · subject/session norm", "status": "built"},
     {"n": 11, "step": "Feature Extraction", "detail": "spectral/relative band power · entropy · coherence · PLV · Hjorth · fractal · asymmetry · CNN embeddings", "status": "built", "where": "47/15-feature vector; coherence/PLV partial"},
-    {"n": 12, "step": "Feature Evaluation", "detail": "ANOVA · mutual information · correlation · SHAP ranking · clinical relevance", "status": "partial", "where": "MI + SHAP built; ANOVA/clinical-check planned"},
+    {"n": 12, "step": "Feature Evaluation", "detail": "ANOVA · mutual information · correlation · SHAP ranking · clinical relevance", "status": "built", "where": "MI + SHAP + ANOVA F-test + correlation + clinical-check — Feature Evaluation Dashboard 3 endpoints verified 200"},
     {"n": 13, "step": "Feature Selection", "detail": "LASSO · RFE · PCA · Boruta · SelectKBest", "status": "partial", "where": "PCA + SelectKBest + RFE built; LASSO/Boruta planned"},
     {"n": 14, "step": "Model Training", "detail": "SVM/RF/XGBoost · EEGNet/CNN/LSTM/Transformer/ViT", "status": "built", "where": "classical ensemble + EEGNet benchmark"},
     {"n": 15, "step": "Model Validation", "detail": "subject-level CV · train/val/test · external dataset", "status": "built", "where": "GroupKFold + Bonn external validation"},

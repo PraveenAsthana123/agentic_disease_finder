@@ -8444,6 +8444,27 @@ async def abpm_holter_definitions():
     return _json_safe(abpm.definitions())
 
 
+@app.get("/api/feature-evaluation/overview")
+async def feature_evaluation_overview():
+    """Feature Evaluation overview — ANOVA F-scores, feature rankings, category analysis."""
+    import scripts.feature_evaluation_dashboard as fed
+    return _json_safe(fed.overview())
+
+
+@app.get("/api/feature-evaluation/breakdown")
+async def feature_evaluation_breakdown():
+    """Feature Evaluation breakdown — full feature table, top features, correlations."""
+    import scripts.feature_evaluation_dashboard as fed
+    return _json_safe(fed.breakdown())
+
+
+@app.get("/api/feature-evaluation/definitions")
+async def feature_evaluation_definitions():
+    """Feature Evaluation definitions — categories, methods, clinical relevance."""
+    import scripts.feature_evaluation_dashboard as fed
+    return _json_safe(fed.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
