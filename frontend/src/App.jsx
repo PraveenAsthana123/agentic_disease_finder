@@ -210,6 +210,7 @@ import SeizureDiaryDashboard from './components/SeizureDiaryDashboard'
 import AbpmDashboard from './components/AbpmDashboard'
 import ChangeManagementDashboard from './components/ChangeManagementDashboard'
 import ScalogramDashboard from './components/ScalogramDashboard'
+import SaliencyAttentionDashboard from './components/SaliencyAttentionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -508,7 +509,8 @@ function App() {
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
     { id: 'connectivity', label: 'Connectivity Analysis' },
     { id: 'change-management', label: 'Change Management' },
-    { id: 'scalogram', label: 'Scalogram (CWT)' }
+    { id: 'scalogram', label: 'Scalogram (CWT)' },
+    { id: 'saliency-attention', label: 'Saliency & Attention' }
   ]
 
   // API Calls
@@ -1757,6 +1759,8 @@ function App() {
         return <ChangeManagementDashboard />
       case 'scalogram':
         return <ScalogramDashboard />
+      case 'saliency-attention':
+        return <SaliencyAttentionDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

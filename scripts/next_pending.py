@@ -38,6 +38,7 @@ BUILDABLE = [
 # feature_evaluation (Feature Evaluation Dashboard — ANOVA F-test + correlation + clinical relevance, 3 endpoints verified 200, FeatureEvaluationDashboard.jsx + nav wired)
 # data_augmentation (Data Augmentation Dashboard — Jitter/Scale/TimeWarp/Mixup/SMOTE, 3 endpoints verified 200, DataAugmentationDashboard.jsx + nav wired)
 # seizure_prediction (Seizure Prediction Dashboard — wearable biomarker risk analysis + pre-ictal comparison + threshold ROC, 3 endpoints verified 200, SeizurePredictionDashboard.jsx + nav wired)
+# saliency_attention (Saliency & Attention Map Dashboard — channel saliency, temporal attention, multi-head attention, per-diagnosis patterns, 3 endpoints verified 200, SaliencyAttentionDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

@@ -8665,6 +8665,28 @@ async def scalogram_definitions():
     return _json_safe(scd.definitions())
 
 
+# ── Saliency & Attention Map Dashboard ────────────────────────────────────────
+@app.get("/api/saliency-attention/overview")
+async def saliency_attention_overview():
+    """Saliency overview — channel saliency scores, temporal attention, band attention."""
+    import scripts.saliency_attention_dashboard as sad
+    return _json_safe(sad.overview())
+
+
+@app.get("/api/saliency-attention/breakdown")
+async def saliency_attention_breakdown():
+    """Saliency breakdown — per-diagnosis patterns, attention heads, channel ranking."""
+    import scripts.saliency_attention_dashboard as sad
+    return _json_safe(sad.breakdown())
+
+
+@app.get("/api/saliency-attention/definitions")
+async def saliency_attention_definitions():
+    """Saliency definitions — methodology, clinical interpretation, references."""
+    import scripts.saliency_attention_dashboard as sad
+    return _json_safe(sad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

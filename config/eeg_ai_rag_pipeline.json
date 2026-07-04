@@ -19,7 +19,7 @@
     {"n": 14, "step": "Model Training", "detail": "SVM/RF/XGBoost · EEGNet/CNN/LSTM/Transformer/ViT", "status": "built", "where": "classical ensemble + EEGNet benchmark"},
     {"n": 15, "step": "Model Validation", "detail": "subject-level CV · train/val/test · external dataset", "status": "built", "where": "GroupKFold + Bonn external validation"},
     {"n": 16, "step": "Model Evaluation", "detail": "accuracy · precision · recall · F1 · AUC · sensitivity · specificity · confusion", "status": "built", "where": "accuracy reports"},
-    {"n": 17, "step": "Explainable AI", "detail": "SHAP features · saliency EEG-image · attention map · channel/band importance", "status": "partial", "where": "SHAP built; saliency/attention planned"},
+    {"n": 17, "step": "Explainable AI", "detail": "SHAP features · saliency EEG-image · attention map · channel/band importance", "status": "built", "where": "SHAP built (XAIDashboard); saliency + attention built (SaliencyAttentionDashboard — 3 endpoints verified 200)"},
     {"n": 18, "step": "RAG Knowledge Layer", "detail": "index papers · SOPs · clinical notes · guidelines · model cards · experiment logs", "status": "built", "where": "ChromaDB + vector_ingest cron"},
     {"n": 19, "step": "Retrieval", "detail": "hybrid: vector + keyword + metadata filter", "status": "partial", "where": "vector + keyword fallback; metadata filter planned"},
     {"n": 20, "step": "RAG Report Generation", "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata", "status": "partial", "where": "EEG/VEEG report + patient_chat RAG"},
