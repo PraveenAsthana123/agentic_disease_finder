@@ -8730,6 +8730,28 @@ async def spwvd_definitions():
     return _json_safe(spd.definitions())
 
 
+# ── WAIS Dashboard ───────────────────────────────────────────────────────────
+@app.get("/api/wais-dashboard/overview")
+async def wais_dashboard_overview():
+    """WAIS overview — FSIQ distribution, index scores, classification breakdown."""
+    import scripts.wais_dashboard as wd
+    return _json_safe(wd.overview())
+
+
+@app.get("/api/wais-dashboard/breakdown")
+async def wais_dashboard_breakdown():
+    """WAIS breakdown — subtest profiles, index comparisons, score distributions."""
+    import scripts.wais_dashboard as wd
+    return _json_safe(wd.breakdown())
+
+
+@app.get("/api/wais-dashboard/definitions")
+async def wais_dashboard_definitions():
+    """WAIS definitions — methodology, index/subtest structure, clinical relevance."""
+    import scripts.wais_dashboard as wd
+    return _json_safe(wd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
