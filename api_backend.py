@@ -8621,6 +8621,28 @@ async def hybrid_pipeline_definitions():
     return _json_safe(hpd.definitions())
 
 
+# ── Connectivity Analysis Dashboard ─────────────────────────────────────────
+@app.get("/api/connectivity/overview")
+async def connectivity_overview():
+    """Connectivity overview — coherence/PLV/correlation matrix, graph metrics, band summary."""
+    import scripts.connectivity_dashboard as cnd
+    return _json_safe(cnd.overview())
+
+
+@app.get("/api/connectivity/breakdown")
+async def connectivity_breakdown():
+    """Connectivity breakdown — per-band pairs, graph metrics, strongest/weakest connections."""
+    import scripts.connectivity_dashboard as cnd
+    return _json_safe(cnd.breakdown())
+
+
+@app.get("/api/connectivity/definitions")
+async def connectivity_definitions():
+    """Connectivity definitions — methods, formulae, clinical relevance, references."""
+    import scripts.connectivity_dashboard as cnd
+    return _json_safe(cnd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
