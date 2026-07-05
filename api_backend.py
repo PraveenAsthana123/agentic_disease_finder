@@ -8838,6 +8838,28 @@ async def gnn_electrode_connectivity_definitions():
     return _json_safe(gnn.definitions())
 
 
+# ── Patient Education Dashboard ───────────────────────────────────────
+@app.get("/api/patient-education/overview")
+async def patient_education_overview():
+    """Patient education overview: module completion, quiz scores, topic/format stats."""
+    import scripts.patient_education_dashboard as ped
+    return _json_safe(ped.overview())
+
+
+@app.get("/api/patient-education/breakdown")
+async def patient_education_breakdown():
+    """Patient education breakdown: per-patient progress, at-risk, quiz performance."""
+    import scripts.patient_education_dashboard as ped
+    return _json_safe(ped.breakdown())
+
+
+@app.get("/api/patient-education/definitions")
+async def patient_education_definitions():
+    """Patient education definitions: education terminology and module descriptions."""
+    import scripts.patient_education_dashboard as ped
+    return _json_safe(ped.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

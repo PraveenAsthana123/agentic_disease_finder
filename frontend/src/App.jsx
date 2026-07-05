@@ -217,6 +217,7 @@ import PatientFacingReportDashboard from './components/PatientFacingReportDashbo
 import RLHFTrainingDashboard from './components/RLHFTrainingDashboard'
 import FederatedLearningDashboard from './components/FederatedLearningDashboard'
 import GNNElectrodeConnectivityDashboard from './components/GNNElectrodeConnectivityDashboard'
+import PatientEducationDashboard from './components/PatientEducationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -522,7 +523,8 @@ function App() {
     { id: 'patient-facing-report', label: 'Patient Report' },
     { id: 'rlhf-training', label: 'RLHF Training' },
     { id: 'federated-learning', label: 'Federated Learning' },
-    { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' }
+    { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' },
+    { id: 'patient-education', label: 'Patient Education' }
   ]
 
   // API Calls
@@ -1785,6 +1787,8 @@ function App() {
         return <FederatedLearningDashboard />
       case 'gnn-electrode-connectivity':
         return <GNNElectrodeConnectivityDashboard />
+      case 'patient-education':
+        return <PatientEducationDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
