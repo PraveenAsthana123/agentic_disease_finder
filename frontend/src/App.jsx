@@ -215,6 +215,8 @@ import GuardrailsDashboard from './components/GuardrailsDashboard'
 import SpwvdDashboard from './components/SpwvdDashboard'
 import PatientFacingReportDashboard from './components/PatientFacingReportDashboard'
 import RLHFTrainingDashboard from './components/RLHFTrainingDashboard'
+import FederatedLearningDashboard from './components/FederatedLearningDashboard'
+import GNNElectrodeConnectivityDashboard from './components/GNNElectrodeConnectivityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -518,7 +520,9 @@ function App() {
     { id: 'guardrails', label: 'NeMo Guardrails' },
     { id: 'spwvd', label: 'SPWVD' },
     { id: 'patient-facing-report', label: 'Patient Report' },
-    { id: 'rlhf-training', label: 'RLHF Training' }
+    { id: 'rlhf-training', label: 'RLHF Training' },
+    { id: 'federated-learning', label: 'Federated Learning' },
+    { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' }
   ]
 
   // API Calls
@@ -1777,6 +1781,10 @@ function App() {
         return <PatientFacingReportDashboard />
       case 'rlhf-training':
         return <RLHFTrainingDashboard />
+      case 'federated-learning':
+        return <FederatedLearningDashboard />
+      case 'gnn-electrode-connectivity':
+        return <GNNElectrodeConnectivityDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

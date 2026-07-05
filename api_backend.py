@@ -8794,6 +8794,50 @@ async def ica_noise_cleaning_definitions():
     return _json_safe(ica.definitions())
 
 
+# ── Federated Learning Dashboard ──────────────────────────────────────
+@app.get("/api/federated-learning/overview")
+async def federated_learning_overview():
+    """Federated learning overview: global model, sites, rounds, privacy budget."""
+    import scripts.federated_learning_dashboard as fl
+    return _json_safe(fl.overview())
+
+
+@app.get("/api/federated-learning/breakdown")
+async def federated_learning_breakdown():
+    """Federated learning breakdown: per-site detail, aggregation comparison, convergence."""
+    import scripts.federated_learning_dashboard as fl
+    return _json_safe(fl.breakdown())
+
+
+@app.get("/api/federated-learning/definitions")
+async def federated_learning_definitions():
+    """Federated learning definitions: FL terminology and privacy metrics."""
+    import scripts.federated_learning_dashboard as fl
+    return _json_safe(fl.definitions())
+
+
+# ── GNN Electrode Connectivity Dashboard ─────────────────────────────
+@app.get("/api/gnn-electrode-connectivity/overview")
+async def gnn_electrode_connectivity_overview():
+    """GNN overview: graph stats, node/edge counts, top-attention electrodes, spectral power."""
+    import scripts.gnn_electrode_connectivity_dashboard as gnn
+    return _json_safe(gnn.overview())
+
+
+@app.get("/api/gnn-electrode-connectivity/breakdown")
+async def gnn_electrode_connectivity_breakdown():
+    """GNN breakdown: node features, edge weights, regional connectivity, seizure patterns."""
+    import scripts.gnn_electrode_connectivity_dashboard as gnn
+    return _json_safe(gnn.breakdown())
+
+
+@app.get("/api/gnn-electrode-connectivity/definitions")
+async def gnn_electrode_connectivity_definitions():
+    """GNN definitions: GNN and electrode connectivity terminology."""
+    import scripts.gnn_electrode_connectivity_dashboard as gnn
+    return _json_safe(gnn.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

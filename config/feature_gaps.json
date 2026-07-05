@@ -51,8 +51,8 @@
     {
       "category": "technology",
       "feature": "Graph Neural Network (electrode connectivity)",
-      "in_project": false,
-      "why": "GNN models inter-channel connectivity \u2014 strong for focal localization",
+      "in_project": "built",
+      "why": "GNN Electrode Connectivity Dashboard \u2014 10-20 montage graph analysis, node features, edge weights (coherence/PLV/MI/Granger), regional connectivity, seizure propagation patterns, ST-GCN architecture (3 endpoints verified 200)",
       "priority": "medium"
     },
     {
@@ -72,9 +72,10 @@
     {
       "category": "technology",
       "feature": "Federated learning (privacy-preserving multi-site)",
-      "in_project": "planned",
-      "why": "Registered as planned; review dedicates a full section",
-      "priority": "medium"
+      "in_project": "built",
+      "why": "Federated Learning Dashboard — 3 endpoints (/api/federated-learning/*) + FederatedLearningDashboard.jsx with multi-site analytics, FedAvg/FedProx/FedMA comparison, differential privacy tracking, convergence curves, gradient analysis",
+      "priority": "medium",
+      "dashboard": "/api/federated-learning/*"
     },
     {
       "category": "data",
