@@ -37,8 +37,8 @@
     {
       "category": "functional",
       "feature": "Closed-loop responsive alert (pre-ictal \u2192 stimulation/SOS)",
-      "in_project": "partial",
-      "why": "IoT sim has SOS; no pre-ictal trigger logic",
+      "in_project": "built",
+      "why": "Closed-Loop Neurostimulation Dashboard \u2014 3 endpoints (/api/closed-loop/*) + ClosedLoopDashboard.jsx with 5-tab frontend: pre-ictal detection \u2192 alert trigger \u2192 responder notification \u2192 response \u2192 outcome audit. Real data from wearable_readings, seizure_diary, emergency_sos_events, iot_alerts.",
       "priority": "medium"
     },
     {
@@ -144,8 +144,8 @@
     {
       "category": "decision_ai",
       "feature": "Closed-loop decision (pre-ictal \u2192 caregiver/stim action) with audit",
-      "in_project": "partial",
-      "why": "SOS sim exists; no governed closed-loop action record",
+      "in_project": "built",
+      "why": "Closed-Loop Neurostimulation Dashboard \u2014 per-patient closed-loop audit with trigger method \u2192 outcome effectiveness, event timeline, IoT alert audit, response latency by event type. Governed action records via emergency_sos_events with outcome classification.",
       "priority": "medium"
     }
   ],

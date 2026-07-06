@@ -9068,6 +9068,28 @@ async def edge_deploy_definitions():
     return _json_safe(edd.definitions())
 
 
+# ── Closed-Loop Neurostimulation Dashboard ────────────────────────────────
+@app.get("/api/closed-loop/overview")
+async def closed_loop_overview():
+    """Closed-loop overview — SOS KPIs, trigger breakdown, response latency, outcome distribution."""
+    import scripts.closed_loop_dashboard as cld
+    return _json_safe(cld.overview())
+
+
+@app.get("/api/closed-loop/breakdown")
+async def closed_loop_breakdown():
+    """Closed-loop breakdown — per-patient audit, event timeline, IoT alert audit."""
+    import scripts.closed_loop_dashboard as cld
+    return _json_safe(cld.breakdown())
+
+
+@app.get("/api/closed-loop/definitions")
+async def closed_loop_definitions():
+    """Closed-loop definitions — loop stages, glossary, clinical references."""
+    import scripts.closed_loop_dashboard as cld
+    return _json_safe(cld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -229,6 +229,7 @@ import ShadowAIDashboard from './components/ShadowAIDashboard'
 import NoiseCleaningDashboard from './components/NoiseCleaningDashboard'
 import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
 import EdgeDeployDashboard from './components/EdgeDeployDashboard'
+import ClosedLoopDashboard from './components/ClosedLoopDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -546,7 +547,8 @@ function App() {
     { id: 'body-movement', label: 'Body Movement' },
     { id: 'video-converter', label: 'Video Converter' },
     { id: 'survey-link', label: 'Survey Link' },
-    { id: 'edge-deploy', label: 'Edge Deployment' }
+    { id: 'edge-deploy', label: 'Edge Deployment' },
+    { id: 'closed-loop', label: 'Closed-Loop Neurostim' }
   ]
 
   // API Calls
@@ -2041,6 +2043,8 @@ function App() {
         return <AbpmDashboard />
       case 'edge-deploy':
         return <EdgeDeployDashboard />
+      case 'closed-loop':
+        return <ClosedLoopDashboard />
       default:
         return renderClassificationTab()
     }
