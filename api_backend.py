@@ -8882,6 +8882,28 @@ async def audio_converter_definitions():
     return _json_safe(acd.definitions())
 
 
+# ── Phase-Amplitude Coupling (PAC) Dashboard ─────────────────────────
+@app.get("/api/pac/overview")
+async def pac_overview():
+    """PAC overview: modulation index stats, frequency band pairs, electrode rankings."""
+    import scripts.pac_dashboard as pac
+    return _json_safe(pac.overview())
+
+
+@app.get("/api/pac/breakdown")
+async def pac_breakdown():
+    """PAC breakdown: per-patient coupling, comodulogram, temporal trends, channel detail."""
+    import scripts.pac_dashboard as pac
+    return _json_safe(pac.breakdown())
+
+
+@app.get("/api/pac/definitions")
+async def pac_definitions():
+    """PAC definitions: cross-frequency coupling terminology and clinical significance."""
+    import scripts.pac_dashboard as pac
+    return _json_safe(pac.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

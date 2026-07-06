@@ -219,6 +219,7 @@ import FederatedLearningDashboard from './components/FederatedLearningDashboard'
 import GNNElectrodeConnectivityDashboard from './components/GNNElectrodeConnectivityDashboard'
 import PatientEducationDashboard from './components/PatientEducationDashboard'
 import AudioConverterDashboard from './components/AudioConverterDashboard'
+import PACDashboard from './components/PACDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -526,7 +527,8 @@ function App() {
     { id: 'federated-learning', label: 'Federated Learning' },
     { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' },
     { id: 'patient-education', label: 'Patient Education' },
-    { id: 'audio-converter', label: 'Audio Converter' }
+    { id: 'audio-converter', label: 'Audio Converter' },
+    { id: 'pac', label: 'PAC Analysis' }
   ]
 
   // API Calls
@@ -1793,6 +1795,8 @@ function App() {
         return <PatientEducationDashboard />
       case 'audio-converter':
         return <AudioConverterDashboard />
+      case 'pac':
+        return <PACDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
