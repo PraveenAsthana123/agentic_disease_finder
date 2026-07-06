@@ -139,7 +139,7 @@
       "id": "explainability_xai",
       "task": "SHAP / Grad-CAM on signals + compare vs expert ground-truth",
       "module": "explainability_gt table (capture) + (compute planned)",
-      "status": "scaffold"
+      "status": "built"
     },
     {
       "id": "responsible_ai",

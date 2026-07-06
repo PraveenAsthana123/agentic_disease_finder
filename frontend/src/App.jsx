@@ -231,6 +231,7 @@ import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
 import EdgeDeployDashboard from './components/EdgeDeployDashboard'
 import ClosedLoopDashboard from './components/ClosedLoopDashboard'
 import BandHeatmapDashboard from './components/BandHeatmapDashboard'
+import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -453,6 +454,7 @@ function App() {
     { id: 'multimodal-ai', label: 'Multimodal AI' },
     { id: 'drift-detection', label: 'Drift Detection' },
     { id: 'explainable-ai', label: 'Explainable AI' },
+    { id: 'xai-groundtruth', label: 'XAI Ground-Truth' },
     { id: 'communication-ai', label: 'Communication AI' },
     { id: 'foundation-models', label: 'Foundation Models' },
     { id: 'analytics-ai', label: 'Analytics AI' },
@@ -1901,6 +1903,8 @@ function App() {
         return <DriftDetectionDashboard />
       case 'explainable-ai':
         return <ExplainableAIDashboard />
+      case 'xai-groundtruth':
+        return <XAIGroundTruthDashboard />
       case 'communication-ai':
         return <CommunicationAIDashboard />
       case 'foundation-models':

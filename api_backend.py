@@ -9112,6 +9112,42 @@ async def band_heatmap_definitions():
     return _json_safe(bhd.definitions())
 
 
+# ── XAI Ground-Truth Comparison Dashboard ────────────────────────────────────
+@app.get("/api/xai-groundtruth/overview")
+async def xai_groundtruth_overview():
+    """XAI Ground-Truth Comparison — AI SHAP features vs expert annotations concordance."""
+    import scripts.xai_groundtruth_dashboard as xgt
+    return _json_safe(xgt.overview())
+
+
+@app.get("/api/xai-groundtruth/concordance")
+async def xai_groundtruth_concordance():
+    """Per-disease concordance detail — AI vs expert feature overlap analysis."""
+    import scripts.xai_groundtruth_dashboard as xgt
+    return _json_safe(xgt.concordance_detail())
+
+
+@app.get("/api/xai-groundtruth/features")
+async def xai_groundtruth_features():
+    """Side-by-side AI vs expert feature rankings with band-level analysis."""
+    import scripts.xai_groundtruth_dashboard as xgt
+    return _json_safe(xgt.feature_comparison())
+
+
+@app.get("/api/xai-groundtruth/patients")
+async def xai_groundtruth_patients():
+    """Patient-level explainability audit — per-patient AI vs expert concordance."""
+    import scripts.xai_groundtruth_dashboard as xgt
+    return _json_safe(xgt.patients())
+
+
+@app.get("/api/xai-groundtruth/definitions")
+async def xai_groundtruth_definitions():
+    """XAI ground-truth definitions — SHAP, concordance, EU AI Act references."""
+    import scripts.xai_groundtruth_dashboard as xgt
+    return _json_safe(xgt.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
