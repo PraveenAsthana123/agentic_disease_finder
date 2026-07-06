@@ -130,8 +130,8 @@
     {
       "category": "architecture",
       "feature": "Edge deployment (quantized model on device)",
-      "in_project": "partial",
-      "why": "IoT sim only; no quantized/ONNX edge model",
+      "in_project": "built",
+      "why": "Edge Deployment Dashboard \u2014 ONNX export pipeline, quantization modes (FP16/INT8/INT4), 6 device targets, model compatibility matrix, 5-tab frontend (3 endpoints verified 200)",
       "priority": "medium"
     },
     {

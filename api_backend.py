@@ -9045,6 +9045,29 @@ async def moca_autoscoring_definitions():
     return _json_safe(mad.definitions())
 
 
+# ── Edge Deployment Dashboard ──────────────────────────────────────
+
+@app.get("/api/edge-deploy/overview")
+async def edge_deploy_overview():
+    """Edge deployment overview: ONNX export status, quantization modes, device targets."""
+    import scripts.edge_deploy_dashboard as edd
+    return _json_safe(edd.overview())
+
+
+@app.get("/api/edge-deploy/breakdown")
+async def edge_deploy_breakdown():
+    """Edge deployment breakdown: per-model size, ONNX status, device compatibility matrix."""
+    import scripts.edge_deploy_dashboard as edd
+    return _json_safe(edd.breakdown())
+
+
+@app.get("/api/edge-deploy/definitions")
+async def edge_deploy_definitions():
+    """Edge deployment definitions: ONNX, quantization, edge inference glossary."""
+    import scripts.edge_deploy_dashboard as edd
+    return _json_safe(edd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

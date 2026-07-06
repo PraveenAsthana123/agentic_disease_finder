@@ -228,6 +228,7 @@ import TokenCostDashboard from './components/TokenCostDashboard'
 import ShadowAIDashboard from './components/ShadowAIDashboard'
 import NoiseCleaningDashboard from './components/NoiseCleaningDashboard'
 import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
+import EdgeDeployDashboard from './components/EdgeDeployDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -544,7 +545,8 @@ function App() {
     { id: 'pac', label: 'PAC Analysis' },
     { id: 'body-movement', label: 'Body Movement' },
     { id: 'video-converter', label: 'Video Converter' },
-    { id: 'survey-link', label: 'Survey Link' }
+    { id: 'survey-link', label: 'Survey Link' },
+    { id: 'edge-deploy', label: 'Edge Deployment' }
   ]
 
   // API Calls
@@ -2037,6 +2039,8 @@ function App() {
         return <SeizureDiaryDashboard />
       case 'abpm-holter':
         return <AbpmDashboard />
+      case 'edge-deploy':
+        return <EdgeDeployDashboard />
       default:
         return renderClassificationTab()
     }
