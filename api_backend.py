@@ -2029,6 +2029,29 @@ async def cross_patient():
     return json.loads(p.read_text()) if p.exists() else {"available": False, "reason": "run scripts/cross_patient_benchmark.py"}
 
 
+# ── Cross-Patient Benchmark Dashboard ─────────────────────────────────
+
+@app.get("/api/cross-patient-benchmark/overview")
+async def cross_patient_benchmark_overview():
+    """Cross-Patient Benchmark overview — LOSO KPIs, fold performance, in-sample gap."""
+    import scripts.cross_patient_dashboard as cpd
+    return _json_safe(cpd.overview())
+
+
+@app.get("/api/cross-patient-benchmark/breakdown")
+async def cross_patient_benchmark_breakdown():
+    """Cross-Patient Benchmark breakdown — fold detail, generalization gap, spatial patterns."""
+    import scripts.cross_patient_dashboard as cpd
+    return _json_safe(cpd.breakdown())
+
+
+@app.get("/api/cross-patient-benchmark/definitions")
+async def cross_patient_benchmark_definitions():
+    """Cross-Patient Benchmark definitions — terms, references, clinical interpretation."""
+    import scripts.cross_patient_dashboard as cpd
+    return _json_safe(cpd.definitions())
+
+
 @app.get("/api/feature-gaps")
 async def feature_gaps():
     """Epilepsy DL review (50 papers) → project gap analysis by category."""

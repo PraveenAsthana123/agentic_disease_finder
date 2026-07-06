@@ -99,6 +99,7 @@ import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
 import FeatureSelectionDashboard from './components/FeatureSelectionDashboard'
 import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
+import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
 import HRVDashboard from './components/HRVDashboard'
 import PNESDifferentialDashboard from './components/PNESDifferentialDashboard'
@@ -523,6 +524,7 @@ function App() {
     { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
+    { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
     { id: 'data-augmentation', label: 'Data Augmentation' },
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'data-steward', label: 'Data Steward' },
@@ -1785,6 +1787,8 @@ function App() {
         return <AutomaticPipelinesDashboard />
       case 'transfer-learning':
         return <TransferLearningDashboard />
+      case 'cross-patient-benchmark':
+        return <CrossPatientDashboard />
       case 'data-augmentation':
         return <DataAugmentationDashboard />
       case 'seizure-prediction':

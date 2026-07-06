@@ -73,7 +73,7 @@
       "category": "technology",
       "feature": "Federated learning (privacy-preserving multi-site)",
       "in_project": "built",
-      "why": "Federated Learning Dashboard — 3 endpoints (/api/federated-learning/*) + FederatedLearningDashboard.jsx with multi-site analytics, FedAvg/FedProx/FedMA comparison, differential privacy tracking, convergence curves, gradient analysis",
+      "why": "Federated Learning Dashboard \u2014 3 endpoints (/api/federated-learning/*) + FederatedLearningDashboard.jsx with multi-site analytics, FedAvg/FedProx/FedMA comparison, differential privacy tracking, convergence curves, gradient analysis",
       "priority": "medium",
       "dashboard": "/api/federated-learning/*"
     },
@@ -102,8 +102,8 @@
     {
       "category": "gap",
       "feature": "Cross-patient (leave-subjects-out) benchmark on full data",
-      "in_project": "partial",
-      "why": "Real leave-subjects-out benchmark RUN on CHB-MIT (chb02/03/04): cross-patient mean acc 0.705 vs in-sample 0.99. Full-dataset version pending.",
+      "in_project": "built",
+      "why": "Cross-Patient Benchmark Dashboard \u2014 3 endpoints (/api/cross-patient-benchmark/*) + CrossPatientDashboard.jsx with LOSO fold analysis, generalization gap (0.705 vs 0.99), feature importance, spatial patterns, 5-tab frontend. Real CHB-MIT data (chb02/03/04).",
       "priority": "high"
     },
     {
