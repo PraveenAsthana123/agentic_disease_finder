@@ -232,6 +232,7 @@ import EdgeDeployDashboard from './components/EdgeDeployDashboard'
 import ClosedLoopDashboard from './components/ClosedLoopDashboard'
 import BandHeatmapDashboard from './components/BandHeatmapDashboard'
 import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
+import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -552,7 +553,8 @@ function App() {
     { id: 'survey-link', label: 'Survey Link' },
     { id: 'edge-deploy', label: 'Edge Deployment' },
     { id: 'closed-loop', label: 'Closed-Loop Neurostim' },
-    { id: 'band-heatmap', label: 'Band Heatmap' }
+    { id: 'band-heatmap', label: 'Band Heatmap' },
+    { id: 'device-telemetry', label: 'Device Telemetry' }
   ]
 
   // API Calls
@@ -2053,6 +2055,8 @@ function App() {
         return <ClosedLoopDashboard />
       case 'band-heatmap':
         return <BandHeatmapDashboard />
+      case 'device-telemetry':
+        return <DeviceTelemetryDashboard />
       default:
         return renderClassificationTab()
     }

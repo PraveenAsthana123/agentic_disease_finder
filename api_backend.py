@@ -9148,6 +9148,28 @@ async def xai_groundtruth_definitions():
     return _json_safe(xgt.definitions())
 
 
+# ── Device Telemetry Dashboard ────────────────────────────────────────────
+@app.get("/api/device-telemetry/overview")
+async def device_telemetry_overview():
+    """Fleet-wide KPIs — battery health, signal quality, online/offline, alert summary."""
+    import scripts.device_telemetry_dashboard as dtd
+    return _json_safe(dtd.overview())
+
+
+@app.get("/api/device-telemetry/breakdown")
+async def device_telemetry_breakdown():
+    """Per-device telemetry detail — battery, signal, latency, alerts by type, gateways."""
+    import scripts.device_telemetry_dashboard as dtd
+    return _json_safe(dtd.breakdown())
+
+
+@app.get("/api/device-telemetry/definitions")
+async def device_telemetry_definitions():
+    """Telemetry glossary — thresholds, severity definitions, clinical references."""
+    import scripts.device_telemetry_dashboard as dtd
+    return _json_safe(dtd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

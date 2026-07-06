@@ -5,7 +5,7 @@
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "\ud83e\udde0",
+      "icon": "🧠",
       "items": [
         {
           "challenge": "Reading EEG is slow (20-60 min/study), creating backlog",
@@ -36,7 +36,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "items": [
         {
           "challenge": "Bad signal quality discovered only after the neurologist reads",
@@ -62,7 +62,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "\ud83d\udcac",
+      "icon": "💬",
       "items": [
         {
           "challenge": "Distinguishing epileptic seizures from PNES (psychogenic)",
@@ -83,7 +83,7 @@
     },
     {
       "role": "Occupational Therapist",
-      "icon": "\ud83d\udd90\ufe0f",
+      "icon": "🖐️",
       "items": [
         {
           "challenge": "Tracking functional recovery over time is manual",
@@ -97,14 +97,14 @@
         },
         {
           "challenge": "Inconsistent assessment scoring",
-          "ai": "Standardized auto-scored instruments (COPM/FIM \u2014 planned)",
+          "ai": "Standardized auto-scored instruments (COPM/FIM — planned)",
           "status": "planned"
         }
       ]
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "\ud83e\udde9",
+      "icon": "🧩",
       "items": [
         {
           "challenge": "Neuropsych battery scoring is slow + error-prone",
@@ -120,7 +120,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "\ud83e\ude7b",
+      "icon": "🩻",
       "items": [
         {
           "challenge": "Correlating MRI lesions with EEG focus",
@@ -136,7 +136,7 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "items": [
         {
           "challenge": "Wearable/Emotiv devices drop connection mid-recording",
@@ -150,8 +150,8 @@
         },
         {
           "challenge": "Battery/signal degradation goes unnoticed",
-          "ai": "Telemetry anomaly alerts before failure",
-          "status": "planned"
+          "ai": "Device Telemetry Dashboard — battery health, signal quality, connection status, degradation alerts (3 endpoints verified 200)",
+          "status": "built"
         },
         {
           "challenge": "SOS must reach caregiver fast + reliably",
@@ -167,7 +167,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "\u2696\ufe0f",
+      "icon": "⚖️",
       "items": [
         {
           "challenge": "Proving AI decisions were governed",
@@ -193,7 +193,7 @@
     },
     {
       "role": "Patient",
-      "icon": "\ud83e\uddd1",
+      "icon": "🧑",
       "items": [
         {
           "challenge": "Not understanding their own condition/records",
