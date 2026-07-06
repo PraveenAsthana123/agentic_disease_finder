@@ -37,7 +37,7 @@
       "id": "dat_extractor",
       "task": "Binary .dat peek (float32 preview + size)",
       "module": "eeg_ingest.extract_dat",
-      "status": "scaffold"
+      "status": "built"
     },
     {
       "id": "edf_extractor",
@@ -96,9 +96,9 @@
     {
       "id": "audio_converter",
       "task": "Audio extraction/conversion from video-EEG (speech/sound markers)",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "ffmpeg + librosa pipeline"
+      "module": "scripts/audio_converter_dashboard.py + /api/audio-converter/{overview,breakdown,definitions} + AudioConverterDashboard.jsx",
+      "status": "built",
+      "note": "Audio Converter dashboard — audio extraction readiness from video-EEG, vocalization detection, speech marker analysis, MFCC/spectral features, clinical correlation with seizure events; 3 endpoints verified 200"
     },
     {
       "id": "video_converter",

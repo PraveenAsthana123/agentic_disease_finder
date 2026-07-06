@@ -8860,6 +8860,28 @@ async def patient_education_definitions():
     return _json_safe(ped.definitions())
 
 
+# ── Audio Converter Dashboard ──────────────────────────────────────
+@app.get("/api/audio-converter/overview")
+async def audio_converter_overview():
+    """Audio converter overview: audio-capable recordings, extraction readiness, pipeline status."""
+    import scripts.audio_converter_dashboard as acd
+    return _json_safe(acd.overview())
+
+
+@app.get("/api/audio-converter/breakdown")
+async def audio_converter_breakdown():
+    """Audio converter breakdown: per-patient profiles, vocalization events, feature extraction."""
+    import scripts.audio_converter_dashboard as acd
+    return _json_safe(acd.breakdown())
+
+
+@app.get("/api/audio-converter/definitions")
+async def audio_converter_definitions():
+    """Audio converter definitions: audio extraction terminology and clinical relevance."""
+    import scripts.audio_converter_dashboard as acd
+    return _json_safe(acd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
