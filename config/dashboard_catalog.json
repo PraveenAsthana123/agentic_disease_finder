@@ -234,6 +234,11 @@
           "name": "MCP Federation Dashboard",
           "status": "built",
           "maps_to": "cross-component federation topology (mcp_federation_dashboard.py)"
+        },
+        {
+          "name": "Shadow AI Detection Dashboard",
+          "status": "built",
+          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx — unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
         }
       ]
     }
