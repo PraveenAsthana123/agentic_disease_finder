@@ -220,6 +220,7 @@ import GNNElectrodeConnectivityDashboard from './components/GNNElectrodeConnecti
 import PatientEducationDashboard from './components/PatientEducationDashboard'
 import AudioConverterDashboard from './components/AudioConverterDashboard'
 import PACDashboard from './components/PACDashboard'
+import BodyMovementDashboard from './components/BodyMovementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -528,7 +529,8 @@ function App() {
     { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' },
     { id: 'patient-education', label: 'Patient Education' },
     { id: 'audio-converter', label: 'Audio Converter' },
-    { id: 'pac', label: 'PAC Analysis' }
+    { id: 'pac', label: 'PAC Analysis' },
+    { id: 'body-movement', label: 'Body Movement' }
   ]
 
   // API Calls
@@ -1797,6 +1799,8 @@ function App() {
         return <AudioConverterDashboard />
       case 'pac':
         return <PACDashboard />
+      case 'body-movement':
+        return <BodyMovementDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':

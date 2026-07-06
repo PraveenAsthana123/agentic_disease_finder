@@ -8904,6 +8904,28 @@ async def pac_definitions():
     return _json_safe(pac.definitions())
 
 
+# ── Body Movement Classifier Dashboard ─────────────────────────────
+@app.get("/api/body-movement/overview")
+async def body_movement_overview():
+    """Body movement overview: video-capable recordings, movement types, pose estimation readiness."""
+    import scripts.body_movement_dashboard as bmd
+    return _json_safe(bmd.overview())
+
+
+@app.get("/api/body-movement/breakdown")
+async def body_movement_breakdown():
+    """Body movement breakdown: per-patient profiles, per-recording movements, lateralization analysis."""
+    import scripts.body_movement_dashboard as bmd
+    return _json_safe(bmd.breakdown())
+
+
+@app.get("/api/body-movement/definitions")
+async def body_movement_definitions():
+    """Body movement definitions: seizure semiology and pose estimation terminology."""
+    import scripts.body_movement_dashboard as bmd
+    return _json_safe(bmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

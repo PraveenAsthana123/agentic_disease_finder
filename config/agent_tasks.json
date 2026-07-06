@@ -110,8 +110,8 @@
     {
       "id": "body_movement_classifier",
       "task": "Classify seizure-related body movement from video (pose/action)",
-      "module": "(planned)",
-      "status": "planned",
+      "module": "scripts/body_movement_dashboard.py + BodyMovementDashboard.jsx",
+      "status": "built",
       "needs": "MediaPipe/pose model + labeled clips"
     },
     {
