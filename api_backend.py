@@ -9090,6 +9090,28 @@ async def closed_loop_definitions():
     return _json_safe(cld.definitions())
 
 
+# ── Band Heatmap Dashboard ─────────────────────────────────────────────────
+@app.get("/api/band-heatmap/overview")
+async def band_heatmap_overview():
+    """Band heatmap overview — band power distribution, dominance map, abnormality index."""
+    import scripts.band_heatmap_dashboard as bhd
+    return _json_safe(bhd.overview())
+
+
+@app.get("/api/band-heatmap/breakdown")
+async def band_heatmap_breakdown():
+    """Band heatmap breakdown — per-band statistics, ratios, diagnosis profiles, correlation."""
+    import scripts.band_heatmap_dashboard as bhd
+    return _json_safe(bhd.breakdown())
+
+
+@app.get("/api/band-heatmap/definitions")
+async def band_heatmap_definitions():
+    """Band heatmap definitions — band ranges, clinical significance, heatmap interpretation."""
+    import scripts.band_heatmap_dashboard as bhd
+    return _json_safe(bhd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -230,6 +230,7 @@ import NoiseCleaningDashboard from './components/NoiseCleaningDashboard'
 import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
 import EdgeDeployDashboard from './components/EdgeDeployDashboard'
 import ClosedLoopDashboard from './components/ClosedLoopDashboard'
+import BandHeatmapDashboard from './components/BandHeatmapDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -548,7 +549,8 @@ function App() {
     { id: 'video-converter', label: 'Video Converter' },
     { id: 'survey-link', label: 'Survey Link' },
     { id: 'edge-deploy', label: 'Edge Deployment' },
-    { id: 'closed-loop', label: 'Closed-Loop Neurostim' }
+    { id: 'closed-loop', label: 'Closed-Loop Neurostim' },
+    { id: 'band-heatmap', label: 'Band Heatmap' }
   ]
 
   // API Calls
@@ -2045,6 +2047,8 @@ function App() {
         return <EdgeDeployDashboard />
       case 'closed-loop':
         return <ClosedLoopDashboard />
+      case 'band-heatmap':
+        return <BandHeatmapDashboard />
       default:
         return renderClassificationTab()
     }
