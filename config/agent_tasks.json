@@ -103,8 +103,8 @@
     {
       "id": "video_converter",
       "task": "Video format/codec normalization + frame export pipeline",
-      "module": "(planned)",
-      "status": "planned",
+      "module": "scripts/video_converter_dashboard.py",
+      "status": "built",
       "needs": "ffmpeg transcode wrapper"
     },
     {

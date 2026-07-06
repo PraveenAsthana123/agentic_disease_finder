@@ -8926,6 +8926,28 @@ async def body_movement_definitions():
     return _json_safe(bmd.definitions())
 
 
+# ── Video Converter Dashboard ─────────────────────────────────────
+@app.get("/api/video-converter/overview")
+async def video_converter_overview():
+    """Video converter overview: format/codec distribution, pipeline status, frame export stats."""
+    import scripts.video_converter_dashboard as vcd
+    return _json_safe(vcd.overview())
+
+
+@app.get("/api/video-converter/breakdown")
+async def video_converter_breakdown():
+    """Video converter breakdown: per-recording conversions, quality metrics, patient summaries."""
+    import scripts.video_converter_dashboard as vcd
+    return _json_safe(vcd.breakdown())
+
+
+@app.get("/api/video-converter/definitions")
+async def video_converter_definitions():
+    """Video converter definitions: codec, format, and quality metric terminology."""
+    import scripts.video_converter_dashboard as vcd
+    return _json_safe(vcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

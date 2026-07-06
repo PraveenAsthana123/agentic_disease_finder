@@ -221,6 +221,7 @@ import PatientEducationDashboard from './components/PatientEducationDashboard'
 import AudioConverterDashboard from './components/AudioConverterDashboard'
 import PACDashboard from './components/PACDashboard'
 import BodyMovementDashboard from './components/BodyMovementDashboard'
+import VideoConverterDashboard from './components/VideoConverterDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -530,7 +531,8 @@ function App() {
     { id: 'patient-education', label: 'Patient Education' },
     { id: 'audio-converter', label: 'Audio Converter' },
     { id: 'pac', label: 'PAC Analysis' },
-    { id: 'body-movement', label: 'Body Movement' }
+    { id: 'body-movement', label: 'Body Movement' },
+    { id: 'video-converter', label: 'Video Converter' }
   ]
 
   // API Calls
@@ -1801,6 +1803,8 @@ function App() {
         return <PACDashboard />
       case 'body-movement':
         return <BodyMovementDashboard />
+      case 'video-converter':
+        return <VideoConverterDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
