@@ -8948,6 +8948,28 @@ async def video_converter_definitions():
     return _json_safe(vcd.definitions())
 
 
+# ── Survey Link Dashboard ─────────────────────────────────────────
+@app.get("/api/survey-link/overview")
+async def survey_link_overview():
+    """Survey link overview: generation counts, completion rates, assessment distribution."""
+    import scripts.survey_link_dashboard as sld
+    return _json_safe(sld.overview())
+
+
+@app.get("/api/survey-link/breakdown")
+async def survey_link_breakdown():
+    """Survey link breakdown: per-patient details, per-assessment summaries."""
+    import scripts.survey_link_dashboard as sld
+    return _json_safe(sld.breakdown())
+
+
+@app.get("/api/survey-link/definitions")
+async def survey_link_definitions():
+    """Survey link definitions: token, expiry, assessment terminology."""
+    import scripts.survey_link_dashboard as sld
+    return _json_safe(sld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

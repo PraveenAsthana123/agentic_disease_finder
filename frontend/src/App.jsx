@@ -222,6 +222,7 @@ import AudioConverterDashboard from './components/AudioConverterDashboard'
 import PACDashboard from './components/PACDashboard'
 import BodyMovementDashboard from './components/BodyMovementDashboard'
 import VideoConverterDashboard from './components/VideoConverterDashboard'
+import SurveyLinkDashboard from './components/SurveyLinkDashboard'
 import TokenCostDashboard from './components/TokenCostDashboard'
 
 // API Base URL
@@ -534,7 +535,8 @@ function App() {
     { id: 'audio-converter', label: 'Audio Converter' },
     { id: 'pac', label: 'PAC Analysis' },
     { id: 'body-movement', label: 'Body Movement' },
-    { id: 'video-converter', label: 'Video Converter' }
+    { id: 'video-converter', label: 'Video Converter' },
+    { id: 'survey-link', label: 'Survey Link' }
   ]
 
   // API Calls
@@ -1809,6 +1811,8 @@ function App() {
         return <BodyMovementDashboard />
       case 'video-converter':
         return <VideoConverterDashboard />
+      case 'survey-link':
+        return <SurveyLinkDashboard />
       case 'autonomic':
         return <AutonomicDashboard />
       case 'hrv':
