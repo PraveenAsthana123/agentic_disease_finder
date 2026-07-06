@@ -226,6 +226,7 @@ import SurveyLinkDashboard from './components/SurveyLinkDashboard'
 import TokenCostDashboard from './components/TokenCostDashboard'
 import ShadowAIDashboard from './components/ShadowAIDashboard'
 import NoiseCleaningDashboard from './components/NoiseCleaningDashboard'
+import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -351,6 +352,7 @@ function App() {
     { id: 'token-cost', label: 'Token / Cost' },
     { id: 'shadow-ai', label: 'Shadow AI' },
     { id: 'noise-cleaning', label: 'Noise Cleaning' },
+    { id: 'moca-autoscoring', label: 'MoCA Auto-Scoring' },
     { id: 'inference-gpu', label: 'Inference/GPU' },
     { id: 'spike-overlay', label: 'Spike Overlay' },
     { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' },
@@ -1651,6 +1653,8 @@ function App() {
         return <ShadowAIDashboard />
       case 'noise-cleaning':
         return <NoiseCleaningDashboard />
+      case 'moca-autoscoring':
+        return <MoCAAutoscoringDashboard />
       case 'inference-gpu':
         return <InferenceGPUDashboard />
       case 'spike-overlay':

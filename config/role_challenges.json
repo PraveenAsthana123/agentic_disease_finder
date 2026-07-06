@@ -108,8 +108,8 @@
       "items": [
         {
           "challenge": "Neuropsych battery scoring is slow + error-prone",
-          "ai": "Auto-scoring + normative comparison (MoCA/WAIS \u2014 planned)",
-          "status": "planned"
+          "ai": "Auto-scoring + normative comparison (MoCA/WAIS — MoCA Auto-Scoring Dashboard live, WAIS Dashboard live)",
+          "status": "built"
         },
         {
           "challenge": "Detecting cognitive decline early",

@@ -8995,6 +8995,33 @@ async def noise_cleaning_definitions():
     return _json_safe(ncd.definitions())
 
 
+# ── MoCA Auto-Scoring Dashboard ───────────────────────────────────
+# Real data: clinical.db neuropsych table — 37 assessments, 30 patients,
+# MoCA scores 16-30, domain estimates, PHQ-9/GAD-7 comorbidity context.
+
+@app.get("/api/moca-autoscoring/overview")
+async def moca_autoscoring_overview():
+    """MoCA overview: KPIs, classification distribution, score histogram,
+    domain averages, MoCA-vs-MMSE correlation, assessor stats."""
+    import scripts.moca_autoscoring_dashboard as mad
+    return _json_safe(mad.overview())
+
+
+@app.get("/api/moca-autoscoring/breakdown")
+async def moca_autoscoring_breakdown():
+    """Per-patient MoCA breakdown: domain profiles, impairment flags,
+    comorbidity indicators, classification groups, domain vulnerability."""
+    import scripts.moca_autoscoring_dashboard as mad
+    return _json_safe(mad.breakdown())
+
+
+@app.get("/api/moca-autoscoring/definitions")
+async def moca_autoscoring_definitions():
+    """MoCA metric definitions, scoring guide, clinical caveats."""
+    import scripts.moca_autoscoring_dashboard as mad
+    return _json_safe(mad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
