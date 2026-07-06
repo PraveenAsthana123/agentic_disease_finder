@@ -98,7 +98,7 @@
       "task": "Audio extraction/conversion from video-EEG (speech/sound markers)",
       "module": "scripts/audio_converter_dashboard.py + /api/audio-converter/{overview,breakdown,definitions} + AudioConverterDashboard.jsx",
       "status": "built",
-      "note": "Audio Converter dashboard — audio extraction readiness from video-EEG, vocalization detection, speech marker analysis, MFCC/spectral features, clinical correlation with seizure events; 3 endpoints verified 200"
+      "note": "Audio Converter dashboard \u2014 audio extraction readiness from video-EEG, vocalization detection, speech marker analysis, MFCC/spectral features, clinical correlation with seizure events; 3 endpoints verified 200"
     },
     {
       "id": "video_converter",
@@ -131,8 +131,8 @@
     {
       "id": "noise_cleaning",
       "task": "EEG artifact removal / denoising (ICA, filtering)",
-      "module": "(planned)",
-      "status": "planned",
+      "module": "scripts/noise_cleaning_dashboard.py",
+      "status": "built",
       "needs": "MNE ICA + artifact rejection"
     },
     {

@@ -8970,6 +8970,31 @@ async def survey_link_definitions():
     return _json_safe(sld.definitions())
 
 
+# ── Noise Cleaning (ICA Artifact Removal) Dashboard ──────────────
+
+@app.get("/api/noise-cleaning/overview")
+async def noise_cleaning_overview():
+    """Noise Cleaning overview: KPIs, per-subject summary, variance
+    distribution, per-file timeline. Real ICA report data."""
+    import scripts.noise_cleaning_dashboard as ncd
+    return _json_safe(ncd.overview())
+
+
+@app.get("/api/noise-cleaning/breakdown")
+async def noise_cleaning_breakdown():
+    """Noise Cleaning breakdown: per-file details, channel/component stats,
+    subject comparison, quality tiers."""
+    import scripts.noise_cleaning_dashboard as ncd
+    return _json_safe(ncd.breakdown())
+
+
+@app.get("/api/noise-cleaning/definitions")
+async def noise_cleaning_definitions():
+    """Noise Cleaning metric definitions, methodology, clinical caveats."""
+    import scripts.noise_cleaning_dashboard as ncd
+    return _json_safe(ncd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

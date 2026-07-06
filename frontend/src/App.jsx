@@ -225,6 +225,7 @@ import VideoConverterDashboard from './components/VideoConverterDashboard'
 import SurveyLinkDashboard from './components/SurveyLinkDashboard'
 import TokenCostDashboard from './components/TokenCostDashboard'
 import ShadowAIDashboard from './components/ShadowAIDashboard'
+import NoiseCleaningDashboard from './components/NoiseCleaningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -349,6 +350,7 @@ function App() {
     { id: 'ai-cost', label: 'AI Cost' },
     { id: 'token-cost', label: 'Token / Cost' },
     { id: 'shadow-ai', label: 'Shadow AI' },
+    { id: 'noise-cleaning', label: 'Noise Cleaning' },
     { id: 'inference-gpu', label: 'Inference/GPU' },
     { id: 'spike-overlay', label: 'Spike Overlay' },
     { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' },
@@ -1647,6 +1649,8 @@ function App() {
         return <TokenCostDashboard />
       case 'shadow-ai':
         return <ShadowAIDashboard />
+      case 'noise-cleaning':
+        return <NoiseCleaningDashboard />
       case 'inference-gpu':
         return <InferenceGPUDashboard />
       case 'spike-overlay':
