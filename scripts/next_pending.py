@@ -40,6 +40,7 @@ BUILDABLE = [
 # seizure_prediction (Seizure Prediction Dashboard — wearable biomarker risk analysis + pre-ictal comparison + threshold ROC, 3 endpoints verified 200, SeizurePredictionDashboard.jsx + nav wired)
 # saliency_attention (Saliency & Attention Map Dashboard — channel saliency, temporal attention, multi-head attention, per-diagnosis patterns, 3 endpoints verified 200, SaliencyAttentionDashboard.jsx + nav wired)
 # patient_education (Patient Education Dashboard — real education_modules 179 rows, 30 patients, 12 topics, 4 formats, quiz/completion/engagement analytics, 3 endpoints verified 200, PatientEducationDashboard.jsx + nav wired)
+# token_cost (Token / Cost Dashboard — LLM token tracking, budget utilization, component cost breakdown, rate cards, 3 endpoints verified 200, TokenCostDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

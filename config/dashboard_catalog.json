@@ -1,5 +1,5 @@
 {
-  "title": "Enterprise AI Dashboard Catalog (5 phases) — coverage map",
+  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
   "updated_at": "2026-06-30",
   "phases": [
@@ -78,7 +78,7 @@
         {
           "name": "Token / Cost Dashboard",
           "status": "built",
-          "maps_to": "/api/token-cost/overview + /api/token-cost/breakdown + /api/token-cost/budget + /api/token-cost/definitions"
+          "maps_to": "/api/token-cost/overview + /api/token-cost/breakdown + /api/token-cost/definitions"
         },
         {
           "name": "Response Quality Dashboard",

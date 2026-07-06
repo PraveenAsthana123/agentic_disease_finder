@@ -222,6 +222,7 @@ import AudioConverterDashboard from './components/AudioConverterDashboard'
 import PACDashboard from './components/PACDashboard'
 import BodyMovementDashboard from './components/BodyMovementDashboard'
 import VideoConverterDashboard from './components/VideoConverterDashboard'
+import TokenCostDashboard from './components/TokenCostDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -344,6 +345,7 @@ function App() {
     { id: 'ilae-classification', label: 'ILAE Classification' },
     { id: 'annotation', label: 'Annotation QC' },
     { id: 'ai-cost', label: 'AI Cost' },
+    { id: 'token-cost', label: 'Token / Cost' },
     { id: 'inference-gpu', label: 'Inference/GPU' },
     { id: 'spike-overlay', label: 'Spike Overlay' },
     { id: 'epilepsy-nurse', label: 'Epilepsy Nurse' },
@@ -1637,6 +1639,8 @@ function App() {
         return <AnnotationDashboard />
       case 'ai-cost':
         return <AICostDashboard />
+      case 'token-cost':
+        return <TokenCostDashboard />
       case 'inference-gpu':
         return <InferenceGPUDashboard />
       case 'spike-overlay':
