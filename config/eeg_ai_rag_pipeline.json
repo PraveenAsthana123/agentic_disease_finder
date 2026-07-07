@@ -21,7 +21,7 @@
     {"n": 16, "step": "Model Evaluation", "detail": "accuracy · precision · recall · F1 · AUC · sensitivity · specificity · confusion", "status": "built", "where": "accuracy reports"},
     {"n": 17, "step": "Explainable AI", "detail": "SHAP features · saliency EEG-image · attention map · channel/band importance", "status": "built", "where": "SHAP built (XAIDashboard); saliency + attention built (SaliencyAttentionDashboard — 3 endpoints verified 200)"},
     {"n": 18, "step": "RAG Knowledge Layer", "detail": "index papers · SOPs · clinical notes · guidelines · model cards · experiment logs", "status": "built", "where": "ChromaDB + vector_ingest cron"},
-    {"n": 19, "step": "Retrieval", "detail": "hybrid: vector + keyword + metadata filter", "status": "partial", "where": "vector + keyword fallback; metadata filter planned"},
+    {"n": 19, "step": "Retrieval", "detail": "hybrid: vector + keyword + metadata filter", "status": "built", "where": "vector + keyword fallback + metadata filter (patient_id + type dimensions); RAG Metadata Filter dashboard"},
     {"n": 20, "step": "RAG Report Generation", "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata", "status": "partial", "where": "EEG/VEEG report + patient_chat RAG"},
     {"n": 21, "step": "Human Review", "detail": "psychiatrist/neurophysiologist · approve/reject/request more", "status": "built", "where": "HITL override + study-review + consensus"},
     {"n": 22, "step": "Final Output", "detail": "doctor report (risk score, abnormality, biomarkers, citations, limits, next step) + patient report (simple, no Dx claim, follow-up)", "status": "partial", "where": "EEG/VEEG report; patient-facing report planned"},

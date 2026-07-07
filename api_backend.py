@@ -9351,6 +9351,33 @@ async def referral_triage_definitions():
     return _json_safe(rt.definitions())
 
 
+# ── RAG Metadata Filter Dashboard ─────────────────────────────────
+# Real data: ChromaDB embedding_metadata (patient_id, type) ×
+# clinical.db patients — metadata-driven retrieval filtering analytics.
+
+@app.get("/api/rag-metadata-filter/overview")
+async def rag_metadata_filter_overview():
+    """Metadata filter overview — key inventory, type distribution,
+    patient coverage, filter readiness from real ChromaDB + clinical.db."""
+    import scripts.rag_metadata_filter_dashboard as rmf
+    return _json_safe(rmf.overview())
+
+
+@app.get("/api/rag-metadata-filter/breakdown")
+async def rag_metadata_filter_breakdown():
+    """Metadata filter drill-down — cross-tab type×patient, completeness,
+    recent embeddings, filterable query analysis."""
+    import scripts.rag_metadata_filter_dashboard as rmf
+    return _json_safe(rmf.breakdown())
+
+
+@app.get("/api/rag-metadata-filter/definitions")
+async def rag_metadata_filter_definitions():
+    """Metric definitions, filter dimensions, glossary."""
+    import scripts.rag_metadata_filter_dashboard as rmf
+    return _json_safe(rmf.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
