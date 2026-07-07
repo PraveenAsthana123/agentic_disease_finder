@@ -124,9 +124,10 @@
     {
       "id": "segmentation",
       "task": "Segment EEG trace from scanned report images (waveform digitization)",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "U-Net / classical trace extraction"
+      "module": "scripts/segmentation_dashboard.py + /api/segmentation/{overview,breakdown,definitions} + SegmentationDashboard.jsx",
+      "status": "built",
+      "needs": "U-Net / classical trace extraction",
+      "note": "EEG Waveform Segmentation dashboard — pipeline readiness, channel quality (19 channels x 30 patients), artifact impact (169 annotations), 4 method specs (Classical/U-Net/FCN/Hough), per-patient readiness, sampling rate analysis; 3 endpoints verified 200"
     },
     {
       "id": "noise_cleaning",

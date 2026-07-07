@@ -9235,6 +9235,31 @@ async def copm_definitions():
     return _json_safe(copm.definitions())
 
 
+# ── EEG Waveform Segmentation Dashboard ──────────────────────
+
+@app.get("/api/segmentation/overview")
+async def segmentation_overview():
+    """Segmentation pipeline readiness — recording stats, channel quality,
+    artifact impact, method specifications from clinical.db."""
+    import scripts.segmentation_dashboard as seg
+    return _json_safe(seg.segmentation_overview())
+
+
+@app.get("/api/segmentation/breakdown")
+async def segmentation_breakdown():
+    """Per-patient segmentation breakdown — acquisition specs,
+    channel quality per channel, artifact annotations, readiness."""
+    import scripts.segmentation_dashboard as seg
+    return _json_safe(seg.segmentation_breakdown())
+
+
+@app.get("/api/segmentation/definitions")
+async def segmentation_definitions():
+    """Metric definitions for the Segmentation dashboard."""
+    import scripts.segmentation_dashboard as seg
+    return _json_safe(seg.segmentation_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
