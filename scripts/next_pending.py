@@ -42,6 +42,7 @@ BUILDABLE = [
 # patient_education (Patient Education Dashboard — real education_modules 179 rows, 30 patients, 12 topics, 4 formats, quiz/completion/engagement analytics, 3 endpoints verified 200, PatientEducationDashboard.jsx + nav wired)
 # token_cost (Token / Cost Dashboard — LLM token tracking, budget utilization, component cost breakdown, rate cards, 3 endpoints verified 200, TokenCostDashboard.jsx + nav wired)
 # moca_autoscoring (MoCA Auto-Scoring Dashboard — real neuropsych data, 37 assessments 30 patients, domain estimates, normative comparison, PHQ-9/GAD-7 comorbidity, 3 endpoints verified 200, MoCAAutoscoringDashboard.jsx + nav wired)
+# telehealth (Telehealth Sessions Dashboard — real telehealth_sessions 109 rows, 30 patients, 6 providers, 4 session types, 4 platforms, 3 endpoints verified 200, TelehealthDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

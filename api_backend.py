@@ -9170,6 +9170,27 @@ async def device_telemetry_definitions():
     return _json_safe(dtd.definitions())
 
 
+@app.get("/api/telehealth/overview")
+async def telehealth_overview():
+    """Telehealth KPIs — session volume, satisfaction, platform usage, monthly trends."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.overview())
+
+
+@app.get("/api/telehealth/breakdown")
+async def telehealth_breakdown():
+    """Per-provider stats, per-patient history, platform quality comparison, recent sessions."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.breakdown())
+
+
+@app.get("/api/telehealth/definitions")
+async def telehealth_definitions():
+    """Telehealth glossary — session types, quality levels, satisfaction scale, references."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
