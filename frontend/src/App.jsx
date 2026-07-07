@@ -236,6 +236,7 @@ import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 import TelehealthDashboard from './components/TelehealthDashboard'
 import WorkflowDashboard from './components/WorkflowDashboard'
 import FunctionalRecoveryDashboard from './components/FunctionalRecoveryDashboard'
+import IncidentManagementDashboard from './components/IncidentManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -560,7 +561,8 @@ function App() {
     { id: 'device-telemetry', label: 'Device Telemetry' },
     { id: 'telehealth', label: 'Telehealth' },
     { id: 'workflow', label: 'Workflow' },
-    { id: 'functional-recovery', label: 'Functional Recovery' }
+    { id: 'functional-recovery', label: 'Functional Recovery' },
+    { id: 'incident-management', label: 'Incident Management' }
   ]
 
   // API Calls
@@ -2069,6 +2071,8 @@ function App() {
         return <WorkflowDashboard />
       case 'functional-recovery':
         return <FunctionalRecoveryDashboard />
+      case 'incident-management':
+        return <IncidentManagementDashboard />
       default:
         return renderClassificationTab()
     }
