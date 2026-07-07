@@ -100,8 +100,9 @@
         },
         {
           "challenge": "Inconsistent assessment scoring",
-          "ai": "Standardized auto-scored instruments (COPM/FIM \u2014 planned)",
-          "status": "planned"
+          "ai": "Standardized auto-scored instruments (COPM Dashboard + FIM Dashboard — 3+3 endpoints verified 200)",
+          "status": "built",
+          "dashboard": "COPMDashboard"
         }
       ]
     },

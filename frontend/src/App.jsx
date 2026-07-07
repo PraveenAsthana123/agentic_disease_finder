@@ -82,6 +82,7 @@ import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import FIMDashboard from './components/FIMDashboard'
+import COPMDashboard from './components/COPMDashboard'
 import WAISDashboard from './components/WAISDashboard'
 import DigitSpanDashboard from './components/DigitSpanDashboard'
 import AMPSDashboard from './components/AMPSDashboard'
@@ -411,6 +412,7 @@ function App() {
     { id: 'cssrs', label: 'C-SSRS' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
     { id: 'fim', label: 'FIM' },
+    { id: 'copm', label: 'COPM' },
     { id: 'wais', label: 'WAIS (IQ)' },
     { id: 'digit-span', label: 'Digit Span' },
     { id: 'amps', label: 'AMPS' },
@@ -1771,6 +1773,8 @@ function App() {
         return <ICANoiseCleaningDashboard />
       case 'fim':
         return <FIMDashboard />
+      case 'copm':
+        return <COPMDashboard />
       case 'wais':
         return <WAISDashboard />
       case 'digit-span':

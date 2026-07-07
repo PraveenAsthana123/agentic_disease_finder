@@ -9214,6 +9214,27 @@ async def functional_recovery_definitions():
     return _json_safe(frd.definitions())
 
 
+@app.get("/api/copm-dashboard/overview")
+async def copm_overview(patient_id: str = None):
+    """COPM overview — performance/satisfaction KPIs, distributions, patient summaries."""
+    import scripts.neuro_scales_copm as copm
+    return _json_safe(copm.overview(patient_id))
+
+
+@app.get("/api/copm-dashboard/breakdown")
+async def copm_breakdown(patient_id: str = None):
+    """COPM domain breakdown — per-domain averages, problem heatmap, change analysis."""
+    import scripts.neuro_scales_copm as copm
+    return _json_safe(copm.breakdown(patient_id))
+
+
+@app.get("/api/copm-dashboard/definitions")
+async def copm_definitions():
+    """COPM glossary — concepts, scoring, interpretation, references."""
+    import scripts.neuro_scales_copm as copm
+    return _json_safe(copm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

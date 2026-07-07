@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T08:39:52Z",
+  "generated": "2026-07-07T09:02:57Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 17
@@ -30,6 +30,6 @@
     "neuro-ai-ecosystem": "200",
     "jobs": "200"
   },
-  "commits_ahead": "327",
+  "commits_ahead": "328",
   "jobs": 12
 }
