@@ -234,6 +234,7 @@ import BandHeatmapDashboard from './components/BandHeatmapDashboard'
 import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
 import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 import TelehealthDashboard from './components/TelehealthDashboard'
+import WorkflowDashboard from './components/WorkflowDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -556,7 +557,8 @@ function App() {
     { id: 'closed-loop', label: 'Closed-Loop Neurostim' },
     { id: 'band-heatmap', label: 'Band Heatmap' },
     { id: 'device-telemetry', label: 'Device Telemetry' },
-    { id: 'telehealth', label: 'Telehealth' }
+    { id: 'telehealth', label: 'Telehealth' },
+    { id: 'workflow', label: 'Workflow' }
   ]
 
   // API Calls
@@ -2061,6 +2063,8 @@ function App() {
         return <DeviceTelemetryDashboard />
       case 'telehealth':
         return <TelehealthDashboard />
+      case 'workflow':
+        return <WorkflowDashboard />
       default:
         return renderClassificationTab()
     }
