@@ -5,7 +5,7 @@
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "🧠",
+      "icon": "\ud83e\udde0",
       "items": [
         {
           "challenge": "Reading EEG is slow (20-60 min/study), creating backlog",
@@ -36,7 +36,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "📡",
+      "icon": "\ud83d\udce1",
       "items": [
         {
           "challenge": "Bad signal quality discovered only after the neurologist reads",
@@ -62,12 +62,13 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "💬",
+      "icon": "\ud83d\udcac",
       "items": [
         {
           "challenge": "Distinguishing epileptic seizures from PNES (psychogenic)",
           "ai": "Differential model + survey-flag fusion (planned)",
-          "status": "planned"
+          "status": "built",
+          "dashboard": "PNESDifferentialDashboard"
         },
         {
           "challenge": "Depression/anxiety in epilepsy underdiagnosed",
@@ -77,18 +78,20 @@
         {
           "challenge": "Medication interaction risk (AED + psychotropic)",
           "ai": "Interaction checker (planned)",
-          "status": "planned"
+          "status": "built",
+          "dashboard": "MedicationInteractionDashboard"
         }
       ]
     },
     {
       "role": "Occupational Therapist",
-      "icon": "🖐️",
+      "icon": "\ud83d\udd90\ufe0f",
       "items": [
         {
           "challenge": "Tracking functional recovery over time is manual",
           "ai": "Outcome trend + goal-attainment analytics",
-          "status": "partial"
+          "status": "built",
+          "dashboard": "FunctionalRecoveryDashboard"
         },
         {
           "challenge": "Predicting which patients need intensive rehab",
@@ -97,18 +100,18 @@
         },
         {
           "challenge": "Inconsistent assessment scoring",
-          "ai": "Standardized auto-scored instruments (COPM/FIM — planned)",
+          "ai": "Standardized auto-scored instruments (COPM/FIM \u2014 planned)",
           "status": "planned"
         }
       ]
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "🧩",
+      "icon": "\ud83e\udde9",
       "items": [
         {
           "challenge": "Neuropsych battery scoring is slow + error-prone",
-          "ai": "Auto-scoring + normative comparison (MoCA/WAIS — MoCA Auto-Scoring Dashboard live, WAIS Dashboard live)",
+          "ai": "Auto-scoring + normative comparison (MoCA/WAIS \u2014 MoCA Auto-Scoring Dashboard live, WAIS Dashboard live)",
           "status": "built"
         },
         {
@@ -120,7 +123,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "🩻",
+      "icon": "\ud83e\ude7b",
       "items": [
         {
           "challenge": "Correlating MRI lesions with EEG focus",
@@ -136,7 +139,7 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "📡",
+      "icon": "\ud83d\udce1",
       "items": [
         {
           "challenge": "Wearable/Emotiv devices drop connection mid-recording",
@@ -150,7 +153,7 @@
         },
         {
           "challenge": "Battery/signal degradation goes unnoticed",
-          "ai": "Device Telemetry Dashboard — battery health, signal quality, connection status, degradation alerts (3 endpoints verified 200)",
+          "ai": "Device Telemetry Dashboard \u2014 battery health, signal quality, connection status, degradation alerts (3 endpoints verified 200)",
           "status": "built"
         },
         {
@@ -167,7 +170,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "⚖️",
+      "icon": "\u2696\ufe0f",
       "items": [
         {
           "challenge": "Proving AI decisions were governed",
@@ -193,7 +196,7 @@
     },
     {
       "role": "Patient",
-      "icon": "🧑",
+      "icon": "\ud83e\uddd1",
       "items": [
         {
           "challenge": "Not understanding their own condition/records",

@@ -235,6 +235,7 @@ import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
 import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 import TelehealthDashboard from './components/TelehealthDashboard'
 import WorkflowDashboard from './components/WorkflowDashboard'
+import FunctionalRecoveryDashboard from './components/FunctionalRecoveryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -558,7 +559,8 @@ function App() {
     { id: 'band-heatmap', label: 'Band Heatmap' },
     { id: 'device-telemetry', label: 'Device Telemetry' },
     { id: 'telehealth', label: 'Telehealth' },
-    { id: 'workflow', label: 'Workflow' }
+    { id: 'workflow', label: 'Workflow' },
+    { id: 'functional-recovery', label: 'Functional Recovery' }
   ]
 
   // API Calls
@@ -2065,6 +2067,8 @@ function App() {
         return <TelehealthDashboard />
       case 'workflow':
         return <WorkflowDashboard />
+      case 'functional-recovery':
+        return <FunctionalRecoveryDashboard />
       default:
         return renderClassificationTab()
     }

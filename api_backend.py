@@ -9191,6 +9191,29 @@ async def telehealth_definitions():
     return _json_safe(thd.definitions())
 
 
+# ── Functional Recovery Dashboard ────────────────────────────────────
+
+@app.get("/api/functional-recovery/overview")
+async def functional_recovery_overview():
+    """Functional recovery KPIs — daily/social function, QOLIE-31, WPAI, trajectories."""
+    import scripts.functional_recovery_dashboard as frd
+    return _json_safe(frd.overview())
+
+
+@app.get("/api/functional-recovery/breakdown")
+async def functional_recovery_breakdown():
+    """Per-patient timelines, domain scores, comorbidity flags, monthly volume."""
+    import scripts.functional_recovery_dashboard as frd
+    return _json_safe(frd.breakdown())
+
+
+@app.get("/api/functional-recovery/definitions")
+async def functional_recovery_definitions():
+    """Functional recovery glossary — concepts, thresholds, quality metrics, references."""
+    import scripts.functional_recovery_dashboard as frd
+    return _json_safe(frd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
