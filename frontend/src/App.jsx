@@ -240,6 +240,7 @@ import WorkflowDashboard from './components/WorkflowDashboard'
 import FunctionalRecoveryDashboard from './components/FunctionalRecoveryDashboard'
 import IncidentManagementDashboard from './components/IncidentManagementDashboard'
 import SegmentationDashboard from './components/SegmentationDashboard'
+import AssessmentDashboard from './components/AssessmentDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -568,7 +569,8 @@ function App() {
     { id: 'workflow', label: 'Workflow' },
     { id: 'functional-recovery', label: 'Functional Recovery' },
     { id: 'incident-management', label: 'Incident Management' },
-    { id: 'segmentation', label: 'EEG Segmentation' }
+    { id: 'segmentation', label: 'EEG Segmentation' },
+    { id: 'assessment-analytics', label: 'Assessment Analytics' }
   ]
 
   // API Calls
@@ -2085,6 +2087,8 @@ function App() {
         return <IncidentManagementDashboard />
       case 'segmentation':
         return <SegmentationDashboard />
+      case 'assessment-analytics':
+        return <AssessmentDashboard />
       default:
         return renderClassificationTab()
     }
