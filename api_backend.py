@@ -9328,6 +9328,29 @@ async def consent_definitions():
     return _json_safe(cd.definitions())
 
 
+# ── Referral Triage Dashboard ────────────────────────────────────
+
+@app.get("/api/referral-triage/overview")
+async def referral_triage_overview():
+    """Referral intake & triage overview — KPIs, urgency/source distributions, timeline."""
+    import scripts.referral_triage_dashboard as rt
+    return _json_safe(rt.overview())
+
+
+@app.get("/api/referral-triage/breakdown")
+async def referral_triage_breakdown():
+    """Per-referral breakdown — recent referrals, reason distribution, provider workload."""
+    import scripts.referral_triage_dashboard as rt
+    return _json_safe(rt.breakdown())
+
+
+@app.get("/api/referral-triage/definitions")
+async def referral_triage_definitions():
+    """Metric definitions, urgency criteria, triage scoring, glossary."""
+    import scripts.referral_triage_dashboard as rt
+    return _json_safe(rt.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

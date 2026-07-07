@@ -110,7 +110,8 @@
   "processes": [
     {
       "name": "Referral intake → triage",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/referral-triage/* + ReferralTriageDashboard.jsx"
     },
     {
       "name": "Appointment scheduling → worklist",
