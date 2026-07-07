@@ -242,6 +242,7 @@ import IncidentManagementDashboard from './components/IncidentManagementDashboar
 import SegmentationDashboard from './components/SegmentationDashboard'
 import AssessmentDashboard from './components/AssessmentDashboard'
 import EpilepsyBoardDashboard from './components/EpilepsyBoardDashboard'
+import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -572,7 +573,8 @@ function App() {
     { id: 'incident-management', label: 'Incident Management' },
     { id: 'segmentation', label: 'EEG Segmentation' },
     { id: 'assessment-analytics', label: 'Assessment Analytics' },
-    { id: 'epilepsy-board', label: 'Epilepsy Board' }
+    { id: 'epilepsy-board', label: 'Epilepsy Board' },
+    { id: 'consent-management', label: 'Consent Management' }
   ]
 
   // API Calls
@@ -2093,6 +2095,8 @@ function App() {
         return <AssessmentDashboard />
       case 'epilepsy-board':
         return <EpilepsyBoardDashboard />
+      case 'consent-management':
+        return <ConsentManagementDashboard />
       default:
         return renderClassificationTab()
     }

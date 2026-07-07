@@ -99,7 +99,7 @@
       "missing": [
         "scheduling",
         "billing/claims",
-        "consent management",
+        "consent management (dashboard built — admin/tracking/compliance)",
         "HIPAA audit pack",
         "multi-user auth/RBAC",
         "patient portal",
@@ -118,7 +118,7 @@
     },
     {
       "name": "Patient registration → consent",
-      "status": "partial"
+      "status": "built"
     },
     {
       "name": "EEG acquisition (routine/ambulatory/video/LTM)",

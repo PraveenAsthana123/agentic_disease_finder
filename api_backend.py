@@ -9305,6 +9305,29 @@ async def epilepsy_board_definitions():
     return _json_safe(eb.epilepsy_board_definitions())
 
 
+# ── Consent Management Dashboard ───────────────────────────────
+
+@app.get("/api/consent-dashboard/overview")
+async def consent_overview(patient_id: str = None):
+    """Consent management overview — KPIs, status distribution, expiring consents."""
+    import scripts.consent_dashboard as cd
+    return _json_safe(cd.overview(patient_id))
+
+
+@app.get("/api/consent-dashboard/breakdown")
+async def consent_breakdown(patient_id: str = None):
+    """Per-patient consent breakdown, type stats, compliance matrix."""
+    import scripts.consent_dashboard as cd
+    return _json_safe(cd.breakdown(patient_id))
+
+
+@app.get("/api/consent-dashboard/definitions")
+async def consent_definitions():
+    """Consent type definitions, statuses, regulatory framework, glossary."""
+    import scripts.consent_dashboard as cd
+    return _json_safe(cd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
