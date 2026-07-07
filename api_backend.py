@@ -9284,6 +9284,27 @@ async def segmentation_definitions():
     return _json_safe(seg.segmentation_definitions())
 
 
+@app.get("/api/epilepsy-board/overview")
+async def epilepsy_board_overview():
+    """Aggregate KPIs + chart data for multidisciplinary epilepsy board review."""
+    import scripts.epilepsy_board_dashboard as eb
+    return _json_safe(eb.epilepsy_board_overview())
+
+
+@app.get("/api/epilepsy-board/breakdown")
+async def epilepsy_board_breakdown():
+    """Per-patient case summaries, concordance, medication summary for board review."""
+    import scripts.epilepsy_board_dashboard as eb
+    return _json_safe(eb.epilepsy_board_breakdown())
+
+
+@app.get("/api/epilepsy-board/definitions")
+async def epilepsy_board_definitions():
+    """Metric definitions for the Epilepsy Board Review dashboard."""
+    import scripts.epilepsy_board_dashboard as eb
+    return _json_safe(eb.epilepsy_board_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

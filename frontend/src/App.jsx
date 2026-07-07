@@ -241,6 +241,7 @@ import FunctionalRecoveryDashboard from './components/FunctionalRecoveryDashboar
 import IncidentManagementDashboard from './components/IncidentManagementDashboard'
 import SegmentationDashboard from './components/SegmentationDashboard'
 import AssessmentDashboard from './components/AssessmentDashboard'
+import EpilepsyBoardDashboard from './components/EpilepsyBoardDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -570,7 +571,8 @@ function App() {
     { id: 'functional-recovery', label: 'Functional Recovery' },
     { id: 'incident-management', label: 'Incident Management' },
     { id: 'segmentation', label: 'EEG Segmentation' },
-    { id: 'assessment-analytics', label: 'Assessment Analytics' }
+    { id: 'assessment-analytics', label: 'Assessment Analytics' },
+    { id: 'epilepsy-board', label: 'Epilepsy Board' }
   ]
 
   // API Calls
@@ -2089,6 +2091,8 @@ function App() {
         return <SegmentationDashboard />
       case 'assessment-analytics':
         return <AssessmentDashboard />
+      case 'epilepsy-board':
+        return <EpilepsyBoardDashboard />
       default:
         return renderClassificationTab()
     }
