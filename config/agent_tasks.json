@@ -117,9 +117,10 @@
     {
       "id": "object_detector",
       "task": "Detect patient/limbs/regions of interest in video frames",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "YOLO/detection model"
+      "module": "scripts/object_detection_dashboard.py + /api/object-detection/{overview,breakdown,definitions} + ObjectDetectionDashboard.jsx",
+      "status": "built",
+      "needs": "YOLO/detection model",
+      "note": "Object Detection dashboard — YOLO-based patient/limb/ROI detection from video frames, detection confidence, IoU metrics, class distribution, per-patient detection profiles; real data from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "segmentation",
@@ -385,8 +386,9 @@
     {
       "id": "yolo_detection",
       "task": "YOLO object/movement detection (video)",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts/yolo_detection_dashboard.py + /api/yolo-detection/{overview,breakdown,definitions} + YOLODetectionDashboard.jsx",
+      "status": "built",
+      "note": "YOLO Detection dashboard — YOLOv5/v8/v9/v10 model comparison, clinical object classes (patient body, limbs, head, equipment), detection confidence/IoU metrics, per-patient profiles, real-time vs batch mode readiness; real data from clinical.db; 3 endpoints verified 200"
     }
   ]
 }

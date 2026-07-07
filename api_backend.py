@@ -7242,6 +7242,30 @@ async def object_detection_definitions():
     return _json_safe(odd.definitions())
 
 
+# ── YOLO Detection Dashboard ──────────────────────────────────────────
+@app.get("/api/yolo-detection/overview")
+async def yolo_detection_overview():
+    """YOLO Detection overview — video-EEG object detection using YOLO model
+    variants, detection classes, confidence, IoU, model comparison."""
+    import scripts.yolo_detection_dashboard as ydd
+    return _json_safe(ydd.overview())
+
+
+@app.get("/api/yolo-detection/breakdown")
+async def yolo_detection_breakdown():
+    """YOLO Detection breakdown — per-patient profiles, per-recording inventory,
+    model architecture comparison, confidence and IoU distributions."""
+    import scripts.yolo_detection_dashboard as ydd
+    return _json_safe(ydd.breakdown())
+
+
+@app.get("/api/yolo-detection/definitions")
+async def yolo_detection_definitions():
+    """YOLO Detection definitions — YOLO architecture, mAP, IoU, NMS, FPN concepts."""
+    import scripts.yolo_detection_dashboard as ydd
+    return _json_safe(ydd.definitions())
+
+
 # ── Speech AI Dashboard ────────────────────────────────────────────────
 @app.get("/api/speech-ai/overview")
 async def speech_ai_overview():

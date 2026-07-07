@@ -166,6 +166,7 @@ import FineTuningDashboard from './components/FineTuningDashboard'
 import VectorDBDashboard from './components/VectorDBDashboard'
 import ImageSegmentationDashboard from './components/ImageSegmentationDashboard'
 import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
+import YOLODetectionDashboard from './components/YOLODetectionDashboard'
 import SpeechAIDashboard from './components/SpeechAIDashboard'
 import VoiceAIDashboard from './components/VoiceAIDashboard'
 import TextToAudioDashboard from './components/TextToAudioDashboard'
@@ -486,6 +487,7 @@ function App() {
     { id: 'vector-db', label: 'Vector DB' },
     { id: 'image-segmentation', label: 'Image Segmentation' },
     { id: 'object-detection', label: 'Object Detection' },
+    { id: 'yolo-detection', label: 'YOLO Detection' },
     { id: 'speech-ai', label: 'Speech AI' },
     { id: 'voice-ai', label: 'Voice AI' },
     { id: 'text-to-audio', label: 'Text-to-Audio AI' },
@@ -1969,6 +1971,8 @@ function App() {
         return <ImageSegmentationDashboard />
       case 'object-detection':
         return <ObjectDetectionDashboard />
+      case 'yolo-detection':
+        return <YOLODetectionDashboard />
       case 'speech-ai':
         return <SpeechAIDashboard />
       case 'voice-ai':
