@@ -9453,6 +9453,34 @@ async def autonomic_analysis_definitions():
     return _json_safe(aa.definitions())
 
 
+# ── Guided Assessment Flow Dashboard ────────────────────────────────
+# Real data: guided_assessment_sessions (45 rows, 21 patients) —
+# item-by-item clinical assessments via conversational AI / voice AI,
+# completion analytics, instrument usage, channel breakdown.
+
+@app.get("/api/guided-assessment/overview")
+async def guided_assessment_overview():
+    """Guided assessment overview — KPIs, status/instrument/channel distributions,
+    daily trend, duration histogram, score distribution."""
+    import scripts.guided_assessment_dashboard as gad
+    return _json_safe(gad.overview())
+
+
+@app.get("/api/guided-assessment/breakdown")
+async def guided_assessment_breakdown():
+    """Per-session breakdown — session log, instrument summary, patient history,
+    active sessions."""
+    import scripts.guided_assessment_dashboard as gad
+    return _json_safe(gad.breakdown())
+
+
+@app.get("/api/guided-assessment/definitions")
+async def guided_assessment_definitions():
+    """Metric definitions, instrument catalog, compliance requirements, glossary."""
+    import scripts.guided_assessment_dashboard as gad
+    return _json_safe(gad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

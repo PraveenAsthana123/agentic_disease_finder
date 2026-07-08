@@ -71,9 +71,9 @@
       "id": "conversational_ai",
       "name": "Conversational AI intake",
       "purpose": "Chat-based assessment (LLM asks items conversationally)",
-      "status": "partial",
-      "config": "Ollama (live) + assessment item flow",
-      "note": "patient-chat built; guided assessment flow planned"
+      "status": "built",
+      "config": "Ollama (live) + guided assessment flow + monitoring dashboard",
+      "note": "patient-chat + guided assessment flow (item-by-item, 7 instruments, session tracking) — GuidedAssessmentDashboard.jsx + 3 endpoints"
     },
     {
       "id": "form_ai",
