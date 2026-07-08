@@ -78,6 +78,7 @@ import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
 import IntegrationDashboard from './components/IntegrationDashboard'
 import ResponsibleAIDashboard from './components/ResponsibleAIDashboard'
 import AppointmentsDashboard from './components/AppointmentsDashboard'
+import BillingClaimsDashboard from './components/BillingClaimsDashboard'
 import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
@@ -427,6 +428,7 @@ function App() {
     { id: 'integration-dash', label: 'Integration' },
     { id: 'responsible-ai', label: 'Responsible AI' },
     { id: 'appointments', label: 'Appointments' },
+    { id: 'billing-claims', label: 'Billing & Claims' },
     { id: 'visits', label: 'True Visits' },
     { id: 'finops', label: 'FinOps' },
     { id: 'cssrs', label: 'C-SSRS' },
@@ -1805,6 +1807,8 @@ function App() {
         return <ResponsibleAIDashboard />
       case 'appointments':
         return <AppointmentsDashboard />
+      case 'billing-claims':
+        return <BillingClaimsDashboard />
       case 'finops':
         return <FinOpsDashboard />
       case 'cssrs':

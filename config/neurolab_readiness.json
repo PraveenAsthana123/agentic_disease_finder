@@ -115,7 +115,8 @@
     },
     {
       "name": "Appointment scheduling → worklist",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/appointments/* + AppointmentsDashboard.jsx"
     },
     {
       "name": "Patient registration → consent",
@@ -144,7 +145,8 @@
     },
     {
       "name": "Billing → claims → reconciliation",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/billing-claims/* + BillingClaimsDashboard.jsx"
     },
     {
       "name": "Audit → compliance reporting",
@@ -186,11 +188,11 @@
     },
     {
       "capability": "Scheduling / worklist",
-      "status": "missing"
+      "status": "built"
     },
     {
       "capability": "Billing / claims",
-      "status": "missing"
+      "status": "built"
     },
     {
       "capability": "Patient portal",

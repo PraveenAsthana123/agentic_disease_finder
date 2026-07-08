@@ -9654,6 +9654,33 @@ async def rehab_plan_definitions():
     return _json_safe(rpd.definitions())
 
 
+# ── Billing & Claims Dashboard ────────────────────────────────
+# Real data: billing_claims (150 rows, 30+ patients) — claim lifecycle,
+# insurance adjudication, aging, CPT/ICD-10, payer mix, revenue cycle.
+
+@app.get("/api/billing-claims/overview")
+async def billing_claims_overview():
+    """Billing overview — total billed/collected, collection rate, denial rate,
+    status distribution, insurance breakdown, monthly trend, top services."""
+    import scripts.billing_claims_dashboard as bcd
+    return _json_safe(bcd.overview())
+
+
+@app.get("/api/billing-claims/breakdown")
+async def billing_claims_breakdown():
+    """Per-patient balances, denied claims, AR aging buckets,
+    recent claims, CPT analysis, payer mix."""
+    import scripts.billing_claims_dashboard as bcd
+    return _json_safe(bcd.breakdown())
+
+
+@app.get("/api/billing-claims/definitions")
+async def billing_claims_definitions():
+    """Billing glossary — statuses, service types, aging/ICD-10/CPT notes."""
+    import scripts.billing_claims_dashboard as bcd
+    return _json_safe(bcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
