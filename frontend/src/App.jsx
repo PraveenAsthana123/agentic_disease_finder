@@ -246,6 +246,7 @@ import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import ReferralTriageDashboard from './components/ReferralTriageDashboard'
 import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
+import MRIReviewDashboard from './components/MRIReviewDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -580,7 +581,8 @@ function App() {
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'referral-triage', label: 'Referral Triage' },
     { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
-    { id: 'recovery-trajectory', label: 'Recovery Trajectory' }
+    { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
+    { id: 'mri-review', label: 'MRI Review' }
   ]
 
   // API Calls
@@ -2109,6 +2111,8 @@ function App() {
         return <RAGMetadataFilterDashboard />
       case 'recovery-trajectory':
         return <RecoveryTrajectoryDashboard />
+      case 'mri-review':
+        return <MRIReviewDashboard />
       default:
         return renderClassificationTab()
     }

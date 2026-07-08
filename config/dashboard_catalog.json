@@ -1,5 +1,5 @@
 {
-  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
+  "title": "Enterprise AI Dashboard Catalog (5 phases) — coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
   "updated_at": "2026-06-30",
   "phases": [
@@ -193,7 +193,7 @@
     {
       "phase": 5,
       "name": "MCP, Tooling, Workflow & Integration",
-      "count": 100,
+      "count": 10,
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
@@ -239,6 +239,11 @@
           "name": "Shadow AI Detection Dashboard",
           "status": "built",
           "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx — unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
+        },
+        {
+          "name": "MRI Brain Review Dashboard",
+          "status": "built",
+          "maps_to": "/api/mri-review/overview + /api/mri-review/breakdown + /api/mri-review/definitions"
         }
       ]
     }
