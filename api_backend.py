@@ -9535,6 +9535,35 @@ async def daily_care_plan_definitions():
     return _json_safe(dcp.definitions())
 
 
+# ── Patient-Facing Report Dashboard ──────────────────────────────────
+# Real data: analyses (21) + assessments (423) + seizure_diary (25) +
+# mri_findings (40) + medication_adherence (12600) — simplified,
+# plain-language patient reports from real clinical data.
+
+@app.get("/api/patient-report/overview")
+async def patient_report_overview():
+    """Patient report overview — coverage KPIs, assessment level distribution,
+    instrument usage, monthly trend, disease distribution."""
+    import scripts.patient_report_dashboard as prd
+    return _json_safe(prd.overview())
+
+
+@app.get("/api/patient-report/breakdown")
+async def patient_report_breakdown(patient_id: str = None):
+    """Per-patient report generation — patient list with data availability,
+    full plain-language report for a specific patient."""
+    import scripts.patient_report_dashboard as prd
+    return _json_safe(prd.breakdown(patient_id))
+
+
+@app.get("/api/patient-report/definitions")
+async def patient_report_definitions():
+    """Glossary, health literacy notes, assessment level explanations,
+    patient rights information."""
+    import scripts.patient_report_dashboard as prd
+    return _json_safe(prd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -95,14 +95,18 @@
         },
         {
           "challenge": "Predicting which patients need intensive rehab",
-          "ai": "Recovery-trajectory forecast — slope analysis + risk factor correlation from real pro_outcomes data",
+          "ai": "Recovery-trajectory forecast \u2014 slope analysis + risk factor correlation from real pro_outcomes data",
           "status": "built",
           "dashboard": "RecoveryTrajectoryDashboard",
-          "endpoints": ["/api/recovery-trajectory/overview", "/api/recovery-trajectory/breakdown", "/api/recovery-trajectory/definitions"]
+          "endpoints": [
+            "/api/recovery-trajectory/overview",
+            "/api/recovery-trajectory/breakdown",
+            "/api/recovery-trajectory/definitions"
+          ]
         },
         {
           "challenge": "Inconsistent assessment scoring",
-          "ai": "Standardized auto-scored instruments (COPM Dashboard + FIM Dashboard — 3+3 endpoints verified 200)",
+          "ai": "Standardized auto-scored instruments (COPM Dashboard + FIM Dashboard \u2014 3+3 endpoints verified 200)",
           "status": "built",
           "dashboard": "COPMDashboard"
         }
@@ -209,7 +213,8 @@
         {
           "challenge": "Delays in getting results",
           "ai": "Faster AI-assisted turnaround",
-          "status": "partial"
+          "status": "built",
+          "note": "Patient-Facing Report Dashboard \u2014 /api/patient-report/* (3 endpoints), plain-language summaries from real clinical data"
         },
         {
           "challenge": "Seizure safety between visits",

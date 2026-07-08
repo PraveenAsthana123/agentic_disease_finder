@@ -47,6 +47,7 @@ BUILDABLE = [
 # recovery_trajectory (Recovery Trajectory Forecast Dashboard — real pro_outcomes 180 rows, 30 patients, slope analysis + risk factor correlation + intensive rehab prediction, 3 endpoints verified 200, RecoveryTrajectoryDashboard.jsx + nav wired)
 # autonomic_analysis (Autonomic Analysis Dashboard — real wearable_readings 900 rows, 30 patients, ADS scoring + HRV trends + seizure-autonomic correlation + risk stratification, 3 endpoints verified 200, AutonomicAnalysisDashboard.jsx + nav wired)
 # ai_roi (AI ROI Dashboard — real finops_costs 978 rows + analyses 21 + telehealth 109 + appointments 120, investment vs value, cost breakdown by category/model, patient-level ROI, 3 endpoints verified 200, AIROIDashboard.jsx + nav wired)
+# patient_report (Patient-Facing Report Dashboard — real analyses 21 + assessments 423 + seizure_diary 25 + mri_findings 40 + medication_adherence 12600, plain-language patient reports, 3 endpoints verified 200, PatientReportDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

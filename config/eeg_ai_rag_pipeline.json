@@ -1,32 +1,173 @@
 {
-  "title": "Complete EEG → AI → RAG Pipeline (23 steps)",
-  "note": "End-to-end flow (schizophrenia-derived, applies to all diseases). Honest per-step status (§155): built / partial / planned. Maps each step to where it lives in the platform.",
+  "title": "Complete EEG \u2192 AI \u2192 RAG Pipeline (23 steps)",
+  "note": "End-to-end flow (schizophrenia-derived, applies to all diseases). Honest per-step status (\u00a7155): built / partial / planned. Maps each step to where it lives in the platform.",
   "updated_at": "2026-06-24",
   "steps": [
-    {"n": 1, "step": "Research Objective", "detail": "screening support / biomarker discovery / severity tracking", "status": "built", "where": "operator + disease selector"},
-    {"n": 2, "step": "Data Collection", "detail": "EEG + clinical metadata + PANSS + medication + age/gender + diagnosis label", "status": "partial", "where": "upload + patient master; PANSS/severity scale form planned"},
-    {"n": 3, "step": "Data Standardization", "detail": "EDF/BDF/CSV/MAT → uniform array (BIDS/FIF target)", "status": "built", "where": "eeg_analysis_pipeline.parse_eeg"},
-    {"n": 4, "step": "Raw EEG Quality Check", "detail": "sampling rate · missing channel · noise · bad-channel detection", "status": "built", "where": "signal_quality + channel validation"},
-    {"n": 5, "step": "Preprocessing", "detail": "bandpass 0.5-45Hz · notch 50/60 · re-reference · bad-channel removal · ICA", "status": "built", "where": "ica_noise_cleaning.py"},
-    {"n": 6, "step": "Epoching / Segmentation", "detail": "2s/4s/8s windows · subject-level split (no leakage)", "status": "built", "where": "accuracy_patient_specific (4s/2s)"},
-    {"n": 7, "step": "1D EEG Signal Prep", "detail": "clean channel × time matrix", "status": "built"},
-    {"n": 8, "step": "Time-Frequency Transform", "detail": "STFT→spectrogram · CWT→scalogram · SPWVD", "status": "built", "where": "/api/spectrogram; CWT→scalogram built — ScalogramDashboard.jsx + /api/scalogram/{overview,breakdown,definitions} 3 endpoints verified 200; SPWVD built — SpwvdDashboard.jsx + /api/spwvd/{overview,breakdown,definitions} 3 endpoints verified 200"},
-    {"n": 9, "step": "1D → 2D Image Conversion", "detail": "spectrogram · scalogram · topomap · connectivity matrix · band heatmap", "status": "built", "where": "spectrogram built; topomap built; connectivity matrix built — ConnectivityDashboard.jsx + /api/connectivity/{overview,breakdown,definitions} 3 endpoints verified 200; scalogram built — ScalogramDashboard.jsx; band-heatmap built — BandHeatmapDashboard.jsx + /api/band-heatmap/{overview,breakdown,definitions} 3 endpoints verified 200"},
-    {"n": 10, "step": "Normalization + Standardization", "detail": "log-power norm · MinMax · z-score · subject/session norm", "status": "built"},
-    {"n": 11, "step": "Feature Extraction", "detail": "spectral/relative band power · entropy · coherence · PLV · Hjorth · fractal · asymmetry · CNN embeddings", "status": "built", "where": "47/15-feature vector; coherence/PLV built — connectivity_dashboard.py computes Pearson correlation, magnitude-squared coherence, PLV via Hilbert transform + graph metrics"},
-    {"n": 12, "step": "Feature Evaluation", "detail": "ANOVA · mutual information · correlation · SHAP ranking · clinical relevance", "status": "built", "where": "MI + SHAP + ANOVA F-test + correlation + clinical-check — Feature Evaluation Dashboard 3 endpoints verified 200"},
-    {"n": 13, "step": "Feature Selection", "detail": "LASSO · RFE · PCA · Boruta · SelectKBest", "status": "built", "where": "scripts/feature_selection_dashboard.py + /api/feature-selection/{overview,breakdown,definitions} + FeatureSelectionDashboard.jsx — all 5 methods (LASSO, RFE, PCA, SelectKBest, Boruta) with consensus voting; 3 endpoints verified 200"},
-    {"n": 14, "step": "Model Training", "detail": "SVM/RF/XGBoost · EEGNet/CNN/LSTM/Transformer/ViT", "status": "built", "where": "classical ensemble + EEGNet benchmark"},
-    {"n": 15, "step": "Model Validation", "detail": "subject-level CV · train/val/test · external dataset", "status": "built", "where": "GroupKFold + Bonn external validation"},
-    {"n": 16, "step": "Model Evaluation", "detail": "accuracy · precision · recall · F1 · AUC · sensitivity · specificity · confusion", "status": "built", "where": "accuracy reports"},
-    {"n": 17, "step": "Explainable AI", "detail": "SHAP features · saliency EEG-image · attention map · channel/band importance", "status": "built", "where": "SHAP built (XAIDashboard); saliency + attention built (SaliencyAttentionDashboard — 3 endpoints verified 200)"},
-    {"n": 18, "step": "RAG Knowledge Layer", "detail": "index papers · SOPs · clinical notes · guidelines · model cards · experiment logs", "status": "built", "where": "ChromaDB + vector_ingest cron"},
-    {"n": 19, "step": "Retrieval", "detail": "hybrid: vector + keyword + metadata filter", "status": "built", "where": "vector + keyword fallback + metadata filter (patient_id + type dimensions); RAG Metadata Filter dashboard"},
-    {"n": 20, "step": "RAG Report Generation", "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata", "status": "partial", "where": "EEG/VEEG report + patient_chat RAG"},
-    {"n": 21, "step": "Human Review", "detail": "psychiatrist/neurophysiologist · approve/reject/request more", "status": "built", "where": "HITL override + study-review + consensus"},
-    {"n": 22, "step": "Final Output", "detail": "doctor report (risk score, abnormality, biomarkers, citations, limits, next step) + patient report (simple, no Dx claim, follow-up)", "status": "partial", "where": "EEG/VEEG report; patient-facing report planned"},
-    {"n": 23, "step": "Governance + Monitoring", "detail": "audit logs · PII protection · bias/model/data drift · performance · human override · model versioning", "status": "built", "where": "transaction_log + guardrails + governance"}
+    {
+      "n": 1,
+      "step": "Research Objective",
+      "detail": "screening support / biomarker discovery / severity tracking",
+      "status": "built",
+      "where": "operator + disease selector"
+    },
+    {
+      "n": 2,
+      "step": "Data Collection",
+      "detail": "EEG + clinical metadata + PANSS + medication + age/gender + diagnosis label",
+      "status": "partial",
+      "where": "upload + patient master; PANSS/severity scale form planned"
+    },
+    {
+      "n": 3,
+      "step": "Data Standardization",
+      "detail": "EDF/BDF/CSV/MAT \u2192 uniform array (BIDS/FIF target)",
+      "status": "built",
+      "where": "eeg_analysis_pipeline.parse_eeg"
+    },
+    {
+      "n": 4,
+      "step": "Raw EEG Quality Check",
+      "detail": "sampling rate \u00b7 missing channel \u00b7 noise \u00b7 bad-channel detection",
+      "status": "built",
+      "where": "signal_quality + channel validation"
+    },
+    {
+      "n": 5,
+      "step": "Preprocessing",
+      "detail": "bandpass 0.5-45Hz \u00b7 notch 50/60 \u00b7 re-reference \u00b7 bad-channel removal \u00b7 ICA",
+      "status": "built",
+      "where": "ica_noise_cleaning.py"
+    },
+    {
+      "n": 6,
+      "step": "Epoching / Segmentation",
+      "detail": "2s/4s/8s windows \u00b7 subject-level split (no leakage)",
+      "status": "built",
+      "where": "accuracy_patient_specific (4s/2s)"
+    },
+    {
+      "n": 7,
+      "step": "1D EEG Signal Prep",
+      "detail": "clean channel \u00d7 time matrix",
+      "status": "built"
+    },
+    {
+      "n": 8,
+      "step": "Time-Frequency Transform",
+      "detail": "STFT\u2192spectrogram \u00b7 CWT\u2192scalogram \u00b7 SPWVD",
+      "status": "built",
+      "where": "/api/spectrogram; CWT\u2192scalogram built \u2014 ScalogramDashboard.jsx + /api/scalogram/{overview,breakdown,definitions} 3 endpoints verified 200; SPWVD built \u2014 SpwvdDashboard.jsx + /api/spwvd/{overview,breakdown,definitions} 3 endpoints verified 200"
+    },
+    {
+      "n": 9,
+      "step": "1D \u2192 2D Image Conversion",
+      "detail": "spectrogram \u00b7 scalogram \u00b7 topomap \u00b7 connectivity matrix \u00b7 band heatmap",
+      "status": "built",
+      "where": "spectrogram built; topomap built; connectivity matrix built \u2014 ConnectivityDashboard.jsx + /api/connectivity/{overview,breakdown,definitions} 3 endpoints verified 200; scalogram built \u2014 ScalogramDashboard.jsx; band-heatmap built \u2014 BandHeatmapDashboard.jsx + /api/band-heatmap/{overview,breakdown,definitions} 3 endpoints verified 200"
+    },
+    {
+      "n": 10,
+      "step": "Normalization + Standardization",
+      "detail": "log-power norm \u00b7 MinMax \u00b7 z-score \u00b7 subject/session norm",
+      "status": "built"
+    },
+    {
+      "n": 11,
+      "step": "Feature Extraction",
+      "detail": "spectral/relative band power \u00b7 entropy \u00b7 coherence \u00b7 PLV \u00b7 Hjorth \u00b7 fractal \u00b7 asymmetry \u00b7 CNN embeddings",
+      "status": "built",
+      "where": "47/15-feature vector; coherence/PLV built \u2014 connectivity_dashboard.py computes Pearson correlation, magnitude-squared coherence, PLV via Hilbert transform + graph metrics"
+    },
+    {
+      "n": 12,
+      "step": "Feature Evaluation",
+      "detail": "ANOVA \u00b7 mutual information \u00b7 correlation \u00b7 SHAP ranking \u00b7 clinical relevance",
+      "status": "built",
+      "where": "MI + SHAP + ANOVA F-test + correlation + clinical-check \u2014 Feature Evaluation Dashboard 3 endpoints verified 200"
+    },
+    {
+      "n": 13,
+      "step": "Feature Selection",
+      "detail": "LASSO \u00b7 RFE \u00b7 PCA \u00b7 Boruta \u00b7 SelectKBest",
+      "status": "built",
+      "where": "scripts/feature_selection_dashboard.py + /api/feature-selection/{overview,breakdown,definitions} + FeatureSelectionDashboard.jsx \u2014 all 5 methods (LASSO, RFE, PCA, SelectKBest, Boruta) with consensus voting; 3 endpoints verified 200"
+    },
+    {
+      "n": 14,
+      "step": "Model Training",
+      "detail": "SVM/RF/XGBoost \u00b7 EEGNet/CNN/LSTM/Transformer/ViT",
+      "status": "built",
+      "where": "classical ensemble + EEGNet benchmark"
+    },
+    {
+      "n": 15,
+      "step": "Model Validation",
+      "detail": "subject-level CV \u00b7 train/val/test \u00b7 external dataset",
+      "status": "built",
+      "where": "GroupKFold + Bonn external validation"
+    },
+    {
+      "n": 16,
+      "step": "Model Evaluation",
+      "detail": "accuracy \u00b7 precision \u00b7 recall \u00b7 F1 \u00b7 AUC \u00b7 sensitivity \u00b7 specificity \u00b7 confusion",
+      "status": "built",
+      "where": "accuracy reports"
+    },
+    {
+      "n": 17,
+      "step": "Explainable AI",
+      "detail": "SHAP features \u00b7 saliency EEG-image \u00b7 attention map \u00b7 channel/band importance",
+      "status": "built",
+      "where": "SHAP built (XAIDashboard); saliency + attention built (SaliencyAttentionDashboard \u2014 3 endpoints verified 200)"
+    },
+    {
+      "n": 18,
+      "step": "RAG Knowledge Layer",
+      "detail": "index papers \u00b7 SOPs \u00b7 clinical notes \u00b7 guidelines \u00b7 model cards \u00b7 experiment logs",
+      "status": "built",
+      "where": "ChromaDB + vector_ingest cron"
+    },
+    {
+      "n": 19,
+      "step": "Retrieval",
+      "detail": "hybrid: vector + keyword + metadata filter",
+      "status": "built",
+      "where": "vector + keyword fallback + metadata filter (patient_id + type dimensions); RAG Metadata Filter dashboard"
+    },
+    {
+      "n": 20,
+      "step": "RAG Report Generation",
+      "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata",
+      "status": "partial",
+      "where": "EEG/VEEG report + patient_chat RAG"
+    },
+    {
+      "n": 21,
+      "step": "Human Review",
+      "detail": "psychiatrist/neurophysiologist \u00b7 approve/reject/request more",
+      "status": "built",
+      "where": "HITL override + study-review + consensus"
+    },
+    {
+      "n": 22,
+      "step": "Final Output",
+      "detail": "doctor report (risk score, abnormality, biomarkers, citations, limits, next step) + patient report (simple, no Dx claim, follow-up)",
+      "status": "built",
+      "where": "EEG/VEEG report + patient-facing report (/api/patient-report/* \u2014 3 endpoints, PatientReportDashboard.jsx)"
+    },
+    {
+      "n": 23,
+      "step": "Governance + Monitoring",
+      "detail": "audit logs \u00b7 PII protection \u00b7 bias/model/data drift \u00b7 performance \u00b7 human override \u00b7 model versioning",
+      "status": "built",
+      "where": "transaction_log + guardrails + governance"
+    }
   ],
-  "summary": {"total": 23, "built": 15, "partial": 7, "planned": 0,
-              "honest_note": "15/23 steps built, 7 partial, 1 (research objective) operator. The signal→feature→model→eval→governance spine is built; step 9 (1D→2D image conversion) now fully built with band-heatmap completing the set. Remaining gaps: saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned — all have at least partial implementation."}
+  "summary": {
+    "total": 23,
+    "built": 15,
+    "partial": 7,
+    "planned": 0,
+    "honest_note": "15/23 steps built, 7 partial, 1 (research objective) operator. The signal\u2192feature\u2192model\u2192eval\u2192governance spine is built; step 9 (1D\u21922D image conversion) now fully built with band-heatmap completing the set. Remaining gaps: saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned \u2014 all have at least partial implementation."
+  }
 }

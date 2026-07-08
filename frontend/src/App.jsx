@@ -253,6 +253,7 @@ import GuidedAssessmentDashboard from './components/GuidedAssessmentDashboard'
 import ModelRetirementDashboard from './components/ModelRetirementDashboard'
 import AIROIDashboard from './components/AIROIDashboard'
 import DailyCarePlanDashboard from './components/DailyCarePlanDashboard'
+import PatientReportDashboard from './components/PatientReportDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -594,7 +595,8 @@ function App() {
     { id: 'guided-assessment', label: 'Guided Assessment Flow' },
     { id: 'model-retirement', label: 'Model Retirement' },
     { id: 'ai-roi', label: 'AI ROI' },
-    { id: 'daily-care-plan', label: 'Daily Care Plan' }
+    { id: 'daily-care-plan', label: 'Daily Care Plan' },
+    { id: 'patient-report', label: 'Patient Report' }
   ]
 
   // API Calls
@@ -2137,6 +2139,8 @@ function App() {
         return <AIROIDashboard />
       case 'daily-care-plan':
         return <DailyCarePlanDashboard />
+      case 'patient-report':
+        return <PatientReportDashboard />
       default:
         return renderClassificationTab()
     }
