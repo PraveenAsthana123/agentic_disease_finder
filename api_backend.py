@@ -9428,6 +9428,31 @@ async def goal_attainment_definitions():
     return _json_safe(ga.definitions())
 
 
+# ── Autonomic Analysis Dashboard ──────────────────────────────
+# Real data: wearable_readings (900 rows, 30 patients) — HRV trends,
+# autonomic dysfunction scoring, seizure-autonomic correlation, risk stratification.
+
+@app.get("/api/autonomic-analysis/overview")
+async def autonomic_analysis_overview():
+    """Autonomic overview — KPIs, risk distribution, HRV/ADS distributions, trends, seizure correlation."""
+    import scripts.autonomic_analysis_dashboard as aa
+    return _json_safe(aa.overview())
+
+
+@app.get("/api/autonomic-analysis/breakdown")
+async def autonomic_analysis_breakdown():
+    """Per-patient autonomic profile — ADS, risk level, HRV trend, daily readings, device info."""
+    import scripts.autonomic_analysis_dashboard as aa
+    return _json_safe(aa.breakdown())
+
+
+@app.get("/api/autonomic-analysis/definitions")
+async def autonomic_analysis_definitions():
+    """Metric definitions, ADS scoring, HRV ranges, risk criteria, glossary."""
+    import scripts.autonomic_analysis_dashboard as aa
+    return _json_safe(aa.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

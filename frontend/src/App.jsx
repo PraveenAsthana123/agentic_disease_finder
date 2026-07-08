@@ -248,6 +248,7 @@ import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
 import MRIReviewDashboard from './components/MRIReviewDashboard'
 import GoalAttainmentDashboard from './components/GoalAttainmentDashboard'
+import AutonomicAnalysisDashboard from './components/AutonomicAnalysisDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -584,7 +585,8 @@ function App() {
     { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
     { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
     { id: 'mri-review', label: 'MRI Review' },
-    { id: 'goal-attainment', label: 'Goal Attainment (GAS)' }
+    { id: 'goal-attainment', label: 'Goal Attainment (GAS)' },
+    { id: 'autonomic-analysis', label: 'Autonomic Analysis' }
   ]
 
   // API Calls
@@ -2117,6 +2119,8 @@ function App() {
         return <MRIReviewDashboard />
       case 'goal-attainment':
         return <GoalAttainmentDashboard />
+      case 'autonomic-analysis':
+        return <AutonomicAnalysisDashboard />
       default:
         return renderClassificationTab()
     }
