@@ -255,6 +255,7 @@ import AIROIDashboard from './components/AIROIDashboard'
 import DailyCarePlanDashboard from './components/DailyCarePlanDashboard'
 import PatientReportDashboard from './components/PatientReportDashboard'
 import UserManagementDashboard from './components/UserManagementDashboard'
+import BenchmarkValidationDashboard from './components/BenchmarkValidationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -598,7 +599,8 @@ function App() {
     { id: 'ai-roi', label: 'AI ROI' },
     { id: 'daily-care-plan', label: 'Daily Care Plan' },
     { id: 'patient-report', label: 'Patient Report' },
-    { id: 'user-management', label: 'User Management' }
+    { id: 'user-management', label: 'User Management' },
+    { id: 'benchmark-validation', label: 'Benchmark Validation' }
   ]
 
   // API Calls
@@ -2145,6 +2147,8 @@ function App() {
         return <PatientReportDashboard />
       case 'user-management':
         return <UserManagementDashboard />
+      case 'benchmark-validation':
+        return <BenchmarkValidationDashboard />
       default:
         return renderClassificationTab()
     }

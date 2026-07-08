@@ -9585,6 +9585,27 @@ async def user_management_definitions():
     return _json_safe(umd.definitions())
 
 
+@app.get("/api/benchmark-validation/overview")
+async def benchmark_validation_overview():
+    """Benchmark validation overview — dataset KPIs, model performance, generalization evidence."""
+    import scripts.benchmark_validation_dashboard as bvd
+    return _json_safe(bvd.overview())
+
+
+@app.get("/api/benchmark-validation/breakdown")
+async def benchmark_validation_breakdown():
+    """Fold-level results, model comparison, per-fold accuracy charts."""
+    import scripts.benchmark_validation_dashboard as bvd
+    return _json_safe(bvd.breakdown())
+
+
+@app.get("/api/benchmark-validation/definitions")
+async def benchmark_validation_definitions():
+    """Benchmark validation glossary — external validation, cross-validation, metrics."""
+    import scripts.benchmark_validation_dashboard as bvd
+    return _json_safe(bvd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

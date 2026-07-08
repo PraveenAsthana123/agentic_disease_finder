@@ -80,8 +80,8 @@
     {
       "category": "data",
       "feature": "Standard benchmark datasets: TUH/TUSZ, Bonn",
-      "in_project": false,
-      "why": "Project has CHB-MIT/Siena/OpenNeuro; review benchmarks on TUSZ + Bonn",
+      "in_project": "built",
+      "why": "Bonn external validation built — Benchmark Validation Dashboard (3 endpoints /api/benchmark-validation/* + BenchmarkValidationDashboard.jsx 5-tab frontend). TUH/TUSZ cataloged.",
       "priority": "high"
     },
     {
