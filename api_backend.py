@@ -9508,6 +9508,33 @@ async def ai_roi_definitions():
     return _json_safe(ard.definitions())
 
 
+# ── Daily Care Plan Dashboard ──────────────────────────────────
+# Real data: daily_plans (900 rows, 30 patients) — medication reminders,
+# meals, exercise, sleep, mood, seizure logging, AI suggestions.
+
+@app.get("/api/daily-care-plan/overview")
+async def daily_care_plan_overview(patient_id: str = None):
+    """Daily care plan overview — completion KPIs, activity logging rates,
+    completion distribution, daily trend from real daily_plans table."""
+    import scripts.daily_care_plan_dashboard as dcp
+    return _json_safe(dcp.overview(patient_id))
+
+
+@app.get("/api/daily-care-plan/breakdown")
+async def daily_care_plan_breakdown(patient_id: str = None):
+    """Per-patient summary, weekly heatmap, AI suggestion frequency,
+    recent plans from real daily_plans table."""
+    import scripts.daily_care_plan_dashboard as dcp
+    return _json_safe(dcp.breakdown(patient_id))
+
+
+@app.get("/api/daily-care-plan/definitions")
+async def daily_care_plan_definitions():
+    """Metric definitions, activity types, completion scoring, glossary."""
+    import scripts.daily_care_plan_dashboard as dcp
+    return _json_safe(dcp.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

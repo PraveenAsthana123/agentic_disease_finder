@@ -252,6 +252,7 @@ import AutonomicAnalysisDashboard from './components/AutonomicAnalysisDashboard'
 import GuidedAssessmentDashboard from './components/GuidedAssessmentDashboard'
 import ModelRetirementDashboard from './components/ModelRetirementDashboard'
 import AIROIDashboard from './components/AIROIDashboard'
+import DailyCarePlanDashboard from './components/DailyCarePlanDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -592,7 +593,8 @@ function App() {
     { id: 'autonomic-analysis', label: 'Autonomic Analysis' },
     { id: 'guided-assessment', label: 'Guided Assessment Flow' },
     { id: 'model-retirement', label: 'Model Retirement' },
-    { id: 'ai-roi', label: 'AI ROI' }
+    { id: 'ai-roi', label: 'AI ROI' },
+    { id: 'daily-care-plan', label: 'Daily Care Plan' }
   ]
 
   // API Calls
@@ -2133,6 +2135,8 @@ function App() {
         return <ModelRetirementDashboard />
       case 'ai-roi':
         return <AIROIDashboard />
+      case 'daily-care-plan':
+        return <DailyCarePlanDashboard />
       default:
         return renderClassificationTab()
     }
