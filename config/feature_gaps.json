@@ -58,8 +58,8 @@
     {
       "category": "technology",
       "feature": "Spiking Neural Network (ultra-low-power, implantable)",
-      "in_project": false,
-      "why": "Review: sub-microwatt neuromorphic for wearables",
+      "in_project": "built",
+      "why": "SNN Neuromorphic Dashboard — LIF neuron simulation, spike pattern analysis, STDP learning, power comparison (SNN vs CNN/LSTM/Transformer), 3 endpoints + 5-tab frontend",
       "priority": "low"
     },
     {

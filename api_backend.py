@@ -9725,6 +9725,50 @@ async def multimodal_fusion_definitions():
     return _json_safe(mfd.definitions())
 
 
+@app.get("/api/pnes-screening/overview")
+async def pnes_screening_overview():
+    """PNES Screening overview — classification distribution, semiological scores,
+    psychiatric comorbidity, monthly trends, recommendation rates."""
+    import scripts.pnes_screening_dashboard as psd
+    return _json_safe(psd.overview())
+
+
+@app.get("/api/pnes-screening/breakdown")
+async def pnes_screening_breakdown():
+    """Per-patient PNES screening, recent assessments, semiological feature comparison."""
+    import scripts.pnes_screening_dashboard as psd
+    return _json_safe(psd.breakdown())
+
+
+@app.get("/api/pnes-screening/definitions")
+async def pnes_screening_definitions():
+    """PNES screening glossary — semiological signs, classification, EEG interpretation."""
+    import scripts.pnes_screening_dashboard as psd
+    return _json_safe(psd.definitions())
+
+
+# ── SNN Neuromorphic Dashboard ─────────────────────────────────────────
+@app.get("/api/snn-neuromorphic/overview")
+async def snn_neuromorphic_overview():
+    """SNN overview: spike rates, power budget, LIF neuron stats, model comparison."""
+    import scripts.snn_neuromorphic_dashboard as snn
+    return _json_safe(snn.overview())
+
+
+@app.get("/api/snn-neuromorphic/breakdown")
+async def snn_neuromorphic_breakdown():
+    """SNN breakdown: per-patient spike patterns, electrode rates, STDP learning, power analysis."""
+    import scripts.snn_neuromorphic_dashboard as snn
+    return _json_safe(snn.breakdown())
+
+
+@app.get("/api/snn-neuromorphic/definitions")
+async def snn_neuromorphic_definitions():
+    """SNN definitions: spiking neural network and neuromorphic computing terminology."""
+    import scripts.snn_neuromorphic_dashboard as snn
+    return _json_safe(snn.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

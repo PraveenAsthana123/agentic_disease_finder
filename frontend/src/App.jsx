@@ -261,6 +261,8 @@ import GroupsTeamsDashboard from './components/GroupsTeamsDashboard'
 import RehabPlanDashboard from './components/RehabPlanDashboard'
 import MedicationAdherenceDashboard from './components/MedicationAdherenceDashboard'
 import MultimodalFusionDashboard from './components/MultimodalFusionDashboard'
+import PnesScreeningDashboard from './components/PnesScreeningDashboard'
+import SnnNeuromorphicDashboard from './components/SnnNeuromorphicDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -610,7 +612,9 @@ function App() {
     { id: 'groups-teams', label: 'Groups & Teams' },
     { id: 'rehab-plan', label: 'Rehab Plan (OT)' },
     { id: 'medication-adherence', label: 'Medication Adherence' },
-    { id: 'multimodal-fusion', label: 'Multimodal Fusion' }
+    { id: 'multimodal-fusion', label: 'Multimodal Fusion' },
+    { id: 'pnes-screening', label: 'PNES Screening' },
+    { id: 'snn-neuromorphic', label: 'SNN Neuromorphic' }
   ]
 
   // API Calls
@@ -2169,6 +2173,10 @@ function App() {
         return <MedicationAdherenceDashboard />
       case 'multimodal-fusion':
         return <MultimodalFusionDashboard />
+      case 'pnes-screening':
+        return <PnesScreeningDashboard />
+      case 'snn-neuromorphic':
+        return <SnnNeuromorphicDashboard />
       default:
         return renderClassificationTab()
     }
