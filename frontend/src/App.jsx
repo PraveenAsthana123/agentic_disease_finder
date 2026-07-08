@@ -251,6 +251,7 @@ import GoalAttainmentDashboard from './components/GoalAttainmentDashboard'
 import AutonomicAnalysisDashboard from './components/AutonomicAnalysisDashboard'
 import GuidedAssessmentDashboard from './components/GuidedAssessmentDashboard'
 import ModelRetirementDashboard from './components/ModelRetirementDashboard'
+import AIROIDashboard from './components/AIROIDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -590,7 +591,8 @@ function App() {
     { id: 'goal-attainment', label: 'Goal Attainment (GAS)' },
     { id: 'autonomic-analysis', label: 'Autonomic Analysis' },
     { id: 'guided-assessment', label: 'Guided Assessment Flow' },
-    { id: 'model-retirement', label: 'Model Retirement' }
+    { id: 'model-retirement', label: 'Model Retirement' },
+    { id: 'ai-roi', label: 'AI ROI' }
   ]
 
   // API Calls
@@ -2129,6 +2131,8 @@ function App() {
         return <GuidedAssessmentDashboard />
       case 'model-retirement':
         return <ModelRetirementDashboard />
+      case 'ai-roi':
+        return <AIROIDashboard />
       default:
         return renderClassificationTab()
     }

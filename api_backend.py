@@ -9481,6 +9481,33 @@ async def guided_assessment_definitions():
     return _json_safe(gad.definitions())
 
 
+# ── AI ROI Dashboard ──────────────────────────────────────────────────
+# Real data: finops_costs (978 rows) + transaction_log (1008 rows) +
+# analyses (21 rows) — investment vs value, cost breakdown, ROI metrics.
+
+@app.get("/api/ai-roi/overview")
+async def ai_roi_overview():
+    """AI ROI overview — investment KPIs, cost breakdown by category/model,
+    investment trend, component efficiency, value drivers."""
+    import scripts.ai_roi_dashboard as ard
+    return _json_safe(ard.overview())
+
+
+@app.get("/api/ai-roi/breakdown")
+async def ai_roi_breakdown():
+    """Monthly cost breakdown, top components, patient-level ROI,
+    cost optimization recommendations."""
+    import scripts.ai_roi_dashboard as ard
+    return _json_safe(ard.breakdown())
+
+
+@app.get("/api/ai-roi/definitions")
+async def ai_roi_definitions():
+    """ROI metric definitions, methodology, assumptions, glossary."""
+    import scripts.ai_roi_dashboard as ard
+    return _json_safe(ard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
