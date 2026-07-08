@@ -247,6 +247,7 @@ import ReferralTriageDashboard from './components/ReferralTriageDashboard'
 import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
 import MRIReviewDashboard from './components/MRIReviewDashboard'
+import GoalAttainmentDashboard from './components/GoalAttainmentDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -582,7 +583,8 @@ function App() {
     { id: 'referral-triage', label: 'Referral Triage' },
     { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
     { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
-    { id: 'mri-review', label: 'MRI Review' }
+    { id: 'mri-review', label: 'MRI Review' },
+    { id: 'goal-attainment', label: 'Goal Attainment (GAS)' }
   ]
 
   // API Calls
@@ -2113,6 +2115,8 @@ function App() {
         return <RecoveryTrajectoryDashboard />
       case 'mri-review':
         return <MRIReviewDashboard />
+      case 'goal-attainment':
+        return <GoalAttainmentDashboard />
       default:
         return renderClassificationTab()
     }

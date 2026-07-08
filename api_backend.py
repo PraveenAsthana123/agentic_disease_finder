@@ -9403,6 +9403,31 @@ async def recovery_trajectory_definitions():
     return _json_safe(rt.definitions())
 
 
+# ── Goal-Attainment Scaling (GAS) Dashboard ─────────────────────
+# Real data: pro_outcomes × patients × assessments — GAS T-score
+# trends, domain performance, goal tracking for occupational therapy.
+
+@app.get("/api/goal-attainment/overview")
+async def goal_attainment_overview():
+    """GAS overview — KPIs, score distribution, domain performance, T-score trend."""
+    import scripts.goal_attainment_dashboard as ga
+    return _json_safe(ga.overview())
+
+
+@app.get("/api/goal-attainment/breakdown")
+async def goal_attainment_breakdown():
+    """Per-patient goal breakdown — goals, at-risk list, recent reviews, domain drill."""
+    import scripts.goal_attainment_dashboard as ga
+    return _json_safe(ga.breakdown())
+
+
+@app.get("/api/goal-attainment/definitions")
+async def goal_attainment_definitions():
+    """Metric definitions, GAS scale, domain descriptions, glossary."""
+    import scripts.goal_attainment_dashboard as ga
+    return _json_safe(ga.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
