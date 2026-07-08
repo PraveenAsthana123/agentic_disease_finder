@@ -254,6 +254,7 @@ import ModelRetirementDashboard from './components/ModelRetirementDashboard'
 import AIROIDashboard from './components/AIROIDashboard'
 import DailyCarePlanDashboard from './components/DailyCarePlanDashboard'
 import PatientReportDashboard from './components/PatientReportDashboard'
+import UserManagementDashboard from './components/UserManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -596,7 +597,8 @@ function App() {
     { id: 'model-retirement', label: 'Model Retirement' },
     { id: 'ai-roi', label: 'AI ROI' },
     { id: 'daily-care-plan', label: 'Daily Care Plan' },
-    { id: 'patient-report', label: 'Patient Report' }
+    { id: 'patient-report', label: 'Patient Report' },
+    { id: 'user-management', label: 'User Management' }
   ]
 
   // API Calls
@@ -2141,6 +2143,8 @@ function App() {
         return <DailyCarePlanDashboard />
       case 'patient-report':
         return <PatientReportDashboard />
+      case 'user-management':
+        return <UserManagementDashboard />
       default:
         return renderClassificationTab()
     }

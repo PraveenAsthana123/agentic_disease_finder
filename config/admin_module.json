@@ -165,7 +165,8 @@
       "id": "user_mgmt",
       "label": "\ud83d\udc64 User Management",
       "purpose": "create/disable users, assign roles, lifecycle",
-      "status": "planned"
+      "status": "built",
+      "maps_to": "/api/user-management/* + UserManagementDashboard.jsx"
     },
     {
       "id": "rbac",

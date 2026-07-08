@@ -9564,6 +9564,27 @@ async def patient_report_definitions():
     return _json_safe(prd.definitions())
 
 
+@app.get("/api/user-management/overview")
+async def user_management_overview():
+    """User management overview — KPIs, role distribution, status breakdown, login trends."""
+    import scripts.user_management_dashboard as umd
+    return _json_safe(umd.overview())
+
+
+@app.get("/api/user-management/breakdown")
+async def user_management_breakdown():
+    """Per-user details — user list with roles, status, permissions, activity."""
+    import scripts.user_management_dashboard as umd
+    return _json_safe(umd.breakdown())
+
+
+@app.get("/api/user-management/definitions")
+async def user_management_definitions():
+    """User management glossary — roles, permissions, status definitions."""
+    import scripts.user_management_dashboard as umd
+    return _json_safe(umd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
