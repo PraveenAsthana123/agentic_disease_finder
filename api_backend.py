@@ -9606,6 +9606,27 @@ async def benchmark_validation_definitions():
     return _json_safe(bvd.definitions())
 
 
+@app.get("/api/groups-teams/overview")
+async def groups_teams_overview():
+    """Groups & Teams overview — KPIs, type distribution, size breakdown, membership trends."""
+    import scripts.groups_teams_dashboard as gtd
+    return _json_safe(gtd.overview())
+
+
+@app.get("/api/groups-teams/breakdown")
+async def groups_teams_breakdown():
+    """Per-group details — group list with members, permissions, lead."""
+    import scripts.groups_teams_dashboard as gtd
+    return _json_safe(gtd.breakdown())
+
+
+@app.get("/api/groups-teams/definitions")
+async def groups_teams_definitions():
+    """Groups & Teams glossary — group types, membership, permissions definitions."""
+    import scripts.groups_teams_dashboard as gtd
+    return _json_safe(gtd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
