@@ -9681,6 +9681,28 @@ async def billing_claims_definitions():
     return _json_safe(bcd.definitions())
 
 
+@app.get("/api/medication-adherence/overview")
+async def medication_adherence_overview():
+    """Medication Adherence overview — adherence/late/missed rates, per-drug breakdown,
+    weekly trends, side effect frequency, time-of-day analysis, mood, refill summary."""
+    import scripts.medication_adherence_dashboard as mad
+    return _json_safe(mad.overview())
+
+
+@app.get("/api/medication-adherence/breakdown")
+async def medication_adherence_breakdown():
+    """Per-patient and per-drug adherence, recent missed/late doses, refill records."""
+    import scripts.medication_adherence_dashboard as mad
+    return _json_safe(mad.breakdown())
+
+
+@app.get("/api/medication-adherence/definitions")
+async def medication_adherence_definitions():
+    """Medication adherence glossary — PDC, MPR, AED/ASM, frequency codes, thresholds."""
+    import scripts.medication_adherence_dashboard as mad
+    return _json_safe(mad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -141,7 +141,8 @@
     },
     {
       "name": "Follow-up → medication titration → outcome",
-      "status": "partial"
+      "status": "built",
+      "maps_to": "/api/medication-adherence/* + MedicationAdherenceDashboard.jsx"
     },
     {
       "name": "Billing → claims → reconciliation",
