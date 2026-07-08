@@ -95,8 +95,10 @@
         },
         {
           "challenge": "Predicting which patients need intensive rehab",
-          "ai": "Recovery-trajectory forecast (planned)",
-          "status": "planned"
+          "ai": "Recovery-trajectory forecast — slope analysis + risk factor correlation from real pro_outcomes data",
+          "status": "built",
+          "dashboard": "RecoveryTrajectoryDashboard",
+          "endpoints": ["/api/recovery-trajectory/overview", "/api/recovery-trajectory/breakdown", "/api/recovery-trajectory/definitions"]
         },
         {
           "challenge": "Inconsistent assessment scoring",

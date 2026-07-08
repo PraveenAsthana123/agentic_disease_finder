@@ -44,6 +44,7 @@ BUILDABLE = [
 # moca_autoscoring (MoCA Auto-Scoring Dashboard — real neuropsych data, 37 assessments 30 patients, domain estimates, normative comparison, PHQ-9/GAD-7 comorbidity, 3 endpoints verified 200, MoCAAutoscoringDashboard.jsx + nav wired)
 # telehealth (Telehealth Sessions Dashboard — real telehealth_sessions 109 rows, 30 patients, 6 providers, 4 session types, 4 platforms, 3 endpoints verified 200, TelehealthDashboard.jsx + nav wired)
 # incident_management (Incident Management Dashboard — real uptime_log 197 incidents, auto-recovery rate, MTTR trend, hourly heatmap, track events, 3 endpoints verified 200, IncidentManagementDashboard.jsx + nav wired)
+# recovery_trajectory (Recovery Trajectory Forecast Dashboard — real pro_outcomes 180 rows, 30 patients, slope analysis + risk factor correlation + intensive rehab prediction, 3 endpoints verified 200, RecoveryTrajectoryDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

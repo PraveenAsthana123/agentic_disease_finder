@@ -9378,6 +9378,31 @@ async def rag_metadata_filter_definitions():
     return _json_safe(rmf.definitions())
 
 
+# ── Recovery Trajectory Forecast Dashboard ────────────────────────
+# Real data: pro_outcomes (180 rows, 30 patients) — trajectory slope,
+# intensive rehab prediction, risk factor correlation.
+
+@app.get("/api/recovery-trajectory/overview")
+async def recovery_trajectory_overview():
+    """Recovery trajectory overview — KPIs, trajectory distribution, monthly trends, risk factors."""
+    import scripts.recovery_trajectory_dashboard as rt
+    return _json_safe(rt.overview())
+
+
+@app.get("/api/recovery-trajectory/breakdown")
+async def recovery_trajectory_breakdown():
+    """Per-patient trajectory breakdown — rehab recommendations, prediction factors, declining list."""
+    import scripts.recovery_trajectory_dashboard as rt
+    return _json_safe(rt.breakdown())
+
+
+@app.get("/api/recovery-trajectory/definitions")
+async def recovery_trajectory_definitions():
+    """Metric definitions, rehab criteria, functional rating scales, glossary."""
+    import scripts.recovery_trajectory_dashboard as rt
+    return _json_safe(rt.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

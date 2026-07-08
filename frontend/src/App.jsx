@@ -245,6 +245,7 @@ import EpilepsyBoardDashboard from './components/EpilepsyBoardDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import ReferralTriageDashboard from './components/ReferralTriageDashboard'
 import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
+import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -578,7 +579,8 @@ function App() {
     { id: 'epilepsy-board', label: 'Epilepsy Board' },
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'referral-triage', label: 'Referral Triage' },
-    { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' }
+    { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
+    { id: 'recovery-trajectory', label: 'Recovery Trajectory' }
   ]
 
   // API Calls
@@ -2105,6 +2107,8 @@ function App() {
         return <ReferralTriageDashboard />
       case 'rag-metadata-filter':
         return <RAGMetadataFilterDashboard />
+      case 'recovery-trajectory':
+        return <RecoveryTrajectoryDashboard />
       default:
         return renderClassificationTab()
     }
