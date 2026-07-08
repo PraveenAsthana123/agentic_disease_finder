@@ -24,7 +24,7 @@
       {"dim": "Data", "case": "outcome scores persist", "status": "partial"},
       {"dim": "Process", "case": "goal-attainment trend", "status": "pass", "maps_to": "/api/goal-attainment/* + GoalAttainmentDashboard.jsx"},
       {"dim": "Model", "case": "recovery trajectory forecast", "status": "planned"},
-      {"dim": "Manual", "case": "rehab plan update", "status": "planned"}]},
+      {"dim": "Manual", "case": "rehab plan update", "status": "pass", "maps_to": "/api/rehab-plan/* + RehabPlanDashboard.jsx"}]},
     {"role": "IRB / Governance Reviewer", "tests": [
       {"dim": "API", "case": "POST /api/council/run completes governed flow", "status": "pass"},
       {"dim": "Process", "case": "security guardrail blocks injection", "status": "pass"},

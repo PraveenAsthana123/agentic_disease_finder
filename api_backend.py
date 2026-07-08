@@ -9627,6 +9627,33 @@ async def groups_teams_definitions():
     return _json_safe(gtd.definitions())
 
 
+# ── Rehab Plan Dashboard ──────────────────────────────────────
+# Real data: rehab_plans (311 rows, 30 patients) — OT rehab goals,
+# progress tracking, session adherence, category breakdown.
+
+@app.get("/api/rehab-plan/overview")
+async def rehab_plan_overview(patient_id: str = None):
+    """Rehab plan overview — goal KPIs, category/status distribution,
+    progress trends, completion rates from real rehab_plans table."""
+    import scripts.rehab_plan_dashboard as rpd
+    return _json_safe(rpd.overview(patient_id))
+
+
+@app.get("/api/rehab-plan/breakdown")
+async def rehab_plan_breakdown(patient_id: str = None):
+    """Per-patient rehab summary, recent updates, session adherence,
+    upcoming targets from real rehab_plans table."""
+    import scripts.rehab_plan_dashboard as rpd
+    return _json_safe(rpd.breakdown(patient_id))
+
+
+@app.get("/api/rehab-plan/definitions")
+async def rehab_plan_definitions():
+    """Rehab plan glossary — goal categories, statuses, metric definitions."""
+    import scripts.rehab_plan_dashboard as rpd
+    return _json_safe(rpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

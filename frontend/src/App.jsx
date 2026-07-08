@@ -257,6 +257,7 @@ import PatientReportDashboard from './components/PatientReportDashboard'
 import UserManagementDashboard from './components/UserManagementDashboard'
 import BenchmarkValidationDashboard from './components/BenchmarkValidationDashboard'
 import GroupsTeamsDashboard from './components/GroupsTeamsDashboard'
+import RehabPlanDashboard from './components/RehabPlanDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -602,7 +603,8 @@ function App() {
     { id: 'patient-report', label: 'Patient Report' },
     { id: 'user-management', label: 'User Management' },
     { id: 'benchmark-validation', label: 'Benchmark Validation' },
-    { id: 'groups-teams', label: 'Groups & Teams' }
+    { id: 'groups-teams', label: 'Groups & Teams' },
+    { id: 'rehab-plan', label: 'Rehab Plan (OT)' }
   ]
 
   // API Calls
@@ -2153,6 +2155,8 @@ function App() {
         return <BenchmarkValidationDashboard />
       case 'groups-teams':
         return <GroupsTeamsDashboard />
+      case 'rehab-plan':
+        return <RehabPlanDashboard />
       default:
         return renderClassificationTab()
     }
