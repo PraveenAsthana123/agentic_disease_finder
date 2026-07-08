@@ -260,6 +260,7 @@ import BenchmarkValidationDashboard from './components/BenchmarkValidationDashbo
 import GroupsTeamsDashboard from './components/GroupsTeamsDashboard'
 import RehabPlanDashboard from './components/RehabPlanDashboard'
 import MedicationAdherenceDashboard from './components/MedicationAdherenceDashboard'
+import MultimodalFusionDashboard from './components/MultimodalFusionDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -608,7 +609,8 @@ function App() {
     { id: 'benchmark-validation', label: 'Benchmark Validation' },
     { id: 'groups-teams', label: 'Groups & Teams' },
     { id: 'rehab-plan', label: 'Rehab Plan (OT)' },
-    { id: 'medication-adherence', label: 'Medication Adherence' }
+    { id: 'medication-adherence', label: 'Medication Adherence' },
+    { id: 'multimodal-fusion', label: 'Multimodal Fusion' }
   ]
 
   // API Calls
@@ -2165,6 +2167,8 @@ function App() {
         return <RehabPlanDashboard />
       case 'medication-adherence':
         return <MedicationAdherenceDashboard />
+      case 'multimodal-fusion':
+        return <MultimodalFusionDashboard />
       default:
         return renderClassificationTab()
     }

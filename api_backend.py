@@ -9703,6 +9703,28 @@ async def medication_adherence_definitions():
     return _json_safe(mad.definitions())
 
 
+@app.get("/api/multimodal-fusion/overview")
+async def multimodal_fusion_overview():
+    """Multimodal Fusion overview — modality availability, fusion status, risk distribution,
+    confidence, concordance, method breakdown, subtype predictions, monthly trends."""
+    import scripts.multimodal_fusion_dashboard as mfd
+    return _json_safe(mfd.overview())
+
+
+@app.get("/api/multimodal-fusion/breakdown")
+async def multimodal_fusion_breakdown():
+    """Per-patient fusion stats, recent sessions, method comparison, modality co-occurrence."""
+    import scripts.multimodal_fusion_dashboard as mfd
+    return _json_safe(mfd.breakdown())
+
+
+@app.get("/api/multimodal-fusion/definitions")
+async def multimodal_fusion_definitions():
+    """Multimodal fusion glossary — modalities, fusion methods, metrics, risk tiers."""
+    import scripts.multimodal_fusion_dashboard as mfd
+    return _json_safe(mfd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

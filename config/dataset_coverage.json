@@ -30,7 +30,7 @@
   "ai_streams": [
     {"id": "eeg_analytics", "input": "Raw EEG, qEEG", "output": "Seizure classification/detection, biomarkers", "models": ["CNN", "Transformer", "EEGNet", "TCN", "LSTM"], "status": "built (RF baseline; deep models planned)"},
     {"id": "video_analytics", "input": "Patient video", "output": "Seizure-type, motor pattern, fall detection", "models": ["3D-CNN", "ViT", "SlowFast"], "status": "scaffold (motion extraction built; classifiers planned)"},
-    {"id": "multimodal", "input": "EEG + video + notes + medication", "output": "Explanation, risk score, subtype", "models": ["Multimodal Transformer", "Fusion Nets"], "status": "planned"},
+    {"id": "multimodal", "input": "EEG + video + notes + medication", "output": "Explanation, risk score, subtype", "models": ["Multimodal Transformer", "Fusion Nets"], "status": "built", "where": "/api/multimodal-fusion/* — 3 endpoints + MultimodalFusionDashboard.jsx (fusion status, risk scoring, modality availability, method comparison, subtype prediction from 126 sessions)"},
     {"id": "autonomic", "input": "Holter, RR variation, SSR, ABPM", "output": "Autonomic dysfunction score, seizure-related patterns", "models": ["TS-Transformer", "XGBoost", "Survival"], "status": "built", "where": "/api/autonomic-analysis/* — 3 endpoints + AutonomicAnalysisDashboard.jsx (ADS scoring, HRV trends, seizure-autonomic correlation, risk stratification from 900 wearable readings)"}
   ],
 
