@@ -57,7 +57,9 @@
         {
           "challenge": "Repeat recordings waste tech + patient time",
           "ai": "Real-time QC catches problems before the session ends",
-          "status": "partial"
+          "status": "built",
+          "dashboard": "RealtimeEEGQCDashboard",
+          "solution": "Real-Time EEG QC Dashboard — per-recording quality verdicts (Pass/Needs Attention/Re-record) based on impedance (>10 kΩ warn, >20 kΩ fail), SNR (<15 dB warn, <8 dB fail), and artifact burden (>20% warn, >40% fail). Per-channel analysis, artifact type/severity breakdown, impedance distribution, and alert system for recordings needing attention."
         }
       ]
     },

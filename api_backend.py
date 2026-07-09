@@ -10021,6 +10021,28 @@ async def epworth_definitions():
     return _json_safe(esd.definitions())
 
 
+# ── Real-Time EEG QC Dashboard ────────────────────────────────────────
+@app.get("/api/realtime-eeg-qc/overview")
+async def realtime_eeg_qc_overview():
+    """Real-time EEG QC summary: verdicts, KPIs, per-recording quality, alerts."""
+    import scripts.realtime_eeg_qc_dashboard as rqc
+    return _json_safe(rqc.overview())
+
+
+@app.get("/api/realtime-eeg-qc/breakdown")
+async def realtime_eeg_qc_breakdown():
+    """Per-channel QC stats, artifact breakdown, impedance distribution."""
+    import scripts.realtime_eeg_qc_dashboard as rqc
+    return _json_safe(rqc.breakdown())
+
+
+@app.get("/api/realtime-eeg-qc/definitions")
+async def realtime_eeg_qc_definitions():
+    """QC metric definitions, thresholds, and verdict criteria."""
+    import scripts.realtime_eeg_qc_dashboard as rqc
+    return _json_safe(rqc.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

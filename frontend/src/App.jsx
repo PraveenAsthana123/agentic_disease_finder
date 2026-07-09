@@ -274,6 +274,7 @@ import SleepStagingDashboard from './components/SleepStagingDashboard'
 import SemiologyClassifierDashboard from './components/SemiologyClassifierDashboard'
 import AIGovernanceDashboard from './components/AIGovernanceDashboard'
 import EpworthDashboard from './components/EpworthDashboard'
+import RealtimeEEGQCDashboard from './components/RealtimeEEGQCDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -636,7 +637,8 @@ function App() {
     { id: 'sleep-staging', label: 'Sleep Staging' },
     { id: 'semiology-classifier', label: 'Semiology Classifier' },
     { id: 'ai-governance', label: 'AI Governance' },
-    { id: 'epworth', label: 'Epworth Sleepiness' }
+    { id: 'epworth', label: 'Epworth Sleepiness' },
+    { id: 'realtime-eeg-qc', label: 'Real-Time EEG QC' }
   ]
 
   // API Calls
@@ -2221,6 +2223,8 @@ function App() {
         return <AIGovernanceDashboard />
       case 'epworth':
         return <EpworthDashboard />
+      case 'realtime-eeg-qc':
+        return <RealtimeEEGQCDashboard />
       default:
         return renderClassificationTab()
     }
