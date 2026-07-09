@@ -109,8 +109,8 @@
     {
       "category": "gap",
       "feature": "Foundation model pretraining (self-supervised on unlabeled EEG)",
-      "in_project": false,
-      "why": "Review's top future direction (TUEG 1.5TB pretraining)",
+      "in_project": "built",
+      "why": "Foundation Models Dashboard — 206 models, 9 architectures, 7 diseases, production+experimental tiers, 3 endpoints verified 200",
       "priority": "medium"
     },
     {

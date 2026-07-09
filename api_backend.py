@@ -9920,6 +9920,31 @@ async def neonatal_eeg_definitions():
     return _json_safe(ned.definitions())
 
 
+# ── Comorbidity Analysis Dashboard ────────────────────────────────────
+@app.get("/api/comorbidity-analysis/overview")
+async def comorbidity_analysis_overview():
+    """Comorbidity overview — psychiatric comorbidity prevalence, risk severity
+    distribution, top conditions, treatment status, screening instrument usage."""
+    import scripts.comorbidity_analysis_dashboard as cad
+    return _json_safe(cad.overview())
+
+
+@app.get("/api/comorbidity-analysis/breakdown")
+async def comorbidity_analysis_breakdown():
+    """Comorbidity breakdown — per-patient profiles, co-occurrence matrix,
+    risk score histogram, severity-by-count, demographics cross-tab."""
+    import scripts.comorbidity_analysis_dashboard as cad
+    return _json_safe(cad.breakdown())
+
+
+@app.get("/api/comorbidity-analysis/definitions")
+async def comorbidity_analysis_definitions():
+    """Comorbidity definitions — psychiatric comorbidity glossary, screening
+    instruments (PHQ-9, GAD-7, C-SSRS, NDDI-E), severity scales."""
+    import scripts.comorbidity_analysis_dashboard as cad
+    return _json_safe(cad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

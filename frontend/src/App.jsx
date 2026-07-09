@@ -269,6 +269,7 @@ import SnnNeuromorphicDashboard from './components/SnnNeuromorphicDashboard'
 import PatientPortalDashboard from './components/PatientPortalDashboard'
 import MCPServerDashboard from './components/MCPServerDashboard'
 import NeuroLabReadinessDashboard from './components/NeuroLabReadinessDashboard'
+import ComorbidityAnalysisDashboard from './components/ComorbidityAnalysisDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -626,7 +627,8 @@ function App() {
     { id: 'snn-neuromorphic', label: 'SNN Neuromorphic' },
     { id: 'patient-portal', label: 'Patient Portal' },
     { id: 'mcp-server', label: 'MCP Server' },
-    { id: 'neurolab-readiness', label: 'NeuroLab Readiness' }
+    { id: 'neurolab-readiness', label: 'NeuroLab Readiness' },
+    { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' }
   ]
 
   // API Calls
@@ -2201,6 +2203,8 @@ function App() {
         return <MCPServerDashboard />
       case 'neurolab-readiness':
         return <NeuroLabReadinessDashboard />
+      case 'comorbidity-analysis':
+        return <ComorbidityAnalysisDashboard />
       default:
         return renderClassificationTab()
     }
