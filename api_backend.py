@@ -9971,6 +9971,34 @@ async def sleep_staging_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── Seizure Semiology Classifier Dashboard ───────────────────────
+@app.get("/api/seizure-semiology/overview")
+async def seizure_semiology_overview():
+    """Seizure semiology classifier overview — type distribution, model
+    performance comparison, localisation inference, fall risk stratification,
+    confidence distribution across all classified events."""
+    import scripts.seizure_semiology_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/seizure-semiology/breakdown")
+async def seizure_semiology_breakdown():
+    """Seizure semiology breakdown — per-patient classification detail,
+    individual event classifications, confidence scores, localisation
+    inference, fall risk scoring, AI-vs-clinician agreement, confusion matrix."""
+    import scripts.seizure_semiology_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/seizure-semiology/definitions")
+async def seizure_semiology_definitions():
+    """Seizure semiology definitions — semiology types with clinical
+    descriptions, classification methodology, fall risk scoring criteria,
+    ILAE classification mapping, references."""
+    import scripts.seizure_semiology_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

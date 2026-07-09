@@ -271,6 +271,7 @@ import MCPServerDashboard from './components/MCPServerDashboard'
 import NeuroLabReadinessDashboard from './components/NeuroLabReadinessDashboard'
 import ComorbidityAnalysisDashboard from './components/ComorbidityAnalysisDashboard'
 import SleepStagingDashboard from './components/SleepStagingDashboard'
+import SemiologyClassifierDashboard from './components/SemiologyClassifierDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -630,7 +631,8 @@ function App() {
     { id: 'mcp-server', label: 'MCP Server' },
     { id: 'neurolab-readiness', label: 'NeuroLab Readiness' },
     { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' },
-    { id: 'sleep-staging', label: 'Sleep Staging' }
+    { id: 'sleep-staging', label: 'Sleep Staging' },
+    { id: 'semiology-classifier', label: 'Semiology Classifier' }
   ]
 
   // API Calls
@@ -2209,6 +2211,8 @@ function App() {
         return <ComorbidityAnalysisDashboard />
       case 'sleep-staging':
         return <SleepStagingDashboard />
+      case 'semiology-classifier':
+        return <SemiologyClassifierDashboard />
       default:
         return renderClassificationTab()
     }
