@@ -9945,6 +9945,32 @@ async def comorbidity_analysis_definitions():
     return _json_safe(cad.definitions())
 
 
+# ── Sleep Staging Dashboard ─────────────────────────────────────────
+@app.get("/api/sleep-staging/overview")
+async def sleep_staging_overview():
+    """Sleep staging overview — aggregate sleep architecture statistics, study
+    distribution, efficiency distribution, seizure-sleep link, comorbid sleep
+    disorder prevalence (OSA, PLM)."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/sleep-staging/breakdown")
+async def sleep_staging_breakdown():
+    """Sleep staging breakdown — per-patient sleep profiles, individual study
+    records, stage comparison, abnormality flags, normal reference ranges."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/sleep-staging/definitions")
+async def sleep_staging_definitions():
+    """Sleep staging definitions — AASM stage criteria, quantitative sleep
+    metrics, epilepsy-sleep interaction glossary, ASM effects on sleep."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -270,6 +270,7 @@ import PatientPortalDashboard from './components/PatientPortalDashboard'
 import MCPServerDashboard from './components/MCPServerDashboard'
 import NeuroLabReadinessDashboard from './components/NeuroLabReadinessDashboard'
 import ComorbidityAnalysisDashboard from './components/ComorbidityAnalysisDashboard'
+import SleepStagingDashboard from './components/SleepStagingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -628,7 +629,8 @@ function App() {
     { id: 'patient-portal', label: 'Patient Portal' },
     { id: 'mcp-server', label: 'MCP Server' },
     { id: 'neurolab-readiness', label: 'NeuroLab Readiness' },
-    { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' }
+    { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' },
+    { id: 'sleep-staging', label: 'Sleep Staging' }
   ]
 
   // API Calls
@@ -2205,6 +2207,8 @@ function App() {
         return <NeuroLabReadinessDashboard />
       case 'comorbidity-analysis':
         return <ComorbidityAnalysisDashboard />
+      case 'sleep-staging':
+        return <SleepStagingDashboard />
       default:
         return renderClassificationTab()
     }
