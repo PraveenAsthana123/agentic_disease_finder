@@ -191,7 +191,7 @@ function subTabsFor(dept) {
   if (dept.custom === 'aitypes') {
     return [
       // ── 🩺 Clinical & Governance (thesis core) ──
-      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (11)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'gonogo_dashboard', label: '🚦 Go/No-Go (Inhibition)' }, { id: 'ravlt_dashboard', label: '📝 RAVLT (Verbal Memory)' }, { id: 'verbal_fluency_dashboard', label: '🗣️ Verbal Fluency (FAS)' }, { id: 'medication_impact_dashboard', label: '💊 Medication Impact' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'dataset_validation', label: '✅ Dataset Validation' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
+      { id: 'request_inbox', label: '📥 Request Inbox' }, { id: 'automation_status', label: '🤖 Automation Status' }, { id: 'db_status', label: '🗃️ DB / Records' }, { id: 'clinical_trust', label: '🩺 Clinical Trust Panel' }, { id: 'seizure_timeline', label: '⏱️ Seizure Timeline' }, { id: 'cognitive_tests', label: '🧠 Cognitive Tests (11)' }, { id: 'stroop_dashboard', label: '🎯 Stroop Test' }, { id: 'tmt_dashboard', label: '🔀 Trail Making A/B' }, { id: 'wcst_dashboard', label: '🧩 WCST (Card Sorting)' }, { id: 'nback_dashboard', label: '🔢 N-Back (Working Memory)' }, { id: 'gonogo_dashboard', label: '🚦 Go/No-Go (Inhibition)' }, { id: 'ravlt_dashboard', label: '📝 RAVLT (Verbal Memory)' }, { id: 'verbal_fluency_dashboard', label: '🗣️ Verbal Fluency (FAS)' }, { id: 'panss_dashboard', label: '🧪 PANSS (Severity)' }, { id: 'medication_impact_dashboard', label: '💊 Medication Impact' }, { id: 'patient_compare', label: '🔀 Patient Comparison' }, { id: 'data_manager', label: '🗂️ Data Manager (CDM)' }, { id: 'dataset_validation', label: '✅ Dataset Validation' }, { id: 'drift', label: '📉 Drift Monitor' }, { id: 'expert_dashboards', label: '🖥️ Expert Dashboards (30)' }, { id: 'expert_roles', label: '👨‍⚕️ Expert Roles (8)' }, { id: 'study_review', label: '🔬 Study Review (multi-expert)' },
       // ── 🧠 EEG & AI ──
       { id: 'eeg_viz', label: '🧠 EEG Viz (P0)' }, { id: 'eeg_stack', label: '🧰 EEG AI Stack (16)' }, { id: 'neuro_ecosystem', label: '🧬 Neuro AI Ecosystem' }, { id: 'eeg_pipeline', label: '🔬 EEG→AI→RAG Pipeline (23)' }, { id: 'ai_types_view', label: 'AI Types (per-type facets)' }, { id: 'dash_catalog', label: 'Dashboard Catalog (5 phases)' }, { id: 'auto_pipelines', label: 'Automatic Pipelines' }, { id: 'ent_pipelines', label: 'Enterprise Pipelines (~40)' },
       // ── 👥 Patients & Data ──
@@ -662,6 +662,7 @@ function DepartmentsDashboard({ selectedDisease = 'epilepsy', extraDepartments =
         {activeSub === 'gonogo_dashboard' && <GoNoGoDashboardPanel />}
         {activeSub === 'ravlt_dashboard' && <RAVLTDashboardPanel />}
         {activeSub === 'verbal_fluency_dashboard' && <VerbalFluencyDashboardPanel />}
+        {activeSub === 'panss_dashboard' && <PANSSDashboardPanel />}
         {activeSub === 'medication_impact_dashboard' && <MedicationImpactDashboardPanel />}
         {activeSub === 'patient_compare' && <PatientComparePanel />}
         {activeSub === 'expert_roles' && <ExpertRolesPanel />}
@@ -8604,6 +8605,248 @@ function DatasetValidationPanel() {
 
       <div style={{ textAlign: 'center', fontSize: 11, color: '#94a3b8', marginTop: 8 }}>
         Data source: clinical.db + CHB-MIT PhysioNet EEG corpus
+      </div>
+    </div>
+  )
+}
+
+/* ────────────────────────── PANSS Dashboard Panel ────────────────────────── */
+function PANSSDashboardPanel() {
+  const [d, setD] = useState(null)
+  const [detail, setDetail] = useState(null)
+  const [defs, setDefs] = useState(null)
+  const [trend, setTrend] = useState(null)
+  const [selPid, setSelPid] = useState(null)
+  useEffect(() => { axios.get(`${API_URL}/neuro-scales/panss`).then(r => setD(r.data)).catch(() => setD(null)) }, [])
+  useEffect(() => { axios.get(`${API_URL}/neuro-scales/panss/definitions`).then(r => setDefs(r.data)).catch(() => {}) }, [])
+  useEffect(() => {
+    if (!selPid) { setDetail(null); setTrend(null); return }
+    axios.get(`${API_URL}/neuro-scales/panss/detail?patient_id=${selPid}`).then(r => setDetail(r.data)).catch(() => setDetail(null))
+    axios.get(`${API_URL}/neuro-scales/panss/trend?patient_id=${selPid}`).then(r => setTrend(r.data)).catch(() => setTrend(null))
+  }, [selPid])
+  if (!d) return <div style={card}><div style={{ color: '#64748b' }}>Loading PANSS data from :8010…</div></div>
+  if (d.error) return <div style={card}><div style={{ color: '#ef4444' }}>{d.error}</div></div>
+  const sevColors = { 'Mildly ill / remission range': '#22c55e', 'Moderately ill': '#f59e0b', 'Markedly ill': '#f97316', 'Severely ill': '#ef4444', 'Extremely ill': '#991b1b' }
+  return (
+    <div>
+      <div style={{ ...card, borderLeft: '4px solid #7c3aed' }}>
+        <h3 style={{ marginTop: 0, color: '#0f172a' }}>🧪 PANSS — Positive and Negative Syndrome Scale <span style={{ fontSize: 12, color: '#64748b' }}>— 30-item schizophrenia severity (30-210)</span></h3>
+        <div style={{ fontSize: 12, color: '#475569', marginBottom: 12 }}>
+          Three subscales: Positive (P1-P7, range 7-49), Negative (N1-N7, range 7-49), General Psychopathology (G1-G16, range 16-112). Composite index = P − N (positive = positive-predominant, negative = negative-predominant).
+        </div>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 10 }}>
+          {[['Patients', d.total_patients]].map(([k, v]) => (
+            <div key={k} style={{ padding: '8px 14px', borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, color: '#475569' }}>{k}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#0f172a' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        {d.severity_distribution && (
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {Object.entries(d.severity_distribution).map(([k, v]) => (
+              <span key={k} style={{ padding: '3px 10px', borderRadius: 12, fontSize: 11, fontWeight: 600, background: (sevColors[k] || '#94a3b8') + '18', color: sevColors[k] || '#475569', border: `1px solid ${sevColors[k] || '#cbd5e1'}40` }}>
+                {k}: {v}
+              </span>
+            ))}
+          </div>
+        )}
+        {defs && (
+          <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 8 }}>
+            Ref: {defs.reference} | Reliability: α={defs.reliability?.cronbach_alpha || '—'}, ICC={defs.reliability?.interrater_icc || '—'}
+          </div>
+        )}
+      </div>
+
+      {/* Patient list */}
+      <div style={card}>
+        <h4 style={{ marginTop: 0, color: '#0f172a' }}>Patient results <span style={{ fontSize: 11, color: '#64748b' }}>— click a row for detail + trend</span></h4>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f8fafc', borderBottom: '2px solid #e5e7eb' }}>
+                {['Patient', 'Age', 'Disease', 'Positive', 'Negative', 'General', 'Total', 'Composite', 'Remission', 'Severity'].map(h => (
+                  <th key={h} style={{ padding: '6px 8px', textAlign: 'left', fontWeight: 600, color: '#475569', fontSize: 11 }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {(d.patients || []).map(p => (
+                <tr key={p.patient_id} onClick={() => setSelPid(p.patient_id === selPid ? null : p.patient_id)}
+                    style={{ cursor: 'pointer', borderBottom: '1px solid #f1f5f9', background: p.patient_id === selPid ? '#f0f9ff' : 'transparent' }}>
+                  <td style={{ padding: '5px 8px', fontWeight: 600, color: '#0f172a' }}>{p.name || p.patient_id}</td>
+                  <td style={{ padding: '5px 8px', color: '#475569' }}>{p.age || '—'}</td>
+                  <td style={{ padding: '5px 8px', color: '#475569' }}>{p.disease || '—'}</td>
+                  <td style={{ padding: '5px 8px' }}>{p.positive_subtotal}/49</td>
+                  <td style={{ padding: '5px 8px' }}>{p.negative_subtotal}/49</td>
+                  <td style={{ padding: '5px 8px' }}>{p.general_subtotal}/112</td>
+                  <td style={{ padding: '5px 8px', fontWeight: 700 }}>{p.total_score}/210</td>
+                  <td style={{ padding: '5px 8px', fontFamily: 'monospace', color: p.composite_index > 0 ? '#ef4444' : p.composite_index < 0 ? '#3b82f6' : '#475569' }}>{p.composite_index > 0 ? '+' : ''}{p.composite_index}</td>
+                  <td style={{ padding: '5px 8px' }}>
+                    <span style={{ padding: '2px 8px', borderRadius: 8, fontSize: 10, fontWeight: 600, background: p.meets_remission ? '#dcfce7' : '#fef2f2', color: p.meets_remission ? '#166534' : '#991b1b' }}>
+                      {p.meets_remission ? 'Yes' : 'No'}
+                    </span>
+                  </td>
+                  <td style={{ padding: '5px 8px' }}>
+                    <span style={{ padding: '2px 8px', borderRadius: 8, fontSize: 10, fontWeight: 600, background: (sevColors[p.severity] || '#94a3b8') + '18', color: sevColors[p.severity] || '#475569' }}>{p.severity}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Detail panel — 30-item breakdown */}
+      {detail && !detail.error && (
+        <div style={{ ...card, borderLeft: '4px solid #0ea5e9' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📋 Detail — {detail.patient_name || detail.patient_id}</h4>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 12 }}>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: '#f0f9ff', border: '1px solid #bae6fd' }}>
+              <span style={{ fontSize: 11, color: '#475569' }}>Total: </span>
+              <span style={{ fontWeight: 700, color: '#0f172a' }}>{detail.total_score}/{detail.max_score}</span>
+            </div>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: '#f0f9ff', border: '1px solid #bae6fd' }}>
+              <span style={{ fontSize: 11, color: '#475569' }}>Composite: </span>
+              <span style={{ fontWeight: 700, fontFamily: 'monospace', color: detail.composite_index > 0 ? '#ef4444' : detail.composite_index < 0 ? '#3b82f6' : '#475569' }}>{detail.composite_index > 0 ? '+' : ''}{detail.composite_index}</span>
+              <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 4 }}>({detail.composite_interpretation})</span>
+            </div>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: (sevColors[detail.severity] || '#94a3b8') + '18', border: `1px solid ${sevColors[detail.severity] || '#cbd5e1'}40` }}>
+              <span style={{ fontWeight: 700, color: sevColors[detail.severity] || '#475569' }}>{detail.severity}</span>
+            </div>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: detail.remission_check?.meets_criteria ? '#dcfce7' : '#fef2f2', border: `1px solid ${detail.remission_check?.meets_criteria ? '#bbf7d0' : '#fecaca'}` }}>
+              <span style={{ fontSize: 11, color: '#475569' }}>Remission: </span>
+              <span style={{ fontWeight: 700, color: detail.remission_check?.meets_criteria ? '#166534' : '#991b1b' }}>{detail.remission_check?.meets_criteria ? 'Yes' : 'No'}</span>
+            </div>
+          </div>
+
+          {/* Subscale breakdown */}
+          {['positive_scale', 'negative_scale', 'general_psychopathology'].map(scaleKey => {
+            const scale = detail[scaleKey]
+            if (!scale) return null
+            const scaleLabel = scaleKey === 'positive_scale' ? 'Positive (P)' : scaleKey === 'negative_scale' ? 'Negative (N)' : 'General (G)'
+            const scaleColor = scaleKey === 'positive_scale' ? '#ef4444' : scaleKey === 'negative_scale' ? '#3b82f6' : '#8b5cf6'
+            return (
+              <div key={scaleKey} style={{ marginBottom: 12 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: scaleColor, marginBottom: 4 }}>
+                  {scaleLabel} — {scale.subtotal}/{scale.range?.split('-')[1] || '?'}
+                </div>
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                  {(scale.items || []).map(it => (
+                    <div key={it.item} style={{ padding: '4px 8px', borderRadius: 6, fontSize: 11, background: it.score >= 4 ? '#fef2f2' : it.score >= 3 ? '#fffbeb' : '#f0fdf4', border: `1px solid ${it.score >= 4 ? '#fecaca' : it.score >= 3 ? '#fde68a' : '#bbf7d0'}` }} title={it.description}>
+                      <span style={{ fontWeight: 600, color: '#475569' }}>{it.item}</span>
+                      <span style={{ marginLeft: 4, fontWeight: 700, color: it.score >= 4 ? '#ef4444' : it.score >= 3 ? '#f59e0b' : '#22c55e' }}>{it.score}</span>
+                      <div style={{ fontSize: 9, color: '#94a3b8', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+
+          {/* Remission check items */}
+          {detail.remission_check && (
+            <div style={{ marginBottom: 10, padding: 8, borderRadius: 8, background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Remission check (Andreasen criteria: 8 core items all ≤3)</div>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {Object.entries(detail.remission_check.items_checked || {}).map(([item, score]) => (
+                  <span key={item} style={{ padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 600, background: score <= 3 ? '#dcfce7' : '#fef2f2', color: score <= 3 ? '#166534' : '#991b1b' }}>
+                    {item}: {score}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Contributing factors */}
+          {detail.contributing_factors && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Contributing factors</div>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                {Object.entries(detail.contributing_factors).filter(([, v]) => v != null && v !== '').map(([k, v]) => (
+                  <span key={k} style={{ padding: '2px 8px', borderRadius: 6, fontSize: 10, background: '#f1f5f9', color: '#475569' }}>
+                    {k.replace(/_/g, ' ')}: <strong>{String(v)}</strong>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {detail.clinical_note && (
+            <div style={{ fontSize: 11, color: '#475569', fontStyle: 'italic', padding: 8, borderRadius: 6, background: '#fffbeb', border: '1px solid #fde68a' }}>
+              {detail.clinical_note}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Trend panel */}
+      {trend && !trend.error && (
+        <div style={{ ...card, borderLeft: '4px solid #10b981' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📈 6-Month Trajectory — {trend.patient_name || trend.patient_id}</h4>
+          <div style={{ display: 'flex', gap: 12, marginBottom: 12 }}>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+              <span style={{ fontSize: 11, color: '#475569' }}>Baseline: </span>
+              <span style={{ fontWeight: 700 }}>{trend.baseline_total}</span>
+            </div>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+              <span style={{ fontSize: 11, color: '#475569' }}>Projected 6mo: </span>
+              <span style={{ fontWeight: 700 }}>{trend.projected_6mo}</span>
+            </div>
+            <div style={{ padding: '6px 12px', borderRadius: 8, background: trend.projected_6mo < trend.baseline_total ? '#dcfce7' : '#fef2f2', border: `1px solid ${trend.projected_6mo < trend.baseline_total ? '#bbf7d0' : '#fecaca'}` }}>
+              <span style={{ fontWeight: 700, color: trend.projected_6mo < trend.baseline_total ? '#166534' : '#991b1b' }}>
+                {trend.projected_6mo < trend.baseline_total ? '↓ Improving' : trend.projected_6mo > trend.baseline_total ? '↑ Worsening' : '→ Stable'}
+              </span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 80, marginBottom: 8 }}>
+            {(trend.trajectory || []).map((pt, i) => {
+              const maxH = 70
+              const minScore = 30, maxScore = 210
+              const h = Math.max(8, ((pt.total_score - minScore) / (maxScore - minScore)) * maxH)
+              const col = pt.total_score <= 58 ? '#22c55e' : pt.total_score <= 75 ? '#f59e0b' : pt.total_score <= 95 ? '#f97316' : '#ef4444'
+              return (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+                  <div style={{ fontSize: 9, color: '#475569', fontWeight: 600 }}>{pt.total_score}</div>
+                  <div style={{ width: '100%', maxWidth: 40, height: h, background: col, borderRadius: '4px 4px 0 0', opacity: 0.8 }} title={`${pt.label}: ${pt.total_score}`} />
+                  <div style={{ fontSize: 8, color: '#94a3b8', marginTop: 2 }}>M{pt.month}</div>
+                </div>
+              )
+            })}
+          </div>
+          {trend.note && <div style={{ fontSize: 10, color: '#64748b', fontStyle: 'italic' }}>{trend.note}</div>}
+        </div>
+      )}
+
+      {/* Definitions panel */}
+      {defs && (
+        <div style={{ ...card, background: '#fafafa' }}>
+          <h4 style={{ marginTop: 0, color: '#0f172a' }}>📖 Scale Definitions</h4>
+          <div style={{ fontSize: 11, color: '#475569', marginBottom: 8 }}>
+            <strong>{defs.name}</strong> ({defs.abbreviation}) — {defs.reference}
+          </div>
+          {defs.severity_thresholds && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#475569', marginBottom: 4 }}>Severity thresholds</div>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {defs.severity_thresholds.map((t, i) => (
+                  <span key={i} style={{ padding: '2px 8px', borderRadius: 6, fontSize: 10, background: '#f1f5f9', color: '#475569' }}>
+                    {t.range || t.label}: <strong>{t.label || t.severity}</strong>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {defs.remission_criteria && (
+            <div style={{ fontSize: 10, color: '#64748b' }}>
+              <strong>Remission:</strong> {typeof defs.remission_criteria === 'string' ? defs.remission_criteria : defs.remission_criteria.description || JSON.stringify(defs.remission_criteria)}
+            </div>
+          )}
+        </div>
+      )}
+
+      <div style={{ textAlign: 'center', fontSize: 11, color: '#94a3b8', marginTop: 8 }}>
+        Data source: clinical.db — PANSS scores derived from real patient cognition, Barthel, seizure, and medication data
       </div>
     </div>
   )

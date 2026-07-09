@@ -14,8 +14,8 @@
       "n": 2,
       "step": "Data Collection",
       "detail": "EEG + clinical metadata + PANSS + medication + age/gender + diagnosis label",
-      "status": "partial",
-      "where": "upload + patient master; PANSS/severity scale form planned"
+      "status": "built",
+      "where": "upload + patient master + PANSS severity scale dashboard (4 endpoints, frontend panel)"
     },
     {
       "n": 3,
