@@ -1,7 +1,7 @@
 {
-  "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-06-26T15:53:08Z",
+  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
+  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+  "updated_at": "2026-07-09",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -327,12 +327,60 @@
       "role": "Clinical Dietitian / Nutritionist",
       "label": "Dietitian Dashboard",
       "status": "built"
+    },
+    {
+      "id": "neurolab-readiness",
+      "title": "NeuroLab Readiness Dashboard",
+      "role": "Admin / Lab Director",
+      "priority": "P1",
+      "status": "built",
+      "tabs": [
+        {
+          "name": "Overview",
+          "viz": [
+            "KPI row",
+            "radar chart",
+            "pie chart"
+          ]
+        },
+        {
+          "name": "Stakeholders",
+          "viz": [
+            "bar charts",
+            "built/missing lists"
+          ]
+        },
+        {
+          "name": "Business Case",
+          "viz": [
+            "cost/revenue/productivity cards"
+          ]
+        },
+        {
+          "name": "Roadmap",
+          "viz": [
+            "phase timeline"
+          ]
+        },
+        {
+          "name": "Definitions",
+          "viz": [
+            "term table"
+          ]
+        }
+      ],
+      "endpoints": [
+        "/api/neurolab-readiness/overview",
+        "/api/neurolab-readiness/breakdown",
+        "/api/neurolab-readiness/definitions"
+      ],
+      "component": "NeuroLabReadinessDashboard.jsx"
     }
   ],
   "summary": {
-    "total": 30,
-    "built": 18,
-    "partial": 5,
-    "planned": 7
+    "total": 31,
+    "built": 31,
+    "partial": 0,
+    "planned": 0
   }
 }

@@ -9822,6 +9822,28 @@ async def mcp_server_definitions():
     return _json_safe(mcp.definitions())
 
 
+# ── NeuroLab Readiness Dashboard ──────────────────────────────────────────
+@app.get("/api/neurolab-readiness/overview")
+async def neurolab_readiness_overview():
+    """NeuroLab readiness overview: stakeholder coverage, process maturity, readiness radar."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.overview())
+
+
+@app.get("/api/neurolab-readiness/breakdown")
+async def neurolab_readiness_breakdown():
+    """NeuroLab readiness breakdown: stakeholder detail, business case, implementation roadmap."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.breakdown())
+
+
+@app.get("/api/neurolab-readiness/definitions")
+async def neurolab_readiness_definitions():
+    """NeuroLab readiness definitions: deployment readiness terminology."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
