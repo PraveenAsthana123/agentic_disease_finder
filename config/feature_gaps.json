@@ -59,7 +59,7 @@
       "category": "technology",
       "feature": "Spiking Neural Network (ultra-low-power, implantable)",
       "in_project": "built",
-      "why": "SNN Neuromorphic Dashboard — LIF neuron simulation, spike pattern analysis, STDP learning, power comparison (SNN vs CNN/LSTM/Transformer), 3 endpoints + 5-tab frontend",
+      "why": "SNN Neuromorphic Dashboard \u2014 LIF neuron simulation, spike pattern analysis, STDP learning, power comparison (SNN vs CNN/LSTM/Transformer), 3 endpoints + 5-tab frontend",
       "priority": "low"
     },
     {
@@ -81,7 +81,7 @@
       "category": "data",
       "feature": "Standard benchmark datasets: TUH/TUSZ, Bonn",
       "in_project": "built",
-      "why": "Bonn external validation built — Benchmark Validation Dashboard (3 endpoints /api/benchmark-validation/* + BenchmarkValidationDashboard.jsx 5-tab frontend). TUH/TUSZ cataloged.",
+      "why": "Bonn external validation built \u2014 Benchmark Validation Dashboard (3 endpoints /api/benchmark-validation/* + BenchmarkValidationDashboard.jsx 5-tab frontend). TUH/TUSZ cataloged.",
       "priority": "high"
     },
     {
@@ -95,8 +95,8 @@
     {
       "category": "data",
       "feature": "Neonatal EEG (Helsinki)",
-      "in_project": false,
-      "why": "Distinct population in review",
+      "in_project": "built",
+      "why": "Neonatal EEG Dashboard \u2014 Helsinki dataset (79 neonates, 22-ch, 256 Hz). 3 endpoints (/api/neonatal-eeg/*) + NeonatalEEGDashboard.jsx with 5-tab frontend: overview (KPIs, GA distribution, adult vs neonate radar), patterns (background characteristics, classification, GA profiles, montage comparison, aEEG), seizures (types + etiology), performance (detection comparison, gap analysis), definitions. Real published data from Stevenson et al. 2019.",
       "priority": "low"
     },
     {

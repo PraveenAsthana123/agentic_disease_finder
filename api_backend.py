@@ -9895,6 +9895,31 @@ async def cognitive_decline_definitions():
     return _json_safe(cdd.definitions())
 
 
+# ── Neonatal EEG (Helsinki) ─────────────────────────────────
+@app.get("/api/neonatal-eeg/overview")
+async def neonatal_eeg_overview():
+    """Neonatal EEG overview — Helsinki dataset stats, gestational age distribution,
+    background patterns, seizure types, adult vs neonatal differences."""
+    import scripts.neonatal_eeg_dashboard as ned
+    return _json_safe(ned.neonatal_overview())
+
+
+@app.get("/api/neonatal-eeg/breakdown")
+async def neonatal_eeg_breakdown():
+    """Neonatal EEG breakdown — per-GA profiles, seizure etiology, background
+    classification, detection performance, montage comparison, aEEG patterns."""
+    import scripts.neonatal_eeg_dashboard as ned
+    return _json_safe(ned.neonatal_breakdown())
+
+
+@app.get("/api/neonatal-eeg/definitions")
+async def neonatal_eeg_definitions():
+    """Neonatal EEG definitions — Helsinki dataset, background patterns,
+    seizure types, age-specific normals, AI challenges, remediation."""
+    import scripts.neonatal_eeg_dashboard as ned
+    return _json_safe(ned.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

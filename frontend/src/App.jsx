@@ -141,6 +141,7 @@ import DriftDetectionDashboard from './components/DriftDetectionDashboard'
 import ExplainableAIDashboard from './components/ExplainableAIDashboard'
 import CommunicationAIDashboard from './components/CommunicationAIDashboard'
 import FoundationModelsDashboard from './components/FoundationModelsDashboard'
+import NeonatalEEGDashboard from './components/NeonatalEEGDashboard'
 import AnalyticsAIDashboard from './components/AnalyticsAIDashboard'
 import InterpretableAIDashboard from './components/InterpretableAIDashboard'
 import AgenticRAGDashboard from './components/AgenticRAGDashboard'
@@ -495,6 +496,7 @@ function App() {
     { id: 'xai-groundtruth', label: 'XAI Ground-Truth' },
     { id: 'communication-ai', label: 'Communication AI' },
     { id: 'foundation-models', label: 'Foundation Models' },
+    { id: 'neonatal-eeg', label: 'Neonatal EEG' },
     { id: 'analytics-ai', label: 'Analytics AI' },
     { id: 'interpretable-ai', label: 'Interpretable AI' },
     { id: 'agentic-rag', label: 'Agentic RAG' },
@@ -1985,6 +1987,8 @@ function App() {
         return <CommunicationAIDashboard />
       case 'foundation-models':
         return <FoundationModelsDashboard />
+      case 'neonatal-eeg':
+        return <NeonatalEEGDashboard />
       case 'analytics-ai':
         return <AnalyticsAIDashboard />
       case 'interpretable-ai':
