@@ -7709,6 +7709,15 @@ async def psychiatrist_breakdown():
     return _json_safe(psd.breakdown())
 
 
+@app.get("/api/psychiatrist/threshold-flags")
+async def psychiatrist_threshold_flags():
+    """Psychiatrist threshold flags — consolidated mood/anxiety alert system.
+    Returns patients exceeding clinical thresholds (PHQ-9>=10, GAD-7>=10,
+    C-SSRS>0, NDDI-E>=15) with priority ranking and recommended actions."""
+    import scripts.psychiatrist_dashboard as psd
+    return _json_safe(psd.threshold_flags())
+
+
 @app.get("/api/psychiatrist/definitions")
 async def psychiatrist_definitions():
     """Psychiatrist definitions — PHQ-9, GAD-7, C-SSRS, NDDI-E, PNES,

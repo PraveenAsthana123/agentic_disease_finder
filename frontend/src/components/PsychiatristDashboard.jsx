@@ -74,8 +74,16 @@ const TREATMENT_COLORS = {
   'none': '#94a3b8',
 }
 
+const PRIORITY_COLORS = {
+  'critical': '#991b1b',
+  'high': '#ef4444',
+  'moderate': '#f59e0b',
+  'standard': '#3b82f6',
+}
+
 const TABS = [
   { id: 'overview', label: 'Overview' },
+  { id: 'threshold-alerts', label: 'Threshold Alerts' },
   { id: 'comorbidity', label: 'Comorbidity & Risk' },
   { id: 'depression', label: 'Depression (PHQ-9)' },
   { id: 'anxiety', label: 'Anxiety (GAD-7)' },
@@ -92,6 +100,7 @@ export default function PsychiatristDashboard() {
   const [ov, setOv] = useState(null)
   const [bd, setBd] = useState(null)
   const [defs, setDefs] = useState(null)
+  const [flags, setFlags] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -100,7 +109,8 @@ export default function PsychiatristDashboard() {
       axios.get(`${API_URL}/api/psychiatrist/overview`).then(r => r.data).catch(() => null),
       axios.get(`${API_URL}/api/psychiatrist/breakdown`).then(r => r.data).catch(() => null),
       axios.get(`${API_URL}/api/psychiatrist/definitions`).then(r => r.data).catch(() => null),
-    ]).then(([o, b, d]) => { setOv(o); setBd(b); setDefs(d); setLoading(false) })
+      axios.get(`${API_URL}/api/psychiatrist/threshold-flags`).then(r => r.data).catch(() => null),
+    ]).then(([o, b, d, f]) => { setOv(o); setBd(b); setDefs(d); setFlags(f); setLoading(false) })
   }, [])
 
   if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>Loading Psychiatrist Dashboard...</div>
@@ -195,6 +205,119 @@ export default function PsychiatristDashboard() {
               </ResponsiveContainer>
             </Card>
           </div>
+        </>
+      )}
+
+      {/* Threshold Alerts Tab */}
+      {tab === 'threshold-alerts' && flags && (
+        <>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+            <Card title="Total Flagged Patients">
+              <KPI label="Above threshold" value={flags.total_flagged} color="#ef4444" />
+            </Card>
+            <Card title="Total Alerts">
+              <KPI label="Across all instruments" value={flags.total_alerts} color="#f59e0b" />
+            </Card>
+            <Card title="Critical Priority">
+              <KPI label="C-SSRS positive" value={(flags.severity_distribution || []).find(s => s.priority === 'critical')?.count || 0} color="#991b1b" />
+            </Card>
+            <Card title="High Priority">
+              <KPI label="3+ threshold violations" value={(flags.severity_distribution || []).find(s => s.priority === 'high')?.count || 0} color="#ef4444" />
+            </Card>
+          </div>
+          <Card title="Instrument Threshold Summary" span={2}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+              <thead>
+                <tr style={{ borderBottom: '2px solid #e2e8f0', textAlign: 'left' }}>
+                  <th style={{ padding: '8px 6px' }}>Instrument</th>
+                  <th style={{ padding: '8px 6px' }}>Threshold</th>
+                  <th style={{ padding: '8px 6px' }}>Flagged</th>
+                  <th style={{ padding: '8px 6px' }}>Recommended Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(flags.instrument_summary || []).map(inst => (
+                  <tr key={inst.instrument} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                    <td style={{ padding: '6px', fontWeight: 600 }}>{inst.instrument}</td>
+                    <td style={{ padding: '6px' }}>{'>='} {inst.cutoff}</td>
+                    <td style={{ padding: '6px' }}>
+                      <Badge text={`${inst.flagged_count} patients`} color={inst.flagged_count > 0 ? '#ef4444' : '#10b981'} />
+                    </td>
+                    <td style={{ padding: '6px', fontSize: 11, color: '#64748b' }}>{inst.action}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
+          <Card title="Priority Distribution">
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={flags.severity_distribution || []}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="priority" />
+                <YAxis allowDecimals={false} />
+                <Tooltip />
+                <Bar dataKey="count" radius={[4,4,0,0]}>
+                  {(flags.severity_distribution || []).map((e, i) => (
+                    <Cell key={i} fill={PRIORITY_COLORS[e.priority] || COLORS[i]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card title="Flagged Patients (ordered by priority)" span={2}>
+            <div style={{ maxHeight: 500, overflow: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #e2e8f0', textAlign: 'left', position: 'sticky', top: 0, background: '#fff' }}>
+                    <th style={{ padding: '8px 6px' }}>Priority</th>
+                    <th style={{ padding: '8px 6px' }}>Patient</th>
+                    <th style={{ padding: '8px 6px' }}>Age/Gender</th>
+                    <th style={{ padding: '8px 6px' }}>Alerts</th>
+                    <th style={{ padding: '8px 6px' }}>Details</th>
+                    <th style={{ padding: '8px 6px' }}>AED Risk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(flags.flagged_patients || []).map(p => (
+                    <tr key={p.patient_id} style={{
+                      borderBottom: '1px solid #f1f5f9',
+                      background: p.priority === 'critical' ? '#fef2f218' : undefined
+                    }}>
+                      <td style={{ padding: '6px' }}>
+                        <Badge text={p.priority.toUpperCase()} color={PRIORITY_COLORS[p.priority] || '#64748b'} />
+                      </td>
+                      <td style={{ padding: '6px', fontWeight: 600 }}>{p.name || p.patient_id}</td>
+                      <td style={{ padding: '6px', fontSize: 11, color: '#64748b' }}>{p.age || '--'} / {p.gender || '--'}</td>
+                      <td style={{ padding: '6px' }}>
+                        {p.alerts.map((a, i) => (
+                          <div key={i} style={{ marginBottom: 2 }}>
+                            <Badge text={`${a.instrument}: ${a.score}`} color={
+                              a.instrument === 'C-SSRS' ? '#991b1b' :
+                              a.score >= 15 ? '#ef4444' :
+                              a.score >= 10 ? '#f59e0b' : '#3b82f6'
+                            } />
+                            <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 4 }}>{a.severity}</span>
+                          </div>
+                        ))}
+                      </td>
+                      <td style={{ padding: '6px', fontSize: 11, color: '#64748b' }}>
+                        {p.alerts.map((a, i) => (
+                          <div key={i} style={{ marginBottom: 2 }}>{a.action}</div>
+                        ))}
+                      </td>
+                      <td style={{ padding: '6px', fontSize: 11 }}>
+                        {p.risky_aeds.length > 0
+                          ? p.risky_aeds.map((a, i) => (
+                              <div key={i} style={{ color: '#ef4444' }}>{a.drug} ({a.severity})</div>
+                            ))
+                          : <span style={{ color: '#10b981' }}>None</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Card>
         </>
       )}
 

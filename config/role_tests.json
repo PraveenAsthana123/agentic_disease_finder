@@ -17,8 +17,8 @@
       {"dim": "Manual", "case": "re-record bad channels flow", "status": "partial"}]},
     {"role": "Psychiatrist", "tests": [
       {"dim": "Data", "case": "survey answers persist", "status": "pass"},
-      {"dim": "Process", "case": "mood/anxiety thresholds flag", "status": "partial"},
-      {"dim": "Model", "case": "psychogenic-vs-epileptic differential", "status": "planned"},
+      {"dim": "Process", "case": "mood/anxiety thresholds flag", "status": "pass", "maps_to": "/api/psychiatrist/threshold-flags + PsychiatristDashboard Threshold Alerts tab"},
+      {"dim": "Model", "case": "psychogenic-vs-epileptic differential", "status": "built"},
       {"dim": "Manual", "case": "clinical judgment recorded", "status": "partial"}]},
     {"role": "Occupational Therapist", "tests": [
       {"dim": "Data", "case": "outcome scores persist", "status": "partial"},

@@ -484,6 +484,175 @@ def breakdown():
     }
 
 
+def threshold_flags():
+    """Consolidated threshold-based alert system for mood/anxiety screening.
+
+    Returns patients who exceed clinical thresholds across any instrument
+    (PHQ-9 >= 10, GAD-7 >= 10, C-SSRS > 0, NDDI-E >= 15), with severity,
+    recommended actions, and priority ranking.
+    """
+    phq9 = _load_assessments('PHQ9')
+    gad7 = _load_assessments('GAD7')
+    cssrs = _load_assessments('CSSRS')
+    nddie = _load_assessments('NDDIE')
+    patients = _load_patients()
+    meds = _load_medications()
+    seizure_counts = _load_seizure_counts()
+
+    # Index by patient (latest score per instrument)
+    phq9_by_pt = {}
+    for a in phq9:
+        if a['patient_id'] not in phq9_by_pt:
+            phq9_by_pt[a['patient_id']] = a
+    gad7_by_pt = {}
+    for a in gad7:
+        if a['patient_id'] not in gad7_by_pt:
+            gad7_by_pt[a['patient_id']] = a
+    cssrs_by_pt = {}
+    for a in cssrs:
+        if a['patient_id'] not in cssrs_by_pt:
+            cssrs_by_pt[a['patient_id']] = a
+    nddie_by_pt = {}
+    for a in nddie:
+        if a['patient_id'] not in nddie_by_pt:
+            nddie_by_pt[a['patient_id']] = a
+
+    all_pids = set(phq9_by_pt) | set(gad7_by_pt) | set(cssrs_by_pt) | set(nddie_by_pt)
+
+    # Clinical action thresholds
+    THRESHOLDS = {
+        'PHQ-9':  {'cutoff': 10, 'action': 'Initiate/adjust antidepressant; refer for CBT; rescreen in 4 weeks'},
+        'GAD-7':  {'cutoff': 10, 'action': 'Consider SSRI/SNRI or pregabalin; CBT referral; rescreen in 4 weeks'},
+        'C-SSRS': {'cutoff': 1,  'action': 'Same-day safety assessment; Stanley-Brown safety plan; means restriction'},
+        'NDDI-E': {'cutoff': 15, 'action': 'Evaluate for major depression in epilepsy context; optimize AED choice'},
+    }
+
+    flagged_patients = []
+    total_alerts = 0
+    severity_counts = Counter()
+
+    for pid in sorted(all_pids):
+        pt = patients.get(pid, {})
+        pt_meds = meds.get(pid, [])
+        seizures = seizure_counts.get(pid, 0)
+        alerts = []
+
+        # PHQ-9 check
+        phq9_score = phq9_by_pt[pid]['score'] if pid in phq9_by_pt and phq9_by_pt[pid]['score'] is not None else None
+        if phq9_score is not None and phq9_score >= 10:
+            level = _classify_phq9(phq9_score)
+            alerts.append({
+                'instrument': 'PHQ-9',
+                'score': phq9_score,
+                'threshold': 10,
+                'severity': level,
+                'action': THRESHOLDS['PHQ-9']['action'],
+            })
+
+        # GAD-7 check
+        gad7_score = gad7_by_pt[pid]['score'] if pid in gad7_by_pt and gad7_by_pt[pid]['score'] is not None else None
+        if gad7_score is not None and gad7_score >= 10:
+            level = _classify_gad7(gad7_score)
+            alerts.append({
+                'instrument': 'GAD-7',
+                'score': gad7_score,
+                'threshold': 10,
+                'severity': level,
+                'action': THRESHOLDS['GAD-7']['action'],
+            })
+
+        # C-SSRS check
+        cssrs_score = cssrs_by_pt[pid]['score'] if pid in cssrs_by_pt and cssrs_by_pt[pid]['score'] is not None else None
+        if cssrs_score is not None and cssrs_score > 0:
+            cssrs_level = (cssrs_by_pt[pid].get('level') or 'low').lower()
+            risk = CSSRS_RISK.get(cssrs_level, 'Low Risk')
+            alerts.append({
+                'instrument': 'C-SSRS',
+                'score': cssrs_score,
+                'threshold': 1,
+                'severity': risk,
+                'action': THRESHOLDS['C-SSRS']['action'],
+            })
+
+        # NDDI-E check
+        nddie_score = nddie_by_pt[pid]['score'] if pid in nddie_by_pt and nddie_by_pt[pid]['score'] is not None else None
+        if nddie_score is not None and nddie_score >= 15:
+            alerts.append({
+                'instrument': 'NDDI-E',
+                'score': nddie_score,
+                'threshold': 15,
+                'severity': 'Elevated',
+                'action': THRESHOLDS['NDDI-E']['action'],
+            })
+
+        if not alerts:
+            continue
+
+        # Priority: C-SSRS positive = critical, 3+ flags = high, 2 = moderate, 1 = standard
+        has_cssrs = any(a['instrument'] == 'C-SSRS' for a in alerts)
+        if has_cssrs:
+            priority = 'critical'
+        elif len(alerts) >= 3:
+            priority = 'high'
+        elif len(alerts) >= 2:
+            priority = 'moderate'
+        else:
+            priority = 'standard'
+
+        severity_counts[priority] += 1
+        total_alerts += len(alerts)
+
+        # AED risk context
+        risky_aeds = []
+        for drug in pt_meds:
+            info = AED_PSYCHIATRIC_EFFECTS.get(drug)
+            if info and info['severity'] in ('moderate', 'high'):
+                risky_aeds.append({'drug': drug, 'severity': info['severity'],
+                                   'effects': info['effects']})
+
+        flagged_patients.append({
+            'patient_id': pid,
+            'name': pt.get('name', ''),
+            'age': pt.get('age'),
+            'gender': pt.get('gender', ''),
+            'disease': pt.get('disease', ''),
+            'priority': priority,
+            'alert_count': len(alerts),
+            'alerts': alerts,
+            'seizure_count': seizures,
+            'medications': pt_meds,
+            'risky_aeds': risky_aeds,
+        })
+
+    # Sort: critical first, then high, moderate, standard
+    priority_order = {'critical': 0, 'high': 1, 'moderate': 2, 'standard': 3}
+    flagged_patients.sort(key=lambda p: (priority_order.get(p['priority'], 9), -p['alert_count']))
+
+    # Per-instrument summary
+    instrument_summary = []
+    for inst, info in THRESHOLDS.items():
+        flagged_for_inst = sum(1 for p in flagged_patients
+                               if any(a['instrument'] == inst for a in p['alerts']))
+        instrument_summary.append({
+            'instrument': inst,
+            'cutoff': info['cutoff'],
+            'flagged_count': flagged_for_inst,
+            'action': info['action'],
+        })
+
+    return {
+        'total_flagged': len(flagged_patients),
+        'total_alerts': total_alerts,
+        'severity_distribution': [
+            {'priority': p, 'count': severity_counts.get(p, 0)}
+            for p in ['critical', 'high', 'moderate', 'standard']
+        ],
+        'instrument_summary': instrument_summary,
+        'flagged_patients': flagged_patients,
+        'thresholds': {k: v['cutoff'] for k, v in THRESHOLDS.items()},
+    }
+
+
 def definitions():
     """Psychiatry definitions, quality metrics, compliance, remediation."""
     return {
