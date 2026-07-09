@@ -273,6 +273,7 @@ import ComorbidityAnalysisDashboard from './components/ComorbidityAnalysisDashbo
 import SleepStagingDashboard from './components/SleepStagingDashboard'
 import SemiologyClassifierDashboard from './components/SemiologyClassifierDashboard'
 import AIGovernanceDashboard from './components/AIGovernanceDashboard'
+import EpworthDashboard from './components/EpworthDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -634,7 +635,8 @@ function App() {
     { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' },
     { id: 'sleep-staging', label: 'Sleep Staging' },
     { id: 'semiology-classifier', label: 'Semiology Classifier' },
-    { id: 'ai-governance', label: 'AI Governance' }
+    { id: 'ai-governance', label: 'AI Governance' },
+    { id: 'epworth', label: 'Epworth Sleepiness' }
   ]
 
   // API Calls
@@ -2217,6 +2219,8 @@ function App() {
         return <SemiologyClassifierDashboard />
       case 'ai-governance':
         return <AIGovernanceDashboard />
+      case 'epworth':
+        return <EpworthDashboard />
       default:
         return renderClassificationTab()
     }

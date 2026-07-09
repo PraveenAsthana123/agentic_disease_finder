@@ -189,7 +189,9 @@
           "output": "0-24",
           "specialist": "Neurologist",
           "priority": "valuable",
-          "status": "built"
+          "status": "built",
+          "api": "/api/epworth-dashboard/{overview,breakdown,definitions}",
+          "frontend": "/epworth"
         },
         {
           "name": "Pittsburgh Sleep Quality Index (PSQI)",

@@ -9999,6 +9999,28 @@ async def seizure_semiology_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── Epworth Sleepiness Scale (ESS) Dashboard ────────────────────────────
+@app.get("/api/epworth-dashboard/overview")
+async def epworth_overview():
+    """ESS summary: KPIs, severity distribution, per-patient latest scores."""
+    import scripts.epworth_dashboard as esd
+    return _json_safe(esd.overview())
+
+
+@app.get("/api/epworth-dashboard/breakdown")
+async def epworth_breakdown():
+    """ESS per-item analysis, monthly trend, severity transitions."""
+    import scripts.epworth_dashboard as esd
+    return _json_safe(esd.breakdown())
+
+
+@app.get("/api/epworth-dashboard/definitions")
+async def epworth_definitions():
+    """Metric definitions for the Epworth Sleepiness Scale dashboard."""
+    import scripts.epworth_dashboard as esd
+    return _json_safe(esd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
