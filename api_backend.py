@@ -9769,6 +9769,28 @@ async def snn_neuromorphic_definitions():
     return _json_safe(snn.definitions())
 
 
+# ── Patient Portal Dashboard ──────────────────────────────────────────
+@app.get("/api/patient-portal/overview")
+async def patient_portal_overview():
+    """Patient portal overview: seizure diary, appointments, messages, education KPIs."""
+    import scripts.patient_portal_dashboard as pp
+    return _json_safe(pp.overview())
+
+
+@app.get("/api/patient-portal/breakdown")
+async def patient_portal_breakdown():
+    """Patient portal breakdown: per-patient summary, seizure timeline, education progress."""
+    import scripts.patient_portal_dashboard as pp
+    return _json_safe(pp.breakdown())
+
+
+@app.get("/api/patient-portal/definitions")
+async def patient_portal_definitions():
+    """Patient portal definitions: clinical terminology for patient-facing features."""
+    import scripts.patient_portal_dashboard as pp
+    return _json_safe(pp.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

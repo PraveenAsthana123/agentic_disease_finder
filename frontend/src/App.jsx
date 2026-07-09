@@ -263,6 +263,7 @@ import MedicationAdherenceDashboard from './components/MedicationAdherenceDashbo
 import MultimodalFusionDashboard from './components/MultimodalFusionDashboard'
 import PnesScreeningDashboard from './components/PnesScreeningDashboard'
 import SnnNeuromorphicDashboard from './components/SnnNeuromorphicDashboard'
+import PatientPortalDashboard from './components/PatientPortalDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -614,7 +615,8 @@ function App() {
     { id: 'medication-adherence', label: 'Medication Adherence' },
     { id: 'multimodal-fusion', label: 'Multimodal Fusion' },
     { id: 'pnes-screening', label: 'PNES Screening' },
-    { id: 'snn-neuromorphic', label: 'SNN Neuromorphic' }
+    { id: 'snn-neuromorphic', label: 'SNN Neuromorphic' },
+    { id: 'patient-portal', label: 'Patient Portal' }
   ]
 
   // API Calls
@@ -2177,6 +2179,8 @@ function App() {
         return <PnesScreeningDashboard />
       case 'snn-neuromorphic':
         return <SnnNeuromorphicDashboard />
+      case 'patient-portal':
+        return <PatientPortalDashboard />
       default:
         return renderClassificationTab()
     }

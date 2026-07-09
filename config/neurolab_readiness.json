@@ -1,7 +1,7 @@
 {
   "title": "NeuroLab AI — Deployment Readiness & Business Case",
   "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
-  "updated_at": "2026-07-07",
+  "updated_at": "2026-07-08",
   "stakeholders": [
     {
       "role": "Neurologist",
@@ -94,7 +94,8 @@
       "built": [
         "AI governance + decision audit",
         "guardrails",
-        "fairness gate"
+        "fairness gate",
+        "patient portal"
       ],
       "missing": [
         "scheduling",
@@ -102,7 +103,6 @@
         "consent management (dashboard built — admin/tracking/compliance)",
         "HIPAA audit pack",
         "multi-user auth/RBAC",
-        "patient portal",
         "insurance pre-auth"
       ]
     }
@@ -197,7 +197,7 @@
     },
     {
       "capability": "Patient portal",
-      "status": "missing"
+      "status": "built"
     },
     {
       "capability": "Mobile alerts / SOS",
