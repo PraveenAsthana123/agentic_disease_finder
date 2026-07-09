@@ -9844,6 +9844,32 @@ async def neurolab_readiness_definitions():
     return _json_safe(nrd.definitions())
 
 
+# ── Artifact Detection Dashboard ──────────────────────────────
+# Real data: artifact_annotations (169 rows, 30 patients) — auto-detected
+# EEG artifacts (eye blink, muscle, movement, electrode pop, ECG, sweat)
+# plus channel_quality (19 channels × 30 patients) impedance + SNR.
+
+@app.get("/api/artifact-detection/overview")
+async def artifact_detection_overview():
+    """Artifact detection overview — KPIs, type distribution, severity breakdown, channel hotspots."""
+    import scripts.artifact_detection_dashboard as ad
+    return _json_safe(ad.overview())
+
+
+@app.get("/api/artifact-detection/breakdown")
+async def artifact_detection_breakdown():
+    """Per-patient artifact breakdown — artifact list, channel quality, flagged patients."""
+    import scripts.artifact_detection_dashboard as ad
+    return _json_safe(ad.breakdown())
+
+
+@app.get("/api/artifact-detection/definitions")
+async def artifact_detection_definitions():
+    """Metric definitions, artifact type descriptions, quality grading scales, glossary."""
+    import scripts.artifact_detection_dashboard as ad
+    return _json_safe(ad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

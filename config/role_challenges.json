@@ -1,11 +1,11 @@
 {
   "title": "Per-Role Challenges & AI Mitigation",
   "note": "Each clinical role: real workflow challenges + how AI in this project mitigates each. status: built (real here) / partial / planned.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-07-09",
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "\ud83e\udde0",
+      "icon": "🧠",
       "items": [
         {
           "challenge": "Reading EEG is slow (20-60 min/study), creating backlog",
@@ -36,7 +36,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "items": [
         {
           "challenge": "Bad signal quality discovered only after the neurologist reads",
@@ -51,7 +51,8 @@
         {
           "challenge": "Manual artifact marking is tedious",
           "ai": "Auto artifact-segment flagging",
-          "status": "partial"
+          "status": "built",
+          "solution": "Artifact Detection Dashboard — auto-detects eye blink, muscle, movement, electrode pop, ECG, sweat artifacts across 19 channels with severity grading, channel quality monitoring, and flagging of patients needing re-recording."
         },
         {
           "challenge": "Repeat recordings waste tech + patient time",
@@ -62,7 +63,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "\ud83d\udcac",
+      "icon": "💬",
       "items": [
         {
           "challenge": "Distinguishing epileptic seizures from PNES (psychogenic)",
@@ -85,7 +86,7 @@
     },
     {
       "role": "Occupational Therapist",
-      "icon": "\ud83d\udd90\ufe0f",
+      "icon": "🖐️",
       "items": [
         {
           "challenge": "Tracking functional recovery over time is manual",
@@ -95,7 +96,7 @@
         },
         {
           "challenge": "Predicting which patients need intensive rehab",
-          "ai": "Recovery-trajectory forecast \u2014 slope analysis + risk factor correlation from real pro_outcomes data",
+          "ai": "Recovery-trajectory forecast — slope analysis + risk factor correlation from real pro_outcomes data",
           "status": "built",
           "dashboard": "RecoveryTrajectoryDashboard",
           "endpoints": [
@@ -106,7 +107,7 @@
         },
         {
           "challenge": "Inconsistent assessment scoring",
-          "ai": "Standardized auto-scored instruments (COPM Dashboard + FIM Dashboard \u2014 3+3 endpoints verified 200)",
+          "ai": "Standardized auto-scored instruments (COPM Dashboard + FIM Dashboard — 3+3 endpoints verified 200)",
           "status": "built",
           "dashboard": "COPMDashboard"
         }
@@ -114,11 +115,11 @@
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "\ud83e\udde9",
+      "icon": "🧩",
       "items": [
         {
           "challenge": "Neuropsych battery scoring is slow + error-prone",
-          "ai": "Auto-scoring + normative comparison (MoCA/WAIS \u2014 MoCA Auto-Scoring Dashboard live, WAIS Dashboard live)",
+          "ai": "Auto-scoring + normative comparison (MoCA/WAIS — MoCA Auto-Scoring Dashboard live, WAIS Dashboard live)",
           "status": "built"
         },
         {
@@ -130,7 +131,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "\ud83e\ude7b",
+      "icon": "🩻",
       "items": [
         {
           "challenge": "Correlating MRI lesions with EEG focus",
@@ -146,7 +147,7 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "items": [
         {
           "challenge": "Wearable/Emotiv devices drop connection mid-recording",
@@ -160,7 +161,7 @@
         },
         {
           "challenge": "Battery/signal degradation goes unnoticed",
-          "ai": "Device Telemetry Dashboard \u2014 battery health, signal quality, connection status, degradation alerts (3 endpoints verified 200)",
+          "ai": "Device Telemetry Dashboard — battery health, signal quality, connection status, degradation alerts (3 endpoints verified 200)",
           "status": "built"
         },
         {
@@ -177,7 +178,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "\u2696\ufe0f",
+      "icon": "⚖️",
       "items": [
         {
           "challenge": "Proving AI decisions were governed",
@@ -203,7 +204,7 @@
     },
     {
       "role": "Patient",
-      "icon": "\ud83e\uddd1",
+      "icon": "🧑",
       "items": [
         {
           "challenge": "Not understanding their own condition/records",
@@ -214,7 +215,7 @@
           "challenge": "Delays in getting results",
           "ai": "Faster AI-assisted turnaround",
           "status": "built",
-          "note": "Patient-Facing Report Dashboard \u2014 /api/patient-report/* (3 endpoints), plain-language summaries from real clinical data"
+          "note": "Patient-Facing Report Dashboard — /api/patient-report/* (3 endpoints), plain-language summaries from real clinical data"
         },
         {
           "challenge": "Seizure safety between visits",
