@@ -3,44 +3,203 @@
   "note": "Each role: test rows scoped to that role's flow across api/data/model/accuracy/process/frontend/manual. status: pass (verified) / partial / planned.",
   "updated_at": "2026-06-24",
   "roles": [
-    {"role": "Neurologist", "tests": [
-      {"dim": "API", "case": "POST /api/analyze-upload returns prediction+confidence", "status": "pass"},
-      {"dim": "Data", "case": "EDF parses, 47 features, no NaN", "status": "pass"},
-      {"dim": "Model", "case": "RF predicts seizure label on held-out sample", "status": "pass"},
-      {"dim": "Accuracy", "case": "SHAP top features returned for prediction", "status": "pass"},
-      {"dim": "Process", "case": "override writes hitl_reviews row", "status": "partial"},
-      {"dim": "Manual", "case": "neurologist can confirm/override in UI", "status": "partial"}]},
-    {"role": "EEG Technician", "tests": [
-      {"dim": "API", "case": "upload returns channel_quality", "status": "pass"},
-      {"dim": "Data", "case": "per-channel quality computed", "status": "pass"},
-      {"dim": "Process", "case": "artifact segments flagged", "status": "partial"},
-      {"dim": "Manual", "case": "re-record bad channels flow", "status": "partial"}]},
-    {"role": "Psychiatrist", "tests": [
-      {"dim": "Data", "case": "survey answers persist", "status": "pass"},
-      {"dim": "Process", "case": "mood/anxiety thresholds flag", "status": "pass", "maps_to": "/api/psychiatrist/threshold-flags + PsychiatristDashboard Threshold Alerts tab"},
-      {"dim": "Model", "case": "psychogenic-vs-epileptic differential", "status": "built"},
-      {"dim": "Manual", "case": "clinical judgment recorded", "status": "partial"}]},
-    {"role": "Occupational Therapist", "tests": [
-      {"dim": "Data", "case": "outcome scores persist", "status": "partial"},
-      {"dim": "Process", "case": "goal-attainment trend", "status": "pass", "maps_to": "/api/goal-attainment/* + GoalAttainmentDashboard.jsx"},
-      {"dim": "Model", "case": "recovery trajectory forecast", "status": "planned"},
-      {"dim": "Manual", "case": "rehab plan update", "status": "pass", "maps_to": "/api/rehab-plan/* + RehabPlanDashboard.jsx"}]},
-    {"role": "IRB / Governance Reviewer", "tests": [
-      {"dim": "API", "case": "POST /api/council/run completes governed flow", "status": "pass"},
-      {"dim": "Process", "case": "security guardrail blocks injection", "status": "pass"},
-      {"dim": "Accuracy", "case": "fairness gate (DI/EO) computed", "status": "pass"},
-      {"dim": "Process", "case": "PII scan flags sensitive data", "status": "pass"},
-      {"dim": "Manual", "case": "reviewer approves via decision route", "status": "pass"}]},
-    {"role": "IoT Engineer", "tests": [
-      {"dim": "Data", "case": "device stream parses + buffers", "status": "partial"},
-      {"dim": "Process", "case": "gateway heartbeat + reconnect", "status": "partial"},
-      {"dim": "Accuracy", "case": "edge seizure inference on stream", "status": "planned"},
-      {"dim": "Process", "case": "SOS alert fires + escalates", "status": "partial"},
-      {"dim": "Manual", "case": "engineer reviews device fleet", "status": "partial"}]},
-    {"role": "Patient", "tests": [
-      {"dim": "Process", "case": "consent recorded before data capture", "status": "partial"},
-      {"dim": "Data", "case": "multi-format ingest → per-patient folder", "status": "pass"},
-      {"dim": "API", "case": "POST /api/patient-chat returns grounded answer", "status": "pass"},
-      {"dim": "Manual", "case": "step-by-step onboarding wizard", "status": "partial"}]}
+    {
+      "role": "Neurologist",
+      "tests": [
+        {
+          "dim": "API",
+          "case": "POST /api/analyze-upload returns prediction+confidence",
+          "status": "pass"
+        },
+        {
+          "dim": "Data",
+          "case": "EDF parses, 47 features, no NaN",
+          "status": "pass"
+        },
+        {
+          "dim": "Model",
+          "case": "RF predicts seizure label on held-out sample",
+          "status": "pass"
+        },
+        {
+          "dim": "Accuracy",
+          "case": "SHAP top features returned for prediction",
+          "status": "pass"
+        },
+        {
+          "dim": "Process",
+          "case": "override writes hitl_reviews row",
+          "status": "partial"
+        },
+        {
+          "dim": "Manual",
+          "case": "neurologist can confirm/override in UI",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "EEG Technician",
+      "tests": [
+        {
+          "dim": "API",
+          "case": "upload returns channel_quality",
+          "status": "pass"
+        },
+        {
+          "dim": "Data",
+          "case": "per-channel quality computed",
+          "status": "pass"
+        },
+        {
+          "dim": "Process",
+          "case": "artifact segments flagged",
+          "status": "partial"
+        },
+        {
+          "dim": "Manual",
+          "case": "re-record bad channels flow",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Psychiatrist",
+      "tests": [
+        {
+          "dim": "Data",
+          "case": "survey answers persist",
+          "status": "pass"
+        },
+        {
+          "dim": "Process",
+          "case": "mood/anxiety thresholds flag",
+          "status": "pass",
+          "maps_to": "/api/psychiatrist/threshold-flags + PsychiatristDashboard Threshold Alerts tab"
+        },
+        {
+          "dim": "Model",
+          "case": "psychogenic-vs-epileptic differential",
+          "status": "built"
+        },
+        {
+          "dim": "Manual",
+          "case": "clinical judgment recorded",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Occupational Therapist",
+      "tests": [
+        {
+          "dim": "Data",
+          "case": "outcome scores persist",
+          "status": "partial"
+        },
+        {
+          "dim": "Process",
+          "case": "goal-attainment trend",
+          "status": "pass",
+          "maps_to": "/api/goal-attainment/* + GoalAttainmentDashboard.jsx"
+        },
+        {
+          "dim": "Model",
+          "case": "recovery trajectory forecast",
+          "status": "built"
+        },
+        {
+          "dim": "Manual",
+          "case": "rehab plan update",
+          "status": "pass",
+          "maps_to": "/api/rehab-plan/* + RehabPlanDashboard.jsx"
+        }
+      ]
+    },
+    {
+      "role": "IRB / Governance Reviewer",
+      "tests": [
+        {
+          "dim": "API",
+          "case": "POST /api/council/run completes governed flow",
+          "status": "pass"
+        },
+        {
+          "dim": "Process",
+          "case": "security guardrail blocks injection",
+          "status": "pass"
+        },
+        {
+          "dim": "Accuracy",
+          "case": "fairness gate (DI/EO) computed",
+          "status": "pass"
+        },
+        {
+          "dim": "Process",
+          "case": "PII scan flags sensitive data",
+          "status": "pass"
+        },
+        {
+          "dim": "Manual",
+          "case": "reviewer approves via decision route",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "role": "IoT Engineer",
+      "tests": [
+        {
+          "dim": "Data",
+          "case": "device stream parses + buffers",
+          "status": "partial"
+        },
+        {
+          "dim": "Process",
+          "case": "gateway heartbeat + reconnect",
+          "status": "partial"
+        },
+        {
+          "dim": "Accuracy",
+          "case": "edge seizure inference on stream",
+          "status": "planned"
+        },
+        {
+          "dim": "Process",
+          "case": "SOS alert fires + escalates",
+          "status": "partial"
+        },
+        {
+          "dim": "Manual",
+          "case": "engineer reviews device fleet",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "role": "Patient",
+      "tests": [
+        {
+          "dim": "Process",
+          "case": "consent recorded before data capture",
+          "status": "partial"
+        },
+        {
+          "dim": "Data",
+          "case": "multi-format ingest \u2192 per-patient folder",
+          "status": "pass"
+        },
+        {
+          "dim": "API",
+          "case": "POST /api/patient-chat returns grounded answer",
+          "status": "pass"
+        },
+        {
+          "dim": "Manual",
+          "case": "step-by-step onboarding wizard",
+          "status": "partial"
+        }
+      ]
+    }
   ]
 }

@@ -56,6 +56,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/xai">XAI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/interpretable-ai">Interpretable AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/decision-ai">Decision AI</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/recovery-trajectory">&#x1f4c8; Recovery Trajectory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/reporting-ai">&#x1f4cb; Reporting AI</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
