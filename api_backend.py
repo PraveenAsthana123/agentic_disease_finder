@@ -9791,6 +9791,28 @@ async def patient_portal_definitions():
     return _json_safe(pp.definitions())
 
 
+# ── MCP Server Dashboard ─────────────────────────────────────────────
+@app.get("/api/mcp-server/overview")
+async def mcp_server_overview():
+    """MCP server overview: protocol status, tool/resource/prompt counts, capability radar."""
+    import scripts.mcp_server_dashboard as mcp
+    return _json_safe(mcp.overview())
+
+
+@app.get("/api/mcp-server/breakdown")
+async def mcp_server_breakdown():
+    """MCP server breakdown: tool registry, resource catalog, prompt templates, execution log."""
+    import scripts.mcp_server_dashboard as mcp
+    return _json_safe(mcp.breakdown())
+
+
+@app.get("/api/mcp-server/definitions")
+async def mcp_server_definitions():
+    """MCP server definitions: Model Context Protocol terminology and concepts."""
+    import scripts.mcp_server_dashboard as mcp
+    return _json_safe(mcp.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

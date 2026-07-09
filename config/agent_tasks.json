@@ -360,8 +360,8 @@
     {
       "id": "mcp_server",
       "task": "Real MCP server (not just analysis)",
-      "module": "(planned) \u2014 have MCP analysis",
-      "status": "planned"
+      "module": "scripts/mcp_server_dashboard.py",
+      "status": "built"
     },
     {
       "id": "noise_cleaning_ica",
