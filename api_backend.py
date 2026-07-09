@@ -9870,6 +9870,31 @@ async def artifact_detection_definitions():
     return _json_safe(ad.definitions())
 
 
+# ── Cognitive Decline Tracker ─────────────────────────────────────
+# Longitudinal cognitive assessment tracking for epilepsy patients.
+# Detects early cognitive decline using MoCA, MMSE, and domain indices.
+
+@app.get("/api/cognitive-decline/overview")
+async def cognitive_decline_overview():
+    """Cognitive decline overview — KPIs, classification distribution, domain decline rates, MoCA trend."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.overview())
+
+
+@app.get("/api/cognitive-decline/breakdown")
+async def cognitive_decline_breakdown():
+    """Per-patient longitudinal data, flagged patients, domain-specific decline table."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.breakdown())
+
+
+@app.get("/api/cognitive-decline/definitions")
+async def cognitive_decline_definitions():
+    """Clinical definitions — decline thresholds, assessment instruments, risk factors, actions."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
