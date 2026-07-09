@@ -272,6 +272,7 @@ import NeuroLabReadinessDashboard from './components/NeuroLabReadinessDashboard'
 import ComorbidityAnalysisDashboard from './components/ComorbidityAnalysisDashboard'
 import SleepStagingDashboard from './components/SleepStagingDashboard'
 import SemiologyClassifierDashboard from './components/SemiologyClassifierDashboard'
+import AIGovernanceDashboard from './components/AIGovernanceDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -632,7 +633,8 @@ function App() {
     { id: 'neurolab-readiness', label: 'NeuroLab Readiness' },
     { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' },
     { id: 'sleep-staging', label: 'Sleep Staging' },
-    { id: 'semiology-classifier', label: 'Semiology Classifier' }
+    { id: 'semiology-classifier', label: 'Semiology Classifier' },
+    { id: 'ai-governance', label: 'AI Governance' }
   ]
 
   // API Calls
@@ -2213,6 +2215,8 @@ function App() {
         return <SleepStagingDashboard />
       case 'semiology-classifier':
         return <SemiologyClassifierDashboard />
+      case 'ai-governance':
+        return <AIGovernanceDashboard />
       default:
         return renderClassificationTab()
     }
