@@ -249,6 +249,11 @@
           "name": "MRI Brain Review Dashboard",
           "status": "built",
           "maps_to": "/api/mri-review/overview + /api/mri-review/breakdown + /api/mri-review/definitions"
+        },
+        {
+          "name": "OTel LLM Observability Dashboard",
+          "status": "built",
+          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx — OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
         }
       ]
     }

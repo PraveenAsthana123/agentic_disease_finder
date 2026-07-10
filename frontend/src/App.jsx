@@ -279,6 +279,7 @@ import PatientVideoDashboard from './components/PatientVideoDashboard'
 import RAGReportGenDashboard from './components/RAGReportGenDashboard'
 import SubtleSeizureDashboard from './components/SubtleSeizureDashboard'
 import APIResilienceDashboard from './components/APIResilienceDashboard'
+import OTelLLMDashboard from './components/OTelLLMDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -646,7 +647,8 @@ function App() {
     { id: 'patient-video', label: 'Patient Video Analysis' },
     { id: 'rag-report-gen', label: 'RAG Report Generation' },
     { id: 'subtle-seizure', label: 'Subtle Seizure Detection' },
-    { id: 'api-resilience', label: 'API Resilience' }
+    { id: 'api-resilience', label: 'API Resilience' },
+    { id: 'otel-llm', label: 'OTel LLM Observability' }
   ]
 
   // API Calls
@@ -2241,6 +2243,8 @@ function App() {
         return <SubtleSeizureDashboard />
       case 'api-resilience':
         return <APIResilienceDashboard />
+      case 'otel-llm':
+        return <OTelLLMDashboard />
       default:
         return renderClassificationTab()
     }

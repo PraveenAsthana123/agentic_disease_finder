@@ -13,7 +13,7 @@
     {"n": 8, "stage": "DeepEval Validation", "tool": "DeepEval", "produces": "eval scores", "status": "cataloged"},
     {"n": 9, "stage": "Temporal Approval Workflow", "tool": "Temporal", "produces": "durable approval", "status": "planned"},
     {"n": 10, "stage": "Deployment", "tool": "Harness/CI", "status": "planned"},
-    {"n": 11, "stage": "OpenTelemetry Monitoring", "tool": "OTel + OpenLIT", "status": "planned"}
+    {"n": 11, "stage": "OpenTelemetry Monitoring", "tool": "OTel + OpenLIT", "status": "built", "note": "OTel LLM Observability dashboard — 3 endpoints + 5-tab frontend"}
   ],
   "planes": [
     {"plane": "AI Dark Factory", "components": ["BMAD", "Archon", "OpenHands", "Playwright", "Harness"]},
@@ -31,7 +31,7 @@
     {"category": "Agent factory", "tool": "Archon", "for": "deterministic AI coding workflow control", "status": "cataloged"},
     {"category": "Agent factory", "tool": "OpenHands", "for": "autonomous coding agent", "status": "cataloged"},
     {"category": "Agent mgmt", "tool": "Paperclip", "for": "manage agent teams/goals/budgets/tasks (org-chart for agents)", "status": "cataloged"},
-    {"category": "LLM observability", "tool": "OpenLIT", "for": "OpenTelemetry for LLMs — tracing + metrics", "status": "planned"},
+    {"category": "LLM observability", "tool": "OpenLIT", "for": "OpenTelemetry for LLMs — tracing + metrics", "status": "built", "note": "OTel LLM dashboard with trace/span/token/cost monitoring"},
     {"category": "LLM observability", "tool": "Helicone", "for": "LLM request monitoring — latency, tokens, caching", "status": "cataloged"},
     {"category": "LLM observability", "tool": "Laminar", "for": "distributed AI traces", "status": "cataloged"},
     {"category": "AI eval", "tool": "DeepEval", "for": "LLM/agent evaluation", "status": "cataloged"},

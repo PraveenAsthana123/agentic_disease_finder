@@ -10142,6 +10142,31 @@ async def api_resilience_definitions():
     return _json_safe(ard.definitions())
 
 
+# ── OpenTelemetry LLM Observability Dashboard ────────────────────────────────
+@app.get("/api/otel-llm/overview")
+async def otel_llm_overview():
+    """OpenTelemetry LLM observability overview — trace metrics, token throughput,
+    model usage, latency budgets, and health score."""
+    import scripts.otel_llm_dashboard as old
+    return _json_safe(old.overview())
+
+
+@app.get("/api/otel-llm/breakdown")
+async def otel_llm_breakdown():
+    """Per-model LLM breakdown — latency percentiles, token costs, span types,
+    hourly trace volume, anomaly alerts."""
+    import scripts.otel_llm_dashboard as old
+    return _json_safe(old.breakdown())
+
+
+@app.get("/api/otel-llm/definitions")
+async def otel_llm_definitions():
+    """OpenTelemetry and LLM observability concepts — spans, traces,
+    semantic conventions, token attribution, cost tracking."""
+    import scripts.otel_llm_dashboard as old
+    return _json_safe(old.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
