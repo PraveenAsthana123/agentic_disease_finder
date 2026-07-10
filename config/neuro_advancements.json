@@ -13,7 +13,8 @@
         "MediaPipe pose"
       ],
       "biomarker": "Motor pattern, automatisms",
-      "status": "scaffold"
+      "status": "built",
+      "note": "Patient Video Seizure Analysis Dashboard \u2014 video-based motor pattern detection, action recognition (3D-CNN/SlowFast/TimeSformer), fall detection, automatism analysis with 5-tab frontend; 3 endpoints verified 200"
     },
     {
       "code": "EEG",

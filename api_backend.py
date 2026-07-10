@@ -10043,6 +10043,31 @@ async def realtime_eeg_qc_definitions():
     return _json_safe(rqc.definitions())
 
 
+# ── Patient Video Seizure Analysis Dashboard ─────────────────────────
+@app.get("/api/patient-video/overview")
+async def patient_video_overview():
+    """Video-based seizure detection overview — motor pattern distribution,
+    model comparison, fall detection stats, pose quality, confidence."""
+    import scripts.patient_video_dashboard as pvd
+    return _json_safe(pvd.overview())
+
+
+@app.get("/api/patient-video/breakdown")
+async def patient_video_breakdown():
+    """Per-patient video seizure event log — detected motor patterns,
+    pose landmarks, fall alerts, automatism flags, confidence scores."""
+    import scripts.patient_video_dashboard as pvd
+    return _json_safe(pvd.breakdown())
+
+
+@app.get("/api/patient-video/definitions")
+async def patient_video_definitions():
+    """Clinical definitions, model architectures, pose estimation
+    methodology, and fall detection criteria."""
+    import scripts.patient_video_dashboard as pvd
+    return _json_safe(pvd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
