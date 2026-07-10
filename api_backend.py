@@ -10215,6 +10215,28 @@ async def resource_monitor_definitions():
     return _json_safe(rmd.definitions())
 
 
+@app.get("/api/config-drift/overview")
+async def config_drift_overview():
+    """Config drift overview — health score, drift count, category summary,
+    change trend, and severity distribution."""
+    import scripts.config_drift_dashboard as cdd
+    return _json_safe(cdd.overview())
+
+
+@app.get("/api/config-drift/breakdown")
+async def config_drift_breakdown():
+    """Per-file drift details, env var audit, change history, and file state."""
+    import scripts.config_drift_dashboard as cdd
+    return _json_safe(cdd.breakdown())
+
+
+@app.get("/api/config-drift/definitions")
+async def config_drift_definitions():
+    """Config drift monitoring terminology reference."""
+    import scripts.config_drift_dashboard as cdd
+    return _json_safe(cdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

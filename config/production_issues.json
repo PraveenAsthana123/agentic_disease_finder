@@ -66,7 +66,7 @@
       {"issue": "Alert Fatigue", "severity": "P2", "root_cause": "no dedup", "detection": "alert volume", "solution": "severity routing", "detected_in_project": "planned"}
     ]},
     {"layer": "Deployment", "issues": [
-      {"issue": "Environment / Config Drift", "severity": "P2", "root_cause": "manual changes", "detection": "config monitoring", "solution": "IaC + versioning", "detected_in_project": "planned"}
+      {"issue": "Environment / Config Drift", "severity": "P2", "root_cause": "manual changes", "detection": "config monitoring", "solution": "IaC + versioning", "detected_in_project": "built (Config Drift Monitor Dashboard — drift detection, env audit, change timeline, /api/config-drift/*)"}
     ]},
     {"layer": "Infrastructure", "issues": [
       {"issue": "Memory/Resource Exhaustion (OOM)", "severity": "P1", "root_cause": "high load", "detection": "resource metrics", "solution": "autoscaling + limits", "detected_in_project": "built (Resource Monitor Dashboard — live psutil + OOM event log + limits)"},
