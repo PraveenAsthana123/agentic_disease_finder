@@ -283,6 +283,7 @@ import OTelLLMDashboard from './components/OTelLLMDashboard'
 import MobileAlertsDashboard from './components/MobileAlertsDashboard'
 import ResourceMonitorDashboard from './components/ResourceMonitorDashboard'
 import ConfigDriftDashboard from './components/ConfigDriftDashboard'
+import AlertFatigueDashboard from './components/AlertFatigueDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -654,7 +655,8 @@ function App() {
     { id: 'otel-llm', label: 'OTel LLM Observability' },
     { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' },
     { id: 'resource-monitor', label: 'Resource Monitor' },
-    { id: 'config-drift', label: 'Config Drift Monitor' }
+    { id: 'config-drift', label: 'Config Drift Monitor' },
+    { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' }
   ]
 
   // API Calls
@@ -2257,6 +2259,8 @@ function App() {
         return <ResourceMonitorDashboard />
       case 'config-drift':
         return <ConfigDriftDashboard />
+      case 'alert-fatigue':
+        return <AlertFatigueDashboard />
       default:
         return renderClassificationTab()
     }

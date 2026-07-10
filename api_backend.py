@@ -10237,6 +10237,30 @@ async def config_drift_definitions():
     return _json_safe(cdd.definitions())
 
 
+# ── Alert Fatigue Monitor ───────────────────────────────────────────────────
+
+@app.get("/api/alert-fatigue/overview")
+async def alert_fatigue_overview():
+    """Alert fatigue overview — fatigue score, volume, suppression rate,
+    severity distribution, routing summary, and volume trend."""
+    import scripts.alert_fatigue_dashboard as afd
+    return _json_safe(afd.overview())
+
+
+@app.get("/api/alert-fatigue/breakdown")
+async def alert_fatigue_breakdown():
+    """Per-source alert analytics, dedup stats, IoT breakdown, and routing rules."""
+    import scripts.alert_fatigue_dashboard as afd
+    return _json_safe(afd.breakdown())
+
+
+@app.get("/api/alert-fatigue/definitions")
+async def alert_fatigue_definitions():
+    """Alert fatigue monitoring terminology reference."""
+    import scripts.alert_fatigue_dashboard as afd
+    return _json_safe(afd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -3,77 +3,394 @@
   "note": "~120 issues across 18 layers. 'detected_in_project' = a real component here can detect/mitigate it; else it's catalog/planned.",
   "updated_at": "2026-06-23",
   "layers": [
-    {"layer": "Agent", "issues": [
-      {"issue": "Agent Hallucination", "severity": "P1", "root_cause": "weak grounding / poor retrieval", "detection": "groundedness + citation score", "solution": "hybrid RAG + citation enforcement + confidence", "detected_in_project": "partial (RAG citation note + SHAP; grounding gate planned)"},
-      {"issue": "Agent Looping", "severity": "P2", "root_cause": "missing stop condition", "detection": "loop/iteration counter", "solution": "max-iteration threshold", "detected_in_project": "partial (goal-loop max_iterations)"},
-      {"issue": "Token/Cost Explosion", "severity": "P2", "root_cause": "context accumulation", "detection": "token/cost trace", "solution": "compression + budget caps", "detected_in_project": "planned"},
-      {"issue": "Wrong Tool Selection", "severity": "P2", "root_cause": "weak planner", "detection": "tool-selection logs", "solution": "tool ranking + validation", "detected_in_project": "partial (planner + agent registry)"},
-      {"issue": "Action Hallucination (false success)", "severity": "P1", "root_cause": "no execution verification", "detection": "compare actual state", "solution": "external verification + audit", "detected_in_project": "partial (transaction audit)"},
-      {"issue": "Decision Instability", "severity": "P2", "root_cause": "model randomness", "detection": "regression compare", "solution": "deterministic settings + consensus", "detected_in_project": "built (consensus)"}
-    ]},
-    {"layer": "Security", "issues": [
-      {"issue": "Prompt Injection", "severity": "P1", "root_cause": "untrusted content", "detection": "prompt scan", "solution": "guardrails", "detected_in_project": "built (/api/guardrails-check)"},
-      {"issue": "Data Leakage / PII", "severity": "P1", "root_cause": "retrieval failure", "detection": "DLP / PII scan", "solution": "masking", "detected_in_project": "built (PII scanner)"},
-      {"issue": "Cross-Tenant Access", "severity": "P1", "root_cause": "tenant filter failure", "detection": "access audit", "solution": "RBAC/ABAC + tenant_id", "detected_in_project": "partial (tenant_id in council/txn)"},
-      {"issue": "Jailbreak", "severity": "P1", "root_cause": "weak prompt protection", "detection": "red-team", "solution": "policy enforcement", "detected_in_project": "partial (injection patterns)"}
-    ]},
-    {"layer": "MCP", "issues": [
-      {"issue": "MCP Server Outage", "severity": "P1", "root_cause": "infra failure", "detection": "health check", "solution": "HA deployment", "detected_in_project": "planned"},
-      {"issue": "Capability Discovery Failure", "severity": "P2", "root_cause": "registry issue", "detection": "health check", "solution": "registry + health", "detected_in_project": "partial (MCP analysis)"},
-      {"issue": "Version Compatibility", "severity": "P2", "root_cause": "API drift", "detection": "contract test", "solution": "semantic versioning", "detected_in_project": "planned"}
-    ]},
-    {"layer": "Planner", "issues": [
-      {"issue": "Over/Under-planning", "severity": "P2", "root_cause": "weak planner prompt", "detection": "plan step count", "solution": "structured plan + validation", "detected_in_project": "partial (goal-loop planner)"},
-      {"issue": "Goal Misinterpretation", "severity": "P2", "root_cause": "ambiguous intent", "detection": "goal-vs-output compare", "solution": "goal validation checkpoint", "detected_in_project": "planned"}
-    ]},
-    {"layer": "Retrieval", "issues": [
-      {"issue": "Poor Precision/Recall", "severity": "P2", "root_cause": "bad chunks/index", "detection": "Recall@K, Precision@K", "solution": "hybrid + rerank", "detected_in_project": "partial (patient-chat retrieval)"},
-      {"issue": "Stale Retrieval", "severity": "P2", "root_cause": "outdated index", "detection": "freshness score", "solution": "re-index schedule", "detected_in_project": "planned"}
-    ]},
-    {"layer": "Vector DB", "issues": [
-      {"issue": "Embedding Drift", "severity": "P2", "root_cause": "model change", "detection": "PCA/UMAP drift", "solution": "re-embed + version", "detected_in_project": "partial (PCA in Model Lab)"},
-      {"issue": "Index Corruption", "severity": "P1", "root_cause": "index failure", "detection": "vector count check", "solution": "backup/rebuild", "detected_in_project": "planned"}
-    ]},
-    {"layer": "Memory", "issues": [
-      {"issue": "Memory Corruption / Conflict", "severity": "P2", "root_cause": "bad writes", "detection": "memory audit", "solution": "versioning", "detected_in_project": "partial (clinical DB + transaction log)"},
-      {"issue": "Privacy Leakage (memory)", "severity": "P1", "root_cause": "no isolation", "detection": "PII scan", "solution": "tenant isolation + TTL", "detected_in_project": "partial (PII scan; isolation planned)"}
-    ]},
-    {"layer": "Reasoning", "issues": [
-      {"issue": "Chain-of-Thought Instability", "severity": "P2", "root_cause": "nondeterminism", "detection": "repeat-run compare", "solution": "consensus + low temp", "detected_in_project": "built (consensus)"},
-      {"issue": "Unsupported Inference", "severity": "P1", "root_cause": "no evidence", "detection": "grounding", "solution": "evidence enforcement", "detected_in_project": "partial"}
-    ]},
-    {"layer": "Workflow", "issues": [
-      {"issue": "Infinite Loop / Dead Workflow", "severity": "P1", "root_cause": "no termination", "detection": "long-run alert", "solution": "max-iter + timeout", "detected_in_project": "partial (goal-loop caps)"},
-      {"issue": "State Corruption", "severity": "P1", "root_cause": "lost state", "detection": "state consistency", "solution": "central state store", "detected_in_project": "partial (DB state)"}
-    ]},
-    {"layer": "Tool Execution", "issues": [
-      {"issue": "API Timeout / Rate Limit", "severity": "P2", "root_cause": "dependency", "detection": "latency/error metric", "solution": "retry + backoff + circuit breaker", "detected_in_project": "built (API Resilience Dashboard — circuit breaker + rate limit + retry monitoring, 3 endpoints, 5-tab frontend)"}
-    ]},
-    {"layer": "LLM", "issues": [
-      {"issue": "Provider Outage", "severity": "P1", "root_cause": "vendor down", "detection": "health check", "solution": "fallback model (Ollama local)", "detected_in_project": "partial (local Ollama fallback)"},
-      {"issue": "Model Drift / Hallucination", "severity": "P1", "root_cause": "model degradation", "detection": "eval drift", "solution": "eval gate + retrain", "detected_in_project": "partial (eval metrics)"}
-    ]},
-    {"layer": "Governance", "issues": [
-      {"issue": "Unauthorized Action / Policy Violation", "severity": "P1", "root_cause": "no policy gate", "detection": "policy engine alert", "solution": "guardrails + HITL", "detected_in_project": "built (decision + HITL + council)"},
-      {"issue": "Missing Audit Trail", "severity": "P1", "root_cause": "no audit", "detection": "audit coverage", "solution": "immutable transaction log", "detected_in_project": "built (transaction_log)"}
-    ]},
-    {"layer": "Evaluation", "issues": [
-      {"issue": "Grounding/Citation Failure", "severity": "P1", "root_cause": "weak eval", "detection": "grounding score", "solution": "multi-stage eval", "detected_in_project": "partial (eval metrics + SHAP concordance)"},
-      {"issue": "No Quality Measurement", "severity": "P1", "root_cause": "no eval pipeline", "detection": "—", "solution": "mandatory eval gate", "detected_in_project": "built (subject-wise eval + FAR/hr)"}
-    ]},
-    {"layer": "Observability", "issues": [
-      {"issue": "Missing Traces / Black-box", "severity": "P1", "root_cause": "no tracing", "detection": "trace coverage", "solution": "request_id/trace_id propagation + OTel", "detected_in_project": "partial (transaction trace; OTel planned)"},
-      {"issue": "Alert Fatigue", "severity": "P2", "root_cause": "no dedup", "detection": "alert volume", "solution": "severity routing", "detected_in_project": "planned"}
-    ]},
-    {"layer": "Deployment", "issues": [
-      {"issue": "Environment / Config Drift", "severity": "P2", "root_cause": "manual changes", "detection": "config monitoring", "solution": "IaC + versioning", "detected_in_project": "built (Config Drift Monitor Dashboard — drift detection, env audit, change timeline, /api/config-drift/*)"}
-    ]},
-    {"layer": "Infrastructure", "issues": [
-      {"issue": "Memory/Resource Exhaustion (OOM)", "severity": "P1", "root_cause": "high load", "detection": "resource metrics", "solution": "autoscaling + limits", "detected_in_project": "built (Resource Monitor Dashboard — live psutil + OOM event log + limits)"},
-      {"issue": "GPU Shortage", "severity": "P2", "root_cause": "no compute", "detection": "GPU metric", "solution": "queue + scheduling", "detected_in_project": "built (Resource Monitor Dashboard — GPU tab with nvidia-smi + VRAM tracking)"}
-    ]}
+    {
+      "layer": "Agent",
+      "issues": [
+        {
+          "issue": "Agent Hallucination",
+          "severity": "P1",
+          "root_cause": "weak grounding / poor retrieval",
+          "detection": "groundedness + citation score",
+          "solution": "hybrid RAG + citation enforcement + confidence",
+          "detected_in_project": "partial (RAG citation note + SHAP; grounding gate planned)"
+        },
+        {
+          "issue": "Agent Looping",
+          "severity": "P2",
+          "root_cause": "missing stop condition",
+          "detection": "loop/iteration counter",
+          "solution": "max-iteration threshold",
+          "detected_in_project": "partial (goal-loop max_iterations)"
+        },
+        {
+          "issue": "Token/Cost Explosion",
+          "severity": "P2",
+          "root_cause": "context accumulation",
+          "detection": "token/cost trace",
+          "solution": "compression + budget caps",
+          "detected_in_project": "planned"
+        },
+        {
+          "issue": "Wrong Tool Selection",
+          "severity": "P2",
+          "root_cause": "weak planner",
+          "detection": "tool-selection logs",
+          "solution": "tool ranking + validation",
+          "detected_in_project": "partial (planner + agent registry)"
+        },
+        {
+          "issue": "Action Hallucination (false success)",
+          "severity": "P1",
+          "root_cause": "no execution verification",
+          "detection": "compare actual state",
+          "solution": "external verification + audit",
+          "detected_in_project": "partial (transaction audit)"
+        },
+        {
+          "issue": "Decision Instability",
+          "severity": "P2",
+          "root_cause": "model randomness",
+          "detection": "regression compare",
+          "solution": "deterministic settings + consensus",
+          "detected_in_project": "built (consensus)"
+        }
+      ]
+    },
+    {
+      "layer": "Security",
+      "issues": [
+        {
+          "issue": "Prompt Injection",
+          "severity": "P1",
+          "root_cause": "untrusted content",
+          "detection": "prompt scan",
+          "solution": "guardrails",
+          "detected_in_project": "built (/api/guardrails-check)"
+        },
+        {
+          "issue": "Data Leakage / PII",
+          "severity": "P1",
+          "root_cause": "retrieval failure",
+          "detection": "DLP / PII scan",
+          "solution": "masking",
+          "detected_in_project": "built (PII scanner)"
+        },
+        {
+          "issue": "Cross-Tenant Access",
+          "severity": "P1",
+          "root_cause": "tenant filter failure",
+          "detection": "access audit",
+          "solution": "RBAC/ABAC + tenant_id",
+          "detected_in_project": "partial (tenant_id in council/txn)"
+        },
+        {
+          "issue": "Jailbreak",
+          "severity": "P1",
+          "root_cause": "weak prompt protection",
+          "detection": "red-team",
+          "solution": "policy enforcement",
+          "detected_in_project": "partial (injection patterns)"
+        }
+      ]
+    },
+    {
+      "layer": "MCP",
+      "issues": [
+        {
+          "issue": "MCP Server Outage",
+          "severity": "P1",
+          "root_cause": "infra failure",
+          "detection": "health check",
+          "solution": "HA deployment",
+          "detected_in_project": "planned"
+        },
+        {
+          "issue": "Capability Discovery Failure",
+          "severity": "P2",
+          "root_cause": "registry issue",
+          "detection": "health check",
+          "solution": "registry + health",
+          "detected_in_project": "partial (MCP analysis)"
+        },
+        {
+          "issue": "Version Compatibility",
+          "severity": "P2",
+          "root_cause": "API drift",
+          "detection": "contract test",
+          "solution": "semantic versioning",
+          "detected_in_project": "planned"
+        }
+      ]
+    },
+    {
+      "layer": "Planner",
+      "issues": [
+        {
+          "issue": "Over/Under-planning",
+          "severity": "P2",
+          "root_cause": "weak planner prompt",
+          "detection": "plan step count",
+          "solution": "structured plan + validation",
+          "detected_in_project": "partial (goal-loop planner)"
+        },
+        {
+          "issue": "Goal Misinterpretation",
+          "severity": "P2",
+          "root_cause": "ambiguous intent",
+          "detection": "goal-vs-output compare",
+          "solution": "goal validation checkpoint",
+          "detected_in_project": "planned"
+        }
+      ]
+    },
+    {
+      "layer": "Retrieval",
+      "issues": [
+        {
+          "issue": "Poor Precision/Recall",
+          "severity": "P2",
+          "root_cause": "bad chunks/index",
+          "detection": "Recall@K, Precision@K",
+          "solution": "hybrid + rerank",
+          "detected_in_project": "partial (patient-chat retrieval)"
+        },
+        {
+          "issue": "Stale Retrieval",
+          "severity": "P2",
+          "root_cause": "outdated index",
+          "detection": "freshness score",
+          "solution": "re-index schedule",
+          "detected_in_project": "planned"
+        }
+      ]
+    },
+    {
+      "layer": "Vector DB",
+      "issues": [
+        {
+          "issue": "Embedding Drift",
+          "severity": "P2",
+          "root_cause": "model change",
+          "detection": "PCA/UMAP drift",
+          "solution": "re-embed + version",
+          "detected_in_project": "partial (PCA in Model Lab)"
+        },
+        {
+          "issue": "Index Corruption",
+          "severity": "P1",
+          "root_cause": "index failure",
+          "detection": "vector count check",
+          "solution": "backup/rebuild",
+          "detected_in_project": "planned"
+        }
+      ]
+    },
+    {
+      "layer": "Memory",
+      "issues": [
+        {
+          "issue": "Memory Corruption / Conflict",
+          "severity": "P2",
+          "root_cause": "bad writes",
+          "detection": "memory audit",
+          "solution": "versioning",
+          "detected_in_project": "partial (clinical DB + transaction log)"
+        },
+        {
+          "issue": "Privacy Leakage (memory)",
+          "severity": "P1",
+          "root_cause": "no isolation",
+          "detection": "PII scan",
+          "solution": "tenant isolation + TTL",
+          "detected_in_project": "partial (PII scan; isolation planned)"
+        }
+      ]
+    },
+    {
+      "layer": "Reasoning",
+      "issues": [
+        {
+          "issue": "Chain-of-Thought Instability",
+          "severity": "P2",
+          "root_cause": "nondeterminism",
+          "detection": "repeat-run compare",
+          "solution": "consensus + low temp",
+          "detected_in_project": "built (consensus)"
+        },
+        {
+          "issue": "Unsupported Inference",
+          "severity": "P1",
+          "root_cause": "no evidence",
+          "detection": "grounding",
+          "solution": "evidence enforcement",
+          "detected_in_project": "partial"
+        }
+      ]
+    },
+    {
+      "layer": "Workflow",
+      "issues": [
+        {
+          "issue": "Infinite Loop / Dead Workflow",
+          "severity": "P1",
+          "root_cause": "no termination",
+          "detection": "long-run alert",
+          "solution": "max-iter + timeout",
+          "detected_in_project": "partial (goal-loop caps)"
+        },
+        {
+          "issue": "State Corruption",
+          "severity": "P1",
+          "root_cause": "lost state",
+          "detection": "state consistency",
+          "solution": "central state store",
+          "detected_in_project": "partial (DB state)"
+        }
+      ]
+    },
+    {
+      "layer": "Tool Execution",
+      "issues": [
+        {
+          "issue": "API Timeout / Rate Limit",
+          "severity": "P2",
+          "root_cause": "dependency",
+          "detection": "latency/error metric",
+          "solution": "retry + backoff + circuit breaker",
+          "detected_in_project": "built (API Resilience Dashboard \u2014 circuit breaker + rate limit + retry monitoring, 3 endpoints, 5-tab frontend)"
+        }
+      ]
+    },
+    {
+      "layer": "LLM",
+      "issues": [
+        {
+          "issue": "Provider Outage",
+          "severity": "P1",
+          "root_cause": "vendor down",
+          "detection": "health check",
+          "solution": "fallback model (Ollama local)",
+          "detected_in_project": "partial (local Ollama fallback)"
+        },
+        {
+          "issue": "Model Drift / Hallucination",
+          "severity": "P1",
+          "root_cause": "model degradation",
+          "detection": "eval drift",
+          "solution": "eval gate + retrain",
+          "detected_in_project": "partial (eval metrics)"
+        }
+      ]
+    },
+    {
+      "layer": "Governance",
+      "issues": [
+        {
+          "issue": "Unauthorized Action / Policy Violation",
+          "severity": "P1",
+          "root_cause": "no policy gate",
+          "detection": "policy engine alert",
+          "solution": "guardrails + HITL",
+          "detected_in_project": "built (decision + HITL + council)"
+        },
+        {
+          "issue": "Missing Audit Trail",
+          "severity": "P1",
+          "root_cause": "no audit",
+          "detection": "audit coverage",
+          "solution": "immutable transaction log",
+          "detected_in_project": "built (transaction_log)"
+        }
+      ]
+    },
+    {
+      "layer": "Evaluation",
+      "issues": [
+        {
+          "issue": "Grounding/Citation Failure",
+          "severity": "P1",
+          "root_cause": "weak eval",
+          "detection": "grounding score",
+          "solution": "multi-stage eval",
+          "detected_in_project": "partial (eval metrics + SHAP concordance)"
+        },
+        {
+          "issue": "No Quality Measurement",
+          "severity": "P1",
+          "root_cause": "no eval pipeline",
+          "detection": "\u2014",
+          "solution": "mandatory eval gate",
+          "detected_in_project": "built (subject-wise eval + FAR/hr)"
+        }
+      ]
+    },
+    {
+      "layer": "Observability",
+      "issues": [
+        {
+          "issue": "Missing Traces / Black-box",
+          "severity": "P1",
+          "root_cause": "no tracing",
+          "detection": "trace coverage",
+          "solution": "request_id/trace_id propagation + OTel",
+          "detected_in_project": "partial (transaction trace; OTel planned)"
+        },
+        {
+          "issue": "Alert Fatigue",
+          "severity": "P2",
+          "root_cause": "no dedup",
+          "detection": "alert volume",
+          "solution": "severity routing",
+          "detected_in_project": "built (Alert Fatigue Monitor Dashboard \u2014 alert volume analytics, dedup, severity routing, 3 endpoints + 5-tab frontend)"
+        }
+      ]
+    },
+    {
+      "layer": "Deployment",
+      "issues": [
+        {
+          "issue": "Environment / Config Drift",
+          "severity": "P2",
+          "root_cause": "manual changes",
+          "detection": "config monitoring",
+          "solution": "IaC + versioning",
+          "detected_in_project": "built (Config Drift Monitor Dashboard \u2014 drift detection, env audit, change timeline, /api/config-drift/*)"
+        }
+      ]
+    },
+    {
+      "layer": "Infrastructure",
+      "issues": [
+        {
+          "issue": "Memory/Resource Exhaustion (OOM)",
+          "severity": "P1",
+          "root_cause": "high load",
+          "detection": "resource metrics",
+          "solution": "autoscaling + limits",
+          "detected_in_project": "built (Resource Monitor Dashboard \u2014 live psutil + OOM event log + limits)"
+        },
+        {
+          "issue": "GPU Shortage",
+          "severity": "P2",
+          "root_cause": "no compute",
+          "detection": "GPU metric",
+          "solution": "queue + scheduling",
+          "detected_in_project": "built (Resource Monitor Dashboard \u2014 GPU tab with nvidia-smi + VRAM tracking)"
+        }
+      ]
+    }
   ],
   "internal_flow": "User -> Gateway -> Router -> Planner -> Security -> Memory -> RAG -> Specialist -> Evaluation -> Reviewer -> Council -> Compliance -> Audit -> Response",
-  "top_20_pct_cause_80_pct": ["Agent Hallucination", "Prompt Injection", "Cost Explosion", "Agent Looping",
-    "Grounding Failure", "Cross-Tenant Access", "Missing Audit Trail", "Provider Outage", "Decision Instability", "State Corruption"]
+  "top_20_pct_cause_80_pct": [
+    "Agent Hallucination",
+    "Prompt Injection",
+    "Cost Explosion",
+    "Agent Looping",
+    "Grounding Failure",
+    "Cross-Tenant Access",
+    "Missing Audit Trail",
+    "Provider Outage",
+    "Decision Instability",
+    "State Corruption"
+  ]
 }
