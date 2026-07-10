@@ -10167,6 +10167,30 @@ async def otel_llm_definitions():
     return _json_safe(old.definitions())
 
 
+# ── Mobile Alerts / SOS Dashboard ─────────────────────────────────────────────
+@app.get("/api/mobile-alerts/overview")
+async def mobile_alerts_overview():
+    """Mobile alerts / SOS overview — active rules, recent SOS events,
+    escalation status, channel health, and response time metrics."""
+    import scripts.mobile_alerts_dashboard as mad
+    return _json_safe(mad.overview())
+
+
+@app.get("/api/mobile-alerts/breakdown")
+async def mobile_alerts_breakdown():
+    """Per-rule and per-patient breakdown — alert rule stats, SOS event log,
+    escalation chain detail, notification delivery rates."""
+    import scripts.mobile_alerts_dashboard as mad
+    return _json_safe(mad.breakdown())
+
+
+@app.get("/api/mobile-alerts/definitions")
+async def mobile_alerts_definitions():
+    """Mobile alerts, SOS, and escalation concepts — terminology reference."""
+    import scripts.mobile_alerts_dashboard as mad
+    return _json_safe(mad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -280,6 +280,7 @@ import RAGReportGenDashboard from './components/RAGReportGenDashboard'
 import SubtleSeizureDashboard from './components/SubtleSeizureDashboard'
 import APIResilienceDashboard from './components/APIResilienceDashboard'
 import OTelLLMDashboard from './components/OTelLLMDashboard'
+import MobileAlertsDashboard from './components/MobileAlertsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -648,7 +649,8 @@ function App() {
     { id: 'rag-report-gen', label: 'RAG Report Generation' },
     { id: 'subtle-seizure', label: 'Subtle Seizure Detection' },
     { id: 'api-resilience', label: 'API Resilience' },
-    { id: 'otel-llm', label: 'OTel LLM Observability' }
+    { id: 'otel-llm', label: 'OTel LLM Observability' },
+    { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' }
   ]
 
   // API Calls
@@ -2245,6 +2247,8 @@ function App() {
         return <APIResilienceDashboard />
       case 'otel-llm':
         return <OTelLLMDashboard />
+      case 'mobile-alerts':
+        return <MobileAlertsDashboard />
       default:
         return renderClassificationTab()
     }

@@ -1,5 +1,5 @@
 {
-  "title": "Enterprise AI Dashboard Catalog (5 phases) — coverage map",
+  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
   "updated_at": "2026-06-30",
   "phases": [
@@ -243,7 +243,7 @@
         {
           "name": "Shadow AI Detection Dashboard",
           "status": "built",
-          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx — unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
+          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx \u2014 unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
         },
         {
           "name": "MRI Brain Review Dashboard",
@@ -253,7 +253,7 @@
         {
           "name": "OTel LLM Observability Dashboard",
           "status": "built",
-          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx — OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
+          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx \u2014 OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
         }
       ]
     }
@@ -285,5 +285,19 @@
     "chord",
     "leaderboard"
   ],
-  "golden_rule": "Every dashboard maps to a layer (Executive/LLMOps/RAG/Agents/MCP) + a KPI + a visualization + an audience + a refresh frequency."
+  "golden_rule": "Every dashboard maps to a layer (Executive/LLMOps/RAG/Agents/MCP) + a KPI + a visualization + an audience + a refresh frequency.",
+  "dashboards": [
+    {
+      "id": "mobile-alerts",
+      "name": "Mobile Alerts / SOS",
+      "category": "clinical",
+      "status": "built",
+      "endpoints": [
+        "/api/mobile-alerts/overview",
+        "/api/mobile-alerts/breakdown",
+        "/api/mobile-alerts/definitions"
+      ],
+      "frontend": "MobileAlertsDashboard.jsx"
+    }
+  ]
 }

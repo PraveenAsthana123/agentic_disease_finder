@@ -1,11 +1,11 @@
 {
-  "title": "NeuroLab AI — Deployment Readiness & Business Case",
+  "title": "NeuroLab AI \u2014 Deployment Readiness & Business Case",
   "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
   "updated_at": "2026-07-08",
   "stakeholders": [
     {
       "role": "Neurologist",
-      "icon": "🧠",
+      "icon": "\ud83e\udde0",
       "built": [
         "AI EEG read + confidence",
         "SHAP explainability",
@@ -24,7 +24,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "📡",
+      "icon": "\ud83d\udce1",
       "built": [
         "acquisition QC",
         "channel quality",
@@ -41,7 +41,7 @@
     },
     {
       "role": "Occupational Therapist",
-      "icon": "🖐️",
+      "icon": "\ud83d\udd90\ufe0f",
       "built": [
         "functional-outcome tracking (partial)"
       ],
@@ -54,7 +54,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "💬",
+      "icon": "\ud83d\udcac",
       "built": [
         "comorbidity/mood surveys"
       ],
@@ -66,7 +66,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "🩻",
+      "icon": "\ud83e\ude7b",
       "built": [
         "MRI findings capture (partial)"
       ],
@@ -78,7 +78,7 @@
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "🧩",
+      "icon": "\ud83e\udde9",
       "built": [
         "neuropsych capture (partial)"
       ],
@@ -90,7 +90,7 @@
     },
     {
       "role": "Admin / Compliance / Billing",
-      "icon": "⚖️",
+      "icon": "\u2696\ufe0f",
       "built": [
         "AI governance + decision audit",
         "guardrails",
@@ -100,7 +100,7 @@
       "missing": [
         "scheduling",
         "billing/claims",
-        "consent management (dashboard built — admin/tracking/compliance)",
+        "consent management (dashboard built \u2014 admin/tracking/compliance)",
         "HIPAA audit pack",
         "multi-user auth/RBAC",
         "insurance pre-auth"
@@ -109,17 +109,17 @@
   ],
   "processes": [
     {
-      "name": "Referral intake → triage",
+      "name": "Referral intake \u2192 triage",
       "status": "built",
       "maps_to": "/api/referral-triage/* + ReferralTriageDashboard.jsx"
     },
     {
-      "name": "Appointment scheduling → worklist",
+      "name": "Appointment scheduling \u2192 worklist",
       "status": "built",
       "maps_to": "/api/appointments/* + AppointmentsDashboard.jsx"
     },
     {
-      "name": "Patient registration → consent",
+      "name": "Patient registration \u2192 consent",
       "status": "built"
     },
     {
@@ -127,11 +127,11 @@
       "status": "partial"
     },
     {
-      "name": "QC → AI pre-read → neurologist read → override → sign-off",
+      "name": "QC \u2192 AI pre-read \u2192 neurologist read \u2192 override \u2192 sign-off",
       "status": "built"
     },
     {
-      "name": "Report generation → EMR push → referrer notify",
+      "name": "Report generation \u2192 EMR push \u2192 referrer notify",
       "status": "partial"
     },
     {
@@ -140,17 +140,17 @@
       "maps_to": "/api/epilepsy-board/* + EpilepsyBoardDashboard.jsx"
     },
     {
-      "name": "Follow-up → medication titration → outcome",
+      "name": "Follow-up \u2192 medication titration \u2192 outcome",
       "status": "built",
       "maps_to": "/api/medication-adherence/* + MedicationAdherenceDashboard.jsx"
     },
     {
-      "name": "Billing → claims → reconciliation",
+      "name": "Billing \u2192 claims \u2192 reconciliation",
       "status": "built",
       "maps_to": "/api/billing-claims/* + BillingClaimsDashboard.jsx"
     },
     {
-      "name": "Audit → compliance reporting",
+      "name": "Audit \u2192 compliance reporting",
       "status": "built"
     }
   ],
@@ -181,7 +181,8 @@
     },
     {
       "capability": "Video-EEG sync player",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/video-eeg/* + VideoEEGDashboard.jsx"
     },
     {
       "capability": "DICOM imaging",
@@ -201,7 +202,8 @@
     },
     {
       "capability": "Mobile alerts / SOS",
-      "status": "partial"
+      "status": "built",
+      "note": "Mobile Alerts/SOS Dashboard with alert rules, SOS event tracking, escalation chain, channel management"
     },
     {
       "capability": "Clinical validation / regulatory (FDA/CE)",
@@ -256,15 +258,15 @@
     "productivity_increase": [
       {
         "lever": "Neurologist",
-        "impact": "AI pre-read + templates → 2-3x reads/day"
+        "impact": "AI pre-read + templates \u2192 2-3x reads/day"
       },
       {
         "lever": "Technician",
-        "impact": "auto-QC + worklist → more studies/shift"
+        "impact": "auto-QC + worklist \u2192 more studies/shift"
       },
       {
         "lever": "Lab-wide",
-        "impact": "digital workflow → fewer handoff delays"
+        "impact": "digital workflow \u2192 fewer handoff delays"
       }
     ]
   },
