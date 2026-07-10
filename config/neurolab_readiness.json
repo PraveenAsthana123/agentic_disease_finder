@@ -132,7 +132,8 @@
     },
     {
       "name": "Report generation \u2192 EMR push \u2192 referrer notify",
-      "status": "partial"
+      "status": "partial",
+      "note": "Report generation built (Structured Reporting Dashboard — 4 ILAE templates, field completeness, quality grades, 3 endpoints); EMR push + referrer notify pending (needs EMR/FHIR credentials)"
     },
     {
       "name": "Multidisciplinary epilepsy board review",

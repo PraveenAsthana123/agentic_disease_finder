@@ -10311,6 +10311,31 @@ async def treatment_efficacy_definitions():
     return _json_safe(ted.definitions())
 
 
+# ── Structured Reporting Dashboard ────────────────────────────────────
+@app.get("/api/structured-reporting/overview")
+async def structured_reporting_overview():
+    """Structured reporting overview — template registry, generation stats,
+    completeness metrics, monthly trends, AI-assisted finding capture."""
+    import scripts.structured_reporting_dashboard as srd
+    return _json_safe(srd.overview())
+
+
+@app.get("/api/structured-reporting/breakdown")
+async def structured_reporting_breakdown():
+    """Structured reporting breakdown — per-patient report inventory,
+    field coverage heatmap, quality scores, cross-modality concordance."""
+    import scripts.structured_reporting_dashboard as srd
+    return _json_safe(srd.breakdown())
+
+
+@app.get("/api/structured-reporting/definitions")
+async def structured_reporting_definitions():
+    """Structured reporting definitions — clinical terms, template types,
+    reporting standards."""
+    import scripts.structured_reporting_dashboard as srd
+    return _json_safe(srd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

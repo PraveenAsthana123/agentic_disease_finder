@@ -142,8 +142,8 @@
         },
         {
           "challenge": "Structured reporting overhead",
-          "ai": "Template + finding capture (partial)",
-          "status": "partial"
+          "ai": "Structured Reporting Dashboard — 4 ILAE-aligned templates (EEG/MRI/Neuropsych/Comprehensive), field completeness heatmaps, quality grades, cross-modality concordance, AI-assisted finding capture (3 endpoints verified 200, StructuredReportingDashboard.jsx + nav wired)",
+          "status": "built"
         }
       ]
     },
