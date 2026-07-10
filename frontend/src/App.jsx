@@ -285,6 +285,7 @@ import ResourceMonitorDashboard from './components/ResourceMonitorDashboard'
 import ConfigDriftDashboard from './components/ConfigDriftDashboard'
 import AlertFatigueDashboard from './components/AlertFatigueDashboard'
 import DataCompletenessDashboard from './components/DataCompletenessDashboard'
+import TreatmentEfficacyDashboard from './components/TreatmentEfficacyDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -658,7 +659,8 @@ function App() {
     { id: 'resource-monitor', label: 'Resource Monitor' },
     { id: 'config-drift', label: 'Config Drift Monitor' },
     { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' },
-    { id: 'data-completeness', label: 'Data Completeness' }
+    { id: 'data-completeness', label: 'Data Completeness' },
+    { id: 'treatment-efficacy', label: 'Treatment Efficacy' }
   ]
 
   // API Calls
@@ -2265,6 +2267,8 @@ function App() {
         return <AlertFatigueDashboard />
       case 'data-completeness':
         return <DataCompletenessDashboard />
+      case 'treatment-efficacy':
+        return <TreatmentEfficacyDashboard />
       default:
         return renderClassificationTab()
     }

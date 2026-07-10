@@ -10286,6 +10286,31 @@ async def data_completeness_definitions():
     return _json_safe(dcd.definitions())
 
 
+# ── Treatment Efficacy Dashboard ──────────────────────────────────────
+@app.get("/api/treatment-efficacy/overview")
+async def treatment_efficacy_overview():
+    """Treatment efficacy overview — adherence rates, seizure frequency,
+    treatment response categories, monthly trends, side effect profile."""
+    import scripts.treatment_efficacy_dashboard as ted
+    return _json_safe(ted.overview())
+
+
+@app.get("/api/treatment-efficacy/breakdown")
+async def treatment_efficacy_breakdown():
+    """Treatment efficacy breakdown — per-patient response, per-drug analysis,
+    adherence by time of day, side effects by drug."""
+    import scripts.treatment_efficacy_dashboard as ted
+    return _json_safe(ted.breakdown())
+
+
+@app.get("/api/treatment-efficacy/definitions")
+async def treatment_efficacy_definitions():
+    """Treatment efficacy definitions — clinical terms, response categories,
+    measurement scales."""
+    import scripts.treatment_efficacy_dashboard as ted
+    return _json_safe(ted.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
