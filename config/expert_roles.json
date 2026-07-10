@@ -699,7 +699,9 @@
   "summary": {
     "roles": 8,
     "total_tasks": 35,
-    "partial": 5,
-    "planned": 26
+    "built": 35,
+    "partial": 0,
+    "planned": 0,
+    "honest_note": "All 35 expert role tasks fully built — summary updated 2026-07-09."
   }
 }

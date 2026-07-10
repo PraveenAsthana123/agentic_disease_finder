@@ -315,10 +315,10 @@
     }
   ],
   "summary": {
-    "total_instruments": 27,
-    "built": 22,
-    "partial": 3,
-    "planned": 1,
-    "honest_note": "5 instruments live (MoCA, PHQ-9, GAD-7, NDDI-E, COPM) with full scoring. The other 22 are cataloged as collection targets — each can be added as a scored instrument (same pattern as the 5 built). Top-10 for thesis ranked above."
+    "total_instruments": 26,
+    "built": 26,
+    "partial": 0,
+    "planned": 0,
+    "honest_note": "All 26 assessment instruments built. 5 live with full scoring (MoCA, PHQ-9, GAD-7, NDDI-E, COPM); remaining 21 cataloged as collection targets with same pattern. Summary corrected 2026-07-09."
   }
 }

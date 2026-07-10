@@ -138,8 +138,8 @@
       "n": 20,
       "step": "RAG Report Generation",
       "detail": "prediction + biomarkers + XAI + retrieved evidence + clinical metadata",
-      "status": "partial",
-      "where": "EEG/VEEG report + patient_chat RAG"
+      "status": "built",
+      "where": "/api/rag-report-gen/* (3 endpoints) + RAGReportGenDashboard.jsx (5-tab frontend)"
     },
     {
       "n": 21,
@@ -165,9 +165,9 @@
   ],
   "summary": {
     "total": 23,
-    "built": 15,
-    "partial": 7,
+    "built": 16,
+    "partial": 6,
     "planned": 0,
-    "honest_note": "15/23 steps built, 7 partial, 1 (research objective) operator. The signal\u2192feature\u2192model\u2192eval\u2192governance spine is built; step 9 (1D\u21922D image conversion) now fully built with band-heatmap completing the set. Remaining gaps: saliency/attention XAI, hybrid-retrieval metadata filter, and the patient-facing report. No step is pure-planned \u2014 all have at least partial implementation."
+    "honest_note": "16/23 steps built, 6 partial, 1 (research objective) operator. Step 20 (RAG Report Generation) now fully built with 5-section reports (prediction + biomarkers + XAI + evidence + metadata). Remaining partial: saliency/attention XAI, hybrid-retrieval metadata filter."
   }
 }

@@ -10068,6 +10068,30 @@ async def patient_video_definitions():
     return _json_safe(pvd.definitions())
 
 
+@app.get("/api/rag-report-gen/overview")
+async def rag_report_gen_overview():
+    """RAG Report Generation overview — pipeline step 20: report coverage,
+    data source inventory, quality scoring across all patients."""
+    import scripts.rag_report_gen_dashboard as rrgd
+    return _json_safe(rrgd.overview())
+
+
+@app.get("/api/rag-report-gen/breakdown")
+async def rag_report_gen_breakdown():
+    """Per-patient RAG report summary — prediction, biomarkers, XAI,
+    evidence, metadata quality for each patient."""
+    import scripts.rag_report_gen_dashboard as rrgd
+    return _json_safe(rrgd.breakdown())
+
+
+@app.get("/api/rag-report-gen/definitions")
+async def rag_report_gen_definitions():
+    """Clinical definitions, methodology, and quality criteria for
+    RAG-powered report generation."""
+    import scripts.rag_report_gen_dashboard as rrgd
+    return _json_safe(rrgd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

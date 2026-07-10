@@ -276,6 +276,7 @@ import AIGovernanceDashboard from './components/AIGovernanceDashboard'
 import EpworthDashboard from './components/EpworthDashboard'
 import RealtimeEEGQCDashboard from './components/RealtimeEEGQCDashboard'
 import PatientVideoDashboard from './components/PatientVideoDashboard'
+import RAGReportGenDashboard from './components/RAGReportGenDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -640,7 +641,8 @@ function App() {
     { id: 'ai-governance', label: 'AI Governance' },
     { id: 'epworth', label: 'Epworth Sleepiness' },
     { id: 'realtime-eeg-qc', label: 'Real-Time EEG QC' },
-    { id: 'patient-video', label: 'Patient Video Analysis' }
+    { id: 'patient-video', label: 'Patient Video Analysis' },
+    { id: 'rag-report-gen', label: 'RAG Report Generation' }
   ]
 
   // API Calls
@@ -2229,6 +2231,8 @@ function App() {
         return <RealtimeEEGQCDashboard />
       case 'patient-video':
         return <PatientVideoDashboard />
+      case 'rag-report-gen':
+        return <RAGReportGenDashboard />
       default:
         return renderClassificationTab()
     }
