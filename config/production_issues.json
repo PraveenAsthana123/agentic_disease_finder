@@ -69,8 +69,8 @@
       {"issue": "Environment / Config Drift", "severity": "P2", "root_cause": "manual changes", "detection": "config monitoring", "solution": "IaC + versioning", "detected_in_project": "planned"}
     ]},
     {"layer": "Infrastructure", "issues": [
-      {"issue": "Memory/Resource Exhaustion (OOM)", "severity": "P1", "root_cause": "high load", "detection": "resource metrics", "solution": "autoscaling + limits", "detected_in_project": "planned"},
-      {"issue": "GPU Shortage", "severity": "P2", "root_cause": "no compute", "detection": "GPU metric", "solution": "queue + scheduling", "detected_in_project": "planned"}
+      {"issue": "Memory/Resource Exhaustion (OOM)", "severity": "P1", "root_cause": "high load", "detection": "resource metrics", "solution": "autoscaling + limits", "detected_in_project": "built (Resource Monitor Dashboard — live psutil + OOM event log + limits)"},
+      {"issue": "GPU Shortage", "severity": "P2", "root_cause": "no compute", "detection": "GPU metric", "solution": "queue + scheduling", "detected_in_project": "built (Resource Monitor Dashboard — GPU tab with nvidia-smi + VRAM tracking)"}
     ]}
   ],
   "internal_flow": "User -> Gateway -> Router -> Planner -> Security -> Memory -> RAG -> Specialist -> Evaluation -> Reviewer -> Council -> Compliance -> Audit -> Response",

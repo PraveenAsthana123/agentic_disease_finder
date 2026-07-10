@@ -10191,6 +10191,30 @@ async def mobile_alerts_definitions():
     return _json_safe(mad.definitions())
 
 
+# ── Resource Exhaustion Monitor Dashboard ─────────────────────────────────────
+@app.get("/api/resource-monitor/overview")
+async def resource_monitor_overview():
+    """Resource monitor overview — live system metrics, health score, OOM summary,
+    usage trends, GPU utilization, and resource limit status."""
+    import scripts.resource_monitor_dashboard as rmd
+    return _json_safe(rmd.overview())
+
+
+@app.get("/api/resource-monitor/breakdown")
+async def resource_monitor_breakdown():
+    """Per-process resource usage, OOM event log, GPU detail, limit configuration,
+    and autoscaling recommendations."""
+    import scripts.resource_monitor_dashboard as rmd
+    return _json_safe(rmd.breakdown())
+
+
+@app.get("/api/resource-monitor/definitions")
+async def resource_monitor_definitions():
+    """Resource monitoring concepts — terminology reference."""
+    import scripts.resource_monitor_dashboard as rmd
+    return _json_safe(rmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

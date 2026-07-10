@@ -281,6 +281,7 @@ import SubtleSeizureDashboard from './components/SubtleSeizureDashboard'
 import APIResilienceDashboard from './components/APIResilienceDashboard'
 import OTelLLMDashboard from './components/OTelLLMDashboard'
 import MobileAlertsDashboard from './components/MobileAlertsDashboard'
+import ResourceMonitorDashboard from './components/ResourceMonitorDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -650,7 +651,8 @@ function App() {
     { id: 'subtle-seizure', label: 'Subtle Seizure Detection' },
     { id: 'api-resilience', label: 'API Resilience' },
     { id: 'otel-llm', label: 'OTel LLM Observability' },
-    { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' }
+    { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' },
+    { id: 'resource-monitor', label: 'Resource Monitor' }
   ]
 
   // API Calls
@@ -2249,6 +2251,8 @@ function App() {
         return <OTelLLMDashboard />
       case 'mobile-alerts':
         return <MobileAlertsDashboard />
+      case 'resource-monitor':
+        return <ResourceMonitorDashboard />
       default:
         return renderClassificationTab()
     }
