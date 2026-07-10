@@ -10092,6 +10092,31 @@ async def rag_report_gen_definitions():
     return _json_safe(rrgd.definitions())
 
 
+# ── Subtle Seizure Detection Dashboard ────────────────────────────────────
+@app.get("/api/subtle-seizure/overview")
+async def subtle_seizure_overview():
+    """Subtle seizure detection overview — AI-surfaced low-salience EEG events,
+    sensitivity/specificity, fatigue-adjusted detection gain, hourly patterns."""
+    import scripts.subtle_seizure_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/subtle-seizure/breakdown")
+async def subtle_seizure_breakdown():
+    """Per-event subtle seizure detections — event type, onset time, amplitude,
+    confidence, channels involved, neurologist verdict."""
+    import scripts.subtle_seizure_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/subtle-seizure/definitions")
+async def subtle_seizure_definitions():
+    """Clinical definitions for subtle seizure detection — electrodecrement,
+    brief rhythmic discharge, LAFA, sensitivity/specificity, HITL review."""
+    import scripts.subtle_seizure_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

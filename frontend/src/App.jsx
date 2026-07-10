@@ -277,6 +277,7 @@ import EpworthDashboard from './components/EpworthDashboard'
 import RealtimeEEGQCDashboard from './components/RealtimeEEGQCDashboard'
 import PatientVideoDashboard from './components/PatientVideoDashboard'
 import RAGReportGenDashboard from './components/RAGReportGenDashboard'
+import SubtleSeizureDashboard from './components/SubtleSeizureDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -642,7 +643,8 @@ function App() {
     { id: 'epworth', label: 'Epworth Sleepiness' },
     { id: 'realtime-eeg-qc', label: 'Real-Time EEG QC' },
     { id: 'patient-video', label: 'Patient Video Analysis' },
-    { id: 'rag-report-gen', label: 'RAG Report Generation' }
+    { id: 'rag-report-gen', label: 'RAG Report Generation' },
+    { id: 'subtle-seizure', label: 'Subtle Seizure Detection' }
   ]
 
   // API Calls
@@ -2233,6 +2235,8 @@ function App() {
         return <PatientVideoDashboard />
       case 'rag-report-gen':
         return <RAGReportGenDashboard />
+      case 'subtle-seizure':
+        return <SubtleSeizureDashboard />
       default:
         return renderClassificationTab()
     }
