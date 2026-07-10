@@ -10117,6 +10117,31 @@ async def subtle_seizure_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── API Resilience Dashboard ──────────────────────────────────────────────────
+@app.get("/api/api-resilience/overview")
+async def api_resilience_overview():
+    """API resilience overview — circuit breaker states, rate limit utilization,
+    aggregate success rates, retry budgets, and health score."""
+    import scripts.api_resilience_dashboard as ard
+    return _json_safe(ard.overview())
+
+
+@app.get("/api/api-resilience/breakdown")
+async def api_resilience_breakdown():
+    """Per-service resilience breakdown — latency percentiles, retry patterns,
+    circuit breaker history, hourly call distribution, recent incidents."""
+    import scripts.api_resilience_dashboard as ard
+    return _json_safe(ard.breakdown())
+
+
+@app.get("/api/api-resilience/definitions")
+async def api_resilience_definitions():
+    """Technical definitions for API resilience patterns — circuit breaker,
+    rate limiting, exponential backoff, bulkhead, retry budget."""
+    import scripts.api_resilience_dashboard as ard
+    return _json_safe(ard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

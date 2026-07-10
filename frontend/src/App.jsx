@@ -278,6 +278,7 @@ import RealtimeEEGQCDashboard from './components/RealtimeEEGQCDashboard'
 import PatientVideoDashboard from './components/PatientVideoDashboard'
 import RAGReportGenDashboard from './components/RAGReportGenDashboard'
 import SubtleSeizureDashboard from './components/SubtleSeizureDashboard'
+import APIResilienceDashboard from './components/APIResilienceDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -644,7 +645,8 @@ function App() {
     { id: 'realtime-eeg-qc', label: 'Real-Time EEG QC' },
     { id: 'patient-video', label: 'Patient Video Analysis' },
     { id: 'rag-report-gen', label: 'RAG Report Generation' },
-    { id: 'subtle-seizure', label: 'Subtle Seizure Detection' }
+    { id: 'subtle-seizure', label: 'Subtle Seizure Detection' },
+    { id: 'api-resilience', label: 'API Resilience' }
   ]
 
   // API Calls
@@ -2237,6 +2239,8 @@ function App() {
         return <RAGReportGenDashboard />
       case 'subtle-seizure':
         return <SubtleSeizureDashboard />
+      case 'api-resilience':
+        return <APIResilienceDashboard />
       default:
         return renderClassificationTab()
     }

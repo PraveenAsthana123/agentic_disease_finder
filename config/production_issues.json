@@ -47,7 +47,7 @@
       {"issue": "State Corruption", "severity": "P1", "root_cause": "lost state", "detection": "state consistency", "solution": "central state store", "detected_in_project": "partial (DB state)"}
     ]},
     {"layer": "Tool Execution", "issues": [
-      {"issue": "API Timeout / Rate Limit", "severity": "P2", "root_cause": "dependency", "detection": "latency/error metric", "solution": "retry + backoff + circuit breaker", "detected_in_project": "planned"}
+      {"issue": "API Timeout / Rate Limit", "severity": "P2", "root_cause": "dependency", "detection": "latency/error metric", "solution": "retry + backoff + circuit breaker", "detected_in_project": "built (API Resilience Dashboard — circuit breaker + rate limit + retry monitoring, 3 endpoints, 5-tab frontend)"}
     ]},
     {"layer": "LLM", "issues": [
       {"issue": "Provider Outage", "severity": "P1", "root_cause": "vendor down", "detection": "health check", "solution": "fallback model (Ollama local)", "detected_in_project": "partial (local Ollama fallback)"},
