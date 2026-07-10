@@ -49,6 +49,7 @@ BUILDABLE = [
 # ai_roi (AI ROI Dashboard — real finops_costs 978 rows + analyses 21 + telehealth 109 + appointments 120, investment vs value, cost breakdown by category/model, patient-level ROI, 3 endpoints verified 200, AIROIDashboard.jsx + nav wired)
 # patient_report (Patient-Facing Report Dashboard — real analyses 21 + assessments 423 + seizure_diary 25 + mri_findings 40 + medication_adherence 12600, plain-language patient reports, 3 endpoints verified 200, PatientReportDashboard.jsx + nav wired)
 # comorbidity_analysis (Comorbidity Analysis Dashboard — real comorbidities 27 rows, psychiatric profiling, risk severity, co-occurrence matrix, screening instruments, demographics cross-tab, 3 endpoints verified 200, ComorbidityAnalysisDashboard.jsx + nav wired)
+# data_completeness (Data Completeness Dashboard — real clinical.db 40 patients × 34 fields across 9 categories, per-patient/per-category completeness matrix, 3 endpoints verified 200, DataCompletenessDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

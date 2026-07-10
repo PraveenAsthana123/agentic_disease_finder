@@ -284,6 +284,7 @@ import MobileAlertsDashboard from './components/MobileAlertsDashboard'
 import ResourceMonitorDashboard from './components/ResourceMonitorDashboard'
 import ConfigDriftDashboard from './components/ConfigDriftDashboard'
 import AlertFatigueDashboard from './components/AlertFatigueDashboard'
+import DataCompletenessDashboard from './components/DataCompletenessDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -656,7 +657,8 @@ function App() {
     { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' },
     { id: 'resource-monitor', label: 'Resource Monitor' },
     { id: 'config-drift', label: 'Config Drift Monitor' },
-    { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' }
+    { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' },
+    { id: 'data-completeness', label: 'Data Completeness' }
   ]
 
   // API Calls
@@ -2261,6 +2263,8 @@ function App() {
         return <ConfigDriftDashboard />
       case 'alert-fatigue':
         return <AlertFatigueDashboard />
+      case 'data-completeness':
+        return <DataCompletenessDashboard />
       default:
         return renderClassificationTab()
     }

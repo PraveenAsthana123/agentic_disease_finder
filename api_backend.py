@@ -10261,6 +10261,31 @@ async def alert_fatigue_definitions():
     return _json_safe(afd.definitions())
 
 
+# ── Data Completeness Dashboard ───────────────────────────────────────
+@app.get("/api/data-completeness/overview")
+async def data_completeness_overview():
+    """Data completeness overview — per-category completeness rates, distribution,
+    top missing fields across all patients."""
+    import scripts.data_completeness_dashboard as dcd
+    return _json_safe(dcd.overview())
+
+
+@app.get("/api/data-completeness/breakdown")
+async def data_completeness_breakdown():
+    """Data completeness breakdown — per-patient field-level completeness,
+    category matrix, rankings."""
+    import scripts.data_completeness_dashboard as dcd
+    return _json_safe(dcd.breakdown())
+
+
+@app.get("/api/data-completeness/definitions")
+async def data_completeness_definitions():
+    """Data completeness definitions — category descriptions, field mappings,
+    quality levels."""
+    import scripts.data_completeness_dashboard as dcd
+    return _json_safe(dcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

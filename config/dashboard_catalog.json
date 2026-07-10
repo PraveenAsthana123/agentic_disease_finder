@@ -298,6 +298,19 @@
         "/api/mobile-alerts/definitions"
       ],
       "frontend": "MobileAlertsDashboard.jsx"
+    },
+    {
+      "id": "data_completeness",
+      "name": "Data Completeness Dashboard",
+      "category": "data_quality",
+      "status": "built",
+      "endpoints": [
+        "/api/data-completeness/overview",
+        "/api/data-completeness/breakdown",
+        "/api/data-completeness/definitions"
+      ],
+      "frontend": "DataCompletenessDashboard.jsx",
+      "description": "Per-patient data field completeness across 9 clinical categories (34 fields), real clinical.db data"
     }
   ]
 }
