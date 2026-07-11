@@ -81,6 +81,7 @@ import AppointmentsDashboard from './components/AppointmentsDashboard'
 import BillingClaimsDashboard from './components/BillingClaimsDashboard'
 import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
+import PHQ9Dashboard from './components/PHQ9Dashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import COPMDashboard from './components/COPMDashboard'
@@ -461,6 +462,7 @@ function App() {
     { id: 'visits', label: 'True Visits' },
     { id: 'finops', label: 'FinOps' },
     { id: 'cssrs', label: 'C-SSRS' },
+    { id: 'phq9', label: 'PHQ-9' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
     { id: 'fim', label: 'FIM' },
     { id: 'copm', label: 'COPM' },
@@ -1871,6 +1873,8 @@ function App() {
         return <FinOpsDashboard />
       case 'cssrs':
         return <CSSRSDashboard />
+      case 'phq9':
+        return <PHQ9Dashboard />
       case 'ica-noise-cleaning':
         return <ICANoiseCleaningDashboard />
       case 'fim':

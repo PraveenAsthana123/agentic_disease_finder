@@ -311,6 +311,18 @@
       ],
       "frontend": "DataCompletenessDashboard.jsx",
       "description": "Per-patient data field completeness across 9 clinical categories (34 fields), real clinical.db data"
+    },
+    {
+      "id": "phq9",
+      "name": "PHQ-9 Depression Screening",
+      "component": "PHQ9Dashboard",
+      "category": "psychiatric",
+      "endpoints": [
+        "/api/phq9-dashboard/overview",
+        "/api/phq9-dashboard/breakdown",
+        "/api/phq9-dashboard/definitions"
+      ],
+      "status": "built"
     }
   ]
 }

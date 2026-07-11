@@ -10361,6 +10361,31 @@ async def caregiver_readiness_definitions():
     return _json_safe(crd.definitions())
 
 
+# ── PHQ-9 Dashboard ────────────────────────────────────────────────────
+@app.get("/api/phq9-dashboard/overview")
+async def phq9_overview():
+    """PHQ-9 overview — total assessments, severity distribution,
+    item 9 flag rate, per-patient latest scores, active alerts."""
+    import scripts.phq9_dashboard as phq
+    return _json_safe(phq.overview())
+
+
+@app.get("/api/phq9-dashboard/breakdown")
+async def phq9_breakdown():
+    """PHQ-9 breakdown — per-item endorsement rates, severity transitions,
+    monthly trend, per-patient assessment history."""
+    import scripts.phq9_dashboard as phq
+    return _json_safe(phq.breakdown())
+
+
+@app.get("/api/phq9-dashboard/definitions")
+async def phq9_definitions():
+    """PHQ-9 definitions — items, severity tiers, clinical notes,
+    epilepsy relevance, treatment response criteria."""
+    import scripts.phq9_dashboard as phq
+    return _json_safe(phq.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
