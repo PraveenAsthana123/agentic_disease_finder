@@ -291,6 +291,7 @@ import DataCompletenessDashboard from './components/DataCompletenessDashboard'
 import TreatmentEfficacyDashboard from './components/TreatmentEfficacyDashboard'
 import StructuredReportingDashboard from './components/StructuredReportingDashboard'
 import ReinforcementLearningDashboard from './components/ReinforcementLearningDashboard'
+import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -670,7 +671,8 @@ function App() {
     { id: 'data-completeness', label: 'Data Completeness' },
     { id: 'treatment-efficacy', label: 'Treatment Efficacy' },
     { id: 'structured-reporting', label: 'Structured Reporting' },
-    { id: 'reinforcement-learning', label: 'Reinforcement Learning' }
+    { id: 'reinforcement-learning', label: 'Reinforcement Learning' },
+    { id: 'icd10-coding', label: 'ICD-10 Coding' }
   ]
 
   // API Calls
@@ -2289,6 +2291,8 @@ function App() {
         return <StructuredReportingDashboard />
       case 'reinforcement-learning':
         return <ReinforcementLearningDashboard />
+      case 'icd10-coding':
+        return <ICD10CodingDashboard />
       default:
         return renderClassificationTab()
     }

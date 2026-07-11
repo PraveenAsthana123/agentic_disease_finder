@@ -10,7 +10,8 @@
         "AI EEG read + confidence",
         "SHAP explainability",
         "confirm/override gate",
-        "per-role dashboard"
+        "per-role dashboard",
+        "ICD-10 coding dashboard"
       ],
       "missing": [
         "real-time video-EEG sync player",
@@ -18,7 +19,6 @@
         "e-signature on reports",
         "on-call mobile alerts",
         "DICOM/MRI side-by-side",
-        "ICD-10 coding",
         "referral workflow"
       ]
     },
@@ -133,7 +133,7 @@
     {
       "name": "Report generation \u2192 EMR push \u2192 referrer notify",
       "status": "partial",
-      "note": "Report generation built (Structured Reporting Dashboard — 4 ILAE templates, field completeness, quality grades, 3 endpoints); EMR push + referrer notify pending (needs EMR/FHIR credentials)"
+      "note": "Report generation built (Structured Reporting Dashboard \u2014 4 ILAE templates, field completeness, quality grades, 3 endpoints); EMR push + referrer notify pending (needs EMR/FHIR credentials)"
     },
     {
       "name": "Multidisciplinary epilepsy board review",

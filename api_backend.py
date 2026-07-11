@@ -10806,6 +10806,31 @@ async def reinforcement_learning_definitions():
     return _json_safe(rld.definitions())
 
 
+# ── ICD-10 Coding Dashboard ──────────────────────────────────────
+# Real data: clinical.db patients × ICD-10 epilepsy/neuro codes —
+# auto-coding accuracy, confirmation workflow, coding analytics.
+
+@app.get("/api/icd10-coding/overview")
+async def icd10_coding_overview():
+    """ICD-10 coding overview — KPIs, code distribution, category breakdown, timeline."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.overview())
+
+
+@app.get("/api/icd10-coding/breakdown")
+async def icd10_coding_breakdown():
+    """ICD-10 coding breakdown — recent codings, accuracy by category, rejections, workload."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.breakdown())
+
+
+@app.get("/api/icd10-coding/definitions")
+async def icd10_coding_definitions():
+    """ICD-10 coding definitions — chapter reference, status glossary, methodology."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
