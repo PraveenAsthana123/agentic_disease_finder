@@ -1,7 +1,8 @@
 {
   "title": "Process Flowcharts (Mermaid)",
-  "note": "Real flowcharts (with branches/decisions) for key processes. Rendered via mermaid.",
-  "updated_at": "2026-06-24",
+  "note": "Real flowcharts (with branches/decisions) for key processes. Rendered via mermaid. Clinical Flowcharts Dashboard — 3 endpoints live (/api/clinical-flowcharts/*), 4-tab frontend UI.",
+  "status": "built",
+  "updated_at": "2026-07-10",
   "flowcharts": [
     {"id": "eeg_read", "title": "Governed EEG Read",
      "mermaid": "flowchart TD\n  A[Upload EEG/video-EEG] --> B[Parse + 47 features]\n  B --> C[Signal quality + bands]\n  C --> D{Quality OK?}\n  D -- No --> E[Flag re-record] --> A\n  D -- Yes --> F[Model predict seizure-risk]\n  F --> G[SHAP explanation]\n  G --> H{Neurologist agrees?}\n  H -- Override --> I[Record override]\n  H -- Confirm --> J[Sign-off]\n  I --> K[Audit + report]\n  J --> K"},

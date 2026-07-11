@@ -241,6 +241,7 @@ import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
 import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 import TelehealthDashboard from './components/TelehealthDashboard'
 import WorkflowDashboard from './components/WorkflowDashboard'
+import ClinicalFlowchartsDashboard from './components/ClinicalFlowchartsDashboard'
 import FunctionalRecoveryDashboard from './components/FunctionalRecoveryDashboard'
 import IncidentManagementDashboard from './components/IncidentManagementDashboard'
 import SegmentationDashboard from './components/SegmentationDashboard'
@@ -619,6 +620,7 @@ function App() {
     { id: 'device-telemetry', label: 'Device Telemetry' },
     { id: 'telehealth', label: 'Telehealth' },
     { id: 'workflow', label: 'Workflow' },
+    { id: 'clinical-flowcharts', label: 'Clinical Flowcharts' },
     { id: 'functional-recovery', label: 'Functional Recovery' },
     { id: 'incident-management', label: 'Incident Management' },
     { id: 'segmentation', label: 'EEG Segmentation' },
@@ -2185,6 +2187,8 @@ function App() {
         return <TelehealthDashboard />
       case 'workflow':
         return <WorkflowDashboard />
+      case 'clinical-flowcharts':
+        return <ClinicalFlowchartsDashboard />
       case 'functional-recovery':
         return <FunctionalRecoveryDashboard />
       case 'incident-management':

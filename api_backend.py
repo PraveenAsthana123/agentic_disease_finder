@@ -10634,6 +10634,156 @@ async def phq9_definitions():
     return _json_safe(phq.definitions())
 
 
+# =============================================================================
+# CLINICAL PROCESS FLOWCHARTS ENDPOINTS
+# =============================================================================
+
+def _load_flowcharts():
+    """Load flowcharts from config/flowcharts.json"""
+    fc_path = Path(__file__).parent / 'config' / 'flowcharts.json'
+    try:
+        with open(fc_path) as f:
+            data = json.load(f)
+        return data.get('flowcharts', [])
+    except Exception:
+        return []
+
+
+def _flowchart_analytics(flowcharts):
+    """Compute analytics from flowchart definitions"""
+    import re
+    analytics = []
+    total_nodes = 0
+    total_decisions = 0
+    total_edges = 0
+    for fc in flowcharts:
+        mermaid = fc.get('mermaid', '')
+        nodes = set()
+        decisions = 0
+        edges = 0
+        for line in mermaid.split('\n'):
+            line = line.strip()
+            for m in re.finditer(r'([A-Z]+)\[', line):
+                nodes.add(m.group(1))
+            for m in re.finditer(r'([A-Z]+)\{', line):
+                nodes.add(m.group(1))
+                decisions += 1
+            edges += line.count('-->')
+            if re.search(r'-- \w', line):
+                edges += 1
+        analytics.append({
+            "id": fc.get('id', ''),
+            "title": fc.get('title', ''),
+            "node_count": len(nodes),
+            "decision_count": decisions,
+            "edge_count": edges,
+            "complexity": "high" if decisions >= 2 else "medium" if decisions == 1 else "linear"
+        })
+        total_nodes += len(nodes)
+        total_decisions += decisions
+        total_edges += edges
+    return {
+        "total_flowcharts": len(flowcharts),
+        "total_nodes": total_nodes,
+        "total_decisions": total_decisions,
+        "total_edges": total_edges,
+        "avg_nodes_per_flow": round(total_nodes / max(len(flowcharts), 1), 1),
+        "complexity_distribution": {
+            "linear": sum(1 for a in analytics if a["complexity"] == "linear"),
+            "medium": sum(1 for a in analytics if a["complexity"] == "medium"),
+            "high": sum(1 for a in analytics if a["complexity"] == "high")
+        },
+        "per_flowchart": analytics
+    }
+
+
+@app.get("/api/clinical-flowcharts/overview")
+async def clinical_flowcharts_overview():
+    """Overview of all clinical process flowcharts"""
+    flowcharts = _load_flowcharts()
+    analytics = _flowchart_analytics(flowcharts)
+    categories = {
+        "eeg_read": "EEG Processing",
+        "council": "AI Governance",
+        "study_review": "Clinical Review",
+        "iot": "IoT / Wearable",
+        "onboarding": "Patient Management",
+        "assessment": "Assessment"
+    }
+    return _json_safe({
+        "total": len(flowcharts),
+        "flowcharts": [
+            {
+                "id": fc.get("id", ""),
+                "title": fc.get("title", ""),
+                "category": categories.get(fc.get("id", ""), "General"),
+                "node_count": next((a["node_count"] for a in analytics["per_flowchart"] if a["id"] == fc.get("id")), 0),
+                "decision_count": next((a["decision_count"] for a in analytics["per_flowchart"] if a["id"] == fc.get("id")), 0),
+                "complexity": next((a["complexity"] for a in analytics["per_flowchart"] if a["id"] == fc.get("id")), "linear")
+            }
+            for fc in flowcharts
+        ],
+        "analytics": analytics
+    })
+
+
+@app.get("/api/clinical-flowcharts/detail/{flowchart_id}")
+async def clinical_flowchart_detail(flowchart_id: str):
+    """Get a specific flowchart with mermaid definition and analysis"""
+    import re
+    flowcharts = _load_flowcharts()
+    fc = next((f for f in flowcharts if f.get("id") == flowchart_id), None)
+    if not fc:
+        raise HTTPException(status_code=404, detail=f"Flowchart not found")
+
+    mermaid = fc.get("mermaid", "")
+    nodes = []
+    for line in mermaid.split('\n'):
+        line = line.strip()
+        for m in re.finditer(r'([A-Z]+)\[([^\]]+)\]', line):
+            nodes.append({"id": m.group(1), "label": m.group(2), "type": "process"})
+        for m in re.finditer(r'([A-Z]+)\{([^}]+)\}', line):
+            nodes.append({"id": m.group(1), "label": m.group(2), "type": "decision"})
+
+    return _json_safe({
+        "id": fc.get("id", ""),
+        "title": fc.get("title", ""),
+        "mermaid": mermaid,
+        "nodes": nodes,
+        "node_count": len(nodes),
+        "decision_count": sum(1 for n in nodes if n["type"] == "decision")
+    })
+
+
+@app.get("/api/clinical-flowcharts/analytics")
+async def clinical_flowcharts_analytics():
+    """Analytics across all clinical process flowcharts"""
+    flowcharts = _load_flowcharts()
+    analytics = _flowchart_analytics(flowcharts)
+    cat_map = {
+        "eeg_read": "EEG Processing",
+        "council": "AI Governance",
+        "study_review": "Clinical Review",
+        "iot": "IoT / Wearable",
+        "onboarding": "Patient Management",
+        "assessment": "Assessment"
+    }
+    categories = {}
+    for fc in flowcharts:
+        cat = cat_map.get(fc.get("id", ""), "General")
+        categories[cat] = categories.get(cat, 0) + 1
+
+    return _json_safe({
+        **analytics,
+        "category_distribution": [{"category": k, "count": v} for k, v in categories.items()],
+        "process_types": [
+            {"type": "Automated", "count": sum(1 for fc in flowcharts if fc.get("id") in ("eeg_read", "council", "iot"))},
+            {"type": "Human-in-loop", "count": sum(1 for fc in flowcharts if fc.get("id") in ("study_review", "assessment"))},
+            {"type": "Hybrid", "count": sum(1 for fc in flowcharts if fc.get("id") in ("onboarding",))}
+        ]
+    })
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
