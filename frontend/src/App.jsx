@@ -195,6 +195,7 @@ import AIFederationDashboard from './components/AIFederationDashboard'
 import ISSopDashboard from './components/ISSopDashboard'
 import TriggerTrackingDashboard from './components/TriggerTrackingDashboard'
 import EmergencyCaregiverDashboard from './components/EmergencyCaregiverDashboard'
+import CaregiverReadinessDashboard from './components/CaregiverReadinessDashboard'
 import MedicationManagementDashboard from './components/MedicationManagementDashboard'
 import PROOutcomesDashboard from './components/PROOutcomesDashboard'
 import DemographicsDashboard from './components/DemographicsDashboard'
@@ -566,6 +567,7 @@ function App() {
     { id: 'is-sop', label: 'IS SOP' },
     { id: 'trigger-tracking', label: 'Trigger Tracking' },
     { id: 'emergency-caregiver', label: 'Emergency / Caregiver' },
+    { id: 'caregiver-readiness', label: 'Caregiver Readiness' },
     { id: 'medication-management', label: 'Medication Management' },
     { id: 'pro-outcomes', label: 'PRO Outcomes' },
     { id: 'demographics', label: 'Demographics' },
@@ -2129,6 +2131,8 @@ function App() {
         return <TriggerTrackingDashboard />
       case 'emergency-caregiver':
         return <EmergencyCaregiverDashboard />
+      case 'caregiver-readiness':
+        return <CaregiverReadinessDashboard />
       case 'medication-management':
         return <MedicationManagementDashboard />
       case 'pro-outcomes':

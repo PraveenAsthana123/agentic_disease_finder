@@ -1,7 +1,7 @@
 {
-  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
-  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-07-09",
+  "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
+  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+  "updated_at": "2026-07-10",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -375,6 +375,20 @@
         "/api/neurolab-readiness/definitions"
       ],
       "component": "NeuroLabReadinessDashboard.jsx"
+    },
+    {
+      "role": "Caregiver / Family",
+      "name": "Caregiver Readiness",
+      "viz": "Training, burnout, safety plan analytics",
+      "feature": "Readiness matrix, burnout alerts, training gaps",
+      "why": "Ensure caregiver preparedness for seizure safety between visits",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/caregiver-readiness/overview",
+        "/api/caregiver-readiness/breakdown",
+        "/api/caregiver-readiness/definitions"
+      ]
     }
   ],
   "summary": {

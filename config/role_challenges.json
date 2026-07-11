@@ -59,7 +59,7 @@
           "ai": "Real-time QC catches problems before the session ends",
           "status": "built",
           "dashboard": "RealtimeEEGQCDashboard",
-          "solution": "Real-Time EEG QC Dashboard — per-recording quality verdicts (Pass/Needs Attention/Re-record) based on impedance (>10 kΩ warn, >20 kΩ fail), SNR (<15 dB warn, <8 dB fail), and artifact burden (>20% warn, >40% fail). Per-channel analysis, artifact type/severity breakdown, impedance distribution, and alert system for recordings needing attention."
+          "solution": "Real-Time EEG QC Dashboard \u2014 per-recording quality verdicts (Pass/Needs Attention/Re-record) based on impedance (>10 k\u03a9 warn, >20 k\u03a9 fail), SNR (<15 dB warn, <8 dB fail), and artifact burden (>20% warn, >40% fail). Per-channel analysis, artifact type/severity breakdown, impedance distribution, and alert system for recordings needing attention."
         }
       ]
     },
@@ -142,7 +142,7 @@
         },
         {
           "challenge": "Structured reporting overhead",
-          "ai": "Structured Reporting Dashboard — 4 ILAE-aligned templates (EEG/MRI/Neuropsych/Comprehensive), field completeness heatmaps, quality grades, cross-modality concordance, AI-assisted finding capture (3 endpoints verified 200, StructuredReportingDashboard.jsx + nav wired)",
+          "ai": "Structured Reporting Dashboard \u2014 4 ILAE-aligned templates (EEG/MRI/Neuropsych/Comprehensive), field completeness heatmaps, quality grades, cross-modality concordance, AI-assisted finding capture (3 endpoints verified 200, StructuredReportingDashboard.jsx + nav wired)",
           "status": "built"
         }
       ]
@@ -222,7 +222,8 @@
         {
           "challenge": "Seizure safety between visits",
           "ai": "Continuous monitoring + SOS alert (simulated)",
-          "status": "partial"
+          "status": "built",
+          "note": "Caregiver Readiness Dashboard \u2014 training, burnout, safety plan analytics"
         }
       ]
     }

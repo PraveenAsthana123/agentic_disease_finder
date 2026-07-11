@@ -10336,6 +10336,31 @@ async def structured_reporting_definitions():
     return _json_safe(srd.definitions())
 
 
+# ── Caregiver Readiness Dashboard ──────────────────────────────────────
+@app.get("/api/caregiver-readiness/overview")
+async def caregiver_readiness_overview():
+    """Caregiver readiness overview — training completion, burnout scores,
+    safety plan coverage, readiness distribution, role breakdown."""
+    import scripts.caregiver_readiness_dashboard as crd
+    return _json_safe(crd.overview())
+
+
+@app.get("/api/caregiver-readiness/breakdown")
+async def caregiver_readiness_breakdown():
+    """Caregiver readiness breakdown — per-caregiver profiles, readiness matrix,
+    burnout risk alerts, training gap analysis."""
+    import scripts.caregiver_readiness_dashboard as crd
+    return _json_safe(crd.breakdown())
+
+
+@app.get("/api/caregiver-readiness/definitions")
+async def caregiver_readiness_definitions():
+    """Caregiver readiness definitions — clinical terms, quality metrics,
+    compliance references, remediation strategies."""
+    import scripts.caregiver_readiness_dashboard as crd
+    return _json_safe(crd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
