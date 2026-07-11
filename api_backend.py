@@ -10784,6 +10784,28 @@ async def clinical_flowcharts_analytics():
     })
 
 
+# ── Reinforcement Learning Dashboard ──────────────────────────────────────
+@app.get("/api/reinforcement-learning/overview")
+async def reinforcement_learning_overview():
+    """RL environment summary — state/action space, reward distribution, policy KPIs."""
+    import scripts.reinforcement_learning_dashboard as rld
+    return _json_safe(rld.overview())
+
+
+@app.get("/api/reinforcement-learning/breakdown")
+async def reinforcement_learning_breakdown():
+    """RL breakdown — per-patient trajectories, exploration vs exploitation, risk transitions."""
+    import scripts.reinforcement_learning_dashboard as rld
+    return _json_safe(rld.breakdown())
+
+
+@app.get("/api/reinforcement-learning/definitions")
+async def reinforcement_learning_definitions():
+    """RL definitions — methodology, safety constraints, clinical references."""
+    import scripts.reinforcement_learning_dashboard as rld
+    return _json_safe(rld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

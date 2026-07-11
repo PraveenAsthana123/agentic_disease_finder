@@ -290,6 +290,7 @@ import AlertFatigueDashboard from './components/AlertFatigueDashboard'
 import DataCompletenessDashboard from './components/DataCompletenessDashboard'
 import TreatmentEfficacyDashboard from './components/TreatmentEfficacyDashboard'
 import StructuredReportingDashboard from './components/StructuredReportingDashboard'
+import ReinforcementLearningDashboard from './components/ReinforcementLearningDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -668,7 +669,8 @@ function App() {
     { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' },
     { id: 'data-completeness', label: 'Data Completeness' },
     { id: 'treatment-efficacy', label: 'Treatment Efficacy' },
-    { id: 'structured-reporting', label: 'Structured Reporting' }
+    { id: 'structured-reporting', label: 'Structured Reporting' },
+    { id: 'reinforcement-learning', label: 'Reinforcement Learning' }
   ]
 
   // API Calls
@@ -2285,6 +2287,8 @@ function App() {
         return <TreatmentEfficacyDashboard />
       case 'structured-reporting':
         return <StructuredReportingDashboard />
+      case 'reinforcement-learning':
+        return <ReinforcementLearningDashboard />
       default:
         return renderClassificationTab()
     }

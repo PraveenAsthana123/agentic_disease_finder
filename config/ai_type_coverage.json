@@ -4,10 +4,10 @@
   "project": "agenticfinder (epilepsy EEG)",
   "total": 201,
   "counts": {
-    "not-pulled": 157,
-    "built": 44,
+    "not-pulled": 155,
+    "built": 46,
     "scaffold": 0,
-    "planned": 2
+    "planned": 0
   },
   "rows": [
     {
@@ -777,8 +777,8 @@
     },
     {
       "type": "reinforcement-learning",
-      "status": "not-pulled",
-      "note": "in insur_project; not applicable / not imported"
+      "status": "built",
+      "note": "Reinforcement Learning Dashboard — treatment optimization RL environment, 32 patients, 12600 adherence records, reward distribution, exploration vs exploitation, 3 endpoints verified 200"
     },
     {
       "type": "responsible-ai",
@@ -957,8 +957,8 @@
     },
     {
       "type": "transfer-learning",
-      "status": "not-pulled",
-      "note": "in insur_project; not applicable / not imported"
+      "status": "built",
+      "note": "Transfer Learning Dashboard — cross-patient domain adaptation, feature transferability, layer freeze analysis; 3 endpoints verified 200"
     },
     {
       "type": "translation-ai",
