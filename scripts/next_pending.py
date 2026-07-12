@@ -52,6 +52,7 @@ BUILDABLE = [
 # data_completeness (Data Completeness Dashboard — real clinical.db 40 patients × 34 fields across 9 categories, per-patient/per-category completeness matrix, 3 endpoints verified 200, DataCompletenessDashboard.jsx + nav wired)
 # treatment_efficacy (Treatment Efficacy Dashboard — real medication_adherence 12600 + seizure_diary 25 + pro_outcomes 180, adherence-vs-seizure correlation, per-drug analysis, treatment response categories, 3 endpoints verified 200, TreatmentEfficacyDashboard.jsx + nav wired)
 # structured_reporting (Structured Reporting Dashboard — 4 ILAE-aligned templates (EEG/MRI/Neuropsych/Comprehensive), real eeg_acquisition 30 + mri_findings 40 + neuropsych 37, field completeness heatmaps, quality grades, cross-modality concordance 27 patients with all 3, AI-assisted finding capture, 3 endpoints verified 200, StructuredReportingDashboard.jsx + nav wired)
+# presurgical_evaluation (Pre-Surgical Evaluation Dashboard — real mri_findings 40 + eeg_acquisition 30 + seizure_diary 25 + medications 9, ILAE candidacy scoring, lesion-type distribution, laterality analysis, workup completeness, 3 endpoints verified 200, PreSurgicalEvaluationDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

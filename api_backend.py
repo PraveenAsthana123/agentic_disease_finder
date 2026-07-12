@@ -10854,6 +10854,29 @@ async def ai_incident_definitions():
     return _json_safe(aid.definitions())
 
 
+# ── Pre-Surgical Evaluation Dashboard ─────────────────────────────────
+
+@app.get("/api/presurgical-evaluation/overview")
+async def presurgical_overview():
+    """Pre-surgical evaluation overview: candidacy scores, lesion distribution, laterality."""
+    import scripts.presurgical_evaluation as pse
+    return _json_safe(pse.overview())
+
+
+@app.get("/api/presurgical-evaluation/breakdown")
+async def presurgical_breakdown():
+    """Pre-surgical evaluation breakdown: per-patient candidacy, workup completeness."""
+    import scripts.presurgical_evaluation as pse
+    return _json_safe(pse.breakdown())
+
+
+@app.get("/api/presurgical-evaluation/definitions")
+async def presurgical_definitions():
+    """Pre-surgical evaluation metric definitions and clinical context."""
+    import scripts.presurgical_evaluation as pse
+    return _json_safe(pse.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

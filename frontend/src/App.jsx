@@ -293,6 +293,7 @@ import StructuredReportingDashboard from './components/StructuredReportingDashbo
 import ReinforcementLearningDashboard from './components/ReinforcementLearningDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import AIIncidentDashboard from './components/AIIncidentDashboard'
+import PreSurgicalEvaluationDashboard from './components/PreSurgicalEvaluationDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -674,7 +675,8 @@ function App() {
     { id: 'structured-reporting', label: 'Structured Reporting' },
     { id: 'reinforcement-learning', label: 'Reinforcement Learning' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
-    { id: 'ai-incident', label: 'AI Incidents' }
+    { id: 'ai-incident', label: 'AI Incidents' },
+    { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' }
   ]
 
   // API Calls
@@ -2297,6 +2299,8 @@ function App() {
         return <ICD10CodingDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
+      case 'presurgical-evaluation':
+        return <PreSurgicalEvaluationDashboard />
       default:
         return renderClassificationTab()
     }
