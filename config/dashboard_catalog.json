@@ -52,6 +52,11 @@
           "name": "AI ROI Dashboard",
           "status": "built",
           "maps_to": "/api/ai-roi/overview + /api/ai-roi/breakdown + /api/ai-roi/definitions"
+        },
+        {
+          "name": "AI Incident Management Dashboard",
+          "status": "built",
+          "maps_to": "/api/ai-incident/overview + /api/ai-incident/breakdown + /api/ai-incident/definitions"
         }
       ]
     },

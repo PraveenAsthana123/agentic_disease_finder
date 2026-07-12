@@ -10831,6 +10831,29 @@ async def icd10_coding_definitions():
     return _json_safe(icd.definitions())
 
 
+# ── AI Incident Management — incident tracking, severity, MTTR, root cause ──
+
+@app.get("/api/ai-incident/overview")
+async def ai_incident_overview():
+    """AI Incident Management overview — KPIs, severity/category distribution, timeline."""
+    import scripts.ai_incident_dashboard as aid
+    return _json_safe(aid.overview())
+
+
+@app.get("/api/ai-incident/breakdown")
+async def ai_incident_breakdown():
+    """AI Incident Management breakdown — incident log, root cause, patient impact."""
+    import scripts.ai_incident_dashboard as aid
+    return _json_safe(aid.breakdown())
+
+
+@app.get("/api/ai-incident/definitions")
+async def ai_incident_definitions():
+    """AI Incident Management definitions — severity levels, categories, standards."""
+    import scripts.ai_incident_dashboard as aid
+    return _json_safe(aid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
