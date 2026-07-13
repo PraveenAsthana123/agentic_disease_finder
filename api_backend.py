@@ -10898,6 +10898,27 @@ async def medication_refills_definitions():
     return _json_safe(mrd.definitions())
 
 
+@app.get("/api/secure-messaging/overview")
+async def secure_messaging_overview():
+    """Secure messaging overview — volume, direction, categories, response times."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.overview())
+
+
+@app.get("/api/secure-messaging/breakdown")
+async def secure_messaging_breakdown():
+    """Secure messaging breakdown — per-patient, recent, unread queue."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.breakdown())
+
+
+@app.get("/api/secure-messaging/definitions")
+async def secure_messaging_definitions():
+    """Secure messaging metric definitions and category reference."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

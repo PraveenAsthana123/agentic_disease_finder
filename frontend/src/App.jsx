@@ -295,6 +295,7 @@ import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import AIIncidentDashboard from './components/AIIncidentDashboard'
 import PreSurgicalEvaluationDashboard from './components/PreSurgicalEvaluationDashboard'
 import MedicationRefillDashboard from './components/MedicationRefillDashboard'
+import SecureMessagingDashboard from './components/SecureMessagingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -678,7 +679,8 @@ function App() {
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
-    { id: 'medication-refills', label: 'Medication Refills' }
+    { id: 'medication-refills', label: 'Medication Refills' },
+    { id: 'secure-messaging', label: 'Secure Messaging' }
   ]
 
   // API Calls
@@ -2305,6 +2307,8 @@ function App() {
         return <PreSurgicalEvaluationDashboard />
       case 'medication-refills':
         return <MedicationRefillDashboard />
+      case 'secure-messaging':
+        return <SecureMessagingDashboard />
       default:
         return renderClassificationTab()
     }
