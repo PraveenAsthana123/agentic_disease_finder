@@ -303,6 +303,7 @@ import CrossPatientBenchmarkDashboard from './components/CrossPatientBenchmarkDa
 import ClinicalPharmacistDashboard from './components/ClinicalPharmacistDashboard'
 import DecisionAiDashboard from './components/DecisionAiDashboard'
 import PatientsSeenDashboard from './components/PatientsSeenDashboard'
+import DataOpsDashboard from './components/DataOpsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -694,7 +695,8 @@ function App() {
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
     { id: 'clinical-pharmacist', label: 'Clinical Pharmacist' },
     { id: 'decision-ai', label: 'Decision AI' },
-    { id: 'patients-seen', label: 'Patients Seen' }
+    { id: 'patients-seen', label: 'Patients Seen' },
+    { id: 'data-ops', label: 'Data Operations' }
   ]
 
   // API Calls
@@ -2337,6 +2339,8 @@ function App() {
         return <DecisionAiDashboard />
       case 'patients-seen':
         return <PatientsSeenDashboard />
+      case 'data-ops':
+        return <DataOpsDashboard />
       default:
         return renderClassificationTab()
     }
