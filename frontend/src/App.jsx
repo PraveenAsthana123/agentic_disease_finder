@@ -300,6 +300,7 @@ import PatientDocumentsDashboard from './components/PatientDocumentsDashboard'
 import ConsentDashboard from './components/ConsentDashboard'
 import BmadDashboard from './components/BmadDashboard'
 import CrossPatientBenchmarkDashboard from './components/CrossPatientBenchmarkDashboard'
+import ClinicalPharmacistDashboard from './components/ClinicalPharmacistDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -688,7 +689,8 @@ function App() {
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'patient-documents', label: 'Patient Documents' },
     { id: 'bmad', label: 'BMAD Spec-Driven Agents' },
-    { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' }
+    { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
+    { id: 'clinical-pharmacist', label: 'Clinical Pharmacist' }
   ]
 
   // API Calls
@@ -2325,6 +2327,8 @@ function App() {
         return <BmadDashboard />
       case 'cross-patient-benchmark':
         return <CrossPatientBenchmarkDashboard />
+      case 'clinical-pharmacist':
+        return <ClinicalPharmacistDashboard />
       default:
         return renderClassificationTab()
     }
