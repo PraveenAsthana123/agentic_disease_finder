@@ -10877,6 +10877,27 @@ async def presurgical_definitions():
     return _json_safe(pse.definitions())
 
 
+@app.get("/api/medication-refills/overview")
+async def medication_refills_overview():
+    """Medication refill overview — total refills, drug/pharmacy distribution, trends."""
+    import scripts.medication_refill_dashboard as mrd
+    return _json_safe(mrd.overview())
+
+
+@app.get("/api/medication-refills/breakdown")
+async def medication_refills_breakdown():
+    """Medication refill breakdown — per-patient, drug details, gap analysis."""
+    import scripts.medication_refill_dashboard as mrd
+    return _json_safe(mrd.breakdown())
+
+
+@app.get("/api/medication-refills/definitions")
+async def medication_refills_definitions():
+    """Medication refill metric definitions and drug class reference."""
+    import scripts.medication_refill_dashboard as mrd
+    return _json_safe(mrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

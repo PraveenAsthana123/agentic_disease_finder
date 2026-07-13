@@ -328,6 +328,11 @@
         "/api/phq9-dashboard/definitions"
       ],
       "status": "built"
+    },
+    {
+      "name": "Medication Refill Tracking Dashboard",
+      "status": "built",
+      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx — AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
     }
   ]
 }
