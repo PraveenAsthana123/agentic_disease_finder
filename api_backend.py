@@ -10944,6 +10944,32 @@ async def patient_documents_definitions():
     return _json_safe(pdd.definitions())
 
 
+# ── BMAD — Spec-Driven Agent Development Dashboard ──────────────
+# Real data: config/agent_tasks.json (60 agents) + clinical.db
+# (clinical_decisions, transaction_log). Spec coverage, category
+# distribution, dependency tracking, implementation completeness.
+
+@app.get("/api/bmad/overview")
+async def bmad_overview():
+    """BMAD overview — spec coverage, status/category distribution, dependency summary."""
+    import scripts.bmad_dashboard as bmd
+    return _json_safe(bmd.overview())
+
+
+@app.get("/api/bmad/breakdown")
+async def bmad_breakdown():
+    """BMAD breakdown — per-category agents, built/planned detail, module coverage, dependency map."""
+    import scripts.bmad_dashboard as bmd
+    return _json_safe(bmd.breakdown())
+
+
+@app.get("/api/bmad/definitions")
+async def bmad_definitions():
+    """BMAD definitions — methodology, status defs, spec fields, categories, compliance."""
+    import scripts.bmad_dashboard as bmd
+    return _json_safe(bmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

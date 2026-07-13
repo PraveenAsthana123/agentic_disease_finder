@@ -342,8 +342,9 @@
     {
       "id": "bmad",
       "task": "BMAD spec-driven agent method",
-      "module": "(planned, in global ai-agents catalog)",
-      "status": "planned"
+      "module": "scripts/bmad_dashboard.py + /api/bmad/{overview,breakdown,definitions} + BmadDashboard.jsx",
+      "status": "built",
+      "note": "BMAD Spec-Driven Agent Development dashboard — spec coverage analytics, status/category distribution, implementation completeness, dependency tracking, module coverage; 60 agents, 51 built (85% coverage), 6 categories; real data from config/agent_tasks.json + clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "paperclip",
