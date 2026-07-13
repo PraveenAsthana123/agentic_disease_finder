@@ -299,6 +299,7 @@ import SecureMessagingDashboard from './components/SecureMessagingDashboard'
 import PatientDocumentsDashboard from './components/PatientDocumentsDashboard'
 import ConsentDashboard from './components/ConsentDashboard'
 import BmadDashboard from './components/BmadDashboard'
+import CrossPatientBenchmarkDashboard from './components/CrossPatientBenchmarkDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -686,7 +687,8 @@ function App() {
     { id: 'secure-messaging', label: 'Secure Messaging' },
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'patient-documents', label: 'Patient Documents' },
-    { id: 'bmad', label: 'BMAD Spec-Driven Agents' }
+    { id: 'bmad', label: 'BMAD Spec-Driven Agents' },
+    { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' }
   ]
 
   // API Calls
@@ -2321,6 +2323,8 @@ function App() {
         return <PatientDocumentsDashboard />
       case 'bmad':
         return <BmadDashboard />
+      case 'cross-patient-benchmark':
+        return <CrossPatientBenchmarkDashboard />
       default:
         return renderClassificationTab()
     }
