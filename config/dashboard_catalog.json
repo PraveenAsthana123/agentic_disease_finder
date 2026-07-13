@@ -332,7 +332,19 @@
     {
       "name": "Medication Refill Tracking Dashboard",
       "status": "built",
-      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx — AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
+      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx \u2014 AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
+    },
+    {
+      "id": "patient-documents",
+      "label": "Patient Document Management",
+      "component": "PatientDocumentsDashboard",
+      "endpoints": [
+        "/api/patient-documents/overview",
+        "/api/patient-documents/breakdown",
+        "/api/patient-documents/definitions"
+      ],
+      "data_source": "patient_documents (193 rows, 30 patients, 10 types, 3 categories)",
+      "status": "built"
     }
   ]
 }

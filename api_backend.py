@@ -10919,6 +10919,31 @@ async def secure_messaging_definitions():
     return _json_safe(smd.definitions())
 
 
+# ── Patient Document Management Dashboard ──────────────────────
+# Real data: patient_documents table — 193 docs, 30 patients,
+# 10 document types, 3 categories, sharing/download analytics.
+
+@app.get("/api/patient-documents/overview")
+async def patient_documents_overview(patient_id: str = None):
+    """Document management overview — KPIs, type/category distribution, upload trends, sharing status."""
+    import scripts.patient_documents_dashboard as pdd
+    return _json_safe(pdd.overview(patient_id))
+
+
+@app.get("/api/patient-documents/breakdown")
+async def patient_documents_breakdown(patient_id: str = None):
+    """Per-patient document inventory, recent uploads, type-category matrix, size analysis."""
+    import scripts.patient_documents_dashboard as pdd
+    return _json_safe(pdd.breakdown(patient_id))
+
+
+@app.get("/api/patient-documents/definitions")
+async def patient_documents_definitions():
+    """Document type definitions, categories, sharing workflow, glossary."""
+    import scripts.patient_documents_dashboard as pdd
+    return _json_safe(pdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
