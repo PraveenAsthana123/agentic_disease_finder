@@ -296,6 +296,7 @@ import AIIncidentDashboard from './components/AIIncidentDashboard'
 import PreSurgicalEvaluationDashboard from './components/PreSurgicalEvaluationDashboard'
 import MedicationRefillDashboard from './components/MedicationRefillDashboard'
 import SecureMessagingDashboard from './components/SecureMessagingDashboard'
+import ConsentDashboard from './components/ConsentDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -680,7 +681,8 @@ function App() {
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
     { id: 'medication-refills', label: 'Medication Refills' },
-    { id: 'secure-messaging', label: 'Secure Messaging' }
+    { id: 'secure-messaging', label: 'Secure Messaging' },
+    { id: 'consent-management', label: 'Consent Management' }
   ]
 
   // API Calls
@@ -2309,6 +2311,8 @@ function App() {
         return <MedicationRefillDashboard />
       case 'secure-messaging':
         return <SecureMessagingDashboard />
+      case 'consent-management':
+        return <ConsentDashboard />
       default:
         return renderClassificationTab()
     }
