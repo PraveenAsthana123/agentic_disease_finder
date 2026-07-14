@@ -307,6 +307,7 @@ import DataOpsDashboard from './components/DataOpsDashboard'
 import PopulationHealthDashboard from './components/PopulationHealthDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import SurgicalOutcomeDashboard from './components/SurgicalOutcomeDashboard'
+import DatasetRequirementsDashboard from './components/DatasetRequirementsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -702,7 +703,8 @@ function App() {
     { id: 'data-ops', label: 'Data Operations' },
     { id: 'population-health', label: 'Population Health' },
     { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
-    { id: 'surgical-outcomes', label: 'Surgical Outcomes' }
+    { id: 'surgical-outcomes', label: 'Surgical Outcomes' },
+    { id: 'dataset-requirements', label: 'Dataset Requirements' }
   ]
 
   // API Calls
@@ -2353,6 +2355,8 @@ function App() {
         return <PharmacogenomicsDashboard />
       case 'surgical-outcomes':
         return <SurgicalOutcomeDashboard />
+      case 'dataset-requirements':
+        return <DatasetRequirementsDashboard />
       default:
         return renderClassificationTab()
     }

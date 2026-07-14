@@ -11045,6 +11045,31 @@ async def surgical_outcomes_definitions():
     return _json_safe(sod.definitions())
 
 
+# ── Dataset Requirements Tracker ──────────────────────────────────────
+# Completeness tracking for epilepsy AI dataset requirements — present/partial/missing
+# by category, tier compliance, control group needs. Reads config/data_requirements.json.
+
+@app.get("/api/dataset-requirements/overview")
+async def dataset_requirements_overview():
+    """Dataset requirements overview — completeness by category, tier compliance, gaps."""
+    import scripts.dataset_requirements_dashboard as drd
+    return _json_safe(drd.overview())
+
+
+@app.get("/api/dataset-requirements/breakdown")
+async def dataset_requirements_breakdown():
+    """Dataset requirements breakdown — per-category items, control groups, artifact template."""
+    import scripts.dataset_requirements_dashboard as drd
+    return _json_safe(drd.breakdown())
+
+
+@app.get("/api/dataset-requirements/definitions")
+async def dataset_requirements_definitions():
+    """Dataset requirements definitions — status meanings, tier descriptions, formula."""
+    import scripts.dataset_requirements_dashboard as drd
+    return _json_safe(drd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -113,6 +113,11 @@
         {
           "name": "Inference / GPU Dashboard",
           "status": "built"
+        },
+        {
+          "name": "Dataset Requirements Tracker",
+          "status": "built",
+          "maps_to": "/api/dataset-requirements/overview + /api/dataset-requirements/breakdown + /api/dataset-requirements/definitions"
         }
       ]
     },
