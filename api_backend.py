@@ -11070,6 +11070,31 @@ async def dataset_requirements_definitions():
     return _json_safe(drd.definitions())
 
 
+# ── Recording Conditions Dashboard ──────────────────────────────────
+@app.get("/api/recording-conditions/overview")
+async def recording_conditions_overview():
+    """Recording Conditions overview — activation procedure rates, patient state
+    distribution, cooperation levels, protocol completeness."""
+    import scripts.recording_conditions_dashboard as rcd
+    return _json_safe(rcd.overview())
+
+
+@app.get("/api/recording-conditions/breakdown")
+async def recording_conditions_breakdown():
+    """Recording Conditions breakdown — per-patient activation procedures,
+    patient state, cooperation, protocol completeness."""
+    import scripts.recording_conditions_dashboard as rcd
+    return _json_safe(rcd.breakdown())
+
+
+@app.get("/api/recording-conditions/definitions")
+async def recording_conditions_definitions():
+    """Recording Conditions definitions — eyes open/closed, hyperventilation,
+    photic stimulation, sleep recording, ACNS/ILAE standards."""
+    import scripts.recording_conditions_dashboard as rcd
+    return _json_safe(rcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
