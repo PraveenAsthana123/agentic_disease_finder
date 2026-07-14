@@ -306,6 +306,7 @@ import PatientsSeenDashboard from './components/PatientsSeenDashboard'
 import DataOpsDashboard from './components/DataOpsDashboard'
 import PopulationHealthDashboard from './components/PopulationHealthDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
+import SurgicalOutcomeDashboard from './components/SurgicalOutcomeDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -700,7 +701,8 @@ function App() {
     { id: 'patients-seen', label: 'Patients Seen' },
     { id: 'data-ops', label: 'Data Operations' },
     { id: 'population-health', label: 'Population Health' },
-    { id: 'pharmacogenomics', label: 'Pharmacogenomics' }
+    { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
+    { id: 'surgical-outcomes', label: 'Surgical Outcomes' }
   ]
 
   // API Calls
@@ -2349,6 +2351,8 @@ function App() {
         return <PopulationHealthDashboard />
       case 'pharmacogenomics':
         return <PharmacogenomicsDashboard />
+      case 'surgical-outcomes':
+        return <SurgicalOutcomeDashboard />
       default:
         return renderClassificationTab()
     }

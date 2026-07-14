@@ -11020,6 +11020,31 @@ async def pharmacogenomics_definitions():
     return _json_safe(pgx.definitions())
 
 
+# ── Surgical Outcome Dashboard ─────────────────────────────────────
+@app.get("/api/surgical-outcomes/overview")
+async def surgical_outcomes_overview():
+    """Surgical outcome overview — Engel/ILAE distributions, seizure freedom,
+    complication rates, surgery type breakdown."""
+    import scripts.surgical_outcome_dashboard as sod
+    return _json_safe(sod.overview())
+
+
+@app.get("/api/surgical-outcomes/breakdown")
+async def surgical_outcomes_breakdown():
+    """Surgical outcome breakdown — per-patient detail, pathology outcomes,
+    pre/post seizure frequency, follow-up analysis."""
+    import scripts.surgical_outcome_dashboard as sod
+    return _json_safe(sod.breakdown())
+
+
+@app.get("/api/surgical-outcomes/definitions")
+async def surgical_outcomes_definitions():
+    """Surgical outcome definitions — Engel classification, ILAE scale,
+    surgery types, clinical terminology."""
+    import scripts.surgical_outcome_dashboard as sod
+    return _json_safe(sod.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
