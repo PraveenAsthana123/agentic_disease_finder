@@ -54,6 +54,7 @@ BUILDABLE = [
 # structured_reporting (Structured Reporting Dashboard — 4 ILAE-aligned templates (EEG/MRI/Neuropsych/Comprehensive), real eeg_acquisition 30 + mri_findings 40 + neuropsych 37, field completeness heatmaps, quality grades, cross-modality concordance 27 patients with all 3, AI-assisted finding capture, 3 endpoints verified 200, StructuredReportingDashboard.jsx + nav wired)
 # presurgical_evaluation (Pre-Surgical Evaluation Dashboard — real mri_findings 40 + eeg_acquisition 30 + seizure_diary 25 + medications 9, ILAE candidacy scoring, lesion-type distribution, laterality analysis, workup completeness, 3 endpoints verified 200, PreSurgicalEvaluationDashboard.jsx + nav wired)
 # population_health (Population Health Dashboard — real clinical.db 40 patients + seizure_diary 25 + comorbidities 27 + medications 9, age-sex pyramid, seizure epidemiology, comorbidity prevalence, risk stratification, enrollment trend, 3 endpoints verified 200, PopulationHealthDashboard.jsx + nav wired)
+# pharmacogenomics (Pharmacogenomics Dashboard — real pharmacogenomics 172 rows, 40 patients, 7 genes (HLA-B/A, CYP2C9/2C19, UGT1A4, SCN1A, ABCB1), CPIC/PharmGKB evidence, metabolizer status, HLA screening, drug-gene interactions, 3 endpoints verified 200, PharmacogenomicsDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

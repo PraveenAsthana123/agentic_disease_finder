@@ -10995,6 +10995,31 @@ async def population_health_definitions():
     return _json_safe(phd.definitions())
 
 
+# ── Pharmacogenomics Dashboard ─────────────────────────────────────
+@app.get("/api/pharmacogenomics/overview")
+async def pharmacogenomics_overview():
+    """Pharmacogenomics overview — gene distribution, metabolizer status,
+    HLA screening alerts, drug-gene interactions, evidence levels."""
+    import scripts.pharmacogenomics_dashboard as pgx
+    return _json_safe(pgx.overview())
+
+
+@app.get("/api/pharmacogenomics/breakdown")
+async def pharmacogenomics_breakdown():
+    """Pharmacogenomics breakdown — per-patient PGx profiles, gene-variant matrix,
+    HLA/CYP panels, medication cross-reference, testing trend."""
+    import scripts.pharmacogenomics_dashboard as pgx
+    return _json_safe(pgx.breakdown())
+
+
+@app.get("/api/pharmacogenomics/definitions")
+async def pharmacogenomics_definitions():
+    """Pharmacogenomics definitions — PGx terminology, CPIC guidelines,
+    gene-drug pair explanations, data sources."""
+    import scripts.pharmacogenomics_dashboard as pgx
+    return _json_safe(pgx.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

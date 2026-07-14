@@ -62,6 +62,11 @@
           "name": "Population Health Dashboard",
           "status": "built",
           "maps_to": "/api/population-health/overview + /api/population-health/breakdown + /api/population-health/definitions"
+        },
+        {
+          "name": "Pharmacogenomics Dashboard",
+          "status": "built",
+          "maps_to": "/api/pharmacogenomics/overview + /api/pharmacogenomics/breakdown + /api/pharmacogenomics/definitions"
         }
       ]
     },
