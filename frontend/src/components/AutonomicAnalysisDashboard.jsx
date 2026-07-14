@@ -6,7 +6,7 @@ import {
   LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const RISK_COLORS = { high: '#ef4444', medium: '#f59e0b', low: '#22c55e' }
 const RISK_LABELS = { high: 'High', medium: 'Medium', low: 'Low' }
@@ -75,9 +75,9 @@ export default function AutonomicAnalysisDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/autonomic-analysis/overview`),
-          axios.get(`${API_URL}/autonomic-analysis/breakdown`),
-          axios.get(`${API_URL}/autonomic-analysis/definitions`)
+          axios.get(`${API_URL}/api/autonomic-analysis/overview`),
+          axios.get(`${API_URL}/api/autonomic-analysis/breakdown`),
+          axios.get(`${API_URL}/api/autonomic-analysis/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

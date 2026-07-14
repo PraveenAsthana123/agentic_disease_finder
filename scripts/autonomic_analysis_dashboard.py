@@ -66,17 +66,40 @@ def _median(values):
 
 
 def _real_patients(conn):
+    """Load patient demographics — prefer patient_demographics (EPAT IDs)
+    then fall back to patients table."""
     c = conn.cursor()
-    c.execute("""
-        SELECT patient_id, name, age, gender, disease, department
-        FROM patients WHERE patient_id IS NOT NULL ORDER BY patient_id
-    """)
-    return [
-        {"patient_id": r[0], "name": r[1] or f"Patient {r[0]}",
-         "age": r[2], "gender": r[3], "disease": r[4] or "unspecified",
-         "department": r[5]}
-        for r in c.fetchall()
-    ]
+    result = {}
+    # patient_demographics has EPAT* IDs matching wearable_readings
+    try:
+        c.execute("""
+            SELECT patient_id, full_name, age, sex, epilepsy_type
+            FROM patient_demographics WHERE patient_id IS NOT NULL
+        """)
+        for r in c.fetchall():
+            result[r[0]] = {
+                "patient_id": r[0], "name": r[1] or f"Patient {r[0]}",
+                "age": r[2], "gender": r[3],
+                "disease": r[4] or "Epilepsy", "department": "Neurology",
+            }
+    except Exception:
+        pass
+    # Fallback to patients table for any IDs not yet covered
+    try:
+        c.execute("""
+            SELECT patient_id, name, age, gender, disease, department
+            FROM patients WHERE patient_id IS NOT NULL
+        """)
+        for r in c.fetchall():
+            if r[0] not in result:
+                result[r[0]] = {
+                    "patient_id": r[0], "name": r[1] or f"Patient {r[0]}",
+                    "age": r[2], "gender": r[3],
+                    "disease": r[4] or "unspecified", "department": r[5],
+                }
+    except Exception:
+        pass
+    return list(result.values())
 
 
 def _load_readings(conn):
