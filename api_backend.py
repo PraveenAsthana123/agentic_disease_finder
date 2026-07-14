@@ -10970,6 +10970,31 @@ async def bmad_definitions():
     return _json_safe(bmd.definitions())
 
 
+# ── Population Health Dashboard ─────────────────────────────────────
+@app.get("/api/population-health/overview")
+async def population_health_overview():
+    """Population health overview — demographics, age distribution, seizure burden,
+    comorbidity prevalence, medication coverage, enrollment trend."""
+    import scripts.population_health_dashboard as phd
+    return _json_safe(phd.overview())
+
+
+@app.get("/api/population-health/breakdown")
+async def population_health_breakdown():
+    """Population health breakdown — patient registry, age-sex pyramid,
+    seizure characteristics, risk stratification."""
+    import scripts.population_health_dashboard as phd
+    return _json_safe(phd.breakdown())
+
+
+@app.get("/api/population-health/definitions")
+async def population_health_definitions():
+    """Population health definitions — clinical epidemiology terms,
+    data sources, methodology."""
+    import scripts.population_health_dashboard as phd
+    return _json_safe(phd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

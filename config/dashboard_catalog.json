@@ -1,12 +1,12 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-06-30",
+  "updated_at": "2026-07-13",
   "phases": [
     {
       "phase": 1,
       "name": "Executive AI Governance & Business",
-      "count": 23,
+      "count": 11,
       "dashboards": [
         {
           "name": "Executive AI Dashboard",
@@ -57,6 +57,11 @@
           "name": "AI Incident Management Dashboard",
           "status": "built",
           "maps_to": "/api/ai-incident/overview + /api/ai-incident/breakdown + /api/ai-incident/definitions"
+        },
+        {
+          "name": "Population Health Dashboard",
+          "status": "built",
+          "maps_to": "/api/population-health/overview + /api/population-health/breakdown + /api/population-health/definitions"
         }
       ]
     },

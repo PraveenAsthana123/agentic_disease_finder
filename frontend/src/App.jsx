@@ -304,6 +304,7 @@ import ClinicalPharmacistDashboard from './components/ClinicalPharmacistDashboar
 import DecisionAiDashboard from './components/DecisionAiDashboard'
 import PatientsSeenDashboard from './components/PatientsSeenDashboard'
 import DataOpsDashboard from './components/DataOpsDashboard'
+import PopulationHealthDashboard from './components/PopulationHealthDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -696,7 +697,8 @@ function App() {
     { id: 'clinical-pharmacist', label: 'Clinical Pharmacist' },
     { id: 'decision-ai', label: 'Decision AI' },
     { id: 'patients-seen', label: 'Patients Seen' },
-    { id: 'data-ops', label: 'Data Operations' }
+    { id: 'data-ops', label: 'Data Operations' },
+    { id: 'population-health', label: 'Population Health' }
   ]
 
   // API Calls
@@ -2341,6 +2343,8 @@ function App() {
         return <PatientsSeenDashboard />
       case 'data-ops':
         return <DataOpsDashboard />
+      case 'population-health':
+        return <PopulationHealthDashboard />
       default:
         return renderClassificationTab()
     }
