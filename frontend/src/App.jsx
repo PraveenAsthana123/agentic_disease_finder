@@ -309,6 +309,7 @@ import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import SurgicalOutcomeDashboard from './components/SurgicalOutcomeDashboard'
 import DatasetRequirementsDashboard from './components/DatasetRequirementsDashboard'
 import RecordingConditionsDashboard from './components/RecordingConditionsDashboard'
+import SOPComplianceDashboard from './components/SOPComplianceDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -706,7 +707,8 @@ function App() {
     { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
     { id: 'surgical-outcomes', label: 'Surgical Outcomes' },
     { id: 'dataset-requirements', label: 'Dataset Requirements' },
-    { id: 'recording-conditions', label: 'Recording Conditions' }
+    { id: 'recording-conditions', label: 'Recording Conditions' },
+    { id: 'sop-compliance', label: 'SOP Compliance' }
   ]
 
   // API Calls
@@ -2361,6 +2363,8 @@ function App() {
         return <DatasetRequirementsDashboard />
       case 'recording-conditions':
         return <RecordingConditionsDashboard />
+      case 'sop-compliance':
+        return <SOPComplianceDashboard />
       default:
         return renderClassificationTab()
     }

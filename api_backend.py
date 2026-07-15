@@ -457,6 +457,7 @@ class ClinicalIn(BaseModel):
 _CLINICAL_TABLES = {
     "medications", "mri_findings", "outcomes", "neuropsych", "hitl_reviews", "explainability_gt",
     "eeg_acquisition", "channel_quality", "clinical_history", "recording_conditions",
+    "is_sop_procedures", "is_sop_audits",
     "event_annotations", "artifact_annotations", "eeg_interpretation", "seizure_metadata",
     "comorbidities", "hospitalization", "dba_metrics", "model_governance", "risk_management",
 }
@@ -11093,6 +11094,31 @@ async def recording_conditions_definitions():
     photic stimulation, sleep recording, ACNS/ILAE standards."""
     import scripts.recording_conditions_dashboard as rcd
     return _json_safe(rcd.definitions())
+
+
+# ── SOP Compliance Dashboard ────────────────────────────────────
+@app.get("/api/sop-compliance/overview")
+async def sop_compliance_overview():
+    """SOP Compliance overview — procedure status, category compliance,
+    standards coverage, audit finding distribution, overdue reviews."""
+    import scripts.sop_compliance_dashboard as scd
+    return _json_safe(scd.overview())
+
+
+@app.get("/api/sop-compliance/breakdown")
+async def sop_compliance_breakdown():
+    """SOP Compliance breakdown — per-procedure details, audit findings,
+    SOP-audit mapping with corrective actions."""
+    import scripts.sop_compliance_dashboard as scd
+    return _json_safe(scd.breakdown())
+
+
+@app.get("/api/sop-compliance/definitions")
+async def sop_compliance_definitions():
+    """SOP Compliance definitions — SOP, compliance score, finding types,
+    corrective actions, regulatory standards glossary."""
+    import scripts.sop_compliance_dashboard as scd
+    return _json_safe(scd.definitions())
 
 
 if __name__ == "__main__":
