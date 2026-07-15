@@ -315,6 +315,7 @@ import TransactionAuditDashboard from './components/TransactionAuditDashboard'
 import EmergencySOSDashboard from './components/EmergencySOSDashboard'
 import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
+import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -718,7 +719,8 @@ function App() {
     { id: 'transaction-audit', label: 'Transaction Audit' },
     { id: 'emergency-sos', label: 'Emergency SOS' },
     { id: 'feature-flags', label: 'Feature Flags' },
-    { id: 'paperclip', label: 'Paperclip Orchestration' }
+    { id: 'paperclip', label: 'Paperclip Orchestration' },
+    { id: 'operator-requests', label: 'Operator Requests' }
   ]
 
   // API Calls
@@ -2385,6 +2387,8 @@ function App() {
         return <FeatureFlagsDashboard />
       case 'paperclip':
         return <PaperclipDashboard />
+      case 'operator-requests':
+        return <OperatorRequestsDashboard />
       default:
         return renderClassificationTab()
     }

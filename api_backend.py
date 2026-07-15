@@ -11255,6 +11255,35 @@ async def paperclip_definitions():
     return _json_safe(ppd.definitions())
 
 
+# ── Operator Requests Dashboard ─────────────────────────────────────
+# Request lifecycle analytics: intake tracking, status distribution, category
+# breakdown, source analysis, resolution rates, implementation coverage.
+# Real operator_requests table (310 rows), 6 statuses, 4 categories, 2 sources.
+
+@app.get("/api/operator-requests/overview")
+async def operator_requests_overview():
+    """Operator requests overview — total/open/addressed/logged counts, resolution
+    rate, category/source/status distribution, daily volume, implementation coverage."""
+    import scripts.operator_requests_dashboard as ord
+    return _json_safe(ord.overview())
+
+
+@app.get("/api/operator-requests/breakdown")
+async def operator_requests_breakdown():
+    """Operator requests breakdown — per-category detail, recent requests,
+    unaddressed list, implemented tracking, source×status cross-tab."""
+    import scripts.operator_requests_dashboard as ord
+    return _json_safe(ord.breakdown())
+
+
+@app.get("/api/operator-requests/definitions")
+async def operator_requests_definitions():
+    """Operator requests definitions — statuses, categories, sources,
+    implementation fields, request lifecycle glossary."""
+    import scripts.operator_requests_dashboard as ord
+    return _json_safe(ord.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
