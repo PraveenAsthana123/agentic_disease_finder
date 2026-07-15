@@ -11313,6 +11313,36 @@ async def consent_management_definitions():
     return _json_safe(cmd.definitions())
 
 
+# ── Daily Plans Dashboard ────────────────────────────────────────────
+# Patient daily plan adherence analytics: activity completion rates (medication,
+# meals, exercise, sleep, mood, seizure), completion trends, per-patient engagement,
+# weekly patterns, AI suggestion tracking.
+# Real daily_plans table (900 rows), 30 patients, 30 days, 6 activity types.
+
+@app.get("/api/daily-plans/overview")
+async def daily_plans_overview():
+    """Daily plans overview — totals, activity rates, completion distribution,
+    daily trend, date range."""
+    import scripts.daily_plans_dashboard as dpd
+    return _json_safe(dpd.overview())
+
+
+@app.get("/api/daily-plans/breakdown")
+async def daily_plans_breakdown():
+    """Daily plans breakdown — per-patient engagement, recent plans,
+    low/high adherence lists, weekly pattern, AI suggestions."""
+    import scripts.daily_plans_dashboard as dpd
+    return _json_safe(dpd.breakdown())
+
+
+@app.get("/api/daily-plans/definitions")
+async def daily_plans_definitions():
+    """Daily plans definitions — field definitions, completion tiers,
+    activity types, glossary."""
+    import scripts.daily_plans_dashboard as dpd
+    return _json_safe(dpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

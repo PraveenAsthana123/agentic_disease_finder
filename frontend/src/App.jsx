@@ -317,6 +317,7 @@ import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
+import DailyPlansDashboard from './components/DailyPlansDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -722,7 +723,8 @@ function App() {
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'operator-requests', label: 'Operator Requests' },
-    { id: 'consent-management', label: 'Consent Management' }
+    { id: 'consent-management', label: 'Consent Management' },
+    { id: 'daily-plans', label: 'Daily Plans' }
   ]
 
   // API Calls
@@ -2393,6 +2395,8 @@ function App() {
         return <OperatorRequestsDashboard />
       case 'consent-management':
         return <ConsentManagementDashboard />
+      case 'daily-plans':
+        return <DailyPlansDashboard />
       default:
         return renderClassificationTab()
     }
