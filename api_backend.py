@@ -11121,6 +11121,34 @@ async def sop_compliance_definitions():
     return _json_safe(scd.definitions())
 
 
+# ── System Health Monitoring Dashboard ────────────────────────────────
+# Real data: system_health_log (30 rows, 7 components) — CPU/memory/disk
+# utilization, response times, error counts, healthy/degraded/down status.
+
+@app.get("/api/system-health/overview")
+async def system_health_overview():
+    """System health overview — uptime KPIs, component status matrix,
+    resource utilization distribution, response time trends."""
+    import scripts.system_health_dashboard as shd
+    return _json_safe(shd.overview())
+
+
+@app.get("/api/system-health/breakdown")
+async def system_health_breakdown():
+    """System health breakdown — per-component detail, response time
+    percentiles, error events, incident log."""
+    import scripts.system_health_dashboard as shd
+    return _json_safe(shd.breakdown())
+
+
+@app.get("/api/system-health/definitions")
+async def system_health_definitions():
+    """System health definitions — status levels, resource thresholds,
+    component descriptions, SLA glossary."""
+    import scripts.system_health_dashboard as shd
+    return _json_safe(shd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
