@@ -11177,6 +11177,35 @@ async def transaction_audit_definitions():
     return _json_safe(tad.definitions())
 
 
+# ── Emergency SOS Dashboard ───────────────────────────────────────────
+# Real data: emergency_sos_events (41 rows, 26 patients) + emergency_contacts
+# (30 rows) — emergency alert analytics with response time, outcome, and
+# contact coverage tracking.
+
+@app.get("/api/emergency-sos/overview")
+async def emergency_sos_overview():
+    """Emergency SOS overview — event type distribution, trigger methods,
+    outcomes, response time stats, contact coverage."""
+    import scripts.emergency_sos_dashboard as esd
+    return _json_safe(esd.overview())
+
+
+@app.get("/api/emergency-sos/breakdown")
+async def emergency_sos_breakdown():
+    """Emergency SOS breakdown — per-patient history, response by type,
+    trigger-outcome cross-tab, recent events, stale contacts."""
+    import scripts.emergency_sos_dashboard as esd
+    return _json_safe(esd.breakdown())
+
+
+@app.get("/api/emergency-sos/definitions")
+async def emergency_sos_definitions():
+    """Emergency SOS definitions — clinical glossary, event types,
+    trigger methods, outcomes, preparedness metrics."""
+    import scripts.emergency_sos_dashboard as esd
+    return _json_safe(esd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

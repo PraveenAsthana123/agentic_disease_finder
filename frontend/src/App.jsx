@@ -312,6 +312,7 @@ import RecordingConditionsDashboard from './components/RecordingConditionsDashbo
 import SOPComplianceDashboard from './components/SOPComplianceDashboard'
 import SystemHealthDashboard from './components/SystemHealthDashboard'
 import TransactionAuditDashboard from './components/TransactionAuditDashboard'
+import EmergencySOSDashboard from './components/EmergencySOSDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -712,7 +713,8 @@ function App() {
     { id: 'recording-conditions', label: 'Recording Conditions' },
     { id: 'sop-compliance', label: 'SOP Compliance' },
     { id: 'system-health', label: 'System Health' },
-    { id: 'transaction-audit', label: 'Transaction Audit' }
+    { id: 'transaction-audit', label: 'Transaction Audit' },
+    { id: 'emergency-sos', label: 'Emergency SOS' }
   ]
 
   // API Calls
@@ -2373,6 +2375,8 @@ function App() {
         return <SystemHealthDashboard />
       case 'transaction-audit':
         return <TransactionAuditDashboard />
+      case 'emergency-sos':
+        return <EmergencySOSDashboard />
       default:
         return renderClassificationTab()
     }
