@@ -356,8 +356,9 @@
     {
       "id": "openclaw",
       "task": "OpenClaw execution orchestration OS",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts/openclaw_dashboard.py + /api/openclaw/{overview,breakdown,definitions} + OpenClawDashboard.jsx",
+      "status": "built",
+      "note": "OpenClaw Execution Orchestration dashboard — agent execution analytics with real openclaw_executions 200 rows, 59 agents, 5 statuses (completed/running/failed/queued/cancelled), 3 execution modes (autonomous/supervised/manual), 5 trigger types (cron/api/user/event/chain), token usage tracking, chained execution lineage, per-agent performance stats, daily volume trends, failed execution log, 12-term orchestration glossary; real openclaw_executions table, 3 endpoints verified 200"
     },
     {
       "id": "mcp_server",

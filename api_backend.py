@@ -5253,21 +5253,21 @@ async def workflow_definitions():
 async def integration_dashboard_overview():
     """Multi-format ingest overview — upload volume, format distribution, coverage."""
     import scripts.integration_dashboard as igd
-    return _json_safe(igd.integration_overview())
+    return _json_safe(igd.overview())
 
 
 @app.get("/api/integration-dashboard/breakdown")
 async def integration_dashboard_breakdown():
     """Per-patient, per-format, daily trend drill-down."""
     import scripts.integration_dashboard as igd
-    return _json_safe(igd.integration_breakdown())
+    return _json_safe(igd.breakdown())
 
 
 @app.get("/api/integration-dashboard/definitions")
 async def integration_dashboard_definitions():
     """Integration dashboard metric definitions for tooltip overlays."""
     import scripts.integration_dashboard as igd
-    return _json_safe(igd.integration_definitions())
+    return _json_safe(igd.definitions())
 
 
 # ── Responsible AI Dashboard ─────────────────────────────────────
@@ -9569,14 +9569,14 @@ async def epilepsy_board_definitions():
 async def consent_overview(patient_id: str = None):
     """Consent management overview — KPIs, status distribution, expiring consents."""
     import scripts.consent_dashboard as cd
-    return _json_safe(cd.overview(patient_id))
+    return _json_safe(cd.overview())
 
 
 @app.get("/api/consent-dashboard/breakdown")
 async def consent_breakdown(patient_id: str = None):
     """Per-patient consent breakdown, type stats, compliance matrix."""
     import scripts.consent_dashboard as cd
-    return _json_safe(cd.breakdown(patient_id))
+    return _json_safe(cd.breakdown())
 
 
 @app.get("/api/consent-dashboard/definitions")
@@ -11341,6 +11341,31 @@ async def daily_plans_definitions():
     activity types, glossary."""
     import scripts.daily_plans_dashboard as dpd
     return _json_safe(dpd.definitions())
+
+
+# ── OpenClaw Execution Orchestration Dashboard ───────────────────────
+# Agent execution orchestration: autonomous/supervised/manual runs,
+# token usage, pipeline DAGs, chained executions. Real openclaw_executions table.
+
+@app.get("/api/openclaw/overview")
+async def openclaw_overview():
+    """OpenClaw overview — execution counts, completion rate, agent/status/mode/trigger/priority distribution, daily volume."""
+    import scripts.openclaw_dashboard as ocd
+    return _json_safe(ocd.overview())
+
+
+@app.get("/api/openclaw/breakdown")
+async def openclaw_breakdown():
+    """OpenClaw breakdown — per-agent detail, recent executions, agent workload, chained/failed executions."""
+    import scripts.openclaw_dashboard as ocd
+    return _json_safe(ocd.breakdown())
+
+
+@app.get("/api/openclaw/definitions")
+async def openclaw_definitions():
+    """OpenClaw definitions — statuses, modes, triggers, priorities, orchestration glossary."""
+    import scripts.openclaw_dashboard as ocd
+    return _json_safe(ocd.definitions())
 
 
 if __name__ == "__main__":

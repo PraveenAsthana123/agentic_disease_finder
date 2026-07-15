@@ -319,6 +319,7 @@ import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import DailyPlansDashboard from './components/DailyPlansDashboard'
 import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
+import OpenClawDashboard from './components/OpenClawDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -723,6 +724,7 @@ function App() {
     { id: 'emergency-sos', label: 'Emergency SOS' },
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
+    { id: 'openclaw', label: 'OpenClaw Execution' },
     { id: 'operator-requests', label: 'Operator Requests' },
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'daily-plans', label: 'Daily Plans' },
@@ -2393,6 +2395,8 @@ function App() {
         return <FeatureFlagsDashboard />
       case 'paperclip':
         return <PaperclipDashboard />
+      case 'openclaw':
+        return <OpenClawDashboard />
       case 'operator-requests':
         return <OperatorRequestsDashboard />
       case 'consent-management':
