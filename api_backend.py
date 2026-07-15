@@ -11398,6 +11398,34 @@ async def cognitive_tests_definitions():
     return _json_safe(ctd.definitions())
 
 
+# ── EEG Acquisition Quality Dashboard ─────────────────────────────────
+# Electrode impedance, signal quality, recording parameters for 10-20 system.
+# Real eeg_acquisition (30 rows) + channel_quality (30 rows, 570 channel readings).
+
+@app.get("/api/eeg-acquisition/overview")
+async def eeg_acquisition_overview():
+    """EEG acquisition overview — study counts, recording types, montages,
+    sampling rates, duration stats, channel quality grades, impedance/SNR."""
+    import scripts.eeg_acquisition_dashboard as ead
+    return _json_safe(ead.overview())
+
+
+@app.get("/api/eeg-acquisition/breakdown")
+async def eeg_acquisition_breakdown():
+    """EEG acquisition breakdown — per-patient summary, per-channel stats,
+    poor quality channels, recording type detail, recent studies."""
+    import scripts.eeg_acquisition_dashboard as ead
+    return _json_safe(ead.breakdown())
+
+
+@app.get("/api/eeg-acquisition/definitions")
+async def eeg_acquisition_definitions():
+    """EEG acquisition definitions — clinical glossary, channel regions,
+    quality thresholds, recording protocols."""
+    import scripts.eeg_acquisition_dashboard as ead
+    return _json_safe(ead.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
