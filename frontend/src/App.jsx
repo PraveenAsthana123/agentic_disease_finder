@@ -318,6 +318,7 @@ import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import DailyPlansDashboard from './components/DailyPlansDashboard'
+import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -724,7 +725,8 @@ function App() {
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'operator-requests', label: 'Operator Requests' },
     { id: 'consent-management', label: 'Consent Management' },
-    { id: 'daily-plans', label: 'Daily Plans' }
+    { id: 'daily-plans', label: 'Daily Plans' },
+    { id: 'medication-refills', label: 'Medication Refills' }
   ]
 
   // API Calls
@@ -2397,6 +2399,8 @@ function App() {
         return <ConsentManagementDashboard />
       case 'daily-plans':
         return <DailyPlansDashboard />
+      case 'medication-refills':
+        return <MedicationRefillsDashboard />
       default:
         return renderClassificationTab()
     }
