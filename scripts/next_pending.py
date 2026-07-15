@@ -57,6 +57,7 @@ BUILDABLE = [
 # pharmacogenomics (Pharmacogenomics Dashboard — real pharmacogenomics 172 rows, 40 patients, 7 genes (HLA-B/A, CYP2C9/2C19, UGT1A4, SCN1A, ABCB1), CPIC/PharmGKB evidence, metabolizer status, HLA screening, drug-gene interactions, 3 endpoints verified 200, PharmacogenomicsDashboard.jsx + nav wired)
 # surgical_outcomes (Surgical Outcome Dashboard — real surgical_outcomes 28 rows, 22 patients, Engel I-IV + ILAE 1-6, 8 surgery types, complication tracking, pre/post seizure frequency, AED reduction, pathology analysis, 3 endpoints verified 200, SurgicalOutcomeDashboard.jsx + nav wired)
 # system_health (System Health Monitoring Dashboard — real system_health_log 30 rows, 7 components (API/Cache/Database/Frontend/ML Pipeline/Queue/Storage), uptime KPIs, resource utilization, response time percentiles, incident tracking, 3 endpoints verified 200, SystemHealthDashboard.jsx + nav wired)
+# transaction_audit (Transaction Audit Trail Dashboard — real transaction_log 1360 rows, 27 components, 26 actions, 8 actors, daily volume trends, human vs system breakdown, hourly patterns, 3 endpoints verified 200, TransactionAuditDashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

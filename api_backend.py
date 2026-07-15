@@ -11149,6 +11149,34 @@ async def system_health_definitions():
     return _json_safe(shd.definitions())
 
 
+# ── Transaction Audit Trail Dashboard ─────────────────────────────────
+# Real data: transaction_log (1360 rows, 27 components) — audit trail
+# of all system and human actions across the neuro AI ecosystem.
+
+@app.get("/api/transaction-audit/overview")
+async def transaction_audit_overview():
+    """Transaction audit overview — volume trends, component/action/actor
+    distributions, human vs system breakdown."""
+    import scripts.transaction_audit_dashboard as tad
+    return _json_safe(tad.overview())
+
+
+@app.get("/api/transaction-audit/breakdown")
+async def transaction_audit_breakdown():
+    """Transaction audit breakdown — per-component detail, recent
+    transactions, hourly patterns, patient activity."""
+    import scripts.transaction_audit_dashboard as tad
+    return _json_safe(tad.breakdown())
+
+
+@app.get("/api/transaction-audit/definitions")
+async def transaction_audit_definitions():
+    """Transaction audit definitions — audit trail glossary,
+    component descriptions, action type reference."""
+    import scripts.transaction_audit_dashboard as tad
+    return _json_safe(tad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
