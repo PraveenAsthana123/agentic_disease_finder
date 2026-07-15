@@ -11368,6 +11368,36 @@ async def openclaw_definitions():
     return _json_safe(ocd.definitions())
 
 
+# ── Digital Cognitive Tests Dashboard ──────────────────────────────────
+# Cognitive test results analytics: Stroop, Trail Making A/B, Digit Span,
+# Wisconsin Card Sorting, N-Back, Go/No-Go, CPT, Clock Drawing, RAVLT,
+# Verbal Fluency.  Real cognitive_tests table (501 rows), 25 patients,
+# 11 test types, 9 cognitive domains, 5 administrators.
+
+@app.get("/api/cognitive-tests/overview")
+async def cognitive_tests_overview():
+    """Cognitive tests overview — totals, test/domain distribution, accuracy
+    per test, monthly volume, domain accuracy, administrator distribution."""
+    import scripts.cognitive_tests_dashboard as ctd
+    return _json_safe(ctd.overview())
+
+
+@app.get("/api/cognitive-tests/breakdown")
+async def cognitive_tests_breakdown():
+    """Cognitive tests breakdown — per-patient summary, recent tests,
+    low/high performers, per-test detail, clinical notes."""
+    import scripts.cognitive_tests_dashboard as ctd
+    return _json_safe(ctd.breakdown())
+
+
+@app.get("/api/cognitive-tests/definitions")
+async def cognitive_tests_definitions():
+    """Cognitive tests definitions — test descriptions, domains, scoring,
+    clinical relevance, glossary, AED effects notes."""
+    import scripts.cognitive_tests_dashboard as ctd
+    return _json_safe(ctd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

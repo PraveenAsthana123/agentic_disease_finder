@@ -246,7 +246,8 @@
     },
     {
       "category": "Digital Cognitive Tests (buildable)",
-      "note": "None built yet \u2014 strongest greenfield extension; each is a small timed task with scoring.",
+      "note": "Dashboard built \u2014 cognitive_tests table (501 rows), 3 endpoints, CognitiveTestsDashboard.jsx, 11 test types, 9 domains, 25 patients.",
+      "endpoints": ["/api/cognitive-tests/overview", "/api/cognitive-tests/breakdown", "/api/cognitive-tests/definitions"],
       "tools": [
         {
           "name": "Stroop Test",
@@ -305,21 +306,33 @@
       "tools": [
         {
           "name": "Label Studio",
-          "purpose": "Signal / image / text annotation — annotation quality dashboard with inter-annotator agreement",
+          "purpose": "Signal / image / text annotation \u2014 annotation quality dashboard with inter-annotator agreement",
           "status": "built",
-          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
+          "endpoints": [
+            "/api/annotation/overview",
+            "/api/annotation/agreement",
+            "/api/annotation/definitions"
+          ]
         },
         {
           "name": "CVAT",
-          "purpose": "Video / spectrogram annotation — integrated in annotation quality dashboard",
+          "purpose": "Video / spectrogram annotation \u2014 integrated in annotation quality dashboard",
           "status": "built",
-          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
+          "endpoints": [
+            "/api/annotation/overview",
+            "/api/annotation/agreement",
+            "/api/annotation/definitions"
+          ]
         },
         {
           "name": "Doccano",
-          "purpose": "Text annotation — integrated in annotation quality dashboard",
+          "purpose": "Text annotation \u2014 integrated in annotation quality dashboard",
           "status": "built",
-          "endpoints": ["/api/annotation/overview", "/api/annotation/agreement", "/api/annotation/definitions"]
+          "endpoints": [
+            "/api/annotation/overview",
+            "/api/annotation/agreement",
+            "/api/annotation/definitions"
+          ]
         },
         {
           "name": "Prodigy",
@@ -350,7 +363,9 @@
           "name": "ICLabel (mne-icalabel)",
           "purpose": "ICA artifact classification",
           "status": "built",
-          "endpoints": ["/api/icalabel"]
+          "endpoints": [
+            "/api/icalabel"
+          ]
         }
       ]
     },
@@ -366,17 +381,21 @@
           "name": "Captum",
           "purpose": "Deep-learning attributions",
           "status": "built",
-          "endpoints": ["/api/xai-dashboard/captum"]
+          "endpoints": [
+            "/api/xai-dashboard/captum"
+          ]
         },
         {
           "name": "LIME",
           "purpose": "Local explanations",
           "status": "built",
-          "endpoints": ["/api/xai-dashboard/lime"]
+          "endpoints": [
+            "/api/xai-dashboard/lime"
+          ]
         },
         {
           "name": "Grad-CAM",
-          "purpose": "CNN visualization — Grad-CAM heatmaps on EEG channel×feature grid",
+          "purpose": "CNN visualization \u2014 Grad-CAM heatmaps on EEG channel\u00d7feature grid",
           "status": "built",
           "endpoint": "/api/xai-dashboard/gradcam"
         }
@@ -394,7 +413,11 @@
           "name": "AIF360",
           "purpose": "Bias assessment",
           "status": "built",
-          "endpoints": ["/api/aif360/overview", "/api/aif360/groups", "/api/aif360/definitions"]
+          "endpoints": [
+            "/api/aif360/overview",
+            "/api/aif360/groups",
+            "/api/aif360/definitions"
+          ]
         },
         {
           "name": "Evidently AI",
@@ -405,19 +428,18 @@
           "name": "Great Expectations",
           "purpose": "Data quality",
           "status": "built",
-          "endpoints": ["/api/great-expectations"]
+          "endpoints": [
+            "/api/great-expectations"
+          ]
         }
       ]
     }
   ],
   "summary": {
-    "built": 18,
-    "cataloged": 2,
-    "commercial": 1,
     "external": 12,
     "installed": 7,
-    "partial": 1,
-    "planned": 23,
+    "built": 44,
+    "commercial": 1,
     "total_tools": 64,
     "categories": 10
   }

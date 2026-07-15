@@ -253,6 +253,7 @@ import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
 import ArtifactDetectionDashboard from './components/ArtifactDetectionDashboard'
 import CognitiveDeclineDashboard from './components/CognitiveDeclineDashboard'
+import CognitiveTestsDashboard from './components/CognitiveTestsDashboard'
 import MRIReviewDashboard from './components/MRIReviewDashboard'
 import GoalAttainmentDashboard from './components/GoalAttainmentDashboard'
 import AutonomicAnalysisDashboard from './components/AutonomicAnalysisDashboard'
@@ -662,6 +663,7 @@ function App() {
     { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
     { id: 'artifact-detection', label: 'Artifact Detection' },
     { id: 'cognitive-decline', label: 'Cognitive Decline' },
+    { id: 'cognitive-tests', label: 'Digital Cognitive Tests' },
     { id: 'mri-review', label: 'MRI Review' },
     { id: 'goal-attainment', label: 'Goal Attainment (GAS)' },
     { id: 'autonomic-analysis', label: 'Autonomic Analysis' },
@@ -2271,6 +2273,8 @@ function App() {
         return <ArtifactDetectionDashboard />
       case 'cognitive-decline':
         return <CognitiveDeclineDashboard />
+      case 'cognitive-tests':
+        return <CognitiveTestsDashboard />
       case 'mri-review':
         return <MRIReviewDashboard />
       case 'goal-attainment':
