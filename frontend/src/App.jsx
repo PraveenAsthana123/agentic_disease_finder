@@ -313,6 +313,7 @@ import SOPComplianceDashboard from './components/SOPComplianceDashboard'
 import SystemHealthDashboard from './components/SystemHealthDashboard'
 import TransactionAuditDashboard from './components/TransactionAuditDashboard'
 import EmergencySOSDashboard from './components/EmergencySOSDashboard'
+import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -714,7 +715,8 @@ function App() {
     { id: 'sop-compliance', label: 'SOP Compliance' },
     { id: 'system-health', label: 'System Health' },
     { id: 'transaction-audit', label: 'Transaction Audit' },
-    { id: 'emergency-sos', label: 'Emergency SOS' }
+    { id: 'emergency-sos', label: 'Emergency SOS' },
+    { id: 'feature-flags', label: 'Feature Flags' }
   ]
 
   // API Calls
@@ -2377,6 +2379,8 @@ function App() {
         return <TransactionAuditDashboard />
       case 'emergency-sos':
         return <EmergencySOSDashboard />
+      case 'feature-flags':
+        return <FeatureFlagsDashboard />
       default:
         return renderClassificationTab()
     }

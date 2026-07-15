@@ -11206,6 +11206,30 @@ async def emergency_sos_definitions():
     return _json_safe(esd.definitions())
 
 
+@app.get("/api/feature-flags/overview")
+async def feature_flags_overview():
+    """Feature flags overview — total flags, enabled/disabled counts, category
+    distribution, rollout tiers, owner workload, staleness analysis."""
+    import scripts.feature_flags_dashboard as ffd
+    return _json_safe(ffd.overview())
+
+
+@app.get("/api/feature-flags/breakdown")
+async def feature_flags_breakdown():
+    """Feature flags breakdown — per-flag detail, recently updated,
+    stale flags, disabled cleanup candidates, rollout progression."""
+    import scripts.feature_flags_dashboard as ffd
+    return _json_safe(ffd.breakdown())
+
+
+@app.get("/api/feature-flags/definitions")
+async def feature_flags_definitions():
+    """Feature flags definitions — statuses, rollout tiers, staleness
+    thresholds, category descriptions, best practices."""
+    import scripts.feature_flags_dashboard as ffd
+    return _json_safe(ffd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
