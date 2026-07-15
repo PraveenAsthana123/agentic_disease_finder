@@ -316,6 +316,7 @@ import EmergencySOSDashboard from './components/EmergencySOSDashboard'
 import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
+import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -720,7 +721,8 @@ function App() {
     { id: 'emergency-sos', label: 'Emergency SOS' },
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
-    { id: 'operator-requests', label: 'Operator Requests' }
+    { id: 'operator-requests', label: 'Operator Requests' },
+    { id: 'consent-management', label: 'Consent Management' }
   ]
 
   // API Calls
@@ -2389,6 +2391,8 @@ function App() {
         return <PaperclipDashboard />
       case 'operator-requests':
         return <OperatorRequestsDashboard />
+      case 'consent-management':
+        return <ConsentManagementDashboard />
       default:
         return renderClassificationTab()
     }

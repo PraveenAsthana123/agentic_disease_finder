@@ -1,31 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
-  BarChart, Bar, PieChart, Pie, Cell,
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Legend, LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
-
-const STATUS_COLORS = {
-  granted: '#22c55e',
-  pending: '#eab308',
-  declined: '#ef4444',
-  expired: '#94a3b8',
-  withdrawn: '#f97316'
-}
-const STATUS_LABELS = {
-  granted: 'Granted',
-  pending: 'Pending',
-  declined: 'Declined',
-  expired: 'Expired',
-  withdrawn: 'Withdrawn'
-}
-
-function fmt(v) {
-  if (v == null) return '--'
-  return typeof v === 'number' ? (v % 1 === 0 ? v.toLocaleString() : v.toFixed(1)) : String(v)
-}
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -42,549 +22,408 @@ function Card({ title, children, span }) {
 function KPI({ label, value, sub, color }) {
   return (
     <div style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: 28, fontWeight: 700, color: color || '#1e293b' }}>{value}</div>
+      <div style={{ fontSize: 28, fontWeight: 700, color: color || '#1e293b' }}>{value ?? '--'}</div>
       <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>{label}</div>
       {sub && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>{sub}</div>}
     </div>
   )
 }
 
-function StatusBadge({ status }) {
-  const color = STATUS_COLORS[status] || '#94a3b8'
-  const label = STATUS_LABELS[status] || status || 'unknown'
-  return (
-    <span style={{
-      display: 'inline-block', padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 600,
-      background: color + '22', color
-    }}>{label}</span>
-  )
+const COLORS = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899', '#f97316']
+const STATUS_COLORS = {
+  granted: '#10b981',
+  pending: '#f59e0b',
+  withdrawn: '#ef4444',
+  declined: '#94a3b8',
+  expired: '#8b5cf6'
+}
+const TYPE_COLORS = {
+  treatment: '#3b82f6',
+  research: '#8b5cf6',
+  data_sharing: '#10b981',
+  genetic_testing: '#f59e0b',
+  video_eeg: '#ef4444',
+  imaging_sharing: '#06b6d4'
 }
 
+const TABS = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'breakdown', label: 'Patient Detail' },
+  { id: 'definitions', label: 'Definitions' },
+]
+
 export default function ConsentManagementDashboard() {
+  const [tab, setTab] = useState('overview')
   const [overview, setOverview] = useState(null)
   const [breakdown, setBreakdown] = useState(null)
-  const [defs, setDefs] = useState(null)
+  const [definitions, setDefinitions] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [tab, setTab] = useState('overview')
-  const [filterType, setFilterType] = useState('all')
-  const [filterStatus, setFilterStatus] = useState('all')
 
   useEffect(() => {
-    const load = async () => {
-      setLoading(true)
-      try {
-        const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/consent-dashboard/overview`),
-          axios.get(`${API_URL}/consent-dashboard/breakdown`),
-          axios.get(`${API_URL}/consent-dashboard/definitions`)
-        ])
-        setOverview(ov.data)
-        setBreakdown(br.data)
-        setDefs(df.data)
-      } catch (e) {
-        setError(e.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    load()
+    setLoading(true)
+    setError(null)
+    Promise.all([
+      axios.get(`${API_URL}/api/consent-management/overview`),
+      axios.get(`${API_URL}/api/consent-management/breakdown`),
+      axios.get(`${API_URL}/api/consent-management/definitions`),
+    ]).then(([o, b, d]) => {
+      setOverview(o.data)
+      setBreakdown(b.data)
+      setDefinitions(d.data)
+    }).catch(e => setError(e.message))
+      .finally(() => setLoading(false))
   }, [])
 
   if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>Loading Consent Management data...</div>
   if (error) return <div style={{ padding: 40, color: '#ef4444' }}>Error: {error}</div>
 
-  const tabs = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'types', label: 'Consent Types' },
-    { id: 'patients', label: 'Patient Detail' },
-    { id: 'compliance', label: 'Compliance' },
-    { id: 'definitions', label: 'Definitions' },
-  ]
-
-  const statusDistData = overview?.by_status
-    ? Object.entries(overview.by_status).map(([k, v]) => ({
-        name: STATUS_LABELS[k] || k, value: v, color: STATUS_COLORS[k] || '#94a3b8'
-      }))
-    : []
-
-  const typeBarData = overview?.by_type
-    ? Object.entries(overview.by_type).map(([k, v]) => ({
-        name: k, count: typeof v === 'object' ? (v.total || 0) : v
-      }))
-    : []
-
-  // Consent types for filters
-  const consentTypes = breakdown?.by_type ? Object.keys(breakdown.by_type) : []
-
-  // Filtered patient rows
-  const allPatients = breakdown?.patients || []
-  const filteredPatients = allPatients.filter(p => {
-    const typeOk = filterType === 'all' || (p.consents && p.consents[filterType])
-    const statusOk = filterStatus === 'all' || (
-      p.consents && Object.values(p.consents).some(s => s === filterStatus)
-    )
-    return typeOk && statusOk
-  })
-
-  // Compliance matrix: patients × types
-  const compliancePatients = breakdown?.patients || []
-  const complianceTypes = consentTypes
-
   return (
-    <div style={{ padding: '20px 24px', maxWidth: 1200, margin: '0 auto' }}>
+    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
       <div style={{ marginBottom: 20 }}>
         <h2 style={{ margin: 0, fontSize: 22, color: '#1e293b' }}>Consent Management Dashboard</h2>
         <p style={{ margin: '4px 0 0', fontSize: 13, color: '#64748b' }}>
-          Patient consent tracking — HIPAA / IRB compliance across all consent types and statuses
+          Consent lifecycle analytics — type distribution, status tracking, compliance rate, expiry monitoring, patient-level detail
         </p>
       </div>
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '1px solid #e2e8f0', paddingBottom: 0 }}>
-        {tabs.map(t => (
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '1px solid #e2e8f0', paddingBottom: 1 }}>
+        {TABS.map(t => (
           <button key={t.id} onClick={() => setTab(t.id)} style={{
-            padding: '8px 16px', border: 'none', borderBottom: tab === t.id ? '2px solid #3b82f6' : '2px solid transparent',
-            background: 'none', cursor: 'pointer', fontSize: 13, fontWeight: tab === t.id ? 600 : 400,
-            color: tab === t.id ? '#3b82f6' : '#64748b'
+            padding: '8px 18px', fontSize: 13, fontWeight: tab === t.id ? 600 : 400,
+            color: tab === t.id ? '#2563eb' : '#64748b', background: 'none', border: 'none',
+            borderBottom: tab === t.id ? '2px solid #2563eb' : '2px solid transparent', cursor: 'pointer'
           }}>{t.label}</button>
         ))}
       </div>
 
-      {/* Tab 1: Overview */}
-      {tab === 'overview' && overview && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          {/* KPI Cards */}
-          <Card span={3}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
-              {(overview.kpis || []).map((kpi, i) => (
-                <KPI
-                  key={i}
-                  label={kpi.label}
-                  value={fmt(kpi.value)}
-                  sub={kpi.sub}
-                  color={kpi.color}
-                />
+      {tab === 'overview' && overview && <OverviewTab data={overview} />}
+      {tab === 'breakdown' && breakdown && <BreakdownTab data={breakdown} />}
+      {tab === 'definitions' && definitions && <DefinitionsTab data={definitions} />}
+    </div>
+  )
+}
+
+function OverviewTab({ data }) {
+  const typeData = Object.entries(data.consent_type_distribution || {}).map(([k, v]) => ({ name: k, value: v }))
+  const statusData = Object.entries(data.status_distribution || {}).map(([k, v]) => ({ name: k, value: v }))
+  const witnessData = Object.entries(data.witness_distribution || {}).map(([k, v]) => ({ name: k, value: v }))
+  const monthlyData = data.monthly_volume || []
+  const matrix = data.type_status_matrix || []
+  const statuses = matrix.length > 0 ? Object.keys(matrix[0]).filter(k => k !== 'consent_type') : []
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+      <Card title="Total Records">
+        <KPI value={data.total_records} label="consent records" color="#3b82f6" />
+      </Card>
+      <Card title="Total Patients">
+        <KPI value={data.total_patients} label="unique patients" color="#8b5cf6" />
+      </Card>
+      <Card title="Compliance Rate">
+        <KPI value={`${data.compliance_rate_pct}%`} label="consents in compliance"
+          color={data.compliance_rate_pct >= 80 ? '#10b981' : '#f59e0b'} />
+      </Card>
+      <Card title="Expiring Soon">
+        <KPI value={data.expiring_soon} label="within 90 days"
+          color={data.expiring_soon > 0 ? '#f59e0b' : '#10b981'} />
+      </Card>
+      <Card title="Expired">
+        <KPI value={data.expired} label="past expiry"
+          color={data.expired > 0 ? '#ef4444' : '#10b981'} />
+      </Card>
+
+      <Card title="Consent Type Distribution" span={2}>
+        <ResponsiveContainer width="100%" height={240}>
+          <PieChart>
+            <Pie data={typeData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={85} label={({ name, value }) => `${name}: ${value}`}>
+              {typeData.map((entry, i) => <Cell key={i} fill={TYPE_COLORS[entry.name] || COLORS[i % COLORS.length]} />)}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </Card>
+
+      <Card title="Status Distribution" span={3}>
+        <ResponsiveContainer width="100%" height={240}>
+          <BarChart data={statusData} layout="vertical" margin={{ left: 80 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis type="number" />
+            <YAxis type="category" dataKey="name" tick={{ fontSize: 11 }} width={70} />
+            <Tooltip />
+            <Bar dataKey="value" name="Consents">
+              {statusData.map((entry, i) => (
+                <Cell key={i} fill={STATUS_COLORS[entry.name] || COLORS[i % COLORS.length]} />
               ))}
-            </div>
-          </Card>
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </Card>
 
-          {/* Pie: Status Distribution */}
-          <Card title="Consent Status Distribution">
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie data={statusDistData} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                  innerRadius={40} outerRadius={75} paddingAngle={2}>
-                  {statusDistData.map((d, i) => <Cell key={i} fill={d.color} />)}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 8 }}>
-              {statusDistData.map(d => (
-                <span key={d.name} style={{ fontSize: 11, color: '#475569' }}>
-                  <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 4, background: d.color, marginRight: 4 }} />
-                  {d.name}: {d.value}
-                </span>
-              ))}
-            </div>
-          </Card>
+      <Card title="Witness Distribution" span={2}>
+        <ResponsiveContainer width="100%" height={220}>
+          <BarChart data={witnessData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="value" fill="#06b6d4" name="Consents" radius={[4, 4, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </Card>
 
-          {/* Bar: Consents per Type */}
-          <Card title="Consents per Type" span={2}>
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={typeBarData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="count" fill="#3b82f6" name="Total Consents" />
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
+      <Card title="Monthly Consent Volume" span={3}>
+        {monthlyData.length > 0 ? (
+          <ResponsiveContainer width="100%" height={220}>
+            <LineChart data={monthlyData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" tick={{ fontSize: 10 }} />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="cnt" stroke="#3b82f6" strokeWidth={2} name="Consents Granted" dot={{ r: 3 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        ) : <div style={{ color: '#94a3b8', fontSize: 13 }}>No trend data</div>}
+      </Card>
 
-          {/* Expiring Soon Alert */}
-          {overview.expiring_soon && overview.expiring_soon.length > 0 && (
-            <Card span={3} title="Expiring Soon">
-              <div style={{
-                padding: '10px 14px', background: '#fef9c3', border: '1px solid #fde047',
-                borderRadius: 8, marginBottom: 12, fontSize: 13, color: '#854d0e'
-              }}>
-                {overview.expiring_soon.length} consent(s) expiring within 30 days
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {overview.expiring_soon.map((e, i) => (
-                  <div key={i} style={{
-                    padding: '6px 12px', background: '#fff7ed', border: '1px solid #fdba74',
-                    borderRadius: 8, fontSize: 12
-                  }}>
-                    <span style={{ fontWeight: 600 }}>{e.patient_name || e.patient_id}</span>
-                    <span style={{ color: '#64748b', marginLeft: 8 }}>{e.consent_type}</span>
-                    <span style={{ color: '#f97316', marginLeft: 8 }}>exp: {e.expiry_date}</span>
-                  </div>
+      <Card title="Type x Status Matrix" span={5}>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f8fafc' }}>
+                <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Consent Type</th>
+                {statuses.map(s => (
+                  <th key={s} style={{ padding: '8px 12px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: STATUS_COLORS[s] || '#94a3b8', marginRight: 4 }} />
+                    {s}
+                  </th>
                 ))}
-              </div>
-            </Card>
-          )}
-
-          {/* Recent Activity Table */}
-          <Card title="Recent Activity (last 10)" span={3}>
-            <div style={{ maxHeight: 300, overflow: 'auto' }}>
-              <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, background: '#fff' }}>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Patient</th>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Consent Type</th>
-                    <th style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b' }}>Status</th>
-                    <th style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b' }}>Date</th>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Note</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(overview.recent_activity || []).slice(0, 10).map((row, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '6px 8px', fontWeight: 600, fontSize: 12 }}>{row.patient_name || row.patient_id}</td>
-                      <td style={{ padding: '6px 8px', fontSize: 11, color: '#475569' }}>{row.consent_type}</td>
-                      <td style={{ padding: '6px 8px', textAlign: 'center' }}><StatusBadge status={row.status} /></td>
-                      <td style={{ padding: '6px 8px', textAlign: 'center', fontSize: 11, color: '#64748b' }}>{row.date}</td>
-                      <td style={{ padding: '6px 8px', fontSize: 11, color: '#94a3b8' }}>{row.note || '--'}</td>
-                    </tr>
+              </tr>
+            </thead>
+            <tbody>
+              {matrix.map((row, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ padding: '6px 12px', borderBottom: '1px solid #f1f5f9', fontWeight: 500 }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: TYPE_COLORS[row.consent_type] || '#94a3b8', marginRight: 6 }} />
+                    {row.consent_type}
+                  </td>
+                  {statuses.map(s => (
+                    <td key={s} style={{ padding: '6px 12px', textAlign: 'right', borderBottom: '1px solid #f1f5f9', fontWeight: 600, color: STATUS_COLORS[s] || '#1e293b' }}>
+                      {row[s] || 0}
+                    </td>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
-        </div>
-      )}
-
-      {/* Tab 2: Consent Types */}
-      {tab === 'types' && breakdown && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-          {/* Bar: Consent Rate by Type */}
-          <Card title="Consent Rate by Type" span={2}>
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={
-                Object.entries(breakdown.by_type || {}).map(([k, v]) => ({
-                  name: k,
-                  granted: v.granted || 0,
-                  pending: v.pending || 0,
-                  declined: v.declined || 0,
-                  expired: v.expired || 0,
-                  withdrawn: v.withdrawn || 0
-                }))
-              }>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="granted" fill={STATUS_COLORS.granted} name="Granted" stackId="a" />
-                <Bar dataKey="pending" fill={STATUS_COLORS.pending} name="Pending" stackId="a" />
-                <Bar dataKey="declined" fill={STATUS_COLORS.declined} name="Declined" stackId="a" />
-                <Bar dataKey="expired" fill={STATUS_COLORS.expired} name="Expired" stackId="a" />
-                <Bar dataKey="withdrawn" fill={STATUS_COLORS.withdrawn} name="Withdrawn" stackId="a" />
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
-
-          {/* Per-Type Breakdown Cards */}
-          {Object.entries(breakdown.by_type || {}).map(([type, v]) => {
-            const defEntry = (defs?.consent_types || []).find(d => d.type === type)
-            return (
-              <Card key={type} title={type}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 12 }}>
-                  <KPI label="Granted" value={fmt(v.granted)} color={STATUS_COLORS.granted} />
-                  <KPI label="Pending" value={fmt(v.pending)} color={STATUS_COLORS.pending} />
-                  <KPI label="Declined" value={fmt(v.declined)} color={STATUS_COLORS.declined} />
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 12 }}>
-                  <KPI label="Expired" value={fmt(v.expired)} color={STATUS_COLORS.expired} />
-                  <KPI label="Withdrawn" value={fmt(v.withdrawn)} color={STATUS_COLORS.withdrawn} />
-                </div>
-                {defEntry && (
-                  <div style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: 8, fontSize: 12, color: '#475569' }}>
-                    {defEntry.description}
-                  </div>
-                )}
-              </Card>
-            )
-          })}
-        </div>
-      )}
-
-      {/* Tab 3: Patient Detail */}
-      {tab === 'patients' && breakdown && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
-          {/* Filters */}
-          <Card>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-              <div>
-                <label style={{ fontSize: 12, color: '#64748b', marginRight: 8 }}>Filter by Type:</label>
-                <select
-                  value={filterType}
-                  onChange={e => setFilterType(e.target.value)}
-                  style={{ fontSize: 12, padding: '4px 8px', borderRadius: 6, border: '1px solid #e2e8f0', color: '#334155' }}
-                >
-                  <option value="all">All Types</option>
-                  {consentTypes.map(t => <option key={t} value={t}>{t}</option>)}
-                </select>
-              </div>
-              <div>
-                <label style={{ fontSize: 12, color: '#64748b', marginRight: 8 }}>Filter by Status:</label>
-                <select
-                  value={filterStatus}
-                  onChange={e => setFilterStatus(e.target.value)}
-                  style={{ fontSize: 12, padding: '4px 8px', borderRadius: 6, border: '1px solid #e2e8f0', color: '#334155' }}
-                >
-                  <option value="all">All Statuses</option>
-                  {Object.entries(STATUS_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-                </select>
-              </div>
-              <span style={{ fontSize: 12, color: '#94a3b8' }}>
-                Showing {filteredPatients.length} of {allPatients.length} patients
-              </span>
-            </div>
-          </Card>
-
-          {/* Patient Table */}
-          <Card title="Patient Consent Status">
-            <div style={{ maxHeight: 500, overflow: 'auto' }}>
-              <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, background: '#fff' }}>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Patient</th>
-                    <th style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b' }}>Age</th>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Disease</th>
-                    {consentTypes.map(ct => (
-                      <th key={ct} style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b', fontSize: 10 }}>{ct}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredPatients.map((p, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '6px 8px', fontWeight: 600, fontSize: 12 }}>{p.patient_name || p.patient_id}</td>
-                      <td style={{ padding: '6px 8px', textAlign: 'center', fontSize: 11 }}>{p.age || '--'}</td>
-                      <td style={{ padding: '6px 8px', fontSize: 11, color: '#475569' }}>{p.disease || '--'}</td>
-                      {consentTypes.map(ct => (
-                        <td key={ct} style={{ padding: '6px 8px', textAlign: 'center' }}>
-                          {p.consents && p.consents[ct]
-                            ? <StatusBadge status={p.consents[ct]} />
-                            : <span style={{ color: '#e2e8f0', fontSize: 11 }}>--</span>}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
-        </div>
-      )}
-
-      {/* Tab 4: Compliance */}
-      {tab === 'compliance' && breakdown && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-          {/* Compliance KPIs */}
-          <Card span={2}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
-              {(breakdown.compliance_kpis || []).map((kpi, i) => (
-                <KPI
-                  key={i}
-                  label={kpi.label}
-                  value={fmt(kpi.value)}
-                  sub={kpi.sub}
-                  color={kpi.color}
-                />
+                </tr>
               ))}
-            </div>
-          </Card>
-
-          {/* Compliance Matrix */}
-          <Card title="Compliance Matrix — Patients x Consent Types" span={2}>
-            <div style={{ maxHeight: 400, overflow: 'auto' }}>
-              <table style={{ width: '100%', fontSize: 11, borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, background: '#fff' }}>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b', fontSize: 12 }}>Patient</th>
-                    {complianceTypes.map(ct => (
-                      <th key={ct} style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b', fontSize: 10 }}>{ct}</th>
-                    ))}
-                    <th style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b', fontSize: 12 }}>Complete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compliancePatients.map((p, i) => {
-                    const total = complianceTypes.length
-                    const grantedCount = complianceTypes.filter(ct => p.consents && p.consents[ct] === 'granted').length
-                    const allGranted = grantedCount === total
-                    return (
-                      <tr key={i} style={{
-                        borderBottom: '1px solid #f1f5f9',
-                        background: allGranted ? '#f0fdf4' : 'transparent'
-                      }}>
-                        <td style={{ padding: '6px 8px', fontWeight: 600 }}>{p.patient_name || p.patient_id}</td>
-                        {complianceTypes.map(ct => {
-                          const status = p.consents && p.consents[ct]
-                          const color = STATUS_COLORS[status] || '#e2e8f0'
-                          return (
-                            <td key={ct} style={{ padding: '6px 8px', textAlign: 'center' }}>
-                              <span style={{
-                                display: 'inline-block', width: 14, height: 14, borderRadius: 3,
-                                background: color, title: status
-                              }} title={status || 'N/A'} />
-                            </td>
-                          )
-                        })}
-                        <td style={{ padding: '6px 8px', textAlign: 'center', fontSize: 12 }}>
-                          {allGranted
-                            ? <span style={{ color: '#22c55e', fontWeight: 700 }}>Yes</span>
-                            : <span style={{ color: '#ef4444' }}>{grantedCount}/{total}</span>}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-            {/* Legend */}
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 12 }}>
-              {Object.entries(STATUS_LABELS).map(([k, v]) => (
-                <span key={k} style={{ fontSize: 11, color: '#475569', display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: 3, background: STATUS_COLORS[k] }} />
-                  {v}
-                </span>
-              ))}
-            </div>
-          </Card>
-
-          {/* Gap Analysis */}
-          <Card title="Gap Analysis — Missing Consents" span={2}>
-            <div style={{ maxHeight: 300, overflow: 'auto' }}>
-              <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, background: '#fff' }}>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Patient</th>
-                    <th style={{ textAlign: 'left', padding: '6px 8px', color: '#64748b' }}>Missing / Non-Granted Consents</th>
-                    <th style={{ textAlign: 'center', padding: '6px 8px', color: '#64748b' }}>Gap Count</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compliancePatients
-                    .map(p => {
-                      const missing = complianceTypes.filter(ct => !p.consents || p.consents[ct] !== 'granted')
-                      return { ...p, missing }
-                    })
-                    .filter(p => p.missing.length > 0)
-                    .sort((a, b) => b.missing.length - a.missing.length)
-                    .map((p, i) => (
-                      <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                        <td style={{ padding: '6px 8px', fontWeight: 600 }}>{p.patient_name || p.patient_id}</td>
-                        <td style={{ padding: '6px 8px' }}>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                            {p.missing.map(ct => (
-                              <span key={ct} style={{
-                                display: 'inline-block', padding: '1px 6px', borderRadius: 4, fontSize: 10,
-                                background: '#fee2e2', color: '#ef4444', fontWeight: 600
-                              }}>{ct}: <StatusBadge status={p.consents && p.consents[ct] ? p.consents[ct] : 'missing'} /></span>
-                            ))}
-                          </div>
-                        </td>
-                        <td style={{ padding: '6px 8px', textAlign: 'center', fontWeight: 700, color: '#ef4444' }}>
-                          {p.missing.length}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
+            </tbody>
+          </table>
         </div>
-      )}
+      </Card>
+    </div>
+  )
+}
 
-      {/* Tab 5: Definitions */}
-      {tab === 'definitions' && defs && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
-          {/* Consent Type Definitions */}
-          {defs.consent_types && defs.consent_types.length > 0 && (
-            <Card title="Consent Type Definitions">
-              <table style={{ width: '100%', fontSize: 13, borderCollapse: 'collapse' }}>
-                <tbody>
-                  {defs.consent_types.map((d, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '8px 12px', fontWeight: 600, whiteSpace: 'nowrap', verticalAlign: 'top', color: '#334155', width: 220 }}>{d.type}</td>
-                      <td style={{ padding: '8px 12px', color: '#475569' }}>{d.description}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
-          )}
+function BreakdownTab({ data }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
+      <Card title={`Per-Patient Consent Summary (${(data.per_patient || []).length} patients)`} span={1}>
+        <div style={{ overflowX: 'auto', maxHeight: 400, overflowY: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f8fafc', position: 'sticky', top: 0 }}>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Patient</th>
+                <th style={{ padding: '8px 10px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>Total</th>
+                <th style={{ padding: '8px 10px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>Granted</th>
+                <th style={{ padding: '8px 10px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>Pending</th>
+                <th style={{ padding: '8px 10px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>Withdrawn</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(data.per_patient || []).map((p, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', fontWeight: 500 }}>{p.patient_id}</td>
+                  <td style={{ padding: '6px 10px', textAlign: 'right', borderBottom: '1px solid #f1f5f9' }}>{p.total}</td>
+                  <td style={{ padding: '6px 10px', textAlign: 'right', borderBottom: '1px solid #f1f5f9', color: '#10b981' }}>{p.granted}</td>
+                  <td style={{ padding: '6px 10px', textAlign: 'right', borderBottom: '1px solid #f1f5f9', color: '#f59e0b' }}>{p.pending}</td>
+                  <td style={{ padding: '6px 10px', textAlign: 'right', borderBottom: '1px solid #f1f5f9', color: '#ef4444' }}>{p.withdrawn}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
 
-          {/* Status Definitions */}
-          {defs.status_definitions && defs.status_definitions.length > 0 && (
-            <Card title="Status Definitions">
-              <table style={{ width: '100%', fontSize: 13, borderCollapse: 'collapse' }}>
-                <tbody>
-                  {defs.status_definitions.map((d, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '8px 12px', verticalAlign: 'top', width: 160 }}>
-                        <StatusBadge status={d.status} />
-                      </td>
-                      <td style={{ padding: '8px 12px', color: '#475569' }}>{d.definition}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
-          )}
+      <Card title="Recent Consents (last 20)" span={1}>
+        <div style={{ overflowX: 'auto', maxHeight: 400, overflowY: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f8fafc', position: 'sticky', top: 0 }}>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Patient</th>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Consent Type</th>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Status</th>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Granted Date</th>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Expiry Date</th>
+                <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Witness</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(data.recent_consents || []).map((c, i) => (
+                <tr key={i} style={{ background: i % 2 ? '#f8fafc' : '#fff' }}>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', fontWeight: 500 }}>{c.patient_id}</td>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: TYPE_COLORS[c.consent_type] || '#94a3b8', marginRight: 6 }} />
+                    {c.consent_type}
+                  </td>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: STATUS_COLORS[c.status] || '#94a3b8', marginRight: 4 }} />
+                    {c.status}
+                  </td>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap' }}>{(c.granted_date || '').slice(0, 10)}</td>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap' }}>{(c.expiry_date || '').slice(0, 10)}</td>
+                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>{c.witness}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
 
-          {/* Regulatory Framework */}
-          {defs.regulatory_framework && (
-            <Card title="Regulatory Framework — HIPAA / IRB">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-                {(defs.regulatory_framework.sections || []).map((sec, i) => (
-                  <div key={i} style={{ padding: '12px 16px', background: '#f8fafc', borderRadius: 8 }}>
-                    <h4 style={{ margin: '0 0 8px', fontSize: 13, color: '#334155' }}>{sec.title}</h4>
-                    <p style={{ margin: 0, fontSize: 12, color: '#475569' }}>{sec.description}</p>
-                    {sec.requirements && (
-                      <ul style={{ margin: '8px 0 0', padding: '0 0 0 16px', fontSize: 12, color: '#64748b' }}>
-                        {sec.requirements.map((r, j) => <li key={j} style={{ marginBottom: 4 }}>{r}</li>)}
-                      </ul>
-                    )}
-                  </div>
+      {(data.expiring_soon_list || []).length > 0 && (
+        <Card title={`Expiring Soon (${data.expiring_soon_list.length} consents within 90 days)`} span={1}>
+          <div style={{ overflowX: 'auto', maxHeight: 300, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+              <thead>
+                <tr style={{ background: '#fef3c7' }}>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Patient</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Consent Type</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Expiry Date</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'right', borderBottom: '1px solid #e2e8f0' }}>Days Left</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.expiring_soon_list.map((c, i) => (
+                  <tr key={i} style={{ background: i % 2 ? '#fffbeb' : '#fff' }}>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', fontWeight: 500 }}>{c.patient_id}</td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>
+                      <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: TYPE_COLORS[c.consent_type] || '#94a3b8', marginRight: 6 }} />
+                      {c.consent_type}
+                    </td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap' }}>{(c.expiry_date || '').slice(0, 10)}</td>
+                    <td style={{ padding: '6px 10px', textAlign: 'right', borderBottom: '1px solid #f1f5f9', fontWeight: 600, color: (c.days_left || 0) < 30 ? '#ef4444' : '#f59e0b' }}>{c.days_left}</td>
+                  </tr>
                 ))}
-              </div>
-            </Card>
-          )}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
 
-          {/* Glossary */}
-          {defs.glossary && defs.glossary.length > 0 && (
-            <Card title="Glossary">
-              <table style={{ width: '100%', fontSize: 13, borderCollapse: 'collapse' }}>
-                <tbody>
-                  {defs.glossary.map((d, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '8px 12px', fontWeight: 600, whiteSpace: 'nowrap', verticalAlign: 'top', color: '#334155', width: 220 }}>{d.term}</td>
-                      <td style={{ padding: '8px 12px', color: '#475569' }}>{d.definition}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
-          )}
+      {(data.withdrawn_list || []).length > 0 && (
+        <Card title={`Withdrawn Consents (${data.withdrawn_list.length})`} span={1}>
+          <div style={{ overflowX: 'auto', maxHeight: 300, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+              <thead>
+                <tr style={{ background: '#fef2f2' }}>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Patient</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Consent Type</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Granted Date</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Withdrawn Date</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Witness</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.withdrawn_list.map((c, i) => (
+                  <tr key={i} style={{ background: i % 2 ? '#fef2f2' : '#fff' }}>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', fontWeight: 500 }}>{c.patient_id}</td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>
+                      <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: TYPE_COLORS[c.consent_type] || '#94a3b8', marginRight: 6 }} />
+                      {c.consent_type}
+                    </td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap' }}>{(c.granted_date || '').slice(0, 10)}</td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap', color: '#ef4444' }}>{(c.withdrawn_date || '').slice(0, 10)}</td>
+                    <td style={{ padding: '6px 10px', borderBottom: '1px solid #f1f5f9' }}>{c.witness}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
 
-          {/* References */}
-          {defs.references && (
-            <Card>
-              <div style={{ padding: '12px 16px', background: '#f8fafc', borderRadius: 8 }}>
-                <h4 style={{ margin: '0 0 8px', fontSize: 13, color: '#334155' }}>References</h4>
-                <ul style={{ margin: 0, padding: '0 0 0 16px', fontSize: 12, color: '#64748b' }}>
-                  {defs.references.map((ref, i) => <li key={i} style={{ marginBottom: 4 }}>{ref}</li>)}
-                </ul>
+      {(data.type_detail || []).length > 0 && (
+        <Card title="Per-Type Detail" span={1}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+            {data.type_detail.map((td, i) => (
+              <div key={i} style={{ padding: 14, background: '#f8fafc', borderRadius: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+                  <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: TYPE_COLORS[td.consent_type] || COLORS[i % COLORS.length], marginRight: 8 }} />
+                  <strong style={{ fontSize: 13, color: '#1e293b' }}>{td.consent_type}</strong>
+                </div>
+                <div style={{ fontSize: 12, color: '#64748b', marginBottom: 6 }}>
+                  Total: {td.total} | Granted: {td.granted} | Pending: {td.pending} | Withdrawn: {td.withdrawn}
+                </div>
+                <div style={{ background: '#e2e8f0', borderRadius: 4, height: 8, overflow: 'hidden' }}>
+                  <div style={{
+                    width: `${td.granted_pct || 0}%`, height: '100%', borderRadius: 4,
+                    background: TYPE_COLORS[td.consent_type] || '#3b82f6', transition: 'width 0.3s'
+                  }} />
+                </div>
+                <div style={{ fontSize: 11, color: '#64748b', marginTop: 4, textAlign: 'right' }}>
+                  {td.granted_pct}% granted
+                </div>
               </div>
-            </Card>
-          )}
-        </div>
+            ))}
+          </div>
+        </Card>
+      )}
+    </div>
+  )
+}
+
+function DefinitionsTab({ data }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+      {(data.glossary || []).length > 0 && (
+        <Card title={`Glossary (${data.glossary.length} terms)`} span={2}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+            {data.glossary.map((g, i) => (
+              <div key={i} style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: 8, fontSize: 12 }}>
+                <strong style={{ color: '#1e293b' }}>{g.term}</strong>
+                <div style={{ color: '#64748b', marginTop: 2 }}>{g.definition}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
+      <Card title="Consent Types">
+        {(data.consent_types || []).map((ct, i) => (
+          <div key={i} style={{ padding: '8px 0', borderBottom: i < (data.consent_types.length - 1) ? '1px solid #f1f5f9' : 'none', fontSize: 12 }}>
+            <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: TYPE_COLORS[ct.type] || '#94a3b8', marginRight: 6 }} />
+            <strong>{ct.type}</strong>
+            <div style={{ color: '#64748b', marginTop: 2, marginLeft: 16 }}>{ct.description}</div>
+          </div>
+        ))}
+      </Card>
+
+      <Card title="Statuses">
+        {(data.statuses || []).map((s, i) => (
+          <div key={i} style={{ padding: '8px 0', borderBottom: i < (data.statuses.length - 1) ? '1px solid #f1f5f9' : 'none', fontSize: 12 }}>
+            <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: STATUS_COLORS[s.status] || '#94a3b8', marginRight: 6 }} />
+            <strong>{s.status}</strong>
+            <div style={{ color: '#64748b', marginTop: 2, marginLeft: 16 }}>{s.description}</div>
+          </div>
+        ))}
+      </Card>
+
+      {(data.compliance_notes || []).length > 0 && (
+        <Card title="Compliance Notes" span={2}>
+          {data.compliance_notes.map((n, i) => (
+            <div key={i} style={{ padding: '8px 0', borderBottom: i < (data.compliance_notes.length - 1) ? '1px solid #f1f5f9' : 'none', fontSize: 12 }}>
+              <strong style={{ color: '#1e293b' }}>{n.title || n.note_title}</strong>
+              <div style={{ color: '#64748b', marginTop: 2 }}>{n.detail || n.note_detail}</div>
+            </div>
+          ))}
+        </Card>
       )}
     </div>
   )

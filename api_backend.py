@@ -11284,6 +11284,35 @@ async def operator_requests_definitions():
     return _json_safe(ord.definitions())
 
 
+# ── Consent Management Dashboard ─────────────────────────────────────
+# Consent lifecycle analytics: type distribution, status tracking, compliance rate,
+# expiry monitoring, witness coverage, per-patient consent summary.
+# Real consent_records table (246 rows), 6 consent types, 5 statuses, 41 patients.
+
+@app.get("/api/consent-management/overview")
+async def consent_management_overview():
+    """Consent management overview — total records/patients, consent type distribution,
+    status distribution, compliance rate, expiry tracking, witness coverage, monthly volume."""
+    import scripts.consent_dashboard as cmd
+    return _json_safe(cmd.overview())
+
+
+@app.get("/api/consent-management/breakdown")
+async def consent_management_breakdown():
+    """Consent management breakdown — per-patient summary, recent consents,
+    expiring-soon list, withdrawn list, per-type detail with validity stats."""
+    import scripts.consent_dashboard as cmd
+    return _json_safe(cmd.breakdown())
+
+
+@app.get("/api/consent-management/definitions")
+async def consent_management_definitions():
+    """Consent management definitions — consent types, statuses, glossary,
+    compliance notes (IRB, HIPAA, GDPR)."""
+    import scripts.consent_dashboard as cmd
+    return _json_safe(cmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
