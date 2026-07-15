@@ -349,8 +349,9 @@
     {
       "id": "paperclip",
       "task": "Paperclip business orchestration OS",
-      "module": "(planned)",
-      "status": "planned"
+      "module": "scripts/paperclip_dashboard.py + /api/paperclip/{overview,breakdown,definitions} + PaperclipDashboard.jsx",
+      "status": "built",
+      "note": "Paperclip Business Orchestration dashboard — workflow analytics with real business_workflows 50 rows, 10 workflow types (Patient Intake/Referral Processing/Report Generation/Appointment Scheduling/Compliance Review/Data Export/EEG Upload Pipeline/Medication Reconciliation/Insurance Pre-Auth/Discharge Planning), 4 categories (Clinical/Administrative/Technical/Compliance), 5 statuses (active/completed/failed/paused/pending), 4 trigger types (manual/scheduled/event-driven/api), owner workload matrix, stalled workflow detection, daily volume trends, priority distribution, per-workflow-type success rates, 12-term orchestration glossary; real business_workflows table, 3 endpoints verified 200"
     },
     {
       "id": "openclaw",

@@ -11230,6 +11230,31 @@ async def feature_flags_definitions():
     return _json_safe(ffd.definitions())
 
 
+# ── Paperclip Business Orchestration Dashboard ──────────────────────
+# Business workflow orchestration: intake, referral, reports, scheduling,
+# compliance, exports. Real business_workflows table, category/status/priority analytics.
+
+@app.get("/api/paperclip/overview")
+async def paperclip_overview():
+    """Paperclip overview — workflow counts, completion rate, category/status/priority/trigger distribution, daily volume."""
+    import scripts.paperclip_dashboard as ppd
+    return _json_safe(ppd.overview())
+
+
+@app.get("/api/paperclip/breakdown")
+async def paperclip_breakdown():
+    """Paperclip breakdown — per-category detail, recent workflows, owner workload, stalled detection."""
+    import scripts.paperclip_dashboard as ppd
+    return _json_safe(ppd.breakdown())
+
+
+@app.get("/api/paperclip/definitions")
+async def paperclip_definitions():
+    """Paperclip definitions — statuses, categories, triggers, priorities, orchestration glossary."""
+    import scripts.paperclip_dashboard as ppd
+    return _json_safe(ppd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
