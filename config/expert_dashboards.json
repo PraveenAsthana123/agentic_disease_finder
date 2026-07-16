@@ -389,11 +389,25 @@
         "/api/caregiver-readiness/breakdown",
         "/api/caregiver-readiness/definitions"
       ]
+    },
+    {
+      "role": "Admin / Operations",
+      "name": "Business Workflows",
+      "viz": "Workflow automation analytics, status distribution, owner workload",
+      "feature": "Status/category/priority breakdown, step completion, failure analysis, monthly trend",
+      "why": "Track clinical and administrative workflow execution for operational efficiency",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/business-workflows/overview",
+        "/api/business-workflows/breakdown",
+        "/api/business-workflows/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 31,
-    "built": 31,
+    "total": 34,
+    "built": 34,
     "partial": 0,
     "planned": 0
   }

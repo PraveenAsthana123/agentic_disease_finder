@@ -11636,6 +11636,31 @@ async def mri_findings_definitions():
     return _json_safe(mfd.definitions())
 
 
+# ── Business Workflows Dashboard ─────────────────────────────────────
+@app.get("/api/business-workflows/overview")
+async def business_workflows_overview():
+    """Business workflows overview — totals, status distribution, category
+    breakdown, priority mix, trigger types, completion/failure rates, monthly trend."""
+    import scripts.business_workflows_dashboard as bwd
+    return _json_safe(bwd.overview())
+
+
+@app.get("/api/business-workflows/breakdown")
+async def business_workflows_breakdown():
+    """Business workflows breakdown — owner workload, per-workflow-type stats,
+    active/failed workflows, recent history, category x status cross-tab."""
+    import scripts.business_workflows_dashboard as bwd
+    return _json_safe(bwd.breakdown())
+
+
+@app.get("/api/business-workflows/definitions")
+async def business_workflows_definitions():
+    """Business workflows definitions — field definitions, status meanings,
+    category descriptions, priority levels, trigger types, glossary."""
+    import scripts.business_workflows_dashboard as bwd
+    return _json_safe(bwd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

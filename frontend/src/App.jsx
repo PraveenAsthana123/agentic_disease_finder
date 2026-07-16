@@ -325,6 +325,7 @@ import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import DailyPlansDashboard from './components/DailyPlansDashboard'
+import BusinessWorkflowsDashboard from './components/BusinessWorkflowsDashboard'
 import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
 import PatientAppointmentsDashboard from './components/PatientAppointmentsDashboard'
 import RehabPlansDashboard from './components/RehabPlansDashboard'
@@ -745,6 +746,7 @@ function App() {
     { id: 'operator-requests', label: 'Operator Requests' },
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'daily-plans', label: 'Daily Plans' },
+    { id: 'business-workflows', label: 'Business Workflows' },
     { id: 'medication-refills', label: 'Medication Refills' },
     { id: 'patient-appointments', label: 'Patient Appointments' },
     { id: 'rehab-plans', label: 'Rehabilitation Plans' },
@@ -2437,6 +2439,8 @@ function App() {
         return <ConsentManagementDashboard />
       case 'daily-plans':
         return <DailyPlansDashboard />
+      case 'business-workflows':
+        return <BusinessWorkflowsDashboard />
       case 'medication-refills':
         return <MedicationRefillsDashboard />
       case 'patient-appointments':
