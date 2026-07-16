@@ -360,6 +360,20 @@
       ],
       "data_source": "patient_documents (193 rows, 30 patients, 10 types, 3 categories)",
       "status": "built"
+    },
+    {
+      "id": "patient-appointments",
+      "name": "Patient Appointments",
+      "status": "built",
+      "component": "PatientAppointmentsDashboard.jsx",
+      "endpoints": [
+        "/api/patient-appointments/overview",
+        "/api/patient-appointments/breakdown",
+        "/api/patient-appointments/definitions"
+      ],
+      "table": "patient_appointments",
+      "rows": 191,
+      "note": "Appointment scheduling analytics \u2014 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
     }
   ]
 }

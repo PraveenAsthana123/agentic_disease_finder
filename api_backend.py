@@ -11426,6 +11426,31 @@ async def eeg_acquisition_definitions():
     return _json_safe(ead.definitions())
 
 
+# ── Patient Appointments Dashboard ──────────────────────────────
+# Real data: patient_appointments table — 191 rows, 30 patients,
+# 8 appointment types, 6 providers, 5 statuses, 4 locations.
+
+@app.get("/api/patient-appointments/overview")
+async def patient_appointments_overview():
+    """Patient appointments overview — totals, rates, distributions, trends."""
+    import scripts.patient_appointments_dashboard as pad
+    return _json_safe(pad.overview())
+
+
+@app.get("/api/patient-appointments/breakdown")
+async def patient_appointments_breakdown():
+    """Patient appointments breakdown — per-patient, upcoming, no-shows, provider stats."""
+    import scripts.patient_appointments_dashboard as pad
+    return _json_safe(pad.breakdown())
+
+
+@app.get("/api/patient-appointments/definitions")
+async def patient_appointments_definitions():
+    """Patient appointments definitions — glossary, type descriptions, status definitions."""
+    import scripts.patient_appointments_dashboard as pad
+    return _json_safe(pad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
