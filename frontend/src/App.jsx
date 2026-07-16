@@ -83,6 +83,7 @@ import FinOpsDashboard from './components/FinOpsDashboard'
 import CSSRSDashboard from './components/CSSRSDashboard'
 import PHQ9Dashboard from './components/PHQ9Dashboard'
 import GAD7Dashboard from './components/GAD7Dashboard'
+import QOLIE31Dashboard from './components/QOLIE31Dashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import COPMDashboard from './components/COPMDashboard'
@@ -502,6 +503,7 @@ function App() {
     { id: 'cssrs', label: 'C-SSRS' },
     { id: 'phq9', label: 'PHQ-9' },
     { id: 'gad7', label: 'GAD-7' },
+    { id: 'qolie31', label: 'QOLIE-31' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
     { id: 'fim', label: 'FIM' },
     { id: 'copm', label: 'COPM' },
@@ -1953,6 +1955,8 @@ function App() {
         return <PHQ9Dashboard />
       case 'gad7':
         return <GAD7Dashboard />
+      case 'qolie31':
+        return <QOLIE31Dashboard />
       case 'ica-noise-cleaning':
         return <ICANoiseCleaningDashboard />
       case 'fim':

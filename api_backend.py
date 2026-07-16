@@ -10660,6 +10660,31 @@ async def gad7_definitions():
     return _json_safe(gad7.definitions())
 
 
+# ── QOLIE-31 Dashboard ──────────────────────────────────────────────────
+@app.get("/api/qolie31-dashboard/overview")
+async def qolie31_overview():
+    """QOLIE-31 overview — total assessments, severity distribution,
+    avg QoL score, per-patient latest scores, active alerts (score < 50)."""
+    import scripts.qolie31_dashboard as qolie
+    return _json_safe(qolie.overview())
+
+
+@app.get("/api/qolie31-dashboard/breakdown")
+async def qolie31_breakdown():
+    """QOLIE-31 breakdown — per-domain scores, severity transitions,
+    monthly trend, per-patient assessment history."""
+    import scripts.qolie31_dashboard as qolie
+    return _json_safe(qolie.breakdown())
+
+
+@app.get("/api/qolie31-dashboard/definitions")
+async def qolie31_definitions():
+    """QOLIE-31 definitions — domains, severity tiers, clinical notes,
+    epilepsy QoL relevance, MCID, treatment response criteria."""
+    import scripts.qolie31_dashboard as qolie
+    return _json_safe(qolie.definitions())
+
+
 # =============================================================================
 # CLINICAL PROCESS FLOWCHARTS ENDPOINTS
 # =============================================================================

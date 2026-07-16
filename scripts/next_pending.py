@@ -60,6 +60,7 @@ BUILDABLE = [
 # transaction_audit (Transaction Audit Trail Dashboard — real transaction_log 1360 rows, 27 components, 26 actions, 8 actors, daily volume trends, human vs system breakdown, hourly patterns, 3 endpoints verified 200, TransactionAuditDashboard.jsx + nav wired)
 # emergency_sos (Emergency SOS Dashboard — real emergency_sos_events 41 rows + emergency_contacts 30 rows, 26 patients, 5 event types, 4 trigger methods, 5 outcomes, response time analytics, contact coverage + stale verification, 3 endpoints verified 200, EmergencySOSDashboard.jsx + nav wired)
 # referral_triage (Referral Triage Dashboard — real referral_records 84 rows, 30+ patients, 4 urgency levels, 9 referral reasons, 7 sources, 5 providers, triage scoring + timeline + provider workload, 3 endpoints verified 200, ReferralTriageDashboard.jsx + nav wired)
+# qolie31 (QOLIE-31 Quality of Life Dashboard — real assessments 23 rows, 23 patients, 7 QoL domains (Seizure Worry/Overall QoL/Emotional Well-being/Energy-Fatigue/Cognitive Functioning/Medication Effects/Social Function), 4 severity tiers (Poor/Fair/Good/Excellent), domain comparison, severity transitions, monthly trend, 3 endpoints verified 200, QOLIE31Dashboard.jsx + nav wired)
 BLOCKED = ["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
