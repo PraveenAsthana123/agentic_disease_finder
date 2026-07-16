@@ -323,6 +323,7 @@ import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import DailyPlansDashboard from './components/DailyPlansDashboard'
 import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
 import PatientAppointmentsDashboard from './components/PatientAppointmentsDashboard'
+import RehabPlansDashboard from './components/RehabPlansDashboard'
 import OpenClawDashboard from './components/OpenClawDashboard'
 
 // API Base URL
@@ -736,7 +737,8 @@ function App() {
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'daily-plans', label: 'Daily Plans' },
     { id: 'medication-refills', label: 'Medication Refills' },
-    { id: 'patient-appointments', label: 'Patient Appointments' }
+    { id: 'patient-appointments', label: 'Patient Appointments' },
+    { id: 'rehab-plans', label: 'Rehabilitation Plans' }
   ]
 
   // API Calls
@@ -2421,6 +2423,8 @@ function App() {
         return <MedicationRefillsDashboard />
       case 'patient-appointments':
         return <PatientAppointmentsDashboard />
+      case 'rehab-plans':
+        return <RehabPlansDashboard />
       default:
         return renderClassificationTab()
     }

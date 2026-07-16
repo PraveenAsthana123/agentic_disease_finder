@@ -11476,6 +11476,34 @@ async def patient_appointments_definitions():
     return _json_safe(pad.definitions())
 
 
+# ── Rehabilitation Plans Dashboard ────────────────────────────────────
+# Rehab goal-tracking analytics: progress, sessions, goal categories,
+# therapist notes, patient outcomes. Real rehab_plans table (311 rows, 30 patients).
+
+@app.get("/api/rehab-plans/overview")
+async def rehab_plans_overview():
+    """Rehab plans overview — totals, status distribution, goal category breakdown,
+    progress stats, session completion rate, monthly trend."""
+    import scripts.rehab_plans_dashboard as rpd
+    return _json_safe(rpd.overview())
+
+
+@app.get("/api/rehab-plans/breakdown")
+async def rehab_plans_breakdown():
+    """Rehab plans breakdown — per-patient summary, per-category detail,
+    attention-needed plans, high/low performers, recent updates."""
+    import scripts.rehab_plans_dashboard as rpd
+    return _json_safe(rpd.breakdown())
+
+
+@app.get("/api/rehab-plans/definitions")
+async def rehab_plans_definitions():
+    """Rehab plans definitions — goal category descriptions, status definitions,
+    progress milestones, session guidelines, clinical glossary."""
+    import scripts.rehab_plans_dashboard as rpd
+    return _json_safe(rpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
