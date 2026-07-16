@@ -11661,6 +11661,35 @@ async def business_workflows_definitions():
     return _json_safe(bwd.definitions())
 
 
+# ── EEG Channel Quality Dashboard ─────────────────────────────────────
+# Real data: channel_quality (30 rows, 30 patients) — per-channel impedance
+# and SNR measurements across the standard 10-20 EEG montage (19 channels),
+# with quality grading and clinical threshold analysis.
+
+@app.get("/api/channel-quality/overview")
+async def channel_quality_overview():
+    """Channel quality overview — total recordings, avg impedance/SNR,
+    grade distributions, per-channel averages, monthly trend."""
+    import scripts.channel_quality_dashboard as cqd
+    return _json_safe(cqd.overview())
+
+
+@app.get("/api/channel-quality/breakdown")
+async def channel_quality_breakdown():
+    """Channel quality breakdown — per-patient summary, poor channel alerts,
+    channel heatmaps, impedance vs SNR scatter data."""
+    import scripts.channel_quality_dashboard as cqd
+    return _json_safe(cqd.breakdown())
+
+
+@app.get("/api/channel-quality/definitions")
+async def channel_quality_definitions():
+    """Channel quality definitions — impedance/quality grade thresholds,
+    10-20 channel positions, clinical glossary, ACNS guidelines."""
+    import scripts.channel_quality_dashboard as cqd
+    return _json_safe(cqd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

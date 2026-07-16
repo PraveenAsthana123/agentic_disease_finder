@@ -331,6 +331,7 @@ import PatientAppointmentsDashboard from './components/PatientAppointmentsDashbo
 import RehabPlansDashboard from './components/RehabPlansDashboard'
 import OpenClawDashboard from './components/OpenClawDashboard'
 import AdvisorIssuesDashboard from './components/AdvisorIssuesDashboard'
+import ChannelQualityDashboard from './components/ChannelQualityDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -750,7 +751,8 @@ function App() {
     { id: 'medication-refills', label: 'Medication Refills' },
     { id: 'patient-appointments', label: 'Patient Appointments' },
     { id: 'rehab-plans', label: 'Rehabilitation Plans' },
-    { id: 'advisor-issues', label: 'Advisor Issues' }
+    { id: 'advisor-issues', label: 'Advisor Issues' },
+    { id: 'channel-quality', label: 'EEG Channel Quality' }
   ]
 
   // API Calls
@@ -2449,6 +2451,8 @@ function App() {
         return <RehabPlansDashboard />
       case 'advisor-issues':
         return <AdvisorIssuesDashboard />
+      case 'channel-quality':
+        return <ChannelQualityDashboard />
       default:
         return renderClassificationTab()
     }
