@@ -11690,6 +11690,33 @@ async def channel_quality_definitions():
     return _json_safe(cqd.definitions())
 
 
+# Real data: telehealth_sessions (109 rows, 30 patients, 6 providers) —
+# session types, connection quality, satisfaction, platform usage, tech issues.
+
+@app.get("/api/telehealth/overview")
+async def telehealth_overview():
+    """Telehealth overview — total sessions, avg duration/satisfaction,
+    session type distribution, quality distribution, monthly trend."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.overview())
+
+
+@app.get("/api/telehealth/breakdown")
+async def telehealth_breakdown():
+    """Telehealth breakdown — per-provider stats, per-patient sessions,
+    platform quality comparison, recent sessions table."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.breakdown())
+
+
+@app.get("/api/telehealth/definitions")
+async def telehealth_definitions():
+    """Telehealth definitions — session types, connection quality levels,
+    satisfaction scale, KPI definitions, clinical references."""
+    import scripts.telehealth_dashboard as thd
+    return _json_safe(thd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
