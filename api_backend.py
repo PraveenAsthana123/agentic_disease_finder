@@ -11504,6 +11504,30 @@ async def rehab_plans_definitions():
     return _json_safe(rpd.definitions())
 
 
+@app.get("/api/advisor-issues/overview")
+async def advisor_issues_overview():
+    """Advisor issues overview — totals, severity distribution, surface breakdown,
+    status counts, open-issue rate, scan timeline."""
+    import scripts.advisor_issues_dashboard as aid
+    return _json_safe(aid.overview())
+
+
+@app.get("/api/advisor-issues/breakdown")
+async def advisor_issues_breakdown():
+    """Advisor issues breakdown — full issue list, open issues, surface-severity
+    cross-tabulation, per-surface summary."""
+    import scripts.advisor_issues_dashboard as aid
+    return _json_safe(aid.breakdown())
+
+
+@app.get("/api/advisor-issues/definitions")
+async def advisor_issues_definitions():
+    """Advisor issues definitions — severity tiers, surface categories,
+    status definitions, advisor agent description, clinical glossary."""
+    import scripts.advisor_issues_dashboard as aid
+    return _json_safe(aid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

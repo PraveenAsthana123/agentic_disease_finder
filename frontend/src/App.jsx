@@ -325,6 +325,7 @@ import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
 import PatientAppointmentsDashboard from './components/PatientAppointmentsDashboard'
 import RehabPlansDashboard from './components/RehabPlansDashboard'
 import OpenClawDashboard from './components/OpenClawDashboard'
+import AdvisorIssuesDashboard from './components/AdvisorIssuesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -738,7 +739,8 @@ function App() {
     { id: 'daily-plans', label: 'Daily Plans' },
     { id: 'medication-refills', label: 'Medication Refills' },
     { id: 'patient-appointments', label: 'Patient Appointments' },
-    { id: 'rehab-plans', label: 'Rehabilitation Plans' }
+    { id: 'rehab-plans', label: 'Rehabilitation Plans' },
+    { id: 'advisor-issues', label: 'Advisor Issues' }
   ]
 
   // API Calls
@@ -2425,6 +2427,8 @@ function App() {
         return <PatientAppointmentsDashboard />
       case 'rehab-plans':
         return <RehabPlansDashboard />
+      case 'advisor-issues':
+        return <AdvisorIssuesDashboard />
       default:
         return renderClassificationTab()
     }
