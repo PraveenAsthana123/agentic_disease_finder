@@ -11528,6 +11528,31 @@ async def advisor_issues_definitions():
     return _json_safe(aid.definitions())
 
 
+# ── Hospitalization Dashboard ─────────────────────────────────────
+@app.get("/api/hospitalization/overview")
+async def hospitalization_overview():
+    """Hospitalization overview — admissions, LOS, readmission rate,
+    seizure-free discharge rate, ward/type/reason distributions, monthly trend."""
+    import scripts.hospitalization_dashboard as hd
+    return _json_safe(hd.overview())
+
+
+@app.get("/api/hospitalization/breakdown")
+async def hospitalization_breakdown():
+    """Per-patient hospitalization profile, currently admitted, recent discharges,
+    physician stats, complication summary."""
+    import scripts.hospitalization_dashboard as hd
+    return _json_safe(hd.breakdown())
+
+
+@app.get("/api/hospitalization/definitions")
+async def hospitalization_definitions():
+    """Hospitalization definitions — admission types, reasons, wards,
+    disposition types, clinical glossary."""
+    import scripts.hospitalization_dashboard as hd
+    return _json_safe(hd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

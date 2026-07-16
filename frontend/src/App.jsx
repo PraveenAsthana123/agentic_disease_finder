@@ -250,6 +250,7 @@ import AssessmentDashboard from './components/AssessmentDashboard'
 import EpilepsyBoardDashboard from './components/EpilepsyBoardDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
 import ReferralTriageDashboard from './components/ReferralTriageDashboard'
+import HospitalizationDashboard from './components/HospitalizationDashboard'
 import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
 import ArtifactDetectionDashboard from './components/ArtifactDetectionDashboard'
@@ -665,6 +666,7 @@ function App() {
     { id: 'epilepsy-board', label: 'Epilepsy Board' },
     { id: 'consent-management', label: 'Consent Management' },
     { id: 'referral-triage', label: 'Referral Triage' },
+    { id: 'hospitalization', label: 'Hospitalization' },
     { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
     { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
     { id: 'artifact-detection', label: 'Artifact Detection' },
@@ -2277,6 +2279,8 @@ function App() {
         return <ConsentManagementDashboard />
       case 'referral-triage':
         return <ReferralTriageDashboard />
+      case 'hospitalization':
+        return <HospitalizationDashboard />
       case 'rag-metadata-filter':
         return <RAGMetadataFilterDashboard />
       case 'recovery-trajectory':
