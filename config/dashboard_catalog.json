@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-07-13",
+  "updated_at": "2026-07-16",
   "phases": [
     {
       "phase": 1,
@@ -73,7 +73,7 @@
     {
       "phase": 2,
       "name": "LLM & Model Operations",
-      "count": 40,
+      "count": 10,
       "dashboards": [
         {
           "name": "Model Comparison Dashboard",
@@ -118,6 +118,11 @@
           "name": "Dataset Requirements Tracker",
           "status": "built",
           "maps_to": "/api/dataset-requirements/overview + /api/dataset-requirements/breakdown + /api/dataset-requirements/definitions"
+        },
+        {
+          "name": "Referral Triage Dashboard",
+          "status": "built",
+          "maps_to": "/api/referral-triage/overview + /api/referral-triage/breakdown + /api/referral-triage/definitions"
         }
       ]
     },
