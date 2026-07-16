@@ -166,6 +166,77 @@ def _avg(values):
     return round(sum(values) / len(values), 2) if values else 0
 
 
+def _seed_camera_monitoring(conn, patient_ids, rng, base_date):
+    """Seed camera_monitoring_sessions (~80 rows, 27 patients)."""
+    camera_locations = ['bedroom', 'living_room', 'emu_room', 'hallway', 'kitchen']
+    camera_location_weights = [0.35, 0.15, 0.30, 0.10, 0.10]
+    session_types = ['continuous', 'scheduled', 'event_triggered']
+    session_type_weights = [0.40, 0.35, 0.25]
+    recording_qualities = ['excellent', 'good', 'fair', 'poor']
+    recording_quality_weights = [0.30, 0.45, 0.20, 0.05]
+    session_statuses = ['completed', 'active', 'interrupted', 'failed']
+    session_status_weights = [0.70, 0.15, 0.10, 0.05]
+    camera_notes_pool = [
+        'Nocturnal monitoring — no events detected',
+        'Tonic-clonic seizure captured on video, sent to neurologist',
+        'Patient repositioned camera for better angle',
+        'Night vision activated automatically at dusk',
+        'Brief myoclonic jerk detected, no intervention needed',
+        'EMU continuous monitoring — day 2 of 5-day stay',
+        'False alarm triggered by pet movement',
+        'Seizure cluster captured — 3 events in 2 hours',
+        'Video quality degraded due to low light',
+        'Event-triggered recording — movement detected during sleep',
+        'Routine scheduled recording — no abnormalities',
+        'Camera offline briefly due to Wi-Fi interruption',
+    ]
+
+    # Use 27 patients for camera monitoring (25+ required)
+    camera_patient_ids = patient_ids[:27]
+    # Distribute ~80 rows: 2-4 sessions per patient
+    for pid in camera_patient_ids:
+        num_sessions = rng.choices([2, 3, 4], weights=[0.20, 0.50, 0.30])[0]
+        for _ in range(num_sessions):
+            day_offset = rng.randint(-90, 0)
+            session_date = (base_date + timedelta(days=day_offset)).strftime('%Y-%m-%d')
+            camera_location = rng.choices(camera_locations, weights=camera_location_weights)[0]
+            session_type = rng.choices(session_types, weights=session_type_weights)[0]
+
+            # EMU sessions tend to be longer (8-24h), home sessions 4-12h
+            if camera_location == 'emu_room':
+                duration_hours = round(rng.uniform(8.0, 24.0), 1)
+                session_type = 'continuous'  # EMU is always continuous
+            else:
+                duration_hours = round(rng.uniform(4.0, 12.0), 1)
+
+            events_detected = rng.choices(range(9), weights=[0.30, 0.25, 0.20, 0.10, 0.07, 0.04, 0.02, 0.01, 0.01])[0]
+            seizure_events = min(rng.choices([0, 1, 2, 3], weights=[0.55, 0.30, 0.10, 0.05])[0], events_detected)
+            movement_events = min(rng.randint(0, 5), max(events_detected - seizure_events, 0))
+            false_alarms = max(events_detected - seizure_events - movement_events, 0)
+            if false_alarms > 3:
+                false_alarms = rng.randint(0, 3)
+
+            alert_sent = 1 if seizure_events > 0 else rng.choices([0, 1], weights=[0.70, 0.30])[0]
+            response_time_seconds = rng.randint(30, 600) if alert_sent else None
+            recording_quality = rng.choices(recording_qualities, weights=recording_quality_weights)[0]
+            night_vision = 1 if camera_location == 'bedroom' else rng.choices([0, 1], weights=[0.60, 0.40])[0]
+            status = rng.choices(session_statuses, weights=session_status_weights)[0]
+            notes = rng.choice(camera_notes_pool)
+
+            conn.execute(
+                '''INSERT INTO camera_monitoring_sessions
+                (patient_id, session_date, camera_location, session_type,
+                 duration_hours, events_detected, seizure_events, movement_events,
+                 false_alarms, alert_sent, response_time_seconds, recording_quality,
+                 night_vision, status, notes, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime("now"))''',
+                (pid, session_date, camera_location, session_type,
+                 duration_hours, events_detected, seizure_events, movement_events,
+                 false_alarms, alert_sent, response_time_seconds, recording_quality,
+                 night_vision, status, notes)
+            )
+
+
 def _ensure_tables():
     """Create all self-service portal tables and seed them if empty."""
     if not os.path.exists(DB):
@@ -272,11 +343,48 @@ def _ensure_tables():
             created_at TEXT
         )''')
 
+        conn.execute('''CREATE TABLE IF NOT EXISTS camera_monitoring_sessions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            patient_id TEXT,
+            session_date TEXT,
+            camera_location TEXT,
+            session_type TEXT,
+            duration_hours REAL,
+            events_detected INTEGER,
+            seizure_events INTEGER,
+            movement_events INTEGER,
+            false_alarms INTEGER,
+            alert_sent INTEGER,
+            response_time_seconds INTEGER,
+            recording_quality TEXT,
+            night_vision INTEGER,
+            status TEXT,
+            notes TEXT,
+            created_at TEXT
+        )''')
+
         conn.commit()
 
         # Check if already seeded
         count = conn.execute('SELECT COUNT(*) FROM patient_appointments').fetchone()[0]
         if count > 0:
+            # Core tables already seeded — check camera_monitoring_sessions separately
+            camera_count = conn.execute('SELECT COUNT(*) FROM camera_monitoring_sessions').fetchone()[0]
+            if camera_count > 0:
+                return
+            # Need to seed camera_monitoring_sessions only
+            patients = conn.execute('SELECT patient_id FROM patients').fetchall()
+            patients = [dict(p) for p in patients]
+            epat = [p for p in patients if p['patient_id'].startswith('EPAT')]
+            others = [p for p in patients if not p['patient_id'].startswith('EPAT')]
+            ordered = epat + others
+            target_patients = ordered[:30]
+            patient_ids = [p['patient_id'] for p in target_patients]
+            rng = random.Random(99)
+            base_date = datetime(2025, 6, 15)
+            # Jump to camera seeding (skip core tables)
+            _seed_camera_monitoring(conn, patient_ids, rng, base_date)
+            conn.commit()
             return
 
         # Get real patient IDs
@@ -581,6 +689,9 @@ def _ensure_tables():
                      sleep_logged, mood_logged, seizure_logged, plan_completion_pct,
                      ai_suggestion)
                 )
+
+        # --- Seed camera_monitoring_sessions (~80 rows, 25+ patients) ---
+        _seed_camera_monitoring(conn, patient_ids, rng, base_date)
 
         conn.commit()
     except Exception:

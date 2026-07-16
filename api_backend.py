@@ -11578,6 +11578,35 @@ async def hospitalization_definitions():
     return _json_safe(hd.definitions())
 
 
+# ── Camera Seizure Monitoring Dashboard ──────────────────────────────
+# Real data: camera_monitoring_sessions (~80 rows, 27 patients) — video
+# camera seizure monitoring analytics with detection events, response times,
+# and recording quality tracking.
+
+@app.get("/api/camera-seizure-monitoring/overview")
+async def camera_seizure_monitoring_overview():
+    """Camera seizure monitoring overview — session counts, location distribution,
+    seizure detection rate, response time stats, recording quality."""
+    import scripts.camera_seizure_monitoring_dashboard as csm
+    return _json_safe(csm.overview())
+
+
+@app.get("/api/camera-seizure-monitoring/breakdown")
+async def camera_seizure_monitoring_breakdown():
+    """Camera seizure monitoring breakdown — per-patient profiles, monthly trends,
+    location analysis, recent/active sessions."""
+    import scripts.camera_seizure_monitoring_dashboard as csm
+    return _json_safe(csm.breakdown())
+
+
+@app.get("/api/camera-seizure-monitoring/definitions")
+async def camera_seizure_monitoring_definitions():
+    """Camera seizure monitoring definitions — clinical glossary, camera locations,
+    session types, quality tiers, monitoring guidelines."""
+    import scripts.camera_seizure_monitoring_dashboard as csm
+    return _json_safe(csm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

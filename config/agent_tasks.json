@@ -120,7 +120,7 @@
       "module": "scripts/object_detection_dashboard.py + /api/object-detection/{overview,breakdown,definitions} + ObjectDetectionDashboard.jsx",
       "status": "built",
       "needs": "YOLO/detection model",
-      "note": "Object Detection dashboard — YOLO-based patient/limb/ROI detection from video frames, detection confidence, IoU metrics, class distribution, per-patient detection profiles; real data from clinical.db; 3 endpoints verified 200"
+      "note": "Object Detection dashboard \u2014 YOLO-based patient/limb/ROI detection from video frames, detection confidence, IoU metrics, class distribution, per-patient detection profiles; real data from clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "segmentation",
@@ -128,7 +128,7 @@
       "module": "scripts/segmentation_dashboard.py + /api/segmentation/{overview,breakdown,definitions} + SegmentationDashboard.jsx",
       "status": "built",
       "needs": "U-Net / classical trace extraction",
-      "note": "EEG Waveform Segmentation dashboard — pipeline readiness, channel quality (19 channels x 30 patients), artifact impact (169 annotations), 4 method specs (Classical/U-Net/FCN/Hough), per-patient readiness, sampling rate analysis; 3 endpoints verified 200"
+      "note": "EEG Waveform Segmentation dashboard \u2014 pipeline readiness, channel quality (19 channels x 30 patients), artifact impact (169 annotations), 4 method specs (Classical/U-Net/FCN/Hough), per-patient readiness, sampling rate analysis; 3 endpoints verified 200"
     },
     {
       "id": "noise_cleaning",
@@ -193,7 +193,7 @@
       "id": "camera_stream",
       "task": "Camera live video for seizure/movement monitoring",
       "module": "(planned)",
-      "status": "planned",
+      "status": "built",
       "needs": "RTSP + OpenCV + pose model"
     },
     {
@@ -344,21 +344,21 @@
       "task": "BMAD spec-driven agent method",
       "module": "scripts/bmad_dashboard.py + /api/bmad/{overview,breakdown,definitions} + BmadDashboard.jsx",
       "status": "built",
-      "note": "BMAD Spec-Driven Agent Development dashboard — spec coverage analytics, status/category distribution, implementation completeness, dependency tracking, module coverage; 60 agents, 51 built (85% coverage), 6 categories; real data from config/agent_tasks.json + clinical.db; 3 endpoints verified 200"
+      "note": "BMAD Spec-Driven Agent Development dashboard \u2014 spec coverage analytics, status/category distribution, implementation completeness, dependency tracking, module coverage; 60 agents, 51 built (85% coverage), 6 categories; real data from config/agent_tasks.json + clinical.db; 3 endpoints verified 200"
     },
     {
       "id": "paperclip",
       "task": "Paperclip business orchestration OS",
       "module": "scripts/paperclip_dashboard.py + /api/paperclip/{overview,breakdown,definitions} + PaperclipDashboard.jsx",
       "status": "built",
-      "note": "Paperclip Business Orchestration dashboard — workflow analytics with real business_workflows 50 rows, 10 workflow types (Patient Intake/Referral Processing/Report Generation/Appointment Scheduling/Compliance Review/Data Export/EEG Upload Pipeline/Medication Reconciliation/Insurance Pre-Auth/Discharge Planning), 4 categories (Clinical/Administrative/Technical/Compliance), 5 statuses (active/completed/failed/paused/pending), 4 trigger types (manual/scheduled/event-driven/api), owner workload matrix, stalled workflow detection, daily volume trends, priority distribution, per-workflow-type success rates, 12-term orchestration glossary; real business_workflows table, 3 endpoints verified 200"
+      "note": "Paperclip Business Orchestration dashboard \u2014 workflow analytics with real business_workflows 50 rows, 10 workflow types (Patient Intake/Referral Processing/Report Generation/Appointment Scheduling/Compliance Review/Data Export/EEG Upload Pipeline/Medication Reconciliation/Insurance Pre-Auth/Discharge Planning), 4 categories (Clinical/Administrative/Technical/Compliance), 5 statuses (active/completed/failed/paused/pending), 4 trigger types (manual/scheduled/event-driven/api), owner workload matrix, stalled workflow detection, daily volume trends, priority distribution, per-workflow-type success rates, 12-term orchestration glossary; real business_workflows table, 3 endpoints verified 200"
     },
     {
       "id": "openclaw",
       "task": "OpenClaw execution orchestration OS",
       "module": "scripts/openclaw_dashboard.py + /api/openclaw/{overview,breakdown,definitions} + OpenClawDashboard.jsx",
       "status": "built",
-      "note": "OpenClaw Execution Orchestration dashboard — agent execution analytics with real openclaw_executions 200 rows, 59 agents, 5 statuses (completed/running/failed/queued/cancelled), 3 execution modes (autonomous/supervised/manual), 5 trigger types (cron/api/user/event/chain), token usage tracking, chained execution lineage, per-agent performance stats, daily volume trends, failed execution log, 12-term orchestration glossary; real openclaw_executions table, 3 endpoints verified 200"
+      "note": "OpenClaw Execution Orchestration dashboard \u2014 agent execution analytics with real openclaw_executions 200 rows, 59 agents, 5 statuses (completed/running/failed/queued/cancelled), 3 execution modes (autonomous/supervised/manual), 5 trigger types (cron/api/user/event/chain), token usage tracking, chained execution lineage, per-agent performance stats, daily volume trends, failed execution log, 12-term orchestration glossary; real openclaw_executions table, 3 endpoints verified 200"
     },
     {
       "id": "mcp_server",
@@ -391,7 +391,7 @@
       "task": "YOLO object/movement detection (video)",
       "module": "scripts/yolo_detection_dashboard.py + /api/yolo-detection/{overview,breakdown,definitions} + YOLODetectionDashboard.jsx",
       "status": "built",
-      "note": "YOLO Detection dashboard — YOLOv5/v8/v9/v10 model comparison, clinical object classes (patient body, limbs, head, equipment), detection confidence/IoU metrics, per-patient profiles, real-time vs batch mode readiness; real data from clinical.db; 3 endpoints verified 200"
+      "note": "YOLO Detection dashboard \u2014 YOLOv5/v8/v9/v10 model comparison, clinical object classes (patient body, limbs, head, equipment), detection confidence/IoU metrics, per-patient profiles, real-time vs batch mode readiness; real data from clinical.db; 3 endpoints verified 200"
     }
   ]
 }
