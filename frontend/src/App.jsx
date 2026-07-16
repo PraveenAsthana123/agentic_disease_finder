@@ -319,6 +319,7 @@ import SystemHealthDashboard from './components/SystemHealthDashboard'
 import TransactionAuditDashboard from './components/TransactionAuditDashboard'
 import EmergencySOSDashboard from './components/EmergencySOSDashboard'
 import CameraSeizureMonitoringDashboard from './components/CameraSeizureMonitoringDashboard'
+import MRIFindingsDashboard from './components/MRIFindingsDashboard'
 import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
@@ -737,6 +738,7 @@ function App() {
     { id: 'transaction-audit', label: 'Transaction Audit' },
     { id: 'emergency-sos', label: 'Emergency SOS' },
     { id: 'camera-seizure-monitoring', label: 'Camera Seizure Monitoring' },
+    { id: 'mri-findings', label: 'MRI Findings' },
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'openclaw', label: 'OpenClaw Execution' },
@@ -2421,6 +2423,8 @@ function App() {
         return <EmergencySOSDashboard />
       case 'camera-seizure-monitoring':
         return <CameraSeizureMonitoringDashboard />
+      case 'mri-findings':
+        return <MRIFindingsDashboard />
       case 'feature-flags':
         return <FeatureFlagsDashboard />
       case 'paperclip':

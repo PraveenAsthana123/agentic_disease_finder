@@ -11607,6 +11607,35 @@ async def camera_seizure_monitoring_definitions():
     return _json_safe(csm.definitions())
 
 
+# ── MRI Findings Dashboard ───────────────────────────────────────
+# Real data: mri_findings (40 rows, 40 patients) — structural MRI
+# lesion classification, location mapping, laterality, hippocampal
+# sclerosis tracking, radiologist confidence.
+
+@app.get("/api/mri-findings/overview")
+async def mri_findings_overview():
+    """MRI findings overview — total scans, lesional rate, HS rate,
+    volume asymmetry, confidence, lesion/location/laterality distributions, trend."""
+    import scripts.mri_findings_dashboard as mfd
+    return _json_safe(mfd.overview())
+
+
+@app.get("/api/mri-findings/breakdown")
+async def mri_findings_breakdown():
+    """MRI findings breakdown — per-patient findings table, HS patients,
+    low-confidence alerts, lesion x location/laterality cross-tabs."""
+    import scripts.mri_findings_dashboard as mfd
+    return _json_safe(mfd.breakdown())
+
+
+@app.get("/api/mri-findings/definitions")
+async def mri_findings_definitions():
+    """MRI findings definitions — lesion types, quality tiers, classification
+    categories, laterality definitions, clinical glossary."""
+    import scripts.mri_findings_dashboard as mfd
+    return _json_safe(mfd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
