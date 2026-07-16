@@ -10635,6 +10635,31 @@ async def phq9_definitions():
     return _json_safe(phq.definitions())
 
 
+# ── GAD-7 Dashboard ────────────────────────────────────────────────────
+@app.get("/api/gad7-dashboard/overview")
+async def gad7_overview():
+    """GAD-7 overview — total assessments, severity distribution,
+    moderate+ rate, per-patient latest scores, active alerts."""
+    import scripts.gad7_dashboard as gad7
+    return _json_safe(gad7.overview())
+
+
+@app.get("/api/gad7-dashboard/breakdown")
+async def gad7_breakdown():
+    """GAD-7 breakdown — per-item endorsement rates, severity transitions,
+    monthly trend, per-patient assessment history."""
+    import scripts.gad7_dashboard as gad7
+    return _json_safe(gad7.breakdown())
+
+
+@app.get("/api/gad7-dashboard/definitions")
+async def gad7_definitions():
+    """GAD-7 definitions — items, severity tiers, clinical notes,
+    epilepsy relevance, AED effects, treatment response criteria."""
+    import scripts.gad7_dashboard as gad7
+    return _json_safe(gad7.definitions())
+
+
 # =============================================================================
 # CLINICAL PROCESS FLOWCHARTS ENDPOINTS
 # =============================================================================

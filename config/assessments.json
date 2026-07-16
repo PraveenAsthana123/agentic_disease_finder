@@ -1,13 +1,13 @@
 {
  "title": "Standardized Clinical Assessment Instruments (per role)",
  "note": "Real validated instruments with published scoring + interpretation bands. Auto-scored. CRUD: create/view/edit/delete completed assessments per patient.",
- "updated_at": "2026-06-24",
+ "updated_at": "2026-07-16",
  "instruments": [
   {
    "id": "MOCA",
    "name": "Montreal Cognitive Assessment (MoCA)",
    "role": "Clinical Psychologist",
-   "icon": "\ud83e\udde9",
+   "icon": "🧩",
    "max": 30,
    "scoring": "sum",
    "direction": "higher_better",
@@ -80,7 +80,7 @@
    "id": "PHQ9",
    "name": "Patient Health Questionnaire-9 (PHQ-9)",
    "role": "Psychiatrist",
-   "icon": "\ud83d\udcac",
+   "icon": "💬",
    "max": 27,
    "scoring": "sum",
    "direction": "lower_better",
@@ -139,7 +139,7 @@
    "id": "GAD7",
    "name": "Generalized Anxiety Disorder-7 (GAD-7)",
    "role": "Psychiatrist",
-   "icon": "\ud83d\udcac",
+   "icon": "💬",
    "max": 21,
    "scoring": "sum",
    "direction": "lower_better",
@@ -183,13 +183,20 @@
      "label": "Severe",
      "level": "severe"
     }
+   ],
+   "status": "built",
+   "dashboard": "GAD7Dashboard.jsx",
+   "endpoints": [
+    "/api/gad7-dashboard/overview",
+    "/api/gad7-dashboard/breakdown",
+    "/api/gad7-dashboard/definitions"
    ]
   },
   {
    "id": "NDDIE",
    "name": "Neurological Disorders Depression Inventory for Epilepsy (NDDI-E)",
    "role": "Neurologist",
-   "icon": "\ud83e\udde0",
+   "icon": "🧠",
    "max": 24,
    "scoring": "sum",
    "direction": "lower_better",
@@ -227,7 +234,7 @@
    "id": "COPM",
    "name": "Canadian Occupational Performance Measure (COPM)",
    "role": "Occupational Therapist",
-   "icon": "\ud83d\udd90\ufe0f",
+   "icon": "🖐️",
    "max": 10,
    "scoring": "mean",
    "direction": "higher_better",
@@ -263,7 +270,7 @@
     {
      "min": 1,
      "max": 3.99,
-     "label": "Poor \u2014 intervention needed",
+     "label": "Poor — intervention needed",
      "level": "severe"
     }
    ],
@@ -273,7 +280,7 @@
    "id": "MMSE",
    "name": "Mini-Mental State Examination (MMSE)",
    "role": "Neurologist",
-   "icon": "\ud83e\udde0",
+   "icon": "🧠",
    "max": 30,
    "scoring": "sum",
    "direction": "higher_better",
@@ -325,7 +332,7 @@
    "id": "QOLIE31",
    "name": "Quality of Life in Epilepsy (QOLIE-31)",
    "role": "Epileptologist",
-   "icon": "\u2764\ufe0f",
+   "icon": "❤️",
    "max": 100,
    "scoring": "mean",
    "direction": "higher_better",
@@ -370,7 +377,7 @@
    "id": "BARTHEL",
    "name": "Barthel Index (ADL)",
    "role": "Occupational Therapist",
-   "icon": "\ud83e\uddbd",
+   "icon": "🦽",
    "max": 100,
    "scoring": "sum",
    "direction": "higher_better",
@@ -423,7 +430,7 @@
    "id": "EPWORTH",
    "name": "Epworth Sleepiness Scale (ESS)",
    "role": "Neurologist",
-   "icon": "\ud83d\ude34",
+   "icon": "😴",
    "max": 24,
    "scoring": "sum",
    "direction": "lower_better",
@@ -474,15 +481,35 @@
    "id": "LSSS",
    "name": "Liverpool Seizure Severity Scale (LSSS)",
    "role": "Neurologist",
-   "icon": "\u26a1",
+   "icon": "⚡",
    "max": 80,
    "scoring": "sum",
    "direction": "lower_better",
-   "scale": [1, 2, 3, 4],
+   "scale": [
+    1,
+    2,
+    3,
+    4
+   ],
    "domains": [
-    {"id": "perception_control", "label": "Perception of Control", "max": 12, "items": 3},
-    {"id": "ictal", "label": "Ictal (During Seizure)", "max": 44, "items": 11},
-    {"id": "postictal", "label": "Post-Ictal (After Seizure)", "max": 24, "items": 6}
+    {
+     "id": "perception_control",
+     "label": "Perception of Control",
+     "max": 12,
+     "items": 3
+    },
+    {
+     "id": "ictal",
+     "label": "Ictal (During Seizure)",
+     "max": 44,
+     "items": 11
+    },
+    {
+     "id": "postictal",
+     "label": "Post-Ictal (After Seizure)",
+     "max": 24,
+     "items": 6
+    }
    ],
    "items": [
     "Warning before seizure",
@@ -507,10 +534,30 @@
     "Weakness after seizure"
    ],
    "bands": [
-    {"min": 20, "max": 35, "label": "Mild seizure severity", "level": "mild"},
-    {"min": 36, "max": 50, "label": "Moderate seizure severity", "level": "moderate"},
-    {"min": 51, "max": 65, "label": "Severe seizures", "level": "severe"},
-    {"min": 66, "max": 80, "label": "Very severe seizures", "level": "critical"}
+    {
+     "min": 20,
+     "max": 35,
+     "label": "Mild seizure severity",
+     "level": "mild"
+    },
+    {
+     "min": 36,
+     "max": 50,
+     "label": "Moderate seizure severity",
+     "level": "moderate"
+    },
+    {
+     "min": 51,
+     "max": 65,
+     "label": "Severe seizures",
+     "level": "severe"
+    },
+    {
+     "min": 66,
+     "max": 80,
+     "label": "Very severe seizures",
+     "level": "critical"
+    }
    ],
    "note": "Self-report measure. 20 items scored 1-4 (1=least severe, 4=most severe). Validated for adult epilepsy patients. Lower scores indicate better seizure control."
   }
