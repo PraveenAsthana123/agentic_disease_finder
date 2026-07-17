@@ -11717,6 +11717,35 @@ async def telehealth_definitions():
     return _json_safe(thd.definitions())
 
 
+# ── Wearable Readings Dashboard ─────────────────────────────────────
+# Real data: wearable_readings (900 rows, 30 patients, 30 devices) —
+# daily health readings from wearable devices: heart rate, steps, sleep,
+# SpO2, stress, seizure detection, fall detection, health scores.
+
+@app.get("/api/wearable-readings/overview")
+async def wearable_readings_overview():
+    """Wearable readings overview — total readings/patients/devices, avg HR/steps/sleep/SpO2,
+    seizure/fall events, heart rate distribution, sleep quality, daily trend."""
+    import scripts.wearable_readings_dashboard as wrd
+    return _json_safe(wrd.overview())
+
+
+@app.get("/api/wearable-readings/breakdown")
+async def wearable_readings_breakdown():
+    """Wearable readings breakdown — per-patient summary, high-risk patients,
+    seizure events, recent readings."""
+    import scripts.wearable_readings_dashboard as wrd
+    return _json_safe(wrd.breakdown())
+
+
+@app.get("/api/wearable-readings/definitions")
+async def wearable_readings_definitions():
+    """Wearable readings definitions — clinical glossary, field definitions,
+    thresholds, clinical notes on wearable monitoring in epilepsy."""
+    import scripts.wearable_readings_dashboard as wrd
+    return _json_safe(wrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
