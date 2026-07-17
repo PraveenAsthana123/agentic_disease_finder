@@ -342,6 +342,8 @@ import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 import WearableDevicesDashboard from './components/WearableDevicesDashboard'
 import TriggerLogDashboard from './components/TriggerLogDashboard'
 import SecOpsDashboard from './components/SecOpsDashboard'
+import CaregiverEmergencyDashboard from './components/CaregiverEmergencyDashboard'
+import SeizureSemiologyDashboard from './components/SeizureSemiologyDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -732,6 +734,8 @@ function App() {
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
+    { id: 'seizure-semiology', label: 'Seizure Semiology' },
+    { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
     { id: 'medication-refills', label: 'Medication Refills' },
@@ -774,7 +778,9 @@ function App() {
     { id: 'sec-ops', label: 'SecOps' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
-    { id: 'trigger-logs', label: 'Trigger Logs' }
+    { id: 'trigger-logs', label: 'Trigger Logs' },
+    { id: 'seizure-semiology', label: 'Seizure Semiology' },
+    { id: 'caregiver-emergency', label: 'Caregiver & Emergency' }
   ]
 
   // API Calls
@@ -2411,6 +2417,10 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'seizure-semiology':
+        return <SeizureSemiologyDashboard />
+      case 'caregiver-emergency':
+        return <CaregiverEmergencyDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':
@@ -2499,6 +2509,10 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'seizure-semiology':
+        return <SeizureSemiologyDashboard />
+      case 'caregiver-emergency':
+        return <CaregiverEmergencyDashboard />
       default:
         return renderClassificationTab()
     }
