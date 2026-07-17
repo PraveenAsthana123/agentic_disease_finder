@@ -11904,6 +11904,56 @@ async def trigger_logs_definitions():
     return _json_safe(tld.definitions())
 
 
+# ── Caregiver & Emergency Contact Dashboard ────────────────────
+# Real data: caregivers (30 rows) + emergency_contacts (30 rows), 30 patients,
+# caregiver roles/availability/training/burnout + emergency contact relationships.
+
+@app.get("/api/caregiver-emergency/overview")
+async def caregiver_emergency_overview():
+    """Caregiver & emergency contact overview — training rates, burnout, role/availability distribution."""
+    import scripts.caregiver_emergency_dashboard as ced
+    return _json_safe(ced.overview())
+
+
+@app.get("/api/caregiver-emergency/breakdown")
+async def caregiver_emergency_breakdown():
+    """Caregiver breakdown — per-patient summary, high burnout, untrained, stale contacts."""
+    import scripts.caregiver_emergency_dashboard as ced
+    return _json_safe(ced.breakdown())
+
+
+@app.get("/api/caregiver-emergency/definitions")
+async def caregiver_emergency_definitions():
+    """Caregiver & emergency definitions — roles, training topics, scores, glossary."""
+    import scripts.caregiver_emergency_dashboard as ced
+    return _json_safe(ced.definitions())
+
+
+# ── Referral Triage Dashboard ─────────────────────────────────
+# Real data: referral_records table (84 rows, 41 patients),
+# 4 urgency levels, 6 triage statuses, 7 sources, 9 reasons, 5 providers.
+
+@app.get("/api/referral-triage/overview")
+async def referral_triage_overview():
+    """Referral triage overview — totals, urgency/source distribution, timeline, completion rate."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.overview())
+
+
+@app.get("/api/referral-triage/breakdown")
+async def referral_triage_breakdown():
+    """Referral triage breakdown — KPIs, reason distribution, urgency by source, provider workload, recent referrals."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.breakdown())
+
+
+@app.get("/api/referral-triage/definitions")
+async def referral_triage_definitions():
+    """Referral triage definitions — urgency criteria, triage scoring, glossary, references."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
