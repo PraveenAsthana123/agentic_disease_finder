@@ -340,6 +340,7 @@ import EducationModulesDashboard from './components/EducationModulesDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 import WearableDevicesDashboard from './components/WearableDevicesDashboard'
+import TriggerLogDashboard from './components/TriggerLogDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -728,6 +729,7 @@ function App() {
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
+    { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
     { id: 'medication-refills', label: 'Medication Refills' },
@@ -768,7 +770,8 @@ function App() {
     { id: 'education-modules', label: 'Education Modules' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
-    { id: 'wearable-devices', label: 'Wearable Devices' }
+    { id: 'wearable-devices', label: 'Wearable Devices' },
+    { id: 'trigger-logs', label: 'Trigger Logs' }
   ]
 
   // API Calls
@@ -2403,6 +2406,8 @@ function App() {
         return <IoTAlertsDashboard />
       case 'wearable-devices':
         return <WearableDevicesDashboard />
+      case 'trigger-logs':
+        return <TriggerLogDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':
@@ -2485,6 +2490,8 @@ function App() {
         return <IoTAlertsDashboard />
       case 'wearable-devices':
         return <WearableDevicesDashboard />
+      case 'trigger-logs':
+        return <TriggerLogDashboard />
       default:
         return renderClassificationTab()
     }

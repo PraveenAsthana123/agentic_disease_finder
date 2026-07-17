@@ -11878,6 +11878,32 @@ async def secure_messaging_definitions():
     return _json_safe(smd.definitions())
 
 
+# ── Seizure Trigger Log Dashboard ────────────────────────────────
+# Real data: trigger_logs table — 300 daily diary entries, 30 patients,
+# lifestyle factors (sleep, stress, caffeine, exercise, fatigue),
+# medication adherence, seizure occurrence, and primary trigger analysis.
+
+@app.get("/api/trigger-logs/overview")
+async def trigger_logs_overview():
+    """Trigger log overview — seizure rate, lifestyle KPIs, trigger distribution, monthly trends."""
+    import scripts.trigger_log_dashboard as tld
+    return _json_safe(tld.overview())
+
+
+@app.get("/api/trigger-logs/breakdown")
+async def trigger_logs_breakdown():
+    """Trigger log breakdown — per-patient profiles, recent entries, high-risk days, adherence issues."""
+    import scripts.trigger_log_dashboard as tld
+    return _json_safe(tld.breakdown())
+
+
+@app.get("/api/trigger-logs/definitions")
+async def trigger_logs_definitions():
+    """Trigger log definitions — trigger types, field descriptions, clinical glossary."""
+    import scripts.trigger_log_dashboard as tld
+    return _json_safe(tld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
