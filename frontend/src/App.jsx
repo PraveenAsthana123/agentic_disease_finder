@@ -298,6 +298,7 @@ import StructuredReportingDashboard from './components/StructuredReportingDashbo
 import ReinforcementLearningDashboard from './components/ReinforcementLearningDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import IoTAlertsDashboard from './components/IoTAlertsDashboard'
+import WearableDevicesDashboard from './components/WearableDevicesDashboard'
 import AIIncidentDashboard from './components/AIIncidentDashboard'
 import PreSurgicalEvaluationDashboard from './components/PreSurgicalEvaluationDashboard'
 import MedicationRefillDashboard from './components/MedicationRefillDashboard'
@@ -338,6 +339,7 @@ import WearableReadingsDashboard from './components/WearableReadingsDashboard'
 import EducationModulesDashboard from './components/EducationModulesDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import IoTAlertsDashboard from './components/IoTAlertsDashboard'
+import WearableDevicesDashboard from './components/WearableDevicesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -725,6 +727,7 @@ function App() {
     { id: 'reinforcement-learning', label: 'Reinforcement Learning' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
+    { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
     { id: 'medication-refills', label: 'Medication Refills' },
@@ -764,7 +767,8 @@ function App() {
     { id: 'wearable-readings', label: 'Wearable Readings' },
     { id: 'education-modules', label: 'Education Modules' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
-    { id: 'iot-alerts', label: 'IoT Alerts' }
+    { id: 'iot-alerts', label: 'IoT Alerts' },
+    { id: 'wearable-devices', label: 'Wearable Devices' }
   ]
 
   // API Calls
@@ -2397,6 +2401,8 @@ function App() {
         return <ICD10CodingDashboard />
       case 'iot-alerts':
         return <IoTAlertsDashboard />
+      case 'wearable-devices':
+        return <WearableDevicesDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':
@@ -2477,6 +2483,8 @@ function App() {
         return <ICD10CodingDashboard />
       case 'iot-alerts':
         return <IoTAlertsDashboard />
+      case 'wearable-devices':
+        return <WearableDevicesDashboard />
       default:
         return renderClassificationTab()
     }

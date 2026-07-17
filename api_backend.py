@@ -11825,6 +11825,35 @@ async def icd10_coding_definitions():
     return _json_safe(icd.definitions())
 
 
+# ── Wearable Devices Dashboard ────────────────────────────────────
+# Real data: clinical.db wearable_devices (30 rows, 30 patients) — device fleet
+# analytics: status, battery, connectivity, seizure/fall detection, brand/type
+# distribution, feature coverage across 6 device types and 8 brands.
+
+@app.get("/api/wearable-devices/overview")
+async def wearable_devices_overview():
+    """Wearable devices overview — fleet status, battery, feature coverage,
+    device type/brand/connectivity distribution."""
+    import scripts.wearable_devices_dashboard as wdd
+    return _json_safe(wdd.overview())
+
+
+@app.get("/api/wearable-devices/breakdown")
+async def wearable_devices_breakdown():
+    """Wearable devices breakdown — all devices, low battery, offline,
+    per-patient summary, devices by brand."""
+    import scripts.wearable_devices_dashboard as wdd
+    return _json_safe(wdd.breakdown())
+
+
+@app.get("/api/wearable-devices/definitions")
+async def wearable_devices_definitions():
+    """Wearable devices definitions — device types, statuses, connectivity,
+    monitoring features, glossary, clinical notes."""
+    import scripts.wearable_devices_dashboard as wdd
+    return _json_safe(wdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
