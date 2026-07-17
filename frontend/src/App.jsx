@@ -335,6 +335,7 @@ import AdvisorIssuesDashboard from './components/AdvisorIssuesDashboard'
 import ChannelQualityDashboard from './components/ChannelQualityDashboard'
 import WearableReadingsDashboard from './components/WearableReadingsDashboard'
 import EducationModulesDashboard from './components/EducationModulesDashboard'
+import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -758,7 +759,8 @@ function App() {
     { id: 'advisor-issues', label: 'Advisor Issues' },
     { id: 'channel-quality', label: 'EEG Channel Quality' },
     { id: 'wearable-readings', label: 'Wearable Readings' },
-    { id: 'education-modules', label: 'Education Modules' }
+    { id: 'education-modules', label: 'Education Modules' },
+    { id: 'icd10-coding', label: 'ICD-10 Coding' }
   ]
 
   // API Calls
@@ -2465,6 +2467,8 @@ function App() {
         return <WearableReadingsDashboard />
       case 'education-modules':
         return <EducationModulesDashboard />
+      case 'icd10-coding':
+        return <ICD10CodingDashboard />
       default:
         return renderClassificationTab()
     }

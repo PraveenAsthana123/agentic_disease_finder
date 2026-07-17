@@ -11775,6 +11775,31 @@ async def education_modules_definitions():
     return _json_safe(emd.definitions())
 
 
+# ── ICD-10 Coding Dashboard ─────────────────────────────────────
+@app.get("/api/icd10-coding/overview")
+async def icd10_coding_overview():
+    """ICD-10 coding overview — encounter totals, auto-coded vs confirmed,
+    coding accuracy, code distribution, category distribution, timeline."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.overview())
+
+
+@app.get("/api/icd10-coding/breakdown")
+async def icd10_coding_breakdown():
+    """ICD-10 coding breakdown — recent codings, accuracy by category,
+    rejection reasons, coder workload."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.breakdown())
+
+
+@app.get("/api/icd10-coding/definitions")
+async def icd10_coding_definitions():
+    """ICD-10 coding definitions — ICD-10 chapters, coding statuses,
+    accuracy methodology, glossary."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
