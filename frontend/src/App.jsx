@@ -344,6 +344,7 @@ import TriggerLogDashboard from './components/TriggerLogDashboard'
 import SecOpsDashboard from './components/SecOpsDashboard'
 import CaregiverEmergencyDashboard from './components/CaregiverEmergencyDashboard'
 import SeizureSemiologyDashboard from './components/SeizureSemiologyDashboard'
+import ABPMDashboard from './components/ABPMDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -735,6 +736,7 @@ function App() {
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
+    { id: 'abpm', label: 'ABPM / Holter' },
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
@@ -780,6 +782,7 @@ function App() {
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
+    { id: 'abpm', label: 'ABPM / Holter' },
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' }
   ]
 
@@ -2419,6 +2422,8 @@ function App() {
         return <TriggerLogDashboard />
       case 'seizure-semiology':
         return <SeizureSemiologyDashboard />
+      case 'abpm':
+        return <ABPMDashboard />
       case 'caregiver-emergency':
         return <CaregiverEmergencyDashboard />
       case 'ai-incident':
@@ -2511,6 +2516,8 @@ function App() {
         return <TriggerLogDashboard />
       case 'seizure-semiology':
         return <SeizureSemiologyDashboard />
+      case 'abpm':
+        return <ABPMDashboard />
       case 'caregiver-emergency':
         return <CaregiverEmergencyDashboard />
       default:
