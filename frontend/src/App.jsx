@@ -334,6 +334,7 @@ import OpenClawDashboard from './components/OpenClawDashboard'
 import AdvisorIssuesDashboard from './components/AdvisorIssuesDashboard'
 import ChannelQualityDashboard from './components/ChannelQualityDashboard'
 import WearableReadingsDashboard from './components/WearableReadingsDashboard'
+import EducationModulesDashboard from './components/EducationModulesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -756,7 +757,8 @@ function App() {
     { id: 'rehab-plans', label: 'Rehabilitation Plans' },
     { id: 'advisor-issues', label: 'Advisor Issues' },
     { id: 'channel-quality', label: 'EEG Channel Quality' },
-    { id: 'wearable-readings', label: 'Wearable Readings' }
+    { id: 'wearable-readings', label: 'Wearable Readings' },
+    { id: 'education-modules', label: 'Education Modules' }
   ]
 
   // API Calls
@@ -2461,6 +2463,8 @@ function App() {
         return <ChannelQualityDashboard />
       case 'wearable-readings':
         return <WearableReadingsDashboard />
+      case 'education-modules':
+        return <EducationModulesDashboard />
       default:
         return renderClassificationTab()
     }

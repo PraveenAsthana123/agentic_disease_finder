@@ -11746,6 +11746,35 @@ async def wearable_readings_definitions():
     return _json_safe(wrd.definitions())
 
 
+# ── Education Modules Dashboard ──────────────────────────────────────
+# Real data: education_modules (179 rows, 30 patients) — patient education
+# analytics: completion rates, quiz scores, per-module/per-patient progress,
+# 12 epilepsy education modules, 4 formats (video/article/quiz/interactive).
+
+@app.get("/api/education-modules/overview")
+async def education_modules_overview():
+    """Education modules overview — enrollment stats, completion rates, quiz
+    performance, module distribution, format breakdown, monthly trends."""
+    import scripts.education_modules_dashboard as emd
+    return _json_safe(emd.overview())
+
+
+@app.get("/api/education-modules/breakdown")
+async def education_modules_breakdown():
+    """Education modules breakdown — per-patient progress, per-module completion
+    rates, low-engagement patients, recent enrollments, top quiz performers."""
+    import scripts.education_modules_dashboard as emd
+    return _json_safe(emd.breakdown())
+
+
+@app.get("/api/education-modules/definitions")
+async def education_modules_definitions():
+    """Education modules definitions — clinical glossary, module descriptions,
+    format descriptions, clinical notes on patient education in epilepsy."""
+    import scripts.education_modules_dashboard as emd
+    return _json_safe(emd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
