@@ -11854,6 +11854,30 @@ async def wearable_devices_definitions():
     return _json_safe(wdd.definitions())
 
 
+# ── Secure Messaging — patient-provider messaging analytics ──
+# Real secure_messages table (170 rows), 30 patients, 8 categories, 4 priority levels.
+
+@app.get("/api/secure-messaging/overview")
+async def secure_messaging_overview():
+    """Secure messaging overview — KPIs, direction split, priority/category distribution, trend."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.overview())
+
+
+@app.get("/api/secure-messaging/breakdown")
+async def secure_messaging_breakdown():
+    """Secure messaging breakdown — per-patient summary, category detail, recent messages, unread queue."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.breakdown())
+
+
+@app.get("/api/secure-messaging/definitions")
+async def secure_messaging_definitions():
+    """Secure messaging definitions — categories, priority levels, glossary, clinical notes."""
+    import scripts.secure_messaging_dashboard as smd
+    return _json_safe(smd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
