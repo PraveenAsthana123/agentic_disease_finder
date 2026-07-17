@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-07-16",
+  "updated_at": "2026-07-17",
   "phases": [
     {
       "phase": 1,
@@ -279,6 +279,11 @@
           "name": "OTel LLM Observability Dashboard",
           "status": "built",
           "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx \u2014 OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
+        },
+        {
+          "name": "SecOps Dashboard",
+          "status": "built",
+          "maps_to": "/api/sec-ops/{overview,breakdown,definitions} + /sec-ops"
         }
       ]
     }
@@ -392,7 +397,7 @@
       ],
       "table": "iot_alerts",
       "rows": 50,
-      "note": "IoT device/gateway alert analytics — 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
+      "note": "IoT device/gateway alert analytics \u2014 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
     }
   ]
 }

@@ -341,6 +341,7 @@ import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 import WearableDevicesDashboard from './components/WearableDevicesDashboard'
 import TriggerLogDashboard from './components/TriggerLogDashboard'
+import SecOpsDashboard from './components/SecOpsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -727,6 +728,7 @@ function App() {
     { id: 'structured-reporting', label: 'Structured Reporting' },
     { id: 'reinforcement-learning', label: 'Reinforcement Learning' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
+    { id: 'sec-ops', label: 'SecOps' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
@@ -769,6 +771,7 @@ function App() {
     { id: 'wearable-readings', label: 'Wearable Readings' },
     { id: 'education-modules', label: 'Education Modules' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
+    { id: 'sec-ops', label: 'SecOps' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' }
@@ -2414,6 +2417,8 @@ function App() {
         return <PreSurgicalEvaluationDashboard />
       case 'medication-refills':
         return <MedicationRefillDashboard />
+      case 'sec-ops':
+        return <SecOpsDashboard />
       case 'secure-messaging':
         return <SecureMessagingDashboard />
       case 'consent-management':
@@ -2488,6 +2493,8 @@ function App() {
         return <ICD10CodingDashboard />
       case 'iot-alerts':
         return <IoTAlertsDashboard />
+      case 'sec-ops':
+        return <SecOpsDashboard />
       case 'wearable-devices':
         return <WearableDevicesDashboard />
       case 'trigger-logs':
