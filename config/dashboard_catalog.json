@@ -379,6 +379,20 @@
       "table": "patient_appointments",
       "rows": 191,
       "note": "Appointment scheduling analytics \u2014 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
+    },
+    {
+      "id": "iot-alerts",
+      "name": "IoT Alerts Dashboard",
+      "status": "built",
+      "component": "IoTAlertsDashboard.jsx",
+      "endpoints": [
+        "/api/iot-alerts/overview",
+        "/api/iot-alerts/breakdown",
+        "/api/iot-alerts/definitions"
+      ],
+      "table": "iot_alerts",
+      "rows": 50,
+      "note": "IoT device/gateway alert analytics — 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
     }
   ]
 }

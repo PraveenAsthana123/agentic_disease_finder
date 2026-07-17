@@ -10882,6 +10882,31 @@ async def icd10_coding_definitions():
     return _json_safe(icd.definitions())
 
 
+# ── IoT Alerts Dashboard ─────────────────────────────────────────
+# Real data: clinical.db iot_alerts — device/gateway alerts, severity,
+# acknowledgment/resolution tracking, seizure SOS events.
+
+@app.get("/api/iot-alerts/overview")
+async def iot_alerts_overview():
+    """IoT alerts overview — KPIs, severity/type distribution, monthly trend."""
+    import scripts.iot_alerts_dashboard as iot
+    return _json_safe(iot.overview())
+
+
+@app.get("/api/iot-alerts/breakdown")
+async def iot_alerts_breakdown():
+    """IoT alerts breakdown — recent alerts, device aggregation, unresolved, patient summary."""
+    import scripts.iot_alerts_dashboard as iot
+    return _json_safe(iot.breakdown())
+
+
+@app.get("/api/iot-alerts/definitions")
+async def iot_alerts_definitions():
+    """IoT alerts definitions — alert types, severity levels, glossary, clinical notes."""
+    import scripts.iot_alerts_dashboard as iot
+    return _json_safe(iot.definitions())
+
+
 # ── AI Incident Management — incident tracking, severity, MTTR, root cause ──
 
 @app.get("/api/ai-incident/overview")

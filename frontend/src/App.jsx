@@ -297,6 +297,7 @@ import TreatmentEfficacyDashboard from './components/TreatmentEfficacyDashboard'
 import StructuredReportingDashboard from './components/StructuredReportingDashboard'
 import ReinforcementLearningDashboard from './components/ReinforcementLearningDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
+import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 import AIIncidentDashboard from './components/AIIncidentDashboard'
 import PreSurgicalEvaluationDashboard from './components/PreSurgicalEvaluationDashboard'
 import MedicationRefillDashboard from './components/MedicationRefillDashboard'
@@ -336,6 +337,7 @@ import ChannelQualityDashboard from './components/ChannelQualityDashboard'
 import WearableReadingsDashboard from './components/WearableReadingsDashboard'
 import EducationModulesDashboard from './components/EducationModulesDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
+import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -722,6 +724,7 @@ function App() {
     { id: 'structured-reporting', label: 'Structured Reporting' },
     { id: 'reinforcement-learning', label: 'Reinforcement Learning' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
+    { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'ai-incident', label: 'AI Incidents' },
     { id: 'presurgical-evaluation', label: 'Pre-Surgical Evaluation' },
     { id: 'medication-refills', label: 'Medication Refills' },
@@ -760,7 +763,8 @@ function App() {
     { id: 'channel-quality', label: 'EEG Channel Quality' },
     { id: 'wearable-readings', label: 'Wearable Readings' },
     { id: 'education-modules', label: 'Education Modules' },
-    { id: 'icd10-coding', label: 'ICD-10 Coding' }
+    { id: 'icd10-coding', label: 'ICD-10 Coding' },
+    { id: 'iot-alerts', label: 'IoT Alerts' }
   ]
 
   // API Calls
@@ -2391,6 +2395,8 @@ function App() {
         return <ReinforcementLearningDashboard />
       case 'icd10-coding':
         return <ICD10CodingDashboard />
+      case 'iot-alerts':
+        return <IoTAlertsDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':
@@ -2469,6 +2475,8 @@ function App() {
         return <EducationModulesDashboard />
       case 'icd10-coding':
         return <ICD10CodingDashboard />
+      case 'iot-alerts':
+        return <IoTAlertsDashboard />
       default:
         return renderClassificationTab()
     }
