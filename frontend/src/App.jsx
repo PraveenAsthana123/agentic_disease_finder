@@ -351,6 +351,7 @@ import ABPMDashboard from './components/ABPMDashboard'
 import RegulatoryDashboard from './components/RegulatoryDashboard'
 import HIPAAAuditDashboard from './components/HIPAAAuditDashboard'
 import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
+import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -796,7 +797,8 @@ function App() {
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
     { id: 'regulatory', label: 'Regulatory / FDA' },
     { id: 'hipaa-audit', label: 'HIPAA Audit' },
-    { id: 'validation-studies', label: 'Validation Studies' }
+    { id: 'validation-studies', label: 'Validation Studies' },
+    { id: 'pharmacogenomics', label: 'Pharmacogenomics' }
   ]
 
   // API Calls
@@ -2451,6 +2453,8 @@ function App() {
         return <HIPAAAuditDashboard />
       case 'validation-studies':
         return <ValidationStudiesDashboard />
+      case 'pharmacogenomics':
+        return <PharmacogenomicsDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':
@@ -2547,6 +2551,8 @@ function App() {
         return <ABPMDashboard />
       case 'caregiver-emergency':
         return <CaregiverEmergencyDashboard />
+      case 'pharmacogenomics':
+        return <PharmacogenomicsDashboard />
       default:
         return renderClassificationTab()
     }

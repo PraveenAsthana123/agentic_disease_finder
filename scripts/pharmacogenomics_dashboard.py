@@ -1,231 +1,351 @@
-"""Pharmacogenomics Dashboard — PGx-guided AED prescribing analytics from clinical.db.
+"""Pharmacogenomics Dashboard — pharmacogenomic test analytics from clinical.db.
 
-Provides pharmacogenomic profiling for anti-epileptic drug (AED) selection,
-including HLA allele screening, CYP enzyme metabolizer status, drug-gene
-interaction alerts, and CPIC-guideline adherence.
-
-Clinically this matters because:
-- HLA-B*15:02 screening before carbamazepine prevents Stevens-Johnson
-  syndrome / toxic epidermal necrolysis — FDA boxed warning (2007).
-- CYP2C9 poor metabolizers accumulate phenytoin → dose-dependent toxicity
-  (ataxia, nystagmus, cardiac arrhythmia) — CPIC guideline (2020).
-- CYP2C19 poor metabolizers accumulate N-desmethylclobazam → excessive
-  sedation in Dravet syndrome — FDA label update (2018).
+Tracks patient pharmacogenomic profiles including gene variants, metabolizer
+status, clinical significance, drug interactions, and evidence-based
+recommendations for epilepsy pharmacotherapy.
 
 Sources:
-- pharmacogenomics table  (~172 rows, 40 patients, 7 genes)
-- medications table       (~9 rows)
-- patients table          (~40 patients)
+- pharmacogenomics table (patient_id, gene, variant, allele_function,
+  metabolizer_status, clinical_significance, affected_drugs, recommendation,
+  evidence_level, source, test_date, created_at)
 """
 
-import pathlib
 import sqlite3
-from collections import Counter, defaultdict
+from pathlib import Path
 
-DB = pathlib.Path(__file__).resolve().parent.parent / "data" / "clinical.db"
+DB_PATH = str(Path(__file__).parent.parent / "data" / "clinical.db")
 
 
 def _conn():
-    con = sqlite3.connect(str(DB))
-    con.row_factory = sqlite3.Row
-    return con
+    return sqlite3.connect(DB_PATH)
 
 
-def _safe(cur, sql, params=(), default=0):
-    try:
-        cur.execute(sql, params)
-        row = cur.fetchone()
-        return row[0] if row else default
-    except Exception:
-        return default
+def _dict_rows(cursor):
+    cols = [d[0] for d in cursor.description]
+    return [dict(zip(cols, r)) for r in cursor.fetchall()]
 
+
+# ──────────────────────────────────────────────────────────────
+#  /api/pharmacogenomics/overview
+# ──────────────────────────────────────────────────────────────
 
 def overview():
-    con = _conn()
-    c = con.cursor()
+    """High-level pharmacogenomics metrics."""
+    conn = _conn()
+    cur = conn.cursor()
 
-    total_tests = _safe(c, "SELECT COUNT(*) FROM pharmacogenomics")
-    total_patients = _safe(c, "SELECT COUNT(DISTINCT patient_id) FROM pharmacogenomics")
-    total_genes = _safe(c, "SELECT COUNT(DISTINCT gene) FROM pharmacogenomics")
-    actionable = _safe(c, """SELECT COUNT(*) FROM pharmacogenomics
-        WHERE clinical_significance NOT LIKE '%Normal%' AND clinical_significance NOT LIKE '%Standard%'""")
-    actionable_pct = round(actionable / total_tests * 100, 1) if total_tests else 0
+    # KPIs
+    cur.execute("SELECT COUNT(*) FROM pharmacogenomics")
+    total_tests = cur.fetchone()[0]
 
-    # Gene distribution
-    c.execute("SELECT gene, COUNT(*) as cnt FROM pharmacogenomics GROUP BY gene ORDER BY cnt DESC")
-    gene_dist = [{"gene": r["gene"], "count": r["cnt"]} for r in c.fetchall()]
+    cur.execute("SELECT COUNT(DISTINCT patient_id) FROM pharmacogenomics")
+    total_patients = cur.fetchone()[0]
 
-    # Metabolizer status distribution
-    c.execute("""SELECT metabolizer_status, COUNT(*) as cnt FROM pharmacogenomics
-        GROUP BY metabolizer_status ORDER BY cnt DESC""")
-    metabolizer_dist = [{"status": r["metabolizer_status"], "count": r["cnt"]} for r in c.fetchall()]
+    cur.execute("SELECT COUNT(DISTINCT gene) FROM pharmacogenomics")
+    unique_genes = cur.fetchone()[0]
 
-    # Evidence level distribution
-    c.execute("""SELECT evidence_level, COUNT(*) as cnt FROM pharmacogenomics
-        GROUP BY evidence_level ORDER BY evidence_level""")
-    evidence_dist = [{"level": r["evidence_level"], "count": r["cnt"]} for r in c.fetchall()]
+    cur.execute(
+        "SELECT COUNT(*) FROM pharmacogenomics "
+        "WHERE clinical_significance LIKE '%High%'"
+    )
+    high_risk_count = cur.fetchone()[0]
 
-    # High-risk alerts (HLA carriers, poor metabolizers)
-    c.execute("""SELECT patient_id, gene, variant, clinical_significance, affected_drugs, recommendation
-        FROM pharmacogenomics
-        WHERE clinical_significance LIKE '%High%' OR clinical_significance LIKE '%Markedly%'
-           OR clinical_significance LIKE '%SJS%' OR clinical_significance LIKE '%toxicity%'
-        ORDER BY patient_id""")
-    alerts = [dict(r) for r in c.fetchall()]
+    cur.execute(
+        "SELECT COUNT(*) FROM pharmacogenomics WHERE evidence_level = '1A'"
+    )
+    actionable_results = cur.fetchone()[0]
 
-    # Drug-gene interaction summary
-    c.execute("""SELECT affected_drugs, COUNT(DISTINCT patient_id) as patients,
-        SUM(CASE WHEN clinical_significance NOT LIKE '%Normal%'
-             AND clinical_significance NOT LIKE '%Standard%' THEN 1 ELSE 0 END) as actionable
-        FROM pharmacogenomics GROUP BY affected_drugs ORDER BY actionable DESC""")
-    drug_interactions = [{"drugs": r["affected_drugs"], "patients": r["patients"],
-                          "actionable": r["actionable"]} for r in c.fetchall()]
+    cur.execute(
+        "SELECT COUNT(*) FROM pharmacogenomics "
+        "WHERE metabolizer_status LIKE '%Poor%'"
+    )
+    poor_metabolizer_count = cur.fetchone()[0]
 
-    # Source distribution
-    c.execute("SELECT source, COUNT(*) as cnt FROM pharmacogenomics GROUP BY source ORDER BY cnt DESC")
-    source_dist = [{"source": r["source"], "count": r["cnt"]} for r in c.fetchall()]
-
-    con.close()
-    return {
+    kpis = {
         "total_tests": total_tests,
         "total_patients": total_patients,
-        "total_genes": total_genes,
-        "actionable_results": actionable,
-        "actionable_pct": actionable_pct,
-        "gene_distribution": gene_dist,
-        "metabolizer_distribution": metabolizer_dist,
-        "evidence_distribution": evidence_dist,
-        "high_risk_alerts": alerts,
-        "drug_gene_interactions": drug_interactions,
-        "source_distribution": source_dist,
+        "unique_genes": unique_genes,
+        "high_risk_count": high_risk_count,
+        "actionable_results": actionable_results,
+        "poor_metabolizer_count": poor_metabolizer_count,
     }
 
+    # Gene distribution
+    cur.execute(
+        "SELECT gene, COUNT(*) AS cnt FROM pharmacogenomics "
+        "GROUP BY gene ORDER BY cnt DESC"
+    )
+    gene_rows = cur.fetchall()
+    gene_distribution = [
+        {
+            "gene": r[0],
+            "count": r[1],
+            "pct": round(r[1] / total_tests * 100, 1) if total_tests else 0.0,
+        }
+        for r in gene_rows
+    ]
+
+    # Metabolizer distribution
+    cur.execute(
+        "SELECT metabolizer_status, COUNT(*) AS cnt FROM pharmacogenomics "
+        "GROUP BY metabolizer_status ORDER BY cnt DESC"
+    )
+    metabolizer_distribution = [
+        {"metabolizer_status": r[0], "count": r[1]} for r in cur.fetchall()
+    ]
+
+    # Evidence level distribution
+    cur.execute(
+        "SELECT evidence_level, COUNT(*) AS cnt FROM pharmacogenomics "
+        "GROUP BY evidence_level ORDER BY cnt DESC"
+    )
+    evidence_level_distribution = [
+        {"evidence_level": r[0], "count": r[1]} for r in cur.fetchall()
+    ]
+
+    # Source distribution
+    cur.execute(
+        "SELECT source, COUNT(*) AS cnt FROM pharmacogenomics "
+        "GROUP BY source ORDER BY cnt DESC"
+    )
+    source_distribution = [
+        {"source": r[0], "count": r[1]} for r in cur.fetchall()
+    ]
+
+    # High risk by gene
+    cur.execute(
+        "SELECT gene, COUNT(*) AS cnt FROM pharmacogenomics "
+        "WHERE clinical_significance LIKE '%High%' "
+        "GROUP BY gene ORDER BY cnt DESC"
+    )
+    high_risk_by_gene = [
+        {"gene": r[0], "count": r[1]} for r in cur.fetchall()
+    ]
+
+    conn.close()
+    return {
+        "available": True,
+        "kpis": kpis,
+        "gene_distribution": gene_distribution,
+        "metabolizer_distribution": metabolizer_distribution,
+        "evidence_level_distribution": evidence_level_distribution,
+        "source_distribution": source_distribution,
+        "high_risk_by_gene": high_risk_by_gene,
+    }
+
+
+# ──────────────────────────────────────────────────────────────
+#  /api/pharmacogenomics/breakdown
+# ──────────────────────────────────────────────────────────────
 
 def breakdown():
-    con = _conn()
-    c = con.cursor()
+    """Per-patient detail, high-risk results, poor metabolizers, recent tests."""
+    conn = _conn()
+    cur = conn.cursor()
 
-    # Per-patient PGx profile
-    c.execute("""SELECT patient_id,
-        COUNT(*) as total_tests,
-        SUM(CASE WHEN clinical_significance NOT LIKE '%Normal%'
-             AND clinical_significance NOT LIKE '%Standard%' THEN 1 ELSE 0 END) as actionable,
-        GROUP_CONCAT(DISTINCT gene) as genes_tested,
-        test_date
-        FROM pharmacogenomics
-        GROUP BY patient_id ORDER BY actionable DESC""")
-    patient_profiles = [dict(r) for r in c.fetchall()]
+    # High-risk results
+    cur.execute(
+        "SELECT patient_id, gene, variant, clinical_significance, "
+        "affected_drugs, recommendation, evidence_level "
+        "FROM pharmacogenomics "
+        "WHERE clinical_significance LIKE '%High%' "
+        "ORDER BY patient_id"
+    )
+    high_risk_results = _dict_rows(cur)
 
-    # Gene-variant matrix
-    c.execute("""SELECT gene, variant, metabolizer_status, COUNT(DISTINCT patient_id) as patients,
-        clinical_significance, recommendation
-        FROM pharmacogenomics
-        GROUP BY gene, variant, metabolizer_status
-        ORDER BY gene, variant""")
-    gene_variant_matrix = [dict(r) for r in c.fetchall()]
+    # Poor metabolizers
+    cur.execute(
+        "SELECT patient_id, gene, variant, metabolizer_status, "
+        "affected_drugs, recommendation "
+        "FROM pharmacogenomics "
+        "WHERE metabolizer_status LIKE '%Poor%' "
+        "ORDER BY patient_id"
+    )
+    poor_metabolizers = _dict_rows(cur)
 
-    # HLA screening summary
-    c.execute("""SELECT gene, variant, metabolizer_status, COUNT(DISTINCT patient_id) as patients
-        FROM pharmacogenomics WHERE gene LIKE 'HLA%'
-        GROUP BY gene, variant, metabolizer_status ORDER BY gene, variant""")
-    hla_screening = [dict(r) for r in c.fetchall()]
+    # Per-patient summary
+    cur.execute(
+        "SELECT patient_id, "
+        "COUNT(*) AS total_tests, "
+        "COUNT(DISTINCT gene) AS genes_tested, "
+        "SUM(CASE WHEN clinical_significance LIKE '%High%' THEN 1 ELSE 0 END) AS high_risk_count, "
+        "SUM(CASE WHEN evidence_level = '1A' THEN 1 ELSE 0 END) AS actionable_count, "
+        "GROUP_CONCAT(DISTINCT source) AS sources "
+        "FROM pharmacogenomics "
+        "GROUP BY patient_id ORDER BY patient_id"
+    )
+    per_patient = _dict_rows(cur)
 
-    # CYP enzyme panel
-    c.execute("""SELECT gene, variant, metabolizer_status, COUNT(DISTINCT patient_id) as patients,
-        affected_drugs
-        FROM pharmacogenomics WHERE gene LIKE 'CYP%'
-        GROUP BY gene, variant, metabolizer_status ORDER BY gene, variant""")
-    cyp_panel = [dict(r) for r in c.fetchall()]
+    # Recent tests (last 30)
+    cur.execute(
+        "SELECT id, patient_id, gene, variant, allele_function, "
+        "metabolizer_status, clinical_significance, affected_drugs, "
+        "recommendation, evidence_level, source, test_date, created_at "
+        "FROM pharmacogenomics ORDER BY test_date DESC LIMIT 30"
+    )
+    recent_tests = _dict_rows(cur)
 
-    # Medication-PGx cross-reference (which patients on AEDs have relevant PGx results)
-    c.execute("""SELECT p.patient_id, p.gene, p.variant, p.metabolizer_status,
-        p.affected_drugs, p.recommendation, m.fields_json
-        FROM pharmacogenomics p
-        INNER JOIN medications m ON p.patient_id = m.patient_id
-        ORDER BY p.patient_id""")
-    import json as _json
-    med_pgx_cross = []
-    for r in c.fetchall():
-        row = dict(r)
-        try:
-            fields = _json.loads(row.pop("fields_json", "{}"))
-            row["drug_name"] = fields.get("drug_name", "Unknown")
-        except Exception:
-            row["drug_name"] = "Unknown"
-        med_pgx_cross.append(row)
-
-    # Actionable by evidence level
-    c.execute("""SELECT evidence_level,
-        COUNT(*) as total,
-        SUM(CASE WHEN clinical_significance NOT LIKE '%Normal%'
-             AND clinical_significance NOT LIKE '%Standard%' THEN 1 ELSE 0 END) as actionable
-        FROM pharmacogenomics GROUP BY evidence_level ORDER BY evidence_level""")
-    evidence_actionable = [dict(r) for r in c.fetchall()]
-
-    # Monthly testing trend
-    c.execute("""SELECT SUBSTR(test_date, 1, 7) as month, COUNT(*) as tests,
-        COUNT(DISTINCT patient_id) as patients
-        FROM pharmacogenomics GROUP BY month ORDER BY month""")
-    testing_trend = [dict(r) for r in c.fetchall()]
-
-    con.close()
+    conn.close()
     return {
-        "patient_profiles": patient_profiles,
-        "gene_variant_matrix": gene_variant_matrix,
-        "hla_screening": hla_screening,
-        "cyp_panel": cyp_panel,
-        "med_pgx_crossref": med_pgx_cross,
-        "evidence_actionable": evidence_actionable,
-        "testing_trend": testing_trend,
+        "high_risk_results": high_risk_results,
+        "poor_metabolizers": poor_metabolizers,
+        "per_patient": per_patient,
+        "recent_tests": recent_tests,
     }
 
 
+# ──────────────────────────────────────────────────────────────
+#  /api/pharmacogenomics/definitions
+# ──────────────────────────────────────────────────────────────
+
 def definitions():
+    """Gene descriptions, metabolizer categories, evidence levels, clinical notes, glossary."""
     return {
-        "title": "Pharmacogenomics Dashboard — Definitions",
-        "terms": [
-            {"term": "Pharmacogenomics (PGx)",
-             "definition": "Study of how genetic variation affects drug response. In epilepsy, PGx guides AED selection to maximize efficacy and minimize adverse drug reactions."},
-            {"term": "HLA-B*15:02",
-             "definition": "HLA allele associated with carbamazepine-induced Stevens-Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN). FDA boxed warning mandates screening before prescribing carbamazepine in at-risk populations (South/Southeast Asian ancestry)."},
-            {"term": "HLA-A*31:01",
-             "definition": "HLA allele associated with carbamazepine-induced drug reaction with eosinophilia and systemic symptoms (DRESS) and maculopapular exanthema (MPE) across all ethnic groups. CPIC Level 1A evidence."},
-            {"term": "CYP2C9",
-             "definition": "Cytochrome P450 enzyme responsible for phenytoin hydroxylation. Poor metabolizers (*2/*3, *3/*3) have 50-75% reduced clearance → dose-dependent toxicity risk."},
-            {"term": "CYP2C19",
-             "definition": "Cytochrome P450 enzyme that converts clobazam to active metabolite N-desmethylclobazam. Poor metabolizers (*2/*2) accumulate the active metabolite → excessive sedation, particularly in Dravet syndrome."},
-            {"term": "UGT1A4",
-             "definition": "UDP-glucuronosyltransferase that glucuronidates lamotrigine. Decreased-function variants reduce clearance; combined with valproate inhibition → risk of lamotrigine toxicity (rash, SJS)."},
-            {"term": "SCN1A",
-             "definition": "Sodium channel gene. The IVS5-91 G>A variant (rs3812718) affects alternative splicing and modifies response to sodium-channel blocking AEDs (carbamazepine, phenytoin). AA genotype associated with higher dose requirements."},
-            {"term": "ABCB1 (MDR1/P-glycoprotein)",
-             "definition": "Drug efflux transporter at the blood-brain barrier. C3435T (rs1045642) TT genotype reduces P-gp expression → higher brain AED concentration. CC genotype may contribute to pharmacoresistant epilepsy."},
-            {"term": "CPIC",
-             "definition": "Clinical Pharmacogenetics Implementation Consortium. Publishes peer-reviewed, evidence-based guidelines for gene-drug pairs. Level 1A = strong evidence + strong recommendation."},
-            {"term": "Metabolizer Status",
-             "definition": "Predicted enzyme activity based on diplotype: Poor (PM) = no/minimal function; Intermediate (IM) = reduced; Normal (NM/EM) = typical; Rapid/Ultrarapid (RM/UM) = increased."},
-            {"term": "Actionable Result",
-             "definition": "A PGx finding that changes prescribing: avoid drug, adjust dose, increase monitoring, or switch to alternative. Non-actionable = standard prescribing."},
-            {"term": "Evidence Level",
-             "definition": "CPIC classification: 1A (strong evidence + strong recommendation), 2A (moderate evidence), 2B (weak evidence), 3 (annotation only — informative but not yet guideline-level)."},
+        "gene_descriptions": {
+            "HLA-B": "Human Leukocyte Antigen B — immune system gene critical for drug "
+                     "hypersensitivity screening. The HLA-B*15:02 allele is strongly associated "
+                     "with carbamazepine-induced Stevens-Johnson syndrome (SJS) and toxic "
+                     "epidermal necrolysis (TEN), particularly in Southeast Asian populations. "
+                     "Pre-treatment screening is FDA-mandated before prescribing carbamazepine.",
+            "CYP2C19": "Cytochrome P450 2C19 — a major hepatic drug-metabolizing enzyme involved "
+                       "in the metabolism of several anti-epileptic drugs including clobazam, "
+                       "diazepam, and phenytoin (minor pathway). Poor metabolizers accumulate "
+                       "active metabolites (e.g., N-desmethylclobazam), increasing sedation risk; "
+                       "ultra-rapid metabolizers may have subtherapeutic levels.",
+            "CYP2C9": "Cytochrome P450 2C9 — the primary enzyme responsible for phenytoin "
+                      "metabolism. CYP2C9*2 and *3 variants reduce enzymatic activity, leading "
+                      "to elevated phenytoin levels, increased toxicity risk (ataxia, nystagmus), "
+                      "and the need for lower maintenance doses. CPIC guidelines recommend "
+                      "25-50% dose reduction for poor metabolizers.",
+            "ABCB1": "ATP Binding Cassette Subfamily B Member 1 (P-glycoprotein/MDR1) — an "
+                     "efflux transporter expressed at the blood-brain barrier that actively "
+                     "pumps out several AEDs (phenytoin, carbamazepine, lamotrigine). The "
+                     "C3435T polymorphism (rs1045642) may alter drug penetration into the "
+                     "brain and contribute to pharmacoresistant epilepsy.",
+            "HLA-A": "Human Leukocyte Antigen A — immune gene associated with drug "
+                     "hypersensitivity reactions. The HLA-A*31:01 allele is associated with "
+                     "carbamazepine-induced hypersensitivity syndrome (including DRESS, SJS, "
+                     "and maculopapular exanthema) across multiple ethnic groups. Screening "
+                     "is recommended in some guidelines before carbamazepine initiation.",
+            "UGT1A4": "UDP-Glucuronosyltransferase 1A4 — a Phase II conjugation enzyme that "
+                      "glucuronidates lamotrigine and is the primary clearance pathway for "
+                      "this drug. Genetic variants (e.g., L48V) can alter lamotrigine "
+                      "metabolism, affecting steady-state concentrations and requiring dose "
+                      "adjustments to maintain therapeutic levels.",
+            "SCN1A": "Sodium Voltage-Gated Channel Alpha Subunit 1 — encodes the Nav1.1 "
+                     "sodium channel, the direct pharmacological target of several AEDs "
+                     "(carbamazepine, phenytoin, lamotrigine). SCN1A variants (e.g., IVS5-91 "
+                     "G>A) can influence drug responsiveness and are associated with Dravet "
+                     "syndrome, where sodium channel blockers may paradoxically worsen seizures.",
+        },
+        "metabolizer_categories": {
+            "Poor metabolizer": "Significantly reduced or absent enzyme activity. Leads to drug "
+                                "accumulation, higher plasma levels, and increased risk of "
+                                "adverse effects. Requires substantial dose reduction or "
+                                "alternative drug selection.",
+            "Intermediate metabolizer": "Reduced enzyme activity compared to normal. May require "
+                                        "modest dose adjustments. Monitor for dose-dependent "
+                                        "side effects.",
+            "Normal metabolizer": "Typical enzyme activity (formerly called 'extensive "
+                                  "metabolizer'). Standard dosing guidelines apply.",
+            "Rapid metabolizer": "Increased enzyme activity leading to faster drug clearance. "
+                                 "May require higher doses to achieve therapeutic levels.",
+            "Ultra-rapid metabolizer": "Markedly increased enzyme activity, often due to gene "
+                                       "duplication. Risk of subtherapeutic drug levels at "
+                                       "standard doses. May need significantly higher doses or "
+                                       "alternative agents.",
+            "Carrier": "Carries one or more risk alleles for a pharmacogenomic marker (e.g., "
+                       "HLA-B*15:02). Indicates susceptibility to a specific adverse drug "
+                       "reaction rather than altered metabolism.",
+            "Non-carrier": "Does not carry the risk allele. Standard prescribing applies for "
+                           "the associated drug-gene interaction.",
+            "CC genotype": "Homozygous wild-type for the ABCB1 C3435T polymorphism. Associated "
+                           "with normal P-glycoprotein expression and standard drug efflux "
+                           "activity at the blood-brain barrier.",
+            "CT genotype": "Heterozygous for the ABCB1 C3435T polymorphism. Intermediate "
+                           "P-glycoprotein expression. May have mildly altered AED penetration "
+                           "into the CNS.",
+            "TT genotype": "Homozygous variant for the ABCB1 C3435T polymorphism. Reduced "
+                           "P-glycoprotein expression, potentially allowing greater AED "
+                           "penetration into the brain but also altered drug disposition.",
+        },
+        "evidence_levels": {
+            "1A": "Strong evidence — the gene-drug interaction has been validated in well-powered "
+                  "studies with replication, and clinical guidelines (e.g., CPIC, DPWG) provide "
+                  "prescribing recommendations. Action is required.",
+            "1B": "Strong evidence — clinical evidence supports the gene-drug association, but "
+                  "formal prescribing guidelines may be limited or emerging. Action is "
+                  "recommended.",
+            "2A": "Moderate evidence — the gene-drug interaction is supported by moderate clinical "
+                  "evidence, and the gene is a known pharmacogene for the drug class. Consider "
+                  "action based on clinical context.",
+            "3": "Low or emerging evidence — the association is based on limited studies, small "
+                 "sample sizes, or mechanistic plausibility. No formal prescribing guideline "
+                 "changes recommended; monitoring and further study advised.",
+        },
+        "clinical_notes": [
+            "HLA-B*15:02 screening is FDA-mandated before carbamazepine initiation in patients "
+            "with Southeast Asian ancestry. Consider screening in all populations per CPIC 2024.",
+            "CYP2C9 poor metabolizers require 25-50% lower phenytoin maintenance doses to avoid "
+            "toxicity (ataxia, nystagmus, cardiac arrhythmia).",
+            "CYP2C19 poor metabolizers on clobazam accumulate N-desmethylclobazam; reduce dose "
+            "by 50% and monitor for excessive sedation.",
+            "ABCB1 genotyping is investigational for predicting drug resistance but may inform "
+            "polytherapy decisions in refractory epilepsy.",
+            "SCN1A variants should prompt genetic counselling; sodium channel blockers "
+            "(carbamazepine, phenytoin, lamotrigine) may worsen seizures in Dravet syndrome.",
+            "Pharmacogenomic results are lifelong and should be documented in the patient's "
+            "permanent medical record and shared across care providers.",
+            "Multi-gene panel testing is more cost-effective than sequential single-gene tests "
+            "and provides a comprehensive pharmacogenomic profile for AED selection.",
+            "Evidence levels follow CPIC classification: 1A/1B = strong, 2A = moderate, "
+            "3 = emerging. Only 1A/1B results warrant immediate prescribing changes.",
         ],
-        "data_sources": [
-            "pharmacogenomics table (clinical.db) — 172 rows, 40 patients, 7 genes",
-            "medications table (clinical.db) — AED prescriptions for cross-reference",
-            "CPIC guidelines (cpicpgx.org) — gene-drug pair recommendations",
-            "PharmGKB (pharmgkb.org) — variant annotations and clinical annotations",
-        ],
+        "glossary": {
+            "Pharmacogenomics": "The study of how genetic variation affects individual responses "
+                                "to drugs, including efficacy, dosing, and adverse reactions.",
+            "CPIC": "Clinical Pharmacogenetics Implementation Consortium — a body that develops "
+                    "evidence-based, peer-reviewed clinical practice guidelines for "
+                    "pharmacogenetics.",
+            "PharmGKB": "Pharmacogenomics Knowledge Base — a comprehensive resource that curates "
+                        "pharmacogenomic relationships including gene-drug associations, variant "
+                        "annotations, and clinical guidelines.",
+            "Metabolizer Status": "A phenotype classification (poor, intermediate, normal, rapid, "
+                                  "ultra-rapid) describing an individual's capacity to metabolize "
+                                  "a drug via a specific enzyme.",
+            "Allele Function": "The functional impact of a specific genetic variant on gene "
+                               "product activity (e.g., no function, decreased function, "
+                               "normal function, increased function).",
+            "SJS/TEN": "Stevens-Johnson Syndrome / Toxic Epidermal Necrolysis — severe, "
+                       "life-threatening cutaneous adverse drug reactions characterized by "
+                       "widespread skin detachment. HLA-B*15:02 carriers have greatly elevated "
+                       "risk with carbamazepine.",
+            "P-glycoprotein": "An efflux transporter (encoded by ABCB1) at the blood-brain "
+                              "barrier that pumps drugs out of the CNS. Variants may affect "
+                              "AED brain penetration and treatment response.",
+            "CYP450": "Cytochrome P450 — a superfamily of hepatic enzymes responsible for "
+                      "Phase I oxidative metabolism of most drugs, including many AEDs.",
+            "DRESS": "Drug Reaction with Eosinophilia and Systemic Symptoms — a severe "
+                     "hypersensitivity reaction associated with HLA variants and certain "
+                     "AEDs (carbamazepine, phenytoin, lamotrigine).",
+            "Therapeutic Drug Monitoring": "Measurement of drug plasma concentrations to guide "
+                                           "dosing. Particularly important in epilepsy where "
+                                           "pharmacogenomic variants alter expected drug levels.",
+        },
     }
 
 
 if __name__ == "__main__":
     import json
     print("=== Overview ===")
-    print(json.dumps(overview(), indent=2, default=str)[:2000])
-    print("\n=== Breakdown (keys) ===")
-    bd = breakdown()
-    for k, v in bd.items():
-        print(f"  {k}: {len(v) if isinstance(v, list) else v}")
+    print(json.dumps(overview(), indent=2))
+    print("\n=== Breakdown (summary) ===")
+    b = breakdown()
+    print(f"Patients: {len(b['per_patient'])}, High-risk results: {len(b['high_risk_results'])}")
+    print(f"Poor metabolizers: {len(b['poor_metabolizers'])}, Recent tests: {len(b['recent_tests'])}")
     print("\n=== Definitions ===")
     d = definitions()
-    print(f"  {len(d['terms'])} terms, {len(d['data_sources'])} sources")
+    print(f"Genes described: {len(d['gene_descriptions'])}, "
+          f"Metabolizer categories: {len(d['metabolizer_categories'])}")
+    print(f"Evidence levels: {len(d['evidence_levels'])}, "
+          f"Clinical notes: {len(d['clinical_notes'])}, Glossary: {len(d['glossary'])}")

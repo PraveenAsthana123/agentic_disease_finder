@@ -12084,6 +12084,31 @@ async def validation_studies_definitions():
     return _json_safe(vsd.definitions())
 
 
+# ── Pharmacogenomics Dashboard ───────────────────────────────────────
+# Real data: pharmacogenomics table (172 rows, 40 patients, 7 genes,
+# 10 metabolizer statuses, 4 evidence levels, 2 sources: CPIC + PharmGKB).
+
+@app.get("/api/pharmacogenomics/overview")
+async def pharmacogenomics_overview():
+    """PGx overview — test KPIs, gene/metabolizer/evidence distribution, high-risk by gene."""
+    import scripts.pharmacogenomics_dashboard as pgd
+    return _json_safe(pgd.overview())
+
+
+@app.get("/api/pharmacogenomics/breakdown")
+async def pharmacogenomics_breakdown():
+    """PGx breakdown — high-risk results, poor metabolizers, per-patient summary, recent tests."""
+    import scripts.pharmacogenomics_dashboard as pgd
+    return _json_safe(pgd.breakdown())
+
+
+@app.get("/api/pharmacogenomics/definitions")
+async def pharmacogenomics_definitions():
+    """PGx definitions — gene descriptions, metabolizer categories, evidence levels, glossary."""
+    import scripts.pharmacogenomics_dashboard as pgd
+    return _json_safe(pgd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
