@@ -12033,6 +12033,31 @@ async def hipaa_audit_definitions():
     return _json_safe(had.definitions())
 
 
+# ── Upload & Analysis Tracker Dashboard ──────────────────────────────────
+# Real data: uploads table + analyses table — tracks EEG file submissions,
+# AI predictions, confidence scores, signal quality, and pipeline completion.
+
+@app.get("/api/upload-analysis/overview")
+async def upload_analysis_overview():
+    """Upload & analysis overview — KPIs, disease distribution, daily trend, signal quality, confidence buckets."""
+    import scripts.upload_analysis_dashboard as uad
+    return _json_safe(uad.overview())
+
+
+@app.get("/api/upload-analysis/breakdown")
+async def upload_analysis_breakdown():
+    """Upload & analysis breakdown — per-patient summary, recent uploads, low confidence, pending, department workload."""
+    import scripts.upload_analysis_dashboard as uad
+    return _json_safe(uad.breakdown())
+
+
+@app.get("/api/upload-analysis/definitions")
+async def upload_analysis_definitions():
+    """Upload & analysis definitions — signal quality criteria, confidence interpretation, file types, pipeline stages, glossary."""
+    import scripts.upload_analysis_dashboard as uad
+    return _json_safe(uad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

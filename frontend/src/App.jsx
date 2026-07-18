@@ -343,6 +343,7 @@ import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import IoTAlertsDashboard from './components/IoTAlertsDashboard'
 import WearableDevicesDashboard from './components/WearableDevicesDashboard'
 import TriggerLogDashboard from './components/TriggerLogDashboard'
+import UploadAnalysisDashboard from './components/UploadAnalysisDashboard'
 import SecOpsDashboard from './components/SecOpsDashboard'
 import CaregiverEmergencyDashboard from './components/CaregiverEmergencyDashboard'
 import SeizureSemiologyDashboard from './components/SeizureSemiologyDashboard'
@@ -741,6 +742,7 @@ function App() {
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
+    { id: 'upload-analysis', label: 'Upload & Analysis' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
     { id: 'abpm', label: 'ABPM / Holter' },
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
@@ -787,6 +789,7 @@ function App() {
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
+    { id: 'upload-analysis', label: 'Upload & Analysis' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
     { id: 'abpm', label: 'ABPM / Holter' },
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
@@ -2432,6 +2435,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'upload-analysis':
+        return <UploadAnalysisDashboard />
       case 'seizure-semiology':
         return <SeizureSemiologyDashboard />
       case 'abpm':
@@ -2530,6 +2535,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'upload-analysis':
+        return <UploadAnalysisDashboard />
       case 'seizure-semiology':
         return <SeizureSemiologyDashboard />
       case 'abpm':
