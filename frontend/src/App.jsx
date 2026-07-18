@@ -350,6 +350,7 @@ import SeizureSemiologyDashboard from './components/SeizureSemiologyDashboard'
 import ABPMDashboard from './components/ABPMDashboard'
 import RegulatoryDashboard from './components/RegulatoryDashboard'
 import HIPAAAuditDashboard from './components/HIPAAAuditDashboard'
+import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -794,7 +795,8 @@ function App() {
     { id: 'abpm', label: 'ABPM / Holter' },
     { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
     { id: 'regulatory', label: 'Regulatory / FDA' },
-    { id: 'hipaa-audit', label: 'HIPAA Audit' }
+    { id: 'hipaa-audit', label: 'HIPAA Audit' },
+    { id: 'validation-studies', label: 'Validation Studies' }
   ]
 
   // API Calls
@@ -2447,6 +2449,8 @@ function App() {
         return <RegulatoryDashboard />
       case 'hipaa-audit':
         return <HIPAAAuditDashboard />
+      case 'validation-studies':
+        return <ValidationStudiesDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':

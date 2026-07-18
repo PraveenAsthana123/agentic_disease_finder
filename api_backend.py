@@ -12058,6 +12058,32 @@ async def upload_analysis_definitions():
     return _json_safe(uad.definitions())
 
 
+# ── Validation Studies Dashboard ─────────────────────────────────────────
+# Real data: validation_studies table (42 studies, 7 study types, 7 sites,
+# 16 regulatory submissions). Tracks clinical validation, software verification,
+# analytical validation, prospective trials with sensitivity/specificity/AUC-ROC.
+
+@app.get("/api/validation-studies/overview")
+async def validation_studies_overview():
+    """Validation studies overview — KPIs, study type distribution, status distribution, site distribution, performance by type/site."""
+    import scripts.validation_studies_dashboard as vsd
+    return _json_safe(vsd.overview())
+
+
+@app.get("/api/validation-studies/breakdown")
+async def validation_studies_breakdown():
+    """Validation studies breakdown — failed studies, in-progress, per-submission summary, PI workload, all studies, top performing."""
+    import scripts.validation_studies_dashboard as vsd
+    return _json_safe(vsd.breakdown())
+
+
+@app.get("/api/validation-studies/definitions")
+async def validation_studies_definitions():
+    """Validation studies definitions — study types, metrics, statuses, regulatory context, glossary."""
+    import scripts.validation_studies_dashboard as vsd
+    return _json_safe(vsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
