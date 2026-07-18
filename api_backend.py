@@ -12004,6 +12004,35 @@ async def trigger_logs_definitions():
     return _json_safe(tld.definitions())
 
 
+# ── HIPAA Audit Pack Dashboard ─────────────────────────────────────────
+# Real data: consent_records (246 rows, 6 consent types), regulatory_audit_trail
+# (102 events, 5 categories), patient_documents (193), system_health_log (30).
+# HIPAA Privacy/Security/Breach Notification Rule compliance tracking.
+
+@app.get("/api/hipaa-audit/overview")
+async def hipaa_audit_overview():
+    """HIPAA audit overview — consent KPIs, audit trail summary, compliance score,
+    consent type breakdown, status distribution, event categories."""
+    import scripts.hipaa_audit_dashboard as had
+    return _json_safe(had.overview())
+
+
+@app.get("/api/hipaa-audit/breakdown")
+async def hipaa_audit_breakdown():
+    """HIPAA audit breakdown — per-patient consent matrix, pending/expired alerts,
+    actor workload, CAPA/deviation detail, recent events, security checks, rule mapping."""
+    import scripts.hipaa_audit_dashboard as had
+    return _json_safe(had.breakdown())
+
+
+@app.get("/api/hipaa-audit/definitions")
+async def hipaa_audit_definitions():
+    """HIPAA audit definitions — HIPAA rules, consent types, audit categories,
+    compliance scoring methodology, glossary, references."""
+    import scripts.hipaa_audit_dashboard as had
+    return _json_safe(had.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

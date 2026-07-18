@@ -101,7 +101,7 @@
         "scheduling",
         "billing/claims",
         "consent management (dashboard built \u2014 admin/tracking/compliance)",
-        "HIPAA audit pack",
+        "HIPAA audit pack (dashboard built \u2014 /api/hipaa-audit/* + HIPAAAuditDashboard.jsx)",
         "multi-user auth/RBAC",
         "insurance pre-auth"
       ]
@@ -124,7 +124,8 @@
     },
     {
       "name": "EEG acquisition (routine/ambulatory/video/LTM)",
-      "status": "partial"
+      "status": "built",
+      "maps_to": "/api/eeg-acquisition/* + EEGAcquisitionDashboard.jsx"
     },
     {
       "name": "QC \u2192 AI pre-read \u2192 neurologist read \u2192 override \u2192 sign-off",
