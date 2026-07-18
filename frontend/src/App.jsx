@@ -72,6 +72,7 @@ import CitationDashboard from './components/CitationDashboard'
 import AgentMemoryDashboard from './components/AgentMemoryDashboard'
 import MCPFederationDashboard from './components/MCPFederationDashboard'
 import MCPOverviewDashboard from './components/MCPOverviewDashboard'
+import MCPSecurityDashboard from './components/MCPSecurityDashboard'
 import ReleaseDashboard from './components/ReleaseDashboard'
 import RetrievalDashboard from './components/RetrievalDashboard'
 import AgentEvaluationDashboard from './components/AgentEvaluationDashboard'
@@ -512,6 +513,7 @@ function App() {
     { id: 'citation', label: 'Citation' },
     { id: 'agent-memory', label: 'Agent Memory' },
     { id: 'mcp-overview', label: 'MCP Overview' },
+    { id: 'mcp-security', label: 'MCP Security' },
     { id: 'mcp-federation', label: 'MCP Federation' },
     { id: 'release', label: 'Release Mgmt' },
     { id: 'integration-dash', label: 'Integration' },
@@ -1978,6 +1980,8 @@ function App() {
         return <AgentMemoryDashboard />
       case 'mcp-overview':
         return <MCPOverviewDashboard />
+      case 'mcp-security':
+        return <MCPSecurityDashboard />
       case 'mcp-federation':
         return <MCPFederationDashboard />
       case 'release':
