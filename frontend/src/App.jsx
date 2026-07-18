@@ -257,6 +257,7 @@ import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboar
 import ArtifactDetectionDashboard from './components/ArtifactDetectionDashboard'
 import CognitiveDeclineDashboard from './components/CognitiveDeclineDashboard'
 import CognitiveTestsDashboard from './components/CognitiveTestsDashboard'
+import CognitionLinkDashboard from './components/CognitionLinkDashboard'
 import EEGAcquisitionDashboard from './components/EEGAcquisitionDashboard'
 import MRIReviewDashboard from './components/MRIReviewDashboard'
 import GoalAttainmentDashboard from './components/GoalAttainmentDashboard'
@@ -692,6 +693,7 @@ function App() {
     { id: 'artifact-detection', label: 'Artifact Detection' },
     { id: 'cognitive-decline', label: 'Cognitive Decline' },
     { id: 'cognitive-tests', label: 'Digital Cognitive Tests' },
+    { id: 'cognition-link', label: 'Cognition Link (EEG↔Cognitive)' },
     { id: 'eeg-acquisition', label: 'EEG Acquisition Quality' },
     { id: 'mri-review', label: 'MRI Review' },
     { id: 'goal-attainment', label: 'Goal Attainment (GAS)' },
@@ -2336,6 +2338,8 @@ function App() {
         return <CognitiveDeclineDashboard />
       case 'cognitive-tests':
         return <CognitiveTestsDashboard />
+      case 'cognition-link':
+        return <CognitionLinkDashboard />
       case 'eeg-acquisition':
         return <EEGAcquisitionDashboard />
       case 'mri-review':
