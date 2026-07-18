@@ -271,6 +271,7 @@ import PatientReportDashboard from './components/PatientReportDashboard'
 import UserManagementDashboard from './components/UserManagementDashboard'
 import BenchmarkValidationDashboard from './components/BenchmarkValidationDashboard'
 import GroupsTeamsDashboard from './components/GroupsTeamsDashboard'
+import RBACDashboard from './components/RBACDashboard'
 import RehabPlanDashboard from './components/RehabPlanDashboard'
 import MedicationAdherenceDashboard from './components/MedicationAdherenceDashboard'
 import MultimodalFusionDashboard from './components/MultimodalFusionDashboard'
@@ -712,6 +713,7 @@ function App() {
     { id: 'user-management', label: 'User Management' },
     { id: 'benchmark-validation', label: 'Benchmark Validation' },
     { id: 'groups-teams', label: 'Groups & Teams' },
+    { id: 'rbac', label: 'RBAC' },
     { id: 'rehab-plan', label: 'Rehab Plan (OT)' },
     { id: 'medication-adherence', label: 'Medication Adherence' },
     { id: 'multimodal-fusion', label: 'Multimodal Fusion' },
@@ -2377,6 +2379,8 @@ function App() {
         return <BenchmarkValidationDashboard />
       case 'groups-teams':
         return <GroupsTeamsDashboard />
+      case 'rbac':
+        return <RBACDashboard />
       case 'rehab-plan':
         return <RehabPlanDashboard />
       case 'medication-adherence':

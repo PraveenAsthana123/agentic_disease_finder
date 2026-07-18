@@ -12109,6 +12109,43 @@ async def pharmacogenomics_definitions():
     return _json_safe(pgd.definitions())
 
 
+# ── Epilepsy Nurse Coordinator Dashboard ────────────────────────────
+# Real data: seizure_diary (25 rows, 22 patients), medication_adherence
+# (12600 rows, 30 patients, 8 AEDs), seizure_trigger_logs (203 rows, 40 patients).
+# SUDEP risk scoring, adherence monitoring, action plans, education assessment.
+
+@app.get("/api/epilepsy-nurse")
+async def epilepsy_nurse_data():
+    """Epilepsy nurse coordinator — seizure diary, SUDEP risk, adherence, action plans, education."""
+    import scripts.epilepsy_nurse_dashboard as end
+    return _json_safe(end.get_data())
+
+
+# ── RBAC Dashboard ────────────────────────────────────────────────
+# Real data: admin_users (15 rows, 6 roles, 8 departments) + transaction_log
+# (1564 rows) — role distribution, MFA compliance, access audit, permissions.
+
+@app.get("/api/rbac/overview")
+async def rbac_overview():
+    """RBAC overview — user KPIs, role/dept distribution, login activity, access patterns."""
+    import scripts.rbac_dashboard as rbd
+    return _json_safe(rbd.overview())
+
+
+@app.get("/api/rbac/breakdown")
+async def rbac_breakdown():
+    """RBAC breakdown — per-role summaries, user list, security alerts (inactive/no-MFA)."""
+    import scripts.rbac_dashboard as rbd
+    return _json_safe(rbd.breakdown())
+
+
+@app.get("/api/rbac/definitions")
+async def rbac_definitions():
+    """RBAC definitions — role descriptions, permission levels, access matrix, glossary."""
+    import scripts.rbac_dashboard as rbd
+    return _json_safe(rbd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

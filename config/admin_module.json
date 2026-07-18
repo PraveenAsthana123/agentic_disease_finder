@@ -172,8 +172,8 @@
       "id": "rbac",
       "label": "🔑 RBAC",
       "purpose": "role-based access (Neurologist/Tech/Admin/Reviewer)",
-      "status": "planned",
-      "note": "single-user now; roles are UI tabs"
+      "status": "built",
+      "maps_to": "/api/rbac/* + RBACDashboard.jsx"
     },
     {
       "id": "abac",
