@@ -11954,6 +11954,31 @@ async def referral_triage_definitions():
     return _json_safe(rtd.definitions())
 
 
+# ── Clinical Validation / Regulatory Dashboard ───────────────
+# Real data: regulatory_submissions (16 rows, 8 products, 5 pathways),
+# validation_studies (42 rows), regulatory_audit_trail (102 events).
+
+@app.get("/api/regulatory/overview")
+async def regulatory_overview():
+    """Regulatory overview — submission pipeline KPIs, pathway/status/risk distribution, validation summary."""
+    import scripts.regulatory_dashboard as regd
+    return _json_safe(regd.overview())
+
+
+@app.get("/api/regulatory/breakdown")
+async def regulatory_breakdown():
+    """Regulatory breakdown — submission table, validation studies, reviewer workload, audit trail."""
+    import scripts.regulatory_dashboard as regd
+    return _json_safe(regd.breakdown())
+
+
+@app.get("/api/regulatory/definitions")
+async def regulatory_definitions():
+    """Regulatory definitions — pathways, risk classes, validation criteria, standards, glossary."""
+    import scripts.regulatory_dashboard as regd
+    return _json_safe(regd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

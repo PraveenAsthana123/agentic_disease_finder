@@ -345,6 +345,7 @@ import SecOpsDashboard from './components/SecOpsDashboard'
 import CaregiverEmergencyDashboard from './components/CaregiverEmergencyDashboard'
 import SeizureSemiologyDashboard from './components/SeizureSemiologyDashboard'
 import ABPMDashboard from './components/ABPMDashboard'
+import RegulatoryDashboard from './components/RegulatoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -783,7 +784,8 @@ function App() {
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
     { id: 'abpm', label: 'ABPM / Holter' },
-    { id: 'caregiver-emergency', label: 'Caregiver & Emergency' }
+    { id: 'caregiver-emergency', label: 'Caregiver & Emergency' },
+    { id: 'regulatory', label: 'Regulatory / FDA' }
   ]
 
   // API Calls
@@ -2426,6 +2428,8 @@ function App() {
         return <ABPMDashboard />
       case 'caregiver-emergency':
         return <CaregiverEmergencyDashboard />
+      case 'regulatory':
+        return <RegulatoryDashboard />
       case 'ai-incident':
         return <AIIncidentDashboard />
       case 'presurgical-evaluation':

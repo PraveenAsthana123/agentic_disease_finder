@@ -208,7 +208,8 @@
     },
     {
       "capability": "Clinical validation / regulatory (FDA/CE)",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/regulatory/* + RegulatoryDashboard.jsx"
     }
   ],
   "business_case": {
