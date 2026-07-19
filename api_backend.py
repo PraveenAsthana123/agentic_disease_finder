@@ -12146,6 +12146,27 @@ async def rbac_definitions():
     return _json_safe(rbd.definitions())
 
 
+@app.get("/api/patient-comparison/overview")
+async def patient_comparison_overview():
+    """Patient Comparison overview — patient list + global stats."""
+    import scripts.patient_comparison_dashboard as pcd
+    return _json_safe(pcd.overview())
+
+
+@app.get("/api/patient-comparison/compare")
+async def patient_comparison_compare(a: str = "EPAT001", b: str = "EPAT002"):
+    """Patient Comparison — side-by-side comparison of two patients."""
+    import scripts.patient_comparison_dashboard as pcd
+    return _json_safe(pcd.compare(a, b))
+
+
+@app.get("/api/patient-comparison/definitions")
+async def patient_comparison_definitions():
+    """Patient Comparison definitions — glossary, dimensions, clinical notes."""
+    import scripts.patient_comparison_dashboard as pcd
+    return _json_safe(pcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

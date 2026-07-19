@@ -353,6 +353,7 @@ import RegulatoryDashboard from './components/RegulatoryDashboard'
 import HIPAAAuditDashboard from './components/HIPAAAuditDashboard'
 import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
+import PatientComparisonDashboard from './components/PatientComparisonDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -714,6 +715,7 @@ function App() {
     { id: 'benchmark-validation', label: 'Benchmark Validation' },
     { id: 'groups-teams', label: 'Groups & Teams' },
     { id: 'rbac', label: 'RBAC' },
+    { id: 'patient-comparison', label: 'Patient Comparison' },
     { id: 'rehab-plan', label: 'Rehab Plan (OT)' },
     { id: 'medication-adherence', label: 'Medication Adherence' },
     { id: 'multimodal-fusion', label: 'Multimodal Fusion' },
@@ -2381,6 +2383,8 @@ function App() {
         return <GroupsTeamsDashboard />
       case 'rbac':
         return <RBACDashboard />
+      case 'patient-comparison':
+        return <PatientComparisonDashboard />
       case 'rehab-plan':
         return <RehabPlanDashboard />
       case 'medication-adherence':
