@@ -12220,6 +12220,32 @@ async def referral_triage_definitions():
     return _json_safe(rtd.definitions())
 
 
+# ── Regulatory Submissions Dashboard ─────────────────────────────────
+# Real data: regulatory_submissions table (16 rows, 8 products, 5 pathways,
+# 5 statuses, 5 reviewers, 5 phases, 4 risk classes). Tracks FDA/CE
+# submission lifecycle, validation scores, and reviewer workload.
+
+@app.get("/api/regulatory-submissions/overview")
+async def regulatory_submissions_overview():
+    """Regulatory submissions overview — KPIs, pathway/status/risk distribution, timeline."""
+    import scripts.regulatory_submissions_dashboard as rsd
+    return _json_safe(rsd.overview())
+
+
+@app.get("/api/regulatory-submissions/breakdown")
+async def regulatory_submissions_breakdown():
+    """Regulatory submissions breakdown — reviewer workload, per-product, overdue, validation scores."""
+    import scripts.regulatory_submissions_dashboard as rsd
+    return _json_safe(rsd.breakdown())
+
+
+@app.get("/api/regulatory-submissions/definitions")
+async def regulatory_submissions_definitions():
+    """Regulatory submissions definitions — pathways, statuses, risk classes, phases, glossary."""
+    import scripts.regulatory_submissions_dashboard as rsd
+    return _json_safe(rsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

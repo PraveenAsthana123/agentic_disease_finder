@@ -355,6 +355,7 @@ import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import PatientComparisonDashboard from './components/PatientComparisonDashboard'
 import RegulatoryAuditTrailDashboard from './components/RegulatoryAuditTrailDashboard'
+import RegulatorySubmissionsDashboard from './components/RegulatorySubmissionsDashboard'
 import TelehealthSessionsDashboard from './components/TelehealthSessionsDashboard'
 import NeurologistWorkbenchDashboard from './components/NeurologistWorkbenchDashboard'
 
@@ -807,6 +808,7 @@ function App() {
     { id: 'validation-studies', label: 'Validation Studies' },
     { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
     { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' },
+    { id: 'regulatory-submissions', label: 'Regulatory Submissions' },
     { id: 'telehealth-sessions', label: 'Telehealth Sessions' },
     { id: 'neurologist-workbench', label: 'Neurologist Workbench' }
   ]
@@ -2393,6 +2395,8 @@ function App() {
         return <PatientComparisonDashboard />
       case 'regulatory-audit-trail':
         return <RegulatoryAuditTrailDashboard />
+      case 'regulatory-submissions':
+        return <RegulatorySubmissionsDashboard />
       case 'telehealth-sessions':
         return <TelehealthSessionsDashboard />
       case 'rehab-plan':

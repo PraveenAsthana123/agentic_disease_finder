@@ -9,7 +9,13 @@
     "PSD graph",
     "Spectrogram",
     "10-20 topomap",
-    "Spike/sharp-wave overlay"
+    "Spike/sharp-wave overlay",
+    {
+      "id": "regulatory_submissions",
+      "name": "Regulatory Submissions Dashboard",
+      "status": "built",
+      "note": "FDA/CE pathway tracking \u2014 16 submissions, 8 products, 5 pathways, 5 statuses, 3 API endpoints + frontend"
+    }
   ],
   "libraries": {
     "EEG waveform/topomap/spectrogram": "MNE-Python",
