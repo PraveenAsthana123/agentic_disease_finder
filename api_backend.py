@@ -10863,21 +10863,21 @@ async def reinforcement_learning_definitions():
 
 @app.get("/api/icd10-coding/overview")
 async def icd10_coding_overview():
-    """ICD-10 coding overview — KPIs, code distribution, category breakdown, timeline."""
+    """ICD-10 coding overview — KPIs, status/code distributions, coder workload, monthly timeline."""
     import scripts.icd10_coding_dashboard as icd
     return _json_safe(icd.overview())
 
 
 @app.get("/api/icd10-coding/breakdown")
 async def icd10_coding_breakdown():
-    """ICD-10 coding breakdown — recent codings, accuracy by category, rejections, workload."""
+    """ICD-10 coding breakdown — rejection analysis, per-coder summary, low confidence, recent records."""
     import scripts.icd10_coding_dashboard as icd
     return _json_safe(icd.breakdown())
 
 
 @app.get("/api/icd10-coding/definitions")
 async def icd10_coding_definitions():
-    """ICD-10 coding definitions — chapter reference, status glossary, methodology."""
+    """ICD-10 coding definitions — code categories, statuses, rejection reasons, glossary."""
     import scripts.icd10_coding_dashboard as icd
     return _json_safe(icd.definitions())
 
@@ -11798,31 +11798,6 @@ async def education_modules_definitions():
     format descriptions, clinical notes on patient education in epilepsy."""
     import scripts.education_modules_dashboard as emd
     return _json_safe(emd.definitions())
-
-
-# ── ICD-10 Coding Dashboard ─────────────────────────────────────
-@app.get("/api/icd10-coding/overview")
-async def icd10_coding_overview():
-    """ICD-10 coding overview — encounter totals, auto-coded vs confirmed,
-    coding accuracy, code distribution, category distribution, timeline."""
-    import scripts.icd10_coding_dashboard as icd
-    return _json_safe(icd.overview())
-
-
-@app.get("/api/icd10-coding/breakdown")
-async def icd10_coding_breakdown():
-    """ICD-10 coding breakdown — recent codings, accuracy by category,
-    rejection reasons, coder workload."""
-    import scripts.icd10_coding_dashboard as icd
-    return _json_safe(icd.breakdown())
-
-
-@app.get("/api/icd10-coding/definitions")
-async def icd10_coding_definitions():
-    """ICD-10 coding definitions — ICD-10 chapters, coding statuses,
-    accuracy methodology, glossary."""
-    import scripts.icd10_coding_dashboard as icd
-    return _json_safe(icd.definitions())
 
 
 # ── Wearable Devices Dashboard ────────────────────────────────────
