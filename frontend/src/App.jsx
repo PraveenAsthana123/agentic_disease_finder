@@ -355,6 +355,7 @@ import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import PatientComparisonDashboard from './components/PatientComparisonDashboard'
 import RegulatoryAuditTrailDashboard from './components/RegulatoryAuditTrailDashboard'
+import TelehealthSessionsDashboard from './components/TelehealthSessionsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -804,7 +805,8 @@ function App() {
     { id: 'hipaa-audit', label: 'HIPAA Audit' },
     { id: 'validation-studies', label: 'Validation Studies' },
     { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
-    { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' }
+    { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' },
+    { id: 'telehealth-sessions', label: 'Telehealth Sessions' }
   ]
 
   // API Calls
@@ -2389,6 +2391,8 @@ function App() {
         return <PatientComparisonDashboard />
       case 'regulatory-audit-trail':
         return <RegulatoryAuditTrailDashboard />
+      case 'telehealth-sessions':
+        return <TelehealthSessionsDashboard />
       case 'rehab-plan':
         return <RehabPlanDashboard />
       case 'medication-adherence':

@@ -12192,6 +12192,32 @@ async def regulatory_audit_trail_definitions():
     return _json_safe(ratd.definitions())
 
 
+# ── Telehealth Sessions Dashboard ──────────────────────────────────────
+# Real data: telehealth_sessions table (109 rows, 30 patients, 6 providers,
+# 4 session types, 4 platforms). Tracks remote patient encounters,
+# connection quality, patient satisfaction, and provider workload.
+
+@app.get("/api/telehealth-sessions/overview")
+async def telehealth_sessions_overview():
+    """Telehealth overview — session KPIs, type/platform/quality distribution, monthly trend, provider workload."""
+    import scripts.telehealth_sessions_dashboard as tsd
+    return _json_safe(tsd.overview())
+
+
+@app.get("/api/telehealth-sessions/breakdown")
+async def telehealth_sessions_breakdown():
+    """Telehealth breakdown — poor connections, low satisfaction, per-patient summary, recent sessions, provider by type."""
+    import scripts.telehealth_sessions_dashboard as tsd
+    return _json_safe(tsd.breakdown())
+
+
+@app.get("/api/telehealth-sessions/definitions")
+async def telehealth_sessions_definitions():
+    """Telehealth definitions — session types, quality levels, platforms, field descriptions, glossary."""
+    import scripts.telehealth_sessions_dashboard as tsd
+    return _json_safe(tsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
