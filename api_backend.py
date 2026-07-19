@@ -12167,6 +12167,31 @@ async def patient_comparison_definitions():
     return _json_safe(pcd.definitions())
 
 
+# ── Regulatory Audit Trail Dashboard ──────────────────────────
+# Real data: regulatory_audit_trail table — 102 actions, 16 submissions,
+# 11 actors, 9 action types, 5 categories (Clinical/Quality/Admin/Regulatory/Technical).
+
+@app.get("/api/regulatory-audit-trail/overview")
+async def regulatory_audit_trail_overview():
+    """Regulatory audit trail overview — volume, categories, actions, actors, timeline."""
+    import scripts.regulatory_audit_trail_dashboard as ratd
+    return _json_safe(ratd.overview())
+
+
+@app.get("/api/regulatory-audit-trail/breakdown")
+async def regulatory_audit_trail_breakdown():
+    """Regulatory audit trail breakdown — per-submission, recent, alerts, per-actor."""
+    import scripts.regulatory_audit_trail_dashboard as ratd
+    return _json_safe(ratd.breakdown())
+
+
+@app.get("/api/regulatory-audit-trail/definitions")
+async def regulatory_audit_trail_definitions():
+    """Regulatory audit trail definitions — action types, categories, glossary."""
+    import scripts.regulatory_audit_trail_dashboard as ratd
+    return _json_safe(ratd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

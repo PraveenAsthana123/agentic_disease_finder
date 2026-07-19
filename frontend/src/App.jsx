@@ -354,6 +354,7 @@ import HIPAAAuditDashboard from './components/HIPAAAuditDashboard'
 import ValidationStudiesDashboard from './components/ValidationStudiesDashboard'
 import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import PatientComparisonDashboard from './components/PatientComparisonDashboard'
+import RegulatoryAuditTrailDashboard from './components/RegulatoryAuditTrailDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -802,7 +803,8 @@ function App() {
     { id: 'regulatory', label: 'Regulatory / FDA' },
     { id: 'hipaa-audit', label: 'HIPAA Audit' },
     { id: 'validation-studies', label: 'Validation Studies' },
-    { id: 'pharmacogenomics', label: 'Pharmacogenomics' }
+    { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
+    { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' }
   ]
 
   // API Calls
@@ -2385,6 +2387,8 @@ function App() {
         return <RBACDashboard />
       case 'patient-comparison':
         return <PatientComparisonDashboard />
+      case 'regulatory-audit-trail':
+        return <RegulatoryAuditTrailDashboard />
       case 'rehab-plan':
         return <RehabPlanDashboard />
       case 'medication-adherence':
