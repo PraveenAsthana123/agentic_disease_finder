@@ -356,6 +356,7 @@ import PharmacogenomicsDashboard from './components/PharmacogenomicsDashboard'
 import PatientComparisonDashboard from './components/PatientComparisonDashboard'
 import RegulatoryAuditTrailDashboard from './components/RegulatoryAuditTrailDashboard'
 import TelehealthSessionsDashboard from './components/TelehealthSessionsDashboard'
+import NeurologistWorkbenchDashboard from './components/NeurologistWorkbenchDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -806,7 +807,8 @@ function App() {
     { id: 'validation-studies', label: 'Validation Studies' },
     { id: 'pharmacogenomics', label: 'Pharmacogenomics' },
     { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' },
-    { id: 'telehealth-sessions', label: 'Telehealth Sessions' }
+    { id: 'telehealth-sessions', label: 'Telehealth Sessions' },
+    { id: 'neurologist-workbench', label: 'Neurologist Workbench' }
   ]
 
   // API Calls
@@ -2569,6 +2571,8 @@ function App() {
         return <CaregiverEmergencyDashboard />
       case 'pharmacogenomics':
         return <PharmacogenomicsDashboard />
+      case 'neurologist-workbench':
+        return <NeurologistWorkbenchDashboard />
       default:
         return renderClassificationTab()
     }
