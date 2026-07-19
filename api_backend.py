@@ -12218,6 +12218,33 @@ async def telehealth_sessions_definitions():
     return _json_safe(tsd.definitions())
 
 
+# ── Referral Triage Dashboard ──────────────────────────────────────────
+# Real data: referral_records table (84 rows, 41 patients, 7 sources,
+# 9 referral reasons, 4 urgency levels, 6 triage statuses, 5 providers).
+# Tracks referral intake, urgency classification, triage workflow,
+# provider assignment, and turnaround times.
+
+@app.get("/api/referral-triage/overview")
+async def referral_triage_overview():
+    """Referral overview — KPIs, urgency/source distributions, triage timeline."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.overview())
+
+
+@app.get("/api/referral-triage/breakdown")
+async def referral_triage_breakdown():
+    """Referral breakdown — reason distribution, urgency by source, provider workload, recent referrals."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.breakdown())
+
+
+@app.get("/api/referral-triage/definitions")
+async def referral_triage_definitions():
+    """Referral definitions — urgency levels, triage statuses, referral sources/reasons, glossary."""
+    import scripts.referral_triage_dashboard as rtd
+    return _json_safe(rtd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
