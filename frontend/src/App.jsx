@@ -257,6 +257,7 @@ import ReferralTriageDashboard from './components/ReferralTriageDashboard'
 import HospitalizationDashboard from './components/HospitalizationDashboard'
 import RAGMetadataFilterDashboard from './components/RAGMetadataFilterDashboard'
 import RecoveryTrajectoryDashboard from './components/RecoveryTrajectoryDashboard'
+import ArtifactAnnotationDashboard from './components/ArtifactAnnotationDashboard'
 import ArtifactDetectionDashboard from './components/ArtifactDetectionDashboard'
 import CognitiveDeclineDashboard from './components/CognitiveDeclineDashboard'
 import CognitiveTestsDashboard from './components/CognitiveTestsDashboard'
@@ -363,6 +364,7 @@ import NeurologistWorkbenchDashboard from './components/NeurologistWorkbenchDash
 import ClinicalDecisionsDashboard from './components/ClinicalDecisionsDashboard'
 import SeizureMetadataDashboard from './components/SeizureMetadataDashboard'
 import CouncilOfAgentsDashboard from './components/CouncilOfAgentsDashboard'
+import ArtifactAnnotationsDashboard from './components/ArtifactAnnotationsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -709,6 +711,7 @@ function App() {
     { id: 'hospitalization', label: 'Hospitalization' },
     { id: 'rag-metadata-filter', label: 'RAG Metadata Filter' },
     { id: 'recovery-trajectory', label: 'Recovery Trajectory' },
+    { id: 'artifact-annotations', label: 'Artifact Annotations' },
     { id: 'artifact-detection', label: 'Artifact Detection' },
     { id: 'cognitive-decline', label: 'Cognitive Decline' },
     { id: 'cognitive-tests', label: 'Digital Cognitive Tests' },
@@ -2373,6 +2376,8 @@ function App() {
         return <RAGMetadataFilterDashboard />
       case 'recovery-trajectory':
         return <RecoveryTrajectoryDashboard />
+      case 'artifact-annotations':
+        return <ArtifactAnnotationsDashboard />
       case 'artifact-detection':
         return <ArtifactDetectionDashboard />
       case 'cognitive-decline':
