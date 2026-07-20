@@ -398,6 +398,19 @@
       "table": "iot_alerts",
       "rows": 50,
       "note": "IoT device/gateway alert analytics \u2014 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
+    },
+    {
+      "id": "onboarding-intake",
+      "name": "Onboarding Intake Dashboard",
+      "category": "clinical",
+      "status": "built",
+      "endpoints": [
+        "/api/onboarding-intake/overview",
+        "/api/onboarding-intake/breakdown",
+        "/api/onboarding-intake/definitions"
+      ],
+      "frontend": "OnboardingIntakeDashboard.jsx",
+      "description": "Patient onboarding intake-vs-deferred field classification — 3-step workflow (80 intake / 1170 deferred / 15x reduction / 8-10 min), 6 intake groups, 4 auto-extraction sources, 6 deferred sections, 5-tab layout"
     }
   ]
 }

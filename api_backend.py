@@ -13192,6 +13192,27 @@ async def eeg_data_formats_definitions():
     return _json_safe(edfd.definitions())
 
 
+@app.get("/api/onboarding-intake/overview")
+async def onboarding_intake_overview():
+    """Onboarding Intake overview — field counts, time savings, intake-vs-deferred distribution KPIs."""
+    import scripts.onboarding_intake_dashboard as oid
+    return _json_safe(oid.overview())
+
+
+@app.get("/api/onboarding-intake/breakdown")
+async def onboarding_intake_breakdown():
+    """Onboarding Intake breakdown — per-step details, intake groups, extraction sources, deferred sections."""
+    import scripts.onboarding_intake_dashboard as oid
+    return _json_safe(oid.breakdown())
+
+
+@app.get("/api/onboarding-intake/definitions")
+async def onboarding_intake_definitions():
+    """Onboarding Intake definitions — step descriptions, field classification, glossary, references."""
+    import scripts.onboarding_intake_dashboard as oid
+    return _json_safe(oid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
