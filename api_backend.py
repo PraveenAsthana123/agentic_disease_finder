@@ -12299,6 +12299,33 @@ async def federated_learning_definitions():
     return _json_safe(fld.definitions())
 
 
+# ──────────────────────────────────────────────────────────────
+# Seizure Metadata Dashboard
+# Real data: seizure_metadata table — ILAE-structured seizure classification
+# records (71 patients, 11 seizure types, 10 onset zones, 12 etiologies,
+# 14 syndromes). Cross-references seizure_diary + analyses tables.
+
+@app.get("/api/seizure-metadata/overview")
+async def seizure_metadata_overview():
+    """Seizure metadata overview — ILAE classification KPIs, onset zones, etiology, syndromes."""
+    import scripts.seizure_metadata_dashboard as smd
+    return _json_safe(smd.overview())
+
+
+@app.get("/api/seizure-metadata/breakdown")
+async def seizure_metadata_breakdown():
+    """Seizure metadata breakdown — per-patient classification, surgery candidates, drug-resistant."""
+    import scripts.seizure_metadata_dashboard as smd
+    return _json_safe(smd.breakdown())
+
+
+@app.get("/api/seizure-metadata/definitions")
+async def seizure_metadata_definitions():
+    """Seizure metadata definitions — ILAE seizure types, onset zones, etiology, glossary."""
+    import scripts.seizure_metadata_dashboard as smd
+    return _json_safe(smd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

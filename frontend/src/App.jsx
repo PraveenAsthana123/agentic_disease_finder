@@ -361,6 +361,7 @@ import RegulatorySubmissionsDashboard from './components/RegulatorySubmissionsDa
 import TelehealthSessionsDashboard from './components/TelehealthSessionsDashboard'
 import NeurologistWorkbenchDashboard from './components/NeurologistWorkbenchDashboard'
 import ClinicalDecisionsDashboard from './components/ClinicalDecisionsDashboard'
+import SeizureMetadataDashboard from './components/SeizureMetadataDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -757,6 +758,7 @@ function App() {
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
+    { id: 'seizure-metadata', label: 'Seizure Metadata' },
     { id: 'upload-analysis', label: 'Upload & Analysis' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
     { id: 'abpm', label: 'ABPM / Holter' },
@@ -816,7 +818,8 @@ function App() {
     { id: 'regulatory-submissions', label: 'Regulatory Submissions' },
     { id: 'telehealth-sessions', label: 'Telehealth Sessions' },
     { id: 'neurologist-workbench', label: 'Neurologist Workbench' },
-    { id: 'clinical-decisions', label: 'Clinical Decisions' }
+    { id: 'clinical-decisions', label: 'Clinical Decisions' },
+    { id: 'seizure-metadata', label: 'Seizure Metadata' }
   ]
 
   // API Calls
@@ -2471,6 +2474,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'seizure-metadata':
+        return <SeizureMetadataDashboard />
       case 'upload-analysis':
         return <UploadAnalysisDashboard />
       case 'seizure-semiology':
@@ -2575,6 +2580,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
+      case 'seizure-metadata':
+        return <SeizureMetadataDashboard />
       case 'upload-analysis':
         return <UploadAnalysisDashboard />
       case 'seizure-semiology':
