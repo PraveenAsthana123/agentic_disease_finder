@@ -34,6 +34,7 @@ import TorchEEGDashboard from './components/TorchEEGDashboard'
 import ILAEClassificationDashboard from './components/ILAEClassificationDashboard'
 import AnnotationDashboard from './components/AnnotationDashboard'
 import AICostDashboard from './components/AICostDashboard'
+import AIFinOpsDashboard from './components/AIFinOpsDashboard'
 import InferenceGPUDashboard from './components/InferenceGPUDashboard'
 import SpikeOverlayDashboard from './components/SpikeOverlayDashboard'
 import EpilepsyNurseDashboard from './components/EpilepsyNurseDashboard'
@@ -358,6 +359,7 @@ import RegulatoryAuditTrailDashboard from './components/RegulatoryAuditTrailDash
 import RegulatorySubmissionsDashboard from './components/RegulatorySubmissionsDashboard'
 import TelehealthSessionsDashboard from './components/TelehealthSessionsDashboard'
 import NeurologistWorkbenchDashboard from './components/NeurologistWorkbenchDashboard'
+import ClinicalDecisionsDashboard from './components/ClinicalDecisionsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -480,6 +482,7 @@ function App() {
     { id: 'ilae-classification', label: 'ILAE Classification' },
     { id: 'annotation', label: 'Annotation QC' },
     { id: 'ai-cost', label: 'AI Cost' },
+    { id: 'ai-finops', label: 'AI FinOps' },
     { id: 'token-cost', label: 'Token / Cost' },
     { id: 'shadow-ai', label: 'Shadow AI' },
     { id: 'noise-cleaning', label: 'Noise Cleaning' },
@@ -810,7 +813,8 @@ function App() {
     { id: 'regulatory-audit-trail', label: 'Regulatory Audit Trail' },
     { id: 'regulatory-submissions', label: 'Regulatory Submissions' },
     { id: 'telehealth-sessions', label: 'Telehealth Sessions' },
-    { id: 'neurologist-workbench', label: 'Neurologist Workbench' }
+    { id: 'neurologist-workbench', label: 'Neurologist Workbench' },
+    { id: 'clinical-decisions', label: 'Clinical Decisions' }
   ]
 
   // API Calls
@@ -1915,6 +1919,8 @@ function App() {
         return <AnnotationDashboard />
       case 'ai-cost':
         return <AICostDashboard />
+      case 'ai-finops':
+        return <AIFinOpsDashboard />
       case 'token-cost':
         return <TokenCostDashboard />
       case 'shadow-ai':
@@ -2577,6 +2583,8 @@ function App() {
         return <PharmacogenomicsDashboard />
       case 'neurologist-workbench':
         return <NeurologistWorkbenchDashboard />
+      case 'clinical-decisions':
+        return <ClinicalDecisionsDashboard />
       default:
         return renderClassificationTab()
     }
