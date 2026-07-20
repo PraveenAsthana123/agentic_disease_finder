@@ -13234,6 +13234,27 @@ async def neuro_ai_ecosystem_definitions():
     return _json_safe(naed.definitions())
 
 
+@app.get("/api/ai-type-coverage/overview")
+async def ai_type_coverage_overview():
+    """AI Type Coverage overview — total types, status distribution, category breakdown KPIs."""
+    import scripts.ai_type_coverage_dashboard as atcd
+    return _json_safe(atcd.overview())
+
+
+@app.get("/api/ai-type-coverage/breakdown")
+async def ai_type_coverage_breakdown():
+    """AI Type Coverage breakdown — per-category built types, not-pulled inventory."""
+    import scripts.ai_type_coverage_dashboard as atcd
+    return _json_safe(atcd.breakdown())
+
+
+@app.get("/api/ai-type-coverage/definitions")
+async def ai_type_coverage_definitions():
+    """AI Type Coverage definitions — status legend, glossary, clinical notes, references."""
+    import scripts.ai_type_coverage_dashboard as atcd
+    return _json_safe(atcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
