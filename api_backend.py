@@ -13108,6 +13108,27 @@ async def enterprise_pipelines_definitions():
     return _json_safe(epd.definitions())
 
 
+@app.get("/api/consultant-matrix/overview")
+async def consultant_matrix_overview():
+    """Consultant Matrix overview — 10 consultant roles, tier distribution, task/challenge/AI KPIs."""
+    import scripts.consultant_matrix_dashboard as cmd
+    return _json_safe(cmd.overview())
+
+
+@app.get("/api/consultant-matrix/breakdown")
+async def consultant_matrix_breakdown():
+    """Consultant Matrix breakdown — per-role tasks, challenges, AI solutions, data matrix."""
+    import scripts.consultant_matrix_dashboard as cmd
+    return _json_safe(cmd.breakdown())
+
+
+@app.get("/api/consultant-matrix/definitions")
+async def consultant_matrix_definitions():
+    """Consultant Matrix definitions — tier legend, data requirement legend, glossary."""
+    import scripts.consultant_matrix_dashboard as cmd
+    return _json_safe(cmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
