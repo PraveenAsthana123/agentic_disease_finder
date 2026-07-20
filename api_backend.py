@@ -13150,6 +13150,27 @@ async def iot_devices_definitions():
     return _json_safe(idd.definitions())
 
 
+@app.get("/api/global-approval-policy/overview")
+async def global_approval_policy_overview():
+    """Global Approval Policy overview — rules, roles, risk bands, decision distribution KPIs."""
+    import scripts.global_approval_policy_dashboard as gapd
+    return _json_safe(gapd.overview())
+
+
+@app.get("/api/global-approval-policy/breakdown")
+async def global_approval_policy_breakdown():
+    """Global Approval Policy breakdown — per-role scopes, per-rule criteria, risk bands, HITL config."""
+    import scripts.global_approval_policy_dashboard as gapd
+    return _json_safe(gapd.breakdown())
+
+
+@app.get("/api/global-approval-policy/definitions")
+async def global_approval_policy_definitions():
+    """Global Approval Policy definitions — decision types, role descriptions, glossary, references."""
+    import scripts.global_approval_policy_dashboard as gapd
+    return _json_safe(gapd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

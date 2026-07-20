@@ -119,6 +119,7 @@ import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import IoTDevicesDashboard from './components/IoTDevicesDashboard'
+import GlobalApprovalPolicyDashboard from './components/GlobalApprovalPolicyDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -699,6 +700,7 @@ function App() {
     { id: 'feature-gaps', label: 'Feature Gaps' },
     { id: 'enterprise-pipelines', label: 'Enterprise Pipelines' },
     { id: 'iot-devices', label: 'IoT Devices' },
+    { id: 'global-approval-policy', label: 'Global Approval Policy' },
     { id: 'role-tests', label: 'Role Tests' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2132,6 +2134,8 @@ function App() {
         return <EnterprisePipelinesDashboard />
       case 'iot-devices':
         return <IoTDevicesDashboard />
+      case 'global-approval-policy':
+        return <GlobalApprovalPolicyDashboard />
       case 'role-tests':
         return <RoleTestsDashboard />
       case 'transfer-learning':

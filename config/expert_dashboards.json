@@ -1,6 +1,6 @@
 {
-  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
-  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+  "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
+  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
   "updated_at": "2026-07-10",
   "must_have_p0": [
     "Raw EEG waveform",
@@ -14,7 +14,7 @@
       "id": "regulatory_submissions",
       "name": "Regulatory Submissions Dashboard",
       "status": "built",
-      "note": "FDA/CE pathway tracking — 16 submissions, 8 products, 5 pathways, 5 statuses, 3 API endpoints + frontend"
+      "note": "FDA/CE pathway tracking \u2014 16 submissions, 8 products, 5 pathways, 5 statuses, 3 API endpoints + frontend"
     }
   ],
   "libraries": {
@@ -413,7 +413,7 @@
     {
       "role": "Admin / Operations",
       "name": "Enterprise Pipelines",
-      "viz": "Enterprise AI control-tower pipeline catalog — 12 groups, 45 pipelines, 202 stages",
+      "viz": "Enterprise AI control-tower pipeline catalog \u2014 12 groups, 45 pipelines, 202 stages",
       "feature": "Group/status distribution, pipeline-per-group stacked bar, stages-per-group bar, stage flow map, per-group detail tables",
       "why": "Full enterprise pipeline taxonomy visualization for AI lifecycle governance",
       "priority": "P1",
@@ -423,11 +423,22 @@
         "/api/enterprise-pipelines/breakdown",
         "/api/enterprise-pipelines/definitions"
       ]
+    },
+    {
+      "name": "Global Approval Policy Dashboard",
+      "config_source": "global_approval_policy.json",
+      "component": "GlobalApprovalPolicyDashboard.jsx",
+      "endpoints": [
+        "/api/global-approval-policy/overview",
+        "/api/global-approval-policy/breakdown",
+        "/api/global-approval-policy/definitions"
+      ],
+      "status": "built"
     }
   ],
   "summary": {
-    "total": 34,
-    "built": 34,
+    "total": 36,
+    "built": 36,
     "partial": 0,
     "planned": 0
   }
