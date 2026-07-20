@@ -12246,6 +12246,59 @@ async def regulatory_submissions_definitions():
     return _json_safe(rsd.definitions())
 
 
+# ──────────────────────────────────────────────────────────────
+# Clinical Decisions Dashboard — Human-in-the-Loop AI oversight
+# (75 rows, 40 patients, 5 reviewers, 5 AI prediction categories,
+# 3 agreement levels, 4 decision types, 4 artifact risk levels).
+# Tracks neurologist confirm/override of AI predictions.
+
+@app.get("/api/clinical-decisions/overview")
+async def clinical_decisions_overview():
+    """Clinical decisions overview — HITL AI oversight KPIs, agreement/decision distributions."""
+    import scripts.clinical_decisions_dashboard as cdd
+    return _json_safe(cdd.overview())
+
+
+@app.get("/api/clinical-decisions/breakdown")
+async def clinical_decisions_breakdown():
+    """Clinical decisions breakdown — reviewer workload, disagreement analysis, cross-tabs."""
+    import scripts.clinical_decisions_dashboard as cdd
+    return _json_safe(cdd.breakdown())
+
+
+@app.get("/api/clinical-decisions/definitions")
+async def clinical_decisions_definitions():
+    """Clinical decisions definitions — decision types, agreement levels, glossary."""
+    import scripts.clinical_decisions_dashboard as cdd
+    return _json_safe(cdd.definitions())
+
+
+# ── Federated Learning Dashboard ─────────────────────────────────
+# Multi-site privacy-preserving FL training analytics
+# (federation_rounds 18 rows, federation_sites 8 rows).
+# Tracks rounds, accuracy, aggregation methods, convergence, privacy budget.
+
+@app.get("/api/federated-learning/overview")
+async def federated_learning_overview():
+    """Federated learning overview — global accuracy, sites, rounds, privacy budget."""
+    import scripts.federated_learning_dashboard as fld
+    return _json_safe(fld.overview())
+
+
+@app.get("/api/federated-learning/breakdown")
+async def federated_learning_breakdown():
+    """Federated learning breakdown — per-site detail, aggregation comparison, convergence."""
+    import scripts.federated_learning_dashboard as fld
+    return _json_safe(fld.breakdown())
+
+
+@app.get("/api/federated-learning/definitions")
+async def federated_learning_definitions():
+    """Federated learning definitions — FL terminology, aggregation methods, privacy concepts."""
+    import scripts.federated_learning_dashboard as fld
+    return _json_safe(fld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
