@@ -13255,6 +13255,27 @@ async def ai_type_coverage_definitions():
     return _json_safe(atcd.definitions())
 
 
+@app.get("/api/neuro-tests-catalog/overview")
+async def neuro_tests_catalog_overview():
+    """Neuro Tests Catalog overview — test counts, status distribution, EEG linkage categories, role breakdown KPIs."""
+    import scripts.neuro_tests_dashboard as ntd
+    return _json_safe(ntd.overview())
+
+
+@app.get("/api/neuro-tests-catalog/breakdown")
+async def neuro_tests_catalog_breakdown():
+    """Neuro Tests Catalog breakdown — per-EEG-link category, per-role, case data inventory."""
+    import scripts.neuro_tests_dashboard as ntd
+    return _json_safe(ntd.breakdown())
+
+
+@app.get("/api/neuro-tests-catalog/definitions")
+async def neuro_tests_catalog_definitions():
+    """Neuro Tests Catalog definitions — status legend, EEG link types, glossary, clinical notes, references."""
+    import scripts.neuro_tests_dashboard as ntd
+    return _json_safe(ntd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

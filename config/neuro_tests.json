@@ -23,6 +23,10 @@
     {"test": "EMG", "link": "Motor — distinguishes epileptic myoclonus (cortical, EEG-correlated) from non-epileptic"},
     {"test": "NCV / RNS", "link": "Peripheral — independent of EEG; rules out systemic/peripheral mimics"}
   ],
+  "dashboard_id": "neuro-tests-catalog",
+  "dashboard_component": "NeuroTestsCatalogDashboard.jsx",
+  "dashboard_status": "built",
+  "dashboard_note": "Neuro Tests Catalog Dashboard — 13-test neurophysiology/electrodiagnostic catalog visualization from real neuro_tests.json config (13 tests, 5 EEG link categories, 5 roles, all built), 3 API endpoints (/api/neuro-tests-catalog/overview|breakdown|definitions), KPIs (13 tests/13 built/4 EEG linkage categories/5 roles), status pie chart, EEG linkage category pie chart, role distribution bar chart, all-tests table, 5-tab layout (Overview, By EEG Linkage, By Role, Case Data, Definitions), NeuroTestsCatalogDashboard.jsx wired in App.jsx nav, 3 endpoints verified 200",
   "summary": {"total": 13, "built": 13, "partial": 0, "cataloged": 0,
-              "honest_note": "Built (13): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP, ABPM/Holter, Autonomic, RR/HRV — all have backend endpoints + frontend dashboards."}
+              "honest_note": "Built (13): EEG, VEEG, NCV, EMG, Blink Reflex, SSEP, BERA, RNS, SSR, VEP, ABPM/Holter, Autonomic, RR/HRV — all have backend endpoints + frontend dashboards. Catalog dashboard built with 3 endpoints + 5-tab frontend."}
 }

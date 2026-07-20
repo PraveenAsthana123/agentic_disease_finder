@@ -124,6 +124,7 @@ import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
 import NeuroAiEcosystemDashboard from './components/NeuroAiEcosystemDashboard'
 import AiTypeCoverageDashboard from './components/AiTypeCoverageDashboard'
+import NeuroTestsCatalogDashboard from './components/NeuroTestsCatalogDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -709,6 +710,7 @@ function App() {
     { id: 'onboarding-intake', label: 'Onboarding Intake' },
     { id: 'neuro-ai-ecosystem', label: 'Neuro AI Ecosystem' },
     { id: 'ai-type-coverage', label: 'AI Type Coverage' },
+    { id: 'neuro-tests-catalog', label: 'Neuro Tests Catalog' },
     { id: 'role-tests', label: 'Role Tests' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2152,6 +2154,8 @@ function App() {
         return <NeuroAiEcosystemDashboard />
       case 'ai-type-coverage':
         return <AiTypeCoverageDashboard />
+      case 'neuro-tests-catalog':
+        return <NeuroTestsCatalogDashboard />
       case 'role-tests':
         return <RoleTestsDashboard />
       case 'transfer-learning':
