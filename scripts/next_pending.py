@@ -62,6 +62,7 @@ BUILDABLE = [
 # referral_triage (Referral Triage Dashboard — real referral_records 84 rows, 30+ patients, 4 urgency levels, 9 referral reasons, 7 sources, 5 providers, triage scoring + timeline + provider workload, 3 endpoints verified 200, ReferralTriageDashboard.jsx + nav wired)
 # qolie31 (QOLIE-31 Quality of Life Dashboard — real assessments 23 rows, 23 patients, 7 QoL domains (Seizure Worry/Overall QoL/Emotional Well-being/Energy-Fatigue/Cognitive Functioning/Medication Effects/Social Function), 4 severity tiers (Poor/Fair/Good/Excellent), domain comparison, severity transitions, monthly trend, 3 endpoints verified 200, QOLIE31Dashboard.jsx + nav wired)
 # mcp_security (MCP Security Dashboard — real transaction_log 1548 rows, 8 actors, guardrail enforcement, actor privileges, attack surface, patient access audit, daily security trend, hourly patterns, privileged events, HITL reviews, 3 endpoints verified 200, MCPSecurityDashboard.jsx + nav wired)
+# data_requirements (Data Requirements Dashboard — real data_requirements.json 58 items across 9 categories, present/partial/missing gap tracker, tier coverage, control groups, artifact template, technician deliverables, 3 endpoints verified 200, DataRequirementsDashboard.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

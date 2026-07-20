@@ -12502,6 +12502,191 @@ async def artifact_annotations_definitions():
     return _json_safe(aad.definitions())
 
 
+@app.get("/api/data-requirements/overview")
+async def data_requirements_overview():
+    """Data Requirements overview — KPIs + category status breakdown + tier coverage from real config."""
+    p = Path(__file__).parent / "config" / "data_requirements.json"
+    data = json.loads(p.read_text()) if p.exists() else {}
+    categories = data.get("categories", [])
+
+    # Flatten all items
+    all_items = []
+    for cat in categories:
+        for item in cat.get("items", []):
+            all_items.append({**item, "category": cat["category"]})
+
+    total = len(all_items)
+    present_count = sum(1 for i in all_items if i.get("status") == "present")
+    partial_count = sum(1 for i in all_items if i.get("status") == "partial")
+    missing_count = sum(1 for i in all_items if i.get("status") == "missing")
+    completeness_pct = round(present_count / max(total, 1) * 100, 1)
+
+    # Category-level breakdown
+    category_breakdown = []
+    for cat in categories:
+        items = cat.get("items", [])
+        category_breakdown.append({
+            "category": cat["category"],
+            "present": sum(1 for i in items if i.get("status") == "present"),
+            "partial": sum(1 for i in items if i.get("status") == "partial"),
+            "missing": sum(1 for i in items if i.get("status") == "missing"),
+            "total": len(items),
+        })
+
+    # Tier coverage
+    tiers = data.get("tiers", {})
+    tier_coverage = [
+        {"tier": "tier1_mandatory", "label": "Tier 1 Mandatory", "count": len(tiers.get("tier1_mandatory", []))},
+        {"tier": "tier2_recommended", "label": "Tier 2 Recommended", "count": len(tiers.get("tier2_recommended", []))},
+        {"tier": "tier3_dba_excellent", "label": "Tier 3 DBA Excellent", "count": len(tiers.get("tier3_dba_excellent", []))},
+    ]
+
+    # Control groups summary
+    cg = data.get("control_groups", {})
+    control_groups_summary = {
+        "note": cg.get("note", ""),
+        "most_valuable": cg.get("most_valuable", []),
+        "minimum_cohorts": len(cg.get("minimum_dataset", [])),
+        "ideal_cohorts": len(cg.get("ideal_dataset", [])),
+    }
+
+    return _json_safe({
+        "available": True,
+        "title": data.get("title", "Data Requirements"),
+        "note": data.get("note", ""),
+        "updated_at": data.get("updated_at", ""),
+        "kpis": {
+            "total_items": total,
+            "present": present_count,
+            "partial": partial_count,
+            "missing": missing_count,
+            "completeness_pct": completeness_pct,
+            "categories": len(categories),
+            "tier1_mandatory": len(tiers.get("tier1_mandatory", [])),
+            "control_groups": len(cg.get("most_valuable", [])),
+        },
+        "category_breakdown": category_breakdown,
+        "status_distribution": {
+            "present": present_count,
+            "partial": partial_count,
+            "missing": missing_count,
+        },
+        "tier_coverage": tier_coverage,
+        "control_groups_summary": control_groups_summary,
+        "single_most_important": data.get("single_most_important", ""),
+    })
+
+
+@app.get("/api/data-requirements/breakdown")
+async def data_requirements_breakdown():
+    """Data Requirements breakdown — all items flattened, per-category detail, artifact template,
+    technician deliverables, top 10 artifacts."""
+    p = Path(__file__).parent / "config" / "data_requirements.json"
+    data = json.loads(p.read_text()) if p.exists() else {}
+    categories = data.get("categories", [])
+
+    # Flatten all items with category
+    all_items = []
+    for cat in categories:
+        for item in cat.get("items", []):
+            all_items.append({
+                "category": cat["category"],
+                "name": item.get("name", ""),
+                "status": item.get("status", ""),
+                "note": item.get("note", ""),
+            })
+
+    # Per-category detail
+    per_category = []
+    for cat in categories:
+        per_category.append({
+            "category": cat["category"],
+            "items": cat.get("items", []),
+        })
+
+    return _json_safe({
+        "all_items": all_items,
+        "per_category": per_category,
+        "artifact_template": data.get("artifact_template", []),
+        "technician_deliverables": data.get("technician_deliverables", []),
+        "top10_artifacts": data.get("top10_artifacts", []),
+        "control_groups": data.get("control_groups", {}),
+    })
+
+
+@app.get("/api/data-requirements/definitions")
+async def data_requirements_definitions():
+    """Data Requirements definitions — status levels, data tiers, glossary, clinical notes, references."""
+    return _json_safe({
+        "status_levels": [
+            {
+                "status": "present",
+                "color": "#4caf50",
+                "label": "Present",
+                "description": "Data field exists in the system and is populated with real or realistic data. Ready for model training or clinical use.",
+            },
+            {
+                "status": "partial",
+                "color": "#ff9800",
+                "label": "Partial",
+                "description": "Table or column exists in the schema but lacks real clinical data. Structure is in place; data ingestion or labeling is needed.",
+            },
+            {
+                "status": "missing",
+                "color": "#f44336",
+                "label": "Missing",
+                "description": "Not yet in the system. Neither the schema field nor the data exists. Requires design, implementation, and data collection.",
+            },
+        ],
+        "data_tiers": [
+            {
+                "tier": "tier1_mandatory",
+                "label": "Tier 1 — Mandatory",
+                "description": "Core data without which the AI model cannot be trained or validated. Must be collected before any model development can proceed.",
+                "items": ["EDF EEG files", "EEG reports", "Diagnosis", "Age", "Gender", "Medication history", "Seizure type", "MRI report"],
+            },
+            {
+                "tier": "tier2_recommended",
+                "label": "Tier 2 — Recommended",
+                "description": "Strongly recommended for a robust, generalizable model. Significantly improves performance and reduces bias.",
+                "items": ["Video EEG", "Clinical notes", "Follow-up outcome", "Hospitalization data", "Treatment response"],
+            },
+            {
+                "tier": "tier3_dba_excellent",
+                "label": "Tier 3 — DBA Excellent",
+                "description": "Distinguishes a responsible, explainable, governance-compliant AI system. Required for regulatory submissions and DBA-level review.",
+                "items": ["Neurologist feedback", "Clinician review notes", "Second opinion reports", "Audit trail", "Decision logs"],
+            },
+        ],
+        "glossary": [
+            {"term": "EDF", "definition": "European Data Format — the standard binary file format for storing multichannel EEG recordings. Required for model input."},
+            {"term": "BDF", "definition": "BioSemi Data Format — an extension of EDF used by BioSemi ActiveTwo amplifiers, supports 24-bit resolution."},
+            {"term": "BIDS", "definition": "Brain Imaging Data Structure — a community standard for organizing neuroimaging and EEG datasets for reproducible research."},
+            {"term": "ILAE", "definition": "International League Against Epilepsy — the body that defines the official classification of seizure types and epilepsy syndromes."},
+            {"term": "AED", "definition": "Anti-Epileptic Drug — medications used to prevent seizures. Drug type and dosage are critical features for AI model training."},
+            {"term": "MoCA", "definition": "Montreal Cognitive Assessment — a widely used 30-point test for detecting mild cognitive impairment, present in this platform."},
+            {"term": "PHQ-9", "definition": "Patient Health Questionnaire-9 — a validated 9-item depression screening tool integrated into the neuropsychological assessment module."},
+            {"term": "GAD-7", "definition": "Generalized Anxiety Disorder 7-item scale — a validated anxiety screening instrument integrated alongside PHQ-9."},
+            {"term": "ICA", "definition": "Independent Component Analysis — a signal decomposition technique used to separate EEG signals from eye blink, muscle, and cardiac artifacts."},
+            {"term": "SNR", "definition": "Signal-to-Noise Ratio — a measure of EEG signal quality. Low SNR indicates excessive artifact contamination and reduces model accuracy."},
+        ],
+        "clinical_notes": [
+            "EEG Signal data is the single most critical data category — without real EDF files, no CNN, Transformer, STFT, wavelet, or SHAP analysis is possible.",
+            "Clinical data (diagnosis, seizure classification, onset age) drives the supervised learning labels; incomplete clinical data directly reduces model sensitivity.",
+            "Medication data is essential for drug-response prediction models and for controlling confounders in seizure-frequency analysis.",
+            "Governance data (clinician review, audit trail, HITL override) is required by DBA regulations and responsible AI guidelines for any clinical deployment.",
+            "Control groups (PNES, syncope, migraine, stroke) are critical to prove the model detects epilepsy specifically, not just any neurological abnormality.",
+            "Data Quality metrics (SNR, artifact labels, electrode failure) determine whether raw EEG signals are suitable for AI training without introducing noise bias.",
+        ],
+        "references": [
+            "Appelhoff S et al. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. J Open Source Softw 4(44):1896.",
+            "Fisher RS et al. (2017). Operational classification of seizure types by the ILAE. Epilepsia 58(4):522-530.",
+            "Gramfort A et al. (2013). MEG and EEG data analysis with MNE-Python. Front Neurosci 7:267.",
+            "Shoeb AH & Guttag JV (2010). Application of machine learning to epileptic seizure detection. ICML 2010.",
+        ],
+    })
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
