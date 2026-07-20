@@ -241,6 +241,7 @@ import MoCAAutoscoringDashboard from './components/MoCAAutoscoringDashboard'
 import EdgeDeployDashboard from './components/EdgeDeployDashboard'
 import ClosedLoopDashboard from './components/ClosedLoopDashboard'
 import BandHeatmapDashboard from './components/BandHeatmapDashboard'
+import LibrosaDashboard from './components/LibrosaDashboard'
 import XAIGroundTruthDashboard from './components/XAIGroundTruthDashboard'
 import DeviceTelemetryDashboard from './components/DeviceTelemetryDashboard'
 import TelehealthDashboard from './components/TelehealthDashboard'
@@ -691,6 +692,7 @@ function App() {
     { id: 'edge-deploy', label: 'Edge Deployment' },
     { id: 'closed-loop', label: 'Closed-Loop Neurostim' },
     { id: 'band-heatmap', label: 'Band Heatmap' },
+    { id: 'librosa', label: 'Librosa Spectral' },
     { id: 'device-telemetry', label: 'Device Telemetry' },
     { id: 'telehealth', label: 'Telehealth' },
     { id: 'workflow', label: 'Workflow' },
@@ -2335,6 +2337,8 @@ function App() {
         return <ClosedLoopDashboard />
       case 'band-heatmap':
         return <BandHeatmapDashboard />
+      case 'librosa':
+        return <LibrosaDashboard />
       case 'device-telemetry':
         return <DeviceTelemetryDashboard />
       case 'telehealth':
