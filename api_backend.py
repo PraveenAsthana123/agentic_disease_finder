@@ -2047,7 +2047,7 @@ async def admin_dashboards():
         {"name": "AI Types (201)", "status": "catalog", "where": "/api/ai-type-coverage"},
         {"name": "Automatic Pipelines (20)", "status": "catalog", "where": "/api/automatic-pipelines"},
         {"name": "Enterprise Pipelines (45)", "status": "catalog", "where": "/api/enterprise-pipelines"},
-        {"name": "Production Issues (16 layers)", "status": "catalog", "where": "/api/production-issues"},
+        {"name": "Production Issues (16 layers)", "status": "built", "where": "/api/production-issues"},
         {"name": "Stories & Tests", "status": "catalog", "where": "/api/stories-tests"},
         {"name": "Simulations (per role)", "status": "catalog", "where": "/api/simulations"},
         {"name": "Portal Tabs", "status": "catalog", "where": "/api/portal-tabs"},
@@ -12849,6 +12849,29 @@ async def data_requirements_definitions():
             "Shoeb AH & Guttag JV (2010). Application of machine learning to epileptic seizure detection. ICML 2010.",
         ],
     })
+
+
+# ── Production Issues Dashboard ──────────────────────────────────────────
+
+@app.get("/api/production-issues/overview")
+async def production_issues_overview():
+    """Production Issues overview — severity counts, detection coverage, layer distribution."""
+    import scripts.production_issues_dashboard as pid
+    return _json_safe(pid.overview())
+
+
+@app.get("/api/production-issues/breakdown")
+async def production_issues_breakdown():
+    """Production Issues breakdown — all issues per layer with severity, root cause, solutions."""
+    import scripts.production_issues_dashboard as pid
+    return _json_safe(pid.breakdown())
+
+
+@app.get("/api/production-issues/definitions")
+async def production_issues_definitions():
+    """Production Issues definitions — severity levels, detection statuses, layer terminology."""
+    import scripts.production_issues_dashboard as pid
+    return _json_safe(pid.definitions())
 
 
 if __name__ == "__main__":
