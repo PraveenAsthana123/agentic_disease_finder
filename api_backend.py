@@ -12935,6 +12935,25 @@ async def role_process_flows_definitions():
     return _json_safe(rpf.definitions())
 
 
+@app.get("/api/role-challenges/overview")
+async def role_challenges_overview():
+    """Role Challenges overview — KPIs, status distribution, per-role counts."""
+    import scripts.role_challenges_dashboard as rcd
+    return _json_safe(rcd.overview())
+
+@app.get("/api/role-challenges/breakdown")
+async def role_challenges_breakdown():
+    """Role Challenges breakdown — per-role items with challenge, AI mitigation, status."""
+    import scripts.role_challenges_dashboard as rcd
+    return _json_safe(rcd.breakdown())
+
+@app.get("/api/role-challenges/definitions")
+async def role_challenges_definitions():
+    """Role Challenges definitions — role descriptions, status legend, glossary."""
+    import scripts.role_challenges_dashboard as rcd
+    return _json_safe(rcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
