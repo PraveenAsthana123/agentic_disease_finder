@@ -108,6 +108,7 @@ import ABPMHolterDashboard from './components/ABPMHolterDashboard'
 import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
 import FeatureSelectionDashboard from './components/FeatureSelectionDashboard'
 import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboard'
+import ConsultantWorkflowsDashboard from './components/ConsultantWorkflowsDashboard'
 import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
@@ -679,6 +680,7 @@ function App() {
     { id: 'feature-evaluation', label: 'Feature Evaluation' },
     { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
+    { id: 'consultant-workflows', label: 'Consultant Workflows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2092,6 +2094,8 @@ function App() {
         return <FeatureSelectionDashboard />
       case 'automatic-pipelines':
         return <AutomaticPipelinesDashboard />
+      case 'consultant-workflows':
+        return <ConsultantWorkflowsDashboard />
       case 'production-issues':
         return <ProductionIssuesDashboard />
       case 'transfer-learning':

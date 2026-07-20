@@ -12874,6 +12874,29 @@ async def production_issues_definitions():
     return _json_safe(pid.definitions())
 
 
+# ── Consultant Workflows Dashboard ──────────────────────────────────────────
+
+@app.get("/api/consultant-workflows/overview")
+async def consultant_workflows_overview():
+    """Consultant Workflows overview — role counts, phase/step distribution, signoff gates."""
+    import scripts.consultant_workflows_dashboard as cwd
+    return _json_safe(cwd.overview())
+
+
+@app.get("/api/consultant-workflows/breakdown")
+async def consultant_workflows_breakdown():
+    """Consultant Workflows breakdown — per-role phases, steps, inputs/outputs."""
+    import scripts.consultant_workflows_dashboard as cwd
+    return _json_safe(cwd.breakdown())
+
+
+@app.get("/api/consultant-workflows/definitions")
+async def consultant_workflows_definitions():
+    """Consultant Workflows definitions — role descriptions, glossary, clinical notes."""
+    import scripts.consultant_workflows_dashboard as cwd
+    return _json_safe(cwd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
