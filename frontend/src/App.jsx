@@ -116,6 +116,7 @@ import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
 import RoleTestsDashboard from './components/RoleTestsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import FeatureGapsDashboard from './components/FeatureGapsDashboard'
+import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -693,6 +694,7 @@ function App() {
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'feature-gaps', label: 'Feature Gaps' },
+    { id: 'enterprise-pipelines', label: 'Enterprise Pipelines' },
     { id: 'role-tests', label: 'Role Tests' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2120,6 +2122,8 @@ function App() {
         return <StoriesTestsDashboard />
       case 'feature-gaps':
         return <FeatureGapsDashboard />
+      case 'enterprise-pipelines':
+        return <EnterprisePipelinesDashboard />
       case 'role-tests':
         return <RoleTestsDashboard />
       case 'transfer-learning':

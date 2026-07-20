@@ -13087,6 +13087,27 @@ async def role_tests_definitions():
     return _json_safe(rtd.definitions())
 
 
+@app.get("/api/enterprise-pipelines/overview")
+async def enterprise_pipelines_overview():
+    """Enterprise Pipelines overview — KPIs, status distribution, per-group pipeline/stage counts."""
+    import scripts.enterprise_pipelines_dashboard as epd
+    return _json_safe(epd.overview())
+
+
+@app.get("/api/enterprise-pipelines/breakdown")
+async def enterprise_pipelines_breakdown():
+    """Enterprise Pipelines breakdown — per-group pipeline details with stages, status, maps_to."""
+    import scripts.enterprise_pipelines_dashboard as epd
+    return _json_safe(epd.breakdown())
+
+
+@app.get("/api/enterprise-pipelines/definitions")
+async def enterprise_pipelines_definitions():
+    """Enterprise Pipelines definitions — group descriptions, status legend, glossary."""
+    import scripts.enterprise_pipelines_dashboard as epd
+    return _json_safe(epd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
