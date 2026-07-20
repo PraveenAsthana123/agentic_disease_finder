@@ -12897,6 +12897,25 @@ async def consultant_workflows_definitions():
     return _json_safe(cwd.definitions())
 
 
+@app.get("/api/epilepsy-challenges/overview")
+async def epilepsy_challenges_overview():
+    """Epilepsy Challenges overview — KPIs, level distribution, challenge table."""
+    import scripts.epilepsy_challenges_dashboard as ecd
+    return _json_safe(ecd.overview())
+
+@app.get("/api/epilepsy-challenges/breakdown")
+async def epilepsy_challenges_breakdown():
+    """Epilepsy Challenges breakdown — per-challenge STAR justification."""
+    import scripts.epilepsy_challenges_dashboard as ecd
+    return _json_safe(ecd.breakdown())
+
+@app.get("/api/epilepsy-challenges/definitions")
+async def epilepsy_challenges_definitions():
+    """Epilepsy Challenges definitions — level descriptions, STAR method, glossary."""
+    import scripts.epilepsy_challenges_dashboard as ecd
+    return _json_safe(ecd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

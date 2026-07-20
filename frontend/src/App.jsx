@@ -109,6 +109,7 @@ import FeatureEvaluationDashboard from './components/FeatureEvaluationDashboard'
 import FeatureSelectionDashboard from './components/FeatureSelectionDashboard'
 import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboard'
 import ConsultantWorkflowsDashboard from './components/ConsultantWorkflowsDashboard'
+import EpilepsyChallengesDashboard from './components/EpilepsyChallengesDashboard'
 import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
@@ -681,6 +682,7 @@ function App() {
     { id: 'feature-selection', label: 'Feature Selection' },
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
     { id: 'consultant-workflows', label: 'Consultant Workflows' },
+    { id: 'epilepsy-challenges', label: 'Epilepsy Challenges' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2096,6 +2098,8 @@ function App() {
         return <AutomaticPipelinesDashboard />
       case 'consultant-workflows':
         return <ConsultantWorkflowsDashboard />
+      case 'epilepsy-challenges':
+        return <EpilepsyChallengesDashboard />
       case 'production-issues':
         return <ProductionIssuesDashboard />
       case 'transfer-learning':
