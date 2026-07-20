@@ -113,6 +113,7 @@ import EpilepsyChallengesDashboard from './components/EpilepsyChallengesDashboar
 import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
 import RoleChallengesDashboard from './components/RoleChallengesDashboard'
 import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
+import RoleTestsDashboard from './components/RoleTestsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
@@ -692,6 +693,7 @@ function App() {
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'feature-gaps', label: 'Feature Gaps' },
+    { id: 'role-tests', label: 'Role Tests' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
     { id: 'data-augmentation', label: 'Data Augmentation' },
@@ -2118,6 +2120,8 @@ function App() {
         return <StoriesTestsDashboard />
       case 'feature-gaps':
         return <FeatureGapsDashboard />
+      case 'role-tests':
+        return <RoleTestsDashboard />
       case 'transfer-learning':
         return <TransferLearningDashboard />
       case 'cross-patient-benchmark':

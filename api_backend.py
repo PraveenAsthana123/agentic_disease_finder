@@ -13066,6 +13066,27 @@ async def feature_gaps_definitions():
     return _json_safe(fgd.definitions())
 
 
+@app.get("/api/role-tests/overview")
+async def role_tests_overview():
+    """Role Tests overview — KPIs, status distribution, per-role and per-dimension counts."""
+    import scripts.role_tests_dashboard as rtd
+    return _json_safe(rtd.overview())
+
+
+@app.get("/api/role-tests/breakdown")
+async def role_tests_breakdown():
+    """Role Tests breakdown — per-role test list with dim, case, status + cross-role matrix."""
+    import scripts.role_tests_dashboard as rtd
+    return _json_safe(rtd.breakdown())
+
+
+@app.get("/api/role-tests/definitions")
+async def role_tests_definitions():
+    """Role Tests definitions — dimension descriptions, status legend, glossary."""
+    import scripts.role_tests_dashboard as rtd
+    return _json_safe(rtd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
