@@ -1705,6 +1705,97 @@ async def stories_tests():
     return json.loads(p.read_text()) if p.exists() else {"user_stories": [], "demo_stories": [], "testing": []}
 
 
+@app.get("/api/stories-tests/overview")
+async def stories_tests_overview():
+    """Stories & Tests dashboard overview — KPIs and chart data."""
+    p = Path(__file__).parent / "config" / "stories_and_tests.json"
+    if not p.exists():
+        return {"available": False}
+    data = json.loads(p.read_text())
+    us = data.get("user_stories", [])
+    ds = data.get("demo_stories", [])
+    testing = data.get("testing", [])
+    status_counts = {}
+    for t in testing:
+        s = t.get("status", "unknown")
+        status_counts[s] = status_counts.get(s, 0) + 1
+    built = status_counts.get("built", 0)
+    partial = status_counts.get("partial", 0)
+    planned = status_counts.get("planned", 0)
+    total_dims = len(testing)
+    pct_built = round(built / total_dims * 100, 1) if total_dims else 0
+    personas = list(set(s.get("persona", "Unknown") for s in us))
+    return {
+        "available": True,
+        "summary": {
+            "total_user_stories": len(us),
+            "total_demo_stories": len(ds),
+            "total_test_dimensions": total_dims,
+            "built": built,
+            "partial": partial,
+            "planned": planned,
+            "pct_built": pct_built,
+            "personas": personas,
+        },
+        "status_distribution": [{"name": k, "value": v} for k, v in status_counts.items()],
+        "dimension_table": [
+            {"dim": t.get("dim", "?"), "tests": t.get("tests", ""), "how": t.get("how", ""), "status": t.get("status", "unknown")}
+            for t in testing
+        ],
+    }
+
+
+@app.get("/api/stories-tests/breakdown")
+async def stories_tests_breakdown():
+    """Stories & Tests breakdown — user stories, demo stories, testing rows."""
+    p = Path(__file__).parent / "config" / "stories_and_tests.json"
+    if not p.exists():
+        return {"available": False}
+    data = json.loads(p.read_text())
+    return {
+        "available": True,
+        "user_stories": data.get("user_stories", []),
+        "demo_stories": data.get("demo_stories", []),
+        "testing": data.get("testing", []),
+    }
+
+
+@app.get("/api/stories-tests/definitions")
+async def stories_tests_definitions():
+    """Stories & Tests definitions — glossary, roles, status legend."""
+    return {
+        "available": True,
+        "status_legend": [
+            {"status": "built", "meaning": "Fully implemented and verified end-to-end"},
+            {"status": "partial", "meaning": "Core logic exists but not all paths verified"},
+            {"status": "planned", "meaning": "Designed but not yet implemented"},
+        ],
+        "glossary": [
+            {"term": "User Story", "definition": "A persona-driven requirement describing who needs what and why"},
+            {"term": "Demo Story", "definition": "A timed walkthrough script showing a key feature to stakeholders"},
+            {"term": "Test Dimension", "definition": "One of the 9 axes in the testing matrix (API, Process, Data, Model, Accuracy, Frontend, Backend, Pipeline, Manual)"},
+            {"term": "SHAP", "definition": "SHapley Additive exPlanations — feature attribution method for ML model interpretability"},
+            {"term": "EDF", "definition": "European Data Format — standard file format for EEG recordings"},
+            {"term": "RAG", "definition": "Retrieval-Augmented Generation — AI architecture combining search with language models"},
+            {"term": "HITL", "definition": "Human-In-The-Loop — clinical oversight pattern requiring human confirmation of AI decisions"},
+            {"term": "Cross-Patient", "definition": "Evaluation methodology where train/test splits are by patient, preventing data leakage"},
+            {"term": "Leakage-Free", "definition": "A benchmark design that prevents training data from contaminating test results"},
+            {"term": "IRB", "definition": "Institutional Review Board — ethics oversight body for research involving human subjects"},
+        ],
+        "notes": [
+            "User stories map directly to API endpoints or UI flows",
+            "Demo stories are designed for 30-45 second live demonstrations",
+            "The 9-dimension testing matrix covers the full stack from API to manual QA",
+            "Status reflects the current implementation state in the codebase",
+        ],
+        "references": [
+            "config/stories_and_tests.json — source registry",
+            "AGILE user story format: As a [persona], I [action] so [outcome]",
+            "IEEE 829 — Standard for Software Test Documentation",
+        ],
+    }
+
+
 @app.get("/api/simulations")
 async def simulations():
     """Per-role end-to-end process simulations (step-by-step, layered)."""
@@ -2048,7 +2139,7 @@ async def admin_dashboards():
         {"name": "Automatic Pipelines (20)", "status": "catalog", "where": "/api/automatic-pipelines"},
         {"name": "Enterprise Pipelines (45)", "status": "catalog", "where": "/api/enterprise-pipelines"},
         {"name": "Production Issues (16 layers)", "status": "built", "where": "/api/production-issues"},
-        {"name": "Stories & Tests", "status": "catalog", "where": "/api/stories-tests"},
+        {"name": "Stories & Tests", "status": "built", "where": "/api/stories-tests"},
         {"name": "Simulations (per role)", "status": "catalog", "where": "/api/simulations"},
         {"name": "Portal Tabs", "status": "catalog", "where": "/api/portal-tabs"},
     ]
