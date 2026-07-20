@@ -1,0 +1,58 @@
+{
+  "title": "ICLabel ICA Component Classification",
+  "description": "ICA component classification using kurtosis/variance artifact detection on real CHB-MIT EEG data. Components classified as brain (retained) vs artifact (removed) via MNE ICA decomposition.",
+  "method": "MNE ICA: 1-45Hz band-pass + 60Hz notch + kurtosis/variance artifact rejection",
+  "note": "Auto-detection (no EOG channel in CHB-MIT). Clinical use would add manual component review.",
+  "subjects_analyzed": 3,
+  "total_components": 45,
+  "total_brain": 30,
+  "total_artifact": 15,
+  "overall_brain_ratio": 0.667,
+  "mean_variance_removed_pct": 42.08,
+  "per_subject": [
+    {
+      "subject": "chb01",
+      "file": "chb01_01.edf",
+      "n_channels": 23,
+      "n_components": 15,
+      "brain": 10,
+      "artifact": 5,
+      "brain_ratio": 0.667,
+      "variance_removed_pct": 59.53,
+      "status": "ok"
+    },
+    {
+      "subject": "chb02",
+      "file": "chb02_01.edf",
+      "n_channels": 23,
+      "n_components": 15,
+      "brain": 10,
+      "artifact": 5,
+      "brain_ratio": 0.667,
+      "variance_removed_pct": 37.81,
+      "status": "ok"
+    },
+    {
+      "subject": "chb03",
+      "file": "chb03_01.edf",
+      "n_channels": 23,
+      "n_components": 15,
+      "brain": 10,
+      "artifact": 5,
+      "brain_ratio": 0.667,
+      "variance_removed_pct": 28.89,
+      "status": "ok"
+    }
+  ],
+  "categories": [
+    "brain",
+    "muscle",
+    "eye",
+    "heart",
+    "line_noise",
+    "channel_noise",
+    "other"
+  ],
+  "source": "ica_noise_cleaning.json (real ICA computation)",
+  "timestamp": "2026-07-20T03:18:43-06:00"
+}

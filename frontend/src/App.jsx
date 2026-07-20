@@ -87,6 +87,7 @@ import PHQ9Dashboard from './components/PHQ9Dashboard'
 import GAD7Dashboard from './components/GAD7Dashboard'
 import QOLIE31Dashboard from './components/QOLIE31Dashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
+import ICALabelDashboard from './components/ICALabelDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import COPMDashboard from './components/COPMDashboard'
 import WAISDashboard from './components/WAISDashboard'
@@ -544,6 +545,7 @@ function App() {
     { id: 'gad7', label: 'GAD-7' },
     { id: 'qolie31', label: 'QOLIE-31' },
     { id: 'ica-noise-cleaning', label: 'ICA Cleaning' },
+    { id: 'ica-label', label: 'ICLabel Classify' },
     { id: 'fim', label: 'FIM' },
     { id: 'copm', label: 'COPM' },
     { id: 'wais', label: 'WAIS (IQ)' },
@@ -2044,6 +2046,8 @@ function App() {
         return <QOLIE31Dashboard />
       case 'ica-noise-cleaning':
         return <ICANoiseCleaningDashboard />
+      case 'ica-label':
+        return <ICALabelDashboard />
       case 'fim':
         return <FIMDashboard />
       case 'copm':
