@@ -1279,6 +1279,127 @@ async def eeg_ai_rag_pipeline():
     return json.loads(p.read_text()) if p.exists() else {"steps": []}
 
 
+@app.get("/api/eeg-ai-rag-pipeline/overview")
+async def eeg_ai_rag_pipeline_overview():
+    """EEG→AI→RAG pipeline overview — KPIs + phase breakdown from real config."""
+    p = Path(__file__).parent / "config" / "eeg_ai_rag_pipeline.json"
+    data = json.loads(p.read_text()) if p.exists() else {"steps": [], "summary": {}}
+    steps = data.get("steps", [])
+    summary = data.get("summary", {})
+
+    # Phase groupings
+    phases = [
+        {"name": "Data Acquisition", "range": [1, 4]},
+        {"name": "Preprocessing", "range": [5, 7]},
+        {"name": "Feature Engineering", "range": [8, 13]},
+        {"name": "Modeling", "range": [14, 17]},
+        {"name": "RAG Layer", "range": [18, 20]},
+        {"name": "Human Review & Output", "range": [21, 23]},
+    ]
+
+    phase_data = []
+    for ph in phases:
+        lo, hi = ph["range"]
+        ph_steps = [s for s in steps if lo <= s.get("n", 0) <= hi]
+        built = sum(1 for s in ph_steps if s.get("status") == "built")
+        partial = sum(1 for s in ph_steps if s.get("status") == "partial")
+        planned = sum(1 for s in ph_steps if s.get("status") == "planned")
+        phase_data.append({
+            "phase": ph["name"],
+            "total": len(ph_steps),
+            "built": built,
+            "partial": partial,
+            "planned": planned,
+            "completion_pct": round(built / max(len(ph_steps), 1) * 100, 1),
+        })
+
+    # Status distribution
+    status_dist = {}
+    for s in steps:
+        st = s.get("status", "unknown")
+        status_dist[st] = status_dist.get(st, 0) + 1
+
+    return {
+        "title": data.get("title", "EEG → AI → RAG Pipeline"),
+        "note": data.get("note", ""),
+        "updated_at": data.get("updated_at", ""),
+        "kpis": {
+            "total_steps": summary.get("total", len(steps)),
+            "built": summary.get("built", 0),
+            "partial": summary.get("partial", 0),
+            "planned": summary.get("planned", 0),
+            "completion_pct": round(summary.get("built", 0) / max(summary.get("total", 1), 1) * 100, 1),
+            "phases": len(phases),
+        },
+        "phases": phase_data,
+        "status_distribution": [{"status": k, "count": v} for k, v in status_dist.items()],
+        "steps": steps,
+        "honest_note": summary.get("honest_note", ""),
+    }
+
+
+@app.get("/api/eeg-ai-rag-pipeline/breakdown")
+async def eeg_ai_rag_pipeline_breakdown():
+    """EEG→AI→RAG pipeline breakdown — per-step detail table."""
+    p = Path(__file__).parent / "config" / "eeg_ai_rag_pipeline.json"
+    data = json.loads(p.read_text()) if p.exists() else {"steps": []}
+    steps = data.get("steps", [])
+
+    # Assign phase labels
+    phase_map = {range(1, 5): "Data Acquisition", range(5, 8): "Preprocessing",
+                 range(8, 14): "Feature Engineering", range(14, 18): "Modeling",
+                 range(18, 21): "RAG Layer", range(21, 24): "Human Review & Output"}
+
+    for s in steps:
+        n = s.get("n", 0)
+        for r, label in phase_map.items():
+            if n in r:
+                s["phase"] = label
+                break
+
+    return {"steps": steps, "total": len(steps)}
+
+
+@app.get("/api/eeg-ai-rag-pipeline/definitions")
+async def eeg_ai_rag_pipeline_definitions():
+    """EEG→AI→RAG pipeline definitions — phases, terms, references."""
+    return {
+        "phases": [
+            {"name": "Data Acquisition", "steps": "1–4", "description": "Research objective definition, EEG/clinical data collection, format standardization (EDF/BDF/CSV/MAT → BIDS), and raw signal quality checks."},
+            {"name": "Preprocessing", "steps": "5–7", "description": "Bandpass/notch filtering, ICA artifact removal, re-referencing, epoching with subject-level splits (no data leakage), and 1D signal preparation."},
+            {"name": "Feature Engineering", "steps": "8–13", "description": "Time-frequency transforms (STFT, CWT, SPWVD), 1D→2D image conversion (spectrogram, scalogram, topomap, connectivity), normalization, feature extraction (band power, entropy, coherence, PLV, Hjorth, fractal), evaluation (ANOVA, MI, SHAP), and selection (LASSO, RFE, PCA, Boruta)."},
+            {"name": "Modeling", "steps": "14–17", "description": "Training (SVM, RF, XGBoost, EEGNet, CNN, LSTM, Transformer, ViT), subject-level cross-validation, evaluation (accuracy, precision, recall, F1, AUC, confusion), and explainable AI (SHAP, saliency, attention maps)."},
+            {"name": "RAG Layer", "steps": "18–20", "description": "Knowledge indexing (papers, SOPs, guidelines, model cards) via ChromaDB, hybrid retrieval (vector + keyword + metadata filter), and AI-generated reports with predictions, biomarkers, XAI, and retrieved evidence."},
+            {"name": "Human Review & Output", "steps": "21–23", "description": "Clinician review (approve/reject/request more), final report generation (doctor report with risk scores and citations, patient-friendly report), and governance monitoring (audit logs, PII protection, drift detection, model versioning)."},
+        ],
+        "glossary": [
+            {"term": "EEG", "definition": "Electroencephalogram — recording of brain electrical activity via scalp electrodes."},
+            {"term": "ICA", "definition": "Independent Component Analysis — blind source separation to remove artifacts (eye blinks, muscle, heart) from EEG."},
+            {"term": "RAG", "definition": "Retrieval-Augmented Generation — combining vector search over a knowledge base with LLM generation for evidence-grounded clinical reports."},
+            {"term": "SHAP", "definition": "SHapley Additive exPlanations — game-theoretic approach to explain model predictions by attributing contributions to each feature."},
+            {"term": "PLV", "definition": "Phase-Locking Value — measure of phase synchronization between EEG channels, indicative of functional connectivity."},
+            {"term": "Hjorth Parameters", "definition": "Activity, Mobility, Complexity — time-domain descriptors of EEG signal dynamics."},
+            {"term": "GroupKFold", "definition": "Cross-validation strategy that ensures all data from one subject stays in the same fold, preventing data leakage."},
+            {"term": "ChromaDB", "definition": "Open-source vector database used for storing and retrieving document embeddings in the RAG pipeline."},
+            {"term": "HITL", "definition": "Human-In-The-Loop — clinical expert review gate ensuring AI predictions are validated before clinical use."},
+            {"term": "Data Leakage", "definition": "When training data information bleeds into validation/test sets, producing artificially inflated accuracy — prevented by subject-level splitting."},
+        ],
+        "references": [
+            "Delorme, A., & Makeig, S. (2004). EEGLAB: an open source toolbox for analysis of single-trial EEG dynamics. Journal of Neuroscience Methods, 134(1), 9–21.",
+            "Pion-Tonachini, L., et al. (2019). ICLabel: An automated electroencephalographic independent component classifier. NeuroImage, 198, 181–197.",
+            "Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 2020.",
+            "Lawhern, V.J., et al. (2018). EEGNet: A Compact Convolutional Neural Network for EEG-based Brain–Computer Interfaces. Journal of Neural Engineering, 15(5).",
+            "Lundberg, S.M., & Lee, S.I. (2017). A Unified Approach to Interpreting Model Predictions. NIPS 2017.",
+        ],
+        "clinical_notes": [
+            "This pipeline applies to all neurological diseases (epilepsy, schizophrenia, depression, etc.) with disease-specific feature adaptation.",
+            "Subject-level data splitting is mandatory — no epoch from the same patient may appear in both train and test sets.",
+            "All AI predictions require human clinical review before any diagnostic or treatment decision.",
+            "RAG-generated reports include confidence scores, limitations, and explicit citations — never standalone diagnostic claims.",
+        ],
+    }
+
+
 @app.get("/api/ai-dark-factory")
 async def ai_dark_factory():
     """AI Dark Factory reference: BMAD→Archon→OpenHands→Playwright→DeepEval→Temporal→OTel
@@ -12350,6 +12471,35 @@ async def council_of_agents_definitions():
     """Council definitions — roles, consensus types, compliance references, remediation."""
     import scripts.council_of_agents_dashboard as coa
     return _json_safe(coa.council_definitions())
+
+
+# ── Artifact Annotation Dashboard ────────────────────────────────
+# Real data: artifact_annotations (169 rows, 30 patients) — auto-detected
+# EEG artifacts (muscle, ECG, electrode_pop, movement, eye_blink, sweat),
+# severity levels (mild/moderate/severe), channel mapping, duration stats.
+
+@app.get("/api/artifact-annotations/overview")
+async def artifact_annotations_overview():
+    """Artifact annotation overview — type/severity/channel distributions,
+    duration stats, severity-by-type cross-tab, monthly trend, KPIs."""
+    import scripts.artifact_annotation_dashboard as aad
+    return _json_safe(aad.overview())
+
+
+@app.get("/api/artifact-annotations/breakdown")
+async def artifact_annotations_breakdown():
+    """Artifact annotation breakdown — per-patient profiles, type-by-channel
+    cross-tab, duration stats by type, recent annotations."""
+    import scripts.artifact_annotation_dashboard as aad
+    return _json_safe(aad.breakdown())
+
+
+@app.get("/api/artifact-annotations/definitions")
+async def artifact_annotations_definitions():
+    """Artifact annotation definitions — artifact types, severity levels,
+    EEG artifact glossary, clinical references, annotation best practices."""
+    import scripts.artifact_annotation_dashboard as aad
+    return _json_safe(aad.definitions())
 
 
 if __name__ == "__main__":

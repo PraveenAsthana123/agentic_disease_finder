@@ -88,6 +88,7 @@ import GAD7Dashboard from './components/GAD7Dashboard'
 import QOLIE31Dashboard from './components/QOLIE31Dashboard'
 import ICANoiseCleaningDashboard from './components/ICANoiseCleaningDashboard'
 import ICALabelDashboard from './components/ICALabelDashboard'
+import EEGAIRAGPipelineDashboard from './components/EEGAIRAGPipelineDashboard'
 import FIMDashboard from './components/FIMDashboard'
 import COPMDashboard from './components/COPMDashboard'
 import WAISDashboard from './components/WAISDashboard'
@@ -663,6 +664,7 @@ function App() {
     { id: 'functional-ba', label: 'Functional / BA' },
     { id: 'integration-role', label: 'Integration' },
     { id: 'dataset-coverage', label: 'Dataset Coverage' },
+    { id: 'eeg-ai-rag-pipeline', label: 'EEG→AI→RAG Pipeline' },
     { id: 'dark-factory', label: 'AI Dark Factory' },
     { id: 'seizure-risk-forecast', label: 'Seizure Risk Forecasting' },
     { id: 'cloud-ops', label: 'Cloud Ops' },
@@ -2330,6 +2332,8 @@ function App() {
         return <IntegrationRoleDashboard />
       case 'dataset-coverage':
         return <DatasetCoverageDashboard />
+      case 'eeg-ai-rag-pipeline':
+        return <EEGAIRAGPipelineDashboard />
       case 'dark-factory':
         return <AIDarkFactoryDashboard />
       case 'seizure-risk-forecast':
