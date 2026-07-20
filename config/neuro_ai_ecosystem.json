@@ -441,6 +441,12 @@
     "built": 44,
     "commercial": 1,
     "total_tools": 64,
-    "categories": 10
+    "categories": 10,
+    "dashboard_status": "built",
+    "endpoints": [
+      "/api/neuro-ai-ecosystem/overview",
+      "/api/neuro-ai-ecosystem/breakdown",
+      "/api/neuro-ai-ecosystem/definitions"
+    ]
   }
 }

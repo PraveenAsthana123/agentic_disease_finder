@@ -13213,6 +13213,27 @@ async def onboarding_intake_definitions():
     return _json_safe(oid.definitions())
 
 
+@app.get("/api/neuro-ai-ecosystem/overview")
+async def neuro_ai_ecosystem_overview():
+    """Neuro AI Ecosystem overview — tool counts, status distribution, category breakdown KPIs."""
+    import scripts.neuro_ai_ecosystem_dashboard as naed
+    return _json_safe(naed.overview())
+
+
+@app.get("/api/neuro-ai-ecosystem/breakdown")
+async def neuro_ai_ecosystem_breakdown():
+    """Neuro AI Ecosystem breakdown — per-category tool details, endpoint inventory."""
+    import scripts.neuro_ai_ecosystem_dashboard as naed
+    return _json_safe(naed.breakdown())
+
+
+@app.get("/api/neuro-ai-ecosystem/definitions")
+async def neuro_ai_ecosystem_definitions():
+    """Neuro AI Ecosystem definitions — status legend, glossary, clinical notes, references."""
+    import scripts.neuro_ai_ecosystem_dashboard as naed
+    return _json_safe(naed.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
