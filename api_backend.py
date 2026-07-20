@@ -12916,6 +12916,25 @@ async def epilepsy_challenges_definitions():
     return _json_safe(ecd.definitions())
 
 
+@app.get("/api/role-process-flows/overview")
+async def role_process_flows_overview():
+    """Role Process Flows overview — KPIs, steps distribution, role summary."""
+    import scripts.role_process_flows_dashboard as rpf
+    return _json_safe(rpf.overview())
+
+@app.get("/api/role-process-flows/breakdown")
+async def role_process_flows_breakdown():
+    """Role Process Flows breakdown — per-role step sequences and mermaid charts."""
+    import scripts.role_process_flows_dashboard as rpf
+    return _json_safe(rpf.breakdown())
+
+@app.get("/api/role-process-flows/definitions")
+async def role_process_flows_definitions():
+    """Role Process Flows definitions — role descriptions, glossary, references."""
+    import scripts.role_process_flows_dashboard as rpf
+    return _json_safe(rpf.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

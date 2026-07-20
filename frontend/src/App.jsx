@@ -111,6 +111,7 @@ import AutomaticPipelinesDashboard from './components/AutomaticPipelinesDashboar
 import ConsultantWorkflowsDashboard from './components/ConsultantWorkflowsDashboard'
 import EpilepsyChallengesDashboard from './components/EpilepsyChallengesDashboard'
 import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
+import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -683,6 +684,7 @@ function App() {
     { id: 'automatic-pipelines', label: 'Automatic Pipelines' },
     { id: 'consultant-workflows', label: 'Consultant Workflows' },
     { id: 'epilepsy-challenges', label: 'Epilepsy Challenges' },
+    { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2100,6 +2102,8 @@ function App() {
         return <ConsultantWorkflowsDashboard />
       case 'epilepsy-challenges':
         return <EpilepsyChallengesDashboard />
+      case 'role-process-flows':
+        return <RoleProcessFlowsDashboard />
       case 'production-issues':
         return <ProductionIssuesDashboard />
       case 'transfer-learning':
