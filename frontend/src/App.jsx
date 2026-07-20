@@ -120,6 +120,7 @@ import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import IoTDevicesDashboard from './components/IoTDevicesDashboard'
 import GlobalApprovalPolicyDashboard from './components/GlobalApprovalPolicyDashboard'
+import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -701,6 +702,7 @@ function App() {
     { id: 'enterprise-pipelines', label: 'Enterprise Pipelines' },
     { id: 'iot-devices', label: 'IoT Devices' },
     { id: 'global-approval-policy', label: 'Global Approval Policy' },
+    { id: 'eeg-data-formats', label: 'EEG Data Formats' },
     { id: 'role-tests', label: 'Role Tests' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
@@ -2136,6 +2138,8 @@ function App() {
         return <IoTDevicesDashboard />
       case 'global-approval-policy':
         return <GlobalApprovalPolicyDashboard />
+      case 'eeg-data-formats':
+        return <EegDataFormatsDashboard />
       case 'role-tests':
         return <RoleTestsDashboard />
       case 'transfer-learning':

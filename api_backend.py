@@ -13171,6 +13171,27 @@ async def global_approval_policy_definitions():
     return _json_safe(gapd.definitions())
 
 
+@app.get("/api/eeg-data-formats/overview")
+async def eeg_data_formats_overview():
+    """EEG Data Formats overview — format counts, AI readiness, routing distribution KPIs."""
+    import scripts.eeg_data_formats_dashboard as edfd
+    return _json_safe(edfd.overview())
+
+
+@app.get("/api/eeg-data-formats/breakdown")
+async def eeg_data_formats_breakdown():
+    """EEG Data Formats breakdown — per-format details, routing groups, data request guidance."""
+    import scripts.eeg_data_formats_dashboard as edfd
+    return _json_safe(edfd.breakdown())
+
+
+@app.get("/api/eeg-data-formats/definitions")
+async def eeg_data_formats_definitions():
+    """EEG Data Formats definitions — route descriptions, readiness legend, glossary, references."""
+    import scripts.eeg_data_formats_dashboard as edfd
+    return _json_safe(edfd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
