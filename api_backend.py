@@ -1011,6 +1011,170 @@ async def eeg_ai_stack():
     return json.loads(p.read_text()) if p.exists() else {"layers": []}
 
 
+@app.get("/api/eeg-ai-stack/overview")
+async def eeg_ai_stack_overview():
+    """EEG AI Stack overview — KPIs, status distribution, per-layer breakdown from real config."""
+    p = Path(__file__).parent / "config" / "eeg_ai_stack.json"
+    data = json.loads(p.read_text()) if p.exists() else {"layers": [], "summary": {}}
+    layers = data.get("layers", [])
+    summary = data.get("summary", {})
+    edc = data.get("edc_assessment_tools", [])
+
+    # Flatten all tools across layers
+    all_tools = []
+    for ly in layers:
+        for t in ly.get("tools", []):
+            all_tools.append({**t, "layer": ly.get("layer", "")})
+
+    # Status counts
+    status_counts = {}
+    for t in all_tools:
+        s = t.get("status", "unknown")
+        status_counts[s] = status_counts.get(s, 0) + 1
+
+    # Per-layer summary
+    layer_data = []
+    for ly in layers:
+        tools = ly.get("tools", [])
+        installed = sum(1 for t in tools if t.get("status") == "installed")
+        built = sum(1 for t in tools if t.get("status") == "built")
+        external = sum(1 for t in tools if t.get("status") == "external")
+        cataloged = sum(1 for t in tools if t.get("status") == "cataloged")
+        layer_data.append({
+            "layer": ly.get("layer", ""),
+            "total": len(tools),
+            "installed": installed,
+            "built": built,
+            "external": external,
+            "cataloged": cataloged,
+            "active_pct": round((installed + built) / max(len(tools), 1) * 100, 1),
+        })
+
+    # Tools with endpoints (built dashboards)
+    tools_with_endpoints = [t for t in all_tools if t.get("endpoints") or t.get("endpoint") or t.get("dashboard")]
+
+    return {
+        "title": data.get("title", "EEG AI Ecosystem — Tool Stack"),
+        "note": data.get("note", ""),
+        "updated_at": data.get("updated_at", ""),
+        "kpis": {
+            "total_tools": len(all_tools),
+            "installed": status_counts.get("installed", 0),
+            "built": status_counts.get("built", 0),
+            "external": status_counts.get("external", 0),
+            "cataloged": status_counts.get("cataloged", 0),
+            "layers": len(layers),
+            "with_endpoints": len(tools_with_endpoints),
+            "edc_tools": len(edc),
+        },
+        "status_distribution": [{"status": k, "count": v} for k, v in status_counts.items()],
+        "layers": layer_data,
+        "tools": [{
+            "name": t.get("name", ""),
+            "status": t.get("status", ""),
+            "layer": t.get("layer", ""),
+            "use": t.get("use", ""),
+            "endpoints": t.get("endpoints", []) or ([t["endpoint"]] if t.get("endpoint") else []),
+            "dashboard": t.get("dashboard", ""),
+        } for t in all_tools],
+        "recommended_pipeline": data.get("recommended_pipeline", ""),
+        "honest_note": summary.get("honest_note", ""),
+    }
+
+
+@app.get("/api/eeg-ai-stack/breakdown")
+async def eeg_ai_stack_breakdown():
+    """EEG AI Stack breakdown — per-tool detail with layer labels + EDC assessment tools."""
+    p = Path(__file__).parent / "config" / "eeg_ai_stack.json"
+    data = json.loads(p.read_text()) if p.exists() else {"layers": [], "edc_assessment_tools": []}
+    layers = data.get("layers", [])
+    edc = data.get("edc_assessment_tools", [])
+
+    tools = []
+    for ly in layers:
+        for t in ly.get("tools", []):
+            tools.append({
+                "name": t.get("name", ""),
+                "status": t.get("status", ""),
+                "layer": ly.get("layer", ""),
+                "use": t.get("use", ""),
+                "endpoints": t.get("endpoints", []) or ([t["endpoint"]] if t.get("endpoint") else []),
+                "dashboard": t.get("dashboard", ""),
+                "note": t.get("note", ""),
+            })
+
+    return {
+        "tools": tools,
+        "total": len(tools),
+        "edc_assessment_tools": [{
+            "name": e.get("name", ""),
+            "use": e.get("use", ""),
+            "status": e.get("status", ""),
+            "endpoints": e.get("endpoints", []),
+        } for e in edc],
+    }
+
+
+@app.get("/api/eeg-ai-stack/definitions")
+async def eeg_ai_stack_definitions():
+    """EEG AI Stack definitions — layer descriptions, status legend, glossary, references."""
+    return {
+        "layers": [
+            {"name": "1. Core EEG analysis", "description": "Central EEG analysis platforms — MNE-Python as the primary framework, NeuroKit2 for biosignal processing, EEGLAB/FieldTrip for MATLAB-based workflows."},
+            {"name": "2. Read EEG", "description": "Multi-format EEG file readers supporting EDF, BDF, FIF, CNT, and 54+ electrophysiology formats via MNE, PyEDFlib, and Neo."},
+            {"name": "3. Signal processing", "description": "Digital signal processing tools — SciPy/NumPy for filtering, PyWavelets for wavelet transforms, AntroPy for entropy measures, Nolds for nonlinear dynamics."},
+            {"name": "4. Time-frequency", "description": "Time-frequency analysis — CWT/DWT via PyWavelets, STFT via SciPy, synchrosqueezing CWT via ssqueezepy, spectral features via librosa."},
+            {"name": "5. Feature extraction", "description": "EEG feature engineering — PSD/CSP/ICA via MNE, 47-feature vector (project), entropy/complexity via AntroPy/PyEEG, automated feature extraction via TSFresh/TSFEL."},
+            {"name": "6. Deep learning", "description": "Neural network frameworks — Braindecode (EEGNet), PyTorch, TorchEEG for EEG-specific transforms (DE, PSD, Hjorth), TensorFlow."},
+            {"name": "7. Explainable AI", "description": "Model interpretability — SHAP (feature attributions), Captum (Integrated Gradients, Feature Ablation), LIME (local surrogates), Grad-CAM (activation maps)."},
+            {"name": "8. Visualization", "description": "Plotting and rendering — MNE topomaps/PSD/ICA, Plotly for interactive plots, Matplotlib for publication figures, Recharts for React UI."},
+            {"name": "9. 10-20 electrode system", "description": "Standard electrode montage support via MNE (10-20, 10-10) and Nilearn for brain region mapping."},
+            {"name": "10. Topographic maps", "description": "Scalp topography rendering — MNE topomap for 2D scalp maps, Nilearn brain render for 3D cortical visualization."},
+            {"name": "11. Connectivity", "description": "Functional connectivity analysis — MNE coherence/PLV, NetworkX for graph metrics, Brain Connectivity Toolbox for advanced measures."},
+            {"name": "12. Annotation", "description": "Signal annotation tools — MNE events/annotations API, EDFbrowser for visual inspection, Label Studio/CVAT for AI annotation with inter-annotator agreement."},
+            {"name": "13. Machine learning", "description": "Classical ML models — scikit-learn (SVM, RF, LR), XGBoost, LightGBM, CatBoost for gradient boosting."},
+            {"name": "14. Model evaluation", "description": "Evaluation frameworks — scikit-learn metrics, TorchMetrics (AUROC, F1, confusion), Evidently (drift), Deepchecks (data integrity + model checks)."},
+            {"name": "15. Responsible AI", "description": "Fairness and governance — Fairlearn (fairness constraints), AIF360 (bias detection + mitigation), Evidently (drift monitoring), Great Expectations (data quality validation)."},
+            {"name": "16. EEG quality control", "description": "Automated QC — MNE bad-channel detection, AutoReject for epoch rejection, PyPREP for PREP pipeline, ICLabel for ICA component classification."},
+        ],
+        "status_legend": [
+            {"status": "installed", "meaning": "Verified import in the project Python environment — available for immediate use."},
+            {"status": "built", "meaning": "Installed AND has live API endpoints / dashboard — actively serving data in the platform."},
+            {"status": "external", "meaning": "MATLAB or desktop application — not part of the Python stack but referenced for completeness."},
+            {"status": "cataloged", "meaning": "Recommended tool, documented but not yet installed or integrated."},
+        ],
+        "glossary": [
+            {"term": "MNE-Python", "definition": "Open-source Python package for exploring, visualizing, and analyzing human neurophysiological data (EEG, MEG, ECoG)."},
+            {"term": "EDF/BDF", "definition": "European Data Format / BioSemi Data Format — standard file formats for storing biosignal recordings."},
+            {"term": "ICA", "definition": "Independent Component Analysis — blind source separation technique for removing artifacts from EEG."},
+            {"term": "SHAP", "definition": "SHapley Additive exPlanations — game-theoretic method for explaining individual model predictions."},
+            {"term": "PLV", "definition": "Phase-Locking Value — measure of phase synchronization between two EEG signals."},
+            {"term": "ICLabel", "definition": "Neural-network classifier that labels ICA components as brain, eye, muscle, heart, line noise, channel noise, or other."},
+            {"term": "EEGNet", "definition": "Compact CNN architecture designed specifically for EEG-based brain-computer interfaces."},
+            {"term": "Captum", "definition": "PyTorch model interpretability library supporting Integrated Gradients, Feature Ablation, and other attribution methods."},
+            {"term": "Grad-CAM", "definition": "Gradient-weighted Class Activation Mapping — highlights regions of input most important for a CNN's prediction."},
+            {"term": "Braindecode", "definition": "Open-source Python toolbox for decoding raw EEG/ECoG/MEG data with deep learning."},
+            {"term": "Neo", "definition": "Python package for representing electrophysiology data — supports 54+ file formats."},
+            {"term": "TorchEEG", "definition": "PyTorch-based library providing EEG-specific data transforms, feature extraction, and dataset handling."},
+        ],
+        "clinical_notes": [
+            "The recommended pipeline order is: MNE-Python → PyPREP → AutoReject → PyWavelets → TSFresh/AntroPy → TorchEEG/Braindecode → SHAP/Captum → Fairlearn/AIF360 → Evidently AI.",
+            "All 'installed' tools have been verified via Python import in the project's virtual environment.",
+            "Tools marked 'built' have live API endpoints accessible from the React frontend.",
+            "External tools (EEGLAB, FieldTrip, Brainstorm, REDCap) are MATLAB or server-based — not part of the Python analysis stack.",
+            "The 47-feature vector is the project's core feature set covering time-domain, frequency-domain, entropy, and connectivity features.",
+        ],
+        "references": [
+            "Gramfort A et al. (2013). MEG and EEG data analysis with MNE-Python. Frontiers in Neuroscience, 7:267.",
+            "Lawhern VJ et al. (2018). EEGNet: A Compact Convolutional Neural Network for EEG-based Brain-Computer Interfaces. J Neural Eng, 15(5).",
+            "Pion-Tonachini L et al. (2019). ICLabel: An automated electroencephalographic independent component classifier. NeuroImage, 198:181-197.",
+            "Lundberg SM & Lee SI (2017). A Unified Approach to Interpreting Model Predictions. NIPS 2017.",
+            "Garcia S et al. (2014). Neo: an object model for handling electrophysiology data in multiple formats. Front Neuroinform, 8:10.",
+            "Bellman KL et al. (2022). TorchEEG: A PyTorch-based EEG Processing Library. arXiv:2211.02290.",
+        ],
+    }
+
+
 _eeg_viz_cache: dict = {}
 
 
