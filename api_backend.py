@@ -13045,6 +13045,27 @@ async def role_challenges_definitions():
     return _json_safe(rcd.definitions())
 
 
+@app.get("/api/feature-gaps/overview")
+async def feature_gaps_overview():
+    """Feature Gaps overview — DL review vs project gap KPIs."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.overview())
+
+
+@app.get("/api/feature-gaps/breakdown")
+async def feature_gaps_breakdown():
+    """Feature Gaps breakdown — per-category detail with why/dashboard."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.breakdown())
+
+
+@app.get("/api/feature-gaps/definitions")
+async def feature_gaps_definitions():
+    """Feature Gaps definitions — category descriptions, glossary, references."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

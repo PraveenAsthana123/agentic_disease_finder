@@ -114,6 +114,7 @@ import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
 import RoleChallengesDashboard from './components/RoleChallengesDashboard'
 import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
+import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
 import CrossPatientDashboard from './components/CrossPatientDashboard'
 import AutonomicDashboard from './components/AutonomicDashboard'
@@ -690,6 +691,7 @@ function App() {
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
+    { id: 'feature-gaps', label: 'Feature Gaps' },
     { id: 'transfer-learning', label: 'Transfer Learning' },
     { id: 'cross-patient-benchmark', label: 'Cross-Patient Benchmark' },
     { id: 'data-augmentation', label: 'Data Augmentation' },
@@ -2114,6 +2116,8 @@ function App() {
         return <ProductionIssuesDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
+      case 'feature-gaps':
+        return <FeatureGapsDashboard />
       case 'transfer-learning':
         return <TransferLearningDashboard />
       case 'cross-patient-benchmark':
