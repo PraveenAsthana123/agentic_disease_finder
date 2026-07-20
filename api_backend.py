@@ -12326,6 +12326,32 @@ async def seizure_metadata_definitions():
     return _json_safe(smd.definitions())
 
 
+# ── Council of Agents Dashboard ──────────────────────────────────────
+# Multi-agent consensus system: 60 agents assigned author/reviewer/chair
+# roles, consensus metrics from clinical_decisions + expert_reviews +
+# hitl_reviews + transaction_log tables.
+
+@app.get("/api/council-of-agents/overview")
+async def council_of_agents_overview():
+    """Council overview — role distribution, consensus rate, decision quality trend."""
+    import scripts.council_of_agents_dashboard as coa
+    return _json_safe(coa.council_overview())
+
+
+@app.get("/api/council-of-agents/breakdown")
+async def council_of_agents_breakdown():
+    """Council breakdown — agent roster, sessions, voting history, review assignments."""
+    import scripts.council_of_agents_dashboard as coa
+    return _json_safe(coa.council_breakdown())
+
+
+@app.get("/api/council-of-agents/definitions")
+async def council_of_agents_definitions():
+    """Council definitions — roles, consensus types, compliance references, remediation."""
+    import scripts.council_of_agents_dashboard as coa
+    return _json_safe(coa.council_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
