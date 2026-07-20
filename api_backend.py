@@ -13129,6 +13129,27 @@ async def consultant_matrix_definitions():
     return _json_safe(cmd.definitions())
 
 
+@app.get("/api/iot-devices/overview")
+async def iot_devices_overview():
+    """IoT Devices overview — fleet size, status distribution, connectivity modes, alert capability."""
+    import scripts.iot_devices_dashboard as idd
+    return _json_safe(idd.overview())
+
+
+@app.get("/api/iot-devices/breakdown")
+async def iot_devices_breakdown():
+    """IoT Devices breakdown — per-device detail, mode matrix, data stream matrix, offline strategy."""
+    import scripts.iot_devices_dashboard as idd
+    return _json_safe(idd.breakdown())
+
+
+@app.get("/api/iot-devices/definitions")
+async def iot_devices_definitions():
+    """IoT Devices definitions — connectivity model, device types, status legend, glossary."""
+    import scripts.iot_devices_dashboard as idd
+    return _json_safe(idd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
