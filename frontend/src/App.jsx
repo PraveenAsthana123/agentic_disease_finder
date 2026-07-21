@@ -399,6 +399,7 @@ import AgentTasksDashboard from './components/AgentTasksDashboard'
 import DatasetsDashboard from './components/DatasetsDashboard'
 import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
+import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -722,6 +723,7 @@ function App() {
     { id: 'datasets-registry', label: 'Datasets Registry' },
     { id: 'assessment-instruments', label: 'Assessment Instruments' },
     { id: 'stories-tests', label: 'Stories & Tests' },
+    { id: 'ai-dark-factory', label: 'AI Dark Factory' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2747,6 +2749,8 @@ function App() {
         return <AssessmentInstrumentsDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
+      case 'ai-dark-factory':
+        return <AiDarkFactoryDashboard />
       default:
         return renderClassificationTab()
     }

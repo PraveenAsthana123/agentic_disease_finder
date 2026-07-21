@@ -13998,6 +13998,27 @@ async def assessment_instruments_definitions():
     return _json_safe(aid.definitions())
 
 
+@app.get("/api/ai-dark-factory/overview")
+async def ai_dark_factory_overview():
+    """AI Dark Factory overview — flow stages, tools, planes, patterns KPIs."""
+    import scripts.ai_dark_factory_dashboard as adf
+    return _json_safe(adf.overview())
+
+
+@app.get("/api/ai-dark-factory/breakdown")
+async def ai_dark_factory_breakdown():
+    """AI Dark Factory breakdown — per-category tools, planes, patterns."""
+    import scripts.ai_dark_factory_dashboard as adf
+    return _json_safe(adf.breakdown())
+
+
+@app.get("/api/ai-dark-factory/definitions")
+async def ai_dark_factory_definitions():
+    """AI Dark Factory definitions — status legend, glossary, clinical notes, references."""
+    import scripts.ai_dark_factory_dashboard as adf
+    return _json_safe(adf.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
