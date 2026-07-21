@@ -14190,6 +14190,28 @@ async def tab_taxonomy_definitions():
     return _json_safe(ttd.definitions())
 
 
+# ── Patient Module Dashboard ──────────────────────────────────────────
+@app.get("/api/patient-module/overview")
+async def patient_module_overview():
+    """Patient Module overview — 8-section, ~1250-field patient module KPIs."""
+    import scripts.patient_module_dashboard as pmd
+    return _json_safe(pmd.overview())
+
+
+@app.get("/api/patient-module/breakdown")
+async def patient_module_breakdown():
+    """Patient Module breakdown — per-section items, tiers, control groups, artifacts."""
+    import scripts.patient_module_dashboard as pmd
+    return _json_safe(pmd.breakdown())
+
+
+@app.get("/api/patient-module/definitions")
+async def patient_module_definitions():
+    """Patient Module definitions — status legend, glossary, clinical notes, references."""
+    import scripts.patient_module_dashboard as pmd
+    return _json_safe(pmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

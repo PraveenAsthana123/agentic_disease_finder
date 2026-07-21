@@ -404,6 +404,7 @@ import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
 import ReportLayoutDashboard from './components/ReportLayoutDashboard'
 import TabTaxonomyDashboard from './components/TabTaxonomyDashboard'
 import TabScaffoldDashboard from './components/TabScaffoldDashboard'
+import PatientModuleDashboard from './components/PatientModuleDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -732,6 +733,7 @@ function App() {
     { id: 'report-layout', label: 'Report Layout' },
     { id: 'tab-taxonomy', label: 'Tab Taxonomy' },
     { id: 'tab-scaffold', label: 'Tab Scaffold' },
+    { id: 'patient-module', label: 'Patient Module' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2767,6 +2769,8 @@ function App() {
         return <TabTaxonomyDashboard />
       case 'tab-scaffold':
         return <TabScaffoldDashboard />
+      case 'patient-module':
+        return <PatientModuleDashboard />
       default:
         return renderClassificationTab()
     }
