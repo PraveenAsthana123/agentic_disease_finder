@@ -14042,6 +14042,28 @@ async def report_layout_definitions():
     return _json_safe(rld.definitions())
 
 
+# ── Data Config Dashboard ────────────────────────────────────────────────
+@app.get("/api/data-config/overview")
+async def data_config_overview():
+    """Data Config overview — diseases, datasets, features, validation KPIs."""
+    import scripts.data_config_dashboard as dcd
+    return _json_safe(dcd.overview())
+
+
+@app.get("/api/data-config/breakdown")
+async def data_config_breakdown():
+    """Data Config breakdown — per-disease datasets, features, validation, URLs."""
+    import scripts.data_config_dashboard as dcd
+    return _json_safe(dcd.breakdown())
+
+
+@app.get("/api/data-config/definitions")
+async def data_config_definitions():
+    """Data Config definitions — status legend, glossary, clinical notes, references."""
+    import scripts.data_config_dashboard as dcd
+    return _json_safe(dcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

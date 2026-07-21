@@ -397,6 +397,7 @@ import DashboardCatalogDashboard from './components/DashboardCatalogDashboard'
 import RoleDashboardsDashboard from './components/RoleDashboardsDashboard'
 import AgentTasksDashboard from './components/AgentTasksDashboard'
 import DatasetsDashboard from './components/DatasetsDashboard'
+import DataConfigDashboard from './components/DataConfigDashboard'
 import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
@@ -722,6 +723,7 @@ function App() {
     { id: 'role-dashboards', label: 'Role Dashboards' },
     { id: 'agent-tasks', label: 'Agent Tasks' },
     { id: 'datasets-registry', label: 'Datasets Registry' },
+    { id: 'data-config', label: 'Data Configuration' },
     { id: 'assessment-instruments', label: 'Assessment Instruments' },
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'ai-dark-factory', label: 'AI Dark Factory' },
@@ -2747,6 +2749,8 @@ function App() {
         return <AgentTasksDashboard />
       case 'datasets-registry':
         return <DatasetsDashboard />
+      case 'data-config':
+        return <DataConfigDashboard />
       case 'assessment-instruments':
         return <AssessmentInstrumentsDashboard />
       case 'stories-tests':
