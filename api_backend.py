@@ -14433,6 +14433,27 @@ async def feature_gaps_definitions():
     return _json_safe(fgd.definitions())
 
 
+@app.get("/api/data-manager/overview")
+async def data_manager_overview():
+    """Data Manager overview — CDM task KPIs, status distribution, quality assessments."""
+    import scripts.data_manager_dashboard as dmd
+    return _json_safe(dmd.overview())
+
+
+@app.get("/api/data-manager/breakdown")
+async def data_manager_breakdown():
+    """Data Manager breakdown — per-task steps, challenges, AI features, endpoints."""
+    import scripts.data_manager_dashboard as dmd
+    return _json_safe(dmd.breakdown())
+
+
+@app.get("/api/data-manager/definitions")
+async def data_manager_definitions():
+    """Data Manager definitions — CDM role, glossary, clinical notes, references."""
+    import scripts.data_manager_dashboard as dmd
+    return _json_safe(dmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -1,7 +1,10 @@
 {
   "role": "Clinical Data Manager (CDM)",
   "mission": "Ensure EEG/MRI/Video-EEG/EMR/assessment/AI datasets are complete, clean, standardized, versioned, traceable, and AI-ready. Garbage in = garbage out \u2014 the data-governance backbone of Responsible AI.",
-  "updated_at": "2026-06-25T19:50:00Z",
+  "updated_at": "2026-07-21T12:00:00Z",
+  "dashboard_status": "built",
+  "dashboard_component": "DataManagerDashboard",
+  "dashboard_id": "data-manager",
   "note": "Each task: detailed steps + challenges + AI feature + deliverable + honest status (built=live engine / partial=metric exists, workflow basic / planned=cataloged). \u00a7155 honest.",
   "tasks": [
     {

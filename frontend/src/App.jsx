@@ -141,6 +141,7 @@ import LLMOpsDashboard from './components/LLMOpsDashboard'
 import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
+import DataManagerDashboard from './components/DataManagerDashboard'
 import HybridPipelineDashboard from './components/HybridPipelineDashboard'
 import ConnectivityDashboard from './components/ConnectivityDashboard'
 import TrustAIDashboard from './components/TrustAIDashboard'
@@ -772,6 +773,7 @@ function App() {
     { id: 'data-augmentation', label: 'Data Augmentation' },
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'data-steward', label: 'Data Steward' },
+    { id: 'data-manager', label: 'Data Manager (CDM)' },
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
     { id: 'connectivity', label: 'Connectivity Analysis' },
     { id: 'change-management', label: 'Change Management' },
@@ -2231,6 +2233,8 @@ function App() {
         return <SeizurePredictionDashboard />
       case 'data-steward':
         return <DataStewardDashboard />
+      case 'data-manager':
+        return <DataManagerDashboard />
       case 'hybrid-pipeline':
         return <HybridPipelineDashboard />
       case 'connectivity':
