@@ -13799,6 +13799,140 @@ async def dashboard_catalog_definitions():
     }
 
 
+# ── Role Dashboards Dashboard ──────────────────────────────────────────
+@app.get("/api/role-dashboards/overview")
+async def role_dashboards_overview():
+    """Role Dashboards overview — per-role KPI dashboards + reports, aggregate stats."""
+    p = Path(__file__).parent / "config" / "role_dashboards.json"
+    if not p.exists():
+        return {"available": False, "note": "role_dashboards.json not found"}
+    data = json.loads(p.read_text())
+    roles = data.get("roles", [])
+
+    total_kpis = 0
+    total_reports = 0
+    kpi_status_counts = {}
+    report_status_counts = {}
+    report_cadences = {}
+    report_formats = {}
+    kpis_per_role = []
+    reports_per_role = []
+
+    for role in roles:
+        kpis = role.get("kpis", [])
+        rpts = role.get("reports", [])
+        total_kpis += len(kpis)
+        total_reports += len(rpts)
+        kpis_per_role.append({"role": role.get("role", ""), "icon": role.get("icon", ""), "count": len(kpis)})
+        reports_per_role.append({"role": role.get("role", ""), "icon": role.get("icon", ""), "count": len(rpts)})
+        for k in kpis:
+            s = k.get("status", "unknown")
+            kpi_status_counts[s] = kpi_status_counts.get(s, 0) + 1
+        for r in rpts:
+            s = r.get("status", "unknown")
+            report_status_counts[s] = report_status_counts.get(s, 0) + 1
+            cad = r.get("cadence", "unknown")
+            report_cadences[cad] = report_cadences.get(cad, 0) + 1
+            fmt = r.get("format", "unknown")
+            report_formats[fmt] = report_formats.get(fmt, 0) + 1
+
+    return {
+        "available": True,
+        "title": data.get("title", "Per-Role Dashboards & Reports"),
+        "note": data.get("note", ""),
+        "updated_at": data.get("updated_at", ""),
+        "kpis": {
+            "total_roles": len(roles),
+            "total_kpis": total_kpis,
+            "total_reports": total_reports,
+            "kpis_built": kpi_status_counts.get("built", 0),
+            "reports_built": report_status_counts.get("built", 0),
+        },
+        "kpi_status_distribution": [{"status": k, "count": v} for k, v in kpi_status_counts.items()],
+        "report_status_distribution": [{"status": k, "count": v} for k, v in report_status_counts.items()],
+        "kpis_per_role": sorted(kpis_per_role, key=lambda x: x["count"], reverse=True),
+        "reports_per_role": sorted(reports_per_role, key=lambda x: x["count"], reverse=True),
+        "cadence_distribution": [{"cadence": k, "count": v} for k, v in report_cadences.items()],
+        "format_distribution": [{"format": k, "count": v} for k, v in report_formats.items()],
+    }
+
+
+@app.get("/api/role-dashboards/breakdown")
+async def role_dashboards_breakdown():
+    """Role Dashboards breakdown — per-role detail with KPIs, reports, endpoints."""
+    p = Path(__file__).parent / "config" / "role_dashboards.json"
+    if not p.exists():
+        return {"available": False}
+    data = json.loads(p.read_text())
+    roles = data.get("roles", [])
+
+    per_role = []
+    for role in roles:
+        per_role.append({
+            "role": role.get("role", ""),
+            "icon": role.get("icon", ""),
+            "kpis": role.get("kpis", []),
+            "reports": role.get("reports", []),
+            "dashboard_component": role.get("dashboard_component", ""),
+            "api_endpoints": role.get("api_endpoints", []),
+        })
+
+    return {"available": True, "per_role": per_role}
+
+
+@app.get("/api/role-dashboards/definitions")
+async def role_dashboards_definitions():
+    """Role Dashboards definitions — status legend, glossary, clinical notes, references."""
+    return {
+        "available": True,
+        "status_legend": [
+            {"status": "built", "meaning": "Data source exists and KPI/report is live"},
+            {"status": "partial", "meaning": "Partially implemented — some data available"},
+            {"status": "planned", "meaning": "Registered but not yet implemented"},
+        ],
+        "cadence_legend": [
+            {"cadence": "real-time", "meaning": "Updated continuously via streaming or polling"},
+            {"cadence": "daily", "meaning": "Refreshed once per day (usually overnight cron)"},
+            {"cadence": "weekly", "meaning": "Aggregated and published weekly"},
+            {"cadence": "monthly", "meaning": "Monthly summary report"},
+            {"cadence": "per study", "meaning": "Generated per individual EEG study"},
+            {"cadence": "per visit", "meaning": "Generated per patient encounter"},
+            {"cadence": "per case", "meaning": "Generated per clinical case evaluation"},
+            {"cadence": "per patient", "meaning": "Per-patient longitudinal summary"},
+            {"cadence": "per plan", "meaning": "Generated per rehabilitation/care plan"},
+            {"cadence": "per round", "meaning": "Generated per federated learning round"},
+            {"cadence": "per battery", "meaning": "Generated per neuropsychological test battery"},
+            {"cadence": "on-demand", "meaning": "Generated when explicitly requested"},
+        ],
+        "glossary": [
+            {"term": "KPI", "definition": "Key Performance Indicator — a measurable value demonstrating effectiveness"},
+            {"term": "MDT", "definition": "Multidisciplinary Team — clinical professionals from different specialties"},
+            {"term": "HITL", "definition": "Human-in-the-Loop — clinician review/override of AI decisions"},
+            {"term": "ADL", "definition": "Activities of Daily Living — functional independence measures"},
+            {"term": "AED/ASM", "definition": "Anti-Epileptic Drug / Anti-Seizure Medication"},
+            {"term": "ILAE", "definition": "International League Against Epilepsy — classification authority"},
+            {"term": "SUDEP", "definition": "Sudden Unexpected Death in Epilepsy"},
+            {"term": "PNES", "definition": "Psychogenic Non-Epileptic Seizures"},
+            {"term": "IRB", "definition": "Institutional Review Board — ethics oversight"},
+            {"term": "SOP", "definition": "Standard Operating Procedure"},
+            {"term": "FinOps", "definition": "Financial Operations — cloud cost management for AI workloads"},
+            {"term": "SLA", "definition": "Service Level Agreement — performance/uptime guarantees"},
+        ],
+        "clinical_notes": [
+            "Each clinical role has role-specific KPIs drawn from the live clinical database and AI pipeline outputs.",
+            "Reports follow institutional cadence standards (daily/weekly/monthly) aligned with ILAE and NICE guidelines.",
+            "All KPI data sources map to real database tables or API endpoints in the NeuroLab platform.",
+            "Dashboard components and API endpoints are registered per role for full-stack traceability.",
+        ],
+        "references": [
+            {"ref": "ILAE (2017)", "detail": "Operational classification of seizure types — role-specific reporting standards"},
+            {"ref": "NICE NG217 (2022)", "detail": "Epilepsies in children, young people, and adults — multidisciplinary care pathway"},
+            {"ref": "WHO (2023)", "detail": "Intersectoral global action plan on epilepsy — workforce and role definitions"},
+            {"ref": "AAN Practice Guidelines", "detail": "American Academy of Neurology — evidence-based clinical practice parameters"},
+        ],
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

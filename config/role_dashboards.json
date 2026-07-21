@@ -1,7 +1,13 @@
 {
   "title": "Per-Role Dashboards & Reports (clinical departments)",
   "note": "Each role: KPI dashboard tiles + standard report list (with cadence + format). status: built (data exists) / partial / planned.",
-  "updated_at": "2026-07-03",
+  "updated_at": "2026-07-20",
+  "dashboard_component": "RoleDashboardsDashboard",
+  "api_endpoints": [
+    "/api/role-dashboards/overview",
+    "/api/role-dashboards/breakdown",
+    "/api/role-dashboards/definitions"
+  ],
   "roles": [
     {
       "role": "Neurologist",
