@@ -400,6 +400,7 @@ import DatasetsDashboard from './components/DatasetsDashboard'
 import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
+import ReportLayoutDashboard from './components/ReportLayoutDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -724,6 +725,7 @@ function App() {
     { id: 'assessment-instruments', label: 'Assessment Instruments' },
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'ai-dark-factory', label: 'AI Dark Factory' },
+    { id: 'report-layout', label: 'Report Layout' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2749,6 +2751,8 @@ function App() {
         return <AssessmentInstrumentsDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
+      case 'report-layout':
+        return <ReportLayoutDashboard />
       case 'ai-dark-factory':
         return <AiDarkFactoryDashboard />
       default:

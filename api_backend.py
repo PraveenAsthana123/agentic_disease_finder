@@ -14019,6 +14019,29 @@ async def ai_dark_factory_definitions():
     return _json_safe(adf.definitions())
 
 
+# -- Report Layout Dashboard ------------------------------------------------
+
+@app.get("/api/report-layout/overview")
+async def report_layout_overview():
+    """Report Layout overview -- report types, components, sections, AI sources, KPIs."""
+    import scripts.report_layout_dashboard as rld
+    return _json_safe(rld.overview())
+
+
+@app.get("/api/report-layout/breakdown")
+async def report_layout_breakdown():
+    """Report Layout breakdown -- per-component AI sources, per-section editability, status."""
+    import scripts.report_layout_dashboard as rld
+    return _json_safe(rld.breakdown())
+
+
+@app.get("/api/report-layout/definitions")
+async def report_layout_definitions():
+    """Report Layout definitions -- EEG report, component, section terminology."""
+    import scripts.report_layout_dashboard as rld
+    return _json_safe(rld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
