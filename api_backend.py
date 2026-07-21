@@ -14454,6 +14454,27 @@ async def data_manager_definitions():
     return _json_safe(dmd.definitions())
 
 
+@app.get("/api/datasets-config/overview")
+async def datasets_config_overview():
+    """Datasets Config overview — 6-disease, 10-dataset real EEG registry KPIs + charts."""
+    import scripts.datasets_config_dashboard as dcd
+    return _json_safe(dcd.overview())
+
+
+@app.get("/api/datasets-config/breakdown")
+async def datasets_config_breakdown():
+    """Datasets Config breakdown — per-disease dataset details, paths, formats, sources."""
+    import scripts.datasets_config_dashboard as dcd
+    return _json_safe(dcd.breakdown())
+
+
+@app.get("/api/datasets-config/definitions")
+async def datasets_config_definitions():
+    """Datasets Config definitions — glossary, clinical notes, references."""
+    import scripts.datasets_config_dashboard as dcd
+    return _json_safe(dcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

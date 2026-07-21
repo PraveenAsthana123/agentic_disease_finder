@@ -160,3 +160,11 @@ base_paths:
   agenticfinder: "/media/praveen/Asthana3/rajveer/agenticfinder"
   neurodisease_finder: "/media/praveen/Asthana3/aman2/paperdownload/texstudio-papers/neurodisease_finder"
   eeg_stress_rag: "/media/praveen/Asthana3/rajveer/eeg-stress-rag"
+
+# Dashboard metadata
+dashboard_status: "built"
+dashboard_component: "DatasetsConfigDashboard.jsx"
+endpoints:
+  - "/api/datasets-config/overview"
+  - "/api/datasets-config/breakdown"
+  - "/api/datasets-config/definitions"
