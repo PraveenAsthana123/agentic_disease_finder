@@ -13933,6 +13933,28 @@ async def role_dashboards_definitions():
     }
 
 
+# ── Agent Tasks Dashboard ──────────────────────────────────────────
+@app.get("/api/agent-tasks/overview")
+async def agent_tasks_overview():
+    """Agent Tasks overview — 60-agent registry KPIs, status/category distribution."""
+    import scripts.agent_tasks_dashboard as atd
+    return _json_safe(atd.overview())
+
+
+@app.get("/api/agent-tasks/breakdown")
+async def agent_tasks_breakdown():
+    """Agent Tasks breakdown — per-category agent groups with full metadata."""
+    import scripts.agent_tasks_dashboard as atd
+    return _json_safe(atd.breakdown())
+
+
+@app.get("/api/agent-tasks/definitions")
+async def agent_tasks_definitions():
+    """Agent Tasks definitions — status legend, glossary, clinical notes, references."""
+    import scripts.agent_tasks_dashboard as atd
+    return _json_safe(atd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
