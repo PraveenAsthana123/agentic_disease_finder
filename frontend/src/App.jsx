@@ -390,6 +390,7 @@ import ArtifactAnnotationsDashboard from './components/ArtifactAnnotationsDashbo
 import DataRequirementsDashboard from './components/DataRequirementsDashboard'
 import NeuroAdvancementsDashboard from './components/NeuroAdvancementsDashboard'
 import ProcessSimulationsDashboard from './components/ProcessSimulationsDashboard'
+import ExpertRolesDashboard from './components/ExpertRolesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -704,6 +705,7 @@ function App() {
     { id: 'consultant-matrix', label: 'Consultant Matrix' },
     { id: 'epilepsy-challenges', label: 'Epilepsy Challenges' },
     { id: 'role-challenges', label: 'Role Challenges' },
+    { id: 'expert-roles', label: 'Expert Roles' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2711,6 +2713,8 @@ function App() {
         return <NeuroAdvancementsDashboard />
       case 'process-simulations':
         return <ProcessSimulationsDashboard />
+      case 'expert-roles':
+        return <ExpertRolesDashboard />
       default:
         return renderClassificationTab()
     }

@@ -13360,6 +13360,27 @@ async def role_specs_definitions():
     return _json_safe(rsd.definitions())
 
 
+@app.get("/api/expert-roles/overview")
+async def expert_roles_overview():
+    """Expert Roles overview — 8-role MDT KPIs, task/dashboard status distribution, tasks-per-role bar."""
+    import scripts.expert_roles_dashboard as erd
+    return _json_safe(erd.overview())
+
+
+@app.get("/api/expert-roles/breakdown")
+async def expert_roles_breakdown():
+    """Expert Roles breakdown — per-role detail cards with tasks, endpoints, AI features."""
+    import scripts.expert_roles_dashboard as erd
+    return _json_safe(erd.breakdown())
+
+
+@app.get("/api/expert-roles/definitions")
+async def expert_roles_definitions():
+    """Expert Roles definitions — status legend, glossary, clinical notes, references."""
+    import scripts.expert_roles_dashboard as erd
+    return _json_safe(erd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
