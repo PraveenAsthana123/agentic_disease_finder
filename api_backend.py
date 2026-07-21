@@ -14475,6 +14475,29 @@ async def datasets_config_definitions():
     return _json_safe(dcd.definitions())
 
 
+# ── Scheduled Jobs Dashboard ──────────────────────────────────────────
+
+@app.get("/api/scheduled-jobs/overview")
+async def scheduled_jobs_overview():
+    """KPIs: job count, schedule types, report coverage, cron tags."""
+    import scripts.scheduled_jobs_dashboard as sjd
+    return _json_safe(sjd.overview())
+
+
+@app.get("/api/scheduled-jobs/breakdown")
+async def scheduled_jobs_breakdown():
+    """Per-job detail: script, schedule, cron tag, report path + size."""
+    import scripts.scheduled_jobs_dashboard as sjd
+    return _json_safe(sjd.breakdown())
+
+
+@app.get("/api/scheduled-jobs/definitions")
+async def scheduled_jobs_definitions():
+    """Schedule legend, glossary, clinical notes, references."""
+    import scripts.scheduled_jobs_dashboard as sjd
+    return _json_safe(sjd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
