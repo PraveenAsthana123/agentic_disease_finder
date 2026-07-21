@@ -1,5 +1,5 @@
 {
-  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
+  "title": "Enterprise AI Dashboard Catalog (5 phases) — coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
   "updated_at": "2026-07-17",
   "phases": [
@@ -129,7 +129,7 @@
     {
       "phase": 3,
       "name": "RAG & Retrieval Operations",
-      "count": 160,
+      "count": 9,
       "dashboards": [
         {
           "name": "Retrieval Dashboard",
@@ -168,6 +168,13 @@
         {
           "name": "Content Freshness Dashboard",
           "status": "built"
+        },
+        {
+          "name": "EEG AI Stack Dashboard",
+          "status": "built",
+          "maps_to": "/api/eeg-ai-stack/overview + /api/eeg-ai-stack/breakdown + /api/eeg-ai-stack/definitions",
+          "component": "EegAiStackDashboard.jsx",
+          "note": "16-layer tool stack (64 tools), tools-per-layer chart, status pie, recommended pipeline, EDC tools, endpoints inventory, 5-tab layout"
         }
       ]
     },
@@ -268,7 +275,7 @@
         {
           "name": "Shadow AI Detection Dashboard",
           "status": "built",
-          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx \u2014 unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
+          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx — unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
         },
         {
           "name": "MRI Brain Review Dashboard",
@@ -278,7 +285,7 @@
         {
           "name": "OTel LLM Observability Dashboard",
           "status": "built",
-          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx \u2014 OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
+          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx — OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
         },
         {
           "name": "SecOps Dashboard",
@@ -357,7 +364,7 @@
     {
       "name": "Medication Refill Tracking Dashboard",
       "status": "built",
-      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx \u2014 AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
+      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx — AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
     },
     {
       "id": "patient-documents",
@@ -383,7 +390,7 @@
       ],
       "table": "patient_appointments",
       "rows": 191,
-      "note": "Appointment scheduling analytics \u2014 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
+      "note": "Appointment scheduling analytics — 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
     },
     {
       "id": "iot-alerts",
@@ -397,7 +404,7 @@
       ],
       "table": "iot_alerts",
       "rows": 50,
-      "note": "IoT device/gateway alert analytics \u2014 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
+      "note": "IoT device/gateway alert analytics — 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
     },
     {
       "id": "onboarding-intake",

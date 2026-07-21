@@ -13318,6 +13318,27 @@ async def process_simulations_definitions():
     return _json_safe(sd.definitions())
 
 
+@app.get("/api/eeg-ai-stack/overview")
+async def eeg_ai_stack_overview():
+    """EEG AI Stack overview — layer count, tool counts, status distribution, tools-per-layer KPIs."""
+    import scripts.eeg_ai_stack_dashboard as easd
+    return _json_safe(easd.overview())
+
+
+@app.get("/api/eeg-ai-stack/breakdown")
+async def eeg_ai_stack_breakdown():
+    """EEG AI Stack breakdown — per-layer tool details, endpoint inventory, EDC tools."""
+    import scripts.eeg_ai_stack_dashboard as easd
+    return _json_safe(easd.breakdown())
+
+
+@app.get("/api/eeg-ai-stack/definitions")
+async def eeg_ai_stack_definitions():
+    """EEG AI Stack definitions — status legend, glossary, clinical notes, references."""
+    import scripts.eeg_ai_stack_dashboard as easd
+    return _json_safe(easd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
