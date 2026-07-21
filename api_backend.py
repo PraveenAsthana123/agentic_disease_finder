@@ -13297,6 +13297,27 @@ async def neuro_advancements_definitions():
     return _json_safe(nad.definitions())
 
 
+@app.get("/api/process-simulations/overview")
+async def process_simulations_overview():
+    """Process Simulations overview — role counts, step totals, layer/mode distribution KPIs."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.overview())
+
+
+@app.get("/api/process-simulations/breakdown")
+async def process_simulations_breakdown():
+    """Process Simulations breakdown — per-role step details, endpoint mapping."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.breakdown())
+
+
+@app.get("/api/process-simulations/definitions")
+async def process_simulations_definitions():
+    """Process Simulations definitions — layer legend, mode legend, glossary, references."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

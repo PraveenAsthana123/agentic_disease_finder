@@ -1,7 +1,8 @@
 {
   "title": "Per-Role End-to-End Process Simulations",
   "note": "Each role: ordered steps explaining the full process. layer = backend/process/data/accuracy/reporting. mode = manual (human step) or auto (AI/pipeline). maps_to = real endpoint when built.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-07-20",
+  "dashboard_status": "built",
   "roles": [
     {"role": "Neurologist", "icon": "🧠", "process": "Governed EEG read",
      "steps": [
@@ -22,15 +23,15 @@
     {"role": "Psychiatrist", "icon": "💬", "process": "Comorbidity screen",
      "steps": [
        {"layer": "data", "mode": "manual", "actor": "Psychiatrist", "input": "patient interview", "process": "administer mood/anxiety survey", "output": "survey answers", "maps_to": "surveys"},
-       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "answers", "process": "score + flag thresholds", "output": "risk flags", "maps_to": "partial"},
-       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "features", "process": "psychogenic-vs-epileptic differential", "output": "likelihood", "maps_to": "planned"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "answers", "process": "score + flag thresholds", "output": "risk flags", "maps_to": "/api/psychiatrist/threshold-flags"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "features", "process": "psychogenic-vs-epileptic differential", "output": "likelihood", "maps_to": "/api/comorbidity-analysis (built)"},
        {"layer": "process", "mode": "manual", "actor": "Psychiatrist", "input": "AI flags", "process": "clinical judgment", "output": "assessment", "maps_to": "hitl_reviews"},
        {"layer": "reporting", "mode": "auto", "actor": "System", "input": "assessment", "process": "psychiatric report", "output": "PDF + audit", "maps_to": "transaction_log"}]},
     {"role": "Occupational Therapist", "icon": "🖐️", "process": "Functional outcome tracking",
      "steps": [
        {"layer": "data", "mode": "manual", "actor": "OT", "input": "ADL assessment", "process": "record functional scores", "output": "outcome record", "maps_to": "outcomes"},
-       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "scores over time", "process": "trend + goal-attainment", "output": "progress curve", "maps_to": "partial"},
-       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "history", "process": "recovery trajectory forecast", "output": "projected ADL index", "maps_to": "planned"},
+       {"layer": "process", "mode": "auto", "actor": "Pipeline", "input": "scores over time", "process": "trend + goal-attainment", "output": "progress curve", "maps_to": "/api/occupational-therapist + /api/functional-recovery (built)"},
+       {"layer": "accuracy", "mode": "auto", "actor": "Model", "input": "history", "process": "recovery trajectory forecast", "output": "projected ADL index", "maps_to": "/api/recovery-trajectory (built)"},
        {"layer": "process", "mode": "manual", "actor": "OT", "input": "trend", "process": "adjust rehab plan", "output": "updated plan", "maps_to": "manual"},
        {"layer": "reporting", "mode": "auto", "actor": "System", "input": "plan", "process": "functional outcome report", "output": "PDF + audit", "maps_to": "transaction_log"}]},
     {"role": "IRB / Governance Reviewer", "icon": "⚖️", "process": "AI decision audit",
