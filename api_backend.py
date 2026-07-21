@@ -13955,6 +13955,28 @@ async def agent_tasks_definitions():
     return _json_safe(atd.definitions())
 
 
+# ── Datasets Dashboard ────────────────────────────────────────────────────
+@app.get("/api/datasets/overview")
+async def datasets_overview():
+    """Datasets overview — KPIs, subject/accuracy distributions, format breakdown."""
+    import scripts.datasets_dashboard as dd
+    return _json_safe(dd.overview())
+
+
+@app.get("/api/datasets/breakdown")
+async def datasets_breakdown():
+    """Datasets breakdown — per-disease detail with all datasets expanded."""
+    import scripts.datasets_dashboard as dd
+    return _json_safe(dd.breakdown())
+
+
+@app.get("/api/datasets/definitions")
+async def datasets_definitions():
+    """Datasets definitions — status legend, glossary, clinical notes, references."""
+    import scripts.datasets_dashboard as dd
+    return _json_safe(dd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
