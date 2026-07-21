@@ -14234,6 +14234,28 @@ async def patient_module_definitions():
     return _json_safe(pmd.definitions())
 
 
+# ── Portal Tabs Dashboard ──────────────────────────────────────────────
+@app.get("/api/portal-tabs/overview")
+async def portal_tabs_overview():
+    """Portal Tabs overview — 11 patient self-service portal tabs, status, endpoints."""
+    import scripts.portal_tabs_dashboard as ptd
+    return _json_safe(ptd.overview())
+
+
+@app.get("/api/portal-tabs/breakdown")
+async def portal_tabs_breakdown():
+    """Portal Tabs breakdown — per-tab purpose, endpoints, status grouping."""
+    import scripts.portal_tabs_dashboard as ptd
+    return _json_safe(ptd.breakdown())
+
+
+@app.get("/api/portal-tabs/definitions")
+async def portal_tabs_definitions():
+    """Portal Tabs definitions — status legend, glossary, clinical notes, references."""
+    import scripts.portal_tabs_dashboard as ptd
+    return _json_safe(ptd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
