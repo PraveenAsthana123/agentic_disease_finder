@@ -322,6 +322,7 @@
     "chord",
     "leaderboard"
   ],
+  "dashboard_status": "built",
   "golden_rule": "Every dashboard maps to a layer (Executive/LLMOps/RAG/Agents/MCP) + a KPI + a visualization + an audience + a refresh frequency.",
   "dashboards": [
     {

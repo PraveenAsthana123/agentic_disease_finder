@@ -13668,6 +13668,137 @@ async def scheduled_jobs_definitions():
     }
 
 
+@app.get("/api/dashboard-catalog/overview")
+async def dashboard_catalog_overview():
+    """Dashboard Catalog overview — all dashboards across 5 phases with KPIs."""
+    p = Path(__file__).parent / "config" / "dashboard_catalog.json"
+    data = json.loads(p.read_text()) if p.exists() else {"phases": [], "dashboards": []}
+    phases = data.get("phases", [])
+    extra = data.get("dashboards", [])
+    # Collect all dashboards
+    all_dashboards = []
+    for ph in phases:
+        for d in ph.get("dashboards", []):
+            all_dashboards.append({**d, "phase": ph.get("phase", 0), "phase_name": ph.get("name", "")})
+    for d in extra:
+        all_dashboards.append({**d, "phase": 0, "phase_name": "Additional"})
+    total = len(all_dashboards)
+    built = sum(1 for d in all_dashboards if d.get("status") == "built")
+    partial = sum(1 for d in all_dashboards if d.get("status") == "partial")
+    planned = sum(1 for d in all_dashboards if d.get("status") == "planned")
+    total_phases = len(phases)
+    # Status distribution
+    status_dist = {}
+    for d in all_dashboards:
+        s = d.get("status", "unknown")
+        status_dist[s] = status_dist.get(s, 0) + 1
+    status_distribution = [{"name": k.capitalize(), "value": v} for k, v in status_dist.items()]
+    # Dashboards per phase
+    phase_distribution = []
+    for ph in phases:
+        phase_distribution.append({"name": f"P{ph['phase']}: {ph['name']}", "value": len(ph.get("dashboards", []))})
+    if extra:
+        phase_distribution.append({"name": "Additional", "value": len(extra)})
+    # Categories from extra dashboards
+    categories = {}
+    for d in extra:
+        cat = d.get("category", "uncategorized")
+        categories[cat] = categories.get(cat, 0) + 1
+    category_distribution = [{"name": k, "value": v} for k, v in sorted(categories.items(), key=lambda x: -x[1])]
+    viz_vocab = data.get("visualization_vocabulary", [])
+    return {
+        "available": True,
+        "title": data.get("title", "Enterprise AI Dashboard Catalog"),
+        "kpis": {
+            "total_dashboards": total,
+            "built": built,
+            "partial": partial,
+            "planned": planned,
+            "total_phases": total_phases,
+            "visualization_types": len(viz_vocab),
+            "additional_dashboards": len(extra),
+        },
+        "status_distribution": status_distribution,
+        "phase_distribution": phase_distribution,
+        "category_distribution": category_distribution,
+        "visualization_vocabulary": viz_vocab,
+        "dashboards_summary": [
+            {
+                "name": d.get("name", ""),
+                "status": d.get("status", ""),
+                "phase": d.get("phase", 0),
+                "phase_name": d.get("phase_name", ""),
+                "maps_to": d.get("maps_to", ""),
+                "category": d.get("category", ""),
+            }
+            for d in all_dashboards
+        ],
+    }
+
+
+@app.get("/api/dashboard-catalog/breakdown")
+async def dashboard_catalog_breakdown():
+    """Dashboard Catalog breakdown — per-phase and per-dashboard detail."""
+    p = Path(__file__).parent / "config" / "dashboard_catalog.json"
+    data = json.loads(p.read_text()) if p.exists() else {"phases": [], "dashboards": []}
+    phases = data.get("phases", [])
+    extra = data.get("dashboards", [])
+    phase_breakdown = []
+    for ph in phases:
+        dashboards = ph.get("dashboards", [])
+        built = sum(1 for d in dashboards if d.get("status") == "built")
+        phase_breakdown.append({
+            "phase": ph.get("phase", 0),
+            "name": ph.get("name", ""),
+            "count": ph.get("count", len(dashboards)),
+            "built": built,
+            "dashboards": dashboards,
+        })
+    return {
+        "available": True,
+        "phases": phase_breakdown,
+        "additional": extra,
+    }
+
+
+@app.get("/api/dashboard-catalog/definitions")
+async def dashboard_catalog_definitions():
+    """Dashboard Catalog definitions — legends, glossary, references."""
+    return {
+        "status_legend": [
+            {"label": "Built", "description": "A real view/endpoint exists in the project", "color": "#22c55e"},
+            {"label": "Partial", "description": "Related data exists but dashboard is incomplete", "color": "#f97316"},
+            {"label": "Planned", "description": "Catalog entry only — not yet implemented", "color": "#94a3b8"},
+        ],
+        "glossary": [
+            {"term": "Phase", "definition": "A logical grouping of dashboards by domain — 5 phases cover Executive, LLMOps, RAG, Agents, and MCP/Tooling"},
+            {"term": "KPI", "definition": "Key Performance Indicator — the primary metric tracked by a dashboard"},
+            {"term": "Executive AI", "definition": "Phase 1 dashboards for governance, cost, risk, compliance, and ROI at the executive level"},
+            {"term": "LLMOps", "definition": "Phase 2 dashboards for model comparison, drift detection, token cost, and inference monitoring"},
+            {"term": "RAG", "definition": "Retrieval-Augmented Generation — Phase 3 dashboards for retrieval, embeddings, chunking, and knowledge graphs"},
+            {"term": "Agentic AI", "definition": "Phase 4 dashboards for multi-agent orchestration, council operations, HITL, and guardrails"},
+            {"term": "MCP", "definition": "Model Context Protocol — Phase 5 dashboards for tool registry, workflow, federation, and security"},
+            {"term": "Visualization Vocabulary", "definition": "The set of chart types available across all dashboards (line, bar, pie, heatmap, sankey, etc.)"},
+            {"term": "HITL", "definition": "Human-In-The-Loop — review and override mechanism for AI decisions"},
+            {"term": "XAI", "definition": "Explainable AI — SHAP, Grad-CAM, LIME for model interpretability"},
+            {"term": "SHAP", "definition": "SHapley Additive exPlanations — model-agnostic feature importance"},
+            {"term": "OTel", "definition": "OpenTelemetry — observability framework for traces, metrics, and logs"},
+        ],
+        "clinical_notes": [
+            "All dashboards follow a consistent pattern: overview (KPIs + charts), breakdown (per-item detail), definitions (glossary + references).",
+            "Phase 4 (Agentic AI) has the largest catalog reflecting the multi-agent architecture of the platform.",
+            "Every dashboard maps to a layer, KPI, visualization type, audience, and refresh frequency per the golden rule.",
+            "Built dashboards have real endpoints returning live data from the clinical database or config registries.",
+        ],
+        "references": [
+            {"ref": "EU AI Act (2024)", "detail": "Regulation on harmonised rules on artificial intelligence — high-risk system governance requirements"},
+            {"ref": "NIST AI RMF (2023)", "detail": "AI Risk Management Framework — guidelines for trustworthy AI systems"},
+            {"ref": "ISO/IEC 42001 (2023)", "detail": "AI management system standard — organizational framework for responsible AI"},
+            {"ref": "WHO Ethics & Governance of AI for Health (2021)", "detail": "Guidance on ethical use of AI in healthcare settings"},
+        ],
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

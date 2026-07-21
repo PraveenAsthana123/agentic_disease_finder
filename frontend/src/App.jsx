@@ -393,6 +393,7 @@ import ProcessSimulationsDashboard from './components/ProcessSimulationsDashboar
 import ExpertRolesDashboard from './components/ExpertRolesDashboard'
 import AssessmentCatalogDashboard from './components/AssessmentCatalogDashboard'
 import ScheduledJobsDashboard from './components/ScheduledJobsDashboard'
+import DashboardCatalogDashboard from './components/DashboardCatalogDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -710,6 +711,7 @@ function App() {
     { id: 'expert-roles', label: 'Expert Roles' },
     { id: 'assessment-catalog', label: 'Assessment Catalog' },
     { id: 'scheduled-jobs', label: 'Scheduled Jobs' },
+    { id: 'dashboard-catalog', label: 'Dashboard Catalog' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2723,6 +2725,8 @@ function App() {
         return <AssessmentCatalogDashboard />
       case 'scheduled-jobs':
         return <ScheduledJobsDashboard />
+      case 'dashboard-catalog':
+        return <DashboardCatalogDashboard />
       default:
         return renderClassificationTab()
     }
