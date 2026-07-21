@@ -1,7 +1,8 @@
 {
   "title": "Integrations & Delivery Channels \u2014 Settings",
   "note": "External integrations + assessment-delivery channels. Honest status (\u00a756 Stage-1, \u00a7155): live / adapter / needs-credentials / planned. Each shows the credential/env var to activate.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-07-21",
+  "dashboard_status": "built",
   "integrations": [
     {
       "id": "gdrive",

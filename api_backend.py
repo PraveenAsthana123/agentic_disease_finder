@@ -14278,6 +14278,28 @@ async def expert_dashboards_catalog_definitions():
     return _json_safe(edd.definitions())
 
 
+# ── Integrations Settings Dashboard ───────────────────────────────────
+@app.get("/api/integrations-settings/overview")
+async def integrations_settings_overview():
+    """Integrations & Delivery Channels overview — 6 integrations, 6 channels, status."""
+    import scripts.integrations_settings_dashboard as isd
+    return _json_safe(isd.overview())
+
+
+@app.get("/api/integrations-settings/breakdown")
+async def integrations_settings_breakdown():
+    """Integrations & Delivery Channels breakdown — per-item cards."""
+    import scripts.integrations_settings_dashboard as isd
+    return _json_safe(isd.breakdown())
+
+
+@app.get("/api/integrations-settings/definitions")
+async def integrations_settings_definitions():
+    """Integrations & Delivery Channels definitions — legend, glossary, notes."""
+    import scripts.integrations_settings_dashboard as isd
+    return _json_safe(isd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
