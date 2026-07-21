@@ -1854,6 +1854,110 @@ async def tab_scaffold():
     return json.loads(p.read_text()) if p.exists() else {"default": {}, "tabs": {}}
 
 
+@app.get("/api/tab-scaffold/overview")
+async def tab_scaffold_overview():
+    """Tab Scaffold dashboard overview — KPIs, chart data, section summary."""
+    p = Path(__file__).parent / "config" / "tab_scaffold.json"
+    if not p.exists():
+        return {"available": False}
+    data = json.loads(p.read_text())
+    default = data.get("default", {})
+    tabs = data.get("tabs", {})
+    section_names = ["goal", "todos", "flow", "input", "process", "output", "viz"]
+    total_tabs = len(tabs)
+    status_counts = {}
+    for t in tabs.values():
+        s = t.get("status", "planned")
+        status_counts[s] = status_counts.get(s, 0) + 1
+    built = status_counts.get("built", 0)
+    # Count todos and flow steps across tabs
+    total_todos = sum(len(t.get("todos", [])) for t in tabs.values())
+    total_flow_steps = sum(len(t.get("flow", [])) for t in tabs.values())
+    default_sections = len([k for k in section_names if k in default])
+    # Flow steps per tab for chart
+    flow_per_tab = [{"name": tid, "value": len(t.get("flow", []))} for tid, t in tabs.items()]
+    todos_per_tab = [{"name": tid, "value": len(t.get("todos", []))} for tid, t in tabs.items()]
+    return {
+        "available": True,
+        "kpis": {
+            "total_tabs": total_tabs,
+            "total_sections": len(section_names),
+            "built": built,
+            "planned": total_tabs - built,
+            "total_todos": total_todos,
+            "total_flow_steps": total_flow_steps,
+            "default_sections": default_sections,
+        },
+        "status_distribution": [{"name": k, "value": v} for k, v in status_counts.items()],
+        "flow_per_tab": flow_per_tab,
+        "todos_per_tab": todos_per_tab,
+        "tab_summary": [
+            {
+                "id": tid,
+                "goal": t.get("goal", default.get("goal", "")),
+                "status": t.get("status", "planned"),
+                "todos": len(t.get("todos", [])),
+                "flow_steps": len(t.get("flow", [])),
+            }
+            for tid, t in tabs.items()
+        ],
+    }
+
+
+@app.get("/api/tab-scaffold/breakdown")
+async def tab_scaffold_breakdown():
+    """Tab Scaffold breakdown — full per-tab details + default template."""
+    p = Path(__file__).parent / "config" / "tab_scaffold.json"
+    if not p.exists():
+        return {"available": False}
+    data = json.loads(p.read_text())
+    return {
+        "available": True,
+        "default": data.get("default", {}),
+        "tabs": data.get("tabs", {}),
+        "title": data.get("title", ""),
+        "note": data.get("note", ""),
+    }
+
+
+@app.get("/api/tab-scaffold/definitions")
+async def tab_scaffold_definitions():
+    """Tab Scaffold definitions — glossary, section meanings, status legend."""
+    return {
+        "available": True,
+        "status_legend": [
+            {"status": "built", "meaning": "Tab is fully implemented with all 8 sections live"},
+            {"status": "planned", "meaning": "Tab is designed in config but not yet implemented in the UI"},
+        ],
+        "glossary": [
+            {"term": "Goal", "definition": "A one-line objective describing what this tab achieves for the user"},
+            {"term": "ToDos", "definition": "Checklist of actions the user should complete within this tab"},
+            {"term": "Flow", "definition": "Horizontal process pipeline showing the step-by-step workflow from input to audit"},
+            {"term": "Input", "definition": "The data or parameters fed into this tab's process"},
+            {"term": "Process", "definition": "The deterministic or AI transformation that converts input to output"},
+            {"term": "Output", "definition": "The structured result and artifacts produced by this tab"},
+            {"term": "Visualization", "definition": "Charts, diagrams, or visual elements that display the tab's results"},
+            {"term": "Audit", "definition": "Transaction history and sign-off trail for compliance and traceability"},
+            {"term": "Scaffold", "definition": "The standard 8-section template applied consistently across all clinical tabs"},
+            {"term": "IPO", "definition": "Input-Process-Output — the core transformation pattern within each tab"},
+            {"term": "EEG", "definition": "Electroencephalogram — brain electrical activity recording used for seizure detection"},
+            {"term": "IoT Fleet", "definition": "Collection of EEG/wearable devices managed across online, offline, and hybrid modes"},
+        ],
+        "notes": [
+            "Every tab follows the same 8-section pattern for consistency and auditability",
+            "The default template is applied when no per-tab override is specified for a section",
+            "Process flows are rendered as horizontal step diagrams in the UI",
+            "Tabs cover the full clinical workflow: diary, onboarding, workbench, role pipeline, device fleet",
+        ],
+        "references": [
+            "config/tab_scaffold.json — source registry",
+            "Standard 8-section scaffold pattern: Goal, ToDo, Flow, Input, Process, Output, Viz, Audit",
+            "Clinical workflow patterns based on BPMN (Business Process Model and Notation)",
+            "HIPAA audit trail requirements for clinical software",
+        ],
+    }
+
+
 @app.get("/api/onboarding-intake")
 async def onboarding_intake():
     """Patient onboarding: intake-vs-deferred field classification (the 15x time reduction)."""
@@ -14062,6 +14166,28 @@ async def data_config_definitions():
     """Data Config definitions — status legend, glossary, clinical notes, references."""
     import scripts.data_config_dashboard as dcd
     return _json_safe(dcd.definitions())
+
+
+# ── Tab Taxonomy Dashboard ──────────────────────────────────────────────
+@app.get("/api/tab-taxonomy/overview")
+async def tab_taxonomy_overview():
+    """Tab Taxonomy overview — patient master, role ops, AI capability KPIs."""
+    import scripts.tab_taxonomy_dashboard as ttd
+    return _json_safe(ttd.overview())
+
+
+@app.get("/api/tab-taxonomy/breakdown")
+async def tab_taxonomy_breakdown():
+    """Tab Taxonomy breakdown — per-category tab details + mappings."""
+    import scripts.tab_taxonomy_dashboard as ttd
+    return _json_safe(ttd.breakdown())
+
+
+@app.get("/api/tab-taxonomy/definitions")
+async def tab_taxonomy_definitions():
+    """Tab Taxonomy definitions — status legend, glossary, clinical notes."""
+    import scripts.tab_taxonomy_dashboard as ttd
+    return _json_safe(ttd.definitions())
 
 
 if __name__ == "__main__":

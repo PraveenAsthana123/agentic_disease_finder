@@ -402,6 +402,8 @@ import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDa
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
 import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
 import ReportLayoutDashboard from './components/ReportLayoutDashboard'
+import TabTaxonomyDashboard from './components/TabTaxonomyDashboard'
+import TabScaffoldDashboard from './components/TabScaffoldDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -728,6 +730,8 @@ function App() {
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'ai-dark-factory', label: 'AI Dark Factory' },
     { id: 'report-layout', label: 'Report Layout' },
+    { id: 'tab-taxonomy', label: 'Tab Taxonomy' },
+    { id: 'tab-scaffold', label: 'Tab Scaffold' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2759,6 +2763,10 @@ function App() {
         return <ReportLayoutDashboard />
       case 'ai-dark-factory':
         return <AiDarkFactoryDashboard />
+      case 'tab-taxonomy':
+        return <TabTaxonomyDashboard />
+      case 'tab-scaffold':
+        return <TabScaffoldDashboard />
       default:
         return renderClassificationTab()
     }
