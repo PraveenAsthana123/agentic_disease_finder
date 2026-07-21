@@ -14190,6 +14190,28 @@ async def tab_taxonomy_definitions():
     return _json_safe(ttd.definitions())
 
 
+# ── Admin Module Dashboard ─────────────────────────────────────────────
+@app.get("/api/admin-module/overview")
+async def admin_module_overview():
+    """Admin Module overview — 7 team roles, 10 ops dashboards, 7 access control, 9 integrations."""
+    import scripts.admin_module_dashboard as amd
+    return _json_safe(amd.overview())
+
+
+@app.get("/api/admin-module/breakdown")
+async def admin_module_breakdown():
+    """Admin Module breakdown — per-section roles, ops dashboards, access control, integrations."""
+    import scripts.admin_module_dashboard as amd
+    return _json_safe(amd.breakdown())
+
+
+@app.get("/api/admin-module/definitions")
+async def admin_module_definitions():
+    """Admin Module definitions — status legend, glossary, clinical notes, references."""
+    import scripts.admin_module_dashboard as amd
+    return _json_safe(amd.definitions())
+
+
 # ── Patient Module Dashboard ──────────────────────────────────────────
 @app.get("/api/patient-module/overview")
 async def patient_module_overview():
