@@ -14411,6 +14411,28 @@ async def real_eeg_datasets_definitions():
     return _json_safe(red.definitions())
 
 
+# ── Feature Gaps Dashboard ────────────────────────────────────────────
+@app.get("/api/feature-gaps/overview")
+async def feature_gaps_overview():
+    """Feature Gaps overview — 18 gaps, 6 categories, priority/status KPIs."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.overview())
+
+
+@app.get("/api/feature-gaps/breakdown")
+async def feature_gaps_breakdown():
+    """Feature Gaps breakdown — per-category gap details, review topics, recommendations."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.breakdown())
+
+
+@app.get("/api/feature-gaps/definitions")
+async def feature_gaps_definitions():
+    """Feature Gaps definitions — category descriptions, glossary, clinical notes."""
+    import scripts.feature_gaps_dashboard as fgd
+    return _json_safe(fgd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

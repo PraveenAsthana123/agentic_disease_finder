@@ -65,6 +65,7 @@ BUILDABLE = [
 # mcp_security (MCP Security Dashboard — real transaction_log 1548 rows, 8 actors, guardrail enforcement, actor privileges, attack surface, patient access audit, daily security trend, hourly patterns, privileged events, HITL reviews, 3 endpoints verified 200, MCPSecurityDashboard.jsx + nav wired)
 # data_requirements (Data Requirements Dashboard — real data_requirements.json 58 items across 9 categories, present/partial/missing gap tracker, tier coverage, control groups, artifact template, technician deliverables, 3 endpoints verified 200, DataRequirementsDashboard.jsx + nav wired)
 # tab_taxonomy (Tab Taxonomy Dashboard — real tab_taxonomy.json 35 tabs across 3 categories (Patient Master 13/Role Ops 9/AI Caps 13), 100% built, 33 mapped, as-is/to-be transformation, 3 endpoints verified 200, TabTaxonomyDashboard.jsx + nav wired)
+# feature_gaps (Feature Gaps Dashboard — real feature_gaps.json 18 gaps across 6 categories (functional/technology/data/gap/architecture/decision_ai), 50-paper DL review, 100% built, priority/status tracking, 5 recommendations, 3 endpoints verified 200, FeatureGapsDashboard.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
