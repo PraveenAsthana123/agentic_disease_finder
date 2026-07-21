@@ -13276,6 +13276,27 @@ async def neuro_tests_catalog_definitions():
     return _json_safe(ntd.definitions())
 
 
+@app.get("/api/neuro-advancements/overview")
+async def neuro_advancements_overview():
+    """Neuro Advancements overview — modality counts, AI model coverage, biomarker inventory KPIs."""
+    import scripts.neuro_advancements_dashboard as nad
+    return _json_safe(nad.overview())
+
+
+@app.get("/api/neuro-advancements/breakdown")
+async def neuro_advancements_breakdown():
+    """Neuro Advancements breakdown — per-modality details, AI model index, cross-modal advancements."""
+    import scripts.neuro_advancements_dashboard as nad
+    return _json_safe(nad.breakdown())
+
+
+@app.get("/api/neuro-advancements/definitions")
+async def neuro_advancements_definitions():
+    """Neuro Advancements definitions — status legend, modality categories, glossary, references."""
+    import scripts.neuro_advancements_dashboard as nad
+    return _json_safe(nad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -386,6 +386,7 @@ import SeizureMetadataDashboard from './components/SeizureMetadataDashboard'
 import CouncilOfAgentsDashboard from './components/CouncilOfAgentsDashboard'
 import ArtifactAnnotationsDashboard from './components/ArtifactAnnotationsDashboard'
 import DataRequirementsDashboard from './components/DataRequirementsDashboard'
+import NeuroAdvancementsDashboard from './components/NeuroAdvancementsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -867,7 +868,8 @@ function App() {
     { id: 'clinical-decisions', label: 'Clinical Decisions' },
     { id: 'seizure-metadata', label: 'Seizure Metadata' },
     { id: 'council-of-agents', label: 'Council of Agents' },
-    { id: 'data-requirements', label: 'Data Requirements' }
+    { id: 'data-requirements', label: 'Data Requirements' },
+    { id: 'neuro-advancements', label: 'Neuro Advancements' }
   ]
 
   // API Calls
@@ -2692,6 +2694,8 @@ function App() {
         return <CouncilOfAgentsDashboard />
       case 'data-requirements':
         return <DataRequirementsDashboard />
+      case 'neuro-advancements':
+        return <NeuroAdvancementsDashboard />
       default:
         return renderClassificationTab()
     }
