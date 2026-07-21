@@ -392,6 +392,7 @@ import NeuroAdvancementsDashboard from './components/NeuroAdvancementsDashboard'
 import ProcessSimulationsDashboard from './components/ProcessSimulationsDashboard'
 import ExpertRolesDashboard from './components/ExpertRolesDashboard'
 import AssessmentCatalogDashboard from './components/AssessmentCatalogDashboard'
+import ScheduledJobsDashboard from './components/ScheduledJobsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -708,6 +709,7 @@ function App() {
     { id: 'role-challenges', label: 'Role Challenges' },
     { id: 'expert-roles', label: 'Expert Roles' },
     { id: 'assessment-catalog', label: 'Assessment Catalog' },
+    { id: 'scheduled-jobs', label: 'Scheduled Jobs' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2719,6 +2721,8 @@ function App() {
         return <ExpertRolesDashboard />
       case 'assessment-catalog':
         return <AssessmentCatalogDashboard />
+      case 'scheduled-jobs':
+        return <ScheduledJobsDashboard />
       default:
         return renderClassificationTab()
     }

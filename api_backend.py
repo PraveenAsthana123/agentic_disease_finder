@@ -13539,6 +13539,135 @@ async def assessment_catalog_definitions():
     }
 
 
+# ── Scheduled Jobs Dashboard ──────────────────────────────────────────
+@app.get("/api/scheduled-jobs/overview")
+async def scheduled_jobs_overview():
+    """Scheduled Jobs overview — all cron/background jobs, schedules, KPIs."""
+    p = Path(__file__).parent / "config" / "jobs.json"
+    data = json.loads(p.read_text()) if p.exists() else {"jobs": []}
+    jobs = data.get("jobs", [])
+    total = len(jobs)
+    # Collect unique schedule types
+    daily_jobs = [j for j in jobs if "daily" in j.get("schedule", "")]
+    hourly_jobs = [j for j in jobs if "hourly" in j.get("schedule", "").lower()]
+    # Check which reports exist
+    reports_dir = Path(__file__).parent / "jobs" / "reports"
+    jobs_with_reports = 0
+    for j in jobs:
+        rp = j.get("report", "")
+        if rp and (Path(__file__).parent / rp).exists():
+            jobs_with_reports += 1
+    # Schedule distribution
+    schedule_dist = {}
+    for j in jobs:
+        sched = j.get("schedule", "unknown")
+        if "hourly" in sched.lower():
+            key = "Hourly"
+        elif "daily" in sched.lower():
+            key = "Daily"
+        else:
+            key = "Other"
+        schedule_dist[key] = schedule_dist.get(key, 0) + 1
+    schedule_distribution = [{"name": k, "value": v} for k, v in schedule_dist.items()]
+    # Unique cron tags
+    cron_tags = [j.get("cron_tag", "") for j in jobs if j.get("cron_tag")]
+    # Unique scripts
+    scripts_list = list({j.get("script", "") for j in jobs if j.get("script")})
+    return {
+        "available": True,
+        "title": data.get("title", "Scheduled Jobs Registry"),
+        "kpis": {
+            "total_jobs": total,
+            "daily_jobs": len(daily_jobs),
+            "hourly_jobs": len(hourly_jobs),
+            "jobs_with_reports": jobs_with_reports,
+            "unique_cron_tags": len(cron_tags),
+            "unique_scripts": len(scripts_list),
+        },
+        "schedule_distribution": schedule_distribution,
+        "jobs_summary": [
+            {
+                "id": j.get("id", ""),
+                "label": j.get("label", ""),
+                "schedule": j.get("schedule", ""),
+                "script": j.get("script", ""),
+                "cron_tag": j.get("cron_tag", ""),
+                "has_report": bool(j.get("report") and (Path(__file__).parent / j["report"]).exists()),
+                "purpose": j.get("purpose", ""),
+            }
+            for j in jobs
+        ],
+    }
+
+
+@app.get("/api/scheduled-jobs/breakdown")
+async def scheduled_jobs_breakdown():
+    """Scheduled Jobs breakdown — per-job detail with report status."""
+    p = Path(__file__).parent / "config" / "jobs.json"
+    data = json.loads(p.read_text()) if p.exists() else {"jobs": []}
+    jobs = data.get("jobs", [])
+    breakdown = []
+    for j in jobs:
+        report_path = j.get("report", "")
+        report_exists = bool(report_path and (Path(__file__).parent / report_path).exists())
+        report_size = 0
+        if report_exists:
+            try:
+                report_size = (Path(__file__).parent / report_path).stat().st_size
+            except Exception:
+                pass
+        breakdown.append({
+            "id": j.get("id", ""),
+            "label": j.get("label", ""),
+            "schedule": j.get("schedule", ""),
+            "script": j.get("script", ""),
+            "cron_tag": j.get("cron_tag", ""),
+            "report": report_path,
+            "report_exists": report_exists,
+            "report_size_bytes": report_size,
+            "purpose": j.get("purpose", ""),
+        })
+    return {"available": True, "jobs": breakdown}
+
+
+@app.get("/api/scheduled-jobs/definitions")
+async def scheduled_jobs_definitions():
+    """Scheduled Jobs definitions — legends, glossary, references."""
+    return {
+        "schedule_legend": [
+            {"label": "Hourly", "description": "Runs every hour", "color": "#3b82f6"},
+            {"label": "Daily", "description": "Runs once or twice per day at fixed times", "color": "#22c55e"},
+            {"label": "Other", "description": "Custom or event-driven schedule", "color": "#f97316"},
+        ],
+        "glossary": [
+            {"term": "Cron Tag", "definition": "Unique identifier used to tag the crontab entry for each job"},
+            {"term": "EEG", "definition": "Electroencephalogram — brain electrical activity recording"},
+            {"term": "CHB-MIT", "definition": "Children's Hospital Boston MIT Scalp EEG Database — benchmark epilepsy dataset"},
+            {"term": "RAG", "definition": "Retrieval-Augmented Generation — ground LLM answers in retrieved documents"},
+            {"term": "ChromaDB", "definition": "Open-source vector database for embedding storage and similarity search"},
+            {"term": "CV Pipeline", "definition": "Computer Vision pipeline — denoise, segment, detect, classify on images/video frames"},
+            {"term": "SHAP", "definition": "SHapley Additive exPlanations — model-agnostic feature importance"},
+            {"term": "PSI", "definition": "Population Stability Index — measures distribution shift between training and serving data"},
+            {"term": "KS Test", "definition": "Kolmogorov-Smirnov test — statistical test for distribution comparison"},
+            {"term": "CDM", "definition": "Clinical Data Manager — role responsible for data quality and completeness"},
+            {"term": "RDF", "definition": "Resource Description Framework — graph data model for knowledge representation"},
+            {"term": "Fairlearn", "definition": "Microsoft library for assessing and improving fairness of AI models"},
+        ],
+        "clinical_notes": [
+            "All scheduled jobs run automatically via system crontab entries tagged with unique AGENTICFINDER-* prefixes.",
+            "Each job writes its latest results to a JSON report file under jobs/reports/ for downstream consumption.",
+            "Training and validation jobs use leakage-free evaluation (subject-wise splits) on real clinical EEG data.",
+            "Drift and fairness jobs are part of the Responsible AI governance pipeline — mandatory for clinical deployment.",
+        ],
+        "references": [
+            {"ref": "PhysioNet CHB-MIT (2010)", "detail": "Goldberger et al. — PhysioBank, PhysioToolkit, and PhysioNet (Circulation, 101(23), e215-e220)"},
+            {"ref": "Lundberg & Lee (2017)", "detail": "A unified approach to interpreting model predictions — NIPS"},
+            {"ref": "Agarwal et al. (2018)", "detail": "Fairlearn — A toolkit for assessing and improving fairness in AI (Microsoft Research)"},
+            {"ref": "EU AI Act (2024)", "detail": "Regulation on harmonised rules on artificial intelligence — high-risk system governance requirements"},
+        ],
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

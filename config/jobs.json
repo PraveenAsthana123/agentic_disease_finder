@@ -111,5 +111,9 @@
    "report": "jobs/reports/auto_plan.md",
    "purpose": "Auto-maintain full pending enumeration + ordered build plan + cron-coverage check (\u00a7158/\u00a7159)"
   }
- ]
+ ],
+ "dashboard_id": "scheduled-jobs",
+ "dashboard_component": "ScheduledJobsDashboard.jsx",
+ "dashboard_status": "built",
+ "dashboard_note": "Scheduled Jobs Dashboard — 12-job cron/background registry visualization from real jobs.json config (12 jobs, 10 daily/2 hourly, 10 with reports, 12 cron tags, 12 scripts), 3 API endpoints (/api/scheduled-jobs/overview|breakdown|definitions), KPIs (12 jobs/10 daily/2 hourly/10 reports/12 cron tags), schedule distribution pie chart, jobs-per-type bar chart, all-jobs summary table, 5-tab layout (Overview, All Jobs, Reports, Cron Tags, Definitions), All Jobs tab with per-job cards (schedule+report badges, purpose, script, cron tag, report path+size), Reports tab with coverage KPIs + inventory table, Cron Tags tab with tag registry table, Definitions tab with 3-schedule legend + 12-term glossary + 4 clinical notes + 4 references, ScheduledJobsDashboard.jsx wired in App.jsx nav, 3 endpoints verified 200"
 }
