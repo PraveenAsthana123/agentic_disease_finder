@@ -417,6 +417,7 @@ import DataInventoryDashboard from './components/DataInventoryDashboard'
 import RealEegDatasetsDashboard from './components/RealEegDatasetsDashboard'
 import DatasetsConfigDashboard from './components/DatasetsConfigDashboard'
 import EegAiRagPipelineDashboard from './components/EegAiRagPipelineDashboard'
+import SleepStageAnalysisDashboard from './components/SleepStageAnalysisDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -842,6 +843,7 @@ function App() {
     { id: 'neurolab-readiness', label: 'NeuroLab Readiness' },
     { id: 'comorbidity-analysis', label: 'Comorbidity Analysis' },
     { id: 'sleep-staging', label: 'Sleep Staging' },
+    { id: 'sleep-stage-analysis', label: 'Sleep Stage Analysis' },
     { id: 'semiology-classifier', label: 'Semiology Classifier' },
     { id: 'ai-governance', label: 'AI Governance' },
     { id: 'epworth', label: 'Epworth Sleepiness' },
@@ -2595,6 +2597,8 @@ function App() {
         return <ComorbidityAnalysisDashboard />
       case 'sleep-staging':
         return <SleepStagingDashboard />
+      case 'sleep-stage-analysis':
+        return <SleepStageAnalysisDashboard />
       case 'semiology-classifier':
         return <SemiologyClassifierDashboard />
       case 'ai-governance':

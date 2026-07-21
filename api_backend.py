@@ -14498,6 +14498,28 @@ async def scheduled_jobs_definitions():
     return _json_safe(sjd.definitions())
 
 
+# ── Sleep Stage Analysis Dashboard ──────────────────────────────────────
+@app.get("/api/sleep-stage-analysis/overview")
+async def sleep_stage_analysis_overview():
+    """Sleep architecture KPIs, stage distribution, seizure correlation, ASM impact."""
+    import scripts.sleep_stage_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+
+@app.get("/api/sleep-stage-analysis/breakdown")
+async def sleep_stage_analysis_breakdown():
+    """Per-stage details, hypnogram, arousal analysis, seizure-by-stage, ASM impact."""
+    import scripts.sleep_stage_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+
+@app.get("/api/sleep-stage-analysis/definitions")
+async def sleep_stage_analysis_definitions():
+    """Sleep stage definitions, scoring criteria, epilepsy interactions, glossary."""
+    import scripts.sleep_stage_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
