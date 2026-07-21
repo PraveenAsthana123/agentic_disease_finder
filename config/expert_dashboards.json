@@ -434,11 +434,26 @@
         "/api/global-approval-policy/definitions"
       ],
       "status": "built"
+    },
+    {
+      "role": "Admin / Operations",
+      "name": "Expert Dashboards Catalog",
+      "viz": "Multi-role dashboard catalog — status/priority/role distribution, per-role cards, P0 must-have matrix, tech stack",
+      "feature": "36-dashboard overview, 14 roles, 28 endpoints, status/priority pie charts, role bar chart, must-have P0 grid, library table",
+      "why": "Meta-dashboard showing all expert dashboards across clinical roles",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/expert-dashboards-catalog/overview",
+        "/api/expert-dashboards-catalog/breakdown",
+        "/api/expert-dashboards-catalog/definitions"
+      ],
+      "component": "ExpertDashboardsCatalogDashboard.jsx"
     }
   ],
   "summary": {
-    "total": 36,
-    "built": 36,
+    "total": 37,
+    "built": 37,
     "partial": 0,
     "planned": 0
   }

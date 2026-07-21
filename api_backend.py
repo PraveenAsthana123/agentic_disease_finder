@@ -14256,6 +14256,28 @@ async def portal_tabs_definitions():
     return _json_safe(ptd.definitions())
 
 
+# ── Expert Dashboards Catalog Dashboard ──────────────────────────────────
+@app.get("/api/expert-dashboards-catalog/overview")
+async def expert_dashboards_catalog_overview():
+    """Expert Dashboards Catalog overview — roles, priorities, status, libraries."""
+    import scripts.expert_dashboards_dashboard as edd
+    return _json_safe(edd.overview())
+
+
+@app.get("/api/expert-dashboards-catalog/breakdown")
+async def expert_dashboards_catalog_breakdown():
+    """Expert Dashboards Catalog breakdown — per-role grouping, must-have P0."""
+    import scripts.expert_dashboards_dashboard as edd
+    return _json_safe(edd.breakdown())
+
+
+@app.get("/api/expert-dashboards-catalog/definitions")
+async def expert_dashboards_catalog_definitions():
+    """Expert Dashboards Catalog definitions — status legend, glossary, clinical notes."""
+    import scripts.expert_dashboards_dashboard as edd
+    return _json_safe(edd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
