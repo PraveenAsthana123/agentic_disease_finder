@@ -116,6 +116,7 @@ import RoleChallengesDashboard from './components/RoleChallengesDashboard'
 import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
 import RoleTestsDashboard from './components/RoleTestsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
+import TrainingConfigDashboard from './components/TrainingConfigDashboard'
 import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import IoTDevicesDashboard from './components/IoTDevicesDashboard'
@@ -400,6 +401,7 @@ import DatasetsDashboard from './components/DatasetsDashboard'
 import DataConfigDashboard from './components/DataConfigDashboard'
 import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDashboard'
 import StoriesTestsDashboard from './components/StoriesTestsDashboard'
+import TrainingConfigDashboard from './components/TrainingConfigDashboard'
 import AiDarkFactoryDashboard from './components/AiDarkFactoryDashboard'
 import ReportLayoutDashboard from './components/ReportLayoutDashboard'
 import TabTaxonomyDashboard from './components/TabTaxonomyDashboard'
@@ -411,6 +413,7 @@ import ExpertDashboardsCatalogDashboard from './components/ExpertDashboardsCatal
 import IntegrationsSettingsDashboard from './components/IntegrationsSettingsDashboard'
 import DataSourcesCatalogDashboard from './components/DataSourcesCatalogDashboard'
 import DataInventoryDashboard from './components/DataInventoryDashboard'
+import RealEegDatasetsDashboard from './components/RealEegDatasetsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -735,6 +738,7 @@ function App() {
     { id: 'data-config', label: 'Data Configuration' },
     { id: 'assessment-instruments', label: 'Assessment Instruments' },
     { id: 'stories-tests', label: 'Stories & Tests' },
+    { id: 'training-config', label: 'Training Config' },
     { id: 'ai-dark-factory', label: 'AI Dark Factory' },
     { id: 'report-layout', label: 'Report Layout' },
     { id: 'tab-taxonomy', label: 'Tab Taxonomy' },
@@ -746,9 +750,11 @@ function App() {
     { id: 'integrations-settings', label: 'Integrations Settings' },
     { id: 'data-sources-catalog', label: 'Data Sources Catalog' },
     { id: 'data-inventory', label: 'Data Inventory' },
+    { id: 'real-eeg-datasets', label: 'Real EEG Datasets' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
+    { id: 'training-config', label: 'Training Config' },
     { id: 'feature-gaps', label: 'Feature Gaps' },
     { id: 'enterprise-pipelines', label: 'Enterprise Pipelines' },
     { id: 'iot-devices', label: 'IoT Devices' },
@@ -2189,6 +2195,8 @@ function App() {
         return <ProductionIssuesDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
+      case 'training-config':
+        return <TrainingConfigDashboard />
       case 'feature-gaps':
         return <FeatureGapsDashboard />
       case 'enterprise-pipelines':
@@ -2773,6 +2781,8 @@ function App() {
         return <AssessmentInstrumentsDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
+      case 'training-config':
+        return <TrainingConfigDashboard />
       case 'report-layout':
         return <ReportLayoutDashboard />
       case 'ai-dark-factory':
@@ -2795,6 +2805,8 @@ function App() {
         return <DataSourcesCatalogDashboard />
       case 'data-inventory':
         return <DataInventoryDashboard />
+      case 'real-eeg-datasets':
+        return <RealEegDatasetsDashboard />
       default:
         return renderClassificationTab()
     }

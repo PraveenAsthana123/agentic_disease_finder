@@ -14367,6 +14367,50 @@ async def stories_tests_definitions():
     return _json_safe(std.definitions())
 
 
+# ── Training Configuration Dashboard ──────────────────────────────────
+@app.get("/api/training-config/overview")
+async def training_config_overview():
+    """Training Config overview — 7 diseases, 6 models, 47 features, performance targets."""
+    import scripts.training_config_dashboard as tcd
+    return _json_safe(tcd.overview())
+
+
+@app.get("/api/training-config/breakdown")
+async def training_config_breakdown():
+    """Training Config breakdown — per-disease data, features, models, training, validation."""
+    import scripts.training_config_dashboard as tcd
+    return _json_safe(tcd.breakdown())
+
+
+@app.get("/api/training-config/definitions")
+async def training_config_definitions():
+    """Training Config definitions — glossary, clinical notes, references."""
+    import scripts.training_config_dashboard as tcd
+    return _json_safe(tcd.definitions())
+
+
+# ── Real EEG Datasets Dashboard ───────────────────────────────────────
+@app.get("/api/real-eeg-datasets/overview")
+async def real_eeg_datasets_overview():
+    """Real EEG Datasets overview — 7 diseases, 6 additional, subjects/files/sizes/status."""
+    import scripts.real_eeg_datasets_dashboard as red
+    return _json_safe(red.overview())
+
+
+@app.get("/api/real-eeg-datasets/breakdown")
+async def real_eeg_datasets_breakdown():
+    """Real EEG Datasets breakdown — per-dataset paths, sources, formats, licenses."""
+    import scripts.real_eeg_datasets_dashboard as red
+    return _json_safe(red.breakdown())
+
+
+@app.get("/api/real-eeg-datasets/definitions")
+async def real_eeg_datasets_definitions():
+    """Real EEG Datasets definitions — glossary, clinical notes, references."""
+    import scripts.real_eeg_datasets_dashboard as red
+    return _json_safe(red.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
