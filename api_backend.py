@@ -14345,6 +14345,28 @@ async def data_inventory_definitions():
     return _json_safe(did.definitions())
 
 
+# ── Stories & Tests Dashboard ─────────────────────────────────────────
+@app.get("/api/stories-tests/overview")
+async def stories_tests_overview():
+    """Stories & Tests overview — 5 user stories, 3 demo stories, 9 test dimensions."""
+    import scripts.stories_tests_dashboard as std
+    return _json_safe(std.overview())
+
+
+@app.get("/api/stories-tests/breakdown")
+async def stories_tests_breakdown():
+    """Stories & Tests breakdown — per-story cards, per-dimension detail."""
+    import scripts.stories_tests_dashboard as std
+    return _json_safe(std.breakdown())
+
+
+@app.get("/api/stories-tests/definitions")
+async def stories_tests_definitions():
+    """Stories & Tests definitions — status legend, glossary, clinical notes."""
+    import scripts.stories_tests_dashboard as std
+    return _json_safe(std.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

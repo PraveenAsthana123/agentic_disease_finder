@@ -56,22 +56,35 @@ def overview():
         for persona, count in sorted(persona_counter.items(), key=lambda x: -x[1])
     ]
 
+    pct_built = round(built_dims / total_test_dims * 100) if total_test_dims else 0
+
+    # Dimension table for overview tab
+    dimension_table = [
+        {
+            "dim": t.get("dim", ""),
+            "tests": t.get("tests", ""),
+            "how": t.get("how", ""),
+            "status": t.get("status", "unknown"),
+        }
+        for t in testing
+    ]
+
     return {
         "available": True,
         "title": cfg.get("title", "User Stories & Testing Matrix"),
-        "kpis": {
+        "summary": {
             "total_user_stories": total_user_stories,
             "total_demo_stories": total_demo_stories,
-            "total_test_dims": total_test_dims,
-            "built_dims": built_dims,
-            "partial_dims": partial_dims,
+            "total_test_dimensions": total_test_dims,
+            "built": built_dims,
+            "partial": partial_dims,
+            "pct_built": pct_built,
             "personas": personas,
             "total_demo_time_estimate": total_demo_time_estimate,
         },
-        "user_stories": user_stories,
-        "demo_stories": demo_stories,
         "status_distribution": status_distribution,
         "persona_distribution": persona_distribution,
+        "dimension_table": dimension_table,
     }
 
 
@@ -83,9 +96,17 @@ def breakdown():
     if not cfg:
         return {"available": False, "note": "stories_and_tests.json missing"}
 
+    # Add title field to user stories (frontend expects s.title)
+    user_stories = []
+    for s in cfg.get("user_stories", []):
+        entry = dict(s)
+        if "title" not in entry:
+            entry["title"] = entry.get("persona", "")
+        user_stories.append(entry)
+
     return {
         "available": True,
-        "user_stories": cfg.get("user_stories", []),
+        "user_stories": user_stories,
         "demo_stories": cfg.get("demo_stories", []),
         "testing": cfg.get("testing", []),
     }
