@@ -416,6 +416,7 @@ import DataSourcesCatalogDashboard from './components/DataSourcesCatalogDashboar
 import DataInventoryDashboard from './components/DataInventoryDashboard'
 import RealEegDatasetsDashboard from './components/RealEegDatasetsDashboard'
 import DatasetsConfigDashboard from './components/DatasetsConfigDashboard'
+import EegAiRagPipelineDashboard from './components/EegAiRagPipelineDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -754,6 +755,7 @@ function App() {
     { id: 'data-inventory', label: 'Data Inventory' },
     { id: 'real-eeg-datasets', label: 'Real EEG Datasets' },
     { id: 'datasets-config', label: 'Datasets Config' },
+    { id: 'eeg-ai-rag-pipeline', label: 'EEG AI RAG Pipeline' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2815,6 +2817,8 @@ function App() {
         return <RealEegDatasetsDashboard />
       case 'datasets-config':
         return <DatasetsConfigDashboard />
+      case 'eeg-ai-rag-pipeline':
+        return <EegAiRagPipelineDashboard />
       default:
         return renderClassificationTab()
     }
