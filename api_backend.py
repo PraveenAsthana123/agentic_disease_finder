@@ -2246,6 +2246,7 @@ async def admin_dashboards():
         {"name": "Stories & Tests", "status": "built", "where": "/api/stories-tests"},
         {"name": "Simulations (per role)", "status": "catalog", "where": "/api/simulations"},
         {"name": "Portal Tabs", "status": "catalog", "where": "/api/portal-tabs"},
+        {"name": "Data Sources Catalog", "status": "catalog", "where": "/api/data-sources-catalog"},
     ]
     groups.append({"group": "Coverage Registries", "items": registries})
 
@@ -14298,6 +14299,28 @@ async def integrations_settings_definitions():
     """Integrations & Delivery Channels definitions — legend, glossary, notes."""
     import scripts.integrations_settings_dashboard as isd
     return _json_safe(isd.definitions())
+
+
+# ── Data Sources Catalog Dashboard ──────────────────────────────────────
+@app.get("/api/data-sources-catalog/overview")
+async def data_sources_catalog_overview():
+    """Data Sources Catalog overview — datasets, samples, features, splits."""
+    import scripts.data_sources_dashboard as dsd
+    return _json_safe(dsd.overview())
+
+
+@app.get("/api/data-sources-catalog/breakdown")
+async def data_sources_catalog_breakdown():
+    """Data Sources Catalog breakdown — internal, external, public, feature params."""
+    import scripts.data_sources_dashboard as dsd
+    return _json_safe(dsd.breakdown())
+
+
+@app.get("/api/data-sources-catalog/definitions")
+async def data_sources_catalog_definitions():
+    """Data Sources Catalog definitions — glossary, clinical notes, references."""
+    import scripts.data_sources_dashboard as dsd
+    return _json_safe(dsd.definitions())
 
 
 if __name__ == "__main__":
