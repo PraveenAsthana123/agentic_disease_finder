@@ -14323,6 +14323,28 @@ async def data_sources_catalog_definitions():
     return _json_safe(dsd.definitions())
 
 
+# ── Data Inventory Dashboard ───────────────────────────────────────────
+@app.get("/api/data-inventory/overview")
+async def data_inventory_overview():
+    """Data Inventory overview — per-disease EEG data, download status, disk usage."""
+    import scripts.data_inventory_dashboard as did
+    return _json_safe(did.overview())
+
+
+@app.get("/api/data-inventory/breakdown")
+async def data_inventory_breakdown():
+    """Data Inventory breakdown — per-disease paths, sources, formats, licenses."""
+    import scripts.data_inventory_dashboard as did
+    return _json_safe(did.breakdown())
+
+
+@app.get("/api/data-inventory/definitions")
+async def data_inventory_definitions():
+    """Data Inventory definitions — glossary, clinical notes, references."""
+    import scripts.data_inventory_dashboard as did
+    return _json_safe(did.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

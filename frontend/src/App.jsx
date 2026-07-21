@@ -410,6 +410,7 @@ import PortalTabsDashboard from './components/PortalTabsDashboard'
 import ExpertDashboardsCatalogDashboard from './components/ExpertDashboardsCatalogDashboard'
 import IntegrationsSettingsDashboard from './components/IntegrationsSettingsDashboard'
 import DataSourcesCatalogDashboard from './components/DataSourcesCatalogDashboard'
+import DataInventoryDashboard from './components/DataInventoryDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -744,6 +745,7 @@ function App() {
     { id: 'expert-dashboards-catalog', label: 'Expert Dashboards Catalog' },
     { id: 'integrations-settings', label: 'Integrations Settings' },
     { id: 'data-sources-catalog', label: 'Data Sources Catalog' },
+    { id: 'data-inventory', label: 'Data Inventory' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2791,6 +2793,8 @@ function App() {
         return <IntegrationsSettingsDashboard />
       case 'data-sources-catalog':
         return <DataSourcesCatalogDashboard />
+      case 'data-inventory':
+        return <DataInventoryDashboard />
       default:
         return renderClassificationTab()
     }
