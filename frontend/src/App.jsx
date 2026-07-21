@@ -397,6 +397,7 @@ import DashboardCatalogDashboard from './components/DashboardCatalogDashboard'
 import RoleDashboardsDashboard from './components/RoleDashboardsDashboard'
 import AgentTasksDashboard from './components/AgentTasksDashboard'
 import DatasetsDashboard from './components/DatasetsDashboard'
+import AssessmentInstrumentsDashboard from './components/AssessmentInstrumentsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -718,6 +719,7 @@ function App() {
     { id: 'role-dashboards', label: 'Role Dashboards' },
     { id: 'agent-tasks', label: 'Agent Tasks' },
     { id: 'datasets-registry', label: 'Datasets Registry' },
+    { id: 'assessment-instruments', label: 'Assessment Instruments' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
     { id: 'stories-tests', label: 'Stories & Tests' },
@@ -2739,6 +2741,8 @@ function App() {
         return <AgentTasksDashboard />
       case 'datasets-registry':
         return <DatasetsDashboard />
+      case 'assessment-instruments':
+        return <AssessmentInstrumentsDashboard />
       default:
         return renderClassificationTab()
     }

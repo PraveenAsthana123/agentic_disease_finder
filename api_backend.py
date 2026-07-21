@@ -13977,6 +13977,27 @@ async def datasets_definitions():
     return _json_safe(dd.definitions())
 
 
+@app.get("/api/assessment-instruments/overview")
+async def assessment_instruments_overview():
+    """Assessment instruments overview — KPIs, role/scoring distributions, max-score chart."""
+    import scripts.assessments_instruments_dashboard as aid
+    return _json_safe(aid.overview())
+
+
+@app.get("/api/assessment-instruments/breakdown")
+async def assessment_instruments_breakdown():
+    """Assessment instruments breakdown — per-instrument bands, domains, items, notes."""
+    import scripts.assessments_instruments_dashboard as aid
+    return _json_safe(aid.breakdown())
+
+
+@app.get("/api/assessment-instruments/definitions")
+async def assessment_instruments_definitions():
+    """Assessment instruments definitions — scoring legend, glossary, clinical notes, references."""
+    import scripts.assessments_instruments_dashboard as aid
+    return _json_safe(aid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
