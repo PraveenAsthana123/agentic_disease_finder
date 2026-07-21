@@ -13381,6 +13381,164 @@ async def expert_roles_definitions():
     return _json_safe(erd.definitions())
 
 
+# ── Assessment Catalog Dashboard ──────────────────────────────────────────
+@app.get("/api/assessment-catalog/overview")
+async def assessment_catalog_overview():
+    """Assessment Catalog overview — KPIs, status/priority distributions, per-category breakdown."""
+    p = Path(__file__).parent / "config" / "assessment_catalog.json"
+    data = json.loads(p.read_text()) if p.exists() else {"categories": [], "summary": {}}
+    categories = data.get("categories", [])
+    top10 = data.get("top10_for_thesis", [])
+    research_vars = data.get("research_variables", [])
+    summary = data.get("summary", {})
+
+    # Flatten all instruments
+    all_instruments = []
+    for cat in categories:
+        for item in cat.get("items", []):
+            all_instruments.append({**item, "category": cat.get("category", "")})
+
+    # Status counts
+    status_counts = {}
+    for inst in all_instruments:
+        s = inst.get("status", "unknown")
+        status_counts[s] = status_counts.get(s, 0) + 1
+
+    # Priority counts
+    priority_counts = {}
+    for inst in all_instruments:
+        pr = inst.get("priority", "unknown")
+        priority_counts[pr] = priority_counts.get(pr, 0) + 1
+
+    # Per-category summary
+    cat_data = []
+    for cat in categories:
+        items = cat.get("items", [])
+        built = sum(1 for i in items if i.get("status") == "built")
+        cat_data.append({
+            "category": cat.get("category", ""),
+            "total": len(items),
+            "built": built,
+            "specialists": list(set(i.get("specialist", "") for i in items)),
+        })
+
+    return {
+        "available": True,
+        "title": data.get("title", "Clinical Assessment Catalog"),
+        "note": data.get("note", ""),
+        "updated_at": data.get("updated_at", ""),
+        "kpis": {
+            "total_instruments": len(all_instruments),
+            "built": status_counts.get("built", 0),
+            "categories": len(categories),
+            "top10_for_thesis": len(top10),
+            "research_variables": len(research_vars),
+            "mandatory": priority_counts.get("mandatory", 0),
+            "specialists": len(set(i.get("specialist", "") for i in all_instruments)),
+        },
+        "status_distribution": [{"status": k, "count": v} for k, v in status_counts.items()],
+        "priority_distribution": [{"priority": k, "count": v} for k, v in priority_counts.items()],
+        "categories": cat_data,
+        "instruments": [{
+            "name": i.get("name", ""),
+            "purpose": i.get("purpose", ""),
+            "output": i.get("output", ""),
+            "specialist": i.get("specialist", ""),
+            "priority": i.get("priority", ""),
+            "status": i.get("status", ""),
+            "category": i.get("category", ""),
+            "in_top10": i.get("name", "") in top10,
+        } for i in all_instruments],
+        "top10_for_thesis": top10,
+        "honest_note": summary.get("honest_note", ""),
+    }
+
+
+@app.get("/api/assessment-catalog/breakdown")
+async def assessment_catalog_breakdown():
+    """Assessment Catalog breakdown — per-instrument detail with category and research variables."""
+    p = Path(__file__).parent / "config" / "assessment_catalog.json"
+    data = json.loads(p.read_text()) if p.exists() else {"categories": [], "research_variables": []}
+    categories = data.get("categories", [])
+    research_vars = data.get("research_variables", [])
+    top10 = data.get("top10_for_thesis", [])
+
+    instruments = []
+    for cat in categories:
+        for item in cat.get("items", []):
+            instruments.append({
+                "name": item.get("name", ""),
+                "purpose": item.get("purpose", ""),
+                "output": item.get("output", ""),
+                "specialist": item.get("specialist", ""),
+                "priority": item.get("priority", ""),
+                "status": item.get("status", ""),
+                "category": cat.get("category", ""),
+                "in_top10": item.get("name", "") in top10,
+                "endpoint": item.get("endpoint", ""),
+                "api": item.get("api", ""),
+                "frontend": item.get("frontend", ""),
+                "note": item.get("note", ""),
+            })
+
+    return {
+        "instruments": instruments,
+        "total": len(instruments),
+        "research_variables": [{
+            "variable": rv.get("variable", ""),
+            "priority": rv.get("priority", ""),
+        } for rv in research_vars],
+    }
+
+
+@app.get("/api/assessment-catalog/definitions")
+async def assessment_catalog_definitions():
+    """Assessment Catalog definitions — status legend, priority legend, glossary, references."""
+    return {
+        "status_legend": [
+            {"status": "built", "description": "Live in platform with endpoint and/or scoring"},
+            {"status": "cataloged", "description": "Collection target — instrument identified, data collected from hospital records"},
+        ],
+        "priority_legend": [
+            {"priority": "mandatory", "description": "Required for thesis — must have data for every patient"},
+            {"priority": "highly valuable", "description": "Strongly recommended — adds significant clinical value"},
+            {"priority": "very valuable", "description": "Important outcome measure for epilepsy research"},
+            {"priority": "valuable", "description": "Useful supporting measure — enriches analysis"},
+            {"priority": "preferred", "description": "Preferred when available — not required for core analysis"},
+        ],
+        "glossary": [
+            {"term": "MoCA", "definition": "Montreal Cognitive Assessment — 30-point screening for mild cognitive impairment"},
+            {"term": "MMSE", "definition": "Mini-Mental State Examination — 30-point global cognition screening"},
+            {"term": "PHQ-9", "definition": "Patient Health Questionnaire-9 — 27-point depression severity scale"},
+            {"term": "GAD-7", "definition": "Generalized Anxiety Disorder-7 — 21-point anxiety screening"},
+            {"term": "NDDI-E", "definition": "Neurological Disorders Depression Inventory for Epilepsy — depression screening specific to epilepsy"},
+            {"term": "QOLIE-31", "definition": "Quality of Life in Epilepsy-31 — 31-item epilepsy-specific QoL measure (0-100)"},
+            {"term": "C-SSRS", "definition": "Columbia Suicide Severity Rating Scale — structured suicide risk assessment"},
+            {"term": "BDI", "definition": "Beck Depression Inventory — 21-item depression severity measure"},
+            {"term": "COPM", "definition": "Canadian Occupational Performance Measure — client-centered outcome measure"},
+            {"term": "AMPS", "definition": "Assessment of Motor and Process Skills — OT functional assessment"},
+            {"term": "FIM", "definition": "Functional Independence Measure — 18-item disability severity (18-126)"},
+            {"term": "PSQI", "definition": "Pittsburgh Sleep Quality Index — 7-component sleep quality measure"},
+            {"term": "ILAE", "definition": "International League Against Epilepsy — standard seizure classification system"},
+            {"term": "ADL", "definition": "Activities of Daily Living — basic self-care tasks (bathing, dressing, feeding)"},
+            {"term": "SUDEP", "definition": "Sudden Unexpected Death in Epilepsy — leading cause of epilepsy-related mortality"},
+        ],
+        "clinical_notes": [
+            "All 26 instruments are validated clinical scales used in epilepsy care and research.",
+            "Top 10 for thesis are the primary outcome and predictor variables for the EEG AI study.",
+            "Research variables map to the minimum dataset required for retrospective analysis.",
+            "Priority tiers (mandatory > highly valuable > very valuable > valuable > preferred) guide data collection effort allocation.",
+        ],
+        "references": [
+            {"ref": "ILAE Commission (2017)", "detail": "Operational classification of seizure types — Epilepsia, 58(4), 522-530"},
+            {"ref": "Nasreddine et al. (2005)", "detail": "MoCA: A brief screening tool for mild cognitive impairment — JAGS, 53(4), 695-699"},
+            {"ref": "Cramer et al. (1998)", "detail": "Development of the QOLIE-31 — Epilepsia, 39(1), 81-88"},
+            {"ref": "Kroenke et al. (2001)", "detail": "PHQ-9: Validity of a brief depression severity measure — J Gen Intern Med, 16(9), 606-613"},
+            {"ref": "Gilliam et al. (2006)", "detail": "NDDI-E: Rapid detection of major depression in epilepsy — Lancet Neurol, 5(5), 399-405"},
+        ],
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
