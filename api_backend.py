@@ -13339,6 +13339,27 @@ async def eeg_ai_stack_definitions():
     return _json_safe(easd.definitions())
 
 
+@app.get("/api/role-specs/overview")
+async def role_specs_overview():
+    """Role Specs overview — 17-role registry KPIs, status/priority distribution, field counts, sections-per-role."""
+    import scripts.role_specs_dashboard as rsd
+    return _json_safe(rsd.overview())
+
+
+@app.get("/api/role-specs/breakdown")
+async def role_specs_breakdown():
+    """Role Specs breakdown — per-role detail cards with sections, endpoints, frontend refs."""
+    import scripts.role_specs_dashboard as rsd
+    return _json_safe(rsd.breakdown())
+
+
+@app.get("/api/role-specs/definitions")
+async def role_specs_definitions():
+    """Role Specs definitions — status/priority legend, glossary, clinical notes, references."""
+    import scripts.role_specs_dashboard as rsd
+    return _json_safe(rsd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

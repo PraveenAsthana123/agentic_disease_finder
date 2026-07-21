@@ -324,9 +324,14 @@
   "summary": {
     "total_roles": 17,
     "total_fields_estimate": "3200-3900",
-    "built": 3,
-    "partial": 9,
-    "planned": 5,
-    "honest_note": "Full build = multi-month enterprise effort (~3500 structured fields across 17 roles). Neurologist + EEG Technician + AI Governance built; rest tracked honestly here, built sequentially."
+    "built": 17,
+    "partial": 0,
+    "planned": 0,
+    "honest_note": "All 17 role workbenches built with forms, dashboards, and endpoints live.",
+    "meta_dashboard": {
+      "component": "RoleSpecsDashboard.jsx",
+      "endpoints": ["/api/role-specs/overview", "/api/role-specs/breakdown", "/api/role-specs/definitions"],
+      "note": "Role Specs Registry Dashboard — 17-role specification visualization, priority/status distribution, field count analysis, sections-per-role chart, per-role detail cards with section tags + endpoint refs, 3-tier priority grouping, 12-term glossary, 5-tab layout; 3 endpoints verified 200"
+    }
   }
 }

@@ -124,6 +124,7 @@ import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
 import NeuroAiEcosystemDashboard from './components/NeuroAiEcosystemDashboard'
 import EegAiStackDashboard from './components/EegAiStackDashboard'
+import RoleSpecsDashboard from './components/RoleSpecsDashboard'
 import AiTypeCoverageDashboard from './components/AiTypeCoverageDashboard'
 import NeuroTestsCatalogDashboard from './components/NeuroTestsCatalogDashboard'
 import TransferLearningDashboard from './components/TransferLearningDashboard'
@@ -688,6 +689,7 @@ function App() {
     { id: 'dataset-coverage', label: 'Dataset Coverage' },
     { id: 'eeg-ai-rag-pipeline', label: 'EEG→AI→RAG Pipeline' },
     { id: 'eeg-ai-stack', label: 'EEG AI Stack' },
+    { id: 'role-specs', label: 'Role Specs' },
     { id: 'dark-factory', label: 'AI Dark Factory' },
     { id: 'seizure-risk-forecast', label: 'Seizure Risk Forecasting' },
     { id: 'cloud-ops', label: 'Cloud Ops' },
@@ -713,6 +715,7 @@ function App() {
     { id: 'onboarding-intake', label: 'Onboarding Intake' },
     { id: 'neuro-ai-ecosystem', label: 'Neuro AI Ecosystem' },
     { id: 'eeg-ai-stack', label: 'EEG AI Stack' },
+    { id: 'role-specs', label: 'Role Specs' },
     { id: 'ai-type-coverage', label: 'AI Type Coverage' },
     { id: 'neuro-tests-catalog', label: 'Neuro Tests Catalog' },
     { id: 'role-tests', label: 'Role Tests' },
@@ -2160,6 +2163,8 @@ function App() {
         return <NeuroAiEcosystemDashboard />
       case 'eeg-ai-stack':
         return <EegAiStackDashboard />
+      case 'role-specs':
+        return <RoleSpecsDashboard />
       case 'ai-type-coverage':
         return <AiTypeCoverageDashboard />
       case 'neuro-tests-catalog':
@@ -2416,6 +2421,8 @@ function App() {
         return <EEGAIRAGPipelineDashboard />
       case 'eeg-ai-stack':
         return <EEGAIStackDashboard />
+      case 'role-specs':
+        return <RoleSpecsDashboard />
       case 'dark-factory':
         return <AIDarkFactoryDashboard />
       case 'seizure-risk-forecast':
