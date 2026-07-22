@@ -932,7 +932,23 @@ function App() {
     { id: 'council-of-agents', label: 'Council of Agents' },
     { id: 'data-requirements', label: 'Data Requirements' },
     { id: 'neuro-advancements', label: 'Neuro Advancements' },
-    { id: 'process-simulations', label: 'Process Simulations' }
+    { id: 'process-simulations', label: 'Process Simulations' },
+    { id: 'gad7-dashboard', label: 'GAD-7 Anxiety' },
+    { id: 'phq9-dashboard', label: 'PHQ-9 Depression' },
+    { id: 'cssrs-dashboard', label: 'C-SSRS Suicide Risk' },
+    { id: 'qolie31-dashboard', label: 'QOLIE-31 Quality of Life' },
+    { id: 'epworth-dashboard', label: 'Epworth Sleepiness' },
+    { id: 'fim-dashboard', label: 'FIM Functional Independence' },
+    { id: 'copm-dashboard', label: 'COPM Occupational' },
+    { id: 'wais-dashboard', label: 'WAIS Cognitive' },
+    { id: 'digit-span-dashboard', label: 'Digit Span Memory' },
+    { id: 'amps-dashboard', label: 'AMPS Motor Skills' },
+    { id: 'consent-dashboard', label: 'Consent Tracking' },
+    { id: 'integration-dashboard', label: 'Integration Status' },
+    { id: 'responsible-ai-dashboard', label: 'Responsible AI' },
+    { id: 'seizure-diary-dashboard', label: 'Seizure Diary' },
+    { id: 'seizure-severity-dashboard', label: 'Seizure Severity' },
+    { id: 'xai-dashboard', label: 'XAI Explanations' }
   ]
 
   // API Calls
@@ -2823,6 +2839,38 @@ function App() {
         return <DatasetsConfigDashboard />
       case 'eeg-ai-rag-pipeline':
         return <EegAiRagPipelineDashboard />
+      case 'gad7-dashboard':
+        return <GAD7Dashboard />
+      case 'phq9-dashboard':
+        return <PHQ9Dashboard />
+      case 'cssrs-dashboard':
+        return <CSSRSDashboard />
+      case 'qolie31-dashboard':
+        return <QOLIE31Dashboard />
+      case 'epworth-dashboard':
+        return <EpworthDashboard />
+      case 'fim-dashboard':
+        return <FIMDashboard />
+      case 'copm-dashboard':
+        return <COPMDashboard />
+      case 'wais-dashboard':
+        return <WAISDashboard />
+      case 'digit-span-dashboard':
+        return <DigitSpanDashboard />
+      case 'amps-dashboard':
+        return <AMPSDashboard />
+      case 'consent-dashboard':
+        return <ConsentDashboard />
+      case 'integration-dashboard':
+        return <IntegrationDashboard />
+      case 'responsible-ai-dashboard':
+        return <ResponsibleAIDashboard />
+      case 'seizure-diary-dashboard':
+        return <SeizureDiaryDashboard />
+      case 'seizure-severity-dashboard':
+        return <SeizureSeverityDashboard />
+      case 'xai-dashboard':
+        return <XAIDashboard />
       default:
         return renderClassificationTab()
     }
