@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const OK_COLOR = '#10b981'
 const WARN_COLOR = '#f59e0b'
@@ -68,9 +68,9 @@ export default function TrustAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/trust-ai/overview`),
-      axios.get(`${API}/trust-ai/breakdown`),
-      axios.get(`${API}/trust-ai/definitions`),
+      axios.get(`${API}/api/trust-ai/overview`),
+      axios.get(`${API}/api/trust-ai/breakdown`),
+      axios.get(`${API}/api/trust-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

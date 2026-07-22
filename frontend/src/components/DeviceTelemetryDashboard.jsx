@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function Card({ title, children, span }) {
@@ -81,9 +81,9 @@ export default function DeviceTelemetryDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/device-telemetry/overview`),
-      axios.get(`${API}/device-telemetry/breakdown`),
-      axios.get(`${API}/device-telemetry/definitions`),
+      axios.get(`${API}/api/device-telemetry/overview`),
+      axios.get(`${API}/api/device-telemetry/breakdown`),
+      axios.get(`${API}/api/device-telemetry/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setError(e.message))

@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -59,9 +59,9 @@ export default function BiasDetectionDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/bias-detection/overview`),
-      axios.get(`${API}/bias-detection/breakdown`),
-      axios.get(`${API}/bias-detection/definitions`),
+      axios.get(`${API}/api/bias-detection/overview`),
+      axios.get(`${API}/api/bias-detection/breakdown`),
+      axios.get(`${API}/api/bias-detection/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -52,9 +52,9 @@ export default function AIObservabilityDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/ai-observability/overview`),
-      axios.get(`${API}/ai-observability/breakdown`),
-      axios.get(`${API}/ai-observability/definitions`),
+      axios.get(`${API}/api/ai-observability/overview`),
+      axios.get(`${API}/api/ai-observability/breakdown`),
+      axios.get(`${API}/api/ai-observability/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

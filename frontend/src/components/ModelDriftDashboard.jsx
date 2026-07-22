@@ -5,7 +5,7 @@ import {
   LineChart, Line, ReferenceLine, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -50,9 +50,9 @@ export default function ModelDriftDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/model-drift/overview`),
-      axios.get(`${API}/model-drift/breakdown`),
-      axios.get(`${API}/model-drift/definitions`),
+      axios.get(`${API}/api/model-drift/overview`),
+      axios.get(`${API}/api/model-drift/breakdown`),
+      axios.get(`${API}/api/model-drift/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

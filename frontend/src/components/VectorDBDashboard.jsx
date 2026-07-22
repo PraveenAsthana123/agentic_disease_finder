@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -61,10 +61,10 @@ export default function VectorDBDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/vector-db/overview`),
-      axios.get(`${API}/vector-db/collections`),
-      axios.get(`${API}/vector-db/operations`),
-      axios.get(`${API}/vector-db/definitions`),
+      axios.get(`${API}/api/vector-db/overview`),
+      axios.get(`${API}/api/vector-db/collections`),
+      axios.get(`${API}/api/vector-db/operations`),
+      axios.get(`${API}/api/vector-db/definitions`),
     ])
       .then(([ov, col, ops, df]) => {
         setOverview(ov.data)

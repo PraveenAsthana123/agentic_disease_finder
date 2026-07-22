@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const RISK_COLORS = { high: '#ef4444', medium: '#f59e0b', low: '#10b981' }
 
@@ -53,9 +53,9 @@ export default function ChangeManagementDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/change-management/overview`),
-      axios.get(`${API}/change-management/breakdown`),
-      axios.get(`${API}/change-management/definitions`),
+      axios.get(`${API}/api/change-management/overview`),
+      axios.get(`${API}/api/change-management/breakdown`),
+      axios.get(`${API}/api/change-management/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setError(e.message))

@@ -5,7 +5,7 @@ import {
   LineChart, Line, PieChart, Pie, Cell, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -53,9 +53,9 @@ export default function PromptDriftDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/prompt-drift/overview`),
-      axios.get(`${API}/prompt-drift/breakdown`),
-      axios.get(`${API}/prompt-drift/definitions`),
+      axios.get(`${API}/api/prompt-drift/overview`),
+      axios.get(`${API}/api/prompt-drift/breakdown`),
+      axios.get(`${API}/api/prompt-drift/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

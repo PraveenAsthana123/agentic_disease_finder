@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#8b5cf6', '#ef4444', '#06b6d4', '#ec4899', '#eab308']
 const SCHEDULE_COLORS = { Hourly: '#3b82f6', Daily: '#22c55e', Other: '#f97316' }
 
@@ -51,9 +51,9 @@ export default function ScheduledJobsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/scheduled-jobs/overview`),
-      axios.get(`${API}/scheduled-jobs/breakdown`),
-      axios.get(`${API}/scheduled-jobs/definitions`),
+      axios.get(`${API}/api/scheduled-jobs/overview`),
+      axios.get(`${API}/api/scheduled-jobs/breakdown`),
+      axios.get(`${API}/api/scheduled-jobs/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

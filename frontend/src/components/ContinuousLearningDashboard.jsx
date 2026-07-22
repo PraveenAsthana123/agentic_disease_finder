@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -52,9 +52,9 @@ export default function ContinuousLearningDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/continuous-learning/overview`),
-      axios.get(`${API}/continuous-learning/breakdown`),
-      axios.get(`${API}/continuous-learning/definitions`),
+      axios.get(`${API}/api/continuous-learning/overview`),
+      axios.get(`${API}/api/continuous-learning/breakdown`),
+      axios.get(`${API}/api/continuous-learning/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

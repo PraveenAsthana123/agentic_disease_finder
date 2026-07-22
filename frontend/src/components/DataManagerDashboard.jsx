@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', partial: '#f97316', planned: '#94a3b8' }
 
@@ -56,9 +56,9 @@ export default function DataManagerDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/data-manager/overview`),
-      axios.get(`${API}/data-manager/breakdown`),
-      axios.get(`${API}/data-manager/definitions`),
+      axios.get(`${API}/api/data-manager/overview`),
+      axios.get(`${API}/api/data-manager/breakdown`),
+      axios.get(`${API}/api/data-manager/definitions`),
     ]).then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setErr(e.message))
   }, [])

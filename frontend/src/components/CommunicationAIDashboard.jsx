@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -66,9 +66,9 @@ export default function CommunicationAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/communication-ai/overview`),
-      axios.get(`${API}/communication-ai/breakdown`),
-      axios.get(`${API}/communication-ai/definitions`),
+      axios.get(`${API}/api/communication-ai/overview`),
+      axios.get(`${API}/api/communication-ai/breakdown`),
+      axios.get(`${API}/api/communication-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

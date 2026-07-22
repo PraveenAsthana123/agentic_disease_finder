@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const SEV_COLORS = { low: '#10b981', medium: '#f59e0b', high: '#ef4444' }
 const STATUS_COLORS = { active: '#10b981', archived: '#94a3b8' }
@@ -68,9 +68,9 @@ export default function LLMOpsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/llmops/overview`),
-      axios.get(`${API}/llmops/breakdown`),
-      axios.get(`${API}/llmops/definitions`),
+      axios.get(`${API}/api/llmops/overview`),
+      axios.get(`${API}/api/llmops/breakdown`),
+      axios.get(`${API}/api/llmops/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setError(e.message))

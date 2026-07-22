@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const OK = '#10b981'
 const WARN = '#f59e0b'
@@ -64,9 +64,9 @@ export default function EthicalAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/ethical-ai/overview`),
-      axios.get(`${API}/ethical-ai/breakdown`),
-      axios.get(`${API}/ethical-ai/definitions`),
+      axios.get(`${API}/api/ethical-ai/overview`),
+      axios.get(`${API}/api/ethical-ai/breakdown`),
+      axios.get(`${API}/api/ethical-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

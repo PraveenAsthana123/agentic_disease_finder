@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#8b5cf6', '#ef4444', '#06b6d4', '#ec4899', '#eab308', '#14b8a6', '#f43f5e', '#a855f7']
 const STATUS_COLORS = { built: '#22c55e', planned: '#f97316', unknown: '#94a3b8' }
 
@@ -49,9 +49,9 @@ export default function AgentTasksDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/agent-tasks/overview`),
-      axios.get(`${API}/agent-tasks/breakdown`),
-      axios.get(`${API}/agent-tasks/definitions`),
+      axios.get(`${API}/api/agent-tasks/overview`),
+      axios.get(`${API}/api/agent-tasks/breakdown`),
+      axios.get(`${API}/api/agent-tasks/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

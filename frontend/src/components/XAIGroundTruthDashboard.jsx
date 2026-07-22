@@ -6,7 +6,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line, AreaChart, Area
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4']
 const BLUE = '#3b82f6'
 const GREEN = '#10b981'
@@ -76,11 +76,11 @@ export default function XAIGroundTruthDashboard() {
       setLoading(true)
       try {
         const [ov, co, fe, pa, de] = await Promise.all([
-          axios.get(`${API}/xai-groundtruth/overview`),
-          axios.get(`${API}/xai-groundtruth/concordance`),
-          axios.get(`${API}/xai-groundtruth/features`),
-          axios.get(`${API}/xai-groundtruth/patients`),
-          axios.get(`${API}/xai-groundtruth/definitions`),
+          axios.get(`${API}/api/xai-groundtruth/overview`),
+          axios.get(`${API}/api/xai-groundtruth/concordance`),
+          axios.get(`${API}/api/xai-groundtruth/features`),
+          axios.get(`${API}/api/xai-groundtruth/patients`),
+          axios.get(`${API}/api/xai-groundtruth/definitions`),
         ])
         setOverview(ov.data)
         setConcordance(co.data)

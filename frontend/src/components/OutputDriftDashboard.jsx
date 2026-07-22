@@ -5,7 +5,7 @@ import {
   ReferenceLine, LineChart, Line, PieChart, Pie, Cell
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function Card({ title, children, span }) {
@@ -51,9 +51,9 @@ export default function OutputDriftDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/output-drift/overview`),
-      axios.get(`${API}/output-drift/breakdown`),
-      axios.get(`${API}/output-drift/definitions`),
+      axios.get(`${API}/api/output-drift/overview`),
+      axios.get(`${API}/api/output-drift/breakdown`),
+      axios.get(`${API}/api/output-drift/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

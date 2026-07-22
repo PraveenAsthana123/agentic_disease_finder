@@ -6,7 +6,7 @@ import {
   PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -57,9 +57,9 @@ export default function AILifecycleDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/ai-lifecycle/overview`),
-      axios.get(`${API}/ai-lifecycle/breakdown`),
-      axios.get(`${API}/ai-lifecycle/definitions`),
+      axios.get(`${API}/api/ai-lifecycle/overview`),
+      axios.get(`${API}/api/ai-lifecycle/breakdown`),
+      axios.get(`${API}/api/ai-lifecycle/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

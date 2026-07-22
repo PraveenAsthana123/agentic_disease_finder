@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -54,9 +54,9 @@ export default function DeepLearningDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/deep-learning/overview`),
-      axios.get(`${API}/deep-learning/breakdown`),
-      axios.get(`${API}/deep-learning/definitions`),
+      axios.get(`${API}/api/deep-learning/overview`),
+      axios.get(`${API}/api/deep-learning/breakdown`),
+      axios.get(`${API}/api/deep-learning/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

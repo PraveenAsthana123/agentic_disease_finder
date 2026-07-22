@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis, LineChart, Line, ScatterChart, Scatter, ZAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -62,9 +62,9 @@ export default function CausalAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/causal-ai/overview`),
-      axios.get(`${API}/causal-ai/breakdown`),
-      axios.get(`${API}/causal-ai/definitions`),
+      axios.get(`${API}/api/causal-ai/overview`),
+      axios.get(`${API}/api/causal-ai/breakdown`),
+      axios.get(`${API}/api/causal-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

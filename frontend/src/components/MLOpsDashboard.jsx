@@ -5,7 +5,7 @@ import {
   LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const OK_COLOR = '#10b981'
 const WARN_COLOR = '#f59e0b'
@@ -64,9 +64,9 @@ export default function MLOpsDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/mlops/overview`),
-      axios.get(`${API}/mlops/breakdown`),
-      axios.get(`${API}/mlops/definitions`),
+      axios.get(`${API}/api/mlops/overview`),
+      axios.get(`${API}/api/mlops/breakdown`),
+      axios.get(`${API}/api/mlops/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

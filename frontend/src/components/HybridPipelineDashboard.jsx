@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function Card({ title, children, span }) {
@@ -52,9 +52,9 @@ export default function HybridPipelineDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/hybrid-pipeline/overview`),
-      axios.get(`${API}/hybrid-pipeline/breakdown`),
-      axios.get(`${API}/hybrid-pipeline/definitions`),
+      axios.get(`${API}/api/hybrid-pipeline/overview`),
+      axios.get(`${API}/api/hybrid-pipeline/breakdown`),
+      axios.get(`${API}/api/hybrid-pipeline/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setError(e.message))

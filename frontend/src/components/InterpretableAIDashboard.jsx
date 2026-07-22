@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis, ScatterChart, Scatter, ZAxis, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -58,9 +58,9 @@ export default function InterpretableAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/interpretable-ai/overview`),
-      axios.get(`${API}/interpretable-ai/breakdown`),
-      axios.get(`${API}/interpretable-ai/definitions`),
+      axios.get(`${API}/api/interpretable-ai/overview`),
+      axios.get(`${API}/api/interpretable-ai/breakdown`),
+      axios.get(`${API}/api/interpretable-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

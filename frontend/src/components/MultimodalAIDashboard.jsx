@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis, LineChart, Line, Legend
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -68,9 +68,9 @@ export default function MultimodalAIDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/multimodal-ai/overview`),
-      axios.get(`${API}/multimodal-ai/breakdown`),
-      axios.get(`${API}/multimodal-ai/definitions`),
+      axios.get(`${API}/api/multimodal-ai/overview`),
+      axios.get(`${API}/api/multimodal-ai/breakdown`),
+      axios.get(`${API}/api/multimodal-ai/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

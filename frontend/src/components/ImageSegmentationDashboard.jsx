@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -60,9 +60,9 @@ export default function ImageSegmentationDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/image-segmentation/overview`),
-      axios.get(`${API}/image-segmentation/breakdown`),
-      axios.get(`${API}/image-segmentation/definitions`),
+      axios.get(`${API}/api/image-segmentation/overview`),
+      axios.get(`${API}/api/image-segmentation/breakdown`),
+      axios.get(`${API}/api/image-segmentation/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

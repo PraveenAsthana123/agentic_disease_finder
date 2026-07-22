@@ -6,7 +6,7 @@ import {
   Treemap
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4',
   '#e91e63', '#8bc34a', '#ff5722', '#607d8b', '#9c27b0', '#cddc39']
@@ -67,9 +67,9 @@ export default function KnowledgeGraphDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/knowledge-graph/overview`),
-      axios.get(`${API}/knowledge-graph/breakdown`),
-      axios.get(`${API}/knowledge-graph/definitions`),
+      axios.get(`${API}/api/knowledge-graph/overview`),
+      axios.get(`${API}/api/knowledge-graph/breakdown`),
+      axios.get(`${API}/api/knowledge-graph/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

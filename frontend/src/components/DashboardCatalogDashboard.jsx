@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#8b5cf6', '#ef4444', '#06b6d4', '#ec4899', '#eab308']
 const STATUS_COLORS = { Built: '#22c55e', Partial: '#f97316', Planned: '#94a3b8', Unknown: '#cbd5e1' }
 
@@ -44,9 +44,9 @@ export default function DashboardCatalogDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/dashboard-catalog/overview`),
-      axios.get(`${API}/dashboard-catalog/breakdown`),
-      axios.get(`${API}/dashboard-catalog/definitions`),
+      axios.get(`${API}/api/dashboard-catalog/overview`),
+      axios.get(`${API}/api/dashboard-catalog/breakdown`),
+      axios.get(`${API}/api/dashboard-catalog/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

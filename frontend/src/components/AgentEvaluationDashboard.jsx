@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const C = ['#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#64748b','#84cc16','#f97316']
 
 function fmt(v) { return v == null ? '--' : typeof v === 'number' ? v.toLocaleString() : String(v) }
@@ -24,9 +24,9 @@ export default function AgentEvaluationDashboard() {
       setLoading(true)
       try {
         const [o, b, d] = await Promise.all([
-          axios.get(`${API}/agent-eval/overview`),
-          axios.get(`${API}/agent-eval/breakdown`),
-          axios.get(`${API}/agent-eval/definitions`)
+          axios.get(`${API}/api/agent-eval/overview`),
+          axios.get(`${API}/api/agent-eval/breakdown`),
+          axios.get(`${API}/api/agent-eval/definitions`)
         ])
         setOv(o.data); setBr(b.data); setDefs(d.data)
       } catch (e) { setError(e.message || 'Failed to load agent evaluation data') }

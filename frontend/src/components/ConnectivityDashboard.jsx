@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function Card({ title, children, span }) {
@@ -52,9 +52,9 @@ export default function ConnectivityDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API}/connectivity/overview`),
-      axios.get(`${API}/connectivity/breakdown`),
-      axios.get(`${API}/connectivity/definitions`),
+      axios.get(`${API}/api/connectivity/overview`),
+      axios.get(`${API}/api/connectivity/breakdown`),
+      axios.get(`${API}/api/connectivity/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDf(d.data) })
       .catch(e => setError(e.message))

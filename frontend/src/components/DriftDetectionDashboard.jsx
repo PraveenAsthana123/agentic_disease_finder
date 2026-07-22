@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line, ScatterChart, Scatter, ZAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -60,9 +60,9 @@ export default function DriftDetectionDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/drift-detection/overview`),
-      axios.get(`${API}/drift-detection/breakdown`),
-      axios.get(`${API}/drift-detection/definitions`),
+      axios.get(`${API}/api/drift-detection/overview`),
+      axios.get(`${API}/api/drift-detection/breakdown`),
+      axios.get(`${API}/api/drift-detection/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

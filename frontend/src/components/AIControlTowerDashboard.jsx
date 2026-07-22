@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -58,9 +58,9 @@ export default function AIControlTowerDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/ai-control-tower/overview`),
-      axios.get(`${API}/ai-control-tower/breakdown`),
-      axios.get(`${API}/ai-control-tower/definitions`),
+      axios.get(`${API}/api/ai-control-tower/overview`),
+      axios.get(`${API}/api/ai-control-tower/breakdown`),
+      axios.get(`${API}/api/ai-control-tower/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

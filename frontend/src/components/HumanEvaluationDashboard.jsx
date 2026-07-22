@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -55,9 +55,9 @@ export default function HumanEvaluationDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/human-evaluation/overview`),
-      axios.get(`${API}/human-evaluation/breakdown`),
-      axios.get(`${API}/human-evaluation/definitions`),
+      axios.get(`${API}/api/human-evaluation/overview`),
+      axios.get(`${API}/api/human-evaluation/breakdown`),
+      axios.get(`${API}/api/human-evaluation/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

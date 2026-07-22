@@ -6,7 +6,7 @@ import {
   PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -51,9 +51,9 @@ export default function FeatureDriftDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/feature-drift/overview`),
-      axios.get(`${API}/feature-drift/breakdown`),
-      axios.get(`${API}/feature-drift/definitions`),
+      axios.get(`${API}/api/feature-drift/overview`),
+      axios.get(`${API}/api/feature-drift/breakdown`),
+      axios.get(`${API}/api/feature-drift/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

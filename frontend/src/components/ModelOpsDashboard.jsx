@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const STATUS_COLORS = { production: '#10b981', staging: '#f59e0b', not_deployed: '#94a3b8' }
 const DRIFT_COLORS = { none: '#10b981', info: '#3b82f6', warning: '#f59e0b', critical: '#ef4444' }
@@ -64,9 +64,9 @@ export default function ModelOpsDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/model-ops/overview`),
-      axios.get(`${API}/model-ops/breakdown`),
-      axios.get(`${API}/model-ops/definitions`),
+      axios.get(`${API}/api/model-ops/overview`),
+      axios.get(`${API}/api/model-ops/breakdown`),
+      axios.get(`${API}/api/model-ops/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

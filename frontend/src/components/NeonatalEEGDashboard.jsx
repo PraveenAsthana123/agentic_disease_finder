@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -55,9 +55,9 @@ export default function NeonatalEEGDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/neonatal-eeg/overview`),
-      axios.get(`${API}/neonatal-eeg/breakdown`),
-      axios.get(`${API}/neonatal-eeg/definitions`),
+      axios.get(`${API}/api/neonatal-eeg/overview`),
+      axios.get(`${API}/api/neonatal-eeg/breakdown`),
+      axios.get(`${API}/api/neonatal-eeg/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

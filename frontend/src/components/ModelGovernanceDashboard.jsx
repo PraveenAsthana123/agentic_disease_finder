@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line
 } from 'recharts'
 
-const API = '/api'
+const API = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 function Card({ title, children, span }) {
   return (
@@ -53,9 +53,9 @@ export default function ModelGovernanceDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API}/model-governance/overview`),
-      axios.get(`${API}/model-governance/breakdown`),
-      axios.get(`${API}/model-governance/definitions`),
+      axios.get(`${API}/api/model-governance/overview`),
+      axios.get(`${API}/api/model-governance/breakdown`),
+      axios.get(`${API}/api/model-governance/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)
