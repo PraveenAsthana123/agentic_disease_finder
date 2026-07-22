@@ -418,6 +418,7 @@ import RealEegDatasetsDashboard from './components/RealEegDatasetsDashboard'
 import DatasetsConfigDashboard from './components/DatasetsConfigDashboard'
 import EegAiRagPipelineDashboard from './components/EegAiRagPipelineDashboard'
 import SleepStageAnalysisDashboard from './components/SleepStageAnalysisDashboard'
+import InboxDashboard from './components/InboxDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -948,7 +949,8 @@ function App() {
     { id: 'responsible-ai-dashboard', label: 'Responsible AI' },
     { id: 'seizure-diary-dashboard', label: 'Seizure Diary' },
     { id: 'seizure-severity-dashboard', label: 'Seizure Severity' },
-    { id: 'xai-dashboard', label: 'XAI Explanations' }
+    { id: 'xai-dashboard', label: 'XAI Explanations' },
+    { id: 'inbox', label: 'Message Inbox' }
   ]
 
   // API Calls
@@ -2871,6 +2873,8 @@ function App() {
         return <SeizureSeverityDashboard />
       case 'xai-dashboard':
         return <XAIDashboard />
+      case 'inbox':
+        return <InboxDashboard />
       default:
         return renderClassificationTab()
     }
