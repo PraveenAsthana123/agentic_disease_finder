@@ -419,6 +419,7 @@ import DatasetsConfigDashboard from './components/DatasetsConfigDashboard'
 import EegAiRagPipelineDashboard from './components/EegAiRagPipelineDashboard'
 import SleepStageAnalysisDashboard from './components/SleepStageAnalysisDashboard'
 import InboxDashboard from './components/InboxDashboard'
+import NotificationsDashboard from './components/NotificationsDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -950,7 +951,8 @@ function App() {
     { id: 'seizure-diary-dashboard', label: 'Seizure Diary' },
     { id: 'seizure-severity-dashboard', label: 'Seizure Severity' },
     { id: 'xai-dashboard', label: 'XAI Explanations' },
-    { id: 'inbox', label: 'Message Inbox' }
+    { id: 'inbox', label: 'Message Inbox' },
+    { id: 'notifications', label: 'Notification Centre' }
   ]
 
   // API Calls
@@ -2875,6 +2877,8 @@ function App() {
         return <XAIDashboard />
       case 'inbox':
         return <InboxDashboard />
+      case 'notifications':
+        return <NotificationsDashboard />
       default:
         return renderClassificationTab()
     }
