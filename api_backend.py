@@ -12435,29 +12435,7 @@ async def regulatory_definitions():
     return _json_safe(regd.definitions())
 
 
-# ── Seizure Trigger Log Dashboard ──────────────────────────────────────
-# Real data: seizure_trigger_logs (203 rows, 40 patients, 9 trigger types).
-# Tracks daily seizure triggers, sleep, stress, medication adherence.
-
-@app.get("/api/trigger-logs/overview")
-async def trigger_logs_overview():
-    """Trigger log overview — seizure trigger KPIs, trigger distribution, monthly trends, lifestyle averages."""
-    import scripts.trigger_log_dashboard as tld
-    return _json_safe(tld.overview())
-
-
-@app.get("/api/trigger-logs/breakdown")
-async def trigger_logs_breakdown():
-    """Trigger log breakdown — high risk days, adherence issues, per-patient summary, recent logs."""
-    import scripts.trigger_log_dashboard as tld
-    return _json_safe(tld.breakdown())
-
-
-@app.get("/api/trigger-logs/definitions")
-async def trigger_logs_definitions():
-    """Trigger log definitions — trigger descriptions, field descriptions, clinical notes, glossary."""
-    import scripts.trigger_log_dashboard as tld
-    return _json_safe(tld.definitions())
+# (Duplicate trigger-logs block removed — canonical endpoints at line ~12337)
 
 
 # ── HIPAA Audit Pack Dashboard ─────────────────────────────────────────

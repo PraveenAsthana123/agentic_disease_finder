@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function fmt(v) {
@@ -72,9 +72,9 @@ export default function TriggerLogDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/trigger-logs/overview`),
-          axios.get(`${API_URL}/trigger-logs/breakdown`),
-          axios.get(`${API_URL}/trigger-logs/definitions`)
+          axios.get(`${API_URL}/api/trigger-logs/overview`),
+          axios.get(`${API_URL}/api/trigger-logs/breakdown`),
+          axios.get(`${API_URL}/api/trigger-logs/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)
