@@ -64,9 +64,9 @@
       "id": "voice_ai",
       "name": "Voice AI intake",
       "purpose": "Patient answers assessment by voice (STT \u2192 structured)",
-      "status": "partial",
+      "status": "built",
       "config": "Whisper STT (local) + form mapping",
-      "note": "STT available; assessment-mapping planned"
+      "note": "STT + assessment-mapping dashboard built (Voice Assessment Mapping — 3 endpoints, 5-tab frontend)"
     },
     {
       "id": "conversational_ai",

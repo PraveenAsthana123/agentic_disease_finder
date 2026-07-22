@@ -200,6 +200,7 @@ import ObjectDetectionDashboard from './components/ObjectDetectionDashboard'
 import YOLODetectionDashboard from './components/YOLODetectionDashboard'
 import SpeechAIDashboard from './components/SpeechAIDashboard'
 import VoiceAIDashboard from './components/VoiceAIDashboard'
+import VoiceAssessmentMappingDashboard from './components/VoiceAssessmentMappingDashboard'
 import TextToAudioDashboard from './components/TextToAudioDashboard'
 import TextToVideoDashboard from './components/TextToVideoDashboard'
 import ConversationalAIDashboard from './components/ConversationalAIDashboard'
@@ -678,6 +679,7 @@ function App() {
     { id: 'yolo-detection', label: 'YOLO Detection' },
     { id: 'speech-ai', label: 'Speech AI' },
     { id: 'voice-ai', label: 'Voice AI' },
+    { id: 'voice-assessment-mapping', label: 'Voice Assessment Mapping' },
     { id: 'text-to-audio', label: 'Text-to-Audio AI' },
     { id: 'text-to-video', label: 'Text-to-Video AI' },
     { id: 'cognitive-profile', label: 'Cognitive Profile Summary' },
@@ -2419,6 +2421,8 @@ function App() {
         return <SpeechAIDashboard />
       case 'voice-ai':
         return <VoiceAIDashboard />
+      case 'voice-assessment-mapping':
+        return <VoiceAssessmentMappingDashboard />
       case 'text-to-audio':
         return <TextToAudioDashboard />
       case 'text-to-video':

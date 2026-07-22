@@ -8046,6 +8046,29 @@ async def voice_ai_definitions():
     return _json_safe(vad.definitions())
 
 
+# ── Voice Assessment Mapping Dashboard ─────────────────────────────────
+@app.get("/api/voice-assessment-mapping/overview")
+async def voice_assessment_mapping_overview():
+    """Voice assessment mapping overview — STT-to-form pipeline KPIs,
+    channel distribution, instrument coverage, completion rates."""
+    import scripts.voice_assessment_mapping as vam
+    return _json_safe(vam.overview())
+
+@app.get("/api/voice-assessment-mapping/breakdown")
+async def voice_assessment_mapping_breakdown():
+    """Voice assessment mapping breakdown — session inventory, patient profiles,
+    instrument stats, channel comparison."""
+    import scripts.voice_assessment_mapping as vam
+    return _json_safe(vam.breakdown())
+
+@app.get("/api/voice-assessment-mapping/definitions")
+async def voice_assessment_mapping_definitions():
+    """Voice assessment mapping definitions — mapping concepts, quality metrics,
+    supported instruments, compliance, remediation."""
+    import scripts.voice_assessment_mapping as vam
+    return _json_safe(vam.definitions())
+
+
 # ── Text-to-Audio AI Dashboard ────────────────────────────────────────
 @app.get("/api/text-to-audio/overview")
 async def text_to_audio_overview():
