@@ -14625,6 +14625,28 @@ async def icd10_coding_definitions():
     return _json_safe(icd.definitions())
 
 
+# ── Seizure Trigger Logs Dashboard ──────────────────────────────────
+# Real data: seizure_trigger_logs (203 rows, 40 patients, 9 trigger types).
+@app.get("/api/seizure-trigger-logs/overview")
+async def seizure_trigger_logs_overview():
+    """Seizure trigger logs overview — KPIs, trigger distribution, sleep/seizure
+    correlation, risk factor comparison, monthly trend."""
+    import scripts.seizure_trigger_logs_dashboard as stl
+    return _json_safe(stl.overview())
+
+@app.get("/api/seizure-trigger-logs/breakdown")
+async def seizure_trigger_logs_breakdown():
+    """Seizure trigger logs breakdown — all logs, patient summary, top triggers."""
+    import scripts.seizure_trigger_logs_dashboard as stl
+    return _json_safe(stl.breakdown())
+
+@app.get("/api/seizure-trigger-logs/definitions")
+async def seizure_trigger_logs_definitions():
+    """Seizure trigger logs definitions — trigger types, seizure types, metrics."""
+    import scripts.seizure_trigger_logs_dashboard as stl
+    return _json_safe(stl.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
