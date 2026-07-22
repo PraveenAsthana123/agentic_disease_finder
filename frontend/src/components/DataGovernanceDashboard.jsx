@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#6366f1', '#64748b', '#06b6d4', '#ec4899', '#8b5cf6']
 const STATUS_COLORS = { active: '#22c55e', partial: '#f59e0b', tracked: '#6366f1', missing: '#ef4444' }
 
@@ -19,7 +19,7 @@ export default function DataGovernanceDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/data-manager/governance`)
+        const res = await axios.get(`${API_URL}/api/data-manager/governance`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load governance report')

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const TIER_COLORS = { excellent: '#10b981', good: '#3b82f6', adequate: '#f59e0b', needs_improvement: '#ef4444' }
 
@@ -27,9 +27,9 @@ export default function ResponseQualityDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/response-quality/overview`),
-          axios.get(`${API_URL}/response-quality/breakdown`),
-          axios.get(`${API_URL}/response-quality/definitions`)
+          axios.get(`${API_URL}/api/response-quality/overview`),
+          axios.get(`${API_URL}/api/response-quality/breakdown`),
+          axios.get(`${API_URL}/api/response-quality/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

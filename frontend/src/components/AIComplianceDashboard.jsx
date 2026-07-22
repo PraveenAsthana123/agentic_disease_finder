@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const TIER_COLORS = { 'High-Risk': '#ef4444', 'Limited Risk': '#f59e0b', 'Minimal Risk': '#10b981' }
 const CHECK_COLORS = { pass: '#10b981', fail: '#ef4444' }
@@ -29,9 +29,9 @@ export default function AIComplianceDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ai-compliance/overview`),
-          axios.get(`${API_URL}/ai-compliance/breakdown`),
-          axios.get(`${API_URL}/ai-compliance/definitions`)
+          axios.get(`${API_URL}/api/ai-compliance/overview`),
+          axios.get(`${API_URL}/api/ai-compliance/breakdown`),
+          axios.get(`${API_URL}/api/ai-compliance/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

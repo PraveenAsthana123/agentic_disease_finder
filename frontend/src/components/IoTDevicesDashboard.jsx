@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b', '#795548', '#9e9e9e']
 const STATUS_COLORS = { Built: '#4caf50', Partial: '#ff9800', Planned: '#f44336', Unknown: '#9e9e9e' }
 
@@ -79,9 +79,9 @@ export default function IoTDevicesDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/iot-devices/overview`),
-      axios.get(`${API_URL}/iot-devices/breakdown`),
-      axios.get(`${API_URL}/iot-devices/definitions`),
+      axios.get(`${API_URL}/api/iot-devices/overview`),
+      axios.get(`${API_URL}/api/iot-devices/breakdown`),
+      axios.get(`${API_URL}/api/iot-devices/definitions`),
     ])
       .then(([ov, bd, df]) => setData({ overview: ov.data, breakdown: bd.data, definitions: df.data }))
       .catch(e => setError(e.message))

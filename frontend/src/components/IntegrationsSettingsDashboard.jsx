@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', partial: '#f97316', 'needs-credentials': '#ef4444', 'needs credentials': '#ef4444', planned: '#94a3b8', unknown: '#cbd5e1' }
 const CAT_ICONS = { storage: '\u{1F4C1}', messaging: '\u{1F4AC}', email: '\u{2709}\uFE0F' }
@@ -61,9 +61,9 @@ export default function IntegrationsSettingsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/integrations-settings/overview`),
-      axios.get(`${API_URL}/integrations-settings/breakdown`),
-      axios.get(`${API_URL}/integrations-settings/definitions`),
+      axios.get(`${API_URL}/api/integrations-settings/overview`),
+      axios.get(`${API_URL}/api/integrations-settings/breakdown`),
+      axios.get(`${API_URL}/api/integrations-settings/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

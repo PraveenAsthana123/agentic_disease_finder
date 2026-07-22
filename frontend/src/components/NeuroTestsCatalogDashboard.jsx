@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 
 function Card({ title, children, span }) {
@@ -70,9 +70,9 @@ export default function NeuroTestsCatalogDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/neuro-tests-catalog/overview`),
-      axios.get(`${API_URL}/neuro-tests-catalog/breakdown`),
-      axios.get(`${API_URL}/neuro-tests-catalog/definitions`),
+      axios.get(`${API_URL}/api/neuro-tests-catalog/overview`),
+      axios.get(`${API_URL}/api/neuro-tests-catalog/breakdown`),
+      axios.get(`${API_URL}/api/neuro-tests-catalog/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

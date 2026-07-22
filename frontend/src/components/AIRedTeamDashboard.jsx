@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#ef4444', '#f59e0b', '#3b82f6', '#10b981', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const SEVERITY_COLORS = { Critical: '#ef4444', High: '#f59e0b', Medium: '#3b82f6', Low: '#10b981' }
 const STATUS_COLORS = { active: '#ef4444', mitigated: '#10b981', detected: '#f59e0b', flagged: '#8b5cf6', vulnerable: '#ef4444', tested: '#10b981', untested: '#94a3b8' }
@@ -28,9 +28,9 @@ export default function AIRedTeamDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ai-red-team/overview`),
-          axios.get(`${API_URL}/ai-red-team/breakdown`),
-          axios.get(`${API_URL}/ai-red-team/definitions`)
+          axios.get(`${API_URL}/api/ai-red-team/overview`),
+          axios.get(`${API_URL}/api/ai-red-team/breakdown`),
+          axios.get(`${API_URL}/api/ai-red-team/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

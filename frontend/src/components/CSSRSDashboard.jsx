@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const RISK_COLORS = { none: '#22c55e', low: '#eab308', moderate: '#f97316', high: '#ef4444' }
 const COLORS = ['#22c55e', '#eab308', '#f97316', '#ef4444', '#8b5cf6', '#3b82f6']
 
@@ -58,9 +58,9 @@ export default function CSSRSDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/cssrs-dashboard/overview`),
-          axios.get(`${API_URL}/cssrs-dashboard/breakdown`),
-          axios.get(`${API_URL}/cssrs-dashboard/definitions`)
+          axios.get(`${API_URL}/api/cssrs-dashboard/overview`),
+          axios.get(`${API_URL}/api/cssrs-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/cssrs-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#84cc16', '#f97316']
 
 function fmt(v) {
@@ -26,9 +26,9 @@ export default function WorkflowDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/workflow/overview`),
-          axios.get(`${API_URL}/workflow/breakdown`),
-          axios.get(`${API_URL}/workflow/definitions`)
+          axios.get(`${API_URL}/api/workflow/overview`),
+          axios.get(`${API_URL}/api/workflow/breakdown`),
+          axios.get(`${API_URL}/api/workflow/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function fmt(v) {
@@ -70,9 +70,9 @@ export default function ClinicalTasksDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/clinical-tasks/overview`),
-      axios.get(`${API_URL}/clinical-tasks/breakdown`),
-      axios.get(`${API_URL}/clinical-tasks/definitions`),
+      axios.get(`${API_URL}/api/clinical-tasks/overview`),
+      axios.get(`${API_URL}/api/clinical-tasks/breakdown`),
+      axios.get(`${API_URL}/api/clinical-tasks/definitions`),
     ])
       .then(([oRes, bRes, dRes]) => {
         setOverview(oRes.data)

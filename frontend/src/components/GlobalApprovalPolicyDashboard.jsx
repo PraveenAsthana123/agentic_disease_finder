@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const DECISION_COLORS = { allow: '#22c55e', require_human_approval: '#f97316', deny: '#ef4444' }
 const RISK_COLORS = { low: '#22c55e', medium: '#f97316', high: '#ef4444', critical: '#7f1d1d' }
@@ -89,9 +89,9 @@ export default function GlobalApprovalPolicyDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/global-approval-policy/overview`),
-      axios.get(`${API_URL}/global-approval-policy/breakdown`),
-      axios.get(`${API_URL}/global-approval-policy/definitions`),
+      axios.get(`${API_URL}/api/global-approval-policy/overview`),
+      axios.get(`${API_URL}/api/global-approval-policy/breakdown`),
+      axios.get(`${API_URL}/api/global-approval-policy/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

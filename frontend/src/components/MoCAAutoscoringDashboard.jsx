@@ -7,7 +7,7 @@ import {
   ScatterChart, Scatter, ZAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6','#22c55e','#f97316','#8b5cf6','#ef4444','#eab308','#06b6d4','#ec4899']
 
 function fmt(v) {
@@ -71,9 +71,9 @@ export default function MoCAAutoscoringDashboard() {
       setLoading(true)
       try {
         const [o, b, d] = await Promise.all([
-          axios.get(`${API_URL}/moca-autoscoring/overview`),
-          axios.get(`${API_URL}/moca-autoscoring/breakdown`),
-          axios.get(`${API_URL}/moca-autoscoring/definitions`)
+          axios.get(`${API_URL}/api/moca-autoscoring/overview`),
+          axios.get(`${API_URL}/api/moca-autoscoring/breakdown`),
+          axios.get(`${API_URL}/api/moca-autoscoring/definitions`)
         ])
         setOverview(o.data)
         setBreakdown(b.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#84cc16', '#f97316', '#14b8a6', '#a855f7']
 
 function fmt(v) {
@@ -70,9 +70,9 @@ export default function SeizureMetadataDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API_URL}/seizure-metadata/overview`),
-      axios.get(`${API_URL}/seizure-metadata/breakdown`),
-      axios.get(`${API_URL}/seizure-metadata/definitions`),
+      axios.get(`${API_URL}/api/seizure-metadata/overview`),
+      axios.get(`${API_URL}/api/seizure-metadata/breakdown`),
+      axios.get(`${API_URL}/api/seizure-metadata/definitions`),
     ])
       .then(([o, b, d]) => { setOv(o.data); setBd(b.data); setDefs(d.data) })
       .catch(e => setError(e.message))

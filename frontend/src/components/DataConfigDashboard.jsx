@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { downloaded: '#22c55e', pending: '#f97316', true: '#22c55e', false: '#f97316' }
 
@@ -60,9 +60,9 @@ export default function DataConfigDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/data-config/overview`),
-      axios.get(`${API_URL}/data-config/breakdown`),
-      axios.get(`${API_URL}/data-config/definitions`),
+      axios.get(`${API_URL}/api/data-config/overview`),
+      axios.get(`${API_URL}/api/data-config/breakdown`),
+      axios.get(`${API_URL}/api/data-config/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

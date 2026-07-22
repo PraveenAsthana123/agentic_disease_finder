@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const STATUS_COLORS = { pass: '#4caf50', partial: '#ff9800', planned: '#f44336' }
 
@@ -39,9 +39,9 @@ export default function QATestSuiteDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/qa-test-suite/overview`),
-          axios.get(`${API_URL}/qa-test-suite/breakdown`),
-          axios.get(`${API_URL}/qa-test-suite/definitions`)
+          axios.get(`${API_URL}/api/qa-test-suite/overview`),
+          axios.get(`${API_URL}/api/qa-test-suite/breakdown`),
+          axios.get(`${API_URL}/api/qa-test-suite/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const QUALITY_COLORS = { Good: '#22c55e', Fair: '#f59e0b', Poor: '#ef4444' }
 const RESPONSE_COLORS = {
@@ -103,9 +103,9 @@ export default function NeurologistDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/neurologist/overview`),
-          axios.get(`${API_URL}/neurologist/breakdown`),
-          axios.get(`${API_URL}/neurologist/definitions`),
+          axios.get(`${API_URL}/api/neurologist/overview`),
+          axios.get(`${API_URL}/api/neurologist/breakdown`),
+          axios.get(`${API_URL}/api/neurologist/definitions`),
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

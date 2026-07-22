@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const QUALITY_COLORS = {
   Excellent: '#16a34a',
@@ -122,9 +122,9 @@ export default function EEGTechnicianDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/eeg-technician/overview`),
-          axios.get(`${API_URL}/eeg-technician/breakdown`),
-          axios.get(`${API_URL}/eeg-technician/definitions`),
+          axios.get(`${API_URL}/api/eeg-technician/overview`),
+          axios.get(`${API_URL}/api/eeg-technician/breakdown`),
+          axios.get(`${API_URL}/api/eeg-technician/definitions`),
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

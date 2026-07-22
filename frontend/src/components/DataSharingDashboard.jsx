@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#6366f1', '#64748b', '#06b6d4', '#ec4899']
 const TIER_COLORS = { full: '#22c55e', 'de-identified': '#f59e0b', aggregate: '#6366f1', none: '#ef4444' }
 
@@ -18,7 +18,7 @@ export default function DataSharingDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/data-manager/data-sharing`)
+        const res = await axios.get(`${API_URL}/api/data-manager/data-sharing`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load data sharing report')

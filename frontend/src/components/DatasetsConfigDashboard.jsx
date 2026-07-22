@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { real_data: '#22c55e', synthetic: '#f97316', downloading: '#3b82f6' }
 
@@ -60,9 +60,9 @@ export default function DatasetsConfigDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/datasets-config/overview`),
-      axios.get(`${API_URL}/datasets-config/breakdown`),
-      axios.get(`${API_URL}/datasets-config/definitions`),
+      axios.get(`${API_URL}/api/datasets-config/overview`),
+      axios.get(`${API_URL}/api/datasets-config/breakdown`),
+      axios.get(`${API_URL}/api/datasets-config/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

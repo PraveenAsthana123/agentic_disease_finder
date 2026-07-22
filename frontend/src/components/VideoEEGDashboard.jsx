@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = { Mild: '#3b82f6', Moderate: '#eab308', Severe: '#ef4444' }
 const OUTCOME_COLORS = ['#16a34a', '#3b82f6', '#94a3b8']
 const HOUR_COLORS = { 'Night (00-06)': '#6366f1', 'Morning (06-12)': '#f59e0b', 'Afternoon (12-18)': '#10b981', 'Evening (18-24)': '#8b5cf6' }
@@ -60,9 +60,9 @@ export default function VideoEEGDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/video-eeg/overview`),
-          axios.get(`${API_URL}/video-eeg/breakdown`),
-          axios.get(`${API_URL}/video-eeg/definitions`)
+          axios.get(`${API_URL}/api/video-eeg/overview`),
+          axios.get(`${API_URL}/api/video-eeg/breakdown`),
+          axios.get(`${API_URL}/api/video-eeg/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

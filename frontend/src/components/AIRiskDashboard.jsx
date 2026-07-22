@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const SEV_COLORS = { High: '#ef4444', Severe: '#ef4444', Critical: '#991b1b', Medium: '#f59e0b', Low: '#3b82f6', high: '#ef4444', medium: '#f59e0b', low: '#3b82f6' }
 const STATUS_COLORS = { Open: '#ef4444', Mitigated: '#10b981', needs_review: '#ef4444', reviewed: '#10b981', open: '#ef4444', mitigated: '#10b981' }
@@ -28,9 +28,9 @@ export default function AIRiskDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ai-risk/overview`),
-          axios.get(`${API_URL}/ai-risk/breakdown`),
-          axios.get(`${API_URL}/ai-risk/definitions`)
+          axios.get(`${API_URL}/api/ai-risk/overview`),
+          axios.get(`${API_URL}/api/ai-risk/breakdown`),
+          axios.get(`${API_URL}/api/ai-risk/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

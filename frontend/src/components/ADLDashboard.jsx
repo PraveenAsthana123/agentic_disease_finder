@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function fmt(v) {
@@ -63,9 +63,9 @@ export default function ADLDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/adl/overview`),
-          axios.get(`${API_URL}/adl/breakdown`),
-          axios.get(`${API_URL}/adl/definitions`)
+          axios.get(`${API_URL}/api/adl/overview`),
+          axios.get(`${API_URL}/api/adl/breakdown`),
+          axios.get(`${API_URL}/api/adl/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

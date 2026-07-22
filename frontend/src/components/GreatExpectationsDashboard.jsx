@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#22c55e', '#ef4444', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899', '#64748b']
 const PASS_COLOR = '#22c55e'
 const FAIL_COLOR = '#ef4444'
@@ -29,7 +29,7 @@ export default function GreatExpectationsDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/great-expectations`)
+        const res = await axios.get(`${API_URL}/api/great-expectations`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load Great Expectations report')

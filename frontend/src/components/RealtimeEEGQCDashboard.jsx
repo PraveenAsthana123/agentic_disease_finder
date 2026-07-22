@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const VERDICT_COLORS = { Pass: '#22c55e', 'Needs Attention': '#f59e0b', 'Re-record': '#ef4444' }
 const SEVERITY_COLORS = { mild: '#22c55e', moderate: '#f59e0b', severe: '#ef4444' }
@@ -61,9 +61,9 @@ export default function RealtimeEEGQCDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/realtime-eeg-qc/overview`),
-          axios.get(`${API_URL}/realtime-eeg-qc/breakdown`),
-          axios.get(`${API_URL}/realtime-eeg-qc/definitions`)
+          axios.get(`${API_URL}/api/realtime-eeg-qc/overview`),
+          axios.get(`${API_URL}/api/realtime-eeg-qc/breakdown`),
+          axios.get(`${API_URL}/api/realtime-eeg-qc/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

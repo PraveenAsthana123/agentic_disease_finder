@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const CATEGORY_COLORS = [
   '#8b5cf6', '#3b82f6', '#22c55e', '#f59e0b', '#ec4899',
@@ -68,9 +68,9 @@ export default function RehabPlanDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/rehab-plan/overview`),
-          axios.get(`${API_URL}/rehab-plan/breakdown`),
-          axios.get(`${API_URL}/rehab-plan/definitions`)
+          axios.get(`${API_URL}/api/rehab-plan/overview`),
+          axios.get(`${API_URL}/api/rehab-plan/breakdown`),
+          axios.get(`${API_URL}/api/rehab-plan/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

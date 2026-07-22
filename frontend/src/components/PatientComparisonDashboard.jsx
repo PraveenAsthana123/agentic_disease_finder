@@ -5,7 +5,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#16a34a', '#eab308', '#ef4444', '#8b5cf6', '#ec4899', '#f59e0b', '#06b6d4']
 
 function fmt(v) {
@@ -65,8 +65,8 @@ export default function PatientComparisonDashboard() {
       setLoading(true)
       try {
         const [ov, df] = await Promise.all([
-          axios.get(`${API_URL}/patient-comparison/overview`),
-          axios.get(`${API_URL}/patient-comparison/definitions`)
+          axios.get(`${API_URL}/api/patient-comparison/overview`),
+          axios.get(`${API_URL}/api/patient-comparison/definitions`)
         ])
         setOverview(ov.data)
         setDefs(df.data)
@@ -82,7 +82,7 @@ export default function PatientComparisonDashboard() {
   useEffect(() => {
     const loadComparison = async () => {
       try {
-        const res = await axios.get(`${API_URL}/patient-comparison/compare?a=${patientA}&b=${patientB}`)
+        const res = await axios.get(`${API_URL}/api/patient-comparison/compare?a=${patientA}&b=${patientB}`)
         setComparison(res.data)
       } catch (e) {
         setError(e.message)

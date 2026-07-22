@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = {
   brain: '#22c55e',
   muscle: '#ef4444',
@@ -28,7 +28,7 @@ export default function ICLabelDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/icalabel`)
+        const res = await axios.get(`${API_URL}/api/icalabel`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load ICLabel report')

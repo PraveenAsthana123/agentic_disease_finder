@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const STATUS_COLORS = { excellent: '#10b981', STRONG: '#10b981', PASS: '#10b981', pass: '#10b981', good: '#3b82f6', ACCEPTABLE: '#f59e0b', DEGRADED: '#ef4444', FAIL: '#ef4444', unknown: '#64748b' }
 
@@ -59,9 +59,9 @@ export default function ResponsibleAIDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/responsible-ai-dashboard/overview`),
-          axios.get(`${API_URL}/responsible-ai-dashboard/breakdown`),
-          axios.get(`${API_URL}/responsible-ai-dashboard/definitions`)
+          axios.get(`${API_URL}/api/responsible-ai-dashboard/overview`),
+          axios.get(`${API_URL}/api/responsible-ai-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/responsible-ai-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

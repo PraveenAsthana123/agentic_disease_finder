@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const IQ_COLORS = {
   'Extremely High': '#16a34a', 'Superior': '#22c55e', 'High Average': '#3b82f6',
   'Average': '#64748b', 'Low Average': '#eab308', 'Borderline': '#f97316',
@@ -83,9 +83,9 @@ export default function WAISDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/wais-dashboard/overview`),
-          axios.get(`${API_URL}/wais-dashboard/breakdown`),
-          axios.get(`${API_URL}/wais-dashboard/definitions`)
+          axios.get(`${API_URL}/api/wais-dashboard/overview`),
+          axios.get(`${API_URL}/api/wais-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/wais-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

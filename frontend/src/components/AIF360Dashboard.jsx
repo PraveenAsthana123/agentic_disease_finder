@@ -5,7 +5,7 @@ import {
   Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4']
 
 function fairnessColor(metric, value) {
@@ -39,9 +39,9 @@ export default function AIF360Dashboard() {
       setLoading(true)
       try {
         const [ov, gr, df] = await Promise.all([
-          axios.get(`${API_URL}/aif360/overview`),
-          axios.get(`${API_URL}/aif360/groups`),
-          axios.get(`${API_URL}/aif360/definitions`)
+          axios.get(`${API_URL}/api/aif360/overview`),
+          axios.get(`${API_URL}/api/aif360/groups`),
+          axios.get(`${API_URL}/api/aif360/definitions`)
         ])
         setOverview(ov.data)
         setGroups(gr.data)

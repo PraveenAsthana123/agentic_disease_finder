@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const CONC_COLORS = {
   concordant: '#16a34a',
@@ -89,9 +89,9 @@ export default function EEGMRIConcordanceDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/eeg-mri-concordance/overview`),
-          axios.get(`${API_URL}/eeg-mri-concordance/breakdown`),
-          axios.get(`${API_URL}/eeg-mri-concordance/definitions`)
+          axios.get(`${API_URL}/api/eeg-mri-concordance/overview`),
+          axios.get(`${API_URL}/api/eeg-mri-concordance/breakdown`),
+          axios.get(`${API_URL}/api/eeg-mri-concordance/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

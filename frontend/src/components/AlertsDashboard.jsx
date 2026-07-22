@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#dc2626', '#ef4444', '#f59e0b', '#22c55e', '#1e88e5', '#7c4dff', '#ec4899', '#14b8a6']
 const fmt = v => (typeof v === 'number' ? v.toLocaleString() : v ?? '—')
 
@@ -64,8 +64,8 @@ export default function AlertsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/alerts`),
-      axios.get(`${API_URL}/alerts/definitions`),
+      axios.get(`${API_URL}/api/alerts`),
+      axios.get(`${API_URL}/api/alerts/definitions`),
     ])
       .then(([overviewRes, defsRes]) => {
         setData(overviewRes.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const TIER_COLORS = {
   'Superior': '#16a34a', 'Average': '#3b82f6', 'Low Average': '#eab308',
   'Borderline': '#f97316', 'Impaired': '#ef4444'
@@ -62,9 +62,9 @@ export default function DigitSpanDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/digit-span-dashboard/overview`),
-          axios.get(`${API_URL}/digit-span-dashboard/breakdown`),
-          axios.get(`${API_URL}/digit-span-dashboard/definitions`)
+          axios.get(`${API_URL}/api/digit-span-dashboard/overview`),
+          axios.get(`${API_URL}/api/digit-span-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/digit-span-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

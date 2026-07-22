@@ -6,7 +6,7 @@ import {
   LineChart, Line, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const SEV_COLORS = {
   Critical: '#ef4444',
@@ -83,9 +83,9 @@ export default function AIIncidentDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ai-incident/overview`),
-          axios.get(`${API_URL}/ai-incident/breakdown`),
-          axios.get(`${API_URL}/ai-incident/definitions`)
+          axios.get(`${API_URL}/api/ai-incident/overview`),
+          axios.get(`${API_URL}/api/ai-incident/breakdown`),
+          axios.get(`${API_URL}/api/ai-incident/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

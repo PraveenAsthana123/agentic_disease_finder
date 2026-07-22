@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const COMPLEXITY_COLORS = { linear: '#10b981', medium: '#f59e0b', high: '#ef4444' }
 
@@ -80,8 +80,8 @@ export default function ClinicalFlowchartsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/clinical-flowcharts/overview`),
-      axios.get(`${API_URL}/clinical-flowcharts/analytics`),
+      axios.get(`${API_URL}/api/clinical-flowcharts/overview`),
+      axios.get(`${API_URL}/api/clinical-flowcharts/analytics`),
     ])
       .then(([oRes, aRes]) => {
         setOverview(oRes.data)
@@ -93,7 +93,7 @@ export default function ClinicalFlowchartsDashboard() {
 
   const loadDetail = async (id) => {
     try {
-      const res = await axios.get(`${API_URL}/clinical-flowcharts/detail/${id}`)
+      const res = await axios.get(`${API_URL}/api/clinical-flowcharts/detail/${id}`)
       setDetail(res.data)
       setSelectedId(id)
       setTab('detail')

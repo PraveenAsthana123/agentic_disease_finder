@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const CATEGORY_COLORS = {
   clinical: '#3b82f6',
@@ -75,9 +75,9 @@ export default function PatientDocumentsDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/patient-documents/overview`),
-          axios.get(`${API_URL}/patient-documents/breakdown`),
-          axios.get(`${API_URL}/patient-documents/definitions`)
+          axios.get(`${API_URL}/api/patient-documents/overview`),
+          axios.get(`${API_URL}/api/patient-documents/breakdown`),
+          axios.get(`${API_URL}/api/patient-documents/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

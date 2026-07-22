@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend, LineChart, Line, ReferenceLine
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const COLORS = {
   blue: '#1e88e5',
@@ -46,7 +46,7 @@ export default function SeizureTimelineDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/seizure-timeline`)
+        const res = await axios.get(`${API_URL}/api/seizure-timeline`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load seizure timeline')

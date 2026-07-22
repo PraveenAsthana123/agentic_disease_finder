@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', partial: '#f97316', planned: '#94a3b8', 'n/a': '#cbd5e1' }
 
@@ -59,9 +59,9 @@ export default function AdminModuleDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/admin-module/overview`),
-      axios.get(`${API_URL}/admin-module/breakdown`),
-      axios.get(`${API_URL}/admin-module/definitions`),
+      axios.get(`${API_URL}/api/admin-module/overview`),
+      axios.get(`${API_URL}/api/admin-module/breakdown`),
+      axios.get(`${API_URL}/api/admin-module/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

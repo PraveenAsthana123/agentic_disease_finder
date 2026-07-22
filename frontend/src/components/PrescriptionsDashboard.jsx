@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function fmt(v) {
@@ -48,9 +48,9 @@ export default function PrescriptionsDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/prescriptions/overview`),
-          axios.get(`${API_URL}/prescriptions/breakdown`),
-          axios.get(`${API_URL}/prescriptions/definitions`)
+          axios.get(`${API_URL}/api/prescriptions/overview`),
+          axios.get(`${API_URL}/api/prescriptions/breakdown`),
+          axios.get(`${API_URL}/api/prescriptions/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

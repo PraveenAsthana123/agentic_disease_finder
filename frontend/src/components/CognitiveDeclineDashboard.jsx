@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const CLASS_COLORS = {
   stable: '#22c55e', improving: '#3b82f6',
@@ -63,9 +63,9 @@ export default function CognitiveDeclineDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/cognitive-decline/overview`),
-          axios.get(`${API_URL}/cognitive-decline/breakdown`),
-          axios.get(`${API_URL}/cognitive-decline/definitions`)
+          axios.get(`${API_URL}/api/cognitive-decline/overview`),
+          axios.get(`${API_URL}/api/cognitive-decline/breakdown`),
+          axios.get(`${API_URL}/api/cognitive-decline/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -6,7 +6,7 @@ import {
   PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const LABEL_COLORS = {
   seizure: '#ef4444',
@@ -39,9 +39,9 @@ export default function AnnotationDashboard() {
       setLoading(true)
       try {
         const [ovRes, agRes, defRes] = await Promise.all([
-          axios.get(`${API_URL}/annotation/overview`),
-          axios.get(`${API_URL}/annotation/agreement`),
-          axios.get(`${API_URL}/annotation/definitions`),
+          axios.get(`${API_URL}/api/annotation/overview`),
+          axios.get(`${API_URL}/api/annotation/agreement`),
+          axios.get(`${API_URL}/api/annotation/definitions`),
         ])
         setOverview(ovRes.data)
         setAgreement(agRes.data)

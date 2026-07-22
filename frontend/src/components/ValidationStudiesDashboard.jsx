@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 function fmt(v) {
@@ -75,9 +75,9 @@ export default function ValidationStudiesDashboard() {
   useEffect(() => {
     setLoading(true)
     Promise.all([
-      axios.get(`${API_URL}/validation-studies/overview`),
-      axios.get(`${API_URL}/validation-studies/breakdown`),
-      axios.get(`${API_URL}/validation-studies/definitions`),
+      axios.get(`${API_URL}/api/validation-studies/overview`),
+      axios.get(`${API_URL}/api/validation-studies/breakdown`),
+      axios.get(`${API_URL}/api/validation-studies/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#8b5cf6', '#22c55e', '#f97316', '#ef4444', '#14b8a6', '#ec4899', '#eab308']
 const TYPE_COLORS = { Intake: '#3b82f6', 'Auto-extracted': '#22c55e', Deferred: '#8b5cf6' }
 
@@ -58,9 +58,9 @@ export default function OnboardingIntakeDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/onboarding-intake/overview`),
-      axios.get(`${API_URL}/onboarding-intake/breakdown`),
-      axios.get(`${API_URL}/onboarding-intake/definitions`),
+      axios.get(`${API_URL}/api/onboarding-intake/overview`),
+      axios.get(`${API_URL}/api/onboarding-intake/breakdown`),
+      axios.get(`${API_URL}/api/onboarding-intake/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

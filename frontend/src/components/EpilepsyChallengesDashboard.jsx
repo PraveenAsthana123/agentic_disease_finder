@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const LEVEL_COLORS = { basic: '#4caf50', intermediate: '#ff9800', high: '#f44336' }
 
@@ -55,9 +55,9 @@ export default function EpilepsyChallengesDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/epilepsy-challenges/overview`),
-      axios.get(`${API_URL}/epilepsy-challenges/breakdown`),
-      axios.get(`${API_URL}/epilepsy-challenges/definitions`),
+      axios.get(`${API_URL}/api/epilepsy-challenges/overview`),
+      axios.get(`${API_URL}/api/epilepsy-challenges/breakdown`),
+      axios.get(`${API_URL}/api/epilepsy-challenges/definitions`),
     ])
       .then(([o, b, d]) => { setOverview(o.data); setBreakdown(b.data); setDefs(d.data) })
       .catch(e => setError(e.message))

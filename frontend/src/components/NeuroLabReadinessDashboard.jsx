@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, RadarChart, Radar, PolarGrid,
-  PolarAngleAxis, PolarRadiusAxis, Legend
+  RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
+  BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid,
+  Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
 const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
@@ -30,28 +30,17 @@ function KPI({ label, value, sub, color }) {
   )
 }
 
-const fmt = v => (v != null ? v : '--')
-const pct = v => (v != null ? `${v}%` : '--')
 const COLORS = ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316']
+
+const STATUS_COLORS = { built: '#10b981', partial: '#f59e0b', missing: '#ef4444' }
 
 const TABS = [
   { id: 'overview', label: 'Overview' },
   { id: 'stakeholders', label: 'Stakeholders' },
-  { id: 'business_case', label: 'Business Case' },
+  { id: 'business', label: 'Business Case' },
   { id: 'roadmap', label: 'Roadmap' },
   { id: 'definitions', label: 'Definitions' },
 ]
-
-const STAKEHOLDER_ICONS = {
-  'Neurologist': '\u{1F9E0}',
-  'EEG Technician': '\u{1F50C}',
-  'IT Administrator': '\u{1F4BB}',
-  'Hospital Administration': '\u{1F3E5}',
-  'Patient': '\u{1F9D1}',
-  'Nurse': '\u{1FA7A}',
-  'Data Scientist': '\u{1F4CA}',
-  'Regulatory Officer': '\u{1F4DC}',
-}
 
 export default function NeuroLabReadinessDashboard() {
   const [tab, setTab] = useState('overview')
@@ -68,302 +57,443 @@ export default function NeuroLabReadinessDashboard() {
       axios.get(`${API_URL}/api/neurolab-readiness/overview`),
       axios.get(`${API_URL}/api/neurolab-readiness/breakdown`),
       axios.get(`${API_URL}/api/neurolab-readiness/definitions`),
-    ])
-      .then(([ov, bd, df]) => {
-        setOverview(ov.data)
-        setBreakdown(bd.data)
-        setDefinitions(df.data)
-      })
-      .catch(e => setError(e.message))
+    ]).then(([o, b, d]) => {
+      setOverview(o.data)
+      setBreakdown(b.data)
+      setDefinitions(d.data)
+    }).catch(e => setError(e.message))
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) return <div style={{ padding: 40, textAlign: 'center' }}>Loading NeuroLab Readiness Dashboard...</div>
+  if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>Loading NeuroLab Readiness data...</div>
   if (error) return <div style={{ padding: 40, color: '#ef4444' }}>Error: {error}</div>
 
-  const ov = overview || {}
-  const bd = breakdown || {}
-  const defs = definitions || {}
-
   return (
-    <div style={{ padding: 24, background: '#f8fafc', minHeight: '100vh' }}>
-      <h2 style={{ margin: '0 0 4px', fontSize: 22, color: '#0f172a' }}>NeuroLab Readiness Dashboard</h2>
-      <p style={{ margin: '0 0 20px', fontSize: 13, color: '#64748b' }}>
-        Deployment readiness assessment for AI-powered neurology lab platform
-      </p>
+    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
+      <div style={{ marginBottom: 20 }}>
+        <h2 style={{ margin: 0, fontSize: 22, color: '#1e293b' }}>NeuroLab Readiness Dashboard</h2>
+        <p style={{ margin: '4px 0 0', fontSize: 13, color: '#64748b' }}>
+          Deployment readiness for neuro-lab AI system — stakeholder coverage, process maturity, business case, roadmap
+        </p>
+      </div>
 
       {/* Tab bar */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20 }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '1px solid #e2e8f0', paddingBottom: 1 }}>
         {TABS.map(t => (
           <button key={t.id} onClick={() => setTab(t.id)} style={{
-            padding: '8px 18px', borderRadius: 8, border: 'none', cursor: 'pointer',
-            background: tab === t.id ? '#3b82f6' : '#e2e8f0',
-            color: tab === t.id ? '#fff' : '#334155', fontWeight: tab === t.id ? 600 : 400,
-            fontSize: 13
+            padding: '8px 16px', border: 'none', borderRadius: '8px 8px 0 0', cursor: 'pointer',
+            background: tab === t.id ? '#3b82f6' : 'transparent',
+            color: tab === t.id ? '#fff' : '#64748b',
+            fontWeight: tab === t.id ? 600 : 400, fontSize: 13,
           }}>{t.label}</button>
         ))}
       </div>
 
-      {/* ─── OVERVIEW TAB ─── */}
-      {tab === 'overview' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
-          <Card>
-            <KPI label="Stakeholders" value={fmt(ov?.kpis?.stakeholders_count)} sub="Identified roles" color="#3b82f6" />
-          </Card>
-          <Card>
-            <KPI label="Processes" value={ov?.kpis?.processes_built != null && ov?.kpis?.processes_total != null ? `${ov.kpis.processes_built}/${ov.kpis.processes_total}` : '--'} sub="Built / Total" color="#10b981" />
-          </Card>
-          <Card>
-            <KPI label="Functionality" value={ov?.kpis?.functionality_built != null && ov?.kpis?.functionality_total != null ? `${ov.kpis.functionality_built}/${ov.kpis.functionality_total}` : '--'} sub="Built / Total" color="#8b5cf6" />
-          </Card>
-          <Card>
-            <KPI label="Overall Readiness" value={pct(ov?.kpis?.overall_readiness_pct)} sub="Deployment score" color="#f59e0b" />
-          </Card>
-          <Card>
-            <KPI label="Phase Completed" value={fmt(ov?.kpis?.phase_completed)} sub="Current phase" color="#06b6d4" />
-          </Card>
+      {tab === 'overview' && overview && <OverviewTab data={overview} />}
+      {tab === 'stakeholders' && breakdown && <StakeholdersTab data={breakdown} />}
+      {tab === 'business' && breakdown && <BusinessCaseTab data={breakdown.business_case} />}
+      {tab === 'roadmap' && breakdown && <RoadmapTab data={breakdown} />}
+      {tab === 'definitions' && definitions && <DefinitionsTab data={definitions} />}
+    </div>
+  )
+}
 
-          {/* Radar Chart — Readiness across dimensions */}
-          <Card title="Readiness Dimensions" span={3}>
-            <ResponsiveContainer width="100%" height={300}>
-              <RadarChart data={[
-                { dimension: 'Stakeholders', value: ov?.radar?.stakeholders || 0 },
-                { dimension: 'Processes', value: ov?.radar?.processes || 0 },
-                { dimension: 'Functionality', value: ov?.radar?.functionality || 0 },
-                { dimension: 'Phases', value: ov?.radar?.phases || 0 },
-              ]}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="dimension" tick={{ fontSize: 12 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 9 }} />
-                <Radar name="Readiness %" dataKey="value" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.35} />
-                <Legend />
-                <Tooltip />
-              </RadarChart>
-            </ResponsiveContainer>
-          </Card>
+/* -- Status badge helper -------------------------------------------------- */
+function StatusBadge({ status }) {
+  const color = STATUS_COLORS[status] || '#94a3b8'
+  return (
+    <span style={{
+      display: 'inline-block', padding: '2px 10px', borderRadius: 12, fontSize: 11,
+      fontWeight: 600, background: `${color}18`, color, textTransform: 'capitalize',
+    }}>{status}</span>
+  )
+}
 
-          {/* Pie Chart — Process statuses */}
-          <Card title="Process Status Distribution" span={2}>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={(ov?.process_status_distribution || []).filter(d => d.value > 0)}
-                  dataKey="value"
-                  nameKey="status"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={90}
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                >
-                  {(ov?.process_status_distribution || []).filter(d => d.value > 0).map((_, i) => {
-                    const statusColors = { built: '#10b981', partial: '#f59e0b', missing: '#ef4444' }
-                    const item = (ov?.process_status_distribution || [])[i]
-                    return <Cell key={i} fill={statusColors[item?.status?.toLowerCase()] || COLORS[i % COLORS.length]} />
-                  })}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </Card>
-        </div>
-      )}
+/* -- Overview Tab --------------------------------------------------------- */
+function OverviewTab({ data }) {
+  const kpis = data.kpis || {}
 
-      {/* ─── STAKEHOLDERS TAB ─── */}
-      {tab === 'stakeholders' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
-          {(bd?.stakeholder_detail || []).map((sh, i) => (
-            <Card key={i}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                <span style={{ fontSize: 28 }}>{STAKEHOLDER_ICONS[sh.role] || '\u{1F464}'}</span>
-                <h3 style={{ margin: 0, fontSize: 16, color: '#1e293b' }}>{sh.role || 'Unknown Role'}</h3>
-              </div>
+  // Stakeholder readiness for the per-stakeholder radar
+  const stakeholderRadar = (data.stakeholder_readiness || []).map(s => ({
+    role: s.role,
+    readiness: s.readiness_pct,
+    fullMark: 100,
+  }))
 
-              {/* Horizontal bar chart: built vs missing */}
-              <ResponsiveContainer width="100%" height={60}>
-                <BarChart layout="vertical" data={[{
-                  role: sh.role,
-                  built: (sh.built || []).length,
-                  missing: (sh.missing || []).length
-                }]}>
-                  <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                  <XAxis type="number" tick={{ fontSize: 10 }} />
-                  <YAxis type="category" dataKey="role" hide />
-                  <Tooltip />
-                  <Bar dataKey="built" name="Built" fill="#10b981" stackId="a" radius={[4, 0, 0, 4]} />
-                  <Bar dataKey="missing" name="Missing" fill="#ef4444" stackId="a" radius={[0, 4, 4, 0]} />
-                  <Legend />
-                </BarChart>
-              </ResponsiveContainer>
+  // Pie chart: built vs missing functionality
+  const funcPie = [
+    { name: 'Built', value: kpis.functionality_built || 0 },
+    { name: 'Missing', value: kpis.functionality_missing || 0 },
+  ].filter(d => d.value > 0)
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 12 }}>
-                {/* Built items */}
-                <div>
-                  <h4 style={{ margin: '0 0 6px', fontSize: 13, color: '#10b981' }}>Built</h4>
-                  <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#334155', lineHeight: 1.8 }}>
-                    {(sh.built || []).map((item, j) => (
-                      <li key={j} style={{ color: '#166534' }}>{item}</li>
-                    ))}
-                    {(sh.built || []).length === 0 && (
-                      <li style={{ color: '#94a3b8', listStyle: 'none', marginLeft: -18 }}>None yet</li>
-                    )}
-                  </ul>
-                </div>
-                {/* Missing items */}
-                <div>
-                  <h4 style={{ margin: '0 0 6px', fontSize: 13, color: '#ef4444' }}>Missing</h4>
-                  <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#334155', lineHeight: 1.8 }}>
-                    {(sh.missing || []).map((item, j) => (
-                      <li key={j} style={{ color: '#991b1b' }}>{item}</li>
-                    ))}
-                    {(sh.missing || []).length === 0 && (
-                      <li style={{ color: '#94a3b8', listStyle: 'none', marginLeft: -18 }}>All complete</li>
-                    )}
-                  </ul>
-                </div>
-              </div>
-            </Card>
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+      <Card title="Readiness Score">
+        <KPI label="Overall readiness" value={`${kpis.readiness_pct}%`}
+          color={kpis.readiness_pct >= 70 ? '#10b981' : kpis.readiness_pct >= 40 ? '#f59e0b' : '#ef4444'} />
+      </Card>
+      <Card title="Built Items">
+        <KPI label="Capabilities built" value={kpis.total_built_items} color="#10b981" />
+      </Card>
+      <Card title="Missing Items">
+        <KPI label="Capabilities missing" value={kpis.total_missing_items} color="#ef4444" />
+      </Card>
+      <Card title="Stakeholders">
+        <KPI label="Roles tracked" value={kpis.total_stakeholders} color="#3b82f6" />
+      </Card>
+      <Card title="Processes">
+        <KPI label={`${kpis.processes_built} built / ${kpis.processes_partial} partial`}
+          value={kpis.total_processes} color="#8b5cf6" />
+      </Card>
+
+      <Card title="Stakeholder Readiness Radar" span={3}>
+        <ResponsiveContainer width="100%" height={300}>
+          <RadarChart data={stakeholderRadar} cx="50%" cy="50%" outerRadius="75%">
+            <PolarGrid />
+            <PolarAngleAxis dataKey="role" fontSize={11} />
+            <PolarRadiusAxis angle={90} domain={[0, 100]} fontSize={10} />
+            <Radar name="Readiness %" dataKey="readiness" stroke="#3b82f6"
+              fill="#3b82f6" fillOpacity={0.25} />
+            <Tooltip formatter={(v) => [`${v}%`, 'Readiness']} />
+          </RadarChart>
+        </ResponsiveContainer>
+      </Card>
+
+      <Card title="Functionality: Built vs Missing" span={2}>
+        <ResponsiveContainer width="100%" height={300}>
+          <PieChart>
+            <Pie data={funcPie} dataKey="value" nameKey="name" cx="50%" cy="50%"
+              outerRadius={100} label={({ name, value }) => `${name} (${value})`}
+              labelLine={false} fontSize={12}>
+              <Cell fill="#10b981" />
+              <Cell fill="#ef4444" />
+            </Pie>
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </Card>
+
+      <Card title="Process Status" span={5}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          {(data.process_status || []).map((p, i) => (
+            <div key={i} style={{
+              display: 'flex', alignItems: 'center', gap: 8, padding: '6px 14px',
+              borderRadius: 8, background: '#f8fafc', border: '1px solid #e2e8f0',
+            }}>
+              <span style={{
+                width: 8, height: 8, borderRadius: '50%', display: 'inline-block',
+                background: STATUS_COLORS[p.status] || '#94a3b8',
+              }} />
+              <span style={{ fontSize: 13, color: '#334155' }}>{p.name}</span>
+              <StatusBadge status={p.status} />
+            </div>
           ))}
-          {(bd?.stakeholder_detail || []).length === 0 && (
-            <Card><p style={{ color: '#94a3b8' }}>No stakeholder data available</p></Card>
+        </div>
+      </Card>
+    </div>
+  )
+}
+
+/* -- Stakeholders Tab ----------------------------------------------------- */
+function StakeholdersTab({ data }) {
+  const stakeholders = data.stakeholder_detail || []
+
+  // Bar chart data: built vs missing per role
+  const barData = stakeholders.map(s => ({
+    role: s.role,
+    built: s.built.length,
+    missing: s.missing.length,
+  }))
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <Card title="Built vs Missing by Role" span={2}>
+        <ResponsiveContainer width="100%" height={280}>
+          <BarChart data={barData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="role" fontSize={11} angle={-15} textAnchor="end" height={60} />
+            <YAxis fontSize={12} />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="built" fill="#10b981" name="Built" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="missing" fill="#ef4444" name="Missing" radius={[4, 4, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </Card>
+
+      {stakeholders.map((s, idx) => (
+        <Card key={idx} title={null}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            {s.icon && <span style={{ fontSize: 24 }}>{s.icon}</span>}
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 15, color: '#1e293b' }}>{s.role}</div>
+              <div style={{ fontSize: 12, color: '#64748b' }}>{s.readiness_pct}% ready</div>
+            </div>
+          </div>
+
+          {/* Readiness bar */}
+          <div style={{ background: '#f1f5f9', borderRadius: 6, height: 8, marginBottom: 14 }}>
+            <div style={{
+              background: s.readiness_pct >= 70 ? '#10b981' : s.readiness_pct >= 40 ? '#f59e0b' : '#ef4444',
+              height: '100%', borderRadius: 6, width: `${Math.min(s.readiness_pct, 100)}%`,
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+
+          {/* Built items */}
+          {s.built.length > 0 && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#64748b', marginBottom: 6,
+                textTransform: 'uppercase' }}>Built</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                {s.built.map((item, i) => (
+                  <span key={i} style={{
+                    display: 'inline-block', padding: '3px 8px', borderRadius: 6, fontSize: 11,
+                    background: '#dcfce7', color: '#166534', fontWeight: 500,
+                  }}>{item}</span>
+                ))}
+              </div>
+            </div>
           )}
-        </div>
-      )}
 
-      {/* ─── BUSINESS CASE TAB ─── */}
-      {tab === 'business_case' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 24 }}>
-          {/* Cost Decrease */}
-          <div>
-            <h3 style={{ margin: '0 0 12px', fontSize: 16, color: '#10b981' }}>Cost Decrease Levers</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
-              {(bd?.business_case?.cost_decrease || []).map((lever, i) => (
-                <div key={i} style={{
-                  background: '#f0fdf4', borderRadius: 12, padding: 16,
-                  borderLeft: '4px solid #10b981'
-                }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#166534', marginBottom: 6 }}>{lever.name || 'Unnamed'}</div>
-                  <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5 }}>{lever.impact || 'No impact data'}</div>
-                </div>
-              ))}
-              {(bd?.business_case?.cost_decrease || []).length === 0 && (
-                <p style={{ color: '#94a3b8', fontSize: 13 }}>No cost decrease levers defined</p>
-              )}
+          {/* Missing items */}
+          {s.missing.length > 0 && (
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#64748b', marginBottom: 6,
+                textTransform: 'uppercase' }}>Missing</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                {s.missing.map((item, i) => (
+                  <span key={i} style={{
+                    display: 'inline-block', padding: '3px 8px', borderRadius: 6, fontSize: 11,
+                    background: '#fef2f2', color: '#991b1b', fontWeight: 500,
+                  }}>{item}</span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+        </Card>
+      ))}
+    </div>
+  )
+}
 
-          {/* Revenue Increase */}
-          <div>
-            <h3 style={{ margin: '0 0 12px', fontSize: 16, color: '#3b82f6' }}>Revenue Increase Levers</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
-              {(bd?.business_case?.revenue_increase || []).map((lever, i) => (
-                <div key={i} style={{
-                  background: '#eff6ff', borderRadius: 12, padding: 16,
-                  borderLeft: '4px solid #3b82f6'
-                }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#1e40af', marginBottom: 6 }}>{lever.name || 'Unnamed'}</div>
-                  <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5 }}>{lever.impact || 'No impact data'}</div>
-                </div>
-              ))}
-              {(bd?.business_case?.revenue_increase || []).length === 0 && (
-                <p style={{ color: '#94a3b8', fontSize: 13 }}>No revenue increase levers defined</p>
-              )}
+/* -- Business Case Tab ---------------------------------------------------- */
+function BusinessCaseTab({ data }) {
+  const sections = [
+    { key: 'cost_decrease', title: 'Cost Decrease', color: '#10b981', bg: '#f0fdf4' },
+    { key: 'revenue_increase', title: 'Revenue Increase', color: '#3b82f6', bg: '#eff6ff' },
+    { key: 'productivity_increase', title: 'Productivity Increase', color: '#8b5cf6', bg: '#f5f3ff' },
+  ]
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
+      {sections.map((sec) => {
+        const items = data[sec.key] || []
+        return (
+          <Card key={sec.key} title={null}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                width: 32, height: 32, borderRadius: 8, background: `${sec.color}15`,
+                color: sec.color, fontSize: 18, fontWeight: 700,
+              }}>{sec.key === 'cost_decrease' ? '\u2193' : sec.key === 'revenue_increase' ? '\u2191' : '\u26A1'}</span>
+              <h3 style={{ margin: 0, fontSize: 16, color: '#1e293b' }}>{sec.title}</h3>
+              <span style={{ fontSize: 12, color: '#64748b', marginLeft: 'auto' }}>
+                {items.length} lever{items.length !== 1 ? 's' : ''}
+              </span>
             </div>
-          </div>
+            {items.length > 0 ? (
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr style={{ background: '#f8fafc' }}>
+                    <th style={{ padding: '8px 10px', textAlign: 'left',
+                      borderBottom: '2px solid #e2e8f0', width: '50%' }}>Lever</th>
+                    <th style={{ padding: '8px 10px', textAlign: 'left',
+                      borderBottom: '2px solid #e2e8f0' }}>Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item, i) => (
+                    <tr key={i}>
+                      <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0',
+                        fontWeight: 600, color: '#334155' }}>
+                        {item.lever || item.name || '--'}
+                      </td>
+                      <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0',
+                        color: '#475569' }}>
+                        {item.impact || item.description || '--'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p style={{ fontSize: 13, color: '#94a3b8' }}>No levers defined</p>
+            )}
+          </Card>
+        )
+      })}
+    </div>
+  )
+}
 
-          {/* Productivity Increase */}
-          <div>
-            <h3 style={{ margin: '0 0 12px', fontSize: 16, color: '#8b5cf6' }}>Productivity Increase Levers</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
-              {(bd?.business_case?.productivity_increase || []).map((lever, i) => (
-                <div key={i} style={{
-                  background: '#f5f3ff', borderRadius: 12, padding: 16,
-                  borderLeft: '4px solid #8b5cf6'
-                }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#5b21b6', marginBottom: 6 }}>{lever.name || 'Unnamed'}</div>
-                  <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5 }}>{lever.impact || 'No impact data'}</div>
-                </div>
-              ))}
-              {(bd?.business_case?.productivity_increase || []).length === 0 && (
-                <p style={{ color: '#94a3b8', fontSize: 13 }}>No productivity increase levers defined</p>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+/* -- Roadmap Tab ---------------------------------------------------------- */
+function RoadmapTab({ data }) {
+  const phases = data.implementation_roadmap || []
 
-      {/* ─── ROADMAP TAB ─── */}
-      {tab === 'roadmap' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 0 }}>
-          {(bd?.implementation_roadmap || []).map((phase, i) => {
-            const isBuilt = phase.status === 'built'
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
+      <Card title="Implementation Phases">
+        <div style={{ position: 'relative', paddingLeft: 28 }}>
+          {phases.map((ph, i) => {
+            const color = STATUS_COLORS[ph.status] || '#94a3b8'
+            const isLast = i === phases.length - 1
             return (
-              <div key={i} style={{ display: 'flex', gap: 16, position: 'relative' }}>
-                {/* Vertical line + circle */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 32 }}>
+              <div key={i} style={{ position: 'relative', paddingBottom: isLast ? 0 : 28,
+                minHeight: 48 }}>
+                {/* Vertical line */}
+                {!isLast && (
                   <div style={{
-                    width: 20, height: 20, borderRadius: '50%',
-                    background: isBuilt ? '#10b981' : '#94a3b8',
-                    border: `3px solid ${isBuilt ? '#d1fae5' : '#e2e8f0'}`,
-                    zIndex: 1
+                    position: 'absolute', left: -20, top: 16, bottom: 0, width: 2,
+                    background: '#e2e8f0',
                   }} />
-                  {i < (bd?.implementation_roadmap || []).length - 1 && (
-                    <div style={{
-                      width: 2, flex: 1, background: '#e2e8f0', minHeight: 40
-                    }} />
-                  )}
-                </div>
-
-                {/* Phase content */}
+                )}
+                {/* Circle node */}
                 <div style={{
-                  background: '#fff', borderRadius: 12, padding: 16, marginBottom: 16,
-                  boxShadow: '0 1px 3px rgba(0,0,0,.08)', flex: 1,
-                  borderLeft: `4px solid ${isBuilt ? '#10b981' : '#94a3b8'}`
+                  position: 'absolute', left: -26, top: 4, width: 14, height: 14,
+                  borderRadius: '50%', background: color, border: '2px solid #fff',
+                  boxShadow: `0 0 0 2px ${color}40`,
+                }} />
+                {/* Content */}
+                <div style={{
+                  padding: '8px 16px', borderRadius: 8,
+                  background: ph.is_current ? `${color}10` : '#f8fafc',
+                  border: ph.is_current ? `2px solid ${color}` : '1px solid #e2e8f0',
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-                    <span style={{ fontSize: 15, fontWeight: 600, color: '#1e293b' }}>{phase.phase || `Phase ${i + 1}`}</span>
-                    <span style={{
-                      padding: '2px 10px', borderRadius: 6, fontSize: 11, fontWeight: 600,
-                      background: isBuilt ? '#dcfce7' : '#f1f5f9',
-                      color: isBuilt ? '#166534' : '#64748b'
-                    }}>{isBuilt ? 'Built' : 'Missing'}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span style={{ fontWeight: 700, fontSize: 14, color: '#1e293b' }}>
+                      {ph.phase}
+                    </span>
+                    <StatusBadge status={ph.status} />
+                    {ph.is_current && (
+                      <span style={{
+                        fontSize: 10, fontWeight: 700, color: '#3b82f6', background: '#dbeafe',
+                        padding: '1px 8px', borderRadius: 8, textTransform: 'uppercase',
+                      }}>Current</span>
+                    )}
                   </div>
-                  <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6 }}>{phase.scope || 'No scope defined'}</div>
+                  {ph.scope && (
+                    <div style={{ fontSize: 12, color: '#64748b', marginTop: 4 }}>{ph.scope}</div>
+                  )}
                 </div>
               </div>
             )
           })}
-          {(bd?.implementation_roadmap || []).length === 0 && (
-            <Card><p style={{ color: '#94a3b8' }}>No roadmap data available</p></Card>
-          )}
         </div>
-      )}
+      </Card>
 
-      {/* ─── DEFINITIONS TAB ─── */}
-      {tab === 'definitions' && (
-        <Card title="Glossary of Terms" span={2}>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid #e2e8f0', textAlign: 'left' }}>
-                  <th style={{ padding: '10px 14px', color: '#334155', fontWeight: 600 }}>Term</th>
-                  <th style={{ padding: '10px 14px', color: '#334155', fontWeight: 600 }}>Definition</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(defs?.terms || []).map((d, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                    <td style={{ padding: '10px 14px', fontWeight: 600, color: '#1e293b', whiteSpace: 'nowrap' }}>{d.term}</td>
-                    <td style={{ padding: '10px 14px', color: '#475569', lineHeight: 1.6 }}>{d.definition}</td>
-                  </tr>
+      {/* Gap analysis cards if present */}
+      {(data.gap_analysis || []).length > 0 && (
+        <Card title="Gap Analysis by Stakeholder">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            {data.gap_analysis.map((ga, i) => (
+              <div key={i} style={{
+                padding: 14, borderRadius: 8, background: '#fef2f2',
+                border: '1px solid #fecaca',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                  {ga.icon && <span style={{ fontSize: 18 }}>{ga.icon}</span>}
+                  <span style={{ fontWeight: 700, fontSize: 14, color: '#991b1b' }}>{ga.role}</span>
+                  <span style={{ fontSize: 11, color: '#64748b', marginLeft: 'auto' }}>
+                    {ga.total_gaps} gap{ga.total_gaps !== 1 ? 's' : ''}
+                  </span>
+                </div>
+                {Object.entries(ga.categories || {}).map(([cat, items], j) => (
+                  <div key={j} style={{ marginBottom: 6 }}>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: '#92400e',
+                      textTransform: 'capitalize', marginBottom: 2 }}>
+                      {cat.replace(/_/g, ' ')}
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+                      {items.map((item, k) => (
+                        <span key={k} style={{
+                          fontSize: 10, padding: '2px 6px', borderRadius: 4,
+                          background: '#fee2e2', color: '#991b1b',
+                        }}>{item}</span>
+                      ))}
+                    </div>
+                  </div>
                 ))}
-                {(defs?.terms || []).length === 0 && (
-                  <tr><td colSpan={2} style={{ padding: '16px', color: '#94a3b8', textAlign: 'center' }}>No definitions available</td></tr>
-                )}
-              </tbody>
-            </table>
+              </div>
+            ))}
           </div>
         </Card>
       )}
+    </div>
+  )
+}
+
+/* -- Definitions Tab ------------------------------------------------------ */
+function DefinitionsTab({ data }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
+      <Card title="Status Definitions">
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+          <thead>
+            <tr style={{ background: '#f8fafc' }}>
+              <th style={{ padding: '8px 10px', textAlign: 'left',
+                borderBottom: '2px solid #e2e8f0', width: 120 }}>Status</th>
+              <th style={{ padding: '8px 10px', textAlign: 'left',
+                borderBottom: '2px solid #e2e8f0' }}>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { status: 'built', meaning: 'Fully implemented and verified -- ready for production use.' },
+              { status: 'partial', meaning: 'Some steps automated or scaffolded, but not yet complete end-to-end.' },
+              { status: 'missing', meaning: 'Not yet implemented -- required for full deployment readiness.' },
+            ].map((row, i) => (
+              <tr key={i}>
+                <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0' }}>
+                  <StatusBadge status={row.status} />
+                </td>
+                <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0',
+                  color: '#475569' }}>
+                  {row.meaning}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+
+      <Card title="Key Terms">
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+          <thead>
+            <tr style={{ background: '#f8fafc' }}>
+              <th style={{ padding: '8px 10px', textAlign: 'left',
+                borderBottom: '2px solid #e2e8f0', width: 200 }}>Term</th>
+              <th style={{ padding: '8px 10px', textAlign: 'left',
+                borderBottom: '2px solid #e2e8f0' }}>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(data.terms || []).map((t, i) => (
+              <tr key={i}>
+                <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0',
+                  fontWeight: 600, color: '#1e293b' }}>
+                  {t.term}
+                </td>
+                <td style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0',
+                  color: '#475569', lineHeight: 1.5 }}>
+                  {t.definition}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
     </div>
   )
 }

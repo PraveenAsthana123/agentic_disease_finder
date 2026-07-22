@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = { Normal: '#16a34a', Mild: '#3b82f6', Moderate: '#eab308', Severe: '#ef4444' }
 const PATTERN_COLORS = {
   normal: '#16a34a', peripheral_neuropathy: '#f59e0b', small_fiber_neuropathy: '#8b5cf6',
@@ -95,9 +95,9 @@ export default function SSRDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ssr/overview`),
-          axios.get(`${API_URL}/ssr/breakdown`),
-          axios.get(`${API_URL}/ssr/definitions`)
+          axios.get(`${API_URL}/api/ssr/overview`),
+          axios.get(`${API_URL}/api/ssr/breakdown`),
+          axios.get(`${API_URL}/api/ssr/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

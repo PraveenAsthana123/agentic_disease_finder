@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const STATUS_COLORS = { automatic: '#4caf50', semi: '#ff9800', planned: '#94a3b8' }
 
@@ -58,9 +58,9 @@ export default function AutomaticPipelinesDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/automatic-pipelines/overview`),
-          axios.get(`${API_URL}/automatic-pipelines/breakdown`),
-          axios.get(`${API_URL}/automatic-pipelines/definitions`)
+          axios.get(`${API_URL}/api/automatic-pipelines/overview`),
+          axios.get(`${API_URL}/api/automatic-pipelines/breakdown`),
+          axios.get(`${API_URL}/api/automatic-pipelines/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

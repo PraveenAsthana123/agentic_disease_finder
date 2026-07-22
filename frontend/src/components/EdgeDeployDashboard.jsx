@@ -6,7 +6,7 @@ import {
   AreaChart, Area
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316']
 
 function fmt(v) { return v == null ? '—' : typeof v === 'number' ? v.toLocaleString() : String(v) }
@@ -75,9 +75,9 @@ export default function EdgeDeployDashboard() {
     setLoading(true)
     setError(null)
     Promise.all([
-      axios.get(`${API_URL}/edge-deploy/overview`),
-      axios.get(`${API_URL}/edge-deploy/breakdown`),
-      axios.get(`${API_URL}/edge-deploy/definitions`),
+      axios.get(`${API_URL}/api/edge-deploy/overview`),
+      axios.get(`${API_URL}/api/edge-deploy/breakdown`),
+      axios.get(`${API_URL}/api/edge-deploy/definitions`),
     ])
       .then(([ov, bd, df]) => {
         setOverview(ov.data)

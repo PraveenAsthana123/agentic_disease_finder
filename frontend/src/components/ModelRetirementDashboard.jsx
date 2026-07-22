@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const STAGE_COLORS = {
   active: '#22c55e',
@@ -72,9 +72,9 @@ export default function ModelRetirementDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/model-retirement/overview`),
-          axios.get(`${API_URL}/model-retirement/breakdown`),
-          axios.get(`${API_URL}/model-retirement/definitions`)
+          axios.get(`${API_URL}/api/model-retirement/overview`),
+          axios.get(`${API_URL}/api/model-retirement/breakdown`),
+          axios.get(`${API_URL}/api/model-retirement/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

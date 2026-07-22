@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const QUALITY_COLORS = { good: '#22c55e', moderate: '#eab308', heavy_artifact: '#ef4444' }
 const COLORS = ['#3b82f6', '#22c55e', '#eab308', '#f97316', '#ef4444', '#8b5cf6']
 
@@ -70,9 +70,9 @@ export default function ICANoiseCleaningDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/ica-noise-cleaning/overview`),
-          axios.get(`${API_URL}/ica-noise-cleaning/breakdown`),
-          axios.get(`${API_URL}/ica-noise-cleaning/definitions`),
+          axios.get(`${API_URL}/api/ica-noise-cleaning/overview`),
+          axios.get(`${API_URL}/api/ica-noise-cleaning/breakdown`),
+          axios.get(`${API_URL}/api/ica-noise-cleaning/definitions`),
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

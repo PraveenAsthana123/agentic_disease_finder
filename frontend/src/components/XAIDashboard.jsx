@@ -7,7 +7,7 @@ import {
   ZAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4', '#e91e63', '#795548']
 const METHOD_COLORS = { captum_ig: '#1e88e5', lime: '#4caf50', shap: '#ff9800' }
 
@@ -29,8 +29,8 @@ export default function XAIDashboard() {
       setLoading(true)
       try {
         const [ov, df] = await Promise.all([
-          axios.get(`${API_URL}/xai-dashboard/overview?seconds=10`),
-          axios.get(`${API_URL}/xai-dashboard/definitions`)
+          axios.get(`${API_URL}/api/xai-dashboard/overview?seconds=10`),
+          axios.get(`${API_URL}/api/xai-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setDefs(df.data)
@@ -46,19 +46,19 @@ export default function XAIDashboard() {
     setActiveTab(tab)
     try {
       if (tab === 'captum' && !captum) {
-        const r = await axios.get(`${API_URL}/xai-dashboard/captum?seconds=10`)
+        const r = await axios.get(`${API_URL}/api/xai-dashboard/captum?seconds=10`)
         setCaptum(r.data)
       } else if (tab === 'lime' && !limeData) {
-        const r = await axios.get(`${API_URL}/xai-dashboard/lime?seconds=10`)
+        const r = await axios.get(`${API_URL}/api/xai-dashboard/lime?seconds=10`)
         setLimeData(r.data)
       } else if (tab === 'shap' && !shapData) {
-        const r = await axios.get(`${API_URL}/xai-dashboard/shap?seconds=10`)
+        const r = await axios.get(`${API_URL}/api/xai-dashboard/shap?seconds=10`)
         setShapData(r.data)
       } else if (tab === 'gradcam' && !gradcamData) {
-        const r = await axios.get(`${API_URL}/xai-dashboard/gradcam?seconds=10`)
+        const r = await axios.get(`${API_URL}/api/xai-dashboard/gradcam?seconds=10`)
         setGradcamData(r.data)
       } else if (tab === 'comparison' && !comparison) {
-        const r = await axios.get(`${API_URL}/xai-dashboard/comparison?seconds=10`)
+        const r = await axios.get(`${API_URL}/api/xai-dashboard/comparison?seconds=10`)
         setComparison(r.data)
       }
     } catch (err) {

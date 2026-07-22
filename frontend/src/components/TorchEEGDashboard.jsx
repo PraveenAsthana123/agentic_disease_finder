@@ -6,7 +6,7 @@ import {
   LineChart, Line, Legend, Cell
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4']
 const BAND_COLORS = { delta: '#1e88e5', theta: '#7c4dff', alpha: '#4caf50', beta: '#ff9800' }
 
@@ -24,9 +24,9 @@ export default function TorchEEGDashboard() {
       setLoading(true)
       try {
         const [ov, ft, df] = await Promise.all([
-          axios.get(`${API_URL}/torcheeg/overview`),
-          axios.get(`${API_URL}/torcheeg/features`),
-          axios.get(`${API_URL}/torcheeg/definitions`)
+          axios.get(`${API_URL}/api/torcheeg/overview`),
+          axios.get(`${API_URL}/api/torcheeg/features`),
+          axios.get(`${API_URL}/api/torcheeg/definitions`)
         ])
         setOverview(ov.data)
         setFeatures(ft.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', partial: '#f97316', planned: '#8b5cf6', unknown: '#94a3b8' }
 const PRIORITY_COLORS = { '10/10': '#ef4444', '9/10': '#f97316', '8/10': '#3b82f6' }
@@ -72,9 +72,9 @@ export default function RoleSpecsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/role-specs/overview`),
-      axios.get(`${API_URL}/role-specs/breakdown`),
-      axios.get(`${API_URL}/role-specs/definitions`),
+      axios.get(`${API_URL}/api/role-specs/overview`),
+      axios.get(`${API_URL}/api/role-specs/breakdown`),
+      axios.get(`${API_URL}/api/role-specs/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const COMPLETION_COLORS = {
   high: '#22c55e',
@@ -71,9 +71,9 @@ export default function DailyCarePlanDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/daily-care-plan/overview`),
-          axios.get(`${API_URL}/daily-care-plan/breakdown`),
-          axios.get(`${API_URL}/daily-care-plan/definitions`)
+          axios.get(`${API_URL}/api/daily-care-plan/overview`),
+          axios.get(`${API_URL}/api/daily-care-plan/breakdown`),
+          axios.get(`${API_URL}/api/daily-care-plan/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

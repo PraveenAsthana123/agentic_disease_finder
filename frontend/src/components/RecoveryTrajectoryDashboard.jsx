@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const TRAJECTORY_COLORS = {
   improving: '#22c55e',
@@ -70,9 +70,9 @@ export default function RecoveryTrajectoryDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/recovery-trajectory/overview`),
-          axios.get(`${API_URL}/recovery-trajectory/breakdown`),
-          axios.get(`${API_URL}/recovery-trajectory/definitions`)
+          axios.get(`${API_URL}/api/recovery-trajectory/overview`),
+          axios.get(`${API_URL}/api/recovery-trajectory/breakdown`),
+          axios.get(`${API_URL}/api/recovery-trajectory/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

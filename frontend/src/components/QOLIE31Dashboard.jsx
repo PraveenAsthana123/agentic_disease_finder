@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = {
   poor: '#ef4444', fair: '#eab308', good: '#84cc16', excellent: '#22c55e'
 }
@@ -61,9 +61,9 @@ export default function QOLIE31Dashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/qolie31-dashboard/overview`),
-          axios.get(`${API_URL}/qolie31-dashboard/breakdown`),
-          axios.get(`${API_URL}/qolie31-dashboard/definitions`)
+          axios.get(`${API_URL}/api/qolie31-dashboard/overview`),
+          axios.get(`${API_URL}/api/qolie31-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/qolie31-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

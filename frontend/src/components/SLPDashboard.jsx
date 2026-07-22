@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#ef4444', '#22c55e', '#f59e0b', '#7c4dff', '#ec4899', '#6366f1', '#14b8a6']
 const fmt = v => (typeof v === 'number' ? v.toLocaleString() : v ?? '—')
 
@@ -57,7 +57,7 @@ export default function SLPDashboard() {
   const [showDefs, setShowDefs] = useState(false)
 
   useEffect(() => {
-    axios.get(`${API_URL}/slp`)
+    axios.get(`${API_URL}/api/slp`)
       .then(r => { setData(r.data); setLoading(false) })
       .catch(e => { setError(e.message); setLoading(false) })
   }, [])

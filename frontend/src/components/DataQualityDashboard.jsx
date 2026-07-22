@@ -6,7 +6,7 @@ import {
   AreaChart, Area, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#ef4444', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#f97316', '#14b8a6']
 
 function fmt(v) {
@@ -80,9 +80,9 @@ export default function DataQualityDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/data-quality/overview`),
-      axios.get(`${API_URL}/data-quality/breakdown`),
-      axios.get(`${API_URL}/data-quality/definitions`),
+      axios.get(`${API_URL}/api/data-quality/overview`),
+      axios.get(`${API_URL}/api/data-quality/breakdown`),
+      axios.get(`${API_URL}/api/data-quality/definitions`),
     ])
       .then(([oRes, bRes, dRes]) => {
         setOverview(oRes.data)

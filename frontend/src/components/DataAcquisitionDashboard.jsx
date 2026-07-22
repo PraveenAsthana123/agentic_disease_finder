@@ -6,7 +6,7 @@ import {
   AreaChart, Area
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#f97316', '#14b8a6']
 
 function fmt(v) {
@@ -69,9 +69,9 @@ export default function DataAcquisitionDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/data-acquisition/overview`),
-      axios.get(`${API_URL}/data-acquisition/breakdown`),
-      axios.get(`${API_URL}/data-acquisition/definitions`),
+      axios.get(`${API_URL}/api/data-acquisition/overview`),
+      axios.get(`${API_URL}/api/data-acquisition/breakdown`),
+      axios.get(`${API_URL}/api/data-acquisition/definitions`),
     ])
       .then(([oRes, bRes, dRes]) => {
         setOverview(oRes.data)

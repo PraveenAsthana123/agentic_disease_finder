@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const TIER_COLORS = {
   competent: '#22c55e', motor_risk: '#f97316',
   process_risk: '#8b5cf6', dual_risk: '#ef4444'
@@ -83,9 +83,9 @@ export default function AMPSDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/amps-dashboard/overview`),
-          axios.get(`${API_URL}/amps-dashboard/breakdown`),
-          axios.get(`${API_URL}/amps-dashboard/definitions`)
+          axios.get(`${API_URL}/api/amps-dashboard/overview`),
+          axios.get(`${API_URL}/api/amps-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/amps-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = {
   minimal: '#22c55e', mild: '#84cc16', moderate: '#eab308',
   'moderately severe': '#f97316', severe: '#ef4444'
@@ -62,9 +62,9 @@ export default function PHQ9Dashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/phq9-dashboard/overview`),
-          axios.get(`${API_URL}/phq9-dashboard/breakdown`),
-          axios.get(`${API_URL}/phq9-dashboard/definitions`)
+          axios.get(`${API_URL}/api/phq9-dashboard/overview`),
+          axios.get(`${API_URL}/api/phq9-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/phq9-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

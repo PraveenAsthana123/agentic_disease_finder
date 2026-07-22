@@ -6,7 +6,7 @@ import {
   PieChart, Pie, Cell, LineChart, Line, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4']
 const BAND_COLORS = { delta: '#1e88e5', theta: '#7c4dff', alpha: '#4caf50', beta: '#ff9800', gamma: '#f44336' }
 
@@ -23,9 +23,9 @@ export default function SynchrosqueezingDashboard() {
       setLoading(true)
       try {
         const [ov, sp, df] = await Promise.all([
-          axios.get(`${API_URL}/synchrosqueezing/overview?seconds=10`),
-          axios.get(`${API_URL}/synchrosqueezing/spectrum?seconds=10`),
-          axios.get(`${API_URL}/synchrosqueezing/definitions`)
+          axios.get(`${API_URL}/api/synchrosqueezing/overview?seconds=10`),
+          axios.get(`${API_URL}/api/synchrosqueezing/spectrum?seconds=10`),
+          axios.get(`${API_URL}/api/synchrosqueezing/definitions`)
         ])
         setOverview(ov.data)
         setSpectrum(sp.data)

@@ -6,7 +6,7 @@ import {
   AreaChart, Area
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#f97316', '#14b8a6']
 
 function fmt(v) {
@@ -69,9 +69,9 @@ export default function DataPrivacyDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/data-privacy/overview`),
-      axios.get(`${API_URL}/data-privacy/breakdown`),
-      axios.get(`${API_URL}/data-privacy/definitions`),
+      axios.get(`${API_URL}/api/data-privacy/overview`),
+      axios.get(`${API_URL}/api/data-privacy/breakdown`),
+      axios.get(`${API_URL}/api/data-privacy/definitions`),
     ])
       .then(([oRes, bRes, dRes]) => {
         setOverview(oRes.data)

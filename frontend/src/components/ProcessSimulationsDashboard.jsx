@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const MODE_COLORS = { Auto: '#3b82f6', Manual: '#f97316' }
 const LAYER_COLORS = { Data: '#3b82f6', Process: '#22c55e', Accuracy: '#8b5cf6', Reporting: '#f97316', Backend: '#14b8a6' }
@@ -73,9 +73,9 @@ export default function ProcessSimulationsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/process-simulations/overview`),
-      axios.get(`${API_URL}/process-simulations/breakdown`),
-      axios.get(`${API_URL}/process-simulations/definitions`),
+      axios.get(`${API_URL}/api/process-simulations/overview`),
+      axios.get(`${API_URL}/api/process-simulations/breakdown`),
+      axios.get(`${API_URL}/api/process-simulations/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

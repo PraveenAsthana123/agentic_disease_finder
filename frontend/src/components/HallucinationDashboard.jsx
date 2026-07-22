@@ -6,7 +6,7 @@ import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4', '#e91e63', '#8bc34a']
 
 const SEVERITY_COLORS = {
@@ -42,9 +42,9 @@ export default function HallucinationDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/hallucination/overview`),
-          axios.get(`${API_URL}/hallucination/breakdown`),
-          axios.get(`${API_URL}/hallucination/definitions`)
+          axios.get(`${API_URL}/api/hallucination/overview`),
+          axios.get(`${API_URL}/api/hallucination/breakdown`),
+          axios.get(`${API_URL}/api/hallucination/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

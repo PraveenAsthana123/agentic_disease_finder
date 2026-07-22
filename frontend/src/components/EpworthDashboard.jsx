@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEVERITY_COLORS = { normal: '#22c55e', mild: '#eab308', moderate: '#f97316', severe: '#ef4444' }
 const COLORS = ['#22c55e', '#eab308', '#f97316', '#ef4444', '#8b5cf6', '#3b82f6']
 
@@ -58,9 +58,9 @@ export default function EpworthDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/epworth-dashboard/overview`),
-          axios.get(`${API_URL}/epworth-dashboard/breakdown`),
-          axios.get(`${API_URL}/epworth-dashboard/definitions`)
+          axios.get(`${API_URL}/api/epworth-dashboard/overview`),
+          axios.get(`${API_URL}/api/epworth-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/epworth-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

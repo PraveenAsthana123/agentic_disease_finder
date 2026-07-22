@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', 'not-pulled': '#94a3b8', scaffold: '#f97316', planned: '#3b82f6', unknown: '#d1d5db' }
 
@@ -60,9 +60,9 @@ export default function AiTypeCoverageDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/ai-type-coverage/overview`),
-      axios.get(`${API_URL}/ai-type-coverage/breakdown`),
-      axios.get(`${API_URL}/ai-type-coverage/definitions`),
+      axios.get(`${API_URL}/api/ai-type-coverage/overview`),
+      axios.get(`${API_URL}/api/ai-type-coverage/breakdown`),
+      axios.get(`${API_URL}/api/ai-type-coverage/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

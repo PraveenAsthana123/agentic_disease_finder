@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 const ROUTE_COLORS = { auto_approve: '#10b981', review: '#f59e0b', escalate: '#ef4444' }
@@ -65,9 +65,9 @@ export default function DecisionAiDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/decision-ai/overview`),
-          axios.get(`${API_URL}/decision-ai/breakdown`),
-          axios.get(`${API_URL}/decision-ai/definitions`)
+          axios.get(`${API_URL}/api/decision-ai/overview`),
+          axios.get(`${API_URL}/api/decision-ai/breakdown`),
+          axios.get(`${API_URL}/api/decision-ai/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

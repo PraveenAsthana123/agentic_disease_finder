@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#84cc16', '#f97316']
 
 const TRAJ_COLORS = {
@@ -71,9 +71,9 @@ export default function FunctionalRecoveryDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/functional-recovery/overview`),
-          axios.get(`${API_URL}/functional-recovery/breakdown`),
-          axios.get(`${API_URL}/functional-recovery/definitions`)
+          axios.get(`${API_URL}/api/functional-recovery/overview`),
+          axios.get(`${API_URL}/api/functional-recovery/breakdown`),
+          axios.get(`${API_URL}/api/functional-recovery/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const STATUS_COLORS = { pass: '#4caf50', partial: '#ff9800', planned: '#f44336', built: '#4caf50', missing: '#f44336', Accepted: '#4caf50', 'In Progress': '#ff9800', Pending: '#f44336', Built: '#4caf50', Partial: '#ff9800', Missing: '#f44336' }
 
@@ -61,9 +61,9 @@ export default function FunctionalBADashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/functional-ba/overview`),
-          axios.get(`${API_URL}/functional-ba/breakdown`),
-          axios.get(`${API_URL}/functional-ba/definitions`)
+          axios.get(`${API_URL}/api/functional-ba/overview`),
+          axios.get(`${API_URL}/api/functional-ba/breakdown`),
+          axios.get(`${API_URL}/api/functional-ba/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

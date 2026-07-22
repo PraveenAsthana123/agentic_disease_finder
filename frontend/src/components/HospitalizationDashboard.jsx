@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const TYPE_COLORS = {
   emergency: '#ef4444',
@@ -103,9 +103,9 @@ export default function HospitalizationDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/hospitalization/overview`),
-          axios.get(`${API_URL}/hospitalization/breakdown`),
-          axios.get(`${API_URL}/hospitalization/definitions`)
+          axios.get(`${API_URL}/api/hospitalization/overview`),
+          axios.get(`${API_URL}/api/hospitalization/breakdown`),
+          axios.get(`${API_URL}/api/hospitalization/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

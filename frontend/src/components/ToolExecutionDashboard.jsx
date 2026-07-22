@@ -5,7 +5,7 @@ import {
   ResponsiveContainer, Legend, PieChart, Pie, Cell
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4', '#e91e63', '#8bc34a']
 
 function fmt(v, decimals = 0) {
@@ -26,9 +26,9 @@ export default function ToolExecutionDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/tool-execution/overview`),
-          axios.get(`${API_URL}/tool-execution/breakdown`),
-          axios.get(`${API_URL}/tool-execution/definitions`)
+          axios.get(`${API_URL}/api/tool-execution/overview`),
+          axios.get(`${API_URL}/api/tool-execution/breakdown`),
+          axios.get(`${API_URL}/api/tool-execution/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

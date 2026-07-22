@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const SEVERITY_COLORS = { mild: '#22c55e', moderate: '#f59e0b', severe: '#ef4444' }
 const TYPE_COLORS = ['#3b82f6', '#8b5cf6', '#ef4444', '#f59e0b', '#06b6d4', '#ec4899']
@@ -61,9 +61,9 @@ export default function ArtifactDetectionDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/artifact-detection/overview`),
-          axios.get(`${API_URL}/artifact-detection/breakdown`),
-          axios.get(`${API_URL}/artifact-detection/definitions`)
+          axios.get(`${API_URL}/api/artifact-detection/overview`),
+          axios.get(`${API_URL}/api/artifact-detection/breakdown`),
+          axios.get(`${API_URL}/api/artifact-detection/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

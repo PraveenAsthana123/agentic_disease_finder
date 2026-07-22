@@ -6,7 +6,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const BAND_COLORS = { delta: '#1e88e5', theta: '#7c4dff', alpha: '#4caf50', beta: '#ff9800', gamma: '#f44336' }
 const PIE_COLORS = ['#4caf50', '#f44336', '#ff9800', '#1e88e5']
 
@@ -24,9 +24,9 @@ export default function ExpertDashboard() {
       setError(null)
       try {
         const [m, l, f] = await Promise.all([
-          axios.get(`${API_URL}/eeg-viz/montage-comparison`),
-          axios.get(`${API_URL}/eeg-viz/localization`),
-          axios.get(`${API_URL}/eeg-viz/false-alarm`)
+          axios.get(`${API_URL}/api/eeg-viz/montage-comparison`),
+          axios.get(`${API_URL}/api/eeg-viz/localization`),
+          axios.get(`${API_URL}/api/eeg-viz/false-alarm`)
         ])
         setMontage(m.data)
         setLocalization(l.data)

@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const URGENCY_COLORS = {
   emergent: '#ef4444',
@@ -100,9 +100,9 @@ export default function ReferralTriageDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/referral-triage/overview`),
-          axios.get(`${API_URL}/referral-triage/breakdown`),
-          axios.get(`${API_URL}/referral-triage/definitions`)
+          axios.get(`${API_URL}/api/referral-triage/overview`),
+          axios.get(`${API_URL}/api/referral-triage/breakdown`),
+          axios.get(`${API_URL}/api/referral-triage/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

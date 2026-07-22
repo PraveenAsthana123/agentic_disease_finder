@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const COLORS = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#ec4899', '#f97316']
 
@@ -87,9 +87,9 @@ export default function ICD10CodingDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/icd10-coding/overview`),
-          axios.get(`${API_URL}/icd10-coding/breakdown`),
-          axios.get(`${API_URL}/icd10-coding/definitions`)
+          axios.get(`${API_URL}/api/icd10-coding/overview`),
+          axios.get(`${API_URL}/api/icd10-coding/breakdown`),
+          axios.get(`${API_URL}/api/icd10-coding/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

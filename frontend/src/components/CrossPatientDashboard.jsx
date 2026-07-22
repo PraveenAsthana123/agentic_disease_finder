@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#16a34a', '#eab308', '#ef4444', '#8b5cf6', '#ec4899', '#f59e0b', '#06b6d4']
 
 function fmt(v) {
@@ -68,9 +68,9 @@ export default function CrossPatientDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/cross-patient-benchmark/overview`),
-          axios.get(`${API_URL}/cross-patient-benchmark/breakdown`),
-          axios.get(`${API_URL}/cross-patient-benchmark/definitions`)
+          axios.get(`${API_URL}/api/cross-patient-benchmark/overview`),
+          axios.get(`${API_URL}/api/cross-patient-benchmark/breakdown`),
+          axios.get(`${API_URL}/api/cross-patient-benchmark/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

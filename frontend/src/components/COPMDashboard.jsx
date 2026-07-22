@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const LEVEL_COLORS = {
   high: '#22c55e', moderate: '#3b82f6',
   low: '#eab308', very_low: '#ef4444'
@@ -99,9 +99,9 @@ export default function COPMDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/copm-dashboard/overview`),
-          axios.get(`${API_URL}/copm-dashboard/breakdown`),
-          axios.get(`${API_URL}/copm-dashboard/definitions`)
+          axios.get(`${API_URL}/api/copm-dashboard/overview`),
+          axios.get(`${API_URL}/api/copm-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/copm-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

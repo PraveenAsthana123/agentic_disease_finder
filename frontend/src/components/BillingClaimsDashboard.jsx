@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const STATUS_COLORS = {
   paid: '#10b981', approved: '#3b82f6', submitted: '#06b6d4',
@@ -67,9 +67,9 @@ export default function BillingClaimsDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/billing-claims/overview`),
-          axios.get(`${API_URL}/billing-claims/breakdown`),
-          axios.get(`${API_URL}/billing-claims/definitions`)
+          axios.get(`${API_URL}/api/billing-claims/overview`),
+          axios.get(`${API_URL}/api/billing-claims/breakdown`),
+          axios.get(`${API_URL}/api/billing-claims/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

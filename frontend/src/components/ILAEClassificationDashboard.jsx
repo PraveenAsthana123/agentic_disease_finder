@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend, Treemap
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const ONSET_COLORS = {
   focal: '#1e88e5',
@@ -45,7 +45,7 @@ export default function ILAEClassificationDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/ilae-classification`)
+        const res = await axios.get(`${API_URL}/api/ilae-classification`)
         setData(res.data)
       } catch (e) {
         setError(e.message || 'Failed to load ILAE classification data')

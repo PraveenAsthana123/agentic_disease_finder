@@ -6,7 +6,7 @@ import {
   ScatterChart, Scatter, Cell
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const BAND_COLORS = {
   delta: '#1e88e5',
   theta: '#7c4dff',
@@ -29,10 +29,10 @@ export default function TopomapDashboard() {
       setLoading(true)
       try {
         const [ov, el, asym, df] = await Promise.all([
-          axios.get(`${API_URL}/topomap/overview?seconds=30`),
-          axios.get(`${API_URL}/topomap/electrodes`),
-          axios.get(`${API_URL}/topomap/asymmetry?seconds=30`),
-          axios.get(`${API_URL}/topomap/definitions`)
+          axios.get(`${API_URL}/api/topomap/overview?seconds=30`),
+          axios.get(`${API_URL}/api/topomap/electrodes`),
+          axios.get(`${API_URL}/api/topomap/asymmetry?seconds=30`),
+          axios.get(`${API_URL}/api/topomap/definitions`)
         ])
         setOverview(ov.data)
         setElectrodes(el.data)

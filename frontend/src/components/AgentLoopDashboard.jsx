@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const DRIFT_COLORS = { low: '#10b981', medium: '#f59e0b', high: '#ef4444' }
 
@@ -31,9 +31,9 @@ export default function AgentLoopDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/agent-loop/overview`),
-          axios.get(`${API_URL}/agent-loop/breakdown`),
-          axios.get(`${API_URL}/agent-loop/definitions`)
+          axios.get(`${API_URL}/api/agent-loop/overview`),
+          axios.get(`${API_URL}/api/agent-loop/breakdown`),
+          axios.get(`${API_URL}/api/agent-loop/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

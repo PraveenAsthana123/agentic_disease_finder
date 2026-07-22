@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 
 const SEVERITY_COLORS = {
@@ -93,12 +93,12 @@ export default function CognitionLinkDashboard() {
       setLoading(true)
       try {
         const [ov, mx, hm, dm, al, df] = await Promise.all([
-          axios.get(`${API_URL}/cognition-link/overview`),
-          axios.get(`${API_URL}/cognition-link/matrix`),
-          axios.get(`${API_URL}/cognition-link/heatmap`),
-          axios.get(`${API_URL}/cognition-link/domains`),
-          axios.get(`${API_URL}/cognition-link/alerts`),
-          axios.get(`${API_URL}/cognition-link/definitions`)
+          axios.get(`${API_URL}/api/cognition-link/overview`),
+          axios.get(`${API_URL}/api/cognition-link/matrix`),
+          axios.get(`${API_URL}/api/cognition-link/heatmap`),
+          axios.get(`${API_URL}/api/cognition-link/domains`),
+          axios.get(`${API_URL}/api/cognition-link/alerts`),
+          axios.get(`${API_URL}/api/cognition-link/definitions`)
         ])
         setOverview(ov.data)
         setMatrix(mx.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const COLORS = ['#3b82f6', '#8b5cf6', '#06b6d4', '#f97316', '#22c55e', '#ef4444', '#eab308', '#ec4899']
 
@@ -60,9 +60,9 @@ export default function NeurologistWorkbenchDashboard() {
   useEffect(() => {
     setLoading(true)
     Promise.all([
-      axios.get(`${API_URL}/neurologist-workbench/overview`),
-      axios.get(`${API_URL}/neurologist-workbench/breakdown`),
-      axios.get(`${API_URL}/neurologist-workbench/definitions`)
+      axios.get(`${API_URL}/api/neurologist-workbench/overview`),
+      axios.get(`${API_URL}/api/neurologist-workbench/breakdown`),
+      axios.get(`${API_URL}/api/neurologist-workbench/definitions`)
     ])
       .then(([ov, bd, df]) => {
         setData({ overview: ov.data, breakdown: bd.data, definitions: df.data })

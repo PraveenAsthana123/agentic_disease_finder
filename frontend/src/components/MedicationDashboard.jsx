@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#ef4444', '#22c55e', '#f59e0b', '#7c4dff', '#ec4899', '#6366f1', '#14b8a6']
 const fmt = v => (typeof v === 'number' ? (v % 1 === 0 ? v.toLocaleString() : v.toFixed(1)) : v ?? '--')
 
@@ -60,8 +60,8 @@ export default function MedicationDashboard() {
       setLoading(true)
       try {
         const [main, df] = await Promise.all([
-          axios.get(`${API_URL}/medication`),
-          axios.get(`${API_URL}/medication/definitions`)
+          axios.get(`${API_URL}/api/medication`),
+          axios.get(`${API_URL}/api/medication/definitions`)
         ])
         setData(main.data)
         setDefs(df.data)

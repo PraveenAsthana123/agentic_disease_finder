@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#6366f1', '#64748b', '#06b6d4']
 
 const STEP_ICONS = { complete: '\u2705', pending_cron: '\u23F3', no_data: '\u26A0\uFE0F' }
@@ -20,7 +20,7 @@ export default function DataCleaningDashboard() {
     const load = async () => {
       setLoading(true)
       try {
-        const res = await axios.get(`${API_URL}/data-manager/cleaning`)
+        const res = await axios.get(`${API_URL}/api/data-manager/cleaning`)
         setData(res.data)
       } catch (err) {
         setError(err.message || 'Failed to load data cleaning report')

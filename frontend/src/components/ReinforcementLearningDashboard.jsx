@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#16a34a', '#eab308', '#ef4444', '#8b5cf6', '#ec4899', '#f59e0b', '#06b6d4']
 const PIE_COLORS = ['#10b981', '#3b82f6', '#eab308', '#ef4444', '#8b5cf6']
 
@@ -48,9 +48,9 @@ export default function ReinforcementLearningDashboard() {
     const load = async () => {
       try {
         const [ov, bd, df] = await Promise.all([
-          axios.get(`${API_URL}/reinforcement-learning/overview`),
-          axios.get(`${API_URL}/reinforcement-learning/breakdown`),
-          axios.get(`${API_URL}/reinforcement-learning/definitions`)
+          axios.get(`${API_URL}/api/reinforcement-learning/overview`),
+          axios.get(`${API_URL}/api/reinforcement-learning/breakdown`),
+          axios.get(`${API_URL}/api/reinforcement-learning/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(bd.data)

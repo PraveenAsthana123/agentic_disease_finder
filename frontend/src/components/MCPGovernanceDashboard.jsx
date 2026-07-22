@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b']
 const STATUS_COLORS = { built: '#10b981', planned: '#3b82f6', partial: '#f59e0b', unknown: '#94a3b8' }
 const HEALTH_COLORS = { healthy: '#10b981', degraded: '#f59e0b', unhealthy: '#ef4444', unknown: '#94a3b8' }
@@ -28,9 +28,9 @@ export default function MCPGovernanceDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/mcp-governance/overview`),
-          axios.get(`${API_URL}/mcp-governance/breakdown`),
-          axios.get(`${API_URL}/mcp-governance/definitions`)
+          axios.get(`${API_URL}/api/mcp-governance/overview`),
+          axios.get(`${API_URL}/api/mcp-governance/breakdown`),
+          axios.get(`${API_URL}/api/mcp-governance/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

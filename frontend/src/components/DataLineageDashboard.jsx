@@ -6,7 +6,7 @@ import {
   LineChart, Line, AreaChart, Area
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#64748b', '#f97316', '#14b8a6']
 
 function fmt(v) {
@@ -77,9 +77,9 @@ export default function DataLineageDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/data-lineage/overview`),
-      axios.get(`${API_URL}/data-lineage/breakdown`),
-      axios.get(`${API_URL}/data-lineage/definitions`),
+      axios.get(`${API_URL}/api/data-lineage/overview`),
+      axios.get(`${API_URL}/api/data-lineage/breakdown`),
+      axios.get(`${API_URL}/api/data-lineage/definitions`),
     ])
       .then(([oRes, bRes, dRes]) => {
         setOverview(oRes.data)

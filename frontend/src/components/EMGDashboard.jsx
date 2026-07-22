@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = { Normal: '#16a34a', Mild: '#3b82f6', Moderate: '#eab308', Severe: '#ef4444' }
 const PATTERN_COLORS = { normal: '#16a34a', neuropathic: '#8b5cf6', myopathic: '#f59e0b', mixed: '#ef4444', nmj: '#06b6d4' }
 const PIE_COLORS = ['#16a34a', '#3b82f6', '#eab308', '#ef4444']
@@ -83,9 +83,9 @@ export default function EMGDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/emg/overview`),
-          axios.get(`${API_URL}/emg/breakdown`),
-          axios.get(`${API_URL}/emg/definitions`)
+          axios.get(`${API_URL}/api/emg/overview`),
+          axios.get(`${API_URL}/api/emg/breakdown`),
+          axios.get(`${API_URL}/api/emg/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

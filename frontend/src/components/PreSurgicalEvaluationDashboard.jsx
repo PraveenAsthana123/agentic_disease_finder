@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 
 const CANDIDACY_COLORS = {
   strong_candidate: '#22c55e',
@@ -70,9 +70,9 @@ export default function PreSurgicalEvaluationDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/presurgical-evaluation/overview`),
-          axios.get(`${API_URL}/presurgical-evaluation/breakdown`),
-          axios.get(`${API_URL}/presurgical-evaluation/definitions`)
+          axios.get(`${API_URL}/api/presurgical-evaluation/overview`),
+          axios.get(`${API_URL}/api/presurgical-evaluation/breakdown`),
+          axios.get(`${API_URL}/api/presurgical-evaluation/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

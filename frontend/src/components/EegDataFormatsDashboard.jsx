@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const READINESS_COLORS = { true: '#22c55e', partial: '#f97316', false: '#ef4444' }
 const ROUTE_COLORS = { signal: '#3b82f6', rag: '#8b5cf6', cv: '#14b8a6', extract: '#f97316', video: '#ec4899' }
@@ -83,9 +83,9 @@ export default function EegDataFormatsDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/eeg-data-formats/overview`),
-      axios.get(`${API_URL}/eeg-data-formats/breakdown`),
-      axios.get(`${API_URL}/eeg-data-formats/definitions`),
+      axios.get(`${API_URL}/api/eeg-data-formats/overview`),
+      axios.get(`${API_URL}/api/eeg-data-formats/breakdown`),
+      axios.get(`${API_URL}/api/eeg-data-formats/definitions`),
     ]).then(([o, b, d]) => {
       setOverview(o.data)
       setBreakdown(b.data)

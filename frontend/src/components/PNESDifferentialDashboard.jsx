@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const CLASS_COLORS = {
   'PNES likely': '#ef4444',
   'Mixed / Comorbid': '#eab308',
@@ -89,9 +89,9 @@ export default function PNESDifferentialDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/pnes-differential/overview`),
-          axios.get(`${API_URL}/pnes-differential/breakdown`),
-          axios.get(`${API_URL}/pnes-differential/definitions`)
+          axios.get(`${API_URL}/api/pnes-differential/overview`),
+          axios.get(`${API_URL}/api/pnes-differential/breakdown`),
+          axios.get(`${API_URL}/api/pnes-differential/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

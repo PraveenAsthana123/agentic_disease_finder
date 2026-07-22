@@ -6,7 +6,7 @@ import {
   LineChart, Line
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#1e88e5', '#7c4dff', '#4caf50', '#ff9800', '#f44336', '#00bcd4']
 
 const METRIC_LABELS = {
@@ -30,8 +30,8 @@ export default function EntropyDashboard() {
       setLoading(true)
       try {
         const [ov, df] = await Promise.all([
-          axios.get(`${API_URL}/entropy/overview?seconds=30`),
-          axios.get(`${API_URL}/entropy/definitions`)
+          axios.get(`${API_URL}/api/entropy/overview?seconds=30`),
+          axios.get(`${API_URL}/api/entropy/definitions`)
         ])
         setOverview(ov.data)
         setDefs(df.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const LEVEL_COLORS = {
   independent: '#22c55e', modified_independent: '#3b82f6',
   moderate_dependence: '#eab308', low_moderate: '#f97316',
@@ -85,9 +85,9 @@ export default function FIMDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/fim-dashboard/overview`),
-          axios.get(`${API_URL}/fim-dashboard/breakdown`),
-          axios.get(`${API_URL}/fim-dashboard/definitions`)
+          axios.get(`${API_URL}/api/fim-dashboard/overview`),
+          axios.get(`${API_URL}/api/fim-dashboard/breakdown`),
+          axios.get(`${API_URL}/api/fim-dashboard/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const STATUS_COLORS = { built: '#4caf50', scaffold: '#ff9800', planned: '#94a3b8', partial: '#ff9800' }
 
@@ -39,9 +39,9 @@ export default function DatasetCoverageDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/dataset-coverage/overview`),
-          axios.get(`${API_URL}/dataset-coverage/breakdown`),
-          axios.get(`${API_URL}/dataset-coverage/definitions`)
+          axios.get(`${API_URL}/api/dataset-coverage/overview`),
+          axios.get(`${API_URL}/api/dataset-coverage/breakdown`),
+          axios.get(`${API_URL}/api/dataset-coverage/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

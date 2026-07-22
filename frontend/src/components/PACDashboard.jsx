@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, AreaChart, Area
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6','#22c55e','#f97316','#8b5cf6','#ef4444','#eab308','#06b6d4','#ec4899']
 
 function fmt(v) {
@@ -60,9 +60,9 @@ export default function PACDashboard() {
       setLoading(true)
       try {
         const [o, b, d] = await Promise.all([
-          axios.get(`${API_URL}/pac/overview`),
-          axios.get(`${API_URL}/pac/breakdown`),
-          axios.get(`${API_URL}/pac/definitions`)
+          axios.get(`${API_URL}/api/pac/overview`),
+          axios.get(`${API_URL}/api/pac/breakdown`),
+          axios.get(`${API_URL}/api/pac/definitions`)
         ])
         setOverview(o.data)
         setBreakdown(b.data)

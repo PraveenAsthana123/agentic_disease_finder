@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#3b82f6', '#22c55e', '#f97316', '#ef4444', '#8b5cf6', '#14b8a6', '#ec4899', '#eab308']
 const STATUS_COLORS = { built: '#22c55e', cataloged: '#3b82f6', partial: '#f97316', planned: '#8b5cf6' }
 const PRIORITY_COLORS = { mandatory: '#ef4444', 'highly valuable': '#f97316', 'very valuable': '#8b5cf6', valuable: '#3b82f6', preferred: '#14b8a6' }
@@ -73,9 +73,9 @@ export default function AssessmentCatalogDashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${API_URL}/assessment-catalog/overview`),
-      axios.get(`${API_URL}/assessment-catalog/breakdown`),
-      axios.get(`${API_URL}/assessment-catalog/definitions`),
+      axios.get(`${API_URL}/api/assessment-catalog/overview`),
+      axios.get(`${API_URL}/api/assessment-catalog/breakdown`),
+      axios.get(`${API_URL}/api/assessment-catalog/definitions`),
     ])
       .then(([ov, bd, df]) => { setOverview(ov.data); setBreakdown(bd.data); setDefs(df.data) })
       .catch(e => setError(e.message))

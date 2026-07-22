@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const SEV_COLORS = { Normal: '#16a34a', Mild: '#3b82f6', Moderate: '#eab308', Severe: '#ef4444' }
 const PATTERN_COLORS = {
   normal: '#16a34a', peripheral_hearing_loss: '#f59e0b', auditory_neuropathy: '#8b5cf6',
@@ -91,9 +91,9 @@ export default function BeraDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/bera/overview`),
-          axios.get(`${API_URL}/bera/breakdown`),
-          axios.get(`${API_URL}/bera/definitions`)
+          axios.get(`${API_URL}/api/bera/overview`),
+          axios.get(`${API_URL}/api/bera/breakdown`),
+          axios.get(`${API_URL}/api/bera/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)

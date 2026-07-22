@@ -5,7 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_URL = '/api'
+const API_URL = (typeof window !== 'undefined' && window._env_?.REACT_APP_API_URL) || 'http://localhost:8010'
 const COLORS = ['#4caf50', '#ff9800', '#f44336', '#1e88e5', '#7c4dff', '#00bcd4', '#e91e63', '#607d8b']
 const STATUS_COLORS = { built: '#4caf50', cataloged: '#1e88e5', planned: '#94a3b8', partial: '#ff9800' }
 
@@ -57,9 +57,9 @@ export default function AIDarkFactoryDashboard() {
       setLoading(true)
       try {
         const [ov, br, df] = await Promise.all([
-          axios.get(`${API_URL}/dark-factory/overview`),
-          axios.get(`${API_URL}/dark-factory/breakdown`),
-          axios.get(`${API_URL}/dark-factory/definitions`)
+          axios.get(`${API_URL}/api/dark-factory/overview`),
+          axios.get(`${API_URL}/api/dark-factory/breakdown`),
+          axios.get(`${API_URL}/api/dark-factory/definitions`)
         ])
         setOverview(ov.data)
         setBreakdown(br.data)
