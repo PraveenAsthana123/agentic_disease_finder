@@ -291,6 +291,11 @@
           "name": "SecOps Dashboard",
           "status": "built",
           "maps_to": "/api/sec-ops/{overview,breakdown,definitions} + /sec-ops"
+        },
+        {
+          "name": "ICD-10 Coding Dashboard",
+          "status": "built",
+          "maps_to": "/api/icd10-coding/{overview,breakdown,definitions} + ICD10CodingDashboard.jsx — diagnostic coding analytics, AI vs human coder comparison, confidence scoring, rejection tracking, 85 records 41 patients"
         }
       ]
     }

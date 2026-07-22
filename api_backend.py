@@ -14597,6 +14597,34 @@ async def sleep_stage_analysis_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── ICD-10 Coding Dashboard ───────────────────────────────────
+# Real data: icd10_coding_records (85 rows, 41 patients) — diagnostic coding
+# analytics, AI vs human coder comparison, confidence scoring, rejection tracking.
+
+@app.get("/api/icd10-coding/overview")
+async def icd10_coding_overview(patient_id: str = None):
+    """ICD-10 coding overview — KPIs, status distribution, top codes,
+    confidence tiers, coder breakdown, AI vs human, monthly trend."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.overview(patient_id))
+
+
+@app.get("/api/icd10-coding/breakdown")
+async def icd10_coding_breakdown(patient_id: str = None):
+    """ICD-10 coding breakdown — per-patient summary, recent activity,
+    chapter distribution, low-confidence records, pending review queue."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.breakdown(patient_id))
+
+
+@app.get("/api/icd10-coding/definitions")
+async def icd10_coding_definitions():
+    """ICD-10 coding definitions — statuses, confidence thresholds,
+    coding workflow, ICD-10 chapter guide, metrics glossary."""
+    import scripts.icd10_coding_dashboard as icd
+    return _json_safe(icd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

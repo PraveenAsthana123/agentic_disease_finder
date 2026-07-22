@@ -422,6 +422,7 @@ import SleepStageAnalysisDashboard from './components/SleepStageAnalysisDashboar
 import InboxDashboard from './components/InboxDashboard'
 import NotificationsDashboard from './components/NotificationsDashboard'
 import TransactionLogDashboard from './components/TransactionLogDashboard'
+import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -956,7 +957,8 @@ function App() {
     { id: 'xai-dashboard', label: 'XAI Explanations' },
     { id: 'inbox', label: 'Message Inbox' },
     { id: 'notifications', label: 'Notification Centre' },
-    { id: 'transaction-log', label: 'Transaction Log' }
+    { id: 'transaction-log', label: 'Transaction Log' },
+    { id: 'icd10-coding', label: 'ICD-10 Coding' }
   ]
 
   // API Calls
@@ -2887,6 +2889,8 @@ function App() {
         return <NotificationsDashboard />
       case 'transaction-log':
         return <TransactionLogDashboard />
+      case 'icd10-coding':
+        return <ICD10CodingDashboard />
       default:
         return renderClassificationTab()
     }
