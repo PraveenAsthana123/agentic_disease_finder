@@ -14647,6 +14647,28 @@ async def seizure_trigger_logs_definitions():
     return _json_safe(stl.definitions())
 
 
+# ── Camera Monitoring Dashboard ─────────────────────────────────────
+# Real data: camera_monitoring_sessions (78 rows, 27 patients, 5 locations).
+@app.get("/api/camera-monitoring/overview")
+async def camera_monitoring_overview():
+    """Camera monitoring overview — KPIs, location/quality/type distributions,
+    monthly trend, alert & seizure detection rates."""
+    import scripts.camera_monitoring_dashboard as cam
+    return _json_safe(cam.overview())
+
+@app.get("/api/camera-monitoring/breakdown")
+async def camera_monitoring_breakdown():
+    """Camera monitoring breakdown — all sessions, by-patient, by-location."""
+    import scripts.camera_monitoring_dashboard as cam
+    return _json_safe(cam.breakdown())
+
+@app.get("/api/camera-monitoring/definitions")
+async def camera_monitoring_definitions():
+    """Camera monitoring definitions — field explanations and data sources."""
+    import scripts.camera_monitoring_dashboard as cam
+    return _json_safe(cam.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

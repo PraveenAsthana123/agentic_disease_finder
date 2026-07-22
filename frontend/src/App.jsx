@@ -141,6 +141,7 @@ import LLMOpsDashboard from './components/LLMOpsDashboard'
 import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboard'
+import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
 import DataManagerDashboard from './components/DataManagerDashboard'
 import HybridPipelineDashboard from './components/HybridPipelineDashboard'
@@ -785,6 +786,7 @@ function App() {
     { id: 'data-augmentation', label: 'Data Augmentation' },
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'seizure-trigger-logs', label: 'Seizure Trigger Logs' },
+    { id: 'camera-monitoring', label: 'Camera Monitoring' },
     { id: 'data-steward', label: 'Data Steward' },
     { id: 'data-manager', label: 'Data Manager (CDM)' },
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
@@ -2267,6 +2269,8 @@ function App() {
         return <SeizurePredictionDashboard />
       case 'seizure-trigger-logs':
         return <SeizureTriggerLogsDashboard />
+      case 'camera-monitoring':
+        return <CameraMonitoringDashboard />
       case 'data-steward':
         return <DataStewardDashboard />
       case 'data-manager':
