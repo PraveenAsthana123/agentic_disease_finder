@@ -14669,6 +14669,28 @@ async def camera_monitoring_definitions():
     return _json_safe(cam.definitions())
 
 
+# ── IS SOP Compliance Dashboard ────────────────────────────────────
+# Real data: is_sop_procedures (20 rows, 6 categories) + is_sop_audits (30 rows).
+@app.get("/api/is-sop-compliance/overview")
+async def is_sop_compliance_overview():
+    """IS SOP Compliance overview — KPIs, compliance score, finding/severity
+    distributions, monthly audit trend, standards coverage."""
+    import scripts.is_sop_compliance_dashboard as isc
+    return _json_safe(isc.overview())
+
+@app.get("/api/is-sop-compliance/breakdown")
+async def is_sop_compliance_breakdown():
+    """IS SOP Compliance breakdown — all procedures, all audits, patient summary."""
+    import scripts.is_sop_compliance_dashboard as isc
+    return _json_safe(isc.breakdown())
+
+@app.get("/api/is-sop-compliance/definitions")
+async def is_sop_compliance_definitions():
+    """IS SOP Compliance definitions — SOP terms, severity levels, categories."""
+    import scripts.is_sop_compliance_dashboard as isc
+    return _json_safe(isc.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
