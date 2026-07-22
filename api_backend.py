@@ -654,6 +654,82 @@ async def create_transaction(t: TxnIn):
     return {"status": "success"}
 
 
+@app.get("/api/transaction-log/overview")
+async def transaction_log_overview():
+    """Transaction Log overview — totals, component distribution, action distribution, hourly activity, recent items."""
+    with cdb._connect() as c:
+        total = c.execute("SELECT COUNT(*) FROM transaction_log").fetchone()[0]
+        comp_rows = c.execute("SELECT component, COUNT(*) AS cnt FROM transaction_log GROUP BY component ORDER BY cnt DESC").fetchall()
+        action_rows = c.execute("SELECT action, COUNT(*) AS cnt FROM transaction_log GROUP BY action ORDER BY cnt DESC").fetchall()
+        actor_rows = c.execute("SELECT actor, COUNT(*) AS cnt FROM transaction_log GROUP BY actor ORDER BY cnt DESC").fetchall()
+        patient_rows = c.execute("SELECT patient_id, COUNT(*) AS cnt FROM transaction_log GROUP BY patient_id ORDER BY cnt DESC LIMIT 20").fetchall()
+        hourly = c.execute("SELECT substr(ts_utc, 12, 2) AS hour, COUNT(*) AS cnt FROM transaction_log GROUP BY hour ORDER BY hour").fetchall()
+        recent = c.execute("SELECT * FROM transaction_log ORDER BY id DESC LIMIT 50").fetchall()
+    return _json_safe({
+        "total": total,
+        "by_component": {r["component"]: r["cnt"] for r in comp_rows},
+        "by_action": {r["action"]: r["cnt"] for r in action_rows},
+        "by_actor": {r["actor"]: r["cnt"] for r in actor_rows},
+        "by_patient": {r["patient_id"]: r["cnt"] for r in patient_rows},
+        "hourly_activity": [{"hour": r["hour"], "count": r["cnt"]} for r in hourly],
+        "recent": [dict(r) for r in recent],
+    })
+
+
+@app.get("/api/transaction-log/breakdown")
+async def transaction_log_breakdown(component: Optional[str] = None, action: Optional[str] = None, patient_id: Optional[str] = None, limit: int = 100):
+    """Transaction Log filtered breakdown — by component, action, or patient."""
+    clauses, params = [], []
+    if component:
+        clauses.append("component = ?"); params.append(component)
+    if action:
+        clauses.append("action = ?"); params.append(action)
+    if patient_id:
+        clauses.append("patient_id = ?"); params.append(patient_id)
+    where = (" WHERE " + " AND ".join(clauses)) if clauses else ""
+    with cdb._connect() as c:
+        total = c.execute(f"SELECT COUNT(*) FROM transaction_log{where}", params).fetchone()[0]
+        rows = c.execute(f"SELECT * FROM transaction_log{where} ORDER BY id DESC LIMIT ?", params + [limit]).fetchall()
+    return _json_safe({"total": total, "filter": {"component": component, "action": action, "patient_id": patient_id}, "items": [dict(r) for r in rows]})
+
+
+@app.get("/api/transaction-log/definitions")
+async def transaction_log_definitions():
+    """Transaction Log field definitions and reference."""
+    return {
+        "fields": {
+            "id": "Auto-incrementing transaction ID",
+            "patient_id": "Patient identifier or _system for system-level events",
+            "component": "System component that generated the transaction (e.g. cv_pipeline, graph_db, consistency)",
+            "action": "Action type performed (e.g. process, extract, build, check, predict, train)",
+            "actor": "Who or what initiated the action (system, user, cron, etc.)",
+            "ref_id": "Optional reference ID linking to related records",
+            "detail": "Human-readable description of what happened",
+            "ts_utc": "Timestamp in UTC",
+            "ts_local": "Timestamp in local timezone",
+        },
+        "common_components": {
+            "cv_pipeline": "Computer vision pipeline (video frame analysis, object detection)",
+            "video_frames": "Video frame extraction from uploaded recordings",
+            "graph_db": "Knowledge graph database build and update",
+            "consistency": "Data consistency checks across tables",
+            "prediction": "ML model inference / prediction runs",
+            "eeg_analysis": "EEG signal analysis and feature extraction",
+            "drift": "Data/model drift detection checks",
+            "fairness": "Fairness and bias testing",
+        },
+        "common_actions": {
+            "process": "Processing pipeline execution",
+            "extract": "Data extraction from raw sources",
+            "build": "Building/rebuilding derived data structures",
+            "check": "Validation or consistency check",
+            "predict": "Running ML model inference",
+            "train": "Model training or retraining",
+            "upload": "Data upload and ingestion",
+        },
+    }
+
+
 @app.get("/api/agent-tasks")
 async def agent_tasks():
     """Agent/task registry with honest built/scaffold/planned status."""
