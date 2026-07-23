@@ -14691,6 +14691,28 @@ async def is_sop_compliance_definitions():
     return _json_safe(isc.definitions())
 
 
+# ── EEG Analysis Results Dashboard ────────────────────────────────
+# Real data: analyses (129 rows, 49 patients, 5 diseases, 9 prediction labels).
+@app.get("/api/eeg-analysis-results/overview")
+async def eeg_analysis_results_overview():
+    """EEG analysis results overview — KPIs, disease/label/quality distributions,
+    confidence tiers, monthly trend, per-disease confidence stats."""
+    import scripts.eeg_analysis_results_dashboard as ear
+    return _json_safe(ear.overview())
+
+@app.get("/api/eeg-analysis-results/breakdown")
+async def eeg_analysis_results_breakdown():
+    """EEG analysis results breakdown — all analyses, by-patient, by-disease."""
+    import scripts.eeg_analysis_results_dashboard as ear
+    return _json_safe(ear.breakdown())
+
+@app.get("/api/eeg-analysis-results/definitions")
+async def eeg_analysis_results_definitions():
+    """EEG analysis results definitions — field explanations, diseases, quality levels."""
+    import scripts.eeg_analysis_results_dashboard as ear
+    return _json_safe(ear.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

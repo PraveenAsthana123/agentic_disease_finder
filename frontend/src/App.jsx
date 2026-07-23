@@ -143,6 +143,7 @@ import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboard'
 import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
 import ISSOPComplianceDashboard from './components/ISSOPComplianceDashboard'
+import EEGAnalysisResultsDashboard from './components/EEGAnalysisResultsDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
 import DataManagerDashboard from './components/DataManagerDashboard'
 import HybridPipelineDashboard from './components/HybridPipelineDashboard'
@@ -789,6 +790,7 @@ function App() {
     { id: 'seizure-trigger-logs', label: 'Seizure Trigger Logs' },
     { id: 'camera-monitoring', label: 'Camera Monitoring' },
     { id: 'is-sop-compliance', label: 'IS SOP Compliance' },
+    { id: 'eeg-analysis-results', label: 'EEG Analysis Results' },
     { id: 'data-steward', label: 'Data Steward' },
     { id: 'data-manager', label: 'Data Manager (CDM)' },
     { id: 'hybrid-pipeline', label: 'Hybrid Pipeline' },
@@ -2275,6 +2277,8 @@ function App() {
         return <CameraMonitoringDashboard />
       case 'is-sop-compliance':
         return <ISSOPComplianceDashboard />
+      case 'eeg-analysis-results':
+        return <EEGAnalysisResultsDashboard />
       case 'data-steward':
         return <DataStewardDashboard />
       case 'data-manager':
