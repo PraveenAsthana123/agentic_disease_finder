@@ -14713,6 +14713,30 @@ async def eeg_analysis_results_definitions():
     return _json_safe(ear.definitions())
 
 
+# ── Cognitive Decline Tracking Dashboard ─────────────────────────────
+# Real data: cognitive_decline_tracking (96 rows, 20 patients, 3-6 timepoints each).
+@app.get("/api/cognitive-decline/overview")
+async def cognitive_decline_overview():
+    """Cognitive decline overview — KPIs, classification distribution, domain decline
+    rates, MoCA trend by timepoint, risk stratification."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.overview())
+
+@app.get("/api/cognitive-decline/breakdown")
+async def cognitive_decline_breakdown():
+    """Cognitive decline breakdown — per-patient trajectories, slopes, classification,
+    risk levels, flagged patients with clinical recommendations."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.breakdown())
+
+@app.get("/api/cognitive-decline/definitions")
+async def cognitive_decline_definitions():
+    """Cognitive decline definitions — decline thresholds, assessment instruments,
+    risk factors, clinical actions, glossary."""
+    import scripts.cognitive_decline_dashboard as cdd
+    return _json_safe(cdd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
