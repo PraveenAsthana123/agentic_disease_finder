@@ -76,8 +76,11 @@ def overview(patient_id=None):
 
     conn.close()
     confirmed_count = next((s["value"] for s in status_dist if s["name"] == "confirmed"), 0)
+    rejected_count = next((s["value"] for s in status_dist if s["name"] == "rejected"), 0)
+    auto_coded_count = next((s["value"] for s in status_dist if s["name"] == "auto_coded"), 0)
     return {
-        "kpis": {"total_records": total_records, "total_patients": total_patients, "unique_codes": unique_codes, "confirmation_rate": round(confirmed_count * 100.0 / total_records, 1) if total_records else 0, "avg_confidence": confidence_stats["avg"], "secondary_coverage_pct": secondary_coverage["pct"]},
+        "available": True,
+        "kpis": {"total_records": total_records, "total_patients": total_patients, "unique_codes": unique_codes, "avg_confidence": confidence_stats["avg"], "confirmed_rate": round(confirmed_count * 100.0 / total_records, 1) if total_records else 0, "rejection_rate": round(rejected_count * 100.0 / total_records, 1) if total_records else 0, "auto_coded_count": auto_coded_count, "secondary_coverage_pct": secondary_coverage["pct"]},
         "status_distribution": status_dist,
         "top_codes": top_codes,
         "confidence_stats": confidence_stats,

@@ -80,7 +80,7 @@ export default function ICD10CodingDashboard() {
 
   if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>Loading ICD-10 coding data...</div>
   if (error) return <div style={{ padding: 40, textAlign: 'center', color: '#ef4444' }}>Error: {error}</div>
-  if (!overview) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>ICD-10 coding data not available</div>
+  if (!overview?.available) return <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>ICD-10 coding data not available</div>
 
   const tabs = ['overview', 'records', 'coders', 'review', 'definitions']
   const kpis = overview.kpis || overview
@@ -114,9 +114,9 @@ export default function ICD10CodingDashboard() {
               <KPI label="Unique Codes" value={kpis.unique_codes} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginTop: 16 }}>
-              <KPI label="Confirmation Rate" value={kpis.confirmation_rate != null ? `${fmt(kpis.confirmation_rate)}%` : '--'} color="#10b981" />
+              <KPI label="Confirmed Rate" value={kpis.confirmed_rate != null ? `${fmt(kpis.confirmed_rate)}%` : '--'} color="#10b981" />
               <KPI label="Avg Confidence" value={kpis.avg_confidence} color="#3b82f6" />
-              <KPI label="Secondary Coverage" value={kpis.secondary_coverage != null ? `${fmt(kpis.secondary_coverage)}%` : '--'} color="#8b5cf6" />
+              <KPI label="Rejection Rate" value={kpis.rejection_rate != null ? `${fmt(kpis.rejection_rate)}%` : '--'} color="#ef4444" sub={`Auto-coded: ${fmt(kpis.auto_coded_count)}`} />
             </div>
           </Card>
 
@@ -224,10 +224,10 @@ export default function ICD10CodingDashboard() {
                 <tbody>
                   {(breakdown.recent_activity || []).map((row, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || row.patient || '--'}</td>
-                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.date || '').slice(0, 10)}</td>
-                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.code || '--'}</td>
-                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.description || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.encounter_date || '').slice(0, 10)}</td>
+                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.primary_code || '--'}</td>
+                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.primary_desc || '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'center' }}><StatusBadge status={row.status} /></td>
                       <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.confidence || 0) >= 0.9 ? '#10b981' : (row.confidence || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.confidence != null ? row.confidence.toFixed(2) : '--'}</td>
                       <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{row.coder || '--'}</td>
@@ -269,13 +269,13 @@ export default function ICD10CodingDashboard() {
                 <tbody>
                   {(breakdown.patient_summary || []).map((row, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || row.patient || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'right' }}>{fmt(row.total_codes)}</td>
-                      <td style={{ padding: '8px 12px', textAlign: 'right' }}>{fmt(row.unique)}</td>
-                      <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.avg_confidence || 0) >= 0.9 ? '#10b981' : (row.avg_confidence || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.avg_confidence != null ? row.avg_confidence.toFixed(2) : '--'}</td>
+                      <td style={{ padding: '8px 12px', textAlign: 'right' }}>{fmt(row.unique_codes)}</td>
+                      <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.avg_conf || 0) >= 0.9 ? '#10b981' : (row.avg_conf || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.avg_conf != null ? row.avg_conf.toFixed(2) : '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'right', color: '#10b981' }}>{fmt(row.confirmed)}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'right', color: '#ef4444' }}>{fmt(row.rejected)}</td>
-                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.latest || '').slice(0, 10)}</td>
+                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.latest_encounter || '').slice(0, 10)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -339,8 +339,8 @@ export default function ICD10CodingDashboard() {
                         <td style={{ padding: '8px 12px', textAlign: 'right', color: '#10b981' }}>{fmt(row.confirmed)}</td>
                         <td style={{ padding: '8px 12px', textAlign: 'right', color: '#ef4444' }}>{fmt(row.rejected)}</td>
                         <td style={{ padding: '8px 12px', textAlign: 'right', color: '#f59e0b' }}>{fmt(row.pending)}</td>
-                        <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.avg_confidence || 0) >= 0.9 ? '#10b981' : (row.avg_confidence || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.avg_confidence != null ? row.avg_confidence.toFixed(2) : '--'}</td>
-                        <td style={{ padding: '8px 12px', textAlign: 'right', color: (row.min_confidence || 0) < 0.7 ? '#ef4444' : '#64748b' }}>{row.min_confidence != null ? row.min_confidence.toFixed(2) : '--'}</td>
+                        <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.avg_conf || 0) >= 0.9 ? '#10b981' : (row.avg_conf || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.avg_conf != null ? row.avg_conf.toFixed(2) : '--'}</td>
+                        <td style={{ padding: '8px 12px', textAlign: 'right', color: (row.min_conf || 0) < 0.7 ? '#ef4444' : '#64748b' }}>{row.min_conf != null ? row.min_conf.toFixed(2) : '--'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -372,10 +372,10 @@ export default function ICD10CodingDashboard() {
                   {(breakdown.pending_review_queue || []).map((row, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid #f1f5f9', background: (row.confidence || 0) < 0.7 ? '#fef2f2' : undefined }}>
                       <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{row.id || '--'}</td>
-                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || row.patient || '--'}</td>
-                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.date || '').slice(0, 10)}</td>
-                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.code || '--'}</td>
-                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.description || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.encounter_date || '').slice(0, 10)}</td>
+                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.primary_code || '--'}</td>
+                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.primary_desc || '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: (row.confidence || 0) >= 0.9 ? '#10b981' : (row.confidence || 0) >= 0.7 ? '#f59e0b' : '#ef4444' }}>{row.confidence != null ? row.confidence.toFixed(2) : '--'}</td>
                       <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{row.coder || '--'}</td>
                     </tr>
@@ -404,10 +404,10 @@ export default function ICD10CodingDashboard() {
                   {(breakdown.low_confidence_records || []).map((row, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid #f1f5f9', background: '#fef2f2' }}>
                       <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{row.id || '--'}</td>
-                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || row.patient || '--'}</td>
-                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.date || '').slice(0, 10)}</td>
-                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.code || '--'}</td>
-                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.description || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontWeight: 500 }}>{row.patient_id || '--'}</td>
+                      <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{(row.encounter_date || '').slice(0, 10)}</td>
+                      <td style={{ padding: '8px 12px', fontFamily: 'monospace', color: '#3b82f6', fontWeight: 600 }}>{row.primary_code || '--'}</td>
+                      <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.primary_desc || '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 600, color: '#ef4444' }}>{row.confidence != null ? row.confidence.toFixed(2) : '--'}</td>
                       <td style={{ padding: '8px 12px', fontSize: 12, color: '#64748b' }}>{row.coder || '--'}</td>
                       <td style={{ padding: '8px 12px', textAlign: 'center' }}><StatusBadge status={row.status} /></td>
