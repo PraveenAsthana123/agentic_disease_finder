@@ -14737,6 +14737,29 @@ async def cognitive_decline_definitions():
     return _json_safe(cdd.definitions())
 
 
+# ── Referral Records Dashboard ─────────────────────────────────────
+# Real data: referral_records (84 rows, 41 patients, 7 sources, 9 reasons).
+@app.get("/api/referral-records/overview")
+async def referral_records_overview():
+    """Referral records overview — KPIs, source/reason/urgency/triage distributions,
+    monthly trend, specialist workload, triage score breakdowns."""
+    import scripts.referral_records_dashboard as rrd
+    return _json_safe(rrd.overview())
+
+@app.get("/api/referral-records/breakdown")
+async def referral_records_breakdown():
+    """Referral records breakdown — all referrals, patient summary, by-source analysis."""
+    import scripts.referral_records_dashboard as rrd
+    return _json_safe(rrd.breakdown())
+
+@app.get("/api/referral-records/definitions")
+async def referral_records_definitions():
+    """Referral records definitions — referral sources, reasons, urgency levels,
+    triage statuses, triage score explanation."""
+    import scripts.referral_records_dashboard as rrd
+    return _json_safe(rrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
