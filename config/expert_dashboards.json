@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-07-10",
+  "updated_at": "2026-07-27",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -438,7 +438,7 @@
     {
       "role": "Admin / Operations",
       "name": "Expert Dashboards Catalog",
-      "viz": "Multi-role dashboard catalog — status/priority/role distribution, per-role cards, P0 must-have matrix, tech stack",
+      "viz": "Multi-role dashboard catalog \u2014 status/priority/role distribution, per-role cards, P0 must-have matrix, tech stack",
       "feature": "36-dashboard overview, 14 roles, 28 endpoints, status/priority pie charts, role bar chart, must-have P0 grid, library table",
       "why": "Meta-dashboard showing all expert dashboards across clinical roles",
       "priority": "P1",
@@ -449,6 +449,18 @@
         "/api/expert-dashboards-catalog/definitions"
       ],
       "component": "ExpertDashboardsCatalogDashboard.jsx"
+    },
+    {
+      "name": "Secure Messages",
+      "id": "secure-messages",
+      "table": "secure_messages",
+      "status": "built",
+      "endpoints": [
+        "/api/secure-messages/overview",
+        "/api/secure-messages/breakdown",
+        "/api/secure-messages/definitions"
+      ],
+      "component": "SecureMessagesDashboard.jsx"
     }
   ],
   "summary": {

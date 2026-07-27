@@ -14760,6 +14760,28 @@ async def referral_records_definitions():
     return _json_safe(rrd.definitions())
 
 
+# ── Secure Messages Dashboard ────────────────────────────────────────
+# Real data: secure_messages (170 rows, 30 patients, 8 categories, 4 priorities).
+@app.get("/api/secure-messages/overview")
+async def secure_messages_overview():
+    """Secure messages overview — KPIs, direction/category/priority/read-status
+    distributions, monthly trend, response-time by priority, category-by-direction."""
+    import scripts.secure_messages_dashboard as smd
+    return _json_safe(smd.overview())
+
+@app.get("/api/secure-messages/breakdown")
+async def secure_messages_breakdown():
+    """Secure messages breakdown — all messages, by-patient, by-category."""
+    import scripts.secure_messages_dashboard as smd
+    return _json_safe(smd.breakdown())
+
+@app.get("/api/secure-messages/definitions")
+async def secure_messages_definitions():
+    """Secure messages definitions — field explanations, categories, priorities."""
+    import scripts.secure_messages_dashboard as smd
+    return _json_safe(smd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

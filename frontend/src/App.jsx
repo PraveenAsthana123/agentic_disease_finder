@@ -142,6 +142,7 @@ import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboard'
 import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
+import SecureMessagesDashboard from './components/SecureMessagesDashboard'
 import ISSOPComplianceDashboard from './components/ISSOPComplianceDashboard'
 import EEGAnalysisResultsDashboard from './components/EEGAnalysisResultsDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
@@ -793,6 +794,7 @@ function App() {
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'seizure-trigger-logs', label: 'Seizure Trigger Logs' },
     { id: 'camera-monitoring', label: 'Camera Monitoring' },
+    { id: 'secure-messages', label: 'Secure Messages' },
     { id: 'is-sop-compliance', label: 'IS SOP Compliance' },
     { id: 'eeg-analysis-results', label: 'EEG Analysis Results' },
     { id: 'data-steward', label: 'Data Steward' },
@@ -2284,6 +2286,8 @@ function App() {
         return <SeizureTriggerLogsDashboard />
       case 'camera-monitoring':
         return <CameraMonitoringDashboard />
+      case 'secure-messages':
+        return <SecureMessagesDashboard />
       case 'is-sop-compliance':
         return <ISSOPComplianceDashboard />
       case 'eeg-analysis-results':
