@@ -290,6 +290,7 @@ import ArtifactAnnotationDashboard from './components/ArtifactAnnotationDashboar
 import ArtifactDetectionDashboard from './components/ArtifactDetectionDashboard'
 import CognitiveDeclineDashboard from './components/CognitiveDeclineDashboard'
 import ReferralRecordsDashboard from './components/ReferralRecordsDashboard'
+import KnowledgeMgmtDashboard from './components/KnowledgeMgmtDashboard'
 import CognitiveTestsDashboard from './components/CognitiveTestsDashboard'
 import CognitionLinkDashboard from './components/CognitionLinkDashboard'
 import EEGAcquisitionDashboard from './components/EEGAcquisitionDashboard'
@@ -833,6 +834,7 @@ function App() {
     { id: 'artifact-detection', label: 'Artifact Detection' },
     { id: 'cognitive-decline', label: 'Cognitive Decline' },
     { id: 'referral-records', label: 'Referral Records' },
+    { id: 'knowledge-mgmt', label: 'Knowledge Management' },
     { id: 'cognitive-tests', label: 'Digital Cognitive Tests' },
     { id: 'cognition-link', label: 'Cognition Link (EEG↔Cognitive)' },
     { id: 'eeg-acquisition', label: 'EEG Acquisition Quality' },
@@ -2587,6 +2589,8 @@ function App() {
         return <CognitiveDeclineDashboard />
       case 'referral-records':
         return <ReferralRecordsDashboard />
+      case 'knowledge-mgmt':
+        return <KnowledgeMgmtDashboard />
       case 'cognitive-tests':
         return <CognitiveTestsDashboard />
       case 'cognition-link':
