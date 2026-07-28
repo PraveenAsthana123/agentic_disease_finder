@@ -9703,25 +9703,153 @@ async def ica_noise_cleaning_definitions():
 
 
 # ── Federated Learning Dashboard ──────────────────────────────────────
+# Real data: federation_rounds (18 rows), federation_sites (8 sites, 529 patients).
+# Transforms raw script output to match FederatedLearningDashboard.jsx field names.
+
 @app.get("/api/federated-learning/overview")
 async def federated_learning_overview():
-    """Federated learning overview: global model, sites, rounds, privacy budget."""
-    import scripts.federated_learning_dashboard as fl
-    return _json_safe(fl.overview())
+    """Federated learning overview — global accuracy, site summary, round
+    history, privacy budget, convergence status from real federation tables."""
+    import scripts.federated_learning_dashboard as fld
+    raw = fld.overview()
+    site_summary = []
+    for s in raw.get("site_summary", []):
+        site_summary.append({
+            "site_name": s.get("name", s.get("site_name", "")),
+            "n_patients": s.get("n_patients", 0),
+            "local_accuracy": (s.get("local_accuracy", 0) or 0) / 100.0,
+            "contribution_weight": s.get("contribution_weight", 0),
+            "last_sync": (s.get("last_sync") or "")[:10],
+        })
+    round_history = []
+    for r in raw.get("round_history", []):
+        round_history.append({
+            "round": r.get("round_number", r.get("round", 0)),
+            "global_accuracy": (r.get("global_accuracy", 0) or 0) / 100.0,
+        })
+    pm = raw.get("privacy_metrics", {})
+    cs = raw.get("convergence_status", "training")
+    if cs == "training":
+        cs = "converging"
+    return _json_safe({
+        "global_model_accuracy": (raw.get("global_model_accuracy", 0) or 0) / 100.0,
+        "total_sites": raw.get("total_sites", 0),
+        "communication_rounds": raw.get("total_communication_rounds", 0),
+        "privacy_budget_epsilon": pm.get("epsilon_spent", raw.get("privacy_budget", {}).get("epsilon_spent", 0)),
+        "convergence_status": cs,
+        "epsilon_spent": pm.get("epsilon_spent", 0),
+        "delta": pm.get("delta", 1e-5),
+        "noise_multiplier": pm.get("noise_multiplier", 1.1),
+        "gradient_clipping_norm": pm.get("gradient_clipping_norm", 1.0),
+        "site_summary": site_summary,
+        "round_history": round_history,
+    })
 
 
 @app.get("/api/federated-learning/breakdown")
 async def federated_learning_breakdown():
-    """Federated learning breakdown: per-site detail, aggregation comparison, convergence."""
-    import scripts.federated_learning_dashboard as fl
-    return _json_safe(fl.breakdown())
+    """Federated learning breakdown — per-site model performance, seizure type
+    distribution, bandwidth, convergence curve, aggregation comparison,
+    gradient norms, privacy audit, heterogeneity metrics."""
+    import scripts.federated_learning_dashboard as fld
+    raw = fld.breakdown()
+    ov = fld.overview()
+    site_details = []
+    for s in raw.get("per_site_detail", []):
+        lm = s.get("local_model_metrics", {})
+        site_details.append({
+            "name": s.get("name", ""),
+            "n_patients": s.get("n_patients", 0),
+            "n_eeg_records": s.get("n_eeg_records", 0),
+            "accuracy": (lm.get("accuracy", 0) or 0) / 100.0,
+            "sensitivity": (lm.get("sensitivity", 0) or 0) / 100.0,
+            "specificity": (lm.get("specificity", 0) or 0) / 100.0,
+            "f1": (lm.get("f1_score", 0) or 0) / 100.0,
+            "weight_divergence_from_global": s.get("weight_divergence_from_global", 0),
+        })
+    seizure_type_distribution = []
+    for s in raw.get("per_site_detail", []):
+        dist = s.get("seizure_types_distribution", {})
+        seizure_type_distribution.append({
+            "site": (s.get("name") or "").split(" ")[0],
+            "focal": dist.get("Focal Epilepsy", 0),
+            "generalized": dist.get("Generalised Epilepsy", 0),
+            "unknown": dist.get("Unknown", 0),
+        })
+    bandwidth_usage = []
+    for s in raw.get("per_site_detail", []):
+        bandwidth_usage.append({
+            "site": (s.get("name") or "").split(" ")[0],
+            "bandwidth_mb": s.get("bandwidth_used_mb", 0),
+        })
+    convergence_curve = []
+    for c in raw.get("convergence_curve", []):
+        convergence_curve.append({
+            "round": c.get("round", 0),
+            "global_loss": c.get("global_loss", 0),
+            "global_accuracy": (c.get("global_accuracy", 0) or 0) / 100.0,
+        })
+    aggregation_comparison = []
+    for a in raw.get("aggregation_comparison", []):
+        aggregation_comparison.append({
+            "strategy": a.get("method", ""),
+            "accuracy": (a.get("avg_accuracy", 0) or 0) / 100.0,
+            "rounds_to_converge": a.get("rounds_used", 0),
+            "communication_cost": f"{a.get('avg_communication_cost_mb', 0)} MB",
+        })
+    gradient_norms = []
+    for g in raw.get("gradient_analysis", []):
+        gradient_norms.append({
+            "site": (g.get("name") or "").split(" ")[0],
+            "gradient_norm": g.get("avg_gradient_norm", 0),
+            "clipping_rate": g.get("clipping_rate", 0),
+        })
+    epsilon_budget_history = []
+    for p in raw.get("privacy_audit", []):
+        epsilon_budget_history.append({
+            "round": p.get("round", 0),
+            "cumulative_epsilon": p.get("cumulative_epsilon", 0),
+            "budget_limit": 10.0,
+        })
+    privacy_audit = []
+    for p in raw.get("privacy_audit", []):
+        gs = p.get("privacy_guarantee_status", "within_budget")
+        if gs == "within_budget":
+            gs = "converged"
+        elif gs == "budget_exceeded":
+            gs = "diverging"
+        privacy_audit.append({
+            "round": p.get("round", 0),
+            "epsilon_spent": p.get("epsilon_spent", 0),
+            "cumulative": p.get("cumulative_epsilon", 0),
+            "guarantee_status": gs,
+        })
+    dh = ov.get("data_heterogeneity", {})
+    heterogeneity_metrics = {
+        "non_iid_score": dh.get("non_iid_score", 0),
+        "label_distribution_divergence": dh.get("label_distribution_divergence", 0),
+        "feature_skew": round(dh.get("feature_drift_across_sites", 0), 3),
+        "quantity_skew": round(dh.get("accuracy_std_across_sites", 0) / 10, 3),
+    }
+    return _json_safe({
+        "site_details": site_details,
+        "seizure_type_distribution": seizure_type_distribution,
+        "bandwidth_usage": bandwidth_usage,
+        "convergence_curve": convergence_curve,
+        "aggregation_comparison": aggregation_comparison,
+        "gradient_norms": gradient_norms,
+        "epsilon_budget_history": epsilon_budget_history,
+        "privacy_audit": privacy_audit,
+        "heterogeneity_metrics": heterogeneity_metrics,
+    })
 
 
 @app.get("/api/federated-learning/definitions")
 async def federated_learning_definitions():
-    """Federated learning definitions: FL terminology and privacy metrics."""
-    import scripts.federated_learning_dashboard as fl
-    return _json_safe(fl.definitions())
+    """Federated learning definitions — FL terminology, privacy concepts,
+    aggregation strategies, convergence metrics."""
+    import scripts.federated_learning_dashboard as fld
+    return _json_safe(fld.definitions())
 
 
 # ── GNN Electrode Connectivity Dashboard ─────────────────────────────
@@ -12852,32 +12980,6 @@ async def clinical_decisions_definitions():
     """Clinical decisions definitions — decision types, agreement levels, glossary."""
     import scripts.clinical_decisions_dashboard as cdd
     return _json_safe(cdd.definitions())
-
-
-# ── Federated Learning Dashboard ─────────────────────────────────
-# Multi-site privacy-preserving FL training analytics
-# (federation_rounds 18 rows, federation_sites 8 rows).
-# Tracks rounds, accuracy, aggregation methods, convergence, privacy budget.
-
-@app.get("/api/federated-learning/overview")
-async def federated_learning_overview():
-    """Federated learning overview — global accuracy, sites, rounds, privacy budget."""
-    import scripts.federated_learning_dashboard as fld
-    return _json_safe(fld.overview())
-
-
-@app.get("/api/federated-learning/breakdown")
-async def federated_learning_breakdown():
-    """Federated learning breakdown — per-site detail, aggregation comparison, convergence."""
-    import scripts.federated_learning_dashboard as fld
-    return _json_safe(fld.breakdown())
-
-
-@app.get("/api/federated-learning/definitions")
-async def federated_learning_definitions():
-    """Federated learning definitions — FL terminology, aggregation methods, privacy concepts."""
-    import scripts.federated_learning_dashboard as fld
-    return _json_safe(fld.definitions())
 
 
 # ──────────────────────────────────────────────────────────────
