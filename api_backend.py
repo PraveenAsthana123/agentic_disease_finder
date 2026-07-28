@@ -14991,6 +14991,30 @@ async def conversation_log_definitions():
     return _json_safe(cl_dash.definitions())
 
 
+# ── EEG Analyses Dashboard ─────────────────────────────────────
+# Real data: analyses (129 rows, 5 diseases, 49 patients, 9 prediction labels).
+@app.get("/api/analyses/overview")
+async def analyses_overview():
+    """Analyses overview — KPIs, disease/label/quality distributions,
+    confidence by disease, daily trend, high-confidence rate."""
+    import scripts.analyses_dashboard as an_dash
+    return _json_safe(an_dash.overview())
+
+@app.get("/api/analyses/breakdown")
+async def analyses_breakdown():
+    """Analyses breakdown — all analyses, per-patient summary,
+    per-disease summary, confidence distribution."""
+    import scripts.analyses_dashboard as an_dash
+    return _json_safe(an_dash.breakdown())
+
+@app.get("/api/analyses/definitions")
+async def analyses_definitions():
+    """Analyses definitions — field glossary, disease descriptions,
+    signal quality levels, prediction labels."""
+    import scripts.analyses_dashboard as an_dash
+    return _json_safe(an_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

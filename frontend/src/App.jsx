@@ -440,6 +440,7 @@ import ComorbiditiesDashboard from './components/ComorbiditiesDashboard'
 import CaregiversDashboard from './components/CaregiversDashboard'
 import SystemConfigDashboard from './components/SystemConfigDashboard'
 import ConversationLogDashboard from './components/ConversationLogDashboard'
+import AnalysesDashboard from './components/AnalysesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -935,6 +936,7 @@ function App() {
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'system-config', label: 'System Config' },
     { id: 'conversation-log', label: 'Conversation Log' },
+    { id: 'eeg-analyses', label: 'EEG Analyses' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'openclaw', label: 'OpenClaw Execution' },
     { id: 'operator-requests', label: 'Operator Requests' },
@@ -2806,6 +2808,8 @@ function App() {
         return <SystemConfigDashboard />
       case 'conversation-log':
         return <ConversationLogDashboard />
+      case 'eeg-analyses':
+        return <AnalysesDashboard />
       case 'paperclip':
         return <PaperclipDashboard />
       case 'openclaw':
