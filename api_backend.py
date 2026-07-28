@@ -14826,6 +14826,29 @@ async def patient_demographics_definitions():
     return _json_safe(pd_dash.definitions())
 
 
+# ── Emergency Contacts Dashboard ────────────────────────────────────
+# Real data: emergency_contacts (30 rows, 30 patients, 9 relationship types).
+@app.get("/api/emergency-contacts/overview")
+async def emergency_contacts_overview():
+    """Emergency contacts overview — KPIs, relationship distribution,
+    seizure notification rate, verification freshness."""
+    import scripts.emergency_contacts_dashboard as ec_dash
+    return _json_safe(ec_dash.overview())
+
+@app.get("/api/emergency-contacts/breakdown")
+async def emergency_contacts_breakdown():
+    """Emergency contacts breakdown — all contacts, by relationship, by patient,
+    stale contacts needing re-verification."""
+    import scripts.emergency_contacts_dashboard as ec_dash
+    return _json_safe(ec_dash.breakdown())
+
+@app.get("/api/emergency-contacts/definitions")
+async def emergency_contacts_definitions():
+    """Emergency contacts definitions — glossary, relationship types, verification standards."""
+    import scripts.emergency_contacts_dashboard as ec_dash
+    return _json_safe(ec_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
