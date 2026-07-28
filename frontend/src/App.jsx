@@ -146,6 +146,7 @@ import SecureMessagesDashboard from './components/SecureMessagesDashboard'
 import ModelComparisonDashboard from './components/ModelComparisonDashboard'
 import PatientDemographicsDashboard from './components/PatientDemographicsDashboard'
 import EmergencyContactsDashboard from './components/EmergencyContactsDashboard'
+import AmpsDashboard from './components/AmpsDashboard'
 import ISSOPComplianceDashboard from './components/ISSOPComplianceDashboard'
 import EEGAnalysisResultsDashboard from './components/EEGAnalysisResultsDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
@@ -801,6 +802,7 @@ function App() {
     { id: 'model-comparison', label: 'Model Comparison' },
     { id: 'patient-demographics', label: 'Patient Demographics' },
     { id: 'emergency-contacts', label: 'Emergency Contacts' },
+    { id: 'amps', label: 'AMPS (Motor & Process)' },
     { id: 'is-sop-compliance', label: 'IS SOP Compliance' },
     { id: 'eeg-analysis-results', label: 'EEG Analysis Results' },
     { id: 'data-steward', label: 'Data Steward' },
@@ -2300,6 +2302,8 @@ function App() {
         return <PatientDemographicsDashboard />
       case 'emergency-contacts':
         return <EmergencyContactsDashboard />
+      case 'amps':
+        return <AmpsDashboard />
       case 'is-sop-compliance':
         return <ISSOPComplianceDashboard />
       case 'eeg-analysis-results':
