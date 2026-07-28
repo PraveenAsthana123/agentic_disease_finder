@@ -15015,6 +15015,31 @@ async def analyses_definitions():
     return _json_safe(an_dash.definitions())
 
 
+# ── Seizure Trigger Logs Dashboard ─────────────────────────────────
+# Real data: seizure_trigger_logs (203 rows, 40 patients, 9 triggers,
+# 4 sleep quality levels, 6 seizure types, lifestyle metrics).
+
+@app.get("/api/seizure-trigger-logs/overview")
+async def seizure_trigger_logs_overview():
+    """Seizure trigger logs overview — totals, trigger/sleep/seizure-type distributions,
+    monthly trend, trigger seizure rates, risk comparison, sleep vs seizure."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.overview())
+
+@app.get("/api/seizure-trigger-logs/breakdown")
+async def seizure_trigger_logs_breakdown():
+    """Seizure trigger logs breakdown — all logs, per-patient summary,
+    top patient-trigger combinations."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.breakdown())
+
+@app.get("/api/seizure-trigger-logs/definitions")
+async def seizure_trigger_logs_definitions():
+    """Seizure trigger logs definitions — concepts, seizure types, data sources."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
