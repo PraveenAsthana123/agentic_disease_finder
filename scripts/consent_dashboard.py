@@ -84,7 +84,7 @@ def overview():
         "GROUP BY month ORDER BY month",
         (twelve_months_ago.isoformat(),),
     )
-    monthly_volume = dict(cur.fetchall())
+    monthly_volume = [{"month": r[0], "cnt": r[1]} for r in cur.fetchall()]
 
     # type-status matrix
     cur.execute(
@@ -112,9 +112,9 @@ def overview():
         "total_patients": total_patients,
         "consent_type_distribution": consent_type_distribution,
         "status_distribution": status_distribution,
-        "compliance_rate": compliance_rate,
+        "compliance_rate_pct": compliance_rate,
         "expiring_soon": expiring_soon,
-        "expired_count": expired_count,
+        "expired": expired_count,
         "witness_distribution": witness_distribution,
         "monthly_volume": monthly_volume,
         "type_status_matrix": type_status_matrix,
@@ -163,14 +163,15 @@ def breakdown():
     # expiring_soon_list
     cur.execute(
         """
-        SELECT * FROM consent_records
+        SELECT *, CAST(julianday(expiry_date) - julianday(?) AS INTEGER) AS days_left
+        FROM consent_records
         WHERE expiry_date IS NOT NULL
           AND expiry_date >= ?
           AND expiry_date <= ?
           AND status != 'expired'
         ORDER BY expiry_date ASC
         """,
-        (today_str, ninety_str),
+        (today_str, today_str, ninety_str),
     )
     expiring_soon_list = _dict_rows(cur)
 
@@ -184,17 +185,12 @@ def breakdown():
     cur.execute(
         """
         SELECT
-            consent_type AS type,
+            consent_type,
             COUNT(*) AS total,
-            ROUND(SUM(CASE WHEN status='granted' THEN 1.0 ELSE 0 END) / COUNT(*) * 100, 1) AS granted_pct,
-            SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END) AS pending_count,
-            SUM(CASE WHEN status='withdrawn' THEN 1 ELSE 0 END) AS withdrawn_count,
-            ROUND(AVG(
-                CASE WHEN expiry_date IS NOT NULL AND granted_date IS NOT NULL
-                     THEN julianday(expiry_date) - julianday(granted_date)
-                     ELSE NULL
-                END
-            ), 1) AS avg_validity_days
+            SUM(CASE WHEN status='granted' THEN 1 ELSE 0 END) AS granted,
+            SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END) AS pending,
+            SUM(CASE WHEN status='withdrawn' THEN 1 ELSE 0 END) AS withdrawn,
+            ROUND(SUM(CASE WHEN status='granted' THEN 1.0 ELSE 0 END) / COUNT(*) * 100, 1) AS granted_pct
         FROM consent_records
         GROUP BY consent_type
         ORDER BY total DESC
@@ -216,21 +212,21 @@ def breakdown():
 def definitions():
     """Return consent type descriptions, status definitions, glossary, and compliance notes."""
     return {
-        "consent_types": {
-            "treatment": "Authorization for medical treatment procedures including medication administration, surgical interventions, and therapeutic protocols.",
-            "research": "Informed consent for participation in clinical research studies, trials, or observational research protocols.",
-            "data_sharing": "Permission to share patient health data with external entities such as research institutions, registries, or partner healthcare organizations.",
-            "genetic_testing": "Consent for genomic or genetic testing, including whole-genome sequencing, targeted panels, and pharmacogenomic analysis.",
-            "video_eeg": "Authorization for continuous video-EEG monitoring, including recording, storage, and clinical use of audiovisual data.",
-            "imaging_sharing": "Permission to share diagnostic imaging (MRI, CT, PET) with external specialists, tumor boards, or research databases.",
-        },
-        "statuses": {
-            "granted": "Patient has provided informed consent; the authorization is active and valid.",
-            "pending": "Consent form has been presented but the patient has not yet signed or provided a decision.",
-            "withdrawn": "Patient has revoked previously granted consent; all related activities must cease.",
-            "declined": "Patient has reviewed the consent form and actively refused to provide authorization.",
-            "expired": "Consent was previously granted but has passed its expiry date and is no longer valid.",
-        },
+        "consent_types": [
+            {"type": "treatment", "description": "Authorization for medical treatment procedures including medication administration, surgical interventions, and therapeutic protocols."},
+            {"type": "research", "description": "Informed consent for participation in clinical research studies, trials, or observational research protocols."},
+            {"type": "data_sharing", "description": "Permission to share patient health data with external entities such as research institutions, registries, or partner healthcare organizations."},
+            {"type": "genetic_testing", "description": "Consent for genomic or genetic testing, including whole-genome sequencing, targeted panels, and pharmacogenomic analysis."},
+            {"type": "video_eeg", "description": "Authorization for continuous video-EEG monitoring, including recording, storage, and clinical use of audiovisual data."},
+            {"type": "imaging_sharing", "description": "Permission to share diagnostic imaging (MRI, CT, PET) with external specialists, tumor boards, or research databases."},
+        ],
+        "statuses": [
+            {"status": "granted", "description": "Patient has provided informed consent; the authorization is active and valid."},
+            {"status": "pending", "description": "Consent form has been presented but the patient has not yet signed or provided a decision."},
+            {"status": "withdrawn", "description": "Patient has revoked previously granted consent; all related activities must cease."},
+            {"status": "declined", "description": "Patient has reviewed the consent form and actively refused to provide authorization."},
+            {"status": "expired", "description": "Consent was previously granted but has passed its expiry date and is no longer valid."},
+        ],
         "glossary": [
             {"term": "Informed Consent", "definition": "The process of providing a patient with sufficient information about risks, benefits, and alternatives to make a voluntary decision about treatment or research participation."},
             {"term": "Capacity", "definition": "A patient's cognitive and legal ability to understand information, appreciate consequences, and make an autonomous decision about consent."},
@@ -246,14 +242,14 @@ def definitions():
             {"term": "Therapeutic Misconception", "definition": "A participant's mistaken belief that research procedures are designed primarily for their personal therapeutic benefit rather than to generate scientific knowledge."},
         ],
         "compliance_notes": [
-            "All consent processes must comply with 45 CFR 46 (Common Rule) requirements for federally funded research.",
-            "HIPAA-covered entities require separate authorization for use/disclosure of PHI beyond treatment, payment, and healthcare operations.",
-            "IRB approval is mandatory before enrolling any participant in a research protocol; consent documents must use IRB-approved language.",
-            "Withdrawn consent must be honored immediately; ongoing data collection and specimen retention must cease unless a waiver applies.",
-            "Expired consents require re-consent before resuming any activities covered by the original authorization.",
-            "Electronic consent (e-consent) is permissible under 21 CFR Part 11 provided audit trails, authentication, and tamper-evidence are maintained.",
-            "Consent documents must be provided in the patient's preferred language and at an appropriate literacy level (recommended: 6th-8th grade reading level).",
-            "Pediatric research requires both parental/guardian consent and, where appropriate, child assent (typically age 7+).",
+            {"title": "Common Rule (45 CFR 46)", "detail": "All consent processes must comply with 45 CFR 46 (Common Rule) requirements for federally funded research."},
+            {"title": "HIPAA Authorization", "detail": "HIPAA-covered entities require separate authorization for use/disclosure of PHI beyond treatment, payment, and healthcare operations."},
+            {"title": "IRB Approval", "detail": "IRB approval is mandatory before enrolling any participant in a research protocol; consent documents must use IRB-approved language."},
+            {"title": "Withdrawal Protocol", "detail": "Withdrawn consent must be honored immediately; ongoing data collection and specimen retention must cease unless a waiver applies."},
+            {"title": "Expiry & Re-consent", "detail": "Expired consents require re-consent before resuming any activities covered by the original authorization."},
+            {"title": "Electronic Consent (e-Consent)", "detail": "Electronic consent is permissible under 21 CFR Part 11 provided audit trails, authentication, and tamper-evidence are maintained."},
+            {"title": "Language & Literacy", "detail": "Consent documents must be provided in the patient's preferred language and at an appropriate literacy level (recommended: 6th-8th grade reading level)."},
+            {"title": "Pediatric Consent", "detail": "Pediatric research requires both parental/guardian consent and, where appropriate, child assent (typically age 7+)."},
         ],
     }
 
