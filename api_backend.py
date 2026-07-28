@@ -2062,6 +2062,29 @@ async def role_specs():
     return json.loads(p.read_text()) if p.exists() else {"roles": []}
 
 
+@app.get("/api/neurologist-workbench/overview")
+async def neurologist_workbench_overview():
+    """Neurologist Workbench aggregate overview — patient profile, AI findings,
+    biomarkers, localization, MRI correlation, medications, audit trail."""
+    import scripts.neurologist_workbench_dashboard as nwd
+    return _json_safe(nwd.overview())
+
+
+@app.get("/api/neurologist-workbench/breakdown")
+async def neurologist_workbench_breakdown():
+    """Neurologist Workbench detailed breakdown — per-patient aggregates,
+    signal quality distribution, prediction statistics."""
+    import scripts.neurologist_workbench_dashboard as nwd
+    return _json_safe(nwd.breakdown())
+
+
+@app.get("/api/neurologist-workbench/definitions")
+async def neurologist_workbench_definitions():
+    """Reference definitions for the neurologist workbench dashboard."""
+    import scripts.neurologist_workbench_dashboard as nwd
+    return _json_safe(nwd.definitions())
+
+
 @app.get("/api/neurologist-workbench/{patient_id}")
 async def neurologist_workbench(patient_id: str):
     """Neurologist-centric single screen: Patient → EEG evidence → AI findings →
