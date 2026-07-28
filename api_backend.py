@@ -14874,6 +14874,28 @@ async def uploads_definitions():
     return _json_safe(ud.definitions())
 
 
+# ── Comorbidities Dashboard ──────────────────────────────────────────
+# Real data: comorbidities (27 rows, 27 patients, psychiatric comorbidity screening).
+@app.get("/api/comorbidities/overview")
+async def comorbidities_overview():
+    """Comorbidities overview — KPIs, severity/impact/treatment/condition
+    distributions, screening instruments, risk by severity, monthly trend."""
+    import scripts.comorbidities_dashboard as cdb
+    return _json_safe(cdb.overview())
+
+@app.get("/api/comorbidities/breakdown")
+async def comorbidities_breakdown():
+    """Comorbidities breakdown — all patients table, by condition, by severity."""
+    import scripts.comorbidities_dashboard as cdb
+    return _json_safe(cdb.breakdown())
+
+@app.get("/api/comorbidities/definitions")
+async def comorbidities_definitions():
+    """Comorbidities definitions — field glossary, condition descriptions, instrument info."""
+    import scripts.comorbidities_dashboard as cdb
+    return _json_safe(cdb.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

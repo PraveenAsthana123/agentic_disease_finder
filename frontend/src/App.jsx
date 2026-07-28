@@ -436,6 +436,7 @@ import NotificationsDashboard from './components/NotificationsDashboard'
 import TransactionLogDashboard from './components/TransactionLogDashboard'
 import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import UploadsDashboard from './components/UploadsDashboard'
+import ComorbiditiesDashboard from './components/ComorbiditiesDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -985,7 +986,8 @@ function App() {
     { id: 'notifications', label: 'Notification Centre' },
     { id: 'transaction-log', label: 'Transaction Log' },
     { id: 'icd10-coding', label: 'ICD-10 Coding' },
-    { id: 'uploads', label: 'File Uploads' }
+    { id: 'uploads', label: 'File Uploads' },
+    { id: 'comorbidities', label: 'Comorbidities' }
   ]
 
   // API Calls
@@ -2946,6 +2948,8 @@ function App() {
         return <ICD10CodingDashboard />
       case 'uploads':
         return <UploadsDashboard />
+      case 'comorbidities':
+        return <ComorbiditiesDashboard />
       default:
         return renderClassificationTab()
     }
