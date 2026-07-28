@@ -14782,6 +14782,28 @@ async def secure_messages_definitions():
     return _json_safe(smd.definitions())
 
 
+# ── Model Comparison Dashboard ──────────────────────────────────────
+# Real data: model_comparison (224 rows, 6 model types, 4 tasks, 4 datasets).
+@app.get("/api/model-comparison/overview")
+async def model_comparison_overview():
+    """Model comparison overview — KPIs, model type/task/dataset/status distributions,
+    accuracy by model type & task, monthly trend, training method distribution."""
+    import scripts.model_comparison_dashboard as mcd
+    return _json_safe(mcd.overview())
+
+@app.get("/api/model-comparison/breakdown")
+async def model_comparison_breakdown():
+    """Model comparison breakdown — all model runs, by-model-type, by-dataset."""
+    import scripts.model_comparison_dashboard as mcd
+    return _json_safe(mcd.breakdown())
+
+@app.get("/api/model-comparison/definitions")
+async def model_comparison_definitions():
+    """Model comparison definitions — metrics, model types, tasks, datasets."""
+    import scripts.model_comparison_dashboard as mcd
+    return _json_safe(mcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
