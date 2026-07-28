@@ -14896,6 +14896,30 @@ async def comorbidities_definitions():
     return _json_safe(cdb.definitions())
 
 
+# ── Caregivers Dashboard ───────────────────────────────────────────
+# Real data: caregivers (30 rows, 30 patients, 6 roles, 4 availability types).
+@app.get("/api/caregivers/overview")
+async def caregivers_overview():
+    """Caregivers overview — KPIs, role/availability distributions,
+    training rates, wellness averages, burnout distribution."""
+    import scripts.caregivers_dashboard as cg_dash
+    return _json_safe(cg_dash.overview())
+
+@app.get("/api/caregivers/breakdown")
+async def caregivers_breakdown():
+    """Caregivers breakdown — all caregivers table, by role, by availability,
+    high-burnout caregivers needing intervention."""
+    import scripts.caregivers_dashboard as cg_dash
+    return _json_safe(cg_dash.breakdown())
+
+@app.get("/api/caregivers/definitions")
+async def caregivers_definitions():
+    """Caregivers definitions — field glossary, role descriptions,
+    wellness scales, training requirements."""
+    import scripts.caregivers_dashboard as cg_dash
+    return _json_safe(cg_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
