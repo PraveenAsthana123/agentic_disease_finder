@@ -14849,6 +14849,31 @@ async def emergency_contacts_definitions():
     return _json_safe(ec_dash.definitions())
 
 
+# Real data: uploads (141 rows, 49 patients, 5 diseases, 7 departments,
+# 5 file formats) — EEG recording file upload tracking with disease/department
+# breakdown, format distribution, and upload trend analysis.
+
+@app.get("/api/uploads/overview")
+async def uploads_overview():
+    """Uploads overview — total uploads, patient/disease/department/format counts,
+    distributions, monthly trend, top uploaders."""
+    import scripts.uploads_dashboard as ud
+    return _json_safe(ud.overview())
+
+@app.get("/api/uploads/breakdown")
+async def uploads_breakdown():
+    """Uploads breakdown — all uploads table, disease summary, department summary,
+    disease-format cross-tab."""
+    import scripts.uploads_dashboard as ud
+    return _json_safe(ud.breakdown())
+
+@app.get("/api/uploads/definitions")
+async def uploads_definitions():
+    """Uploads definitions — field glossary, file format specs, department descriptions."""
+    import scripts.uploads_dashboard as ud
+    return _json_safe(ud.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
