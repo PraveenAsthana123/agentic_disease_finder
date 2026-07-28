@@ -15142,6 +15142,27 @@ async def seizure_trigger_logs_definitions():
     return _json_safe(std.definitions())
 
 
+# ── ABPM / Holter Monitoring ──────────────────────────────────────────────
+
+@app.get("/api/abpm/overview")
+async def abpm_overview():
+    """ABPM/Holter overview — KPIs, severity/dipping/pattern distributions, patient summary."""
+    import scripts.abpm_dashboard as abd
+    return _json_safe(abd.overview())
+
+@app.get("/api/abpm/breakdown")
+async def abpm_breakdown():
+    """ABPM/Holter breakdown — parameter tables, histograms, per-patient detail cards."""
+    import scripts.abpm_dashboard as abd
+    return _json_safe(abd.breakdown())
+
+@app.get("/api/abpm/definitions")
+async def abpm_definitions():
+    """ABPM/Holter definitions — protocol, parameters, reference ranges, patterns, severity."""
+    import scripts.abpm_dashboard as abd
+    return _json_safe(abd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
