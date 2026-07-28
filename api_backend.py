@@ -14920,6 +14920,30 @@ async def caregivers_definitions():
     return _json_safe(cg_dash.definitions())
 
 
+# ── System Configuration Dashboard ─────────────────────────────────
+# Real data: system_config (25 rows, 6 categories, 11 admins).
+@app.get("/api/system-config/overview")
+async def system_config_overview():
+    """System config overview — KPIs, category/updater distributions,
+    recent changes, monthly update trend, security/AI/performance summaries."""
+    import scripts.system_config_dashboard as sc_dash
+    return _json_safe(sc_dash.overview())
+
+@app.get("/api/system-config/breakdown")
+async def system_config_breakdown():
+    """System config breakdown — all configs table, by category with items,
+    by updater summary."""
+    import scripts.system_config_dashboard as sc_dash
+    return _json_safe(sc_dash.breakdown())
+
+@app.get("/api/system-config/definitions")
+async def system_config_definitions():
+    """System config definitions — field glossary, category descriptions,
+    data sources."""
+    import scripts.system_config_dashboard as sc_dash
+    return _json_safe(sc_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

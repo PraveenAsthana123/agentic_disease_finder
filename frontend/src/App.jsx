@@ -438,6 +438,7 @@ import ICD10CodingDashboard from './components/ICD10CodingDashboard'
 import UploadsDashboard from './components/UploadsDashboard'
 import ComorbiditiesDashboard from './components/ComorbiditiesDashboard'
 import CaregiversDashboard from './components/CaregiversDashboard'
+import SystemConfigDashboard from './components/SystemConfigDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -931,6 +932,7 @@ function App() {
     { id: 'mri-findings', label: 'MRI Findings' },
     { id: 'surgical-outcomes', label: 'Surgical Outcomes' },
     { id: 'feature-flags', label: 'Feature Flags' },
+    { id: 'system-config', label: 'System Config' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'openclaw', label: 'OpenClaw Execution' },
     { id: 'operator-requests', label: 'Operator Requests' },
@@ -2798,6 +2800,8 @@ function App() {
         return <SurgicalOutcomesDashboard />
       case 'feature-flags':
         return <FeatureFlagsDashboard />
+      case 'system-config':
+        return <SystemConfigDashboard />
       case 'paperclip':
         return <PaperclipDashboard />
       case 'openclaw':
