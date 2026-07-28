@@ -144,6 +144,7 @@ import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboar
 import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
 import SecureMessagesDashboard from './components/SecureMessagesDashboard'
 import ModelComparisonDashboard from './components/ModelComparisonDashboard'
+import PatientDemographicsDashboard from './components/PatientDemographicsDashboard'
 import ISSOPComplianceDashboard from './components/ISSOPComplianceDashboard'
 import EEGAnalysisResultsDashboard from './components/EEGAnalysisResultsDashboard'
 import DataStewardDashboard from './components/DataStewardDashboard'
@@ -797,6 +798,7 @@ function App() {
     { id: 'camera-monitoring', label: 'Camera Monitoring' },
     { id: 'secure-messages', label: 'Secure Messages' },
     { id: 'model-comparison', label: 'Model Comparison' },
+    { id: 'patient-demographics', label: 'Patient Demographics' },
     { id: 'is-sop-compliance', label: 'IS SOP Compliance' },
     { id: 'eeg-analysis-results', label: 'EEG Analysis Results' },
     { id: 'data-steward', label: 'Data Steward' },
@@ -2292,6 +2294,8 @@ function App() {
         return <SecureMessagesDashboard />
       case 'model-comparison':
         return <ModelComparisonDashboard />
+      case 'patient-demographics':
+        return <PatientDemographicsDashboard />
       case 'is-sop-compliance':
         return <ISSOPComplianceDashboard />
       case 'eeg-analysis-results':

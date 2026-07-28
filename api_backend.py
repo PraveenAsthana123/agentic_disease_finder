@@ -14804,6 +14804,28 @@ async def model_comparison_definitions():
     return _json_safe(mcd.definitions())
 
 
+# ── Patient Demographics Dashboard ──────────────────────────────────
+# Real data: patient_demographics (30 rows, 30 patients, demographics + clinical).
+@app.get("/api/patient-demographics/overview")
+async def patient_demographics_overview():
+    """Patient demographics overview — KPIs, sex/epilepsy/insurance distributions,
+    age histogram, enrollment trend, BMI categories."""
+    import scripts.patient_demographics_dashboard as pd_dash
+    return _json_safe(pd_dash.overview())
+
+@app.get("/api/patient-demographics/breakdown")
+async def patient_demographics_breakdown():
+    """Patient demographics breakdown — all patients, by epilepsy type, by neurologist."""
+    import scripts.patient_demographics_dashboard as pd_dash
+    return _json_safe(pd_dash.breakdown())
+
+@app.get("/api/patient-demographics/definitions")
+async def patient_demographics_definitions():
+    """Patient demographics definitions — field explanations, categories, data sources."""
+    import scripts.patient_demographics_dashboard as pd_dash
+    return _json_safe(pd_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
