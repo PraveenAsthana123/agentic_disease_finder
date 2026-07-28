@@ -439,6 +439,7 @@ import UploadsDashboard from './components/UploadsDashboard'
 import ComorbiditiesDashboard from './components/ComorbiditiesDashboard'
 import CaregiversDashboard from './components/CaregiversDashboard'
 import SystemConfigDashboard from './components/SystemConfigDashboard'
+import ConversationLogDashboard from './components/ConversationLogDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -933,6 +934,7 @@ function App() {
     { id: 'surgical-outcomes', label: 'Surgical Outcomes' },
     { id: 'feature-flags', label: 'Feature Flags' },
     { id: 'system-config', label: 'System Config' },
+    { id: 'conversation-log', label: 'Conversation Log' },
     { id: 'paperclip', label: 'Paperclip Orchestration' },
     { id: 'openclaw', label: 'OpenClaw Execution' },
     { id: 'operator-requests', label: 'Operator Requests' },
@@ -2802,6 +2804,8 @@ function App() {
         return <FeatureFlagsDashboard />
       case 'system-config':
         return <SystemConfigDashboard />
+      case 'conversation-log':
+        return <ConversationLogDashboard />
       case 'paperclip':
         return <PaperclipDashboard />
       case 'openclaw':

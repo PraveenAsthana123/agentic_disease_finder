@@ -14944,6 +14944,30 @@ async def system_config_definitions():
     return _json_safe(sc_dash.definitions())
 
 
+# ── Conversation Log Dashboard ─────────────────────────────────
+# Real data: conversation_log (2364 rows, 29 active days, operator + assistant roles).
+@app.get("/api/conversation-log/overview")
+async def conversation_log_overview():
+    """Conversation log overview — KPIs, role distribution, daily volume trend,
+    text length stats, hourly activity pattern."""
+    import scripts.conversation_log_dashboard as cl_dash
+    return _json_safe(cl_dash.overview())
+
+@app.get("/api/conversation-log/breakdown")
+async def conversation_log_breakdown():
+    """Conversation log breakdown — recent messages, daily detail,
+    longest messages, text length distribution."""
+    import scripts.conversation_log_dashboard as cl_dash
+    return _json_safe(cl_dash.breakdown())
+
+@app.get("/api/conversation-log/definitions")
+async def conversation_log_definitions():
+    """Conversation log definitions — field glossary, role descriptions,
+    analytics methodology."""
+    import scripts.conversation_log_dashboard as cl_dash
+    return _json_safe(cl_dash.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

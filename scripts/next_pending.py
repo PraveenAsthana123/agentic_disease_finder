@@ -67,6 +67,7 @@ BUILDABLE = [
 # tab_taxonomy (Tab Taxonomy Dashboard — real tab_taxonomy.json 35 tabs across 3 categories (Patient Master 13/Role Ops 9/AI Caps 13), 100% built, 33 mapped, as-is/to-be transformation, 3 endpoints verified 200, TabTaxonomyDashboard.jsx + nav wired)
 # feature_gaps (Feature Gaps Dashboard — real feature_gaps.json 18 gaps across 6 categories (functional/technology/data/gap/architecture/decision_ai), 50-paper DL review, 100% built, priority/status tracking, 5 recommendations, 3 endpoints verified 200, FeatureGapsDashboard.jsx + nav wired)
 # icd10_coding (ICD-10 Coding Dashboard — real icd10_coding_records 85 rows, 41 patients, 27 codes, AI vs human coder comparison, confidence tiers, rejection tracking, pending review queue, 3 endpoints verified 200, ICD10CodingDashboard.jsx + nav wired)
+# conversation_log (Conversation Log Dashboard — real conversation_log 2364 rows, 29 active days, operator+assistant roles, daily volume trend, hourly pattern, text length analysis, 3 endpoints verified 200, ConversationLogDashboard.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
