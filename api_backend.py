@@ -14862,30 +14862,6 @@ async def eeg_analysis_results_definitions():
     return _json_safe(ear.definitions())
 
 
-# ── Cognitive Decline Tracking Dashboard ─────────────────────────────
-# Real data: cognitive_decline_tracking (96 rows, 20 patients, 3-6 timepoints each).
-@app.get("/api/cognitive-decline/overview")
-async def cognitive_decline_overview():
-    """Cognitive decline overview — KPIs, classification distribution, domain decline
-    rates, MoCA trend by timepoint, risk stratification."""
-    import scripts.cognitive_decline_dashboard as cdd
-    return _json_safe(cdd.overview())
-
-@app.get("/api/cognitive-decline/breakdown")
-async def cognitive_decline_breakdown():
-    """Cognitive decline breakdown — per-patient trajectories, slopes, classification,
-    risk levels, flagged patients with clinical recommendations."""
-    import scripts.cognitive_decline_dashboard as cdd
-    return _json_safe(cdd.breakdown())
-
-@app.get("/api/cognitive-decline/definitions")
-async def cognitive_decline_definitions():
-    """Cognitive decline definitions — decline thresholds, assessment instruments,
-    risk factors, clinical actions, glossary."""
-    import scripts.cognitive_decline_dashboard as cdd
-    return _json_safe(cdd.definitions())
-
-
 # ── Referral Records Dashboard ─────────────────────────────────────
 # Real data: referral_records (84 rows, 41 patients, 7 sources, 9 reasons).
 @app.get("/api/referral-records/overview")
@@ -15237,6 +15213,66 @@ async def seizure_triggers_definitions():
     """Seizure triggers definitions — concepts, seizure types, data sources."""
     import scripts.seizure_trigger_dashboard as std
     return _json_safe(std.definitions())
+
+
+# ── Clinical Risk Stratification Dashboard ───────────────────────────────────
+# Composite per-patient epilepsy risk scoring from 6 real tables:
+# seizure_diary (25 rows) + medication_adherence (12600 rows) +
+# pharmacogenomics (172 rows) + comorbidities (27 rows) +
+# pro_outcomes (180 rows) + patients (40 rows).
+# Risk tiers: Critical (≥35) / High (23–34) / Moderate (12–22) / Low (<12).
+@app.get("/api/clinical-risk-stratification/overview")
+async def clinical_risk_overview():
+    """Clinical risk stratification overview — composite risk scores, tier distribution,
+    average component contributions (seizure burden, adherence, genetic, comorbidity, QoL),
+    score histogram, top high-risk patients, and gender breakdown."""
+    import scripts.clinical_risk_stratification_dashboard as crd
+    return _json_safe(crd.overview())
+
+
+@app.get("/api/clinical-risk-stratification/breakdown")
+async def clinical_risk_breakdown():
+    """Clinical risk stratification breakdown — full per-patient risk profiles ranked by
+    composite score, critical/high-risk patient lists, component waterfall analysis."""
+    import scripts.clinical_risk_stratification_dashboard as crd
+    return _json_safe(crd.breakdown())
+
+
+@app.get("/api/clinical-risk-stratification/definitions")
+async def clinical_risk_definitions():
+    """Clinical risk stratification definitions — scoring methodology, component weights,
+    risk tier thresholds, data sources, clinical action recommendations, and glossary."""
+    import scripts.clinical_risk_stratification_dashboard as crd
+    return _json_safe(crd.definitions())
+
+
+# ── Patient Safety Network Dashboard ──────────────────────────────────────────
+@app.get("/api/safety-network/overview")
+async def safety_network_overview():
+    """Safety Network overview — composite per-patient safety score from 5 dimensions:
+    caregiver coverage, emergency readiness, medication adherence, wearable monitoring,
+    IoT alert burden. Tier distribution (Critical/At Risk/Adequate/Strong), dimension
+    averages, score histogram, critical patient list."""
+    import scripts.safety_network_dashboard as snd
+    return _json_safe(snd.overview())
+
+
+@app.get("/api/safety-network/breakdown")
+async def safety_network_breakdown():
+    """Safety Network breakdown — per-patient scores across all 5 dimensions,
+    monthly medication adherence trend, caregiver training counts,
+    emergency contact coverage, wearable status distribution, IoT alert severity breakdown."""
+    import scripts.safety_network_dashboard as snd
+    return _json_safe(snd.breakdown())
+
+
+@app.get("/api/safety-network/definitions")
+async def safety_network_definitions():
+    """Safety Network definitions — dimension weights, scoring methodology,
+    tier thresholds, data sources (caregivers/emergency_contacts/medication_adherence/
+    wearable_devices/iot_alerts), and clinical glossary."""
+    import scripts.safety_network_dashboard as snd
+    return _json_safe(snd.definitions())
 
 
 if __name__ == "__main__":

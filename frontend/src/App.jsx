@@ -142,6 +142,8 @@ import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboard'
 import SeizureTriggerDashboard from './components/SeizureTriggerDashboard'
+import SafetyNetworkDashboard from './components/SafetyNetworkDashboard'
+import ClinicalRiskStratificationDashboard from './components/ClinicalRiskStratificationDashboard'
 import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
 import SecureMessagesDashboard from './components/SecureMessagesDashboard'
 import ModelComparisonDashboard from './components/ModelComparisonDashboard'
@@ -807,6 +809,8 @@ function App() {
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'seizure-trigger-logs', label: 'Seizure Trigger Logs' },
     { id: 'seizure-triggers', label: 'Seizure Trigger Analysis' },
+    { id: 'safety-network', label: 'Patient Safety Network' },
+    { id: 'clinical-risk-stratification', label: 'Clinical Risk Stratification' },
     { id: 'camera-monitoring', label: 'Camera Monitoring' },
     { id: 'secure-messages', label: 'Secure Messages' },
     { id: 'model-comparison', label: 'Model Comparison' },
@@ -2310,6 +2314,10 @@ function App() {
         return <SeizureTriggerLogsDashboard />
       case 'seizure-triggers':
         return <SeizureTriggerDashboard />
+      case 'safety-network':
+        return <SafetyNetworkDashboard />
+      case 'clinical-risk-stratification':
+        return <ClinicalRiskStratificationDashboard />
       case 'camera-monitoring':
         return <CameraMonitoringDashboard />
       case 'secure-messages':
