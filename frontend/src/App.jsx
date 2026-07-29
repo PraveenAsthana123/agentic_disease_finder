@@ -141,6 +141,7 @@ import LLMOpsDashboard from './components/LLMOpsDashboard'
 import DataAugmentationDashboard from './components/DataAugmentationDashboard'
 import SeizurePredictionDashboard from './components/SeizurePredictionDashboard'
 import SeizureTriggerLogsDashboard from './components/SeizureTriggerLogsDashboard'
+import SeizureTriggerDashboard from './components/SeizureTriggerDashboard'
 import CameraMonitoringDashboard from './components/CameraMonitoringDashboard'
 import SecureMessagesDashboard from './components/SecureMessagesDashboard'
 import ModelComparisonDashboard from './components/ModelComparisonDashboard'
@@ -805,6 +806,7 @@ function App() {
     { id: 'data-augmentation', label: 'Data Augmentation' },
     { id: 'seizure-prediction', label: 'Seizure Prediction' },
     { id: 'seizure-trigger-logs', label: 'Seizure Trigger Logs' },
+    { id: 'seizure-triggers', label: 'Seizure Trigger Analysis' },
     { id: 'camera-monitoring', label: 'Camera Monitoring' },
     { id: 'secure-messages', label: 'Secure Messages' },
     { id: 'model-comparison', label: 'Model Comparison' },
@@ -2306,6 +2308,8 @@ function App() {
         return <SeizurePredictionDashboard />
       case 'seizure-trigger-logs':
         return <SeizureTriggerLogsDashboard />
+      case 'seizure-triggers':
+        return <SeizureTriggerDashboard />
       case 'camera-monitoring':
         return <CameraMonitoringDashboard />
       case 'secure-messages':

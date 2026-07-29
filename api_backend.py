@@ -15211,6 +15211,34 @@ async def sleep_staging_definitions():
     return _json_safe(ssd.definitions())
 
 
+# ── Seizure Trigger Analysis Dashboard ───────────────────────────────────────
+# Real data: seizure_trigger_logs (203 rows, 40 patients, 9 trigger types,
+# 4 sleep quality levels, 6 ILAE seizure types).
+# Provides trigger-specific seizure rates, lifestyle risk comparisons,
+# sleep-quality vs seizure-occurrence analysis, and per-patient summaries.
+@app.get("/api/seizure-triggers/overview")
+async def seizure_triggers_overview():
+    """Seizure triggers overview — totals, trigger/sleep/seizure-type distributions,
+    monthly trend, trigger seizure rates, risk factor comparison, sleep vs seizure rate."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.overview())
+
+
+@app.get("/api/seizure-triggers/breakdown")
+async def seizure_triggers_breakdown():
+    """Seizure triggers breakdown — all logs, per-patient summary,
+    top patient-trigger combinations."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.breakdown())
+
+
+@app.get("/api/seizure-triggers/definitions")
+async def seizure_triggers_definitions():
+    """Seizure triggers definitions — concepts, seizure types, data sources."""
+    import scripts.seizure_trigger_dashboard as std
+    return _json_safe(std.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

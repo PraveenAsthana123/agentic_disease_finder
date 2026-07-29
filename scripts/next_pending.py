@@ -70,6 +70,7 @@ BUILDABLE = [
 # conversation_log (Conversation Log Dashboard — real conversation_log 2364 rows, 29 active days, operator+assistant roles, daily volume trend, hourly pattern, text length analysis, 3 endpoints verified 200, ConversationLogDashboard.jsx + nav wired)
 # federated_learning (Federated Learning Dashboard — real federation_rounds 18 rows + federation_sites 8 sites, 529 patients across 6 institutions, 3 aggregation methods (FedAvg/FedProx/Scaffold), privacy budget tracking, convergence curve, gradient norms, heterogeneity metrics, 3 endpoints verified 200, FederatedLearningDashboard.jsx + nav wired)
 # sleep_staging (Sleep Staging Dashboard — real sleep_staging 95 rows, 40 patients, 5 study types (PSG/ambulatory-EEG/overnight-EEG/routine-EEG/video-EEG-LTM), AASM staging, efficiency distribution, seizure-sleep interaction, IED NREM activation, OSA/PLM comorbidity, 3 endpoints verified 200, SleepStagingDashboard.jsx + nav wired)
+# seizure_triggers (Seizure Trigger Analysis Dashboard — real seizure_trigger_logs 203 rows, 40 patients, 9 trigger types, 4 sleep quality levels, 6 ILAE seizure types, trigger-specific seizure rates, lifestyle risk comparisons, sleep-quality vs seizure-occurrence, per-patient summaries, 3 endpoints /api/seizure-triggers/overview|breakdown|definitions verified 200, SeizureTriggerDashboard.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
