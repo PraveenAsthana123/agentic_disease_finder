@@ -38,8 +38,8 @@
       "ai_potential": "Multimodal, explainable AI",
       "tier": 2,
       "phase": 2,
-      "status": "scaffold",
-      "where": "modality=video-EEG; sync timestamps planned"
+      "status": "built",
+      "where": "/api/video-eeg/* \u2014 3 endpoints + VideoEEGDashboard.jsx (seizure timeline 25 events, CHB-MIT EEG annotations 21 records, aura/trigger analysis, concordance, duration histogram, temporal pattern)"
     },
     {
       "code": "SEIZURE_META",
