@@ -7177,6 +7177,30 @@ async def human_evaluation_definitions():
     return _json_safe(hed.human_eval_definitions())
 
 
+@app.get("/api/component-findings/overview")
+async def component_findings_overview():
+    """Component Findings overview — doctor-AI agreement per EEG component,
+    reviewer agreement, monthly trend, KPIs."""
+    import scripts.component_findings_dashboard as cfd
+    return _json_safe(cfd.component_findings_overview())
+
+
+@app.get("/api/component-findings/breakdown")
+async def component_findings_breakdown():
+    """Component Findings breakdown — all findings table, per-patient summary,
+    per-component detail, disagreement detail, reviewer×component heatmap."""
+    import scripts.component_findings_dashboard as cfd
+    return _json_safe(cfd.component_findings_breakdown())
+
+
+@app.get("/api/component-findings/definitions")
+async def component_findings_definitions():
+    """Component Findings definitions — EEG components, agreement levels,
+    metrics, clinical relevance, glossary."""
+    import scripts.component_findings_dashboard as cfd
+    return _json_safe(cfd.component_findings_definitions())
+
+
 @app.get("/api/model-governance/overview")
 async def model_governance_overview():
     """Model Governance overview — consultant matrix, sign-off rates, approval
