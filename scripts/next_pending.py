@@ -69,6 +69,7 @@ BUILDABLE = [
 # icd10_coding (ICD-10 Coding Dashboard — real icd10_coding_records 85 rows, 41 patients, 27 codes, AI vs human coder comparison, confidence tiers, rejection tracking, pending review queue, 3 endpoints verified 200, ICD10CodingDashboard.jsx + nav wired)
 # conversation_log (Conversation Log Dashboard — real conversation_log 2364 rows, 29 active days, operator+assistant roles, daily volume trend, hourly pattern, text length analysis, 3 endpoints verified 200, ConversationLogDashboard.jsx + nav wired)
 # federated_learning (Federated Learning Dashboard — real federation_rounds 18 rows + federation_sites 8 sites, 529 patients across 6 institutions, 3 aggregation methods (FedAvg/FedProx/Scaffold), privacy budget tracking, convergence curve, gradient norms, heterogeneity metrics, 3 endpoints verified 200, FederatedLearningDashboard.jsx + nav wired)
+# sleep_staging (Sleep Staging Dashboard — real sleep_staging 95 rows, 40 patients, 5 study types (PSG/ambulatory-EEG/overnight-EEG/routine-EEG/video-EEG-LTM), AASM staging, efficiency distribution, seizure-sleep interaction, IED NREM activation, OSA/PLM comorbidity, 3 endpoints verified 200, SleepStagingDashboard.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 

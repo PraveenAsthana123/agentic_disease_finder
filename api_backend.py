@@ -15163,6 +15163,30 @@ async def abpm_definitions():
     return _json_safe(abd.definitions())
 
 
+# ── Sleep Staging ─────────────────────────────────────────────────────────────
+
+@app.get("/api/sleep-staging/overview")
+async def sleep_staging_overview():
+    """Sleep staging overview — aggregate sleep architecture, efficiency distribution,
+    study types, seizure-sleep interaction metrics."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.overview())
+
+@app.get("/api/sleep-staging/breakdown")
+async def sleep_staging_breakdown():
+    """Sleep staging breakdown — per-patient profiles, all study records,
+    abnormality flags, normal reference ranges."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.breakdown())
+
+@app.get("/api/sleep-staging/definitions")
+async def sleep_staging_definitions():
+    """Sleep staging definitions — AASM stage criteria, quantitative metrics,
+    epilepsy-sleep interaction glossary."""
+    import scripts.sleep_staging_dashboard as ssd
+    return _json_safe(ssd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
