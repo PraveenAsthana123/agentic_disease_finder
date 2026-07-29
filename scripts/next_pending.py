@@ -11,6 +11,9 @@ BUILDABLE = [
     {"id": "ictal_interictal", "title": "Ictal/interictal retrain (same-setup, removes dataset confound)", "value": "P0", "effort": "high"},
 ]
 # Already built (removed from queue):
+# billing_claims (Billing & Claims Dashboard — 150 claims, 40 patients, 7 statuses, 6 insurers, 8 service types, collection rate/denial rate/aging/per-patient breakdown, 3 endpoints /api/billing-claims/overview|breakdown|definitions verified 200, portal-next/app/billing-claims/page.jsx + nav wired)
+# safety_network (Patient Safety Network Dashboard — composite per-patient safety score from 5 dimensions: caregiver coverage/emergency readiness/medication adherence/wearable monitoring/IoT alert burden, 40 patients, Critical/At Risk/Adequate/Strong tiers, 3 endpoints /api/safety-network/overview|breakdown|definitions verified 200, SafetyNetworkDashboard.jsx + nav wired)
+# clinical_risk_stratification (Clinical Risk Stratification Dashboard — composite per-patient epilepsy risk scoring from 6 tables: seizure_diary/medication_adherence/pharmacogenomics/comorbidities/pro_outcomes/patients, Critical/High/Moderate/Low tiers, 3 endpoints /api/clinical-risk-stratification/overview|breakdown|definitions verified 200, ClinicalRiskStratificationDashboard.jsx + nav wired)
 # portal_tabs (Portal Tabs Dashboard — 11 patient self-service portal tabs, 3 endpoints verified 200, PortalTabsDashboard.jsx + nav wired)
 # seizure_timeline, spike_overlay (in eeg_viz), lateralization (in eeg_viz),
 # patient_compare, cognitive_tests (endpoint + panel + scoring)
