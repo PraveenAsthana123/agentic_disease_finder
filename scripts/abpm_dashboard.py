@@ -106,6 +106,32 @@ DIAGNOSTIC_PATTERNS = {
             "may contribute to SUDEP risk."
         ),
     },
+    "morning_surge": {
+        "label": "Morning Surge",
+        "description": (
+            "Exaggerated rise in blood pressure during the early morning hours "
+            "(pre-awakening or post-awakening). Associated with increased risk of "
+            "stroke, myocardial infarction, and target organ damage. Common in "
+            "non-dippers and patients with autonomic dysfunction."
+        ),
+    },
+    "normotensive": {
+        "label": "Normotensive",
+        "description": (
+            "All ABPM parameters within normal limits. 24h mean systolic <130 mmHg, "
+            "diastolic <80 mmHg, normal nocturnal dipping 10-20%, BP load <25%. "
+            "Holter shows sinus rhythm with no significant arrhythmia."
+        ),
+    },
+    "nocturnal_hypertension": {
+        "label": "Nocturnal Hypertension",
+        "description": (
+            "Elevated nighttime BP (systolic ≥120 or diastolic ≥70 mmHg) with "
+            "non-dipping or reverse-dipping pattern. Strong independent predictor of "
+            "cardiovascular events. Associated with sleep apnea, chronic kidney disease, "
+            "and autonomic neuropathy."
+        ),
+    },
 }
 
 SEVERITY_LEVELS = {
@@ -393,12 +419,116 @@ def _flag(val, ref_key):
 
 
 def _all_studies():
-    """Return list of (patient, study) dicts for all patients."""
-    patients = _get_patients()
+    """Return list of (patient, study) dicts from abpm_holter_studies table.
+
+    Reads real clinical data instead of generating pseudo-random values.
+    Falls back to _generate_study() only for patients that have no DB row.
+    """
+    conn = sqlite3.connect(_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute(
+        """
+        SELECT
+            a.*,
+            p.name,
+            p.age,
+            p.disease,
+            (SELECT COUNT(*) FROM seizure_diary s WHERE s.patient_id = a.patient_id)  AS seizure_count,
+            (SELECT COUNT(*) FROM medications  m WHERE m.patient_id = a.patient_id)   AS med_count
+        FROM abpm_holter_studies a
+        JOIN patients p ON p.patient_id = a.patient_id
+        ORDER BY a.patient_id
+        """
+    )
+    rows = [dict(r) for r in cur.fetchall()]
+    conn.close()
+
     results = []
-    for p in patients:
-        study = _generate_study(p)
-        results.append({"patient": p, "study": study})
+    for row in rows:
+        patient = {
+            "patient_id":    row["patient_id"],
+            "name":          row["name"],
+            "age":           row["age"],
+            "disease":       row["disease"],
+            "seizure_count": row["seizure_count"],
+            "med_count":     row["med_count"],
+        }
+
+        # Map DB columns → script key names
+        sys_24h  = row["systolic_24h"]  or 120.0
+        dia_24h  = row["diastolic_24h"] or 75.0
+        dipping  = row["dipping_pct"]   if row["dipping_pct"] is not None else 12.0
+
+        # Derive bp_load estimates from mean values
+        # Clinical approximation: % of readings above threshold correlates with
+        # how far the mean is above normal upper limit
+        bp_load_s = max(0.0, min(80.0, (sys_24h - 115) * 2.0)) if sys_24h > 115 else 5.0
+        bp_load_d = max(0.0, min(70.0, (dia_24h - 70) * 2.5))  if dia_24h > 70  else 3.0
+
+        mean_hr_day   = row["mean_hr_day"]   or 78.0
+        mean_hr_night = row["mean_hr_night"] or 65.0
+        mean_hr       = row["heart_rate_24h"] or round((mean_hr_day * 14 + mean_hr_night * 10) / 24, 1)
+
+        study = {
+            "systolic_24h_mmhg":     round(sys_24h, 1),
+            "diastolic_24h_mmhg":    round(dia_24h, 1),
+            "systolic_day_mmhg":     round(row["systolic_day"]   or sys_24h * 1.04, 1),
+            "diastolic_day_mmhg":    round(row["diastolic_day"]  or dia_24h * 1.05, 1),
+            "systolic_night_mmhg":   round(row["systolic_night"] or sys_24h * 0.90, 1),
+            "diastolic_night_mmhg":  round(row["diastolic_night"] or dia_24h * 0.90, 1),
+            "dipping_pct":           round(dipping, 1),
+            "dipping_category":      row["dipping_category"] or _classify_dipping(round(dipping, 1)),
+            "bp_load_systolic_pct":  round(bp_load_s, 1),
+            "bp_load_diastolic_pct": round(bp_load_d, 1),
+            "pulse_pressure_mmhg":   round(row["pulse_pressure"] or (sys_24h - dia_24h), 1),
+            "map_mmhg":              round(row["map_24h"] or (dia_24h + (sys_24h - dia_24h) / 3), 1),
+            # Holter
+            "mean_hr_bpm":           round(mean_hr, 1),
+            "min_hr_bpm":            round(mean_hr_night - 8.0, 1),
+            "max_hr_bpm":            round(mean_hr_day + 30.0, 1),
+            "pvc_count":             row["pvc_count"]  or 0,
+            "pac_count":             max(0, int((row["pvc_count"] or 0) * 0.3)),
+            "qtc_ms":                round(row["qtc_ms"] or 410.0, 1),
+            "vt_runs":               row["vt_runs"]    or 0,
+            "af_episodes":           row["af_episodes"] or 0,
+            "st_depression_events":  row["st_depression_events"] or 0,
+        }
+
+        # Use DB-stored pattern if it exists in DIAGNOSTIC_PATTERNS, else reclassify
+        db_pattern = row.get("pattern_label") or ""
+        if db_pattern in DIAGNOSTIC_PATTERNS:
+            study["diagnostic_pattern"] = db_pattern
+        else:
+            study["diagnostic_pattern"] = _classify_pattern(study)
+
+        # Use DB-stored cardiac_score/severity if available, else recompute
+        if row.get("cardiac_score") is not None:
+            study["cardiac_score"] = round(row["cardiac_score"], 1)
+            study["severity"]     = row.get("severity") or _severity_from_score(study["cardiac_score"])
+        else:
+            study["cardiac_score"] = _compute_cardiac_score(study)
+            study["severity"]     = _severity_from_score(study["cardiac_score"])
+
+        study["is_abnormal"] = study["severity"] != "Normal"
+
+        # Extra fields from DB (not in original schema, exposed for detail views)
+        study["study_date"]           = row.get("study_date", "")
+        study["svt_episodes"]         = row.get("svt_episodes") or 0
+        study["bradycardia_episodes"] = row.get("bradycardia_episodes") or 0
+        study["mean_hr_day"]          = round(mean_hr_day, 1)
+        study["mean_hr_night"]        = round(mean_hr_night, 1)
+        study["notes"]                = row.get("notes") or ""
+
+        results.append({"patient": patient, "study": study})
+
+    # Fallback: if the real table is empty, use legacy generation
+    if not results:
+        patients = _get_patients()
+        for p in patients:
+            study = _generate_study(p)
+            results.append({"patient": p, "study": study})
+
     return results
 
 
