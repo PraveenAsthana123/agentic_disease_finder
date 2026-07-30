@@ -71,6 +71,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/pharmacogenomics">&#x1f9ec; Pharmacogenomics</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cognitive-decline">&#x1f9e0; Cognitive Decline</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/adl">&#x1f3c3; ADL</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/quality-of-life">&#x1f31f; Quality of Life</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

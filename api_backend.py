@@ -15300,6 +15300,27 @@ async def onboarding_definitions():
     return _json_safe(obd.definitions())
 
 
+# ── Quality of Life Dashboard ─────────────────────────────────────
+
+@app.get("/api/quality-of-life/overview")
+async def quality_of_life_overview():
+    """QoL KPIs: QOLIE-31, PHQ-9, GAD-7, NDDI-E, mood, fatigue, seizure worry averages and distributions."""
+    import scripts.quality_of_life_dashboard as qol
+    return _json_safe(qol.overview())
+
+@app.get("/api/quality-of-life/breakdown")
+async def quality_of_life_breakdown():
+    """Per-patient QoL profiles, longitudinal trends, recent assessments."""
+    import scripts.quality_of_life_dashboard as qol
+    return _json_safe(qol.breakdown())
+
+@app.get("/api/quality-of-life/definitions")
+async def quality_of_life_definitions():
+    """QoL instrument definitions, scoring, and clinical relevance."""
+    import scripts.quality_of_life_dashboard as qol
+    return _json_safe(qol.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

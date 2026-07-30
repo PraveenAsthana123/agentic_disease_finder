@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-07-27",
+  "updated_at": "2026-07-30",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -461,11 +461,33 @@
         "/api/secure-messages/definitions"
       ],
       "component": "SecureMessagesDashboard.jsx"
+    },
+    {
+      "name": "Quality of Life",
+      "id": "quality-of-life",
+      "status": "built",
+      "priority": "P0",
+      "role": "neurologist",
+      "route": "/quality-of-life",
+      "endpoints": [
+        "/api/quality-of-life/overview",
+        "/api/quality-of-life/breakdown",
+        "/api/quality-of-life/definitions"
+      ],
+      "source_table": "pro_outcomes",
+      "instruments": [
+        "QOLIE-31",
+        "PHQ-9",
+        "GAD-7",
+        "NDDI-E",
+        "Seizure Worry"
+      ],
+      "description": "Comprehensive QoL tracking: QOLIE-31, PHQ-9, GAD-7, NDDI-E, mood, fatigue, social/daily function, seizure worry. Per-patient profiles, longitudinal trends, severity distributions, at-risk flagging."
     }
   ],
   "summary": {
     "total": 37,
-    "built": 37,
+    "built": 39,
     "partial": 0,
     "planned": 0
   }
