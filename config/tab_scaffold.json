@@ -1,11 +1,22 @@
 {
-  "title": "Standard Tab Scaffold — 8 sections per tab",
-  "note": "Every tab wraps with: Goal · ToDo · horizontal Process Flow · Input · Process · Output · Visualization · Transaction History. Default applies when no per-tab override.",
-  "updated_at": "2026-06-24",
+  "title": "Standard Tab Scaffold \u2014 8 sections per tab",
+  "note": "Every tab wraps with: Goal \u00b7 ToDo \u00b7 horizontal Process Flow \u00b7 Input \u00b7 Process \u00b7 Output \u00b7 Visualization \u00b7 Transaction History. Default applies when no per-tab override.",
+  "updated_at": "2026-07-30",
   "default": {
     "goal": "Provide a clear, auditable workflow for this capability.",
-    "todos": ["Review inputs", "Run the process", "Validate output", "Record sign-off"],
-    "flow": ["Input", "Process", "Output", "Review", "Audit"],
+    "todos": [
+      "Review inputs",
+      "Run the process",
+      "Validate output",
+      "Record sign-off"
+    ],
+    "flow": [
+      "Input",
+      "Process",
+      "Output",
+      "Review",
+      "Audit"
+    ],
     "input": "Domain data + parameters relevant to this tab.",
     "process": "Deterministic/AI step that transforms input to output.",
     "output": "Structured result + artifacts.",
@@ -15,8 +26,19 @@
     "seizure_diary": {
       "status": "built",
       "goal": "Capture every seizure event and surface trends so risk is visible early.",
-      "todos": ["Log new seizure events", "Verify duration & injury", "Review monthly trend", "Flag severe events to neurologist"],
-      "flow": ["Patient logs event", "Auto-score severity", "Aggregate trend", "Neurologist review", "Audit"],
+      "todos": [
+        "Log new seizure events",
+        "Verify duration & injury",
+        "Review monthly trend",
+        "Flag severe events to neurologist"
+      ],
+      "flow": [
+        "Patient logs event",
+        "Auto-score severity",
+        "Aggregate trend",
+        "Neurologist review",
+        "Audit"
+      ],
       "input": "Date/time, duration, aura, awareness, motor signs, injury, ER, trigger.",
       "process": "Auto-severity scoring (duration + injury + ER + recovery) + monthly aggregation.",
       "output": "Severity-classified events + monthly trend + ER count + severity distribution.",
@@ -25,36 +47,84 @@
     "onboarding": {
       "status": "built",
       "goal": "Get a patient onboarded in 8-10 min instead of 2-3 hours.",
-      "todos": ["Capture ~56 required fields", "Upload EEG/MRI/EMR for auto-extract", "Defer longitudinal fields to portal"],
-      "flow": ["Required intake", "Upload + extract", "Defer to portal", "Confirm"],
+      "todos": [
+        "Capture ~56 required fields",
+        "Upload EEG/MRI/EMR for auto-extract",
+        "Defer longitudinal fields to portal"
+      ],
+      "flow": [
+        "Required intake",
+        "Upload + extract",
+        "Defer to portal",
+        "Confirm"
+      ],
       "input": "Demographics, chief complaint, core history, current meds, emergency contact.",
       "process": "Required-first capture + multi-format document extraction + field deferral.",
       "output": "Onboarded patient with ~80 intake fields; ~1170 deferred.",
       "viz": "3-step progress stepper."
     },
     "workbench": {
-      "goal": "Drive the clinical decision from Patient → EEG → AI → Explainability → Human → Audit.",
-      "todos": ["Review patient summary", "Inspect EEG evidence", "Check AI findings + confidence", "Validate or override", "Sign off"],
-      "flow": ["Patient", "EEG evidence", "AI findings", "Explainability", "Human validation", "Audit"],
+      "goal": "Drive the clinical decision from Patient \u2192 EEG \u2192 AI \u2192 Explainability \u2192 Human \u2192 Audit.",
+      "todos": [
+        "Review patient summary",
+        "Inspect EEG evidence",
+        "Check AI findings + confidence",
+        "Validate or override",
+        "Sign off"
+      ],
+      "flow": [
+        "Patient",
+        "EEG evidence",
+        "AI findings",
+        "Explainability",
+        "Human validation",
+        "Audit"
+      ],
       "input": "Patient record, EEG analysis, AI predictions.",
       "process": "Assemble evidence + AI findings + explainability for human decision.",
       "output": "Validated clinical impression + audit row.",
-      "viz": "Biomarker bars + localization ranking + confidence gauges."
+      "viz": "Biomarker bars + localization ranking + confidence gauges.",
+      "status": "built"
     },
     "r_ipo": {
-      "goal": "Show the role's pipeline as Input → Process → Output with quality gates.",
-      "todos": ["Define inputs", "Run pipeline stages", "Check gates", "Emit output"],
-      "flow": ["Input", "Preprocess", "Model", "Evaluate", "Output"],
-      "input": "Role-specific data sources.", "process": "Staged pipeline with gates.",
-      "output": "Scored result + report.", "viz": "Pipeline stage diagram."
+      "goal": "Show the role's pipeline as Input \u2192 Process \u2192 Output with quality gates.",
+      "todos": [
+        "Define inputs",
+        "Run pipeline stages",
+        "Check gates",
+        "Emit output"
+      ],
+      "flow": [
+        "Input",
+        "Preprocess",
+        "Model",
+        "Evaluate",
+        "Output"
+      ],
+      "input": "Role-specific data sources.",
+      "process": "Staged pipeline with gates.",
+      "output": "Scored result + report.",
+      "viz": "Pipeline stage diagram."
     },
     "iot_fleet": {
       "goal": "Handle Emotiv + IoT + mobile devices across online/offline/hybrid modes.",
-      "todos": ["Register devices", "Monitor connectivity", "Verify offline buffering", "Confirm sync integrity"],
-      "flow": ["Device", "Gateway/edge", "Confidence gate", "Alert/SOS", "Audit"],
+      "todos": [
+        "Register devices",
+        "Monitor connectivity",
+        "Verify offline buffering",
+        "Confirm sync integrity"
+      ],
+      "flow": [
+        "Device",
+        "Gateway/edge",
+        "Confidence gate",
+        "Alert/SOS",
+        "Audit"
+      ],
       "input": "Device streams (EEG, HR, motion).",
       "process": "Online stream OR offline buffer+sync OR hybrid edge inference.",
-      "output": "Synced data + seizure alerts.", "viz": "Fleet status grid by mode."
+      "output": "Synced data + seizure alerts.",
+      "viz": "Fleet status grid by mode."
     }
   }
 }

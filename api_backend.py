@@ -15321,6 +15321,30 @@ async def quality_of_life_definitions():
     return _json_safe(qol.definitions())
 
 
+# ── Clinical Workbench Dashboard ─────────────────────────────────
+# Unified Patient → EEG → AI → Explainability → Human → Audit pipeline.
+# Real data: patients, analyses, clinical_decisions, expert_reviews,
+# hitl_reviews, explainability_gt, transaction_log tables.
+
+@app.get("/api/workbench/overview")
+async def workbench_overview():
+    """Workbench pipeline KPIs: patients, analyses, AI predictions, human reviews, audit completeness."""
+    import scripts.workbench_dashboard as wb
+    return _json_safe(wb.overview())
+
+@app.get("/api/workbench/breakdown")
+async def workbench_breakdown():
+    """Per-patient pipeline tracker, recent cases with decisions, reviewer workload, explainability."""
+    import scripts.workbench_dashboard as wb
+    return _json_safe(wb.breakdown())
+
+@app.get("/api/workbench/definitions")
+async def workbench_definitions():
+    """Workbench pipeline stage definitions, decision types, agreement levels, glossary."""
+    import scripts.workbench_dashboard as wb
+    return _json_safe(wb.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
