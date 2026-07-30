@@ -66,7 +66,7 @@
         {
           "name": "Pharmacogenomics Dashboard",
           "status": "built",
-          "maps_to": "/api/pharmacogenomics/overview + /api/pharmacogenomics/breakdown + /api/pharmacogenomics/definitions"
+          "maps_to": "/api/pharmacogenomics/{overview,breakdown,definitions} + PharmacogenomicsDashboard portal-next/app/pharmacogenomics/page.jsx + nav wired"
         }
       ]
     },
