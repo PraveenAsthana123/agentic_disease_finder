@@ -1,18 +1,85 @@
 {
-  "title": "Patient Self-Service Portal — Tabs",
+  "title": "Patient Self-Service Portal \u2014 Tabs",
   "note": "Tabs a patient sees in the self-service portal. status: built / partial / planned. maps_to = real endpoint.",
   "updated_at": "2026-06-29",
   "tabs": [
-    {"id": "forms", "label": "📋 Forms", "purpose": "assessment forms experts sent me to fill (MoCA/PHQ-9/etc.) → auto-scored on submit", "status": "built", "maps_to": "/api/forms, /api/forms/{id}/submit"},
-    {"id": "campaign", "label": "📣 Campaigns", "purpose": "health campaigns / education / reminders pushed to me", "status": "built", "maps_to": "/api/campaigns + /api/campaigns/{type,summary,definitions}"},
-    {"id": "notification", "label": "🔔 Notifications", "purpose": "results-ready, appointment, follow-up notices", "status": "built", "maps_to": "/api/notifications + /api/notifications/{category,unread,definitions}"},
-    {"id": "alert", "label": "🚨 Alerts", "purpose": "urgent: seizure alert, suicidality escalation, SOS, temperature", "status": "built", "maps_to": "/api/alerts + /api/alerts/{category,severity,summary,definitions}"},
-    {"id": "inbox", "label": "✉️ Message Inbox", "purpose": "secure messages between me and my care team", "status": "built", "maps_to": "/api/inbox + /api/inbox/{category,summary,definitions}"},
-    {"id": "medication", "label": "💊 Medication", "purpose": "my current meds, recommendations, schedule, adherence", "status": "built", "maps_to": "/api/medication + /api/medication/{list,schedule,adherence,recommendations,side-effects}"},
-    {"id": "therapy", "label": "🧘 Meditation / Physio / Therapy", "purpose": "rehab plans, exercises, meditation/physio programs assigned to me", "status": "built", "maps_to": "/api/therapy + /api/therapy/{rehab,exercises,meditation,physio,definitions}"},
-    {"id": "assessments", "label": "🧩 My Assessments", "purpose": "history of my completed assessments + scores", "status": "built", "maps_to": "/api/assessments?patient_id"},
-    {"id": "reports", "label": "📄 My Reports", "purpose": "my EEG/summary reports", "status": "built", "maps_to": "/api/patient-reports + /api/patient-reports/{summary,definitions}"},
-    {"id": "chat", "label": "💬 Ask AI (about my records)", "purpose": "RAG conversational AI grounded in my records", "status": "built", "maps_to": "/api/patient-chat"},
-    {"id": "history", "label": "🕐 My History", "purpose": "timeline of everything (UTC+local stamped)", "status": "built", "maps_to": "/api/transactions"}
+    {
+      "id": "forms",
+      "label": "\ud83d\udccb Forms",
+      "purpose": "assessment forms experts sent me to fill (MoCA/PHQ-9/etc.) \u2192 auto-scored on submit",
+      "status": "built",
+      "maps_to": "/api/forms, /api/forms/{id}/submit"
+    },
+    {
+      "id": "campaign",
+      "label": "\ud83d\udce3 Campaigns",
+      "purpose": "health campaigns / education / reminders pushed to me",
+      "status": "built",
+      "maps_to": "/api/campaigns + /api/campaigns/{type,summary,definitions}"
+    },
+    {
+      "id": "notification",
+      "label": "\ud83d\udd14 Notifications",
+      "purpose": "results-ready, appointment, follow-up notices",
+      "status": "built",
+      "maps_to": "/api/notifications + /api/notifications/{category,unread,definitions}"
+    },
+    {
+      "id": "alert",
+      "label": "\ud83d\udea8 Alerts",
+      "purpose": "urgent: seizure alert, suicidality escalation, SOS, temperature",
+      "status": "built",
+      "maps_to": "/api/alerts + /api/alerts/{category,severity,summary,definitions}"
+    },
+    {
+      "id": "inbox",
+      "label": "\u2709\ufe0f Message Inbox",
+      "purpose": "secure messages between me and my care team",
+      "status": "built",
+      "maps_to": "/api/inbox + /api/inbox/{category,summary,definitions}"
+    },
+    {
+      "id": "medication",
+      "label": "\ud83d\udc8a Medication",
+      "purpose": "my current meds, recommendations, schedule, adherence",
+      "status": "built",
+      "maps_to": "/api/medication + /api/medication/{list,schedule,adherence,recommendations,side-effects}"
+    },
+    {
+      "id": "therapy",
+      "label": "\ud83e\uddd8 Meditation / Physio / Therapy",
+      "purpose": "rehab plans, exercises, meditation/physio programs assigned to me",
+      "status": "built",
+      "maps_to": "/api/therapy + /api/therapy/{rehab,exercises,meditation,physio,definitions}",
+      "frontend": "/therapy"
+    },
+    {
+      "id": "assessments",
+      "label": "\ud83e\udde9 My Assessments",
+      "purpose": "history of my completed assessments + scores",
+      "status": "built",
+      "maps_to": "/api/assessments?patient_id"
+    },
+    {
+      "id": "reports",
+      "label": "\ud83d\udcc4 My Reports",
+      "purpose": "my EEG/summary reports",
+      "status": "built",
+      "maps_to": "/api/patient-reports + /api/patient-reports/{summary,definitions}"
+    },
+    {
+      "id": "chat",
+      "label": "\ud83d\udcac Ask AI (about my records)",
+      "purpose": "RAG conversational AI grounded in my records",
+      "status": "built",
+      "maps_to": "/api/patient-chat"
+    },
+    {
+      "id": "history",
+      "label": "\ud83d\udd50 My History",
+      "purpose": "timeline of everything (UTC+local stamped)",
+      "status": "built",
+      "maps_to": "/api/transactions"
+    }
   ]
 }
