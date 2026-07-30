@@ -394,7 +394,8 @@
         "/api/caregiver-readiness/overview",
         "/api/caregiver-readiness/breakdown",
         "/api/caregiver-readiness/definitions"
-      ]
+      ],
+      "portal_page": "/caregiver-readiness"
     },
     {
       "role": "Admin / Operations",
