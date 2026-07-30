@@ -104,7 +104,8 @@
       "input": "Role-specific data sources.",
       "process": "Staged pipeline with gates.",
       "output": "Scored result + report.",
-      "viz": "Pipeline stage diagram."
+      "viz": "Pipeline stage diagram.",
+      "status": "built"
     },
     "iot_fleet": {
       "goal": "Handle Emotiv + IoT + mobile devices across online/offline/hybrid modes.",

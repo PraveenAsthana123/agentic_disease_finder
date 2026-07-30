@@ -15371,6 +15371,29 @@ async def neurolab_readiness_definitions():
     return _json_safe(nrd.definitions())
 
 
+# ── Role IPO Pipeline Dashboard ───────────────────────────────────────
+@app.get("/api/r-ipo/overview")
+async def role_ipo_overview():
+    """Role IPO overview — per-role pipeline stage counts, status,
+    cross-role step comparison, and build coverage KPIs."""
+    import scripts.role_ipo_dashboard as rid
+    return _json_safe(rid.overview())
+
+@app.get("/api/r-ipo/breakdown")
+async def role_ipo_breakdown():
+    """Role IPO breakdown — per-role staged pipeline, mermaid diagrams,
+    and cross-role step comparison matrix."""
+    import scripts.role_ipo_dashboard as rid
+    return _json_safe(rid.breakdown())
+
+@app.get("/api/r-ipo/definitions")
+async def role_ipo_definitions():
+    """Role IPO definitions — phase descriptions, quality gate definitions,
+    and status legend."""
+    import scripts.role_ipo_dashboard as rid
+    return _json_safe(rid.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
