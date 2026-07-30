@@ -78,6 +78,7 @@ BUILDABLE = [
 # sleep_staging (Sleep Staging Dashboard — real sleep_staging 95 rows, 40 patients, 5 study types (PSG/ambulatory-EEG/overnight-EEG/routine-EEG/video-EEG-LTM), AASM staging, efficiency distribution, seizure-sleep interaction, IED NREM activation, OSA/PLM comorbidity, 3 endpoints verified 200, SleepStagingDashboard.jsx + nav wired)
 # seizure_triggers (Seizure Trigger Analysis Dashboard — real seizure_trigger_logs 203 rows, 40 patients, 9 trigger types, 4 sleep quality levels, 6 ILAE seizure types, trigger-specific seizure rates, lifestyle risk comparisons, sleep-quality vs seizure-occurrence, per-patient summaries, 3 endpoints /api/seizure-triggers/overview|breakdown|definitions verified 200, SeizureTriggerDashboard.jsx + nav wired)
 # cognitive_decline (Cognitive Decline Tracking Dashboard — real neuropsych data, 20 patients, 96 assessments, MoCA/MMSE/domain slopes, 5 classification tiers, risk stratification, 3 endpoints /api/cognitive-decline/overview|breakdown|definitions verified 200, CognitiveDeclineDashboard.jsx + nav wired)
+# adl (Activities of Daily Living Dashboard — real assessments 69 rows, 25 patients, 3 instruments (Barthel Index/QOLIE-31/Epworth Sleepiness Scale), patient profiles with overall severity, score distributions, level breakdowns (normal/moderate/severe), 3 endpoints /api/adl/overview|breakdown|definitions verified 200, portal-next/app/adl/page.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
