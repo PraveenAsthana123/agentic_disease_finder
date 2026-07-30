@@ -224,23 +224,30 @@ def _analyse_seizure(
 # Main report generator
 # ---------------------------------------------------------------------------
 
-def generate_seizure_timeline_report() -> dict[str, Any]:
+def generate_seizure_timeline_report(*, include_eeg: bool = False) -> dict[str, Any]:
     """Build the full seizure timeline report across all CHB-MIT subjects.
 
     Scans ``data/real_eeg/epilepsy_physionet/chbNN/`` for summary files,
-    parses seizure annotations, extracts peri-onset EEG from .edf files
-    via MNE, runs MAD-based spike detection, and returns a structured
-    dict suitable for the Seizure Timeline Dashboard frontend.
+    parses seizure annotations, and returns a structured dict suitable
+    for the Seizure Timeline Dashboard frontend.
+
+    Args:
+        include_eeg: If True, also load .edf files via MNE for peri-onset
+            EEG extraction and spike detection (slow — loads GBs of data).
+            Default False for fast endpoint response.
 
     Returns:
         dict with keys: available, total_seizures, subjects, timeline,
-        per_subject_summary.  If MNE or data is unavailable, returns
+        per_subject_summary.  If data is unavailable, returns
         {"available": False, "error": "reason"}.
     """
-    try:
-        import mne  # noqa: F811 — verify import
-    except ImportError:
-        return {"available": False, "error": "MNE library not installed"}
+    has_mne = False
+    if include_eeg:
+        try:
+            import mne  # noqa: F811 — verify import
+            has_mne = True
+        except ImportError:
+            pass
 
     if not _DATA_ROOT.is_dir():
         return {
@@ -299,9 +306,10 @@ def generate_seizure_timeline_report() -> dict[str, Any]:
                 "peri_onset_eeg": {"times": [], "channels": {}},
             }
 
-            analysis = _analyse_seizure(edf_path, rec["start_sec"], rec["end_sec"])
-            if analysis:
-                entry.update(analysis)
+            if include_eeg and has_mne:
+                analysis = _analyse_seizure(edf_path, rec["start_sec"], rec["end_sec"])
+                if analysis:
+                    entry.update(analysis)
 
             timeline.append(entry)
 
