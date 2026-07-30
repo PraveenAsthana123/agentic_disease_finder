@@ -15345,6 +15345,32 @@ async def workbench_definitions():
     return _json_safe(wb.definitions())
 
 
+# ──────────────────────────────────────────────────────────────
+# NeuroLab Readiness Dashboard
+# Deployment readiness & business case — stakeholder coverage,
+# process maturity, functionality gaps, roadmap, and gap analysis.
+# Real data: config/neurolab_readiness.json + clinical.db metrics.
+# ──────────────────────────────────────────────────────────────
+
+@app.get("/api/neurolab-readiness/overview")
+async def neurolab_readiness_overview():
+    """Readiness KPIs: built/partial/missing counts, radar chart data, phase progress."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.overview())
+
+@app.get("/api/neurolab-readiness/breakdown")
+async def neurolab_readiness_breakdown():
+    """Per-stakeholder detail, process status, functionality, business case, roadmap, gap analysis."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.breakdown())
+
+@app.get("/api/neurolab-readiness/definitions")
+async def neurolab_readiness_definitions():
+    """Reference definitions for readiness statuses, phases, and glossary terms."""
+    import scripts.neurolab_readiness_dashboard as nrd
+    return _json_safe(nrd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

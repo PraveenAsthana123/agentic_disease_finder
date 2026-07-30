@@ -76,6 +76,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/consent-management">&#x1f4dc; Consent</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-decisions">&#x2696;&#xfe0f; Clinical Decisions</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/workbench">&#x1f9ea; Workbench</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/neurolab-readiness">&#x1f3e5; NeuroLab Readiness</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
