@@ -66,6 +66,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/model-comparison">&#x1f4ca; Model Compare</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hospitalization">&#x1f3e5; Hospitalization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-diary">&#x1f4d3; Seizure Diary</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/scheduled-jobs">&#x23f0; Scheduled Jobs</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
