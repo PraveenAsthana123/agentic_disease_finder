@@ -23,6 +23,7 @@
       "viz": "Monthly seizure bar chart + severity distribution."
     },
     "onboarding": {
+      "status": "built",
       "goal": "Get a patient onboarded in 8-10 min instead of 2-3 hours.",
       "todos": ["Capture ~56 required fields", "Upload EEG/MRI/EMR for auto-extract", "Defer longitudinal fields to portal"],
       "flow": ["Required intake", "Upload + extract", "Defer to portal", "Confirm"],

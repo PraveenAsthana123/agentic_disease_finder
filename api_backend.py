@@ -15275,6 +15275,31 @@ async def safety_network_definitions():
     return _json_safe(snd.definitions())
 
 
+@app.get("/api/onboarding/overview")
+async def onboarding_overview():
+    """Patient Onboarding overview — KPIs: total patients, onboarded count,
+    completion %, demographics/emergency/meds/docs coverage, monthly trend."""
+    import scripts.onboarding_dashboard as obd
+    return _json_safe(obd.overview())
+
+
+@app.get("/api/onboarding/breakdown")
+async def onboarding_breakdown():
+    """Patient Onboarding breakdown — per-patient completion across 5 sections
+    (demographics, emergency_contact, medications, documents, comorbidities),
+    field counts, completion percentage, section-level stats."""
+    import scripts.onboarding_dashboard as obd
+    return _json_safe(obd.breakdown())
+
+
+@app.get("/api/onboarding/definitions")
+async def onboarding_definitions():
+    """Patient Onboarding definitions — section specs, required vs deferred
+    field counts, 3-step process, glossary of onboarding terms."""
+    import scripts.onboarding_dashboard as obd
+    return _json_safe(obd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
