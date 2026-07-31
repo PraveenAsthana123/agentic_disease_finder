@@ -1,5 +1,5 @@
 {
-  "title": "Enterprise AI Dashboard Catalog (5 phases) — coverage map",
+  "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
   "updated_at": "2026-07-30",
   "phases": [
@@ -73,7 +73,7 @@
     {
       "phase": 2,
       "name": "LLM & Model Operations",
-      "count": 10,
+      "count": 11,
       "dashboards": [
         {
           "name": "Model Comparison Dashboard",
@@ -123,6 +123,11 @@
           "name": "Referral Triage Dashboard",
           "status": "built",
           "maps_to": "/api/referral-triage/overview + /api/referral-triage/breakdown + /api/referral-triage/definitions"
+        },
+        {
+          "name": "Seizure Trigger Logs Dashboard",
+          "status": "built",
+          "maps_to": "/api/seizure-triggers/overview + /api/seizure-triggers/breakdown + /api/seizure-triggers/definitions"
         }
       ]
     },
@@ -280,7 +285,7 @@
         {
           "name": "Shadow AI Detection Dashboard",
           "status": "built",
-          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx — unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
+          "maps_to": "/api/shadow-ai/{overview,breakdown,definitions} + ShadowAIDashboard.jsx \u2014 unauthorized AI tool detection, hourly heatmap, source analysis, risk distribution"
         },
         {
           "name": "MRI Brain Review Dashboard",
@@ -290,7 +295,7 @@
         {
           "name": "OTel LLM Observability Dashboard",
           "status": "built",
-          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx — OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
+          "maps_to": "/api/otel-llm/{overview,breakdown,definitions} + OTelLLMDashboard.jsx \u2014 OpenTelemetry trace/span monitoring, per-model latency, token cost tracking, anomaly alerts"
         },
         {
           "name": "SecOps Dashboard",
@@ -300,7 +305,7 @@
         {
           "name": "ICD-10 Coding Dashboard",
           "status": "built",
-          "maps_to": "/api/icd10-coding/{overview,breakdown,definitions} + ICD10CodingDashboard.jsx — diagnostic coding analytics, AI vs human coder comparison, confidence scoring, rejection tracking, 85 records 41 patients"
+          "maps_to": "/api/icd10-coding/{overview,breakdown,definitions} + ICD10CodingDashboard.jsx \u2014 diagnostic coding analytics, AI vs human coder comparison, confidence scoring, rejection tracking, 85 records 41 patients"
         }
       ]
     }
@@ -375,7 +380,7 @@
     {
       "name": "Medication Refill Tracking Dashboard",
       "status": "built",
-      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx — AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
+      "maps_to": "/api/medication-refills/{overview,breakdown,definitions} + MedicationRefillDashboard.jsx \u2014 AED refill analytics, drug/pharmacy distribution, gap analysis, 226 refill records from 30 patients, 8 drugs, 6 pharmacies, 3 endpoints verified 200"
     },
     {
       "id": "patient-documents",
@@ -401,7 +406,7 @@
       ],
       "table": "patient_appointments",
       "rows": 191,
-      "note": "Appointment scheduling analytics — 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
+      "note": "Appointment scheduling analytics \u2014 191 rows, 30 patients, 8 types, 6 providers, 5 statuses, 4 locations"
     },
     {
       "id": "iot-alerts",
@@ -415,7 +420,7 @@
       ],
       "table": "iot_alerts",
       "rows": 50,
-      "note": "IoT device/gateway alert analytics — 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
+      "note": "IoT device/gateway alert analytics \u2014 50 alerts, 24 devices, 6 gateways, 20 patients, 6 alert types, 3 severity levels, acknowledgment/resolution tracking"
     },
     {
       "id": "onboarding-intake",
@@ -428,7 +433,7 @@
         "/api/onboarding-intake/definitions"
       ],
       "frontend": "OnboardingIntakeDashboard.jsx",
-      "description": "Patient onboarding intake-vs-deferred field classification — 3-step workflow (80 intake / 1170 deferred / 15x reduction / 8-10 min), 6 intake groups, 4 auto-extraction sources, 6 deferred sections, 5-tab layout"
+      "description": "Patient onboarding intake-vs-deferred field classification \u2014 3-step workflow (80 intake / 1170 deferred / 15x reduction / 8-10 min), 6 intake groups, 4 auto-extraction sources, 6 deferred sections, 5-tab layout"
     },
     {
       "id": "billing-claims",
@@ -441,7 +446,7 @@
         "/api/billing-claims/definitions"
       ],
       "frontend": "BillingClaimsDashboard (portal-next/app/billing-claims/page.jsx)",
-      "description": "Medical billing analytics — 150 claims, 40 patients, 7 claim statuses, 6 insurers (Cigna/Medicare/Medicaid/BCBS/Aetna/UHC/Self-Pay), 8 service types, collection rate, denial rate, aging, per-patient breakdown"
+      "description": "Medical billing analytics \u2014 150 claims, 40 patients, 7 claim statuses, 6 insurers (Cigna/Medicare/Medicaid/BCBS/Aetna/UHC/Self-Pay), 8 service types, collection rate, denial rate, aging, per-patient breakdown"
     }
   ]
 }
