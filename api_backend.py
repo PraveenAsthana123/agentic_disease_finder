@@ -15394,6 +15394,35 @@ async def role_ipo_definitions():
     return _json_safe(rid.definitions())
 
 
+# ── Inference Testing Dashboard ─────────────────────────────────────
+# Model inference analytics — latency, accuracy, confidence, per-disease
+# prediction breakdown, validation studies. Reads model_comparison, analyses,
+# and validation_studies tables from clinical.db.
+
+@app.get("/api/inference-testing/overview")
+async def inference_testing_overview():
+    """Inference testing overview — model benchmarks, latency buckets,
+    accuracy distribution, prediction confidence, per-disease performance."""
+    import scripts.inference_testing_dashboard as itd
+    return _json_safe(itd.overview())
+
+
+@app.get("/api/inference-testing/breakdown")
+async def inference_testing_breakdown():
+    """Inference testing breakdown — top models, per-task and per-type
+    performance, recent analyses, label distributions, validation studies."""
+    import scripts.inference_testing_dashboard as itd
+    return _json_safe(itd.breakdown())
+
+
+@app.get("/api/inference-testing/definitions")
+async def inference_testing_definitions():
+    """Inference testing definitions — ML metrics, status legend,
+    clinical latency/accuracy thresholds."""
+    import scripts.inference_testing_dashboard as itd
+    return _json_safe(itd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
