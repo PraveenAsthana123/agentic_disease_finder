@@ -93,6 +93,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/regulatory-compliance">&#x1f3db; Regulatory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-requirements">&#x1f4ca; Data Requirements</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/production-issues">&#x1f6a8; Production Issues</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/clinical-risk-stratification">&#x1f6a8; Clinical Risk</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
