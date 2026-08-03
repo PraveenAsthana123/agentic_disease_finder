@@ -2633,6 +2633,29 @@ async def cross_patient_benchmark_definitions():
     return _json_safe(cpd.definitions())
 
 
+# ── Seizure Forecasting Dashboard ─────────────────────────────────────
+
+@app.get("/api/seizure-forecasting/overview")
+async def seizure_forecasting_overview():
+    """Seizure Forecasting overview — KPIs (sensitivity, FAR, AUC), risk distribution, temporal patterns."""
+    import scripts.seizure_forecasting_dashboard as sfd
+    return _json_safe(sfd.overview())
+
+
+@app.get("/api/seizure-forecasting/patients")
+async def seizure_forecasting_patients():
+    """Seizure Forecasting per-patient profiles — risk scores, triggers, medications, temporal patterns."""
+    import scripts.seizure_forecasting_dashboard as sfd
+    return _json_safe(sfd.patients())
+
+
+@app.get("/api/seizure-forecasting/definitions")
+async def seizure_forecasting_definitions():
+    """Seizure Forecasting definitions — terms, references, clinical interpretation."""
+    import scripts.seizure_forecasting_dashboard as sfd
+    return _json_safe(sfd.definitions())
+
+
 @app.get("/api/feature-gaps")
 async def feature_gaps():
     """Epilepsy DL review (50 papers) → project gap analysis by category."""
@@ -15421,6 +15444,27 @@ async def inference_testing_definitions():
     clinical latency/accuracy thresholds."""
     import scripts.inference_testing_dashboard as itd
     return _json_safe(itd.definitions())
+
+
+@app.get("/api/regulatory-compliance/overview")
+async def regulatory_compliance_overview():
+    """Regulatory compliance overview — FDA/CE submissions, validation pass rates, audit activity."""
+    import scripts.regulatory_compliance_dashboard as rcd
+    return _json_safe(rcd.overview())
+
+
+@app.get("/api/regulatory-compliance/breakdown")
+async def regulatory_compliance_breakdown():
+    """Regulatory compliance breakdown — per-submission dossier, validation details, audit trail."""
+    import scripts.regulatory_compliance_dashboard as rcd
+    return _json_safe(rcd.breakdown())
+
+
+@app.get("/api/regulatory-compliance/definitions")
+async def regulatory_compliance_definitions():
+    """Regulatory compliance definitions — SaMD, pathways, risk classes, metrics."""
+    import scripts.regulatory_compliance_dashboard as rcd
+    return _json_safe(rcd.definitions())
 
 
 if __name__ == "__main__":

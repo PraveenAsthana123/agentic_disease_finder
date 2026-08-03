@@ -57,9 +57,9 @@
     {"process": "Noise Cleaning (ICA)", "trigger": "on-upload", "endpoint": "GET /api/ica-noise-cleaning/overview",
      "stages": ["load raw", "ICA decompose", "artifact reject", "reconstruct clean"],
      "status": "automatic"},
-    {"process": "Seizure Forecasting", "trigger": "stream", "endpoint": "(partial)",
-     "stages": ["pre-ictal windows", "model", "FAR/hr + sensitivity@horizon", "alert"],
-     "status": "semi"},
+    {"process": "Seizure Forecasting", "trigger": "on-demand", "endpoint": "GET /api/seizure-forecasting/overview|patients|definitions",
+     "stages": ["seizure diary history", "temporal features + risk model", "FAR/hr + sensitivity@horizon", "patient risk profiles", "dashboard"],
+     "status": "automatic"},
     {"process": "Continuous Monitoring (IoT)", "trigger": "device stream", "endpoint": "(sim)",
      "stages": ["device", "gateway", "ingest", "features", "model", "decision", "SOS alert"],
      "status": "semi"}

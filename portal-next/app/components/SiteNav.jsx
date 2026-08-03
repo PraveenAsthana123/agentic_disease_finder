@@ -68,6 +68,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/hospitalization">&#x1f3e5; Hospitalization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-diary">&#x1f4d3; Seizure Diary</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-triggers">&#x26a1; Seizure Triggers</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/seizure-forecasting">&#x1f52e; Seizure Forecasting</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scheduled-jobs">&#x23f0; Scheduled Jobs</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/onboarding">&#x1f4cb; Onboarding</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pharmacogenomics">&#x1f9ec; Pharmacogenomics</Link></li>
@@ -87,6 +88,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/r-ipo">&#x1f504; Role IPO</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/inference-testing">&#x1f9ea; Inference Testing</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cross-patient-benchmark">&#x1f9ec; Cross-Patient</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/regulatory-compliance">&#x1f3db; Regulatory</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
