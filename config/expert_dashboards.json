@@ -484,11 +484,26 @@
         "Seizure Worry"
       ],
       "description": "Comprehensive QoL tracking: QOLIE-31, PHQ-9, GAD-7, NDDI-E, mood, fatigue, social/daily function, seizure worry. Per-patient profiles, longitudinal trends, severity distributions, at-risk flagging."
+    },
+    {
+      "id": "production_issues",
+      "name": "Production Issues Monitor",
+      "status": "built",
+      "priority": "P1",
+      "role": "platform_engineer",
+      "route": "/production-issues",
+      "endpoints": [
+        "/api/production-issues/overview",
+        "/api/production-issues/breakdown",
+        "/api/production-issues/definitions"
+      ],
+      "source_table": "config/production_issues.json",
+      "description": "Enterprise agentic AI production issue catalog: severity scoring (P1/P2), detection coverage by layer, Pareto analysis, and per-layer breakdown across Agent/Security/MCP/Planner/Retrieval/VectorDB/Memory/Reasoning/Workflow/LLM/Governance layers."
     }
   ],
   "summary": {
-    "total": 37,
-    "built": 39,
+    "total": 38,
+    "built": 40,
     "partial": 0,
     "planned": 0
   }
