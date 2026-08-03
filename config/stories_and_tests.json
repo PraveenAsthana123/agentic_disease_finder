@@ -21,7 +21,7 @@
     {"dim": "Accuracy", "tests": "subject-wise + cross-patient (leakage-free) metrics", "how": "scripts/cross_patient_benchmark.py", "status": "built"},
     {"dim": "Frontend", "tests": "Vite build passes, components render", "how": "npm run build", "status": "built"},
     {"dim": "Backend", "tests": "FastAPI boots, 69 routes, DB connects", "how": "import api_backend + clinical_db.init_db", "status": "built"},
-    {"dim": "Pipeline", "tests": "automatic pipelines chain end-to-end", "how": "automatic_pipelines registry + endpoints", "status": "partial"},
+    {"dim": "Pipeline", "tests": "automatic pipelines chain end-to-end", "how": "automatic_pipelines registry + endpoints + dashboard", "status": "built"},
     {"dim": "Manual", "tests": "manual-mode step-by-step (wizard/interview) flows", "how": "UI onboarding wizard + role interview tabs", "status": "partial"}
   ]
 }
