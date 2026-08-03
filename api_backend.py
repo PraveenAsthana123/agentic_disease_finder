@@ -15467,6 +15467,29 @@ async def regulatory_compliance_definitions():
     return _json_safe(rcd.definitions())
 
 
+# ── Seizure Prediction Dashboard ──────────────────────────────────────
+
+@app.get("/api/seizure-prediction/overview")
+async def seizure_prediction_overview():
+    """Seizure Prediction overview — sensitivity/specificity, risk distribution, temporal patterns, patient performance."""
+    import scripts.seizure_prediction_dashboard as spd
+    return _json_safe(spd.overview())
+
+
+@app.get("/api/seizure-prediction/breakdown")
+async def seizure_prediction_breakdown():
+    """Seizure Prediction breakdown — per-patient metrics, feature correlations, pre-ictal biomarkers, threshold analysis."""
+    import scripts.seizure_prediction_dashboard as spd
+    return _json_safe(spd.breakdown())
+
+
+@app.get("/api/seizure-prediction/definitions")
+async def seizure_prediction_definitions():
+    """Seizure Prediction definitions — methodology, metric definitions, clinical references."""
+    import scripts.seizure_prediction_dashboard as spd
+    return _json_safe(spd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
