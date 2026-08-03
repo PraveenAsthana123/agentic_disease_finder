@@ -89,5 +89,9 @@
     {"item": "Video EEG metadata", "format": "XLSX"}, {"item": "Device metadata", "format": "XLSX"},
     {"item": "Signal quality report", "format": "XLSX/PDF"}
   ],
-  "single_most_important": "Raw EDF file — without the raw signal you have images of EEG, not signal data. No EDF → no CNN/Transformer/STFT/wavelet/SHAP."
+  "single_most_important": "Raw EDF file — without the raw signal you have images of EEG, not signal data. No EDF → no CNN/Transformer/STFT/wavelet/SHAP.",
+  "dashboard_id": "data-requirements",
+  "dashboard_component": "DataRequirementsPage.jsx",
+  "dashboard_status": "built",
+  "dashboard_note": "Data Requirements Gap Dashboard — 3 API endpoints (/api/data-requirements/overview|breakdown|definitions), 9-category completeness tracker (58 items: 15 present, 23 partial, 20 missing), 3-tier data classification, control group coverage, artifact templates, technician deliverables, 3-tab layout (Overview, Item Breakdown, Definitions), DataRequirementsPage.jsx + nav wired"
 }
