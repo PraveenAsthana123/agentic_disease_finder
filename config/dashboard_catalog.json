@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-07-30",
+  "updated_at": "2026-08-04",
   "phases": [
     {
       "phase": 1,
@@ -46,7 +46,7 @@
         {
           "name": "Executive Scorecard",
           "status": "built",
-          "maps_to": "/api/executive-scorecard/overview + /api/executive-scorecard/breakdown + /api/executive-scorecard/definitions"
+          "maps_to": "/api/executive-scorecard/{overview,breakdown,definitions} + ExecutiveScorecardPage portal-next/app/executive-scorecard/page.jsx + nav wired"
         },
         {
           "name": "AI ROI Dashboard",
