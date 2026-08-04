@@ -158,7 +158,9 @@
           "format": "PDF",
           "status": "built"
         }
-      ]
+      ],
+      "status": "built",
+      "note": "Frontend page portal-next/app/occupational-therapist/page.jsx + SiteNav wired; 3 API endpoints (overview/breakdown/definitions) verified 200"
     },
     {
       "role": "EEG Technician",
