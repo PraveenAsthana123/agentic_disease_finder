@@ -103,6 +103,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/alerts">&#x1f6a8; Alerts</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-dark-factory">&#x1f3ed; Dark Factory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mobile-alerts">&#x1f4f1; Mobile Alerts</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/phq9-dashboard">&#x1f4cb; PHQ-9</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
