@@ -573,5 +573,9 @@
         }
       ]
     }
-  ]
+  ],
+  "dashboard_id": "enterprise-pipelines",
+  "dashboard_component": "portal-next/app/enterprise-pipelines/page.jsx",
+  "dashboard_status": "built",
+  "dashboard_note": "Enterprise Pipelines Dashboard — 45 AI/ML pipelines across 12 groups (Data/Feature/Training/Evaluation/RAG/Agentic+MCP/Inference/Drift/Security/Governance/Deployment/Observability), 3 API endpoints (/api/enterprise-pipelines/overview|breakdown|definitions), KPIs (12 groups/45 pipelines/202 stages/100% built), pipelines-per-group bar chart, status distribution, pipeline statistics, 5-tab layout (Overview, By Group, All Pipelines, Pipeline Flow, Definitions), per-group cards with pipeline tables, full 45-row searchable table with stage flow + maps_to, visual pipeline flow diagrams with stage arrows grouped by group, group descriptions + status legend + glossary, page.jsx wired in SiteNav.jsx nav, all 3 endpoints verified 200"
 }
