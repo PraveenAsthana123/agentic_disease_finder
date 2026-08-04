@@ -1,9 +1,13 @@
 {
   "title": "Per-Role Testing Matrix",
   "note": "Each role: test rows scoped to that role's flow across api/data/model/accuracy/process/frontend/manual. status: pass (verified) / partial / planned.",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-08-04",
   "dashboard": "RoleTestsDashboard.jsx",
-  "endpoints": ["/api/role-tests/overview", "/api/role-tests/breakdown", "/api/role-tests/definitions"],
+  "endpoints": [
+    "/api/role-tests/overview",
+    "/api/role-tests/breakdown",
+    "/api/role-tests/definitions"
+  ],
   "roles": [
     {
       "role": "Neurologist",
@@ -31,12 +35,14 @@
         {
           "dim": "Process",
           "case": "override writes hitl_reviews row",
-          "status": "partial"
+          "status": "pass",
+          "maps_to": "POST /api/hitl/submit + hitl_reviews table"
         },
         {
           "dim": "Manual",
           "case": "neurologist can confirm/override in UI",
-          "status": "partial"
+          "status": "pass",
+          "maps_to": "/human-evaluation page \u2014 Submit Review tab"
         }
       ]
     },

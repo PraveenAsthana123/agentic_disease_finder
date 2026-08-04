@@ -100,6 +100,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/enterprise-pipelines">&#x1f3ed; Enterprise Pipelines</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-manager">&#x1f4cb; Data Manager</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurologist">&#x1f9e0; Neurologist</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/human-evaluation">&#x1f9d1;&#x200d;&#x2695;&#xfe0f; HITL Review</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/alerts">&#x1f6a8; Alerts</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-dark-factory">&#x1f3ed; Dark Factory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mobile-alerts">&#x1f4f1; Mobile Alerts</Link></li>

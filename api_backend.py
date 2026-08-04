@@ -7200,6 +7200,65 @@ async def human_evaluation_definitions():
     return _json_safe(hed.human_eval_definitions())
 
 
+class HITLSubmitIn(BaseModel):
+    patient_id: str
+    analysis_id: Optional[int] = None
+    ai_prediction: str
+    decision: str  # "accept" | "override"
+    human_decision: Optional[str] = None
+    reason_code: Optional[str] = None
+    reviewer_id: Optional[str] = None
+    notes: Optional[str] = None
+
+
+@app.post("/api/hitl/submit")
+async def hitl_submit(body: HITLSubmitIn):
+    """Submit a neurologist HITL accept/override decision for an AI prediction.
+    Writes a row to hitl_reviews and logs to transaction_log."""
+    valid_decisions = {"accept", "override"}
+    if body.decision not in valid_decisions:
+        raise HTTPException(status_code=400, detail=f"decision must be one of: {valid_decisions}")
+    if body.decision == "override" and not body.human_decision:
+        raise HTTPException(status_code=400, detail="human_decision is required when decision='override'")
+    fields = {
+        "ai_prediction": body.ai_prediction,
+        "decision": body.decision,
+    }
+    if body.human_decision:
+        fields["human_decision"] = body.human_decision
+    if body.reason_code:
+        fields["reason_code"] = body.reason_code
+    if body.reviewer_id:
+        fields["reviewer_id"] = body.reviewer_id
+    if body.notes:
+        fields["notes"] = body.notes
+    saved = cdb.save_clinical("hitl_reviews", body.patient_id, fields, analysis_id=body.analysis_id)
+    return {"status": "success", "decision": body.decision, **saved}
+
+
+@app.get("/api/hitl/history")
+async def hitl_history(patient_id: Optional[str] = None):
+    """Return all HITL reviews, optionally filtered by patient_id."""
+    import sqlite3
+    db_path = cdb.db_path if hasattr(cdb, "db_path") else "data/clinical.db"
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    if patient_id:
+        cur.execute("SELECT * FROM hitl_reviews WHERE patient_id=? ORDER BY created_at DESC", (patient_id,))
+    else:
+        cur.execute("SELECT * FROM hitl_reviews ORDER BY created_at DESC")
+    rows = [dict(r) for r in cur.fetchall()]
+    conn.close()
+    import json as _json
+    for r in rows:
+        try:
+            r["fields"] = _json.loads(r.get("fields_json") or "{}")
+        except Exception:
+            r["fields"] = {}
+    return {"reviews": rows, "total": len(rows)}
+
+
 @app.get("/api/component-findings/overview")
 async def component_findings_overview():
     """Component Findings overview — doctor-AI agreement per EEG component,
