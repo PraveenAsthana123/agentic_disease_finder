@@ -142,5 +142,9 @@
     "Federated learning across sites (no raw signal sharing)",
     "Neurophysiology knowledge graph linking tests \u2192 findings \u2192 etiology",
     "Digital neuro-twin: simulate disease progression per patient"
-  ]
+  ],
+  "dashboard_id": "neuro-advancements",
+  "dashboard_component": "portal-next/app/neuro-advancements/page.jsx",
+  "dashboard_status": "built",
+  "dashboard_note": "Neuro AI Advancement Opportunities Dashboard — 12-modality neurophysiology AI advancement visualization from real neuro_advancements.json config (12 modalities all built, 5 cross-modal research directions), 3 API endpoints (/api/neuro-advancements/overview|breakdown|definitions), KPIs (12 modalities/unique AI models/biomarkers/cross-modal ideas), status distribution, AI models per modality bar chart, model frequency chart, modality summary table, 5-tab layout (Overview, All Modalities, AI Model Index, Cross-Modal, Definitions), modality cards with AI model badges + biomarker info, AI model-to-modality mapping table, biomarker index, cross-modal advancement directions list, status legend + modality categories + glossary + clinical notes + references, page.jsx wired in SiteNav.jsx nav, all 3 endpoints verified 200"
 }
