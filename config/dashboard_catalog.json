@@ -88,7 +88,7 @@
         {
           "name": "Hallucination Dashboard",
           "status": "built",
-          "maps_to": "/api/hallucination/overview + /api/hallucination/breakdown + /api/hallucination/definitions"
+          "maps_to": "/api/hallucination/overview + /api/hallucination/breakdown + /api/hallucination/definitions + portal-next/app/hallucination/page.jsx + nav wired"
         },
         {
           "name": "Drift Dashboard",
