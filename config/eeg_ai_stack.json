@@ -436,6 +436,7 @@
     }
   ],
   "recommended_pipeline": "MNE-Python → PyPREP → AutoReject → PyWavelets → TSFresh/AntroPy → TorchEEG/Braindecode → SHAP/Captum → Fairlearn/AIF360 → Evidently AI",
+  "dashboard_status": "built",
   "summary": {
     "installed": 16,
     "built": 12,
