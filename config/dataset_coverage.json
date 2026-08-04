@@ -2,7 +2,9 @@
   "title": "Neurophysiology Dataset & Modality Coverage Map",
   "dba_topic": "Responsible Explainable AI Governance for Retrospective EEG-Based Neuropsychiatric Analytics Under Human Clinical Oversight",
   "focus": "epilepsy-first",
-  "updated_at": "2026-07-04",
+  "updated_at": "2026-08-04",
+  "dashboard_status": "built",
+  "dashboard_note": "Dataset Coverage Dashboard — /dataset-coverage + nav wired. 6-tab layout (Overview, Modalities, AI Streams, Phases, Provider Checklist, Definitions). 3 API endpoints (/api/dataset-coverage/overview|breakdown|definitions). KPIs: 18 modalities/100% built/4 AI streams/4 phases. Tier distribution (Tier1/2/3), status breakdown, target scale, phase-modality drilldown, provider checklist (15 questions with YES/NO/TBD), definitions glossary.",
   "target_scale": {
     "patients": "500-1000",
     "eeg_studies": "2000-5000",

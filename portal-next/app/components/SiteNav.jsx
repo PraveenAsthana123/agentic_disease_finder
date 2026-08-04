@@ -111,6 +111,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/occupational-therapist">&#x1f590;&#xfe0f; OT</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/consultant-matrix">&#x1f465; Consultant Matrix</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-analysis-results">&#x1f52c; EEG Analysis Results</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/dataset-coverage">&#x1f5c2;&#xfe0f; Dataset Coverage</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
