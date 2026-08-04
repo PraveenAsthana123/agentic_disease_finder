@@ -1,7 +1,10 @@
 {
   "title": "Complete EEG → AI → RAG Pipeline (23 steps)",
   "note": "End-to-end flow (schizophrenia-derived, applies to all diseases). Honest per-step status (§155): built / partial / planned. Maps each step to where it lives in the platform.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-08-04",
+  "frontend": "/eeg-ai-rag-pipeline",
+  "dashboard_status": "built",
+  "dashboard_note": "portal-next/app/eeg-ai-rag-pipeline/page.jsx + nav wired; 3 endpoints /api/eeg-ai-rag-pipeline/overview|breakdown|definitions verified 200",
   "steps": [
     {
       "n": 1,
