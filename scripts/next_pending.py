@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BUILDABLE = [
     {"id": "ictal_interictal", "title": "Ictal/interictal retrain (same-setup, removes dataset confound)", "value": "P0", "effort": "high"},
 ]
+# ai_dark_factory (AI Dark Factory Catalog Dashboard — 11 pipeline stages, 18 tools, 8 categories, 3 planes, 2 patterns, config-only visualization from ai_dark_factory.json, 3 endpoints /api/ai-dark-factory/overview|breakdown|definitions verified 200, portal-next/app/ai-dark-factory/page.jsx + nav wired)
 # multimodal_fusion (Multimodal Fusion Dashboard — 126 sessions, 30 patients, 5 fusion methods (cross_modal_transformer/late_fusion/tensor_fusion/early_fusion/attention_fusion), 5 modalities (EEG/Video/Clinical Notes/Medication/MRI), risk distribution, method comparison, modality co-occurrence, per-patient summaries, monthly trend, 3 endpoints /api/multimodal-fusion/overview|breakdown|definitions verified 200, portal-next/app/multimodal-fusion/page.jsx + nav wired)
 # iot_devices (IoT Devices & Wearable Fleet Dashboard — 9 devices, 5 types (EEG headset/EEG cap/wearable/mobile/gateway), 24 data streams, 3 connectivity modes (online/offline/hybrid), alert pipeline, mode matrix, data stream matrix, offline-first strategy, 3 endpoints /api/iot-devices/overview|breakdown|definitions verified 200, portal-next/app/iot-devices/page.jsx + nav wired)
 # Already built (removed from queue):
@@ -84,6 +85,7 @@ BUILDABLE = [
 # clinical_decisions_nextjs (Clinical Decisions Dashboard — Next.js port, real clinical_decisions 75 rows, 39 patients, 5 reviewers, AI-neurologist HITL audit, agreement/override/escalation tracking, prediction×decision cross-table, 3 endpoints /api/clinical-decisions/overview|breakdown|definitions verified 200, portal-next/app/clinical-decisions/page.jsx + nav wired)
 # adl (Activities of Daily Living Dashboard — real assessments 69 rows, 25 patients, 3 instruments (Barthel Index/QOLIE-31/Epworth Sleepiness Scale), patient profiles with overall severity, score distributions, level breakdowns (normal/moderate/severe), 3 endpoints /api/adl/overview|breakdown|definitions verified 200, portal-next/app/adl/page.jsx + nav wired)
 # medication_refills (Medication Refills Dashboard — real medication_refills 226 rows, 30 patients, 8 AEDs, 6 pharmacies, auto-refill tracking, gap analysis, drug-level details, 3 endpoints /api/medication-refills/overview|breakdown|definitions verified 200, portal-next/app/medication-refills/page.jsx + nav wired)
+# regulatory_compliance (Regulatory Compliance Dashboard — real regulatory_submissions 16 rows + validation_studies 42 rows + regulatory_audit_trail 102 rows, FDA/CE pathways, risk classes, validation metrics (avg sensitivity 91.6% specificity 87.2% AUC 0.937), audit activity trend, 3 endpoints /api/regulatory-compliance/overview|breakdown|definitions verified 200, portal-next/app/regulatory-compliance/page.jsx + nav wired)
 BLOCKED =["Gmail/Slack/Drive live (credentials)", "Multi-user auth/RBAC", "EMR/FHIR + device streaming"]
 GATED = ["git push (operator approval, §42)"]
 
