@@ -17179,6 +17179,28 @@ async def emotiv_flex_definitions():
     return _json_safe(efd.definitions())
 
 
+# ── Emotiv Insight 2+ Dashboard ─────────────────────────────────────────────────
+@app.get("/api/emotiv-insight/overview")
+async def emotiv_insight_overview():
+    """Emotiv Insight 2+ overview — fleet KPIs, 7-day band trend, alpha asymmetry, seizure risk."""
+    import scripts.emotiv_insight_dashboard as eid
+    return _json_safe(eid.overview())
+
+
+@app.get("/api/emotiv-insight/sessions")
+async def emotiv_insight_sessions():
+    """Emotiv Insight 2+ device list, session log, and seizure-risk alert events."""
+    import scripts.emotiv_insight_dashboard as eid
+    return _json_safe(eid.sessions())
+
+
+@app.get("/api/emotiv-insight/definitions")
+async def emotiv_insight_definitions():
+    """Emotiv Insight 2+ definitions — device specs, band glossary, channel map, alpha asymmetry."""
+    import scripts.emotiv_insight_dashboard as eid
+    return _json_safe(eid.definitions())
+
+
 # ── Smartwatch (Apple Watch / Wear OS) Dashboard ────────────────────────────────
 @app.get("/api/smartwatch/overview")
 async def smartwatch_overview():

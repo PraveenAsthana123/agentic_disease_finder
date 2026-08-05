@@ -25,7 +25,9 @@
       "online": "BLE \u2192 mobile/gateway \u2192 backend stream",
       "offline": "on-device buffer \u2192 sync on pairing",
       "alert": "seizure-risk via edge model",
-      "status": "partial"
+      "status": "built",
+      "route": "/emotiv-insight",
+      "endpoints": ["/api/emotiv-insight/overview", "/api/emotiv-insight/sessions", "/api/emotiv-insight/definitions"]
     },
     {
       "id": "emotiv_epocx",
