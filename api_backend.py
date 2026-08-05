@@ -16883,6 +16883,33 @@ def irb_reviewer_definitions():
     }
 
 
+# ── Agent Grounding Gate Dashboard ──────────────────────────────────
+# Real data: clinical_decisions (75 rows), expert_reviews (3), hitl_reviews (4),
+# validation_studies (42). Detects hallucination: high-conf predictions that
+# neurologists disagree with. ECE calibration. Gate PASS/FAIL threshold 75%.
+@app.get("/api/grounding-gate/overview")
+async def grounding_gate_overview():
+    """Grounding gate overview — KPIs (grounding score, hallucination rate, ECE,
+    HITL override rate), agreement distribution, confidence histogram, gate status."""
+    import scripts.grounding_gate_dashboard as ggd
+    return _json_safe(ggd.overview())
+
+
+@app.get("/api/grounding-gate/breakdown")
+async def grounding_gate_breakdown():
+    """Grounding gate breakdown — hallucination cases, grounding by confidence band,
+    HITL reviews, expert reviews, patient grounding summary, calibration curve."""
+    import scripts.grounding_gate_dashboard as ggd
+    return _json_safe(ggd.breakdown())
+
+
+@app.get("/api/grounding-gate/definitions")
+async def grounding_gate_definitions():
+    """Grounding gate definitions — terms, severity levels, methodology, references."""
+    import scripts.grounding_gate_dashboard as ggd
+    return _json_safe(ggd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

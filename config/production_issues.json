@@ -12,7 +12,7 @@
           "root_cause": "weak grounding / poor retrieval",
           "detection": "groundedness + citation score",
           "solution": "hybrid RAG + citation enforcement + confidence",
-          "detected_in_project": "partial (RAG citation note + SHAP; grounding gate planned)"
+          "detected_in_project": "built (/api/grounding-gate/* + GroundingGateDashboard — confidence vs expert agreement, ECE calibration, hallucination case detection, HITL override rate, gate PASS/FAIL threshold)"
         },
         {
           "issue": "Agent Looping",
@@ -312,7 +312,7 @@
           "root_cause": "weak eval",
           "detection": "grounding score",
           "solution": "multi-stage eval",
-          "detected_in_project": "partial (eval metrics + SHAP concordance)"
+          "detected_in_project": "built (/api/grounding-gate/* — grounding score KPI, calibration curve ECE, hallucination cases, expert agreement, HITL override rate, gate PASS/FAIL)"
         },
         {
           "issue": "No Quality Measurement",

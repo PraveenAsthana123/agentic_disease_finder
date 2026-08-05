@@ -145,6 +145,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/audit">&#x1f4dc; Audit Trail</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/causal-ai">&#x1f517; Causal AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/federated-learning">&#x1f310; Federated Learning</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/grounding-gate">&#x1f6e1;&#xfe0f; Grounding Gate</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
