@@ -14432,6 +14432,29 @@ async def ai_dark_factory_definitions():
     return _json_safe(adf.definitions())
 
 
+# -- Temporal Approval Workflow Dashboard (AI Dark Factory Stage 9 + 10) -----
+
+@app.get("/api/temporal-approval/overview")
+async def temporal_approval_overview():
+    """Temporal Approval Workflow overview — queue depth, SLA stats, deployment pipeline KPIs."""
+    import scripts.temporal_approval_dashboard as tad
+    return _json_safe(tad.overview())
+
+
+@app.get("/api/temporal-approval/breakdown")
+async def temporal_approval_breakdown():
+    """Temporal Approval Workflow breakdown — per-workflow SLA, Harness CI pipeline stages."""
+    import scripts.temporal_approval_dashboard as tad
+    return _json_safe(tad.breakdown())
+
+
+@app.get("/api/temporal-approval/definitions")
+async def temporal_approval_definitions():
+    """Temporal Approval Workflow definitions — glossary, SLA policy, integration notes."""
+    import scripts.temporal_approval_dashboard as tad
+    return _json_safe(tad.definitions())
+
+
 # -- Report Layout Dashboard ------------------------------------------------
 
 @app.get("/api/report-layout/overview")
