@@ -379,6 +379,7 @@ import BusinessWorkflowsDashboard from './components/BusinessWorkflowsDashboard'
 import MedicationRefillsDashboard from './components/MedicationRefillsDashboard'
 import PatientAppointmentsDashboard from './components/PatientAppointmentsDashboard'
 import RehabPlansDashboard from './components/RehabPlansDashboard'
+import RoleIPODashboard from './components/RoleIPODashboard'
 import OpenClawDashboard from './components/OpenClawDashboard'
 import AdvisorIssuesDashboard from './components/AdvisorIssuesDashboard'
 import ChannelQualityDashboard from './components/ChannelQualityDashboard'
@@ -954,6 +955,7 @@ function App() {
     { id: 'medication-refills', label: 'Medication Refills' },
     { id: 'patient-appointments', label: 'Patient Appointments' },
     { id: 'rehab-plans', label: 'Rehabilitation Plans' },
+    { id: 'role-ipo', label: 'Role IPO Pipeline' },
     { id: 'advisor-issues', label: 'Advisor Issues' },
     { id: 'channel-quality', label: 'EEG Channel Quality' },
     { id: 'wearable-readings', label: 'Wearable Readings' },
@@ -2844,6 +2846,8 @@ function App() {
         return <PatientAppointmentsDashboard />
       case 'rehab-plans':
         return <RehabPlansDashboard />
+      case 'role-ipo':
+        return <RoleIPODashboard />
       case 'advisor-issues':
         return <AdvisorIssuesDashboard />
       case 'channel-quality':

@@ -6,7 +6,7 @@
     {
       "phase": 1,
       "name": "Executive AI Governance & Business",
-      "count": 11,
+      "count": 13,
       "dashboards": [
         {
           "name": "Executive AI Dashboard",
@@ -67,6 +67,13 @@
           "name": "Pharmacogenomics Dashboard",
           "status": "built",
           "maps_to": "/api/pharmacogenomics/{overview,breakdown,definitions} + PharmacogenomicsDashboard portal-next/app/pharmacogenomics/page.jsx + nav wired"
+        },
+        {
+          "name": "Role IPO Pipeline Dashboard",
+          "status": "built",
+          "route": "/role-ipo",
+          "component": "RoleIPODashboard",
+          "description": "Input-Process-Output pipeline coverage per clinical role"
         }
       ]
     },
