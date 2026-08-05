@@ -307,7 +307,7 @@ def decision_breakdown():
         patient_map[t['patient_id']]['audit_events'] += 1
 
     patient_summaries = []
-    for pid, data in sorted(patient_map.items()):
+    for pid, data in sorted(patient_map.items(), key=lambda x: (x[0] is None, x[0])):
         confs = [a['confidence'] for a in data['analyses'] if a['confidence'] is not None]
         routes = defaultdict(int)
         for a in data['analyses']:
