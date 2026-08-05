@@ -456,6 +456,7 @@ import AnalysesDashboard from './components/AnalysesDashboard'
 import DeviceModeDashboard from './components/DeviceModeDashboard'
 import MicrophoneAudioDashboard from './components/MicrophoneAudioDashboard'
 import EcgPatchDashboard from './components/EcgPatchDashboard'
+import EmotivFlexDashboard from './components/EmotivFlexDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -983,6 +984,7 @@ function App() {
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
     { id: 'emotiv-wearable', label: 'Emotiv Wearable' },
+    { id: 'emotiv-flex', label: 'Emotiv EPOC Flex' },
     { id: 'device-mode', label: 'Device Mode Manager' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'upload-analysis', label: 'Upload & Analysis' },
@@ -2902,6 +2904,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'emotiv-wearable':
         return <EmotivWearableDashboard />
+      case 'emotiv-flex':
+        return <EmotivFlexDashboard />
       case 'device-mode':
         return <DeviceModeDashboard />
       case 'trigger-logs':

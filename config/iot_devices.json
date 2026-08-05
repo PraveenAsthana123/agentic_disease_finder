@@ -57,7 +57,11 @@
       "data": [
         "raw EEG 32ch"
       ],
-      "status": "planned"
+      "status": "built",
+      "note": "Emotiv EPOC Flex Dashboard \u2014 /emotiv-flex + 3 endpoints (overview/channels/definitions) + nav wired",
+      "online": "BLE / USB \u2192 laptop \u2192 backend real-time stream",
+      "offline": "On-device SD buffer \u2192 sync on reconnect",
+      "alert": "seizure onset detection via 32-ch EEG"
     },
     {
       "id": "smartwatch",

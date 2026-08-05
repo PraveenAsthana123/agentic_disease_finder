@@ -17157,6 +17157,28 @@ async def ecg_patch_definitions():
     return _json_safe(epd.definitions())
 
 
+# ── Emotiv EPOC Flex Dashboard ──────────────────────────────────────────────────
+@app.get("/api/emotiv-flex/overview")
+async def emotiv_flex_overview():
+    """Emotiv EPOC Flex overview — fleet KPIs, 32-channel impedance map, band-power trend."""
+    import scripts.emotiv_flex_dashboard as efd
+    return _json_safe(efd.overview())
+
+
+@app.get("/api/emotiv-flex/channels")
+async def emotiv_flex_channels():
+    """Emotiv EPOC Flex per-channel analysis — impedance, contact quality, band power, SNR."""
+    import scripts.emotiv_flex_dashboard as efd
+    return _json_safe(efd.channels())
+
+
+@app.get("/api/emotiv-flex/definitions")
+async def emotiv_flex_definitions():
+    """Emotiv EPOC Flex definitions — device specs, EEG metric glossary, epilepsy context."""
+    import scripts.emotiv_flex_dashboard as efd
+    return _json_safe(efd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
