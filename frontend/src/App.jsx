@@ -124,6 +124,7 @@ import IoTDevicesDashboard from './components/IoTDevicesDashboard'
 import GlobalApprovalPolicyDashboard from './components/GlobalApprovalPolicyDashboard'
 import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
+import PatientOnboardingWizard from './components/PatientOnboardingWizard'
 import NeuroAiEcosystemDashboard from './components/NeuroAiEcosystemDashboard'
 import EegAiStackDashboard from './components/EegAiStackDashboard'
 import RoleSpecsDashboard from './components/RoleSpecsDashboard'
@@ -800,6 +801,7 @@ function App() {
     { id: 'global-approval-policy', label: 'Global Approval Policy' },
     { id: 'eeg-data-formats', label: 'EEG Data Formats' },
     { id: 'onboarding-intake', label: 'Onboarding Intake' },
+    { id: 'patient-wizard', label: 'Patient Onboarding Wizard' },
     { id: 'neuro-ai-ecosystem', label: 'Neuro AI Ecosystem' },
     { id: 'eeg-ai-stack', label: 'EEG AI Stack' },
     { id: 'role-specs', label: 'Role Specs' },
@@ -2296,6 +2298,8 @@ function App() {
         return <EegDataFormatsDashboard />
       case 'onboarding-intake':
         return <OnboardingIntakeDashboard />
+      case 'patient-wizard':
+        return <PatientOnboardingWizard />
       case 'neuro-ai-ecosystem':
         return <NeuroAiEcosystemDashboard />
       case 'eeg-ai-stack':

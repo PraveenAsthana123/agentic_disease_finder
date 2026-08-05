@@ -15601,3 +15601,183 @@ if __name__ == "__main__":
     # Default 8010 to avoid colliding with other local projects on :8000.
     port = int(os.environ.get("PORT", "8010"))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+# ── Patient Onboarding Wizard ──────────────────────────────────────────────
+# Step-by-step 3-stage wizard: Demographics → Medications+Emergency → Documents
+# Saves to patient_demographics, medications, emergency_contacts, clinical_history.
+# Maps: stories_and_tests.json Manual (partial) → built; role_tests.json Patient Manual (partial) → built.
+
+@app.get("/api/patient-wizard/steps")
+async def patient_wizard_steps():
+    """Patient Onboarding Wizard step definitions — 3 stages, field groups, required vs deferred."""
+    import json as _json
+    p = Path(__file__).parent / "config" / "onboarding_intake.json"
+    spec = _json.loads(p.read_text())
+    return {
+        "wizard": "Patient Onboarding Wizard",
+        "goal": spec.get("goal", ""),
+        "total_steps": len(spec.get("steps", [])),
+        "steps": spec.get("steps", []),
+        "summary": spec.get("summary", {}),
+    }
+
+
+@app.post("/api/patient-wizard/submit")
+async def patient_wizard_submit(payload: dict):
+    """Submit completed wizard data.
+
+    Body: { patient_id, step, data: {...} }
+    step 1 — demographics
+    step 2 — medications + emergency_contact
+    step 3 — documents (meta only; actual upload via /api/analyze-upload)
+    """
+    import sqlite3 as _sq
+    import json as _json
+    from datetime import datetime as _dt
+
+    step = int(payload.get("step", 0))
+    patient_id = str(payload.get("patient_id", "")).strip()
+    data = payload.get("data", {})
+
+    if not patient_id:
+        return {"ok": False, "error": "patient_id required"}
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    now = _dt.utcnow().isoformat()
+
+    with _sq.connect(str(db)) as conn:
+        if step == 1:
+            # Upsert patient_demographics
+            cur = conn.execute(
+                "SELECT id FROM patient_demographics WHERE patient_id = ?", (patient_id,)
+            )
+            if cur.fetchone():
+                conn.execute(
+                    """UPDATE patient_demographics SET
+                        full_name=?, date_of_birth=?, sex=?, primary_language=?,
+                        occupation=?, referral_source=?, epilepsy_type=?,
+                        epilepsy_onset_age=?, created_at=?
+                      WHERE patient_id=?""",
+                    (
+                        data.get("full_name"), data.get("date_of_birth"), data.get("sex"),
+                        data.get("primary_language"), data.get("occupation"),
+                        data.get("referral_source"), data.get("epilepsy_type"),
+                        data.get("epilepsy_onset_age"), now, patient_id,
+                    ),
+                )
+            else:
+                conn.execute(
+                    """INSERT INTO patient_demographics
+                        (patient_id, full_name, date_of_birth, sex, primary_language,
+                         occupation, referral_source, epilepsy_type, epilepsy_onset_age,
+                         enrollment_date, created_at)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+                    (
+                        patient_id,
+                        data.get("full_name"), data.get("date_of_birth"), data.get("sex"),
+                        data.get("primary_language"), data.get("occupation"),
+                        data.get("referral_source"), data.get("epilepsy_type"),
+                        data.get("epilepsy_onset_age"), now[:10], now,
+                    ),
+                )
+            # Also upsert clinical_history for seizure/risk fields
+            conn.execute(
+                """INSERT INTO clinical_history (patient_id, fields_json, created_at)
+                   VALUES (?,?,?)""",
+                (
+                    patient_id,
+                    _json.dumps({
+                        "reason_for_visit": data.get("reason_for_visit"),
+                        "suspected_diagnosis": data.get("suspected_diagnosis"),
+                        "seizure_frequency": data.get("seizure_frequency"),
+                        "last_seizure_date": data.get("last_seizure_date"),
+                        "dre_status": data.get("dre_status"),
+                        "status_epilepticus_history": data.get("status_epilepticus_history"),
+                        "driving_status": data.get("driving_status"),
+                        "lives_alone": data.get("lives_alone"),
+                    }),
+                    now,
+                ),
+            )
+            conn.commit()
+            return {"ok": True, "step": 1, "patient_id": patient_id, "saved": "demographics + clinical_history"}
+
+        elif step == 2:
+            # Emergency contact
+            ec = data.get("emergency_contact", {})
+            if ec.get("contact_name"):
+                conn.execute(
+                    """INSERT INTO emergency_contacts
+                        (patient_id, contact_name, phone, relationship, is_primary,
+                         notify_on_seizure, created_at)
+                       VALUES (?,?,?,?,1,1,?)""",
+                    (
+                        patient_id,
+                        ec.get("contact_name"), ec.get("phone"), ec.get("relationship"),
+                        now,
+                    ),
+                )
+            # Medications
+            for med in data.get("medications", []):
+                if med.get("drug"):
+                    conn.execute(
+                        "INSERT INTO medications (patient_id, fields_json, created_at) VALUES (?,?,?)",
+                        (patient_id, _json.dumps(med), now),
+                    )
+            conn.commit()
+            return {"ok": True, "step": 2, "patient_id": patient_id, "saved": "emergency_contact + medications"}
+
+        elif step == 3:
+            # Documents step — just record meta; actual upload uses /api/analyze-upload
+            meta = {"wizard_step3": True, "docs_noted": data.get("docs_noted", []), "ts": now}
+            conn.execute(
+                "INSERT INTO clinical_history (patient_id, fields_json, created_at) VALUES (?,?,?)",
+                (patient_id, _json.dumps(meta), now),
+            )
+            conn.commit()
+            return {"ok": True, "step": 3, "patient_id": patient_id, "saved": "document_meta", "next": "Upload via /api/analyze-upload"}
+
+        else:
+            return {"ok": False, "error": f"Unknown step {step}"}
+
+
+@app.get("/api/patient-wizard/status/{patient_id}")
+async def patient_wizard_status(patient_id: str):
+    """Check onboarding completion status for a patient across wizard stages."""
+    import sqlite3 as _sq
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        def scalar(sql, p=()):
+            cur = conn.execute(sql, p)
+            r = cur.fetchone()
+            return r[0] if r else 0
+
+        has_demo = scalar(
+            "SELECT COUNT(*) FROM patient_demographics WHERE patient_id=?", (patient_id,)
+        )
+        has_ec = scalar(
+            "SELECT COUNT(*) FROM emergency_contacts WHERE patient_id=?", (patient_id,)
+        )
+        has_meds = scalar(
+            "SELECT COUNT(*) FROM medications WHERE patient_id=?", (patient_id,)
+        )
+        has_docs = scalar(
+            "SELECT COUNT(*) FROM patient_documents WHERE patient_id=?", (patient_id,)
+        )
+
+    steps = [
+        {"step": 1, "title": "Demographics + Clinical Core", "complete": bool(has_demo)},
+        {"step": 2, "title": "Medications + Emergency Contact", "complete": bool(has_ec or has_meds)},
+        {"step": 3, "title": "Document Upload", "complete": bool(has_docs)},
+    ]
+    completed = sum(1 for s in steps if s["complete"])
+    return {
+        "patient_id": patient_id,
+        "steps": steps,
+        "completed": completed,
+        "total": 3,
+        "pct": round(completed / 3 * 100),
+        "intake_ready": completed >= 2,
+    }

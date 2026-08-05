@@ -190,7 +190,8 @@
         {
           "dim": "Process",
           "case": "consent recorded before data capture",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "Step 1 wizard captures key_risk fields (SE history, driving, lives alone) + /api/consent-management/* (consent_records)"
         },
         {
           "dim": "Data",
@@ -205,7 +206,8 @@
         {
           "dim": "Manual",
           "case": "step-by-step onboarding wizard",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "/patient-wizard \u2014 PatientOnboardingWizard.jsx 3-step form + POST /api/patient-wizard/submit"
         }
       ]
     }
