@@ -16150,6 +16150,35 @@ async def loso_definitions():
     return ld.definitions()
 
 
+# ── Referrer Notification Dashboard ────────────────────────────────
+# Real data: referral_records table (84 referrals, 41 patients, 7 sources).
+# Tracks post-report referrer notification queue, delivery status,
+# source-level performance. Part of: Report generation → referrer notify flow.
+
+@app.get("/api/referrer-notify/overview")
+async def referrer_notify_overview():
+    """Referrer notification KPIs — queue depth, notified count, notify rate,
+    urgency breakdown, monthly trend, source summary."""
+    import scripts.referrer_notify_dashboard as rnd
+    return _json_safe(rnd.overview())
+
+
+@app.get("/api/referrer-notify/breakdown")
+async def referrer_notify_breakdown():
+    """Referrer notification breakdown — per-source stats, notification queue
+    (prioritised by urgency), per-patient summary, recently notified."""
+    import scripts.referrer_notify_dashboard as rnd
+    return _json_safe(rnd.breakdown())
+
+
+@app.get("/api/referrer-notify/definitions")
+async def referrer_notify_definitions():
+    """Referrer notification definitions — status glossary, workflow steps,
+    source types, urgency SLAs, triage score explanation."""
+    import scripts.referrer_notify_dashboard as rnd
+    return _json_safe(rnd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

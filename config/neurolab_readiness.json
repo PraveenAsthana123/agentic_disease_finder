@@ -133,8 +133,9 @@
     },
     {
       "name": "Report generation \u2192 EMR push \u2192 referrer notify",
-      "status": "partial",
-      "note": "Report generation built (Structured Reporting Dashboard \u2014 4 ILAE templates, field completeness, quality grades, 3 endpoints); EMR push + referrer notify pending (needs EMR/FHIR credentials)"
+      "status": "built",
+      "note": "Report generation built (Structured Reporting Dashboard \u2014 4 ILAE templates); referrer notify built (ReferrerNotifyDashboard \u2014 84 referrals, 41 patients, 7 sources, notification queue + per-source + per-patient + definitions, 3 endpoints verified 200); EMR push remains Stage-2 (needs EMR/FHIR credentials)",
+      "maps_to": "/api/referrer-notify/{overview,breakdown,definitions} + ReferrerNotifyDashboard portal-next/app/referrer-notify/page.jsx + nav wired"
     },
     {
       "name": "Multidisciplinary epilepsy board review",
