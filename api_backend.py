@@ -17085,6 +17085,34 @@ async def iot_gateway_definitions():
     return _json_safe(igd.definitions())
 
 
+# ── Emotiv Wearable Dashboard ───────────────────────────────────────────────
+@app.get("/api/emotiv-wearable/overview")
+async def emotiv_wearable_overview():
+    """Emotiv wearable overview — 15 EEG-class devices (Empatica Embrace2,
+    Byteflies Sensor Dot, BioStampRC), active/offline KPIs, battery health,
+    14-channel EPOC+ electrode contact quality, seizure detection summary."""
+    import scripts.emotiv_wearable_dashboard as ewd
+    return _json_safe(ewd.overview())
+
+
+@app.get("/api/emotiv-wearable/breakdown")
+async def emotiv_wearable_breakdown(patient_id: str = None):
+    """Emotiv wearable breakdown — per-device inventory table (status, battery,
+    firmware, sessions, seizures), per-patient seizure confidence ranking,
+    battery distribution buckets, recent reading log."""
+    import scripts.emotiv_wearable_dashboard as ewd
+    return _json_safe(ewd.breakdown(patient_id=patient_id))
+
+
+@app.get("/api/emotiv-wearable/definitions")
+async def emotiv_wearable_definitions():
+    """Emotiv wearable definitions — device models (Embrace2, Byteflies,
+    BioStampRC, EPOC+), 14 EPOC+ channel labels, metric glossary,
+    clinical references, FDA clearance status."""
+    import scripts.emotiv_wearable_dashboard as ewd
+    return _json_safe(ewd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

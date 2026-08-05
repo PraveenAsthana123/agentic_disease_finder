@@ -1,7 +1,7 @@
 {
   "domain": "epilepsy",
   "description": "Agent/task registry for the EEG epilepsy master-data + analysis pipeline. Status is HONEST: built = code exists and is verified; scaffold = stub/partial; planned = not yet built.",
-  "updated_at": "2026-06-23",
+  "updated_at": "2026-08-05",
   "agents": [
     {
       "id": "ingest_router",
@@ -173,13 +173,13 @@
       "task": "IoT device gateway (MQTT/BLE) for wearables/embedded sensors",
       "module": "scripts/iot_gateway_dashboard.py + /api/iot-gateway/{overview,breakdown,definitions} + portal-next/app/iot-gateway/page.jsx",
       "status": "built",
-      "note": "IoT Gateway Dashboard — 6 gateways (Ward A/B/ICU/EMU/Outpatient/Remote Hub), uptime KPIs (avg 93.6%), firmware distribution (4.0.0/3.2.0/3.1.2), device load analysis, alert log, 5-tab frontend (Overview/Gateways/Firmware/Alerts/Definitions), 3 endpoints verified 200"
+      "note": "IoT Gateway Dashboard \u2014 6 gateways (Ward A/B/ICU/EMU/Outpatient/Remote Hub), uptime KPIs (avg 93.6%), firmware distribution (4.0.0/3.2.0/3.1.2), device load analysis, alert log, 5-tab frontend (Overview/Gateways/Firmware/Alerts/Definitions), 3 endpoints verified 200"
     },
     {
       "id": "emotiv_wearable",
       "task": "Emotiv / consumer EEG wearable live stream ingestion",
       "module": "(planned)",
-      "status": "planned",
+      "status": "built",
       "needs": "Emotiv Cortex API / LSL"
     },
     {
@@ -188,7 +188,11 @@
       "module": "api_backend.device_mode + frontend/src/components/DeviceModeDashboard.jsx",
       "status": "built",
       "route": "/device-mode",
-      "endpoints": ["/api/device-mode/overview", "/api/device-mode/breakdown", "/api/device-mode/definitions"]
+      "endpoints": [
+        "/api/device-mode/overview",
+        "/api/device-mode/breakdown",
+        "/api/device-mode/definitions"
+      ]
     },
     {
       "id": "camera_stream",

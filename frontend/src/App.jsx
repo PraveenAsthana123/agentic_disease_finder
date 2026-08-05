@@ -377,6 +377,7 @@ import CameraSeizureMonitoringDashboard from './components/CameraSeizureMonitori
 import MRIFindingsDashboard from './components/MRIFindingsDashboard'
 import SurgicalOutcomesDashboard from './components/SurgicalOutcomesDashboard'
 import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
+import EmotivWearableDashboard from './components/EmotivWearableDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
@@ -977,6 +978,7 @@ function App() {
     { id: 'sec-ops', label: 'SecOps' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
+    { id: 'emotiv-wearable', label: 'Emotiv Wearable' },
     { id: 'device-mode', label: 'Device Mode Manager' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'upload-analysis', label: 'Upload & Analysis' },
@@ -2890,6 +2892,8 @@ function App() {
         return <SecOpsDashboard />
       case 'wearable-devices':
         return <WearableDevicesDashboard />
+      case 'emotiv-wearable':
+        return <EmotivWearableDashboard />
       case 'device-mode':
         return <DeviceModeDashboard />
       case 'trigger-logs':
