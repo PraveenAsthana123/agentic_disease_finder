@@ -17135,6 +17135,28 @@ async def emotiv_wearable_definitions():
     return _json_safe(ewd.definitions())
 
 
+# ── ECG Patch Dashboard ────────────────────────────────────────────────────────
+@app.get("/api/ecg-patch/overview")
+async def ecg_patch_overview():
+    """ECG Patch overview: fleet status, HR/HRV trends, event distribution, KPIs."""
+    import scripts.ecg_patch_dashboard as epd
+    return _json_safe(epd.overview())
+
+
+@app.get("/api/ecg-patch/sessions")
+async def ecg_patch_sessions():
+    """ECG Patch sessions: per-patient recordings, waveform stats, arrhythmia events, upload log."""
+    import scripts.ecg_patch_dashboard as epd
+    return _json_safe(epd.sessions())
+
+
+@app.get("/api/ecg-patch/definitions")
+async def ecg_patch_definitions():
+    """ECG Patch definitions: device specs, metric glossary, epilepsy co-deployment context."""
+    import scripts.ecg_patch_dashboard as epd
+    return _json_safe(epd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

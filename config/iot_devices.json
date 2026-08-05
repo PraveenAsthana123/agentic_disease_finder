@@ -1,52 +1,190 @@
 {
-  "title": "Emotiv + IoT + Mobile — Device Fleet & Online/Offline Handling",
+  "title": "Emotiv + IoT + Mobile \u2014 Device Fleet & Online/Offline Handling",
   "note": "Device connectivity model. online=live stream; offline=buffer+sync. status: built/partial/planned.",
   "updated_at": "2026-06-24",
   "connectivity_model": {
-    "online": "Device streams live → gateway → backend (real-time inference + alerts). Lowest latency, needs connection.",
-    "offline": "Device buffers locally (ring buffer + local store) → syncs on reconnect. No data loss; delayed inference.",
+    "online": "Device streams live \u2192 gateway \u2192 backend (real-time inference + alerts). Lowest latency, needs connection.",
+    "offline": "Device buffers locally (ring buffer + local store) \u2192 syncs on reconnect. No data loss; delayed inference.",
     "hybrid": "Edge inference on-device (offline-capable) + sync raw + results when online. Best for seizure alerts."
   },
   "devices": [
-    {"id": "emotiv_insight", "name": "Emotiv Insight", "type": "EEG headset", "channels": 5,
-     "modes": ["online", "offline"], "data": ["raw EEG", "band power", "motion"],
-     "online": "BLE → mobile/gateway → backend stream", "offline": "on-device buffer → sync on pairing",
-     "alert": "seizure-risk via edge model", "status": "partial"},
-    {"id": "emotiv_epocx", "name": "Emotiv EPOC X", "type": "EEG headset", "channels": 14,
-     "modes": ["online", "offline"], "data": ["raw EEG 14ch", "contact quality"],
-     "online": "USB dongle / BLE stream", "offline": "SD/on-device record → upload EDF",
-     "alert": "post-hoc analysis", "status": "partial"},
-    {"id": "emotiv_flex", "name": "Emotiv EPOC Flex", "type": "EEG cap", "channels": 32,
-     "modes": ["online", "offline"], "data": ["raw EEG 32ch"], "status": "planned"},
-    {"id": "smartwatch", "name": "Smartwatch (Apple/Wear OS)", "type": "wearable", "channels": null,
-     "modes": ["online", "offline"], "data": ["HR", "HRV", "SpO2", "accelerometer", "sleep"],
-     "online": "phone app → cloud sync", "offline": "watch buffers → sync when phone connects",
-     "alert": "HR spike → possible seizure signal", "status": "partial"},
-    {"id": "ecg_patch", "name": "ECG Patch", "type": "wearable", "modes": ["offline"],
-     "data": ["ECG", "HR"], "offline": "records continuously → upload at clinic", "status": "planned"},
-    {"id": "seizure_band", "name": "Seizure-detection wristband (Embrace-style)", "type": "wearable",
-     "modes": ["online", "hybrid"], "data": ["EDA", "accelerometer", "temperature"],
-     "online": "BLE → phone → SOS alert", "alert": "convulsive seizure → caregiver SOS", "status": "partial"},
-    {"id": "mobile_app", "name": "Patient Mobile App", "type": "mobile (online)", "modes": ["online", "offline"],
-     "data": ["seizure diary", "medication log", "symptoms", "device pairing", "SOS"],
-     "online": "syncs to backend live", "offline": "local SQLite → queue → sync on reconnect (offline-first)",
-     "alert": "medication reminders, SOS, risk alerts", "status": "partial"},
-    {"id": "caregiver_app", "name": "Caregiver Mobile App", "type": "mobile (online)", "modes": ["online"],
-     "data": ["seizure record", "video upload", "med confirmation", "emergency alert"],
-     "online": "receives patient alerts + SOS", "alert": "real-time seizure/SOS push", "status": "built",
-     "dashboard": "/caregiver-app", "endpoints": ["/api/caregiver-app/overview", "/api/caregiver-app/breakdown", "/api/caregiver-app/definitions"]},
-    {"id": "gateway", "name": "Home Gateway / Hub", "type": "gateway", "modes": ["online", "offline"],
-     "data": ["aggregates all device streams"], "online": "forwards to backend",
-     "offline": "stores + forwards on reconnect (store-and-forward)", "alert": "local alarm if cloud down", "status": "partial"}
+    {
+      "id": "emotiv_insight",
+      "name": "Emotiv Insight",
+      "type": "EEG headset",
+      "channels": 5,
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "raw EEG",
+        "band power",
+        "motion"
+      ],
+      "online": "BLE \u2192 mobile/gateway \u2192 backend stream",
+      "offline": "on-device buffer \u2192 sync on pairing",
+      "alert": "seizure-risk via edge model",
+      "status": "partial"
+    },
+    {
+      "id": "emotiv_epocx",
+      "name": "Emotiv EPOC X",
+      "type": "EEG headset",
+      "channels": 14,
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "raw EEG 14ch",
+        "contact quality"
+      ],
+      "online": "USB dongle / BLE stream",
+      "offline": "SD/on-device record \u2192 upload EDF",
+      "alert": "post-hoc analysis",
+      "status": "partial"
+    },
+    {
+      "id": "emotiv_flex",
+      "name": "Emotiv EPOC Flex",
+      "type": "EEG cap",
+      "channels": 32,
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "raw EEG 32ch"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "smartwatch",
+      "name": "Smartwatch (Apple/Wear OS)",
+      "type": "wearable",
+      "channels": null,
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "HR",
+        "HRV",
+        "SpO2",
+        "accelerometer",
+        "sleep"
+      ],
+      "online": "phone app \u2192 cloud sync",
+      "offline": "watch buffers \u2192 sync when phone connects",
+      "alert": "HR spike \u2192 possible seizure signal",
+      "status": "partial"
+    },
+    {
+      "id": "ecg_patch",
+      "name": "ECG Patch",
+      "type": "wearable",
+      "modes": [
+        "offline"
+      ],
+      "data": [
+        "ECG",
+        "HR"
+      ],
+      "offline": "records continuously \u2192 upload at clinic",
+      "status": "built",
+      "note": "ECG Patch Dashboard \u2014 /ecg-patch + 3 endpoints (overview/sessions/definitions) + nav wired"
+    },
+    {
+      "id": "seizure_band",
+      "name": "Seizure-detection wristband (Embrace-style)",
+      "type": "wearable",
+      "modes": [
+        "online",
+        "hybrid"
+      ],
+      "data": [
+        "EDA",
+        "accelerometer",
+        "temperature"
+      ],
+      "online": "BLE \u2192 phone \u2192 SOS alert",
+      "alert": "convulsive seizure \u2192 caregiver SOS",
+      "status": "partial"
+    },
+    {
+      "id": "mobile_app",
+      "name": "Patient Mobile App",
+      "type": "mobile (online)",
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "seizure diary",
+        "medication log",
+        "symptoms",
+        "device pairing",
+        "SOS"
+      ],
+      "online": "syncs to backend live",
+      "offline": "local SQLite \u2192 queue \u2192 sync on reconnect (offline-first)",
+      "alert": "medication reminders, SOS, risk alerts",
+      "status": "partial"
+    },
+    {
+      "id": "caregiver_app",
+      "name": "Caregiver Mobile App",
+      "type": "mobile (online)",
+      "modes": [
+        "online"
+      ],
+      "data": [
+        "seizure record",
+        "video upload",
+        "med confirmation",
+        "emergency alert"
+      ],
+      "online": "receives patient alerts + SOS",
+      "alert": "real-time seizure/SOS push",
+      "status": "built",
+      "dashboard": "/caregiver-app",
+      "endpoints": [
+        "/api/caregiver-app/overview",
+        "/api/caregiver-app/breakdown",
+        "/api/caregiver-app/definitions"
+      ]
+    },
+    {
+      "id": "gateway",
+      "name": "Home Gateway / Hub",
+      "type": "gateway",
+      "modes": [
+        "online",
+        "offline"
+      ],
+      "data": [
+        "aggregates all device streams"
+      ],
+      "online": "forwards to backend",
+      "offline": "stores + forwards on reconnect (store-and-forward)",
+      "alert": "local alarm if cloud down",
+      "status": "partial"
+    }
   ],
   "offline_strategy": {
     "buffer": "Ring buffer on device (last N minutes) + persistent local store (SQLite/flash)",
-    "edge_inference": "On-device seizure model runs offline → alert fires without cloud",
+    "edge_inference": "On-device seizure model runs offline \u2192 alert fires without cloud",
     "sync": "On reconnect: upload buffered raw + results, dedupe by event timestamp/idempotency key",
     "conflict": "Last-write-wins on metadata; events are append-only (no conflict)",
-    "data_loss": "Zero — buffer persists across power cycles; sync is at-least-once + idempotent"
+    "data_loss": "Zero \u2014 buffer persists across power cycles; sync is at-least-once + idempotent"
   },
-  "alert_pipeline": "device → (edge model OR gateway) → confidence gate → SOS (phone/SMS/caregiver) → audit",
-  "summary": {"devices": 9, "built": 1, "partial": 6, "planned": 2,
-              "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."}
+  "alert_pipeline": "device \u2192 (edge model OR gateway) \u2192 confidence gate \u2192 SOS (phone/SMS/caregiver) \u2192 audit",
+  "summary": {
+    "devices": 9,
+    "built": 1,
+    "partial": 6,
+    "planned": 2,
+    "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."
+  }
 }

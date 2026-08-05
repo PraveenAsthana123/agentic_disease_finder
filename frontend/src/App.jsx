@@ -455,6 +455,7 @@ import ConversationLogDashboard from './components/ConversationLogDashboard'
 import AnalysesDashboard from './components/AnalysesDashboard'
 import DeviceModeDashboard from './components/DeviceModeDashboard'
 import MicrophoneAudioDashboard from './components/MicrophoneAudioDashboard'
+import EcgPatchDashboard from './components/EcgPatchDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -851,6 +852,7 @@ function App() {
     { id: 'patient-education', label: 'Patient Education' },
     { id: 'audio-converter', label: 'Audio Converter' },
     { id: 'microphone-audio', label: 'Microphone Audio Capture' },
+    { id: 'ecg-patch', label: 'ECG Patch' },
     { id: 'pac', label: 'PAC Analysis' },
     { id: 'body-movement', label: 'Body Movement' },
     { id: 'video-converter', label: 'Video Converter' },
@@ -2394,6 +2396,8 @@ function App() {
         return <AudioConverterDashboard />
       case 'microphone-audio':
         return <MicrophoneAudioDashboard />
+      case 'ecg-patch':
+        return <EcgPatchDashboard />
       case 'pac':
         return <PACDashboard />
       case 'body-movement':
