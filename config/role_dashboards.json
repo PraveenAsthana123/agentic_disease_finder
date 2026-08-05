@@ -244,12 +244,14 @@
           "status": "built"
         }
       ],
-      "dashboard_component": "ClinicalPsychologistDashboard",
+      "dashboard_component": "ClinicalPsychologistPage",
       "api_endpoints": [
         "/api/clinical-psychologist/overview",
         "/api/clinical-psychologist/breakdown",
         "/api/clinical-psychologist/definitions"
-      ]
+      ],
+      "status": "built",
+      "note": "Frontend page portal-next/app/clinical-psychologist/page.jsx + SiteNav wired; 3 API endpoints (/api/clinical-psychologist/overview,breakdown,definitions) all 200"
     },
     {
       "role": "Radiologist",
