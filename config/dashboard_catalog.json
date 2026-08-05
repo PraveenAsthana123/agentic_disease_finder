@@ -491,6 +491,20 @@
       "table": "cognitive_tests",
       "rows": 501,
       "description": "Cognitive Tests Dashboard \u2014 501 tests, 25 patients, 11 test types (Trail Making A/B/RAVLT/WCST/CPT/CDT/N-Back/Stroop/Digit Span/Go-NoGo/Verbal Fluency), 9 domains (Executive function/Working memory/Processing speed/Memory/Attention/Sustained attention/Visuospatial/Impulse control/Language), avg accuracy 67.4%, per-test performance, domain breakdown, per-patient sortable table, monthly volume, 5-tab frontend"
+    },
+    {
+      "id": "eeg_viewer",
+      "name": "EEG Signal Viewer",
+      "route": "/eeg-viewer",
+      "status": "built",
+      "backend_endpoints": [
+        "/api/eeg-viz",
+        "/api/eeg-viz/traces",
+        "/api/eeg-viz/presets",
+        "/api/eeg-viz/recordings",
+        "/api/eeg-viz/bad-channels"
+      ],
+      "note": "5-tab viewer: Waveforms / Band Power / Spikes / Lateralization / Channel QC \u2014 real EDF data via MNE, 878 recordings, gain control, time navigation"
     }
   ]
 }
