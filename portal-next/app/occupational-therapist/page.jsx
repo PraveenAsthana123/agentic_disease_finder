@@ -2,6 +2,45 @@
 import { useState, useEffect } from 'react';
 const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8010';
 
+// Barthel Index items with max scores (standard 0-10 each, total 100)
+const BARTHEL_ITEMS = [
+  { key: 'Feeding',          max: 10 },
+  { key: 'Bathing',          max: 5  },
+  { key: 'Grooming',         max: 5  },
+  { key: 'Dressing',         max: 10 },
+  { key: 'Bowel Control',    max: 10 },
+  { key: 'Bladder Control',  max: 10 },
+  { key: 'Toilet Use',       max: 10 },
+  { key: 'Transfers',        max: 15 },
+  { key: 'Mobility',         max: 15 },
+  { key: 'Stairs',           max: 10 },
+];
+const BARTHEL_MAX = BARTHEL_ITEMS.reduce((s, i) => s + i.max, 0); // 100
+
+const QOLIE_DOMAINS = [
+  { key: 'Seizure Worry',        max: 100 },
+  { key: 'Overall QoL',          max: 100 },
+  { key: 'Emotional Well-being', max: 100 },
+  { key: 'Energy/Fatigue',       max: 100 },
+  { key: 'Cognitive Function',   max: 100 },
+  { key: 'Medication Effects',   max: 100 },
+  { key: 'Social Function',      max: 100 },
+];
+const QOLIE_MAX = 100;
+
+function barthelInterpret(score) {
+  if (score >= 91) return { interp: 'Slight Dependence', level: 'success' };
+  if (score >= 61) return { interp: 'Moderate Dependence', level: 'warning' };
+  if (score >= 21) return { interp: 'Severe Dependence', level: 'warning' };
+  return { interp: 'Total Dependence', level: 'danger' };
+}
+function qolieInterpret(score) {
+  if (score >= 70) return { interp: 'Good QoL', level: 'success' };
+  if (score >= 50) return { interp: 'Moderate QoL', level: 'primary' };
+  if (score >= 30) return { interp: 'Poor QoL', level: 'warning' };
+  return { interp: 'Very Poor QoL', level: 'danger' };
+}
+
 const barthelColor = v =>
   v >= 91 ? 'success' : v >= 61 ? 'primary' : v >= 21 ? 'warning' : 'danger';
 const qolColor = v =>
@@ -9,17 +48,34 @@ const qolColor = v =>
 const sevColor = s =>
   s === 'low' ? 'success' : s === 'moderate' ? 'warning' : 'danger';
 
+const EMPTY_FORM = {
+  patient_id: '',
+  instrument: 'BARTHEL',
+  examiner: 'OT',
+  barthel: Object.fromEntries(BARTHEL_ITEMS.map(i => [i.key, 0])),
+  qolie: Object.fromEntries(QOLIE_DOMAINS.map(d => [d.key, 50])),
+};
+
 export default function OccupationalTherapistDashboardPage() {
-  const [ov,   setOv]   = useState(null);
-  const [bd,   setBd]   = useState(null);
-  const [defs, setDefs] = useState(null);
-  const [tab,  setTab]  = useState('overview');
-  const [sel,  setSel]  = useState(null);
+  const [ov,      setOv]      = useState(null);
+  const [bd,      setBd]      = useState(null);
+  const [defs,    setDefs]    = useState(null);
+  const [history, setHistory] = useState(null);
+  const [tab,     setTab]     = useState('overview');
+  const [sel,     setSel]     = useState(null);
+  const [form,    setForm]    = useState(EMPTY_FORM);
+  const [saving,  setSaving]  = useState(false);
+  const [saveMsg, setSaveMsg] = useState(null);
+
+  const loadHistory = () =>
+    fetch(`${API}/api/occupational-therapist/history?limit=40`)
+      .then(r => r.json()).then(setHistory).catch(() => {});
 
   useEffect(() => {
     fetch(`${API}/api/occupational-therapist/overview`).then(r => r.json()).then(setOv).catch(() => {});
     fetch(`${API}/api/occupational-therapist/breakdown`).then(r => r.json()).then(setBd).catch(() => {});
     fetch(`${API}/api/occupational-therapist/definitions`).then(r => r.json()).then(setDefs).catch(() => {});
+    loadHistory();
   }, []);
 
   if (!ov) return <div className="p-4"><div className="spinner-border text-primary" /></div>;
@@ -41,8 +97,58 @@ export default function OccupationalTherapistDashboardPage() {
     { id: 'patients',    label: 'Patient Profiles' },
     { id: 'rehab',       label: 'Rehab Candidates' },
     { id: 'medications', label: 'AED Risk' },
+    { id: 'record',      label: 'Record Assessment' },
+    { id: 'history',     label: 'Score History' },
     { id: 'definitions', label: 'Clinical Definitions' },
   ];
+
+  const handleSave = async e => {
+    e.preventDefault();
+    if (!form.patient_id.trim()) { setSaveMsg({ ok: false, msg: 'Patient ID is required.' }); return; }
+    setSaving(true); setSaveMsg(null);
+    let answers_json = {};
+    let score = 0;
+    let max_score = 0;
+    let interpretation = '';
+    let level = '';
+    if (form.instrument === 'BARTHEL') {
+      answers_json = form.barthel;
+      score = Object.values(form.barthel).reduce((s, v) => s + Number(v), 0);
+      max_score = BARTHEL_MAX;
+      const interp = barthelInterpret(score);
+      interpretation = interp.interp; level = interp.level;
+    } else {
+      answers_json = form.qolie;
+      score = Math.round(Object.values(form.qolie).reduce((s, v) => s + Number(v), 0) / QOLIE_DOMAINS.length);
+      max_score = QOLIE_MAX;
+      const interp = qolieInterpret(score);
+      interpretation = interp.interp; level = interp.level;
+    }
+    try {
+      const res = await fetch(`${API}/api/occupational-therapist/save-assessment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_id: form.patient_id.trim(),
+          instrument: form.instrument,
+          answers_json, score, max_score, interpretation, level,
+          examiner: form.examiner || 'OT',
+        }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSaveMsg({ ok: true, msg: `Saved: ${data.instrument} = ${data.score}/${max_score} (${interpretation})` });
+        setForm(EMPTY_FORM);
+        loadHistory();
+      } else {
+        setSaveMsg({ ok: false, msg: data.detail || 'Save failed.' });
+      }
+    } catch {
+      setSaveMsg({ ok: false, msg: 'Network error.' });
+    } finally {
+      setSaving(false);
+    }
+  };
 
   /* helper: distribution bar table */
   const DistTable = ({ title, bg, data, labelKey }) => {
@@ -340,6 +446,164 @@ export default function OccupationalTherapistDashboardPage() {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Record Assessment tab */}
+      {tab === 'record' && (
+        <div className="row">
+          <div className="col-md-8">
+            <div className="card shadow-sm border-0 mb-3">
+              <div className="card-header bg-success text-white py-2 small fw-bold">
+                Record Outcome Assessment
+              </div>
+              <div className="card-body p-3">
+                <form onSubmit={handleSave}>
+                  <div className="row mb-2">
+                    <div className="col-md-4">
+                      <label className="form-label small fw-bold">Patient ID</label>
+                      <input className="form-control form-control-sm" placeholder="e.g. P0001"
+                             value={form.patient_id}
+                             onChange={e => setForm(f => ({ ...f, patient_id: e.target.value }))} />
+                    </div>
+                    <div className="col-md-4">
+                      <label className="form-label small fw-bold">Instrument</label>
+                      <select className="form-select form-select-sm"
+                              value={form.instrument}
+                              onChange={e => setForm(f => ({ ...f, instrument: e.target.value }))}>
+                        <option value="BARTHEL">Barthel Index (ADL)</option>
+                        <option value="QOLIE31">QOLIE-31 (Quality of Life)</option>
+                      </select>
+                    </div>
+                    <div className="col-md-4">
+                      <label className="form-label small fw-bold">Examiner</label>
+                      <input className="form-control form-control-sm" placeholder="OT"
+                             value={form.examiner}
+                             onChange={e => setForm(f => ({ ...f, examiner: e.target.value }))} />
+                    </div>
+                  </div>
+
+                  {/* Barthel items */}
+                  {form.instrument === 'BARTHEL' && (
+                    <div className="mb-3">
+                      <p className="small text-muted mb-1">Score each ADL item (0 to max):</p>
+                      {BARTHEL_ITEMS.map(item => (
+                        <div key={item.key} className="d-flex align-items-center mb-1">
+                          <span className="small me-2" style={{ minWidth: '130px' }}>{item.key}</span>
+                          <input type="number" min="0" max={item.max}
+                                 className="form-control form-control-sm me-2" style={{ width: '70px' }}
+                                 value={form.barthel[item.key]}
+                                 onChange={e => setForm(f => ({
+                                   ...f, barthel: { ...f.barthel, [item.key]: Math.min(item.max, Math.max(0, Number(e.target.value))) }
+                                 }))} />
+                          <span className="text-muted small">/ {item.max}</span>
+                        </div>
+                      ))}
+                      <div className="mt-2 fw-bold small">
+                        Total: {Object.values(form.barthel).reduce((s, v) => s + Number(v), 0)} / {BARTHEL_MAX}
+                        {' '}— {barthelInterpret(Object.values(form.barthel).reduce((s, v) => s + Number(v), 0)).interp}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* QOLIE-31 domains */}
+                  {form.instrument === 'QOLIE31' && (
+                    <div className="mb-3">
+                      <p className="small text-muted mb-1">Score each domain (0–100):</p>
+                      {QOLIE_DOMAINS.map(d => (
+                        <div key={d.key} className="d-flex align-items-center mb-1">
+                          <span className="small me-2" style={{ minWidth: '160px' }}>{d.key}</span>
+                          <input type="number" min="0" max="100"
+                                 className="form-control form-control-sm me-2" style={{ width: '80px' }}
+                                 value={form.qolie[d.key]}
+                                 onChange={e => setForm(f => ({
+                                   ...f, qolie: { ...f.qolie, [d.key]: Math.min(100, Math.max(0, Number(e.target.value))) }
+                                 }))} />
+                          <div className="progress flex-grow-1" style={{ height: '12px' }}>
+                            <div className="progress-bar bg-info"
+                                 style={{ width: `${form.qolie[d.key]}%` }} />
+                          </div>
+                        </div>
+                      ))}
+                      <div className="mt-2 fw-bold small">
+                        Average: {Math.round(Object.values(form.qolie).reduce((s, v) => s + Number(v), 0) / QOLIE_DOMAINS.length)} / 100
+                        {' '}— {qolieInterpret(Math.round(Object.values(form.qolie).reduce((s, v) => s + Number(v), 0) / QOLIE_DOMAINS.length)).interp}
+                      </div>
+                    </div>
+                  )}
+
+                  {saveMsg && (
+                    <div className={`alert alert-${saveMsg.ok ? 'success' : 'danger'} py-2 small mb-2`}>
+                      {saveMsg.msg}
+                    </div>
+                  )}
+                  <button type="submit" className="btn btn-success btn-sm" disabled={saving}>
+                    {saving ? 'Saving…' : 'Save Assessment'}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card shadow-sm border-0 mb-3">
+              <div className="card-header bg-info text-white py-2 small fw-bold">Scoring Reference</div>
+              <div className="card-body small">
+                <p className="fw-bold mb-1">Barthel Index (0–100)</p>
+                <ul className="mb-2">
+                  <li>91–100: Slight Dependence</li>
+                  <li>61–90: Moderate Dependence</li>
+                  <li>21–60: Severe Dependence</li>
+                  <li>0–20: Total Dependence</li>
+                </ul>
+                <p className="fw-bold mb-1">QOLIE-31 (0–100)</p>
+                <ul className="mb-0">
+                  <li>≥70: Good QoL</li>
+                  <li>50–69: Moderate QoL</li>
+                  <li>30–49: Poor QoL</li>
+                  <li>&lt;30: Very Poor QoL</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Score History tab */}
+      {tab === 'history' && (
+        <div>
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <span className="small text-muted">
+              {history ? `${history.count} records` : 'Loading…'}
+            </span>
+            <button className="btn btn-outline-secondary btn-sm" onClick={loadHistory}>Refresh</button>
+          </div>
+          <div className="table-responsive">
+            <table className="table table-sm table-hover">
+              <thead className="table-dark">
+                <tr>
+                  <th>Patient</th><th>Instrument</th>
+                  <th className="text-end">Score</th><th className="text-end">Max</th>
+                  <th>Interpretation</th><th>Examiner</th><th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(history?.records || []).map(r => (
+                  <tr key={r.id}>
+                    <td className="small fw-bold">{r.patient_id}</td>
+                    <td><span className="badge bg-secondary">{r.instrument}</span></td>
+                    <td className="text-end small fw-bold">{r.score}</td>
+                    <td className="text-end small text-muted">{r.max_score}</td>
+                    <td className="small">{r.interpretation || '—'}</td>
+                    <td className="small">{r.examiner || '—'}</td>
+                    <td className="small text-muted">{r.created_at ? r.created_at.slice(0, 16).replace('T', ' ') : '—'}</td>
+                  </tr>
+                ))}
+                {(history?.records || []).length === 0 && (
+                  <tr><td colSpan={7} className="text-center text-muted small py-3">No records yet</td></tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       )}

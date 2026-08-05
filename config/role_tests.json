@@ -1,7 +1,7 @@
 {
   "title": "Per-Role Testing Matrix",
   "note": "Each role: test rows scoped to that role's flow across api/data/model/accuracy/process/frontend/manual. status: pass (verified) / partial / planned.",
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-05",
   "dashboard": "RoleTestsDashboard.jsx",
   "endpoints": [
     "/api/role-tests/overview",
@@ -105,7 +105,8 @@
         {
           "dim": "Data",
           "case": "outcome scores persist",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "POST /api/occupational-therapist/save-assessment + GET /api/occupational-therapist/history — Record Assessment tab in OT dashboard"
         },
         {
           "dim": "Process",

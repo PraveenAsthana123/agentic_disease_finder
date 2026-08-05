@@ -8709,6 +8709,88 @@ async def occupational_therapist_definitions():
     return _json_safe(otd.definitions())
 
 
+class OTAssessmentIn(BaseModel):
+    patient_id: str
+    instrument: str            # BARTHEL | QOLIE31
+    answers_json: dict = {}
+    score: float
+    max_score: float
+    interpretation: str = ""
+    level: str = ""
+    alert: str = ""
+    examiner: str = "OT"
+
+
+@app.post("/api/occupational-therapist/save-assessment")
+async def ot_save_assessment(body: OTAssessmentIn):
+    """Persist a Barthel Index or QOLIE-31 outcome score to the assessments table."""
+    from datetime import datetime, timezone
+    import sqlite3 as _sq
+    allowed = {"BARTHEL", "QOLIE31", "EPWORTH", "LSSS"}
+    if body.instrument.upper() not in allowed:
+        raise HTTPException(status_code=400,
+            detail=f"instrument must be one of {sorted(allowed)}")
+    now = datetime.now(timezone.utc).isoformat()
+    db_path = str(Path(__file__).parent / "data" / "clinical.db")
+    conn = _sq.connect(db_path)
+    try:
+        conn.execute(
+            """INSERT INTO assessments
+               (patient_id, instrument, answers_json, score, max_score,
+                interpretation, level, alert, examiner, created_at, updated_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            (body.patient_id, body.instrument.upper(),
+             json.dumps(body.answers_json), body.score, body.max_score,
+             body.interpretation, body.level, body.alert,
+             body.examiner, now, now),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    cdb.log_transaction(body.patient_id, component="ot_assessment",
+                        action="save",
+                        detail=f"{body.instrument.upper()} score={body.score}/{body.max_score} "
+                               f"level={body.level} examiner={body.examiner}")
+    return {"ok": True, "patient_id": body.patient_id,
+            "instrument": body.instrument.upper(),
+            "score": body.score, "saved_at": now}
+
+
+@app.get("/api/occupational-therapist/history")
+async def ot_history(patient_id: str = "", limit: int = 50):
+    """Return recent OT assessment history (Barthel/QOLIE31/ESS/LSSS).
+    Pass ?patient_id=P0001 to filter to one patient."""
+    import sqlite3 as _sq
+    ot_instruments = ("BARTHEL", "QOLIE31", "EPWORTH", "LSSS")
+    db_path = str(Path(__file__).parent / "data" / "clinical.db")
+    conn = _sq.connect(db_path)
+    try:
+        if patient_id:
+            rows = conn.execute(
+                """SELECT id, patient_id, instrument, score, max_score,
+                          interpretation, level, alert, examiner, created_at
+                   FROM assessments
+                   WHERE patient_id=? AND instrument IN (?,?,?,?)
+                   ORDER BY created_at DESC LIMIT ?""",
+                (patient_id, *ot_instruments, limit),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """SELECT id, patient_id, instrument, score, max_score,
+                          interpretation, level, alert, examiner, created_at
+                   FROM assessments
+                   WHERE instrument IN (?,?,?,?)
+                   ORDER BY created_at DESC LIMIT ?""",
+                (*ot_instruments, limit),
+            ).fetchall()
+    finally:
+        conn.close()
+    cols = ["id", "patient_id", "instrument", "score", "max_score",
+            "interpretation", "level", "alert", "examiner", "created_at"]
+    records = [dict(zip(cols, r)) for r in rows]
+    return _json_safe({"count": len(records), "records": records})
+
+
 # ── EEG Technician Dashboard ──────────────────────────────────────────
 @app.get("/api/eeg-technician/overview")
 async def eeg_technician_overview():
