@@ -126,6 +126,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuro-ai-ecosystem">&#x1f9ec; Neuro AI Ecosystem</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/fairness">&#x2696;&#xfe0f; Fairness &amp; Bias</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/openclaw">&#x1f9be; OpenClaw Agents</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/sleep-staging">&#x1f4a4; Sleep Staging</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

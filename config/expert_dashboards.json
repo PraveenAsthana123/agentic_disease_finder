@@ -546,11 +546,26 @@
         "/api/daily-plans/definitions"
       ],
       "route": "/daily-plans"
+    },
+    {
+      "role": "Neurologist / Sleep Specialist",
+      "name": "Sleep Staging Dashboard",
+      "viz": "Sleep architecture bars, efficiency distribution, per-patient table, seizure-sleep link, epilepsy–sleep interaction definitions",
+      "feature": "95 studies · 40 patients — N1/N2/N3/REM distribution, sleep efficiency, TST, SOL, WASO, arousal index, spindle density, IED-NREM activations, OSA prevalence",
+      "why": "Sleep disturbances are a major seizure trigger; nocturnal seizures require sleep EEG analysis — critical for AED selection and OSA comorbidity management",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/sleep-staging/overview",
+        "/api/sleep-staging/breakdown",
+        "/api/sleep-staging/definitions"
+      ],
+      "route": "/sleep-staging"
     }
   ],
   "summary": {
-    "total": 40,
-    "built": 43,
+    "total": 44,
+    "built": 44,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-05"
