@@ -591,6 +591,18 @@
         "/api/regulatory-audit-trail/definitions"
       ],
       "route": "/audit"
+    },
+    {
+      "id": "federated_learning",
+      "name": "Federated Learning Dashboard",
+      "status": "built",
+      "description": "8 sites, 18 communication rounds, DP (\u03b5=2.8/10.0), FedAvg/FedMA/FedProx/Scaffold comparison, convergence curve, site-level accuracy/sensitivity/F1, gradient norms, seizure-type non-IID distribution, privacy audit trail",
+      "endpoints": [
+        "/api/federated-learning/overview",
+        "/api/federated-learning/breakdown",
+        "/api/federated-learning/definitions"
+      ],
+      "frontend": "portal-next/app/federated-learning/page.jsx"
     }
   ],
   "summary": {
