@@ -55,8 +55,8 @@
     {
       "dim": "Process",
       "tests": "end-to-end pipelines run (upload\u2192predict\u2192report; council)",
-      "how": "drill / analyze-upload smoke",
-      "status": "partial"
+      "how": "scripts/smoke_test_e2e.py — 8/8 checks pass",
+      "status": "built"
     },
     {
       "dim": "Data",

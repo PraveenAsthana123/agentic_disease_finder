@@ -1147,7 +1147,9 @@ def _vector_retrieve(patient_id: str, query: str, k: int = 6):
         # ChromaDB default space is L2 (lower distance = closer). Report raw distance honestly.
         return [{"source": (m or {}).get("type", "vector"), "text": d,
                  "distance": round(dist, 3)} for d, m, dist in zip(docs, metas, dists)]
-    except Exception:
+    except BaseException:
+        # ChromaDB Rust bindings raise pyo3_runtime.PanicException (a BaseException, not
+        # Exception) on shared-system conflicts. Catch all so the keyword fallback fires.
         return []
 
 
