@@ -470,6 +470,20 @@
       ],
       "frontend": "BillingClaimsDashboard (portal-next/app/billing-claims/page.jsx)",
       "description": "Medical billing analytics \u2014 150 claims, 40 patients, 7 claim statuses, 6 insurers (Cigna/Medicare/Medicaid/BCBS/Aetna/UHC/Self-Pay), 8 service types, collection rate, denial rate, aging, per-patient breakdown"
+    },
+    {
+      "id": "cognitive-tests",
+      "name": "Cognitive Tests Dashboard",
+      "status": "built",
+      "endpoints": [
+        "/api/cognitive-tests/overview",
+        "/api/cognitive-tests/breakdown",
+        "/api/cognitive-tests/definitions"
+      ],
+      "frontend": "portal-next/app/cognitive-tests/page.jsx + SiteNav wired",
+      "table": "cognitive_tests",
+      "rows": 501,
+      "description": "Cognitive Tests Dashboard \u2014 501 tests, 25 patients, 11 test types (Trail Making A/B/RAVLT/WCST/CPT/CDT/N-Back/Stroop/Digit Span/Go-NoGo/Verbal Fluency), 9 domains (Executive function/Working memory/Processing speed/Memory/Attention/Sustained attention/Visuospatial/Impulse control/Language), avg accuracy 67.4%, per-test performance, domain breakdown, per-patient sortable table, monthly volume, 5-tab frontend"
     }
   ]
 }
