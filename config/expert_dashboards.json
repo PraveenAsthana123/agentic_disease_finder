@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-05",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -522,7 +522,7 @@
       "name": "Patient Side-by-Side Comparison",
       "viz": "Side-by-side demographics, seizures, assessments, cognition, adherence, radar",
       "feature": "Select any two patients; compare clinical profile across 6 dimensions",
-      "why": "Enables cohort insight — neurologist/researcher can spot phenotype differences rapidly",
+      "why": "Enables cohort insight \u2014 neurologist/researcher can spot phenotype differences rapidly",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -536,8 +536,8 @@
       "role": "Patient / Caregiver / Coordinator",
       "name": "Daily Plans Dashboard",
       "viz": "Activity logging rates, completion distribution, daily trend, per-patient sortable table",
-      "feature": "900 plans × 30 patients × 30 days — medication reminders, meals, exercise, sleep, mood, seizure logging, AI suggestions",
-      "why": "Tracks patient self-management adherence — identifies low-engagement patients needing outreach",
+      "feature": "900 plans \u00d7 30 patients \u00d7 30 days \u2014 medication reminders, meals, exercise, sleep, mood, seizure logging, AI suggestions",
+      "why": "Tracks patient self-management adherence \u2014 identifies low-engagement patients needing outreach",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -550,9 +550,9 @@
     {
       "role": "Neurologist / Sleep Specialist",
       "name": "Sleep Staging Dashboard",
-      "viz": "Sleep architecture bars, efficiency distribution, per-patient table, seizure-sleep link, epilepsy–sleep interaction definitions",
-      "feature": "95 studies · 40 patients — N1/N2/N3/REM distribution, sleep efficiency, TST, SOL, WASO, arousal index, spindle density, IED-NREM activations, OSA prevalence",
-      "why": "Sleep disturbances are a major seizure trigger; nocturnal seizures require sleep EEG analysis — critical for AED selection and OSA comorbidity management",
+      "viz": "Sleep architecture bars, efficiency distribution, per-patient table, seizure-sleep link, epilepsy\u2013sleep interaction definitions",
+      "feature": "95 studies \u00b7 40 patients \u2014 N1/N2/N3/REM distribution, sleep efficiency, TST, SOL, WASO, arousal index, spindle density, IED-NREM activations, OSA prevalence",
+      "why": "Sleep disturbances are a major seizure trigger; nocturnal seizures require sleep EEG analysis \u2014 critical for AED selection and OSA comorbidity management",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -566,8 +566,8 @@
       "role": "Clinical Coder / Medical Records",
       "name": "ICD-10 AI Coding Dashboard",
       "viz": "Status distribution, top codes table, confidence tiers, AI vs human comparison, coder breakdown, rejection reasons, monthly trend, per-patient table",
-      "feature": "85 records · 41 patients · 27 unique codes — AI-AutoCoder v2.1 (40 records, 73.4% conf) vs human coders (45 records, 80.7% conf), confirmed 38.8%, rejection 14.1%, secondary coverage 69.4%",
-      "why": "AI-assisted ICD-10 coding for epilepsy and seizure encounters — tracks coding accuracy, human override rates, and billing-readiness",
+      "feature": "85 records \u00b7 41 patients \u00b7 27 unique codes \u2014 AI-AutoCoder v2.1 (40 records, 73.4% conf) vs human coders (45 records, 80.7% conf), confirmed 38.8%, rejection 14.1%, secondary coverage 69.4%",
+      "why": "AI-assisted ICD-10 coding for epilepsy and seizure encounters \u2014 tracks coding accuracy, human override rates, and billing-readiness",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -576,6 +576,21 @@
         "/api/icd10-coding/definitions"
       ],
       "route": "/icd10-coding"
+    },
+    {
+      "role": "Regulatory Affairs / Compliance",
+      "name": "Regulatory Audit Trail Dashboard",
+      "viz": "KPI cards (102 actions / 16 submissions / 11 actors / 5 categories), category distribution bars, action type breakdown, per-submission table, per-actor activity, event log, definitions",
+      "feature": "102 audit events \u00b7 16 regulatory submissions \u00b7 11 actors \u00b7 5 categories (Administrative/Regulatory/Technical/Clinical/Quality) \u2014 immutable audit record from regulatory_audit_trail table",
+      "why": "Immutable per-submission audit trail for IEC/IRB regulatory compliance \u2014 tracks every review action, document upload, signature, and status change across all regulatory submissions",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/regulatory-audit-trail/overview",
+        "/api/regulatory-audit-trail/breakdown",
+        "/api/regulatory-audit-trail/definitions"
+      ],
+      "route": "/audit"
     }
   ],
   "summary": {
