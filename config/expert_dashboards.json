@@ -623,14 +623,22 @@
       "component": "LSSSDashboard",
       "status": "built",
       "description": "Liverpool Seizure Severity Scale \u2014 53 assessments, 23 patients, severity distribution, trajectory tracking"
+    },
+    {
+      "id": "iot_fleet",
+      "title": "IoT Fleet Dashboard",
+      "route": "/iot-fleet",
+      "component": "portal-next/app/iot-fleet/page.jsx",
+      "status": "built",
+      "description": "IoT device fleet \u2014 35 devices, 4 types, 30 patients, 6 gateways, 50 alerts (22 unresolved), per-device table with battery/signal/latency/firmware, alert severity breakdown, definitions. 3 endpoints /api/iot-fleet/overview|breakdown|definitions verified 200."
     }
   ],
   "summary": {
-    "total": 45,
-    "built": 45,
+    "total": 46,
+    "built": 46,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-05",
-    "count": 48
+    "count": 49
   }
 }
