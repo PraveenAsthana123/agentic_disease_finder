@@ -16910,6 +16910,31 @@ async def grounding_gate_definitions():
     return _json_safe(ggd.definitions())
 
 
+@app.get("/api/eeg-artifact-analysis/overview")
+async def eeg_artifact_analysis_overview():
+    """EEG Artifact Analysis overview — KPIs (total annotations, patients affected,
+    artifact types, avg per patient, burden), type distribution, severity distribution.
+    Source: artifact_annotations 169 rows, 30 patients, 6 artifact types."""
+    import scripts.eeg_artifact_analysis_dashboard as ead
+    return _json_safe(ead.overview())
+
+
+@app.get("/api/eeg-artifact-analysis/breakdown")
+async def eeg_artifact_analysis_breakdown():
+    """EEG Artifact Analysis breakdown — channel distribution, type×severity matrix,
+    per-patient burden table, monthly trend. Source: artifact_annotations."""
+    import scripts.eeg_artifact_analysis_dashboard as ead
+    return _json_safe(ead.breakdown())
+
+
+@app.get("/api/eeg-artifact-analysis/definitions")
+async def eeg_artifact_analysis_definitions():
+    """EEG Artifact Analysis definitions — artifact type explanations, severity levels,
+    clinical impact, mitigation strategies, references."""
+    import scripts.eeg_artifact_analysis_dashboard as ead
+    return _json_safe(ead.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
