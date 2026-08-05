@@ -253,7 +253,7 @@
     {
       "phase": 5,
       "name": "MCP, Tooling, Workflow & Integration",
-      "count": 15,
+      "count": 16,
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
@@ -329,6 +329,13 @@
           "name": "Secure Messaging Dashboard",
           "status": "built",
           "maps_to": "/api/secure-messaging/overview|breakdown|definitions + portal-next/app/secure-messaging/page.jsx"
+        },
+        {
+          "id": "patient-documents",
+          "name": "Patient Documents Dashboard",
+          "category": "clinical",
+          "status": "built",
+          "maps_to": "/api/patient-documents/overview + /api/patient-documents/breakdown + /api/patient-documents/definitions"
         }
       ]
     }
