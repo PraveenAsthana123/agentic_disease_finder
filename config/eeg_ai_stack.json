@@ -347,7 +347,10 @@
       "tools": [
         {
           "name": "Fairlearn (fairness)",
-          "status": "installed"
+          "status": "built",
+          "use": "Demographic parity analysis by sex on real assessment outcomes (n=400) — DPD gate",
+          "endpoints": ["/api/fairness"],
+          "frontend": "/fairness"
         },
         {
           "name": "AIF360 (bias)",
