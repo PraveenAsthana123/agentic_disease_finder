@@ -193,7 +193,7 @@
     {
       "phase": 4,
       "name": "Agentic AI & Multi-Agent Operations",
-      "count": 9,
+      "count": 10,
       "dashboards": [
         {
           "name": "Agent Operations Dashboard",
@@ -241,6 +241,12 @@
           "name": "Multimodal Fusion Dashboard",
           "status": "built",
           "maps_to": "/api/multimodal-fusion/{overview,breakdown,definitions} + portal-next/app/multimodal-fusion/page.jsx + nav wired"
+        },
+        {
+          "name": "OpenClaw Agent Execution Dashboard",
+          "status": "built",
+          "maps_to": "/api/openclaw/overview + /api/openclaw/breakdown + /api/openclaw/definitions + portal-next/app/openclaw/page.jsx + nav wired",
+          "note": "200 executions, 60+ agents, status/mode/trigger/priority breakdowns, step progress, token tracking, top failing agents — openclaw_executions table"
         }
       ]
     },
