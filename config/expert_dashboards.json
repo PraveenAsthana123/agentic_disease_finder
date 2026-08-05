@@ -561,11 +561,26 @@
         "/api/sleep-staging/definitions"
       ],
       "route": "/sleep-staging"
+    },
+    {
+      "role": "Clinical Coder / Medical Records",
+      "name": "ICD-10 AI Coding Dashboard",
+      "viz": "Status distribution, top codes table, confidence tiers, AI vs human comparison, coder breakdown, rejection reasons, monthly trend, per-patient table",
+      "feature": "85 records · 41 patients · 27 unique codes — AI-AutoCoder v2.1 (40 records, 73.4% conf) vs human coders (45 records, 80.7% conf), confirmed 38.8%, rejection 14.1%, secondary coverage 69.4%",
+      "why": "AI-assisted ICD-10 coding for epilepsy and seizure encounters — tracks coding accuracy, human override rates, and billing-readiness",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/icd10-coding/overview",
+        "/api/icd10-coding/breakdown",
+        "/api/icd10-coding/definitions"
+      ],
+      "route": "/icd10-coding"
     }
   ],
   "summary": {
-    "total": 44,
-    "built": 44,
+    "total": 45,
+    "built": 45,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-05"

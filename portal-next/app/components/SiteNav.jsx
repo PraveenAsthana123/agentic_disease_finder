@@ -127,6 +127,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/fairness">&#x2696;&#xfe0f; Fairness &amp; Bias</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/openclaw">&#x1f9be; OpenClaw Agents</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/sleep-staging">&#x1f4a4; Sleep Staging</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/icd10-coding">&#x1f3f7;&#xfe0f; ICD-10 Coding</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
