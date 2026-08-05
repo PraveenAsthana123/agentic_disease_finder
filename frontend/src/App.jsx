@@ -454,6 +454,7 @@ import SystemConfigDashboard from './components/SystemConfigDashboard'
 import ConversationLogDashboard from './components/ConversationLogDashboard'
 import AnalysesDashboard from './components/AnalysesDashboard'
 import DeviceModeDashboard from './components/DeviceModeDashboard'
+import MicrophoneAudioDashboard from './components/MicrophoneAudioDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -849,6 +850,7 @@ function App() {
     { id: 'gnn-electrode-connectivity', label: 'GNN Connectivity' },
     { id: 'patient-education', label: 'Patient Education' },
     { id: 'audio-converter', label: 'Audio Converter' },
+    { id: 'microphone-audio', label: 'Microphone Audio Capture' },
     { id: 'pac', label: 'PAC Analysis' },
     { id: 'body-movement', label: 'Body Movement' },
     { id: 'video-converter', label: 'Video Converter' },
@@ -2390,6 +2392,8 @@ function App() {
         return <PatientEducationDashboard />
       case 'audio-converter':
         return <AudioConverterDashboard />
+      case 'microphone-audio':
+        return <MicrophoneAudioDashboard />
       case 'pac':
         return <PACDashboard />
       case 'body-movement':

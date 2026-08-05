@@ -10199,6 +10199,28 @@ async def audio_converter_definitions():
     return _json_safe(acd.definitions())
 
 
+# ── Microphone Audio Capture Dashboard ────────────────────────────────
+@app.get("/api/microphone-audio/overview")
+async def microphone_audio_overview():
+    """Microphone audio overview: VAD stats, vocalization types, capture sources, SNR trend."""
+    import scripts.microphone_audio_dashboard as mad
+    return _json_safe(mad.overview())
+
+
+@app.get("/api/microphone-audio/breakdown")
+async def microphone_audio_breakdown():
+    """Microphone audio breakdown: per-patient profiles, MFCC scatter, event timeline."""
+    import scripts.microphone_audio_dashboard as mad
+    return _json_safe(mad.breakdown())
+
+
+@app.get("/api/microphone-audio/definitions")
+async def microphone_audio_definitions():
+    """Microphone audio definitions: clinical vocalization terms + signal processing glossary."""
+    import scripts.microphone_audio_dashboard as mad
+    return _json_safe(mad.definitions())
+
+
 # ── Phase-Amplitude Coupling (PAC) Dashboard ─────────────────────────
 @app.get("/api/pac/overview")
 async def pac_overview():

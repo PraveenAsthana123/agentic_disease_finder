@@ -204,9 +204,10 @@
     {
       "id": "microphone_audio",
       "task": "Microphone audio capture (vocalization during seizure)",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "audio stream + classifier"
+      "module": "scripts/microphone_audio_dashboard.py + /api/microphone-audio/{overview,breakdown,definitions} + MicrophoneAudioDashboard.jsx",
+      "status": "built",
+      "needs": "audio stream + classifier",
+      "note": "Microphone audio capture dashboard \u2014 vocalization detection (ictal cry, automatisms, postictal speech), MFCC features, VAD pipeline, seizure event correlation; 3 endpoints verified 200"
     },
     {
       "id": "continuous_monitoring",
