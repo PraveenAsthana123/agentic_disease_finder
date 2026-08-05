@@ -129,7 +129,10 @@
         {
           "name": "Referral Triage Dashboard",
           "status": "built",
-          "maps_to": "/api/referral-triage/overview + /api/referral-triage/breakdown + /api/referral-triage/definitions"
+          "maps_to": "/api/referral-triage/overview + /api/referral-triage/breakdown + /api/referral-triage/definitions",
+          "route": "/referral-triage",
+          "component": "ReferralTriageDashboard",
+          "description": "84 referrals, 9 pending triage, 6 urgent pending, urgency/source breakdown, provider workload, turnaround analytics"
         },
         {
           "name": "Seizure Trigger Logs Dashboard",
