@@ -16935,6 +16935,35 @@ async def eeg_artifact_analysis_definitions():
     return _json_safe(ead.definitions())
 
 
+# ── IoT Fleet Dashboard ──────────────────────────────────────────────
+# Real data: iot_devices (35 rows), iot_gateways (6 rows), iot_alerts (50 rows)
+# Device status, battery, signal, latency; gateway uptime; alert pipeline.
+
+@app.get("/api/iot-fleet/overview")
+async def iot_fleet_overview():
+    """IoT Fleet overview — KPIs (device availability, avg battery/latency/signal,
+    gateway uptime, alert counts), device status/type/location distributions,
+    alert severity breakdown, gateway status. Source: iot_devices, iot_gateways, iot_alerts."""
+    import scripts.iot_fleet_dashboard as ifd
+    return _json_safe(ifd.overview())
+
+
+@app.get("/api/iot-fleet/breakdown")
+async def iot_fleet_breakdown():
+    """IoT Fleet breakdown — per-device table, gateway table, unresolved alerts,
+    alert type breakdown, per-patient device coverage, low-battery devices."""
+    import scripts.iot_fleet_dashboard as ifd
+    return _json_safe(ifd.breakdown())
+
+
+@app.get("/api/iot-fleet/definitions")
+async def iot_fleet_definitions():
+    """IoT Fleet definitions — device types, connectivity modes, alert types,
+    severity levels, KPI definitions, clinical and regulatory references."""
+    import scripts.iot_fleet_dashboard as ifd
+    return _json_safe(ifd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

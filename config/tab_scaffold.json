@@ -108,6 +108,7 @@
       "status": "built"
     },
     "iot_fleet": {
+      "status": "built",
       "goal": "Handle Emotiv + IoT + mobile devices across online/offline/hybrid modes.",
       "todos": [
         "Register devices",

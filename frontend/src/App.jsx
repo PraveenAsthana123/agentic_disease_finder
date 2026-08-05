@@ -121,6 +121,7 @@ import TrainingConfigDashboard from './components/TrainingConfigDashboard'
 import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import IoTDevicesDashboard from './components/IoTDevicesDashboard'
+import IoTFleetDashboard from './components/IoTFleetDashboard'
 import GlobalApprovalPolicyDashboard from './components/GlobalApprovalPolicyDashboard'
 import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
@@ -735,6 +736,7 @@ function App() {
     { id: 'patient-caregiver', label: 'Patient / Caregiver' },
     { id: 'clinical-psychologist', label: 'Clinical Psychologist' },
     { id: 'iot-engineer', label: 'IoT Engineer' },
+    { id: 'iot-fleet', label: 'IoT Fleet' },
     { id: 'ai-federation', label: 'AI Federation' },
     { id: 'is-sop', label: 'IS SOP' },
     { id: 'trigger-tracking', label: 'Trigger Tracking' },
@@ -2566,6 +2568,8 @@ function App() {
         return <ClinicalPsychologistDashboard />
       case 'iot-engineer':
         return <IoTEngineerDashboard />
+      case 'iot-fleet':
+        return <IoTFleetDashboard />
       case 'ai-federation':
         return <AIFederationDashboard />
       case 'is-sop':
