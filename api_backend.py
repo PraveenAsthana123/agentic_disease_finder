@@ -16123,6 +16123,33 @@ async def clinical_judgment_delete(entry_id: int):
     return {"ok": True, "deleted": entry_id}
 
 
+# =============================================================================
+# LOSO CROSS-VALIDATION DASHBOARD
+# CHB-MIT per-subject leave-one-subject-out results — patient-independent metric.
+# Real 24-subject LOSO: Mean Sens 35.1% · Spec 96.9% · AUC 0.846
+# =============================================================================
+
+@app.get("/api/loso/overview")
+async def loso_overview():
+    """LOSO KPIs: mean sensitivity/specificity/AUC, sensitivity tiers, in-sample benchmark gap."""
+    import scripts.loso_dashboard as ld
+    return ld.overview()
+
+
+@app.get("/api/loso/breakdown")
+async def loso_breakdown():
+    """Full per-subject LOSO table with tier annotations + in-sample model comparison."""
+    import scripts.loso_dashboard as ld
+    return ld.breakdown()
+
+
+@app.get("/api/loso/definitions")
+async def loso_definitions():
+    """LOSO methodology, metric definitions, CHB-MIT dataset info, generalization glossary."""
+    import scripts.loso_dashboard as ld
+    return ld.definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

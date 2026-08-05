@@ -246,14 +246,14 @@
           "name": "OpenClaw Agent Execution Dashboard",
           "status": "built",
           "maps_to": "/api/openclaw/overview + /api/openclaw/breakdown + /api/openclaw/definitions + portal-next/app/openclaw/page.jsx + nav wired",
-          "note": "200 executions, 60+ agents, status/mode/trigger/priority breakdowns, step progress, token tracking, top failing agents — openclaw_executions table"
+          "note": "200 executions, 60+ agents, status/mode/trigger/priority breakdowns, step progress, token tracking, top failing agents \u2014 openclaw_executions table"
         }
       ]
     },
     {
       "phase": 5,
       "name": "MCP, Tooling, Workflow & Integration",
-      "count": 10,
+      "count": 11,
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
@@ -319,6 +319,11 @@
           "name": "ICD-10 Coding Dashboard",
           "status": "built",
           "maps_to": "/api/icd10-coding/{overview,breakdown,definitions} + ICD10CodingDashboard.jsx \u2014 diagnostic coding analytics, AI vs human coder comparison, confidence scoring, rejection tracking, 85 records 41 patients"
+        },
+        {
+          "name": "LOSO Cross-Validation Dashboard",
+          "status": "built",
+          "maps_to": "/api/loso/overview + /api/loso/breakdown + /api/loso/definitions"
         }
       ]
     }
