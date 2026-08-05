@@ -16550,6 +16550,108 @@ async def model_registry_definitions():
     }
 
 
+# ─── Device Mode Manager (online/offline + batch) ─────────────────────────────
+
+_DEVICE_MODES = [
+    {"device_id": "EEG-001", "label": "Clinical EEG Cap (32-ch)", "type": "clinical_eeg",
+     "mode": "online", "stream_hz": 256, "last_sync": "2026-08-05T07:22:00Z",
+     "battery_pct": 87, "signal_quality": "good", "patient": "P-0041"},
+    {"device_id": "EEG-002", "label": "Clinical EEG Cap (64-ch)", "type": "clinical_eeg",
+     "mode": "online", "stream_hz": 512, "last_sync": "2026-08-05T07:28:00Z",
+     "battery_pct": 72, "signal_quality": "good", "patient": "P-0017"},
+    {"device_id": "EEG-003", "label": "Portable EEG (8-ch)", "type": "portable_eeg",
+     "mode": "offline", "stream_hz": None, "last_sync": "2026-08-04T23:11:00Z",
+     "battery_pct": 55, "signal_quality": "fair", "patient": "P-0089"},
+    {"device_id": "EEG-004", "label": "Portable EEG (16-ch)", "type": "portable_eeg",
+     "mode": "offline", "stream_hz": None, "last_sync": "2026-08-05T01:04:00Z",
+     "battery_pct": 91, "signal_quality": "good", "patient": "P-0033"},
+    {"device_id": "AMB-001", "label": "Long-term Ambulatory (24h)", "type": "ambulatory",
+     "mode": "batch", "stream_hz": None, "last_sync": "2026-08-04T18:00:00Z",
+     "battery_pct": 34, "signal_quality": "poor", "patient": "P-0055"},
+    {"device_id": "AMB-002", "label": "Long-term Ambulatory (72h)", "type": "ambulatory",
+     "mode": "batch", "stream_hz": None, "last_sync": "2026-08-05T06:45:00Z",
+     "battery_pct": 62, "signal_quality": "fair", "patient": "P-0071"},
+    {"device_id": "WRB-001", "label": "Seizure Wristband (Embrace-style)", "type": "wristband",
+     "mode": "online", "stream_hz": 64, "last_sync": "2026-08-05T07:29:00Z",
+     "battery_pct": 78, "signal_quality": "good", "patient": "P-0022"},
+    {"device_id": "WRB-002", "label": "Seizure Wristband (Embrace-style)", "type": "wristband",
+     "mode": "offline", "stream_hz": None, "last_sync": "2026-08-05T04:17:00Z",
+     "battery_pct": 41, "signal_quality": "fair", "patient": "P-0098"},
+]
+
+_BATCH_QUEUE = [
+    {"job_id": "BQ-0091", "device_id": "AMB-001", "patient": "P-0055",
+     "duration_h": 24, "size_mb": 312, "status": "queued",   "eta_min": 18},
+    {"job_id": "BQ-0090", "device_id": "EEG-003", "patient": "P-0089",
+     "duration_h": 8,  "size_mb": 104, "status": "processing", "eta_min": 4},
+    {"job_id": "BQ-0089", "device_id": "AMB-002", "patient": "P-0071",
+     "duration_h": 48, "size_mb": 621, "status": "done",     "eta_min": 0},
+    {"job_id": "BQ-0088", "device_id": "EEG-004", "patient": "P-0033",
+     "duration_h": 12, "size_mb": 198, "status": "done",     "eta_min": 0},
+]
+
+
+@app.get("/api/device-mode/overview")
+async def device_mode_overview():
+    """Device Mode Manager KPIs: online/offline/batch split, streaming sessions, battery health."""
+    from collections import Counter
+    mode_counts = Counter(d["mode"] for d in _DEVICE_MODES)
+    quality_counts = Counter(d["signal_quality"] for d in _DEVICE_MODES)
+    avg_battery = round(sum(d["battery_pct"] for d in _DEVICE_MODES) / len(_DEVICE_MODES), 1)
+    online_hz = [d["stream_hz"] for d in _DEVICE_MODES if d["stream_hz"]]
+    return {
+        "kpis": {
+            "total_devices": len(_DEVICE_MODES),
+            "online": mode_counts.get("online", 0),
+            "offline": mode_counts.get("offline", 0),
+            "batch": mode_counts.get("batch", 0),
+            "avg_battery_pct": avg_battery,
+            "streaming_sessions": mode_counts.get("online", 0),
+            "avg_stream_hz": round(sum(online_hz) / len(online_hz), 0) if online_hz else 0,
+        },
+        "by_mode": [{"mode": k, "count": v} for k, v in mode_counts.items()],
+        "by_quality": [{"quality": k, "count": v} for k, v in quality_counts.items()],
+        "by_type": [{"type": k, "count": v}
+                    for k, v in Counter(d["type"] for d in _DEVICE_MODES).items()],
+        "batch_queue_summary": {
+            "queued": sum(1 for j in _BATCH_QUEUE if j["status"] == "queued"),
+            "processing": sum(1 for j in _BATCH_QUEUE if j["status"] == "processing"),
+            "done": sum(1 for j in _BATCH_QUEUE if j["status"] == "done"),
+        },
+    }
+
+
+@app.get("/api/device-mode/breakdown")
+async def device_mode_breakdown():
+    """Per-device mode table and batch job queue."""
+    return {"devices": _DEVICE_MODES, "batch_queue": _BATCH_QUEUE,
+            "total_devices": len(_DEVICE_MODES), "total_batch_jobs": len(_BATCH_QUEUE)}
+
+
+@app.get("/api/device-mode/definitions")
+async def device_mode_definitions():
+    """Device Mode glossary: online/offline/batch distinctions, quality grades, sync intervals."""
+    return {
+        "title": "Device Mode Manager — Definitions",
+        "modes": [
+            {"name": "online",  "description": "Device streams data in real-time (WebSocket/LSL). Latency < 200 ms. Requires network."},
+            {"name": "offline", "description": "Device stores data locally. Sync triggered manually or on reconnect. No live inference."},
+            {"name": "batch",   "description": "Long-term recording (24–72 h). Data uploaded as a file for scheduled batch processing."},
+        ],
+        "signal_quality": {
+            "good": "SNR ≥ 20 dB; < 5% epochs rejected",
+            "fair": "SNR 10–20 dB; 5–20% epochs rejected",
+            "poor": "SNR < 10 dB; > 20% epochs rejected — review required",
+        },
+        "device_types": [
+            "clinical_eeg", "portable_eeg", "ambulatory", "wristband",
+        ],
+        "batch_statuses": ["queued", "processing", "done", "failed"],
+        "sync_policy": "Offline devices auto-sync within 30 min of WiFi connection. Batch jobs scheduled at 02:00 UTC daily.",
+        "dashboard": "/device-mode",
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

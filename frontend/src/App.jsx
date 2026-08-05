@@ -450,6 +450,7 @@ import CaregiversDashboard from './components/CaregiversDashboard'
 import SystemConfigDashboard from './components/SystemConfigDashboard'
 import ConversationLogDashboard from './components/ConversationLogDashboard'
 import AnalysesDashboard from './components/AnalysesDashboard'
+import DeviceModeDashboard from './components/DeviceModeDashboard'
 
 // API Base URL
 const API_URL = '/api'
@@ -972,6 +973,7 @@ function App() {
     { id: 'sec-ops', label: 'SecOps' },
     { id: 'iot-alerts', label: 'IoT Alerts' },
     { id: 'wearable-devices', label: 'Wearable Devices' },
+    { id: 'device-mode', label: 'Device Mode Manager' },
     { id: 'trigger-logs', label: 'Trigger Logs' },
     { id: 'upload-analysis', label: 'Upload & Analysis' },
     { id: 'seizure-semiology', label: 'Seizure Semiology' },
@@ -2880,6 +2882,8 @@ function App() {
         return <SecOpsDashboard />
       case 'wearable-devices':
         return <WearableDevicesDashboard />
+      case 'device-mode':
+        return <DeviceModeDashboard />
       case 'trigger-logs':
         return <TriggerLogDashboard />
       case 'seizure-metadata':

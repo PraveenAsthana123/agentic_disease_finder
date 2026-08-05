@@ -185,9 +185,10 @@
     {
       "id": "online_offline_device",
       "task": "Online (streaming) + offline (batch) device modes",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "device state manager"
+      "module": "api_backend.device_mode + frontend/src/components/DeviceModeDashboard.jsx",
+      "status": "built",
+      "route": "/device-mode",
+      "endpoints": ["/api/device-mode/overview", "/api/device-mode/breakdown", "/api/device-mode/definitions"]
     },
     {
       "id": "camera_stream",
