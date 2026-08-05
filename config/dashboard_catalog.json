@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-05",
   "phases": [
     {
       "phase": 1,
@@ -253,7 +253,7 @@
     {
       "phase": 5,
       "name": "MCP, Tooling, Workflow & Integration",
-      "count": 11,
+      "count": 15,
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
@@ -324,6 +324,11 @@
           "name": "LOSO Cross-Validation Dashboard",
           "status": "built",
           "maps_to": "/api/loso/overview + /api/loso/breakdown + /api/loso/definitions"
+        },
+        {
+          "name": "Secure Messaging Dashboard",
+          "status": "built",
+          "maps_to": "/api/secure-messaging/overview|breakdown|definitions + portal-next/app/secure-messaging/page.jsx"
         }
       ]
     }
