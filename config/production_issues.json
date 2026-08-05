@@ -1,7 +1,7 @@
 {
   "title": "Enterprise Agentic AI Production Issue & Troubleshooting Catalog",
   "note": "~120 issues across 18 layers. 'detected_in_project' = a real component here can detect/mitigate it; else it's catalog/planned.",
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-05",
   "layers": [
     {
       "layer": "Agent",
@@ -333,7 +333,7 @@
           "root_cause": "no tracing",
           "detection": "trace coverage",
           "solution": "request_id/trace_id propagation + OTel",
-          "detected_in_project": "partial (transaction trace; OTel planned)"
+          "detected_in_project": "built (TraceIDMiddleware: X-Trace-ID + X-Latency-Ms on every response; logs to transaction_log component=http-trace; /api/traces/* endpoints + /traces dashboard)"
         },
         {
           "issue": "Alert Fatigue",

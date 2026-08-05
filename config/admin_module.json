@@ -157,7 +157,14 @@
       "label": "👁️ Observability",
       "purpose": "logs, traces, metrics, request_id",
       "status": "built",
-      "maps_to": "transaction_log (OTel planned)"
+      "maps_to": "/api/observability/* + /observability page"
+    },
+    {
+      "id": "http-traces",
+      "label": "📡 HTTP Traces",
+      "purpose": "per-request trace_id propagation: X-Trace-ID header on every response, logs to transaction_log, /api/traces/* endpoints",
+      "status": "built",
+      "maps_to": "TraceIDMiddleware + /api/traces/overview|breakdown|definitions + /traces page"
     }
   ],
   "access_control": [
