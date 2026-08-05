@@ -468,6 +468,51 @@ async def analyze_upload(
         Path(tmp.name).unlink(missing_ok=True)
 
 
+@app.post("/api/classify")
+async def classify_eeg(file: UploadFile = File(default=None)):
+    """EEG file classifier — accepts EDF/BDF/CSV/NPY, runs the analysis pipeline,
+    returns predicted disease label, confidence, and top features.
+    Used by the /classify portal page."""
+    if file is None or not getattr(file, "filename", None):
+        # No file: return a helpful status rather than 500
+        return {
+            "status": "no_file",
+            "message": "Upload an EDF, BDF, CSV, or NPY file to run classification.",
+            "supported_formats": [".edf", ".bdf", ".csv", ".npy", ".tsv", ".txt", ".mat", ".npz"],
+        }
+    suffix = (Path(file.filename or "upload.edf").suffix or ".edf").lower()
+    EEG_EXTS = {".edf", ".bdf", ".fif", ".fiff", ".mat", ".npz", ".csv", ".tsv", ".txt", ".dat", ".npy"}
+    if suffix not in EEG_EXTS:
+        return {
+            "status": "unsupported_format",
+            "file": file.filename,
+            "file_type": suffix,
+            "message": f"Format '{suffix}' is not a supported EEG signal format. "
+                       "Upload EDF, BDF, CSV, or NPY.",
+        }
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+    try:
+        shutil.copyfileobj(file.file, tmp)
+        tmp.close()
+        result = eeg.run_pipeline(tmp.name, "epilepsy")
+        result["file"] = file.filename or Path(tmp.name).name
+        result.setdefault("endpoint", "/api/classify")
+        return _json_safe(result)
+    except Exception as exc:
+        return {
+            "status": "error",
+            "file": file.filename,
+            "message": (
+                "Could not classify the uploaded file. "
+                "Ensure it contains multi-channel EEG signal data (EDF/BDF) "
+                "or a valid feature matrix (CSV/NPY). "
+                f"Detail: {str(exc)[:300]}"
+            ),
+        }
+    finally:
+        Path(tmp.name).unlink(missing_ok=True)
+
+
 @app.post("/api/patients")
 async def create_patient(p: PatientIn):
     return {"status": "success", "patient": cdb.upsert_patient(**p.model_dump())}
