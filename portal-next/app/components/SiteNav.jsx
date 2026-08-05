@@ -147,6 +147,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/federated-learning">&#x1f310; Federated Learning</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/grounding-gate">&#x1f6e1;&#xfe0f; Grounding Gate</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-artifact-analysis">&#x1f4ca; EEG Artifacts</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/telehealth">&#x1f4f9; Telehealth</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

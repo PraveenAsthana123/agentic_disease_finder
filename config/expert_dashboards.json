@@ -603,6 +603,18 @@
         "/api/federated-learning/definitions"
       ],
       "frontend": "portal-next/app/federated-learning/page.jsx"
+    },
+    {
+      "id": "telehealth",
+      "name": "Telehealth Sessions Dashboard",
+      "status": "built",
+      "description": "109 sessions, 30 patients, 6 providers, 4 session types (video-visit/phone-consult/async-message/remote-monitoring-review), 4 platforms (Teams/In-house Portal/Doxy.me/Zoom Health), connection quality distribution, satisfaction histogram (1-5 stars), per-provider performance, per-patient table, monthly trend, 3 endpoints /api/telehealth/overview|breakdown|definitions verified 200, portal-next/app/telehealth/page.jsx + SiteNav wired",
+      "route": "/telehealth",
+      "endpoints": [
+        "/api/telehealth/overview",
+        "/api/telehealth/breakdown",
+        "/api/telehealth/definitions"
+      ]
     }
   ],
   "summary": {
@@ -610,6 +622,7 @@
     "built": 45,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-05"
+    "updated_at": "2026-08-05",
+    "count": 48
   }
 }
