@@ -140,6 +140,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/consultant-workflows">&#x1f465; Consultant Workflows</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cognitive-tests">&#x1f9e0; Cognitive Tests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-demographics">&#x1f465; Demographics</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/population-health">&#x1f30d; Population Health</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/models">&#x1f5c2;&#xfe0f; Model Registry</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/audit">&#x1f4dc; Audit Trail</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/causal-ai">&#x1f517; Causal AI</Link></li>
