@@ -133,6 +133,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/referrer-notify">&#x1f4e8; Referrer Notify</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/guided-assessment">&#x1f4dd; Guided Assessments</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/business-workflows">&#x2699;&#xfe0f; Business Workflows</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/consultant-workflows">&#x1f465; Consultant Workflows</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
