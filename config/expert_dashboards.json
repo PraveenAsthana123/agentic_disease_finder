@@ -516,12 +516,28 @@
         "/api/hitl/history"
       ],
       "route": "/human-evaluation"
+    },
+    {
+      "role": "All Roles",
+      "name": "Patient Side-by-Side Comparison",
+      "viz": "Side-by-side demographics, seizures, assessments, cognition, adherence, radar",
+      "feature": "Select any two patients; compare clinical profile across 6 dimensions",
+      "why": "Enables cohort insight — neurologist/researcher can spot phenotype differences rapidly",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/patient-comparison/overview",
+        "/api/patient-comparison/compare",
+        "/api/patient-comparison/definitions"
+      ],
+      "route": "/patient-comparison"
     }
   ],
   "summary": {
-    "total": 38,
-    "built": 40,
+    "total": 39,
+    "built": 42,
     "partial": 0,
-    "planned": 0
+    "planned": 0,
+    "updated_at": "2026-08-05"
   }
 }
