@@ -16652,6 +16652,237 @@ async def device_mode_definitions():
     }
 
 
+# ── IRB / Governance Reviewer Dashboard ──────────────────────────────────────
+
+@app.get("/api/irb-reviewer/overview")
+def irb_reviewer_overview():
+    import sqlite3, json as _json
+    conn = sqlite3.connect("data/clinical.db")
+    cur = conn.cursor()
+
+    # Consent KPIs
+    cur.execute("SELECT COUNT(*) FROM consent_records")
+    total_consents = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM consent_records WHERE status='granted'")
+    granted = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM consent_records WHERE status='pending'")
+    pending_consent = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM consent_records WHERE status IN ('withdrawn','declined')")
+    non_consented = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(DISTINCT patient_id) FROM consent_records")
+    consented_patients = cur.fetchone()[0]
+
+    # Regulatory KPIs
+    cur.execute("SELECT COUNT(*) FROM regulatory_submissions")
+    total_submissions = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM regulatory_submissions WHERE status='Approved'")
+    approved = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM regulatory_submissions WHERE status IN ('Submitted','Under Review','Additional Info Requested')")
+    in_review = cur.fetchone()[0]
+    cur.execute("SELECT AVG(validation_score) FROM regulatory_submissions WHERE validation_score IS NOT NULL")
+    avg_val_score = round((cur.fetchone()[0] or 0) * 100, 1)
+
+    # Validation study KPIs
+    cur.execute("SELECT COUNT(*) FROM validation_studies")
+    total_studies = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM validation_studies WHERE status='Completed' OR status='Passed'")
+    completed_studies = cur.fetchone()[0]
+    cur.execute("SELECT AVG(sensitivity), AVG(specificity), AVG(auc_roc) FROM validation_studies WHERE sensitivity IS NOT NULL")
+    row = cur.fetchone()
+    avg_sens = round((row[0] or 0) * 100, 1)
+    avg_spec = round((row[1] or 0) * 100, 1)
+    avg_auc  = round((row[2] or 0), 3)
+
+    # Audit trail KPIs
+    cur.execute("SELECT COUNT(*) FROM regulatory_audit_trail")
+    total_audit_events = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(DISTINCT actor) FROM regulatory_audit_trail")
+    unique_actors = cur.fetchone()[0]
+
+    # Consent by type
+    cur.execute("SELECT consent_type, status, COUNT(*) as n FROM consent_records GROUP BY consent_type, status ORDER BY consent_type, n DESC")
+    consent_rows = cur.fetchall()
+    types = {}
+    for ctype, status, n in consent_rows:
+        if ctype not in types:
+            types[ctype] = {"consent_type": ctype, "granted": 0, "pending": 0, "withdrawn": 0, "declined": 0, "expired": 0, "total": 0}
+        types[ctype][status] = types[ctype].get(status, 0) + n
+        types[ctype]["total"] += n
+    consent_by_type = sorted(types.values(), key=lambda x: -x["total"])
+
+    # Regulatory submission status
+    cur.execute("SELECT status, COUNT(*) as n FROM regulatory_submissions GROUP BY status ORDER BY n DESC")
+    submission_status = [{"status": r[0], "count": r[1]} for r in cur.fetchall()]
+
+    # Audit trail by category
+    cur.execute("SELECT category, COUNT(*) as n FROM regulatory_audit_trail GROUP BY category ORDER BY n DESC")
+    audit_by_category = [{"category": r[0], "count": r[1]} for r in cur.fetchall()]
+
+    conn.close()
+    return {
+        "kpis": {
+            "total_consents": total_consents,
+            "consented_patients": consented_patients,
+            "consent_granted": granted,
+            "consent_pending": pending_consent,
+            "consent_non_consented": non_consented,
+            "consent_grant_rate_pct": round(granted / total_consents * 100, 1) if total_consents else 0,
+            "total_regulatory_submissions": total_submissions,
+            "submissions_approved": approved,
+            "submissions_in_review": in_review,
+            "avg_validation_score_pct": avg_val_score,
+            "total_validation_studies": total_studies,
+            "studies_completed": completed_studies,
+            "avg_sensitivity_pct": avg_sens,
+            "avg_specificity_pct": avg_spec,
+            "avg_auc": avg_auc,
+            "total_audit_events": total_audit_events,
+            "unique_actors": unique_actors,
+        },
+        "consent_by_type": consent_by_type,
+        "submission_status": submission_status,
+        "audit_by_category": audit_by_category,
+    }
+
+
+@app.get("/api/irb-reviewer/breakdown")
+def irb_reviewer_breakdown():
+    import sqlite3
+    conn = sqlite3.connect("data/clinical.db")
+    cur = conn.cursor()
+
+    # Regulatory submissions detail
+    cur.execute("""
+        SELECT submission_id, pathway, product_name, classification,
+               status, risk_class, validation_score, phase, reviewer
+        FROM regulatory_submissions ORDER BY submitted_date DESC
+    """)
+    cols = ["submission_id", "pathway", "product_name", "classification",
+            "status", "risk_class", "validation_score_pct", "phase", "reviewer"]
+    submissions = []
+    for row in cur.fetchall():
+        d = dict(zip(cols, row))
+        if d["validation_score_pct"] is not None:
+            d["validation_score_pct"] = round(d["validation_score_pct"] * 100, 1)
+        submissions.append(d)
+
+    # Submissions by pathway
+    cur.execute("SELECT pathway, COUNT(*) as n FROM regulatory_submissions GROUP BY pathway ORDER BY n DESC")
+    by_pathway = [{"pathway": r[0], "count": r[1]} for r in cur.fetchall()]
+
+    # Submissions by risk class
+    cur.execute("SELECT risk_class, COUNT(*) as n FROM regulatory_submissions GROUP BY risk_class ORDER BY n DESC")
+    by_risk_class = [{"risk_class": r[0], "count": r[1]} for r in cur.fetchall()]
+
+    # Validation studies detail
+    cur.execute("""
+        SELECT study_id, study_type, title, status, sample_size,
+               sensitivity, specificity, auc_roc, principal_investigator, site
+        FROM validation_studies ORDER BY start_date DESC
+    """)
+    vs_cols = ["study_id", "study_type", "title", "status", "sample_size",
+               "sensitivity", "specificity", "auc_roc", "principal_investigator", "site"]
+    studies = []
+    for row in cur.fetchall():
+        d = dict(zip(vs_cols, row))
+        for f in ("sensitivity", "specificity", "auc_roc"):
+            if d[f] is not None:
+                d[f] = round(d[f], 3)
+        studies.append(d)
+
+    # Validation study types
+    cur.execute("SELECT study_type, COUNT(*) as n FROM validation_studies GROUP BY study_type ORDER BY n DESC")
+    by_study_type = [{"study_type": r[0], "count": r[1]} for r in cur.fetchall()]
+
+    # Audit trail - top actors
+    cur.execute("SELECT actor, COUNT(*) as n FROM regulatory_audit_trail GROUP BY actor ORDER BY n DESC LIMIT 10")
+    top_actors = [{"actor": r[0], "events": r[1]} for r in cur.fetchall()]
+
+    # Audit trail - recent events
+    cur.execute("""
+        SELECT submission_id, action, actor, timestamp, category, document_ref
+        FROM regulatory_audit_trail ORDER BY timestamp DESC LIMIT 20
+    """)
+    at_cols = ["submission_id", "action", "actor", "timestamp", "category", "document_ref"]
+    recent_audit = [dict(zip(at_cols, row)) for row in cur.fetchall()]
+
+    # Consent per patient summary
+    cur.execute("""
+        SELECT patient_id,
+               SUM(CASE WHEN status='granted' THEN 1 ELSE 0 END) as granted,
+               SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END) as pending,
+               COUNT(*) as total
+        FROM consent_records GROUP BY patient_id ORDER BY total DESC LIMIT 30
+    """)
+    consent_per_patient = [
+        {"patient_id": r[0], "granted": r[1], "pending": r[2], "total": r[3]}
+        for r in cur.fetchall()
+    ]
+
+    conn.close()
+    return {
+        "submissions": submissions,
+        "by_pathway": by_pathway,
+        "by_risk_class": by_risk_class,
+        "studies": studies,
+        "by_study_type": by_study_type,
+        "top_actors": top_actors,
+        "recent_audit": recent_audit,
+        "consent_per_patient": consent_per_patient,
+    }
+
+
+@app.get("/api/irb-reviewer/definitions")
+def irb_reviewer_definitions():
+    return {
+        "role": "IRB / Governance Reviewer",
+        "mission": "Ensure all research activities comply with ethical, regulatory, and institutional requirements. Review consent records, regulatory submissions, validation evidence, and audit trails to protect patient safety and research integrity.",
+        "consent_statuses": {
+            "granted": "Patient has provided informed consent — data/samples may be used per protocol.",
+            "pending": "Consent form distributed but not yet returned or signed.",
+            "declined": "Patient explicitly refused consent — data excluded from research use.",
+            "withdrawn": "Previously granted consent revoked by patient — processing must stop.",
+            "expired": "Consent window lapsed per protocol — requires renewal before further use.",
+        },
+        "regulatory_pathways": {
+            "FDA 510(k)": "Substantial equivalence to a legally marketed predicate device (Class II SaMD).",
+            "FDA De Novo": "Novel low-to-moderate risk device without a predicate — grants new classification.",
+            "FDA PMA": "Premarket Approval for Class III devices — highest evidentiary standard.",
+            "CE Mark (MDR)": "EU Medical Device Regulation conformity marking — required for EU market.",
+            "CE Mark (IVDR)": "EU In-Vitro Diagnostic Regulation conformity — applies to IVD software.",
+        },
+        "risk_classes": {
+            "Class I": "Lowest risk — general controls only (labelling, registration).",
+            "Class IIa": "Moderate risk — general + special controls; some clinical data required.",
+            "Class IIb": "Moderate-high risk — additional conformity assessment needed.",
+            "Class III": "Highest risk — full PMA or NB-assessed technical file; clinical evidence mandatory.",
+        },
+        "validation_study_types": {
+            "Software Verification": "Confirms software behaves as specified (unit/integration/system tests).",
+            "Analytical Validation": "Validates algorithmic performance on held-out or external datasets.",
+            "Clinical Validation": "Prospective or retrospective study with real patients to confirm clinical utility.",
+            "Retrospective Cohort": "Analysis of existing patient records to evaluate diagnostic accuracy.",
+            "Prospective Trial": "Forward-looking study with pre-registered protocol and enrolled patients.",
+            "Cross-validation": "k-fold or leave-one-out evaluation of model generalizability.",
+        },
+        "audit_categories": {
+            "Clinical": "Events related to patient care decisions, protocol deviations, and clinical assessments.",
+            "Regulatory": "Submission milestones, reviewer correspondence, and approval/rejection actions.",
+            "Technical": "Software changes, dataset updates, model version updates, and system events.",
+            "Administrative": "SOPs, training records, access control changes, and governance meetings.",
+            "Quality": "Non-conformance reports, CAPA actions, and quality system reviews.",
+        },
+        "key_metrics": {
+            "validation_score": "Composite 0–1 score: sensitivity, specificity, AUC, and dataset quality weighted equally.",
+            "consent_grant_rate": "Proportion of consent requests that were granted — target ≥ 80%.",
+            "avg_sensitivity": "Mean seizure-detection sensitivity across completed validation studies.",
+            "avg_specificity": "Mean specificity (true-negative rate) across completed studies.",
+            "avg_auc": "Mean Area Under the ROC Curve — AUC ≥ 0.85 indicates acceptable discrimination.",
+        },
+        "dashboard": "/irb-reviewer",
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
