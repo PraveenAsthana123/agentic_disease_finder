@@ -1,7 +1,10 @@
 {
   "title": "Neuro AI Platform \u2014 Open-Source Ecosystem (epilepsy / EEG / cognitive / neuropsychiatry)",
   "note": "No single OSS platform exists; this is the practical combined stack. status: built (live in THIS platform) / installed (Python import verified) / cataloged (recommended, not wired) / external (server/desktop/MATLAB) / commercial. \u00a7155 honest.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-08-04",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/neuro-ai-ecosystem/page.jsx",
+  "api_endpoints": ["/api/neuro-ai-ecosystem/overview", "/api/neuro-ai-ecosystem/breakdown", "/api/neuro-ai-ecosystem/definitions"],
   "recommended_stack": {
     "Clinical Assessments": "REDCap",
     "Patient Questionnaires": "LimeSurvey",
