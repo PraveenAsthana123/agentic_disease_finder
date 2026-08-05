@@ -1,0 +1,48 @@
+{
+  "scanned_at": "2026-06-25 10:40 MDT",
+  "count": 7,
+  "issues": [
+    {
+      "severity": "P1",
+      "surface": "model",
+      "issue": "Drift monitor reports SEVERE drift (live features vs training distribution)",
+      "guidance": "Retrain on same-setup ictal/interictal data; until then trust confidence only with human sign-off."
+    },
+    {
+      "severity": "P1",
+      "surface": "model",
+      "issue": "Model has dataset-confound caveat (acc 0.8718, control=motor-imagery)",
+      "guidance": "Confidence partly reflects dataset, not only epilepsy. Use ictal/interictal data for clinical claims."
+    },
+    {
+      "severity": "P1",
+      "surface": "backend",
+      "issue": "6 HTTP-500 since last restart",
+      "guidance": "Check jobs/logs/backend.log; wrap NaN/serialization in _json_safe."
+    },
+    {
+      "severity": "P2",
+      "surface": "data",
+      "issue": "Only 4 CHB-MIT subjects on disk",
+      "guidance": "Download more PhysioNet subjects (10-20) for stronger cross-patient claims."
+    },
+    {
+      "severity": "P2",
+      "surface": "security",
+      "issue": "No multi-user auth / RBAC (single-operator mode)",
+      "guidance": "Fine for research/dev; required before multi-clinician or PHI deployment (see \u00a747.6)."
+    },
+    {
+      "severity": "P3",
+      "surface": "data",
+      "issue": "MRI coverage very low (2.5%)",
+      "guidance": "Expected \u2014 DICOM not ingested. Note as limitation, not a bug."
+    },
+    {
+      "severity": "P3",
+      "surface": "git",
+      "issue": "2 commit(s) unpushed",
+      "guidance": "safe_push.sh auto-pushes on shared repos; or push manually."
+    }
+  ]
+}

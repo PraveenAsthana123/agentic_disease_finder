@@ -13378,6 +13378,29 @@ async def production_issues_definitions():
     return _json_safe(pid.definitions())
 
 
+# ── Production Monitoring Dashboard (live checks for 6 planned watchpoints) ──
+
+@app.get("/api/production-monitoring/overview")
+async def production_monitoring_overview():
+    """Live production-issue monitoring — 6 checks: budget, MCP, vector-DB, staleness, planner, version."""
+    import scripts.production_monitoring_dashboard as pmd
+    return _json_safe(pmd.overview())
+
+
+@app.get("/api/production-monitoring/breakdown")
+async def production_monitoring_breakdown():
+    """Full live-check results with all detail fields for each of the 6 watchpoints."""
+    import scripts.production_monitoring_dashboard as pmd
+    return _json_safe(pmd.breakdown())
+
+
+@app.get("/api/production-monitoring/definitions")
+async def production_monitoring_definitions():
+    """Definitions for production-monitoring metrics, statuses, layers, and thresholds."""
+    import scripts.production_monitoring_dashboard as pmd
+    return _json_safe(pmd.definitions())
+
+
 # ── Consultant Workflows Dashboard ──────────────────────────────────────────
 
 @app.get("/api/consultant-workflows/overview")

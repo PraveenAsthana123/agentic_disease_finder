@@ -1,0 +1,281 @@
+{
+  "generated_at": "2026-06-24T00:34:25-06:00",
+  "evaluation_type": "in-sample (optimistic)",
+  "mean_accuracy": 0.9943,
+  "results": [
+    {
+      "disease": "alzheimer",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": [
+        [
+          25,
+          0
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Alzheimer"
+      ],
+      "training_metrics": {
+        "disease": "alzheimer",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "parkinson",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": [
+        [
+          25,
+          0
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Parkinson"
+      ],
+      "training_metrics": {
+        "disease": "parkinson",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "schizophrenia",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": [
+        [
+          25,
+          0
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Schizophrenia"
+      ],
+      "training_metrics": {
+        "disease": "schizophrenia",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "epilepsy",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": [
+        [
+          25,
+          0
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Epilepsy"
+      ],
+      "training_metrics": {
+        "disease": "epilepsy",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "autism",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 0.98,
+      "precision": 0.9808,
+      "recall": 0.98,
+      "f1": 0.98,
+      "confusion_matrix": [
+        [
+          24,
+          1
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Autism"
+      ],
+      "training_metrics": {
+        "disease": "autism",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 0.9099999999999999,
+        "accuracy_std": 0.04183300132670376,
+        "precision_mean": 0.9262626262626263,
+        "recall_mean": 0.9,
+        "f1_mean": 0.9079668869142553,
+        "auc_mean": 0.986,
+        "sensitivity_mean": 0.9,
+        "specificity_mean": 0.9200000000000002
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "stress",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 0.98,
+      "precision": 0.9808,
+      "recall": 0.98,
+      "f1": 0.98,
+      "confusion_matrix": [
+        [
+          24,
+          1
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Stress"
+      ],
+      "training_metrics": {
+        "disease": "stress",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    },
+    {
+      "disease": "depression",
+      "status": "ok",
+      "n_samples": 50,
+      "n_features": 47,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "confusion_matrix": [
+        [
+          25,
+          0
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "class_names": [
+        "Control",
+        "Depression"
+      ],
+      "training_metrics": {
+        "disease": "depression",
+        "n_samples": 100,
+        "n_control": 50,
+        "n_disease": 50,
+        "accuracy_mean": 1.0,
+        "accuracy_std": 0.0,
+        "precision_mean": 1.0,
+        "recall_mean": 1.0,
+        "f1_mean": 1.0,
+        "auc_mean": 1.0,
+        "sensitivity_mean": 1.0,
+        "specificity_mean": 1.0
+      },
+      "evaluation": "in-sample (optimistic; not a generalization estimate)"
+    }
+  ],
+  "caveat": "Use subject-wise hold-out for a real generalization number."
+}

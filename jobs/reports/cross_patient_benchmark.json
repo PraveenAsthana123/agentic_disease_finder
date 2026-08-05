@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-06-23T23:05:54-06:00",
+  "benchmark": "CHB-MIT cross-patient (leave-one-subject-out), real EDF + seizure annotations",
+  "subjects": [
+    "chb02",
+    "chb03",
+    "chb04"
+  ],
+  "window_seconds": 4,
+  "features": "12 fast (stats + band power + Hjorth)",
+  "cross_patient_accuracy_mean": 0.705,
+  "folds": [
+    {
+      "held_out_subject": "chb02",
+      "n_test": 17,
+      "accuracy": 0.8235,
+      "f1": 0.8277
+    },
+    {
+      "held_out_subject": "chb03",
+      "n_test": 24,
+      "accuracy": 0.8333,
+      "f1": 0.8286
+    },
+    {
+      "held_out_subject": "chb04",
+      "n_test": 24,
+      "accuracy": 0.4583,
+      "f1": 0.4338
+    }
+  ],
+  "caveat": "Bounded subset (3 subjects, 1 seizure EDF each, capped windows). Honest cross-patient signal, not full-dataset."
+}

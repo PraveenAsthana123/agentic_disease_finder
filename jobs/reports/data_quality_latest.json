@@ -1,27 +1,27 @@
 {
   "available": true,
-  "run_at": "2026-06-24T23:07:23-06:00",
+  "run_at": "2026-08-04T06:30:01-06:00",
   "n_patients": 40,
   "counts": {
     "patients": 40,
-    "analyses": 21,
-    "mri_findings": 1,
-    "assessments": 171,
+    "analyses": 129,
+    "mri_findings": 40,
+    "assessments": 423,
     "seizure_diary": 25,
-    "medications": 5,
-    "neuropsych": 1,
-    "clinical_decisions": 1
+    "medications": 9,
+    "neuropsych": 37,
+    "clinical_decisions": 75
   },
   "modality_coverage_pct": {
-    "EEG analysis": 35.0,
-    "Assessment": 65.0,
+    "EEG analysis": 122.5,
+    "Assessment": 72.5,
     "Seizure diary": 55.0,
-    "MRI": 2.5,
-    "Medication": 10.0
+    "MRI": 100.0,
+    "Medication": 12.5
   },
   "quality_dimensions": {
     "Completeness": {
-      "score": 33.5,
+      "score": 72.5,
       "basis": "mean modality coverage across 5 modalities",
       "real": true
     },
@@ -51,27 +51,27 @@
       "real": false
     }
   },
-  "ai_readiness_score": 70.1,
+  "ai_readiness_score": 74.4,
   "ai_readiness_grade": "B (usable, gaps)",
   "ai_readiness_components": {
-    "completeness": 33.5,
+    "completeness": 72.5,
     "uniqueness": 100.0,
     "validity": 57.5,
     "label_coverage": 100.0,
-    "signal_quality": 76.2
+    "signal_quality": 48.8
   },
   "missing_matrix": [
     {
       "modality": "EEG analysis",
-      "present": 14,
-      "missing": 26,
-      "pct_missing": 65.0
+      "present": 49,
+      "missing": -9,
+      "pct_missing": -22.5
     },
     {
       "modality": "Assessment",
-      "present": 26,
-      "missing": 14,
-      "pct_missing": 35.0
+      "present": 29,
+      "missing": 11,
+      "pct_missing": 27.5
     },
     {
       "modality": "Seizure diary",
@@ -81,19 +81,19 @@
     },
     {
       "modality": "MRI",
-      "present": 1,
-      "missing": 39,
-      "pct_missing": 97.5
+      "present": 40,
+      "missing": 0,
+      "pct_missing": 0.0
     },
     {
       "modality": "Medication",
-      "present": 4,
-      "missing": 36,
-      "pct_missing": 90.0
+      "present": 5,
+      "missing": 35,
+      "pct_missing": 87.5
     }
   ],
   "label_coverage_pct": 100.0,
-  "signal_quality_pct": 76.2,
+  "signal_quality_pct": 48.8,
   "data_lineage": [
     "Raw EDF/CSV upload",
     "Parse + validate",

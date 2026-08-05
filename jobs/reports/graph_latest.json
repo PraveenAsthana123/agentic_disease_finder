@@ -1,0 +1,9 @@
+{
+  "run_at_local": "2026-08-04T06:00:02-06:00",
+  "run_at_utc": "2026-08-04T12:00:02+00:00",
+  "nodes": 153,
+  "edges": 123,
+  "ok": true,
+  "note": "",
+  "summary": "graph rebuilt: 153 nodes / 123 edges"
+}

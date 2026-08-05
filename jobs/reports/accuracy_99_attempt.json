@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-06-24T17:53:42-06:00",
+  "benchmark": "CHB-MIT patient-specific + per-subject threshold tuning (leakage-free)",
+  "no_leakage": "threshold tuned on train-validation slice, applied to held-out late windows",
+  "mean_accuracy": 0.9369,
+  "mean_sensitivity": 0.875,
+  "per_subject": [
+    {
+      "subject": "chb01",
+      "n_total": 370,
+      "n_test": 112,
+      "threshold": 0.2,
+      "accuracy": 0.9911,
+      "f1": 0.9907,
+      "sensitivity": 0.8333
+    },
+    {
+      "subject": "chb02",
+      "n_total": 437,
+      "n_test": 133,
+      "threshold": 0.2,
+      "accuracy": 0.8797,
+      "f1": 0.8885,
+      "sensitivity": 1.0
+    },
+    {
+      "subject": "chb03",
+      "n_total": 494,
+      "n_test": 150,
+      "threshold": 0.2,
+      "accuracy": 0.9933,
+      "f1": 0.9934,
+      "sensitivity": 1.0
+    },
+    {
+      "subject": "chb04",
+      "n_total": 540,
+      "n_test": 163,
+      "threshold": 0.2,
+      "accuracy": 0.8834,
+      "f1": 0.8766,
+      "sensitivity": 0.6667
+    }
+  ]
+}

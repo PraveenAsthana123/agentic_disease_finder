@@ -1,13 +1,15 @@
 {
-  "generated_at": "2026-06-24T08:26:32-06:00",
-  "n_reviews": 2,
+  "generated_at": "2026-08-04T03:06:45-06:00",
+  "n_reviews": 3,
   "overall": {
-    "agree": 2
+    "agree": 2,
+    "disagree": 1
   },
-  "overall_agree_rate": 1.0,
+  "overall_agree_rate": 0.667,
   "by_role": {
     "Neurologist": {
-      "agree": 1
+      "agree": 1,
+      "disagree": 1
     },
     "EEG Technician": {
       "agree": 1
@@ -16,7 +18,8 @@
   "by_ai_confidence": {
     "high(>=0.7)": {},
     "mid(0.5-0.7)": {
-      "agree": 2
+      "agree": 2,
+      "disagree": 1
     },
     "low(<0.5)": {}
   },

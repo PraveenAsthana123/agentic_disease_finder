@@ -1,0 +1,22 @@
+{
+  "run_at_utc": "2026-07-01T08:30:01+00:00",
+  "run_at_local": "2026-07-01T02:30:01-06:00",
+  "dataset": "data/real_eeg/epilepsy_physionet (CHB-MIT)",
+  "results": [
+    {
+      "script": "accuracy_patient_specific.py",
+      "exit_code": 0,
+      "ok": true,
+      "tail": "  chb01: 220 windows (20 seiz) -> acc=0.970 f1=0.970 sens=0.833\n  chb02: 287 windows (87 seiz) -> acc=0.989 f1=0.988 sens=0.963\n  chb03: 344 windows (144 seiz) -> acc=0.981 f1=0.981 sens=1.000\n  chb04: 390 windows (190 seiz) -> acc=0.983 f1=0.983 sens=0.965\n\n=== PATIENT-SPECIFIC (clinical use case) ===\n  mean accuracy:    0.9805\n  mean sensitivity: 0.9403\nSaved: /media/praveen/Asthana4/rajveer/agenticfinder/jobs/reports/accuracy_patient_specific.json\n",
+      "seconds": 193.6
+    },
+    {
+      "script": "accuracy_all_options.py",
+      "exit_code": 0,
+      "ok": true,
+      "tail": "  chb01: 50 windows (10 seiz / 40 non)\n  chb02: 29 windows (21 seiz / 8 non)\n  chb03: 41 windows (13 seiz / 28 non)\n  chb04: 53 windows (13 seiz / 40 non)\n  [patient-specific] chb01: acc=1.000\n  [patient-specific] chb02: acc=0.846\n  [patient-specific] chb03: acc=1.000\n  [patient-specific] chb04: acc=0.727\n  [cross-patient RF] mean acc=0.7277\n  [cross-patient ensemble] mean acc=0.661\n  [cross-patient ensemble + per-subj norm] mean acc=0.6314\n\n=== HONEST ACCURACY SUMMARY ===\n  1. Patient-specific (clinical use case): 0.8934\n  2. Cross-patient RF (baseline):          0.7277\n  3. Cross-patient ensemble:               0.661\n  4. Cross-patient ensemble + norm:        0.6314\n\nSaved: /media/praveen/Asthana4/rajveer/agenticfinder/jobs/reports/accuracy_all_options.json\n",
+      "seconds": 234.3
+    }
+  ],
+  "summary": "2/2 training runs succeeded"
+}

@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-06-23T17:17:48-06:00",
+  "evaluation_type": "subject-wise GroupKFold (leakage-free)",
+  "mean_subjectwise_accuracy": 0.9886,
+  "mean_leakage_gap": 0.0114,
+  "results": [
+    {
+      "disease": "alzheimer",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 1.0,
+      "subjectwise_acc_std": 0.0,
+      "subjectwise_f1_mean": 1.0,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.0
+    },
+    {
+      "disease": "parkinson",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 1.0,
+      "subjectwise_acc_std": 0.0,
+      "subjectwise_f1_mean": 1.0,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.0
+    },
+    {
+      "disease": "schizophrenia",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 1.0,
+      "subjectwise_acc_std": 0.0,
+      "subjectwise_f1_mean": 1.0,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.0
+    },
+    {
+      "disease": "epilepsy",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 1.0,
+      "subjectwise_acc_std": 0.0,
+      "subjectwise_f1_mean": 1.0,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.0
+    },
+    {
+      "disease": "autism",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 0.94,
+      "subjectwise_acc_std": 0.08,
+      "subjectwise_f1_mean": 0.9398,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.06
+    },
+    {
+      "disease": "stress",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 0.98,
+      "subjectwise_acc_std": 0.04,
+      "subjectwise_f1_mean": 0.9798,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.02
+    },
+    {
+      "disease": "depression",
+      "status": "ok",
+      "n_subjects": 10,
+      "n_splits": 5,
+      "subjectwise_acc_mean": 1.0,
+      "subjectwise_acc_std": 0.0,
+      "subjectwise_f1_mean": 1.0,
+      "insample_acc_mean": 1.0,
+      "leakage_gap": 0.0
+    }
+  ],
+  "note": "Fresh model per fold; scaler fit on train only; grouped by subject_id."
+}

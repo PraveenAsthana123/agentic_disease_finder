@@ -112,6 +112,7 @@ import ConsultantWorkflowsDashboard from './components/ConsultantWorkflowsDashbo
 import ConsultantMatrixDashboard from './components/ConsultantMatrixDashboard'
 import EpilepsyChallengesDashboard from './components/EpilepsyChallengesDashboard'
 import ProductionIssuesDashboard from './components/ProductionIssuesDashboard'
+import ProductionMonitoringDashboard from './components/ProductionMonitoringDashboard'
 import RoleChallengesDashboard from './components/RoleChallengesDashboard'
 import RoleProcessFlowsDashboard from './components/RoleProcessFlowsDashboard'
 import RoleTestsDashboard from './components/RoleTestsDashboard'
@@ -790,6 +791,7 @@ function App() {
     { id: 'eeg-ai-rag-pipeline', label: 'EEG AI RAG Pipeline' },
     { id: 'role-process-flows', label: 'Role Process Flows' },
     { id: 'production-issues', label: 'Production Issues' },
+    { id: 'production-monitoring', label: 'Production Monitoring' },
     { id: 'stories-tests', label: 'Stories & Tests' },
     { id: 'training-config', label: 'Training Config' },
     { id: 'feature-gaps', label: 'Feature Gaps' },
@@ -2276,6 +2278,8 @@ function App() {
         return <RoleProcessFlowsDashboard />
       case 'production-issues':
         return <ProductionIssuesDashboard />
+      case 'production-monitoring':
+        return <ProductionMonitoringDashboard />
       case 'stories-tests':
         return <StoriesTestsDashboard />
       case 'training-config':

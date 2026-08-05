@@ -1,7 +1,7 @@
 {
   "title": "Enterprise Agentic AI Production Issue & Troubleshooting Catalog",
   "note": "~120 issues across 18 layers. 'detected_in_project' = a real component here can detect/mitigate it; else it's catalog/planned.",
-  "updated_at": "2026-06-23",
+  "updated_at": "2026-08-04",
   "layers": [
     {
       "layer": "Agent",
@@ -28,7 +28,7 @@
           "root_cause": "context accumulation",
           "detection": "token/cost trace",
           "solution": "compression + budget caps",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: budget utilization check + /api/production-monitoring/overview)"
         },
         {
           "issue": "Wrong Tool Selection",
@@ -102,7 +102,7 @@
           "root_cause": "infra failure",
           "detection": "health check",
           "solution": "HA deployment",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: HTTP health probe + system_health_log check)"
         },
         {
           "issue": "Capability Discovery Failure",
@@ -118,7 +118,7 @@
           "root_cause": "API drift",
           "detection": "contract test",
           "solution": "semantic versioning",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: model file + inference freshness check)"
         }
       ]
     },
@@ -139,7 +139,7 @@
           "root_cause": "ambiguous intent",
           "detection": "goal-vs-output compare",
           "solution": "goal validation checkpoint",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: conversation anomaly rate from conversation_log)"
         }
       ]
     },
@@ -160,7 +160,7 @@
           "root_cause": "outdated index",
           "detection": "freshness score",
           "solution": "re-index schedule",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: ChromaDB mtime + transaction_log freshness check)"
         }
       ]
     },
@@ -181,7 +181,7 @@
           "root_cause": "index failure",
           "detection": "vector count check",
           "solution": "backup/rebuild",
-          "detected_in_project": "planned"
+          "detected_in_project": "built (production_monitoring_dashboard.py: ChromaDB integrity check \u2014 2 dbs, 332+79452 docs)"
         }
       ]
     },

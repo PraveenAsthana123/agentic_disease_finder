@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-06-23T17:20:11-06:00",
+  "pattern": "Mixture-of-Agents (7 disease agents + orchestrator, MCP protocol)",
+  "n_agents": 7,
+  "decision": {
+    "disease": "autism",
+    "label": "Control",
+    "disease_prob": 0.17
+  },
+  "votes": [
+    {
+      "disease": "autism",
+      "label": "Control",
+      "disease_prob": 0.17
+    },
+    {
+      "disease": "alzheimer",
+      "label": "Control",
+      "disease_prob": 0.0
+    },
+    {
+      "disease": "parkinson",
+      "label": "Control",
+      "disease_prob": 0.0
+    },
+    {
+      "disease": "schizophrenia",
+      "label": "Control",
+      "disease_prob": 0.0
+    },
+    {
+      "disease": "epilepsy",
+      "label": "Control",
+      "disease_prob": 0.0
+    },
+    {
+      "disease": "stress",
+      "label": "Control",
+      "disease_prob": 0.0
+    },
+    {
+      "disease": "depression",
+      "label": "Control",
+      "disease_prob": 0.0
+    }
+  ],
+  "a2a_summary": {
+    "status": "healthy",
+    "issues": [
+      "Low trust level (0.50)"
+    ],
+    "recommendations": [
+      "7 isolated agents - improve connectivity",
+      "Many messages missing required fields - enforce message schema",
+      "No coordinator role - consider designating a coordinator"
+    ]
+  },
+  "mcp_summary": {
+    "status": "healthy",
+    "issues": [],
+    "recommendations": [
+      "7 cycles detected - verify intentional and add termination conditions",
+      "Investigate 1 anomalies in audit trail"
+    ]
+  },
+  "telemetry": {
+    "messages": 14,
+    "audit_entries": 15
+  }
+}
