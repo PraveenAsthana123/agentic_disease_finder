@@ -252,7 +252,8 @@
     {
       "phase": 2,
       "name": "Multimodal (patient video + video-EEG + MRI + neuropsych)",
-      "status": "partial"
+      "status": "built",
+      "dashboard_note": "Phase 2 Multimodal Coverage Dashboard — /phase2-multimodal + nav wired. 6-tab layout (Overview, Coverage Map, Per Patient, Patient Video, Video-EEG, Definitions). 3 API endpoints (/api/phase2-multimodal/overview|breakdown|definitions). KPIs: 40 patients, 26 complete (65%), camera_monitoring_sessions 78 rows/27 patients, eeg_acquisition 30 rows/30 patients, mri_findings 40 rows/40 patients, neuropsych 37 rows/30 patients."
     },
     {
       "phase": 3,

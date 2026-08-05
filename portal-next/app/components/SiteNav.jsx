@@ -89,6 +89,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/therapy">&#x1f9d8; Therapy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/rehab-plans">&#x1f9b4; Rehab Plans</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/multimodal-fusion">&#x1f52c; Multimodal Fusion</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/phase2-multimodal">&#x1f4ca; Phase 2 Multimodal</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-appointments">&#x1f4c5; Appointments</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/surgical-outcomes">&#x1fa7a; Surgical Outcomes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/caregiver-readiness">&#x1f91d; Caregiver Readiness</Link></li>

@@ -10820,6 +10820,27 @@ async def multimodal_fusion_definitions():
     return _json_safe(mfd.definitions())
 
 
+@app.get("/api/phase2-multimodal/overview")
+async def phase2_multimodal_overview():
+    """Phase 2 multimodal coverage — KPIs: patient coverage per modality, co-occurrence summary."""
+    import scripts.phase2_multimodal_dashboard as p2m
+    return _json_safe(p2m.overview())
+
+
+@app.get("/api/phase2-multimodal/breakdown")
+async def phase2_multimodal_breakdown():
+    """Phase 2 multimodal breakdown — per-patient matrix, co-occurrence pairs, video trend, EEG detail."""
+    import scripts.phase2_multimodal_dashboard as p2m
+    return _json_safe(p2m.breakdown())
+
+
+@app.get("/api/phase2-multimodal/definitions")
+async def phase2_multimodal_definitions():
+    """Phase 2 multimodal glossary — modality definitions, phase context, completeness tiers."""
+    import scripts.phase2_multimodal_dashboard as p2m
+    return _json_safe(p2m.definitions())
+
+
 @app.get("/api/pnes-screening/overview")
 async def pnes_screening_overview():
     """PNES Screening overview — classification distribution, semiological scores,
