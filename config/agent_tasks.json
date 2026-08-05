@@ -171,9 +171,9 @@
     {
       "id": "iot_gateway",
       "task": "IoT device gateway (MQTT/BLE) for wearables/embedded sensors",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "MQTT broker + device SDK"
+      "module": "scripts/iot_gateway_dashboard.py + /api/iot-gateway/{overview,breakdown,definitions} + portal-next/app/iot-gateway/page.jsx",
+      "status": "built",
+      "note": "IoT Gateway Dashboard — 6 gateways (Ward A/B/ICU/EMU/Outpatient/Remote Hub), uptime KPIs (avg 93.6%), firmware distribution (4.0.0/3.2.0/3.1.2), device load analysis, alert log, 5-tab frontend (Overview/Gateways/Firmware/Alerts/Definitions), 3 endpoints verified 200"
     },
     {
       "id": "emotiv_wearable",

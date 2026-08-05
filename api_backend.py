@@ -17061,6 +17061,30 @@ async def caregiver_app_definitions():
     return _json_safe(cad.definitions())
 
 
+@app.get("/api/iot-gateway/overview")
+async def iot_gateway_overview():
+    """IoT Gateway overview — 6 gateways, uptime KPIs, firmware distribution,
+    location summary, connected device load, alert counts."""
+    import scripts.iot_gateway_dashboard as igd
+    return _json_safe(igd.overview())
+
+
+@app.get("/api/iot-gateway/breakdown")
+async def iot_gateway_breakdown(gateway_id: str = None):
+    """IoT Gateway breakdown — per-gateway table (uptime, load, alerts),
+    firmware gap analysis, device load by location, recent alert log."""
+    import scripts.iot_gateway_dashboard as igd
+    return _json_safe(igd.breakdown(gateway_id=gateway_id))
+
+
+@app.get("/api/iot-gateway/definitions")
+async def iot_gateway_definitions():
+    """IoT Gateway definitions — glossary, uptime tiers, firmware policy,
+    connectivity modes (MQTT/BLE/offline), data sources, references."""
+    import scripts.iot_gateway_dashboard as igd
+    return _json_safe(igd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
