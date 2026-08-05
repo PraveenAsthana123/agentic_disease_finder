@@ -33,7 +33,8 @@
      "alert": "medication reminders, SOS, risk alerts", "status": "partial"},
     {"id": "caregiver_app", "name": "Caregiver Mobile App", "type": "mobile (online)", "modes": ["online"],
      "data": ["seizure record", "video upload", "med confirmation", "emergency alert"],
-     "online": "receives patient alerts + SOS", "alert": "real-time seizure/SOS push", "status": "planned"},
+     "online": "receives patient alerts + SOS", "alert": "real-time seizure/SOS push", "status": "built",
+     "dashboard": "/caregiver-app", "endpoints": ["/api/caregiver-app/overview", "/api/caregiver-app/breakdown", "/api/caregiver-app/definitions"]},
     {"id": "gateway", "name": "Home Gateway / Hub", "type": "gateway", "modes": ["online", "offline"],
      "data": ["aggregates all device streams"], "online": "forwards to backend",
      "offline": "stores + forwards on reconnect (store-and-forward)", "alert": "local alarm if cloud down", "status": "partial"}
@@ -46,6 +47,6 @@
     "data_loss": "Zero — buffer persists across power cycles; sync is at-least-once + idempotent"
   },
   "alert_pipeline": "device → (edge model OR gateway) → confidence gate → SOS (phone/SMS/caregiver) → audit",
-  "summary": {"devices": 9, "built": 0, "partial": 6, "planned": 3,
+  "summary": {"devices": 9, "built": 1, "partial": 6, "planned": 2,
               "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."}
 }

@@ -17034,6 +17034,33 @@ async def lsss_definitions():
     return _json_safe(ld.definitions())
 
 
+# ── Caregiver App Dashboard ─────────────────────────────────────────────────
+@app.get("/api/caregiver-app/overview")
+async def caregiver_app_overview():
+    """Caregiver App overview — 30 caregivers, burnout/stress KPIs, training
+    completion rates, SOS response metrics (41 events, avg 301 s), role and
+    availability distributions, monthly SOS trend."""
+    import scripts.caregiver_app_dashboard as cad
+    return _json_safe(cad.overview())
+
+
+@app.get("/api/caregiver-app/breakdown")
+async def caregiver_app_breakdown(patient_id: str = None):
+    """Caregiver App breakdown — per-caregiver table (burnout tier, training
+    status, stress), SOS alert log, emergency contacts, high-burnout list,
+    training gap analysis."""
+    import scripts.caregiver_app_dashboard as cad
+    return _json_safe(cad.breakdown(patient_id=patient_id))
+
+
+@app.get("/api/caregiver-app/definitions")
+async def caregiver_app_definitions():
+    """Caregiver App definitions — app features, alert types, SOS outcomes,
+    burnout scale thresholds, stress scale, data sources, clinical references."""
+    import scripts.caregiver_app_dashboard as cad
+    return _json_safe(cad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
