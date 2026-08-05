@@ -17179,6 +17179,28 @@ async def emotiv_flex_definitions():
     return _json_safe(efd.definitions())
 
 
+# ── Smartwatch (Apple Watch / Wear OS) Dashboard ────────────────────────────────
+@app.get("/api/smartwatch/overview")
+async def smartwatch_overview():
+    """Smartwatch fleet overview — KPIs, HR/HRV trends, SpO2 distribution, sleep staging."""
+    import scripts.smartwatch_dashboard as swd
+    return _json_safe(swd.overview())
+
+
+@app.get("/api/smartwatch/breakdown")
+async def smartwatch_breakdown():
+    """Smartwatch per-device inventory — vitals, sync status, seizure-signal alert events."""
+    import scripts.smartwatch_dashboard as swd
+    return _json_safe(swd.breakdown())
+
+
+@app.get("/api/smartwatch/definitions")
+async def smartwatch_definitions():
+    """Smartwatch definitions — device specs, metric glossary, alert types, epilepsy context."""
+    import scripts.smartwatch_dashboard as swd
+    return _json_safe(swd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -93,6 +93,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-fleet">&#x1f6f0;&#xfe0f; IoT Fleet</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-gateway">&#x1f4f6; IoT Gateway</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/wearable-devices">&#x231a; Wearable Devices</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/smartwatch">&#x231a; Smartwatch</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/device-telemetry">&#x1f4f6; Device Telemetry</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/therapy">&#x1f9d8; Therapy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/rehab-plans">&#x1f9b4; Rehab Plans</Link></li>

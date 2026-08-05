@@ -1,7 +1,7 @@
 {
   "title": "Emotiv + IoT + Mobile \u2014 Device Fleet & Online/Offline Handling",
   "note": "Device connectivity model. online=live stream; offline=buffer+sync. status: built/partial/planned.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-08-05",
   "connectivity_model": {
     "online": "Device streams live \u2192 gateway \u2192 backend (real-time inference + alerts). Lowest latency, needs connection.",
     "offline": "Device buffers locally (ring buffer + local store) \u2192 syncs on reconnect. No data loss; delayed inference.",
@@ -82,7 +82,7 @@
       "online": "phone app \u2192 cloud sync",
       "offline": "watch buffers \u2192 sync when phone connects",
       "alert": "HR spike \u2192 possible seizure signal",
-      "status": "partial"
+      "status": "built"
     },
     {
       "id": "ecg_patch",
