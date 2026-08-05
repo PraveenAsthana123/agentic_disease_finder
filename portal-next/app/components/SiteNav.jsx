@@ -43,6 +43,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/mcp-security">MCP Security</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/sec-ops">&#x1f512; SecOps</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/shadow-ai">&#x1f575;&#xfe0f; Shadow AI</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/feature-flags">&#x1f6a9; Feature Flags</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/change-management">&#x1f504; Change Mgmt</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/model-retirement">&#x1f4e6; Model Retire</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-finops">&#x1f4b8; AI FinOps</Link></li>
