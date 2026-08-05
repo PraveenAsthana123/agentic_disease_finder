@@ -128,6 +128,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/openclaw">&#x1f9be; OpenClaw Agents</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/sleep-staging">&#x1f4a4; Sleep Staging</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/icd10-coding">&#x1f3f7;&#xfe0f; ICD-10 Coding</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/channel-quality">&#x1f4f6; Channel Quality</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

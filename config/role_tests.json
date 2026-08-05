@@ -62,7 +62,8 @@
         {
           "dim": "Process",
           "case": "artifact segments flagged",
-          "status": "partial"
+          "status": "built",
+          "note": "Channel Quality Dashboard \u2014 /channel-quality page + 3 endpoints verified 200"
         },
         {
           "dim": "Manual",
