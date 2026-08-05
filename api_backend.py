@@ -15595,14 +15595,6 @@ async def seizure_prediction_definitions():
     return _json_safe(spd.definitions())
 
 
-if __name__ == "__main__":
-    import os
-    import uvicorn
-    # Default 8010 to avoid colliding with other local projects on :8000.
-    port = int(os.environ.get("PORT", "8010"))
-    uvicorn.run(app, host="0.0.0.0", port=port)
-
-
 # ── Patient Onboarding Wizard ──────────────────────────────────────────────
 # Step-by-step 3-stage wizard: Demographics → Medications+Emergency → Documents
 # Saves to patient_demographics, medications, emergency_contacts, clinical_history.
@@ -15781,3 +15773,181 @@ async def patient_wizard_status(patient_id: str):
         "pct": round(completed / 3 * 100),
         "intake_ready": completed >= 2,
     }
+
+
+# ── Montage Editor endpoints ──────────────────────────────────────────
+
+@app.get("/api/montage-editor/presets")
+async def montage_editor_presets():
+    """Return standard EEG montage presets (bipolar, referential, average, laplacian)."""
+    def _ch(label, anode, cathode):
+        return {"label": label, "anode": anode, "cathode": cathode}
+
+    bipolar_longitudinal = {
+        "name": "Bipolar Longitudinal (Double Banana)",
+        "type": "bipolar",
+        "description": "Standard longitudinal bipolar montage used in routine clinical EEG",
+        "channels": [
+            _ch("Fp1-F3", "Fp1", "F3"), _ch("F3-C3", "F3", "C3"),
+            _ch("C3-P3", "C3", "P3"), _ch("P3-O1", "P3", "O1"),
+            _ch("Fp2-F4", "Fp2", "F4"), _ch("F4-C4", "F4", "C4"),
+            _ch("C4-P4", "C4", "P4"), _ch("P4-O2", "P4", "O2"),
+            _ch("Fp1-F7", "Fp1", "F7"), _ch("F7-T3", "F7", "T3"),
+            _ch("T3-T5", "T3", "T5"), _ch("T5-O1", "T5", "O1"),
+            _ch("Fp2-F8", "Fp2", "F8"), _ch("F8-T4", "F8", "T4"),
+            _ch("T4-T6", "T4", "T6"), _ch("T6-O2", "T6", "O2"),
+        ],
+    }
+
+    bipolar_transverse = {
+        "name": "Bipolar Transverse",
+        "type": "bipolar",
+        "description": "Transverse bipolar montage for lateralizing asymmetries",
+        "channels": [
+            _ch("F7-Fp1", "F7", "Fp1"), _ch("Fp1-Fp2", "Fp1", "Fp2"),
+            _ch("Fp2-F8", "Fp2", "F8"), _ch("T3-C3", "T3", "C3"),
+            _ch("C3-Cz", "C3", "Cz"), _ch("Cz-C4", "Cz", "C4"),
+            _ch("C4-T4", "C4", "T4"), _ch("T5-P3", "T5", "P3"),
+            _ch("P3-Pz", "P3", "Pz"), _ch("Pz-P4", "Pz", "P4"),
+            _ch("P4-T6", "P4", "T6"),
+        ],
+    }
+
+    _all = ["Fp1", "Fp2", "F3", "F4", "C3", "C4", "P3", "P4",
+            "O1", "O2", "F7", "F8", "T3", "T4", "T5", "T6", "Fz", "Cz", "Pz"]
+
+    referential_cz = {
+        "name": "Referential (Cz Reference)",
+        "type": "referential",
+        "description": "All standard 10-20 electrodes referenced to Cz vertex",
+        "channels": [_ch(f"{e}-Cz", e, "Cz") for e in _all if e != "Cz"],
+    }
+
+    average_ref = {
+        "name": "Average Reference",
+        "type": "average",
+        "description": "All channels referenced to the common average of all electrodes",
+        "channels": [_ch(f"{e}-AVG", e, "AVG") for e in _all],
+    }
+
+    laplacian = {
+        "name": "Laplacian (Surface)",
+        "type": "laplacian",
+        "description": "Nearest-neighbor Laplacian derivations for improved spatial resolution",
+        "channels": [
+            _ch("C3-Lap", "C3", "LAP"), _ch("C4-Lap", "C4", "LAP"),
+            _ch("Cz-Lap", "Cz", "LAP"), _ch("F3-Lap", "F3", "LAP"),
+            _ch("F4-Lap", "F4", "LAP"), _ch("P3-Lap", "P3", "LAP"),
+            _ch("P4-Lap", "P4", "LAP"), _ch("Fz-Lap", "Fz", "LAP"),
+            _ch("Pz-Lap", "Pz", "LAP"), _ch("O1-Lap", "O1", "LAP"),
+            _ch("O2-Lap", "O2", "LAP"),
+        ],
+    }
+
+    return {
+        "presets": [
+            bipolar_longitudinal, bipolar_transverse,
+            referential_cz, average_ref, laplacian,
+        ]
+    }
+
+
+@app.get("/api/montage-editor/montages")
+async def montage_editor_list():
+    """Return saved custom montages from the custom_montages table."""
+    import sqlite3 as _sq
+    import json as _json
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS custom_montages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                type TEXT NOT NULL DEFAULT 'custom',
+                description TEXT DEFAULT '',
+                channels TEXT DEFAULT '[]',
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+        rows = conn.execute(
+            "SELECT id, name, type, description, channels, created_at, updated_at FROM custom_montages ORDER BY id DESC"
+        ).fetchall()
+
+    montages = []
+    for r in rows:
+        try:
+            channels = _json.loads(r[4]) if r[4] else []
+        except Exception:
+            channels = []
+        montages.append({
+            "id": r[0], "name": r[1], "type": r[2],
+            "description": r[3], "channels": channels,
+            "created_at": r[5], "updated_at": r[6],
+        })
+    return {"montages": montages}
+
+
+@app.post("/api/montage-editor/montages")
+async def montage_editor_save(payload: dict):
+    """Save a custom montage. Body: { name, type, description, channels: [{label, anode, cathode}] }"""
+    import sqlite3 as _sq
+    import json as _json
+    from datetime import datetime as _dt
+
+    name = str(payload.get("name", "")).strip()
+    mtype = str(payload.get("type", "custom")).strip()
+    desc = str(payload.get("description", "")).strip()
+    channels = payload.get("channels", [])
+
+    if not name:
+        return {"ok": False, "error": "name is required"}
+
+    now = _dt.utcnow().isoformat()
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS custom_montages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                type TEXT NOT NULL DEFAULT 'custom',
+                description TEXT DEFAULT '',
+                channels TEXT DEFAULT '[]',
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+        cur = conn.execute(
+            "INSERT INTO custom_montages (name, type, description, channels, created_at, updated_at) VALUES (?,?,?,?,?,?)",
+            (name, mtype, desc, _json.dumps(channels), now, now),
+        )
+        mid = cur.lastrowid
+
+    return {
+        "ok": True,
+        "montage": {
+            "id": mid, "name": name, "type": mtype,
+            "description": desc, "channels": channels,
+            "created_at": now, "updated_at": now,
+        },
+    }
+
+
+@app.delete("/api/montage-editor/montages/{montage_id}")
+async def montage_editor_delete(montage_id: int):
+    """Delete a custom montage by id."""
+    import sqlite3 as _sq
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("DELETE FROM custom_montages WHERE id=?", (montage_id,))
+    return {"ok": True, "deleted": montage_id}
+
+
+if __name__ == "__main__":
+    import os
+    import uvicorn
+    # Default 8010 to avoid colliding with other local projects on :8000.
+    port = int(os.environ.get("PORT", "8010"))
+    uvicorn.run(app, host="0.0.0.0", port=port)

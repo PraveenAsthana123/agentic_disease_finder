@@ -29,12 +29,12 @@
         "acquisition QC",
         "channel quality",
         "artifact flags",
-        "daily worklog (partial)"
+        "daily worklog (partial)",
+        "montage editor"
       ],
       "missing": [
         "live amplifier streaming (Natus/Nihon Kohden/Compumedics)",
         "real-time impedance display",
-        "montage editor",
         "HV/photic-stimulation protocols",
         "scheduling worklist"
       ]
