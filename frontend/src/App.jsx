@@ -126,6 +126,7 @@ import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
 import PatientOnboardingWizard from './components/PatientOnboardingWizard'
 import MontageEditorDashboard from './components/MontageEditorDashboard'
+import ClinicalJudgmentDashboard from './components/ClinicalJudgmentDashboard'
 import NeuroAiEcosystemDashboard from './components/NeuroAiEcosystemDashboard'
 import EegAiStackDashboard from './components/EegAiStackDashboard'
 import RoleSpecsDashboard from './components/RoleSpecsDashboard'
@@ -804,6 +805,7 @@ function App() {
     { id: 'onboarding-intake', label: 'Onboarding Intake' },
     { id: 'patient-wizard', label: 'Patient Onboarding Wizard' },
     { id: 'montage-editor', label: 'Montage Editor' },
+    { id: 'clinical-judgment', label: 'Clinical Judgment' },
     { id: 'neuro-ai-ecosystem', label: 'Neuro AI Ecosystem' },
     { id: 'eeg-ai-stack', label: 'EEG AI Stack' },
     { id: 'role-specs', label: 'Role Specs' },
@@ -2304,6 +2306,8 @@ function App() {
         return <PatientOnboardingWizard />
       case 'montage-editor':
         return <MontageEditorDashboard />
+      case 'clinical-judgment':
+        return <ClinicalJudgmentDashboard />
       case 'neuro-ai-ecosystem':
         return <NeuroAiEcosystemDashboard />
       case 'eeg-ai-stack':

@@ -93,7 +93,8 @@
         {
           "dim": "Manual",
           "case": "clinical judgment recorded",
-          "status": "partial"
+          "status": "pass",
+          "maps_to": "POST /api/clinical-judgment/entries + ClinicalJudgmentDashboard Record Judgment tab"
         }
       ]
     },

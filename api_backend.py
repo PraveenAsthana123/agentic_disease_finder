@@ -15945,6 +15945,163 @@ async def montage_editor_delete(montage_id: int):
     return {"ok": True, "deleted": montage_id}
 
 
+# ── Clinical Judgment Recording ─────────────────────────────────────────
+@app.get("/api/clinical-judgment/entries")
+async def clinical_judgment_list():
+    """List all clinical judgment entries, newest first."""
+    import sqlite3 as _sq
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS clinical_judgments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL,
+                clinician TEXT NOT NULL DEFAULT '',
+                judgment_type TEXT NOT NULL DEFAULT 'general',
+                summary TEXT NOT NULL DEFAULT '',
+                details TEXT DEFAULT '',
+                confidence TEXT DEFAULT 'moderate',
+                action_taken TEXT DEFAULT '',
+                follow_up TEXT DEFAULT '',
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+        rows = conn.execute(
+            "SELECT id, patient_id, clinician, judgment_type, summary, details, "
+            "confidence, action_taken, follow_up, created_at, updated_at "
+            "FROM clinical_judgments ORDER BY id DESC"
+        ).fetchall()
+
+    entries = []
+    for r in rows:
+        entries.append({
+            "id": r[0], "patient_id": r[1], "clinician": r[2],
+            "judgment_type": r[3], "summary": r[4], "details": r[5],
+            "confidence": r[6], "action_taken": r[7], "follow_up": r[8],
+            "created_at": r[9], "updated_at": r[10],
+        })
+    return {"entries": entries, "total": len(entries)}
+
+
+@app.post("/api/clinical-judgment/entries")
+async def clinical_judgment_create(payload: dict):
+    """Record a new clinical judgment. Body: { patient_id, clinician, judgment_type, summary, details, confidence, action_taken, follow_up }"""
+    import sqlite3 as _sq
+    from datetime import datetime as _dt
+
+    patient_id = str(payload.get("patient_id", "")).strip()
+    clinician = str(payload.get("clinician", "")).strip()
+    judgment_type = str(payload.get("judgment_type", "general")).strip()
+    summary = str(payload.get("summary", "")).strip()
+    details = str(payload.get("details", "")).strip()
+    confidence = str(payload.get("confidence", "moderate")).strip()
+    action_taken = str(payload.get("action_taken", "")).strip()
+    follow_up = str(payload.get("follow_up", "")).strip()
+
+    if not patient_id:
+        return {"ok": False, "error": "patient_id is required"}
+    if not summary:
+        return {"ok": False, "error": "summary is required"}
+
+    now = _dt.utcnow().isoformat()
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS clinical_judgments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL,
+                clinician TEXT NOT NULL DEFAULT '',
+                judgment_type TEXT NOT NULL DEFAULT 'general',
+                summary TEXT NOT NULL DEFAULT '',
+                details TEXT DEFAULT '',
+                confidence TEXT DEFAULT 'moderate',
+                action_taken TEXT DEFAULT '',
+                follow_up TEXT DEFAULT '',
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+        cur = conn.execute(
+            "INSERT INTO clinical_judgments (patient_id, clinician, judgment_type, summary, details, confidence, action_taken, follow_up, created_at, updated_at) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?)",
+            (patient_id, clinician, judgment_type, summary, details, confidence, action_taken, follow_up, now, now),
+        )
+        jid = cur.lastrowid
+
+    return {
+        "ok": True,
+        "entry": {
+            "id": jid, "patient_id": patient_id, "clinician": clinician,
+            "judgment_type": judgment_type, "summary": summary, "details": details,
+            "confidence": confidence, "action_taken": action_taken,
+            "follow_up": follow_up, "created_at": now, "updated_at": now,
+        },
+    }
+
+
+@app.get("/api/clinical-judgment/summary")
+async def clinical_judgment_summary():
+    """Aggregate summary — counts by type, confidence, clinician, recent activity."""
+    import sqlite3 as _sq
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS clinical_judgments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                patient_id TEXT NOT NULL,
+                clinician TEXT NOT NULL DEFAULT '',
+                judgment_type TEXT NOT NULL DEFAULT 'general',
+                summary TEXT NOT NULL DEFAULT '',
+                details TEXT DEFAULT '',
+                confidence TEXT DEFAULT 'moderate',
+                action_taken TEXT DEFAULT '',
+                follow_up TEXT DEFAULT '',
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+        total = conn.execute("SELECT COUNT(*) FROM clinical_judgments").fetchone()[0]
+        by_type = conn.execute(
+            "SELECT judgment_type, COUNT(*) FROM clinical_judgments GROUP BY judgment_type ORDER BY COUNT(*) DESC"
+        ).fetchall()
+        by_confidence = conn.execute(
+            "SELECT confidence, COUNT(*) FROM clinical_judgments GROUP BY confidence ORDER BY COUNT(*) DESC"
+        ).fetchall()
+        by_clinician = conn.execute(
+            "SELECT clinician, COUNT(*) FROM clinical_judgments GROUP BY clinician ORDER BY COUNT(*) DESC"
+        ).fetchall()
+        recent = conn.execute(
+            "SELECT id, patient_id, clinician, judgment_type, summary, confidence, created_at "
+            "FROM clinical_judgments ORDER BY id DESC LIMIT 5"
+        ).fetchall()
+
+    return {
+        "total": total,
+        "by_type": [{"type": r[0], "count": r[1]} for r in by_type],
+        "by_confidence": [{"confidence": r[0], "count": r[1]} for r in by_confidence],
+        "by_clinician": [{"clinician": r[0] or "Unknown", "count": r[1]} for r in by_clinician],
+        "recent": [
+            {"id": r[0], "patient_id": r[1], "clinician": r[2], "judgment_type": r[3],
+             "summary": r[4], "confidence": r[5], "created_at": r[6]}
+            for r in recent
+        ],
+    }
+
+
+@app.delete("/api/clinical-judgment/entries/{entry_id}")
+async def clinical_judgment_delete(entry_id: int):
+    """Delete a clinical judgment entry by id."""
+    import sqlite3 as _sq
+
+    db = Path(__file__).parent / "data" / "clinical.db"
+    with _sq.connect(str(db)) as conn:
+        conn.execute("DELETE FROM clinical_judgments WHERE id=?", (entry_id,))
+    return {"ok": True, "deleted": entry_id}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
