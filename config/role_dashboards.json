@@ -1,7 +1,7 @@
 {
   "title": "Per-Role Dashboards & Reports (clinical departments)",
   "note": "Each role: KPI dashboard tiles + standard report list (with cadence + format). status: built (data exists) / partial / planned.",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-08-04",
   "dashboard_component": "RoleDashboardsDashboard",
   "api_endpoints": [
     "/api/role-dashboards/overview",
@@ -206,7 +206,9 @@
           "format": "CSV",
           "status": "built"
         }
-      ]
+      ],
+      "status": "built",
+      "note": "Frontend page portal-next/app/eeg-technician/page.jsx + SiteNav wired; 3 API endpoints (/api/eeg-technician/{overview,breakdown,definitions}) verified 200"
     },
     {
       "role": "Clinical Psychologist",
