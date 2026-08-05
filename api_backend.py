@@ -16432,6 +16432,124 @@ async def traces_definitions():
     }
 
 
+# =============================================================================
+# MODEL REGISTRY ENDPOINTS  (/api/model-registry/overview|breakdown|definitions)
+# =============================================================================
+
+def _scan_model_artifacts():
+    """Scan saved_models/ and models/ directories and parse artifact metadata."""
+    import re, glob as _glob
+    from datetime import datetime
+
+    DISEASES = {"alzheimer", "autism", "depression", "epilepsy", "parkinson", "schizophrenia", "stress"}
+    DATE_RE = re.compile(r"^\d{8}$")
+    TIME_RE = re.compile(r"^\d{6}$")
+    ACC_RE  = re.compile(r"^\d{2}$")
+
+    def _parse(fname):
+        stem = fname.rsplit(".", 1)[0]
+        parts = stem.split("_")
+        disease = parts[0] if parts and parts[0] in DISEASES else "other"
+        rest = parts[1:] if disease != "other" else parts
+        # strip trailing accuracy → date → time from right
+        acc = None
+        if rest and ACC_RE.match(rest[-1]):
+            acc = int(rest[-1])
+            rest = rest[:-1]
+        if rest and TIME_RE.match(rest[-1]):
+            rest = rest[:-1]
+        date_str = None
+        if rest and DATE_RE.match(rest[-1]):
+            date_str = rest[-1]
+            rest = rest[:-1]
+        # strip "real" filler
+        rest = [p for p in rest if p != "real"]
+        algo = "_".join(rest) if rest else "unknown"
+        return disease, algo, date_str, acc
+
+    artifacts = []
+    base = Path(__file__).parent
+    for folder in ["saved_models", "models"]:
+        d = base / folder
+        if not d.exists():
+            continue
+        for f in sorted(d.iterdir()):
+            if f.suffix in (".joblib", ".pkl", ".pt"):
+                disease, algo, date_str, acc = _parse(f.name)
+                stat = f.stat()
+                artifacts.append({
+                    "filename": f.name,
+                    "folder": folder,
+                    "disease": disease,
+                    "algo": algo,
+                    "date": date_str or "",
+                    "accuracy_pct": acc,
+                    "size_kb": round(stat.st_size / 1024, 1),
+                    "mtime": datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d"),
+                })
+    return artifacts
+
+
+@app.get("/api/model-registry/overview")
+async def model_registry_overview():
+    """Model Registry KPIs: total artifacts, disease/algo breakdown, size stats."""
+    from collections import Counter
+    arts = _scan_model_artifacts()
+    if not arts:
+        return {"kpis": {}, "by_disease": [], "by_algo": [], "by_folder": []}
+
+    disease_counts = Counter(a["disease"] for a in arts)
+    algo_counts    = Counter(a["algo"] for a in arts)
+    folder_counts  = Counter(a["folder"] for a in arts)
+    accs = [a["accuracy_pct"] for a in arts if a["accuracy_pct"] is not None]
+    total_kb = sum(a["size_kb"] for a in arts)
+
+    return _json_safe({
+        "kpis": {
+            "total_artifacts": len(arts),
+            "diseases": len(disease_counts),
+            "algorithms": len(algo_counts),
+            "avg_accuracy_pct": round(sum(accs) / len(accs), 1) if accs else None,
+            "total_size_mb": round(total_kb / 1024, 1),
+        },
+        "by_disease": [{"disease": k, "count": v} for k, v in disease_counts.most_common()],
+        "by_algo":    [{"algo": k, "count": v} for k, v in algo_counts.most_common(12)],
+        "by_folder":  [{"folder": k, "count": v} for k, v in folder_counts.items()],
+    })
+
+
+@app.get("/api/model-registry/breakdown")
+async def model_registry_breakdown():
+    """Full artifact table: filename, disease, algo, date, accuracy, size."""
+    arts = _scan_model_artifacts()
+    return _json_safe({"artifacts": arts, "total": len(arts)})
+
+
+@app.get("/api/model-registry/definitions")
+async def model_registry_definitions():
+    """Model Registry glossary: artifact types, naming convention, storage layout."""
+    return {
+        "title": "Model Registry — Definitions",
+        "artifact_types": [
+            {"name": "Standard trained",  "pattern": "{disease}_{algo}_{date}_{time}_{acc}.joblib", "example": "epilepsy_RandomForest_20260125_160626_58.joblib"},
+            {"name": "Stacking ensemble", "pattern": "{disease}_Stacking_real_{date}_{time}.joblib",  "example": "parkinson_Stacking_real_20260126_190811.joblib"},
+            {"name": "Deep / special",    "pattern": "{disease}_{tag}_model.joblib",                  "example": "alzheimer_deep_model.joblib"},
+            {"name": "Ultra-stacking",    "pattern": "{disease}_ultra_stacking_{date}_{time}.joblib", "example": "alzheimer_ultra_stacking_20260125_164642.joblib"},
+        ],
+        "diseases": ["alzheimer", "autism", "depression", "epilepsy", "parkinson", "schizophrenia", "stress"],
+        "algorithms": ["RandomForest", "GradientBoosting", "ExtraTrees", "AdaBoost", "Bagging",
+                       "SVM", "KNN", "LogisticRegression", "NaiveBayes", "MLP", "DecisionTree",
+                       "Stacking", "deep_model", "robust_model", "ultra_stacking"],
+        "accuracy_encoding": "Two-digit suffix in filename = training accuracy percentage (e.g., _58 = 58%).",
+        "folders": {
+            "saved_models": "All versioned training runs (~199 files) — date-stamped artifacts from automated pipeline.",
+            "models":       "Production-deployed artifacts (~7 files) — one per disease, used by /api/classify.",
+        },
+        "lifecycle": ["train", "evaluate", "promote to models/", "serve via /api/classify", "monitor drift", "retrain"],
+        "dashboard": "/models",
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
