@@ -214,9 +214,9 @@
     {
       "id": "phone_alerts_sos",
       "task": "Phone alerts / SOS / body-temperature notifications",
-      "module": "(planned)",
-      "status": "planned",
-      "needs": "push (FCM/Twilio) + on-call escalation"
+      "module": "scripts/emergency_sos_dashboard.py + portal-next/app/emergency-sos/page.jsx",
+      "status": "built",
+      "needs": "push (FCM/Twilio) + on-call escalation (future: live push; current: monitoring dashboard built)"
     },
     {
       "id": "voice_ai",
