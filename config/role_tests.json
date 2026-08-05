@@ -68,7 +68,8 @@
         {
           "dim": "Manual",
           "case": "re-record bad channels flow",
-          "status": "partial"
+          "status": "built",
+          "note": "Re-record tab on /channel-quality — candidate flagging + POST /api/channel-quality/rerecord-request + GET /api/channel-quality/rerecord-requests"
         }
       ]
     },

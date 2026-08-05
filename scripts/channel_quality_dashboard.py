@@ -327,3 +327,130 @@ def definitions():
             "Matched impedances across channels (<1 kohm difference between pairs) are as important as absolute values — mismatched impedances amplify common-mode noise rejection failure.",
         ],
     }
+
+
+# ── Re-record Request Flow ────────────────────────────────────────────────────
+
+_CREATE_RERECORD_TABLE = """
+CREATE TABLE IF NOT EXISTS channel_rerecord_requests (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    patient_id  TEXT    NOT NULL,
+    channels    TEXT    NOT NULL,
+    reason      TEXT    NOT NULL,
+    priority    TEXT    NOT NULL DEFAULT 'routine',
+    notes       TEXT    DEFAULT '',
+    requested_by TEXT   DEFAULT 'EEG Technician',
+    status      TEXT    NOT NULL DEFAULT 'pending',
+    created_at  TEXT    NOT NULL,
+    updated_at  TEXT    NOT NULL
+)
+"""
+
+
+def _ensure_rerecord_table(conn):
+    conn.execute(_CREATE_RERECORD_TABLE)
+    conn.commit()
+
+
+def rerecord_requests():
+    """Return all re-record requests plus a list of patients with Poor grade
+    who have no pending re-record request yet (candidates for flagging)."""
+    import datetime
+    conn = _conn()
+    _ensure_rerecord_table(conn)
+
+    # All existing requests
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, patient_id, channels, reason, priority, notes, requested_by, status, created_at, updated_at "
+        "FROM channel_rerecord_requests ORDER BY created_at DESC"
+    )
+    requests = []
+    for row in cur.fetchall():
+        requests.append({
+            "id": row[0],
+            "patient_id": row[1],
+            "channels": json.loads(row[2]) if row[2] else [],
+            "reason": row[3],
+            "priority": row[4],
+            "notes": row[5],
+            "requested_by": row[6],
+            "status": row[7],
+            "created_at": row[8],
+            "updated_at": row[9],
+        })
+
+    # Identify patients with Poor overall grade not yet in a pending request
+    all_data = _load_all_channels(conn)
+    conn.close()
+
+    pending_patient_ids = {r["patient_id"] for r in requests if r["status"] == "pending"}
+
+    candidates = []
+    for patient_id, created_at, channels in all_data:
+        if not channels:
+            continue
+        poor_chs = [ch["channel"] for ch in channels if ch.get("impedance_grade") == "Poor"]
+        total = len(channels)
+        if total > 0 and len(poor_chs) / total > 0.3 and patient_id not in pending_patient_ids:
+            candidates.append({
+                "patient_id": patient_id,
+                "poor_channels": poor_chs,
+                "poor_count": len(poor_chs),
+                "total_channels": total,
+                "pct_poor": round(100.0 * len(poor_chs) / total, 1),
+                "recorded_at": created_at,
+            })
+
+    # Summary counts
+    status_counts = {}
+    for r in requests:
+        status_counts[r["status"]] = status_counts.get(r["status"], 0) + 1
+
+    return {
+        "requests": requests,
+        "candidates": candidates,
+        "summary": {
+            "total_requests": len(requests),
+            "pending": status_counts.get("pending", 0),
+            "scheduled": status_counts.get("scheduled", 0),
+            "completed": status_counts.get("completed", 0),
+            "candidates_awaiting_flag": len(candidates),
+        },
+    }
+
+
+def submit_rerecord_request(patient_id: str, channels: list, reason: str,
+                             priority: str = "routine", notes: str = "",
+                             requested_by: str = "EEG Technician"):
+    """Insert a new re-record request. Returns the created record."""
+    import datetime
+    if not patient_id or not channels or not reason:
+        raise ValueError("patient_id, channels, and reason are required")
+    if priority not in ("urgent", "routine"):
+        priority = "routine"
+    now = datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    conn = _conn()
+    _ensure_rerecord_table(conn)
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO channel_rerecord_requests "
+        "(patient_id, channels, reason, priority, notes, requested_by, status, created_at, updated_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, ?)",
+        (patient_id, json.dumps(channels), reason, priority, notes, requested_by, now, now),
+    )
+    conn.commit()
+    row_id = cur.lastrowid
+    conn.close()
+    return {
+        "id": row_id,
+        "patient_id": patient_id,
+        "channels": channels,
+        "reason": reason,
+        "priority": priority,
+        "notes": notes,
+        "requested_by": requested_by,
+        "status": "pending",
+        "created_at": now,
+        "updated_at": now,
+    }

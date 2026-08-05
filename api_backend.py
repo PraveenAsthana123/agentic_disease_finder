@@ -12703,6 +12703,38 @@ async def channel_quality_definitions():
     return _json_safe(cqd.definitions())
 
 
+@app.get("/api/channel-quality/rerecord-requests")
+async def channel_quality_rerecord_requests():
+    """Re-record request queue — pending/scheduled/completed re-acquisition
+    requests for Poor-grade channels, plus unacknowledged candidate patients."""
+    import scripts.channel_quality_dashboard as cqd
+    return _json_safe(cqd.rerecord_requests())
+
+
+class _RerecordRequestBody(BaseModel):
+    patient_id: str
+    channels: list
+    reason: str
+    priority: str = "routine"
+    notes: str = ""
+    requested_by: str = "EEG Technician"
+
+
+@app.post("/api/channel-quality/rerecord-request")
+async def channel_quality_submit_rerecord(body: _RerecordRequestBody):
+    """Submit a re-record request for one or more Poor-grade EEG channels."""
+    import scripts.channel_quality_dashboard as cqd
+    result = cqd.submit_rerecord_request(
+        patient_id=body.patient_id,
+        channels=body.channels,
+        reason=body.reason,
+        priority=body.priority,
+        notes=body.notes,
+        requested_by=body.requested_by,
+    )
+    return _json_safe(result)
+
+
 # Real data: telehealth_sessions (109 rows, 30 patients, 6 providers) —
 # session types, connection quality, satisfaction, platform usage, tech issues.
 

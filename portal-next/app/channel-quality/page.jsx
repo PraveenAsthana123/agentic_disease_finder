@@ -8,6 +8,7 @@ const TABS = [
   { id: 'channels',    label: 'Per Channel' },
   { id: 'patients',    label: 'Per Patient' },
   { id: 'definitions', label: 'Definitions' },
+  { id: 'rerecord',    label: 'Re-record' },
 ];
 
 const GRADE_COLOR = { Good: '#22c55e', Fair: '#f59e0b', Poor: '#ef4444' };
@@ -399,19 +400,277 @@ function DefinitionsPanel({ def }) {
   );
 }
 
+const PRIORITY_COLOR = { urgent: 'danger', routine: 'secondary' };
+const STATUS_COLOR   = { pending: 'warning', scheduled: 'info', completed: 'success' };
+
+const CHANNELS_10_20 = [
+  'Fp1','Fp2','F3','F4','C3','C4','P3','P4',
+  'O1','O2','F7','F8','T3','T4','T5','T6','Fz','Cz','Pz',
+];
+
+function RerecordPanel({ rr, onRefresh }) {
+  const [form, setForm] = useState({
+    patient_id: '', channels: [], reason: '', priority: 'routine',
+    notes: '', requested_by: 'EEG Technician',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMsg,  setSubmitMsg]  = useState(null);
+
+  if (!rr) return <div className="text-muted p-3">Loading…</div>;
+
+  const { requests = [], candidates = [], summary = {} } = rr;
+
+  const toggleChannel = ch => {
+    setForm(f => ({
+      ...f,
+      channels: f.channels.includes(ch)
+        ? f.channels.filter(c => c !== ch)
+        : [...f.channels, ch],
+    }));
+  };
+
+  const prefillCandidate = c => {
+    setForm(f => ({
+      ...f,
+      patient_id: c.patient_id,
+      channels: c.poor_channels,
+    }));
+    document.getElementById('rerecord-form-top')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const submit = async () => {
+    if (!form.patient_id || form.channels.length === 0 || !form.reason) {
+      setSubmitMsg({ type: 'danger', text: 'Patient ID, at least one channel, and a reason are required.' });
+      return;
+    }
+    setSubmitting(true);
+    setSubmitMsg(null);
+    try {
+      const res = await fetch(`${API}/api/channel-quality/rerecord-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || 'Request failed');
+      setSubmitMsg({ type: 'success', text: `Re-record request #${data.id} submitted for patient ${data.patient_id}.` });
+      setForm({ patient_id: '', channels: [], reason: '', priority: 'routine', notes: '', requested_by: 'EEG Technician' });
+      onRefresh();
+    } catch (e) {
+      setSubmitMsg({ type: 'danger', text: e.message });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div>
+      {/* Summary KPIs */}
+      <div className="row mb-4">
+        {[
+          { label: 'Total Requests',    value: summary.total_requests,            color: 'primary' },
+          { label: 'Pending',           value: summary.pending,                   color: 'warning' },
+          { label: 'Scheduled',         value: summary.scheduled,                 color: 'info'    },
+          { label: 'Candidates to Flag',value: summary.candidates_awaiting_flag,  color: 'danger'  },
+        ].map(k => <KPI key={k.label} label={k.label} value={k.value ?? 0} color={k.color} />)}
+      </div>
+
+      {/* Candidates needing a request */}
+      {candidates.length > 0 && (
+        <div className="card shadow-sm mb-4 border-danger">
+          <div className="card-header fw-semibold text-danger">
+            Patients with &gt;30% Poor Channels — No Pending Request
+          </div>
+          <div className="card-body p-0">
+            <table className="table table-sm mb-0 align-middle">
+              <thead className="table-light">
+                <tr>
+                  <th className="small">Patient</th>
+                  <th className="small">Poor Channels</th>
+                  <th className="small">% Poor</th>
+                  <th className="small">Recorded</th>
+                  <th className="small">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {candidates.map(c => (
+                  <tr key={c.patient_id}>
+                    <td><span className="badge bg-secondary">{c.patient_id}</span></td>
+                    <td className="small">{c.poor_channels.join(', ')}</td>
+                    <td><span className="badge bg-danger">{c.pct_poor}%</span></td>
+                    <td className="text-muted small">{c.recorded_at ? c.recorded_at.slice(0, 10) : '—'}</td>
+                    <td>
+                      <button className="btn btn-sm btn-outline-danger py-0" onClick={() => prefillCandidate(c)}>
+                        Flag for Re-record
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Submit Form */}
+      <div className="card shadow-sm mb-4" id="rerecord-form-top">
+        <div className="card-header fw-semibold">Submit Re-record Request</div>
+        <div className="card-body">
+          {submitMsg && (
+            <div className={`alert alert-${submitMsg.type} py-2 small`}>{submitMsg.text}</div>
+          )}
+          <div className="row mb-3">
+            <div className="col-12 col-md-6 mb-3">
+              <label className="form-label small fw-semibold">Patient ID *</label>
+              <input
+                className="form-control form-control-sm"
+                placeholder="e.g. P001"
+                value={form.patient_id}
+                onChange={e => setForm(f => ({ ...f, patient_id: e.target.value }))}
+              />
+            </div>
+            <div className="col-12 col-md-3 mb-3">
+              <label className="form-label small fw-semibold">Priority</label>
+              <select
+                className="form-select form-select-sm"
+                value={form.priority}
+                onChange={e => setForm(f => ({ ...f, priority: e.target.value }))}
+              >
+                <option value="routine">Routine</option>
+                <option value="urgent">Urgent</option>
+              </select>
+            </div>
+            <div className="col-12 col-md-3 mb-3">
+              <label className="form-label small fw-semibold">Requested By</label>
+              <input
+                className="form-control form-control-sm"
+                value={form.requested_by}
+                onChange={e => setForm(f => ({ ...f, requested_by: e.target.value }))}
+              />
+            </div>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label small fw-semibold">Channels to Re-record * (select all that apply)</label>
+            <div className="d-flex flex-wrap gap-2">
+              {CHANNELS_10_20.map(ch => (
+                <button
+                  key={ch}
+                  type="button"
+                  className={`btn btn-sm ${form.channels.includes(ch) ? 'btn-danger' : 'btn-outline-secondary'}`}
+                  style={{ minWidth: 46, fontSize: '0.75rem', padding: '2px 8px' }}
+                  onClick={() => toggleChannel(ch)}
+                >
+                  {ch}
+                </button>
+              ))}
+            </div>
+            {form.channels.length > 0 && (
+              <div className="mt-2 small text-danger">
+                Selected: {form.channels.join(', ')}
+              </div>
+            )}
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label small fw-semibold">Reason *</label>
+            <select
+              className="form-select form-select-sm"
+              value={form.reason}
+              onChange={e => setForm(f => ({ ...f, reason: e.target.value }))}
+            >
+              <option value="">— Select reason —</option>
+              <option value="High impedance (>10 kΩ) — re-gel electrode">High impedance (&gt;10 kΩ) — re-gel electrode</option>
+              <option value="Poor SNR (<10 dB) — signal too noisy">Poor SNR (&lt;10 dB) — signal too noisy</option>
+              <option value="Electrode pop artifact — reseat electrode">Electrode pop artifact — reseat electrode</option>
+              <option value="Gel bridge between channels — clean and re-apply">Gel bridge between channels — clean and re-apply</option>
+              <option value="Patient movement artifact — repeat segment">Patient movement artifact — repeat segment</option>
+              <option value="Amplifier saturation — check connection">Amplifier saturation — check connection</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label small fw-semibold">Notes (optional)</label>
+            <textarea
+              className="form-control form-control-sm"
+              rows={2}
+              placeholder="Additional context for the re-recording technician…"
+              value={form.notes}
+              onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
+            />
+          </div>
+
+          <button
+            className="btn btn-danger btn-sm"
+            onClick={submit}
+            disabled={submitting}
+          >
+            {submitting ? 'Submitting…' : 'Submit Re-record Request'}
+          </button>
+        </div>
+      </div>
+
+      {/* Request Queue */}
+      <div className="card shadow-sm mb-4">
+        <div className="card-header fw-semibold">Re-record Request Queue ({requests.length})</div>
+        {requests.length === 0 ? (
+          <div className="card-body text-muted small">No requests submitted yet.</div>
+        ) : (
+          <div className="table-responsive">
+            <table className="table table-sm mb-0 align-middle">
+              <thead className="table-light">
+                <tr>
+                  <th className="small">#</th>
+                  <th className="small">Patient</th>
+                  <th className="small">Channels</th>
+                  <th className="small">Reason</th>
+                  <th className="small">Priority</th>
+                  <th className="small">Status</th>
+                  <th className="small">Requested By</th>
+                  <th className="small">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {requests.map(r => (
+                  <tr key={r.id}>
+                    <td className="text-muted small">{r.id}</td>
+                    <td><span className="badge bg-secondary">{r.patient_id}</span></td>
+                    <td className="small">{(r.channels || []).join(', ')}</td>
+                    <td className="small" style={{ maxWidth: 200 }}>{r.reason}</td>
+                    <td><span className={`badge bg-${PRIORITY_COLOR[r.priority] || 'secondary'}`}>{r.priority}</span></td>
+                    <td><span className={`badge bg-${STATUS_COLOR[r.status] || 'secondary'}`}>{r.status}</span></td>
+                    <td className="small text-muted">{r.requested_by}</td>
+                    <td className="small text-muted">{r.created_at ? r.created_at.slice(0, 10) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ChannelQualityPage() {
   const [tab, setTab] = useState('overview');
   const [ov,  setOv]  = useState(null);
   const [bk,  setBk]  = useState(null);
   const [def, setDef] = useState(null);
+  const [rr,  setRr]  = useState(null);
   const [err, setErr] = useState(null);
+
+  const loadRr = () =>
+    fetch(`${API}/api/channel-quality/rerecord-requests`).then(r => r.json()).then(setRr);
 
   useEffect(() => {
     Promise.all([
       fetch(`${API}/api/channel-quality/overview`).then(r => r.json()),
       fetch(`${API}/api/channel-quality/breakdown`).then(r => r.json()),
       fetch(`${API}/api/channel-quality/definitions`).then(r => r.json()),
-    ]).then(([o, b, d]) => { setOv(o); setBk(b); setDef(d); })
+      fetch(`${API}/api/channel-quality/rerecord-requests`).then(r => r.json()),
+    ]).then(([o, b, d, r]) => { setOv(o); setBk(b); setDef(d); setRr(r); })
       .catch(e => setErr(e.message));
   }, []);
 
@@ -446,6 +705,7 @@ export default function ChannelQualityPage() {
       {tab === 'channels'    && <ChannelsPanel  ov={ov} />}
       {tab === 'patients'    && <PatientsPanel  bk={bk} />}
       {tab === 'definitions' && <DefinitionsPanel def={def} />}
+      {tab === 'rerecord'    && <RerecordPanel  rr={rr} onRefresh={loadRr} />}
     </div>
   );
 }
