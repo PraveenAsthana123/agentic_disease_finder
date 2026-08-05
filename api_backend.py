@@ -16964,6 +16964,31 @@ async def iot_fleet_definitions():
     return _json_safe(ifd.definitions())
 
 
+# ── Liverpool Seizure Severity Scale (LSSS) Dashboard ──────────────────────
+@app.get("/api/lsss/overview")
+async def lsss_overview(patient_id: str = None):
+    """LSSS overview — 53 assessments, 23 patients, severity distribution,
+    score histogram (20-item scale max 80), monthly trend, high-risk count."""
+    import scripts.lsss_dashboard as ld
+    return _json_safe(ld.overview(patient_id=patient_id))
+
+
+@app.get("/api/lsss/breakdown")
+async def lsss_breakdown(patient_id: str = None):
+    """LSSS breakdown — per-patient trajectory (improving/stable/worsening),
+    score table with latest level, item-level averages, assessment log."""
+    import scripts.lsss_dashboard as ld
+    return _json_safe(ld.breakdown(patient_id=patient_id))
+
+
+@app.get("/api/lsss/definitions")
+async def lsss_definitions():
+    """LSSS definitions — scale description, severity thresholds, subscales,
+    20 item labels (ictal + post-ictal), clinical use cases, references."""
+    import scripts.lsss_dashboard as ld
+    return _json_safe(ld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

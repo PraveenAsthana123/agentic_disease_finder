@@ -122,6 +122,7 @@ import FeatureGapsDashboard from './components/FeatureGapsDashboard'
 import EnterprisePipelinesDashboard from './components/EnterprisePipelinesDashboard'
 import IoTDevicesDashboard from './components/IoTDevicesDashboard'
 import IoTFleetDashboard from './components/IoTFleetDashboard'
+import LSSSDashboard from './components/LSSSDashboard'
 import GlobalApprovalPolicyDashboard from './components/GlobalApprovalPolicyDashboard'
 import EegDataFormatsDashboard from './components/EegDataFormatsDashboard'
 import OnboardingIntakeDashboard from './components/OnboardingIntakeDashboard'
@@ -762,6 +763,7 @@ function App() {
     { id: 'observability', label: 'Observability' },
     { id: 'seizure-severity', label: 'Seizure Severity' },
     { id: 'seizure-diary', label: 'Seizure Diary' },
+    { id: 'lsss', label: 'LSSS Dashboard' },
     { id: 'abpm-holter', label: 'ABPM / Holter' },
     { id: 'feature-evaluation', label: 'Feature Evaluation' },
     { id: 'feature-selection', label: 'Feature Selection' },
@@ -2620,6 +2622,8 @@ function App() {
         return <SeizureSeverityDashboard />
       case 'seizure-diary':
         return <SeizureDiaryDashboard />
+      case 'lsss':
+        return <LSSSDashboard />
       case 'abpm-holter':
         return <AbpmDashboard />
       case 'edge-deploy':

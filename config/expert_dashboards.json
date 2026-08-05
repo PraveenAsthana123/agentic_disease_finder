@@ -615,6 +615,14 @@
         "/api/telehealth/breakdown",
         "/api/telehealth/definitions"
       ]
+    },
+    {
+      "id": "lsss",
+      "title": "LSSS Dashboard",
+      "route": "/lsss",
+      "component": "LSSSDashboard",
+      "status": "built",
+      "description": "Liverpool Seizure Severity Scale \u2014 53 assessments, 23 patients, severity distribution, trajectory tracking"
     }
   ],
   "summary": {
