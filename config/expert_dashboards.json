@@ -531,11 +531,26 @@
         "/api/patient-comparison/definitions"
       ],
       "route": "/patient-comparison"
+    },
+    {
+      "role": "Patient / Caregiver / Coordinator",
+      "name": "Daily Plans Dashboard",
+      "viz": "Activity logging rates, completion distribution, daily trend, per-patient sortable table",
+      "feature": "900 plans × 30 patients × 30 days — medication reminders, meals, exercise, sleep, mood, seizure logging, AI suggestions",
+      "why": "Tracks patient self-management adherence — identifies low-engagement patients needing outreach",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/daily-plans/overview",
+        "/api/daily-plans/breakdown",
+        "/api/daily-plans/definitions"
+      ],
+      "route": "/daily-plans"
     }
   ],
   "summary": {
-    "total": 39,
-    "built": 42,
+    "total": 40,
+    "built": 43,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-05"
