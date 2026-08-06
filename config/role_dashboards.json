@@ -1,7 +1,7 @@
 {
   "title": "Per-Role Dashboards & Reports (clinical departments)",
   "note": "Each role: KPI dashboard tiles + standard report list (with cadence + format). status: built (data exists) / partial / planned.",
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-06",
   "dashboard_component": "RoleDashboardsDashboard",
   "api_endpoints": [
     "/api/role-dashboards/overview",
@@ -11,7 +11,7 @@
   "roles": [
     {
       "role": "Neurologist",
-      "icon": "\ud83e\udde0",
+      "icon": "🧠",
       "kpis": [
         {
           "label": "EEG reads pending",
@@ -70,7 +70,7 @@
     },
     {
       "role": "Psychiatrist",
-      "icon": "\ud83d\udcac",
+      "icon": "💬",
       "kpis": [
         {
           "label": "Comorbidity screen rate",
@@ -112,11 +112,13 @@
           "format": "PDF",
           "status": "built"
         }
-      ]
+      ],
+      "status": "built",
+      "note": "portal-next/app/psychiatrist/page.jsx + SiteNav wired; 4 API endpoints (overview/breakdown/threshold-flags/definitions) verified 200"
     },
     {
       "role": "Occupational Therapist",
-      "icon": "\ud83d\udd90\ufe0f",
+      "icon": "🖐️",
       "kpis": [
         {
           "label": "Functional outcome scores",
@@ -164,7 +166,7 @@
     },
     {
       "role": "EEG Technician",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "kpis": [
         {
           "label": "Recordings acquired",
@@ -212,7 +214,7 @@
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "\ud83e\udde9",
+      "icon": "🧩",
       "kpis": [
         {
           "label": "Neuropsych batteries done",
@@ -255,7 +257,7 @@
     },
     {
       "role": "Radiologist",
-      "icon": "\ud83e\ude7b",
+      "icon": "🩻",
       "status": "built",
       "note": "Frontend page portal-next/app/radiologist/page.jsx + SiteNav wired; 3 API endpoints (/api/radiologist/overview + breakdown + definitions) verified 200",
       "kpis": [
@@ -292,7 +294,7 @@
     },
     {
       "role": "IoT Engineer",
-      "icon": "\ud83d\udce1",
+      "icon": "📡",
       "kpis": [
         {
           "label": "Devices online",
@@ -347,11 +349,13 @@
         }
       ],
       "portal_page": "built",
-      "page_url": "/iot-engineer"
+      "page_url": "/iot-engineer",
+      "status": "built",
+      "note": "portal-next/app/iot-engineer/page.jsx + SiteNav wired; 7 API endpoints (overview/breakdown/definitions/edge-inference/stream-sim/gateway-health/sos-escalation) verified 200"
     },
     {
       "role": "AI Control Tower",
-      "icon": "\ud83d\uddfc",
+      "icon": "🗼",
       "kpis": [
         {
           "label": "Models monitored",
@@ -394,7 +398,7 @@
     },
     {
       "role": "AI Security",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "kpis": [
         {
           "label": "Injection blocks",
@@ -432,11 +436,13 @@
         }
       ],
       "portal_page": "built",
-      "page_url": "/ai-security"
+      "page_url": "/ai-security",
+      "status": "built",
+      "note": "portal-next/app/ai-security/page.jsx + SiteNav wired; 3 API endpoints (overview/breakdown/definitions) verified 200"
     },
     {
       "role": "AI Risk",
-      "icon": "\u26a0\ufe0f",
+      "icon": "⚠️",
       "kpis": [
         {
           "label": "Risks identified",
@@ -472,11 +478,13 @@
           "format": "dashboard",
           "status": "built"
         }
-      ]
+      ],
+      "status": "built",
+      "note": "portal-next/app/ai-risk/page.jsx + SiteNav wired; 3 API endpoints (overview/breakdown/definitions) verified 200"
     },
     {
       "role": "AI Federation",
-      "icon": "\ud83c\udf10",
+      "icon": "🌐",
       "kpis": [
         {
           "label": "Sites onboarded",
@@ -514,11 +522,13 @@
         }
       ],
       "portal_page": "built",
-      "page_url": "/ai-federation"
+      "page_url": "/ai-federation",
+      "status": "built",
+      "note": "portal-next/app/ai-federation/page.jsx + SiteNav wired; 3 API endpoints (overview/breakdown/definitions) verified 200"
     },
     {
       "role": "IS SOP",
-      "icon": "\ud83d\udcd1",
+      "icon": "📑",
       "dashboard_component": "ISSopDashboard",
       "api_endpoints": [
         "/api/is-sop/overview",
@@ -562,7 +572,7 @@
     },
     {
       "role": "IRB / Governance Reviewer",
-      "icon": "\u2696\ufe0f",
+      "icon": "⚖️",
       "kpis": [
         {
           "label": "Decisions audited",
