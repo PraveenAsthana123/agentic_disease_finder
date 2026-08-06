@@ -651,14 +651,23 @@
       "route": "/responsible-ai-dashboard",
       "status": "built",
       "description": "30-framework responsible AI scorecard with sub-analysis breakdown"
+    },
+    {
+      "name": "Neuropsychologist Dashboard",
+      "route": "/neuropsychologist",
+      "api": "/api/neuropsychologist/overview|breakdown|definitions",
+      "status": "built",
+      "description": "WAIS-IV full battery (29 assessments, 26 patients), MoCA/MMSE screening, digit span, PHQ-9/GAD-7 mood comorbidity. 5-tab frontend: Overview, WAIS Profiles, Screening Tests, Mood & Comorbidity, Definitions.",
+      "priority": "P1",
+      "role": "Clinical Neuropsychologist"
     }
   ],
   "summary": {
-    "total": 46,
-    "built": 46,
+    "total": 53,
+    "built": 53,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-05",
-    "count": 49
+    "updated_at": "2026-08-06",
+    "count": 53
   }
 }
