@@ -17447,6 +17447,64 @@ async def therapy_dashboard():
     return _json_safe(tm.therapy_overview())
 
 
+# ── Seizure Timeline Dashboard ──────────────────────────────────────────────────
+@app.get("/api/seizure-timeline/overview")
+async def seizure_timeline_overview():
+    """Seizure Timeline overview — CHB-MIT PhysioNet catalog: total seizures, per-subject summary, onset clock times from real EDF summary files."""
+    import scripts.seizure_timeline_dashboard as std
+    report = std.generate_seizure_timeline_report(include_eeg=False)
+    if not report.get("available"):
+        return {"available": False, "error": report.get("error", "data unavailable")}
+    ps = report.get("per_subject_summary", [])
+    return _json_safe({
+        "available": True,
+        "total_seizures": report["total_seizures"],
+        "subjects": report["subjects"],
+        "per_subject_summary": ps,
+        "subject_count": len(ps),
+        "total_duration_sec": sum(s["total_duration_sec"] for s in ps),
+        "mean_seizure_duration_sec": round(
+            sum(s["total_duration_sec"] for s in ps) / report["total_seizures"], 1
+        ) if report["total_seizures"] else 0,
+    })
+
+
+@app.get("/api/seizure-timeline/events")
+async def seizure_timeline_events():
+    """Seizure Timeline events — full annotated catalog: onset_clock, duration, file, seizure_index for each CHB-MIT seizure."""
+    import scripts.seizure_timeline_dashboard as std
+    report = std.generate_seizure_timeline_report(include_eeg=False)
+    if not report.get("available"):
+        return {"available": False, "error": report.get("error", "data unavailable")}
+    return _json_safe({
+        "available": True,
+        "total": report["total_seizures"],
+        "timeline": report["timeline"],
+    })
+
+
+@app.get("/api/seizure-timeline/definitions")
+async def seizure_timeline_definitions():
+    """Seizure Timeline definitions — CHB-MIT dataset description, EDF format, seizure annotation schema, metric glossary."""
+    return {
+        "dataset": "CHB-MIT Scalp EEG Database (PhysioNet) — 22 pediatric patients, 10-20 bipolar montage, 256 Hz",
+        "format": "European Data Format (.edf) with per-subject summary annotation files",
+        "fields": {
+            "subject": "Patient ID (chb01–chb22)",
+            "file": "EDF file containing the seizure recording",
+            "seizure_index": "1-based seizure index within the file",
+            "start_sec": "Seizure onset offset (seconds from file start)",
+            "end_sec": "Seizure offset (seconds from file start)",
+            "duration_sec": "Seizure duration in seconds",
+            "file_start_time": "Recording start wall-clock time (HH:MM:SS)",
+            "onset_clock": "Derived seizure onset wall-clock time",
+            "spike_count": "Total spikes detected in peri-onset EEG (MAD threshold, requires EEG load)",
+            "peak_amplitude_uv": "Peak signal amplitude around onset (µV, requires EEG load)",
+        },
+        "reference": "Shoeb AH. Application of Machine Learning to Epileptic Seizure Onset Detection and Treatment. PhD Thesis, MIT, 2009.",
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

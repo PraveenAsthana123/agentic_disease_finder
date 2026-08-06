@@ -30,6 +30,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/treatment-efficacy">&#x1f4c9; Treatment Efficacy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/medication-refills">&#x1f504; Refills</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-severity">&#x26a1; Seizure Severity</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/seizure-timeline">&#x23f1;&#xfe0f; Seizure Timeline</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mri-review">&#x1f9e0; MRI Review</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ilae-classification">&#x1f9ec; ILAE Classification</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/incident-management">&#x1f6a8; Incidents</Link></li>
