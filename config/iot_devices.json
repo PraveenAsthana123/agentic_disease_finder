@@ -126,7 +126,14 @@
       ],
       "online": "BLE \u2192 phone \u2192 SOS alert",
       "alert": "convulsive seizure \u2192 caregiver SOS",
-      "status": "partial"
+      "status": "built",
+      "route": "/seizure-band",
+      "endpoints": [
+        "/api/seizure-band/overview",
+        "/api/seizure-band/breakdown",
+        "/api/seizure-band/definitions"
+      ],
+      "note": "Seizure Band Dashboard \u2014 30 devices, 900 readings, 112 seizure events, 6 falls, real wearable_devices + wearable_readings, 5-tab frontend + nav wired"
     },
     {
       "id": "mobile_app",
@@ -185,7 +192,13 @@
       "online": "forwards to backend",
       "offline": "stores + forwards on reconnect (store-and-forward)",
       "alert": "local alarm if cloud down",
-      "status": "partial"
+      "status": "built",
+      "route": "/iot-gateway",
+      "endpoints": [
+        "/api/iot-gateway/overview",
+        "/api/iot-gateway/breakdown",
+        "/api/iot-gateway/definitions"
+      ]
     }
   ],
   "offline_strategy": {
@@ -198,9 +211,9 @@
   "alert_pipeline": "device \u2192 (edge model OR gateway) \u2192 confidence gate \u2192 SOS (phone/SMS/caregiver) \u2192 audit",
   "summary": {
     "devices": 9,
-    "built": 1,
-    "partial": 6,
-    "planned": 2,
+    "built": 8,
+    "partial": 1,
+    "planned": 0,
     "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."
   }
 }

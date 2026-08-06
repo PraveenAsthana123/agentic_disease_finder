@@ -17107,6 +17107,36 @@ async def iot_gateway_definitions():
     return _json_safe(igd.definitions())
 
 
+# ── Seizure Band Dashboard ──────────────────────────────────────────────────
+# Real data: wearable_devices 30 rows, wearable_readings 900 rows,
+# 112 seizure-detected events, 6 fall events, Empatica Embrace2 + Wrist EEG Band
+@app.get("/api/seizure-band/overview")
+async def seizure_band_overview():
+    """Seizure band overview — wearable seizure-detection fleet KPIs: 30 devices,
+    30 patients, 900 readings, 112 seizure events, 6 fall alerts, avg risk score 34.6,
+    device-status distribution, risk-tier breakdown, per-patient alert summary."""
+    import scripts.seizure_band_dashboard as sbd
+    return _json_safe(sbd.overview())
+
+
+@app.get("/api/seizure-band/breakdown")
+async def seizure_band_breakdown():
+    """Seizure band breakdown — device roster (30 devices, type/brand/status/battery),
+    monthly seizure-event trend, connectivity distribution, confidence histogram,
+    physiological summary (stress proxy, SpO2, HR), firmware versions."""
+    import scripts.seizure_band_dashboard as sbd
+    return _json_safe(sbd.breakdown())
+
+
+@app.get("/api/seizure-band/definitions")
+async def seizure_band_definitions():
+    """Seizure band definitions — device classes (Embrace-style/Wrist EEG/Ankle Sensor),
+    data streams (EDA/accelerometer/confidence/risk-score), alert pipeline
+    (on-device ML → SOS → offline buffering), FDA clearance, PHI compliance."""
+    import scripts.seizure_band_dashboard as sbd
+    return _json_safe(sbd.definitions())
+
+
 # ── Emotiv Wearable Dashboard ───────────────────────────────────────────────
 @app.get("/api/emotiv-wearable/overview")
 async def emotiv_wearable_overview():
