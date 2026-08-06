@@ -31,8 +31,9 @@
       "category": "functional",
       "feature": "Time-frequency representations (STFT / wavelet / spectrogram)",
       "in_project": "built",
-      "why": "Project uses 47 hand-crafted features only; review uses spectrograms as CNN/ViT input",
-      "priority": "high"
+      "why": "Time-Frequency Representations Dashboard — 6 TFR methods (STFT, CWT, DWT, Spectrogram, Mel-Spectrogram, WVD/SPWVD), 6 EEG frequency bands, 6-stage pipeline (raw EEG → TFR → model input), resolution matrix, use-case map, glossary, references. 3 endpoints (/api/time-frequency/overview|breakdown|definitions verified 200) + portal-next /time-frequency page + nav wired. Built 2026-08-06.",
+      "priority": "high",
+      "dashboard": "/api/time-frequency/*"
     },
     {
       "category": "functional",

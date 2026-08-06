@@ -147,11 +147,13 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuropsychologist">&#x1f9e0; Neuropsychologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/occupational-therapist">&#x1f590;&#xfe0f; OT</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/dietitian">&#x1f957; Dietitian</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/social-worker">&#x1f91d; Social Worker</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/consultant-matrix">&#x1f465; Consultant Matrix</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-analysis-results">&#x1f52c; EEG Analysis Results</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/dataset-coverage">&#x1f5c2;&#xfe0f; Dataset Coverage</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hallucination">&#x1f9e0; Hallucination Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/deep-learning">&#x1f9e0; Deep Learning</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/time-frequency">&#x1f4ca; Time-Frequency (TFR)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/temporal-approval">&#x231b; Temporal Approval</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-technician">&#x1f4e1; EEG Technician</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/is-sop">&#x1f4d1; IS-SOP Compliance</Link></li>

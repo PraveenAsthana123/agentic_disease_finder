@@ -17524,6 +17524,25 @@ async def simulations_definitions():
     return _json_safe(sd.definitions())
 
 
+@app.get("/api/time-frequency/overview")
+async def time_frequency_overview():
+    """Time-Frequency Representations overview — method KPIs, pipeline stages, band coverage."""
+    import scripts.time_frequency_dashboard as tfd
+    return _json_safe(tfd.overview())
+
+@app.get("/api/time-frequency/breakdown")
+async def time_frequency_breakdown():
+    """TFR breakdown — per-method cards, resolution matrix, use-case map."""
+    import scripts.time_frequency_dashboard as tfd
+    return _json_safe(tfd.breakdown())
+
+@app.get("/api/time-frequency/definitions")
+async def time_frequency_definitions():
+    """TFR definitions — glossary, references, Heisenberg uncertainty note."""
+    import scripts.time_frequency_dashboard as tfd
+    return _json_safe(tfd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

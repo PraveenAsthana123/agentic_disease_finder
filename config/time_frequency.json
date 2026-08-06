@@ -1,0 +1,132 @@
+{
+  "title": "Time-Frequency Representations (TFR) Dashboard",
+  "note": "Covers STFT, Wavelet (CWT/DWT), spectrogram, and scalogram methods used in EEG seizure analysis. High-priority feature gap addressed 2026-08-06.",
+  "updated_at": "2026-08-06",
+  "status": "built",
+  "methods": [
+    {
+      "id": "stft",
+      "name": "Short-Time Fourier Transform (STFT)",
+      "family": "fourier",
+      "resolution": "fixed",
+      "time_resolution": "moderate",
+      "freq_resolution": "moderate",
+      "output": "spectrogram (power vs time vs freq)",
+      "used_for": ["seizure onset localisation", "frequency band power tracking", "CNN input image"],
+      "params": {"window": "Hann", "hop_length_ms": 10, "n_fft": 256},
+      "epilepsy_bands": ["delta", "theta", "alpha", "beta", "gamma", "HFO"],
+      "pipeline_stage": "Feature Engineering",
+      "notes": "Fixed window = time-frequency uncertainty trade-off. Best for stationary EEG segments."
+    },
+    {
+      "id": "cwt",
+      "name": "Continuous Wavelet Transform (CWT)",
+      "family": "wavelet",
+      "resolution": "adaptive",
+      "time_resolution": "high at high freq",
+      "freq_resolution": "high at low freq",
+      "output": "scalogram (power vs time vs scale)",
+      "used_for": ["ictal onset spikes", "HFO detection", "pre-ictal patterns"],
+      "params": {"wavelet": "Morlet", "scales": "1-128", "sampling_rate_hz": 256},
+      "epilepsy_bands": ["delta", "theta", "alpha", "beta", "gamma", "HFO"],
+      "pipeline_stage": "Feature Engineering",
+      "notes": "Adaptive resolution — superior for non-stationary EEG transients (spikes, HFOs)."
+    },
+    {
+      "id": "dwt",
+      "name": "Discrete Wavelet Transform (DWT)",
+      "family": "wavelet",
+      "resolution": "dyadic",
+      "time_resolution": "multi-scale",
+      "freq_resolution": "multi-scale",
+      "output": "approximation + detail coefficients per level",
+      "used_for": ["denoising", "feature extraction", "compression"],
+      "params": {"wavelet": "db4", "levels": 5},
+      "epilepsy_bands": ["delta (D5)", "theta (D4)", "alpha (D3)", "beta (D2)", "gamma (D1)"],
+      "pipeline_stage": "Signal Processing + Feature Engineering",
+      "notes": "Fast O(n) — used in real-time edge deployment. PyWavelets backend."
+    },
+    {
+      "id": "spectrogram",
+      "name": "Power Spectrogram (STFT magnitude²)",
+      "family": "fourier",
+      "resolution": "fixed",
+      "time_resolution": "moderate",
+      "freq_resolution": "moderate",
+      "output": "2D image (freq × time) — CNN input",
+      "used_for": ["CNN seizure classification", "transfer learning input", "visual inspection"],
+      "params": {"n_mels": 128, "fmax_hz": 120, "log_scale": true},
+      "epilepsy_bands": ["full 0–120 Hz"],
+      "pipeline_stage": "Feature Engineering → Model Input",
+      "notes": "Log-scaled power improves CNN convergence. Used in EEGNet / 1D-CNN pipelines."
+    },
+    {
+      "id": "mel_spectrogram",
+      "name": "Mel Spectrogram",
+      "family": "fourier",
+      "resolution": "mel-scaled",
+      "time_resolution": "moderate",
+      "freq_resolution": "perceptual",
+      "output": "2D mel-frequency image — CNN/Transformer input",
+      "used_for": ["deep learning EEG classification", "audio-style transfer learning"],
+      "params": {"n_mels": 128, "fmax_hz": 120, "librosa_backend": true},
+      "epilepsy_bands": ["delta-gamma compressed to mel bins"],
+      "pipeline_stage": "Feature Engineering → Model Input",
+      "notes": "Mel warping weights low frequencies more — useful when delta/theta dominate seizure signal."
+    },
+    {
+      "id": "wvd",
+      "name": "Wigner-Ville Distribution (WVD/SPWVD)",
+      "family": "quadratic",
+      "resolution": "highest (no windowing)",
+      "time_resolution": "high",
+      "freq_resolution": "high",
+      "output": "joint time-frequency distribution",
+      "used_for": ["research-grade ictal analysis", "HFO localisation"],
+      "params": {"smoothed": true, "kernel": "Gaussian"},
+      "epilepsy_bands": ["HFO (80-500 Hz)", "ripples", "fast ripples"],
+      "pipeline_stage": "Research Analysis",
+      "notes": "Highest TF resolution but cross-term interference. SPWVD kernel removes artifacts."
+    }
+  ],
+  "pipeline_integration": {
+    "stages": [
+      {"step": 1, "name": "Raw EEG Input", "format": "EDF/CSV", "sr_hz": 256},
+      {"step": 2, "name": "Bandpass Filter", "range_hz": "0.5–120 Hz"},
+      {"step": 3, "name": "TFR Computation", "methods": ["STFT", "CWT", "DWT", "Mel-Spec"]},
+      {"step": 4, "name": "Feature Map", "output": "2D array (freq × time) per channel"},
+      {"step": 5, "name": "Model Input", "formats": ["CNN image", "LSTM sequence", "band-power vector"]},
+      {"step": 6, "name": "Seizure Classification", "models": ["EEGNet", "1D-CNN", "Transformer"]}
+    ]
+  },
+  "frequency_bands": [
+    {"band": "Delta", "range_hz": "0.5–4", "color": "#6366f1", "seizure_relevance": "slow-wave ictal discharges"},
+    {"band": "Theta", "range_hz": "4–8", "color": "#8b5cf6", "seizure_relevance": "post-ictal slowing"},
+    {"band": "Alpha", "range_hz": "8–13", "color": "#06b6d4", "seizure_relevance": "background suppression during seizure"},
+    {"band": "Beta", "range_hz": "13–30", "color": "#10b981", "seizure_relevance": "fast activity at seizure onset"},
+    {"band": "Gamma", "range_hz": "30–120", "color": "#f59e0b", "seizure_relevance": "high-frequency ictal oscillations"},
+    {"band": "HFO", "range_hz": "80–500", "color": "#ef4444", "seizure_relevance": "ripples + fast ripples — epileptogenic zone marker"}
+  ],
+  "coverage_stats": {
+    "methods_implemented": 5,
+    "methods_total": 6,
+    "pipeline_stages": 6,
+    "bands_covered": 6,
+    "datasets_tested": ["Bonn University", "CHB-MIT", "TUH EEG Corpus"],
+    "backend_endpoints": ["/api/spectrogram/{disease}", "/api/librosa/mel-spectrogram"],
+    "frontend_page": "/time-frequency",
+    "status": "built"
+  },
+  "definitions": [
+    {"term": "STFT", "definition": "Short-Time Fourier Transform — segments signal into overlapping windows, computes FFT per window. Produces time-frequency spectrogram with fixed resolution."},
+    {"term": "CWT", "definition": "Continuous Wavelet Transform — convolves signal with scaled/translated wavelets (Morlet). Adaptive resolution: better time resolution at high frequencies."},
+    {"term": "DWT", "definition": "Discrete Wavelet Transform — dyadic subband decomposition using filter banks. Fast O(n), used for denoising and feature extraction."},
+    {"term": "Spectrogram", "definition": "2D plot of |STFT|² — power (dB) vs time (x) vs frequency (y). Standard CNN input format for seizure classification."},
+    {"term": "Mel Spectrogram", "definition": "Spectrogram with frequency axis warped to mel scale — perceptually motivated, emphasises low-frequency content relevant to epileptic delta/theta bands."},
+    {"term": "Scalogram", "definition": "2D plot of |CWT|² — power vs time vs scale (analogous to frequency). Reveals transient high-frequency events like HFOs."},
+    {"term": "HFO", "definition": "High-Frequency Oscillation (80–500 Hz) — ripples (80–250 Hz) and fast ripples (250–500 Hz) are biomarkers of epileptogenic zones detectable via CWT/WVD."},
+    {"term": "Morlet Wavelet", "definition": "Gaussian-modulated complex sinusoid — default CWT mother wavelet for EEG analysis. Optimal time-frequency localisation per Heisenberg uncertainty principle."},
+    {"term": "SPWVD", "definition": "Smoothed Pseudo Wigner-Ville Distribution — quadratic TFR with kernel smoothing to suppress cross-term interference. Highest resolution among TFR methods."},
+    {"term": "Band Power", "definition": "Integral of power spectral density over a frequency band. Derived from STFT or DWT coefficients. Primary feature for classical ML seizure classifiers."}
+  ]
+}
