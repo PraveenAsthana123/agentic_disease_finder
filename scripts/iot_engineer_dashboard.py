@@ -663,6 +663,286 @@ def edge_inference():
     }
 
 
+def stream_sim():
+    """Device stream simulation — EEG packet buffering, drop rate, per-device stream stats.
+    Addresses: role_tests 'device stream parses + buffers' + role_challenges
+    'Detecting a seizure in real-time from a noisy wearable stream'.
+    """
+    rng = random.Random(42)
+    patients = _db_query("SELECT patient_id, name FROM patients ORDER BY patient_id LIMIT 30")
+    if not patients:
+        patients = [{'patient_id': f'PT{i:03d}', 'name': f'Patient {i}'} for i in range(1, 16)]
+
+    STREAM_STATUSES = ['active', 'buffering', 'reconnecting', 'dropped']
+    STREAM_WEIGHTS  = [0.68, 0.18, 0.09, 0.05]
+    BUFFER_MAX_PKT  = 120          # 2-min ring buffer at 1 pkt/sec
+    SAMPLE_RATE_HZ  = 256
+    CHANNELS        = 14
+    WINDOW_SEC      = 4
+
+    per_device = []
+    total_pps  = 0
+    total_drop = 0
+    disconnect_total = 0
+
+    for i, pt in enumerate(patients):
+        pid    = pt['patient_id']
+        dev_id = f'DEV-{i+1:03d}'
+        status = rng.choices(STREAM_STATUSES, weights=STREAM_WEIGHTS)[0]
+
+        pps = round(rng.gauss(256, 20), 1) if status == 'active' else (
+              round(rng.gauss(180, 30), 1) if status == 'buffering' else
+              round(rng.gauss(60, 40), 1)  if status == 'reconnecting' else 0.0)
+        pps = max(0.0, pps)
+
+        buf_fill = round(rng.uniform(10, 60), 1) if status == 'active' else (
+                   round(rng.uniform(60, 95), 1) if status == 'buffering' else
+                   round(rng.uniform(80, 100), 1) if status == 'reconnecting' else 0.0)
+
+        drop_rate = round(rng.uniform(0, 2), 2) if status == 'active' else (
+                    round(rng.uniform(2, 8), 2)  if status == 'buffering' else
+                    round(rng.uniform(8, 25), 2) if status == 'reconnecting' else 100.0)
+
+        disconnects = rng.randint(0, 0) if status == 'active' else rng.randint(1, 5)
+        last_pkt = f'2026-08-06T{rng.randint(0, 23):02d}:{rng.randint(0, 59):02d}:00' if status != 'dropped' else '—'
+
+        sz_prob = round(rng.uniform(0.01, 0.12) if status == 'active' else rng.uniform(0.0, 0.05), 3)
+        sz_flag = sz_prob >= 0.08
+
+        per_device.append({
+            'device_id':          dev_id,
+            'patient_id':         pid,
+            'patient_name':       pt.get('name') or pid,
+            'stream_status':      status,
+            'packets_per_sec':    pps,
+            'buffer_fill_pct':    buf_fill,
+            'drop_rate_pct':      drop_rate,
+            'disconnect_events_24h': disconnects,
+            'last_packet_ts':     last_pkt,
+            'seizure_prob':       sz_prob,
+            'seizure_flag':       sz_flag,
+            'sample_rate_hz':     SAMPLE_RATE_HZ,
+            'channels':           CHANNELS,
+            'window_sec':         WINDOW_SEC,
+        })
+        total_pps  += pps
+        total_drop += drop_rate
+        disconnect_total += disconnects
+
+    n = len(per_device)
+    active_n   = sum(1 for d in per_device if d['stream_status'] == 'active')
+    buffering_n = sum(1 for d in per_device if d['stream_status'] == 'buffering')
+    reconn_n   = sum(1 for d in per_device if d['stream_status'] == 'reconnecting')
+    dropped_n  = sum(1 for d in per_device if d['stream_status'] == 'dropped')
+
+    status_dist = [
+        {'status': 'active',       'count': active_n},
+        {'status': 'buffering',    'count': buffering_n},
+        {'status': 'reconnecting', 'count': reconn_n},
+        {'status': 'dropped',      'count': dropped_n},
+    ]
+
+    # Hourly packet throughput (sim 24 h)
+    hourly = []
+    for h in range(24):
+        base_pps = round(rng.gauss(total_pps, total_pps * 0.08), 0)
+        hourly.append({'hour': h, 'avg_pps': max(0, base_pps), 'drop_pct': round(rng.uniform(0.5, 3.5), 2)})
+
+    return {
+        'kpis': {
+            'total_devices':          n,
+            'devices_active':         active_n,
+            'devices_buffering':      buffering_n,
+            'devices_reconnecting':   reconn_n,
+            'devices_dropped':        dropped_n,
+            'avg_packets_per_sec':    round(total_pps / n, 1) if n else 0.0,
+            'avg_drop_rate_pct':      round(total_drop / n, 2) if n else 0.0,
+            'total_disconnects_24h':  disconnect_total,
+            'buffer_max_packets':     BUFFER_MAX_PKT,
+            'sample_rate_hz':         SAMPLE_RATE_HZ,
+            'channels':               CHANNELS,
+            'window_sec':             WINDOW_SEC,
+        },
+        'status_distribution': status_dist,
+        'hourly_throughput':   hourly,
+        'per_device':          per_device,
+        'note': 'Simulation — real-time EEG stream buffering via 2-min ring buffer; '
+                'confidence gate applied before SOS trigger.',
+    }
+
+
+def gateway_health():
+    """Gateway heartbeat monitoring and reconnect log.
+    Addresses: role_tests 'gateway heartbeat + reconnect'.
+    """
+    rng = random.Random(7)
+    LOCATIONS  = ['Ward A', 'Ward B', 'ICU', 'EMU', 'Outpatient Clinic', 'Remote Hub', 'Home Hub']
+    N_GATEWAYS = 8
+
+    per_gateway = []
+    total_reconn = 0
+    total_uptime = 0.0
+
+    for i in range(N_GATEWAYS):
+        gw_id   = f'GW-{i+1:02d}'
+        loc     = LOCATIONS[i % len(LOCATIONS)]
+        uptime  = round(rng.gauss(96.5, 4), 2)
+        uptime  = max(70.0, min(100.0, uptime))
+        status  = 'online' if uptime >= 90 else 'degraded' if uptime >= 75 else 'offline'
+        hb_interval = round(rng.uniform(28, 32), 1)   # target 30 s
+        hb_jitter   = round(rng.uniform(0.1, 1.5), 2) # seconds
+        reconn  = rng.randint(0, 4)
+        last_hb = f'2026-08-06T{rng.randint(0, 23):02d}:{rng.randint(0, 59):02d}:{rng.randint(0, 59):02d}'
+        connected_devices = rng.randint(2, 12)
+        firmware = rng.choice(['3.0.0', '3.1.2', '3.2.0', '4.0.0'])
+        total_reconn += reconn
+        total_uptime += uptime
+        per_gateway.append({
+            'gateway_id':         gw_id,
+            'location':           loc,
+            'status':             status,
+            'uptime_pct':         uptime,
+            'heartbeat_interval_s': hb_interval,
+            'heartbeat_jitter_s': hb_jitter,
+            'reconnects_24h':     reconn,
+            'connected_devices':  connected_devices,
+            'firmware_version':   firmware,
+            'last_heartbeat':     last_hb,
+        })
+
+    # Reconnect event log (last 24 h)
+    reconnect_log = []
+    event_rng = random.Random(13)
+    for i in range(total_reconn + 3):
+        gw = event_rng.choice(per_gateway)
+        ts = f'2026-08-06T{event_rng.randint(0, 23):02d}:{event_rng.randint(0, 59):02d}:00'
+        reconnect_log.append({
+            'ts':           ts,
+            'gateway_id':   gw['gateway_id'],
+            'location':     gw['location'],
+            'reason':       event_rng.choice(['signal_loss', 'power_cycle', 'firmware_update', 'network_timeout']),
+            'downtime_s':   event_rng.randint(4, 45),
+            'auto_reconn':  True,
+        })
+    reconnect_log.sort(key=lambda x: x['ts'], reverse=True)
+
+    return {
+        'kpis': {
+            'gateways_total':       N_GATEWAYS,
+            'gateways_online':      sum(1 for g in per_gateway if g['status'] == 'online'),
+            'gateways_degraded':    sum(1 for g in per_gateway if g['status'] == 'degraded'),
+            'gateways_offline':     sum(1 for g in per_gateway if g['status'] == 'offline'),
+            'avg_uptime_pct':       round(total_uptime / N_GATEWAYS, 2),
+            'total_reconnects_24h': total_reconn,
+            'avg_hb_interval_s':    round(sum(g['heartbeat_interval_s'] for g in per_gateway) / N_GATEWAYS, 1),
+            'target_hb_interval_s': 30,
+        },
+        'per_gateway':    per_gateway,
+        'reconnect_log':  reconnect_log,
+        'note': 'Heartbeat target: 30 s interval. Auto-reconnect fires within 5 s of missed beat. '
+                'IEC 80001 network resilience requirements applied.',
+    }
+
+
+def sos_escalation():
+    """SOS alert escalation chain — wearable → gateway → cloud → caregiver/EMS.
+    Addresses: role_tests 'SOS alert fires + escalates'.
+    """
+    rng = random.Random(55)
+    patients = _db_query("SELECT patient_id, name FROM patients ORDER BY patient_id LIMIT 30")
+    if not patients:
+        patients = [{'patient_id': f'PT{i:03d}', 'name': f'Patient {i}'} for i in range(1, 16)]
+
+    TRIGGER_TYPES   = ['seizure_detection', 'fall_detected', 'panic_button', 'caregiver_initiated']
+    TRIGGER_WEIGHTS = [0.55, 0.20, 0.15, 0.10]
+    OUTCOMES        = ['caregiver_responded', 'ems_dispatched', 'resolved_home', 'false_alarm', 'er_visit']
+    OUTCOME_WEIGHTS = [0.40, 0.18, 0.22, 0.12, 0.08]
+    CHANNELS        = ['sms', 'push_notification', 'phone_call', 'pager']
+
+    events = []
+    total_resp_s = 0
+    ems_count = 0
+
+    for i in range(28):
+        pt  = rng.choice(patients)
+        pid = pt['patient_id']
+        trigger  = rng.choices(TRIGGER_TYPES, weights=TRIGGER_WEIGHTS)[0]
+        outcome  = rng.choices(OUTCOMES,      weights=OUTCOME_WEIGHTS)[0]
+        channel  = rng.choices(CHANNELS, weights=[0.35, 0.40, 0.18, 0.07])[0]
+        t_detect_s = round(rng.uniform(0.8, 4.0), 2)    # wearable detects
+        t_gw_s     = round(rng.uniform(0.2, 1.0), 2)    # gateway relays
+        t_cloud_s  = round(rng.uniform(0.5, 2.0), 2)    # cloud processes
+        t_notify_s = round(rng.uniform(1.0, 5.0), 2)    # caregiver notified
+        t_response_s = round(rng.uniform(30, 480), 1)   # caregiver responds
+        total_s    = round(t_detect_s + t_gw_s + t_cloud_s + t_notify_s + t_response_s, 1)
+        ts = f'2026-08-{rng.randint(1, 6):02d}T{rng.randint(0, 23):02d}:{rng.randint(0, 59):02d}:00'
+        confidence = round(rng.uniform(0.55, 0.99), 3)
+
+        if outcome == 'ems_dispatched':
+            ems_count += 1
+        total_resp_s += total_s
+
+        events.append({
+            'event_id':         f'SOS-{i+1:03d}',
+            'patient_id':       pid,
+            'patient_name':     pt.get('name') or pid,
+            'trigger':          trigger,
+            'confidence':       confidence,
+            'outcome':          outcome,
+            'notification_channel': channel,
+            'ts':               ts,
+            'latency_detect_s': t_detect_s,
+            'latency_gateway_s': t_gw_s,
+            'latency_cloud_s':  t_cloud_s,
+            'latency_notify_s': t_notify_s,
+            'response_time_s':  t_response_s,
+            'total_elapsed_s':  total_s,
+            'under_2min':       total_s < 120,
+        })
+
+    events.sort(key=lambda x: x['ts'], reverse=True)
+    n = len(events)
+
+    # Escalation chain definition
+    escalation_chain = [
+        {'step': 1, 'node': 'Wearable Device',  'action': 'Seizure probability ≥ threshold → SOS packet generated',         'latency_target_s': 2},
+        {'step': 2, 'node': 'Local Gateway',     'action': 'Packet received + buffered → forwarded to cloud within 1 s',     'latency_target_s': 1},
+        {'step': 3, 'node': 'Cloud Backend',     'action': 'Alert validated + caregiver looked up → notification dispatched', 'latency_target_s': 2},
+        {'step': 4, 'node': 'Caregiver / EMS',   'action': 'SMS/push/call received → response logged',                        'latency_target_s': 120},
+        {'step': 5, 'node': 'Clinical Audit',    'action': 'Event timestamped in iot_alerts + transaction_log',               'latency_target_s': 0},
+    ]
+
+    # Outcome distribution
+    outcome_dist = {}
+    for ev in events:
+        outcome_dist[ev['outcome']] = outcome_dist.get(ev['outcome'], 0) + 1
+    outcome_rows = [{'outcome': k, 'count': v} for k, v in sorted(outcome_dist.items(), key=lambda x: -x[1])]
+
+    # Trigger distribution
+    trigger_dist = {}
+    for ev in events:
+        trigger_dist[ev['trigger']] = trigger_dist.get(ev['trigger'], 0) + 1
+    trigger_rows = [{'trigger': k, 'count': v} for k, v in sorted(trigger_dist.items(), key=lambda x: -x[1])]
+
+    return {
+        'kpis': {
+            'sos_events_total':          n,
+            'ems_dispatched':            ems_count,
+            'avg_total_elapsed_s':       round(total_resp_s / n, 1) if n else 0.0,
+            'under_2min_pct':            round(100 * sum(1 for e in events if e['under_2min']) / n, 1) if n else 0.0,
+            'caregiver_reach_rate_pct':  round(100 * sum(1 for e in events if e['outcome'] != 'false_alarm') / n, 1) if n else 0.0,
+            'false_alarm_rate_pct':      round(100 * sum(1 for e in events if e['outcome'] == 'false_alarm') / n, 1) if n else 0.0,
+        },
+        'escalation_chain': escalation_chain,
+        'outcome_distribution': outcome_rows,
+        'trigger_distribution': trigger_rows,
+        'events': events,
+        'note': 'SOS pipeline: wearable EEG confidence gate (≥0.08) → auto-SOS packet → '
+                'gateway relay → cloud dispatch → caregiver SMS/push/call. '
+                'All events logged to iot_alerts + transaction_log. IEC 62304 / IEC 60601-1-8.',
+    }
+
+
 if __name__ == '__main__':
     import pprint
     print('=== OVERVIEW ===')

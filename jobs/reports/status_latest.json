@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-06T05:57:25Z",
+  "generated": "2026-08-06T07:58:07Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 17
     },
     "Expert dashboards": {
-      "built": 51
+      "built": 52
     },
     "Neuro AI ecosystem tools": {
       "external": 12,
@@ -21,15 +21,15 @@
   },
   "endpoints": {
     "fairness": "200",
-    "shap-explain": "000",
-    "clinical-trust": "000",
-    "drift": "000",
-    "data-manager": "000",
+    "shap-explain": "200",
+    "clinical-trust": "200",
+    "drift": "200",
+    "data-manager": "200",
     "eeg-viz/presets": "200",
     "expert-dashboards": "200",
     "neuro-ai-ecosystem": "200",
     "jobs": "200"
   },
-  "commits_ahead": "694",
+  "commits_ahead": "699",
   "jobs": 12
 }

@@ -11,11 +11,17 @@ const severityColor = s =>
 const inferColor = s =>
   s === 'running' ? 'success' : s === 'error' ? 'danger' : 'secondary';
 
+const gwColor = s =>
+  s === 'online' ? 'success' : s === 'degraded' ? 'warning' : 'danger';
+
 export default function IoTEngineerPage() {
   const [ov,    setOv]    = useState(null);
   const [bd,    setBd]    = useState(null);
   const [defs,  setDefs]  = useState(null);
   const [ei,    setEi]    = useState(null);
+  const [ss,    setSs]    = useState(null);
+  const [gw,    setGw]    = useState(null);
+  const [sos,   setSos]   = useState(null);
   const [tab,   setTab]   = useState('overview');
   const [sel,   setSel]   = useState(null);
 
@@ -24,6 +30,9 @@ export default function IoTEngineerPage() {
     fetch(`${API}/api/iot-engineer/breakdown`).then(r => r.json()).then(setBd).catch(() => {});
     fetch(`${API}/api/iot-engineer/definitions`).then(r => r.json()).then(setDefs).catch(() => {});
     fetch(`${API}/api/iot-engineer/edge-inference`).then(r => r.json()).then(setEi).catch(() => {});
+    fetch(`${API}/api/iot-engineer/stream-sim`).then(r => r.json()).then(setSs).catch(() => {});
+    fetch(`${API}/api/iot-engineer/gateway-health`).then(r => r.json()).then(setGw).catch(() => {});
+    fetch(`${API}/api/iot-engineer/sos-escalation`).then(r => r.json()).then(setSos).catch(() => {});
   }, []);
 
   if (!ov) return <div className="p-4"><div className="spinner-border text-primary" /></div>;
@@ -45,6 +54,7 @@ export default function IoTEngineerPage() {
     { id: 'devices',    label: `Device Fleet${bd ? ` (${(bd.devices || []).length})` : ''}` },
     { id: 'alerts',     label: `Alerts${bd ? ` (${(bd.devices || []).reduce((a, d) => a + (d.alert_count || 0), 0)})` : ''}` },
     { id: 'edge-ai',   label: `Edge AI${ei ? ` (${ei.kpis?.devices_running ?? 0} running)` : ''}` },
+    { id: 'stream-sos', label: `Stream & SOS${sos ? ` (${sos.kpis?.sos_events_total ?? 0} events)` : ''}` },
     { id: 'definitions', label: 'Standards' },
   ];
 
@@ -600,6 +610,212 @@ export default function IoTEngineerPage() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* ── Stream & SOS ── */}
+      {tab === 'stream-sos' && (
+        <div>
+          {/* Stream KPIs */}
+          {ss && (
+            <div className="mb-4">
+              <h6 className="fw-bold mb-2">EEG Stream — Packet Buffering</h6>
+              <div className="row mb-2">
+                {[
+                  { label: 'Devices Streaming', value: ss.kpis?.total_devices, color: 'primary' },
+                  { label: 'Active',             value: ss.kpis?.devices_active, color: 'success' },
+                  { label: 'Buffering',          value: ss.kpis?.devices_buffering, color: 'warning' },
+                  { label: 'Reconnecting',       value: ss.kpis?.devices_reconnecting, color: 'info' },
+                  { label: 'Dropped',            value: ss.kpis?.devices_dropped, color: 'danger' },
+                  { label: 'Avg Pkts/s',         value: ss.kpis?.avg_packets_per_sec?.toFixed(1), color: 'primary' },
+                  { label: 'Avg Drop %',         value: ss.kpis?.avg_drop_rate_pct?.toFixed(2) + '%', color: 'warning' },
+                  { label: 'Disconnects 24h',    value: ss.kpis?.total_disconnects_24h, color: 'danger' },
+                ].map(kp => (
+                  <div key={kp.label} className="col-6 col-md-3 col-lg-2 mb-2">
+                    <div className="card text-center shadow-sm border-0">
+                      <div className="card-body py-2 px-1">
+                        <div className={`h4 mb-0 text-${kp.color}`}>{kp.value ?? '—'}</div>
+                        <div className="text-muted" style={{ fontSize: '0.7rem' }}>{kp.label}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="card shadow-sm border-0 mb-3">
+                <div className="card-header bg-primary text-white py-2 small fw-bold">Per-Device Stream Status</div>
+                <div className="card-body p-2">
+                  <div className="table-responsive">
+                    <table className="table table-sm mb-0">
+                      <thead><tr>
+                        <th>Device</th><th>Patient</th><th>Status</th>
+                        <th>Pkts/s</th><th>Buf %</th><th>Drop %</th>
+                        <th>Disconn.</th><th>Seizure P</th>
+                      </tr></thead>
+                      <tbody>
+                        {(ss.per_device || []).map(d => (
+                          <tr key={d.device_id}>
+                            <td className="small">{d.device_id}</td>
+                            <td className="small">{d.patient_name}</td>
+                            <td><span className={`badge bg-${d.stream_status === 'active' ? 'success' : d.stream_status === 'buffering' ? 'warning' : d.stream_status === 'reconnecting' ? 'info' : 'danger'}`}>{d.stream_status}</span></td>
+                            <td className="small">{d.packets_per_sec?.toFixed(0)}</td>
+                            <td className="small">{d.buffer_fill_pct?.toFixed(0)}%</td>
+                            <td className="small">{d.drop_rate_pct?.toFixed(1)}%</td>
+                            <td className="small">{d.disconnect_events_24h}</td>
+                            <td className="small">{d.seizure_flag ? <span className="text-danger fw-bold">{d.seizure_prob?.toFixed(3)}</span> : d.seizure_prob?.toFixed(3)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Gateway Health */}
+          {gw && (
+            <div className="mb-4">
+              <h6 className="fw-bold mb-2">Gateway Heartbeat & Reconnect</h6>
+              <div className="row mb-2">
+                {[
+                  { label: 'Gateways',         value: gw.kpis?.gateways_total, color: 'primary' },
+                  { label: 'Online',            value: gw.kpis?.gateways_online, color: 'success' },
+                  { label: 'Degraded',          value: gw.kpis?.gateways_degraded, color: 'warning' },
+                  { label: 'Offline',           value: gw.kpis?.gateways_offline, color: 'danger' },
+                  { label: 'Avg Uptime %',      value: gw.kpis?.avg_uptime_pct?.toFixed(1) + '%', color: 'success' },
+                  { label: 'Reconnects 24h',    value: gw.kpis?.total_reconnects_24h, color: 'warning' },
+                  { label: 'HB Interval (s)',   value: gw.kpis?.avg_hb_interval_s?.toFixed(1), color: 'info' },
+                ].map(kp => (
+                  <div key={kp.label} className="col-6 col-md-3 col-lg-2 mb-2">
+                    <div className="card text-center shadow-sm border-0">
+                      <div className="card-body py-2 px-1">
+                        <div className={`h4 mb-0 text-${kp.color}`}>{kp.value ?? '—'}</div>
+                        <div className="text-muted" style={{ fontSize: '0.7rem' }}>{kp.label}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-7">
+                  <div className="card shadow-sm border-0">
+                    <div className="card-header bg-success text-white py-2 small fw-bold">Gateway Status</div>
+                    <div className="card-body p-2">
+                      <table className="table table-sm mb-0">
+                        <thead><tr><th>ID</th><th>Location</th><th>Status</th><th>Uptime %</th><th>HB (s)</th><th>Jitter (s)</th><th>Reconn.</th><th>Devices</th></tr></thead>
+                        <tbody>
+                          {(gw.per_gateway || []).map(g => (
+                            <tr key={g.gateway_id}>
+                              <td className="small">{g.gateway_id}</td>
+                              <td className="small">{g.location}</td>
+                              <td><span className={`badge bg-${gwColor(g.status)}`}>{g.status}</span></td>
+                              <td className="small">{g.uptime_pct?.toFixed(1)}</td>
+                              <td className="small">{g.heartbeat_interval_s?.toFixed(1)}</td>
+                              <td className="small">{g.heartbeat_jitter_s?.toFixed(2)}</td>
+                              <td className="small">{g.reconnects_24h}</td>
+                              <td className="small">{g.connected_devices}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-5">
+                  <div className="card shadow-sm border-0">
+                    <div className="card-header bg-warning text-dark py-2 small fw-bold">Reconnect Log (24h)</div>
+                    <div className="card-body p-2" style={{ maxHeight: 220, overflowY: 'auto' }}>
+                      <table className="table table-sm mb-0">
+                        <thead><tr><th>Time</th><th>GW</th><th>Reason</th><th>Down(s)</th></tr></thead>
+                        <tbody>
+                          {(gw.reconnect_log || []).map((ev, i) => (
+                            <tr key={i}>
+                              <td className="small" style={{ fontSize: '0.7rem' }}>{ev.ts?.slice(11, 16)}</td>
+                              <td className="small">{ev.gateway_id}</td>
+                              <td className="small">{ev.reason}</td>
+                              <td className="small">{ev.downtime_s}s</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* SOS Escalation */}
+          {sos && (
+            <div className="mb-4">
+              <h6 className="fw-bold mb-2">SOS Escalation Chain</h6>
+              <div className="row mb-2">
+                {[
+                  { label: 'SOS Events',       value: sos.kpis?.sos_events_total, color: 'danger' },
+                  { label: 'EMS Dispatched',   value: sos.kpis?.ems_dispatched, color: 'danger' },
+                  { label: 'Avg Elapsed (s)',   value: sos.kpis?.avg_total_elapsed_s?.toFixed(0), color: 'warning' },
+                  { label: 'Under 2 min %',    value: sos.kpis?.under_2min_pct?.toFixed(1) + '%', color: 'success' },
+                  { label: 'Reach Rate %',     value: sos.kpis?.caregiver_reach_rate_pct?.toFixed(1) + '%', color: 'success' },
+                  { label: 'False Alarm %',    value: sos.kpis?.false_alarm_rate_pct?.toFixed(1) + '%', color: 'secondary' },
+                ].map(kp => (
+                  <div key={kp.label} className="col-6 col-md-2 mb-2">
+                    <div className="card text-center shadow-sm border-0">
+                      <div className="card-body py-2 px-1">
+                        <div className={`h4 mb-0 text-${kp.color}`}>{kp.value ?? '—'}</div>
+                        <div className="text-muted" style={{ fontSize: '0.7rem' }}>{kp.label}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Escalation chain steps */}
+              <div className="card shadow-sm border-0 mb-3">
+                <div className="card-header bg-danger text-white py-2 small fw-bold">Escalation Chain: Wearable → Gateway → Cloud → Caregiver/EMS</div>
+                <div className="card-body p-2">
+                  <div className="d-flex flex-wrap gap-2">
+                    {(sos.escalation_chain || []).map(step => (
+                      <div key={step.step} className="card border-danger" style={{ minWidth: 180, flex: '1 1 180px' }}>
+                        <div className="card-body py-2 px-3">
+                          <div className="fw-bold small text-danger">Step {step.step}: {step.node}</div>
+                          <div className="text-muted" style={{ fontSize: '0.72rem' }}>{step.action}</div>
+                          {step.latency_target_s > 0 && <div className="text-info small">Target: ≤{step.latency_target_s}s</div>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {/* Events table */}
+              <div className="card shadow-sm border-0">
+                <div className="card-header bg-secondary text-white py-2 small fw-bold">SOS Event Log (recent 28)</div>
+                <div className="card-body p-2">
+                  <div className="table-responsive">
+                    <table className="table table-sm mb-0">
+                      <thead><tr>
+                        <th>Event</th><th>Patient</th><th>Trigger</th><th>Outcome</th>
+                        <th>Channel</th><th>Detect(s)</th><th>Notify(s)</th><th>Total(s)</th><th>&lt;2min</th>
+                      </tr></thead>
+                      <tbody>
+                        {(sos.events || []).map(ev => (
+                          <tr key={ev.event_id}>
+                            <td className="small">{ev.event_id}</td>
+                            <td className="small">{ev.patient_name}</td>
+                            <td className="small">{ev.trigger}</td>
+                            <td><span className={`badge bg-${ev.outcome === 'ems_dispatched' ? 'danger' : ev.outcome === 'false_alarm' ? 'secondary' : ev.outcome === 'resolved_home' ? 'success' : 'warning'}`} style={{ fontSize: '0.65rem' }}>{ev.outcome}</span></td>
+                            <td className="small">{ev.notification_channel}</td>
+                            <td className="small">{ev.latency_detect_s?.toFixed(1)}</td>
+                            <td className="small">{ev.latency_notify_s?.toFixed(1)}</td>
+                            <td className="small">{ev.total_elapsed_s?.toFixed(0)}</td>
+                            <td>{ev.under_2min ? <span className="text-success">✓</span> : <span className="text-danger">✗</span>}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

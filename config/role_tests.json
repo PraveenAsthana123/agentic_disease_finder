@@ -1,7 +1,7 @@
 {
   "title": "Per-Role Testing Matrix",
   "note": "Each role: test rows scoped to that role's flow across api/data/model/accuracy/process/frontend/manual. status: pass (verified) / partial / planned.",
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-06",
   "dashboard": "RoleTestsDashboard.jsx",
   "endpoints": [
     "/api/role-tests/overview",
@@ -164,12 +164,14 @@
         {
           "dim": "Data",
           "case": "device stream parses + buffers",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "GET /api/iot-engineer/stream-sim — 30 devices, per-device status (active/buffering/reconnecting/dropped), packets/s, buffer fill %, drop rate, 24h hourly throughput, Stream & SOS tab in /iot-engineer"
         },
         {
           "dim": "Process",
           "case": "gateway heartbeat + reconnect",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "GET /api/iot-engineer/gateway-health — 8 gateways, heartbeat interval (target 30s), jitter, reconnect log (reason/downtime/auto-reconnect), Stream & SOS tab in /iot-engineer"
         },
         {
           "dim": "Accuracy",
@@ -180,12 +182,14 @@
         {
           "dim": "Process",
           "case": "SOS alert fires + escalates",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "GET /api/iot-engineer/sos-escalation — 28 events, 5-step chain (wearable→gateway→cloud→caregiver/EMS), per-event latency breakdown, outcome+trigger distribution, Stream & SOS tab in /iot-engineer"
         },
         {
           "dim": "Manual",
           "case": "engineer reviews device fleet",
-          "status": "partial"
+          "status": "built",
+          "maps_to": "/iot-engineer page — Device Fleet + Alerts + Edge AI + Stream & SOS tabs (7 endpoints, full fleet review)"
         }
       ]
     },

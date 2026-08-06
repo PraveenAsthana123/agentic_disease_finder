@@ -8947,6 +8947,34 @@ async def iot_engineer_edge_inference():
     return _json_safe(iotd.edge_inference())
 
 
+@app.get("/api/iot-engineer/stream-sim")
+async def iot_engineer_stream_sim():
+    """IoT Engineer stream simulation — real-time EEG packet buffering, drop rate,
+    per-device stream status (active/buffering/reconnecting/dropped), 24-h hourly
+    throughput, seizure-flag detection from streamed windows.
+    Addresses role_test: 'device stream parses + buffers'."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.stream_sim())
+
+
+@app.get("/api/iot-engineer/gateway-health")
+async def iot_engineer_gateway_health():
+    """IoT Engineer gateway health — per-gateway heartbeat interval, uptime,
+    reconnect log (reason/downtime/auto-reconnect), firmware, connected devices.
+    Addresses role_test: 'gateway heartbeat + reconnect'."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.gateway_health())
+
+
+@app.get("/api/iot-engineer/sos-escalation")
+async def iot_engineer_sos_escalation():
+    """IoT Engineer SOS escalation — full alert chain: wearable → gateway → cloud →
+    caregiver/EMS. Per-event latency breakdown, outcome distribution, trigger analysis.
+    Addresses role_test: 'SOS alert fires + escalates'."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.sos_escalation())
+
+
 # ── Clinical Pharmacist Dashboard ──────────────────────────────────────
 @app.get("/api/clinical-pharmacist/overview")
 async def clinical_pharmacist_overview():
