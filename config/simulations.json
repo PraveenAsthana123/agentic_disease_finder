@@ -1,8 +1,12 @@
 {
   "title": "Per-Role End-to-End Process Simulations",
   "note": "Each role: ordered steps explaining the full process. layer = backend/process/data/accuracy/reporting. mode = manual (human step) or auto (AI/pipeline). maps_to = real endpoint when built.",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-08-06",
   "dashboard_status": "built",
+  "dashboard_component": "SimulationsDashboard",
+  "api_endpoints": ["/api/simulations/overview", "/api/simulations/breakdown", "/api/simulations/definitions"],
+  "portal_page": "portal-next/app/simulations/page.jsx",
+  "built_note": "3 API endpoints verified 200, portal-next/app/simulations/page.jsx + SiteNav wired",
   "roles": [
     {"role": "Neurologist", "icon": "🧠", "process": "Governed EEG read",
      "steps": [

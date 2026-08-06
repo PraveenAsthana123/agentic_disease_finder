@@ -1,7 +1,9 @@
-"""Process Simulations Dashboard — per-role end-to-end process simulations,
-step layers, auto vs manual distribution, endpoint mapping
-from config/simulations.json.
-7 roles, ordered pipeline steps per role."""
+"""Per-Role End-to-End Process Simulations Dashboard.
+
+Visualizes config/simulations.json — 7 roles, each with ordered steps
+describing the full human+AI pipeline (layer, mode, actor, input, process,
+output, maps_to). Provides overview KPIs, per-role step breakdowns, and
+definitions."""
 
 import json
 import os
@@ -11,8 +13,8 @@ _DIR = os.path.dirname(__file__)
 _CFG = os.path.join(_DIR, '..', 'config')
 
 
-def _load(fname):
-    path = os.path.join(_CFG, fname)
+def _load():
+    path = os.path.join(_CFG, 'simulations.json')
     if not os.path.exists(path):
         return None
     with open(path) as f:
@@ -20,99 +22,89 @@ def _load(fname):
 
 
 def overview():
-    """Summary KPIs: role count, total steps, layer distribution, auto/manual ratio."""
-    cfg = _load('simulations.json')
+    """Summary KPIs: roles, steps, mode/layer distribution, actor breakdown."""
+    cfg = _load()
     if not cfg:
         return {"available": False, "note": "simulations.json missing"}
 
     roles = cfg.get('roles', [])
+    all_steps = [s for r in roles for s in r.get('steps', [])]
+
     total_roles = len(roles)
-    total_steps = sum(len(r.get('steps', [])) for r in roles)
+    total_steps = len(all_steps)
+    avg_steps = round(total_steps / total_roles, 1) if total_roles else 0
 
-    # Layer distribution across all steps
-    all_layers = []
-    all_modes = []
-    all_actors = []
-    for r in roles:
-        for s in r.get('steps', []):
-            all_layers.append(s.get('layer', 'unknown'))
-            all_modes.append(s.get('mode', 'unknown'))
-            all_actors.append(s.get('actor', 'unknown'))
+    mode_counts = Counter(s.get('mode', 'unknown') for s in all_steps)
+    layer_counts = Counter(s.get('layer', 'unknown') for s in all_steps)
+    actor_counts = Counter(s.get('actor', 'unknown') for s in all_steps)
 
-    layer_counts = Counter(all_layers)
-    layer_distribution = [
-        {"name": layer.capitalize(), "value": count}
-        for layer, count in sorted(layer_counts.items(), key=lambda x: -x[1])
-    ]
+    auto_pct = round(mode_counts.get('auto', 0) / total_steps * 100, 1) if total_steps else 0
 
-    mode_counts = Counter(all_modes)
-    mode_distribution = [
-        {"name": mode.capitalize(), "value": count}
-        for mode, count in sorted(mode_counts.items(), key=lambda x: -x[1])
-    ]
-
-    actor_counts = Counter(all_actors)
-    actor_distribution = [
-        {"name": actor, "value": count}
-        for actor, count in sorted(actor_counts.items(), key=lambda x: -x[1])
-    ]
-
-    auto_count = mode_counts.get('auto', 0)
-    manual_count = mode_counts.get('manual', 0)
-
-    # Steps per role for bar chart
     steps_per_role = [
-        {"name": r.get('role', ''), "value": len(r.get('steps', []))}
-        for r in roles
+        {"role": r.get('role', '?'), "icon": r.get('icon', ''), "count": len(r.get('steps', []))}
+        for r in sorted(roles, key=lambda x: -len(x.get('steps', [])))
     ]
 
-    # Summary table
-    roles_table = [
-        {
-            "role": r.get('role', ''),
+    role_table = []
+    for r in roles:
+        steps = r.get('steps', [])
+        modes = Counter(s.get('mode', '') for s in steps)
+        role_table.append({
+            "role": r.get('role', '?'),
             "icon": r.get('icon', ''),
             "process": r.get('process', ''),
-            "steps": len(r.get('steps', [])),
-            "auto": sum(1 for s in r.get('steps', []) if s.get('mode') == 'auto'),
-            "manual": sum(1 for s in r.get('steps', []) if s.get('mode') == 'manual'),
-            "layers": ', '.join(sorted(set(s.get('layer', '') for s in r.get('steps', [])))),
-        }
-        for r in roles
-    ]
+            "total_steps": len(steps),
+            "auto_steps": modes.get('auto', 0),
+            "manual_steps": modes.get('manual', 0),
+        })
 
     return {
         "available": True,
-        "kpis": {
+        "generated_at": "2026-08-06",
+        "kpis": [
+            {"label": "Roles", "value": total_roles, "color": "primary"},
+            {"label": "Total Steps", "value": total_steps, "color": "info"},
+            {"label": "Avg Steps/Role", "value": avg_steps, "color": "secondary"},
+            {"label": "AI-Automated %", "value": f"{auto_pct}%", "color": "success"},
+        ],
+        "summary": {
             "total_roles": total_roles,
             "total_steps": total_steps,
-            "auto_steps": auto_count,
-            "manual_steps": manual_count,
-            "unique_layers": len(layer_counts),
-            "unique_actors": len(actor_counts),
+            "avg_steps_per_role": avg_steps,
+            "auto_pct": auto_pct,
+            "manual_pct": round(100 - auto_pct, 1),
         },
-        "layer_distribution": layer_distribution,
-        "mode_distribution": mode_distribution,
-        "actor_distribution": actor_distribution,
+        "mode_distribution": [
+            {"name": k, "value": v}
+            for k, v in sorted(mode_counts.items(), key=lambda x: -x[1])
+        ],
+        "layer_distribution": [
+            {"name": k, "value": v}
+            for k, v in sorted(layer_counts.items(), key=lambda x: -x[1])
+        ],
+        "actor_distribution": [
+            {"name": k, "value": v}
+            for k, v in sorted(actor_counts.items(), key=lambda x: -x[1])
+        ],
         "steps_per_role": steps_per_role,
-        "roles_table": roles_table,
+        "role_table": role_table,
     }
 
 
 def breakdown():
-    """Per-role step details, endpoint mapping, layer/mode breakdown."""
-    cfg = _load('simulations.json')
+    """Per-role step tables with layer/mode/actor/input/process/output/maps_to."""
+    cfg = _load()
     if not cfg:
-        return {"available": False}
+        return {"available": False, "note": "simulations.json missing"}
 
     roles = cfg.get('roles', [])
-
-    roles_detail = []
+    role_details = []
     for r in roles:
         steps = r.get('steps', [])
-        step_items = []
-        for i, s in enumerate(steps):
-            step_items.append({
-                "step": i + 1,
+        enriched = []
+        for i, s in enumerate(steps, 1):
+            enriched.append({
+                "step": i,
                 "layer": s.get('layer', ''),
                 "mode": s.get('mode', ''),
                 "actor": s.get('actor', ''),
@@ -121,75 +113,61 @@ def breakdown():
                 "output": s.get('output', ''),
                 "maps_to": s.get('maps_to', ''),
             })
-        layer_counts = Counter(s.get('layer', '') for s in steps)
-        mode_counts = Counter(s.get('mode', '') for s in steps)
-        roles_detail.append({
-            "role": r.get('role', ''),
+        role_details.append({
+            "role": r.get('role', '?'),
             "icon": r.get('icon', ''),
             "process": r.get('process', ''),
-            "steps": step_items,
-            "layer_breakdown": [{"name": k.capitalize(), "value": v} for k, v in layer_counts.items()],
-            "mode_breakdown": [{"name": k.capitalize(), "value": v} for k, v in mode_counts.items()],
+            "steps": enriched,
         })
-
-    # Endpoint mapping — all maps_to values
-    endpoint_map = []
-    for r in roles:
-        for s in r.get('steps', []):
-            mt = s.get('maps_to', '')
-            if mt:
-                endpoint_map.append({
-                    "role": r.get('role', ''),
-                    "step": s.get('process', ''),
-                    "maps_to": mt,
-                    "mode": s.get('mode', ''),
-                })
 
     return {
         "available": True,
-        "roles": roles_detail,
-        "endpoint_map": endpoint_map,
+        "role_details": role_details,
     }
 
 
 def definitions():
-    """Definitions: layer types, mode types, glossary, references."""
+    """Layer definitions, mode glossary, actor types, and references."""
     return {
         "available": True,
-        "layer_legend": [
-            {"layer": "Data", "description": "Data acquisition, upload, parsing, feature extraction"},
-            {"layer": "Process", "description": "Signal processing, artifact detection, clinical judgment, quality checks"},
-            {"layer": "Accuracy", "description": "ML model inference, XAI explanations, differential analysis"},
-            {"layer": "Reporting", "description": "Report generation, audit trail, PDF output, transaction logging"},
-            {"layer": "Backend", "description": "System-level orchestration and API routing"},
+        "layers": [
+            {"layer": "data", "description": "Data ingestion, storage, parsing, extraction steps"},
+            {"layer": "process", "description": "Clinical or pipeline processing — QC, analysis, decision routing"},
+            {"layer": "accuracy", "description": "AI/ML inference — model prediction, XAI explanation, evaluation"},
+            {"layer": "reporting", "description": "Report generation, audit trail, notification delivery"},
+            {"layer": "backend", "description": "Infrastructure — API calls, database writes, scheduling"},
         ],
-        "mode_legend": [
-            {"mode": "Auto", "description": "Fully automated by AI pipeline, model, or system — no human intervention"},
-            {"mode": "Manual", "description": "Requires human action — clinician judgment, data entry, override decision"},
+        "modes": [
+            {"mode": "auto", "description": "Executed autonomously by AI pipeline or system — no human input required"},
+            {"mode": "manual", "description": "Requires direct human action — data entry, review, override, approval"},
         ],
-        "glossary": [
-            {"term": "EEG", "definition": "Electroencephalography — recording of brain electrical activity via scalp electrodes"},
-            {"term": "SHAP", "definition": "SHapley Additive exPlanations — game-theoretic feature importance for ML models"},
-            {"term": "XAI", "definition": "Explainable AI — methods that make model predictions interpretable to humans"},
-            {"term": "HITL", "definition": "Human-In-The-Loop — human oversight/override of AI decisions"},
-            {"term": "ADL", "definition": "Activities of Daily Living — functional independence measure used by OTs"},
-            {"term": "QC", "definition": "Quality Control — systematic process to ensure data/signal meets standards"},
-            {"term": "RAG", "definition": "Retrieval-Augmented Generation — LLM pattern combining retrieval with generation"},
-            {"term": "RAI", "definition": "Responsible AI — fairness, transparency, privacy, and safety practices"},
-            {"term": "PII", "definition": "Personally Identifiable Information — data that could identify an individual"},
-            {"term": "IRB", "definition": "Institutional Review Board — ethics committee overseeing research involving humans"},
+        "actors": [
+            {"actor": "Neurologist", "role": "Clinical lead — EEG read, override, sign-off"},
+            {"actor": "EEG Technician", "role": "Signal acquisition, impedance check, QC re-recording"},
+            {"actor": "Psychiatrist", "role": "Comorbidity screening, differential diagnosis"},
+            {"actor": "OT", "role": "Functional outcome tracking, rehab plan adjustment"},
+            {"actor": "Reviewer", "role": "IRB/Governance — audit review, approval gating"},
+            {"actor": "IoT Engineer", "role": "Device fleet ops, gateway health, alert chain"},
+            {"actor": "Patient", "role": "Consent, profile fill, mobile diary interaction"},
+            {"actor": "Pipeline", "role": "Automated backend — feature extraction, signal QC"},
+            {"actor": "Model", "role": "Trained ML model — seizure-risk inference"},
+            {"actor": "XAI", "role": "SHAP/Captum — feature attribution for explainability"},
+            {"actor": "Council", "role": "Multi-agent council — security gate, RAG orchestration"},
+            {"actor": "RAG+Eval", "role": "Retrieve-Augment-Generate with grounding evaluation"},
+            {"actor": "Compliance", "role": "Fairness + PII check automation"},
+            {"actor": "Alert", "role": "SOS escalation chain — caregiver notification"},
+            {"actor": "System", "role": "Audit trail writer, PDF report generator"},
+            {"actor": "Gateway", "role": "IoT gateway — packet validation, buffering, heartbeat"},
+            {"actor": "Edge", "role": "Edge compute — local feature extraction, PII scrub"},
+            {"actor": "Edge model", "role": "Lightweight on-device inference model"},
+            {"actor": "Decision", "role": "Confidence gate — route alert vs silence"},
+            {"actor": "Wearable/Emotiv", "role": "Hardware sensor — EEG/bio signal source"},
         ],
-        "clinical_notes": [
-            "Each role simulation reflects a real clinical workflow with ordered dependencies.",
-            "Auto steps map to built or planned API endpoints; manual steps require clinician interaction.",
-            "The maps_to field links each step to the actual system component that implements it.",
-            "Override/HITL steps ensure AI never makes unsupervised clinical decisions.",
-        ],
-        "references": [
-            {"id": "ACNS", "title": "American Clinical Neurophysiology Society — EEG Guidelines"},
-            {"id": "ILAE", "title": "International League Against Epilepsy — Classification & Terminology"},
-            {"id": "FDA-SaMD", "title": "FDA Software as Medical Device — Clinical Decision Support Guidance"},
-            {"id": "IEC-62304", "title": "IEC 62304 — Medical Device Software Lifecycle Processes"},
-            {"id": "HIPAA", "title": "Health Insurance Portability and Accountability Act — Privacy Rule"},
-        ],
+        "glossary": {
+            "maps_to": "Real backend endpoint or DB table this step corresponds to",
+            "layer": "Functional layer of the system where this step executes",
+            "mode": "Whether step is automated (auto) or requires human action (manual)",
+            "process": "What happens at this step — the transformation or action",
+        },
+        "note": "Simulations are per-role e2e walkthroughs for training, audit, and governance demonstration.",
     }

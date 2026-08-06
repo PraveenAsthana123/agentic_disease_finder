@@ -17505,6 +17505,25 @@ async def seizure_timeline_definitions():
     }
 
 
+@app.get("/api/simulations/overview")
+async def simulations_overview():
+    """Process Simulations overview — 7 roles, step counts, mode/layer distribution."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.overview())
+
+@app.get("/api/simulations/breakdown")
+async def simulations_breakdown():
+    """Process Simulations breakdown — per-role ordered step sequences."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.breakdown())
+
+@app.get("/api/simulations/definitions")
+async def simulations_definitions():
+    """Process Simulations definitions — layers, modes, actors, glossary."""
+    import scripts.simulations_dashboard as sd
+    return _json_safe(sd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

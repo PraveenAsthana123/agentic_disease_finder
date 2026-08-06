@@ -192,6 +192,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/education-modules">&#x1f4da; Education Modules</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/validation-studies">&#x1f52c; Validation Studies</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-challenges">&#x26a1; Epilepsy Challenges</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/simulations">&#x1f504; Process Simulations</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
