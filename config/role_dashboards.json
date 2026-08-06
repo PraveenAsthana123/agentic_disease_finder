@@ -345,7 +345,9 @@
           "format": "CSV",
           "status": "built"
         }
-      ]
+      ],
+      "portal_page": "built",
+      "page_url": "/iot-engineer"
     },
     {
       "role": "AI Control Tower",
@@ -428,7 +430,9 @@
           "format": "CSV",
           "status": "built"
         }
-      ]
+      ],
+      "portal_page": "built",
+      "page_url": "/ai-security"
     },
     {
       "role": "AI Risk",
@@ -508,7 +512,9 @@
           "format": "CSV",
           "status": "built"
         }
-      ]
+      ],
+      "portal_page": "built",
+      "page_url": "/ai-federation"
     },
     {
       "role": "IS SOP",
