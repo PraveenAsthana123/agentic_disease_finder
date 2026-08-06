@@ -11927,6 +11927,111 @@ async def clinical_flowcharts_analytics():
     })
 
 
+@app.get("/api/clinical-flowcharts/breakdown")
+async def clinical_flowcharts_breakdown():
+    """Per-flowchart breakdown: mermaid source, parsed nodes, decision points, edge count, process type."""
+    import re
+    flowcharts = _load_flowcharts()
+    cat_map = {
+        "eeg_read": "EEG Processing",
+        "council": "AI Governance",
+        "study_review": "Clinical Review",
+        "iot": "IoT / Wearable",
+        "onboarding": "Patient Management",
+        "assessment": "Assessment"
+    }
+    process_type_map = {
+        "eeg_read": "Automated",
+        "council": "Automated",
+        "iot": "Automated",
+        "study_review": "Human-in-loop",
+        "assessment": "Human-in-loop",
+        "onboarding": "Hybrid"
+    }
+    items = []
+    for fc in flowcharts:
+        fid = fc.get("id", "")
+        mermaid = fc.get("mermaid", "")
+        nodes = []
+        decisions = []
+        edges = 0
+        for line in mermaid.split('\n'):
+            line = line.strip()
+            for m in re.finditer(r'([A-Z]+)\[([^\]]+)\]', line):
+                nodes.append({"id": m.group(1), "label": m.group(2), "type": "process"})
+            for m in re.finditer(r'([A-Z]+)\{([^}]+)\}', line):
+                decisions.append({"id": m.group(1), "label": m.group(2), "type": "decision"})
+            edges += line.count('-->')
+            if re.search(r'-- \w', line):
+                edges += 1
+        all_nodes = nodes + decisions
+        complexity = "high" if len(decisions) >= 2 else "medium" if len(decisions) == 1 else "linear"
+        items.append({
+            "id": fid,
+            "title": fc.get("title", ""),
+            "category": cat_map.get(fid, "General"),
+            "process_type": process_type_map.get(fid, "Hybrid"),
+            "complexity": complexity,
+            "node_count": len(all_nodes),
+            "process_steps": len(nodes),
+            "decision_count": len(decisions),
+            "edge_count": edges,
+            "nodes": all_nodes[:20],
+            "mermaid": mermaid
+        })
+    return _json_safe({
+        "total": len(items),
+        "flowcharts": items,
+        "summary": {
+            "automated": sum(1 for i in items if i["process_type"] == "Automated"),
+            "human_in_loop": sum(1 for i in items if i["process_type"] == "Human-in-loop"),
+            "hybrid": sum(1 for i in items if i["process_type"] == "Hybrid"),
+            "high_complexity": sum(1 for i in items if i["complexity"] == "high"),
+            "medium_complexity": sum(1 for i in items if i["complexity"] == "medium"),
+            "linear": sum(1 for i in items if i["complexity"] == "linear"),
+            "total_nodes": sum(i["node_count"] for i in items),
+            "total_decisions": sum(i["decision_count"] for i in items),
+            "total_edges": sum(i["edge_count"] for i in items)
+        }
+    })
+
+
+@app.get("/api/clinical-flowcharts/definitions")
+async def clinical_flowcharts_definitions():
+    """Definitions for flowchart elements, complexity levels, process types, and clinical workflow terminology."""
+    return _json_safe({
+        "element_types": [
+            {"term": "Process Node", "symbol": "[ ]", "description": "A discrete action or step in the workflow (e.g., 'Upload EEG/video-EEG', 'Auto-score')."},
+            {"term": "Decision Node", "symbol": "{ }", "description": "A branching point where the flow diverges based on a condition (e.g., 'Quality OK?', 'Neurologist agrees?')."},
+            {"term": "Edge / Arrow", "symbol": "-->", "description": "A directed connection from one node to another, showing the flow of control. Labelled edges show the branch condition (e.g., '-- Yes -->', '-- No -->')."}
+        ],
+        "complexity_levels": [
+            {"level": "Linear", "definition": "No decision branches. Steps execute sequentially from start to finish.", "example": "Patient Onboarding (consent → demographics → upload → ingest)"},
+            {"level": "Medium", "definition": "One decision point introducing two branches that re-merge downstream.", "example": "Assessment Form Flow (alert item positive? → escalate or save)"},
+            {"level": "High", "definition": "Two or more decision points with multiple branching paths and potential loops.", "example": "Governed EEG Read (quality gate + neurologist agreement gate)"}
+        ],
+        "process_types": [
+            {"type": "Automated", "definition": "AI or rule-based system executes all steps without required human intervention. Human oversight may still be available but is not mandatory on the happy path.", "examples": ["Governed EEG Read", "Council of Agents", "IoT Device → Alert"]},
+            {"type": "Human-in-loop", "definition": "A human expert is a required participant at one or more steps — the process cannot advance without human sign-off.", "examples": ["Multi-Expert Study Review", "Assessment Form Flow"]},
+            {"type": "Hybrid", "definition": "Automated pipeline bootstraps the process; a human may optionally review or the system adapts based on data availability.", "examples": ["Patient Onboarding"]}
+        ],
+        "flowchart_catalog": [
+            {"id": "eeg_read", "title": "Governed EEG Read", "purpose": "End-to-end governed pipeline: upload → feature extraction → quality check → model inference → SHAP → neurologist review → audit."},
+            {"id": "council", "title": "Council of Agents", "purpose": "Multi-agent query resolution with security guardrail → RAG → evaluation → compliance gate → human escalation path."},
+            {"id": "study_review", "title": "Multi-Expert Study Review", "purpose": "Parallel review by Neurologist, EEG Technologist, and Psychiatrist; consensus or flag-and-discuss path."},
+            {"id": "iot", "title": "IoT Device → Alert", "purpose": "Wearable data → gateway buffering → edge PII scrub → edge model → confidence threshold → SOS alert chain."},
+            {"id": "onboarding", "title": "Patient Onboarding", "purpose": "Linear intake: consent → demographics → document upload → extraction → patient master build → vector ingest."},
+            {"id": "assessment", "title": "Assessment Form Flow", "purpose": "Expert assigns form → patient completes → auto-score → alert triage → transaction audit."}
+        ],
+        "mermaid_syntax": {
+            "description": "Flowcharts use Mermaid TD (top-down) syntax. Each flowchart is renderable in any Mermaid-compatible viewer.",
+            "start_keyword": "flowchart TD",
+            "node_formats": ["ID[Label] — process step", "ID{Label} — decision diamond"],
+            "edge_formats": ["A --> B — unconditional flow", "A -- condition --> B — labelled conditional branch"]
+        }
+    })
+
+
 # ── Reinforcement Learning Dashboard ──────────────────────────────────────
 @app.get("/api/reinforcement-learning/overview")
 async def reinforcement_learning_overview():
