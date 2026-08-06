@@ -256,7 +256,7 @@
     {
       "phase": 5,
       "name": "MCP, Tooling, Workflow & Integration",
-      "count": 16,
+      "count": 17,
       "dashboards": [
         {
           "name": "MCP Overview Dashboard",
@@ -339,6 +339,12 @@
           "category": "clinical",
           "status": "built",
           "maps_to": "/api/patient-documents/overview + /api/patient-documents/breakdown + /api/patient-documents/definitions"
+        },
+        {
+          "name": "Voice AI Assessment Dashboard",
+          "status": "built",
+          "maps_to": "/api/voice-ai/overview + /api/voice-ai/breakdown + /api/voice-ai/definitions + portal-next/app/voice-ai/page.jsx + nav wired",
+          "note": "116 assessments, 22 patients, 5 instruments (BNT/DIGIT_SPAN/MASA/VERBAL_FLUENCY/WAB), mean score 78.1%, 9 clinical alerts, 39 pipeline events"
         }
       ]
     }
