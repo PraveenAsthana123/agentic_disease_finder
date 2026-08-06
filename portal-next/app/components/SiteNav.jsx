@@ -165,6 +165,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/business-workflows">&#x2699;&#xfe0f; Business Workflows</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/consultant-workflows">&#x1f465; Consultant Workflows</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-flowcharts">&#x1f500; Clinical Flowcharts</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/role-process-flows">&#x1f9ed; Role Process Flows</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cognitive-tests">&#x1f9e0; Cognitive Tests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-demographics">&#x1f465; Demographics</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/population-health">&#x1f30d; Population Health</Link></li>
