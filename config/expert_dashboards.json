@@ -631,6 +631,20 @@
       "component": "portal-next/app/iot-fleet/page.jsx",
       "status": "built",
       "description": "IoT device fleet \u2014 35 devices, 4 types, 30 patients, 6 gateways, 50 alerts (22 unresolved), per-device table with battery/signal/latency/firmware, alert severity breakdown, definitions. 3 endpoints /api/iot-fleet/overview|breakdown|definitions verified 200."
+    },
+    {
+      "id": "operator-requests",
+      "route": "/operator-requests",
+      "name": "Operator Requests Dashboard",
+      "role": "Operations",
+      "viz": "5-KPI row, status/category/source bars, daily volume chart, request table",
+      "status": "built",
+      "endpoints": [
+        "/api/operator-requests/overview",
+        "/api/operator-requests/breakdown",
+        "/api/operator-requests/definitions"
+      ],
+      "note": "Real operator_requests 376 rows, 6 statuses, 4 categories, 2 sources, resolution rate, category\u00d7status cross-tab"
     }
   ],
   "summary": {
