@@ -166,6 +166,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/voice-ai">&#x1f399;&#xfe0f; Voice AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/edge-deploy">&#x1f680; Edge Deploy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/operator-requests">&#x1f4e5; Operator Requests</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/neuro-tests-catalog">&#x1f9ea; Neuro Tests Catalog</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
