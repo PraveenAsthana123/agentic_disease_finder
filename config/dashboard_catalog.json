@@ -544,6 +544,25 @@
       "row_count": 71,
       "description": "ILAE-structured seizure classification: onset zones, seizure types, etiology, syndrome, EEG/MRI findings, drug responsiveness, surgery candidacy. 71 patients, 6-tab frontend.",
       "built_at": "2026-08-06T11:52:09Z"
+    },
+    {
+      "id": "ai_observability",
+      "title": "AI Observability Dashboard",
+      "status": "built",
+      "endpoints": [
+        "/api/ai-observability/overview",
+        "/api/ai-observability/breakdown",
+        "/api/ai-observability/definitions"
+      ],
+      "portal_page": "portal-next/app/ai-observability/page.jsx",
+      "tabs": [
+        "Overview",
+        "Components",
+        "Transactions",
+        "Costs & Analyses",
+        "Definitions"
+      ],
+      "note": "11,394 transactions, 30 components, 9 actors, $1,302 total cost, 69.1% avg confidence"
     }
   ]
 }

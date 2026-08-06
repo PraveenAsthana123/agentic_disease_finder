@@ -42,6 +42,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-risk">&#x26a0;&#xfe0f; AI Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-control-tower">&#x1f5fc; AI Control Tower</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-governance">&#x1f3db;&#xfe0f; AI Governance</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/ai-observability">&#x1f52d; AI Observability</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/responsible-ai-dashboard">&#x2696;&#xfe0f; Responsible AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/global-approval-policy">&#x2705; Approval Policy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/executive-scorecard">&#x1f4ca; Exec Scorecard</Link></li>
