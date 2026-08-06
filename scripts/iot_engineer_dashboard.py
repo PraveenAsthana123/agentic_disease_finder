@@ -502,6 +502,167 @@ def definitions():
     }
 
 
+def edge_inference():
+    """Per-device edge seizure inference simulation.
+
+    Simulates TensorFlow Lite / ONNX Runtime edge inference running on each
+    wearable EEG device's streaming windows.  Results are deterministic
+    (seeded from device characteristics) so responses are consistent.
+
+    Returns:
+      kpis        — fleet-level inference KPIs
+      per_device  — per-device window stats, seizure probability, latency
+      model_info  — edge model metadata (version, type, confidence gate)
+      accuracy    — fleet-level precision/recall/F1 estimates
+    """
+    devices, gateways, alerts, patients = _load_all_data()
+
+    EDGE_MODEL_TYPES = {
+        'wearable_eeg':    {'model': 'EEGNet-Lite (TFLite)', 'window_s': 2, 'sr_hz': 250, 'channels': 8},
+        'ambulatory_eeg':  {'model': 'TCN-Mini (ONNX)',       'window_s': 4, 'sr_hz': 256, 'channels': 16},
+        'home_monitor':    {'model': 'XGBoost-Edge (ONNX)',   'window_s': 2, 'sr_hz': 128, 'channels': 4},
+        'implantable_rns': {'model': 'CNN-RNS (TFLite)',      'window_s': 1, 'sr_hz': 500, 'channels': 2},
+    }
+    CONFIDENCE_GATE = 0.70   # threshold: seizure_prob >= this triggers SOS
+    MODEL_VERSION   = 'v2.3.1'
+
+    per_device = []
+    total_windows        = 0
+    total_seizure_wins   = 0
+    total_infer_latency  = 0.0
+    sos_triggered_count  = 0
+    devices_running      = 0
+    devices_idle         = 0
+    devices_error        = 0
+    tp_sum = fp_sum = fn_sum = 0
+
+    for dev in sorted(devices, key=lambda d: d.get('device_id', '')):
+        device_id   = dev.get('device_id', '')
+        device_type = dev.get('device_type', 'wearable_eeg')
+        status      = dev.get('status', 'offline')
+        latency_ms  = dev.get('latency_ms', 50.0)
+        signal_dbm  = dev.get('signal_strength_dbm', -60.0)
+        battery_pct = dev.get('battery_pct', 70.0)
+        pid         = dev.get('patient_id', '')
+        pt          = patients.get(pid, {})
+
+        # Deterministic per-device RNG from device_id seed
+        seed_val = sum(ord(c) for c in device_id) * 17
+        rng      = random.Random(seed_val)
+
+        meta = EDGE_MODEL_TYPES.get(device_type, EDGE_MODEL_TYPES['wearable_eeg'])
+
+        # Inference state depends on device status
+        if status == 'online' and battery_pct >= 10:
+            infer_status = 'running'
+            devices_running += 1
+        elif status == 'offline':
+            infer_status = 'idle'
+            devices_idle += 1
+        else:
+            infer_status = rng.choice(['idle', 'error'])
+            if infer_status == 'error':
+                devices_error += 1
+            else:
+                devices_idle += 1
+
+        if infer_status == 'running':
+            # Windows processed in the last 24 h
+            win_24h   = int(86400 / meta['window_s'])
+            # Gaps from low signal or latency spikes
+            gap_frac  = max(0.0, min(0.35, (-signal_dbm - 60) / 100.0))
+            win_ok    = int(win_24h * (1.0 - gap_frac))
+            # Seizure windows (low base rate ~ 0.3–2%)
+            base_rate = rng.uniform(0.003, 0.022)
+            sz_wins   = int(win_ok * base_rate)
+            # Inference latency includes BLE + gateway + model forward pass
+            model_lat = round(rng.gauss(latency_ms * 0.6, 5.0), 1)
+            model_lat = max(3.0, min(95.0, model_lat))
+            # Per-window seizure probability for the latest window
+            sz_prob   = round(rng.gauss(base_rate * 25, 0.05), 3)
+            sz_prob   = max(0.0, min(1.0, sz_prob))
+            sos_fired = sz_prob >= CONFIDENCE_GATE
+            if sos_fired:
+                sos_triggered_count += 1
+            # Accuracy estimates per-device (sim ground truth from clinical alerts)
+            sos_alerts_dev = sum(1 for a in alerts
+                                 if a.get('patient_id') == pid
+                                 and a.get('alert_type') == 'sos_seizure')
+            tp = min(sz_wins, max(0, sos_alerts_dev))
+            fp = max(0, sz_wins - tp)
+            fn = max(0, sos_alerts_dev - tp)
+            tp_sum += tp; fp_sum += fp; fn_sum += fn
+
+            total_windows      += win_ok
+            total_seizure_wins += sz_wins
+            total_infer_latency += model_lat
+        else:
+            win_ok = sz_wins = 0
+            model_lat = 0.0
+            sz_prob   = 0.0
+            sos_fired = False
+
+        per_device.append({
+            'device_id':        device_id,
+            'device_type':      device_type,
+            'patient_id':       pid,
+            'patient_name':     pt.get('name') or pid,
+            'infer_status':     infer_status,
+            'model':            meta['model'],
+            'window_sec':       meta['window_s'],
+            'sample_rate_hz':   meta['sr_hz'],
+            'channels':         meta['channels'],
+            'windows_24h':      win_ok,
+            'seizure_windows':  sz_wins,
+            'seizure_rate_pct': round(100 * sz_wins / win_ok, 3) if win_ok else 0.0,
+            'latest_sz_prob':   sz_prob,
+            'sos_triggered':    sos_fired,
+            'infer_latency_ms': model_lat,
+            'battery_pct':      battery_pct,
+            'signal_dbm':       signal_dbm,
+        })
+
+    running_count = max(devices_running, 1)
+    avg_infer_lat = round(total_infer_latency / running_count, 1)
+    total_sz_rate = round(100 * total_seizure_wins / total_windows, 4) if total_windows else 0.0
+
+    # Fleet precision / recall / F1
+    precision = round(tp_sum / (tp_sum + fp_sum), 3) if (tp_sum + fp_sum) else 0.0
+    recall    = round(tp_sum / (tp_sum + fn_sum), 3) if (tp_sum + fn_sum) else 0.0
+    f1        = round(2 * precision * recall / (precision + recall), 3) if (precision + recall) else 0.0
+
+    return {
+        'kpis': {
+            'devices_running':         devices_running,
+            'devices_idle':            devices_idle,
+            'devices_error':           devices_error,
+            'total_windows_24h':       total_windows,
+            'total_seizure_windows':   total_seizure_wins,
+            'fleet_seizure_rate_pct':  total_sz_rate,
+            'sos_triggered':           sos_triggered_count,
+            'avg_infer_latency_ms':    avg_infer_lat,
+            'confidence_gate':         CONFIDENCE_GATE,
+        },
+        'model_info': {
+            'version':         MODEL_VERSION,
+            'confidence_gate': CONFIDENCE_GATE,
+            'runtime':         'TensorFlow Lite + ONNX Runtime (gateway)',
+            'models_deployed': list({m['model'] for m in EDGE_MODEL_TYPES.values()}),
+            'window_types':    [
+                {'device_type': dt, **meta}
+                for dt, meta in EDGE_MODEL_TYPES.items()
+            ],
+        },
+        'accuracy': {
+            'precision': precision,
+            'recall':    recall,
+            'f1':        f1,
+            'note':      'Fleet-level estimates derived from per-device TP/FP/FN vs clinical SOS alert ground truth.',
+        },
+        'per_device': per_device,
+    }
+
+
 if __name__ == '__main__':
     import pprint
     print('=== OVERVIEW ===')

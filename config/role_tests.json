@@ -174,7 +174,8 @@
         {
           "dim": "Accuracy",
           "case": "edge seizure inference on stream",
-          "status": "planned"
+          "status": "built",
+          "maps_to": "GET /api/iot-engineer/edge-inference — 35 devices, TFLite+ONNX, per-device seizure probability + confidence gate + latency + fleet precision/recall/F1, Edge AI tab in /iot-engineer"
         },
         {
           "dim": "Process",

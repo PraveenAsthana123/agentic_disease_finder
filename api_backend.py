@@ -8938,6 +8938,15 @@ async def iot_engineer_definitions():
     return _json_safe(iotd.definitions())
 
 
+@app.get("/api/iot-engineer/edge-inference")
+async def iot_engineer_edge_inference():
+    """IoT Engineer edge inference — per-device TFLite/ONNX edge seizure
+    inference results: windows processed, seizure probability, confidence gate,
+    SOS trigger status, model latency, fleet precision/recall/F1."""
+    import scripts.iot_engineer_dashboard as iotd
+    return _json_safe(iotd.edge_inference())
+
+
 # ── Clinical Pharmacist Dashboard ──────────────────────────────────────
 @app.get("/api/clinical-pharmacist/overview")
 async def clinical_pharmacist_overview():

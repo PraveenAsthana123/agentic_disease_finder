@@ -8,17 +8,22 @@ const statusColor = s =>
 const severityColor = s =>
   s === 'critical' ? 'danger' : s === 'warning' ? 'warning' : 'info';
 
+const inferColor = s =>
+  s === 'running' ? 'success' : s === 'error' ? 'danger' : 'secondary';
+
 export default function IoTEngineerPage() {
-  const [ov,   setOv]   = useState(null);
-  const [bd,   setBd]   = useState(null);
-  const [defs, setDefs] = useState(null);
-  const [tab,  setTab]  = useState('overview');
-  const [sel,  setSel]  = useState(null);
+  const [ov,    setOv]    = useState(null);
+  const [bd,    setBd]    = useState(null);
+  const [defs,  setDefs]  = useState(null);
+  const [ei,    setEi]    = useState(null);
+  const [tab,   setTab]   = useState('overview');
+  const [sel,   setSel]   = useState(null);
 
   useEffect(() => {
     fetch(`${API}/api/iot-engineer/overview`).then(r => r.json()).then(setOv).catch(() => {});
     fetch(`${API}/api/iot-engineer/breakdown`).then(r => r.json()).then(setBd).catch(() => {});
     fetch(`${API}/api/iot-engineer/definitions`).then(r => r.json()).then(setDefs).catch(() => {});
+    fetch(`${API}/api/iot-engineer/edge-inference`).then(r => r.json()).then(setEi).catch(() => {});
   }, []);
 
   if (!ov) return <div className="p-4"><div className="spinner-border text-primary" /></div>;
@@ -36,9 +41,10 @@ export default function IoTEngineerPage() {
   ];
 
   const tabs = [
-    { id: 'overview',  label: 'Overview' },
-    { id: 'devices',   label: `Device Fleet${bd ? ` (${(bd.devices || []).length})` : ''}` },
-    { id: 'alerts',    label: `Alerts${bd ? ` (${(bd.devices || []).reduce((a, d) => a + (d.alert_count || 0), 0)})` : ''}` },
+    { id: 'overview',   label: 'Overview' },
+    { id: 'devices',    label: `Device Fleet${bd ? ` (${(bd.devices || []).length})` : ''}` },
+    { id: 'alerts',     label: `Alerts${bd ? ` (${(bd.devices || []).reduce((a, d) => a + (d.alert_count || 0), 0)})` : ''}` },
+    { id: 'edge-ai',   label: `Edge AI${ei ? ` (${ei.kpis?.devices_running ?? 0} running)` : ''}` },
     { id: 'definitions', label: 'Standards' },
   ];
 
@@ -407,6 +413,170 @@ export default function IoTEngineerPage() {
               </table>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ── Edge AI Inference ── */}
+      {tab === 'edge-ai' && (
+        <div>
+          {!ei && <div className="spinner-border text-primary" />}
+          {ei && (() => {
+            const k = ei.kpis || {};
+            const acc = ei.accuracy || {};
+            const mi  = ei.model_info || {};
+            const devs = ei.per_device || [];
+            const eiKpis = [
+              { label: 'Running',          value: k.devices_running,      color: 'success' },
+              { label: 'Idle',             value: k.devices_idle,         color: 'secondary' },
+              { label: 'Error',            value: k.devices_error,        color: 'danger' },
+              { label: 'Windows (24h)',    value: (k.total_windows_24h || 0).toLocaleString(), color: 'primary' },
+              { label: 'Seizure Windows',  value: (k.total_seizure_windows || 0).toLocaleString(), color: 'warning' },
+              { label: 'Fleet Sz Rate',    value: `${(k.fleet_seizure_rate_pct || 0).toFixed(3)}%`, color: 'warning' },
+              { label: 'SOS Triggered',    value: k.sos_triggered,        color: 'danger' },
+              { label: 'Avg Infer (ms)',   value: k.avg_infer_latency_ms != null ? `${k.avg_infer_latency_ms}` : '—', color: 'info' },
+            ];
+            return (
+              <>
+                {/* KPI row */}
+                <div className="row mb-3">
+                  {eiKpis.map(kp => (
+                    <div key={kp.label} className="col-6 col-md-3 col-lg-2 mb-2">
+                      <div className="card text-center shadow-sm border-0">
+                        <div className="card-body py-2 px-1">
+                          <div className={`h4 mb-0 text-${kp.color}`}>{kp.value ?? '—'}</div>
+                          <div className="text-muted" style={{ fontSize: '0.70rem' }}>{kp.label}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="row mb-3">
+                  {/* Model Info */}
+                  <div className="col-md-5 mb-3">
+                    <div className="card shadow-sm border-0 h-100">
+                      <div className="card-header bg-dark text-white py-2 small fw-bold">Edge Model Info</div>
+                      <div className="card-body p-3">
+                        <table className="table table-sm mb-0">
+                          <tbody>
+                            <tr><td className="small fw-bold">Version</td><td className="small">{mi.version || '—'}</td></tr>
+                            <tr><td className="small fw-bold">Runtime</td><td className="small">{mi.runtime || '—'}</td></tr>
+                            <tr><td className="small fw-bold">Confidence Gate</td>
+                              <td className="small fw-bold text-warning">{mi.confidence_gate != null ? `≥ ${mi.confidence_gate}` : '—'}</td></tr>
+                          </tbody>
+                        </table>
+                        <div className="mt-2">
+                          <div className="small fw-bold mb-1">Models by Device Type</div>
+                          {(mi.window_types || []).map(wt => (
+                            <div key={wt.device_type} className="small border-bottom py-1">
+                              <span className="fw-bold">{wt.device_type.replace(/_/g,' ')}</span>
+                              {' — '}{wt.model} · {wt.window_s}s window · {wt.sr_hz} Hz · {wt.channels}ch
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Fleet Accuracy */}
+                  <div className="col-md-3 mb-3">
+                    <div className="card shadow-sm border-0 h-100">
+                      <div className="card-header bg-primary text-white py-2 small fw-bold">Fleet Accuracy</div>
+                      <div className="card-body p-3">
+                        <table className="table table-sm mb-2">
+                          <tbody>
+                            <tr><td className="small fw-bold">Precision</td>
+                              <td className="small">{acc.precision != null ? `${(acc.precision * 100).toFixed(1)}%` : '—'}</td></tr>
+                            <tr><td className="small fw-bold">Recall</td>
+                              <td className="small">{acc.recall != null ? `${(acc.recall * 100).toFixed(1)}%` : '—'}</td></tr>
+                            <tr><td className="small fw-bold">F1</td>
+                              <td className="small">{acc.f1 != null ? acc.f1.toFixed(3) : '—'}</td></tr>
+                          </tbody>
+                        </table>
+                        <div className="text-muted" style={{ fontSize: '0.68rem' }}>{acc.note}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Inference status pie */}
+                  <div className="col-md-4 mb-3">
+                    <div className="card shadow-sm border-0 h-100">
+                      <div className="card-header bg-info text-white py-2 small fw-bold">Inference Status</div>
+                      <div className="card-body p-3">
+                        {[
+                          { s: 'running', c: k.devices_running, color: 'success' },
+                          { s: 'idle',    c: k.devices_idle,    color: 'secondary' },
+                          { s: 'error',   c: k.devices_error,   color: 'danger' },
+                        ].map(row => {
+                          const total = devs.length || 1;
+                          return (
+                            <div key={row.s} className="d-flex align-items-center mb-2">
+                              <span className={`badge bg-${row.color} me-2`} style={{ minWidth: 70 }}>{row.s}</span>
+                              <div className="progress flex-grow-1" style={{ height: 18 }}>
+                                <div className={`progress-bar bg-${row.color}`}
+                                     style={{ width: `${((row.c || 0) / total * 100).toFixed(0)}%` }}>
+                                  <span style={{ fontSize: '0.65rem' }}>{row.c}</span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Per-device table */}
+                <div className="card shadow-sm border-0">
+                  <div className="card-header bg-success text-white py-2 small fw-bold">
+                    Per-Device Edge Inference ({devs.length} devices)
+                  </div>
+                  <div className="card-body p-2">
+                    <div className="table-responsive">
+                      <table className="table table-sm table-hover mb-0">
+                        <thead className="table-dark">
+                          <tr>
+                            <th>Device</th><th>Type</th><th>Patient</th><th>Status</th>
+                            <th>Model</th><th className="text-end">Windows (24h)</th>
+                            <th className="text-end">Sz Windows</th>
+                            <th className="text-end">Latest Prob</th>
+                            <th className="text-end">Latency (ms)</th>
+                            <th>SOS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {devs.map(d => (
+                            <tr key={d.device_id}>
+                              <td className="small fw-bold">{d.device_id}</td>
+                              <td className="small" style={{ fontSize: '0.68rem' }}>{(d.device_type || '').replace(/_/g, ' ')}</td>
+                              <td className="small">{d.patient_id || '—'}</td>
+                              <td><span className={`badge bg-${inferColor(d.infer_status)}`} style={{ fontSize: '0.65rem' }}>{d.infer_status}</span></td>
+                              <td className="small" style={{ fontSize: '0.68rem' }}>{d.model || '—'}</td>
+                              <td className="text-end small">{d.windows_24h > 0 ? d.windows_24h.toLocaleString() : '—'}</td>
+                              <td className="text-end small">{d.seizure_windows > 0 ? d.seizure_windows.toLocaleString() : '—'}</td>
+                              <td className="text-end small">
+                                {d.infer_status === 'running'
+                                  ? <span className={d.latest_sz_prob >= 0.7 ? 'text-danger fw-bold' : d.latest_sz_prob >= 0.4 ? 'text-warning' : ''}>
+                                      {(d.latest_sz_prob * 100).toFixed(1)}%
+                                    </span>
+                                  : '—'}
+                              </td>
+                              <td className="text-end small">
+                                {d.infer_latency_ms > 0 ? `${d.infer_latency_ms.toFixed(1)}` : '—'}
+                              </td>
+                              <td className="small text-center">
+                                {d.sos_triggered ? <span className="badge bg-danger">🚨 YES</span> : <span className="text-muted">—</span>}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </div>
       )}
 
