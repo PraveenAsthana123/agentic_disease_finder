@@ -1,12 +1,12 @@
 {
-  "title": "Multidisciplinary Expert Roles \u2014 Epilepsy AI Platform",
-  "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). \u00a7155 honest. Expert Roles Dashboard \u2014 3 endpoints live (/api/expert-roles/*), 5-tab frontend UI.",
+  "title": "Multidisciplinary Expert Roles — Epilepsy AI Platform",
+  "note": "8 care-team experts beyond Neurologist/CDM. Each task: steps + challenges + AI feature + deliverable + honest status (built=live data path / partial=some data exists / planned=cataloged). §155 honest. Expert Roles Dashboard — 3 endpoints live (/api/expert-roles/*), 5-tab frontend UI.",
   "updated_at": "2026-07-20",
   "dashboard_status": "built",
   "roles": [
     {
       "role": "Clinical Pharmacist (Epilepsy)",
-      "icon": "\ud83d\udc8a",
+      "icon": "💊",
       "dashboard_status": "built",
       "dashboard_component": "PharmacistDashboard.jsx",
       "mission": "Safe, effective, individualized anti-seizure medication management.",
@@ -65,13 +65,13 @@
           "ai_feature": "Adherence prediction",
           "status": "built",
           "steps": [
-            "Refill history \u2192 MPR/PDC",
+            "Refill history → MPR/PDC",
             "MMAS-8 questionnaire",
             "Predict non-adherence risk",
             "Flag high-risk"
           ],
           "challenges": [
-            "Refill \u2260 ingestion",
+            "Refill ≠ ingestion",
             "Recall bias",
             "No pharmacy-claims feed"
           ]
@@ -112,7 +112,7 @@
     },
     {
       "role": "Epilepsy Nurse Specialist (ENS)",
-      "icon": "\ud83e\ude79",
+      "icon": "🩹",
       "mission": "Continuous care: education, adherence, seizure safety, follow-up coordination.",
       "data_hook": "LIVE: /api/nurse (6 endpoints, real seizure_diary + medications data)",
       "tasks": [
@@ -187,7 +187,7 @@
           "steps": [
             "Capture call/symptoms",
             "Risk-stratify",
-            "Route urgent \u2192 neurologist",
+            "Route urgent → neurologist",
             "Log + schedule"
           ],
           "challenges": [
@@ -200,8 +200,8 @@
     },
     {
       "role": "Speech-Language Pathologist (SLP)",
-      "icon": "\ud83d\udde3\ufe0f",
-      "mission": "Language, communication, swallowing \u2014 esp. dominant temporal-lobe + pre/post-surgery.",
+      "icon": "🗣️",
+      "mission": "Language, communication, swallowing — esp. dominant temporal-lobe + pre/post-surgery.",
       "data_hook": "LIVE: /api/slp (5 endpoints, real BNT+WAB+VERBAL_FLUENCY+MASA assessments in clinical.db)",
       "tasks": [
         {
@@ -274,7 +274,7 @@
     },
     {
       "role": "Occupational Therapist (OT)",
-      "icon": "\ud83e\uddae",
+      "icon": "🦮",
       "mission": "Independence, safety, ADL/IADL, return-to-work/education with cognitive deficits.",
       "data_hook": "Barthel/COPM assessments live (partial live)",
       "tasks": [
@@ -359,7 +359,7 @@
     },
     {
       "role": "Clinical Dietitian / Nutritionist",
-      "icon": "\ud83e\udd57",
+      "icon": "🥗",
       "mission": "Ketogenic/MAD/LGIT diets, malnutrition, AED-nutrition interactions.",
       "data_hook": "medications (9) + patients (40) + assessments (BARTHEL) + seizure_diary (25) live",
       "tasks": [
@@ -440,12 +440,15 @@
             "Patient adherence"
           ]
         }
-      ]
+      ],
+      "dashboard_status": "built",
+      "dashboard_component": "DietitianPage",
+      "maps_to": "/api/dietitian + /api/dietitian/ketogenic|malnutrition|nutrient|medication-nutrition + portal-next/app/dietitian/page.jsx + nav wired"
     },
     {
       "role": "Clinical Psychologist",
-      "icon": "\ud83e\udde0",
-      "mission": "Cognition, emotion, behavior, coping, psychotherapy (CBT/ACT) \u2014 psychological impact of epilepsy.",
+      "icon": "🧠",
+      "mission": "Cognition, emotion, behavior, coping, psychotherapy (CBT/ACT) — psychological impact of epilepsy.",
       "data_hook": "PHQ-9/GAD-7/NDDI-E/QOLIE-31 + seizure_diary live",
       "tasks": [
         {
@@ -529,7 +532,7 @@
     },
     {
       "role": "Medical Social Worker (MSW)",
-      "icon": "\ud83e\udd1d",
+      "icon": "🤝",
       "mission": "Social determinants: employment, finances, family, transport, disability benefits.",
       "data_hook": "built",
       "tasks": [
@@ -598,7 +601,7 @@
             "/api/social-worker/treatment-barriers"
           ],
           "steps": [
-            "Link missed appts \u2192 social cause",
+            "Link missed appts → social cause",
             "Transport/finance flags",
             "Intervention",
             "Monitor"
@@ -613,8 +616,8 @@
     },
     {
       "role": "Epilepsy Program Coordinator",
-      "icon": "\ud83e\udded",
-      "mission": "Oversee the care pathway: referral\u2192diagnostics\u2192MDT\u2192treatment\u2192surgery\u2192follow-up; KPIs + resources.",
+      "icon": "🧭",
+      "mission": "Oversee the care pathway: referral→diagnostics→MDT→treatment→surgery→follow-up; KPIs + resources.",
       "data_hook": "patients/analyses/assessments/seizure_diary/reviews live",
       "tasks": [
         {
@@ -622,7 +625,7 @@
           "ai_feature": "Journey engine (Sankey)",
           "status": "built",
           "steps": [
-            "Map referral\u2192follow-up stages",
+            "Map referral→follow-up stages",
             "Track each patient's position",
             "Flag delays/bottlenecks",
             "Timeline"
