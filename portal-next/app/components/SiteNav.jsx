@@ -171,6 +171,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/operator-requests">&#x1f4e5; Operator Requests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neuro-tests-catalog">&#x1f9ea; Neuro Tests Catalog</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/education-modules">&#x1f4da; Education Modules</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/validation-studies">&#x1f52c; Validation Studies</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
