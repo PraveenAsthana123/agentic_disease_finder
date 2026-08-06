@@ -17179,6 +17179,28 @@ async def emotiv_flex_definitions():
     return _json_safe(efd.definitions())
 
 
+# ── Emotiv EPOC X Dashboard ─────────────────────────────────────────────────────
+@app.get("/api/emotiv-epoc-x/overview")
+async def emotiv_epoc_x_overview():
+    """Emotiv EPOC X overview — fleet KPIs, 7-day band trend, pad conditions, seizure risk."""
+    import scripts.emotiv_epoc_x_dashboard as exd
+    return _json_safe(exd.overview())
+
+
+@app.get("/api/emotiv-epoc-x/breakdown")
+async def emotiv_epoc_x_breakdown():
+    """Emotiv EPOC X per-device inventory, session log, seizure-risk alert events."""
+    import scripts.emotiv_epoc_x_dashboard as exd
+    return _json_safe(exd.breakdown())
+
+
+@app.get("/api/emotiv-epoc-x/definitions")
+async def emotiv_epoc_x_definitions():
+    """Emotiv EPOC X definitions — 14-channel map, impedance grades, band glossary, alpha asymmetry."""
+    import scripts.emotiv_epoc_x_dashboard as exd
+    return _json_safe(exd.definitions())
+
+
 # ── Emotiv Insight 2+ Dashboard ─────────────────────────────────────────────────
 @app.get("/api/emotiv-insight/overview")
 async def emotiv_insight_overview():
