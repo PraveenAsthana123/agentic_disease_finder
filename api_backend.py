@@ -17334,6 +17334,14 @@ async def patient_mobile_definitions():
     return _json_safe(pmd.definitions())
 
 
+# ── Therapy & Rehabilitation Dashboard ─────────────────────────────────────────
+@app.get("/api/therapy")
+async def therapy_dashboard():
+    """Therapy & Rehabilitation Dashboard — rehab programs, exercise plans, meditation, physio protocols from real clinical.db rehab_plans (311 rows, 30 patients)."""
+    import scripts.therapy_module as tm
+    return _json_safe(tm.therapy_overview())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
