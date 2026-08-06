@@ -17543,6 +17543,29 @@ async def time_frequency_definitions():
     return _json_safe(tfd.definitions())
 
 
+# =============================================================================
+# HTTP TRACES DASHBOARD
+# =============================================================================
+
+@app.get("/api/traces/overview")
+async def traces_overview():
+    """HTTP traces — KPIs, top paths, status distribution, recent 5."""
+    import scripts.traces_dashboard as td
+    return _json_safe(td.overview())
+
+@app.get("/api/traces/breakdown")
+async def traces_breakdown():
+    """HTTP traces — full table (up to 500 most recent rows)."""
+    import scripts.traces_dashboard as td
+    return _json_safe(td.breakdown())
+
+@app.get("/api/traces/definitions")
+async def traces_definitions():
+    """HTTP traces — glossary, latency SLAs, span types, propagation fields."""
+    import scripts.traces_dashboard as td
+    return _json_safe(td.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
