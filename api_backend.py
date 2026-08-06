@@ -17275,6 +17275,28 @@ async def smartwatch_definitions():
     return _json_safe(swd.definitions())
 
 
+# ── Patient Mobile App Dashboard ────────────────────────────────────────────────
+@app.get("/api/patient-mobile/overview")
+async def patient_mobile_overview():
+    """Patient Mobile App overview — active users, seizure burden, medication adherence, SOS events, offline sync queue."""
+    import scripts.patient_mobile_app_dashboard as pmd
+    return _json_safe(pmd.overview())
+
+
+@app.get("/api/patient-mobile/diary")
+async def patient_mobile_diary():
+    """Patient Mobile App diary — seizure diary entries, medication log, symptom tracker, device pairing, SOS events."""
+    import scripts.patient_mobile_app_dashboard as pmd
+    return _json_safe(pmd.diary())
+
+
+@app.get("/api/patient-mobile/definitions")
+async def patient_mobile_definitions():
+    """Patient Mobile App definitions — app features, data fields, offline-first architecture, SOS escalation, adherence thresholds."""
+    import scripts.patient_mobile_app_dashboard as pmd
+    return _json_safe(pmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

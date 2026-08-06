@@ -153,7 +153,14 @@
       "online": "syncs to backend live",
       "offline": "local SQLite \u2192 queue \u2192 sync on reconnect (offline-first)",
       "alert": "medication reminders, SOS, risk alerts",
-      "status": "partial"
+      "status": "built",
+      "route": "/patient-mobile",
+      "endpoints": [
+        "/api/patient-mobile/overview",
+        "/api/patient-mobile/diary",
+        "/api/patient-mobile/definitions"
+      ],
+      "note": "Patient Mobile App Dashboard \u2014 seizure diary, medication adherence, SOS events, offline sync queue, device pairing, 3-tab frontend + nav wired"
     },
     {
       "id": "caregiver_app",
@@ -211,8 +218,8 @@
   "alert_pipeline": "device \u2192 (edge model OR gateway) \u2192 confidence gate \u2192 SOS (phone/SMS/caregiver) \u2192 audit",
   "summary": {
     "devices": 9,
-    "built": 8,
-    "partial": 1,
+    "built": 9,
+    "partial": 0,
     "planned": 0,
     "honest_note": "Connectivity model + fleet designed; live device integration is simulated. Real Emotiv SDK / BLE / mobile apps require hardware + native app builds."
   }

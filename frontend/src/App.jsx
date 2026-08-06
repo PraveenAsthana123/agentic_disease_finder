@@ -378,6 +378,7 @@ import MRIFindingsDashboard from './components/MRIFindingsDashboard'
 import SurgicalOutcomesDashboard from './components/SurgicalOutcomesDashboard'
 import FeatureFlagsDashboard from './components/FeatureFlagsDashboard'
 import EmotivWearableDashboard from './components/EmotivWearableDashboard'
+import PatientMobileAppDashboard from './components/PatientMobileAppDashboard'
 import PaperclipDashboard from './components/PaperclipDashboard'
 import OperatorRequestsDashboard from './components/OperatorRequestsDashboard'
 import ConsentManagementDashboard from './components/ConsentManagementDashboard'
@@ -919,6 +920,7 @@ function App() {
     { id: 'api-resilience', label: 'API Resilience' },
     { id: 'otel-llm', label: 'OTel LLM Observability' },
     { id: 'mobile-alerts', label: 'Mobile Alerts / SOS' },
+    { id: 'patient-mobile', label: 'Patient Mobile App' },
     { id: 'resource-monitor', label: 'Resource Monitor' },
     { id: 'config-drift', label: 'Config Drift Monitor' },
     { id: 'alert-fatigue', label: 'Alert Fatigue Monitor' },
@@ -2904,6 +2906,8 @@ function App() {
         return <WearableDevicesDashboard />
       case 'emotiv-wearable':
         return <EmotivWearableDashboard />
+      case 'patient-mobile':
+        return <PatientMobileAppDashboard />
       case 'emotiv-flex':
         return <EmotivFlexDashboard />
       case 'device-mode':
