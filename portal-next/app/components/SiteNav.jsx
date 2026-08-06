@@ -130,6 +130,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/lsss">&#x1f4ca; LSSS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/phq9-dashboard">&#x1f4cb; PHQ-9</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/psychiatrist">&#x1f4ac; Psychiatrist</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/radiologist">&#x1f9b4; Radiologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-psychologist">&#x1f9e0; Clin. Psychologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/occupational-therapist">&#x1f590;&#xfe0f; OT</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/consultant-matrix">&#x1f465; Consultant Matrix</Link></li>
