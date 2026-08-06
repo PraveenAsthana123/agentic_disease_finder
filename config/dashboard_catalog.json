@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-06T08:06:44Z",
   "phases": [
     {
       "phase": 1,
@@ -514,6 +514,18 @@
         "/api/eeg-viz/bad-channels"
       ],
       "note": "5-tab viewer: Waveforms / Band Power / Spikes / Lateralization / Channel QC \u2014 real EDF data via MNE, 878 recordings, gain control, time navigation"
+    },
+    {
+      "id": "treatment_efficacy",
+      "name": "Treatment Efficacy Dashboard",
+      "category": "clinical",
+      "status": "built",
+      "endpoints": [
+        "/api/treatment-efficacy/overview",
+        "/api/treatment-efficacy/breakdown",
+        "/api/treatment-efficacy/definitions"
+      ],
+      "frontend": "portal-next/app/treatment-efficacy/page.jsx"
     }
   ]
 }

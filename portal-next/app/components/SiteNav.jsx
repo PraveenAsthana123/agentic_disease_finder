@@ -27,6 +27,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-types">AI Types</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-nurse">💉 Epilepsy Nurse</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/medication">&#x1f48a; Medication</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/treatment-efficacy">&#x1f4c9; Treatment Efficacy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/medication-refills">&#x1f504; Refills</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-severity">&#x26a1; Seizure Severity</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mri-review">&#x1f9e0; MRI Review</Link></li>
