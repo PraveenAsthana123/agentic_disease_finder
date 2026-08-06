@@ -385,7 +385,10 @@
           "format": "PDF",
           "status": "built"
         }
-      ]
+      ],
+      "status": "built",
+      "route": "/ai-control-tower",
+      "dashboard_component": "portal-next/app/ai-control-tower/page.jsx"
     },
     {
       "role": "AI Security",
