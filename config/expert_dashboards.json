@@ -645,6 +645,12 @@
         "/api/operator-requests/definitions"
       ],
       "note": "Real operator_requests 376 rows, 6 statuses, 4 categories, 2 sources, resolution rate, category\u00d7status cross-tab"
+    },
+    {
+      "name": "Responsible AI Dashboard",
+      "route": "/responsible-ai-dashboard",
+      "status": "built",
+      "description": "30-framework responsible AI scorecard with sub-analysis breakdown"
     }
   ],
   "summary": {
