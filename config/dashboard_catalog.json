@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-08-06T08:06:44Z",
+  "updated_at": "2026-08-06T11:52:09Z",
   "phases": [
     {
       "phase": 1,
@@ -526,6 +526,24 @@
         "/api/treatment-efficacy/definitions"
       ],
       "frontend": "portal-next/app/treatment-efficacy/page.jsx"
+    },
+    {
+      "id": "seizure-metadata",
+      "name": "Seizure Metadata (ILAE Classification)",
+      "category": "clinical",
+      "status": "built",
+      "endpoints": [
+        "/api/seizure-metadata/overview",
+        "/api/seizure-metadata/breakdown",
+        "/api/seizure-metadata/definitions"
+      ],
+      "portal_page": "/seizure-metadata",
+      "data_sources": [
+        "seizure_metadata"
+      ],
+      "row_count": 71,
+      "description": "ILAE-structured seizure classification: onset zones, seizure types, etiology, syndrome, EEG/MRI findings, drug responsiveness, surgery candidacy. 71 patients, 6-tab frontend.",
+      "built_at": "2026-08-06T11:52:09Z"
     }
   ]
 }
