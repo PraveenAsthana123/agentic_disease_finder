@@ -17992,6 +17992,176 @@ async def accuracy_options_definitions():
     }
 
 
+# ── Seizure Diary Dashboard ───────────────────────────────────────────
+# Real data: seizure_diary table — 25 entries across 7 patients.
+# Per-event fields: date, duration_sec, severity, trigger, aura,
+# awareness, motor_signs, injury, er_visit, rescue_med, post_ictal.
+
+def _seizure_diary_data():
+    """Load all seizure diary rows from DB."""
+    import sqlite3
+    from pathlib import Path
+    db = Path(__file__).parent / "data" / "clinical.db"
+    try:
+        conn = sqlite3.connect(str(db))
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM seizure_diary ORDER BY event_date, event_time")
+        rows = [dict(r) for r in cur.fetchall()]
+        conn.close()
+        return rows
+    except Exception as e:
+        return []
+
+
+@app.get("/api/seizure-diary-dashboard/overview")
+async def seizure_diary_overview():
+    """Seizure Diary overview — KPI cards, severity & trigger distributions, monthly trend."""
+    from collections import Counter, defaultdict
+    rows = _seizure_diary_data()
+    if not rows:
+        return {"error": "No seizure diary data available", "total_events": 0}
+
+    total = len(rows)
+    patients = set(r["patient_id"] for r in rows)
+    durations = [r["duration_sec"] for r in rows if r.get("duration_sec") is not None]
+    avg_dur = round(sum(durations) / len(durations)) if durations else None
+    er_visits = sum(1 for r in rows if str(r.get("er_visit", "") or "").lower() in ("yes", "true", "1"))
+    injuries = sum(1 for r in rows if r.get("injury") and str(r["injury"]).lower() not in ("no", "none", ""))
+
+    severity_dist = dict(Counter(r["severity"] for r in rows if r.get("severity")))
+    trigger_raw = Counter(r["trigger"] for r in rows if r.get("trigger"))
+    top_triggers = dict(trigger_raw.most_common(8))
+
+    # Monthly trend
+    monthly: dict = defaultdict(lambda: {"events": 0, "er_visits": 0})
+    for r in rows:
+        dt = (r.get("event_date") or "")[:7]  # YYYY-MM
+        if dt:
+            monthly[dt]["events"] += 1
+            if str(r.get("er_visit", "") or "").lower() in ("yes", "true", "1"):
+                monthly[dt]["er_visits"] += 1
+    monthly_trend = [{"month": m, **v} for m, v in sorted(monthly.items())]
+
+    er_rate = round(er_visits / total * 100, 1) if total else None
+
+    return {
+        "total_events": total,
+        "unique_patients": len(patients),
+        "avg_duration_sec": avg_dur,
+        "er_visits": er_visits,
+        "er_rate_pct": er_rate,
+        "injury_count": injuries,
+        "severity_distribution": severity_dist,
+        "top_triggers": top_triggers,
+        "monthly_trend": monthly_trend,
+        "data_source": "seizure_diary table",
+    }
+
+
+@app.get("/api/seizure-diary-dashboard/breakdown")
+async def seizure_diary_breakdown():
+    """Seizure Diary breakdown — per-patient summary table + full event log."""
+    from collections import defaultdict
+    rows = _seizure_diary_data()
+    if not rows:
+        return {"patient_summary": [], "event_log": []}
+
+    # Per-patient aggregation
+    patients: dict = defaultdict(lambda: {
+        "total_events": 0, "durations": [], "er_visits": 0, "injuries": 0,
+        "severities": [], "last_event": None,
+    })
+    for r in rows:
+        pid = r["patient_id"]
+        patients[pid]["total_events"] += 1
+        if r.get("duration_sec") is not None:
+            patients[pid]["durations"].append(r["duration_sec"])
+        if str(r.get("er_visit", "") or "").lower() in ("yes", "true", "1"):
+            patients[pid]["er_visits"] += 1
+        if r.get("injury") and str(r["injury"]).lower() not in ("no", "none", ""):
+            patients[pid]["injuries"] += 1
+        if r.get("severity"):
+            patients[pid]["severities"].append(r["severity"])
+        dt = r.get("event_date") or ""
+        if not patients[pid]["last_event"] or dt > patients[pid]["last_event"]:
+            patients[pid]["last_event"] = dt
+
+    sev_rank = {"Critical": 4, "Severe": 3, "Moderate": 2, "Mild": 1}
+    summary = []
+    for pid, d in sorted(patients.items()):
+        durs = d["durations"]
+        sevs = d["severities"]
+        worst = max(sevs, key=lambda s: sev_rank.get(s, 0)) if sevs else None
+        summary.append({
+            "patient_id": pid,
+            "total_events": d["total_events"],
+            "avg_duration_sec": round(sum(durs) / len(durs)) if durs else None,
+            "er_visits": d["er_visits"],
+            "injuries": d["injuries"],
+            "worst_severity": worst,
+            "last_event": d["last_event"],
+        })
+    summary.sort(key=lambda x: x["total_events"], reverse=True)
+
+    # Full event log (most recent first)
+    event_log = sorted(rows, key=lambda r: (r.get("event_date") or "", r.get("event_time") or ""), reverse=True)
+    events = []
+    for r in event_log:
+        events.append({
+            "patient_id": r["patient_id"],
+            "event_date": r.get("event_date"),
+            "event_time": r.get("event_time"),
+            "duration_sec": r.get("duration_sec"),
+            "severity": r.get("severity"),
+            "trigger": r.get("trigger"),
+            "aura": r.get("aura"),
+            "awareness": r.get("awareness"),
+            "motor_signs": r.get("motor_signs"),
+            "injury": r.get("injury"),
+            "er_visit": r.get("er_visit"),
+            "rescue_med": r.get("rescue_med"),
+            "post_ictal": r.get("post_ictal"),
+            "recovery_min": r.get("recovery_min"),
+            "location": r.get("location"),
+            "notes": r.get("notes"),
+        })
+
+    return {"patient_summary": summary, "event_log": events}
+
+
+@app.get("/api/seizure-diary-dashboard/definitions")
+async def seizure_diary_definitions():
+    """Seizure Diary definitions — metric glossary for clinicians."""
+    return {
+        "title": "Seizure Diary Dashboard",
+        "description": "Patient-reported and clinician-confirmed seizure events from the seizure_diary table. "
+                       "Covers 25 events across 7 patients with detailed per-event phenotyping.",
+        "metrics": [
+            {"name": "Total Seizure Events", "description": "All recorded seizure diary entries across all patients in the database."},
+            {"name": "Unique Patients", "description": "Number of distinct patients with at least one seizure diary entry."},
+            {"name": "Avg Duration (sec)", "description": "Mean seizure duration in seconds across all events with duration recorded."},
+            {"name": "ER Visits", "description": "Number of events resulting in an emergency room visit. High ER rate indicates poorly controlled epilepsy."},
+            {"name": "ER Rate (%)", "description": "Percentage of seizure events that required an emergency room visit."},
+            {"name": "Injury Count", "description": "Events where the patient sustained an injury (e.g., fall). Excludes 'No' or blank injury fields."},
+            {"name": "Severity Distribution", "description": "Count of events by self-reported or clinician-rated severity: Mild, Moderate, Severe, Critical."},
+            {"name": "Top Triggers", "description": "Most frequently reported precipitating factors (e.g., sleep deprivation, stress, missed medication)."},
+            {"name": "Monthly Trend", "description": "Event count and ER visit count grouped by calendar month — tracks burden over time."},
+            {"name": "Worst Severity (per patient)", "description": "The most severe seizure type ever recorded for that patient across all diary entries."},
+            {"name": "Avg Duration (per patient)", "description": "Mean seizure duration for that patient's diary entries."},
+            {"name": "Aura", "description": "Pre-ictal sensory or experiential warning (e.g., déjà vu, visual aura). Presence helps localise seizure onset."},
+            {"name": "Awareness", "description": "Whether the patient retained awareness during the seizure — maps to focal aware vs focal impaired awareness."},
+            {"name": "Motor Signs", "description": "Presence of motor features (tonic, clonic, myoclonic, atonic) during the event."},
+            {"name": "Post-Ictal State", "description": "Post-seizure confusion, fatigue, or Todd's paresis. Duration reflects seizure severity."},
+            {"name": "Recovery (min)", "description": "Time in minutes until the patient returned to baseline after the seizure."},
+            {"name": "Rescue Medication", "description": "Whether a rescue medication (e.g., buccal midazolam, rectal diazepam) was administered."},
+        ],
+        "data_source": "seizure_diary table (clinical.db)",
+        "clinical_context": "Seizure diary data supports ILAE seizure frequency classification, treatment efficacy monitoring, "
+                            "and medico-legal documentation. High frequency (>1/month) or status-level events trigger escalation review.",
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
