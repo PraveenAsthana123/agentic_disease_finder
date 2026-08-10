@@ -749,12 +749,25 @@
       ]
     }
   ],
+  "regulatory_audit_trail_dashboard": {
+    "id": "regulatory_audit_trail",
+    "name": "Regulatory Audit Trail Dashboard",
+    "status": "built",
+    "priority": "P0",
+    "route": "/regulatory-audit-trail",
+    "description": "Complete action audit log for 16 regulatory submissions — 102 events, 11 actors, 5 categories (Administrative/Regulatory/Technical/Clinical/Quality), 9 action types (Risk assessment/CAPA/Deviation/Signature/Review/etc.), monthly activity timeline 2024-06 to 2026-04, per-submission action×actor×category matrix, per-actor workload table. 4-tab frontend (Overview/Per Submission/Actors/Definitions), 3 endpoints /api/regulatory-audit-trail/overview|breakdown|definitions verified 200, portal-next/app/regulatory-audit-trail/page.jsx + SiteNav wired next to Audit Trail.",
+    "endpoints": [
+      "/api/regulatory-audit-trail/overview",
+      "/api/regulatory-audit-trail/breakdown",
+      "/api/regulatory-audit-trail/definitions"
+    ]
+  },
   "summary": {
-    "total": 61,
-    "built": 61,
+    "total": 62,
+    "built": 62,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 61
+    "count": 62
   }
 }
