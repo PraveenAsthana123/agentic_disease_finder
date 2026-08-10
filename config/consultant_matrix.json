@@ -1,0 +1,756 @@
+{
+  "title": "Epilepsy EEG Research \u2014 Consultant Engagement Matrix (Role \u00b7 Task \u00b7 Facets)",
+  "purpose": "Human clinical oversight registry. Per role: tasks, challenges, documents, compliance docs, internal operation tasks, patient-deliverable docs, patient questionnaire, assessment. No cost.",
+  "engagement_model": "Advisory (role + responsibility based)",
+  "updated_at": "2026-06-23",
+  "consultants": [
+    {
+      "id": "neurologist",
+      "name": "Neurologist / Epileptologist",
+      "tier": 1,
+      "mandatory": true,
+      "role": "Clinical Advisor",
+      "objective": "Validate epilepsy diagnosis and seizure classification",
+      "tasks": [
+        "Review diagnostic workflows",
+        "Validate seizure classification (ILAE)",
+        "Define inclusion/exclusion criteria",
+        "Validate ground-truth labels",
+        "Review model outputs + risk"
+      ],
+      "challenges": [
+        "Diagnosis may vary between clinicians",
+        "Seizure history often incomplete",
+        "Medication confounds EEG"
+      ],
+      "documents": [
+        "Clinical Validation Report",
+        "Diagnostic Review Report"
+      ],
+      "compliance_docs": [
+        "Diagnosis sign-off log",
+        "Inclusion/exclusion criteria approval",
+        "Ground-truth label attestation"
+      ],
+      "internal_tasks": [
+        "Chart review",
+        "Label adjudication",
+        "Disagreement resolution with neurophysiologist"
+      ],
+      "patient_documents": [
+        "Diagnosis summary",
+        "Treatment plan note"
+      ],
+      "patient_questionnaire": [
+        "Seizure frequency/onset",
+        "Aura description",
+        "Triggers",
+        "Family history",
+        "Medication adherence"
+      ],
+      "assessment": [
+        "Epilepsy type",
+        "Seizure type",
+        "Syndrome",
+        "Etiology",
+        "Outcome category"
+      ],
+      "data": {
+        "raw_eeg": "optional",
+        "eeg_report": "yes",
+        "diagnosis": "yes",
+        "clinical_notes": "yes",
+        "moca": "optional",
+        "adl": "no",
+        "medication": "yes"
+      },
+      "tools": [
+        "EEG viewer",
+        "ILAE classifier",
+        "ICD-10 coder",
+        "PACS / MRI viewer",
+        "EMR"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Inter-rater variability",
+          "ai": "AI seizure-classification suggestion + SHAP \u2192 reduces disagreement"
+        },
+        {
+          "challenge": "Long-term EEG review time",
+          "ai": "AI pre-screens & flags IED segments \u2192 focused review"
+        },
+        {
+          "challenge": "Subtle focal abnormalities missed",
+          "ai": "Sensitivity-tuned detector surfaces low-amplitude spikes"
+        }
+      ]
+    },
+    {
+      "id": "neurophysiologist",
+      "name": "Clinical Neurophysiologist",
+      "tier": 1,
+      "mandatory": true,
+      "role": "EEG Advisor",
+      "objective": "EEG signal validation and biomarker interpretation",
+      "tasks": [
+        "Review EEG quality + artifacts",
+        "Validate seizure annotations",
+        "Recommend biomarkers",
+        "Validate feature engineering",
+        "Review EEG explainability"
+      ],
+      "challenges": [
+        "EEG interpretation is subjective",
+        "Seizure events may not appear during recording",
+        "Montage/system variability across sites"
+      ],
+      "documents": [
+        "EEG Validation Report",
+        "Biomarker Recommendation Report",
+        "Reproducibility Report"
+      ],
+      "compliance_docs": [
+        "Annotation validation attestation",
+        "Biomarker approval log",
+        "Preprocessing reproducibility checklist"
+      ],
+      "internal_tasks": [
+        "Signal quality scoring",
+        "Artifact tagging",
+        "Spike/onset marking review"
+      ],
+      "patient_documents": [
+        "EEG findings summary"
+      ],
+      "patient_questionnaire": [
+        "Sleep state during recording",
+        "Medication timing",
+        "Recent seizures"
+      ],
+      "assessment": [
+        "Interictal findings",
+        "Ictal findings",
+        "Spike location",
+        "Seizure onset zone",
+        "Background rhythm"
+      ],
+      "data": {
+        "raw_eeg": "yes",
+        "eeg_report": "yes",
+        "diagnosis": "optional",
+        "clinical_notes": "optional",
+        "moca": "no",
+        "adl": "no",
+        "medication": "no"
+      },
+      "tools": [
+        "EEG montage tool",
+        "Spike/HFO detector",
+        "Spectral analyzer",
+        "ICA artifact tool"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "EEG interpretation subjectivity",
+          "ai": "Quantitative biomarkers (band power, entropy) standardize reads"
+        },
+        {
+          "challenge": "Artifacts confound signal",
+          "ai": "ICA + ML artifact rejection cleans before analysis"
+        },
+        {
+          "challenge": "Montage/site variability",
+          "ai": "Auto-harmonization to 10-20 reference"
+        }
+      ],
+      "status": "built",
+      "portal_page": "/neurophysiologist",
+      "maps_to": "/api/neurophysiologist/overview + /api/neurophysiologist/breakdown + /api/neurophysiologist/definitions"
+    },
+    {
+      "id": "eeg_technologist",
+      "name": "EEG Technologist",
+      "tier": 2,
+      "mandatory": false,
+      "role": "EEG Acquisition Advisor",
+      "objective": "Validate technical quality of EEG recordings",
+      "tasks": [
+        "Review recording protocols",
+        "Identify artifacts",
+        "Validate signal quality"
+      ],
+      "challenges": [
+        "Artifacts",
+        "Missing channels",
+        "Inconsistent montage",
+        "Poor signal quality"
+      ],
+      "documents": [
+        "EEG Quality Assessment Report"
+      ],
+      "compliance_docs": [
+        "Acquisition protocol checklist",
+        "Impedance/quality log"
+      ],
+      "internal_tasks": [
+        "Electrode setup verification",
+        "Impedance check",
+        "Montage labeling"
+      ],
+      "patient_documents": [
+        "Recording instructions sheet"
+      ],
+      "patient_questionnaire": [
+        "Hair/scalp condition",
+        "Last meal/medication",
+        "Sleep deprivation status"
+      ],
+      "assessment": [
+        "Impedance",
+        "Channel completeness",
+        "Artifact burden",
+        "Recording usability"
+      ],
+      "data": {
+        "raw_eeg": "yes",
+        "eeg_report": "no",
+        "diagnosis": "no",
+        "clinical_notes": "no",
+        "moca": "no",
+        "adl": "no",
+        "medication": "no"
+      },
+      "tools": [
+        "EEG amplifier",
+        "Impedance meter",
+        "EDF/BDF exporter",
+        "Montage editor"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Poor signal quality",
+          "ai": "Real-time AI signal-quality scoring + alerts during recording"
+        },
+        {
+          "challenge": "Artifact identification",
+          "ai": "Auto artifact tagging (eye-blink/muscle/ECG)"
+        },
+        {
+          "challenge": "Inconsistent metadata",
+          "ai": "Auto metadata capture from device + EDF header"
+        }
+      ]
+    },
+    {
+      "id": "psychiatrist",
+      "name": "Psychiatrist",
+      "tier": 2,
+      "mandatory": false,
+      "role": "Psychiatric Advisor",
+      "objective": "Evaluate psychiatric comorbidities affecting epilepsy",
+      "tasks": [
+        "Review depression/anxiety/trauma",
+        "Assess sleep disorders",
+        "Validate psychiatric variables"
+      ],
+      "challenges": [
+        "Depression/anxiety overlap with seizure symptoms",
+        "Medication effects on mood"
+      ],
+      "documents": [
+        "Psychiatric Review Report"
+      ],
+      "compliance_docs": [
+        "Mental-health consent note",
+        "Risk (self-harm) screening log"
+      ],
+      "internal_tasks": [
+        "Comorbidity coding",
+        "Medication-effect review"
+      ],
+      "patient_documents": [
+        "Psychiatric assessment summary",
+        "Mental-health care plan"
+      ],
+      "patient_questionnaire": [
+        "PHQ-9",
+        "GAD-7",
+        "Sleep quality",
+        "Mood/affect",
+        "Trauma history"
+      ],
+      "assessment": [
+        "Depression severity",
+        "Anxiety severity",
+        "Psychosis screen",
+        "Sleep disorder"
+      ],
+      "data": {
+        "raw_eeg": "no",
+        "eeg_report": "optional",
+        "diagnosis": "yes",
+        "clinical_notes": "yes",
+        "moca": "optional",
+        "adl": "optional",
+        "medication": "yes"
+      },
+      "tools": [
+        "PHQ-9",
+        "GAD-7",
+        "Sleep scales",
+        "Medication database",
+        "EMR notes"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Depression/anxiety overlap with seizures",
+          "ai": "NLP extracts mood/anxiety from notes \u2192 confounder flag"
+        },
+        {
+          "challenge": "Repetitive PHQ/GAD scoring",
+          "ai": "Auto PHQ-9/GAD-7 scoring + summary"
+        },
+        {
+          "challenge": "Medication mood effects",
+          "ai": "Med-effect detector correlates AED with mood change"
+        }
+      ]
+    },
+    {
+      "id": "psychologist",
+      "name": "Clinical Psychologist",
+      "tier": 2,
+      "mandatory": false,
+      "role": "Cognitive Assessment Advisor",
+      "objective": "Review cognitive impact of epilepsy",
+      "tasks": [
+        "Review MoCA/MMSE",
+        "Assess memory + executive function",
+        "Validate cognition findings"
+      ],
+      "challenges": [
+        "MoCA may not fully represent epilepsy-related cognition",
+        "Practice effects on retest"
+      ],
+      "documents": [
+        "Cognitive Assessment Validation Report"
+      ],
+      "compliance_docs": [
+        "Test administration standardization log",
+        "Norm-reference attestation"
+      ],
+      "internal_tasks": [
+        "Scoring + domain breakdown",
+        "Norm comparison"
+      ],
+      "patient_documents": [
+        "Cognitive assessment summary",
+        "Recommendations sheet"
+      ],
+      "patient_questionnaire": [
+        "MoCA",
+        "MMSE",
+        "Memory complaints",
+        "Attention/concentration",
+        "Daily cognitive difficulty"
+      ],
+      "assessment": [
+        "Total cognitive score",
+        "Memory",
+        "Attention",
+        "Executive function",
+        "Impairment level"
+      ],
+      "data": {
+        "raw_eeg": "no",
+        "eeg_report": "no",
+        "diagnosis": "optional",
+        "clinical_notes": "optional",
+        "moca": "yes",
+        "adl": "optional",
+        "medication": "no"
+      },
+      "tools": [
+        "MoCA",
+        "MMSE",
+        "Neuropsych battery",
+        "Norm-reference tables"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Manual cognitive scoring",
+          "ai": "Auto MoCA/MMSE scoring + domain breakdown"
+        },
+        {
+          "challenge": "Low score attribution",
+          "ai": "EEG-cognition correlation isolates epilepsy effect"
+        },
+        {
+          "challenge": "Long reports",
+          "ai": "LLM summarizes neuropsych reports"
+        }
+      ]
+    },
+    {
+      "id": "occupational_therapist",
+      "name": "Occupational Therapist",
+      "tier": 2,
+      "mandatory": false,
+      "role": "Functional Outcome Advisor",
+      "objective": "Assess real-world functional impact",
+      "tasks": [
+        "Review ADL measures",
+        "Review quality-of-life",
+        "Validate functional findings"
+      ],
+      "challenges": [
+        "Functional impact under-documented",
+        "Self-report bias"
+      ],
+      "documents": [
+        "Functional Impact Assessment Report"
+      ],
+      "compliance_docs": [
+        "ADL assessment standardization log",
+        "Safety-risk attestation"
+      ],
+      "internal_tasks": [
+        "ADL scoring",
+        "Work/school impact coding"
+      ],
+      "patient_documents": [
+        "Functional assessment summary",
+        "Home/work adaptation plan"
+      ],
+      "patient_questionnaire": [
+        "ADL independence",
+        "Self-care",
+        "Work/school functioning",
+        "Driving status",
+        "Safety incidents"
+      ],
+      "assessment": [
+        "Functional independence",
+        "ADL limitation",
+        "Safety risk",
+        "QoL impact"
+      ],
+      "data": {
+        "raw_eeg": "no",
+        "eeg_report": "no",
+        "diagnosis": "optional",
+        "clinical_notes": "optional",
+        "moca": "optional",
+        "adl": "yes",
+        "medication": "no"
+      },
+      "tools": [
+        "ADL scales",
+        "QOLIE-31",
+        "Functional assessment kit"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Functional impact under-documented",
+          "ai": "Auto ADL scoring from structured intake"
+        },
+        {
+          "challenge": "Self-report bias",
+          "ai": "Cross-check ADL vs outcome data"
+        }
+      ]
+    },
+    {
+      "id": "biostatistician",
+      "name": "Biostatistician",
+      "tier": 1,
+      "mandatory": true,
+      "role": "Statistical Advisor",
+      "objective": "Scientific validity and statistical rigor",
+      "tasks": [
+        "Sample size / power",
+        "Hypothesis testing",
+        "Model evaluation",
+        "Bias review"
+      ],
+      "challenges": [
+        "Small sample size",
+        "Class imbalance",
+        "Missing data"
+      ],
+      "documents": [
+        "Statistical Review Report",
+        "Power Analysis"
+      ],
+      "compliance_docs": [
+        "Pre-registration / analysis plan",
+        "Multiple-comparison control log"
+      ],
+      "internal_tasks": [
+        "Power calculation",
+        "Metric selection",
+        "Subject-wise split validation"
+      ],
+      "patient_documents": [],
+      "patient_questionnaire": [],
+      "assessment": [
+        "Power adequacy",
+        "Effect size + CI",
+        "Bias controls",
+        "Significance validity"
+      ],
+      "data": {
+        "raw_eeg": "aggregated",
+        "eeg_report": "aggregated",
+        "diagnosis": "yes",
+        "clinical_notes": "optional",
+        "moca": "optional",
+        "adl": "optional",
+        "medication": "optional"
+      },
+      "tools": [
+        "R",
+        "Python (statsmodels)",
+        "Power-analysis tools",
+        "GroupKFold/CV"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Small sample / imbalance",
+          "ai": "Auto subject-wise CV + balanced metrics (F1/AUC)"
+        },
+        {
+          "challenge": "Leakage risk",
+          "ai": "Automated leakage/data-split audit"
+        },
+        {
+          "challenge": "Manual stats reporting",
+          "ai": "Auto power analysis + significance reporting"
+        }
+      ]
+    },
+    {
+      "id": "ai_advisor",
+      "name": "AI / ML Advisor",
+      "tier": 1,
+      "mandatory": true,
+      "role": "AI Validation Advisor",
+      "objective": "Model design and explainability validation",
+      "tasks": [
+        "Feature engineering review",
+        "Model review",
+        "SHAP/LIME explainability review",
+        "Error analysis"
+      ],
+      "challenges": [
+        "Model may learn artifacts not biomarkers",
+        "Overfitting",
+        "Black-box opacity",
+        "Biomarker instability"
+      ],
+      "documents": [
+        "AI Validation Report",
+        "Feature Importance Review"
+      ],
+      "compliance_docs": [
+        "Model card",
+        "Data-leakage audit",
+        "Reproducibility manifest"
+      ],
+      "internal_tasks": [
+        "Subject-wise CV",
+        "Feature attribution",
+        "Drift monitoring setup"
+      ],
+      "patient_documents": [],
+      "patient_questionnaire": [],
+      "assessment": [
+        "Model performance (leakage-free)",
+        "Explainability quality",
+        "Robustness",
+        "Fairness"
+      ],
+      "data": {
+        "raw_eeg": "yes",
+        "eeg_report": "yes",
+        "diagnosis": "yes",
+        "clinical_notes": "optional",
+        "moca": "optional",
+        "adl": "optional",
+        "medication": "optional"
+      },
+      "tools": [
+        "SHAP",
+        "scikit-learn",
+        "MLflow",
+        "Drift monitor",
+        "Surrogate-tree"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Model learns artifacts",
+          "ai": "SHAP/Grad-CAM verifies attention on brain regions not artifacts"
+        },
+        {
+          "challenge": "Overfitting / black-box",
+          "ai": "Surrogate tree + fidelity score for interpretability"
+        },
+        {
+          "challenge": "Biomarker instability",
+          "ai": "Drift detection + retraining triggers"
+        }
+      ]
+    },
+    {
+      "id": "governance_advisor",
+      "name": "Responsible AI / Governance Advisor",
+      "tier": 1,
+      "mandatory": true,
+      "role": "Governance Advisor",
+      "objective": "Ethical and regulatory oversight",
+      "tasks": [
+        "Privacy review",
+        "Bias review",
+        "Auditability review",
+        "Human-oversight framework"
+      ],
+      "challenges": [
+        "De-identification",
+        "Consent waiver",
+        "Data-sharing approval",
+        "Audit completeness"
+      ],
+      "documents": [
+        "Governance and Ethics Review Report",
+        "Risk Assessment Report"
+      ],
+      "compliance_docs": [
+        "EU AI Act / NIST RMF mapping",
+        "IRB/ethics approval",
+        "DPIA",
+        "Audit trail policy",
+        "De-identification attestation"
+      ],
+      "internal_tasks": [
+        "Decision-audit schema review",
+        "Override-rate monitoring",
+        "Scope/access control review"
+      ],
+      "patient_documents": [
+        "Consent/transparency notice (template)"
+      ],
+      "patient_questionnaire": [
+        "Consent confirmation",
+        "Data-use preference"
+      ],
+      "assessment": [
+        "Privacy posture",
+        "Fairness gap",
+        "Auditability",
+        "Human-oversight coverage"
+      ],
+      "data": {
+        "raw_eeg": "metadata",
+        "eeg_report": "metadata",
+        "diagnosis": "metadata",
+        "clinical_notes": "metadata",
+        "moca": "metadata",
+        "adl": "metadata",
+        "medication": "metadata"
+      },
+      "tools": [
+        "OPA / policy engine",
+        "Audit log",
+        "DLP / PII scanner",
+        "Fairness toolkit (AIF360/Fairlearn)"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "De-identification / PII",
+          "ai": "Auto PII detection + redaction (50-pattern scanner)"
+        },
+        {
+          "challenge": "Bias / fairness",
+          "ai": "Fairness gates (disparate impact, equal opportunity)"
+        },
+        {
+          "challenge": "Audit completeness",
+          "ai": "Auto decision-audit rows (UTC+local timestamp)"
+        }
+      ]
+    },
+    {
+      "id": "methodology_advisor",
+      "name": "Research Methodology / Dissertation Advisor",
+      "tier": 2,
+      "mandatory": false,
+      "role": "Research Advisor",
+      "objective": "Doctoral-level scientific rigor",
+      "tasks": [
+        "Dissertation review",
+        "Publication review",
+        "Methodology review"
+      ],
+      "challenges": [
+        "Scope creep",
+        "Weak methodology framing",
+        "Insufficient novelty"
+      ],
+      "documents": [
+        "Scientific Review Report"
+      ],
+      "compliance_docs": [
+        "Methodology approval",
+        "Authorship/ethics statement"
+      ],
+      "internal_tasks": [
+        "Chapter review",
+        "Argument coherence check"
+      ],
+      "patient_documents": [],
+      "patient_questionnaire": [],
+      "assessment": [
+        "Methodological rigor",
+        "Novelty",
+        "Publication readiness"
+      ],
+      "data": {
+        "raw_eeg": "no",
+        "eeg_report": "no",
+        "diagnosis": "optional",
+        "clinical_notes": "optional",
+        "moca": "no",
+        "adl": "no",
+        "medication": "no"
+      },
+      "tools": [
+        "Reference manager",
+        "Plagiarism check",
+        "Stats reproducibility tools"
+      ],
+      "ai_solutions": [
+        {
+          "challenge": "Scope creep",
+          "ai": "AI checks claims-to-evidence coverage"
+        },
+        {
+          "challenge": "Weak methodology framing",
+          "ai": "Methodology-gap detector vs publication standards"
+        }
+      ]
+    }
+  ],
+  "core_team_mandatory": [
+    "neurologist",
+    "neurophysiologist",
+    "biostatistician",
+    "ai_advisor",
+    "governance_advisor"
+  ],
+  "recommended_addons": [
+    "psychologist",
+    "occupational_therapist",
+    "psychiatrist"
+  ]
+}
