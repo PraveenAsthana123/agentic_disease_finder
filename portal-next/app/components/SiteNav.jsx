@@ -183,6 +183,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/hallucination">&#x1f9e0; Hallucination Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/deep-learning">&#x1f9e0; Deep Learning</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/time-frequency">&#x1f4ca; Time-Frequency (TFR)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/topomap">&#x1f9e0; 10-20 Topomap</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/temporal-approval">&#x231b; Temporal Approval</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-technician">&#x1f4e1; EEG Technician</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/is-sop">&#x1f4d1; IS-SOP Compliance</Link></li>

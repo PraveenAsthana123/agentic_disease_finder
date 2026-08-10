@@ -8,7 +8,7 @@
     "Artifact overlay",
     "PSD graph",
     "Spectrogram",
-    "10-20 topomap",
+    {"id": "topomap", "name": "10-20 Topomap", "status": "built", "route": "/topomap", "note": "22 channels, 5 bands, alpha asymmetry, SVG head projection. 4 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."},
     "Spike/sharp-wave overlay",
     {
       "id": "regulatory_submissions",
@@ -733,14 +733,28 @@
         "/api/model-drift/breakdown",
         "/api/model-drift/definitions"
       ]
+    },
+    {
+      "name": "10-20 EEG Topomap",
+      "status": "built",
+      "role": "Neurologist / EEG Technician",
+      "priority": "P0",
+      "route": "/topomap",
+      "description": "International 10-20 topomap — 22 channels, 5 EEG bands (delta/theta/alpha/beta/gamma), relative band power per electrode, SVG head projection with colour map, alpha asymmetry (Davidson 1998) frontal/parietal/central pairs, electrode coordinate table. 4-tab frontend (Band Power Map/Electrode Layout/Alpha Asymmetry/Definitions), 4 endpoints /api/topomap/overview|electrodes|asymmetry|definitions verified 200, portal-next/app/topomap/page.jsx + SiteNav wired next to Time-Frequency.",
+      "endpoints": [
+        "/api/topomap/overview",
+        "/api/topomap/electrodes",
+        "/api/topomap/asymmetry",
+        "/api/topomap/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 58,
-    "built": 57,
+    "total": 61,
+    "built": 61,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 57
+    "count": 61
   }
 }
