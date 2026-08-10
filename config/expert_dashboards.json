@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-09",
+  "updated_at": "2026-08-10",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -694,10 +694,17 @@
         "/api/pnes-differential/breakdown",
         "/api/pnes-differential/definitions"
       ]
+    },
+    {
+      "name": "Conversation Log Dashboard",
+      "route": "/conversation-log",
+      "api": "/api/conversation-log/overview|breakdown|definitions",
+      "status": "built",
+      "description": "AI-operator conversation analytics \u2014 3032 messages, 37 active days, role breakdown (2840 assistant / 192 operator), 81.9 msgs/day avg, 14.8:1 AI:operator ratio, daily trend, hourly pattern, message length distribution, longest messages, recent message log"
     }
   ],
   "summary": {
-    "total": 55,
+    "total": 56,
     "built": 55,
     "partial": 0,
     "planned": 0,

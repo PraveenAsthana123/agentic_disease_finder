@@ -74,6 +74,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/data-ops">&#x1f4e6; DataOps</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/observability">&#x1f441;&#xfe0f; Observability</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/traces">&#x1f4e1; HTTP Traces</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/conversation-log">&#x1f4ac; Conv Log</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/llmops">&#x1f4ac; LLMOps</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stack">Tech Stack</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-ai-stack">&#x1f9e0; EEG AI Stack</Link></li>
