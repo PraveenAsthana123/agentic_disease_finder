@@ -2,7 +2,8 @@
   "title": "Per-Role Dashboards & Reports (clinical departments)",
   "note": "Each role: KPI dashboard tiles + standard report list (with cadence + format). status: built (data exists) / partial / planned.",
   "updated_at": "2026-08-06",
-  "dashboard_component": "RoleDashboardsDashboard",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/role-dashboards/page.jsx",
   "api_endpoints": [
     "/api/role-dashboards/overview",
     "/api/role-dashboards/breakdown",
