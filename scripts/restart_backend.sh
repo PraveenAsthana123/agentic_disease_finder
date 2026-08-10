@@ -24,7 +24,7 @@ for i in $(seq 1 20); do
   sleep 1
 done
 # 3. launch detached under the canonical venv
-setsid nohup "$VENV_PY" api_backend.py >> jobs/logs/backend.log 2>&1 < /dev/null &
+setsid nohup "$VENV_PY" api_backend.py >> jobs/logs/backend.log 2>&1 < /dev/null 9>&- &
 disown 2>/dev/null
 # 4. wait for health 200 (max ~120s; heavy ML imports)
 for i in $(seq 1 90); do
