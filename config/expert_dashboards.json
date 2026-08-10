@@ -719,14 +719,28 @@
       "route": "/ai-roi",
       "maps_to": "/api/ai-roi/overview + /api/ai-roi/breakdown + /api/ai-roi/definitions + portal-next/app/ai-roi/page.jsx + SiteNav wired next to AI FinOps",
       "description": "Return on Investment analysis \u2014 978 finops_cost records, 133 analyses, 109 telehealth sessions, ROI 5609.7%, investment $1302.17, value $74,350, time saved 199.5h, cost by category (gpu/llm/cloud), cost by model, monthly trend, top components, patient-level ROI, optimization recommendations. 4-tab frontend (Overview/Cost Analysis/ROI Breakdown/Definitions), 3 endpoints /api/ai-roi/overview|breakdown|definitions verified 200."
+    },
+    {
+      "id": "model_drift",
+      "name": "Model Drift Dashboard",
+      "status": "built",
+      "role": "MLOps / AI Governance",
+      "priority": "P1",
+      "route": "/model-drift",
+      "description": "Model performance drift monitoring \u2014 48 training runs, 7 models, 4 CHB-MIT subjects, drift score 99.3%, verdict IMPROVED. Per-subject accuracy/sensitivity/F1, 4 evaluation strategies (patient-specific/cross-patient/ensemble), bootstrap CI 95% [97.3%-98.7%], training timeline heatmap, model registry. 4-tab frontend (Overview/Per-Subject/Training Timeline/Definitions), 3 endpoints /api/model-drift/overview|breakdown|definitions verified 200, portal-next/app/model-drift/page.jsx + SiteNav wired next to Drift.",
+      "endpoints": [
+        "/api/model-drift/overview",
+        "/api/model-drift/breakdown",
+        "/api/model-drift/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 57,
-    "built": 56,
+    "total": 58,
+    "built": 57,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 56
+    "count": 57
   }
 }
