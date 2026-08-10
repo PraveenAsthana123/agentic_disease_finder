@@ -680,14 +680,28 @@
         "/api/bootstrap-ci/breakdown",
         "/api/bootstrap-ci/definitions"
       ]
+    },
+    {
+      "role": "Epileptologist / Clinical Psychologist",
+      "name": "PNES Differential Diagnosis",
+      "viz": "Classification distribution, certainty levels, vEEG priority triage, risk factor frequency, per-patient probability bars, semiology sign reference tables",
+      "feature": "PNES vs epilepsy semiological scoring, diagnostic certainty (documented/probable/clinically established), vEEG urgency triage, PHQ-9/GAD-7 distribution, psychiatric comorbidity analysis",
+      "why": "PNES affects 2-33/100k; up to 20% of epilepsy monitoring unit admissions. Misdiagnosis delays correct psychiatric treatment by avg 7 years. Differential requires simultaneous neurological + psychiatric lens.",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/pnes-differential/overview",
+        "/api/pnes-differential/breakdown",
+        "/api/pnes-differential/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 53,
-    "built": 53,
+    "total": 55,
+    "built": 55,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-06",
-    "count": 53
+    "updated_at": "2026-08-10",
+    "count": 55
   }
 }
