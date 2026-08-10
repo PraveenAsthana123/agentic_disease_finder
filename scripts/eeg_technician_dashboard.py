@@ -522,6 +522,116 @@ def breakdown():
     return {'patients': profiles}
 
 
+def worklog():
+    """Return daily worklog — per-date summary of studies, protocol completion,
+    quality outcomes, and technician notes. Sorted newest-first."""
+    acquisitions, conditions, channel_quality, artifacts, patients = _load_all_data()
+
+    # Group by study_date
+    by_date = defaultdict(list)
+    for pid in acquisitions:
+        acq = acquisitions[pid]
+        date = acq.get('study_date') or 'Unknown'
+        by_date[date].append(pid)
+
+    entries = []
+    for date in sorted(by_date.keys(), reverse=True):
+        pids = by_date[date]
+        n = len(pids)
+
+        # Protocol completion for this day
+        hv_count     = sum(1 for p in pids if conditions.get(p, {}).get('hyperventilation'))
+        photic_count = sum(1 for p in pids if conditions.get(p, {}).get('photic_stimulation'))
+        sleep_count  = sum(1 for p in pids if conditions.get(p, {}).get('sleep_recorded'))
+        imp_pass     = sum(1 for p in pids
+                          if not any(ch.get('impedance_kohm', 0) >= IMPEDANCE_FAIR_MAX
+                                     for ch in channel_quality.get(p, [])))
+
+        # Quality grades for this day
+        grade_counts = Counter()
+        total_art = 0
+        for pid in pids:
+            chs = channel_quality.get(pid, [])
+            arts = artifacts.get(pid, [])
+            total_art += len(arts)
+            imp_fail = any(ch.get('impedance_kohm', 0) >= IMPEDANCE_FAIR_MAX for ch in chs)
+            good = sum(1 for ch in chs if ch.get('quality_grade') == 'Good')
+            total_ch = len(chs) or 1
+            grade_counts[_overall_quality(100 * good / total_ch, len(arts), imp_fail)] += 1
+
+        # Recording type breakdown for this day
+        rec_types = Counter(acquisitions.get(p, {}).get('recording_type', 'routine') for p in pids)
+
+        # Patient summaries
+        patient_rows = []
+        for pid in sorted(pids):
+            pt = patients.get(pid, {})
+            acq = acquisitions.get(pid, {})
+            chs = channel_quality.get(pid, [])
+            arts = artifacts.get(pid, [])
+            imp_fail = any(ch.get('impedance_kohm', 0) >= IMPEDANCE_FAIR_MAX for ch in chs)
+            good = sum(1 for ch in chs if ch.get('quality_grade') == 'Good')
+            total_ch = len(chs) or 1
+            grade = _overall_quality(100 * good / total_ch, len(arts), imp_fail)
+            dur = acq.get('duration_min', 0)
+            patient_rows.append({
+                'patient_id': pid,
+                'name': pt.get('name') or pid,
+                'age': pt.get('age'),
+                'gender': pt.get('gender'),
+                'recording_type': acq.get('recording_type', ''),
+                'duration_min': dur,
+                'duration_label': f'{int(dur // 60)}h {int(dur % 60)}m' if dur >= 60 else f'{int(dur)}m',
+                'sampling_rate': acq.get('sampling_rate', 256),
+                'montage': acq.get('montage', ''),
+                'overall_quality_grade': grade,
+                'artifact_count': len(arts),
+                'impedance_pass': not imp_fail,
+                'hv_done': conditions.get(pid, {}).get('hyperventilation', False),
+                'photic_done': conditions.get(pid, {}).get('photic_stimulation', False),
+                'sleep_recorded': conditions.get(pid, {}).get('sleep_recorded', False),
+                'cooperation': conditions.get(pid, {}).get('cooperation', ''),
+                'technician_notes': acq.get('technician_notes', ''),
+            })
+
+        entries.append({
+            'date': date,
+            'study_count': n,
+            'protocol': {
+                'hv_count': hv_count,
+                'hv_rate': round(100 * hv_count / n, 1) if n else 0,
+                'photic_count': photic_count,
+                'photic_rate': round(100 * photic_count / n, 1) if n else 0,
+                'sleep_count': sleep_count,
+                'sleep_rate': round(100 * sleep_count / n, 1) if n else 0,
+                'impedance_pass_count': imp_pass,
+                'impedance_pass_rate': round(100 * imp_pass / n, 1) if n else 0,
+            },
+            'quality_grades': dict(grade_counts),
+            'recording_types': dict(rec_types),
+            'total_artifacts': total_art,
+            'patients': patient_rows,
+        })
+
+    # Summary KPIs across all dates
+    all_dates = list(by_date.keys())
+    studies_per_day = [len(by_date[d]) for d in all_dates]
+    avg_daily = round(sum(studies_per_day) / len(studies_per_day), 1) if studies_per_day else 0
+    busiest_date = max(by_date, key=lambda d: len(by_date[d])) if by_date else ''
+    busiest_count = len(by_date[busiest_date]) if busiest_date else 0
+
+    return {
+        'summary': {
+            'total_days': len(all_dates),
+            'total_studies': sum(studies_per_day),
+            'avg_studies_per_day': avg_daily,
+            'busiest_date': busiest_date,
+            'busiest_count': busiest_count,
+        },
+        'entries': entries,
+    }
+
+
 def definitions():
     """Return EEG technician terminology, ACNS standards, and quality metrics."""
     return {

@@ -8913,6 +8913,15 @@ async def eeg_technician_definitions():
     return _json_safe(etd.definitions())
 
 
+@app.get("/api/eeg-technician/worklog")
+async def eeg_technician_worklog():
+    """EEG Technician daily worklog — per-date study count, protocol completion
+    (HV, photic, sleep, impedance pass rates), quality grade breakdown, recording
+    type mix, per-patient rows with notes. Sorted newest-first."""
+    import scripts.eeg_technician_dashboard as etd
+    return _json_safe(etd.worklog())
+
+
 # ── IoT Engineer Dashboard ────────────────────────────────────────────
 @app.get("/api/iot-engineer/overview")
 async def iot_engineer_overview():

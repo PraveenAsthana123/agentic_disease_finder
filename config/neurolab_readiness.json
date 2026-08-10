@@ -28,7 +28,7 @@
         "acquisition QC",
         "channel quality",
         "artifact flags",
-        "daily worklog (partial)",
+        "daily worklog (/api/eeg-technician/worklog + WorklogPanel — 29 days, 30 studies, per-day protocol completion + quality grades)",
         "montage editor",
         "scheduling worklist (/api/appointments/* + AppointmentsDashboard.jsx)"
       ],

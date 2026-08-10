@@ -8,6 +8,7 @@ const TABS = [
   { id: 'quality',      label: 'Signal Quality' },
   { id: 'patients',     label: 'Patient List' },
   { id: 'protocol',     label: 'Protocol Completion' },
+  { id: 'worklog',      label: 'Daily Worklog' },
   { id: 'definitions',  label: 'ACNS Standards' },
 ];
 
@@ -353,6 +354,164 @@ function ProtocolPanel({ bd }) {
   );
 }
 
+function WorklogPanel({ wl }) {
+  const [expanded, setExpanded] = useState(null);
+  if (!wl) return <div className="text-muted p-3">Loading…</div>;
+  const s = wl.summary || {};
+  const entries = wl.entries || [];
+
+  const GRADE_COLOR = { Excellent: 'success', Good: 'info', Acceptable: 'warning', Poor: 'danger' };
+  const TYPE_COLOR2 = { routine: 'primary', ambulatory: 'secondary', video_eeg: 'info', LTM: 'warning' };
+
+  return (
+    <div>
+      {/* Summary KPIs */}
+      <div className="row mb-4">
+        <div className="col-6 col-md-3 mb-3">
+          <div className="card shadow-sm h-100">
+            <div className="card-body text-center py-3">
+              <div className="h4 mb-1 fw-bold text-primary">{s.total_days}</div>
+              <div className="text-muted small">Active Days</div>
+            </div>
+          </div>
+        </div>
+        <div className="col-6 col-md-3 mb-3">
+          <div className="card shadow-sm h-100">
+            <div className="card-body text-center py-3">
+              <div className="h4 mb-1 fw-bold text-success">{s.total_studies}</div>
+              <div className="text-muted small">Total Studies</div>
+            </div>
+          </div>
+        </div>
+        <div className="col-6 col-md-3 mb-3">
+          <div className="card shadow-sm h-100">
+            <div className="card-body text-center py-3">
+              <div className="h4 mb-1 fw-bold text-info">{s.avg_studies_per_day}</div>
+              <div className="text-muted small">Avg / Day</div>
+            </div>
+          </div>
+        </div>
+        <div className="col-6 col-md-3 mb-3">
+          <div className="card shadow-sm h-100">
+            <div className="card-body text-center py-3">
+              <div className="h5 mb-1 fw-bold text-warning">{s.busiest_date}</div>
+              <div className="text-muted small">Busiest Day ({s.busiest_count} studies)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Per-day accordion */}
+      {entries.map((e, i) => {
+        const isOpen = expanded === i;
+        const p = e.protocol || {};
+        const grades = e.quality_grades || {};
+        const recTypes = e.recording_types || {};
+        return (
+          <div key={e.date} className="card shadow-sm mb-2">
+            <div
+              className="card-header py-2 d-flex align-items-center justify-content-between"
+              style={{ cursor: 'pointer', backgroundColor: '#1e293b', color: '#fff' }}
+              onClick={() => setExpanded(isOpen ? null : i)}
+            >
+              <div className="d-flex align-items-center gap-3">
+                <span className="fw-bold">{e.date}</span>
+                <span className="badge bg-primary ms-2">{e.study_count} studies</span>
+                {Object.entries(grades).map(([g, cnt]) => (
+                  <span key={g} className={`badge bg-${GRADE_COLOR[g] || 'secondary'}`}>{cnt} {g}</span>
+                ))}
+                <span className="text-muted small ms-2">{e.total_artifacts} artifacts</span>
+              </div>
+              <span>{isOpen ? '▲' : '▼'}</span>
+            </div>
+
+            {isOpen && (
+              <div className="card-body p-3">
+                {/* Protocol row */}
+                <div className="row mb-3">
+                  <div className="col-md-6">
+                    <div className="small fw-bold mb-2">Protocol Completion</div>
+                    {[
+                      { label: 'HV',              rate: p.hv_rate,            cnt: p.hv_count,            color: 'success' },
+                      { label: 'Photic Stim',     rate: p.photic_rate,        cnt: p.photic_count,        color: 'info' },
+                      { label: 'Sleep Capture',   rate: p.sleep_rate,         cnt: p.sleep_count,         color: 'primary' },
+                      { label: 'Impedance Pass',  rate: p.impedance_pass_rate, cnt: p.impedance_pass_count, color: 'warning' },
+                    ].map(pr => (
+                      <div key={pr.label} className="mb-2">
+                        <div className="d-flex justify-content-between small mb-1">
+                          <span>{pr.label}</span>
+                          <span className="text-muted">{pr.cnt}/{e.study_count} ({pr.rate?.toFixed(0)}%)</span>
+                        </div>
+                        <Bar pct={pr.rate} color={pr.color} height={14} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="col-md-3">
+                    <div className="small fw-bold mb-2">Quality Grades</div>
+                    {Object.entries(grades).map(([g, cnt]) => (
+                      <div key={g} className="mb-1 d-flex align-items-center justify-content-between">
+                        <span className={`badge bg-${GRADE_COLOR[g] || 'secondary'}`}>{g}</span>
+                        <span className="small fw-bold">{cnt}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="col-md-3">
+                    <div className="small fw-bold mb-2">Recording Types</div>
+                    {Object.entries(recTypes).map(([t, cnt]) => (
+                      <div key={t} className="mb-1 d-flex align-items-center justify-content-between">
+                        <span className={`badge bg-${TYPE_COLOR2[t] || 'secondary'}`}>{t.replace('_', '-')}</span>
+                        <span className="small fw-bold">{cnt}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Patient table */}
+                <div className="small fw-bold mb-2">Studies This Day</div>
+                <div className="table-responsive">
+                  <table className="table table-sm table-hover align-middle mb-0">
+                    <thead className="table-secondary">
+                      <tr>
+                        <th>Patient</th><th>Type</th><th>Duration</th>
+                        <th>Grade</th><th>Artifacts</th><th>IMP</th>
+                        <th>HV</th><th>IPS</th><th>Sleep</th><th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(e.patients || []).map(pt => (
+                        <tr key={pt.patient_id}>
+                          <td>
+                            <div className="fw-bold small">{pt.patient_id}</div>
+                            <div className="text-muted" style={{ fontSize: '0.7rem' }}>{pt.gender}, {pt.age}y</div>
+                          </td>
+                          <td><span className={`badge bg-${TYPE_COLOR2[pt.recording_type] || 'secondary'}`} style={{ fontSize: '0.65rem' }}>{pt.recording_type?.replace('_', '-')}</span></td>
+                          <td className="small">{pt.duration_label}</td>
+                          <td><span className={`badge bg-${GRADE_COLOR[pt.overall_quality_grade] || 'secondary'}`} style={{ fontSize: '0.65rem' }}>{pt.overall_quality_grade}</span></td>
+                          <td className="small text-center">{pt.artifact_count}</td>
+                          <td className="small text-center">
+                            <span className={pt.impedance_pass ? 'text-success' : 'text-danger'}>
+                              {pt.impedance_pass ? '✓' : '✗'}
+                            </span>
+                          </td>
+                          <td className="small text-center">{pt.hv_done ? <span className="text-success">✓</span> : <span className="text-muted">—</span>}</td>
+                          <td className="small text-center">{pt.photic_done ? <span className="text-success">✓</span> : <span className="text-muted">—</span>}</td>
+                          <td className="small text-center">{pt.sleep_recorded ? <span className="text-success">✓</span> : <span className="text-muted">—</span>}</td>
+                          <td className="small text-muted" style={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                            title={pt.technician_notes}>{pt.technician_notes || '—'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function DefinitionsPanel({ defs }) {
   if (!defs) return <div className="text-muted p-3">Loading…</div>;
   const [open, setOpen] = useState(null);
@@ -394,6 +553,7 @@ export default function EEGTechnicianDashboard() {
   const [ov, setOv]     = useState(null);
   const [bd, setBd]     = useState(null);
   const [defs, setDefs] = useState(null);
+  const [wl, setWl]     = useState(null);
   const [tab, setTab]   = useState('overview');
   const [err, setErr]   = useState(null);
 
@@ -402,7 +562,8 @@ export default function EEGTechnicianDashboard() {
       fetch(`${API}/api/eeg-technician/overview`).then(r => r.json()),
       fetch(`${API}/api/eeg-technician/breakdown`).then(r => r.json()),
       fetch(`${API}/api/eeg-technician/definitions`).then(r => r.json()),
-    ]).then(([o, b, d]) => { setOv(o); setBd(b); setDefs(d); })
+      fetch(`${API}/api/eeg-technician/worklog`).then(r => r.json()),
+    ]).then(([o, b, d, w]) => { setOv(o); setBd(b); setDefs(d); setWl(w); })
       .catch(e => setErr(String(e)));
   }, []);
 
@@ -430,6 +591,7 @@ export default function EEGTechnicianDashboard() {
       {tab === 'quality'     && <QualityPanel ov={ov} />}
       {tab === 'patients'    && <PatientsPanel bd={bd} />}
       {tab === 'protocol'    && <ProtocolPanel bd={bd} />}
+      {tab === 'worklog'     && <WorklogPanel wl={wl} />}
       {tab === 'definitions' && <DefinitionsPanel defs={defs} />}
     </div>
   );
