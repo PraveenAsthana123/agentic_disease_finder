@@ -329,9 +329,10 @@
     "planned": 0,
     "honest_note": "All 17 role workbenches built with forms, dashboards, and endpoints live.",
     "meta_dashboard": {
-      "component": "RoleSpecsDashboard.jsx",
+      "component": "portal-next/app/role-specs/page.jsx",
       "endpoints": ["/api/role-specs/overview", "/api/role-specs/breakdown", "/api/role-specs/definitions"],
-      "note": "Role Specs Registry Dashboard — 17-role specification visualization, priority/status distribution, field count analysis, sections-per-role chart, per-role detail cards with section tags + endpoint refs, 3-tier priority grouping, 12-term glossary, 5-tab layout; 3 endpoints verified 200"
+      "status": "built",
+      "note": "Role Specs Registry Dashboard — 17-role specification visualization, priority/status distribution, field count analysis, sections-per-role chart, per-role detail cards with section tags, field-count bar chart, priority matrix, glossary; 3 endpoints verified 200; portal-next /role-specs + SiteNav wired. Built 2026-08-10."
     }
   }
 }
