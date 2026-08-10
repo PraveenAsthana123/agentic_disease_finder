@@ -215,6 +215,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/models">&#x1f5c2;&#xfe0f; Model Registry</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/audit">&#x1f4dc; Audit Trail</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/regulatory-audit-trail">&#x1f4cb; Reg Audit Trail</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/ai-compliance">&#x2696;&#xfe0f; AI Compliance</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-steward">&#x1f6e1;&#xfe0f; Data Steward</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/causal-ai">&#x1f517; Causal AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/federated-learning">&#x1f310; Federated Learning</Link></li>

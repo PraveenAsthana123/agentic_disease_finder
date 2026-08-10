@@ -8,7 +8,13 @@
     "Artifact overlay",
     "PSD graph",
     "Spectrogram",
-    {"id": "topomap", "name": "10-20 Topomap", "status": "built", "route": "/topomap", "note": "22 channels, 5 bands, alpha asymmetry, SVG head projection. 4 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."},
+    {
+      "id": "topomap",
+      "name": "10-20 Topomap",
+      "status": "built",
+      "route": "/topomap",
+      "note": "22 channels, 5 bands, alpha asymmetry, SVG head projection. 4 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."
+    },
     "Spike/sharp-wave overlay",
     {
       "id": "regulatory_submissions",
@@ -740,13 +746,22 @@
       "role": "Neurologist / EEG Technician",
       "priority": "P0",
       "route": "/topomap",
-      "description": "International 10-20 topomap — 22 channels, 5 EEG bands (delta/theta/alpha/beta/gamma), relative band power per electrode, SVG head projection with colour map, alpha asymmetry (Davidson 1998) frontal/parietal/central pairs, electrode coordinate table. 4-tab frontend (Band Power Map/Electrode Layout/Alpha Asymmetry/Definitions), 4 endpoints /api/topomap/overview|electrodes|asymmetry|definitions verified 200, portal-next/app/topomap/page.jsx + SiteNav wired next to Time-Frequency.",
+      "description": "International 10-20 topomap \u2014 22 channels, 5 EEG bands (delta/theta/alpha/beta/gamma), relative band power per electrode, SVG head projection with colour map, alpha asymmetry (Davidson 1998) frontal/parietal/central pairs, electrode coordinate table. 4-tab frontend (Band Power Map/Electrode Layout/Alpha Asymmetry/Definitions), 4 endpoints /api/topomap/overview|electrodes|asymmetry|definitions verified 200, portal-next/app/topomap/page.jsx + SiteNav wired next to Time-Frequency.",
       "endpoints": [
         "/api/topomap/overview",
         "/api/topomap/electrodes",
         "/api/topomap/asymmetry",
         "/api/topomap/definitions"
       ]
+    },
+    {
+      "name": "AI Compliance Dashboard",
+      "status": "built",
+      "role": "AI Governance / Compliance",
+      "priority": "P0",
+      "route": "/ai-compliance",
+      "description": "HITL oversight, expert agreement, clinical decision audit, EU AI Act risk tiers \u2014 133 analyses, 4 HITL reviews, 75 clinical decisions, 35K+ audit transactions, 100% accountability",
+      "api": "/api/ai-compliance/overview|breakdown|definitions"
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -755,7 +770,7 @@
     "status": "built",
     "priority": "P0",
     "route": "/regulatory-audit-trail",
-    "description": "Complete action audit log for 16 regulatory submissions — 102 events, 11 actors, 5 categories (Administrative/Regulatory/Technical/Clinical/Quality), 9 action types (Risk assessment/CAPA/Deviation/Signature/Review/etc.), monthly activity timeline 2024-06 to 2026-04, per-submission action×actor×category matrix, per-actor workload table. 4-tab frontend (Overview/Per Submission/Actors/Definitions), 3 endpoints /api/regulatory-audit-trail/overview|breakdown|definitions verified 200, portal-next/app/regulatory-audit-trail/page.jsx + SiteNav wired next to Audit Trail.",
+    "description": "Complete action audit log for 16 regulatory submissions \u2014 102 events, 11 actors, 5 categories (Administrative/Regulatory/Technical/Clinical/Quality), 9 action types (Risk assessment/CAPA/Deviation/Signature/Review/etc.), monthly activity timeline 2024-06 to 2026-04, per-submission action\u00d7actor\u00d7category matrix, per-actor workload table. 4-tab frontend (Overview/Per Submission/Actors/Definitions), 3 endpoints /api/regulatory-audit-trail/overview|breakdown|definitions verified 200, portal-next/app/regulatory-audit-trail/page.jsx + SiteNav wired next to Audit Trail.",
     "endpoints": [
       "/api/regulatory-audit-trail/overview",
       "/api/regulatory-audit-trail/breakdown",
