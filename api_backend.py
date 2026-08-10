@@ -5716,6 +5716,31 @@ async def agent_loop_definitions():
     return _json_safe(ald.loop_definitions())
 
 
+# ── Patient Care Journey Dashboard ─────────────────────────────
+@app.get("/api/patient-journey/overview")
+async def patient_journey_overview():
+    """Patient care journey overview — care funnel (referral→appointment→telehealth→hospitalization),
+    49 patients, 428 touchpoints, triage scores, appointment completion, telehealth satisfaction,
+    avg LOS, readmission rate, seizure-free at discharge."""
+    import scripts.patient_journey_dashboard as pjd
+    return _json_safe(pjd.journey_overview())
+
+
+@app.get("/api/patient-journey/breakdown")
+async def patient_journey_breakdown():
+    """Per-patient care journey breakdown — touchpoints per stage, intensity tier
+    (High/Medium/Low), stages reached (1–4), sortable table."""
+    import scripts.patient_journey_dashboard as pjd
+    return _json_safe(pjd.journey_breakdown())
+
+
+@app.get("/api/patient-journey/definitions")
+async def patient_journey_definitions():
+    """Metric definitions for the Patient Care Journey dashboard."""
+    import scripts.patient_journey_dashboard as pjd
+    return _json_safe(pjd.journey_definitions())
+
+
 # ── Event / Kafka / Queue Dashboard ────────────────────────────
 @app.get("/api/event-queue/overview")
 async def event_queue_overview():

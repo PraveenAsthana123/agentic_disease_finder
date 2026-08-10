@@ -787,6 +787,18 @@
       "endpoint": "/api/agent-loop/*",
       "page": "portal-next/app/agent-loop/page.jsx",
       "note": "Agent loop behaviour monitor \u2014 38K+ actions, 30 components, conversation turn ratio, goal drift score, HITL override rate, confidence metrics. 3 endpoints /api/agent-loop/overview|breakdown|definitions verified 200."
+    },
+    {
+      "id": "patient_journey",
+      "name": "Patient Care Journey Dashboard",
+      "status": "built",
+      "description": "Care pathway funnel (Referral\u2192Appointment\u2192Telehealth\u2192Hospitalisation), 49 patients, 428 touchpoints, 4-table join",
+      "endpoints": [
+        "/api/patient-journey/overview",
+        "/api/patient-journey/breakdown",
+        "/api/patient-journey/definitions"
+      ],
+      "page": "/patient-journey"
     }
   ],
   "regulatory_audit_trail_dashboard": {
