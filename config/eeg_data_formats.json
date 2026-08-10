@@ -1,7 +1,14 @@
 {
   "title": "EEG Data Formats — AI-readiness, routing & data-request guidance",
   "note": "EDF/BDF are gold standard for signal AI. PDF=RAG/ground-truth. Images=CV/validation. Routing is enforced in /api/analyze-upload.",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-08-10",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/eeg-data-formats/page.jsx",
+  "api_endpoints": [
+    "/api/eeg-data-formats/overview",
+    "/api/eeg-data-formats/breakdown",
+    "/api/eeg-data-formats/definitions"
+  ],
   "formats": [
     {"ext": ".edf", "name": "European Data Format", "ai_ready": true, "stars": 5, "route": "signal", "contains": "Raw signals + sfreq + channel names + duration", "supported": true},
     {"ext": ".bdf", "name": "BioSemi Data Format", "ai_ready": true, "stars": 5, "route": "signal", "contains": "Raw signals (24-bit) + metadata", "supported": true},
