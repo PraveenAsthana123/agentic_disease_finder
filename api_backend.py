@@ -17699,6 +17699,299 @@ async def rca_definitions():
     return _json_safe(rca.definitions())
 
 
+# ── Accuracy Options Comparison Dashboard ────────────────────────────
+# Real data: accuracy_all_options.json, accuracy_patient_specific.json,
+# bonn_external_validation.json, subjectwise_accuracy.json,
+# multi_disease_accuracy.json — 5 evaluation methodologies side-by-side.
+
+@app.get("/api/accuracy-options/overview")
+async def accuracy_options_overview():
+    """Accuracy Options overview — 5 evaluation methodologies, KPI comparison table."""
+    import json
+    from pathlib import Path
+
+    reports = Path(__file__).parent / "jobs" / "reports"
+
+    def load(name):
+        p = reports / name
+        return json.loads(p.read_text()) if p.exists() else {}
+
+    all_opts = load("accuracy_all_options.json")
+    pat_spec = load("accuracy_patient_specific.json")
+    bonn = load("bonn_external_validation.json")
+    subj = load("subjectwise_accuracy.json")
+    multi = load("multi_disease_accuracy.json")
+
+    opts = all_opts.get("options", {})
+
+    methods = [
+        {
+            "id": "patient_specific_overlap",
+            "label": "Patient-Specific (Overlapping Windows)",
+            "mean_accuracy": pat_spec.get("mean_accuracy"),
+            "mean_sensitivity": pat_spec.get("mean_sensitivity"),
+            "n_subjects": len(pat_spec.get("per_subject", [])),
+            "note": "Per-subject temporal split, overlapping 4-s windows, 15 features, no data leakage",
+            "bias": "optimistic (same patient train/test)",
+            "best_for": "Patient-specific deployment",
+            "color": "success",
+        },
+        {
+            "id": "patient_specific_basic",
+            "label": "Patient-Specific (Basic Ensemble)",
+            "mean_accuracy": opts.get("1_patient_specific", {}).get("mean_accuracy"),
+            "mean_sensitivity": None,
+            "n_subjects": len(opts.get("1_patient_specific", {}).get("per_subject", [])),
+            "note": "Per-subject temporal split, ensemble model, 47 features",
+            "bias": "optimistic (same patient train/test)",
+            "best_for": "Baseline patient-specific benchmark",
+            "color": "primary",
+        },
+        {
+            "id": "cross_patient_rf",
+            "label": "Cross-Patient (Random Forest LOSO)",
+            "mean_accuracy": opts.get("2_cross_patient_rf", {}).get("mean_accuracy"),
+            "mean_sensitivity": None,
+            "n_subjects": len(opts.get("2_cross_patient_rf", {}).get("folds", [])),
+            "note": "Leave-one-subject-out, RF model, 47 features",
+            "bias": "conservative (hardest generalization test)",
+            "best_for": "Generalization claim strength",
+            "color": "info",
+        },
+        {
+            "id": "cross_patient_ensemble",
+            "label": "Cross-Patient (Ensemble LOSO)",
+            "mean_accuracy": opts.get("3_cross_patient_ensemble", {}).get("mean_accuracy"),
+            "mean_sensitivity": None,
+            "n_subjects": len(opts.get("3_cross_patient_ensemble", {}).get("folds", [])),
+            "note": "Leave-one-subject-out, ensemble, 47 features",
+            "bias": "conservative",
+            "best_for": "Generalization with ensemble boost",
+            "color": "warning",
+        },
+        {
+            "id": "subjectwise_loso",
+            "label": "Subject-Wise GroupKFold (Leakage-Free)",
+            "mean_accuracy": subj.get("mean_subjectwise_accuracy"),
+            "mean_sensitivity": None,
+            "n_subjects": None,
+            "note": "GroupKFold across 7 diseases, leakage gap = {:.1%}".format(subj.get("mean_leakage_gap", 0)),
+            "bias": "leakage-free (gold standard)",
+            "best_for": "Thesis generalization evidence",
+            "color": "success",
+        },
+        {
+            "id": "multi_disease",
+            "label": "Multi-Disease In-Sample",
+            "mean_accuracy": multi.get("mean_accuracy"),
+            "mean_sensitivity": None,
+            "n_subjects": len(multi.get("results", [])),
+            "note": "7 diseases (epilepsy, Alzheimer, Parkinson, schizophrenia, autism, stress, depression)",
+            "bias": "optimistic (in-sample)",
+            "best_for": "Platform breadth demonstration",
+            "color": "secondary",
+        },
+        {
+            "id": "bonn_external",
+            "label": "Bonn External Validation (Second Dataset)",
+            "mean_accuracy": bonn.get("results", {}).get("rf", {}).get("accuracy_mean"),
+            "mean_sensitivity": None,
+            "n_subjects": None,
+            "note": "Bonn University EEG dataset, {} samples, stratified 5-fold CV".format(bonn.get("n_samples", "")),
+            "bias": "external dataset (strongest generalization claim)",
+            "best_for": "Q1 reviewer objection rebuttal",
+            "color": "danger",
+        },
+    ]
+
+    kpis = {
+        "n_methods": len(methods),
+        "best_accuracy": max((m["mean_accuracy"] for m in methods if m["mean_accuracy"]), default=None),
+        "leakage_free_acc": subj.get("mean_subjectwise_accuracy"),
+        "external_val_acc": bonn.get("results", {}).get("rf", {}).get("accuracy_mean"),
+        "n_subjects_chbmit": len(all_opts.get("subjects", [])),
+        "n_diseases_multi": len(multi.get("results", [])),
+    }
+
+    return {
+        "generated_at": all_opts.get("generated_at", ""),
+        "kpis": kpis,
+        "methods": methods,
+    }
+
+
+@app.get("/api/accuracy-options/breakdown")
+async def accuracy_options_breakdown():
+    """Accuracy Options breakdown — per-subject detail for each methodology."""
+    import json
+    from pathlib import Path
+
+    reports = Path(__file__).parent / "jobs" / "reports"
+
+    def load(name):
+        p = reports / name
+        return json.loads(p.read_text()) if p.exists() else {}
+
+    all_opts = load("accuracy_all_options.json")
+    pat_spec = load("accuracy_patient_specific.json")
+    bonn = load("bonn_external_validation.json")
+    subj = load("subjectwise_accuracy.json")
+
+    opts = all_opts.get("options", {})
+
+    # Patient-specific overlapping windows per-subject
+    ps_overlap = [
+        {
+            "subject": r["subject"],
+            "accuracy": r["accuracy"],
+            "f1": r.get("f1"),
+            "sensitivity": r.get("sensitivity"),
+            "n_test": r.get("n_test"),
+        }
+        for r in pat_spec.get("per_subject", [])
+    ]
+
+    # Patient-specific basic per-subject
+    ps_basic = [
+        {
+            "subject": r["subject"],
+            "accuracy": r["accuracy"],
+            "n_test": r.get("n_test"),
+        }
+        for r in opts.get("1_patient_specific", {}).get("per_subject", [])
+    ]
+
+    # Cross-patient RF LOSO folds
+    cp_rf = [
+        {
+            "held_out": r["held_out"],
+            "accuracy": r["accuracy"],
+            "f1": r.get("f1"),
+        }
+        for r in opts.get("2_cross_patient_rf", {}).get("folds", [])
+    ]
+
+    # Cross-patient ensemble LOSO folds
+    cp_ens = [
+        {
+            "held_out": r["held_out"],
+            "accuracy": r["accuracy"],
+            "f1": r.get("f1"),
+        }
+        for r in opts.get("3_cross_patient_ensemble", {}).get("folds", [])
+    ]
+
+    # Subject-wise per-disease
+    sw_diseases = [
+        {
+            "disease": r["disease"],
+            "n_subjects": r.get("n_subjects"),
+            "accuracy": r.get("subjectwise_acc_mean"),
+            "f1": r.get("subjectwise_f1_mean"),
+            "leakage_gap": r.get("leakage_gap"),
+        }
+        for r in subj.get("results", [])
+    ]
+
+    # Bonn per-model
+    bonn_models = [
+        {
+            "model": name,
+            "accuracy": info.get("accuracy_mean"),
+            "f1": info.get("f1_mean"),
+            "auc": info.get("auc_mean"),
+            "fold_acc": info.get("fold_acc", []),
+        }
+        for name, info in bonn.get("results", {}).items()
+    ]
+
+    return {
+        "patient_specific_overlap": ps_overlap,
+        "patient_specific_basic": ps_basic,
+        "cross_patient_rf": cp_rf,
+        "cross_patient_ensemble": cp_ens,
+        "subjectwise_by_disease": sw_diseases,
+        "bonn_external": bonn_models,
+        "bonn_meta": {
+            "dataset": bonn.get("dataset", ""),
+            "n_samples": bonn.get("n_samples"),
+            "balance": bonn.get("balance", ""),
+            "cv": bonn.get("cv", ""),
+            "purpose": bonn.get("purpose", ""),
+        },
+    }
+
+
+@app.get("/api/accuracy-options/definitions")
+async def accuracy_options_definitions():
+    """Accuracy Options definitions — methodology descriptions, bias analysis, thesis context."""
+    return {
+        "methodologies": [
+            {
+                "id": "patient_specific",
+                "title": "Patient-Specific (Temporal Split)",
+                "description": "Train on early windows of each patient's EEG, test on later windows of the same patient. No cross-patient sharing.",
+                "bias": "Optimistic — the model sees the patient's own signal distribution during training.",
+                "when_to_cite": "For patient-specific deployment accuracy claims.",
+                "references": ["CHB-MIT (chb01–chb04)", "4-s overlapping windows", "Ensemble model"],
+            },
+            {
+                "id": "cross_patient_loso",
+                "title": "Cross-Patient LOSO (Leave-One-Subject-Out)",
+                "description": "Hold out one patient entirely, train on all others, test on the held-out patient. Strictest cross-patient test.",
+                "bias": "Conservative — model has never seen the test patient's signal. Hardest generalization.",
+                "when_to_cite": "For cross-patient generalization claims. Recommended by Q1 reviewers.",
+                "references": ["CHB-MIT (chb01–chb04)", "RF + Ensemble variants"],
+            },
+            {
+                "id": "subjectwise_groupkfold",
+                "title": "Subject-Wise GroupKFold (Leakage-Free)",
+                "description": "GroupKFold across subjects ensures no subject appears in both train and test folds. Leakage gap reported.",
+                "bias": "Gold standard for leakage-free evaluation. Leakage gap < 2% confirms no data leakage.",
+                "when_to_cite": "For thesis data integrity claims and journal submissions.",
+                "references": ["7 diseases", "GroupKFold", "Leakage gap = 1.14%"],
+            },
+            {
+                "id": "multi_disease",
+                "title": "Multi-Disease In-Sample",
+                "description": "Train and test on the same dataset for each of 7 diseases. In-sample evaluation — optimistic but demonstrates platform breadth.",
+                "bias": "Highly optimistic — in-sample accuracy inflated due to train/test overlap.",
+                "when_to_cite": "For platform breadth demonstration only. Never as generalization evidence.",
+                "references": ["7 diseases", "100-sample datasets", "47 features"],
+            },
+            {
+                "id": "bonn_external",
+                "title": "Bonn University External Validation",
+                "description": "Validation on a completely separate dataset (Bonn University EEG) not used in training. Second-dataset evidence.",
+                "bias": "Most credible claim — external dataset removes training-data bias entirely.",
+                "when_to_cite": "For reviewer rebuttals to 'dataset overfitting' objections. Strongest generalization claim.",
+                "references": ["Bonn University EEG (Andrzejak et al. 2001)", "200 samples", "Stratified 5-fold"],
+            },
+        ],
+        "glossary": [
+            {"term": "Accuracy", "definition": "Proportion of correctly classified windows (seizure + non-seizure)."},
+            {"term": "Sensitivity / Recall", "definition": "True positive rate — proportion of actual seizures detected."},
+            {"term": "F1 Score", "definition": "Harmonic mean of precision and recall. Robust to class imbalance."},
+            {"term": "AUC-ROC", "definition": "Area under the receiver operating characteristic curve."},
+            {"term": "LOSO", "definition": "Leave-One-Subject-Out cross-validation — strictest cross-patient test."},
+            {"term": "Leakage Gap", "definition": "In-sample accuracy minus leakage-free accuracy. Near-zero confirms no data leakage."},
+            {"term": "Temporal Split", "definition": "Train on earlier time segments, test on later — respects temporal ordering of EEG recordings."},
+            {"term": "Overlapping Windows", "definition": "Sliding windows with stride < window length — more training samples, same patient, may inflate accuracy."},
+        ],
+        "thesis_context": {
+            "recommended_cite_order": [
+                "1. Bonn external validation (strongest — external dataset)",
+                "2. Subject-wise GroupKFold (leakage-free gold standard)",
+                "3. Cross-patient LOSO (strictest cross-patient generalization)",
+                "4. Patient-specific overlapping (highest accuracy, patient deployment)",
+                "5. Multi-disease in-sample (platform breadth, not generalization)",
+            ],
+            "q1_reviewer_tip": "Always lead with cross-patient or external validation results. Patient-specific results as supplementary.",
+            "data_source": "jobs/reports/accuracy_*.json + bonn_external_validation.json",
+        },
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
