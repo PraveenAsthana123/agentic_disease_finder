@@ -17608,6 +17608,32 @@ async def mood_comorbidity_definitions():
     return _json_safe(mcd.definitions())
 
 
+# ── DICOM Viewer ─────────────────────────────────────────────────────────────
+
+@app.get("/api/dicom-viewer/overview")
+async def dicom_viewer_overview():
+    """DICOM Study Browser — KPI summary: study/series/instance counts, protocol/field-strength/manufacturer
+    distributions, reading-status breakdown, classification and lesion-type overlay. Real mri_findings."""
+    import scripts.dicom_viewer as dv
+    return _json_safe(dv.dicom_overview())
+
+
+@app.get("/api/dicom-viewer/breakdown")
+async def dicom_viewer_breakdown():
+    """DICOM Study Browser — per-study metadata with DICOM UIDs, series composition, DICOM tags,
+    radiologist workload, WADO-RS retrieve URLs. Real mri_findings → DICOM structure."""
+    import scripts.dicom_viewer as dv
+    return _json_safe(dv.dicom_breakdown())
+
+
+@app.get("/api/dicom-viewer/definitions")
+async def dicom_viewer_definitions():
+    """DICOM Study Browser — DICOM standard glossary, key tag descriptions (VR/value),
+    SOP class UIDs, DICOMweb service definitions, protocol notes, field-strength guidance."""
+    import scripts.dicom_viewer as dv
+    return _json_safe(dv.dicom_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

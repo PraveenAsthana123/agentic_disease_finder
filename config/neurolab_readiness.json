@@ -18,8 +18,7 @@
       ],
       "missing": [
         "EMR/HIS integration (HL7/FHIR)",
-        "e-signature on reports",
-        "DICOM/MRI side-by-side"
+        "e-signature on reports"
       ]
     },
     {
@@ -68,13 +67,12 @@
       "role": "Radiologist",
       "icon": "\ud83e\ude7b",
       "built": [
-        "MRI findings capture (partial)"
+        "MRI findings capture (/api/mri-review/* + MRIReviewDashboard)",
+        "DICOM Study Browser (/api/dicom-viewer/* + portal-next/app/dicom-viewer/page.jsx)",
+        "structured reporting (Structured Reporting Dashboard — 4 ILAE templates)",
+        "EEG-MRI concordance view (/api/eeg-mri-concordance/*)"
       ],
-      "missing": [
-        "DICOM viewer",
-        "structured reporting",
-        "EEG-MRI concordance view"
-      ]
+      "missing": []
     },
     {
       "role": "Clinical Psychologist",
@@ -189,7 +187,8 @@
     },
     {
       "capability": "DICOM imaging",
-      "status": "missing"
+      "status": "built",
+      "maps_to": "/api/dicom-viewer/* + portal-next/app/dicom-viewer/page.jsx"
     },
     {
       "capability": "Scheduling / worklist",
@@ -300,10 +299,14 @@
     {
       "phase": "3. Clinical",
       "scope": "video-EEG player, DICOM, validated scales",
-      "status": "partial",
-      "note": "Video-EEG and validated scales (PHQ-9/GAD-7/NDDI-E/QOLIE-31/MoCA) built. DICOM viewer still missing.",
-      "built": ["video-EEG sync player (/api/video-eeg/*)", "validated scales (/api/pro-outcomes/* + /api/lsss/* + /api/guided-assessment/*)"],
-      "missing": ["DICOM viewer"]
+      "status": "built",
+      "note": "All Phase 3 items built — video-EEG, validated scales, and DICOM Study Browser (40 studies, DICOM tag viewer, protocol browser, 3 endpoints verified 200).",
+      "built": [
+        "video-EEG sync player (/api/video-eeg/*)",
+        "validated scales (/api/pro-outcomes/* + /api/lsss/* + /api/guided-assessment/*)",
+        "DICOM Study Browser (/api/dicom-viewer/overview|breakdown|definitions + portal-next/app/dicom-viewer/page.jsx)"
+      ],
+      "missing": []
     },
     {
       "phase": "4. Business",
