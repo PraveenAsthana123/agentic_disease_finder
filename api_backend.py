@@ -17671,6 +17671,34 @@ async def carbon_tracker_definitions():
     return _json_safe(cd.definitions())
 
 
+# =============================================================================
+# ROOT CAUSE ANALYSIS (RCA) CENTER
+# =============================================================================
+
+@app.get("/api/rca/overview")
+async def rca_overview():
+    """RCA overview — open/fixed issue counts, P1/P2 breakdown, SLA breaches,
+    component health summary (down/degraded/healthy), top-5 open issues."""
+    import scripts.rca_dashboard as rca
+    return _json_safe(rca.overview())
+
+
+@app.get("/api/rca/breakdown")
+async def rca_breakdown():
+    """RCA breakdown — full issue table with layer/severity/fix/status,
+    component health detail, SLA rule table."""
+    import scripts.rca_dashboard as rca
+    return _json_safe(rca.breakdown())
+
+
+@app.get("/api/rca/definitions")
+async def rca_definitions():
+    """RCA definitions — RCA glossary, severity levels, layer icons,
+    field descriptions for the RCA Center."""
+    import scripts.rca_dashboard as rca
+    return _json_safe(rca.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
