@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-09",
   "must_have_p0": [
     "Raw EEG waveform",
     "Event timeline",
@@ -291,7 +291,13 @@
       "feature": "EEG + depression/anxiety",
       "why": "Neuropsychiatric correlation",
       "priority": "P2",
-      "status": "built"
+      "status": "built",
+      "endpoints": [
+        "/api/mood-comorbidity/overview",
+        "/api/mood-comorbidity/breakdown",
+        "/api/mood-comorbidity/definitions"
+      ],
+      "page": "/mood-comorbidity"
     },
     {
       "role": "Researcher",
@@ -660,6 +666,20 @@
       "description": "WAIS-IV full battery (29 assessments, 26 patients), MoCA/MMSE screening, digit span, PHQ-9/GAD-7 mood comorbidity. 5-tab frontend: Overview, WAIS Profiles, Screening Tests, Mood & Comorbidity, Definitions.",
       "priority": "P1",
       "role": "Clinical Neuropsychologist"
+    },
+    {
+      "role": "Researcher",
+      "name": "Bootstrap CI Baselines",
+      "viz": "CI bar chart + benchmark table",
+      "feature": "Subject-level bootstrap CI for patient-specific accuracy/sensitivity + cross-patient accuracy; literature benchmark comparison (Shoeb 2010, Truong 2018)",
+      "why": "Defensible confidence intervals using subject-level bootstrap (avoids window-correlation inflation). Patient-specific CI narrow (97.3-98.7%). Cross-patient CI wide (40-93%) \u2014 honest with 4 subjects.",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/bootstrap-ci/overview",
+        "/api/bootstrap-ci/breakdown",
+        "/api/bootstrap-ci/definitions"
+      ]
     }
   ],
   "summary": {

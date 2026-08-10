@@ -125,6 +125,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/inference-testing">&#x1f9ea; Inference Testing</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cross-patient-benchmark">&#x1f9ec; Cross-Patient</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/loso">&#x1f4ca; LOSO CV</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/bootstrap-ci">&#x1f4c9; Bootstrap CI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/regulatory-compliance">&#x1f3db; Regulatory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-requirements">&#x1f4ca; Data Requirements</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/production-issues">&#x1f6a8; Production Issues</Link></li>
@@ -141,6 +142,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/emergency-sos">&#x1f6a8; Emergency SOS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/lsss">&#x1f4ca; LSSS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/phq9-dashboard">&#x1f4cb; PHQ-9</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/mood-comorbidity">&#x1f9e0; Mood-Comorbidity</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/psychiatrist">&#x1f4ac; Psychiatrist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/radiologist">&#x1f9b4; Radiologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-psychologist">&#x1f9e0; Clin. Psychologist</Link></li>

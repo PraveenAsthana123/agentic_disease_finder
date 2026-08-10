@@ -17566,6 +17566,48 @@ async def traces_definitions():
     return _json_safe(td.definitions())
 
 
+@app.get("/api/bootstrap-ci/overview")
+async def bootstrap_ci_overview():
+    """Bootstrap CI Baselines — KPIs: patient-specific accuracy/sensitivity CI + cross-patient CI."""
+    import scripts.bootstrap_ci_dashboard as bcd
+    return _json_safe(bcd.overview())
+
+
+@app.get("/api/bootstrap-ci/breakdown")
+async def bootstrap_ci_breakdown():
+    """Bootstrap CI Baselines — literature benchmark comparison table."""
+    import scripts.bootstrap_ci_dashboard as bcd
+    return _json_safe(bcd.breakdown())
+
+
+@app.get("/api/bootstrap-ci/definitions")
+async def bootstrap_ci_definitions():
+    """Bootstrap CI Baselines — glossary: bootstrap CI, LOSO, patient-specific, cross-patient."""
+    import scripts.bootstrap_ci_dashboard as bcd
+    return _json_safe(bcd.definitions())
+
+
+@app.get("/api/mood-comorbidity/overview")
+async def mood_comorbidity_overview():
+    """Mood-Comorbidity View — KPIs: comorbidity rate, avg behavioral risk, PHQ-9/GAD-7 distributions, top conditions."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.overview())
+
+
+@app.get("/api/mood-comorbidity/breakdown")
+async def mood_comorbidity_breakdown():
+    """Mood-Comorbidity View — per-patient table, condition co-occurrence, PHQ-9 vs GAD-7 scatter."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.breakdown())
+
+
+@app.get("/api/mood-comorbidity/definitions")
+async def mood_comorbidity_definitions():
+    """Mood-Comorbidity View — instrument definitions, risk tiers, key comorbidities, AI governance notes."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
