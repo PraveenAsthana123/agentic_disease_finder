@@ -109,6 +109,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/onboarding">&#x1f4cb; Onboarding</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pharmacogenomics">&#x1f9ec; Pharmacogenomics</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-assessments">&#x1f4ca; Clinical Assessments</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/battery-scoring">&#x1f52c; Battery Scoring</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cognitive-decline">&#x1f9e0; Cognitive Decline</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/adl">&#x1f3c3; ADL</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pro-outcomes">&#x1f4cb; PRO Outcomes</Link></li>

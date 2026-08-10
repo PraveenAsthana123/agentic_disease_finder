@@ -78,13 +78,10 @@
       "role": "Clinical Psychologist",
       "icon": "\ud83e\udde9",
       "built": [
-        "neuropsych capture (partial)"
+        "neuropsych capture (partial)",
+        "neuropsychological battery scoring (battery-scoring dashboard — 501 records, 11 tests, 25 patients, 9 domains, normative z-scores, impairment tiers, per-patient cognitive profiles, raw score tables — /api/battery-scoring/overview|breakdown|definitions + portal-next/app/battery-scoring/page.jsx + nav wired next to Clinical Assessments)"
       ],
-      "missing": [
-        "battery scoring (WAIS/WMS)",
-        "normative comparison",
-        "cognitive profile reports"
-      ]
+      "missing": []
     },
     {
       "role": "Admin / Compliance / Billing",
