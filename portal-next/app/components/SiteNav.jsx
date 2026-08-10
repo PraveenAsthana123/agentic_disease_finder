@@ -125,6 +125,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/presurgical-evaluation">&#x1f52c; Pre-Surgical Eval</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/caregiver-readiness">&#x1f91d; Caregiver Readiness</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/caregiver-app">&#x1f4f1; Caregiver App</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/caregivers">&#x1fac2; Caregivers</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/r-ipo">&#x1f504; Role IPO</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/inference-testing">&#x1f9ea; Inference Testing</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cross-patient-benchmark">&#x1f9ec; Cross-Patient</Link></li>
