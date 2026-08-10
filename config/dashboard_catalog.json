@@ -1,7 +1,7 @@
 {
   "title": "Enterprise AI Dashboard Catalog (5 phases) \u2014 coverage map",
   "note": "~400 dashboards across 5 phases. Status is HONEST: built = a real view/endpoint exists in THIS project; partial = related data exists; planned = catalog only.",
-  "updated_at": "2026-08-06T11:52:09Z",
+  "updated_at": "2026-08-10T00:15:00Z",
   "phases": [
     {
       "phase": 1,
@@ -563,6 +563,13 @@
         "Definitions"
       ],
       "note": "11,394 transactions, 30 components, 9 actors, $1,302 total cost, 69.1% avg confidence"
+    },
+    {
+      "id": "pro-outcomes",
+      "name": "PRO Outcomes Dashboard",
+      "status": "built",
+      "maps_to": "/api/pro-outcomes/overview|breakdown|definitions",
+      "note": "180 assessments, 30 patients, 8 instruments (PSQI/ESS/PHQ-9/GAD-7/QOLIE-31/MoCA/NDDI-E/WPAI), sleep/depression/anxiety/cognitive distributions, monthly QoL trend, per-patient drill-down, portal-next /pro-outcomes page + SiteNav wired"
     }
   ]
 }
