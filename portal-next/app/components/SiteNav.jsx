@@ -153,6 +153,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/annotation">&#x1f3f7;&#xfe0f; Annotation QC</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurologist">&#x1f9e0; Neurologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/human-evaluation">&#x1f9d1;&#x200d;&#x2695;&#xfe0f; HITL Review</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/component-findings">&#x1f52c; Component Findings</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/alerts">&#x1f6a8; Alerts</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-dark-factory">&#x1f3ed; Dark Factory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mobile-alerts">&#x1f4f1; Mobile Alerts</Link></li>

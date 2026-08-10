@@ -701,14 +701,19 @@
       "api": "/api/conversation-log/overview|breakdown|definitions",
       "status": "built",
       "description": "AI-operator conversation analytics \u2014 3032 messages, 37 active days, role breakdown (2840 assistant / 192 operator), 81.9 msgs/day avg, 14.8:1 AI:operator ratio, daily trend, hourly pattern, message length distribution, longest messages, recent message log"
+    },
+    {
+      "name": "EEG Component Findings Dashboard",
+      "status": "built",
+      "maps_to": "/api/component-findings/overview + /api/component-findings/breakdown + /api/component-findings/definitions + portal-next/app/component-findings/page.jsx + SiteNav wired next to HITL Review"
     }
   ],
   "summary": {
-    "total": 56,
-    "built": 55,
+    "total": 57,
+    "built": 56,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 55
+    "count": 56
   }
 }
