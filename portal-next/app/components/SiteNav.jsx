@@ -208,6 +208,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/role-dashboards">&#x1f4cb; Role Dashboards</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/role-specs">&#x1f4c4; Role Specs Registry</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/role-challenges">&#x26a1; Role Challenges &amp; AI</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/role-tests">&#x1f9ea; Role Tests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cognitive-tests">&#x1f9e0; Cognitive Tests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-demographics">&#x1f465; Demographics</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/population-health">&#x1f30d; Population Health</Link></li>
