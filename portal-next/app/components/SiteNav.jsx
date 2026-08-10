@@ -150,6 +150,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuro-advancements">&#x1f9e0; Neuro Advancements</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/enterprise-pipelines">&#x1f3ed; Enterprise Pipelines</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-manager">&#x1f4cb; Data Manager</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/eeg-uploads">&#x1f4e4; EEG Uploads</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/annotation">&#x1f3f7;&#xfe0f; Annotation QC</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurologist">&#x1f9e0; Neurologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/human-evaluation">&#x1f9d1;&#x200d;&#x2695;&#xfe0f; HITL Review</Link></li>

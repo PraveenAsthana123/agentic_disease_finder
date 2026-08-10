@@ -706,6 +706,12 @@
       "name": "EEG Component Findings Dashboard",
       "status": "built",
       "maps_to": "/api/component-findings/overview + /api/component-findings/breakdown + /api/component-findings/definitions + portal-next/app/component-findings/page.jsx + SiteNav wired next to HITL Review"
+    },
+    {
+      "name": "EEG Upload Analytics Dashboard",
+      "status": "built",
+      "route": "/eeg-uploads",
+      "description": "Upload tracking \u2014 145 EEG files, 50 patients, 5 diseases, 5 formats (EDF/BDF/FIF/CSV/SET), 6 departments, monthly trend, top uploaders, searchable table"
     }
   ],
   "summary": {
