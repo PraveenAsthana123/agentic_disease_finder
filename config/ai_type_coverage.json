@@ -9,6 +9,10 @@
     "scaffold": 0,
     "planned": 0
   },
+  "dashboard_id": "ai-type-coverage",
+  "dashboard_component": "portal-next/app/ai-type-coverage/page.jsx",
+  "dashboard_status": "built",
+  "dashboard_note": "AI Type Coverage Dashboard — 201 AI types from insur_project catalog, 46 built in agenticfinder (22.9% coverage), coverage matrix by category (11 categories), all-types filterable table (built/not-pulled/scaffold/planned), status legend + glossary, 3 endpoints /api/ai-type-coverage/overview|breakdown|definitions verified 200, portal-next/app/ai-type-coverage/page.jsx + SiteNav wired",
   "rows": [
     {
       "type": "active-learning",
