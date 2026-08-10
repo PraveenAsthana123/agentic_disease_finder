@@ -345,6 +345,12 @@
           "status": "built",
           "maps_to": "/api/voice-ai/overview + /api/voice-ai/breakdown + /api/voice-ai/definitions + portal-next/app/voice-ai/page.jsx + nav wired",
           "note": "116 assessments, 22 patients, 5 instruments (BNT/DIGIT_SPAN/MASA/VERBAL_FLUENCY/WAB), mean score 78.1%, 9 clinical alerts, 39 pipeline events"
+        },
+        {
+          "name": "Comorbidity Analytics Dashboard",
+          "status": "built",
+          "maps_to": "/api/comorbidities/overview + /api/comorbidities/breakdown + /api/comorbidities/definitions + portal-next/app/comorbidities/page.jsx + nav wired",
+          "note": "27 patients, 74.1% comorbidity prevalence, psychiatric conditions (MDD/GAD/PTSD), behavioral risk scores, treatment status, functional impact — comorbidities table"
         }
       ]
     }

@@ -90,6 +90,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/video-eeg">&#x1f4f9; Video EEG</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/safety-network">&#x1f6e1;&#xfe0f; Safety Network</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/camera-monitoring">&#x1f4f9; Camera Monitor</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/comorbidities">&#x1f9e0; Comorbidities</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pnes-screening">&#x1f9e0; PNES Screening</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pnes-differential">&#x1f9e0; PNES Differential</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/model-comparison">&#x1f4ca; Model Compare</Link></li>
