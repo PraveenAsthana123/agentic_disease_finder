@@ -778,6 +778,15 @@
       "status": "built",
       "route": "/clinical-assessments",
       "note": "16 instruments, 424 assessments, 29 patients, 33 alerts, 15 safety escalations, 58 severe/critical. 3 endpoints /api/clinical-assessments/overview|breakdown|definitions verified 200, portal-next/app/clinical-assessments/page.jsx + SiteNav wired next to Cognitive Decline. 2026-08-10."
+    },
+    {
+      "id": "agent-loop",
+      "name": "Agent Loop Monitor",
+      "status": "built",
+      "category": "Agentic AI",
+      "endpoint": "/api/agent-loop/*",
+      "page": "portal-next/app/agent-loop/page.jsx",
+      "note": "Agent loop behaviour monitor \u2014 38K+ actions, 30 components, conversation turn ratio, goal drift score, HITL override rate, confidence metrics. 3 endpoints /api/agent-loop/overview|breakdown|definitions verified 200."
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -794,7 +803,7 @@
     ]
   },
   "summary": {
-    "total": 64,
+    "total": 65,
     "built": 64,
     "partial": 0,
     "planned": 0,
