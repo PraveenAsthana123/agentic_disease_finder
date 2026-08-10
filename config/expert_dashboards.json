@@ -712,6 +712,13 @@
       "status": "built",
       "route": "/eeg-uploads",
       "description": "Upload tracking \u2014 145 EEG files, 50 patients, 5 diseases, 5 formats (EDF/BDF/FIF/CSV/SET), 6 departments, monthly trend, top uploaders, searchable table"
+    },
+    {
+      "name": "AI ROI Dashboard",
+      "status": "built",
+      "route": "/ai-roi",
+      "maps_to": "/api/ai-roi/overview + /api/ai-roi/breakdown + /api/ai-roi/definitions + portal-next/app/ai-roi/page.jsx + SiteNav wired next to AI FinOps",
+      "description": "Return on Investment analysis \u2014 978 finops_cost records, 133 analyses, 109 telehealth sessions, ROI 5609.7%, investment $1302.17, value $74,350, time saved 199.5h, cost by category (gpu/llm/cloud), cost by model, monthly trend, top components, patient-level ROI, optimization recommendations. 4-tab frontend (Overview/Cost Analysis/ROI Breakdown/Definitions), 3 endpoints /api/ai-roi/overview|breakdown|definitions verified 200."
     }
   ],
   "summary": {
