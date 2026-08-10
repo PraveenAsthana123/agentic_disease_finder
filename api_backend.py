@@ -17643,6 +17643,34 @@ async def dicom_viewer_definitions():
     return _json_safe(dv.dicom_definitions())
 
 
+# ── Green AI / Carbon Footprint Dashboard ─────────────────────────────────
+# Real data: psutil live power + model_comparison (224 training runs) +
+# CarbonTracker compute model. Region: Canada (0.130 kg CO2/kWh).
+
+@app.get("/api/carbon-tracker/overview")
+async def carbon_tracker_overview():
+    """Green AI overview — current power draw, daily/annual kWh, annual CO2,
+    efficiency score + grade, equivalences, training footprint KPIs."""
+    import scripts.carbon_dashboard as cd
+    return _json_safe(cd.overview())
+
+
+@app.get("/api/carbon-tracker/breakdown")
+async def carbon_tracker_breakdown():
+    """Green AI breakdown — region comparison table, hardware power split,
+    per-model CO2, prediction volume scenarios, carbon offset tiers."""
+    import scripts.carbon_dashboard as cd
+    return _json_safe(cd.breakdown())
+
+
+@app.get("/api/carbon-tracker/definitions")
+async def carbon_tracker_definitions():
+    """Green AI definitions — kWh/CO2e/carbon-intensity glossary, efficiency
+    score formula, IEA standards, metric reference table."""
+    import scripts.carbon_dashboard as cd
+    return _json_safe(cd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
