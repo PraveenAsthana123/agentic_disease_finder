@@ -85,6 +85,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-comparison">&#x1f500; Patient Compare</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hospitalization">&#x1f3e5; Hospitalization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-diary">&#x1f4d3; Seizure Diary</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/trigger-logs">&#x1f4c5; Trigger Logs</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-triggers">&#x26a1; Seizure Triggers</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-forecasting">&#x1f52e; Seizure Forecasting</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-prediction">&#x1f4c8; Seizure Prediction</Link></li>
