@@ -160,6 +160,8 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuropsychologist">&#x1f9e0; Neuropsychologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurophysiologist">&#x1f4e1; Neurophysiologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/occupational-therapist">&#x1f590;&#xfe0f; OT</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/fim-dashboard">&#x1f3cb;&#xfe0f; FIM</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/copm-dashboard">&#x1f3af; COPM</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/dietitian">&#x1f957; Dietitian</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/social-worker">&#x1f91d; Social Worker</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/program-coordinator">&#x1f9ed; Prog. Coordinator</Link></li>
