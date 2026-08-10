@@ -26,6 +26,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuro-scales">🩺 Neuro Scales</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-types">AI Types</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-type-coverage">🤖 AI Coverage</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/stories-tests">&#x1f4d6; Stories &amp; Tests</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-nurse">💉 Epilepsy Nurse</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/medication">&#x1f48a; Medication</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/treatment-efficacy">&#x1f4c9; Treatment Efficacy</Link></li>
