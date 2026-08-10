@@ -25,7 +25,7 @@
         "defect tracking"
       ],
       "status": "built",
-      "maps_to": "role_tests + stories-tests + /api/qa-test-suite/* + QATestSuiteDashboard.jsx"
+      "maps_to": "role_tests + stories-tests + /api/qa-test-suite/* + portal-next/app/qa-test-suite/page.jsx + SiteNav wired"
     },
     {
       "role": "Security",
