@@ -72,6 +72,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/vep">VEP</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hrv">HRV</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/abpm">ABPM/Holter</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/abpm-holter">&#x1f493; ABPM-Holter Combined</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cloud-ops">&#x2601;&#xfe0f; Cloud Ops</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-ops">&#x1f4e6; DataOps</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/observability">&#x1f441;&#xfe0f; Observability</Link></li>
