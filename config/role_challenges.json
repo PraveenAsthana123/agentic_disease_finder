@@ -1,7 +1,11 @@
 {
   "title": "Per-Role Challenges & AI Mitigation",
   "note": "Each clinical role: real workflow challenges + how AI in this project mitigates each. status: built (real here) / partial / planned.",
-  "updated_at": "2026-08-06",
+  "updated_at": "2026-08-10",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/role-challenges/page.jsx",
+  "dashboard_id": "role-challenges",
+  "dashboard_note": "Role Challenges & AI Solutions Dashboard — 31 challenges across 9 roles, 100% built, 4-tab frontend (Overview/By Role/All Challenges/Definitions), 3 endpoints /api/role-challenges/overview|breakdown|definitions verified 200, portal-next/app/role-challenges/page.jsx + SiteNav wired next to Role Specs Registry",
   "roles": [
     {
       "role": "Neurologist",
