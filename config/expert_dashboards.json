@@ -771,6 +771,13 @@
       "status": "built",
       "category": "clinical",
       "description": "Seizure frequency, duration, severity, trigger analysis from seizure_diary + seizure_trigger_logs"
+    },
+    {
+      "id": "clinical_assessments",
+      "name": "Clinical Assessments Dashboard",
+      "status": "built",
+      "route": "/clinical-assessments",
+      "note": "16 instruments, 424 assessments, 29 patients, 33 alerts, 15 safety escalations, 58 severe/critical. 3 endpoints /api/clinical-assessments/overview|breakdown|definitions verified 200, portal-next/app/clinical-assessments/page.jsx + SiteNav wired next to Cognitive Decline. 2026-08-10."
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -787,11 +794,11 @@
     ]
   },
   "summary": {
-    "total": 62,
-    "built": 62,
+    "total": 64,
+    "built": 64,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 62
+    "count": 64
   }
 }

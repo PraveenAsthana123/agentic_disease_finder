@@ -18551,6 +18551,211 @@ async def seizure_burden_definitions():
     }
 
 
+# /api/clinical-assessments — Clinical Assessments Dashboard
+# Sources: assessments (424 rows) — 16 instruments, 29 patients, 33 alerts, 58 severe/critical
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _clinical_assessments_load():
+    """Load assessments table from clinical.db."""
+    import sqlite3, os
+    db_path = os.path.join(os.path.dirname(__file__), "data", "clinical.db")
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    rows = [dict(r) for r in conn.execute(
+        "SELECT * FROM assessments ORDER BY created_at"
+    ).fetchall()]
+    conn.close()
+    return rows
+
+
+@app.get("/api/clinical-assessments/overview")
+async def clinical_assessments_overview():
+    """Clinical Assessments — KPIs, instrument summary, severity and alert distribution."""
+    from collections import Counter
+    rows = _clinical_assessments_load()
+
+    total = len(rows)
+    patients = len(set(r["patient_id"] for r in rows))
+    instruments = sorted(set(r["instrument"] for r in rows))
+    alerts = [r for r in rows if r.get("alert") and r["alert"].strip()]
+    severe = [r for r in rows if (r.get("level") or "").lower() in ("severe", "critical")]
+    safety_escalations = [r for r in alerts if any(kw in (r.get("alert") or "") for kw in
+                          ("SAFETY", "escalate", "INTERVENTION", "suicid", "self-harm"))]
+
+    # Instrument summary
+    instrument_summary = []
+    for inst in instruments:
+        inst_rows = [r for r in rows if r["instrument"] == inst]
+        scores = [r["score"] for r in inst_rows if r.get("score") is not None]
+        avg_score = round(sum(scores) / len(scores), 1) if scores else None
+        max_score = inst_rows[0].get("max_score") if inst_rows else None
+        inst_alerts = sum(1 for r in inst_rows if r.get("alert") and r["alert"].strip())
+        inst_severe = sum(1 for r in inst_rows if (r.get("level") or "").lower() in ("severe", "critical"))
+        instrument_summary.append({
+            "instrument": inst,
+            "n": len(inst_rows),
+            "avg_score": avg_score,
+            "max_score": max_score,
+            "alerts": inst_alerts,
+            "severe_count": inst_severe,
+        })
+
+    # Level distribution
+    level_dist = dict(Counter(
+        (r.get("level") or "unspecified").strip() for r in rows
+    ))
+
+    # Alert type distribution
+    alert_dist = {}
+    for r in alerts:
+        key = (r.get("alert") or "").strip()
+        alert_dist[key] = alert_dist.get(key, 0) + 1
+
+    return {
+        "kpis": {
+            "total_assessments": total,
+            "distinct_patients": patients,
+            "distinct_instruments": len(instruments),
+            "total_alerts": len(alerts),
+            "severe_or_critical": len(severe),
+            "safety_escalations": len(safety_escalations),
+        },
+        "instrument_summary": instrument_summary,
+        "level_distribution": level_dist,
+        "alert_distribution": alert_dist,
+    }
+
+
+@app.get("/api/clinical-assessments/breakdown")
+async def clinical_assessments_breakdown():
+    """Clinical Assessments — per-patient breakdown and per-instrument score tables."""
+    rows = _clinical_assessments_load()
+
+    # Per-patient summary
+    from collections import defaultdict
+    patient_map = defaultdict(list)
+    for r in rows:
+        patient_map[r["patient_id"]].append(r)
+
+    patient_cards = []
+    for pid, prec in sorted(patient_map.items()):
+        alerts = [r for r in prec if r.get("alert") and r["alert"].strip()]
+        severe = [r for r in prec if (r.get("level") or "").lower() in ("severe", "critical")]
+        safety = [r for r in alerts if any(kw in (r.get("alert") or "") for kw in
+                  ("SAFETY", "escalate", "INTERVENTION", "suicid", "self-harm"))]
+        patient_cards.append({
+            "patient_id": pid,
+            "n_assessments": len(prec),
+            "n_instruments": len(set(r["instrument"] for r in prec)),
+            "n_alerts": len(alerts),
+            "n_severe": len(severe),
+            "safety_flag": len(safety) > 0,
+            "instruments": sorted(set(r["instrument"] for r in prec)),
+            "alert_messages": [r["alert"] for r in alerts if r.get("alert")],
+        })
+
+    # Sort: safety flagged first, then by n_alerts desc
+    patient_cards.sort(key=lambda x: (-x["safety_flag"], -x["n_alerts"]))
+
+    # Per-instrument score distribution (histograms)
+    instruments = sorted(set(r["instrument"] for r in rows))
+    score_tables = {}
+    for inst in instruments:
+        inst_rows = [r for r in rows if r["instrument"] == inst and r.get("score") is not None]
+        score_tables[inst] = [
+            {
+                "patient_id": r["patient_id"],
+                "score": r["score"],
+                "max_score": r.get("max_score"),
+                "level": r.get("level"),
+                "alert": r.get("alert") or "",
+                "examiner": r.get("examiner") or "",
+                "date": r.get("created_at", "")[:10],
+            }
+            for r in sorted(inst_rows, key=lambda x: x.get("score") or 0, reverse=True)
+        ]
+
+    return {
+        "patient_cards": patient_cards,
+        "score_tables": score_tables,
+    }
+
+
+@app.get("/api/clinical-assessments/definitions")
+async def clinical_assessments_definitions():
+    """Clinical Assessments — instrument glossary, score interpretation, data provenance."""
+    return {
+        "title": "Clinical Assessments Dashboard",
+        "description": (
+            "Aggregates 424 standardised neuropsychological and clinical assessments "
+            "across 29 epilepsy patients using 16 validated instruments. Tracks cognitive, "
+            "psychiatric, functional, and quality-of-life domains with safety alert escalation."
+        ),
+        "kpi_definitions": [
+            {"name": "Total Assessments", "description": "All scored assessment records in the assessments table."},
+            {"name": "Distinct Patients", "description": "Number of unique patients with at least one assessment."},
+            {"name": "Distinct Instruments", "description": "Number of different validated assessment tools used."},
+            {"name": "Total Alerts", "description": "Assessments with a non-empty alert flag — clinically significant findings."},
+            {"name": "Severe / Critical", "description": "Assessments rated level='severe' or 'critical' by examiner or instrument cutoff."},
+            {"name": "Safety Escalations", "description": "Alerts referencing self-harm, suicidality, or mandatory safety plan — require immediate action."},
+        ],
+        "instruments": [
+            {"code": "BARTHEL", "name": "Barthel Index", "domain": "ADL / Functional", "range": "0–100",
+             "description": "Activities of daily living; ≤20 = total dependence, 100 = full independence."},
+            {"code": "BNT", "name": "Boston Naming Test", "domain": "Language / Naming", "range": "0–60",
+             "description": "Confrontation naming; sensitive to left temporal lobe dysfunction."},
+            {"code": "CSSRS", "name": "Columbia Suicide Severity Rating Scale", "domain": "Psychiatric / Safety", "range": "0–25",
+             "description": "Gold-standard suicidality screen; item 4+ triggers mandatory safety intervention."},
+            {"code": "DIGIT_SPAN", "name": "Digit Span (WAIS-IV subtest)", "domain": "Working Memory", "range": "0–30 scaled",
+             "description": "Forward, backward, and sequencing spans; Forward-Backward asymmetry ≥5 indicates lateralised deficit."},
+            {"code": "EPWORTH", "name": "Epworth Sleepiness Scale", "domain": "Sleep", "range": "0–24",
+             "description": "Daytime somnolence; ≥10 = excessive daytime sleepiness, relevant for AED sedation profiling."},
+            {"code": "GAD7", "name": "Generalised Anxiety Disorder-7", "domain": "Psychiatric / Anxiety", "range": "0–21",
+             "description": "0–4 minimal, 5–9 mild, 10–14 moderate, ≥15 severe anxiety."},
+            {"code": "LSSS", "name": "Liverpool Seizure Severity Scale", "domain": "Epilepsy-specific", "range": "0–100",
+             "description": "Patient-rated ictal severity and post-ictal impact; higher = worse seizure experience."},
+            {"code": "MASA", "name": "Mann Assessment of Swallowing Ability", "domain": "Dysphagia", "range": "0–200",
+             "description": "Swallowing safety; <148 = high aspiration risk, relevant for patients with posterior fossa lesions."},
+            {"code": "MMSE", "name": "Mini-Mental State Examination", "domain": "Cognition", "range": "0–30",
+             "description": "Screen for dementia; ≥24 normal, 18–23 mild impairment, <18 moderate-severe impairment."},
+            {"code": "MOCA", "name": "Montreal Cognitive Assessment", "domain": "Cognition", "range": "0–30",
+             "description": "More sensitive than MMSE for MCI; ≥26 normal (add 1 point if <12 yrs education)."},
+            {"code": "NDDIE", "name": "NDDI-E (Neurological Disorders Depression Inventory — Epilepsy)", "domain": "Psychiatric / Depression", "range": "0–24",
+             "description": "Epilepsy-specific depression screen; ≥15 suggests major depressive disorder."},
+            {"code": "PHQ9", "name": "Patient Health Questionnaire-9", "domain": "Psychiatric / Depression", "range": "0–27",
+             "description": "Item 9 (self-harm ideation) = automatic safety escalation regardless of total score."},
+            {"code": "QOLIE31", "name": "Quality of Life in Epilepsy-31", "domain": "Quality of Life", "range": "0–100",
+             "description": "Epilepsy-specific QOL; 7 subscales (seizure worry, overall QOL, emotional well-being, etc.)."},
+            {"code": "VERBAL_FLUENCY", "name": "Verbal Fluency (FAS / Animals)", "domain": "Executive / Language", "range": "words/min",
+             "description": "Phonemic (FAS) and semantic (Animals) fluency; sensitive to frontal and temporal dysfunction."},
+            {"code": "WAB", "name": "Western Aphasia Battery", "domain": "Language / Aphasia", "range": "0–100",
+             "description": "Aphasia Quotient; ≥93.8 = normal, <93.8 indicates aphasia by type (Broca/Wernicke/etc.)."},
+            {"code": "WAIS", "name": "Wechsler Adult Intelligence Scale", "domain": "Intelligence / Cognition", "range": "FSIQ 40–160",
+             "description": "Full-Scale IQ; <70 = intellectual disability range, 70–79 borderline, 80–89 low average."},
+        ],
+        "severity_levels": [
+            {"level": "normal / none", "description": "Score within normative range — no clinical concern."},
+            {"level": "mild / low average", "description": "Mild impairment — monitor; may not require immediate intervention."},
+            {"level": "moderate / borderline", "description": "Clinically significant — referral or treatment adjustment recommended."},
+            {"level": "severe / critical", "description": "Severe impairment — urgent clinical review required."},
+        ],
+        "safety_escalation_policy": (
+            "Any assessment with CSSRS item ≥4, PHQ-9 item 9 positive, or NDDI-E item 4 positive "
+            "triggers mandatory safety escalation: document safety plan, notify supervising clinician, "
+            "and update risk stratification within 24 hours per institutional SOP."
+        ),
+        "data_sources": [
+            "assessments — 424 scored records across 29 patients and 16 instruments (clinical.db)",
+        ],
+        "clinical_context": (
+            "Systematic neuropsychological assessment is mandated by ILAE quality standards for "
+            "pre-surgical epilepsy evaluation and long-term AED monitoring. This dashboard surfaces "
+            "instrument scores, severity tiers, and safety alerts in a single view, replacing "
+            "scattered paper-based records and enabling timely escalation."
+        ),
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
