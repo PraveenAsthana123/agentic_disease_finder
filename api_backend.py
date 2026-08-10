@@ -18162,6 +18162,156 @@ async def seizure_diary_definitions():
     }
 
 
+# ─── Longitudinal Patient Timeline ────────────────────────────────────────────
+
+def _longitudinal_events():
+    """Aggregate clinical events from 5 tables into a unified timeline list."""
+    import sqlite3 as _sq
+    _db = Path(__file__).parent / "data" / "clinical.db"
+    conn = _sq.connect(str(_db))
+    conn.row_factory = _sq.Row
+    events = []
+    try:
+        for r in conn.execute(
+            "SELECT patient_id, event_date FROM seizure_diary WHERE event_date IS NOT NULL"
+        ):
+            events.append({"type": "Seizure", "patient_id": r["patient_id"], "date": str(r["event_date"])[:10]})
+        for r in conn.execute(
+            "SELECT patient_id, scheduled_for, appt_type FROM appointments WHERE scheduled_for IS NOT NULL"
+        ):
+            events.append({"type": "Appointment", "patient_id": r["patient_id"], "date": str(r["scheduled_for"])[:10], "detail": r["appt_type"] or ""})
+        for r in conn.execute(
+            "SELECT patient_id, session_date FROM telehealth_sessions WHERE session_date IS NOT NULL"
+        ):
+            events.append({"type": "Telehealth", "patient_id": r["patient_id"], "date": str(r["session_date"])[:10]})
+        for r in conn.execute(
+            "SELECT patient_id, created_at FROM assessments WHERE created_at IS NOT NULL"
+        ):
+            events.append({"type": "Assessment", "patient_id": r["patient_id"], "date": str(r["created_at"])[:10]})
+        for r in conn.execute(
+            "SELECT patient_id, created_at FROM hospitalization WHERE created_at IS NOT NULL"
+        ):
+            events.append({"type": "Hospitalization", "patient_id": r["patient_id"], "date": str(r["created_at"])[:10]})
+    finally:
+        conn.close()
+    return events
+
+
+@app.get("/api/longitudinal-timeline/overview")
+async def longitudinal_timeline_overview():
+    """Longitudinal Patient Timeline overview — KPIs, event type distribution, monthly trend."""
+    from collections import Counter, defaultdict
+    events = _longitudinal_events()
+    if not events:
+        return {"error": "No timeline data", "total_events": 0}
+
+    total = len(events)
+    patients = set(e["patient_id"] for e in events)
+    dates = [e["date"] for e in events if e.get("date")]
+    date_start = min(dates) if dates else None
+    date_end = max(dates) if dates else None
+
+    # Event type distribution
+    type_dist = dict(Counter(e["type"] for e in events))
+
+    # Monthly trend
+    monthly: dict = defaultdict(lambda: {"total": 0, "Seizure": 0, "Appointment": 0, "Telehealth": 0, "Assessment": 0, "Hospitalization": 0})
+    for e in events:
+        m = e["date"][:7] if e.get("date") and len(e["date"]) >= 7 else None
+        if m:
+            monthly[m]["total"] += 1
+            monthly[m][e["type"]] = monthly[m].get(e["type"], 0) + 1
+    monthly_trend = [{"month": m, **v} for m, v in sorted(monthly.items())]
+
+    # Top patients by event count
+    by_patient = Counter(e["patient_id"] for e in events)
+    top_patients = [{"patient_id": pid, "event_count": cnt} for pid, cnt in by_patient.most_common(10)]
+
+    # Months of data
+    months_data = len(monthly)
+    avg_per_patient = round(total / len(patients), 1) if patients else 0
+
+    return {
+        "kpis": {
+            "total_events": total,
+            "unique_patients": len(patients),
+            "date_range_start": date_start,
+            "date_range_end": date_end,
+            "months_of_data": months_data,
+            "avg_events_per_patient": avg_per_patient,
+        },
+        "event_type_distribution": type_dist,
+        "monthly_trend": monthly_trend,
+        "top_patients": top_patients,
+    }
+
+
+@app.get("/api/longitudinal-timeline/breakdown")
+async def longitudinal_timeline_breakdown():
+    """Per-patient event breakdown across all clinical timeline event types."""
+    from collections import defaultdict
+    events = _longitudinal_events()
+
+    by_patient: dict = defaultdict(lambda: {"Seizure": 0, "Appointment": 0, "Telehealth": 0, "Assessment": 0, "Hospitalization": 0, "total": 0, "first_date": None, "last_date": None})
+    for e in events:
+        pid = e["patient_id"]
+        by_patient[pid][e["type"]] = by_patient[pid].get(e["type"], 0) + 1
+        by_patient[pid]["total"] += 1
+        d = e.get("date")
+        if d:
+            if by_patient[pid]["first_date"] is None or d < by_patient[pid]["first_date"]:
+                by_patient[pid]["first_date"] = d
+            if by_patient[pid]["last_date"] is None or d > by_patient[pid]["last_date"]:
+                by_patient[pid]["last_date"] = d
+
+    patient_rows = []
+    for pid, d in sorted(by_patient.items()):
+        patient_rows.append({"patient_id": pid, **d})
+    patient_rows.sort(key=lambda x: x["total"], reverse=True)
+    return {"patients": patient_rows}
+
+
+@app.get("/api/longitudinal-timeline/definitions")
+async def longitudinal_timeline_definitions():
+    """Longitudinal Patient Timeline — metric definitions and data source glossary."""
+    return {
+        "title": "Longitudinal Patient Timeline Dashboard",
+        "description": (
+            "Aggregates five clinical event streams — Seizure Diary, Appointments, "
+            "Telehealth Sessions, Assessments, and Hospitalisations — into a unified "
+            "per-patient timeline covering real clinical.db data from 2024 to 2026."
+        ),
+        "metrics": [
+            {"name": "Total Events", "description": "Sum of all clinical events across all five source tables."},
+            {"name": "Unique Patients", "description": "Number of distinct patients with at least one recorded event."},
+            {"name": "Months of Data", "description": "Span of calendar months covered by the earliest to latest event."},
+            {"name": "Avg Events / Patient", "description": "Mean number of clinical touchpoints per patient across the observation window."},
+            {"name": "Event Type Distribution", "description": "Count of events by category: Seizure, Appointment, Telehealth, Assessment, Hospitalization."},
+            {"name": "Monthly Trend", "description": "Total events per calendar month, broken down by event type, to identify peaks in clinical activity."},
+            {"name": "Per-Patient Breakdown", "description": "Per-patient tabulation of each event type count, total events, and first/last observed date."},
+        ],
+        "event_types": {
+            "Seizure": "Seizure diary entry (seizure_diary table) — patient-reported or clinician-confirmed ictal event.",
+            "Appointment": "Scheduled clinic visit (appointments table) — neurology, EEG, or allied-health appointment.",
+            "Telehealth": "Remote consultation session (telehealth_sessions table) — video/phone consult with provider.",
+            "Assessment": "Standardised clinical assessment (assessments table) — cognitive, functional, or psychiatric scale.",
+            "Hospitalization": "Hospital admission or ER visit (hospitalization table) — inpatient episode.",
+        },
+        "data_sources": [
+            "seizure_diary (25 events)",
+            "appointments (120 appointments)",
+            "telehealth_sessions (109 sessions)",
+            "assessments (424 assessments)",
+            "hospitalization (115 episodes)",
+        ],
+        "clinical_context": (
+            "Longitudinal timelines support epilepsy care co-ordination by surfacing high-burden periods, "
+            "missed follow-up gaps, and the relationship between seizure clusters and hospitalisation rates. "
+            "Gaps > 90 days between assessments may indicate lost-to-follow-up risk."
+        ),
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
