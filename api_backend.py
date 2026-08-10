@@ -18312,6 +18312,245 @@ async def longitudinal_timeline_definitions():
     }
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# /api/seizure-burden — Seizure Burden & Trigger Dashboard
+# Sources: seizure_diary (25 rows) + seizure_trigger_logs (203 rows)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _seizure_burden_load():
+    """Load seizure_diary and seizure_trigger_logs from clinical.db."""
+    import sqlite3, os
+    db_path = os.path.join(os.path.dirname(__file__), "data", "clinical.db")
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    diary = [dict(r) for r in conn.execute("SELECT * FROM seizure_diary ORDER BY event_date").fetchall()]
+    logs  = [dict(r) for r in conn.execute("SELECT * FROM seizure_trigger_logs ORDER BY log_date").fetchall()]
+    conn.close()
+    return diary, logs
+
+
+@app.get("/api/seizure-burden/overview")
+async def seizure_burden_overview():
+    """Seizure Burden — overview KPIs, severity distribution, trigger distribution."""
+    from collections import Counter
+    diary, logs = _seizure_burden_load()
+
+    total = len(diary)
+    er_visits = sum(1 for e in diary if (e.get("er_visit") or "").lower() == "yes")
+    rescue_meds = sum(1 for e in diary if e.get("rescue_med") and str(e["rescue_med"]).lower() not in ("none", "no", ""))
+    severe = sum(1 for e in diary if (e.get("severity") or "").lower() == "severe")
+    injury = sum(1 for e in diary if e.get("injury") and str(e["injury"]).lower() not in ("none", "no", ""))
+    durations = [e["duration_sec"] for e in diary if e.get("duration_sec")]
+    avg_dur = round(sum(durations) / len(durations), 1) if durations else 0
+    max_dur = max(durations) if durations else 0
+
+    severity_dist = dict(Counter(e.get("severity") or "Unknown" for e in diary))
+
+    trigger_dist = dict(Counter(
+        t for e in diary
+        for t in [(e.get("trigger") or "Unknown")]
+        if t
+    ))
+
+    # Trigger logs aggregated
+    log_triggers = dict(Counter(l.get("primary_trigger") or "Unknown" for l in logs))
+    seizure_in_logs = sum(1 for l in logs if l.get("seizure_occurred") == 1)
+    total_logs = len(logs)
+
+    # Average physiological metrics on days WITH seizure vs without
+    with_sz = [l for l in logs if l.get("seizure_occurred") == 1]
+    without_sz = [l for l in logs if l.get("seizure_occurred") == 0]
+
+    def avg(lst, key):
+        vals = [x[key] for x in lst if x.get(key) is not None]
+        return round(sum(vals) / len(vals), 1) if vals else None
+
+    # Per-patient summary from diary
+    by_pt = Counter(e["patient_id"] for e in diary if e.get("patient_id"))
+    patient_summary = []
+    for pid, cnt in by_pt.most_common():
+        pt_events = [e for e in diary if e.get("patient_id") == pid]
+        pt_sev = [e.get("severity") or "Unknown" for e in pt_events]
+        pt_durs = [e["duration_sec"] for e in pt_events if e.get("duration_sec")]
+        pt_er = sum(1 for e in pt_events if (e.get("er_visit") or "").lower() == "yes")
+        patient_summary.append({
+            "patient_id": pid,
+            "total_events": cnt,
+            "severe_count": pt_sev.count("Severe"),
+            "mild_count": pt_sev.count("Mild"),
+            "er_visits": pt_er,
+            "avg_duration_sec": round(sum(pt_durs) / len(pt_durs), 1) if pt_durs else 0,
+            "max_duration_sec": max(pt_durs) if pt_durs else 0,
+            "dates": sorted(e.get("event_date") or "" for e in pt_events if e.get("event_date")),
+        })
+
+    return {
+        "kpis": {
+            "total_diary_events": total,
+            "er_visits": er_visits,
+            "rescue_med_used": rescue_meds,
+            "severe_events": severe,
+            "injury_events": injury,
+            "avg_duration_sec": avg_dur,
+            "max_duration_sec": max_dur,
+            "seizure_rate_in_logs_pct": round(seizure_in_logs / total_logs * 100, 1) if total_logs else 0,
+        },
+        "severity_distribution": severity_dist,
+        "diary_trigger_distribution": trigger_dist,
+        "log_trigger_distribution": log_triggers,
+        "physiological_comparison": {
+            "seizure_days": {
+                "n": len(with_sz),
+                "avg_sleep_hours": avg(with_sz, "sleep_hours"),
+                "avg_stress_level": avg(with_sz, "stress_level"),
+                "avg_fatigue_level": avg(with_sz, "fatigue_level"),
+                "avg_missed_doses": avg(with_sz, "missed_doses"),
+                "avg_caffeine_mg": avg(with_sz, "caffeine_mg"),
+            },
+            "non_seizure_days": {
+                "n": len(without_sz),
+                "avg_sleep_hours": avg(without_sz, "sleep_hours"),
+                "avg_stress_level": avg(without_sz, "stress_level"),
+                "avg_fatigue_level": avg(without_sz, "fatigue_level"),
+                "avg_missed_doses": avg(without_sz, "missed_doses"),
+                "avg_caffeine_mg": avg(without_sz, "caffeine_mg"),
+            },
+        },
+        "patient_summary": patient_summary,
+    }
+
+
+@app.get("/api/seizure-burden/breakdown")
+async def seizure_burden_breakdown():
+    """Seizure Burden — per-patient drill-down and trigger log detail."""
+    from collections import Counter, defaultdict
+    diary, logs = _seizure_burden_load()
+
+    # Diary detail per patient
+    by_pt: dict = defaultdict(list)
+    for e in diary:
+        pid = e.get("patient_id") or "Unknown"
+        by_pt[pid].append(e)
+
+    patient_cards = []
+    for pid, events in sorted(by_pt.items()):
+        events = sorted(events, key=lambda x: x.get("event_date") or "")
+        durations = [e["duration_sec"] for e in events if e.get("duration_sec")]
+        patient_cards.append({
+            "patient_id": pid,
+            "event_count": len(events),
+            "events": [
+                {
+                    "date": e.get("event_date"),
+                    "time": e.get("event_time"),
+                    "duration_sec": e.get("duration_sec"),
+                    "severity": e.get("severity") or "Unknown",
+                    "aura": e.get("aura") or "None",
+                    "awareness": e.get("awareness") or "Unknown",
+                    "motor_signs": e.get("motor_signs") or "None",
+                    "injury": e.get("injury") or "None",
+                    "post_ictal": e.get("post_ictal") or "None",
+                    "recovery_min": e.get("recovery_min"),
+                    "er_visit": e.get("er_visit") or "No",
+                    "rescue_med": e.get("rescue_med") or "None",
+                    "trigger": e.get("trigger") or "Unknown",
+                    "location": e.get("location") or "Unknown",
+                }
+                for e in events
+            ],
+            "avg_duration_sec": round(sum(durations) / len(durations), 1) if durations else 0,
+        })
+
+    # Trigger log duration histograms
+    dur_log = [l.get("seizure_duration_sec") for l in logs if l.get("seizure_occurred") == 1 and l.get("seizure_duration_sec")]
+    dur_hist = []
+    bins = [(0, 60), (60, 120), (120, 300), (300, 600), (600, 99999)]
+    bin_labels = ["<1 min", "1–2 min", "2–5 min", "5–10 min", ">10 min"]
+    for (lo, hi), label in zip(bins, bin_labels):
+        dur_hist.append({"label": label, "count": sum(1 for d in dur_log if lo <= d < hi)})
+
+    # Sleep hours on seizure vs non-seizure days
+    sleep_dist = {"seizure": {}, "non_seizure": {}}
+    for l in logs:
+        sl = l.get("sleep_hours")
+        if sl is None:
+            continue
+        bucket = f"{int(sl)}h"
+        key = "seizure" if l.get("seizure_occurred") == 1 else "non_seizure"
+        sleep_dist[key][bucket] = sleep_dist[key].get(bucket, 0) + 1
+
+    # Stress level distribution
+    stress_dist = {"seizure": {}, "non_seizure": {}}
+    for l in logs:
+        sv = l.get("stress_level")
+        if sv is None:
+            continue
+        key = "seizure" if l.get("seizure_occurred") == 1 else "non_seizure"
+        stress_dist[key][str(sv)] = stress_dist[key].get(str(sv), 0) + 1
+
+    return {
+        "patient_cards": patient_cards,
+        "seizure_duration_histogram": dur_hist,
+        "sleep_distribution": sleep_dist,
+        "stress_distribution": stress_dist,
+    }
+
+
+@app.get("/api/seizure-burden/definitions")
+async def seizure_burden_definitions():
+    """Seizure Burden — metric definitions and clinical glossary."""
+    return {
+        "title": "Seizure Burden & Trigger Dashboard",
+        "description": (
+            "Aggregates seizure_diary (25 clinician-confirmed events) and "
+            "seizure_trigger_logs (203 daily lifestyle entries) to quantify "
+            "seizure burden, identify modifiable triggers, and profile high-risk "
+            "physiological states in epilepsy patients."
+        ),
+        "kpi_definitions": [
+            {"name": "Total Diary Events", "description": "Clinician-confirmed seizure episodes logged in seizure_diary."},
+            {"name": "ER Visits", "description": "Events requiring emergency department attendance (er_visit = Yes)."},
+            {"name": "Rescue Med Used", "description": "Events where rescue / abortive medication was administered (e.g. diazepam, midazolam)."},
+            {"name": "Severe Events", "description": "Events rated severity = Severe — typically prolonged, injurious, or status-adjacent."},
+            {"name": "Injury Events", "description": "Events with documented physical injury (fall, laceration, etc.)."},
+            {"name": "Avg Duration (sec)", "description": "Mean ictal duration in seconds across all diary entries."},
+            {"name": "Seizure Rate in Trigger Logs", "description": "% of daily trigger-log entries on which a seizure occurred (seizure_occurred = 1 / 203 days)."},
+        ],
+        "seizure_metrics": [
+            {"name": "Aura", "description": "Pre-ictal subjective warning — déjà vu, epigastric sensation, visual phenomena — indicating focal onset."},
+            {"name": "Awareness", "description": "Ictal consciousness: Retained, Impaired, or Lost — maps to ILAE 2017 focal classification."},
+            {"name": "Motor Signs", "description": "Tonic, clonic, tonic-clonic, automatism, or atonic components during the ictus."},
+            {"name": "Post-ictal State", "description": "Immediate post-seizure period: confusion, Todd's paresis, fatigue, or headache lasting minutes to hours."},
+            {"name": "Recovery Min", "description": "Time in minutes from seizure offset to return to baseline neurological function."},
+        ],
+        "trigger_factors": [
+            {"name": "Sleep Deprivation", "description": "Reduced slow-wave sleep lowers seizure threshold — most common modifiable trigger."},
+            {"name": "Stress", "description": "Psychological stress activates HPA axis; cortisol surges are pro-convulsant."},
+            {"name": "Missed Medication", "description": "Single missed AED dose can halve plasma trough levels, precipitating breakthrough seizures."},
+            {"name": "Photosensitivity", "description": "Intermittent photic stimulation triggers occipital discharges in ~3% of people with epilepsy."},
+            {"name": "Alcohol", "description": "Alcohol withdrawal lowers seizure threshold 12–48 h after consumption."},
+            {"name": "Hormonal Changes", "description": "Catamenial epilepsy — seizure clustering around menstrual cycle phases driven by oestrogen-progesterone ratio."},
+            {"name": "Fatigue", "description": "Physical fatigue compounds sleep deprivation effects on cortical excitability."},
+            {"name": "Caffeine", "description": "High-dose caffeine (>400 mg) may exacerbate excitability in predisposed individuals."},
+        ],
+        "severity_levels": [
+            {"level": "Mild", "description": "Short (<90 s), no injury, no ER — manageable with outpatient follow-up."},
+            {"level": "Moderate", "description": "Moderate duration (90–300 s), possible injury, rescue med may be used."},
+            {"level": "Severe", "description": "Prolonged (>300 s) or status-adjacent, significant injury risk, ER visit likely."},
+        ],
+        "data_sources": [
+            "seizure_diary — 25 clinician-confirmed ictal events (EPAT001–EPAT020, PCORR1, PSEIZ02)",
+            "seizure_trigger_logs — 203 daily lifestyle + outcome entries across study cohort",
+        ],
+        "clinical_context": (
+            "Seizure burden quantification is central to ILAE outcome criteria: seizure freedom, "
+            "≥50% reduction (responder), and <50% reduction (non-responder). Trigger logs enable "
+            "personalised advice on modifiable risk factors. ER visit and injury rates inform "
+            "SUDEP risk stratification and rescue medication prescribing."
+        ),
+    }
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

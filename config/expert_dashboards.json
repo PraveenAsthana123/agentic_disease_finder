@@ -762,6 +762,15 @@
       "route": "/ai-compliance",
       "description": "HITL oversight, expert agreement, clinical decision audit, EU AI Act risk tiers \u2014 133 analyses, 4 HITL reviews, 75 clinical decisions, 35K+ audit transactions, 100% accountability",
       "api": "/api/ai-compliance/overview|breakdown|definitions"
+    },
+    {
+      "id": "seizure-burden",
+      "name": "Seizure Burden & Trigger Dashboard",
+      "route": "/seizure-burden",
+      "api_prefix": "/api/seizure-burden",
+      "status": "built",
+      "category": "clinical",
+      "description": "Seizure frequency, duration, severity, trigger analysis from seizure_diary + seizure_trigger_logs"
     }
   ],
   "regulatory_audit_trail_dashboard": {
