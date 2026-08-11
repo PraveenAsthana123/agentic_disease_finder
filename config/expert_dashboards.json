@@ -808,6 +808,18 @@
       "api_prefix": "/api/knowledge-management",
       "category": "AI Governance",
       "note": "783 knowledge items across 8 types (Clinical Analysis/Assessment Instrument/Expert Review/EEG Upload/Medication Record/Imaging Finding/Patient Diary/Conversation Knowledge), lifecycle stages (Created 39/Approved 492/Published 252), source breakdown (analyses 133 + assessments 424 + expert_reviews 3 + hitl_reviews 2 + uploads 145 + medications 9 + mri_findings 40 + seizure_diary 25), daily activity trend, 82 patient profiles, stage-flow transitions. 5-tab frontend (Overview/Knowledge Register/Per Patient/Lifecycle Events/Definitions), 3 endpoints /api/knowledge-management/overview|breakdown|definitions verified 200, portal-next/app/knowledge-management/page.jsx + SiteNav wired next to Agent Loop Monitor, expert_dashboards.json count 65\u219266"
+    },
+    {
+      "id": "referral_records",
+      "name": "Referral Records Dashboard",
+      "status": "built",
+      "description": "84 referrals, 41 patients, 7 sources (pediatrics/neurology_clinic/primary_care/emergency/other_specialist/self_referral/psychiatry), 9 reasons (medication_review/headache_workup/status_epilepticus/psychogenic_nonepileptic/cognitive_decline/refractory_epilepsy/pre_surgical_evaluation/new_onset_seizure/eeg_abnormality), urgency tiers (emergent/urgent/routine/elective), triage status breakdown, assignee workload (5 clinicians), avg triage score by urgency and source, monthly trend, per-patient summary, sortable all-referrals table with filter, 5-tab frontend (Overview/Triage Scores/All Referrals/Per Patient/Definitions), 3 endpoints /api/referral-records/overview|breakdown|definitions verified 200, portal-next/app/referral-records/page.jsx + SiteNav wired next to Referral Triage",
+      "route": "/referral-records",
+      "endpoints": [
+        "/api/referral-records/overview",
+        "/api/referral-records/breakdown",
+        "/api/referral-records/definitions"
+      ]
     }
   ],
   "regulatory_audit_trail_dashboard": {
