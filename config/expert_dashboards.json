@@ -1158,6 +1158,16 @@
       "api": "/api/research-coordinator/overview|breakdown|definitions",
       "script": "scripts/research_coordinator_dashboard.py",
       "description": "Clinical trial & study management \u2014 subject enrollment, visit compliance, assessment instrument coverage, ICH-GCP and IRB compliance tracking"
+    },
+    {
+      "id": "insurance_preauth",
+      "name": "Insurance Pre-Authorization Dashboard",
+      "status": "built",
+      "route": "/insurance-preauth",
+      "api": "/api/insurance-preauth/overview|breakdown|definitions",
+      "script": "scripts/insurance_preauth_dashboard.py",
+      "description": "114 pre-auth-requiring claims, 7 payers, 62% approval rate, 14% denial rate, avg decision time, per-payer approval rate table, per-service type breakdown, denial reason analysis, per-patient pre-auth log, PA status glossary, CPT PA requirements, payer policy cards, remediation actions. 3 endpoints /api/insurance-preauth/overview|breakdown|definitions verified 200, portal-next/app/insurance-preauth/page.jsx + SiteNav wired next to Research Coordinator, expert_dashboards.json count 92\u219293.",
+      "role": "Admin / Compliance / Billing"
     }
   ],
   "summary": {
@@ -1169,5 +1179,6 @@
     "count": 91,
     "total_dashboards": 91,
     "total_built": 91
-  }
+  },
+  "count": 93
 }

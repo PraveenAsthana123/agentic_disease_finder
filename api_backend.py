@@ -19635,6 +19635,30 @@ async def pediatric_epilepsy_definitions():
     return _json_safe(ped.definitions())
 
 
+@app.get("/api/insurance-preauth/overview")
+async def insurance_preauth_overview():
+    """Insurance Pre-Authorization overview — 114 pre-auth-requiring claims, 7 payers,
+    62% approval rate, 14% denial rate, avg decision time, status distribution."""
+    import scripts.insurance_preauth_dashboard as ipd
+    return _json_safe(ipd.overview())
+
+
+@app.get("/api/insurance-preauth/breakdown")
+async def insurance_preauth_breakdown():
+    """Insurance Pre-Authorization breakdown — per-payer approval rates, per-service
+    type distribution, per-patient recent pre-auth history, denial reason analysis."""
+    import scripts.insurance_preauth_dashboard as ipd
+    return _json_safe(ipd.breakdown())
+
+
+@app.get("/api/insurance-preauth/definitions")
+async def insurance_preauth_definitions():
+    """Insurance Pre-Authorization definitions — PA status glossary, CPT code
+    PA requirements, payer policy summary, denial reasons + remediation actions."""
+    import scripts.insurance_preauth_dashboard as ipd
+    return _json_safe(ipd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
