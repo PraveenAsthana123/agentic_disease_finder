@@ -1081,6 +1081,21 @@
         "/api/aed-side-effects/definitions"
       ],
       "note": "AED Side Effects Dashboard \u2014 12,600 medication adherence records, 30 patients, 8 AEDs (Lacosamide/Carbamazepine/Valproate/Levetiracetam/Clobazam/Oxcarbazepine/Lamotrigine/Topiramate), 12 side effect types, severity scale 0\u20138. KPIs: 3,135 records with effects (24.9%), avg severity 1.12 when present, 12 distinct side effects (Blurred vision 433/Drowsiness 416/Mood changes 413 top 3). Drug-effect profiles, per-patient burden table, severity-by-drug heatmap (none/mild/moderate/severe), adherence vs severity, AED class groupings, side-effect glossary with clinical notes, references (Perucca 2012/NICE NG217/Brodie 2012). 5-tab frontend (Overview/By Drug/By Side Effect/Per Patient/Definitions). 3 endpoints /api/aed-side-effects/overview|breakdown|definitions verified 200. portal-next/app/aed-side-effects/page.jsx + SiteNav wired next to Pharmacogenomics. expert_dashboards.json count 85\u219286."
+    },
+    {
+      "id": "neurosurgeon",
+      "role": "Neurosurgeon / Epilepsy Surgery",
+      "title": "Neurosurgeon / Epilepsy Surgery Dashboard",
+      "slug": "neurosurgeon",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/neurosurgeon/overview",
+        "/api/neurosurgeon/breakdown",
+        "/api/neurosurgeon/definitions"
+      ],
+      "portal_page": "/neurosurgeon",
+      "built_note": "Neurosurgeon Dashboard \u2014 MRI lesion inventory (40 scans: HS/FCD/NL/CAV/AVM), surgical candidacy (29 of 40 patients), laterality + lesion location charts, candidate table (per-patient EEG count + AED trials), key concepts (epilepsy surgery, SEEG, Engel), quality metrics, surgical procedures. 3 endpoints verified 200."
     }
   ],
   "summary": {
