@@ -1253,6 +1253,22 @@
       "built_at": "2026-08-11",
       "data_source": "medication_adherence (12600 rows)",
       "note": "12,600 dose records \u00b7 30 patients \u00b7 8 AEDs \u00b7 90 days \u00b7 93.0% overall adherence \u00b7 on-time/late/missed breakdown \u00b7 per-drug bars \u00b7 monthly trend \u00b7 side effect analysis \u00b7 5-tab frontend"
+    },
+    {
+      "role": "Clinical Pharmacist",
+      "name": "Clinical Pharmacist Dashboard",
+      "viz": "Medication reconciliation, DDI, TDM, MMAS-8 adherence, pregnancy safety, ADR profiling",
+      "feature": "Per-patient drug interaction matrix, therapeutic range guidance, MMAS-8 proxy scoring",
+      "status": "built",
+      "route": "/pharmacist",
+      "api": [
+        "/api/pharmacist",
+        "/api/pharmacist/interactions",
+        "/api/pharmacist/tdm",
+        "/api/pharmacist/adherence",
+        "/api/pharmacist/pregnancy-safety",
+        "/api/pharmacist/adr"
+      ]
     }
   ],
   "summary": {
