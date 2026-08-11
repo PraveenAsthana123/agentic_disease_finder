@@ -1356,6 +1356,23 @@
       "status": "built",
       "route": "/blink-reflex",
       "note": "30 studies 33.3% abnormal, R1 (pons oligosynaptic) + R2 ipsi/contra (medulla polysynaptic) latency analysis, severity distribution (Normal 20/Mild 3/Moderate 7), diagnostic patterns (normal 20/trigeminal neuropathy 9/medullary lesion 1), bilateral side abnormality rates (Left 26.7%/Right 6.7%), R1 latency histogram, ipsi-vs-contra R2 comparison, per-patient expandable rows with full bilateral R1/R2 latency+amplitude vs reference, AED neurotoxicity monitoring (carbamazepine/phenytoin), brainstem seizure propagation relevance, AANEM guidelines, 3 endpoints /api/blink-reflex/overview|breakdown|definitions verified 200, portal-next/app/blink-reflex/page.jsx + SiteNav wired next to NCV, expert_dashboards.json count 108\u2192109"
+    },
+    {
+      "id": "ssr",
+      "name": "SSR (Sympathetic Skin Response) Dashboard",
+      "route": "/ssr",
+      "api_routes": [
+        "/api/ssr/overview",
+        "/api/ssr/breakdown",
+        "/api/ssr/definitions"
+      ],
+      "status": "built",
+      "roles": [
+        "neurophysiologist",
+        "neurologist",
+        "epileptologist"
+      ],
+      "note": "Sympathetic sudomotor pathway \u2014 hand (palmar) + foot (plantar) onset latency/amplitude/habituation, dysautonomia scoring, 6 diagnostic patterns (peripheral/small-fiber/postganglionic/preganglionic/generalized dysautonomia/normal), per-patient expandable rows, AANEM reference ranges, epilepsy relevance (SUDEP/AED autonomic effects/ictal autonomic changes). 3 endpoints /api/ssr/overview|breakdown|definitions verified 200, expert_dashboards.json count 109\u2192110."
     }
   ],
   "summary": {
