@@ -1349,17 +1349,24 @@
         "/api/ncv/definitions"
       ],
       "note": "30 studies 25 patients 53.3% abnormal, motor (Median/Ulnar/Peroneal/Tibial) + sensory (Median/Ulnar/Sural/Sup.Peroneal) nerves, MCV/SCV/CMAP/SNAP/DML/F-wave parameters, neuropathy types (axonal/demyelinating/mixed), AED-induced neuropathy monitoring, AANEM guidelines"
+    },
+    {
+      "id": "blink_reflex",
+      "name": "Blink Reflex Dashboard",
+      "status": "built",
+      "route": "/blink-reflex",
+      "note": "30 studies 33.3% abnormal, R1 (pons oligosynaptic) + R2 ipsi/contra (medulla polysynaptic) latency analysis, severity distribution (Normal 20/Mild 3/Moderate 7), diagnostic patterns (normal 20/trigeminal neuropathy 9/medullary lesion 1), bilateral side abnormality rates (Left 26.7%/Right 6.7%), R1 latency histogram, ipsi-vs-contra R2 comparison, per-patient expandable rows with full bilateral R1/R2 latency+amplitude vs reference, AED neurotoxicity monitoring (carbamazepine/phenytoin), brainstem seizure propagation relevance, AANEM guidelines, 3 endpoints /api/blink-reflex/overview|breakdown|definitions verified 200, portal-next/app/blink-reflex/page.jsx + SiteNav wired next to NCV, expert_dashboards.json count 108\u2192109"
     }
   ],
   "summary": {
-    "total": 107,
-    "built": 97,
+    "total": 109,
+    "built": 109,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
     "count": 97,
-    "total_dashboards": 97,
-    "total_built": 97
+    "total_dashboards": 109,
+    "total_built": 109
   },
-  "count": 108
+  "count": 109
 }
