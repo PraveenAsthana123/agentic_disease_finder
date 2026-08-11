@@ -965,13 +965,29 @@
       "/api/neuropsych-battery/definitions"
     ]
   },
+  {
+    "role": "Neurophysiologist",
+    "name": "Signal Quality Dashboard",
+    "viz": "Channel quality scorecard + impedance/SNR histograms + artifact burden by type/channel/severity",
+    "feature": "570 channel assessments × impedance/SNR grade, 169 artifact events, per-recording scorecard, activation-procedure coverage",
+    "why": "Signal quality determines diagnostic validity; poor impedance (>10 kΩ) masks epileptiform discharges (ACNS 2016); artifact burden >20% triggers re-recording (IFCN)",
+    "priority": "P1",
+    "status": "built",
+    "route": "/signal-quality",
+    "description": "30 patients × 19 channels from clinical.db channel_quality + artifact_annotations + eeg_acquisition + recording_conditions — 570 channel-level impedance/SNR assessments (344 Good/199 Fair/27 Poor), avg impedance 9.2 kΩ, avg SNR 21.8 dB, 263 poor-impedance channels, 27 poor-SNR channels; 169 artifact events across 8 types (muscle 36/ECG 33/electrode_pop 27/movement 26/eye_blink 25/...), 3 severity levels, per-channel artifact heatmap (top: T6/Fp1/O1 each 12 events); 30 recording params (avg 458 min, 256/512/1024 Hz sampling, average/referential montage), activation procedures (hyperventilation/photic/sleep). 5-tab frontend (Overview/Channel Quality/Artifact Analysis/Per Recording/Definitions), 3 endpoints /api/signal-quality/overview|breakdown|definitions verified 200, portal-next/app/signal-quality/page.jsx + SiteNav wired next to Neurophysiologist, expert_dashboards.json count 77→78.",
+    "endpoints": [
+      "/api/signal-quality/overview",
+      "/api/signal-quality/breakdown",
+      "/api/signal-quality/definitions"
+    ]
+  },
   "summary": {
     "total": 68,
-    "built": 77,
+    "built": 78,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-11",
-    "count": 76,
-    "total_dashboards": 77
+    "updated_at": "2026-08-10",
+    "count": 77,
+    "total_dashboards": 78
   }
 }

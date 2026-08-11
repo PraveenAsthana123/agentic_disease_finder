@@ -19320,6 +19320,41 @@ async def neuropsych_battery_definitions():
     return _json_safe(nbd.definitions())
 
 
+# ── Signal Quality Dashboard ───────────────────────────────────────────────
+# 30 recordings × 19 channels — impedance / SNR scorecards, artifact burden
+# by type / channel / severity, recording parameters, activation procedures.
+
+@app.get("/api/signal-quality/overview")
+async def signal_quality_overview():
+    """Signal Quality overview — 30 patients, 570 channel assessments, 169
+    artifact events.  Channel quality-grade distribution (Good/Fair/Poor),
+    impedance and SNR averages, artifact type and severity breakdowns, sampling
+    rate / montage / recording-type distributions, per-channel poor-rate, and
+    activation-procedure coverage."""
+    import scripts.signal_quality_dashboard as sqd
+    return _json_safe(sqd.overview())
+
+
+@app.get("/api/signal-quality/breakdown")
+async def signal_quality_breakdown():
+    """Signal Quality breakdown — per-patient channel quality scorecard
+    (good/poor channel counts, avg impedance, avg SNR, artifact burden, severe
+    artifact count, recording parameters); top-10 most-artifacted channels;
+    SNR histogram (5 buckets); impedance histogram (5 buckets)."""
+    import scripts.signal_quality_dashboard as sqd
+    return _json_safe(sqd.breakdown())
+
+
+@app.get("/api/signal-quality/definitions")
+async def signal_quality_definitions():
+    """Signal Quality definitions — electrode impedance thresholds (ACNS),
+    SNR grades (dB), quality grade rubric, artifact type taxonomy, severity
+    levels, sampling rate requirements (IFCN), montage types, activation
+    procedures, 10-20 electrode system, standards and abbreviations."""
+    import scripts.signal_quality_dashboard as sqd
+    return _json_safe(sqd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
