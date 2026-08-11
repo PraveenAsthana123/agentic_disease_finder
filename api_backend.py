@@ -19659,6 +19659,30 @@ async def insurance_preauth_definitions():
     return _json_safe(ipd.definitions())
 
 
+@app.get("/api/epilepsy-in-women/overview")
+async def epilepsy_in_women_overview():
+    """Epilepsy in Women overview — 11 female EPAT patients, AED teratogenicity tiers,
+    childbearing age count, enzyme-inducer prevalence, PHQ-9/GAD-7 mental health KPIs."""
+    import scripts.epilepsy_in_women_dashboard as eiw
+    return _json_safe(eiw.overview())
+
+
+@app.get("/api/epilepsy-in-women/breakdown")
+async def epilepsy_in_women_breakdown():
+    """Epilepsy in Women per-patient breakdown — AED safety tier, enzyme-inducer flags,
+    mental health scores, drug resistance, comorbidities, risk matrix."""
+    import scripts.epilepsy_in_women_dashboard as eiw
+    return _json_safe(eiw.breakdown())
+
+
+@app.get("/api/epilepsy-in-women/definitions")
+async def epilepsy_in_women_definitions():
+    """Epilepsy in Women definitions — EURAP 2022 teratogenicity tiers, AED-OCP
+    interactions, catamenial epilepsy, pregnancy guidance, clinical references."""
+    import scripts.epilepsy_in_women_dashboard as eiw
+    return _json_safe(eiw.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
