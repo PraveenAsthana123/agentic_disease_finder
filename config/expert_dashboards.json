@@ -949,13 +949,29 @@
       "/api/regulatory-audit-trail/definitions"
     ]
   },
+  {
+    "role": "Neuropsychologist",
+    "name": "Neuropsychological Battery Dashboard",
+    "viz": "Cognitive domain index bars + impairment classification + per-patient battery table",
+    "feature": "Memory/Attention/Executive/Language/Processing Speed indices, MoCA/MMSE/PHQ-9/GAD-7, lateralization hypothesis, pre-surgical subset",
+    "why": "Mandatory pre-surgical cognitive baseline (NAEC Level 4); tracks AED-related cognitive decline over time",
+    "priority": "P1",
+    "status": "built",
+    "route": "/neuropsych-battery",
+    "description": "37 neuropsych assessments from clinical.db neuropsych table — 37 patients, 5 cognitive domain index means (Memory 88.4/Attention 92.2/Executive 90.5/Language 93.3/Processing Speed 87.7), MoCA avg 23/MMSE avg 25, PHQ-9 avg 7.4/GAD-7 avg 6.6, impairment distribution (18 none/14 mild/5 moderate), lateralization (15 bilateral/9 right/7 non-lateralizing/6 left), battery types (18 Full/12 Screening/7 Follow-up), referral reasons (12 cognitive_complaint/10 pre-surgical/9 medication_review/6 baseline), PHQ-9/GAD-7 severity distributions, domain weakness analysis (below-85 count per domain), pre-surgical impairment subset. 5-tab frontend (Overview/Cognitive Domains/Screening Scores/Per Patient/Definitions), 3 endpoints /api/neuropsych-battery/overview|breakdown|definitions verified 200, portal-next/app/neuropsych-battery/page.jsx + SiteNav wired next to Neuropsychologist, expert_dashboards.json count 76→77.",
+    "endpoints": [
+      "/api/neuropsych-battery/overview",
+      "/api/neuropsych-battery/breakdown",
+      "/api/neuropsych-battery/definitions"
+    ]
+  },
   "summary": {
     "total": 68,
-    "built": 76,
+    "built": 77,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 75,
-    "total_dashboards": 76
+    "count": 76,
+    "total_dashboards": 77
   }
 }

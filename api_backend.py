@@ -19288,6 +19288,38 @@ async def presurgical_eval_definitions():
     return _json_safe(ped.definitions())
 
 
+# ── Neuropsychological Battery Dashboard ──────────────────────────────────
+# 37 neuropsych assessments — cognitive index profiles, MoCA/MMSE/PHQ-9/GAD-7,
+# impairment classification, lateralization hypothesis, per-patient battery detail.
+
+@app.get("/api/neuropsych-battery/overview")
+async def neuropsych_battery_overview():
+    """Neuropsychological Battery overview — 37 assessments, cognitive domain
+    index means (Memory/Attention/Executive/Language/Processing Speed), MoCA /
+    MMSE / PHQ-9 / GAD-7 averages, impairment distribution, battery type and
+    lateralization hypothesis breakdowns."""
+    import scripts.neuropsych_battery_dashboard as nbd
+    return _json_safe(nbd.overview())
+
+
+@app.get("/api/neuropsych-battery/breakdown")
+async def neuropsych_battery_breakdown():
+    """Neuropsychological Battery breakdown — PHQ-9/GAD-7 severity distributions,
+    domain weakness analysis (indices < 85), pre-surgical subset impairment rate,
+    per-patient full battery table (all indices + Trail Making + screening scores)."""
+    import scripts.neuropsych_battery_dashboard as nbd
+    return _json_safe(nbd.breakdown())
+
+
+@app.get("/api/neuropsych-battery/definitions")
+async def neuropsych_battery_definitions():
+    """Neuropsychological Battery definitions — cognitive domain index rubric,
+    impairment flag criteria, MoCA/MMSE/PHQ-9/GAD-7 cut-offs, Trail Making
+    norms, lateralization terminology, NAEC/ILAE/APA standards."""
+    import scripts.neuropsych_battery_dashboard as nbd
+    return _json_safe(nbd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
