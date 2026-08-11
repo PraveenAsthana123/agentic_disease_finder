@@ -1149,10 +1149,19 @@
       "data_source": "seizure_metadata (25 pediatric-onset records), patients, medications, comorbidities",
       "note": "Childhood-onset epilepsy (onset < 18y): CAE/JME/JAE/LGS/TLE/FLE \u2014 25 pediatric patients, 10 syndromes, drug-resistance rates, seizure-freedom tracking, ILAE 2022 classification, 5-tab frontend, 3 endpoints verified 200",
       "built_at": "2026-08-11"
+    },
+    {
+      "id": "research_coordinator",
+      "name": "Research Coordinator Dashboard",
+      "status": "built",
+      "route": "/research-coordinator",
+      "api": "/api/research-coordinator/overview|breakdown|definitions",
+      "script": "scripts/research_coordinator_dashboard.py",
+      "description": "Clinical trial & study management \u2014 subject enrollment, visit compliance, assessment instrument coverage, ICH-GCP and IRB compliance tracking"
     }
   ],
   "summary": {
-    "total": 91,
+    "total": 92,
     "built": 91,
     "partial": 0,
     "planned": 0,
