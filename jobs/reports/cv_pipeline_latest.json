@@ -1,11 +1,11 @@
 {
-  "run_at_local": "2026-08-11T13:00:02-06:00",
+  "run_at_local": "2026-08-11T15:00:03-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
   "detection": "YOLOv8n",
   "classification_model": "llava:7b (Ollama)",
-  "classification_sample": "A man is laying down, his head tilted back and eyes closed, possibly after surgery or as a part of an EEG monitoring process.",
+  "classification_sample": "A person lying down, possibly reacting to a medical procedure or receiving news from their doctor.",
   "results": [
     {
       "frame": "frame_0001.jpg",

@@ -19923,6 +19923,36 @@ async def mmn_definitions():
     return _json_safe(mmn.definitions())
 
 
+@app.get("/api/ncv/overview")
+async def ncv_overview():
+    """NCV overview — 30 studies, severity distribution (Normal/Mild/Moderate/Severe),
+    neuropathy type distribution (normal/axonal/demyelinating/mixed),
+    per-nerve abnormality rates (Median/Ulnar/Peroneal/Tibial motor + 4 sensory),
+    mean MCV + SCV, per-patient summary table."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.overview())
+
+
+@app.get("/api/ncv/breakdown")
+async def ncv_breakdown():
+    """NCV breakdown — motor nerve summary (DML/CMAP/MCV/F-wave vs AANEM refs),
+    sensory nerve summary (SNAP/SCV), MCV histogram, motor vs sensory involvement,
+    upper vs lower limb comparison, per-patient full nerve detail (expandable rows)."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.breakdown())
+
+
+@app.get("/api/ncv/definitions")
+async def ncv_definitions():
+    """NCV definitions — protocol (AANEM standard, motor/sensory nerves tested,
+    clinical indications), 6 parameter definitions (DML/CMAP/MCV/F-wave/SNAP/SCV),
+    reference ranges (4 motor + 4 sensory nerves), neuropathy types, severity levels,
+    epilepsy contexts (AED neuropathy/MELAS/autoimmune/Todd's paralysis/pre-surgical),
+    Preston & Shapiro 2013 + AANEM 2022 references."""
+    import scripts.ncv_dashboard as ncv
+    return _json_safe(ncv.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
