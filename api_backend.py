@@ -8691,6 +8691,67 @@ async def slp_definitions():
 
 
 # ---------------------------------------------------------------------------
+# SLP Expert Dashboard (slp_module — enhanced, real patient data)
+# ---------------------------------------------------------------------------
+
+@app.get("/api/slp-expert/overview")
+async def slp_expert_overview():
+    """SLP Expert overview — 41 patients, language lateralization, dysphagia risk,
+    AED speech effects, therapy goals summary. Real clinical.db data."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_dashboard())
+
+
+@app.get("/api/slp-expert/language-assessment")
+async def slp_expert_language():
+    """SLP language assessment — BNT naming, Token Test comprehension, phonemic/semantic
+    fluency per patient with Chiappa + ASHA normative references."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_language_assessment())
+
+
+@app.get("/api/slp-expert/swallowing")
+async def slp_expert_swallowing():
+    """SLP swallowing — dysphagia risk score (0-10) per patient: post-ictal aspiration,
+    AED sedation, VNS, elderly polytherapy, seizure injury factors."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_swallowing())
+
+
+@app.get("/api/slp-expert/cognitive-communication")
+async def slp_expert_cognitive():
+    """SLP cognitive-communication — word-finding, naming, discourse, pragmatics
+    risk scoring per patient with epilepsy-specific cognitive-linguistic profiles."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_cognitive_communication())
+
+
+@app.get("/api/slp-expert/aed-speech-effects")
+async def slp_expert_aed():
+    """SLP AED speech effects — per-drug speech/language side effect profiles
+    (topiramate word-finding, valproate dysarthria, phenytoin articulation),
+    per-patient risk summary and monitoring recommendations."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_aed_speech_effects())
+
+
+@app.get("/api/slp-expert/therapy-goals")
+async def slp_expert_therapy():
+    """SLP therapy goals — active goals, interventions, outcome measures,
+    progress tracking per patient. Evidence-based SLP epilepsy interventions."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_therapy_goals())
+
+
+@app.get("/api/slp-expert/definitions")
+async def slp_expert_definitions():
+    """SLP definitions — assessment metrics, AED effects catalog, swallowing
+    risk factors, therapy domains, clinical references (ASHA, Helmstaedter, Bell)."""
+    import scripts.slp_module as slpm
+    return _json_safe(slpm.generate_slp_definitions())
+
+
+# ---------------------------------------------------------------------------
 # CNN/ResNet Spectrogram Dashboard
 # ---------------------------------------------------------------------------
 
@@ -19777,6 +19838,32 @@ async def aed_compliance_definitions():
     monitoring recommendations by dosing frequency, key references."""
     import scripts.aed_compliance_dashboard as acd
     return _json_safe(acd.definitions())
+
+
+@app.get("/api/sfemg/overview")
+async def sfemg_overview():
+    """SFEMG overview — 30 studies, 25 patients, jitter (MCD) distribution,
+    fiber density distribution, blocking rates, muscle summary (EDC/orbicularis/frontalis/deltoid),
+    diagnosis pattern distribution (Normal/MG/LEMS/CMS/MND/Myopathic), per-patient summary."""
+    import scripts.sfemg_dashboard as sfemg
+    return _json_safe(sfemg.overview())
+
+
+@app.get("/api/sfemg/breakdown")
+async def sfemg_breakdown():
+    """SFEMG per-study breakdown — jitter×blocking scatter, per-diagnosis mean profiles
+    (MCD/FD/blocking), full study log with muscle/nerve/stimulation method/pair count."""
+    import scripts.sfemg_dashboard as sfemg
+    return _json_safe(sfemg.breakdown())
+
+
+@app.get("/api/sfemg/definitions")
+async def sfemg_definitions():
+    """SFEMG definitions — jitter/MCD/FD/blocking reference values and normal ranges,
+    6 diagnostic patterns, 4 muscles + innervation, stimulation methods, epilepsy relevance
+    (5 contexts), and key AANEM/Stalberg references."""
+    import scripts.sfemg_dashboard as sfemg
+    return _json_safe(sfemg.definitions())
 
 
 if __name__ == "__main__":
