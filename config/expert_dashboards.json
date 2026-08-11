@@ -1,6 +1,6 @@
 {
-  "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
-  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. §155 honest — most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
+  "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
+  "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
   "updated_at": "2026-08-11",
   "must_have_p0": [
     {
@@ -15,7 +15,7 @@
       "name": "EEG Clinical Signal Panel",
       "status": "built",
       "route": "/eeg-clinical-panel",
-      "note": "P0 sub-panel suite — Event Timeline (25 seizure events + 169 artifact events), Artifact Overlay (15 channels × 6 types heatmap), PSD Graph (19 channels × 5 bands), Spectrogram (6×10-min bins), Spike/Sharp-Wave Overlay (71 patients, top patterns). 3 endpoints /api/eeg-clinical-panel/overview|breakdown|definitions verified 200, portal-next page + SiteNav wired next to Raw EEG Waveform 2026-08-10."
+      "note": "P0 sub-panel suite \u2014 Event Timeline (25 seizure events + 169 artifact events), Artifact Overlay (15 channels \u00d7 6 types heatmap), PSD Graph (19 channels \u00d7 5 bands), Spectrogram (6\u00d710-min bins), Spike/Sharp-Wave Overlay (71 patients, top patterns). 3 endpoints /api/eeg-clinical-panel/overview|breakdown|definitions verified 200, portal-next page + SiteNav wired next to Raw EEG Waveform 2026-08-10."
     },
     {
       "id": "topomap",
@@ -28,7 +28,7 @@
       "id": "regulatory_submissions",
       "name": "Regulatory Submissions Dashboard",
       "status": "built",
-      "note": "FDA/CE pathway tracking — 16 submissions, 8 products, 5 pathways, 5 statuses, 3 API endpoints + frontend"
+      "note": "FDA/CE pathway tracking \u2014 16 submissions, 8 products, 5 pathways, 5 statuses, 3 API endpoints + frontend"
     }
   ],
   "libraries": {
@@ -434,7 +434,7 @@
     {
       "role": "Admin / Operations",
       "name": "Enterprise Pipelines",
-      "viz": "Enterprise AI control-tower pipeline catalog — 12 groups, 45 pipelines, 202 stages",
+      "viz": "Enterprise AI control-tower pipeline catalog \u2014 12 groups, 45 pipelines, 202 stages",
       "feature": "Group/status distribution, pipeline-per-group stacked bar, stages-per-group bar, stage flow map, per-group detail tables",
       "why": "Full enterprise pipeline taxonomy visualization for AI lifecycle governance",
       "priority": "P1",
@@ -459,7 +459,7 @@
     {
       "role": "Admin / Operations",
       "name": "Expert Dashboards Catalog",
-      "viz": "Multi-role dashboard catalog — status/priority/role distribution, per-role cards, P0 must-have matrix, tech stack",
+      "viz": "Multi-role dashboard catalog \u2014 status/priority/role distribution, per-role cards, P0 must-have matrix, tech stack",
       "feature": "36-dashboard overview, 14 roles, 28 endpoints, status/priority pie charts, role bar chart, must-have P0 grid, library table",
       "why": "Meta-dashboard showing all expert dashboards across clinical roles",
       "priority": "P1",
@@ -525,7 +525,7 @@
       "name": "Human Evaluation (HITL) Dashboard",
       "viz": "Submit form + history table + KPI cards",
       "feature": "Accept/override AI predictions, review log, agreement rate",
-      "why": "Clinical governance — neurologist confirms or overrides AI diagnosis before treatment",
+      "why": "Clinical governance \u2014 neurologist confirms or overrides AI diagnosis before treatment",
       "priority": "P0",
       "status": "built",
       "endpoints": [
@@ -542,7 +542,7 @@
       "name": "Patient Side-by-Side Comparison",
       "viz": "Side-by-side demographics, seizures, assessments, cognition, adherence, radar",
       "feature": "Select any two patients; compare clinical profile across 6 dimensions",
-      "why": "Enables cohort insight — neurologist/researcher can spot phenotype differences rapidly",
+      "why": "Enables cohort insight \u2014 neurologist/researcher can spot phenotype differences rapidly",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -556,8 +556,8 @@
       "role": "Patient / Caregiver / Coordinator",
       "name": "Daily Plans Dashboard",
       "viz": "Activity logging rates, completion distribution, daily trend, per-patient sortable table",
-      "feature": "900 plans × 30 patients × 30 days — medication reminders, meals, exercise, sleep, mood, seizure logging, AI suggestions",
-      "why": "Tracks patient self-management adherence — identifies low-engagement patients needing outreach",
+      "feature": "900 plans \u00d7 30 patients \u00d7 30 days \u2014 medication reminders, meals, exercise, sleep, mood, seizure logging, AI suggestions",
+      "why": "Tracks patient self-management adherence \u2014 identifies low-engagement patients needing outreach",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -570,9 +570,9 @@
     {
       "role": "Neurologist / Sleep Specialist",
       "name": "Sleep Staging Dashboard",
-      "viz": "Sleep architecture bars, efficiency distribution, per-patient table, seizure-sleep link, epilepsy–sleep interaction definitions",
-      "feature": "95 studies · 40 patients — N1/N2/N3/REM distribution, sleep efficiency, TST, SOL, WASO, arousal index, spindle density, IED-NREM activations, OSA prevalence",
-      "why": "Sleep disturbances are a major seizure trigger; nocturnal seizures require sleep EEG analysis — critical for AED selection and OSA comorbidity management",
+      "viz": "Sleep architecture bars, efficiency distribution, per-patient table, seizure-sleep link, epilepsy\u2013sleep interaction definitions",
+      "feature": "95 studies \u00b7 40 patients \u2014 N1/N2/N3/REM distribution, sleep efficiency, TST, SOL, WASO, arousal index, spindle density, IED-NREM activations, OSA prevalence",
+      "why": "Sleep disturbances are a major seizure trigger; nocturnal seizures require sleep EEG analysis \u2014 critical for AED selection and OSA comorbidity management",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -586,8 +586,8 @@
       "role": "Clinical Coder / Medical Records",
       "name": "ICD-10 AI Coding Dashboard",
       "viz": "Status distribution, top codes table, confidence tiers, AI vs human comparison, coder breakdown, rejection reasons, monthly trend, per-patient table",
-      "feature": "85 records · 41 patients · 27 unique codes — AI-AutoCoder v2.1 (40 records, 73.4% conf) vs human coders (45 records, 80.7% conf), confirmed 38.8%, rejection 14.1%, secondary coverage 69.4%",
-      "why": "AI-assisted ICD-10 coding for epilepsy and seizure encounters — tracks coding accuracy, human override rates, and billing-readiness",
+      "feature": "85 records \u00b7 41 patients \u00b7 27 unique codes \u2014 AI-AutoCoder v2.1 (40 records, 73.4% conf) vs human coders (45 records, 80.7% conf), confirmed 38.8%, rejection 14.1%, secondary coverage 69.4%",
+      "why": "AI-assisted ICD-10 coding for epilepsy and seizure encounters \u2014 tracks coding accuracy, human override rates, and billing-readiness",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -601,8 +601,8 @@
       "role": "Regulatory Affairs / Compliance",
       "name": "Regulatory Audit Trail Dashboard",
       "viz": "KPI cards (102 actions / 16 submissions / 11 actors / 5 categories), category distribution bars, action type breakdown, per-submission table, per-actor activity, event log, definitions",
-      "feature": "102 audit events · 16 regulatory submissions · 11 actors · 5 categories (Administrative/Regulatory/Technical/Clinical/Quality) — immutable audit record from regulatory_audit_trail table",
-      "why": "Immutable per-submission audit trail for IEC/IRB regulatory compliance — tracks every review action, document upload, signature, and status change across all regulatory submissions",
+      "feature": "102 audit events \u00b7 16 regulatory submissions \u00b7 11 actors \u00b7 5 categories (Administrative/Regulatory/Technical/Clinical/Quality) \u2014 immutable audit record from regulatory_audit_trail table",
+      "why": "Immutable per-submission audit trail for IEC/IRB regulatory compliance \u2014 tracks every review action, document upload, signature, and status change across all regulatory submissions",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -616,7 +616,7 @@
       "id": "federated_learning",
       "name": "Federated Learning Dashboard",
       "status": "built",
-      "description": "8 sites, 18 communication rounds, DP (ε=2.8/10.0), FedAvg/FedMA/FedProx/Scaffold comparison, convergence curve, site-level accuracy/sensitivity/F1, gradient norms, seizure-type non-IID distribution, privacy audit trail",
+      "description": "8 sites, 18 communication rounds, DP (\u03b5=2.8/10.0), FedAvg/FedMA/FedProx/Scaffold comparison, convergence curve, site-level accuracy/sensitivity/F1, gradient norms, seizure-type non-IID distribution, privacy audit trail",
       "endpoints": [
         "/api/federated-learning/overview",
         "/api/federated-learning/breakdown",
@@ -642,7 +642,7 @@
       "route": "/lsss",
       "component": "LSSSDashboard",
       "status": "built",
-      "description": "Liverpool Seizure Severity Scale — 53 assessments, 23 patients, severity distribution, trajectory tracking"
+      "description": "Liverpool Seizure Severity Scale \u2014 53 assessments, 23 patients, severity distribution, trajectory tracking"
     },
     {
       "id": "iot_fleet",
@@ -650,7 +650,7 @@
       "route": "/iot-fleet",
       "component": "portal-next/app/iot-fleet/page.jsx",
       "status": "built",
-      "description": "IoT device fleet — 35 devices, 4 types, 30 patients, 6 gateways, 50 alerts (22 unresolved), per-device table with battery/signal/latency/firmware, alert severity breakdown, definitions. 3 endpoints /api/iot-fleet/overview|breakdown|definitions verified 200."
+      "description": "IoT device fleet \u2014 35 devices, 4 types, 30 patients, 6 gateways, 50 alerts (22 unresolved), per-device table with battery/signal/latency/firmware, alert severity breakdown, definitions. 3 endpoints /api/iot-fleet/overview|breakdown|definitions verified 200."
     },
     {
       "id": "operator-requests",
@@ -664,7 +664,7 @@
         "/api/operator-requests/breakdown",
         "/api/operator-requests/definitions"
       ],
-      "note": "Real operator_requests 376 rows, 6 statuses, 4 categories, 2 sources, resolution rate, category×status cross-tab"
+      "note": "Real operator_requests 376 rows, 6 statuses, 4 categories, 2 sources, resolution rate, category\u00d7status cross-tab"
     },
     {
       "name": "Responsible AI Dashboard",
@@ -686,7 +686,7 @@
       "name": "Bootstrap CI Baselines",
       "viz": "CI bar chart + benchmark table",
       "feature": "Subject-level bootstrap CI for patient-specific accuracy/sensitivity + cross-patient accuracy; literature benchmark comparison (Shoeb 2010, Truong 2018)",
-      "why": "Defensible confidence intervals using subject-level bootstrap (avoids window-correlation inflation). Patient-specific CI narrow (97.3-98.7%). Cross-patient CI wide (40-93%) — honest with 4 subjects.",
+      "why": "Defensible confidence intervals using subject-level bootstrap (avoids window-correlation inflation). Patient-specific CI narrow (97.3-98.7%). Cross-patient CI wide (40-93%) \u2014 honest with 4 subjects.",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -714,7 +714,7 @@
       "route": "/conversation-log",
       "api": "/api/conversation-log/overview|breakdown|definitions",
       "status": "built",
-      "description": "AI-operator conversation analytics — 3032 messages, 37 active days, role breakdown (2840 assistant / 192 operator), 81.9 msgs/day avg, 14.8:1 AI:operator ratio, daily trend, hourly pattern, message length distribution, longest messages, recent message log"
+      "description": "AI-operator conversation analytics \u2014 3032 messages, 37 active days, role breakdown (2840 assistant / 192 operator), 81.9 msgs/day avg, 14.8:1 AI:operator ratio, daily trend, hourly pattern, message length distribution, longest messages, recent message log"
     },
     {
       "name": "EEG Component Findings Dashboard",
@@ -725,14 +725,14 @@
       "name": "EEG Upload Analytics Dashboard",
       "status": "built",
       "route": "/eeg-uploads",
-      "description": "Upload tracking — 145 EEG files, 50 patients, 5 diseases, 5 formats (EDF/BDF/FIF/CSV/SET), 6 departments, monthly trend, top uploaders, searchable table"
+      "description": "Upload tracking \u2014 145 EEG files, 50 patients, 5 diseases, 5 formats (EDF/BDF/FIF/CSV/SET), 6 departments, monthly trend, top uploaders, searchable table"
     },
     {
       "name": "AI ROI Dashboard",
       "status": "built",
       "route": "/ai-roi",
       "maps_to": "/api/ai-roi/overview + /api/ai-roi/breakdown + /api/ai-roi/definitions + portal-next/app/ai-roi/page.jsx + SiteNav wired next to AI FinOps",
-      "description": "Return on Investment analysis — 978 finops_cost records, 133 analyses, 109 telehealth sessions, ROI 5609.7%, investment $1302.17, value $74,350, time saved 199.5h, cost by category (gpu/llm/cloud), cost by model, monthly trend, top components, patient-level ROI, optimization recommendations. 4-tab frontend (Overview/Cost Analysis/ROI Breakdown/Definitions), 3 endpoints /api/ai-roi/overview|breakdown|definitions verified 200."
+      "description": "Return on Investment analysis \u2014 978 finops_cost records, 133 analyses, 109 telehealth sessions, ROI 5609.7%, investment $1302.17, value $74,350, time saved 199.5h, cost by category (gpu/llm/cloud), cost by model, monthly trend, top components, patient-level ROI, optimization recommendations. 4-tab frontend (Overview/Cost Analysis/ROI Breakdown/Definitions), 3 endpoints /api/ai-roi/overview|breakdown|definitions verified 200."
     },
     {
       "id": "model_drift",
@@ -741,7 +741,7 @@
       "role": "MLOps / AI Governance",
       "priority": "P1",
       "route": "/model-drift",
-      "description": "Model performance drift monitoring — 48 training runs, 7 models, 4 CHB-MIT subjects, drift score 99.3%, verdict IMPROVED. Per-subject accuracy/sensitivity/F1, 4 evaluation strategies (patient-specific/cross-patient/ensemble), bootstrap CI 95% [97.3%-98.7%], training timeline heatmap, model registry. 4-tab frontend (Overview/Per-Subject/Training Timeline/Definitions), 3 endpoints /api/model-drift/overview|breakdown|definitions verified 200, portal-next/app/model-drift/page.jsx + SiteNav wired next to Drift.",
+      "description": "Model performance drift monitoring \u2014 48 training runs, 7 models, 4 CHB-MIT subjects, drift score 99.3%, verdict IMPROVED. Per-subject accuracy/sensitivity/F1, 4 evaluation strategies (patient-specific/cross-patient/ensemble), bootstrap CI 95% [97.3%-98.7%], training timeline heatmap, model registry. 4-tab frontend (Overview/Per-Subject/Training Timeline/Definitions), 3 endpoints /api/model-drift/overview|breakdown|definitions verified 200, portal-next/app/model-drift/page.jsx + SiteNav wired next to Drift.",
       "endpoints": [
         "/api/model-drift/overview",
         "/api/model-drift/breakdown",
@@ -754,7 +754,7 @@
       "role": "Neurologist / EEG Technician",
       "priority": "P0",
       "route": "/topomap",
-      "description": "International 10-20 topomap — 22 channels, 5 EEG bands (delta/theta/alpha/beta/gamma), relative band power per electrode, SVG head projection with colour map, alpha asymmetry (Davidson 1998) frontal/parietal/central pairs, electrode coordinate table. 4-tab frontend (Band Power Map/Electrode Layout/Alpha Asymmetry/Definitions), 4 endpoints /api/topomap/overview|electrodes|asymmetry|definitions verified 200, portal-next/app/topomap/page.jsx + SiteNav wired next to Time-Frequency.",
+      "description": "International 10-20 topomap \u2014 22 channels, 5 EEG bands (delta/theta/alpha/beta/gamma), relative band power per electrode, SVG head projection with colour map, alpha asymmetry (Davidson 1998) frontal/parietal/central pairs, electrode coordinate table. 4-tab frontend (Band Power Map/Electrode Layout/Alpha Asymmetry/Definitions), 4 endpoints /api/topomap/overview|electrodes|asymmetry|definitions verified 200, portal-next/app/topomap/page.jsx + SiteNav wired next to Time-Frequency.",
       "endpoints": [
         "/api/topomap/overview",
         "/api/topomap/electrodes",
@@ -768,7 +768,7 @@
       "role": "AI Governance / Compliance",
       "priority": "P0",
       "route": "/ai-compliance",
-      "description": "HITL oversight, expert agreement, clinical decision audit, EU AI Act risk tiers — 133 analyses, 4 HITL reviews, 75 clinical decisions, 35K+ audit transactions, 100% accountability",
+      "description": "HITL oversight, expert agreement, clinical decision audit, EU AI Act risk tiers \u2014 133 analyses, 4 HITL reviews, 75 clinical decisions, 35K+ audit transactions, 100% accountability",
       "api": "/api/ai-compliance/overview|breakdown|definitions"
     },
     {
@@ -794,13 +794,13 @@
       "category": "Agentic AI",
       "endpoint": "/api/agent-loop/*",
       "page": "portal-next/app/agent-loop/page.jsx",
-      "note": "Agent loop behaviour monitor — 38K+ actions, 30 components, conversation turn ratio, goal drift score, HITL override rate, confidence metrics. 3 endpoints /api/agent-loop/overview|breakdown|definitions verified 200."
+      "note": "Agent loop behaviour monitor \u2014 38K+ actions, 30 components, conversation turn ratio, goal drift score, HITL override rate, confidence metrics. 3 endpoints /api/agent-loop/overview|breakdown|definitions verified 200."
     },
     {
       "id": "patient_journey",
       "name": "Patient Care Journey Dashboard",
       "status": "built",
-      "description": "Care pathway funnel (Referral→Appointment→Telehealth→Hospitalisation), 49 patients, 428 touchpoints, 4-table join",
+      "description": "Care pathway funnel (Referral\u2192Appointment\u2192Telehealth\u2192Hospitalisation), 49 patients, 428 touchpoints, 4-table join",
       "endpoints": [
         "/api/patient-journey/overview",
         "/api/patient-journey/breakdown",
@@ -815,7 +815,7 @@
       "route": "/knowledge-management",
       "api_prefix": "/api/knowledge-management",
       "category": "AI Governance",
-      "note": "783 knowledge items across 8 types (Clinical Analysis/Assessment Instrument/Expert Review/EEG Upload/Medication Record/Imaging Finding/Patient Diary/Conversation Knowledge), lifecycle stages (Created 39/Approved 492/Published 252), source breakdown (analyses 133 + assessments 424 + expert_reviews 3 + hitl_reviews 2 + uploads 145 + medications 9 + mri_findings 40 + seizure_diary 25), daily activity trend, 82 patient profiles, stage-flow transitions. 5-tab frontend (Overview/Knowledge Register/Per Patient/Lifecycle Events/Definitions), 3 endpoints /api/knowledge-management/overview|breakdown|definitions verified 200, portal-next/app/knowledge-management/page.jsx + SiteNav wired next to Agent Loop Monitor, expert_dashboards.json count 65→66"
+      "note": "783 knowledge items across 8 types (Clinical Analysis/Assessment Instrument/Expert Review/EEG Upload/Medication Record/Imaging Finding/Patient Diary/Conversation Knowledge), lifecycle stages (Created 39/Approved 492/Published 252), source breakdown (analyses 133 + assessments 424 + expert_reviews 3 + hitl_reviews 2 + uploads 145 + medications 9 + mri_findings 40 + seizure_diary 25), daily activity trend, 82 patient profiles, stage-flow transitions. 5-tab frontend (Overview/Knowledge Register/Per Patient/Lifecycle Events/Definitions), 3 endpoints /api/knowledge-management/overview|breakdown|definitions verified 200, portal-next/app/knowledge-management/page.jsx + SiteNav wired next to Agent Loop Monitor, expert_dashboards.json count 65\u219266"
     },
     {
       "id": "referral_records",
@@ -864,7 +864,7 @@
       "route": "/eeg-clinical-panel",
       "category": "EEG Analysis",
       "priority": "P0",
-      "note": "P0 suite: PSD Graph (19 ch × 5 bands), Spectrogram, Event Timeline, Spike/Sharp-Wave Overlay, Artifact Overlay. 3 endpoints + portal-next page + SiteNav wired 2026-08-10."
+      "note": "P0 suite: PSD Graph (19 ch \u00d7 5 bands), Spectrogram, Event Timeline, Spike/Sharp-Wave Overlay, Artifact Overlay. 3 endpoints + portal-next page + SiteNav wired 2026-08-10."
     },
     {
       "id": "advisor_issues",
@@ -873,14 +873,14 @@
       "route": "/advisor-issues",
       "category": "System Operations",
       "priority": "P1",
-      "note": "System health advisor findings: 5 issues, P1/P2/P3 severity, 5 surfaces (model/frontend/data/security/git), open rate 100%, last scan 2026-08-09. 3 endpoints /api/advisor-issues/overview|breakdown|definitions verified 200, portal-next/app/advisor-issues/page.jsx + SiteNav wired next to System Health, expert_dashboards.json count 71→72."
+      "note": "System health advisor findings: 5 issues, P1/P2/P3 severity, 5 surfaces (model/frontend/data/security/git), open rate 100%, last scan 2026-08-09. 3 endpoints /api/advisor-issues/overview|breakdown|definitions verified 200, portal-next/app/advisor-issues/page.jsx + SiteNav wired next to System Health, expert_dashboards.json count 71\u219272."
     },
     {
       "name": "Patient Video Seizure Analysis",
       "role": "Neurologist / Video EEG Technician",
       "viz": "Motor pattern bar chart, confidence histogram, fall-risk table, per-patient event log",
-      "feature": "41 patients · 133 video events · 128 seizure detections · 12 motor patterns · 29 fall alerts · fall-risk level per patient",
-      "why": "Automated video-based seizure detection closes the vEEG loop — motor semiology from video complements EEG signal for epilepsy classification and PNES differentiation",
+      "feature": "41 patients \u00b7 133 video events \u00b7 128 seizure detections \u00b7 12 motor patterns \u00b7 29 fall alerts \u00b7 fall-risk level per patient",
+      "why": "Automated video-based seizure detection closes the vEEG loop \u2014 motor semiology from video complements EEG signal for epilepsy classification and PNES differentiation",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -895,7 +895,7 @@
       "name": "Admin Users Panel",
       "viz": "User directory + role/dept bars + MFA compliance",
       "feature": "Sort by logins, filter by role/status, MFA non-compliant list",
-      "why": "Platform operator visibility — who has access, which roles, MFA compliance",
+      "why": "Platform operator visibility \u2014 who has access, which roles, MFA compliance",
       "priority": "P1",
       "status": "built",
       "endpoints": [
@@ -909,12 +909,12 @@
       "role": "EEG Technician",
       "name": "EEG Channel Quality Map",
       "route": "/eeg-channel-quality-map",
-      "viz": "Impedance heatmap (channel × patient), grade distribution bars, per-channel aggregate table, artifact log",
+      "viz": "Impedance heatmap (channel \u00d7 patient), grade distribution bars, per-channel aggregate table, artifact log",
       "feature": "Cross-patient impedance map, top problematic channels, region summary, acquisition parameters",
-      "why": "EEG technician QC tool — identify electrode contact failures, high-impedance channels, and artifact burden before clinical interpretation",
+      "why": "EEG technician QC tool \u2014 identify electrode contact failures, high-impedance channels, and artifact burden before clinical interpretation",
       "priority": "P0",
       "status": "built",
-      "note": "Real channel_quality 570 records (30 patients × 19 channels), artifact_annotations 169 rows (6 types), eeg_acquisition 30 recordings. Per-channel impedance/SNR/grade stats, cross-patient heatmap, region summary (Frontal/Central/Temporal/Parietal/Occipital), top artifact channels. 6-tab frontend (Overview/Channel Stats/Impedance Heatmap/Artifacts/Per Patient/Definitions), 3 endpoints /api/eeg-channel-quality-map/overview|breakdown|definitions verified 200, portal-next/app/eeg-channel-quality-map/page.jsx + SiteNav wired next to EEG Clinical Signal Panel, expert_dashboards.json count 74→75.",
+      "note": "Real channel_quality 570 records (30 patients \u00d7 19 channels), artifact_annotations 169 rows (6 types), eeg_acquisition 30 recordings. Per-channel impedance/SNR/grade stats, cross-patient heatmap, region summary (Frontal/Central/Temporal/Parietal/Occipital), top artifact channels. 6-tab frontend (Overview/Channel Stats/Impedance Heatmap/Artifacts/Per Patient/Definitions), 3 endpoints /api/eeg-channel-quality-map/overview|breakdown|definitions verified 200, portal-next/app/eeg-channel-quality-map/page.jsx + SiteNav wired next to EEG Clinical Signal Panel, expert_dashboards.json count 74\u219275.",
       "endpoints": [
         "/api/eeg-channel-quality-map/overview",
         "/api/eeg-channel-quality-map/breakdown",
@@ -941,7 +941,7 @@
       "status": "built",
       "priority": "P0",
       "route": "/regulatory-audit-trail",
-      "description": "Complete action audit log for 16 regulatory submissions — 102 events, 11 actors, 5 categories (Administrative/Regulatory/Technical/Clinical/Quality), 9 action types (Risk assessment/CAPA/Deviation/Signature/Review/etc.), monthly activity timeline 2024-06 to 2026-04, per-submission action×actor×category matrix, per-actor workload table. 4-tab frontend (Overview/Per Submission/Actors/Definitions), 3 endpoints /api/regulatory-audit-trail/overview|breakdown|definitions verified 200, portal-next/app/regulatory-audit-trail/page.jsx + SiteNav wired next to Audit Trail.",
+      "description": "Complete action audit log for 16 regulatory submissions \u2014 102 events, 11 actors, 5 categories (Administrative/Regulatory/Technical/Clinical/Quality), 9 action types (Risk assessment/CAPA/Deviation/Signature/Review/etc.), monthly activity timeline 2024-06 to 2026-04, per-submission action\u00d7actor\u00d7category matrix, per-actor workload table. 4-tab frontend (Overview/Per Submission/Actors/Definitions), 3 endpoints /api/regulatory-audit-trail/overview|breakdown|definitions verified 200, portal-next/app/regulatory-audit-trail/page.jsx + SiteNav wired next to Audit Trail.",
       "endpoints": [
         "/api/regulatory-audit-trail/overview",
         "/api/regulatory-audit-trail/breakdown",
@@ -957,7 +957,7 @@
       "priority": "P1",
       "status": "built",
       "route": "/neuropsych-battery",
-      "description": "37 neuropsych assessments from clinical.db neuropsych table — 37 patients, 5 cognitive domain index means (Memory 88.4/Attention 92.2/Executive 90.5/Language 93.3/Processing Speed 87.7), MoCA avg 23/MMSE avg 25, PHQ-9 avg 7.4/GAD-7 avg 6.6, impairment distribution (18 none/14 mild/5 moderate), lateralization (15 bilateral/9 right/7 non-lateralizing/6 left), battery types (18 Full/12 Screening/7 Follow-up), referral reasons (12 cognitive_complaint/10 pre-surgical/9 medication_review/6 baseline), PHQ-9/GAD-7 severity distributions, domain weakness analysis (below-85 count per domain), pre-surgical impairment subset. 5-tab frontend (Overview/Cognitive Domains/Screening Scores/Per Patient/Definitions), 3 endpoints /api/neuropsych-battery/overview|breakdown|definitions verified 200, portal-next/app/neuropsych-battery/page.jsx + SiteNav wired next to Neuropsychologist, expert_dashboards.json count 76→77.",
+      "description": "37 neuropsych assessments from clinical.db neuropsych table \u2014 37 patients, 5 cognitive domain index means (Memory 88.4/Attention 92.2/Executive 90.5/Language 93.3/Processing Speed 87.7), MoCA avg 23/MMSE avg 25, PHQ-9 avg 7.4/GAD-7 avg 6.6, impairment distribution (18 none/14 mild/5 moderate), lateralization (15 bilateral/9 right/7 non-lateralizing/6 left), battery types (18 Full/12 Screening/7 Follow-up), referral reasons (12 cognitive_complaint/10 pre-surgical/9 medication_review/6 baseline), PHQ-9/GAD-7 severity distributions, domain weakness analysis (below-85 count per domain), pre-surgical impairment subset. 5-tab frontend (Overview/Cognitive Domains/Screening Scores/Per Patient/Definitions), 3 endpoints /api/neuropsych-battery/overview|breakdown|definitions verified 200, portal-next/app/neuropsych-battery/page.jsx + SiteNav wired next to Neuropsychologist, expert_dashboards.json count 76\u219277.",
       "endpoints": [
         "/api/neuropsych-battery/overview",
         "/api/neuropsych-battery/breakdown",
@@ -968,12 +968,12 @@
       "role": "Neurophysiologist",
       "name": "Signal Quality Dashboard",
       "viz": "Channel quality scorecard + impedance/SNR histograms + artifact burden by type/channel/severity",
-      "feature": "570 channel assessments × impedance/SNR grade, 169 artifact events, per-recording scorecard, activation-procedure coverage",
-      "why": "Signal quality determines diagnostic validity; poor impedance (>10 kΩ) masks epileptiform discharges (ACNS 2016); artifact burden >20% triggers re-recording (IFCN)",
+      "feature": "570 channel assessments \u00d7 impedance/SNR grade, 169 artifact events, per-recording scorecard, activation-procedure coverage",
+      "why": "Signal quality determines diagnostic validity; poor impedance (>10 k\u03a9) masks epileptiform discharges (ACNS 2016); artifact burden >20% triggers re-recording (IFCN)",
       "priority": "P1",
       "status": "built",
       "route": "/signal-quality",
-      "description": "30 patients × 19 channels from clinical.db channel_quality + artifact_annotations + eeg_acquisition + recording_conditions — 570 channel-level impedance/SNR assessments (344 Good/199 Fair/27 Poor), avg impedance 9.2 kΩ, avg SNR 21.8 dB, 263 poor-impedance channels, 27 poor-SNR channels; 169 artifact events across 8 types (muscle 36/ECG 33/electrode_pop 27/movement 26/eye_blink 25/...), 3 severity levels, per-channel artifact heatmap (top: T6/Fp1/O1 each 12 events); 30 recording params (avg 458 min, 256/512/1024 Hz sampling, average/referential montage), activation procedures (hyperventilation/photic/sleep). 5-tab frontend (Overview/Channel Quality/Artifact Analysis/Per Recording/Definitions), 3 endpoints /api/signal-quality/overview|breakdown|definitions verified 200, portal-next/app/signal-quality/page.jsx + SiteNav wired next to Neurophysiologist, expert_dashboards.json count 77→78.",
+      "description": "30 patients \u00d7 19 channels from clinical.db channel_quality + artifact_annotations + eeg_acquisition + recording_conditions \u2014 570 channel-level impedance/SNR assessments (344 Good/199 Fair/27 Poor), avg impedance 9.2 k\u03a9, avg SNR 21.8 dB, 263 poor-impedance channels, 27 poor-SNR channels; 169 artifact events across 8 types (muscle 36/ECG 33/electrode_pop 27/movement 26/eye_blink 25/...), 3 severity levels, per-channel artifact heatmap (top: T6/Fp1/O1 each 12 events); 30 recording params (avg 458 min, 256/512/1024 Hz sampling, average/referential montage), activation procedures (hyperventilation/photic/sleep). 5-tab frontend (Overview/Channel Quality/Artifact Analysis/Per Recording/Definitions), 3 endpoints /api/signal-quality/overview|breakdown|definitions verified 200, portal-next/app/signal-quality/page.jsx + SiteNav wired next to Neurophysiologist, expert_dashboards.json count 77\u219278.",
       "endpoints": [
         "/api/signal-quality/overview",
         "/api/signal-quality/breakdown",
@@ -1000,7 +1000,7 @@
       "status": "built",
       "role": "Neurologist / Epileptologist",
       "priority": "P0",
-      "description": "71 patients scored on validated 14-point SUDEP risk model (Hesdorffer 2011 · Surges 2012 · Ryvlin 2013 · NICE NG217 2022). Risk factors: GTCS (+3), drug-resistance (+3), high-freq GTCS (+2), non-adherence >10% (+2), male sex (+1), age 18-40 (+1), disease duration >10y (+1), nocturnal seizures (+1). Risk tiers: Low (0-3) 19 patients, Moderate (4-6) 30, High (7-10) 19, Very High (11+) 3. Avg risk score 5.2/14. 22 patients (31%) in high/very-high tier. 49 GTCS patients (69%), 20 drug-resistant (28.2%), 25 non-adherent (35.2%). GTCS x drug-resistance matrix, score histogram, gender breakdown, per-patient sortable table with top factors, high-risk alert panel with clinical action checklist. 5-tab frontend (Overview / Risk Factors / Per Patient / High-Risk Alerts / Definitions).",
+      "description": "71 patients scored on validated 14-point SUDEP risk model (Hesdorffer 2011 \u00b7 Surges 2012 \u00b7 Ryvlin 2013 \u00b7 NICE NG217 2022). Risk factors: GTCS (+3), drug-resistance (+3), high-freq GTCS (+2), non-adherence >10% (+2), male sex (+1), age 18-40 (+1), disease duration >10y (+1), nocturnal seizures (+1). Risk tiers: Low (0-3) 19 patients, Moderate (4-6) 30, High (7-10) 19, Very High (11+) 3. Avg risk score 5.2/14. 22 patients (31%) in high/very-high tier. 49 GTCS patients (69%), 20 drug-resistant (28.2%), 25 non-adherent (35.2%). GTCS x drug-resistance matrix, score histogram, gender breakdown, per-patient sortable table with top factors, high-risk alert panel with clinical action checklist. 5-tab frontend (Overview / Risk Factors / Per Patient / High-Risk Alerts / Definitions).",
       "endpoints": [
         "/api/sudep-risk/overview",
         "/api/sudep-risk/breakdown",
@@ -1016,7 +1016,7 @@
       "status": "built",
       "role": "Neurologist / Epileptologist",
       "priority": "P0",
-      "description": "71 patients classified per ILAE 2010 DRE definition (≥2 AED trial failures). KPIs: DRE prevalence %, surgical candidacy rate, avg AED trials. Charts: AED burden distribution, onset-zone breakdown, seizure control, DRE by gender, disease-duration histogram, top AEDs tried in DRE patients. Per-patient table with DRE label, AED count, surgical candidacy flag, onset zone, syndrome, disease duration, non-adherence %. 3 endpoints: /api/dre/overview|breakdown|definitions.",
+      "description": "71 patients classified per ILAE 2010 DRE definition (\u22652 AED trial failures). KPIs: DRE prevalence %, surgical candidacy rate, avg AED trials. Charts: AED burden distribution, onset-zone breakdown, seizure control, DRE by gender, disease-duration histogram, top AEDs tried in DRE patients. Per-patient table with DRE label, AED count, surgical candidacy flag, onset zone, syndrome, disease duration, non-adherence %. 3 endpoints: /api/dre/overview|breakdown|definitions.",
       "viz": "KPI cards, bar charts, filterable patient table",
       "feature": "DRE classification, AED burden, surgical candidacy, seizure control",
       "why": "~30% of epilepsy patients develop DRE; early identification drives surgical referral",
@@ -1034,7 +1034,7 @@
       "tier": 1,
       "mandatory": true,
       "built_at": "2026-08-11",
-      "description": "Statistical validity & rigour — sample size, power analysis, class balance, Cohen d, metric summary, multiple-comparison correction."
+      "description": "Statistical validity & rigour \u2014 sample size, power analysis, class balance, Cohen d, metric summary, multiple-comparison correction."
     },
     {
       "id": "status_epilepticus",
@@ -1058,10 +1058,10 @@
       "route": "/ceeg-monitoring",
       "viz": "Recording-type distribution + EEG pattern landscape (with critical flags) + ICU patient table + duration histogram + artifact severity matrix",
       "feature": "30 recordings (10 LTM / 11 ambulatory / 6 routine / 3 video-EEG), 15 ICU admissions, 169 artifact events, ACNS 2021 critical patterns (LPD/GPD/NCSE/IIC), 71 EEG patterns across patients",
-      "why": "cEEG detects NCS/NCSE in 8–48% of ICU patients with altered consciousness — invisible without monitoring (Claassen 2004, NEJM); mandatory ≥24h after SE, cardiac arrest, SAH, TBI (ACNS Level A)",
+      "why": "cEEG detects NCS/NCSE in 8\u201348% of ICU patients with altered consciousness \u2014 invisible without monitoring (Claassen 2004, NEJM); mandatory \u226524h after SE, cardiac arrest, SAH, TBI (ACNS Level A)",
       "priority": "P1",
       "status": "built",
-      "description": "30 eeg_acquisition records × LTM/ambulatory/routine/video-EEG types — avg session 26.3h, max 133h (ambulatory), total monitoring 789h; 15 ICU hospitalization admissions with LOS/seizure-free/readmission stats; 71 EEG patterns across seizure_metadata (PLDs 4 cases / hypsarrhythmia 9 / GSW<3Hz 5 — flagged critical); 169 artifact_annotations across 8 types (muscle/ECG/electrode_pop/movement/eye_blink/sweat/...) × 3 severity levels; 5-tab frontend (Overview/Recordings/ICU Patients/Artifacts/Definitions), 3 endpoints /api/ceeg-monitoring/overview|breakdown|definitions verified 200, portal-next/app/ceeg-monitoring/page.jsx + SiteNav wired next to Status Epilepticus, expert_dashboards.json count 84→85.",
+      "description": "30 eeg_acquisition records \u00d7 LTM/ambulatory/routine/video-EEG types \u2014 avg session 26.3h, max 133h (ambulatory), total monitoring 789h; 15 ICU hospitalization admissions with LOS/seizure-free/readmission stats; 71 EEG patterns across seizure_metadata (PLDs 4 cases / hypsarrhythmia 9 / GSW<3Hz 5 \u2014 flagged critical); 169 artifact_annotations across 8 types (muscle/ECG/electrode_pop/movement/eye_blink/sweat/...) \u00d7 3 severity levels; 5-tab frontend (Overview/Recordings/ICU Patients/Artifacts/Definitions), 3 endpoints /api/ceeg-monitoring/overview|breakdown|definitions verified 200, portal-next/app/ceeg-monitoring/page.jsx + SiteNav wired next to Status Epilepticus, expert_dashboards.json count 84\u219285.",
       "endpoints": [
         "/api/ceeg-monitoring/overview",
         "/api/ceeg-monitoring/breakdown",
@@ -1080,7 +1080,7 @@
         "/api/aed-side-effects/breakdown",
         "/api/aed-side-effects/definitions"
       ],
-      "note": "AED Side Effects Dashboard — 12,600 medication adherence records, 30 patients, 8 AEDs (Lacosamide/Carbamazepine/Valproate/Levetiracetam/Clobazam/Oxcarbazepine/Lamotrigine/Topiramate), 12 side effect types, severity scale 0–8. KPIs: 3,135 records with effects (24.9%), avg severity 1.12 when present, 12 distinct side effects (Blurred vision 433/Drowsiness 416/Mood changes 413 top 3). Drug-effect profiles, per-patient burden table, severity-by-drug heatmap (none/mild/moderate/severe), adherence vs severity, AED class groupings, side-effect glossary with clinical notes, references (Perucca 2012/NICE NG217/Brodie 2012). 5-tab frontend (Overview/By Drug/By Side Effect/Per Patient/Definitions). 3 endpoints /api/aed-side-effects/overview|breakdown|definitions verified 200. portal-next/app/aed-side-effects/page.jsx + SiteNav wired next to Pharmacogenomics. expert_dashboards.json count 85→86."
+      "note": "AED Side Effects Dashboard \u2014 12,600 medication adherence records, 30 patients, 8 AEDs (Lacosamide/Carbamazepine/Valproate/Levetiracetam/Clobazam/Oxcarbazepine/Lamotrigine/Topiramate), 12 side effect types, severity scale 0\u20138. KPIs: 3,135 records with effects (24.9%), avg severity 1.12 when present, 12 distinct side effects (Blurred vision 433/Drowsiness 416/Mood changes 413 top 3). Drug-effect profiles, per-patient burden table, severity-by-drug heatmap (none/mild/moderate/severe), adherence vs severity, AED class groupings, side-effect glossary with clinical notes, references (Perucca 2012/NICE NG217/Brodie 2012). 5-tab frontend (Overview/By Drug/By Side Effect/Per Patient/Definitions). 3 endpoints /api/aed-side-effects/overview|breakdown|definitions verified 200. portal-next/app/aed-side-effects/page.jsx + SiteNav wired next to Pharmacogenomics. expert_dashboards.json count 85\u219286."
     },
     {
       "id": "neurosurgeon",
@@ -1095,7 +1095,7 @@
         "/api/neurosurgeon/definitions"
       ],
       "portal_page": "/neurosurgeon",
-      "built_note": "Neurosurgeon Dashboard — MRI lesion inventory (40 scans: HS/FCD/NL/CAV/AVM), surgical candidacy (29 of 40 patients), laterality + lesion location charts, candidate table (per-patient EEG count + AED trials), key concepts (epilepsy surgery, SEEG, Engel), quality metrics, surgical procedures. 3 endpoints verified 200."
+      "built_note": "Neurosurgeon Dashboard \u2014 MRI lesion inventory (40 scans: HS/FCD/NL/CAV/AVM), surgical candidacy (29 of 40 patients), laterality + lesion location charts, candidate table (per-patient EEG count + AED trials), key concepts (epilepsy surgery, SEEG, Engel), quality metrics, surgical procedures. 3 endpoints verified 200."
     },
     {
       "id": "workflow-efficiency",
@@ -1110,16 +1110,26 @@
         "/api/workflow-efficiency/definitions"
       ],
       "portal_page": "/workflow-efficiency",
-      "built_note": "Clinical Workflow Efficiency Dashboard — 191 appointments (8 types, 6 providers, 4 locations), 89 completed (46.6%), 6.8% no-show rate, avg 34.9min visit duration, 30 patients served, 133 EEG reads (69.1% avg confidence), 115 hospital admissions (avg LOS 5.2d), department throughput (5 depts), monthly trend (10 months), per-patient visit summary. 3 endpoints /api/workflow-efficiency/overview|breakdown|definitions verified 200."
+      "built_note": "Clinical Workflow Efficiency Dashboard \u2014 191 appointments (8 types, 6 providers, 4 locations), 89 completed (46.6%), 6.8% no-show rate, avg 34.9min visit duration, 30 patients served, 133 EEG reads (69.1% avg confidence), 115 hospital admissions (avg LOS 5.2d), department throughput (5 depts), monthly trend (10 months), per-patient visit summary. 3 endpoints /api/workflow-efficiency/overview|breakdown|definitions verified 200."
+    },
+    {
+      "role": "Neurologist / Genetic Counsellor",
+      "name": "Genetic Epilepsy Syndromes",
+      "viz": "Gene distribution bar, drug-response donut, syndrome table, per-patient matrix, SCN1A PGx records",
+      "feature": "SCN1A channelopathy + KCNQ2 + Familial epilepsy \u2014 17 patients, drug-response tiers, pharmacogenomics cross-link",
+      "status": "built",
+      "route": "/genetic-epilepsy",
+      "api": "/api/genetic-epilepsy/overview|breakdown|definitions",
+      "data_source": "seizure_metadata (17 genetic rows) + pharmacogenomics (SCN1A \u00d712)"
     }
   ],
   "summary": {
-    "total": 86,
-    "built": 86,
+    "total": 89,
+    "built": 89,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 86,
-    "total_dashboards": 86
+    "count": 89,
+    "total_dashboards": 89
   }
 }

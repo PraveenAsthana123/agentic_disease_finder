@@ -19557,6 +19557,34 @@ async def workflow_efficiency_definitions():
     return _json_safe(wed.definitions())
 
 
+# ── Genetic Epilepsy Syndromes Dashboard ─────────────────────────────
+# Real data: clinical.db seizure_metadata (17 genetic-etiology cases:
+# SCN1A ×4, KCNQ2 ×4, Familial ×9) + pharmacogenomics SCN1A ×12 records.
+
+@app.get("/api/genetic-epilepsy/overview")
+async def genetic_epilepsy_overview():
+    """Genetic epilepsy overview — 17 cases (SCN1A/KCNQ2/Familial), gene distribution,
+    drug-response tiers, syndrome distribution, pediatric onset count, SCN1A PGx cross-link."""
+    import scripts.genetic_epilepsy_dashboard as ged
+    return _json_safe(ged.overview())
+
+
+@app.get("/api/genetic-epilepsy/breakdown")
+async def genetic_epilepsy_breakdown():
+    """Genetic epilepsy breakdown — per-patient gene/syndrome/drug-response table,
+    gene × response matrix, SCN1A pharmacogenomics records, onset-zone distribution."""
+    import scripts.genetic_epilepsy_dashboard as ged
+    return _json_safe(ged.breakdown())
+
+
+@app.get("/api/genetic-epilepsy/definitions")
+async def genetic_epilepsy_definitions():
+    """Genetic epilepsy definitions — SCN1A/KCNQ2/Familial gene cards, syndrome profiles,
+    drug-response tier criteria, ILAE references, metric glossary."""
+    import scripts.genetic_epilepsy_dashboard as ged
+    return _json_safe(ged.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
