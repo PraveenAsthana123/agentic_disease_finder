@@ -934,9 +934,8 @@
         "/api/presurgical-eval/breakdown",
         "/api/presurgical-eval/definitions"
       ]
-    }
-  ],
-  "regulatory_audit_trail_dashboard": {
+    },
+  {
     "id": "regulatory_audit_trail",
     "name": "Regulatory Audit Trail Dashboard",
     "status": "built",
@@ -980,7 +979,8 @@
       "/api/signal-quality/breakdown",
       "/api/signal-quality/definitions"
     ]
-  },
+  }
+  ],
   "summary": {
     "total": 68,
     "built": 78,

@@ -1,10 +1,12 @@
 {
-  "generated": "2026-08-11T05:40:13Z",
+  "generated": "2026-08-11T06:04:45Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 17
     },
-    "Expert dashboards": {},
+    "Expert dashboards": {
+      "built": 79
+    },
     "Neuro AI ecosystem tools": {
       "external": 12,
       "installed": 7,
@@ -24,10 +26,10 @@
     "drift": "200",
     "data-manager": "200",
     "eeg-viz/presets": "200",
-    "expert-dashboards": "500",
+    "expert-dashboards": "200",
     "neuro-ai-ecosystem": "200",
     "jobs": "200"
   },
-  "commits_ahead": "774",
+  "commits_ahead": "776",
   "jobs": 12
 }
