@@ -3,7 +3,13 @@
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
   "updated_at": "2026-08-10",
   "must_have_p0": [
-    "Raw EEG waveform",
+    {
+      "id": "raw_eeg_waveform",
+      "name": "Raw EEG Waveform",
+      "status": "built",
+      "route": "/raw-eeg-waveform",
+      "note": "30 recordings, 570 channel-quality assessments, 169 artifact annotations, SNR/impedance distribution, activation procedure coverage. 3 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."
+    },
     "Event timeline",
     "Artifact overlay",
     "PSD graph",

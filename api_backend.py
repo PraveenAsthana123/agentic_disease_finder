@@ -19151,6 +19151,30 @@ async def discharge_planning_definitions():
     return _json_safe(dpd.discharge_definitions())
 
 
+@app.get("/api/raw-eeg-waveform/overview")
+async def raw_eeg_waveform_overview():
+    """Raw EEG Waveform overview — 30 recordings, channel quality distribution,
+    artifact burden, sampling rates, montages, activation procedure coverage."""
+    import scripts.raw_eeg_waveform_dashboard as rewd
+    return _json_safe(rewd.raw_eeg_overview())
+
+
+@app.get("/api/raw-eeg-waveform/breakdown")
+async def raw_eeg_waveform_breakdown():
+    """Raw EEG Waveform breakdown — per-patient recording quality profiles,
+    channel-level SNR/impedance detail, artifact timelines."""
+    import scripts.raw_eeg_waveform_dashboard as rewd
+    return _json_safe(rewd.raw_eeg_breakdown())
+
+
+@app.get("/api/raw-eeg-waveform/definitions")
+async def raw_eeg_waveform_definitions():
+    """Raw EEG Waveform definitions — quality tiers, artifact types, channel grades,
+    impedance standards, activation procedures, ACNS/IFCN/ILAE standards."""
+    import scripts.raw_eeg_waveform_dashboard as rewd
+    return _json_safe(rewd.raw_eeg_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
