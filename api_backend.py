@@ -19471,6 +19471,34 @@ async def status_epilepticus_definitions():
     return _json_safe(sed.definitions())
 
 
+@app.get("/api/ceeg-monitoring/overview")
+async def ceeg_monitoring_overview():
+    """Continuous EEG (cEEG) ICU Monitoring — KPIs: total recordings, LTM count,
+    ambulatory count, ICU admissions, avg monitoring hours, critical EEG patterns,
+    PLDs, recording-type distribution, artifact burden, sampling-rate distribution."""
+    import scripts.ceeg_monitoring_dashboard as cmd
+    return _json_safe(cmd.overview())
+
+
+@app.get("/api/ceeg-monitoring/breakdown")
+async def ceeg_monitoring_breakdown():
+    """Continuous EEG ICU Monitoring — per-patient recording table, ICU patient
+    detail table, duration histogram, artifact severity breakdown by type,
+    and drug-resistance prevalence in ICU patients."""
+    import scripts.ceeg_monitoring_dashboard as cmd
+    return _json_safe(cmd.breakdown())
+
+
+@app.get("/api/ceeg-monitoring/definitions")
+async def ceeg_monitoring_definitions():
+    """Continuous EEG ICU Monitoring definitions — ACNS 2021 standardized
+    nomenclature, monitoring indications (SE/cardiac arrest/SAH/TBI/neonatal),
+    critical patterns (LPD/GPD/NCSE/IIC/burst-suppression), duration guidance,
+    artifact challenges, abbreviations, and clinical pearls."""
+    import scripts.ceeg_monitoring_dashboard as cmd
+    return _json_safe(cmd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

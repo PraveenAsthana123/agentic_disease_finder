@@ -1050,15 +1050,32 @@
       "frontend": "portal-next/app/status-epilepticus/page.jsx",
       "data_source": "hospitalization + seizure_metadata + patients (clinical.db, 115 hosp rows)",
       "built_at": "2026-08-11"
+    },
+    {
+      "id": "ceeg_monitoring",
+      "role": "Neurophysiologist / ICU EEG",
+      "name": "Continuous EEG (cEEG) ICU Monitoring Dashboard",
+      "route": "/ceeg-monitoring",
+      "viz": "Recording-type distribution + EEG pattern landscape (with critical flags) + ICU patient table + duration histogram + artifact severity matrix",
+      "feature": "30 recordings (10 LTM / 11 ambulatory / 6 routine / 3 video-EEG), 15 ICU admissions, 169 artifact events, ACNS 2021 critical patterns (LPD/GPD/NCSE/IIC), 71 EEG patterns across patients",
+      "why": "cEEG detects NCS/NCSE in 8\u201348% of ICU patients with altered consciousness \u2014 invisible without monitoring (Claassen 2004, NEJM); mandatory \u226524h after SE, cardiac arrest, SAH, TBI (ACNS Level A)",
+      "priority": "P1",
+      "status": "built",
+      "description": "30 eeg_acquisition records \u00d7 LTM/ambulatory/routine/video-EEG types \u2014 avg session 26.3h, max 133h (ambulatory), total monitoring 789h; 15 ICU hospitalization admissions with LOS/seizure-free/readmission stats; 71 EEG patterns across seizure_metadata (PLDs 4 cases / hypsarrhythmia 9 / GSW<3Hz 5 \u2014 flagged critical); 169 artifact_annotations across 8 types (muscle/ECG/electrode_pop/movement/eye_blink/sweat/...) \u00d7 3 severity levels; 5-tab frontend (Overview/Recordings/ICU Patients/Artifacts/Definitions), 3 endpoints /api/ceeg-monitoring/overview|breakdown|definitions verified 200, portal-next/app/ceeg-monitoring/page.jsx + SiteNav wired next to Status Epilepticus, expert_dashboards.json count 84\u219285.",
+      "endpoints": [
+        "/api/ceeg-monitoring/overview",
+        "/api/ceeg-monitoring/breakdown",
+        "/api/ceeg-monitoring/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 83,
-    "built": 82,
+    "total": 85,
+    "built": 85,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 82,
-    "total_dashboards": 82
+    "count": 85,
+    "total_dashboards": 85
   }
 }
