@@ -155,6 +155,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/data-requirements">&#x1f4ca; Data Requirements</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/production-issues">&#x1f6a8; Production Issues</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/agent-loop">&#x1f501; Agent Loop Monitor</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/knowledge-management">&#x1f5c2;&#xfe0f; Knowledge Mgmt</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/clinical-risk-stratification">&#x1f6a8; Clinical Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neuro-advancements">&#x1f9e0; Neuro Advancements</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/enterprise-pipelines">&#x1f3ed; Enterprise Pipelines</Link></li>

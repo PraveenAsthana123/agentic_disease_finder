@@ -799,6 +799,15 @@
         "/api/patient-journey/definitions"
       ],
       "page": "/patient-journey"
+    },
+    {
+      "id": "knowledge_management",
+      "name": "Knowledge Management Dashboard",
+      "status": "built",
+      "route": "/knowledge-management",
+      "api_prefix": "/api/knowledge-management",
+      "category": "AI Governance",
+      "note": "783 knowledge items across 8 types (Clinical Analysis/Assessment Instrument/Expert Review/EEG Upload/Medication Record/Imaging Finding/Patient Diary/Conversation Knowledge), lifecycle stages (Created 39/Approved 492/Published 252), source breakdown (analyses 133 + assessments 424 + expert_reviews 3 + hitl_reviews 2 + uploads 145 + medications 9 + mri_findings 40 + seizure_diary 25), daily activity trend, 82 patient profiles, stage-flow transitions. 5-tab frontend (Overview/Knowledge Register/Per Patient/Lifecycle Events/Definitions), 3 endpoints /api/knowledge-management/overview|breakdown|definitions verified 200, portal-next/app/knowledge-management/page.jsx + SiteNav wired next to Agent Loop Monitor, expert_dashboards.json count 65\u219266"
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -815,11 +824,11 @@
     ]
   },
   "summary": {
-    "total": 65,
-    "built": 64,
+    "total": 66,
+    "built": 65,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 64
+    "count": 65
   }
 }

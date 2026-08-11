@@ -19059,6 +19059,37 @@ async def battery_scoring_definitions():
     }
 
 
+# ── Knowledge Management Dashboard ────────────────────────────────────────────
+# Real data: 783 knowledge items across 8 types from clinical.db
+# (analyses 133 + assessments 424 + expert_reviews 3 + hitl_reviews 2 + uploads 145
+#  + medications 9 + mri_findings 40 + seizure_diary 25).
+# Lifecycle: Created (39) / Approved (492) / Published (252).
+# Transaction_log lifecycle events mapped to 5 stages.
+
+@app.get("/api/knowledge-management/overview")
+async def knowledge_management_overview():
+    """Knowledge Management overview — 783 items, lifecycle stage distribution,
+    type breakdown, source breakdown, daily activity trend."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_overview())
+
+
+@app.get("/api/knowledge-management/breakdown")
+async def knowledge_management_breakdown():
+    """Knowledge Management breakdown — knowledge register (100 items), per-patient
+    profiles, lifecycle events log, stage-flow transitions."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_breakdown())
+
+
+@app.get("/api/knowledge-management/definitions")
+async def knowledge_management_definitions():
+    """Knowledge Management definitions — concepts, metrics, compliance references,
+    remediation guidance."""
+    import scripts.knowledge_management_dashboard as kmd
+    return _json_safe(kmd.knowledge_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
