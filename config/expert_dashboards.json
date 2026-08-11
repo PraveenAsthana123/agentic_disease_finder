@@ -1407,11 +1407,23 @@
       "route": "/slp",
       "api_prefix": "/api/slp-expert",
       "note": "SLP Expert Dashboard \u2014 41 patients, language lateralization (BNT/Token Test/phonemic fluency), dysphagia risk scoring (0-10, 6 factors), AED speech effects (topiramate/valproate/phenytoin/carbamazepine/levetiracetam), therapy goals (52 total/22 active), 5 tabs (Overview/Language/Swallowing/AED Effects/Definitions), 5 endpoints /api/slp-expert/overview|language-assessment|swallowing|aed-speech-effects|definitions verified 200, portal-next/app/slp/page.jsx + SiteNav wired next to Neuropsychologist. Built 2026-08-11."
+    },
+    {
+      "name": "P300/ERP Cognitive Event-Related Potentials Dashboard",
+      "route": "/p300-erp",
+      "status": "built",
+      "endpoints": [
+        "/api/p300-erp/overview",
+        "/api/p300-erp/breakdown",
+        "/api/p300-erp/definitions"
+      ],
+      "frontend": "portal-next/app/p300-erp/page.jsx",
+      "description": "30 studies, P300/N200/P3a latency+amplitude, age-adjusted references (Polich 2007), 5 diagnostic patterns, AED cognitive impact comparison, 5 epilepsy contexts (AED monitoring/TLE decline/post-ictal/pre-surgical/NCSE), 4-tab frontend (Overview/ERP Analysis/Patient Detail/Definitions), 3 endpoints verified 200"
     }
   ],
   "summary": {
-    "total": 112,
-    "built": 112,
+    "total": 114,
+    "built": 114,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",

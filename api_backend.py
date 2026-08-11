@@ -19866,6 +19866,34 @@ async def sfemg_definitions():
     return _json_safe(sfemg.definitions())
 
 
+@app.get("/api/p300-erp/overview")
+async def p300_erp_overview():
+    """P300/ERP overview — 30 studies, severity distribution (Normal/Mild/Moderate/Severe),
+    diagnostic patterns (normal/prolonged_latency/reduced_amplitude/combined/absent_p300),
+    age-band P300 latency analysis, AED cognitive impact comparison, per-patient summary."""
+    import scripts.p300_erp_dashboard as p3
+    return _json_safe(p3.overview())
+
+
+@app.get("/api/p300-erp/breakdown")
+async def p300_erp_breakdown():
+    """P300/ERP breakdown — P300 latency histogram, amplitude histogram, component-level
+    summary (P300/N200/P3a mean latency + amplitude vs reference), per-patient full detail
+    with all component values, abnormality flags, MMSE/MoCA cognitive scores."""
+    import scripts.p300_erp_dashboard as p3
+    return _json_safe(p3.breakdown())
+
+
+@app.get("/api/p300-erp/definitions")
+async def p300_erp_definitions():
+    """P300/ERP definitions — 3-tone oddball protocol, 5 component definitions
+    (P300/N200/P3a), age-adjusted reference ranges, 5 diagnostic patterns,
+    5 epilepsy contexts (AED monitoring/TLE decline/post-ictal/pre-surgical/NCSE),
+    Polich 2007 + Duncan 2009 + ACNS references."""
+    import scripts.p300_erp_dashboard as p3
+    return _json_safe(p3.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
