@@ -19894,6 +19894,35 @@ async def p300_erp_definitions():
     return _json_safe(p3.definitions())
 
 
+@app.get("/api/mmn/overview")
+async def mmn_overview():
+    """MMN overview — 30 studies, severity distribution (Normal/Mild/Moderate/Severe),
+    diagnostic patterns (normal/delayed_mmn/absent_mmn/reduced_amplitude/lateralized/combined),
+    hemisphere analysis (left/right/symmetric dominance + asymmetry index),
+    AED cognitive impact, per-patient summary."""
+    import scripts.mmn_dashboard as mmn
+    return _json_safe(mmn.overview())
+
+
+@app.get("/api/mmn/breakdown")
+async def mmn_breakdown():
+    """MMN breakdown — MMN latency histogram, amplitude histogram, asymmetry distribution,
+    component-level summary (MMN/P3a mean latency + amplitude vs reference),
+    per-patient full detail with all component values and abnormality flags."""
+    import scripts.mmn_dashboard as mmn
+    return _json_safe(mmn.breakdown())
+
+
+@app.get("/api/mmn/definitions")
+async def mmn_definitions():
+    """MMN definitions — passive 2-tone oddball protocol, 4 component definitions
+    (MMN/P3a latency+amplitude), reference ranges, 6 diagnostic patterns,
+    5 epilepsy contexts (NCSE/post-ictal/TLE lateralization/AED effects/neonatal),
+    Näätänen 2007 + Garrido 2009 + ACNS references."""
+    import scripts.mmn_dashboard as mmn
+    return _json_safe(mmn.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

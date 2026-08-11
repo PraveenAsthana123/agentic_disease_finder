@@ -1419,6 +1419,18 @@
       ],
       "frontend": "portal-next/app/p300-erp/page.jsx",
       "description": "30 studies, P300/N200/P3a latency+amplitude, age-adjusted references (Polich 2007), 5 diagnostic patterns, AED cognitive impact comparison, 5 epilepsy contexts (AED monitoring/TLE decline/post-ictal/pre-surgical/NCSE), 4-tab frontend (Overview/ERP Analysis/Patient Detail/Definitions), 3 endpoints verified 200"
+    },
+    {
+      "name": "MMN (Mismatch Negativity) Dashboard",
+      "route": "/mmn",
+      "status": "built",
+      "endpoints": [
+        "/api/mmn/overview",
+        "/api/mmn/breakdown",
+        "/api/mmn/definitions"
+      ],
+      "frontend": "portal-next/app/mmn/page.jsx",
+      "description": "30 studies 50.0% abnormal, MMN/P3a latency+amplitude, passive 2-tone oddball paradigm, 6 diagnostic patterns (normal/delayed_mmn/absent_mmn/reduced_amplitude/lateralized/combined), hemisphere asymmetry analysis (left/right/symmetric dominance), AED cognitive impact, 5 epilepsy contexts (NCSE consciousness/post-ictal/TLE lateralization/AED effects/neonatal), 4-tab frontend (Overview/ERP Analysis/Patient Detail/Definitions), 3 endpoints verified 200"
     }
   ],
   "summary": {
@@ -1431,5 +1443,5 @@
     "total_dashboards": 112,
     "total_built": 112
   },
-  "count": 113
+  "count": 115
 }
