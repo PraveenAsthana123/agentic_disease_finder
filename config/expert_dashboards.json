@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-10",
+  "updated_at": "2026-08-11T04:30:04Z",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -889,6 +889,20 @@
         "/api/patient-video/definitions"
       ],
       "route": "/patient-video"
+    },
+    {
+      "role": "Admin",
+      "name": "Admin Users Panel",
+      "viz": "User directory + role/dept bars + MFA compliance",
+      "feature": "Sort by logins, filter by role/status, MFA non-compliant list",
+      "why": "Platform operator visibility \u2014 who has access, which roles, MFA compliance",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/admin-users/overview",
+        "/api/admin-users/breakdown",
+        "/api/admin-users/definitions"
+      ]
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -906,11 +920,11 @@
   },
   "summary": {
     "total": 67,
-    "built": 66,
+    "built": 74,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
     "count": 66,
-    "total_dashboards": 73
+    "total_dashboards": 74
   }
 }

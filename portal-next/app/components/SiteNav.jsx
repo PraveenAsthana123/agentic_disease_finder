@@ -50,6 +50,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-lifecycle">&#x1f504; AI Lifecycle</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-control-tower">&#x1f5fc; AI Control Tower</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/system-health">&#x1f5a5;&#xfe0f; System Health</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/admin-users">&#x1f465; Admin Users</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/advisor-issues">&#x1f50d; Advisor Issues</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/root-cause-analysis">&#x1f50d; RCA Center</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-governance">&#x1f3db;&#xfe0f; AI Governance</Link></li>

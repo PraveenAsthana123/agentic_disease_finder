@@ -19199,6 +19199,35 @@ async def eeg_clinical_panel_definitions():
     return _json_safe(ecpd.eeg_clinical_panel_definitions())
 
 
+# ── Admin Users Dashboard ────────────────────────────────────────────
+# Real data: admin_users (15 users, 6 roles, 8 departments) — user access
+# panel showing role distribution, MFA compliance, login activity, and
+# department breakdown for platform operators.
+
+@app.get("/api/admin-users/overview")
+async def admin_users_overview():
+    """Admin users overview — totals, active/inactive split, MFA rate,
+    role distribution, department breakdown, top user by login count."""
+    import scripts.admin_users_dashboard as aud
+    return _json_safe(aud.overview())
+
+
+@app.get("/api/admin-users/breakdown")
+async def admin_users_breakdown():
+    """Admin users breakdown — full user list sortable by role/status/logins,
+    role×status cross-matrix, MFA non-compliant list."""
+    import scripts.admin_users_dashboard as aud
+    return _json_safe(aud.breakdown())
+
+
+@app.get("/api/admin-users/definitions")
+async def admin_users_definitions():
+    """Admin users definitions — role descriptions, status lifecycle, MFA
+    compliance note, HIPAA/PIPEDA field reference."""
+    import scripts.admin_users_dashboard as aud
+    return _json_safe(aud.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
