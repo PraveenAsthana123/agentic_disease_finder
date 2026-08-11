@@ -2749,6 +2749,25 @@ async def seizure_forecasting_definitions():
     return _json_safe(sfd.definitions())
 
 
+@app.get("/api/seizure-horizon/overview")
+async def seizure_horizon_overview():
+    """Seizure Prediction Horizon Analysis — KPIs, horizon sweep, optimal horizon, ROC."""
+    import scripts.seizure_horizon_dashboard as shd
+    return _json_safe(shd.overview())
+
+@app.get("/api/seizure-horizon/breakdown")
+async def seizure_horizon_breakdown():
+    """Seizure Prediction Horizon Analysis — sensitivity/FAR trade-off, viability matrix, per-patient."""
+    import scripts.seizure_horizon_dashboard as shd
+    return _json_safe(shd.breakdown())
+
+@app.get("/api/seizure-horizon/definitions")
+async def seizure_horizon_definitions():
+    """Seizure Prediction Horizon Analysis — clinical terms, references, standards."""
+    import scripts.seizure_horizon_dashboard as shd
+    return _json_safe(shd.definitions())
+
+
 @app.get("/api/feature-gaps")
 async def feature_gaps():
     """Epilepsy DL review (50 papers) → project gap analysis by category."""
