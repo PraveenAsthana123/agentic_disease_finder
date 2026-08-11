@@ -1320,6 +1320,14 @@
       "built_at": "2026-08-11",
       "feature": "Needle EMG \u2014 MUAP duration, amplitude, phases, polyphasic %, recruitment & spontaneous activity across 8 muscles (FDI/APB/Biceps/Deltoid/TA/Gastroc/VastMed/Iliopsoas), 5 diagnostic patterns (Normal/Neuropathic/Myopathic/Mixed/NMJ), 70% abnormal rate, AED-induced neuromuscular monitoring",
       "viz": "KPI cards, severity/pattern bars, muscle abnormality rates, MUAP duration/amplitude histograms, recruitment & spontaneous activity distribution, limb comparison, per-muscle detail table, per-patient expandable rows with full muscle results"
+    },
+    {
+      "id": "sfemg",
+      "title": "Single Fiber EMG (SFEMG)",
+      "status": "built",
+      "route": "/sfemg",
+      "api": "/api/sfemg/overview|breakdown|definitions",
+      "note": "30 studies, 25 patients, jitter/MCD distribution, FD distribution, blocking rates, 4 muscles (EDC/orbicularis/frontalis/deltoid), 6 diagnostic patterns (Normal/MG/LEMS/CMS/MND/Myopathic), per-diagnosis profiles, per-patient table, 5-tab epilepsy relevance, SiteNav wired next to EMG"
     }
   ],
   "summary": {
