@@ -1242,6 +1242,16 @@
       "why": "HFOs are the most specific biomarker for the epileptogenic zone; critical for presurgical mapping",
       "priority": "high",
       "description": "Ripple (80\u2013250 Hz) + Fast Ripple (250\u2013500 Hz) analytics: 41 patients, 133 analyses, SOZ channel mapping per 19-electrode 10-20 montage, pre-ictal vs interictal HFO surge, AED response benchmarks, 5-tab frontend (Overview/Electrode Map/Per Patient/Pre-Ictal vs Interictal/Definitions), 3 endpoints /api/hfo/overview|breakdown|definitions verified 200, portal-next/app/hfo/page.jsx + SiteNav wired next to SNN Neuromorphic, expert_dashboards.json count 98\u219299"
+    },
+    {
+      "id": "aed_compliance",
+      "label": "AED Compliance Analytics",
+      "route": "/aed-compliance",
+      "api": "/api/aed-compliance/overview|breakdown|definitions",
+      "status": "built",
+      "built_at": "2026-08-11",
+      "data_source": "medication_adherence (12600 rows)",
+      "note": "12,600 dose records \u00b7 30 patients \u00b7 8 AEDs \u00b7 90 days \u00b7 93.0% overall adherence \u00b7 on-time/late/missed breakdown \u00b7 per-drug bars \u00b7 monthly trend \u00b7 side effect analysis \u00b7 5-tab frontend"
     }
   ],
   "summary": {
@@ -1254,5 +1264,5 @@
     "total_dashboards": 97,
     "total_built": 97
   },
-  "count": 98
+  "count": 100
 }

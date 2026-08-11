@@ -19724,6 +19724,33 @@ async def epilepsy_in_women_definitions():
     return _json_safe(eiw.definitions())
 
 
+@app.get("/api/aed-compliance/overview")
+async def aed_compliance_overview():
+    """AED Compliance Analytics overview — 12,600 dose records, 30 patients, 8 AEDs, 90 days;
+    overall adherence 93.0%; on-time/late/missed distribution; per-drug adherence bars;
+    monthly trend; time-of-day breakdown; frequency impact."""
+    import scripts.aed_compliance_dashboard as acd
+    return _json_safe(acd.overview())
+
+
+@app.get("/api/aed-compliance/breakdown")
+async def aed_compliance_breakdown():
+    """AED Compliance Analytics breakdown — per-patient adherence table (tier/missed/avg delay);
+    per-drug detail (avg minutes late, n_patients, AED profile); side effect severity by drug;
+    mood-by-status correlation; top 5 worst-adherence patients."""
+    import scripts.aed_compliance_dashboard as acd
+    return _json_safe(acd.breakdown())
+
+
+@app.get("/api/aed-compliance/definitions")
+async def aed_compliance_definitions():
+    """AED Compliance Analytics definitions — ILAE compliance thresholds, adherence terminology,
+    8 AED pharmacological profiles, 5 clinical impact findings with citations,
+    monitoring recommendations by dosing frequency, key references."""
+    import scripts.aed_compliance_dashboard as acd
+    return _json_safe(acd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
