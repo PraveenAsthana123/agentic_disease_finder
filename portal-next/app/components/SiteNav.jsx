@@ -276,6 +276,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-semiology">&#x1f9e9; Seizure Semiology</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/snn-neuromorphic">&#x26a1; SNN Neuromorphic</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hfo">&#x1f4a5; HFO Biomarkers</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/expert-dashboards-catalog">&#x1f4da; Dashboard Catalog</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

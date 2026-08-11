@@ -469,7 +469,8 @@
         "/api/expert-dashboards-catalog/breakdown",
         "/api/expert-dashboards-catalog/definitions"
       ],
-      "component": "ExpertDashboardsCatalogDashboard.jsx"
+      "component": "portal-next/app/expert-dashboards-catalog/page.jsx",
+      "route": "/expert-dashboards-catalog"
     },
     {
       "name": "Secure Messages",
