@@ -258,6 +258,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-freedom">&#x1f3c6; Seizure Freedom</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/sudep-risk">&#x26a1; SUDEP Risk</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/drug-resistant-epilepsy">&#x1f48a; Drug-Resistant Epilepsy</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/status-epilepticus">&#x1f6a8; Status Epilepticus</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

@@ -19443,6 +19443,34 @@ async def biostatistician_definitions():
     return _json_safe(bio.definitions())
 
 
+@app.get("/api/status-epilepticus/overview")
+async def status_epilepticus_overview():
+    """Status Epilepticus overview — admission KPIs (SE direct + seizure clusters +
+    emergency), NCS stage distribution (Stage 1/2/3 Refractory), ward distribution,
+    discharge disposition, etiology breakdown, complication rates, LOS, cost summary.
+    Real data from hospitalization table (115 rows): 6 SE + 15 seizure-cluster admissions."""
+    import scripts.status_epilepticus_dashboard as sed
+    return _json_safe(sed.overview())
+
+
+@app.get("/api/status-epilepticus/breakdown")
+async def status_epilepticus_breakdown():
+    """Status Epilepticus breakdown — per-patient SE admission table (LOS, NCS stage,
+    disposition, drug-resistance flag, syndrome, cost), LOS histogram, insurance
+    breakdown, drug-resistance prevalence in SE patients, monthly admission trend."""
+    import scripts.status_epilepticus_dashboard as sed
+    return _json_safe(sed.breakdown())
+
+
+@app.get("/api/status-epilepticus/definitions")
+async def status_epilepticus_definitions():
+    """Status Epilepticus definitions — ILAE/NCS SE definition, SE types (CSE/NCSE/RSE/SRSE),
+    NCS 3-stage treatment algorithm with agents + targets, prognostic factors, clinical
+    pearls, abbreviations, and key references."""
+    import scripts.status_epilepticus_dashboard as sed
+    return _json_safe(sed.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
