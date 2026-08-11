@@ -482,7 +482,9 @@
         "/api/secure-messages/breakdown",
         "/api/secure-messages/definitions"
       ],
-      "component": "SecureMessagesDashboard.jsx"
+      "component": "portal-next/app/secure-messages/page.jsx",
+      "route": "/secure-messages",
+      "note": "170 messages, 30 patients, 8 categories (urgent/side-effect/symptom/medication/prescription/test-results/appointment/general), 4 priorities, inbound/outbound split, monthly trend, per-patient stats, 5-tab frontend (Overview/Message Log/Per Patient/By Category/Definitions), 3 endpoints /api/secure-messages/overview|breakdown|definitions verified 200, portal-next/app/secure-messages/page.jsx + SiteNav wired next to Secure Messaging"
     },
     {
       "name": "Quality of Life",

@@ -222,6 +222,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/channel-quality">&#x1f4f6; Channel Quality</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/recording-conditions">&#x1f4f9; Recording Conditions</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/secure-messaging">&#x1f4ac; Secure Messaging</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/secure-messages">&#x1f4e9; Secure Messages</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/referrer-notify">&#x1f4e8; Referrer Notify</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/referral-triage">&#x1f3e5; Referral Triage</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/referral-records">&#x1f4c1; Referral Records</Link></li>
