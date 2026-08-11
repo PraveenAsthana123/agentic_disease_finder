@@ -11161,6 +11161,28 @@ async def snn_neuromorphic_definitions():
     return _json_safe(snn.definitions())
 
 
+# ── High-Frequency Oscillations (HFO) Dashboard ───────────────────────
+@app.get("/api/hfo/overview")
+async def hfo_overview():
+    """HFO overview: ripple/fast-ripple KPIs, SOZ patients, cohort averages, AED response."""
+    import scripts.hfo_dashboard as hfo
+    return _json_safe(hfo.overview())
+
+
+@app.get("/api/hfo/breakdown")
+async def hfo_breakdown():
+    """HFO breakdown: per-electrode cohort map, per-patient SOZ profiles, pre-ictal vs interictal."""
+    import scripts.hfo_dashboard as hfo
+    return _json_safe(hfo.breakdown())
+
+
+@app.get("/api/hfo/definitions")
+async def hfo_definitions():
+    """HFO definitions: clinical terminology, detection pipeline, surgical outcome reference."""
+    import scripts.hfo_dashboard as hfo
+    return _json_safe(hfo.definitions())
+
+
 # ── Patient Portal Dashboard ──────────────────────────────────────────
 @app.get("/api/patient-portal/overview")
 async def patient_portal_overview():
