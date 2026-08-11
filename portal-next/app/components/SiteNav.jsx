@@ -265,6 +265,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/workflow-efficiency">&#x2699;&#xfe0f; Clinical Workflow Efficiency</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/genetic-epilepsy">&#x1f9ec; Genetic Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

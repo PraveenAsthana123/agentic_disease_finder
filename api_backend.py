@@ -19610,6 +19610,31 @@ async def autoimmune_epilepsy_definitions():
     return _json_safe(aed.definitions())
 
 
+# ── Pediatric Epilepsy Syndromes Dashboard ────────────────────────────────────
+@app.get("/api/pediatric-epilepsy/overview")
+async def pediatric_epilepsy_overview():
+    """Pediatric epilepsy overview — 25 patients with onset < 18 years; syndrome distribution
+    (CAE/JME/JAE/LGS/focal), onset age buckets, drug-resistance rate, etiology breakdown."""
+    import scripts.pediatric_epilepsy_dashboard as ped
+    return _json_safe(ped.overview())
+
+
+@app.get("/api/pediatric-epilepsy/breakdown")
+async def pediatric_epilepsy_breakdown():
+    """Pediatric epilepsy breakdown — per-patient syndrome/AED/seizure-freedom table,
+    syndrome × drug-resistance summary, top AEDs, onset-age × syndrome heatmap."""
+    import scripts.pediatric_epilepsy_dashboard as ped
+    return _json_safe(ped.breakdown())
+
+
+@app.get("/api/pediatric-epilepsy/definitions")
+async def pediatric_epilepsy_definitions():
+    """Pediatric epilepsy definitions — ILAE syndrome profiles, AED reference cards,
+    ILAE 2022 classification notes, outcome definitions, clinical references."""
+    import scripts.pediatric_epilepsy_dashboard as ped
+    return _json_safe(ped.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
