@@ -1,38 +1,38 @@
 {
   "available": true,
-  "run_at": "2026-08-04T06:30:01-06:00",
-  "n_patients": 40,
+  "run_at": "2026-08-10T06:30:02-06:00",
+  "n_patients": 41,
   "counts": {
-    "patients": 40,
-    "analyses": 129,
+    "patients": 41,
+    "analyses": 133,
     "mri_findings": 40,
-    "assessments": 423,
+    "assessments": 424,
     "seizure_diary": 25,
     "medications": 9,
     "neuropsych": 37,
     "clinical_decisions": 75
   },
   "modality_coverage_pct": {
-    "EEG analysis": 122.5,
-    "Assessment": 72.5,
-    "Seizure diary": 55.0,
-    "MRI": 100.0,
-    "Medication": 12.5
+    "EEG analysis": 122.0,
+    "Assessment": 70.7,
+    "Seizure diary": 53.7,
+    "MRI": 97.6,
+    "Medication": 12.2
   },
   "quality_dimensions": {
     "Completeness": {
-      "score": 72.5,
+      "score": 71.2,
       "basis": "mean modality coverage across 5 modalities",
       "real": true
     },
     "Uniqueness": {
       "score": 100.0,
-      "basis": "0 duplicate patient_ids of 40",
+      "basis": "0 duplicate patient_ids of 41",
       "real": true
     },
     "Validity": {
-      "score": 57.5,
-      "basis": "23/40 patients have age+gender+disease",
+      "score": 56.1,
+      "basis": "23/41 patients have age+gender+disease",
       "real": true
     },
     "Timeliness": {
@@ -51,49 +51,49 @@
       "real": false
     }
   },
-  "ai_readiness_score": 74.4,
+  "ai_readiness_score": 74.1,
   "ai_readiness_grade": "B (usable, gaps)",
   "ai_readiness_components": {
-    "completeness": 72.5,
+    "completeness": 71.2,
     "uniqueness": 100.0,
-    "validity": 57.5,
+    "validity": 56.1,
     "label_coverage": 100.0,
-    "signal_quality": 48.8
+    "signal_quality": 50.4
   },
   "missing_matrix": [
     {
       "modality": "EEG analysis",
-      "present": 49,
+      "present": 50,
       "missing": -9,
-      "pct_missing": -22.5
+      "pct_missing": -22.0
     },
     {
       "modality": "Assessment",
       "present": 29,
-      "missing": 11,
-      "pct_missing": 27.5
+      "missing": 12,
+      "pct_missing": 29.3
     },
     {
       "modality": "Seizure diary",
       "present": 22,
-      "missing": 18,
-      "pct_missing": 45.0
+      "missing": 19,
+      "pct_missing": 46.3
     },
     {
       "modality": "MRI",
       "present": 40,
-      "missing": 0,
-      "pct_missing": 0.0
+      "missing": 1,
+      "pct_missing": 2.4
     },
     {
       "modality": "Medication",
       "present": 5,
-      "missing": 35,
-      "pct_missing": 87.5
+      "missing": 36,
+      "pct_missing": 87.8
     }
   ],
   "label_coverage_pct": 100.0,
-  "signal_quality_pct": 48.8,
+  "signal_quality_pct": 50.4,
   "data_lineage": [
     "Raw EDF/CSV upload",
     "Parse + validate",

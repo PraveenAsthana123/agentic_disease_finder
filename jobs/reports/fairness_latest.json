@@ -1,20 +1,20 @@
 {
-  "run_at_local": "2026-08-04T04:00:05-06:00",
-  "n": 400,
+  "run_at_local": "2026-08-10T04:00:04-06:00",
+  "n": 401,
   "protected_attribute": "sex",
   "outcome": "adverse assessment (moderate/severe)",
   "by_group": {
     "Female": {
-      "selection_rate": 0.2549800796812749,
-      "count": 251.0
+      "selection_rate": 0.25396825396825395,
+      "count": 252.0
     },
     "Male": {
       "selection_rate": 0.31543624161073824,
       "count": 149.0
     }
   },
-  "demographic_parity_difference": 0.0605,
-  "overall_selection_rate": 0.2775,
+  "demographic_parity_difference": 0.0615,
+  "overall_selection_rate": 0.2768,
   "fairness_gate": "PASS",
   "interpretation": "Adverse-outcome rates are comparable across sex (DPD < 0.2).",
   "library": "Fairlearn 0.14.0"

@@ -1,48 +1,48 @@
 {
-  "run_at": "2026-08-04T05:30:10-06:00",
+  "run_at": "2026-08-10T05:30:06-06:00",
   "n_checked": 5,
   "mismatches": 0,
   "verdict": "PASS",
   "tolerance": 0.02,
   "checks": [
     {
+      "analysis_id": 133,
+      "trust_conf": 0.74,
+      "shap_conf": 0.74,
+      "trust_label": "Epilepsy",
+      "shap_label": "Epilepsy",
+      "consistent": true
+    },
+    {
+      "analysis_id": 132,
+      "trust_conf": 0.74,
+      "shap_conf": 0.74,
+      "trust_label": "Epilepsy",
+      "shap_label": "Epilepsy",
+      "consistent": true
+    },
+    {
+      "analysis_id": 131,
+      "trust_conf": 0.74,
+      "shap_conf": 0.74,
+      "trust_label": "Epilepsy",
+      "shap_label": "Epilepsy",
+      "consistent": true
+    },
+    {
+      "analysis_id": 130,
+      "trust_conf": 0.74,
+      "shap_conf": 0.74,
+      "trust_label": "Epilepsy",
+      "shap_label": "Epilepsy",
+      "consistent": true
+    },
+    {
       "analysis_id": 21,
       "trust_conf": 0.5395,
       "shap_conf": 0.5395,
       "trust_label": "Control",
       "shap_label": "Control",
-      "consistent": true
-    },
-    {
-      "analysis_id": 20,
-      "trust_conf": 0.5395,
-      "shap_conf": 0.5395,
-      "trust_label": "Control",
-      "shap_label": "Control",
-      "consistent": true
-    },
-    {
-      "analysis_id": 19,
-      "trust_conf": 0.5395,
-      "shap_conf": 0.5395,
-      "trust_label": "Control",
-      "shap_label": "Control",
-      "consistent": true
-    },
-    {
-      "analysis_id": 18,
-      "trust_conf": 0.5145,
-      "shap_conf": 0.5162,
-      "trust_label": "Control",
-      "shap_label": "Control",
-      "consistent": true
-    },
-    {
-      "analysis_id": 17,
-      "trust_conf": 0.5562,
-      "shap_conf": 0.5579,
-      "trust_label": "Epilepsy",
-      "shap_label": "Epilepsy",
       "consistent": true
     }
   ],

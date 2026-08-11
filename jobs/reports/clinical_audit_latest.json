@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-04T20:00:05-06:00",
-  "patients": 40,
-  "analyses": 129,
+  "generated_at": "2026-08-10T20:00:07-06:00",
+  "patients": 41,
+  "analyses": 133,
   "surveys": 1,
-  "avg_confidence": 0.6896,
+  "avg_confidence": 0.6911,
   "prediction_distribution": {
     "Abnormal (non-epileptic)": 2,
     "Alzheimers": 6,
     "Borderline": 2,
     "Depression": 12,
-    "Epilepsy": 44,
+    "Epilepsy": 48,
     "Insomnia": 4,
     "Normal": 32,
     "Parkinsons": 9,
@@ -18,13 +18,13 @@
   "signal_quality_distribution": {
     "Excellent": 17,
     "Fair": 23,
-    "Good": 63,
+    "Good": 67,
     "Poor": 26
   },
   "analyses_by_disease": {
     "alzheimers": 7,
     "depression": 19,
-    "epilepsy": 60,
+    "epilepsy": 64,
     "parkinsons": 15,
     "sleep_disorder": 28
   }

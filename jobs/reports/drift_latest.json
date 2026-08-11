@@ -1,9 +1,9 @@
 {
   "available": true,
-  "run_at_local": "2026-08-04T05:00:03-06:00",
+  "run_at_local": "2026-08-10T05:00:04-06:00",
   "disease": "epilepsy",
   "n_reference": 78,
-  "n_live": 21,
+  "n_live": 25,
   "n_features": 47,
   "n_high_drift": 47,
   "frac_drifted": 1.0,
@@ -11,85 +11,85 @@
   "top_drift": [
     {
       "feature": "mean",
-      "psi": 21.725,
+      "psi": 21.8726,
       "ks_stat": 0.5256,
-      "ks_p": 0.0001,
+      "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "line_length",
-      "psi": 20.5406,
+      "psi": 20.7058,
       "ks_stat": 0.641,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "spectral_entropy",
-      "psi": 20.2634,
-      "ks_stat": 0.6374,
+      "psi": 20.4607,
+      "ks_stat": 0.6831,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "std",
-      "psi": 20.2164,
-      "ks_stat": 0.6667,
+      "psi": 20.4085,
+      "ks_stat": 0.72,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "rms",
-      "psi": 20.2164,
-      "ks_stat": 0.6667,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "lz_complexity",
-      "psi": 18.3255,
-      "ks_stat": 0.7143,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "peak_ratio",
-      "psi": 18.1126,
-      "ks_stat": 0.7619,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "dfa_alpha",
-      "psi": 18.1126,
-      "ks_stat": 0.7619,
-      "ks_p": 0.0,
-      "severity": "high"
-    },
-    {
-      "feature": "psd_std",
-      "psi": 18.1011,
-      "ks_stat": 0.7619,
+      "psi": 20.4085,
+      "ks_stat": 0.72,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "hurst_exponent",
-      "psi": 18.1011,
-      "ks_stat": 0.7619,
+      "psi": 18.3246,
+      "ks_stat": 0.8,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "lz_complexity",
+      "psi": 18.318,
+      "ks_stat": 0.6,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "slope_changes",
-      "psi": 17.7877,
-      "ks_stat": 0.7619,
+      "psi": 18.0133,
+      "ks_stat": 0.8,
       "ks_p": 0.0,
       "severity": "high"
     },
     {
       "feature": "max",
-      "psi": 17.7859,
-      "ks_stat": 0.685,
+      "psi": 18.0115,
+      "ks_stat": 0.7231,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "delta_power",
+      "psi": 18.0099,
+      "ks_stat": 0.8,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "hjorth_complexity",
+      "psi": 18.0099,
+      "ks_stat": 0.8,
+      "ks_p": 0.0,
+      "severity": "high"
+    },
+    {
+      "feature": "var",
+      "psi": 17.8428,
+      "ks_stat": 0.72,
       "ks_p": 0.0,
       "severity": "high"
     }

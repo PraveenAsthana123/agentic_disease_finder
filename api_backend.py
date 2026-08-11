@@ -19120,6 +19120,37 @@ async def seizure_freedom_definitions():
     return _json_safe(sfd.freedom_definitions())
 
 
+# ── Discharge Planning Dashboard ─────────────────────────────────────────────
+# Real data: hospitalization (115 admissions, 30 patients) + medication_adherence
+# (12,600 rows, taken/yes ratio) + appointments (next follow-up per patient) +
+# seizure_diary (25 entries). Discharge readiness scored on 5 criteria (0–100):
+# seizure-free at discharge, AED adherence ≥80%, follow-up scheduled, no
+# complications, planned disposition. 30-day readmission tracking.
+
+@app.get("/api/discharge-planning/overview")
+async def discharge_planning_overview():
+    """Discharge Planning overview — 115 admissions, readmission rate, LOS,
+    seizure-free at discharge rate, readiness tier distribution."""
+    import scripts.discharge_planning_dashboard as dpd
+    return _json_safe(dpd.discharge_overview())
+
+
+@app.get("/api/discharge-planning/breakdown")
+async def discharge_planning_breakdown():
+    """Discharge Planning breakdown — per-patient readiness profiles,
+    admissions log, readmission register."""
+    import scripts.discharge_planning_dashboard as dpd
+    return _json_safe(dpd.discharge_breakdown())
+
+
+@app.get("/api/discharge-planning/definitions")
+async def discharge_planning_definitions():
+    """Discharge Planning definitions — readiness tiers, criteria weights,
+    admission types, disposition categories, ILAE/NICE standards."""
+    import scripts.discharge_planning_dashboard as dpd
+    return _json_safe(dpd.discharge_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

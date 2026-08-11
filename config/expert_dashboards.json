@@ -834,6 +834,20 @@
         "/api/seizure-freedom/breakdown",
         "/api/seizure-freedom/definitions"
       ]
+    },
+    {
+      "role": "Neurologist / Epilepsy Nurse / Clinical Coordinator",
+      "name": "Discharge Planning Dashboard",
+      "viz": "Readiness scores, admission log, 30-day readmission tracking, per-patient checklist",
+      "feature": "Discharge readiness (5 criteria), LOS, readmission rate, seizure-free at discharge",
+      "why": "Structured discharge planning reduces 30-day readmissions and improves AED adherence post-discharge",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/discharge-planning/overview",
+        "/api/discharge-planning/breakdown",
+        "/api/discharge-planning/definitions"
+      ]
     }
   ],
   "regulatory_audit_trail_dashboard": {

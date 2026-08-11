@@ -1,6 +1,6 @@
 {
-  "scanned_at": "2026-06-25 10:40 MDT",
-  "count": 7,
+  "scanned_at": "2026-08-09 22:34 MDT",
+  "count": 5,
   "issues": [
     {
       "severity": "P1",
@@ -9,16 +9,10 @@
       "guidance": "Retrain on same-setup ictal/interictal data; until then trust confidence only with human sign-off."
     },
     {
-      "severity": "P1",
-      "surface": "model",
-      "issue": "Model has dataset-confound caveat (acc 0.8718, control=motor-imagery)",
-      "guidance": "Confidence partly reflects dataset, not only epilepsy. Use ictal/interictal data for clinical claims."
-    },
-    {
-      "severity": "P1",
-      "surface": "backend",
-      "issue": "6 HTTP-500 since last restart",
-      "guidance": "Check jobs/logs/backend.log; wrap NaN/serialization in _json_safe."
+      "severity": "P2",
+      "surface": "frontend",
+      "issue": "Dev server :3003 not reachable (http=000)",
+      "guidance": "Run: cd frontend && npm run dev -- --port 3003 (or operator opens the UI)."
     },
     {
       "severity": "P2",
@@ -34,14 +28,8 @@
     },
     {
       "severity": "P3",
-      "surface": "data",
-      "issue": "MRI coverage very low (2.5%)",
-      "guidance": "Expected \u2014 DICOM not ingested. Note as limitation, not a bug."
-    },
-    {
-      "severity": "P3",
       "surface": "git",
-      "issue": "2 commit(s) unpushed",
+      "issue": "717 commit(s) unpushed",
       "guidance": "safe_push.sh auto-pushes on shared repos; or push manually."
     }
   ]
