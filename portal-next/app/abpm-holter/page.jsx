@@ -1,460 +1,312 @@
 'use client';
 import { useState, useEffect } from 'react';
+
 const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8010';
 
-const sevColor = s => s === 'Normal' ? 'success' : s === 'Mild' ? 'info' : s === 'Moderate' ? 'warning' : 'danger';
-const patColor = p => p === 'normal' || p === 'normotensive' ? 'success' : p === 'arrhythmia_burden' || p === 'sustained_hypertension' ? 'danger' : p === 'autonomic_dysregulation' ? 'warning' : 'info';
-const dipColor = d => d === 'normal_dipper' ? 'success' : d === 'extreme_dipper' ? 'info' : d === 'non_dipper' ? 'warning' : 'danger';
+const pct = (n, total) => total ? ((n / total) * 100).toFixed(1) : '0.0';
 
-export default function ABPMHolterPage() {
-  const [ov, setOv]     = useState(null);
-  const [bd, setBd]     = useState(null);
+const severityColor = s => ({
+  Normal: 'success', Mild: 'warning', Moderate: 'danger', Severe: 'dark',
+}[s] || 'secondary');
+
+const dippingColor = cat => ({
+  'Normal Dipper': 'success',
+  'Extreme Dipper': 'warning',
+  'Non Dipper': 'danger',
+  'Reverse Dipper': 'dark',
+}[cat] || 'secondary');
+
+const qtcColor = bucket => {
+  if (bucket && bucket.startsWith('Normal')) return 'success';
+  if (bucket && bucket.startsWith('Border')) return 'warning';
+  return 'danger';
+};
+
+export default function ABPMHolterDashboard() {
+  const [ov, setOv] = useState(null);
+  const [bd, setBd] = useState(null);
   const [defs, setDefs] = useState(null);
-  const [tab, setTab]   = useState('overview');
-  const [expandedPt, setExpandedPt] = useState(null);
+  const [tab, setTab] = useState('overview');
+  const [err, setErr] = useState(null);
+  const [patSort, setPatSort] = useState('cardiac_score');
+  const [patDir, setPatDir] = useState(-1);
 
   useEffect(() => {
-    fetch(`${API}/api/abpm-holter/overview`).then(r => r.json()).then(setOv).catch(() => {});
-    fetch(`${API}/api/abpm-holter/breakdown`).then(r => r.json()).then(setBd).catch(() => {});
-    fetch(`${API}/api/abpm-holter/definitions`).then(r => r.json()).then(setDefs).catch(() => {});
+    Promise.all([
+      fetch(`${API}/api/abpm-holter/overview`).then(r => r.json()),
+      fetch(`${API}/api/abpm-holter/breakdown`).then(r => r.json()),
+      fetch(`${API}/api/abpm-holter/definitions`).then(r => r.json()),
+    ]).then(([o, b, d]) => { setOv(o); setBd(b); setDefs(d); })
+      .catch(e => setErr(String(e)));
   }, []);
 
-  if (!ov) return <div className="p-4"><div className="spinner-border text-primary" /></div>;
+  if (err) return <div className="alert alert-danger m-3">Failed to load: {err}</div>;
+  if (!ov) return <div className="text-muted p-3">Loading ABPM/Holter data…</div>;
 
-  const tabs = [
-    { id: 'overview',    label: 'Overview' },
-    { id: 'analysis',    label: 'Combined Analysis' },
-    { id: 'patients',    label: 'Patient Detail' },
-    { id: 'definitions', label: 'Definitions' },
+  const TABS = [
+    { id: 'overview',   label: 'Overview' },
+    { id: 'bp',         label: 'Blood Pressure' },
+    { id: 'arrhythmia', label: 'Arrhythmia / ECG' },
+    { id: 'patients',   label: 'Per Patient' },
+    { id: 'defs',       label: 'Definitions' },
   ];
 
-  const sevEntries = ov.severity_distribution ? Object.entries(ov.severity_distribution) : [];
-  const patEntries = ov.pattern_distribution ? Object.entries(ov.pattern_distribution) : [];
-  const dipEntries = ov.dipping_distribution ? Object.entries(ov.dipping_distribution) : [];
+  const sortedPats = bd ? [...(bd.patients || [])].sort((a, b) => {
+    const av = a[patSort] ?? 0;
+    const bv = b[patSort] ?? 0;
+    if (av < bv) return -patDir;
+    if (av > bv) return patDir;
+    return 0;
+  }) : [];
+
+  const sortBy = col => {
+    if (patSort === col) setPatDir(d => -d);
+    else { setPatSort(col); setPatDir(-1); }
+  };
+  const sortIcon = col => patSort === col ? (patDir === 1 ? ' ▲' : ' ▼') : '';
 
   return (
-    <div>
-      <h3>ABPM / Holter Combined — Cardiac-Autonomic Monitoring</h3>
-      <p className="text-muted small">
-        24h ambulatory blood pressure + Holter ECG combined analysis · dipping status · arrhythmia burden ·
-        QTc monitoring · SUDEP risk stratification · autonomic dysfunction in epilepsy.
-        Source: <code>abpm_holter</code> table (clinical.db)
+    <div className="container-fluid py-3">
+      <h3 className="mb-1">❤️ ABPM/Holter Cardiac Monitoring Dashboard</h3>
+      <p className="text-muted small mb-3">
+        {ov.total_studies} studies · {ov.total_patients} patients · 24h ambulatory BP + Holter ECG · AED cardiac safety &amp; syncope differential
       </p>
 
-      {/* KPI cards */}
-      <div className="row mb-3">
-        {[
-          { label: 'Total Studies',    value: ov.kpis.total_studies,              color: 'primary' },
-          { label: 'Abnormal',         value: ov.kpis.abnormal_count,             color: 'danger' },
-          { label: 'Abnormal Rate',    value: `${ov.kpis.abnormal_rate_pct}%`,    color: ov.kpis.abnormal_rate_pct > 30 ? 'danger' : 'warning' },
-          { label: 'Mean 24h SBP',     value: `${ov.kpis.mean_systolic_24h} mmHg`, color: ov.kpis.mean_systolic_24h > 130 ? 'danger' : 'success' },
-          { label: 'Mean 24h DBP',     value: `${ov.kpis.mean_diastolic_24h} mmHg`, color: ov.kpis.mean_diastolic_24h > 80 ? 'danger' : 'success' },
-          { label: 'Mean QTc',         value: `${ov.kpis.mean_qtc_ms} ms`,        color: ov.kpis.mean_qtc_ms > 450 ? 'danger' : 'success' },
-        ].map(c => (
-          <div key={c.label} className="col-6 col-md-2 mb-2">
-            <div className="card text-center shadow-sm border-0">
-              <div className="card-body py-2">
-                <div className={`h3 mb-0 text-${c.color}`}>{c.value}</div>
-                <div className="text-muted small">{c.label}</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Tabs */}
       <ul className="nav nav-tabs mb-3">
-        {tabs.map(t => (
+        {TABS.map(t => (
           <li key={t.id} className="nav-item">
-            <button className={`nav-link ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>{t.label}</button>
+            <button className={`nav-link${tab === t.id ? ' active' : ''}`} onClick={() => setTab(t.id)}>
+              {t.label}
+            </button>
           </li>
         ))}
       </ul>
 
-      {/* ── Overview Tab ─────────────────────────────────────── */}
+      {/* ── OVERVIEW ── */}
       {tab === 'overview' && (
-        <div className="row">
-          <div className="col-md-4 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">Severity Distribution</div>
-              <div className="card-body">
-                {sevEntries.map(([sev, count]) => (
-                  <div key={sev} className="d-flex align-items-center mb-2">
-                    <span className={`badge bg-${sevColor(sev)} me-2`} style={{minWidth: 70}}>{sev}</span>
-                    <div className="flex-grow-1 me-2">
-                      <div className="progress" style={{height: 18}}>
-                        <div className={`progress-bar bg-${sevColor(sev)}`}
-                             style={{width: `${ov.kpis.total_studies ? (count / ov.kpis.total_studies * 100) : 0}%`}}>
-                          {count}
-                        </div>
-                      </div>
-                    </div>
+        <>
+          <div className="row g-3 mb-4">
+            {[
+              { label: 'Studies', val: ov.total_studies, sub: `${ov.total_patients} patients`, color: 'primary' },
+              { label: 'Avg SBP 24h', val: `${ov.avg_sbp_24h} mmHg`, sub: `DBP ${ov.avg_dbp_24h} mmHg`, color: 'info' },
+              { label: 'Avg HR 24h', val: `${ov.avg_hr_24h} bpm`, sub: 'Heart rate', color: 'success' },
+              { label: 'Avg QTc', val: `${ov.avg_qtc_ms} ms`, sub: 'Normal <440 ms', color: ov.avg_qtc_ms >= 440 ? 'warning' : 'success' },
+              { label: 'Adverse Dipping', val: ov.adverse_dipping_count, sub: `${ov.adverse_dipping_pct}% non/reverse`, color: 'danger' },
+              { label: 'Avg Risk Score', val: ov.avg_cardiac_score, sub: '0–100 composite', color: 'warning' },
+            ].map(k => (
+              <div key={k.label} className="col-6 col-md-4 col-xl-2">
+                <div className={`card border-${k.color} h-100`}>
+                  <div className="card-body text-center p-2">
+                    <div className={`fw-bold text-${k.color}`} style={{ fontSize: '1.3rem' }}>{k.val}</div>
+                    <div className="small fw-semibold">{k.label}</div>
+                    <div className="text-muted" style={{ fontSize: '0.72rem' }}>{k.sub}</div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          <div className="col-md-4 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">Diagnostic Patterns</div>
-              <div className="card-body">
-                {patEntries.map(([pat, count]) => count > 0 && (
-                  <div key={pat} className="d-flex align-items-center mb-2">
-                    <span className={`badge bg-${patColor(pat)} me-1`} style={{minWidth: 90, fontSize:'0.7rem'}}>{pat.replace(/_/g,' ')}</span>
-                    <div className="flex-grow-1 me-1">
-                      <div className="progress" style={{height: 18}}>
-                        <div className={`progress-bar bg-${patColor(pat)}`}
-                             style={{width: `${ov.kpis.total_studies ? (count / ov.kpis.total_studies * 100) : 0}%`}}>
-                          {count}
-                        </div>
-                      </div>
-                    </div>
+          <div className="row g-2 mb-4">
+            {[
+              { label: 'AF Patients', val: ov.af_patients, icon: '⚡', color: 'danger' },
+              { label: 'VT Patients', val: ov.vt_patients, icon: '📉', color: 'danger' },
+              { label: 'Bradycardia', val: ov.brady_patients, icon: '🐢', color: 'warning' },
+              { label: 'ST Depression', val: ov.st_depression_patients, icon: '❗', color: 'warning' },
+              { label: 'Total PVCs', val: ov.total_pvc, icon: '🫀', color: 'secondary' },
+            ].map(k => (
+              <div key={k.label} className="col-6 col-md-4 col-lg-2">
+                <div className={`card border-${k.color}`}>
+                  <div className="card-body text-center py-2 px-1">
+                    <div style={{ fontSize: '1.4rem' }}>{k.icon}</div>
+                    <div className={`fw-bold text-${k.color}`}>{k.val}</div>
+                    <div className="small text-muted">{k.label}</div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          <div className="col-md-4 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">Nocturnal Dipping Status</div>
-              <div className="card-body">
-                {dipEntries.map(([cat, count]) => (
-                  <div key={cat} className="d-flex align-items-center mb-2">
-                    <span className={`badge bg-${dipColor(cat)} me-1`} style={{minWidth: 90, fontSize:'0.7rem'}}>{cat.replace(/_/g,' ')}</span>
-                    <div className="flex-grow-1 me-1">
-                      <div className="progress" style={{height: 18}}>
-                        <div className={`progress-bar bg-${dipColor(cat)}`}
-                             style={{width: `${ov.kpis.total_studies ? (count / ov.kpis.total_studies * 100) : 0}%`}}>
-                          {count}
-                        </div>
+          <div className="row g-3">
+            <div className="col-md-4">
+              <div className="card h-100">
+                <div className="card-header fw-semibold">Dipping Pattern</div>
+                <div className="card-body">
+                  {(ov.dipping_distribution || []).map(item => (
+                    <div key={item.category} className="mb-3">
+                      <div className="d-flex justify-content-between small mb-1">
+                        <span>{item.label}</span>
+                        <span className={`badge bg-${dippingColor(item.label)}`}>{item.count}</span>
+                      </div>
+                      <div className="progress" style={{ height: 10 }}>
+                        <div className={`progress-bar bg-${dippingColor(item.label)}`}
+                          style={{ width: `${pct(item.count, ov.total_studies)}%` }} />
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                  <p className="text-muted small mb-0">Non/reverse dippers: elevated SUDEP &amp; cardiovascular risk.</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="col-12 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">Patient Summary</div>
-              <div className="card-body p-0" style={{overflowX:'auto'}}>
-                <table className="table table-sm table-striped mb-0">
-                  <thead>
-                    <tr>
-                      <th>Patient</th><th>Age</th><th>Severity</th><th>Pattern</th>
-                      <th>24h SBP</th><th>24h DBP</th><th>Dipping</th><th>QTc</th><th>PVCs</th><th>Score</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ov.patient_summary.map((p, i) => (
-                      <tr key={i}>
-                        <td className="fw-semibold small">{p.name}</td>
-                        <td>{p.age}</td>
-                        <td><span className={`badge bg-${sevColor(p.severity)}`}>{p.severity}</span></td>
-                        <td><span className={`badge bg-${patColor(p.diagnostic_pattern)}`} style={{fontSize:'0.65rem'}}>{p.pattern_label || p.diagnostic_pattern.replace(/_/g,' ')}</span></td>
-                        <td className={p.systolic_24h > 130 ? 'text-danger fw-bold' : ''}>{p.systolic_24h}</td>
-                        <td className={p.diastolic_24h > 80 ? 'text-danger fw-bold' : ''}>{p.diastolic_24h}</td>
-                        <td><span className={`badge bg-${dipColor(p.dipping_category)}`} style={{fontSize:'0.65rem'}}>{p.dipping_pct}%</span></td>
-                        <td className={p.qtc_ms > 450 ? 'text-danger fw-bold' : ''}>{p.qtc_ms} ms</td>
-                        <td className={p.pvc_count > 500 ? 'text-danger fw-bold' : ''}>{p.pvc_count}</td>
-                        <td><span className={`badge bg-${p.cardiac_score > 50 ? 'danger' : p.cardiac_score > 25 ? 'warning' : 'success'}`}>{p.cardiac_score}</span></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="col-md-4">
+              <div className="card h-100">
+                <div className="card-header fw-semibold">BP Pattern Labels</div>
+                <div className="card-body">
+                  {(ov.bp_pattern_distribution || []).map(item => (
+                    <div key={item.pattern} className="mb-2">
+                      <div className="d-flex justify-content-between small mb-1">
+                        <span>{item.pattern}</span>
+                        <span className="badge bg-info text-dark">{item.count}</span>
+                      </div>
+                      <div className="progress" style={{ height: 8 }}>
+                        <div className="progress-bar bg-info"
+                          style={{ width: `${pct(item.count, ov.total_studies)}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="card mb-3">
+                <div className="card-header fw-semibold">Severity</div>
+                <div className="card-body">
+                  {(ov.severity_distribution || []).map(item => (
+                    <div key={item.severity} className="mb-2">
+                      <div className="d-flex justify-content-between small mb-1">
+                        <span>{item.severity}</span>
+                        <span className={`badge bg-${severityColor(item.severity)}`}>{item.count}</span>
+                      </div>
+                      <div className="progress" style={{ height: 8 }}>
+                        <div className={`progress-bar bg-${severityColor(item.severity)}`}
+                          style={{ width: `${pct(item.count, ov.total_studies)}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header fw-semibold">QTc Distribution</div>
+                <div className="card-body">
+                  {(ov.qtc_distribution || []).map(item => (
+                    <div key={item.bucket} className="mb-2">
+                      <div className="d-flex justify-content-between small mb-1">
+                        <span>{item.bucket}</span>
+                        <span className={`badge bg-${qtcColor(item.bucket)}`}>{item.count}</span>
+                      </div>
+                      <div className="progress" style={{ height: 8 }}>
+                        <div className={`progress-bar bg-${qtcColor(item.bucket)}`}
+                          style={{ width: `${pct(item.count, ov.total_studies)}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
 
-      {/* ── Combined Analysis Tab ────────────────────────────── */}
-      {tab === 'analysis' && bd && (
-        <div className="row">
-          <div className="col-md-6 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">ABPM Parameters</div>
-              <div className="card-body p-0">
-                <table className="table table-sm mb-0">
-                  <thead><tr><th>Parameter</th><th>Mean</th><th>Min</th><th>Max</th><th>Ref</th><th>Abn%</th></tr></thead>
-                  <tbody>
-                    {bd.abpm_summary.map((p, i) => (
-                      <tr key={i}>
-                        <td className="small fw-semibold">{p.parameter}</td>
-                        <td>{p.mean} {p.unit}</td>
-                        <td className="small text-muted">{p.min}</td>
-                        <td className="small text-muted">{p.max}</td>
-                        <td className="small">{p.ref_low}–{p.ref_high}</td>
-                        <td><span className={p.abnormal_pct > 20 ? 'text-danger fw-bold' : ''}>{p.abnormal_pct}%</span></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">Holter ECG Parameters</div>
-              <div className="card-body p-0">
-                <table className="table table-sm mb-0">
-                  <thead><tr><th>Parameter</th><th>Mean</th><th>Min</th><th>Max</th><th>Ref</th><th>Abn%</th></tr></thead>
-                  <tbody>
-                    {bd.holter_summary.map((p, i) => (
-                      <tr key={i}>
-                        <td className="small fw-semibold">{p.parameter}</td>
-                        <td>{p.mean} {p.unit}</td>
-                        <td className="small text-muted">{p.min}</td>
-                        <td className="small text-muted">{p.max}</td>
-                        <td className="small">{p.ref_low}–{p.ref_high}</td>
-                        <td><span className={p.abnormal_pct > 20 ? 'text-danger fw-bold' : ''}>{p.abnormal_pct}%</span></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          {/* Histograms */}
-          {[
-            { key: 'systolic_histogram',      title: '24h Systolic BP Distribution',  unit: 'mmHg', danger: 130, warn: null,   color: (b) => b.bin_start >= 130 ? 'danger' : 'success' },
-            { key: 'dipping_histogram',       title: 'Nocturnal Dipping Distribution', unit: '%',   danger: 0,   warn: 10,    color: (b) => b.bin_end <= 0 ? 'danger' : b.bin_end <= 10 ? 'warning' : 'success' },
-            { key: 'qtc_histogram',           title: 'QTc Interval Distribution',      unit: 'ms',  danger: 500, warn: 450,   color: (b) => b.bin_start >= 500 ? 'danger' : b.bin_start >= 450 ? 'warning' : 'success' },
-            { key: 'pvc_histogram',           title: 'PVC Count Distribution',         unit: '',    danger: 500, warn: null,   color: (b) => b.bin_start >= 500 ? 'danger' : 'success' },
-            { key: 'cardiac_score_histogram', title: 'Cardiac-Autonomic Risk Score',   unit: '',    danger: 50,  warn: 25,    color: (b) => b.bin_start >= 50 ? 'danger' : b.bin_start >= 25 ? 'warning' : 'success' },
-          ].map(({ key, title, unit, color }) => (
-            <div key={key} className="col-md-6 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">{title}</div>
-                <div className="card-body">
-                  {(bd[key] || []).filter(b => b.count > 0).map((b, i) => (
-                    <div key={i} className="d-flex align-items-center mb-1">
-                      <span className="small" style={{minWidth: 90}}>{b.bin_start}{unit && `${unit}`}–{b.bin_end}{unit && `${unit}`}</span>
-                      <div className="flex-grow-1 mx-2">
-                        <div className="progress" style={{height: 16}}>
-                          <div className={`progress-bar bg-${color(b)}`}
-                               style={{width: `${Math.max(8, b.count / 25 * 100)}%`}}>
-                            {b.count}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+      {/* ── BLOOD PRESSURE ── */}
+      {tab === 'bp' && bd && (
+        <>
+          <div className="row g-3 mb-3">
+            {[
+              { label: 'Avg 24h SBP', val: `${ov.avg_sbp_24h} mmHg`, note: 'Normal <130 mmHg', color: ov.avg_sbp_24h >= 130 ? 'warning' : 'success' },
+              { label: 'Avg 24h DBP', val: `${ov.avg_dbp_24h} mmHg`, note: 'Normal <80 mmHg', color: ov.avg_dbp_24h >= 80 ? 'warning' : 'success' },
+              { label: 'Avg 24h HR', val: `${ov.avg_hr_24h} bpm`, note: 'Normal 60-100', color: 'info' },
+            ].map(k => (
+              <div key={k.label} className="col-md-4">
+                <div className={`card border-${k.color}`}>
+                  <div className="card-body text-center">
+                    <div className={`display-5 fw-bold text-${k.color}`}>{k.val}</div>
+                    <div className="fw-semibold">{k.label}</div>
+                    <div className="text-muted small">{k.note}</div>
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+
+          <div className="card mb-3">
+            <div className="card-header fw-semibold">Day vs Night SBP by Dipping Category</div>
+            <div className="card-body p-0">
+              <table className="table table-sm table-bordered mb-0">
+                <thead className="table-dark">
+                  <tr>
+                    <th>Dipping Category</th><th>Count</th>
+                    <th>Avg Day SBP (mmHg)</th><th>Avg Night SBP (mmHg)</th>
+                    <th>Night/Day Ratio</th><th>Clinical Risk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(bd.dipping_bp_comparison || []).map((row, i) => {
+                    const ratio = row.avg_day_sbp ? (row.avg_night_sbp / row.avg_day_sbp * 100).toFixed(1) : '—';
+                    const risk = row.category === 'Reverse Dipper' ? 'Very High' :
+                                 row.category === 'Non Dipper' ? 'High' :
+                                 row.category === 'Extreme Dipper' ? 'Moderate' : 'Low';
+                    const rc = { 'Very High': 'danger', 'High': 'danger', 'Moderate': 'warning', 'Low': 'success' }[risk];
+                    return (
+                      <tr key={i}>
+                        <td className="fw-semibold">{row.category}</td>
+                        <td>{row.count}</td>
+                        <td>{row.avg_day_sbp}</td>
+                        <td className={row.category === 'Reverse Dipper' || row.category === 'Non Dipper' ? 'text-danger fw-bold' : ''}>
+                          {row.avg_night_sbp}
+                        </td>
+                        <td>{ratio}%</td>
+                        <td><span className={`badge bg-${rc}`}>{risk}</span></td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-          ))}
-        </div>
+          </div>
+
+          <div className="alert alert-info">
+            <strong>Clinical note:</strong> Non-dippers (&lt;10% nocturnal dip) and reverse dippers have
+            significantly elevated stroke, organ damage, and SUDEP risk. {ov.adverse_dipping_count} patients
+            ({ov.adverse_dipping_pct}%) warrant cardiology review and antihypertensive optimization.
+          </div>
+        </>
       )}
 
-      {/* ── Patient Detail Tab ───────────────────────────────── */}
-      {tab === 'patients' && bd && (
-        <div>
-          {(bd.patient_detail_cards || []).map((pt, i) => (
-            <div key={i} className="card mb-2 shadow-sm">
-              <div className="card-header d-flex justify-content-between align-items-center py-2"
-                   style={{cursor:'pointer'}} onClick={() => setExpandedPt(expandedPt === i ? null : i)}>
-                <span>
-                  <strong>{pt.name}</strong>
-                  <span className="text-muted small ms-1">({pt.age}y · {pt.disease})</span>
-                  <span className={`badge bg-${sevColor(pt.severity)} ms-2`}>{pt.severity}</span>
-                  <span className={`badge bg-${patColor(pt.diagnostic_pattern)} ms-1`} style={{fontSize:'0.65rem'}}>
-                    {pt.diagnostic_pattern.replace(/_/g,' ')}
-                  </span>
-                  <span className={`badge bg-${dipColor(pt.dipping_category)} ms-1`} style={{fontSize:'0.65rem'}}>
-                    {pt.dipping_category.replace(/_/g,' ')}
-                  </span>
-                  <span className={`badge bg-${pt.cardiac_score > 50 ? 'danger' : pt.cardiac_score > 25 ? 'warning' : 'secondary'} ms-1`}>
-                    Score: {pt.cardiac_score}
-                  </span>
-                </span>
-                <span>{expandedPt === i ? '▲' : '▼'}</span>
-              </div>
-              {expandedPt === i && (
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6>ABPM — Blood Pressure</h6>
-                      <table className="table table-sm">
-                        <thead><tr><th>Parameter</th><th>Value</th><th>Ref</th><th>Status</th></tr></thead>
-                        <tbody>
-                          {pt.abpm && Object.entries(pt.abpm).map(([k, v]) => (
-                            <tr key={k}>
-                              <td className="small">{k.replace(/_/g,' ')}</td>
-                              <td className={v.flag !== 'normal' ? 'text-danger fw-bold' : ''}>{v.value} {v.unit}</td>
-                              <td className="small text-muted">{v.ref_low}–{v.ref_high}</td>
-                              <td><span className={`badge bg-${v.flag === 'normal' ? 'success' : 'danger'}`} style={{fontSize:'0.6rem'}}>{v.flag}</span></td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="col-md-6">
-                      <h6>Holter — ECG</h6>
-                      <table className="table table-sm">
-                        <thead><tr><th>Parameter</th><th>Value</th><th>Ref</th><th>Status</th></tr></thead>
-                        <tbody>
-                          {pt.holter && Object.entries(pt.holter).map(([k, v]) => (
-                            <tr key={k}>
-                              <td className="small">{k.replace(/_/g,' ')}</td>
-                              <td className={v.flag !== 'normal' ? 'text-danger fw-bold' : ''}>{v.value} {v.unit}</td>
-                              <td className="small text-muted">{v.ref_low}–{v.ref_high}</td>
-                              <td><span className={`badge bg-${v.flag === 'normal' ? 'success' : 'danger'}`} style={{fontSize:'0.6rem'}}>{v.flag}</span></td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  {(pt.seizure_count !== undefined || pt.med_count !== undefined) && (
-                    <div className="small text-muted mt-1">Seizures: {pt.seizure_count} · Medications: {pt.med_count}</div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* ── Definitions Tab ──────────────────────────────────── */}
-      {tab === 'definitions' && defs && (
-        <div className="row">
-          <div className="col-12 mb-3">
-            <div className="card shadow-sm">
-              <div className="card-header fw-bold">{defs.test_name || 'ABPM / Holter Combined Study'}</div>
-              <div className="card-body">
-                {defs.protocol && (
-                  <>
-                    <p>{defs.protocol.description}</p>
-                    {defs.protocol.recording_methods && (
-                      <>
-                        <h6>Recording Methods</h6>
-                        <ul className="small">
-                          {Object.entries(defs.protocol.recording_methods).map(([k, v]) => (
-                            <li key={k}><strong>{k.toUpperCase()}:</strong> {v}</li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                    {defs.protocol.indications && (
-                      <>
-                        <h6>Indications</h6>
-                        <ul className="small">
-                          {defs.protocol.indications.map((ind, i) => <li key={i}>{ind}</li>)}
-                        </ul>
-                      </>
-                    )}
-                    {defs.protocol.standard && (
-                      <p className="small text-muted fst-italic">{defs.protocol.standard}</p>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {defs.parameters && (
-            <>
-              <div className="col-md-6 mb-3">
-                <div className="card shadow-sm">
-                  <div className="card-header fw-bold">ABPM Parameters ({(defs.parameters.abpm || []).length})</div>
-                  <div className="card-body">
-                    {(defs.parameters.abpm || []).map((p, i) => (
-                      <div key={i} className="mb-2 border-bottom pb-1">
-                        <strong>{p.label}</strong> <span className="text-muted">({p.unit})</span>
-                        <div className="small">{p.description}</div>
-                        <div className="small text-info">Ref: {p.ref_low}–{p.ref_high} {p.unit}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 mb-3">
-                <div className="card shadow-sm">
-                  <div className="card-header fw-bold">Holter ECG Parameters ({(defs.parameters.holter || []).length})</div>
-                  <div className="card-body">
-                    {(defs.parameters.holter || []).map((p, i) => (
-                      <div key={i} className="mb-2 border-bottom pb-1">
-                        <strong>{p.label}</strong> <span className="text-muted">({p.unit})</span>
-                        <div className="small">{p.description}</div>
-                        <div className="small text-info">Ref: {p.ref_low}–{p.ref_high} {p.unit}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-
-          {defs.dipping_categories && (
-            <div className="col-md-6 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">Dipping Categories</div>
-                <div className="card-body">
-                  {defs.dipping_categories.map((d, i) => (
-                    <div key={i} className="mb-2">
-                      <span className={`badge bg-${dipColor(d.category)} me-2`}>{d.label}</span>
-                      <span className="small fw-semibold">{d.range}</span>
-                      <div className="small text-muted">{d.risk}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {defs.diagnostic_patterns && (
-            <div className="col-md-6 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">Diagnostic Patterns</div>
-                <div className="card-body">
-                  {defs.diagnostic_patterns.map((p, i) => (
-                    <div key={i} className="mb-2">
-                      <span className={`badge bg-${patColor(p.pattern)} me-2`}>{p.label}</span>
-                      <span className="small">{p.description}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {defs.severity_levels && (
-            <div className="col-md-6 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">Severity Levels</div>
-                <div className="card-body">
-                  {defs.severity_levels.map((s, i) => (
-                    <div key={i} className="mb-2">
-                      <span className={`badge bg-${sevColor(s.level)} me-2`}>{s.level}</span>
-                      <span className="small fw-semibold">Score {s.score_range}</span>
-                      <div className="small text-muted">{s.description}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {defs.reference_ranges && (
-            <div className="col-md-6 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">Reference Ranges</div>
+      {/* ── ARRHYTHMIA / ECG ── */}
+      {tab === 'arrhythmia' && bd && (
+        <>
+          <div className="row g-3 mb-4">
+            <div className="col-lg-7">
+              <div className="card">
+                <div className="card-header fw-semibold">Arrhythmia Burden Summary</div>
                 <div className="card-body p-0">
-                  <table className="table table-sm mb-0">
-                    <thead><tr><th>Parameter</th><th>Low</th><th>High</th><th>Unit</th></tr></thead>
+                  <table className="table table-sm table-bordered mb-0">
+                    <thead className="table-dark">
+                      <tr>
+                        <th>Arrhythmia Type</th><th>Total Events</th>
+                        <th>Patients Affected</th><th>Prevalence</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                      {Object.entries(defs.reference_ranges).map(([k, v]) => (
-                        <tr key={k}>
-                          <td className="small">{typeof v === 'object' && v.label ? v.label : k.replace(/_/g,' ')}</td>
-                          <td>{typeof v === 'object' ? v.low : v}</td>
-                          <td>{typeof v === 'object' ? v.high : '—'}</td>
-                          <td className="small">{typeof v === 'object' ? v.unit : ''}</td>
+                      {(bd.arrhythmia_summary || []).map((row, i) => (
+                        <tr key={i}>
+                          <td className="fw-semibold small">{row.type}</td>
+                          <td>
+                            <span className={`badge ${row.total_events > 0 ? 'bg-danger' : 'bg-success'}`}>
+                              {row.total_events}
+                            </span>
+                          </td>
+                          <td>{row.patients_affected}</td>
+                          <td>
+                            <div className="d-flex align-items-center gap-2">
+                              <div className="progress flex-grow-1" style={{ height: 8 }}>
+                                <div className={`progress-bar ${row.patients_affected > 0 ? 'bg-danger' : 'bg-success'}`}
+                                  style={{ width: `${pct(row.patients_affected, ov.total_patients)}%` }} />
+                              </div>
+                              <span className="small">{pct(row.patients_affected, ov.total_patients)}%</span>
+                            </div>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -462,16 +314,151 @@ export default function ABPMHolterPage() {
                 </div>
               </div>
             </div>
-          )}
 
-          {defs.clinical_significance && (
-            <div className="col-12 mb-3">
-              <div className="card shadow-sm">
-                <div className="card-header fw-bold">Clinical Significance</div>
-                <div className="card-body small">{defs.clinical_significance}</div>
+            <div className="col-lg-5">
+              <div className="card">
+                <div className="card-header fw-semibold">QTc Monitoring (AED Safety)</div>
+                <div className="card-body">
+                  {(ov.qtc_distribution || []).map(item => (
+                    <div key={item.bucket} className="mb-3">
+                      <div className="d-flex justify-content-between small mb-1">
+                        <span>{item.bucket}</span>
+                        <span className={`badge bg-${qtcColor(item.bucket)}`}>{item.count}</span>
+                      </div>
+                      <div className="progress" style={{ height: 12 }}>
+                        <div className={`progress-bar bg-${qtcColor(item.bucket)}`}
+                          style={{ width: `${pct(item.count, ov.total_studies)}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                  <p className="text-muted small mb-0">
+                    Avg QTc: <strong>{ov.avg_qtc_ms} ms</strong> — carbamazepine, lamotrigine, and
+                    phenytoin can prolong QTc. Monthly monitoring required (ESC 2022).
+                  </p>
+                </div>
               </div>
             </div>
-          )}
+          </div>
+
+          <div className="alert alert-warning">
+            <strong>Cardiac syncope vs seizure differential:</strong> AF ({ov.af_patients} patients) and
+            VT ({ov.vt_patients} patients) can cause syncope mimicking epileptic seizures.
+            Holter monitoring is gold standard — 15-20% of patients referred to epilepsy
+            clinics have primary cardiac disease (ILAE).
+          </div>
+        </>
+      )}
+
+      {/* ── PER PATIENT ── */}
+      {tab === 'patients' && (
+        <div className="card">
+          <div className="card-header fw-semibold">
+            Per-Patient Cardiac Profile ({sortedPats.length} records) — sorted by risk score ↓
+          </div>
+          <div className="card-body p-0">
+            <div className="table-responsive">
+              <table className="table table-sm table-bordered table-hover mb-0" style={{ fontSize: '0.76rem' }}>
+                <thead className="table-dark">
+                  <tr>
+                    {[
+                      ['patient_id','Patient'], ['study_date','Date'],
+                      ['systolic_24h','SBP 24h'], ['diastolic_24h','DBP 24h'],
+                      ['heart_rate_24h','HR 24h'], ['qtc_ms','QTc (ms)'],
+                      ['dipping_category','Dipping'], ['pattern_label','BP Pattern'],
+                      ['severity','Severity'], ['cardiac_score','Risk'],
+                      ['af_episodes','AF'], ['vt_runs','VT'],
+                      ['pvc_count','PVC'], ['bradycardia_episodes','Brady'],
+                      ['st_depression_events','ST'],
+                    ].map(([col, label]) => (
+                      <th key={col} onClick={() => sortBy(col)}
+                        style={{ cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                        {label}{sortIcon(col)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedPats.map((p, i) => (
+                    <tr key={i} className={p.is_abnormal ? 'table-danger' : ''}>
+                      <td className="fw-semibold">{p.patient_id}</td>
+                      <td>{p.study_date}</td>
+                      <td className={p.systolic_24h >= 130 ? 'text-warning fw-bold' : ''}>{p.systolic_24h}</td>
+                      <td className={p.diastolic_24h >= 80 ? 'text-warning fw-bold' : ''}>{p.diastolic_24h}</td>
+                      <td>{p.heart_rate_24h}</td>
+                      <td className={p.qtc_ms >= 440 ? 'text-danger fw-bold' : ''}>{p.qtc_ms}</td>
+                      <td>
+                        <span className={`badge bg-${dippingColor(p.dipping_category)}`} style={{ fontSize: '0.65rem' }}>
+                          {p.dipping_category}
+                        </span>
+                      </td>
+                      <td>{p.pattern_label}</td>
+                      <td>
+                        <span className={`badge bg-${severityColor(p.severity)}`}>{p.severity}</span>
+                      </td>
+                      <td className={`fw-bold ${(p.cardiac_score||0) >= 30 ? 'text-danger' : (p.cardiac_score||0) >= 20 ? 'text-warning' : 'text-success'}`}>
+                        {p.cardiac_score}
+                      </td>
+                      <td className={p.af_episodes > 0 ? 'text-danger fw-bold' : 'text-muted'}>{p.af_episodes ?? '0'}</td>
+                      <td className={p.vt_runs > 0 ? 'text-danger fw-bold' : 'text-muted'}>{p.vt_runs ?? '0'}</td>
+                      <td className={p.pvc_count > 100 ? 'text-warning' : 'text-muted'}>{p.pvc_count ?? '0'}</td>
+                      <td className={p.bradycardia_episodes > 0 ? 'text-warning fw-bold' : 'text-muted'}>{p.bradycardia_episodes ?? '0'}</td>
+                      <td className={p.st_depression_events > 0 ? 'text-danger fw-bold' : 'text-muted'}>{p.st_depression_events ?? '0'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── DEFINITIONS ── */}
+      {tab === 'defs' && defs && (
+        <div className="row g-3">
+          <div className="col-lg-8">
+            <div className="card">
+              <div className="card-header fw-semibold">Clinical Definitions</div>
+              <div className="card-body p-0">
+                <table className="table table-sm table-bordered mb-0">
+                  <thead className="table-light">
+                    <tr><th style={{ width: '30%' }}>Term</th><th>Definition</th></tr>
+                  </thead>
+                  <tbody>
+                    {(defs.terms || []).map(t => (
+                      <tr key={t.term}>
+                        <td className="fw-semibold">{t.term}</td>
+                        <td className="small">{t.definition}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="card">
+              <div className="card-header fw-semibold">Abbreviations</div>
+              <div className="card-body p-0">
+                <table className="table table-sm table-bordered mb-0">
+                  <tbody>
+                    {Object.entries(defs.abbreviations || {}).map(([abbr, full]) => (
+                      <tr key={abbr}>
+                        <td className="fw-bold">{abbr}</td>
+                        <td className="small">{full}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="card mt-3">
+              <div className="card-header fw-semibold">Data Source</div>
+              <div className="card-body small text-muted">
+                <p className="mb-1"><strong>{defs.data_source}</strong></p>
+                <p className="mb-0">Dashboard: {defs.dashboard}</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

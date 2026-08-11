@@ -186,6 +186,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/neuropsych-battery">&#x1f9e0; Neuropsych Battery</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurophysiologist">&#x1f4e1; Neurophysiologist</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/signal-quality">&#x1f4e1; Signal Quality</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/abpm-holter">&#x2764;&#xfe0f; ABPM/Holter</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/occupational-therapist">&#x1f590;&#xfe0f; OT</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/fim-dashboard">&#x1f3cb;&#xfe0f; FIM</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/copm-dashboard">&#x1f3af; COPM</Link></li>

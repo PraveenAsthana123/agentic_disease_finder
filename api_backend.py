@@ -9131,30 +9131,42 @@ async def patient_caregiver_definitions():
     return _json_safe(pcd.definitions())
 
 
-# ── ABPM / Holter Dashboard ─────────────────────────────────────
+# ── ABPM / Holter Cardiac Monitoring Dashboard ──────────────────────────────
+# 23 patients — 24h ambulatory BP + Holter ECG.  BP dipping classification,
+# arrhythmia burden (AF/VT/PVC/SVT/brady/ST), QTc for AED safety, composite
+# cardiac risk score.  Epilepsy–cardiac syncope differential + SUDEP CV risk.
 
 @app.get("/api/abpm-holter/overview")
 async def abpm_holter_overview():
-    """ABPM/Holter overview: KPIs, severity distribution, diagnostic patterns,
-    dipping distribution, per-patient summary. Real clinical.db data."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.overview())
+    """ABPM/Holter overview — 23 patients, 24h ambulatory BP averages
+    (SBP 129 mmHg, DBP 78 mmHg, HR 73.9 bpm, QTc 428.5 ms), dipping
+    pattern classification (normal/extreme/non/reverse dipper), BP pattern
+    distribution (masked/white-coat/sustained/nocturnal/normotensive),
+    arrhythmia summary (AF 2 patients, VT 4, brady 4, 792 PVCs total),
+    QTc tier distribution, cardiac severity, adverse dipping rate 34.8%."""
+    import scripts.abpm_holter_dashboard as ahd
+    return _json_safe(ahd.overview())
 
 
 @app.get("/api/abpm-holter/breakdown")
 async def abpm_holter_breakdown():
-    """ABPM/Holter breakdown: ABPM parameter summaries, Holter parameter summaries,
-    histograms (systolic/dipping/QTc/PVC/cardiac score), per-patient detail cards."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.breakdown())
+    """ABPM/Holter breakdown — per-arrhythmia type event totals and patients
+    affected (AF/VT/PVC/SVT/bradycardia/ST depression); day-vs-night SBP
+    comparison by dipping category; per-patient full cardiac table (BP
+    24h/day/night, QTc, dipping, pattern, severity, cardiac score, arrhythmia
+    counts, pulse pressure, MAP) sorted by cardiac risk score descending."""
+    import scripts.abpm_holter_dashboard as ahd
+    return _json_safe(ahd.breakdown())
 
 
 @app.get("/api/abpm-holter/definitions")
 async def abpm_holter_definitions():
-    """ABPM/Holter definitions — protocol, parameters, reference ranges,
-    dipping categories, diagnostic patterns, severity levels, clinical significance."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.definitions())
+    """ABPM/Holter definitions — ABPM/Holter methodology, dipping pattern
+    classification thresholds, QTc prolongation tiers and AED-specific risks,
+    masked vs white-coat hypertension, cardiac syncope vs seizure differential,
+    SUDEP cardiac link, cardiac risk score rubric, ESC/AHA/ILAE standards."""
+    import scripts.abpm_holter_dashboard as ahd
+    return _json_safe(ahd.definitions())
 
 
 # ── Autonomic Function Tests Dashboard ───────────────────────────
@@ -9701,29 +9713,6 @@ async def seizure_risk_forecast_definitions():
     """Seizure-risk forecasting definitions — pre-ictal, risk tier, escalation terminology."""
     import scripts.seizure_risk_forecasting_dashboard as srf
     return _json_safe(srf.definitions())
-
-
-# ── ABPM / Holter Dashboard ────────────────────────────────────────────────
-
-@app.get("/api/abpm-holter/overview")
-async def abpm_holter_overview():
-    """ABPM/Holter overview — KPIs, severity/pattern/dipping distributions, patient summary."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.overview())
-
-
-@app.get("/api/abpm-holter/breakdown")
-async def abpm_holter_breakdown():
-    """ABPM/Holter breakdown — parameter tables, histograms, per-patient detail cards."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.breakdown())
-
-
-@app.get("/api/abpm-holter/definitions")
-async def abpm_holter_definitions():
-    """ABPM/Holter definitions — protocol, parameters, reference ranges, diagnostic patterns."""
-    import scripts.abpm_dashboard as abpm
-    return _json_safe(abpm.definitions())
 
 
 @app.get("/api/feature-evaluation/overview")
@@ -19353,6 +19342,44 @@ async def signal_quality_definitions():
     procedures, 10-20 electrode system, standards and abbreviations."""
     import scripts.signal_quality_dashboard as sqd
     return _json_safe(sqd.definitions())
+
+
+# ── SUDEP Risk Assessment Dashboard ───────────────────────────────────────────
+# 71 patients × seizure_metadata + medication_adherence (12,600 rows) + patients.
+# Computes a validated 14-point SUDEP risk score per patient from:
+#   GTCS (+3), drug-resistance (+3), high-freq GTCS (+2),
+#   non-adherence >10% (+2), male sex (+1), age 18-40 (+1),
+#   disease duration >10y (+1), nocturnal seizures (+1).
+# Risk tiers: Low (0-3), Moderate (4-6), High (7-10), Very High (11+).
+
+@app.get("/api/sudep-risk/overview")
+async def sudep_risk_overview():
+    """SUDEP Risk overview — 71 patients scored on a 14-point validated risk model.
+    KPIs: high/very-high count, GTCS prevalence, drug-resistance rate, non-adherence
+    rate. Risk-tier distribution, factor prevalence, seizure-frequency distribution,
+    score histogram, avg score by gender, GTCS×drug-resistance matrix."""
+    import scripts.sudep_risk_dashboard as srd
+    return _json_safe(srd.overview())
+
+
+@app.get("/api/sudep-risk/breakdown")
+async def sudep_risk_breakdown():
+    """SUDEP Risk breakdown — per-patient table sorted by risk score (descending):
+    risk score, tier, GTCS flag, drug-resistance flag, nocturnal flag, seizure
+    frequency, age, gender, disease duration, non-adherence %, top 3 risk factors,
+    syndrome. High-risk summary list (score ≥7). Disease duration histogram."""
+    import scripts.sudep_risk_dashboard as srd
+    return _json_safe(srd.breakdown())
+
+
+@app.get("/api/sudep-risk/definitions")
+async def sudep_risk_definitions():
+    """SUDEP definitions — SUDEP definition (Nashef 1997 / Bidwell 2018), incidence,
+    risk-tier thresholds with clinical action, per-factor weights and references,
+    abbreviation table, source references (Hesdorffer 2011, Surges 2012,
+    Ryvlin 2013, NICE NG217 2022)."""
+    import scripts.sudep_risk_dashboard as srd
+    return _json_safe(srd.definitions())
 
 
 if __name__ == "__main__":
