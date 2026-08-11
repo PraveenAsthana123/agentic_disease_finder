@@ -820,6 +820,20 @@
         "/api/referral-records/breakdown",
         "/api/referral-records/definitions"
       ]
+    },
+    {
+      "role": "Neurologist / Epileptologist",
+      "name": "Seizure Freedom Tracker",
+      "viz": "Engel/ILAE distribution, milestone tracker, per-procedure table",
+      "feature": "Engel Class, ILAE outcome, driving eligibility, frequency reduction",
+      "why": "Track post-intervention seizure freedom and clinical milestones",
+      "priority": "P0",
+      "status": "built",
+      "endpoints": [
+        "/api/seizure-freedom/overview",
+        "/api/seizure-freedom/breakdown",
+        "/api/seizure-freedom/definitions"
+      ]
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -836,11 +850,11 @@
     ]
   },
   "summary": {
-    "total": 66,
-    "built": 65,
+    "total": 67,
+    "built": 66,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-10",
-    "count": 65
+    "count": 66
   }
 }

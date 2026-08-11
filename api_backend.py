@@ -19090,6 +19090,36 @@ async def knowledge_management_definitions():
     return _json_safe(kmd.knowledge_definitions())
 
 
+# ── Seizure Freedom Tracker ────────────────────────────────────────────────────
+# Real data: surgical_outcomes (28 procedures, 25 patients), seizure_trigger_logs
+# (203 log days, 40 patients), seizure_metadata (71 patients).
+# Metrics: Engel Class, ILAE Outcome, seizure-free flag, follow-up months,
+# AED reduction, complication rate, avg seizure frequency reduction 96%.
+
+@app.get("/api/seizure-freedom/overview")
+async def seizure_freedom_overview():
+    """Seizure Freedom Tracker overview — Engel/ILAE distributions, seizure-free
+    rate, AED reduction, frequency reduction, monthly trend, drug responsiveness."""
+    import scripts.seizure_freedom_dashboard as sfd
+    return _json_safe(sfd.freedom_overview())
+
+
+@app.get("/api/seizure-freedom/breakdown")
+async def seizure_freedom_breakdown():
+    """Seizure Freedom Tracker breakdown — per-procedure profiles, trigger-log
+    patient profiles, milestone tracker (6/12/24 months)."""
+    import scripts.seizure_freedom_dashboard as sfd
+    return _json_safe(sfd.freedom_breakdown())
+
+
+@app.get("/api/seizure-freedom/definitions")
+async def seizure_freedom_definitions():
+    """Seizure Freedom Tracker definitions — Engel classes, ILAE outcomes,
+    clinical milestones, drug responsiveness, driving regulations."""
+    import scripts.seizure_freedom_dashboard as sfd
+    return _json_safe(sfd.freedom_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
