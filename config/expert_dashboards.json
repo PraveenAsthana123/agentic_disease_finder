@@ -1000,7 +1000,7 @@
       "status": "built",
       "role": "Neurologist / Epileptologist",
       "priority": "P0",
-      "description": "71 patients scored on validated 14-point SUDEP risk model (Hesdorffer 2011 · Surges 2012 · Ryvlin 2013 · NICE NG217 2022). Risk factors: GTCS (+3), drug-resistance (+3), high-freq GTCS (+2), non-adherence >10% (+2), male sex (+1), age 18-40 (+1), disease duration >10y (+1), nocturnal seizures (+1). Risk tiers: Low (0-3) 19 patients, Moderate (4-6) 30, High (7-10) 19, Very High (11+) 3. Avg risk score 5.2/14. 22 patients (31%) in high/very-high tier. 49 GTCS patients (69%), 20 drug-resistant (28.2%), 25 non-adherent (35.2%). GTCS x drug-resistance matrix, score histogram, gender breakdown, per-patient sortable table with top factors, high-risk alert panel with clinical action checklist. 5-tab frontend (Overview / Risk Factors / Per Patient / High-Risk Alerts / Definitions).",
+      "description": "71 patients scored on validated 14-point SUDEP risk model (Hesdorffer 2011 \u00b7 Surges 2012 \u00b7 Ryvlin 2013 \u00b7 NICE NG217 2022). Risk factors: GTCS (+3), drug-resistance (+3), high-freq GTCS (+2), non-adherence >10% (+2), male sex (+1), age 18-40 (+1), disease duration >10y (+1), nocturnal seizures (+1). Risk tiers: Low (0-3) 19 patients, Moderate (4-6) 30, High (7-10) 19, Very High (11+) 3. Avg risk score 5.2/14. 22 patients (31%) in high/very-high tier. 49 GTCS patients (69%), 20 drug-resistant (28.2%), 25 non-adherent (35.2%). GTCS x drug-resistance matrix, score histogram, gender breakdown, per-patient sortable table with top factors, high-risk alert panel with clinical action checklist. 5-tab frontend (Overview / Risk Factors / Per Patient / High-Risk Alerts / Definitions).",
       "endpoints": [
         "/api/sudep-risk/overview",
         "/api/sudep-risk/breakdown",
@@ -1009,15 +1009,29 @@
       "frontend": "portal-next/app/sudep-risk/page.jsx",
       "data_source": "seizure_metadata + medication_adherence + patients (clinical.db, 71 patients)",
       "built_at": "2026-08-11"
+    },
+    {
+      "id": "drug_resistant_epilepsy",
+      "name": "Drug-Resistant Epilepsy (DRE) Dashboard",
+      "status": "built",
+      "role": "Neurologist / Epileptologist",
+      "priority": "P0",
+      "description": "71 patients classified per ILAE 2010 DRE definition (\u22652 AED trial failures). KPIs: DRE prevalence %, surgical candidacy rate, avg AED trials. Charts: AED burden distribution, onset-zone breakdown, seizure control, DRE by gender, disease-duration histogram, top AEDs tried in DRE patients. Per-patient table with DRE label, AED count, surgical candidacy flag, onset zone, syndrome, disease duration, non-adherence %. 3 endpoints: /api/dre/overview|breakdown|definitions.",
+      "viz": "KPI cards, bar charts, filterable patient table",
+      "feature": "DRE classification, AED burden, surgical candidacy, seizure control",
+      "why": "~30% of epilepsy patients develop DRE; early identification drives surgical referral",
+      "endpoint": "/api/dre/overview|breakdown|definitions",
+      "route": "/drug-resistant-epilepsy",
+      "built_at": "2026-08-11"
     }
   ],
   "summary": {
-    "total": 81,
-    "built": 81,
+    "total": 82,
+    "built": 82,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 81,
-    "total_dashboards": 81
+    "count": 82,
+    "total_dashboards": 82
   }
 }

@@ -19382,6 +19382,38 @@ async def sudep_risk_definitions():
     return _json_safe(srd.definitions())
 
 
+# ── Drug-Resistant Epilepsy (DRE) Dashboard ───────────────────────────────────
+# ILAE 2010 definition: failure of ≥2 AED trials to achieve seizure freedom.
+# Prevalence ~30%; major driver of surgical candidacy.
+
+@app.get("/api/dre/overview")
+async def dre_overview():
+    """DRE overview — total/DRE/responsive counts, DRE prevalence %, surgical
+    candidacy rate, AED burden distribution, onset-zone chart (DRE patients),
+    seizure-control chart, DRE by gender, disease-duration histogram."""
+    import scripts.dre_dashboard as dre
+    return _json_safe(dre.overview())
+
+
+@app.get("/api/dre/breakdown")
+async def dre_breakdown():
+    """DRE breakdown — per-patient table sorted DRE-first then by AED count:
+    DRE label, AED count/bucket, seizure control, surgical candidacy, onset zone,
+    syndrome, disease duration, age, gender, non-adherence %. Surgical candidate
+    sub-list. Top AED names tried in DRE patients."""
+    import scripts.dre_dashboard as dre
+    return _json_safe(dre.breakdown())
+
+
+@app.get("/api/dre/definitions")
+async def dre_definitions():
+    """DRE definitions — ILAE 2010 DRE definition, criteria used, surgical
+    candidacy proxy, prevalence statistics, risk tiers, AED generation note,
+    4-phase surgical pathway, glossary (AED/DRE/VNS/RNS/DBS/SEEG), references."""
+    import scripts.dre_dashboard as dre
+    return _json_safe(dre.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
