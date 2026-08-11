@@ -19527,6 +19527,36 @@ async def aed_side_effects_definitions():
     return _json_safe(asd.get_definitions())
 
 
+# Real data: patient_appointments (191 rows, 8 types, 6 providers, 4 locations),
+# appointments (120 rows, 5 departments), analyses (133 rows), hospitalization (115 rows).
+@app.get("/api/workflow-efficiency/overview")
+async def workflow_efficiency_overview():
+    """Clinical Workflow Efficiency overview — KPIs: 191 total appointments, completion rate,
+    no-show rate, avg visit duration, 6 providers, 30 patients served, 133 EEG reads,
+    avg AI confidence, 115 hospital admissions, avg LOS. Appointment-type throughput,
+    location utilisation, provider workload from real patient_appointments table."""
+    import scripts.workflow_efficiency_dashboard as wed
+    return _json_safe(wed.overview())
+
+
+@app.get("/api/workflow-efficiency/breakdown")
+async def workflow_efficiency_breakdown():
+    """Clinical Workflow Efficiency breakdown — status×type matrix, department throughput
+    (5 depts), monthly trend (10 months), per-patient visit summary (top 15), EEG AI reads
+    by disease/signal quality, hospitalization ward×disposition breakdown."""
+    import scripts.workflow_efficiency_dashboard as wed
+    return _json_safe(wed.breakdown())
+
+
+@app.get("/api/workflow-efficiency/definitions")
+async def workflow_efficiency_definitions():
+    """Clinical Workflow Efficiency definitions — metric formulas with NAEC benchmarks,
+    appointment-type glossary (8 types), status codes, location descriptions, abbreviations
+    (AED/EMU/TDM/VNS/LOS/NAEC), and ILAE/NAEC quality references."""
+    import scripts.workflow_efficiency_dashboard as wed
+    return _json_safe(wed.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

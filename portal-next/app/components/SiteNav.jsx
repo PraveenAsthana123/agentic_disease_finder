@@ -262,6 +262,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/status-epilepticus">&#x1f6a8; Status Epilepticus</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ceeg-monitoring">&#x1f4e1; cEEG Monitoring</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neurosurgeon">&#x1f9e0; Neurosurgeon / Epilepsy Surgery</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/workflow-efficiency">&#x2699;&#xfe0f; Clinical Workflow Efficiency</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>
