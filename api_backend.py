@@ -19228,6 +19228,39 @@ async def admin_users_definitions():
     return _json_safe(aud.definitions())
 
 
+# ── EEG Channel Quality Map Dashboard ────────────────────────────────────────
+# Real data: channel_quality (30 patients × 19 channels, impedance/SNR/grade),
+# artifact_annotations (169 rows, 6 artifact types), eeg_acquisition (30 recordings).
+# Shows per-channel impedance grades, SNR distribution, cross-patient heatmap,
+# top problematic channels, artifact burden by channel/type, region summary,
+# acquisition parameters. Dashboard #75.
+
+@app.get("/api/eeg-channel-quality-map/overview")
+async def eeg_channel_quality_map_overview():
+    """EEG Channel Quality Map overview — KPIs (30 patients × 19 ch × 570 records),
+    impedance/quality grade distributions, per-channel aggregate stats, top problematic
+    channels, region summary, artifact type breakdown."""
+    import scripts.eeg_channel_quality_map_dashboard as cqm
+    return _json_safe(cqm.overview())
+
+
+@app.get("/api/eeg-channel-quality-map/breakdown")
+async def eeg_channel_quality_map_breakdown():
+    """EEG Channel Quality Map breakdown — per-patient channel quality cards,
+    cross-patient impedance heatmap (channel × patient), artifact detail table,
+    artifact severity distribution, acquisition parameter summary."""
+    import scripts.eeg_channel_quality_map_dashboard as cqm
+    return _json_safe(cqm.breakdown())
+
+
+@app.get("/api/eeg-channel-quality-map/definitions")
+async def eeg_channel_quality_map_definitions():
+    """EEG Channel Quality Map definitions — impedance thresholds (ACNS), SNR grades,
+    10-20 system regions, artifact types, data sources, clinical standards."""
+    import scripts.eeg_channel_quality_map_dashboard as cqm
+    return _json_safe(cqm.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

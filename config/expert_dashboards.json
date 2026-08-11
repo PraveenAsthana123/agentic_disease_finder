@@ -903,6 +903,23 @@
         "/api/admin-users/breakdown",
         "/api/admin-users/definitions"
       ]
+    },
+    {
+      "id": "eeg_channel_quality_map",
+      "role": "EEG Technician",
+      "name": "EEG Channel Quality Map",
+      "route": "/eeg-channel-quality-map",
+      "viz": "Impedance heatmap (channel \u00d7 patient), grade distribution bars, per-channel aggregate table, artifact log",
+      "feature": "Cross-patient impedance map, top problematic channels, region summary, acquisition parameters",
+      "why": "EEG technician QC tool \u2014 identify electrode contact failures, high-impedance channels, and artifact burden before clinical interpretation",
+      "priority": "P0",
+      "status": "built",
+      "note": "Real channel_quality 570 records (30 patients \u00d7 19 channels), artifact_annotations 169 rows (6 types), eeg_acquisition 30 recordings. Per-channel impedance/SNR/grade stats, cross-patient heatmap, region summary (Frontal/Central/Temporal/Parietal/Occipital), top artifact channels. 6-tab frontend (Overview/Channel Stats/Impedance Heatmap/Artifacts/Per Patient/Definitions), 3 endpoints /api/eeg-channel-quality-map/overview|breakdown|definitions verified 200, portal-next/app/eeg-channel-quality-map/page.jsx + SiteNav wired next to EEG Clinical Signal Panel, expert_dashboards.json count 74\u219275.",
+      "endpoints": [
+        "/api/eeg-channel-quality-map/overview",
+        "/api/eeg-channel-quality-map/breakdown",
+        "/api/eeg-channel-quality-map/definitions"
+      ]
     }
   ],
   "regulatory_audit_trail_dashboard": {
@@ -919,12 +936,12 @@
     ]
   },
   "summary": {
-    "total": 67,
-    "built": 74,
+    "total": 68,
+    "built": 75,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-10",
-    "count": 66,
-    "total_dashboards": 74
+    "updated_at": "2026-08-11",
+    "count": 67,
+    "total_dashboards": 75
   }
 }
