@@ -255,6 +255,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/presurgical-eval">&#x1f52c; Pre-Surgical Eval</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-journey">&#x1f6e4;&#xfe0f; Patient Journey</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-freedom">&#x1f3c6; Seizure Freedom</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/sudep-risk">&#x26a1; SUDEP Risk</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

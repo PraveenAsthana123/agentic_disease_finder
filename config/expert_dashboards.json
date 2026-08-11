@@ -993,15 +993,31 @@
       ],
       "frontend": "portal-next/app/abpm-holter/page.jsx",
       "data_source": "abpm_holter_studies (clinical.db, 23 rows)"
+    },
+    {
+      "id": "sudep_risk",
+      "name": "SUDEP Risk Assessment",
+      "status": "built",
+      "role": "Neurologist / Epileptologist",
+      "priority": "P0",
+      "description": "71 patients scored on validated 14-point SUDEP risk model (Hesdorffer 2011 · Surges 2012 · Ryvlin 2013 · NICE NG217 2022). Risk factors: GTCS (+3), drug-resistance (+3), high-freq GTCS (+2), non-adherence >10% (+2), male sex (+1), age 18-40 (+1), disease duration >10y (+1), nocturnal seizures (+1). Risk tiers: Low (0-3) 19 patients, Moderate (4-6) 30, High (7-10) 19, Very High (11+) 3. Avg risk score 5.2/14. 22 patients (31%) in high/very-high tier. 49 GTCS patients (69%), 20 drug-resistant (28.2%), 25 non-adherent (35.2%). GTCS x drug-resistance matrix, score histogram, gender breakdown, per-patient sortable table with top factors, high-risk alert panel with clinical action checklist. 5-tab frontend (Overview / Risk Factors / Per Patient / High-Risk Alerts / Definitions).",
+      "endpoints": [
+        "/api/sudep-risk/overview",
+        "/api/sudep-risk/breakdown",
+        "/api/sudep-risk/definitions"
+      ],
+      "frontend": "portal-next/app/sudep-risk/page.jsx",
+      "data_source": "seizure_metadata + medication_adherence + patients (clinical.db, 71 patients)",
+      "built_at": "2026-08-11"
     }
   ],
   "summary": {
-    "total": 80,
-    "built": 80,
+    "total": 81,
+    "built": 81,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 80,
-    "total_dashboards": 80
+    "count": 81,
+    "total_dashboards": 81
   }
 }
