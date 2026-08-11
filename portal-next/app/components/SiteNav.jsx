@@ -249,6 +249,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-challenges">&#x26a1; Epilepsy Challenges</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/simulations">&#x1f504; Process Simulations</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-burden">&#x26a1; Seizure Burden</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/presurgical-eval">&#x1f52c; Pre-Surgical Eval</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-journey">&#x1f6e4;&#xfe0f; Patient Journey</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-freedom">&#x1f3c6; Seizure Freedom</Link></li>
         </ul>

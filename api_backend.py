@@ -19261,6 +19261,33 @@ async def eeg_channel_quality_map_definitions():
     return _json_safe(cqm.definitions())
 
 
+@app.get("/api/presurgical-eval/overview")
+async def presurgical_eval_overview():
+    """Pre-Surgical Epilepsy Evaluation overview — KPIs (71 patients), focal onset %,
+    MRI lesional %, lateralized %, DRE %, surgical candidacy score distribution,
+    onset-zone distribution, lesion type breakdown, neuropsych risk count."""
+    import scripts.presurgical_eval_dashboard as ped
+    return _json_safe(ped.overview())
+
+
+@app.get("/api/presurgical-eval/breakdown")
+async def presurgical_eval_breakdown():
+    """Pre-Surgical Epilepsy Evaluation breakdown — per-patient candidacy cards
+    (score 0–4, focal/lesional/lateralized/DRE flags), MRI concordance table,
+    neuropsychological risk matrix (MoCA/PHQ-9/GAD-7), high-candidate IDs."""
+    import scripts.presurgical_eval_dashboard as ped
+    return _json_safe(ped.breakdown())
+
+
+@app.get("/api/presurgical-eval/definitions")
+async def presurgical_eval_definitions():
+    """Pre-Surgical Epilepsy Evaluation definitions — candidacy score rubric,
+    DRE definition (ILAE 2010), MRI concordance, neuropsych risk thresholds,
+    abbreviations, data sources, clinical standards (NAEC, ILAE 2017)."""
+    import scripts.presurgical_eval_dashboard as ped
+    return _json_safe(ped.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
