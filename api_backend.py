@@ -20017,6 +20017,44 @@ async def clinical_outcomes_definitions():
     return _json_safe(co.definitions())
 
 
+# ── Seizure Burden & Trigger Dashboard ───────────────────────────────────────
+
+@app.get("/api/seizure-burden/overview")
+async def seizure_burden_overview():
+    """Seizure Burden overview — 25 diary events / 203 trigger-log days; KPIs (ER visits,
+    severe events, injury events, avg & max duration, seizure rate, rescue meds); severity
+    distribution (Mild 18 / Severe 7); diary trigger distribution (Sleep deprivation 22 /
+    Stress 1); log trigger distribution (sleep_deprivation 37 / photosensitivity 37 /
+    missed_medication 26 / stress 24 / hormonal_changes 21 / alcohol 18 / illness 14 /
+    fatigue 13 / dehydration 13); physiological comparison seizure vs non-seizure days
+    (sleep hours / stress / fatigue / missed doses / caffeine); per-patient summary.
+    Sources: clinical.db seizure_diary + seizure_trigger_logs."""
+    import scripts.seizure_burden_dashboard as sb
+    return _json_safe(sb.overview())
+
+
+@app.get("/api/seizure-burden/breakdown")
+async def seizure_burden_breakdown():
+    """Seizure Burden breakdown — duration histogram 5 buckets (<30s/30-60s/60-120s/
+    120-300s/>300s) from trigger logs; sleep-hours distribution seizure vs non-seizure days;
+    stress-level distribution seizure vs non-seizure; lifestyle comparison (exercise /
+    alcohol / screen time); per-patient expandable cards with full event detail
+    (date/time/duration/severity/aura/awareness/motor_signs/injury/recovery/ER/trigger/location).
+    Source: clinical.db seizure_diary + seizure_trigger_logs."""
+    import scripts.seizure_burden_dashboard as sb
+    return _json_safe(sb.breakdown())
+
+
+@app.get("/api/seizure-burden/definitions")
+async def seizure_burden_definitions():
+    """Seizure Burden definitions — KPI definitions; seizure metrics (diary vs trigger log);
+    severity levels (Mild/Moderate/Severe); 9 modifiable trigger factors with mechanistic
+    descriptions; data sources; references: Fisher 2017 (ILAE burden), Frucht 2000,
+    Haut 2007, Faught 2008, Herzog 2004, Rajna & Veres 1993, ILAE 2014."""
+    import scripts.seizure_burden_dashboard as sb
+    return _json_safe(sb.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

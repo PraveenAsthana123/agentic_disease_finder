@@ -781,7 +781,12 @@
       "api_prefix": "/api/seizure-burden",
       "status": "built",
       "category": "clinical",
-      "description": "Seizure frequency, duration, severity, trigger analysis from seizure_diary + seizure_trigger_logs"
+      "description": "Seizure frequency, duration, severity, trigger analysis from seizure_diary + seizure_trigger_logs",
+      "api": "/api/seizure-burden/overview|breakdown|definitions",
+      "built_at": "2026-08-11",
+      "feature": "25 diary events / 203 trigger-log days; KPIs (ER visits 7/severe 7/injury 7/avg dur 171s/max 420s/seizure rate 26.1%); severity (Mild 18/Severe 7); diary triggers (Sleep deprivation 22/Stress 1); log triggers 9 types; physiological comparison seizure vs non-seizure days; per-patient cards",
+      "viz": "KPI cards, severity bars, diary + log trigger bar charts, physiological comparison table (sleep/stress/fatigue/missed doses/caffeine), duration histogram, sleep distribution, per-patient expandable event log",
+      "note": "25 diary events, 203 trigger-log days, 53 seizure days / 150 non-seizure days, 4-tab frontend (Overview/Trigger Analysis/Patient Detail/Definitions), 3 endpoints /api/seizure-burden/overview|breakdown|definitions verified 200, portal-next/app/seizure-burden/page.jsx existing frontend now wired to live API."
     },
     {
       "id": "clinical_assessments",
