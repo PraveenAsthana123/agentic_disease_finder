@@ -6693,6 +6693,34 @@ async def bera_definitions():
     return _json_safe(bera.definitions())
 
 
+# ── Motor Evoked Potentials (MEP) Dashboard ──────────────────────
+
+@app.get("/api/mep/overview")
+async def mep_overview():
+    """MEP overview: KPIs, severity distribution, diagnostic patterns,
+    per-limb abnormality rates, per-muscle CMCT/latency summary, per-patient list.
+    Real clinical.db patient data, deterministic TMS-evoked MEP simulation."""
+    import scripts.mep_dashboard as mep
+    return _json_safe(mep.overview())
+
+
+@app.get("/api/mep/breakdown")
+async def mep_breakdown():
+    """MEP breakdown: per-muscle CMCT/latency/amplitude histograms,
+    left vs right side comparison, per-patient detailed muscle results."""
+    import scripts.mep_dashboard as mep
+    return _json_safe(mep.breakdown())
+
+
+@app.get("/api/mep/definitions")
+async def mep_definitions():
+    """MEP clinical reference: technique, normative values, diagnostic criteria,
+    epilepsy relevance (postictal motor mapping, pre-surgical cortex mapping),
+    safety contraindications, references."""
+    import scripts.mep_dashboard as mep
+    return _json_safe(mep.definitions())
+
+
 # ── HRV / RR Variation Dashboard ─────────────────────────────────
 
 @app.get("/api/hrv/overview")
