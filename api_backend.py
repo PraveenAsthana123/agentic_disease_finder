@@ -19585,6 +19585,31 @@ async def genetic_epilepsy_definitions():
     return _json_safe(ged.definitions())
 
 
+# ── Autoimmune Epilepsy Dashboard ─────────────────────────────────────────────
+@app.get("/api/autoimmune-epilepsy/overview")
+async def autoimmune_epilepsy_overview():
+    """Autoimmune epilepsy overview — antibody distribution, treatment response rates,
+    CSF positivity, immunotherapy coverage, paraneoplastic flags; all 41 patients."""
+    import scripts.autoimmune_epilepsy_dashboard as aed
+    return _json_safe(aed.overview())
+
+
+@app.get("/api/autoimmune-epilepsy/breakdown")
+async def autoimmune_epilepsy_breakdown():
+    """Autoimmune epilepsy breakdown — per-patient antibody profiles, immunotherapy regimens,
+    antibody × response matrix, time-to-diagnosis, MRI findings, relapse rates by antibody."""
+    import scripts.autoimmune_epilepsy_dashboard as aed
+    return _json_safe(aed.breakdown())
+
+
+@app.get("/api/autoimmune-epilepsy/definitions")
+async def autoimmune_epilepsy_definitions():
+    """Autoimmune epilepsy definitions — antibody syndrome cards, immunotherapy mechanisms,
+    diagnostic criteria, response definitions, clinical references."""
+    import scripts.autoimmune_epilepsy_dashboard as aed
+    return _json_safe(aed.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
