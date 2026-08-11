@@ -1269,6 +1269,22 @@
         "/api/pharmacist/pregnancy-safety",
         "/api/pharmacist/adr"
       ]
+    },
+    {
+      "name": "RNS (Repetitive Nerve Stimulation) Dashboard",
+      "id": "rns",
+      "route": "/rns",
+      "table": "emg_studies",
+      "status": "built",
+      "endpoints": [
+        "/api/rns/overview",
+        "/api/rns/breakdown",
+        "/api/rns/definitions"
+      ],
+      "component": "portal-next/app/rns/page.jsx",
+      "role": "Neurophysiologist / Neurologist",
+      "priority": "P1",
+      "description": "NMJ transmission analysis \u2014 decrement & facilitation testing, CMAP amplitude, diagnostic pattern classification (MG/LEMS/Mixed NMJ), proximal vs distal site comparison, 30 studies, 60% abnormal rate"
     }
   ],
   "summary": {
@@ -1281,5 +1297,5 @@
     "total_dashboards": 97,
     "total_built": 97
   },
-  "count": 100
+  "count": 102
 }
