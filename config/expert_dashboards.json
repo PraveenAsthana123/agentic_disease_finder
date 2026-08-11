@@ -1431,6 +1431,18 @@
       ],
       "frontend": "portal-next/app/mmn/page.jsx",
       "description": "30 studies 50.0% abnormal, MMN/P3a latency+amplitude, passive 2-tone oddball paradigm, 6 diagnostic patterns (normal/delayed_mmn/absent_mmn/reduced_amplitude/lateralized/combined), hemisphere asymmetry analysis (left/right/symmetric dominance), AED cognitive impact, 5 epilepsy contexts (NCSE consciousness/post-ictal/TLE lateralization/AED effects/neonatal), 4-tab frontend (Overview/ERP Analysis/Patient Detail/Definitions), 3 endpoints verified 200"
+    },
+    {
+      "name": "HV/Photic Stimulation Protocol Dashboard",
+      "route": "/hv-photic",
+      "status": "built",
+      "endpoints": [
+        "/api/hv-photic/overview",
+        "/api/hv-photic/breakdown",
+        "/api/hv-photic/definitions"
+      ],
+      "frontend": "portal-next/app/hv-photic/page.jsx",
+      "description": "40 patients, HV activation rate 31% (generalized spike-wave/focal spike-wave/ictal discharge), IPS PPR rate 22.6% (7 events), epileptiform PPR (Grade III\u2013IV) 4 events, PPR grade distribution (I\u00d72/II\u00d71/III\u00d71/IV\u00d73), HV response distribution (no_response/slowing_only/FIRDA/focal_spike_wave/generalized_spike_wave/ictal_discharge), IPS rates 1\u201360 Hz, per-patient table with HV response + IPS grade + peak Hz, contraindication list, 3-tab frontend (Overview/Per Patient/Definitions), ACNS 2016 + Kasteleijn-Nolst Trenit\u00e9 2012 + Waltz 1992 + Jeavons 1975 references, 3 endpoints verified 200"
     }
   ],
   "summary": {
@@ -1443,5 +1455,5 @@
     "total_dashboards": 112,
     "total_built": 112
   },
-  "count": 115
+  "count": 116
 }

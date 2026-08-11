@@ -229,6 +229,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/icd10-coding">&#x1f3f7;&#xfe0f; ICD-10 Coding</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/channel-quality">&#x1f4f6; Channel Quality</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/recording-conditions">&#x1f4f9; Recording Conditions</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/hv-photic">&#x26a1; HV/Photic</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/secure-messaging">&#x1f4ac; Secure Messaging</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/secure-messages">&#x1f4e9; Secure Messages</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/referrer-notify">&#x1f4e8; Referrer Notify</Link></li>

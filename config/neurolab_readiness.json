@@ -1,7 +1,7 @@
 {
   "title": "NeuroLab AI \u2014 Deployment Readiness & Business Case",
   "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
-  "updated_at": "2026-08-10",
+  "updated_at": "2026-08-11",
   "stakeholders": [
     {
       "role": "Neurologist",
@@ -28,14 +28,14 @@
         "acquisition QC",
         "channel quality",
         "artifact flags",
-        "daily worklog (/api/eeg-technician/worklog + WorklogPanel — 29 days, 30 studies, per-day protocol completion + quality grades)",
+        "daily worklog (/api/eeg-technician/worklog + WorklogPanel \u2014 29 days, 30 studies, per-day protocol completion + quality grades)",
         "montage editor",
-        "scheduling worklist (/api/appointments/* + AppointmentsDashboard.jsx)"
+        "scheduling worklist (/api/appointments/* + AppointmentsDashboard.jsx)",
+        "HV/photic-stimulation protocols (/api/hv-photic/* + portal-next/app/hv-photic/page.jsx \u2014 40 patients, HV activation 31%, IPS PPR 22.6%, ACNS 2016)"
       ],
       "missing": [
         "live amplifier streaming (Natus/Nihon Kohden/Compumedics)",
-        "real-time impedance display",
-        "HV/photic-stimulation protocols"
+        "real-time impedance display"
       ]
     },
     {
@@ -56,8 +56,8 @@
       "icon": "\ud83d\udcac",
       "built": [
         "comorbidity/mood surveys",
-        "validated scales PHQ-9/GAD-7/NDDI-E (PRO Outcomes Dashboard — /api/pro-outcomes/*)",
-        "PNES differential tooling (PNES Screening Dashboard — /api/pnes-screening/*)"
+        "validated scales PHQ-9/GAD-7/NDDI-E (PRO Outcomes Dashboard \u2014 /api/pro-outcomes/*)",
+        "PNES differential tooling (PNES Screening Dashboard \u2014 /api/pnes-screening/*)"
       ],
       "missing": [
         "medication-interaction checker"
@@ -69,7 +69,7 @@
       "built": [
         "MRI findings capture (/api/mri-review/* + MRIReviewDashboard)",
         "DICOM Study Browser (/api/dicom-viewer/* + portal-next/app/dicom-viewer/page.jsx)",
-        "structured reporting (Structured Reporting Dashboard — 4 ILAE templates)",
+        "structured reporting (Structured Reporting Dashboard \u2014 4 ILAE templates)",
         "EEG-MRI concordance view (/api/eeg-mri-concordance/*)"
       ],
       "missing": []
@@ -79,7 +79,7 @@
       "icon": "\ud83e\udde9",
       "built": [
         "neuropsych capture (partial)",
-        "neuropsychological battery scoring (battery-scoring dashboard — 501 records, 11 tests, 25 patients, 9 domains, normative z-scores, impairment tiers, per-patient cognitive profiles, raw score tables — /api/battery-scoring/overview|breakdown|definitions + portal-next/app/battery-scoring/page.jsx + nav wired next to Clinical Assessments)"
+        "neuropsychological battery scoring (battery-scoring dashboard \u2014 501 records, 11 tests, 25 patients, 9 domains, normative z-scores, impairment tiers, per-patient cognitive profiles, raw score tables \u2014 /api/battery-scoring/overview|breakdown|definitions + portal-next/app/battery-scoring/page.jsx + nav wired next to Clinical Assessments)"
       ],
       "missing": []
     },
@@ -275,29 +275,41 @@
       "phase": "0. Pilot (now)",
       "scope": "AI read + governance + explainability",
       "status": "built",
-      "note": "Fully built — AI pre-read, SHAP, fairness, human-override, audit trail."
+      "note": "Fully built \u2014 AI pre-read, SHAP, fairness, human-override, audit trail."
     },
     {
       "phase": "1. Foundation",
       "scope": "auth/RBAC, scheduling, consent, audit",
       "status": "partial",
       "note": "Scheduling, consent, audit dashboards built. Multi-user auth/RBAC still missing (needs credentials).",
-      "built": ["scheduling (/api/appointments/*)", "consent (/api/consent/*)", "compliance audit (/api/hipaa-audit/* + decision-audit)"],
-      "missing": ["multi-user auth/RBAC"]
+      "built": [
+        "scheduling (/api/appointments/*)",
+        "consent (/api/consent/*)",
+        "compliance audit (/api/hipaa-audit/* + decision-audit)"
+      ],
+      "missing": [
+        "multi-user auth/RBAC"
+      ]
     },
     {
       "phase": "2. Integration",
       "scope": "EMR (FHIR), device streaming, report push",
       "status": "partial",
       "note": "Report push + referrer notify built. EMR/FHIR and live device streaming still missing (need external credentials).",
-      "built": ["report generation (Structured Reporting Dashboard)", "referrer notify (/api/referrer-notify/*)"],
-      "missing": ["EMR/HIS integration (HL7/FHIR)", "live device streaming"]
+      "built": [
+        "report generation (Structured Reporting Dashboard)",
+        "referrer notify (/api/referrer-notify/*)"
+      ],
+      "missing": [
+        "EMR/HIS integration (HL7/FHIR)",
+        "live device streaming"
+      ]
     },
     {
       "phase": "3. Clinical",
       "scope": "video-EEG player, DICOM, validated scales",
       "status": "built",
-      "note": "All Phase 3 items built — video-EEG, validated scales, and DICOM Study Browser (40 studies, DICOM tag viewer, protocol browser, 3 endpoints verified 200).",
+      "note": "All Phase 3 items built \u2014 video-EEG, validated scales, and DICOM Study Browser (40 studies, DICOM tag viewer, protocol browser, 3 endpoints verified 200).",
       "built": [
         "video-EEG sync player (/api/video-eeg/*)",
         "validated scales (/api/pro-outcomes/* + /api/lsss/* + /api/guided-assessment/*)",
@@ -309,16 +321,26 @@
       "phase": "4. Business",
       "scope": "billing, patient portal, analytics",
       "status": "built",
-      "note": "All business items built — billing/claims, patient portal, analytics dashboards all live.",
-      "built": ["billing/claims (/api/billing-claims/*)", "patient portal (/api/portal-tabs/*)", "analytics (multiple dashboards)"],
-      "missing": ["insurance pre-auth (admin-level, low priority)"]
+      "note": "All business items built \u2014 billing/claims, patient portal, analytics dashboards all live.",
+      "built": [
+        "billing/claims (/api/billing-claims/*)",
+        "patient portal (/api/portal-tabs/*)",
+        "analytics (multiple dashboards)"
+      ],
+      "missing": [
+        "insurance pre-auth (admin-level, low priority)"
+      ]
     },
     {
       "phase": "5. Regulatory",
       "scope": "clinical validation, HIPAA, FDA/CE",
       "status": "built",
-      "note": "All regulatory items built — validation studies, HIPAA audit, FDA/CE regulatory dashboards live.",
-      "built": ["clinical validation (/api/validation-studies/*)", "HIPAA audit (/api/hipaa-audit/*)", "FDA/CE regulatory (/api/regulatory/*)"],
+      "note": "All regulatory items built \u2014 validation studies, HIPAA audit, FDA/CE regulatory dashboards live.",
+      "built": [
+        "clinical validation (/api/validation-studies/*)",
+        "HIPAA audit (/api/hipaa-audit/*)",
+        "FDA/CE regulatory (/api/regulatory/*)"
+      ],
       "missing": []
     }
   ],

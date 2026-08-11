@@ -19953,6 +19953,36 @@ async def ncv_definitions():
     return _json_safe(ncv.definitions())
 
 
+@app.get("/api/hv-photic/overview")
+async def hv_photic_overview():
+    """HV/Photic overview — 40 patients, HV performed rate, HV activation rate (31%),
+    IPS performed rate, PPR count and rate (22.6%), epileptiform PPR (Grade III/IV),
+    average HV duration and normalization time, early stops, combined activation count.
+    ACNS 2016 + Kasteleijn-Nolst Trenité 2012 standard."""
+    import scripts.hv_photic_dashboard as hv
+    return _json_safe(hv.overview())
+
+
+@app.get("/api/hv-photic/breakdown")
+async def hv_photic_breakdown():
+    """HV/Photic breakdown — per-patient HV response (no_response/slowing_only/FIRDA/
+    focal_spike_wave/generalized_spike_wave/ictal_discharge) + IPS PPR grade (I–IV) +
+    peak activation rate (Hz); HV response distribution; IPS Hz histogram;
+    contraindication list; PPR grade distribution."""
+    import scripts.hv_photic_dashboard as hv
+    return _json_safe(hv.breakdown())
+
+
+@app.get("/api/hv-photic/definitions")
+async def hv_photic_definitions():
+    """HV/Photic definitions — HV protocol (mechanism/contraindications/9 steps/
+    normalization target/6 response types); IPS protocol (13 rates 1–60 Hz/PPR grades
+    I–IV/6 steps/eyes-open+closed sequence); safety notes; 6 references (ACNS 2016/
+    Kasteleijn-Nolst Trenité 2012/Jeavons 1975/Waltz 1992/Zifkin 2000/Noachtar 1999)."""
+    import scripts.hv_photic_dashboard as hv
+    return _json_safe(hv.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
