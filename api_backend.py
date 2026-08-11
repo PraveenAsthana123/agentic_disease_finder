@@ -19175,6 +19175,30 @@ async def raw_eeg_waveform_definitions():
     return _json_safe(rewd.raw_eeg_definitions())
 
 
+@app.get("/api/eeg-clinical-panel/overview")
+async def eeg_clinical_panel_overview():
+    """EEG Clinical Signal Panel overview — P0 panels: PSD band power, spike pattern
+    distribution, artifact type/severity KPIs, seizure event count, avg SNR."""
+    import scripts.eeg_clinical_panel_dashboard as ecpd
+    return _json_safe(ecpd.eeg_clinical_panel_overview())
+
+
+@app.get("/api/eeg-clinical-panel/breakdown")
+async def eeg_clinical_panel_breakdown():
+    """EEG Clinical Signal Panel breakdown — per-channel PSD, spectrogram matrix,
+    event timeline, spike/sharp-wave overlay, artifact channel×type heatmap."""
+    import scripts.eeg_clinical_panel_dashboard as ecpd
+    return _json_safe(ecpd.eeg_clinical_panel_breakdown())
+
+
+@app.get("/api/eeg-clinical-panel/definitions")
+async def eeg_clinical_panel_definitions():
+    """EEG Clinical Signal Panel definitions — PSD bands, spectrogram interpretation,
+    IED discharge types, artifact nomenclature, ACNS/IFCN/ILAE standards."""
+    import scripts.eeg_clinical_panel_dashboard as ecpd
+    return _json_safe(ecpd.eeg_clinical_panel_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -10,10 +10,13 @@
       "route": "/raw-eeg-waveform",
       "note": "30 recordings, 570 channel-quality assessments, 169 artifact annotations, SNR/impedance distribution, activation procedure coverage. 3 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."
     },
-    "Event timeline",
-    "Artifact overlay",
-    "PSD graph",
-    "Spectrogram",
+    {
+      "id": "eeg_clinical_panel",
+      "name": "EEG Clinical Signal Panel",
+      "status": "built",
+      "route": "/eeg-clinical-panel",
+      "note": "P0 sub-panel suite \u2014 Event Timeline (25 seizure events + 169 artifact events), Artifact Overlay (15 channels \u00d7 6 types heatmap), PSD Graph (19 channels \u00d7 5 bands), Spectrogram (6\u00d710-min bins), Spike/Sharp-Wave Overlay (71 patients, top patterns). 3 endpoints /api/eeg-clinical-panel/overview|breakdown|definitions verified 200, portal-next page + SiteNav wired next to Raw EEG Waveform 2026-08-10."
+    },
     {
       "id": "topomap",
       "name": "10-20 Topomap",
@@ -21,7 +24,6 @@
       "route": "/topomap",
       "note": "22 channels, 5 bands, alpha asymmetry, SVG head projection. 4 endpoints verified 200, portal-next page + SiteNav wired 2026-08-10."
     },
-    "Spike/sharp-wave overlay",
     {
       "id": "regulatory_submissions",
       "name": "Regulatory Submissions Dashboard",
@@ -854,6 +856,15 @@
         "/api/discharge-planning/breakdown",
         "/api/discharge-planning/definitions"
       ]
+    },
+    {
+      "id": "eeg_clinical_panel",
+      "name": "EEG Clinical Signal Panel",
+      "status": "built",
+      "route": "/eeg-clinical-panel",
+      "category": "EEG Analysis",
+      "priority": "P0",
+      "note": "P0 suite: PSD Graph (19 ch \u00d7 5 bands), Spectrogram, Event Timeline, Spike/Sharp-Wave Overlay, Artifact Overlay. 3 endpoints + portal-next page + SiteNav wired 2026-08-10."
     }
   ],
   "regulatory_audit_trail_dashboard": {
