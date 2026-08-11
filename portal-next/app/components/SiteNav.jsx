@@ -270,6 +270,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/research-coordinator">&#x1f4cb; Research Coordinator</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/insurance-preauth">&#x1f3e5; Insurance Pre-Authorization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-in-women">&#x2640;&#xfe0f; Epilepsy in Women</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/data-augmentation">&#x1f9ec; Data Augmentation</Link></li>
         </ul>
         <span className="navbar-text text-info small">● System Online · SSR</span>
       </div>

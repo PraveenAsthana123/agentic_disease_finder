@@ -88,10 +88,12 @@
   {
    "category": "data",
    "feature": "Data augmentation (GAN / time-warp / mixup)",
+   "status": "built",
    "in_project": "built",
    "why": "Addresses class imbalance (rare ictal) \u2014 review highlights",
    "priority": "medium",
-   "dashboard": "/api/data-augmentation/*"
+   "dashboard": "/api/data-augmentation/*",
+   "dashboard_slug": "data-augmentation"
   },
   {
    "category": "data",
