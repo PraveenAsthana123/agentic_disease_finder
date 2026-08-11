@@ -1443,6 +1443,18 @@
       ],
       "frontend": "portal-next/app/hv-photic/page.jsx",
       "description": "40 patients, HV activation rate 31% (generalized spike-wave/focal spike-wave/ictal discharge), IPS PPR rate 22.6% (7 events), epileptiform PPR (Grade III\u2013IV) 4 events, PPR grade distribution (I\u00d72/II\u00d71/III\u00d71/IV\u00d73), HV response distribution (no_response/slowing_only/FIRDA/focal_spike_wave/generalized_spike_wave/ictal_discharge), IPS rates 1\u201360 Hz, per-patient table with HV response + IPS grade + peak Hz, contraindication list, 3-tab frontend (Overview/Per Patient/Definitions), ACNS 2016 + Kasteleijn-Nolst Trenit\u00e9 2012 + Waltz 1992 + Jeavons 1975 references, 3 endpoints verified 200"
+    },
+    {
+      "name": "EEG Acquisition Dashboard",
+      "route": "/eeg-acquisition",
+      "status": "built",
+      "endpoints": [
+        "/api/eeg-acquisition/overview",
+        "/api/eeg-acquisition/breakdown",
+        "/api/eeg-acquisition/definitions"
+      ],
+      "frontend": "portal-next/app/eeg-acquisition/page.jsx",
+      "description": "30 EEG studies (30 patients), recording type breakdown (LTM 10/ambulatory 11/routine 6/video_eeg 3), montage distribution (bipolar 16/average 8/referential 6), sampling rate breakdown (256 Hz 11/512 Hz 10/1024 Hz 9), duration stats (avg 1578 min/min 27/max 4016), 570 total channels, impedance grade distribution (Good 155/Fair 150/Poor 265), channel quality distribution (Good 344/Fair 199/Poor 27), avg impedance 9.21 k\u03a9, avg SNR 21.81 dB, 27.2% good impedance / 60.4% good quality, monthly trend 2025-01 to 2025-11, per-patient sortable table with recording type + montage + sampling rate + duration + channel quality breakdown, poor-impedance channel register with patient/channel/impedance/SNR, IFCN 2017 + ACNS 2021 references, 4-tab frontend (Overview/Channel Quality/Per Patient/Definitions), 3 endpoints /api/eeg-acquisition/overview|breakdown|definitions verified 200, portal-next/app/eeg-acquisition/page.jsx + SiteNav wired next to Channel Quality"
     }
   ],
   "summary": {
