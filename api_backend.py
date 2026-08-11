@@ -19414,6 +19414,35 @@ async def dre_definitions():
     return _json_safe(dre.definitions())
 
 
+@app.get("/api/biostatistician/overview")
+async def biostatistician_overview():
+    """Biostatistician overview — sample-size KPIs, class balance (DRE vs responsive),
+    power analysis (prospective n=10 + retrospective n=41), aggregate validation metrics
+    (mean sensitivity/specificity/AUC across completed studies), gender distribution,
+    AED trial distribution, study-type chart, sample-size histogram."""
+    import scripts.biostatistician_dashboard as bio
+    return _json_safe(bio.overview())
+
+
+@app.get("/api/biostatistician/breakdown")
+async def biostatistician_breakdown():
+    """Biostatistician breakdown — per-study validation table sorted by AUC, Cohen's d
+    effect sizes (DRE vs responsive for disease duration + AED count), metric summary
+    table (mean/SD/min/max for sensitivity/specificity/AUC), multiple-comparison
+    adjustment table (Bonferroni + FDR for 6 pre-specified hypotheses)."""
+    import scripts.biostatistician_dashboard as bio
+    return _json_safe(bio.breakdown())
+
+
+@app.get("/api/biostatistician/definitions")
+async def biostatistician_definitions():
+    """Biostatistician definitions — statistical terms, power analysis framework,
+    class-imbalance strategies, LOSO/GroupKFold rationale, multiple-comparison
+    control, compliance mapping (ICH E9/ICMR/TRIPOD/STROBE), glossary, references."""
+    import scripts.biostatistician_dashboard as bio
+    return _json_safe(bio.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

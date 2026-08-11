@@ -528,7 +528,10 @@
           "challenge": "Manual stats reporting",
           "ai": "Auto power analysis + significance reporting"
         }
-      ]
+      ],
+      "status": "built",
+      "portal_page": "/biostatistician",
+      "maps_to": "/api/biostatistician/overview + /api/biostatistician/breakdown + /api/biostatistician/definitions"
     },
     {
       "id": "ai_advisor",
