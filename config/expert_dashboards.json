@@ -1337,6 +1337,18 @@
       "status": "built",
       "built_at": "2026-08-11",
       "note": "Executive AI operations overview \u2014 49K+ transactions, AI penetration rate, actor distribution (middleware/system/clinicians), top components, HITL + expert review oversight, daily throughput, department AI utilization, conversation roles. 4-tab frontend (Overview/Operations/Oversight/Definitions), 3 endpoints verified 200, portal-next/app/executive-ai/page.jsx + SiteNav wired next to Exec Scorecard"
+    },
+    {
+      "id": "ncv",
+      "title": "NCV (Nerve Conduction Velocity) Dashboard",
+      "route": "/ncv",
+      "status": "built",
+      "api": [
+        "/api/ncv/overview",
+        "/api/ncv/breakdown",
+        "/api/ncv/definitions"
+      ],
+      "note": "30 studies 25 patients 53.3% abnormal, motor (Median/Ulnar/Peroneal/Tibial) + sensory (Median/Ulnar/Sural/Sup.Peroneal) nerves, MCV/SCV/CMAP/SNAP/DML/F-wave parameters, neuropathy types (axonal/demyelinating/mixed), AED-induced neuropathy monitoring, AANEM guidelines"
     }
   ],
   "summary": {
@@ -1349,5 +1361,5 @@
     "total_dashboards": 97,
     "total_built": 97
   },
-  "count": 107
+  "count": 108
 }
