@@ -11880,6 +11880,31 @@ async def phq9_definitions():
     return _json_safe(phq.definitions())
 
 
+# ── MoCA Dashboard ─────────────────────────────────────────────────────
+@app.get("/api/moca-dashboard/overview")
+async def moca_overview():
+    """MoCA overview — total assessments, severity distribution,
+    % impaired (<26), per-patient latest scores, active alerts."""
+    import scripts.moca_dashboard as moca
+    return _json_safe(moca.overview())
+
+
+@app.get("/api/moca-dashboard/breakdown")
+async def moca_breakdown():
+    """MoCA breakdown — per-domain average scores, severity transitions,
+    monthly trend, per-patient history."""
+    import scripts.moca_dashboard as moca
+    return _json_safe(moca.breakdown())
+
+
+@app.get("/api/moca-dashboard/definitions")
+async def moca_definitions():
+    """MoCA definitions — 7 cognitive domains, severity tiers,
+    clinical notes, epilepsy relevance, AED cognitive effects."""
+    import scripts.moca_dashboard as moca
+    return _json_safe(moca.definitions())
+
+
 # ── GAD-7 Dashboard ────────────────────────────────────────────────────
 @app.get("/api/gad7-dashboard/overview")
 async def gad7_overview():
