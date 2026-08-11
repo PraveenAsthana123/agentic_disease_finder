@@ -1455,6 +1455,15 @@
       ],
       "frontend": "portal-next/app/eeg-acquisition/page.jsx",
       "description": "30 EEG studies (30 patients), recording type breakdown (LTM 10/ambulatory 11/routine 6/video_eeg 3), montage distribution (bipolar 16/average 8/referential 6), sampling rate breakdown (256 Hz 11/512 Hz 10/1024 Hz 9), duration stats (avg 1578 min/min 27/max 4016), 570 total channels, impedance grade distribution (Good 155/Fair 150/Poor 265), channel quality distribution (Good 344/Fair 199/Poor 27), avg impedance 9.21 k\u03a9, avg SNR 21.81 dB, 27.2% good impedance / 60.4% good quality, monthly trend 2025-01 to 2025-11, per-patient sortable table with recording type + montage + sampling rate + duration + channel quality breakdown, poor-impedance channel register with patient/channel/impedance/SNR, IFCN 2017 + ACNS 2021 references, 4-tab frontend (Overview/Channel Quality/Per Patient/Definitions), 3 endpoints /api/eeg-acquisition/overview|breakdown|definitions verified 200, portal-next/app/eeg-acquisition/page.jsx + SiteNav wired next to Channel Quality"
+    },
+    {
+      "id": "clinical_outcomes",
+      "title": "Clinical Outcomes",
+      "route": "/clinical-outcomes",
+      "api": "/api/clinical-outcomes/overview",
+      "status": "built",
+      "category": "Clinical",
+      "description": "Engel/ILAE classification, DRE rate, SUDEP risk, medication response, 30-day readmissions, seizure-free trend, mortality \u2014 30 patients"
     }
   ],
   "summary": {
@@ -1467,5 +1476,5 @@
     "total_dashboards": 112,
     "total_built": 112
   },
-  "count": 116
+  "count": 118
 }

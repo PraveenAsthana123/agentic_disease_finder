@@ -1,97 +1,513 @@
 {
-  "title": "DBA Dataset Requirements & Gap — Responsible Explainable AI Governance for EEG Epilepsy",
-  "note": "What a top-tier epilepsy AI dataset needs vs what the project has. Honest gap tracker (§155). present/partial/missing.",
+  "title": "DBA Dataset Requirements & Gap \u2014 Responsible Explainable AI Governance for EEG Epilepsy",
+  "note": "What a top-tier epilepsy AI dataset needs vs what the project has. Honest gap tracker (\u00a7155). present/partial/missing.",
   "updated_at": "2026-06-24",
   "categories": [
-    {"category": "1. EEG Signal (for AI model dev)", "items": [
-      {"name": "EDF/BDF raw signal", "status": "partial", "note": "loader supports EDF/BDF/FIF/MAT/CSV; real clinical EDF needed"},
-      {"name": "Sampling frequency", "status": "present", "note": "captured in pipeline metadata"},
-      {"name": "Recording duration", "status": "present"},
-      {"name": "Event markers (seizure start/end)", "status": "partial", "note": "event_annotations table exists; needs labeled data"},
-      {"name": "Annotation file", "status": "partial"},
-      {"name": "Channel coordinates (10-20)", "status": "present", "note": "10-20 validation in loader"},
-      {"name": "Artifact labels", "status": "partial", "note": "artifact_annotations table; needs labeled data"},
-      {"name": "Impedance values", "status": "missing"}
-    ]},
-    {"category": "2. Clinical", "items": [
-      {"name": "Diagnosis", "status": "partial"}, {"name": "Epilepsy type", "status": "missing"},
-      {"name": "Seizure classification (ILAE)", "status": "partial"}, {"name": "Duration of disease", "status": "missing"},
-      {"name": "Age of onset", "status": "missing"}, {"name": "Family history", "status": "missing"},
-      {"name": "Comorbidities", "status": "partial", "note": "comorbidities table exists"},
-      {"name": "Neurological findings", "status": "partial"}, {"name": "Clinical outcome", "status": "missing"}
-    ]},
-    {"category": "3. Medication", "items": [
-      {"name": "Current medication", "status": "partial", "note": "medications table exists"},
-      {"name": "AED drugs", "status": "partial"}, {"name": "Benzodiazepines", "status": "missing"},
-      {"name": "Dosage", "status": "partial"}, {"name": "Medication history", "status": "partial"},
-      {"name": "Drug response", "status": "missing"}
-    ]},
-    {"category": "4. Imaging", "items": [
-      {"name": "MRI report", "status": "partial", "note": "mri_findings table exists"},
-      {"name": "CT report", "status": "missing"}, {"name": "PET scan", "status": "missing"}, {"name": "fMRI", "status": "missing"}
-    ]},
-    {"category": "5. Neuropsychological", "items": [
-      {"name": "MoCA", "status": "present", "note": "assessment instrument built"},
-      {"name": "MMSE", "status": "missing"}, {"name": "Cognitive assessment", "status": "partial", "note": "neuropsych table"},
-      {"name": "Depression score (PHQ-9)", "status": "present"}, {"name": "Anxiety score (GAD-7)", "status": "present"},
-      {"name": "Quality of life", "status": "partial"}
-    ]},
-    {"category": "6. Outcome", "items": [
-      {"name": "Hospitalization", "status": "partial", "note": "hospitalization table"}, {"name": "Mortality", "status": "missing"},
-      {"name": "Seizure recurrence", "status": "partial", "note": "seizure_diary tracks events"},
-      {"name": "Readmission", "status": "missing"}, {"name": "Medication response", "status": "missing"},
-      {"name": "Follow-up", "status": "partial"}
-    ]},
-    {"category": "7. Governance (DBA-critical)", "items": [
-      {"name": "Clinician review", "status": "present", "note": "expert_reviews table + study-review"},
-      {"name": "Expert agreement / consensus", "status": "present", "note": "consensus AI built"},
-      {"name": "Second opinion", "status": "partial"}, {"name": "Audit trail", "status": "present", "note": "transaction_log UTC+local"},
-      {"name": "Decision log", "status": "present", "note": "decision routing built"},
-      {"name": "Model override data", "status": "present", "note": "HITL override + reason codes"},
-      {"name": "Human feedback", "status": "present", "note": "feedback/correction AI built"}
-    ]},
-    {"category": "8. Data Quality", "items": [
-      {"name": "Artifact report", "status": "partial", "note": "ICA cleaning + artifact_annotations"},
-      {"name": "Signal quality (SNR)", "status": "partial"}, {"name": "Electrode failure", "status": "missing"},
-      {"name": "Noise labels", "status": "partial"}, {"name": "Missing channels", "status": "present", "note": "loader detects"}
-    ]},
-    {"category": "9. Demographics", "items": [
-      {"name": "Age", "status": "present"}, {"name": "Sex", "status": "present"},
-      {"name": "Education", "status": "missing"}, {"name": "Ethnicity", "status": "missing"},
-      {"name": "Geography", "status": "missing"}, {"name": "Occupation", "status": "partial"},
-      {"name": "Socioeconomic factors", "status": "missing"}
-    ]}
+    {
+      "category": "1. EEG Signal (for AI model dev)",
+      "items": [
+        {
+          "name": "EDF/BDF raw signal",
+          "status": "partial",
+          "note": "loader supports EDF/BDF/FIF/MAT/CSV; real clinical EDF needed"
+        },
+        {
+          "name": "Sampling frequency",
+          "status": "present",
+          "note": "captured in pipeline metadata"
+        },
+        {
+          "name": "Recording duration",
+          "status": "present"
+        },
+        {
+          "name": "Event markers (seizure start/end)",
+          "status": "partial",
+          "note": "event_annotations table exists; needs labeled data"
+        },
+        {
+          "name": "Annotation file",
+          "status": "partial"
+        },
+        {
+          "name": "Channel coordinates (10-20)",
+          "status": "present",
+          "note": "10-20 validation in loader"
+        },
+        {
+          "name": "Artifact labels",
+          "status": "partial",
+          "note": "artifact_annotations table; needs labeled data"
+        },
+        {
+          "name": "Impedance values",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "category": "2. Clinical",
+      "items": [
+        {
+          "name": "Diagnosis",
+          "status": "partial"
+        },
+        {
+          "name": "Epilepsy type",
+          "status": "missing"
+        },
+        {
+          "name": "Seizure classification (ILAE)",
+          "status": "partial"
+        },
+        {
+          "name": "Duration of disease",
+          "status": "missing"
+        },
+        {
+          "name": "Age of onset",
+          "status": "missing"
+        },
+        {
+          "name": "Family history",
+          "status": "missing"
+        },
+        {
+          "name": "Comorbidities",
+          "status": "partial",
+          "note": "comorbidities table exists"
+        },
+        {
+          "name": "Neurological findings",
+          "status": "partial"
+        },
+        {
+          "name": "Clinical outcome",
+          "status": "partial",
+          "note": " clinical_outcomes_dashboard built (/api/clinical-outcomes/*)"
+        }
+      ]
+    },
+    {
+      "category": "3. Medication",
+      "items": [
+        {
+          "name": "Current medication",
+          "status": "partial",
+          "note": "medications table exists"
+        },
+        {
+          "name": "AED drugs",
+          "status": "partial"
+        },
+        {
+          "name": "Benzodiazepines",
+          "status": "missing"
+        },
+        {
+          "name": "Dosage",
+          "status": "partial"
+        },
+        {
+          "name": "Medication history",
+          "status": "partial"
+        },
+        {
+          "name": "Drug response",
+          "status": "partial",
+          "note": " clinical_outcomes_dashboard built (/api/clinical-outcomes/*)"
+        }
+      ]
+    },
+    {
+      "category": "4. Imaging",
+      "items": [
+        {
+          "name": "MRI report",
+          "status": "partial",
+          "note": "mri_findings table exists"
+        },
+        {
+          "name": "CT report",
+          "status": "missing"
+        },
+        {
+          "name": "PET scan",
+          "status": "missing"
+        },
+        {
+          "name": "fMRI",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "category": "5. Neuropsychological",
+      "items": [
+        {
+          "name": "MoCA",
+          "status": "present",
+          "note": "assessment instrument built"
+        },
+        {
+          "name": "MMSE",
+          "status": "missing"
+        },
+        {
+          "name": "Cognitive assessment",
+          "status": "partial",
+          "note": "neuropsych table"
+        },
+        {
+          "name": "Depression score (PHQ-9)",
+          "status": "present"
+        },
+        {
+          "name": "Anxiety score (GAD-7)",
+          "status": "present"
+        },
+        {
+          "name": "Quality of life",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "category": "6. Outcome",
+      "items": [
+        {
+          "name": "Hospitalization",
+          "status": "partial",
+          "note": "hospitalization table"
+        },
+        {
+          "name": "Mortality",
+          "status": "partial",
+          "note": " clinical_outcomes_dashboard built (/api/clinical-outcomes/*)"
+        },
+        {
+          "name": "Seizure recurrence",
+          "status": "partial",
+          "note": "seizure_diary tracks events"
+        },
+        {
+          "name": "Readmission",
+          "status": "partial",
+          "note": " clinical_outcomes_dashboard built (/api/clinical-outcomes/*)"
+        },
+        {
+          "name": "Medication response",
+          "status": "missing"
+        },
+        {
+          "name": "Follow-up",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "category": "7. Governance (DBA-critical)",
+      "items": [
+        {
+          "name": "Clinician review",
+          "status": "present",
+          "note": "expert_reviews table + study-review"
+        },
+        {
+          "name": "Expert agreement / consensus",
+          "status": "present",
+          "note": "consensus AI built"
+        },
+        {
+          "name": "Second opinion",
+          "status": "partial"
+        },
+        {
+          "name": "Audit trail",
+          "status": "present",
+          "note": "transaction_log UTC+local"
+        },
+        {
+          "name": "Decision log",
+          "status": "present",
+          "note": "decision routing built"
+        },
+        {
+          "name": "Model override data",
+          "status": "present",
+          "note": "HITL override + reason codes"
+        },
+        {
+          "name": "Human feedback",
+          "status": "present",
+          "note": "feedback/correction AI built"
+        }
+      ]
+    },
+    {
+      "category": "8. Data Quality",
+      "items": [
+        {
+          "name": "Artifact report",
+          "status": "partial",
+          "note": "ICA cleaning + artifact_annotations"
+        },
+        {
+          "name": "Signal quality (SNR)",
+          "status": "partial"
+        },
+        {
+          "name": "Electrode failure",
+          "status": "missing"
+        },
+        {
+          "name": "Noise labels",
+          "status": "partial"
+        },
+        {
+          "name": "Missing channels",
+          "status": "present",
+          "note": "loader detects"
+        }
+      ]
+    },
+    {
+      "category": "9. Demographics",
+      "items": [
+        {
+          "name": "Age",
+          "status": "present"
+        },
+        {
+          "name": "Sex",
+          "status": "present"
+        },
+        {
+          "name": "Education",
+          "status": "missing"
+        },
+        {
+          "name": "Ethnicity",
+          "status": "missing"
+        },
+        {
+          "name": "Geography",
+          "status": "missing"
+        },
+        {
+          "name": "Occupation",
+          "status": "partial"
+        },
+        {
+          "name": "Socioeconomic factors",
+          "status": "missing"
+        }
+      ]
+    }
   ],
   "tiers": {
-    "tier1_mandatory": ["EDF EEG files", "EEG reports", "Diagnosis", "Age", "Gender", "Medication history", "Seizure type", "MRI report"],
-    "tier2_recommended": ["Video EEG", "Clinical notes", "Follow-up outcome", "Hospitalization data", "Treatment response"],
-    "tier3_dba_excellent": ["Neurologist feedback", "Clinician review notes", "Second opinion reports", "Audit trail", "Decision logs"]
+    "tier1_mandatory": [
+      "EDF EEG files",
+      "EEG reports",
+      "Diagnosis",
+      "Age",
+      "Gender",
+      "Medication history",
+      "Seizure type",
+      "MRI report"
+    ],
+    "tier2_recommended": [
+      "Video EEG",
+      "Clinical notes",
+      "Follow-up outcome",
+      "Hospitalization data",
+      "Treatment response"
+    ],
+    "tier3_dba_excellent": [
+      "Neurologist feedback",
+      "Clinician review notes",
+      "Second opinion reports",
+      "Audit trail",
+      "Decision logs"
+    ]
   },
   "control_groups": {
-    "note": "Don't rely on healthy controls only — the 5 below prove the model detects EPILEPSY, not general abnormality.",
-    "most_valuable": ["Healthy", "PNES (psychogenic non-epileptic)", "Syncope", "Migraine", "Stroke"],
-    "minimum_dataset": [{"cohort": "Epilepsy", "n": 300}, {"cohort": "Healthy", "n": 100}, {"cohort": "Syncope", "n": 50}, {"cohort": "Migraine", "n": 50}, {"cohort": "PNES", "n": 50}],
-    "ideal_dataset": [{"cohort": "Epilepsy", "n": 300}, {"cohort": "Healthy", "n": 150}, {"cohort": "Migraine", "n": 100}, {"cohort": "Syncope", "n": 100}, {"cohort": "PNES", "n": 100}, {"cohort": "Stroke", "n": 100}, {"cohort": "Depression/Anxiety", "n": 100}]
+    "note": "Don't rely on healthy controls only \u2014 the 5 below prove the model detects EPILEPSY, not general abnormality.",
+    "most_valuable": [
+      "Healthy",
+      "PNES (psychogenic non-epileptic)",
+      "Syncope",
+      "Migraine",
+      "Stroke"
+    ],
+    "minimum_dataset": [
+      {
+        "cohort": "Epilepsy",
+        "n": 300
+      },
+      {
+        "cohort": "Healthy",
+        "n": 100
+      },
+      {
+        "cohort": "Syncope",
+        "n": 50
+      },
+      {
+        "cohort": "Migraine",
+        "n": 50
+      },
+      {
+        "cohort": "PNES",
+        "n": 50
+      }
+    ],
+    "ideal_dataset": [
+      {
+        "cohort": "Epilepsy",
+        "n": 300
+      },
+      {
+        "cohort": "Healthy",
+        "n": 150
+      },
+      {
+        "cohort": "Migraine",
+        "n": 100
+      },
+      {
+        "cohort": "Syncope",
+        "n": 100
+      },
+      {
+        "cohort": "PNES",
+        "n": 100
+      },
+      {
+        "cohort": "Stroke",
+        "n": 100
+      },
+      {
+        "cohort": "Depression/Anxiety",
+        "n": 100
+      }
+    ]
   },
   "artifact_template": [
-    {"category": "Ocular", "type": "Eye Blink", "mandatory": true}, {"category": "Ocular", "type": "Eye Movement", "mandatory": true},
-    {"category": "Muscle", "type": "EMG Artifact", "mandatory": true}, {"category": "Muscle", "type": "Chewing", "mandatory": true},
-    {"category": "Movement", "type": "Head Movement", "mandatory": true}, {"category": "Movement", "type": "Body Movement", "mandatory": true},
-    {"category": "Electrode", "type": "Electrode Pop", "mandatory": true}, {"category": "Electrode", "type": "Loose Electrode", "mandatory": true},
-    {"category": "Electrode", "type": "High Impedance", "mandatory": true}, {"category": "Cardiac", "type": "ECG Artifact", "mandatory": true},
-    {"category": "Environmental", "type": "Power Line Noise (50/60Hz)", "mandatory": true}, {"category": "Technical", "type": "Flat/Disconnected Channel", "mandatory": true}
+    {
+      "category": "Ocular",
+      "type": "Eye Blink",
+      "mandatory": true
+    },
+    {
+      "category": "Ocular",
+      "type": "Eye Movement",
+      "mandatory": true
+    },
+    {
+      "category": "Muscle",
+      "type": "EMG Artifact",
+      "mandatory": true
+    },
+    {
+      "category": "Muscle",
+      "type": "Chewing",
+      "mandatory": true
+    },
+    {
+      "category": "Movement",
+      "type": "Head Movement",
+      "mandatory": true
+    },
+    {
+      "category": "Movement",
+      "type": "Body Movement",
+      "mandatory": true
+    },
+    {
+      "category": "Electrode",
+      "type": "Electrode Pop",
+      "mandatory": true
+    },
+    {
+      "category": "Electrode",
+      "type": "Loose Electrode",
+      "mandatory": true
+    },
+    {
+      "category": "Electrode",
+      "type": "High Impedance",
+      "mandatory": true
+    },
+    {
+      "category": "Cardiac",
+      "type": "ECG Artifact",
+      "mandatory": true
+    },
+    {
+      "category": "Environmental",
+      "type": "Power Line Noise (50/60Hz)",
+      "mandatory": true
+    },
+    {
+      "category": "Technical",
+      "type": "Flat/Disconnected Channel",
+      "mandatory": true
+    }
   ],
-  "top10_artifacts": ["Eye Blink", "Eye Movement", "Muscle (EMG)", "Head Movement", "Body Movement", "Electrode Pop", "Loose Electrode", "ECG Artifact", "Power Line Noise", "Flat/Disconnected Channel"],
+  "top10_artifacts": [
+    "Eye Blink",
+    "Eye Movement",
+    "Muscle (EMG)",
+    "Head Movement",
+    "Body Movement",
+    "Electrode Pop",
+    "Loose Electrode",
+    "ECG Artifact",
+    "Power Line Noise",
+    "Flat/Disconnected Channel"
+  ],
   "technician_deliverables": [
-    {"item": "Raw EEG signal", "format": "EDF/BDF"}, {"item": "EEG report", "format": "PDF"},
-    {"item": "Channel map", "format": "XLSX"}, {"item": "Event annotation sheet", "format": "CSV/XLSX"},
-    {"item": "Artifact annotation sheet", "format": "CSV/XLSX"}, {"item": "Recording metadata", "format": "XLSX"},
-    {"item": "Video EEG metadata", "format": "XLSX"}, {"item": "Device metadata", "format": "XLSX"},
-    {"item": "Signal quality report", "format": "XLSX/PDF"}
+    {
+      "item": "Raw EEG signal",
+      "format": "EDF/BDF"
+    },
+    {
+      "item": "EEG report",
+      "format": "PDF"
+    },
+    {
+      "item": "Channel map",
+      "format": "XLSX"
+    },
+    {
+      "item": "Event annotation sheet",
+      "format": "CSV/XLSX"
+    },
+    {
+      "item": "Artifact annotation sheet",
+      "format": "CSV/XLSX"
+    },
+    {
+      "item": "Recording metadata",
+      "format": "XLSX"
+    },
+    {
+      "item": "Video EEG metadata",
+      "format": "XLSX"
+    },
+    {
+      "item": "Device metadata",
+      "format": "XLSX"
+    },
+    {
+      "item": "Signal quality report",
+      "format": "XLSX/PDF"
+    }
   ],
-  "single_most_important": "Raw EDF file — without the raw signal you have images of EEG, not signal data. No EDF → no CNN/Transformer/STFT/wavelet/SHAP.",
+  "single_most_important": "Raw EDF file \u2014 without the raw signal you have images of EEG, not signal data. No EDF \u2192 no CNN/Transformer/STFT/wavelet/SHAP.",
   "dashboard_id": "data-requirements",
   "dashboard_component": "DataRequirementsPage.jsx",
   "dashboard_status": "built",
-  "dashboard_note": "Data Requirements Gap Dashboard — 3 API endpoints (/api/data-requirements/overview|breakdown|definitions), 9-category completeness tracker (58 items: 15 present, 23 partial, 20 missing), 3-tier data classification, control group coverage, artifact templates, technician deliverables, 3-tab layout (Overview, Item Breakdown, Definitions), DataRequirementsPage.jsx + nav wired"
+  "dashboard_note": "Data Requirements Gap Dashboard \u2014 3 API endpoints (/api/data-requirements/overview|breakdown|definitions), 9-category completeness tracker (58 items: 15 present, 23 partial, 20 missing), 3-tier data classification, control group coverage, artifact templates, technician deliverables, 3-tab layout (Overview, Item Breakdown, Definitions), DataRequirementsPage.jsx + nav wired"
 }

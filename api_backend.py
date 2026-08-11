@@ -19983,6 +19983,40 @@ async def hv_photic_definitions():
     return _json_safe(hv.definitions())
 
 
+@app.get("/api/clinical-outcomes/overview")
+async def clinical_outcomes_overview():
+    """Clinical outcomes overview — 30 patients; DRE rate 30.0% (9/30); seizure-free at 12m
+    40.0% (12/30); avg AED trials; avg seizure reduction %; 30-day readmission count;
+    medication response (drug_responsive/partially_responsive/drug_resistant); Engel I–IV
+    distribution; ILAE class 1–6 distribution; SUDEP risk (low/moderate/high); mortality
+    (alive/SUDEP/other_cause/lost_to_followup); seizure-free trend at 3/6/12/24 months;
+    DRE rate by epilepsy type. Engel 1987 + Kwan et al. 2010 + Nashef 1997 standards."""
+    import scripts.clinical_outcomes_dashboard as co
+    return _json_safe(co.overview())
+
+
+@app.get("/api/clinical-outcomes/breakdown")
+async def clinical_outcomes_breakdown():
+    """Clinical outcomes breakdown — per-patient: Engel class, ILAE class, medication
+    response, seizure reduction %, current AEDs, SUDEP risk, seizure-free at 3/6/12/24m,
+    hospitalizations, 30-day readmit, mortality status; Engel distribution table; top-10
+    AEDs by frequency; SUDEP high-risk register; non-alive patients list;
+    epilepsy-type × Engel cross-tab."""
+    import scripts.clinical_outcomes_dashboard as co
+    return _json_safe(co.breakdown())
+
+
+@app.get("/api/clinical-outcomes/definitions")
+async def clinical_outcomes_definitions():
+    """Clinical outcomes definitions — Engel Scale (4 classes, Engel 1987);
+    ILAE 2010 Outcome Classification (6 classes, Kwan 2010); DRE definition (ILAE
+    consensus — ≥2 adequate AED failures); medication response categories (responsive/
+    partially/resistant, Brodie 2012); SUDEP definition + risk factors + incidence +
+    risk levels (Nashef 1997, Hesdorffer 2011); 30-day readmission definition; 7 references."""
+    import scripts.clinical_outcomes_dashboard as co
+    return _json_safe(co.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
