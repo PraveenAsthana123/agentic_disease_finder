@@ -1328,10 +1328,19 @@
       "route": "/sfemg",
       "api": "/api/sfemg/overview|breakdown|definitions",
       "note": "30 studies, 25 patients, jitter/MCD distribution, FD distribution, blocking rates, 4 muscles (EDC/orbicularis/frontalis/deltoid), 6 diagnostic patterns (Normal/MG/LEMS/CMS/MND/Myopathic), per-diagnosis profiles, per-patient table, 5-tab epilepsy relevance, SiteNav wired next to EMG"
+    },
+    {
+      "id": "executive_ai",
+      "name": "Executive AI Dashboard",
+      "route": "/executive-ai",
+      "api": "/api/executive-ai/overview|breakdown|definitions",
+      "status": "built",
+      "built_at": "2026-08-11",
+      "note": "Executive AI operations overview \u2014 49K+ transactions, AI penetration rate, actor distribution (middleware/system/clinicians), top components, HITL + expert review oversight, daily throughput, department AI utilization, conversation roles. 4-tab frontend (Overview/Operations/Oversight/Definitions), 3 endpoints verified 200, portal-next/app/executive-ai/page.jsx + SiteNav wired next to Exec Scorecard"
     }
   ],
   "summary": {
-    "total": 97,
+    "total": 107,
     "built": 97,
     "partial": 0,
     "planned": 0,
@@ -1340,5 +1349,5 @@
     "total_dashboards": 97,
     "total_built": 97
   },
-  "count": 104
+  "count": 107
 }
