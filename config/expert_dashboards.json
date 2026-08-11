@@ -1373,17 +1373,43 @@
         "epileptologist"
       ],
       "note": "Sympathetic sudomotor pathway \u2014 hand (palmar) + foot (plantar) onset latency/amplitude/habituation, dysautonomia scoring, 6 diagnostic patterns (peripheral/small-fiber/postganglionic/preganglionic/generalized dysautonomia/normal), per-patient expandable rows, AANEM reference ranges, epilepsy relevance (SUDEP/AED autonomic effects/ictal autonomic changes). 3 endpoints /api/ssr/overview|breakdown|definitions verified 200, expert_dashboards.json count 109\u2192110."
+    },
+    {
+      "id": "ssep",
+      "name": "SSEP (Somatosensory Evoked Potentials) Dashboard",
+      "route": "/ssep",
+      "api": "/api/ssep/overview|breakdown|definitions",
+      "status": "built",
+      "built_at": "2026-08-11",
+      "role": "Neurophysiologist / Neurologist",
+      "priority": "P1",
+      "feature": "Dorsal column\u2013medial lemniscal pathway integrity \u2014 upper limb median nerve (N9/N13/N20 latency + N20 amplitude + N9\u2013N13 IPL + N13\u2013N20 CCT) and lower limb posterior tibial nerve (N22/P37 latency + P37 amplitude + N22\u2013P37 CCT), bilateral L/R, 5 diagnostic patterns, 4 severity tiers, Chiappa 1997 + ACNS reference ranges",
+      "viz": "KPI cards (30 studies/26.7% abnormal/mean N20 18.3 ms/mean P37 39.4 ms), severity + pattern bars, limb abnormality rates, N20 + P37 latency histograms, upper vs lower limb comparison table, per-patient expandable rows with full upper + lower limb peak tables and ref indicators",
+      "note": "30 studies, 30 patients, 8 abnormal (26.7%), upper-limb (N20 latency ref \u226421 ms) + lower-limb (P37 latency ref \u226445 ms) pathway analysis, 4-tab frontend (Overview/Pathway Analysis/Patient Detail/Definitions), 3 endpoints /api/ssep/overview|breakdown|definitions verified 200, portal-next/app/ssep/page.jsx + SiteNav wired next to VEP, expert_dashboards.json count 110\u2192111."
+    },
+    {
+      "id": "vep",
+      "name": "VEP (Visual Evoked Potentials) Dashboard",
+      "route": "/vep",
+      "api": "/api/vep/overview|breakdown|definitions",
+      "status": "built",
+      "built_at": "2026-08-11",
+      "role": "Neurophysiologist / Neurologist",
+      "priority": "P1",
+      "feature": "Pattern-reversal visual pathway integrity \u2014 bilateral monocular stimulation (Left OS / Right OD), N75/P100/N145 latency + P100 amplitude + inter-eye P100 difference, 6 diagnostic patterns (normal/optic neuritis/optic neuropathy/chiasmal lesion/retrochiasmal lesion/cortical dysfunction), ISCEV 2016 + Halliday 1993 reference ranges",
+      "viz": "KPI cards (30 studies/16.7% abnormal/mean P100 102.0 ms/mean amplitude 10.6 \u03bcV), severity + pattern bars, per-eye abnormality rates, P100 latency + amplitude + inter-eye difference histograms, left vs right eye comparison table, per-patient expandable rows with full bilateral peak tables and asymmetry flags",
+      "note": "30 studies, 30 patients, 5 abnormal (16.7%), P100 latency ref \u2264115 ms/inter-eye diff \u22648 ms, 4-tab frontend (Overview/VEP Analysis/Patient Detail/Definitions), 3 endpoints /api/vep/overview|breakdown|definitions verified 200, portal-next/app/vep/page.jsx + SiteNav wired, expert_dashboards.json count 111\u2192112."
     }
   ],
   "summary": {
-    "total": 109,
-    "built": 109,
+    "total": 112,
+    "built": 112,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 97,
-    "total_dashboards": 109,
-    "total_built": 109
+    "count": 112,
+    "total_dashboards": 112,
+    "total_built": 112
   },
-  "count": 109
+  "count": 112
 }
