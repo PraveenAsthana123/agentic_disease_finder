@@ -1067,15 +1067,29 @@
         "/api/ceeg-monitoring/breakdown",
         "/api/ceeg-monitoring/definitions"
       ]
+    },
+    {
+      "id": "aed_side_effects",
+      "name": "AED Side Effects Dashboard",
+      "role": "Epileptologist / Clinical Pharmacist",
+      "status": "built",
+      "priority": "P1",
+      "route": "/aed-side-effects",
+      "endpoints": [
+        "/api/aed-side-effects/overview",
+        "/api/aed-side-effects/breakdown",
+        "/api/aed-side-effects/definitions"
+      ],
+      "note": "AED Side Effects Dashboard \u2014 12,600 medication adherence records, 30 patients, 8 AEDs (Lacosamide/Carbamazepine/Valproate/Levetiracetam/Clobazam/Oxcarbazepine/Lamotrigine/Topiramate), 12 side effect types, severity scale 0\u20138. KPIs: 3,135 records with effects (24.9%), avg severity 1.12 when present, 12 distinct side effects (Blurred vision 433/Drowsiness 416/Mood changes 413 top 3). Drug-effect profiles, per-patient burden table, severity-by-drug heatmap (none/mild/moderate/severe), adherence vs severity, AED class groupings, side-effect glossary with clinical notes, references (Perucca 2012/NICE NG217/Brodie 2012). 5-tab frontend (Overview/By Drug/By Side Effect/Per Patient/Definitions). 3 endpoints /api/aed-side-effects/overview|breakdown|definitions verified 200. portal-next/app/aed-side-effects/page.jsx + SiteNav wired next to Pharmacogenomics. expert_dashboards.json count 85\u219286."
     }
   ],
   "summary": {
-    "total": 85,
-    "built": 85,
+    "total": 86,
+    "built": 86,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 85,
-    "total_dashboards": 85
+    "count": 86,
+    "total_dashboards": 86
   }
 }

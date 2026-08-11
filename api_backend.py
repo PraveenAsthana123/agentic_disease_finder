@@ -19499,6 +19499,34 @@ async def ceeg_monitoring_definitions():
     return _json_safe(cmd.definitions())
 
 
+# Real data: medication_adherence (12,600 rows, 30 patients, 8 AEDs, 12 side effects, severity 0–8).
+@app.get("/api/aed-side-effects/overview")
+async def aed_side_effects_overview():
+    """AED Side Effects overview — KPIs (12,600 records, 30 patients, 8 drugs,
+    3,135 records with effects, 25% effect rate), top 12 side effects, per-drug
+    avg severity, severity distribution (0–8 scale)."""
+    import scripts.aed_side_effects_dashboard as asd
+    return _json_safe(asd.get_overview())
+
+
+@app.get("/api/aed-side-effects/breakdown")
+async def aed_side_effects_breakdown():
+    """AED Side Effects breakdown — drug × side-effect profiles (top 5 effects per AED),
+    per-patient burden table (avg/max severity, top effect), severity-by-drug heatmap
+    (none/mild/moderate/severe tiers), adherence vs severity comparison."""
+    import scripts.aed_side_effects_dashboard as asd
+    return _json_safe(asd.get_breakdown())
+
+
+@app.get("/api/aed-side-effects/definitions")
+async def aed_side_effects_definitions():
+    """AED Side Effects definitions — AED class groupings, severity scale 0–8,
+    side-effect glossary (12 effects with drugs + clinical notes), references
+    (Perucca 2012, NICE NG217, Brodie 2012, Kwan 2010)."""
+    import scripts.aed_side_effects_dashboard as asd
+    return _json_safe(asd.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
