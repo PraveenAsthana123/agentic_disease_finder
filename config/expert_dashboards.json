@@ -1971,17 +1971,30 @@
         "/api/medication-adherence/definitions"
       ],
       "note": "ASM dose-level adherence tracking \u2014 12,600 dose logs \u00d7 30 patients \u00d7 8 antiseizure medications (Levetiracetam/Valproate/Carbamazepine/Lamotrigine/Lacosamide/Oxcarbazepine/Clobazam/Topiramate). KPIs: 84.9% overall adherence rate, 8.1% late, 7.0% missed, avg 60 min late when late. Per-drug adherence comparison with A/B/C/D grade (PDC threshold \u226580%). Per-patient table with sortable adherence/late/missed/side-effect columns, filter by adequate/suboptimal/critical tier. 226 refill records across 11 pharmacies, auto-refill tracking. 7 clinical concepts (PDC, MPR, AED/ASM, side-effect scale, frequency codes, adherence thresholds). 5-tab frontend (Overview/By Drug/Per Patient/Refills/Definitions). Nav wired next to AED Compliance. 3 endpoints verified 200. Data source: medication_adherence (12,600 rows) + medication_refills (226 rows). Built 2026-08-12."
+    },
+    {
+      "id": "dravet",
+      "name": "Dravet Syndrome (SCN1A)",
+      "status": "built",
+      "route": "/dravet",
+      "api_prefix": "/api/dravet",
+      "endpoints": [
+        "/api/dravet/overview",
+        "/api/dravet/breakdown",
+        "/api/dravet/definitions"
+      ],
+      "note": "41-patient SCN1A cohort, 6-class variant distribution (truncating/frameshift/missense-LoF/GoF/splice/CNV), 8 seizure triggers (95% fever prevalence), ABSOLUTE contraindication list (carbamazepine/lamotrigine/phenytoin), 7 FDA-approved/Level-A therapies (Epidiolex/Fintepla/stiripentol/clobazam/valproate/topiramate/ketogenic diet), SUDEP risk scores, developmental trajectory (7 age windows), 14 concepts, 4 standards (ILAE 2022/FDA REMS/STICLO/CARE1-CARE2), 6 thresholds. 3 endpoints /api/dravet/overview|breakdown|definitions verified 200, portal-next/app/dravet/page.jsx + SiteNav wired next to Genetic Epilepsy Syndromes"
     }
   ],
   "summary": {
-    "total": 154,
-    "built": 154,
+    "total": 155,
+    "built": 155,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 154,
-    "total_dashboards": 154,
-    "total_built": 154
+    "count": 155,
+    "total_dashboards": 155,
+    "total_built": 155
   },
-  "count": 154
+  "count": 155
 }

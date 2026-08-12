@@ -21659,6 +21659,41 @@ async def catamenial_definitions():
     return _json_safe(cd.definitions())
 
 
+@app.get("/api/dravet/overview")
+async def dravet_overview():
+    """Dravet Syndrome Dashboard — overview: 41-patient SCN1A cohort, KPIs
+    (avg onset 5-12 months, seizures/month, responder%, SUDEP risk score),
+    SCN1A variant distribution (truncating/frameshift/missense LoF/GoF/splice/CNV),
+    seizure-frequency histogram, comorbidity prevalence (ASD/gait ataxia/sleep disorder),
+    top triggers (fever/vaccination/hot bath), treatment-use distribution.
+    Reference: Wirrell 2022 Neurology; Brunklaus 2014 Epilepsia; CARE1/CARE2/STICLO trials."""
+    import scripts.dravet_dashboard as dd
+    return _json_safe(dd.overview())
+
+
+@app.get("/api/dravet/breakdown")
+async def dravet_breakdown():
+    """Dravet Syndrome Dashboard — breakdown: per-patient table (onset, SCN1A variant,
+    seizures/month, current regimen, % seizure reduction, responder status, SUDEP risk score,
+    comorbidities), SCN1A variant catalog (6 classes + channel effect), trigger catalog (8 triggers
+    + management + evidence level), ABSOLUTE contraindicated AEDs (carbamazepine/lamotrigine/phenytoin),
+    FDA-approved therapies (Epidiolex/Fintepla/stiripentol) + clobazam/valproate/KD,
+    developmental trajectory milestones (7 age windows)."""
+    import scripts.dravet_dashboard as dd
+    return _json_safe(dd.breakdown())
+
+
+@app.get("/api/dravet/definitions")
+async def dravet_definitions():
+    """Dravet Syndrome Dashboard — definitions: 14 concepts (SCN1A/Nav1.1/haploinsufficiency/
+    thermosensitivity/GABAergic interneurons/SUDEP/cannabidiol/fenfluramine/stiripentol/
+    developmental regression/responder/SUDEP risk score), 4 standards (ILAE 2022/FDA REMS
+    Fintepla/STICLO/CARE1-CARE2), 6 key thresholds (onset age/SCN1A detection rate/
+    responder/SUDEP alert/CBD titration/fenfluramine dose cap)."""
+    import scripts.dravet_dashboard as dd
+    return _json_safe(dd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
