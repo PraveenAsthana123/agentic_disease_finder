@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 154 dashboards",
+  "note": "Total: 156 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1984,17 +1984,30 @@
         "/api/dravet/definitions"
       ],
       "note": "41-patient SCN1A cohort, 6-class variant distribution (truncating/frameshift/missense-LoF/GoF/splice/CNV), 8 seizure triggers (95% fever prevalence), ABSOLUTE contraindication list (carbamazepine/lamotrigine/phenytoin), 7 FDA-approved/Level-A therapies (Epidiolex/Fintepla/stiripentol/clobazam/valproate/topiramate/ketogenic diet), SUDEP risk scores, developmental trajectory (7 age windows), 14 concepts, 4 standards (ILAE 2022/FDA REMS/STICLO/CARE1-CARE2), 6 thresholds. 3 endpoints /api/dravet/overview|breakdown|definitions verified 200, portal-next/app/dravet/page.jsx + SiteNav wired next to Genetic Epilepsy Syndromes"
+    },
+    {
+      "id": "tsc",
+      "name": "Tuberous Sclerosis Complex (TSC)",
+      "status": "built",
+      "route": "/tsc",
+      "api_prefix": "/api/tsc",
+      "endpoints": [
+        "/api/tsc/overview",
+        "/api/tsc/breakdown",
+        "/api/tsc/definitions"
+      ],
+      "note": "41-patient TSC cohort, TSC1/TSC2/mosaic variant distribution (6 classes + mTOR effect), infantile spasms 42%, avg 9.8 tubers/patient, Everolimus (EXIST-3 2018 — 40% responder) trough distribution (target 5-15 ng/mL), Cannabidiol (GWPCARE6 2018 — 48.6% median reduction), Vigabatrin (first-line IS-TSC 70-95% cessation + visual field REMS), TAND prevalence (ASD/ADHD/ID/anxiety), tuber type catalog (A/B/C + surgical outcomes), 5 seizure types (IS/focal/GTCS/tonic/absence), AED monitoring requirements (5 drugs with REMS/LFT/cardiac/level monitoring), 7 treatments (dose/MOA/efficacy/safety), developmental trajectory (7 age windows), 14 concepts, 5 standards (ILAE TSC 2022/TSC Consensus 2021/FDA Everolimus/FDA CBD/Vigabatrin REMS), 6 thresholds. 3 endpoints /api/tsc/overview|breakdown|definitions verified 200, portal-next/app/tsc/page.jsx + SiteNav wired next to Dravet Syndrome. Built 2026-08-12."
     }
   ],
   "summary": {
-    "total": 155,
-    "built": 155,
+    "total": 156,
+    "built": 156,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 155,
-    "total_dashboards": 155,
-    "total_built": 155
+    "count": 156,
+    "total_dashboards": 156,
+    "total_built": 156
   },
-  "count": 155
+  "count": 156
 }
