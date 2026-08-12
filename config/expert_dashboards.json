@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-11",
+  "updated_at": "2026-08-12",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -1723,6 +1723,19 @@
       ],
       "frontend": "portal-next/app/hospitalization/page.jsx",
       "note": "115 admissions, 30 patients, 5 wards (EMU 43/Emergency 21/Neurology 19/Surgical Recovery 17/ICU 15), 9 admission reasons (video_eeg_monitoring 28/post_surgical 17/seizure_cluster 15/first_seizure 14/medication_adjustment 12/aed_toxicity 12/status_epilepticus 6/pre_surgical 6/breakthrough 5), avg LOS 5.2d, 12.6% 30-day readmission, 55% seizure-free at discharge, $24,349 avg cost, 4 currently admitted, 3-tab frontend (Overview/Per-Patient/Definitions), 3 endpoints /api/hospitalization/overview|breakdown|definitions verified 200, portal-next/app/hospitalization/page.jsx + SiteNav wired, expert_dashboards.json count 136\u2192137"
+    },
+    {
+      "id": "mood-comorbidity",
+      "title": "Mood-Comorbidity View",
+      "status": "built",
+      "route": "/mood-comorbidity",
+      "portal_page": "mood-comorbidity",
+      "api_endpoints": [
+        "/api/mood-comorbidity/overview",
+        "/api/mood-comorbidity/breakdown",
+        "/api/mood-comorbidity/definitions"
+      ],
+      "note": "27 patients screened; 74.1% comorbidity rate; MDD 59%, GAD 33%; PHQ-9 avg 10.0, GAD-7 avg 9.8; 7 treatment-resistant; behavioral risk severity distribution; condition co-occurrence; PHQ-9 vs GAD-7 scatter; NDDI-E epilepsy-specific depression; 4 instruments; AI governance notes; 9 references (Kanner/Fiest/Ettinger et al.). 3 endpoints verified 200, SiteNav pre-wired. Script: scripts/mood_comorbidity_dashboard.py. Registered 2026-08-12."
     }
   ],
   "summary": {
@@ -1735,5 +1748,5 @@
     "total_dashboards": 116,
     "total_built": 116
   },
-  "count": 135
+  "count": 138
 }

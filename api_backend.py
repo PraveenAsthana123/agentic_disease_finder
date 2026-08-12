@@ -21326,6 +21326,31 @@ def api_pms_definitions():
     return _json_safe(pms.definitions())
 
 
+# ── Mood-Comorbidity Dashboard ────────────────────────────────────────────────
+@app.get("/api/mood-comorbidity/overview")
+def api_mood_comorbidity_overview():
+    """Mood-comorbidity KPIs: 27 patients screened, 74% comorbidity rate,
+    PHQ-9/GAD-7 averages, behavioral risk severity distribution, top conditions."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.overview())
+
+
+@app.get("/api/mood-comorbidity/breakdown")
+def api_mood_comorbidity_breakdown():
+    """Per-patient psychiatric profile: behavioral risk scores, PHQ-9/GAD-7/NDDI-E,
+    condition co-occurrence pairs, PHQ-9 vs GAD-7 cross-table."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.breakdown())
+
+
+@app.get("/api/mood-comorbidity/definitions")
+def api_mood_comorbidity_definitions():
+    """Screening instruments (PHQ-9/GAD-7/NDDI-E/C-SSRS), risk severity tiers,
+    key comorbidities in epilepsy, AI governance notes, 9 clinical references."""
+    import scripts.mood_comorbidity_dashboard as mcd
+    return _json_safe(mcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
