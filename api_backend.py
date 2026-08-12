@@ -8777,6 +8777,31 @@ async def cnn_resnet_definitions():
 
 
 # ── Clinical Neurophysiologist / EEG Reviewer Dashboard ────────────────────
+# ── EEG Technologist Dashboard ────────────────────────────────────────────
+@app.get("/api/eeg-technologist/overview")
+async def eeg_technologist_overview():
+    """EEG Technologist overview — recording quality KPIs, channel usability,
+    impedance/SNR distribution, artifact burden, activation procedures."""
+    import scripts.eeg_technologist_dashboard as etd
+    return _json_safe(etd.overview())
+
+
+@app.get("/api/eeg-technologist/breakdown")
+async def eeg_technologist_breakdown():
+    """EEG Technologist breakdown — per-patient channel quality, artifact heat map,
+    SNR histogram, artifact type x severity matrix."""
+    import scripts.eeg_technologist_dashboard as etd
+    return _json_safe(etd.breakdown())
+
+
+@app.get("/api/eeg-technologist/definitions")
+async def eeg_technologist_definitions():
+    """EEG Technologist definitions — impedance, SNR, montage, activation
+    protocols, artifact types, AI data quality impact, references."""
+    import scripts.eeg_technologist_dashboard as etd
+    return _json_safe(etd.definitions())
+
+
 @app.get("/api/neurophysiologist/overview")
 async def neurophysiologist_overview():
     """Neurophysiologist overview — EEG recordings, band power, signal quality,

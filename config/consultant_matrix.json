@@ -240,7 +240,15 @@
           "challenge": "Inconsistent metadata",
           "ai": "Auto metadata capture from device + EDF header"
         }
-      ]
+      ],
+      "status": "built",
+      "portal_page": "/eeg-technologist",
+      "api_endpoints": [
+        "/api/eeg-technologist/overview",
+        "/api/eeg-technologist/breakdown",
+        "/api/eeg-technologist/definitions"
+      ],
+      "built_note": "EEG Technologist Dashboard \u2014 30 recordings, 30 patients, 60.4% channel usability, 21.8dB avg SNR, 27.2% impedance pass rate, 169 artifact annotations (eye_blink/muscle/movement/electrode_pop/sweat/ECG), activation procedure coverage (HV 80%/photic 60%/sleep 93%), artifact x severity matrix, per-patient channel quality table, SNR histogram, 4-tab frontend (Overview/Channel Quality/Artifacts/Definitions), 3 endpoints /api/eeg-technologist/overview|breakdown|definitions verified 200, SiteNav wired next to Neurophysiologist"
     },
     {
       "id": "psychiatrist",
