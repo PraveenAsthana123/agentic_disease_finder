@@ -1895,6 +1895,18 @@
         "/api/feature-gaps/definitions"
       ],
       "note": "DL Review Gap Analysis \u2014 50-paper epilepsy deep learning review mapped to project implementation status, 18 gaps across 6 categories (functional/technology/data/gap/architecture/decision_ai), 100% built (18/18), 9 high-priority / 7 medium / 2 low, top 5 recommendations, DL review scope (15 topics), category breakdown with evidence links, 5-tab frontend (Overview/By Category/DL Review Scope/Recommendations/Definitions). 3 endpoints /api/feature-gaps/overview|breakdown|definitions verified 200. Built 2026-08-12."
+    },
+    {
+      "id": "esignature",
+      "name": "Clinical Report E-Signature",
+      "status": "built",
+      "route": "/esignature",
+      "api": [
+        "/api/esignature/overview",
+        "/api/esignature/breakdown",
+        "/api/esignature/definitions"
+      ],
+      "note": "133 analyses, 72.2% signed, 29 pending, 8 rejected, avg turnaround 38.2h, 21 CFR Part 11 PASS, 5 signers, 5 diseases, confidence-bucket cross-tab, reject-reason distribution, audit trail. Built 2026-08-12."
     }
   ],
   "summary": {

@@ -21576,6 +21576,33 @@ async def iec_irb_tracker_definitions():
     return _json_safe(iec.definitions())
 
 
+@app.get("/api/esignature/overview")
+async def esignature_overview():
+    """Clinical Report E-Signature Dashboard — overview: 133 analyses, 72.2% signed,
+    29 pending, 8 rejected, avg turnaround 38.2 h, 21 CFR Part 11 compliance flag,
+    per-signer metrics (5 signers), disease breakdown, recent activity (last 10 events)."""
+    import scripts.esignature_dashboard as esd
+    return _json_safe(esd.overview())
+
+
+@app.get("/api/esignature/breakdown")
+async def esignature_breakdown():
+    """Clinical Report E-Signature Dashboard — breakdown: all 133 report rows with
+    signature status/signer/hash, confidence-bucket vs status cross-tab (4 buckets),
+    reject-reason distribution (5 reasons)."""
+    import scripts.esignature_dashboard as esd
+    return _json_safe(esd.breakdown())
+
+
+@app.get("/api/esignature/definitions")
+async def esignature_definitions():
+    """Clinical Report E-Signature Dashboard — definitions: 10 concepts
+    (21 CFR Part 11/e-signature/non-repudiation/signature hash/pending/rejected/
+    sign rate/turnaround/IEC 62304/audit trail), 5 standards, 4 thresholds, 5 references."""
+    import scripts.esignature_dashboard as esd
+    return _json_safe(esd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

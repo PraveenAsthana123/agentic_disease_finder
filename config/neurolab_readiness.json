@@ -14,11 +14,11 @@
         "ICD-10 coding dashboard",
         "video-EEG sync player (/api/video-eeg/* + VideoEEGDashboard.jsx)",
         "on-call mobile alerts (Mobile Alerts/SOS Dashboard)",
-        "referral workflow (/api/referral-triage/* + ReferralTriageDashboard.jsx)"
+        "referral workflow (/api/referral-triage/* + ReferralTriageDashboard.jsx)",
+        "e-signature on reports (/api/esignature/* + portal-next/app/esignature/page.jsx \u2014 133 reports, 72.2% signed, 21 CFR Part 11 PASS)"
       ],
       "missing": [
-        "EMR/HIS integration (HL7/FHIR)",
-        "e-signature on reports"
+        "EMR/HIS integration (HL7/FHIR)"
       ]
     },
     {
