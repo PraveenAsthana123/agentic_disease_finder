@@ -84,6 +84,13 @@
           "challenge": "Subtle focal abnormalities missed",
           "ai": "Sensitivity-tuned detector surfaces low-amplitude spikes"
         }
+      ],
+      "status": "built",
+      "route": "/neurologist",
+      "endpoints": [
+        "/api/neurologist/overview",
+        "/api/neurologist/breakdown",
+        "/api/neurologist/definitions"
       ]
     },
     {

@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 143 dashboards",
+  "note": "Total: 144 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1827,6 +1827,22 @@
         "DPDP Act 2023",
         "HIPAA"
       ]
+    },
+    {
+      "id": "neurologist",
+      "name": "Neurologist / Epileptologist Dashboard",
+      "status": "built",
+      "slug": "neurologist",
+      "route": "/neurologist",
+      "portal_page": "neurologist/page.jsx",
+      "role": "Neurologist / Epileptologist",
+      "priority": "P0",
+      "api_endpoints": [
+        "/api/neurologist/overview",
+        "/api/neurologist/breakdown",
+        "/api/neurologist/definitions"
+      ],
+      "note": "Clinical EEG review + ILAE seizure classification \u2014 133 EEG analyses, 41 patients, 71 seizure classification records, 85 ICD-10 codes, 40 MRI findings; KPIs: 131 studies pending review, 36.1% seizure-positive rate, 69.1% avg model confidence, 2 HITL overrides, 336.6h mean turnaround; 4-tab frontend (Overview/Patient List/Confidence Analysis/Clinical Definitions); ILAE 2017 seizure classification, ACNS EEG turnaround benchmarks (<24h preliminary/<48h final), IFCN standards; SiteNav wired. 3 endpoints verified 200. Registered 2026-08-12."
     }
   ],
   "summary": {
