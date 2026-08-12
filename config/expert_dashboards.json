@@ -1620,6 +1620,14 @@
       "status": "built",
       "route": "/aed-polypharmacy",
       "note": "AED Polypharmacy Analysis Dashboard \u2014 30 patients all on polytherapy (14 dual/16 triple), 12,600 dose records, 8 AEDs, top drug pair combinations (Carbamazepine+Valproate/Carbamazepine+Lacosamide/Clobazam+Lacosamide), dual vs triple adherence comparison, combined side-effect burden, per-patient regimen profiles, co-occurrence matrix, seizure control by regimen, ILAE polytherapy guidelines + Deckers 2003 + Perucca 2019 + Schmidt & Schachter 2014 + NICE NG217 2022, 5-tab frontend (Overview/Drug Combinations/Co-occurrence Matrix/Per Patient/Definitions), 3 endpoints /api/aed-polypharmacy/overview|breakdown|definitions verified 200, portal-next/app/aed-polypharmacy/page.jsx + SiteNav wired next to AED Compliance, expert_dashboards.json count 129->130. 2026-08-11."
+    },
+    {
+      "id": "home-program",
+      "name": "OT Home Program Builder",
+      "route": "/home-program",
+      "api": "/api/home-program/*",
+      "status": "built",
+      "note": "Home exercise program builder: 311 plans, 30 patients, 6 exercise categories (ADL/Cognitive/Fine Motor/Mobility/Social/Vocational), prescribed exercises + education modules + daily plan adherence, adherence grade A-D, AOTA 2020 + ILAE 2021 + WHO ICF 2001, 3 endpoints /api/home-program/overview|breakdown|definitions verified 200, portal-next/app/home-program/page.jsx + SiteNav wired next to Rehab Goal Tracking. 2026-08-11."
     }
   ],
   "summary": {
@@ -1628,9 +1636,9 @@
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 113,
+    "count": 131,
     "total_dashboards": 114,
     "total_built": 114
   },
-  "count": 130
+  "count": 131
 }

@@ -163,6 +163,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/tele-rehab">&#x1f4f9; Tele-Rehab</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/copm-fim">&#x1f4cb; COPM/FIM Instruments</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/rehab-goals">&#x1f3af; Rehab Goal Tracking</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/home-program">&#x1f3e0; Home Program Builder</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/daily-plans">&#x1f4c5; Daily Plans</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/multimodal-fusion">&#x1f52c; Multimodal Fusion</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/phase2-multimodal">&#x1f4ca; Phase 2 Multimodal</Link></li>

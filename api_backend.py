@@ -21249,6 +21249,30 @@ def api_aed_polypharmacy_definitions():
     return _json_safe(pd_mod.definitions())
 
 
+@app.get("/api/home-program/overview")
+def api_home_program_overview():
+    """OT Home Program Builder overview — fleet KPIs: 30 patients, 311 rehab plans,
+    per-category exercise adherence, education module progress, daily plan completion."""
+    import scripts.home_program_dashboard as hpd
+    return _json_safe(hpd.overview())
+
+
+@app.get("/api/home-program/breakdown")
+def api_home_program_breakdown():
+    """Per-patient home programs: prescribed exercises by goal category, session adherence,
+    education modules, daily plan stats, adherence grade (A-D)."""
+    import scripts.home_program_dashboard as hpd
+    return _json_safe(hpd.breakdown())
+
+
+@app.get("/api/home-program/definitions")
+def api_home_program_definitions():
+    """Home program glossary: HEP, ADL restoration, fine motor rehab, seizure safety
+    modifications, session adherence grade, AOTA/ILAE references."""
+    import scripts.home_program_dashboard as hpd
+    return _json_safe(hpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
