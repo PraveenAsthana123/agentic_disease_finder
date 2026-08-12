@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 148 dashboards",
+  "note": "Total: 149 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1910,14 +1910,14 @@
     }
   ],
   "summary": {
-    "total": 146,
-    "built": 146,
+    "total": 149,
+    "built": 149,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 146,
-    "total_dashboards": 146,
-    "total_built": 146
+    "count": 149,
+    "total_dashboards": 149,
+    "total_built": 149
   },
-  "count": 146
+  "count": 149
 }

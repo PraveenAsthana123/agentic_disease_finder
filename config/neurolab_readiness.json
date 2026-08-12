@@ -1,7 +1,7 @@
 {
   "title": "NeuroLab AI \u2014 Deployment Readiness & Business Case",
   "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
-  "updated_at": "2026-08-11",
+  "updated_at": "2026-08-12",
   "stakeholders": [
     {
       "role": "Neurologist",
@@ -92,11 +92,11 @@
         "scheduling (/api/appointments/* + AppointmentsDashboard.jsx)",
         "billing/claims (/api/billing-claims/* + BillingClaimsDashboard.jsx)",
         "consent management (/api/consent/* + ConsentDashboard.jsx)",
-        "HIPAA audit pack (/api/hipaa-audit/* + HIPAAAuditDashboard.jsx)"
+        "HIPAA audit pack (/api/hipaa-audit/* + HIPAAAuditDashboard.jsx)",
+        "insurance pre-auth (/api/insurance-preauth/* + portal-next/app/insurance-preauth/page.jsx \u2014 114 requests, 39 patients, 7 payers, 62.3% approval rate, 14% denial rate, avg decision 19.2 days, 3 endpoints verified 200)"
       ],
       "missing": [
-        "multi-user auth/RBAC",
-        "insurance pre-auth"
+        "multi-user auth/RBAC"
       ]
     }
   ],
@@ -319,15 +319,14 @@
       "phase": "4. Business",
       "scope": "billing, patient portal, analytics",
       "status": "built",
-      "note": "All business items built \u2014 billing/claims, patient portal, analytics dashboards all live.",
+      "note": "All business items built \u2014 billing/claims, patient portal, analytics dashboards all live. Insurance pre-auth dashboard built 2026-08-12.",
       "built": [
         "billing/claims (/api/billing-claims/*)",
         "patient portal (/api/portal-tabs/*)",
-        "analytics (multiple dashboards)"
+        "analytics (multiple dashboards)",
+        "insurance pre-auth (/api/insurance-preauth/* + portal-next/app/insurance-preauth/page.jsx)"
       ],
-      "missing": [
-        "insurance pre-auth (admin-level, low priority)"
-      ]
+      "missing": []
     },
     {
       "phase": "5. Regulatory",
