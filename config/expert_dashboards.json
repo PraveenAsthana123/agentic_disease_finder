@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 160 dashboards",
+  "note": "Total: 161 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -2055,6 +2055,23 @@
       "frontend": "portal-next/app/tle/page.jsx",
       "data_source": "patients (41 patients, deterministic TLE overlay), curated pharmacology/etiology/seizure-type/trigger catalogs",
       "note": "TLE (most common focal epilepsy \u2014 ~60% of focal, ~30% of all epilepsies, drug resistance ~30\u201340%) \u2014 41-patient cohort, 6-class etiology catalog (HS 50%/low-grade tumor 15%/FCD 10%/post-encephalitic 10%/genetic LGI1-DEPDC5 8%/cryptogenic 7%), 4 seizure types (FAS 80%/FIAS 90%/FBTCS 50%/subclinical 30%) with EEG correlates+clinical tips, 8 triggers (missed AED dose 70%/sleep deprivation 68%/stress 65%/fever 55%/alcohol 45%/catamenial 30%/exertion 25%/photosensitivity 10%), 8 treatments (CBZ Level A/LTG Level A/LEV Level B/OXC Level A/Lacosamide Level A add-on/ESL Level A add-on/temporal lobectomy Level A NEJM/KD Level B), 4 AED monitoring items (CBZ enzyme+hyponatremia+HLA-B*1502/LTG SJS slow titration/LEV behavioural/LCM cardiac PR ECG), 6-window lifecycle trajectory (childhood/adolescent/young adult/childbearing/middle adult/older adult), 14 concepts (TLE/MTLE/HS/FAS/FIAS/FBTCS/Aura/Automatism/D\u00e9j\u00e0 vu/Engel/ADTLE/DRE/SEEG/SUDEP/HFO), 6 standards (ILAE 2022/NICE NG217/AAN Surgical 2003/ILAE Surgical 2017/ILAE DRE 2010/FDA LCM 2008), 6 thresholds (DRE \u22652 AED failures/CBZ TDM 4\u201312/LTG-VPA 50%/MTLE-HS 60\u201370% Engel I/driving 12M/folic acid 5mg), 6 references (Wiebe 2001 NEJM/Engel 2012 NEJM ERSET/Helmstaedter 2003 Lancet/Jobst 2015 JAMA Neurol/Ryvlin 2018 Lancet Neurol/Scheffer 2022 Epilepsia), 5-tab frontend (Overview/Patients & Etiology/Seizure Types & Surgery/Treatments/Definitions), 3 endpoints /api/tle/overview|breakdown|definitions verified 200, portal-next/app/tle/page.jsx + SiteNav wired next to JME, expert_dashboards.json count 159->160",
+      "built_at": "2026-08-12"
+    },
+    {
+      "id": "fle",
+      "name": "Frontal Lobe Epilepsy (FLE)",
+      "status": "built",
+      "route": "/fle",
+      "api_base": "/api/fle",
+      "endpoints": [
+        "/api/fle/overview",
+        "/api/fle/breakdown",
+        "/api/fle/definitions"
+      ],
+      "script": "scripts/fle_dashboard.py",
+      "frontend": "portal-next/app/fle/page.jsx",
+      "data_source": "patients (41 patients, deterministic FLE overlay), curated pharmacology/etiology/seizure-type/trigger catalogs",
+      "note": "FLE (2nd most common focal epilepsy ~20-30% of focal epilepsies, drug resistance ~30-40%) - 41-patient cohort, 6-class etiology catalog (FCD 35%/tumor 18%/post-traumatic 12%/genetic ADNFLE-DEPDC5-KCNT1 20%/post-infectious/vascular 10%/cryptogenic 5%), 4 seizure types (Hypermotor 70%/FAS-SMA 55%/FIAS 40%/FBTCS 50%) with EEG correlates+clinical tips, 8 triggers (sleep deprivation 75%/missed AED dose 65%/fatigue 50%/stress 60%/alcohol 45%/fever 35%/catamenial 20%/exertion 15%), 8 treatments (CBZ Level A/LTG Level A/LEV Level B/OXC Level A/Lacosamide Level A add-on/Perampanel Level A add-on/frontal lobectomy Level A/KD Level B), 4 AED monitoring items (CBZ enzyme+HLA-B*1502+TDM/LTG SJS+VPA interaction/LCM cardiac PR ECG/PER REMS+aggression PHQ-9), 6-window lifecycle trajectory (childhood/adolescent/young adult/childbearing/middle adult/older adult), 14 concepts (FLE/ADNFLE/Hypermotor Seizure/FCD/SMA Seizure/Jacksonian March/SEEG/Frontal Lobectomy/DEPDC5/KCNT1/Engel Classification/mTOR/LVFA/SUDEP), 6 standards (ILAE 2022/NICE NG217/ILAE 2006/FDA Perampanel REMS 2012/ILAE Surgical 2017/European ADNFLE 2015), 6 thresholds (DRE >=2 AED failures/CBZ TDM 4-12/LTG-VPA 50%/FLE surgical Engel I 50-60%/driving 12M/folic acid 5mg), 6 references (Jeha 2007 Epilepsia/Englot 2011 J Neurosurg/Scheffer 1995 Lancet/Baulac 2015 Nat Genet/Wirrell 2022 Epilepsia/Bernhardt 2016 Nat Rev Neurol), 5-tab frontend (Overview/Patients & Etiology/Seizure Types & Surgery/Treatments/Definitions), 3 endpoints /api/fle/overview|breakdown|definitions verified 200, portal-next/app/fle/page.jsx + SiteNav wired next to TLE, expert_dashboards.json count 160->161",
       "built_at": "2026-08-12"
     }
   ],

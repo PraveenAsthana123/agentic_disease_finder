@@ -21892,6 +21892,42 @@ async def tle_definitions():
     return _json_safe(td.definitions())
 
 
+@app.get("/api/fle/overview")
+async def fle_overview():
+    """FLE Dashboard — overview: 41-patient FLE cohort, bimodal onset (childhood + young adult),
+    drug resistance ~30–40%, 6-class etiology distribution (FCD 35%/Tumor 18%/Post-traumatic 12%/
+    Genetic ADNFLE-DEPDC5-KCNT1 20%/Post-infectious/vascular 10%/Cryptogenic 5%),
+    4 seizure types (Hypermotor 70%/FAS-SMA 55%/FIAS 40%/FBTCS 50%), 8 triggers,
+    6 clinical alerts (enzyme inducers OCP/SEEG referral/SUDEP-FBTCS/LCM cardiac/PER psychiatric/ADNFLE nocturnal)."""
+    import scripts.fle_dashboard as fd
+    return _json_safe(fd.overview())
+
+
+@app.get("/api/fle/breakdown")
+async def fle_breakdown():
+    """FLE Dashboard — breakdown: per-patient table (onset age/seizure types/etiology/semiology/AED regimen/
+    control/nocturnal/catamenial/post-surgical/years on AED), 6-class etiology catalog (FCD/tumor/
+    post-traumatic/genetic/post-infectious/cryptogenic) with mechanism+MRI+surgical outcome,
+    4 seizure types with EEG correlates+clinical tips, 8 triggers, 8 treatments (CBZ/LTG/LEV/OXC/LCM/
+    PER/frontal lobectomy/KD) with dose/MOA/efficacy/safety/evidence level, 4 AED monitoring items
+    (CBZ enzyme+HLA-B*1502/LTG SJS+VPA interaction/LCM cardiac PR/PER REMS+aggression),
+    6-window lifecycle trajectory, 6 standards, 6 thresholds, 6 references
+    (Jeha 2007/Englot 2011/Scheffer 1995/Baulac 2015/Wirrell 2022/Bernhardt 2016)."""
+    import scripts.fle_dashboard as fd
+    return _json_safe(fd.breakdown())
+
+
+@app.get("/api/fle/definitions")
+async def fle_definitions():
+    """FLE Dashboard — definitions: 14 concepts (FLE/ADNFLE/Hypermotor Seizure/FCD/SMA Seizure/
+    Jacksonian March/SEEG/Frontal Lobectomy/DEPDC5/KCNT1/Engel Classification/mTOR/LVFA/SUDEP),
+    6 standards (ILAE 2022/NICE NG217/ILAE 2006/FDA Perampanel REMS/ILAE Surgical 2017/European ADNFLE 2015),
+    6 thresholds (DRE ≥2 AED failures/CBZ TDM 4–12/LTG-VPA 50% reduction/FLE surgical Engel I 50-60%/
+    driving 12M/folic acid 5mg), 6 references."""
+    import scripts.fle_dashboard as fd
+    return _json_safe(fd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
