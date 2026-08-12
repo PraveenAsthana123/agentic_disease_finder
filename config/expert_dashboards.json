@@ -1522,6 +1522,19 @@
       "status": "built",
       "tabs": 4,
       "description": "71 patients, 185 behavioral events, 8 semiology categories (Aura/Motor/Dialeptic/Autonomic/Language/Automatism/Postictal/Other), EEG-semiology lateralization concordance, onset zone \u00d7 semiology matrix, L\u00fcders 1998 + ILAE 2017 references, 4-tab frontend (Overview/Onset Zone Matrix/Per Patient/Definitions), 3 endpoints /api/video-correlation/overview|breakdown|definitions verified 200, portal-next/app/video-correlation/page.jsx + SiteNav wired next to Video EEG, report_layout.json video component planned\u2192built"
+    },
+    {
+      "id": "cssrs_dashboard",
+      "name": "C-SSRS Suicide Severity Dashboard",
+      "route": "/cssrs-dashboard",
+      "status": "built",
+      "endpoints": [
+        "/api/cssrs-dashboard/overview",
+        "/api/cssrs-dashboard/breakdown",
+        "/api/cssrs-dashboard/definitions"
+      ],
+      "frontend": "portal-next/app/cssrs-dashboard/page.jsx",
+      "description": "54 assessments, 20 patients, avg score 3.5/31, ideation rate 29.6%, risk distribution (none 38/low 10/moderate 5/high 1), 6 active safety alerts, 6 C-SSRS screening items, 5 intensity dimensions, monthly trend, risk transitions, patient history, 5-tab frontend (Overview/Screening Items/Per Patient/Monthly Trend/Definitions), 3 endpoints /api/cssrs-dashboard/overview|breakdown|definitions verified 200, portal-next/app/cssrs-dashboard/page.jsx + SiteNav wired next to PHQ-9, Christensen 2007 + Posner 2011 + Hesdorffer 2012 + FDA 2008 references"
     }
   ],
   "summary": {
@@ -1534,5 +1547,5 @@
     "total_dashboards": 113,
     "total_built": 113
   },
-  "count": 122
+  "count": 123
 }
