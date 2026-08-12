@@ -21972,6 +21972,42 @@ async def cae_definitions():
     return _json_safe(cd.definitions())
 
 
+@app.get("/api/ple/overview")
+async def ple_overview():
+    """PLE Dashboard — overview: 41-patient PLE cohort, somatosensory aura + body-schema disturbances,
+    5-class etiology catalog (FCD IIb 35%/Low-Grade Tumour 22%/Post-Traumatic 15%/Genetic DEPDC5 18%/Vascular 10%),
+    4 seizure types (FAS-Somatosensory Aura 70%/FIAS-Body Schema 45%/FIAS-Versive+Tonic 55%/FBTCS 40%),
+    6 clinical alerts (SCN8A sodium-channel-blocker worsening/Vigabatrin VF contraindication/
+    LCM ECG mandatory/SEEG misdiagnosis warning/SUDEP counselling/somatosensory aura documentation)."""
+    import scripts.ple_dashboard as pd_
+    return _json_safe(pd_.overview())
+
+
+@app.get("/api/ple/breakdown")
+async def ple_breakdown():
+    """PLE Dashboard — breakdown: per-patient table (onset age/etiology/primary seizure/AED/
+    seizure control/somatosensory aura/body schema/surgical candidate/Todd's paresis/catamenial),
+    5-class etiology catalog (FCD IIb/Low-Grade Tumour/Post-Traumatic/DEPDC5 Genetic/Vascular),
+    4 seizure types with EEG correlates + clinical tips, 8 triggers with mechanism + management,
+    8 treatments (CBZ/LTG/LEV/OXC/LCM/PER/Parietal Cortectomy/KD) with dose+MOA+efficacy+safety+monitoring,
+    4 AED monitoring items (CBZ/OXC HLA-B*1502+TDM+Na/LTG SJS+titration+pregnancy/LCM ECG PR/PER REMS+psychiatric),
+    6-window lifecycle (infancy FCD/school-age/adolescence SEEG/young-adult childbearing/middle-adult bone/older-adult),
+    6 standards (ILAE 2017/NICE NG217/ILAE Surgical 2017/FDA HLA-B*1502/FDA PER REMS/AAN TBI 2014),
+    8 thresholds (DRE/CBZ TDM/OXC MHD/LTG range/LCM PR/driving 12M/folic acid/Na stop),
+    6 references (Kim 2004/Salanova 1995/Ryvlin 2006/Blanke 2002/Blume 2001/Binder 2009)."""
+    import scripts.ple_dashboard as pd_
+    return _json_safe(pd_.breakdown())
+
+
+@app.get("/api/ple/definitions")
+async def ple_definitions():
+    """PLE Dashboard — definitions: 14 concepts (PLE/Somatosensory Aura/Jacksonian March/OBE-Autoscopy/
+    TPJ/SEEG/FCD IIb/GLUT-1/Todd's Paresis/HFOs/DEPDC5-GATOR1/Engel Classification/Penfield Homunculus/
+    Awake Craniotomy/SUDEP), 8 thresholds, 6 references."""
+    import scripts.ple_dashboard as pd_
+    return _json_safe(pd_.definitions())
+
+
 @app.get("/api/ole/overview")
 async def ole_overview():
     """OLE Dashboard — overview: 41-patient OLE cohort, visual aura + autonomic + oculomotor seizures,

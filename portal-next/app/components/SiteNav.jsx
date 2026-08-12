@@ -316,6 +316,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/fle">&#x1f9e0; Frontal Lobe Epilepsy (FLE)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cae">&#x1f9d2; Childhood Absence Epilepsy (CAE)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ole">&#x1f441;&#xfe0f; Occipital Lobe Epilepsy (OLE)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/ple">&#x1f9e0; Parietal Lobe Epilepsy (PLE)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>
