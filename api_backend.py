@@ -21603,6 +21603,33 @@ async def esignature_definitions():
     return _json_safe(esd.definitions())
 
 
+@app.get("/api/model-calibration/overview")
+async def model_calibration_overview():
+    """Model Calibration Dashboard — overview: ECE, Brier Score, confidence distribution,
+    calibration verdict, model type summary, TRIPOD-AI Item 22 compliance.
+    224 model runs × 133 clinical analyses. Reference: Collins BMJ 2024, Van Calster 2019."""
+    import scripts.model_calibration_dashboard as mcd
+    return _json_safe(mcd.overview())
+
+
+@app.get("/api/model-calibration/breakdown")
+async def model_calibration_breakdown():
+    """Model Calibration Dashboard — breakdown: per-model-type calibration,
+    per-dataset analysis, disease-level confidence, reliability diagram bins,
+    top-15 model runs with full metrics."""
+    import scripts.model_calibration_dashboard as mcd
+    return _json_safe(mcd.breakdown())
+
+
+@app.get("/api/model-calibration/definitions")
+async def model_calibration_definitions():
+    """Model Calibration Dashboard — definitions: 10 concepts (ECE/Brier/reliability
+    diagram/overconfidence/TRIPOD-AI/AUC/Platt scaling/isotonic regression/confidence
+    score/calibration), 3 standards, 6 thresholds."""
+    import scripts.model_calibration_dashboard as mcd
+    return _json_safe(mcd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

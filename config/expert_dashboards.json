@@ -1915,6 +1915,19 @@
       "api": "/api/datasets/overview + /api/datasets/breakdown + /api/datasets/definitions",
       "status": "built",
       "description": "6 diseases \u00b7 10 datasets \u00b7 739 subjects \u00b7 100% real data \u00b7 avg 97.7% accuracy \u00b7 4-tab frontend (Overview/All Datasets/By Disease/Definitions)"
+    },
+    {
+      "id": "model_calibration",
+      "name": "Model Calibration",
+      "role": "Data Scientist / DBA Researcher / Clinical AI Governance",
+      "status": "built",
+      "route": "/model-calibration",
+      "api": [
+        "/api/model-calibration/overview",
+        "/api/model-calibration/breakdown",
+        "/api/model-calibration/definitions"
+      ],
+      "note": "TRIPOD-AI Item 22 calibration reporting: ECE, Brier Score, reliability diagram, per-model-type calibration gaps, per-disease confidence analysis, 224 model runs \u00d7 133 clinical analyses. 4-tab frontend (Overview/Reliability/Per Model/Definitions). Built 2026-08-12."
     }
   ],
   "summary": {
