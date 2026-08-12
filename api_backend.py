@@ -21430,6 +21430,33 @@ async def ai_advisor_definitions():
     return _json_safe(aad.definitions())
 
 
+@app.get("/api/governance-advisor/overview")
+async def governance_advisor_overview():
+    """Governance Advisor overview — consent posture (246 records, 6 types), AI override rate,
+    HITL coverage 100%, SOP compliance avg, regulatory pathway status, audit trail KPIs,
+    governance threshold pass/fail dashboard."""
+    import scripts.governance_advisor_dashboard as gad
+    return _json_safe(gad.overview())
+
+
+@app.get("/api/governance-advisor/breakdown")
+async def governance_advisor_breakdown():
+    """Governance Advisor breakdown — per-reviewer override detail, expiring consents,
+    SOP procedures table (20 SOPs), SOP audit findings (30), regulatory submissions,
+    audit trail actions, monthly audit trend, validation studies."""
+    import scripts.governance_advisor_dashboard as gad
+    return _json_safe(gad.breakdown())
+
+
+@app.get("/api/governance-advisor/definitions")
+async def governance_advisor_definitions():
+    """Governance Advisor definitions — 10 governance concepts (HITL/override/consent/DPIA/
+    fairness/de-identification/EU AI Act/NIST RMF), 10 frameworks (EU MDR/AI Act/ISO 14971/
+    IEC 62304/ICMR/DPDP/HIPAA/ICH-GCP), 6 performance thresholds, 5 references."""
+    import scripts.governance_advisor_dashboard as gad
+    return _json_safe(gad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

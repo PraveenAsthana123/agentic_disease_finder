@@ -696,7 +696,16 @@
           "challenge": "Audit completeness",
           "ai": "Auto decision-audit rows (UTC+local timestamp)"
         }
-      ]
+      ],
+      "ai_advisor": {
+        "status": "built",
+        "route": "/governance-advisor",
+        "endpoints": [
+          "/api/governance-advisor/overview",
+          "/api/governance-advisor/breakdown",
+          "/api/governance-advisor/definitions"
+        ]
+      }
     },
     {
       "id": "methodology_advisor",

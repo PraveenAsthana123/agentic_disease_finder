@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 142 dashboards",
+  "note": "Total: 143 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1799,6 +1799,34 @@
         "hitl_reviews"
       ],
       "description": "133 analyses, 224 model experiments, 42 validation studies, 126 multimodal fusion sessions \u2014 AI/ML lifecycle advisor"
+    },
+    {
+      "id": "governance_advisor",
+      "name": "Governance Advisor Dashboard",
+      "route": "/governance-advisor",
+      "status": "built",
+      "description": "Responsible AI / Ethics / Regulatory Oversight \u2014 consent posture (246 records, 6 types), AI override rate 30.7%, HITL 100%, SOP compliance avg, regulatory pathway status, audit trail KPIs, governance threshold pass/fail.",
+      "api_endpoints": [
+        "/api/governance-advisor/overview",
+        "/api/governance-advisor/breakdown",
+        "/api/governance-advisor/definitions"
+      ],
+      "tabs": [
+        "Overview",
+        "Consent & Privacy",
+        "AI Oversight & HITL",
+        "Regulatory & SOPs",
+        "Definitions"
+      ],
+      "frameworks": [
+        "EU AI Act 2024",
+        "NIST AI RMF 1.0",
+        "ISO 14971",
+        "IEC 62304",
+        "ICMR 2017",
+        "DPDP Act 2023",
+        "HIPAA"
+      ]
     }
   ],
   "summary": {
