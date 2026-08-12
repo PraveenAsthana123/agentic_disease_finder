@@ -22225,6 +22225,42 @@ async def rasmussen_definitions():
     return _json_safe(rd_.definitions())
 
 
+@app.get("/api/fires/overview")
+async def fires_overview():
+    """FIRES Dashboard — overview: 41-patient cohort, Febrile Infection-Related Epilepsy Syndrome,
+    5-class etiology (Unknown-neuroinflammatory 54%/Autoimmune-Ab-positive 20%/Post-infectious 12%/
+    Cryptogenic-structural 10%/Genetic-metabolic 5%), SRSE median 28 days ICU, Anakinra IL-1Ra
+    key immunotherapy, KD Level B acute/Level A chronic, POLG-VPA absolute CI,
+    clinical alerts (POLG/PRIS/burst-suppression/anakinra-day5/KD-simultaneous)."""
+    import scripts.fires_dashboard as fd_
+    return _json_safe(fd_.overview())
+
+
+@app.get("/api/fires/breakdown")
+async def fires_breakdown():
+    """FIRES Dashboard — breakdown: per-patient table (41 records with id/age/sex/onset_age/
+    etiology/seizure_type/current_treatment/seizure_control/disease_phase/srse_duration_days/
+    icu_days/kd_on_kd/anakinra), 5-class etiology catalog with mechanism+EEG+MRI+clinical_note,
+    4 seizure types (Focal Motor/SRSE 100%/Tonic-GTCS 75%/Chronic-focal 90%) with EEG+tip,
+    8 triggers (febrile illness 100%/sleep deprivation 70%/missed immunotherapy 60%/fever-relapse 80%/
+    URTI 65%/GI illness 30%/stress 25%/vaccination 5%), 8 treatments (Anakinra Level B/KD Level A-chronic/
+    IVIG Level C/PLEX Level C/Steroids Level C/Tocilizumab Level C/Ketamine Level C/Rituximab Level B-Ab+)
+    with dose+MOA+efficacy+safety+monitoring, monitoring protocol (cEEG/CSF-cytokines/MRI-serial/
+    neuropsychology/BHB/HBV-screening), 6-window lifecycle, 6 standards, 8 thresholds."""
+    import scripts.fires_dashboard as fd_
+    return _json_safe(fd_.breakdown())
+
+
+@app.get("/api/fires/definitions")
+async def fires_definitions():
+    """FIRES Dashboard — definitions: 14 concepts (FIRES/NORSE/SRSE/NLRP3-Inflammasome/IL-1beta/
+    Anakinra/Burst-Suppression/Delta-Brush/LPD-GPD/KD/ESES/PRIS/FCD/SUDEP),
+    5 contraindications (VPA-POLG/Propofol-PRIS/Live-vaccines/Rituximab-no-HBV/Na-channel-blockers-SCN1A),
+    8 thresholds, 6 references."""
+    import scripts.fires_dashboard as fd_
+    return _json_safe(fd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

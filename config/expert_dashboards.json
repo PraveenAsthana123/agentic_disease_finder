@@ -2183,13 +2183,26 @@
       "status": "built",
       "category": "epilepsy_syndromes",
       "description": "41-patient cohort, 5-class etiology catalog (T-cell GluR3/AMPA 45%/Seronegative 25%/GluD2 7%/Viral-trigger 15%/NMDAR-overlap 8%), EPC pathognomonic, hemispherectomy/hemispherotomy Level A definitive (Engel I 52-65%), 8 treatments, 14 concepts, 5 contraindications",
-      "api_endpoints": ["/api/rasmussen/overview", "/api/rasmussen/breakdown", "/api/rasmussen/definitions"],
+      "api_endpoints": [
+        "/api/rasmussen/overview",
+        "/api/rasmussen/breakdown",
+        "/api/rasmussen/definitions"
+      ],
       "frontend_component": "portal-next/app/rasmussen/page.jsx",
       "endpoints": [
         "/api/rasmussen/overview",
         "/api/rasmussen/breakdown",
         "/api/rasmussen/definitions"
       ]
+    },
+    {
+      "name": "FIRES (Febrile Infection-Related Epilepsy Syndrome)",
+      "category": "Epilepsy Syndromes",
+      "status": "built",
+      "route": "/fires",
+      "api_route": "/api/fires/{overview,breakdown,definitions}",
+      "component": "FIRESDashboard",
+      "note": "41-patient FIRES cohort, 5-class etiology (Unknown-neuroinflammatory 54%/Autoimmune-Ab-positive 20%/Post-infectious 12%/Cryptogenic-structural 10%/Genetic-metabolic 5%), 4 seizure types (Focal-motor-SRSE 100%/SRSE 100%/Tonic-GTCS 75%/Chronic-focal 90%), 8 triggers (febrile-illness 100%/fever-relapse 80%/sleep-deprivation 70%/missed-immunotherapy 60%/URTI 65%/GI-illness 30%/stress 25%/vaccination 5%), 8 treatments (Anakinra Level B/KD Level A-chronic/IVIG Level C/PLEX Level C/Steroids Level C/Tocilizumab Level C/Ketamine Level C/Rituximab Level B-Ab+), ABSOLUTE CIs (POLG-VPA/PRIS-propofol/live-vaccines/rituximab-no-HBV), 6-window lifecycle, 14 concepts, 6 standards, 8 thresholds, 6 references, 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints verified 200"
     }
   ],
   "summary": {
