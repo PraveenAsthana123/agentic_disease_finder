@@ -21810,6 +21810,47 @@ async def west_syndrome_definitions():
     return _json_safe(wd.definitions())
 
 
+@app.get("/api/jme/overview")
+async def jme_overview():
+    """JME Dashboard — overview: 41-patient JME cohort, avg onset age 12–18 years, seizure-free rate,
+    drug-resistant rate, photosensitive rate, catamenial rate, genetic variant distribution (GABRA1/EFHC1/
+    CLCN2/CACNB4/SCN1A-SCN2A-GABRD/Polygenic), AED regimen distribution (levetiracetam mono/valproate mono/
+    combination regimens), seizure control distribution (Seizure-free/Improved/Partial/Drug-resistant),
+    4 seizure types (myoclonic jerks/GTCS/absence/photosensitive PPR) + 8 triggers (sleep deprivation 90%/
+    alcohol 65%/missed dose 55%/stress 45%/photosensitivity 35%/catamenial 30%/fever 20%/caffeine 15%),
+    6 clinical alerts (ABSOLUTE contraindication list/REMS/lifelong tx/driving)."""
+    import scripts.jme_dashboard as jd
+    return _json_safe(jd.overview())
+
+
+@app.get("/api/jme/breakdown")
+async def jme_breakdown():
+    """JME Dashboard — breakdown: per-patient table (onset age/seizure types/genetic variant/AED regimen/
+    seizure control/photosensitive/catamenial/years on AED), genetic catalog (6 classes: GABRA1 18%/EFHC1 9%/
+    CLCN2 7%/CACNB4 5%/SCN1A-GABRD 4%/Polygenic 57%), 4 seizure types (MJ/GTCS/Absence/PPR) with EEG correlates +
+    triggers + first-line AED, 8 triggers with frequency/mechanism/mitigation, 8 treatments (Valproate/
+    Levetiracetam/Lamotrigine/Topiramate/Zonisamide/Clobazam/Perampanel/Clonazepam) with dose/MOA/efficacy/safety/
+    evidence level, 6 ABSOLUTE CONTRAINDICATIONS (Carbamazepine/Oxcarbazepine/Phenytoin/Phenobarbital/Vigabatrin/
+    Tiagabine) with mechanism+consequence, 4 AED monitoring items (Valproate REMS+TDM/Levetiracetam mood/
+    Lamotrigine SJS/Perampanel REMS), 6-window lifecycle trajectory (pre-onset/adolescent onset/young adult/
+    childbearing/middle adult/older adult), 6 standards (ILAE 2022/NICE NG217/FDA Valproate REMS/FDA Perampanel
+    2018/SANAD-II/EAN Consensus 2013), 6 thresholds, 6 references (Genton 2000/Camfield 2009/SANAD-II 2021/
+    ELEVATE 2015/Kasteleijn-Nolst 2012/Baykan 2008)."""
+    import scripts.jme_dashboard as jd
+    return _json_safe(jd.breakdown())
+
+
+@app.get("/api/jme/definitions")
+async def jme_definitions():
+    """JME Dashboard — definitions: 14 concepts (JME/myoclonic jerk/GSW-GPSW/PPR/GGE/SANAD-II/ELEVATE/
+    Valproate REMS/sleep deprivation threshold/catamenial JME/GABRA1/AED aggravation/lifelong treatment/SUDEP),
+    6 standards (ILAE 2022/NICE NG217/FDA Valproate REMS/FDA Perampanel 2018/SANAD-II/EAN 2013),
+    6 thresholds (Valproate REMS interval/LTG titration/LTG-VPA interaction/JME relapse/driving/folic acid dose),
+    6 references."""
+    import scripts.jme_dashboard as jd
+    return _json_safe(jd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

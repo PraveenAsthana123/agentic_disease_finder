@@ -2022,6 +2022,23 @@
       ],
       "frontend": "portal-next/app/west-syndrome/page.jsx",
       "built_note": "West Syndrome Dashboard \u2014 41-patient IS cohort, 6-class etiology catalog (TSC 22%/brain malformation 20%/HIE 18%/genetic 25%/metabolic 5%/unknown 10%), 4 EEG features (hypsarrhythmia/modified/electrodecrement/burst-suppression), 7 treatments (ACTH/Prednisolone/Vigabatrin/Combo/Pyridoxine/Ketogenic Diet/Everolimus), SHARE REMS visual monitoring, UKISS 2004/INFANTIS trial data, 6 clinical alerts, 14 concepts, 6 standards (ILAE 2022/NICE NG217/FDA SHARE REMS/AAP 2012/TSC Consensus 2021/ICISS), 6 thresholds, 6 references (Lux 2004/O'Callaghan 2011/Knupp 2016/Capal 2021/French 2016/Mytinger 2020), 5-tab frontend (Overview/Patients & Etiologies/EEG & Monitoring/Treatments/Definitions), 3 endpoints /api/west-syndrome/overview|breakdown|definitions, portal-next/app/west-syndrome/page.jsx + SiteNav wired next to LGS, expert_dashboards.json count 157\u2192158"
+    },
+    {
+      "id": "jme",
+      "name": "Juvenile Myoclonic Epilepsy (JME)",
+      "status": "built",
+      "route": "/jme",
+      "api_base": "/api/jme",
+      "endpoints": [
+        "/api/jme/overview",
+        "/api/jme/breakdown",
+        "/api/jme/definitions"
+      ],
+      "script": "scripts/jme_dashboard.py",
+      "frontend": "portal-next/app/jme/page.jsx",
+      "data_source": "patients (41 patients, deterministic JME overlay), curated pharmacology/genetics/seizure-type/trigger catalogs",
+      "note": "JME (5-10% of all epilepsies) \u2014 41-patient cohort, 6-class genetic catalog (GABRA1 18%/EFHC1 9%/CLCN2 7%/CACNB4 5%/SCN1A-GABRD 4%/Polygenic 57%), 4 seizure types (MJ 100%/GTCS 95%/Absence 30%/Photosensitive PPR 35%), 8 triggers (sleep deprivation 90%/alcohol 65%/missed dose 55%), 8 treatments (Valproate/Levetiracetam/Lamotrigine/Topiramate/Zonisamide/Clobazam/Perampanel/Clonazepam), 6 ABSOLUTE CONTRAINDICATIONS (CBZ/OXC/PHT/PB/VGB/TGB), 4 AED monitoring items, 6-window lifecycle, 14 concepts, 6 standards (ILAE 2022/NICE NG217/FDA Valproate REMS/FDA Perampanel 2018/SANAD-II/EAN 2013), 6 thresholds, 6 references (Genton 2000/Camfield 2009/SANAD-II 2021/ELEVATE 2015/Kasteleijn-Nolst 2012/Baykan 2008), 5-tab frontend (Overview/Patients & Genetics/Seizure Types & Triggers/Treatments/Definitions), 3 endpoints /api/jme/overview|breakdown|definitions verified 200, portal-next/app/jme/page.jsx + SiteNav wired next to West Syndrome, expert_dashboards.json count 158->159",
+      "built_at": "2026-08-12"
     }
   ],
   "summary": {
