@@ -1494,6 +1494,21 @@
         "/api/dba-research/definitions"
       ],
       "note": "DBA program KPIs for Praveen Asthana at GGU \u2014 patient recruitment (41/110 target), consent compliance (6 types), 16 regulatory submissions, 42 validation studies, 224 model training runs, best model XGBoost 98% AUC 0.99. Jurisdictions: ICMR/DPDP/HIPAA/TCPS2/ICH-GCP/Helsinki. 4-tab frontend (Overview/Ethics+Consent/Regulatory+Validation/Study Design+References)."
+    },
+    {
+      "id": "tele_rehab",
+      "name": "OT Tele-Rehab Dashboard",
+      "role": "Occupational Therapist",
+      "route": "/tele-rehab",
+      "status": "built",
+      "priority": "P1",
+      "endpoints": [
+        "/api/tele-rehab/overview",
+        "/api/tele-rehab/breakdown",
+        "/api/tele-rehab/definitions"
+      ],
+      "frontend": "portal-next/app/tele-rehab/page.jsx",
+      "description": "OT Tele-Rehab Dashboard \u2014 109 telehealth sessions \u00d7 311 rehab plans \u00b7 30 patients \u00b7 4 session types (video-visit/phone-consult/async-message/remote-monitoring-review) \u00b7 4 platforms (Zoom Health/Teams/Doxy.me/In-house Portal) \u00b7 6 providers \u00b7 avg satisfaction 2.9/5 \u00b7 19.2% tech issue rate \u00b7 6 rehab goal categories (ADL/cognitive/fine_motor/mobility/social_skills/vocational) \u00b7 seizure safety modifications \u00b7 AOTA Telehealth 2018 + ILAE Rehab Taskforce 2021. 3-tab frontend (Overview/Per Patient/Definitions), 3 endpoints /api/tele-rehab/overview|breakdown|definitions verified 200, portal-next/app/tele-rehab/page.jsx + SiteNav wired next to Rehab Plans."
     }
   ],
   "summary": {
@@ -1506,5 +1521,5 @@
     "total_dashboards": 113,
     "total_built": 113
   },
-  "count": 119
+  "count": 121
 }

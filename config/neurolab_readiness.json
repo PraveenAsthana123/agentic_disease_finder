@@ -42,13 +42,13 @@
       "role": "Occupational Therapist",
       "icon": "\ud83d\udd90\ufe0f",
       "built": [
-        "functional-outcome tracking (partial)"
+        "functional-outcome tracking (partial)",
+        "tele-rehab sessions & rehab plan tracking (/api/tele-rehab/* + portal-next/app/tele-rehab/page.jsx \u2014 109 sessions, 311 plans, 30 patients, 4 session types, 4 platforms, 6 goal categories, seizure safety modifications, AOTA Telehealth 2018)"
       ],
       "missing": [
         "standardized instruments (COPM/FIM)",
         "rehab goal tracking",
-        "home-program builder",
-        "tele-rehab notes"
+        "home-program builder"
       ]
     },
     {

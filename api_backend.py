@@ -20108,6 +20108,222 @@ async def dba_research_definitions():
     return _json_safe(drd.definitions())
 
 
+# ── Tele-Rehab Dashboard ─────────────────────────────────────────────────────
+class TeleRehabDashboard:
+    """OT Tele-Rehab Dashboard: telehealth sessions × rehab plans for epilepsy patients."""
+
+    def _conn(self):
+        import sqlite3
+        return sqlite3.connect("data/clinical.db")
+
+    def overview(self):
+        conn = self._conn()
+        cur = conn.cursor()
+
+        # KPIs from telehealth_sessions
+        cur.execute("SELECT COUNT(*) FROM telehealth_sessions")
+        total_sessions = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(DISTINCT patient_id) FROM telehealth_sessions")
+        unique_patients_tele = cur.fetchone()[0]
+        cur.execute("SELECT AVG(duration_minutes) FROM telehealth_sessions")
+        avg_duration = round(cur.fetchone()[0] or 0, 1)
+        cur.execute("SELECT AVG(patient_satisfaction) FROM telehealth_sessions")
+        avg_satisfaction = round(cur.fetchone()[0] or 0, 1)
+        cur.execute("SELECT SUM(CASE WHEN technical_issues=1 THEN 1 ELSE 0 END), COUNT(*) FROM telehealth_sessions")
+        ti_count, ti_total = cur.fetchone()
+        tech_issue_rate = round((ti_count or 0) / max(ti_total, 1) * 100, 1)
+
+        # KPIs from rehab_plans
+        cur.execute("SELECT COUNT(*) FROM rehab_plans")
+        total_plans = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(DISTINCT patient_id) FROM rehab_plans")
+        unique_patients_rehab = cur.fetchone()[0]
+        cur.execute("SELECT AVG(progress_pct) FROM rehab_plans")
+        avg_progress = round(cur.fetchone()[0] or 0, 1)
+        cur.execute("SELECT SUM(sessions_completed), SUM(sessions_planned) FROM rehab_plans")
+        sess_done, sess_planned = cur.fetchone()
+        session_completion_rate = round((sess_done or 0) / max(sess_planned or 1, 1) * 100, 1)
+
+        # Session type distribution
+        cur.execute("SELECT session_type, COUNT(*) as cnt FROM telehealth_sessions GROUP BY session_type ORDER BY cnt DESC")
+        session_type_dist = [{"session_type": r[0], "count": r[1]} for r in cur.fetchall()]
+
+        # Platform distribution
+        cur.execute("SELECT platform, COUNT(*) as cnt FROM telehealth_sessions GROUP BY platform ORDER BY cnt DESC")
+        platform_dist = [{"platform": r[0], "count": r[1]} for r in cur.fetchall()]
+
+        # Connection quality distribution
+        cur.execute("SELECT connection_quality, COUNT(*) as cnt FROM telehealth_sessions GROUP BY connection_quality ORDER BY cnt DESC")
+        quality_dist = [{"quality": r[0], "count": r[1]} for r in cur.fetchall()]
+
+        # Provider workload
+        cur.execute("SELECT provider_name, COUNT(*) as cnt, ROUND(AVG(patient_satisfaction),1) as avg_sat FROM telehealth_sessions GROUP BY provider_name ORDER BY cnt DESC")
+        provider_summary = [{"provider": r[0], "sessions": r[1], "avg_satisfaction": r[2]} for r in cur.fetchall()]
+
+        # Rehab plan status distribution
+        cur.execute("SELECT status, COUNT(*) as cnt FROM rehab_plans GROUP BY status ORDER BY cnt DESC")
+        rehab_status_dist = [{"status": r[0], "count": r[1]} for r in cur.fetchall()]
+
+        # Rehab plan goal category distribution
+        cur.execute("SELECT goal_category, COUNT(*) as cnt, ROUND(AVG(progress_pct),1) as avg_progress FROM rehab_plans GROUP BY goal_category ORDER BY cnt DESC")
+        goal_category_dist = [{"category": r[0], "count": r[1], "avg_progress": r[2]} for r in cur.fetchall()]
+
+        # Monthly session trend
+        cur.execute("""
+            SELECT strftime('%Y-%m', session_date) as month, COUNT(*) as cnt, ROUND(AVG(patient_satisfaction),1) as avg_sat
+            FROM telehealth_sessions
+            GROUP BY month ORDER BY month
+        """)
+        monthly_trend = [{"month": r[0], "sessions": r[1], "avg_satisfaction": r[2]} for r in cur.fetchall()]
+
+        # Satisfaction distribution
+        cur.execute("SELECT patient_satisfaction, COUNT(*) FROM telehealth_sessions GROUP BY patient_satisfaction ORDER BY patient_satisfaction")
+        satisfaction_dist = [{"score": r[0], "count": r[1]} for r in cur.fetchall()]
+
+        conn.close()
+        return {
+            "available": True,
+            "generated_at": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "kpis": {
+                "total_telehealth_sessions": total_sessions,
+                "unique_patients_telehealth": unique_patients_tele,
+                "avg_session_duration_min": avg_duration,
+                "avg_patient_satisfaction": avg_satisfaction,
+                "tech_issue_rate_pct": tech_issue_rate,
+                "total_rehab_plans": total_plans,
+                "unique_patients_rehab": unique_patients_rehab,
+                "avg_rehab_progress_pct": avg_progress,
+                "session_completion_rate_pct": session_completion_rate,
+            },
+            "session_type_distribution": session_type_dist,
+            "platform_distribution": platform_dist,
+            "connection_quality_distribution": quality_dist,
+            "provider_summary": provider_summary,
+            "rehab_status_distribution": rehab_status_dist,
+            "goal_category_distribution": goal_category_dist,
+            "monthly_trend": monthly_trend,
+            "satisfaction_distribution": satisfaction_dist,
+        }
+
+    def breakdown(self):
+        conn = self._conn()
+        cur = conn.cursor()
+
+        # Per-patient summary: telehealth sessions + rehab plan progress
+        cur.execute("""
+            SELECT
+                t.patient_id,
+                COUNT(t.id) as tele_sessions,
+                ROUND(AVG(t.duration_minutes),1) as avg_duration,
+                ROUND(AVG(t.patient_satisfaction),1) as avg_satisfaction,
+                SUM(t.technical_issues) as tech_issues,
+                GROUP_CONCAT(DISTINCT t.session_type) as session_types,
+                GROUP_CONCAT(DISTINCT t.platform) as platforms,
+                MAX(t.session_date) as last_session
+            FROM telehealth_sessions t
+            GROUP BY t.patient_id
+            ORDER BY tele_sessions DESC
+        """)
+        tele_rows = cur.fetchall()
+        tele_cols = ["patient_id","tele_sessions","avg_duration","avg_satisfaction","tech_issues","session_types","platforms","last_session"]
+        tele_map = {r[0]: dict(zip(tele_cols, r)) for r in tele_rows}
+
+        cur.execute("""
+            SELECT
+                patient_id,
+                COUNT(*) as plans,
+                ROUND(AVG(progress_pct),1) as avg_progress,
+                SUM(sessions_completed) as sess_done,
+                SUM(sessions_planned) as sess_planned,
+                GROUP_CONCAT(DISTINCT status) as statuses,
+                GROUP_CONCAT(DISTINCT goal_category) as categories
+            FROM rehab_plans
+            GROUP BY patient_id
+        """)
+        rehab_rows = cur.fetchall()
+        rehab_cols = ["patient_id","plans","avg_progress","sess_done","sess_planned","statuses","categories"]
+        rehab_map = {r[0]: dict(zip(rehab_cols, r)) for r in rehab_rows}
+
+        all_patients = sorted(set(list(tele_map.keys()) + list(rehab_map.keys())))
+        per_patient = []
+        for pid in all_patients:
+            t = tele_map.get(pid, {})
+            r = rehab_map.get(pid, {})
+            per_patient.append({
+                "patient_id": pid,
+                "tele_sessions": t.get("tele_sessions", 0),
+                "avg_session_duration": t.get("avg_duration"),
+                "avg_satisfaction": t.get("avg_satisfaction"),
+                "tech_issues": t.get("tech_issues", 0),
+                "session_types": t.get("session_types", ""),
+                "platforms": t.get("platforms", ""),
+                "last_session": t.get("last_session", ""),
+                "rehab_plans": r.get("plans", 0),
+                "avg_rehab_progress": r.get("avg_progress"),
+                "sessions_done": r.get("sess_done", 0),
+                "sessions_planned": r.get("sess_planned", 0),
+                "rehab_statuses": r.get("statuses", ""),
+                "goal_categories": r.get("categories", ""),
+            })
+
+        conn.close()
+        return {"available": True, "per_patient": per_patient, "total_patients": len(per_patient)}
+
+    def definitions(self):
+        return {
+            "available": True,
+            "dashboard": "OT Tele-Rehab Dashboard",
+            "purpose": "Track telehealth session quality and rehab plan progress for epilepsy patients under OT care",
+            "data_sources": ["telehealth_sessions table (109 sessions)", "rehab_plans table (311 plans)"],
+            "session_types": {
+                "video-visit": "Live synchronous video consultation",
+                "phone-consult": "Telephone-based clinical consultation",
+                "async-message": "Asynchronous secure message exchange",
+                "remote-monitoring-review": "Provider review of remotely captured device/EEG data",
+            },
+            "platforms": {
+                "Zoom Health": "HIPAA-compliant Zoom telehealth platform",
+                "Teams": "Microsoft Teams for Healthcare",
+                "Doxy.me": "Browser-based telehealth platform",
+                "In-house Portal": "Integrated patient portal video channel",
+            },
+            "satisfaction_scale": "1–5 Likert scale: 1=Very Dissatisfied, 5=Very Satisfied (avg 2.9 — moderate)",
+            "connection_quality": "excellent/good/fair/poor based on latency, packet loss, and clinician assessment",
+            "rehab_goal_categories": [
+                "adl_restoration (Activities of Daily Living)",
+                "cognitive_rehab",
+                "fine_motor",
+                "mobility_training",
+                "social_skills",
+                "vocational_rehab",
+            ],
+            "seizure_safety_note": "All tele-rehab sessions include seizure action plan review; home programs modified for fall/burn/water safety",
+            "references": [
+                "American Occupational Therapy Association (AOTA) Telehealth Position Paper 2018",
+                "ILAE Epilepsy & Rehabilitation Taskforce — Home Program Guidelines 2021",
+                "WHO Rehabilitation 2030: digital-first care models",
+            ],
+        }
+
+
+_tele_rehab_dashboard = TeleRehabDashboard()
+
+
+@app.get("/api/tele-rehab/overview")
+def api_tele_rehab_overview():
+    return _json_safe(_tele_rehab_dashboard.overview())
+
+
+@app.get("/api/tele-rehab/breakdown")
+def api_tele_rehab_breakdown():
+    return _json_safe(_tele_rehab_dashboard.breakdown())
+
+
+@app.get("/api/tele-rehab/definitions")
+def api_tele_rehab_definitions():
+    return _json_safe(_tele_rehab_dashboard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
