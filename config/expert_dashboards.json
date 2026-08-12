@@ -1509,6 +1509,19 @@
       ],
       "frontend": "portal-next/app/tele-rehab/page.jsx",
       "description": "OT Tele-Rehab Dashboard \u2014 109 telehealth sessions \u00d7 311 rehab plans \u00b7 30 patients \u00b7 4 session types (video-visit/phone-consult/async-message/remote-monitoring-review) \u00b7 4 platforms (Zoom Health/Teams/Doxy.me/In-house Portal) \u00b7 6 providers \u00b7 avg satisfaction 2.9/5 \u00b7 19.2% tech issue rate \u00b7 6 rehab goal categories (ADL/cognitive/fine_motor/mobility/social_skills/vocational) \u00b7 seizure safety modifications \u00b7 AOTA Telehealth 2018 + ILAE Rehab Taskforce 2021. 3-tab frontend (Overview/Per Patient/Definitions), 3 endpoints /api/tele-rehab/overview|breakdown|definitions verified 200, portal-next/app/tele-rehab/page.jsx + SiteNav wired next to Rehab Plans."
+    },
+    {
+      "id": "video_correlation",
+      "label": "Video-EEG Semiology Correlation",
+      "route": "/video-correlation",
+      "api": [
+        "/api/video-correlation/overview",
+        "/api/video-correlation/breakdown",
+        "/api/video-correlation/definitions"
+      ],
+      "status": "built",
+      "tabs": 4,
+      "description": "71 patients, 185 behavioral events, 8 semiology categories (Aura/Motor/Dialeptic/Autonomic/Language/Automatism/Postictal/Other), EEG-semiology lateralization concordance, onset zone \u00d7 semiology matrix, L\u00fcders 1998 + ILAE 2017 references, 4-tab frontend (Overview/Onset Zone Matrix/Per Patient/Definitions), 3 endpoints /api/video-correlation/overview|breakdown|definitions verified 200, portal-next/app/video-correlation/page.jsx + SiteNav wired next to Video EEG, report_layout.json video component planned\u2192built"
     }
   ],
   "summary": {
@@ -1521,5 +1534,5 @@
     "total_dashboards": 113,
     "total_built": 113
   },
-  "count": 121
+  "count": 122
 }

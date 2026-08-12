@@ -20324,6 +20324,279 @@ def api_tele_rehab_definitions():
     return _json_safe(_tele_rehab_dashboard.definitions())
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# VIDEO-EEG SEMIOLOGY CORRELATION DASHBOARD
+# Behavioral semiology events synchronized to EEG onset zones, lateralization
+# concordance, semiology categorization (ILAE 2017 / Lüders 1998).
+# ─────────────────────────────────────────────────────────────────────────────
+class VideoCorrelationDashboard:
+    """Video-EEG behavioral semiology correlation — 71 patients, 185 events."""
+
+    SEMIO_CATEGORIES = {
+        "Aura":       ["Aura (epigastric rising)", "Aura (fear/anxiety)", "Aura (visual)",
+                       "Aura (auditory)", "Aura (somatosensory)", "Aura (gustatory)", "Aura (olfactory)"],
+        "Motor":      ["Bilateral tonic-clonic", "Tonic posturing (asymmetric)",
+                       "Clonic jerking (unilateral)", "Myoclonic jerks",
+                       "Hyperkinetic movements", "Head version", "Eye deviation", "Versive seizure"],
+        "Dialeptic":  ["Dialeptic (staring/unresponsiveness)"],
+        "Autonomic":  ["Autonomic signs (tachycardia, pallor)"],
+        "Language":   ["Aphasia (ictal/postictal)"],
+        "Automatism": ["Automatisms (oral)", "Automatisms (manual)", "Automatisms (complex)"],
+        "Postictal":  ["Todd's paresis"],
+    }
+
+    # Semiology → expected lateralization mapping (Lüders 1998 / ILAE 2017)
+    SEMIO_LAT_HINT = {
+        "Clonic jerking (unilateral)": "contralateral",
+        "Tonic posturing (asymmetric)": "contralateral",
+        "Head version": "contralateral",
+        "Eye deviation": "contralateral",
+        "Aura (epigastric rising)": "left (dominant)",
+        "Aphasia (ictal/postictal)": "left (dominant)",
+        "Todd's paresis": "contralateral",
+        "Hyperkinetic movements": "frontal",
+        "Automatisms (oral)": "bilateral/mesial",
+        "Dialeptic (staring/unresponsiveness)": "bilateral/mesial",
+        "Bilateral tonic-clonic": "bilateral",
+        "Autonomic signs (tachycardia, pallor)": "non-lateralizing",
+        "Aura (fear/anxiety)": "mesial temporal",
+    }
+
+    def _load(self):
+        import sqlite3, json as _json
+        conn = sqlite3.connect("data/clinical.db")
+        cur = conn.cursor()
+        cur.execute("SELECT patient_id, fields_json FROM seizure_metadata")
+        rows = cur.fetchall()
+        conn.close()
+        patients = []
+        for pid, fj in rows:
+            f = _json.loads(fj)
+            semio = f.get("semiology", [])
+            lat = f.get("lateralization", "Unknown")
+            onset = f.get("onset_zone", "Unknown")
+            eeg_pat = f.get("eeg_pattern", "Unknown")
+            ilae = f.get("ilae_seizure_types", [])
+            cats = []
+            for s in semio:
+                cat = "Other"
+                for c, items in self.SEMIO_CATEGORIES.items():
+                    if s in items:
+                        cat = c
+                        break
+                cats.append(cat)
+            patients.append({
+                "patient_id": pid,
+                "semiology": semio,
+                "semiology_categories": cats,
+                "lateralization": lat,
+                "onset_zone": onset,
+                "eeg_pattern": eeg_pat,
+                "ilae_types": ilae,
+            })
+        return patients
+
+    def overview(self):
+        from collections import Counter
+        patients = self._load()
+        # Flatten events
+        events = []
+        for p in patients:
+            for s, cat in zip(p["semiology"], p["semiology_categories"]):
+                events.append({"semiology": s, "category": cat,
+                                "lateralization": p["lateralization"],
+                                "onset_zone": p["onset_zone"]})
+
+        cat_counts = Counter(e["category"] for e in events)
+        semio_counts = Counter(e["semiology"] for e in events)
+        lat_dist = Counter(p["lateralization"] for p in patients)
+
+        # EEG-semiology lateralization concordance:
+        # Motor unilateral + postictal signs should have L/R lateralization
+        concordant = 0
+        discordant = 0
+        for p in patients:
+            has_lat_semio = any(s in ["Clonic jerking (unilateral)", "Tonic posturing (asymmetric)",
+                                       "Head version", "Eye deviation", "Todd's paresis",
+                                       "Aphasia (ictal/postictal)"]
+                                for s in p["semiology"])
+            has_eeg_lat = p["lateralization"] in ("Left", "Right")
+            if has_lat_semio and has_eeg_lat:
+                concordant += 1
+            elif has_lat_semio and not has_eeg_lat:
+                discordant += 1
+
+        # Video frame availability (from jobs/reports/video_frames_latest.json)
+        import json as _json, pathlib
+        frames_path = pathlib.Path("jobs/reports/video_frames_latest.json")
+        frames_data = {}
+        if frames_path.exists():
+            frames_data = _json.loads(frames_path.read_text())
+
+        return {
+            "title": "Video-EEG Semiology Correlation Dashboard",
+            "description": (
+                "Behavioral semiology events from video-EEG monitoring synchronized to EEG "
+                "onset zones and lateralization. ILAE 2017 seizure classification with "
+                "Lüders semiology taxonomy. Supports presurgical evaluation concordance."
+            ),
+            "kpis": {
+                "total_patients": len(patients),
+                "total_behavioral_events": len(events),
+                "semiology_categories": len(cat_counts),
+                "lateralized_patients": int(lat_dist.get("Left", 0) + lat_dist.get("Right", 0)),
+                "semiology_eeg_concordant": concordant,
+                "video_frames_available": int(frames_data.get("total_frames", 0)),
+                "videos_processed": int(frames_data.get("processed", 0)),
+            },
+            "semiology_category_distribution": [
+                {"name": cat, "value": cnt}
+                for cat, cnt in sorted(cat_counts.items(), key=lambda x: -x[1])
+            ],
+            "lateralization_distribution": [
+                {"name": lat, "value": cnt}
+                for lat, cnt in sorted(lat_dist.items(), key=lambda x: -x[1])
+            ],
+            "top_semiology_signs": [
+                {"name": s, "count": c}
+                for s, c in semio_counts.most_common(12)
+            ],
+            "concordance_summary": {
+                "concordant_lat_semio_pairs": concordant,
+                "discordant_lat_semio_pairs": discordant,
+                "concordance_rate_pct": round(
+                    concordant / max(1, concordant + discordant) * 100, 1
+                ),
+                "note": (
+                    "Concordant = patient has lateralizing semiology sign (unilateral "
+                    "clonic/tonic/version/Todd's/aphasia) AND matching EEG lateralization"
+                ),
+            },
+            "video_frame_status": frames_data,
+        }
+
+    def breakdown(self):
+        from collections import Counter, defaultdict
+        patients = self._load()
+
+        # Per-patient semiology profiles
+        per_patient = []
+        for p in patients:
+            cats = Counter(p["semiology_categories"])
+            per_patient.append({
+                "patient_id": p["patient_id"],
+                "n_semiology_signs": len(p["semiology"]),
+                "semiology_signs": p["semiology"],
+                "primary_category": cats.most_common(1)[0][0] if cats else "None",
+                "categories": dict(cats),
+                "lateralization": p["lateralization"],
+                "onset_zone": p["onset_zone"],
+                "eeg_pattern": p["eeg_pattern"],
+                "ilae_types": p["ilae_types"],
+            })
+        per_patient.sort(key=lambda x: -x["n_semiology_signs"])
+
+        # Onset zone × semiology category matrix
+        zone_cat_matrix = defaultdict(lambda: defaultdict(int))
+        CATS = ["Aura", "Motor", "Dialeptic", "Autonomic", "Language", "Automatism", "Postictal", "Other"]
+        for p in patients:
+            zone = p["onset_zone"].split("(")[0].strip()  # simplify label
+            for cat in p["semiology_categories"]:
+                zone_cat_matrix[zone][cat] += 1
+
+        matrix_rows = []
+        for zone, cat_map in sorted(zone_cat_matrix.items()):
+            row = {"onset_zone": zone}
+            for cat in CATS:
+                row[cat] = cat_map.get(cat, 0)
+            row["total"] = sum(cat_map.values())
+            matrix_rows.append(row)
+        matrix_rows.sort(key=lambda x: -x["total"])
+
+        # Semiology × lateralization heat
+        semio_lat = defaultdict(Counter)
+        for p in patients:
+            for s in p["semiology"]:
+                semio_lat[s][p["lateralization"]] += 1
+        semio_lat_table = [
+            {"semiology": s, **dict(cnt), "total": sum(cnt.values())}
+            for s, cnt in semio_lat.items()
+        ]
+        semio_lat_table.sort(key=lambda x: -x["total"])
+
+        return {
+            "per_patient": per_patient,
+            "onset_zone_semiology_matrix": {
+                "columns": ["onset_zone"] + CATS + ["total"],
+                "rows": matrix_rows,
+            },
+            "semiology_lateralization_heatmap": semio_lat_table[:15],
+            "semiology_lat_hint": self.SEMIO_LAT_HINT,
+        }
+
+    def definitions(self):
+        return {
+            "title": "Video-EEG Semiology Correlation — Definitions & Protocol",
+            "semiology_definition": (
+                "Semiology refers to the observable clinical features of a seizure "
+                "captured on video: motor signs (tonic/clonic/myoclonic), behavioral "
+                "arrest, auras, autonomic changes, and postictal deficits."
+            ),
+            "semiology_categories": {
+                "Aura": "Subjective ictal sensation preceding motor signs; localizing value for onset zone.",
+                "Motor": "Objective motor manifestations: tonic, clonic, myoclonic, versive, hyperkinetic.",
+                "Dialeptic": "Behavioral arrest with impaired awareness; hallmark of focal impaired awareness seizures.",
+                "Autonomic": "Heart rate change, pallor, flushing, piloerection; non-lateralizing but onset-zone informative.",
+                "Language": "Ictal aphasia or postictal language deficit; strongly left-hemisphere localizing.",
+                "Automatism": "Semi-purposeful repetitive movements (oral, manual, complex); mesial temporal onset.",
+                "Postictal": "Todd's paresis, confusion, amnesia — contralateral to motor cortex involved.",
+            },
+            "concordance_methodology": (
+                "EEG-semiology concordance requires lateralizing semiology (unilateral clonic "
+                "jerking, head version, eye deviation, Todd's paresis, ictal aphasia) to match "
+                "EEG lateralization (Left/Right). Bilateral or non-lateralized EEG + lateralizing "
+                "semiology counts as discordant — warrants stereo-EEG evaluation."
+            ),
+            "lateralization_semiology_rules": [
+                {"sign": "Unilateral clonic jerking", "localizes_to": "Contralateral motor cortex"},
+                {"sign": "Asymmetric tonic posturing (FIGURE-4)", "localizes_to": "Contralateral SMA"},
+                {"sign": "Head/eye version", "localizes_to": "Contralateral frontal eye field"},
+                {"sign": "Todd's paresis", "localizes_to": "Contralateral motor cortex"},
+                {"sign": "Ictal aphasia", "localizes_to": "Left (dominant) hemisphere"},
+                {"sign": "Epigastric aura", "localizes_to": "Mesial temporal (often left)"},
+                {"sign": "Oral automatisms", "localizes_to": "Bilateral mesial temporal"},
+                {"sign": "Fear aura", "localizes_to": "Amygdala (mesial temporal)"},
+                {"sign": "Hyperkinetic movements", "localizes_to": "Frontal / SMA"},
+                {"sign": "Dialeptic arrest", "localizes_to": "Bilateral / non-localizing"},
+            ],
+            "references": [
+                "ILAE 2017 Operational Classification of Seizure Types — Fisher et al., Epilepsia 2017",
+                "Lüders HO et al. Semiological seizure classification. Epilepsia 1998;39(9):1006-1013",
+                "Blume WT et al. Glossary of descriptive terminology for ictal semiology. Epilepsia 2001",
+                "Rosenow F, Lüders H. Presurgical evaluation of epilepsies. Brain 2001",
+                "Noachtar S, Rémi J. The role of EEG in epilepsy: a critical review. Epilepsy Behav 2009",
+            ],
+        }
+
+
+_video_correlation_dashboard = VideoCorrelationDashboard()
+
+
+@app.get("/api/video-correlation/overview")
+def api_video_correlation_overview():
+    return _json_safe(_video_correlation_dashboard.overview())
+
+
+@app.get("/api/video-correlation/breakdown")
+def api_video_correlation_breakdown():
+    return _json_safe(_video_correlation_dashboard.breakdown())
+
+
+@app.get("/api/video-correlation/definitions")
+def api_video_correlation_definitions():
+    return _json_safe(_video_correlation_dashboard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

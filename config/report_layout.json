@@ -2,29 +2,100 @@
   "title": "EEG / Video-EEG Summary Report Layout",
   "note": "Structured report by component, each with AI finding + AI recommendation + an expert manual summary field. Final summary = AI + expert reconciled.",
   "updated_at": "2026-06-24",
-  "report_types": ["routine EEG", "video-EEG", "ambulatory EEG", "long-term monitoring (LTM)"],
+  "report_types": [
+    "routine EEG",
+    "video-EEG",
+    "ambulatory EEG",
+    "long-term monitoring (LTM)"
+  ],
   "components": [
-    {"id": "acquisition", "label": "Acquisition & Signal Quality", "ai_source": "channel_quality",
-     "ai_finding": "auto signal-quality + impedance summary", "ai_recommendation": "flag if re-record needed"},
-    {"id": "artifacts", "label": "Artifacts", "ai_source": "artifact_annotations + ICA",
-     "ai_finding": "artifact segments detected", "ai_recommendation": "ICA-cleaned vs raw note"},
-    {"id": "background", "label": "Background Activity (bands)", "ai_source": "analyze_signal",
-     "ai_finding": "delta/theta/alpha/beta/gamma power + dominant rhythm", "ai_recommendation": "normal vs slowed background"},
-    {"id": "epileptiform", "label": "Epileptiform / Seizure Activity", "ai_source": "classify + analyses",
-     "ai_finding": "seizure-risk prediction + confidence + flagged windows", "ai_recommendation": "review flagged segments; correlate clinically"},
-    {"id": "explainability", "label": "AI Explanation (SHAP)", "ai_source": "eeg_explainability",
-     "ai_finding": "top features driving the prediction", "ai_recommendation": "evidence for/against the read"},
-    {"id": "video", "label": "Video Correlation (video-EEG only)", "ai_source": "video frames (planned)",
-     "ai_finding": "behavioral events synced to EEG (planned)", "ai_recommendation": "semiology-EEG concordance"}
+    {
+      "id": "acquisition",
+      "label": "Acquisition & Signal Quality",
+      "ai_source": "channel_quality",
+      "ai_finding": "auto signal-quality + impedance summary",
+      "ai_recommendation": "flag if re-record needed"
+    },
+    {
+      "id": "artifacts",
+      "label": "Artifacts",
+      "ai_source": "artifact_annotations + ICA",
+      "ai_finding": "artifact segments detected",
+      "ai_recommendation": "ICA-cleaned vs raw note"
+    },
+    {
+      "id": "background",
+      "label": "Background Activity (bands)",
+      "ai_source": "analyze_signal",
+      "ai_finding": "delta/theta/alpha/beta/gamma power + dominant rhythm",
+      "ai_recommendation": "normal vs slowed background"
+    },
+    {
+      "id": "epileptiform",
+      "label": "Epileptiform / Seizure Activity",
+      "ai_source": "classify + analyses",
+      "ai_finding": "seizure-risk prediction + confidence + flagged windows",
+      "ai_recommendation": "review flagged segments; correlate clinically"
+    },
+    {
+      "id": "explainability",
+      "label": "AI Explanation (SHAP)",
+      "ai_source": "eeg_explainability",
+      "ai_finding": "top features driving the prediction",
+      "ai_recommendation": "evidence for/against the read"
+    },
+    {
+      "id": "video",
+      "label": "Video Correlation (video-EEG only)",
+      "ai_source": "video frames + seizure_metadata semiology",
+      "ai_finding": "behavioral events synced to EEG (built \u2014 /api/video-correlation/overview)",
+      "ai_recommendation": "semiology-EEG concordance",
+      "status": "built"
+    }
   ],
   "sections": [
-    {"id": "ai_summary", "label": "🤖 AI Summary", "source": "auto-assembled from components"},
-    {"id": "ai_findings", "label": "🤖 AI Findings (per component)", "source": "components"},
-    {"id": "ai_recommendation", "label": "🤖 AI Recommendation", "source": "components"},
-    {"id": "expert_summary", "label": "👨‍⚕️ Expert Manual Summary", "source": "neurologist (editable)", "editable": true},
-    {"id": "expert_note", "label": "👨‍⚕️ Expert Notes / Override", "source": "neurologist (editable)", "editable": true},
-    {"id": "final_summary", "label": "✅ Final Summary (AI + Expert reconciled)", "source": "expert sign-off", "editable": true},
-    {"id": "audit", "label": "🔒 Audit", "source": "transaction_log (UTC+local, who/what/when)"}
+    {
+      "id": "ai_summary",
+      "label": "\ud83e\udd16 AI Summary",
+      "source": "auto-assembled from components"
+    },
+    {
+      "id": "ai_findings",
+      "label": "\ud83e\udd16 AI Findings (per component)",
+      "source": "components"
+    },
+    {
+      "id": "ai_recommendation",
+      "label": "\ud83e\udd16 AI Recommendation",
+      "source": "components"
+    },
+    {
+      "id": "expert_summary",
+      "label": "\ud83d\udc68\u200d\u2695\ufe0f Expert Manual Summary",
+      "source": "neurologist (editable)",
+      "editable": true
+    },
+    {
+      "id": "expert_note",
+      "label": "\ud83d\udc68\u200d\u2695\ufe0f Expert Notes / Override",
+      "source": "neurologist (editable)",
+      "editable": true
+    },
+    {
+      "id": "final_summary",
+      "label": "\u2705 Final Summary (AI + Expert reconciled)",
+      "source": "expert sign-off",
+      "editable": true
+    },
+    {
+      "id": "audit",
+      "label": "\ud83d\udd12 Audit",
+      "source": "transaction_log (UTC+local, who/what/when)"
+    }
   ],
-  "status": {"ai_components": "built (EEG); video=planned", "expert_summary": "built (editable + saved)", "final_signoff": "built (hitl_reviews + audit)"}
+  "status": {
+    "ai_components": "built (EEG); video=planned",
+    "expert_summary": "built (editable + saved)",
+    "final_signoff": "built (hitl_reviews + audit)"
+  }
 }
