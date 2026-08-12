@@ -22335,6 +22335,46 @@ async def angelman_definitions():
     return _json_safe(ad_.get_definitions())
 
 
+@app.get("/api/rett/overview")
+async def rett_overview():
+    """Rett Syndrome (RTT) Dashboard — overview: MECP2 haploinsufficiency (Xq28),
+    N=41 cohort, 5-class etiology catalog (Classical-RTT-MECP2 71%/CDKL5-Atypical-RTT 10%/
+    FOXG1-Congenital-RTT 7%/MECP2-Duplication-Male 7%/Clinical-RTT-MECP2-Negative 5%),
+    4 seizure types, 6-window lifecycle, KPIs, clinical alerts. QTc monitoring mandatory.
+    Trofinetide (Daybue) FDA-approved March 2023. PHT ABSOLUTE CI."""
+    import scripts.rett_dashboard as rt_
+    return _json_safe(rt_.get_overview())
+
+
+@app.get("/api/rett/breakdown")
+async def rett_breakdown():
+    """Rett Syndrome (RTT) Dashboard — breakdown: etiology catalog (5 classes),
+    seizure types (Focal-secondary-generalisation 80%/Myoclonic 65%/GTCS 50%/Tonic 30%),
+    8 triggers (Hyperventilation-RTT-specific 85%/Stress 80%/Sleep-deprivation 70%/Fever 65%/
+    Missed-AED 60%/Constipation 45%/Puberty-catamenial 35%/Vagal 25%),
+    8 treatments (VPA Level B/LEV Level B/LTG Level B/CLB Level B/KD Level B/
+    Trofinetide Level A FDA-approved/Sarizotan investigational/PHT ABSOLUTE-CI),
+    5 AED monitoring items (VPA TDM+carnitine/QTc ECG/LTG SJS/LEV behaviour/Nutrition),
+    41 patients, 6-window lifecycle, standards."""
+    import scripts.rett_dashboard as rt_
+    return _json_safe(rt_.get_breakdown())
+
+
+@app.get("/api/rett/definitions")
+async def rett_definitions():
+    """Rett Syndrome (RTT) Dashboard — definitions: 14 concepts (MECP2/Rett-Syndrome/
+    RTT-Regression/Hand-Stereotypies/Breathing-Irregularities/QTc-Prolongation-RTT/
+    SUDEP-RTT/Trofinetide-Daybue/Sarizotan/CDKL5/FOXG1-Syndrome/MECP2-Duplication/
+    RTT-Monorhythmic-Theta/X-Inactivation-RTT), 4 absolute contraindications
+    (PHT-ABSOLUTE-CI/CBZ-OXC-relative/PB-relative/QT-prolonging-drugs-ECG-first),
+    8 thresholds (QTc-470ms/VPA-TDM-50-100/AED-failure-2/seizure-free-2Y/Cobb-40/
+    carnitine-25/KD-BHB-2-4/driving-exclusion), 6 references (Amir-1999-NatGenet/
+    Neul-2010-AnnNeurol/Chahrour-2008-Science/Glaze-2010-Neurology/Neul-2023-LAVENDER/
+    Nissenkorn-2019-Epilepsia)."""
+    import scripts.rett_dashboard as rt_
+    return _json_safe(rt_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

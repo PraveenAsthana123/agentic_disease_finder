@@ -325,6 +325,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/fires">&#x1f525; FIRES (Febrile Infection-Related Epilepsy)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/glut1">&#x1f9ec; GLUT1 Deficiency Syndrome (De Vivo)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/angelman">&#x1f9ec; Angelman Syndrome (UBE3A / 15q11)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/rett">&#x1f9ec; Rett Syndrome (MECP2 / Xq28)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

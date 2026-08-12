@@ -2221,11 +2221,25 @@
       "api": "/api/angelman",
       "description": "UBE3A/15q11.2-q13.3 maternal imprinting \u2014 N=41 cohort, 5-class etiology, triphasic delta EEG, CLN+LEV first-line, PHT/CBZ/VGB cautions, ASO gene therapy trials",
       "category": "genetic-epilepsy-syndromes"
+    },
+    {
+      "role": "Neurologist",
+      "name": "Rett Syndrome (RTT)",
+      "viz": "Etiology catalog \u00b7 Seizure burden \u00b7 Treatment ladder \u00b7 QTc monitoring",
+      "feature": "MECP2/CDKL5/FOXG1 etiology, 8 triggers, 8 treatments (Trofinetide FDA 2023), PHT ABSOLUTE CI, QTc surveillance, lifecycle",
+      "why": "RTT: MECP2 X-linked epileptic encephalopathy \u2014 PHT CI, QTc monitoring mandatory, trofinetide FDA 2023",
+      "priority": "P0",
+      "status": "built",
+      "endpoints": [
+        "/api/rett/overview",
+        "/api/rett/breakdown",
+        "/api/rett/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 158,
-    "built": 157,
+    "total": 159,
+    "built": 158,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
@@ -2233,5 +2247,5 @@
     "total_dashboards": 156,
     "total_built": 156
   },
-  "count": 160
+  "count": 161
 }
