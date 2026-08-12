@@ -21972,6 +21972,48 @@ async def cae_definitions():
     return _json_safe(cd.definitions())
 
 
+@app.get("/api/ole/overview")
+async def ole_overview():
+    """OLE Dashboard — overview: 41-patient OLE cohort, visual aura + autonomic + oculomotor seizures,
+    6-class etiology catalog (Panayiotopoulos Syndrome 28%/FCD 25%/Structural Lesional 15%/
+    CEC Syndrome 12%/POLG Mitochondrial 10%/Familial FOLE DEPDC5 10%),
+    4 seizure types (FAS-Visual Aura 75%/FIAS-Oculomotor+Autonomic 55%/FBTCS 45%/CVH 30%),
+    8 triggers (missed AED 60%/sleep deprivation 55%/stress 45%/fever-PS 40%/catamenial 20%/
+    photosensitivity 30%/eye closure FOS 25%/reading 15%),
+    6 clinical alerts (POLG+VPA absolute contraindication/HLA-B*1502 CBZ-OXC screening/
+    PS ictal vomiting rescue medication/LTG slow titration/PER REMS mandatory/Humphrey VF pre-op)."""
+    import scripts.ole_dashboard as od
+    return _json_safe(od.overview())
+
+
+@app.get("/api/ole/breakdown")
+async def ole_breakdown():
+    """OLE Dashboard — breakdown: per-patient table (onset age/etiology/primary seizure type/
+    current AED/seizure control/photosensitive/post-ictal headache/FOS/surgical candidate/VF defect),
+    6-class etiology catalog (Panayiotopoulos/FCD/Lesional/CEC/POLG/FOLE-DEPDC5) with mechanism+EEG+MRI+clinical note,
+    4 seizure types with duration+description+EEG+clinical tip, 8 triggers with mechanism+management,
+    8 treatments (CBZ/OXC/LTG/LEV/LCM/PER/Occipital Lobectomy/KD) with dose+MOA+efficacy+safety+monitoring+evidence,
+    4 AED monitoring items (CBZ-OXC HLA-B*1502+TDM+Na/LTG SJS+slow titration/LEV PHQ-9+renal/PER REMS+psychiatric),
+    6-window lifecycle (early childhood PS/school age/adolescence surgical/young adult SUDEP/childbearing/older adult),
+    6 standards (ILAE 2022/NICE NG217/ILAE Surgical 2017/FDA HLA-B*1502 2007/FDA PER REMS 2012/CEC Bien 2000),
+    6 thresholds (DRE ≥2 AED/CBZ TDM 4-12/OXC MHD 12-35/LTG TDM 3-15/driving 12M/folic acid 5mg),
+    6 references (Panayiotopoulos 1999/Williamson 1992/Taylor 2003/Bien 2000/Guerrini 2010/Jeha 2009)."""
+    import scripts.ole_dashboard as od
+    return _json_safe(od.breakdown())
+
+
+@app.get("/api/ole/definitions")
+async def ole_definitions():
+    """OLE Dashboard — definitions: 14 concepts (OLE/Panayiotopoulos Syndrome/FOS/PPR/FCD Type II/
+    Ictal Vomiting/Visual Aura/Post-ictal Headache/CEC Syndrome/POLG-Alpers/Occipital Lobectomy/
+    Engel Classification/FOS vs PPR/DEPDC5-GATOR1), 6 standards (ILAE 2022/NICE NG217/ILAE Surgical/
+    FDA HLA-B*1502/FDA PER REMS/CEC Bien 2000),
+    6 thresholds (DRE ≥2 AED/CBZ TDM/OXC MHD/LTG TDM/driving 12M/folic acid 5mg),
+    6 references."""
+    import scripts.ole_dashboard as od
+    return _json_safe(od.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
