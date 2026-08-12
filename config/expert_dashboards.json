@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 161 dashboards",
+  "note": "Total: 165 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -2127,6 +2127,27 @@
         "Definitions"
       ],
       "nav_label": "\ud83e\udde0 Parietal Lobe Epilepsy (PLE)"
+    },
+    {
+      "id": "pme",
+      "status": "built",
+      "route": "/pme",
+      "api": [
+        "/api/pme/overview",
+        "/api/pme/breakdown",
+        "/api/pme/definitions"
+      ],
+      "script": "scripts/pme_dashboard.py",
+      "frontend": "portal-next/app/pme/page.jsx",
+      "description": "PME Dashboard \u2014 41-patient cohort, 5-class etiology catalog (ULD/EPM1 35%/Lafora Disease/EPM2A 20%/MERRF/MT-TK 15%/NCL Batten/CLN 20%/Sialidosis/Other 10%), 4 seizure types (Cortical Myoclonus 100%/GTCS 90%/Progressive Ataxia 70%/Myoclonic Absence 35%), 8 triggers (action myoclonus/photosensitive/sleep deprivation/stress/missed AED/fever/fatigue/startle), 8 treatments (VPA Level A/LEV Level B/Piracetam Level A ULD/PER Level A add-on/CLN/ZNS/CLB/Mitochondrial Supplements MERRF), 4 ABSOLUTE CONTRAINDICATIONS (CBZ/OXC/PHT all PME worsen myoclonus/VPA MERRF fatal hepatotoxicity/VGB all PME/Gabapentin-Pregabalin all PME), 4 AED monitoring items, 6-window lifecycle (childhood/adolescence/young adult/mid-adult/older adult/MERRF maternal screening), 14 concepts (PME/Cortical Myoclonus/Action Myoclonus/PPR/CSTB-ULD/Lafora Body/MERRF/Ragged Red Fibers/NCL/Giant SSEPs/C-Reflex/Piracetam ULD/UMRS/SUDEP), 6 standards (ILAE 2022/NICE NG217/Minassian 2019/FDA VPA REMS/FDA PER REMS/MITOCON), 8 thresholds, 6 references (Berkovic 1993/Minassian 2001/DiMauro 2004/Mole 2011/Genton 2009/Zara 2019), 5-tab frontend (Overview/Patients & Etiology/Seizure Types & Triggers/Treatments/Definitions), 3 endpoints /api/pme/overview|breakdown|definitions verified 200, portal-next/app/pme/page.jsx + SiteNav wired next to PLE, expert_dashboards.json count 164\u2192165",
+      "tabs": [
+        "Overview",
+        "Patients & Etiology",
+        "Seizure Types & Triggers",
+        "Treatments",
+        "Definitions"
+      ],
+      "nav_label": "\ud83e\uddec Progressive Myoclonic Epilepsy (PME)"
     }
   ],
   "summary": {

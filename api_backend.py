@@ -22050,6 +22050,50 @@ async def ole_definitions():
     return _json_safe(od.definitions())
 
 
+@app.get("/api/pme/overview")
+async def pme_overview():
+    """PME Dashboard — overview: 41-patient PME cohort, 5-class etiology catalog
+    (ULD/EPM1 35%/Lafora Disease 20%/MERRF 15%/NCL Batten 20%/Sialidosis/Other 10%),
+    cortical myoclonus 95%/photosensitive 65%/progressive ataxia 70%/cognitive decline 75%,
+    drug-resistant 68%, VPA contraindicated (MERRF) 15%,
+    6 clinical alerts (CBZ/OXC/PHT absolute contraindication in ALL PME/VPA MERRF fatal/
+    VGB absolute contraindication/piracetam Level A ULD/distinguish PME from JME/MERRF
+    maternal family cascade testing mandatory)."""
+    import scripts.pme_dashboard as pd_
+    return _json_safe(pd_.overview())
+
+
+@app.get("/api/pme/breakdown")
+async def pme_breakdown():
+    """PME Dashboard — breakdown: per-patient table (onset age/etiology/primary seizure type/
+    current AED/seizure control/disease stage/cortical myoclonus/photosensitive/progressive ataxia/
+    cognitive decline/VPA contraindicated), 5-class etiology catalog (ULD/Lafora/MERRF/NCL/Sialidosis)
+    with mechanism+EEG+MRI+clinical note, 4 seizure types (Cortical Myoclonus 100%/GTCS 90%/
+    Progressive Ataxia 70%/Myoclonic Absence 35%) with EEG+clinical tip, 8 triggers
+    (action/photic/sleep deprivation/stress/missed AED/fever/fatigue/startle), 8 treatments
+    (VPA Level A/LEV Level B/Piracetam Level A ULD/PER Level A add-on/CLN Level B/ZNS Level B/
+    CLB Level B/Mitochondrial Supplements MERRF) with dose+MOA+efficacy+monitoring+evidence,
+    4 AED monitoring items (VPA REMS+TDM+LFT+PCOS+MERRF exclusion/LEV PHQ-9+renal/
+    CLN/CLB tolerance+UMRS+Berg Balance/PER REMS+psychiatric),
+    6-window lifecycle (childhood/adolescence/young adult/mid-adult/older adult/MERRF maternal screening),
+    6 standards (ILAE 2022/NICE NG217/Minassian 2019/FDA VPA REMS/FDA PER REMS/MITOCON),
+    8 thresholds (DRE ≥2 AED/VPA TDM 50-100/CLN range/piracetam 16-24g/MERRF VPA contraindication/
+    driving 12M/folic acid 5mg/MERRF lactate threshold),
+    6 references (Berkovic 1993/Minassian 2001/DiMauro 2004/Mole 2011/Genton 2009/Zara 2019)."""
+    import scripts.pme_dashboard as pd_
+    return _json_safe(pd_.breakdown())
+
+
+@app.get("/api/pme/definitions")
+async def pme_definitions():
+    """PME Dashboard — definitions: 14 concepts (PME/Cortical Myoclonus/Action Myoclonus/PPR/
+    CSTB-ULD/Lafora Body/MERRF/Ragged Red Fibers/NCL-Batten/Giant SSEPs/C-Reflex/Piracetam-ULD/
+    UMRS/SUDEP in PME), 8 thresholds, 6 references,
+    4 absolute contraindications (CBZ-OXC-PHT all PME/VPA MERRF/VGB all PME/Gabapentin-Pregabalin all PME)."""
+    import scripts.pme_dashboard as pd_
+    return _json_safe(pd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
