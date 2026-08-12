@@ -1705,6 +1705,24 @@
       ],
       "frontend": "portal-next/app/pms/page.jsx",
       "note": "75 AI decisions, 39 patients, 5 prediction classes (Epilepsy/Focal Seizure/Generalized Seizure/Normal/PNES), 44% agreement rate, 30.7% override rate, avg confidence 0.729, 4 HITL events (2 overrides/2 accepts), 5 reviewers (Dr. Gupta/Patel/Kumar/Sharma/Singh), vigilance threshold alerts, confidence calibration insight (agree conf 0.77 vs disagree conf 0.699), EU MDR Art.83 / FDA 21 CFR 803 / ISO 14971 / IEC 62304 / IMDRF AI-ML regulatory context, 5-tab frontend (Overview/AI-vs-Clinician/Per-Class/HITL Vigilance/Definitions), 3 endpoints /api/pms/overview|breakdown|definitions verified 200, portal-next/app/pms/page.jsx + SiteNav wired next to HFO Biomarkers, expert_dashboards.json count 135\u2192136"
+    },
+    {
+      "id": "hospitalization",
+      "name": "Hospitalization Management Dashboard",
+      "role": "Epileptologist / Neurologist / Ward Nurse / Healthcare Administrator",
+      "viz": "Admission-type donut, ward distribution bars, reason breakdown, LOS histogram, monthly timeline, discharge disposition, per-patient sortable table",
+      "feature": "115 admissions, 30 patients, 5 wards (EMU/Emergency/Neurology/Surgical Recovery/ICU), 9 admission reasons, avg LOS 5.2d, 12.6% 30-day readmission, 55% seizure-free at discharge, avg cost $24,349",
+      "why": "Track inpatient utilization, readmission risk, seizure control at discharge, and resource allocation across all hospital wards \u2014 essential for quality improvement and discharge planning in epilepsy care",
+      "priority": "P1",
+      "status": "built",
+      "route": "/hospitalization",
+      "endpoints": [
+        "/api/hospitalization/overview",
+        "/api/hospitalization/breakdown",
+        "/api/hospitalization/definitions"
+      ],
+      "frontend": "portal-next/app/hospitalization/page.jsx",
+      "note": "115 admissions, 30 patients, 5 wards (EMU 43/Emergency 21/Neurology 19/Surgical Recovery 17/ICU 15), 9 admission reasons (video_eeg_monitoring 28/post_surgical 17/seizure_cluster 15/first_seizure 14/medication_adjustment 12/aed_toxicity 12/status_epilepticus 6/pre_surgical 6/breakthrough 5), avg LOS 5.2d, 12.6% 30-day readmission, 55% seizure-free at discharge, $24,349 avg cost, 4 currently admitted, 3-tab frontend (Overview/Per-Patient/Definitions), 3 endpoints /api/hospitalization/overview|breakdown|definitions verified 200, portal-next/app/hospitalization/page.jsx + SiteNav wired, expert_dashboards.json count 136\u2192137"
     }
   ],
   "summary": {
