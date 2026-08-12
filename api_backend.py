@@ -20991,6 +20991,242 @@ def api_copm_fim_definitions():
     return _json_safe(_copm_fim_dashboard.definitions())
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# REHAB GOAL TRACKING DASHBOARD
+# OT goal tracking: 311 rehab plans, 30 patients, 6 goal categories, 4 statuses
+# ─────────────────────────────────────────────────────────────────────────────
+
+class RehabGoalsDashboard:
+    """Rehab goal tracking for Occupational Therapy — 311 plans, 30 patients, 6 categories."""
+
+    _DB = "data/clinical.db"
+
+    _CAT_LABELS = {
+        "adl_restoration": "ADL Restoration",
+        "vocational_rehab": "Vocational Rehab",
+        "cognitive_rehab": "Cognitive Rehab",
+        "social_skills": "Social Skills",
+        "fine_motor": "Fine Motor",
+        "mobility_training": "Mobility Training",
+    }
+
+    _CAT_DESC = {
+        "adl_restoration": "Activities of daily living: bathing, dressing, meals (seizure-safe adaptations)",
+        "vocational_rehab": "Return-to-work, job accommodation, alternative transport planning",
+        "cognitive_rehab": "Memory compensatory strategies, attention, executive function",
+        "social_skills": "Community reintegration, social participation, group therapy",
+        "fine_motor": "Hand function, grip strength, handwriting, adaptive equipment",
+        "mobility_training": "Balance, gait, fall prevention, transfer training",
+    }
+
+    def _query(self, sql, params=()):
+        import sqlite3
+        conn = sqlite3.connect(self._DB)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute(sql, params)
+        rows = [dict(r) for r in cur.fetchall()]
+        conn.close()
+        return rows
+
+    def overview(self):
+        total = self._query("SELECT COUNT(*) AS n FROM rehab_plans")[0]["n"]
+        patients = self._query("SELECT COUNT(DISTINCT patient_id) AS n FROM rehab_plans")[0]["n"]
+
+        # Status distribution
+        status_rows = self._query(
+            "SELECT status, COUNT(*) AS n FROM rehab_plans GROUP BY status ORDER BY n DESC"
+        )
+        completed = next((r["n"] for r in status_rows if r["status"] == "completed"), 0)
+        active = next((r["n"] for r in status_rows if r["status"] == "active"), 0)
+        on_hold = next((r["n"] for r in status_rows if r["status"] == "on_hold"), 0)
+        discontinued = next((r["n"] for r in status_rows if r["status"] == "discontinued"), 0)
+
+        completion_rate = round(completed / total * 100, 1) if total else 0
+
+        # Avg progress across active plans
+        avg_progress_rows = self._query(
+            "SELECT ROUND(AVG(progress_pct),1) AS avg_p FROM rehab_plans WHERE status='active'"
+        )
+        avg_progress = avg_progress_rows[0]["avg_p"] if avg_progress_rows else 0
+
+        # Total sessions
+        sess_rows = self._query(
+            "SELECT SUM(sessions_planned) AS planned, SUM(sessions_completed) AS completed FROM rehab_plans"
+        )
+        total_planned = sess_rows[0]["planned"] or 0
+        total_completed_sess = sess_rows[0]["completed"] or 0
+        session_rate = round(total_completed_sess / total_planned * 100, 1) if total_planned else 0
+
+        # Goal category distribution
+        cat_rows = self._query(
+            "SELECT goal_category, COUNT(*) AS n, "
+            "ROUND(AVG(progress_pct),1) AS avg_progress, "
+            "SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END) AS completed_n "
+            "FROM rehab_plans GROUP BY goal_category ORDER BY n DESC"
+        )
+        category_distribution = [
+            {
+                "category": r["goal_category"],
+                "label": self._CAT_LABELS.get(r["goal_category"], r["goal_category"]),
+                "count": r["n"],
+                "avg_progress": r["avg_progress"],
+                "completed": r["completed_n"],
+                "completion_rate": round(r["completed_n"] / r["n"] * 100, 1) if r["n"] else 0,
+            }
+            for r in cat_rows
+        ]
+
+        # Status distribution for chart
+        status_distribution = [
+            {"status": r["status"], "count": r["n"]}
+            for r in status_rows
+        ]
+
+        # Top 5 patients by goals
+        top_patients = self._query(
+            "SELECT patient_id, COUNT(*) AS total_goals, "
+            "SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END) AS completed_goals, "
+            "ROUND(AVG(progress_pct),1) AS avg_progress, "
+            "SUM(sessions_completed) AS sessions_done "
+            "FROM rehab_plans GROUP BY patient_id ORDER BY total_goals DESC LIMIT 5"
+        )
+
+        return {
+            "kpis": {
+                "total_plans": total,
+                "patients": patients,
+                "completed": completed,
+                "active": active,
+                "on_hold": on_hold,
+                "discontinued": discontinued,
+                "completion_rate_pct": completion_rate,
+                "avg_active_progress_pct": avg_progress,
+                "total_sessions_planned": total_planned,
+                "total_sessions_completed": total_completed_sess,
+                "session_completion_rate_pct": session_rate,
+            },
+            "category_distribution": category_distribution,
+            "status_distribution": status_distribution,
+            "top_patients_by_goals": top_patients,
+        }
+
+    def breakdown(self):
+        # Per-category detail with status breakdown
+        cat_detail = []
+        for cat_key in self._CAT_LABELS:
+            rows = self._query(
+                "SELECT status, COUNT(*) AS n, ROUND(AVG(progress_pct),1) AS avg_p, "
+                "SUM(sessions_planned) AS planned, SUM(sessions_completed) AS done "
+                "FROM rehab_plans WHERE goal_category=? GROUP BY status",
+                (cat_key,)
+            )
+            total_n = sum(r["n"] for r in rows)
+            cat_detail.append({
+                "category": cat_key,
+                "label": self._CAT_LABELS[cat_key],
+                "description": self._CAT_DESC.get(cat_key, ""),
+                "total": total_n,
+                "statuses": [
+                    {
+                        "status": r["status"],
+                        "count": r["n"],
+                        "avg_progress": r["avg_p"],
+                        "sessions_planned": r["planned"] or 0,
+                        "sessions_completed": r["done"] or 0,
+                    }
+                    for r in rows
+                ],
+            })
+
+        # Per-patient table (all 30)
+        per_patient = self._query(
+            "SELECT patient_id, "
+            "COUNT(*) AS total_goals, "
+            "SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END) AS completed, "
+            "SUM(CASE WHEN status='active' THEN 1 ELSE 0 END) AS active, "
+            "SUM(CASE WHEN status='on_hold' THEN 1 ELSE 0 END) AS on_hold, "
+            "SUM(CASE WHEN status='discontinued' THEN 1 ELSE 0 END) AS discontinued, "
+            "ROUND(AVG(progress_pct),1) AS avg_progress, "
+            "SUM(sessions_planned) AS sessions_planned, "
+            "SUM(sessions_completed) AS sessions_completed "
+            "FROM rehab_plans GROUP BY patient_id ORDER BY patient_id"
+        )
+        for p in per_patient:
+            p["completion_rate"] = round(p["completed"] / p["total_goals"] * 100, 1) if p["total_goals"] else 0
+
+        # Recent plans (last updated)
+        recent_plans = self._query(
+            "SELECT patient_id, goal_category, goal_description, status, progress_pct, "
+            "sessions_planned, sessions_completed, target_date, therapist_notes, last_updated "
+            "FROM rehab_plans ORDER BY last_updated DESC LIMIT 20"
+        )
+        for r in recent_plans:
+            r["category_label"] = self._CAT_LABELS.get(r["goal_category"], r["goal_category"])
+            r["session_rate"] = round(r["sessions_completed"] / r["sessions_planned"] * 100, 1) if r["sessions_planned"] else 0
+
+        return {
+            "category_detail": cat_detail,
+            "per_patient": per_patient,
+            "recent_plans": recent_plans,
+        }
+
+    def definitions(self):
+        return {
+            "dashboard": "Rehab Goal Tracking Dashboard",
+            "scope": "Occupational Therapy rehab goal management for epilepsy patients",
+            "data_source": "rehab_plans table — 311 plans, 30 patients, 6 goal categories",
+            "goal_categories": {
+                k: {"label": self._CAT_LABELS[k], "description": self._CAT_DESC[k]}
+                for k in self._CAT_LABELS
+            },
+            "statuses": {
+                "active": "Goal currently in progress",
+                "completed": "Goal achieved; all milestones met",
+                "on_hold": "Temporarily paused (medical, personal, or seasonal reason)",
+                "discontinued": "Goal discontinued; re-evaluated or replaced",
+            },
+            "metrics": {
+                "progress_pct": "Therapist-rated goal progress 0–100%",
+                "session_completion_rate": "Sessions completed ÷ sessions planned × 100%",
+                "completion_rate": "Goals with status=completed ÷ total goals × 100%",
+                "avg_active_progress": "Mean progress_pct across active (non-completed) plans",
+            },
+            "epilepsy_ot_context": {
+                "driving_restriction": "Up to 80% of epilepsy patients face driving restrictions (ILAE 2021); vocational rehab and community mobility are top OT priorities",
+                "seizure_safety": "ADL modifications address kitchen, bathing, sleep, and community safety (ADA + ILAE Rehab Taskforce 2021)",
+                "cognitive_impact": "40–60% of people with epilepsy have cognitive comorbidities affecting memory, attention, and executive function (Elger 2017)",
+                "return_to_work": "25–50% unemployment/underemployment; OT vocational rehab achieves 40–60% re-engagement at 12 months (WHO 2019)",
+            },
+            "references": [
+                "ILAE Rehabilitation Taskforce. Epilepsy rehabilitation: consensus statement 2021",
+                "Law M et al. COPM: Canadian Occupational Performance Measure 5th ed. CAOT 2014",
+                "WHO. Epilepsy: a public health imperative. Geneva: WHO 2019",
+                "Elger CE et al. Epilepsy-associated neuropsychological disorders. Nat Rev Neurol 2017",
+                "American Occupational Therapy Association (AOTA). Occupational therapy practice framework 4th ed. 2020",
+                "Fisher AG. Occupation-centred, occupation-based, occupation-focused. Scand J Occup Ther 2013",
+            ],
+        }
+
+
+_rehab_goals_dashboard = RehabGoalsDashboard()
+
+
+@app.get("/api/rehab-goals/overview")
+def api_rehab_goals_overview():
+    return _json_safe(_rehab_goals_dashboard.overview())
+
+
+@app.get("/api/rehab-goals/breakdown")
+def api_rehab_goals_breakdown():
+    return _json_safe(_rehab_goals_dashboard.breakdown())
+
+
+@app.get("/api/rehab-goals/definitions")
+def api_rehab_goals_definitions():
+    return _json_safe(_rehab_goals_dashboard.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
