@@ -2174,6 +2174,22 @@
         "/api/doose/breakdown",
         "/api/doose/definitions"
       ]
+    },
+    {
+      "id": "rasmussen",
+      "name": "Rasmussen's Encephalitis",
+      "route": "/rasmussen",
+      "api_prefix": "/api/rasmussen",
+      "status": "built",
+      "category": "epilepsy_syndromes",
+      "description": "41-patient cohort, 5-class etiology catalog (T-cell GluR3/AMPA 45%/Seronegative 25%/GluD2 7%/Viral-trigger 15%/NMDAR-overlap 8%), EPC pathognomonic, hemispherectomy/hemispherotomy Level A definitive (Engel I 52-65%), 8 treatments, 14 concepts, 5 contraindications",
+      "api_endpoints": ["/api/rasmussen/overview", "/api/rasmussen/breakdown", "/api/rasmussen/definitions"],
+      "frontend_component": "portal-next/app/rasmussen/page.jsx",
+      "endpoints": [
+        "/api/rasmussen/overview",
+        "/api/rasmussen/breakdown",
+        "/api/rasmussen/definitions"
+      ]
     }
   ],
   "summary": {

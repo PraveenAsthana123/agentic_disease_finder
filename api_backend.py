@@ -22180,6 +22180,51 @@ async def doose_definitions():
     return _json_safe(dd_.definitions())
 
 
+@app.get("/api/rasmussen/overview")
+async def rasmussen_overview():
+    """Rasmussen's Encephalitis Dashboard — overview: 41-patient cohort, progressive unilateral
+    encephalitis, 5-class etiology catalog (T-cell mediated GluR3/AMPA 45%/Seronegative 25%/
+    GluD2 7%/Viral-trigger 15%/NMDAR-overlap 8%), EPC active, hemispherectomy definitive,
+    Engel I 52-65%, 7 clinical alerts (AEDs-alone no disease-halt/EPC-AED-resistant/
+    natalizumab-JC-index/rituximab-HBV/hemispherectomy-definitive/
+    dominant-hemisphere-language-fMRI/EPC-2h-emergency)."""
+    import scripts.rasmussen_dashboard as rd_
+    return _json_safe(rd_.overview())
+
+
+@app.get("/api/rasmussen/breakdown")
+async def rasmussen_breakdown():
+    """Rasmussen's Encephalitis Dashboard — breakdown: per-patient table (41 records with
+    id/age/sex/onset_age/etiology/seizure_type/current_treatment/disease_phase/EPC/
+    hemiplegia_side/eeg_pattern/mri_finding/seizure_control),
+    5-class etiology catalog with mechanism+EEG+MRI+note,
+    4 seizure types (Focal Motor/EPC 100%/FIAS 80%/Hemiclonic-GTCS 60%/Subtle Myoclonic 45%)
+    with EEG correlate+clinical tip, 8 triggers (fever 80%/sleep deprivation 70%/missed immunotherapy 65%/
+    stress 55%/physical fatigue 60%/bright lights 15%/action myoclonus 40%/catamenial 20%),
+    8 treatments (Hemispherectomy Level A/IVIG Level B/Plasma Exchange Level B/
+    Rituximab Level B/Tacrolimus Level C/Steroids Level B/Natalizumab Level C/AEDs symptomatic)
+    with dose+MOA+efficacy+safety+monitoring, monitoring protocol (MRI/EEG/neuropsych/motor-language),
+    6-window lifecycle (prodrome/rapid-deterioration/plateau/post-surgical/school-rehab/adult),
+    6 standards (ILAE 2022/NICE NG217/Bien 2013/Varadkar 2014/European RE Consensus 2017/FDA IVIG),
+    8 thresholds (EPC >2h emergency/surgery at plateau/Engel I ≥52%/IVIG 0.4g-kg/
+    rituximab 375mg-m2/driving 12M/MRI 3-6M/cognitive 6M)."""
+    import scripts.rasmussen_dashboard as rd_
+    return _json_safe(rd_.breakdown())
+
+
+@app.get("/api/rasmussen/definitions")
+async def rasmussen_definitions():
+    """Rasmussen's Encephalitis Dashboard — definitions: 14 concepts (Rasmussen-Encephalitis/
+    EPC/Unilateral-Cortical-Atrophy/GluR3-AMPA/T-lymphocyte-Infiltration/
+    Functional-Hemispherectomy/Hemispherotomy/IVIG/Plasma-Exchange/Rituximab/
+    Engel-Classification/Neuroplasticity-Language-Transfer/Progressive-Hemiplegia/SUDEP-RE),
+    5 contraindications (AEDs-alone/antiviral-primary/natalizumab-JC>2.0/
+    rituximab-no-HBV-screen/hemispherectomy-bilateral),
+    8 thresholds, 6 references."""
+    import scripts.rasmussen_dashboard as rd_
+    return _json_safe(rd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
