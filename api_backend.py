@@ -21546,6 +21546,36 @@ async def research_publication_definitions():
     return _json_safe(rpd.definitions())
 
 
+@app.get("/api/iec-irb-tracker/overview")
+async def iec_irb_tracker_overview():
+    """IEC/IRB 173-Document Submission Tracker — overview: 173-doc master list
+    completion (real/partial/design/pending), weighted completion %, IEC Phase 1
+    readiness, IRB Phase 1 readiness, category A–I summary, jurisdiction coverage
+    (India/USA/Canada/International), phased submission plan, 12 standards."""
+    import scripts.iec_irb_tracker_dashboard as iec
+    return _json_safe(iec.overview())
+
+
+@app.get("/api/iec-irb-tracker/breakdown")
+async def iec_irb_tracker_breakdown():
+    """IEC/IRB 173-Document Submission Tracker — breakdown: full 173-document list
+    with IEC/IRB submission status, phase-wise summary (IEC Ph1/2/3, IRB Ph1/2/3),
+    jurisdiction map by document, consent breakdown from DB, regulatory submission
+    status, priority Phase-1 documents."""
+    import scripts.iec_irb_tracker_dashboard as iec
+    return _json_safe(iec.breakdown())
+
+
+@app.get("/api/iec-irb-tracker/definitions")
+async def iec_irb_tracker_definitions():
+    """IEC/IRB 173-Document Submission Tracker — definitions: 15 concepts
+    (IEC/IRB/173-doc list/categories A-I/phased submission/Real/Partial/Design/
+    DPIA/ICH-GCP/ICMR AI/HMSC/Common Rule/TCPS2/weighted completion),
+    13 standards, 6 performance thresholds, 5 references."""
+    import scripts.iec_irb_tracker_dashboard as iec
+    return _json_safe(iec.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

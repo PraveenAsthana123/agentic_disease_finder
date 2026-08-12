@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 146 dashboards",
+  "note": "Total: 147 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1870,6 +1870,18 @@
         "/api/research-publication/breakdown",
         "/api/research-publication/definitions"
       ]
+    },
+    {
+      "id": "iec_irb_tracker",
+      "name": "IEC/IRB 173-Document Submission Tracker",
+      "role": "DBA Researcher / Ethics Committee / IRB Officer",
+      "status": "built",
+      "endpoints": [
+        "/api/iec-irb-tracker/overview",
+        "/api/iec-irb-tracker/breakdown",
+        "/api/iec-irb-tracker/definitions"
+      ],
+      "built_note": "iec-irb-tracker built 2026-08-12: 173-doc master list (categories A-I), phased IEC/IRB submission tracking, multi-jurisdiction compliance (ICMR/DPDP/HIPAA/PIPEDA/TCPS2/ICH-GCP/Helsinki), weighted completion score, 5-tab frontend"
     }
   ],
   "summary": {
