@@ -2212,6 +2212,15 @@
       "api": "/api/glut1/{overview,breakdown,definitions}",
       "component": "portal-next/app/glut1/page.jsx",
       "note": "GLUT1-DS / SLC2A1 haploinsufficiency \u2014 41-patient cohort, 5-class etiology, CSF:serum glucose ratio <0.40 diagnostic, KD Level A first-line, VPA absolute CI, 5-tab frontend"
+    },
+    {
+      "id": "angelman",
+      "name": "Angelman Syndrome (AS)",
+      "status": "built",
+      "route": "/angelman",
+      "api": "/api/angelman",
+      "description": "UBE3A/15q11.2-q13.3 maternal imprinting \u2014 N=41 cohort, 5-class etiology, triphasic delta EEG, CLN+LEV first-line, PHT/CBZ/VGB cautions, ASO gene therapy trials",
+      "category": "genetic-epilepsy-syndromes"
     }
   ],
   "summary": {

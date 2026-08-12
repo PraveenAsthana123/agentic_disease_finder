@@ -22300,6 +22300,41 @@ async def glut1_definitions():
     return _json_safe(gd_.definitions())
 
 
+@app.get("/api/angelman/overview")
+async def angelman_overview():
+    """Angelman Syndrome Dashboard — overview: UBE3A/15q11-q13 maternal imprinting,
+    N=41 cohort, 5-class etiology catalog (Maternal-deletion-15q11 56%/UBE3A-point-mutation 15%/
+    Paternal-UPD15 15%/Imprinting-centre-defect 10%/Clinical-diagnosis-negative-workup 4%),
+    4 seizure types, 6-window lifecycle, KPIs, clinical alerts."""
+    import scripts.angelman_dashboard as ad_
+    return _json_safe(ad_.get_overview())
+
+
+@app.get("/api/angelman/breakdown")
+async def angelman_breakdown():
+    """Angelman Syndrome Dashboard — breakdown: etiology catalog, seizure types (Myoclonic 80%/
+    Atypical-absence 70%/Focal-secondary-generalisation 60%/GTCS 55%), 8 triggers (fever 90%/
+    sleep-deprivation 80%/missed-AED 70%/excitement 65%/VPA-toxicity 55%/photic 50%/
+    illness 45%/puberty 25%), 8 treatments (CLN Level A/LEV Level A/VPA Level B/CLB Level B/
+    TPM Level B/KD Level B/Melatonin Level C/ASO-Gene-Therapy experimental), 4 absolute
+    contraindications (PHT-worsens-myoclonus/CBZ-OXC-relative-CI/VGB-worsens-myoclonus/
+    Hospital-NPO-without-AED), 5 AED monitoring items."""
+    import scripts.angelman_dashboard as ad_
+    return _json_safe(ad_.get_breakdown())
+
+
+@app.get("/api/angelman/definitions")
+async def angelman_definitions():
+    """Angelman Syndrome Dashboard — definitions: 14 concepts (UBE3A/Angelman-Syndrome/
+    Maternal-Imprinting/Prader-Willi-15q11/PWS-AS-Region/Triphasic-Delta-EEG/Alpha-Burst-EEG/
+    Methylation-PCR/UPD-Uniparental-Disomy/Imprinting-Centre-Defect/ASO-Antisense-Therapy/
+    RASS-Sedation/Photoparoxysmal-Response/SUDEP-Angelman), 4 absolute contraindications,
+    8 thresholds, 6 references (Williams-1995/Kyllerman-2021/Boyd-2015-Cochrane/
+    Thibert-2009/Peters-2010-Orphanet/ASHG-2023)."""
+    import scripts.angelman_dashboard as ad_
+    return _json_safe(ad_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
