@@ -21769,6 +21769,47 @@ async def lgs_definitions():
     return _json_safe(ld.definitions())
 
 
+@app.get("/api/west-syndrome/overview")
+async def west_syndrome_overview():
+    """West Syndrome (Infantile Spasms) Dashboard — overview: 41-patient IS cohort,
+    6-class etiology catalog (TSC 22%/brain malformation 20%/HIE 18%/genetic 25%/
+    metabolic 5%/unknown 10%), hypsarrhythmia EEG features (classic + modified +
+    electrodecrement + burst-suppression), treatment KPIs (spasm-free rate/LGS evolution/
+    ASD comorbidity/relapse), 7 treatments (ACTH/Prednisolone/Vigabatrin/Combo/
+    Pyridoxine/Ketogenic Diet/Everolimus), ACTH UKISS 76% cessation / Vigabatrin TSC
+    70-95% / INFANTIS prednisolone non-inferior, SHARE REMS vigabatrin visual monitoring,
+    6 clinical alerts (2-week treatment urgency/TSC VGB/REMS/LGS watch/VEEG response)."""
+    import scripts.west_syndrome_dashboard as wd
+    return _json_safe(wd.overview())
+
+
+@app.get("/api/west-syndrome/breakdown")
+async def west_syndrome_breakdown():
+    """West Syndrome Dashboard — breakdown: per-patient table (spasm onset/etiology/
+    first-line tx/spasm-free/relapse/developmental level/LGS-evolved/ASD), etiology catalog
+    (6 classes + mechanism + first-line + outcome), EEG features (4: hypsarrhythmia/
+    modified/electrodecrement/burst-suppression), treatment catalog (7 therapies:
+    dose/MOA/efficacy/safety/evidence level), AED monitoring (4 items:
+    Vigabatrin REMS/ACTH steroid/Everolimus TDM/KD metabolic), developmental trajectory
+    (6 age windows: neonatal/peak-IS/post-acute/LGS-risk/school/adult),
+    6 standards (ILAE 2022/NICE NG217/FDA SHARE REMS/AAP 2012/TSC Consensus 2021/ICISS),
+    6 thresholds, 6 references (Lux 2004/O'Callaghan 2011/Knupp 2016/Capal 2021/French 2016/Mytinger 2020)."""
+    import scripts.west_syndrome_dashboard as wd
+    return _json_safe(wd.breakdown())
+
+
+@app.get("/api/west-syndrome/definitions")
+async def west_syndrome_definitions():
+    """West Syndrome Dashboard — definitions: 14 concepts (West Syndrome/infantile spasms/
+    hypsarrhythmia/electrodecrement/ACTH/Vigabatrin/SHARE REMS/hypsarrhythmia cessation/
+    UKISS/INFANTIS/LGS evolution/DEE/GLUT1/mTOR-TSC), 6 standards (ILAE 2022/NICE NG217/
+    FDA SHARE REMS/AAP 2012/TSC Consensus 2021/ICISS), 6 thresholds (treatment latency/
+    VGB REMS monitoring/VEEG response timing/Everolimus trough/ACTH BP/relapse window),
+    6 references."""
+    import scripts.west_syndrome_dashboard as wd
+    return _json_safe(wd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

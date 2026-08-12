@@ -2005,11 +2005,28 @@
       "route": "/api/lgs/*",
       "frontend": "portal-next/app/lgs/page.jsx",
       "description": "LGS Dashboard \u2014 41-patient LGS cohort, multi-seizure-type profile (tonic 92%/atonic 56%/atypical absence 60%/GTCS 73%/myoclonic 35%), slow spike-wave EEG (1.5-2.5 Hz), 6-class etiology (structural/genetic/metabolic/post-infectious/post-West Syndrome/unknown), 80-90% drug-resistance rate, corpus callosotomy (Level A for drop attacks), 4 FDA-approved therapies (Rufinamide 2008/Clobazam 2011/Cannabidiol 2018/Fenfluramine 2020), 6 AED monitoring items (absolute contraindications CBZ/PHT + REMS Fenfluramine + LFT CBD + QT Rufinamide + titration LTG), 8 treatments, developmental trajectory (6 windows), 14 concepts + 6 standards + 6 thresholds + 6 references (Thiele 2018/Devinsky 2018/Lagae 2019/Glauser 2008/Ng 2011/Arzimanoglou 2009), 5-tab frontend (Overview/Patients & Etiologies/Seizure Types & Monitoring/Treatments/Definitions), 3 endpoints /api/lgs/overview|breakdown|definitions verified 200"
+    },
+    {
+      "role": "Neurologist / Epileptologist / Pediatric Neurologist",
+      "name": "West Syndrome (Infantile Spasms)",
+      "id": "west_syndrome",
+      "viz": "Etiology distribution, EEG feature catalog, treatment efficacy, developmental trajectory",
+      "feature": "41-patient IS cohort, 6 etiologies, hypsarrhythmia EEG (4 types), 7 treatments (ACTH/Vigabatrin/Prednisolone/KD/Everolimus/Pyridoxine/Combo), SHARE REMS, LGS evolution tracking, 6-window developmental trajectory",
+      "why": "Major DEE; most severe epileptic encephalopathy of infancy; directly linked to TSC and LGS; ACTH/Vigabatrin first-line with distinct REMS requirements",
+      "priority": "P0",
+      "status": "built",
+      "endpoints": [
+        "/api/west-syndrome/overview",
+        "/api/west-syndrome/breakdown",
+        "/api/west-syndrome/definitions"
+      ],
+      "frontend": "portal-next/app/west-syndrome/page.jsx",
+      "built_note": "West Syndrome Dashboard \u2014 41-patient IS cohort, 6-class etiology catalog (TSC 22%/brain malformation 20%/HIE 18%/genetic 25%/metabolic 5%/unknown 10%), 4 EEG features (hypsarrhythmia/modified/electrodecrement/burst-suppression), 7 treatments (ACTH/Prednisolone/Vigabatrin/Combo/Pyridoxine/Ketogenic Diet/Everolimus), SHARE REMS visual monitoring, UKISS 2004/INFANTIS trial data, 6 clinical alerts, 14 concepts, 6 standards (ILAE 2022/NICE NG217/FDA SHARE REMS/AAP 2012/TSC Consensus 2021/ICISS), 6 thresholds, 6 references (Lux 2004/O'Callaghan 2011/Knupp 2016/Capal 2021/French 2016/Mytinger 2020), 5-tab frontend (Overview/Patients & Etiologies/EEG & Monitoring/Treatments/Definitions), 3 endpoints /api/west-syndrome/overview|breakdown|definitions, portal-next/app/west-syndrome/page.jsx + SiteNav wired next to LGS, expert_dashboards.json count 157\u2192158"
     }
   ],
   "summary": {
-    "total": 156,
-    "built": 156,
+    "total": 158,
+    "built": 157,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
@@ -2017,5 +2034,5 @@
     "total_dashboards": 156,
     "total_built": 156
   },
-  "count": 157
+  "count": 158
 }
