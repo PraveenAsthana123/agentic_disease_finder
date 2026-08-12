@@ -21928,6 +21928,50 @@ async def fle_definitions():
     return _json_safe(fd.definitions())
 
 
+@app.get("/api/cae/overview")
+async def cae_overview():
+    """CAE Dashboard — overview: 41-patient CAE cohort, peak onset 5–7 years, female predominance 60%,
+    drug resistance ~10–20% (far below focal epilepsies), 70–80% remission by adolescence (Berg 2001),
+    6-class genetic etiology (Polygenic 65%/GABRG2 10%/GABRA1 8%/CACNA 7%/SCN1A/B 5%/Unknown 5%),
+    4 seizure types (Typical Absence 100%/Absence+Automatisms 60%/GTCS 18%/Absence SE 7%),
+    8 triggers (hyperventilation 100%/missed AED 60%/sleep deprivation 50%/fatigue 45%/stress 40%/
+    hunger 30%/photosensitivity 17%/catamenial 20%),
+    6 clinical alerts (ETX first-line CHILDHOOD 2010/LTG inferior NOT first-line/
+    ABS CONTRAINDICATIONS CBZ+OXC+PHT+VGB+TGB+GBP/JME evolution 15-20%/
+    VPA REMS mandatory girls/HV test = treatment monitor)."""
+    import scripts.cae_dashboard as cd
+    return _json_safe(cd.overview())
+
+
+@app.get("/api/cae/breakdown")
+async def cae_breakdown():
+    """CAE Dashboard — breakdown: per-patient table (onset age/current age/seizure types/etiology/
+    AED regimen/control/catamenial/remission/JME evolution/years on AED), 6-class genetic etiology
+    catalog (Polygenic/GABRG2/GABRA1/CACNA1A+1H/SCN1A+B/Unknown) with mechanism+EEG+MRI+clinical note,
+    4 seizure types with duration+description+EEG+clinical tip, 8 triggers with mechanism+management,
+    8 treatments (ETX/VPA/LTG/CLB/LEV/TPM/KD/ZNS) with dose/MOA/efficacy/safety/monitoring/evidence,
+    4 AED monitoring items (ETX GI+CBC/VPA REMS+TDM+LFT+weight+PCOS/LTG SJS+VPA interaction/
+    CLB behavioral+dependence), 6-window lifecycle (pre-diagnosis/active/JME watch/remission/young adult/adult),
+    6 standards (ILAE 2022/NICE NG217/CHILDHOOD 2010/FDA VPA REMS 2013/FDA ETX 1960/ILAE Diagnostic Manual),
+    6 thresholds (ETX vs VPA Level A/VPA TDM 50-100/ETX TDM 40-100/LTG-VPA 50%/taper 2y/driving 12M),
+    6 references (Glauser 2010 NEJM/Berg 2001 Epilepsia/Camfield 1993 Neurology/Tenney 2013/
+    Loiseau 1983/Scheffer 2017 Epilepsia)."""
+    import scripts.cae_dashboard as cd
+    return _json_safe(cd.breakdown())
+
+
+@app.get("/api/cae/definitions")
+async def cae_definitions():
+    """CAE Dashboard — definitions: 14 concepts (CAE/Typical Absence/3 Hz GSW/HV Provocation/
+    ETX/GABRG2/GABRA1/CHILDHOOD Study/Drug-Resistant CAE/JME Evolution/PPR/Remission/
+    Absence SE/Atypical Absence differential), 6 standards (ILAE 2022/NICE NG217/
+    CHILDHOOD RCT/FDA VPA REMS/FDA ETX/ILAE Diagnostic Manual),
+    6 thresholds (ETX/VPA Level A/VPA TDM/ETX TDM/LTG-VPA 50%/taper 2y/driving 12M),
+    6 references."""
+    import scripts.cae_dashboard as cd
+    return _json_safe(cd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
