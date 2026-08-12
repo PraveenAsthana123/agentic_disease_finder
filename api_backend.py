@@ -20080,6 +20080,34 @@ async def seizure_burden_definitions():
     return _json_safe(sb.definitions())
 
 
+# ── DBA Research KPI Dashboard ────────────────────────────────────────
+# Tracks Praveen Asthana's DBA program at GGU: patient recruitment,
+# IRB/IEC regulatory submissions, AI model validation, ethics & consent
+# compliance for "Responsible Explainable AI Governance for EEG-Based Epilepsy Diagnosis."
+# Real data: patients (41), analyses (133), consent_records (246),
+# regulatory_submissions (16), validation_studies (42), model_comparison (224).
+@app.get("/api/dba-research/overview")
+async def dba_research_overview():
+    """DBA Research KPIs — patient recruitment progress, consent rate,
+    regulatory submission status, best AI model performance, validation pass rate."""
+    import scripts.dba_research_dashboard as drd
+    return _json_safe(drd.overview())
+
+@app.get("/api/dba-research/breakdown")
+async def dba_research_breakdown():
+    """DBA Research breakdown — consent by type, regulatory by pathway/status,
+    validation studies by type, model comparison summary, monthly analyses trend."""
+    import scripts.dba_research_dashboard as drd
+    return _json_safe(drd.breakdown())
+
+@app.get("/api/dba-research/definitions")
+async def dba_research_definitions():
+    """DBA Research definitions — study design, IRB/IEC framework, jurisdiction
+    mapping, DBA glossary, and key references."""
+    import scripts.dba_research_dashboard as drd
+    return _json_safe(drd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
