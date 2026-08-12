@@ -525,6 +525,239 @@ function AEDSpeechTab({ data }) {
   );
 }
 
+// ── Cognitive-Communication Tab ───────────────────────────────────────────────
+function CogCommTab({ data }) {
+  const [expanded, setExpanded] = useState(null);
+  if (!data) return <div className="text-center py-5 text-muted">Loading...</div>;
+  const patients = data.patients || [];
+  const catalog = data.domains_catalog || [];
+
+  const riskColor = r => r === 'High' ? 'danger' : r === 'Moderate' ? 'warning' : r === 'Low' ? 'success' : 'secondary';
+  const domainRiskColor = r => r === 'high' ? 'danger' : r === 'moderate' ? 'warning' : r === 'low' ? 'success' : 'secondary';
+
+  return (
+    <div>
+      <div className="alert alert-primary py-2 mb-3">
+        <strong>Cognitive-Communication Assessment</strong> — Word-finding · Naming · Discourse · Pragmatics ·
+        Reading · Writing
+        <span className="text-muted small ms-2">Helmstaedter &amp; Witt 2017 · Bell et al. 2011 · ASHA Practice Portal</span>
+      </div>
+
+      {/* Summary KPIs */}
+      <div className="row g-3 mb-4">
+        <div className="col-4">
+          <KPI label="High Risk" value={data.high_risk_count ?? 0} color="danger"
+               sub="≥1 high-risk domain" />
+        </div>
+        <div className="col-4">
+          <KPI label="Moderate Risk" value={data.moderate_risk_count ?? 0} color="warning" />
+        </div>
+        <div className="col-4">
+          <KPI label="Low Risk" value={data.low_risk_count ?? 0} color="success" />
+        </div>
+      </div>
+
+      {/* Domain Catalog */}
+      {catalog.length > 0 && (
+        <div className="card mb-4">
+          <div className="card-header fw-semibold">Cognitive-Communication Domains — Epilepsy Relevance</div>
+          <div className="table-responsive">
+            <table className="table table-sm mb-0">
+              <thead className="table-light">
+                <tr><th>Domain</th><th>Assessment Tools</th><th>Epilepsy Relevance</th><th>Reference</th></tr>
+              </thead>
+              <tbody>
+                {catalog.map((d, i) => (
+                  <tr key={i}>
+                    <td className="fw-semibold small">{d.domain}</td>
+                    <td className="small text-muted">{(d.assessment_tools || []).join(' · ')}</td>
+                    <td className="small">{d.epilepsy_relevance}</td>
+                    <td className="small text-muted">{d.reference}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Per-patient table */}
+      <div className="card">
+        <div className="card-header fw-semibold">Per-Patient Cognitive-Communication Risk ({patients.length} patients)</div>
+        <div className="table-responsive">
+          <table className="table table-sm table-hover mb-0">
+            <thead className="table-light">
+              <tr>
+                <th>Patient</th><th>Age</th><th>Disease</th>
+                <th>Overall Risk</th><th>High-Risk Domains</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {patients.map(p => (
+                <>
+                  <tr key={p.patient_id}>
+                    <td className="fw-semibold small">{p.patient_id}</td>
+                    <td className="small">{p.age ?? '—'}</td>
+                    <td className="small text-capitalize">{p.disease}</td>
+                    <td>
+                      <span className={`badge bg-${riskColor(p.overall_cognitive_comm_risk)}`}>
+                        {p.overall_cognitive_comm_risk}
+                      </span>
+                    </td>
+                    <td className="small">
+                      {p.high_risk_domain_count > 0
+                        ? <span className="text-danger fw-bold">{p.high_risk_domain_count} domain(s)</span>
+                        : <span className="text-success">None</span>}
+                    </td>
+                    <td>
+                      {(p.domain_assessments || []).length > 0 && (
+                        <button className="btn btn-sm btn-outline-secondary py-0 px-1"
+                          onClick={() => setExpanded(expanded === p.patient_id ? null : p.patient_id)}>
+                          {expanded === p.patient_id ? '▲' : '▼'}
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                  {expanded === p.patient_id && (
+                    <tr key={`${p.patient_id}-exp`}>
+                      <td colSpan={6} className="bg-light p-3">
+                        <div className="row g-2 mb-2">
+                          {(p.domain_assessments || []).map((da, i) => (
+                            <div key={i} className="col-md-6">
+                              <div className={`p-2 border rounded border-${domainRiskColor(da.risk_level)}`}>
+                                <div className="d-flex justify-content-between">
+                                  <span className="small fw-semibold">{da.domain}</span>
+                                  <span className={`badge bg-${domainRiskColor(da.risk_level)}`}>{da.risk_level}</span>
+                                </div>
+                                <ul className="mb-0 small text-muted mt-1">
+                                  {(da.risk_notes || []).map((n, j) => <li key={j}>{n}</li>)}
+                                </ul>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {(p.recommendations || []).length > 0 && (
+                          <div className="small"><strong>Recommendations:</strong>
+                            <ul className="mb-0">{p.recommendations.map((r, i) => <li key={i}>{r}</li>)}</ul>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Therapy Goals Tab ─────────────────────────────────────────────────────────
+function TherapyGoalsTab({ data }) {
+  const [expanded, setExpanded] = useState(null);
+  if (!data) return <div className="text-center py-5 text-muted">Loading...</div>;
+  const patients = data.patients || [];
+  const ptsWithGoals = patients.filter(p => p.total_goals > 0);
+  const totalGoals = data.total_goals ?? 0;
+  const totalActive = data.total_active_goals ?? 0;
+
+  return (
+    <div>
+      <div className="alert alert-success py-2 mb-3">
+        <strong>SLP Therapy Goals</strong> — Language · Swallowing · Cognitive-Communication goal tracking
+        per patient with interventions and outcome measures
+      </div>
+
+      {/* Summary KPIs */}
+      <div className="row g-3 mb-4">
+        <div className="col-4">
+          <KPI label="Patients with Goals" value={ptsWithGoals.length} color="primary"
+               sub={`of ${patients.length} total`} />
+        </div>
+        <div className="col-4">
+          <KPI label="Total Goals" value={totalGoals} color="info" />
+        </div>
+        <div className="col-4">
+          <KPI label="Active Goals" value={totalActive} color="success"
+               sub={`${totalGoals > 0 ? Math.round((totalActive / totalGoals) * 100) : 0}% active`} />
+        </div>
+      </div>
+
+      {/* Per-patient goals table */}
+      <div className="card">
+        <div className="card-header fw-semibold">Per-Patient Therapy Goals ({ptsWithGoals.length} patients)</div>
+        <div className="table-responsive">
+          <table className="table table-sm table-hover mb-0">
+            <thead className="table-light">
+              <tr>
+                <th>Patient</th><th>Age</th><th>AEDs</th>
+                <th>Total Goals</th><th>Active</th><th>Monitoring</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {ptsWithGoals.map(p => (
+                <>
+                  <tr key={p.patient_id}>
+                    <td className="fw-semibold small">{p.patient_id}</td>
+                    <td className="small">{p.age ?? '—'}</td>
+                    <td className="small">{(p.aed_names || []).join(', ') || '—'}</td>
+                    <td className="small fw-bold">{p.total_goals}</td>
+                    <td><span className="badge bg-success">{p.active_goals}</span></td>
+                    <td><span className="badge bg-secondary">{p.monitoring_goals}</span></td>
+                    <td>
+                      <button className="btn btn-sm btn-outline-primary py-0 px-1"
+                        onClick={() => setExpanded(expanded === p.patient_id ? null : p.patient_id)}>
+                        {expanded === p.patient_id ? '▲' : '▼'}
+                      </button>
+                    </td>
+                  </tr>
+                  {expanded === p.patient_id && (
+                    <tr key={`${p.patient_id}-exp`}>
+                      <td colSpan={7} className="bg-light p-3">
+                        {(p.goals || []).map((g, i) => (
+                          <div key={i} className="card mb-2 border-0 shadow-sm">
+                            <div className="card-body py-2 px-3">
+                              <div className="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <span className="badge bg-primary me-2">{g.domain}</span>
+                                  <span className="badge bg-secondary me-2">{g.status}</span>
+                                  <span className="small fw-semibold">{g.goal}</span>
+                                </div>
+                              </div>
+                              {g.rationale && (
+                                <div className="text-muted small mt-1"><em>Rationale: {g.rationale}</em></div>
+                              )}
+                              {(g.interventions || []).length > 0 && (
+                                <div className="small mt-1">
+                                  <strong>Interventions:</strong>
+                                  <ul className="mb-0 text-muted">
+                                    {g.interventions.map((iv, j) => <li key={j}>{iv}</li>)}
+                                  </ul>
+                                </div>
+                              )}
+                              {g.measure && (
+                                <div className="small text-muted mt-1">
+                                  <strong>Outcome measure:</strong> {g.measure}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Definitions Tab ───────────────────────────────────────────────────────────
 function DefinitionsTab({ data }) {
   if (!data) return <div className="text-center py-5 text-muted">Loading...</div>;
@@ -638,6 +871,8 @@ export default function SLPDashboard() {
   const [language, setLanguage] = useState(null);
   const [swallowing, setSwallowing] = useState(null);
   const [aedSpeech, setAedSpeech] = useState(null);
+  const [cogComm, setCogComm] = useState(null);
+  const [therapyGoals, setTherapyGoals] = useState(null);
   const [definitions, setDefinitions] = useState(null);
   const [err, setErr] = useState('');
 
@@ -659,6 +894,14 @@ export default function SLPDashboard() {
       fetch(`${API}/api/slp-expert/aed-speech-effects`)
         .then(r => r.json()).then(setAedSpeech).catch(e => setErr(String(e)));
     }
+    if (tab === 'cogcomm' && !cogComm) {
+      fetch(`${API}/api/slp-expert/cognitive-communication`)
+        .then(r => r.json()).then(setCogComm).catch(e => setErr(String(e)));
+    }
+    if (tab === 'therapy' && !therapyGoals) {
+      fetch(`${API}/api/slp-expert/therapy-goals`)
+        .then(r => r.json()).then(setTherapyGoals).catch(e => setErr(String(e)));
+    }
     if (tab === 'definitions' && !definitions) {
       fetch(`${API}/api/slp-expert/definitions`)
         .then(r => r.json()).then(setDefinitions).catch(e => setErr(String(e)));
@@ -670,6 +913,8 @@ export default function SLPDashboard() {
     { key: 'language',    label: 'Language Assessment' },
     { key: 'swallowing',  label: 'Swallowing / Dysphagia' },
     { key: 'aed',         label: 'AED Speech Effects' },
+    { key: 'cogcomm',     label: 'Cognitive-Communication' },
+    { key: 'therapy',     label: 'Therapy Goals' },
     { key: 'definitions', label: 'Definitions' },
   ];
 
@@ -677,8 +922,8 @@ export default function SLPDashboard() {
     <div className="container-fluid py-3">
       <h4 className="fw-bold mb-1">Speech-Language Pathology (SLP) Dashboard</h4>
       <p className="text-muted small mb-3">
-        Language lateralization · BNT · Token Test · Dysphagia screening · AED speech effects · Therapy goals —
-        Epilepsy neurolinguistic assessment
+        Language lateralization · BNT · Token Test · Dysphagia screening · AED speech effects ·
+        Cognitive-communication · Therapy goals — Epilepsy neurolinguistic assessment
       </p>
 
       {err && <div className="alert alert-danger">{err}</div>}
@@ -697,6 +942,8 @@ export default function SLPDashboard() {
       {tab === 'language'    && <LanguageTab data={language} />}
       {tab === 'swallowing'  && <SwallowingTab data={swallowing} />}
       {tab === 'aed'         && <AEDSpeechTab data={aedSpeech} />}
+      {tab === 'cogcomm'     && <CogCommTab data={cogComm} />}
+      {tab === 'therapy'     && <TherapyGoalsTab data={therapyGoals} />}
       {tab === 'definitions' && <DefinitionsTab data={definitions} />}
     </div>
   );
