@@ -1,5 +1,5 @@
 {
-  "scanned_at": "2026-08-09 22:34 MDT",
+  "scanned_at": "2026-08-11 19:34 MDT",
   "count": 5,
   "issues": [
     {
@@ -29,7 +29,7 @@
     {
       "severity": "P3",
       "surface": "git",
-      "issue": "717 commit(s) unpushed",
+      "issue": "826 commit(s) unpushed",
       "guidance": "safe_push.sh auto-pushes on shared repos; or push manually."
     }
   ]

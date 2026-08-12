@@ -2703,6 +2703,29 @@ async def cross_patient():
     return json.loads(p.read_text()) if p.exists() else {"available": False, "reason": "run scripts/cross_patient_benchmark.py"}
 
 
+# ── Hybrid CNN-LSTM / CNN-Transformer Dashboard ───────────────────────
+
+@app.get("/api/hybrid-cnn/overview")
+async def hybrid_cnn_overview():
+    """Hybrid CNN-LSTM/Transformer overview — architecture KPIs, AUC lift vs baseline ML, pipeline stages."""
+    import scripts.hybrid_cnn_dashboard as hcd
+    return _json_safe(hcd.hybrid_cnn_overview())
+
+
+@app.get("/api/hybrid-cnn/breakdown")
+async def hybrid_cnn_breakdown():
+    """Hybrid CNN-LSTM/Transformer breakdown — arch cards, ablation, task comparison, hyperparams."""
+    import scripts.hybrid_cnn_dashboard as hcd
+    return _json_safe(hcd.hybrid_cnn_breakdown())
+
+
+@app.get("/api/hybrid-cnn/definitions")
+async def hybrid_cnn_definitions():
+    """Hybrid CNN-LSTM/Transformer definitions — concepts, regulatory context, thresholds, references."""
+    import scripts.hybrid_cnn_dashboard as hcd
+    return _json_safe(hcd.hybrid_cnn_definitions())
+
+
 # ── Cross-Patient Benchmark Dashboard ─────────────────────────────────
 
 @app.get("/api/cross-patient-benchmark/overview")

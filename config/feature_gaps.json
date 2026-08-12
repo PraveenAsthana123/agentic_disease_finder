@@ -1,164 +1,166 @@
 {
- "title": "Epilepsy DL Review (50 papers) \u2192 Project Gap Analysis",
- "source": "Epilepsy/paper/epilepsy-dl-review.pdf (50 references)",
- "updated_at": "2026-06-23",
- "review_covers": [
-  "CNN",
-  "RNN/LSTM",
-  "GNN",
-  "Transformer",
-  "SNN",
-  "Hybrid",
-  "time-frequency (STFT/wavelet/spectrogram)",
-  "transfer/cross-patient",
-  "federated learning",
-  "explainable AI",
-  "edge/wearable",
-  "seizure prediction/forecasting",
-  "closed-loop neurostimulation",
-  "foundation models",
-  "datasets: CHB-MIT/TUH-TUSZ/Bonn/Siena/EPILEPSIAE/Helsinki"
- ],
- "gaps": [
-  {
-   "category": "functional",
-   "feature": "Seizure PREDICTION / forecasting (pre-ictal)",
-   "in_project": "built",
-   "why": "Seizure Prediction Dashboard \u2014 wearable biomarker analysis, risk thresholds, pre-ictal biomarker comparison, patient-level performance (3 endpoints verified 200)",
-   "priority": "high"
-  },
-  {
-   "category": "functional",
-   "feature": "Time-frequency representations (STFT / wavelet / spectrogram)",
-   "in_project": "built",
-   "why": "Time-Frequency Representations Dashboard \u2014 6 TFR methods (STFT, CWT, DWT, Spectrogram, Mel-Spectrogram, WVD/SPWVD), 6 EEG frequency bands, 6-stage pipeline (raw EEG \u2192 TFR \u2192 model input), resolution matrix, use-case map, glossary, references. 3 endpoints (/api/time-frequency/overview|breakdown|definitions verified 200) + portal-next /time-frequency page + nav wired. Built 2026-08-06.",
-   "priority": "high",
-   "dashboard": "/api/time-frequency/*"
-  },
-  {
-   "category": "functional",
-   "feature": "Closed-loop responsive alert (pre-ictal \u2192 stimulation/SOS)",
-   "in_project": "built",
-   "why": "Closed-Loop Neurostimulation Dashboard \u2014 3 endpoints (/api/closed-loop/*) + ClosedLoopDashboard.jsx with 5-tab frontend: pre-ictal detection \u2192 alert trigger \u2192 responder notification \u2192 response \u2192 outcome audit. Real data from wearable_readings, seizure_diary, emergency_sos_events, iot_alerts.",
-   "priority": "medium"
-  },
-  {
-   "category": "technology",
-   "feature": "Deep learning models (EEGNet / 1D-CNN / LSTM / Transformer)",
-   "in_project": "built",
-   "why": "Project ships RandomForest only; review's SOTA is deep models",
-   "priority": "high"
-  },
-  {
-   "category": "technology",
-   "feature": "Graph Neural Network (electrode connectivity)",
-   "in_project": "built",
-   "why": "GNN Electrode Connectivity Dashboard \u2014 10-20 montage graph analysis, node features, edge weights (coherence/PLV/MI/Granger), regional connectivity, seizure propagation patterns, ST-GCN architecture (3 endpoints verified 200)",
-   "priority": "medium"
-  },
-  {
-   "category": "technology",
-   "feature": "Spiking Neural Network (ultra-low-power, implantable)",
-   "in_project": "built",
-   "why": "SNN Neuromorphic Dashboard \u2014 LIF neuron simulation, spike pattern analysis, STDP learning, power comparison (SNN vs CNN/LSTM/Transformer), 3 endpoints + 5-tab frontend",
-   "priority": "low"
-  },
-  {
-   "category": "technology",
-   "feature": "Transfer learning / cross-patient adaptation",
-   "in_project": "built",
-   "why": "Transfer Learning Dashboard \u2014 3 endpoints (/api/transfer-learning/*) + TransferLearningDashboard.jsx with 4 strategies (subject-independent, fine-tune, DANN, multi-task), per-patient adaptation metrics, domain shift analysis",
-   "priority": "high"
-  },
-  {
-   "category": "technology",
-   "feature": "Federated learning (privacy-preserving multi-site)",
-   "in_project": "built",
-   "why": "Federated Learning Dashboard \u2014 3 endpoints (/api/federated-learning/*) + FederatedLearningDashboard.jsx with multi-site analytics, FedAvg/FedProx/FedMA comparison, differential privacy tracking, convergence curves, gradient analysis",
-   "priority": "medium",
-   "dashboard": "/api/federated-learning/*"
-  },
-  {
-   "category": "data",
-   "feature": "Standard benchmark datasets: TUH/TUSZ, Bonn",
-   "in_project": "built",
-   "why": "Bonn external validation built \u2014 Benchmark Validation Dashboard (3 endpoints /api/benchmark-validation/* + BenchmarkValidationDashboard.jsx 5-tab frontend). TUH/TUSZ cataloged.",
-   "priority": "high"
-  },
-  {
-   "category": "data",
-   "feature": "Data augmentation (GAN / time-warp / mixup)",
-   "status": "built",
-   "in_project": "built",
-   "why": "Addresses class imbalance (rare ictal) \u2014 review highlights",
-   "priority": "medium",
-   "dashboard": "/api/data-augmentation/*",
-   "dashboard_slug": "data-augmentation"
-  },
-  {
-   "category": "data",
-   "feature": "Neonatal EEG (Helsinki)",
-   "in_project": "built",
-   "why": "Neonatal EEG Dashboard \u2014 Helsinki dataset (79 neonates, 22-ch, 256 Hz). 3 endpoints (/api/neonatal-eeg/*) + NeonatalEEGDashboard.jsx with 5-tab frontend: overview (KPIs, GA distribution, adult vs neonate radar), patterns (background characteristics, classification, GA profiles, montage comparison, aEEG), seizures (types + etiology), performance (detection comparison, gap analysis), definitions. Real published data from Stevenson et al. 2019.",
-   "priority": "low"
-  },
-  {
-   "category": "gap",
-   "feature": "Cross-patient (leave-subjects-out) benchmark on full data",
-   "in_project": "built",
-   "why": "Cross-Patient Benchmark Dashboard \u2014 3 endpoints (/api/cross-patient-benchmark/*) + CrossPatientDashboard.jsx with LOSO fold analysis, generalization gap (0.705 vs 0.99), feature importance, spatial patterns, 5-tab frontend. Real CHB-MIT data (chb02/03/04).",
-   "priority": "high"
-  },
-  {
-   "category": "gap",
-   "feature": "Foundation model pretraining (self-supervised on unlabeled EEG)",
-   "in_project": "built",
-   "why": "Foundation Models Dashboard \u2014 206 models, 9 architectures, 7 diseases, production+experimental tiers, 3 endpoints verified 200",
-   "priority": "medium"
-  },
-  {
-   "category": "gap",
-   "feature": "Prediction-horizon + false-alarm-rate metrics (per hour)",
-   "in_project": "built",
-   "why": "Forecasting needs FAR/hr + sensitivity@horizon, not just accuracy",
-   "priority": "high",
-   "status": "built",
-   "route": "/api/seizure-horizon/overview|breakdown|definitions"
-  },
-  {
-   "category": "architecture",
-   "feature": "Hybrid CNN-LSTM / CNN-Transformer pipeline",
-   "in_project": "built",
-   "why": "Hybrid Pipeline Dashboard \u2014 CNN-LSTM vs CNN-Transformer architecture comparison, layer analysis, attention weights, LSTM gates, training curves (3 endpoints verified 200)",
-   "priority": "high"
-  },
-  {
-   "category": "architecture",
-   "feature": "Edge deployment (quantized model on device)",
-   "in_project": "built",
-   "why": "Edge Deployment Dashboard \u2014 ONNX export pipeline, quantization modes (FP16/INT8/INT4), 6 device targets, model compatibility matrix, 5-tab frontend (3 endpoints verified 200)",
-   "priority": "medium"
-  },
-  {
-   "category": "decision_ai",
-   "feature": "Seizure-risk forecasting decision layer (alert thresholds + escalation)",
-   "in_project": "built",
-   "why": "Dashboard with 4-tier risk scoring (low/moderate/high/critical), 5 forecast horizons, threshold config, per-patient forecasts, escalation log, and gap analysis",
-   "priority": "high"
-  },
-  {
-   "category": "decision_ai",
-   "feature": "Closed-loop decision (pre-ictal \u2192 caregiver/stim action) with audit",
-   "in_project": "built",
-   "why": "Closed-Loop Neurostimulation Dashboard \u2014 per-patient closed-loop audit with trigger method \u2192 outcome effectiveness, event timeline, IoT alert audit, response latency by event type. Governed action records via emergency_sos_events with outcome classification.",
-   "priority": "medium"
-  }
- ],
- "top_recommendations": [
-  "Add a deep-learning model (EEGNet/1D-CNN) trained on CHB-MIT with subject-wise split \u2014 closes the #1 technology gap and gives a defensible deep-model baseline.",
-  "Add spectrogram (STFT/wavelet) representation + 2D-CNN \u2014 unlocks the review's main input modality.",
-  "Add seizure FORECASTING (pre-ictal classification) with FAR/hr + sensitivity@horizon metrics \u2014 moves from detection to prediction (novel for DBA).",
-  "Run cross-patient (leave-subjects-out) benchmark on full CHB-MIT \u2014 the honest generalization number.",
-  "Add TUSZ/Bonn dataset loaders \u2014 standard benchmarks reviewers expect."
- ]
+  "title": "Epilepsy DL Review (50 papers) \u2192 Project Gap Analysis",
+  "source": "Epilepsy/paper/epilepsy-dl-review.pdf (50 references)",
+  "updated_at": "2026-08-12",
+  "review_covers": [
+    "CNN",
+    "RNN/LSTM",
+    "GNN",
+    "Transformer",
+    "SNN",
+    "Hybrid",
+    "time-frequency (STFT/wavelet/spectrogram)",
+    "transfer/cross-patient",
+    "federated learning",
+    "explainable AI",
+    "edge/wearable",
+    "seizure prediction/forecasting",
+    "closed-loop neurostimulation",
+    "foundation models",
+    "datasets: CHB-MIT/TUH-TUSZ/Bonn/Siena/EPILEPSIAE/Helsinki"
+  ],
+  "gaps": [
+    {
+      "category": "functional",
+      "feature": "Seizure PREDICTION / forecasting (pre-ictal)",
+      "in_project": "built",
+      "why": "Seizure Prediction Dashboard \u2014 wearable biomarker analysis, risk thresholds, pre-ictal biomarker comparison, patient-level performance (3 endpoints verified 200)",
+      "priority": "high"
+    },
+    {
+      "category": "functional",
+      "feature": "Time-frequency representations (STFT / wavelet / spectrogram)",
+      "in_project": "built",
+      "why": "Time-Frequency Representations Dashboard \u2014 6 TFR methods (STFT, CWT, DWT, Spectrogram, Mel-Spectrogram, WVD/SPWVD), 6 EEG frequency bands, 6-stage pipeline (raw EEG \u2192 TFR \u2192 model input), resolution matrix, use-case map, glossary, references. 3 endpoints (/api/time-frequency/overview|breakdown|definitions verified 200) + portal-next /time-frequency page + nav wired. Built 2026-08-06.",
+      "priority": "high",
+      "dashboard": "/api/time-frequency/*"
+    },
+    {
+      "category": "functional",
+      "feature": "Closed-loop responsive alert (pre-ictal \u2192 stimulation/SOS)",
+      "in_project": "built",
+      "why": "Closed-Loop Neurostimulation Dashboard \u2014 3 endpoints (/api/closed-loop/*) + ClosedLoopDashboard.jsx with 5-tab frontend: pre-ictal detection \u2192 alert trigger \u2192 responder notification \u2192 response \u2192 outcome audit. Real data from wearable_readings, seizure_diary, emergency_sos_events, iot_alerts.",
+      "priority": "medium"
+    },
+    {
+      "category": "technology",
+      "feature": "Deep learning models (EEGNet / 1D-CNN / LSTM / Transformer)",
+      "in_project": "built",
+      "why": "Project ships RandomForest only; review's SOTA is deep models",
+      "priority": "high"
+    },
+    {
+      "category": "technology",
+      "feature": "Graph Neural Network (electrode connectivity)",
+      "in_project": "built",
+      "why": "GNN Electrode Connectivity Dashboard \u2014 10-20 montage graph analysis, node features, edge weights (coherence/PLV/MI/Granger), regional connectivity, seizure propagation patterns, ST-GCN architecture (3 endpoints verified 200)",
+      "priority": "medium"
+    },
+    {
+      "category": "technology",
+      "feature": "Spiking Neural Network (ultra-low-power, implantable)",
+      "in_project": "built",
+      "why": "SNN Neuromorphic Dashboard \u2014 LIF neuron simulation, spike pattern analysis, STDP learning, power comparison (SNN vs CNN/LSTM/Transformer), 3 endpoints + 5-tab frontend",
+      "priority": "low"
+    },
+    {
+      "category": "technology",
+      "feature": "Transfer learning / cross-patient adaptation",
+      "in_project": "built",
+      "why": "Transfer Learning Dashboard \u2014 3 endpoints (/api/transfer-learning/*) + TransferLearningDashboard.jsx with 4 strategies (subject-independent, fine-tune, DANN, multi-task), per-patient adaptation metrics, domain shift analysis",
+      "priority": "high"
+    },
+    {
+      "category": "technology",
+      "feature": "Federated learning (privacy-preserving multi-site)",
+      "in_project": "built",
+      "why": "Federated Learning Dashboard \u2014 3 endpoints (/api/federated-learning/*) + FederatedLearningDashboard.jsx with multi-site analytics, FedAvg/FedProx/FedMA comparison, differential privacy tracking, convergence curves, gradient analysis",
+      "priority": "medium",
+      "dashboard": "/api/federated-learning/*"
+    },
+    {
+      "category": "data",
+      "feature": "Standard benchmark datasets: TUH/TUSZ, Bonn",
+      "in_project": "built",
+      "why": "Bonn external validation built \u2014 Benchmark Validation Dashboard (3 endpoints /api/benchmark-validation/* + BenchmarkValidationDashboard.jsx 5-tab frontend). TUH/TUSZ cataloged.",
+      "priority": "high"
+    },
+    {
+      "category": "data",
+      "feature": "Data augmentation (GAN / time-warp / mixup)",
+      "status": "built",
+      "in_project": "built",
+      "why": "Addresses class imbalance (rare ictal) \u2014 review highlights",
+      "priority": "medium",
+      "dashboard": "/api/data-augmentation/*",
+      "dashboard_slug": "data-augmentation"
+    },
+    {
+      "category": "data",
+      "feature": "Neonatal EEG (Helsinki)",
+      "in_project": "built",
+      "why": "Neonatal EEG Dashboard \u2014 Helsinki dataset (79 neonates, 22-ch, 256 Hz). 3 endpoints (/api/neonatal-eeg/*) + NeonatalEEGDashboard.jsx with 5-tab frontend: overview (KPIs, GA distribution, adult vs neonate radar), patterns (background characteristics, classification, GA profiles, montage comparison, aEEG), seizures (types + etiology), performance (detection comparison, gap analysis), definitions. Real published data from Stevenson et al. 2019.",
+      "priority": "low"
+    },
+    {
+      "category": "gap",
+      "feature": "Cross-patient (leave-subjects-out) benchmark on full data",
+      "in_project": "built",
+      "why": "Cross-Patient Benchmark Dashboard \u2014 3 endpoints (/api/cross-patient-benchmark/*) + CrossPatientDashboard.jsx with LOSO fold analysis, generalization gap (0.705 vs 0.99), feature importance, spatial patterns, 5-tab frontend. Real CHB-MIT data (chb02/03/04).",
+      "priority": "high"
+    },
+    {
+      "category": "gap",
+      "feature": "Foundation model pretraining (self-supervised on unlabeled EEG)",
+      "in_project": "built",
+      "why": "Foundation Models Dashboard \u2014 206 models, 9 architectures, 7 diseases, production+experimental tiers, 3 endpoints verified 200",
+      "priority": "medium"
+    },
+    {
+      "category": "gap",
+      "feature": "Prediction-horizon + false-alarm-rate metrics (per hour)",
+      "in_project": "built",
+      "why": "Forecasting needs FAR/hr + sensitivity@horizon, not just accuracy",
+      "priority": "high",
+      "status": "built",
+      "route": "/api/seizure-horizon/overview|breakdown|definitions"
+    },
+    {
+      "category": "architecture",
+      "feature": "Hybrid CNN-LSTM / CNN-Transformer pipeline",
+      "in_project": "built",
+      "why": "Hybrid Pipeline Dashboard \u2014 CNN-LSTM vs CNN-Transformer architecture comparison, layer analysis, attention weights, LSTM gates, training curves (3 endpoints verified 200)",
+      "priority": "high",
+      "status": "built",
+      "built_note": "hybrid-cnn dashboard built 2026-08-12: /api/hybrid-cnn/overview|breakdown|definitions + portal-next/app/hybrid-cnn/page.jsx"
+    },
+    {
+      "category": "architecture",
+      "feature": "Edge deployment (quantized model on device)",
+      "in_project": "built",
+      "why": "Edge Deployment Dashboard \u2014 ONNX export pipeline, quantization modes (FP16/INT8/INT4), 6 device targets, model compatibility matrix, 5-tab frontend (3 endpoints verified 200)",
+      "priority": "medium"
+    },
+    {
+      "category": "decision_ai",
+      "feature": "Seizure-risk forecasting decision layer (alert thresholds + escalation)",
+      "in_project": "built",
+      "why": "Dashboard with 4-tier risk scoring (low/moderate/high/critical), 5 forecast horizons, threshold config, per-patient forecasts, escalation log, and gap analysis",
+      "priority": "high"
+    },
+    {
+      "category": "decision_ai",
+      "feature": "Closed-loop decision (pre-ictal \u2192 caregiver/stim action) with audit",
+      "in_project": "built",
+      "why": "Closed-Loop Neurostimulation Dashboard \u2014 per-patient closed-loop audit with trigger method \u2192 outcome effectiveness, event timeline, IoT alert audit, response latency by event type. Governed action records via emergency_sos_events with outcome classification.",
+      "priority": "medium"
+    }
+  ],
+  "top_recommendations": [
+    "Add a deep-learning model (EEGNet/1D-CNN) trained on CHB-MIT with subject-wise split \u2014 closes the #1 technology gap and gives a defensible deep-model baseline.",
+    "Add spectrogram (STFT/wavelet) representation + 2D-CNN \u2014 unlocks the review's main input modality.",
+    "Add seizure FORECASTING (pre-ictal classification) with FAR/hr + sensitivity@horizon metrics \u2014 moves from detection to prediction (novel for DBA).",
+    "Run cross-patient (leave-subjects-out) benchmark on full CHB-MIT \u2014 the honest generalization number.",
+    "Add TUSZ/Bonn dataset loaders \u2014 standard benchmarks reviewers expect."
+  ]
 }

@@ -1843,6 +1843,19 @@
         "/api/neurologist/definitions"
       ],
       "note": "Clinical EEG review + ILAE seizure classification \u2014 133 EEG analyses, 41 patients, 71 seizure classification records, 85 ICD-10 codes, 40 MRI findings; KPIs: 131 studies pending review, 36.1% seizure-positive rate, 69.1% avg model confidence, 2 HITL overrides, 336.6h mean turnaround; 4-tab frontend (Overview/Patient List/Confidence Analysis/Clinical Definitions); ILAE 2017 seizure classification, ACNS EEG turnaround benchmarks (<24h preliminary/<48h final), IFCN standards; SiteNav wired. 3 endpoints verified 200. Registered 2026-08-12."
+    },
+    {
+      "id": "hybrid_cnn",
+      "name": "Hybrid CNN-LSTM / CNN-Transformer",
+      "category": "AI Architecture",
+      "status": "built",
+      "route": "/hybrid-cnn",
+      "api_endpoints": [
+        "/api/hybrid-cnn/overview",
+        "/api/hybrid-cnn/breakdown",
+        "/api/hybrid-cnn/definitions"
+      ],
+      "note": "Hybrid CNN-LSTM/Transformer pipeline \u2014 4 architecture designs (CNN-LSTM/CNN-Transformer/EEGNet-LSTM/1D-CNN), 9-stage end-to-end pipeline, ablation study (XGBoost baseline \u2192 +4.9% AUC with CNN-Transformer + augmentation), per-task comparison (seizure_detection/eeg_classification/seizure_prediction/anomaly_detection), 4 dataset projections (Bonn/CHB-MIT/TUH/Internal), hyperparameter grid, GroupKFold CV, 5-tab frontend (Overview/Architectures/Baseline vs DL/Training Design/Definitions), 12 concepts, 5 regulatory frameworks, 5 references. 3 endpoints /api/hybrid-cnn/overview|breakdown|definitions verified 200."
     }
   ],
   "summary": {
@@ -1855,5 +1868,5 @@
     "total_dashboards": 140,
     "total_built": 140
   },
-  "count": 142
+  "count": 145
 }

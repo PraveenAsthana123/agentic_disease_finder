@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11T03:07:48-06:00",
+  "generated_at": "2026-08-12T03:17:31-06:00",
   "method": "subject-level bootstrap (resample subjects, 2000 iters) \u2014 correct for non-independent windows",
   "patient_specific_accuracy_ci": {
     "mean": 0.9805,

@@ -1,11 +1,11 @@
 {
-  "run_at_local": "2026-08-11T18:00:02-06:00",
+  "run_at_local": "2026-08-12T03:00:02-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
   "detection": "YOLOv8n",
   "classification_model": "llava:7b (Ollama)",
-  "classification_sample": "This is a photo of a person lying down in a hospital bed, who appears to be making an unexpected or surprising facial expression.",
+  "classification_sample": "The image shows a man lying in bed, his expression is blank and he appears to be unconscious.",
   "results": [
     {
       "frame": "frame_0001.jpg",
