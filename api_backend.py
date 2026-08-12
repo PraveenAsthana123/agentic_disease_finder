@@ -21403,6 +21403,33 @@ def api_nddi_e_definitions():
     return _json_safe(nd.definitions())
 
 
+@app.get("/api/ai-advisor/overview")
+async def ai_advisor_overview():
+    """AI/ML Advisor overview — total analyses, avg confidence, AI vs clinician
+    agreement/override rates, best model AUC, validation study pass/fail counts,
+    multimodal fusion KPIs, HITL reviews."""
+    import scripts.ai_advisor_dashboard as aad
+    return _json_safe(aad.overview())
+
+
+@app.get("/api/ai-advisor/breakdown")
+async def ai_advisor_breakdown():
+    """AI/ML Advisor breakdown — full model leaderboard (AUC/F1/latency), performance
+    by model type and task, validation study table, fusion method comparison,
+    confidence distribution, agreement by prediction class."""
+    import scripts.ai_advisor_dashboard as aad
+    return _json_safe(aad.breakdown())
+
+
+@app.get("/api/ai-advisor/definitions")
+async def ai_advisor_definitions():
+    """AI/ML Advisor definitions — 10 concepts (AUC-ROC / GroupKFold / calibration /
+    drift / HITL / override / fusion / SaMD), regulatory context (EU MDR / IEC 62304 /
+    ISO 14971), performance thresholds, responsible-AI governance notes, 5 references."""
+    import scripts.ai_advisor_dashboard as aad
+    return _json_safe(aad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

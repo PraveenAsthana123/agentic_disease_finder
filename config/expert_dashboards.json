@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 141 dashboards",
+  "note": "Total: 142 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1776,6 +1776,29 @@
       "status": "built",
       "tabs": 4,
       "description": "30 recordings, 30 patients, 60.4% channel usability, 21.8dB avg SNR, 27.2% impedance pass rate, 169 artifact annotations (eye_blink/muscle/movement/electrode_pop/sweat/ECG), activation procedure coverage (HV 80%/photic 60%/sleep 93%), artifact x severity matrix, per-patient channel quality table, SNR histogram, 4-tab frontend (Overview/Channel Quality/Artifacts/Definitions), 3 endpoints verified 200, SiteNav wired next to Neurophysiologist. Built 2026-08-12."
+    },
+    {
+      "id": "ai_advisor",
+      "name": "AI / ML Advisor Dashboard",
+      "status": "built",
+      "route": "/ai-advisor",
+      "api": "/api/ai-advisor",
+      "tabs": [
+        "Overview",
+        "Model Leaderboard",
+        "Validation Studies",
+        "Fusion & Decisions",
+        "Definitions"
+      ],
+      "data_sources": [
+        "analyses",
+        "clinical_decisions",
+        "model_comparison",
+        "validation_studies",
+        "multimodal_fusion",
+        "hitl_reviews"
+      ],
+      "description": "133 analyses, 224 model experiments, 42 validation studies, 126 multimodal fusion sessions \u2014 AI/ML lifecycle advisor"
     }
   ],
   "summary": {
@@ -1788,5 +1811,5 @@
     "total_dashboards": 140,
     "total_built": 140
   },
-  "count": 140
+  "count": 142
 }

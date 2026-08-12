@@ -2,7 +2,7 @@
   "title": "Epilepsy EEG Research \u2014 Consultant Engagement Matrix (Role \u00b7 Task \u00b7 Facets)",
   "purpose": "Human clinical oversight registry. Per role: tasks, challenges, documents, compliance docs, internal operation tasks, patient-deliverable docs, patient questionnaire, assessment. No cost.",
   "engagement_model": "Advisory (role + responsibility based)",
-  "updated_at": "2026-06-23",
+  "updated_at": "2026-08-12",
   "consultants": [
     {
       "id": "neurologist",
@@ -611,7 +611,14 @@
           "challenge": "Biomarker instability",
           "ai": "Drift detection + retraining triggers"
         }
-      ]
+      ],
+      "status": "built",
+      "api_endpoints": [
+        "/api/ai-advisor/overview",
+        "/api/ai-advisor/breakdown",
+        "/api/ai-advisor/definitions"
+      ],
+      "portal_page": "/ai-advisor"
     },
     {
       "id": "governance_advisor",
