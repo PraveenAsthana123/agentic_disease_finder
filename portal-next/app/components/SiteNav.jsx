@@ -317,6 +317,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/iec-irb-tracker">&#x1f4cb; IEC/IRB 173-Doc Tracker</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/insurance-preauth">&#x1f3e5; Insurance Pre-Authorization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epilepsy-in-women">&#x2640;&#xfe0f; Epilepsy in Women</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/catamenial">&#x1f534; Catamenial Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/data-augmentation">&#x1f9ec; Data Augmentation</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-semiology">&#x1f9e9; Seizure Semiology</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/snn-neuromorphic">&#x26a1; SNN Neuromorphic</Link></li>

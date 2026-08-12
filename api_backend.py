@@ -21630,6 +21630,35 @@ async def model_calibration_definitions():
     return _json_safe(mcd.definitions())
 
 
+@app.get("/api/catamenial/overview")
+async def catamenial_overview():
+    """Catamenial Epilepsy Dashboard — overview: female patient count, catamenial rate (~40%),
+    Duncan phase distribution (C1/C2/C3), seizure-by-cycle-day chart, treatment summary,
+    biomarker KPIs. Reference: Duncan 2005 Epilepsia, Herzog 2015 Neurology."""
+    import scripts.catamenial_dashboard as cd
+    return _json_safe(cd.overview())
+
+
+@app.get("/api/catamenial/breakdown")
+async def catamenial_breakdown():
+    """Catamenial Epilepsy Dashboard — breakdown: per-patient table (phase, P/E ratio,
+    cluster score, recommended treatment), AED–hormone interaction table,
+    hormonal seizure-risk curve across 28-day cycle, treatment catalog,
+    phase profiles with recommended treatments."""
+    import scripts.catamenial_dashboard as cd
+    return _json_safe(cd.breakdown())
+
+
+@app.get("/api/catamenial/definitions")
+async def catamenial_definitions():
+    """Catamenial Epilepsy Dashboard — definitions: 12 concepts (Duncan classification,
+    allopregnanolone, P/E ratio, anovulatory cycle, pulse dosing, CYP3A4 induction,
+    neurosteroid replacement), 3 guidelines (ILAE/AES/NICE), 4 references,
+    6-item screening checklist."""
+    import scripts.catamenial_dashboard as cd
+    return _json_safe(cd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

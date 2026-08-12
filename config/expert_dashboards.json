@@ -1943,17 +1943,30 @@
         "/api/model-calibration/definitions"
       ],
       "note": "TRIPOD-AI Item 22 calibration reporting: ECE, Brier Score, reliability diagram, per-model-type calibration gaps, per-disease confidence analysis, 224 model runs \u00d7 133 clinical analyses. 4-tab frontend (Overview/Reliability/Per Model/Definitions). Built 2026-08-12."
+    },
+    {
+      "id": "catamenial_epilepsy",
+      "name": "Catamenial Epilepsy",
+      "status": "built",
+      "category": "Clinical",
+      "route": "/catamenial",
+      "api": [
+        "/api/catamenial/overview",
+        "/api/catamenial/breakdown",
+        "/api/catamenial/definitions"
+      ],
+      "note": "Seizure clustering by menstrual cycle phase \u2014 Duncan C1/C2/C3 classification. Female patient identification (~40% catamenial rate), phase distribution, hormonal P/E ratio, AED\u2013hormone interactions (CYP3A4), treatment catalog (6 options Level B/C), 28-day hormonal curve, 12 concepts, 3 guidelines, screening checklist. 5-tab frontend (Overview/Patients/AED Interactions/Hormones/Definitions). Reference: Duncan 2005 / Herzog 2015 / Reddy 2016. Built 2026-08-12."
     }
   ],
   "summary": {
-    "total": 149,
-    "built": 149,
+    "total": 153,
+    "built": 153,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 149,
-    "total_dashboards": 149,
-    "total_built": 149
+    "count": 153,
+    "total_dashboards": 153,
+    "total_built": 153
   },
-  "count": 152
+  "count": 153
 }
