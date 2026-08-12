@@ -94,8 +94,9 @@
     }
   ],
   "status": {
-    "ai_components": "built (EEG); video=planned",
+    "ai_components": "built (EEG + video)",
     "expert_summary": "built (editable + saved)",
-    "final_signoff": "built (hitl_reviews + audit)"
+    "final_signoff": "built (hitl_reviews + audit)",
+    "report_layout_dashboard": "built (/report-layout + /api/report-layout/*)"
   }
 }

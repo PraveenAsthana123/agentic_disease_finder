@@ -210,7 +210,7 @@ def definitions():
         "available": True,
         "status_legend": [
             {"status": "built", "description": "Implemented and verified in this project -- live code, tested endpoints, working pipeline"},
-            {"status": "planned", "description": "Architecture slot reserved -- implementation pending (e.g., video correlation module)"},
+            {"status": "planned", "description": "Architecture slot reserved -- implementation pending (blocked items: auth/RBAC, EMR/FHIR, device streaming)"},
         ],
         "glossary": [
             {"term": "EEG", "definition": "Electroencephalography -- recording of brain electrical activity via scalp electrodes, primary diagnostic tool for epilepsy"},
@@ -228,7 +228,7 @@ def definitions():
         ],
         "clinical_notes": [
             "All AI findings are preliminary and require expert neurologist review before clinical use.",
-            "The video correlation component is planned but not yet implemented -- video-EEG reports currently rely on manual semiology annotation.",
+            "The video correlation component is built -- behavioral semiology events are synced to EEG onset zones via /api/video-correlation/overview (71 patients, 185 events, 23 EEG-concordant pairs).",
             "The audit trail records every AI prediction and expert override with UTC timestamps for regulatory compliance.",
             "Final reports are only valid after expert sign-off through the HITL review gate.",
         ],

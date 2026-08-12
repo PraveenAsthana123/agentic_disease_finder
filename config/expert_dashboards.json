@@ -1577,6 +1577,19 @@
       "status": "built",
       "tabs": 4,
       "description": "30 devices (Wrist EEG Band/Ring/Ankle/Patch/Smartwatch/Chest Strap), 30 patients, 900 readings, 30-day monitoring window, 6 brands (Empatica Embrace2/Byteflies/BioStampRC/Garmin/Apple Watch/Samsung), health score avg 66.8/100, seizure risk score avg 34.61/100, seizure detection rate 12.4%, HRV distribution, sleep quality distribution, health trajectory (improving/stable/declining), per-patient digital twin profiles with physiological baseline + sleep profile + activity profile + 1yr/5yr longitudinal projections, device fleet table, 4-tab frontend (Overview/Device Fleet/Per Patient/Definitions), 3 endpoints /api/wearables-digital-twin/overview|breakdown|definitions verified 200, SiteNav wired next to Wearable Devices"
+    },
+    {
+      "id": "report_layout",
+      "title": "EEG / Video-EEG Summary Report Layout Dashboard",
+      "route": "/report-layout",
+      "api": [
+        "/api/report-layout/overview",
+        "/api/report-layout/breakdown",
+        "/api/report-layout/definitions"
+      ],
+      "status": "built",
+      "tabs": 5,
+      "description": "4 report types (routine EEG/video-EEG/ambulatory/LTM), 6 AI components (acquisition/artifacts/background/epileptiform/explainability/video), 7 report sections (AI summary/findings/recommendation + expert summary/notes/final/audit), 3 editable sections, video AI component built (71 patients/185 behavioral events/23 EEG-concordant pairs from /api/video-correlation/overview), semiology category distribution (Motor 64/Dialeptic 28/Aura 24/Autonomic 23), lateralization distribution (Non-lateralized 28/Left 22/Right 16/Bilateral 5), AI finding + AI recommendation auto-assembled per component, status ai_components updated from video=planned to built (EEG+video), 5-tab frontend (Overview/Components/Video AI Component/Sections/Definitions), 3 endpoints /api/report-layout/overview|breakdown|definitions verified 200, SiteNav wired next to Reporting AI, report_layout.json status.ai_components updated to built (EEG+video)"
     }
   ],
   "summary": {

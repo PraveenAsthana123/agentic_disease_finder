@@ -100,6 +100,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/decision-ai">Decision AI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/recovery-trajectory">&#x1f4c8; Recovery Trajectory</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/reporting-ai">&#x1f4cb; Reporting AI</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/report-layout">&#x1f4c4; Report Layout</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/video-eeg">&#x1f4f9; Video EEG</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/video-correlation">&#x1f3a5; Video Correlation</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/patient-video">&#x1f3a5; Patient Video</Link></li>
