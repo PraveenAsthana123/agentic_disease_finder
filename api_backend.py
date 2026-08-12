@@ -21851,6 +21851,47 @@ async def jme_definitions():
     return _json_safe(jd.definitions())
 
 
+@app.get("/api/tle/overview")
+async def tle_overview():
+    """TLE Dashboard — overview: 41-patient TLE cohort, avg onset age range 15–50 years, seizure-free rate,
+    drug-resistant rate (~30–40%), post-surgical rate, catamenial rate, 6-class etiology distribution
+    (Hippocampal Sclerosis 50%/Low-Grade Tumor 15%/Focal Cortical Dysplasia 10%/Post-Encephalitic 10%/
+    Genetic LGI1-DEPDC5 8%/Cryptogenic 7%), AED regimen distribution, seizure control distribution,
+    aura type distribution (déjà vu/epigastric rising/fear/olfactory/auditory/none),
+    8 triggers (missed AED dose 70%/sleep deprivation 68%/stress 65%/fever 55%/alcohol 45%/catamenial 30%/
+    exertion 25%/photosensitivity 10%), 6 clinical alerts (enzyme inducers OCP/surgical referral ≥2 AED/
+    SUDEP-FBTCS/LTG titration/lacosamide cardiac/anti-LGI1 autoimmune)."""
+    import scripts.tle_dashboard as td
+    return _json_safe(td.overview())
+
+
+@app.get("/api/tle/breakdown")
+async def tle_breakdown():
+    """TLE Dashboard — breakdown: per-patient table (onset age/seizure types/etiology/aura/AED regimen/
+    control/catamenial/post-surgical/years on AED), 6-class etiology catalog (HS/tumor/FCD/post-encephalitic/
+    genetic/cryptogenic) with mechanism+MRI finding+surgical outcome, 4 seizure types (FAS 80%/FIAS 90%/
+    FBTCS 50%/subclinical 30%) with EEG correlates+clinical tips+first-line AED, 8 triggers with
+    frequency/mechanism/mitigation, 8 treatments (CBZ/LTG/LEV/OXC/LCM/ESL/temporal lobectomy/KD) with
+    dose/MOA/efficacy/safety/evidence level, 4 AED monitoring items (CBZ enzyme+hyponatremia/LTG SJS/
+    LEV behavioural/LCM cardiac PR), 6-window lifecycle trajectory (childhood/adolescent/young adult/
+    childbearing/middle adult/older adult), 6 standards (ILAE 2022/NICE NG217/AAN Surgical 2003/
+    ILAE Surgical 2017/ILAE DRE 2010/FDA LCM 2008), 6 thresholds, 6 references (Wiebe 2001/Engel 2012/
+    Helmstaedter 2003/Jobst 2015/Ryvlin 2018/Scheffer 2022)."""
+    import scripts.tle_dashboard as td
+    return _json_safe(td.breakdown())
+
+
+@app.get("/api/tle/definitions")
+async def tle_definitions():
+    """TLE Dashboard — definitions: 14 concepts (TLE/MTLE/Hippocampal Sclerosis/FAS/FIAS/FBTCS/Aura/
+    Automatism/Déjà vu/Engel Classification/ADTLE/Drug-Resistant Epilepsy/SEEG/SUDEP/HFO),
+    6 standards (ILAE 2022/NICE NG217/AAN Surgical 2003/ILAE Surgical 2017/ILAE DRE 2010/FDA LCM),
+    6 thresholds (DRE ≥2 AED failures/CBZ TDM 4–12/LTG-VPA 50% reduction/MTLE-HS 60–70% Engel I/
+    driving 12M/folic acid 5mg), 6 references."""
+    import scripts.tle_dashboard as td
+    return _json_safe(td.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

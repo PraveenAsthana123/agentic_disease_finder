@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 156 dashboards",
+  "note": "Total: 160 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -2039,6 +2039,23 @@
       "data_source": "patients (41 patients, deterministic JME overlay), curated pharmacology/genetics/seizure-type/trigger catalogs",
       "note": "JME (5-10% of all epilepsies) \u2014 41-patient cohort, 6-class genetic catalog (GABRA1 18%/EFHC1 9%/CLCN2 7%/CACNB4 5%/SCN1A-GABRD 4%/Polygenic 57%), 4 seizure types (MJ 100%/GTCS 95%/Absence 30%/Photosensitive PPR 35%), 8 triggers (sleep deprivation 90%/alcohol 65%/missed dose 55%), 8 treatments (Valproate/Levetiracetam/Lamotrigine/Topiramate/Zonisamide/Clobazam/Perampanel/Clonazepam), 6 ABSOLUTE CONTRAINDICATIONS (CBZ/OXC/PHT/PB/VGB/TGB), 4 AED monitoring items, 6-window lifecycle, 14 concepts, 6 standards (ILAE 2022/NICE NG217/FDA Valproate REMS/FDA Perampanel 2018/SANAD-II/EAN 2013), 6 thresholds, 6 references (Genton 2000/Camfield 2009/SANAD-II 2021/ELEVATE 2015/Kasteleijn-Nolst 2012/Baykan 2008), 5-tab frontend (Overview/Patients & Genetics/Seizure Types & Triggers/Treatments/Definitions), 3 endpoints /api/jme/overview|breakdown|definitions verified 200, portal-next/app/jme/page.jsx + SiteNav wired next to West Syndrome, expert_dashboards.json count 158->159",
       "built_at": "2026-08-12"
+    },
+    {
+      "id": "tle",
+      "name": "Temporal Lobe Epilepsy (TLE)",
+      "status": "built",
+      "route": "/tle",
+      "api_base": "/api/tle",
+      "endpoints": [
+        "/api/tle/overview",
+        "/api/tle/breakdown",
+        "/api/tle/definitions"
+      ],
+      "script": "scripts/tle_dashboard.py",
+      "frontend": "portal-next/app/tle/page.jsx",
+      "data_source": "patients (41 patients, deterministic TLE overlay), curated pharmacology/etiology/seizure-type/trigger catalogs",
+      "note": "TLE (most common focal epilepsy \u2014 ~60% of focal, ~30% of all epilepsies, drug resistance ~30\u201340%) \u2014 41-patient cohort, 6-class etiology catalog (HS 50%/low-grade tumor 15%/FCD 10%/post-encephalitic 10%/genetic LGI1-DEPDC5 8%/cryptogenic 7%), 4 seizure types (FAS 80%/FIAS 90%/FBTCS 50%/subclinical 30%) with EEG correlates+clinical tips, 8 triggers (missed AED dose 70%/sleep deprivation 68%/stress 65%/fever 55%/alcohol 45%/catamenial 30%/exertion 25%/photosensitivity 10%), 8 treatments (CBZ Level A/LTG Level A/LEV Level B/OXC Level A/Lacosamide Level A add-on/ESL Level A add-on/temporal lobectomy Level A NEJM/KD Level B), 4 AED monitoring items (CBZ enzyme+hyponatremia+HLA-B*1502/LTG SJS slow titration/LEV behavioural/LCM cardiac PR ECG), 6-window lifecycle trajectory (childhood/adolescent/young adult/childbearing/middle adult/older adult), 14 concepts (TLE/MTLE/HS/FAS/FIAS/FBTCS/Aura/Automatism/D\u00e9j\u00e0 vu/Engel/ADTLE/DRE/SEEG/SUDEP/HFO), 6 standards (ILAE 2022/NICE NG217/AAN Surgical 2003/ILAE Surgical 2017/ILAE DRE 2010/FDA LCM 2008), 6 thresholds (DRE \u22652 AED failures/CBZ TDM 4\u201312/LTG-VPA 50%/MTLE-HS 60\u201370% Engel I/driving 12M/folic acid 5mg), 6 references (Wiebe 2001 NEJM/Engel 2012 NEJM ERSET/Helmstaedter 2003 Lancet/Jobst 2015 JAMA Neurol/Ryvlin 2018 Lancet Neurol/Scheffer 2022 Epilepsia), 5-tab frontend (Overview/Patients & Etiology/Seizure Types & Surgery/Treatments/Definitions), 3 endpoints /api/tle/overview|breakdown|definitions verified 200, portal-next/app/tle/page.jsx + SiteNav wired next to JME, expert_dashboards.json count 159->160",
+      "built_at": "2026-08-12"
     }
   ],
   "summary": {
@@ -2051,5 +2068,5 @@
     "total_dashboards": 156,
     "total_built": 156
   },
-  "count": 158
+  "count": 160
 }
