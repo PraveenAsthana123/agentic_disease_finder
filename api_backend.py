@@ -21227,6 +21227,28 @@ def api_rehab_goals_definitions():
     return _json_safe(_rehab_goals_dashboard.definitions())
 
 
+@app.get("/api/aed-polypharmacy/overview")
+def api_aed_polypharmacy_overview():
+    """AED Polypharmacy Analysis overview — all 30 patients on poly-AED therapy,
+    dual/triple regimen distribution, top drug combinations, combined side-effect burden."""
+    import scripts.polypharmacy_dashboard as pd_mod
+    return _json_safe(pd_mod.overview())
+
+
+@app.get("/api/aed-polypharmacy/breakdown")
+def api_aed_polypharmacy_breakdown():
+    """Per-patient polypharmacy profile, drug-pair co-occurrence matrix, per-regimen stats."""
+    import scripts.polypharmacy_dashboard as pd_mod
+    return _json_safe(pd_mod.breakdown())
+
+
+@app.get("/api/aed-polypharmacy/definitions")
+def api_aed_polypharmacy_definitions():
+    """AED polypharmacy glossary — polytherapy, DDI, comedication burden, ILAE thresholds."""
+    import scripts.polypharmacy_dashboard as pd_mod
+    return _json_safe(pd_mod.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -1613,17 +1613,24 @@
       "status": "built",
       "route": "/neonatal-eeg",
       "note": "Helsinki Neonatal EEG Dataset \u2014 79 neonates (28-44 wk GA), 22-channel EEG 256 Hz, 460 annotated seizure events, inter-rater \u03ba=0.79. GA distribution (5 groups), EEG background patterns (burst-suppression/trac\u00e9 alternant/trac\u00e9 discontinu/delta brushes/frontal sharp transients), neonatal seizure types (clonic/tonic/subtle/myoclonic/electrographic-only), etiology distribution (HIE 40%/stroke 15%/infection 10%/metabolic 10%/malformation 8%/genetic 7%/unknown 10%), AI detection benchmark vs adult model performance gap, aEEG patterns, montage comparison. 3 endpoints /api/neonatal-eeg/overview|breakdown|definitions verified 200, portal-next/app/neonatal-eeg/page.jsx + SiteNav wired next to Pediatric Epilepsy, expert_dashboards.json count 128->129. 2026-08-11."
+    },
+    {
+      "id": "aed_polypharmacy",
+      "name": "AED Polypharmacy Analysis Dashboard",
+      "status": "built",
+      "route": "/aed-polypharmacy",
+      "note": "AED Polypharmacy Analysis Dashboard \u2014 30 patients all on polytherapy (14 dual/16 triple), 12,600 dose records, 8 AEDs, top drug pair combinations (Carbamazepine+Valproate/Carbamazepine+Lacosamide/Clobazam+Lacosamide), dual vs triple adherence comparison, combined side-effect burden, per-patient regimen profiles, co-occurrence matrix, seizure control by regimen, ILAE polytherapy guidelines + Deckers 2003 + Perucca 2019 + Schmidt & Schachter 2014 + NICE NG217 2022, 5-tab frontend (Overview/Drug Combinations/Co-occurrence Matrix/Per Patient/Definitions), 3 endpoints /api/aed-polypharmacy/overview|breakdown|definitions verified 200, portal-next/app/aed-polypharmacy/page.jsx + SiteNav wired next to AED Compliance, expert_dashboards.json count 129->130. 2026-08-11."
     }
   ],
   "summary": {
     "total": 124,
-    "built": 124,
+    "built": 125,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
     "count": 113,
-    "total_dashboards": 113,
-    "total_built": 113
+    "total_dashboards": 114,
+    "total_built": 114
   },
-  "count": 125
+  "count": 130
 }
