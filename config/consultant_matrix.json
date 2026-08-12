@@ -330,6 +330,13 @@
           "challenge": "Medication mood effects",
           "ai": "Med-effect detector correlates AED with mood change"
         }
+      ],
+      "status": "built",
+      "route": "/psychiatrist",
+      "endpoints": [
+        "/api/psychiatrist/overview",
+        "/api/psychiatrist/breakdown",
+        "/api/psychiatrist/definitions"
       ]
     },
     {
@@ -405,6 +412,13 @@
           "challenge": "Long reports",
           "ai": "LLM summarizes neuropsych reports"
         }
+      ],
+      "status": "built",
+      "route": "/clinical-psychologist",
+      "endpoints": [
+        "/api/clinical-psychologist/overview",
+        "/api/clinical-psychologist/breakdown",
+        "/api/clinical-psychologist/definitions"
       ]
     },
     {
@@ -474,6 +488,13 @@
           "challenge": "Self-report bias",
           "ai": "Cross-check ADL vs outcome data"
         }
+      ],
+      "status": "built",
+      "route": "/occupational-therapist",
+      "endpoints": [
+        "/api/occupational-therapist/overview",
+        "/api/occupational-therapist/breakdown",
+        "/api/occupational-therapist/definitions"
       ]
     },
     {
@@ -712,7 +733,14 @@
           "/api/governance-advisor/breakdown",
           "/api/governance-advisor/definitions"
         ]
-      }
+      },
+      "status": "built",
+      "route": "/governance-advisor",
+      "endpoints": [
+        "/api/governance-advisor/overview",
+        "/api/governance-advisor/breakdown",
+        "/api/governance-advisor/definitions"
+      ]
     },
     {
       "id": "methodology_advisor",
@@ -772,7 +800,15 @@
           "challenge": "Weak methodology framing",
           "ai": "Methodology-gap detector vs publication standards"
         }
-      ]
+      ],
+      "status": "built",
+      "route": "/methodology-advisor",
+      "endpoints": [
+        "/api/methodology-advisor/overview",
+        "/api/methodology-advisor/breakdown",
+        "/api/methodology-advisor/definitions"
+      ],
+      "note": "42 validation studies, 224 model experiments, 5 study types, dissertation chapter map, TRIPOD/CONSORT/GRADE frameworks, 5-tab frontend (Overview/Validation Studies/Model Experiments/Dissertation Map/Definitions), SiteNav wired next to Governance Advisor, 3 endpoints verified 200 2026-08-12."
     }
   ],
   "core_team_mandatory": [

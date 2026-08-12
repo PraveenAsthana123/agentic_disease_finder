@@ -21457,6 +21457,37 @@ async def governance_advisor_definitions():
     return _json_safe(gad.definitions())
 
 
+# ── Methodology Advisor Dashboard ─────────────────────────────────────────────
+@app.get("/api/methodology-advisor/overview")
+async def methodology_advisor_overview():
+    """Methodology Advisor overview — 42 validation studies, study design breakdown,
+    performance KPIs (avg sensitivity/specificity/AUC across completed/passed studies),
+    224 model experiments, 41 patients, 133 analyses, consent/IRB posture, multi-site
+    coverage (5 sites, multiple PIs), dissertation chapter readiness status."""
+    import scripts.methodology_advisor_dashboard as mad
+    return _json_safe(mad.overview())
+
+
+@app.get("/api/methodology-advisor/breakdown")
+async def methodology_advisor_breakdown():
+    """Methodology Advisor breakdown — per-study-type performance table, full study
+    list (42 studies sorted by AUC), model leaderboard (top 25), model-type summary
+    (6 types), disease-level analysis breakdown, site summary, dissertation chapter
+    mapping (6 chapters with data sources and status)."""
+    import scripts.methodology_advisor_dashboard as mad
+    return _json_safe(mad.breakdown())
+
+
+@app.get("/api/methodology-advisor/definitions")
+async def methodology_advisor_definitions():
+    """Methodology Advisor definitions — 10 methodology concepts (sensitivity/specificity/
+    AUC/GroupKFold/external validation/prospective/retrospective/sample-size/TRIPOD/
+    publication-readiness), 7 frameworks (ICH-GCP/CONSORT/TRIPOD/STARD/GRADE/ICMR/DPDP),
+    6 performance thresholds, evidence hierarchy, 5 references."""
+    import scripts.methodology_advisor_dashboard as mad
+    return _json_safe(mad.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
