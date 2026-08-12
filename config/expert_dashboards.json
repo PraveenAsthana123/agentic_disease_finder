@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 152 dashboards",
+  "note": "Total: 154 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1956,17 +1956,32 @@
         "/api/catamenial/definitions"
       ],
       "note": "Seizure clustering by menstrual cycle phase \u2014 Duncan C1/C2/C3 classification. Female patient identification (~40% catamenial rate), phase distribution, hormonal P/E ratio, AED\u2013hormone interactions (CYP3A4), treatment catalog (6 options Level B/C), 28-day hormonal curve, 12 concepts, 3 guidelines, screening checklist. 5-tab frontend (Overview/Patients/AED Interactions/Hormones/Definitions). Reference: Duncan 2005 / Herzog 2015 / Reddy 2016. Built 2026-08-12."
+    },
+    {
+      "id": "medication_adherence",
+      "name": "Medication Adherence Dashboard",
+      "status": "built",
+      "category": "Clinical",
+      "route": "/medication-adherence",
+      "role": "Epileptologist / Clinical Pharmacist / Care Coordinator",
+      "priority": "P1",
+      "api": [
+        "/api/medication-adherence/overview",
+        "/api/medication-adherence/breakdown",
+        "/api/medication-adherence/definitions"
+      ],
+      "note": "ASM dose-level adherence tracking \u2014 12,600 dose logs \u00d7 30 patients \u00d7 8 antiseizure medications (Levetiracetam/Valproate/Carbamazepine/Lamotrigine/Lacosamide/Oxcarbazepine/Clobazam/Topiramate). KPIs: 84.9% overall adherence rate, 8.1% late, 7.0% missed, avg 60 min late when late. Per-drug adherence comparison with A/B/C/D grade (PDC threshold \u226580%). Per-patient table with sortable adherence/late/missed/side-effect columns, filter by adequate/suboptimal/critical tier. 226 refill records across 11 pharmacies, auto-refill tracking. 7 clinical concepts (PDC, MPR, AED/ASM, side-effect scale, frequency codes, adherence thresholds). 5-tab frontend (Overview/By Drug/Per Patient/Refills/Definitions). Nav wired next to AED Compliance. 3 endpoints verified 200. Data source: medication_adherence (12,600 rows) + medication_refills (226 rows). Built 2026-08-12."
     }
   ],
   "summary": {
-    "total": 153,
-    "built": 153,
+    "total": 154,
+    "built": 154,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 153,
-    "total_dashboards": 153,
-    "total_built": 153
+    "count": 154,
+    "total_dashboards": 154,
+    "total_built": 154
   },
-  "count": 153
+  "count": 154
 }

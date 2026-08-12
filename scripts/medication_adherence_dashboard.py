@@ -341,7 +341,7 @@ def breakdown():
         'per_drug': per_drug,
         'recent_missed': missed,
         'recent_late': late,
-        'refills': refills,
+        'recent_refills': refills,
     }
 
 
