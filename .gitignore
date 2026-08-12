@@ -88,6 +88,7 @@ htmlcov/
 # Large directories to exclude
 chroma_db/
 datasets/
+!portal-next/app/datasets/
 eeg-stress-rag/.git/
 neuro_wearable_system/
 *.zip
@@ -142,3 +143,6 @@ Epilepsy/
 .remember/
 .vibecheck/
 *.pdf
+
+# AutoClaw KDream data
+.autoclaw/

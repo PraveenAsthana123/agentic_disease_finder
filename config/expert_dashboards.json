@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 149 dashboards",
+  "note": "Total: 150 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1907,6 +1907,14 @@
         "/api/esignature/definitions"
       ],
       "note": "133 analyses, 72.2% signed, 29 pending, 8 rejected, avg turnaround 38.2h, 21 CFR Part 11 PASS, 5 signers, 5 diseases, confidence-bucket cross-tab, reject-reason distribution, audit trail. Built 2026-08-12."
+    },
+    {
+      "name": "Datasets Registry",
+      "route": "/datasets",
+      "component": "portal-next/app/datasets/page.jsx",
+      "api": "/api/datasets/overview + /api/datasets/breakdown + /api/datasets/definitions",
+      "status": "built",
+      "description": "6 diseases \u00b7 10 datasets \u00b7 739 subjects \u00b7 100% real data \u00b7 avg 97.7% accuracy \u00b7 4-tab frontend (Overview/All Datasets/By Disease/Definitions)"
     }
   ],
   "summary": {

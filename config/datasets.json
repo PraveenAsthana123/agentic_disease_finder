@@ -2,6 +2,9 @@
   "version": "1.0",
   "project": "AgenticFinder",
   "created_at": "2026-01-02T23:54:08.569624",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/datasets/page.jsx",
+  "api_endpoints": ["/api/datasets/overview", "/api/datasets/breakdown", "/api/datasets/definitions"],
   "total_diseases": 6,
   "base_paths": {
     "agenticfinder": {
