@@ -1636,6 +1636,23 @@
       "api": "/api/epilepsy-challenges/*",
       "status": "built",
       "note": "30 epilepsy/EEG challenges across 3 difficulty levels (basic 10/intermediate 10/high 10): 100% AI-help coverage, 30/30 STAR-documented (Situation/Task/Action/Result justification). Topics: signal quality (electrode impedance/EMG artifacts/montage), ML (class imbalance/leakage/generalization gap 0.98\u21920.73), and research (seizure prediction/DRE/federated learning/governance). 3 endpoints /api/epilepsy-challenges/overview|breakdown|definitions verified 200, portal-next/app/epilepsy-challenges/page.jsx + SiteNav wired (line 286). 2026-08-11."
+    },
+    {
+      "role": "Neurologist / Epileptologist",
+      "name": "VNS Therapy Monitoring",
+      "viz": "Stimulation parameter table, response distribution, battery tracker, seizure trend",
+      "feature": "Per-patient current/freq/PW/AutoStim, responder rate, battery alerts, side-effect matrix",
+      "why": "Monitor VNS device parameters and seizure response for drug-resistant epilepsy patients",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/vns-therapy/overview",
+        "/api/vns-therapy/breakdown",
+        "/api/vns-therapy/definitions"
+      ],
+      "frontend": "portal-next/app/vns-therapy/page.jsx",
+      "route": "/vns-therapy",
+      "note": "12-patient VNS cohort; LivaNova SenTiva + Demipulse; Fisher 2017 + Englot 2011 + NICE NG217; 5-tab frontend; 3 endpoints verified 200"
     }
   ],
   "summary": {

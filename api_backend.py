@@ -11414,6 +11414,35 @@ async def neonatal_eeg_definitions():
     return _json_safe(ned.definitions())
 
 
+# ── VNS Therapy Monitoring Dashboard ─────────────────────────────────────────
+@app.get("/api/vns-therapy/overview")
+async def vns_therapy_overview():
+    """VNS Therapy overview — 12-patient VNS cohort KPIs: responder rate, mean seizure
+    reduction, battery alerts, AutoStim usage, device model breakdown, parameter summary,
+    monthly seizure trend (3 representative patients), side-effect summary."""
+    import scripts.vns_therapy_dashboard as vtd
+    return _json_safe(vtd.vns_overview())
+
+
+@app.get("/api/vns-therapy/breakdown")
+async def vns_therapy_breakdown():
+    """VNS Therapy breakdown — per-patient stimulation parameters (current/freq/PW/duty
+    cycle/AutoStim), seizure response, battery level, side effects; parameter distribution
+    histograms; AutoStim-on vs -off comparison; therapy-duration bands."""
+    import scripts.vns_therapy_dashboard as vtd
+    return _json_safe(vtd.vns_breakdown())
+
+
+@app.get("/api/vns-therapy/definitions")
+async def vns_therapy_definitions():
+    """VNS Therapy definitions — device models, stimulation parameter ranges, response
+    criteria, efficacy evidence (E03/E05 trials, Fisher 2017 meta-analysis, Englot 2011
+    predictors), side-effect management, battery lifecycle, AI integration opportunities,
+    NICE NG217 guidance."""
+    import scripts.vns_therapy_dashboard as vtd
+    return _json_safe(vtd.definitions())
+
+
 # ── Comorbidity Analysis Dashboard ────────────────────────────────────
 @app.get("/api/comorbidity-analysis/overview")
 async def comorbidity_analysis_overview():
