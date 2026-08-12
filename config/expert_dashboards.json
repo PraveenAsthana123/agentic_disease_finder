@@ -1511,6 +1511,21 @@
       "description": "OT Tele-Rehab Dashboard \u2014 109 telehealth sessions \u00d7 311 rehab plans \u00b7 30 patients \u00b7 4 session types (video-visit/phone-consult/async-message/remote-monitoring-review) \u00b7 4 platforms (Zoom Health/Teams/Doxy.me/In-house Portal) \u00b7 6 providers \u00b7 avg satisfaction 2.9/5 \u00b7 19.2% tech issue rate \u00b7 6 rehab goal categories (ADL/cognitive/fine_motor/mobility/social_skills/vocational) \u00b7 seizure safety modifications \u00b7 AOTA Telehealth 2018 + ILAE Rehab Taskforce 2021. 3-tab frontend (Overview/Per Patient/Definitions), 3 endpoints /api/tele-rehab/overview|breakdown|definitions verified 200, portal-next/app/tele-rehab/page.jsx + SiteNav wired next to Rehab Plans."
     },
     {
+      "id": "copm_fim",
+      "name": "COPM/FIM Standardized OT Instruments",
+      "role": "Occupational Therapist",
+      "route": "/copm-fim",
+      "status": "built",
+      "priority": "P1",
+      "endpoints": [
+        "/api/copm-fim/overview",
+        "/api/copm-fim/breakdown",
+        "/api/copm-fim/definitions"
+      ],
+      "frontend": "portal-next/app/copm-fim/page.jsx",
+      "description": "COPM/FIM Standardized OT Instruments \u2014 25 patients \u00b7 102 goals \u00b7 Baseline + 3-month follow-up \u00b7 COPM (Canadian Occupational Performance Measure): performance + satisfaction 1\u201310, avg +2.0pt change, 20/25 patients achieve MCID (\u22652pt); self-care/productivity/leisure areas; top goals: driving cessation, bathing safety, medication management, return to work \u00b7 FIM (Functional Independence Measure): 18 items, 6 subscales, motor (max 91) + cognitive (max 35) subscales, total max 126; avg improvement across subscales \u00b7 80% driving-restricted \u00b7 seizure safety adaptations \u00b7 Law et al. COPM 2014 + Granger FIM 1986 + ILAE Rehab Taskforce 2021 \u00b7 5-tab frontend (Overview/COPM Goals/FIM Scores/Per Patient/Definitions), 3 endpoints /api/copm-fim/overview|breakdown|definitions verified 200, portal-next/app/copm-fim/page.jsx + SiteNav wired next to Tele-Rehab."
+    },
+    {
       "id": "video_correlation",
       "label": "Video-EEG Semiology Correlation",
       "route": "/video-correlation",

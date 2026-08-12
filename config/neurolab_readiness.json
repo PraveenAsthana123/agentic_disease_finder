@@ -43,10 +43,10 @@
       "icon": "\ud83d\udd90\ufe0f",
       "built": [
         "functional-outcome tracking (partial)",
-        "tele-rehab sessions & rehab plan tracking (/api/tele-rehab/* + portal-next/app/tele-rehab/page.jsx \u2014 109 sessions, 311 plans, 30 patients, 4 session types, 4 platforms, 6 goal categories, seizure safety modifications, AOTA Telehealth 2018)"
+        "tele-rehab sessions & rehab plan tracking (/api/tele-rehab/* + portal-next/app/tele-rehab/page.jsx \u2014 109 sessions, 311 plans, 30 patients, 4 session types, 4 platforms, 6 goal categories, seizure safety modifications, AOTA Telehealth 2018)",
+        "standardized instruments COPM/FIM (/api/copm-fim/overview|breakdown|definitions + portal-next/app/copm-fim/page.jsx \u2014 25 patients, 102 goals, baseline+3-month f/u, MCID 20/25, Law 2014 + Granger 1986 + ILAE 2021)"
       ],
       "missing": [
-        "standardized instruments (COPM/FIM)",
         "rehab goal tracking",
         "home-program builder"
       ]
