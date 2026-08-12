@@ -144,6 +144,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-fleet">&#x1f6f0;&#xfe0f; IoT Fleet</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-gateway">&#x1f4f6; IoT Gateway</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-band">&#x26a1; Seizure Band</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/wearables-digital-twin">&#x1f9ec; Digital Twin</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/wearable-devices">&#x231a; Wearable Devices</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/wearable-readings">&#x1f4c8; Wearable Readings</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/smartwatch">&#x231a; Smartwatch</Link></li>

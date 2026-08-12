@@ -1549,6 +1549,19 @@
       "frontend": "portal-next/app/sleep-stage-analysis/page.jsx",
       "built_date": "2026-08-11",
       "note": "AASM sleep stage analysis \u2014 41 patients, 5 stages (Wake/N1/N2/N3/REM), hypnogram, seizure-by-stage probability, ASM sleep impact (6 drugs), sleep efficiency histogram, seizure-sleep correlation (62.4% nocturnal). 4-tab frontend (Overview/Sleep Stages/ASM Impact/Definitions). SiteNav wired next to Sleep Staging."
+    },
+    {
+      "id": "wearables_digital_twin",
+      "title": "Wearables & Digital Twin Dashboard",
+      "route": "/wearables-digital-twin",
+      "api": [
+        "/api/wearables-digital-twin/overview",
+        "/api/wearables-digital-twin/breakdown",
+        "/api/wearables-digital-twin/definitions"
+      ],
+      "status": "built",
+      "tabs": 4,
+      "description": "30 devices (Wrist EEG Band/Ring/Ankle/Patch/Smartwatch/Chest Strap), 30 patients, 900 readings, 30-day monitoring window, 6 brands (Empatica Embrace2/Byteflies/BioStampRC/Garmin/Apple Watch/Samsung), health score avg 66.8/100, seizure risk score avg 34.61/100, seizure detection rate 12.4%, HRV distribution, sleep quality distribution, health trajectory (improving/stable/declining), per-patient digital twin profiles with physiological baseline + sleep profile + activity profile + 1yr/5yr longitudinal projections, device fleet table, 4-tab frontend (Overview/Device Fleet/Per Patient/Definitions), 3 endpoints /api/wearables-digital-twin/overview|breakdown|definitions verified 200, SiteNav wired next to Wearable Devices"
     }
   ],
   "summary": {
@@ -1561,5 +1574,5 @@
     "total_dashboards": 113,
     "total_built": 113
   },
-  "count": 124
+  "count": 125
 }
