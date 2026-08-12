@@ -22139,6 +22139,47 @@ async def bects_definitions():
     return _json_safe(bd_.definitions())
 
 
+@app.get("/api/doose/overview")
+async def doose_overview():
+    """Doose Syndrome / MAE Dashboard — overview: 41-patient cohort, myoclonic-atonic epilepsy,
+    5-class etiology catalog (Polygenic 51%/SCN1A 12%/SLC6A1 17%/SYNGAP1-NEXMIF 12%/Cryptogenic 7%),
+    drop-attacks active, KD on ketogenic diet, seizure-free 50%, intellectual disability 35%,
+    6 clinical alerts (CBZ-OXC-PHT absolute CI/VGB absolute CI/LTG relative CI/KD Level A early/
+    POLG exclusion before VPA/VPA REMS females)."""
+    import scripts.doose_dashboard as dd_
+    return _json_safe(dd_.overview())
+
+
+@app.get("/api/doose/breakdown")
+async def doose_breakdown():
+    """Doose Syndrome / MAE Dashboard — breakdown: per-patient table (onset age/etiology/
+    primary seizure type/current AED/seizure control/disease phase/KD/drop attacks/ID/ASD),
+    5-class etiology catalog with mechanism+EEG+MRI+note,
+    4 seizure types (Myoclonic-atonic 100%/Myoclonic 80%/GTCS 75%/Absence 40%)
+    with EEG correlate+clinical tip, 8 triggers (sleep deprivation 85%/fever 70%/missed AED 65%/
+    stress 55%/fatigue 50%/photic 30%/hypoglycaemia 25%/puberty 15%),
+    8 treatments (VPA Level A/KD Level A/LEV Level B/CLB Level B/TPM Level B/ZNS Level B/
+    ETX Level C absence-only/CBD Level C off-label) with dose+MOA+efficacy+safety+monitoring,
+    4 AED monitoring items (VPA REMS+TDM+LFT+POLG/KD ketones+metabolic+DEXA/LEV CBCL+PHQ-9/CLB UMRS+tolerance),
+    6-window lifecycle (toddler/active drop-attack/transition/school-age remission/adolescence/adult),
+    6 standards (ILAE 2022/NICE NG217/ILAE KD 2018/FDA VPA REMS/Oguni 2005/Caraballo 2013),
+    8 thresholds (DRE ≥2 AED/KD trigger/VPA TDM 50-100/KD BHB 2-4/AED taper ≥2y/driving 12M/
+    folic acid 5mg/LTG worsening 4W)."""
+    import scripts.doose_dashboard as dd_
+    return _json_safe(dd_.breakdown())
+
+
+@app.get("/api/doose/definitions")
+async def doose_definitions():
+    """Doose Syndrome / MAE Dashboard — definitions: 14 concepts (Doose-MAE/Myoclonic-Atonic/
+    Drop-Attack/Doose-Theta/KD-Level-A-MAE/LGS-vs-MAE-differential/SCN1A-MAE/SLC6A1-GAT1/SYNGAP1/
+    AED-Aggravation-MAE/UMRS/JME-Evolution/Myoclonic-Status/SUDEP-MAE),
+    5 contraindications (CBZ-OXC-PHT absolute/VGB absolute/LTG relative),
+    8 thresholds, 6 references."""
+    import scripts.doose_dashboard as dd_
+    return _json_safe(dd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

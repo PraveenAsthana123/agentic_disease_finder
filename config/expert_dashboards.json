@@ -2160,6 +2160,20 @@
       ],
       "status": "built",
       "description": "Most common benign childhood epilepsy; 5-class etiology (Polygenic 68%/GRIN2A 12%/CSWS-Atypical 8%/LKS 4%/Familial 8%); 4 seizure types (Oro-facial 90%/Nocturnal GTCS 45%/Hemi-Clonic 55%/Opercular 15%); 8 treatments; 6-window lifecycle; 14 concepts"
+    },
+    {
+      "id": "doose",
+      "name": "Doose Syndrome (Myoclonic-Atonic Epilepsy / MAE)",
+      "route": "/doose",
+      "api_prefix": "/api/doose",
+      "status": "built",
+      "category": "epilepsy_syndromes",
+      "description": "41-patient MAE cohort, 5-class etiology catalog, drop-attack dashboard, KD Level A evidence, CBZ/OXC/PHT/VGB absolute contraindications, 8 treatments, 14 concepts",
+      "endpoints": [
+        "/api/doose/overview",
+        "/api/doose/breakdown",
+        "/api/doose/definitions"
+      ]
     }
   ],
   "summary": {
