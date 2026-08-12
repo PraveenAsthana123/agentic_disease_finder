@@ -1653,17 +1653,51 @@
       "frontend": "portal-next/app/vns-therapy/page.jsx",
       "route": "/vns-therapy",
       "note": "12-patient VNS cohort; LivaNova SenTiva + Demipulse; Fisher 2017 + Englot 2011 + NICE NG217; 5-tab frontend; 3 endpoints verified 200"
+    },
+    {
+      "id": "pharmacogenomics",
+      "name": "Pharmacogenomics (AED Gene-Drug)",
+      "role": "Epileptologist / Clinical Pharmacist",
+      "viz": "Gene distribution bar, metabolizer status donut, evidence level grid, high-risk alert cards, per-patient gene-drug matrix",
+      "feature": "172 PGx tests, 40 patients, 7 genes (CYP2C9/CYP2C19/HLA-B/HLA-A/UGT1A4/ABCB1/SCN1A), 22 high-risk results, 91 actionable recommendations, CPIC level 1A\u20133",
+      "why": "Precision AED selection: avoid SJS/TEN (HLA-B*15:02 + carbamazepine), dose-adjust poor metabolizers, prevent toxicity",
+      "priority": "P1",
+      "status": "built",
+      "route": "/pharmacogenomics",
+      "endpoints": [
+        "/api/pharmacogenomics/overview",
+        "/api/pharmacogenomics/breakdown",
+        "/api/pharmacogenomics/definitions"
+      ],
+      "note": "172 PGx tests, 40 patients, 7 genes, 22 high-risk, 91 actionable, 38 poor metabolizers. CPIC + PharmGKB evidence 1A\u20133. SiteNav wired. 3 endpoints verified 200, portal-next page built 2026-08-11."
+    },
+    {
+      "id": "pro-outcomes",
+      "name": "Patient Reported Outcomes (PRO)",
+      "role": "Epileptologist / Clinical Psychologist",
+      "viz": "QoL trend line, PHQ-9/GAD-7 severity donut, PSQI/ESS sleep distribution, MoCA cognitive status, WPAI work impairment bar, per-patient profile",
+      "feature": "180 assessments, 30 patients, 8 PRO instruments (PSQI/ESS/PHQ-9/GAD-7/QOLIE-31/MoCA/NDDI-E/WPAI), avg QOLIE-31 63.1, avg PHQ-9 8.0, avg WPAI 35.7%",
+      "why": "Capture patient-centred impact beyond seizure count: sleep, mood, cognition, QoL, work impairment \u2014 essential for holistic epilepsy management",
+      "priority": "P1",
+      "status": "built",
+      "route": "/pro-outcomes",
+      "endpoints": [
+        "/api/pro-outcomes/overview",
+        "/api/pro-outcomes/breakdown",
+        "/api/pro-outcomes/definitions"
+      ],
+      "note": "180 assessments, 30 patients. PSQI avg 7.8 (poor sleep), PHQ-9 avg 8.0 (mild depression), QOLIE-31 avg 63.1, MoCA avg 24.4, NDDI-E avg 12.2, WPAI 35.7% impairment. SiteNav wired. 3 endpoints verified 200, portal-next page built 2026-08-11."
     }
   ],
   "summary": {
     "total": 124,
-    "built": 125,
+    "built": 127,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-11",
-    "count": 131,
-    "total_dashboards": 114,
-    "total_built": 114
+    "count": 135,
+    "total_dashboards": 116,
+    "total_built": 116
   },
-  "count": 132
+  "count": 135
 }
