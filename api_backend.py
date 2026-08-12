@@ -21511,6 +21511,41 @@ async def methodology_advisor_definitions():
     return _json_safe(mad.definitions())
 
 
+@app.get("/api/research-publication/overview")
+async def research_publication_overview():
+    """Research Publication Readiness Dashboard — overview: TRIPOD-AI 27-item compliance
+    (% complete/partial/design/NA), manuscript section completion (15 sections), figure
+    registry (12 figures, 9 ready), table registry (8 tables, 7 ready), real model
+    performance (best AUC 0.99, external validation avg AUC 0.937 across 7 sites / 42
+    studies), dataset: 41 patients / 133 analyses / 224 model runs, 5 reporting standards
+    (TRIPOD-AI/CONSORT-AI/STARD-AI/PROBAST-AI/SPIRIT-AI) with compliance percentages."""
+    import scripts.research_publication_dashboard as rpd
+    return _json_safe(rpd.overview())
+
+
+@app.get("/api/research-publication/breakdown")
+async def research_publication_breakdown():
+    """Research Publication Readiness Dashboard — breakdown: full 27-item TRIPOD-AI
+    checklist (section/item/status/evidence/data_source), 15 manuscript sections with
+    word counts (target vs current), 12-figure registry, 8-table registry, statistical
+    analysis plan (v1.2: primary endpoint AUC-ROC, 6 statistical tests, sample size
+    gap 41/110), model-type summary (6 types × avg AUC/accuracy/F1), validation study
+    summary by type (7 types), 7 external site list."""
+    import scripts.research_publication_dashboard as rpd
+    return _json_safe(rpd.breakdown())
+
+
+@app.get("/api/research-publication/definitions")
+async def research_publication_definitions():
+    """Research Publication Readiness Dashboard — definitions: 10 concepts (TRIPOD-AI/
+    CONSORT-AI/PROBAST-AI/C-statistic/calibration/GroupKFold/external validation/
+    DCA/SAP/FAIR data), 4 reporting standards with references, 6 performance thresholds
+    (AUC/sensitivity/specificity/Brier/TRIPOD-compliance/external-sites), 5 references
+    (Collins 2024/Moons 2015/Lawhern EEGNet/Rajpurkar/Steyerberg PROGRESS)."""
+    import scripts.research_publication_dashboard as rpd
+    return _json_safe(rpd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

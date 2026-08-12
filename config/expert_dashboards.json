@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 144 dashboards",
+  "note": "Total: 146 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -1856,17 +1856,31 @@
         "/api/hybrid-cnn/definitions"
       ],
       "note": "Hybrid CNN-LSTM/Transformer pipeline \u2014 4 architecture designs (CNN-LSTM/CNN-Transformer/EEGNet-LSTM/1D-CNN), 9-stage end-to-end pipeline, ablation study (XGBoost baseline \u2192 +4.9% AUC with CNN-Transformer + augmentation), per-task comparison (seizure_detection/eeg_classification/seizure_prediction/anomaly_detection), 4 dataset projections (Bonn/CHB-MIT/TUH/Internal), hyperparameter grid, GroupKFold CV, 5-tab frontend (Overview/Architectures/Baseline vs DL/Training Design/Definitions), 12 concepts, 5 regulatory frameworks, 5 references. 3 endpoints /api/hybrid-cnn/overview|breakdown|definitions verified 200."
+    },
+    {
+      "role": "Research / DBA",
+      "name": "Research Publication Readiness",
+      "viz": "TRIPOD-AI checklist, manuscript tracker, figure/table registry, SAP",
+      "feature": "TRIPOD-AI 27-item compliance, statistical analysis plan, 12 figures, 8 tables",
+      "why": "Publication readiness tracking for DBA dissertation submission",
+      "priority": "P1",
+      "status": "built",
+      "endpoints": [
+        "/api/research-publication/overview",
+        "/api/research-publication/breakdown",
+        "/api/research-publication/definitions"
+      ]
     }
   ],
   "summary": {
-    "total": 124,
-    "built": 128,
+    "total": 146,
+    "built": 146,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 140,
-    "total_dashboards": 140,
-    "total_built": 140
+    "count": 146,
+    "total_dashboards": 146,
+    "total_built": 146
   },
-  "count": 145
+  "count": 146
 }
