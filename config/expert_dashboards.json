@@ -2148,6 +2148,18 @@
         "Definitions"
       ],
       "nav_label": "\ud83e\uddec Progressive Myoclonic Epilepsy (PME)"
+    },
+    {
+      "id": "bects",
+      "name": "Self-Limited Epilepsy with Centrotemporal Spikes (SeLECTS / BECTS)",
+      "route": "/bects",
+      "api": [
+        "/api/bects/overview",
+        "/api/bects/breakdown",
+        "/api/bects/definitions"
+      ],
+      "status": "built",
+      "description": "Most common benign childhood epilepsy; 5-class etiology (Polygenic 68%/GRIN2A 12%/CSWS-Atypical 8%/LKS 4%/Familial 8%); 4 seizure types (Oro-facial 90%/Nocturnal GTCS 45%/Hemi-Clonic 55%/Opercular 15%); 8 treatments; 6-window lifecycle; 14 concepts"
     }
   ],
   "summary": {

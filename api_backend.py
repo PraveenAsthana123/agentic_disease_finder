@@ -22094,6 +22094,51 @@ async def pme_definitions():
     return _json_safe(pd_.definitions())
 
 
+@app.get("/api/bects/overview")
+async def bects_overview():
+    """SeLECTS/BECTS Dashboard — overview: 41-patient cohort, most common benign childhood epilepsy
+    (15–25% of childhood epilepsy), 5-class etiology catalog
+    (Polygenic 68%/GRIN2A 12%/CSWS-Atypical 8%/LKS 4%/Familial 8%),
+    oro-facial seizure 90%/nocturnal GTCS 45%/CSWS evolution 8%/GRIN2A positive 12%/
+    treatment-free suitable 25%/drug-resistant 5%,
+    6 clinical alerts (VGB contraindicated/annual sleep EEG mandatory for cognitive concerns/
+    HLA-B*1502 mandatory before OXC-CBZ in Asian patients/FDA VPA REMS females ≥4y/
+    watch-and-wait appropriate for nocturnal-only seizures/AED taper mandatory ≥2y seizure-free)."""
+    import scripts.bects_dashboard as bd_
+    return _json_safe(bd_.overview())
+
+
+@app.get("/api/bects/breakdown")
+async def bects_breakdown():
+    """SeLECTS/BECTS Dashboard — breakdown: per-patient table (onset age/etiology/primary seizure type/
+    current AED/seizure control/disease phase/CSWS evolution/GRIN2A positive/learning difficulty),
+    5-class etiology catalog (Polygenic/GRIN2A/CSWS-Atypical/LKS/Familial) with mechanism+EEG+MRI+note,
+    4 seizure types (Oro-facial Sensorimotor 90%/Nocturnal GTCS 45%/Hemi-Clonic 55%/Opercular 15%)
+    with EEG correlate + clinical tip, 8 triggers (sleep deprivation 65%/missed dose 55%/fever 40%/
+    stress 35%/fatigue 30%/screen exposure 20%/catamenial 15%/alcohol 10%),
+    8 treatments (Watch-and-Wait/OXC Level A/LEV Level B/Sulthiame Level A/VPA Level B/CBZ Level B/
+    LTG Level C/CLB adjunct) with dose+MOA+efficacy+safety+monitoring,
+    4 AED monitoring items (OXC-hyponatraemia-HLA-B*1502/LEV-CBCL-PHQ9/VPA-REMS-TDM-LFT/CSWS-sleep-EEG),
+    6-window lifecycle (pre-diagnosis 3-7y/active 7-12y/approaching puberty 11-14y/adolescent remission/
+    adult life/CSWS-LKS trajectory), 6 standards (ILAE 2022/NICE NG217/EAN 2019/ILAE Diag Manual 2017/
+    FDA VPA REMS/HLA-B*1502 FDA 2007), 8 thresholds (daytime seizure→treat/≥2y seizure-free→taper/
+    CSWS slow-wave-index>85%/OXC 10-30mg-kg/STM 5-10mg-kg/VPA TDM 50-100/driving 12M/GRIN2A trigger),
+    6 references (Loiseau 1989/Beaussart 1972/Scheffer 2017/Lemke 2013/Wirrell 1998/Caraballo 2010)."""
+    import scripts.bects_dashboard as bd_
+    return _json_safe(bd_.breakdown())
+
+
+@app.get("/api/bects/definitions")
+async def bects_definitions():
+    """SeLECTS/BECTS Dashboard — definitions: 14 concepts (SeLECTS-BECTS-Rolandic/CTS/Horizontal Dipole/
+    Oro-facial Sensorimotor/CSWS-ESES/GRIN2A/LKS/Panayiotopoulos Syndrome/Sulthiame/Slow-Wave Index/
+    Epilepsy-Aphasia Spectrum/HLA-B*1502/Todd's Paresis/Seizure-Freedom by Puberty),
+    4 relative contraindications (VGB all SeLECTS/CBZ atypical-GRIN2A/prolonged AED beyond remission/
+    PHT-PB cognitive impact), 8 thresholds, 6 references."""
+    import scripts.bects_dashboard as bd_
+    return _json_safe(bd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

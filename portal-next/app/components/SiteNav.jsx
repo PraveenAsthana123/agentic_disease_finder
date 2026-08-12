@@ -319,6 +319,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/ole">&#x1f441;&#xfe0f; Occipital Lobe Epilepsy (OLE)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ple">&#x1f9e0; Parietal Lobe Epilepsy (PLE)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pme">&#x1f9ec; Progressive Myoclonic Epilepsy (PME)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/bects">&#x1f9d2; SeLECTS / BECTS (Rolandic Epilepsy)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>
