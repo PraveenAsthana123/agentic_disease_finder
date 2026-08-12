@@ -2203,6 +2203,15 @@
       "api_route": "/api/fires/{overview,breakdown,definitions}",
       "component": "FIRESDashboard",
       "note": "41-patient FIRES cohort, 5-class etiology (Unknown-neuroinflammatory 54%/Autoimmune-Ab-positive 20%/Post-infectious 12%/Cryptogenic-structural 10%/Genetic-metabolic 5%), 4 seizure types (Focal-motor-SRSE 100%/SRSE 100%/Tonic-GTCS 75%/Chronic-focal 90%), 8 triggers (febrile-illness 100%/fever-relapse 80%/sleep-deprivation 70%/missed-immunotherapy 60%/URTI 65%/GI-illness 30%/stress 25%/vaccination 5%), 8 treatments (Anakinra Level B/KD Level A-chronic/IVIG Level C/PLEX Level C/Steroids Level C/Tocilizumab Level C/Ketamine Level C/Rituximab Level B-Ab+), ABSOLUTE CIs (POLG-VPA/PRIS-propofol/live-vaccines/rituximab-no-HBV), 6-window lifecycle, 14 concepts, 6 standards, 8 thresholds, 6 references, 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints verified 200"
+    },
+    {
+      "id": "glut1",
+      "name": "GLUT1 Deficiency Syndrome (De Vivo Disease)",
+      "status": "built",
+      "route": "/glut1",
+      "api": "/api/glut1/{overview,breakdown,definitions}",
+      "component": "portal-next/app/glut1/page.jsx",
+      "note": "GLUT1-DS / SLC2A1 haploinsufficiency \u2014 41-patient cohort, 5-class etiology, CSF:serum glucose ratio <0.40 diagnostic, KD Level A first-line, VPA absolute CI, 5-tab frontend"
     }
   ],
   "summary": {

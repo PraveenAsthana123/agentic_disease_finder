@@ -22261,6 +22261,45 @@ async def fires_definitions():
     return _json_safe(fd_.definitions())
 
 
+@app.get("/api/glut1/overview")
+async def glut1_overview():
+    """GLUT1 Deficiency Syndrome Dashboard — overview: 41-patient cohort, SLC2A1 haploinsufficiency,
+    BBB glucose transport defect, 5-class etiology (De-novo 56%/Familial-AD 20%/Structural-deletion 12%/
+    Non-classic-PED 7%/Cryptogenic 5%), CSF:serum glucose ratio <0.40 diagnostic biomarker,
+    Ketogenic Diet Level A first-line disease-modifying therapy, Valproate ABSOLUTE CONTRAINDICATION,
+    clinical alerts (VPA-CI/hospital-NBM-danger/urgent-KD/PED-non-epileptic)."""
+    import scripts.glut1_dashboard as gd_
+    return _json_safe(gd_.overview())
+
+
+@app.get("/api/glut1/breakdown")
+async def glut1_breakdown():
+    """GLUT1-DS Dashboard — breakdown: per-patient table (41 records with id/age/sex/onset_age_months/
+    etiology/seizure_types/disease_phase/current_treatment/seizure_control/csf_glucose_mg_dl/
+    csf_serum_ratio/bhb_mmol_l/kd_duration_months/ped_present), 5-class etiology catalog with
+    mechanism+EEG+MRI+clinical_note, 4 seizure types (Absence-like 70%/Focal-myoclonic 55%/
+    Tonic-clonic 40%/PED 35%) with EEG+tip, 8 triggers (fasting 100%/morning 90%/fever 75%/
+    hospital-NBM 85%/illness 55%/exercise 40%/sleep-deprivation 30%/carbohydrate 65%),
+    8 treatments (Classic-KD Level A/MAD Level B/MCT-KD Level B/LGIT Level C/Triheptanoin Level C/
+    LEV Level C adjunct/CLN Level C adjunct/VPA ABSOLUTE CI) with dose+MOA+efficacy+safety+monitoring,
+    monitoring protocol (BHB/CSF-ratio/growth/lipids-selenium-zinc-carnitine/renal-USS),
+    6-window lifecycle, 6 standards, 8 thresholds."""
+    import scripts.glut1_dashboard as gd_
+    return _json_safe(gd_.breakdown())
+
+
+@app.get("/api/glut1/definitions")
+async def glut1_definitions():
+    """GLUT1-DS Dashboard — definitions: 14 concepts (GLUT1-SLC2A1/De-Vivo-Disease/Haploinsufficiency/
+    Hypoglycorrhachia/CSF:Serum-Glucose-Ratio/Ketone-Bodies-BHB-AcAc/PED/Ketogenic-Diet/Anaplerosis/
+    Opsoclonus/Acquired-Microcephaly/BHB-Target-Range/SUDEP-GLUT1/Valproate-GLUT1-Inhibition),
+    4 absolute contraindications (VPA/Hospital-NBM/IV-Glucose-Crisis/Acetazolamide),
+    8 thresholds, 6 references (De-Vivo-1991-NEJM/Leen-2010-Brain/Klepper-2020-Epilepsia-Open/
+    Wang-2005-HMG/Pearson-2013-CNNR/Ramm-Pettersen-2014-EB)."""
+    import scripts.glut1_dashboard as gd_
+    return _json_safe(gd_.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
