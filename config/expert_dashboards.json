@@ -1996,7 +1996,15 @@
         "/api/tsc/breakdown",
         "/api/tsc/definitions"
       ],
-      "note": "41-patient TSC cohort, TSC1/TSC2/mosaic variant distribution (6 classes + mTOR effect), infantile spasms 42%, avg 9.8 tubers/patient, Everolimus (EXIST-3 2018 — 40% responder) trough distribution (target 5-15 ng/mL), Cannabidiol (GWPCARE6 2018 — 48.6% median reduction), Vigabatrin (first-line IS-TSC 70-95% cessation + visual field REMS), TAND prevalence (ASD/ADHD/ID/anxiety), tuber type catalog (A/B/C + surgical outcomes), 5 seizure types (IS/focal/GTCS/tonic/absence), AED monitoring requirements (5 drugs with REMS/LFT/cardiac/level monitoring), 7 treatments (dose/MOA/efficacy/safety), developmental trajectory (7 age windows), 14 concepts, 5 standards (ILAE TSC 2022/TSC Consensus 2021/FDA Everolimus/FDA CBD/Vigabatrin REMS), 6 thresholds. 3 endpoints /api/tsc/overview|breakdown|definitions verified 200, portal-next/app/tsc/page.jsx + SiteNav wired next to Dravet Syndrome. Built 2026-08-12."
+      "note": "41-patient TSC cohort, TSC1/TSC2/mosaic variant distribution (6 classes + mTOR effect), infantile spasms 42%, avg 9.8 tubers/patient, Everolimus (EXIST-3 2018 \u2014 40% responder) trough distribution (target 5-15 ng/mL), Cannabidiol (GWPCARE6 2018 \u2014 48.6% median reduction), Vigabatrin (first-line IS-TSC 70-95% cessation + visual field REMS), TAND prevalence (ASD/ADHD/ID/anxiety), tuber type catalog (A/B/C + surgical outcomes), 5 seizure types (IS/focal/GTCS/tonic/absence), AED monitoring requirements (5 drugs with REMS/LFT/cardiac/level monitoring), 7 treatments (dose/MOA/efficacy/safety), developmental trajectory (7 age windows), 14 concepts, 5 standards (ILAE TSC 2022/TSC Consensus 2021/FDA Everolimus/FDA CBD/Vigabatrin REMS), 6 thresholds. 3 endpoints /api/tsc/overview|breakdown|definitions verified 200, portal-next/app/tsc/page.jsx + SiteNav wired next to Dravet Syndrome. Built 2026-08-12."
+    },
+    {
+      "id": "lgs",
+      "name": "Lennox-Gastaut Syndrome (LGS)",
+      "status": "built",
+      "route": "/api/lgs/*",
+      "frontend": "portal-next/app/lgs/page.jsx",
+      "description": "LGS Dashboard \u2014 41-patient LGS cohort, multi-seizure-type profile (tonic 92%/atonic 56%/atypical absence 60%/GTCS 73%/myoclonic 35%), slow spike-wave EEG (1.5-2.5 Hz), 6-class etiology (structural/genetic/metabolic/post-infectious/post-West Syndrome/unknown), 80-90% drug-resistance rate, corpus callosotomy (Level A for drop attacks), 4 FDA-approved therapies (Rufinamide 2008/Clobazam 2011/Cannabidiol 2018/Fenfluramine 2020), 6 AED monitoring items (absolute contraindications CBZ/PHT + REMS Fenfluramine + LFT CBD + QT Rufinamide + titration LTG), 8 treatments, developmental trajectory (6 windows), 14 concepts + 6 standards + 6 thresholds + 6 references (Thiele 2018/Devinsky 2018/Lagae 2019/Glauser 2008/Ng 2011/Arzimanoglou 2009), 5-tab frontend (Overview/Patients & Etiologies/Seizure Types & Monitoring/Treatments/Definitions), 3 endpoints /api/lgs/overview|breakdown|definitions verified 200"
     }
   ],
   "summary": {
@@ -2009,5 +2017,5 @@
     "total_dashboards": 156,
     "total_built": 156
   },
-  "count": 156
+  "count": 157
 }

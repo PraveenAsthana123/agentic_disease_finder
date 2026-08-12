@@ -21694,6 +21694,81 @@ async def dravet_definitions():
     return _json_safe(dd.definitions())
 
 
+@app.get("/api/tsc/overview")
+async def tsc_overview():
+    """Tuberous Sclerosis Complex Dashboard — overview: 41-patient TSC cohort, KPIs
+    (infantile spasms %, on Everolimus, therapeutic trough, responder %), TSC1/TSC2 variant
+    distribution, seizure type distribution (IS/focal/GTCS/tonic/absence), tuber count histogram,
+    TAND prevalence (ASD/ADHD/ID/anxiety), treatment use, Everolimus trough distribution.
+    Reference: EXIST-3 (French 2016 Lancet Neurol); GWPCARE6 (Thiele 2021); TSC Consensus 2021."""
+    import scripts.tsc_dashboard as td
+    return _json_safe(td.overview())
+
+
+@app.get("/api/tsc/breakdown")
+async def tsc_breakdown():
+    """Tuberous Sclerosis Complex Dashboard — breakdown: per-patient table (gene/variant/
+    tuber_count/IS history/Everolimus trough/seizures_per_month/regimen/TAND/responder),
+    TSC1/TSC2 variant catalog (6 classes + mTOR effect), tuber type catalog (A/B/C + surgical),
+    seizure type catalog (5 types + EEG + treatment priority), AED monitoring requirements
+    (Vigabatrin REMS/Everolimus trough/Cannabidiol LFT/Carbamazepine caution/Fenfluramine echo),
+    treatment catalog (7 therapies with dose/MOA/efficacy/safety), developmental trajectory
+    (7 age windows, TAND features by age)."""
+    import scripts.tsc_dashboard as td
+    return _json_safe(td.breakdown())
+
+
+@app.get("/api/tsc/definitions")
+async def tsc_definitions():
+    """Tuberous Sclerosis Complex Dashboard — definitions: 14 concepts (TSC/hamartin/tuberin/
+    mTOR/cortical tuber/SEGA/hypsarrhythmia/TAND/Everolimus/Vigabatrin/EXIST-3/GWPCARE6/
+    infantile spasms/pulmonary LAM), 5 standards (ILAE TSC 2022/TSC Consensus 2021/
+    FDA Everolimus/FDA Cannabidiol/Vigabatrin REMS), 6 thresholds (Everolimus trough/
+    EXIST-3 responder/Vigabatrin perimetry/CBD ALT/tuber burden/IS treatment lag)."""
+    import scripts.tsc_dashboard as td
+    return _json_safe(td.definitions())
+
+
+@app.get("/api/lgs/overview")
+async def lgs_overview():
+    """Lennox-Gastaut Syndrome Dashboard — overview: 41-patient LGS cohort, KPIs
+    (drop attack rate, drug-resistance %, corpus callosotomy %, responders),
+    etiology distribution (structural/genetic/unknown), seizure type prevalence
+    (tonic 92%/atonic 56%/atypical absence 60%/GTCS 73%/myoclonic 35%),
+    cognitive level distribution, current treatment use.
+    Reference: GWPCARE3 (Thiele 2018 NEJM); GWPCARE4 (Devinsky 2018 NEJM);
+               COALITION-I (Ng 2011); EIAED (Glauser 2008); Lagae 2019 Neurology."""
+    import scripts.lgs_dashboard as ld
+    return _json_safe(ld.overview())
+
+
+@app.get("/api/lgs/breakdown")
+async def lgs_breakdown():
+    """Lennox-Gastaut Syndrome Dashboard — breakdown: per-patient table
+    (etiology/seizure-types/drop-attacks/regimen/callosotomy/cognitive/responder),
+    etiology catalog (6 classes + surgical relevance), seizure type catalog
+    (5 types + EEG + treatment priority + outcome), AED monitoring requirements
+    (6 items: absolute contraindications Carbamazepine/Phenytoin + REMS Fenfluramine +
+    LFT Cannabidiol + QT Rufinamide + titration Lamotrigine), treatment catalog
+    (8 therapies: Rufinamide/Clobazam/Cannabidiol/Fenfluramine/Valproate/
+    Corpus Callosotomy/Ketogenic Diet/VNS), developmental trajectory (6 windows)."""
+    import scripts.lgs_dashboard as ld
+    return _json_safe(ld.breakdown())
+
+
+@app.get("/api/lgs/definitions")
+async def lgs_definitions():
+    """Lennox-Gastaut Syndrome Dashboard — definitions: 14 concepts (LGS/SSW/GPFA/
+    atonic seizure/corpus callosotomy/rufinamide/fenfluramine/GWPCARE3-4/COALITION-I/
+    EIAED/DRE/status epilepticus/SUDEP/disconnection syndrome), 6 standards
+    (ILAE LGS 2022/FDA Rufinamide 2008/FDA Clobazam 2011/FDA CBD 2018/
+    FDA Fenfluramine 2020/ILAE Surgical Guidelines 2017),
+    6 thresholds (drop attack frequency/QTc/CBD LFT/Fenfluramine echo/
+    KD ketosis/VNS current), 6 references."""
+    import scripts.lgs_dashboard as ld
+    return _json_safe(ld.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
