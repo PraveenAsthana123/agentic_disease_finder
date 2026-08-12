@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 150 dashboards",
+  "note": "Total: 152 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -522,6 +522,21 @@
       ],
       "source_table": "config/production_issues.json",
       "description": "Enterprise agentic AI production issue catalog: severity scoring (P1/P2), detection coverage by layer, Pareto analysis, and per-layer breakdown across Agent/Security/MCP/Planner/Retrieval/VectorDB/Memory/Reasoning/Workflow/LLM/Governance layers."
+    },
+    {
+      "id": "production_monitoring",
+      "name": "Production Monitoring Dashboard",
+      "role": "platform_engineer",
+      "status": "built",
+      "priority": "P1",
+      "route": "/production-monitoring",
+      "endpoints": [
+        "/api/production-monitoring/overview",
+        "/api/production-monitoring/breakdown",
+        "/api/production-monitoring/definitions"
+      ],
+      "source": "scripts/production_monitoring_dashboard.py",
+      "built_note": "production-monitoring built 2026-08-12: 6 live checks across Agent/MCP/Vector DB/Retrieval/Planner layers, overall status banner, health trend (28d), per-check expand with details/threshold/remediation, status filter, 3 endpoints verified 200, portal-next page + SiteNav wired next to Production Issues"
     },
     {
       "role": "Neurologist",
@@ -1940,5 +1955,5 @@
     "total_dashboards": 149,
     "total_built": 149
   },
-  "count": 149
+  "count": 152
 }
