@@ -1750,17 +1750,33 @@
     "/api/nddi-e/definitions"
    ],
    "note": "Neurological Disorders Depression Inventory for Epilepsy \u2014 epilepsy-specific 6-item depression screen; 52 assessments, 24 patients, 36.5% screen positive (\u226515 = likely MDD), 19 Screen+ / 10 Borderline / 23 Normal; 16 suicidality flags (item 4 \u2265 Often); avg score 13.4/24; score histogram (6-bin); per-patient severity + trend; item-level response distribution (6 items: functional/hopelessness/cognitive/suicidality/emotional/anhedonia); advantages over PHQ-9 in epilepsy context; suicidality protocol; ILAE endorsement + NICE NG217; 5 references incl. Gilliam et al. Lancet Neurol 2006. Script: scripts/nddi_e_dashboard.py. SiteNav wired next to Mood-Comorbidity. 3 endpoints verified 200. Registered 2026-08-12."
+  },
+  {
+   "id": "surgical-outcomes",
+   "name": "Surgical Outcomes Dashboard",
+   "status": "built",
+   "slug": "surgical-outcomes",
+   "route": "/surgical-outcomes",
+   "portal_page": "surgical-outcomes/page.jsx",
+   "role": "Epileptologist / Neurosurgeon / Clinical Research Coordinator",
+   "priority": "P1",
+   "api_endpoints": [
+    "/api/surgical-outcomes/overview",
+    "/api/surgical-outcomes/breakdown",
+    "/api/surgical-outcomes/definitions"
+   ],
+   "note": "Epilepsy surgery outcome tracking from surgical_outcomes table \u2014 28 surgeries, 22 patients; 32.1% seizure-free (Engel IA); Engel Class I=15/II=6/III=6/IV=1; surgery types: temporal lobectomy 12, lesionectomy 5, VNS implant 5, LITT 3, RNS implant 2, hemispherectomy 1; 17.9% complication rate; 35.7% AED reduction rate; mean follow-up 30.5 months; 6-tab frontend (Overview/Engel Classification/All Surgeries/By Surgery Type/Follow-up Trend/Definitions); Engel \u2013 Elger 2003 reference; ILAE Wiebe 2001 Class I outcome benchmark; LITT \u2013 Willie et al. Neurosurgery 2014. Script: scripts/surgical_outcome_dashboard.py. SiteNav wired. 3 endpoints verified 200. Registered 2026-08-12."
   }
  ],
  "summary": {
   "total": 124,
-  "built": 127,
+  "built": 128,
   "partial": 0,
   "planned": 0,
-  "updated_at": "2026-08-11",
-  "count": 135,
-  "total_dashboards": 116,
-  "total_built": 116
+  "updated_at": "2026-08-12",
+  "count": 140,
+  "total_dashboards": 140,
+  "total_built": 140
  },
- "count": 138
+ "count": 140
 }
