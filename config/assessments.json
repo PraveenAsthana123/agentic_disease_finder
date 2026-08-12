@@ -235,7 +235,14 @@
      "level": "severe"
     }
    ],
-   "note": "Epilepsy-specific depression screen. Cutoff >15. Item 4 (suicidality) -> escalate."
+   "note": "Epilepsy-specific depression screen. Cutoff >15. Item 4 (suicidality) -> escalate.",
+   "status": "built",
+   "dashboard": "nddi-e/page.jsx",
+   "endpoints": [
+    "/api/nddi-e/overview",
+    "/api/nddi-e/breakdown",
+    "/api/nddi-e/definitions"
+   ]
   },
   {
    "id": "COPM",

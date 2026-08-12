@@ -21351,6 +21351,33 @@ def api_mood_comorbidity_definitions():
     return _json_safe(mcd.definitions())
 
 
+# ── NDDI-E Dashboard ────────────────────────────────────────────────────────
+@app.get("/api/nddi-e/overview")
+def api_nddi_e_overview(patient_id: str = None):
+    """NDDI-E KPIs: 52 assessments, 24 patients, 36.5% screen positive (≥15),
+    severity distribution (Normal/Borderline/Screen+), suicidality flag rate,
+    score histogram, monthly trend, item-level endorsement rates."""
+    import scripts.nddi_e_dashboard as nd
+    return _json_safe(nd.overview(patient_id=patient_id))
+
+
+@app.get("/api/nddi-e/breakdown")
+def api_nddi_e_breakdown(patient_id: str = None):
+    """NDDI-E per-patient summary (avg score, latest level, suicidality flag,
+    trend), assessment log, and item-level average scores with response distributions."""
+    import scripts.nddi_e_dashboard as nd
+    return _json_safe(nd.breakdown(patient_id=patient_id))
+
+
+@app.get("/api/nddi-e/definitions")
+def api_nddi_e_definitions():
+    """NDDI-E scale description, 6 items, severity thresholds (≤12 Normal /
+    13-14 Borderline / ≥15 Screen+), suicidality protocol, advantages over PHQ-9,
+    5 clinical references including Gilliam et al. Lancet Neurol 2006."""
+    import scripts.nddi_e_dashboard as nd
+    return _json_safe(nd.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
