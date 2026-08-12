@@ -295,6 +295,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/genetic-epilepsy">&#x1f9ec; Genetic Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/research-coordinator">&#x1f4cb; Research Coordinator</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/dba-research">&#x1f393; DBA Research KPIs</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/insurance-preauth">&#x1f3e5; Insurance Pre-Authorization</Link></li>

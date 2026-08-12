@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Per-role dashboards across the EEG-AI lifecycle. status: built (live here) / partial (data present, viz basic) / planned. P0/P1 = clinical priority. \u00a7155 honest \u2014 most advanced EEG visuals (topomap/spectrogram/scalogram) are MNE-capable but not yet rendered in-app.",
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-11",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -1606,6 +1606,13 @@
         "/api/model-governance/definitions"
       ],
       "note": "133 AI analyses, 75 clinical decisions, 4 HITL reviews, 3 expert reviews, 50% sign-off rate, 50% override rate, 66.7% expert agreement, model lifecycle by disease (epilepsy/sleep_disorder/depression/parkinsons/alzheimers), consultant matrix, decision chain with reviewer+artifact risk, role agreement matrix, governance timeline. 5-tab frontend (Overview/Consultant Matrix/Decision Chain/HITL Reviews/Definitions), 3 endpoints /api/model-governance/overview|breakdown|definitions verified 200, portal-next/app/model-governance/page.jsx + SiteNav wired next to AI Governance 2026-08-12. expert_dashboards.json count 127\u2192128"
+    },
+    {
+      "id": "neonatal_eeg",
+      "name": "Neonatal EEG Dashboard",
+      "status": "built",
+      "route": "/neonatal-eeg",
+      "note": "Helsinki Neonatal EEG Dataset \u2014 79 neonates (28-44 wk GA), 22-channel EEG 256 Hz, 460 annotated seizure events, inter-rater \u03ba=0.79. GA distribution (5 groups), EEG background patterns (burst-suppression/trac\u00e9 alternant/trac\u00e9 discontinu/delta brushes/frontal sharp transients), neonatal seizure types (clonic/tonic/subtle/myoclonic/electrographic-only), etiology distribution (HIE 40%/stroke 15%/infection 10%/metabolic 10%/malformation 8%/genetic 7%/unknown 10%), AI detection benchmark vs adult model performance gap, aEEG patterns, montage comparison. 3 endpoints /api/neonatal-eeg/overview|breakdown|definitions verified 200, portal-next/app/neonatal-eeg/page.jsx + SiteNav wired next to Pediatric Epilepsy, expert_dashboards.json count 128->129. 2026-08-11."
     }
   ],
   "summary": {
