@@ -1687,6 +1687,24 @@
         "/api/pro-outcomes/definitions"
       ],
       "note": "180 assessments, 30 patients. PSQI avg 7.8 (poor sleep), PHQ-9 avg 8.0 (mild depression), QOLIE-31 avg 63.1, MoCA avg 24.4, NDDI-E avg 12.2, WPAI 35.7% impairment. SiteNav wired. 3 endpoints verified 200, portal-next page built 2026-08-11."
+    },
+    {
+      "id": "pms",
+      "name": "AI Post-Market Surveillance (PMS) Dashboard",
+      "role": "AI Governance Officer / Clinical Safety Lead",
+      "viz": "Agreement donut, override rate bars, per-class performance table, HITL vigilance log, confidence calibration insight",
+      "feature": "75 clinical decisions, 39 patients, 5 reviewers, 5 prediction classes, 4 HITL events, EU MDR Art.83 + FDA 21 CFR 803 + ISO 14971 + IEC 62304 compliance tracking",
+      "why": "Real-world AI performance monitoring post-deployment; mandatory for EU MDR Class IIa SaMD; feeds ISO 14971 risk file and PMCF; identifies systematic model errors and calibration drift",
+      "priority": "P1",
+      "status": "built",
+      "route": "/pms",
+      "endpoints": [
+        "/api/pms/overview",
+        "/api/pms/breakdown",
+        "/api/pms/definitions"
+      ],
+      "frontend": "portal-next/app/pms/page.jsx",
+      "note": "75 AI decisions, 39 patients, 5 prediction classes (Epilepsy/Focal Seizure/Generalized Seizure/Normal/PNES), 44% agreement rate, 30.7% override rate, avg confidence 0.729, 4 HITL events (2 overrides/2 accepts), 5 reviewers (Dr. Gupta/Patel/Kumar/Sharma/Singh), vigilance threshold alerts, confidence calibration insight (agree conf 0.77 vs disagree conf 0.699), EU MDR Art.83 / FDA 21 CFR 803 / ISO 14971 / IEC 62304 / IMDRF AI-ML regulatory context, 5-tab frontend (Overview/AI-vs-Clinician/Per-Class/HITL Vigilance/Definitions), 3 endpoints /api/pms/overview|breakdown|definitions verified 200, portal-next/app/pms/page.jsx + SiteNav wired next to HFO Biomarkers, expert_dashboards.json count 135\u2192136"
     }
   ],
   "summary": {

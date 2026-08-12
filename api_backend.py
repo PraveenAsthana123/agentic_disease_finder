@@ -21302,6 +21302,30 @@ def api_home_program_definitions():
     return _json_safe(hpd.definitions())
 
 
+@app.get("/api/pms/overview")
+def api_pms_overview():
+    """PMS KPIs: total AI decisions, agree/override rates, confidence stats,
+    reviewer workload — from clinical_decisions (75 records, 30 patients)."""
+    import scripts.pms_dashboard as pms
+    return _json_safe(pms.overview())
+
+
+@app.get("/api/pms/breakdown")
+def api_pms_breakdown():
+    """PMS per-class performance, per-patient drill, artifact risk distribution,
+    confidence-vs-agreement crosstab, and HITL vigilance log."""
+    import scripts.pms_dashboard as pms
+    return _json_safe(pms.breakdown())
+
+
+@app.get("/api/pms/definitions")
+def api_pms_definitions():
+    """PMS regulatory context (EU MDR Art.83, FDA 21 CFR 803, ISO 14971,
+    IEC 62304, IMDRF AI/ML), vigilance thresholds, and glossary."""
+    import scripts.pms_dashboard as pms
+    return _json_safe(pms.definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
