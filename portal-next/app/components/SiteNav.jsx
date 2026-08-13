@@ -346,6 +346,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/hcn1">&#x26a1; HCN1 Epilepsy (DEE24 / Ih Channelopathy / GOF-LOF Dual / Fever-Sensitive / 5p12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/foxg1">&#x1f9e0; FOXG1 Syndrome (Congenital Rett Variant / DEE / Dyskinesias / 14q12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gnao1">&#x26a1; GNAO1 Encephalopathy (DEE17 / Ohtahara / G&#945;o GOF-LOF / 16q13)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabrg2">&#x1f9ec; GABRG2 Epilepsy (DEE11 / GEFS+ / GABA-A &#947;2 / BDZ Hyposensitivity / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

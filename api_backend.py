@@ -23299,6 +23299,54 @@ async def gnao1_definitions():
     return _json_safe(gn1_.get_definitions())
 
 
+@app.get("/api/gabrg2/overview")
+async def gabrg2_overview():
+    """GABRG2 Epilepsy (DEE11 / GEFS+ Spectrum / GABA-A γ2 Subunit / Fever-Sensitive) overview: 41-patient cohort.
+    GABRG2 (5q34), GABA-A receptor gamma-2 subunit — most abundant synaptic GABA-A subunit in CNS.
+    De novo dominant (DEE11 severe) or autosomal dominant familial (GEFS+ mild-moderate).
+    LOF → fewer γ2-containing pentamers → BDZ REDUCED EFFICACY (30-40% fewer binding sites at α/γ2 interface).
+    BDZ RESCUE DOSE: midazolam 0.3-0.4 mg/kg (NOT standard 0.2 mg/kg) — DOCUMENT IN ALL SEIZURE PLANS.
+    K289M: temperature-sensitive gating defect → channel inactivates at 40°C → Dravet-like FSE.
+    LTG ABSOLUTE CI if myoclonic component (NaV1.1 interneuron block → myoclonus aggravation).
+    POLG MANDATORY before VPA. CBZ/OXC/PHT avoid in generalised phenotype."""
+    import scripts.gabrg2_dashboard as gg2_
+    return _json_safe(gg2_.get_overview())
+
+
+@app.get("/api/gabrg2/breakdown")
+async def gabrg2_breakdown():
+    """GABRG2 breakdown: 41 patients, 5-class etiology catalog
+    (GABRG2-de-novo-LOF-severe-DEE11-35%/GABRG2-de-novo-missense-R43Q-trafficking-28%/
+    GABRG2-de-novo-missense-K289M-temperature-sensitive-18%/GABRG2-familial-AD-GEFS+-14%/phenocopy-5%),
+    4 seizure types (Febrile-SE-95%/GTCS-75%/Myoclonic-atonic-55%/Absence-40%)
+    with EEG correlates+clinical tips,
+    8 triggers (fever-95%/illness-82%/sleep-deprivation-72%/missed-AED-65%/
+    hot-bath-58%/stress-48%/photosensitivity-30%/hyperventilation-20%),
+    8 treatments (VPA-Level-A/CLB-Level-B/KD-Level-B/STP-Level-B-Dravet-like/ACTH-Level-A-West/
+    LEV-Level-C/FFA-Level-C-REMS/BDZ-higher-dose-rescue-0.3-0.4-mg-kg) with
+    dose+MOA+efficacy+safety+monitoring+GABRG2-specific notes,
+    5 contraindications (LTG-ABSOLUTE-CI-myoclonic/CBZ-OXC-PHT-HIGH/Tiagabine-HIGH-DEE11/
+    standard-BDZ-dose-MODERATE/VGB-long-term-HIGH),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.gabrg2_dashboard as gg2_
+    return _json_safe(gg2_.get_breakdown())
+
+
+@app.get("/api/gabrg2/definitions")
+async def gabrg2_definitions():
+    """GABRG2 definitions: 14 key concepts
+    (GABRG2-5q34/DEE11-GEFS+/γ2-subunit/BDZ-binding-α-γ2-interface/BDZ-reduced-efficacy/
+    gephyrin-synaptic-clustering/surface-trafficking-R43Q/temperature-sensitive-K289M/
+    FSE-hippocampal-sclerosis/LTG-CI-NaV1.1-interneurons/POLG-VPA-CI/KD-GABA-A-bypass/
+    SUDEP-GABRG2/GEFS+-SCN1A-vs-GABRG2-differentiation),
+    5 contraindications (LTG-ABSOLUTE-CI/CBZ-OXC-PHT/Tiagabine-ABSOLUTE-CI/standard-BDZ-insufficient/VGB-long-term),
+    10 thresholds, 8 standards, 6 references
+    (Wallace-1998-NatGenet/Baulac-2001-LancetNeurol/Marini-2003-HumMolGenet/
+    Kang-2006-JNeurosci/Scheffer-1997-Brain/Macdonald-2010-ProgBrainRes)."""
+    import scripts.gabrg2_dashboard as gg2_
+    return _json_safe(gg2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
