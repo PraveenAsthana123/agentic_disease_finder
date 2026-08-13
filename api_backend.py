@@ -23253,6 +23253,52 @@ async def foxg1_definitions():
     return _json_safe(fg1_.get_definitions())
 
 
+@app.get("/api/gnao1/overview")
+async def gnao1_overview():
+    """GNAO1 Encephalopathy (DEE17 / Ohtahara Syndrome / G-protein Alpha-O1 / GOF-LOF Dual) overview: 41-patient cohort.
+    GNAO1 (16q13), Gαo — most abundant CNS G-protein alpha subunit. De novo dominant.
+    GOF (56%): constitutively active Gαo → persistent Gβγ → VGCC inhibition → synaptic depression
+    → compensatory hyperexcitability + hyperkinetic dyskinesias (choreoathetosis/ballism — NOT ictal).
+    LOF (44%): haploinsufficiency → impaired GABA-B/GIRK presynaptic inhibition → increased NT
+    release → cortical hyperexcitability → predominantly epilepsy phenotype.
+    DYSKINESIAS vs SPASMS: hyperkinetic dyskinesias EEG NORMAL (non-ictal) — video-EEG mandatory.
+    CBZ LOW DOSE for movement disorder (GOF) — NOT epilepsy dose. Gpi-DBS CONTRAINDICATED in GOF.
+    Tiagabine ABSOLUTE CI. Quinidine (GIRK blocker) investigational GOF only. POLG MANDATORY before VPA."""
+    import scripts.gnao1_dashboard as gn1_
+    return _json_safe(gn1_.get_overview())
+
+
+@app.get("/api/gnao1/breakdown")
+async def gnao1_breakdown():
+    """GNAO1 breakdown: 41 patients, 5-class etiology catalog
+    (GOF-R209-classic-34%/GOF-other-missense-22%/LOF-haploinsufficiency-27%/LOF-partial-12%/phenocopy-5%),
+    5 seizure types (tonic-spasms-Ohtahara-85%/hyperkinetic-dyskinesias-GOF-72%/IS-West-62%/focal-multifocal-55%/myoclonic-atonic-38%)
+    with EEG correlates+clinical tips,
+    8 triggers (fever-88%/sleep-wake-transitions-78%/missed-AED-71%/emotional-sensory-62%/
+    fatigue-55%/constipation-45%/KD-non-adherence-40%/drug-interactions-28%),
+    8 treatments (ACTH-Level-A-West/VGB-Level-A-West/VPA-Level-B-POLG-screen/CLB-Level-B/
+    KD-Level-B-DRE/CBZ-Level-C-movement-disorder-GOF/LEV-Level-C/Quinidine-Level-C-investigational-GOF)
+    with dose+MOA+efficacy+safety+monitoring+GNAO1-specific notes,
+    4 contraindications (Tiagabine-ABSOLUTE-CI-NCSE/Gpi-DBS-GOF-CI/LTG-Ohtahara-avoid/PB-chronic-GOF-moderate),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.gnao1_dashboard as gn1_
+    return _json_safe(gn1_.get_breakdown())
+
+
+@app.get("/api/gnao1/definitions")
+async def gnao1_definitions():
+    """GNAO1 definitions: 14 key concepts
+    (GNAO1-16q13/DEE17/Gαo-G-protein/GOF-constitutive-Gαo/LOF-haploinsufficiency/
+    Ohtahara-syndrome/burst-suppression-EEG/GIRK-Kir3/dyskinesia-vs-seizure-GNAO1/
+    CBZ-movement-disorder-GOF/quinidine-GIRK-blockade/POLG-VPA-CI/SUDEP-GNAO1/Gpi-DBS-CI-GOF),
+    4 contraindications (Tiagabine-ABSOLUTE-CI/Gpi-DBS-GOF/LTG-Ohtahara/PB-chronic-GOF),
+    10 thresholds, 8 standards, 6 references
+    (Saitsu-2012-NatGenet/Nakamura-2013-AmJHumGenet/Feng-2017-SciTranslMed/
+    Ananth-2016-PediatrNeurol/Lux-2004-LancetNeurol/Kulkarni-2023-JPediatrNeurol)."""
+    import scripts.gnao1_dashboard as gn1_
+    return _json_safe(gn1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
