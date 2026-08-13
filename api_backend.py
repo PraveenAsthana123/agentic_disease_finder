@@ -23347,6 +23347,52 @@ async def gabrg2_definitions():
     return _json_safe(gg2_.get_definitions())
 
 
+@app.get("/api/grin2b/overview")
+async def grin2b_overview():
+    """GRIN2B Epilepsy (DEE27 / GluN2B / NMDA Receptor Subunit 2B) overview: 41-patient cohort.
+    GRIN2B (12p12.1), GluN2B — obligate regulatory subunit of diheteromeric + triheteromeric NMDA receptors.
+    De novo dominant. GOF (55%): constitutive NMDA hyperactivation → excitotoxicity → West/Ohtahara/severe DEE27.
+    LOF (40%): NMDA hypofunction → PV-interneuron disinhibition → paradoxical hyperexcitability + NDD + EAS.
+    PRECISION: memantine (GOF ONLY — ABSOLUTE CI in LOF). GOF/LOF assay MANDATORY before memantine/ketamine.
+    POLG MANDATORY before VPA. Tiagabine/CBZ/OXC/PHT contraindicated in generalised DEE27."""
+    import scripts.grin2b_dashboard as gb2_
+    return _json_safe(gb2_.get_overview())
+
+
+@app.get("/api/grin2b/breakdown")
+async def grin2b_breakdown():
+    """GRIN2B breakdown: 41 patients, 5-class etiology catalog
+    (GRIN2B-GOF-severe-DEE27-West-37%/GRIN2B-GOF-moderate-missense-18%/
+    GRIN2B-LOF-truncating-frameshift-27%/GRIN2B-LOF-partial-missense-13%/phenocopy-5%),
+    4 seizure types (Epileptic-Spasms-West-80%/Focal-Motor-72%/Myoclonic-55%/GTCS-65%)
+    with EEG correlates+clinical tips,
+    8 triggers (fever-88%/sleep-deprivation-75%/missed-AED-68%/emotional-stress-58%/
+    NREM-transitions-62%/illness-52%/photostimulation-32%/screen-disruption-38%),
+    8 treatments (Memantine-Level-B-GOF-ONLY/VPA-Level-B-POLG-screen/ACTH-Level-A-West/
+    VGB-Level-A-West-short-term/CLB-Level-B-adjunct/KD-Level-B-DRE/LEV-Level-B-adjunct/
+    Ketamine-Level-C-GOF-RSE-only) with dose+MOA+efficacy+safety+monitoring+GRIN2B-specific notes,
+    5 contraindications (Memantine-LOF-ABSOLUTE-CI/Ketamine-LOF-HIGH/CBZ-OXC-PHT-HIGH-generalised/
+    Tiagabine-ABSOLUTE-CI/VGB-long-term-HIGH),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.grin2b_dashboard as gb2_
+    return _json_safe(gb2_.get_breakdown())
+
+
+@app.get("/api/grin2b/definitions")
+async def grin2b_definitions():
+    """GRIN2B definitions: 14 key concepts
+    (GRIN2B-12p12.1/DEE27/GluN2B-GOF/GluN2B-LOF/Memantine-GOF-Precision/
+    Ketamine-RSE-GOF/NMDA-Q10-Temperature/CSWS-ESES-LOF/PV-Interneuron-NMDA/
+    POLG-VPA-CI/KD-NMDA-Modulation/D-Cycloserine-LOF-Investigational/
+    SUDEP-GRIN2B/Lurcher-Mutation-Site),
+    5 contraindications (Memantine-LOF/Ketamine-LOF/CBZ-OXC-PHT/Tiagabine/VGB-long-term),
+    10 thresholds, 8 standards, 6 references
+    (Lemke-2016-NatMed/Li-2016-NatNeurosci/Bhatt-2017-AJHG/
+    Bhambhani-2022-Epilepsia/Ohba-2015-AnnNeurol/Bhatt-2023-EpilepsyCurrents)."""
+    import scripts.grin2b_dashboard as gb2_
+    return _json_safe(gb2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
