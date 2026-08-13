@@ -23073,6 +23073,52 @@ async def polg_definitions():
     return _json_safe(pg_.get_definitions())
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# SLC2A1 / GLUT1 Deficiency Syndrome (De Vivo Disease) — Dashboard #188
+# ─────────────────────────────────────────────────────────────────────────────
+@app.get("/api/slc2a1/overview")
+async def slc2a1_overview():
+    """SLC2A1 / GLUT1-DS — De Vivo Disease overview: 41-patient cohort.
+    SLC2A1 (1p34.2), Glucose Transporter Type 1 (GLUT1), facilitative BBB glucose transport.
+    Haploinsufficiency → hypoglycorrhachia (CSF:plasma ratio <0.45) → epilepsy + PED + cognitive.
+    METHYLXANTHINES ABSOLUTE CI (caffeine/theophylline/aminophylline — competitive GLUT1 inhibition).
+    KD IS FIRST-LINE PRECISION THERAPY (not drug-resistant reserve — bypasses GLUT1 via MCT1).
+    LP BEFORE KD mandatory (KD normalises CSF glucose → false negative if delayed).
+    PED (paroxysmal exercise-induced dyskinesia) pathognomonic; EEG normal during PED."""
+    import scripts.slc2a1_dashboard as s1_
+    return _json_safe(s1_.get_overview())
+
+
+@app.get("/api/slc2a1/breakdown")
+async def slc2a1_breakdown():
+    """SLC2A1 / GLUT1-DS breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (fasting-92%/morning-88%/methylxanthines-62%/exercise-75%/
+    fever-68%/missed-KD-78%/sleep-deprivation-45%/high-carb-38%),
+    8 treatments (KD-Level-A-first-line/MAD-Level-B/MCT-diet-Level-B/
+    LEV-Level-C/CLB-Level-C/Triheptanoin-Level-C/PB-Level-C-caution/
+    Glucose-Level-C-bridge) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (methylxanthines-ABSOLUTE-CI/PB-long-term-HIGH/
+    VPA-HIGH/fasting-ABSOLUTE-CI),
+    8 monitoring items, 6-window lifecycle, 14 concepts."""
+    import scripts.slc2a1_dashboard as s1_
+    return _json_safe(s1_.get_breakdown())
+
+
+@app.get("/api/slc2a1/definitions")
+async def slc2a1_definitions():
+    """SLC2A1 / GLUT1-DS definitions: 14 key concepts
+    (SLC2A1-GLUT1/GLUT1-DS-De-Vivo/Hypoglycorrhachia/BBB-GLUT1/
+    PED-paroxysmal-exercise-induced-dyskinesia/KD-precision-therapy/
+    beta-OHB/methylxanthine-GLUT1-inhibition/De-Vivo-Disease/MAD/
+    CSF-plasma-ratio/erythrocyte-glucose-uptake-assay/SLC2A1-Alliance/Triheptanoin),
+    4 contraindications (methylxanthines-ABSOLUTE/PB-HIGH/VPA-HIGH/fasting-ABSOLUTE),
+    10 thresholds, 8 standards, 6 references
+    (De-Vivo-1991-NEJM/Klepper-2004-AnnNeurol/Leen-2013-Brain/
+    Verrotti-2012-Epilepsia/Suls-2008-AnnNeurol/Pong-2012-PediatrNeurol)."""
+    import scripts.slc2a1_dashboard as s1_
+    return _json_safe(s1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

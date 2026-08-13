@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 186 dashboards",
+  "note": "Total: 188 dashboards",
   "updated_at": "2026-08-13",
   "must_have_p0": [
     {
@@ -2425,17 +2425,33 @@
       "locus": "15q26.1",
       "built": "2026-08-13",
       "note": "POLG 15q26.1 Mitochondrial DNA Polymerase Gamma \u2014 Alpers-Huttenlocher Syndrome (AHS). AR biallelic (AHS/DEE) + AD heterozygous (PEO/SANDO). 41-patient cohort. VPA ABSOLUTE CI (acute liver failure 32-45%, mortality >80%). EPC (epilepsia partialis continua) hallmark. LEV first-line (hepatically safe). Mitochondrial cofactors (Riboflavin/CoQ10/L-carnitine). KD (LCHAD screen first). 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions). 3 endpoints /api/polg/overview|breakdown|definitions verified 200."
+    },
+    {
+      "role": "Neurologist / Epileptologist",
+      "name": "SLC2A1 Epilepsy (GLUT1 Deficiency Syndrome / De Vivo Disease / KD Precision Therapy)",
+      "id": "slc2a1",
+      "viz": "Etiology bars, seizure type bars, trigger bars, treatment cards, accordion definitions, GLUT1-DS pathway diagram",
+      "feature": "5-tab layout: Overview/Patients-Etiology/Seizure-Types-Triggers/Treatments/Definitions",
+      "why": "SLC2A1 / GLUT1-DS \u2014 facilitative BBB glucose transport deficiency; ketogenic diet is first-line precision therapy (not drug-resistance reserve); methylxanthines ABSOLUTE CI (competitive GLUT1 inhibition); PED pathognomonic",
+      "priority": "P0",
+      "category": "Epilepsy Syndromes",
+      "status": "built",
+      "route": "/slc2a1",
+      "api_route": "/api/slc2a1/{overview,breakdown,definitions}",
+      "component": "portal-next/app/slc2a1/page.jsx",
+      "note": "41-patient GLUT1-DS cohort, 5-class etiology (SLC2A1-het-de-novo-classic-51%/SLC2A1-het-familial-AD-22%/SLC2A1-biallelic-AR-severe-10%/SLC2A1-missense-partial-LOF-mild-12%/SLC2A1-negative-phenocopy-5%), 4 seizure types (absence-like-85%/PED-62%/GTCS-40%/atonic-38%), 8 triggers (fasting-92%/morning-88%/methylxanthines-62%/exercise-75%/fever-68%/missed-KD-78%/sleep-dep-45%/high-carb-38%), 8 treatments (KD-Level-A-first-line/MAD-Level-B/MCT-diet-Level-B/LEV-Level-C/CLB-Level-C/Triheptanoin-Level-C/PB-Level-C-caution/Glucose-Level-C-bridge) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (methylxanthines-ABSOLUTE-CI/PB-long-term-HIGH/VPA-HIGH/fasting-ABSOLUTE-CI), 8 monitoring items (CSF-plasma-ratio/beta-OHB/lipids/growth/neuropsych/EEG/selenium-carnitine-DXA/erythrocyte-assay), 6-window lifecycle, 14 concepts (SLC2A1-GLUT1/GLUT1-DS-De-Vivo/Hypoglycorrhachia/BBB-GLUT1/PED/KD-precision-therapy/beta-OHB/methylxanthine-CI/De-Vivo-Disease/MAD/CSF-plasma-ratio/erythrocyte-assay/SLC2A1-Alliance/Triheptanoin), 8 standards, 10 thresholds, 6 references (De-Vivo-1991-NEJM/Klepper-2004-AnnNeurol/Leen-2013-Brain/Verrotti-2012-Epilepsia/Suls-2008-AnnNeurol/Pong-2012-PediatrNeurol), 5-tab frontend, 3 endpoints /api/slc2a1/overview|breakdown|definitions",
+      "built_at": "2026-08-13"
     }
   ],
   "summary": {
-    "total": 186,
-    "built": 186,
+    "total": 188,
+    "built": 188,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-13",
-    "count": 186,
-    "total_dashboards": 186,
-    "total_built": 186
+    "count": 188,
+    "total_dashboards": 188,
+    "total_built": 188
   },
-  "count": 186
+  "count": 188
 }
