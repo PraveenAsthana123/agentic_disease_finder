@@ -22559,6 +22559,50 @@ async def scn2a_definitions():
     return _json_safe(sc_.get_definitions())
 
 
+@app.get("/api/scn8a/overview")
+async def scn8a_overview():
+    """SCN8A-DEE Dashboard — overview: SCN8A (12q13.13) Nav1.6, 41-patient cohort,
+    5-class etiology (De-novo-SCN8A-GOF-severe-DEE 58%/De-novo-SCN8A-GOF-moderate 17%/
+    De-novo-SCN8A-LOF 10%/De-novo-SCN8A-splice-structural 7%/Clinical-SCN8A-negative 8%),
+    almost exclusively GOF — CBZ/OXC FIRST-LINE for all GOF,
+    LTG ABSOLUTELY CONTRAINDICATED (acute SE), movement disorder 30-50% (improves with CBZ/OXC),
+    SUDEP risk very high, HLA-B*1502 CPIC Level A mandatory, SIADH Na monitoring,
+    EIEE13 MIM#614558, LVFA ictal GOF, DRE >90%."""
+    import scripts.scn8a_dashboard as sc8_
+    return _json_safe(sc8_.get_overview())
+
+
+@app.get("/api/scn8a/breakdown")
+async def scn8a_breakdown():
+    """SCN8A-DEE Dashboard — breakdown: 41 patients with functional class (GOF-severe/GOF-moderate/LOF),
+    CBZ TDM levels, MHD levels, Na+ monitoring, HLA-B*1502 status, movement disorder flag, VNS status,
+    4 seizure types (Focal-tonic/clonic-neonatal-infantile 92%/FBTCS 76%/Absence-like-NCSE 38%/Spasms-IS 24%),
+    8 triggers (Fever 85%/Illness 73%/Missed-AED 68%/Sleep-deprivation 56%/Stress 43%/
+    AED-withdrawal 38%/Na-blocker-cessation-rebound 29%/Puberty 18%),
+    8 treatments (PHT Level-B-GOF-NICU-bridge/CBZ Level-B-GOF-oral-first-line/OXC Level-B-GOF-infant-preferred/
+    PB Level-C-neonatal/LEV Level-C-adjunct/KD-4:1 Level-B-DRE/Quinidine-Phase2-GOF-investigational/
+    LTG-ABSOLUTE-CI-GOF) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications, 8 monitoring items, 6-window lifecycle, 8 standards."""
+    import scripts.scn8a_dashboard as sc8_
+    return _json_safe(sc8_.get_breakdown())
+
+
+@app.get("/api/scn8a/definitions")
+async def scn8a_definitions():
+    """SCN8A-DEE Dashboard — definitions: 14 concepts (SCN8A-Nav1.6/GOF-DEE/EIEE13-MIM614558/
+    Persistent-Na-Current-INaP/Movement-Disorder-SCN8A/Drug-Resistant-Epilepsy-DRE/SUDEP-SCN8A/
+    Quinidine-SCN8A-investigational/HLA-B1502-SJS-TEN/SIADH-CBZ-OXC/LTG-ABSOLUTE-CI-SCN8A/
+    Electroclinical-Dissociation/SCN8A-Alliance/CPIC-Nav1.6),
+    4 absolute contraindications (LTG-GOF-ABSOLUTE-CI/CBZ-OXC-HLA-B1502-positive/VPA-POLG-exclusion/
+    Hospital-NPO-without-IV-AED),
+    10 thresholds (onset-<6M-molecular-diagnosis/CBZ-TDM-4-12/MHD-12-24/Na-130-SIADH/
+    HLA-B1502-positive/QTc-500-quinidine/2-AED-KD/3-AED-VNS/seizure-free-2Y-taper/LFT-3xULN-stop),
+    6 references (Meisler-2019-NEJM/Larsen-2015-Neurology/Blanchard-2017-Epilepsia/
+    Johannesen-2019-Brain/Gardella-2016-Epilepsia/Estacion-2014-JNeurosci)."""
+    import scripts.scn8a_dashboard as sc8_
+    return _json_safe(sc8_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

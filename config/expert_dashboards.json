@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 165 dashboards",
-  "updated_at": "2026-08-13",
+  "note": "Total: 176 dashboards",
+  "updated_at": "2026-08-12",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -2283,6 +2283,15 @@
       "page": "/scn2a",
       "description": "SCN2A (2q24.3) Nav1.2 DEE \u2014 41 patients, 5-class etiology, GOF vs LOF opposite treatment axis, CBZ/OXC first-line GOF, Na-channel blockers CONTRAINDICATED LOF, HLA-B*1502 CPIC Level A, SIADH Na+ monitoring, EIEE11, BFNIS, ASD 70% LOF, ASO gene therapy trials",
       "built_date": "2026-08-12"
+    },
+    {
+      "id": "scn8a",
+      "name": "SCN8A Encephalopathy (SCN8A-DEE / EIEE13)",
+      "status": "built",
+      "api": "/api/scn8a/overview|breakdown|definitions",
+      "page": "/scn8a",
+      "description": "SCN8A (12q13.13) Nav1.6 DEE \u2014 41 patients, 5-class etiology, almost exclusively GOF, LTG absolute CI, CBZ/OXC first-line, movement disorder 30-50%, SUDEP high risk, DRE >90%, quinidine investigational, HLA-B*1502 CPIC Level A, EIEE13 MIM#614558",
+      "built_date": "2026-08-12"
     }
   ],
   "summary": {
@@ -2295,5 +2304,5 @@
     "total_dashboards": 174,
     "total_built": 174
   },
-  "count": 175
+  "count": 176
 }
