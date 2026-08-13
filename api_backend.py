@@ -22691,6 +22691,50 @@ async def pcdh19_definitions():
     return _json_safe(pd_.get_definitions())
 
 
+@app.get("/api/grin2a/overview")
+async def grin2a_overview():
+    """GRIN2A Epilepsy-Aphasia Spectrum (GRIN2A-EAS) Dashboard — overview: GRIN2A (2q33.1)
+    GluN2A/NR2A NMDA receptor subunit, 41-patient cohort, EAS spectrum (SeLECTS → CSWS →
+    Landau-Kleffner Syndrome), 5-class etiology
+    (De-novo-GRIN2A-GOF/LOF-missense-LKS 38%/De-novo-GRIN2A-truncating-CSWS-DEE 20%/
+    Familial-GRIN2A-AD-EAS 22%/GRIN2A-splice-site-moderate-EAS 12%/
+    Clinical-GRIN2A-negative-phenocopy 8%),
+    4 seizure types (Centrotemporal-rolandic 92%/FBTCS 68%/Atypical-absence-CSWS 55%/
+    Myoclonic 25%), 8 triggers (NREM-sleep-CSWS 95%/Sleep-deprivation 75%/Fever 68%/
+    CBZ-OXC-iatrogenic 55%/Illness 48%/Stress 42%/Missed-AED 38%/Puberty-CSWS-resolution 85%),
+    6 clinical alerts including CBZ-ABSOLUTE-CI and Sleep-EEG-mandatory."""
+    import scripts.grin2a_dashboard as gd_
+    return _json_safe(gd_.get_overview())
+
+
+@app.get("/api/grin2a/breakdown")
+async def grin2a_breakdown():
+    """GRIN2A Epilepsy-Aphasia Spectrum — breakdown: 41 patients with functional class
+    (GOF-missense/truncating/familial-AD/splice-site/phenocopy), etiology catalog,
+    8 triggers (NREM-sleep-CSWS 95%/Sleep-deprivation 75%/Fever 68%/CBZ-iatrogenic 55%/
+    Illness 48%/Stress 42%/Missed-AED 38%/Puberty-CSWS-resolution 85%),
+    8 treatments (VPA Level-B-first-line/CLB-nocturnal Level-B-CSWS/ACTH Level-C-LKS/
+    Nocturnal-diazepam Level-C/ESM Level-C-adjunct/Acetazolamide Level-C-refractory/
+    LCM Level-C-focal-adjunct/CBZ-ABSOLUTE-CI) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications, 8 monitoring items, 6-window lifecycle."""
+    import scripts.grin2a_dashboard as gd_
+    return _json_safe(gd_.get_breakdown())
+
+
+@app.get("/api/grin2a/definitions")
+async def grin2a_definitions():
+    """GRIN2A Epilepsy-Aphasia Spectrum — definitions: 14 concepts
+    (GRIN2A-GluN2A-NMDA/EAS-spectrum/CSWS-ESES-SWI/Landau-Kleffner-LKS/CBZ-ABSOLUTE-CI-CSWS/
+    Nocturnal-CLB-CSWS-suppression/ACTH-LKS-language-recovery/Verbal-Auditory-Agnosia/
+    Anti-NMDAr-Encephalitis-mimic/AD-GRIN2A-variable-expressivity/SeLECTS-spectrum/
+    SLT-mandatory/GRIN2A-Alliance/ASO-Gene-Therapy-preclinical),
+    4 absolute contraindications, 10 thresholds, 8 standards, 6 references
+    (Lemke-2013-NatGenet/Lal-2013-NatGenet/Scheffer-2012-Brain/
+    Caraballo-2014-Epilepsia/Veggiotti-2011/Hirsch-2006-Epilepsia)."""
+    import scripts.grin2a_dashboard as gd_
+    return _json_safe(gd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

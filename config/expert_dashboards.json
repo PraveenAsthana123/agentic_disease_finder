@@ -2320,6 +2320,21 @@
       "frontend_component": "portal-next/app/pcdh19/page.jsx",
       "description": "41-patient PCDH19-CE cohort (female-predominant, cellular interference X-linked paradox), 5-class etiology, fever-triggered clusters, fenfluramine FDA/EMA 2022 approved, CLB cluster protocol, FINTEPLA REMS mandatory",
       "built_date": "2026-08-12"
+    },
+    {
+      "id": "grin2a",
+      "name": "GRIN2A Epilepsy-Aphasia Spectrum (GRIN2A-EAS / CSWS / LKS)",
+      "category": "Genetic DEE",
+      "status": "built",
+      "route": "/grin2a",
+      "api": [
+        "/api/grin2a/overview",
+        "/api/grin2a/breakdown",
+        "/api/grin2a/definitions"
+      ],
+      "script": "scripts/grin2a_dashboard.py",
+      "frontend": "portal-next/app/grin2a/page.jsx",
+      "description": "GRIN2A-EAS Dashboard \u2014 41-patient cohort, 5-class etiology catalog, SWI/CSWS monitoring, Landau-Kleffner Syndrome, CBZ absolute CI, nocturnal CLB, ACTH for LKS, 14 concepts, 6 lifecycle windows"
     }
   ],
   "summary": {
