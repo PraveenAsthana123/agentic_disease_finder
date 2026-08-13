@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 197 dashboards",
+  "note": "Total: 199 dashboards",
   "updated_at": "2026-08-13",
   "must_have_p0": [
     {
@@ -2575,6 +2575,22 @@
       "frontend": "portal-next/app/cacna1a/page.jsx",
       "viz": "5-tab: Overview / Patients-Etiology / Seizure-Types-Triggers / Treatments / Definitions",
       "note": "40-patient cohort, 5-class etiology (DEE42-LOF-truncating-35%/DEE42-missense-20%/EA2-AD-LOF-25%/FHM1-GOF-12%/phenocopy-8%), 5 seizure types, 8 treatments (ESM-Level-A/VPA-Level-A/Acetazolamide-Level-A-EA2/4-AP-Level-B-EA2/CLB/LEV/KD/ACTH), 5 CIs, 3 endpoints verified 200"
+    },
+    {
+      "id": "scn1b",
+      "name": "SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-β1 / 19q13.12)",
+      "status": "built",
+      "route": "/scn1b",
+      "api_prefix": "/api/scn1b",
+      "endpoints": [
+        "/api/scn1b/overview",
+        "/api/scn1b/breakdown",
+        "/api/scn1b/definitions"
+      ],
+      "script": "scripts/scn1b_dashboard.py",
+      "frontend": "portal-next/app/scn1b/page.jsx",
+      "viz": "5-tab: Overview / Patients-Etiology / Seizure-Types-Triggers / Treatments / Definitions",
+      "note": "40-patient cohort, dual NaV1.1+NaV1.5 mechanism (GEFS+62%/Dravet-like22%/Brugada5-12%), 5-class etiology (GEFS+-de-novo-40%/GEFS+-familial-35%/Dravet-like-20%/phenocopy-5%), 8 treatments (VPA-Level-A/STP+VPA+CLB-triple-Level-A-Dravet-like/CLB-Level-B/LEV-Level-B/KD-Level-B/FFA-Level-C/CBD-Level-C/ACTH-Level-B), ABSOLUTE CI: Class-Ic/Ia antiarrhythmics+Brugada, ECG mandatory at dx, POLG before VPA, fever threshold 37.5C, 3 endpoints verified 200"
     }
   ],
   "summary": "199 expert dashboards built",
