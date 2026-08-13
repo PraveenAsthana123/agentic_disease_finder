@@ -23535,6 +23535,51 @@ async def kcnb1_definitions():
     return _json_safe(kb1_.get_definitions())
 
 
+@app.get("/api/cacna1a/overview")
+async def cacna1a_overview():
+    """CACNA1A Epilepsy (DEE42 / Cav2.1 P/Q-Type Calcium Channel / EA2 / FHM1) overview: 40-patient cohort.
+    CACNA1A (19p13.13), Cav2.1 — predominant presynaptic P/Q-type voltage-gated calcium channel;
+    LOF → DEE42 absence epilepsy + cerebellar ataxia + NDD (de novo truncating);
+    EA2 → episodic ataxia type 2 (AD LOF); FHM1 → familial hemiplegic migraine (AD GOF-type);
+    SCA6 → CAG repeat expansion (late-onset cerebellar ataxia).
+    Acetazolamide Level A for EA2; 4-AP Level B EA2; ESM Level A pure absence;
+    POLG mandatory before VPA; CBZ/OXC/PHT HIGH RISK generalised absence;
+    Tiagabine ABSOLUTE CI in DEE42; No approved precision therapy for DEE42."""
+    import scripts.cacna1a_dashboard as ca1_
+    return _json_safe(ca1_.get_overview())
+
+
+@app.get("/api/cacna1a/breakdown")
+async def cacna1a_breakdown():
+    """CACNA1A breakdown: 40 patients, 5-class etiology catalog
+    (CACNA1A-de-novo-LOF-truncating-severe-DEE42-35%/CACNA1A-de-novo-missense-moderate-DEE42-20%/
+    CACNA1A-AD-LOF-EA2-episodic-ataxia-25%/CACNA1A-AD-GOF-FHM1-hemiplegic-migraine-12%/
+    CACNA1A-negative-phenocopy-8%),
+    5 seizure types (Absence-85%/GTCS-62%/Myoclonic-45%/Focal-Motor-38%/Atonic-EA2-25%),
+    8 triggers (Fatigue-88%/Fever-78%/Missed-AED-72%/Stress-65%/Exertion-55%/Caffeine-45%/HV-42%/Photic-32%),
+    8 treatments (ESM-Level-A/VPA-Level-A/CLB-Level-B/LEV-Level-B/Acetazolamide-Level-A-EA2/
+    4-AP-Level-B-EA2/KD-Level-B-DRE/ACTH-Level-B-West)
+    with dose+MOA+efficacy+safety+monitoring+CACNA1A-specific notes,
+    5 contraindications (CBZ-OXC-PHT-HIGH/Tiagabine-ABSOLUTE-CI/LTG-MODERATE-HIGH-myoclonic/
+    VGB-long-term-HIGH/ACTZ-KD-RELATIVE-CI),
+    8 monitoring items, 6 lifecycle windows."""
+    import scripts.cacna1a_dashboard as ca1_
+    return _json_safe(ca1_.get_breakdown())
+
+
+@app.get("/api/cacna1a/definitions")
+async def cacna1a_definitions():
+    """CACNA1A definitions: 14 key concepts
+    (CACNA1A-19p13.13/DEE42/Cav2.1-P/Q-type/Presynaptic-Ca2+-influx/EA2-Episodic-Ataxia/
+    FHM1-Hemiplegic-Migraine/SCA6-CAG-repeat/Acetazolamide-EA2/4-AP-Fampridine-EA2/
+    Absence-3Hz-GSW/Tiagabine-CI/POLG-VPA-CI/KD-DRE/SUDEP-CACNA1A),
+    5 contraindications, 10 thresholds, 8 standards, 6 references
+    (Ophoff-1996-Cell/Ducros-2001-NEJM/Jen-2004-Neurology/Denier-1999-Neurology/
+    Bertholon-2009-JNNP/Bhatt-2023-Epilepsia)."""
+    import scripts.cacna1a_dashboard as ca1_
+    return _json_safe(ca1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
