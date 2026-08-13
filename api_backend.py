@@ -22924,6 +22924,58 @@ async def slc6a1_definitions():
     return _json_safe(s6_.get_definitions())
 
 
+@app.get("/api/kcna2/overview")
+async def kcna2_overview():
+    """KCNA2-DEE (Kv1.2 Channelopathy) — overview:
+    KCNA2 (1p13.3), Kv1.2 voltage-gated potassium channel α-subunit.
+    Dual-mechanism DEE: LOF variants (dominant-negative or haploinsufficiency) →
+    reduced K+ repolarisation → neuronal hyperexcitability → focal/multifocal severe DEE;
+    GOF variants (hyperpolarised activation shift → K+ 'leak' current in interneurons) →
+    disinhibition → DEE + progressive cerebellar ataxia + cerebellar atrophy.
+    41-patient cohort: 5-class etiology (KCNA2-missense-LOF-dominant-negative 41%/
+    KCNA2-missense-GOF-cerebellar-ataxia 34%/KCNA2-truncating-haploinsufficiency 12%/
+    KCNA2-VUS-functional-ambiguous 7%/KCNA2-negative-phenocopy 6%),
+    4 seizure types (focal-pericentral 88%/GTCS 71%/infantile-spasms 32%/atonic-drop-attacks 24%),
+    8 triggers (fever 78%/sleep-deprivation 72%/missed-AED 68%/stress 55%/
+    movement-startle-GOF 45%/AED-iatrogenic 38%/photic-GOF 28%/HV 22%),
+    4 clinical alerts including 4-AP ABSOLUTE CI in LOF and POLG1 exclusion before VPA."""
+    import scripts.kcna2_dashboard as k2_
+    return _json_safe(k2_.get_overview())
+
+
+@app.get("/api/kcna2/breakdown")
+async def kcna2_breakdown():
+    """KCNA2-DEE (Kv1.2 Channelopathy) — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (fever 78%/sleep-deprivation 72%/missed-AED 68%/stress 55%/
+    movement-startle-GOF 45%/AED-iatrogenic 38%/photic-GOF 28%/HV 22%),
+    8 treatments (VPA Level-B-first-line/CLB Level-B-adjunct/LEV Level-C-adjunct/
+    KD Level-B-LOF-DRE/4-AP Level-C-GOF-ONLY-precision-therapy/
+    VGB Level-B-infantile-spasms/Rufinamide Level-C-drop-attacks/
+    Corpus-callosotomy Level-B-palliative-drop-attacks)
+    with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (4-AP-LOF-ABSOLUTE-CI/VPA-POLG1-HIGH/
+    Na-channel-blockers-myoclonic-atonic-HIGH/withhold-4-AP-GOF-confirmed-HIGH),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.kcna2_dashboard as k2_
+    return _json_safe(k2_.get_breakdown())
+
+
+@app.get("/api/kcna2/definitions")
+async def kcna2_definitions():
+    """KCNA2-DEE (Kv1.2 Channelopathy) — definitions: 14 concepts
+    (KCNA2-Kv1.2-delayed-rectifier/KCNA2-DEE-ILAE-2022/Dual-mechanism-channelopathy/
+    GOF-Kv1.2-leak-current/LOF-dominant-negative-haploinsufficiency/
+    4-AP-GOF-precision-therapy/Pericentral-somatosensory-seizures/
+    Cerebellar-atrophy-GOF-marker/SARA-ataxia-scale/Multifocal-IED-LOF-signature/
+    Dominant-negative-tetramer/P405L-GOF-hotspot/KCNA2-Alliance-registry/
+    KD-LOF-DEE-mechanism),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Syrbe-2015-NatGenet/Masnada-2017-BRAIN/Semmler-2020-EJPN/
+    Allen-2014-Neurology/Smart-1998-Neuron/Lehmann-Horn-1999-PhysiolRev)."""
+    import scripts.kcna2_dashboard as k2_
+    return _json_safe(k2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
