@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 176 dashboards",
+  "note": "Total: 184 dashboards",
   "updated_at": "2026-08-12",
   "must_have_p0": [
     {
@@ -2370,6 +2370,18 @@
       "gene": "PRRT2",
       "locus": "16p11.2",
       "built": "2026-08-12"
+    },
+    {
+      "id": "slc6a1",
+      "name": "SLC6A1 Epilepsy (MAE / Doose Syndrome / SLC6A1-DEE)",
+      "status": "built",
+      "route": "/slc6a1",
+      "api": [
+        "/api/slc6a1/overview",
+        "/api/slc6a1/breakdown",
+        "/api/slc6a1/definitions"
+      ],
+      "dashboard_id": 184
     }
   ],
   "summary": {

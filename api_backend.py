@@ -22877,6 +22877,53 @@ async def prrt2_definitions():
     return _json_safe(p2_.get_definitions())
 
 
+@app.get("/api/slc6a1/overview")
+async def slc6a1_overview():
+    """SLC6A1 Epilepsy (MAE / Doose Syndrome / SLC6A1-DEE) — overview:
+    SLC6A1 (3p25.3), GABA Transporter 1 (GAT-1), most common single-gene cause of MAE.
+    41-patient cohort. LOF → impaired GABA reuptake → tonic GABA_A desensitization →
+    net failure of inhibitory drive → myoclonic-atonic seizures (drop attacks).
+    5-class etiology (SLC6A1-truncating-LOF-MAE-DEE-severe 39%/SLC6A1-missense-LOF-confirmed-moderate 29%/
+    SLC6A1-missense-partial-LOF-absence-dominant 15%/SLC6A1-splice-site 10%/SLC6A1-negative-phenocopy 7%),
+    4 seizure types (myoclonic-atonic-drop-attack 88%/absence 75%/myoclonic 65%/GTCS 40%),
+    8 triggers (sleep-deprivation 78%/fever 72%/missed-AED 65%/stress 55%/
+    photic 42%/eye-closure 35%/post-prandial 25%/Na-channel-blocker-aggravation 95%),
+    4 clinical alerts including Na-channel-blockers ABSOLUTELY CONTRAINDICATED
+    and POLG exclusion before VPA mandatory."""
+    import scripts.slc6a1_dashboard as s6_
+    return _json_safe(s6_.get_overview())
+
+
+@app.get("/api/slc6a1/breakdown")
+async def slc6a1_breakdown():
+    """SLC6A1 Epilepsy (MAE / SLC6A1-DEE) — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (sleep-deprivation 78%/fever 72%/missed-AED 65%/stress 55%/
+    photic 42%/eye-closure 35%/post-prandial 25%/Na-channel-blocker-iatrogenic 95%),
+    8 treatments (VPA Level-B-first-line/ETH Level-B-absence/KD Level-A-drop-attacks/
+    CLB Level-C-adjunct/LEV Level-C-GTCS/Rufinamide Level-C-drop-attacks/
+    FFA Level-C-investigational/ACTH Level-C-status) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (Na-channel-blockers-ABSOLUTE-CI/VPA-POLG-ABSOLUTE-CI/
+    FFA-without-REMS-HIGH/KD-without-metabolic-screen-HIGH),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.slc6a1_dashboard as s6_
+    return _json_safe(s6_.get_breakdown())
+
+
+@app.get("/api/slc6a1/definitions")
+async def slc6a1_definitions():
+    """SLC6A1 Epilepsy (MAE / SLC6A1-DEE) — definitions: 14 concepts
+    (SLC6A1-GAT1-GABA-transporter/MAE-Doose-syndrome/SLC6A1-DEE/Myoclonic-atonic-drop-attack/
+    DOOSE-THETA-pathognomonic-EEG/Na-channel-blocker-aggravation/KD-Level-A-MAE/
+    POLG-exclusion-before-VPA/De-novo-SLC6A1-genetics/Tonic-vs-phasic-inhibition/
+    VPA-REMS-PREVENT-programme/SLC6A1-Alliance/Protective-helmet-mandatory/
+    Corpus-callosotomy-palliative),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Carvill-2015-NatGenet/Johannesen-2018-AnnNeurol/Neal-2008-LancetNeurol/
+    Doose-1992-Epilepsia/Lemke-2016-Neurology/Vlasnik-2022-Epilepsia)."""
+    import scripts.slc6a1_dashboard as s6_
+    return _json_safe(s6_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
