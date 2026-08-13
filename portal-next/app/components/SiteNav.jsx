@@ -329,6 +329,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/cdkl5">&#x1f9ec; CDKL5 Deficiency Disorder (CDD / Xp22)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq2">&#x26a1; KCNQ2 Encephalopathy (Kv7.2 / 20q13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stxbp1">&#x1f9e0; STXBP1 Encephalopathy (Munc18-1 / 9q34)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/scn2a">&#x26a1; SCN2A Encephalopathy (Nav1.2 / 2q24)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

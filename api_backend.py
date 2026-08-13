@@ -22511,6 +22511,54 @@ async def stxbp1_definitions():
     return _json_safe(sd_.get_definitions())
 
 
+@app.get("/api/scn2a/overview")
+async def scn2a_overview():
+    """SCN2A-DEE Dashboard — overview: SCN2A (2q24.3) Nav1.2, 41-patient cohort,
+    5-class etiology (De-novo-GOF-severe-EIEE11 39%/De-novo-LOF-West-ASD-DEE 29%/
+    De-novo-GOF-moderate-neonatal-infantile 15%/Familial-BFNIS-AD-SLNE-DEE 10%/
+    Clinical-SCN2A-negative 7%), GOF vs LOF opposite treatment axis,
+    CBZ/OXC first-line GOF, Na-channel blockers CONTRAINDICATED LOF,
+    HLA-B*1502 CPIC Level A mandatory, SIADH Na monitoring,
+    EIEE11 MIM#613721, hemisynchronous BS + LVFA ictal GOF,
+    West/IS LOF (3-15M onset), ASD 70% LOF."""
+    import scripts.scn2a_dashboard as sc_
+    return _json_safe(sc_.get_overview())
+
+
+@app.get("/api/scn2a/breakdown")
+async def scn2a_breakdown():
+    """SCN2A-DEE Dashboard — breakdown: 41 patients with functional class (GOF/LOF),
+    CBZ/OXC TDM levels, MHD levels, Na+ monitoring, HLA-B*1502 status, ASD diagnosis,
+    4 seizure types (Tonic-focal-neonatal-GOF 88%/FBTCS 72%/IS-West-LOF 42%/Myoclonic-atonic-LOF 28%),
+    8 triggers (Fever 82%/Missed-AED 75%/Illness 68%/Sleep-deprivation 55%/CBZ-withdrawal 45%/
+    Hyperthermia 38%/Inadvertent-Na-blocker-LOF 30%/Puberty 20%),
+    8 treatments (CBZ Level-B-GOF-first-line/OXC Level-B-GOF-infant-preferred/PHT Level-B-NICU-bridge/
+    PB Level-B-neonatal-bridge/LEV Level-C-LOF-adjunct/VPA Level-C-LOF-broad/KD Level-B-LOF-DRE/
+    ASO-Gene-Therapy-Phase1-2), AED monitoring (CBZ-TDM-4-12/MHD-12-24/Na-SIADH-q4wk/
+    HLA-B1502-CPIC-LevelA/LFT-CBZ-induction/Bayley-III-6monthly/VPA-TDM-50-100/EEG-2h-q6monthly),
+    6-window lifecycle, 8 standards."""
+    import scripts.scn2a_dashboard as sc_
+    return _json_safe(sc_.get_breakdown())
+
+
+@app.get("/api/scn2a/definitions")
+async def scn2a_definitions():
+    """SCN2A-DEE Dashboard — definitions: 14 concepts (SCN2A-Nav1.2/GOF-vs-LOF-Treatment-Pivot/
+    Persistent-Na-Current-INaP-GOF/EIEE11-MIM613721/BFNIS/LVFA-Ictal-Signature/
+    HLA-B1502-SJS-TEN/SCN2A-ASO-Gene-Therapy/SIADH-CBZ-OXC/SUDEP-SCN2A/
+    Nav1.2-Developmental-Expression-Switch/Electroclinical-Dissociation-GOF/
+    Family-SCN2A-Foundation/CPIC-AIS-Nav1.2-Hub),
+    4 absolute contraindications (CBZ-OXC-PHT-LTG-in-LOF-ABSOLUTE/VPA-POLG-exclusion/
+    Empiric-Na-blocker-without-functional-class/Hospital-NPO-without-IV-AED),
+    10 thresholds (onset-<3d-hemisynchronous-BS/CBZ-TDM-4-12/MHD-12-24/Na-130-SIADH/
+    HLA-B1502-positive/IS-3-15M-LOF/EEG-worsening-72h-Na-blocker/2-AED-KD/
+    seizure-free-2Y-CBZ-taper/POLG-before-VPA),
+    6 references (Wolff-2019-AJHG/Begemann-2019-Epilepsia/Heron-2002-NatGenet/
+    Sanders-2018-NatNeurosci/Lux-2004-Lancet-UKISS/Ogiwara-2009-JNeurosci)."""
+    import scripts.scn2a_dashboard as sc_
+    return _json_safe(sc_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

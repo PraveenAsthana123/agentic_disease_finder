@@ -2274,17 +2274,26 @@
       "page": "/stxbp1",
       "description": "STXBP1 (9q34.11) Munc18-1 DEE \u2014 41 patients, 5-class etiology, Ohtahara-to-West evolution, theta hypersynchrony, ACTH+VGB UKISS protocol, KD level B, POLG exclusion mandatory, VGB SHARE REMS, OP-01 Phase 1 trial",
       "built_date": "2026-08-12"
+    },
+    {
+      "id": "scn2a",
+      "name": "SCN2A Encephalopathy (SCN2A-DEE / EIEE11)",
+      "status": "built",
+      "api": "/api/scn2a/overview|breakdown|definitions",
+      "page": "/scn2a",
+      "description": "SCN2A (2q24.3) Nav1.2 DEE \u2014 41 patients, 5-class etiology, GOF vs LOF opposite treatment axis, CBZ/OXC first-line GOF, Na-channel blockers CONTRAINDICATED LOF, HLA-B*1502 CPIC Level A, SIADH Na+ monitoring, EIEE11, BFNIS, ASD 70% LOF, ASO gene therapy trials",
+      "built_date": "2026-08-12"
     }
   ],
   "summary": {
-    "total": 173,
-    "built": 159,
+    "total": 174,
+    "built": 160,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 173,
-    "total_dashboards": 173,
-    "total_built": 173
+    "count": 174,
+    "total_dashboards": 174,
+    "total_built": 174
   },
-  "count": 174
+  "count": 175
 }
