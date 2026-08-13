@@ -22460,6 +22460,57 @@ async def kcnq2_definitions():
     return _json_safe(kd_.get_definitions())
 
 
+@app.get("/api/stxbp1/overview")
+async def stxbp1_overview():
+    """STXBP1 Encephalopathy (STXBP1-DEE / EIEE4) Dashboard — overview: STXBP1 (9q34.11)
+    Munc18-1 synaptic vesicle fusion regulator / SNARE chaperone, N=41 cohort,
+    5-class etiology (De-novo-missense-LOF 44%/De-novo-truncating-nonsense-frameshift 34%/
+    De-novo-large-deletion-CNV-9q34 12%/De-novo-splice-site 7%/Clinical-STXBP1-negative 3%),
+    asynchronous burst-suppression (Ohtahara-like) → modified hypsarrhythmia (IS/West 3-6M) →
+    theta hypersynchrony + multifocal spikes (childhood), ACTH+VGB UKISS protocol for IS,
+    PB first-line neonatal, KD level B, POLG exclusion mandatory before VPA,
+    VGB SHARE REMS mandatory (USA), electroclinical dissociation >60% after PB,
+    OP-01 Munc18-1 chaperone Phase 1 trial."""
+    import scripts.stxbp1_dashboard as sd_
+    return _json_safe(sd_.get_overview())
+
+
+@app.get("/api/stxbp1/breakdown")
+async def stxbp1_breakdown():
+    """STXBP1-DEE Dashboard — breakdown: 41 patients (id/age_months/sex/onset_age_hours/
+    category/disease_phase/current_treatment/seizure_control/kd_on/bhb_mmoll/vgb_on/
+    share_rems_enrolled/pb_level_ugml/polg_tested/eeg_theta_hypersynchrony),
+    5-class etiology catalog with mechanism+EEG+MRI+clinical_note,
+    4 seizure types (Tonic-neonatal 95%/IS-West 70%/Focal-multifocal 65%/Myoclonic 40%)
+    with EEG correlates+clinical tips,
+    8 triggers (Fever 85%/Illness 75%/Missed-AED 70%/Sleep-deprivation 60%/
+    Hyperthermia 50%/Procedural 35%/AED-taper 30%/Puberty 20%),
+    8 treatments (PB Level-B-neonatal/ACTH Level-B-UKISS-IS/VGB Level-B-UKISS-SHARE-REMS/
+    KD-4:1 Level-B/LEV Level-C-adjunct/CLB Level-C-myoclonic/OP-01-Phase1-chaperone/
+    PHT-relative-CI) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (VPA-POLG-exclusion-MANDATORY/VGB-without-SHARE-REMS-USA/
+    Hospital-NPO-without-AED-route/Live-vaccines-ACTH),
+    8 monitoring items, 6-window lifecycle, 8 standards, 10 thresholds."""
+    import scripts.stxbp1_dashboard as sd_
+    return _json_safe(sd_.get_breakdown())
+
+
+@app.get("/api/stxbp1/definitions")
+async def stxbp1_definitions():
+    """STXBP1-DEE Dashboard — definitions: 14 concepts (STXBP1/Munc18-1/
+    Burst-Suppression-Asynchronous/Ohtahara-Syndrome-EIEE/Hypsarrhythmia-Modified-STXBP1/
+    Theta-Hypersynchrony/Electroclinical-Dissociation/SNARE-Complex/EIEE4-MIM612164/
+    West-Syndrome/SHARE-REMS-VGB/POLG/VNS/SUDEP-STXBP1),
+    4 absolute contraindications (VPA-POLG-exclusion/VGB-without-SHARE-REMS/
+    Hospital-NPO-without-AED-route/Live-vaccines-ACTH),
+    10 thresholds (onset-<5d/PB-TDM-20-40/LEV-TDM-12-46/ACTH-day14-EEG/VGB-duration/
+    KD-BHB-2-4/2-AED-KD/VNS-3-AED/POLG-before-VPA/ACTH-BP-95pct),
+    6 references (Saitsu-2008-NatGenet/Lux-2004-Lancet-UKISS/Stamberger-2016-Neurology/
+    Kovacevic-2018-Brain/Deprez-2010-AnnNeurol/Pappas-2021-BrainCommun)."""
+    import scripts.stxbp1_dashboard as sd_
+    return _json_safe(sd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

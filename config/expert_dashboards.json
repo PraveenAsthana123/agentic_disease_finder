@@ -2265,6 +2265,15 @@
       ],
       "frontend": "portal-next/app/kcnq2/page.jsx",
       "built_note": "KCNQ2 Encephalopathy Dashboard \u2014 41-patient KCNQ2-DEE cohort, 5-class etiology catalog (De-novo-GOF-dominant-negative 45%/De-novo-LOF-DEE 29%/De-novo-truncating 12%/Familial-AD-SLNE-DEE 10%/Clinical-KCNQ2-negative 4%), neonatal tonic seizures onset 2-72h, burst-suppression EEG, 4 seizure types (Tonic 100%/Focal-clonic 78%/Autonomic 55%/FBTCS 32%) with EEG+tip, 8 triggers (fever 82%/intercurrent-illness 71%/missed-AED 68%/sleep-deprivation 52%/hyperthermia 45%/metabolic 38%/procedural 30%/AED-taper 22%), 8 treatments (PB Level-B-acute/CBZ Level-B-KCNQ2-specific/OXC Level-B-KCNQ2-specific/PB-CBZ-transition-protocol/LEV Level-C/KD Level-C-BHB-Kv7/XEN496-EPIK-trial-NCT05374343/Retigabine-WITHDRAWN-2017) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (PHT-no-Kv7/VPA-POLG/Retigabine-WITHDRAWN/Hospital-NPO-AED-CI), 5 monitoring items (CBZ-TDM-4-12/Na-SIADH-q4wk/LFT-CBZ/HLA-B1502-mandatory/neurodevo-EEG-Bayley), 6-window lifecycle (neonatal-NICU/early-infancy/late-infancy/early-childhood/school-age/adolescence-adult), 14 concepts (KCNQ2-Kv7.2/M-Current-IKM/Burst-Suppression/SLNE-BFNE/Dominant-Negative/GOF/Electroclinical-Dissociation/SIADH/HLA-B1502/Neonatal-SE/XEN496-EPIK/KCNQ2Cure/CPIC/SUDEP), 6 standards (ILAE-2022/NICE-NG217/CPIC-HLA-B-CBZ-2023/EAN-NeonatalSE-2019/ACMG-AMP-2015/ACNS-EEG-2021), 8 thresholds (onset-<72h/CBZ-4-12/OXC-MHD-12-24/Na-<130/seizure-free-2Y/2-AED-KD/LFT-3xULN/BHB-2-4mmol), 6 references (Pisano-2015-Neurology/Numis-2014-Epilepsia/Millichap-2017-NeurolGenet/Soh-2022-JNeurosci/Bhatt-2020-JNS/Jentink-2010-NEJM), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/kcnq2/overview|breakdown|definitions verified 200, portal-next/app/kcnq2/page.jsx + SiteNav wired next to CDKL5, expert_dashboards.json count 173->174"
+    },
+    {
+      "id": "stxbp1",
+      "name": "STXBP1 Encephalopathy (STXBP1-DEE / EIEE4)",
+      "status": "built",
+      "api": "/api/stxbp1/overview|breakdown|definitions",
+      "page": "/stxbp1",
+      "description": "STXBP1 (9q34.11) Munc18-1 DEE \u2014 41 patients, 5-class etiology, Ohtahara-to-West evolution, theta hypersynchrony, ACTH+VGB UKISS protocol, KD level B, POLG exclusion mandatory, VGB SHARE REMS, OP-01 Phase 1 trial",
+      "built_date": "2026-08-12"
     }
   ],
   "summary": {
