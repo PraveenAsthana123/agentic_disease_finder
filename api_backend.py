@@ -22783,6 +22783,53 @@ async def syngap1_definitions():
     return _json_safe(sg_.get_definitions())
 
 
+@app.get("/api/depdc5/overview")
+async def depdc5_overview():
+    """DEPDC5 Focal Epilepsy (GATOR1 Complex / FFEVF / ADNFLE-DEPDC5) — overview:
+    DEPDC5 (22q12.3), scaffold subunit of GATOR1 complex (DEPDC5+NPRL2+NPRL3),
+    41-patient cohort. LOF → constitutive mTORC1 hyperactivation → FCD + focal epilepsy.
+    Most common genetic cause of familial focal epilepsy (~10% of FFEVF families).
+    5-class etiology (DEPDC5-truncating-FFEVF 44%/DEPDC5-missense-LOF 27%/
+    DEPDC5-splice-FCD 12%/NPRL2-NPRL3-GATOR1 10%/DEPDC5-negative-phenocopy 7%),
+    4 seizure types (nocturnal hypermotor 68%/focal-aware 58%/FBTCS 49%/focal-clonic 32%),
+    8 triggers (sleep-deprivation 82%/missed-AED 74%/stress 61%/alcohol 52%/
+    illness 44%/catamenial 35%/AED-interactions 28%/prone-sleeping 22%),
+    6 clinical alerts including SUDEP-3x-elevated and Everolimus+CBZ-CONTRAINDICATED."""
+    import scripts.depdc5_dashboard as d5_
+    return _json_safe(d5_.get_overview())
+
+
+@app.get("/api/depdc5/breakdown")
+async def depdc5_breakdown():
+    """DEPDC5 Focal Epilepsy — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (sleep-deprivation 82%/missed-AED 74%/stress 61%/alcohol 52%/
+    illness 44%/catamenial 35%/AED-interactions 28%/prone-sleeping 22%),
+    8 treatments (CBZ Level-B-focal-first-line/LCM Level-B-focal-first-alternative/
+    LEV Level-B-adjunct/LTG Level-B-women-childbearing/Everolimus Level-C-investigational-GMTD/
+    CLB Level-C-adjunct-nocturnal/Surgery Level-A-FCD-resection/KD Level-B-DRE)
+    with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (Everolimus+CBZ-OXC-AVOID/prone-sleeping-SUDEP/
+    HLA-B1502-CBZ-ABSOLUTE-CI/SUDEP-counselling-never-defer),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.depdc5_dashboard as d5_
+    return _json_safe(d5_.get_breakdown())
+
+
+@app.get("/api/depdc5/definitions")
+async def depdc5_definitions():
+    """DEPDC5 Focal Epilepsy — definitions: 14 concepts
+    (DEPDC5-GATOR1-22q12.3/GATOR1-complex-NPRL2-NPRL3/mTORC1-mTOR-pathway/
+    FFEVF-variable-foci/ADNFLE-nocturnal-hypermotor/FCD-IIa-IIb-somatic/
+    Somatic-two-hit-model/SUDEP-3x-excess-DEPDC5/Everolimus-mTOR-precision/
+    SEEG-presurgical/GATOR1-Alliance/Penetrance-60-70pct/mTOR-CYP3A4-interaction/
+    SUDEP-Action-Plan-DEPDC5),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Dibbens-2013-NatGenet/Ishida-2013-NatGenet/Bagnall-2016-Neurology/
+    Scheffer-2019-Neurology/Ribierre-2018-Science/Saxton-2019-Nature)."""
+    import scripts.depdc5_dashboard as d5_
+    return _json_safe(d5_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

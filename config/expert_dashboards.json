@@ -2345,17 +2345,31 @@
       "api_route": "/api/syngap1/{overview,breakdown,definitions}",
       "component": "portal-next/app/syngap1/page.jsx",
       "note": "41-patient SYNGAP1-DEE cohort, 5-class etiology (De-novo-SYNGAP1-truncating-frameshift-DEE-severe 40%/De-novo-SYNGAP1-missense-LOF-moderate 29%/De-novo-SYNGAP1-splice-site-DEE 15%/De-novo-SYNGAP1-CNV-deletion-6p21-DEE 10%/Clinical-SYNGAP1-negative-phenocopy 6%), 4 seizure types (Myoclonic-atonic-drop-attacks 80%/Eyelid-myoclonia-EC-sensitivity 70%/Atypical-absence 65%/GTCS 55%), 8 triggers, 8 treatments (VPA+ETH first-line/KD for DRE/CBZ-AVOID), 4 contraindications, 8 monitoring items, 6-window lifecycle, 14 concepts, 8 standards, 10 thresholds, 6 references"
+    },
+    {
+      "role": "Neurologist / Epileptologist",
+      "name": "DEPDC5 Focal Epilepsy (GATOR1 Complex / FFEVF / ADNFLE-DEPDC5)",
+      "viz": "Etiology bars, seizure type bars, trigger bars, treatment cards, accordion definitions, GATOR1 pathway diagram",
+      "feature": "5-tab layout: Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions",
+      "why": "DEPDC5 — most common genetic cause of familial focal epilepsy; mTOR precision therapy (Everolimus); SUDEP 3× risk; surgical candidate identification",
+      "priority": "P0",
+      "category": "Epilepsy Syndromes",
+      "status": "built",
+      "route": "/depdc5",
+      "api_route": "/api/depdc5/{overview,breakdown,definitions}",
+      "component": "portal-next/app/depdc5/page.jsx",
+      "note": "41-patient DEPDC5-FE cohort, 5-class etiology (DEPDC5-truncating-FFEVF 44%/DEPDC5-missense-LOF 27%/DEPDC5-splice-FCD 12%/NPRL2-NPRL3-GATOR1 10%/DEPDC5-negative-phenocopy 7%), 4 seizure types (nocturnal-hypermotor-ADNFLE 68%/focal-aware 58%/FBTCS 49%/focal-clonic 32%), 8 triggers (sleep-deprivation 82%/missed-AED 74%/stress 61%/alcohol 52%), 8 treatments (CBZ Level-B/LCM Level-B/LEV Level-B/LTG Level-B/Everolimus Level-C-GMTD-trial/CLB Level-C/FCD-Surgery Level-A/KD Level-B), 4 contraindications (Everolimus+CBZ-AVOID/prone-sleeping-SUDEP/HLA-B1502-CBZ-CI/SUDEP-counselling-mandatory), 8 monitoring items, 6-window lifecycle, 14 concepts (DEPDC5-GATOR1/GATOR1-complex/mTORC1/FFEVF/ADNFLE/FCD-IIa-IIb/somatic-two-hit/SUDEP-3x/Everolimus-precision/SEEG/GATOR1-Alliance/penetrance/mTOR-CYP3A4/SUDEP-Action-Plan), 8 standards, 10 thresholds, 6 references (Dibbens-2013/Ishida-2013/Bagnall-2016/Scheffer-2019/Ribierre-2018/Saxton-2019)"
     }
   ],
   "summary": {
-    "total": 174,
-    "built": 160,
+    "total": 182,
+    "built": 182,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 174,
-    "total_dashboards": 174,
-    "total_built": 174
+    "count": 182,
+    "total_dashboards": 182,
+    "total_built": 182
   },
-  "count": 176
+  "count": 182
 }
