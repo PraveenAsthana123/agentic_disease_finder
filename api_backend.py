@@ -23203,6 +23203,56 @@ async def hcn1_definitions():
     return _json_safe(h1_.get_definitions())
 
 
+@app.get("/api/foxg1/overview")
+async def foxg1_overview():
+    """FOXG1 Syndrome (Congenital Rett Variant / FOXG1-Related DEE) overview: 41-patient cohort.
+    FOXG1 (14q12), Forkhead Box G1 forebrain transcription factor, de novo LOF/14q12 deletion.
+    X-linked dominant — de novo in most; equal sex ratio (males equally affected).
+    CONGENITAL onset (no regression period — distinguishes from classic Rett/MECP2).
+    Hyperkinetic DYSKINESIAS (choreoathetosis, NOT hand stereotypies — key differentiator).
+    Frontal hypoplasia on MRI (FOXG1 critical for forebrain neurogenesis).
+    E/I imbalance via interneuron migration defect (MGE-derived PV+/SST+ interneurons).
+    TIAGABINE ABSOLUTE CI — NCSE risk in diffuse cortical dysmaturation.
+    CBZ/OXC/PHT avoid — worsen myoclonus + reduce VPA levels (CYP3A4 induction).
+    POLG MANDATORY before VPA. VGB short-term only (retinal toxicity + CVI additive).
+    Baclofen (GABA-B) for dyskinesias — withdrawal = medical emergency."""
+    import scripts.foxg1_dashboard as fg1_
+    return _json_safe(fg1_.get_overview())
+
+
+@app.get("/api/foxg1/breakdown")
+async def foxg1_breakdown():
+    """FOXG1 breakdown: 41 patients, 5-class etiology catalog
+    (FOXG1-de-novo-truncating-LOF-classic-42%/FOXG1-de-novo-missense-FHD-domain-29%/
+    FOXG1-whole-gene-deletion-14q12-15%/FOXG1-de-novo-missense-outside-FHD-9%/
+    FOXG1-negative-phenocopy-5%),
+    4 seizure types (Epileptic-Spasms-West-82%/Focal-Motor-Frontal-74%/Myoclonic-61%/GTCS-48%)
+    with EEG correlates+clinical tips,
+    8 triggers (fever-88%/sleep-wake-transitions-79%/missed-AED-71%/overstimulation-64%/
+    sleep-deprivation-58%/constipation-GI-45%/intercurrent-infection-38%/drug-interactions-28%),
+    8 treatments (VPA/ACTH/VGB-West/CLB/KD/LEV/FFA/Baclofen-dyskinesias) with
+    dose+MOA+efficacy+safety+monitoring+FOXG1-specific notes,
+    4 contraindications (CBZ-OXC-PHT/PB-chronic/Tiagabine-ABSOLUTE-CI/VGB-long-term),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.foxg1_dashboard as fg1_
+    return _json_safe(fg1_.get_breakdown())
+
+
+@app.get("/api/foxg1/definitions")
+async def foxg1_definitions():
+    """FOXG1 definitions: 14 key concepts
+    (FOXG1-14q12/FOXG1-Syndrome-vs-Classic-Rett/Dyskinesias-FOXG1/Frontal-Hypoplasia/
+    Cortical-Visual-Impairment-CVI/West-Syndrome-FOXG1/POLG-exclusion-before-VPA/
+    Tiagabine-NCSE-risk/VGB-Retinal-Toxicity-SHARE-REMS/FHD-Forkhead-Domain/
+    E-I-Imbalance-FOXG1/KetoCal-Gtube-KD/Baclofen-ITB/SUDEP-FOXG1),
+    4 contraindications (CBZ-OXC-PHT/PB-chronic-CI/Tiagabine-ABSOLUTE-CI/VGB-long-term),
+    10 thresholds, 8 standards, 6 references
+    (Ariani-2008-AmJHumGenet/Kortum-2011-AmJHumGenet/Marwan-2012-Brain/
+    Vegas-2018-EurJHumGenet/UKISS-2004-LancetNeurol/Lux-2005-Lancet)."""
+    import scripts.foxg1_dashboard as fg1_
+    return _json_safe(fg1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
