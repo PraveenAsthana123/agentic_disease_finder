@@ -22416,6 +22416,50 @@ async def cdkl5_definitions():
     return _json_safe(cd_.get_definitions())
 
 
+@app.get("/api/kcnq2/overview")
+async def kcnq2_overview():
+    """KCNQ2 Encephalopathy (KCNQ2-DEE) Dashboard — overview: KCNQ2 (20q13.33) Kv7.2 M-current
+    channelopathy, N=41 cohort, 5-class etiology (De-novo-GOF-dominant-negative 45%/
+    De-novo-LOF-DEE 29%/De-novo-truncating 12%/Familial-AD-SLNE-DEE 10%/
+    Clinical-KCNQ2-negative 4%), neonatal-onset tonic seizures within 2-72 hours of birth,
+    burst-suppression EEG, CBZ/OXC KCNQ2-specific first-line (Na-channel block + M-current
+    enhancement), HLA-B*15:02 mandatory, PB transition protocol, XEN496 EPIK trial NCT05374343."""
+    import scripts.kcnq2_dashboard as kd_
+    return _json_safe(kd_.get_overview())
+
+
+@app.get("/api/kcnq2/breakdown")
+async def kcnq2_breakdown():
+    """KCNQ2-DEE Dashboard — breakdown: 41 patients (id/age/sex/onset_age_hours/etiology/
+    category/current_treatment/seizure_control/disease_phase/cbz_level/na_level/kd_on/bhb/
+    hla_b1502_tested/vf_concern), 5-class etiology catalog with mechanism+EEG+MRI+clinical_note,
+    4 seizure types (Tonic 100%/Focal-clonic 78%/Autonomic 55%/FBTCS 32%) with EEG+tip,
+    8 triggers (fever 82%/intercurrent-illness 71%/missed-AED 68%/sleep-deprivation 52%/
+    hyperthermia 45%/metabolic 38%/procedural 30%/AED-taper 22%),
+    8 treatments (PB Level-B/CBZ Level-B-KCNQ2-specific/OXC Level-B-KCNQ2-specific/
+    PB-to-CBZ-transition Level-B/LEV Level-C-adjunct/KD Level-C-BHB-Kv7-enhancer/
+    XEN496 Level-C-EPIK-trial/Retigabine-WITHDRAWN-2017) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (PHT-no-Kv7/VPA-POLG-exclusion/Retigabine-WITHDRAWN/Hospital-NPO-AED-CI),
+    5 monitoring items, 6-window lifecycle, 6 standards, 8 thresholds."""
+    import scripts.kcnq2_dashboard as kd_
+    return _json_safe(kd_.get_breakdown())
+
+
+@app.get("/api/kcnq2/definitions")
+async def kcnq2_definitions():
+    """KCNQ2-DEE Dashboard — definitions: 14 concepts (KCNQ2-Kv7.2/M-Current-IKM/
+    Burst-Suppression-EEG/SLNE-BFNE/Dominant-Negative-Variant/GOF-Variant/
+    Electroclinical-Dissociation/SIADH-CBZ-OXC/HLA-B1502-SJS-TEN/Neonatal-SE/
+    XEN496-EPIK-Trial/KCNQ2Cure-Foundation/CPIC/SUDEP-KCNQ2),
+    4 absolute contraindications (PHT-no-Kv7-activity/VPA-POLG-exclusion/
+    Retigabine-WITHDRAWN-2017/Hospital-NPO-AED-continuity-mandatory),
+    8 thresholds (onset-<72h/CBZ-4-12/OXC-MHD-12-24/Na-<130/seizure-free-2Y/2-AED-KD/LFT-3xULN/BHB-2-4mmol),
+    6 references (Pisano-2015-Neurology/Numis-2014-Epilepsia/Millichap-2017-NeurolGenet/
+    Soh-2022-JNeurosci/Bhatt-2020-JNS/Jentink-2010-NEJM)."""
+    import scripts.kcnq2_dashboard as kd_
+    return _json_safe(kd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

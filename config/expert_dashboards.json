@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
   "note": "Total: 165 dashboards",
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-13",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -2248,6 +2248,23 @@
       ],
       "frontend": "portal-next/app/cdkl5/page.jsx",
       "note": "CDKL5 Deficiency Disorder (CDD) Dashboard \u2014 41-patient CDD cohort, 5-class etiology catalog (De-novo-CDKL5-missense-kinase-domain 39%/De-novo-CDKL5-nonsense-frameshift-truncating 34%/De-novo-CDKL5-large-deletion-CNV 17%/Familial-maternal-carrier 7%/Clinical-CDD-CDKL5-negative 3%), 4 seizure types (IS-EES 90%/Focal-motor-tonic-hypermotor 85%/FBTCS-GTCS 65%/Myoclonic-atonic 45%) with EEG correlates+clinical tips, 8 triggers (Sleep-transitions 90%/Fever 80%/Missed-AED 75%/Overstimulation 65%/Hyperthermia 55%/Illness 50%/Sleep-deprivation 45%/Photic 15%), 8 treatments (ACTH Level-B IS-phase/VGB Level-B-SHARE-REMS/VPA Level-B-broad-spectrum/CLB Level-B-focal-motor/KD-4:1 Level-B-highly-effective/LEV Level-C-adjunct/CBD-Epidiolex Level-C/Soticlestat-OV935-ARCADE-Phase2-3) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (CBZ-OXC-relative-CI-IARC2019/VGB-SHARE-REMS-mandatory-VF-monitoring/NPO-KD-metabolic-CI-hospital-protocol/POLG-VPA-absolute-CI-fatal-hepatic), 5 monitoring items (VGB-Goldman-VF-q3M/VPA-LFT-ammonia-carnitine/KD-BHB-lipids-growth/ACTH-BP-glucose-growth/CBD-LFT-CLB-interaction), 6-window lifecycle (neonatal-0-4M/IS-phase-3-18M/early-childhood-refractory-1-5Y/school-age-5-12Y/adolescence-12-18Y/adult-18Y+), 14 concepts (CDKL5/CDD/Hanefeld-Variant/IESS-IS/Hypsarrhythmia/HAFA/CDKL5-MeCP2-Signalling-Axis/Soticlestat-OV935/Vigabatrin-SHARE-REMS/DRE-CDD/POLG-Exclusion/X-Inactivation-CDD/SUDEP-CDD/Gene-Therapy-AAV9-CDKL5), 6 standards (ILAE-2022/NICE-NG217/IARC-2019/FDA-SHARE-REMS/FDA-CDD-DraftGuidance-2022/ACNS-EEG-2021), 8 thresholds (IS-onset-5M-genetic-testing/VGB-VF-q3M-SHARE-REMS/VPA-TDM-50-100/KD-BHB-2-4mmol/DRE-2-AED-failures/seizure-free-2Y/LFT-3xULN/driving-excluded), 6 references (Fehr-2015-EurJHumGenet-natural-history/Mangatt-2016-Orphanet-AED-response/Devinsky-2019-LancetNeurol-CBD/IARC-2019-consensus/Tao-2004-AJHG-CDKL5-discovery/Weissberg-2023-ARCADE-soticlestat), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/cdkl5/overview|breakdown|definitions verified 200, portal-next/app/cdkl5/page.jsx + SiteNav wired next to Rett Syndrome, expert_dashboards.json count 172->173"
+    },
+    {
+      "role": "Neurologist / Neonatologist / Pediatric Neurologist / Neonatal Intensivist",
+      "name": "KCNQ2 Encephalopathy (KCNQ2-DEE)",
+      "id": "kcnq2",
+      "viz": "Etiology distribution, seizure type catalog, CBZ/OXC KCNQ2-specific treatment efficacy, neonatal EEG burst-suppression lifecycle, M-current mechanism",
+      "feature": "41-patient KCNQ2-DEE cohort, 5 etiologies (GOF/dominant-negative 45%/LOF-DEE 29%/truncating 12%/familial-SLNE 10%/KCNQ2-negative 4%), neonatal tonic seizures onset 2-72h, 4 seizure types, 8 triggers, 8 treatments (PB/CBZ/OXC KCNQ2-specific/PB-CBZ-transition/LEV/KD-BHB-Kv7/XEN496-EPIK-trial/Retigabine-WITHDRAWN), HLA-B*15:02 mandatory CPIC-Level-A, SIADH monitoring, XEN496 NCT05374343",
+      "why": "Major neonatal DEE; most common genetic neonatal SE; CBZ/OXC uniquely KCNQ2-specific (Kv7 M-current enhancement); HLA-B*15:02 mandatory; Retigabine withdrawn; XEN496 EPIK trial recruiting",
+      "priority": "P0",
+      "status": "built",
+      "endpoints": [
+        "/api/kcnq2/overview",
+        "/api/kcnq2/breakdown",
+        "/api/kcnq2/definitions"
+      ],
+      "frontend": "portal-next/app/kcnq2/page.jsx",
+      "built_note": "KCNQ2 Encephalopathy Dashboard \u2014 41-patient KCNQ2-DEE cohort, 5-class etiology catalog (De-novo-GOF-dominant-negative 45%/De-novo-LOF-DEE 29%/De-novo-truncating 12%/Familial-AD-SLNE-DEE 10%/Clinical-KCNQ2-negative 4%), neonatal tonic seizures onset 2-72h, burst-suppression EEG, 4 seizure types (Tonic 100%/Focal-clonic 78%/Autonomic 55%/FBTCS 32%) with EEG+tip, 8 triggers (fever 82%/intercurrent-illness 71%/missed-AED 68%/sleep-deprivation 52%/hyperthermia 45%/metabolic 38%/procedural 30%/AED-taper 22%), 8 treatments (PB Level-B-acute/CBZ Level-B-KCNQ2-specific/OXC Level-B-KCNQ2-specific/PB-CBZ-transition-protocol/LEV Level-C/KD Level-C-BHB-Kv7/XEN496-EPIK-trial-NCT05374343/Retigabine-WITHDRAWN-2017) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (PHT-no-Kv7/VPA-POLG/Retigabine-WITHDRAWN/Hospital-NPO-AED-CI), 5 monitoring items (CBZ-TDM-4-12/Na-SIADH-q4wk/LFT-CBZ/HLA-B1502-mandatory/neurodevo-EEG-Bayley), 6-window lifecycle (neonatal-NICU/early-infancy/late-infancy/early-childhood/school-age/adolescence-adult), 14 concepts (KCNQ2-Kv7.2/M-Current-IKM/Burst-Suppression/SLNE-BFNE/Dominant-Negative/GOF/Electroclinical-Dissociation/SIADH/HLA-B1502/Neonatal-SE/XEN496-EPIK/KCNQ2Cure/CPIC/SUDEP), 6 standards (ILAE-2022/NICE-NG217/CPIC-HLA-B-CBZ-2023/EAN-NeonatalSE-2019/ACMG-AMP-2015/ACNS-EEG-2021), 8 thresholds (onset-<72h/CBZ-4-12/OXC-MHD-12-24/Na-<130/seizure-free-2Y/2-AED-KD/LFT-3xULN/BHB-2-4mmol), 6 references (Pisano-2015-Neurology/Numis-2014-Epilepsia/Millichap-2017-NeurolGenet/Soh-2022-JNeurosci/Bhatt-2020-JNS/Jentink-2010-NEJM), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/kcnq2/overview|breakdown|definitions verified 200, portal-next/app/kcnq2/page.jsx + SiteNav wired next to CDKL5, expert_dashboards.json count 173->174"
     }
   ],
   "summary": {
@@ -2260,5 +2277,5 @@
     "total_dashboards": 173,
     "total_built": 173
   },
-  "count": 173
+  "count": 174
 }
