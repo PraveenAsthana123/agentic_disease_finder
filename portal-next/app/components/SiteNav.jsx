@@ -350,6 +350,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/grin2b">&#x1f9e0; GRIN2B Epilepsy (DEE27 / GluN2B / NMDA Subunit 2B / Memantine Precision / 12p12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mecp2">&#x1f9ec; MECP2-Related Disorders (Rett Syndrome / MDS / X-Linked / Trofinetide / Xq28)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra1">&#x1f9ec; GABRA1 Epilepsy (DEE19 / CAE / JME / GABA-A &#945;1 / BDZ-Rescue-Adjusted / 5q34)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/kcnb1">&#x26a1; KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I&#8336; / GOF-LOF / 20q13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

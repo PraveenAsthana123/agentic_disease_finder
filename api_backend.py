@@ -23487,6 +23487,54 @@ async def gabra1_definitions():
     return _json_safe(ga1_.get_definitions())
 
 
+@app.get("/api/kcnb1/overview")
+async def kcnb1_overview():
+    """KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I_Kslow / GOF-LOF Dual) overview: 41-patient cohort.
+    KCNB1 (20q13.13), Kv2.1 — dominant delayed-rectifier voltage-gated K+ channel (80-95% somatic I_Kslow).
+    De novo dominant. LOF: haploinsufficiency → impaired AP repolarisation → burst firing → West syndrome / DEE26.
+    GOF: left-shifted activation / PRC clustering-defect → network synchrony disruption → focal refractory epilepsy + CSWS/ESES.
+    POLG MANDATORY before VPA. Tiagabine ABSOLUTE CI. CBZ/OXC/PHT HIGH RISK during West (NaV1.1 PV-interneuron block → spasm aggravation).
+    ACTH Level A + VGB Level A for West. Day 14 EEG mandatory. No approved precision therapy; KD Level B (KATP channel independent of Kv2.1)."""
+    import scripts.kcnb1_dashboard as kb1_
+    return _json_safe(kb1_.get_overview())
+
+
+@app.get("/api/kcnb1/breakdown")
+async def kcnb1_breakdown():
+    """KCNB1 breakdown: 41 patients, 5-class etiology catalog
+    (KCNB1-de-novo-LOF-severe-West-DEE26-38%/KCNB1-de-novo-LOF-missense-moderate-17%/
+    KCNB1-de-novo-GOF-severe-focal-28%/KCNB1-de-novo-GOF-dominant-negative-clustering-12%/
+    KCNB1-negative-phenocopy-5%),
+    5 seizure types (Infantile-Spasms-West-72%/Focal-Motor-68%/GTCS-58%/Myoclonic-42%/Tonic-Atonic-LGS-35%)
+    with EEG correlates+clinical tips,
+    8 triggers (fever-88%/missed-AED-78%/sleep-wake-71%/sleep-deprivation-65%/
+    emotional-sensory-55%/constipation-42%/drug-interactions-35%/photic-28%),
+    8 treatments (ACTH-Level-A-West/VGB-Level-A-West-short-term/VPA-Level-B-POLG-screen/
+    CLB-Level-B/LEV-Level-B/KD-Level-B-DRE/Rufinamide-Level-B-LGS/FFA-Level-C-compassionate)
+    with dose+MOA+efficacy+safety+monitoring+KCNB1-specific notes,
+    5 contraindications (Tiagabine-ABSOLUTE-CI-NCSE/CBZ-OXC-PHT-HIGH-West/
+    LTG-HIGH-myoclonic/VGB-long-term-HIGH/TPM-KD-RELATIVE-CI),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.kcnb1_dashboard as kb1_
+    return _json_safe(kb1_.get_breakdown())
+
+
+@app.get("/api/kcnb1/definitions")
+async def kcnb1_definitions():
+    """KCNB1 definitions: 15 key concepts
+    (KCNB1-20q13.13/DEE26/Kv2.1-Delayed-Rectifier/GOF-Left-Shifted-Activation/
+    LOF-Haploinsufficiency/Kv2.1-Somatodendritic-Clusters/PRC-Domain/CSWS-ESES/
+    West-Syndrome-KCNB1/Hypsarrhythmia/LGS-Evolution/Tiagabine-ABSOLUTE-CI/
+    NaV-Blockers-CI-West/POLG-Mandatory-VPA/SUDEP-KCNB1),
+    5 contraindications (Tiagabine-ABSOLUTE-CI/CBZ-OXC-PHT-HIGH/LTG-myoclonic-HIGH/
+    VGB-long-term-HIGH/TPM-KD-RELATIVE-CI),
+    10 thresholds, 8 standards, 6 references
+    (Torkamani-2015-AnnNeurol/Bar-2020-AnnNeurol/Speca-2014-Neuron/
+    Jensen-2017-HumMolGenet/Bhatt-2023-Epilepsia/Lux-2004-LancetNeurol)."""
+    import scripts.kcnb1_dashboard as kb1_
+    return _json_safe(kb1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

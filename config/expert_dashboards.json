@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog — EEG AI Epilepsy Platform",
-  "note": "Total: 195 dashboards",
+  "note": "Total: 197 dashboards",
   "updated_at": "2026-08-13",
   "must_have_p0": [
     {
@@ -2544,6 +2544,21 @@
         "/api/gabra1/definitions"
       ],
       "note": "41-patient GABRA1 cohort (GABRA1 5q34, GABA-A receptor α1 subunit — most abundant adult GABA-A subunit; α1/γ2 interface = classical BDZ high-affinity binding site; de novo dominant DEE19 [A322D ER-retention dominant-negative, HSP70 chaperone trapping, ERAD degradation, 70-80% receptor loss, West→LGS] vs familial AD CAE/JME [30-50% LOF]; BDZ RESCUE ADJUSTED: midazolam 0.3-0.4 mg/kg NOT 0.2 mg/kg — document ALL emergency plans; CLOBAZAM ADVANTAGE: 1,5-BDZ α2/α3 preference retains activity despite α1 LOF; ABSOLUTE CI: Tiagabine [NCSE diffuse cortical dysmaturation] + LTG if myoclonic [NaV1.1 interneuron disinhibition]; POLG mandatory before VPA; VGB short-term only [West ≤16 weeks SHARE REMS ERG]; ESM Level A pure absence [T-type Ca2+ block thalamic]; ACTH Level A West), 5-class etiology catalog (GABRA1-de-novo-LOF-severe-DEE19-A322D-ER-retention-34%/GABRA1-de-novo-missense-moderate-DEE19-18%/GABRA1-familial-AD-CAE-JME-32%/GABRA1-familial-AD-mild-11%/phenocopy-5%), 4 seizure types (Absence-3Hz-GSW-80%/Myoclonic-PGSW-JME-58%/Epileptic-Spasms-West-34%/GTCS-68%), 8 treatments (VPA-Level-A/ESM-Level-A-CAE/CLB-Level-B-α2α3-advantage/ACTH-Level-A-West/VGB-Level-A-West-short-term/LTG-Level-B-absence-no-myoclonus/KD-Level-B-DRE/LEV-Level-C), 5 contraindications (Tiagabine-ABSOLUTE-CI/LTG-myoclonic-ABSOLUTE-CI/CBZ-OXC-PHT-HIGH/standard-BDZ-dose-MODERATE/VGB-long-term-HIGH), 3 endpoints /api/gabra1/overview|breakdown|definitions verified 200, expert_dashboards.json count 195->196"
+    },
+    {
+      "role": "kcnb1",
+      "name": "KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Voltage-Gated K+ Delayed-Rectifier / GOF-LOF Dual)",
+      "status": "built",
+      "endpoints": [
+        "/api/kcnb1/overview",
+        "/api/kcnb1/breakdown",
+        "/api/kcnb1/definitions"
+      ],
+      "viz": "5-tab: Overview / Patients-Etiologies / Seizures-Triggers / Treatments / Definitions",
+      "feature": "KCNB1 DEE26 expert dashboard — 41-patient cohort, 5-class etiology, 5 seizure types, 8 triggers, 8 treatments, 5 contraindications, 8 monitoring, 6-window lifecycle, 15 concepts",
+      "why": "KCNB1 (20q13.13) Kv2.1 dominant delayed-rectifier I_Kslow channelopathy. LOF: haploinsufficiency → burst firing → West/DEE26. GOF: left-shifted activation/PRC clustering-defect → focal refractory epilepsy + CSWS/ESES. POLG mandatory before VPA. Tiagabine ABSOLUTE CI. CBZ/OXC/PHT HIGH RISK during West. ACTH Level A + VGB Level A (short-term ≤16w SHARE REMS). KD Level B (KATP mechanism — Kv2.1-independent). No approved precision therapy. 3 endpoints /api/kcnb1/overview|breakdown|definitions verified 200. expert_dashboards.json count 196->197",
+      "priority": "high",
+      "built_note": "KCNB1 DEE26 dashboard built 2026-08-13: /api/kcnb1/overview|breakdown|definitions + portal-next/app/kcnb1/page.jsx + SiteNav wired next to GABRA1"
     }
   ],
   "summary": "196 expert dashboards built",
