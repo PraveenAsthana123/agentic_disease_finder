@@ -342,6 +342,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/aldh7a1">&#x1f9ec; ALDH7A1 Epilepsy (Pyridoxine-Dependent / Antiquitin / PDE / 5q23)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/polg">&#x1f9ec; POLG Epilepsy (Alpers-Huttenlocher / mtDNA Depletion / VPA-CI / 15q26)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/slc2a1">&#x1f9ec; SLC2A1 Epilepsy (GLUT1-DS / De Vivo Disease / KD Precision / 1p34)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabrb3">&#x1f9ec; GABRB3 Epilepsy (DEE28 / West Syndrome → LGS / GABA-A β3 / 15q12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

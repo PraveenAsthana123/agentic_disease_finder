@@ -23119,6 +23119,48 @@ async def slc2a1_definitions():
     return _json_safe(s1_.get_definitions())
 
 
+@app.get("/api/gabrb3/overview")
+async def gabrb3_overview():
+    """GABRB3 / DEE28 — West Syndrome → Lennox-Gastaut Syndrome overview: 41-patient cohort.
+    GABRB3 (15q12), GABA-A receptor beta-3 subunit, most important β isoform in fetal/neonatal brain.
+    De novo LOF → impaired GABA-A assembly + reduced BDZ-sensitive pentamers → West syndrome → LGS.
+    BDZ REDUCED EFFICACY (fewer β3-assembled α-β-γ2 pentamers) → use higher rescue doses + IV LEV.
+    ACTH PROMOTES β3 SURFACE EXPRESSION (PKA Ser408/409 phosphorylation) — precision mechanism.
+    LAMOTRIGINE AVOID if myoclonic component — Na-channel blocker worsens LGS myoclonic/atonic.
+    VGB RETINAL TOXICITY — ERG q6M mandatory; POLG testing before any VPA."""
+    import scripts.gabrb3_dashboard as g3_
+    return _json_safe(g3_.get_overview())
+
+
+@app.get("/api/gabrb3/breakdown")
+async def gabrb3_breakdown():
+    """GABRB3 / DEE28 breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (fever-85%/sleep-deprivation-78%/Na-channel-blocker-intro-72%/
+    BDZ-taper-65%/KD-non-adherence-58%/missed-AED-55%/photosensitivity-35%/stress-28%),
+    8 treatments (ACTH-Level-A-West/VGB-Level-A-West/KD-Level-B/CLB-Level-B/
+    VPA-Level-B-LGS/Rufinamide-Level-B-tonic/FFA-Level-C-REMS/LEV-Level-C-IV-SE) with
+    dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (LTG-myoclonic-HIGH/CBZ-OXC-HIGH/VGB-long-term-HIGH/BDZ-standard-dose-MODERATE),
+    8 monitoring items, 6-window lifecycle, 14 concepts."""
+    import scripts.gabrb3_dashboard as g3_
+    return _json_safe(g3_.get_breakdown())
+
+
+@app.get("/api/gabrb3/definitions")
+async def gabrb3_definitions():
+    """GABRB3 / DEE28 definitions: 14 key concepts
+    (GABRB3-GABA-A-β3-15q12/DEE28/West-syndrome/LGS/Hypsarrhythmia/
+    Dominant-negative-GABRB3/BDZ-reduced-efficacy/Tonic-vs-phasic-inhibition/
+    NREM-PFA-tonic-seizures/ACTH-β3-surface-mechanism/VGB-retinal-toxicity/
+    KD-bypass-mechanism/POLG-VPA-CI/Rufinamide-LGS),
+    4 contraindications (LTG-myoclonic/CBZ-OXC-generalised/VGB-retinal/BDZ-standard-dose),
+    10 thresholds, 8 standards, 6 references
+    (Tanaka-2008-NatGenet/Lux-2008-LancetNeurol/Glauser-2008-Neurology/
+    Knupp-2022-LancetNeurol/Moller-2017-Neurology/Kang-2016-JNeurosci)."""
+    import scripts.gabrb3_dashboard as g3_
+    return _json_safe(g3_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
