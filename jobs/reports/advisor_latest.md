@@ -1,4 +1,4 @@
-# 🧭 Advisor — issues you may not be aware of (2026-08-11 19:34 MDT)
+# 🧭 Advisor — issues you may not be aware of (2026-08-12 07:38 MDT)
 
 **5 findings**
 
@@ -10,5 +10,5 @@
     ↳ Download more PhysioNet subjects (10-20) for stronger cross-patient claims.
 - **[P2] security** — No multi-user auth / RBAC (single-operator mode)
     ↳ Fine for research/dev; required before multi-clinician or PHI deployment (see §47.6).
-- **[P3] git** — 826 commit(s) unpushed
+- **[P3] git** — 856 commit(s) unpushed
     ↳ safe_push.sh auto-pushes on shared repos; or push manually.

@@ -2292,6 +2292,20 @@
       "page": "/scn8a",
       "description": "SCN8A (12q13.13) Nav1.6 DEE \u2014 41 patients, 5-class etiology, almost exclusively GOF, LTG absolute CI, CBZ/OXC first-line, movement disorder 30-50%, SUDEP high risk, DRE >90%, quinidine investigational, HLA-B*1502 CPIC Level A, EIEE13 MIM#614558",
       "built_date": "2026-08-12"
+    },
+    {
+      "id": "kcnt1",
+      "name": "KCNT1 Encephalopathy (EIMFS / NFLE-KCNT1-DEE)",
+      "status": "built",
+      "category": "genetic-epilepsy-syndrome",
+      "api_endpoints": [
+        "/api/kcnt1/overview",
+        "/api/kcnt1/breakdown",
+        "/api/kcnt1/definitions"
+      ],
+      "frontend_component": "portal-next/app/kcnt1/page.jsx",
+      "description": "41-patient KCNT1 cohort, 5-class etiology, EIMFS migrating focal seizure EEG signature, KD 4:1 most effective, quinidine negative RCT",
+      "built_date": "2026-08-12"
     }
   ],
   "summary": {

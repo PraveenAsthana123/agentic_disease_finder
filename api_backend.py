@@ -22603,6 +22603,50 @@ async def scn8a_definitions():
     return _json_safe(sc8_.get_definitions())
 
 
+@app.get("/api/kcnt1/overview")
+async def kcnt1_overview():
+    """KCNT1 Encephalopathy Dashboard — overview: KCNT1 (9q34.3) KNa1.1/Slack/Slo2.2,
+    41-patient cohort, 5-class etiology (De-novo-KCNT1-GOF-EIMFS-severe 49%/
+    De-novo-KCNT1-GOF-moderate 22%/Familial-KCNT1-GOF-NFLE-AD 15%/
+    De-novo-KCNT1-splice-structural 8%/Clinical-KCNT1-negative 6%),
+    4 seizure types (Migrating-focal-EIMFS 90%/Focal-tonic-clonic 78%/IS-West 45%/FBTCS 55%),
+    8 triggers, 6-window lifecycle, 6 clinical alerts including quinidine-NOT-RECOMMENDED-RCT-2020."""
+    import scripts.kcnt1_dashboard as kc_
+    return _json_safe(kc_.get_overview())
+
+
+@app.get("/api/kcnt1/breakdown")
+async def kcnt1_breakdown():
+    """KCNT1 Encephalopathy Dashboard — breakdown: 41 patients with functional class
+    (GOF-severe/GOF-moderate/GOF-familial/GOF-splice/KCNT1-negative), etiology catalog,
+    8 triggers (Fever 88%/Illness 76%/Missed-AED 65%/Sleep-deprivation 54%/Stress 42%/
+    AED-withdrawal 38%/Puberty 28%/Feeding-neonatal 22%),
+    8 treatments (PB Level-B-neonatal-first-line/CLB Level-B-focal-adjunct/
+    LEV Level-C-adjunct/KD-4:1 Level-B-most-effective-EIMFS/ACTH Level-B-IS/
+    VGB Level-C-IS-SHARE-REMS/Quinidine-NOT-RECOMMENDED-EIMFS-negative-RCT/
+    VPA-POLG-exclusion-MANDATORY) with dose+MOA+efficacy+safety+monitoring,
+    8 monitoring items, seizure types with EEG correlates."""
+    import scripts.kcnt1_dashboard as kc_
+    return _json_safe(kc_.get_breakdown())
+
+
+@app.get("/api/kcnt1/definitions")
+async def kcnt1_definitions():
+    """KCNT1 Encephalopathy Dashboard — definitions: 14 concepts
+    (KCNT1-KNa1.1-Slack-Slo2.2/EIMFS-MIM614959/GOF-Variant-KCNT1/
+    Migrating-Focal-Seizures-signature/Quinidine-KCNT1-negative-RCT-2020/
+    KD-4:1-EIMFS-most-effective/POLG-Exclusion-before-VPA/VGB-SHARE-REMS/
+    SUDEP-KCNT1/West-KCNT1-IS-overlap/NFLE-KCNT1-AD/Interneuron-Loss-GOF-paradox/
+    KCNT1-Alliance/ASO-Gene-Therapy-KCNT1-preclinical),
+    4 absolute contraindications (Quinidine-NOT-RECOMMENDED-EIMFS/VPA-POLG-exclusion/
+    VGB-without-SHARE-REMS/Hospital-NPO-without-IV-AED),
+    10 thresholds, 8 standards, 6 references
+    (Barcia-2012-NatGenet/Milligan-2014-AnnNeurol/Numis-2020-Epilepsia/
+    McTague-2013-NatMed/Rizzo-2016-EurJPaediatrNeurol/Lim-2016-EurJHumGenet)."""
+    import scripts.kcnt1_dashboard as kc_
+    return _json_safe(kc_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
