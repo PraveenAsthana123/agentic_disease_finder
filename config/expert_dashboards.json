@@ -2531,17 +2531,21 @@
       "frontend": "portal-next/app/mecp2/page.jsx",
       "script": "scripts/mecp2_dashboard.py",
       "description": "MECP2-Related Disorders (Rett Syndrome / MECP2 Duplication Syndrome / MDS) Dashboard — /api/mecp2/* + portal-next/app/mecp2/page.jsx + SiteNav wired next to GRIN2B, 41-patient MECP2 cohort (MECP2 Xq28, Methyl-CpG Binding Protein 2, X-linked dose-sensitive transcriptional regulator; LOF in females → Classic Rett Syndrome [4-stage regression: stagnation→rapid-regression→plateau→motor-deterioration; hand stereotypies; breathing irregularities; QTc prolongation; scoliosis]; DUP in males → MECP2 Duplication Syndrome [MDS: progressive encephalopathy, recurrent infections, spastic quadriplegia]; TROFINETIDE FDA 2023 LEVEL A: first disease-modifying Rett therapy [IGF-1 tripeptide analogue, 200 mg BID 50 kg, diarrhoea 82%]; ABSOLUTE CI: abrupt AED withdrawal [autonomic instability + QTc + SE risk — taper ≥6 weeks]; MONITORING MANDATORY: ECG QTc q12M + Spine X-ray q12M + DEXA q2Y + POLG before VPA; Epilepsy 80%: focal-motor/GTCS/drop-attacks/tonic; VPA first-line 15 mg/kg/day; LTG Level-B Rett; KD DRE; CBD off-label emerging), 5-class etiology catalog (Classic-Rett-missense-38%/Classic-Rett-truncating-27%/Atypical-Rett-PSV-15%/MECP2-Duplication-MDS-males-12%/phenocopy-FOXG1-CDKL5-8%), 4 seizure types (Focal-Motor-78%/GTCS-65%/Drop-attacks-42%/Tonic-nocturnal-38%) with EEG correlates+clinical tips, 8 triggers (missed-AED-75%/fever-70%/sleep-deprivation-65%/emotional-stress-58%/breathing-hypoxia-52%/catamenial-35%/constipation-32%/drug-interactions-25%), 8 treatments (VPA-Level-B/LTG-Level-B/LEV-Level-B/KD-Level-B-DRE/CBD-Level-C/Trofinetide-Level-A-FDA2023/ACTH-Level-B-MDS-West/Carbidopa-Level-C-autonomic) with dose+MOA+efficacy+safety+monitoring+MECP2-specific notes, 5 contraindications (Abrupt-AED-withdrawal-ABSOLUTE-CI/Polypharmacy-MODERATE/CBZ-OXC-MODERATE/High-dose-VPA-RELATIVE/Enzyme-inducers-malnutrition-LOW), 8 monitoring items (ECG-QTc-q12M/Spine-Xray-q12M/DEXA-q2Y/Swallowing-q12M/Breathing-diary/POLG-before-VPA/VPA-TDM-LFT-ammonia/SUDEP-annually), 6-window lifecycle (neonatal-pre-dx/infantile-Stage1-stagnation/Stage2-regression/Stage3-plateau-school/Stage4-adolescence/adulthood), 15 concepts (MECP2-Xq28/Classic-Rett/MECP2-Duplication-MDS/4-Stages-Rett/Hand-Stereotypies/Breathing-Irregularities/QTc-Prolongation/BDNF-Downregulation/Trofinetide-IGF1/POLG-VPA-CI/KD-DRE/Scoliosis-Rett/SUDEP-Rett/X-inactivation-skewing/MECP2-e1-e2), 8 standards (ILAE-2022/NICE-NG217/Amir-1999-NatGenet/Percy-2023-NatRevNeurol/ACMG-AMP-2015/FDA-2023-Trofinetide/IRSA/MHRA-PREVENT), 10 thresholds (POLG-before-VPA/ECG-QTc-q12M/Spine-q12M/Cobb-20deg-ortho/Cobb-40deg-surgery/VPA-15-mg-kg-start/Trofinetide-200mg-BID/β-OHB-2-4-mmol/CBD-5-20-mg-kg/SUDEP-annual), 6 references (Amir-1999-NatGenet/Meins-2005-AJHG/Ramocki-2009-AnnNeurol/Neul-2014-AnnNeurol/Glaze-2015-Neurology/Bhatt-2023-ActaNeurologica), 5-tab frontend (Overview/Patients-Etiologies/Seizures-Triggers/Treatments/Definitions), 3 endpoints /api/mecp2/overview|breakdown|definitions verified 200, expert_dashboards.json count 194->195"
+    },
+    {
+      "id": "gabra1",
+      "name": "GABRA1 Epilepsy (DEE19 / Childhood Absence Epilepsy / JME / GABA-A α1 Subunit / BDZ-Rescue-Adjusted)",
+      "status": "built",
+      "route": "/gabra1",
+      "api_prefix": "/api/gabra1",
+      "endpoints": [
+        "/api/gabra1/overview",
+        "/api/gabra1/breakdown",
+        "/api/gabra1/definitions"
+      ],
+      "note": "41-patient GABRA1 cohort (GABRA1 5q34, GABA-A receptor α1 subunit — most abundant adult GABA-A subunit; α1/γ2 interface = classical BDZ high-affinity binding site; de novo dominant DEE19 [A322D ER-retention dominant-negative, HSP70 chaperone trapping, ERAD degradation, 70-80% receptor loss, West→LGS] vs familial AD CAE/JME [30-50% LOF]; BDZ RESCUE ADJUSTED: midazolam 0.3-0.4 mg/kg NOT 0.2 mg/kg — document ALL emergency plans; CLOBAZAM ADVANTAGE: 1,5-BDZ α2/α3 preference retains activity despite α1 LOF; ABSOLUTE CI: Tiagabine [NCSE diffuse cortical dysmaturation] + LTG if myoclonic [NaV1.1 interneuron disinhibition]; POLG mandatory before VPA; VGB short-term only [West ≤16 weeks SHARE REMS ERG]; ESM Level A pure absence [T-type Ca2+ block thalamic]; ACTH Level A West), 5-class etiology catalog (GABRA1-de-novo-LOF-severe-DEE19-A322D-ER-retention-34%/GABRA1-de-novo-missense-moderate-DEE19-18%/GABRA1-familial-AD-CAE-JME-32%/GABRA1-familial-AD-mild-11%/phenocopy-5%), 4 seizure types (Absence-3Hz-GSW-80%/Myoclonic-PGSW-JME-58%/Epileptic-Spasms-West-34%/GTCS-68%), 8 treatments (VPA-Level-A/ESM-Level-A-CAE/CLB-Level-B-α2α3-advantage/ACTH-Level-A-West/VGB-Level-A-West-short-term/LTG-Level-B-absence-no-myoclonus/KD-Level-B-DRE/LEV-Level-C), 5 contraindications (Tiagabine-ABSOLUTE-CI/LTG-myoclonic-ABSOLUTE-CI/CBZ-OXC-PHT-HIGH/standard-BDZ-dose-MODERATE/VGB-long-term-HIGH), 3 endpoints /api/gabra1/overview|breakdown|definitions verified 200, expert_dashboards.json count 195->196"
     }
   ],
-  "summary": {
-    "total": 189,
-    "built": 189,
-    "partial": 0,
-    "planned": 0,
-    "updated_at": "2026-08-13",
-    "count": 189,
-    "total_dashboards": 189,
-    "total_built": 189
-  },
-  "count": 191
+  "summary": "196 expert dashboards built",
+  "count": 196
 }

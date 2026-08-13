@@ -23435,6 +23435,58 @@ async def mecp2_definitions():
     return _json_safe(mecp2_.get_definitions())
 
 
+@app.get("/api/gabra1/overview")
+async def gabra1_overview():
+    """GABRA1 Epilepsy overview: 41-patient cohort.
+    GABRA1 (5q34), GABA-A receptor α1 subunit — most abundant adult GABA-A subunit.
+    De novo dominant (DEE19: A322D ER-retention dominant-negative → 70-80% receptor loss)
+    or autosomal dominant familial (CAE / JME spectrum, 30-50% receptor reduction).
+    α1/γ2 interface = classical BDZ high-affinity binding site — LOF reduces BDZ rescue efficacy.
+    BDZ RESCUE ADJUSTED: midazolam 0.3-0.4 mg/kg (NOT standard 0.2 mg/kg) — document ALL plans.
+    CLOBAZAM ADVANTAGE: 1,5-BDZ α2/α3 preference retains activity despite α1 LOF.
+    ABSOLUTE CI: Tiagabine (NCSE) + LTG if myoclonic component. POLG mandatory before VPA."""
+    import scripts.gabra1_dashboard as ga1_
+    return _json_safe(ga1_.get_overview())
+
+
+@app.get("/api/gabra1/breakdown")
+async def gabra1_breakdown():
+    """GABRA1 breakdown: 41 patients, 5-class etiology catalog
+    (GABRA1-de-novo-LOF-severe-DEE19-A322D-ER-retention-34%/
+    GABRA1-de-novo-missense-moderate-DEE19-18%/
+    GABRA1-familial-AD-CAE-JME-32%/GABRA1-familial-AD-mild-11%/
+    phenocopy-GABRD-GABRB2-GABRG2-5%),
+    4 seizure types (Absence-3Hz-GSW-80%/Myoclonic-PGSW-JME-58%/
+    Epileptic-Spasms-West-34%/GTCS-68%)
+    with EEG correlates+clinical tips,
+    8 triggers (sleep-deprivation-88%/missed-AED-78%/hyperventilation-72%/
+    fever-65%/emotional-stress-58%/fatigue-55%/photosensitivity-35%/alcohol-JME-28%),
+    8 treatments (VPA-Level-A-JME-GTCS/ESM-Level-A-CAE-pure-absence/
+    CLB-Level-B-α2α3-advantage/ACTH-Level-A-West/VGB-Level-A-West-short-term/
+    LTG-Level-B-absence-no-myoclonus-ONLY/KD-Level-B-DRE/LEV-Level-C-adjunct)
+    with dose+MOA+efficacy+safety+monitoring+GABRA1-specific notes,
+    5 contraindications (Tiagabine-ABSOLUTE-CI-NCSE/LTG-myoclonic-ABSOLUTE-CI/
+    CBZ-OXC-PHT-HIGH/standard-BDZ-dose-MODERATE/VGB-long-term-HIGH),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.gabra1_dashboard as ga1_
+    return _json_safe(ga1_.get_breakdown())
+
+
+@app.get("/api/gabra1/definitions")
+async def gabra1_definitions():
+    """GABRA1 definitions: 14 key concepts
+    (GABRA1-5q34/DEE19/α1-subunit-abundance/BDZ-α1-binding-site/
+    A322D-ER-retention/CAE-3Hz-spike-wave/JME-myoclonic-GTCS/West-GABRA1/
+    Tiagabine-NCSE-CI/LTG-myoclonus-CI/POLG-VPA-CI/CLB-α2α3-preference/
+    KD-GABA-A-bypass/SUDEP-GABRA1),
+    5 contraindications, 10 thresholds, 8 standards, 6 references
+    (Cossette-2002-NatGenet/Maljevic-2006-HumMolGenet/
+    Krampfl-2005-EurJNeurosci/Gallagher-2004-JNeurochem/
+    Sancar-2021-Epilepsia/Bhatt-2023-Epilepsia)."""
+    import scripts.gabra1_dashboard as ga1_
+    return _json_safe(ga1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
