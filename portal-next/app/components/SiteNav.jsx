@@ -336,6 +336,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/grin2a">&#x1f9e0; GRIN2A Epilepsy-Aphasia Spectrum (GluN2A / CSWS / LKS / 2q33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/syngap1">&#x1f9ec; SYNGAP1 Encephalopathy (SYNGAPathy / RasGAP / 6p21)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/depdc5">&#x1f9ec; DEPDC5 Focal Epilepsy (GATOR1 Complex / FFEVF / mTOR / 22q12)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/prrt2">&#x26a1; PRRT2 Epilepsy Spectrum (BFIE / PKD / ICCA / 16p11.2)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

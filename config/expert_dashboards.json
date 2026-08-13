@@ -2351,7 +2351,7 @@
       "name": "DEPDC5 Focal Epilepsy (GATOR1 Complex / FFEVF / ADNFLE-DEPDC5)",
       "viz": "Etiology bars, seizure type bars, trigger bars, treatment cards, accordion definitions, GATOR1 pathway diagram",
       "feature": "5-tab layout: Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions",
-      "why": "DEPDC5 — most common genetic cause of familial focal epilepsy; mTOR precision therapy (Everolimus); SUDEP 3× risk; surgical candidate identification",
+      "why": "DEPDC5 \u2014 most common genetic cause of familial focal epilepsy; mTOR precision therapy (Everolimus); SUDEP 3\u00d7 risk; surgical candidate identification",
       "priority": "P0",
       "category": "Epilepsy Syndromes",
       "status": "built",
@@ -2359,6 +2359,17 @@
       "api_route": "/api/depdc5/{overview,breakdown,definitions}",
       "component": "portal-next/app/depdc5/page.jsx",
       "note": "41-patient DEPDC5-FE cohort, 5-class etiology (DEPDC5-truncating-FFEVF 44%/DEPDC5-missense-LOF 27%/DEPDC5-splice-FCD 12%/NPRL2-NPRL3-GATOR1 10%/DEPDC5-negative-phenocopy 7%), 4 seizure types (nocturnal-hypermotor-ADNFLE 68%/focal-aware 58%/FBTCS 49%/focal-clonic 32%), 8 triggers (sleep-deprivation 82%/missed-AED 74%/stress 61%/alcohol 52%), 8 treatments (CBZ Level-B/LCM Level-B/LEV Level-B/LTG Level-B/Everolimus Level-C-GMTD-trial/CLB Level-C/FCD-Surgery Level-A/KD Level-B), 4 contraindications (Everolimus+CBZ-AVOID/prone-sleeping-SUDEP/HLA-B1502-CBZ-CI/SUDEP-counselling-mandatory), 8 monitoring items, 6-window lifecycle, 14 concepts (DEPDC5-GATOR1/GATOR1-complex/mTORC1/FFEVF/ADNFLE/FCD-IIa-IIb/somatic-two-hit/SUDEP-3x/Everolimus-precision/SEEG/GATOR1-Alliance/penetrance/mTOR-CYP3A4/SUDEP-Action-Plan), 8 standards, 10 thresholds, 6 references (Dibbens-2013/Ishida-2013/Bagnall-2016/Scheffer-2019/Ribierre-2018/Saxton-2019)"
+    },
+    {
+      "id": "prrt2",
+      "name": "PRRT2 Epilepsy Spectrum (BFIE / PKD / ICCA)",
+      "status": "built",
+      "dashboard_id": 183,
+      "api": "/api/prrt2/overview|breakdown|definitions",
+      "portal": "/prrt2",
+      "gene": "PRRT2",
+      "locus": "16p11.2",
+      "built": "2026-08-12"
     }
   ],
   "summary": {
@@ -2371,5 +2382,5 @@
     "total_dashboards": 182,
     "total_built": 182
   },
-  "count": 182
+  "count": 183
 }

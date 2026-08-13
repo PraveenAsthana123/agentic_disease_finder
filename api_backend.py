@@ -22830,6 +22830,53 @@ async def depdc5_definitions():
     return _json_safe(d5_.get_definitions())
 
 
+@app.get("/api/prrt2/overview")
+async def prrt2_overview():
+    """PRRT2 Epilepsy Spectrum (BFIE / PKD / ICCA) — overview:
+    PRRT2 (16p11.2), proline-rich transmembrane protein 2, binds SNAP25 at presynaptic
+    terminal → modulates Nav1.2/Nav1.6 surface expression. LOF → episodic neuronal
+    hyperexcitability → BFIE (focal seizure clusters 3-12M, self-limited) and/or
+    PKD (movement-triggered brief dyskinesia, excellent CBZ response).
+    41-patient cohort: 5-class etiology (c.649dupC-BFIE-PKD 44%/truncating-nonsense 27%/
+    missense-LOF 12%/16p11.2-deletion 10%/PRRT2-negative-phenocopy 7%),
+    4 seizure/attack types (BFIE-focal-clusters 92%/PKD-movement-triggered 73%/
+    febrile-BFIE 35%/FBTCS 18%), 8 triggers (sudden-movement-PKD 95%/fever-BFIE 68%/
+    startle 62%), 6 clinical alerts including HLA-B1502-CBZ-CI and Dravet-exclusion."""
+    import scripts.prrt2_dashboard as p2_
+    return _json_safe(p2_.get_overview())
+
+
+@app.get("/api/prrt2/breakdown")
+async def prrt2_breakdown():
+    """PRRT2 Epilepsy Spectrum — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (sudden-movement 95%/fever 68%/startle 62%/sleep-deprivation 48%/
+    caffeine 38%/missed-CBZ 35%/hyperventilation 28%/stress 22%),
+    8 treatments (CBZ Level-A-PKD-first-line/OXC Level-B-PKD-alternative/
+    Observation Level-B-BFIE-self-limited/LEV Level-C-BFIE-AED/PB Level-C-historical/
+    VPA Level-C-caution-teratogen/Genetic-counselling Level-A/Diazepam-rescue Level-B)
+    with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (HLA-B1502-CBZ-OXC-ABSOLUTE-CI/VPA-girls-restricted/
+    long-term-AED-BFIE-AVOID-overtreatment/Na-blocker-defer-until-Dravet-excluded),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.prrt2_dashboard as p2_
+    return _json_safe(p2_.get_breakdown())
+
+
+@app.get("/api/prrt2/definitions")
+async def prrt2_definitions():
+    """PRRT2 Epilepsy Spectrum — definitions: 14 concepts
+    (PRRT2-SNAP25-Nav-presynaptic/BFIE-BFIS-self-limited/PKD-kinesigenic/
+    ICCA-BFIE-PKD-combined/c649dupC-hotspot-80pct/kinesiogenic-trigger/
+    SNAP25-SNARE-Nav-trafficking/16p11.2-microdeletion/CBZ-precision-PKD/
+    HLA-B1502-pharmacogenomics/Video-EEG-differentiation/AD-incomplete-penetrance/
+    Dravet-exclusion/PRRT2-Alliance),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Chen-2011-NatGenet/Heron-2012-NatGenet/Ebrahimi-Fakhari-2015-Neurology/
+    Ono-2017-Brain/Gardiner-2012-Brain/Liu-2012-NatGenet)."""
+    import scripts.prrt2_dashboard as p2_
+    return _json_safe(p2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
