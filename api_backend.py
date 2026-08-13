@@ -23393,6 +23393,48 @@ async def grin2b_definitions():
     return _json_safe(gb2_.get_definitions())
 
 
+@app.get("/api/mecp2/overview")
+async def mecp2_overview():
+    """MECP2-Related Disorders overview: 41-patient cohort.
+    MECP2 (Xq28), Methyl-CpG Binding Protein 2 — X-linked dose-sensitive transcriptional regulator.
+    LOF in females → Classic Rett Syndrome (4-stage regression, hand stereotypies, breathing irregularities, QTc).
+    Duplication in males → MECP2 Duplication Syndrome (MDS, progressive encephalopathy, recurrent infections).
+    PRECISION: Trofinetide (FDA 2023) — first disease-modifying Rett therapy (IGF-1 tripeptide analogue).
+    MONITORING: ECG QTc q12M + spine X-ray q12M + POLG before VPA.
+    ABSOLUTE CI: abrupt AED withdrawal (autonomic instability + QTc)."""
+    import scripts.mecp2_dashboard as mecp2_
+    return _json_safe(mecp2_.get_overview())
+
+
+@app.get("/api/mecp2/breakdown")
+async def mecp2_breakdown():
+    """MECP2 breakdown: 41 patients, 5-class etiology catalog
+    (Classic-Rett-missense-38%/Classic-Rett-truncating-27%/Atypical-Rett-PSV-15%/
+    MECP2-Duplication-MDS-males-12%/phenocopy-FOXG1-CDKL5-8%),
+    4 seizure types (Focal-Motor-frontal-centrotemporal-78%/GTCS-65%/Drop-attacks-42%/Tonic-nocturnal-38%),
+    8 triggers (missed-AED-75%/fever-70%/sleep-deprivation-65%/emotional-stress-58%/
+    breathing-hypoxia-52%/catamenial-35%/constipation-32%/drug-interactions-25%),
+    8 treatments (VPA-Level-B/LTG-Level-B/LEV-Level-B/KD-Level-B-DRE/CBD-Level-C/
+    Trofinetide-Level-A-FDA2023/ACTH-Level-B-MDS-West/Carbidopa-Level-C-autonomic) with
+    dose+MOA+efficacy+safety+monitoring+MECP2-specific notes,
+    5 contraindications, 8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.mecp2_dashboard as mecp2_
+    return _json_safe(mecp2_.get_breakdown())
+
+
+@app.get("/api/mecp2/definitions")
+async def mecp2_definitions():
+    """MECP2 definitions: 15 key concepts
+    (MECP2-Xq28/Classic-Rett/MECP2-Duplication-MDS/4-Stages-Rett/Hand-Stereotypies/
+    Breathing-Irregularities/QTc-Prolongation/BDNF-Downregulation/Trofinetide-IGF1/
+    POLG-VPA-CI/KD-DRE/Scoliosis-Rett/SUDEP-Rett/X-inactivation-skewing/MECP2-e1-e2),
+    5 contraindications, 10 thresholds, 8 standards, 6 references
+    (Amir-1999-NatGenet/Meins-2005-AJHG/Ramocki-2009-AnnNeurol/
+    Neul-2014-AnnNeurol/Glaze-2015-Neurology/Bhatt-2023-ActaNeurologica)."""
+    import scripts.mecp2_dashboard as mecp2_
+    return _json_safe(mecp2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
