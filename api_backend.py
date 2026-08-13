@@ -23161,6 +23161,48 @@ async def gabrb3_definitions():
     return _json_safe(g3_.get_definitions())
 
 
+@app.get("/api/hcn1/overview")
+async def hcn1_overview():
+    """HCN1 / DEE24 — Ih Channelopathy (Dual GOF-LOF / Fever-Sensitive DEE24) overview: 41-patient cohort.
+    HCN1 (5p12), Hyperpolarization-Activated Cyclic Nucleotide-Gated Channel 1, Ih (funny/pacemaker) current.
+    De novo GOF → constitutive Ih → chronic depolarisation → fever-sensitive Dravet-like DEE24.
+    De novo LOF → reduced Ih → thalamo-cortical burst rebound + excess dendritic integration → DEE24.
+    LTG CONTRAINDICATED in LOF (LTG is an Ih blocker → worsens LOF further — Marini 2018 Ann Neurol).
+    IVERMECTIN CONTRAINDICATED in GOF (IVM activates HCN1 → worsens constitutive Ih).
+    FEVER THRESHOLD 37.5°C (not 38.5°C) — Ih Q10 amplification in GOF. POLG before VPA mandatory."""
+    import scripts.hcn1_dashboard as h1_
+    return _json_safe(h1_.get_overview())
+
+
+@app.get("/api/hcn1/breakdown")
+async def hcn1_breakdown():
+    """HCN1 / DEE24 breakdown: 41 patients, 5-class etiology catalog
+    (GOF-classic-44%/LOF-haploinsufficiency-29%/missense-gating-15%/familial-GOF-GEFS-7%/phenocopy-5%),
+    4 seizure types (febrile-DEE-exacerbation-92%/focal-frontal-78%/GTCS-65%/myoclonic-38%),
+    8 triggers (fever-92%/sleep-deprivation-72%/missed-AED-68%/exercise-hyperthermia-55%/
+    stress-45%/hot-bath-42%/photosensitivity-25%/hyperventilation-18%),
+    8 treatments (VPA-Level-B/CLB-Level-B/KD-Level-B/STP-Level-B/FFA-Level-C/LEV-Level-C/
+    ETX-Level-C-LOF/IVM-investigational-LOF-only) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (LTG-LOF-CI/CBZ-OXC-caution/IVM-GOF-CI/hot-bath-absolute),
+    8 monitoring items, 6-window lifecycle, 14 concepts."""
+    import scripts.hcn1_dashboard as h1_
+    return _json_safe(h1_.get_breakdown())
+
+
+@app.get("/api/hcn1/definitions")
+async def hcn1_definitions():
+    """HCN1 / DEE24 definitions: 14 key concepts
+    (HCN1-5p12/Ih-funny-current/DEE24/GOF-constitutive-Ih/LOF-haploinsufficiency/
+    dual-mechanism-channelopathy/temperature-Q10-Ih/CNBD/LTG-Ih-blocker-CI-LOF/
+    IVM-HCN1-activator/KD-Ih-independent/POLG-VPA-CI/SUDEP-PGES/HCN1-CA1-dendrites),
+    4 contraindications (LTG-LOF/CBZ-OXC-PHT-caution/IVM-GOF/hot-bath),
+    10 thresholds, 8 standards, 6 references
+    (Nava-2014-NatGenet/Marini-2018-AnnNeurol/DiFrancesco-1993-AnnRevPhysiol/
+    Poolos-2002-NatNeurosci/Bois-1996-JPhysiol/Lolicato-2011-JBiolChem)."""
+    import scripts.hcn1_dashboard as h1_
+    return _json_safe(h1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

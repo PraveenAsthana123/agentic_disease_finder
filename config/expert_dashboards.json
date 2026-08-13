@@ -2444,19 +2444,35 @@
     },
     {
       "role": "Neurologist / Epileptologist",
-      "name": "GABRB3 Epilepsy (DEE28 / West Syndrome → Lennox-Gastaut / GABA-A β3 Subunit)",
+      "name": "GABRB3 Epilepsy (DEE28 / West Syndrome \u2192 Lennox-Gastaut / GABA-A \u03b23 Subunit)",
       "id": "gabrb3",
       "viz": "Etiology bars, seizure type bars, trigger bars, treatment cards, accordion definitions, ACTH response summary",
       "feature": "5-tab layout: Overview/Patients-Etiology/Seizure-Types-Triggers/Treatments/Definitions",
-      "why": "GABRB3 / DEE28 — GABA-A receptor beta-3 subunit deficiency; West syndrome → LGS; BDZ reduced efficacy (fewer β3-assembled pentamers); ACTH promotes β3 surface expression (precision mechanism); LTG cautionary if myoclonic component; VGB retinal toxicity mandatory ERG q6M; POLG before VPA",
+      "why": "GABRB3 / DEE28 \u2014 GABA-A receptor beta-3 subunit deficiency; West syndrome \u2192 LGS; BDZ reduced efficacy (fewer \u03b23-assembled pentamers); ACTH promotes \u03b23 surface expression (precision mechanism); LTG cautionary if myoclonic component; VGB retinal toxicity mandatory ERG q6M; POLG before VPA",
       "priority": "P0",
       "category": "Epilepsy Syndromes",
       "status": "built",
       "route": "/gabrb3",
       "api_route": "/api/gabrb3/{overview,breakdown,definitions}",
       "component": "portal-next/app/gabrb3/page.jsx",
-      "note": "41-patient DEE28 cohort, 5-class etiology (GABRB3-de-novo-LOF-classic-44%/GABRB3-de-novo-missense-DN-27%/GABRB3-15q12-microdeletion-17%/GABRB3-inherited-familial-GEFS-7%/GABRB3-negative-phenocopy-5%), 4 seizure types (epileptic-spasms-West-88%/tonic-LGS-71%/myoclonic-atonic-62%/atypical-absence-48%), 8 triggers (fever-85%/sleep-deprivation-78%/Na-channel-blocker-intro-72%/BDZ-taper-65%/KD-non-adherence-58%/missed-AED-55%/photosensitivity-35%/stress-28%), 8 treatments (ACTH-Level-A-West/VGB-Level-A-West/KD-Level-B/CLB-Level-B/VPA-Level-B-LGS/Rufinamide-Level-B-tonic/FFA-Level-C-REMS/LEV-Level-C-IV-SE) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (LTG-myoclonic-HIGH/CBZ-OXC-PHT-HIGH/VGB-long-term-HIGH/BDZ-standard-dose-MODERATE), 8 monitoring items (ERG-q6M/POLG-before-VPA/echo-q6M-FFA/video-EEG/beta-OHB/VPA-TDM/developmental/SUDEP), 6-window lifecycle, 14 concepts (GABRB3-GABA-A-β3/DEE28/West-syndrome/LGS/Hypsarrhythmia/dominant-negative/BDZ-reduced-efficacy/tonic-phasic-inhibition/NREM-PFA/ACTH-β3-surface/VGB-retinal-toxicity/KD-bypass/POLG-VPA-CI/Rufinamide-LGS), 8 standards (ILAE-2022/NICE-NG217/UKISS-2008/HYPS-2017/Glauser-2008/LFGSS-2022/ACMG-AMP-2015/ACNS-EEG-2021), 10 thresholds, 6 references (Tanaka-2008-NatGenet/Lux-2008-LancetNeurol/Glauser-2008-Neurology/Knupp-2022-LancetNeurol/Moller-2017-Neurology/Kang-2016-JNeurosci), 5-tab frontend, 3 endpoints /api/gabrb3/overview|breakdown|definitions",
+      "note": "41-patient DEE28 cohort, 5-class etiology (GABRB3-de-novo-LOF-classic-44%/GABRB3-de-novo-missense-DN-27%/GABRB3-15q12-microdeletion-17%/GABRB3-inherited-familial-GEFS-7%/GABRB3-negative-phenocopy-5%), 4 seizure types (epileptic-spasms-West-88%/tonic-LGS-71%/myoclonic-atonic-62%/atypical-absence-48%), 8 triggers (fever-85%/sleep-deprivation-78%/Na-channel-blocker-intro-72%/BDZ-taper-65%/KD-non-adherence-58%/missed-AED-55%/photosensitivity-35%/stress-28%), 8 treatments (ACTH-Level-A-West/VGB-Level-A-West/KD-Level-B/CLB-Level-B/VPA-Level-B-LGS/Rufinamide-Level-B-tonic/FFA-Level-C-REMS/LEV-Level-C-IV-SE) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (LTG-myoclonic-HIGH/CBZ-OXC-PHT-HIGH/VGB-long-term-HIGH/BDZ-standard-dose-MODERATE), 8 monitoring items (ERG-q6M/POLG-before-VPA/echo-q6M-FFA/video-EEG/beta-OHB/VPA-TDM/developmental/SUDEP), 6-window lifecycle, 14 concepts (GABRB3-GABA-A-\u03b23/DEE28/West-syndrome/LGS/Hypsarrhythmia/dominant-negative/BDZ-reduced-efficacy/tonic-phasic-inhibition/NREM-PFA/ACTH-\u03b23-surface/VGB-retinal-toxicity/KD-bypass/POLG-VPA-CI/Rufinamide-LGS), 8 standards (ILAE-2022/NICE-NG217/UKISS-2008/HYPS-2017/Glauser-2008/LFGSS-2022/ACMG-AMP-2015/ACNS-EEG-2021), 10 thresholds, 6 references (Tanaka-2008-NatGenet/Lux-2008-LancetNeurol/Glauser-2008-Neurology/Knupp-2022-LancetNeurol/Moller-2017-Neurology/Kang-2016-JNeurosci), 5-tab frontend, 3 endpoints /api/gabrb3/overview|breakdown|definitions",
       "built_at": "2026-08-13"
+    },
+    {
+      "id": "hcn1",
+      "name": "HCN1 Epilepsy (DEE24 / Ih Channelopathy / Dual GOF-LOF / Fever-Sensitive)",
+      "route": "/hcn1",
+      "api": "/api/hcn1/overview|breakdown|definitions",
+      "status": "built",
+      "gene": "HCN1 (5p12)",
+      "protein": "Hyperpolarization-Activated Cyclic Nucleotide-Gated Channel 1",
+      "inheritance": "AD (de novo GOF 44% / de novo LOF 29% / missense 15% / familial GOF 7% / phenocopy 5%)",
+      "mechanism": "GOF: constitutive Ih \u2192 chronic depolarisation \u2192 Dravet-like fever-sensitive DEE24; LOF: reduced Ih \u2192 TC burst rebound + excess dendritic integration \u2192 DEE24",
+      "key_contraindications": "LTG CI in LOF (Ih blocker); IVM CI in GOF (HCN1 activator); CBZ/OXC caution (Dravet-like); hot bath absolute prohibition",
+      "precision_therapy": "GOF/LOF functional assay mandatory; GOF: VPA+CLB+STP/FFA; LOF: VPA+CLB+ETX+KD; IVM investigational LOF only",
+      "patients": 41,
+      "dashboard_number": 190,
+      "built_date": "2026-08-13"
     }
   ],
   "summary": {
