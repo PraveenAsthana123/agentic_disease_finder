@@ -2306,6 +2306,20 @@
       "frontend_component": "portal-next/app/kcnt1/page.jsx",
       "description": "41-patient KCNT1 cohort, 5-class etiology, EIMFS migrating focal seizure EEG signature, KD 4:1 most effective, quinidine negative RCT",
       "built_date": "2026-08-12"
+    },
+    {
+      "id": "pcdh19",
+      "name": "PCDH19 Clustering Epilepsy (PCDH19-CE)",
+      "status": "built",
+      "category": "genetic-epilepsy-syndrome",
+      "api_endpoints": [
+        "/api/pcdh19/overview",
+        "/api/pcdh19/breakdown",
+        "/api/pcdh19/definitions"
+      ],
+      "frontend_component": "portal-next/app/pcdh19/page.jsx",
+      "description": "41-patient PCDH19-CE cohort (female-predominant, cellular interference X-linked paradox), 5-class etiology, fever-triggered clusters, fenfluramine FDA/EMA 2022 approved, CLB cluster protocol, FINTEPLA REMS mandatory",
+      "built_date": "2026-08-12"
     }
   ],
   "summary": {

@@ -22647,6 +22647,50 @@ async def kcnt1_definitions():
     return _json_safe(kc_.get_definitions())
 
 
+@app.get("/api/pcdh19/overview")
+async def pcdh19_overview():
+    """PCDH19 Clustering Epilepsy Dashboard — overview: PCDH19 (Xq22.1) Protocadherin-19,
+    41-patient cohort (female-predominant; cellular interference X-linked paradox),
+    5-class etiology (De-novo-PCDH19-truncating-frameshift 42%/De-novo-PCDH19-missense 34%/
+    De-novo-PCDH19-splice-site 10%/De-novo-PCDH19-CNV-deletion 8%/Clinical-PCDH19-negative 6%),
+    4 seizure types (Fever-triggered-cluster 95%/FBTCS 72%/Atypical-absence 38%/Myoclonic 22%),
+    8 triggers (Fever 95%/Hot-weather 73%/Vaccination 61%/Illness 58%/Stress 47%/Missed-AED 42%/
+    Sleep-deprivation 35%/Catamenial 28%), 6-window lifecycle,
+    6 clinical alerts including FINTEPLA-REMS-mandatory and LTG-avoid."""
+    import scripts.pcdh19_dashboard as pd_
+    return _json_safe(pd_.get_overview())
+
+
+@app.get("/api/pcdh19/breakdown")
+async def pcdh19_breakdown():
+    """PCDH19 Clustering Epilepsy Dashboard — breakdown: 41 patients with functional class
+    (truncating/missense/splice/CNV-deletion/PCDH19-negative), etiology catalog,
+    8 triggers (Fever 95%/Hot-weather 73%/Vaccination 61%/Illness 58%/Stress 47%/
+    Missed-AED 42%/Sleep-deprivation 35%/Catamenial 28%),
+    8 treatments (CLB Level-B-first-line-cluster-protocol/Fenfluramine-Fintepla Level-B-FDA-EMA-2022/
+    KBr Level-C-adjunct/VPA Level-B-POLG-exclusion-mandatory/LEV Level-C-adjunct/
+    KD Level-C-DRE/Progesterone Level-C-catamenial/ACTH Level-C-cluster-status) with
+    dose+MOA+efficacy+safety+monitoring, 8 AED monitoring items, seizure types with EEG correlates."""
+    import scripts.pcdh19_dashboard as pd_
+    return _json_safe(pd_.get_breakdown())
+
+
+@app.get("/api/pcdh19/definitions")
+async def pcdh19_definitions():
+    """PCDH19 Clustering Epilepsy Dashboard — definitions: 14 concepts
+    (PCDH19-Protocadherin-19-Xq22.1/Cellular-Interference-Model/PCDH19-CE-ILAE-2022/
+    X-linked-Female-Predominance/Fever-Action-Plan-mandatory/Fenfluramine-FDA-2022/
+    Somatic-Mosaic-Males/POLG-Exclusion-before-VPA/Catamenial-PCDH19-CE/
+    Bromide-KBr-adjunct/SUDEP-PCDH19/PCDH19-Alliance/ID-ASD-PCDH19/ASO-Gene-Therapy-preclinical),
+    4 absolute contraindications (LTG-avoid-worsening/VPA-POLG-exclusion-mandatory/
+    FFA-without-FINTEPLA-REMS/Hospital-NPO-without-cluster-rescue-plan),
+    10 thresholds, 8 standards, 6 references
+    (Dibbens-2008-NatGenet/Depienne-2009-AJHG/Marini-2010-Brain/
+    Kolc-2019-GenetMed/Specchio-2019-EpilDepis/Lagae-2022-Epilepsia)."""
+    import scripts.pcdh19_dashboard as pd_
+    return _json_safe(pd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
