@@ -22603,6 +22603,53 @@ async def scn8a_definitions():
     return _json_safe(sc8_.get_definitions())
 
 
+@app.get("/api/scn1b/overview")
+async def scn1b_overview():
+    """SCN1B Epilepsy Dashboard — overview: SCN1B (19q13.12) Nav-β1 auxiliary subunit,
+    41-patient cohort, 5-class etiology (GEFS+-Classic-AD-LOF-truncating 40%/
+    Dravet-like-DEE-de-novo-severe-LOF 25%/GEFS+-Mild-febrile-only-missense 20%/
+    Brugada-Cardiac-Overlap-SCN1B-LOF 8%/Phenocopy-SCN1A-SCN2A 7%),
+    dual NaV1.1 (brain) + NaV1.5 (cardiac) modulation → GEFS+/DEE + Brugada type 5,
+    ECG MANDATORY at diagnosis, Flecainide/Procainamide/Ajmaline ABSOLUTE CI (Brugada VF),
+    CBZ/OXC/PHT HIGH RISK (Dravet mechanism + Brugada worsening),
+    POLG mandatory before VPA, STP+VPA+CLB triple therapy Level A Dravet-like,
+    fever threshold 37.5°C (NaV Q10 temperature-sensitivity)."""
+    import scripts.scn1b_dashboard as sc1b_
+    return _json_safe(sc1b_.get_overview())
+
+
+@app.get("/api/scn1b/breakdown")
+async def scn1b_breakdown():
+    """SCN1B Epilepsy Dashboard — breakdown: 41 patients (GEFS+ 40%/Dravet-like 25%/
+    GEFS+-mild 20%/Brugada-overlap 8%/phenocopy 7%), etiology distribution,
+    5 seizure types (Febrile-seizures-plus-GEFS+ 88%/GTCS-nocturnal 72%/Focal-motor 62%/
+    Myoclonic 48%/Tonic-atonic 38%), 8 triggers (Fever-37.5C 92%/Missed-AED 80%/
+    Hot-bath 68%/Illness 62%/Sleep-deprivation 55%/Emotional-stress 45%/
+    Flecainide-Brugada-trigger 35%/Puberty 25%),
+    8 treatments (VPA-Level-B-Dravet-like/CLB-Level-B-adjunct/STP-Level-A-Dravet-like/
+    LEV-Level-B/KD-Level-B-DRE/FFA-Level-C/ACTH-Level-B-West/LTG-Level-C-GEFS+-mild),
+    5 contraindications (Flecainide-Procainamide-Ajmaline-ABSOLUTE-CI-Brugada/
+    CBZ-OXC-PHT-HIGH-RISK/LTG-HIGH-RISK-Dravet-like/Tiagabine-ABSOLUTE-CI-DEE/
+    VPA-without-POLG-MANDATORY), 8 monitoring items, 6-window lifecycle."""
+    import scripts.scn1b_dashboard as sc1b_
+    return _json_safe(sc1b_.get_breakdown())
+
+
+@app.get("/api/scn1b/definitions")
+async def scn1b_definitions():
+    """SCN1B Epilepsy Dashboard — definitions: 14 concepts (SCN1B-19q13.12/Nav-β1-Auxiliary/
+    NaV1.1-Trafficking-Brain/NaV1.5-Cardiac-Brugada/GEFS+-Spectrum/Dravet-like-DEE/
+    Brugada-Type-5-OMIM612838/CAM-Ig-fold-Domain/Fever-37.5C-Threshold/
+    STP-VPA-CLB-Triple-Therapy/POLG-VPA-CI/Flecainide-ABSOLUTE-CI/SUDEP-Dual-Risk/
+    Q10-Temperature-Sensitivity), 5 contraindications, 10 thresholds,
+    8 standards (ILAE-2022/NICE-NG217/Patino-2009-JPhysiol/Meadows-2002-JBC/
+    Watanabe-2008-Brain/Scheffer-2018-Epilepsia/HRS-Brugada-2023/ACMG-AMP-2015),
+    6 references (Patino-2009-JPhysiol/Meadows-2002-JBC/Watanabe-2008-Brain/
+    Ogiwara-2012-JNeurosci/Wallace-2002-Neurology/Bhatt-2023-Epilepsia)."""
+    import scripts.scn1b_dashboard as sc1b_
+    return _json_safe(sc1b_.get_definitions())
+
+
 @app.get("/api/kcnt1/overview")
 async def kcnt1_overview():
     """KCNT1 Encephalopathy Dashboard — overview: KCNT1 (9q34.3) KNa1.1/Slack/Slo2.2,
