@@ -22375,6 +22375,47 @@ async def rett_definitions():
     return _json_safe(rt_.get_definitions())
 
 
+@app.get("/api/cdkl5/overview")
+async def cdkl5_overview():
+    """CDKL5 Deficiency Disorder (CDD) Dashboard — overview: CDKL5 (Xp22.13) serine/threonine
+    kinase, N=41 cohort, 5-class etiology catalog (De-novo-missense-kinase-domain 39%/
+    De-novo-truncating-nonsense-frameshift 34%/De-novo-CNV-large-deletion-duplication 17%/
+    Familial-maternal-carrier 7%/Clinical-CDD-CDKL5-negative 3%), 4 seizure types
+    (IS-EES 90%/Focal-motor 85%/FBTCS-GTCS 65%/Myoclonic-atonic 45%), 8 triggers, KPIs,
+    clinical alerts. MANDATORY SHARE REMS for vigabatrin. CBZ/OXC relative CI (IARC 2019)."""
+    import scripts.cdkl5_dashboard as cd_
+    return _json_safe(cd_.get_overview())
+
+
+@app.get("/api/cdkl5/breakdown")
+async def cdkl5_breakdown():
+    """CDKL5 Deficiency Disorder (CDD) Dashboard — breakdown: 41 patients, etiology catalog
+    (5 classes with kinase mechanism/EEG correlate/MRI), seizure types (IS/focal-motor/FBTCS/
+    myoclonic with EEG correlates+clinical tips), 8 triggers (sleep-transitions 90%/fever 80%/
+    missed-AED 75%/overstimulation 65%/hyperthermia 55%/illness 50%/sleep-deprivation 45%/
+    photic 15%), 8 treatments (ACTH Level-B/VGB Level-B-SHARE-REMS/VPA Level-B/CLB Level-B/
+    KD-4:1 Level-B/LEV Level-C/CBD-Epidiolex Level-C/Soticlestat-OV935-Phase2-3) with
+    dose+MOA+efficacy+safety+monitoring, 4 contraindications (CBZ-OXC-relative-CI/VGB-SHARE-REMS/
+    NPO-KD-metabolic-CI/POLG-VPA-absolute-CI), 5 monitoring items, 6-window lifecycle,
+    6 standards, 6 references."""
+    import scripts.cdkl5_dashboard as cd_
+    return _json_safe(cd_.get_breakdown())
+
+
+@app.get("/api/cdkl5/definitions")
+async def cdkl5_definitions():
+    """CDKL5 Deficiency Disorder (CDD) Dashboard — definitions: 14 concepts (CDKL5/CDD/
+    Hanefeld-Variant/IESS-IS/Hypsarrhythmia/HAFA/CDKL5-MeCP2-Signalling-Axis/Soticlestat-OV935/
+    Vigabatrin-SHARE-REMS/Drug-Resistant-Epilepsy-CDD/POLG-Exclusion-VPA/X-Inactivation-CDD/
+    SUDEP-CDD/Gene-Therapy-AAV9-CDKL5), 4 contraindications (CBZ-OXC-relative/VGB-SHARE-REMS/
+    NPO-KD-metabolic-CI/POLG-VPA-absolute-CI), 8 thresholds (IS-onset-5M/VGB-VF-q3M/
+    VPA-TDM-50-100/KD-BHB-2-4mmol/DRE-2-AED-failures/seizure-free-2Y/LFT-3xULN/
+    driving-excluded), 6 references (Fehr-2015-EurJHumGenet/Mangatt-2016-Orphanet/
+    Devinsky-2019-LancetNeurol/IARC-2019/Tao-2004-AJHG/Weissberg-2023-ARCADE)."""
+    import scripts.cdkl5_dashboard as cd_
+    return _json_safe(cd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

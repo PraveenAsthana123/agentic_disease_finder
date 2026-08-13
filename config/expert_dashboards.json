@@ -2235,17 +2235,30 @@
         "/api/rett/breakdown",
         "/api/rett/definitions"
       ]
+    },
+    {
+      "id": "cdkl5",
+      "name": "CDKL5 Deficiency Disorder (CDD)",
+      "status": "built",
+      "route": "/cdkl5",
+      "api_routes": [
+        "/api/cdkl5/overview",
+        "/api/cdkl5/breakdown",
+        "/api/cdkl5/definitions"
+      ],
+      "frontend": "portal-next/app/cdkl5/page.jsx",
+      "note": "CDKL5 Deficiency Disorder (CDD) Dashboard \u2014 41-patient CDD cohort, 5-class etiology catalog (De-novo-CDKL5-missense-kinase-domain 39%/De-novo-CDKL5-nonsense-frameshift-truncating 34%/De-novo-CDKL5-large-deletion-CNV 17%/Familial-maternal-carrier 7%/Clinical-CDD-CDKL5-negative 3%), 4 seizure types (IS-EES 90%/Focal-motor-tonic-hypermotor 85%/FBTCS-GTCS 65%/Myoclonic-atonic 45%) with EEG correlates+clinical tips, 8 triggers (Sleep-transitions 90%/Fever 80%/Missed-AED 75%/Overstimulation 65%/Hyperthermia 55%/Illness 50%/Sleep-deprivation 45%/Photic 15%), 8 treatments (ACTH Level-B IS-phase/VGB Level-B-SHARE-REMS/VPA Level-B-broad-spectrum/CLB Level-B-focal-motor/KD-4:1 Level-B-highly-effective/LEV Level-C-adjunct/CBD-Epidiolex Level-C/Soticlestat-OV935-ARCADE-Phase2-3) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (CBZ-OXC-relative-CI-IARC2019/VGB-SHARE-REMS-mandatory-VF-monitoring/NPO-KD-metabolic-CI-hospital-protocol/POLG-VPA-absolute-CI-fatal-hepatic), 5 monitoring items (VGB-Goldman-VF-q3M/VPA-LFT-ammonia-carnitine/KD-BHB-lipids-growth/ACTH-BP-glucose-growth/CBD-LFT-CLB-interaction), 6-window lifecycle (neonatal-0-4M/IS-phase-3-18M/early-childhood-refractory-1-5Y/school-age-5-12Y/adolescence-12-18Y/adult-18Y+), 14 concepts (CDKL5/CDD/Hanefeld-Variant/IESS-IS/Hypsarrhythmia/HAFA/CDKL5-MeCP2-Signalling-Axis/Soticlestat-OV935/Vigabatrin-SHARE-REMS/DRE-CDD/POLG-Exclusion/X-Inactivation-CDD/SUDEP-CDD/Gene-Therapy-AAV9-CDKL5), 6 standards (ILAE-2022/NICE-NG217/IARC-2019/FDA-SHARE-REMS/FDA-CDD-DraftGuidance-2022/ACNS-EEG-2021), 8 thresholds (IS-onset-5M-genetic-testing/VGB-VF-q3M-SHARE-REMS/VPA-TDM-50-100/KD-BHB-2-4mmol/DRE-2-AED-failures/seizure-free-2Y/LFT-3xULN/driving-excluded), 6 references (Fehr-2015-EurJHumGenet-natural-history/Mangatt-2016-Orphanet-AED-response/Devinsky-2019-LancetNeurol-CBD/IARC-2019-consensus/Tao-2004-AJHG-CDKL5-discovery/Weissberg-2023-ARCADE-soticlestat), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/cdkl5/overview|breakdown|definitions verified 200, portal-next/app/cdkl5/page.jsx + SiteNav wired next to Rett Syndrome, expert_dashboards.json count 172->173"
     }
   ],
   "summary": {
-    "total": 159,
-    "built": 158,
+    "total": 173,
+    "built": 159,
     "partial": 0,
     "planned": 0,
     "updated_at": "2026-08-12",
-    "count": 156,
-    "total_dashboards": 156,
-    "total_built": 156
+    "count": 173,
+    "total_dashboards": 173,
+    "total_built": 173
   },
-  "count": 161
+  "count": 173
 }
