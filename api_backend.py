@@ -23627,6 +23627,56 @@ async def cacna1a_definitions():
     return _json_safe(ca1_.get_definitions())
 
 
+@app.get("/api/arx/overview")
+async def arx_overview():
+    """ARX Epilepsy (X-linked DEE / Ohtahara / West Syndrome / XLAG / Partington) overview: 40-patient cohort.
+    ARX (Xp21.3), Aristaless-Related Homeobox — paired-type homeodomain transcription factor;
+    master regulator of MGE GABAergic interneuron tangential migration and specification.
+    LOF → failed interneuron migration → cortical interneuron deficit → Ohtahara suppression-burst / West hypsarrhythmia.
+    Poly-Ala Tract 1 expansion → West/ISSX (most common ARX allele). Poly-Ala Tract 2 → Partington syndrome.
+    XLAG: truncating ARX → lissencephaly + ambiguous genitalia + neonatal hyperglycemia.
+    ACTH Level A + VGB Level A for West. POLG mandatory before VPA.
+    Tiagabine ABSOLUTE CI (NCSE in dysmature ARX cortex). CBZ/OXC/PHT HIGH RISK (Dravet mechanism — NaV1.1 PV-interneuron block).
+    No approved precision therapy. Poly-Ala expansions MISSED by standard sequencing — repeat-primed PCR required.
+    X-linked: 50% of sons at risk if carrier mother — genetic counselling MANDATORY."""
+    import scripts.arx_dashboard as arx_
+    return _json_safe(arx_.get_overview())
+
+
+@app.get("/api/arx/breakdown")
+async def arx_breakdown():
+    """ARX breakdown: 40 patients, 5-class etiology catalog
+    (ARX-de-novo-truncating-Ohtahara-severe-DEE-25%/ARX-poly-Ala-Tract1-West-ISSX-30%/
+    ARX-truncating-XLAG-lissencephaly-15%/ARX-poly-Ala-Tract2-Partington-20%/
+    phenocopy-STXBP1-KCNQ2-carrier-female-10%),
+    5 seizure types (Epileptic-Spasms-West-72%/Tonic-Ohtahara-LGS-65%/GTCS-58%/Myoclonic-42%/Focal-Motor-Partington-35%)
+    with EEG correlates+clinical tips,
+    8 triggers (Fever-82%/Missed-AED-78%/Sleep-wake-72%/Sleep-deprivation-68%/
+    Intercurrent-illness-55%/Sensory-45%/Drug-interaction-40%/Emotional-35%),
+    7 treatments (ACTH-Level-A-West/VGB-Level-A-West-short-term/VPA-Level-B-POLG-screen/
+    CLB-Level-B/KD-Level-B-DRE/LEV-Level-B/Rufinamide-Level-B-LGS)
+    with dose+MOA+efficacy+safety+monitoring+ARX-specific notes,
+    5 contraindications (Tiagabine-ABSOLUTE-CI-NCSE/CBZ-OXC-PHT-HIGH-West-Ohtahara/
+    LTG-HIGH-myoclonic/VGB-long-term-HIGH/VPA-without-POLG-HIGH),
+    10 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.arx_dashboard as arx_
+    return _json_safe(arx_.get_breakdown())
+
+
+@app.get("/api/arx/definitions")
+async def arx_definitions():
+    """ARX definitions: 15 key concepts
+    (ARX-Xp21.3/Ohtahara-Syndrome/West-Syndrome-ISSX/XLAG-lissencephaly/
+    Partington-Syndrome/Poly-Ala-Tract-Expansion/MGE-Interneuron-Migration/
+    Hypsarrhythmia/Suppression-Burst/Tiagabine-NCSE-CI/POLG-Mandatory-VPA/
+    LGS-Evolution-ARX/X-linked-Cascade-Testing/Day14-EEG-Endpoint/SUDEP-ARX-DEE),
+    5 contraindications, 10 thresholds, 9 standards, 6 references
+    (Striano-2006-Epilepsia/Kato-2004-HumMutat/Guerrini-2007-Neurology/
+    Lux-2004-LancetNeurol/Darke-2010-DevMedChildNeurol/Bhatt-2023-Epilepsia)."""
+    import scripts.arx_dashboard as arx_
+    return _json_safe(arx_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

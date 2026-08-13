@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 199 dashboards",
+  "note": "Total: 200 dashboards",
   "updated_at": "2026-08-13",
   "must_have_p0": [
     {
@@ -2578,7 +2578,7 @@
     },
     {
       "id": "scn1b",
-      "name": "SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-β1 / 19q13.12)",
+      "name": "SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-\u03b21 / 19q13.12)",
       "status": "built",
       "route": "/scn1b",
       "api_prefix": "/api/scn1b",
@@ -2591,8 +2591,24 @@
       "frontend": "portal-next/app/scn1b/page.jsx",
       "viz": "5-tab: Overview / Patients-Etiology / Seizure-Types-Triggers / Treatments / Definitions",
       "note": "40-patient cohort, dual NaV1.1+NaV1.5 mechanism (GEFS+62%/Dravet-like22%/Brugada5-12%), 5-class etiology (GEFS+-de-novo-40%/GEFS+-familial-35%/Dravet-like-20%/phenocopy-5%), 8 treatments (VPA-Level-A/STP+VPA+CLB-triple-Level-A-Dravet-like/CLB-Level-B/LEV-Level-B/KD-Level-B/FFA-Level-C/CBD-Level-C/ACTH-Level-B), ABSOLUTE CI: Class-Ic/Ia antiarrhythmics+Brugada, ECG mandatory at dx, POLG before VPA, fever threshold 37.5C, 3 endpoints verified 200"
+    },
+    {
+      "id": "arx",
+      "name": "ARX Epilepsy (X-linked DEE / Ohtahara / West Syndrome / XLAG / Partington / Xp21.3)",
+      "status": "built",
+      "role": "Neurologist / Epileptologist / Genetic Counsellor",
+      "endpoints": [
+        "/api/arx/overview",
+        "/api/arx/breakdown",
+        "/api/arx/definitions"
+      ],
+      "viz": "5-tab: Overview / Patients-Etiologies / Seizures-Triggers / Treatments / Definitions",
+      "feature": "ARX X-linked DEE expert dashboard \u2014 40-patient cohort, 5-class etiology, 5 seizure types, 8 triggers, 7 treatments, 5 contraindications, 10 monitoring, 6-window lifecycle, 15 concepts",
+      "why": "ARX (Xp21.3) Aristaless-Related Homeobox paired-type homeodomain transcription factor. Most common X-linked epileptic encephalopathy gene. LOF \u2192 failed MGE GABAergic interneuron tangential migration \u2192 cortical interneuron deficit \u2192 Ohtahara (suppression-burst) / West (hypsarrhythmia). Poly-Ala Tract 1 expansion \u2192 West/ISSX; Tract 2 \u2192 Partington; Truncating homeodomain \u2192 XLAG (lissencephaly + ambiguous genitalia + neonatal hyperglycemia). ACTH Level A + VGB Level A West (UK-ISSS). Day 14 EEG mandatory. Tiagabine ABSOLUTE CI (NCSE dysmature cortex). CBZ/OXC/PHT HIGH RISK (Dravet mechanism). POLG mandatory before VPA. Poly-Ala expansions missed by standard sequencing (repeat-primed PCR). 50% sons at risk if carrier mother \u2014 genetic counselling MANDATORY. 3 endpoints /api/arx/overview|breakdown|definitions verified 200. expert_dashboards.json count 199->200",
+      "priority": "high",
+      "built_note": "ARX X-linked DEE dashboard built 2026-08-13: /api/arx/overview|breakdown|definitions + portal-next/app/arx/page.jsx + SiteNav wired next to SCN1B"
     }
   ],
   "summary": "199 expert dashboards built",
-  "count": 199
+  "count": 200
 }
