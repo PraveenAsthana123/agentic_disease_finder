@@ -23029,6 +23029,50 @@ async def aldh7a1_definitions():
     return _json_safe(al_.get_definitions())
 
 
+@app.get("/api/polg/overview")
+async def polg_overview():
+    """POLG Epilepsy (Alpers-Huttenlocher Syndrome / POLG-DEE / mtDNA Depletion) — overview.
+    41-patient cohort · POLG 15q26.1 · Mitochondrial DNA Polymerase Gamma.
+    Biallelic AR (AHS/DEE) + heterozygous AD (PEO/SANDO).
+    EPC (epilepsia partialis continua) hallmark · High-voltage slow + PLEDs/LPDs Alpers EEG triad.
+    VPA ABSOLUTE CI (acute liver failure in 32-45%) · LEV first-line (hepatically safe) ·
+    Mitochondrial cofactors (Riboflavin/CoQ10/L-carnitine) · KD (LCHAD screen first) ·
+    Sick day plan mandatory (glucose + CLB rescue) · Liver transplant NOT indicated in POLG-ALF ·
+    POLG sequencing MANDATORY before VPA in any child with unexplained focal epilepsy + LFT elevation."""
+    import scripts.polg_dashboard as pg_
+    return _json_safe(pg_.get_overview())
+
+
+@app.get("/api/polg/breakdown")
+async def polg_breakdown():
+    """POLG Epilepsy — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (fever 88%/VPA-iatrogenic 45%/missed-AED 72%/surgery 42%/
+    mitochondrial-toxins 35%/metabolic-decompensation 68%/disease-progression 60%/stress 40%),
+    8 treatments (LEV Level-B-first-line/CLB Level-C-adjunct/CBZ Level-B-focal/
+    Ketamine Level-C-SRSE-EPC/MitoCofactors Level-C/KD Level-B-DRE/PB Level-C-last-resort/
+    VPA Level-A-ABSOLUTE-CI) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (VPA-ABSOLUTE-CI/Metformin-ABSOLUTE-CI/LTx-NOT-INDICATED/POLG-before-VPA-MANDATORY),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.polg_dashboard as pg_
+    return _json_safe(pg_.get_breakdown())
+
+
+@app.get("/api/polg/definitions")
+async def polg_definitions():
+    """POLG Epilepsy — definitions: 14 key concepts
+    (POLG-PolGamma/AHS-Alpers-Huttenlocher/EPC-Epilepsia-Partialis-Continua/
+    mtDNA-Depletion-Syndrome/VPA-Alpers-Hepatopathy/p-Ala467Thr-common-European/
+    PLEDs-LPDs-lateralised/Respiratory-Chain-OXPHOS/Twinkle-TWNK-helicase/
+    COX-deficient-fibres-RRF/MIRAS-spectrum/POLG-Spectrum-Disorders/
+    Sick-Day-Plan/NAC-Alpers-Hepatopathy),
+    4 contraindications (VPA-ABSOLUTE/Metformin-ABSOLUTE/LTx-NOT-INDICATED/POLG-before-VPA),
+    10 thresholds, 8 standards, 6 references
+    (Naviaux-1999-AnnNeurol/Rahman-2012-ArchDisChild/Darin-2003-AnnNeurol/
+    Tzoulis-2006-Brain/Wolf-2009-JChildNeurol/Parikh-2015-MolGenetMetab)."""
+    import scripts.polg_dashboard as pg_
+    return _json_safe(pg_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -2409,6 +2409,22 @@
       "frontend": "portal-next/app/aldh7a1/page.jsx",
       "built_date": "2026-08-13",
       "description": "ALDH7A1 (5q23.2) \u2014 autosomal recessive antiquitin deficiency, 41-patient PDE cohort, 5-class etiology (ALDH7A1-biallelic-LOF-classic-neonatal 44%/biallelic-missense-partial-atypical 29%/biallelic-splice-site 12%/biallelic-CNV 7%/clinical-PDE-negative-phenocopy 7%), 4 seizure types (neonatal-multifocal-clonic 90%/infantile-spasms-West 32%/GTCS-breakthrough 44%/focal-late-onset-atypical 20%), 8 triggers (subtherapeutic-B6-dose 92%/missed-B6-dose 78%/fever 72%/high-lysine-diet 55%/rapid-growth 42%/diet-non-adherence 35%/folate-depletion 22%/AED-enzyme-inducers 18%), 8 treatments (Pyridoxine Level-A-first-line/Folinic-acid Level-B/Lysine-restriction Level-B-triple-therapy/PLP Level-B-PNPO-second-line/L-Arginine Level-C/Phenobarbitone Level-C-neonatal-bridge/ACTH Level-C-West-syndrome/LEV Level-C-adjunct) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (withhold-pyridoxine-ABSOLUTE-CI/AASA-post-B6-diagnostic-error/lysine-rich-diet-HIGH/folic-acid-substitute-HIGH), 8 monitoring items (AASA-pipecolic-acid-PLP/pyridoxine-peripheral-neuropathy-NCS/folinic-acid-CSF/lysine-TLC-q3M/developmental-assessment-q6M/EEG-burst-suppression/neuroimaging-q12M/dietary-adherence), 6-window lifecycle (neonatal-0-6M/infantile-triple-therapy-6M-2Y/toddler-2-5Y/school-age-5-12Y/adolescent-12-18Y/adult-18Y+), 14 concepts (ALDH7A1-antiquitin/PDE-ALDH7A1/AASA-biomarker/P6C-PLP-Knoevenagel-condensation/PLP-pyridoxal-5-phosphate/Triple-Therapy/Pipecolic-acid/Folinic-acid-PDE/Lysine-restricted-diet/PNPO-phenocopy/Autosomal-recessive-ALDH7A1/Pyridoxine-peripheral-neuropathy/L-Arginine-BBB-competition/PDE-Consortium-Registry), 8 standards (ILAE-2022/NICE-NG217/JIMD-PDE-Guidelines-2018/ACMG-AMP-2015/ACNS-EEG-2021/PDE-Consortium-2016/van-Karnebeek-2012/Mills-2006-NatMed), 10 thresholds (IV-B6-30mg-kg-neonatal-diagnostic/AASA-before-B6-mandatory/Triple-therapy-superior-monotherapy/pyridoxine-neuropathy-200mg-max/KD-2AED-failures/AASA-normalization-3M/folinic-acid-CSF-diagnosis/L-arginine-BBB/developmental-plateau-warning/SUDEP-risk-annually), 6 references (Mills-2006-NatMed/van-Karnebeek-2012-JIMD/Coughlin-2015-JIMD/Mercimek-Mahmutoglu-2014-AnnNeurol/Pearl-2022-PediatrNeurol/Plecko-2007-AnnNeurol), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/aldh7a1/overview|breakdown|definitions verified 200, expert_dashboards.json count 185->186"
+    },
+    {
+      "id": "polg",
+      "name": "POLG Epilepsy (Alpers-Huttenlocher Syndrome / POLG-DEE / mtDNA Depletion)",
+      "status": "built",
+      "route": "/polg",
+      "api": [
+        "/api/polg/overview",
+        "/api/polg/breakdown",
+        "/api/polg/definitions"
+      ],
+      "dashboard_id": 187,
+      "gene": "POLG",
+      "locus": "15q26.1",
+      "built": "2026-08-13",
+      "note": "POLG 15q26.1 Mitochondrial DNA Polymerase Gamma \u2014 Alpers-Huttenlocher Syndrome (AHS). AR biallelic (AHS/DEE) + AD heterozygous (PEO/SANDO). 41-patient cohort. VPA ABSOLUTE CI (acute liver failure 32-45%, mortality >80%). EPC (epilepsia partialis continua) hallmark. LEV first-line (hepatically safe). Mitochondrial cofactors (Riboflavin/CoQ10/L-carnitine). KD (LCHAD screen first). 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions). 3 endpoints /api/polg/overview|breakdown|definitions verified 200."
     }
   ],
   "summary": {
