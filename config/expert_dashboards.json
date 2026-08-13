@@ -1,7 +1,7 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 184 dashboards",
-  "updated_at": "2026-08-12",
+  "note": "Total: 186 dashboards",
+  "updated_at": "2026-08-13",
   "must_have_p0": [
     {
       "id": "raw_eeg_waveform",
@@ -2395,17 +2395,31 @@
         "/api/kcna2/definitions"
       ],
       "note": "41-patient KCNA2-DEE cohort (KCNA2 1p13.3, Kv1.2 voltage-gated K+ channel, dual-mechanism: LOF dominant-negative/haploinsufficiency \u2192 multifocal DEE; GOF hyperpolarised K+ leak in interneurons \u2192 disinhibition \u2192 DEE + progressive cerebellar ataxia + cerebellar atrophy), 5-class etiology catalog (KCNA2-missense-LOF-dominant-negative 41%/KCNA2-missense-GOF-cerebellar 34%/KCNA2-truncating-haploinsufficiency 12%/KCNA2-VUS-ambiguous 7%/KCNA2-negative-phenocopy 6%), 4 seizure types (focal-pericentral 88%/GTCS 71%/infantile-spasms 32%/atonic-drop-attacks 24%) with EEG correlates+clinical tips, 8 triggers (fever 78%/sleep-deprivation 72%/missed-AED 68%/stress 55%/movement-startle-GOF 45%/AED-iatrogenic 38%/photic-GOF 28%/HV 22%), 8 treatments (VPA Level-B/CLB Level-B/LEV Level-C/KD Level-B-LOF/4-AP Level-C-GOF-ONLY-precision/VGB Level-B-IS/Rufinamide Level-C/Callosotomy Level-B) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (4-AP-LOF-ABSOLUTE-CI/VPA-POLG1-HIGH/Na-blocker-myoclonic-atonic-HIGH/withhold-4-AP-GOF-confirmed-HIGH), 8 monitoring items (VPA-TDM-POLG1/4-AP-SARA-ECG-GOF/MRI-cerebellar-volumetry/neuropsych-q12M/EEG-multifocal-q6M/POLG1-pre-VPA/KCNA2-functional-assay/SUDEP), 6-window lifecycle (neonatal/infantile-IS/toddler-KD-4AP/school-age/adolescent-transition/adult), 14 concepts (KCNA2-Kv1.2/KCNA2-DEE/Dual-mechanism/GOF-leak/LOF-dominant-negative/4-AP-precision-GOF/Pericentral-somatosensory/Cerebellar-atrophy-GOF/SARA/Multifocal-IED-LOF/Dominant-negative-tetramer/P405L-hotspot/KCNA2-Alliance/KD-LOF), 8 standards (ILAE-2022/NICE-NG217/ClinGen-DEFINITIVE/ACMG-AMP-2015/ACNS-EEG-2021/MHRA-PREVENT-2024/Syrbe-2015-NatGenet/Masnada-2017-BRAIN), 10 thresholds (GOF-assay-before-4AP/VPA-TDM-50-100/KD-2AED/POLG1-before-VPA/4AP-12wk-trial/cerebellum-atrophy-GOF/SARA-MCID-4/MRI-q12M-GOF/SUDEP-annually/norclobazam-50-300), 6 references (Syrbe-2015-NatGenet/Masnada-2017-BRAIN/Semmler-2020-EJPN/Allen-2014-Neurology/Smart-1998-Neuron/Lehmann-Horn-1999-PhysiolRev), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/kcna2/overview|breakdown|definitions verified 200, expert_dashboards.json count 184->185"
+    },
+    {
+      "id": "aldh7a1",
+      "name": "ALDH7A1-PDE (Pyridoxine-Dependent Epilepsy / Antiquitin Deficiency / 5q23)",
+      "status": "built",
+      "route": "/aldh7a1",
+      "api": [
+        "/api/aldh7a1/overview",
+        "/api/aldh7a1/breakdown",
+        "/api/aldh7a1/definitions"
+      ],
+      "frontend": "portal-next/app/aldh7a1/page.jsx",
+      "built_date": "2026-08-13",
+      "description": "ALDH7A1 (5q23.2) \u2014 autosomal recessive antiquitin deficiency, 41-patient PDE cohort, 5-class etiology (ALDH7A1-biallelic-LOF-classic-neonatal 44%/biallelic-missense-partial-atypical 29%/biallelic-splice-site 12%/biallelic-CNV 7%/clinical-PDE-negative-phenocopy 7%), 4 seizure types (neonatal-multifocal-clonic 90%/infantile-spasms-West 32%/GTCS-breakthrough 44%/focal-late-onset-atypical 20%), 8 triggers (subtherapeutic-B6-dose 92%/missed-B6-dose 78%/fever 72%/high-lysine-diet 55%/rapid-growth 42%/diet-non-adherence 35%/folate-depletion 22%/AED-enzyme-inducers 18%), 8 treatments (Pyridoxine Level-A-first-line/Folinic-acid Level-B/Lysine-restriction Level-B-triple-therapy/PLP Level-B-PNPO-second-line/L-Arginine Level-C/Phenobarbitone Level-C-neonatal-bridge/ACTH Level-C-West-syndrome/LEV Level-C-adjunct) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (withhold-pyridoxine-ABSOLUTE-CI/AASA-post-B6-diagnostic-error/lysine-rich-diet-HIGH/folic-acid-substitute-HIGH), 8 monitoring items (AASA-pipecolic-acid-PLP/pyridoxine-peripheral-neuropathy-NCS/folinic-acid-CSF/lysine-TLC-q3M/developmental-assessment-q6M/EEG-burst-suppression/neuroimaging-q12M/dietary-adherence), 6-window lifecycle (neonatal-0-6M/infantile-triple-therapy-6M-2Y/toddler-2-5Y/school-age-5-12Y/adolescent-12-18Y/adult-18Y+), 14 concepts (ALDH7A1-antiquitin/PDE-ALDH7A1/AASA-biomarker/P6C-PLP-Knoevenagel-condensation/PLP-pyridoxal-5-phosphate/Triple-Therapy/Pipecolic-acid/Folinic-acid-PDE/Lysine-restricted-diet/PNPO-phenocopy/Autosomal-recessive-ALDH7A1/Pyridoxine-peripheral-neuropathy/L-Arginine-BBB-competition/PDE-Consortium-Registry), 8 standards (ILAE-2022/NICE-NG217/JIMD-PDE-Guidelines-2018/ACMG-AMP-2015/ACNS-EEG-2021/PDE-Consortium-2016/van-Karnebeek-2012/Mills-2006-NatMed), 10 thresholds (IV-B6-30mg-kg-neonatal-diagnostic/AASA-before-B6-mandatory/Triple-therapy-superior-monotherapy/pyridoxine-neuropathy-200mg-max/KD-2AED-failures/AASA-normalization-3M/folinic-acid-CSF-diagnosis/L-arginine-BBB/developmental-plateau-warning/SUDEP-risk-annually), 6 references (Mills-2006-NatMed/van-Karnebeek-2012-JIMD/Coughlin-2015-JIMD/Mercimek-Mahmutoglu-2014-AnnNeurol/Pearl-2022-PediatrNeurol/Plecko-2007-AnnNeurol), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/aldh7a1/overview|breakdown|definitions verified 200, expert_dashboards.json count 185->186"
     }
   ],
   "summary": {
-    "total": 182,
-    "built": 182,
+    "total": 186,
+    "built": 186,
     "partial": 0,
     "planned": 0,
-    "updated_at": "2026-08-12",
-    "count": 182,
-    "total_dashboards": 182,
-    "total_built": 182
+    "updated_at": "2026-08-13",
+    "count": 186,
+    "total_dashboards": 186,
+    "total_built": 186
   },
-  "count": 183
+  "count": 186
 }

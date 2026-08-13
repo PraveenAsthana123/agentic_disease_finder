@@ -22976,6 +22976,59 @@ async def kcna2_definitions():
     return _json_safe(k2_.get_definitions())
 
 
+@app.get("/api/aldh7a1/overview")
+async def aldh7a1_overview():
+    """ALDH7A1-PDE (Pyridoxine-Dependent Epilepsy / Antiquitin Deficiency) — overview:
+    ALDH7A1 (5q23.2), alpha-aminoadipic semialdehyde dehydrogenase (antiquitin).
+    Autosomal recessive LOF → AASA/P6C accumulation → P6C-PLP Knoevenagel condensation →
+    PLP inactivation → GAD/AADC failure → GABA deficiency → neonatal burst-suppression seizures.
+    PRECISION THERAPY: IV pyridoxine 30 mg/kg (diagnostic + therapeutic — EEG response ≤1 hour).
+    TRIPLE THERAPY: pyridoxine + folinic acid + lysine restriction.
+    41-patient cohort: 5-class etiology
+    (ALDH7A1-biallelic-LOF-classic-neonatal 44%/biallelic-missense-partial-atypical 29%/
+    biallelic-splice-site 12%/biallelic-CNV 7%/clinical-PDE-ALDH7A1-negative-phenocopy 7%),
+    4 seizure types (neonatal-multifocal-clonic 90%/infantile-spasms-West 32%/
+    GTCS-breakthrough 44%/focal-late-onset-atypical 20%),
+    8 triggers (subtherapeutic-B6-dose 92%/missed-B6-dose 78%/fever 72%/
+    high-lysine-diet 55%/rapid-growth 42%/diet-non-adherence 35%/folate-depletion 22%/
+    AED-enzyme-inducers 18%),
+    4 clinical alerts (mandatory-IV-B6-neonatal/AASA-before-B6/triple-therapy-superior/
+    sick-day-protocol)."""
+    import scripts.aldh7a1_dashboard as al_
+    return _json_safe(al_.get_overview())
+
+
+@app.get("/api/aldh7a1/breakdown")
+async def aldh7a1_breakdown():
+    """ALDH7A1-PDE — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (subtherapeutic-B6 92%/missed-dose 78%/fever 72%/high-lysine 55%/
+    rapid-growth 42%/diet-non-adherence 35%/folate-depletion 22%/AED-inducers 18%),
+    8 treatments (Pyridoxine Level-A-first-line/Folinic-acid Level-B-adjunct/
+    Lysine-restriction Level-B-triple-therapy/PLP Level-B-PNPO-second-line/
+    L-Arginine Level-C-BBB-competitor/Phenobarbitone Level-C-neonatal-bridge/
+    ACTH Level-C-West-syndrome/LEV Level-C-breakthrough-adjunct)
+    with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (withhold-pyridoxine-ABSOLUTE-CI/AASA-post-B6-diagnostic-error/
+    lysine-rich-diet-HIGH/folic-acid-substitute-HIGH),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.aldh7a1_dashboard as al_
+    return _json_safe(al_.get_breakdown())
+
+
+@app.get("/api/aldh7a1/definitions")
+async def aldh7a1_definitions():
+    """ALDH7A1-PDE — definitions: 14 concepts
+    (ALDH7A1-antiquitin/PDE-ALDH7A1/AASA-biomarker/P6C-PLP-Knoevenagel-condensation/
+    PLP-pyridoxal-5-phosphate/Triple-Therapy/Pipecolic-acid/Folinic-acid-PDE/
+    Lysine-restricted-diet/PNPO-phenocopy/Autosomal-recessive-ALDH7A1/
+    Pyridoxine-peripheral-neuropathy/L-Arginine-BBB-competition/PDE-Consortium-Registry),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Mills-2006-NatMed/van-Karnebeek-2012-JIMD/Coughlin-2015-JIMD/
+    Mercimek-Mahmutoglu-2014-AnnNeurol/Pearl-2022-PediatrNeurol/Plecko-2007-AnnNeurol)."""
+    import scripts.aldh7a1_dashboard as al_
+    return _json_safe(al_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
