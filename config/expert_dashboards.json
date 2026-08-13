@@ -2335,6 +2335,16 @@
       "script": "scripts/grin2a_dashboard.py",
       "frontend": "portal-next/app/grin2a/page.jsx",
       "description": "GRIN2A-EAS Dashboard \u2014 41-patient cohort, 5-class etiology catalog, SWI/CSWS monitoring, Landau-Kleffner Syndrome, CBZ absolute CI, nocturnal CLB, ACTH for LKS, 14 concepts, 6 lifecycle windows"
+    },
+    {
+      "id": "syngap1",
+      "name": "SYNGAP1 Encephalopathy (SYNGAPathy / SYNGAP1-DEE / MRD5)",
+      "category": "Epilepsy Syndromes",
+      "status": "built",
+      "route": "/syngap1",
+      "api_route": "/api/syngap1/{overview,breakdown,definitions}",
+      "component": "portal-next/app/syngap1/page.jsx",
+      "note": "41-patient SYNGAP1-DEE cohort, 5-class etiology (De-novo-SYNGAP1-truncating-frameshift-DEE-severe 40%/De-novo-SYNGAP1-missense-LOF-moderate 29%/De-novo-SYNGAP1-splice-site-DEE 15%/De-novo-SYNGAP1-CNV-deletion-6p21-DEE 10%/Clinical-SYNGAP1-negative-phenocopy 6%), 4 seizure types (Myoclonic-atonic-drop-attacks 80%/Eyelid-myoclonia-EC-sensitivity 70%/Atypical-absence 65%/GTCS 55%), 8 triggers, 8 treatments (VPA+ETH first-line/KD for DRE/CBZ-AVOID), 4 contraindications, 8 monitoring items, 6-window lifecycle, 14 concepts, 8 standards, 10 thresholds, 6 references"
     }
   ],
   "summary": {

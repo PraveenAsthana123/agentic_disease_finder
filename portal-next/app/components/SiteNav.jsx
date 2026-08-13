@@ -334,6 +334,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnt1">&#x26a1; KCNT1 Encephalopathy (KNa1.1 / EIMFS / 9q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pcdh19">&#x1f9ec; PCDH19 Clustering Epilepsy (Protocadherin-19 / Xq22)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/grin2a">&#x1f9e0; GRIN2A Epilepsy-Aphasia Spectrum (GluN2A / CSWS / LKS / 2q33)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/syngap1">&#x1f9ec; SYNGAP1 Encephalopathy (SYNGAPathy / RasGAP / 6p21)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>

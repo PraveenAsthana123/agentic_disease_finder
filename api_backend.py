@@ -22735,6 +22735,54 @@ async def grin2a_definitions():
     return _json_safe(gd_.get_definitions())
 
 
+@app.get("/api/syngap1/overview")
+async def syngap1_overview():
+    """SYNGAP1 Encephalopathy (SYNGAPathy / SYNGAP1-DEE / MRD5) — overview:
+    SYNGAP1 (6p21.32), SynGAP1 Ras/Rap GTPase-activating protein, 41-patient cohort,
+    de novo haploinsufficiency — Ras-ERK-MAPK brake removed → excess AMPA receptor
+    trafficking → network hyperexcitability → ID + epilepsy.
+    5-class etiology (De-novo-SYNGAP1-truncating-frameshift-DEE-severe 40%/
+    De-novo-SYNGAP1-missense-LOF-moderate 29%/De-novo-SYNGAP1-splice-site-DEE 15%/
+    De-novo-SYNGAP1-CNV-deletion-6p21-DEE 10%/Clinical-SYNGAP1-negative-phenocopy 6%),
+    4 seizure types (Myoclonic-atonic-drop-attacks 80%/Eyelid-myoclonia-EC-sensitivity 70%/
+    Atypical-absence 65%/GTCS 55%), 8 triggers (Eye-closure 72%/Photic 68%/Fever 62%/
+    Missed-AED 55%/Stress 48%/Sleep-deprivation 42%/Screen-use 35%/HV 28%),
+    6 clinical alerts including DROP-ATTACK-HELMET-mandatory and CBZ/OXC/PHT-AVOID."""
+    import scripts.syngap1_dashboard as sg_
+    return _json_safe(sg_.get_overview())
+
+
+@app.get("/api/syngap1/breakdown")
+async def syngap1_breakdown():
+    """SYNGAP1 Encephalopathy — breakdown: 41 patients, 5-class etiology catalog,
+    8 triggers (Eye-closure-ECIPA 72%/Photic-PPR 68%/Fever 62%/Missed-AED 55%/
+    Stress 48%/Sleep-deprivation 42%/Screen-use 35%/HV 28%),
+    8 treatments (VPA Level-B-first-line-broad-spectrum/ETH Level-B-eyelid-myoclonia-absence/
+    CLB Level-C-myoclonic-atonic-adjunct/LEV Level-C-GTCS-adjunct/KD Level-B-DRE-drop-attacks/
+    Fenfluramine Level-C-investigational/Perampanel Level-C-AMPA-antagonist/
+    LTG-CAUTION-myoclonic-atonic-exacerbation) with dose+MOA+efficacy+safety+monitoring,
+    4 contraindications (CBZ/OXC-AVOID/PHT-AVOID/LTG-CAUTION/VGB-AVOID-absence),
+    8 monitoring items, 6-window lifecycle."""
+    import scripts.syngap1_dashboard as sg_
+    return _json_safe(sg_.get_breakdown())
+
+
+@app.get("/api/syngap1/definitions")
+async def syngap1_definitions():
+    """SYNGAP1 Encephalopathy — definitions: 14 concepts
+    (SYNGAP1-SynGAP1-RasGAP-dendritic-spine/Ras-ERK-MAPK-haploinsufficiency/
+    SYNGAP1-DEE-MRD5-ILAE-2022/Myoclonic-atonic-drop-attacks/
+    Eyelid-myoclonia-EC-sensitivity-ECIPA/Photosensitivity-PPR/
+    CBZ-OXC-PHT-AVOID-myoclonic-atonic/KD-drop-attacks/Fenfluramine-investigational/
+    MEK-inhibitor-preclinical/VPA-ETH-combination/SYNGAP1-Research-Fund/
+    ASD-ID-comorbidity/Strabismus-ophthalmology),
+    4 contraindications, 10 thresholds, 8 standards, 6 references
+    (Hamdan-2009-NatGenet/Mignot-2016-Brain/Vlaskamp-2019-Neurology/
+    Parker-2015-EurJHumGenet/Mignot-2020-NatRevDisease/Bhatt-2023-EpilepsyCurrents)."""
+    import scripts.syngap1_dashboard as sg_
+    return _json_safe(sg_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
