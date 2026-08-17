@@ -24238,6 +24238,44 @@ async def nprl2_definitions():
     return _json_safe(n2_.get_definitions())
 
 
+@app.get("/api/gabra2/overview")
+async def gabra2_overview():
+    """GABRA2 Epilepsy (GGE / GEFS+ Spectrum / Alcohol-Sensitive / GABA-A α2 Subunit / 4p12) — KPI overview.
+    40-patient cohort (GABRA2 4p12); α2 subunit at AIS + limbic synapses; BZD anxiolytic target (α2/γ2);
+    alcohol-sensitive GGE (GABRA2 haplotype → alcohol dependence + alcohol-withdrawal seizure risk);
+    5 etiology classes (de-novo-LOF-GEFS+-32% / familial-JME-like-25% / familial-CAE-22% /
+    de-novo-severe-DEE-15% / phenocopy-6%); CBZ/OXC/PHT ABSOLUTE CI; Tiagabine ABSOLUTE CI;
+    LTG requires EEG pre-prescribing (15-20% myoclonic worsening); POLG before VPA; VPPP females."""
+    import scripts.gabra2_dashboard as ga2_
+    return _json_safe(ga2_.get_overview())
+
+
+@app.get("/api/gabra2/breakdown")
+async def gabra2_breakdown():
+    """GABRA2 Epilepsy (GGE / GEFS+ / Alcohol-Sensitive) — full breakdown (5-class etiology catalog,
+    15-patient sample, 5 seizure types [Febrile-GEFS+-82%/Absence-68%/Myoclonic-58%/GTCS-52%/
+    Alcohol-Withdrawal-32%], 8 triggers [Alcohol-85%/Sleep-dep-82%/Missed-AED-78%/Fever-72%/
+    Stress-60%/Photosensitivity-28%/HV-22%/Catamenial-20%], 7 treatments [VPA-Level-A/ESM-Level-A/
+    LEV-Level-B/LTG-Level-B-CAUTION/CLB-Level-B/KD-Level-B/PER-Level-C], 6 CIs [CBZ/OXC/PHT-ABSOLUTE/
+    TGB-ABSOLUTE/LTG-myoclonic-HIGH/VPA-VPPP-HIGH/VPA-POLG-HIGH/Alcohol-HIGH],
+    14 monitoring items, 6 lifecycle windows)."""
+    import scripts.gabra2_dashboard as ga2_
+    return _json_safe(ga2_.get_breakdown())
+
+
+@app.get("/api/gabra2/definitions")
+async def gabra2_definitions():
+    """GABRA2 Epilepsy (GGE / GEFS+ / Alcohol-Sensitive) — definitions (15 concepts: GABRA2-4p12/
+    GABA-A-α2-subunit/AIS-perisomatic-inhibition/BZD-anxiolytic-α2-α3/GGE-ILAE2022/GEFS+/
+    Alcohol-sensitive-epilepsy/JME/CAE/GGE-aggravation-NaV-blockers/VPPP-MHRA2021/POLG-Alpers/
+    AUDIT-C/SANAD-II/SUDEP; 12 thresholds [fever-38C/BZD-0.2mg/VPA-TDM/ESM-TDM/LTG-TDM/
+    driving-12M/AED-trials/AUDIT-C/VPPP/POLG-timing/KD-ketones]; 12 standards [ILAE-2022/NICE-NG217/
+    Maljevic-2013/Delahanty-2011/Moller-2017/SANAD-II-2021/HLA-B1502-CPIC/MHRA-VPPP/FDA-REMS/
+    ILAE-Diet/ACMG-AMP/Philibert-2009]; 6 references)."""
+    import scripts.gabra2_dashboard as ga2_
+    return _json_safe(ga2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
