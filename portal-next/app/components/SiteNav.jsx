@@ -346,6 +346,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/wwox">&#x1f9ec; WWOX Epilepsy / WOREE (DEE28 / FRA16D / WW-Oxidoreductase / AR / 16q23)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/lgi1">&#x1f9e0; LGI1 Epilepsy / ADLTE (Auditory Aura / ADAM22-ADAM23 / AD-70%-penetrance / 10q23)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/rorb">&#x1f9ec; RORB Epilepsy / GGE (Thalamocortical TF / Absence-Myoclonic-MAE-DEE / 9q21)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/sptan1">&#x1f9ec; SPTAN1 Epilepsy / DEE5 (Alpha-II Spectrin / AIS Cytoskeleton / West→LGS / 9q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/aldh7a1">&#x1f9ec; ALDH7A1 Epilepsy (Pyridoxine-Dependent / Antiquitin / PDE / 5q23)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/polg">&#x1f9ec; POLG Epilepsy (Alpers-Huttenlocher / mtDNA Depletion / VPA-CI / 15q26)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/slc2a1">&#x1f9ec; SLC2A1 Epilepsy (GLUT1-DS / De Vivo Disease / KD Precision / 1p34)</Link></li>

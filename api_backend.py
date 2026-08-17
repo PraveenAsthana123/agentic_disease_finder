@@ -24115,6 +24115,32 @@ async def rorb_definitions():
     return _json_safe(rb_.get_definitions())
 
 
+@app.get("/api/sptan1/overview")
+async def sptan1_overview():
+    """SPTAN1 Epilepsy — DEE5 / West Syndrome overview KPIs (40-patient cohort, OMIM #613477,
+    Alpha-II Spectrin, AIS cytoskeletal collapse, IS + hypsarrhythmia + LGS progression).
+    5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 contraindications,
+    12 thresholds, 12 standards, 6 references (Hamdan-2012/Syrbe-2017/UKISS-2017/Bhatt-2023/Specchio-2021/Wild-2009)."""
+    import scripts.sptan1_dashboard as sp_
+    return _json_safe(sp_.get_overview())
+
+
+@app.get("/api/sptan1/breakdown")
+async def sptan1_breakdown():
+    """SPTAN1 Epilepsy — full breakdown (etiology catalog, 15-patient sample,
+    seizure detail, trigger detail, treatment detail, contraindications, monitoring, lifecycle)."""
+    import scripts.sptan1_dashboard as sp_
+    return _json_safe(sp_.get_breakdown())
+
+
+@app.get("/api/sptan1/definitions")
+async def sptan1_definitions():
+    """SPTAN1 Epilepsy — definitions (15 concepts, contraindications, thresholds, standards, references).
+    Includes DEE5, AIS, dominant-negative mechanism, West syndrome, LGS, ACTH, SHARE REMS, POLG, VPPP, KD."""
+    import scripts.sptan1_dashboard as sp_
+    return _json_safe(sp_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

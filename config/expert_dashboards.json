@@ -2767,7 +2767,35 @@
       "lifecycle",
       "concepts"
     ],
-    "note": "Total: 211 dashboards",
+    "note": "Total: 212 dashboards",
     "built_note": "RORB Epilepsy (GGE / RORB-GGE / DEE-RORB / ROR\u03b2 Orphan Nuclear Receptor / Thalamocortical Transcription Factor / 9q21.13) Dashboard built 2026-08-17. 5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/rorb/overview|breakdown|definitions verified 200. portal-next/app/rorb/page.jsx + SiteNav wired next to LGI1. expert_dashboards.json count 210\u2192211."
+  },
+  {
+    "id": "sptan1",
+    "name": "SPTAN1 Epilepsy (DEE5 / West Syndrome / Alpha-II Spectrin / AIS Cytoskeleton / AD de-novo / 9q34.11)",
+    "gene": "SPTAN1",
+    "locus": "9q34.11",
+    "status": "built",
+    "route": "/sptan1",
+    "api_prefix": "/api/sptan1",
+    "script": "scripts/sptan1_dashboard.py",
+    "frontend": "portal-next/app/sptan1/page.jsx",
+    "n_patients": 40,
+    "phenotype": "West Syndrome (IS + hypsarrhythmia) \u2192 LGS (tonic + drop attacks); drug-resistant DEE5",
+    "inheritance": "AD; >95% de novo",
+    "omim": "#613477",
+    "first_line": "ACTH / Prednisolone (IS first-line); VGB (IS second-line, SHARE REMS)",
+    "ci": "CBZ/OXC/PHT (IS aggravation HIGH CI) / Tiagabine (NCSE ABSOLUTE CI) / VPA without POLG (fatal Alpers) / VGB without ERG (irreversible VFD)",
+    "viz": [
+      "etiology-donut",
+      "seizure-bars",
+      "trigger-bars",
+      "treatment-cards",
+      "patient-table",
+      "lifecycle",
+      "concepts"
+    ],
+    "note": "Total: 212 dashboards",
+    "built_note": "SPTAN1 Epilepsy (DEE5 / West Syndrome / Alpha-II Spectrin / AIS Cytoskeleton / Dominant-Negative / 9q34.11) Dashboard built 2026-08-17. 5 etiology classes (SPTAN1-de-novo-DN-West-LGS-45%/SPTAN1-de-novo-LOF-DEE-25%/SPTAN1-de-novo-partial-DN-20%/SPTAN1-de-novo-late-DEE-8%/phenocopy-2%), 5 seizure types, 8 triggers, 7 treatments (ACTH-Level-A/VGB-Level-A-SHARE-REMS/Prednisolone-Level-A/CLB-Level-B/VPA-Level-B/KD-Level-B/LEV-Level-B), 5 CIs, 14 monitoring items, 15 concepts, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/sptan1/overview|breakdown|definitions verified 200. portal-next/app/sptan1/page.jsx + SiteNav wired next to RORB. expert_dashboards.json count 211\u2192212."
   }
 ]
