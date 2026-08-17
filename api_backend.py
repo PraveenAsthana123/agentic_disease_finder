@@ -24401,6 +24401,55 @@ async def atp1a3_definitions():
     return _json_safe(at3_.get_definitions())
 
 
+@app.get("/api/stx1b/overview")
+async def stx1b_overview():
+    """STX1B Epilepsy (GEFS+ Spectrum / Febrile Seizures Plus / Focal Epilepsy of Infancy / Syntaxin-1B / 16p11.2) — KPI overview.
+    40-patient cohort (STX1B 16p11.2); presynaptic t-SNARE protein in SNARE complex (STX1B + SNAP25 + VAMP2);
+    SNARE complex zippering pulls synaptic vesicle to plasma membrane → neurotransmitter release;
+    STX1B LOF → impaired vesicle docking/fusion → reduced neurotransmitter release →
+    disproportionate GABAergic interneuron impairment → cortical disinhibition → GEFS+ spectrum;
+    pLI ~0.92; AD (de novo 40% / familial 60%); OMIM GEFS+9 #616172;
+    natural companion to STXBP1 (Munc18-1) — same SNARE pathway, milder phenotype than STXBP1 DEE;
+    5 etiology classes (missense-GEFS+-38% / truncating-GEFS+-27% / focal-epilepsy-infancy-20% /
+    Dravet-like-10% / phenocopy-5%); AEDs: VPA Level-A / LEV Level-B / LTG Level-B /
+    LCM Level-B-focal / CLB Level-B-febrile-prophylaxis;
+    Tiagabine ABSOLUTE CI (NCSE); CBZ/OXC CAUTION (GGE component); POLG1 mandatory before VPA; VPPP females;
+    fever threshold 37.5°C → acetaminophen prophylaxis; Schubert-2014-NatGenet discovery."""
+    import scripts.stx1b_dashboard as stx1b_
+    return _json_safe(stx1b_.get_overview())
+
+
+@app.get("/api/stx1b/breakdown")
+async def stx1b_breakdown():
+    """STX1B Epilepsy (GEFS+ / Focal Epilepsy of Infancy / Dravet-like) — full breakdown
+    (5-class etiology catalog, 15-patient sample, 5 seizure types [FS+-85%/Focal-55%/
+    GTCS-45%/Myoclonic-18%/Febrile-SE-12%],
+    8 triggers [Fever-92%/Sleep-dep-70%/Missed-AED-65%/Viral-illness-50%/
+    Vaccination-35%/Alcohol-30%/Stress-28%/Hyperthermia-22%],
+    7 treatments [VPA-Level-A-full-spectrum-POLG-VPPP/LEV-Level-B-SV2A/LTG-Level-B-CAUTION-myoclonic/
+    LCM-Level-B-focal/CLB-Level-B-febrile-prophylaxis/KD-Level-B-Dravet-like/VPA-POLG-VPPP-screen],
+    5 CIs [TGB-ABSOLUTE-CI-NCSE/VPA-POLG1-ABSOLUTE/CBZ-OXC-CAUTION-GGE/PHT-CAUTION-myoclonic/VGB-HIGH],
+    14 monitoring items, 6 lifecycle windows)."""
+    import scripts.stx1b_dashboard as stx1b_
+    return _json_safe(stx1b_.get_breakdown())
+
+
+@app.get("/api/stx1b/definitions")
+async def stx1b_definitions():
+    """STX1B Epilepsy (GEFS+ / Focal Epilepsy of Infancy) — definitions (15 concepts:
+    STX1B-16p11.2/t-SNARE/SNARE-Complex/STXBP1-Munc18-1/GEFS+/FS+/VPPP-MHRA2021/
+    POLG1-Alpers/CLB-intermittent-prophylaxis/LCM-PR-prolongation/HLA-B1502/
+    SUDEP/NCSE/Haploinsufficiency/ACMG-AMP-2015;
+    12 thresholds [fever-37.5C-prophylaxis/seizure-2min-rescue/SE-5min/VPA-TDM-50-100/
+    VPA-ammonia-2xULN/LCM-PR-200ms/LTG-titration-25mg-2wk/sz-free-2Y-withdrawal/
+    SUDEP-annual/neurodev-q2Y/VPPP-annual/folate-5mg-preconception];
+    12 standards [ILAE-2022/NICE-NG217/Schubert-2014-NatGenet/Wolking-2019-Brain/
+    Vlaskamp-2019-Epilepsia/Bhatt-2023/MHRA-VPPP-2021/CPIC-POLG-VPA-2023/
+    CPIC-HLA-B1502-2023/FDA-CLB-REMS/ILAE-Diet-2018/ACMG-AMP-2015]; 6 references)."""
+    import scripts.stx1b_dashboard as stx1b_
+    return _json_safe(stx1b_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
