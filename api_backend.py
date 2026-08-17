@@ -23756,6 +23756,46 @@ async def kcnq3_definitions():
     return _json_safe(kq3_.get_definitions())
 
 
+@app.get("/api/gabrb2/overview")
+async def gabrb2_overview():
+    """GABRB2 overview: gene=GABRB2 locus=5q34, GABA-A β2 subunit,
+    GEFS+ (40%) / CAE (20%) / Dravet-like DEE (20%) / LGS-DEE (10%) / phenocopy (10%),
+    40-patient cohort, key KPIs (seizure-free/DRE/on-VPA/on-ETX/POLG-done/VPA-without-POLG),
+    contraindications summary (Tiagabine-ABSOLUTE-CI/CBZ-OXC-PHT-HIGH/LTG-MODERATE-HIGH/
+    VPA-without-POLG-HIGH/VPA-pregnancy-HIGH), 12 thresholds, references."""
+    import scripts.gabrb2_dashboard as gb2_
+    return _json_safe(gb2_.get_overview())
+
+
+@app.get("/api/gabrb2/breakdown")
+async def gabrb2_breakdown():
+    """GABRB2 breakdown: 5-class etiology distribution
+    (GEFS+-AD-LOF-40%/CAE-de-novo-familial-20%/Dravet-like-DEE-20%/
+    LGS-like-DEE-10%/phenocopy-10%), 15 patient sample, 6 seizure types
+    (FebrileSeizures-GEFS-88%/GTCS-afebrile-72%/Absence-3Hz-SWD-55%/
+    Myoclonic-DEE-40%/Focal-DEE-35%/Tonic-Atonic-LGS-18%),
+    8 triggers (Fever-92%/MissedDose-75%/SleepDeprivation-68%/
+    Photosensitivity-45%/Intercurrent-55%/Hyperventilation-HV-85%/
+    Catamenial-38%/DrugInteractions-30%), 6 treatments
+    (VPA-Level-A/ETX-Level-A/LEV-Level-B/CLB-Level-B/Rufinamide-Level-B-LGS/KD-Level-B),
+    5 contraindications, 11 monitoring items, 6-window lifecycle."""
+    import scripts.gabrb2_dashboard as gb2_
+    return _json_safe(gb2_.get_breakdown())
+
+
+@app.get("/api/gabrb2/definitions")
+async def gabrb2_definitions():
+    """GABRB2 definitions: 11 key concepts
+    (GABRB2-5q34/GEFS-plus/CAE/GABA-A-alpha1-beta2-gamma2-pentamer/
+    Absence-Acceleration-NaV-blockers/POLG-Alpers/VPPP-teratogenicity/
+    Dravet-like-GABRB2-DEE/Thalamo-cortical-3Hz-TRN/Catamenial-Allopregnanolone/SUDEP),
+    5 contraindications, 12 thresholds, 8 standards, 6 references
+    (Baulac-2001-NatGenet/CATNAP-2010-NEJM/Lachance-Touchette-2011-Epilepsia/
+    Macdonald-2010-JPhysiol/Bhatt-2023-Epilepsia/MHRA-VPPP-2021)."""
+    import scripts.gabrb2_dashboard as gb2_
+    return _json_safe(gb2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

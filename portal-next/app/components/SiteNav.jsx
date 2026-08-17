@@ -356,6 +356,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/scn1b">&#x2764;&#xfe0f; SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-&#946;1 / 19q13.12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/arx">&#x1f9ec; ARX Epilepsy (X-linked DEE / Ohtahara / West / XLAG / Partington / Xp21.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq3">&#x26a1; KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabrb2">&#x1f9e0; GABRB2 Epilepsy (GEFS+ / CAE / DEE-Dravet-like / GABA-A &#946;2 Subunit / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pediatric-epilepsy">&#x1f9d2; Pediatric Epilepsy Syndromes</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/neonatal-eeg">&#x1f476; Neonatal EEG</Link></li>
