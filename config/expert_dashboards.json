@@ -2638,5 +2638,21 @@
     "why": "SCN3A (2q24.3) NaV1.3 voltage-gated Na+ channel \u2014 fetal peak expression + fast repriming (\u03c4\u22482-5ms). DEE67 (OMIM #619288): severe GOF de novo \u2192 West\u2192LGS. Focal Epilepsy of Infancy: moderate GOF \u2192 high-rate neonatal focal seizures (>5-50/day). R357Q S4 voltage sensor \u2192 bilateral perisylvian polymicrogyria + DEE (structural channelopathy). AVOID CBZ/OXC during infantile spasms (NaV1.1 PV-interneuron suppression \u2192 spasm aggravation). HLA-B*15:02 MANDATORY before CBZ/OXC (CPIC Level A). OXC-SIADH Na+ monitoring mandatory. POLG mandatory before VPA. Tiagabine ABSOLUTE CI. Quinidine investigational (I_NaP persistent current; QT monitoring mandatory). 3 endpoints /api/scn3a/overview|breakdown|definitions verified 200. expert_dashboards.json count 203\u2192204",
     "priority": "high",
     "built_note": "SCN3A DEE67 dashboard built 2026-08-17: /api/scn3a/overview|breakdown|definitions + portal-next/app/scn3a/page.jsx + SiteNav wired next to GABRB2"
+  },
+  {
+    "id": "scn1a",
+    "name": "SCN1A Epilepsy (Dravet Syndrome / GEFS+ / SMEI / NaV1.1 / 2q24.3)",
+    "route": "/scn1a",
+    "api_prefix": "/api/scn1a",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "endpoints": [
+      "/api/scn1a/overview",
+      "/api/scn1a/breakdown",
+      "/api/scn1a/definitions"
+    ],
+    "script": "scripts/scn1a_dashboard.py",
+    "why": "SCN1A (2q24.3) NaV1.1 voltage-gated sodium channel alpha subunit \u2014 preferentially expressed in PV+ fast-spiking GABAergic inhibitory interneurons; haploinsufficiency \u2192 PV interneuron failure \u2192 cortical disinhibition \u2192 Dravet syndrome (SMEI / DEE6) de novo LOF or GEFS+ (AD familial). Most important epilepsy gene; >1,800 pathogenic variants; Dravet incidence 1:15,000-1:22,000. ABSOLUTE CI: CBZ/OXC/PHT/LTG (NaV1.1 PV-interneuron block \u2192 paradoxical worsening), Tiagabine (NCSE). POLG MANDATORY before VPA. Level A precision therapies: VPA backbone + Stiripentol (Diacomit; triple VPA+CLB+STP; STICLO 71%), Fenfluramine (Fintepla; FDA 2020; REMS echocardiogram q6M; 62% GTCS reduction), Cannabidiol (Epidiolex; FDA 2018; 39% convulsive seizure reduction; LFT mandatory). 5-class etiology (Dravet-SMEI-45%/GEFS+-25%/SMEB-15%/mild-FS-plus-10%/phenocopy-5%), 6 seizure types, 8 triggers (Fever-95%/Hyperthermia-82%/Vaccine-fever-65%/Photo-50%), 7 treatments, 5 contraindications, 10 monitoring items, 6-window lifecycle. 3 endpoints /api/scn1a/overview|breakdown|definitions verified 200. expert_dashboards.json count 204\u2192205",
+    "built_note": "SCN1A Dravet/GEFS+ dashboard built 2026-08-17: /api/scn1a/overview|breakdown|definitions + portal-next/app/scn1a/page.jsx + SiteNav wired next to SCN3A"
   }
 ]

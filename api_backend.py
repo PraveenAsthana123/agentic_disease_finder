@@ -23839,6 +23839,50 @@ async def scn3a_definitions():
     return _json_safe(s3_.get_definitions())
 
 
+@app.get("/api/scn1a/overview")
+async def scn1a_overview():
+    """SCN1A overview: gene=SCN1A locus=2q24.3, NaV1.1 PV+ fast-spiking inhibitory
+    interneuron haploinsufficiency channelopathy, Dravet syndrome (SMEI / DEE6) /
+    GEFS+ / SMEB / mild FS+ spectrum, 40-patient cohort, key KPIs
+    (seizure-free/DRE/on-VPA/POLG-done/VPA-without-POLG/on-stiripentol/
+    on-fenfluramine/on-CBD/on-KD/SUDEP-device/CSWS/NavBlocker-exposure),
+    contraindications summary (CBZ-OXC-PHT-ABSOLUTE-CI-Dravet/LTG-ABSOLUTE-CI-Dravet/
+    Tiagabine-ABSOLUTE-CI/VPA-without-POLG-HIGH/Fenfluramine-without-REMS-HIGH),
+    12 thresholds, references."""
+    import scripts.scn1a_dashboard as s1_
+    return _json_safe(s1_.get_overview())
+
+
+@app.get("/api/scn1a/breakdown")
+async def scn1a_breakdown():
+    """SCN1A breakdown: 5-class etiology distribution
+    (Dravet-SMEI-de-novo-LOF-45%/GEFS-plus-AD-familial-25%/
+    SMEB-Borderline-Dravet-like-15%/mild-FS-plus-AD-10%/phenocopy-GABRB2-HCN1-5%),
+    15-patient sample, 6 seizure types
+    (Febrile-hemiclonic-Dravet-hallmark-90%/Myoclonic-75%/GTCS-85%/
+    Atypical-absence-55%/Focal-60%/NCSE-obtundation-status-40%),
+    8 triggers (Fever-95%/Hot-bath-hyperthermia-82%/DTaP-vaccine-fever-65%/
+    Sleep-deprivation-70%/Photosensitivity-50%/Missed-AED-68%/NaV-blocker-exposure-45%/GI-illness-58%),
+    7 treatments (VPA-Level-A-backbone/Stiripentol-Level-A-triple-VPA-CLB-STP/
+    Fenfluramine-Level-A-REMS-echo/CBD-Epidiolex-Level-A-LFT/CLB-Level-B/TPM-Level-B/KD-Level-B-DRE),
+    5 contraindications, 10 monitoring items, 6-window lifecycle."""
+    import scripts.scn1a_dashboard as s1_
+    return _json_safe(s1_.get_breakdown())
+
+
+@app.get("/api/scn1a/definitions")
+async def scn1a_definitions():
+    """SCN1A definitions: 14 key concepts
+    (SCN1A-2q24.3/NaV1.1-PV-interneuron-haploinsufficiency/Dravet-SMEI/GEFS-plus/
+    SMEB-Borderline/Stiripentol-Diacomit/Fenfluramine-Fintepla/Cannabidiol-Epidiolex/
+    NaV1.1-NaV-blocker-paradox/SUDEP-Dravet/SCN1A-mosaic/POLG-Alpers/VPPP/CSWS-ESES),
+    5 contraindications, 12 thresholds, 9 standards, 6 references
+    (Claes-2001-AmJHumGenet/Chiron-2000-STICLO/Devinsky-2017-NEJM/
+    Lagae-2019-Lancet/Wirrell-2022-Epilepsia/Bhatt-2023-Epilepsia)."""
+    import scripts.scn1a_dashboard as s1_
+    return _json_safe(s1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
