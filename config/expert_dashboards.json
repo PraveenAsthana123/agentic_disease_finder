@@ -2607,6 +2607,23 @@
       "why": "ARX (Xp21.3) Aristaless-Related Homeobox paired-type homeodomain transcription factor. Most common X-linked epileptic encephalopathy gene. LOF \u2192 failed MGE GABAergic interneuron tangential migration \u2192 cortical interneuron deficit \u2192 Ohtahara (suppression-burst) / West (hypsarrhythmia). Poly-Ala Tract 1 expansion \u2192 West/ISSX; Tract 2 \u2192 Partington; Truncating homeodomain \u2192 XLAG (lissencephaly + ambiguous genitalia + neonatal hyperglycemia). ACTH Level A + VGB Level A West (UK-ISSS). Day 14 EEG mandatory. Tiagabine ABSOLUTE CI (NCSE dysmature cortex). CBZ/OXC/PHT HIGH RISK (Dravet mechanism). POLG mandatory before VPA. Poly-Ala expansions missed by standard sequencing (repeat-primed PCR). 50% sons at risk if carrier mother \u2014 genetic counselling MANDATORY. 3 endpoints /api/arx/overview|breakdown|definitions verified 200. expert_dashboards.json count 199->200",
       "priority": "high",
       "built_note": "ARX X-linked DEE dashboard built 2026-08-13: /api/arx/overview|breakdown|definitions + portal-next/app/arx/page.jsx + SiteNav wired next to SCN1B"
+    },
+    {
+      "id": "kcnq3",
+      "name": "KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3)",
+      "status": "built",
+      "route": "/kcnq3",
+      "api_prefix": "/api/kcnq3",
+      "endpoints": [
+        "/api/kcnq3/overview",
+        "/api/kcnq3/breakdown",
+        "/api/kcnq3/definitions"
+      ],
+      "viz": "5-tab: Overview / Patients-Etiology / Seizures-Triggers / Treatments / Definitions",
+      "role": "Neurologist / Neonatologist / Pediatric Neurologist",
+      "priority": "P0",
+      "script": "scripts/kcnq3_dashboard.py",
+      "note": "KCNQ3 11q23.3, Kv7.3, obligate Kv7.2/Kv7.3 heteromeric M-current partner; BFNS-3 (self-limited, 45%) and DEE-KCNQ3 (de novo dominant-negative); CBZ/OXC KCNQ3-specific (Kv7 enhancement); HLA-B*15:02 mandatory (CPIC Level A); OXC-SIADH Na+ monitoring; Tiagabine ABSOLUTE CI; Retigabine WITHDRAWN 2017; POLG before VPA; 40-patient cohort; dashboard 201; built 2026-08-16"
     }
   ],
   "summary": "199 expert dashboards built",

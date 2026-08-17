@@ -23700,6 +23700,62 @@ async def arx_definitions():
     return _json_safe(arx_.get_definitions())
 
 
+@app.get("/api/kcnq3/overview")
+async def kcnq3_overview():
+    """KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3) overview: 40-patient cohort.
+    KCNQ3 (11q23.3), Kv7.3 — obligate heteromeric partner of Kv7.2 (KCNQ2) forming the neuronal M-current.
+    Kv7.2/Kv7.3 2:2 heterotetramer = dominant M-current; Kv7.3 homotetramers non-functional.
+    AD-LOF/GOF (familial) → BFNS-3: onset day 2-7, alternating-hemisphere focal clonic, spontaneous remission 3-6M.
+    De novo dominant-negative GOF → DEE-KCNQ3: persistent seizures + DD; no spontaneous remission.
+    CBZ/OXC KCNQ3-specific (Kv7 M-current enhancement — NOT just Na-channel blockade).
+    HLA-B*15:02 MANDATORY before CBZ/OXC in Asian ancestry (CPIC Level A; SJS/TEN risk).
+    OXC: serum Na+ monitoring MANDATORY (SIADH). POLG mandatory before VPA.
+    Tiagabine ABSOLUTE CI. Retigabine WITHDRAWN 2017 — NEVER PRESCRIBE.
+    XEN496 (Kv7.2/Kv7.3 opener) investigational NCT05374343."""
+    import scripts.kcnq3_dashboard as kq3_
+    return _json_safe(kq3_.get_overview())
+
+
+@app.get("/api/kcnq3/breakdown")
+async def kcnq3_breakdown():
+    """KCNQ3 breakdown: 40 patients, 5-class etiology catalog
+    (KCNQ3-AD-GOF-LOF-BFNS3-self-limited-45%/
+    KCNQ3-de-novo-GOF-dominant-negative-DEE-20%/
+    KCNQ3-AD-LOF-truncating-BFNS3-mild-20%/
+    KCNQ3-de-novo-LOF-intermediate-DEE-10%/
+    phenocopy-KCNQ2-SCN2A-SCN3A-5%),
+    5 seizure types (Neonatal-focal-clonic-BFNS3-90%/Neonatal-tonic-DEE-55%/
+    GTCS-post-infancy-DEE-35%/Absence-DEE-25%/Myoclonic-DEE-18%)
+    with EEG correlates+clinical tips,
+    8 triggers (physiological-neonatal-activation-95%/sleep-wake-78%/fever-37.5C-72%/
+    missed-AED-68%/feeding-stimulation-58%/sleep-deprivation-48%/
+    intercurrent-illness-42%/photosensitivity-DEE-22%),
+    7 treatments (Phenobarbital-Level-B-acute-neonatal/CBZ-OXC-Level-B-KCNQ3-specific/
+    LEV-Level-B-adjunct/VPA-Level-B-POLG-screen/CLB-Level-B/KD-Level-B-DRE/
+    XEN496-investigational-NCT05374343)
+    with dose+MOA+efficacy+safety+monitoring+KCNQ3-specific notes,
+    5 contraindications (Tiagabine-ABSOLUTE-CI/CBZ-OXC-HLA-B1502-mandatory/
+    Retigabine-WITHDRAWN-2017/LTG-myoclonic-HIGH/VPA-without-POLG-HIGH),
+    8 monitoring items, 6-window lifecycle, patient cohort sample."""
+    import scripts.kcnq3_dashboard as kq3_
+    return _json_safe(kq3_.get_breakdown())
+
+
+@app.get("/api/kcnq3/definitions")
+async def kcnq3_definitions():
+    """KCNQ3 definitions: 14 key concepts
+    (KCNQ3-11q23.3/M-current-IKM/BFNS-3/DEE-KCNQ3/
+    Alternating-hemisphere-seizures/Kv7.2-Kv7.3-M-current-enhancement/
+    HLA-B1502-SJS-TEN/OXC-SIADH/POLG-VPA-CI/XEN496-Kv7-opener/
+    Retigabine-WITHDRAWN-2017/KCC2-developmental-switch/
+    NaV1.1-myoclonus-aggravation/SUDEP-DEE-KCNQ3),
+    5 contraindications, 10 thresholds, 8 standards, 6 references
+    (Biervert-1998-Science/Singh-2003-Brain/Miceli-2015-NatCommun/
+    Charlier-1998-NatGenet/Bhatt-2023-Epilepsia/Karnes-2023-CPIC)."""
+    import scripts.kcnq3_dashboard as kq3_
+    return _json_safe(kq3_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
