@@ -24618,6 +24618,65 @@ async def gabra5_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/dnm1/overview")
+async def dnm1_overview():
+    """DNM1 Epilepsy Overview — DEE31 / Dynamin-1 GTPase / Synaptic Vesicle Endocytosis / 9q34.11
+    (DNM1 9q34.11 — Dynamin-1; large GTPase 870aa ~96kDa; principal fission enzyme in clathrin-mediated
+    synaptic vesicle endocytosis; 5 domains: GTPase/Middle/PH/GED/PRD; Middle-domain stalk mediates
+    oligomerisation into helical collar around vesicle neck; GTP hydrolysis → constriction → membrane
+    fission → SV recycled; LOF → SV pool depletion; PV+ interneurons [100-600Hz] most vulnerable;
+    cortical disinhibition → DEE31/EIEE31; dominant negative p.R237W traps WT dynamin → >80% LOF;
+    pLI ~0.98; AD de novo >95%; OMIM #617107; EuroEPINOMICS 2014 discovery);
+    40-patient cohort; 5 etiology classes; ACTH+VGB (Level A UKISS) + KD (high-priority early);
+    ABSOLUTE CI: TGB-NCSE/VPA-POLG1; HIGH CAUTION: CBZ-myoclonic/VGB-long-term-VFD."""
+    try:
+        import scripts.dnm1_dashboard as dnm1_
+        return _json_safe(dnm1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/dnm1/breakdown")
+async def dnm1_breakdown():
+    """DNM1 Epilepsy Breakdown — 40-patient cohort · 5 etiology classes · 5 seizure types ·
+    8 triggers · 8 treatments · 5 contraindications · 14 monitoring items · 6 lifecycle windows
+    (middle-domain-missense-severe-40%/GTPase-domain-moderate-28%/PH-domain-intermediate-18%/
+    truncating-haploinsufficiency-10%/DNM1-negative-phenocopy-4%;
+    seizure types: Epileptic-Spasms-82%/Focal-Motor-72%/Myoclonic-55%/Tonic-LGS-40%/GTCS-35%;
+    triggers: Sleep-wake-88%/Fever-72%/Illness-65%/Missed-AED-58%/Sleep-dep-50%/
+    Hyperthermia-40%/Sensory-30%/Vaccination-22%;
+    treatments: ACTH-Level-A/Prednisolone-Level-A/VGB-Level-A/VPA-Level-B/LEV-Level-B/
+    KD-Level-B-HIGH-PRIORITY/Rufinamide-Level-B-LGS/CLB-Level-B;
+    contraindications: TGB-ABSOLUTE-NCSE/VPA-POLG1-ABSOLUTE/CBZ-OXC-myoclonic-HIGH/
+    PHT-chronic-HIGH/VGB-longterm-HIGH)."""
+    try:
+        import scripts.dnm1_dashboard as dnm1_
+        return _json_safe(dnm1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/dnm1/definitions")
+async def dnm1_definitions():
+    """DNM1 Epilepsy Definitions — 15 key concepts
+    (DNM1-9q34.11/Synaptic-Vesicle-Endocytosis-CME/DNM1-Middle-Domain-Stalk/
+    Dominant-Negative-R237W/PV+-Interneuron-Vulnerability/West-Syndrome/Hypsarrhythmia/
+    LGS-Evolution/ACTH/VFD-VGB-Retinopathy/POLG1-Alpers/VPPP-MHRA2021/SUDEP/
+    ACMG-AMP-2015/Gonadal-Mosaicism);
+    12 thresholds (ACTH-response-14d/BP-ACTH/Glucose-ACTH/VPA-TDM/VGB-6M/VFD-ERG/
+    Ketosis-BHB/LFT-VPA/Developmental-regression/GTCS-rescue/KD-side-effects/SUDEP-trigger);
+    12 standards (ILAE-2022/NICE-NG217/UKISS-2004/EuroEPINOMICS-2014/Marsh-2018/
+    Bhatt-2023/CPIC-POLG-2023/SHARE-REMS-VGB/MHRA-VPPP-2021/ACMG-AMP-2015/
+    ILAE-Diet-2018/WHO-ICF-2019);
+    6 references (EuroEPINOMICS-2014/Marsh-2018/Bhatt-2023/Bhattacharya-2020/
+    UKISS-2004/Ferguson-2017)."""
+    try:
+        import scripts.dnm1_dashboard as dnm1_
+        return _json_safe(dnm1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
