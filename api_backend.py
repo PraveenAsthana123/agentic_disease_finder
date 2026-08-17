@@ -24776,6 +24776,57 @@ async def cacna1h_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1g/overview")
+async def cacna1g_overview():
+    """CACNA1G Epilepsy Overview — GGE / CAE / JME / GEFS+ Spectrum · Cav3.1 T-type Ca²⁺ Channel
+    40-patient cohort · CACNA1G (17q21.33) · AD GOF reduced-penetrance ~55% · Ethosuximide Precision Level A
+    (GGE-spectrum; precision: ETX T-type Cav3.1 blocker Level A CAE — PRIMARY TC-neuron T-current target;
+    Kim 2001 Nature: CACNA1G KO mice lack TC-LTCS and resist absence; foundational channelopathy reference;
+    ABSOLUTE CI: CBZ/OXC/PHT GGE aggravation; HV 3-min SWD >92% untreated CAE;
+    thalamo-cortical 3-Hz SWD via TC-neuron Cav3.1 LTCS; window current −80 to −60 mV)."""
+    try:
+        import scripts.cacna1g_dashboard as ca1g_
+        return _json_safe(ca1g_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1g/breakdown")
+async def cacna1g_breakdown():
+    """CACNA1G Epilepsy Breakdown — etiologies · seizure types · triggers · treatments ·
+    contraindications · monitoring · lifecycle · 40-patient cohort
+    (ETX Level A CAE precision Cav3.1 TC-neuron target / VPA Level B broad-spectrum POLG-mandatory /
+    LTG Level B GTCS — EEG before prescribing JME phenotype / CLB Level B catamenial adjunct /
+    LEV Level B broad-spectrum POLG-safe / ZNS Level C dual T-type+NaV / KD Level B DRE;
+    ABSOLUTE CI: CBZ-OXC-PHT-GGE-aggravation / TGB-NCSE / VPA-POLG;
+    etx_precision_metrics: ETX therapeutic levels / HV-SWD abolished on ETX Cav3.1)."""
+    try:
+        import scripts.cacna1g_dashboard as ca1g_
+        return _json_safe(ca1g_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1g/definitions")
+async def cacna1g_definitions():
+    """CACNA1G Epilepsy Definitions — 15 key concepts
+    (CACNA1G-17q21.33/Cav3.1-T-Type-LVA/Window-Current-TC-Neuron/LTCS-TC-Neurons/
+    Thalamo-Cortical-3Hz-SWD/CAE-Childhood-Absence/JME-Juvenile-Myoclonic/
+    GEFS-Plus/GGE-Spectrum/Ethosuximide-Precision-Cav3.1/VPPP-MHRA2021/POLG-Alpers/
+    SUDEP/Photosensitivity-PPR/ACMG-AMP-2015);
+    thresholds (ETX-TDM/HV-SWD-test/LTG-EEG-before/SUDEP-risk/VPA-TDM/
+    LFT-FBC-ammonia/Absence-Status-BZD/Seizure-free-12M/ZNS-HCO3/PPR-IPS);
+    standards (ILAE-2022/NICE-NG217/Kim-2001-Nature/Coulter-1989-AnnNeurol/
+    SANAD-2007/SANAD-II-2021/Bhatt-2023/CPIC-POLG-2023/MHRA-VPPP-2021/
+    ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019);
+    references (Kim-2001/Coulter-1989/Singh-2007/SANAD-2007/Bhatt-2023/ILAE-2022)."""
+    try:
+        import scripts.cacna1g_dashboard as ca1g_
+        return _json_safe(ca1g_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
