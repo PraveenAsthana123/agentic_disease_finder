@@ -24170,6 +24170,74 @@ async def chd2_definitions():
     return _json_safe(ch_.get_definitions())
 
 
+@app.get("/api/calm/overview")
+async def calm_overview():
+    """CALM1/CALM2/CALM3 Calmodulinopathy — DEE + LQTS-14/15/16 + CPVT5 overview KPIs
+    (40-patient cohort, OMIM #616036/#616037/#616038, three genes encoding identical calmodulin,
+    de novo GOF missense in EF-hand domains → CDI failure → QTc prolongation → TdP/CPVT5 → SCD;
+    5 etiology classes, 5 seizure types, 8 triggers, 8 treatments, 5 contraindications,
+    15 concepts, 12 standards, 6 references [Nyegaard-2012/Crotti-2013/Reed-2015/Bhatt-2023/Makita-2014/Limpitikul-2014])."""
+    import scripts.calm_dashboard as ca_
+    return _json_safe(ca_.get_overview())
+
+
+@app.get("/api/calm/breakdown")
+async def calm_breakdown():
+    """CALM1/CALM2/CALM3 Calmodulinopathy — full breakdown (etiology catalog, 15-patient sample,
+    seizure detail, trigger detail with cardiac risk, treatment detail [VPA/LEV/CLB/KD/Nadolol/
+    Flecainide/ICD/ACTH], contraindications [PHT/QTc-drugs/TGB/VGB-noSHARE/Flecainide-noICD],
+    monitoring [ECG-QTc/Holter/ICD/electrolytes/POLG/VPPP/CredibleMeds], lifecycle)."""
+    import scripts.calm_dashboard as ca_
+    return _json_safe(ca_.get_breakdown())
+
+
+@app.get("/api/calm/definitions")
+async def calm_definitions():
+    """CALM1/CALM2/CALM3 Calmodulinopathy — definitions (15 concepts: CALM1/2/3-genes/CaM/
+    LQTS14-15-16/CPVT5/CDI/EF-hand/RyR2/ICD/CredibleMeds/POLG/Nadolol/Flecainide/VPPP/TdP/
+    SUDEP+SCD-combined-risk; thresholds [QTc>500ms-ICD/K+≥4.0/Ca2+≥2.2/Flecainide-TDM];
+    standards [ESC-LQTS-2022/HRS-CPVT-2019/Nyegaard-2012/Crotti-2013/CredibleMeds];
+    contraindications [PHT-HIGH/QTc-drugs-ABSOLUTE-CI/TGB-ABSOLUTE-CI/Flecainide-noICD-ABSOLUTE-CI])."""
+    import scripts.calm_dashboard as ca_
+    return _json_safe(ca_.get_definitions())
+
+
+@app.get("/api/nprl2/overview")
+async def nprl2_overview():
+    """NPRL2/NPRL3 Epilepsy (GATOR1 Complex / FFEVF / FCD IIb / mTOR Precision) — KPI overview.
+    40-patient cohort (NPRL2 3p24.3 + NPRL3 8q24.22); GATOR1 = DEPDC5/NPRL2/NPRL3 mTORC1 suppressor;
+    5 etiology classes (NPRL2-AD-truncating-38% / NPRL3-AD-truncating-28% / NPRL2-somatic-FCD-15% /
+    NPRL3-AR-biallelic-DEE-12% / phenocopy-7%); FCD IIb 52%; surgery 38%; Everolimus Level B;
+    Tiagabine ABSOLUTE CI; HLA-B*15:02 mandatory before CBZ; POLG before VPA."""
+    import scripts.nprl2_dashboard as n2_
+    return _json_safe(n2_.get_overview())
+
+
+@app.get("/api/nprl2/breakdown")
+async def nprl2_breakdown():
+    """NPRL2/NPRL3 GATOR1 Epilepsy — full breakdown (5-class etiology catalog, 15-patient sample,
+    5 seizure types [FA-75%/Nocturnal-Hypermotor-65%/FBTCS-55%/FIA-45%/Spasms-12%],
+    8 triggers [Sleep-dep-82%/Missed-AED-78%/NREM-72%/Stress-62%/Fever-48%/Alcohol-42%],
+    7 treatments [LCM-Level-A/CBZ-OXC-Level-A-B/LEV-Level-B/LTG-Level-B/Everolimus-Level-B-mTOR/
+    KD-Level-B/VPA-Level-C], 5 CIs [TGB-ABSOLUTE/VGB-HIGH/VPA-VPPP-HIGH/VPA-POLG-HIGH/CBZ-HLA-HIGH],
+    14 monitoring items, 6 lifecycle windows)."""
+    import scripts.nprl2_dashboard as n2_
+    return _json_safe(n2_.get_breakdown())
+
+
+@app.get("/api/nprl2/definitions")
+async def nprl2_definitions():
+    """NPRL2/NPRL3 GATOR1 Epilepsy — definitions (15 concepts: NPRL2-3p24/NPRL3-8q24/GATOR1-complex/
+    Rag-GTPase-GAP/mTORC1-hyperactivation/FFEVF/FCD-IIb/ADNFLE/Transmantle-sign/Everolimus-mTOR/
+    EXIST-3/Two-hit-hypothesis/SUDEP/HLA-B1502/VPPP; 12 thresholds [Everolimus-trough-3-7/
+    LCM-trough/CBZ-level/VPA-level/AED-failure/FDG-PET/LTM-capture/Stomatitis/QTc/Seizure-free/
+    SUDEP-risk/Cascade]; 12 standards [ILAE-2022/NICE-NG217/Dibbens-2013/Ricos-2016/Baldassari-2019/
+    Weckhuysen-2016/EXIST-3-NEJM/Najm-FCD-2022/HLA-B1502-CPIC/MHRA-VPPP/POLG-CPIC/ACMG-AMP];
+    6 references [Dibbens-2013/Ricos-2016/Baldassari-2019/Weckhuysen-2016/Bass-EXIST-3/Bhatt-2023])."""
+    import scripts.nprl2_dashboard as n2_
+    return _json_safe(n2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

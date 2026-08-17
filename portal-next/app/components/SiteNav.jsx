@@ -348,6 +348,8 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/rorb">&#x1f9ec; RORB Epilepsy / GGE (Thalamocortical TF / Absence-Myoclonic-MAE-DEE / 9q21)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/sptan1">&#x1f9ec; SPTAN1 Epilepsy / DEE5 (Alpha-II Spectrin / AIS Cytoskeleton / West→LGS / 9q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/chd2">&#x1f9ec; CHD2 Epilepsy / GGE-Photo (Chromatin Remodeling / H3.3 / PPR-75% / MEI / 15q26)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/calm">&#x1f9ec; CALM1/2/3 Calmodulinopathy (DEE + Long-QT / CPVT5 / ICD / 3-gene-1-protein / 14q·2p·19q)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/nprl2">&#x1f9ec; NPRL2/NPRL3 Epilepsy (GATOR1 Complex / FFEVF / FCD IIb / mTOR Everolimus / 3p24·8q24)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/aldh7a1">&#x1f9ec; ALDH7A1 Epilepsy (Pyridoxine-Dependent / Antiquitin / PDE / 5q23)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/polg">&#x1f9ec; POLG Epilepsy (Alpers-Huttenlocher / mtDNA Depletion / VPA-CI / 15q26)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/slc2a1">&#x1f9ec; SLC2A1 Epilepsy (GLUT1-DS / De Vivo Disease / KD Precision / 1p34)</Link></li>

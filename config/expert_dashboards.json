@@ -2834,5 +2834,61 @@
       "standards",
       "references"
     ]
+  },
+  {
+    "id": "calm",
+    "name": "CALM1/CALM2/CALM3 Calmodulinopathy (DEE + Long-QT Syndrome / LQTS14/15/16 / CPVT5 / 3-gene-1-protein / 14q32.11\u00b72p21\u00b719q13.32)",
+    "status": "built",
+    "route": "/calm",
+    "api_prefix": "/api/calm",
+    "script": "scripts/calm_dashboard.py",
+    "frontend": "portal-next/app/calm/page.jsx",
+    "endpoints": [
+      "/api/calm/overview",
+      "/api/calm/breakdown",
+      "/api/calm/definitions"
+    ],
+    "omim": "LQTS14 #616036 / LQTS15 #616037 / LQTS16 #616038",
+    "gene": "CALM1 / CALM2 / CALM3",
+    "locus": "14q32.11 (CALM1) \u00b7 2p21 (CALM2) \u00b7 19q13.32 (CALM3)",
+    "inheritance": "AD (>99% de novo)",
+    "phenotype": "DEE + Long-QT Syndrome + CPVT5 (Calmodulinopathy)",
+    "key_feature": "Three genes encoding identical calmodulin protein; EF-hand GOF missense \u2192 CDI failure \u2192 QTc prolongation + CPVT5; mandatory ICD + cardiac co-management; only epilepsy syndrome with dual SCD+SUDEP risk",
+    "built_note": "CALM1/2/3 Calmodulinopathy 14q32.11\u00b72p21\u00b719q13.32 DEE+LQTS14/15/16+CPVT5 (expert_dashboards.json count 213\u2192214: CALM dashboard built \u2014 backend script/3 endpoints verified 200/frontend 5-tab/SiteNav wired next to CHD2. 2026-08-17)",
+    "viz": [
+      "KPI cards",
+      "PctBars",
+      "etiology catalog (5 classes)",
+      "patient sample (40 patients: CALM1/2/3)",
+      "seizure types with cardiac tip",
+      "triggers with cardiac risk",
+      "treatment cards (neurological+cardiac)",
+      "contraindication table",
+      "monitoring table (ECG/Holter/ICD/electrolytes)",
+      "lifecycle (6 windows)",
+      "concepts (15)",
+      "thresholds (12)",
+      "standards (12)",
+      "references (6)"
+    ]
+  },
+  {
+    "id": "nprl2",
+    "name": "NPRL2/NPRL3 Epilepsy (GATOR1 Complex / FFEVF / FCD IIb / mTOR Precision / AD-AR / 3p24.3\u00b78q24.22)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "route": "/nprl2",
+    "api_prefix": "/api/nprl2",
+    "endpoints": [
+      "/api/nprl2/overview",
+      "/api/nprl2/breakdown",
+      "/api/nprl2/definitions"
+    ],
+    "script": "scripts/nprl2_dashboard.py",
+    "component": "portal-next/app/nprl2/page.jsx",
+    "updated_at": "2026-08-17",
+    "why": "NPRL2 (3p24.3) + NPRL3 (8q24.22) complete the GATOR1 complex trilogy alongside DEPDC5. GATOR1 = DEPDC5/NPRL2/NPRL3 heterotrimer \u2014 GAP for Rag GTPases \u2192 mTORC1 suppression. LOF \u2192 mTORC1 hyperactivation \u2192 FCD IIb + FFEVF. Everolimus Level B precision therapy. AD inheritance; first reports: Dibbens 2013 (NPRL3) + Ricos 2016 (NPRL2).",
+    "note": "NPRL2/NPRL3 GATOR1 Epilepsy (FFEVF / FCD IIb / mTOR Precision) Dashboard \u2014 /api/nprl2/* + portal-next/app/nprl2/page.jsx + SiteNav wired next to CALM, 40-patient cohort (NPRL2 3p24.3 + NPRL3 8q24.22; GATOR1 = DEPDC5/NPRL2/NPRL3 trimer; Rag GTPase GAP activity; mTORC1 hyperactivation \u2192 FCD IIb; FFEVF phenotype; AD 85%/AR biallelic NPRL3 rare; Everolimus Level B trough 3-7 ng/mL; Dibbens 2013 Nat Genet / Ricos 2016 Epileptic Disord / Baldassari 2019 Brain / EXIST-3 Bass 2016 NEJM), 5-class etiology (NPRL2-AD-truncating-FFEVF-38%/NPRL3-AD-truncating-FFEVF-28%/NPRL2-somatic-FCD-IIb-15%/NPRL3-AR-biallelic-DEE-12%/phenocopy-7%), 5 seizure types (FA-75%/Nocturnal-Hypermotor-ADNFLE-65%/FBTCS-55%/FIA-45%/Spasms-12%), 8 triggers (Sleep-dep-82%/Missed-AED-78%/NREM-72%/Stress-62%/Fever-48%/Alcohol-42%/Catamenial-28%/Drug-Interaction-22%), 7 treatments (LCM-Level-A/CBZ-OXC-Level-A-B-HLA-B1502/LEV-Level-B/LTG-Level-B/Everolimus-Level-B-mTOR-3-7ng/KD-Level-B/VPA-Level-C-POLG-VPPP), 5 CIs (TGB-ABSOLUTE-CI-NCSE/VGB-HIGH-not-indicated/VPA-VPPP-HIGH-MHRA2021/VPA-POLG-HIGH-Alpers/CBZ-HLA-B1502-HIGH-SJS), 14 monitoring items (Everolimus-TDM-q2wk/CBC-lipids-LFT/LCM-ECG/HLA-B1502/HLA-A3101/POLG/VPPP/MRI-3T-FCD/FDG-PET-presurgical/Video-EEG/Seizure-diary/Neuropsych-q2y/SUDEP/Genetic-cascade), 6-window lifecycle (Prenatal/Infancy-Biallelic-DEE/Childhood-FFEVF-onset/Adolescence-Surgery-Eval/Young-Adult-FCD-Surgery/Adult-Late-Life), 15 concepts (NPRL2-3p24/NPRL3-8q24/GATOR1-complex/Rag-GTPase-GAP/mTORC1/FFEVF/FCD-IIb/ADNFLE/Transmantle-sign/Everolimus/EXIST-3/Two-hit-hypothesis/SUDEP/HLA-B1502/VPPP), 12 thresholds, 12 standards (ILAE-2022/NICE-NG217/Dibbens-2013/Ricos-2016/Baldassari-2019/Weckhuysen-2016/EXIST-3-NEJM/Najm-FCD-2022/CPIC-HLA-B1502/MHRA-VPPP/CPIC-POLG/ACMG-AMP), 6 references (Dibbens-2013/Ricos-2016/Baldassari-2019/Weckhuysen-2016/Bass-EXIST3/Bhatt-2023), 5-tab frontend (Overview/Patients-Etiology/Seizures-Triggers/Treatments/Definitions), 3 endpoints /api/nprl2/overview|breakdown|definitions verified 200, expert_dashboards.json count 214->215",
+    "built_note": "NPRL2/NPRL3 GATOR1 Epilepsy (FFEVF / FCD IIb / mTOR / DEPDC5-completing-trimer) dashboard built 2026-08-17: /api/nprl2/overview|breakdown|definitions + portal-next/app/nprl2/page.jsx + SiteNav wired next to CALM. expert_dashboards.json count 214->215."
   }
 ]
