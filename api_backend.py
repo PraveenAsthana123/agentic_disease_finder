@@ -24089,6 +24089,32 @@ async def lgi1_definitions():
     return _json_safe(lg_.get_definitions())
 
 
+@app.get("/api/rorb/overview")
+async def rorb_overview():
+    """RORB Epilepsy — GGE / RORB-GGE / DEE-RORB overview KPIs (40-patient cohort, OMIM #614142/#619696,
+    AD 80% penetrance, thalamocortical transcription factor, absence + myoclonic + MAE + DEE spectrum).
+    5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 contraindications,
+    12 thresholds, 12 standards, 6 references (Rinaldi-2022/Ricos-2016/Coppola-2019/SANAD-II-2021/Andre-2012/Bhatt-2023)."""
+    import scripts.rorb_dashboard as rb_
+    return _json_safe(rb_.get_overview())
+
+
+@app.get("/api/rorb/breakdown")
+async def rorb_breakdown():
+    """RORB Epilepsy — full breakdown (etiology catalog, 15-patient sample,
+    seizure detail, trigger detail, treatment detail, contraindications, monitoring, lifecycle)."""
+    import scripts.rorb_dashboard as rb_
+    return _json_safe(rb_.get_breakdown())
+
+
+@app.get("/api/rorb/definitions")
+async def rorb_definitions():
+    """RORB Epilepsy — definitions (15 concepts, contraindications, thresholds, standards, references).
+    Includes RORB-GGE, thalamocortical circuit, GGE aggravation syndrome, VPPP, POLG, PPR, SANAD-II."""
+    import scripts.rorb_dashboard as rb_
+    return _json_safe(rb_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

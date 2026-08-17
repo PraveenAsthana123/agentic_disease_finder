@@ -2742,5 +2742,32 @@
     "syndrome": "ADLTE / ADPEAF / EPILEPSY-AUDITORY (OMIM #600512)",
     "inheritance": "AD",
     "note": "Heterozygous LGI1 LOF \u2192 ADLTE (OMIM #600512). Secreted synaptic adhesion protein; LGI1-ADAM22-ADAM23 trans-synaptic complex. Pathognomonic auditory aura. AD 70% penetrance. EXCELLENT prognosis: 65-70% seizure-free on CBZ/OXC. 5-class etiology, 5 seizure types, 8 triggers, 6 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
+  },
+  {
+    "id": "rorb",
+    "name": "RORB Epilepsy (GGE / RORB-GGE / DEE-RORB / Thalamocortical TF / Absence-MAE / 9q21.13)",
+    "gene": "RORB",
+    "locus": "9q21.13",
+    "status": "built",
+    "route": "/rorb",
+    "api_prefix": "/api/rorb",
+    "script": "scripts/rorb_dashboard.py",
+    "n_patients": 40,
+    "phenotype": "GGE / Absence / Myoclonic-atonic (MAE-Doose-like) / DEE-RORB spectrum",
+    "inheritance": "AD 80% penetrance; ~60% de novo",
+    "first_line": "VPA (Level A full-spectrum) / ETH (Level A absence-dominant)",
+    "ci": "CBZ/OXC/PHT (GGE aggravation ABSOLUTE CI) / Tiagabine (NCSE ABSOLUTE CI)",
+    "omim": "#614142 / #619696",
+    "viz": [
+      "etiology-donut",
+      "seizure-bars",
+      "trigger-bars",
+      "treatment-cards",
+      "patient-table",
+      "lifecycle",
+      "concepts"
+    ],
+    "note": "Total: 211 dashboards",
+    "built_note": "RORB Epilepsy (GGE / RORB-GGE / DEE-RORB / ROR\u03b2 Orphan Nuclear Receptor / Thalamocortical Transcription Factor / 9q21.13) Dashboard built 2026-08-17. 5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/rorb/overview|breakdown|definitions verified 200. portal-next/app/rorb/page.jsx + SiteNav wired next to LGI1. expert_dashboards.json count 210\u2192211."
   }
 ]
