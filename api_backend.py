@@ -24936,6 +24936,55 @@ async def hcn2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1e/overview")
+async def cacna1e_overview():
+    """CACNA1E DEE69 overview: 40-patient cohort KPIs (seizure-free 18%/DRE 68%/ACTH-received/spasms/GTCS/KD/
+    movement-disorder/VGB-received/avg-age), etiology distribution (GOF-Severe-DEE69-45%/GOF-Moderate-DEE69-25%/
+    GOF-Movement-Epilepsy-18%/GOF-Mild-Focal-7%/Phenocopy-DEE-5%), 5 seizure summaries, 8 treatment summaries,
+    6 monitoring items, 6 lifecycle windows, 6 thresholds, 4 CI summaries.
+    CACNA1E (1q25.3) · Cav2.3 R-type HVA Ca²⁺ channel · OMIM #618285 DEE69 · GOF de novo >90% ·
+    No approved R-type precision blocker · KD mechanistically supported · ACTH Level A for IS ·
+    ABSOLUTE CI: TGB (NCSE) · VPA+POLG1 (Alpers) · VGB long-term (VFD)."""
+    try:
+        import scripts.cacna1e_dashboard as ca1e_
+        return _json_safe(ca1e_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1e/breakdown")
+async def cacna1e_breakdown():
+    """CACNA1E DEE69 breakdown: 5-class etiology catalog (GOF-Severe-DEE69/GOF-Moderate-DEE69/
+    GOF-Movement-Epilepsy/GOF-Mild-Focal/Phenocopy-DEE), 5 seizure types (Epileptic-Spasms-IS-78%/
+    Focal-Impaired-Awareness-65%/Tonic-60%/Myoclonic-45%/GTCS-35%), 8 triggers (Fever-92%/
+    Infection-80%/Sleep-dep-68%/Missed-AED-62%/Stress-60%/AED-taper-45%/Vaccination-25%/Startle-20%),
+    8 treatments (ACTH-Level-A/Prednisolone-Level-A/VGB-Level-A-SHARE-REMS-VFD/KD-Level-B-HIGH-PRIORITY/
+    VPA-Level-B-POLG-VPPP/LEV-Level-B-POLG-safe/CLB-Level-B-adjunct/PB-Level-B-neonatal),
+    5 contraindications (TGB-ABSOLUTE/VPA-POLG-ABSOLUTE/VGB-long-term-HIGH-VFD/CBZ-OXC-CAUTION-myoclonic/
+    VPA-VPPP-HIGH-teratogenicity), 14 monitoring items, 6 lifecycle windows, 40 patients."""
+    try:
+        import scripts.cacna1e_dashboard as ca1e_
+        return _json_safe(ca1e_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1e/definitions")
+async def cacna1e_definitions():
+    """CACNA1E DEE69 definitions: 15 key concepts
+    (CACNA1E-1q25.3/Cav2.3-R-type-HVA/DEE69-OMIM618285/GOF-Mechanism-Cav2.3/Window-Current-R-type/
+    R-type-vs-T-type-Channels/West-Syndrome-IS/Hypsarrhythmia/VFD-VGB/ACTH-Level-A-IS/
+    KD-R-type-Rationale/SNX-482-experimental/VPPP-MHRA2021/POLG-Alpers/SUDEP),
+    12 thresholds, 12 standards (ILAE-2022/NICE-NG217/Helbig-2019-NatGenet/UKISS-2004/Smith-2022/
+    Bhatt-2023/CPIC-POLG-2023/MHRA-VPPP-2021/SHARE-REMS-VGB/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019),
+    6 references (Helbig-2019/Smith-2022/Bhatt-2023/UKISS-2004/Bhattacharya-2020/ILAE-2022)."""
+    try:
+        import scripts.cacna1e_dashboard as ca1e_
+        return _json_safe(ca1e_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
