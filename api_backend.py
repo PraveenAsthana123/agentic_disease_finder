@@ -24726,6 +24726,56 @@ async def kcnt2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1h/overview")
+async def cacna1h_overview():
+    """CACNA1H Epilepsy Overview — GGE / CAE / JME / GEFS+ Spectrum · Cav3.2 T-type Ca²⁺ Channel
+    40-patient cohort · CACNA1H (16p13.3) · AD GOF reduced-penetrance ~65% · Ethosuximide Precision Level A
+    (GGE-spectrum; precision: ETX T-type Cav3.2 blocker Level A CAE; ABSOLUTE CI: CBZ/OXC/PHT GGE aggravation;
+    HV 3-min SWD >90% untreated CAE — also ETX efficacy test; VPPP females on VPA mandatory MHRA-2021;
+    thalamo-cortical 3-Hz SWD via TC-neuron LTCS; window current at −70 to −50 mV)."""
+    try:
+        import scripts.cacna1h_dashboard as ca1h_
+        return _json_safe(ca1h_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1h/breakdown")
+async def cacna1h_breakdown():
+    """CACNA1H Epilepsy Breakdown — etiologies · seizure types · triggers · treatments ·
+    contraindications · monitoring · lifecycle · 40-patient cohort
+    (ETX Level A CAE precision / VPA Level B broad-spectrum POLG-mandatory /
+    LTG Level B GTCS — EEG before prescribing / CLB Level B adjunct /
+    LEV Level B broad-spectrum / KD Level B DRE;
+    ABSOLUTE CI: CBZ-OXC-PHT-GGE-aggravation / TGB-NCSE / VPA-POLG;
+    etx_precision_metrics: ETX therapeutic levels / HV-SWD abolished on ETX)."""
+    try:
+        import scripts.cacna1h_dashboard as ca1h_
+        return _json_safe(ca1h_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1h/definitions")
+async def cacna1h_definitions():
+    """CACNA1H Epilepsy Definitions — 15 key concepts
+    (CACNA1H-16p13.3/Cav3.2-T-Type/LVA-Channel/Window-Current/TC-Neuron-LTCS/
+    Thalamo-Cortical-3Hz-SWD/CAE-Childhood-Absence/JME-Juvenile-Myoclonic/
+    GGE-Spectrum/Ethosuximide-Precision/VPPP-MHRA2021/POLG-Alpers/
+    SUDEP/ACMG-AMP-2015/Photosensitivity-PPR);
+    thresholds (ETX-TDM/HV-SWD-test/LTG-EEG-before/SUDEP-risk/VPA-TDM/
+    LFT-FBC-ammonia/BP-ACTH/Glucose-daily/Seizure-free-12M/GTCS-SUDEP);
+    standards (ILAE-2022/NICE-NG217/Bhatt-2023/Liang-2006-PNAS/Chen-2003-PNAS/
+    CPIC-POLG-2023/MHRA-VPPP-2021/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019/
+    EpiPGx-2023/AAP-Epilepsy-2012);
+    references (Liang-2006/Chen-2003/Bhatt-2023/Bhattacharya-2020/ILAE-2022/NICE-NG217)."""
+    try:
+        import scripts.cacna1h_dashboard as ca1h_
+        return _json_safe(ca1h_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

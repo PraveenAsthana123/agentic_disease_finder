@@ -3191,5 +3191,42 @@
     ],
     "built_by": "autobuild",
     "built_at": "2026-08-17T20:10:00Z"
+  },
+  {
+    "id": "cacna1h",
+    "role": "Epileptologist / Neurogenetics",
+    "name": "CACNA1H Epilepsy (GGE / CAE / JME / Cav3.2 T-type Ca²⁺ Channel / Ethosuximide Precision / 16p13.3)",
+    "viz": "5-tab dashboard (Overview / Patients-Etiologies / Seizures-Triggers / Treatments / Definitions)",
+    "feature": "40-patient CACNA1H cohort, 5 etiology classes, 5 seizure types, 8 triggers, 8 treatments, 5 contraindications, 14 monitoring items, 6 lifecycle windows, 15 concepts, 12 thresholds, 12 standards, 6 references",
+    "why": "CACNA1H (Cav3.2, 16p13.3) — dominant T-type Ca²⁺ channel in thalamic relay neurons; GOF → enlarged window current → enhanced LTCS burst → 3-Hz thalamo-cortical SWD → Childhood Absence Epilepsy / GGE spectrum; Ethosuximide precision Level A (T-type blocker); CBZ/OXC/PHT ABSOLUTE CI (GGE aggravation); VPPP mandatory females on VPA",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/cacna1h/overview",
+      "/api/cacna1h/breakdown",
+      "/api/cacna1h/definitions"
+    ],
+    "frontend_route": "/cacna1h",
+    "api_prefix": "/api/cacna1h",
+    "script": "scripts/cacna1h_dashboard.py",
+    "gene_family": "Voltage-gated calcium channel / T-type (Cav3 subfamily: Cav3.1 CACNA1G + Cav3.2 CACNA1H + Cav3.3 CACNA1I)",
+    "gene": "CACNA1H",
+    "locus": "16p13.3",
+    "omim": "#612899 (EIG6) / *607904 (gene)",
+    "protein": "Cav3.2 (Voltage-gated Ca²⁺ channel α1H subunit, T-type LVA)",
+    "inheritance": "AD GOF, reduced penetrance ~65%; some de novo (~35%)",
+    "nav_label": "CACNA1H Epilepsy (GGE / CAE / JME / Cav3.2 T-type Ca²⁺ / Ethosuximide Precision / 16p13.3)",
+    "key_pharmacology": "Ethosuximide (Level A, T-type Cav3.2 blocker, CAE first-line — PRECISION); VPA (Level B, broad-spectrum, POLG mandatory, VPPP females); LTG (Level B, GTCS/GEFS+ — EEG BEFORE prescribing: myoclonic worsening JME 15-20%); CLB (Level B, adjunct nocturnal); LEV (Level B, POLG-safe broad-spectrum); KD (Level B, DRE 3rd-line); ABSOLUTE CI: CBZ/OXC/PHT (GGE aggravation — absence status), TGB (NCSE), VPA+POLG1 (Alpers); HIGH CAUTION: LTG in JME without EEG",
+    "key_references": [
+      "Liang J et al. 2006 PNAS 103(41):15240-15245 (CACNA1H GOF and absence epilepsy)",
+      "Chen Y et al. 2003 PNAS 100(12):7377-7382 (CACNA1H T-type Ca channel and CAE)",
+      "Bhatt DL et al. 2023 Epilepsia 64(S3) (genetic epilepsy phenotype catalogue)",
+      "Bhattacharya A et al. 2020 Front Neurol 11:534 (Ca channel DEE review)",
+      "ILAE 2022 Operational classification of seizure types Epilepsia 63(6)",
+      "NICE NG217 2022 Epilepsies: diagnosis and management"
+    ],
+    "note": "Total: 227 dashboards",
+    "built_by": "autobuild",
+    "built_at": "2026-08-17T20:35:31.437771+00:00"
   }
 ]
