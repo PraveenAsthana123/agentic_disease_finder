@@ -24985,6 +24985,61 @@ async def cacna1e_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1c/overview")
+async def cacna1c_overview():
+    """CACNA1C Timothy Syndrome / LQTS8 / DEE overview: 40-patient cohort KPIs (seizure-free/DRE/LQTS-present/
+    verapamil-tried/ACTH-received/spasms/KD/autism-ASD/syndactyly/cardiac-device/avg-age), etiology distribution
+    (GOF-Timothy-Syndrome-Classic-TS1-40%/GOF-Timothy-Syndrome-TS2-Splice-20%/GOF-DEE-Cardiac-Moderate-22%/
+    GOF-Neurodevelopmental-Only-12%/Phenocopy-DEE-No-CACNA1C-6%), 5 seizure summaries, 8 treatment summaries,
+    6 monitoring items, 6 lifecycle windows, 6 thresholds, 5 CI summaries.
+    CACNA1C (12p13.33) · Cav1.2 L-type HVA Ca²⁺ Channel · OMIM #601005 Timothy Syndrome · GOF de novo >95% ·
+    G406R (TS1) / G402S (TS2) → impaired VDI → enlarged window current → LQTS8 + DEE + autism + syndactyly ·
+    Verapamil Level B precision (L-type blocker; Jacobs 2006) · ACTH Level A for IS (UKISS 2004) ·
+    ABSOLUTE CI: Class Ia/III antiarrhythmics (fatal QT) · TGB (NCSE+QT) · VPA+POLG1 (Alpers) ·
+    HIGH RISK: CBZ/OXC/PHT (CYP3A4 → reduce verapamil) · VGB long-term (VFD)."""
+    try:
+        import scripts.cacna1c_dashboard as ca1c_
+        return _json_safe(ca1c_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1c/breakdown")
+async def cacna1c_breakdown():
+    """CACNA1C Timothy Syndrome breakdown: 5-class etiology (GOF-Classic-TS1/GOF-TS2-Splice/
+    GOF-DEE-Cardiac-Moderate/GOF-Neurodevelopmental-Only/Phenocopy-DEE), 5 seizure types
+    (Epileptic-Spasms-West-75%/Focal-Impaired-Awareness-58%/Tonic-52%/Myoclonic-35%/Absence-like-20%),
+    8 triggers (Fever-88%/Infection-80%/Sleep-dep-72%/Missed-AED-65%/Stress-58%/QT-Prolonging-Drug-38%/
+    AED-taper-42%/Startle-22%), 8 treatments (Verapamil-Level-B-Cav1.2-precision/ACTH-Level-A-IS/
+    Prednisolone-Level-A-IS/VGB-Level-A-SHARE-REMS/VPA-Level-B-POLG-VPPP/LEV-Level-B-POLG-safe/
+    KD-Level-B-DRE-cardiac-echo/CLB-Level-B-adjunct), 5 contraindications
+    (Class-Ia-III-ABSOLUTE-QT-fatal/TGB-ABSOLUTE-NCSE-QT/VPA-POLG-ABSOLUTE-Alpers/
+    CBZ-OXC-PHT-HIGH-CYP3A4-verapamil/VGB-HIGH-VFD), 14 monitoring items, 6 lifecycle windows, 40 patients."""
+    try:
+        import scripts.cacna1c_dashboard as ca1c_
+        return _json_safe(ca1c_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1c/definitions")
+async def cacna1c_definitions():
+    """CACNA1C Timothy Syndrome definitions: 15 key concepts
+    (CACNA1C-12p13.33/Cav1.2-L-type-HVA/Timothy-Syndrome-TS/LQTS8-Long-QT-Type-8/
+    GOF-Mechanism-Cav1.2-VDI-Impairment/VDI-Voltage-Dependent-Inactivation/
+    CDI-Calcium-Dependent-Inactivation/DHP-Dihydropyridine-Sensitivity/
+    Verapamil-Precision-CACNA1C/West-Syndrome-IS/VPPP-MHRA2021/POLG-Alpers/
+    Syndactyly-Timothy/SUDEP/ACMG-AMP-2015), 12 thresholds, 12 standards
+    (ILAE-2022/NICE-NG217/Splawski-2004-Cell/Splawski-2005-PNAS/Jacobs-2006-Verapamil/
+    UKISS-2004/CPIC-POLG-2023/MHRA-VPPP-2021/SHARE-REMS-VGB/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019),
+    6 references (Splawski-2004/Splawski-2005/Jacobs-2006/Napolitano-2010/ILAE-2022/NICE-NG217)."""
+    try:
+        import scripts.cacna1c_dashboard as ca1c_
+        return _json_safe(ca1c_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

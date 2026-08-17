@@ -379,6 +379,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnb1">&#x26a1; KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I&#8336; / GOF-LOF / 20q13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1a">&#x1f9e0; CACNA1A Epilepsy (DEE42 / Cav2.1 P/Q-Type Ca&#178;&#8314; / EA2 / FHM1 / 19p13.13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1e">&#x1f9ec; CACNA1E Epilepsy (DEE69 / Cav2.3 R-type HVA Ca&#178;&#8314; / No-Precision-Blocker / ACTH-Level-A / 1q25.3)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/cacna1c">&#x2764;&#xfe0f; CACNA1C Epilepsy (Timothy Syndrome / LQTS8 / Cav1.2 L-type HVA Ca&#178;&#8314; / Verapamil-Precision / 12p13.33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn1b">&#x2764;&#xfe0f; SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-&#946;1 / 19q13.12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/arx">&#x1f9ec; ARX Epilepsy (X-linked DEE / Ohtahara / West / XLAG / Partington / Xp21.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq3">&#x26a1; KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3)</Link></li>
