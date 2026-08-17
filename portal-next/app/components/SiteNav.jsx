@@ -367,6 +367,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/atp1a3">&#x1f9ec; ATP1A3 Epilepsy (AHC / CAPOS / RDP / DEE-ATP1A3 / Na+/K+-ATPase &#945;3 / Flunarizine / 19q13.2)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/stx1b">&#x1f9ec; STX1B Epilepsy (GEFS+ Spectrum / Febrile Seizures Plus / Focal Epilepsy of Infancy / Syntaxin-1B / t-SNARE / 16p11.2)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gnb1">&#x1f9ec; GNB1 Epilepsy (DEE / Infantile Spasms / West Syndrome / G&#946;1 G-protein &#946;1 Subunit / GIRK / ACTH / 1p36.33)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/clcn2">&#x1f9ec; CLCN2 Epilepsy (GGE / JME / CAE / GTCS-Alone / CLC-2 Cl&#8315; Channel / Acetazolamide Precision / 3q26.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnb1">&#x26a1; KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I&#8336; / GOF-LOF / 20q13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1a">&#x1f9e0; CACNA1A Epilepsy (DEE42 / Cav2.1 P/Q-Type Ca&#178;&#8314; / EA2 / FHM1 / 19p13.13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn1b">&#x2764;&#xfe0f; SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-&#946;1 / 19q13.12)</Link></li>

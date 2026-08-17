@@ -24497,6 +24497,51 @@ async def gnb1_definitions():
     return _json_safe(gnb1_.get_definitions())
 
 
+@app.get("/api/clcn2/overview")
+async def clcn2_overview():
+    """CLCN2 Epilepsy Dashboard — GGE / JME / CAE / GTCS-Alone · CLC-2 Chloride Channel ·
+    GOF → elevated neuronal [Cl⁻]i → impaired GABA inhibition → 3-Hz SWD GGE spectrum.
+    Precision: Acetazolamide (carbonic anhydrase inhibitor → reduced HCO₃⁻ → attenuates
+    CLC-2 GOF HCO₃⁻ current + GABA-A depolarising HCO₃⁻ component). Level C add-on.
+    ABSOLUTE CI: CBZ/OXC/PHT (GGE aggravation) · TGB (NCSE) · AZM + topiramate (severe metabolic acidosis).
+    LOF biallelic (AR) → leukoencephalopathy (completely different phenotype, not epilepsy).
+    40-patient cohort · 5 etiology classes · 5 seizure types · 8 triggers · 8 treatments ·
+    6 contraindications · 14 monitoring items · 6 lifecycle windows · 15 concepts · 12 thresholds ·
+    12 standards (ILAE-2022/NICE-NG217/Haug-2003/Kleefuss-Lie-2009/Bhatt-2023/SANAD-II-2021/
+    MHRA-VPPP-2021/CPIC-POLG-2023/CPIC-HLA-B1502-2023/FDA-VPA-REMS/ILAE-Diet-2018/ACMG-AMP-2015) ·
+    6 references (Haug-2003/Kleefuss-Lie-2009/Bhatt-2023/SANAD-II-2021/Bhattacharya-2020/Ratté-2014)."""
+    import scripts.clcn2_dashboard as clcn2_
+    return _json_safe(clcn2_.get_overview())
+
+
+@app.get("/api/clcn2/breakdown")
+async def clcn2_breakdown():
+    """CLCN2 Epilepsy Breakdown — etiology/variant/AED/seizure-type/trigger breakdown for
+    40-patient CLCN2 GGE cohort (GOF JME-38%/GTCS-Alone-27%/CAE-JAE-22%/AZM-Responsive-8%/Phenocopy-5%).
+    Variant distribution: p.R235Q (most recurrent) · p.G715E · p.Y533H · p.R354W · p.A571V · p.I334F.
+    AED breakdown: VPA/LEV/ETX/AZM-add-on/CLB/PER.
+    Seizure type prevalence: Myoclonic-on-waking-75%/GTCS-88%/Absence-52%/Myoclonic-Absence-18%/
+    Absence-Status-8%. Trigger prevalence: Sleep-dep-92%/Missed-AED-85%/Stress-72%/Alcohol-68%/
+    HV-60%/Fever-35%/IPS-38%/Catamenial-28%."""
+    import scripts.clcn2_dashboard as clcn2_
+    return _json_safe(clcn2_.get_breakdown())
+
+
+@app.get("/api/clcn2/definitions")
+async def clcn2_definitions():
+    """CLCN2 Epilepsy Definitions — 15 key concepts (CLCN2-3q26.1/CLC-2-Chloride-Channel/
+    GGE-ILAE2022/GOF-vs-LOF-Dichotomy/Neuronal-Cl-Homeostasis/Acetazolamide-Precision-CLCN2/
+    AZM-Topiramate-ABSOLUTE-CI/Leukoencephalopathy-LOF/JME/GGE-Aggravation-NaV-Blockers/
+    VPPP-MHRA2021/POLG-Alpers/Thalamo-Cortical-SWD/SUDEP/ACMG-AMP-2015);
+    12 thresholds [VPA-TDM/LEV-TDM/LTG-TDM/AZM-dose/HCO3-minimum/LFT-ULN/Ammonia/
+    GTCS-driving/SUDEP-risk/IPS-range/BHB-KD/POLG-trigger];
+    12 standards [ILAE-2022/NICE-NG217/Haug-2003/Kleefuss-Lie-2009/Bhatt-2023/SANAD-II-2021/
+    MHRA-VPPP-2021/CPIC-POLG-2023/CPIC-HLA-B1502-2023/FDA-VPA-REMS/ILAE-Diet-2018/ACMG-AMP-2015];
+    6 references."""
+    import scripts.clcn2_dashboard as clcn2_
+    return _json_safe(clcn2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
