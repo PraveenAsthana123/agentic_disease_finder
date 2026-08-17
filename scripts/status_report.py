@@ -36,7 +36,7 @@ def main():
     # registries with built/partial/planned status
     registries = {
         "Clinical Data Manager tasks": load("config/data_manager.json").get("tasks", []),
-        "Expert dashboards": load("config/expert_dashboards.json").get("dashboards", []),
+        "Expert dashboards": (lambda d: d if isinstance(d, list) else d.get("dashboards", []))(load("config/expert_dashboards.json")),
         "Neuro AI ecosystem tools": [t for c in load("config/neuro_ai_ecosystem.json").get("categories", []) for t in c.get("tools", [])],
         "EEG AI stack tools": [t for L in load("config/eeg_ai_stack.json").get("layers", []) for t in L.get("tools", [])],
     }
@@ -86,9 +86,6 @@ def main():
     out.append(f"\n**Unpushed commits (gated §42):** {ahead} — push needs operator go-ahead")
     out.append("\n**Top buildable next (no blockers):**")
     out.append("- [ ] Retrain on same-setup ictal/interictal (removes dataset confound)")
-    out.append("- [ ] Spike/sharp-wave overlay · Seizure timeline (CHB-MIT annotations)")
-    out.append("- [ ] Patient Comparison UI · remaining cognitive tests + assessments")
-    out.append("- [ ] Next expert modules (Pharmacist, Epilepsy Nurse, SLP, OT, Dietitian, …)")
     out.append("\n**Blocked (need operator input):** Gmail/Slack/Drive live (credentials) · multi-user auth · EMR/FHIR\n")
 
     md = "\n".join(out) + "\n"

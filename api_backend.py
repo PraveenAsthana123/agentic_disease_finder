@@ -23796,6 +23796,49 @@ async def gabrb2_definitions():
     return _json_safe(gb2_.get_definitions())
 
 
+@app.get("/api/scn3a/overview")
+async def scn3a_overview():
+    """SCN3A overview: gene=SCN3A locus=2q24.3, NaV1.3 voltage-gated Na+ channel,
+    DEE67 (OMIM #619288) / Focal Epilepsy of Infancy (high-rate) / GEFS+-like familial /
+    R357Q polymicrogyria-associated DEE, 40-patient cohort, key KPIs
+    (seizure-free/DRE/West-history/on-ACTH/on-KD/on-VPA/POLG-done/VPA-without-POLG/PMG/CSWS),
+    contraindications summary (Tiagabine-ABSOLUTE-CI/CBZ-OXC-West-HIGH/VPA-without-POLG-HIGH/
+    LTG-myoclonic-MODERATE-HIGH/Quinidine-without-cardiac-monitoring-HIGH),
+    12 thresholds, references."""
+    import scripts.scn3a_dashboard as s3_
+    return _json_safe(s3_.get_overview())
+
+
+@app.get("/api/scn3a/breakdown")
+async def scn3a_breakdown():
+    """SCN3A breakdown: 5-class etiology distribution
+    (Severe-GOF-DEE67-West-LGS-25%/Moderate-GOF-FEI-high-rate-35%/
+    R357Q-PMG-DEE-10%/AD-familial-GEFS-like-20%/phenocopy-SCN1A-SCN2A-SCN8A-10%),
+    15-patient sample, 5 seizure types
+    (Focal-motor-neonatal-high-rate-80%/Infantile-spasms-30%/Tonic-LGS-25%/
+    Atonic-drop-attacks-18%/Focal-autonomic-apnoea-45%),
+    8 triggers (Fever-78%/Neonatal-physiological-72%/Sleep-wake-65%/Missed-AED-62%/
+    Hyperthermia-45%/NaV-drug-interaction-38%/Metabolic-stress-32%/Stress-25%),
+    7 treatments (ACTH-Level-A-West/VPA-Level-B-POLG/CBZ-OXC-Level-B-conditional/
+    LEV-Level-B-adjunct/CLB-Level-B-LGS/KD-Level-B-DRE/Quinidine-investigational),
+    5 contraindications, 10 monitoring items, 6-window lifecycle."""
+    import scripts.scn3a_dashboard as s3_
+    return _json_safe(s3_.get_breakdown())
+
+
+@app.get("/api/scn3a/definitions")
+async def scn3a_definitions():
+    """SCN3A definitions: 15 key concepts
+    (SCN3A-2q24.3/NaV1.3-fast-repriming/DEE67-OMIM-619288/FEI-high-rate/
+    R357Q-PMG/NaV1.3-persistent-I_NaP/developmental-switch/ACTH-West/
+    POLG-Alpers/HLA-B1502-SJS-TEN/OXC-SIADH/Quinidine-I_NaP/VPPP/CSWS/SUDEP),
+    5 contraindications, 12 thresholds, 8 standards, 6 references
+    (Holland-2008-AnnNeurol/Veeramah-2012-NatGenet/Zaman-2019-Epilepsia/
+    Estacion-2010-JNeurophysiol/Bhatt-2023-Epilepsia/Lux-2004-Lancet)."""
+    import scripts.scn3a_dashboard as s3_
+    return _json_safe(s3_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
