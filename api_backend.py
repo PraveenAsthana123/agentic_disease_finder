@@ -24019,6 +24019,50 @@ async def tsc2_definitions():
     return _json_safe(t2_.get_definitions())
 
 
+@app.get("/api/wwox/overview")
+async def wwox_overview():
+    """WWOX overview: gene=WWOX locus=16q23.1-q23.2, WW domain-containing Oxidoreductase;
+    spans FRA16D (most expressed common chromosomal fragile site, 1.1 Mb); biallelic LOF →
+    WOREE syndrome (WWOX-Related Epileptic Encephalopathy, OMIM #616211) = DEE28;
+    autosomal recessive; incidence ~1:50,000–100,000; NO mTOR pathway — everolimus NOT indicated;
+    40-patient cohort, key KPIs (drug-resistant/seizure-free/infantile-spasms/csws/
+    hypomyelination/polg-done/erg-done/on-kd/vpa-without-polg/consanguinity),
+    alerts (tiagabine-ABSOLUTE-CI/polg-mandatory/vgb-SHARE-REMS/everolimus-NOT-INDICATED/
+    nav-blocker-IS-risk/fra16d-deletion-MLPA),
+    contraindications summary, 12 thresholds, references
+    (Ben-Salem-2015/Piard-2018/Nizon-2019/Aldaz-2014/Abdel-Salam-2015/Bhatt-2023)."""
+    import scripts.wwox_dashboard as wx_
+    return _json_safe(wx_.get_overview())
+
+
+@app.get("/api/wwox/breakdown")
+async def wwox_breakdown():
+    """WWOX breakdown: 5-class etiology distribution
+    (WOREE-homozygous-null-45%/WOREE-compound-het-30%/WOREE-FRA16D-deletion-10%/
+    SCAR12-mild-biallelic-10%/WOREE-unclassified-5%),
+    15-patient sample, 5 seizure types
+    (Infantile-Spasms-62%/Tonic-LGS-55%/FBTCS-48%/Focal-35%/Myoclonic-28%),
+    8 triggers (Fever-88%/Missed-AED-82%/Sleep-deprivation-75%/Intercurrent-illness-72%/
+    Vaccination-fever-58%/Emotional-stress-48%/Hot-bath-42%/Photosensitivity-22%),
+    7 treatments (VGB-Level-B-IS-SHARE-REMS/ACTH-Level-B-IS/LEV-Level-B/
+    VPA-Level-B-POLG/CLB-Level-B-LGS/KD-Level-B-DRE/CBD-investigational),
+    5 contraindications, 14 monitoring items, 6-window lifecycle."""
+    import scripts.wwox_dashboard as wx_
+    return _json_safe(wx_.get_breakdown())
+
+
+@app.get("/api/wwox/definitions")
+async def wwox_definitions():
+    """WWOX definitions: 15 key concepts
+    (WWOX-16q23.1-q23.2/WOREE-Syndrome/DEE28/FRA16D/SCAR12/WW-SDR-domains/
+    GABAergic-Synaptogenesis/Hypsarrhythmia/CSWS-ESES/Hypomyelination-MRI/
+    SHARE-REMS/POLG-Mandatory/SUDEP-WOREE/VPPP/Allopregnanolone-Neurosteroid),
+    5 contraindications, 12 thresholds, 12 standards, 6 references
+    (Ben-Salem-2015/Piard-2018/Nizon-2019/Aldaz-2014/Abdel-Salam-2015/Bhatt-2023)."""
+    import scripts.wwox_dashboard as wx_
+    return _json_safe(wx_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

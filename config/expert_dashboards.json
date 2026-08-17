@@ -2710,5 +2710,21 @@
     "built_note": "TSC2 mTOR/Tuberous Sclerosis (severe) dashboard built 2026-08-17: /api/tsc2/overview|breakdown|definitions + portal-next/app/tsc2/page.jsx + SiteNav wired next to TSC1",
     "note": "Total: 208 dashboards",
     "updated_at": "2026-08-17"
+  },
+  {
+    "id": "wwox",
+    "name": "WWOX Epilepsy (WOREE Syndrome / DEE28 / WW-Oxidoreductase / FRA16D / AR / 16q23.1-q23.2)",
+    "status": "built",
+    "route": "/wwox",
+    "api": [
+      "/api/wwox/overview",
+      "/api/wwox/breakdown",
+      "/api/wwox/definitions"
+    ],
+    "gene": "WWOX",
+    "locus": "16q23.1-q23.2",
+    "syndrome": "WOREE Syndrome / DEE28",
+    "inheritance": "AR",
+    "note": "Biallelic WWOX LOF \u2192 WOREE (OMIM #616211). FRA16D fragile site. 5-class etiology, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
   }
 ]
