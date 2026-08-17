@@ -24315,6 +24315,48 @@ async def gabra2_definitions():
     return _json_safe(ga2_.get_definitions())
 
 
+@app.get("/api/gabrd/overview")
+async def gabrd_overview():
+    """GABRD Epilepsy (GGE / GEFS+ Spectrum / Catamenial / Tonic Inhibition / GABA-A δ Subunit / 1p36.33) — KPI overview.
+    40-patient cohort (GABRD 1p36.33); δ-subunit extrasynaptic GABA-A receptors; tonic Cl⁻ inhibition;
+    neurosteroid (allopregnanolone/ALLO) PAM site; catamenial C1 (perimenstrual ALLO withdrawal → cluster);
+    δ-GABA-A ethanol target (3-10 mM) → alcohol-withdrawal seizure risk; AD reduced penetrance (~65%);
+    5 etiology classes (AD-missense-GEFS+-38% / JME-phenotype-28% / CAE-catamenial-18% /
+    de-novo-DEE-10% / phenocopy-6%); CBZ/OXC/PHT ABSOLUTE CI; Tiagabine ABSOLUTE CI;
+    Ganaxolone precision therapy (δ-GABA-A PAM); POLG before VPA; VPPP females."""
+    import scripts.gabrd_dashboard as grd_
+    return _json_safe(grd_.get_overview())
+
+
+@app.get("/api/gabrd/breakdown")
+async def gabrd_breakdown():
+    """GABRD Epilepsy (GGE / GEFS+ / Catamenial / δ-GABA-A Tonic Inhibition) — full breakdown
+    (5-class etiology catalog, 15-patient sample, 5 seizure types [FS+-80%/GTCS-72%/
+    Catamenial-C1-42%/Absence-65%/Myoclonic-55%], 8 triggers [Sleep-dep-85%/Missed-AED-80%/
+    Alcohol-withdrawal-68%/Catamenial-42%/Stress-60%/Fever-55%/IPS-25%/HV-20%],
+    7 treatments [VPA-Level-A/ESM-Level-A/LEV-Level-B/CLB-Level-B-catamenial/
+    Ganaxolone-Level-B-precision/LTG-Level-B-CAUTION/KD-Level-B],
+    6 CIs [CBZ/OXC/PHT-ABSOLUTE/TGB-ABSOLUTE/LTG-myoclonic-HIGH/VPA-VPPP-HIGH/
+    VPA-POLG-HIGH/Alcohol-HIGH], 14 monitoring items, 6 lifecycle windows)."""
+    import scripts.gabrd_dashboard as grd_
+    return _json_safe(grd_.get_breakdown())
+
+
+@app.get("/api/gabrd/definitions")
+async def gabrd_definitions():
+    """GABRD Epilepsy (GGE / GEFS+ / Catamenial / δ-GABA-A) — definitions (15 concepts:
+    GABRD-1p36.33/δ-GABA-A-receptor/Tonic-inhibition/Allopregnanolone-ALLO/
+    Catamenial-C1/Ganaxolone/GEFS+/δ-GABA-A-ethanol-sensitivity/GGE-ILAE2022/
+    GGE-aggravation-NaV-blockers/VPPP-MHRA2021/POLG-Alpers/AUDIT-C/HLA-B1502/SUDEP;
+    12 thresholds [fever-38C/VPA-TDM/ESM-TDM/AED-failure-2/catamenial-window/
+    AUDIT-C-F≥3/AUDIT-C-M≥4/POLG-timing/LTG-titration/VPPP-annual/driving-12M/SUDEP-GTCS≥3];
+    12 standards [ILAE-2022/NICE-NG217/Dibbens-2004-NatGenet/Maguire-2005-NatNeurosci/
+    Maljevic-2013/SANAD-II-2021/MHRA-VPPP-2021/CPIC-POLG-2023/CPIC-HLA-B1502-2023/
+    FDA-VPA-REMS/ILAE-Diet-2018/ACMG-AMP-2015]; 6 references)."""
+    import scripts.gabrd_dashboard as grd_
+    return _json_safe(grd_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

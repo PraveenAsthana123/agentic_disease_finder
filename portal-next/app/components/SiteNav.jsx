@@ -362,6 +362,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/mecp2">&#x1f9ec; MECP2-Related Disorders (Rett Syndrome / MDS / X-Linked / Trofinetide / Xq28)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra1">&#x1f9ec; GABRA1 Epilepsy (DEE19 / CAE / JME / GABA-A &#945;1 / BDZ-Rescue-Adjusted / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra2">&#x1f9ec; GABRA2 Epilepsy (GGE / GEFS+ / Alcohol-Sensitive / GABA-A &#945;2 / AIS Inhibition / 4p12)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabrd">&#x1f9ec; GABRD Epilepsy (GGE / GEFS+ / Catamenial / GABA-A &#948; Subunit / Tonic Inhibition / Ganaxolone / 1p36.33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/slc13a5">&#x1f9b7; SLC13A5 Epilepsy (Citrate Transporter Deficiency / NAFE / EIEE25 / NaCT / Triheptanoin / AR / 17p13.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnb1">&#x26a1; KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I&#8336; / GOF-LOF / 20q13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1a">&#x1f9e0; CACNA1A Epilepsy (DEE42 / Cav2.1 P/Q-Type Ca&#178;&#8314; / EA2 / FHM1 / 19p13.13)</Link></li>

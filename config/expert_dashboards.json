@@ -2926,5 +2926,33 @@
     "note": "SLC13A5 17p13.1 \u2014 NaCT citrate transporter; AR biallelic LOF; EIEE25; neonatal onset; dental enamel hypoplasia pathognomonic; urine citrate elevated biomarker; Triheptanoin C7 anaplerotic precision therapy; 40-patient cohort; 5-class etiology; 5 seizure types; 7 treatments; 5 CIs; 14 monitoring items; built 2026-08-17",
     "built_note": "Total: 217 dashboards",
     "updated_at": "2026-08-17"
+  },
+  {
+    "id": "gabrd",
+    "name": "GABRD Epilepsy (GGE / GEFS+ Spectrum / Catamenial / GABA-A \u03b4 Subunit / Tonic Inhibition / Ganaxolone / 1p36.33)",
+    "route": "/gabrd",
+    "api_prefix": "/api/gabrd",
+    "script": "scripts/gabrd_dashboard.py",
+    "status": "built",
+    "category": "genetic_epilepsy",
+    "endpoints": [
+      "/api/gabrd/overview",
+      "/api/gabrd/breakdown",
+      "/api/gabrd/definitions"
+    ],
+    "viz": [
+      "kpi-cards",
+      "etiology-bars",
+      "treatment-table",
+      "seizure-prevalence",
+      "trigger-bars",
+      "lifecycle-windows",
+      "patient-table",
+      "contraindication-risk",
+      "definitions-glossary"
+    ],
+    "note": "Total: 218 dashboards",
+    "built_note": "GABRD Epilepsy Dashboard (GABA-A delta subunit / GGE-GEFS+ / Catamenial / Tonic Inhibition / 1p36.33): 40-patient GABRD cohort; extrasynaptic delta-GABA-A tonic Cl- inhibition; neurosteroid (allopregnanolone) PAM target; catamenial C1 perimenstrual ALLO withdrawal mechanism; ganaxolone precision therapy (synthetic ALLO); GEFS+ spectrum AD reduced-penetrance; 5-class etiology (AD-missense-GEFS+-38%/JME-phenotype-28%/CAE-catamenial-18%/de-novo-DEE-10%/phenocopy-6%); 5 seizure types (FS+-80%/GTCS-72%/Catamenial-C1-42%/Absence-65%/Myoclonic-55%); 8 triggers (Sleep-dep-85%/Missed-AED-80%/Alcohol-withdrawal-68%/Catamenial-42%/Stress-60%/Fever-55%/IPS-25%/HV-20%); 7 treatments (VPA-Level-A/ESM-Level-A/LEV-Level-B/CLB-Level-B-catamenial/Ganaxolone-Level-B-precision/LTG-Level-B-CAUTION/KD-Level-B); 6 CIs (CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE/LTG-HIGH/VPA-VPPP-HIGH/VPA-POLG-HIGH/Alcohol-HIGH); 14 monitoring items; 6 lifecycle windows; 15 concepts; 12 thresholds; 12 standards; 6 references. Completes GABA receptor gene family: GABRA1+GABRA2+GABRB2+GABRB3+GABRG2+GABRD all built. 3 endpoints verified 200. Built 2026-08-17.",
+    "updated_at": "2026-08-17"
   }
 ]
