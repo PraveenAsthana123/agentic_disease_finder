@@ -1,6 +1,6 @@
 {
   "title": "Expert / Neurologist Dashboard Catalog \u2014 EEG AI Epilepsy Platform",
-  "note": "Total: 202 dashboards",
+  "note": "Total: 203 dashboards",
   "updated_at": "2026-08-17",
   "must_have_p0": [
     {
@@ -2647,20 +2647,24 @@
       "built_note": "Bonn external validation dashboard built 2026-08-16: /api/bonn/overview|breakdown|definitions + portal-next/app/bonn/page.jsx + SiteNav wired. expert_dashboards.json count 201\u2192202"
     },
     {
-      "role": "Neurologist",
-      "name": "GABRB2 Epilepsy (GEFS+ / CAE / DEE / 5q34)",
-      "viz": "Gene dashboard \u2014 5-tab: Overview/Patients-Etiology/Seizures-Triggers/Treatments/Definitions",
-      "feature": "GEFS+/CAE/Dravet-like-DEE cohort, etiology distribution, seizure types, treatments, contraindications",
-      "why": "GABRB2 \u03b22 GABA-A receptor subunit epilepsy \u2014 GEFS+/CAE/DEE clinical decision support",
-      "priority": "P1",
+      "id": "gabrb2",
+      "name": "GABRB2 Epilepsy (GEFS+ / CAE / DEE-Dravet-like / GABA-A \u03b22 Subunit / 5q34)",
       "status": "built",
+      "route": "/gabrb2",
+      "api_prefix": "/api/gabrb2",
       "endpoints": [
         "/api/gabrb2/overview",
         "/api/gabrb2/breakdown",
         "/api/gabrb2/definitions"
-      ]
+      ],
+      "viz": "5-tab: Overview / Patients-Etiology / Seizures-Triggers / Treatments / Definitions",
+      "role": "Neurologist / Pediatric Neurologist / Clinical Geneticist",
+      "priority": "P1",
+      "script": "scripts/gabrb2_dashboard.py",
+      "note": "GABRB2 5q34, GABA-A receptor \u03b22 subunit \u2014 most abundant \u03b2 isoform in cortex/hippocampus/thalamus; \u03b11\u03b22\u03b32 pentameric phasic synaptic Cl\u207b channel; LOF \u2192 reduced synaptic GABA-A current \u2192 GEFS+/CAE/DEE spectrum. 5-class etiology catalog (GEFS+-AD-LOF/CAE-de-novo-familial/Dravet-like-DEE/LGS-like-DEE/phenocopy). 6 seizure types. 8 triggers. 6 treatments (VPA Level-A first-line with POLG MANDATORY; ETX Level-A absence; CLB Level-B pulse catamenial; Rufinamide Level-B LGS; KD Level-B DRE). 5 contraindications (Tiagabine ABSOLUTE CI; CBZ/OXC/PHT HIGH absence acceleration). POLG mandatory before VPA. 40-patient cohort. Dashboard 203 \u2014 built 2026-08-17.",
+      "built_note": "GABRB2 dashboard built 2026-08-17: /api/gabrb2/overview|breakdown|definitions + portal-next/app/gabrb2/page.jsx + SiteNav wired. expert_dashboards.json id blank-id fix + note count 202\u2192203"
     }
   ],
-  "summary": "199 expert dashboards built",
+  "summary": "203 expert dashboards built",
   "count": 203
 }
