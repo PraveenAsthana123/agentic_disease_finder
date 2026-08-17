@@ -2355,6 +2355,26 @@
     "note": "41-patient KCNA2-DEE cohort (KCNA2 1p13.3, Kv1.2 voltage-gated K+ channel, dual-mechanism: LOF dominant-negative/haploinsufficiency \u2192 multifocal DEE; GOF hyperpolarised K+ leak in interneurons \u2192 disinhibition \u2192 DEE + progressive cerebellar ataxia + cerebellar atrophy), 5-class etiology catalog (KCNA2-missense-LOF-dominant-negative 41%/KCNA2-missense-GOF-cerebellar 34%/KCNA2-truncating-haploinsufficiency 12%/KCNA2-VUS-ambiguous 7%/KCNA2-negative-phenocopy 6%), 4 seizure types (focal-pericentral 88%/GTCS 71%/infantile-spasms 32%/atonic-drop-attacks 24%) with EEG correlates+clinical tips, 8 triggers (fever 78%/sleep-deprivation 72%/missed-AED 68%/stress 55%/movement-startle-GOF 45%/AED-iatrogenic 38%/photic-GOF 28%/HV 22%), 8 treatments (VPA Level-B/CLB Level-B/LEV Level-C/KD Level-B-LOF/4-AP Level-C-GOF-ONLY-precision/VGB Level-B-IS/Rufinamide Level-C/Callosotomy Level-B) with dose+MOA+efficacy+safety+monitoring, 4 contraindications (4-AP-LOF-ABSOLUTE-CI/VPA-POLG1-HIGH/Na-blocker-myoclonic-atonic-HIGH/withhold-4-AP-GOF-confirmed-HIGH), 8 monitoring items (VPA-TDM-POLG1/4-AP-SARA-ECG-GOF/MRI-cerebellar-volumetry/neuropsych-q12M/EEG-multifocal-q6M/POLG1-pre-VPA/KCNA2-functional-assay/SUDEP), 6-window lifecycle (neonatal/infantile-IS/toddler-KD-4AP/school-age/adolescent-transition/adult), 14 concepts (KCNA2-Kv1.2/KCNA2-DEE/Dual-mechanism/GOF-leak/LOF-dominant-negative/4-AP-precision-GOF/Pericentral-somatosensory/Cerebellar-atrophy-GOF/SARA/Multifocal-IED-LOF/Dominant-negative-tetramer/P405L-hotspot/KCNA2-Alliance/KD-LOF), 8 standards (ILAE-2022/NICE-NG217/ClinGen-DEFINITIVE/ACMG-AMP-2015/ACNS-EEG-2021/MHRA-PREVENT-2024/Syrbe-2015-NatGenet/Masnada-2017-BRAIN), 10 thresholds (GOF-assay-before-4AP/VPA-TDM-50-100/KD-2AED/POLG1-before-VPA/4AP-12wk-trial/cerebellum-atrophy-GOF/SARA-MCID-4/MRI-q12M-GOF/SUDEP-annually/norclobazam-50-300), 6 references (Syrbe-2015-NatGenet/Masnada-2017-BRAIN/Semmler-2020-EJPN/Allen-2014-Neurology/Smart-1998-Neuron/Lehmann-Horn-1999-PhysiolRev), 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions), 3 endpoints /api/kcna2/overview|breakdown|definitions verified 200, expert_dashboards.json count 184->185"
   },
   {
+    "id": "kcna1",
+    "role": "Neurologist",
+    "name": "KCNA1 Epilepsy / EA1 (Episodic Ataxia Type 1 / Kv1.1 / Myokymia / 12p13.32)",
+    "viz": "5-tab dashboard: Overview KPIs / Patients-Etiology / Seizures-Triggers / Treatments / Definitions",
+    "feature": "4-AP precision therapy Level A; EA1 vs EA2 DDx; myokymia EMG; 40-patient cohort; SARA scoring; HLA-B*15:02 + POLG + ECG protocols",
+    "why": "KCNA1 (12p13.32) Kv1.1 voltage-gated K+ channel LOF \u2192 Episodic Ataxia Type 1 + interictal myokymia; 25% families have focal epilepsy/GTCS; 4-AP Level A precision therapy; CBZ for seizures+myokymia; HLA-B*15:02 + POLG + ECG mandatory protocols",
+    "priority": "P1",
+    "status": "built",
+    "route": "/kcna1",
+    "api_prefix": "/api/kcna1",
+    "script": "scripts/kcna1_dashboard.py",
+    "endpoints": [
+      "/api/kcna1/overview",
+      "/api/kcna1/breakdown",
+      "/api/kcna1/definitions"
+    ],
+    "note": "Total: 206 dashboards",
+    "built_note": "3 API endpoints verified 200, portal-next/app/kcna1/page.jsx + SiteNav wired next to KCNA2, expert_dashboards.json count 205\u2192206, built 2026-08-17"
+  },
+  {
     "id": "aldh7a1",
     "name": "ALDH7A1-PDE (Pyridoxine-Dependent Epilepsy / Antiquitin Deficiency / 5q23)",
     "status": "built",

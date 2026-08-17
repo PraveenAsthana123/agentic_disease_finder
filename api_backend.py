@@ -23883,6 +23883,51 @@ async def scn1a_definitions():
     return _json_safe(s1_.get_definitions())
 
 
+@app.get("/api/kcna1/overview")
+async def kcna1_overview():
+    """KCNA1 overview: gene=KCNA1 locus=12p13.32, Kv1.1 Shaker-related voltage-gated K+ channel,
+    Episodic Ataxia Type 1 (EA1) / EA1+Epilepsy / Myokymia-dominant / Neuromyotonia spectrum,
+    40-patient cohort, key KPIs (epilepsy/drug-resistant/seizure-free/on-4AP/on-CBZ/
+    polg-done/hla-done/ecg-done/avg-SARA/avg-attacks-per-month),
+    contraindications summary (Tiagabine-ABSOLUTE-CI/4-AP-without-seizure-control-HIGH/
+    Acetazolamide+KD-HIGH/VPA-without-POLG-HIGH/Mexiletine+4-AP-ECG-MODERATE),
+    10 thresholds, references."""
+    import scripts.kcna1_dashboard as ka1_
+    return _json_safe(ka1_.get_overview())
+
+
+@app.get("/api/kcna1/breakdown")
+async def kcna1_breakdown():
+    """KCNA1 breakdown: 5-class etiology distribution
+    (EA1-pure-LOF-no-epilepsy-50%/EA1-LOF-epilepsy-25%/
+    Myokymia-dominant-LOF-10%/Severe-LOF-truncating-epilepsy-10%/
+    Phenocopy-CACNA1A-ATP1A3-5%),
+    15-patient sample, 4 seizure types
+    (Focal-aware-TLE-frontal-45%/FBTCS-35%/EA1-cerebellar-episode-100%/
+    Myoclonic-10%),
+    8 triggers (Startle-95%/Sudden-movement-exercise-85%/Emotional-stress-72%/
+    Fever-hyperthermia-65%/Sleep-deprivation-55%/Missed-4AP-AED-68%/
+    Hyperventilation-45%/Intercurrent-illness-38%),
+    7 treatments (4-AP-Level-A-precision/CBZ-OXC-Level-B/Acetazolamide-Level-B/
+    LEV-Level-B/VPA-Level-B-POLG/Mexiletine-Level-B-myokymia/KD-Level-B-DRE),
+    5 contraindications, 10 monitoring items, 6-window lifecycle."""
+    import scripts.kcna1_dashboard as ka1_
+    return _json_safe(ka1_.get_breakdown())
+
+
+@app.get("/api/kcna1/definitions")
+async def kcna1_definitions():
+    """KCNA1 definitions: 14 key concepts
+    (KCNA1-12p13.32/Kv1.1-Shaker/EA1/Myokymia-Neuromyotonia/4-AP-precision/
+    EA1-vs-EA2-DDx/Scheffer-1998-Victorian-family/Startle-threshold/SARA/
+    Kv1.1-juxtaparanodal/Acetazolamide-EA1/HLA-B1502/POLG-VPA-CI/SUDEP-EA1-epilepsy),
+    5 contraindications, 10 thresholds, 8 standards, 6 references
+    (Browne-1994-NatGenet/Scheffer-1998-Lancet/Rajakulendran-2007-Brain/
+    Strupp-2008-NEJM/Graves-2010-Brain/Bhatt-2023-Epilepsia)."""
+    import scripts.kcna1_dashboard as ka1_
+    return _json_safe(ka1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
