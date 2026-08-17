@@ -24878,6 +24878,64 @@ async def cacna1i_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/hcn2/overview")
+async def hcn2_overview():
+    """HCN2 Epilepsy — GEFS+ / Febrile Seizures / CAE / GGE Spectrum — Ih Pacemaker Channel — TC-Dominant LOF.
+    HCN2 (19p13.3), Hyperpolarization-Activated Cyclic Nucleotide-Gated Channel 2, 863 aa.
+    TC relay neuron DOMINANT HCN subunit; generates Ih 'funny' pacemaker current.
+    LOF → reduced TC Ih → prolonged TC hyperpolarisation → larger Cav3.1/Cav3.2 LTCS → 3-Hz SWD → GEFS+/CAE.
+    Ludwig 2003 (Nat Neurosci): HCN2 KO mice → spontaneous absence seizures + sinus dysrhythmia — FOUNDATIONAL.
+    Tang 2008 (Nat Genet): HCN2 missense mutations in human GEFS+ families (p.R591Q, p.V246L).
+    LTG CONTRAINDICATED in LOF (LTG blocks Ih — Poolos 2002 Nat Neurosci — worsens LOF further → absence aggravation).
+    ABSOLUTE CI: CBZ/OXC/PHT (GGE aggravation → absence status); TGB (NCSE); VPA+POLG1 (Alpers).
+    ETX Level A for CAE/absence (indirect: blocks Cav3.1/Cav3.2 LTCS downstream of HCN2 LOF).
+    HCN2 vs HCN1: MILDER — GGE spectrum (not DEE24); TC-dominant (not hippocampus/L5 cortex); LOF primary (not dual GOF/LOF)."""
+    try:
+        import scripts.hcn2_dashboard as h2_
+        return _json_safe(h2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hcn2/breakdown")
+async def hcn2_breakdown():
+    """HCN2 breakdown: 40 patients, 5-class etiology catalog
+    (LOF-Febrile-Seizures-GEFS-40%/LOF-CAE-Absence-25%/LOF-GEFS-Plus-Spectrum-20%/
+    LOF-GGE-GTCS-Alone-10%/Phenocopy-GGE-No-HCN2-5%),
+    5 seizure types (Febrile-Seizures-FS-FS+-92%/Typical-Absence-55%/GTCS-45%/
+    Febrile-Seizures-Plus-35%/Myoclonic-Jerks-15%) with EEG+semiology+clinical tips,
+    8 triggers (Fever-95%/Febrile-Illness-78%/Sleep-dep-72%/Missed-AED-65%/HV-60%/
+    Stress-48%/Catamenial-22%/Alcohol-20%),
+    8 treatments (ETX-Level-A-CAE-indirect-T-type/VPA-Level-B-POLG-VPPP/LEV-Level-B-POLG-safe-females/
+    CLB-Level-B-catamenial-nocturnal/LTG-CAUTION-Ih-blocker-LOF/ZNS-Level-C-dual-T-NaV/
+    KD-Level-B-DRE-HCN2-independent/PB-Level-C-febrile-SE-IV) with dose+MOA+efficacy+safety+monitoring,
+    5 contraindications (CBZ-OXC-PHT-ABSOLUTE-GGE/LTG-HIGH-RISK-Ih-blocker-LOF/TGB-ABSOLUTE-NCSE/
+    VPA-POLG-ABSOLUTE-Alpers/VGB-HIGH-NCSE-VFD),
+    14 monitoring items, 6-window lifecycle, 15 concepts."""
+    try:
+        import scripts.hcn2_dashboard as h2_
+        return _json_safe(h2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hcn2/definitions")
+async def hcn2_definitions():
+    """HCN2 definitions: 15 key concepts
+    (HCN2-19p13.3/Ih-funny-pacemaker-current/HCN-Subfamily-HCN1-4/TC-Dominant-Expression/
+    cAMP-Modulation-HCN2/Febrile-Seizures-FS/GEFS-Plus/FS-Plus/LTCS/Thalamo-Cortical-3Hz-SWD/
+    LTG-Ih-Block-HCN2-LOF-Safety/ETX-Indirect-HCN2-GGE/VPPP-MHRA2021/POLG1-Alpers/ACMG-AMP-2015),
+    5 contraindications (CBZ-OXC-PHT-ABSOLUTE/LTG-HIGH-RISK-LOF/TGB-ABSOLUTE/VPA-POLG-ABSOLUTE/VGB-HIGH),
+    12 thresholds, 12 standards (ILAE-2022/NICE-NG217/SANAD-2007/SANAD-II-2021/Ludwig-2003/Tang-2008/
+    Poolos-2002/DiFrancesco-2010/CPIC-POLG-2023/MHRA-VPPP-2021/ACMG-AMP-2015/ILAE-Diet-2018),
+    6 references (Ludwig-2003/Tang-2008/Poolos-2002/DiFrancesco-2010/ILAE-2022/NICE-NG217)."""
+    try:
+        import scripts.hcn2_dashboard as h2_
+        return _json_safe(h2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
