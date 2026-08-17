@@ -24063,6 +24063,32 @@ async def wwox_definitions():
     return _json_safe(wx_.get_definitions())
 
 
+@app.get("/api/lgi1/overview")
+async def lgi1_overview():
+    """LGI1 Epilepsy / ADLTE — overview KPIs (40-patient cohort, ADLTE/EPILEPSY-AUDITORY/OMIM#600512,
+    AD 70% penetrance, auditory aura, good prognosis, CBZ/OXC first-line).
+    5 etiology classes, 5 seizure types, 8 triggers, 6 treatments, 5 contraindications,
+    12 thresholds, 12 standards, 6 references (Ottman-1995/Kalachikov-2002/Fukata-2006/Nobile-2009/Irani-2011/Bhatt-2023)."""
+    import scripts.lgi1_dashboard as lg_
+    return _json_safe(lg_.get_overview())
+
+
+@app.get("/api/lgi1/breakdown")
+async def lgi1_breakdown():
+    """LGI1 Epilepsy / ADLTE — full breakdown (etiology catalog, 15-patient sample,
+    seizure detail, trigger detail, treatment detail, contraindications, monitoring, lifecycle)."""
+    import scripts.lgi1_dashboard as lg_
+    return _json_safe(lg_.get_breakdown())
+
+
+@app.get("/api/lgi1/definitions")
+async def lgi1_definitions():
+    """LGI1 Epilepsy / ADLTE — definitions (15 concepts, contraindications, thresholds, standards, references).
+    Includes ADLTE/ADPEAF, auditory aura, ADAM22/ADAM23 complex, LGI1 secretion defect, autoimmune distinction."""
+    import scripts.lgi1_dashboard as lg_
+    return _json_safe(lg_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

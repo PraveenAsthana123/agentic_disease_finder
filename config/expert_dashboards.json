@@ -2726,5 +2726,21 @@
     "syndrome": "WOREE Syndrome / DEE28",
     "inheritance": "AR",
     "note": "Biallelic WWOX LOF \u2192 WOREE (OMIM #616211). FRA16D fragile site. 5-class etiology, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
+  },
+  {
+    "id": "lgi1",
+    "name": "LGI1 Epilepsy (ADLTE / EPILEPSY-AUDITORY / Auditory Aura / ADAM22-ADAM23 / AD / 10q23.33)",
+    "status": "built",
+    "route": "/lgi1",
+    "api": [
+      "/api/lgi1/overview",
+      "/api/lgi1/breakdown",
+      "/api/lgi1/definitions"
+    ],
+    "gene": "LGI1",
+    "locus": "10q23.33",
+    "syndrome": "ADLTE / ADPEAF / EPILEPSY-AUDITORY (OMIM #600512)",
+    "inheritance": "AD",
+    "note": "Heterozygous LGI1 LOF \u2192 ADLTE (OMIM #600512). Secreted synaptic adhesion protein; LGI1-ADAM22-ADAM23 trans-synaptic complex. Pathognomonic auditory aura. AD 70% penetrance. EXCELLENT prognosis: 65-70% seizure-free on CBZ/OXC. 5-class etiology, 5 seizure types, 8 triggers, 6 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
   }
 ]
