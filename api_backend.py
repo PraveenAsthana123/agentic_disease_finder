@@ -24542,6 +24542,55 @@ async def clcn2_definitions():
     return _json_safe(clcn2_.get_definitions())
 
 
+@app.get("/api/grin1/overview")
+async def grin1_overview():
+    """GRIN1 Epilepsy Overview — 40-patient cohort (GRIN1 9q34.3 / GluN1 / NR1 /
+    Obligatory NMDA Receptor Subunit / glycine-D-serine co-agonist site /
+    AD de novo / DEE + Hyperkinetic Movement Disorder / OMIM #616346);
+    5-class etiology (LOF-Severe-DEE-35%/LOF-HkMD-Moderate-30%/GOF-Excitotoxic-22%/
+    NTD-ABD-Intermediate-8%/Phenocopy-5%);
+    top trigger: sleep deprivation 82%;
+    precision: D-serine (LOF) / memantine (GOF) / LEV + ACTH (spasms);
+    pLI ~0.99 (most intolerant gene in genome); discovery: Lemke-2016-AnnNeurol."""
+    import scripts.grin1_dashboard as grin1_
+    return _json_safe(grin1_.get_overview())
+
+
+@app.get("/api/grin1/breakdown")
+async def grin1_breakdown():
+    """GRIN1 Epilepsy Breakdown — etiology catalog (5 classes: LOF-Severe/LOF-HkMD/
+    GOF-Excitotoxic/NTD-ABD-Intermediate/Phenocopy); 40 simulated patients;
+    5 seizure types (Focal-Motor-72%/Epileptic-Spasms-55%/Myoclonic-48%/
+    Tonic-38%/Absence-like-28%);
+    8 triggers (Sleep-dep-82%/Fever-75%/Missed-AED-62%/Stress-55%/
+    Sensory-42%/HV-35%/Glutamate-potentiators-28%/REM-transition-22%);
+    8 treatments (D-serine-LOF-LevelC/Memantine-GOF-LevelC/LEV-LevelB/
+    VPA-LevelB/CLB-LevelB/ACTH-LevelA-IS/KD-LevelB/TPM-LevelC);
+    5 contraindications (MK-801-ABSOLUTE/D-serine-GOF-ABSOLUTE/VPA-noPOLG1-ABSOLUTE/
+    Memantine-LOF-HIGH/TGB-ABSOLUTE);
+    14 monitoring items; 6 lifecycle windows."""
+    import scripts.grin1_dashboard as grin1_
+    return _json_safe(grin1_.get_breakdown())
+
+
+@app.get("/api/grin1/definitions")
+async def grin1_definitions():
+    """GRIN1 Epilepsy Definitions — 15 key concepts
+    (GRIN1-9q34.3/GluN1-NR1/NMDA-Receptor-Heterotetramers/Glycine-Site-D-serine/
+    Mg2+-Block-Coincidence-Detector/GRIN1-LOF-Hypofunction/GRIN1-GOF-Excitotoxicity-Lurcher/
+    D-serine-Precision-LOF/Memantine-Precision-GOF/PV+-Interneuron-Hypofunction/
+    POLG1-Alpers/VPPP-MHRA2021/SUDEP/ACMG-AMP-2015/HkMD-GRIN1);
+    12 thresholds (VPA-TDM/LEV-TDM/Memantine-dose/D-serine-dose/
+    Creatinine-D-serine/LFT-ULN/Ammonia/GTCS-driving/KD-BHB/HCO3-threshold/
+    SUDEP-7/CSF-D-serine);
+    12 standards (ILAE-2022/NICE-NG217/Lemke-2016-AnnNeurol/Bhatt-2023/
+    Bhattacharya-2020/CPIC-POLG-2023/FDA-Memantine-2003/MHRA-VPPP-2021/
+    UKISS-2004/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019);
+    6 references."""
+    import scripts.grin1_dashboard as grin1_
+    return _json_safe(grin1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -3044,5 +3044,40 @@
     "gene_family": "Chloride channel (CLC family; CLC-2 neuronal/astrocytic)",
     "type": "gene",
     "category": "genetic_epilepsy"
+  },
+  {
+    "id": "grin1",
+    "name": "GRIN1 Epilepsy (DEE / GluN1 Obligatory NMDA Receptor Subunit / D-serine Precision LOF / Memantine Precision GOF / Hyperkinetic Movement Disorder / 9q34.3)",
+    "status": "built",
+    "category": "genetic_epilepsy",
+    "route": "/grin1",
+    "api_endpoints": [
+      "/api/grin1/overview",
+      "/api/grin1/breakdown",
+      "/api/grin1/definitions"
+    ],
+    "gene_family": "ionotropic glutamate receptor (NMDA type, obligatory GluN1 subunit)",
+    "locus": "9q34.3",
+    "omim": "#616346",
+    "cohort_size": 40,
+    "tabs": [
+      "Overview",
+      "Patients & Etiologies",
+      "Seizures & Triggers",
+      "Treatments",
+      "Definitions"
+    ],
+    "nav_label": "GRIN1 Epilepsy",
+    "precision_drugs": [
+      "D-serine (LOF)",
+      "Memantine (GOF)"
+    ],
+    "key_references": [
+      "Lemke-2016-AnnNeurol",
+      "Bhatt-2023-Epilepsia",
+      "Bhattacharya-2020-FrontNeurol"
+    ],
+    "built_by": "autobuild",
+    "built_at": "2026-08-17"
   }
 ]
