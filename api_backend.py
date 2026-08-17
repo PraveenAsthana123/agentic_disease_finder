@@ -24357,6 +24357,50 @@ async def gabrd_definitions():
     return _json_safe(grd_.get_definitions())
 
 
+@app.get("/api/atp1a3/overview")
+async def atp1a3_overview():
+    """ATP1A3 Epilepsy (AHC / CAPOS / RDP / DEE-ATP1A3 / Na+/K+-ATPase α3 / 19q13.2) — KPI overview.
+    40-patient cohort (ATP1A3 19q13.2); neuron-specific Na+/K+-ATPase α3 subunit; electrogenic pump
+    (3Na+ out / 2K+ in per ATP); pLI~0.99; AD de novo >95%;
+    5 etiology classes (D801N-AHC-moderate-40% / E815K-AHC-severe-DEE-18% / E818K-CAPOS-15% /
+    G947R-other-AHC-15% / phenocopy-12%); AHC PATHOGNOMONIC: attacks resolve with sleep;
+    flunarizine Level-B first-line attack prevention; CBZ/OXC ABSOLUTE CI (bilateral hemiplegic crisis);
+    D2-antagonists HIGH RISK (worsen dystonia); POLG before VPA; VPPP females."""
+    import scripts.atp1a3_dashboard as at3_
+    return _json_safe(at3_.get_overview())
+
+
+@app.get("/api/atp1a3/breakdown")
+async def atp1a3_breakdown():
+    """ATP1A3 Epilepsy (AHC / CAPOS / RDP / DEE) — full breakdown
+    (5-class etiology catalog, 15-patient sample, 5 seizure types [Focal-Motor-75%/
+    Epileptic-Spasms-E815K-45%/GTCS-40%/Status-Epilepticus-30%/Absence-like-20%],
+    8 triggers [Fever-85%/Bathing-72%/Emotional-stress-68%/Exertion-55%/
+    Illness-60%/Missed-AED-48%/Sleep-dep-42%/Photic-25%],
+    7 treatments [Flunarizine-Level-B-first-line-AHC/LEV-Level-B/VPA-Level-B-POLG/
+    CLB-Level-B-SE-rescue/TPM-Level-C/KD-Level-C-DEE/Triheptanoin-Level-C-investigational],
+    5 CIs [CBZ-OXC-ABSOLUTE/TGB-ABSOLUTE/VPA-no-POLG-HIGH/D2-antagonists-HIGH/VGB-HIGH],
+    14 monitoring items, 6 lifecycle windows)."""
+    import scripts.atp1a3_dashboard as at3_
+    return _json_safe(at3_.get_breakdown())
+
+
+@app.get("/api/atp1a3/definitions")
+async def atp1a3_definitions():
+    """ATP1A3 Epilepsy (AHC / CAPOS / RDP / DEE) — definitions (15 concepts:
+    ATP1A3-19q13.2/NKAα3/AHC-OMIM-614820/CAPOS-OMIM-601543/RDP-OMIM-128235/
+    D801N-mutation/E815K-mutation/E818K-CAPOS/Hemiplegic-attack-sleep-resolution/
+    Flunarizine/CBZ-OXC-ABSOLUTE-CI/POLG-Alpers/D2-antagonist-risk/SUDEP/ACMG-AMP-2015;
+    12 thresholds [AHC-onset-<18M/fever-37.5C/attack-freq-2-week/SE-5min/POLG-before-VPA/
+    VPA-TDM-50-100/flunarizine-5-10mg/SUDEP-GTCS-3-year/ophthalmology-annual/
+    audiogram-24M/MRI-2y/triheptanoin-1-2g-kg];
+    12 standards [ILAE-2022/NICE-NG217/Heinzen-2012-NatGenet/Demos-2014-AnnNeurol/
+    Panagiotakaki-2015-Brain/Rosewich-2012/Bhatt-2023/Bhattacharya-2018/
+    CPIC-POLG-2023/FDA-VPA-REMS/ACMG-AMP-2015/ILAE-Diet-2018]; 6 references)."""
+    import scripts.atp1a3_dashboard as at3_
+    return _json_safe(at3_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
