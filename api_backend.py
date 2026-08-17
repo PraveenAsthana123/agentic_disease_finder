@@ -24591,6 +24591,33 @@ async def grin1_definitions():
     return _json_safe(grin1_.get_definitions())
 
 
+@app.get("/api/gabra5/overview")
+async def gabra5_overview():
+    try:
+        import scripts.gabra5_dashboard as gabra5_
+        return _json_safe(gabra5_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabra5/breakdown")
+async def gabra5_breakdown():
+    try:
+        import scripts.gabra5_dashboard as gabra5_
+        return _json_safe(gabra5_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabra5/definitions")
+async def gabra5_definitions():
+    try:
+        import scripts.gabra5_dashboard as gabra5_
+        return _json_safe(gabra5_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

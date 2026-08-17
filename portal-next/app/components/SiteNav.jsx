@@ -363,6 +363,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/mecp2">&#x1f9ec; MECP2-Related Disorders (Rett Syndrome / MDS / X-Linked / Trofinetide / Xq28)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra1">&#x1f9ec; GABRA1 Epilepsy (DEE19 / CAE / JME / GABA-A &#945;1 / BDZ-Rescue-Adjusted / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra2">&#x1f9ec; GABRA2 Epilepsy (GGE / GEFS+ / Alcohol-Sensitive / GABA-A &#945;2 / AIS Inhibition / 4p12)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabra5">&#x1f9ec; GABRA5 Epilepsy (DEE65 / Hippocampal Tonic-Inhibition / BZD-Insensitive-&#945;5 / ACTH / 15q12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabrd">&#x1f9ec; GABRD Epilepsy (GGE / GEFS+ / Catamenial / GABA-A &#948; Subunit / Tonic Inhibition / Ganaxolone / 1p36.33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/slc13a5">&#x1f9b7; SLC13A5 Epilepsy (Citrate Transporter Deficiency / NAFE / EIEE25 / NaCT / Triheptanoin / AR / 17p13.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/atp1a3">&#x1f9ec; ATP1A3 Epilepsy (AHC / CAPOS / RDP / DEE-ATP1A3 / Na+/K+-ATPase &#945;3 / Flunarizine / 19q13.2)</Link></li>

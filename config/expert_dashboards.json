@@ -3079,5 +3079,40 @@
     ],
     "built_by": "autobuild",
     "built_at": "2026-08-17"
+  },
+  {
+    "id": "gabra5",
+    "name": "GABRA5 Epilepsy (DEE65 / Hippocampal Tonic-Inhibition / BZD-Insensitive α5 Subunit / ACTH / 15q12)",
+    "gene": "GABRA5",
+    "status": "built",
+    "api_prefix": "/api/gabra5",
+    "endpoints": ["/api/gabra5/overview", "/api/gabra5/breakdown", "/api/gabra5/definitions"],
+    "frontend": "portal-next/app/gabra5/page.jsx",
+    "script": "scripts/gabra5_dashboard.py",
+    "note": "Total: 224 dashboards",
+    "built_note": "GABRA5 15q12, GABA-A α5 extrasynaptic tonic inhibition, BZD-insensitive, DEE65 ACTH-responsive West syndrome, 40-patient cohort, 5-tab frontend, 3 endpoints verified 200. Built 2026-08-17",
+    "gene_family": "GABA-A receptor α-subunit (GABRA cluster 15q12 — GABRA5 extrasynaptic tonic inhibition, co-cluster with GABRB3/GABRG3)",
+    "locus": "15q12",
+    "omim": "#616861",
+    "cohort_size": 40,
+    "tabs": [
+      "Overview",
+      "Patients & Etiologies",
+      "Seizures & Triggers",
+      "Treatments",
+      "Definitions"
+    ],
+    "nav_label": "GABRA5 Epilepsy",
+    "key_pharmacology": "BZD-insensitive (Ile99 not His101) — PHB (barbiturate site preserved) and CLB (1,5-BZD α2/α3) preferred rescue",
+    "key_references": [
+      "Maljevic-2019-Front-Pharmacol",
+      "Möhler-2007-Pharmacol-Biochem-Behav",
+      "Mihalek-1999-PNAS",
+      "Pirker-2000-Neuroscience",
+      "UKISS-2004-LancetNeurol",
+      "Bhatt-2023-Epilepsia"
+    ],
+    "built_by": "autobuild",
+    "built_at": "2026-08-17"
   }
 ]
