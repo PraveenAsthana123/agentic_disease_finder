@@ -2674,5 +2674,23 @@
     "script": "scripts/scn1a_dashboard.py",
     "why": "SCN1A (2q24.3) NaV1.1 voltage-gated sodium channel alpha subunit \u2014 preferentially expressed in PV+ fast-spiking GABAergic inhibitory interneurons; haploinsufficiency \u2192 PV interneuron failure \u2192 cortical disinhibition \u2192 Dravet syndrome (SMEI / DEE6) de novo LOF or GEFS+ (AD familial). Most important epilepsy gene; >1,800 pathogenic variants; Dravet incidence 1:15,000-1:22,000. ABSOLUTE CI: CBZ/OXC/PHT/LTG (NaV1.1 PV-interneuron block \u2192 paradoxical worsening), Tiagabine (NCSE). POLG MANDATORY before VPA. Level A precision therapies: VPA backbone + Stiripentol (Diacomit; triple VPA+CLB+STP; STICLO 71%), Fenfluramine (Fintepla; FDA 2020; REMS echocardiogram q6M; 62% GTCS reduction), Cannabidiol (Epidiolex; FDA 2018; 39% convulsive seizure reduction; LFT mandatory). 5-class etiology (Dravet-SMEI-45%/GEFS+-25%/SMEB-15%/mild-FS-plus-10%/phenocopy-5%), 6 seizure types, 8 triggers (Fever-95%/Hyperthermia-82%/Vaccine-fever-65%/Photo-50%), 7 treatments, 5 contraindications, 10 monitoring items, 6-window lifecycle. 3 endpoints /api/scn1a/overview|breakdown|definitions verified 200. expert_dashboards.json count 204\u2192205",
     "built_note": "SCN1A Dravet/GEFS+ dashboard built 2026-08-17: /api/scn1a/overview|breakdown|definitions + portal-next/app/scn1a/page.jsx + SiteNav wired next to SCN3A"
+  },
+  {
+    "id": "tsc1",
+    "name": "TSC1 Epilepsy (Tuberous Sclerosis Complex / mTOR / Hamartin / Cortical Tubers / 9q34.13)",
+    "route": "/tsc1",
+    "api_prefix": "/api/tsc1",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "endpoints": [
+      "/api/tsc1/overview",
+      "/api/tsc1/breakdown",
+      "/api/tsc1/definitions"
+    ],
+    "script": "scripts/tsc1_dashboard.py",
+    "why": "TSC1 (9q34.13) encodes Hamartin, component of TSC1/TSC2 complex that inhibits mTORC1 via GAP activity on Rheb. LOF \u2192 mTORC1 hyperactivation \u2192 cortical tubers (focal dysorganised cortex) \u2192 epilepsy in 90% of TSC. Precision therapies: Everolimus (mTORC1 inhibitor; FDA-approved TSC seizures EXIST-3 40% response, SEGA EXIST-1, renal AML EXIST-2) and Vigabatrin (IS Level A; 95% TSC infantile spasm cessation; SHARE REMS mandatory; ERG q3M). 5-class etiology (TSC1-AD-familial-25%/TSC1-de-novo-severe-20%/TSC-mosaic-15%/TSC1-SEGA-20%/phenocopy-20%), 6 seizure types (IS-35%/FAS-55%/FBTCS-65%/Tonic-LGS-25%/Late-spasms-18%/Myoclonic-15%), 8 triggers, 7 treatments (VGB-Level-A/Everolimus-Level-A/ACTH-Level-B/LEV-Level-B/VPA-Level-B/CLB-Level-B/KD-Level-B), 5 contraindications (Tiagabine-ABSOLUTE-CI/CBZ-OXC-PHT-CYP3A4-HIGH/VPA-without-POLG-HIGH/live-vaccines-HIGH/VGB-without-ERG-HIGH), 12 monitoring items, 6-window lifecycle. 3 endpoints /api/tsc1/overview|breakdown|definitions verified 200. expert_dashboards.json count 206\u2192207",
+    "built_note": "TSC1 mTOR/Tuberous Sclerosis dashboard built 2026-08-17: /api/tsc1/overview|breakdown|definitions + portal-next/app/tsc1/page.jsx + SiteNav wired next to KCNA1",
+    "note": "Total: 207 dashboards",
+    "updated_at": "2026-08-17"
   }
 ]

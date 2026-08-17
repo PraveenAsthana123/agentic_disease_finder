@@ -23928,6 +23928,51 @@ async def kcna1_definitions():
     return _json_safe(ka1_.get_definitions())
 
 
+@app.get("/api/tsc1/overview")
+async def tsc1_overview():
+    """TSC1 overview: gene=TSC1 locus=9q34.13, Hamartin / TSC1-TSC2 complex GAP for Rheb →
+    mTORC1 suppression; Tuberous Sclerosis Complex (TSC) — mTOR pathway epilepsy;
+    40-patient cohort, key KPIs (on-everolimus/drug-resistant/seizure-free/infantile-spasms/
+    SEGA/AML/TAND-ASD/polg-done/ERG-done/vpa-without-polg),
+    contraindications summary (Tiagabine-ABSOLUTE-CI/CBZ-OXC-PHT-CYP3A4-HIGH/
+    VPA-without-POLG-HIGH/live-vaccines-HIGH/VGB-without-ERG-HIGH),
+    10 thresholds, references (Northrup-2013/Bissler-2017-EXIST3/Kotulska-2021-EPISTOP/
+    Curatolo-2018/Juhász-2006/Bhatt-2023)."""
+    import scripts.tsc1_dashboard as t1_
+    return _json_safe(t1_.get_overview())
+
+
+@app.get("/api/tsc1/breakdown")
+async def tsc1_breakdown():
+    """TSC1 breakdown: 5-class etiology distribution
+    (TSC1-AD-familial-25%/TSC1-de-novo-severe-20%/TSC-mosaic-15%/
+    TSC1-SEGA-20%/TSC2-phenocopy-20%),
+    15-patient sample, 6 seizure types
+    (Infantile-Spasms-35%/FAS-55%/FBTCS-65%/Tonic-LGS-25%/
+    Late-Spasms-18%/Myoclonic-15%),
+    8 triggers (Fever-78%/Missed-everolimus-72%/Sleep-deprivation-65%/
+    Intercurrent-illness-60%/CYP3A4-drug-interaction-45%/Emotional-stress-55%/
+    Photosensitivity-20%/SEGA-raised-ICP-12%),
+    7 treatments (VGB-Level-A-IS/Everolimus-Level-A-focal/ACTH-Level-B/
+    LEV-Level-B/VPA-Level-B-POLG/CLB-Level-B-LGS/KD-Level-B-DRE),
+    5 contraindications, 12 monitoring items, 6-window lifecycle."""
+    import scripts.tsc1_dashboard as t1_
+    return _json_safe(t1_.get_breakdown())
+
+
+@app.get("/api/tsc1/definitions")
+async def tsc1_definitions():
+    """TSC1 definitions: 15 key concepts
+    (TSC1-Hamartin-9q34.13/mTORC1/Cortical-Tuber/SEGA/Everolimus-Afinitor/
+    Vigabatrin-VGB/TAND/AMT-PET/EPISTOP-PREVENT/TSC-Mosaic/Renal-AML/
+    Pulmonary-LAM/CYP3A4-interaction/SHARE-REMS/SUDEP-TSC),
+    5 contraindications, 10 thresholds, 12 standards, 6 references
+    (Northrup-2013/Bissler-2017-EXIST3/Kotulska-2021/Curatolo-2018/
+    Juhász-2006/Bhatt-2023)."""
+    import scripts.tsc1_dashboard as t1_
+    return _json_safe(t1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
