@@ -3157,5 +3157,39 @@
     ],
     "built_by": "autobuild",
     "built_at": "2026-08-17T19:46:05Z"
+  },
+  {
+    "id": "kcnt2-dee57",
+    "role": "Epileptologist / Neurogenetics",
+    "name": "KCNT2 Epilepsy (DEE57 / West Syndrome / KNa1.2 / Slick / Quinidine-No-Evidence / 1q31.3)",
+    "viz": "5-tab dashboard (Overview / Patients-Etiologies / Seizures-Triggers / Treatments / Definitions)",
+    "feature": "40-patient KCNT2 cohort, 5 etiology classes, 5 seizure types, 8 triggers, 8 treatments, 5 contraindications, 14 monitoring items, 5 key variants, 6 lifecycle windows, 15 concepts, 12 thresholds, 12 standards, 6 references",
+    "why": "KCNT2 (KNa1.2/Slick/Slo2.1, 1q31.3) — sibling sodium-activated K+ channel to KCNT1; GOF causes DEE57 with West Syndrome / infantile spasms + hypsarrhythmia; ACTH/VGB/KD first-line; quinidine ABSOLUTE CI (no evidence); POLG mandatory before VPA",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/kcnt2/overview",
+      "/api/kcnt2/breakdown",
+      "/api/kcnt2/definitions"
+    ],
+    "frontend_route": "/kcnt2",
+    "gene_family": "Slo superfamily / KNa1 subfamily (sodium-activated K+ channel)",
+    "gene": "KCNT2",
+    "locus": "1q31.3",
+    "omim": "617771",
+    "protein": "KNa1.2 / Slick / Slo2.1",
+    "inheritance": "AD de novo >90%; rare AR biallelic LOF",
+    "nav_label": "KCNT2 Epilepsy (DEE57 / West Syndrome / KNa1.2-Slick / Quinidine-No-Evidence / 1q31.3)",
+    "key_pharmacology": "ACTH (Level A, UKISS — IS first-line, ~40% response); Prednisolone (Level A, UKISS, oral); VGB (Level A, SHARE-REMS, Goldman q3M, restrict 6M); KD (Level B, HIGH PRIORITY — 2nd AED failure); LEV (Level B, POLG-safe); PB (Level B, neonatal/IV bridge); CLB (Level B, adjunct); VPA (Level B, POLG mandatory); ABSOLUTE CI: Quinidine (no evidence at all — unlike KCNT1 negative RCT, KCNT2 has zero data), VPA+POLG1 (Alpers), TGB (NCSE); HIGH CAUTION: VGB >6M (VFD), CBZ/OXC/PHT if myoclonic",
+    "key_references": [
+      "Ambrosino P et al. 2015 Ann Neurol 77(4):579-587 (KCNT2 GOF discovery)",
+      "Bhatt DL et al. 2023 Epilepsia 64(S3) (genetic epilepsy phenotype catalogue)",
+      "Bhattacharya A et al. 2020 Front Neurol 11:534 (potassium channel DEE review)",
+      "Lux AL et al. UKISS 2004 Lancet 364:1485-1492",
+      "Numis AL et al. 2020 Epilepsia 61(3) (KCNT1 quinidine RCT — negative)",
+      "ILAE 2022 Operational classification of seizure types Epilepsia 63(6)"
+    ],
+    "built_by": "autobuild",
+    "built_at": "2026-08-17T20:10:00Z"
   }
 ]

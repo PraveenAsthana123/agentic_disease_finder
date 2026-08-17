@@ -24677,6 +24677,55 @@ async def dnm1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kcnt2/overview")
+async def kcnt2_overview():
+    """KCNT2 Epilepsy Overview — DEE57 / West Syndrome / Infantile Spasms · KNa1.2 / Slick / Slo2.1
+    40-patient cohort · KCNT2 (1q31.3) · AD de novo >90% · ACTH / VGB / KD / LEV
+    (GOF-severe-DEE57-45% / GOF-moderate-25% / GOF-mild-focal-18% / AR-LOF-7% / phenocopy-5%;
+    IS-78% / hypsarrhythmia-73% / DRE-58% / seizure-free-18% / KD-on-44%;
+    ACTH-responded-52%; key alert: quinidine NO evidence for KCNT2 — do NOT use)."""
+    try:
+        import scripts.kcnt2_dashboard as kc2_
+        return _json_safe(kc2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnt2/breakdown")
+async def kcnt2_breakdown():
+    """KCNT2 Epilepsy Breakdown — 8 treatments · 5 contraindications · 14 monitoring items ·
+    5 key recurrent variants · 12 standards · 6 references · 6 lifecycle windows
+    (treatments: ACTH-Level-A-UKISS/Prednisolone-Level-A/VGB-Level-A-SHARE-REMS/KD-Level-B-HIGH-PRIORITY/
+    LEV-Level-B-POLG-safe/PB-Level-B-neonatal/CLB-Level-B-adjunct/VPA-Level-B-POLG-mandatory;
+    contraindications: Quinidine-ABSOLUTE-no-evidence/VPA-noPOLG-ABSOLUTE/TGB-ABSOLUTE-NCSE/
+    VGB-longterm-HIGH/CBZ-OXC-PHT-myoclonic-HIGH)."""
+    try:
+        import scripts.kcnt2_dashboard as kc2_
+        return _json_safe(kc2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnt2/definitions")
+async def kcnt2_definitions():
+    """KCNT2 Epilepsy Definitions — 15 key concepts
+    (KCNT2-1q31.3/KNa1.2-Slick-Slo2.1/RCK-Domains/DEE57-OMIM-617771/
+    GOF-vs-LOF-Dichotomy/KCNT1-KCNT2-Sibling-Channels/West-Syndrome/
+    Hypsarrhythmia/sAHP-Slow-AHP/ACTH/VFD-VGB-Retinopathy/POLG-Alpers/
+    VPPP-MHRA2021/SUDEP/ACMG-AMP-2015);
+    12 thresholds (ACTH-response-14d/BP-ACTH/Glucose-ACTH/VPA-TDM/VGB-6M/
+    Goldman-q3M/KD-BHB/Ammonia-VPA/Dev-regression/GTCS-rescue/KD-cholesterol/SUDEP-risk);
+    12 standards (ILAE-2022/NICE-NG217/UKISS-2004/Ambrosino-2015-AnnNeurol/
+    Bhatt-2023/Bhattacharya-2020/CPIC-POLG-2023/SHARE-REMS-VGB/MHRA-VPPP-2021/
+    ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019);
+    6 references (Ambrosino-2015/Bhatt-2023/Bhattacharya-2020/UKISS-2004/Numis-2020/ILAE-2022)."""
+    try:
+        import scripts.kcnt2_dashboard as kc2_
+        return _json_safe(kc2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
