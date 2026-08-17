@@ -23973,6 +23973,52 @@ async def tsc1_definitions():
     return _json_safe(t1_.get_definitions())
 
 
+@app.get("/api/tsc2/overview")
+async def tsc2_overview():
+    """TSC2 overview: gene=TSC2 locus=16p13.3, Tuberin (200 kDa GAP for Rheb → mTORC1 suppression);
+    Tuberous Sclerosis Complex (TSC2 — severe) — 70% of all TSC, more severe than TSC1;
+    40-patient cohort, key KPIs (on-everolimus/drug-resistant/seizure-free/infantile-spasms/
+    SEGA/AML/TAND-ASD/polg-done/ERG-done/vpa-without-polg/pkd1-deletion),
+    alerts (tiagabine-ABSOLUTE-CI/everolimus-CYP3A4/VGB-SHARE-REMS/POLG/SEGA/LAM/PKD1),
+    contraindications summary, 12 thresholds, references
+    (Northrup-2013/Bissler-2017-EXIST3/Kotulska-2021-EPISTOP/Franz-2013-EXIST1/
+    Juhász-2006/Bhatt-2023)."""
+    import scripts.tsc2_dashboard as t2_
+    return _json_safe(t2_.get_overview())
+
+
+@app.get("/api/tsc2/breakdown")
+async def tsc2_breakdown():
+    """TSC2 breakdown: 5-class etiology distribution
+    (TSC2-de-novo-truncating-severe-45%/TSC2-AD-familial-20%/TSC2-mosaic-15%/
+    TSC2-PKD1-contiguous-deletion-5%/TSC2-missense-attenuated-15%),
+    15-patient sample, 6 seizure types
+    (Infantile-Spasms-45%/FAS-60%/FBTCS-70%/Tonic-LGS-30%/
+    Late-Spasms-20%/Myoclonic-20%),
+    8 triggers (Fever-82%/Missed-everolimus-75%/Sleep-deprivation-68%/
+    Intercurrent-illness-65%/CYP3A4-drug-interaction-50%/Emotional-stress-58%/
+    Photosensitivity-18%/SEGA-raised-ICP-15%),
+    7 treatments (VGB-Level-A-IS/Everolimus-Level-A-EXIST3/ACTH-Level-B/
+    LEV-Level-B/VPA-Level-B-POLG/CLB-Level-B-LGS/KD-Level-B-DRE-mTOR-synergy),
+    5 contraindications, 14 monitoring items, 6-window lifecycle."""
+    import scripts.tsc2_dashboard as t2_
+    return _json_safe(t2_.get_breakdown())
+
+
+@app.get("/api/tsc2/definitions")
+async def tsc2_definitions():
+    """TSC2 definitions: 15 key concepts
+    (TSC2-Tuberin-16p13.3/mTORC1/Cortical-Tuber/SEGA/Everolimus-Afinitor/
+    Vigabatrin-VGB/TAND/AMT-PET/EPISTOP-PREVENT/TSC2-Mosaicism/Renal-AML/
+    Pulmonary-LAM-TSC2-specific/TSC2-PKD1-contiguous-deletion/CYP3A4-interaction/
+    SUDEP-TSC2),
+    5 contraindications, 12 thresholds, 13 standards, 6 references
+    (Northrup-2013/Bissler-2017-EXIST3/Kotulska-2021/Franz-2013-EXIST1/
+    Juhász-2006/Bhatt-2023)."""
+    import scripts.tsc2_dashboard as t2_
+    return _json_safe(t2_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

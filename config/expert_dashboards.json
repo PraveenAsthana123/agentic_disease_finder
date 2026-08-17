@@ -2692,5 +2692,23 @@
     "built_note": "TSC1 mTOR/Tuberous Sclerosis dashboard built 2026-08-17: /api/tsc1/overview|breakdown|definitions + portal-next/app/tsc1/page.jsx + SiteNav wired next to KCNA1",
     "note": "Total: 207 dashboards",
     "updated_at": "2026-08-17"
+  },
+  {
+    "id": "tsc2",
+    "name": "TSC2 Epilepsy (Tuberous Sclerosis Complex / Tuberin / mTOR / Severe-70% / 16p13.3)",
+    "route": "/tsc2",
+    "api_prefix": "/api/tsc2",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "endpoints": [
+      "/api/tsc2/overview",
+      "/api/tsc2/breakdown",
+      "/api/tsc2/definitions"
+    ],
+    "script": "scripts/tsc2_dashboard.py",
+    "why": "TSC2 (16p13.3) encodes Tuberin (200 kDa GAP for Rheb -> mTORC1 suppression). TSC2 LOF causes 70% of all TSC and is MORE SEVERE than TSC1: more cortical tubers (9-12 vs 6-8), higher ID (50-60% vs 30%), more infantile spasms (45% vs 35%), more pulmonary LAM (25-35% females). Precision therapies: Everolimus (EXIST-3 40% response; EXIST-1 SEGA; EXIST-2 AML; MILES LAM); Vigabatrin (IS Level A; 95% TSC response; SHARE REMS mandatory; ERG q3M). EPISTOP protocol: EEG surveillance from 1 month; presymptomatic VGB before clinical spasms -> 50% IS reduction. TSC2+PKD1 contiguous deletion (~2%): neonatal polycystic kidneys + severe TSC. 5-class etiology (TSC2-de-novo-truncating-severe-45%/TSC2-AD-familial-20%/TSC2-mosaic-15%/TSC2-PKD1-contiguous-deletion-5%/TSC2-missense-attenuated-15%), 6 seizure types (IS-45%/FAS-60%/FBTCS-70%/Tonic-LGS-30%/Late-Spasms-20%/Myoclonic-20%), 8 triggers (Fever-82%/Missed-everolimus-75%/Sleep-deprivation-68%/CYP3A4-drug-50%/SEGA-ICP-15%), 7 treatments (VGB-Level-A/Everolimus-Level-A-EXIST3/ACTH-Level-B/LEV-Level-B/VPA-Level-B-POLG/CLB-Level-B-LGS/KD-Level-B-mTOR-synergy), 5 contraindications (Tiagabine-ABSOLUTE-CI/CBZ-OXC-PHT-CYP3A4-HIGH/VPA-without-POLG-HIGH/live-vaccines-HIGH/VGB-without-ERG-HIGH), 14 monitoring items, 6-window lifecycle. 3 endpoints /api/tsc2/overview|breakdown|definitions verified 200. expert_dashboards.json count 207->208",
+    "built_note": "TSC2 mTOR/Tuberous Sclerosis (severe) dashboard built 2026-08-17: /api/tsc2/overview|breakdown|definitions + portal-next/app/tsc2/page.jsx + SiteNav wired next to TSC1",
+    "note": "Total: 208 dashboards",
+    "updated_at": "2026-08-17"
   }
 ]
