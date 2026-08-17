@@ -24141,6 +24141,35 @@ async def sptan1_definitions():
     return _json_safe(sp_.get_definitions())
 
 
+@app.get("/api/chd2/overview")
+async def chd2_overview():
+    """CHD2 Epilepsy — GGE-Photosensitive / Myoclonic Encephalopathy of Infancy overview KPIs
+    (40-patient cohort, OMIM #615369, CHD2 chromatin remodeling, H3.3 deposition, GABAergic
+    interneuron LOF, severe photosensitivity PPR 75-80%, 5 etiology classes, 5 seizure types,
+    8 triggers, 7 treatments, 5 contraindications, 15 concepts, 12 standards,
+    6 references [Carvill-2013/Thomas-2015/Lund-2014/Bhatt-2023/Marguet-2022/Suls-2013])."""
+    import scripts.chd2_dashboard as ch_
+    return _json_safe(ch_.get_overview())
+
+
+@app.get("/api/chd2/breakdown")
+async def chd2_breakdown():
+    """CHD2 Epilepsy — full breakdown (etiology catalog, 15-patient sample, seizure detail,
+    trigger detail, treatment detail [VPA/ETH/LEV/LTG-CAUTION/CLB/KD/PB], contraindications,
+    monitoring, lifecycle). LTG-myoclonic worsening gate. VPPP + POLG mandatory."""
+    import scripts.chd2_dashboard as ch_
+    return _json_safe(ch_.get_breakdown())
+
+
+@app.get("/api/chd2/definitions")
+async def chd2_definitions():
+    """CHD2 Epilepsy — definitions (15 concepts: CHD2-15q26.1/GGE/MEI/PPR/EC-IPA/H3.3/FL-41/
+    VPPP/POLG/GGE-aggravation/catamenial/SV2A/SUDEP/ETH/HLA-B1502; thresholds; standards;
+    references). Contraindications: CBZ/OXC/PHT absolute CI + Tiagabine absolute CI."""
+    import scripts.chd2_dashboard as ch_
+    return _json_safe(ch_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

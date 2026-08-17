@@ -2797,5 +2797,42 @@
     ],
     "note": "Total: 212 dashboards",
     "built_note": "SPTAN1 Epilepsy (DEE5 / West Syndrome / Alpha-II Spectrin / AIS Cytoskeleton / Dominant-Negative / 9q34.11) Dashboard built 2026-08-17. 5 etiology classes (SPTAN1-de-novo-DN-West-LGS-45%/SPTAN1-de-novo-LOF-DEE-25%/SPTAN1-de-novo-partial-DN-20%/SPTAN1-de-novo-late-DEE-8%/phenocopy-2%), 5 seizure types, 8 triggers, 7 treatments (ACTH-Level-A/VGB-Level-A-SHARE-REMS/Prednisolone-Level-A/CLB-Level-B/VPA-Level-B/KD-Level-B/LEV-Level-B), 5 CIs, 14 monitoring items, 15 concepts, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/sptan1/overview|breakdown|definitions verified 200. portal-next/app/sptan1/page.jsx + SiteNav wired next to RORB. expert_dashboards.json count 211\u2192212."
+  },
+  {
+    "id": "chd2",
+    "name": "CHD2 Epilepsy (GGE-Photosensitive / Myoclonic Encephalopathy of Infancy / Chromatin Remodeling / AD de-novo / 15q26.1)",
+    "status": "built",
+    "route": "/chd2",
+    "api_prefix": "/api/chd2",
+    "script": "scripts/chd2_dashboard.py",
+    "frontend": "portal-next/app/chd2/page.jsx",
+    "endpoints": [
+      "/api/chd2/overview",
+      "/api/chd2/breakdown",
+      "/api/chd2/definitions"
+    ],
+    "omim": "#615369",
+    "gene": "CHD2",
+    "locus": "15q26.1",
+    "inheritance": "AD (>90% de novo)",
+    "phenotype": "GGE-Photosensitive + MEI (Myoclonic Encephalopathy of Infancy)",
+    "key_feature": "Severe photosensitivity PPR 75-80% (highest in genetic GGE); H3.3 chromatin remodeling",
+    "built_note": "CHD2 15q26.1 chromatin remodeling GGE-photosensitive (expert_dashboards.json count 212\u2192213: CHD2 dashboard built \u2014 backend script/3 endpoints verified 200/frontend 5-tab/SiteNav wired next to SPTAN1. 2026-08-17)",
+    "viz": [
+      "KPI cards",
+      "PctBars",
+      "etiology catalog",
+      "patient sample",
+      "seizure types",
+      "triggers",
+      "treatment cards",
+      "contraindication table",
+      "monitoring table",
+      "lifecycle",
+      "concepts",
+      "thresholds",
+      "standards",
+      "references"
+    ]
   }
 ]
