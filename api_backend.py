@@ -24827,6 +24827,57 @@ async def cacna1g_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1i/overview")
+async def cacna1i_overview():
+    """CACNA1I Epilepsy Overview — GGE / CAE / JME / GEFS+ Spectrum · Cav3.3 T-type Ca²⁺ Channel
+    40-patient cohort · CACNA1I (22q13.1) · AD GOF reduced-penetrance ~55% · TRN-Dominant
+    (TRN-dominant Cav3.3 channel; slow inactivation τ~50-80 ms; enhanced TRN bursting → stronger
+    GABA-B IPSPs → deeper TC hyperpolarisation → larger Cav3.1/Cav3.2 LTCS rebound → 3-Hz SWD;
+    ETX Level B [TRN Cav3.3 less ETX-sensitive than TC Cav3.1/Cav3.2];
+    ABSOLUTE CI: CBZ/OXC/PHT GGE aggravation; VPA VPPP mandatory females; POLG1 before VPA;
+    completes T-type Cav3 subfamily: CACNA1G Cav3.1 [TC] + CACNA1H Cav3.2 [TC+TRN] + CACNA1I Cav3.3 [TRN])."""
+    try:
+        import scripts.cacna1i_dashboard as ca1i_
+        return _json_safe(ca1i_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1i/breakdown")
+async def cacna1i_breakdown():
+    """CACNA1I Epilepsy Breakdown — etiologies · seizure types · triggers · treatments ·
+    contraindications · monitoring · lifecycle · 40-patient cohort
+    (ETX Level B CAE partial-precision Cav3.3 TRN / VPA Level B broad-spectrum POLG-mandatory /
+    LTG Level B GTCS — EEG before prescribing JME phenotype / CLB Level B catamenial adjunct /
+    LEV Level B broad-spectrum POLG-safe / ZNS Level C dual T-type+NaV / KD Level B DRE;
+    ABSOLUTE CI: CBZ-OXC-PHT-GGE-aggravation / TGB-NCSE / VPA-POLG;
+    Cav3.3 TRN-dominant: enhanced TRN burst → GABA-B → TC rebound → 3-Hz SWD)."""
+    try:
+        import scripts.cacna1i_dashboard as ca1i_
+        return _json_safe(ca1i_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1i/definitions")
+async def cacna1i_definitions():
+    """CACNA1I Epilepsy Definitions — 15 key concepts
+    (CACNA1I-22q13.1/Cav3.3-T-Type-LVA/TRN-Dominant-Expression/Slow-Inactivation-Cav3.3/
+    Window-Current-Cav3.3/LTCS-TC-Neurons/Thalamo-Cortical-3Hz-SWD/CAE-Childhood-Absence/
+    JME-Juvenile-Myoclonic/GGE-Spectrum/ETX-Level-B-CACNA1I/VPPP-MHRA2021/POLG-Alpers/
+    SUDEP/ACMG-AMP-2015);
+    thresholds (ETX-TDM/HV-SWD-test/VPA-TDM/LFT-FBC-ammonia/Seizure-free-12M/SUDEP-risk/
+    Catamenial-CLB/VPPP-VPA-females/POLG1-pre-VPA/KD-ketosis/HCO3-ZNS/MRI-baseline);
+    standards (ILAE-2022/NICE-NG217/SANAD-2007/SANAD-II-2021/Bhatt-2023/Talley-1999/
+    Khosravani-2004/CPIC-POLG-2023/MHRA-VPPP-2021/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019);
+    references (Talley-1999/Khosravani-2004/Bhatt-2023/Bhattacharya-2020/ILAE-2022/NICE-NG217)."""
+    try:
+        import scripts.cacna1i_dashboard as ca1i_
+        return _json_safe(ca1i_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

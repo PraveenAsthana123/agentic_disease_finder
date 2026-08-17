@@ -336,6 +336,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnt2">&#x26a1; KCNT2 Epilepsy (DEE57 / West Syndrome / KNa1.2-Slick / Quinidine-No-Evidence / 1q31.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1h">&#x26a1; CACNA1H Epilepsy (GGE / CAE / JME / Cav3.2 T-type Ca&#178;&#8314; / Ethosuximide Precision / 16p13.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1g">&#x26a1; CACNA1G Epilepsy (GGE / CAE / JME / Cav3.1 T-type Ca&#178;&#8314; / TC-LTCS Primary / 17q21.33)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/cacna1i">&#x26a1; CACNA1I Epilepsy (GGE / CAE / JME / Cav3.3 T-type Ca&#178;&#8314; / TRN-Dominant / ETX-Level-B / 22q13.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/pcdh19">&#x1f9ec; PCDH19 Clustering Epilepsy (Protocadherin-19 / Xq22)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/grin2a">&#x1f9e0; GRIN2A Epilepsy-Aphasia Spectrum (GluN2A / CSWS / LKS / 2q33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/syngap1">&#x1f9ec; SYNGAP1 Encephalopathy (SYNGAPathy / RasGAP / 6p21)</Link></li>
