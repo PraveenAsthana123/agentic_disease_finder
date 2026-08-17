@@ -25040,6 +25040,63 @@ async def cacna1c_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1b/overview")
+async def cacna1b_overview():
+    """CACNA1B DEE/NDMSB overview: 40-patient cohort KPIs (seizure-free/DRE/acth-received/spasms/
+    gtcs/hyperkinetic-movements/kd-on/vgb-received/lev-received/avg-age), etiology distribution
+    (GOF-Severe-DEE-IS-40%/GOF-Moderate-DEE-Hyperkinetic-28%/GOF-Focal-Epilepsy-Mild-18%/
+    GOF-Self-Limiting-Neonatal-8%/Phenocopy-DEE-No-CACNA1B-6%), 5 seizure summaries, 8 treatment
+    summaries, 6 monitoring items, 6 lifecycle windows, 6 thresholds, 5 CI summaries.
+    CACNA1B (9q34.3) · Cav2.2 N-type HVA Ca²⁺ Channel · OMIM #618354 NDMSB · GOF de novo >90% ·
+    N-type = ω-conotoxin GVIA/MVIIA sensitive · presynaptic dominant (cortex/hippocampus/striatum) ·
+    GOF → enlarged window current → excess presynaptic glutamate → DEE + hyperkinetic movements ·
+    LEV Level B first-line (SV2A + secondary N-type modulation; Rigo 2005) ·
+    ACTH Level B for IS / VGB Level A (SHARE REMS ERG q3M VFD) ·
+    NO APPROVED N-TYPE BLOCKER for epilepsy (ziconotide = intrathecal pain only) ·
+    ABSOLUTE CI: TGB (NCSE) · VPA+POLG1 (Alpers) ·
+    HIGH RISK: CBZ/OXC/PHT (myoclonic aggravation) · LTG (myoclonic) · VGB long-term (VFD)."""
+    try:
+        import scripts.cacna1b_dashboard as ca1b_
+        return _json_safe(ca1b_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1b/breakdown")
+async def cacna1b_breakdown():
+    """CACNA1B DEE/NDMSB breakdown: 5-class etiology (GOF-Severe-DEE-IS/GOF-Moderate-DEE-Hyperkinetic/
+    GOF-Focal-Epilepsy-Mild/GOF-Self-Limiting-Neonatal/Phenocopy-DEE-No-CACNA1B), 5 seizure types
+    (Epileptic-Spasms-IS-72%/Focal-Impaired-Awareness-60%/Tonic-52%/Myoclonic-38%/GTCS-45%),
+    8 triggers (Fever-88%/Sleep-Transitions-75%/Missed-AED-72%/Infection-68%/Stress-58%/
+    AED-Taper-50%/Photosensitivity-22%/Vaccination-18%), 8 treatments (LEV-Level-B-SV2A-N-type/
+    ACTH-Level-B-IS/VGB-Level-A-SHARE-REMS/VPA-Level-B-POLG-VPPP/CLB-Level-B-nocturnal/
+    Prednisolone-Level-B-IS/KD-Level-B-DRE/Ziconotide-EXPERIMENTAL-not-recommended),
+    5 contraindications (TGB-ABSOLUTE-NCSE/VPA-POLG-ABSOLUTE-Alpers/CBZ-OXC-PHT-HIGH-myoclonic/
+    LTG-HIGH-myoclonic/VGB-HIGH-VFD), 14 monitoring items, 6 lifecycle windows, 40 patients."""
+    try:
+        import scripts.cacna1b_dashboard as ca1b_
+        return _json_safe(ca1b_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1b/definitions")
+async def cacna1b_definitions():
+    """CACNA1B DEE/NDMSB definitions: 15 key concepts
+    (CACNA1B-9q34.3/Cav2.2-N-type-HVA/NDMSB-OMIM618354/GOF-Mechanism-Cav2.2-Presynaptic/
+    Window-Current-Cav2.2/West-Syndrome-IS/Hypsarrhythmia/Hyperkinetic-Movements-CACNA1B/
+    Ziconotide-Not-for-Epilepsy/VFD-VGB/ACTH-vs-Prednisolone-IS/VPPP-MHRA2021/
+    POLG1-Alpers/SV2A-LEV-Mechanism/SUDEP), 12 thresholds, 12 standards
+    (ILAE-2022/NICE-NG217/Nishikawa-2019/Gorman-2019/Rigo-2005/UKISS-2004/CPIC-POLG-2023/
+    MHRA-VPPP-2021/SHARE-REMS-VGB/ACMG-AMP-2015/ILAE-Diet-2018/WHO-ICF-2019),
+    6 references (Nishikawa-2019/Gorman-2019/Rigo-2005/Bhatt-2023/Loscher-2021/ILAE-2022)."""
+    try:
+        import scripts.cacna1b_dashboard as ca1b_
+        return _json_safe(ca1b_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
