@@ -24238,6 +24238,45 @@ async def nprl2_definitions():
     return _json_safe(n2_.get_definitions())
 
 
+@app.get("/api/slc13a5/overview")
+async def slc13a5_overview():
+    """SLC13A5 Epilepsy (Citrate Transporter Deficiency / NAFE / EIEE25 / NaCT / AR / 17p13.1) — KPI overview.
+    40-patient cohort (SLC13A5 17p13.1); NaCT BBB citrate importer; TCA anaplerosis → GABA synthesis;
+    neonatal onset Day 1-5; dental enamel hypoplasia (PATHOGNOMONIC); elevated urine citrate (biomarker);
+    5 etiology classes (biallelic-LOF-classic-50% / missense-attenuated-25% / splice-variable-15% /
+    compound-het-7% / phenocopy-3%); Triheptanoin (C7 anaplerotic) precision therapy;
+    Standard KD HIGH CAUTION (may deepen citrate deficit); POLG before VPA; Tiagabine ABSOLUTE CI."""
+    import scripts.slc13a5_dashboard as slc_
+    return _json_safe(slc_.get_overview())
+
+
+@app.get("/api/slc13a5/breakdown")
+async def slc13a5_breakdown():
+    """SLC13A5 Epilepsy (Citrate Transporter Deficiency / EIEE25) — full breakdown (5-class etiology,
+    15-patient sample, 5 seizure types [Neonatal-Clonic-90%/Focal-Automatisms-70%/Fever-Provoked-55%/
+    Myoclonic-25%/Neonatal-SE-20%], 8 triggers [Missed-AED-78%/Fever-70%/Sleep-dep-52%/Fasting-45%/
+    Vaccination-38%/High-fat-diet-30%/Stress-28%/Hypoglycaemia-22%], 7 treatments [PB-Level-A/
+    LEV-Level-B/Triheptanoin-Level-B-precision/OXC-Level-B-focal/VGB-Level-B-SHARE/CLB-Level-B/
+    Modified-KD-Level-C], 5 CIs [Standard-KD-HIGH/VPA-HIGH/Tiagabine-ABSOLUTE/IV-Phenytoin-HIGH/
+    VGB-without-ERG-HIGH], 14 monitoring items, 6 lifecycle windows)."""
+    import scripts.slc13a5_dashboard as slc_
+    return _json_safe(slc_.get_breakdown())
+
+
+@app.get("/api/slc13a5/definitions")
+async def slc13a5_definitions():
+    """SLC13A5 Epilepsy (Citrate Transporter Deficiency / EIEE25) — definitions (15 concepts:
+    SLC13A5-17p13.1/NaCT-transporter/EIEE25-OMIM-615905/TCA-anaplerosis/Dental-enamel-pathognomonic/
+    AR-inheritance/Neonatal-onset/Triheptanoin-C7/Urine-citrate-biomarker/POLG-Alpers/
+    Focal-epilepsy-NaV-permitted/PFK1-citrate-inhibition/SHARE-REMS-VGB/SUDEP/ACMG-AMP;
+    12 thresholds [PB-loading/LEV-neonatal/Pyridoxine-100mg/PB-TDM/Triheptanoin-dose/
+    Fever-37.5C/DRE-2AEDs/VGB-ERG-3M/Urine-citrate-ULN/VGB-12-18M/POLG-timing/Driving-12M];
+    12 standards [ILAE-2022/NICE-NG217/Hardies-2015/Bainbridge-2017/Weeke-2021/CPIC-POLG/
+    FDA-REMS/ILAE-Diet/SHARE-REMS/MHRA-VPPP/ACMG-AMP/CPIC-HLA-B1502]; 6 references)."""
+    import scripts.slc13a5_dashboard as slc_
+    return _json_safe(slc_.get_definitions())
+
+
 @app.get("/api/gabra2/overview")
 async def gabra2_overview():
     """GABRA2 Epilepsy (GGE / GEFS+ Spectrum / Alcohol-Sensitive / GABA-A α2 Subunit / 4p12) — KPI overview.
