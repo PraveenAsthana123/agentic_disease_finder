@@ -24450,6 +24450,53 @@ async def stx1b_definitions():
     return _json_safe(stx1b_.get_definitions())
 
 
+@app.get("/api/gnb1/overview")
+async def gnb1_overview():
+    """GNB1 Epilepsy (DEE / Infantile Spasms / West Syndrome / Gβ1 G-protein β1 Subunit / 1p36.33) — KPI overview.
+    40-patient cohort (GNB1 1p36.33); Gβ1 β-propeller WD-repeat structure (7 blades);
+    obligate Gβγ dimer (GNB1+Gγ) activates GIRK channels (hyperpolarisation) and inhibits
+    Cav2.1/Cav2.2 (reduces glutamate release); GNB1 LOF → reduced GIRK → cortical hyperexcitability;
+    pLI ~0.97; AD de novo >98%; OMIM MRD42 / GNB1 Encephalopathy #616139;
+    5 etiology classes (blade1-severe-38% / blade2-moderate-30% / blade6-variable-17% /
+    truncating-10% / phenocopy-5%); ACTH + VGB Level-A (UKISS); KD if refractory;
+    Tiagabine ABSOLUTE CI (NCSE); VGB limited to 6M (VFD); POLG1 before VPA;
+    pyridoxine trial MANDATORY before ACTH (ALDH7A1/PDE at same 1p36 locus); Hemati-2018-AmJHumGenet discovery."""
+    import scripts.gnb1_dashboard as gnb1_
+    return _json_safe(gnb1_.get_overview())
+
+
+@app.get("/api/gnb1/breakdown")
+async def gnb1_breakdown():
+    """GNB1 Epilepsy (DEE / Infantile Spasms / West Syndrome / Gβ1) — full breakdown
+    (5-class etiology catalog, 15-patient sample, 5 seizure types [Epileptic-Spasms-95% /
+    Focal-Seizures-62% / GTCS-45% / Tonic-Seizures-38% / Myoclonic-Atonic-22%],
+    8 triggers [Waking-from-sleep-95% / Fever-75% / Missed-AED-68% / Intercurrent-illness-58% /
+    Sensory-stimulation-48% / Hyperthermia-40% / ACTH-taper-rebound-35% / Sleep-dep-28%],
+    8 treatments [ACTH-Level-A-UKISS / Prednisolone-Level-A / VGB-Level-A-SHARE-REMS /
+    B6-pyridoxine-diagnostic-trial / VPA-Level-B-post-IS / LEV-Level-B-POLG-preferred /
+    KD-Level-B-refractory / Rufinamide-Level-C-LGS],
+    5 CIs [CBZ-OXC-myoclonic-caution / TGB-ABSOLUTE-NCSE / VPA-POLG-ABSOLUTE /
+    VGB-long-term-VFD / PHT-DEE-avoid],
+    14 monitoring items, 6 lifecycle windows)."""
+    import scripts.gnb1_dashboard as gnb1_
+    return _json_safe(gnb1_.get_breakdown())
+
+
+@app.get("/api/gnb1/definitions")
+async def gnb1_definitions():
+    """GNB1 Epilepsy (DEE / West Syndrome / Gβ1) — definitions (15 concepts:
+    GNB1-1p36.33/Gβγ-Dimer/GIRK-K+-Channel/West-Syndrome/Hypsarrhythmia/
+    Electrodecremental-Response/ACTH/VFD-VGB-Retinopathy/LGS-Lennox-Gastaut/
+    POLG1-Alpers/VPPP-MHRA2021/PDE-ALDH7A1/SUDEP/ACMG-AMP-2015/Gonadal-Mosaicism;
+    12 thresholds [ACTH-14d-response/BP-99th-centile/glucose-10mmol/Na-130/VPA-50-100/
+    VGB-6M-max/ERG-b-wave-10pct/seizure-free-2Y/BHB-2-4mmol/regression-red-flag/LFT-3xULN/SUDEP-GTCS];
+    12 standards [ILAE-2022/NICE-NG217/UKISS-2004/Hemati-2018-AmJHumGenet/Rodan-2021-JMedGenet/
+    Bhatt-2023/CPIC-POLG-2023/SHARE-REMS-VGB/ACNS-EEG-2021/MHRA-VPPP-2021/ACMG-AMP-2015/ILAE-Diet-2018];
+    6 references)."""
+    import scripts.gnb1_dashboard as gnb1_
+    return _json_safe(gnb1_.get_definitions())
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

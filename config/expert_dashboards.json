@@ -2983,5 +2983,36 @@
     "key_contraindication": "Tiagabine (NCSE); CBZ/OXC (GGE component caution)",
     "discovery_ref": "Schubert-2014-NatGenet",
     "built_date": "2026-08-17"
+  },
+  {
+    "gene": "GNB1",
+    "id": "gnb1",
+    "name": "GNB1 Epilepsy (DEE / Infantile Spasms / West Syndrome / G\u03b21 G-protein \u03b21 Subunit / GIRK / ACTH / 1p36.33)",
+    "route": "/gnb1",
+    "api_prefix": "/api/gnb1",
+    "page": "portal-next/app/gnb1/page.jsx",
+    "script": "scripts/gnb1_dashboard.py",
+    "status": "built",
+    "locus": "1p36.33",
+    "omim": "MRD42 / GNB1 Encephalopathy #616139",
+    "protein": "G\u03b21 (G-protein beta-1 subunit; \u03b2-propeller WD-repeat)",
+    "mechanism": "G\u03b2\u03b3 dimer (GNB1+G\u03b3) activates GIRK channels (K\u207a efflux \u2192 hyperpolarisation) and inhibits Cav2.1/Cav2.2; GNB1 LOF \u2192 reduced GIRK \u2192 cortical hyperexcitability \u2192 infantile spasms / DEE; CRH-axis disruption provides ACTH precision rationale",
+    "inheritance": "AD de novo >98%",
+    "precision_drug": "ACTH + Vigabatrin (UKISS Level A)",
+    "key_contraindication": "Tiagabine (NCSE); VGB long-term (VFD); VPA+POLG1 (Alpers); CBZ/OXC if myoclonic",
+    "discovery_ref": "Hemati-2018-AmJHumGenet",
+    "built_date": "2026-08-17",
+    "built_note": "GNB1 Epilepsy Dashboard \u2014 40-patient GNB1 DEE cohort, 5-class etiology catalog (blade1-severe-DEE 38%/blade2-moderate-DEE 30%/blade6-variable 17%/truncating-DEE 10%/phenocopy 5%), 5 seizure types (Epileptic-Spasms-95%/Focal-Seizures-62%/GTCS-45%/Tonic-Seizures-38%/Myoclonic-Atonic-22%) with EEG+semiology+clinical tips, 8 triggers (Waking-from-sleep-95%/Fever-75%/Missed-AED-68%/Intercurrent-illness-58%/Sensory-stimulation-48%/Hyperthermia-40%/ACTH-taper-rebound-35%/Sleep-dep-28%), 8 treatments (ACTH-Level-A-UKISS/Prednisolone-Level-A/VGB-Level-A-SHARE-REMS/B6-pyridoxine-diagnostic-trial/VPA-Level-B-post-IS/LEV-Level-B-POLG-preferred/KD-Level-B-refractory/Rufinamide-Level-C-LGS) with dose+MOA+efficacy+safety+monitoring+GNB1-specific notes, 5 contraindications (CBZ-OXC-myoclonic-caution/TGB-ABSOLUTE-NCSE/VPA-POLG-ABSOLUTE/VGB-long-term-VFD/PHT-DEE-avoid), 14 monitoring items (ACTH-BP-3xwk/ACTH-glucose-daily/ACTH-electrolytes-weekly/VGB-ERG-q3M/POLG1-before-VPA/VPA-TDM-q3M/LFT-FBC-ammonia-q3M/Dev-assessment-q3M/EEG-2wk-post-ACTH/MRI-baseline/VPPP-females/Ophthalmology-annual/SUDEP-annual/Genetic-counselling), 6-window lifecycle (Neonatal-0-3M/Infancy-spasm-phase-3-12M/Late-infancy-12-24M/Early-childhood-2-5Y/School-age-5-12Y/Adolescence-adult-12Y+), 15 concepts (GNB1-1p36.33/G\u03b2\u03b3-Dimer/GIRK-K+-Channel/West-Syndrome/Hypsarrhythmia/Electrodecremental-Response/ACTH/VFD-VGB-Retinopathy/LGS-Lennox-Gastaut/POLG1-Alpers/VPPP-MHRA2021/PDE-ALDH7A1/SUDEP/ACMG-AMP-2015/Gonadal-Mosaicism), 12 thresholds, 12 standards (ILAE-2022/NICE-NG217/UKISS-2004/Hemati-2018/Rodan-2021/Bhatt-2023/CPIC-POLG-2023/SHARE-REMS/ACNS-EEG-2021/MHRA-VPPP-2021/ACMG-AMP-2015/ILAE-Diet-2018), 6 references (Hemati-2018/Rodan-2021/Aoi-2019/UKISS-2004/Bhatt-2023/Sudhof-Bhattacharya-2005), 5-tab frontend (Overview/Patients-Etiology/Seizures-Triggers/Treatments/Definitions), 3 endpoints /api/gnb1/overview|breakdown|definitions verified 200, portal-next/app/gnb1/page.jsx + SiteNav wired next to STX1B, expert_dashboards.json count 220->221, new gene family: heterotrimeric G-protein signalling (GNB1 G\u03b21)",
+    "viz": "Etiology distribution, seizure type catalog (spasms/focal/GTCS/tonic/myoclonic), ACTH+VGB West syndrome treatment efficacy, G\u03b2\u03b3/GIRK mechanism, hypsarrhythmia lifecycle",
+    "feature": "40-patient GNB1-DEE cohort, 5 etiologies (blade1-severe-38%/blade2-moderate-30%/blade6-variable-17%/truncating-10%/phenocopy-5%), infantile spasms onset 3-12M, ACTH+VGB Level-A, KD refractory, VGB VFD 6M limit, Tiagabine ABSOLUTE CI, POLG1 before VPA, B6 trial mandatory, UKISS protocol",
+    "why": "Major DEE gene; infantile spasms/West syndrome; ACTH precision rationale via CRH-axis GNB1 dysregulation; G\u03b2\u03b3/GIRK novel mechanism family; ALDH7A1 co-located at 1p36 (B6 trial essential); Hemati-2018 discovery",
+    "endpoints": [
+      "/api/gnb1/overview",
+      "/api/gnb1/breakdown",
+      "/api/gnb1/definitions"
+    ],
+    "note": "Total: 221 dashboards",
+    "count": 221,
+    "updated_at": "2026-08-17"
   }
 ]
