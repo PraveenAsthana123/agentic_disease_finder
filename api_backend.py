@@ -2749,6 +2749,29 @@ async def cross_patient_benchmark_definitions():
     return _json_safe(cpd.definitions())
 
 
+# ── Bonn External Validation Dashboard ────────────────────────────────
+
+@app.get("/api/bonn/overview")
+async def bonn_overview():
+    """Bonn External Validation overview — KPIs, fold performance, class breakdown, dataset comparison."""
+    import scripts.bonn_validation_dashboard as bvd
+    return _json_safe(bvd.overview())
+
+
+@app.get("/api/bonn/breakdown")
+async def bonn_breakdown():
+    """Bonn External Validation breakdown — per-fold confusion, feature importances, ROC curve."""
+    import scripts.bonn_validation_dashboard as bvd
+    return _json_safe(bvd.breakdown())
+
+
+@app.get("/api/bonn/definitions")
+async def bonn_definitions():
+    """Bonn External Validation definitions — terms, references, clinical interpretation."""
+    import scripts.bonn_validation_dashboard as bvd
+    return _json_safe(bvd.definitions())
+
+
 # ── Seizure Forecasting Dashboard ─────────────────────────────────────
 
 @app.get("/api/seizure-forecasting/overview")

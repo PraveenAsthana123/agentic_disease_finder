@@ -179,6 +179,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/r-ipo">&#x1f504; Role IPO</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/inference-testing">&#x1f9ea; Inference Testing</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cross-patient-benchmark">&#x1f9ec; Cross-Patient</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/bonn">&#x1f3db; Bonn Ext. Validation</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/loso">&#x1f4ca; LOSO CV</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/bootstrap-ci">&#x1f4c9; Bootstrap CI</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/accuracy-options">&#x1f4ca; Accuracy Methods</Link></li>
