@@ -4094,5 +4094,25 @@
     "name": "CERS1 Epilepsy (CERS1-PMEA / Progressive Myoclonic Epilepsy with Cerebellar Ataxia / Ceramide Synthase 1 / C18-Ceramide Deficiency / Selective Purkinje Cell Degeneration / No-Disease-Modifying-Therapy / CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH-RISK / SARA-UMRS-Dual-Tracking / 19p13.2)",
     "gene": "CERS1",
     "description": "CERS1-PMEA Dashboard \u2014 40-patient cohort, 6-class etiology (Homozygous-Missense-LASS-42%/Compound-Het-Missense-28%/Homozygous-Truncating-LOF-15%/Compound-Het-Truncating-10%/HOX-Domain-Missense-3%/Phenocopy-2%), 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references"
+  },
+  {
+    "id": "cln2",
+    "name": "CLN2 Epilepsy (Neuronal Ceroid Lipofuscinosis Type 2 / Late-Infantile Batten Disease / TPP1-Lysosomal-Serine-Protease / SCMAS-Storage-Fingerprint-Profiles-EM / Giant-SSPS-Occipital-1-3Hz-PATHOGNOMONIC / Cerliponase-Alfa-FDA-2017-FIRST-NCL-ERT / ICV-Ommaya-Every-2-Weeks / VGB-ABSOLUTE-CI-Retinal-Toxicity / VPA-SAFE-Lysosomal-NOT-Mitochondrial / Fatal-Without-Treatment / 11p15.4)",
+    "status": "built",
+    "route": "/cln2",
+    "api_prefix": "/api/cln2",
+    "color": "#4a148c",
+    "cohort": 40,
+    "gene": "CLN2/TPP1",
+    "locus": "11p15.4",
+    "inheritance": "AR",
+    "disease_class": "Neuronal Ceroid Lipofuscinosis",
+    "tabs": [
+      "Overview",
+      "Patients & Etiology",
+      "Seizures & Triggers",
+      "Treatments",
+      "Definitions"
+    ]
   }
 ]

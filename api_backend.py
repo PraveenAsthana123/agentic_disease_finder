@@ -27133,6 +27133,79 @@ async def cers1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln2/overview")
+async def cln2_overview():
+    """CLN2 / TPP1 Late-Infantile Batten Disease overview — Neuronal Ceroid Lipofuscinosis Type 2
+    [11p15.4 / AR / Lysosomal-Serine-Protease-TPP1 / SCMAS-Storage / Fingerprint-Profiles-EM /
+    40-patient cohort / Mean-onset 3.1y / DRE-75% / Retinal-Degeneration-95% / NCSE-40% /
+    Cognitive-Regression-100% / Giant-SSPS-Occipital-1-3Hz-PATHOGNOMONIC /
+    Cerliponase-Alfa-Brineura-FDA-2017-ONLY-NCL-ERT / ICV-Ommaya-Every-2-Weeks /
+    VGB-ABSOLUTE-CI-Retinal-Toxicity / VPA-SAFE-NOT-Mitochondrial /
+    IV-LEV-60mgkg-SE / Sleat-1997-Science / Schulz-2018-NEJM]."""
+    try:
+        import scripts.cln2_dashboard as cln2_
+        return _json_safe(cln2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln2/breakdown")
+async def cln2_breakdown():
+    """CLN2 LINCL breakdown — 6-class etiology
+    [Splice-c.523-1G>C-Homozygous-25%/Compound-Het-c.523-1G>C-Plus-Missense-22%/
+    Splice-c.509-1G>C-Attenuated-Juvenile-15%/Nonsense-Frameshift-Null-22%/
+    Missense-Catalytic-Triad-10%/Phenocopy-CLN2-Negative-6%],
+    5 seizure types [GTCS-First-95%/Myoclonic-90%/Atonic-Drop-62%/NCSE-40%/Absence-Focal-50%],
+    8 triggers [Fever-85%/Photic-1-3Hz-72%/SleepDep-70%/MissedAED-65%/Stress-58%/
+    Movement-55%/Auditory-Tactile-45%/Metabolic-Stress-40%],
+    8 treatments [Cerliponase-Alfa-LevelA-ICV/VPA-LevelB/LEV-LevelB-IV-SE/
+    CLB-LevelB/LTG-LevelB/Piracetam-LevelC/KD-LevelC/MDT-Palliative-LevelA],
+    6 CIs [VGB-ABSOLUTE-Retinal/Cerliponase-Delay-ABSOLUTE/CBZ-OXC-HIGH/
+    GBP-PGB-HIGH/Fosphenytoin-HIGH/Cerliponase-Interruption-HIGH],
+    40 patients, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln2_dashboard as cln2_
+        return _json_safe(cln2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln2/definitions")
+async def cln2_definitions():
+    """CLN2 LINCL definitions — 15 concepts
+    [CLN2-TPP1-11p15.4-Lysosomal-Serine-Protease-NCL/
+    Cerliponase-Alfa-Brineura-First-NCL-ERT-FDA-2017/
+    Giant-SSPS-Occipital-1-3Hz-Pathognomonic-EEG/
+    TPP1-Enzyme-Assay-DBS-Leukocyte-Diagnostic-Priority/
+    Fingerprint-Profile-Curvilinear-EM-Storage-CLN2-Pathology/
+    Retinal-Degeneration-ERG-Visual-Loss-Mandatory-Surveillance/
+    VPA-SAFE-CLN2-Contrast-MERRF-POLG-Mitochondrial-CI/
+    CLN2-vs-KCTD7-Critical-Differential-NCL-vs-EPM3/
+    Fatal-CLN2-Natural-History-Cerliponase-Slowing-Treatment-Window/
+    ICV-Ommaya-Reservoir-Cerliponase-Delivery-System/
+    c523-1G>C-c509-1G>C-Common-Founder-Variants/
+    CLN2-CRS-Clinical-Rating-Scale-Outcome-Measure/
+    Dysphagia-Gastrostomy-PEG-AAC-Late-CLN2-MDT/
+    Palliative-Care-ACP-From-Diagnosis-CLN2-Fatal/
+    SUDEP-Risk-CLN2-Nocturnal-GTCS-Monitoring],
+    12 thresholds (TPP1<10%-Confirmed / SSPS-1-3Hz-Pathognomonic /
+    IV-LEV-60mgkg / Cerliponase-300mg-ICV / CLN2-CRS-1.5pts-Rapid /
+    Cobb-20-OrthoRef / Cobb-45-Surgical / VPA-trough-60-100 /
+    SARA-10-WalkingAid / SARA-25-Wheelchair / Anti-TPP1-1:100-Protocol /
+    ERG-Flat-SSPS-Absent),
+    12 standards (ILAE-2022 / NICE-NG85 / FDA-Brineura-2017 /
+    EMA-Brineura-2017 / Schulz-2018-NEJM / Sleat-1997-Science /
+    MHRA-VPPP-2021 / Nickel-2016-LancetNeurol / ACMG-AMP-2015 /
+    WHO-ICF-2019 / NCL-Resource-2024 / Mole-SE-2011-BBA),
+    6 references (Sleat-1997 / Schulz-2018 / Nickel-2016 /
+    Whiting-2021 / Pampiglione-Harden-1977 / Mole-2011)."""
+    try:
+        import scripts.cln2_dashboard as cln2_
+        return _json_safe(cln2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
