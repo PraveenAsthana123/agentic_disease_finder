@@ -25151,6 +25151,77 @@ async def cacna2d2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/tbc1d24/overview")
+async def tbc1d24_overview():
+    """TBC1D24 Epilepsy overview — DOORS Syndrome / FHEIG / DEE16 / Rab-GAP / AR-LOF / 16p13.3.
+    40-patient cohort · TBC1D24 (16p13.3) · TBC1 Domain Family Member 24 · AR biallelic LOF.
+    Syndromes: DOORS (Deafness+Onychodystrophy+Osteodystrophy+cognitive-Retardation+Seizures OMIM 220500) ·
+    FHEIG (Familial Infantile Myoclonic Epilepsy OMIM 605021) · DEE16 (OMIM 615338).
+    MECHANISM: TBC domain → RAB35 Rab-GAP (synaptic vesicle recycling) + TLDc domain (oxidative stress resistance).
+    LOF → RAB35 constitutively active → impaired SV recycling + TLDc loss → ROS vulnerability → SNHL + seizures.
+    BIOMARKER: elevated urinary 2-oxoglutarate (2-OGA) — pathognomonic DOORS.
+    5-class etiology: Biallelic-Truncating-DOORS-38%/Biallelic-Missense-FHEIG-28%/Biallelic-Missense-DEE16-18%/
+    AD-Monoallelic-NSHL-Focal-10%/Phenocopy-6%.
+    KEY PHARMACOLOGICAL RULES: (1) POLG1 MANDATORY before VPA — 2-OGA mimics mitochondrial disease/Alpers;
+    (2) VGB ABSOLUTE AVOID maintenance in DOORS — deaf+blind = near-sensory isolation;
+    (3) LEV preferred (SV2A may compensate RAB35 SV recycling deficit; POLG-safe);
+    (4) KD = best DRE + addresses TLDc oxidative stress (BHB→ROS reduction);
+    (5) Cochlear implant BEFORE 24 months — critical plasticity window for DOORS SNHL;
+    (6) Fever threshold 38°C (lower than typical FC) — prophylactic CLB at fever onset (FHEIG).
+    TGB ABSOLUTE CI (NCSE). PHT HIGH RISK maintenance (cerebellar/peripheral neuropathy).
+    CBZ/OXC HIGH RISK in myoclonic-dominant FHEIG. VPA Level B (broad-spectrum GTCS+myoclonic).
+    Falace 2010 AmJHumGenet / Campeau 2014 AmJHumGenet / Balestrini 2016 Brain foundational."""
+    try:
+        import scripts.tbc1d24_dashboard as tbc_
+        return _json_safe(tbc_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/tbc1d24/breakdown")
+async def tbc1d24_breakdown():
+    """TBC1D24 breakdown: 5-class etiology (Biallelic-Truncating-DOORS-38% /
+    Biallelic-Missense-FHEIG-28% / Biallelic-Missense-DEE16-18% /
+    AD-Monoallelic-NSHL-Focal-10% / Phenocopy-6%),
+    5 seizure types (Myoclonic-78% / GTCS-68% / Focal-Impaired-Awareness-52% /
+    Infantile-Spasms-West-38% / Febrile-Seizures-55%)
+    with EEG + semiology + clinical tips,
+    8 triggers (Fever-88% / Sleep-dep-75% / Missed-AED-70% / Intercurrent-Illness-62% /
+    Photosensitivity-45% / AED-Taper-40% / Stress-35% / Catamenial-28%),
+    8 treatments (VPA-Level-B-broad-spectrum / LEV-Level-B-POLG-safe /
+    ACTH-VGB-Level-A-IS / CLB-Level-B-myoclonic-adjunct /
+    KD-Level-B-DRE / Pyridoxine-Level-C-diagnostic-exclusion /
+    VNS-Level-C-KD-refractory / Riboflavin-Level-C-TLDc-oxidative),
+    6 contraindications (TGB-ABSOLUTE-NCSE / VPA-POLG-ABSOLUTE /
+    VGB-HIGH-DOORS-deaf-blind / PHT-HIGH-neuropathy / CBZ-OXC-HIGH-myoclonic /
+    ETX-not-monotherapy),
+    14 monitoring items, 6 lifecycle stages, 40-patient cohort."""
+    try:
+        import scripts.tbc1d24_dashboard as tbc_
+        return _json_safe(tbc_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/tbc1d24/definitions")
+async def tbc1d24_definitions():
+    """TBC1D24 definitions: 15 key concepts
+    (TBC1D24-16p13.3 / DOORS-Syndrome-OMIM220500 / FHEIG-OMIM605021 / DEE16-OMIM615338 /
+    TBC-Domain-RAB35-Rab-GAP / TLDc-Domain-Oxidative-Stress / RAB35-Dysregulation /
+    2-OGA-Biomarker / SNHL-TBC1D24 / Onychodystrophy / Osteodystrophy /
+    POLG1-Alpers / VPPP-MHRA2021 / SUDEP / Cochlear-Implant-DOORS),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Falace-2010-AmJHumGenet / Campeau-2014-AmJHumGenet /
+    Balestrini-2016-Brain / Uytterhoeven-2011-Neuron / Mucha-2019-EpileptDisord /
+    CPIC-POLG-2023 / MHRA-VPPP-2021 / UKISS-2004 / ACMG-AMP-2015 / WHO-ICF-2019),
+    6 references."""
+    try:
+        import scripts.tbc1d24_dashboard as tbc_
+        return _json_safe(tbc_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/cacna1b/overview")
 async def cacna1b_overview():
     """CACNA1B DEE/NDMSB overview: 40-patient cohort KPIs (seizure-free/DRE/acth-received/spasms/

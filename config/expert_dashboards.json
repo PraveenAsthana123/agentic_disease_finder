@@ -3574,5 +3574,30 @@
     "status": "built",
     "note": "Total: 238 dashboards",
     "built_note": "CACNA2D2 Epilepsy Dashboard (EECAT / α2-δ-2 Auxiliary Subunit / Gabapentinoid-Binding Protein / AR-LOF / 3p21.3) — 40-patient CACNA2D2 cohort (AR biallelic LOF, 5 etiology classes, 5 seizure types [IS-65%/GTCS-80%/Myoclonic-72%/Tonic-55%/Focal-38%], 8 triggers, 8 treatments [VPA-LevelB/LEV-LevelB/ACTH-LevelA-IS/CLB-LevelB/VGB-LevelA-IS-SHARE-REMS/KD-LevelB-DRE/Pyridoxine-LevelC/Riboflavin-LevelC-investigational], 6 contraindications [Gabapentinoids-HIGH-RISK-α2δ-2-LOF-paradox/PHT-HIGH-cerebellar-toxicity/TGB-ABSOLUTE-NCSE/VPA+POLG1-ABSOLUTE/CBZ-OXC-HIGH/VGB-long-term-HIGH-VFD], 14 monitoring items, 6 lifecycle stages, 15 definitions, 12 thresholds, 12 standards, 6 references [Barclay-2001-NatNeurosci/Pippucci-2013-Epilepsia/Vergult-2015/Shahar-2016/Doohan-2019/Lenk-2020]). KEY: GABAPENTINOID PARADOX — gabapentin/pregabalin bind α2-δ-2, already non-functional in CACNA2D2 LOF → unpredictable efficacy + WORSENED CEREBELLAR ATAXIA — HIGH RISK AVOID; PHT HIGH RISK (Purkinje cell cerebellar toxicity compounds pre-existing atrophy — use only IV acute SE rescue, NOT maintenance). Ducky mouse model (CACNA2D2 null → SWD + cerebellar ataxia + Purkinje cell loss — Barclay 2001 Nat Neurosci). α2-δ subfamily: α2-δ-1/CACNA2D1 (gabapentinoid analgesic target) · α2-δ-2/CACNA2D2 (cerebellar/epilepsy — EECAT, THIS GENE) · α2-δ-3/CACNA2D3 (pain/anxiety) · α2-δ-4/CACNA2D4 (retinal). 3 endpoints /api/cacna2d2/overview|breakdown|definitions verified 200. portal-next/app/cacna2d2/page.jsx + SiteNav wired after CACNA1D. expert_dashboards.json count 237→238. Built 2026-08-17."
+  },
+  {
+    "id": "tbc1d24",
+    "gene": "TBC1D24",
+    "name": "TBC1D24 Epilepsy (DOORS Syndrome / FHEIG / DEE16 / Rab-GAP RAB35 / TLDc Oxidative Stress / AR-LOF / 16p13.3)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "route": "/tbc1d24",
+    "api_prefix": "/api/tbc1d24",
+    "endpoints": [
+      "/api/tbc1d24/overview",
+      "/api/tbc1d24/breakdown",
+      "/api/tbc1d24/definitions"
+    ],
+    "script": "scripts/tbc1d24_dashboard.py",
+    "component": "portal-next/app/tbc1d24/page.jsx",
+    "locus": "16p13.3",
+    "omim": "DOORS 220500 / FHEIG 605021 / DEE16 615338",
+    "channel": "TBC Rab-GAP (RAB35) + TLDc (Oxidative Stress Resistance)",
+    "syndrome": "DOORS / FHEIG / DEE16 / AR-LOF",
+    "color": "#4a148c",
+    "updated_at": "2026-08-17",
+    "why": "TBC1D24 (16p13.3) — biallelic AR LOF → DOORS (Deafness+Onychodystrophy+Osteodystrophy+cognitive Retardation+Seizures) or FHEIG (myoclonic epilepsy) or DEE16 (infantile encephalopathy). TBC domain: RAB35 Rab-GAP (synaptic vesicle recycling). TLDc domain: oxidative stress resistance. Pathognomonic biomarker: urinary 2-oxoglutarate (2-OGA) elevation. KEY: VGB ABSOLUTE AVOID in DOORS (VFD + profound SNHL = near-sensory isolation). POLG1 MANDATORY before VPA (2-OGA mimics mitochondrial disease / Alpers risk). Cochlear implant before 24 months critical. LEV preferred (SV2A + POLG-safe). KD best DRE option. Falace 2010 / Campeau 2014 / Balestrini 2016 Brain.",
+    "note": "TBC1D24 Epilepsy (DOORS/FHEIG/DEE16) Dashboard — /api/tbc1d24/* + portal-next/app/tbc1d24/page.jsx + SiteNav wired next to CACNA2D2, 40-patient TBC1D24 cohort (16p13.3; TBC Rab-GAP RAB35; TLDc oxidative stress; DOORS OMIM 220500 / FHEIG OMIM 605021 / DEE16 OMIM 615338; AR biallelic LOF; AD monoallelic = NSHL/mild epilepsy; pLI 0.14 biallelic-required; 2-OGA pathognomonic biomarker; Falace 2010 / Campeau 2014 / Balestrini 2016), 5-class etiology (Biallelic-Truncating-DOORS-38%/Biallelic-Missense-FHEIG-28%/Biallelic-Missense-DEE16-18%/AD-Monoallelic-NSHL-Focal-10%/Phenocopy-6%), 5 seizure types (Myoclonic-78%/GTCS-68%/Focal-52%/IS-West-38%/Febrile-55%) with EEG+semiology+clinical tips, 8 triggers (Fever-88%/Sleep-dep-75%/Missed-AED-70%/Illness-62%/Photosensitivity-45%/AED-Taper-40%/Stress-35%/Catamenial-28%), 8 treatments (VPA-Level-B-broad-spectrum/LEV-Level-B-POLG-safe/ACTH-VGB-Level-A-IS/CLB-Level-B-myoclonic/KD-Level-B-DRE/Pyridoxine-Level-C-diagnostic/VNS-Level-C-KD-refractory/Riboflavin-Level-C-TLDc-oxidative), 6 contraindications (TGB-ABSOLUTE-NCSE/VPA-POLG-ABSOLUTE/VGB-HIGH-DOORS-deaf-blind/PHT-HIGH-neuropathy/CBZ-OXC-HIGH-myoclonic/ETX-not-monotherapy), 14 monitoring items (POLG1-before-VPA/VPA-TDM-q3M/LFT-FBC-ammonia-q3M/2-OGA-q6M/Audiology-ABR-q6M/CI-referral-by-12M/VGB-ERG-q3M-REMS/MRI-at-diagnosis/Seizure-diary/Neurodevelopment-q6M/Nail-bone-xray/VPPP-females-12y/SUDEP-annual/Genetics-cascade), 6-window lifecycle, 15 concepts, 12 thresholds, 12 standards (ILAE-2022/NICE-NG217/Falace-2010/Campeau-2014/Balestrini-2016/Uytterhoeven-2011/Mucha-2019/CPIC-POLG-2023/MHRA-VPPP-2021/UKISS-2004/ACMG-AMP-2015/WHO-ICF-2019), 6 references, 5-tab frontend, deep purple colour #4a148c (RAB35 synaptic / DOORS distinct), 3 endpoints /api/tbc1d24/overview|breakdown|definitions verified 200, expert_dashboards.json count 238->239",
+    "built_note": "TBC1D24 Epilepsy (DOORS/FHEIG/DEE16 / RAB35-Rab-GAP / TLDc-Oxidative-Stress) dashboard built 2026-08-17: /api/tbc1d24/overview|breakdown|definitions + portal-next/app/tbc1d24/page.jsx + SiteNav wired next to CACNA2D2. expert_dashboards.json count 238->239."
   }
 ]
