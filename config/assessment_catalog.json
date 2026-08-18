@@ -1,7 +1,10 @@
 {
   "title": "Clinical Assessment Catalog — Epilepsy EEG Thesis",
   "note": "Full ranked instrument catalog for retrospective data collection + AI features. status: built (live in platform) / cataloged (collect from hospital). §155 honest.",
-  "updated_at": "2026-06-26",
+  "updated_at": "2026-08-18",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/assessment-catalog/page.jsx",
+  "api_endpoints": ["/api/assessment-catalog/overview", "/api/assessment-catalog/breakdown", "/api/assessment-catalog/definitions"],
   "top10_for_thesis": [
     "EEG Report",
     "Video EEG",

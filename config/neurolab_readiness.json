@@ -1,7 +1,10 @@
 {
   "title": "NeuroLab AI \u2014 Deployment Readiness & Business Case",
   "note": "What it takes to run this in a real neuro lab. status: built (real here) / partial / missing. The intelligence+governance layer is built; clinical-IT plumbing is missing (integrate, don't rebuild).",
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-18",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/neurolab-readiness/page.jsx",
+  "api_endpoints": ["/api/neurolab-readiness/overview", "/api/neurolab-readiness/breakdown", "/api/neurolab-readiness/definitions"],
   "stakeholders": [
     {
       "role": "Neurologist",
