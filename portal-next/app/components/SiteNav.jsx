@@ -367,6 +367,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/gabrg2">&#x1f9ec; GABRG2 Epilepsy (DEE11 / GEFS+ / GABA-A &#947;2 / BDZ Hyposensitivity / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/grin1">&#x1f9e0; GRIN1 Epilepsy (DEE / GluN1 Obligatory NMDA Subunit / D-serine LOF / Memantine GOF / 9q34.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/grin2b">&#x1f9e0; GRIN2B Epilepsy (DEE27 / GluN2B / NMDA Subunit 2B / Memantine Precision / 12p12)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/grin2d">&#x1f9e0; GRIN2D Epilepsy (DEE / GluN2D / Extrasynaptic-Subcortical / Movement-Disorder / Memantine-GOF / 19q13.33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/mecp2">&#x1f9ec; MECP2-Related Disorders (Rett Syndrome / MDS / X-Linked / Trofinetide / Xq28)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra1">&#x1f9ec; GABRA1 Epilepsy (DEE19 / CAE / JME / GABA-A &#945;1 / BDZ-Rescue-Adjusted / 5q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabra2">&#x1f9ec; GABRA2 Epilepsy (GGE / GEFS+ / Alcohol-Sensitive / GABA-A &#945;2 / AIS Inhibition / 4p12)</Link></li>

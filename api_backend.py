@@ -23463,6 +23463,54 @@ async def grin2b_definitions():
     return _json_safe(gb2_.get_definitions())
 
 
+@app.get("/api/grin2d/overview")
+async def grin2d_overview():
+    """GRIN2D Epilepsy (DEE / GluN2D / NMDA Subunit 2D / Extrasynaptic-Subcortical / Movement-Disorder / 19q13.33) overview: 40-patient cohort.
+    GRIN2D (19q13.33), GluN2D — slowest-deactivating NMDA subunit (tau ~4s); extrasynaptic/subcortical expression
+    (STN, substantia nigra, VTA, LC, cerebellum); low Mg2+ sensitivity → tonic NMDA current at rest.
+    De novo dominant GOF (70%): constitutive NMDA activation → excitotoxicity in basal ganglia → DEE + MOVEMENT DISORDER (dystonia/choreoathetosis).
+    LOF (20%): tonic NMDA loss → STN disinhibition → focal DEE.
+    PRECISION: memantine (GOF ONLY — ABSOLUTE CI in LOF). GOF/LOF assay MANDATORY.
+    KEY DISTINCTION from GRIN2B: ifenprodil USELESS (no NTD site). Movement disorder >> West syndrome (subcortical).
+    Baclofen (STN GABA-B) for non-ictal dystonia. POLG1 mandatory before VPA. TGB ABSOLUTE CI."""
+    import scripts.grin2d_dashboard as gd2_
+    return _json_safe(gd2_.get_overview())
+
+
+@app.get("/api/grin2d/breakdown")
+async def grin2d_breakdown():
+    """GRIN2D breakdown: 40 patients, 5-class etiology catalog
+    (GRIN2D-GOF-missense-M2M3-lurcher-38%/GRIN2D-GOF-splice-synonymous-20%/
+    GRIN2D-GOF-other-12%/GRIN2D-LOF-truncating-20%/phenocopy-GRIN2B-GNAO1-KMT2B-10%),
+    5 seizure types (Focal-Motor-75%/Epileptic-Spasms-West-55%/Myoclonic-48%/GTCS-62%/
+    Non-ictal-Movement-Disorder-Dystonia-Choreoathetosis-68%) with EEG+semiology+clinical tips,
+    8 triggers (Fever-85%/Sleep-dep-72%/Missed-AED-68%/Stress-catecholamine-55%/Overstimulation-45%/
+    AED-taper-42%/Metabolic-illness-38%/Catamenial-28%),
+    8 treatments (Memantine-Level-C-GOF-ONLY/VPA-Level-B-POLG-screen/ACTH-Level-A-West/
+    VGB-Level-A-West-SHARE-REMS/KD-Level-B-DRE/CLB-Level-B-adjunct/LEV-Level-B-safe/
+    Baclofen-Level-C-movement-disorder) with dose+MOA+efficacy+monitoring+GRIN2D-specific notes,
+    6 contraindications (Memantine-LOF-ABSOLUTE/Ketamine-LOF-ABSOLUTE/Tiagabine-ABSOLUTE/
+    D-Cycloserine-GOF-HIGH/CBZ-OXC-PHT-generalised-HIGH/VPA-without-POLG-ABSOLUTE),
+    14 monitoring items, 6 lifecycle stages, 40 patient cohort."""
+    import scripts.grin2d_dashboard as gd2_
+    return _json_safe(gd2_.get_breakdown())
+
+
+@app.get("/api/grin2d/definitions")
+async def grin2d_definitions():
+    """GRIN2D definitions: 15 key concepts
+    (GRIN2D-19q13.33/GluN2D-Slowest-Deactivation-tau4s/Extrasynaptic-Tonic-NMDA/
+    GOF-Lurcher-Equivalent-M2M3/Subcortical-Movement-Disorder-Dystonia/Memantine-GOF-Precision/
+    Ifenprodil-Insensitivity-no-NTD/D-Cycloserine-GOF-CI/POLG1-VPA-CI/
+    Baclofen-STN-Modulation/GRIN2D-vs-GRIN2B-comparison/West-Syndrome-GRIN2D/
+    KD-Memantine-Combination/SUDEP-GRIN2D-DRE/GRIN-Disorders-Network),
+    6 contraindications, 12 thresholds, 12 standards, 6 references
+    (Li-2019-AnnNeurol/Bhatt-2022-Epilepsia/Lemke-2016-NatMed/Hansen-2018-PharmacolRev/
+    Ogden-2014-AdvPharmacol/Lujan-2023-EpilepsiaOpen)."""
+    import scripts.grin2d_dashboard as gd2_
+    return _json_safe(gd2_.get_definitions())
+
+
 @app.get("/api/mecp2/overview")
 async def mecp2_overview():
     """MECP2-Related Disorders overview: 41-patient cohort.
