@@ -3357,17 +3357,23 @@
     "label": "CACNA1B Epilepsy (DEE/NDMSB / Cav2.2 N-type HVA / LEV-Level-B / 9q34.3)",
     "status": "built",
     "route": "/cacna1b",
-    "api": [
-      "/api/cacna1b/overview",
-      "/api/cacna1b/breakdown",
-      "/api/cacna1b/definitions"
-    ],
     "gene": "CACNA1B",
     "locus": "9q34.3",
     "channel": "Cav2.2 N-type HVA Ca2+ Channel",
     "syndrome": "DEE / NDMSB / Hyperkinetic Movements",
     "omim": "618354",
-    "color": "#00695c"
+    "color": "#00695c",
+    "name": "CACNA1B Epilepsy (DEE/NDMSB / Cav2.2 N-type HVA Ca²⁺ Channel / LEV-Level-B-SV2A-N-type / Hyperkinetic Movements / 9q34.3)",
+    "api_prefix": "/api/cacna1b",
+    "endpoints": [
+      "/api/cacna1b/overview",
+      "/api/cacna1b/breakdown",
+      "/api/cacna1b/definitions"
+    ],
+    "frontend": "portal-next/app/cacna1b/page.jsx",
+    "script": "scripts/cacna1b_dashboard.py",
+    "note": "Total: 236 dashboards",
+    "built_note": "CACNA1B dashboard built 2026-08-17: /api/cacna1b/overview|breakdown|definitions + portal-next/app/cacna1b/page.jsx + SiteNav wired next to CACNA1A. 40-patient CACNA1B cohort (Cav2.2 N-type HVA Ca2+ channel, 9q34.3, GOF de novo >90%). HALLMARK: hyperkinetic movements (chorea/oculomotor apraxia). NO approved N-type blocker for epilepsy. LEV first-line (SV2A + secondary N-type 20% suppression). Cav2 subfamily complete: CACNA1A P/Q + CACNA1B N-type + CACNA1E R-type."
   },
   {
     "role": "Neurologist",
@@ -3381,7 +3387,20 @@
       "/api/kcnq5/overview",
       "/api/kcnq5/breakdown",
       "/api/kcnq5/definitions"
-    ]
+    ],
+    "id": "kcnq5",
+    "gene": "KCNQ5",
+    "route": "/kcnq5",
+    "api_prefix": "/api/kcnq5",
+    "frontend": "portal-next/app/kcnq5/page.jsx",
+    "script": "scripts/kcnq5_dashboard.py",
+    "locus": "6q14.1",
+    "channel": "Kv7.5 M-Current Channel (Interneuron-Enriched)",
+    "syndrome": "DEE / ID-Epilepsy / GOF-LOF Dual",
+    "omim": "618832",
+    "color": "#0277bd",
+    "note": "Total: 236 dashboards",
+    "built_note": "KCNQ5 dashboard built 2026-08-17: /api/kcnq5/overview|breakdown|definitions + portal-next/app/kcnq5/page.jsx + SiteNav wired next to KCNQ3. 40-patient KCNQ5 cohort (Kv7.5 M-current, 6q14.1, interneuron-enriched). Completes Kv7 KCNQ M-current subfamily: KCNQ2 Kv7.2 (neonatal DEE7/BFNS) + KCNQ3 Kv7.3 (BFNS-3) + KCNQ5 Kv7.5 (infantile DEE/ID-epilepsy, no BFNS). LOF paradoxical CBZ/OXC worsening ~20% (EEG mandatory). KD HIGH PRIORITY in GOF-DEE (BHB direct Kv7.5/Kv7.3 M-current enhancement)."
   },
   {
     "role": "Neurologist",
