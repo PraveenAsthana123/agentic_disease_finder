@@ -26132,6 +26132,57 @@ async def eef1a2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gabbr2/overview")
+async def gabbr2_overview():
+    """GABBR2 Epilepsy — overview: cohort KPIs (DEE-59 / GABA-B Receptor Subunit 2 /
+    GOF-Constitutive-Gi-55% / LOF-Presynaptic-Autoreceptor-45% / Baclofen-Precision-LOF /
+    West-Syndrome-IS / LGS-Evolution-GOF / TGB-ABSOLUTE / PHT-CBZ-Worsen /
+    Baclofen-Withdrawal-Emergency / VPA-POLG1 / 22q12.2 / OMIM-DEE59-617137)."""
+    try:
+        import scripts.gabbr2_dashboard as gabbr2_
+        return _json_safe(gabbr2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabbr2/breakdown")
+async def gabbr2_breakdown():
+    """GABBR2 Epilepsy — full breakdown: 5 etiologies (GOF-TM4-TM5-38% /
+    LOF-truncating-GEFS-28% / GOF-VFTM-intermediate-18% / LOF-missense-ESES-10% /
+    Phenocopy-6%), 40-patient cohort, 5 seizure types (IS-West-85% / GTCS-72% /
+    Focal-FIAW-60% / Myoclonic-48% / Drop-Attacks-LGS-35%), 8 triggers,
+    8 treatments (ACTH-Level-A / VGB-Level-A / Baclofen-Level-C-LOF-ONLY /
+    VPA-Level-B / KD-Level-B / CLB-Level-B / LEV-Level-B / Felbamate-Level-C-LGS),
+    6 CIs (TGB-ABSOLUTE / PHT-CBZ-HIGH / Baclofen-Withdrawal-ABSOLUTE /
+    Baclofen-High-Dose-HIGH / VPA-POLG1-ABSOLUTE / Flumazenil-SE-HIGH),
+    14 monitoring items, 7 lifecycle stages."""
+    try:
+        import scripts.gabbr2_dashboard as gabbr2_
+        return _json_safe(gabbr2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabbr2/definitions")
+async def gabbr2_definitions():
+    """GABBR2 Epilepsy — definitions: 15 concepts (GABBR2-22q12.2-DEE-59 /
+    GABA-B-Obligatory-Heterodimer / GOF-Constitutive-Gi / LOF-Autoreceptor-Loss /
+    Baclofen-Precision-LOF / Baclofen-Withdrawal-Emergency / GOF-LOF-Functional-Assay /
+    TGB-ABSOLUTE-NCSE / PHT-CBZ-Worsen / West-GABBR2-GOF / POLG1-VPA-Mandatory /
+    GABBR1-GABBR2-Comparison / Felbamate-LGS / SUDEP-DEE59 / VPPP-Female-VPA),
+    12 thresholds (IS-onset-2w / ACTH-Day14 / Baclofen-target-dose / Baclofen-taper /
+    VPA-TDM / Felbamate-FBC / VGB-ERG / KD-BHB / POLG1-7-14d / Renal-eGFR30 /
+    Baclofen-withdrawal-admission / SUDEP-alarm),
+    12 standards (ILAE-2022 / NICE-NG217 / Yoo-2017 / Steele-2020 / Pinard-2010 /
+    UKISS-2005 / CPIC-POLG1 / FDA-SHARE-REMS / MHRA-VPPP / ACMG-AMP / NICE-NG224 / WHO-ICF),
+    6 references (Yoo-2017 / Steele-2020 / Pinard-2010 / UKISS-2005 / Bass-2016 / Bianchi-2022)."""
+    try:
+        import scripts.gabbr2_dashboard as gabbr2_
+        return _json_safe(gabbr2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

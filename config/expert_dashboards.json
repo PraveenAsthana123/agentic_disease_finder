@@ -3837,5 +3837,26 @@
       "/api/eef1a2/breakdown",
       "/api/eef1a2/definitions"
     ]
+  },
+  {
+    "id": "gabbr2",
+    "name": "GABBR2 Epilepsy (DEE-59 / GABA-B Receptor Subunit 2 / Metabotropic-GABA / GOF-Constitutive-Gi / LOF-Autoreceptor-Loss / Baclofen-Precision-LOF / TGB-ABSOLUTE-NCSE / West-LGS / 22q12.2)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "route": "/gabbr2",
+    "api_prefix": "/api/gabbr2",
+    "endpoints": [
+      "/api/gabbr2/overview",
+      "/api/gabbr2/breakdown",
+      "/api/gabbr2/definitions"
+    ],
+    "colour": "#33691e",
+    "gene": "GABBR2",
+    "locus": "22q12.2",
+    "omim": "#617137",
+    "inheritance": "De novo dominant (GOF 55% / LOF 45%)",
+    "precision_rx": "Baclofen (GABA-B agonist) LOF only",
+    "absolute_ci": "TGB (NCSE); Baclofen abrupt withdrawal (emergency)",
+    "key_feature": "GABA-B obligatory heterodimer GABBR1+GABBR2; functional assay mandatory before baclofen"
   }
 ]
