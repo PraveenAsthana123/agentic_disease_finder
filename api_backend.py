@@ -25597,6 +25597,69 @@ async def kcnma1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/chrnb2/overview")
+async def chrnb2_overview():
+    """CHRNB2 overview: nAChR β2 subunit / (α4)₂(β2)₃ heteropentamer /
+    ADNFLE3 (OMIM #605375) / GOF delayed desensitisation /
+    40-patient cohort / CBZ-XR first-line (bedtime-heavy) /
+    HLA-B*15:02 absolute CI for CBZ/OXC (SJS/TEN) /
+    psychiatric comorbidity 40% (higher than CHRNA4) /
+    V287M cognitive impairment 30% / bupropion ABSOLUTE CI /
+    varenicline HIGH RISK (partial α4β2 agonist) /
+    companion gene CHRNA4 (α4 subunit, ADNFLE1). 1q21.3.
+    De Fusco 2000 Nat Genet (V287M first mutation)."""
+    try:
+        import scripts.chrnb2_dashboard as cb2_
+        return _json_safe(cb2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrnb2/breakdown")
+async def chrnb2_breakdown():
+    """CHRNB2 breakdown: 40 patients / 5 etiology classes
+    (GOF-V287M-TM2-Classic-38% / GOF-V287L-TM2-High-Penetrance-28% /
+    GOF-L301V-TM2-Psychiatric-Predominant-18% /
+    GOF-Other-TM2-Rare-Variants-10% / Phenocopy-CHRNB2-Negative-6%) /
+    5 seizure types (Hypermotor-Nocturnal-NREM-97% /
+    Minor-Motor-Paroxysmal-72% / Nocturnal-Tonic-55% /
+    Epileptic-Wandering-32% / Daytime-Focal-Aware-18%) /
+    8 triggers (NREM-Sleep-Transitions-95% / Sleep-Dep-80% /
+    Stress-Catecholamine-65% / Missed-CBZ-62% / Febrile-52% /
+    Alcohol-38% / Nicotine-Cessation-28% / Circadian-Phase-22%) /
+    8 treatments / 6 CIs / 14 monitoring / 6 lifecycle stages."""
+    try:
+        import scripts.chrnb2_dashboard as cb2_
+        return _json_safe(cb2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrnb2/definitions")
+async def chrnb2_definitions():
+    """CHRNB2 definitions: 15 key concepts
+    (CHRNB2-1q21.3 / ADNFLE3-605375 / GOF-Delayed-Desensitisation /
+    TM2-Pathogenic-Cluster / Nicotine-Paradox-Beta2 /
+    HLA-B1502-CBZ-SJS-TEN / Psychiatric-Comorbidity-Beta2 /
+    V287M-Cognitive-Impairment / NREM-Cholinergic-Surge /
+    CBZ-Autoinduction-CYP3A4 / VPSG-Gold-Standard /
+    ADNFLE3-Penetrance-Incomplete / CLB-SSRI-CYP2C19-Interaction /
+    ADNFLE3-Misdiagnosis-Parasomnia / ADNFLE3-Surgical-Outcomes),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / De-Fusco-2000-NatGenet /
+    CPIC-HLA-B1502-CBZ-2023 / ILAE-Genetic-Epilepsy-TaskForce-2018 /
+    Brodtkorb-Picard-2006 / AASM-ICSD3-2023 / CPIC-POLG-2023 /
+    MHRA-VPPP-2021 / NICE-NG224-2023 / ACMG-AMP-2015 / WHO-ICF-2019),
+    6 references (De-Fusco-2000-NatGenet / Steinlein-2012-EpilepsyRes /
+    Tinuper-2016-Neurology / Scheffer-2014-Epilepsia /
+    Muona-2015-NatGenet / Bhatt-2017-NEJM)."""
+    try:
+        import scripts.chrnb2_dashboard as cb2_
+        return _json_safe(cb2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

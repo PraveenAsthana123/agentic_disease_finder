@@ -3641,5 +3641,25 @@
     "status": "built",
     "note": "BK channel GOF→epilepsy+paroxysmal dyskinesia (caffeine-triggered, NORMAL EEG); LOF→Liang-Wang DEE+autism+hypotonia. Quinidine (BK blocker): GOF precision therapy, ABSOLUTE CI in LOF. First GOF mutation: D434G (Du 2005 Nat Neurosci). Quinidine evidence: Mullen 2021 Brain.",
     "built_note": "Built 2026-08-17: scripts/kcnma1_dashboard.py (40-patient cohort, 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 15 concepts) + api_backend.py 3 routes + portal-next/app/kcnma1/page.jsx (5-tab, deep purple #4a148c) + SiteNav wired after CHRNA4. registry count 240→241."
+  },
+  {
+    "id": "chrnb2",
+    "name": "CHRNB2 Epilepsy (ADNFLE3 / nAChR β2 Subunit / (α4)₂(β2)₃ GOF / Psychiatric-Comorbidity-40% / V287M-Cognitive / HLA-B*15:02 / 1q21.3)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "route": "/chrnb2",
+    "api_prefix": "/api/chrnb2",
+    "api_endpoints": [
+      "/api/chrnb2/overview",
+      "/api/chrnb2/breakdown",
+      "/api/chrnb2/definitions"
+    ],
+    "frontend": "portal-next/app/chrnb2/page.jsx",
+    "script": "scripts/chrnb2_dashboard.py",
+    "color": "#5d4037",
+    "description": "40-patient CHRNB2 cohort, 5-class etiology (V287M-38%/V287L-28%/L301V-psychiatric-18%/Other-10%/Phenocopy-6%), 5 seizure types (Hypermotor-Nocturnal-97%/Minor-Motor-72%/Tonic-55%/Wandering-32%/Daytime-Focal-18%), 8 triggers (NREM-95%/SleepDep-80%/Stress-65%/MissedCBZ-62%/Febrile-52%/Alcohol-38%/Nicotine-Cessation-28%/Circadian-22%), 8 treatments, 6 CIs (CBZ/OXC-HLA-B1502-ABSOLUTE/TGB-ABSOLUTE/Bupropion-ABSOLUTE/PHT-HIGH/Varenicline-HIGH-RISK/High-Dose-Nicotine-HIGH), 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references, companion gene CHRNA4",
+    "note": "CHRNB2 (β2 nAChR subunit, 1q21.3) — companion to CHRNA4 (α4 subunit) in (α4)₂(β2)₃ heteropentamer. GOF → ADNFLE3 (OMIM #605375). Key distinctions: 40% psychiatric comorbidity (vs 20% CHRNA4); V287M → 30% cognitive impairment; bupropion ABSOLUTE CI; varenicline HIGH RISK (partial α4β2 agonist); same CBZ-XR first-line + HLA-B*15:02 absolute CI for SJS/TEN.",
+    "built_date": "2026-08-17",
+    "built_note": "Dashboard #242: CHRNB2 (β2 nAChR, ADNFLE3) companion to CHRNA4 — 3 endpoints /api/chrnb2/overview|breakdown|definitions verified 200"
   }
 ]
