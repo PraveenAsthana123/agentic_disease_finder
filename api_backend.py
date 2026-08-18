@@ -25472,6 +25472,69 @@ async def kcnc2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/chrna4/overview")
+async def chrna4_overview():
+    """CHRNA4 overview: ADNFLE (Autosomal Dominant Nocturnal Frontal Lobe Epilepsy) /
+    Nicotinic Acetylcholine Receptor Alpha-4 Subunit / nAChR GOF / 20q13.33.
+    First epilepsy ion channel gene (Steinlein 1995 Nat Genet — S284L mutation).
+    40-patient CHRNA4 cohort: 5-class etiology
+    (GOF-Missense-S284L-Classic-ADNFLE-35% / GOF-Missense-Other-M2-25% /
+    GOF-Insertion-776insL-Australian-Scottish-20% / GOF-Atypical-Non-M2-15% /
+    Phenocopy-Panel-Negative-5%);
+    CBZ first-line 70-80% seizure freedom; HLA-B*15:02 mandatory before CBZ in SE Asian;
+    nicotine desensitisation paradox; hypermotor NREM nocturnal seizures; VPSG gold standard."""
+    try:
+        import scripts.chrna4_dashboard as ch4_
+        return _json_safe(ch4_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrna4/breakdown")
+async def chrna4_breakdown():
+    """CHRNA4 breakdown: 5-class etiology catalog, 5 seizure types
+    (Hypermotor-Nocturnal-ADNFLE-Core-95% / Minor-Motor-Paroxysmal-Arousals-68% /
+    Nocturnal-Tonic-52% / Epileptic-Nocturnal-Wandering-38% / Diurnal-Focal-15%),
+    8 triggers (NREM-Sleep-Transitions-92% / Sleep-Deprivation-78% / Stress-62% /
+    Illness-Fever-48% / Missed-CBZ-43% / Alcohol-35% / Shift-Work-30% /
+    Nicotine-Cessation-22%),
+    8 treatments (CBZ-XR-Level-B-First-Line-70-80%-SF / OXC-Level-C-CBZ-Alternative /
+    LCM-Level-C-Adjunct-CBZ-resistant / Nicotine-Patch-Level-C-Investigational-Desensitisation /
+    LEV-Level-C-Adjunct / TPM-Level-C-DRE / CLB-Level-C-Bedtime-Adjunct / ZNS-Level-C-Once-Daily),
+    6 CIs (CBZ-OXC-HLA-B1502-ABSOLUTE-SJS-TEN / TGB-ABSOLUTE-NCSE /
+    VPA-POLG1-ABSOLUTE / High-Dose-Nicotine-HIGH-RISK / PHT-HIGH-RISK / LTG-Monotherapy-MODERATE),
+    14 monitoring items, 6 lifecycle stages, 40-patient cohort."""
+    try:
+        import scripts.chrna4_dashboard as ch4_
+        return _json_safe(ch4_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrna4/definitions")
+async def chrna4_definitions():
+    """CHRNA4 definitions: 15 key concepts
+    (CHRNA4-20q13.33 / ADNFLE-#600513 / nAChR-alpha4beta2 / S284L-Founding-Mutation /
+    GOF-Delayed-Desensitisation / Nicotine-Desensitisation-Paradox /
+    HLA-B1502-CBZ-SJS-TEN / NREM-Cholinergic-Surge-Hypothesis /
+    VPSG-Diagnostic-Gold-Standard / ADNFLE-Misdiagnosis-Parasomnia /
+    CBZ-Autoinduction-CYP3A4 / POLG1-Alpers / Frontal-Surgery-DRE /
+    ADNFLE-Penetrance-70pct / ADNFLE-Pregnancy-Unique),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Steinlein-1995-NatGenet / CPIC-HLA-B1502-CBZ-2023 /
+    ILAE-Genetic-Epilepsy-TaskForce-2018 / Brodtkorb-Picard-2006 /
+    AASM-ICSD3-2023 / CPIC-POLG-2023 / MHRA-VPPP-2021 / NICE-NG224-2023 /
+    ACMG-AMP-2015 / WHO-ICF-2019),
+    6 references (Steinlein-1995-NatGenet / Hirose-1999-AnnNeurol /
+    Brodtkorb-2006-EpilepsyBehav / Tinuper-2016-Neurology /
+    Scheffer-2014-Epilepsia / Phillips-2000-HumMolGenet)."""
+    try:
+        import scripts.chrna4_dashboard as ch4_
+        return _json_safe(ch4_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

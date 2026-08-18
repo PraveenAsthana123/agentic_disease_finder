@@ -386,6 +386,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1d">&#x1f9ec; CACNA1D Epilepsy (SANDD / DEE+Autism+Aldosteronism / Cav1.3 Low-Threshold L-type / Isradipine-Precision / 3p14.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna2d2">&#x1f9ec; CACNA2D2 Epilepsy (EECAT / &#x3b1;2-&#x3b4;-2 Auxiliary Subunit / Gabapentinoid-Binding Protein / Cerebellar Atrophy / AR-LOF / 3p21.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/tbc1d24">&#x1f9ec; TBC1D24 Epilepsy (DOORS Syndrome / FHEIG / DEE16 / RAB35-Rab-GAP / TLDc-Oxidative-Stress / AR-LOF / 16p13.3)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/chrna4">&#x1f9ec; CHRNA4 Epilepsy (ADNFLE / Nocturnal Frontal Lobe / nAChR &#x3b1;4 GOF / CBZ-First-Line / HLA-B1502 / 20q13.33)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn1b">&#x2764;&#xfe0f; SCN1B Epilepsy (GEFS+ / Dravet-like DEE / Brugada Type 5 / Nav-&#946;1 / 19q13.12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/arx">&#x1f9ec; ARX Epilepsy (X-linked DEE / Ohtahara / West / XLAG / Partington / Xp21.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq3">&#x26a1; KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3)</Link></li>
