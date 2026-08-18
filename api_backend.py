@@ -25660,6 +25660,66 @@ async def chrnb2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/mtor/overview")
+async def mtor_overview():
+    """MTOR overview: mechanistic Target of Rapamycin / mTOR kinase (1p36.22) /
+    GOF somatic mosaic (75%) or germline Smith-Kingsmore (25%) /
+    constitutive mTORC1 hyperactivation → FCD IIb / HME / MCAP /
+    Everolimus direct mTORC1 inhibitor (FKBP12-rapamycin-FRB domain) /
+    somatic VAF <5% in blood → ultra-deep NGS (>1000×) or ddPCR required /
+    EXIST-3 (TSC) evidence extrapolated; trough 3-7 ng/mL neurological dose /
+    CYP3A4 interactions: CBZ/PHT/OXC reduce everolimus 70-80% /
+    TGB ABSOLUTE CI (NCSE in FCD IIb) / POLG1 mandatory before VPA /
+    completes mTORopathy trilogy: TSC1/TSC2 → DEPDC5/NPRL2/NPRL3 → MTOR apex.
+    40-patient cohort (MTOR 1p36.22)."""
+    try:
+        import scripts.mtor_dashboard as mt_
+        return _json_safe(mt_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/mtor/breakdown")
+async def mtor_breakdown():
+    """MTOR breakdown: 40 patients / 5 etiology classes
+    (Somatic-MTOR-GOF-FCD-IIb-35% / Germline-MTOR-GOF-Smith-Kingsmore-28% /
+    Somatic-MTOR-GOF-HME-18% / Somatic-MTOR-GOF-MCAP-12% /
+    Phenocopy-mTOR-Pathway-Negative-7%) /
+    5 seizure types (Focal-Impaired-Awareness-82% / Focal-to-BTCS-75% /
+    Infantile-Spasms-HME-55% / Tonic-45% / Epileptic-Spasms-Persistent-38%) /
+    8 triggers (Fever-88% / Sleep-Dep-75% / Missed-AED-68% / Stress-62% /
+    AED-Taper-52% / Photosensitivity-38% / Everolimus-Adjustment-28% /
+    Catamenial-22%) /
+    8 treatments / 6 CIs / 14 monitoring / 6 lifecycle stages."""
+    try:
+        import scripts.mtor_dashboard as mt_
+        return _json_safe(mt_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/mtor/definitions")
+async def mtor_definitions():
+    """MTOR definitions: 15 key concepts
+    (MTOR-1p36.22 / mTORC1-mTORC2 / GOF-Somatic-Mosaic /
+    Smith-Kingsmore-Syndrome / MCAP-Syndrome / FCD-IIb-Somatic-MTOR /
+    HME-Hemimegalencephaly / Deep-Sequencing-Requirement /
+    Everolimus-mTORC1-Direct / EXIST-3-Evidence / Surgery-MTOR-FCD /
+    POLG1-Alpers-Overlap / Everolimus-Trough-Monitoring /
+    Immunosuppression-Everolimus / Two-Hit-Somatic-Model),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Mirzaa-2016-NatGenet / Bass-2016-NEJM-EXIST3 /
+    Baldassari-2019-Brain / Nakashima-2015-AnnNeurol / CPIC-POLG-2023 /
+    MHRA-VPPP-2021 / UKISS-2004-Lancet / FDA-SHARE-REMS-VGB /
+    ACMG-AMP-2015 / WHO-ICF-2019),
+    6 references + GATOR1 trilogy context (TSC → GATOR1 → MTOR apex)."""
+    try:
+        import scripts.mtor_dashboard as mt_
+        return _json_safe(mt_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
