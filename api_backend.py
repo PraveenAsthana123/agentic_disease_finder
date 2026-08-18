@@ -26992,6 +26992,74 @@ async def kctd7_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/prickle1/overview")
+async def prickle1_overview():
+    """PRICKLE1 Epilepsy (EPM5 / Progressive Myoclonic Epilepsy Type 5 / WNT-PCP-Planar-Cell-Polarity-LOF /
+    PRICKLE1-VANGL1/2-CELSR-Complex / PRICKLE1-SYNAPSIN-Synaptic-Vesicle-Trafficking /
+    Prominent-Early-Cerebellar-Ataxia / Preserved-Cognition / Non-Fatal-PME /
+    LEV-SV2A-Mechanistically-Rational / PER-AMPA-Ataxia-Amplification-Risk /
+    CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-NCSE / GBP-PGB-Misdiagnosis-Trap / 12q12).
+    40-patient EPM5 cohort (PRICKLE1 12q12 — Prickle Planar Cell Polarity Protein 1;
+    PET domain + 3 LIM domains ~831 aa ~95 kDa; core WNT/PCP pathway; PRICKLE1-VANGL1/2-CELSR
+    planar polarity complex at distal cell face; PRICKLE1-SYNAPSIN direct interaction regulates
+    synaptic vesicle reserve-pool-to-releasable-pool trafficking; PRICKLE1 LOF → disrupted PCP
+    → abnormal cerebellar granule cell migration + Purkinje cell dendritic arborisation defect
+    + impaired SYNAPSIN-dependent SV regulation → EPM5; pLI=0.35; AR biallelic LOF = severe EPM5;
+    heterozygous = milder AD non-progressive myoclonic epilepsy; OMIM *608500/#613832;
+    Bassuk 2008 Am J Hum Genet; Tao 2011 Cell PRICKLE1-SYNAPSIN mechanism)."""
+    try:
+        import scripts.prickle1_dashboard as prickle1_
+        return _json_safe(prickle1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/prickle1/breakdown")
+async def prickle1_breakdown():
+    """PRICKLE1 EPM5 breakdown — 5-class etiology
+    [Biallelic-Missense-PET-LIM-42%/Biallelic-Truncating-LOF-25%/Heterozygous-AD-Milder-18%/
+    Splice-Site-Exon-Skipping-10%/Phenocopy-PRICKLE1-Negative-5%],
+    5 seizure types [Action-Myoclonus-100%/Cerebellar-Ataxia-90%/GTCS-78%/
+    Stimulus-Sensitive-65%/Absence-like-28%],
+    8 triggers [Voluntary-Movement-98%/SleepDep-75%/Stress-68%/MissedAED-72%/
+    Photic-55%/Fever-55%/Auditory-40%/Alcohol-38%],
+    8 treatments [VPA-LevelB/LEV-LevelB-SV2A-Rational/Piracetam-LevelC/CLB-LevelB/
+    PER-LevelC-AMPA-AtaxiaRisk/ZNS-LevelC/CZP-LevelC/Physio-OT-LevelB-Cerebellar],
+    6 CIs [CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE-NCSE-PCP-Purkinje/GBP-PGB-HIGH/
+    LTG-Mono-HIGH/VGB-AVOID/VPA-POLG1-ABSOLUTE],
+    40 patients, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.prickle1_dashboard as prickle1_
+        return _json_safe(prickle1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/prickle1/definitions")
+async def prickle1_definitions():
+    """PRICKLE1 EPM5 definitions — 15 concepts
+    [PRICKLE1-12q12-EPM5/WNT-PCP-VANGL-CELSR-Complex/PRICKLE1-SYNAPSIN-SV-Trafficking/
+    LEV-SV2A-Complementarity/Prominent-Cerebellar-Ataxia-Early/CBZ-ABSOLUTE-CI-JME-Trap/
+    Non-Fatal-Preserved-Cognition-Rehab/PER-AMPA-Ataxia-Amplification-EPM5/
+    GBP-PGB-Misdiagnosis-Cognitively-Intact/POLG1-Screen-Mandatory/
+    Driving-DVLA-Dual-Risk/No-Storage-Material-EM/SARA-Primary-Outcome/
+    Heterozygous-AD-Milder-NP-ME/TGB-ABSOLUTE-PCP-Purkinje-GABA],
+    12 thresholds (Giant-SEP>8µV / SARA>10-WalkingAid / SARA>25-Wheelchair /
+    IV-LEV-60mg-kg / VPA-trough-60-100µg-mL / POLG1-bridge-7-14d /
+    PER-start-2mg-night / PER-stop-if-SARA-worsens / Piracetam-adult-20-45g /
+    Piracetam-paed-80-150mg-kg / VPPP-≥12y / LFT-hold-VPA-3×ULN),
+    12 standards (ILAE-2022 / NICE-NG217 / Bassuk-2008 / Tao-2011-Cell /
+    Ehaideb-2014-PNAS / CPIC-POLG1-2023 / MHRA-VPPP-2021 / Crespel-1999 /
+    Schmitz-Hubsch-2006-Neurology / ACMG-AMP-2015 / WHO-ICF-2019 / Rubboli-2017),
+    6 references (Bassuk-2008 / Tao-2011 / Ehaideb-2014 / Rubboli-2017 /
+    Schmitz-Hubsch-2006 / Crespel-1999)."""
+    try:
+        import scripts.prickle1_dashboard as prickle1_
+        return _json_safe(prickle1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

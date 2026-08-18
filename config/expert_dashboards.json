@@ -4064,5 +4064,20 @@
     "disease": "EPM3",
     "inheritance": "AR",
     "discovery": "Van Bogaert et al. 2007 (Ann Neurol)"
+  },
+  {
+    "id": "prickle1",
+    "status": "built",
+    "name": "PRICKLE1 Epilepsy (EPM5 / Progressive Myoclonic Epilepsy Type 5 / WNT-PCP-Planar-Cell-Polarity-LOF / PRICKLE1-VANGL1/2-CELSR-Complex / PRICKLE1-SYNAPSIN-Synaptic-Vesicle-Trafficking / Prominent-Early-Cerebellar-Ataxia / Preserved-Cognition / Non-Fatal-PME / LEV-SV2A-Mechanistically-Rational / PER-AMPA-Ataxia-Amplification-Risk / CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-NCSE / GBP-PGB-Misdiagnosis-Trap / 12q12)",
+    "api": "/api/prickle1/overview|breakdown|definitions",
+    "portal": "/prickle1",
+    "color": "#33691e",
+    "color_note": "dark olive-green \u2014 PRICKLE1 WNT/PCP planar cell polarity pathway",
+    "patients": 40,
+    "gene": "PRICKLE1",
+    "locus": "12q12",
+    "disease": "EPM5",
+    "inheritance": "AR (severe EPM5) / AD (milder non-progressive myoclonic epilepsy)",
+    "discovery": "Bassuk et al. 2008 (Am J Hum Genet); PRICKLE1-SYNAPSIN mechanism Tao et al. 2011 (Cell)"
   }
 ]
