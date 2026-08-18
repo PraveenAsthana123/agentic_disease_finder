@@ -26506,6 +26506,91 @@ async def iqsec2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/pten/overview")
+async def pten_overview():
+    """PTEN Epilepsy (PTEN Hamartoma Tumour Syndrome / mTORopathy / Cowden / BRRS /
+    ASD-Macrocephaly / Everolimus-mTOR-Precision / Cancer-Surveillance / 10q23.31) —
+    overview: 40-patient cohort, 5 etiologies
+    (PTEN-ASD-Macrocephaly-Epilepsy-LOF-phosphatase-40% /
+    BRRS-Bannayan-Riley-Ruvalcaba-LOF-truncating-25% /
+    Cowden-Syndrome-Adult-Epilepsy-LOF-C2-domain-20% /
+    Lhermitte-Duclos-Disease-cerebellar-gangliocytoma-10% /
+    Phenocopy-mTOR-PIK3CA-negative-5%),
+    5 seizure types (FIAS-temporal-frontal-55% / FBTCS-45% / FAS-35% /
+    Absence-like-atypical-25% / Epileptic-Spasms-IS-15%),
+    8 triggers (SleepDep-78% / Stress-72% / Fever-68% / MissedAED-65% /
+    AED-taper-48% / Catamenial-30% / OCP-hormonal-25% / Exercise-20%),
+    6 key CIs (Everolimus-LiveVaccine-ABSOLUTE /
+    Everolimus-CYP3A4-Inhibitors-HIGH /
+    PHT-CBZ-CYP3A4-Induction-AbsenceLike-HIGH /
+    VPA-POLG1-ABSOLUTE / TGB-ABSOLUTE-NCSE-ASD /
+    Abrupt-Withdrawal-ABSOLUTE)."""
+    try:
+        import scripts.pten_dashboard as pten_
+        return _json_safe(pten_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/pten/breakdown")
+async def pten_breakdown():
+    """PTEN Epilepsy — breakdown: etiology catalog, 15-patient sample,
+    seizure types (with EEG + semiology + clinical tips),
+    triggers (with mechanisms + management),
+    treatments (Everolimus-Level-B / LEV-Level-B / OXC-Level-B /
+    VPA-Level-B-POLG1 / KD-Level-B-mTOR / ACTH-Level-A-IS /
+    LTG-Level-C / Sirolimus-Level-C),
+    contraindications (Everolimus-LiveVaccine-ABSOLUTE /
+    Everolimus-CYP3A4-HIGH / PHT-CBZ-HIGH-dual /
+    VPA-POLG1-ABSOLUTE / TGB-ABSOLUTE / Abrupt-Withdrawal-ABSOLUTE),
+    monitoring (14 items: WES-TRIO / Brain-MRI-3T-volumetry /
+    POLG1-pre-VPA / HLA-B1502-Asian / Everolimus-TDM /
+    CBC-CMP-Lipids / Pulmonary-FX / Cancer-Surveillance-NCCN /
+    Dermatology / Neuropsychology-ASD / SUDEP-Alarm /
+    Vaccination-Status / Genetic-Counselling / VPA-TDM),
+    lifecycle (Prenatal / Infancy-IS / Early-Childhood-Focal /
+    School-DRE / Adulthood-Cancer / Late-Adulthood-LDD)."""
+    try:
+        import scripts.pten_dashboard as pten_
+        return _json_safe(pten_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/pten/definitions")
+async def pten_definitions():
+    """PTEN Epilepsy — definitions: 15 concepts
+    (PTEN-PHTS-mTORopathy / PTEN-Lipid-Phosphatase-PIP3-PIP2 /
+    PTEN-Macrocephaly-Diagnostic-Clock / PTEN-ASD-Epilepsy-Triad /
+    Cowden-Bannayan-LDD-PHTS-Spectrum /
+    Everolimus-mTOR-PTEN-Precision-Rationale /
+    Everolimus-Live-Vaccine-ABSOLUTE-CI /
+    Everolimus-CYP3A4-Drug-Interactions /
+    PHT-CBZ-Absence-Like-HIGH-RISK /
+    TGB-ABSOLUTE-NCSE-PTEN-ASD /
+    POLG1-VPA-Mandatory-Screen /
+    Cancer-Surveillance-Cowden-Mandatory /
+    HLA-B1502-OXC-CBZ-Asian /
+    mTOR-Pathway-mTORC1-S6K1-4EBP1 /
+    SUDEP-DRE-PTEN-Risk),
+    12 thresholds (HC-2SD-ASD-PTEN-trigger /
+    Everolimus-TDM-5-10-target / Everolimus-toxic-15 /
+    POLG1-7-14-days / HLA-B1502-Asian / ACTH-Day14-IS /
+    KD-AED-failure-2 / Thyroid-US-age-7 / Breast-MRI-25-30y /
+    CYP3A4-TDM-check-2-7-days / VPA-TDM-50-100 / SUDEP-nocturnal),
+    12 standards (ILAE-2022 / NICE-NG217 / NCCN-PHTS-2024 /
+    ASHG-2013 / Buxbaum-2007 / Li-1997-Science /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 /
+    NICE-NG224-2022 / FDA-Everolimus-TSC-2012 / WHO-ICF-2019),
+    6 references (Li-1997 / Liaw-1997 / Buxbaum-2007 /
+    Butler-2005 / Ciaccio-2014 / Marchetti-2020)."""
+    try:
+        import scripts.pten_dashboard as pten_
+        return _json_safe(pten_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

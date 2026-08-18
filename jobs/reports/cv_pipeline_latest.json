@@ -1,11 +1,11 @@
 {
-  "run_at_local": "2026-08-18T02:00:03-06:00",
+  "run_at_local": "2026-08-18T07:00:03-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
   "detection": "YOLOv8n",
   "classification_model": "llava:7b (Ollama)",
-  "classification_sample": "The man appears to be in a hospital bed, with facial expression indicating surprise or mild discomfort.",
+  "classification_sample": "This is a grey, clinical image featuring an adult male lying in a bed with his eyes and mouth open, seemingly surprised or in mid-expression. His expression is exaggerated and he appears to be speaking or reacting to something. The man has dark skin and short dark hair. He is wearing",
   "results": [
     {
       "frame": "frame_0001.jpg",
