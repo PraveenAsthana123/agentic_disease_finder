@@ -3823,5 +3823,19 @@
     "omim": "#610090",
     "cohort": 40,
     "notes": "PLP-dependent neonatal EE \u2014 pyridoxine INEFFECTIVE (PNPO absent = no PNP\u2192PLP conversion). Requires PLP not pyridoxine. Companion to ALDH7A1-PDE. VPA/INH/TGB absolute CI."
+  },
+  {
+    "role": "Epileptologist / Neurologist / Pediatric Neurologist",
+    "name": "EEF1A2 Epilepsy (DEE-5 / Eukaryotic Translation Elongation Factor 1-Alpha 2 / Postnatal-Neuronal-Switch / Polymicrogyria / West-LGS / PHT-CBZ-OXC-CI / TGB-ABSOLUTE / 20q13.33)",
+    "viz": "Multi-tab clinical dashboard",
+    "feature": "40-patient cohort, 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle, 15 concepts",
+    "why": "DEE-5 rare epilepsy gene; postnatal switch timing is the diagnostic clock; IS\u2192LGS evolution; deep pharma distinctions (TGB CI, PHT worsen, LEV behavioural)",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/eef1a2/overview",
+      "/api/eef1a2/breakdown",
+      "/api/eef1a2/definitions"
+    ]
   }
 ]

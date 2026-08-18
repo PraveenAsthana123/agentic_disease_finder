@@ -26073,6 +26073,65 @@ async def pnpo_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/eef1a2/overview")
+async def eef1a2_overview():
+    """EEF1A2 Epilepsy (DEE-5 / Eukaryotic Translation Elongation Factor 1-Alpha 2) overview.
+    EEF1A2 (20q13.33) — neuron+muscle-specific GTP-binding elongation factor; delivers
+    aminoacyl-tRNA to ribosomal A-site; replaces eEF1A1 postnatally (~3–6 months in humans).
+    De novo dominant LOF → DEE-5 (OMIM #616577) — infantile spasms at 3–9 months
+    (coincides with the eEF1A1→eEF1A2 postnatal switch), LGS evolution, profound ID.
+    DIAGNOSTIC CLOCK: onset 3–9 months = switch timing. ACTH within 4 weeks of IS onset.
+    TGB ABSOLUTE CI. PHT/CBZ/OXC worsen myoclonus. POLG1 screen before VPA.
+    40-patient cohort. First described Nakajima et al. 2015 Hum Mutat."""
+    try:
+        import scripts.eef1a2_dashboard as eef1a2_
+        return _json_safe(eef1a2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/eef1a2/breakdown")
+async def eef1a2_breakdown():
+    """EEF1A2 Epilepsy — full breakdown: 40 patients, 5 etiologies (LOF-G-domain-40% /
+    LOF-domain-II-III-25% / LOF-truncating-haploinsufficiency-15% /
+    GOF-toxic-actin-mTOR-10% / Phenocopy-DEE-10%), 5 seizure types (IS-West-88% /
+    GTCS-75% / Myoclonic-62% / FIAS-48% / Atonic-LGS-32%),
+    8 triggers (fever-85% / sleep-dep-72% / missed-AED-65% / metabolic-58% /
+    overstimulation-52% / startle-38% / AED-taper-35% / catamenial-18%),
+    8 treatments (ACTH-Level-A / VGB-Level-A / VPA-Level-B / KD-Level-B /
+    CLB-Level-B / LEV-Level-B-caution / TPM-Level-C / FFA-Level-C),
+    6 CIs (PHT-CBZ-OXC-HIGH / TGB-ABSOLUTE / VPA-no-POLG1-ABSOLUTE /
+    PHB-alone-IS-NOT-ADEQUATE / LEV-behavioural-HIGH / CBZ-HLA-B1502),
+    14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.eef1a2_dashboard as eef1a2_
+        return _json_safe(eef1a2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/eef1a2/definitions")
+async def eef1a2_definitions():
+    """EEF1A2 Epilepsy — definitions: 15 concepts (EEF1A2-20q13.33-DEE-5 /
+    eEF1A1-eEF1A2-Postnatal-Switch / GTP-Binding-tRNA-Delivery /
+    Actin-Bundling-Non-Canonical / DEE-5-OMIM-616577 / Hypsarrhythmia-Diagnostic-Clock /
+    Polymicrogyria-30pct / ACTH-First-Line-IS / VGB-REMS-ERG / LGS-Drop-Attacks /
+    POLG1-VPA-Screen / PHT-CBZ-Worsen-DEE / LEV-Behavioural-Toxicity /
+    TGB-NCSE-ABSOLUTE / SUDEP-High-Risk),
+    12 thresholds (IS-window-4w / ACTH-Day14 / onset-3-9m / VPA-TDM-50-100 /
+    KD-BHB-2-5 / VGB-max-dose / POLG1-7-14d / SUDEP-alarm-threshold),
+    12 evidence standards (ILAE-2022 / NICE-NG217 / UKISS-Lux-2005 /
+    Nakajima-2015 / Lam-2016 / Bhatt-1999 / CPIC-HLA / CPIC-POLG1 /
+    FDA-FINTEPLA / MHRA-VPPP / ACMG-AMP / NICE-NG224),
+    6 references (Nakajima-2015 / Lam-2016 / Bhatt-1999 / de-Ligt-2012 /
+    UKISS-2005 / Symonds-2019)."""
+    try:
+        import scripts.eef1a2_dashboard as eef1a2_
+        return _json_safe(eef1a2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
