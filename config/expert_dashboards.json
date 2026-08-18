@@ -3678,5 +3678,42 @@
     "component": "portal-next/app/mtor/page.jsx",
     "updated_at": "2026-08-17",
     "why": "MTOR (1p36.22) is the apex of all mTOR pathway epilepsies. GOF somatic mosaic (75%) or germline (Smith-Kingsmore, 25%) -> constitutive mTORC1 hyperactivation -> FCD IIb / HME / MCAP. Precision: everolimus (direct mTORC1 inhibitor, FKBP12-FRB binding). Completes mTORopathy trilogy: TSC1/TSC2 -> DEPDC5/NPRL2/NPRL3 -> MTOR apex. Key: somatic VAF <5% blood -> ultra-deep NGS required; TGB ABSOLUTE CI (NCSE in FCD IIb); POLG1 before VPA; CYP3A4 interactions (CBZ reduces everolimus 70-80%)."
+  },
+  {
+    "id": "cntnap2",
+    "name": "CNTNAP2 Epilepsy (CASPR2 / Cortical-Dysplasia-Focal-Epilepsy-CDFE / Pitt-Hopkins-like-1 / Juxtaparanodal-Kv1.1 / Bumetanide-NKCC1 / Largest-Human-Gene / 7q35-36.1)",
+    "status": "built",
+    "gene": "CNTNAP2",
+    "chromosome": "7q35-q36.1",
+    "omim": [
+      "*604569",
+      "#610042",
+      "#614161"
+    ],
+    "syndrome": "Cortical Dysplasia-Focal Epilepsy (CDFE) / Pitt-Hopkins-like Syndrome 1",
+    "inheritance": "AR (CDFE) / AD-het (Pitt-Hopkins-like-1)",
+    "mechanism": "LOF \u2192 juxtaparanodal Kv1.1/Kv1.2 mislocalisation + cortical PV+ interneuron deficit \u2192 focal epilepsy + autism",
+    "protein": "CASPR2 (Contactin-Associated Protein-Like 2), neurexin superfamily, 1331 aa",
+    "endpoints": [
+      "/api/cntnap2/overview",
+      "/api/cntnap2/breakdown",
+      "/api/cntnap2/definitions"
+    ],
+    "frontend": "portal-next/app/cntnap2/page.jsx",
+    "color": "#006064",
+    "patients": 40,
+    "key_treatments": [
+      "LEV",
+      "OXC-ER",
+      "KD",
+      "Surgery-FCD",
+      "Bumetanide-investigational"
+    ],
+    "absolute_CIs": [
+      "TGB-NCSE-FCD",
+      "VPA-without-POLG1",
+      "CBZ-OXC-HLA-B1502-SJAsian"
+    ],
+    "founder_mutation": "3709delG (p.Ser1237Phe*) Amish/Mennonite"
   }
 ]

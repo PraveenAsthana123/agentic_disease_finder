@@ -25720,6 +25720,64 @@ async def mtor_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cntnap2/overview")
+async def cntnap2_overview():
+    """CNTNAP2 overview: Contactin-Associated Protein-Like 2 (CASPR2) / 7q35-q36.1 /
+    Neurexin superfamily — largest human gene (2.3 Mb) / juxtaparanodal Kv1.1 clustering /
+    cortical PV+ interneuron deficit / AR-LOF → CDFE syndrome (OMIM #610042) /
+    AD-het → Pitt-Hopkins-like-1 (OMIM #614161) /
+    TGB ABSOLUTE CI (FCD-NCSE) / POLG1 before VPA / HLA-B*15:02 before CBZ-OXC /
+    CASPR2 antibody test: exclude autoimmune / bumetanide NKCC1 investigational /
+    Surgery 50-60% Engel I for temporal FCD / Amish founder 3709delG.
+    40-patient cohort (CNTNAP2 7q35-q36.1)."""
+    try:
+        import scripts.cntnap2_dashboard as cn_
+        return _json_safe(cn_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cntnap2/breakdown")
+async def cntnap2_breakdown():
+    """CNTNAP2 breakdown: 40 patients / 5 etiology classes
+    (AR-LOF-CDFE-Amish-Founder-35% / AR-LOF-CDFE-Compound-Het-30% /
+    AR-LOF-Pitt-Hopkins-like-1-18% / De-novo-AD-likely-pathogenic-12% /
+    Phenocopy-CASPR2-Autoimmune-5%) /
+    5 seizure types (Focal-Aware-Centrotemporal-68% / Focal-Impaired-Awareness-55% /
+    Focal-to-BTCS-48% / Infantile-Spasms-West-32% / Febrile-SE-42%) /
+    8 triggers (Fever-85% / Sleep-Dep-72% / Missed-AED-68% / Stress-58% /
+    Sleep-Transitions-45% / AED-Taper-40% / Catamenial-35% / Photosensitivity-18%) /
+    8 treatments / 6 CIs / 14 monitoring / 6 lifecycle stages."""
+    try:
+        import scripts.cntnap2_dashboard as cn_
+        return _json_safe(cn_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cntnap2/definitions")
+async def cntnap2_definitions():
+    """CNTNAP2 definitions: 15 key concepts
+    (CNTNAP2-7q35-36.1 / CDFE-Syndrome-610042 / Pitt-Hopkins-like-1-614161 /
+    CASPR2-Protein-Neurexin-Superfamily / Juxtaparanodal-Kv1.1-Clustering /
+    Cortical-Interneuron-Deficit-PV+ / Bumetanide-NKCC1-GABA-Switch /
+    CASPR2-Autoimmune-vs-Genetic / CNTNAP2-Autism-Overlap /
+    Founder-Mutation-Amish-3709delG / FCD-Temporal-CDFE-Surgery /
+    mTOR-Downstream-CNTNAP2 / HLA-B1502-CBZ-OXC-SJS-TEN /
+    POLG1-Alpers-VPA-Screen / Largest-Human-Gene-CNV-Risk),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Strauss-2006-NEJM / Anderson-2012-NatNeurosci /
+    CPIC-HLA-B1502-CBZ-2023 / CPIC-POLG-2023 / MHRA-VPPP-2021 /
+    UKISS-2004-Lancet / FDA-SHARE-REMS-VGB / ACMG-AMP-2015 /
+    WHO-ICF-2019 / ILAE-Genetic-Epilepsy-TaskForce-2018),
+    6 references + CDFE context (Amish → AR-LOF → FCD + focal epilepsy + autism regression)."""
+    try:
+        import scripts.cntnap2_dashboard as cn_
+        return _json_safe(cn_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
