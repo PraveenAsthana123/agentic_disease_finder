@@ -3382,5 +3382,17 @@
       "/api/kcnq5/breakdown",
       "/api/kcnq5/definitions"
     ]
+  },
+  {
+    "role": "Neurologist",
+    "name": "KCNC1 Epilepsy (EPM7 / Progressive Myoclonic Epilepsy 7 / Kv3.1 Shaw K+ / PV+ Fast-Spiking Interneuron / R320H Founder / CBZ-LTG-ABSOLUTE-CI / 21q22.13)",
+    "viz": "5-tab dashboard: Overview / Patients+Etiology / Seizures+Triggers / Treatments / Definitions",
+    "feature": "R320H-DN-LOF-Founder-60%/Non-R320H-Dominant-LOF-25%/De-Novo-Private-10%/Biallelic-Rare-3%/Phenocopy-2%; 5 seizure types (Action-Myoclonus-98%/PPR-75%/GTCS-72%/Resting-Myoclonus-45%/Absence-like-15%); 8 triggers; 8 treatments (LEV-Level-A/VPA-Level-B-POLG/CLB-Level-B/Piracetam-Level-C/ZNS-Level-C/Perampanel-Level-C/KD-Level-B); 6 contraindications (CBZ-OXC-PHT-LTG-ABSOLUTE-NaV1.1-interneuron/VGB-ABSOLUTE-myoclonus/TGB-ABSOLUTE-NCSE/GBP-HIGH-RISK/VPA-no-POLG1-ABSOLUTE); 14 monitoring items; 6 lifecycle stages; 40-patient cohort; Giant-SEPs-mandatory; Jerk-locked-back-averaging; progressive-course",
+    "api": "/api/kcnc1/overview|breakdown|definitions",
+    "portal": "/kcnc1",
+    "gene": "KCNC1",
+    "status": "built",
+    "id": "kcnc1",
+    "color": "#4527a0"
   }
 ]

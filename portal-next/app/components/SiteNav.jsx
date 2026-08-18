@@ -377,6 +377,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/clcn2">&#x1f9ec; CLCN2 Epilepsy (GGE / JME / CAE / GTCS-Alone / CLC-2 Cl&#8315; Channel / Acetazolamide Precision / 3q26.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/dnm1">&#x1f9ec; DNM1 Epilepsy (DEE31 / Dynamin-1 GTPase / Synaptic Vesicle Endocytosis / PV+ Interneuron / ACTH / KD / 9q34.11)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnb1">&#x26a1; KCNB1 Epilepsy (DEE26 / Kv2.1 Channelopathy / Delayed-Rectifier I&#8336; / GOF-LOF / 20q13)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/kcnc1">&#x26a1; KCNC1 Epilepsy (EPM7 / Progressive Myoclonic Epilepsy 7 / Kv3.1 Shaw K&#8314; / PV+ Fast-Spiking / R320H-Founder / CBZ-LTG-ABSOLUTE-CI / 21q22.13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1a">&#x1f9e0; CACNA1A Epilepsy (DEE42 / Cav2.1 P/Q-Type Ca&#178;&#8314; / EA2 / FHM1 / 19p13.13)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1b">&#x1f9ec; CACNA1B Epilepsy (DEE / NDMSB / Cav2.2 N-type HVA Ca&#178;&#8314; / LEV-Level-B / Hyperkinetic / 9q34.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1e">&#x1f9ec; CACNA1E Epilepsy (DEE69 / Cav2.3 R-type HVA Ca&#178;&#8314; / No-Precision-Blocker / ACTH-Level-A / 1q25.3)</Link></li>

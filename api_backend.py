@@ -25154,6 +25154,72 @@ async def kcnq5_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kcnc1/overview")
+async def kcnc1_overview():
+    """KCNC1 Epilepsy overview (Progressive Myoclonic Epilepsy 7 / EPM7 / Kv3.1 Shaw K⁺
+    Channel / PV+ Fast-Spiking Interneuron / R320H Founder / OMIM #618323 / 21q22.13).
+    40-patient cohort; R320H dominant-negative LOF / other missense LOF / de novo private /
+    biallelic rare. Purely LOF channelopathy — EPM7 triad: action myoclonus + cerebellar
+    ataxia + GTCS. Progressive course over decades. Kv3.1 high-threshold V1/2 +14-20 mV,
+    ultrafast deactivation τ 1-2 ms — essential for PV+ interneuron 100-800 Hz firing.
+    ABSOLUTE CI: CBZ/OXC/PHT/LTG (NaV1.1 interneuron blockade → myoclonus catastrophic
+    worsening — identical mechanism to Dravet CBZ-flare). VGB CI (myoclonus aggravation).
+    TGB CI (NCSE). LEV Level A first-line. VPA Level B (POLG1 MANDATORY before).
+    Piracetam Level C (action myoclonus specific). Giant SEPs mandatory at diagnosis.
+    POLG1 before VPA. VPPP females ≥12y on VPA. Photosensitivity 75% — polarised sunglasses.
+    Muona 2015 Nat Genet 47(2):189-190 foundational."""
+    try:
+        import scripts.kcnc1_dashboard as kc1_
+        return _json_safe(kc1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnc1/breakdown")
+async def kcnc1_breakdown():
+    """KCNC1 breakdown: 5-class etiology (R320H-DN-LOF-Founder-60% /
+    Non-R320H-Dominant-LOF-25% / De-Novo-Private-LOF-10% / Biallelic-LOF-Rare-3% /
+    Phenocopy-EPM-Panel-Negative-2%),
+    5 seizure/symptom types (Action-Myoclonus-98% / Photosensitive-PPR-75% /
+    GTCS-secondary-72% / Resting-Spontaneous-Myoclonus-45% / Absence-like-15%)
+    with EEG + semiology + giant SEP criteria,
+    8 triggers (Photic-75% / Action-Movement-98% / Sleep-dep-85% / Stress-70% /
+    Missed-AED-78% / Illness-65% / Alcohol-Stimulants-55% / AED-Taper-62%),
+    8 treatments (LEV-Level-A-first-line / VPA-Level-B-POLG-VPPP /
+    CLB-Level-B-adjunct / Piracetam-Level-C-action-myoclonus /
+    ZNS-Level-C-dual-NaV-Ttype / Perampanel-Level-C-AMPA /
+    KD-Level-B-DRE / Perampanel-LEV-combo-Level-C),
+    6 contraindications (CBZ-OXC-PHT-ABSOLUTE-NaV1.1-interneuron /
+    LTG-ABSOLUTE-same-PV-mechanism / VGB-ABSOLUTE-myoclonus-aggravation /
+    TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH-RISK / VPA-no-POLG1-ABSOLUTE),
+    14 monitoring items, 6 lifecycle stages, 40-patient cohort."""
+    try:
+        import scripts.kcnc1_dashboard as kc1_
+        return _json_safe(kc1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnc1/definitions")
+async def kcnc1_definitions():
+    """KCNC1 definitions: 15 key concepts
+    (KCNC1-21q22.13 / Kv3.1-High-Threshold-Fast-K / PV+-Fast-Spiking-Interneuron /
+    R320H-Founder-Mutation / EPM7-OMIM618323 / Action-Myoclonus-Cortical /
+    Giant-SEPs / Photoparoxysmal-Response / Dominant-Negative-KCNC1 /
+    CBZ-LTG-ABSOLUTE-CI / Piracetam-EPM7 / POLG1-Alpers / VPPP-MHRA2021 /
+    SUDEP / EPM7-vs-JME-Distinction),
+    12 thresholds, 12 standards
+    (ILAE-2022 / Muona-2015-NatGenet / Rüssow-2020 / Genton-2009 / Crespel-2002 /
+    NICE-NG217 / CPIC-POLG-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 /
+    ILAE-PME-TaskForce-2022 / SARA-Scale / WHO-ICF-2019),
+    6 references."""
+    try:
+        import scripts.kcnc1_dashboard as kc1_
+        return _json_safe(kc1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
