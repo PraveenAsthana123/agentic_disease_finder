@@ -4030,5 +4030,24 @@
     "category": "gene-epilepsy-pme",
     "color": "#01579b",
     "description": "GOSR2 (17q21.32) Golgi v-SNARE EPM6 \u2014 40-patient North Sea PME cohort; 5 etiologies; scoliosis >95% (only PME with universal spinal deformity); earliest PME onset (tremor 1-2y + febrile seizures); 5 seizure types; 8 triggers; 8 treatments; 6 CIs; 14 monitoring items; 6 lifecycle stages; 15 concepts"
+  },
+  {
+    "id": "merrf",
+    "status": "built",
+    "name": "MERRF Epilepsy (Myoclonic Epilepsy with Ragged-Red Fibers / MT-TK / m.8344A>G / Complex-I-IV-Deficiency / VPA-ABSOLUTE-CI-Mitochondrial / CBZ-OXC-PHT-ABSOLUTE-CI / Statins-HIGH-CoQ10-Depletion / Maternal-Inheritance-Heteroplasmy / Ragged-Red-Fibers-Pathognomonic / Cardiac-WPW-HCM / mtDNA-8344)",
+    "api_routes": [
+      "/api/merrf/overview",
+      "/api/merrf/breakdown",
+      "/api/merrf/definitions"
+    ],
+    "frontend": "portal-next/app/merrf/page.jsx",
+    "script": "scripts/merrf_dashboard.py",
+    "color": "#880e4f",
+    "cohort_size": 40,
+    "gene": "MT-TK (mitochondrial tRNA-Lys)",
+    "locus": "mtDNA position 8344",
+    "disease": "MERRF syndrome",
+    "omim": "#545000",
+    "built_date": "2026-08-18"
   }
 ]

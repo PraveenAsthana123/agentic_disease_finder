@@ -26872,6 +26872,62 @@ async def gosr2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/merrf/overview")
+async def merrf_overview():
+    """MERRF overview — Myoclonic Epilepsy with Ragged-Red Fibers (MT-TK / m.8344A>G / mitochondrial PME).
+    Gene: MT-TK (mitochondrial tRNA-Lys, mtDNA position 8344); m.8344A>G >80% of MERRF; maternal inheritance.
+    MOST CRITICAL DISTINCTION from all other PMEs: VPA ABSOLUTE CI (mitochondrial hepatotoxicity / Alpers-like).
+    Mechanism: m.8344A>G → defective mt-tRNA-Lys aminoacylation → Complex I/IV deficiency → ATP failure →
+    neuronal degeneration (Purkinje, cortical, cochlear). Disease: OMIM #545000. 40-patient cohort.
+    Backbone: LEV (not VPA) + CLB + piracetam + CoQ10 + riboflavin + L-carnitine. IV LEV 60 mg/kg = sole SE rescue."""
+    try:
+        import scripts.merrf_dashboard as merrf_
+        return _json_safe(merrf_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/merrf/breakdown")
+async def merrf_breakdown():
+    """MERRF breakdown — 5 etiologies (m.8344A>G-MT-TK-Classic-82% / m.8356T>C-Milder-7% /
+    m.8363G>A-Cardiomyopathy-4% / m.3243A>G-MELAS-MERRF-Overlap-4% / Other-mtDNA-Phenocopy-3%),
+    40-patient cohort (age_onset/sex/mutation/heteroplasmy_pct/ragged_red_fibers/hearing_loss/cardiac/drug_resistant/rx),
+    5 seizure types (Action-Myoclonus-95% / GTCS-75% / Absence-like-30% / Focal-22% / Drop-Attacks-18%),
+    8 triggers (Fatigue-SleepDep-88% / Fever-Illness-82% / Fasting-72% / Alcohol-68% / Stress-65% /
+    Missed-Medication-58% / Excessive-Exercise-52% / Metabolic-Stressors-Surgery-45%),
+    8 treatments (LEV-LevelB-Backbone / CLB-LevelB / Piracetam-LevelB-ActionMyoclonus / ZNS-LevelC-Antioxidant /
+    CoQ10-LevelC-MitochondrialCofactor / LCarnitine-LevelC / Riboflavin-LevelC / KD-LevelC-ComplexI-Bypass),
+    6 CIs (VPA-ABSOLUTE-MitochondrialHepatotoxicity / CBZ-OXC-ABSOLUTE / PHT-Fosphenytoin-ABSOLUTE-DualMechanism /
+    TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH-Myoclonus / Statins-HIGH-CoQ10Depletion),
+    14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.merrf_dashboard as merrf_
+        return _json_safe(merrf_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/merrf/definitions")
+async def merrf_definitions():
+    """MERRF definitions — 15 concepts (MERRF-MT-TK-Mitochondrial-PME / m.8344A>G-tRNA-Lys-Mechanism /
+    Ragged-Red-Fibers-Gomori-Trichrome / VPA-ABSOLUTE-CI-Most-Critical-MERRF-Distinction /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Na-Channel-Plus-Mitochondrial / TGB-ABSOLUTE-NCSE-Purkinje /
+    CoQ10-Riboflavin-LCarnitine-Mitochondrial-Cocktail / Maternal-Inheritance-Heteroplasmy-Bottleneck /
+    Lactate-Pyruvate-CSF-Diagnostic-Biomarker / Cardiac-WPW-HCM-Mandatory-Surveillance /
+    Sensorineural-Hearing-Loss-First-Clue-90pct / Multiple-Symmetric-Lipomatosis-Madelung-MERRF /
+    KD-Ketone-Bypass-Complex-I / Statins-CoQ10-Depletion-HIGH-RISK / SUDEP-Progressive-PME-Nocturnal-Risk),
+    12 thresholds, 12 standards (ILAE-2022 / NICE-NG217 / Shoffner-1990-Nature / DiMauro-Hirano-2005-Brain /
+    Finsterer-2018 / CPIC-VPA-Mitochondrial-2023 / Rahman-Copeland-2012 / ACMG-AMP-2015 /
+    WHO-ICF-2019 / Kälviäinen-2012 / MITOMAP-2024 / ESC-HCM-2023),
+    6 references (Shoffner-1990 / Berkovic-1989 / DiMauro-Hirano-2005 / Finsterer-2018 /
+    Rahman-Copeland-2012 / Kälviäinen-2012)."""
+    try:
+        import scripts.merrf_dashboard as merrf_
+        return _json_safe(merrf_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
