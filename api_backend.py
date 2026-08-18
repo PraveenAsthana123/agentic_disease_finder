@@ -27060,6 +27060,79 @@ async def prickle1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cers1/overview")
+async def cers1_overview():
+    """CERS1 PMEA overview — Ceramide Synthase 1 / C18-Ceramide Deficiency / Selective Purkinje Degeneration
+    [19p13.2 / AR / LASS-domain aa 165-218 / HOX-domain aa 15-83 / 40-patient cohort /
+    Mean-onset 17.2y / DRE-60% / Cerebellar-Ataxia-93% / Preserved-Cognition-100% /
+    Giant-SEP-82% / Cerebellar-MRI-Atrophy-90% / No-Disease-Modifying-Therapy /
+    CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-CI / GBP-PGB-HIGH-RISK /
+    IV-LEV-60mgkg-SOLE-SE / SARA+UMRS-Dual-Tracking / VPA-backbone /
+    Vanni-2014-Brain / Becker-2008-JNeurochem]."""
+    try:
+        import scripts.cers1_dashboard as cers1_
+        return _json_safe(cers1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cers1/breakdown")
+async def cers1_breakdown():
+    """CERS1 PMEA breakdown — 6-class etiology
+    [Homozygous-Missense-LASS-Domain-42%/Compound-Het-Missense-28%/
+    Homozygous-Truncating-LOF-15%/Compound-Het-Truncating-10%/
+    Homozygous-Missense-HOX-Domain-3%/Phenocopy-CERS1-Negative-2%],
+    5 seizure types [Action-Myoclonus-97%/Cerebellar-Ataxia-93%/GTCS-72%/
+    Stimulus-Sensitive-70%/Absence-Like-22%],
+    8 triggers [Voluntary-Movement-97%/SleepDep-78%/MissedAED-72%/
+    Auditory-Startle-68%/Stress-65%/Photic-48%/Fever-42%/Alcohol-35%],
+    8 treatments [VPA-LevelB/LEV-LevelB-IV-SE/Piracetam-LevelB/CLB-LevelB/
+    ZNS-LevelC-Antioxidant/Physio-LevelB-CORE/OT-LevelB-CORE/RescueBDZ-LevelA],
+    6 CIs [CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE-NCSE-Purkinje/GBP-PGB-HIGH/
+    LTG-Mono-HIGH/VGB-AVOID/No-Disease-Modifying],
+    40 patients, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cers1_dashboard as cers1_
+        return _json_safe(cers1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cers1/definitions")
+async def cers1_definitions():
+    """CERS1 PMEA definitions — 15 concepts
+    [CERS1-19p13.2-C18-Ceramide-Deficiency-Purkinje-PME/
+    Sphingolipid-Ceramide-Biosynthesis-CERS-Family-Specificity/
+    Selective-Purkinje-Cell-Degeneration-C18-Ceramide-Mechanism/
+    Selective-Cerebellar-Atrophy-MRI-CERS1-Radiological-Signature/
+    CBZ-OXC-PHT-ABSOLUTE-CI-Cerebellar-Ataxia-Misdiagnosis-Trap/
+    No-Disease-Modifying-Therapy-Pure-Symptomatic/
+    Non-Fatal-Preserved-Cognition-Rehabilitation-CERS1/
+    SARA-UMRS-Dual-Tracking-Two-Disease-Axes/
+    GBP-PGB-Multi-Specialty-Prescribing-Trap/
+    POLG1-Mandatory-Screen-PME-Ataxia-Before-VPA/
+    Ceramide-Mass-Spectrometry-Profiling-Biomarker/
+    Piracetam-AMPA-Action-Myoclonus-PME-Cortical-Reflex/
+    Driving-DVLA-Dual-Risk-Seizure-Myoclonus-Cerebellar/
+    SUDEP-Risk-Nocturnal-GTCS-Prevention/
+    TGB-ABSOLUTE-CI-Purkinje-GABA-Depletion-NCSE],
+    12 thresholds (Giant-SEP>8µV / SARA>10-WalkingAid / SARA>18-Rollator /
+    SARA>25-Wheelchair / IV-LEV-60mgkg / VPA-trough-60-100µgmL /
+    POLG1-bridge-7-14d / Piracetam-adult-20-45g / Piracetam-paed-80-150mgkg /
+    SARA-6monthly / VPPP-≥12y / LFT-hold-VPA-3×ULN),
+    12 standards (ILAE-2022 / NICE-NG217 / Vanni-2014-Brain /
+    Becker-2008-JNeurochem / Laviad-2008-JBiolChem / CPIC-POLG1-2023 /
+    MHRA-VPPP-2021 / Crespel-1999 / Schmitz-Hubsch-2006-Neurology /
+    ACMG-AMP-2015 / WHO-ICF-2019 / Rubboli-2017),
+    6 references (Vanni-2014 / Becker-2008 / Laviad-2008 /
+    Rubboli-2017 / Schmitz-Hubsch-2006 / Crespel-1999)."""
+    try:
+        import scripts.cers1_dashboard as cers1_
+        return _json_safe(cers1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

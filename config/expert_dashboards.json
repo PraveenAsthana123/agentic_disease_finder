@@ -4079,5 +4079,20 @@
     "disease": "EPM5",
     "inheritance": "AR (severe EPM5) / AD (milder non-progressive myoclonic epilepsy)",
     "discovery": "Bassuk et al. 2008 (Am J Hum Genet); PRICKLE1-SYNAPSIN mechanism Tao et al. 2011 (Cell)"
+  },
+  {
+    "id": "cers1",
+    "status": "built",
+    "route": "/cers1",
+    "api": [
+      "/api/cers1/overview",
+      "/api/cers1/breakdown",
+      "/api/cers1/definitions"
+    ],
+    "script": "scripts/cers1_dashboard.py",
+    "frontend": "portal-next/app/cers1/page.jsx",
+    "name": "CERS1 Epilepsy (CERS1-PMEA / Progressive Myoclonic Epilepsy with Cerebellar Ataxia / Ceramide Synthase 1 / C18-Ceramide Deficiency / Selective Purkinje Cell Degeneration / No-Disease-Modifying-Therapy / CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH-RISK / SARA-UMRS-Dual-Tracking / 19p13.2)",
+    "gene": "CERS1",
+    "description": "CERS1-PMEA Dashboard \u2014 40-patient cohort, 6-class etiology (Homozygous-Missense-LASS-42%/Compound-Het-Missense-28%/Homozygous-Truncating-LOF-15%/Compound-Het-Truncating-10%/HOX-Domain-Missense-3%/Phenocopy-2%), 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references"
   }
 ]
