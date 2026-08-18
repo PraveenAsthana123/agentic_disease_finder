@@ -1,7 +1,14 @@
 {
   "title": "Patient Onboarding — Intake-vs-Deferred Field Classification",
   "note": "Only ~80 of ~1250 patient fields are TRUE intake (captured once at registration). The other ~1170 are longitudinal (captured over time via use). This is the 15x time reduction (§57.7 honest).",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-08-18",
+  "dashboard_status": "built",
+  "dashboard_component": "portal-next/app/onboarding-intake/page.jsx",
+  "api_endpoints": [
+    "/api/onboarding-intake/overview",
+    "/api/onboarding-intake/breakdown",
+    "/api/onboarding-intake/definitions"
+  ],
   "goal": "2-3 hours (all 1250 manual) -> 8-10 min active intake (80 fields, most auto-extracted)",
   "steps": [
     {"step": 1, "title": "Required intake (5 min)", "approach": "required-first",
