@@ -23796,6 +23796,46 @@ async def gabrb2_definitions():
     return _json_safe(gb2_.get_definitions())
 
 
+@app.get("/api/gabrb1/overview")
+async def gabrb1_overview():
+    """GABRB1 Epilepsy (DEE / GEFS+ / GABA-A β1 Subunit / Limbic-Hippocampal / Perampanel-AMPA / 4p12) — KPI overview.
+    40-patient cohort (GABRB1 4p12); β1 GABA-A subunit — dominant LIMBIC/HIPPOCAMPAL isoform (CA1/CA3/DG/amygdala);
+    α5β1γ2 extrasynaptic tonic inhibition; 5 etiology classes (De-novo-LOF-DEE-35%/De-novo-GOF-limbic-25%/
+    Familial-AD-GEFS+-20%/De-novo-focal-temporal-15%/Phenocopy-5%); BDZ PARTIAL hyposensitivity (α5β1γ2 extrasynaptic);
+    CLB preferred BDZ (higher α5 extrasynaptic potency vs DZP); Perampanel AMPA blocker UPSTREAM compensation;
+    ACTH promotes β1 surface expression via PKA; TGB ABSOLUTE CI; POLG mandatory before VPA; HLA-B*15:02 before CBZ/OXC."""
+    import scripts.gabrb1_dashboard as gb1_
+    return _json_safe(gb1_.get_overview())
+
+
+@app.get("/api/gabrb1/breakdown")
+async def gabrb1_breakdown():
+    """GABRB1 Epilepsy — full breakdown: 40 patients, 5-class etiology catalog,
+    5 seizure types (Focal-Temporal-Limbic-82%/Infantile-Spasms-West-65%/FBTCS-58%/Myoclonic-42%/Absence-32%),
+    8 triggers (Fever-88%/Sleep-dep-75%/Missed-AED-68%/CBZ-OXC-LTG-intro-55%/BDZ-taper-52%/Stress-45%/Alcohol-35%/Catamenial-30%),
+    8 treatments (VPA-Level-B-POLG-safe/ACTH-Level-A-West/VGB-Level-A-SHARE-REMS/LEV-Level-B-SV2A/CLB-Level-B-preferred-BDZ/
+    KD-Level-B-bypass/Perampanel-Level-C-AMPA/LCM-Level-C-focal), 6 CIs
+    (CBZ-OXC-HLA-B1502-ABSOLUTE/TGB-ABSOLUTE-NCSE/VPA-without-POLG-ABSOLUTE/LTG-myoclonic-HIGH/PHT-maintenance-HIGH/
+    BDZ-alone-SE-MODERATE), 14 monitoring items, 6 lifecycle windows."""
+    import scripts.gabrb1_dashboard as gb1_
+    return _json_safe(gb1_.get_breakdown())
+
+
+@app.get("/api/gabrb1/definitions")
+async def gabrb1_definitions():
+    """GABRB1 Epilepsy — definitions: 15 concepts
+    (GABRB1-4p12/GABA-A-β1-Limbic-Hippocampal/DEE-GABRB1/GEFS+-GABRB1/Tonic-vs-Phasic-Inhibition/
+    α5β1γ2-Extrasynaptic/BDZ-Partial-Hyposensitivity-β1/CLB-Advantage-α5/Perampanel-AMPA-Upstream/
+    ACTH-β1-Surface-PKA/Temporal-Lobe-Predilection-β1/KD-GABA-Bypass/POLG1-VPA-Mandatory/HLA-B1502/SUDEP),
+    12 thresholds (VPA-50-100/LEV-12-46/CLB-30-300/LCM-10-20/BHB-2-4/ACTH-UKISS/VGB-50-150/BDZ-SE-escalation/
+    Seizure-free/PER-titration/POLG-turnaround/SUDEP-review),
+    12 standards (ILAE-2022/NICE-NG217/UKISS-2004/CPIC-HLA-B1502/CPIC-POLG/MHRA-VPPP/FDA-SHARE-VGB/
+    EAN-NeonatalSE-2019/ILAE-Genetic-2022/ACMG-AMP/WHO-ICF/NICE-NG224-Surgical),
+    6 references (Kodera-2019-Epilepsia/Srivastava-2014/Reid-2013/Lux-2004-UKISS/Bhatt-2017/Bass-2016)."""
+    import scripts.gabrb1_dashboard as gb1_
+    return _json_safe(gb1_.get_definitions())
+
+
 @app.get("/api/scn3a/overview")
 async def scn3a_overview():
     """SCN3A overview: gene=SCN3A locus=2q24.3, NaV1.3 voltage-gated Na+ channel,

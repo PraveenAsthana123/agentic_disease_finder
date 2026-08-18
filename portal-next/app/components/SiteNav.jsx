@@ -396,6 +396,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq3">&#x26a1; KCNQ3 Epilepsy (BFNS-3 / DEE-KCNQ3 / Kv7.3 M-Current Partner / 11q23.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnq5">&#x26a1; KCNQ5 Epilepsy (DEE / ID-Epilepsy / Kv7.5 M-Current / Interneuron-Enriched / LOF-Paradox / 6q14.1)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/gabrb2">&#x1f9e0; GABRB2 Epilepsy (GEFS+ / CAE / DEE-Dravet-like / GABA-A &#946;2 Subunit / 5q34)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/gabrb1">&#x1f9ec; GABRB1 Epilepsy (DEE / GEFS+ / GABA-A &#946;1 Subunit / Limbic-Hippocampal / Perampanel-AMPA / 4p12)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn3a">&#x26a1; SCN3A Epilepsy (DEE67 / NaV1.3 / Focal Epilepsy of Infancy / R357Q-PMG / 2q24.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn1a">&#x1f9ec; SCN1A Epilepsy (Dravet Syndrome / GEFS+ / SMEI / NaV1.1 PV-Interneuron / 2q24.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/autoimmune-epilepsy">&#x1f9eb; Autoimmune Epilepsy</Link></li>
