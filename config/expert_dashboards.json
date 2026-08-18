@@ -3117,7 +3117,8 @@
       "Bhatt-2023-Epilepsia"
     ],
     "built_by": "autobuild",
-    "built_at": "2026-08-17"
+    "built_at": "2026-08-17",
+    "route": "/gabra5"
   },
   {
     "id": "dnm1",
@@ -3156,10 +3157,11 @@
       "Ferguson et al. 2017 Nat Rev Mol Cell Biol 13(2):75-88"
     ],
     "built_by": "autobuild",
-    "built_at": "2026-08-17T19:46:05Z"
+    "built_at": "2026-08-17T19:46:05Z",
+    "route": "/dnm1"
   },
   {
-    "id": "kcnt2-dee57",
+    "id": "kcnt2",
     "role": "Epileptologist / Neurogenetics",
     "name": "KCNT2 Epilepsy (DEE57 / West Syndrome / KNa1.2 / Slick / Quinidine-No-Evidence / 1q31.3)",
     "viz": "5-tab dashboard (Overview / Patients-Etiologies / Seizures-Triggers / Treatments / Definitions)",
@@ -3172,7 +3174,6 @@
       "/api/kcnt2/breakdown",
       "/api/kcnt2/definitions"
     ],
-    "frontend_route": "/kcnt2",
     "gene_family": "Slo superfamily / KNa1 subfamily (sodium-activated K+ channel)",
     "gene": "KCNT2",
     "locus": "1q31.3",
@@ -3190,7 +3191,13 @@
       "ILAE 2022 Operational classification of seizure types Epilepsia 63(6)"
     ],
     "built_by": "autobuild",
-    "built_at": "2026-08-17T20:10:00Z"
+    "built_at": "2026-08-17T20:10:00Z",
+    "route": "/kcnt2",
+    "api_prefix": "/api/kcnt2",
+    "script": "scripts/kcnt2_dashboard.py",
+    "frontend": "portal-next/app/kcnt2/page.jsx",
+    "note": "Total: 236 dashboards",
+    "built_note": "40-patient KCNT2 cohort; KNa1.2/Slick/Slo2.1 sodium-activated K+ channel; DEE57 West Syndrome; GOF de novo >90%; ACTH Level A (UKISS IS first-line); VGB Level A (SHARE-REMS Goldman q3M); KD Level B HIGH PRIORITY; Quinidine ABSOLUTE CI (zero KCNT2 evidence — unlike KCNT1 negative RCT); POLG mandatory before VPA; 5 etiology classes; 5 seizure types; 8 triggers; 8 treatments; 14 monitoring; 6 lifecycle stages; 15 concepts; 3 endpoints /api/kcnt2/overview|breakdown|definitions verified 200"
   },
   {
     "id": "cacna1h",
@@ -3206,7 +3213,6 @@
       "/api/cacna1h/breakdown",
       "/api/cacna1h/definitions"
     ],
-    "frontend_route": "/cacna1h",
     "api_prefix": "/api/cacna1h",
     "script": "scripts/cacna1h_dashboard.py",
     "gene_family": "Voltage-gated calcium channel / T-type (Cav3 subfamily: Cav3.1 CACNA1G + Cav3.2 CACNA1H + Cav3.3 CACNA1I)",
@@ -3225,9 +3231,12 @@
       "ILAE 2022 Operational classification of seizure types Epilepsia 63(6)",
       "NICE NG217 2022 Epilepsies: diagnosis and management"
     ],
-    "note": "Total: 227 dashboards",
+    "note": "Total: 236 dashboards",
     "built_by": "autobuild",
-    "built_at": "2026-08-17T20:35:31.437771+00:00"
+    "built_at": "2026-08-17T20:35:31.437771+00:00",
+    "route": "/cacna1h",
+    "frontend": "portal-next/app/cacna1h/page.jsx",
+    "built_note": "40-patient CACNA1H cohort; Cav3.2 T-type LVA Ca2+ channel; 16p13.3; GGE/CAE/JME Ethosuximide-precision Level A; CBZ/OXC/PHT ABSOLUTE CI GGE aggravation; VPPP mandatory females on VPA; 5 etiology classes; 5 seizure types; 8 triggers; 8 treatments; 14 monitoring; 6 lifecycle stages; 15 concepts; 3 endpoints /api/cacna1h/overview|breakdown|definitions verified 200"
   },
   {
     "id": "cacna1g",
@@ -3407,12 +3416,23 @@
     "name": "KCNC1 Epilepsy (EPM7 / Progressive Myoclonic Epilepsy 7 / Kv3.1 Shaw K+ / PV+ Fast-Spiking Interneuron / R320H Founder / CBZ-LTG-ABSOLUTE-CI / 21q22.13)",
     "viz": "5-tab dashboard: Overview / Patients+Etiology / Seizures+Triggers / Treatments / Definitions",
     "feature": "R320H-DN-LOF-Founder-60%/Non-R320H-Dominant-LOF-25%/De-Novo-Private-10%/Biallelic-Rare-3%/Phenocopy-2%; 5 seizure types (Action-Myoclonus-98%/PPR-75%/GTCS-72%/Resting-Myoclonus-45%/Absence-like-15%); 8 triggers; 8 treatments (LEV-Level-A/VPA-Level-B-POLG/CLB-Level-B/Piracetam-Level-C/ZNS-Level-C/Perampanel-Level-C/KD-Level-B); 6 contraindications (CBZ-OXC-PHT-LTG-ABSOLUTE-NaV1.1-interneuron/VGB-ABSOLUTE-myoclonus/TGB-ABSOLUTE-NCSE/GBP-HIGH-RISK/VPA-no-POLG1-ABSOLUTE); 14 monitoring items; 6 lifecycle stages; 40-patient cohort; Giant-SEPs-mandatory; Jerk-locked-back-averaging; progressive-course",
-    "api": "/api/kcnc1/overview|breakdown|definitions",
-    "portal": "/kcnc1",
     "gene": "KCNC1",
     "status": "built",
     "id": "kcnc1",
-    "color": "#4527a0"
+    "color": "#4527a0",
+    "route": "/kcnc1",
+    "api_prefix": "/api/kcnc1",
+    "endpoints": [
+      "/api/kcnc1/overview",
+      "/api/kcnc1/breakdown",
+      "/api/kcnc1/definitions"
+    ],
+    "script": "scripts/kcnc1_dashboard.py",
+    "frontend": "portal-next/app/kcnc1/page.jsx",
+    "locus": "21q22.13",
+    "omim": "EPM7 #618323",
+    "note": "Total: 236 dashboards",
+    "built_note": "40-patient KCNC1 cohort; Kv3.1 Shaw K+ HIGH-THRESHOLD fast-spiking interneuron channel; EPM7 Progressive Myoclonic Epilepsy 7; R320H founder dominant-negative; CBZ/OXC/PHT/LTG ABSOLUTE CI (NaV1.1 PV+ second-hit); Piracetam Level C action myoclonus; Giant SEPs pathognomonic N20-P25 >4uV; Photosensitivity 75%; POLG mandatory before VPA; 5 etiology classes; 5 seizure types; 8 triggers; 8 treatments; 14 monitoring; 6 lifecycle stages; 15 concepts; 3 endpoints /api/kcnc1/overview|breakdown|definitions verified 200"
   },
   {
     "id": "kcnc2",
