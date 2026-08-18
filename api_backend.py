@@ -25927,6 +25927,97 @@ async def cntnap2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/west-syndrome/overview")
+async def west_syndrome_overview():
+    """West Syndrome (Infantile Spasms / IS) overview — KPI summary.
+    Classic triad: infantile spasms clusters + hypsarrhythmia EEG + developmental arrest/regression.
+    Peak onset 3–12 months. Etiology: Structural-60-70% (TSC/FCD/HIE/malformation),
+    Genetic-25% (STXBP1/ARX/CDKL5/SPTAN1), Unknown-10-15%.
+    First-line: ACTH high-dose OR oral Prednisolone (UKISS 2004 Lancet); Vigabatrin FIRST in TSC-IS.
+    30–40% evolve to Lennox-Gastaut Syndrome. Hypsarrhythmia EEG: chaotic high-amplitude
+    multifocal slow waves + spikes — pathognomonic. Cohort: 41 patients, IS/West overlay."""
+    try:
+        import scripts.west_syndrome_dashboard as ws_
+        return _json_safe(ws_.overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/west-syndrome/breakdown")
+async def west_syndrome_breakdown():
+    """West Syndrome — full breakdown: patients, etiology catalog (TSC/Structural-Malformation/HIE/Genetic/Unknown),
+    EEG features (hypsarrhythmia-100% / modified-hyps-22% / burst-suppression-18%),
+    treatments (ACTH-high-dose/Prednisolone/Vigabatrin-TSC/Pyridoxine-B6/Nitrazepam/ACTH-failed/KD/Surgery),
+    AED monitoring, developmental trajectory (normal → severe regression), standards
+    (UKISS-2004-Lancet / WEST-2004-Brain / ICISS-2017-Neurology / INFANTIS-Epilepsy-Curr /
+    NICE-NG217 / ILAE-2022 / MHRA-VPPP / FDA-SHARE-REMS-VGB / ACMG-AMP / WHO-ICF),
+    thresholds (ACTH-dose/Vigabatrin-50-150/Pred-4mg-kg/Pyridoxine-response/EEG-cessation-14d/
+    spasm-free-12m/LGS-evolution/hypsarr-resolution), references."""
+    try:
+        import scripts.west_syndrome_dashboard as ws_
+        return _json_safe(ws_.breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/west-syndrome/definitions")
+async def west_syndrome_definitions():
+    """West Syndrome — definitions: key concepts (Infantile-Spasms-Triad / Hypsarrhythmia-EEG /
+    ACTH-High-Dose / Vigabatrin-TSC / Prednisolone-Alternative / Pyridoxine-B6-Response /
+    LGS-Evolution-30-40pct / TSC-IS-Best-Outcome / STXBP1-ARX-CDKL5-Genetic /
+    Developmental-Arrest / UKISS-Trial / Spasm-Cessation / ACTH-vs-Pred-Equivalence /
+    Structural-Malformation / Hidden-Hypsarrhythmia), thresholds, standards, references."""
+    try:
+        import scripts.west_syndrome_dashboard as ws_
+        return _json_safe(ws_.definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/status-epilepticus/overview")
+async def status_epilepticus_overview():
+    """Status Epilepticus (SE) overview — KPI summary from clinical.db.
+    SE defined: ≥5 min continuous seizure OR ≥2 seizures without full recovery (ILAE 2015 / NCS 2012).
+    Mortality 7–39% (DeLorenzo 1996; Rossetti 2008).
+    NCS Treatment Algorithm: Stage-1 BDZ (lorazepam IV/IM midazolam) within 5 min →
+    Stage-2 IV AED (levetiracetam/valproate/fosphenytoin) within 20-40 min →
+    Stage-3 Anaesthesia (propofol/midazolam/thiopental) → Stage-4 RSE.
+    Cohort: live clinical.db hospitalization + seizure_metadata tables."""
+    try:
+        import scripts.status_epilepticus_dashboard as se_
+        return _json_safe(se_.overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/status-epilepticus/breakdown")
+async def status_epilepticus_breakdown():
+    """Status Epilepticus — full breakdown: patient list, LOS histogram, insurance breakdown,
+    drug-resistant epilepsy in SE, syndrome breakdown, monthly trend.
+    NCS treatment stages, admission reason (SE vs seizure cluster), ward distribution (ICU/Neuro-ICU/wards),
+    discharge disposition, complications (aspiration/rhabdomyolysis/NCSE), etiology breakdown."""
+    try:
+        import scripts.status_epilepticus_dashboard as se_
+        return _json_safe(se_.breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/status-epilepticus/definitions")
+async def status_epilepticus_definitions():
+    """Status Epilepticus — definitions: SE types (convulsive/non-convulsive/focal/refractory/super-refractory),
+    NCS treatment stages, ILAE 2015 operational definition, Salzburg criteria (NCSE),
+    thresholds (5-min/30-min operational/RSE-24h/SRSE-7d/BDZ-dose/phenytoin-dose),
+    standards (ILAE-2015/NCS-2012/Salzburg-2015/EAN-SE-2019/NICE-NG217/WHO-ICF),
+    references (DeLorenzo-1996-Neurology/Rossetti-2008-Epilepsia/Glauser-2016-Epilepsy-Curr/
+    Brophy-2012-NCC/Betjemann-2015-NEJM/Trinka-2015-Epilepsia)."""
+    try:
+        import scripts.status_epilepticus_dashboard as se_
+        return _json_safe(se_.definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
