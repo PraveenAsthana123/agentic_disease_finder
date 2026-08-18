@@ -3870,5 +3870,27 @@
     "api": "/api/shank3/overview|breakdown|definitions",
     "page": "/shank3",
     "description": "SHANK3 (22q13.33) PMS \u2014 40 patients, 5-class etiology (22q13-large-38%/22q13-small-SHANK3-28%/point-mutation-20%/mosaicism-10%/phenocopy-4%), IGF-1 precision Rx, SRS 50-70%, VGB avoid, post-anaesthetic regression protocol"
+  },
+  {
+    "id": "dyrk1a",
+    "gene": "DYRK1A",
+    "name": "DYRK1A Epilepsy (DYRK1A Syndrome / DEE-Microcephaly / NRSF-Nav1.1-Pathway / PHT-CBZ-HIGH-RISK / DYRK1A-Inhibitors-ABSOLUTE-CI / Folinic-Acid-FRA1 / VPA-HDAC-Epigenetic / 21q22.13)",
+    "locus": "21q22.13",
+    "channel": "Dual Specificity Tyrosine-Phosphorylation Regulated Kinase 1A",
+    "syndrome": "DYRK1A Syndrome / DEE + Primary Microcephaly + Severe ID + Autism",
+    "omim": 614721,
+    "color": "#0d47a1",
+    "route": "/dyrk1a",
+    "api_prefix": "/api/dyrk1a",
+    "endpoints": [
+      "/api/dyrk1a/overview",
+      "/api/dyrk1a/breakdown",
+      "/api/dyrk1a/definitions"
+    ],
+    "frontend": "portal-next/app/dyrk1a/page.jsx",
+    "script": "scripts/dyrk1a_dashboard.py",
+    "status": "built",
+    "note": "Total: 254 dashboards",
+    "built_note": "DYRK1A Epilepsy Dashboard \u2014 NRSF/Nav1.1 pathway (DYRK1A LOF \u2192 NRSF stable \u2192 SCN1A/GABRB3 repressed \u2192 Nav1.1 functional deficiency analogous to Dravet); PHT/CBZ/OXC HIGH RISK; DYRK1A inhibitors (harmine/leucettine/EGCG) ABSOLUTE CI in LOF (used in trisomy 21 \u2014 opposite mechanism); folinic acid for anti-FRA1 positive (25-35%); VPA HDAC epigenetic de-repression rationale specific to DYRK1A/NRSF pathway. Built 2026-08-18"
   }
 ]

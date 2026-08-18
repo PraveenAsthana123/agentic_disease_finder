@@ -26241,6 +26241,67 @@ async def shank3_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/dyrk1a/overview")
+async def dyrk1a_overview():
+    """DYRK1A Epilepsy (DYRK1A Syndrome / 21q22.13 Haploinsufficiency / DEE + Microcephaly) — overview:
+    40-patient cohort, 5 etiology classes (LOF-truncating-40% /
+    LOF-missense-kinase-dead-28% / LOF-splice-15% /
+    21q22-microdeletion-12% / Phenocopy-trisomy21-5%),
+    seizure prevalence ~65%, primary microcephaly birth,
+    NRSF/Nav1.1 pathway — Na-channel blockers HIGH RISK,
+    DYRK1A inhibitors (harmine/leucettine/EGCG) ABSOLUTE CI in LOF,
+    folinic acid for anti-FRA1-positive (25-35%),
+    VPA HDAC epigenetic de-repression rationale."""
+    try:
+        import scripts.dyrk1a_dashboard as dyrk1a_
+        return _json_safe(dyrk1a_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/dyrk1a/breakdown")
+async def dyrk1a_breakdown():
+    """DYRK1A Epilepsy — full breakdown: 5 etiologies (LOF-truncating-40% /
+    LOF-missense-28% / splice-15% / microdeletion-12% / trisomy21-phenocopy-5%),
+    40-patient cohort, 5 seizure types (IS-30% / GTCS-55% / Myoclonic-35% /
+    FIAS-40% / Absence-myoclonic-atonic-15%), 8 triggers, 8 treatments
+    (ACTH-Level-A-IS / VGB-Level-A-IS / VPA-Level-B-HDAC / LEV-Level-B /
+    KD-Level-B-DRE / CLB-Level-B / FolinicAcid-Level-C-FRA1 / Corticosteroids-Level-C),
+    6 CIs (PHT-CBZ-OXC-HIGH-NRSF / DYRK1A-inhibitors-ABSOLUTE /
+    TGB-ABSOLUTE-NCSE / VPA-POLG1-ABSOLUTE / LTG-mono-myoclonic-HIGH /
+    Abrupt-AED-withdrawal-ABSOLUTE), 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.dyrk1a_dashboard as dyrk1a_
+        return _json_safe(dyrk1a_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/dyrk1a/definitions")
+async def dyrk1a_definitions():
+    """DYRK1A Epilepsy — definitions: 15 concepts (DYRK1A-21q22.13-DEE /
+    NRSF-REST-Nav1.1-Mechanism / DYRK1A-Trisomy21-Dose-Distinction /
+    NRSF-Epigenetic-VPA-Rationale / Primary-Microcephaly-Birth-Diagnostic-Clock /
+    Anti-FRA1-Cerebral-Folate-Deficiency / PHT-CBZ-OXC-WORSENING-NRSF /
+    POLG1-VPA-Mandatory-Screen / DYRK1A-Inhibitor-ABSOLUTE-CI /
+    KD-Early-DYRK1A / IS-ACTH-Lower-Response-Structural /
+    TGB-ABSOLUTE-NCSE-GABRB3-Risk / Tau-Mis-Splicing-Neurodegeneration /
+    LTG-Monotherapy-Myoclonic-Risk / SUDEP-DRE-DYRK1A),
+    12 thresholds (VPA-TDM / NH3 / HC-SD-Microcephaly / ACTH-Day14-EEG /
+    CSF-5MTHF / BHB-KD / IS-Non-Response / VGB-ERG / POLG1-Turnaround /
+    SUDEP-Alarm / QTc-CLB / Anti-FRA1-IgG),
+    12 standards (ILAE-2022 / NICE-NG217 / Moller-2008 / vanBon-2011 /
+    Bronicki-2015 / Ji-2015 / Courcet-2012 / CPIC-POLG1-2023 /
+    MHRA-VPPP-2021 / ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019),
+    6 references (Moller-2008 / vanBon-2011 / Bronicki-2015 /
+    Ji-2015 / Courcet-2012 / deLatorre-2014)."""
+    try:
+        import scripts.dyrk1a_dashboard as dyrk1a_
+        return _json_safe(dyrk1a_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
