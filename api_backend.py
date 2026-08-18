@@ -26591,6 +26591,148 @@ async def pten_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/nhlrc1/overview")
+async def nhlrc1_overview():
+    """NHLRC1 Epilepsy (Lafora Disease Type 2 / EPM2B / Malin E3 Ubiquitin Ligase /
+    Progressive Myoclonic Epilepsy / RING-H2 Domain / Glycogen-Autophagy-Lafora-Bodies /
+    CBZ-OXC-PHT-ABSOLUTE-CI / Metformin-AMPK-Disease-Modifying / 6p22.3) —
+    overview: 40-patient cohort, 5 etiologies
+    (NHLRC1-RING-Domain-Missense-LOF-AR-40% /
+    NHLRC1-Truncating-Frameshift-Nonsense-30% /
+    NHLRC1-Compound-Heterozygous-20% /
+    NHLRC1-Exon-Deletion-CNV-7% /
+    Phenocopy-EPM2A-Negative-Lafora-like-3%),
+    5 seizure types (Cortical-Myoclonus-Progressive-95% /
+    Visual-Occipital-Phosphenes-85% / GTCS-78% /
+    Absence-like-EEG-polyspike-42% / Drop-Attacks-Atonic-35%),
+    8 triggers (Photic-Stimulation-92% / SleepDep-85% /
+    Action-Myoclonus-80% / Stress-75% / MissedAED-68% /
+    Illness-60% / AEDTaper-48% / Exercise-30%),
+    6 key CIs (CBZ-OXC-PHT-ABSOLUTE-paradoxical-myoclonic /
+    LTG-monotherapy-HIGH-myoclonic-worsening /
+    TGB-ABSOLUTE-NCSE / VGB-AVOID-occipital-visual /
+    VPA-POLG1-ABSOLUTE / Abrupt-Withdrawal-ABSOLUTE)."""
+    try:
+        import scripts.nhlrc1_dashboard as nhlrc1_
+        return _json_safe(nhlrc1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/nhlrc1/breakdown")
+async def nhlrc1_breakdown():
+    """NHLRC1 Lafora Disease Type 2 — breakdown: etiology catalog, patient sample,
+    seizure types (cortical myoclonus / visual-occipital / GTCS / absence-like / drop attacks),
+    triggers (photic-92% / sleep-dep-85% / action-myoclonus-80% / stress-75%),
+    treatments (VPA-Level-B / LEV-Level-B / CLB-Level-B / Perampanel-Level-B /
+    Piracetam-Level-B-action-myoclonus / Zonisamide-Level-C / Metformin-Level-B-disease-modifying / KD-Level-C),
+    contraindications (CBZ-OXC-PHT-ABSOLUTE / LTG-monotherapy-HIGH /
+    TGB-ABSOLUTE / VGB-AVOID / VPA-POLG1-ABSOLUTE / Abrupt-Withdrawal-ABSOLUTE),
+    monitoring (Skin-biopsy-gold-standard / POLG1-before-VPA / WES-TRIO /
+    EEG-PPR-photic / MRI-3T / Neuropsychology / VPA-TDM /
+    VGB-ERG / SUDEP-alarm / Palliative-planning),
+    lifecycle (Pre-symptomatic / Myoclonic-onset-adolescent / Progressive-DEE /
+    DRE-refractory / Late-stage-palliative / Terminal)."""
+    try:
+        import scripts.nhlrc1_dashboard as nhlrc1_
+        return _json_safe(nhlrc1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/nhlrc1/definitions")
+async def nhlrc1_definitions():
+    """NHLRC1 Lafora Disease Type 2 — definitions: 15 concepts
+    (NHLRC1-EPM2B-Lafora-Disease-Type2 / MALIN-E3-Ubiquitin-Ligase-RING-H2 /
+    Lafora-Bodies-Polyglucosan-Pathognomonic / NHLRC1-EPM2A-AR-Lafora-Allelic /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Paradoxical / LTG-Monotherapy-Myoclonic-Worsening /
+    TGB-ABSOLUTE-NCSE-PME / VGB-AVOID-Occipital-Visual-PME /
+    Metformin-AMPK-GYS1-Disease-Modifying / Perampanel-AMPA-Myoclonic-Level-B /
+    Piracetam-Action-Myoclonus-Specific / POLG1-VPA-Mandatory /
+    Skin-Biopsy-Gold-Standard-Lafora / Photosensitivity-92pct-PPR /
+    SUDEP-Risk-Progressive-Fatal),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Minassian-2000-Science /
+    Chan-2003-NatGenet / Serratosa-1999 /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 /
+    NICE-NG224-2022 / WHO-ICF-2019 / ILAE-PME-2022 /
+    EAN-Lafora-2019),
+    6 references (Minassian-2000 / Chan-2003 / Serratosa-1999 /
+    Turnbull-2012 / Brewer-2019 / Nitschke-2018)."""
+    try:
+        import scripts.nhlrc1_dashboard as nhlrc1_
+        return _json_safe(nhlrc1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/epm2a/overview")
+async def epm2a_overview():
+    """EPM2A Lafora Disease Type 1 — overview: 40-patient cohort
+    (EPM2A-6q24.3 / LAFORIN-Dual-Specificity-Glucan-Phosphatase /
+    CBM-Domain-W32G-W99L-Glucan-Binding / DSP-Domain-C266-Phosphatase /
+    LAFORIN-MALIN-Glycogen-Quality-Control / Progressive-Myoclonic-Epilepsy-Type-1 /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonic-Worsening / LTG-Mono-HIGH-RISK /
+    TGB-ABSOLUTE-NCSE / VGB-AVOID-Occipital / VPA-POLG1-Mandatory /
+    Metformin-AMPK-GYS1-Disease-Modifying / KD-Dual-Mechanism /
+    Piracetam-Action-Myoclonus / Perampanel-AMPA-Level-B /
+    W32G-Basque-Founder-Fastest-Progression / Skin-Biopsy-PAS-Pathognomonic /
+    Autosomal-Recessive-LOF-50pct-All-Lafora),
+    5 etiologies, 5 seizure types, 8 triggers, 8 treatments,
+    6 contraindications (CBZ/OXC/PHT-ABSOLUTE / TGB-ABSOLUTE / VGB-AVOID /
+    LTG-Mono-HIGH / VPA-no-POLG1-ABSOLUTE / Abrupt-Withdrawal-ABSOLUTE),
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.epm2a_dashboard as epm2a_
+        return _json_safe(epm2a_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/epm2a/breakdown")
+async def epm2a_breakdown():
+    """EPM2A Lafora Disease Type 1 — breakdown: etiology catalog, patient sample,
+    seizure types (Myoclonic-Cortical-Action-98% / Visual-Occipital-Phosphene-85% /
+    GTCS-78% / Myoclonic-Status-45% / Absence-like-32%),
+    triggers (Photic-Flicker-82% / SleepDep-78% / MissedAED-72% /
+    Fever-68% / Action-Movement-65% / AED-Taper-55% / Stress-40% / Catamenial-22%),
+    treatments (VPA-LevelB / LEV-LevelB / Perampanel-LevelB /
+    Piracetam-LevelB-ActionMyoclonus / CLB-LevelB / Metformin-LevelC-DiseaseModifying /
+    KD-LevelB-DualMechanism / ZNS-LevelC),
+    contraindications, monitoring, lifecycle."""
+    try:
+        import scripts.epm2a_dashboard as epm2a_
+        return _json_safe(epm2a_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/epm2a/definitions")
+async def epm2a_definitions():
+    """EPM2A Lafora Disease Type 1 — definitions: 15 concepts
+    (EPM2A-6q24.3-PME-Type1 / LAFORIN-Glucan-Phosphatase-CBM-DSP /
+    LAFORIN-MALIN-Complex-Glycogen-Checkpoint / W32G-W99L-CBM-Founder-Fastest /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonic / TGB-ABSOLUTE-NCSE-Interneuron-Loss /
+    Perampanel-AMPA-Cortical-Myoclonus / Piracetam-Action-Myoclonus-PME-Specific /
+    Metformin-KD-Disease-Modifying-AMPK-GYS1 / Occipital-Photosensitivity-EPM2A /
+    Skin-Biopsy-PAS-Rapid-Diagnosis / Progressive-Fatal-Palliative-EPM2A /
+    POLG1-VPA-Mandatory / Consanguinity-Mediterranean-SouthAsian-Founders /
+    SUDEP-PME-Risk-Safety-Protocol),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Turnbull-2016-NatRevNeurol /
+    Minassian-1998-NatGenet / Gomez-Abad-2005-Neurology /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / Mukherjee-2019-Epilepsia /
+    Berthier-2016-MolMed / ACMG-AMP-2015 / Raththagala-2015-MolCell /
+    WHO-ICF-2019),
+    6 references (Minassian-1998 / Turnbull-2016 / Gomez-Abad-2005 /
+    Raththagala-2015 / Mukherjee-2019 / Berthier-2016)."""
+    try:
+        import scripts.epm2a_dashboard as epm2a_
+        return _json_safe(epm2a_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
