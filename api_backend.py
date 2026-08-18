@@ -26369,6 +26369,75 @@ async def mef2c_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gabbr1/overview")
+async def gabbr1_overview():
+    """GABBR1 Epilepsy — GABA-B Receptor Subunit 1 (6p22.1) overview:
+    40-patient cohort, gene summary (GABBR1 6p22.1, Venus flytrap ligand-binding subunit 960 aa ~105 kDa,
+    OMIM gene *603540), GEFS+ prevalence, drug-resistant %, absence %, focal %,
+    cognitive preservation % (milder than GABBR2), GABBR1a (presynaptic, sushi repeat) vs
+    GABBR1b (postsynaptic, GIRK) isoform distinction and clinical implications,
+    baclofen precision therapy Level C in LOF (0.5-1.5 mg/kg/day; ABSOLUTE CI in GOF),
+    functional assay (VFTM GABA dose-response) mandatory before baclofen,
+    key CIs (TGB ABSOLUTE NCSE / PHT-CBZ-OXC HIGH generalised worsening /
+    Baclofen-GOF ABSOLUTE / Baclofen-withdrawal ABSOLUTE / VPA+POLG1 ABSOLUTE /
+    LTG-monotherapy-myoclonic HIGH), GABBR1 vs GABBR2 severity comparison
+    (GEFS+ milder vs DEE-59 severe; no West syndrome typical in GABBR1; cognition preserved),
+    12 standards (ILAE-2022 / NICE-NG217 / Steele-2020 / Vigot-2006 / Martin-2001 /
+    Pinard-2010 / CPIC-POLG1-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 / NICE-NG224-2023 /
+    WHO-ICF-2019 / ILAE-GEFS-2022)."""
+    try:
+        import scripts.gabbr1_dashboard as gabbr1_
+        return _json_safe(gabbr1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabbr1/breakdown")
+async def gabbr1_breakdown():
+    """GABBR1 Epilepsy — full breakdown: 5 etiologies (LOF-missense-VFTM-GEFS-Absence-35% /
+    LOF-truncating-haploinsufficiency-Focal-30% / GABBR1a-selective-sushi-domain-presynaptic-15% /
+    GABBR1-GOF-rare-intermediate-DEE-12% / phenocopy-GABBR1-negative-8%),
+    40-patient cohort, 5 seizure types (Febrile-GEFS+-75% / GTCS-65% / Absence-45% /
+    Focal-FIAW-40% / Myoclonic-25%), 8 triggers,
+    8 treatments (VPA-Level-B-first-line / LTG-Level-B-absence-focal /
+    LEV-Level-B-adjunct / CLB-Level-B / ESM-Level-A-absence /
+    Baclofen-Level-C-LOF-precision / KD-Level-C-DRE / Perampanel-Level-C),
+    6 CIs (TGB-ABSOLUTE-NCSE / PHT-CBZ-OXC-HIGH-generalised /
+    Baclofen-GOF-ABSOLUTE / Baclofen-withdrawal-ABSOLUTE /
+    VPA-POLG1-ABSOLUTE / LTG-monotherapy-myoclonic-HIGH),
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.gabbr1_dashboard as gabbr1_
+        return _json_safe(gabbr1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabbr1/definitions")
+async def gabbr1_definitions():
+    """GABBR1 Epilepsy — definitions: 15 concepts (GABBR1-6p22.1-GEFS+ /
+    GABBR1-VFT-Ligand-Binding-Domain / GABBR1a-vs-GABBR1b-Isoforms /
+    GABBR1a-Sushi-Repeat-Presynaptic-Targeting / GABBR1-GOF-vs-GABBR2-GOF-Severity /
+    Baclofen-Precision-GABBR1-LOF / Baclofen-CI-GABBR1-GOF /
+    Baclofen-Withdrawal-Emergency-GABBR1 / TGB-ABSOLUTE-NCSE-GABBR1 /
+    PHT-CBZ-Generalised-Worsening / LTG-Monotherapy-Myoclonic-Risk /
+    GEFS+-Fever-GABBR1-Mechanism / ESM-Absence-Thalamo-GABBR1b /
+    POLG1-VPA-Mandatory / VPPP-MHRA-2021-GABBR1-Females),
+    12 thresholds (Baclofen-start-dose / Baclofen-taper / eGFR-baclofen /
+    VPA-TDM / ESM-TDM / POLG1-turnaround / LTG-titration-VPA /
+    Febrile-rescue-midazolam / KD-BHB / AED-taper / Perampanel-VPA-max / SUDEP-alarm),
+    12 standards (ILAE-2022 / NICE-NG217 / Steele-2020 / Vigot-2006 /
+    Martin-2001 / Pinard-2010 / CPIC-POLG1-2023 / MHRA-VPPP-2021 /
+    ACMG-AMP-2015 / NICE-NG224-2023 / WHO-ICF-2019 / ILAE-GEFS-2022),
+    6 references (Steele-2020 / Vigot-2006 / Martin-2001 / Pinard-2010 /
+    Bianchi-2022 / Bowery-2002)."""
+    try:
+        import scripts.gabbr1_dashboard as gabbr1_
+        return _json_safe(gabbr1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

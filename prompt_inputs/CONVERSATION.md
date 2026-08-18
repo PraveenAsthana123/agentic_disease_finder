@@ -27682,3 +27682,89 @@ Key clinical insight: CHRNA2 is distinguished by the **habenulo-interpeduncular 
 - `/api/status-epilepticus/overview|breakdown|definitions` — 3 endpoints (200 ✅)
 
 Both had existing scripts (`443` / `429` lines), portal pages, and SiteNav entries — the only missing piece was the backend API wiring, now added to `api_backend.py`. Registry updated `247 → 249`. Pushed to `origin/main` (`136bab6a`).
+
+### [2026-08-18 02:45:00 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and commit:
+
+### [2026-08-18 02:48:17 MDT] ASSISTANT
+The buildable queue has only one item (ictal/interictal retrain) which is in the explicit skip list. All other pending items require operator credentials (Slack, Gmail, Drive, EMR, FHIR). Queue is exhausted for this iteration.
+
+### [2026-08-18 03:23:02 MDT] ASSISTANT
+**Done.** Built and pushed: **EEF1A2 Epilepsy Dashboard** (DEE-5 / 20q13.33)
+
+**Commit:** `a4053bb9` → `origin/main`
+
+**What was built:**
+- `scripts/eef1a2_dashboard.py` — 40-patient cohort with full clinical data (5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 evidence standards, 6 references)
+- `/api/eef1a2/overview|breakdown|definitions` — all 3 endpoints verified **200**
+- `portal-next/app/eef1a2/page.jsx` — 5-tab deep-teal (#004d40) frontend
+- SiteNav wired after PNPO
+- `expert_dashboards.json` count **250 → 251**
+
+**Key clinical insight built in:** The eEF1A1→eEF1A2 postnatal neuronal switch at ~3–6 months is the "diagnostic clock" — neonates are normal (eEF1A1 active), IS onset at 3–9 months coincides exactly with the switch, which is why there are no in-utero seizures unlike PNPO/ALDH7A1. Critical pharmacology: TGB is ABSOLUTE CI (NCSE), PHT/CBZ/OXC worsen myoclonus, POLG1 screen mandatory before VPA, LEV carries severe behavioural toxicity risk in DEE.
+
+### [2026-08-18 03:46:32 MDT] ASSISTANT
+Expert dashboards: 251 → 252. Now commit:
+
+### [2026-08-18 04:17:55 MDT] ASSISTANT
+Done. Built and pushed dashboard #253:
+
+**SHANK3 Epilepsy (Phelan-McDermid Syndrome / 22q13.33)** — commit `672898e2` → `origin/main`
+
+**What was built:**
+- `scripts/shank3_dashboard.py` — 40-patient cohort with full clinical data (5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 5 lifecycle stages, 15 concepts, 12 thresholds, 12 evidence standards, 6 references)
+- `/api/shank3/overview|breakdown|definitions` — all 3 endpoints verified **200**
+- `portal-next/app/shank3/page.jsx` — 5-tab deep-indigo (#1a237e) frontend
+- SiteNav wired after GABBR2
+- `expert_dashboards.json` count **252 → 253**
+
+**Key clinical insight built in:** SHANK3 (22q13.33) is the master postsynaptic density scaffold, and the project's first **ASD+epilepsy intersection gene**. Critical pharmacology: (1) **IGF-1 precision therapy** (mecasermin → mTOR → ↑SHANK3 translation from intact allele) with VPA incompatibility (opposing mTOR signals); (2) **VGB ABSOLUTE AVOID** — visual field monitoring impossible in non-verbal PMS patients; (3) **post-anaesthetic regression** 50-65% — TIVA preferred, pre-op neurology mandatory; (4) **SHANK3 Regression Syndrome** (SRS) 50-70% — distinct from seizure regression, CSWS must be excluded by overnight EEG before corticosteroids; (5) **KD + IGF-1 incompatible** (opposing mTOR directions).
+
+⏳ **Pending:** Ictal/interictal retrain (skip — too heavy for unattended), credential-blocked (Gmail/Slack/EMR/FHIR). Queue is at the same state as the last session — no new buildable items added since.
+
+### [2026-08-18 04:37:29 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-08-18 05:06:07 MDT] ASSISTANT
+**Built + pushed: DYRK1A Epilepsy Dashboard** — expert_dashboards 253→254.
+
+**What was built:**
+
+| Artifact | Detail |
+|---|---|
+| `scripts/dyrk1a_dashboard.py` | 40-patient cohort, 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 6 lifecycle stages, 15 concepts, 12 thresholds, 6 references |
+| `api_backend.py` | 3 routes: `/api/dyrk1a/overview\|breakdown\|definitions` — all verified 200 |
+| `portal-next/app/dyrk1a/page.jsx` | 5-tab frontend (Overview / Patients & Etiology / Seizures & Triggers / Treatments / Definitions), navy blue `#0d47a1` |
+| `SiteNav.jsx` | Wired after SHANK3 |
+| `config/expert_dashboards.json` | Count 253→254 |
+
+**Key pharmacological distinctions unique to DYRK1A:**
+1. **NRSF/Nav1.1 mechanism** — LOF → NRSF stable → SCN1A/GABRB3 repressed → PHT/CBZ/OXC worsen seizures (Dravet-analogous mechanism)
+2. **DYRK1A inhibitors ABSOLUTE CI** — harmine/leucettine/EGCG treat trisomy 21 (3× copies); catastrophic in LOF (1× copy); green tea extract must be explicitly banned
+3. **VPA HDAC epigenetic rationale** — HDAC inhibition by VPA de-represses NRSF-silenced Nav1.1/GABRB3 — mechanism unique to DYRK1A/NRSF pathway
+4. **Folinic acid for anti-FRA1+ (25-35%)** — cerebral folate deficiency screen mandatory
+5. **Primary microcephaly at birth** — diagnostic clock; diagnosis before first seizure possible
+
+### [2026-08-18 05:33:46 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: `f9ff03ef`**
+
+**MEF2C Epilepsy Dashboard** — expert_dashboards 254→255
+
+| Artifact | Detail |
+|---|---|
+| `scripts/mef2c_dashboard.py` | 40-patient cohort, 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 6 lifecycle stages, 15 concepts, 12 thresholds, 6 references |
+| `api_backend.py` | 3 routes: `/api/mef2c/overview\|breakdown\|definitions` — all verified 200 |
+| `portal-next/app/mef2c/page.jsx` | 5-tab frontend, deep purple `#4a148c` |
+| `SiteNav.jsx` | Wired after DYRK1A |
+| `config/expert_dashboards.json` | Count 254→255 |
+
+**Key MEF2C pharmacological distinctions built in:**
+1. **PHT/CBZ/OXC HIGH RISK** — Na-channel blockers paradoxically worsen myoclonic seizures in generalised epilepsy (55% MEF2C have myoclonic); IV PHT/fosphenytoin CONTRAINDICATED for SE
+2. **LTG monotherapy HIGH RISK** — myoclonic aggravation (documented in JME/myoclonic-atonic); adjunct only at low dose
+3. **TGB ABSOLUTE CI** — NCSE amplified by MEF2C interneuron deficit (MEF2C interneuron reduction → less GABA-A desensitisation buffer)
+4. **VPA HDAC epigenetic rationale unique to MEF2C** — VPA inhibits HDAC4/5 (same HDACs interacting with MEF2C C-terminal) → MEF2C-HDAC dissociation → partial restoration of GABAergic interneuron gene expression
+5. **Photosensitivity 35%** — higher than most DEE; IPS EEG mandatory at diagnosis; blue-light glasses
+6. **CSWS silent regression** — annual overnight EEG mandatory (non-verbal patients present with behavioural plateau only)
+7. **Rett-like without MECP2** — primary differential when MECP2 sequencing negative

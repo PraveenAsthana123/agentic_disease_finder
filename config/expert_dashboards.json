@@ -3908,5 +3908,18 @@
     "omim": "#613443",
     "locus": "5q14.3",
     "added_at": "2026-08-18"
+  },
+  {
+    "id": "gabbr1",
+    "name": "GABBR1 Epilepsy (GABA-B Receptor Subunit 1 / Venus-Flytrap-Ligand-Binding / GABBR1a-Presynaptic-Sushi / GABBR1b-Postsynaptic-GIRK / GEFS+-Focal-Absence / Baclofen-Precision-LOF / TGB-ABSOLUTE-NCSE / LTG-Mono-Myoclonic-HIGH / 6p22.1)",
+    "category": "genetics",
+    "status": "built",
+    "route": "/gabbr1",
+    "api_endpoints": [
+      "/api/gabbr1/overview",
+      "/api/gabbr1/breakdown",
+      "/api/gabbr1/definitions"
+    ],
+    "built_note": "40-patient GABBR1 cohort (6p22.1), 5 etiologies (LOF-missense-VFTM-35%/LOF-truncating-haploinsufficiency-30%/GABBR1a-sushi-presynaptic-15%/GOF-rare-DEE-12%/Phenocopy-8%), 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references. Deep burgundy #880e4f. GABA-B obligatory heterodimer partner to GABBR2."
   }
 ]
