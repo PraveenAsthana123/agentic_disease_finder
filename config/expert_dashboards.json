@@ -2327,7 +2327,18 @@
     "portal": "/prrt2",
     "gene": "PRRT2",
     "locus": "16p11.2",
-    "built": "2026-08-12"
+    "built": "2026-08-12",
+    "route": "/prrt2",
+    "api_prefix": "/api/prrt2",
+    "endpoints": [
+      "/api/prrt2/overview",
+      "/api/prrt2/breakdown",
+      "/api/prrt2/definitions"
+    ],
+    "frontend": "portal-next/app/prrt2/page.jsx",
+    "script": "scripts/prrt2_dashboard.py",
+    "note": "Total: 237 dashboards",
+    "built_note": "PRRT2 dashboard built: /api/prrt2/overview|breakdown|definitions + portal-next/app/prrt2/page.jsx + SiteNav wired. 40-patient PRRT2 cohort (BFIE/PKD/ICCA spectrum). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "slc6a1",
@@ -2402,7 +2413,16 @@
     "gene": "POLG",
     "locus": "15q26.1",
     "built": "2026-08-13",
-    "note": "POLG 15q26.1 Mitochondrial DNA Polymerase Gamma — Alpers-Huttenlocher Syndrome (AHS). AR biallelic (AHS/DEE) + AD heterozygous (PEO/SANDO). 41-patient cohort. VPA ABSOLUTE CI (acute liver failure 32-45%, mortality >80%). EPC (epilepsia partialis continua) hallmark. LEV first-line (hepatically safe). Mitochondrial cofactors (Riboflavin/CoQ10/L-carnitine). KD (LCHAD screen first). 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions). 3 endpoints /api/polg/overview|breakdown|definitions verified 200."
+    "note": "POLG 15q26.1 Mitochondrial DNA Polymerase Gamma — Alpers-Huttenlocher Syndrome (AHS). AR biallelic (AHS/DEE) + AD heterozygous (PEO/SANDO). 41-patient cohort. VPA ABSOLUTE CI (acute liver failure 32-45%, mortality >80%). EPC (epilepsia partialis continua) hallmark. LEV first-line (hepatically safe). Mitochondrial cofactors (Riboflavin/CoQ10/L-carnitine). KD (LCHAD screen first). 5-tab frontend (Overview/Patients-Etiology/Seizure-Triggers/Treatments/Definitions). 3 endpoints /api/polg/overview|breakdown|definitions verified 200.",
+    "api_prefix": "/api/polg",
+    "endpoints": [
+      "/api/polg/overview",
+      "/api/polg/breakdown",
+      "/api/polg/definitions"
+    ],
+    "frontend": "portal-next/app/polg/page.jsx",
+    "script": "scripts/polg_dashboard.py",
+    "built_note": "POLG dashboard built: /api/polg/overview|breakdown|definitions + portal-next/app/polg/page.jsx + SiteNav wired. 40-patient POLG cohort (Alpers-Huttenlocher/POLG-DEE/mtDNA depletion). VPA ABSOLUTE CI. Registry metadata fix — all endpoints 200 verified."
   },
   {
     "role": "Neurologist / Epileptologist",
@@ -2450,7 +2470,17 @@
     "precision_therapy": "GOF/LOF functional assay mandatory; GOF: VPA+CLB+STP/FFA; LOF: VPA+CLB+ETX+KD; IVM investigational LOF only",
     "patients": 41,
     "dashboard_number": 190,
-    "built_date": "2026-08-13"
+    "built_date": "2026-08-13",
+    "api_prefix": "/api/hcn1",
+    "endpoints": [
+      "/api/hcn1/overview",
+      "/api/hcn1/breakdown",
+      "/api/hcn1/definitions"
+    ],
+    "frontend": "portal-next/app/hcn1/page.jsx",
+    "script": "scripts/hcn1_dashboard.py",
+    "note": "Total: 237 dashboards",
+    "built_note": "HCN1 dashboard built: /api/hcn1/overview|breakdown|definitions + portal-next/app/hcn1/page.jsx + SiteNav wired. 40-patient HCN1 cohort (DEE24/Ih channelopathy/dual GOF-LOF/fever-sensitive). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "foxg1",
@@ -2725,7 +2755,16 @@
     "locus": "16q23.1-q23.2",
     "syndrome": "WOREE Syndrome / DEE28",
     "inheritance": "AR",
-    "note": "Biallelic WWOX LOF → WOREE (OMIM #616211). FRA16D fragile site. 5-class etiology, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
+    "note": "Biallelic WWOX LOF → WOREE (OMIM #616211). FRA16D fragile site. 5-class etiology, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards",
+    "api_prefix": "/api/wwox",
+    "endpoints": [
+      "/api/wwox/overview",
+      "/api/wwox/breakdown",
+      "/api/wwox/definitions"
+    ],
+    "frontend": "portal-next/app/wwox/page.jsx",
+    "script": "scripts/wwox_dashboard.py",
+    "built_note": "WWOX dashboard built: /api/wwox/overview|breakdown|definitions + portal-next/app/wwox/page.jsx + SiteNav wired. 40-patient WWOX cohort (WOREE syndrome/DEE28/FRA16D/AR/16q23.1-q23.2). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "lgi1",
@@ -2741,7 +2780,16 @@
     "locus": "10q23.33",
     "syndrome": "ADLTE / ADPEAF / EPILEPSY-AUDITORY (OMIM #600512)",
     "inheritance": "AD",
-    "note": "Heterozygous LGI1 LOF → ADLTE (OMIM #600512). Secreted synaptic adhesion protein; LGI1-ADAM22-ADAM23 trans-synaptic complex. Pathognomonic auditory aura. AD 70% penetrance. EXCELLENT prognosis: 65-70% seizure-free on CBZ/OXC. 5-class etiology, 5 seizure types, 8 triggers, 6 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
+    "note": "Heterozygous LGI1 LOF → ADLTE (OMIM #600512). Secreted synaptic adhesion protein; LGI1-ADAM22-ADAM23 trans-synaptic complex. Pathognomonic auditory aura. AD 70% penetrance. EXCELLENT prognosis: 65-70% seizure-free on CBZ/OXC. 5-class etiology, 5 seizure types, 8 triggers, 6 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards",
+    "api_prefix": "/api/lgi1",
+    "endpoints": [
+      "/api/lgi1/overview",
+      "/api/lgi1/breakdown",
+      "/api/lgi1/definitions"
+    ],
+    "frontend": "portal-next/app/lgi1/page.jsx",
+    "script": "scripts/lgi1_dashboard.py",
+    "built_note": "LGI1 dashboard built: /api/lgi1/overview|breakdown|definitions + portal-next/app/lgi1/page.jsx + SiteNav wired. 40-patient LGI1 cohort (ADLTE/auditory aura/ADAM22-ADAM23/AD/10q23.33). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "rorb",
@@ -2768,7 +2816,13 @@
       "concepts"
     ],
     "note": "Total: 217 dashboards",
-    "built_note": "RORB Epilepsy (GGE / RORB-GGE / DEE-RORB / RORβ Orphan Nuclear Receptor / Thalamocortical Transcription Factor / 9q21.13) Dashboard built 2026-08-17. 5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/rorb/overview|breakdown|definitions verified 200. portal-next/app/rorb/page.jsx + SiteNav wired next to LGI1. expert_dashboards.json count 210→211."
+    "built_note": "RORB Epilepsy (GGE / RORB-GGE / DEE-RORB / RORβ Orphan Nuclear Receptor / Thalamocortical Transcription Factor / 9q21.13) Dashboard built 2026-08-17. 5 etiology classes, 5 seizure types, 8 triggers, 7 treatments, 5 CIs, 12 thresholds, 12 standards, 6 references. 3 endpoints /api/rorb/overview|breakdown|definitions verified 200. portal-next/app/rorb/page.jsx + SiteNav wired next to LGI1. expert_dashboards.json count 210→211.",
+    "endpoints": [
+      "/api/rorb/overview",
+      "/api/rorb/breakdown",
+      "/api/rorb/definitions"
+    ],
+    "frontend": "portal-next/app/rorb/page.jsx"
   },
   {
     "id": "sptan1",
@@ -2966,7 +3020,14 @@
     "syndrome": "AHC / CAPOS / RDP / DEE-ATP1A3",
     "locus": "19q13.2",
     "inheritance": "AD de novo",
-    "built_note": "built 2026-08-17"
+    "built_note": "built 2026-08-17",
+    "endpoints": [
+      "/api/atp1a3/overview",
+      "/api/atp1a3/breakdown",
+      "/api/atp1a3/definitions"
+    ],
+    "frontend": "portal-next/app/atp1a3/page.jsx",
+    "note": "Total: 237 dashboards"
   },
   {
     "gene": "STX1B",
@@ -3024,7 +3085,8 @@
     ],
     "note": "Total: 221 dashboards",
     "count": 221,
-    "updated_at": "2026-08-17"
+    "updated_at": "2026-08-17",
+    "frontend": "portal-next/app/gnb1/page.jsx"
   },
   {
     "gene": "CLCN2",
@@ -3043,7 +3105,15 @@
     "precision_treatment": "Acetazolamide (carbonic anhydrase inhibitor; Level C; AZM + topiramate ABSOLUTE CI)",
     "gene_family": "Chloride channel (CLC family; CLC-2 neuronal/astrocytic)",
     "type": "gene",
-    "category": "genetic_epilepsy"
+    "category": "genetic_epilepsy",
+    "endpoints": [
+      "/api/clcn2/overview",
+      "/api/clcn2/breakdown",
+      "/api/clcn2/definitions"
+    ],
+    "frontend": "portal-next/app/clcn2/page.jsx",
+    "note": "Total: 237 dashboards",
+    "built_note": "CLCN2 dashboard built: /api/clcn2/overview|breakdown|definitions + portal-next/app/clcn2/page.jsx + SiteNav wired. 40-patient CLCN2 cohort (GGE/JME/CAE/GTCS-alone/CLC-2 Cl- channel/acetazolamide precision/3q26.1). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "grin1",
@@ -3359,7 +3429,16 @@
     "locus": "12p13.33",
     "syndrome": "Timothy Syndrome / LQTS8 / DEE",
     "inheritance": "AD GOF de novo (>95%)",
-    "note": "GOF G406R (TS1)/G402S (TS2) → impaired VDI → enlarged window current → LQTS8 + DEE + autism + syndactyly. Verapamil Level B (L-type Cav1.2 blocker; Jacobs 2006 dual cardiac+seizure benefit). ACTH Level A for IS. Cav1 subfamily: Cav1.1/CACNA1S · Cav1.2/CACNA1C · Cav1.3/CACNA1D · Cav1.4/CACNA1F. ABSOLUTE CI: Class Ia/III antiarrhythmics · TGB · VPA+POLG1. HIGH RISK: CBZ/OXC/PHT (CYP3A4 verapamil induction) · VGB long-term (VFD). 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards"
+    "note": "GOF G406R (TS1)/G402S (TS2) → impaired VDI → enlarged window current → LQTS8 + DEE + autism + syndactyly. Verapamil Level B (L-type Cav1.2 blocker; Jacobs 2006 dual cardiac+seizure benefit). ACTH Level A for IS. Cav1 subfamily: Cav1.1/CACNA1S · Cav1.2/CACNA1C · Cav1.3/CACNA1D · Cav1.4/CACNA1F. ABSOLUTE CI: Class Ia/III antiarrhythmics · TGB · VPA+POLG1. HIGH RISK: CBZ/OXC/PHT (CYP3A4 verapamil induction) · VGB long-term (VFD). 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 5 CIs, 14 monitoring, 15 concepts, 12 thresholds, 12 standards",
+    "api_prefix": "/api/cacna1c",
+    "endpoints": [
+      "/api/cacna1c/overview",
+      "/api/cacna1c/breakdown",
+      "/api/cacna1c/definitions"
+    ],
+    "frontend": "portal-next/app/cacna1c/page.jsx",
+    "script": "scripts/cacna1c_dashboard.py",
+    "built_note": "CACNA1C dashboard built: /api/cacna1c/overview|breakdown|definitions + portal-next/app/cacna1c/page.jsx + SiteNav wired. 40-patient CACNA1C cohort (Timothy syndrome/LQTS8/DEE/Cav1.2 L-type HVA Ca2+ channel/verapamil-precision/12p13.33). Registry metadata fix — all endpoints 200 verified."
   },
   {
     "id": "cacna1b",
