@@ -25097,6 +25097,63 @@ async def cacna1b_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kcnq5/overview")
+async def kcnq5_overview():
+    """KCNQ5 Epilepsy overview (DEE / ID-Epilepsy / Kv7.5 M-Current / Interneuron-Enriched /
+    GOF-LOF / 6q14.1). 40-patient cohort; GOF-DEE-Severe/LOF-ID-Epilepsy/GOF-Focal/AD-LOF-mild/
+    Phenocopy. No BFNS pattern (onset 6-24M — later than KCNQ2/3). GOF: CBZ/OXC beneficial.
+    LOF: paradoxical CBZ/OXC worsening in ~20% — EEG at 6 weeks mandatory.
+    Kv7.5 interneuron-enriched; Kv7.5 homotetramers + Kv7.3/Kv7.5 heteromers.
+    POLG mandatory before VPA; HLA-B*15:02 mandatory before CBZ/OXC in Asian ancestry.
+    OXC: Na+ monitoring (SIADH). Tiagabine ABSOLUTE CI. Retigabine WITHDRAWN 2017.
+    XEN496 investigational (NCT05374343 KCNQ2-DEE). KD HIGH PRIORITY in GOF-DEE (BHB Kv7.5).
+    OMIM *607357 / #618832. Lehman 2019 AJHG."""
+    try:
+        import scripts.kcnq5_dashboard as kq5_
+        return _json_safe(kq5_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnq5/breakdown")
+async def kcnq5_breakdown():
+    """KCNQ5 breakdown: 5-class etiology (GOF-DEE-Severe-35%/LOF-ID-Epilepsy-30%/
+    GOF-Focal-Epilepsy-20%/AD-LOF-familial-mild-10%/Phenocopy-5%),
+    5 seizure types (Focal-Impaired-Awareness-72%/GTCS-60%/Focal-Tonic-48%/IS-West-35%/
+    Myoclonic-25%) with EEG+semiology+clinical tips,
+    8 triggers (Fever-82%/Sleep-dep-70%/Missed-AED-65%/Infection-60%/Stress-55%/
+    AED-Taper-45%/Photosensitivity-22%/Catamenial-20%),
+    8 treatments (CBZ-OXC-Level-B-GOF/LEV-Level-B-POLG-safe/VPA-Level-B-POLG-VPPP/
+    ACTH-Level-A-IS/VGB-Level-A-IS-SHARE-REMS/KD-Level-B-BHB-Kv7.5/CLB-Level-B/
+    XEN496-EXPERIMENTAL),
+    6 contraindications (TGB-ABSOLUTE-NCSE/CBZ-OXC-LOF-paradox-HIGH/VPA-POLG-ABSOLUTE/
+    CBZ-OXC-HLA-ABSOLUTE/LTG-myoclonic-HIGH/Retigabine-WITHDRAWN),
+    14 monitoring items, 6-stage lifecycle, 40-patient sample."""
+    try:
+        import scripts.kcnq5_dashboard as kq5_
+        return _json_safe(kq5_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnq5/definitions")
+async def kcnq5_definitions():
+    """KCNQ5 definitions: 15 key concepts
+    (KCNQ5-6q14.1/Kv7.5-M-current/Kv7.5-Interneuron-Enriched/GOF-vs-LOF-distinction/
+    Paradoxical-CBZ-OXC-Worsening-LOF/M-Current-IKM/No-BFNS-Pattern/OMIM-618832/
+    XEN496-Kv7-Opener/HLA-B1502-CBZ-SJS/POLG-Alpers/VPPP-MHRA2021/OXC-SIADH/
+    KD-BHB-Kv7-Mechanism/SUDEP),
+    16 thresholds, 12 standards
+    (ILAE-2022/NICE-NG217/Lehman-2019-AJHG/Lerche-2000/Roura-Ferrer-2008/UKISS-2004/
+    CPIC-CBZ-2023/CPIC-POLG-2023/MHRA-VPPP-2021/SHARE-REMS-VGB/ACMG-AMP-2015/WHO-ICF-2019),
+    6 references (Lehman-2019/Lerche-2000/Roura-Ferrer-2008/ILAE-2022/NICE-NG217/UKISS-2004)."""
+    try:
+        import scripts.kcnq5_dashboard as kq5_
+        return _json_safe(kq5_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

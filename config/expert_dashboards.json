@@ -3368,5 +3368,19 @@
     "syndrome": "DEE / NDMSB / Hyperkinetic Movements",
     "omim": "618354",
     "color": "#00695c"
+  },
+  {
+    "role": "Neurologist",
+    "name": "KCNQ5 Epilepsy (DEE / ID-Epilepsy / Kv7.5 M-Current / Interneuron-Enriched / GOF-LOF / 6q14.1)",
+    "viz": "5-tab dashboard: Overview / Patients+Etiology / Seizures+Triggers / Treatments / Definitions",
+    "feature": "GOF-DEE-35%/LOF-ID-30%/GOF-Focal-20%/AD-LOF-10%/Phenocopy-5%; 5 seizure types; 8 triggers; 8 treatments; 6 contraindications; 6-stage lifecycle; 15 concepts",
+    "why": "KCNQ5 (6q14.1) Kv7.5 M-current channelopathy \u2014 completes Kv7 KCNQ subfamily: KCNQ2 Kv7.2 (neonatal DEE7/BFNS) + KCNQ3 Kv7.3 (BFNS-3/DEE-KCNQ3) + KCNQ5 Kv7.5 (infantile DEE/ID-epilepsy no BFNS). Interneuron-enriched Kv7.5. LOF paradoxical CBZ/OXC worsening ~20%.",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/kcnq5/overview",
+      "/api/kcnq5/breakdown",
+      "/api/kcnq5/definitions"
+    ]
   }
 ]
