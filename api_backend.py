@@ -26776,6 +26776,51 @@ async def cstb_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/scarb2/overview")
+async def scarb2_overview():
+    """SCARB2 Epilepsy — Action Myoclonus-Renal Failure Syndrome (EPM4 / AMRF / LIMP-2 /
+    Lysosomal-GBA1-Transport-LOF / CBZ-OXC-PHT-ABSOLUTE-CI / GBP-PGB-Double-CI-Renal /
+    ACE-ARB-Renoprotection / Renal-Transplant-NOT-CNS-Disease-Modifying / 4q21.1).
+    40-patient cohort; 5 etiologies (Missense-LOF-Luminal-Domain / Truncating-Frameshift /
+    Splice-Site / Israeli-Arab-Roma-Founder / Phenocopy-GBA1-Gaucher); FSGS proteinuria
+    pathognomonic (sole PME with renal involvement); giant SEP cortical myoclonus marker."""
+    try:
+        import scripts.scarb2_dashboard as scarb2_
+        return _json_safe(scarb2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/scarb2/breakdown")
+async def scarb2_breakdown():
+    """SCARB2 breakdown — etiology catalog, 40-patient sample, seizure types, triggers,
+    treatments (6 AED/neuro + 2 renal-unique: ACE/ARB + renal replacement therapy),
+    contraindications (GBP/PGB double CI in renal failure), monitoring (urine ACR + eGFR),
+    lifecycle (6 stages including renal replacement and post-transplant neurological)."""
+    try:
+        import scripts.scarb2_dashboard as scarb2_
+        return _json_safe(scarb2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/scarb2/definitions")
+async def scarb2_definitions():
+    """SCARB2 definitions — 15 concepts (SCARB2-4q21.1-EPM4-AMRF /
+    LIMP2-GBA1-Lysosomal-Transport-LOF / FSGS-Proteinuria-Pathognomonic-PME /
+    GBP-PGB-Double-CI-AMRF-Renal-Failure / ACE-ARB-Renoprotection-Mandatory /
+    Renal-Transplant-NOT-Disease-Modifying-CNS / GBA1-Enzyme-Activity-Distinguishes-Gaucher /
+    Piracetam-Renal-Dose-Adjustment-Critical / Israeli-Arab-Roma-Founder-Directed-Testing),
+    12 thresholds, 12 standards (Berkovic-2008 / KDIGO-2021 / Crespel-1999),
+    6 references (Berkovic-2008 / Garg-1988 / Dibbens-2009 / Rubboli-2015 / KDIGO-2021 /
+    Crespel-1999)."""
+    try:
+        import scripts.scarb2_dashboard as scarb2_
+        return _json_safe(scarb2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

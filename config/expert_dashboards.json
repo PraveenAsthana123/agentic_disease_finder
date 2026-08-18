@@ -4001,5 +4001,24 @@
       "/api/cstb/breakdown",
       "/api/cstb/definitions"
     ]
+  },
+  {
+    "id": "scarb2",
+    "name": "SCARB2 Epilepsy (Action Myoclonus-Renal Failure Syndrome / EPM4 / AMRF / LIMP-2 / Lysosomal-GBA1-Transport-LOF / FSGS-Proteinuria-Pathognomonic / GBP-PGB-Double-CI-Renal / ACE-ARB-Mandatory / Transplant-NOT-CNS-Disease-Modifying / Israeli-Arab-Roma-Founder / 4q21.1)",
+    "status": "built",
+    "color": "#bf360c",
+    "route": "/scarb2",
+    "api": "/api/scarb2/overview|breakdown|definitions",
+    "script": "scripts/scarb2_dashboard.py",
+    "category": "epilepsy-genetics-pme",
+    "gene": "SCARB2",
+    "locus": "4q21.1",
+    "protein": "LIMP-2 (Lysosomal Integral Membrane Protein-2)",
+    "disease": "Action Myoclonus-Renal Failure Syndrome (AMRF / EPM4)",
+    "omim_gene": "602257",
+    "omim_disease": "254900",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "built_date": "2026-08-18"
   }
 ]
