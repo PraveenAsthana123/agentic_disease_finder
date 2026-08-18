@@ -26733,6 +26733,49 @@ async def epm2a_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cstb/overview")
+async def cstb_overview():
+    """CSTB Epilepsy — Unverricht-Lundborg Disease (EPM1 / Cystatin B / Dodecamer-Repeat-Expansion /
+    Progressive-Myoclonic-Epilepsy / Piracetam-Level-A / CBZ-OXC-PHT-ABSOLUTE-CI /
+    GBP-Worsen-Myoclonus / Non-Fatal-PME / 21q22.3) — cohort overview, etiology distribution,
+    seizure types, trigger distribution, key contraindications."""
+    try:
+        import scripts.cstb_dashboard as cstb_
+        return _json_safe(cstb_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cstb/breakdown")
+async def cstb_breakdown():
+    """CSTB breakdown — etiology catalog, 40-patient sample, seizure types, triggers,
+    treatments (Piracetam-Level-A / VPA / LEV / CLB / ZNS / KBr / Physiotherapy),
+    contraindications (CBZ/PHT/LTG/TGB/GBP/VPA-POLG1), monitoring, lifecycle stages."""
+    try:
+        import scripts.cstb_dashboard as cstb_
+        return _json_safe(cstb_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cstb/definitions")
+async def cstb_definitions():
+    """CSTB definitions — 15 concepts (CSTB-Cystatin-B / Dodecamer-Expansion / Action-Myoclonus-Giant-SEP /
+    ULD-vs-Lafora / CBZ-Absolute-CI / Piracetam-Level-A / TGB-NCSE-Purkinje / GBP-Worsening /
+    POLG1-VPA-Mandatory / Non-Fatal-ULD-Rehab / KBr-Historical / Finnish-Founder / SUDEP /
+    Bromide-History / Canafoglia-Prognosis),
+    12 thresholds, 12 standards (ILAE-2022 / NICE-NG217 / Kälviäinen-2008 / Kälviäinen-2012 /
+    Canafoglia-2020 / CPIC-POLG1-2023 / MHRA-VPPP-2021 / Pennacchio-1996 /
+    ACMG-AMP-2015 / WHO-ICF-2019 / Berkovic-1991 / Brown-1993),
+    6 references (Pennacchio-1996 / Berkovic-1991 / Kälviäinen-2008 / Kälviäinen-2012 /
+    Brown-1993 / Canafoglia-2020)."""
+    try:
+        import scripts.cstb_dashboard as cstb_
+        return _json_safe(cstb_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

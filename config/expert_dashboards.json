@@ -3987,5 +3987,19 @@
     "script": "scripts/epm2a_dashboard.py",
     "color": "#1a237e",
     "category": "progressive_myoclonic_epilepsy"
+  },
+  {
+    "role": "Neurologist",
+    "name": "CSTB Epilepsy (Unverricht-Lundborg Disease / EPM1 / Cystatin-B / Dodecamer-Repeat-Expansion / Piracetam-Level-A / CBZ-OXC-PHT-ABSOLUTE-CI / GBP-Worsen-Myoclonus / Non-Fatal-PME / Finnish-Baltic-Founder / 21q22.3)",
+    "viz": "5-tab clinical dashboard (Overview / Patients-Etiology / Seizures-Triggers / Treatments / Definitions)",
+    "feature": "Piracetam Level A action myoclonus, CBZ/PHT ABSOLUTE CI, GBP/PGB myoclonic worsening, POLG1/VPA, Finnish-Baltic founder, non-fatal PME rehabilitation focus",
+    "why": "CSTB (21q22.3) \u2014 Cystatin B / Stefin B; 98 aa ~11 kDa; type I cystatin; intracellular cathepsin B/H/L/S inhibitor; LOF \u2192 unregulated cathepsins \u2192 oxidative stress \u2192 Purkinje cell death \u2192 Unverricht-Lundborg Disease (EPM1), MOST COMMON PME worldwide; 40-patient cohort, dodecamer expansion (90%), non-fatal PME. Built 2026-08-18.",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/cstb/overview",
+      "/api/cstb/breakdown",
+      "/api/cstb/definitions"
+    ]
   }
 ]
