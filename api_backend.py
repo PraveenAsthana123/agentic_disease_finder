@@ -26183,6 +26183,64 @@ async def gabbr2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/shank3/overview")
+async def shank3_overview():
+    """SHANK3 Epilepsy (Phelan-McDermid Syndrome / 22q13.33) — overview:
+    40-patient cohort, 5 etiology classes (22q13-large-deletion-38% /
+    22q13-small-SHANK3-only-28% / SHANK3-point-mutation-20% /
+    Mosaicism-10% / Phenocopy-4%), seizure prevalence 37%,
+    regression 60% (SHANK3 Regression Syndrome), IGF-1 precision Rx,
+    VGB ABSOLUTE AVOID (visual monitoring impossible in non-verbal PMS),
+    PHT/CBZ HIGH RISK (behaviour worsening)."""
+    try:
+        import scripts.shank3_dashboard as shank3_
+        return _json_safe(shank3_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/shank3/breakdown")
+async def shank3_breakdown():
+    """SHANK3 Epilepsy — full breakdown: 5 etiologies (22q13-large-38% /
+    22q13-small-28% / point-mutation-20% / mosaicism-10% / phenocopy-4%),
+    40-patient cohort, 5 seizure types (FIAS-72% / Febrile-65% / GTCS-45% /
+    Myoclonic-25% / CSWS-spasms-12%), 8 triggers, 8 treatments
+    (VPA-Level-B / LTG-Level-B / LEV-Level-B / IGF-1-Level-C-Precision /
+    CLB-Level-B / Corticosteroids-Level-B-CSWS / Melatonin-Level-C / KD-Level-C),
+    6 CIs (PHT-CBZ-HIGH / VGB-HIGH-visual / VPA+IGF1-HIGH-mTOR /
+    AED-abrupt-withdrawal-ABSOLUTE / anaesthesia-HIGH / BZD-chronic-HIGH),
+    14 monitoring items, 5 lifecycle stages."""
+    try:
+        import scripts.shank3_dashboard as shank3_
+        return _json_safe(shank3_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/shank3/definitions")
+async def shank3_definitions():
+    """SHANK3 Epilepsy — definitions: 15 concepts (SHANK3-22q13.33-PMS /
+    Postsynaptic-Density-Scaffold / IGF-1-Precision-SHANK3 /
+    SHANK3-Regression-Syndrome / CSWS-PMS-Regression / Post-Anaesthetic-Regression /
+    mGluR5-LTD-SHANK3 / VPA-mTOR-IGF1-Interaction / VGB-AVOID-NonVerbal-PMS /
+    Catamenial-Epilepsy-PMS / LEV-Behavioural-Toxicity-ASD /
+    POLG1-VPA-Mandatory-Screen / CMA-SHANK3-Diagnosis /
+    KD-mTOR-Interaction-IGF1 / SUDEP-DRE-PMS),
+    12 thresholds (IGF-1-hypoglycaemia / VPA-TDM / NH3 / Regression-Bayley /
+    Febrile-admission / LTG-titration / Corticosteroid-CSWS / Deletion-size /
+    POLG1-turnaround / SUDEP-alarm / LTG-DRESS / IGF-1-dose-cap),
+    12 standards (ILAE-2022 / NICE-NG217 / Kolevzon-2014 / Soorya-2013 /
+    Leblond-2014 / Bozdagi-2010 / Holder-2012 / Bonaglia-2011 /
+    MHRA-VPPP-2021 / ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019),
+    6 references (Kolevzon-2014 / Soorya-2013 / Leblond-2014 /
+    Bozdagi-2010 / Holder-2012 / Bonaglia-2011)."""
+    try:
+        import scripts.shank3_dashboard as shank3_
+        return _json_safe(shank3_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

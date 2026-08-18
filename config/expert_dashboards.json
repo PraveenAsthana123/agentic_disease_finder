@@ -3858,5 +3858,17 @@
     "precision_rx": "Baclofen (GABA-B agonist) LOF only",
     "absolute_ci": "TGB (NCSE); Baclofen abrupt withdrawal (emergency)",
     "key_feature": "GABA-B obligatory heterodimer GABBR1+GABBR2; functional assay mandatory before baclofen"
+  },
+  {
+    "role": "Epileptologist / Neurologist / Pediatric Neurologist / Clinical Geneticist",
+    "name": "SHANK3 Epilepsy (Phelan-McDermid Syndrome / PSD-Scaffold / mGluR5-AMPA-NMDA / IGF-1-Precision / SHANK3-Regression-Syndrome / VGB-AVOID / Post-Anaesthetic-Regression / 22q13.33)",
+    "viz": "Multi-tab clinical dashboard",
+    "feature": "40-patient cohort, 5 etiology classes, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 5 lifecycle, 15 concepts",
+    "why": "Phelan-McDermid Syndrome rare epilepsy+ASD gene; IGF-1 precision therapy; VGB absolute avoid (non-verbal patients); post-anaesthetic regression 50-65%; SHANK3 Regression Syndrome 50-70%; VPA+IGF-1 opposing mTOR",
+    "status": "built",
+    "id": "shank3",
+    "api": "/api/shank3/overview|breakdown|definitions",
+    "page": "/shank3",
+    "description": "SHANK3 (22q13.33) PMS \u2014 40 patients, 5-class etiology (22q13-large-38%/22q13-small-SHANK3-28%/point-mutation-20%/mosaicism-10%/phenocopy-4%), IGF-1 precision Rx, SRS 50-70%, VGB avoid, post-anaesthetic regression protocol"
   }
 ]
