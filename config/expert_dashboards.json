@@ -3619,5 +3619,27 @@
     "color": "#6d4c41",
     "note": "Total: 240 dashboards",
     "built_note": "CHRNA4 ADNFLE: first epilepsy channelopathy (Steinlein 1995 Nat Genet). nAChR α4 GOF → delayed desensitisation → hypermotor nocturnal NREM frontal lobe seizures. CBZ-XR first-line 70-80% SF. HLA-B*15:02 ABSOLUTE CI for CBZ/OXC in SE Asian. Nicotine paradox: low-dose patch desensitises GOF receptor (investigational); high-dose activates. 5 etiologies, 5 seizures, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle, 15 definitions."
+  },
+  {
+    "id": "kcnma1",
+    "gene": "KCNMA1",
+    "name": "KCNMA1 Epilepsy — BK Channel (MaxiK/Slo1) / Epilepsy+Paroxysmal Dyskinesia (GOF) / Liang-Wang Syndrome (LOF) / Quinidine Precision / 10q22.3",
+    "locus": "10q22.3",
+    "channel": "BK Channel (MaxiK / Slo1) — Large-Conductance Ca²⁺-Activated K⁺ Channel (~250 pS)",
+    "syndrome": "KCNMA1-EPD (GOF, OMIM #609446) / Liang-Wang Syndrome (LOF, OMIM #618729)",
+    "omim": "600150",
+    "color": "#4a148c",
+    "route": "/kcnma1",
+    "api_prefix": "/api/kcnma1",
+    "endpoints": [
+      "/api/kcnma1/overview",
+      "/api/kcnma1/breakdown",
+      "/api/kcnma1/definitions"
+    ],
+    "frontend": "portal-next/app/kcnma1/page.jsx",
+    "script": "scripts/kcnma1_dashboard.py",
+    "status": "built",
+    "note": "BK channel GOF→epilepsy+paroxysmal dyskinesia (caffeine-triggered, NORMAL EEG); LOF→Liang-Wang DEE+autism+hypotonia. Quinidine (BK blocker): GOF precision therapy, ABSOLUTE CI in LOF. First GOF mutation: D434G (Du 2005 Nat Neurosci). Quinidine evidence: Mullen 2021 Brain.",
+    "built_note": "Built 2026-08-17: scripts/kcnma1_dashboard.py (40-patient cohort, 5 etiologies, 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring items, 15 concepts) + api_backend.py 3 routes + portal-next/app/kcnma1/page.jsx (5-tab, deep purple #4a148c) + SiteNav wired after CHRNA4. registry count 240→241."
   }
 ]

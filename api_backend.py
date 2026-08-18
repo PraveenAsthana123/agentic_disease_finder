@@ -25535,6 +25535,68 @@ async def chrna4_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kcnma1/overview")
+async def kcnma1_overview():
+    """KCNMA1 overview: BK channel (MaxiK/Slo1) / 40-patient cohort /
+    GOF=KCNMA1-EPD (Epilepsy+Paroxysmal Dyskinesia, OMIM #609446) /
+    LOF=Liang-Wang Syndrome (DEE+Autism+Hypotonia, OMIM #618729) /
+    precision therapy: Quinidine (BK blocker, GOF-only; ABSOLUTE CI in LOF) /
+    hallmark trigger: caffeine (PKA→BK GOF sensitisation) /
+    Du-2005-NatNeurosci (D434G first GOF mutation) /
+    Mullen-2021-Brain (quinidine Level C evidence) /
+    Liang-2019-Brain (LOF characterisation). 10q22.3."""
+    try:
+        import scripts.kcnma1_dashboard as km1_
+        return _json_safe(km1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnma1/breakdown")
+async def kcnma1_breakdown():
+    """KCNMA1 breakdown: 40 patients / 5 etiology classes
+    (GOF-D434G-Epilepsy-Dyskinesia-32% / GOF-N999S-RCK2-CaBowl-22% /
+    GOF-Other-VSD-RCK1-18% / LOF-LiangWang-20% / Phenocopy-8%) /
+    5 seizure types (Focal-BTCS-78% / ParoxysmalDyskinesia-GOF-65% /
+    Myoclonic-45% / InfantileSpasms-LOF-38% / Absence-22%) /
+    8 triggers (Caffeine-85% / SleepDeprivation-75% / Stress-68% /
+    VigExercise-55% / MissedDose-60% / FebrileIllness-52% /
+    Alcohol-35% / Catamenial-28%) /
+    8 treatments (Quinidine-Level-C-GOF / CLB-Level-B /
+    VPA-Level-B / LEV-Level-B / ACTH-Level-A-IS /
+    KD-Level-B-DRE / TPM-Level-C / VGB-Level-A-IS-REMS) /
+    6 CIs / 14 monitoring items / 6 lifecycle stages."""
+    try:
+        import scripts.kcnma1_dashboard as km1_
+        return _json_safe(km1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnma1/definitions")
+async def kcnma1_definitions():
+    """KCNMA1 definitions: 15 key concepts
+    (KCNMA1-10q22.3 / BK-Channel-MaxiK-Slo1 / KCNMA1-EPD-609446 /
+    Liang-Wang-Syndrome-618729 / GOF-Paradox-Inhibitory-Disinhibition /
+    Quinidine-BK-Blocker / Paroxysmal-Dyskinesia-Normal-EEG /
+    RCK1-RCK2-Ca-Bowl / QTc-Monitoring-Quinidine / POLG1-Before-VPA /
+    Beta-Adrenergic-BK-Sensitisation / VPPP-MHRA2021 / SUDEP-Risk /
+    Video-EEG-GOF-LOF-Distinction / Caffeine-BK-GOF-Trigger),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Mullen-2021-Brain / Liang-2019-Brain /
+    Du-2005-NatNeurosci / CPIC-POLG-2023 / MHRA-VPPP-2021 /
+    UKISS-2004-Lancet / FDA-SHARE-REMS-VGB / ACMG-AMP-2015 /
+    WHO-ICF-2019 / ILAE-Genetic-Epilepsy-TaskForce-2018),
+    6 references (Du-2005-NatNeurosci / Liang-2019-Brain /
+    Mullen-2021-Brain / Bhatt-2017-NEJM /
+    Li-2023-EpilepsiaOpen / Lee-2010-JNeurosci)."""
+    try:
+        import scripts.kcnma1_dashboard as km1_
+        return _json_safe(km1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
