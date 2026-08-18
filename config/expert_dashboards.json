@@ -3921,5 +3921,27 @@
       "/api/gabbr1/definitions"
     ],
     "built_note": "40-patient GABBR1 cohort (6p22.1), 5 etiologies (LOF-missense-VFTM-35%/LOF-truncating-haploinsufficiency-30%/GABBR1a-sushi-presynaptic-15%/GOF-rare-DEE-12%/Phenocopy-8%), 5 seizure types, 8 triggers, 8 treatments, 6 CIs, 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references. Deep burgundy #880e4f. GABA-B obligatory heterodimer partner to GABBR2."
+  },
+  {
+    "id": "iqsec2",
+    "gene": "IQSEC2",
+    "name": "IQSEC2 Epilepsy (X-Linked DEE / ArfGEF BRAG1 / AMPAR-Trafficking / Myoclonic-Encephalopathy / IS-West / PHT-CBZ-HIGH-RISK / TGB-ABSOLUTE-NCSE / LEV-Behavioural-XLID-Caution / VGB-ERG-Mandatory / Xp11.22)",
+    "locus": "Xp11.22",
+    "channel": "ArfGEF BRAG1 \u2014 IQ-motif + Sec7 (ArfGEF catalytic) + PH domain; activates Arf1/Arf3 GTPases \u2192 AMPA receptor (GluA1/GluA2) postsynaptic trafficking",
+    "syndrome": "IQSEC2-related X-linked intellectual disability and epilepsy (OMIM #309530); XLID type 95; DEE with myoclonic encephalopathy + infantile spasms",
+    "omim": "309530",
+    "color": "#1565c0",
+    "route": "/iqsec2",
+    "api_prefix": "/api/iqsec2",
+    "endpoints": [
+      "/api/iqsec2/overview",
+      "/api/iqsec2/breakdown",
+      "/api/iqsec2/definitions"
+    ],
+    "frontend": "portal-next/app/iqsec2/page.jsx",
+    "script": "scripts/iqsec2_dashboard.py",
+    "status": "built",
+    "note": "X-linked dominant (de novo females ~75%); X-inactivation determines severity. Myoclonic encephalopathy HALLMARK (90%). IS/West 65%. DRE 80%+. PHT/CBZ/OXC HIGH RISK (myoclonic worsening; IV PHT ABSOLUTE CI for SE). TGB ABSOLUTE CI (NCSE \u2014 non-verbal cannot report). LEV behavioural toxicity XLID caution. VGB without ERG HIGH RISK. POLG1 before VPA. Perampanel emerging Level C (AMPAR rationale). No single precision therapy approved 2024.",
+    "built_note": "Built 2026-08-18: scripts/iqsec2_dashboard.py (40-patient cohort, 5 etiologies LOF-missense-Sec7-PH-40%/LOF-truncating-30%/XLR-hemizygous-20%/IQ-motif-7%/Phenocopy-3%, 5 seizure types Myoclonic-90%/IS-65%/GTCS-55%/FIAS-35%/Atonic-20%, 8 triggers, 8 treatments ACTH-A/VGB-A/VPA-B/LEV-B/CLB-B/KD-B/Perampanel-C/VNS-C, 6 CIs PHT-CBZ-HIGH/TGB-ABSOLUTE/LTG-mono-HIGH/VPA-POLG1-ABSOLUTE/LEV-XLID-caution/VGB-ERG-HIGH, 14 monitoring, 6 lifecycle stages, 15 concepts, 12 thresholds, 12 standards, 6 references) + api_backend.py 3 routes + portal-next/app/iqsec2/page.jsx (5-tab, deep blue #1565c0) + SiteNav wired after GABBR1. registry count 256->257."
   }
 ]

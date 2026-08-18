@@ -26438,6 +26438,74 @@ async def gabbr1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/iqsec2/overview")
+async def iqsec2_overview():
+    """IQSEC2 Epilepsy (X-Linked DEE / ArfGEF-Synaptic / AMPAR-Trafficking / Myoclonic-Encephalopathy) — overview:
+    40-patient cohort, gene summary (IQSEC2 Xp11.22, ArfGEF BRAG1, activates Arf1/Arf3 GTPases
+    → AMPA receptor trafficking; 1,488 aa ~165 kDa; pLI=1.00; OMIM #309530 / *300522),
+    X-linked dominant (de novo females ~75%; X-linked recessive carrier mother → affected son ~20%),
+    female predominance 70%, drug-resistant 80%+, infantile spasms 65%, myoclonic 90%,
+    absent speech 88%, ASD features 65%, CSWS 10%,
+    key CIs (PHT/CBZ/OXC HIGH RISK myoclonic worsening / TGB ABSOLUTE NCSE non-verbal /
+    LTG monotherapy HIGH RISK myoclonic aggravation / VPA+POLG1 ABSOLUTE /
+    LEV behavioural toxicity XLID caution / VGB without ERG HIGH RISK),
+    12 standards (ILAE-2022 / NICE-NG217 / Shoubridge-2010 / TranMauThem-2020 /
+    Zeev-2016 / UKISS-2005 / CPIC-POLG1-2023 / MHRA-VPPP-2021 /
+    ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019 / Radmanesh-2021)."""
+    try:
+        import scripts.iqsec2_dashboard as iqsec2_
+        return _json_safe(iqsec2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/iqsec2/breakdown")
+async def iqsec2_breakdown():
+    """IQSEC2 Epilepsy — full breakdown:
+    5 etiologies (LOF-missense-Sec7-PH-DeNovo-Females-40% /
+    LOF-truncating-frameshift-nonsense-30% / XLR-carrier-mother-hemizygous-son-20% /
+    IQ-motif-calmodulin-domain-moderate-7% / Phenocopy-IQSEC2-negative-3%),
+    40-patient cohort, 5 seizure types (Myoclonic-90% / IS-West-65% /
+    GTCS-55% / FIAS-35% / Atonic-LGS-20%), 8 triggers,
+    8 treatments (ACTH-Level-A-IS / VGB-Level-A-IS-ERG / VPA-Level-B-first-line /
+    LEV-Level-B-adjunct / CLB-Level-B-catamenial / KD-Level-B-DRE /
+    Perampanel-Level-C-emerging / VNS-Level-C-DRE),
+    6 CIs (PHT-CBZ-OXC-HIGH-myoclonic / TGB-ABSOLUTE-NCSE /
+    LTG-mono-myoclonic-HIGH / VPA-POLG1-ABSOLUTE /
+    LEV-behavioural-XLID-caution / VGB-without-ERG-HIGH),
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.iqsec2_dashboard as iqsec2_
+        return _json_safe(iqsec2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/iqsec2/definitions")
+async def iqsec2_definitions():
+    """IQSEC2 Epilepsy — definitions: 15 concepts (IQSEC2-Xp11.22-DEE /
+    ArfGEF-AMPAR-Trafficking-Mechanism / X-Linked-Dominant-Inheritance /
+    X-Inactivation-Severity-Modifier / IQSEC2-Myoclonic-Encephalopathy /
+    PHT-CBZ-OXC-HIGH-RISK-Myoclonic / TGB-ABSOLUTE-NCSE-Non-Verbal /
+    LEV-Behavioural-Toxicity-XLID / VGB-ERG-REMS-Non-Verbal /
+    LTG-Monotherapy-Myoclonic-Risk-IQSEC2 / POLG1-VPA-Mandatory /
+    Perampanel-AMPAR-IQSEC2-Rationale / CSWS-Silent-Regression /
+    KD-Early-DRE / VPPP-MHRA-2021-Females),
+    12 thresholds (VPA-TDM / POLG1-turnaround / ACTH-Day14 / KD-initiation /
+    BHB-target / VGB-ERG-scotoma / Perampanel-VPA-max / CSWS-diagnostic /
+    X-inactivation-skew / Myoclonic-rescue / SUDEP-alarm / AED-taper),
+    12 standards (ILAE-2022 / NICE-NG217 / Shoubridge-2010 / TranMauThem-2020 /
+    Zeev-2016 / UKISS-2005 / CPIC-POLG1-2023 / MHRA-VPPP-2021 /
+    ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019 / Radmanesh-2021),
+    6 references (Shoubridge-2010 / TranMauThem-2020 / Zeev-2016 /
+    Radmanesh-2021 / Schreiber-2020 / Puffenberger-2012)."""
+    try:
+        import scripts.iqsec2_dashboard as iqsec2_
+        return _json_safe(iqsec2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
