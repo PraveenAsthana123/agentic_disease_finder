@@ -4020,5 +4020,15 @@
     "inheritance": "AR",
     "cohort_size": 40,
     "built_date": "2026-08-18"
+  },
+  {
+    "id": "gosr2",
+    "name": "GOSR2 Epilepsy (North Sea PME / EPM6 / Golgi-SNARE / ER-to-Golgi-Transport-LOF / Gly144Trp-North-Sea-Founder / Scoliosis-Virtually-Universal / CBZ-OXC-PHT-ABSOLUTE-CI / GBP-Orthopedic-Trap / TGB-ABSOLUTE-NCSE / Non-Fatal-PME / 17q21.32)",
+    "status": "built",
+    "route": "/gosr2",
+    "api_base": "/api/gosr2",
+    "category": "gene-epilepsy-pme",
+    "color": "#01579b",
+    "description": "GOSR2 (17q21.32) Golgi v-SNARE EPM6 \u2014 40-patient North Sea PME cohort; 5 etiologies; scoliosis >95% (only PME with universal spinal deformity); earliest PME onset (tremor 1-2y + febrile seizures); 5 seizure types; 8 triggers; 8 treatments; 6 CIs; 14 monitoring items; 6 lifecycle stages; 15 concepts"
   }
 ]

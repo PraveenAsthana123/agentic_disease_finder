@@ -26821,6 +26821,57 @@ async def scarb2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gosr2/overview")
+async def gosr2_overview():
+    """GOSR2 Epilepsy — North Sea Progressive Myoclonus Epilepsy (EPM6 / Golgi-SNARE /
+    ER-to-Golgi-Transport-LOF / Gly144Trp-North-Sea-Founder / Scoliosis-Virtually-Universal /
+    CBZ-OXC-PHT-ABSOLUTE-CI / GBP-Orthopedic-Trap / TGB-ABSOLUTE-NCSE / Non-Fatal-PME / 17q21.32).
+    40-patient cohort; 5 etiologies (Gly144Trp-Homozygous-Founder / Compound-Het / SNARE-Missense /
+    Truncating-LOF / Phenocopy); scoliosis >95% (only PME with universal spinal deformity);
+    earliest PME onset (tremor 1-2y + febrile seizures preceding myoclonus)."""
+    try:
+        import scripts.gosr2_dashboard as gosr2_
+        return _json_safe(gosr2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gosr2/breakdown")
+async def gosr2_breakdown():
+    """GOSR2 breakdown — etiology catalog, 40-patient sample, seizure types (action myoclonus /
+    GTCS / stimulus-sensitive / febrile-seizures-early / absence-like), triggers,
+    treatments (VPA+POLG1 / LEV-IV-SE / Piracetam-ActionMyoclonus / CLB-FebrileClusters /
+    ZNS-Antioxidant / KD / Physiotherapy-SARA / Spinal-Surgery-AnaesthesiaBriefing),
+    contraindications (CBZ-ABSOLUTE / TGB-ABSOLUTE-NCSE / GBP-Orthopedic-Trap / LTG-mono-HIGH /
+    VPA-POLG1-ABSOLUTE), monitoring (Gly144Trp-PCR / POLG1-PreVPA / Cobb-Full-Spine-XRay-Every-Visit /
+    Giant-SEP / SARA / UMRS / VPPP), lifecycle (6 stages Prenatal→Late-Adult)."""
+    try:
+        import scripts.gosr2_dashboard as gosr2_
+        return _json_safe(gosr2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gosr2/definitions")
+async def gosr2_definitions():
+    """GOSR2 definitions — 15 concepts (GOSR2-17q21.32-EPM6 / SNARE-ER-Golgi-Transport /
+    Gly144Trp-North-Sea-Founder / Scoliosis-Virtually-Universal-Pathognomonic /
+    Early-Onset-Tremor-Febrile-First-Presentation / CBZ-ABSOLUTE-CI-Type6 /
+    TGB-NCSE-Purkinje-Deficit / GBP-Orthopedic-Trap / Giant-SEP-Cortical-Marker /
+    Piracetam-Action-Myoclonus / POLG1-VPA-Mandatory / Spinal-Surgery-Anaesthesia-Briefing /
+    Non-Fatal-vs-Lafora / VPPP-Female / SUDEP-Nocturnal),
+    12 thresholds, 12 standards (ILAE-2022 / NICE-NG217 / Corbett-2011-NatGenet /
+    van-Egmond-2014 / Ramachandran-2009 / CPIC-POLG1-2023 / MHRA-VPPP-2021 /
+    Crespel-1999 / ACMG-AMP-2015 / WHO-ICF-2019 / Berkovic-2016 / Rubboli-2017),
+    6 references (Corbett-2011 / van-Egmond-2014 / Ramachandran-2009 / Rubboli-2017 /
+    Berkovic-2016 / Crespel-1999)."""
+    try:
+        import scripts.gosr2_dashboard as gosr2_
+        return _json_safe(gosr2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
