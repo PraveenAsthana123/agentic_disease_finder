@@ -25040,6 +25040,62 @@ async def cacna1c_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna1d/overview")
+async def cacna1d_overview():
+    """CACNA1D SANDD+DEE overview: 40-patient cohort KPIs (seizure-free/DRE/GOF-count/SANDD-count/
+    aldosteronism-count/pacemaker-count/cochlear-implant-count/isradipine-rx-count/ASD-count),
+    etiology distribution (GOF-DEE-Autism-Primary-Aldosteronism-35%/GOF-DEE-Autism-Normotensive-28%/
+    LOF-SANDD-Biallelic-20%/GOF-Mosaic-Partial-Phenotype-12%/Phenocopy-Panel-Negative-5%),
+    5 seizure summaries, 8 treatment summaries, 8 monitoring items, 6 lifecycle windows,
+    6 thresholds, 5 CI summaries.
+    CACNA1D (3p14.3) · Cav1.3 Low-Threshold L-type HVA Ca²⁺ Channel (V1/2 −40 to −55 mV) ·
+    OMIM #614896 SANDD · GOF: DEE+ASD+aldosteronism (isradipine-precision) ·
+    LOF: SANDD (cochlear implant + pacemaker) · KEY DISTINCTION vs CACNA1C:
+    no LQTS8/QTc-prolongation in CACNA1D (use isradipine not verapamil)."""
+    try:
+        import scripts.cacna1d_dashboard as ca1d_
+        return _json_safe(ca1d_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1d/breakdown")
+async def cacna1d_breakdown():
+    """CACNA1D breakdown: 5-class etiology (GOF-DEE-Autism-Primary-Aldosteronism/
+    GOF-DEE-Autism-Normotensive/LOF-SANDD-Biallelic/GOF-Mosaic-Partial-Phenotype/
+    Phenocopy-Panel-Negative), 5 seizure types (Infantile-Spasms-58%/Focal-Impaired-Awareness-65%/
+    GTCS-52%/Focal-Tonic-38%/Febrile-Seizures-30%), 8 triggers, 8 treatments
+    (ACTH-LevelA/LEV-LevelB/VPA-LevelB-POLG/Isradipine-LevelC-GOF-only/VGB-LevelA-West-VFD/
+    Spironolactone-LevelB-aldosteronism/CLB-LevelB/KD-LevelB-DRE), 6 contraindications
+    (TGB-ABSOLUTE/VPA+POLG1-ABSOLUTE/Isradipine-LOF-ABSOLUTE/VGB-long-term-HIGH-VFD/
+    CBZ-OXC-HIGH-RISK-EEG/Class-III-antiarrhythmics-SANDD-AVOID), 14 monitoring items,
+    6 lifecycle stages, 40 patient cohort records."""
+    try:
+        import scripts.cacna1d_dashboard as ca1d_
+        return _json_safe(ca1d_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna1d/definitions")
+async def cacna1d_definitions():
+    """CACNA1D definitions: 15 key concepts
+    (CACNA1D-3p14.3/Cav1.3-Low-Threshold-L-type-HVA/SANDD-Syndrome-OMIM614896/
+    GOF-DEE-Autism-Primary-Aldosteronism/Isradipine-DHP-Cav1.3-Precision-Blocker/
+    Cav1.3-vs-Cav1.2-DHP-Selectivity/Primary-Aldosteronism-CACNA1D-GOF/
+    Cochlear-IHC-Cav1.3-Dependence/Sick-Sinus-Syndrome-SANDD/POLG1-Alpers/
+    VPPP-MHRA2021/West-Syndrome-IS/STEADY-Trial-Isradipine-Parkinson/
+    Cochlear-Implant-SANDD/SUDEP), 12 thresholds, 12 standards
+    (ILAE-2022/NICE-NG217/Baig-2011-NatGenet/Scholl-2013-NatGenet/Pinggera-2015-Cell/
+    STEADY-NCT02168842/CPIC-POLG-2023/MHRA-VPPP-2021/UKISS-2004/SHARE-REMS-VGB/
+    ACMG-AMP-2015/WHO-ICF-2019), 6 references."""
+    try:
+        import scripts.cacna1d_dashboard as ca1d_
+        return _json_safe(ca1d_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/cacna1b/overview")
 async def cacna1b_overview():
     """CACNA1B DEE/NDMSB overview: 40-patient cohort KPIs (seizure-free/DRE/acth-received/spasms/

@@ -3451,5 +3451,27 @@
     "color": "#311b92",
     "note": "Total: 236 dashboards",
     "built_note": "KCNC2 dashboard built 2026-08-17: /api/kcnc2/overview|breakdown|definitions + portal-next/app/kcnc2/page.jsx + SiteNav wired next to KCNC1. 40-patient KCNC2 cohort (Kv3.2 Shaw subfamily, 12q21.32, GOF-LOF dual phenotype). KEY distinction from KCNC1/EPM7: NO progressive myoclonic epilepsy, NO cerebellar ataxia, NO giant SEPs (minimal Kv3.2 in Purkinje cells). GGE/Focal/DEE spectrum. CBZ/LTG HIGH RISK in LOF (EEG monitoring mandatory) — NOT absolute CI (unlike KCNC1). Photosensitivity 35% (vs KCNC1 75%). TRN-enriched Kv3.2 → absence 42%. Kv3 Shaw subfamily: KCNC1 Kv3.1 EPM7 + KCNC2 Kv3.2 GGE/Focal/DEE."
+  },
+  {
+    "id": "cacna1d",
+    "gene": "CACNA1D",
+    "name": "CACNA1D Epilepsy (SANDD Syndrome / DEE + Autism + Primary Aldosteronism / Cav1.3 Low-Threshold L-type HVA Ca²⁺ Channel / GOF-LOF-Dual / Isradipine-Precision / 3p14.3)",
+    "route": "/cacna1d",
+    "api_prefix": "/api/cacna1d",
+    "endpoints": [
+      "/api/cacna1d/overview",
+      "/api/cacna1d/breakdown",
+      "/api/cacna1d/definitions"
+    ],
+    "frontend": "portal-next/app/cacna1d/page.jsx",
+    "script": "scripts/cacna1d_dashboard.py",
+    "locus": "3p14.3",
+    "channel": "Cav1.3 (α1D) Low-Threshold L-type HVA Ca²⁺ Channel (V1/2 ≈ −40 to −55 mV)",
+    "syndrome": "SANDD Syndrome [LOF] / DEE + Autism + Primary Aldosteronism [GOF]",
+    "omim": "#614896 SANDD · *114215 CACNA1D",
+    "color": "#1a237e",
+    "status": "built",
+    "note": "Total: 237 dashboards. Cav1 L-type subfamily COMPLETE: Cav1.1/CACNA1S + Cav1.2/CACNA1C(TS) + Cav1.3/CACNA1D(SANDD+GOF-DEE) + Cav1.4/CACNA1F.",
+    "built_note": "Built 2026-08-17. 3 endpoints verified 200. SiteNav wired after CACNA1C. GOF precision: isradipine (Cav1.3-preferential DHP); LOF: cochlear implant + pacemaker (SANDD). Key distinction vs CACNA1C: no LQTS8 in CACNA1D; isradipine not verapamil."
   }
 ]
