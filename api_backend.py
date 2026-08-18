@@ -25748,6 +25748,67 @@ async def chrnb2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/chrna2/overview")
+async def chrna2_overview():
+    """CHRNA2 overview: nAChR α2 subunit (8p21.2) / ADNFLE2 (OMIM #610353) /
+    rarest ADNFLE gene (<10 families; CHRNA4>CHRNB2>CHRNA2 triad) /
+    GOF I279N/I304N → delayed α2β4 desensitisation → nocturnal NREM frontal seizures /
+    habenulo-interpeduncular pathway (highest α2 expression; nicotine reward circuit) /
+    CBZ-XR first-line (bedtime-heavy); HLA-B*15:02 ABSOLUTE CI for CBZ/OXC (SJS/TEN) /
+    bupropion ABSOLUTE CI (lowers seizure threshold — used for depression AND smoking cessation) /
+    varenicline HIGH RISK (partial α2β4 agonist — directly activates GOF receptor in habenular circuit) /
+    nicotine paradox: low-dose desensitisation (≤7-mg patch) vs high-dose activation /
+    CBZ autoinduction: re-check TDM at 6-8 weeks (CYP3A4 drops level 30-50%) /
+    40-patient cohort. Aridon 2006 AJHG (I279N first variant)."""
+    try:
+        import scripts.chrna2_dashboard as ca2_
+        return _json_safe(ca2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrna2/breakdown")
+async def chrna2_breakdown():
+    """CHRNA2 breakdown: 40 patients / 5 etiology classes
+    (GOF-I279N-TM2-Classic-42% / GOF-I304N-TM3-ADNFLE2-28% /
+    GOF-V337G-TM3-Turkish-18% / GOF-Other-Rare-8% / Phenocopy-ADNFLE-4%) /
+    5 seizure types (Hypermotor-Nocturnal-NREM-96% / Minor-Motor-70% /
+    Nocturnal-Tonic-48% / Epileptic-Wandering-30% / Daytime-Focal-Rare-15%) /
+    8 triggers (NREM-Sleep-95% / Sleep-Dep-82% / Stress-65% / Missed-CBZ-62% /
+    Febrile-50% / Alcohol-38% / Nicotine-Cessation-28% / Circadian-22%) /
+    8 treatments / 6 CIs / 14 monitoring / 6 lifecycle stages."""
+    try:
+        import scripts.chrna2_dashboard as ca2_
+        return _json_safe(ca2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/chrna2/definitions")
+async def chrna2_definitions():
+    """CHRNA2 definitions: 15 key concepts
+    (CHRNA2-8p21.2 / ADNFLE2-610353 / GOF-Delayed-Desensitisation-Alpha2 /
+    Habenulo-Interpeduncular-Pathway / ADNFLE-Triad-Complete /
+    Nicotine-Paradox-Alpha2 / HLA-B1502-CBZ-SJS-TEN /
+    CBZ-Autoinduction-CYP3A4 / VPSG-Gold-Standard-ADNFLE /
+    ADNFLE2-Misdiagnosis-Parasomnia / ADNFLE2-Penetrance-Incomplete /
+    ADNFLE2-DRE-25-30-Percent / Bupropion-ABSOLUTE-CI-CHRNA2 /
+    Varenicline-HIGH-RISK-CHRNA2 / Frontal-Resection-ADNFLE2-Surgery),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Aridon-2006-AJHG / Conti-2015-Epilepsia /
+    CPIC-HLA-B1502-CBZ-2023 / ILAE-Genetic-Epilepsy-TaskForce-2018 /
+    AASM-ICSD3-2023 / Tinuper-2016-Neurology /
+    MHRA-VPPP-2021 / NICE-NG224-2023 / ACMG-AMP-2015 / WHO-ICF-2019),
+    6 references (Aridon-2006-AJHG / Conti-2015-Epilepsia /
+    Tinuper-2016-Neurology / Steinlein-2012-EpilepsyRes /
+    Scheffer-2014-Epilepsia / Bhatt-2017-NEJM)."""
+    try:
+        import scripts.chrna2_dashboard as ca2_
+        return _json_safe(ca2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/mtor/overview")
 async def mtor_overview():
     """MTOR overview: mechanistic Target of Rapamycin / mTOR kinase (1p36.22) /
