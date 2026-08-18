@@ -26018,6 +26018,61 @@ async def status_epilepticus_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/pnpo/overview")
+async def pnpo_overview():
+    """PNPO Epilepsy (Pyridoxamine-5'-phosphate Oxidase Deficiency / PLP-Dependent Neonatal EE) overview.
+    PNPO (17q21.32) — FAD-dependent flavoprotein; converts PMP+PNP→PLP (active B6 cofactor).
+    Biallelic LOF → systemic PLP deficiency → GAD failure (GABA↓) → neonatal burst-suppression EE.
+    CRITICAL TRAP: pyridoxine trial NEGATIVE (cannot be converted to PLP without PNPO enzyme) →
+    IMMEDIATELY trial PLP 30 mg/kg oral. VPA ABSOLUTE CI. INH ABSOLUTE CI. Collect PMP/PNP BEFORE trial.
+    40-patient cohort. First described Mills et al. 2005 Lancet."""
+    try:
+        import scripts.pnpo_dashboard as pnpo_
+        return _json_safe(pnpo_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/pnpo/breakdown")
+async def pnpo_breakdown():
+    """PNPO Epilepsy — full breakdown: 40 patients, 5 etiologies (PNPO-null-LOF-35% /
+    PNPO-missense-hypomorph-28% / PNPO-splicing-20% / FAD-riboflavin-deficiency-10% /
+    Phenocopy-PLPBP-7%), 5 seizure types (neonatal-myoclonic-burst-suppression-95% /
+    neonatal-tonic-80% / epileptic-spasms-West-55% / focal-40% / in-utero-35%),
+    8 triggers (PLP-omission-90% / fever-82% / riboflavin-deficiency-45% / growth-65% /
+    INH-drugs-30% / metabolic-acidosis-55% / sleep-deprivation-35% / catamenial-15%),
+    8 treatments (PLP-Level-B / riboflavin-Level-C / pyridoxine-diagnostic-Level-B /
+    PHB-Level-B / LEV-Level-B / folinic-Level-C / KD-Level-C / CLB-Level-B),
+    6 CIs (VPA-ABSOLUTE / INH-ABSOLUTE / pyridoxine-alone-HIGH / TGB-ABSOLUTE /
+    pyridoxine-high-dose-HIGH / CBZ-OXC-LTG-HIGH), 14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.pnpo_dashboard as pnpo_
+        return _json_safe(pnpo_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/pnpo/definitions")
+async def pnpo_definitions():
+    """PNPO Epilepsy — definitions: 15 concepts (PNPO-17q21.32 / PLP-Not-Pyridoxine /
+    Burst-Suppression-Neonatal / FAD-Flavoprotein / Biomarker-PMP-PNP / In-Utero-Epilepsy /
+    ALDH7A1-vs-PNPO / VPA-Absolute-CI / INH-Hydrazine-CI / Phenocopy-PLPBP /
+    TGB-Absolute-CI / PLP-Pharmacokinetics / BVVL-Riboflavin-Overlap /
+    Folinic-CSF-Folate / Prognosis-Time-To-Rescue), thresholds (PLP-30-mg-kg /
+    PLP-plasma-target-30-80-nmol-L / pyridoxine-trial-30-mg-kg / PLP-trial-oral-30-mg-kg /
+    EEG-response-1-4h / riboflavin-10-mg-day / CSF-5MTHF-40-nmol-L-cutoff),
+    12 evidence standards (ILAE-2022 / NICE-NG217 / Mills-2005-Lancet / Clayton-2011-JIMD /
+    Ruiz-2008-Brain / van-Karnebeek-2016-JIMD / Baumgartner-2007 / EAN-Neonatal-SE-2019 /
+    ACMG-AMP / WHO-ICF / ILAE-2022-Neonatal / NICE-NG224),
+    6 references (Mills-2005 / Clayton-2011 / Ruiz-2008 / van-Karnebeek-2016 /
+    Darin-2016 / Stockler-2011)."""
+    try:
+        import scripts.pnpo_dashboard as pnpo_
+        return _json_safe(pnpo_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

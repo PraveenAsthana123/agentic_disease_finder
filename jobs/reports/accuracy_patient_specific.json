@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T03:03:21-06:00",
+  "generated_at": "2026-08-18T02:33:52-06:00",
   "benchmark": "CHB-MIT patient-specific (per-subject temporal split, overlapping windows, ensemble)",
   "no_leakage": "train=early windows, test=late windows; never the same window",
   "window_seconds": 4,

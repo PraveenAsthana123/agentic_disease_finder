@@ -3809,5 +3809,19 @@
     ],
     "portal": "/status-epilepticus",
     "color": "#b71c1c"
+  },
+  {
+    "id": "pnpo",
+    "name": "PNPO Epilepsy (PLP-Dependent / Pyridoxamine-5-phosphate-Oxidase-Deficiency / Neonatal-EE / FAD-Flavoprotein / VPA-INH-TGB-CI / 17q21.32)",
+    "status": "built",
+    "endpoint_base": "/api/pnpo",
+    "portal_page": "/pnpo",
+    "color": "#880e4f",
+    "category": "metabolic-B6-PLP-dependent",
+    "gene": "PNPO",
+    "locus": "17q21.32",
+    "omim": "#610090",
+    "cohort": 40,
+    "notes": "PLP-dependent neonatal EE \u2014 pyridoxine INEFFECTIVE (PNPO absent = no PNP\u2192PLP conversion). Requires PLP not pyridoxine. Companion to ALDH7A1-PDE. VPA/INH/TGB absolute CI."
   }
 ]
