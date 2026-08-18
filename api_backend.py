@@ -25220,6 +25220,76 @@ async def kcnc1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kcnc2/overview")
+async def kcnc2_overview():
+    """KCNC2 Epilepsy overview (GGE / Focal Epilepsy / DEE / Kv3.2 Shaw K⁺ Channel /
+    GOF-LOF Dual Phenotype / PV+ Fast-Spiking Interneuron / TRN-Enriched / OMIM *176262 / 12q21.32).
+    40-patient cohort; GOF de novo (focal/GGE 38%) / LOF de novo (DEE 28%) /
+    haploinsufficiency inherited GGE (18%) / compound uncertain (10%) / phenocopy (6%).
+    CRITICAL KCNC2 vs KCNC1 distinction: KCNC1 = EPM7 (progressive myoclonic, cerebellar
+    ataxia, giant SEPs, photosensitivity 75%, CBZ/LTG ABSOLUTE CI). KCNC2 = GGE/Focal/DEE
+    (NO progressive course, NO cerebellar ataxia, NO giant SEPs — minimal Kv3.2 in Purkinje
+    cells, photosensitivity 35%, CBZ HIGH RISK in LOF only — EEG monitoring mandatory, NOT
+    absolute CI). BOTH GOF and LOF cause epilepsy (unlike KCNC1 purely LOF). TRN Kv3.2 LOF
+    → thalamocortical oscillation dysregulation → absence seizures (42% — more prominent
+    than KCNC1 <15%). LEV Level B first-line. VPA Level B GGE spectrum (POLG1 MANDATORY).
+    LTG Level B GOF/haploinsufficiency (HIGH RISK LOF — PV+ NaV1.1 second-hit). CBZ/OXC
+    Level C GOF focal (HIGH RISK LOF — EEG mandatory at 6 weeks). KD Level B DRE.
+    TGB ABSOLUTE CI (NCSE). ETX monotherapy NOT recommended (GTCS breakthrough). No Piracetam
+    (no PME/EPM7 indication — KEY distinction from KCNC1). POLG1 before VPA. VPPP females ≥12y.
+    Hedrich 2019 Epilepsia / Ambrosino 2018 Eur J Hum Genet foundational."""
+    try:
+        import scripts.kcnc2_dashboard as kc2_
+        return _json_safe(kc2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnc2/breakdown")
+async def kcnc2_breakdown():
+    """KCNC2 breakdown: 5-class etiology (GOF-De-Novo-Focal-GGE-38% /
+    LOF-De-Novo-DEE-28% / Haploinsufficiency-Inherited-GGE-18% /
+    GOF-LOF-Uncertain-Compound-10% / Phenocopy-Panel-Negative-6%),
+    5 seizure types (Focal-Impaired-Awareness-65% / GTCS-58% /
+    Absence-Absence-Like-42% / Focal-Tonic-Clonic-38% / Febrile-Seizures-45%)
+    with EEG + semiology + clinical tips,
+    8 triggers (Fever-88% / Sleep-dep-78% / Stress-68% / Missed-AED-62% /
+    Photic-38% / AED-Taper-45% / Catamenial-25% / Caffeine-32%),
+    8 treatments (LEV-Level-B-first-line / VPA-Level-B-GGE /
+    LTG-Level-B-GOF-CAUTION-LOF / CLB-Level-B-adjunct /
+    CBZ-OXC-Level-C-GOF-focal-HIGH-RISK-LOF / TPM-Level-C-DRE /
+    KD-Level-B-DRE / VGB-Level-C-IS-only),
+    6 contraindications (TGB-ABSOLUTE-NCSE / VPA-POLG-ABSOLUTE /
+    CBZ-OXC-LOF-HIGH-RISK-EEG-mandatory / LTG-LOF-DEE-HIGH-RISK /
+    VGB-long-term-HIGH-VFD / ETX-monotherapy-NOT-recommended),
+    14 monitoring items, 6 lifecycle stages, 40-patient cohort."""
+    try:
+        import scripts.kcnc2_dashboard as kc2_
+        return _json_safe(kc2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kcnc2/definitions")
+async def kcnc2_definitions():
+    """KCNC2 definitions: 15 key concepts
+    (KCNC2-12q21.32 / Kv3.2-Shaw-High-Threshold-K / GOF-LOF-Dual-Phenotype /
+    PV+-Interneuron-KCNC2 / TRN-Kv3.2-Enriched / KCNC2-vs-KCNC1-Distinction /
+    GOF-Paradoxical-Hyperexcitability / Haploinsufficiency-Kv3.1-Kv3.2-Heterotetramer /
+    Giant-SEPs-Absent-KCNC2 / POLG1-Alpers / VPPP-MHRA2021 / SUDEP /
+    GEFS+-Overlap / Shaw-Subfamily-Kv3 / ACMG-AMP-2015),
+    12 thresholds, 12 standards
+    (ILAE-2022 / NICE-NG217 / Hedrich-2019-Epilepsia / Ambrosino-2018 /
+    CPIC-POLG-2023 / MHRA-VPPP-2021 / CPIC-CBZ-HLA-2023 / SHARE-REMS-VGB /
+    ACMG-AMP-2015 / ILAE-PME-TaskForce-2022 / UKISS-2004 / WHO-ICF-2019),
+    6 references."""
+    try:
+        import scripts.kcnc2_dashboard as kc2_
+        return _json_safe(kc2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
