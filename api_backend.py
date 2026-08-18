@@ -25096,6 +25096,61 @@ async def cacna1d_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cacna2d2/overview")
+async def cacna2d2_overview():
+    """CACNA2D2 EECAT overview: 40-patient cohort KPIs (seizure-free/DRE/infantile-spasms/cerebellar-ataxia/
+    cerebellar-atrophy-MRI/hypotonia/KD-use/gabapentinoid-exposure/myoclonus-count),
+    etiology distribution (Biallelic-LOF-Truncating-Severe-42%/Biallelic-LOF-Missense-Moderate-28%/
+    CNV-Deletion-3p21-15%/Compound-Heterozygous-Intermediate-10%/Phenocopy-5%),
+    5 seizure summaries, 8 treatment summaries, 8 monitoring items, 6 lifecycle windows,
+    6 thresholds, 5 CI summaries.
+    CACNA2D2 (3p21.3) · α2-δ-2 Auxiliary Subunit · EECAT · AR biallelic LOF ·
+    GABAPENTINOID PARADOX: gabapentinoids bind α2-δ-2 → LOF already impairs target + worsen cerebellar ataxia
+    → HIGH RISK AVOID. PHT HIGH RISK (Purkinje cell toxicity compounds pre-existing atrophy).
+    No precision blocker — VPA/LEV/CLB + KD is best DRE. POLG1 exclusion MANDATORY before VPA."""
+    try:
+        import scripts.cacna2d2_dashboard as ca2d2_
+        return _json_safe(ca2d2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna2d2/breakdown")
+async def cacna2d2_breakdown():
+    """CACNA2D2 breakdown: 5-class etiology (Biallelic-LOF-Truncating-Severe/Biallelic-LOF-Missense-Moderate/
+    CNV-Deletion-3p21/Compound-Heterozygous-Intermediate/Phenocopy-Panel-Negative),
+    5 seizure types (Infantile-Spasms-65%/GTCS-80%/Myoclonic-72%/Tonic-55%/Focal-38%),
+    8 triggers, 8 treatments
+    (VPA-LevelB-first-line/LEV-LevelB-alt/ACTH-LevelA-IS/CLB-LevelB-adjunct/VGB-LevelA-IS-SHAREREMS/
+    KD-LevelB-DRE/Pyridoxine-LevelC-diagnostic/Riboflavin-LevelC-investigational),
+    6 contraindications (Gabapentinoids-HIGH-α2δ-2-LOF-paradox/PHT-HIGH-cerebellar-toxicity/
+    TGB-ABSOLUTE-NCSE/VPA+POLG1-ABSOLUTE/CBZ-OXC-HIGH-myoclonus/VGB-long-term-HIGH-VFD),
+    14 monitoring items, 6 lifecycle stages, 40 patient cohort records."""
+    try:
+        import scripts.cacna2d2_dashboard as ca2d2_
+        return _json_safe(ca2d2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cacna2d2/definitions")
+async def cacna2d2_definitions():
+    """CACNA2D2 definitions: 15 key concepts
+    (CACNA2D2-3p21.3 / α2-δ-2-Auxiliary-Subunit / EECAT / Gabapentinoid-Paradox-α2-δ-2-LOF /
+    Ducky-Mouse-Model / Cerebellar-Atrophy-Progression / PHT-Cerebellar-Toxicity /
+    POLG1-Alpers / VPPP-MHRA2021 / KD-Ca2+-Channelopathies / VGB-VFD-SHARE-REMS /
+    SUDEP / West-Syndrome-IS / Riboflavin-B2-Investigational / AR-Inheritance-CACNA2D2),
+    12 thresholds, 12 standards
+    (ILAE-2022/NICE-NG217/UKISS-2004/ILAE-Dietary-Therapies-2018/Barclay-2001-NatNeurosci/
+    Pippucci-2013-Epilepsia/CPIC-POLG-2023/MHRA-VPPP-2021/FDA-SHARE-REMS/
+    ACMG-AMP-2015/CPIC-CBZ-HLA-2023/WHO-ICF-2019), 6 references."""
+    try:
+        import scripts.cacna2d2_dashboard as ca2d2_
+        return _json_safe(ca2d2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/cacna1b/overview")
 async def cacna1b_overview():
     """CACNA1B DEE/NDMSB overview: 40-patient cohort KPIs (seizure-free/DRE/acth-received/spasms/

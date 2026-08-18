@@ -3552,5 +3552,27 @@
     "status": "built",
     "note": "Total: 237 dashboards. Cav1 L-type subfamily COMPLETE: Cav1.1/CACNA1S + Cav1.2/CACNA1C(TS) + Cav1.3/CACNA1D(SANDD+GOF-DEE) + Cav1.4/CACNA1F.",
     "built_note": "Built 2026-08-17. 3 endpoints verified 200. SiteNav wired after CACNA1C. GOF precision: isradipine (Cav1.3-preferential DHP); LOF: cochlear implant + pacemaker (SANDD). Key distinction vs CACNA1C: no LQTS8 in CACNA1D; isradipine not verapamil."
+  },
+  {
+    "id": "cacna2d2",
+    "gene": "CACNA2D2",
+    "name": "CACNA2D2 Epilepsy (EECAT / α2-δ-2 Auxiliary Subunit / Gabapentinoid-Binding Protein / Cerebellar Atrophy+Hypotonia / AR-LOF / 3p21.3)",
+    "route": "/cacna2d2",
+    "api_prefix": "/api/cacna2d2",
+    "endpoints": [
+      "/api/cacna2d2/overview",
+      "/api/cacna2d2/breakdown",
+      "/api/cacna2d2/definitions"
+    ],
+    "frontend": "portal-next/app/cacna2d2/page.jsx",
+    "script": "scripts/cacna2d2_dashboard.py",
+    "locus": "3p21.3",
+    "channel": "α2-δ-2 (alpha2-delta-2) Auxiliary Subunit of Voltage-Gated Ca²⁺ Channels — Cav1/Cav2 trafficking + modulation + synaptogenesis",
+    "syndrome": "EECAT — Epileptic Encephalopathy with Cerebellar Atrophy, Hypotonia, and Impaired Intellectual Development",
+    "omim": "*602843 CACNA2D2 gene",
+    "color": "#1b5e20",
+    "status": "built",
+    "note": "Total: 238 dashboards",
+    "built_note": "CACNA2D2 Epilepsy Dashboard (EECAT / α2-δ-2 Auxiliary Subunit / Gabapentinoid-Binding Protein / AR-LOF / 3p21.3) — 40-patient CACNA2D2 cohort (AR biallelic LOF, 5 etiology classes, 5 seizure types [IS-65%/GTCS-80%/Myoclonic-72%/Tonic-55%/Focal-38%], 8 triggers, 8 treatments [VPA-LevelB/LEV-LevelB/ACTH-LevelA-IS/CLB-LevelB/VGB-LevelA-IS-SHARE-REMS/KD-LevelB-DRE/Pyridoxine-LevelC/Riboflavin-LevelC-investigational], 6 contraindications [Gabapentinoids-HIGH-RISK-α2δ-2-LOF-paradox/PHT-HIGH-cerebellar-toxicity/TGB-ABSOLUTE-NCSE/VPA+POLG1-ABSOLUTE/CBZ-OXC-HIGH/VGB-long-term-HIGH-VFD], 14 monitoring items, 6 lifecycle stages, 15 definitions, 12 thresholds, 12 standards, 6 references [Barclay-2001-NatNeurosci/Pippucci-2013-Epilepsia/Vergult-2015/Shahar-2016/Doohan-2019/Lenk-2020]). KEY: GABAPENTINOID PARADOX — gabapentin/pregabalin bind α2-δ-2, already non-functional in CACNA2D2 LOF → unpredictable efficacy + WORSENED CEREBELLAR ATAXIA — HIGH RISK AVOID; PHT HIGH RISK (Purkinje cell cerebellar toxicity compounds pre-existing atrophy — use only IV acute SE rescue, NOT maintenance). Ducky mouse model (CACNA2D2 null → SWD + cerebellar ataxia + Purkinje cell loss — Barclay 2001 Nat Neurosci). α2-δ subfamily: α2-δ-1/CACNA2D1 (gabapentinoid analgesic target) · α2-δ-2/CACNA2D2 (cerebellar/epilepsy — EECAT, THIS GENE) · α2-δ-3/CACNA2D3 (pain/anxiety) · α2-δ-4/CACNA2D4 (retinal). 3 endpoints /api/cacna2d2/overview|breakdown|definitions verified 200. portal-next/app/cacna2d2/page.jsx + SiteNav wired after CACNA1D. expert_dashboards.json count 237→238. Built 2026-08-17."
   }
 ]
