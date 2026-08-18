@@ -26302,6 +26302,73 @@ async def dyrk1a_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/mef2c/overview")
+async def mef2c_overview():
+    """MEF2C Epilepsy — MEF2C Haploinsufficiency Syndrome (MHS) / 5q14.3 overview:
+    40-patient cohort, gene summary (MEF2C 5q14.3, MADS-box transcription factor 473 aa ~55 kDa,
+    OMIM #613443 / *600662), seizure prevalence, drug-resistant %, infantile spasms %,
+    myoclonic %, photosensitivity 35%, CSWS 8%, KD %, VPPP-applicable %,
+    VPA HDAC epigenetic rationale (HDAC4/5 dissociation from MEF2C → interneuron gene restoration),
+    GABAergic interneuron specification mechanism (MEF2C LOF → E/I imbalance → epilepsy),
+    Rett-like phenotype without MECP2 (stereotypy + regression + absent speech),
+    key CIs (PHT/CBZ/OXC HIGH myoclonic worsening / TGB ABSOLUTE NCSE /
+    LTG-monotherapy HIGH myoclonic aggravation / VPA+POLG1 ABSOLUTE),
+    12 standards (ILAE-2022 / NICE-NG217 / Zweier-2010 / LeMeur-2010 /
+    Nowakowska-2010 / Paciorkowski-2013 / UKISS-2005 /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019)."""
+    try:
+        import scripts.mef2c_dashboard as mef2c_
+        return _json_safe(mef2c_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/mef2c/breakdown")
+async def mef2c_breakdown():
+    """MEF2C Epilepsy — full breakdown: 5 etiologies (LOF-truncating-40% /
+    LOF-missense-MADS-28% / 5q14.3-microdeletion-MEF2C-only-20% /
+    5q14.3-large-deletion-contiguous-7% / LOF-splice-site-5%),
+    40-patient cohort, 5 seizure types (GTCS-65% / Myoclonic-55% /
+    IS-West-35% / FIAS-45% / Myoclonic-atonic-LGS-25%), 8 triggers,
+    8 treatments (ACTH-Level-A-IS / VGB-Level-A-IS / VPA-Level-B-HDAC-epigenetic /
+    LEV-Level-B / KD-Level-B-early / CLB-Level-B / LTG-Level-C-adjunct-only /
+    Prednisolone-Level-C-CSWS),
+    6 CIs (PHT-CBZ-OXC-HIGH-myoclonic / TGB-ABSOLUTE-NCSE /
+    VPA-POLG1-ABSOLUTE / LTG-mono-myoclonic-HIGH /
+    Abrupt-AED-withdrawal-ABSOLUTE / VGB-without-ERG-HIGH),
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.mef2c_dashboard as mef2c_
+        return _json_safe(mef2c_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/mef2c/definitions")
+async def mef2c_definitions():
+    """MEF2C Epilepsy — definitions: 15 concepts (MEF2C-5q14.3-DEE-MHS /
+    MEF2C-MADS-Box-Transcription-Factor / MEF2C-GABAergic-Interneuron-Specification /
+    MEF2C-Rett-Like-Phenotype-Without-MECP2 / MEF2C-VPA-HDAC-Epigenetic-Rationale /
+    PHT-CBZ-OXC-Myoclonic-Worsening / LTG-Monotherapy-Myoclonic-Aggravation /
+    TGB-ABSOLUTE-NCSE / Photosensitivity-High-MEF2C-35pct /
+    CSWS-Cognitive-Regression-MEF2C / POLG1-VPA-Mandatory-Screen /
+    KD-Early-Interneuron-Bypass / SUDEP-DRE-High-Risk /
+    IS-ACTH-Lower-Response / VPPP-MHRA-2021-MEF2C-Females),
+    12 thresholds (VPA-TDM / NH3 / KD-BHB / ACTH-Day14-EEG /
+    IS-Non-Response-Week4 / VGB-ERG / POLG1-Turnaround / CSWS-Threshold /
+    PPR-Action / SUDEP-Alarm / QTc-CLB / LTG-Myoclonic-Aggravation),
+    12 standards (ILAE-2022 / NICE-NG217 / Zweier-2010 / LeMeur-2010 /
+    Nowakowska-2010 / Paciorkowski-2013 / UKISS-2005 /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / ACMG-AMP-2015 / NICE-NG224-2022 / WHO-ICF-2019),
+    6 references (Zweier-2010 / LeMeur-2010 / Nowakowska-2010 /
+    Paciorkowski-2013 / Hiatt-2011 / UKISS-2005)."""
+    try:
+        import scripts.mef2c_dashboard as mef2c_
+        return _json_safe(mef2c_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

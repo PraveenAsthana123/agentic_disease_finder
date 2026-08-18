@@ -3892,5 +3892,21 @@
     "status": "built",
     "note": "Total: 254 dashboards",
     "built_note": "DYRK1A Epilepsy Dashboard \u2014 NRSF/Nav1.1 pathway (DYRK1A LOF \u2192 NRSF stable \u2192 SCN1A/GABRB3 repressed \u2192 Nav1.1 functional deficiency analogous to Dravet); PHT/CBZ/OXC HIGH RISK; DYRK1A inhibitors (harmine/leucettine/EGCG) ABSOLUTE CI in LOF (used in trisomy 21 \u2014 opposite mechanism); folinic acid for anti-FRA1 positive (25-35%); VPA HDAC epigenetic de-repression rationale specific to DYRK1A/NRSF pathway. Built 2026-08-18"
+  },
+  {
+    "name": "MEF2C Epilepsy (MEF2C Haploinsufficiency Syndrome / MHS / MADS-Box / GABAergic-Interneuron-LOF / Rett-Like-Without-MECP2 / PHT-CBZ-HIGH-RISK / TGB-ABSOLUTE-NCSE / Photosensitivity-35pct / VPA-HDAC-Epigenetic / 5q14.3)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "api_endpoints": [
+      "/api/mef2c/overview",
+      "/api/mef2c/breakdown",
+      "/api/mef2c/definitions"
+    ],
+    "dashboard_component": "portal-next/app/mef2c/page.jsx",
+    "script": "scripts/mef2c_dashboard.py",
+    "colour": "#4a148c",
+    "omim": "#613443",
+    "locus": "5q14.3",
+    "added_at": "2026-08-18"
   }
 ]
