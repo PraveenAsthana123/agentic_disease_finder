@@ -4049,5 +4049,20 @@
     "disease": "MERRF syndrome",
     "omim": "#545000",
     "built_date": "2026-08-18"
+  },
+  {
+    "id": "kctd7",
+    "status": "built",
+    "name": "KCTD7 Epilepsy (EPM3 / Progressive Myoclonic Epilepsy Type 3 / BTB-CUL3-Ubiquitin-E3-Ligase-Adaptor-LOF / NCL-like-EM-Curvilinear-CLN-Enzymes-Normal / Ultra-Early-Onset-14m-3y / Rapid-Severe-ID / Selenium-GPx-Antioxidant-UNIQUE / CBZ-OXC-PHT-ABSOLUTE-CI / TGB-ABSOLUTE-NCSE / Metformin-NOT-Disease-Modifying / 7q11.21)",
+    "api": "/api/kctd7/overview|breakdown|definitions",
+    "portal": "/kctd7",
+    "color": "#4e342e",
+    "color_note": "dark espresso-brown \u2014 KCTD7 BTB/CUL3 ubiquitin proteasome pathway",
+    "patients": 40,
+    "gene": "KCTD7",
+    "locus": "7q11.21",
+    "disease": "EPM3",
+    "inheritance": "AR",
+    "discovery": "Van Bogaert et al. 2007 (Ann Neurol)"
   }
 ]

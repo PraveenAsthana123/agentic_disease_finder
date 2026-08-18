@@ -26928,6 +26928,70 @@ async def merrf_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/kctd7/overview")
+async def kctd7_overview():
+    """KCTD7 overview — Progressive Myoclonic Epilepsy Type 3 (EPM3 / BTB-CUL3-Ubiquitin-E3-Adaptor / 7q11.21).
+    Gene: KCTD7 (Potassium Channel Tetramerization Domain Containing Protein 7; 7q11.21); ~51 kDa BTB/POZ domain
+    substrate adaptor for CUL3 (Cullin-3) E3 ubiquitin ligase; biallelic LOF (AR) → EPM3.
+    Mechanism: KCTD7 LOF → impaired CUL3-mediated ubiquitination of neuronal substrates → protein aggregation
+    → NCL-like curvilinear storage bodies on EM (WITHOUT CLN gene mutations) → Purkinje + cortical degeneration.
+    EARLIEST PME: onset 14 months–3 years (toddlerhood). MOST AGGRESSIVE COURSE: severe ID within 3-5 years.
+    OMIM *611006 / #611726. 40-patient cohort. Discovery: Van Bogaert et al. 2007 (Ann Neurol).
+    KEY DISTINCTIONS: (1) NCL-like EM curvilinear bodies + CLN enzymes NORMAL — must exclude CLN2 first;
+    (2) Selenium supplementation (GPx antioxidant) — UNIQUE to EPM3; (3) Metformin/KD NOT disease-modifying
+    (ubiquitin-proteasome mechanism ≠ glycogen/mTOR); (4) No scoliosis (unlike GOSR2); (5) No VPA CI
+    (unlike MERRF — CUL3/BTB mechanism ≠ mitochondrial). Backbone: VPA + LEV + piracetam + CLB."""
+    try:
+        import scripts.kctd7_dashboard as kctd7_
+        return _json_safe(kctd7_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kctd7/breakdown")
+async def kctd7_breakdown():
+    """KCTD7 breakdown — 5 etiologies (Truncating-LOF-Frameshift-Nonsense-38% / BTB-Domain-Missense-CUL3-Binding-32% /
+    Compound-Het-Mixed-LOF-20% / Splice-Site-Exon-Skipping-8% / Phenocopy-NCL-Overlap-2%),
+    40-patient cohort (age_onset/sex/mutation/ncl_like_em/ambulatory/drug_resistant/severe_id/on_selenium/rx),
+    5 seizure types (Action-Myoclonus-98% / Stimulus-Sensitive-Extreme-94% / GTCS-80% / Absence-NCSE-35% /
+    Cerebellar-Ataxia-Non-Epileptic-72%),
+    8 triggers (Voluntary-Movement-98% / Auditory-Startle-90% / Tactile-85% / Photic-82% / SleepDep-75% /
+    Fever-70% / Missed-AED-68% / Stress-55%),
+    8 treatments (VPA-LevelB-Backbone / LEV-LevelB-IV-SE / Piracetam-LevelB-ActionMyoclonus /
+    CLB-LevelB-Nocturnal / ZNS-LevelC-Antioxidant / Selenium-LevelC-UNIQUE-EPM3 / KD-LevelC-Symptomatic /
+    Physiotherapy-OT-Speech-LevelB),
+    6 CIs (CBZ-OXC-PHT-ABSOLUTE / TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH / LTG-Mono-HIGH /
+    Metformin-NOT-INDICATED / VPA-without-POLG1-ABSOLUTE-Risk),
+    14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.kctd7_dashboard as kctd7_
+        return _json_safe(kctd7_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/kctd7/definitions")
+async def kctd7_definitions():
+    """KCTD7 definitions — 15 concepts (KCTD7-7q11.21-EPM3 / BTB-CUL3-Ubiquitin-E3-Ligase-Mechanism /
+    NCL-Like-EM-Curvilinear-Bodies-Without-CLN / Ultra-Early-Onset-Rapid-Cognitive-Regression /
+    CBZ-OXC-PHT-ABSOLUTE-CI / Selenium-GPx-Antioxidant-UNIQUE-EPM3 / Metformin-KD-NOT-Disease-Modifying /
+    NCL-Exclusion-Diagnostic-Pathway / Giant-SEP-Cortical-Biomarker / POLG1-Coincidental-Screen /
+    TGB-ABSOLUTE-NCSE / AAC-Dysphagia-MDT-Core / Piracetam-Action-Myoclonus /
+    Progressive-MRI-Atrophy-Marker / SUDEP-Aspiration-Pneumonia-Mortality),
+    12 thresholds (Giant-SEP>8µV / Selenium-target-120-150µg-L / Selenium-max-5µg-kg-day /
+    IV-LEV-60mg-kg / VPA-trough-60-100µg-mL / POLG1-bridge-7-14d / Piracetam-adult-20-45g /
+    Piracetam-paed-80-150mg-kg / VPPP-≥12y / LFT-hold-VPA-3×ULN / FEES-trigger / MRI-2-3y),
+    12 standards (ILAE-2022 / NICE-NG217 / Van-Bogaert-2007 / Kousi-2009 / Farhan-2014 /
+    CPIC-POLG1-2023 / MHRA-VPPP-2021 / Crespel-1999 / ACMG-AMP-2015 /
+    WHO-ICF-2019 / Rubboli-2017 / NCL-Mole-2021),
+    6 references (Van-Bogaert-2007 / Kousi-2009 / Farhan-2014 / Muona-2015 / Rubboli-2017 / Crespel-1999)."""
+    try:
+        import scripts.kctd7_dashboard as kctd7_
+        return _json_safe(kctd7_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
