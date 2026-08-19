@@ -4494,5 +4494,20 @@
     "key_distinction": "ARSA-Pseudodeficiency-NBS-Pitfall / Saposin-B-PSAP-Phenocopy / Adult-Psychiatric-Misdiagnosis-35pct",
     "disease_modifying": "Arsa-cel-Lenmeldy-EMA-2020-FDA-2024",
     "ci": "CBZ-OXC-HIGH-RISK-Neuropathy / VGB-HIGH-RISK-Visual / Typical-Antipsychotics-HIGH-RISK"
+  },
+  {
+    "id": "smpd1",
+    "name": "SMPD1 Epilepsy (Niemann-Pick Disease Types A and B / Acid Sphingomyelinase Deficiency / ASMD / Sphingomyelin-Ceramide-Phosphocholine-Pathway / Cherry-Red-Macular-Spot-PATHOGNOMONIC-NPA-75-85pct / Sea-Blue-Histiocytes-PATHOGNOMONIC-NPB / Pulmonary-Interstitial-Disease-NPB-100pct / Olipudase-Alfa-Xenpozyme-FDA-2022-EMA-2022-First-ERT / No-CNS-ERT-NPA / AJ-Founders-p.Arg496Leu-p.Leu302Pro-fsP330 / VGB-HIGH-RISK-Cherry-Red-Retinal / CBZ-OXC-RELATIVE-CI-Myoclonus / VPA-SAFE-Enhanced-Hepatic / AR-Biallelic-LOF / 11p15.4)",
+    "route": "/smpd1",
+    "status": "built",
+    "category": "lysosomal_storage_epilepsy",
+    "gene": "SMPD1",
+    "locus": "11p15.4",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/smpd1/overview",
+      "/api/smpd1/breakdown",
+      "/api/smpd1/definitions"
+    ]
   }
 ]

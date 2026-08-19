@@ -28660,6 +28660,61 @@ async def arsa_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/smpd1/overview")
+async def smpd1_overview():
+    """SMPD1 / Niemann-Pick Disease Types A & B (ASMD) overview:
+    SMPD1 (11p15.4) — lysosomal acid sphingomyelinase (ASM/LASM; 629 aa, ~75 kDa); 6 exons.
+    SMPD1 LOF → sphingomyelin accumulates in lysosomes → foam cells in macrophages, hepatocytes,
+    neurons (NPA) and Schwann cells. NPA: severe neuronopathic, fatal ~3y, cherry red spot 75-85%.
+    NPB: non-neuronopathic visceral; pulmonary interstitial disease 100%; sea-blue histiocytes.
+    Olipudase alfa (Xenpozyme): FDA Aug 2022 / EMA Sep 2022 — FIRST approved treatment (ERT);
+    visceral benefit only (does NOT cross BBB); AJ founders p.Arg496Leu/p.Leu302Pro/fsP330.
+    40-patient cohort, 6 etiologies, 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 12 thresholds,
+    12 standards (Brady-1966-Science/McGovern-2017-GenetMed/Wasserstein-2022/FDA-2022-Xenpozyme)."""
+    try:
+        import scripts.smpd1_dashboard as smpd1_
+        return _json_safe(smpd1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/smpd1/breakdown")
+async def smpd1_breakdown():
+    """SMPD1 / ASMD breakdown:
+    6 etiologies (AJ-biallelic-NPA-founders-22%/AJ-compound-het-NPA-B-intermediate-18%/
+    Non-AJ-null-null-NPA-20%/NPB-22%/NPA-B-intermediate-12%/Attenuated-NPA-5%),
+    6 seizure types (IS/Myoclonic/Focal/GTCS/Late-epileptic-spasms/Absence-like),
+    8 triggers, 8 treatments (VPA/LEV/Clobazam/Clonazepam/ACTH/Olipudase-alfa/HSCT/KD),
+    7 CIs (CBZ-OXC-RELATIVE-CI/Fosphenytoin-RELATIVE-CI/VGB-HIGH-RISK-Cherry-Red-Retinal/
+    Typical-Antipsychotics-HIGH-RISK-Myoclonus/GBP-PGB-CAUTION/TGB-HIGH-RISK/
+    Chlorpromazine-Haloperidol-HIGH-RISK-Specific),
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.smpd1_dashboard as smpd1_
+        return _json_safe(smpd1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/smpd1/definitions")
+async def smpd1_definitions():
+    """SMPD1 / ASMD definitions:
+    16 concepts [SMPD1-11p15.4 / Sphingomyelin-Ceramide-Phosphocholine-Primary-Pathway /
+    Foam-Cells-Sea-Blue-Histiocytes-Pathognomonic / Cherry-Red-Macular-Spot-NPA-75-85pct /
+    Pulmonary-Interstitial-Disease-NPB-100pct / Olipudase-Alfa-Xenpozyme-FDA-2022-First-ERT /
+    No-CNS-ERT-Penetration-NPA-Limitation / AJ-Founder-Mutations-p.Arg496Leu-p.Leu302Pro-fsP330 /
+    Nova-Scotia-deltaR608-Unique-NPB / LysoSM-LysoSM509-Primary-Biomarker /
+    VPA-SAFE-Enhanced-Hepatic-Monitoring / ACTH-Level-A-IS-Preferred-VGB-Cherry-Red-Retinal /
+    VGB-HIGH-RISK-Cherry-Red-Retinal-Additive / CBZ-OXC-RELATIVE-CI-Myoclonus-NOT-Neuropathy /
+    Typical-Antipsychotics-HIGH-RISK-Myoclonus-NMS / NPA-vs-NPB-Residual-ASM-Activity].
+    40-patient cohort, 6 etiologies, 12 thresholds, 12 standards."""
+    try:
+        import scripts.smpd1_dashboard as smpd1_
+        return _json_safe(smpd1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
