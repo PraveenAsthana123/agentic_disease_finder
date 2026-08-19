@@ -4246,5 +4246,15 @@
     "color": "#7c4700",
     "gene": "CLN8",
     "locus": "8p23.3"
+  },
+  {
+    "id": "cln10",
+    "name": "CLN10 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type10 / Congenital-NCL-Most-Severe / Cathepsin-D-Deficiency-CTSD / GRODs-EM-Identical-CLN1-Test-PPT1-DBS-First / CTSD-Activates-PPT1-Secondary-CLN1-Reduction / No-Standardised-CTSD-DBS-Assay-WES-Required / Seizures-From-Birth-Congenital / Microcephaly-Prenatal-Brain-Malformation / Infantile-Spasms-VGB-ABSOLUTE-CI-Use-ACTH / Fosphenytoin-ABSOLUTE-CI-Neonatal-SE-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / CTSD-ERT-Conceptually-Feasible-CLN2-Precedent / Congenital-Fatal-Less-1y / AR-Biallelic-LOF / 11p15.5)",
+    "status": "built",
+    "route": "/cln10",
+    "api": "/api/cln10/overview|breakdown|definitions",
+    "color": "#263238",
+    "gene": "CTSD",
+    "locus": "11p15.5"
   }
 ]

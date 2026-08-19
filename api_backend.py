@@ -27688,6 +27688,72 @@ async def cln8_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln10/overview")
+async def cln10_overview():
+    """CLN10 Epilepsy — Congenital NCL / Cathepsin D Deficiency (CTSD / 11p15.5) overview:
+    gene, protein (soluble lysosomal aspartic endopeptidase 412 aa; light chain Asp106 + heavy chain Asp231;
+    CTSD cleaves SCMAS + activates PPT1/CLN1), three phenotypes (congenital fatal <1y /
+    late-infantile onset 2-5y / juvenile onset adolescence), GRODs EM identical to CLN1
+    (test PPT1 DBS first then CTSD WES), key pharmacological distinctions
+    (Siintola-2006-AnnNeurol / Steinfeld-2006-HumMolGenet / NCL-Resource-2024 /
+    ILAE-2022 / NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry), 40-patient cohort."""
+    try:
+        import scripts.cln10_dashboard as cln10_
+        return _json_safe(cln10_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln10/breakdown")
+async def cln10_breakdown():
+    """CLN10 Epilepsy breakdown: 6-class etiology
+    [Homozygous-CTSD-Null-Congenital-Consanguineous-28% /
+    Compound-Het-Truncating-Congenital-Non-Consanguineous-14% /
+    Compound-Het-Missense-Truncating-Late-Infantile-25% /
+    Compound-Het-Missense-Missense-Juvenile-18% /
+    Homozygous-Missense-Adult-Attenuated-11% /
+    Phenocopy-CLN10-Negative-4%],
+    5 seizure types [Neonatal-Multifocal-Myoclonic-88% / GTCS-Late-Infantile-Juvenile-78% /
+    Infantile-Spasms-West-Overlap-52% / Focal-Occipital-42% / NCSE-32%],
+    8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.cln10_dashboard as cln10_
+        return _json_safe(cln10_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln10/definitions")
+async def cln10_definitions():
+    """CLN10 Epilepsy definitions: 15 concepts
+    [CLN10-CTSD-11p15.5-Lysosomal-Aspartic-Endopeptidase /
+    Congenital-CLN10-Most-Severe-NCL-Prenatal-Brain-Malformation /
+    GRODs-EM-CLN1-AND-CLN10-Both-Test-PPT1-First /
+    CTSD-Activates-PPT1-Dual-Lysosomal-Enzyme-Relationship /
+    No-Standardised-CTSD-DBS-Assay-WES-Required /
+    VGB-ABSOLUTE-CI-Infantile-Spasms-West-Syndrome-Trap /
+    VPA-SAFE-CLN10-Lysosomal-NOT-Mitochondrial /
+    CBZ-OXC-PHT-Fosphenytoin-ABSOLUTE-CI-Neonatal-SE-Trap /
+    CTSD-ERT-Conceptually-Feasible-CLN2-Precedent /
+    Fetal-MRI-Simplified-Gyri-At-Risk-Family /
+    No-Disease-Modifying-Therapy-CLN10 /
+    Burst-Suppression-EEG-Neonatal-Pathognomonic /
+    Gastrostomy-Late-Infantile-CLN10 /
+    SUDEP-Risk-CLN10 / POLG1-Exclusion-Before-VPA],
+    12 thresholds, 12 standards
+    (Siintola-2006-AnnNeurol / Steinfeld-2006-HumMolGenet / Tyynelä-2000-MolGenetMetab /
+    Koike-2000-JNeurosci / Mole-2019-LancetNeurol / NCL-Resource-2024 /
+    ILAE-2022 / NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry),
+    6 references."""
+    try:
+        import scripts.cln10_dashboard as cln10_
+        return _json_safe(cln10_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
