@@ -4725,5 +4725,28 @@
       "/api/gusb/breakdown",
       "/api/gusb/definitions"
     ]
+  },
+  {
+    "id": "fuca1",
+    "name": "FUCA1 Epilepsy (Fucosidosis / Alpha-L-Fucosidase-Deficiency / Oligosaccharidosis-NOT-MPS / AR-Biallelic-LOF / 1p36.11 / Fucosylated-Glycoprotein-Glycolipid-Accumulation / Angiokeratoma-Corporis-Diffusum-Type2-50pct-PATHOGNOMONIC-vs-Fabry-GLA-XL / AR-Both-Sexes-Fabry-XL-Males / NO-ERT-Approved-2026 / HSCT-NOT-Standard / Epilepsy-70-80pct / DRE-30-40pct / PHT-ABSOLUTE-CI-Myoclonus / VGB-RELATIVE-CI-Visual-Monitoring-Impossible / CBZ-OXC-RELATIVE-CI-Myoclonus / Typical-AP-HIGH-RISK-EPS / POLG1-Exclusion-Mandatory / Urine-Oligosaccharide-NOT-GAG / Italian-Founder-p.Arg178Ter / AR-Both-Sexes-Equal / 1p36.11)",
+    "status": "built",
+    "gene": "FUCA1",
+    "locus": "1p36.11",
+    "protein": "Alpha-L-Fucosidase 1",
+    "disease": "Fucosidosis (Alpha-L-Fucosidase Deficiency / Oligosaccharidosis)",
+    "omim_gene": "612280",
+    "omim_disease": "230000",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/fuca1/overview",
+      "/api/fuca1/breakdown",
+      "/api/fuca1/definitions"
+    ],
+    "frontend": "portal-next/app/fuca1/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1a237e",
+    "route": "/fuca1",
+    "category": "epilepsy-genetics-lsd-oligosaccharidosis"
   }
 ]

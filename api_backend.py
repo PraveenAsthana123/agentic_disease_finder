@@ -29396,6 +29396,56 @@ async def gusb_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/fuca1/overview")
+async def fuca1_overview():
+    """FUCA1 / Fucosidosis (Alpha-L-Fucosidase Deficiency) — overview: gene 1p36.11 AR,
+    oligosaccharidosis (NOT MPS — fucosylated glycoprotein/glycolipid accumulation),
+    angiokeratoma corporis diffusum TYPE 2 PATHOGNOMONIC (50% type 2 — AR both sexes;
+    vs Fabry GLA XL males — critical differential), NO ERT APPROVED (2026),
+    HSCT not standard (CNS decline not halted), epilepsy 70-80% (type 1: 80-90%),
+    DRE 30-40%, Italian founder p.Arg178Ter, POLG1 mandatory before VPA, 40-patient cohort.
+    """
+    try:
+        import scripts.fuca1_dashboard as fuca1_
+        return _json_safe(fuca1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/fuca1/breakdown")
+async def fuca1_breakdown():
+    """FUCA1 / Fucosidosis — breakdown: 40-patient cohort (Type1-Italian-Founder-p.Arg178Ter /
+    Type2-Attenuated-Angiokeratoma / Type1-Non-Italian-biallelic-nonsense / Type2-biallelic-missense /
+    Rare-private-deep-intronic), seizure types (IS-55%/GTCS-72%/Myoclonic-40%/Focal-35%/Myoclonic-atonic-22%),
+    triggers (febrile-68%/sleep-55%/metabolic-42%/anaesthesia-35%/missed-AED-30%/startle-22%/photosensitive-15%),
+    treatments (LEV-LevelB/VPA-LevelB-POLG1/ACTH-LevelA-IS/CLB-LevelB/Rufinamide-LevelB/KD-LevelB/Rescue-LevelA),
+    contraindications (PHT-ABSOLUTE-CI-myoclonus/CBZ-OXC-RELATIVE-CI/VGB-RELATIVE-CI-visual/
+    Typical-AP-HIGH-RISK-EPS/POLG1-mandatory).
+    """
+    try:
+        import scripts.fuca1_dashboard as fuca1_
+        return _json_safe(fuca1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/fuca1/definitions")
+async def fuca1_definitions():
+    """FUCA1 / Fucosidosis — definitions: 19-term glossary (FUCA1/AR/IS/GTCS/DRE/ERT-none/
+    HSCT-not-standard/VGB-relative-CI/PHT-absolute-CI/CBZ-OXC-relative-CI/LEV/VPA-POLG1/ACTH/
+    KD/TDM/POLG1/Oligosaccharidosis/Angiokeratoma/CPIC-A), founder mutations, differential
+    (Fabry-GLA-XL vs Fucosidosis-FUCA1-AR / MPS-I-II-III GAG vs oligosaccharides /
+    GM1-GLB1 / Aspartylglucosaminuria-AGA / Alpha-mannosidosis-MAN2B1 / Sialidosis-NEU1),
+    clinical pearls (angiokeratoma-AR-vs-Fabry-XL / PHT-absolute-CI-IV-LEV-protocol /
+    urine-oligosaccharide-NOT-GAG-screen / ACTH-preferred-IS-VGB-visual-monitoring-impossible).
+    """
+    try:
+        import scripts.fuca1_dashboard as fuca1_
+        return _json_safe(fuca1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
