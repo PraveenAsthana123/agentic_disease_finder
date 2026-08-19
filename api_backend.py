@@ -28184,6 +28184,71 @@ async def glb1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/hexa/overview")
+async def hexa_overview():
+    """HEXA / Tay-Sachs Disease (GM2 Gangliosidosis Type 1) overview:
+    beta-Hexosaminidase A alpha-subunit deficiency / GM2 Ganglioside accumulation.
+    HEXA (15q23) — TIM barrel lysosomal acid hydrolase; pairs with HEXB beta-subunit -> Hex A (alphabeta) heterodimer.
+    HEXA LOF -> Hex A + Hex S deficient; Hex B ELEVATED (betabeta retained) = PATHOGNOMONIC Tay-Sachs.
+    Three types: Type 1 Infantile (<0.1% Hex A; cherry-red 90-95%; IS; fatal 2-5y);
+    Type 2 Juvenile (2-8% Hex A; PME + ataxia; main epilepsy focus);
+    Type 3 Adult/Chronic (>10% Hex A; spinocerebellar + LMN + psychiatric).
+    Pseudodeficiency trap: p.Arg247Trp/p.Arg249Trp -> DBS Hex A low but leukocyte NORMAL.
+    CBZ/OXC/PHT ABSOLUTE CI; VPA SAFE lysosomal not mitochondrial; POLG1/MERRF mandatory exclusion.
+    ACTH Level A infantile spasms (prefer over VGB when cherry-red present).
+    Fosphenytoin ABSOLUTE CI; IV LEV replaces in SE. Piracetam Level B action myoclonus.
+    AAV9-HEXA/HEXB bicistronic gene therapy Phase I/II 2024.
+    AJ three-mutation panel (c.1278insTATC 78% + IVS12+1G>C 18% + p.Gly269Ser 4%) covers ~98% of AJ carriers.
+    OMIM *606869/#272800."""
+    try:
+        import scripts.hexa_dashboard as hexa_
+        return _json_safe(hexa_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hexa/breakdown")
+async def hexa_breakdown():
+    """HEXA / Tay-Sachs Disease breakdown:
+    6-class etiology [AJ-Compound-Het-c.1278insTATC-IVS12+1G>C-Type1-Classic-28% /
+    AJ-Homozygous-c.1278insTATC-Type1-Classic-18% / AJ-Compound-Het-Null-p.Gly269Ser-Type2-Juvenile-22% /
+    French-Canadian-IVS7+1G>A-Type1-15% / Non-AJ-Non-FC-Compound-Het-Type2-Type3-12% /
+    Pseudodeficiency-p.Arg247Trp-Not-True-Tay-Sachs-5%],
+    6 seizure types [Infantile-Spasms-35%/Action-Myoclonus-72%/GTCS-65%/Absence-Like-38%/Focal-Occipital-28%/NCSE-18%],
+    8 triggers, 8 treatments, 7 CIs, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.hexa_dashboard as hexa_
+        return _json_safe(hexa_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hexa/definitions")
+async def hexa_definitions():
+    """HEXA / Tay-Sachs Disease definitions:
+    15 concepts [HEXA-15q23-Lysosomal-Hex-A-Alpha-Subunit-GM2-Ganglioside-Hydrolysis /
+    Hex-B-Elevated-PATHOGNOMONIC-Tay-Sachs-vs-All-Hex-Low-Sandhoff /
+    Pseudodeficiency-p.Arg247Trp-p.Arg249Trp-Leukocyte-Assay-Mandatory /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Type2-PME-GTCS-Misidentification /
+    VPA-SAFE-HEXA-Lysosomal-NOT-Mitochondrial-POLG1-MERRF-Mandatory /
+    ACTH-Level-A-Infantile-Spasms-Type1-Prefer-Over-VGB-Cherry-Red-90-95pct /
+    VGB-HIGH-RISK-Type1-Not-Absolute-CI-Type3-Cherry-Red-Determines /
+    Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces-SE-Protocol /
+    Piracetam-Level-B-Action-Myoclonus-Type2-AMPA-Membrane-Fluidity /
+    Thalamic-T2-Hypointensity-Type1-MRI-Characteristic-GM2-Thalamic-Storage /
+    AJ-Three-Mutation-Panel-98-Percent-Coverage-Founder-Mutations /
+    AAV9-HEXA-HEXB-Bicistronic-Gene-Therapy-Phase-I-II-2024 /
+    No-Approved-Disease-Modifying-Therapy-CNS-Penetration-Barrier /
+    SUDEP-Risk-Drug-Resistant-Type2-Nocturnal-GTCS /
+    Driving-DVLA-Mandatory-Cessation-Seizures-Cognitive-Decline-Type2],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.hexa_dashboard as hexa_
+        return _json_safe(hexa_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

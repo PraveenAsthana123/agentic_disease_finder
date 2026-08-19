@@ -4394,5 +4394,14 @@
     "color": "#1a4731",
     "note": "GM1 Gangliosidosis / beta-Galactosidase-1 Deficiency (3p22.3). GLB1 only deficient (NEU1 normal). Three types: Type1 infantile null, Type2 juvenile missense (epilepsy dominant), Type3 adult/chronic dystonia-parkinsonism. ACTH Level A for IS (prefer over VGB when cherry-red present). CBZ/OXC/PHT ABSOLUTE CI. VPA safe lysosomal. Fosphenytoin ABSOLUTE CI. AAV-GLB1 gene therapy Phase I/II 2024. Japanese founder p.Ile51Thr Type3. Bilateral putaminal MRI PATHOGNOMONIC Type3.",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/glb1/overview|breakdown|definitions verified 200."
+  },
+  {
+    "name": "HEXA Epilepsy (Tay-Sachs-Disease / GM2-Gangliosidosis-Type1 / Beta-Hexosaminidase-A-Alpha-Subunit-Deficiency / Hex-B-Elevated-PATHOGNOMONIC-vs-Sandhoff-All-Low / Pseudodeficiency-p.Arg247Trp-p.Arg249Trp-Leukocyte-Assay-Mandatory / AJ-Three-Mutation-Panel-c.1278insTATC-78pct-IVS12+1G>C-18pct-p.Gly269Ser-4pct / French-Canadian-IVS7+1G>A-Distinct-Founder / Type1-Cherry-Red-90-95pct-Hyperekplexia-IS / Type2-Juvenile-PME-Ataxia-Primary-Epilepsy / ACTH-Level-A-Infantile-Spasms-Prefer-Over-VGB-Cherry-Red / CBZ-OXC-PHT-ABSOLUTE-CI-PME-Myoclonus-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-MERRF-Mandatory-Exclusion / VGB-HIGH-RISK-Type1-Not-Absolute-CI-Type3 / Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces / Piracetam-Level-B-Action-Myoclonus / Thalamic-T2-Hypointensity-Type1-MRI-PATHOGNOMONIC / AAV9-HEXA-HEXB-Bicistronic-Gene-Therapy-Phase-I-II-2024 / No-Disease-Modifying-Therapy / AR-Biallelic-LOF / 15q23)",
+    "status": "built",
+    "route": "/api/hexa/overview|breakdown|definitions",
+    "page": "/hexa",
+    "description": "40-patient HEXA cohort (Tay-Sachs/15q23 \u2014 beta-Hexosaminidase A alpha-subunit; 529 aa precursor ~60 kDa; TIM barrel fold; pairs with HEXB beta-subunit -> Hex A (alphabeta) heterodimer; Glu323/Glu325 catalytic dyad; requires GM2 activator protein (GM2AP/GM2A) to load GM2 ganglioside substrate; HEXA LOF -> Hex A (alphabeta) + Hex S (alphaalpha) both deficient; Hex B (betabeta, HEXB) retained + ELEVATED = PATHOGNOMONIC Tay-Sachs; discriminates from Sandhoff HEXB LOF where ALL three forms low; from AB variant GM2A LOF where Hex A NORMAL in vitro); 6-class etiology [AJ-Compound-Het-c.1278insTATC-IVS12+1G>C-Type1-28%/AJ-Homozygous-c.1278insTATC-Type1-18%/AJ-Compound-Het-Null-p.Gly269Ser-Type2-Juvenile-22%/French-Canadian-IVS7+1G>A-Type1-15%/Non-AJ-Non-FC-Compound-Het-12%/Pseudodeficiency-p.Arg247Trp-5%], 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle, 15 concepts, 12 thresholds, 12 standards, 6 references, 5-tab frontend, deep-midnight-blue #1a237e, 3 endpoints /api/hexa/overview|breakdown|definitions verified 200",
+    "built_at": "2026-08-19",
+    "color": "#1a237e"
   }
 ]
