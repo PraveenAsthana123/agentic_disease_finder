@@ -28527,6 +28527,82 @@ async def gba_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/galc/overview")
+async def galc_overview():
+    """GALC / Krabbe Disease (Globoid Cell Leukodystrophy) overview:
+    GALC (14q31.3) — lysosomal galactocerebrosidase (galactosylceramidase); 669 aa; ~80 kDa.
+    GALC LOF → galactosylceramide + PSYCHOSINE (galactosylsphingosine) accumulate →
+    globoid cells (multinucleated macrophage aggregates) + progressive CNS+PNS demyelination.
+    Early-infantile (EI, 45-60%): onset <6 months; fatal by 2-5y untreated.
+    UNEXPLAINED FEVER EPISODES (vasomotor instability, 82%) PATHOGNOMONIC Stage 1 EI.
+    GLOBOID CELLS (PAS+, multinucleated macrophages) PATHOGNOMONIC on brain biopsy.
+    PERIPHERAL NEUROPATHY 100% EI/LI — combined CNS+PNS demyelination UNIQUE to Krabbe.
+    HSCT ONLY effective PRE-SYMPTOMATICALLY (NBS-detected EI or early-juvenile) → Level A.
+    NO ERT, NO SRT available. Psychosine DBS = best NBS biomarker.
+    CBZ/OXC/PHT: RELATIVE CI (spasticity worsening) — NOT ABSOLUTE (no PME mechanism).
+    VPA SAFE (lysosomal NOT mitochondrial). ACTH Level A for IS (prefer over VGB — optic atrophy).
+    VGB HIGH RISK — irreversible visual fields compound optic atrophy + cortical blindness.
+    Fosphenytoin RELATIVE CI — IV LEV replaces in SE. Jim Kelly / Hunter's Hope / NY NBS 2006."""
+    try:
+        import scripts.galc_dashboard as galc_
+        return _json_safe(galc_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/galc/breakdown")
+async def galc_breakdown():
+    """GALC / Krabbe Disease breakdown:
+    6-class etiology [Early-Infantile-Classic-<6m-48% / Late-Infantile-6m-3y-20% /
+    Juvenile-3-8y-18% / Adolescent-Adult->8y-9% / NBS-Pre-Symptomatic-HSCT-3% /
+    Late-Onset-Atypical-HSP-Mimic-2%],
+    6 seizure types [Infantile-Spasms-West-Syndrome-45% / Generalized-Tonic-42% /
+    Focal-Autonomic-35% / GTCS-28% / Myoclonic-Secondary-Encephalopathic-22% /
+    Focal-Status-Epilepticus-Refractory-18%],
+    8 triggers [Febrile-Illness-85% / Sleep-Deprivation-72% / Startle-Acoustic-68% /
+    Missed-AED-65% / Hyperthermia-Vasomotor-60% / Respiratory-Hypoxia-48% /
+    Feeding-GOR-40% / Neuropathic-Pain-35%],
+    8 treatments [HSCT-Level-A-Pre-Symptomatic / VPA-Level-B / LEV-Level-B-IV-SE /
+    ACTH-Level-A-IS / Clonazepam-Level-B / Midazolam-Rescue-Level-A /
+    Ketogenic-Diet-Level-C / Baclofen-Level-B-Spasticity],
+    7 contraindications [CBZ-OXC-PHT-RELATIVE-CI / Fosphenytoin-RELATIVE-CI /
+    VGB-HIGH-RISK / Typical-Antipsychotics-HIGH-RISK / GBP-PGB-HIGH-RISK-Ambulant /
+    TGB-HIGH-RISK / Baclofen-Withdrawal-HIGH-RISK],
+    6 lifecycle stages."""
+    try:
+        import scripts.galc_dashboard as galc_
+        return _json_safe(galc_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/galc/definitions")
+async def galc_definitions():
+    """GALC / Krabbe Disease definitions:
+    16 concepts [GALC-14q31.3-Galactocerebrosidase /
+    Psychosine-Galactosylsphingosine-Primary-Cytotoxin /
+    Globoid-Cells-PATHOGNOMONIC-Biopsy /
+    HSCT-Narrow-Window-Pre-Symptomatic-Only /
+    NBS-NY-2006-DBS-GALC-Psychosine /
+    Peripheral-Neuropathy-100pct-EI-LI-Combined-CNS-PNS-UNIQUE /
+    Unexplained-Fever-Vasomotor-Instability-Stage1-Pathognomonic /
+    GALC-Pseudodeficiency-NBS-Pitfall /
+    30kb-Deletion-European-Most-Common-Allele /
+    MRI-WM-T2-Hyperintensity-Thalamic-Hypointensity /
+    CBZ-OXC-PHT-RELATIVE-CI-NOT-Absolute-KEY-Distinction-from-GBA-HEXA /
+    VPA-LFT-Monitoring-Carnitine-Supplementation /
+    Saposin-A-PSAP-Phenocopy-Normal-GALC-Activity /
+    Optic-Atrophy-Cortical-Blindness-Visual-Pathway /
+    ACTH-vs-VGB-Critical-IS-Decision /
+    Baclofen-Withdrawal-Emergency-Safety],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.galc_dashboard as galc_
+        return _json_safe(galc_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
