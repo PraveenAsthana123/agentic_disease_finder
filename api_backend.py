@@ -28065,6 +28065,63 @@ async def neu1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/ctsa/overview")
+async def ctsa_overview():
+    """CTSA / Galactosialidosis overview:
+    Combined Neuraminidase-β-Galactosidase Deficiency / Protective Protein Cathepsin A Deficiency.
+    CTSA (20q13.12) — lysosomal serine carboxypeptidase + protective protein for NEU1 and GLB1.
+    CTSA LOF → BOTH NEU1 (neuraminidase) + GLB1 (β-galactosidase) deficient — PATHOGNOMONIC.
+    40-patient juvenile/adult cohort; cherry-red spot (92%) + PME + coarse facies + angiokeratoma + mild ID.
+    CBZ-OXC-PHT-ABSOLUTE-CI / VPA-SAFE-Lysosomal / POLG1-MERRF-Mandatory-Exclusion / Fosphenytoin-ABSOLUTE-CI /
+    VGB-HIGH-RISK-Cherry-Red-Macular-Not-Retinal-NCL / No-CTSA-Enzyme-Assay-Leukocyte-NEU1-GLB1-Dual-Panel."""
+    try:
+        import scripts.ctsa_dashboard as ctsa_
+        return _json_safe(ctsa_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/ctsa/breakdown")
+async def ctsa_breakdown():
+    """CTSA / Galactosialidosis breakdown:
+    6-class etiology [Compound-Het-Missense-Truncating-30% / Homozygous-Japanese-Founder-28% /
+    Compound-Het-Missense-Missense-22% / Homozygous-Truncating-Consanguineous-12% /
+    Deep-Intronic-5% / Phenocopy-WES-Negative-3%],
+    5 seizure types [Action-Myoclonus-90%/GTCS-70%/Cerebellar-Ataxia-75%/Focal-32%/NCSE-18%],
+    8 triggers, 8 treatments, 7 CIs, 15 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.ctsa_dashboard as ctsa_
+        return _json_safe(ctsa_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/ctsa/definitions")
+async def ctsa_definitions():
+    """CTSA / Galactosialidosis definitions:
+    15 concepts [CTSA-PPCA-20q13.12-Lysosomal-Serine-Carboxypeptidase-Protective-Protein-Dual-Function /
+    Combined-NEU1-GLB1-Deficiency-PATHOGNOMONIC-Galactosialidosis-Only /
+    No-CTSA-Enzyme-Assay-Leukocyte-NEU1-GLB1-Dual-Panel-First /
+    Coarse-Facies-Angiokeratoma-Bedside-Bedrock-Galactosialidosis-vs-Sialidosis /
+    Mild-Intellectual-Disability-60pct-Static-Not-Progressive-Dementia-Unlike-NCL /
+    CBZ-OXC-PHT-ABSOLUTE-CI-PME-Myoclonus-Trap-Coarse-Facies-Should-Alert /
+    VPA-SAFE-CTSA-Lysosomal-NOT-Mitochondrial-POLG1-MERRF-Mandatory-Exclusion /
+    VGB-HIGH-RISK-Cherry-Red-Macular-Not-Retinal-NCL-Not-Absolute-CI /
+    Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces-In-SE-Protocol /
+    Piracetam-Level-B-Most-Specific-Antimyoclonic-Action-Myoclonus-PME /
+    Japanese-Founder-p.Ser23Leu-p.Gly411Ser-Targeted-PCR-First-Before-WES /
+    Three-Phenotypic-Forms-Early-Infantile-Late-Infantile-Juvenile-Adult /
+    ERT-More-Complex-Two-Enzyme-Deficiencies-Research-Phase /
+    SUDEP-Risk-Drug-Resistant-PME-Nocturnal-GTCS-Cognitive-Impairment /
+    Driving-DVLA-Mandatory-Mild-ID-Plus-Uncontrolled-Seizures],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.ctsa_dashboard as ctsa_
+        return _json_safe(ctsa_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
