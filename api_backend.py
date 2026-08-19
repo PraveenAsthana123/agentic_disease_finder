@@ -28458,6 +28458,75 @@ async def npc2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/abcd1/overview")
+async def abcd1_overview():
+    """ABCD1 / X-linked Adrenoleukodystrophy (X-ALD) overview:
+    ABCD1 (Xq28) — Adrenoleukodystrophy Protein (ALDP); peroxisomal membrane half-transporter (PMP);
+    745 aa; 6 TM helices; homodimerizes; transports VLCFA-CoA esters into peroxisome for beta-oxidation.
+    X-linked: males hemizygous (fully affected); females het (65% AMN-like by age 60).
+    ABCD1 LOF → VLCFA accumulate (C26:0, C24:0) in CNS WM + adrenal cortex → CCALD (seizures 90%+,
+    age 4-8yr, Loes ≤9 = HSCT/GT window) + AMN (spastic paraparesis, seizures 15-20%) + Addison (71%).
+    HSCT Level A (early CCALD, Loes ≤9 + NRS ≤1). Gene therapy: Skysona/elivaldogene FDA Aug 2022 (CCALD ≤17yr).
+    PHT/Fosphenytoin ABSOLUTE CI (CYP3A4 induction → cortisol drop → adrenal crisis).
+    CBZ/OXC/PB RELATIVE CI (weaker enzyme induction — cortisol monitoring). LEV FIRST-LINE (no induction).
+    Anaesthesia EXTREME HAZARD: 100mg hydrocortisone IV at induction + 50mg q6h mandatory.
+    Lorenzo's Oil LEVEL C (presymptomatic only; normalises VLCFA; no CNS benefit in symptomatic).
+    POLG1 exclusion mandatory before VPA (CPIC A). OMIM *300371 (gene) / #300100 (disease)."""
+    try:
+        import scripts.abcd1_dashboard as abcd1_
+        return _json_safe(abcd1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/abcd1/breakdown")
+async def abcd1_breakdown():
+    """ABCD1 / X-linked Adrenoleukodystrophy breakdown:
+    6-class etiology [CCALD-childhood-cerebral-35%-seizures-90%+ /
+    Adolescent-Cerebral-ALD-7%-seizures-85-90% / Adult-Cerebral-ALD-5%-seizures-70-80% /
+    AMN-adrenomyeloneuropathy-40%-seizures-15-20% / Addison-only-10%-metabolic-crisis-seizures /
+    Female-het-AMN-like-myelopathy-3%-seizures-5-10%],
+    6 seizure types [Focal-onset-posterior-occipital-parietal-60% / GTCS-45% /
+    Status-epilepticus-25% / Tonic-20% / Metabolic-adrenal-crisis-18% / Absence-like-10%],
+    8 triggers [Adrenal-crisis-45% / Fever-infection-40% / Perioperative-stress-35% /
+    Active-WM-expansion-30% / Missed-cortisol-dose-28% / Head-trauma-20% / Sleep-deprivation-18% /
+    Enzyme-inducing-AED-introduction-15%],
+    8 treatments [HSCT-Level-A-CCALD-Loes≤9 / Skysona-eli-cel-FDA-2022-CCALD-≤17yr /
+    Hydrocortisone-fludrocortisone-MANDATORY / Lorenzo's-Oil-Level-C-presymptomatic /
+    LEV-first-line-AED-no-induction / VPA-POLG1-exclusion-mandatory / Clobazam-adjunct-weak-inducer /
+    IV-Midazolam-IV-LEV-SE-protocol],
+    8 contraindications [PHT-ABSOLUTE-CI / CBZ-RELATIVE-CI / OXC-RELATIVE-CI / PB-RELATIVE-CI /
+    Typical-AP-HIGH-RISK / Anaesthesia-EXTREME-HAZARD / Corticosteroids-NOT-disease-modifying /
+    VGB-NOT-INDICATED],
+    6 lifecycle stages, 11 monitoring items, 8 thresholds."""
+    try:
+        import scripts.abcd1_dashboard as abcd1_
+        return _json_safe(abcd1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/abcd1/definitions")
+async def abcd1_definitions():
+    """ABCD1 / X-linked Adrenoleukodystrophy definitions:
+    16 key concepts [ABCD1-Xq28-Peroxisomal-Half-Transporter / X-ALD-Most-Common-Peroxisomal /
+    VLCFA-C26-0-Primary-Diagnostic-Marker / CCALD-Childhood-Cerebral-Rapid-Neuroinflammation /
+    AMN-Axonal-Degeneration-NOT-Demyelination / Loes-Score-0-34-MRI-WM-Severity /
+    NRS-0-25-Neurological-Disability / Skysona-Elivaldogene-FDA-2022-REMS /
+    Adrenal-Insufficiency-71pct-Males-MANDATORY-Replacement /
+    Gadolinium-Enhancement-Active-Neuroinflammation-Intervention-Window /
+    NBS-C26-lyso-PC-DBS-30-US-States / Lorenzo-Oil-GTO-GTE-4-1-Presymptomatic /
+    PHT-ABSOLUTE-CI-CYP3A4-Cortisol-Drop / CYP3A4-Induction-Risk-PHT-CBZ-OXC-PB /
+    POLG1-Exclusion-CPIC-A-Before-VPA / Genotype-Phenotype-Dissociation],
+    12 pharmacological distinctions, 10-step diagnostic algorithm,
+    8 differential diagnoses, 12 standards, 8 thresholds."""
+    try:
+        import scripts.abcd1_dashboard as abcd1_
+        return _json_safe(abcd1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/gba/overview")
 async def gba_overview():
     """GBA / Gaucher Disease Type 3 (Neuronopathic) overview:

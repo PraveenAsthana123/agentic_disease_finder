@@ -4871,5 +4871,29 @@
     "color": "#004d40",
     "route": "/npc2",
     "category": "epilepsy-genetics-lsd-niemann-pick"
+  },
+  {
+    "id": "abcd1",
+    "gene": "ABCD1",
+    "status": "built",
+    "name": "ABCD1 Epilepsy (X-linked-Adrenoleukodystrophy-X-ALD / Adrenoleukodystrophy-Protein-ALDP-Peroxisomal-Half-Transporter / XL-Hemizygous-Males-Het-Females / VLCFA-C26-0-Peroxisomal-NOT-Lysosomal / CCALD-Childhood-Cerebral-35pct-Age-4-8yr-Seizures-90pct / Loes-Score-9-NRS-1-Gd-Plus-HSCT-GT-Window / HSCT-Level-A-Early-CCALD / Skysona-Elivaldogene-FDA-Aug-2022-CCALD-17yr-REMS / Adrenal-Insufficiency-71pct-MANDATORY-Hydrocortisone / Adrenal-Crisis-DOMINANT-METABOLIC-SEIZURE-TRIGGER / PHT-Fosphenytoin-ABSOLUTE-CI-CYP3A4-Cortisol-Drop / CBZ-OXC-PB-RELATIVE-CI-Enzyme-Induction / LEV-FIRST-LINE-No-Enzyme-Induction / Anaesthesia-EXTREME-HAZARD-100mg-Hydrocortisone-Mandatory / Lorenzo-Oil-Level-C-Presymptomatic-ONLY / POLG1-Exclusion-CPIC-A-VPA / AMN-Axonal-NOT-Demyelination / Genotype-NOT-Predict-Phenotype / NBS-C26-lyso-PC-DBS / XL-Xq28)",
+    "locus": "Xq28",
+    "protein": "ABCD1 \u2014 Adrenoleukodystrophy Protein (ALDP); peroxisomal membrane half-transporter (PMP); 745 aa; 6 TM helices; homodimerizes; transports VLCFA-CoA esters into peroxisome",
+    "disease": "X-linked Adrenoleukodystrophy (X-ALD) \u2014 CCALD / AMN / Addison-only",
+    "omim_gene": "300371",
+    "omim_disease": "300100",
+    "inheritance": "X-linked (XL)",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/abcd1/overview",
+      "/api/abcd1/breakdown",
+      "/api/abcd1/definitions"
+    ],
+    "frontend": "portal-next/app/abcd1/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1a237e",
+    "route": "/abcd1",
+    "category": "epilepsy-genetics-peroxisomal-xald",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/abcd1/overview|breakdown|definitions verified 200. SiteNav wired after NPC2. expert_dashboards.json count 313->314."
   }
 ]
