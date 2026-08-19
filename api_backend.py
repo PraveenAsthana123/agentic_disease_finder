@@ -27638,6 +27638,56 @@ async def cln7_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln8/overview")
+async def cln8_overview():
+    """CLN8 Epilepsy — Northern Epilepsy (EPMR / Finnish) + Turkish vLINCL (CLN8 / 8p23.3) overview:
+    gene, protein (ER-ERGIC cargo receptor 286 aa 8TM), dual phenotype, inheritance, mechanism,
+    cohort stats, key pharmacological distinctions (Ranta-1999-NatGenet / Nita-2016-AnnNeurol /
+    NCL-Resource-2024 / ILAE-2022 / NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry), 40-patient cohort."""
+    try:
+        import scripts.cln8_dashboard as cln8_
+        return _json_safe(cln8_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln8/breakdown")
+async def cln8_breakdown():
+    """CLN8 Epilepsy breakdown: 6-class etiology
+    [Homozygous-p.Arg24Gly-Finnish-EPMR-28% / Compound-Het-p.Arg24Gly-Finnish-Intermediate-12% /
+    Truncating-Non-Finnish-vLINCL-22% / Compound-Het-Missense-Truncating-25% /
+    Compound-Het-Missense-Missense-Attenuated-10% / Phenocopy-CLN8-Negative-3%],
+    5 seizure types [GTCS-First-Both-Phenotypes-90% / Myoclonic-82% / Atonic-Drop-42% /
+    Focal-Occipital-38% / NCSE-22%],
+    8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.cln8_dashboard as cln8_
+        return _json_safe(cln8_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln8/definitions")
+async def cln8_definitions():
+    """CLN8 Epilepsy definitions: 15 concepts
+    [CLN8-8p23.3-ER-ERGIC-Cargo-Receptor / Northern-Epilepsy-EPMR-Finnish-p.Arg24Gly /
+    CLN8-vLINCL-Non-Finnish / No-CLN8-Enzyme-Assay / FP-CB-EM-Pattern / VGB-Dual-Rule /
+    VPA-SAFE / CBZ-OXC-PHT-ABSOLUTE-CI / Seizures-First-Both-Phenotypes /
+    CLN8-Cargo-Receptor-Cathepsin / No-Disease-Modifying-Therapy /
+    Dual-Phenotype-Genotype-Phenotype / Gastrostomy-vLINCL / SUDEP-Risk / POLG1-Exclusion],
+    12 thresholds, 12 standards
+    (Ranta-1999-NatGenet / Lonka-2000-HumMolGenet / Nita-2016-AnnNeurol /
+    Mole-2019-LancetNeurol / NCL-Resource-2024 / ILAE-2022 / NICE-NG217 /
+    MHRA-VPPP-2021 / CPIC-POLG1-2023 / ACMG-AMP-2015 / BDSRA-Registry / WHO-ICF-2019),
+    6 references."""
+    try:
+        import scripts.cln8_dashboard as cln8_
+        return _json_safe(cln8_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
