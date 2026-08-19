@@ -29213,6 +29213,55 @@ async def ids_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/idua/overview")
+async def idua_overview():
+    """IDUA / MPS-I (Hurler / Hurler-Scheie / Scheie) — overview: gene, AR inheritance,
+    disease mechanism (alpha-L-iduronidase deficiency → HS+DS accumulation),
+    5-class variant spectrum (Hurler-null/null-30% / Hurler-compound-het-null+missense-25% /
+    Hurler-Scheie-missense/missense-22% / Scheie-attenuated-15% / severe-non-founder-8%),
+    ERT (Laronidase-Aldurazyme-FDA2003-NO-BBB), HSCT (gold-standard-Hurler-<2.5yr),
+    corneal clouding (PATHOGNOMONIC vs MPS-II-absent), communicating hydrocephalus (35-45%),
+    OSA (58% dominant trigger), atlantoaxial instability (50-60%), cardiac valvulopathy (ALL).
+    """
+    try:
+        import scripts.idua_dashboard as idua_
+        return _json_safe(idua_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/idua/breakdown")
+async def idua_breakdown():
+    """IDUA / MPS-I — breakdown: 40-patient cohort (Hurler / Hurler-Scheie / Scheie / severe),
+    etiologies, seizure types, triggers (OSA-58% / febrile-65% / hydrocephalus-42% / ERT-gap-30%
+    / atlantoaxial-22% / cardiac-18%), treatments (LEV / VPA-POLG1-excl / CLB / ACTH-IS /
+    Laronidase-ERT / HSCT-gold-standard), contraindications (typical-antipsychotics-ABSOLUTE-AVOID /
+    PHT-cardiac-CI / VGB-corneal-clouding-monitoring-impossible / anesthesia-extreme-hazard /
+    serum-assay-pseudo-deficiency-trap), monitoring (leukocyte-enzyme + urine-GAG + brain-MRI +
+    C-spine-XR + cardiac-echo + slit-lamp + polysomnography + POLG1 + HLA-B15:02), thresholds,
+    lifecycle, differential diagnosis (MPS-II-no-corneal / MPS-VI-DS-only / MSD-SUMF1).
+    """
+    try:
+        import scripts.idua_dashboard as idua_
+        return _json_safe(idua_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/idua/definitions")
+async def idua_definitions():
+    """IDUA / MPS-I — definitions: 14-term glossary (IDUA / MPS-I / Laronidase-Aldurazyme /
+    HSCT-gold-standard-Hurler / communicating-hydrocephalus / corneal-clouding / atlantoaxial-
+    instability / HS / DS / pseudo-deficiency-H82Q / DQ / p.W402X / Alpers-POLG1 / DRE),
+    10-step diagnostic algorithm, 12 pharmacological distinctions, differential diagnosis.
+    """
+    try:
+        import scripts.idua_dashboard as idua_
+        return _json_safe(idua_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -4668,5 +4668,20 @@
       "/api/ids/definitions"
     ],
     "note": "IDS/MPS-II (Hunter Syndrome) dashboard built: /api/ids/overview|breakdown|definitions + portal-next/app/ids/page.jsx + SiteNav wired after GNS, 40-patient IDS cohort (severe vs attenuated), count 301->302"
+  },
+  {
+    "id": "idua",
+    "name": "IDUA Epilepsy (MPS-I-Hurler-Hurler-Scheie-Scheie / Alpha-L-Iduronidase-Deficiency / AR-Biallelic-LOF-4p16.3 / HS+DS-BOTH-ELEVATED / Corneal-Clouding-PATHOGNOMONIC-vs-MPS-II-Absent / HSCT-GOLD-STANDARD-Hurler-under-2.5yr / Laronidase-Aldurazyme-FDA2003-NO-BBB / Communicating-Hydrocephalus-GAG-Arachnoid-38pct / OSA-58pct-DOMINANT-TRIGGER / Atlantoaxial-Instability-52pct / Cardiac-Valvulopathy-ALL / Typical-Antipsychotics-ABSOLUTE-AVOID / PHT-AVOID-Cardiac-Conduction / VGB-RELATIVE-CI-Corneal-Monitoring-Impossible / CBZ-OXC-CAUTION-Axonal-Neuropathy / POLG1-Exclusion-Mandatory / Anesthesia-EXTREME-HAZARD / Pseudo-deficiency-p.H82Q-Serum-Assay-Trap / p.W402X-Caucasian-Founder-37pct / p.Q70X-Scandinavian-10pct / AR-Both-Sexes-Equal)",
+    "status": "built",
+    "category": "lysosomal-storage-disease-epilepsy",
+    "priority": "P0",
+    "role": "neurologist",
+    "route": "/idua",
+    "endpoints": [
+      "/api/idua/overview",
+      "/api/idua/breakdown",
+      "/api/idua/definitions"
+    ],
+    "note": "IDUA/MPS-I (Hurler/Hurler-Scheie/Scheie) dashboard built: /api/idua/overview|breakdown|definitions + portal-next/app/idua/page.jsx + SiteNav wired after IDS, 40-patient IDUA cohort, count 302->303"
   }
 ]

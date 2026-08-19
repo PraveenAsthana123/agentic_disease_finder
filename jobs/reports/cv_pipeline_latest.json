@@ -1,11 +1,11 @@
 {
-  "run_at_local": "2026-08-18T23:00:02-06:00",
+  "run_at_local": "2026-08-19T12:00:01-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
   "detection": "YOLOv8n",
   "classification_model": "llava:7b (Ollama)",
-  "classification_sample": "A man is lying in a hospital bed with his eyes closed.",
+  "classification_sample": "The image depicts a man lying in a hospital bed, seemingly unaware of his surroundings.",
   "results": [
     {
       "frame": "frame_0001.jpg",
