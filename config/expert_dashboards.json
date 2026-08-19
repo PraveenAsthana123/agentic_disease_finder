@@ -4641,5 +4641,17 @@
     "color": "#1565c0",
     "note": "Sanfilippo Syndrome C / MPS IIIC \u2014 3rd most common MPS III (~15-20%). Heparan alpha-glucosaminide N-acetyltransferase (HGSNAT, 8p11.21). Epilepsy 70-80% (later onset than IIIA/IIIB). Slower progression \u2014 survival into 3rd-4th decade. No approved ERT 2026 (acetyl-CoA reaction unreplaceable by ERT). AAV9-HGSNAT intrathecal gene therapy Phase I. CBZ/OXC CAUTION. PHT AVOID. VGB RELATIVE CI. Typical antipsychotics HIGH RISK. POLG1 exclusion mandatory. Clobazam paradoxical agitation documented. Ethosuximide NOT indicated for atypical absence. Founders: p.Arg344Cys French-Canadian (20%), p.Trp649stop Dutch (15%), p.Pro524Leu Italian.",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/hgsnat/overview|breakdown|definitions verified 200. expert_dashboards.json count 299->300."
+  },
+  {
+    "id": "gns",
+    "name": "GNS Epilepsy (MPS-IIID-Sanfilippo-D / N-Acetylglucosamine-6-Sulfate-Sulfatase-Deficiency / RAREST-MPS-III-1-5pct / Epilepsy-65-75pct-LOWEST-MPS-III / Drug-Resistance-35-45pct-LOWEST-DRE / SLOWEST-Progression-LATEST-Onset-9-16yrs / Sleep-Disorder-80-85pct / Melatonin-Level-B / No-Approved-ERT-2026 / No-Advanced-GT-Trials-2026-Preclinical-Only / HSCT-NOT-Recommended-MPS-III / Typical-Antipsychotics-HIGH-RISK / PHT-AVOID-IV-LEV / VGB-RELATIVE-CI / CBZ-OXC-CAUTION / POLG1-Exclusion-Mandatory / SUMF1-Dependency / Clobazam-Paradoxical-Agitation / Deep-Intronic-WGS-RNA-seq / Consanguineous-Middle-Eastern-South-Asian / AR-Biallelic-LOF / 12q14.3)",
+    "status": "built",
+    "endpoints": [
+      "/api/gns/overview",
+      "/api/gns/breakdown",
+      "/api/gns/definitions"
+    ],
+    "page": "/gns",
+    "built_note": "GNS/MPS-IIID dashboard built: /api/gns/overview|breakdown|definitions + portal-next/app/gns/page.jsx + SiteNav wired after HGSNAT, 40-patient GNS cohort, count 300->301"
   }
 ]

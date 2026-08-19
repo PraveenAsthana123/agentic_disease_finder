@@ -29111,6 +29111,61 @@ async def hgsnat_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gns/overview")
+async def gns_overview():
+    """GNS / MPS IIID (Sanfilippo Syndrome D) overview:
+    RAREST MPS III subtype (~1-5% of all Sanfilippo; ~30-40 published cases worldwide).
+    GNS (N-Acetylglucosamine-6-Sulfate Sulfatase / G6S) deficiency; 12q14.3; AR biallelic LOF.
+    Epilepsy 65-75% (lowest among MPS III); drug resistance 35-45% (lowest DRE rate);
+    sleep disorder 80-85%; SLOWEST progression + LATEST seizure onset (9-16 yrs) in MPS III series.
+    No approved ERT; no advanced-phase gene therapy trials (2026); HSCT NOT recommended.
+    KPIs: cohort=40, epilepsy=70%, DRE=40%, sleep-disorder=82%, GT=preclinical-only, rarest-MPS-III=~1-5%.
+    5 etiologies: Compound-Het-Null+Missense-35% / Consanguineous-Hom-Missense-MiddleEastern-SouthAsian-25% /
+    Biallelic-Null-Severe-20% / Attenuated-Biallelic-Missense-Residual-GNS≥8%-12% /
+    Deep-Intronic-Regulatory-Cryptic-Splice-8%.
+    """
+    try:
+        import scripts.gns_dashboard as gns_
+        return _json_safe(gns_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gns/breakdown")
+async def gns_breakdown():
+    """GNS / MPS IIID breakdown: 5 etiologies (Null+Missense-35%/Consanguineous-Hom-25%/
+    Biallelic-Null-20%/Attenuated-Missense-12%/Deep-Intronic-8%), 5 seizure types
+    (GTCS-60%/Myoclonic-38%/Tonic-28%/AtypicalAbsence-25%/Focal-15%),
+    7 triggers (SleepDeprivation-82%/Fever-68%/BehavioralAgitation-58%/MissedAED-52%/
+    ActionMyoclonus-38%/AtypicalAP-change-25%/Photosensitive-18%),
+    8 treatments (LEV/VPA/CLB/ZNS/Piracetam/Rufinamide/Melatonin/AAV-GNS-preclinical),
+    6 contraindications (TypicalAP-HIGH-RISK/PHT-AVOID/CBZ-OXC-CAUTION/VGB-RELATIVE-CI/ESX-NOT-INDICATED/PB-CAUTION),
+    40-patient cohort with per-patient drug response, sleep, melatonin, stage.
+    """
+    try:
+        import scripts.gns_dashboard as gns_
+        return _json_safe(gns_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gns/definitions")
+async def gns_definitions():
+    """GNS / MPS IIID definitions:
+    8-step diagnostic algorithm (urine-HS-DMMB / combined-4-enzyme-MPS-III-panel / leukocyte-GNS /
+    GNS-gene-WES-WGS-RNA-seq / POLG1-exclusion / HLA-B1502 / SUMF1-exclusion / brain-MRI-polysomnography).
+    10-term GNS glossary including GNS-G6S-12q14.3 / MPS-IIID-rarest-Sanfilippo / SUMF1-FGE-dependency /
+    leukocyte-GNS-assay / POLG1-exclusion / HLA-B1502 / action-myoclonus-PME-like /
+    clobazam-paradoxical-agitation / sleep-disorder-SCN / deep-intronic-WGS-RNA-seq.
+    12 pharmacological distinctions; 6 differential diagnoses; 8 standards.
+    """
+    try:
+        import scripts.gns_dashboard as gns_
+        return _json_safe(gns_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
