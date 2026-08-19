@@ -28122,6 +28122,68 @@ async def ctsa_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/glb1/overview")
+async def glb1_overview():
+    """GLB1 / GM1 Gangliosidosis overview:
+    beta-Galactosidase-1 Deficiency / GM1 Types 1-3 / MPS IVB Morquio B.
+    GLB1 (3p22.3) — GH35 lysosomal glycoside hydrolase; Glu268-Glu185 catalytic dyad;
+    GM1 ganglioside -> GM2 cleavage; multienzyme complex with CTSA + NEU1.
+    GLB1 ONLY deficient (NEU1 normal) = GM1 Gangliosidosis (vs galactosialidosis BOTH NEU1+GLB1 low).
+    40-patient cohort Type 2 juvenile (7m-3y) + Type 3 adult (dystonia-parkinsonism).
+    ACTH Level A infantile spasms (prefer over VGB when cherry-red present).
+    CBZ/OXC/PHT ABSOLUTE CI; VPA SAFE lysosomal not mitochondrial; POLG1/MERRF mandatory exclusion.
+    Fosphenytoin ABSOLUTE CI; IV LEV replaces in SE. AAV-GLB1 gene therapy Phase I/II 2024.
+    Type 3: bilateral putaminal MRI T2 PATHOGNOMONIC; L-DOPA+trihexyphenidyl for dystonia.
+    Japanese founder p.Ile51Thr Type 3. OMIM *611458/#230500/#253010."""
+    try:
+        import scripts.glb1_dashboard as glb1_
+        return _json_safe(glb1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/glb1/breakdown")
+async def glb1_breakdown():
+    """GLB1 / GM1 Gangliosidosis breakdown:
+    6-class etiology [Homozygous-Missense-Type2-Consanguineous-32% /
+    Compound-Het-Missense-Truncating-Type2-25% / Homozygous-Type3-Japanese-p.Ile51Thr-18% /
+    Compound-Het-Missense-Missense-Attenuated-Type2-15% /
+    Homozygous-Null-Type1-Severe-7% / MPS-IVB-Morquio-B-Skeletal-3%],
+    5 seizure types [Infantile-Spasms-38%/Myoclonic-Atonic-55%/GTCS-62%/Focal-32%/NCSE-20%],
+    8 triggers, 8 treatments, 7 CIs, 15 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.glb1_dashboard as glb1_
+        return _json_safe(glb1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/glb1/definitions")
+async def glb1_definitions():
+    """GLB1 / GM1 Gangliosidosis definitions:
+    15 concepts [GLB1-3p22.3-Lysosomal-GH35-Beta-Galactosidase-GM1-Ganglioside-Hydrolysis /
+    GLB1-Only-Deficient-NEU1-Normal-Critical-Galactosialidosis-Differential /
+    Three-Types-GM1-Genotype-Phenotype-Residual-GLB1-Activity /
+    ACTH-Level-A-Infantile-Spasms-Type1-Early-Type2-Prefer-Over-VGB-Cherry-Red /
+    CBZ-OXC-PHT-ABSOLUTE-CI-GM1-Type2-Myoclonic-Atonic-Seizures /
+    VPA-SAFE-GLB1-Lysosomal-NOT-Mitochondrial-POLG1-MERRF-Mandatory-Before-VPA /
+    VGB-Cherry-Red-Status-Determines-IS-Treatment-High-Risk-Type1-Usable-Type3 /
+    Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces-GM1-SE-Protocol /
+    Type3-Bilateral-Putaminal-MRI-T2-Hyperintensity-PATHOGNOMONIC-Adult-GM1 /
+    L-DOPA-Trihexyphenidyl-Type3-Dystonia-ONLY-Not-Type1-2 /
+    AAV-GLB1-Gene-Therapy-Phase-I-II-2024-Most-Advanced-Lysosomal-Epilepsy-Trial /
+    MPS-IVB-Morquio-B-Odontoid-Hypoplasia-Anaesthesia-Risk-Same-GLB1-Gene /
+    Miglustat-Substrate-Reduction-Off-Label-Limited-Evidence-Not-Primary-AED /
+    Dual-Disease-Single-Gene-GM1-vs-MPS-IVB-Phenotype-Allele-Dependent /
+    SUDEP-Risk-GM1-Type2-Drug-Resistant-Nocturnal-GTCS-Progressive],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.glb1_dashboard as glb1_
+        return _json_safe(glb1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
