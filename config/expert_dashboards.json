@@ -4802,5 +4802,28 @@
     "portal_page": "/gnptab",
     "cohort_size": 40,
     "built_date": "2026-08-19"
+  },
+  {
+    "id": "mcoln1",
+    "gene": "MCOLN1",
+    "status": "built",
+    "name": "MCOLN1 Epilepsy (Mucolipidosis-IV-ML-IV / Mucolipin-1-TRPML1-Lysosomal-Ca2-Channel / AR-Biallelic-LOF / 19p13.2 / Corneal-Clouding-PRESENT-Opposite-GNPTAB-ML-II / Elevated-Gastrin-Achlorhydria-PATHOGNOMONIC-100pct / Normal-Plasma-Enzymes-vs-ML-II-10-50x-Elevated / ERG-Abnormal-100pct-Retinal-Degeneration / Ashkenazi-Founder-IVS3-2A-G-70pct-Arg403Cys-24pct / Iron-Deficiency-Anemia-Achlorhydria / No-Bone-Disease-Urine-GAG-NORMAL / VGB-RELATIVE-CI-Retinal / PHT-NOT-CI-No-Cardiac / Epilepsy-15-25pct-Focal-GTCS-NO-IS / POLG1-Mandatory / NO-ERT-2026 / AAV9-Gene-Therapy-Phase-I / AR-Both-Sexes-Equal / 19p13.2)",
+    "locus": "19p13.2",
+    "protein": "Mucolipin-1 (TRPML1 \u2014 Lysosomal Ca2+/Na+ TRP Channel)",
+    "disease": "Mucolipidosis type IV (ML-IV)",
+    "omim_gene": "605248",
+    "omim_disease": "252650",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/mcoln1/overview",
+      "/api/mcoln1/breakdown",
+      "/api/mcoln1/definitions"
+    ],
+    "frontend": "portal-next/app/mcoln1/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1a237e",
+    "route": "/mcoln1",
+    "category": "epilepsy-genetics-lsd-mucolipidosis"
   }
 ]

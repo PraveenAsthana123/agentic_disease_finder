@@ -29633,6 +29633,64 @@ async def gnptab_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mcoln1/overview")
+async def mcoln1_overview():
+    """MCOLN1 / Mucolipidosis IV (ML-IV) — overview:
+    Mucolipin-1 (TRPML1) lysosomal Ca2+ channel / 19p13.2 / AR biallelic LOF /
+    Corneal clouding PRESENT (vs GNPTAB ML-II ABSENT) / Elevated serum gastrin PATHOGNOMONIC /
+    Normal plasma lysosomal enzymes (vs ML-II 10-50x elevated) / Retinal degeneration ERG 100% /
+    Ashkenazi founder IVS3-2A>G ~70% + p.Arg403Cys ~24% / Iron deficiency anemia (achlorhydria) /
+    No bone disease / Epilepsy 15-25% (focal + GTCS; NO infantile spasms) / VGB RELATIVE CI (retinal) /
+    PHT NOT CI (no cardiac) / POLG1 mandatory / No ERT 2026 / No HSCT evidence /
+    AAV9-MCOLN1 gene therapy preclinical/Phase I research.
+    """
+    try:
+        import scripts.mcoln1_dashboard as mcoln1_
+        return _json_safe(mcoln1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mcoln1/breakdown")
+async def mcoln1_breakdown():
+    """MCOLN1 / ML-IV — breakdown: 40-patient cohort
+    (Ashkenazi-Severe-Type-I-35% / Ashkenazi-Late-Onset-Type-II-20% /
+    Compound-Heterozygous-Non-AJ-25% / Homozygous-Missense-Hypomorphic-12% /
+    Private-Novel-Variants-8%), seizure types (Focal-Onset-Aware-40% / Focal-to-Bilateral-GTCS-35% /
+    GTCS-20% / Myoclonic-8% / Status-Epilepticus-5%), triggers (Febrile-55% /
+    Sleep-deprivation-40% / Missed-AED-35% / Stress-30% / Photic-18% / Iron-deficiency-15% /
+    Visual-sensory-overload-12%), treatments (LEV-LevelB / LTG-LevelB / VPA-LevelB-POLG1 /
+    Lacosamide-LevelC / OXC-LevelC / CLB-LevelC / Iron-LevelA-achlorhydria /
+    Melatonin-LevelB / Lubricating-eye-drops-LevelA), contraindications
+    (VGB-RELATIVE-CI-retinal / Typical-AP-HIGH-RISK / VPA-ABSOLUTE-CI-POLG1+ /
+    Perampanel-CAUTION-behavioral / Topiramate-CAUTION-cognitive / Phenobarbital-CAUTION-sedation).
+    """
+    try:
+        import scripts.mcoln1_dashboard as mcoln1_
+        return _json_safe(mcoln1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mcoln1/definitions")
+async def mcoln1_definitions():
+    """MCOLN1 / ML-IV — definitions: 15-term glossary
+    (MCOLN1-TRPML1-channel / ML-IV-disease-definition / Corneal-clouding-PRESENT /
+    Achlorhydria-elevated-gastrin-PATHOGNOMONIC / Normal-plasma-enzymes-vs-ML-II /
+    Retinal-degeneration-ERG-100% / Iron-deficiency-anemia / Ashkenazi-founder-mutations /
+    No-ERT-2026-membrane-channel / VGB-RELATIVE-CI-retinal / POLG1-mandatory /
+    AAV9-gene-therapy-research / Urine-GAG-normal / No-bone-disease /
+    Differential-corneal-clouding-LSDs),
+    12-step diagnostic algorithm, 6 pharmacological distinctions, 5 differential diagnoses
+    (GNPTAB-ML-II-III / MPS-I-Hurler / MPS-VII-Sly / Tay-Sachs-HEXA / Cystinosis-CTNS).
+    """
+    try:
+        import scripts.mcoln1_dashboard as mcoln1_
+        return _json_safe(mcoln1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
