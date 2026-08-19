@@ -4624,5 +4624,22 @@
     "color": "#1b5e20",
     "note": "Sanfilippo Syndrome A / MPS IIIA \u2014 most common MPS-III in Europe (52%). Heparan sulfate sulfamidase (SGSH, 17q25.3). Epilepsy 85-90% (highest MPS-III). Sleep disorder earliest symptom (age 2-4, before behavioral regression). No approved ERT 2026. OAV-101 (tralesinagene aparvovec) intracranial AAV10 Phase II/III ACMENA trial. CBZ/OXC CAUTION. PHT AVOID. VGB RELATIVE CI. Typical antipsychotics HIGH RISK. POLG1 exclusion mandatory. Piracetam Level C action myoclonus.",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/sgsh/overview|breakdown|definitions verified 200. expert_dashboards.json count 298->299."
+  },
+  {
+    "id": "hgsnat",
+    "name": "HGSNAT Epilepsy (MPS-IIIC-Sanfilippo-C / Heparan-Alpha-Glucosaminide-N-Acetyltransferase-Deficiency / 3rd-Most-Common-MPS-III-15-20pct / Epilepsy-70-80pct / Drug-Resistance-40-50pct / Slower-Progression-Than-IIIA-IIIB / Survival-3rd-4th-Decade / Sleep-Disorder-85-90pct-Earliest-Symptom / Melatonin-Level-B-Circadian-Resync / No-Approved-ERT-2026-AcetylCoA-Reaction-Unreplaceable / AAV9-HGSNAT-IT-Gene-Therapy-Phase-I / HSCT-NOT-Recommended-MPS-III / Typical-Antipsychotics-HIGH-RISK-HS-Basal-Ganglia / PHT-Fosphenytoin-AVOID-IV-LEV-Preferred / VGB-RELATIVE-CI-Vision-Monitoring-Impossible / CBZ-OXC-CAUTION-Not-Absolute-CI / POLG1-Exclusion-Before-VPA-Mandatory / Clobazam-Paradoxical-Agitation-Documented / Ethosuximide-NOT-INDICATED-Atypical-Absence / p.Arg344Cys-French-Canadian-Founder-20pct / p.Trp649stop-Dutch-Founder-15pct / p.Pro524Leu-Italian-Founder / AR-Biallelic-LOF / 8p11.21)",
+    "status": "built",
+    "route": "/hgsnat",
+    "api_prefix": "/api/hgsnat",
+    "endpoints": [
+      "/api/hgsnat/overview",
+      "/api/hgsnat/breakdown",
+      "/api/hgsnat/definitions"
+    ],
+    "frontend": "portal-next/app/hgsnat/page.jsx",
+    "script": "scripts/hgsnat_dashboard.py",
+    "color": "#1565c0",
+    "note": "Sanfilippo Syndrome C / MPS IIIC \u2014 3rd most common MPS III (~15-20%). Heparan alpha-glucosaminide N-acetyltransferase (HGSNAT, 8p11.21). Epilepsy 70-80% (later onset than IIIA/IIIB). Slower progression \u2014 survival into 3rd-4th decade. No approved ERT 2026 (acetyl-CoA reaction unreplaceable by ERT). AAV9-HGSNAT intrathecal gene therapy Phase I. CBZ/OXC CAUTION. PHT AVOID. VGB RELATIVE CI. Typical antipsychotics HIGH RISK. POLG1 exclusion mandatory. Clobazam paradoxical agitation documented. Ethosuximide NOT indicated for atypical absence. Founders: p.Arg344Cys French-Canadian (20%), p.Trp649stop Dutch (15%), p.Pro524Leu Italian.",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/hgsnat/overview|breakdown|definitions verified 200. expert_dashboards.json count 299->300."
   }
 ]

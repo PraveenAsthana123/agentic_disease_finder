@@ -29066,6 +29066,51 @@ async def sgsh_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/hgsnat/overview")
+async def hgsnat_overview():
+    """HGSNAT / MPS IIIC (Sanfilippo Syndrome C) overview:
+    3rd most common MPS III (~15-20%); heparan alpha-glucosaminide N-acetyltransferase deficiency (8p11.21);
+    epilepsy 70-80% (later onset than IIIA/IIIB); slower progression; survival into 3rd-4th decade;
+    French-Canadian founder p.Arg344Cys; Dutch founder p.Trp649stop; no approved ERT or disease therapy.
+    """
+    try:
+        import scripts.hgsnat_dashboard as hgsnat_
+        return _json_safe(hgsnat_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hgsnat/breakdown")
+async def hgsnat_breakdown():
+    """HGSNAT / MPS IIIC breakdown: 5 etiologies (NullMissense-35%/FrenchCanadian-p.Arg344Cys-25%/
+    Dutch-p.Trp649stop-18%/Italian-p.Pro524Leu-12%/Attenuated-Missense-10%),
+    5 seizure types (GTCS-65%/Myoclonic-45%/Tonic-35%/Absence-like-30%/Spasms-15%),
+    7 triggers (Sleep-85%/Febrile-70%/Behavioral-62%/MissedAED-58%/Exertion-45%/Photo-22%/Antipsychotic-30%),
+    8 treatments (LEV/VPA/CLB/ZNS/Piracetam/Rufinamide/Melatonin/AAV9-HGSNAT-GT),
+    contraindications (TypAntipsych-HIGH-RISK/PHT-AVOID/CBZ-OXC-CAUTION/VGB-REL-CI/ESX-NOT-INDICATED/PB-CAUTION).
+    """
+    try:
+        import scripts.hgsnat_dashboard as hgsnat_
+        return _json_safe(hgsnat_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hgsnat/definitions")
+async def hgsnat_definitions():
+    """HGSNAT / MPS IIIC definitions:
+    8-step diagnostic algorithm (urine-HS-DMMB / MPS-III-enzyme-panel / leukocyte-HGSNAT /
+    biallelic-HGSNAT-gene / POLG1-exclusion / HLA-B1502 / brain-MRI / video-EEG-polysomnography).
+    10-term HGSNAT glossary including heparan-sulfate / Sanfilippo-C / p.Arg344Cys-French-Canadian /
+    p.Trp649stop-Dutch / action-myoclonus-PME-like / circadian-disruption-SCN / clobazam-paradoxical-agitation.
+    """
+    try:
+        import scripts.hgsnat_dashboard as hgsnat_
+        return _json_safe(hgsnat_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
