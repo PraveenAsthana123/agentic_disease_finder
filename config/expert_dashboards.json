@@ -4310,5 +4310,22 @@
       "/api/cln13/breakdown",
       "/api/cln13/definitions"
     ]
+  },
+  {
+    "id": "cln12",
+    "name": "CLN12 Epilepsy (Neuronal Ceroid Lipofuscinosis Type 12 / Kufor-Rakeb-Syndrome-KRS / PARK9 / ATP13A2-P5B-ATPase-Lysosomal-Polyamine-Exporter / Juvenile-Parkinsonism-Pyramidal-NCL / Supranuclear-Gaze-Palsy-PATHOGNOMONIC / Facial-Faucial-Finger-Mini-Myoclonus-PATHOGNOMONIC / No-Retinal-NCL-VGB-NOT-Absolute-CI-Like-CLN13 / Typical-Antipsychotics-ABSOLUTE-CI-Unique-CLN12-Parkinsonism / CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonus-Parkinsonism-Double-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-MERRF-Mandatory-Exclusion-Before-VPA / L-DOPA-Symptomatic-Wearing-Off-Seizure-Trigger / Alpha-Synuclein-Aggregation-NCL-Parkinson-Intersection / No-ATP13A2-Enzyme-Assay-WES-Required / No-Disease-Modifying-Therapy / Jordanian-Kufor-Rakeb-Founder / AR-Biallelic-LOF / 1p36.13)",
+    "status": "built",
+    "category": "NCL",
+    "gene": "ATP13A2",
+    "locus": "1p36.13",
+    "color": "#2e3a00",
+    "api_prefix": "/api/cln12",
+    "frontend_path": "/cln12",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/cln12/overview",
+      "/api/cln12/breakdown",
+      "/api/cln12/definitions"
+    ]
   }
 ]

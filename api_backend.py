@@ -27878,6 +27878,73 @@ async def cln13_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln12/overview")
+async def cln12_overview():
+    """CLN12 / ATP13A2 Kufor-Rakeb Syndrome overview:
+    Type 5 P-type ATPase deficiency (1p36.13) — lysosomal polyamine exporter;
+    40-patient cohort; AR biallelic ATP13A2 LOF; mean onset 17y;
+    Juvenile parkinsonism + pyramidal syndrome + supranuclear gaze palsy + dementia ± seizures (35%);
+    NO RETINAL NCL (<5%) — VGB NOT absolute CI (shared with CLN13, unique among NCLs);
+    TYPICAL ANTIPSYCHOTICS ABSOLUTE CI (dopaminergic parkinsonism) — UNIQUE AMONG ALL NCLs;
+    Dense deposits / FP on EM; no ATP13A2 enzyme assay — WES required;
+    L-DOPA partial benefit early → wearing off; POLG1/MERRF exclusion mandatory before VPA;
+    No disease-modifying therapy; α-synuclein aggregation link; polyamine export dysfunction."""
+    try:
+        import scripts.cln12_dashboard as cln12_
+        return _json_safe(cln12_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln12/breakdown")
+async def cln12_breakdown():
+    """CLN12 / ATP13A2 Kufor-Rakeb Syndrome breakdown:
+    6-class etiology [Compound-Het-Truncating-Splice-30% / Homozygous-Truncating-Consanguineous-28% /
+    Compound-Het-Missense-Truncating-22% / Homozygous-Missense-Attenuated-12% /
+    Compound-Het-Missense-Missense-5% / Phenocopy-Negative-3%],
+    5 seizure types [GTCS-70%-of-those-with-seizures / Myoclonic-60% / Focal-30% /
+    Absence-Like-25% / NCSE-15%],
+    8 triggers [Fever-82% / SleepDep-72% / MissedAED-70% / L-DOPA-Wearing-Off-65% /
+    Photic-42% / Emotional-Stress-58% / Typical-Antipsychotic-Exposure-100% / Metabolic-40%],
+    8 treatments [L-DOPA-LevelB-Parkinsonism / VPA-LevelB-Seizures / LEV-LevelB /
+    Piracetam-LevelC-ActionMyoclonus / Clonazepam-LevelB-Myoclonus / KD-LevelC / MDT-Palliative-LevelA /
+    Rescue-Midazolam-IV-LEV],
+    7 CIs [TypicalAntipsychotics-ABSOLUTE-Unique / CBZ-OXC-PHT-ABSOLUTE / Fosphenytoin-ABSOLUTE /
+    VGB-CAUTION-Not-Absolute-CI / TGB-HIGH / GBP-PGB-HIGH / LTG-Mono-HIGH],
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln12_dashboard as cln12_
+        return _json_safe(cln12_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln12/definitions")
+async def cln12_definitions():
+    """CLN12 / ATP13A2 Kufor-Rakeb Syndrome definitions:
+    15 concepts [CLN12-ATP13A2-1p36.13-Lysosomal-P5B-ATPase-Polyamine-Exporter /
+    NO-Retinal-NCL-VGB-NOT-Absolute-CI-Shared-CLN12-CLN13 /
+    Typical-Antipsychotics-ABSOLUTE-CI-Unique-CLN12 /
+    Supranuclear-Gaze-Palsy-Facial-Faucial-Finger-Mini-Myoclonus-PATHOGNOMONIC /
+    No-ATP13A2-Enzyme-Assay-WES-Required /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonus-Parkinsonism-Double-Trap /
+    VPA-SAFE-Lysosomal-P5B-ATPase-NOT-Mitochondrial /
+    POLG1-MERRF-Mandatory-Exclusion-Before-VPA /
+    L-DOPA-Symptomatic-Wearing-Off-Seizure-Trigger /
+    Alpha-Synuclein-Aggregation-CLN12-NCL-Parkinson-Intersection /
+    Polyamine-Biology-Unique-CLN12-Mechanism /
+    Juvenile-Parkinsonism-Differential-CLN12 /
+    No-Disease-Modifying-Therapy-CLN12 /
+    Driving-DVLA-Mandatory-Educational-Employment-CLN12 /
+    SUDEP-Risk-CLN12],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.cln12_dashboard as cln12_
+        return _json_safe(cln12_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
