@@ -4198,5 +4198,33 @@
     "note": "Total: 272 dashboards",
     "disease_color": "#0d47a1",
     "disease_color_name": "deep-lake-blue \u2014 CLN5 Finnish-variant NCL distinct from CLN1 dark-cyan + CLN2 deep-violet-purple + CLN3 forest-green + CLN4B dark-sienna"
+  },
+  {
+    "id": "cln6",
+    "gene": "CLN6",
+    "name": "CLN6 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type6 / Variant-Late-Infantile-NCL / vLINCL / CLN6-ER-Transmembrane-Protein-7TM / Fingerprint-Profiles-CB-EM-Signature / No-CLN6-Enzyme-Assay-WES-Required / Seizures-FIRST-Not-Visual-First / Portuguese-p.Arg24Gly-Founder / Turkish-Roma-p.Glu336Lys-Founder / VGB-ABSOLUTE-CI-Retinal / CBZ-OXC-PHT-ABSOLUTE-CI-Paediatric-GTCS-Trap / VPA-SAFE-ER-NOT-Mitochondrial / Dual-AR-LINCL-AD-Kufs-Type-A / South-Hampshire-Sheep-Gene-Therapy-Model / Fatal-Childhood-Teens / 15q23)",
+    "status": "built",
+    "locus": "15q23",
+    "omim": "*606725 / #601780",
+    "protein": "CLN6 (ER Transmembrane Protein, 311 aa, ~36 kDa, 7 TM domains)",
+    "mechanism": "CLN6 LOF \u2192 ER Membrane Protein Dysfunction \u2192 Impaired Lysosomal Enzyme Sorting \u2192 SCMAS Accumulation \u2192 Fingerprint Profiles + Curvilinear Bodies on EM \u2192 Progressive Neuronal/Retinal Apoptosis \u2192 Variant LINCL",
+    "inheritance": "AR (classic vLINCL) / AD (Kufs Type A)",
+    "precision_drug": "VPA (backbone) + LEV (IV SE) + Piracetam (action myoclonus)",
+    "key_contraindication": "VGB (ABSOLUTE \u2014 retinal NCL); CBZ/OXC/PHT/Fosphenytoin (ABSOLUTE \u2014 myoclonus worsening); TGB (ABSOLUTE \u2014 NCSE)",
+    "route": "/api/cln6",
+    "api_prefix": "/api/cln6",
+    "endpoints": [
+      "/api/cln6/overview",
+      "/api/cln6/breakdown",
+      "/api/cln6/definitions"
+    ],
+    "frontend": "portal-next/app/cln6/page.jsx",
+    "script": "scripts/cln6_dashboard.py",
+    "built_date": "2026-08-18",
+    "built_note": "CLN6 variant LINCL dashboard built. Registry count 272->273.",
+    "discovery_ref": "Wheeler-2002-NatGenet / Gao-2002-NatGenet",
+    "note": "Total: 273 dashboards",
+    "disease_color": "#b71c1c",
+    "disease_color_name": "dark-crimson-red \u2014 CLN6 variant LINCL distinct from CLN5 deep-lake-blue #0d47a1 + CLN1 dark-cyan #006064 + CLN2 deep-violet-purple #4a148c + CLN3 forest-green #2e7d32 + CLN4B dark-sienna #5d4037"
   }
 ]

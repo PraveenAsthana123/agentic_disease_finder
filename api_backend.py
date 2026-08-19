@@ -27518,6 +27518,78 @@ async def cln5_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln6/overview")
+async def cln6_overview():
+    """CLN6 Variant-Late-Infantile NCL (vLINCL / 15q23) overview —
+    CLN6-ER-Transmembrane-Protein / Fingerprint-Profiles-CB-EM-Signature /
+    No-CLN6-Enzyme-Assay-WES-Required / Portuguese-p.Arg24Gly-Founder /
+    Turkish-Roma-p.Glu336Lys-Founder / Seizures-FIRST-Not-Visual-First /
+    VGB-ABSOLUTE-CI-Retinal / CBZ-OXC-PHT-ABSOLUTE-CI /
+    VPA-SAFE-ER-NOT-Mitochondrial / Fatal-Childhood-Teens /
+    Dual-AR-LINCL-AD-Kufs-Type-A / South-Hampshire-Sheep-Gene-Therapy-Model /
+    40-patient CLN6 cohort."""
+    try:
+        import scripts.cln6_dashboard as cln6_
+        return _json_safe(cln6_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln6/breakdown")
+async def cln6_breakdown():
+    """CLN6 Variant-LINCL breakdown — 40-patient cohort · CLN6/15q23
+    6-class etiology [Compound-Het-p.Arg24Gly-Plus-Other-LOF-Portuguese-28%/
+    Homozygous-p.Arg24Gly-Portuguese-Czech-Consanguineous-18%/
+    Compound-Het-p.Glu336Lys-Turkish-Roma-South-Asian-22%/
+    Compound-Het-Novel-Missense-Truncating-Non-Founder-24%/
+    AD-Kufs-Type-A-Dominant-CLN6-Missense-8%/
+    Phenocopy-CLN6-Negative-0%],
+    5 seizure types [GTCS-First-95%/Myoclonic-90%/Atonic-Drop-62%/
+    Focal-Occipital-55%/NCSE-35%],
+    8 triggers [Fever-88%/SleepDep-80%/MissedAED-75%/
+    Photic-65%/Emotional-Stress-68%/
+    Tactile-Auditory-Startle-60%/Metabolic-Stress-52%/
+    CLN6-Prohibited-Drug-100%],
+    8 treatments [VPA-LevelB/LEV-LevelB-IV-SE/CLB-LevelB/
+    Piracetam-LevelC/LTG-LevelB-Adjunct/KD-LevelC/
+    MDT-Palliative-LevelA/Rescue-Midazolam-IV-LEV-LevelA],
+    7 CIs [VGB-ABSOLUTE/CBZ-OXC-PHT-ABSOLUTE/Fosphenytoin-ABSOLUTE/
+    TGB-ABSOLUTE/GBP-PGB-HIGH/LTG-Mono-HIGH/AED-Taper-HIGH],
+    14 monitoring, 6 lifecycle stages"""
+    try:
+        import scripts.cln6_dashboard as cln6_
+        return _json_safe(cln6_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln6/definitions")
+async def cln6_definitions():
+    """CLN6 Variant-LINCL definitions — 15 concepts
+    [CLN6-15q23-ER-Transmembrane-Protein-Variant-LINCL/
+    Fingerprint-Profiles-CB-CLN6-EM-Signature/
+    No-CLN6-Enzyme-Assay-WES-Required/
+    Seizures-First-CLN6-Contrast-CLN3-Visual-First/
+    Portuguese-p.Arg24Gly-Founder/Turkish-Roma-p.Glu336Lys-Founder/
+    Dual-Inheritance-AR-LINCL-AD-Kufs-Type-A/
+    VGB-ABSOLUTE-CI-CLN6/VPA-SAFE-CLN6-ER-NOT-Mitochondrial/
+    CBZ-OXC-PHT-ABSOLUTE-CI-CLN6/No-Disease-Modifying-Therapy-CLN6/
+    South-Hampshire-Sheep-Gene-Therapy-Model/
+    Compound-Fall-Risk-Triple-CLN6/Gastrostomy-CLN6/SUDEP-CLN6],
+    12 thresholds, 12 standards
+    (Wheeler-2002-NatGenet / Gao-2002-NatGenet /
+    Mole-2019-LancetNeurol / NCL-Resource-2024 /
+    ILAE-2022 / NICE-NG217 / MHRA-VPPP-2021 /
+    Kleine-Buning-2017 / Nelvagal-2020 /
+    CPIC-POLG1-2023 / ACMG-AMP-2015 / BDSRA-Registry),
+    6 references."""
+    try:
+        import scripts.cln6_dashboard as cln6_
+        return _json_safe(cln6_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
