@@ -4525,5 +4525,21 @@
     "built_date": "2026-08-19",
     "role": "Neurologist",
     "cohort": 40
+  },
+  {
+    "id": "psap",
+    "name": "PSAP Epilepsy (Prosaposin-Deficiency / Saposin-A-B-C-D-Deficiencies / Enzyme-False-Negative-PATHOGNOMONIC / SapA-Krabbe-Phenocopy-GALC-Normal / SapB-MLD-Phenocopy-ARSA-Normal-Standard-Assay / SapC-Gaucher-Type3-Phenocopy-GBA-Normal / SapD-Farber-Type7-ASAH1-Gene-Normal / Heat-Inactivation-ARSA-Assay-SapB-Diagnostic / Complete-PSAP-Neonatal-Lethal / HSCT-Level-C-SapA-Pre-Symptomatic / ACTH-Level-A-IS-SapA-SapD / VGB-HIGH-RISK-SapA-Optic-Atrophy / CBZ-OXC-HIGH-RISK-SapA-Neuropathy / VPA-SAFE-POLG1-Exclusion-Mandatory / AR-Biallelic-LOF / 10q22.1)",
+    "status": "built",
+    "gene": "PSAP",
+    "locus": "10q22.1",
+    "disease": "Prosaposin Deficiency (Saposin A/B/C/D Deficiencies)",
+    "api_endpoints": [
+      "/api/psap/overview",
+      "/api/psap/breakdown",
+      "/api/psap/definitions"
+    ],
+    "frontend": "portal-next/app/psap/page.jsx",
+    "cohort_size": 40,
+    "built_date": "2026-08-19"
   }
 ]

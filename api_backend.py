@@ -28775,6 +28775,65 @@ async def asah1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/psap/overview")
+async def psap_overview():
+    """PSAP / Prosaposin Deficiency (Saposin A/B/C/D deficiency) overview:
+    PSAP (10q22.1) — Prosaposin, 524 aa ~65 kDa; cleaved into Saposins A (GALC activator),
+    B (ARSA activator), C (GBA activator), D (ASAH1 activator); each saposin deficiency
+    = phenocopy of cognate enzyme-deficiency disease with NORMAL enzyme assay (false negative
+    — PATHOGNOMONIC hallmark unique to PSAP diseases). 5 subtypes: SapA (Krabbe-phenocopy 30%),
+    SapB (MLD-phenocopy 28%), SapC (Gaucher Type3-phenocopy 22%), SapD (Farber Type7 12%),
+    Complete PSAP (neonatal lethal 5%). No approved ERT. HSCT Level C (SapA pre-symptomatic).
+    ACTH Level A for IS. Seizures 62% overall; drug-resistant 65%. 40-patient cohort,
+    6 etiologies, 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 12 thresholds,
+    16 standards."""
+    try:
+        import scripts.psap_dashboard as psap_
+        return _json_safe(psap_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/psap/breakdown")
+async def psap_breakdown():
+    """PSAP / Prosaposin Deficiency breakdown:
+    6 etiologies (SapA-Krabbe-phenocopy-30%/SapB-MLD-phenocopy-28%/SapC-Gaucher-phenocopy-22%/
+    SapD-Farber-Type7-12%/Complete-PSAP-5%/Atypical-3%),
+    6 seizure types (IS-42%/Progressive-Myoclonus-52%/Focal-48%/GTCS-45%/Tonic-30%/Absence-like-18%),
+    8 triggers, 8 treatments (ACTH-LevelA-IS/LEV-LevelB/VPA-LevelB/Clobazam-C/Clonazepam-C/
+    Piracetam-C/KD-LevelB/HSCT-LevelC-SapA),
+    7 CIs (CBZ-OXC-HIGH-RISK-SapA/PHT-HIGH-RISK-SapA-SapB/VGB-HIGH-RISK-SapA-Optic-Atrophy/
+    Typical-Antipsychotics-HIGH-RISK-SapC-SapD/TGB-HIGH-RISK-All/GBP-PGB-CAUTION-SapA-SapC/
+    LTG-RELATIVE-CI-SapC),
+    saposin-enzyme matrix (SapA→GALC/SapB→ARSA/SapC→GBA/SapD→ASAH1),
+    12 thresholds, 16 standards."""
+    try:
+        import scripts.psap_dashboard as psap_
+        return _json_safe(psap_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/psap/definitions")
+async def psap_definitions():
+    """PSAP / Prosaposin Deficiency definitions:
+    17 key concepts [PSAP-10q22.1 / Saposin-A-GALC-Activator / Saposin-B-ARSA-Activator /
+    Saposin-C-GBA-Activator / Saposin-D-ASAH1-Activator /
+    ENZYME-FALSE-NEGATIVE-PATHOGNOMONIC-PSAP-Hallmark /
+    Krabbe-Phenocopy-SapA-GALC-Normal / MLD-Phenocopy-SapB-ARSA-Normal-Standard-Assay /
+    Gaucher-Type3-Phenocopy-SapC-GBA-Normal / Farber-Type7-SapD-ASAH1-Gene-Normal /
+    Heat-Inactivation-ARSA-Assay-SapB-Diagnostic / Psychosine-SapA-Biomarker /
+    Urine-Sulfatides-SapB-Biomarker / Lyso-Gb1-SapC-Biomarker /
+    Complete-PSAP-Neonatal-Lethal / VPA-SAFE-POLG1-Exclusion-Mandatory /
+    ACTH-Level-A-IS-SapA-SapD].
+    Diagnostic algorithm (7 steps), saposin pathway glossary. 40-patient cohort."""
+    try:
+        import scripts.psap_dashboard as psap_
+        return _json_safe(psap_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
