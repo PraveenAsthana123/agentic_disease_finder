@@ -29446,6 +29446,67 @@ async def fuca1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/aga/overview")
+async def aga_overview():
+    """AGA / Aspartylglucosaminuria (Aspartylglucosaminidase Deficiency) — overview:
+    gene 4q34.3 AR, oligosaccharidosis (NOT MPS — aspartylglucosamine GlcNAc-Asn accumulation),
+    BORN-NORMAL-THEN-PROGRESSIVE (age 5-10yr regression — UNIQUE LSD developmental trajectory),
+    Finnish founder p.Cys163Ser (~98% Finnish alleles / 1:18,000 Finland prevalence),
+    BEHAVIORAL PHENOTYPE DOMINANT (aggression/hyperactivity/SIB — psychiatric misdiagnosis 5-10yr delay),
+    NO ERT APPROVED (2026), BMT Level-C-Finnish-experience, AAV-AGA-Phase-I-UX143,
+    epilepsy 60-70% (onset age 10-30yr after behavioral regression), DRE 25-40%,
+    CBZ/OXC-ACCEPTABLE-IF-EEG-no-myoclonus (AGA-specific EEG-guided rule),
+    PHT-AVOID-IF-myoclonus-on-EEG, VGB-RELATIVE-CI-behavioral-not-visual,
+    Typical-AP-HIGH-RISK-EPS (behavioral trap), quetiapine preferred, POLG1-mandatory, 40-patient cohort.
+    """
+    try:
+        import scripts.aga_dashboard as aga_
+        return _json_safe(aga_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/aga/breakdown")
+async def aga_breakdown():
+    """AGA / Aspartylglucosaminuria — breakdown: 40-patient cohort
+    (Finnish-Founder-p.Cys163Ser-homozygous-35% / Non-Finnish-Compound-Het-missense+splice-28% /
+    Biallelic-Null-Severe-Early-Onset-non-Finnish-20% / p.Cys163Ser-compound-het-Finnish+severe-12% /
+    Rare-Missense-Attenuated-5%), seizure types (GTCS-75% / Myoclonic-35% / Focal-30% /
+    Absence-20% / Myoclonic-Atonic-12%), triggers (sleep-deprivation-65% / behavioral-crisis-55% /
+    febrile-48% / missed-AED-40% / photic-28% / iatrogenic-typical-AP-20%),
+    treatments (LEV-LevelB / VPA-LevelB-POLG1-mandatory / CBZ-OXC-LevelB-EEG-guided /
+    CLZ-LevelB / quetiapine-LevelB-behavioral / melatonin-LevelB / lacosamide-LevelC / BMT-LevelC),
+    contraindications (typical-AP-HIGH-RISK / PHT-avoid-if-myoclonus / CBZ-OXC-relative-CI-myoclonus /
+    POLG1-VPA-absolute-CI / VGB-relative-CI-behavioral).
+    """
+    try:
+        import scripts.aga_dashboard as aga_
+        return _json_safe(aga_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/aga/definitions")
+async def aga_definitions():
+    """AGA / Aspartylglucosaminuria — definitions: 20-term glossary
+    (AGA-enzyme / AGU / Born-Normal-Progressive / Finnish-Founder-p.Cys163Ser /
+    Aspartylglucosamine-GlcNAc-Asn / Behavioral-Phenotype / Psychiatric-Misdiagnosis-Delay /
+    Macroorchidism-Males-50-70pct / EEG-guided-CBZ-OXC-decision / Typical-AP-HIGH-RISK /
+    POLG1-mandatory / AGA-enzyme-assay / Urine-NOT-GAG / BMT-Finnish-experience /
+    AAV-AGA-Gene-Therapy / VGB-relative-CI-behavioral / Recurrent-Infections /
+    Quetiapine-preferred / Differential-vs-MAN2B1-FUCA1-NEU1-CTSA-Sanfilippo /
+    Lacosamide-focal-CI-free),
+    12-step diagnostic algorithm, pharmacological distinctions (LEV-vs-VPA / CBZ-vs-Lacosamide /
+    Quetiapine-vs-Haloperidol / PHT-vs-LEV / VPA-vs-LEV+CLZ / VGB-AGA-vs-NEU1),
+    differential diagnosis.
+    """
+    try:
+        import scripts.aga_dashboard as aga_
+        return _json_safe(aga_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

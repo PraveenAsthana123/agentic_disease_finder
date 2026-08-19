@@ -4748,5 +4748,28 @@
     "color": "#1a237e",
     "route": "/fuca1",
     "category": "epilepsy-genetics-lsd-oligosaccharidosis"
+  },
+  {
+    "id": "aga",
+    "name": "AGA Epilepsy (Aspartylglucosaminuria-AGU / Aspartylglucosaminidase-Deficiency / Oligosaccharidosis-NOT-MPS / AR-Biallelic-LOF / 4q34.3 / GlcNAc-Asn-Accumulation / Born-Normal-Progressive-Age5-10yr-UNIQUE / Finnish-Founder-p.Cys163Ser-98pct-Finnish-1-18000 / Behavioral-Phenotype-Dominant-ADHD-Misdiagnosis / No-ERT-2026 / AAV-AGA-Phase-I-UX143 / Epilepsy-60-70pct / Typical-AP-HIGH-RISK / EEG-Guided-CBZ-OXC / POLG1-Mandatory / AR-Both-Sexes-Equal / 4q34.3)",
+    "status": "built",
+    "gene": "AGA",
+    "locus": "4q34.3",
+    "protein": "Aspartylglucosaminidase (Glycosylasparaginase)",
+    "disease": "Aspartylglucosaminuria (AGU / Oligosaccharidosis)",
+    "omim_gene": "613228",
+    "omim_disease": "208400",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/aga/overview",
+      "/api/aga/breakdown",
+      "/api/aga/definitions"
+    ],
+    "frontend": "portal-next/app/aga/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1b5e20",
+    "route": "/aga",
+    "category": "epilepsy-genetics-lsd-oligosaccharidosis"
   }
 ]
