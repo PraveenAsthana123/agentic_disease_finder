@@ -27590,6 +27590,54 @@ async def cln6_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln7/overview")
+async def cln7_overview():
+    """CLN7 Epilepsy — Turkish Variant vLINCL (MFSD8 / 4q28.1) overview:
+    gene, protein, inheritance, mechanism, cohort stats, key pharmacological
+    distinctions (Siintola-2007-Brain / NCL-Resource-2024 / ILAE-2022 /
+    NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 / ACMG-AMP-2015 / BDSRA-Registry),
+    40-patient cohort."""
+    try:
+        import scripts.cln7_dashboard as cln7_
+        return _json_safe(cln7_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln7/breakdown")
+async def cln7_breakdown():
+    """CLN7 Epilepsy breakdown: 6-class etiology
+    [Compound-Het-p.Glu9Gly-Turkish-25% / Homozygous-Truncating-Consanguineous-20% /
+    Compound-Het-Missense-Missense-Non-Founder-28% / Compound-Het-Missense-Truncating-20% /
+    Homozygous-p.Glu9Gly-Turkish-Consanguineous-5% / Phenocopy-CLN7-Negative-2%],
+    5 seizure types [GTCS-First-92% / Myoclonic-88% / Atonic-Drop-58% / Focal-Occipital-52% / NCSE-30%],
+    8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle stages."""
+    try:
+        import scripts.cln7_dashboard as cln7_
+        return _json_safe(cln7_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln7/definitions")
+async def cln7_definitions():
+    """CLN7 Epilepsy definitions: 15 concepts
+    [CLN7-MFSD8-4q28.1-Lysosomal-Membrane / FP-CB-EM-Indistinguishable-CLN6-WES-Required /
+    No-MFSD8-Enzyme-Assay / Turkish-Variant-NCL / Seizures-First / Purely-AR-No-AD-Form /
+    CLN7-vs-CLN6-Differential / VGB-ABSOLUTE-CI / VPA-SAFE / CBZ-OXC-PHT-ABSOLUTE-CI /
+    No-Disease-Modifying-Therapy / Compound-Fall-Risk / Gastrostomy / MFSD8-Unknown-Substrate / SUDEP-Risk],
+    12 thresholds, 12 standards
+    (Siintola-2007-Brain / Mole-2019-LancetNeurol / NCL-Resource-2024 / ILAE-2022 /
+    NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 / ACMG-AMP-2015 / BDSRA-Registry /
+    WHO-ICF-2019 / Uusi-Rauva-2008 / NCL-Network-Europe),
+    6 references."""
+    try:
+        import scripts.cln7_dashboard as cln7_
+        return _json_safe(cln7_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

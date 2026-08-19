@@ -4226,5 +4226,15 @@
     "note": "Total: 273 dashboards",
     "disease_color": "#b71c1c",
     "disease_color_name": "dark-crimson-red \u2014 CLN6 variant LINCL distinct from CLN5 deep-lake-blue #0d47a1 + CLN1 dark-cyan #006064 + CLN2 deep-violet-purple #4a148c + CLN3 forest-green #2e7d32 + CLN4B dark-sienna #5d4037"
+  },
+  {
+    "id": "cln7",
+    "name": "CLN7 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type7 / Turkish-Variant-vLINCL / MFSD8-Lysosomal-Membrane-Protein-12TM / FP-CB-EM-Indistinguishable-CLN6-WES-Required / No-MFSD8-Enzyme-Assay-WES-Required / Seizures-FIRST-Not-Visual-First / Turkish-Middle-Eastern-Enrichment / p.Glu9Gly-Turkish-Founder / Purely-AR-No-AD-Form / VGB-ABSOLUTE-CI-Retinal / CBZ-OXC-PHT-ABSOLUTE-CI-Paediatric-GTCS-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / No-Disease-Modifying-Therapy / Fatal-Childhood-Late-Teens / 4q28.1)",
+    "status": "built",
+    "route": "/cln7",
+    "api": "/api/cln7/overview|breakdown|definitions",
+    "color": "#004d40",
+    "gene": "MFSD8",
+    "locus": "4q28.1"
   }
 ]
