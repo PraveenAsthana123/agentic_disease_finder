@@ -4341,5 +4341,19 @@
       "/api/cln9/breakdown",
       "/api/cln9/definitions"
     ]
+  },
+  {
+    "id": "neu1",
+    "name": "NEU1 Epilepsy (Sialidosis Type I / Cherry-Red-Spot-Myoclonus-Syndrome / α-Neuraminidase-1-Deficiency / NEU1-CTSA-GLB1-Multienzyme-Complex / PME-Normal-Cognition / Urine-Sialic-Acid-Oligosaccharides-Rapid-Screen / Leukocyte-Neuraminidase-Assay-Not-DBS / CBZ-OXC-PHT-ABSOLUTE-CI / VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-MERRF-Mandatory-Exclusion / VGB-HIGH-RISK-Cherry-Red-Macular-Not-Retinal-NCL / No-Disease-Modifying-Therapy / AR-Biallelic-LOF / 6p21.33)",
+    "status": "built",
+    "category": "progressive-myoclonic-epilepsy",
+    "route": "/neu1",
+    "api_prefix": "/api/neu1",
+    "endpoints": ["/api/neu1/overview", "/api/neu1/breakdown", "/api/neu1/definitions"],
+    "script": "scripts/neu1_dashboard.py",
+    "frontend": "portal-next/app/neu1/page.jsx",
+    "color": "#880033",
+    "cohort": 40,
+    "description": "NEU1 (6p21.33) — α-Neuraminidase 1 / Sialidosis Type I (Cherry-Red-Spot-Myoclonus-Syndrome). 40-patient cohort. PME with normal cognition, cherry-red macular spot (93%), onset 14y. Lysosomal neuraminidase deficiency; multienzyme complex with CTSA+GLB1. Urine sialic acid oligosaccharides rapid screen; leukocyte neuraminidase assay (not DBS). 6 etiologies, 5 seizure types, 8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle stages, 15 concepts. 3 endpoints /api/neu1/overview|breakdown|definitions verified 200. Built 2026-08-19."
   }
 ]

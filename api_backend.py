@@ -28011,6 +28011,60 @@ async def cln9_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/neu1/overview")
+async def neu1_overview():
+    """NEU1 / Sialidosis Type I Epilepsy overview:
+    40-patient cohort, cherry-red macular spot + PME, α-neuraminidase 1 (6p21.33),
+    NEU1-CTSA multienzyme complex, urine sialic acid oligosaccharides rapid screen,
+    leukocyte neuraminidase assay (not DBS), normal cognition distinguishes Type I from NCL,
+    CBZ/OXC/PHT ABSOLUTE CI, VPA SAFE lysosomal not mitochondrial, POLG1/MERRF mandatory exclusion,
+    VGB HIGH RISK (cherry-red macular not retinal NCL), piracetam Level B action myoclonus,
+    no disease-modifying therapy, AR biallelic NEU1 LOF, OMIM *608272/#256550."""
+    try:
+        import scripts.neu1_dashboard as neu1_
+        return _json_safe(neu1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/neu1/breakdown")
+async def neu1_breakdown():
+    """NEU1 / Sialidosis Type I breakdown:
+    6 etiologies, 5 seizure types, 8 triggers, 8 treatments, 7 CIs, 14 monitoring,
+    6 lifecycle stages, cherry-red differentials, CTSA multienzyme complex."""
+    try:
+        import scripts.neu1_dashboard as neu1_
+        return _json_safe(neu1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/neu1/definitions")
+async def neu1_definitions():
+    """NEU1 / Sialidosis Type I definitions:
+    15 concepts [NEU1-6p21.33-Lysosomal-Alpha-Neuraminidase-PME-Cherry-Red /
+    Cherry-Red-Macular-Spot-PME-Normal-Cognition-Adolescent-PATHOGNOMONIC /
+    Urine-Sialic-Acid-Oligosaccharides-Rapid-Screen-Not-DBS /
+    Leukocyte-Neuraminidase-Assay-Fresh-Cells-Required /
+    NEU1-CTSA-GLB1-Multienzyme-Complex-Galactosialidosis-Differential /
+    Normal-Cognition-Type-I-vs-NCL-Key-Distinction /
+    CBZ-OXC-PHT-ABSOLUTE-CI-PME-Myoclonus-Trap /
+    VPA-SAFE-Lysosomal-NOT-Mitochondrial /
+    POLG1-MERRF-Mandatory-Exclusion-PME-Cherry-Red /
+    VGB-HIGH-RISK-Cherry-Red-Macular-Not-Retinal-NCL /
+    Piracetam-Level-B-Action-Myoclonus-PME-Backbone /
+    No-Disease-Modifying-Therapy-NEU1-ERT-Research-Phase /
+    Galactosialidosis-CTSA-Phenocopy-Combined-NEU1-GLB1-Deficiency /
+    Cherry-Red-Differentials-GMI-GMII-NPC-MERRF-Sialidosis /
+    SUDEP-Risk-Drug-Resistant-PME-Nocturnal-GTCS],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.neu1_dashboard as neu1_
+        return _json_safe(neu1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
