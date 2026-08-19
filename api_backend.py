@@ -29507,6 +29507,71 @@ async def aga_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/manba/overview")
+async def manba_overview():
+    """MANBA / Beta-mannosidosis (Lysosomal Beta-D-Mannosidase Deficiency) — overview:
+    gene 4q24 AR, oligosaccharidosis (NOT MPS — Man-beta-GlcNAc dimannose accumulation),
+    RAREST oligosaccharidosis (<100 cases worldwide 2026); NO predominant founder mutation
+    (unlike AGA Finnish p.Cys163Ser); extreme allelic heterogeneity (>40 private variants);
+    BEHAVIORAL PHENOTYPE DOMINANT (aggression/hyperactivity/SIB — AGA-like; psychiatric
+    misdiagnosis ADHD/autism/conduct disorder delays diagnosis 5-15yr),
+    SENSORINEURAL HEARING LOSS 30-60% (most prominent hearing loss in oligosaccharidosis group),
+    ANGIOKERATOMA MILD/FOCAL ~25% (less than FUCA1 type 2 confluent 50%),
+    epilepsy 30-50% (LOWER than AGA 60-70% and FUCA1 70-80%), DRE 15-25%,
+    EEG-guided CBZ/OXC (same rule as AGA — acceptable if no myoclonus; RELATIVE CI not absolute),
+    PHT-RELATIVE-CI-if-myoclonus (NOT absolute as in FUCA1),
+    VGB-RELATIVE-CI-behavioral-not-visual (no cherry red spot, no corneal clouding),
+    Typical-AP-HIGH-RISK-EPS (behavioral trap — quetiapine preferred),
+    NO-ERT-approved-2026, NO-HSCT-evidence, POLG1-mandatory, 40-patient cohort.
+    """
+    try:
+        import scripts.manba_dashboard as manba_
+        return _json_safe(manba_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/manba/breakdown")
+async def manba_breakdown():
+    """MANBA / Beta-mannosidosis — breakdown: 40-patient cohort
+    (Biallelic-Null-Frameshift-Severe-Early-Onset-30% / Compound-Het-Missense+Null-Intermediate-35% /
+    Biallelic-Missense-Attenuated-Residual-20% / Splice-Site-Variable-10% /
+    Adult-Diagnosed-Ultra-Attenuated-5%), seizure types (GTCS-70% / Myoclonic-25% / Focal-25% /
+    Absence-15% / Status-Epilepticus-10%), triggers (Febrile-60% / Sleep-deprivation-55% /
+    Behavioral-crisis-50% / Missed-AED-40% / Audiogenic-MANBA-specific-20% / Photic-15%),
+    treatments (LEV-LevelB / VPA-LevelB-POLG1-mandatory / CBZ-OXC-LevelB-EEG-guided /
+    CLZ-LevelB-myoclonus / Quetiapine-LevelB-behavioral / Melatonin-LevelB / Lacosamide-LevelC /
+    Hearing-Aids-Cochlear-Implant-LevelB-MANBA-specific),
+    contraindications (Typical-AP-HIGH-RISK / PHT-AVOID-if-myoclonus / CBZ-OXC-RELATIVE-CI /
+    POLG1-VPA-ABSOLUTE-CI / VGB-RELATIVE-CI-behavioral / Ototoxic-combinations-CAUTION).
+    """
+    try:
+        import scripts.manba_dashboard as manba_
+        return _json_safe(manba_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/manba/definitions")
+async def manba_definitions():
+    """MANBA / Beta-mannosidosis — definitions: 19-term glossary
+    (MANBA-enzyme / Beta-mannosidosis / Man-beta-GlcNAc-dimannose / Rarest-oligosaccharidosis /
+    Sensorineural-hearing-loss-30-60pct / Behavioral-phenotype / Angiokeratoma-mild-focal-25pct /
+    No-founder-mutation / EEG-guided-CBZ-OXC-same-as-AGA / Typical-AP-HIGH-RISK /
+    POLG1-mandatory / VGB-relative-CI-behavioral-not-visual / MANBA-enzyme-assay /
+    Urine-oligosaccharide-NOT-GAG / Audiogenic-trigger-MANBA-specific / No-HSCT-evidence /
+    PHT-relative-CI-not-absolute / Alpha-vs-Beta-mannosidosis-distinction /
+    Lacosamide-focal-CI-free),
+    12-step diagnostic algorithm, pharmacological distinctions, differential diagnosis
+    (AGA / MAN2B1 / FUCA1 / MPS-IIIA-D / NEU1 / CTNS).
+    """
+    try:
+        import scripts.manba_dashboard as manba_
+        return _json_safe(manba_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

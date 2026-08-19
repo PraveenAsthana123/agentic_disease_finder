@@ -4771,5 +4771,20 @@
     "color": "#1b5e20",
     "route": "/aga",
     "category": "epilepsy-genetics-lsd-oligosaccharidosis"
+  },
+  {
+    "id": "manba",
+    "name": "MANBA Epilepsy (Beta-mannosidosis / Lysosomal-Beta-D-Mannosidase-Deficiency / Oligosaccharidosis-NOT-MPS / AR-Biallelic-LOF / 4q24 / Man-beta-GlcNAc-Dimannose-Accumulation / RAREST-Oligosaccharidosis-Under-100-Cases-Worldwide-2026 / NO-Founder-Mutation-Over-40-Private-Variants / BEHAVIORAL-PHENOTYPE-DOMINANT-AGA-Like / Sensorineural-Hearing-Loss-30-60pct-MOST-PROMINENT-Oligosaccharidosis / Angiokeratoma-Mild-Focal-25pct / Epilepsy-30-50pct-LOWER-Than-AGA-FUCA1 / DRE-15-25pct / EEG-Guided-CBZ-OXC-Same-As-AGA / PHT-RELATIVE-CI-NOT-Absolute / VGB-RELATIVE-CI-Behavioral-Not-Visual / Typical-AP-HIGH-RISK-EPS / NO-ERT-2026 / NO-HSCT-Evidence / POLG1-Mandatory-CPIC-A / Urine-Man-beta-GlcNAc-NOT-GAG / Audiogenic-Trigger-MANBA-Specific / AR-Both-Sexes-Equal / 4q24)",
+    "status": "built",
+    "routes": [
+      "/api/manba/overview",
+      "/api/manba/breakdown",
+      "/api/manba/definitions"
+    ],
+    "page": "/manba",
+    "cohort_size": 40,
+    "gene": "MANBA",
+    "locus": "4q24",
+    "disease_group": "oligosaccharidosis"
   }
 ]
