@@ -27358,6 +27358,86 @@ async def cln4b_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln1/overview")
+async def cln1_overview():
+    """CLN1 Infantile NCL (Santavuori-Haltia / PPT1 / 1p34.2) overview —
+    GRODS-pathognomonic / PPT1-Enzyme-Assay-DBS-Days / EEG-Extinction-Isoelectric-Age-2-3y /
+    VEP-Extinction-12-18m / VGB-ABSOLUTE-CI-Infantile-Spasms-Trap /
+    CBZ-OXC-PHT-Fosphenytoin-ABSOLUTE-CI-Paediatric-ED-Trap /
+    VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-Exclude-Before-VPA /
+    Fatal-No-Disease-Modifying-Therapy / Finnish-p.Arg122Trp-Founder / AR-Biallelic-LOF"""
+    try:
+        import scripts.cln1_dashboard as cln1_
+        return _json_safe(cln1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln1/breakdown")
+async def cln1_breakdown():
+    """CLN1 Infantile NCL breakdown — 40-patient cohort · PPT1/1p34.2
+    6-class etiology [Homozygous-p.Arg122Trp-Finnish-22%/
+    Compound-Het-p.Arg122Trp-Plus-Other-26%/
+    Biallelic-Truncating-LOF-Null-20%/
+    Compound-Het-Missense-Missense-18%/
+    Late-Infantile-Juvenile-CLN1-Variant-10%/
+    Phenocopy-CLN1-Negative-4%],
+    5 seizure types [Myoclonic-Multifocal-95%/GTCS-88%/
+    Focal-Occipital-Visual-72%/Atonic-Drop-58%/
+    Infantile-Spasms-West-Overlap-42%],
+    8 triggers [Fever-88%/Missed-AED-78%/Sleep-Deprivation-72%/
+    Tactile-Auditory-Startle-62%/Emotional-Agitation-55%/
+    Metabolic-Dehydration-48%/Photic-35%/VGB-Administration-100%],
+    8 treatments [VPA-LevelB-Backbone/LEV-LevelB-IV-SE/
+    CLB-LevelB-Nocturnal/Piracetam-LevelC/KD-LevelC/
+    MDT-Palliative-Ophthalmology-LevelA/
+    Rescue-Midazolam-IV-LEV-LevelA/BDSRA-Registry-Trial-LevelA],
+    7 CIs [VGB-ABSOLUTE/CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE/
+    Fosphenytoin-ABSOLUTE/LTG-Mono-HIGH/GBP-PGB-HIGH/VPA-Polytherapy-Under3y-HIGH],
+    14 monitoring, 6 lifecycle stages"""
+    try:
+        import scripts.cln1_dashboard as cln1_
+        return _json_safe(cln1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln1/definitions")
+async def cln1_definitions():
+    """CLN1 Infantile Batten definitions — 15 concepts
+    [CLN1-PPT1-1p34.2-Lysosomal-Serine-Hydrolase-Infantile-NCL/
+    GRODs-Granular-Osmiophilic-Deposits-Pathognomonic-CLN1/
+    PPT1-Enzyme-Assay-DBS-Diagnostic-Priority/
+    EEG-Extinction-Progressive-Suppression-CLN1-Pathognomonic/
+    VEP-ERG-Extinction-Early-CLN1-Diagnostic/
+    VGB-ABSOLUTE-CI-Infantile-Spasms-Trap/
+    Finnish-Heritage-p.Arg122Trp-Founder-Mutation/
+    VPA-SAFE-CLN1-Lysosomal-NOT-Mitochondrial/
+    CBZ-OXC-PHT-Fosphenytoin-ABSOLUTE-CI-Paediatric-ED-Trap/
+    No-Disease-Modifying-Therapy-CLN1-PPT1-Gene-Therapy-Emerging/
+    Fatal-Natural-History-CLN1-ACP-Mandatory/
+    POLG1-Mandatory-Exclusion-Before-VPA-Infantile/
+    Ketogenic-Diet-Adjunct-CLN1-Drug-Resistant/
+    Gastrostomy-PEG-CLN1-Dysphagia-Standard/
+    SUDEP-Risk-Infant-CLN1-Compound],
+    12 thresholds (PPT1-Enzyme-<1pct-CLN1-Confirmed / PPT1-1-10pct-Variant /
+    VEP-Extinct-18m-Pathognomonic / EEG-Isoelectric-3y-ACP /
+    IV-LEV-60mgkg-SE / VPA-Trough-60-100 / LFT-5xULN-Stop-VPA /
+    Carnitine-25-Supplement / Oral-Intake-75pct-PEG / FEES-Aspiration-PEG /
+    Ammonia-80-VPA-Encephalopathy / Spasms-Regression-ERG-PPT1-Before-VGB),
+    12 standards (Vesa-1995-Nature / Santavuori-1971-ActaPaed / Hofmann-1999-JBiolChem /
+    NCL-Resource-2024 / ILAE-2022 / NICE-NG217 / Macauley-2018-JClinInvest /
+    MHRA-VPPP-2021 / Mole-2019-LancetNeurol / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry),
+    6 references (Vesa-1995 / Santavuori-1971 / Hofmann-1999 / Mole-2019 /
+    Macauley-2018 / Haltia-1973)."""
+    try:
+        import scripts.cln1_dashboard as cln1_
+        return _json_safe(cln1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -4135,5 +4135,40 @@
       "Definitions"
     ]
   },
-  {"id": "cln4b", "title": "CLN4B (DNAJC5 / Adult Batten Disease / Kufs Type B)", "status": "built", "api": ["/api/cln4b/overview", "/api/cln4b/breakdown", "/api/cln4b/definitions"], "component": "portal-next/app/cln4b/page.jsx", "color": "#5d4037"}
+  {
+    "id": "cln4b",
+    "title": "CLN4B (DNAJC5 / Adult Batten Disease / Kufs Type B)",
+    "status": "built",
+    "api": [
+      "/api/cln4b/overview",
+      "/api/cln4b/breakdown",
+      "/api/cln4b/definitions"
+    ],
+    "component": "portal-next/app/cln4b/page.jsx",
+    "color": "#5d4037"
+  },
+  {
+    "id": "cln1",
+    "title": "CLN1 (PPT1 / Infantile Batten Disease / Santavuori-Haltia)",
+    "status": "built",
+    "api": [
+      "/api/cln1/overview",
+      "/api/cln1/breakdown",
+      "/api/cln1/definitions"
+    ],
+    "component": "portal-next/app/cln1/page.jsx",
+    "color": "#006064",
+    "gene": "CLN1/PPT1 (1p34.2)",
+    "inheritance": "AR",
+    "onset": "Infantile (6-24 months)",
+    "key_features": [
+      "GRODs-EM-PATHOGNOMONIC",
+      "PPT1-Enzyme-Assay-DBS",
+      "EEG-Extinction-Isoelectric-2-3y",
+      "VEP-Extinction-12-18m",
+      "VGB-ABSOLUTE-CI",
+      "Fatal-7-12y",
+      "Finnish-p.Arg122Trp-Founder"
+    ]
+  }
 ]
