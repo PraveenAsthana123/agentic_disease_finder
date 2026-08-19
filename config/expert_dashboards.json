@@ -4541,5 +4541,21 @@
     "frontend": "portal-next/app/psap/page.jsx",
     "cohort_size": 40,
     "built_date": "2026-08-19"
+  },
+  {
+    "id": "sumf1",
+    "name": "SUMF1 Epilepsy (Multiple-Sulfatase-Deficiency / Austin-Disease / Formylglycine-Generating-Enzyme-FGE / ALL-17-Sulfatases-Simultaneously-Inactive-PATHOGNOMONIC / Combined-Sulfatiduria-GAGuria-PATHOGNOMONIC / Ichthyosis-Leukodystrophy-TypeC-PATHOGNOMONIC / TypeA-Neonatal-FGE-lt1pct / TypeB-Severe-Infantile-FGE-1-5pct / TypeC-Attenuated-FGE-5-15pct-Ichthyosis-85pct / No-Approved-ERT / HSCT-Experimental-PreSymp-Only / ACTH-Level-A-IS-TypesAB / CBZ-OXC-HIGH-RISK-MLD-Neuropathy / PHT-HIGH-RISK-Neuropathy / VGB-HIGH-RISK-TypesAB-VisualCortex / TGB-HIGH-RISK-Myoclonus-PME / VPA-SAFE-POLG1-Exclusion-Mandatory / Piracetam-Level-C-PME / Multi-Sulfatase-Panel-NOT-Sequential / AR-Biallelic-LOF / 3p26.1)",
+    "disease": "Multiple Sulfatase Deficiency / Austin Disease",
+    "gene": "SUMF1",
+    "locus": "3p26.1",
+    "omim": "607939",
+    "status": "built",
+    "endpoints": [
+      "/api/sumf1/overview",
+      "/api/sumf1/breakdown",
+      "/api/sumf1/definitions"
+    ],
+    "frontend": "/sumf1",
+    "cohort_size": 40
   }
 ]

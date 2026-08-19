@@ -28834,6 +28834,65 @@ async def psap_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/sumf1/overview")
+async def sumf1_overview():
+    """SUMF1 / Multiple Sulfatase Deficiency (Austin Disease) overview:
+    SUMF1 (3p26.1) — Formylglycine-Generating Enzyme (FGE, 374 aa ~42 kDa); FGE post-translationally
+    converts Cys→formylglycine in ALL 17 cellular sulfatases simultaneously; SUMF1 LOF → ALL sulfatases
+    inactive → Combined MLD (ARSA) + MPS II (IDS) + MPS VI (ARSB) + X-linked ichthyosis (STS) + MPS III
+    (SGSH) phenotype in one patient. 4 subtypes by residual FGE: Type A neonatal lethal <1%, Type B severe
+    infantile 1–5%, Type C attenuated 5–15% (ichthyosis PATHOGNOMONIC), Attenuated >15%.
+    PATHOGNOMONIC: ALL sulfatases simultaneously low (≥3 <30% control); combined urine sulfatides + GAGs;
+    ichthyosis + leukodystrophy. No approved ERT. HSCT experimental pre-symptomatic only.
+    ACTH Level A for IS. CBZ/OXC/PHT HIGH RISK (neuropathy — MLD component). VGB HIGH RISK Types A+B.
+    Seizures 65%; drug-resistant 65%. 40-patient cohort."""
+    try:
+        import scripts.sumf1_dashboard as sumf1_
+        return _json_safe(sumf1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/sumf1/breakdown")
+async def sumf1_breakdown():
+    """SUMF1 / Multiple Sulfatase Deficiency breakdown:
+    5 etiologies (TypeA-neonatal-30%/TypeB-severe-infantile-35%/TypeC-attenuated-28%/Attenuated-5%/Compound-Het-2%),
+    6 seizure types (IS-45%/Progressive-Myoclonus-55%/Focal-52%/GTCS-42%/Tonic-28%/Absence-like-18%),
+    8 triggers, 8 treatments (ACTH-LevelA-IS/LEV-LevelB/VPA-LevelB/Piracetam-C/Clobazam-C/VGB-LevelC-restricted/KD-LevelB/HSCT-LevelC-experimental),
+    7 CIs (CBZ-OXC-HIGH-RISK-Neuropathy-MLD/PHT-HIGH-RISK-Neuropathy/VGB-HIGH-RISK-TypesAB-VisualCortex/TGB-HIGH-RISK-Myoclonus/
+    Typical-Antipsychotics-HIGH-RISK-TypeC-NMS/GBP-PGB-CAUTION/LTG-RELATIVE-CI-Myoclonus),
+    12 thresholds (FGE-TypeA-lt1pct/FGE-TypeB-1-5pct/FGE-TypeC-5-15pct/ARSA-lt10pct-control/ARSB-lt10pct/IDS-lt10pct/
+    Urine-Sulfatides-gt50xULN/GAGs-Heparan-gt3xULN/GAGs-Dermatan-gt2xULN/min3-Sulfatases-low/Lyso-Sulfatides-gt10xULN/DiagDelay-3.8yr),
+    SUMF1 sulfatase-affected matrix (ARSA/ARSB/IDS/STS/SGSH/GALNS components), subtype severity matrix.
+    40-patient cohort."""
+    try:
+        import scripts.sumf1_dashboard as sumf1_
+        return _json_safe(sumf1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/sumf1/definitions")
+async def sumf1_definitions():
+    """SUMF1 / Multiple Sulfatase Deficiency definitions:
+    7-step diagnostic algorithm (multi-sulfatase panel mandatory / urine sulfatides+GAGs / SUMF1 sequencing /
+    POLG1 exclusion before VPA / multidisciplinary plan).
+    12-term SUMF1 glossary (FGE/FGly/17-sulfatases/combined-sulfatiduria-GAGuria/ichthyosis/diagnostic-mandate/
+    allele-dosage/no-ERT/psychiatric-misdiagnosis/MSD-vs-MLD/gene-therapy/NBS-gap).
+    12 key concepts (FGE enzyme / FGly catalytic residue / 17-sulfatases / combined-urine-PATHOGNOMONIC /
+    ichthyosis-STS / diagnostic-mandate / SUMF1-allele-dosage / no-ERT-gap / psychiatric-misdiagnosis-TypeC /
+    MSD-vs-MLD / gene-therapy-target / NBS-gap).
+    Differential diagnosis (MLD vs MPS-II vs MPS-VI vs PSAP-SapB vs NPC).
+    12 standards (Austin-1973/Bhatt-2012/Schlotawa-2011/Dierks-2009/ILAE-2022/NICE-NG217/CPIC-POLG1-2023/
+    Maguire-2010/Genton-2000/Strawn-2007/ACMG-AMP-2015/Diez-Roux-2005).
+    40-patient cohort."""
+    try:
+        import scripts.sumf1_dashboard as sumf1_
+        return _json_safe(sumf1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
