@@ -4653,5 +4653,20 @@
     ],
     "page": "/gns",
     "built_note": "GNS/MPS-IIID dashboard built: /api/gns/overview|breakdown|definitions + portal-next/app/gns/page.jsx + SiteNav wired after HGSNAT, 40-patient GNS cohort, count 300->301"
+  },
+  {
+    "id": "ids",
+    "name": "IDS Epilepsy (MPS-II-Hunter-Syndrome / Iduronate-2-Sulfatase-Deficiency / X-Linked-NOT-AR / Xq28 / HS+DS-BOTH-ELEVATED / Absent-Corneal-Clouding-vs-MPS-I / Pebbly-Skin-Papules-PATHOGNOMONIC / Epilepsy-25-35pct-Severe / Drug-Resistance-10-20pct / OSA-60-70pct-DOMINANT-SEIZURE-TRIGGER / Airway-EXTREME-HAZARD-GAG / Idursulfase-Elaprase-FDA2006 / Pabinafusp-alfa-JR141-Japan2021-BBB-Crossing-hTfR1 / HSCT-Controversial-Pre-Symptomatic-Only / Typical-Antipsychotics-HIGH-RISK-EPS-HS-DS-Basal-Ganglia / PHT-AVOID-Cardiac-Conduction-Valvulopathy / VGB-RELATIVE-CI-Visual-Impossible / CBZ-OXC-CAUTION-Not-Absolute-CI / POLG1-Exclusion-Before-VPA-Mandatory / Atlantoaxial-Instability-C-Spine-XR-Pre-GA / Communicating-Hydrocephalus-Arachnoid-GAG / IDS-IDSP1-Pseudogene-MLPA-Required / Most-Common-MPS-Asia / XL-Hemizygous-Males)",
+    "status": "built",
+    "category": "lysosomal-storage-disease-epilepsy",
+    "priority": "P0",
+    "role": "neurologist",
+    "route": "/ids",
+    "endpoints": [
+      "/api/ids/overview",
+      "/api/ids/breakdown",
+      "/api/ids/definitions"
+    ],
+    "note": "IDS/MPS-II (Hunter Syndrome) dashboard built: /api/ids/overview|breakdown|definitions + portal-next/app/ids/page.jsx + SiteNav wired after GNS, 40-patient IDS cohort (severe vs attenuated), count 301->302"
   }
 ]

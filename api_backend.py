@@ -29166,6 +29166,53 @@ async def gns_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/ids/overview")
+async def ids_overview():
+    """IDS / MPS-II (Hunter Syndrome) — overview: gene, disease mechanism, epilepsy stats,
+    5-class variant spectrum (IDS/IDSP1 large deletion 30% / nonsense-frameshift 22% /
+    attenuated missense 28% / splice-site 13% / deep-intronic 7%), ERT (Elaprase + Pabinafusp
+    alfa JR-141 Japan-2021 BBB-crossing), OSA seizure trigger (60-70%), airway extreme hazard,
+    lifecycle (neonatal / behavioral-phase / progressive / attenuated-adult), key-concepts.
+    """
+    try:
+        import scripts.ids_dashboard as ids_
+        return _json_safe(ids_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/ids/breakdown")
+async def ids_breakdown():
+    """IDS / MPS-II (Hunter Syndrome) — breakdown: 40-patient cohort (severe vs attenuated),
+    etiologies, seizure types, triggers (OSA 68% dominant / fever 62% / ERT-gap 38% /
+    hydrocephalus 30% / atlantoaxial 22%), treatments (LEV / VPA-POLG1-excl / CLB / ZNS /
+    Elaprase / Pabinafusp-alfa), contraindications (typical-antipsychotics ABSOLUTE-AVOID /
+    PHT-cardiac-CI / anesthesia-extreme-hazard), monitoring (polysomnography / C-spine-XR /
+    cardiac-echo / POLG1 / anti-IDS-IgE), thresholds, lifecycle, differential diagnosis.
+    """
+    try:
+        import scripts.ids_dashboard as ids_
+        return _json_safe(ids_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/ids/definitions")
+async def ids_definitions():
+    """IDS / MPS-II (Hunter Syndrome) — definitions: 14-term glossary (IDS-I2S / MPS-II /
+    Idursulfase-Elaprase-FDA2006 / Pabinafusp-alfa-JR141-Japan2021 / HS+DS / IDS-IDSP1-pseudogene /
+    hTfR1-BBB-transcytosis / atlantoaxial-instability / communicating-hydrocephalus / XL-recessive /
+    DRE / OSA), 10-step diagnostic algorithm (urine-HS+DS / IDS-enzyme / corneal-clouding /
+    IDS-gene-MLPA / POLG1 / HLA-B1502 / carrier-testing / multidisciplinary), 12 pharmacological
+    distinctions, differential diagnosis (MPS-I/III/VI/VII / SUMF1 / POLG/MERRF / FraX), 10 standards.
+    """
+    try:
+        import scripts.ids_dashboard as ids_
+        return _json_safe(ids_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
