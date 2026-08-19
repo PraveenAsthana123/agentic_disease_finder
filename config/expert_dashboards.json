@@ -4710,5 +4710,20 @@
       "/api/arsb/breakdown",
       "/api/arsb/definitions"
     ]
+  },
+  {
+    "role": "Neurologist",
+    "name": "GUSB / MPS-VII (Sly Syndrome) Epilepsy Dashboard",
+    "viz": "Disease-specific panels (overview/breakdown/definitions)",
+    "feature": "HS+DS+CS triple GAG fingerprint (PATHOGNOMONIC), non-immune hydrops fetalis, vestronidase alfa ERT, HSCT severe early-onset, corneal clouding vs MPS-II distinction",
+    "why": "MPS-VII expert epilepsy care: NIHF recognition, triple GAG fingerprint diagnosis, pharmacological contraindications, hydrops differential, anaesthesia extreme hazard",
+    "priority": "P1",
+    "status": "built",
+    "id": "gusb",
+    "endpoints": [
+      "/api/gusb/overview",
+      "/api/gusb/breakdown",
+      "/api/gusb/definitions"
+    ]
   }
 ]

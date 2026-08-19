@@ -29369,6 +29369,33 @@ async def arsb_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gusb/overview")
+async def gusb_overview():
+    try:
+        import scripts.gusb_dashboard as gusb_
+        return _json_safe(gusb_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gusb/breakdown")
+async def gusb_breakdown():
+    try:
+        import scripts.gusb_dashboard as gusb_
+        return _json_safe(gusb_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gusb/definitions")
+async def gusb_definitions():
+    try:
+        import scripts.gusb_dashboard as gusb_
+        return _json_safe(gusb_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
