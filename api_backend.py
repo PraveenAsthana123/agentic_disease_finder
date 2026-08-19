@@ -27281,6 +27281,83 @@ async def cln3_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln4b/overview")
+async def cln4b_overview():
+    """CLN4B / CSPα Adult Batten Disease overview — Neuronal Ceroid Lipofuscinosis Type 4B / Kufs Type B
+    [19q13.11 / AD-Dominant-Negative / CSPalpha-Presynaptic-Co-Chaperone-DNAJC5 /
+    Fingerprint-Profiles-EM-Adult-NCL / 40-patient cohort /
+    Behavioral-Psychiatric-FIRST-Adult-Onset-25-45y /
+    NO-Visual-Failure-Retina-SPARED / NO-Vacuolated-Lymphocytes /
+    Autosomal-Dominant-50pct-Offspring-Risk /
+    LEV-SV2A-CSPalpha-Presynaptic-Complementarity /
+    VPA-SAFE-Presynaptic-NOT-Mitochondrial /
+    CBZ-OXC-PHT-ABSOLUTE-CI / Mean-Dx-Delay-5.8y /
+    p.Leu115Arg-c344T>G-Most-Common / c.344_347del-Parry-Kufs]."""
+    try:
+        import scripts.cln4b_dashboard as cln4b_
+        return _json_safe(cln4b_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln4b/breakdown")
+async def cln4b_breakdown():
+    """CLN4B Adult Batten breakdown — 6-class etiology
+    [p.Leu115Arg-Dominant-Missense-Classic-45%/4bp-Deletion-c344_347del-Toxic-28%/
+    De-Novo-Novel-Missense-Cysteine-String-14%/DNAJ-Domain-Missense-Hsc70-8%/
+    Compound-Het-AR-Atypical-3%/Phenocopy-CLN4B-Negative-2%],
+    5 seizure types [Action-Myoclonus-80%/Stimulus-Sensitive-72%/GTCS-68%/
+    Focal-Impaired-Awareness-45%/Absence-Like-Myoclonic-32%],
+    8 triggers [Voluntary-Movement-85%/Stress-Anxiety-78%/SleepDep-72%/
+    MissedAED-68%/Auditory-Startle-65%/Tactile-58%/Fever-50%/Alcohol-42%],
+    8 treatments [VPA-LevelB-Backbone/LEV-LevelB-SV2A-Rational/Piracetam-LevelB-ActionMyoclonus/
+    CLB-LevelB-Clonazepam/ZNS-LevelC/Neuropsychiatry-SSRI-LevelA/
+    Genetic-Counselling-AD-LevelA/Rescue-BDZ-LevelA],
+    6 CIs [CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE-NCSE/GBP-PGB-HIGH/
+    LTG-Mono-HIGH/VGB-AVOID/AED-Taper-HIGH],
+    40 patients, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln4b_dashboard as cln4b_
+        return _json_safe(cln4b_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln4b/definitions")
+async def cln4b_definitions():
+    """CLN4B Adult Batten definitions — 15 concepts
+    [CLN4B-DNAJC5-19q13.11-CSPalpha-Presynaptic-Adult-NCL/
+    Behavioral-Psychiatric-Onset-FIRST-Misdiagnosis-Trap/
+    No-Visual-Failure-CLN4B-Contrasts-CLN2-CLN3/
+    No-Vacuolated-Lymphocytes-CLN4B-Contrasts-CLN3-Blood-Film/
+    Fingerprint-Profiles-EM-Adult-NCL-Diagnostic/
+    LEV-SV2A-CSPalpha-Presynaptic-Complementarity-Unique-CLN4B/
+    VPA-SAFE-CLN4B-Presynaptic-NOT-Mitochondrial/
+    CBZ-OXC-PHT-ABSOLUTE-CI-Adult-Focal-Misdiagnosis-Trap/
+    AD-Inheritance-50pct-Offspring-Risk-Genetic-Counselling-Urgent/
+    Piracetam-Action-Myoclonus-First-Line-CLN4B/
+    GBP-PGB-High-Risk-Adult-Pain-Prescribing-Trap/
+    Neuropsychiatry-Behavioral-MDT-Core-CLN4B/
+    Driving-Employment-Occupational-Adult-CLN4B/
+    Diagnostic-Delay-5.8years-Behavioral-Psychiatric-Misdiagnosis/
+    SUDEP-Risk-Compound-Cognitive-Ataxia-Nocturnal-CLN4B],
+    12 thresholds (DNAJC5-p.Leu115Arg-Confirmed / Skin-Biopsy-Fingerprint-Adult-NCL /
+    IV-LEV-60mgkg-SE / VPA-trough-60-100 / Piracetam-16-24gday-Target /
+    MMSE-24-Cognitive-Review / UMRS-20-AED-Escalation /
+    SARA-10-WalkingAid / SARA-18-Rollator / SARA-25-Wheelchair /
+    PHQ9-10-SSRI-Initiation / Dx-Delay-12months-SkinBiopsy-Urgent),
+    12 standards (Orcsi-2020-NatGenet / ILAE-2022 / NICE-NG217 / NCL-Resource-2024 /
+    Cadieux-Dion-2013-JMDN / Greaves-2012-JBiolChem / MHRA-VPPP-2021 / ACMG-AMP-2015 /
+    Crespel-1999 / WHO-ICF-2019 / DVLA-Guidance-2022 / BDSRA-Registry),
+    6 references (Cadieux-Dion-2013 / Greaves-2012 / Orcsi-2020 /
+    Noskova-2011 / Nosková-2011-AmJHumGenet / Andermann-2012)."""
+    try:
+        import scripts.cln4b_dashboard as cln4b_
+        return _json_safe(cln4b_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

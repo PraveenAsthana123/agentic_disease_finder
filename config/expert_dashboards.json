@@ -4134,5 +4134,6 @@
       "Treatments",
       "Definitions"
     ]
-  }
+  },
+  {"id": "cln4b", "title": "CLN4B (DNAJC5 / Adult Batten Disease / Kufs Type B)", "status": "built", "api": ["/api/cln4b/overview", "/api/cln4b/breakdown", "/api/cln4b/definitions"], "component": "portal-next/app/cln4b/page.jsx", "color": "#5d4037"}
 ]
