@@ -4696,5 +4696,19 @@
     ],
     "script": "scripts/galns_dashboard.py",
     "cohort": 40
+  },
+  {
+    "role": "Neurologist",
+    "name": "ARSB / MPS-VI (Maroteaux-Lamy) Epilepsy Dashboard",
+    "viz": "Disease-specific panels (overview/breakdown/definitions)",
+    "feature": "DS+C4S GAG fingerprint, OSA dominant trigger, corneal clouding universal, cardiac universal, hydrocephalus, HSCT somatic, galsulfase ERT",
+    "why": "MPS-VI expert epilepsy care: pharmacological contraindications, BiPAP seizure management, VP shunt, diagnostic algorithm",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/arsb/overview",
+      "/api/arsb/breakdown",
+      "/api/arsb/definitions"
+    ]
   }
 ]

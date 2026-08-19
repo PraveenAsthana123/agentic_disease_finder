@@ -29314,6 +29314,61 @@ async def galns_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/arsb/overview")
+async def arsb_overview():
+    """ARSB / MPS-VI (Maroteaux-Lamy Syndrome) — overview: gene, AR inheritance,
+    disease mechanism (Arylsulfatase-B-N-Acetylgalactosamine-4-Sulfatase deficiency → DS+C4S accumulation),
+    5-class variant spectrum (Classic/Severe-null/null-35% / Attenuated-biallelic-missense-25% /
+    Portuguese-Brazilian-Founder-p.R152W-15% / Intermediate-null+missense-15% / Rare/Private-10%),
+    ERT (Galsulfase-Naglazyme-FDA2005-1mg/kg-WEEKLY), HSCT (severe-<6-8yr-somatic-benefit-NOT-cognitive),
+    DS+C4S-elevated-HS/KS-NORMAL GAG fingerprint, corneal clouding UNIVERSAL and MOST SEVERE,
+    cardiac valvulopathy UNIVERSAL (ALL patients), OSA DOMINANT trigger (macroglossia + laryngeal DS),
+    communicating hydrocephalus 20-30% (DS arachnoid villi), normal intelligence KEY feature,
+    epilepsy 15-25% (higher than MPS-IVA — hydrocephalus + OSA + AAI).
+    """
+    try:
+        import scripts.arsb_dashboard as arsb_
+        return _json_safe(arsb_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/arsb/breakdown")
+async def arsb_breakdown():
+    """ARSB / MPS-VI — breakdown: 40-patient cohort (Classic/Severe / Attenuated / Portuguese-Brazilian-Founder /
+    Intermediate / Rare-Private), etiologies, seizure types, triggers (OSA-65%-DOMINANT-macroglossia /
+    communicating-hydrocephalus-30% / AAI-45% / febrile-55% / cardiac-arrhythmia-20% /
+    anesthesia-EXTREME-HAZARD-airway-dominant / missed-ERT-18%), treatments
+    (LEV / VPA-POLG1-excl / Galsulfase-Naglazyme-ERT-weekly / HSCT-somatic-severe /
+    BiPAP-Level-A-OSA-dominant / VP-shunt-hydrocephalus / cervical-fusion-AAI),
+    contraindications (anesthesia-EXTREME-HAZARD-airway / PHT-ABSOLUTE-AVOID-universal-valvulopathy /
+    VGB-ABSOLUTE/RELATIVE-CI-corneal-universal-STRONGEST / CBZ-CAUTION-DS-neuropathy /
+    typical-AP-HIGH-RISK-DS-basal-ganglia), monitoring, thresholds, lifecycle, differential
+    (MPS-I-HS+DS / MPS-II-HS+DS-XL-no-cornea / MPS-IVA-KS+C6S-normal-IQ / MPS-VII-GUSB /
+    GM1-gangliosidosis / MPS-III-HS-cognitive / POLG1).
+    """
+    try:
+        import scripts.arsb_dashboard as arsb_
+        return _json_safe(arsb_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/arsb/definitions")
+async def arsb_definitions():
+    """ARSB / MPS-VI — definitions: 12-term glossary (ARSB / MPS-VI-Maroteaux-Lamy /
+    Galsulfase-Naglazyme / DS-Dermatan-Sulfate / Communicating-Hydrocephalus /
+    OSA-dominant-macroglossia / Cardiac-Valvulopathy-Universal / Corneal-Clouding-Universal-MOST-SEVERE /
+    DRE-MPS-VI / Normal-Intelligence-KEY / HSCT-somatic-NOT-cognitive / Macroglossia-airway-dominant),
+    10-step diagnostic algorithm, 12 pharmacological distinctions, differential diagnosis.
+    """
+    try:
+        import scripts.arsb_dashboard as arsb_
+        return _json_safe(arsb_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
