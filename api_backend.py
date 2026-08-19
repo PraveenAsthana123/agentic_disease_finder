@@ -28249,6 +28249,73 @@ async def hexa_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/hexb/overview")
+async def hexb_overview():
+    """HEXB / Sandhoff Disease (GM2 Gangliosidosis Type 2) overview:
+    beta-Hexosaminidase B beta-subunit deficiency / ALL THREE hex forms deficient (Hex A + Hex B + Hex S all low).
+    HEXB (5q13.3) — TIM barrel lysosomal acid hydrolase; shared beta-subunit of Hex A (alphabeta), Hex B (betabeta), Hex S.
+    HEXB LOF -> Hex A + Hex B + Hex S all deficient = PATHOGNOMONIC Sandhoff (contrast Tay-Sachs: Hex B ELEVATED).
+    Systemic involvement: hepatosplenomegaly ~70% Type 1 (Gb4 visceral accumulation) + bone marrow foam cells (DISTINCTIVE vs Tay-Sachs).
+    Three types: Type 1 Infantile (<0.1% residual; cherry-red 90%; hepatosplenomegaly; IS; death 2-4y);
+    Type 2 Juvenile (2-8%; PME + ataxia; mild hepatomegaly; main epilepsy focus);
+    Type 3 Adult (>10%; spinocerebellar + LMN).
+    No AJ founder mutation (AJ Tay-Sachs carrier screens do NOT detect Sandhoff).
+    Spanish/Latin-American c.1514_1517delCTCA most common founder. Lebanese biallelic exonic deletion (MLPA required).
+    CBZ/OXC/PHT ABSOLUTE CI; VPA SAFE lysosomal not mitochondrial; POLG1/MERRF mandatory exclusion.
+    Hepatomegaly does NOT contraindicate VPA (Gb4 storage not mitochondrial failure) — enhanced LFT monitoring.
+    ACTH Level A infantile spasms (prefer over VGB when cherry-red 90% present).
+    Fosphenytoin ABSOLUTE CI; IV LEV replaces in SE. Piracetam Level B action myoclonus (renal monitoring enhanced).
+    AAV9-HEXA/HEXB bicistronic gene therapy Phase I/II 2024 — same vector treats BOTH Sandhoff AND Tay-Sachs.
+    OMIM *606873/#268800."""
+    try:
+        import scripts.hexb_dashboard as hexb_
+        return _json_safe(hexb_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hexb/breakdown")
+async def hexb_breakdown():
+    """HEXB / Sandhoff Disease breakdown:
+    6-class etiology [Spanish-Latin-American-c.1514_1517delCTCA-Type1-Infantile-25% /
+    Compound-Het-Null-Null-Non-Founder-Type1-22% / Compound-Het-Null-Missense-Type2-Juvenile-28% /
+    Lebanese-Maronite-Exonic-Deletion-CNV-MLPA-10% / Homozygous-Missense-Consanguineous-Type2-Type3-10% /
+    Japanese-Private-Variants-Type2-5%],
+    6 seizure types [Infantile-Spasms-38%/Action-Myoclonus-68%/GTCS-62%/Absence-Like-35%/Focal-Occipital-30%/NCSE-20%],
+    8 triggers, 8 treatments, 7 CIs, 14 monitoring items (enhanced visceral vs Tay-Sachs), 6 lifecycle stages."""
+    try:
+        import scripts.hexb_dashboard as hexb_
+        return _json_safe(hexb_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/hexb/definitions")
+async def hexb_definitions():
+    """HEXB / Sandhoff Disease definitions:
+    15 concepts [HEXB-5q13.3-ALL-THREE-Hex-Forms-Deficient-Pathognomonic-Sandhoff /
+    Hex-A-Low-Hex-B-LOW-PATHOGNOMONIC-Sandhoff-vs-Hex-B-HIGH-Tay-Sachs /
+    Hepatosplenomegaly-Bone-Marrow-Foam-Cells-DISTINCTIVE-Sandhoff-Not-Tay-Sachs /
+    No-AJ-Founder-Mutation-Standard-Tay-Sachs-Screen-Does-NOT-Detect-Sandhoff /
+    CBZ-OXC-PHT-ABSOLUTE-CI-Type2-PME-GTCS-Misidentification /
+    VPA-SAFE-HEXB-Lysosomal-NOT-Mitochondrial-Hepatomegaly-Does-NOT-CI-VPA /
+    ACTH-Level-A-Infantile-Spasms-Cherry-Red-90pct-Type1-VGB-HIGH-RISK /
+    Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces-SE-Protocol /
+    Piracetam-Level-B-Action-Myoclonus-Renal-Monitoring-Enhanced /
+    HEXB-CNV-MLPA-Mandatory-Lebanese-Maronite-Exonic-Deletion /
+    AAV9-HEXA-HEXB-Bicistronic-Same-Vector-Treats-Both-Sandhoff-And-TaySachs /
+    Hepatology-Co-Management-MANDATORY-Sandhoff-Not-Required-Tay-Sachs /
+    Globoside-Gb4-Systemic-Accumulation-HEXB-Distinguishes-Sandhoff-Substrate /
+    SUDEP-Risk-Drug-Resistant-Type2-Nocturnal-GTCS-Enhanced /
+    Visceral-Screening-Battery-Mandatory-Sandhoff-vs-Tay-Sachs],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.hexb_dashboard as hexb_
+        return _json_safe(hexb_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

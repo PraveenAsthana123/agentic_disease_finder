@@ -4403,5 +4403,23 @@
     "description": "40-patient HEXA cohort (Tay-Sachs/15q23 \u2014 beta-Hexosaminidase A alpha-subunit; 529 aa precursor ~60 kDa; TIM barrel fold; pairs with HEXB beta-subunit -> Hex A (alphabeta) heterodimer; Glu323/Glu325 catalytic dyad; requires GM2 activator protein (GM2AP/GM2A) to load GM2 ganglioside substrate; HEXA LOF -> Hex A (alphabeta) + Hex S (alphaalpha) both deficient; Hex B (betabeta, HEXB) retained + ELEVATED = PATHOGNOMONIC Tay-Sachs; discriminates from Sandhoff HEXB LOF where ALL three forms low; from AB variant GM2A LOF where Hex A NORMAL in vitro); 6-class etiology [AJ-Compound-Het-c.1278insTATC-IVS12+1G>C-Type1-28%/AJ-Homozygous-c.1278insTATC-Type1-18%/AJ-Compound-Het-Null-p.Gly269Ser-Type2-Juvenile-22%/French-Canadian-IVS7+1G>A-Type1-15%/Non-AJ-Non-FC-Compound-Het-12%/Pseudodeficiency-p.Arg247Trp-5%], 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 14 monitoring, 6 lifecycle, 15 concepts, 12 thresholds, 12 standards, 6 references, 5-tab frontend, deep-midnight-blue #1a237e, 3 endpoints /api/hexa/overview|breakdown|definitions verified 200",
     "built_at": "2026-08-19",
     "color": "#1a237e"
+  },
+  {
+    "id": "hexb",
+    "name": "HEXB Epilepsy (Sandhoff-Disease / GM2-Gangliosidosis-Type2 / Beta-Hexosaminidase-B-Beta-Subunit-Deficiency / ALL-Three-Hex-Forms-Deficient-Hex-A-Hex-B-Hex-S-LOW-PATHOGNOMONIC / Hepatosplenomegaly-70pct-Type1-Bone-Marrow-Foam-Cells-DISTINCTIVE-vs-Tay-Sachs / No-AJ-Founder-Mutation-Tay-Sachs-Screen-Does-NOT-Detect-Sandhoff / Spanish-Latin-American-c.1514_1517delCTCA-Founder / Lebanese-Maronite-Exonic-Deletion-CNV-MLPA-Mandatory / ACTH-Level-A-Infantile-Spasms-Prefer-Over-VGB-Cherry-Red-90pct / CBZ-OXC-PHT-ABSOLUTE-CI-PME-Myoclonus-Trap / VPA-SAFE-Hepatomegaly-Gb4-NOT-Mitochondrial-Enhanced-LFT-3Monthly / POLG1-MERRF-Mandatory-Exclusion / VGB-HIGH-RISK-Type1-Cherry-Red-90pct / Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces / Piracetam-Level-B-Action-Myoclonus-Renal-Monitor-Enhanced / Hepatology-Co-Management-MANDATORY-Visceral-Battery / AAV9-HEXA-HEXB-Bicistronic-Same-Vector-Treats-Both-Sandhoff-TaySachs / AR-Biallelic-LOF / 5q13.3)",
+    "route": "/hexb",
+    "api_prefix": "/api/hexb",
+    "script": "scripts/hexb_dashboard.py",
+    "status": "built",
+    "gene": "HEXB",
+    "locus": "5q13.3",
+    "disease": "Sandhoff Disease / GM2 Gangliosidosis Type 2",
+    "cohort": 40,
+    "color": "#3e2723",
+    "endpoints": [
+      "/api/hexb/overview",
+      "/api/hexb/breakdown",
+      "/api/hexb/definitions"
+    ]
   }
 ]
