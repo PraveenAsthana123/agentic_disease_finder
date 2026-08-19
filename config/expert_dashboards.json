@@ -4256,5 +4256,42 @@
     "color": "#263238",
     "gene": "CTSD",
     "locus": "11p15.5"
+  },
+  {
+    "id": "cln11",
+    "name": "CLN11 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type11 / Adult-NCL / GRN-Progranulin-Deficiency / Plasma-PGRN-Undetectable-Rapid-Screen / No-GRN-Enzyme-Assay-PGRN-Not-Enzyme / FP-RP-EM-Adult-NCL / AR-Biallelic-LOF-vs-AD-GRN-Haploinsufficiency-FTLD-Critical-Distinction / Parents-Obligate-GRN-Heterozygotes-FTLD-TDP-Risk / VGB-ABSOLUTE-CI-Retinal-NCL-88pct / CBZ-OXC-PHT-ABSOLUTE-CI-Adult-Myoclonus-Trap / VPA-SAFE-Lysosomal-Regulatory-NOT-Mitochondrial / Cognitive-Behavioural-First-FTD-Mimic / Parkinsonism-Ataxia-Dual-Movement-Disorder / No-Disease-Modifying-Therapy-GRN-Gene-Therapy-Research / Driving-Cessation-DVLA-Mandatory / AR-Biallelic-LOF / 17q21.31)",
+    "category": "genetic-epilepsy-syndrome",
+    "status": "built",
+    "api_endpoints": [
+      "/api/cln11/overview",
+      "/api/cln11/breakdown",
+      "/api/cln11/definitions"
+    ],
+    "frontend": "portal-next/app/cln11/page.jsx",
+    "color": "#311b92",
+    "gene": "GRN",
+    "chromosome": "17q21.31",
+    "protein": "Progranulin (PGRN)",
+    "cohort_size": 40,
+    "onset": "Adult 15-35y",
+    "inheritance": "AR biallelic LOF",
+    "em_pattern": "FP \u00b1 RP",
+    "omim": "*138945 / #614706",
+    "key_drugs_safe": [
+      "VPA",
+      "LEV",
+      "CLB",
+      "LTG",
+      "Piracetam"
+    ],
+    "key_drugs_ci": [
+      "VGB (ABSOLUTE)",
+      "CBZ/OXC/PHT (ABSOLUTE)",
+      "Fosphenytoin (ABSOLUTE)",
+      "TGB (ABSOLUTE)",
+      "GBP/PGB (HIGH)",
+      "LTG monotherapy (HIGH)"
+    ],
+    "built_at": "2026-08-18"
   }
 ]

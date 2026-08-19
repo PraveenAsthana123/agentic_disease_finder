@@ -27754,6 +27754,68 @@ async def cln10_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln11/overview")
+async def cln11_overview():
+    """CLN11 Epilepsy — Neuronal Ceroid Lipofuscinosis Type 11 / Adult NCL / Progranulin Deficiency (GRN/17q21.31).
+    40-patient cohort: AR biallelic GRN LOF; onset 15-35y; progressive GTCS + myoclonus + retinal NCL + cognitive decline.
+    VGB ABSOLUTE CI (retinal NCL 88%) / CBZ-OXC-PHT ABSOLUTE CI (myoclonus) / VPA SAFE (lysosomal regulator NOT mitochondrial).
+    No enzyme assay — plasma PGRN level (<10 ng/mL = biallelic) / GRN WES + FP±RP EM skin biopsy.
+    CRITICAL: parents are obligate GRN heterozygotes → FTLD-TDP risk (unique among NCLs)."""
+    try:
+        import scripts.cln11_dashboard as cln11_
+        return _json_safe(cln11_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln11/breakdown")
+async def cln11_breakdown():
+    """CLN11 / GRN Adult NCL breakdown:
+    6-class etiology [Compound-Het-Missense-Truncating-35% / Homozygous-Missense-Consanguineous-22% /
+    Compound-Het-Missense-Missense-Attenuated-20% / Homozygous-Truncating-Consanguineous-12% /
+    GRN-Promoter-Regulatory-7% / Phenocopy-CLN11-Negative-4%],
+    5 seizure types [GTCS-90% / Myoclonic-Action-82% / Focal-Impaired-Awareness-55% / Atonic-Drop-35% / NCSE-25%],
+    8 triggers, 8 treatments [VPA-Backbone / LEV / CLB / LTG / Piracetam / KD / MDT-Palliative / Rescue],
+    7 CIs [VGB-ABSOLUTE / CBZ-OXC-PHT-ABSOLUTE / Fosphenytoin-ABSOLUTE / TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH / LTG-Mono-HIGH / AED-Taper-HIGH],
+    14 monitoring items, 5 lifecycle stages."""
+    try:
+        import scripts.cln11_dashboard as cln11_
+        return _json_safe(cln11_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln11/definitions")
+async def cln11_definitions():
+    """CLN11 / GRN Adult NCL definitions:
+    15 concepts [CLN11-GRN-17q21.31-Lysosomal-Regulatory-Protein-Adult-NCL /
+    AR-Biallelic-GRN-LOF-vs-AD-GRN-Haploinsufficiency-Critical-Distinction /
+    Plasma-PGRN-Level-Rapid-Adult-NCL-Screening-Biomarker /
+    No-GRN-Enzyme-Assay-PGRN-Not-Enzyme-Plasma-PGRN-Instead /
+    VGB-ABSOLUTE-CI-CLN11-Retinal-NCL-88pct /
+    CBZ-OXC-PHT-ABSOLUTE-CI-CLN11-Adult-NCL-Myoclonus-Trap /
+    VPA-SAFE-CLN11-Lysosomal-Regulatory-NOT-Mitochondrial /
+    Cognitive-Behavioural-First-FTD-Mimic-CLN11-Young-Adult /
+    Parkinsonism-Ataxia-CLN11-Movement-Disorder-Dual /
+    FTLD-GRN-Therapy-vs-CLN11-GRN-Therapy-Different-Targets /
+    No-Disease-Modifying-Therapy-CLN11-GRN-Gene-Therapy-Research /
+    Driving-Cessation-DVLA-Mandatory-CLN11 /
+    Adult-NCL-MDT-Unique-Needs-Employment-Relationships-Supported-Living /
+    SUDEP-Risk-CLN11-Nocturnal-GTCS-Monitoring /
+    Smith-2012-Brain-First-CLN11-Biallelic-GRN-UK-Siblings],
+    12 thresholds, 12 standards
+    (Smith-2012-Brain / Baker-2006-NatureGenetics / Cruts-2006-Nature /
+    Ward-2017-Neuron / Mole-2019-LancetNeurol / NCL-Resource-2024 /
+    ILAE-2022 / NICE-NG217 / MHRA-VPPP-2021 / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry),
+    6 references."""
+    try:
+        import scripts.cln11_dashboard as cln11_
+        return _json_safe(cln11_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
