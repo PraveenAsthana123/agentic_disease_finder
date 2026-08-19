@@ -28938,6 +28938,47 @@ async def gla_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/man2b1/overview")
+async def man2b1_overview():
+    """MAN2B1 / Alpha-Mannosidosis overview:
+    AR LAMAN deficiency → mannose-rich oligosaccharide accumulation → ID + infections + hearing loss + epilepsy.
+    Vacuolated-lymphocytes-PAS-PATHOGNOMONIC / Urine-Man2-5-GlcNAc2-PATHOGNOMONIC /
+    Velmanase-alfa-Lamzede-EMA2018-FDA2023-FIRST-ERT / HSCT-CNS-Superior-ERT / CBZ-OXC-SAFE-No-Neuropathy-Unlike-MLD.
+    40-patient cohort."""
+    try:
+        import scripts.man2b1_dashboard as man2b1_
+        return _json_safe(man2b1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/man2b1/breakdown")
+async def man2b1_breakdown():
+    """MAN2B1 / Alpha-Mannosidosis breakdown: 5 etiologies (Compound-Het-Missense-Missense-35%/
+    Homozygous-Missense-Founder-28%/Compound-Het-Null-Missense-20%/Biallelic-Null-12%/Attenuated-5%),
+    5 seizure types (GTCS-70%/Myoclonic-30%/Focal-25%/Absence-15%/Febrile-Clusters-45%),
+    8 triggers (Febrile-Infection-82%/SleepDep-65%/MissedAED-60%/Psychiatric-Med-Change-40%),
+    8 treatments (Velmanase-Alfa-LevelA/IVIG-LevelB/LEV-LevelB/VPA-LevelB/CBZ-LevelB-SAFE/HSCT-LevelB/
+    Clobazam-LevelC/Piracetam-LevelC), 4 drug safety notes, 12 thresholds. 40-patient cohort."""
+    try:
+        import scripts.man2b1_dashboard as man2b1_
+        return _json_safe(man2b1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/man2b1/definitions")
+async def man2b1_definitions():
+    """MAN2B1 / Alpha-Mannosidosis definitions:
+    8-step diagnostic algorithm (blood-smear-vacuolated-lymphocytes / urine-TLC-oligosaccharides /
+    leukocyte-LAMAN-enzyme / MAN2B1-WES / POLG1-exclusion / HLA-B1502-before-CBZ).
+    12-term MAN2B1 glossary. 12 key concepts including CBZ-SAFE-unlike-MLD. Differential diagnosis
+    (NCL/MLD/GM2/fucosidosis/Pompe). 12 standards including Lamzede-FDA-2023. 40-patient cohort."""
+    try:
+        import scripts.man2b1_dashboard as man2b1_
+        return _json_safe(man2b1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -4564,11 +4564,23 @@
     "status": "built",
     "route": "/gla",
     "api_prefix": "/api/gla",
-    "endpoints": ["/api/gla/overview", "/api/gla/breakdown", "/api/gla/definitions"],
+    "endpoints": [
+      "/api/gla/overview",
+      "/api/gla/breakdown",
+      "/api/gla/definitions"
+    ],
     "frontend": "portal-next/app/gla/page.jsx",
     "script": "scripts/gla_dashboard.py",
     "color": "#7b1fa2",
     "note": "Fabry Disease / GLA X-linked / Alpha-Galactosidase A deficiency (Xq22.1). X-linked unique in lysosomal series. Corneal verticillata PATHOGNOMONIC. Posterior circulation strokes. Agalsidase-alfa/beta Level A ERT. Migalastat amenable mutations only. GBP/PGB dual use neuropathic pain + seizure. Typical antipsychotics HIGH RISK QTc/HCM.",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/gla/overview|breakdown|definitions verified 200."
+  },
+  {
+    "id": "man2b1",
+    "name": "MAN2B1 Epilepsy (Alpha-Mannosidosis / Lysosomal-Acid-Alpha-Mannosidase-LAMAN-Deficiency / Mannose-Rich-Oligosaccharide-Accumulation / Vacuolated-Lymphocytes-PAS-PATHOGNOMONIC-98pct / Urine-Man2-5-GlcNAc2-Oligosaccharides-PATHOGNOMONIC / p.His72Tyr-Scandinavian-Founder-24pct / Velmanase-Alfa-Lamzede-EMA2018-FDA2023-FIRST-ONLY-ERT / HSCT-CNS-Superior-ERT-Limited-BBB-Penetration / CBZ-OXC-SAFE-No-Demyelinating-Neuropathy-Unlike-MLD-GALC-ARSA / Typical-Antipsychotics-CAUTION-EPS-Worsens-Ataxia / VGB-Not-Absolute-CI-Unlike-NCL / IVIG-Level-B-Severe-Immunodeficiency / AR-Biallelic-LOF / 19p13.2)",
+    "status": "built",
+    "route": "/api/man2b1",
+    "page": "/man2b1",
+    "built_date": "2026-08-19"
   }
 ]
