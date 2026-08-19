@@ -4435,5 +4435,20 @@
       "/api/npc1/breakdown",
       "/api/npc1/definitions"
     ]
+  },
+  {
+    "role": "Neurologist",
+    "name": "NPC2 Epilepsy (Niemann-Pick Disease Type C, Type 2 / NPC2-HE1-14q24.3 / PAP-Pulmonary-Alveolar-Proteinosis-NPC2-SPECIFIC-40-60pct / VSGP-PATHOGNOMONIC-93pct / Gelastic-Cataplexy-PATHOGNOMONIC-70pct / WLL-Whole-Lung-Lavage-PAP / Miglustat-Level-A-Neurological-Only / CBZ-OXC-PHT-ABSOLUTE-CI / VPA-SAFE-POLG1-Mandatory-Exclusion / HSCT-May-Stabilise-PAP / AR-Biallelic-LOF)",
+    "status": "built",
+    "endpoints": [
+      "/api/npc2/overview",
+      "/api/npc2/breakdown",
+      "/api/npc2/definitions"
+    ],
+    "route": "/npc2",
+    "api_prefix": "/api/npc2",
+    "frontend": "portal-next/app/npc2/page.jsx",
+    "script": "scripts/npc2_dashboard.py",
+    "built_note": "NPC2 Epilepsy dashboard built 2026-08-19: /api/npc2/overview|breakdown|definitions + portal-next/app/npc2/page.jsx + SiteNav wired after NPC1"
   }
 ]

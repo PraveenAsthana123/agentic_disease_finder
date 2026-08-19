@@ -28387,6 +28387,77 @@ async def npc1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/npc2/overview")
+async def npc2_overview():
+    """NPC2 / Niemann-Pick Disease Type C, Type 2 overview:
+    NPC2 (14q24.3) — lysosomal soluble cholesterol-binding partner of NPC1; 151 aa / 25 kDa ML-domain protein.
+    NPC2 LOF → same neurological phenotype as NPC1: VSGP (93% PATHOGNOMONIC) + gelastic cataplexy (70% PATHOGNOMONIC)
+    + cerebellar ataxia + seizures + cognitive decline.
+    NPC2 UNIQUE: Pulmonary Alveolar Proteinosis (PAP, 40-60%) — NPC2 secreted in alveoli by type II pneumocytes;
+    NPC2 LOF → surfactant phospholipid accumulation → PAP → respiratory failure.
+    Earlier/more severe infantile hepatic disease than NPC1; shorter median survival in infantile form.
+    5% of all NPC disease (NPC1 = 95%). Same biomarkers: oxysterols + lyso-SM-509.
+    Same treatment: Miglustat (Level A, neurological ONLY — does NOT treat PAP); WLL for PAP.
+    Same CI: CBZ/OXC/PHT ABSOLUTE CI; Fosphenytoin ABSOLUTE CI (IV LEV replaces);
+    Typical antipsychotics HIGH RISK (cataplexy worsening); GBP/PGB HIGH RISK (worsen ataxia).
+    OMIM *601015 (NPC2) / #257220 (NPC disease, shared with NPC1)."""
+    try:
+        import scripts.npc2_dashboard as npc2_
+        return _json_safe(npc2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/npc2/breakdown")
+async def npc2_breakdown():
+    """NPC2 / Niemann-Pick Disease Type C, Type 2 breakdown:
+    6-class etiology [Biallelic-null-severe-infantile-PAP+hepatic-20% /
+    Compound-Het-null/missense-early-infantile-PAP+neurological-30% /
+    Compound-Het-missense/missense-late-infantile-NPC1-like-28% /
+    Homozygous-missense-juvenile/adult-longer-survival-15% /
+    Isolated-pulmonary-PAP-dominant-neurological-subclinical-5% /
+    NPC-phenocopy-panel-negative-2%],
+    6 seizure types [Gelastic-Cataplexy-PATHOGNOMONIC-70%/Focal-Onset-58%/GTCS-40%/
+    Myoclonic-35%/Infantile-Spasms-25%/Absence-Like-22%],
+    8 triggers, 8 treatments (Miglustat-Level-A-neurological-only + WLL-Level-B-PAP + VPA + LEV +
+    Clobazam + Piracetam + ACTH + HPβCD),
+    7 contraindications (CBZ/OXC/PHT-ABSOLUTE/Fosphenytoin-ABSOLUTE/TGB-ABSOLUTE/
+    Typical-Antipsychotics-HIGH-RISK/GBP-PGB-HIGH-RISK/VGB-RELATIVE-CI/Alcohol-HIGH-RISK),
+    6 lifecycle stages."""
+    try:
+        import scripts.npc2_dashboard as npc2_
+        return _json_safe(npc2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/npc2/definitions")
+async def npc2_definitions():
+    """NPC2 / Niemann-Pick Disease Type C, Type 2 definitions:
+    16 concepts [NPC2-14q24.3-Lysosomal-Soluble-Cholesterol-Carrier /
+    PAP-Pulmonary-Alveolar-Proteinosis-NPC2-SPECIFIC-40-60pct /
+    WLL-Whole-Lung-Lavage-PAP-Treatment /
+    VSGP-Downward-Gaze-First-PATHOGNOMONIC-93pct /
+    Gelastic-Cataplexy-PATHOGNOMONIC-70pct-NOT-Epileptic /
+    ML-Domain-Cholesterol-Binding-Beta-Barrel /
+    NPC1-NPC2-Hand-Off-System /
+    Oxysterols-7KC-LysoSM509-Same-As-NPC1 /
+    Filipin-Staining-Variant-Pattern-NPC2 /
+    Urinary-NPC2-Protein-Emerging-Biomarker /
+    Miglustat-Level-A-Neurological-Only-NOT-PAP /
+    CBZ-OXC-PHT-ABSOLUTE-CI-NPC2 /
+    POLG1-MERRF-Mandatory-Exclusion-Before-VPA /
+    HPbCD-Phase3-ACEND-Trial-NPC2 /
+    HSCT-BMT-PAP-Stabilisation-NOT-Neurological /
+    Psychiatric-Misdiagnosis-NPC2-Young-Adult-Psychosis],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.npc2_dashboard as npc2_
+        return _json_safe(npc2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
