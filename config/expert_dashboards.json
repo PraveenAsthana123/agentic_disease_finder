@@ -4450,5 +4450,18 @@
     "frontend": "portal-next/app/npc2/page.jsx",
     "script": "scripts/npc2_dashboard.py",
     "built_note": "NPC2 Epilepsy dashboard built 2026-08-19: /api/npc2/overview|breakdown|definitions + portal-next/app/npc2/page.jsx + SiteNav wired after NPC1"
+  },
+  {
+    "id": "gba",
+    "role": "Neurologist",
+    "name": "GBA Epilepsy (Gaucher-Disease-Type3-Neuronopathic / Glucocerebrosidase-Deficiency / Horizontal-Saccade-Palsy-PATHOGNOMONIC-88pct / Action-Myoclonus-PATHOGNOMONIC-75pct-Type3a / Lyso-Gb1-Neurotoxic-Biomarker / ERT-Does-NOT-Cross-BBB-Visceral-Only-Level-A / Ambroxol-Level-B-Pharmacological-Chaperone-TFEB / Miglustat-Level-B-Neurological / CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonus-Worsening / VPA-SAFE-Lysosomal-NOT-Mitochondrial-LFT-3Monthly / Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces / Typical-Antipsychotics-HIGH-RISK-Myoclonus-NMS / GBP-PGB-HIGH-RISK-Worsen-Ataxia / GBA1-het-5-10x-Parkinson-Risk-MANDATORY-Counselling / D409H-Type3c-Cardiac-Valve-PATHOGNOMONIC / L444P-Norrbottnian-Neuronopathic / N370S-AJ-NEVER-Neuronopathic / POLG1-Exclusion-Before-VPA / AR-Biallelic-LOF / 1q22)",
+    "path": "/gba",
+    "status": "built",
+    "patients": 40,
+    "endpoints": [
+      "/api/gba/overview",
+      "/api/gba/breakdown",
+      "/api/gba/definitions"
+    ]
   }
 ]

@@ -28458,6 +28458,75 @@ async def npc2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gba/overview")
+async def gba_overview():
+    """GBA / Gaucher Disease Type 3 (Neuronopathic) overview:
+    GBA1 (1q22) — lysosomal acid beta-glucosidase (glucocerebrosidase, GCase); 497 aa; 67 kDa.
+    GBA1 LOF → glucosylceramide + glucosylsphingosine (lyso-Gb1) accumulate in macrophage
+    lysosomes (Gaucher cells: liver, spleen, bone marrow) + neuronal lyso-Gb1 accumulation
+    → progressive myoclonic epilepsy (PME), cognitive decline, horizontal saccade palsy in Type 3.
+    Horizontal supranuclear saccade palsy (HSGP, 88%) PATHOGNOMONIC for neuronopathic Gaucher.
+    Action myoclonus (75% Type 3a) = cortical reflex myoclonus PATHOGNOMONIC.
+    ERT (imiglucerase/velaglucerase/taliglucerase) DOES NOT CROSS BBB — visceral only Level A.
+    CBZ/OXC/PHT ABSOLUTE CI (worsen myoclonic epilepsy). Fosphenytoin ABSOLUTE CI.
+    VPA Level B (lysosomal NOT mitochondrial — POLG1 exclusion mandatory).
+    Ambroxol Level B neurological (pharmacological chaperone, crosses BBB). Miglustat Level B.
+    GBA1 het carriers: 5-10x Parkinson disease risk — ALL families counselled. OMIM *606463."""
+    try:
+        import scripts.gba_dashboard as gba_
+        return _json_safe(gba_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gba/breakdown")
+async def gba_breakdown():
+    """GBA / Gaucher Disease Type 3 breakdown:
+    6-class etiology [L444P/L444P-Norrbottnian-25% / L444P+Other-Missense-Type3a-Moderate-30% /
+    N370S+L444P-Intermediate-15% / D409H-Homozygous-Type3c-Cardiac-10% /
+    RecNciI-Complex-Rearrangement-Severe-12% / Novel-Biallelic-Atypical-8%],
+    6 seizure types [Action-Myoclonus-PATHOGNOMONIC-75% / GTCS-58% / Absence-Like-35% /
+    Focal-28% / Myoclonic-Status-18% / Infantile-Spasms-12%],
+    8 triggers, 8 treatments [Imiglucerase-ERT-Level-A-Visceral-BBB-Limit /
+    Velaglucerase-ERT-Level-A / Ambroxol-Level-B-Neurological / Miglustat-Level-B /
+    VPA-Level-B / Clonazepam-Level-B-ActionMyoclonus / Piracetam-Level-B / LEV-Level-B],
+    7 contraindications [CBZ-OXC-PHT-ABSOLUTE / Fosphenytoin-ABSOLUTE / TGB-ABSOLUTE /
+    VGB-HIGH-RISK / Typical-Antipsychotics-HIGH-RISK / GBP-PGB-HIGH-RISK / Alcohol-HIGH-RISK],
+    6 lifecycle stages."""
+    try:
+        import scripts.gba_dashboard as gba_
+        return _json_safe(gba_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gba/definitions")
+async def gba_definitions():
+    """GBA / Gaucher Disease Type 3 definitions:
+    16 concepts [GBA1-1q22-Lysosomal-Acid-Beta-Glucosidase /
+    Horizontal-Supranuclear-Saccade-Palsy-PATHOGNOMONIC-88pct /
+    Glucosylsphingosine-Lyso-Gb1-Neurotoxic-Biomarker /
+    Action-Myoclonus-Cortical-Reflex-PATHOGNOMONIC-Type3a /
+    ERT-Does-NOT-Cross-BBB-Visceral-Only /
+    Ambroxol-Pharmacological-Chaperone-TFEB /
+    Chitotriosidase-Macrophage-Biomarker-CHIT1-Null-Caveat /
+    Type3c-D409H-Cardiac-Valvulopathy-PATHOGNOMONIC /
+    GBA1-Parkinson-Disease-Risk-MANDATORY-Counselling /
+    RecNciI-Complex-Rearrangement-CNV-MLPA-Mandatory /
+    CBZ-OXC-PHT-ABSOLUTE-CI-GBA /
+    POLG1-MERRF-Exclusion-Before-VPA /
+    Saposin-C-PSAP-GCase-Cofactor /
+    Gaucher-Cell-Crinkled-Tissue-Paper /
+    Eliglustat-SRT-Type1-Only-NOT-Type3 /
+    Norrbottnian-Swedish-Type3-Founder],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.gba_dashboard as gba_
+        return _json_safe(gba_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
