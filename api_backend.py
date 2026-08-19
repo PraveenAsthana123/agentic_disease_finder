@@ -29572,6 +29572,67 @@ async def manba_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gnptab/overview")
+async def gnptab_overview():
+    """GNPTAB / Mucolipidosis II (I-Cell Disease) + Mucolipidosis IIIA/B (Pseudo-Hurler) — overview:
+    gene 12q23.2 AR, GlcNAc-1-phosphotransferase alpha/beta subunit deficiency → M6P targeting failure
+    → lysosomal enzymes secreted into PLASMA (10-50x elevated) instead of lysosomes (LOW in leukocytes);
+    INVERSE PLASMA/LEUKOCYTE ENZYME PATTERN PATHOGNOMONIC (opposite of all other LSDs);
+    GINGIVAL HYPERPLASIA from birth PATHOGNOMONIC for ML-II (thick fibrotic gums; NOT seen in MPS-I/VI);
+    NO CORNEAL CLOUDING (distinguishes ML-II from MPS-I Hurler, MPS-VI Maroteaux-Lamy, MPS-VII Sly);
+    Epilepsy ML-II 40-65% (infantile spasms dominant; ACTH Level A; VGB ABSOLUTE CI cardiomyopathy);
+    Epilepsy ML-IIIA 15-25% (late onset; lower burden); cardiomyopathy/cardiomegaly ML-II 80%;
+    PHT/Fosphenytoin ABSOLUTE CI (cardiac — QTc/PR prolongation in ML-II cardiomegaly; IV LEV replaces);
+    Anesthesia EXTREME HAZARD (difficult airway gingival hyperplasia + cardiomyopathy + joint contractures);
+    Carpal tunnel ML-IIIA 85% by age 10 (often FIRST clinical sign);
+    NO ERT approved (2026), NO HSCT evidence; POLG1 mandatory before VPA. 40-patient cohort.
+    """
+    try:
+        import scripts.gnptab_dashboard as gnptab_
+        return _json_safe(gnptab_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnptab/breakdown")
+async def gnptab_breakdown():
+    """GNPTAB / Mucolipidosis II-III — breakdown: 40-patient cohort
+    (Null/Null-ML-II-Severe-25% / Null/Missense-ML-II-Intermediate-30% /
+    Biallelic-Missense-Severe-ML-IIIA-20% / Biallelic-Missense-Attenuated-ML-IIIB-15% /
+    Deep-Intronic-Splice-Variable-10%), seizure types (IS-55% / GTCS-45% / Myoclonic-30% /
+    Focal-20% / SE-15%), triggers (Febrile-70% / Respiratory-Infection-55% /
+    Sleep-deprivation-45% / Missed-AED-40% / Physiological-Stress-35% / Photic-20%),
+    treatments (LEV-LevelB / ACTH-LevelA-IS / VPA-LevelB-POLG1-mandatory / CLZ-LevelB /
+    Lacosamide-LevelC / CBZ-OXC-LevelB-CAUTION / Carpal-Tunnel-Release-LevelA-ML-IIIA),
+    contraindications (PHT-Fosphenytoin-ABSOLUTE-CI-cardiac / VGB-ABSOLUTE-CI-ML-II-IS /
+    CBZ-OXC-CAUTION-cardiac / POLG1-VPA-ABSOLUTE-CI / Typical-AP-HIGH-RISK /
+    Anesthesia-EXTREME-HAZARD-ML-II).
+    """
+    try:
+        import scripts.gnptab_dashboard as gnptab_
+        return _json_safe(gnptab_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnptab/definitions")
+async def gnptab_definitions():
+    """GNPTAB / Mucolipidosis II-III — definitions: 15-term glossary
+    (GNPTAB-enzyme / ML-II-I-Cell-Disease / ML-IIIA-Pseudo-Hurler / M6P-targeting-failure /
+    Inverse-plasma-leukocyte-enzyme-PATHOGNOMONIC / Gingival-hyperplasia-pathognomonic /
+    I-cells-inclusions / Carpal-tunnel-ML-IIIA / ACTH-Level-A-IS / PHT-ABSOLUTE-CI-cardiac /
+    VGB-ABSOLUTE-CI-cardiac-ML-II / Anesthesia-extreme-hazard / POLG1-mandatory /
+    No-ERT-approved-2026 / Plasma-enzyme-panel-diagnosis),
+    12-step diagnostic algorithm, 6 pharmacological distinctions, 5 differential diagnoses
+    (MPS-I-Hurler / MPS-II-Hunter / MPS-VI-Maroteaux-Lamy / ML-IV-MCOLN1 / MPS-IVA-Morquio-A).
+    """
+    try:
+        import scripts.gnptab_dashboard as gnptab_
+        return _json_safe(gnptab_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

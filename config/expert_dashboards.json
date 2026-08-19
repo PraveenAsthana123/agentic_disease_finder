@@ -4786,5 +4786,21 @@
     "gene": "MANBA",
     "locus": "4q24",
     "disease_group": "oligosaccharidosis"
+  },
+  {
+    "id": "gnptab",
+    "gene": "GNPTAB",
+    "status": "built",
+    "name": "GNPTAB Epilepsy (Mucolipidosis-II-I-Cell-Disease / Mucolipidosis-IIIA-B-Pseudo-Hurler-Polydystrophy / GlcNAc-1-Phosphotransferase-Alpha-Beta-Subunit-Deficiency / M6P-Targeting-Failure / INVERSE-Plasma-Leukocyte-Enzyme-PATHOGNOMONIC / Plasma-Enzymes-10-50x-ELEVATED-Leukocyte-LOW / Gingival-Hyperplasia-Birth-PATHOGNOMONIC-ML-II / NO-Corneal-Clouding-Distinguishes-MPS-I-VI-VII / Cardiomegaly-Cardiomyopathy-ML-II-80pct / PHT-Fosphenytoin-ABSOLUTE-CI-Cardiac / VGB-ABSOLUTE-CI-ML-II-IS-Cardiomyopathy / ACTH-Level-A-Infantile-Spasms / Anesthesia-EXTREME-HAZARD / Epilepsy-ML-II-40-65pct / Epilepsy-ML-IIIA-15-25pct / Carpal-Tunnel-ML-IIIA-85pct-FIRST-Sign / NO-ERT-Approved-2026 / NO-HSCT-Evidence / POLG1-Mandatory-CPIC-A / AR-Biallelic-LOF / 12q23.2)",
+    "description": "GNPTAB (12q23.2) \u2014 GlcNAc-1-phosphotransferase alpha/beta / Mucolipidosis II (I-Cell Disease) + ML-IIIA/B (Pseudo-Hurler). INVERSE plasma/leukocyte enzyme pattern PATHOGNOMONIC. Gingival hyperplasia from birth PATHOGNOMONIC ML-II. No corneal clouding (vs MPS-I/VI/VII). Cardiomyopathy 80% ML-II. PHT/Fosphenytoin ABSOLUTE CI cardiac. VGB ABSOLUTE CI ML-II IS (cardiomyopathy). ACTH Level A IS. Anesthesia EXTREME HAZARD. Carpal tunnel ML-IIIA 85% by age 10. No ERT 2026. No HSCT. POLG1 mandatory. 40-patient cohort. 3 endpoints /api/gnptab/overview|breakdown|definitions verified 200. Built 2026-08-19.",
+    "note": "Mucolipidosis II (I-Cell Disease) / ML-IIIA-B (Pseudo-Hurler). GlcNAc-1-phosphotransferase alpha/beta (12q23.2). M6P targeting failure: plasma lysosomal enzymes 10-50x elevated, leukocytes LOW = INVERSE PATHOGNOMONIC. Gingival hyperplasia PATHOGNOMONIC ML-II birth. NO corneal clouding (unlike MPS-I Hurler/MPS-VI/MPS-VII). PHT ABSOLUTE CI cardiac. VGB ABSOLUTE CI ML-II IS. ACTH Level A IS. Anesthesia EXTREME HAZARD. Carpal tunnel 85% ML-IIIA first sign. POLG1 mandatory. No ERT. No HSCT.",
+    "api_endpoints": [
+      "/api/gnptab/overview",
+      "/api/gnptab/breakdown",
+      "/api/gnptab/definitions"
+    ],
+    "portal_page": "/gnptab",
+    "cohort_size": 40,
+    "built_date": "2026-08-19"
   }
 ]
