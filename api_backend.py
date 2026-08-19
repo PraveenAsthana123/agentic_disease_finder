@@ -29022,6 +29022,50 @@ async def naglu_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/sgsh/overview")
+async def sgsh_overview():
+    """SGSH / MPS IIIA (Sanfilippo Syndrome A) overview:
+    Most common MPS-III (~52% European); heparan sulfate sulfamidase deficiency (17q25.3);
+    epilepsy 85-90% (highest MPS-III); sleep disorder earliest symptom; OAV-101 ACMENA Phase II/III.
+    """
+    try:
+        import scripts.sgsh_dashboard as sgsh_
+        return _json_safe(sgsh_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/sgsh/breakdown")
+async def sgsh_breakdown():
+    """SGSH / MPS IIIA breakdown: 5 etiologies (p.R206P+Null-32%/Hom-p.R206P-22%/
+    Biallelic-Null-20%/p.S298P-Founder-16%/Attenuated-Missense-10%),
+    6 seizure types (GTCS-80%/Myoclonic-60%/Tonic-45%/AtypAbsence-30%/Spasms-15%),
+    7 triggers (Sleep-90%/Febrile-75%/Behavioral-70%/MissedAED-62%/Exertion-55%/Photo-22%/Antipsychotic-42%),
+    8 treatments (LEV/VPA/CLB/ZNS/Piracetam/Melatonin/OAV-101/HSCT-NOT),
+    contraindications (CBZ-OXC-CAUTION/PHT-AVOID/VGB-REL-CI/TypAntipsych-HIGH-RISK/PB-CAUTION/ESX-NOT-INDICATED).
+    """
+    try:
+        import scripts.sgsh_dashboard as sgsh_
+        return _json_safe(sgsh_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/sgsh/definitions")
+async def sgsh_definitions():
+    """SGSH / MPS IIIA definitions:
+    8-step diagnostic algorithm (urine-HS-DMMB / MPS-III-enzyme-panel / leukocyte-SGSH /
+    biallelic-SGSH-gene / POLG1-exclusion / HLA-B1502 / brain-MRI / video-EEG).
+    10-term SGSH glossary including heparan-sulfate / Sanfilippo-A / sleep-disorder-earliest /
+    OAV-101 / ACMENA-trial / PME-like-phenotype / piracetam-action-myoclonus.
+    """
+    try:
+        import scripts.sgsh_dashboard as sgsh_
+        return _json_safe(sgsh_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

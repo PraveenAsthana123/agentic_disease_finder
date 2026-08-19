@@ -4607,5 +4607,22 @@
     "status": "built",
     "endpoint": "/api/naglu/overview",
     "page": "/naglu"
+  },
+  {
+    "id": "sgsh",
+    "name": "SGSH Epilepsy (MPS-IIIA-Sanfilippo-A / Heparan-Sulfate-Sulfamidase-Deficiency / Most-Common-MPS-III-52pct-Europe / Epilepsy-85-90pct-HIGHEST-MPS-III / Drug-Resistance-55-65pct / Sleep-Disorder-EARLIEST-Symptom-90pct-Age2-4yrs / Melatonin-Level-B-Circadian-Resync / No-Approved-ERT-2026 / OAV-101-Tralesinagene-Aparvovec-AAV10-Intracranial-ACMENA-NCT02716246-Phase-II-III / HSCT-NOT-Recommended-MPS-III / Typical-Antipsychotics-HIGH-RISK-Behavioral-Phase-Most-Severe-IIIA / PHT-Fosphenytoin-AVOID-IV-LEV-Preferred / VGB-RELATIVE-CI-Vision-Monitoring-Impossible-Severe-ID / CBZ-OXC-CAUTION-Not-Absolute-CI / POLG1-Exclusion-Before-VPA-Mandatory / Piracetam-Level-C-Action-Myoclonus-IIIA-Highest / p.R206P-Caucasian-Founder-25pct / p.S298P-NW-European-Founder / AR-Biallelic-LOF / 17q25.3)",
+    "status": "built",
+    "route": "/sgsh",
+    "api_prefix": "/api/sgsh",
+    "endpoints": [
+      "/api/sgsh/overview",
+      "/api/sgsh/breakdown",
+      "/api/sgsh/definitions"
+    ],
+    "frontend": "portal-next/app/sgsh/page.jsx",
+    "script": "scripts/sgsh_dashboard.py",
+    "color": "#1b5e20",
+    "note": "Sanfilippo Syndrome A / MPS IIIA \u2014 most common MPS-III in Europe (52%). Heparan sulfate sulfamidase (SGSH, 17q25.3). Epilepsy 85-90% (highest MPS-III). Sleep disorder earliest symptom (age 2-4, before behavioral regression). No approved ERT 2026. OAV-101 (tralesinagene aparvovec) intracranial AAV10 Phase II/III ACMENA trial. CBZ/OXC CAUTION. PHT AVOID. VGB RELATIVE CI. Typical antipsychotics HIGH RISK. POLG1 exclusion mandatory. Piracetam Level C action myoclonus.",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/sgsh/overview|breakdown|definitions verified 200. expert_dashboards.json count 298->299."
   }
 ]
