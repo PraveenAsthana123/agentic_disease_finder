@@ -4293,5 +4293,22 @@
       "LTG monotherapy (HIGH)"
     ],
     "built_at": "2026-08-18"
+  },
+  {
+    "id": "cln13",
+    "name": "CLN13 Epilepsy (Neuronal Ceroid Lipofuscinosis Type 13 / Kufs-Disease-Type-B / Cathepsin-F-Deficiency-CTSF / No-Retinal-NCL-VGB-NOT-Absolute-CI-Unique-Among-All-NCLs / Kufs-Type-B-CTSF-AR-vs-Kufs-Type-A-CLN6-AD-Critical-Differential / No-CTSF-Enzyme-Assay-WES-Required / CTSF-Shares-SCMAS-Substrate-CLN2-TPP1-CLN10-CTSD / FP-GRODs-Mixed-EM / CBZ-OXC-PHT-ABSOLUTE-CI-Adult-PME-Myoclonus-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-MERRF-Mandatory-Exclusion-Before-VPA / Dementia-First-FTD-Mimic / CTSF-ERT-Conceptually-Feasible-CLN2-Precedent / No-Disease-Modifying-Therapy / Driving-Cessation-DVLA-Mandatory / AR-Biallelic-LOF / 11q13.2)",
+    "status": "built",
+    "category": "ncl_epilepsy",
+    "gene": "CTSF",
+    "locus": "11q13.2",
+    "color": "#4a0e2a",
+    "api_prefix": "/api/cln13",
+    "frontend_path": "/cln13",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/cln13/overview",
+      "/api/cln13/breakdown",
+      "/api/cln13/definitions"
+    ]
   }
 ]

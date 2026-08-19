@@ -27816,6 +27816,68 @@ async def cln11_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln13/overview")
+async def cln13_overview():
+    """CLN13 / CTSF Adult NCL overview:
+    Cathepsin F deficiency (11q13.2) — Kufs Disease Type B;
+    40-patient cohort; AR biallelic CTSF LOF; mean onset 31y;
+    NO retinal NCL (<5%) — only adult NCL where VGB is NOT absolute CI;
+    FP ± GRODs EM; CTSF shares SCMAS substrate with CLN2/TPP1 and CLN10/CTSD;
+    Kufs Type B (CLN13/AR) vs Kufs Type A (CLN6/AD) — WES mandatory to distinguish;
+    No CTSF enzyme assay — WES required; POLG1/MERRF mandatory exclusion before VPA;
+    No disease-modifying therapy; CTSF ERT conceptually feasible (CLN2 cerliponase precedent)."""
+    try:
+        import scripts.cln13_dashboard as cln13_
+        return _json_safe(cln13_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln13/breakdown")
+async def cln13_breakdown():
+    """CLN13 / CTSF Adult NCL breakdown:
+    6-class etiology [Compound-Het-Missense-Truncating-32% / Homozygous-Missense-Consanguineous-25% /
+    Compound-Het-Missense-Missense-Attenuated-22% / Homozygous-Truncating-Severe-15% /
+    Promoter-Deep-Intronic-4% / Phenocopy-CLN13-Negative-2%],
+    5 seizure types [Myoclonic-Action-85% / GTCS-68% / Focal-38% / Atonic-Drop-28% / NCSE-18%],
+    8 triggers, 8 treatments [VPA-Level-B-Backbone / LEV-Level-B / Piracetam-Level-B-ActionMyoclonus /
+    CLB-Level-B / LTG-Level-B-Adjunct / KD-Level-C / MDT-Palliative-Level-A / Rescue-Midazolam-IV-LEV],
+    7 CIs [VGB-CAUTION-Not-Absolute-CI-No-Retinal-NCL-UNIQUE / CBZ-OXC-PHT-ABSOLUTE /
+    Fosphenytoin-ABSOLUTE / TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH / LTG-Mono-HIGH / AED-Taper-HIGH],
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln13_dashboard as cln13_
+        return _json_safe(cln13_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln13/definitions")
+async def cln13_definitions():
+    """CLN13 / CTSF Adult NCL definitions:
+    15 concepts [CLN13-CTSF-11q13.2-Lysosomal-Cysteine-Protease-Adult-NCL-No-Retinal /
+    No-Retinal-NCL-VGB-NOT-Absolute-CI-Unique-Among-All-NCLs /
+    Kufs-Type-B-CLN13-CTSF-AR-vs-Kufs-Type-A-CLN6-AD-Critical-Differential /
+    No-CTSF-Enzyme-Assay-WES-Required /
+    CTSF-Shares-SCMAS-Substrate-with-CLN2-TPP1-and-CLN10-CTSD /
+    FP-GRODs-Mixed-EM-Pattern-CLN13-Pitfall /
+    CBZ-OXC-PHT-ABSOLUTE-CI-CLN13-Adult-PME /
+    VPA-SAFE-CLN13-Lysosomal-NOT-Mitochondrial /
+    POLG1-MERRF-Mandatory-Exclusion-Before-VPA /
+    Dementia-First-CLN13-Misidentified-as-Alzheimer-FTD /
+    CTSF-ERT-Conceptually-Feasible /
+    No-Disease-Modifying-Therapy-CLN13 /
+    Driving-Cessation-DVLA-Mandatory /
+    Czech-Slovak-p.Arg245His-Founder /
+    SUDEP-Risk-CLN13],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.cln13_dashboard as cln13_
+        return _json_safe(cln13_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
