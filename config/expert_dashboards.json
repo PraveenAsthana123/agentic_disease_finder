@@ -4509,5 +4509,21 @@
       "/api/smpd1/breakdown",
       "/api/smpd1/definitions"
     ]
+  },
+  {
+    "id": "asah1",
+    "name": "ASAH1 Epilepsy (Farber-Lipogranulomatosis / Acid-Ceramidase-Deficiency / Ceramide-Catabolism-Block / Lipogranuloma-Triad-PATHOGNOMONIC / Farber-Bodies-EM-PATHOGNOMONIC / No-Approved-ERT-Critical-Gap / HSCT-Level-B-Non-CNS-Only / Saposin-D-PSAP-Type7-Phenocopy / Type5-PME-Infantile-CNS-Dominant / ACTH-Level-A-IS-Type5 / CBZ-OXC-RELATIVE-CI-PME-Myoclonus / Typical-Antipsychotics-HIGH-RISK-Ceramide-Additive / VPA-SAFE-Enhanced-Hepatic-Monitoring / AR-Biallelic-LOF / 8p22)",
+    "title": "ASAH1 (Acid Ceramidase / Farber Disease / 8p22)",
+    "status": "built",
+    "api": [
+      "/api/asah1/overview",
+      "/api/asah1/breakdown",
+      "/api/asah1/definitions"
+    ],
+    "component": "portal-next/app/asah1/page.jsx",
+    "color": "#4e342e",
+    "built_date": "2026-08-19",
+    "role": "Neurologist",
+    "cohort": 40
   }
 ]

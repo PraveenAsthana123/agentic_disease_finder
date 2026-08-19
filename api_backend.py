@@ -28715,6 +28715,66 @@ async def smpd1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/asah1/overview")
+async def asah1_overview():
+    """ASAH1 / Farber Disease (Acid Ceramidase Deficiency) overview:
+    ASAH1 (8p22) — Acid Ceramidase (AC); 395 aa, ~55 kDa; cleaves ceramide → sphingosine
+    + fatty acid at lysosomal pH 4.5–5.0; ASAH1 LOF → ceramide accumulates → lipid-laden
+    macrophages → granulomatous infiltration of joints/skin/larynx/CNS.
+    7 subtypes (Levade): Type 1 classic (45%), Type 5 neurological PME-like (25%),
+    Types 2/3/4/6/7. Rarest LSD (~150–200 cases worldwide). No approved ERT (critical gap
+    vs SMPD1 olipudase alfa). HSCT Level B (non-CNS benefit only). ACTH Level A for IS.
+    Pathognomonic: lipogranuloma triad + Farber bodies on EM. 40-patient cohort,
+    6 etiologies, 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 12 thresholds,
+    12 standards (Farber-1952/Dworski-2017/Cota-2021/Schuchman-2020)."""
+    try:
+        import scripts.asah1_dashboard as asah1_
+        return _json_safe(asah1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/asah1/breakdown")
+async def asah1_breakdown():
+    """ASAH1 / Farber Disease breakdown:
+    6 etiologies (Type1-Classic-45%/Type5-Neurological-25%/Type2-Intermediate-15%/
+    Type3-Mildest-10%/Type7-PSAP-Phenocopy-2%/Type4-Neonatal-Hydrops-3%),
+    6 seizure types (IS-hypsarrhythmia-Type5-65%/Focal-40%/GTCS-35%/PME-pattern-30%/
+    Tonic-25%/Absence-like-15%),
+    8 triggers, 8 treatments (HSCT-LevelB-NonCNS/ACTH-LevelA-IS/LEV-LevelB/VPA-LevelB/
+    Clobazam-C/Piracetam-C/KD-LevelB/rhAC-Investigational),
+    7 CIs (CBZ-OXC-RELATIVE-CI-PME/Fosphenytoin-RELATIVE-CI/Typical-Antipsychotics-HIGH-RISK/
+    GBP-PGB-CAUTION/VGB-NOT-PREFERRED/Alcohol-HIGH-RISK/NSAIDs-CAUTION),
+    ceramide pathway diagram (SMPD1→ceramide→ASAH1→sphingosine),
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.asah1_dashboard as asah1_
+        return _json_safe(asah1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/asah1/definitions")
+async def asah1_definitions():
+    """ASAH1 / Farber Disease definitions:
+    19 key concepts [ASAH1-8p22 / Ceramide-Central-Signaling-Lipid /
+    Farber-Lipogranulomatosis / Lipogranuloma-Triad-PATHOGNOMONIC /
+    Farber-Bodies-EM-PATHOGNOMONIC / AC-Enzyme-Activity-<10pct-Diagnostic /
+    Ceramide-Accumulation-Apoptosis-Pro-inflammatory /
+    HSCT-Level-B-Non-CNS-Only / No-Approved-ERT-Critical-Gap /
+    Saposin-D-PSAP-Type7-Phenocopy / Type5-PME-Infantile-CNS-Dominant /
+    Type4-Neonatal-Hydrops-Fatal / VPA-SAFE-Enhanced-Hepatic-Monitoring /
+    CBZ-OXC-RELATIVE-CI-PME-Myoclonus / Typical-Antipsychotics-HIGH-RISK-Ceramide-Additive /
+    ACTH-Level-A-IS-Type5 / Ceramide-Downstream-SMPD1-Upstream-ASAH1 /
+    POLG1-Exclusion-Before-VPA / Piracetam-Level-C-Myoclonus-PME-Pattern].
+    Diagnostic algorithm (7 steps), ceramide pathway glossary. 40-patient cohort."""
+    try:
+        import scripts.asah1_dashboard as asah1_
+        return _json_safe(asah1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
