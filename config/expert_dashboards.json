@@ -4557,5 +4557,18 @@
     ],
     "frontend": "/sumf1",
     "cohort_size": 40
+  },
+  {
+    "id": "gla",
+    "name": "GLA Epilepsy (Fabry-Disease / Anderson-Fabry / Alpha-Galactosidase-A-Deficiency / X-Linked-NOT-AR / Corneal-Verticillata-PATHOGNOMONIC / Angiokeratoma-PATHOGNOMONIC / Posterior-Circulation-Stroke-PATHOGNOMONIC / Agalsidase-Alfa-EMA2001 / Agalsidase-Beta-FDA2003 / Migalastat-FDA2018-AMENABLE-ONLY / Pegunigalsidase-Alfa-FDA2023 / GBP-DUAL-USE / Typical-Antipsychotics-HIGH-RISK-QTc / XL-Hemizygous / Xq22.1)",
+    "status": "built",
+    "route": "/gla",
+    "api_prefix": "/api/gla",
+    "endpoints": ["/api/gla/overview", "/api/gla/breakdown", "/api/gla/definitions"],
+    "frontend": "portal-next/app/gla/page.jsx",
+    "script": "scripts/gla_dashboard.py",
+    "color": "#7b1fa2",
+    "note": "Fabry Disease / GLA X-linked / Alpha-Galactosidase A deficiency (Xq22.1). X-linked unique in lysosomal series. Corneal verticillata PATHOGNOMONIC. Posterior circulation strokes. Agalsidase-alfa/beta Level A ERT. Migalastat amenable mutations only. GBP/PGB dual use neuropathic pain + seizure. Typical antipsychotics HIGH RISK QTc/HCM.",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/gla/overview|breakdown|definitions verified 200."
   }
 ]

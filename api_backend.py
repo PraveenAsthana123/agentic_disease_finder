@@ -28893,6 +28893,51 @@ async def sumf1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/gla/overview")
+async def gla_overview():
+    """GLA / Fabry Disease / Anderson-Fabry Disease overview:
+    X-linked hemizygous GLA LOF → α-Gal A deficient → Gb3+Lyso-Gb3 accumulation →
+    multi-organ vasculopathy. Corneal-verticillata-PATHOGNOMONIC / Angiokeratoma-PATHOGNOMONIC /
+    Posterior-Circulation-Stroke-PATHOGNOMONIC. Agalsidase-alfa-EMA2001/Agalsidase-beta-FDA2003/
+    Migalastat-FDA2018-AMENABLE-ONLY/Pegunigalsidase-alfa-2023. GBP-DUAL-USE-Pain+Seizure.
+    Typical-Antipsychotics-HIGH-RISK-QTc-HCM. 40-patient cohort."""
+    try:
+        import scripts.gla_dashboard as gla_
+        return _json_safe(gla_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/gla/breakdown")
+async def gla_breakdown():
+    """GLA / Fabry Disease breakdown: 3 patient subgroups (Classic-Male-55%/Late-Onset-Male-15%/
+    Classic-Female-30%), 5 seizure types (stroke-related-focal-55%/thalamic-25%/SE-8%/GTCS-35%/TIA-62%),
+    8 triggers (posterior-circulation-stroke-88%/dehydration-45%/exercise-38%/missed-ERT-25%/
+    hyperthermia-35%/TIA-62%/fever-40%/exertion-38%), 4 ERT treatments, 1 chaperone (migalastat),
+    8 drug considerations, 12 thresholds. 40-patient cohort."""
+    try:
+        import scripts.gla_dashboard as gla_
+        return _json_safe(gla_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/gla/definitions")
+async def gla_definitions():
+    """GLA / Fabry Disease definitions:
+    7-step diagnostic algorithm (DBS-α-Gal-A-males / Lyso-Gb3-plasma / GLA-WES /
+    Fabry-Variants-Database-amenable-check / POLG1-exclusion-before-VPA / multidisciplinary-team /
+    ERT-or-migalastat).
+    12-term GLA glossary (α-Gal-A/Gb3/Lyso-Gb3/corneal-verticillata/angiokeratoma/
+    posterior-circulation-stroke/migalastat-amenable/agalsidase/pegunigalsidase/lyonization/
+    DBS-neonatal-screening/GBP-dual-use).
+    12 key concepts. Differential diagnosis (Fabry vs other lysosomal / vs multiple sclerosis /
+    vs cryptogenic stroke / vs CADASIL). 12 standards. 40-patient cohort."""
+    try:
+        import scripts.gla_dashboard as gla_
+        return _json_safe(gla_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
