@@ -4114,5 +4114,25 @@
       "Treatments",
       "Definitions"
     ]
+  },
+  {
+    "id": "cln3",
+    "name": "CLN3 Epilepsy (Neuronal Ceroid Lipofuscinosis Type 3 / Juvenile Batten Disease / JNCL / Battenin-7TM-Lysosomal-Membrane-Protein / Visual-Failure-FIRST-4-10y / Seizures-AFTER-Visual-Failure-10-13y / Vacuolated-Lymphocytes-PATHOGNOMONIC / No-Disease-Modifying-Therapy / Parkinsonism-Late-L-DOPA / SSRI-Anxiety-OCD-Unique / VGB-ABSOLUTE-CI-Retinal / VPA-SAFE-Lysosomal-NOT-Mitochondrial / 1.02kb-Exon7+8-Deletion-73pct-Alleles / 16p12.1)",
+    "status": "built",
+    "route": "/cln3",
+    "api_prefix": "/api/cln3",
+    "color": "#2e7d32",
+    "cohort": 40,
+    "gene": "CLN3",
+    "locus": "16p12.1",
+    "inheritance": "AR",
+    "disease_class": "Neuronal Ceroid Lipofuscinosis",
+    "tabs": [
+      "Overview",
+      "Patients & Etiology",
+      "Seizures & Triggers",
+      "Treatments",
+      "Definitions"
+    ]
   }
 ]

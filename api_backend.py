@@ -27206,6 +27206,81 @@ async def cln2_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln3/overview")
+async def cln3_overview():
+    """CLN3 / Battenin Juvenile Batten Disease overview — Neuronal Ceroid Lipofuscinosis Type 3
+    [16p12.1 / AR / 7-TM-Lysosomal-Membrane-Protein-Battenin / SCMAS-Storage / Fingerprint-Curvilinear-EM /
+    40-patient cohort / Most-Common-NCL-Worldwide / Visual-Failure-FIRST-4-10y /
+    Seizures-AFTER-Visual-Failure-10-13y / Vacuolated-Lymphocytes-PATHOGNOMONIC /
+    No-Disease-Modifying-Therapy-Contrast-CLN2-Cerliponase /
+    Parkinsonism-Late-Disease-L-DOPA / SSRI-Anxiety-OCD-Unique /
+    VGB-ABSOLUTE-CI-Retinal / VPA-SAFE-Lysosomal-NOT-Mitochondrial /
+    1.02kb-Exon7+8-Deletion-73pct-Alleles / IBD-Consortium-1995]."""
+    try:
+        import scripts.cln3_dashboard as cln3_
+        return _json_safe(cln3_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln3/breakdown")
+async def cln3_breakdown():
+    """CLN3 JNCL breakdown — 6-class etiology
+    [Homozygous-1.02kb-Exon7+8-Deletion-47%/Compound-Het-Deletion-Plus-Missense-26%/
+    Compound-Het-Missense-Missense-Attenuated-12%/Homozygous-Nonsense-Frameshift-10%/
+    Splice-Site-3%/Phenocopy-CLN3-Negative-2%],
+    5 seizure types [GTCS-After-Visual-Failure-92%/Myoclonic-78%/Atonic-Drop-55%/
+    Focal-Absence-65%/NCSE-35%],
+    8 triggers [Fever-80%/SleepDep-72%/MissedAED-68%/Emotional-Stress-65%/
+    Photic-55%/Cognitive-Overload-58%/AED-Taper-52%/Movement-Action-45%],
+    8 treatments [VPA-LevelB/LEV-LevelB-IV-SE/LTG-LevelB/CLB-LevelB/
+    SSRI-LevelB-Anxiety-OCD-Unique/Piracetam-LevelC/LDopa-LevelC-Parkinsonism/
+    MDT-VI-Rehab-Palliative-LevelA],
+    6 CIs [VGB-ABSOLUTE-Retinal/CBZ-OXC-PHT-HIGH/GBP-PGB-HIGH/
+    D2-Antipsychotics-HIGH-Parkinsonism/AED-Taper-HIGH/Fosphenytoin-HIGH],
+    40 patients, 14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln3_dashboard as cln3_
+        return _json_safe(cln3_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln3/definitions")
+async def cln3_definitions():
+    """CLN3 JNCL definitions — 15 concepts
+    [CLN3-16p12.1-Battenin-Lysosomal-Membrane-Protein-JNCL/
+    Visual-Failure-First-JNCL-Ophthalmology-Led-Diagnosis/
+    Vacuolated-Lymphocytes-Blood-Film-JNCL-Pathognomonic/
+    1.02kb-CLN3-Deletion-Exon7+8-Most-Common-NCL-Mutation/
+    No-Disease-Modifying-Therapy-CLN3-Contrast-CLN2-Cerliponase/
+    Parkinsonism-Late-CLN3-L-DOPA-Unique-NCL-Feature/
+    VPA-SAFE-CLN3-Lysosomal-Contrast-MERRF-POLG/
+    SSRI-Anxiety-OCD-CLN3-Psychiatric-Management/
+    CLN3-vs-CLN2-Critical-NCL-Differential/
+    VGB-ABSOLUTE-CI-CLN3-Progressive-Retinal-Degeneration/
+    Gene-Therapy-AAV-CLN3-Trial-Access/
+    Cognitive-Decline-Behavioural-CLN3-School-Management/
+    Compound-Fall-Risk-CLN3-Triple-Mechanism/
+    Dysphagia-Gastrostomy-Late-CLN3-MDT/
+    SUDEP-Risk-CLN3-Nocturnal-Compound-Risk],
+    12 thresholds (1.02kb-Deletion-PCR-Confirmed / Vacuolated-Lymphocytes-CLN3-Suspected /
+    IV-LEV-60mgkg-SE / VPA-trough-60-100 / ERG-Flat-VGB-CI-Always /
+    UPDRS-Motor-20-LDopa / SARA-10-WalkingAid / SARA-25-Wheelchair /
+    FEES-Aspiration-PEG / Anti-CLN3-Ab-Gene-Therapy / Cobb-20-OrthoRef /
+    SSRI-6wk-No-Response-Escalate),
+    12 standards (IBD-Consortium-1995-NatGenet / ILAE-2022 / NCL-Resource-2024 /
+    NICE-NG217 / Mole-2019-LancetNeurol / MHRA-VPPP-2021 / ACMG-AMP-2015 /
+    NCT03770572 / BDSRA-Registry / WHO-ICF-2019 / NICE-NG71-Parkinson / Crespel-1999),
+    6 references (IBD-Consortium-1995 / Munroe-1997 / Mole-2019 /
+    Specchio-2019 / Mole-2005 / Selden-2021)."""
+    try:
+        import scripts.cln3_dashboard as cln3_
+        return _json_safe(cln3_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
