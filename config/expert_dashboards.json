@@ -4683,5 +4683,18 @@
       "/api/idua/definitions"
     ],
     "note": "IDUA/MPS-I (Hurler/Hurler-Scheie/Scheie) dashboard built: /api/idua/overview|breakdown|definitions + portal-next/app/idua/page.jsx + SiteNav wired after IDS, 40-patient IDUA cohort, count 302->303"
+  },
+  {
+    "id": "galns",
+    "name": "GALNS Epilepsy (MPS-IVA-Morquio-A / N-Acetylgalactosamine-6-Sulfate-Sulfatase-Deficiency / AR-Biallelic-LOF-16q24.3 / KS+C6S-ELEVATED-NOT-HS-DS-FINGERPRINT / NORMAL-INTELLIGENCE-KEY-FEATURE / Atlantoaxial-Instability-MOST-SEVERE-ALL-MPS-Odontoid-Hypoplasia / Anesthesia-EXTREME-HAZARD-Neck-Hyperextension-Cord-Transection / Elosulfase-alfa-Vimizim-FDA2014-Every-Other-Week / NO-HSCT-Intelligence-Normal / Epilepsy-LOW-10-15pct-Cord-Compression-Primary / OSA-50pct-Thoracic-Cage / PHT-AVOID-Aortic-Regurgitation / VGB-RELATIVE-CI / CBZ-OXC-CAUTION-KS-Neuropathy / POLG1-Exclusion-Mandatory / Cervical-Fusion-Level-A-Seizure-Prevention / AR-Both-Sexes-Equal / 16q24.3)",
+    "status": "built",
+    "route": "/galns",
+    "api": [
+      "/api/galns/overview",
+      "/api/galns/breakdown",
+      "/api/galns/definitions"
+    ],
+    "script": "scripts/galns_dashboard.py",
+    "cohort": 40
   }
 ]

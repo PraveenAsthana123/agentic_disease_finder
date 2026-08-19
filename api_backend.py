@@ -29262,6 +29262,58 @@ async def idua_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/galns/overview")
+async def galns_overview():
+    """GALNS / MPS-IVA (Morquio A Syndrome) — overview: gene, AR inheritance,
+    disease mechanism (N-acetylgalactosamine-6-sulfate sulfatase deficiency → KS+C6S accumulation),
+    5-class variant spectrum (Classic/Severe-null/null-35% / Attenuated-biallelic-missense-25% /
+    Saudi-Founder-p.I113F-20% / Intermediate-null+missense-12% / Rare/Private-8%),
+    ERT (Elosulfase-alfa-Vimizim-FDA2014-every-other-week-2mg/kg), NO HSCT (intelligence normal),
+    corneal clouding (present-milder-than-MPS-I), atlantoaxial instability (MOST SEVERE among all MPS),
+    OSA 50% (thoracic cage restriction + tracheomalacia), normal intelligence KEY feature,
+    epilepsy LOW 10-15% (cord compression primary seizure mechanism).
+    """
+    try:
+        import scripts.galns_dashboard as galns_
+        return _json_safe(galns_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/galns/breakdown")
+async def galns_breakdown():
+    """GALNS / MPS-IVA — breakdown: 40-patient cohort (Classic/Severe / Attenuated / Saudi-Founder /
+    Intermediate / Rare-Private), etiologies, seizure types, triggers (atlantoaxial-instability-62%
+    dominant / OSA-48% / febrile-55% / anesthesia-35% / AAI-subluxation-28%), treatments
+    (LEV / VPA-POLG1-excl / Elosulfase-alfa-ERT / Cervical-fusion-Level-A-seizure-prevention),
+    contraindications (anesthesia-EXTREME-HAZARD-worst-AAI / PHT-AVOID-aortic-regurgitation /
+    VGB-RELATIVE-CI-corneal / CBZ-CAUTION-KS-neuropathy / typical-AP-HIGH-RISK-KS-basal-ganglia),
+    monitoring (urine-KS+C6S / C-spine-XR-flexion-extension / FVC / cardiac-echo / slit-lamp /
+    audiometry / POLG1 / HLA-B15:02), thresholds, lifecycle, differential (MPS-IVB-GLB1 /
+    MPS-I-HS+DS / MPS-VI-DS-only / SED-no-GAG / Dyggve-Melchior-Clausen / POLG1).
+    """
+    try:
+        import scripts.galns_dashboard as galns_
+        return _json_safe(galns_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/galns/definitions")
+async def galns_definitions():
+    """GALNS / MPS-IVA — definitions: 12-term glossary (GALNS / MPS-IVA / Elosulfase-alfa-Vimizim /
+    Atlantoaxial-Instability-MOST-SEVERE-MPS / Odontoid-Hypoplasia / KS-Keratan-Sulfate /
+    C6S-Chondroitin-6-Sulfate / Tracheomalacia / DRE / Normal-Intelligence-KEY /
+    Cord-Myelopathy / AAI-surgical-threshold),
+    10-step diagnostic algorithm, 12 pharmacological distinctions, differential diagnosis.
+    """
+    try:
+        import scripts.galns_dashboard as galns_
+        return _json_safe(galns_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
