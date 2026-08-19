@@ -4825,5 +4825,51 @@
     "color": "#1a237e",
     "route": "/mcoln1",
     "category": "epilepsy-genetics-lsd-mucolipidosis"
+  },
+  {
+    "id": "npc1",
+    "gene": "NPC1",
+    "status": "built",
+    "name": "NPC1 Epilepsy (Niemann-Pick-Disease-Type-C / NPC-Intracellular-Cholesterol-Transporter-1 / AR-Biallelic-LOF / 18q11.2 / VSGP-Downward-Gaze-PATHOGNOMONIC-95pct / Gelastic-Cataplexy-Emotion-Triggered-PATHOGNOMONIC-65pct / Plasma-Oxysterols-7KC-LysoSM509-Biomarker-95pct-Sensitivity / Filipin-Staining-Gold-Standard / Miglustat-Zavesca-EU2009-Level-A-SRT-ONLY-Approved / HPbCD-Phase3-ACEND-Trial / CBZ-OXC-RELATIVE-CI-Dystonia-Myoclonus / PHT-RELATIVE-CI-Dystonia-Aggravation / VPA-RELATIVE-CI-Hepatotoxicity-POLG1-Mandatory / Typical-AP-HIGH-RISK-Dystonia-EPS / VGB-RELATIVE-CI-Visual-Monitoring-Late-Stage / NO-ERT-2026-Transporter-Not-Enzyme / NO-HSCT-Evidence / Epilepsy-50-65pct-GTCS-Focal-Myoclonic / DRE-25-35pct / AR-Both-Sexes-Equal / 18q11.2)",
+    "locus": "18q11.2",
+    "protein": "NPC1 \u2014 Intracellular Cholesterol Transporter (Late Endosomal 13-TM Membrane Protein, 1278 aa)",
+    "disease": "Niemann-Pick Disease Type C1 (NPC1)",
+    "omim_gene": "607623",
+    "omim_disease": "257220",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/npc1/overview",
+      "/api/npc1/breakdown",
+      "/api/npc1/definitions"
+    ],
+    "frontend": "portal-next/app/npc1/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1b5e20",
+    "route": "/npc1",
+    "category": "epilepsy-genetics-lsd-niemann-pick"
+  },
+  {
+    "id": "npc2",
+    "gene": "NPC2",
+    "status": "built",
+    "name": "NPC2 Epilepsy (Niemann-Pick-Disease-Type-C-Type2 / NPC2-Epididymal-Secretory-Protein-E1-HE1-Deficiency / AR-Biallelic-LOF / 14q24.3 / VSGP-Downward-Gaze-PATHOGNOMONIC-93pct / Gelastic-Cataplexy-Emotion-Triggered-PATHOGNOMONIC-70pct / PAP-Pulmonary-Alveolar-Proteinosis-NPC2-SPECIFIC-40-60pct-NOT-NPC1 / WLL-Whole-Lung-Lavage-PAP-Treatment / Earlier-More-Severe-Neonatal-Liver-Disease-Than-NPC1 / Shorter-Median-Survival-Infantile / Plasma-Oxysterols-7KC-LysoSM509-Same-As-NPC1 / Miglustat-Level-A-Neurological-NOT-PAP / CBZ-OXC-PHT-ABSOLUTE-CI-NPC2 / VPA-RELATIVE-CI-Hepatotoxicity-POLG1-Mandatory / Typical-AP-HIGH-RISK-Cataplexy-EPS / HPbCD-Phase3-Includes-NPC2 / NO-ERT-Approved-2026 / HSCT-BMT-May-Stabilise-PAP-NOT-Neurological / 5pct-All-NPC-Cases / AR-Both-Sexes-Equal / 14q24.3)",
+    "locus": "14q24.3",
+    "protein": "NPC2 \u2014 Lysosomal Soluble Cholesterol-Binding Protein (ML-Domain Beta-Barrel, 151 aa)",
+    "disease": "Niemann-Pick Disease Type C2 (NPC2)",
+    "omim_gene": "601015",
+    "omim_disease": "607625",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/npc2/overview",
+      "/api/npc2/breakdown",
+      "/api/npc2/definitions"
+    ],
+    "frontend": "portal-next/app/npc2/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#004d40",
+    "route": "/npc2",
+    "category": "epilepsy-genetics-lsd-niemann-pick"
   }
 ]
