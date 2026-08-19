@@ -27945,6 +27945,72 @@ async def cln12_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln9/overview")
+async def cln9_overview():
+    """CLN9 / DEGS1 Belgrade-Variant NCL overview (Provisional):
+    Dihydroceramide Desaturase 1 deficiency (1q42.11) — PROVISIONAL gene assignment;
+    40-patient cohort; AR biallelic DEGS1 LOF; mean seizure onset 6.8y;
+    ONLY NCL with ER ceramide biosynthesis defect (all other NCLs = lysosomal);
+    Mixed/pleomorphic EM (FP + CB + vacuoles — no dominant single pattern);
+    NO vacuolated lymphocytes (absent; present in CLN3 = PATHOGNOMONIC);
+    RETINAL NCL present (90%) — VGB ABSOLUTE CI;
+    Concurrent visual failure + seizures onset (unlike CLN3 sequential);
+    Ceramide pathway link with CERS1-PMEA; No DEGS1 DBS enzyme assay — WES required;
+    Gene assignment provisional — NCL Resource gene discovery mandatory;
+    No disease-modifying therapy; fatal 2nd-3rd decade."""
+    try:
+        import scripts.cln9_dashboard as cln9_
+        return _json_safe(cln9_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln9/breakdown")
+async def cln9_breakdown():
+    """CLN9 / DEGS1 Belgrade NCL breakdown (Provisional):
+    6-class etiology [Homozygous-DEGS1-Missense-Consanguineous-Belgrade-35% /
+    Compound-Het-Missense-Missense-25% / Compound-Het-Missense-Truncating-22% /
+    Homozygous-Truncating-Null-12% / Deep-Intronic-Regulatory-4% / Phenocopy-CLN9-Negative-2%],
+    5 seizure types [GTCS-82% / Myoclonic-Action-72% / Absence-Like-45% /
+    Focal-Occipital-Visual-38% / NCSE-20%],
+    8 triggers, 8 treatments [VPA-LevelB / LEV-LevelB / Piracetam-LevelC-ActionMyoclonus /
+    CLB-LevelB / LTG-LevelB-Adjunct / KD-LevelC / MDT-Palliative-LevelA / Rescue-Midazolam-IV-LEV],
+    7 CIs [VGB-ABSOLUTE-Retinal-NCL / CBZ-OXC-PHT-ABSOLUTE / Fosphenytoin-ABSOLUTE /
+    TGB-ABSOLUTE-NCSE / GBP-PGB-HIGH / LTG-Mono-HIGH / AED-Taper-HIGH],
+    14 monitoring items, 6 lifecycle stages."""
+    try:
+        import scripts.cln9_dashboard as cln9_
+        return _json_safe(cln9_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln9/definitions")
+async def cln9_definitions():
+    """CLN9 / DEGS1 Belgrade NCL definitions (Provisional):
+    15 concepts [CLN9-DEGS1-1q42.11-ER-Ceramide-Desaturase-Provisional-Juvenile-NCL /
+    Provisional-CLN9-Gene-Assignment-DEGS1-WES-May-Be-Negative /
+    No-Vacuolated-Lymphocytes-CLN9-Critical-CLN3-Differential-Blood-Smear-First /
+    VGB-ABSOLUTE-CI-CLN9-Retinal-NCL-90pct /
+    No-DEGS1-DBS-Enzyme-Assay-WES-Plus-Fibroblast-Biochemistry-Required /
+    Mixed-Pleomorphic-EM-CLN9-FP-CB-Vacuoles-No-Dominant-Pattern /
+    Concurrent-Visual-Failure-Seizures-CLN9-vs-Sequential-CLN3 /
+    CBZ-OXC-PHT-ABSOLUTE-CI-CLN9-Juvenile-NCL-Misidentification /
+    VPA-SAFE-ER-Ceramide-NOT-Mitochondrial-POLG1-Exclusion-Mandatory /
+    Ceramide-Pathway-DEGS1-CLN9-and-CERS1-PMEA-Unique-NCL-Pair /
+    Fosphenytoin-ABSOLUTE-CI-CLN9-SE-IV-LEV-Replaces /
+    KD-Ceramide-Hypothesis-Dual-Mechanism-CLN9 /
+    No-Disease-Modifying-Therapy-CLN9-Gene-Ambiguity /
+    Visual-Rehabilitation-CLN9-Retinal-90pct-Unlike-CLN12-CLN13 /
+    SUDEP-Risk-CLN9-Drug-Resistant-Nocturnal-GTCS-Childhood],
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.cln9_dashboard as cln9_
+        return _json_safe(cln9_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

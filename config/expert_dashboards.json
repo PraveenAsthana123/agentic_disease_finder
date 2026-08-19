@@ -4327,5 +4327,19 @@
       "/api/cln12/breakdown",
       "/api/cln12/definitions"
     ]
+  },
+  {
+    "role": "Neurologist",
+    "name": "CLN9 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type9-Provisional / DEGS1-Dihydroceramide-Desaturase-1-ER-Ceramide-Biosynthesis / Belgrade-Yugoslav-NCL / Juvenile-Onset-4-10y / ONLY-NCL-With-ER-Ceramide-Defect-Not-Lysosomal / No-Vacuolated-Lymphocytes-CLN3-Differential-Blood-Smear-First / Mixed-Pleomorphic-EM-FP-CB-Vacuoles-No-Dominant-Pattern / VGB-ABSOLUTE-CI-Retinal-NCL-90pct / CBZ-OXC-PHT-ABSOLUTE-CI-Juvenile-NCL-GTCS-Misidentification / VPA-SAFE-ER-NOT-Mitochondrial / POLG1-Mandatory-Exclusion-Before-VPA / Concurrent-Visual-Failure-Seizures-Unlike-CLN3-Sequential / Ceramide-Pathway-Link-CERS1-PMEA-Unique-NCL-Pair / No-DEGS1-DBS-Assay-WES-Plus-Fibroblast-Required / Provisional-Gene-NCL-Resource-Gene-Discovery-Mandatory / No-Disease-Modifying-Therapy / AR-Biallelic-LOF / 1q42.11)",
+    "viz": "Cohort KPIs + Etiology breakdown + Seizure/Trigger analysis + Treatment protocols + Definitions",
+    "feature": "CLN9/DEGS1 provisional NCL, Belgrade-Yugoslav founder, mixed EM pattern, CLN3 differential, ceramide pathway",
+    "why": "CLN9 Epilepsy Dashboard \u2014 DEGS1/1q42.11 Provisional Neuronal Ceroid Lipofuscinosis Type 9 (Belgrade-variant NCL); 40-patient cohort, 6-class etiology, 5 seizure types, 8 triggers, 8 treatments, 7 CIs, 14 monitoring items, 6 lifecycle stages, 15 key concepts, 12 thresholds, 12 standards, 6 references; 3 endpoints /api/cln9/overview|breakdown|definitions verified 200; portal-next /cln9 page + SiteNav wired after CLN4B; dark-midnight-navy #1a2744",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/cln9/overview",
+      "/api/cln9/breakdown",
+      "/api/cln9/definitions"
+    ]
   }
 ]
