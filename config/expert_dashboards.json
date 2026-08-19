@@ -4421,5 +4421,19 @@
       "/api/hexb/breakdown",
       "/api/hexb/definitions"
     ]
+  },
+  {
+    "role": "Neurologist",
+    "name": "NPC1 Epilepsy (Niemann-Pick-Disease-Type-C / NPC-Intracellular-Cholesterol-Transporter-1-Deficiency / VSGP-Downward-Gaze-First-PATHOGNOMONIC-95pct / Gelastic-Cataplexy-Emotion-Triggered-Atonia-PATHOGNOMONIC-72pct / Plasma-Oxysterols-7KC-LysoSM509-Non-Invasive-Screen-99pct-Sensitivity / Filipin-Staining-Gold-Standard-Fibroblasts / Miglustat-EMA-2009-Approved-Level-A-Disease-Modifying / HPbCD-Phase3-ACEND-Trial-Cholesterol-Efflux / CBZ-OXC-PHT-ABSOLUTE-CI-Worsens-NPC-Epilepsy-Cognition / VPA-SAFE-Lysosomal-NOT-Mitochondrial-POLG1-Exclusion / Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces / Typical-Antipsychotics-HIGH-RISK-Cataplexy-EPS / GBP-PGB-HIGH-RISK-Worsen-NPC-Ataxia-88pct / NPC2-14q24.3-Same-Phenotype-5pct-Shorter-Survival / Psychiatric-Misdiagnosis-Young-Psychosis-NPC-45pct / AR-Biallelic-LOF / 18q11.2)",
+    "viz": "Etiology breakdown, seizure type chart, treatment ladder, lifecycle stages",
+    "feature": "VSGP tracker, cataplexy alerts, biomarker pathway, miglustat dosing",
+    "why": "Only lysosomal storage disease with both VSGP (95%) and gelastic cataplexy (72%) PATHOGNOMONIC; miglustat EMA approved 2009",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/npc1/overview",
+      "/api/npc1/breakdown",
+      "/api/npc1/definitions"
+    ]
   }
 ]

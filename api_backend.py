@@ -28316,6 +28316,77 @@ async def hexb_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/npc1/overview")
+async def npc1_overview():
+    """NPC1 / Niemann-Pick Disease Type C (NPC) overview:
+    NPC Intracellular Cholesterol Transporter 1 deficiency / lysosomal cholesterol export failure.
+    NPC1 (18q11.2) — 1278 aa 13-TM late endosomal/lysosomal membrane protein; Sterol-Sensing Domain (SSD);
+    N-terminal cysteine-rich domain (NTD) accepts cholesterol hand-off from NPC2 (soluble luminal partner).
+    NPC1 LOF → cholesterol + GM2/GM3/sphingomyelin accumulation in late endosomes/lysosomes →
+    progressive neurodegeneration: VSGP + gelastic cataplexy (BOTH PATHOGNOMONIC) + cerebellar ataxia +
+    seizures (62%) + dementia.
+    VSGP (95% PATHOGNOMONIC): downward saccades lost FIRST (riMLF damage); VOR preserved (supranuclear).
+    Gelastic cataplexy (72% PATHOGNOMONIC): emotion-triggered atonia WITHOUT loss of consciousness;
+    EEG NORMAL during event (not epileptic); NOT narcolepsy.
+    Biomarkers: plasma oxysterols (7-KC >0.7 μg/mL) + lyso-SM-509 (>1 nmol/mL) → NPC1 WES → filipin.
+    Disease-modifying therapy: Miglustat (EMA 2009 approved, Level A) + HPβCD Phase 3 ACEND trial.
+    CBZ/OXC/PHT ABSOLUTE CI; VPA SAFE (lysosomal not mitochondrial); POLG1/MERRF mandatory exclusion.
+    Fosphenytoin ABSOLUTE CI; IV LEV replaces in SE. Typical antipsychotics HIGH RISK (cataplexy worsening).
+    GBP/PGB HIGH RISK (worsen baseline NPC ataxia 88%). 95% NPC1 / 5% NPC2 (same phenotype, different gene).
+    OMIM *607623/#257220."""
+    try:
+        import scripts.npc1_dashboard as npc1_
+        return _json_safe(npc1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/npc1/breakdown")
+async def npc1_breakdown():
+    """NPC1 / Niemann-Pick Disease Type C breakdown:
+    6-class etiology [Compound-Het-null-missense-p.Ile1061Thr-25% /
+    Homozygous-p.Pro1007Ala-European-22% / Homozygous-private-missense-consanguineous-20% /
+    Compound-Het-null-null-severe-18% / NPC2-biallelic-LOF-14q24.3-10% /
+    Compound-Het-missense-missense-adult-5%],
+    6 seizure types [Gelastic-Cataplexy-PATHOGNOMONIC-72%/Focal-Onset-62%/GTCS-42%/
+    Myoclonic-38%/Absence-Like-28%/Infantile-Spasms-12%],
+    8 triggers, 8 treatments (Miglustat-Level-A + VPA + LEV + Clobazam + Clonazepam + Piracetam + ACTH + HPβCD),
+    7 contraindications (CBZ/OXC/PHT-ABSOLUTE/Fosphenytoin-ABSOLUTE/TGB-ABSOLUTE/
+    Typical-Antipsychotics-HIGH-RISK/VGB-RELATIVE-CI/GBP-PGB-HIGH-RISK/Alcohol-HIGH-RISK),
+    6 lifecycle stages."""
+    try:
+        import scripts.npc1_dashboard as npc1_
+        return _json_safe(npc1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/npc1/definitions")
+async def npc1_definitions():
+    """NPC1 / Niemann-Pick Disease Type C definitions:
+    15 concepts [NPC1-18q11.2-Lysosomal-Cholesterol-Transporter /
+    VSGP-Downward-Gaze-First-PATHOGNOMONIC-95pct /
+    Gelastic-Cataplexy-Emotion-Triggered-Atonia-PATHOGNOMONIC-72pct /
+    Lyso-SM-509-Oxysterols-Non-Invasive-Screen-99pct-Sensitivity /
+    Filipin-Staining-Gold-Standard-Invasive /
+    Miglustat-Level-A-Disease-Modifying-EMA-2009-APPROVED /
+    CBZ-OXC-PHT-ABSOLUTE-CI-NPC /
+    VPA-SAFE-NPC-Lysosomal-NOT-Mitochondrial /
+    Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces /
+    Typical-Antipsychotics-HIGH-RISK-Atypical-ONLY /
+    GBP-PGB-HIGH-RISK-Worsen-NPC-Ataxia /
+    POLG1-MERRF-Mandatory-Exclusion-Before-VPA /
+    HPbCD-Phase3-ACEND-Trial-Cholesterol-Efflux /
+    NPC2-Same-Phenotype-Shorter-Survival-Hepatopulmonary /
+    Psychiatric-Misdiagnosis-Young-Psychosis-NPC],
+    12 thresholds, 12 standards, 6 references."""
+    try:
+        import scripts.npc1_dashboard as npc1_
+        return _json_safe(npc1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
