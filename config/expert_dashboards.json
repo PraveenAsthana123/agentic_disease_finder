@@ -4582,5 +4582,30 @@
     "route": "/api/man2b1",
     "page": "/man2b1",
     "built_date": "2026-08-19"
+  },
+  {
+    "id": "hexa",
+    "name": "HEXA Epilepsy (Tay-Sachs-Disease / GM2-Gangliosidosis-Type1 / Beta-Hexosaminidase-A-Alpha-Subunit-Deficiency / Hex-B-Elevated-PATHOGNOMONIC-vs-Sandhoff-All-Low / Pseudodeficiency-p.Arg247Trp-p.Arg249Trp-Leukocyte-Assay-Mandatory / AJ-Three-Mutation-Panel-c.1278insTATC-78pct-IVS12+1G>C-18pct-p.Gly269Ser-4pct / French-Canadian-IVS7+1G>A-Distinct-Founder / Type1-Cherry-Red-90-95pct-Hyperekplexia-IS / Type2-Juvenile-PME-Ataxia-Primary-Epilepsy / ACTH-Level-A-Infantile-Spasms-Prefer-Over-VGB-Cherry-Red / CBZ-OXC-PHT-ABSOLUTE-CI-PME-Myoclonus-Trap / VPA-SAFE-Lysosomal-NOT-Mitochondrial / POLG1-MERRF-Mandatory-Exclusion / VGB-HIGH-RISK-Type1-Not-Absolute-CI-Type3 / Fosphenytoin-ABSOLUTE-CI-IV-LEV-Replaces / Piracetam-Level-B-Action-Myoclonus / Thalamic-T2-Hypointensity-Type1-MRI-PATHOGNOMONIC / AAV9-HEXA-HEXB-Bicistronic-Gene-Therapy-Phase-I-II-2024 / No-Disease-Modifying-Therapy / AR-Biallelic-LOF / 15q23)",
+    "status": "built",
+    "route": "/hexa",
+    "api_prefix": "/api/hexa",
+    "endpoints": [
+      "/api/hexa/overview",
+      "/api/hexa/breakdown",
+      "/api/hexa/definitions"
+    ],
+    "frontend": "portal-next/app/hexa/page.jsx",
+    "script": "scripts/hexa_dashboard.py",
+    "color": "#0277bd",
+    "note": "Tay-Sachs Disease / GM2 Gangliosidosis Type 1 / HEXA alpha-subunit (15q23). Hex B ELEVATED/INTACT (vs Sandhoff ALL three deficient). Cherry-red spot 90% Type1. Exaggerated startle PATHOGNOMONIC earliest sign. NO hepatosplenomegaly. AJ founder c.1278insTATC 78%. CBZ/OXC/PHT ABSOLUTE CI. VGB HIGH RISK cherry-red. ACTH Level A IS. VPA SAFE POLG1 mandatory. AAV9-HEXA-HEXB bicistronic gene therapy Phase I/II 2024.",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/hexa/overview|breakdown|definitions verified 200. expert_dashboards.json count 296->297."
+  },
+  {
+    "gene": "NAGLU",
+    "name": "NAGLU Epilepsy (MPS-IIIB-Sanfilippo-B / N-Acetyl-Alpha-Glucosaminidase-Deficiency / Heparan-Sulfate-Accumulation-CNS-Dominant / Epilepsy-80-90pct-HIGHEST-MPS / Drug-Resistance-50-60pct / Sleep-Disorder-90pct-Cardinal-Trigger / Melatonin-Level-B-Sleep-Seizure-Nexus / No-Approved-ERT-2026-Highest-Unmet-Need / AAV9-NAGLU-IT-ICV-Gene-Therapy-NCT03315232-Phase-I-II / HSCT-NOT-Recommended-Unlike-MPS-I-II / Typical-Antipsychotics-HIGH-RISK-HS-Basal-Ganglia-EPS / PHT-Fosphenytoin-Avoid-SE-Use-IV-LEV / VGB-RELATIVE-CI-Vision-Monitoring-Impossible-Severe-ID / CBZ-OXC-CAUTION-Not-Absolute-CI-Unlike-MLD-ARSA / POLG1-Exclusion-Before-VPA-Mandatory / Clobazam-Paradoxical-Agitation-Documented / Dutch-Founder-p.Arg643Cys-23pct / Greek-Founder-p.Arg626stop / AR-Biallelic-LOF / 17q21.2)",
+    "role": "Neurologist",
+    "status": "built",
+    "endpoint": "/api/naglu/overview",
+    "page": "/naglu"
   }
 ]

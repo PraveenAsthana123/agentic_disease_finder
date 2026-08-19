@@ -28979,6 +28979,49 @@ async def man2b1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/naglu/overview")
+async def naglu_overview():
+    """NAGLU / MPS IIIB (Sanfilippo Syndrome B) overview:
+    AR N-Acetyl-Alpha-Glucosaminidase deficiency → heparan sulfate accumulation → CNS-dominant neurodegeneration.
+    Epilepsy 80–90% / DRE 50–60% / Sleep disorder 90%+ / No approved disease-modifying therapy (2026).
+    Melatonin Level B (sleep-seizure nexus) / AAV9-NAGLU gene therapy Phase I/II (NCT03315232).
+    40-patient cohort."""
+    try:
+        import scripts.naglu_dashboard as naglu_
+        return _json_safe(naglu_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/naglu/breakdown")
+async def naglu_breakdown():
+    """NAGLU / MPS IIIB breakdown: 5 etiologies (Compound-Het-Null+Missense-38%/Dutch-p.Arg643Cys-23%/
+    Biallelic-Null-18%/Greek-p.Arg626stop-12%/Attenuated-9%), 5 seizure types (GTCS-75%/Myoclonic-55%/
+    Tonic-40%/Absence-like-35%/Late-spasms-20%), 8 triggers (Sleep-deprivation-88%/Fever-72%/
+    Agitation-65%/Missed-AED-60%), 8 treatments (LEV-LevelB/VPA-LevelB-POLG/CLB-LevelB/ZNS-LevelC/
+    Rufinamide-LevelC/Melatonin-LevelB/AAV9-NAGLU-Investigational/HSCT-NOT-recommended),
+    6 CIs, 14 monitoring items, 5 lifecycle stages, 40-patient cohort."""
+    try:
+        import scripts.naglu_dashboard as naglu_
+        return _json_safe(naglu_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/naglu/definitions")
+async def naglu_definitions():
+    """NAGLU / MPS IIIB definitions:
+    8-step diagnostic algorithm (urine-HS-DMMB / MPS-III-enzyme-panel / leukocyte-NAGLU /
+    biallelic-NAGLU-gene / POLG1-exclusion / HLA-B1502 / brain-MRI / video-EEG).
+    12-term NAGLU glossary including heparan-sulfate / Sanfilippo / melatonin-seizure-nexus /
+    BBB-gene-therapy-rationale / paradoxical-CLB-agitation / Dutch-founder-Arg643Cys.
+    Differential diagnosis (MPS IIIA–D / MPS II / MERRF-POLG / ASD-ADHD / NCL).
+    10 pharmacological distinctions. 12 standards. 40-patient cohort."""
+    try:
+        import scripts.naglu_dashboard as naglu_
+        return _json_safe(naglu_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
