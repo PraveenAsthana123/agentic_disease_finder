@@ -4473,5 +4473,26 @@
     "api": "/api/galc/overview|breakdown|definitions",
     "cohort": "40 patients",
     "endpoints_verified": "200"
+  },
+  {
+    "id": "arsa",
+    "name": "ARSA Epilepsy (Metachromatic Leukodystrophy / MLD)",
+    "gene": "ARSA",
+    "locus": "22q13.33",
+    "disease": "Metachromatic Leukodystrophy",
+    "status": "built",
+    "route": "/arsa",
+    "api_endpoints": [
+      "/api/arsa/overview",
+      "/api/arsa/breakdown",
+      "/api/arsa/definitions"
+    ],
+    "cohort_size": 40,
+    "category": "Lysosomal Storage Disease",
+    "inheritance": "AR",
+    "pathognomonic": "Tigroid-MRI-85pct / Metachromasia-Nerve-Biopsy / Urine-Sulfatides-50-200x",
+    "key_distinction": "ARSA-Pseudodeficiency-NBS-Pitfall / Saposin-B-PSAP-Phenocopy / Adult-Psychiatric-Misdiagnosis-35pct",
+    "disease_modifying": "Arsa-cel-Lenmeldy-EMA-2020-FDA-2024",
+    "ci": "CBZ-OXC-HIGH-RISK-Neuropathy / VGB-HIGH-RISK-Visual / Typical-Antipsychotics-HIGH-RISK"
   }
 ]

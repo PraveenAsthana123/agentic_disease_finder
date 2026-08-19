@@ -28603,6 +28603,63 @@ async def galc_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/arsa/overview")
+async def arsa_overview():
+    """ARSA / Metachromatic Leukodystrophy (MLD) overview:
+    ARSA (22q13.33) — lysosomal arylsulfatase A (507 aa, ~62 kDa); 8 exons.
+    ARSA LOF → sulfatide (galactosylceramide-3-sulfate) + lysosulfatide accumulate →
+    metachromatic granules in oligodendrocytes + Schwann cells → progressive CNS+PNS demyelination.
+    TIGROID (LEOPARD SKIN) MRI: periventricular T2-WM with preserved perivascular stripes — PATHOGNOMONIC.
+    ARSA PSEUDODEFICIENCY (1-2% Europeans): p.Asn350Ser + p.Ile181Thr in cis → low enzyme but NO disease.
+    Urine sulfatides mandatory to exclude pseudodeficiency. Arsa-cel (Lenmeldy) EMA 2020 / FDA 2024.
+    40-patient cohort, 6 etiologies, 6 seizure types, 8 triggers, 8 treatments, 7 CIs, 12 thresholds,
+    12 standards (Biffi-2013-Science/Sessa-2016-Lancet/EMA-2020-Libmeldy/FDA-2024-Lenmeldy)."""
+    try:
+        import scripts.arsa_dashboard as arsa_
+        return _json_safe(arsa_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/arsa/breakdown")
+async def arsa_breakdown():
+    """ARSA / MLD breakdown:
+    6 etiologies (Homozygous-p.Pro426Leu-LI/Null-Null-severe-LI/Null-Missense-LI-EJ/
+    Missense-Missense-EJ-LJ/Late-Juvenile-Adult-mild-missense/Saposin-B-PSAP-Phenocopy),
+    6 seizure types (Focal/GTCS/Myoclonic/IS/Absence/Spasms),
+    8 triggers, 8 treatments (VPA/LEV/Clonazepam/Clobazam/ACTH/Arsa-cel/HSCT/KD),
+    7 CIs (CBZ-OXC-HIGH-RISK-Neuropathy/PHT-Fosphenytoin-HIGH-RISK/VGB-HIGH-RISK-Visual/
+    Typical-Antipsychotics-HIGH-RISK-Adult-Misdiagnosis/GBP-PGB-CAUTION/TGB-HIGH-RISK/
+    Chlorpromazine-Haloperidol-HIGH-RISK),
+    12 thresholds, 12 standards."""
+    try:
+        import scripts.arsa_dashboard as arsa_
+        return _json_safe(arsa_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/arsa/definitions")
+async def arsa_definitions():
+    """ARSA / MLD definitions:
+    16 concepts [ARSA-22q13.33 / Sulfatide-Lysosulfatide-Primary-Substrates /
+    Metachromasia-Diagnostic-Hallmark / Tigroid-MRI-Pattern /
+    ARSA-Pseudodeficiency-NBS-Pitfall / Saposin-B-PSAP-Phenocopy-Normal-ARSA /
+    SUMF1-Multiple-Sulfatase-Deficiency / Arsa-cel-Lenmeldy-Gene-Therapy-EMA-2020 /
+    HSCT-Limited-Benefit-Juvenile-Adult-Only / CBZ-OXC-PHT-HIGH-RISK-Peripheral-Neuropathy /
+    VPA-SAFE-Lysosomal-NOT-Mitochondrial-POLG1-Mandatory-Exclusion /
+    Typical-Antipsychotics-HIGH-RISK-Adult-MLD-Psychiatric-Misdiagnosis /
+    VGB-HIGH-RISK-Visual-Cortex-MLD-Lesions / Late-Infantile-LI-Most-Common-Severe-Form /
+    Adult-MLD-Psychiatric-Misdiagnosis-Schizophrenia-Like-35pct /
+    NCS-Demyelinating-Neuropathy-Early-Biomarker].
+    40-patient cohort, 6 etiologies, 12 thresholds, 12 standards."""
+    try:
+        import scripts.arsa_dashboard as arsa_
+        return _json_safe(arsa_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
