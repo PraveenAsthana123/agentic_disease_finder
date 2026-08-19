@@ -27438,6 +27438,86 @@ async def cln1_definitions():
         return {"error": str(e)}
 
 
+@app.get("/api/cln5/overview")
+async def cln5_overview():
+    """CLN5 Finnish-variant NCL (vLINCL / 13q22.3) overview —
+    CLN5-Soluble-Lysosomal-Glycoprotein / Rectilinear-Profiles-FP-EM-Pathognomonic /
+    No-CLN5-Enzyme-Assay-WES-Required / Finnish-p.Tyr392X-Founder-95pct-Finnish-Alleles /
+    Dutch-p.Trp75Ter-Founder / Visual-Failure-Concurrent-Not-First /
+    VGB-ABSOLUTE-CI-Retinal / CBZ-OXC-PHT-ABSOLUTE-CI-Myoclonus-Worsening /
+    VPA-SAFE-Lysosomal-NOT-Mitochondrial / Fatal-Teens-30s-No-Disease-Modifying-Therapy /
+    Photosensitivity-72pct-Standard-IPS / AR-Biallelic-LOF"""
+    try:
+        import scripts.cln5_dashboard as cln5_
+        return _json_safe(cln5_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln5/breakdown")
+async def cln5_breakdown():
+    """CLN5 Finnish-variant NCL breakdown — 40-patient cohort · CLN5/13q22.3
+    6-class etiology [Homozygous-p.Tyr392X-Finnish-Founder-35%/
+    Compound-Het-p.Tyr392X-Plus-Other-LOF-28%/
+    Dutch-p.Trp75Ter-Founder-12%/
+    Compound-Het-Missense-Missense-Attenuated-15%/
+    p.Glu279del-Attenuated-Late-Onset-6%/
+    Phenocopy-CLN5-Negative-4%],
+    5 seizure types [Myoclonic-Multifocal-92%/GTCS-85%/
+    Atypical-Absence-68%/Focal-Occipital-Visual-58%/
+    Atonic-Drop-42%],
+    8 triggers [Fever-85%/Sleep-Deprivation-78%/Missed-AED-72%/
+    Photic-68%/Emotional-Stress-62%/
+    Tactile-Auditory-Startle-55%/Metabolic-Dehydration-48%/
+    VGB-Administration-100%],
+    8 treatments [VPA-LevelB-Backbone/LEV-LevelB-IV-SE/
+    CLB-LevelB-Nocturnal/LTG-LevelB-Adjunct/Piracetam-LevelC/
+    KD-LevelC/MDT-Palliative-Ophthalmology-LevelA/
+    Rescue-Midazolam-IV-LEV-LevelA],
+    7 CIs [VGB-ABSOLUTE/CBZ-OXC-PHT-ABSOLUTE/TGB-ABSOLUTE/
+    Fosphenytoin-ABSOLUTE/LTG-Mono-HIGH/GBP-PGB-HIGH/
+    AED-Taper-HIGH],
+    14 monitoring, 6 lifecycle stages"""
+    try:
+        import scripts.cln5_dashboard as cln5_
+        return _json_safe(cln5_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/cln5/definitions")
+async def cln5_definitions():
+    """CLN5 Finnish-variant NCL definitions — 15 concepts
+    [CLN5-13q22.3-Soluble-Lysosomal-Glycoprotein-Finnish-NCL/
+    Rectilinear-Profiles-EM-Pathognomonic-CLN5/
+    No-CLN5-Enzyme-Assay-WES-Gene-Panel-Required/
+    Finnish-Heritage-p.Tyr392X-Founder/
+    Visual-Failure-Concurrent-Not-First-CLN5/
+    VGB-ABSOLUTE-CI-CLN5-Retinal-Toxicity/
+    VPA-SAFE-CLN5-Lysosomal-NOT-Mitochondrial/
+    CBZ-OXC-PHT-ABSOLUTE-CI-CLN5-Myoclonus-Worsening/
+    No-Disease-Modifying-Therapy-CLN5-Gene-Therapy-Emerging/
+    Fatal-Natural-History-CLN5-Intermediate-Survival/
+    Compound-Fall-Risk-Triple-Mechanism-CLN5/
+    Photosensitivity-Prominent-CLN5-Standard-IPS/
+    POLG1-Exclusion-Before-VPA-CLN5/
+    Gastrostomy-PEG-CLN5-Dysphagia-Standard/
+    SUDEP-Risk-CLN5-Nocturnal-Progressive-Cognitive-Impairment],
+    12 thresholds, 12 standards
+    (Savukoski-1998-NatGenet / Holmberg-2000-AmJHumGenet /
+    NCL-Resource-2024 / ILAE-2022 / NICE-NG217 /
+    Mole-2019-LancetNeurol / MHRA-VPPP-2021 /
+    Williams-2006-Neuropediatrics / CPIC-POLG1-2023 /
+    ACMG-AMP-2015 / BDSRA-Registry / Santavuori-1982-ActaPaed),
+    6 references (Savukoski-1998 / Holmberg-2000 / Mole-2019 /
+    Williams-2006 / Santavuori-1982 / Broom-2017)."""
+    try:
+        import scripts.cln5_dashboard as cln5_
+        return _json_safe(cln5_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

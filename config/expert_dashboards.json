@@ -4170,5 +4170,33 @@
       "Fatal-7-12y",
       "Finnish-p.Arg122Trp-Founder"
     ]
+  },
+  {
+    "id": "cln5",
+    "gene": "CLN5",
+    "name": "CLN5 Epilepsy (Neuronal-Ceroid-Lipofuscinosis-Type5 / Finnish-Variant-NCL / vLINCL / CLN5-Soluble-Lysosomal-Glycoprotein / Rectilinear-Profiles-FP-EM-Pathognomonic / No-CLN5-Enzyme-Assay-WES-Required / Finnish-p.Tyr392X-Founder-95pct-Finnish-Alleles / Dutch-p.Trp75Ter-Founder / Visual-Failure-Concurrent-Not-First / VGB-ABSOLUTE-CI-Retinal / CBZ-OXC-PHT-ABSOLUTE-CI / VPA-SAFE-Lysosomal-NOT-Mitochondrial / Fatal-Teens-30s-No-Disease-Modifying-Therapy / Photosensitivity-72pct / AR-Biallelic-LOF / 13q22.3)",
+    "status": "built",
+    "locus": "13q22.3",
+    "omim": "*608102 / #256731",
+    "protein": "CLN5 (Soluble Lysosomal Glycoprotein, 407 aa, ~60 kDa)",
+    "mechanism": "CLN5 LOF \u2192 Lysosomal Sorting Dysfunction \u2192 SCMAS Accumulation \u2192 Rectilinear Profiles + FP on EM \u2192 Progressive Neuronal/Retinal Apoptosis \u2192 Finnish NCL / vLINCL",
+    "inheritance": "AR",
+    "precision_drug": "VPA (backbone) + LEV (IV SE)",
+    "key_contraindication": "VGB (ABSOLUTE \u2014 retinal NCL); CBZ/OXC/PHT/Fosphenytoin (ABSOLUTE \u2014 myoclonus worsening)",
+    "route": "/api/cln5",
+    "api_prefix": "/api/cln5",
+    "endpoints": [
+      "/api/cln5/overview",
+      "/api/cln5/breakdown",
+      "/api/cln5/definitions"
+    ],
+    "frontend": "portal-next/app/cln5/page.jsx",
+    "script": "scripts/cln5_dashboard.py",
+    "built_date": "2026-08-18",
+    "built_note": "CLN5 Finnish-variant NCL dashboard built. Registry count 271->272.",
+    "discovery_ref": "Savukoski-1998-NatGenet",
+    "note": "Total: 272 dashboards",
+    "disease_color": "#0d47a1",
+    "disease_color_name": "deep-lake-blue \u2014 CLN5 Finnish-variant NCL distinct from CLN1 dark-cyan + CLN2 deep-violet-purple + CLN3 forest-green + CLN4B dark-sienna"
   }
 ]
