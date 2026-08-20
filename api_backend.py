@@ -31191,6 +31191,70 @@ async def gldc_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/amt/overview")
+async def amt_overview():
+    """AMT Overview — Non-Ketotic Hyperglycinemia (NKH / Glycine Encephalopathy), T-protein type.
+    AMT encodes the T-protein (Aminomethyltransferase) of the mitochondrial GCS (Glycine Cleavage
+    System). AMT LOF (~15% of NKH; AR; 3p21.2) → T-protein absent → H-protein (GCSH) remains
+    LOADED (cannot unload aminomethyl group) → P-protein (GLDC) also stalls (no free H-protein)
+    → entire GCS blocked → glycine accumulates identically to GLDC-NKH.
+    ADDITIONAL AMT-SPECIFIC DEFICIT: 5,10-methyleneTHF NOT produced from glycine (T-protein step
+    directly produces 5,10-methyleneTHF) → folate one-carbon cycle perturbation.
+    PATHOPHYSIOLOGY: SAME DUAL MECHANISM as GLDC-NKH: GlyR brainstem inhibition (hypotonia/apnea/
+    HICCUPS pathognomonic — phrenic nucleus GlyR) + NMDAr GluN1 co-agonism (excitotoxic seizures
+    → burst-suppression → IS → DRE).
+    DIAGNOSTIC: CSF:plasma glycine ratio ≥0.08 (simultaneous draw; identical to GLDC-NKH;
+    gene panel mandatory to distinguish AMT from GLDC/GCSH).
+    TREATMENT: Sodium Benzoate (Level A) + DXM (Level B) + LEV + ACTH for IS (identical to GLDC-NKH).
+    VPA HIGH RISK (secondary glycine-raising mechanisms; equivalent clinical risk to GLDC-NKH).
+    VGB HIGH RISK for IS. p.Arg320His: East Asian semi-founder — attenuated phenotype.
+    40-patient cohort: Classic neonatal ~65% · Attenuated ~28% · Transient ~7%.
+    OMIM *238310 (gene AMT) / #605899 (disease NKH). ~15% of NKH; ~200–300 cases worldwide 2026.
+    """
+    try:
+        import scripts.amt_dashboard as amt_
+        return _json_safe(amt_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/amt/breakdown")
+async def amt_breakdown():
+    """AMT Breakdown — 40-patient NKH T-protein cohort. Phenotype: Classic Neonatal (null/null or
+    null/missense) · Attenuated (p.Arg320His East Asian semi-founder) · Transient (rare, enzyme
+    immaturity). Seizure types: Electrical SE (58%) · Myoclonic (68%) · IS/West (43%) · Tonic (38%) ·
+    Focal clonic (33%) · GTCS (28%). Triggers: Fever (72%) · Missed benzoate (63%) · Protein load (55%) ·
+    VPA exposure (50%) · Sleep deprivation (45%) · Fasting NPO (40%). Treatment counts.
+    CSF:plasma ratio histogram (AMT-attenuated range 0.08–0.16; classic 0.16–0.50).
+    Plasma glycine histogram. Folate-low rate (~35% AMT-NKH — 5,10-methyleneTHF deficit).
+    p.Arg320His carrier rate in attenuated cohort. Monitoring (14 parameters incl. plasma folate/
+    homocysteine — AMT-specific). Lifecycle (7 stages). Contraindications (6 CIs).
+    """
+    try:
+        import scripts.amt_dashboard as amt_
+        return _json_safe(amt_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/amt/definitions")
+async def amt_definitions():
+    """AMT Definitions — gene card (T-protein, THF-dependent, 403 aa, 3p21.2, OMIM *238310/#605899),
+    GCS 4-protein complex pathway with AMT-specific T-protein bottleneck mechanism (H-protein back-up,
+    5,10-methyleneTHF production step, P-protein upstream stall), diagnostic biomarkers (CSF:plasma ratio,
+    plasma glycine, plasma folate/homocysteine/serine — AMT-specific one-carbon deficit monitoring,
+    AMT enzyme activity assay), 12 key AMT-NKH concepts (p.Arg320His East Asian semi-founder,
+    H-protein back-up mechanism, 5,10-methyleneTHF deficit, CYP2D6 in East Asian cohort, VPA secondary
+    pathway mechanism, gene therapy pipeline), 11 thresholds, AMT vs GLDC vs GCSH biochemical identity,
+    differential diagnosis (SSADH/propionic/MMA/GCSH/GLDC/D-glyceric aciduria).
+    """
+    try:
+        import scripts.amt_dashboard as amt_
+        return _json_safe(amt_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

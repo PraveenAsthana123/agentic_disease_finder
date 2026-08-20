@@ -5265,5 +5265,23 @@
       "/api/gldc/breakdown",
       "/api/gldc/definitions"
     ]
+  },
+  {
+    "id": "amt",
+    "name": "AMT Epilepsy (Non-Ketotic-Hyperglycinemia-NKH / AMT-T-Protein-Aminomethyltransferase-403aa-THF-Dependent-3p21.2 / GCS-Step-3-T-Protein-Accepts-Aminomethyl-From-H-Protein-Transfers-To-THF / AMT-LOF-H-Protein-Backed-Up-P-Protein-GLDC-Stalls-Entire-GCS-Blocked / Glycine-Accumulates-IDENTICAL-GLDC-NKH-Biochemically / 5-10-MethyleneTHF-NOT-Produced-Folate-One-Carbon-Perturbation / p.Arg320His-East-Asian-Semi-Founder-Attenuated / Classic-Neonatal-65pct / VPA-HIGH-RISK-Secondary / AR-Biallelic-LOF / 3p21.2 / OMIM-Gene-238310-Disease-605899)",
+    "route": "/amt",
+    "status": "built",
+    "category": "aminoacidopathy-epilepsy",
+    "gene": "AMT",
+    "disease": "Non-Ketotic Hyperglycinemia (NKH, T-protein type)",
+    "omim_gene": "238310",
+    "omim_disease": "605899",
+    "inheritance": "AR",
+    "locus": "3p21.2",
+    "api_endpoints": [
+      "/api/amt/overview",
+      "/api/amt/breakdown",
+      "/api/amt/definitions"
+    ]
   }
 ]
