@@ -5381,5 +5381,13 @@
       "/api/ogdh/breakdown",
       "/api/ogdh/definitions"
     ]
+  },
+  {
+    "id": "dlst",
+    "name": "DLST Epilepsy (Dihydrolipoamide-S-Succinyltransferase-αKGDH-Complex-E2-Subunit-Deficiency / DLST-Succinyltransferase-453aa-Two-Lipoyl-Domains-Lys114-L1-Lys150-L2-14q24.3-Autosomal-Recessive / αKGDH-Complex-OGDH-E1-DLST-E2-DLD-E3-Shared / TCA-Step-4-Alpha-KG-To-Succinyl-CoA-BLOCKED-At-E2-Transfer-Step / DLST-LOF-OGDH-E1-Forms-Succinyl-TPP-But-CANNOT-Transfer-To-Absent-E2-Lipoamide-Arm-Complex-Stalls / 2-Oxoglutaric-Aciduria-Urine-180-1800-umol-mmolCr-PATHOGNOMONIC / PATHOGNOMONIC-ASSAY-Isolated-OGDH-E1-Activity-NORMAL-E1-Intact-Plus-αKGDH-Complex-Less-10pct / L-P-Ratio-MILDLY-ELEVATED-15-30-Intermediate / BCAA-NORMAL-BCKDH-Uses-DBT-E2-Separate-Gene / Glycine-NORMAL-GCS-Intact / DLD-Free-Activity-NORMAL / PDH-Activity-NORMAL / LIPOIC-ACID-LEVEL-B-MOST-DIRECTLY-RELEVANT-Lipoamide-On-Lys114-Lys150-Primary-Deficient-Cofactor / Thiamine-B1-LEVEL-C-E1-Intact-Lower-Response-Than-OGDH / Riboflavin-B2-Level-B / Leigh-Syndrome-45pct / Severe-Neonatal-35pct / 10-15-Cases-Worldwide-2026-Ultra-Ultra-Rare / AR-Biallelic-LOF / 14q24.3 / OMIM-Gene-126063-Disease-203740)",
+    "status": "built",
+    "route": "/dlst",
+    "api_route": "/api/dlst/overview|breakdown|definitions",
+    "built_note": "DLST dashboard built 2026-08-20: /api/dlst/overview|breakdown|definitions + portal-next/app/dlst/page.jsx + SiteNav wired after OGDH, 40-patient αKGDH-E2-deficiency cohort, 3 endpoints verified 200"
   }
 ]

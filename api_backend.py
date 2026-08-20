@@ -31642,6 +31642,68 @@ async def ogdh_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/dlst/overview")
+async def dlst_overview():
+    """DLST Overview — Dihydrolipoamide S-Succinyltransferase (αKGDH Complex E2 Subunit) Deficiency.
+    DLST encodes the E2 (succinyltransferase) subunit of the alpha-ketoglutarate dehydrogenase
+    complex (αKGDH / 2-OGDHC): OGDH (E1) + DLST (E2) + DLD (E3, shared).
+    DLST E2 has two lipoyl domains (Lys114-L1 and Lys150-L2); receives succinyl-TPP from OGDH E1
+    and transfers succinyl to CoA forming succinyl-CoA. DLD E3 re-oxidises the lipoamide arm.
+    DLST LOF (~10–15 cases worldwide; AR; 14q24.3): OGDH E1 can form succinyl-TPP but CANNOT
+    transfer to absent DLST E2 → complex stalls → α-KG accumulates → 2-oxoglutaric aciduria
+    (urine 2-OG 180–1800 µmol/mmol Cr — PATHOGNOMONIC). L:P mildly elevated (15–30).
+    CRITICAL PATHOGNOMONIC ASSAY: isolated OGDH E1 activity NORMAL (E1 is intact in DLST deficiency)
+    + αKGDH complex activity <10% — this E1-normal/complex-low pattern identifies DLST deficiency
+    and distinguishes it from OGDH deficiency (where isolated E1 is severely reduced).
+    BCAA NORMAL (BCKDH uses DBT as E2, separate gene). Glycine NORMAL (GCS intact). DLD free NORMAL.
+    Lipoic acid (B) MOST DIRECTLY RELEVANT (lipoamide on Lys114/Lys150 is primary deficient cofactor).
+    OMIM gene *126063; disease #203740 (2-oxoglutaric aciduria, same as OGDH deficiency).
+    Returns KPIs, αKGDH complex components, TCA position, phenotype distribution, high-risk drugs."""
+    try:
+        import scripts.dlst_dashboard as dlst_
+        return _json_safe(dlst_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dlst/breakdown")
+async def dlst_breakdown():
+    """DLST Breakdown — 40-patient DLST-deficiency cohort. Phenotype classes: Leigh Syndrome
+    (~45%), Severe Neonatal (~35%), Childhood Episodic Encephalopathy (~15%), Mild/Juvenile (~5%).
+    No sex bias (AR, 14q24.3). Returns: biomarker table (urine 2-oxoglutarate PATHOGNOMONIC,
+    isolated OGDH E1 activity NORMAL + αKGDH complex activity <10% — PATHOGNOMONIC for DLST,
+    L:P mildly elevated 15–30, normal BCAA/glycine/DLD/PDH — all key negatives vs DLD/PDH),
+    key variants (p.Arg415Cys lipoyl-tethering, p.Gly298Asp catalytic core, p.Arg106Cys L1-domain,
+    splice null neonatal, del exons 5–7), patient sample, seizure types, metabolic crisis triggers
+    (febrile illness, high-protein meal, fasting, exercise), treatment ladder (lipoic acid Level B
+    most direct, riboflavin Level B, thiamine Level C lower than OGDH, succinate Level C, LEV Level B,
+    KD Level C — does not bypass αKGDH E2 block)."""
+    try:
+        import scripts.dlst_dashboard as dlst_
+        return _json_safe(dlst_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dlst/definitions")
+async def dlst_definitions():
+    """DLST Definitions — gene card (E2 succinyltransferase, 453 aa, 14q24.3, AR, OMIM *126063/#203740),
+    αKGDH complex structure (OGDH E1 + DLST E2 + DLD E3 shared), lipoyl domains (Lys114-L1/Lys150-L2),
+    pathognomonic assay pattern (isolated E1 normal + complex <10% = DLST fingerprint),
+    TCA step 4 block at E2 transfer step, 2-oxoglutaric aciduria pathognomonic marker,
+    L:P intermediate (15–30), lipoic acid mechanism (lipoamide on Lys114/Lys150 — most direct treatment),
+    DLAT structural analogy (DLST succinyltransferase vs DLAT acetyltransferase — separate genes),
+    DBT (BCKDH E2) explanation — why BCAA normal in DLST deficiency, succinate anaplerotic bypass,
+    KD limitations (does not bypass αKGDH block), differential diagnosis (OGDH E1 — isolated E1 low;
+    DLD — 4-complex block; DLAT/PDHA1 — PDH deficiency; Complex I; SUCLA2 — methylmalonic aciduria),
+    diagnostic thresholds (urine 2-OG, L:P, αKGDH activity, isolated E1 activity fibroblasts)."""
+    try:
+        import scripts.dlst_dashboard as dlst_
+        return _json_safe(dlst_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
