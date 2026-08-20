@@ -4917,5 +4917,16 @@
     "api": "/api/pex6/overview|breakdown|definitions",
     "cohort": "40 patients",
     "endpoints_verified": "200"
+  },
+  {
+    "id": "pex7",
+    "role": "Neurologist",
+    "name": "PEX7 Epilepsy (Rhizomelic-Chondrodysplasia-Punctata-Type1-RCDP1 / Peroxin-7-PTS2-Receptor-323aa-WD40-7-Beta-Propeller / ONLY-PTS2-Pathway-Impaired-NOT-PTS1 / VLCFA-NORMAL-KEY-DISTINCTION-ZSD-PEX1-PEX6 / Plasmalogens-RBC-SEVERELY-LOW / Phytanic-ELEVATED-PHYH-PTS2-Cargo / Pristanic-NORMAL-Pipecolic-NORMAL / Rhizomelia-Proximal-100pct-PATHOGNOMONIC / Stippled-Epiphyses-88pct-Neonatal-PATHOGNOMONIC / Cataracts-72pct-Congenital / Ichthyosis-68pct / AR-Biallelic-LOF / 6q22.33 / p.Leu292X-L292X-50pct-European-Founder / RCDP1-90pct-All-RCDP / 1-per-100000 / Classic-Null-Null-Seizures-65pct / VGB-HIGH-RISK-Cataracts-VF-Additive-NOT-Absolute-Unlike-ZSD / VPA-RELATIVE-CI-Hepatotoxicity-ONLY-NOT-PeroxBO-VLCFA-NORMAL / PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1 / LEV-FIRST-LINE / ACTH-Level-B-IS / Phytol-Restricted-Diet-Level-B / Alkylglycerols-Experimental-Level-C / DHA-Level-C / No-ERT-Cytosolic-Receptor / No-HSCT / RCDP2-GNPAT-RCDP3-AGPS-Biochemically-Identical / POLG1-Mandatory-CPIC-A / AR-Both-Sexes-Equal / 6q22.33)",
+    "status": "built",
+    "category": "epilepsy-genetics-peroxisomal-rcdp",
+    "page": "/pex7",
+    "api": "/api/pex7/overview|breakdown|definitions",
+    "cohort": "40 patients",
+    "endpoints_verified": "200"
   }
 ]

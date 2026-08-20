@@ -29888,6 +29888,75 @@ async def pex6_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex7/overview")
+async def pex7_overview():
+    """PEX7 / Rhizomelic Chondrodysplasia Punctata Type 1 (RCDP1) — overview:
+    PEX7 = PTS2 receptor (323 aa, WD40 7-beta-propeller) / 6q22.33 / AR biallelic LOF /
+    RCDP1 = ~90% of all RCDP (RCDP2/GNPAT ~5%, RCDP3/AGPS ~5%) / ~1/100,000 births /
+    CRITICAL: VLCFA (C26:0) NORMAL — PTS1 pathway intact (KEY DISTINCTION FROM ZSD PEX1/PEX6) /
+    ONLY PTS2 pathways impaired: plasmalogens (RBC) SEVERELY LOW + phytanic ELEVATED + DHA low /
+    Pristanic NORMAL / Pipecolic NORMAL / VLCFA NORMAL = confirms RCDP1 not ZSD /
+    Rhizomelia (proximal limb shortening) 100% PATHOGNOMONIC /
+    Stippled epiphyses (calcific cartilage) 88% neonatal PATHOGNOMONIC /
+    Cataracts 72% bilateral congenital / Ichthyosis 68% / Seizures 65% classic /
+    p.Leu292X (L292X) Northern European founder ~50% RCDP1 alleles /
+    VGB HIGH RISK (cataracts + VF loss = additive blindness; NOT absolute CI as in ZSD) /
+    VPA RELATIVE CI (hepatotoxicity ONLY; NO peroxisomal BO inhibition — VLCFA intact) /
+    PHT/CBZ/OXC CAN be used (no adrenal insufficiency unlike ABCD1) /
+    LEV first-line / ACTH Level B IS / Phytol-restricted diet Level B /
+    Alkylglycerol supplementation experimental Level C /
+    No ERT / No HSCT / No gene therapy 2026 / AR Both-Sexes-Equal /
+    40-patient cohort (Classic-45%/Intermediate-35%/Mild-20%).
+    """
+    try:
+        import scripts.pex7_dashboard as pex7_
+        return _json_safe(pex7_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex7/breakdown")
+async def pex7_breakdown():
+    """PEX7 / RCDP1 — breakdown: 40-patient cohort
+    (Classic-null/null-L292X/L292X-45% / Intermediate-null/hypomorphic-35% / Mild-G217R-20%),
+    seizure types (Infantile-spasms-hypsarrhythmia-40% / Focal-temporal-occipital-30% /
+    Myoclonic-20% / GTCS-15% / SE-8%),
+    triggers (Febrile-65% / Phytanic-dietary-surge-48% / Fasting-NPO-35% /
+    Sleep-deprivation-30% / Metabolic-decompensation-25% / Missed-AED-22% / Anaesthesia-15%),
+    treatments (LEV-first-line / ACTH-LevelB-IS / CLB-LevelC / LTG-LevelC /
+    Phytol-restricted-diet-LevelB / DHA-LevelC / Alkylglycerols-experimental-LevelC),
+    contraindications (VGB-HIGH-RISK-cataracts-VF / VPA-RELATIVE-CI-hepatotoxicity /
+    Fasting-HAZARD-phytanic-surge / PHT-CAUTION-not-absolute-unlike-ABCD1).
+    """
+    try:
+        import scripts.pex7_dashboard as pex7_
+        return _json_safe(pex7_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex7/definitions")
+async def pex7_definitions():
+    """PEX7 / RCDP1 — definitions: 16-concept glossary
+    (PEX7-PTS2-receptor-WD40-7-repeats / VLCFA-NORMAL-PTS1-intact-KEY-DISTINCTION /
+    Plasmalogens-RBC-severely-low / Phytanic-elevated-PHYH-PTS2-cargo /
+    Rhizomelia-proximal-limb-PATHOGNOMONIC / Stippled-epiphyses-PATHOGNOMONIC-neonatal /
+    VGB-HIGH-RISK-cataracts-additive / VPA-RELATIVE-CI-hepatotoxicity-only /
+    PHT-CBZ-CAN-USE-no-adrenal / RCDP2-GNPAT-RCDP3-AGPS-biochemically-identical /
+    Plasmalogen-precursor-alkylglycerols-experimental / No-ERT-cytosolic-receptor /
+    DHA-low-supplementation-LevelC / Fasting-hazard-phytanic-adipose / No-HSCT /
+    Genotype-phenotype-partial-L292X-null-G217R),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (ZSD-PEX1-PEX6 / RCDP2-GNPAT-RCDP3-AGPS / Adult-Refsum-PHYH / CDPX2-EBP /
+    ABCD1-X-ALD / MPS / Non-peroxisomal-skeletal-dysplasias).
+    """
+    try:
+        import scripts.pex7_dashboard as pex7_
+        return _json_safe(pex7_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
