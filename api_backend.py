@@ -31415,6 +31415,61 @@ async def dld_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/dlat/overview")
+async def dlat_overview():
+    """DLAT Overview — Dihydrolipoamide S-Acetyltransferase (E2 subunit) Deficiency (AR / 11q23.1).
+    DLAT encodes the E2 subunit of the PDH complex — the 24-mer cubic inner scaffold that forms the
+    structural core. Two lipoyl domains (Lys173 L1, Lys259 L2) serve as swinging arms transferring
+    acetyl groups from E1 to CoA. DLAT LOF (~10–25 cases worldwide; AR; 11q23.1) → E2 core collapses
+    → E1 cannot dock AND E3 (via E3BP/PDHX) cannot anchor → entire PDH complex inactive →
+    lactic acidosis, normal L:P ratio (10–20), elevated plasma alanine, no BCAA elevation (unlike DLD).
+    Biochemically IDENTICAL to PDHA1/PDHB/PDHX — gene panel PDHA1+PDHB+DLAT+PDHX MANDATORY.
+    Treatment: KD FIRST-LINE (Level A), thiamine trial (Level A, ~35% response), carnitine (Level B),
+    DCA (Level B, partial-loss variants only), LEV (Level B AED). VPA absolute CI.
+    OMIM gene *608770; disease #245348 (PDH complex deficiency)."""
+    try:
+        import scripts.dlat_dashboard as dlat_
+        return _json_safe(dlat_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dlat/breakdown")
+async def dlat_breakdown():
+    """DLAT Breakdown — 40-patient DLAT-deficiency cohort. Phenotype classes: Leigh Syndrome
+    (~45%), Severe Neonatal (~25%), Childhood Episodic (~20%), Mild Subacute/Juvenile (~10%).
+    No sex bias (AR). Returns seizure types (focal, tonic, IS, myoclonic), metabolic crisis
+    triggers (febrile illness, glucose load, fasting, exercise), treatments (KD, thiamine,
+    L-carnitine, DCA, lipoic acid experimental, LEV), key variants (p.Arg272*, p.His382Arg,
+    p.Lys173Arg, p.Gly365Asp, c.1124-2A>G, large deletion), biomarker table with normal
+    BCAA/2-HG/DLD-activity (key negatives distinguishing DLAT from DLD deficiency), and
+    DLAT E2 enzyme activity severely reduced (<10% normal) as definitive diagnostic."""
+    try:
+        import scripts.dlat_dashboard as dlat_
+        return _json_safe(dlat_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dlat/definitions")
+async def dlat_definitions():
+    """DLAT Definitions — gene card (E2 24-mer cubic scaffold, 729 aa, 11q23.1, AR, OMIM *608770/#245348),
+    reaction (DLAT LOF → E2 core collapses → E1 cannot dock AND E3 cannot anchor → PDH complex
+    fully inactive → pyruvate cannot enter TCA → lactic acidosis), key concepts (E2 24-mer cubic
+    core unique structural role, lipoyl swinging arm Lys173/Lys259, biochemically identical to
+    PDHA1/PDHB/PDHX, L:P normal PDH fingerprint, KD bypass mechanism, DLAT LOF is structurally
+    more catastrophic than isolated E1α or E1β loss — both E1 and E3 lose anchorage simultaneously,
+    thiamine less responsive in DLAT, lipoic acid supplementation experimental Level C, VPA absolute CI),
+    diagnostic thresholds (plasma lactate/pyruvate/alanine, L:P ratio 10–20, normal BCAA key negative,
+    normal 2-HG key negative, normal DLD/E3 activity key negative, DLAT/E2 activity <10% definitive),
+    differential diagnosis (PDHA1, PDHB, PDHX, DLD, Complex I, PC, MELAS, Fumarase)."""
+    try:
+        import scripts.dlat_dashboard as dlat_
+        return _json_safe(dlat_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pdhb/overview")
 async def pdhb_overview():
     """PDHB Overview — Pyruvate Dehydrogenase E1-beta Subunit Deficiency (AR / 3p14.3).
