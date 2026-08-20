@@ -31315,6 +31315,54 @@ async def gcsh_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/dld/overview")
+async def dld_overview():
+    """DLD Overview — Dihydrolipoamide Dehydrogenase Deficiency (L-protein, E3 subunit).
+    DLD encodes the L-protein / E3 subunit shared by GCS, PDH, αKGDH, and BCKDH (four-complex
+    simultaneous block). DLD LOF (~200 cases worldwide; AR; 7q31.1) → combined lactic acidosis
+    (PDH block) + organic aciduria (αKGDH block) + BCAA elevation (BCKDH block) + partial glycine
+    elevation (GCS partial block). NOT pure NKH: CSF:plasma glycine ratio typically <0.08 (below
+    NKH threshold of ≥0.08 used for GLDC/AMT/GCSH). Founder allele p.Gly194Cys in Ashkenazi Jewish
+    population (atypical/late-onset). Gene panel mandatory: DLD + GLDC + AMT + GCSH. VPA absolute CI
+    (triple mechanism: hepatotoxicity + carnitine depletion + BCKDH inhibition). OMIM *238331/#246900.
+    Returns KPIs, four-complex block table, phenotype distribution, high-risk drugs."""
+    try:
+        import scripts.dld_dashboard as dld_
+        return _json_safe(dld_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dld/breakdown")
+async def dld_breakdown():
+    """DLD Breakdown — 40-patient DLD-deficiency cohort. Phenotype classes: Neonatal Encephalopathy
+    (~40%), Infantile-Onset Progressive (~35%), Late-Onset Episodic (~20%), Atypical (~5%).
+    Returns seizure types (myoclonic, tonic, focal, IS, status), metabolic crisis triggers
+    (febrile illness, fasting, high-protein diet, surgery), treatments (low-BCAA diet, thiamine,
+    riboflavin, L-carnitine, IV glucose/bicarb, LEV), key variants (p.Gly194Cys, p.Arg182His,
+    p.Ile12Thr, p.Glu375Lys, nulls), and comprehensive biomarker table."""
+    try:
+        import scripts.dld_dashboard as dld_
+        return _json_safe(dld_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dld/definitions")
+async def dld_definitions():
+    """DLD Definitions — gene card (L-protein, 509 aa, FAD homodimer, 7q31.1, OMIM *238331/#246900,
+    E3 subunit of GCS+PDH+αKGDH+BCKDH), reaction (dihydrolipoamide + NAD⁺ → lipoamide + NADH),
+    four-complex block mechanism, key concepts (partial GCS block, CSF:plasma ratio <0.08 below NKH
+    threshold, VPA absolute CI triple mechanism, thiamine responsiveness, episodic metabolic crisis),
+    thresholds (plasma lactate, pyruvate, leucine, glycine, CSF ratio, IV glucose GIR),
+    differential diagnosis (GLDC/AMT/GCSH NKH, classic MSUD, PDH deficiency, propionic acidemia)."""
+    try:
+        import scripts.dld_dashboard as dld_
+        return _json_safe(dld_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
