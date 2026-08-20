@@ -30217,6 +30217,68 @@ async def hsd17b4_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/scp2/overview")
+async def scp2_overview():
+    """SCP2 / SCPx (Sterol Carrier Protein X / 3-Oxoacyl-CoA Thiolase) Deficiency — overview: 12 KPIs
+    (SCP2-SCPx-547aa-PTS1-SKL-3OxoacylCoA-Thiolase / 1p32.3 /
+    Step4-Thiolytic-Cleavage-Branched-Chain-Peroxisomal-Beta-Oxidation /
+    PRISTANIC-SEVERELY-ELEVATED-same-as-HSD17B4-different-mechanism /
+    THCA-DHCA-ELEVATED-bile-acid-intermediates /
+    VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4-ACOX1-ZSD /
+    Plasmalogens-NORMAL-PTS2-intact /
+    No-adrenal-insufficiency-PHT-CBZ-CAN-USE-contrast-ABCD1-ABSOLUTE-CI /
+    VGB-RELATIVE-CI-adult-polyneuropathy-VF-constriction-QoL /
+    VPA-RELATIVE-CI-POLG1-MANDATORY-bile-acid-burden /
+    Adult-onset-20s-50s-COMPLETELY-different-HSD17B4-neonatal /
+    Azoospermia-males-95pct-most-specific-clinical-marker /
+    Movement-disorder-90pct-polyneuropathy-75pct-seizures-40pct /
+    AR-biallelic-LOF-20-cases-worldwide-2026 /
+    Phytol-restricted-diet-Level-C / LEV-first-line / Clonazepam-myoclonus / DHA-Level-C / No-ERT / No-HSCT).
+    """
+    try:
+        import scripts.scp2_dashboard as scp2_
+        return _json_safe(scp2_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/scp2/breakdown")
+async def scp2_breakdown():
+    """SCP2 / SCPx deficiency — breakdown: 3 phenotypic classes
+    (Classic-adult-onset-movement-disorder+polyneuropathy+azoospermia-60pct /
+    Neuropathy-predominant-variant-25pct /
+    Severe-early-adult-rapid-leukoencephalopathy-15pct /
+    40-synthetic-patients / Seizure-types-triggers-monitoring-lifecycle /
+    Treatments-contraindications-phytol-diet-pristanic-THCA-monitoring).
+    """
+    try:
+        import scripts.scp2_dashboard as scp2_
+        return _json_safe(scp2_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/scp2/definitions")
+async def scp2_definitions():
+    """SCP2 / SCPx deficiency — definitions:
+    (Step4-Thiolytic-Cleavage-Branched-Chain-PRISTANIC-THCA /
+    VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4 /
+    Adult-onset-movement-disorder-polyneuropathy-azoospermia /
+    VGB-RELATIVE-CI-adult-QoL / PHT-CBZ-CAN-USE-no-adrenal /
+    VPA-bile-acid-burden / POLG1-Mandatory-CPIC-A /
+    AMACR-vs-SCP2-gene-sequencing-only),
+    15 key concepts, 12-step diagnostic algorithm,
+    12 pharmacological distinctions, 7 differential diagnoses
+    (HSD17B4-DBP / AMACR / PHYH-Refsum / ACOX1-Pseudo-NALD /
+    ZSD-PEX1-PEX6 / ABCD1-X-ALD / RCDP-PEX7-GNPAT).
+    """
+    try:
+        import scripts.scp2_dashboard as scp2_
+        return _json_safe(scp2_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -5014,5 +5014,22 @@
     "page": "portal-next/app/hsd17b4/page.jsx",
     "script": "scripts/hsd17b4_dashboard.py",
     "cohort": 40
+  },
+  {
+    "id": "scp2",
+    "name": "SCP2 Epilepsy (SCPx-Sterol-Carrier-Protein-X-Deficiency / SCP2-SCPx-547aa-PTS1-SKL-3OxoacylCoA-Thiolase / Step4-Thiolytic-Cleavage-Branched-Chain-Peroxisomal-Beta-Oxidation / PRISTANIC-SEVERELY-ELEVATED-Same-HSD17B4-Different-Mechanism / THCA-DHCA-ELEVATED-Bile-Acid / VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4-ACOX1-ZSD / Plasmalogens-NORMAL / Adult-Onset-20s-50s / Azoospermia-Males-95pct-Most-Specific-Marker / Movement-Disorder-90pct / Polyneuropathy-75pct / Seizures-40pct / PHT-CBZ-CAN-USE-No-Adrenal / VPA-RELATIVE-CI-POLG1-MANDATORY / VGB-RELATIVE-CI-Adult-QoL / AR-Biallelic-LOF / 1p32.3 / 20-Cases-Worldwide-2026 / LEV-FIRST-LINE / Clonazepam-Myoclonus / Phytol-Restricted-Diet-Level-C / No-ERT / No-HSCT / AMACR-vs-SCP2-Gene-Sequencing-Only)",
+    "status": "built",
+    "route": "/scp2",
+    "api": [
+      "/api/scp2/overview",
+      "/api/scp2/breakdown",
+      "/api/scp2/definitions"
+    ],
+    "category": "peroxisomal",
+    "gene": "SCP2",
+    "locus": "1p32.3",
+    "omim_gene": "184755",
+    "omim_disease": "613706",
+    "built_date": "2026-08-19"
   }
 ]
