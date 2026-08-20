@@ -31704,6 +31704,57 @@ async def dlst_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/bckdha/overview")
+async def bckdha_overview():
+    """BCKDHA (Branched-Chain Keto Acid Dehydrogenase E1α / MSUD Type 1A) overview.
+    Gene: BCKDHA · 19q13.2 · AR · OMIM #248600 (Maple Syrup Urine Disease Type 1A).
+    BCKDH complex E1α catalytic subunit (α₂β₂ heterotetramer with BCKDHB E1β);
+    TPP cofactor; irreversible oxidative decarboxylation of branched-chain α-ketoacids
+    (KIC from Leu, KMV from Ile, KIV from Val). BCKDHA LOF → BCAA accumulate (Leu>>Ile,Val);
+    alloisoleucine PATHOGNOMONIC (>5 µmol/L plasma); maple syrup odour; Mennonite founder
+    p.Tyr393Asn; thiamine-responsive subset (10–20%, Level A trial mandatory all patients);
+    BCAA-restricted diet + BCAA-free formula Level A; VPA ABSOLUTE CI (triple mechanism);
+    DLD free enzyme NORMAL (only BCKDH complex reduced in isolated BCKDHA deficiency)."""
+    try:
+        import scripts.bckdha_dashboard as bckdha_
+        return _json_safe(bckdha_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/bckdha/breakdown")
+async def bckdha_breakdown():
+    """BCKDHA breakdown: 40-patient cohort, biomarkers (plasma Leu/Ile/Val, alloisoleucine,
+    urine KIC/KIV/KMV, DNPH, BCKDH complex activity, PDH/αKGDH/DLD NORMAL as key negatives),
+    key variants (p.Tyr393Asn Mennonite founder, p.Arg252Trp European, p.Glu422Lys thiamine-resp,
+    p.Ile281Phe, p.Phe364Cys, c.1312A>T), seizure types (tonic/myoclonic/IS/SE/burst suppression),
+    triggers (fasting EXTREME/febrile/protein/surgery/VPA-iatrogenic), treatments (BCAA-free
+    formula Level A / thiamine Level A / IV glucose+insulin acute / carnitine Level B / liver
+    transplant Level B / LEV Level B), differential vs BCKDHB/DBT/DLD/IVA/MMA/PA."""
+    try:
+        import scripts.bckdha_dashboard as bckdha_
+        return _json_safe(bckdha_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/bckdha/definitions")
+async def bckdha_definitions():
+    """BCKDHA definitions: gene card (BCKDHA/BCKDE1A, 19q13.2, AR, OMIM *608348/#248600,
+    445aa, TPP cofactor, E1α₂β₂ heterotetrameric decarboxylase), key concepts (alloisoleucine
+    pathognomonic mechanism, BCAA-free formula rationale, thiamine responsiveness mechanism,
+    LAT1 leucine neurotoxicity, BCKDHA/BCKDHB/DBT biochemically identical — gene panel mandatory,
+    DLD deficiency differentiation — NORMAL PDH/αKGDH/GCS/DLD free enzyme in BCKDHA, acute
+    crisis leucine removal protocol — IV glucose+insulin+HD), diagnostic thresholds (plasma Leu
+    >1000 crisis, alloisoleucine >5 pathognomonic, BCKDH activity <5% classic, thiamine trial
+    ≥3 months), differential diagnosis (BCKDHB, DBT, DLD, IVA, MMA/PA, GA2/MADD)."""
+    try:
+        import scripts.bckdha_dashboard as bckdha_
+        return _json_safe(bckdha_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
