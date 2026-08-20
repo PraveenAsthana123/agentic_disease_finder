@@ -30777,6 +30777,54 @@ async def aldh5a1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex3/overview")
+async def pex3_overview():
+    """PEX3 Overview — cohort KPIs, disease mechanism (type I integral PMP / PEX19 docking receptor /
+    PEX3-PEX16-PEX19 early membrane biogenesis axis), phenotypic spectrum (ZS 35% / NALD 45% / IRD 15%
+    / Atypical 5%), OMIM *603164 / #614867-#614868, locus 6q24.2, key pharmacological alerts
+    (VPA HIGH RISK triple mechanism / VGB HIGH RISK retinopathy / Fasting EXTREME HAZARD /
+    Lorenzo's Oil INEFFECTIVE — membrane absent / LEV first-line / ACTH Level A IS /
+    No ERT / No HSCT), key concepts, reference standards.
+    """
+    try:
+        import scripts.pex3_dashboard as pex3_
+        return _json_safe(pex3_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex3/breakdown")
+async def pex3_breakdown():
+    """PEX3 Breakdown — 40-patient cohort (ZS 35% / NALD 45% / IRD 15% / Atypical 5%),
+    patient table (ID / phenotype / sex / genotype / liver / seizures / AED / response / DHA),
+    seizure types (6 types, neonatal multifocal to absence), seizure triggers (8 triggers,
+    fasting EXTREME HAZARD), monitoring protocol (14 parameters), clinical thresholds (8),
+    disease lifecycle (6 stages), treatments (7: LEV / ACTH / CLB / LTG / DHA / phytol-diet / UDCA),
+    contraindications (7: VPA HIGH RISK / VGB HIGH RISK / Fasting EXTREME HAZARD /
+    PHT-CBZ-OXC RELATIVE CI / Lorenzo's Oil INEFFECTIVE / HSCT NOT INDICATED / No ERT).
+    """
+    try:
+        import scripts.pex3_dashboard as pex3_
+        return _json_safe(pex3_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex3/definitions")
+async def pex3_definitions():
+    """PEX3 Definitions — gene card (type I integral PMP, PEX19 docking receptor, 373 aa, 6q24.2),
+    PEX3-PEX16-PEX19 early membrane biogenesis axis, ghost peroxisomes in fibroblasts,
+    most-upstream ZSD defect, 16 key concepts, 13-step diagnostic algorithm,
+    pharmacological distinctions (12 points), differential diagnosis (8 conditions),
+    reference standards.
+    """
+    try:
+        import scripts.pex3_dashboard as pex3_
+        return _json_safe(pex3_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

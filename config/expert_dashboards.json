@@ -5165,5 +5165,11 @@
     ],
     "frontend": "/portal-next/app/pex26/page.jsx",
     "cohort_size": 40
+  },
+  {
+    "id": "pex3",
+    "name": "PEX3 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX3-Type-I-Integral-PMP-373aa-Docking-Receptor-For-PEX19 / PEX3-PEX16-PEX19-Early-Membrane-Biogenesis-Axis / PEX3-LOF-PEX19-Cannot-Dock-ALL-PMPs-Fail / Ghost-Peroxisomes / MOST-UPSTREAM-ZSD-Defect / p.Gln85x-Null-Most-Common / p.Leu61Pro-Partial-Membrane-Insertion-IRD-Enabling / No-Founder-Hypomorphic-Allele / 1-2pct-All-PBD-ZSD / 10-20-Cases-Worldwide-2026 / ZS-35pct / NALD-45pct / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-NGS-Panel-Only-Distinguishes / VPA-HIGH-RISK-3-Mechanisms / VGB-HIGH-RISK-Retinopathy / LEV-FIRST-LINE / ACTH-Level-A-IS / DHA-Level-B-NALD-IRD / HSCT-NOT-Indicated / Lorenzo-Oil-INEFFECTIVE-Membrane-Absent / No-ERT / COMPLETES-PEX3-PEX16-PEX19-Early-Membrane-Biogenesis-Axis / AR-Biallelic-LOF / 6q24.2 / OMIM-Gene-603164-Disease-614867-614868)",
+    "status": "built",
+    "maps_to": "/api/pex3/overview|breakdown|definitions + portal-next/app/pex3/page.jsx + SiteNav wired after PEX26, 40-patient PEX3 cohort, 3 endpoints /api/pex3/overview|breakdown|definitions verified 200, expert_dashboards.json count 331->332"
   }
 ]
