@@ -31755,6 +31755,55 @@ async def bckdha_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/bckdhb/overview")
+async def bckdhb_overview():
+    """BCKDHB (Branched-Chain Keto Acid Dehydrogenase E1β / MSUD Type 1B) overview.
+    Gene: BCKDHB · 6q14.1 · AR · OMIM #248600 (Maple Syrup Urine Disease Type 1B).
+    BCKDH complex E1β structural subunit (α₂β₂ heterotetramer with BCKDHA E1α);
+    NO TPP active site (that is on E1α/BCKDHA); BCKDHB LOF → E1 heterotetrameric
+    decarboxylase cannot assemble/stabilise → BCAA accumulate (Leu>>Ile,Val);
+    alloisoleucine PATHOGNOMONIC (>5 µmol/L plasma); biochemically IDENTICAL to BCKDHA;
+    thiamine-responsive subset lower (~5%) due to E1β having no TPP binding domain;
+    BCAA-restricted diet + BCAA-free formula Level A; VPA ABSOLUTE CI; gene panel mandatory."""
+    try:
+        import scripts.bckdhb_dashboard as bckdhb_
+        return _json_safe(bckdhb_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/bckdhb/breakdown")
+async def bckdhb_breakdown():
+    """BCKDHB breakdown: 40-patient cohort, biomarkers (plasma Leu/Ile/Val, alloisoleucine,
+    urine KIC/KIV/KMV, DNPH, BCKDH complex activity, PDH/αKGDH/DLD NORMAL as key negatives),
+    key variants (p.Arg183Trp E1α-E1β interface, p.Gly245Arg hydrophobic core, p.Leu164Phe,
+    p.Tyr301Cys, p.Ala311Val intermediate, c.866-1G>A splice null), seizure types, triggers,
+    treatments (BCAA-free formula Level A / thiamine Level A ~5% response lower than BCKDHA /
+    IV glucose+insulin acute / carnitine Level B / liver transplant Level B / LEV Level B),
+    differential vs BCKDHA/DBT/DLD/IVA/MMA/PA."""
+    try:
+        import scripts.bckdhb_dashboard as bckdhb_
+        return _json_safe(bckdhb_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/bckdhb/definitions")
+async def bckdhb_definitions():
+    """BCKDHB definitions: gene card (BCKDHB/BCKDE1B, 6q14.1, AR, OMIM *248611/#248600,
+    368aa precursor/342aa mature, NO TPP active site — structural E1β partner of BCKDHA E1α),
+    key concepts (E1β structural role vs E1α catalytic role, why thiamine response lower ~5%
+    in BCKDHB vs 10-20% in BCKDHA, alloisoleucine pathognomonic mechanism, BCAA-free formula
+    rationale, BCKDHA/BCKDHB/DBT biochemically identical — gene panel mandatory, DLD
+    deficiency differentiation — NORMAL PDH/αKGDH/GCS/DLD free enzyme in BCKDHB),
+    diagnostic thresholds, differential diagnosis."""
+    try:
+        import scripts.bckdhb_dashboard as bckdhb_
+        return _json_safe(bckdhb_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
