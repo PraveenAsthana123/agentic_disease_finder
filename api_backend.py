@@ -30971,6 +30971,57 @@ async def pex13_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex14/overview")
+async def pex14_overview():
+    """PEX14 Overview — ZSD importomer central scaffold defect (376 aa, 1p36.22, type I integral
+    PMP, N-terminal cytoplasmic domain aa 1–115 = PRIMARY PEX5 docking site, PEX5 WxxxF
+    pentapeptide repeats bind PEX14 N-domain, PEX13·PEX14·PEX17 importomer complex, ~5–8
+    cases worldwide 2026 — rarest importomer defect, ZS 40% · NALD 40% · IRD 15%,
+    OMIM *601791 / #614895 / #614896, IF TRIPLET PMP70+ / PEX14− / catalase cytoplasmic,
+    key pharmacological alerts VPA HIGH RISK / VGB HIGH RISK / Fasting EXTREME HAZARD /
+    Lorenzo's Oil INEFFECTIVE — importomer scaffold absent / LEV first-line / ACTH Level A IS /
+    No ERT / No HSCT, 40-patient cohort).
+    """
+    try:
+        import scripts.pex14_dashboard as pex14_
+        return _json_safe(pex14_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex14/breakdown")
+async def pex14_breakdown():
+    """PEX14 Breakdown — 40-patient cohort (ZS 40% · NALD 40% · IRD 15% · Atypical 5%),
+    patient table (ID / phenotype / sex / genotype / liver / seizures / AED / response / DHA),
+    seizure types (6 types, neonatal multifocal to absence), seizure triggers (8 triggers,
+    fasting EXTREME HAZARD), monitoring protocol (14 parameters), clinical thresholds (8),
+    disease lifecycle (6 stages), treatments (7: LEV / ACTH / CLB / LTG / DHA / phytol-diet / UDCA),
+    contraindications (7: VPA HIGH RISK / VGB HIGH RISK / Fasting EXTREME HAZARD /
+    PHT-CBZ-OXC RELATIVE CI / Lorenzo's Oil INEFFECTIVE / HSCT NOT INDICATED / No ERT).
+    """
+    try:
+        import scripts.pex14_dashboard as pex14_
+        return _json_safe(pex14_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex14/definitions")
+async def pex14_definitions():
+    """PEX14 Definitions — gene card (importomer central scaffold, type I integral PMP, 376 aa,
+    1p36.22, N-terminal domain = PRIMARY PEX5 docking site, PEX5 pentapeptide repeats WxxxF,
+    PEX14 is itself a Class I PMP inserted by PEX19), IF TRIPLET (PMP70+ / PEX14− / catalase
+    cytoplasmic — distinguishes from PEX13 LOF where PEX14 IS present; from PEX19 LOF where
+    PMP70 also absent), 17 key concepts, 13-step diagnostic algorithm, pharmacological
+    distinctions (12 points), differential diagnosis (8 conditions), reference standards.
+    """
+    try:
+        import scripts.pex14_dashboard as pex14_
+        return _json_safe(pex14_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

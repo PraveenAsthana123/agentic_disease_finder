@@ -5207,5 +5207,19 @@
       "/api/pex13/definitions"
     ],
     "route": "/pex13"
+  },
+  {
+    "role": "Neurologist",
+    "name": "PEX14 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX14-Importomer-Central-Scaffold-376aa-Type-I-Integral-PMP / N-Terminal-Cytoplasmic-Domain-aa1-115-PRIMARY-PEX5-Docking-Site / PEX5-WxxxF-Pentapeptide-Repeats-Bind-PEX14-HIGH-Affinity / PEX14-LOF-Importomer-Scaffold-Absent-PEX5-No-Primary-Docking / IF-TRIPLET-PMP70-PRESENT-PEX14-ABSENT-Catalase-Cytoplasmic / PEX14-ABSENT-In-PEX14-LOF-PRESENT-In-PEX13-LOF-Importomer-Tier-Key-Distinction / PEX19-LOF-PMP70-ALSO-Absent-vs-PEX14-LOF-PMP70-PRESENT / p.Leu78His-L78H-N-Terminal-PEX5-Binding-Partial-Function-NALD-IRD-Enabling / p.Trp47x-Null / No-Founder-Hypomorphic-Allele-Unlike-PEX1-G843D-PEX6-R860W / Lt1pct-All-PBD-ZSD / 5-8-Cases-Worldwide-2026-Rarest-Importomer-Defect / ZS-40pct / NALD-40pct / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired-VLCFA-Plasmalogens-DHA-Phytanic-Pristanic-Pipecolic-Bile-Acids / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-PEX3-ZSD-PEX16-ZSD-PEX19-ZSD-PEX26-ZSD-PEX2-ZSD-PEX10-ZSD-PEX12-ZSD-PEX13-ZSD-NGS-Panel-Only-Distinguishes / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / DRE-67pct / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Inhibition-Carnitine-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD-Additive-Irreversible-Blindness / ACTH-Level-A-IS-Preferred-Over-VGB / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / Phytol-Restricted-Diet-Level-B-IRD / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY / HSCT-NOT-Indicated-Not-Inflammatory / Lorenzo-Oil-INEFFECTIVE-Importomer-Scaffold-Absent / No-ERT-Type-I-Integral-PMP-Not-Soluble-Lysosomal-Enzyme / AR-Biallelic-LOF / 1p36.22 / OMIM-Gene-601791-Disease-614895-614896)",
+    "viz": "Cohort KPIs + IF-triplet importomer scaffold diagram + phenotypic spectrum bars + patient table",
+    "feature": "IF triplet (PMP70+/PEX14\u2212/catalase cytoplasmic), genotype-phenotype, seizure types/triggers, treatments, contraindications, differential diagnosis",
+    "why": "PEX14 importomer central scaffold ZSD \u2014 rarest importomer defect (~5\u20138 cases worldwide); primary PEX5 docking site; IF triplet distinguishes from PEX13/PEX19 LOF",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/pex14/overview",
+      "/api/pex14/breakdown",
+      "/api/pex14/definitions"
+    ]
   }
 ]
