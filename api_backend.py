@@ -30279,6 +30279,74 @@ async def scp2_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/amacr/overview")
+async def amacr_overview():
+    """AMACR (Alpha-methylacyl-CoA Racemase) Deficiency — overview: 12 KPIs
+    (AMACR-382aa-PTS1-AKL-Peroxisomal-Matrix / 5p13.2 /
+    Prerequisite-Racemization-R-Pristanoyl-CoA-to-S-Form-Before-ACOX2-Step1 /
+    PRISTANIC-SEVERELY-ELEVATED-racemase-block /
+    THCA-DHCA-ELEVATED-bile-acid-intermediates /
+    VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4-ACOX1-ZSD /
+    Phytanic-NORMAL-KEY-DISTINCTION-PHYH-Refsum /
+    Plasmalogens-NORMAL-PTS2-intact /
+    Focal-Temporal-Epilepsy-60pct-MORE-PROMINENT-Than-SCP2-40pct /
+    Retinopathy-45pct-VGB-RELATIVE-CI-HIGHEST-visual-risk-peroxisomal-group /
+    No-Adrenal-Insufficiency-PHT-CBZ-OXC-CAN-USE-Contrast-ABCD1-ABSOLUTE-CI /
+    VPA-RELATIVE-CI-POLG1-MANDATORY-bile-acid-burden /
+    AMACR-vs-SCP2-Gene-Sequencing-ONLY-distinguishes /
+    Azoospermia-males-55pct / Adult-Onset-20s-60s /
+    Phytol-restricted-diet-Level-C / LEV-first-line / DHA-Level-C / No-ERT / No-HSCT /
+    Prostate-cancer-allele-p.Ser113Leu-NOT-pathogenic-neurological /
+    AR-biallelic-LOF-25-30-cases-worldwide-2026).
+    """
+    try:
+        import scripts.amacr_dashboard as amacr_
+        return _json_safe(amacr_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/amacr/breakdown")
+async def amacr_breakdown():
+    """AMACR deficiency — breakdown: 3 phenotypic classes
+    (Epilepsy-Predominant-40pct-focal-temporal-presenting /
+    Neuropathy-Predominant-35pct-axonal-sensorimotor-first /
+    Mixed-Multisystem-25pct-epilepsy+neuropathy+retinopathy+cognitive /
+    40-synthetic-patients / Seizure-types-triggers-monitoring-lifecycle /
+    Treatments-contraindications-phytol-diet-pristanic-THCA-monitoring /
+    AMACR-vs-SCP2-gene-sequencing-mandatory).
+    """
+    try:
+        import scripts.amacr_dashboard as amacr_
+        return _json_safe(amacr_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/amacr/definitions")
+async def amacr_definitions():
+    """AMACR deficiency — definitions:
+    (Prerequisite-Racemization-R-to-S-Pristanoyl-CoA /
+    VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4 /
+    Phytanic-NORMAL-KEY-DISTINCTION-Refsum /
+    Focal-Temporal-Epilepsy-60pct-more-prominent-SCP2 /
+    VGB-RELATIVE-CI-Retinopathy-45pct-HIGHEST-peroxisomal /
+    PHT-CBZ-OXC-CAN-USE-no-adrenal /
+    VPA-bile-acid-burden / POLG1-Mandatory-CPIC-A /
+    AMACR-vs-SCP2-gene-sequencing-only /
+    Prostate-cancer-allele-p.Ser113Leu-NOT-pathogenic),
+    15 key concepts, 12-step diagnostic algorithm,
+    13 pharmacological distinctions, 7 differential diagnoses
+    (SCP2-SCPx / HSD17B4-DBP / PHYH-Refsum / ACOX1-Pseudo-NALD /
+    ZSD-PEX1-PEX6 / ABCD1-X-ALD / RCDP-PEX7-GNPAT).
+    """
+    try:
+        import scripts.amacr_dashboard as amacr_
+        return _json_safe(amacr_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

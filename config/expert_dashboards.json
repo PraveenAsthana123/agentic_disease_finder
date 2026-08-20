@@ -5031,5 +5031,17 @@
     "omim_gene": "184755",
     "omim_disease": "613706",
     "built_date": "2026-08-19"
+  },
+  {
+    "id": "amacr",
+    "name": "AMACR Epilepsy (Alpha-methylacyl-CoA-Racemase-Deficiency / AMACR-382aa-PTS1-AKL-Peroxisomal-Matrix / Prerequisite-Racemization-R-to-S-Pristanoyl-CoA-Before-ACOX2-Step1 / PRISTANIC-SEVERELY-ELEVATED-Same-As-SCP2-Different-Step / THCA-DHCA-ELEVATED-Bile-Acid-Intermediates / VLCFA-NORMAL-KEY-DISTINCTION-HSD17B4-ACOX1-ZSD / Phytanic-NORMAL-KEY-DISTINCTION-PHYH-Refsum / Plasmalogens-NORMAL-PTS2-Intact / Adult-Onset-20s-60s / Focal-Temporal-Epilepsy-60pct-MORE-PROMINENT-Than-SCP2-40pct / Pigmentary-Retinopathy-45pct / Azoospermia-Males-55pct / AMACR-vs-SCP2-Gene-Sequencing-ONLY / VGB-RELATIVE-CI-Retinopathy-45pct-HIGHEST-Visual-Risk-Peroxisomal-Group / VPA-RELATIVE-CI-POLG1-MANDATORY-Bile-Acid-Burden / PHT-CBZ-OXC-CAN-USE-No-Adrenal / LEV-FIRST-LINE / Phytol-Restricted-Diet-Level-C / DHA-Level-C / No-ERT-PTS1-AKL-Matrix-Enzyme / No-HSCT-NOT-Inflammatory / Prostate-Cancer-Allele-p.Ser113Leu-NOT-Pathogenic-Neurological / POLG1-Mandatory-CPIC-A / AR-Biallelic-LOF / 5p13.2 / 25-30-Cases-Worldwide-2026)",
+    "status": "built",
+    "route": "/amacr",
+    "api": "/api/amacr/overview|breakdown|definitions",
+    "script": "scripts/amacr_dashboard.py",
+    "frontend": "portal-next/app/amacr/page.jsx",
+    "category": "Peroxisomal / Rare Epilepsy \u2014 Branched-Chain Beta-Oxidation",
+    "priority": "high",
+    "description": "40-patient AMACR cohort, 3 phenotypic classes (Epilepsy-Predominant-40%/Neuropathy-Predominant-35%/Mixed-25%), 5 seizure types (Focal-temporal-55%/BTCS-40%/Myoclonic-25%/Parietal-occipital-15%/SE-5%), 7 triggers (Dietary-phytol-45%/Febrile-38%/Sleep-dep-30%/Missed-AED-25%/VPA-18%/VGB-15%/Fasting-12%), 9 monitoring parameters, 6 lifecycle stages, 11 treatments (LEV-first/OXC-focal-CAN-USE/CBZ-CAN-USE/PHT-CAN-USE/CLZ-myoclonus-adjunct/VPA-RELATIVE-CI/VGB-RELATIVE-CI-HIGHEST-visual-risk/Lorenzo-NOT-APPLICABLE/Phytol-diet-Level-C/DHA-Level-C/No-ERT/No-HSCT), 15 key concepts, 12-step diagnostic algorithm, 13 pharmacological distinctions, 7 differential diagnoses."
   }
 ]
