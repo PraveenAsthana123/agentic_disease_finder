@@ -30105,6 +30105,59 @@ async def far1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/acox1/overview")
+async def acox1_overview():
+    """ACOX1 / Pseudo-Neonatal Adrenoleukodystrophy (Pseudo-NALD) — overview: 12 KPIs
+    (ACOX1-Acyl-CoA-Oxidase-1-660aa-PTS1-SRL-Homotrimer / 17q25.1 /
+    First-rate-limiting-step-peroxisomal-straight-chain-VLCFA-beta-oxidation /
+    VLCFA-C26-ELEVATED-same-as-ZSD-on-plasma-panel /
+    Plasmalogens-RBC-NORMAL-KEY-DISTINCTION-ZSD-PEX1-PEX6 /
+    Phytanic-NORMAL-PHYH-intact / Pristanic-NORMAL-ACOX2-not-ACOX1 /
+    No-adrenal-insufficiency-PHT-CBZ-CAN-USE-contrast-ABCD1-ABSOLUTE-CI /
+    VGB-RELATIVE-CI-retinal-degeneration-ERG-85pct-additive /
+    VPA-RELATIVE-CI-POLG1-MANDATORY / Lorenzo-oil-NOT-RECOMMENDED-mechanism-mismatch /
+    Fasting-HAZARD-IV-dextrose-mandatory / No-ERT-No-HSCT-classic-form /
+    AR-biallelic-LOF-50-cases-worldwide-2026 / DHA-Level-C).
+    """
+    try:
+        import scripts.acox1_dashboard as acox1_
+        return _json_safe(acox1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/acox1/breakdown")
+async def acox1_breakdown():
+    """ACOX1 / Pseudo-NALD — breakdown: 3 phenotypic classes
+    (Classic-Severe-55pct-null-null-seizures-90pct / Intermediate-30pct /
+    Attenuated-15pct-hypomorphic / 40-synthetic-patients /
+    Seizure-types-triggers-monitoring-lifecycle / Treatments-contraindications).
+    """
+    try:
+        import scripts.acox1_dashboard as acox1_
+        return _json_safe(acox1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/acox1/definitions")
+async def acox1_definitions():
+    """ACOX1 / Pseudo-NALD — definitions:
+    (ACOX1-straight-chain-VLCFA-beta-oxidation / VLCFA-elevated-plasmalogens-NORMAL /
+    VGB-RELATIVE-CI-retinal-vs-ZSD-HIGH-RISK / PHT-CBZ-CAN-USE-no-adrenal /
+    Lorenzo-oil-NOT-RECOMMENDED-mismatch / Fasting-HAZARD /
+    POLG1-Mandatory-CPIC-A),
+    15 key concepts, 12-step diagnostic algorithm, 12 pharmacological distinctions,
+    7 differential diagnoses (ZSD-PEX1-PEX6 / ABCD1-X-ALD / HSD17B4-DBP /
+    PHYH-Refsum / AMACR / NPC1-NPC2 / MLD-ARSA).
+    """
+    try:
+        import scripts.acox1_dashboard as acox1_
+        return _json_safe(acox1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

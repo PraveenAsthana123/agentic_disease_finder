@@ -4979,5 +4979,22 @@
       "/api/far1/definitions"
     ],
     "route": "/far1"
+  },
+  {
+    "role": "Epileptologist / Metabolic Neurologist",
+    "name": "ACOX1 Epilepsy (Pseudo-Neonatal-Adrenoleukodystrophy-Pseudo-NALD / Acyl-CoA-Oxidase-1-660aa-PTS1-SRL-Homotrimer / First-Rate-Limiting-Step-Straight-Chain-VLCFA-Beta-Oxidation / VLCFA-C26-ELEVATED-Identical-ZSD-On-Plasma-Panel / Plasmalogens-RBC-NORMAL-KEY-DISTINCTION-ZSD-PEX1-PEX6 / Phytanic-NORMAL-PHYH-Alpha-Ox-Intact / Pristanic-NORMAL-ACOX2-Not-ACOX1 / No-Adrenal-Insufficiency-PHT-CBZ-CAN-USE-Contrast-ABCD1-ABSOLUTE-CI / VGB-RELATIVE-CI-Retinal-Degeneration-ERG-85pct-Additive / VPA-RELATIVE-CI-POLG1-MANDATORY / Lorenzo-Oil-NOT-RECOMMENDED-Mechanism-Mismatch / Fasting-HAZARD-IV-Dextrose-Mandatory / No-ERT-No-HSCT-Classic / AR-Biallelic-LOF / 17q25.1 / 50-Cases-Worldwide-2026)",
+    "gene": "ACOX1",
+    "viz": "KPI grid, phenotypic class bars, patient table, seizure type distribution, biochemical profile, AED risk matrix",
+    "feature": "40 patients \u00b7 3 phenotypic classes \u00b7 Classic Severe 55% / Intermediate 30% / Attenuated 15% \u00b7 Seizures 72% \u00b7 Drug resistance 35% \u00b7 Retinal degeneration 85% \u00b7 SNHL 65% \u00b7 VLCFA ELEVATED \u00b7 Plasmalogens NORMAL \u00b7 Phytanic NORMAL \u00b7 Lorenzo oil NOT recommended",
+    "why": "ACOX1 (17q25.1) catalyzes first rate-limiting step of peroxisomal straight-chain VLCFA beta-oxidation. LOF \u2192 C26:0/C24:0 accumulate \u2192 identical plasma VLCFA as ZSD on screening but plasmalogens NORMAL (peroxisome biogenesis intact). KEY DISTINCTION from ZSD: always order VLCFA + plasmalogens simultaneously. No adrenal insufficiency (PHT/CBZ safe, unlike ABCD1). VGB RELATIVE CI (retinal degeneration ERG 85%). Lorenzo oil NOT recommended (mechanism mismatch). Fasting HAZARD.",
+    "priority": "P1",
+    "status": "built",
+    "id": "acox1",
+    "endpoints": [
+      "/api/acox1/overview",
+      "/api/acox1/breakdown",
+      "/api/acox1/definitions"
+    ],
+    "route": "/acox1"
   }
 ]
