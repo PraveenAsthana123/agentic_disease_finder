@@ -31255,6 +31255,66 @@ async def amt_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gcsh/overview")
+async def gcsh_overview():
+    """GCSH Overview — Non-Ketotic Hyperglycinemia (NKH / Glycine Encephalopathy), H-protein type.
+    GCSH encodes the H-protein (Glycine Cleavage System H-protein) — the CENTRAL CARRIER of the
+    mitochondrial GCS (Glycine Cleavage System). GCSH LOF (~1% of NKH; AR; 16q23.2) → H-protein
+    absent → GCS blocked at TWO points simultaneously: (1) P-protein (GLDC) cannot transfer
+    aminomethyl (no H-protein to receive it); (2) T-protein (AMT) has no substrate (no loaded
+    H-protein). MOST COMPLETE GCS BLOCK of all NKH types. Glycine accumulates IDENTICALLY to
+    GLDC-NKH and AMT-NKH. H-protein has NO catalytic activity — diagnosis by gene sequencing only.
+    NO founder allele (all variants private/family-specific; ~20–50 cases worldwide 2026).
+    PATHOPHYSIOLOGY: SAME DUAL MECHANISM as GLDC-NKH/AMT-NKH: GlyR brainstem inhibition
+    (hypotonia/apnea/HICCUPS) + NMDAr excitotoxicity (burst-suppression/SE).
+    DIAGNOSTIC: CSF:plasma glycine ratio ≥0.08 (simultaneous draw; identical to GLDC/AMT-NKH;
+    gene panel mandatory to distinguish GCSH from GLDC/AMT).
+    TREATMENT: Sodium Benzoate (Level A) + DXM (Level B) + LEV + ACTH for IS (identical to GLDC/AMT-NKH).
+    VPA HIGH RISK (secondary glycine-raising; H-protein no enzyme activity but equivalent clinical risk).
+    VGB HIGH RISK for IS (GABA-glycine co-transporter). OMIM *238330 / #605899. ~1% of NKH.
+    """
+    try:
+        import scripts.gcsh_dashboard as gcsh_
+        return _json_safe(gcsh_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gcsh/breakdown")
+async def gcsh_breakdown():
+    """GCSH Breakdown — 40-patient NKH cohort (H-protein type). Phenotype classes: Classic Neonatal
+    (null/null or null/missense near Lys59 lipoyl site; ~70%), Attenuated (partial H-protein carrier
+    function; ~25%), Transient (~5%). Seizure types: electrical SE (EEG-only neonatal), myoclonic (70%),
+    IS (45%), focal clonic, tonic, GTCS. Triggers: fever (75%), missed benzoate dose, protein load, VPA,
+    fasting. CSF:plasma ratio histogram, plasma glycine distribution, treatment counts
+    (benzoate/DXM/LEV/CLB/ACTH/KD), per-patient profiles, contraindications, monitoring schedule,
+    lifecycle stages (prenatal → adulthood). No founder allele — all variants private/family-specific.
+    """
+    try:
+        import scripts.gcsh_dashboard as gcsh_
+        return _json_safe(gcsh_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gcsh/definitions")
+async def gcsh_definitions():
+    """GCSH Definitions — gene card (H-protein, lipoamide central carrier, 125 aa, 16q23.2,
+    OMIM *238330/#605899, NO catalytic activity), GCS 4-protein complex pathway with GCSH-specific
+    DUAL upstream+downstream block mechanism (P-protein stalls + T-protein stalls simultaneously),
+    diagnostic biomarkers (CSF:plasma ratio, plasma glycine, folate/homocysteine — full GCS block),
+    H-protein functional assay NOT applicable (carrier only), 11 key GCSH-NKH concepts
+    (dual block, lipoyl Lys59, no founder allele, VPA secondary mechanism, H-protein therapy pipeline),
+    11 thresholds, GCSH vs GLDC vs AMT vs DLD biochemical identity, differential diagnosis
+    (SSADH/propionic/MMA/DLD/GLDC/AMT).
+    """
+    try:
+        import scripts.gcsh_dashboard as gcsh_
+        return _json_safe(gcsh_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
