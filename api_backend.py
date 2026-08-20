@@ -30422,6 +30422,79 @@ async def phyh_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/acox2/overview")
+async def acox2_overview():
+    """ACOX2 (Acyl-CoA Oxidase 2) Deficiency — overview: 12 KPIs
+    (ACOX2-672aa-PTS1-SRL-FAD-Oxidase-Homotrimer-Peroxisomal-Matrix /
+    Step1-Branched-Chain-Peroxisomal-Beta-Oxidation-After-AMACR-Racemization /
+    PRISTANIC-SEVERELY-ELEVATED-Branched-Chain-Step1-Blocked /
+    THCA-DHCA-ELEVATED-Bile-Acid-CoA-Esters-Cannot-Progress /
+    VLCFA-NORMAL-KEY-DISTINCTION-ACOX1-ZSD-HSD17B4 /
+    PHYTANIC-NORMAL-Alpha-Oxidation-PHYH-Intact /
+    PLASMALOGENS-NORMAL-PTS2-Intact /
+    Adult-Onset-20s-50s-COMPLETELY-Different-ACOX1-Neonatal /
+    Hepatic-Cholestasis-70pct-DOMINANT-DISTINGUISHING-FEATURE-vs-SCP2-AMACR /
+    Seizures-35pct-Myoclonic-Focal-Less-Prominent-Than-AMACR-60pct-SCP2-40pct /
+    VPA-RELATIVE-CI-ELEVATED-RISK-Cholestatic-Liver-70pct-Plus-Bile-Acid-Burden /
+    VGB-RELATIVE-CI-Retinopathy-30pct /
+    PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1-ABSOLUTE-CI /
+    LEV-FIRST-LINE / No-ERT-PTS1-SRL-Matrix-Enzyme /
+    No-HSCT-NOT-Inflammatory / No-Lorenzos-Oil-VLCFA-Normal /
+    ACOX2-vs-SCP2-AMACR-Gene-Sequencing-MANDATORY-Biochemical-Identical /
+    POLG1-Mandatory-CPIC-A / AR-Biallelic-LOF / 3p25.1 / Under-30-Cases-Worldwide-2026).
+    """
+    try:
+        import scripts.acox2_dashboard as acox2_
+        return _json_safe(acox2_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/acox2/breakdown")
+async def acox2_breakdown():
+    """ACOX2 deficiency — breakdown: 3 phenotypic classes
+    (Hepato-Neurological-50pct-Liver-Neuropathy-Dominant /
+    Neurological-Dominant-35pct-Ataxia-Neuropathy-Mild-Hepatic /
+    Mixed-Multisystem-15pct-Liver-Neurology-Retina /
+    40-synthetic-patients / Seizure-types-triggers-monitoring-lifecycle /
+    Treatments-contraindications-hepatic-monitoring-phytol-diet /
+    ACOX2-vs-SCP2-AMACR-Gene-Sequencing-mandatory /
+    VPA-Elevated-Risk-Cholestatic-Liver / LEV-FIRST-LINE).
+    """
+    try:
+        import scripts.acox2_dashboard as acox2_
+        return _json_safe(acox2_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/acox2/definitions")
+async def acox2_definitions():
+    """ACOX2 deficiency — definitions:
+    (Step1-Branched-Chain-PeroxBO-After-AMACR /
+    PRISTANIC-THCA-DHCA-ELEVATED-VLCFA-NORMAL /
+    ACOX2-vs-ACOX1-VLCFA-Panel-Immediate-Distinction /
+    ACOX2-vs-SCP2-AMACR-Gene-Sequencing-ONLY /
+    THCA-DHCA-Cholestatic-Liver-Disease-70pct-Dominant /
+    VPA-RELATIVE-CI-ELEVATED-Risk-Cholestatic-Liver /
+    VGB-RELATIVE-CI-Retinopathy-30pct /
+    PHT-CBZ-CAN-USE-No-Adrenal /
+    POLG1-Mandatory-CPIC-A /
+    No-ERT-No-HSCT-No-Lorenzos-Oil /
+    Azoospermia-Males-45pct /
+    UDCA-Level-C-Cholestatic-Support),
+    15 key concepts, 13-step diagnostic algorithm,
+    14 pharmacological distinctions, 7 differential diagnoses
+    (SCP2 / AMACR / ACOX1-Pseudo-NALD / HSD17B4-DBP /
+    ZSD-PEX1-PEX6 / PHYH-Refsum / PSC-PBC-cholestatic-DDx).
+    """
+    try:
+        import scripts.acox2_dashboard as acox2_
+        return _json_safe(acox2_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

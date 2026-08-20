@@ -5059,5 +5059,23 @@
     "omim_disease": "266500",
     "omim_gene": "602026",
     "inheritance": "AR"
+  },
+  {
+    "id": "acox2",
+    "name": "ACOX2 Epilepsy (Acyl-CoA-Oxidase-2-Deficiency / ACOX2-672aa-PTS1-SRL-FAD-Oxidase-Homotrimer / Step1-Branched-Chain-Peroxisomal-Beta-Oxidation-After-AMACR-Racemization / PRISTANIC-SEVERELY-ELEVATED-Step1-Blocked / THCA-DHCA-ELEVATED-Bile-Acid-CoA-Esters / VLCFA-NORMAL-KEY-DISTINCTION-ACOX1-ZSD-HSD17B4 / Hepatic-Cholestasis-70pct-DOMINANT-DISTINGUISHING-FEATURE-vs-SCP2-AMACR / Adult-Onset-20s-50s / VPA-RELATIVE-CI-ELEVATED-RISK-Highest-Adult-BranchedChain / VGB-RELATIVE-CI-Retinopathy-30pct / PHT-CBZ-CAN-USE-No-Adrenal / LEV-FIRST-LINE / UDCA-Level-C / Phytol-Restricted-Diet-Level-C / No-ERT-PTS1-SRL / No-HSCT-NOT-Inflammatory / No-Lorenzos-Oil-VLCFA-Normal / ACOX2-vs-SCP2-AMACR-Gene-Sequencing-MANDATORY / POLG1-Mandatory-CPIC-A / AR-Biallelic-LOF / 3p25.1 / Under-30-Cases-Worldwide-2026)",
+    "status": "built",
+    "category": "peroxisomal_single_enzyme",
+    "route": "/acox2",
+    "api_endpoints": [
+      "/api/acox2/overview",
+      "/api/acox2/breakdown",
+      "/api/acox2/definitions"
+    ],
+    "cohort_size": 40,
+    "phenotypic_classes": 3,
+    "locus": "3p25.1",
+    "omim_gene": "601641",
+    "inheritance": "AR",
+    "script": "scripts/acox2_dashboard.py"
   }
 ]
