@@ -5171,5 +5171,16 @@
     "name": "PEX3 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX3-Type-I-Integral-PMP-373aa-Docking-Receptor-For-PEX19 / PEX3-PEX16-PEX19-Early-Membrane-Biogenesis-Axis / PEX3-LOF-PEX19-Cannot-Dock-ALL-PMPs-Fail / Ghost-Peroxisomes / MOST-UPSTREAM-ZSD-Defect / p.Gln85x-Null-Most-Common / p.Leu61Pro-Partial-Membrane-Insertion-IRD-Enabling / No-Founder-Hypomorphic-Allele / 1-2pct-All-PBD-ZSD / 10-20-Cases-Worldwide-2026 / ZS-35pct / NALD-45pct / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-NGS-Panel-Only-Distinguishes / VPA-HIGH-RISK-3-Mechanisms / VGB-HIGH-RISK-Retinopathy / LEV-FIRST-LINE / ACTH-Level-A-IS / DHA-Level-B-NALD-IRD / HSCT-NOT-Indicated / Lorenzo-Oil-INEFFECTIVE-Membrane-Absent / No-ERT / COMPLETES-PEX3-PEX16-PEX19-Early-Membrane-Biogenesis-Axis / AR-Biallelic-LOF / 6q24.2 / OMIM-Gene-603164-Disease-614867-614868)",
     "status": "built",
     "maps_to": "/api/pex3/overview|breakdown|definitions + portal-next/app/pex3/page.jsx + SiteNav wired after PEX26, 40-patient PEX3 cohort, 3 endpoints /api/pex3/overview|breakdown|definitions verified 200, expert_dashboards.json count 331->332"
+  },
+  {
+    "id": "pex16",
+    "name": "PEX16 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX16-Type-II-Integral-PMP-336aa-PEX3-Recruitment-Factor / ER-To-Peroxisome-Vesicular-Transport / PEX16-Recruits-PEX3-From-ER-Derived-Vesicles / PEX16-LOF-PEX3-Mislocalized-Cytoplasm / Ghost-Peroxisomes-SAME-Mechanistic-Tier-As-PEX3 / p.Trp313x-Null / p.Arg176Gln-R176Q-Partial-Stability-NALD-IRD-Enabling / No-Founder-Hypomorphic-Allele / 3-5pct-All-PBD-ZSD / 30-60-Cases-Worldwide-2026 / ZS-30pct / NALD-50pct-MODAL / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired / Biochemically-IDENTICAL-PEX1-ZSD-NGS-Panel-Only-Distinguishes / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / DHA-Low-Pachygyria-ZS-PATHOGNOMONIC / VPA-HIGH-RISK-3-Mechanisms-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Additive / ACTH-Level-A-IS / LEV-FIRST-LINE / DHA-Level-B-NALD-IRD / HSCT-NOT-Indicated / Lorenzo-Oil-INEFFECTIVE / No-ERT-Type-II-Integral-Membrane-Protein / PART-OF-PEX3-PEX16-PEX19-Axis / AR-Biallelic-LOF / 11p11.2 / OMIM-Gene-603360-Disease-614876-614861)",
+    "status": "built",
+    "route": "/pex16",
+    "api_prefix": "/api/pex16",
+    "gene": "PEX16",
+    "disease": "Zellweger Spectrum Disorder (ZSD) \u2014 PBD8A/8B",
+    "omim_gene": "603360",
+    "locus": "11p11.2"
   }
 ]

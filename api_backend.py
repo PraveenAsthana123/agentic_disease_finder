@@ -30825,6 +30825,54 @@ async def pex3_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex16/overview")
+async def pex16_overview():
+    """PEX16 Overview — cohort KPIs, disease mechanism (type II integral PMP / ER-to-peroxisome delivery /
+    PEX3 recruitment factor / PEX3-PEX16-PEX19 early membrane biogenesis axis), phenotypic spectrum
+    (ZS 30% / NALD 50% / IRD 15% / Atypical 5%), OMIM *603360 / #614876 / #614861, locus 11p11.2,
+    key pharmacological alerts (VPA HIGH RISK triple mechanism / VGB HIGH RISK retinopathy /
+    Fasting EXTREME HAZARD / Lorenzo's Oil INEFFECTIVE — membrane absent / LEV first-line /
+    ACTH Level A IS / No ERT / No HSCT), key concepts, reference standards.
+    """
+    try:
+        import scripts.pex16_dashboard as pex16_
+        return _json_safe(pex16_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex16/breakdown")
+async def pex16_breakdown():
+    """PEX16 Breakdown — 40-patient cohort (ZS 30% / NALD 50% / IRD 15% / Atypical 5%),
+    patient table (ID / phenotype / sex / genotype / liver / seizures / AED / response / DHA),
+    seizure types (6 types, neonatal multifocal to absence), seizure triggers (8 triggers,
+    fasting EXTREME HAZARD), monitoring protocol (14 parameters), clinical thresholds (8),
+    disease lifecycle (6 stages), treatments (7: LEV / ACTH / CLB / LTG / DHA / phytol-diet / UDCA),
+    contraindications (7: VPA HIGH RISK / VGB HIGH RISK / Fasting EXTREME HAZARD /
+    PHT-CBZ-OXC RELATIVE CI / Lorenzo's Oil INEFFECTIVE / HSCT NOT INDICATED / No ERT).
+    """
+    try:
+        import scripts.pex16_dashboard as pex16_
+        return _json_safe(pex16_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex16/definitions")
+async def pex16_definitions():
+    """PEX16 Definitions — gene card (type II integral PMP, PEX3 recruitment factor, 336 aa, 11p11.2),
+    PEX3-PEX16-PEX19 early membrane biogenesis axis, ER-to-peroxisome vesicular pathway, PEX3
+    mislocalization as IF diagnostic clue, 16 key concepts, 13-step diagnostic algorithm,
+    pharmacological distinctions (12 points), differential diagnosis (8 conditions),
+    reference standards.
+    """
+    try:
+        import scripts.pex16_dashboard as pex16_
+        return _json_safe(pex16_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
