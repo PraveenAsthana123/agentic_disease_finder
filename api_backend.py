@@ -30017,6 +30017,65 @@ async def pex10_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex12/overview")
+async def pex12_overview():
+    """PEX12 / ZSD — overview: 40-patient cohort
+    (PEX12-PRIMARY-CATALYTIC-359aa-17q12 / PEX2-PEX10-PEX12-RING-Complex-PEX12-polyUb-QC /
+    PEX12-strongest-autonomous-E3-activity-of-three /
+    PEX12-LOF-single-catalytic-arm-failure-PEX10-scaffold-partially-intact /
+    p.Arg180x-null-most-common / p.Gly271Asp-RING-partial-function-IRD-enabling /
+    ZS-30pct / NALD-45pct / IRD-20pct / Atypical-5pct /
+    3-5pct-All-PBD-ZSD / 40-60-Cases-Worldwide-2026 /
+    Biochemically-IDENTICAL-PEX1-PEX2-PEX6-PEX10-ZSD / VLCFA-C26-ELEVATED /
+    Plasmalogens-RBC-LOW / DHA-low-neuronal-migration / Retinopathy-80pct /
+    DRE-65-70pct-similar-PEX2 / VPA-HIGH-RISK-3-Mechanisms-POLG1-MANDATORY-CPIC-A /
+    VGB-HIGH-RISK-Retinopathy-additive / ACTH-Level-A-IS / LEV-FIRST-LINE /
+    DHA-Level-B-NALD-IRD / Fasting-EXTREME-HAZARD / HSCT-NOT-Indicated /
+    Lorenzo-Oil-INEFFECTIVE / No-ERT-membrane-RING-protein /
+    OMIM-Gene-601758-Disease-614859-266510 / COMPLETES-PEX2-PEX10-PEX12-triad).
+    """
+    try:
+        import scripts.pex12_dashboard as pex12_
+        return _json_safe(pex12_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex12/breakdown")
+async def pex12_breakdown():
+    """PEX12 / ZSD — breakdown: 40-patient cohort, 4 etiologies, 6 seizure types,
+    8 triggers, 14 monitoring parameters, 8 thresholds, 6 lifecycle stages,
+    7 treatments, 7 contraindications.
+    """
+    try:
+        import scripts.pex12_dashboard as pex12_
+        return _json_safe(pex12_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex12/definitions")
+async def pex12_definitions():
+    """PEX12 / ZSD — definitions: 16-concept glossary
+    (PEX12-PRIMARY-CATALYTIC-RING-359aa / PEX12-polyUb-QC-vs-PEX2-monoUb-recycling /
+    PEX12-LOF-catalytic-arm-failure-not-scaffold-collapse /
+    p.Gly271Asp-partial-function-IRD-20pct / p.Arg180x-null-most-common /
+    Biochemically-identical-PEX1-PEX2-PEX6-PEX10-ZSD /
+    C26:0-lyso-PC-NBS / Plasmalogens-LOW-ZSD-NORMAL-ABCD1 /
+    DHA-deficiency-retinopathy-pachygyria / VPA-3-mechanism-CI-POLG1-mandatory /
+    VGB-retinopathy-additive / ACTH-Level-A-IS / Fasting-EXTREME-HAZARD-phytanic /
+    PHT-CBZ-RELATIVE-CI-DHA-depletion-NOT-adrenal /
+    PEX12-40-60-cases-worldwide / COMPLETES-PEX2-PEX10-PEX12-RING-E3-triad),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 8 differential diagnoses
+    (PEX2-ZSD / PEX10-ZSD / PEX1-ZSD / PEX6-ZSD / ABCD1-XLD / Adult-Refsum-PHYH / RCDP-PEX7 / Mitochondrial-POLG1).
+    """
+    try:
+        import scripts.pex12_dashboard as pex12_
+        return _json_safe(pex12_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pex7/overview")
 async def pex7_overview():
     """PEX7 / Rhizomelic Chondrodysplasia Punctata Type 1 (RCDP1) — overview:

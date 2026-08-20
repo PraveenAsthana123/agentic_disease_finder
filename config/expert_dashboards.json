@@ -5129,5 +5129,28 @@
     "color": "#e65100",
     "route": "/aldh5a1",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/aldh5a1/overview|breakdown|definitions verified 200. SiteNav wired after MCOLN1. expert_dashboards.json count 326->327."
+  },
+  {
+    "id": "pex12",
+    "name": "PEX12 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / Peroxisome-Biogenesis-Disorder-PBD / PEX12-RING-Finger-E3-Ubiquitin-Ligase-PRIMARY-CATALYTIC-359aa / PEX2-PEX10-PEX12-RING-Complex-PEX12-Strongest-Autonomous-E3-Activity / PEX12-Drives-PEX5-POLYUBIQUITINATION-QC-Degradation / PEX2-Drives-MONOUBIQUITINATION-Recycling-Complementary / PEX12-LOF-Single-Catalytic-Arm-Failure-PEX10-Scaffold-Partially-Intact / p.Arg180x-Most-Common-Null / p.Gly271Asp-RING-Partial-Function-IRD-Enabling / No-Founder-Hypomorphic-Allele-Unlike-PEX1-G843D-PEX6-R860W / 3-5pct-All-PBD-ZSD-Similar-PEX2 / 40-60-Cases-Worldwide-2026 / ZS-30pct / NALD-45pct / IRD-20pct-Similar-PEX2 / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired-VLCFA-Plasmalogens-DHA-Phytanic-Pristanic-Pipecolic-Bile-Acids / Biochemically-IDENTICAL-PEX1-ZSD-PEX2-ZSD-PEX6-ZSD-PEX10-ZSD-NGS-Panel-Only-Distinguishes / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / DRE-65-70pct-Similar-PEX2-Higher-Than-PEX10 / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Inhibition-Carnitine-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD-Additive-Irreversible-Blindness / ACTH-Level-A-IS-Preferred-Over-VGB / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / CLB-Level-B / LTG-Level-C / Phytol-Restricted-Diet-Level-B-IRD / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY-IV-VitK-Cholestatic-Coagulopathy / HSCT-NOT-Indicated-Not-Inflammatory-Unlike-ABCD1 / Lorenzo-Oil-INEFFECTIVE-Import-Absent-Mechanism-Mismatch / No-ERT-Membrane-RING-Protein-Not-Soluble-Enzyme / COMPLETES-PEX2-PEX10-PEX12-RING-E3-Ubiquitin-Ligase-Triad / AR-Biallelic-LOF / 17q12 / OMIM-Gene-601758-Disease-614859-266510)",
+    "status": "built",
+    "category": "epilepsy-genetics-peroxisomal-biogenesis-ring-e3-complex",
+    "gene": "PEX12",
+    "disease": "Zellweger Spectrum Disorder (ZSD) / Peroxisome Biogenesis Disorder (PBD) \u2014 PEX12",
+    "locus": "17q12",
+    "omim_gene": "601758",
+    "omim_disease": "614859 / 266510",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/pex12/overview",
+      "/api/pex12/breakdown",
+      "/api/pex12/definitions"
+    ],
+    "frontend": "portal-next/app/pex12/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#1b5e20",
+    "route": "/pex12",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/pex12/overview|breakdown|definitions verified 200. SiteNav wired after PEX10. expert_dashboards.json count 329->330. COMPLETES PEX2-PEX10-PEX12 RING E3 ubiquitin ligase triad."
   }
 ]
