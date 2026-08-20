@@ -29888,6 +29888,71 @@ async def pex6_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex2/overview")
+async def pex2_overview():
+    """PEX2 / Zellweger Spectrum Disorder (ZSD) — overview:
+    PEX2 (PXMP3/PAF-1) RING finger E3 ubiquitin ligase (305 aa) / PEX2-PEX10-PEX12 RING complex /
+    8q21.13 / AR biallelic LOF / ~3-5% of all PBD-ZSD / ~20-30 cases worldwide 2026 /
+    Monoubiquitinates PEX5-Cys11 for retrotranslocation by PEX1-PEX6 AAA-ATPase /
+    No common hypomorphic allele (unlike PEX1-G843D or PEX6-R860W) → spectrum SKEWED SEVERE /
+    ZS-30% / NALD-45% / IRD-20% / Atypical-5% (more ZS+NALD than PEX6 cohorts) /
+    p.Arg119* most frequent / p.Cys295Ser RING zinc-coordination null-equivalent /
+    ALL peroxisomal pathways impaired: VLCFA elevated + plasmalogens LOW + DHA low + phytanic/pristanic up + pipecolic up /
+    Biochemically IDENTICAL to PEX1-ZSD and PEX6-ZSD — only NGS gene panel distinguishes /
+    Plasmalogens (RBC) LOW — KEY DISTINCTION from ABCD1 (plasmalogens NORMAL in ABCD1) /
+    VPA HIGH RISK (hepatotoxicity+peroxisomal BO inhibition+carnitine) POLG1 MANDATORY (CPIC-A) /
+    VGB HIGH RISK (retinopathy additive) / LEV first-line / DHA Level B / ACTH Level A IS /
+    HSCT NOT indicated / Lorenzo's Oil INEFFECTIVE / No ERT (membrane E3 ligase) / 40-patient cohort.
+    """
+    try:
+        import scripts.pex2_dashboard as pex2_
+        return _json_safe(pex2_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex2/breakdown")
+async def pex2_breakdown():
+    """PEX2 / ZSD — breakdown: 40-patient cohort
+    (ZS-null/null-30% / NALD-mild/null-45% / IRD-hypomorphic/hypomorphic-20% / Atypical-5%),
+    seizure types (Neonatal-multifocal-clonic-ZS-100% / Infantile-spasms-hypsarrhythmia-NALD-45% /
+    Tonic-ZS-NALD-38% / Myoclonic-NALD-IRD-32% / Focal-IRD-22% / GTCS-IRD-18% / SE-ZS-NALD-26%),
+    triggers (Febrile-75% / Fasting-NPO-70% / Phytanic-surge-52% /
+    Metabolic-decompensation-50% / Sleep-deprivation-28% / Anaesthesia-25% / VPA-initiation-18%),
+    treatments (LEV-Level-A-first-line / ACTH-Level-A-IS / CLB-Level-B / LTG-Level-C /
+    DHA-Level-B-NALD-IRD / Phytol-restricted-diet-Level-B-IRD / Cholic-acid-Level-C),
+    contraindications (VPA-HIGH-RISK-3-mechanisms-POLG1-MANDATORY /
+    VGB-HIGH-RISK-retinopathy-additive / PHT-CBZ-RELATIVE-CI-NOT-adrenal /
+    Fasting-EXTREME-HAZARD / Lorenzo-Oil-INEFFECTIVE / HSCT-NOT-INDICATED / No-ERT).
+    """
+    try:
+        import scripts.pex2_dashboard as pex2_
+        return _json_safe(pex2_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex2/definitions")
+async def pex2_definitions():
+    """PEX2 / ZSD — definitions: 16-concept glossary
+    (PEX2-RING-E3-ligase-305aa / PEX2-PEX10-PEX12-RING-complex /
+    PEX5-Cys11-monoubiquitination-recycling / PEX5-Lys-polyubiquitination-degradation /
+    E3-ligase-ATPase-co-dependence / No-hypomorphic-allele-spectrum-skewed-severe /
+    p.Cys295Ser-RING-zinc-null-equivalent / Biochemically-identical-PEX1-PEX6-ZSD /
+    C26:0-lyso-PC-NBS / Plasmalogens-LOW-ZSD-NORMAL-ABCD1 /
+    DHA-deficiency-retinopathy-pachygyria / VPA-3-mechanism-CI-POLG1-mandatory /
+    VGB-retinopathy-additive / ACTH-Level-A-IS / Fasting-EXTREME-HAZARD-phytanic /
+    PEX2-ultra-rarity-20-30-worldwide),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (PEX1-ZSD / PEX6-ZSD / ABCD1-XLD / Adult-Refsum-PHYH / RCDP-PEX7 / Krabbe / Mitochondrial-POLG1).
+    """
+    try:
+        import scripts.pex2_dashboard as pex2_
+        return _json_safe(pex2_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pex7/overview")
 async def pex7_overview():
     """PEX7 / Rhizomelic Chondrodysplasia Punctata Type 1 (RCDP1) — overview:
