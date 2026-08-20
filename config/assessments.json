@@ -140,7 +140,14 @@
      "level": "severe"
     }
    ],
-   "alert": "Item 9 (self-harm) > 0 -> escalate regardless of total"
+   "alert": "Item 9 (self-harm) > 0 -> escalate regardless of total",
+   "status": "built",
+   "dashboard": "phq9-dashboard/page.jsx",
+   "endpoints": [
+    "/api/phq9-dashboard/overview",
+    "/api/phq9-dashboard/breakdown",
+    "/api/phq9-dashboard/definitions"
+   ]
   },
   {
    "id": "GAD7",
