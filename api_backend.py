@@ -30007,6 +30007,55 @@ async def gnpat_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/agps/overview")
+async def agps_overview():
+    """AGPS / RCDP3 — overview: 12 KPIs
+    (AGPS-ADHAPS-658aa-PTS1-AKL / Step2-Plasmalogen-Biosynthesis-Ether-Bond-Formation / 2q33.3 /
+    Plasmalogens-RBC-SEVERELY-LOW / Phytanic-NORMAL-PEX7-Intact-KEY-DISTINCTION-RCDP1 /
+    VLCFA-NORMAL / No-Founder-Mutation / Seizures-58pct / Cataracts-60pct /
+    Drug-resistant-30pct / RCDP3-5pct-All-RCDP / Alkylglycerols-Step2-Bypass).
+    """
+    try:
+        import scripts.agps_dashboard as agps_
+        return _json_safe(agps_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/agps/breakdown")
+async def agps_breakdown():
+    """AGPS / RCDP3 — breakdown: 3 phenotypic classes
+    (Classic-null-null-40pct / Intermediate-null-hypomorphic-40pct / Mild-20pct),
+    40 synthetic patients (RCDP3-01 to RCDP3-40), 5 seizure types, 7 triggers,
+    7 monitoring parameters, 6 lifecycle stages, 6 treatments,
+    5 contraindications (VGB-HIGH-RISK / VPA-RELATIVE-CI / PHT-CBZ-CAN-USE / Typical-AP-EPS / Fasting-low-risk).
+    """
+    try:
+        import scripts.agps_dashboard as agps_
+        return _json_safe(agps_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/agps/definitions")
+async def agps_definitions():
+    """AGPS / RCDP3 — definitions: 15-concept glossary
+    (AGPS-ADHAPS-Step2-enzyme-PTS1 / Phytanic-NORMAL-PEX7-intact-KEY-DISTINCTION /
+    Plasmalogen-biosynthesis-2-step-GNPAT-AGPS / Alkylglycerols-Step2-bypass /
+    VLCFA-NORMAL / No-founder-mutation / VGB-HIGH-RISK-cataracts / VPA-RELATIVE-CI-POLG1 /
+    PHT-CBZ-CAN-USE-no-adrenal / No-ERT-peroxisomal-matrix / No-HSCT /
+    Rarest-RCDP-subtype-underdiagnosed / RCDP3-vs-RCDP2-gene-sequencing-only),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (RCDP1-PEX7 / RCDP2-GNPAT / ZSD-PEX1-PEX6 / Adult-Refsum-PHYH /
+    CDPX2-EBP / ABCD1-X-ALD / Non-peroxisomal-skeletal-dysplasias).
+    """
+    try:
+        import scripts.agps_dashboard as agps_
+        return _json_safe(agps_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

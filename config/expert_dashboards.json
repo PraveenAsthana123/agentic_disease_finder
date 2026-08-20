@@ -4946,5 +4946,23 @@
       "/api/gnpat/definitions"
     ],
     "portal_path": "/gnpat"
+  },
+  {
+    "id": "agps",
+    "name": "AGPS Epilepsy (Rhizomelic-Chondrodysplasia-Punctata-Type3-RCDP3 / Alkylglycerone-Phosphate-Synthase-ADHAPS-658aa-PTS1-AKL / Step2-Plasmalogen-Biosynthesis-Ether-Bond-Formation-1-Acyl-DHAP-To-1-Alkyl-DHAP / RCDP3-5pct-All-RCDP-Rarest-Less-30-Cases-Worldwide / Plasmalogens-RBC-SEVERELY-LOW-Same-As-RCDP1-RCDP2 / Phytanic-NORMAL-PEX7-Intact-PHYH-Imported-KEY-DISTINCTION-RCDP1 / VLCFA-NORMAL-PTS1-Intact / No-Founder-Mutation-All-Private-Variants / Rhizomelia-100pct / Stippled-Epiphyses-82pct / Cataracts-60pct / Ichthyosis-58pct / AR-Biallelic-LOF / 2q33.3 / VGB-HIGH-RISK-Cataracts-VF-Additive / VPA-RELATIVE-CI-Hepatotoxicity-POLG1-MANDATORY / PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1 / LEV-FIRST-LINE / ACTH-Level-B-IS / Alkylglycerols-Step2-Bypass-AGPS-Block-Level-C / DHA-Level-C / No-ERT-Peroxisomal-Matrix-Enzyme-NOT-Secreted / No-HSCT / RCDP2-GNPAT-Biochemically-Identical-Gene-Sequencing-Only / POLG1-Mandatory-CPIC-A / AR-Both-Sexes-Equal / 2q33.3)",
+    "status": "built",
+    "category": "peroxisomal",
+    "gene": "AGPS",
+    "disease": "Rhizomelic Chondrodysplasia Punctata Type 3 (RCDP3)",
+    "locus": "2q33.3",
+    "omim_gene": "603051",
+    "omim_disease": "600121",
+    "patients": 40,
+    "api_endpoints": [
+      "/api/agps/overview",
+      "/api/agps/breakdown",
+      "/api/agps/definitions"
+    ],
+    "portal_path": "/agps"
   }
 ]
