@@ -5352,5 +5352,19 @@
       "/api/dlat/breakdown",
       "/api/dlat/definitions"
     ]
+  },
+  {
+    "id": "pdhx",
+    "name": "PDHX Epilepsy (Pyruvate-Dehydrogenase-Complex-Deficiency-E3BP-Component-X / PDHX-E3-Binding-Protein-501aa-Structural-Linker-11p13-Autosomal-Recessive / PDH-Complex-E3BP-Bridges-E2-DLAT-Cubic-Core-And-E3-DLD-NO-Catalytic-Activity / E3BP-Lipoyl-Domain-Lys173-E3-Substrate-Within-PDH-Complex / PDHX-LOF-E3-Cannot-Anchor-Lipoamide-Arms-Not-Regenerated / CRITICAL-DLD-Free-Activity-NORMAL-Or-Slightly-Reduced-Unlike-DLD-Deficiency / BIOCHEMICALLY-IDENTICAL-PDHA1-PDHB-DLAT-LP-Ratio-NORMAL-10-20 / Normal-BCAA-2HG-KEY-NEGATIVES-vs-DLD / Gene-Panel-PDHA1-PDHB-DLAT-PDHX-Mandatory / Large-Genomic-Deletions-20pct-PDHX-Alleles-CNV-MLPA-Recommended / AR-No-Sex-Bias / Leigh-40pct / CC-Agenesis-40pct / KD-FIRST-LINE-Level-A / VPA-ABSOLUTE-CI / 30-50-Cases-Worldwide-2026 / AR-Biallelic-LOF / 11p13 / OMIM-Gene-608769-Disease-245349)",
+    "status": "built",
+    "endpoints": [
+      "/api/pdhx/overview",
+      "/api/pdhx/breakdown",
+      "/api/pdhx/definitions"
+    ],
+    "frontend": "portal-next/app/pdhx/page.jsx",
+    "cohort": "40 patients, PDH-E3BP-deficiency cohort, AR, Leigh syndrome (40%) + Childhood Episodic (25%), no sex bias, large deletions in 20%",
+    "category": "Metabolic Epilepsy \u2014 Pyruvate Dehydrogenase Complex (PDH)",
+    "role": "Epilepsy Specialist / Metabolic Neurologist"
   }
 ]

@@ -31470,6 +31470,68 @@ async def dlat_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pdhx/overview")
+async def pdhx_overview():
+    """PDHX Overview — PDH Complex Component X / E3-Binding Protein (E3BP) Deficiency (AR / 11p13).
+    PDHX encodes E3BP (E3-binding protein / Protein X), a structural linker that anchors E3 (DLD)
+    to the E2 (DLAT) cubic core of the PDH complex. E3BP has NO catalytic activity — it is a
+    structural adaptor. E3BP contains its own lipoyl domain (Lys173) that serves as E3's substrate
+    within the complex. PDHX LOF (~30–50 cases worldwide; AR; 11p13) → E3 cannot anchor to PDH
+    complex → lipoamide arms cannot be regenerated → PDH complex inactive → pyruvate accumulates →
+    lactic acidosis, normal L:P ratio (10–20), elevated plasma alanine, no BCAA elevation (unlike DLD).
+    CRITICAL PDHX-SPECIFIC FEATURE: DLD/E3 free enzyme activity is NORMAL or slightly reduced
+    (unlike DLD deficiency where DLD activity is severely reduced <10% normal). This is the key
+    biochemical fingerprint distinguishing PDHX from DLD deficiency.
+    Large genomic deletions in ~20% of PDHX alleles (11p13 structural instability) — CNV/MLPA needed.
+    Biochemically IDENTICAL to PDHA1/PDHB/DLAT — gene panel PDHA1+PDHB+DLAT+PDHX MANDATORY.
+    Treatment: KD FIRST-LINE (Level A), thiamine trial (Level A, ~32% response), carnitine (Level B),
+    DCA (Level B, partial-loss only), LEV (Level B AED). VPA absolute CI.
+    OMIM gene *608769; disease #245349 (PDH complex deficiency, E3BP type)."""
+    try:
+        import scripts.pdhx_dashboard as pdhx_
+        return _json_safe(pdhx_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdhx/breakdown")
+async def pdhx_breakdown():
+    """PDHX Breakdown — 40-patient PDHX-deficiency cohort. Phenotype classes: Leigh Syndrome
+    (~40%), Severe Neonatal (~25%), Childhood Episodic (~25%), Mild Subacute/Juvenile (~10%).
+    No sex bias (AR). Returns seizure types (focal, tonic, IS, myoclonic), metabolic crisis
+    triggers (febrile illness, glucose load, fasting, exercise), treatments (KD, thiamine,
+    L-carnitine, DCA, LEV), key variants (p.Arg445Cys most common, p.Glu262Lys, p.Arg302His,
+    c.547dupA frameshift, c.1150C>T, large exonic deletions), biomarker table with normal
+    BCAA/2-HG (key negatives vs DLD) and NORMAL free DLD/E3 activity (key distinguisher from
+    DLD deficiency), large_deletion flag (~20% of cohort), and treatment ladder."""
+    try:
+        import scripts.pdhx_dashboard as pdhx_
+        return _json_safe(pdhx_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdhx/definitions")
+async def pdhx_definitions():
+    """PDHX Definitions — gene card (E3BP structural linker, 501 aa, 11p13, AR, OMIM *608769/#245349),
+    mechanism (PDHX LOF → E3 cannot anchor to PDH complex → lipoamide arms not regenerated →
+    PDH complex stalls → pyruvate cannot enter TCA → lactic acidosis), key concepts (E3BP as
+    structural adaptor NOT enzyme, E3BP lipoyl domain Lys173 as E3 substrate in complex,
+    CRITICAL DLD/E3 free activity NORMAL in PDHX vs severely reduced in DLD — the key biochemical
+    fingerprint, biochemically identical to PDHA1/PDHB/DLAT, L:P normal PDH fingerprint,
+    KD bypass mechanism, large deletions ~20% PDHX-specific genomic instability at 11p13,
+    AR no sex bias, thiamine less responsive than PDHA1, VPA absolute CI),
+    diagnostic thresholds (plasma lactate/pyruvate/alanine, L:P ratio 10–20, normal BCAA key negative,
+    normal 2-HG key negative, DLD free activity normal key distinguisher vs DLD, PDHX/E3BP complex
+    activity <10% definitive, CNV/MLPA recommended), differential diagnosis (PDHA1, PDHB, DLAT,
+    DLD, Complex I, PC)."""
+    try:
+        import scripts.pdhx_dashboard as pdhx_
+        return _json_safe(pdhx_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pdhb/overview")
 async def pdhb_overview():
     """PDHB Overview — Pyruvate Dehydrogenase E1-beta Subunit Deficiency (AR / 3p14.3).
