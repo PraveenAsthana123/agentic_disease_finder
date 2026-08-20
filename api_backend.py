@@ -30925,6 +30925,52 @@ async def pex19_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex13/overview")
+async def pex13_overview():
+    """PEX13 Overview — ZSD importomer docking defect (403 aa, 2p15, SH3 domain,
+    PEX13·PEX14·PEX17 importomer complex, PEX5 docking, ~10–15 cases worldwide 2026,
+    ZS 35% · NALD 45% · IRD 15%, OMIM *601789 / #614878 / #614879, 40-patient cohort,
+    biochemically identical to PEX1/PEX6/PEX3/PEX16/PEX19/PEX26/PEX2/PEX10/PEX12-ZSD,
+    peroxisomal membrane PRESENT unlike PEX3/PEX16/PEX19 LOF, importomer channel absent).
+    """
+    try:
+        import scripts.pex13_dashboard as pex13_
+        return _json_safe(pex13_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex13/breakdown")
+async def pex13_breakdown():
+    """PEX13 Breakdown — 40-patient cohort (ZS 14 · NALD 18 · IRD 6 · Atypical 2),
+    genotype-phenotype (null/null → ZS, null/p.Ile384Thr → NALD, p.Ile384Thr/mild → IRD),
+    4 phenotypic class cards, seizure types (6), triggers (8), monitoring protocol (14
+    parameters), clinical thresholds (8), disease lifecycle (6 stages), 7 treatments
+    (LEV/ACTH/CLB/LTG/DHA/phytol-diet/UDCA), 7 contraindications (VPA/VGB/fasting/
+    PHT-CBZ/LorenzoOil/HSCT/ERT).
+    """
+    try:
+        import scripts.pex13_dashboard as pex13_
+        return _json_safe(pex13_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex13/definitions")
+async def pex13_definitions():
+    """PEX13 Definitions — gene card (importomer SH3 domain PMP, 403 aa, 2p15,
+    PEX13·PEX14·PEX17 complex, PEX5 WxxxF docking, membrane present unlike
+    PEX3/PEX16/PEX19 tier, PMP70 present IF clue), 16 key concepts, 13-step
+    diagnostic algorithm, pharmacological distinctions (12 points), differential
+    diagnosis (8 conditions), reference standards.
+    """
+    try:
+        import scripts.pex13_dashboard as pex13_
+        return _json_safe(pex13_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

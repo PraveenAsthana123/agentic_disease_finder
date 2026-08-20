@@ -5191,5 +5191,21 @@
     "api": "/api/pex19/overview|breakdown|definitions",
     "cohort": 40,
     "built_date": "2026-08-20"
+  },
+  {
+    "role": "Epileptologist / Metabolic Neurologist",
+    "id": "pex13",
+    "name": "PEX13 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX13-Importomer-SH3-Docking-Component-403aa-Type-II-Integral-PMP / PEX13-PEX14-PEX17-Importomer-Docking-Translocation-Complex / C-Terminal-SH3-Domain-Binds-WxxxF-WxxxY-Motifs-In-PEX5-PTS1-Receptor / PEX13-LOF-Importomer-Compromised-PEX5-Cannot-Dock-ALL-Matrix-Import-Fails / KEY-DISTINCTION-Peroxisomal-Membrane-PRESENT-PMP70-Positive-IF-Unlike-PEX3-PEX16-PEX19-LOF-Membrane-Absent / PEX14-PRESENT-On-Membrane-Distinguishes-PEX13-LOF-From-PEX14-LOF / p.Ile384Thr-I384T-SH3-Domain-Reduces-PEX5-Binding-50pct-Partial-Function-NALD-IRD-Enabling / p.Arg176x-Null / p.Leu77fs-Null / No-Founder-Hypomorphic-Allele / 1-2pct-All-PBD-ZSD / 10-15-Cases-Worldwide-2026 / ZS-35pct / NALD-45pct / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired-VLCFA-Plasmalogens-DHA-Phytanic-Pristanic-Pipecolic-Bile-Acids / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-PEX3-ZSD-PEX16-ZSD-PEX19-ZSD-PEX26-ZSD-PEX2-ZSD-PEX10-ZSD-PEX12-ZSD-NGS-Panel-Only-Distinguishes / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / DRE-66pct / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Inhibition-Carnitine-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD-Additive-Irreversible-Blindness / ACTH-Level-A-IS-Preferred-Over-VGB / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / Phytol-Restricted-Diet-Level-B-IRD / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY / HSCT-NOT-Indicated-Not-Inflammatory / Lorenzo-Oil-INEFFECTIVE-Importomer-Non-Functional-PEX5-Cannot-Dock / No-ERT-Type-II-Integral-PMP-SH3-Domain-Not-Soluble-Lysosomal-Enzyme / AR-Biallelic-LOF / 2p15 / OMIM-Gene-601789-Disease-614878-614879)",
+    "viz": "KPI grid, phenotypic class bars, patient table, seizure type distribution, importomer mechanism panel, AED risk matrix",
+    "feature": "40 patients \u00b7 4 phenotypic classes \u00b7 ZS 35% / NALD 45% / IRD 15% / Atypical 5% \u00b7 Seizures 82% \u00b7 Drug resistance 66% \u00b7 Plasmalogens SEVERELY LOW \u00b7 VLCFA ELEVATED \u00b7 DHA LOW \u00b7 Peroxisomal membrane PRESENT (PMP70+) unlike PEX3/PEX16/PEX19 \u00b7 Importomer SH3 docking defect",
+    "why": "PEX13 (2p15) encodes a 403-aa type II integral PMP with a C-terminal SH3 domain (cytoplasmic) that is a core component of the importomer (PEX13\u00b7PEX14\u00b7PEX17 docking/translocation complex). PEX13 SH3 domain directly binds WxxxF/WxxxY motifs in PEX5 (PTS1 receptor). PEX13 LOF \u2192 importomer structurally compromised \u2192 PEX5 cannot dock \u2192 ALL matrix import fails. KEY DISTINCTION: peroxisomal membrane IS PRESENT (PMP70+ by IF) unlike PEX3/PEX16/PEX19 LOF where membrane itself absent. Biochemically identical to all other ZSD; ~1-2% all PBD-ZSD; ~10-15 cases worldwide 2026. VPA HIGH RISK. VGB HIGH RISK. VPA POLG1 MANDATORY.",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/pex13/overview",
+      "/api/pex13/breakdown",
+      "/api/pex13/definitions"
+    ],
+    "route": "/pex13"
   }
 ]
