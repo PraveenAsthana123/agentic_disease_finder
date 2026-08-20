@@ -30056,6 +30056,55 @@ async def agps_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/far1/overview")
+async def far1_overview():
+    """FAR1 / RCDP4 — overview: 12 KPIs
+    (FAR1-Fatty-Acyl-CoA-Reductase-1-553aa-PMP-NADPH-dependent / 11p15.3 /
+    Fatty-alcohol-substrate-for-AGPS-Step2 / Plasmalogens-RBC-SEVERELY-LOW /
+    Phytanic-NORMAL-PEX7-Intact-KEY-DISTINCTION-RCDP1 / VLCFA-NORMAL-PTS1-Intact /
+    RCDP4-rarest-molecularly-defined-RCDP-15-20-cases-worldwide /
+    VGB-HIGH-RISK-cataracts / VPA-RELATIVE-CI-POLG1 /
+    PHT-CBZ-CAN-USE-no-adrenal / No-ERT-PMP / No-HSCT /
+    Alkylglycerols-bypass-FAR1-block / AR-biallelic-LOF).
+    """
+    try:
+        import scripts.far1_dashboard as far1_
+        return _json_safe(far1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/far1/breakdown")
+async def far1_breakdown():
+    """FAR1 / RCDP4 — breakdown: 3 phenotypic classes
+    (Classic-38pct-null-null / Intermediate-42pct-null-hypomorphic /
+    Mild-20pct-hypomorphic-hypomorphic / 40-synthetic-patients /
+    Seizure-types-triggers-monitoring-lifecycle / Treatments-contraindications).
+    """
+    try:
+        import scripts.far1_dashboard as far1_
+        return _json_safe(far1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/far1/definitions")
+async def far1_definitions():
+    """FAR1 / RCDP4 — definitions: 15-concept glossary
+    (FAR1-PMP-fatty-alcohol-AGPS-substrate / Phytanic-NORMAL-PEX7-intact /
+    Plasmalogen-biosynthesis-FAR1-provides-fatty-alcohol-for-AGPS /
+    Alkylglycerols-bypass-FAR1-block / No-ERT-PMP-not-lysosomal),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (RCDP1-PEX7 / RCDP2-GNPAT / RCDP3-AGPS / ZSD-PEX1-PEX6 / Adult-Refsum-PHYH /
+    CDPX2-EBP / ABCD1-X-ALD / Non-peroxisomal-skeletal-dysplasias).
+    """
+    try:
+        import scripts.far1_dashboard as far1_
+        return _json_safe(far1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

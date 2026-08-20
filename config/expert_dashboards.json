@@ -4964,5 +4964,20 @@
       "/api/agps/definitions"
     ],
     "portal_path": "/agps"
+  },
+  {
+    "role": "Epileptologist / Metabolic Neurologist",
+    "name": "FAR1 Epilepsy (RCDP4 \u2014 Fatty Acyl-CoA Reductase 1 Deficiency)",
+    "viz": "KPI grid, phenotypic class bars, patient table, seizure type distribution, biochemical profile, AED risk matrix",
+    "feature": "40 patients \u00b7 3 phenotypic classes \u00b7 Classic 38% / Intermediate 42% / Mild 20% \u00b7 Seizures 55% \u00b7 Drug resistance 28% \u00b7 Cataracts 58% \u00b7 Plasmalogens SEVERELY LOW \u00b7 Phytanic NORMAL \u00b7 VLCFA NORMAL \u00b7 Alkylglycerols bypass FAR1 block",
+    "why": "FAR1 (11p15.3) provides the fatty alcohol substrate for AGPS Step 2 ether-bond formation. FAR1 LOF \u2192 no fatty alcohol \u2192 AGPS cannot form ether bond \u2192 plasmalogens severely low. Biochemically near-identical to RCDP2/RCDP3; only gene sequencing distinguishes. Rarest molecularly defined RCDP (~15\u201320 cases worldwide 2026). VGB HIGH RISK (cataracts). VPA RELATIVE CI (POLG1 MANDATORY).",
+    "priority": "P1",
+    "status": "built",
+    "endpoints": [
+      "/api/far1/overview",
+      "/api/far1/breakdown",
+      "/api/far1/definitions"
+    ],
+    "route": "/far1"
   }
 ]
