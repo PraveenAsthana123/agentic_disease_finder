@@ -4895,5 +4895,16 @@
     "route": "/abcd1",
     "category": "epilepsy-genetics-peroxisomal-xald",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/abcd1/overview|breakdown|definitions verified 200. SiteNav wired after NPC2. expert_dashboards.json count 313->314."
+  },
+  {
+    "id": "pex1",
+    "role": "Neurologist",
+    "name": "PEX1 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / Peroxisome-Biogenesis-Disorder-PBD / PEX1-PEX6-AAA-ATPase-PEX5-Retrotranslocation / Most-Common-PBD-65pct-All-ZSD / AR-Biallelic-LOF / 7q21.2 / ALL-Peroxisomal-Functions-Impaired-Simultaneously / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / VLCFA-Phytanic-Pristanic-Pipecolic-DHA-ALL-ABNORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / p.Gly843Asp-G843D-30pct-European-Founder-Hypomorphic / ZS-Null-Null-Neonatal-Seizures-100pct-Fatal-12M / NALD-G843D-Null-Infantile-Spasms-40-60pct / IRD-G843D-Homozygous-Focal-30-50pct-Adulthood / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Carnitine / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / ACTH-Level-A-IS-Preferred-Over-VGB / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY / HSCT-NOT-Indicated-Unlike-ABCD1 / Lorenzo-Oil-INEFFECTIVE-Import-Absent / POLG1-Mandatory-CPIC-A / No-ERT-2026 / AR-Both-Sexes-Equal / 7q21.2)",
+    "status": "built",
+    "category": "epilepsy-genetics-peroxisomal-zsd",
+    "page": "/pex1",
+    "api": "/api/pex1/overview|breakdown|definitions",
+    "cohort": "40 patients",
+    "endpoints_verified": "200"
   }
 ]

@@ -29760,6 +29760,70 @@ async def mcoln1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex1/overview")
+async def pex1_overview():
+    """PEX1 / Zellweger Spectrum Disorder (ZSD) — overview:
+    PEX1–PEX6 AAA-ATPase heterodimer / 7q21.2 / AR biallelic LOF /
+    Most common PBD-ZSD (~65% of all ZSD) / ALL peroxisomal functions impaired simultaneously /
+    Plasmalogens (RBC) LOW — PATHOGNOMONIC / KEY DISTINCTION FROM ABCD1 (plasmalogens NORMAL) /
+    DHA low → neuronal migration defects (pachygyria ZS) / VLCFA elevated + phytanic + pipecolic /
+    ZS (null+null): neonatal seizures 100% lethal <12M / NALD (G843D+null): IS 40-60% /
+    IRD (G843D+G843D): focal 30-50% adults / VPA HIGH RISK (hepatotoxicity+peroxisomal BO inhibition+carnitine) /
+    VGB HIGH RISK (retinopathy universal ZS/NALD) / LEV first-line / DHA Level B / ACTH Level A IS /
+    HSCT NOT indicated / Lorenzo's Oil INEFFECTIVE / POLG1 mandatory / No ERT 2026 /
+    40-patient cohort (ZS-30%/NALD-25%/IRD-28%/Atypical-10%/NBS-7%).
+    """
+    try:
+        import scripts.pex1_dashboard as pex1_
+        return _json_safe(pex1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex1/breakdown")
+async def pex1_breakdown():
+    """PEX1 / ZSD — breakdown: 40-patient cohort
+    (Zellweger-ZS-30% / NALD-Intermediate-25% / IRD-Attenuated-28% /
+    Atypical-Late-Onset-10% / NBS-Presymptomatic-7%), seizure types
+    (Multifocal-Clonic-Tonic-Neonatal-ZS-62% / Infantile-Spasms-Hypsarrhythmia-NALD-40% /
+    Focal-Posterior-IRD-38% / Myoclonic-ZS-NALD-35% / GTCS-IRD-28% / SE-ZS-NALD-25%),
+    triggers (Febrile-55% / Dietary-Phytol-IRD-42% / Missed-AED-38% /
+    Fasting-Catabolism-35% / Surgery-Anaesthesia-30% / Sleep-deprivation-25% / Photosensitivity-IRD-18%),
+    treatments (LEV-first-line / DHA-LevelB / ACTH-LevelA-IS / CLB-LevelB / LTG-LevelC-IRD /
+    Cholic-acid-experimental / Phytol-restricted-diet-IRD / Vit-K-LevelA-ZS-NALD /
+    CZP-myoclonus / Piracetam-LevelC),
+    contraindications (VPA-HIGH-RISK-3-mechanisms / VGB-HIGH-RISK-retinopathy /
+    PHT-RELATIVE-CI / CBZ-OXC-RELATIVE-CI / PB-RELATIVE-CI / Lorenzo-Oil-INEFFECTIVE /
+    HSCT-NOT-INDICATED).
+    """
+    try:
+        import scripts.pex1_dashboard as pex1_
+        return _json_safe(pex1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex1/definitions")
+async def pex1_definitions():
+    """PEX1 / ZSD — definitions: 16-concept glossary
+    (PEX1-LOF-PEX5-retrotranslocation-failure / ZSD-spectrum-ZS-NALD-IRD /
+    p.Gly843Asp-G843D-hypomorphic-30pct-European-founder / Plasmalogens-LOW-ZSD-NORMAL-ABCD1-KEY-DIFFERENTIAL /
+    All-peroxisomal-pathways-impaired-simultaneously / DHA-low-neuronal-migration-defects /
+    Cortical-migration-defect-pachygyria-ZS-PATHOGNOMONIC / HSCT-NOT-indicated /
+    Lorenzo-Oil-INEFFECTIVE / VPA-HIGH-RISK-3-mechanisms / VGB-HIGH-RISK-retinopathy /
+    PHT-RELATIVE-CI-hepatic-neuropathy-NOT-adrenal / Fasting-extreme-hazard-phytanic-surge /
+    Dietary-phytol-restriction-IRD / NBS-C26:0-lyso-PC-differential-plasmalogens /
+    POLG1-mandatory-CPIC-A),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 5 differential diagnoses
+    (ABCD1-XLD / PHYH-Refsum / GALC-Krabbe / ARSA-MLD / Lissencephaly-LIS1).
+    """
+    try:
+        import scripts.pex1_dashboard as pex1_
+        return _json_safe(pex1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
