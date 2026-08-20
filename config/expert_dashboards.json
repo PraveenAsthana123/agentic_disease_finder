@@ -5077,5 +5077,28 @@
     "omim_gene": "601641",
     "inheritance": "AR",
     "script": "scripts/acox2_dashboard.py"
+  },
+  {
+    "id": "aldh5a1",
+    "name": "ALDH5A1 Epilepsy (Succinic-Semialdehyde-Dehydrogenase-Deficiency-SSADHA / 4-Hydroxybutyric-Aciduria / GABA-Catabolism-Final-Step-SSA-to-Succinate / GHB-PATHOGENIC-METABOLITE / Urine-GHB-PATHOGNOMONIC-100-1000x-Normal / Brain-MRS-GHB-2.41ppm-In-Vivo / Globus-Pallidus-T2-Hyperintensity-80pct / VGB-ABSOLUTE-CI-UNIQUE-METABOLIC-MECHANISM-NOT-Retinal / VGB-Inhibits-GABA-T-MORE-SSA-SSAR-MORE-GHB-Worsening / KD-Precision-Rx-BHB-Inhibits-SSAR-Reduces-GHB / Epilepsy-50pct / DRE-45pct / ID-100pct / ASD-50pct / VPA-Level-A-POLG1-MANDATORY-CPIC-A / KD-Level-B-Early / AR-Biallelic-LOF / 6p22.3 / 350-500-Cases-Worldwide-2026 / OMIM-271980)",
+    "status": "built",
+    "category": "epilepsy-genetics-gaba-catabolism",
+    "gene": "ALDH5A1",
+    "disease": "Succinic Semialdehyde Dehydrogenase Deficiency (SSADHA) / 4-Hydroxybutyric Aciduria",
+    "locus": "6p22.3",
+    "omim_gene": "610045",
+    "omim_disease": "271980",
+    "inheritance": "AR",
+    "cohort_size": 40,
+    "api_endpoints": [
+      "/api/aldh5a1/overview",
+      "/api/aldh5a1/breakdown",
+      "/api/aldh5a1/definitions"
+    ],
+    "frontend": "portal-next/app/aldh5a1/page.jsx",
+    "built_date": "2026-08-19",
+    "color": "#e65100",
+    "route": "/aldh5a1",
+    "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/aldh5a1/overview|breakdown|definitions verified 200. SiteNav wired after MCOLN1. expert_dashboards.json count 326->327."
   }
 ]

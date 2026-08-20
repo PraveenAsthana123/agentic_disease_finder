@@ -30495,6 +30495,41 @@ async def acox2_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/aldh5a1/overview")
+async def aldh5a1_overview():
+    """ALDH5A1 (Succinic Semialdehyde Dehydrogenase Deficiency / SSADHA / 4-Hydroxybutyric Aciduria)
+    Overview — 40-patient cohort, GABA catabolism final step, GHB biomarker, VGB ABSOLUTE CI.
+    """
+    try:
+        import scripts.aldh5a1_dashboard as aldh5a1_
+        return _json_safe(aldh5a1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/aldh5a1/breakdown")
+async def aldh5a1_breakdown():
+    """ALDH5A1 Breakdown — seizure types, triggers, GHB histogram, ID severity, treatment counts."""
+    try:
+        import scripts.aldh5a1_dashboard as aldh5a1_
+        return _json_safe(aldh5a1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/aldh5a1/definitions")
+async def aldh5a1_definitions():
+    """ALDH5A1 Definitions — gene card, GABA catabolism pathway, biomarkers, key concepts,
+    pharmacological distinctions (VGB ABSOLUTE CI — unique metabolic mechanism), thresholds,
+    treatments, differential diagnosis, references.
+    """
+    try:
+        import scripts.aldh5a1_dashboard as aldh5a1_
+        return _json_safe(aldh5a1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
