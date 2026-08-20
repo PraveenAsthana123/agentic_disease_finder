@@ -30347,6 +30347,81 @@ async def amacr_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/phyh/overview")
+async def phyh_overview():
+    """PHYH (Phytanoyl-CoA Hydroxylase) Deficiency / Adult Refsum Disease — overview: 12 KPIs
+    (PHYH-338aa-PTS2-10p13-2OG-Dioxygenase /
+    Alpha-Oxidation-Step1-Phytanoyl-CoA-to-2-Hydroxyphytanoyl-CoA /
+    PHYTANIC-SEVERELY-ELEVATED-SOLE-ELEVATED-METABOLITE /
+    VLCFA-NORMAL-KEY-DISTINCTION-ABCD1-ZSD-HSD17B4-ACOX1 /
+    PLASMALOGENS-NORMAL-KEY-DISTINCTION-ZSD-RCDP /
+    PRISTANIC-NORMAL-KEY-DISTINCTION-AMACR-SCP2-HSD17B4 /
+    RP-95pct-MOST-PROMINENT-FEATURE /
+    Cerebellar-Ataxia-90pct / Polyneuropathy-90pct / Anosmia-70pct-Pathognomonic /
+    Cardiac-Arrhythmia-40pct-Life-Threatening /
+    Epilepsy-20pct-LESS-Than-AMACR-60pct-SCP2-40pct /
+    VGB-ABSOLUTE-CI-RP-95pct-STRONGEST-VGB-CI-ALL-Peroxisomal-Epilepsy /
+    Fasting-HAZARD-Adipose-Phytanic-Mobilisation-IV-Dextrose-MANDATORY /
+    Phytol-Restricted-Diet-Level-A-GOLD-STANDARD /
+    Plasmapheresis-Level-B-Acute-Crisis /
+    PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1-ABSOLUTE-CI /
+    VPA-RELATIVE-CI-POLG1-MANDATORY-CPIC-A /
+    LEV-FIRST-LINE / No-ERT / No-HSCT / No-Lorenzos-Oil-VLCFA-Normal /
+    AR-Biallelic-LOF-200-Cases-Worldwide-2026 / OMIM-266500).
+    """
+    try:
+        import scripts.phyh_dashboard as phyh_
+        return _json_safe(phyh_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/phyh/breakdown")
+async def phyh_breakdown():
+    """PHYH deficiency / Adult Refsum Disease — breakdown: 3 phenotypic classes
+    (Classic-Tetrad-RP+Ataxia+Neuropathy+CSF-Protein-55pct /
+    Attenuated-RP-Dominant-30pct-misdiagnosed-isolated-RP /
+    Cardiac-Prominent-15pct-AV-Block-Life-Threatening /
+    40-synthetic-patients / Seizure-types-triggers-monitoring-lifecycle /
+    Treatments-contraindications-diet-plasmapheresis-fasting-protocol /
+    VGB-Absolute-CI-RP-95pct / Fasting-HAZARD-IV-Dextrose /
+    Phytol-Diet-Level-A / Cardiac-Monitoring-Holter-Echo).
+    """
+    try:
+        import scripts.phyh_dashboard as phyh_
+        return _json_safe(phyh_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/phyh/definitions")
+async def phyh_definitions():
+    """PHYH deficiency / Adult Refsum Disease — definitions:
+    (Alpha-Oxidation-Step1-Phytanoyl-CoA-Hydroxylase /
+    Phytanic-Severely-Elevated-Sole-Elevated-Metabolite /
+    VLCFA-NORMAL-KEY-DISTINCTION /
+    Fasting-Hazard-Phytanic-Crisis-Adipose-Lipolysis /
+    VGB-ABSOLUTE-CI-RP-95pct-STRONGEST-Peroxisomal-VGB-CI /
+    VPA-RELATIVE-CI-POLG1-MANDATORY /
+    PHT-CBZ-CAN-USE-No-Adrenal /
+    Phytol-Diet-Level-A-GOLD-STANDARD /
+    Plasmapheresis-Level-B /
+    PHYH-vs-PEX7-Plasmalogens-KEY-Distinction /
+    Anosmia-70pct-Pathognomonic-Clue /
+    Cardiac-Monitoring-AV-Block-Life-Threatening /
+    No-ERT-No-HSCT-No-Lorenzos-Oil),
+    15 key concepts, 13-step diagnostic algorithm,
+    14 pharmacological distinctions, 7 differential diagnoses
+    (AMACR / PEX7-RCDP1 / ZSD-PEX1-PEX6 / ABCD1-X-ALD /
+    HSD17B4-SCP2-AMACR-branched-chain / Isolated-RP / CMT).
+    """
+    try:
+        import scripts.phyh_dashboard as phyh_
+        return _json_safe(phyh_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

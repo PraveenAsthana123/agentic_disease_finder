@@ -5043,5 +5043,21 @@
     "category": "Peroxisomal / Rare Epilepsy \u2014 Branched-Chain Beta-Oxidation",
     "priority": "high",
     "description": "40-patient AMACR cohort, 3 phenotypic classes (Epilepsy-Predominant-40%/Neuropathy-Predominant-35%/Mixed-25%), 5 seizure types (Focal-temporal-55%/BTCS-40%/Myoclonic-25%/Parietal-occipital-15%/SE-5%), 7 triggers (Dietary-phytol-45%/Febrile-38%/Sleep-dep-30%/Missed-AED-25%/VPA-18%/VGB-15%/Fasting-12%), 9 monitoring parameters, 6 lifecycle stages, 11 treatments (LEV-first/OXC-focal-CAN-USE/CBZ-CAN-USE/PHT-CAN-USE/CLZ-myoclonus-adjunct/VPA-RELATIVE-CI/VGB-RELATIVE-CI-HIGHEST-visual-risk/Lorenzo-NOT-APPLICABLE/Phytol-diet-Level-C/DHA-Level-C/No-ERT/No-HSCT), 15 key concepts, 12-step diagnostic algorithm, 13 pharmacological distinctions, 7 differential diagnoses."
+  },
+  {
+    "id": "phyh",
+    "name": "PHYH Epilepsy (Adult-Refsum-Disease-ARD / Phytanoyl-CoA-2-Hydroxylase-338aa-PTS2-RLx5HL-2OG-Dioxygenase / Alpha-Oxidation-Step1-Phytanoyl-CoA-to-2-Hydroxyphytanoyl-CoA / PHYTANIC-SEVERELY-ELEVATED-SOLE-ELEVATED-PEROXISOMAL-METABOLITE / VLCFA-NORMAL-KEY-DISTINCTION-ABCD1-ZSD-HSD17B4-ACOX1 / PLASMALOGENS-NORMAL-KEY-DISTINCTION-ZSD-RCDP / PRISTANIC-NORMAL-KEY-DISTINCTION-AMACR-SCP2-HSD17B4 / RP-95pct-MOST-PROMINENT / Cerebellar-Ataxia-90pct / Polyneuropathy-90pct / Anosmia-70pct-PATHOGNOMONIC / Cardiac-Arrhythmia-40pct-LIFE-THREATENING / Epilepsy-20pct-LESS-Than-AMACR / VGB-ABSOLUTE-CI-RP-95pct-STRONGEST-VGB-CI-ALL-Peroxisomal / Fasting-HAZARD-IV-Dextrose-MANDATORY / Phytol-Restricted-Diet-Level-A-GOLD-STANDARD / Plasmapheresis-Level-B-Acute-Crisis / PHT-CBZ-CAN-USE-No-Adrenal / VPA-RELATIVE-CI-POLG1-MANDATORY / LEV-FIRST-LINE / No-ERT / No-HSCT / No-Lorenzos-Oil / AR-Biallelic-LOF / 10p13 / 200-Cases-Worldwide-2026 / OMIM-266500)",
+    "status": "built",
+    "route": "/phyh",
+    "api": [
+      "/api/phyh/overview",
+      "/api/phyh/breakdown",
+      "/api/phyh/definitions"
+    ],
+    "cohort": 40,
+    "locus": "10p13",
+    "omim_disease": "266500",
+    "omim_gene": "602026",
+    "inheritance": "AR"
   }
 ]
