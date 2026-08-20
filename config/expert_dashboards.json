@@ -5152,5 +5152,18 @@
     "color": "#1b5e20",
     "route": "/pex12",
     "built_note": "Built 2026-08-19. 40-patient cohort. 3 endpoints /api/pex12/overview|breakdown|definitions verified 200. SiteNav wired after PEX10. expert_dashboards.json count 329->330. COMPLETES PEX2-PEX10-PEX12 RING E3 ubiquitin ligase triad."
+  },
+  {
+    "id": "pex26",
+    "name": "PEX26 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX26-Membrane-Anchor-Docking-Platform-PEX1-PEX6-AAA-ATPase-305aa / PEX26-N-Terminal-Cytoplasmic-Recruits-PEX6-D2-AAA-Domain / PEX26-Tail-Anchored-C-Terminal-TMD-GET-Pathway / PEX26-LOF-PEX1-PEX6-Cytoplasmic-Cannot-Retrotranslocate-PEX5 / Mechanistic-Hierarchy-PEX26-Anchor-PEX1-PEX6-Motor-PEX2-PEX10-PEX12-RING-E3-Ubiquitin-Ligase / p.Arg275x-Null-Most-Common / p.Arg98Trp-R98W-Partial-Docking-IRD-Enabling / No-Founder-Hypomorphic-Allele-Unlike-PEX1-G843D-PEX6-R860W / 2-4pct-All-PBD-ZSD / 15-25-Cases-Worldwide-2026 / ZS-25pct / NALD-50pct / IRD-20pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired-VLCFA-Plasmalogens-DHA-Phytanic-Pristanic-Pipecolic-Bile-Acids / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-PEX2-ZSD-PEX10-ZSD-PEX12-ZSD-NGS-Panel-Only-Distinguishes / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / DRE-60-65pct / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Inhibition-Carnitine-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD-Additive-Irreversible-Blindness / ACTH-Level-A-IS-Preferred-Over-VGB / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / Phytol-Restricted-Diet-Level-B-IRD / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY / HSCT-NOT-Indicated-Not-Inflammatory-Unlike-ABCD1 / Lorenzo-Oil-INEFFECTIVE-Import-Absent-Mechanism-Mismatch / No-ERT-Tail-Anchored-Membrane-Protein-Not-Soluble-Enzyme / COMPLETES-PEX26-PEX1-PEX6-Retrotranslocation-Docking-Machinery / AR-Biallelic-LOF / 22q11.21 / OMIM-Gene-608666-Disease-614864-614865)",
+    "category": "epilepsy-genetics-peroxisomal-biogenesis-anchor-atpase-docking",
+    "status": "built",
+    "endpoints": [
+      "/api/pex26/overview",
+      "/api/pex26/breakdown",
+      "/api/pex26/definitions"
+    ],
+    "frontend": "/portal-next/app/pex26/page.jsx",
+    "cohort_size": 40
   }
 ]

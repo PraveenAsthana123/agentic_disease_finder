@@ -30076,6 +30076,65 @@ async def pex12_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex26/overview")
+async def pex26_overview():
+    """PEX26 / ZSD — overview: 40-patient cohort
+    (PEX26-MEMBRANE-ANCHOR-305aa-22q11.21 / PEX26-DOCKING-PLATFORM-PEX1-PEX6-AAA-ATPase /
+    PEX26-N-Terminal-Cytoplasmic-Domain-Recruits-PEX6-D2-AAA-Domain /
+    PEX26-LOF-PEX1-PEX6-Remains-Cytoplasmic-Cannot-Retrotranslocate-PEX5 /
+    p.Arg98Trp-R98W-Partial-Docking-IRD-Enabling / p.Arg275x-Null-Most-Common /
+    ZS-25pct / NALD-50pct / IRD-20pct / Atypical-5pct /
+    2-4pct-All-PBD-ZSD / 15-25-Cases-Worldwide-2026 /
+    Biochemically-IDENTICAL-PEX1-PEX6-PEX2-PEX10-PEX12-ZSD /
+    VLCFA-C26-ELEVATED / Plasmalogens-RBC-LOW / DHA-low /
+    DRE-60-65pct / VPA-HIGH-RISK-3-Mechanisms-POLG1-MANDATORY-CPIC-A /
+    VGB-HIGH-RISK-Retinopathy-additive / ACTH-Level-A-IS / LEV-FIRST-LINE /
+    DHA-Level-B-NALD-IRD / Fasting-EXTREME-HAZARD / HSCT-NOT-Indicated /
+    Lorenzo-Oil-INEFFECTIVE / No-ERT-Tail-Anchored-Membrane-Protein /
+    OMIM-Gene-608666-Disease-614864-614865 /
+    COMPLETES-PEX26-PEX1-PEX6-Retrotranslocation-Docking-Machinery).
+    """
+    try:
+        import scripts.pex26_dashboard as pex26_
+        return _json_safe(pex26_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex26/breakdown")
+async def pex26_breakdown():
+    """PEX26 / ZSD — breakdown: 40-patient cohort, 4 etiologies, 6 seizure types,
+    8 triggers, 14 monitoring parameters, 8 thresholds, 6 lifecycle stages,
+    7 treatments, 7 contraindications.
+    """
+    try:
+        import scripts.pex26_dashboard as pex26_
+        return _json_safe(pex26_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex26/definitions")
+async def pex26_definitions():
+    """PEX26 / ZSD — definitions: 16-concept glossary
+    (PEX26-MEMBRANE-ANCHOR-305aa / PEX26-Tail-Anchored-GET-Pathway /
+    PEX26-N-Terminal-Cytoplasmic-Docking-PEX6-D2-AAA /
+    PEX26-LOF-PEX1-PEX6-Cytoplasmic-No-Retrotranslocation /
+    Mechanistic-Hierarchy-PEX26-Anchor-PEX1-PEX6-Motor-PEX2-PEX10-PEX12-RING-E3 /
+    p.Arg98Trp-Partial-Function-IRD-Enabling / p.Arg275x-Null /
+    Biochemically-Identical-PEX1-PEX6-PEX2-PEX10-PEX12-ZSD /
+    VPA-3-Mechanism-CI-POLG1-Mandatory / VGB-Retinopathy-Additive /
+    Lorenzo-Oil-INEFFECTIVE-Mechanism-Mismatch / HSCT-NOT-Inflammatory /
+    PEX26-15-25-Cases-Worldwide / COMPLETES-Retrotranslocation-Docking),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 8 differential diagnoses.
+    """
+    try:
+        import scripts.pex26_dashboard as pex26_
+        return _json_safe(pex26_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pex7/overview")
 async def pex7_overview():
     """PEX7 / Rhizomelic Chondrodysplasia Punctata Type 1 (RCDP1) — overview:
