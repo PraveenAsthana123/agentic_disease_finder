@@ -31082,6 +31082,58 @@ async def pex5_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex11b/overview")
+async def pex11b_overview():
+    """PEX11B Overview — Peroxisome Fission Defect Epilepsy (PBD9B / PEX11B LOF).
+    FISSION TIER: 4th mechanistic tier of peroxisomal epilepsy, distinct from all 13 ZSD-causing
+    PEX genes. PEX11B (247 aa, 1q22, OMIM *603637) drives DRP1-mediated peroxisome fission.
+    LOF → elongated/tubular peroxisomes + reduced organelle number. CRITICAL IF DISTINCTION:
+    catalase PEROXISOMAL (import intact) vs ALL ZSD (catalase cytoplasmic). Plasmalogens NORMAL
+    or borderline (not severely low as in ZSD). ~10–15 cases worldwide 2026. OMIM #614862.
+    40-patient cohort: Severe neonatal 35% / Moderate infantile IS 45% / Mild childhood 15% /
+    Atypical 5%. Photosensitivity hallmark (71%). SNHL 78%. Retinopathy 62%. DRE 55%.
+    """
+    try:
+        import scripts.pex11b_dashboard as pex11b_
+        return _json_safe(pex11b_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex11b/breakdown")
+async def pex11b_breakdown():
+    """PEX11B Breakdown — 40-patient cohort (Severe neonatal 35% / Moderate infantile IS 45% /
+    Mild childhood 15% / Atypical 5%). Seizure types (neonatal myoclonic 35% / IS 42% / focal
+    28% / GTCS 20% / myoclonic 18% / absence 6%). Triggers (photic stimulation HALLMARK 71% /
+    febrile 62% / subtherapeutic AED 50% / sleep dep 42% / missed AED 35% / fasting CAUTION 30%).
+    Monitoring (VLCFA borderline/normal expected; plasmalogens NORMAL key differentiator from ZSD;
+    peroxisome IF morphology elongated + catalase peroxisomal). 12 monitoring parameters.
+    6 lifecycle stages. 6 treatments (LEV/ACTH/CLB/LTG/DHA-Level-C/VGB-conditional). 7 CIs.
+    """
+    try:
+        import scripts.pex11b_dashboard as pex11b_
+        return _json_safe(pex11b_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex11b/definitions")
+async def pex11b_definitions():
+    """PEX11B Definitions — gene card (fission tier, DRP1 recruitment, PEX11B 247 aa, 1q22,
+    OMIM *603637/#614862), FISSION TIER IF HIERARCHY (4th tier, catalase PEROXISOMAL unique
+    distinguisher), biochemical partial phenotype (plasmalogens NORMAL = key ZSD exclusion),
+    photosensitivity mechanism (71%), SNHL (78%), retinopathy (62%), DRP1/FIS1/MFF fission
+    machinery, absence of pachygyria (DHA near-normal), VPA dual CI (not triple as in ZSD),
+    VGB conditional CI (RP-dependent), fasting CAUTION (not extreme hazard as in ZSD),
+    15 key concepts, 8 term definitions, 10 reference standards.
+    """
+    try:
+        import scripts.pex11b_dashboard as pex11b_
+        return _json_safe(pex11b_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

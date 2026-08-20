@@ -5230,5 +5230,22 @@
     "status": "built",
     "route": "/pex5",
     "api": "/api/pex5/overview"
+  },
+  {
+    "id": "pex11b",
+    "name": "PEX11B Epilepsy",
+    "route": "/pex11b",
+    "api": "/api/pex11b/overview",
+    "api_routes": [
+      "/api/pex11b/overview",
+      "/api/pex11b/breakdown",
+      "/api/pex11b/definitions"
+    ],
+    "status": "built",
+    "tier": "fission",
+    "omim_gene": "603637",
+    "omim_disease": "614862",
+    "locus": "1q22",
+    "cohort": 40
   }
 ]
