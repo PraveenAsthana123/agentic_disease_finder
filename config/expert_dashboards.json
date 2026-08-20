@@ -4928,5 +4928,23 @@
     "api": "/api/pex7/overview|breakdown|definitions",
     "cohort": "40 patients",
     "endpoints_verified": "200"
+  },
+  {
+    "id": "gnpat",
+    "name": "GNPAT Epilepsy (Rhizomelic-Chondrodysplasia-Punctata-Type2-RCDP2 / Glyceronephosphate-O-Acyltransferase-DHAPAT-680aa-PTS1-SKF / Step1-Plasmalogen-Biosynthesis-DHAP-To-1-Acyl-DHAP / RCDP2-5pct-All-RCDP-vs-RCDP1-90pct / Plasmalogens-RBC-SEVERELY-LOW-Same-As-RCDP1 / Phytanic-NORMAL-KEY-DISTINCTION-RCDP1-PEX7-Intact-PHYH-Imported / VLCFA-NORMAL-PTS1-Intact / No-Founder-Mutation-All-Private-Variants / Rhizomelia-100pct / Stippled-Epiphyses-85pct / Cataracts-65pct / Ichthyosis-62pct / AR-Biallelic-LOF / 1q42.2 / VGB-HIGH-RISK-Cataracts-VF-Additive / VPA-RELATIVE-CI-Hepatotoxicity-POLG1-MANDATORY / PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1 / LEV-FIRST-LINE / ACTH-Level-B-IS / Alkylglycerols-MOST-DIRECT-Bypass-Step1-GNPAT-Block-Level-C / DHA-Level-C / No-ERT-Peroxisomal-Matrix-Enzyme-NOT-Secreted / No-HSCT / RCDP1-PEX7-RCDP3-AGPS-Distinguished-Gene-Sequencing-Only / POLG1-Mandatory-CPIC-A / AR-Both-Sexes-Equal / 1q42.2)",
+    "status": "built",
+    "category": "peroxisomal",
+    "gene": "GNPAT",
+    "disease": "Rhizomelic Chondrodysplasia Punctata Type 2 (RCDP2)",
+    "locus": "1q42.2",
+    "omim_gene": "602744",
+    "omim_disease": "222765",
+    "patients": 40,
+    "api_endpoints": [
+      "/api/gnpat/overview",
+      "/api/gnpat/breakdown",
+      "/api/gnpat/definitions"
+    ],
+    "portal_path": "/gnpat"
   }
 ]

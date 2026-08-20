@@ -29957,6 +29957,56 @@ async def pex7_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gnpat/overview")
+async def gnpat_overview():
+    """GNPAT / RCDP2 — overview: 12 KPIs
+    (GNPAT-DHAPAT-680aa-PTS1-SKF / Step1-Plasmalogen-Biosynthesis / 1q42.2 /
+    Plasmalogens-RBC-SEVERELY-LOW / Phytanic-NORMAL-PEX7-Intact-KEY-DISTINCTION /
+    VLCFA-NORMAL / No-Founder-Mutation / Seizures-60pct-Classic /
+    Cataracts-65pct / Drug-resistant-32pct / RCDP2-5pct-All-RCDP /
+    Alkylglycerols-MOST-DIRECT-Bypass-Step1).
+    """
+    try:
+        import scripts.gnpat_dashboard as gnpat_
+        return _json_safe(gnpat_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnpat/breakdown")
+async def gnpat_breakdown():
+    """GNPAT / RCDP2 — breakdown: 3 phenotypic classes
+    (Classic-null-null-40pct / Intermediate-null-hypomorphic-40pct / Mild-20pct),
+    40 synthetic patients (RCDP2-01 to RCDP2-40), 5 seizure types, 7 triggers,
+    7 monitoring parameters, 7 thresholds, 6 lifecycle stages,
+    5 treatments (LEV/ACTH/CLB/LTG/DHA/Alkylglycerol), 5 contraindications.
+    """
+    try:
+        import scripts.gnpat_dashboard as gnpat_
+        return _json_safe(gnpat_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnpat/definitions")
+async def gnpat_definitions():
+    """GNPAT / RCDP2 — definitions: 15-concept glossary
+    (GNPAT-DHAPAT-Step1-enzyme-PTS1 / Phytanic-NORMAL-PEX7-intact-KEY-DISTINCTION /
+    Plasmalogen-biosynthesis-2-step-GNPAT-AGPS / Alkylglycerols-MOST-DIRECT-Step1-bypass /
+    VLCFA-NORMAL / No-founder-mutation / VGB-HIGH-RISK-cataracts / VPA-RELATIVE-CI-POLG1 /
+    PHT-CBZ-CAN-USE-no-adrenal / No-ERT-peroxisomal-matrix / No-HSCT /
+    Phytol-diet-LESS-CRITICAL-vs-RCDP1 / RCDP2-vs-RCDP3-gene-sequencing-only),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (RCDP1-PEX7 / RCDP3-AGPS / ZSD-PEX1-PEX6 / Adult-Refsum-PHYH /
+    CDPX2-EBP / ABCD1-X-ALD / Non-peroxisomal-skeletal-dysplasias).
+    """
+    try:
+        import scripts.gnpat_dashboard as gnpat_
+        return _json_safe(gnpat_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
