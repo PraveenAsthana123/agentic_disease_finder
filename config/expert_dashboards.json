@@ -4906,5 +4906,16 @@
     "api": "/api/pex1/overview|breakdown|definitions",
     "cohort": "40 patients",
     "endpoints_verified": "200"
+  },
+  {
+    "id": "pex6",
+    "role": "Neurologist",
+    "name": "PEX6 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / Peroxisome-Biogenesis-Disorder-PBD / PEX6-D2-AAA-ATPase-Motor-Subunit-PEX1-PEX6-Heterodimer / Second-Most-Common-PBD-10pct-All-ZSD / AR-Biallelic-LOF / 6p21.1 / p.Arg860Trp-R860W-18pct-European-Hypomorphic / R860W-R860W-IRD-45pct-More-Than-PEX1 / R860W-Null-NALD-32pct / Null-Null-ZS-18pct / ALL-Peroxisomal-Functions-Impaired-Simultaneously / Plasmalogens-RBC-LOW-KEY-DISTINCTION-ABCD1-NORMAL / VLCFA-Phytanic-Pristanic-Pipecolic-DHA-ALL-ABNORMAL / DHA-Low-Neuronal-Migration-Defects-Pachygyria-ZS-PATHOGNOMONIC / VPA-HIGH-RISK-3-Mechanisms-Hepatotoxicity-PeroxBO-Carnitine / VGB-HIGH-RISK-Retinopathy-Universal-ZS-NALD / ACTH-Level-A-IS-Preferred-Over-VGB / LEV-FIRST-LINE-All-Forms / DHA-Level-B-NALD-IRD / Fasting-EXTREME-HAZARD-Phytanic-Surge-IV-Dextrose-MANDATORY / HSCT-NOT-Indicated-Unlike-ABCD1 / Lorenzo-Oil-INEFFECTIVE-Import-Absent / POLG1-Mandatory-CPIC-A / No-ERT-2026 / AR-Both-Sexes-Equal / 6p21.1)",
+    "status": "built",
+    "category": "epilepsy-genetics-peroxisomal-zsd",
+    "page": "/pex6",
+    "api": "/api/pex6/overview|breakdown|definitions",
+    "cohort": "40 patients",
+    "endpoints_verified": "200"
   }
 ]

@@ -29824,6 +29824,70 @@ async def pex1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex6/overview")
+async def pex6_overview():
+    """PEX6 / Zellweger Spectrum Disorder (ZSD) — overview:
+    PEX1–PEX6 AAA-ATPase heterodimer (PEX6 = D2 motor subunit) / 6p21.1 / AR biallelic LOF /
+    Second most common PBD-ZSD (~10% of all ZSD; PEX1+PEX6 = ~75% together) /
+    p.Arg860Trp (R860W) = most common European hypomorphic allele (~18% of all PEX6 alleles) /
+    R860W/R860W → IRD (attenuated) / R860W/null → NALD / null/null → ZS (severe) /
+    PEX6 cohorts: more IRD (45%) vs PEX1 (30-35%) — R860W more residual PEX5 recycling /
+    ALL peroxisomal pathways impaired: VLCFA + phytanic + plasmalogens LOW + DHA low + pipecolic /
+    Plasmalogens (RBC) LOW — KEY DISTINCTION FROM ABCD1 (plasmalogens NORMAL) /
+    DHA low → neuronal migration defects (pachygyria ZS PATHOGNOMONIC) /
+    VPA HIGH RISK (hepatotoxicity+peroxisomal BO inhibition+carnitine) POLG1 MANDATORY /
+    VGB HIGH RISK (retinopathy additive) / LEV first-line / DHA Level B / ACTH Level A IS /
+    HSCT NOT indicated / Lorenzo's Oil INEFFECTIVE / No ERT 2026 / AR Both-Sexes-Equal /
+    40-patient cohort (ZS-18%/NALD-32%/IRD-45%/Atypical-5%).
+    """
+    try:
+        import scripts.pex6_dashboard as pex6_
+        return _json_safe(pex6_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex6/breakdown")
+async def pex6_breakdown():
+    """PEX6 / ZSD — breakdown: 40-patient cohort
+    (ZS-null/null-18% / NALD-R860W/null-32% / IRD-R860W/R860W-45% / Atypical-5%),
+    seizure types (Neonatal-multifocal-clonic-ZS-100% / Infantile-spasms-hypsarrhythmia-NALD-43% /
+    Tonic-ZS-NALD-35% / Myoclonic-NALD-IRD-30% / Focal-IRD-Atypical-28% / GTCS-IRD-20% / SE-ZS-NALD-22%),
+    triggers (Febrile-72% / Fasting-NPO-68% / Phytanic-surge-dietary-IRD-55% /
+    Metabolic-decompensation-hepatic-48% / Sleep-deprivation-IRD-32% / Anaesthesia-peri-op-28% / VPA-initiation-18%),
+    treatments (LEV-first-line / ACTH-LevelA-IS / CLB-LevelB / LTG-LevelC /
+    DHA-Level-B-NALD-IRD / Phytol-restricted-diet-IRD / Cholic-acid-experimental),
+    contraindications (VPA-HIGH-RISK-3-mechanisms / VGB-HIGH-RISK-retinopathy /
+    PHT-RELATIVE-CI-NOT-adrenal / CBZ-OXC-RELATIVE-CI / Fasting-EXTREME-HAZARD /
+    Lorenzo-Oil-INEFFECTIVE / HSCT-NOT-INDICATED).
+    """
+    try:
+        import scripts.pex6_dashboard as pex6_
+        return _json_safe(pex6_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex6/definitions")
+async def pex6_definitions():
+    """PEX6 / ZSD — definitions: 16-concept glossary
+    (PEX6-D2-AAA-ATPase-motor-subunit / PEX1-PEX6-heterodimer-PEX26-anchored /
+    R860W-D2-domain-hypomorphic-18pct-European / R860W-R860W-IRD / R860W-null-NALD / null-null-ZS /
+    Biochemically-identical-PEX1-ZSD / More-IRD-45pct-vs-PEX1-30-35pct /
+    Plasmalogens-LOW-ZSD-NORMAL-ABCD1 / DHA-low-migration-defects /
+    Fasting-EXTREME-HAZARD-phytanic-surge / VPA-HIGH-RISK-3-mechanisms /
+    VGB-HIGH-RISK-retinopathy / PHT-RELATIVE-CI-NOT-adrenal / No-ERT-No-HSCT /
+    Lorenzo-Oil-INEFFECTIVE-Import-Absent),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 7 differential diagnoses
+    (PEX1-ZSD / ABCD1-XLD / Adult-Refsum-PHYH / RCDP-PEX7 / Krabbe-MLD / Usher / Mitochondrial).
+    """
+    try:
+        import scripts.pex6_dashboard as pex6_
+        return _json_safe(pex6_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
