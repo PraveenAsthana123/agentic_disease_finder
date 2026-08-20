@@ -31134,6 +31134,63 @@ async def pex11b_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gldc/overview")
+async def gldc_overview():
+    """GLDC Overview — Non-Ketotic Hyperglycinemia (NKH / Glycine Encephalopathy).
+    GLDC encodes the P-protein (Glycine Decarboxylase) of the mitochondrial GCS (Glycine Cleavage
+    System). GLDC LOF (75–80% of NKH; AR; 9p24.1) → GCS inoperable → glycine accumulates in
+    plasma/CSF/brain. DUAL MECHANISM: (1) GlyR brainstem activation → neonatal hypotonia/apnea/
+    HICCUPS (PATHOGNOMONIC — phrenic nucleus GlyR); (2) NMDAr GluN1 co-agonism (glycine obligate
+    co-agonist) → excitotoxic seizures → burst-suppression → IS → DRE.
+    DIAGNOSTIC: CSF:plasma glycine ratio ≥0.08 (simultaneous draw; normal <0.02).
+    TREATMENT: Sodium Benzoate (Level A, glycine-lowering) + DXM (Level B, NMDAr antagonist) +
+    LEV + ACTH for IS. VPA HIGH RISK (inhibits GLDC directly — raises glycine). VGB HIGH RISK for IS.
+    40-patient cohort: Classic neonatal ~60% · Attenuated ~35% · Transient ~5%.
+    OMIM *238300 (gene) / #605899 (disease). ~1:60,000–76,000 (Europe).
+    """
+    try:
+        import scripts.gldc_dashboard as gldc_
+        return _json_safe(gldc_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gldc/breakdown")
+async def gldc_breakdown():
+    """GLDC Breakdown — 40-patient NKH cohort. Phenotype classes: Classic Neonatal (null/null
+    or null/severe-missense) · Attenuated (p.Gly761Arg European partial-function founder allele) ·
+    Transient (rare, benign enzyme immaturity). Seizure types: Electrical SE (60%) · Myoclonic (70%) ·
+    Tonic (40%) · Focal clonic (35%) · IS/West (45%) · GTCS (30%). Triggers: Fever (70%) · Missed
+    benzoate (65%) · VPA exposure (55%) · Protein-rich meal (55%) · Sleep deprivation (48%).
+    Treatment counts. CSF:plasma ratio histogram. Plasma glycine histogram. Monitoring (14 parameters).
+    Lifecycle (7 stages). Contraindications (6 CIs: VPA HIGH RISK / VGB IS-risk / CBZ-PHT-OXC /
+    PB caution / protein restriction / fasting NPO).
+    """
+    try:
+        import scripts.gldc_dashboard as gldc_
+        return _json_safe(gldc_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gldc/definitions")
+async def gldc_definitions():
+    """GLDC Definitions — gene card (P-protein, PLP-dependent, 1020 aa, 9p24.1, OMIM *238300/#605899),
+    GCS 4-protein complex pathway (P/H/T/L proteins, net reaction, clinical consequences per gene),
+    diagnostic biomarkers (CSF:plasma ratio PRIMARY diagnostic, plasma glycine, urine hippurate,
+    GLDC enzyme activity), NMDAr co-agonism mechanism (GluN1 obligate glycine site, DXM channel block),
+    GlyR brainstem inhibition mechanism (hiccups pathognomonic — phrenic nucleus GlyR),
+    pharmacology annotations (VPA GLDC inhibition, VGB glycine-raising, ketamine beneficial,
+    PB GlyR additive), 15 key concepts, 11 thresholds, differential diagnosis (SSADH / propionic acidemia /
+    MMA / D-glyceric aciduria / isovaleric acidemia / hyperglycinuria).
+    """
+    try:
+        import scripts.gldc_dashboard as gldc_
+        return _json_safe(gldc_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
