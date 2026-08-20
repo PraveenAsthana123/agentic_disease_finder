@@ -31022,6 +31022,66 @@ async def pex14_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex5/overview")
+async def pex5_overview():
+    """PEX5 Overview — ZSD / Zellweger Spectrum Disorder (PEX5 = CYTOSOLIC PTS1 RECEPTOR,
+    639 aa PEX5L / 569 aa PEX5S, 12p13.31; ONLY cytosolic ZSD-causing gene; N-terminal WxxxF
+    pentapeptide repeats dock PEX14 N-terminal domain [primary, high-affinity] + PEX13 SH3
+    [secondary, auxiliary]; C-terminal TPR domain [7 TPR motifs] recognises PTS1 cargo;
+    PEX5L exon-8 70-aa insert binds PEX7 → PTS2 co-receptor via PEX7·PEX5L complex;
+    PEX5 LOF → ALL PTS1 + PTS2 import fails; UNIQUE IF SIGNATURE: PMP70+ [membrane intact] +
+    PEX14+ [importomer structurally intact] + PEX13+ [importomer intact] + catalase cytoplasmic —
+    all structural components present, receptor absent; ~1–2% all PBD-ZSD; ~15–25 cases worldwide
+    2026; ZS 35% / NALD 45% modal / IRD 15% / Atypical 5%; 40-patient cohort), 17 key concepts,
+    10 reference standards. OMIM *600414 / #614842 / #614843.
+    """
+    try:
+        import scripts.pex5_dashboard as pex5_
+        return _json_safe(pex5_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex5/breakdown")
+async def pex5_breakdown():
+    """PEX5 Breakdown — 40-patient cohort (ZS 35%/14pts · NALD 45%/18pts modal ·
+    IRD 15%/6pts · Atypical 5%/2pts); 4 phenotypic classes; per-patient genotype
+    [null/null → ZS; null/p.Trp369Arg TPR-domain → NALD; p.Trp369Arg/mild → IRD];
+    6 seizure types [neonatal multifocal clonic 35% · IS/West 45% modal · focal 22% ·
+    myoclonic 14% · GTCS 11% · absence 3%]; 8 triggers [febrile 63% / fasting EXTREME
+    HAZARD 48% / subtherapeutic AED 50%]; 14 monitoring parameters [VLCFA / plasmalogens /
+    pristanic / DHA / phytanic / LFT / POLG1 / ERG / visual fields / SNHL /
+    carnitine / EEG / MRI / neuro-psych]; 8 thresholds; 6 lifecycle stages;
+    7 treatments [LEV L-A / ACTH L-A IS / CLB L-B / LTG L-C / DHA L-B / phytol-diet L-B /
+    UDCA L-C]; 7 contraindications [VPA HIGH RISK / VGB HIGH RISK / fasting EXTREME HAZARD /
+    PHT/CBZ RELATIVE CI / Lorenzo's Oil INEFFECTIVE / HSCT NOT indicated / ERT NOT available].
+    """
+    try:
+        import scripts.pex5_dashboard as pex5_
+        return _json_safe(pex5_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex5/definitions")
+async def pex5_definitions():
+    """PEX5 Definitions — gene card (cytosolic PTS1 receptor, PEX5L 639 aa, PEX5S 569 aa,
+    12p13.31, WxxxF pentapeptide repeats dock PEX14 primary + PEX13 SH3 secondary, TPR domain
+    7 motifs recognises PTS1, exon-8 insert PEX5L binds PEX7 for PTS2, Cys11 monoubiquitination
+    recycling by PEX2/PEX10/PEX12 RING + PEX1/PEX6/PEX26 AAA-ATPase extraction),
+    UNIQUE IF SIGNATURE (PMP70+/PEX14+/PEX13+/catalase cytoplasmic — ONLY ZSD where membrane
+    + importomer structurally intact; receptor tier distinct from membrane-biogenesis/importomer-
+    scaffold/importomer-SH3 tiers), 17 key concepts, 13-step diagnostic algorithm, 12 pharmacological
+    distinctions, 8 differential diagnoses (PEX14/PEX13/PEX1/PEX19/PEX7-RCDP1/PEX6/ABCD1/PHYH),
+    11 reference standards.
+    """
+    try:
+        import scripts.pex5_dashboard as pex5_
+        return _json_safe(pex5_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

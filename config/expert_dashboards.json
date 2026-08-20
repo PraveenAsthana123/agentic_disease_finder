@@ -5007,7 +5007,8 @@
       "/api/far1/breakdown",
       "/api/far1/definitions"
     ],
-    "route": "/far1"
+    "route": "/far1",
+    "id": "far1"
   },
   {
     "role": "Epileptologist / Metabolic Neurologist",
@@ -5220,6 +5221,14 @@
       "/api/pex14/overview",
       "/api/pex14/breakdown",
       "/api/pex14/definitions"
-    ]
+    ],
+    "id": "pex14"
+  },
+  {
+    "id": "pex5",
+    "name": "PEX5 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX5-CYTOSOLIC-PTS1-RECEPTOR-PEX5L-639aa-PEX5S-569aa / N-Terminal-WxxxF-Pentapeptide-Repeats-Dock-PEX14-Primary-PEX13-SH3-Secondary / C-Terminal-TPR-Domain-7-Motifs-Recognises-PTS1 / PEX5L-Exon8-Insert-Binds-PEX7-PTS2-Co-Receptor / PEX5-LOF-ALL-PTS1-PTS2-Import-Fails / UNIQUE-IF-PMP70-PRESENT-PEX14-PRESENT-PEX13-PRESENT-Catalase-Cytoplasmic / ONLY-ZSD-Membrane-AND-Importomer-Structurally-INTACT-Receptor-Absent / Cys11-Monoubiquitination-Recycling-PEX2-PEX10-PEX12-RING-E3-PEX1-PEX6-PEX26-AAA-ATPase / p.Trp369Arg-TPR-Domain-Partial-PTS1-Binding-NALD-IRD-Enabling / p.Arg390x-Null / 1-2pct-All-PBD-ZSD / 15-25-Cases-Worldwide-2026 / ZS-35pct / NALD-45pct-MODAL / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired / Biochemically-IDENTICAL-All-PBD-ZSD-NGS-Only-Distinguishes / VPA-HIGH-RISK / VGB-HIGH-RISK / LEV-FIRST-LINE / ACTH-Level-A-IS / DHA-Level-B-NALD-IRD / Lorenzo-Oil-INEFFECTIVE / No-ERT-Cytosolic-Receptor / No-HSCT / AR-Biallelic-LOF / 12p13.31 / OMIM-Gene-600414-Disease-614842-614843)",
+    "status": "built",
+    "route": "/pex5",
+    "api": "/api/pex5/overview"
   }
 ]
