@@ -30158,6 +30158,65 @@ async def acox1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/hsd17b4/overview")
+async def hsd17b4_overview():
+    """HSD17B4 / D-Bifunctional Protein Deficiency (DBP / MFP-2) — overview: 12 KPIs
+    (HSD17B4-736aa-PTS1-SRL-3-Domain-Bifunctional / 5q23.1 /
+    Steps-2+3-Peroxisomal-Beta-Oxidation-ALL-substrates /
+    VLCFA-C26-ELEVATED-same-as-ACOX1-ZSD-on-panel /
+    PRISTANIC-SEVERELY-ELEVATED-KEY-DISTINCTION-ACOX1-normal /
+    THCA-DHCA-ELEVATED-bile-acid-intermediates /
+    Plasmalogens-NORMAL-contrast-ZSD-PEX1-PEX6 /
+    No-adrenal-insufficiency-PHT-CBZ-CAN-USE-contrast-ABCD1-ABSOLUTE-CI /
+    VGB-HIGH-RISK-retinal-dystrophy-75pct-optic-atrophy-60pct-additive /
+    VPA-RELATIVE-CI-POLG1-MANDATORY-bile-acid-burden-higher-than-ACOX1 /
+    Type-I-D1+D2-50pct-neonatal-severe / Type-II-D1-30pct-severe /
+    Type-III-D2-20pct-milder / AR-biallelic-LOF-100-cases-worldwide-2026 / DHA-Level-C).
+    """
+    try:
+        import scripts.hsd17b4_dashboard as hsd17b4_
+        return _json_safe(hsd17b4_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hsd17b4/breakdown")
+async def hsd17b4_breakdown():
+    """HSD17B4 / DBP deficiency — breakdown: 3 types
+    (Type-I-D1+D2-deficient-50pct-neonatal-severe /
+    Type-II-D1-hydratase-only-30pct-same-severity /
+    Type-III-D2-3HSD-only-20pct-milder-gonadal-males /
+    40-synthetic-patients / Seizure-types-triggers-monitoring-lifecycle /
+    Treatments-contraindications-pristanic-THCA-monitoring).
+    """
+    try:
+        import scripts.hsd17b4_dashboard as hsd17b4_
+        return _json_safe(hsd17b4_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hsd17b4/definitions")
+async def hsd17b4_definitions():
+    """HSD17B4 / DBP deficiency — definitions:
+    (Steps-2+3-all-substrates-VLCFA-pristanic-THCA /
+    Pristanic-SEVERELY-ELEVATED-KEY-DISTINCTION-ACOX1 /
+    THCA-DHCA-bile-acid-intermediates /
+    VGB-HIGH-RISK-retinal-dystrophy-optic-atrophy-combined /
+    PHT-CBZ-CAN-USE-no-adrenal / VPA-bile-acid-burden /
+    POLG1-Mandatory-CPIC-A),
+    15 key concepts, 12-step diagnostic algorithm,
+    12 pharmacological distinctions, 7 differential diagnoses
+    (ACOX1-Pseudo-NALD / ZSD-PEX1-PEX6 / ABCD1-X-ALD /
+    PHYH-Refsum / AMACR / RCDP-PEX7-GNPAT / SCP2-SCPx).
+    """
+    try:
+        import scripts.hsd17b4_dashboard as hsd17b4_
+        return _json_safe(hsd17b4_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -4996,5 +4996,23 @@
       "/api/acox1/definitions"
     ],
     "route": "/acox1"
+  },
+  {
+    "id": "hsd17b4",
+    "gene": "HSD17B4",
+    "role": "Epileptologist / Metabolic Neurologist",
+    "disease": "D-Bifunctional Protein Deficiency (DBP / MFP-2 Deficiency / HSD17B4 Deficiency)",
+    "omim_gene": "601860",
+    "omim_disease": "261515",
+    "locus": "5q23.1",
+    "inheritance": "AR",
+    "status": "built",
+    "name": "HSD17B4 Epilepsy (D-Bifunctional-Protein-Deficiency-DBP-MFP2 / HSD17B4-736aa-PTS1-SRL-3-Domain / Steps-2+3-Peroxisomal-Beta-Oxidation-ALL-Substrates / PRISTANIC-SEVERELY-ELEVATED-KEY-DISTINCTION-ACOX1 / THCA-DHCA-ELEVATED-Bile-Acid / Plasmalogens-NORMAL / VGB-HIGH-RISK-Retinal-Dystrophy-75pct-Optic-Atrophy-60pct / PHT-CBZ-CAN-USE-No-Adrenal / VPA-RELATIVE-CI-POLG1-MANDATORY / Type-I-D1+D2-50pct / Type-II-D1-30pct / Type-III-D2-20pct / AR-Biallelic-LOF / 5q23.1)",
+    "viz": "KPI grid, type bars, patient table, seizure type distribution, biochemical profile (VLCFA+pristanic+THCA), AED risk matrix",
+    "feature": "40 patients \u00b7 3 types (I/II/III) \u00b7 5 seizure types \u00b7 7 triggers \u00b7 8 monitoring parameters \u00b7 6 lifecycle stages \u00b7 6 treatments \u00b7 5 CIs \u00b7 15 key concepts \u00b7 12 diagnostic steps \u00b7 12 pharmacological distinctions \u00b7 7 differentials",
+    "api_prefix": "/api/hsd17b4",
+    "page": "portal-next/app/hsd17b4/page.jsx",
+    "script": "scripts/hsd17b4_dashboard.py",
+    "cohort": 40
   }
 ]
