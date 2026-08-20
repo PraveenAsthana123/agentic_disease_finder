@@ -4930,6 +4930,24 @@
     "endpoints_verified": "200"
   },
   {
+    "id": "pex10",
+    "name": "PEX10 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX10-RING-Finger-E3-Ubiquitin-Ligase-SCAFFOLD-BRIDGE-337aa / PEX2-PEX10-PEX12-RING-Complex-PEX10-Coiled-Coil-Tethers-PEX2-PEX12 / PEX10-LOF-ENTIRE-TRIMER-COLLAPSES / p.Arg234x-Most-Common-Null / p.Ile332Thr-RING-Partial-Function-IRD-Enabling / 5-7pct-All-PBD-ZSD / 80-120-Cases-Worldwide-2026 / ZS-25pct / NALD-45pct / IRD-25pct-MORE-Than-PEX2-20pct / ALL-Peroxisomal-Functions-Impaired / VPA-HIGH-RISK-3-Mechanisms-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Additive / LEV-FIRST-LINE / DHA-Level-B / ACTH-Level-A-IS / HSCT-NOT-Indicated / Lorenzo-Oil-INEFFECTIVE / No-ERT-Membrane-Scaffold / AR-Biallelic-LOF / 1p36.32 / OMIM-Gene-602859-Disease-614870-614871)",
+    "status": "built",
+    "route": "/pex10",
+    "api_path": "/api/pex10",
+    "category": "peroxisomal_biogenesis",
+    "gene": "PEX10",
+    "locus": "1p36.32",
+    "omim_gene": "602859",
+    "omim_disease": "614870",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/pex10/overview",
+      "/api/pex10/breakdown",
+      "/api/pex10/definitions"
+    ]
+  },
+  {
     "id": "pex7",
     "role": "Neurologist",
     "name": "PEX7 Epilepsy (Rhizomelic-Chondrodysplasia-Punctata-Type1-RCDP1 / Peroxin-7-PTS2-Receptor-323aa-WD40-7-Beta-Propeller / ONLY-PTS2-Pathway-Impaired-NOT-PTS1 / VLCFA-NORMAL-KEY-DISTINCTION-ZSD-PEX1-PEX6 / Plasmalogens-RBC-SEVERELY-LOW / Phytanic-ELEVATED-PHYH-PTS2-Cargo / Pristanic-NORMAL-Pipecolic-NORMAL / Rhizomelia-Proximal-100pct-PATHOGNOMONIC / Stippled-Epiphyses-88pct-Neonatal-PATHOGNOMONIC / Cataracts-72pct-Congenital / Ichthyosis-68pct / AR-Biallelic-LOF / 6q22.33 / p.Leu292X-L292X-50pct-European-Founder / RCDP1-90pct-All-RCDP / 1-per-100000 / Classic-Null-Null-Seizures-65pct / VGB-HIGH-RISK-Cataracts-VF-Additive-NOT-Absolute-Unlike-ZSD / VPA-RELATIVE-CI-Hepatotoxicity-ONLY-NOT-PeroxBO-VLCFA-NORMAL / PHT-CBZ-CAN-USE-No-Adrenal-Unlike-ABCD1 / LEV-FIRST-LINE / ACTH-Level-B-IS / Phytol-Restricted-Diet-Level-B / Alkylglycerols-Experimental-Level-C / DHA-Level-C / No-ERT-Cytosolic-Receptor / No-HSCT / RCDP2-GNPAT-RCDP3-AGPS-Biochemically-Identical / POLG1-Mandatory-CPIC-A / AR-Both-Sexes-Equal / 6q22.33)",

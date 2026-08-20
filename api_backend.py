@@ -29953,6 +29953,70 @@ async def pex2_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex10/overview")
+async def pex10_overview():
+    """PEX10 / Zellweger Spectrum Disorder (ZSD) — overview:
+    PEX10 (337 aa, 1p36.32) RING finger E3 ubiquitin ligase SCAFFOLD/BRIDGE subunit /
+    PEX2–PEX10–PEX12 RING complex (PEX10 coiled-coil tethers PEX2 ↔ PEX12) /
+    PEX10 LOF → ENTIRE RING TRIMER COLLAPSES (vs PEX2 LOF = single catalytic arm) /
+    AR biallelic LOF / ~5–7% all PBD-ZSD / ~80–120 cases worldwide 2026 /
+    p.Arg234* most common null / p.Ile332Thr RING partial-function → IRD 25% (more than PEX2 20%) /
+    ALL peroxisomal pathways impaired: VLCFA elevated + plasmalogens LOW + DHA low /
+    Biochemically IDENTICAL to PEX1/PEX2/PEX6-ZSD — only NGS panel distinguishes /
+    VPA HIGH RISK 3 mechanisms POLG1 MANDATORY / VGB HIGH RISK retinopathy additive /
+    LEV first-line / DHA Level B NALD/IRD / ACTH Level A IS / HSCT NOT indicated /
+    Lorenzo's Oil INEFFECTIVE / No ERT / ZS 25% / NALD 45% / IRD 25% / 40-patient cohort.
+    """
+    try:
+        import scripts.pex10_dashboard as pex10_
+        return _json_safe(pex10_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex10/breakdown")
+async def pex10_breakdown():
+    """PEX10 / ZSD — breakdown: 40-patient cohort
+    (ZS-null/null-25% / NALD-null/Ile332Thr-45% / IRD-Ile332Thr/mild-25% / Atypical-5%),
+    seizure types (Neonatal-multifocal-clonic-ZS-25% / Infantile-spasms-hypsarrhythmia-NALD-45% /
+    Tonic-ZS-NALD-35% / Myoclonic-NALD-IRD-30% / Focal-IRD-25% / GTCS-IRD-15% / SE-ZS-NALD-22%),
+    triggers (Febrile-78% / Fasting-NPO-72% / Phytanic-surge-48% /
+    Metabolic-decompensation-55% / Sleep-deprivation-30% / Anaesthesia-28% / VPA-initiation-20%),
+    treatments (LEV-Level-A-first-line / ACTH-Level-A-IS / CLB-Level-B / LTG-Level-C /
+    DHA-Level-B-NALD-IRD / Phytol-restricted-diet-Level-B-IRD / Cholic-acid-Level-C),
+    contraindications (VPA-HIGH-RISK-3-mechanisms-POLG1-MANDATORY /
+    VGB-HIGH-RISK-retinopathy-additive / PHT-CBZ-RELATIVE-CI /
+    Fasting-EXTREME-HAZARD / Lorenzo-Oil-INEFFECTIVE / HSCT-NOT-INDICATED / No-ERT).
+    """
+    try:
+        import scripts.pex10_dashboard as pex10_
+        return _json_safe(pex10_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex10/definitions")
+async def pex10_definitions():
+    """PEX10 / ZSD — definitions: 16-concept glossary
+    (PEX10-RING-scaffold-337aa / PEX10-coiled-coil-bridges-PEX2-PEX12 /
+    PEX10-LOF-entire-trimer-collapses-vs-PEX2-single-arm /
+    p.Ile332Thr-partial-RING-function-IRD-25pct / p.Arg234x-null-most-common /
+    Biochemically-identical-PEX1-PEX2-PEX6-ZSD /
+    C26:0-lyso-PC-NBS / Plasmalogens-LOW-ZSD-NORMAL-ABCD1 /
+    DHA-deficiency-retinopathy-pachygyria / VPA-3-mechanism-CI-POLG1-mandatory /
+    VGB-retinopathy-additive / ACTH-Level-A-IS / Fasting-EXTREME-HAZARD-phytanic /
+    PHT-CBZ-RELATIVE-CI-DHA-depletion-NOT-adrenal /
+    PEX10-80-120-cases-worldwide / scaffold-vs-catalytic-structural-distinction),
+    12-step diagnostic algorithm, 12 pharmacological distinctions, 8 differential diagnoses
+    (PEX1-ZSD / PEX2-ZSD / PEX6-ZSD / PEX12-ZSD / ABCD1-XLD / Adult-Refsum-PHYH / RCDP-PEX7 / Mitochondrial-POLG1).
+    """
+    try:
+        import scripts.pex10_dashboard as pex10_
+        return _json_safe(pex10_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/pex7/overview")
 async def pex7_overview():
     """PEX7 / Rhizomelic Chondrodysplasia Punctata Type 1 (RCDP1) — overview:
