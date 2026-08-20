@@ -31415,6 +31415,60 @@ async def dld_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pdhb/overview")
+async def pdhb_overview():
+    """PDHB Overview — Pyruvate Dehydrogenase E1-beta Subunit Deficiency (AR / 3p14.3).
+    PDHB encodes the structural E1β subunit of the E1α₂β₂ heterotetramer of the PDH complex.
+    E1β does NOT bind TPP or pyruvate directly; E1β is required for correct E1α assembly and stability.
+    PDHB LOF (~50–80 cases worldwide; AR; 3p14.3) → E1α₂β₂ cannot assemble → E1α degraded →
+    PDH complex inactive → identical biochemical phenotype to PDHA1 (lactic acidosis, normal L:P 10–20,
+    elevated alanine, CSF lactate > plasma lactate). Key difference from PDHA1: PDHB is AR (no sex bias);
+    gene panel (PDHA1 + PDHB + DLAT + PDHX) mandatory to distinguish. Leigh syndrome most prominent
+    structural finding (~65%); CC agenesis less common (~40% vs ~70% PDHA1). Treatment: KD first line
+    (Level A), thiamine trial (Level A, less responsive than PDHA1 ~35% vs 55%), carnitine (Level B),
+    DCA (Level B, partial-loss variants only), LEV (Level B AED). VPA absolute CI (same as PDHA1).
+    OMIM gene *179060; disease #614111.
+    Returns KPIs, PDH complex component table, phenotype distribution, high-risk drugs."""
+    try:
+        import scripts.pdhb_dashboard as pdhb_
+        return _json_safe(pdhb_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdhb/breakdown")
+async def pdhb_breakdown():
+    """PDHB Breakdown — 40-patient PDHB-deficiency cohort. Phenotype classes: Leigh Syndrome
+    (~40%), Childhood Episodic (~30%), Severe Neonatal (~20%), Mild Subacute/Juvenile (~10%).
+    No sex bias (AR). Returns seizure types (focal, tonic, IS, myoclonic), metabolic crisis
+    triggers (exercise-induced LA prominent, febrile illness, glucose load, surgery),
+    treatments (KD, thiamine, L-carnitine, DCA, LEV), key variants (p.Ile199Thr, p.Arg161His,
+    p.Leu290Arg, p.Glu179Lys, null), biomarker table with normal BCAA/2-HG (distinguishes from DLD),
+    and PDHB vs PDHA1 treatment comparison."""
+    try:
+        import scripts.pdhb_dashboard as pdhb_
+        return _json_safe(pdhb_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdhb/definitions")
+async def pdhb_definitions():
+    """PDHB Definitions — gene card (E1β structural subunit, 359 aa, 3p14.3, AR, OMIM *179060/#614111),
+    reaction (PDHB LOF → E1α₂β₂ cannot assemble → E1α degraded → PDH complex inactive → lactic acidosis),
+    key concepts (E1β structural role, normal L:P ratio fingerprint identical to PDHA1, AR inheritance vs
+    PDHA1 XLD, gene panel mandatory, Leigh syndrome most prominent, CC agenesis less common, thiamine less
+    responsive in PDHB, DCA limited to partial-loss variants, VPA absolute CI),
+    diagnostic thresholds (plasma lactate/pyruvate/alanine, L:P ratio 10–20, normal BCAA key negative,
+    PDH enzyme activity in fibroblasts), differential diagnosis (PDHA1, Complex I, DLD, DLAT, PDHX, PC,
+    MELAS, Fumarase deficiency)."""
+    try:
+        import scripts.pdhb_dashboard as pdhb_
+        return _json_safe(pdhb_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
