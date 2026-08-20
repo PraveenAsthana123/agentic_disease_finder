@@ -31315,6 +31315,58 @@ async def gcsh_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pdha1/overview")
+async def pdha1_overview():
+    """PDHA1 Overview — Pyruvate Dehydrogenase Complex Deficiency (E1α Subunit / X-linked).
+    PDHA1 encodes the E1α subunit of the PDH complex (PDC); X-linked dominant (Xp22.12); ~500+ cases
+    worldwide (2026); OMIM gene *300502 / disease #312170. PDHA1 LOF → pyruvate cannot be converted
+    to Acetyl-CoA → lactic acidosis + brain energy failure + corpus callosum agenesis + Leigh syndrome.
+    KEY BIOCHEMICAL FINGERPRINT: L:P ratio NORMAL (10–20) — both pyruvate and lactate accumulate
+    (distinguishes from Complex I deficiency where L:P >25). Males: hemizygous, always severe.
+    Females: heterozygous, variable (X-inactivation-dependent). Ketogenic diet Level A first-line.
+    VPA absolute CI (mitochondrial hepatotoxicity + carnitine depletion → destroys KD therapy).
+    Returns KPIs, PDH complex component table, structural anomalies, phenotype distribution."""
+    try:
+        import scripts.pdha1_dashboard as pdha1_
+        return _json_safe(pdha1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdha1/breakdown")
+async def pdha1_breakdown():
+    """PDHA1 Breakdown — 40-patient PDH complex deficiency cohort. Phenotype classes: Severe Neonatal
+    CC agenesis + lactic acidosis (~30%), Leigh Syndrome BG+brainstem (~35%), Episodic Ataxia female/
+    mosaic (~25%), Dysmorphic Neonatal (~10%). Seizure types: focal secondary generalisation, tonic,
+    myoclonic, IS, absence-like. Triggers: febrile illness, carbohydrate load (key!), surgery glucose.
+    Treatments: KD (Level A), thiamine (Level A, ~40-55% responsive), carnitine (Level B),
+    DCA/dichloroacetate (Level B, PDK inhibitor, neuropathy risk), LEV (Level B first-line AED).
+    Biomarkers: lactate, pyruvate, L:P ratio (normal 10-20 = key distinguisher), alanine, CSF lactate.
+    Key variants: p.Arg302His (most common, CpG hotspot, thiamine-responsive), p.Arg302Cys, p.Ala321Val."""
+    try:
+        import scripts.pdha1_dashboard as pdha1_
+        return _json_safe(pdha1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pdha1/definitions")
+async def pdha1_definitions():
+    """PDHA1 Definitions — gene card (E1α subunit, 390aa, TPP cofactor, Xp22.12, OMIM *300502/#312170,
+    X-linked dominant), reaction (pyruvate + TPP-E1α → hydroxyethyl-TPP → Acetyl-CoA via E2 DLAT),
+    PDH complex regulation (PDK1-4 phosphorylates E1α Ser293 → inactive; PDP1/2 dephosphorylates →
+    active; DCA inhibits PDK → therapeutic activation), key concepts (normal L:P ratio fingerprint,
+    CC agenesis hallmark, Leigh syndrome, X-linked dominant, KD first-line, DCA mechanism + neuropathy
+    risk, thiamine responsiveness, alanine as surrogate marker, VPA absolute CI mechanisms),
+    thresholds (lactate, pyruvate, L:P, alanine, CSF lactate, PDH enzyme activity, KD ketone target),
+    differential diagnosis (Complex I, Complex IV, DLD E3, PDHB, DLAT, PDHX, PC, MELAS)."""
+    try:
+        import scripts.pdha1_dashboard as pdha1_
+        return _json_safe(pdha1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/api/dld/overview")
 async def dld_overview():
     """DLD Overview — Dihydrolipoamide Dehydrogenase Deficiency (L-protein, E3 subunit).

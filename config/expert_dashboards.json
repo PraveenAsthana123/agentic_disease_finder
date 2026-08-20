@@ -5314,5 +5314,20 @@
       "/api/dld/definitions"
     ],
     "page": "/dld"
+  },
+  {
+    "role": "Epilepsy Specialist / Metabolic Neurologist",
+    "name": "PDHA1 Epilepsy (Pyruvate-Dehydrogenase-Complex-Deficiency-E1\u03b1-Subunit / PDHA1-390aa-TPP-Cofactor-Xp22.12-X-Linked-Dominant / PDH-Complex-E1-E2-DLAT-E3BP-PDHX-E3-DLD / PDHA1-LOF-Pyruvate-Cannot-Enter-TCA-Acetyl-CoA-Blocked / KEY-LP-Ratio-NORMAL-10-20-Both-Lactate-Pyruvate-Rise / CC-Agenesis-Leigh-Syndrome / KD-FIRST-LINE-Level-A / VPA-ABSOLUTE-CI / OMIM-Gene-300502-Disease-312170)",
+    "viz": "KPI cards, PDH complex component table, L:P ratio highlight, structural brain anomaly bars, phenotype bars, treatment ladder, biomarker table, patient sample table, differential diagnosis",
+    "feature": "PDHA1 Epilepsy Dashboard \u2014 Pyruvate Dehydrogenase Complex Deficiency (E1\u03b1 subunit, X-linked dominant, Xp22.12)",
+    "why": "PDHA1 is the most common cause (~75%) of PDH complex deficiency; X-linked dominant (males severe/females variable); normal L:P ratio fingerprint distinguishes from Complex I; CC agenesis hallmark; KD first-line; VPA absolute CI; ~500 cases worldwide 2026",
+    "priority": "critical",
+    "status": "built",
+    "endpoints": [
+      "/api/pdha1/overview",
+      "/api/pdha1/breakdown",
+      "/api/pdha1/definitions"
+    ],
+    "category": "Metabolic Epilepsy \u2014 Pyruvate Dehydrogenase Complex (PDH)"
   }
 ]
