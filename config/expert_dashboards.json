@@ -5182,5 +5182,14 @@
     "disease": "Zellweger Spectrum Disorder (ZSD) \u2014 PBD8A/8B",
     "omim_gene": "603360",
     "locus": "11p11.2"
+  },
+  {
+    "id": "pex19",
+    "name": "PEX19 Epilepsy (Zellweger-Spectrum-Disorder-ZSD / PEX19-Farnesylated-Cytoplasmic-PMP-Chaperone-299aa-Effector-Arm / CAAX-Motif-Cys296-Ser-Ile-Met-Farnesylated-Required / PEX3-Binding-Helix-aa14-30 / mPTS-Recognition-Domain-aa240-299 / PEX19-LOF-ALL-Class-I-PMPs-Fail / Ghost-Peroxisomes-PEX3-Normally-Localized-PEX14-Absent-IF-Clue / COMPLETES-PEX3-PEX16-PEX19-Axis / p.Ala318Val-Near-CAAX-Partial-Farnesylation-NALD-IRD-Enabling / p.Cys296Ser-Abolishes-Farnesylation-Null / p.Leu78fs-Null / No-Founder-Hypomorphic-Allele / 1-3pct-All-PBD-ZSD / 15-30-Cases-Worldwide-2026 / ZS-35pct / NALD-45pct / IRD-15pct / Atypical-5pct / ALL-Peroxisomal-Functions-Impaired / Biochemically-IDENTICAL-PEX1-ZSD-PEX6-ZSD-PEX3-ZSD-PEX16-ZSD-NGS-Panel-Only-Distinguishes / DRE-65-70pct / VPA-HIGH-RISK-3-Mechanisms-POLG1-MANDATORY-CPIC-A / VGB-HIGH-RISK-Retinopathy-Additive / ACTH-Level-A-IS / LEV-FIRST-LINE / DHA-Level-B-NALD-IRD / HSCT-NOT-Indicated / Lorenzo-Oil-INEFFECTIVE / No-ERT-Cytoplasmic-Chaperone-Not-Lysosomal / AR-Biallelic-LOF / 1q22 / OMIM-Gene-600279-Disease-614882-614883)",
+    "status": "built",
+    "route": "/pex19",
+    "api": "/api/pex19/overview|breakdown|definitions",
+    "cohort": 40,
+    "built_date": "2026-08-20"
   }
 ]

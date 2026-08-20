@@ -30873,6 +30873,58 @@ async def pex16_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pex19/overview")
+async def pex19_overview():
+    """PEX19 Overview — cohort KPIs, disease mechanism (farnesylated cytoplasmic PMP chaperone /
+    PEX3-docking arm / COMPLETES PEX3-PEX16-PEX19 early membrane biogenesis axis), phenotypic
+    spectrum (ZS 35% / NALD 45% / IRD 15% / Atypical 5%), OMIM *600279 / #614882 / #614883,
+    locus 1q22, key pharmacological alerts (VPA HIGH RISK triple mechanism / VGB HIGH RISK
+    retinopathy / Fasting EXTREME HAZARD / Lorenzo's Oil INEFFECTIVE — membrane absent /
+    LEV first-line / ACTH Level A IS / No ERT — farnesylated cytoplasmic chaperone /
+    No HSCT), key concepts, reference standards.
+    """
+    try:
+        import scripts.pex19_dashboard as pex19_
+        return _json_safe(pex19_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex19/breakdown")
+async def pex19_breakdown():
+    """PEX19 Breakdown — 40-patient cohort (ZS 35% / NALD 45% / IRD 15% / Atypical 5%),
+    patient table (ID / phenotype / sex / genotype / liver / seizures / AED / response / DHA),
+    seizure types (6 types, neonatal multifocal to absence), seizure triggers (8 triggers,
+    fasting EXTREME HAZARD / phytanic surge), monitoring protocol (14 parameters),
+    clinical thresholds (8), disease lifecycle (6 stages), treatments (7: LEV / ACTH /
+    CLB / LTG / DHA / phytol-diet / UDCA+VitK), contraindications (7: VPA HIGH RISK /
+    VGB HIGH RISK / Fasting EXTREME HAZARD / PHT-CBZ-OXC RELATIVE CI /
+    Lorenzo's Oil INEFFECTIVE / HSCT NOT INDICATED / No ERT).
+    """
+    try:
+        import scripts.pex19_dashboard as pex19_
+        return _json_safe(pex19_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pex19/definitions")
+async def pex19_definitions():
+    """PEX19 Definitions — gene card (farnesylated cytoplasmic PMP chaperone, 299 aa, 1q22,
+    CAAX motif Cys296-Ser-Ile-Met, farnesylation requirement, PEX3-binding helix aa14-30,
+    mPTS-recognition domain aa240-299), COMPLETES PEX3-PEX16-PEX19 early membrane biogenesis
+    axis, IF clue (PEX3 normally localized in PEX19 LOF — distinguishes from PEX3/PEX16 LOF),
+    ghost peroxisomes with PEX3 present but PEX14 absent, 17 key concepts, 13-step diagnostic
+    algorithm, pharmacological distinctions (12 points), differential diagnosis (8 conditions),
+    reference standards.
+    """
+    try:
+        import scripts.pex19_dashboard as pex19_
+        return _json_safe(pex19_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
