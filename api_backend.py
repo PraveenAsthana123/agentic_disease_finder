@@ -31586,6 +31586,62 @@ async def pdhb_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/ogdh/overview")
+async def ogdh_overview():
+    """OGDH Overview — 2-Oxoglutarate Dehydrogenase (αKGDH Complex E1 Subunit) Deficiency.
+    OGDH encodes the E1 (oxoglutarate decarboxylase) subunit of the alpha-ketoglutarate
+    dehydrogenase complex (αKGDH / 2-OGDHC): OGDH (E1) + DLST (E2) + DLD (E3, shared).
+    Reaction (TCA step 4): α-KG + CoA + NAD⁺ → succinyl-CoA + CO₂ + NADH; TPP cofactor.
+    OGDH LOF (~20–40 cases worldwide; AR; 7p13): α-KG accumulates → 2-oxoglutaric aciduria
+    (urine 2-OG 200–2200 µmol/mmol Cr — PATHOGNOMONIC). Secondary lactic acidosis with
+    L:P MILDLY elevated (15–30) — intermediate between PDH (L:P 10–20 normal) and Complex I (>25).
+    PDH is INTACT → pyruvate normal/mildly elevated. BCAA normal (BCKDH intact). Glycine normal
+    (GCS intact). DLD/E3 free activity NORMAL. Thiamine (B1) Level A first-line (TPP cofactor trial
+    mandatory; ~40–55% partial response). VPA: CAUTION (not absolute CI as in PDH deficiency).
+    OMIM gene *604290; disease #203740 (2-oxoglutaric aciduria).
+    Returns KPIs, αKGDH complex components, TCA position, phenotype distribution, high-risk drugs."""
+    try:
+        import scripts.ogdh_dashboard as ogdh_
+        return _json_safe(ogdh_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/ogdh/breakdown")
+async def ogdh_breakdown():
+    """OGDH Breakdown — 40-patient OGDH-deficiency cohort. Phenotype classes: Leigh Syndrome
+    (~40%), Severe Neonatal (~30%), Childhood Episodic Encephalopathy (~20%), Mild/Juvenile (~10%).
+    No sex bias (AR, 7p13). Returns: biomarker table (urine 2-oxoglutarate PATHOGNOMONIC,
+    L:P mildly elevated 15–30, normal BCAA/glycine/DLD/PDH — all key negatives vs DLD/PDH),
+    key variants (p.Arg263Cys TPP-binding thiamine-responsive, p.Gly354Asp active site Leigh,
+    splice null neonatal), patient sample, seizure types, metabolic crisis triggers
+    (febrile illness, high-protein meal, fasting, exercise), treatment ladder (thiamine Level A,
+    riboflavin Level B, lipoic acid Level C, succinate experimental, LEV Level B, KD Level C)."""
+    try:
+        import scripts.ogdh_dashboard as ogdh_
+        return _json_safe(ogdh_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/ogdh/definitions")
+async def ogdh_definitions():
+    """OGDH Definitions — gene card (E1 decarboxylase, 1023 aa, 7p13, AR, OMIM *604290/#203740),
+    αKGDH complex structure (OGDH E1 + DLST E2 + DLD E3 shared), TCA cycle step 4 position
+    (α-KG → succinyl-CoA), 2-oxoglutaric aciduria pathognomonic marker, L:P intermediate
+    elevation (15–30, intermediate between PDH 10–20 normal and Complex I >25),
+    thiamine mechanism (TPP cofactor for E1, same as PDHA1 for PDH E1), succinate anaplerotic bypass,
+    KD limitations (does not bypass αKGDH block unlike PDH block), DLD intact (BCAA/glycine normal),
+    differential diagnosis (DLD deficiency — 4-complex block vs OGDH single block;
+    DLST deficiency — same complex E2; PDH complex; Complex I; 2-HGA types I/II;
+    Glutaric aciduria type I), diagnostic thresholds (urine 2-OG, L:P, αKGDH activity fibroblasts)."""
+    try:
+        import scripts.ogdh_dashboard as ogdh_
+        return _json_safe(ogdh_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
