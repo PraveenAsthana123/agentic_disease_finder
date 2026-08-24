@@ -1,5 +1,23 @@
 [
   {
+    "id": "pycr1",
+    "name": "PYCR1 Epilepsy (Autosomal-Recessive-Cutis-Laxa-Type-2B-ARCL2B-Pyrroline-5-Carboxylate-Reductase-1-Deficiency / PYCR1-319aa-NADPH-Dependent-Mitochondrial-Homopentameric-17q25.3-AR / PYCR1-CATALYSES-P5C-Plus-NADPH-To-L-Proline-FINAL-Step-Proline-Synthesis-Downstream-ALDH18A1 / PYCR1-LOF-Proline-CRITICALLY-LOW-P5C-Mildly-Elevated-PLP-NORMAL-Ornithine-Mildly-LOW-NORMAL / Cutis-Laxa-90pct-At-Birth-HALLMARK / Seizures-40-55pct / DRE-15-25pct / IDD-80pct / B6-NOT-INDICATED-PLP-Normal-Unlike-ALDH4A1 / Infantile-Spasms-Modal / L-Proline-Level-A / Protein-Restriction-ABSOLUTE-CI / 40-patient-cohort-seed-157 / 3-endpoints-verified-200 / OMIM-Gene-179035-Disease-612940 / 17q25.3 / AR / Registered-2026-08-24)",
+    "role": "Neurologist",
+    "viz": "Biomarker trends + seizure types + treatment outcomes",
+    "feature": "Proline pathway synthesis exit block \u2014 PYCR1 vs ALDH18A1 vs ALDH4A1 cross-comparison",
+    "why": "Complete proline synthesis pathway disease family (PRODH\u2192ALDH4A1\u2192ALDH18A1\u2192PYCR1)",
+    "priority": "P1",
+    "status": "built",
+    "api_endpoints": [
+      "/api/pycr1/overview",
+      "/api/pycr1/breakdown",
+      "/api/pycr1/definitions"
+    ],
+    "page": "/pycr1",
+    "frontend": "portal-next/app/pycr1/page.jsx",
+    "built_note": "PYCR1 Dashboard \u2014 /api/pycr1/overview|breakdown|definitions verified 200, 40-patient cohort seed-157, 3 endpoints"
+  },
+  {
     "role": "Neurologist",
     "name": "Raw EEG Viewer",
     "viz": "Multi-channel waveform",

@@ -33088,6 +33088,34 @@ async def aldh18a1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── PYCR1 — Pyrroline-5-Carboxylate Reductase 1 Deficiency (ARCL2B / Cutis Laxa Type IIB) ──
+@app.get("/api/pycr1/overview")
+async def pycr1_overview():
+    try:
+        import scripts.pycr1_dashboard as pycr1_
+        return _json_safe(pycr1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pycr1/breakdown")
+async def pycr1_breakdown():
+    try:
+        import scripts.pycr1_dashboard as pycr1_
+        return _json_safe(pycr1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pycr1/definitions")
+async def pycr1_definitions():
+    try:
+        import scripts.pycr1_dashboard as pycr1_
+        return _json_safe(pycr1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
