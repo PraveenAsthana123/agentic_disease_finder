@@ -5798,5 +5798,19 @@
       "/api/agat/definitions"
     ],
     "page": "/agat"
+  },
+  {
+    "id": "slc6a8",
+    "name": "SLC6A8 Epilepsy (Creatine-Transporter-Deficiency-CTD / Cerebral-Creatine-Deficiency-Syndrome-1-CCDS1 / SLC6A8-635aa-Na-Cl-Dependent-Creatine-Transporter-CrT1-Xq28-X-Linked / Transport-Failure-NOT-Biosynthesis-Failure / Most-Common-CCDS-300-500-Cases / Plasma-Creatine-ELEVATED-vs-ABSENT-GAMT-AGAT / Urine-Cr-CrCr-Ratio-CRITICALLY-HIGH-Primary-Diagnostic / GAA-NORMAL-KEY-NEGATIVE / Creatine-Tx-FAILS-Males-Transport-Absent / GAA-Supplementation-Emerging-SLC6A6-Bypass / OMIM-300036-Disease-300352)",
+    "route": "/slc6a8",
+    "api_prefix": "/api/slc6a8",
+    "script": "scripts/slc6a8_dashboard.py",
+    "status": "built",
+    "cohort_seed": 127,
+    "n_patients": 40,
+    "category": "creatine_metabolism",
+    "ccds": "CCDS1",
+    "inheritance": "X-linked",
+    "gene_locus": "Xq28"
   }
 ]

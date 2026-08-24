@@ -32942,6 +32942,47 @@ async def agat_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/slc6a8/overview")
+async def slc6a8_overview():
+    """SLC6A8 overview — gene card, cohort KPIs, phenotype distribution, transport mechanism,
+    key biomarker signature (urine Cr/CrCr ratio ELEVATED, plasma creatine ELEVATED, GAA NORMAL),
+    CCDS triad comparison, NBS status.
+    SLC6A8 Deficiency = CCDS1 (Cerebral Creatine Deficiency Syndrome 1) — most common of 3 CCDS.
+    X-linked Xq28: hemizygous males severe; carrier females variable (Lyon mosaicism).
+    KEY DISTINCTION: creatine TX FAILS in males (transporter absent — opposite of GAMT/AGAT)."""
+    try:
+        import scripts.slc6a8_dashboard as slc6a8_
+        return _json_safe(slc6a8_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/slc6a8/breakdown")
+async def slc6a8_breakdown():
+    """SLC6A8 breakdown — clinical features, seizure types, metabolic triggers, treatments,
+    drug risks (metformin CI, creatine NOT recommended in males), variant distribution,
+    patient sample (40 patients, seed 127: 60% severe male / 30% carrier female / 10% mild).
+    GAA supplementation emerging therapy (bypasses absent SLC6A8 via SLC6A6/BGT-1)."""
+    try:
+        import scripts.slc6a8_dashboard as slc6a8_
+        return _json_safe(slc6a8_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/slc6a8/definitions")
+async def slc6a8_definitions():
+    """SLC6A8 definitions — gene card, key concepts (transport failure vs biosynthesis failure,
+    urine Cr/CrCr ratio diagnostic rationale, why creatine fails in males, X-linked severity,
+    H-MRS shared CCDS finding, GAA supplementation mechanism), differential (GAMT, AGAT, GLUT1,
+    X-linked IDD), treatment summary (do/avoid), variant catalogue (10 variants)."""
+    try:
+        import scripts.slc6a8_dashboard as slc6a8_
+        return _json_safe(slc6a8_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
