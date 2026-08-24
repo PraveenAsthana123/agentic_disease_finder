@@ -33224,6 +33224,31 @@ async def gad1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/oat/overview")
+async def oat_overview():
+    try:
+        import scripts.oat_dashboard as oat_
+        return _json_safe(oat_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/oat/breakdown")
+async def oat_breakdown():
+    try:
+        import scripts.oat_dashboard as oat_
+        return _json_safe(oat_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/oat/definitions")
+async def oat_definitions():
+    try:
+        import scripts.oat_dashboard as oat_
+        return _json_safe(oat_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

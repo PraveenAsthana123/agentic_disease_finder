@@ -5926,5 +5926,25 @@
     "page": "portal-next/app/gad1/page.jsx",
     "script": "scripts/gad1_dashboard.py",
     "registered": "2026-08-24"
+  },
+  {
+    "id": "oat",
+    "name": "OAT Epilepsy (Gyrate-Atrophy-Of-Choroid-And-Retina / OAT-439aa-PLP-Dependent-Mitochondrial-Matrix-Homotetramer-10q26.13-Autosomal-Recessive / Ornithine-Accumulation-400-1500-umol-L-PATHOGNOMONIC / Gyrate-Atrophy-Chorioretinal-100pct / B6-Responsive-30-40pct / Arginine-Restriction-Level-A / 40-patient-cohort-seed-187 / 3-endpoints-verified-200)",
+    "status": "built",
+    "category": "Metabolic Epilepsy \u2014 Ornithine/Proline Pathway",
+    "nav_url": "/oat",
+    "api_endpoints": [
+      "/api/oat/overview",
+      "/api/oat/breakdown",
+      "/api/oat/definitions"
+    ],
+    "component": "portal-next/app/oat/page.jsx",
+    "script": "scripts/oat_dashboard.py",
+    "cohort_n": 40,
+    "seed": 187,
+    "chromosome": "10q26.13",
+    "inheritance": "AR",
+    "omim_disease": "258870",
+    "registered": "2026-08-24"
   }
 ]
