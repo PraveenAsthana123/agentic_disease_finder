@@ -32013,6 +32013,55 @@ async def pcca_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pccb/overview")
+async def pccb_overview():
+    """PCCB overview: gene card (PCCB/propionyl-CoA carboxylase beta subunit, 3q22.3, AR, OMIM *232050/#606054,
+    559aa, CT domain, (αβ)6 dodecamer with PCCA), cohort KPIs (40 patients, C3 elevation,
+    methylcitrate, ammonia, carnitine depletion, cardiomyopathy, BG infarct, seizure rates),
+    phenotype distribution (classic-neonatal ~70% / late-onset ~20% / intermediate ~5% / paucisymptomatic ~5%),
+    PCC two-step reaction mechanism (PCCB performs Step 2 CT carboxyl transfer),
+    PCCA vs PCCB 12-feature comparison (biochemically identical — gene panel mandatory to distinguish),
+    high-risk situations (VPA ABSOLUTE CI / fasting / illness / high-protein / biotin NOT effective)."""
+    try:
+        import scripts.pccb_dashboard as pccb_
+        return _json_safe(pccb_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pccb/breakdown")
+async def pccb_breakdown():
+    """PCCB breakdown: 11 biomarkers (C3 primary NBS identical to PCCA / methylcitrate PATHOGNOMONIC /
+    absent methylmalonate KEY NEGATIVE vs MMA / 3-OH-propionate / propionylglycine / ammonia /
+    free carnitine / biotinidase NORMAL / C5-OH NORMAL / BCAA NORMAL / C3/C2 ratio),
+    8 key variants (p.Glu168Lys Dutch founder moderate / c.1218_1231del14 Spanish founder severe null /
+    c.IVS12+1G>A Saudi splice null / p.Arg512Cys CT catalytic severe / p.Arg399Cys interface severe /
+    p.Gly441Arg CT core severe / p.Val145Glu mild-moderate / p.Ile476Thr intermediate),
+    6 seizure types, 5 metabolic triggers, 10 treatments (Level A: protein restriction / formula /
+    L-carnitine / IV glucose / ammonia scavengers; Level B: metronidazole / liver transplant / HD-CRRT;
+    NOT EFFECTIVE: biotin; ABSOLUTE CI: VPA), patient sample (15 of 40), high-risk drugs."""
+    try:
+        import scripts.pccb_dashboard as pccb_
+        return _json_safe(pccb_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pccb/definitions")
+async def pccb_definitions():
+    """PCCB definitions: gene card (PCCB/Propionyl-CoA Carboxylase Beta Subunit, 3q22.3, AR, 559aa,
+    CT domain, (αβ)6 dodecamer, OMIM *232050/#606054, 1:100,000-150,000 EU / 1:2,000-5,000 Arabian Peninsula),
+    7 key concepts (why PCCA=PCCB cause identical disease / PCCB CT domain propionyl-CoA binding mechanism /
+    why biotin NOT effective vs HLCS-BTD / methylcitrate PATHOGNOMONIC and absent in MMA / VPA absolute CI
+    mechanism / why liver transplant does NOT prevent cardiac complications / secondary hyperammonemia via
+    NAGS-CPS1), diagnostic thresholds, differential (PCCA / MMA-MMUT / HLCS / BTD / DLD / MSUD / isolated MCC)."""
+    try:
+        import scripts.pccb_dashboard as pccb_
+        return _json_safe(pccb_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

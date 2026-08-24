@@ -5509,5 +5509,21 @@
       "/api/pcca/breakdown",
       "/api/pcca/definitions"
     ]
+  },
+  {
+    "id": "pccb",
+    "name": "PCCB Epilepsy (Propionic-Acidemia-Type-B / PCCB-Propionyl-CoA-Carboxylase-Beta-Subunit-559aa-CT-Carboxyl-Transferase-Domain-3q22.3-Autosomal-Recessive / PCC-Complex-Alpha-Beta-6-Dodecamer-PCCB-CT-Domain-Step-2-Accepts-Carboxybiotin-From-PCCA-Lys669-Transfers-CO2-To-Propionyl-CoA-D-Methylmalonyl-CoA / PCCB-LOF-CT-Domain-Absent-Inactive-Carboxybiotin-Cannot-Transfer-To-Propionyl-CoA / Propionyl-CoA-ACCUMULATES-Four-Downstream-Cascades / Methylcitrate-PATHOGNOMONIC-50-2000-umol-mmolCr / C3-Propionylcarnitine-NBS-PRIMARY-IDENTICAL-To-PCCA-Cannot-Distinguish-By-NBS / NO-Methylmalonate-KEY-NEGATIVE-vs-MMA-MMUT / NO-C5-OH-KEY-NEGATIVE-vs-HLCS-BTD-MCD / Biotinidase-NORMAL-KEY-NEGATIVE-vs-BTD / Biotin-NOT-EFFECTIVE-PCCB-CT-Domain-Enzyme-Itself-Mutant / BCAA-NORMAL-KEY-NEGATIVE-vs-DLD-MSUD / Gene-Panel-NGS-MANDATORY-Cannot-Distinguish-PCCA-From-PCCB-By-Biochemistry / Cardiomyopathy-Dilated-30-50pct / QT-Prolongation-5-10pct / Basal-Ganglia-Stroke-Like-Episodes-25-35pct / L-Carnitine-Level-A / Protein-Restriction-Low-Ile-Val-Met-Thr-Level-A / IV-Glucose-GIR-8-12-Insulin-Acute-Crisis-Level-A / Ammonia-Scavengers-Level-A / Metronidazole-Level-B / Liver-Transplant-Level-B-Does-NOT-Protect-Heart / VPA-ABSOLUTE-CI-Valproyl-CoA-Inhibits-PCCB-CT-Domain / Fasting-EXTREME-HAZARD / p.Glu168Lys-Dutch-Belgian-Founder-Moderate / c.1218-1231del14-Spanish-Portuguese-Founder-Null-Severe / c.IVS12plus1G-A-Saudi-Arabian-Founder-Severe / p.Arg512Cys-CT-Catalytic-Severe / AR-Biallelic-LOF / 3q22.3 / OMIM-Gene-232050-Disease-606054)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/pccb/overview",
+      "/api/pccb/breakdown",
+      "/api/pccb/definitions"
+    ],
+    "frontend_route": "/pccb",
+    "cohort_size": 40,
+    "disease_category": "Organic Acidemia",
+    "gene": "PCCB",
+    "chromosome": "3q22.3",
+    "inheritance": "AR"
   }
 ]
