@@ -5812,5 +5812,18 @@
     "ccds": "CCDS1",
     "inheritance": "X-linked",
     "gene_locus": "Xq28"
+  },
+  {
+    "id": "sardh",
+    "name": "SARDH Epilepsy (Sarcosinemia-Sarcosine-Dehydrogenase-Deficiency / SARDH-972aa-FAD-THF-Dependent-Mitochondrial-9q34.3-AR / SARDH-DESTROYS-Sarcosine-OPPOSITE-Of-GNMT-Which-MAKES-It / Sarcosine-MARKEDLY-ELEVATED-50-800-umol-L-PATHOGNOMONIC / Methionine-NORMAL-SAM-NORMAL-SAH-NORMAL-tHcy-NORMAL-MMA-NORMAL-ALL-KEY-NEGATIVES / MOSTLY-BENIGN-50pct-Asymptomatic / Ascertainment-Bias-Inflated-Historical-IDD / SAM-Supplements-ABSOLUTE-CI / OMIM-604455-Disease-268900)",
+    "route": "/sardh",
+    "api_prefix": "/api/sardh",
+    "script": "scripts/sardh_dashboard.py",
+    "status": "built",
+    "cohort_seed": 137,
+    "n_patients": 40,
+    "category": "methylation_sarcosine",
+    "inheritance": "AR",
+    "gene_locus": "9q34.3"
   }
 ]

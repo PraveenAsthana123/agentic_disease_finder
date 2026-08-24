@@ -32983,6 +32983,31 @@ async def slc6a8_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/sardh/overview")
+async def sardh_overview():
+    try:
+        import scripts.sardh_dashboard as sardh_
+        return _json_safe(sardh_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sardh/breakdown")
+async def sardh_breakdown():
+    try:
+        import scripts.sardh_dashboard as sardh_
+        return _json_safe(sardh_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sardh/definitions")
+async def sardh_definitions():
+    try:
+        import scripts.sardh_dashboard as sardh_
+        return _json_safe(sardh_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
