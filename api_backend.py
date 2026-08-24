@@ -32873,6 +32873,39 @@ async def gnmt_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gamt/overview")
+async def gamt_overview():
+    """GAMT — Guanidinoacetate N-methyltransferase deficiency (CCDS2): GAA massively elevated,
+    creatine absent, methionine NORMAL, drug-resistant epilepsy, IDD, 6p21.3, AR, seed 113."""
+    try:
+        import scripts.gamt_dashboard as gamt_
+        return _json_safe(gamt_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gamt/breakdown")
+async def gamt_breakdown():
+    """GAMT breakdown — GAA biomarker ranges, seizure types, metabolic triggers, treatments
+    (creatine Level A + ornithine Level A), drug risks, variant distribution, patient sample."""
+    try:
+        import scripts.gamt_dashboard as gamt_
+        return _json_safe(gamt_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gamt/definitions")
+async def gamt_definitions():
+    """GAMT definitions — gene card, key concepts (dual pathology, GAA epileptogenesis,
+    creatine pathway, GAMT vs GNMT, brain H-MRS), differential (AGAT, SLC6A8, GNMT, MMA)."""
+    try:
+        import scripts.gamt_dashboard as gamt_
+        return _json_safe(gamt_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

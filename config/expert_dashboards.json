@@ -5771,5 +5771,21 @@
     "cohort_n": 40,
     "seed": 107,
     "registered": "2026-08-24"
+  },
+  {
+    "id": "gamt",
+    "name": "GAMT Epilepsy (Guanidinoacetate-N-Methyltransferase-Deficiency-Cerebral-Creatine-Deficiency-Syndrome-2-CCDS2 / GAMT-236aa-SAM-Dependent-Homodimeric-Liver-Pancreas-6p21.3-Autosomal-Recessive / GAMT-CATALYSES-SAM-Plus-Guanidinoacetate-To-SAH-Plus-Creatine-FINAL-Step-Creatine-Biosynthesis / GAMT-LOF-Creatine-CANNOT-Be-Made-Plus-GAA-Accumulates-Massively-DUAL-Pathology / GAA-MASSIVELY-ELEVATED-50-300-umol-L-PATHOGNOMONIC-Normal-Less-3 / Creatine-ABSENT-Less-5-umol-L-Normal-20-80 / Brain-H-MRS-Creatine-Peak-3.0ppm-ABSENT-PATHOGNOMONIC / Urine-Creatinine-CRITICALLY-LOW / Methionine-NORMAL-KEY-NEGATIVE-vs-GNMT-MAT1A-AHCY / tHcy-NORMAL-KEY-NEGATIVE / SAM-NORMAL-LOW-KEY-NEGATIVE-vs-GNMT / Drug-Resistant-Epilepsy-60-80pct / IDD-Profound-90pct / Creatine-Monohydrate-Level-A / Ornithine-Level-A-Reduces-GAA-60-90pct / Arginine-Supplements-HIGH-RISK / VPA-MODERATE-RISK / p.Ile124Val-Most-Common-25pct / p.Asp204Asn-Catalytic-Severe / Classic-Severe-65pct-MODAL / ~200-250-Cases-2026 / AR / 6p21.3 / OMIM-Gene-601240-Disease-612736)",
+    "status": "built",
+    "route": "/gamt",
+    "api_endpoints": [
+      "/api/gamt/overview",
+      "/api/gamt/breakdown",
+      "/api/gamt/definitions"
+    ],
+    "script": "scripts/gamt_dashboard.py",
+    "cohort_n": 40,
+    "seed": 113,
+    "category": "metabolic-epilepsy-creatine-biosynthesis",
+    "registered": "2026-08-24"
   }
 ]
