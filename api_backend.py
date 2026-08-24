@@ -32243,6 +32243,70 @@ async def mmab_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mmachc/overview")
+async def mmachc_overview():
+    """MMACHC overview: gene card (MMACHC/cblC, 1p34.1, AR,
+    OMIM *609831/#277400, 282 aa cytoplasmic bifunctional decyanase/reductase),
+    cohort KPIs (40 patients, COMBINED MMA 200-2000 mmol/mol Cr + tHcy ELEVATED >30-300 µmol/L
+    PATHOGNOMONIC for cblC, methionine LOW 8-18 µmol/L, maculopathy ~80% early-onset,
+    OHCbl response ~75% for HHcy / ~55% for MMA, seizure rates, psychiatric late-onset),
+    phenotype distribution (cblC Early-Onset Neonatal Severe ~45% / cblC Early-Onset Infantile ~35%
+    MODAL maculopathy+IS / cblC Late-Onset Child/Adult ~15% c.482G>A psychiatric /
+    cblC Mild/Attenuated ~5%),
+    5-step MMACHC pathway (dietary Cbl→cob(I)alamin BLOCK→MMAB arm MMA↑ + MMADHC arm HHcy↑),
+    MMACHC vs isolated MMA 10-feature critical differential (HHcy ELEVATED vs NORMAL / maculopathy /
+    MeCbl+AdoCbl BOTH absent / betaine mandatory / N2O ABSOLUTE CI),
+    high-risk situations (N2O ABSOLUTE CI / VPA HIGH RISK / fasting / missed OHCbl+betaine HIGH RISK)."""
+    try:
+        import scripts.mmachc_dashboard as mmachc_
+        return _json_safe(mmachc_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmachc/breakdown")
+async def mmachc_breakdown():
+    """MMACHC breakdown: 12 biomarkers (C3 primary NBS identical to isolated MMA /
+    MMA urine ELEVATED 200-2000 mmol/mol Cr LOWER than MMUT mut0 / tHcy ELEVATED >30-300 µmol/L
+    PATHOGNOMONIC cblC KEY POSITIVE / methionine LOW 8-18 µmol/L methionine-synthase-blocked /
+    MeCbl fibroblasts ABSENT cytoplasmic-arm-blocked / AdoCbl fibroblasts ABSENT mito-arm-also-blocked /
+    methylcitrate mildly secondary NOT pathognomonic KEY NEG vs PA / ammonia LOWER than isolated MMA /
+    BCAA NORMAL KEY NEG vs DLD / OHCbl response HHcy 75% MMA 55% / carnitine depleted secondary),
+    8 key variants (c.271dupA most-common-worldwide-null ~40-50% / p.Arg132* second-null / p.Arg161Gln-late-onset-allele /
+    p.Leu116Pro-intermediate / c.271dupA/c.482G>A-most-common-compound-het-late-onset /
+    IVS1-1G>A-splice-null / p.Pro189Thr-mild / p.Arg206*-null),
+    6 seizure types, 5 metabolic triggers, 10 treatments (Level A: OHCbl 1-2mg IM 75% HHcy response /
+    betaine 100-200 mg/kg/day MANDATORY / IV glucose acute / ammonia scavengers / N2O avoidance;
+    Level B: folinic acid / L-carnitine; HIGH RISK: VPA; ABSOLUTE CI: N2O), patient sample (15 of 40)."""
+    try:
+        import scripts.mmachc_dashboard as mmachc_
+        return _json_safe(mmachc_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmachc/definitions")
+async def mmachc_definitions():
+    """MMACHC definitions: gene card (MMACHC/cblC, 1p34.1, AR, 282aa, OMIM *609831/#277400,
+    ~1:50,000-100,000 most-common intracellular-cobalamin-disorder),
+    7 key concepts (why MMACHC causes BOTH MMA+HHcy — upstream branch point /
+    homocysteine elevation PATHOGNOMONIC cblC vs isolated MMA /
+    OHCbl mechanism partial bypass in cblC /
+    maculopathy pathognomonic retinal cblC finding /
+    late-onset cblC c.482G>A psychiatric misdiagnosis risk /
+    betaine cobalamin-independent BHMT remethylation mechanism /
+    N2O ABSOLUTE CI methionine-synthase-inactivation mechanism+anesthesia-protocol),
+    diagnostic thresholds (tHcy >30+MMA>200 = cblC / methionine <15 / OHCbl trial HHcy+MMA response /
+    tHcy target <50 on treatment),
+    differential (MMUT / MMAA-cblA / MMAB-cblB / MMADHC-cblD / CBS-classical-homocystinuria /
+    PA-PCCA-PCCB / DLD)."""
+    try:
+        import scripts.mmachc_dashboard as mmachc_
+        return _json_safe(mmachc_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

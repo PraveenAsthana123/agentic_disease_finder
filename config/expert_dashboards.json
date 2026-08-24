@@ -5572,5 +5572,19 @@
     "chromosome": "12q24.11",
     "omim_gene": "*607568",
     "omim_disease": "#251110"
+  },
+  {
+    "role": "Neurologist",
+    "name": "MMACHC (cblC) Epilepsy Dashboard",
+    "viz": "Combined MMA+HHcy biomarker panel, pathway diagram, variant table",
+    "feature": "tHcy PATHOGNOMONIC cblC, maculopathy tracking, OHCbl+betaine response, N2O CI alert",
+    "why": "MMACHC cblC \u2014 most common intracellular cobalamin disorder; combined MMA+HHcy; distinct from isolated MMA",
+    "priority": "P0",
+    "status": "built",
+    "endpoints": [
+      "/api/mmachc/overview",
+      "/api/mmachc/breakdown",
+      "/api/mmachc/definitions"
+    ]
   }
 ]
