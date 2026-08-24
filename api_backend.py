@@ -31909,6 +31909,64 @@ async def hlcs_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/btd/overview")
+async def btd_overview():
+    """BTD (Biotinidase / Multiple Carboxylase Deficiency — Late-onset/Infantile) overview:
+    gene metadata (BTD/biotinidase, 3p25.1, AR, OMIM *609019/#253260, 543aa 60-kDa glycoprotein,
+    biotin RECYCLING enzyme — cleaves biocytin to regenerate free biotin), KPIs for 40-patient
+    BTD cohort, phenotype distribution (Profound Classic Infantile 70% / Profound Neonatal 10% /
+    Partial Symptomatic 12.5% / Partial Stress-only 7.5%), four-carboxylase pathway (same PC/PCC/
+    MCC/ACC blocks as HLCS but via indirect biotin depletion), BTD vs HLCS differential
+    (biotinidase DEFICIENT in BTD <10% profound — KEY DIAGNOSTIC; biotin LOW; SNHL 75%;
+    optic atrophy 30%; onset 2-12 months vs neonatal), high-risk situations
+    (missed doses EXTREME HAZARD, raw egg white/avidin ABSOLUTE CI, delayed diagnosis SNHL HAZARD)."""
+    try:
+        import scripts.btd_dashboard as btd_
+        return _json_safe(btd_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/btd/breakdown")
+async def btd_breakdown():
+    """BTD breakdown: 40-patient BTD cohort, biomarkers (serum biotinidase enzyme activity PRIMARY
+    DIAGNOSTIC <10% profound /<30% partial; plasma biotin LOW in BTD vs NORMAL in HLCS — KEY
+    differential; C5-OH NBS MOST SENSITIVE; C3 propionylcarnitine; urine 3-OH-isovalerate;
+    methylcitrate; plasma lactate; biocytin elevated; HLCS activity NORMAL KEY NEGATIVE),
+    key variants (p.Asp444His global founder ~35% profound alleles catalytic site, p.Arg538Cys
+    European profound disulfide disruption, p.Gln456His European profound active-site-adjacent,
+    p.Ala171Thr common partial 30-50% activity, p.Cys35Arg severe near catalytic site,
+    c.98_104del7ins3 partial Middle East, p.Leu237_Lys238ins Jewish founder),
+    seizure types (infantile spasms 72% / myoclonic 65% / GTC 55% / atonic 38%),
+    metabolic triggers, treatments (biotin 5-10 mg/day profound Level A / 2-5 mg/day partial
+    Level A / IV biotin acute / IV glucose / carnitine Level B / LEV bridge Level B /
+    raw egg white ABSOLUTE CI / VPA CAUTION carnitine depletion synergy)."""
+    try:
+        import scripts.btd_dashboard as btd_
+        return _json_safe(btd_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/btd/definitions")
+async def btd_definitions():
+    """BTD definitions: gene card (BTD/biotinidase, 3p25.1, AR, OMIM *609019/#253260,
+    543aa, EC 3.5.1.12 biocytin hydrolase, catalytic Asp444 active site, plasma + intestinal forms,
+    1:61,000 combined prevalence, universal NBS), key concepts (why BTD LOF causes four-carboxylase
+    MCD via biotin depletion not ligation failure; why onset is LATER in BTD than HLCS —
+    maternal biotin stores protect neonatal period; SNHL mechanism — auditory nerve biotin
+    depletion and reversibility window; why biotin works — pharmacological bypass at lower dose
+    than HLCS because HLCS intact; NBS enzyme assay — why direct enzymatic primary better than C5-OH),
+    diagnostic thresholds (BTD activity profound <10% / partial 10-30% / plasma biotin <450 pmol/L /
+    C5-OH NBS recall / urine 3-OH-isovalerate / audiology / ophthalmology / biotin dose response),
+    differential diagnosis (HLCS / isolated MCC deficiency / PA / MMA / PC deficiency / NKH / DLD)."""
+    try:
+        import scripts.btd_dashboard as btd_
+        return _json_safe(btd_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
