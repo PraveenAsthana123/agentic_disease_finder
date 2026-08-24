@@ -33143,6 +33143,33 @@ async def pycr2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/glud1/overview")
+async def glud1_overview():
+    try:
+        import scripts.glud1_dashboard as glud1_
+        return _json_safe(glud1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glud1/breakdown")
+async def glud1_breakdown():
+    try:
+        import scripts.glud1_dashboard as glud1_
+        return _json_safe(glud1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glud1/definitions")
+async def glud1_definitions():
+    try:
+        import scripts.glud1_dashboard as glud1_
+        return _json_safe(glud1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
