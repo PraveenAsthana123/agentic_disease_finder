@@ -32813,6 +32813,36 @@ async def ahcy_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mat1a/overview")
+async def mat1a_overview():
+    """MAT1A (Methionine Adenosyltransferase I/III Deficiency) — overview KPIs, phenotype distribution, disease summary."""
+    try:
+        import scripts.mat1a_dashboard as mat1a_
+        return _json_safe(mat1a_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mat1a/breakdown")
+async def mat1a_breakdown():
+    """MAT1A — patient sample, seizure types, metabolic triggers, treatments, drug risks, variants, biomarker ranges."""
+    try:
+        import scripts.mat1a_dashboard as mat1a_
+        return _json_safe(mat1a_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mat1a/definitions")
+async def mat1a_definitions():
+    """MAT1A — gene card, key concepts (SAM vs SAH, MAT isoforms, betaine CI), differential diagnosis."""
+    try:
+        import scripts.mat1a_dashboard as mat1a_
+        return _json_safe(mat1a_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
