@@ -5913,5 +5913,18 @@
     "cohort_n": 40,
     "seed": 175,
     "registered": "2026-08-24"
+  },
+  {
+    "id": "gad1",
+    "name": "GAD1 Epilepsy (GAD1-Related-Epileptic-Encephalopathy-EIEE59-Glutamic-Acid-Decarboxylase-1-Deficiency / GAD1-585aa-PLP-Dependent-Cytoplasmic-Homodimer-GAD67-2q31.1-Autosomal-Recessive / GAD1-CATALYSES-L-Glutamate-Plus-PLP-To-GABA-Plus-CO2-DOMINANT-GABA-Synthesis-Step-80pct-Brain-GABA / GAD1-LOF-GABA-CANNOT-Be-Made-Synthesis-Entry-Block-Catastrophic / CSF-GABA-CRITICALLY-LOW-Less-10-nmol-mL-Normal-40-100-PATHOGNOMONIC / PLP-NORMAL-Cofactor-Present-Enzyme-Absent-KEY-NEGATIVE-vs-PNPO / GHB-NORMAL-LOW-KEY-NEGATIVE-vs-SSADH / PERFECT-METABOLIC-INVERSION-vs-ABAT-Same-GABA-Shunt-Opposite-Direction / Hyperekplexia-80pct-CHARACTERISTIC / Epileptic-Seizures-98pct / Multifocal-Myoclonic-70pct-MODAL / Infantile-Spasms-55pct / DRE-78pct / IDD-100pct / Benzodiazepines-Level-A / ACTH-Level-A-IS / Vigabatrin-Level-B-POTENTIALLY-BENEFICIAL-OPPOSITE-ABAT / PLP-Pyridoxine-Level-B / Isoniazid-ABSOLUTE-CI / Cycloserine-ABSOLUTE-CI / ~20-30-Cases-2026 / AR-Biallelic-LOF / 2q31.1 / OMIM-Gene-605363-Disease-617118 / 40-patient-cohort-seed-181 / 3-endpoints-verified-200 / Registered-2026-08-24",
+    "status": "built",
+    "routes": [
+      "/api/gad1/overview",
+      "/api/gad1/breakdown",
+      "/api/gad1/definitions"
+    ],
+    "page": "portal-next/app/gad1/page.jsx",
+    "script": "scripts/gad1_dashboard.py",
+    "registered": "2026-08-24"
   }
 ]

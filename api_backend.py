@@ -33197,6 +33197,33 @@ async def abat_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/gad1/overview")
+async def gad1_overview():
+    try:
+        import scripts.gad1_dashboard as gad1_
+        return _json_safe(gad1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gad1/breakdown")
+async def gad1_breakdown():
+    try:
+        import scripts.gad1_dashboard as gad1_
+        return _json_safe(gad1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gad1/definitions")
+async def gad1_definitions():
+    try:
+        import scripts.gad1_dashboard as gad1_
+        return _json_safe(gad1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
