@@ -32658,6 +32658,61 @@ async def mtr_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mthfr/overview")
+async def mthfr_overview():
+    """MTHFR (Severe MTHFR Deficiency) Epilepsy Dashboard — overview
+    (gene: MTHFR-Methylenetetrahydrofolate-Reductase-656aa-FAD-flavoprotein-1p36.3-AR /
+    MTHFR-converts-5-10-methyleneTHF-to-5-methylTHF-methyl-donor-for-MTR /
+    MTHFR-LOF-cannot-produce-5-methylTHF-MTR-has-no-methyl-donor-HHcy-not-remethylated /
+    ISOLATED-HHcy-tHcy-50-300-umol-L-MMA-NORMAL-KEY-NEGATIVE /
+    MeCbl-NORMAL-fibroblasts-KEY-POSITIVE-DISTINCTION-cblE-cblG-cobalamin-intact /
+    Serum-folate-LOW-NORMAL-NOT-elevated-KEY-DISTINCTION-cblE-cblG-no-methylfolate-trap /
+    NO-megaloblastic-anemia-typical-KEY-NEGATIVE-vs-cblE-80-90pct /
+    White-matter-disease-82pct-PROMINENT-more-than-cblE-cblG /
+    Neonatal-Severe-25pct / Infantile-Classic-50pct-MODAL / Late-Onset-Attenuated-20pct / Adult-Psychiatric-5pct,
+    cohort: 40 patients seed-83, OMIM-Gene-607093-Disease-236250)."""
+    try:
+        import scripts.mthfr_dashboard as mthfr_
+        return _json_safe(mthfr_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mthfr/breakdown")
+async def mthfr_breakdown():
+    """MTHFR (Severe MTHFR Deficiency) Epilepsy Dashboard — breakdown
+    (seizure types: infantile-spasms / myoclonic / GTCS / focal / absence /
+    triggers: VPA-HIGH-RISK-FAD-depletion / antifolates-HIGH-RISK / N2O-HIGH-RISK /
+    treatments: Betaine-MANDATORY-LevelA / Methionine-LevelA-MTHFR-unique /
+    Riboflavin-B2-LevelA-FAD-cofactor-MTHFR-unique / Folinic-acid-LevelB-NOT-LevelA /
+    OHCbl-LevelB-less-critical-than-cblE-cblG / protein-restriction-NOT-needed,
+    patient sample: 6 cases)."""
+    try:
+        import scripts.mthfr_dashboard as mthfr_
+        return _json_safe(mthfr_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mthfr/definitions")
+async def mthfr_definitions():
+    """MTHFR (Severe MTHFR Deficiency) Epilepsy Dashboard — definitions
+    (gene card: 656aa-1p36.3-AR-FAD-flavoprotein-MTHFR-upstream-of-MTR /
+    MTHFR-converts-5-10-methyleneTHF-to-5-methylTHF-the-methyl-donor /
+    key concepts: ISOLATED-HHcy-MMA-NORMAL / MeCbl-NORMAL-KEY-DISTINCTION-cblE-cblG /
+    serum-folate-LOW-not-HIGH-no-methylfolate-trap / NO-megaloblastic-anemia /
+    white-matter-disease-prominent / riboflavin-B2-Level-A-FAD-MTHFR /
+    methionine-supplement-Level-A-unique-to-MTHFR / folinic-acid-Level-B-not-A /
+    N2O-HIGH-RISK-not-absolute-CI / betaine-MANDATORY,
+    differential: cblE-MTRR / cblG-MTR / CBS / cblC-MMACHC / nutritional-B12-deficiency /
+    common-MTHFR-polymorphisms-C677T-A1298C-NOT-pathogenic-alone)."""
+    try:
+        import scripts.mthfr_dashboard as mthfr_
+        return _json_safe(mthfr_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

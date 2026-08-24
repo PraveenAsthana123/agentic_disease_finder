@@ -5696,5 +5696,20 @@
       "/api/mtr/definitions"
     ],
     "page": "/mtr"
+  },
+  {
+    "id": "mthfr",
+    "name": "MTHFR Epilepsy (Severe MTHFR Deficiency)",
+    "gene": "MTHFR",
+    "disease": "Severe Methylenetetrahydrofolate Reductase Deficiency / Homocystinuria",
+    "status": "built",
+    "route": "/mthfr",
+    "api_prefix": "/api/mthfr",
+    "cohort_n": 40,
+    "seed": 83,
+    "omim_gene": "607093",
+    "omim_disease": "236250",
+    "chromosome": "1p36.3",
+    "inheritance": "AR"
   }
 ]
