@@ -31804,6 +31804,57 @@ async def bckdhb_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/dbt/overview")
+async def dbt_overview():
+    """DBT (Dihydrolipoamide Branched-Chain Transacylase / BCKDH-E2) overview:
+    gene metadata (DBT/BCKADE2/BCATE2, 1p21.2, AR, OMIM *248610/#248600, 421aa precursor,
+    E2 catalytic transacylase + 24-mer cubic core scaffold of BCKDH complex — lipoamide
+    cofactor on Lys82/Lys99, NOT TPP; TPP is on E1α/BCKDHA),
+    KPIs for 40-patient DBT cohort, phenotype distribution (Classic 65% / Intermediate 15% /
+    Intermittent 12% / Thiamine-Responsive 8%), BCKDH complex components, BCAA catabolism
+    pathway (E2 transacylation step BLOCKED), high-risk drugs (VPA ABSOLUTE CI)."""
+    try:
+        import scripts.dbt_dashboard as dbt_
+        return _json_safe(dbt_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dbt/breakdown")
+async def dbt_breakdown():
+    """DBT breakdown: 40-patient cohort, biomarkers (plasma Leu/Ile/Val, alloisoleucine
+    PATHOGNOMONIC, urine KIC/KMV/KIV, DNPH, BCKDH complex activity, PDH/αKGDH/DLD NORMAL
+    as key negatives distinguishing from DLD deficiency), key variants (p.Gly245Ser
+    Japanese founder/intermediate, p.Arg268Cys E1-E2 interface severe, p.Ile369Thr
+    intermediate European, p.Tyr391Asn lipoyl domain severe, c.1228-2A>C splice null,
+    del.exon5-6 null neonatal), seizure types, metabolic triggers, treatments (BCAA-free
+    formula Level A / thiamine Level A ~5-10% response indirect via E1α stabilisation /
+    IV glucose+insulin acute / carnitine Level B / liver transplant Level B / LEV Level B),
+    differential vs BCKDHA/BCKDHB/DLD/IVA/MMA/PA."""
+    try:
+        import scripts.dbt_dashboard as dbt_
+        return _json_safe(dbt_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/dbt/definitions")
+async def dbt_definitions():
+    """DBT definitions: gene card (DBT/BCKADE2/BCATE2, 1p21.2, AR, OMIM *248610/#248600,
+    421aa precursor/~400aa mature, lipoamide cofactor on Lys82/Lys99 — NOT TPP, E2 catalytic
+    transacylase + 24-mer cubic core, E1-E2-E3 complex scaffold),
+    key concepts (E2 transacylase mechanism/lipoamide swinging arm, 24-mer cubic core why
+    DBT LOF is catastrophic, thiamine response ~5-10% rationale intermediate between BCKDHA
+    ~10-20% and BCKDHB ~5%, alloisoleucine pathognomonic mechanism, BCKDHA/BCKDHB/DBT
+    biochemically identical — gene panel mandatory, DLD vs DBT differentiation),
+    diagnostic thresholds, differential diagnosis."""
+    try:
+        import scripts.dbt_dashboard as dbt_
+        return _json_safe(dbt_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
