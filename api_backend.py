@@ -32358,6 +32358,71 @@ async def mmadhc_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/lmbrd1/overview")
+async def lmbrd1_overview():
+    """LMBRD1 (cblF) Epilepsy Dashboard — overview
+    (LMBRD1-Methylmalonic-Aciduria-Homocystinuria-cblF-type / LMBRD1-540aa-Lysosomal-Membrane-9-TM-Helices-6q13-AR /
+    LMBRD1-MOST-UPSTREAM-Intracellular-Cobalamin-Transporter-Exports-Cbl-From-Lysosomal-Lumen-To-Cytoplasm /
+    TC2-CD320-Endocytosis-Cobalamin-TRAPPED-In-Lysosome-When-LMBRD1-Defective /
+    MMACHC-Receives-NO-Substrate-Both-Downstream-Arms-BLOCKED /
+    Combined-MMA-ELEVATED-200-1500-mmol-molCr-Plus-HHcy-ELEVATED-30-200-umol-L /
+    Methionine-LOW-8-20-umol-L-Methionine-Synthase-MTR-INACTIVE /
+    Both-MeCbl-And-AdoCbl-ABSENT-Fibroblasts-Like-cblC /
+    UNIQUE-Vacuolated-Lymphocytes-25-45pct-Lysosomal-Storage-ABSENT-cblC /
+    Stomatitis-Oral-Ulcers-65pct-PATHOGNOMONIC-cblF-ABSENT-cblC /
+    LMBRD1-Plus-ABCD4-cblJ-Gene-Panel-Mandatory-Both-Block-Lysosomal-Export /
+    OHCbl-Bypasses-Via-Alternative-Entry-50-70pct-HHcy-40-60pct-MMA-Response /
+    Betaine-MANDATORY-BHMT-Cobalamin-Independent-HHcy-Remethylation /
+    N2O-ABSOLUTE-CI-Methionine-Synthase-Inactivation-LIFE-THREATENING /
+    VPA-HIGH-RISK-Carnitine-Depletion-MMA-Surge-LEV-First-Line /
+    Fasting-HIGH-RISK-MMA-Surge-HHcy-Worsens / cblF-Infantile-Classic-45pct-MODAL /
+    Early-Infantile-Severe-40pct / Late-Infantile-Attenuated-15pct /
+    Fewer-Than-50-Cases-Worldwide-Likely-Underdiagnosed /
+    AR-Biallelic-LOF / 6q13 / OMIM-Gene-612634-Disease-277380)."""
+    try:
+        import scripts.lmbrd1_dashboard as lmbrd1_
+        return _json_safe(lmbrd1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/lmbrd1/breakdown")
+async def lmbrd1_breakdown():
+    """LMBRD1 (cblF) Epilepsy Dashboard — breakdown
+    (biomarkers: C3-NBS-PRIMARY-All-Subtypes / MMA-200-1500 / tHcy-30-200 / Methionine-LOW /
+    MeCbl-ABSENT / AdoCbl-ABSENT / Vacuolated-Lymphocytes-KEY-POSITIVE-vs-cblC /
+    Stomatitis-KEY-POSITIVE-vs-cblC / Methylcitrate-Mild-Secondary /
+    key variants: c.1056delG-Most-Common-European-Null / p.Arg83Cys-TM2-Moderate /
+    p.Glu299Lys-Luminal-Loop-Moderate / p.Gly243Ser-TM6-Moderate / c.IVS9plus1G-A-Splice-Null /
+    p.Thr275Ile-TM7-Attenuated-Best-Prognosis /
+    treatments: OHCbl-1-2mg-IM-LevelA / Betaine-LevelA-MANDATORY / Folinic-Acid-LevelB /
+    L-Carnitine-LevelA-B / Protein-Restriction-MMA-Formula / IV-Glucose-GIR-8-12-LevelA)."""
+    try:
+        import scripts.lmbrd1_dashboard as lmbrd1_
+        return _json_safe(lmbrd1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/lmbrd1/definitions")
+async def lmbrd1_definitions():
+    """LMBRD1 (cblF) Epilepsy Dashboard — definitions
+    (gene card: 540aa-6q13-lysosomal-membrane-9-TM-helices-LMBR1-domain /
+    key concepts: LMBRD1-most-upstream-intracellular-cobalamin-transporter /
+    lysosomal-cobalamin-trap-vacuolated-lymphocytes-distinguishes-from-cblC /
+    stomatitis-pathognomonic-cblF-absent-cblC / LMBRD1-ABCD4-cblJ-gene-panel-mandatory /
+    OHCbl-alternative-entry-bypasses-lysosomal-trap / Betaine-BHMT-mandatory /
+    N2O-ABSOLUTE-CI-methionine-synthase-inactivation / cblF-infantile-onset-vs-cblC-neonatal,
+    diagnostic thresholds: MMA-tHcy-combined-pattern / vacuolated-lymphocytes-any /
+    stomatitis-cblF-trigger / OHCbl-trial-50pct-HHcy-response,
+    differential: cblC-MMACHC / cblJ-ABCD4 / cblD-Combined-MMADHC / PA / isolated-MMA / CBS)."""
+    try:
+        import scripts.lmbrd1_dashboard as lmbrd1_
+        return _json_safe(lmbrd1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

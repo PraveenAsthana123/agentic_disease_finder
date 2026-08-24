@@ -5608,5 +5608,21 @@
     "chromosome": "2q23.2",
     "inheritance": "AR",
     "cohort_n": 40
+  },
+  {
+    "id": "lmbrd1",
+    "gene": "LMBRD1",
+    "role": "Neurologist",
+    "name": "LMBRD1 (cblF) Epilepsy Dashboard",
+    "viz": "Lysosomal cobalamin trap pathway diagram, phenotype distribution (Early Infantile/Infantile Classic/Late Infantile Attenuated), vacuolated lymphocyte tracker, stomatitis prevalence, biomarker panel (MMA+tHcy combined), variant domain map",
+    "feature": "Lysosomal cobalamin trap (MOST UPSTREAM), vacuolated lymphocytes KEY POSITIVE vs cblC, stomatitis pathognomonic, LMBRD1+ABCD4 gene panel mandatory, OHCbl alternative entry bypass, betaine MANDATORY BHMT remethylation, N2O ABSOLUTE CI",
+    "why": "LMBRD1 cblF \u2014 most upstream lysosomal cobalamin transporter; combined MMA+HHcy identical to cblC but upstream; unique cblF features (vacuolated lymphocytes, stomatitis) distinguish from cblC and guide gene panel selection",
+    "status": "built",
+    "priority": "high",
+    "built_date": "2026-08-24",
+    "api": "/api/lmbrd1/overview|breakdown|definitions",
+    "page": "/portal-next/app/lmbrd1/page.jsx",
+    "cohort": "40-patient cblF cohort (seed-54)",
+    "title": "LMBRD1 Epilepsy (Methylmalonic-Aciduria-Homocystinuria-cblF-type / LMBRD1-LMBR1-Domain-540aa-Lysosomal-Membrane-9-TM-6q13-AR / MOST-UPSTREAM-Intracellular-Cobalamin-Transporter / Cobalamin-TRAPPED-Lysosomes-LOF / Combined-MMA-tHcy-Identical-cblC-Upstream / Vacuolated-Lymphocytes-KEY-POSITIVE / Stomatitis-PATHOGNOMONIC / LMBRD1-ABCD4-Panel / OMIM-612634-277380)"
   }
 ]
