@@ -32062,6 +32062,64 @@ async def pccb_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mmut/overview")
+async def mmut_overview():
+    """MMUT overview: gene card (MMUT/methylmalonyl-CoA mutase, 6p12.3, AR, OMIM *609058/#251000,
+    750aa, mitochondrial homodimer, AdoCbl cofactor TIM-barrel), cohort KPIs (40 patients, urine MMA
+    PATHOGNOMONIC, C3 elevation, ammonia, carnitine depletion, eGFR/CKD, cardiomyopathy, optic atrophy,
+    seizure rates, AdoCbl response rates), phenotype distribution (mut0 Classic Neonatal ~50% /
+    mut- AdoCbl Partial Responsive ~20% / mut- Attenuated Late Infantile ~20% / mut- Mild Late Onset ~10%),
+    4-step MMUT metabolic pathway (propionyl-CoA → D-methylmalonyl-CoA → L-methylmalonyl-CoA →
+    succinyl-CoA BLOCKED → TCA), MMUT vs PA 12-feature critical differential (MMA PATHOGNOMONIC in MMUT /
+    methylcitrate PATHOGNOMONIC in PA / homocysteine NORMAL vs cblC / CKD unique to MMA),
+    high-risk situations (VPA ABSOLUTE CI / fasting / high-protein / metformin AVOID / biotin NOT effective)."""
+    try:
+        import scripts.mmut_dashboard as mmut_
+        return _json_safe(mmut_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmut/breakdown")
+async def mmut_breakdown():
+    """MMUT breakdown: 11 biomarkers (C3 primary NBS identical to PA / MMA urine PATHOGNOMONIC 200-10,000+ /
+    plasma MMA / methylcitrate mildly secondary NOT pathognomonic KEY NEG vs PA / ammonia /
+    free carnitine / homocysteine NORMAL KEY NEG vs cblC / eGFR progressive CKD UNIQUE / lactate /
+    C3/C2 ratio / propionylglycine mild secondary),
+    8 key variants (c.655A>T p.Arg219* mut0 pan-ethnic null / c.682C>T p.Arg228* mut0 /
+    c.2080C>T p.Arg694Trp mut- partial AdoCbl responsive / c.1106G>A p.Arg369His mut0 European /
+    c.2150G>A p.Arg717Gln mut- intermediate / p.Gly630Glu mut0 European / large del exon1-3 mut0 /
+    p.Arg369Pro Saudi founder mut0),
+    6 seizure types, 5 metabolic triggers, 12 treatments (Level A: OHCbl trial / protein restriction /
+    MMUT-free formula / L-carnitine / IV glucose / ammonia scavengers; Level B: metronidazole /
+    kidney transplant / combined liver-kidney transplant / HD-CRRT; NOT EFFECTIVE: biotin;
+    ABSOLUTE CI: VPA), patient sample (15 of 40), high-risk drugs."""
+    try:
+        import scripts.mmut_dashboard as mmut_
+        return _json_safe(mmut_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmut/definitions")
+async def mmut_definitions():
+    """MMUT definitions: gene card (MMUT/Methylmalonyl-CoA Mutase, 6p12.3, AR, 750aa,
+    mitochondrial homodimer, AdoCbl TIM-barrel cofactor, OMIM *609058/#251000, ~1:50,000-80,000),
+    7 key concepts (why MMA and PA both elevate C3 on NBS but are different diseases /
+    AdoCbl cofactor dependency and why mut0 does NOT respond to B12 /
+    why CKD is unique to MMA but NOT seen in PA / VPA ABSOLUTE CI mechanism specific to MMA /
+    why liver transplant alone insufficient vs combined liver-kidney Tx /
+    differentiating MMUT from cblA MMAA and cblB MMAB isolated MMA /
+    secondary hyperammonemia NAGS-CPS1 mechanism same as PA),
+    diagnostic thresholds (urine MMA / plasma MMA / ammonia / eGFR / free carnitine / OHCbl trial response),
+    differential (PA-PCCA / PA-PCCB / cblC-MMACHC / cblA-MMAA / cblB-MMAB / DLD / SUCLA2-SUCLG1)."""
+    try:
+        import scripts.mmut_dashboard as mmut_
+        return _json_safe(mmut_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

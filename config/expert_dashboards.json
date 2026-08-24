@@ -5525,5 +5525,21 @@
     "gene": "PCCB",
     "chromosome": "3q22.3",
     "inheritance": "AR"
+  },
+  {
+    "id": "mmut",
+    "name": "MMUT Epilepsy (Methylmalonic-Acidemia-MMA-mut-type / MMUT-Methylmalonyl-CoA-Mutase-750aa-Mitochondrial-Homodimer-AdoCbl-TIM-Barrel-6p12.3-Autosomal-Recessive / L-Methylmalonyl-CoA-To-Succinyl-CoA-BLOCKED / MMUT-LOF-MMA-PATHOGNOMONIC-Urine-200-10000plus-mmol-molCr / C3-NBS-PRIMARY-IDENTICAL-To-PA / MMA-PATHOGNOMONIC-KEY-POSITIVE-vs-PA-ABSENT / Methylcitrate-MILD-Secondary-KEY-NEGATIVE-vs-PA-PATHOGNOMONIC / Homocysteine-NORMAL-KEY-NEGATIVE-vs-cblC / CKD-PROGRESSIVE-UNIQUE-To-MMA / AdoCbl-Response-ONLY-mut-Partial / mut0-Null-50pct-Neonatal-Severe / Hydroxocobalamin-Level-A / Protein-Restriction-Level-A / L-Carnitine-Level-A / IV-Glucose-Level-A / Kidney-Transplant-Level-B / Combined-Liver-Kidney-Level-B / VPA-ABSOLUTE-CI / Metformin-AVOID / AR-Biallelic-LOF / 6p12.3 / OMIM-Gene-609058-Disease-251000)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/mmut/overview",
+      "/api/mmut/breakdown",
+      "/api/mmut/definitions"
+    ],
+    "frontend_route": "/mmut",
+    "cohort_size": 40,
+    "disease_category": "Organic Acidemia",
+    "gene": "MMUT",
+    "chromosome": "6p12.3",
+    "inheritance": "AR"
   }
 ]
