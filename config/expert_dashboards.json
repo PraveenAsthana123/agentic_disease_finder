@@ -256,7 +256,10 @@
     "endpoints": [
       "/api/eeg-viz/bad-channels"
     ],
-    "id": "eeg-viz-bad-channels"
+    "id": "eeg-viz-bad-channels",
+    "frontend": "portal-next/app/eeg-viz-bad-channels/page.jsx",
+    "route": "/eeg-viz-bad-channels",
+    "built_note": "Bad Channel Dashboard \u2014 standalone /eeg-viz-bad-channels/page.jsx, hits /api/eeg-viz/bad-channels, per-channel verdict (good/flat/noisy/line_noise), electrode heatmap grid, filterable channel table, KPI row (total/bad/good/quality), bad-channel summary list, threshold panel. SiteNav wired after Artifact Review."
   },
   {
     "role": "Neuropsychologist",
