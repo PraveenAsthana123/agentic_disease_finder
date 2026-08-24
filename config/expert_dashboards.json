@@ -5904,5 +5904,14 @@
     "cohort_seed": 169,
     "cohort_n": 40,
     "registered": "2026-08-24"
+  },
+  {
+    "id": "abat",
+    "name": "ABAT Epilepsy (GABA-Transaminase-Deficiency-GABAT-Deficiency / ABAT-500aa-PLP-Dependent-Mitochondrial-Homodimer-16q22.2-Autosomal-Recessive / ABAT-CATALYSES-GABA-Plus-Alpha-KG-To-SSA-Plus-Glutamate-FIRST-Step-GABA-Catabolism / ABAT-LOF-GABA-CANNOT-Be-Degraded-Accumulates-15-30x-Normal / CSF-GABA-DRAMATICALLY-HIGH-800-3000-nmol-mL-Normal-Less-50-PATHOGNOMONIC / Urine-GABA-HIGH / Beta-Alanine-MILDLY-ELEVATED-Shared-ABAT-Substrate / Homocarnosine-CSF-ELEVATED / GHB-ONLY-MILDLY-ELEVATED-KEY-DISTINCTION-From-SSADH / SSA-LOW-NORMAL-Not-Made / alpha-AASA-NORMAL-KEY-NEGATIVE-vs-ALDH7A1-PDE / Pipecolic-NORMAL / MMA-NORMAL / tHcy-NORMAL / Epileptic-Seizures-97pct / Infantile-Spasms-66pct-MODAL / DRE-80pct / IDD-Profound-95pct / Axial-Hypotonia-90pct / Hyperkinetic-60pct / Somnolence-70pct / Accelerated-Growth-40pct-Unusual / ACTH-Level-A-IS / Pyridoxine-B6-Level-B-PLP-Cofactor / Vigabatrin-ABSOLUTE-CONTRAINDICATION / Valproate-MODERATE-RISK / Baclofen-MODERATE-RISK / Severe-Neonatal-72pct-MODAL / Classic-Infantile-22pct / Mild-6pct / ~25-50-Cases-Worldwide-2026-Ultrarare / AR-Biallelic-LOF / 16q22.2 / OMIM-Gene-137150-Disease-613163",
+    "status": "built",
+    "api": "/api/abat/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 175,
+    "registered": "2026-08-24"
   }
 ]

@@ -33170,6 +33170,33 @@ async def glud1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/abat/overview")
+async def abat_overview():
+    try:
+        import scripts.abat_dashboard as abat_
+        return _json_safe(abat_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/abat/breakdown")
+async def abat_breakdown():
+    try:
+        import scripts.abat_dashboard as abat_
+        return _json_safe(abat_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/abat/definitions")
+async def abat_definitions():
+    try:
+        import scripts.abat_dashboard as abat_
+        return _json_safe(abat_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
