@@ -5711,5 +5711,20 @@
     "omim_disease": "236250",
     "chromosome": "1p36.3",
     "inheritance": "AR"
+  },
+  {
+    "id": "cbs",
+    "name": "CBS Epilepsy (Classical-Homocystinuria-Cystathionine-Beta-Synthase-Deficiency / CBS-551aa-PLP-B6-Dependent-21q22.3-AR / CBS-Hcy-Plus-Serine-To-Cystathionine-Transsulfuration-Gateway / Methionine-HIGH-KEY-POSITIVE-vs-LOW-cblE-cblG-MTHFR / tHcy-100-500-HIGHEST / MMA-NORMAL / MeCbl-NORMAL / Ectopia-Lentis-PATHOGNOMONIC-90pct / Thromboembolism-50-60pct-HIGHEST / B6-Responsive-50pct-UNIQUE / OMIM-Gene-613381-Disease-236200)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/cbs/overview",
+      "/api/cbs/breakdown",
+      "/api/cbs/definitions"
+    ],
+    "portal_page": "/cbs",
+    "component": "portal-next/app/cbs/page.jsx",
+    "script": "scripts/cbs_dashboard.py",
+    "cohort_n": 40,
+    "seed": 91
   }
 ]

@@ -32713,6 +32713,54 @@ async def mthfr_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/cbs/overview")
+async def cbs_overview():
+    """CBS (Cystathionine Beta-Synthase / Classical Homocystinuria) Epilepsy Dashboard — overview
+    (gene card: 551aa-21q22.3-AR-PLP-B6-dependent-transsulfuration-gateway /
+    CBS-catalyzes-Hcy+Serine→Cystathionine-FIRST-STEP-transsulfuration /
+    Methionine-HIGH-KEY-POSITIVE-DISTINCTION-cblE-cblG-MTHFR-where-methionine-LOW /
+    tHcy-100-500-umol-L-HIGHEST-of-all-inherited-HHcy-disorders /
+    MMA-NORMAL-KEY-NEG / MeCbl-NORMAL-cobalamin-intact / Serum-folate-NORMAL-no-methylfolate-trap /
+    Ectopia-lentis-PATHOGNOMONIC-90pct-inferior-dislocation /
+    Marfanoid-habitus-80pct-UNIQUE / Thromboembolism-50-60pct-HIGHEST-of-all-HHcy /
+    B6-pyridoxine-responsive-50pct-UNIQUE-to-CBS / Betaine-Level-A-ALL / Met-restriction-Level-A /
+    NBS-~60pct-detected-via-methionine-elevation-unlike-cblE-cblG-MTHFR-invisible /
+    OMIM-Gene-613381-Disease-236200)."""
+    try:
+        import scripts.cbs_dashboard as cbs_
+        return _json_safe(cbs_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/cbs/breakdown")
+async def cbs_breakdown():
+    """CBS (Classical Homocystinuria) Epilepsy Dashboard — patient breakdown
+    (40-patient cohort seed-91 / B6-responsive-classical-50pct / B6-NR-severe-40pct /
+    mild-attenuated-10pct / 7 variants / 7 treatments / 6 drug-risks / biomarker-ranges)."""
+    try:
+        import scripts.cbs_dashboard as cbs_
+        return _json_safe(cbs_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/cbs/definitions")
+async def cbs_definitions():
+    """CBS (Classical Homocystinuria) Epilepsy Dashboard — definitions
+    (gene card: 551aa-21q22.3-AR-PLP-B6-SAM-activated-heme-regulatory-domain /
+    methionine-HIGH-unique / B6-responsiveness-50pct-UNIQUE /
+    ectopia-lentis-inferior-PATHOGNOMONIC / thromboembolism-HIGHEST /
+    cystathionine-ABSENT / NBS-60pct-via-methionine /
+    differential: CBS-vs-cblE-cblG-MTHFR-Marfan-MAT1A-nutritional-B12 /
+    OMIM-Gene-613381-Disease-236200)."""
+    try:
+        import scripts.cbs_dashboard as cbs_
+        return _json_safe(cbs_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
