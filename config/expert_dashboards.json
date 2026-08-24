@@ -5825,5 +5825,18 @@
     "category": "methylation_sarcosine",
     "inheritance": "AR",
     "gene_locus": "9q34.3"
+  },
+  {
+    "id": "aldh4a1",
+    "name": "ALDH4A1 Epilepsy (Hyperprolinemia-Type-II-P5C-Dehydrogenase-Deficiency / ALDH4A1-563aa-NAD-Dependent-Homodimeric-Mitochondrial-Matrix-1p36.13-AR / ALDH4A1-CATALYSES-P5C-GSA-To-Glutamate-Step-2-Proline-Catabolism / ALDH4A1-LOF-P5C-ACCUMULATES / P5C-INACTIVATES-PLP-Schiff-Base-Secondary-B6-Deficiency / PLP-LOW-GAD65-GAD67-IMPAIRED-GABA-Deficiency-Seizures / Proline-MARKEDLY-ELEVATED-Greater-1000-umol-L / P5C-ELEVATED-PATHOGNOMONIC / Plasma-PLP-LOW / alpha-AASA-NORMAL-KEY-NEGATIVE-vs-ALDH7A1 / Pipecolic-NORMAL-KEY-NEGATIVE-vs-ALDH7A1 / B6-Partial-Response-30-50pct / VPA-HIGH-RISK-Triple-Mechanism / 40-patient-cohort-seed-141 / 3-endpoints-verified-200 / OMIM-Gene-606811-Disease-239510 / 1p36.13 / AR / Registered-2026-08-24)",
+    "route": "/aldh4a1",
+    "api_prefix": "/api/aldh4a1",
+    "script": "scripts/aldh4a1_dashboard.py",
+    "status": "built",
+    "cohort_seed": 141,
+    "n_patients": 40,
+    "category": "proline_catabolism_plp",
+    "inheritance": "AR",
+    "gene_locus": "1p36.13"
   }
 ]

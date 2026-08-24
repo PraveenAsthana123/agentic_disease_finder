@@ -33008,6 +33008,34 @@ async def sardh_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ---------------------------------------------------------------------------
+# ALDH4A1 — Hyperprolinemia Type II / P5C Dehydrogenase Deficiency
+# ---------------------------------------------------------------------------
+@app.get("/api/aldh4a1/overview")
+async def aldh4a1_overview():
+    try:
+        import scripts.aldh4a1_dashboard as aldh4a1_
+        return _json_safe(aldh4a1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aldh4a1/breakdown")
+async def aldh4a1_breakdown():
+    try:
+        import scripts.aldh4a1_dashboard as aldh4a1_
+        return _json_safe(aldh4a1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aldh4a1/definitions")
+async def aldh4a1_definitions():
+    try:
+        import scripts.aldh4a1_dashboard as aldh4a1_
+        return _json_safe(aldh4a1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
