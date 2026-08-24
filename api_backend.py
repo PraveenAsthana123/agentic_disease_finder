@@ -32180,6 +32180,69 @@ async def mmaa_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mmab/overview")
+async def mmab_overview():
+    """MMAB overview: gene card (MMAB/ATP:cob(I)alamin-Adenosyltransferase, 12q24.11, AR,
+    OMIM *607568/#251110, 250aa homotrimeric, mitochondrial matrix), cohort KPIs (40 patients,
+    urine MMA PATHOGNOMONIC 300-5000, C3 elevation, ammonia, carnitine depletion, eGFR/CKD
+    intermediate between MMAA and MMUT, cardiomyopathy 20-25pct, seizure rates,
+    OHCbl response rate MODERATE ~40-60pct — lower than MMAA ~60-80pct),
+    phenotype distribution (cblB Neonatal Severe ~35% MORE than cblA / cblB Classic Infantile ~45% MODAL /
+    cblB Attenuated Late Onset ~15% / cblB OHCbl-Responsive Mild ~5%),
+    4-step MMAB AdoCbl synthesis pathway (cob(I)alamin → MMAB+ATP → AdoCbl SYNTHESIS BLOCK → MMAA → MMUT intact apoenzyme),
+    MMAB vs MMAA 10-feature critical differential (OHCbl MODERATE ~40-60% vs STRONG ~60-80% /
+    MMAB enzyme ABSENT in MMAB / synthesis vs delivery block / Neonatal Severe more frequent),
+    high-risk situations (VPA ABSOLUTE CI directly inhibits MMAB / fasting / missed OHCbl HIGH RISK)."""
+    try:
+        import scripts.mmab_dashboard as mmab_
+        return _json_safe(mmab_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmab/breakdown")
+async def mmab_breakdown():
+    """MMAB breakdown: 12 biomarkers (C3 primary NBS identical to PA/MMUT/MMAA / MMA urine PATHOGNOMONIC
+    300-5000 slightly higher than MMAA due to lower OHCbl response / plasma MMA / methylcitrate mildly
+    secondary NOT pathognomonic KEY NEG vs PA / ammonia higher peak than MMAA / free carnitine depleted /
+    homocysteine NORMAL KEY NEG vs cblC / MMUT enzyme CORRECTABLE with AdoCbl in vitro KEY same as MMAA /
+    MMAB enzyme ABSENT primary defect KEY DISTINCTION from MMAA / OHCbl trial response MODERATE /
+    eGFR CKD intermediate / C3-C2 ratio),
+    8 key variants (p.Arg190His most common adenosyltransferase active site OHCbl partial /
+    p.Arg190Cys same codon severe non-responsive / p.Arg206Cys trimeric interface moderate-severe /
+    p.Arg234Trp substrate channel severe / p.Gly188Arg catalytic Gly severe neonatal /
+    c.IVS7+1G>A splice null severe / large del exon5-6 null MLPA / p.Trp202x nonsense null),
+    6 seizure types, 5 metabolic triggers, 10 treatments (Level A: OHCbl 1-2mg IM 40-60pct MODERATE /
+    protein restriction / MMAB-free formula / L-carnitine / IV glucose / ammonia scavengers;
+    Level B: metronidazole / liver transplant more needed than MMAA / HD-CRRT;
+    ABSOLUTE CI: VPA directly inhibits MMAB enzyme), patient sample (15 of 40), high-risk drugs."""
+    try:
+        import scripts.mmab_dashboard as mmab_
+        return _json_safe(mmab_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmab/definitions")
+async def mmab_definitions():
+    """MMAB definitions: gene card (MMAB/ATP:cob(I)alamin-Adenosyltransferase, 12q24.11,
+    AR, 250aa homotrimeric, OMIM *607568/#251110, ~1:100,000-250,000),
+    7 key concepts (why MMAB causes MMA without MMUT or MMAA defect — synthesis vs delivery /
+    why MMAB OHCbl response MODERATE ~40-60% lower than MMAA ~60-80% / CKD intermediate severity /
+    differentiating MMAB cblB from MMAA cblA — two cobalamin-responsive isolated MMA subtypes /
+    VPA ABSOLUTE CI mechanism directly targeting deficient MMAB enzyme /
+    MMAB homotrimeric structure and why Arg190 is critical active site residue /
+    secondary hyperammonemia NAGS-CPS1 mechanism shared with MMAA MMUT PA),
+    diagnostic thresholds (urine MMA / OHCbl trial response MODERATE / MMAB enzyme absent /
+    plasma MMA / ammonia / eGFR / free carnitine),
+    differential (MMAA-cblA / MMUT / MMACHC-cblC / MMADHC-cblD / PA-PCCA-PCCB / SUCLA2-SUCLG1 / DLD)."""
+    try:
+        import scripts.mmab_dashboard as mmab_
+        return _json_safe(mmab_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

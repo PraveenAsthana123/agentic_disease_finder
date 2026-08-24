@@ -5553,5 +5553,24 @@
     ],
     "portal_page": "/mmaa",
     "component": "portal-next/app/mmaa/page.jsx"
+  },
+  {
+    "id": "mmab",
+    "name": "MMAB Epilepsy (Methylmalonic-Acidemia-cblB-Cobalamin-B-type / MMAB-ATP:cob(I)alamin-Adenosyltransferase-250aa-Homotrimeric-Mitochondrial-12q24.11-Autosomal-Recessive / MMAB-Synthesizes-AdoCbl-From-cob(I)alamin-Plus-ATP-Step-2-Of-4-Cobalamin-Pathway / MMAB-LOF-AdoCbl-CANNOT-BE-SYNTHESIZED-MMAA-Chaperone-Has-Nothing-To-Deliver-MMUT-Cofactor-Empty / L-Methylmalonyl-CoA-ACCUMULATES-MMA-PATHOGNOMONIC-300-5000-mmol-molCr / MMUT-Enzyme-Activity-NORMAL-In-Fibroblasts-When-AdoCbl-Provided-Same-As-MMAA / MMAB-Enzyme-Activity-ABSENT-PRIMARY-DEFECT-KEY-DISTINCTION-From-MMAA / OHCbl-Response-MODERATE-40-60pct-LOWER-Than-MMAA-60-80pct-Synthesis-Defect / Homocysteine-NORMAL-KEY-NEGATIVE-vs-cblC-MMACHC / BCAA-NORMAL-KEY-NEGATIVE-vs-DLD-MSUD / Neonatal-Severe-35pct-MORE-Than-MMAA-25pct / p.Arg190His-Most-Common-Active-Site-Moderate / p.Arg190Cys-Severe-Non-Responsive / p.Arg206Cys-Trimeric-Interface / p.Gly188Arg-Severe-Neonatal / c.IVS7plus1G-A-Null / Large-Del-Exon5-6-Null-MLPA / VPA-ABSOLUTE-CI-Directly-Inhibits-MMAB / AR-Biallelic-LOF / 12q24.11 / OMIM-Gene-607568-Disease-251110)",
+    "status": "built",
+    "endpoints": [
+      "/api/mmab/overview",
+      "/api/mmab/breakdown",
+      "/api/mmab/definitions"
+    ],
+    "frontend": "portal-next/app/mmab/page.jsx",
+    "script": "scripts/mmab_dashboard.py",
+    "nav": "SiteNav wired after MMAA before DLD",
+    "note": "Built scripts/mmab_dashboard.py (40-patient cohort seed-47, 4 phenotypic classes cblB-Neonatal-Severe-35%/cblB-Classic-Infantile-45%/cblB-Attenuated-Late-Onset-15%/cblB-OHCbl-Responsive-Mild-5%, 12 biomarkers with MMAB-enzyme-ABSENT primary defect/MMUT-correctable-with-AdoCbl-same-as-MMAA/OHCbl-MODERATE-40-60%/C3-NBS-PRIMARY/MMA-PATHOGNOMONIC/methylcitrate-secondary-NOT-pathognomonic/Hcy-NORMAL-KEY-NEG-cblC, 8 variants p.Arg190His-most-common-active-site-OHCbl-partial/p.Arg190Cys-severe-non-responsive/p.Arg206Cys-trimeric-interface/p.Arg234Trp-substrate-channel/p.Gly188Arg-catalytic-Gly-severe/c.IVS7+1G>A-splice-null/large-del-exon5-6-null-MLPA/p.Trp202*-null, treatment ladder OHCbl-Level-A-40-60%-MODERATE-lower-than-MMAA/protein-restriction-Level-A/MMAB-free-formula-Level-A/L-carnitine-Level-A/IV-glucose-insulin-Level-A/ammonia-scavengers-Level-A/metronidazole-Level-B/liver-Tx-Level-B-more-than-MMAA/HD-CRRT-Level-B, VPA-ABSOLUTE-CI-directly-inhibits-MMAB-enzyme, 3 endpoints /api/mmab/overview|breakdown|definitions verified 200, SiteNav wired after MMAA before DLD, expert_dashboards.json count 357->358). Built 2026-08-24.",
+    "cohort_n": 40,
+    "gene": "MMAB",
+    "chromosome": "12q24.11",
+    "omim_gene": "*607568",
+    "omim_disease": "#251110"
   }
 ]
