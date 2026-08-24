@@ -32761,6 +32761,58 @@ async def cbs_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/ahcy/overview")
+async def ahcy_overview():
+    """AHCY (Adenosylhomocysteinase / S-Adenosylhomocysteine Hydrolase Deficiency) Epilepsy Dashboard — overview
+    (gene card: 432aa-20q11.22-AR-NAD+-homotetrameric-cytoplasmic /
+    AHCY-catalyzes-SAH→Adenosine+Hcy-ONLY-route-to-clear-SAH-in-human-cells /
+    SAH-MASSIVELY-ELEVATED-pathognomonic-not-in-standard-NBS /
+    SAM-ELEVATED-unlike-MAT1A-where-SAM-is-LOW /
+    SAM-SAH-ratio-SEVERELY-REDUCED-global-methylation-failure-index /
+    Methionine-VERY-HIGH-200-600-umol-L /
+    tHcy-MODERATE-40-150-umol-L-paradoxically-milder-than-CBS /
+    MMA-NORMAL-KEY-NEG / MeCbl-NORMAL-cobalamin-intact /
+    Myopathy-SEVERE-85-90pct-hallmark-unique-among-HHcy-disorders /
+    Cardiomyopathy-60-70pct / Hepatomegaly-70-75pct /
+    SAM-supplements-ABSOLUTE-CI / Betaine-HIGH-RISK-worsens-SAH /
+    Methionine-restriction-Level-A / Adenosine-supplementation-Level-A /
+    OMIM-Gene-180960-Disease-613752)."""
+    try:
+        import scripts.ahcy_dashboard as ahcy_
+        return _json_safe(ahcy_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/ahcy/breakdown")
+async def ahcy_breakdown():
+    """AHCY (Adenosylhomocysteinase Deficiency) Epilepsy Dashboard — patient breakdown
+    (40-patient cohort seed-97 / Severe-Neonatal-Infantile-30pct / Classic-Infantile-Childhood-50pct /
+    Mild-Attenuated-20pct / 7 variants / 7 treatments / 6 drug-risks / biomarker-ranges /
+    SAM-absolute-CI / betaine-high-risk / methionine-restriction-Level-A)."""
+    try:
+        import scripts.ahcy_dashboard as ahcy_
+        return _json_safe(ahcy_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/ahcy/definitions")
+async def ahcy_definitions():
+    """AHCY (Adenosylhomocysteinase Deficiency) Epilepsy Dashboard — definitions
+    (gene card: 432aa-20q11.22-AR-NAD+-homotetrameric /
+    SAH-pathognomonic / SAM-SAH-ratio-global-methylation-index /
+    Myopathy-hallmark / Cardiomyopathy-60-70pct / Hepatomegaly-70-75pct /
+    SAM-ABSOLUTE-CI / betaine-HIGH-RISK /
+    differential: AHCY-vs-CBS-vs-MAT1A-vs-GNMT-vs-cblE-cblG-MTHFR /
+    OMIM-Gene-180960-Disease-613752)."""
+    try:
+        import scripts.ahcy_dashboard as ahcy_
+        return _json_safe(ahcy_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

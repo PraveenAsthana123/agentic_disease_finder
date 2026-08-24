@@ -5726,5 +5726,23 @@
     "script": "scripts/cbs_dashboard.py",
     "cohort_n": 40,
     "seed": 91
+  },
+  {
+    "id": "ahcy",
+    "name": "AHCY Epilepsy (Adenosylhomocysteinase-Deficiency-Hypermethioninemia-SAH-Hydrolase-Deficiency / AHCY-432aa-NAD+-Homotetrameric-Cytoplasmic-20q11.22-Autosomal-Recessive / SAH-MASSIVELY-ELEVATED-Pathognomonic / SAM-SAH-Ratio-SEVERELY-REDUCED-Global-Methylation-Failure / Methionine-VERY-HIGH-200-600 / tHcy-MODERATE-40-150 / Myopathy-SEVERE-85-90pct-HALLMARK / Cardiomyopathy-60-70pct / SAM-Supplements-ABSOLUTE-CI / OMIM-Gene-180960-Disease-613752)",
+    "status": "built",
+    "category": "metabolic-epilepsy-methionine-cycle",
+    "route": "/ahcy",
+    "api_prefix": "/api/ahcy",
+    "description": "AHCY Epilepsy Dashboard \u2014 40-patient cohort seed-97, SAH pathognomonic elevated, SAM/SAH ratio severely reduced, methionine 200-600, myopathy hallmark 85-90pct, cardiomyopathy 60-70pct, hepatomegaly 70-75pct, 7 variants p.Tyr143Cys/p.Glu68Lys/p.Asp244Glu/p.His55Arg/p.Pro344Leu/p.Ala89Val/c.IVS7+1G>T, SAM-ABSOLUTE-CI, betaine-HIGH-RISK, methionine-restriction-Level-A, adenosine-supplementation-Level-A, 3 endpoints /api/ahcy/overview|breakdown|definitions verified 200, portal-next/app/ahcy/page.jsx + SiteNav wired after CBS before MTR, expert_dashboards.json count 367->368",
+    "feature": "40-patient cohort seed-97, 3 phenotypic classes, 7 variants, 7 treatments, 6 drug-risks, biomarker ranges SAH+SAM+SAM/SAH-ratio+methionine+tHcy+CK+AST",
+    "built_note": "AHCY Dashboard \u2014 /api/ahcy/* + portal-next/app/ahcy/page.jsx + SiteNav wired after CBS before MTR, 40-patient cohort seed-97, 3 phenotypic classes Severe-Neonatal-Infantile-30%/Classic-Infantile-Childhood-50%/Mild-Attenuated-20%, 7 variants p.Tyr143Cys-Most-Common-European/p.Glu68Lys/p.Asp244Glu/p.His55Arg-Severe/p.Pro344Leu-Severe-Neonatal/p.Ala89Val-Mild/c.IVS7+1G>T-Splice-Null, 7 treatments, 6 drug-risks including SAM-ABSOLUTE-CI/betaine-HIGH-RISK, expert_dashboards.json count 367->368",
+    "why": "AHCY deficiency \u2014 adenosylhomocysteinase/SAH hydrolase deficiency; next disease after CBS in methionine cycle (SAH hydrolysis checkpoint); unique: SAH pathognomonic elevated, global methylation failure, severe myopathy hallmark unique among HHcy disorders, SAM absolutely contraindicated (opposite of most methylation disorders)",
+    "omim_gene": "*180960",
+    "omim_disease": "#613752",
+    "chromosome": "20q11.22",
+    "inheritance": "AR",
+    "protein": "432aa NAD+-homotetrameric cytoplasmic",
+    "built_at": "2026-08-24T13:43:30Z"
   }
 ]
