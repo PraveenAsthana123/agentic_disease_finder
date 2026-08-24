@@ -5586,5 +5586,27 @@
       "/api/mmachc/breakdown",
       "/api/mmachc/definitions"
     ]
+  },
+  {
+    "id": "mmadhc",
+    "gene": "MMADHC",
+    "role": "Neurologist",
+    "name": "MMADHC (cblD) Epilepsy Dashboard",
+    "viz": "cblD subtype distribution (MMA-only/HHcy-only/Combined), domain-variant map, arm-specific biomarker panel",
+    "feature": "Genotype-predicts-subtype logic, NBS-invisible cblD-HHcy alert, OHCbl arm-specific bypass, betaine only if HHcy present",
+    "why": "MMADHC cblD \u2014 downstream cobalamin distributor; unique 3-subtype classification; only cobalamin gene where domain predicts biochemical arm; <200 cases worldwide",
+    "priority": "P0",
+    "status": "built",
+    "routes": [
+      "/api/mmadhc/overview",
+      "/api/mmadhc/breakdown",
+      "/api/mmadhc/definitions"
+    ],
+    "frontend": "portal-next/app/mmadhc/page.jsx",
+    "omim_gene": "*607269",
+    "omim_disease": "#277410",
+    "chromosome": "2q23.2",
+    "inheritance": "AR",
+    "cohort_n": 40
   }
 ]

@@ -32307,6 +32307,57 @@ async def mmachc_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mmadhc/overview")
+async def mmadhc_overview():
+    """MMADHC (cblD) Epilepsy Dashboard — overview
+    (MMADHC-Methylmalonic-Acidemia-Homocystinuria-cblD-type / MMADHC-296aa-Cytoplasmic-N-terminus-Plus-Mitochondrial-C-terminus-2q23.2-AR /
+    MMADHC-DOWNSTREAM-Of-MMACHC-DISTRIBUTOR-Of-cob(I)alamin-To-TWO-ARMS /
+    ARM-A-C-terminus: cob(I)alamin-To-Mitochondria-MMAB-AdoCbl-MMUT-MMA-Catabolism /
+    ARM-B-N-terminus: cob(I)alamin-Retained-Cytoplasm-MeCbl-MTR-Hcy-Remethylation /
+    cblD-MMA-only-C-terminus-variants-Isolated-MMA-Hcy-NORMAL /
+    cblD-HHcy-only-N-terminus-variants-Isolated-HHcy-MMA-NORMAL /
+    cblD-Combined-global-variants-Combined-MMA-Plus-HHcy /
+    UNIQUE-Genotype-Predicts-Biochemical-Subtype / OMIM-Gene-607269-Disease-277410),
+    subtype distribution, biomarker KPIs, pathway diagram."""
+    try:
+        import scripts.mmadhc_dashboard as mmadhc_
+        return _json_safe(mmadhc_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmadhc/breakdown")
+async def mmadhc_breakdown():
+    """MMADHC (cblD) Epilepsy Dashboard — breakdown
+    (biomarker table by subtype: MMA↑-only vs HHcy↑-only vs combined /
+    fibroblast-MeCbl-AdoCbl-pattern / key-variants-N-terminus-vs-C-terminus /
+    seizure-types / metabolic-triggers / high-risk-drugs-VPA-N2O /
+    treatments-OHCbl-betaine-subtype-specific / patient-sample),
+    40-patient cblD cohort (16 cblD-MMA / 14 cblD-HHcy / 10 cblD-Combined)."""
+    try:
+        import scripts.mmadhc_dashboard as mmadhc_
+        return _json_safe(mmadhc_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmadhc/definitions")
+async def mmadhc_definitions():
+    """MMADHC (cblD) Epilepsy Dashboard — definitions
+    (gene card: 296aa-2q23.2-bifunctional-distributor-N-terminus-cytoplasmic-C-terminus-mitochondrial /
+    key concepts: MMADHC-distributor-downstream-MMACHC / cblD-subtype-genotype-predicts-biochemistry /
+    cblD-HHcy-NBS-invisible / distinguishing-MMADHC-vs-MMACHC-fibroblast+gene-panel /
+    OHCbl-arm-specific-bypass / N2O-ABSOLUTE-CI-HHcy-subtypes-anesthesia-protocol),
+    diagnostic thresholds (isolated-HHcy+NORMAL-MMA = cblD-HHcy or MTR/MTRR /
+    OHCbl-trial-MMA-and-HHcy-response / tHcy-target <50 on OHCbl+betaine),
+    differential (MMACHC / MMUT / MMAA / MMAB / MTR-cblG / MTRR-cblE / CBS / PA)."""
+    try:
+        import scripts.mmadhc_dashboard as mmadhc_
+        return _json_safe(mmadhc_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
