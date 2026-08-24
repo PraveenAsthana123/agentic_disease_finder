@@ -1,7 +1,7 @@
 {
  "title": "Standardized Clinical Assessment Instruments (per role)",
  "note": "Real validated instruments with published scoring + interpretation bands. Auto-scored. CRUD: create/view/edit/delete completed assessments per patient.",
- "updated_at": "2026-07-16",
+ "updated_at": "2026-08-24",
  "instruments": [
   {
    "id": "MOCA",
@@ -295,7 +295,14 @@
      "level": "severe"
     }
    ],
-   "note": "Change of >=2 points = clinically significant improvement."
+   "note": "Change of >=2 points = clinically significant improvement.",
+   "status": "built",
+   "dashboard": "copm-dashboard/page.jsx",
+   "endpoints": [
+    "/api/copm-dashboard/overview",
+    "/api/copm-dashboard/breakdown",
+    "/api/copm-dashboard/definitions"
+   ]
   },
   {
    "id": "MMSE",
@@ -392,6 +399,13 @@
      "label": "Poor QoL",
      "level": "severe"
     }
+   ],
+   "status": "built",
+   "dashboard": "qolie31-dashboard/page.jsx",
+   "endpoints": [
+    "/api/qolie31-dashboard/overview",
+    "/api/qolie31-dashboard/breakdown",
+    "/api/qolie31-dashboard/definitions"
    ]
   },
   {
