@@ -12,7 +12,10 @@
       "/api/eeg-viz/traces",
       "/api/eeg-viz/recordings"
     ],
-    "id": "eeg-viz-raw"
+    "id": "eeg-viz-raw",
+    "route": "/eeg-viz-raw",
+    "frontend": "portal-next/app/eeg-viz-raw/page.jsx",
+    "built_note": "Raw EEG Viewer \u2014 /api/eeg-viz + /api/eeg-viz/traces + /api/eeg-viz/recordings + portal-next/app/eeg-viz-raw/page.jsx + SiteNav wired after Bad Channel QC. Multi-channel SVG trace viewer (up to 24 channels, auto-normalised per channel), KPI row (channels/spikes/lateralization/recordings), band lateralization table (delta/theta/alpha/beta/gamma asymmetry index), spike detection panel (top channels by rate), recording catalog table (878 EDF files). 3 endpoints verified 200. CHB-MIT real EEG data. expert_dashboards.json count 376 (status unchanged built)."
   },
   {
     "role": "Neurologist",
