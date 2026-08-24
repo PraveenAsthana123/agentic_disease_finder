@@ -33116,6 +33116,33 @@ async def pycr1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pycr2/overview")
+async def pycr2_overview():
+    try:
+        import scripts.pycr2_dashboard as pycr2_
+        return _json_safe(pycr2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pycr2/breakdown")
+async def pycr2_breakdown():
+    try:
+        import scripts.pycr2_dashboard as pycr2_
+        return _json_safe(pycr2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pycr2/definitions")
+async def pycr2_definitions():
+    try:
+        import scripts.pycr2_dashboard as pycr2_
+        return _json_safe(pycr2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
