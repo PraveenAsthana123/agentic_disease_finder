@@ -32493,6 +32493,65 @@ async def abcd4_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/hcfc1/overview")
+async def hcfc1_overview():
+    """HCFC1 (cblX) Epilepsy Dashboard — overview
+    (gene: HCFC1-Host-Cell-Factor-C1-2035aa-nuclear-transcriptional-coactivator-Xq28-X-LINKED /
+    HCFC1-TRANSCRIPTIONAL-MASTER-REGULATOR-of-MMACHC /
+    HCFC1-recruits-THAP11-Ronin-to-MMACHC-promoter-activates-transcription /
+    HCFC1-LOF-MMACHC-not-transcribed-MMACHC-protein-ABSENT /
+    ONLY-X-linked-intracellular-cobalamin-disorder-all-others-AR /
+    Combined-MMA-ELEVATED-200-2500-mmol-molCr-Plus-tHcy-ELEVATED-40-300-umol-L /
+    Methionine-LOW-6-18-umol-L / MeCbl-ABSENT / AdoCbl-ABSENT /
+    MMACHC-mRNA-ABSENT-DIAGNOSTIC-KEY-vs-cblC /
+    NO-maculopathy-KEY-NEGATIVE-vs-cblC-80pct /
+    Ohtahara-Neonatal-Severe-30pct / West-Syndrome-Infantile-Classic-55pct / Childhood-Attenuated-15pct,
+    cohort: 40 patients seed-55, OMIM-Gene-300019-Disease-309541)."""
+    try:
+        import scripts.hcfc1_dashboard as hcfc1_
+        return _json_safe(hcfc1_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hcfc1/breakdown")
+async def hcfc1_breakdown():
+    """HCFC1 (cblX) Epilepsy Dashboard — breakdown
+    (seizure types: Ohtahara-burst-suppression / West-syndrome-IS / Focal-childhood /
+    triggers: N2O-ABSOLUTE-CI / fasting / illness / missed-OHCbl-betaine /
+    treatments: OHCbl-LevelA-40-60pct-HHcy-LESS-than-cblC / Betaine-MANDATORY-LevelA /
+    protein-restriction-LevelA / L-Carnitine-LevelA-B / folinic-acid-LevelB /
+    IV-glucose-LevelA / ACTH-vigabatrin-IS-LevelA / VPA-HIGH-RISK-AVOID,
+    patient sample: 6 cases)."""
+    try:
+        import scripts.hcfc1_dashboard as hcfc1_
+        return _json_safe(hcfc1_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hcfc1/definitions")
+async def hcfc1_definitions():
+    """HCFC1 (cblX) Epilepsy Dashboard — definitions
+    (gene card: 2035aa-Xq28-X-linked-nuclear-transcriptional-coactivator /
+    HCFC1-THAP11-axis-MMACHC-promoter-activation /
+    key concepts: HCFC1-transcriptional-master-MMACHC /
+    MMACHC-mRNA-absent-diagnostic-vs-cblC /
+    X-linked-ONLY-X-linked-cobalamin-disorder /
+    no-maculopathy-KEY-NEGATIVE-vs-cblC-80pct /
+    Ohtahara-HCFC1-non-metabolic-NDD-targets /
+    OHCbl-less-complete-than-cblC-MMACHC-absent /
+    THAP11-variants-also-cause-cblX-like-disease /
+    N2O-ABSOLUTE-CI / betaine-especially-critical,
+    differential: cblC-MMACHC / cblF-LMBRD1 / cblJ-ABCD4 / THAP11-deficiency /
+    cblD-Combined-MMADHC / CBS / Ohtahara-STXBP1-KCNQ2-ARX)."""
+    try:
+        import scripts.hcfc1_dashboard as hcfc1_
+        return _json_safe(hcfc1_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

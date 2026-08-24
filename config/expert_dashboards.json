@@ -5643,5 +5643,27 @@
     "page": "/portal-next/app/abcd4/page.jsx",
     "cohort": "40-patient cblJ cohort (seed-77)",
     "title": "ABCD4 Epilepsy (Methylmalonic-Aciduria-Homocystinuria-cblJ-type / ABCD4-606aa-Lysosomal-Membrane-ABC-Half-Transporter-NBD-Walker-A-B-14q24.3-AR / ATPase-Motor-ABCD4-LMBRD1-Export-Complex / NO-Vacuolated-Lymphocytes-KEY-NEGATIVE-vs-cblF / NO-Stomatitis-KEY-NEGATIVE-vs-cblF / Gene-Panel-ABCD4-LMBRD1-Mandatory / OMIM-603214-614857)"
+  },
+  {
+    "id": "hcfc1",
+    "name": "HCFC1 (cblX) Epilepsy Dashboard",
+    "status": "built",
+    "route": "/hcfc1",
+    "api": [
+      "/api/hcfc1/overview",
+      "/api/hcfc1/breakdown",
+      "/api/hcfc1/definitions"
+    ],
+    "script": "scripts/hcfc1_dashboard.py",
+    "component": "portal-next/app/hcfc1/page.jsx",
+    "cohort_n": 40,
+    "seed": 55,
+    "disease": "Methylmalonic Aciduria and Homocystinuria, cblX type",
+    "gene": "HCFC1",
+    "chromosome": "Xq28",
+    "inheritance": "X-LINKED",
+    "omim_gene": "300019",
+    "omim_disease": "309541",
+    "note": "cblX \u2014 HCFC1 transcriptional master regulator of MMACHC; ONLY X-linked intracellular cobalamin disorder; MMACHC mRNA absent DIAGNOSTIC KEY vs cblC; NO maculopathy KEY NEGATIVE vs cblC; Ohtahara/West syndrome/Childhood phenotypes; OHCbl response less complete than cblC (no MMACHC protein scaffold); betaine especially critical"
   }
 ]
