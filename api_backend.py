@@ -32605,6 +32605,59 @@ async def mtrr_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mtr/overview")
+async def mtr_overview():
+    """MTR (cblG) Epilepsy Dashboard — overview
+    (gene: MTR-5-methyltetrahydrofolate-homocysteine-methyltransferase-1265aa-cytoplasmic-1q43-AR /
+    MTR-Methionine-Synthase-uses-MeCbl-cofactor-His759-axial-cobalt-ligand /
+    MTR-LOF-Hcy-cannot-be-remethylated /
+    ISOLATED-HHcy-tHcy-40-200-umol-L-MMA-NORMAL-KEY-NEGATIVE /
+    MeCbl-ABSENT-fibroblasts-MTR-enzyme-absent / AdoCbl-NORMAL-fibroblasts-KEY-POSITIVE /
+    C3-NORMAL-NBS-INVISIBLE-for-cblG /
+    Megaloblastic-anemia-methylfolate-trap-5-methylTHF-cannot-donate-methyl /
+    Early-Onset-Severe-30pct / Infantile-Classic-50pct-MODAL / Late-Onset-Attenuated-20pct,
+    cohort: 40 patients seed-59, OMIM-Gene-156570-Disease-250940)."""
+    try:
+        import scripts.mtr_dashboard as mtr_
+        return _json_safe(mtr_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mtr/breakdown")
+async def mtr_breakdown():
+    """MTR (cblG) Epilepsy Dashboard — breakdown
+    (seizure types: infantile-spasms / myoclonic / focal /
+    triggers: N2O-ABSOLUTE-CI / fasting-moderate / antifolates-HIGH-RISK /
+    treatments: OHCbl-LevelA-50-65pct-HHcy-less-than-cblE / Betaine-MANDATORY-LevelA /
+    Folinic-acid-LevelA-methylfolate-trap-PRIMARY / Carnitine-LevelB /
+    VPA-HIGH-RISK-AVOID / protein-restriction-NOT-needed-MMA-normal,
+    patient sample: 6 cases)."""
+    try:
+        import scripts.mtr_dashboard as mtr_
+        return _json_safe(mtr_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mtr/definitions")
+async def mtr_definitions():
+    """MTR (cblG) Epilepsy Dashboard — definitions
+    (gene card: 1265aa-1q43-AR-methionine-synthase-MeCbl-cofactor /
+    MTR-Hcy-remethylation-using-5-methylTHF-MeCbl /
+    key concepts: ISOLATED-HHcy-MMA-NORMAL / methylfolate-trap /
+    NBS-INVISIBLE-C3-normal / cblG-vs-cblE-identical-biochemistry /
+    folinic-acid-Level-A-not-just-B / OHCbl-50-65pct-less-than-cblE /
+    N2O-ABSOLUTE-CI / no-protein-restriction-MMA-arm-intact,
+    differential: cblE-MTRR / cblC-MMACHC / CBS / cblD-HHcy /
+    MTHFR-deficiency / cblX-HCFC1 / nutritional-B12-deficiency)."""
+    try:
+        import scripts.mtr_dashboard as mtr_
+        return _json_safe(mtr_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

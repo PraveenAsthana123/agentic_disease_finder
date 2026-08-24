@@ -5685,5 +5685,16 @@
     "inheritance": "AR",
     "omim_gene": "*602568",
     "omim_disease": "#236270"
+  },
+  {
+    "id": "mtr",
+    "name": "MTR Epilepsy (Homocystinuria-Megaloblastic-Anemia-cblG-type / MTR-5-Methyltetrahydrofolate-Homocysteine-Methyltransferase-1265aa-Cytoplasmic-Methionine-Synthase-MeCbl-Cofactor-His759-Axial-Cobalt-Ligand-1q43-Autosomal-Recessive / MTR-CATALYSES-Hcy-Remethylation-Using-5-methylTHF-And-MeCbl / MTR-LOF-Hcy-Cannot-Be-Remethylated-Methionine-Not-Synthesized / ISOLATED-HHcy-MMA-NORMAL-KEY-NEGATIVE / MeCbl-ABSENT-MTR-Enzyme-Absent / AdoCbl-NORMAL-KEY-POSITIVE / C3-NORMAL-NBS-INVISIBLE / Megaloblastic-Anemia-80pct-Methylfolate-Trap / Biochemically-IDENTICAL-To-cblE-MTRR / OHCbl-50-65pct-Less-Than-cblE / Betaine-MANDATORY / Folinic-Acid-Level-A / NO-Protein-Restriction / N2O-ABSOLUTE-CI / OMIM-Gene-156570-Disease-250940 / 40-patient-cohort-seed-59 / 3-endpoints-verified-200 / 1q43 / AR / Registered-2026-08-24)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/mtr/overview",
+      "/api/mtr/breakdown",
+      "/api/mtr/definitions"
+    ],
+    "page": "/mtr"
   }
 ]
