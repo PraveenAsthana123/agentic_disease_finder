@@ -32843,6 +32843,36 @@ async def mat1a_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/gnmt/overview")
+async def gnmt_overview():
+    """GNMT — cohort KPIs (SAM massively elevated, SAM/SAH ratio >10-25, sarcosine absent, tHcy normal, liver disease)."""
+    try:
+        import scripts.gnmt_dashboard as gnmt_
+        return _json_safe(gnmt_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnmt/breakdown")
+async def gnmt_breakdown():
+    """GNMT — patient sample, seizure types, metabolic triggers, treatments, drug risks, variants, biomarker ranges."""
+    try:
+        import scripts.gnmt_dashboard as gnmt_
+        return _json_safe(gnmt_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/gnmt/definitions")
+async def gnmt_definitions():
+    """GNMT — gene card, key concepts (SAM safety valve, SAM/SAH ratio, sarcosine absence, folate link), differential."""
+    try:
+        import scripts.gnmt_dashboard as gnmt_
+        return _json_safe(gnmt_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

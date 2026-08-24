@@ -5756,5 +5756,20 @@
     "feature": "40-patient cohort seed-101, 3 phenotypic classes, 7 variants, 7 treatments, 6 drug-risks, biomarker ranges methionine+SAM+SAH+tHcy+AST; SAM-VERY-LOW pathognomonic; Breath-Odor-PATHOGNOMONIC-DMS; Betaine-ABSOLUTE-CI; Myopathy-ABSENT; MAT-I/III-vs-MAT-II-brain-intact",
     "built_note": "MAT1A Dashboard \u2014 /api/mat1a/* + portal-next/app/mat1a/page.jsx + SiteNav wired after AHCY before MTR, 40-patient cohort seed-101, Benign-Incidental-50%(AD-p.Arg264His)/Classic-30%/Severe-MAT-I-20%, SAM-VERY-LOW-pathognomonic (opposite AHCY where SAM-elevated), Breath-odor-DMS-pathognomonic, Betaine-ABSOLUTE-CI (BHMT raises methionine further), SAM-Level-A-TREATMENT (corrects deficiency), expert_dashboards.json count 368->369",
     "why": "MAT1A deficiency \u2014 next disease after AHCY in methionine cycle (MAT1A is the SAM-synthesis step, upstream of all methyltransferases and AHCY); same hypermethioninemia NBS trigger but OPPOSITE SAM/SAH biochemistry; p.Arg264His most common benign hypermethioninemia variant in humans"
+  },
+  {
+    "id": "gnmt",
+    "name": "GNMT Epilepsy (Glycine-N-Methyltransferase-Deficiency-Hypermethioninemia-SAM-Accumulation / GNMT-296aa-SAM-Dependent-PLP-Independent-Hepatic-9q22.2-Autosomal-Recessive / GNMT-HEPATIC-SAM-SAFETY-VALVE-Consumes-50-75pct-Hepatic-SAM / GNMT-LOF-SAM-Cannot-Be-Consumed-Accumulates-Massively / SAM-MARKEDLY-ELEVATED-300-2200-umol-L-PATHOGNOMONIC / SAH-LOW-NORMAL-GNMT-Was-Major-SAH-Producer / SAM-SAH-Ratio-MARKEDLY-ELEVATED-Greater-10-25-PATHOGNOMONIC-OPPOSITE-AHCY-Less-0.5 / Methionine-HIGH-40-500-Less-Extreme-MAT1A / tHcy-NORMAL-Less-20-KEY-NEGATIVE / Sarcosine-ABSENT-GNMT-Product-Not-Made / Liver-Disease-60-80pct-SAM-Toxicity / SAM-Supplements-ABSOLUTE-CI / Betaine-ABSOLUTE-CI / Methionine-Restriction-Level-A / OMIM-Gene-606460-Disease-606464)",
+    "status": "built",
+    "route": "/gnmt",
+    "api_endpoints": [
+      "/api/gnmt/overview",
+      "/api/gnmt/breakdown",
+      "/api/gnmt/definitions"
+    ],
+    "script": "scripts/gnmt_dashboard.py",
+    "cohort_n": 40,
+    "seed": 107,
+    "registered": "2026-08-24"
   }
 ]
