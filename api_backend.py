@@ -31855,6 +31855,60 @@ async def dbt_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/hlcs/overview")
+async def hlcs_overview():
+    """HLCS (Holocarboxylase Synthetase / Multiple Carboxylase Deficiency — Neonatal) overview:
+    gene metadata (HLCS/HCS/MCD, 21q22.13, AR, OMIM *609018/#253270, ~726aa full-length,
+    master biotin ligase that biotinylates ALL FOUR biotin-dependent carboxylases — PC, PCC,
+    MCC, ACC simultaneously), KPIs for 40-patient HLCS cohort, phenotype distribution
+    (Classic Neonatal 55% / Early Infantile 30% / Juvenile/Atypical 10% / Mild/Partial 5%),
+    four-carboxylase pathway (simultaneous PC+PCC+MCC+ACC blocks), HLCS vs BTD differential
+    (biotinidase NORMAL in HLCS — KEY diagnostic distinction), high-risk situations
+    (delayed biotin initiation EXTREME HAZARD, raw egg white/avidin ABSOLUTE CI)."""
+    try:
+        import scripts.hlcs_dashboard as hlcs_
+        return _json_safe(hlcs_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hlcs/breakdown")
+async def hlcs_breakdown():
+    """HLCS breakdown: 40-patient MCD cohort, biomarkers (C5-OH NBS MOST SENSITIVE,
+    3-OH-isovaleric acid from MCC block, methylcitric acid from PCC block,
+    3-methylcrotonylglycine, propionylglycine, lactic acidosis from PC block,
+    hyperammonemia, biotinidase activity NORMAL — KEY differential from BTD),
+    key variants (p.Leu216Arg Japanese founder severe/higher-dose, p.Arg508Trp common
+    European mild-moderate, p.Val550Met intermediate, p.Cys129Ser severe near active site,
+    p.Asn543Tyr catalytic domain severe, c.1519C>T splice null), seizure types
+    (neonatal myoclonic, burst-suppression, infantile spasms), metabolic triggers,
+    treatments (biotin 10-40 mg/day Level A URGENT / IV glucose+biotin acute / carnitine Level B /
+    protein restriction mild Level B / LEV Level B / VPA CAUTION-not-absolute-CI)."""
+    try:
+        import scripts.hlcs_dashboard as hlcs_
+        return _json_safe(hlcs_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/hlcs/definitions")
+async def hlcs_definitions():
+    """HLCS definitions: gene card (HLCS/HCS/MCD, 21q22.13, AR, OMIM *609018/#253270,
+    726aa full-length, master biotin ligase for PC+PCC+MCC+ACC), key concepts (HLCS as
+    master biotin ligase — why ALL FOUR carboxylases fail simultaneously; HLCS vs BTD —
+    two causes of MCD via opposite mechanisms ligation vs recycling; why biotin works in
+    HLCS despite enzyme defect — K_m shift overcome by substrate excess 100× normal;
+    NBS via C5-OH + importance of early biotin for outcome; four biomarker streams;
+    seizure mechanism and biotin response), diagnostic thresholds (C5-OH NBS >0.5 µmol/L,
+    3-OH-isovalerate >100 µmol/mmolCr, biotinidase NORMAL, biotin response timeline),
+    differential diagnosis (BTD / isolated MCCC1/MCCC2 / PA / MMA / PC deficiency)."""
+    try:
+        import scripts.hlcs_dashboard as hlcs_
+        return _json_safe(hlcs_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
