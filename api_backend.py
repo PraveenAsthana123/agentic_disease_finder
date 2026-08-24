@@ -32120,6 +32120,66 @@ async def mmut_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mmaa/overview")
+async def mmaa_overview():
+    """MMAA overview: gene card (MMAA/Methylmalonyl-CoA-Mutase-Associated-GTPase-Chaperone, 4p14, AR,
+    OMIM *607481/#251100, 418aa, G3E P-loop GTPase, mitochondrial matrix), cohort KPIs (40 patients,
+    urine MMA PATHOGNOMONIC 200-5000, C3 elevation, ammonia, carnitine depletion, eGFR/CKD less severe
+    than MMUT, cardiomyopathy 15-20pct, seizure rates, OHCbl response rate STRONG >60pct HALLMARK cblA),
+    phenotype distribution (cblA Neonatal Severe ~25% / cblA Classic Infantile ~50% MODAL /
+    cblA Attenuated Late Onset ~20% / cblA Mild Residual ~5%),
+    4-step MMAA AdoCbl delivery pathway (cob(I)alamin → MMAB → AdoCbl → MMAA GTPase BLOCK → MMUT intact apoenzyme),
+    MMAA vs MMUT 10-feature critical differential (OHCbl response STRONG vs weak / MMUT apoenzyme INTACT
+    in MMAA / fibroblast AdoCbl correction / CKD less severe / transplant rarely needed),
+    high-risk situations (VPA ABSOLUTE CI / fasting / missed OHCbl HIGH RISK / metformin AVOID)."""
+    try:
+        import scripts.mmaa_dashboard as mmaa_
+        return _json_safe(mmaa_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmaa/breakdown")
+async def mmaa_breakdown():
+    """MMAA breakdown: 11 biomarkers (C3 primary NBS identical to PA and MMUT / MMA urine PATHOGNOMONIC
+    200-5000 LOWER than MMUT due to OHCbl response / plasma MMA / methylcitrate mildly secondary NOT
+    pathognomonic KEY NEG vs PA / ammonia / free carnitine / homocysteine NORMAL KEY NEG vs cblC /
+    MMUT enzyme activity CORRECTABLE with AdoCbl in vitro KEY DISTINCTION / eGFR CKD less severe /
+    OHCbl trial response rate HALLMARK / C3/C2 ratio),
+    8 key variants (p.Arg145His GTPase-G3-motif most common OHCbl responsive /
+    p.Arg186Trp MMAA-MMAB interface moderate-severe / p.Gln210x truncating null non-responsive /
+    c.IVS6+1G>A splice null severe / p.Ile96Thr mitochondrial targeting moderate /
+    p.Gly199Asp GTPase catalytic core moderate-severe / p.Pro91Leu P-loop partial /
+    large del exon1-3 null MLPA),
+    6 seizure types, 5 metabolic triggers, 11 treatments (Level A: OHCbl 1-2mg IM 60-80pct respond HALLMARK /
+    protein restriction / MMAA-free formula / L-carnitine / IV glucose / ammonia scavengers;
+    Level B: cyanocobalamin oral / metronidazole / liver transplant rarely needed / HD-CRRT;
+    ABSOLUTE CI: VPA), patient sample (15 of 40), high-risk drugs."""
+    try:
+        import scripts.mmaa_dashboard as mmaa_
+        return _json_safe(mmaa_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mmaa/definitions")
+async def mmaa_definitions():
+    """MMAA definitions: gene card (MMAA/Methylmalonyl-CoA-Mutase-Associated-GTPase-Chaperone, 4p14,
+    AR, 418aa, G3E P-loop GTPase, OMIM *607481/#251100, ~1:100,000-200,000),
+    7 key concepts (why MMAA causes MMA without MMUT enzyme defect / why OHCbl response stronger than MMUT
+    60-80pct vs 20pct / CKD less severe than MMUT with monitoring / differentiating MMAA from MMAB and MMUT
+    three causes of isolated MMA / VPA ABSOLUTE CI mechanism specific to cobalamin pathway /
+    why MMAA is G3E P-loop GTPase and GTP-energy delivery mechanism / secondary hyperammonemia
+    NAGS-CPS1 same mechanism as MMUT and PA),
+    diagnostic thresholds (urine MMA / OHCbl trial response / plasma MMA / ammonia / eGFR / free carnitine),
+    differential (MMUT / MMAB-cblB / cblC-MMACHC / PA-PCCA-PCCB / cblD-MMADHC / DLD / SUCLA2-SUCLG1)."""
+    try:
+        import scripts.mmaa_dashboard as mmaa_
+        return _json_safe(mmaa_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -5541,5 +5541,17 @@
     "gene": "MMUT",
     "chromosome": "6p12.3",
     "inheritance": "AR"
+  },
+  {
+    "id": "mmaa",
+    "title": "MMAA Epilepsy (Methylmalonic-Acidemia-cblA-Cobalamin-A-type / MMAA-GTPase-Chaperone-418aa-4p14-AR / MMUT-Apoenzyme-INTACT-AdoCbl-Delivery-BLOCKED / MMA-PATHOGNOMONIC-200-5000-mmol-molCr / OHCbl-Response-STRONG-60-80pct-HALLMARK / Homocysteine-NORMAL-KEY-NEG-vs-cblC / OMIM-607481-251100)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/mmaa/overview",
+      "/api/mmaa/breakdown",
+      "/api/mmaa/definitions"
+    ],
+    "portal_page": "/mmaa",
+    "component": "portal-next/app/mmaa/page.jsx"
   }
 ]
