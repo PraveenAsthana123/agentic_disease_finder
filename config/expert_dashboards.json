@@ -5665,5 +5665,25 @@
     "omim_gene": "300019",
     "omim_disease": "309541",
     "note": "cblX \u2014 HCFC1 transcriptional master regulator of MMACHC; ONLY X-linked intracellular cobalamin disorder; MMACHC mRNA absent DIAGNOSTIC KEY vs cblC; NO maculopathy KEY NEGATIVE vs cblC; Ohtahara/West syndrome/Childhood phenotypes; OHCbl response less complete than cblC (no MMACHC protein scaffold); betaine especially critical"
+  },
+  {
+    "id": "mtrr",
+    "name": "MTRR Epilepsy (Homocystinuria-Megaloblastic-Anemia-cblE-type / MTRR-5-Methyltetrahydrofolate-Homocysteine-Methyltransferase-Reductase-698aa-Diflavin-FMN-FAD-5p15.31-Autosomal-Recessive / MTRR-REACTIVATES-MTR-Reducing-cob(II)alamin-To-cob(I)alamin-Via-NADPH-FAD-FMN / MTRR-LOF-MTR-Inactive-ISOLATED-HHcy / ISOLATED-HHcy-MMA-NORMAL-KEY-NEGATIVE-NBS-INVISIBLE / AdoCbl-NORMAL-Fibroblasts-KEY-POSITIVE / Megaloblastic-Anemia-90pct-Methylfolate-Trap / Folinic-Acid-Level-A-NOT-Just-Level-B / OHCbl-60-75pct-Better-Than-cblX / N2O-ABSOLUTE-CI / AR-5p15.31 / OMIM-Gene-602568-Disease-236270)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/mtrr/overview",
+      "/api/mtrr/breakdown",
+      "/api/mtrr/definitions"
+    ],
+    "frontend": "portal-next/app/mtrr/page.jsx",
+    "nav": "SiteNav wired after HCFC1 before DLD",
+    "cohort_n": 40,
+    "built_date": "2026-08-24",
+    "category": "metabolic-epilepsy",
+    "gene": "MTRR",
+    "chromosome": "5p15.31",
+    "inheritance": "AR",
+    "omim_gene": "*602568",
+    "omim_disease": "#236270"
   }
 ]

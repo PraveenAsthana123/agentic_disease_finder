@@ -32552,6 +32552,59 @@ async def hcfc1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/mtrr/overview")
+async def mtrr_overview():
+    """MTRR (cblE) Epilepsy Dashboard — overview
+    (gene: MTRR-5-methyltetrahydrofolate-homocysteine-methyltransferase-reductase-698aa-diflavin-FMN-FAD-5p15.31-AR /
+    MTRR-reactivates-MTR-methionine-synthase-by-reducing-cob(II)alamin-to-cob(I)alamin-NADPH-FAD-FMN /
+    MTRR-LOF-MTR-accumulates-inactive-cob(II)alamin-cannot-remethylate-Hcy /
+    ISOLATED-HHcy-tHcy-40-200-umol-L-MMA-NORMAL-KEY-NEGATIVE /
+    MeCbl-ABSENT-fibroblasts-MTR-inactive / AdoCbl-NORMAL-fibroblasts-KEY-POSITIVE /
+    C3-NORMAL-NBS-INVISIBLE-for-cblE /
+    Megaloblastic-anemia-methylfolate-trap-5-methylTHF-cannot-enter-THF-cycle /
+    Neonatal-Severe-35pct / Infantile-Classic-45pct-MODAL / Late-Onset-Attenuated-20pct,
+    cohort: 40 patients seed-58, OMIM-Gene-602568-Disease-236270)."""
+    try:
+        import scripts.mtrr_dashboard as mtrr_
+        return _json_safe(mtrr_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mtrr/breakdown")
+async def mtrr_breakdown():
+    """MTRR (cblE) Epilepsy Dashboard — breakdown
+    (seizure types: infantile-spasms / myoclonic / focal /
+    triggers: N2O-ABSOLUTE-CI / fasting-moderate / antifolates-HIGH-RISK /
+    treatments: OHCbl-LevelA-60-75pct-HHcy / Betaine-MANDATORY-LevelA /
+    Folinic-acid-LevelA-methylfolate-trap-PRIMARY / Carnitine-LevelB /
+    VPA-HIGH-RISK-AVOID / protein-restriction-NOT-needed-MMA-normal,
+    patient sample: 6 cases)."""
+    try:
+        import scripts.mtrr_dashboard as mtrr_
+        return _json_safe(mtrr_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/mtrr/definitions")
+async def mtrr_definitions():
+    """MTRR (cblE) Epilepsy Dashboard — definitions
+    (gene card: 698aa-5p15.31-AR-diflavin-reductase-FMN-FAD /
+    MTRR-reactivates-MTR-cob(II)alalmin-to-cob(I)alamin /
+    key concepts: ISOLATED-HHcy-MMA-NORMAL / methylfolate-trap /
+    NBS-INVISIBLE-C3-normal / cblE-vs-cblG-identical-biochemistry /
+    folinic-acid-Level-A-not-just-B / OHCbl-60-75pct-better-than-cblX /
+    N2O-ABSOLUTE-CI / no-protein-restriction-MMA-arm-intact,
+    differential: cblG-MTR / cblC-MMACHC / CBS / cblD-HHcy /
+    MTHFR-deficiency / cblX-HCFC1 / nutritional-B12-deficiency)."""
+    try:
+        import scripts.mtrr_dashboard as mtrr_
+        return _json_safe(mtrr_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
