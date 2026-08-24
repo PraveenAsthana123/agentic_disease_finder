@@ -31967,6 +31967,52 @@ async def btd_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/pcca/overview")
+async def pcca_overview():
+    """PCCA overview: gene card (PCCA/propionyl-CoA carboxylase alpha subunit, 13q32.3, AR, OMIM *232000/#606054,
+    728aa, BC+BCCP domains, Lys669 biotin attachment, (αβ)6 dodecamer), cohort KPIs (40 patients, C3 elevation,
+    methylcitrate, ammonia, carnitine depletion, cardiomyopathy, BG infarct, seizure rates), phenotype distribution
+    (classic-neonatal 70% / late-onset 20% / intermediate 5% / paucisymptomatic 5%), PCC two-step reaction mechanism,
+    PCCA vs PCCB 12-feature comparison, high-risk situations (VPA ABSOLUTE CI / fasting / illness / high-protein)."""
+    try:
+        import scripts.pcca_dashboard as pcca_
+        return _json_safe(pcca_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pcca/breakdown")
+async def pcca_breakdown():
+    """PCCA breakdown: 11 biomarkers (C3 primary NBS / methylcitrate PATHOGNOMONIC / absent methylmalonate KEY NEGATIVE /
+    3-OH-propionate / propionylglycine / ammonia / free carnitine / biotinidase NORMAL / C5-OH NORMAL / BCAA NORMAL /
+    C3/C2 ratio), 8 key variants (p.Arg410Trp BC domain / p.Lys669fsX BCCP null / p.Gly549Asp / p.Ala178Pro /
+    c.IVS20+2T>C splice / p.Arg306His moderate / p.Gly131Arg / p.Ile204Thr), 6 seizure types, 6 metabolic triggers,
+    10 treatments (Level A: protein restriction / formula / L-carnitine / IV glucose / ammonia scavengers;
+    Level B: metronidazole / liver transplant / HD-CRRT; NOT EFFECTIVE: biotin; ABSOLUTE CI: VPA),
+    patient sample (15 of 40), high-risk drugs."""
+    try:
+        import scripts.pcca_dashboard as pcca_
+        return _json_safe(pcca_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/pcca/definitions")
+async def pcca_definitions():
+    """PCCA definitions: gene card (PCCA/Propionyl-CoA Carboxylase Alpha Subunit, 13q32.3, AR, 728aa, BC+BCCP domains,
+    Lys669 biotin attachment, (αβ)6 dodecamer, OMIM *232000/#606054, 1:100,000-150,000 EU / 1:2,000-5,000 Arabian Peninsula),
+    7 key concepts (why PCCA LOF causes hyperammonemia via NAGS-CPS1 inhibition / methylcitrate mechanism and why absent
+    in MMA / why biotin does NOT work in PA unlike HLCS-BTD / VPA absolute CI mechanism / cardiomyopathy mechanism /
+    PCC (αβ)6 dodecamer and why PCCA=PCCB same phenotype / gut bacterial propionate and metronidazole rationale),
+    diagnostic thresholds (C3 NBS / methylcitrate / methylmalonate absent / ammonia / carnitine / echo / PCC enzyme / gene panel),
+    differential (MMA / HLCS / BTD / DLD / MSUD / isolated MCC / NKH)."""
+    try:
+        import scripts.pcca_dashboard as pcca_
+        return _json_safe(pcca_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
