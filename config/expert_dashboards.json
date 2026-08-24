@@ -5787,5 +5787,16 @@
     "seed": 113,
     "category": "metabolic-epilepsy-creatine-biosynthesis",
     "registered": "2026-08-24"
+  },
+  {
+    "id": "agat",
+    "name": "AGAT Epilepsy (L-arginine-glycine-amidinotransferase-Deficiency-Cerebral-Creatine-Deficiency-Syndrome-3-CCDS3 / GATM-423aa-Transamidination-NOT-SAM-Dependent-15q21.1-AR / AGAT-CATALYSES-L-Arginine-Plus-Glycine-To-L-Ornithine-Plus-GAA-FIRST-Step-Creatine-Biosynthesis / GAA-VERY-LOW-ABSENT-Less-0.5-umol-L-OPPOSITE-Of-GAMT-50-300-PATHOGNOMONIC / Creatine-ABSENT / Brain-H-MRS-Creatine-Peak-ABSENT / No-GAA-Neurotoxicity-UNLIKE-GAMT / Drug-Resistant-Epilepsy-25-35pct-Much-Less-Than-GAMT / Creatine-Treatment-ONLY-No-Ornithine-No-Arg-Restriction / 40-patient-cohort-seed-117 / 3-endpoints-verified-200 / OMIM-Gene-602360-Disease-612718 / 15q21.1 / AR / Registered-2026-08-24)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/agat/overview",
+      "/api/agat/breakdown",
+      "/api/agat/definitions"
+    ],
+    "page": "/agat"
   }
 ]

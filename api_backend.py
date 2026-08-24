@@ -32906,6 +32906,42 @@ async def gamt_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/agat/overview")
+async def agat_overview():
+    """AGAT overview — gene card, cohort KPIs, phenotype distribution, function/mechanism,
+    key positive/negative features, NBS primary/secondary, biomarker signature.
+    AGAT Deficiency = CCDS3 (Cerebral Creatine Deficiency Syndrome 3) — GAA VERY LOW (opposite of GAMT)."""
+    try:
+        import scripts.agat_dashboard as agat_
+        return _json_safe(agat_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/agat/breakdown")
+async def agat_breakdown():
+    """AGAT breakdown — clinical features, seizure types, metabolic triggers, treatments,
+    drug risks, variant distribution, patient sample (40 patients, seed 117).
+    Key: creatine-ONLY treatment (no ornithine needed — unlike GAMT); GAA absent (not elevated)."""
+    try:
+        import scripts.agat_dashboard as agat_
+        return _json_safe(agat_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/agat/definitions")
+async def agat_definitions():
+    """AGAT definitions — gene card, key concepts (single vs dual pathology, GAA direction,
+    creatine pathway, why creatine works but ornithine not needed, H-MRS shared feature),
+    differential (GAMT, SLC6A8, MAT1A/GNMT/AHCY/CBS), treatment summary."""
+    try:
+        import scripts.agat_dashboard as agat_
+        return _json_safe(agat_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
