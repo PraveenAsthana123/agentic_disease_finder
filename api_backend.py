@@ -32423,6 +32423,76 @@ async def lmbrd1_definitions():
         raise HTTPException(status_code=500, detail=str(exc))
 
 
+@app.get("/api/abcd4/overview")
+async def abcd4_overview():
+    """ABCD4 (cblJ) Epilepsy Dashboard — overview
+    (ABCD4-Methylmalonic-Aciduria-Homocystinuria-cblJ-type / ABCD4-606aa-Lysosomal-Membrane-ABC-Half-Transporter-NBD-Walker-A-B-14q24.3-AR /
+    ABCD4-ATPase-MOTOR-Of-ABCD4-LMBRD1-Lysosomal-Cobalamin-Export-Complex /
+    ATP-Hydrolysis-ABCD4-NBD-Powers-LMBRD1-Pore-Cobalamin-Lysosome-To-Cytoplasm /
+    ABCD4-LOF-LMBRD1-Has-No-ATPase-Partner-Cannot-Export-Cobalamin-Lysosomal-Trap /
+    Combined-MMA-ELEVATED-150-1200-mmol-molCr-Plus-HHcy-ELEVATED-25-180-umol-L /
+    Methionine-LOW-8-22-umol-L-Methionine-Synthase-MTR-INACTIVE /
+    Both-MeCbl-And-AdoCbl-ABSENT-Fibroblasts-Like-cblC-cblF /
+    NO-Vacuolated-Lymphocytes-KEY-NEGATIVE-vs-cblF-LMBRD1 /
+    NO-Stomatitis-KEY-NEGATIVE-vs-cblF-LMBRD1 /
+    ABCD4-Plus-LMBRD1-Gene-Panel-Mandatory-Cannot-Distinguish-Biochemically /
+    ABCD4-UNIQUE-Among-ABCD-Transporters-LYSOSOMAL-Not-Peroxisomal-VLCFA-NORMAL /
+    OHCbl-Bypasses-Via-Alternative-Entry-50-65pct-HHcy-35-55pct-MMA-Response /
+    Betaine-MANDATORY-BHMT-Cobalamin-Independent-HHcy-Remethylation /
+    N2O-ABSOLUTE-CI-Methionine-Synthase-Inactivation-LIFE-THREATENING /
+    VPA-HIGH-RISK-Carnitine-Depletion-MMA-Surge-LEV-First-Line /
+    Fasting-HIGH-RISK-MMA-Surge-HHcy-Worsens / cblJ-Infantile-Classic-50pct-MODAL /
+    Early-Infantile-Severe-35pct / Late-Infantile-Attenuated-15pct /
+    Fewer-Than-25-Cases-Worldwide-Ultra-Rare-Likely-Underdiagnosed /
+    AR-Biallelic-LOF / 14q24.3 / OMIM-Gene-603214-Disease-614857)."""
+    try:
+        import scripts.abcd4_dashboard as abcd4_
+        return _json_safe(abcd4_.get_overview())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/abcd4/breakdown")
+async def abcd4_breakdown():
+    """ABCD4 (cblJ) Epilepsy Dashboard — breakdown
+    (biomarkers: C3-NBS-PRIMARY-All-Subtypes / MMA-150-1200 / tHcy-25-180 / Methionine-LOW /
+    MeCbl-ABSENT / AdoCbl-ABSENT / Vacuolated-Lymphocytes-ABSENT-KEY-NEGATIVE-vs-cblF /
+    Stomatitis-ABSENT-KEY-NEGATIVE-vs-cblF / Lysosomal-Cobalamin-EM-PRESENT /
+    key variants: p.Arg432Gln-Walker-A-Most-Common / p.Tyr319Cys-TM6-Moderate /
+    c.IVS11plus1G-A-Null-Severe / p.Trp479Arg-NBD-Null-Non-Responsive /
+    p.Arg519Gln-Walker-B-Moderate-Severe / p.Ala350Val-TM-Attenuated /
+    treatments: OHCbl-1-2mg-IM-LevelA / Betaine-LevelA-MANDATORY / Folinic-Acid-LevelB /
+    L-Carnitine-LevelA-B / Protein-Restriction-MMA-Formula / IV-Glucose-GIR-8-12-LevelA)."""
+    try:
+        import scripts.abcd4_dashboard as abcd4_
+        return _json_safe(abcd4_.get_breakdown())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.get("/api/abcd4/definitions")
+async def abcd4_definitions():
+    """ABCD4 (cblJ) Epilepsy Dashboard — definitions
+    (gene card: 606aa-14q24.3-lysosomal-membrane-ABC-half-transporter-NBD-Walker-A-B /
+    ABCD4-LYSOSOMAL-unique-among-ABCD-family-not-peroxisomal /
+    ABCD4-ATPase-motor-LMBRD1-pore-heterodimer /
+    key concepts: ABCD4-ATPase-motor-lysosomal-export-complex /
+    biochemically-identical-cblF-gene-panel-mandatory /
+    no-vacuolated-lymphocytes-KEY-NEGATIVE-vs-cblF /
+    no-stomatitis-KEY-NEGATIVE-vs-cblF /
+    ABCD4-lysosomal-not-peroxisomal-VLCFA-normal /
+    OHCbl-alternative-entry-partial-bypass /
+    betaine-BHMT-mandatory-HHcy /
+    N2O-ABSOLUTE-CI-methionine-synthase,
+    differential: cblF-LMBRD1 / cblC-MMACHC / cblD-Combined-MMADHC /
+    PA / isolated-MMA / ABCD1-X-ALD / CBS)."""
+    try:
+        import scripts.abcd4_dashboard as abcd4_
+        return _json_safe(abcd4_.get_definitions())
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

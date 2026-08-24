@@ -5624,5 +5624,21 @@
     "page": "/portal-next/app/lmbrd1/page.jsx",
     "cohort": "40-patient cblF cohort (seed-54)",
     "title": "LMBRD1 Epilepsy (Methylmalonic-Aciduria-Homocystinuria-cblF-type / LMBRD1-LMBR1-Domain-540aa-Lysosomal-Membrane-9-TM-6q13-AR / MOST-UPSTREAM-Intracellular-Cobalamin-Transporter / Cobalamin-TRAPPED-Lysosomes-LOF / Combined-MMA-tHcy-Identical-cblC-Upstream / Vacuolated-Lymphocytes-KEY-POSITIVE / Stomatitis-PATHOGNOMONIC / LMBRD1-ABCD4-Panel / OMIM-612634-277380)"
+  },
+  {
+    "id": "abcd4",
+    "gene": "ABCD4",
+    "role": "Neurologist",
+    "name": "ABCD4 (cblJ) Epilepsy Dashboard",
+    "viz": "ABCD4-LMBRD1 lysosomal ATPase complex diagram, phenotype distribution (Early Infantile Severe/Infantile Classic/Late Infantile Attenuated), cblJ vs cblF distinction table (no vacuolated lymphocytes/no stomatitis), NBD Walker A/B variant map, biomarker panel (MMA+tHcy combined)",
+    "feature": "ABCD4 lysosomal ABC half-transporter ATPase motor, ABCD4+LMBRD1 gene panel MANDATORY (biochemically identical to cblF), NO vacuolated lymphocytes (KEY NEGATIVE vs cblF), NO stomatitis (KEY NEGATIVE vs cblF), ABCD4 LYSOSOMAL unique among ABCD family (VLCFA NORMAL), OHCbl alternative entry bypass, betaine MANDATORY BHMT remethylation, N2O ABSOLUTE CI",
+    "why": "ABCD4 cblJ \u2014 ATPase motor partner of LMBRD1 lysosomal cobalamin export complex; combined MMA+HHcy identical to cblC and cblF; unique cblJ features (absent vacuolated lymphocytes, absent stomatitis) distinguish from cblF biochemically; gene panel ABCD4+LMBRD1 mandatory",
+    "status": "built",
+    "priority": "high",
+    "built_date": "2026-08-24",
+    "api": "/api/abcd4/overview|breakdown|definitions",
+    "page": "/portal-next/app/abcd4/page.jsx",
+    "cohort": "40-patient cblJ cohort (seed-77)",
+    "title": "ABCD4 Epilepsy (Methylmalonic-Aciduria-Homocystinuria-cblJ-type / ABCD4-606aa-Lysosomal-Membrane-ABC-Half-Transporter-NBD-Walker-A-B-14q24.3-AR / ATPase-Motor-ABCD4-LMBRD1-Export-Complex / NO-Vacuolated-Lymphocytes-KEY-NEGATIVE-vs-cblF / NO-Stomatitis-KEY-NEGATIVE-vs-cblF / Gene-Panel-ABCD4-LMBRD1-Mandatory / OMIM-603214-614857)"
   }
 ]
