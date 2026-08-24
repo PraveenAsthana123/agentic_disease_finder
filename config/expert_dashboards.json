@@ -5857,5 +5857,15 @@
     "cohort_seed": 147,
     "cohort_n": 40,
     "built_at": "2026-08-24"
+  },
+  {
+    "id": "aldh18a1",
+    "name": "ALDH18A1 Epilepsy (P5CS-Deficiency-Delta-1-Pyrroline-5-Carboxylate-Synthase-Deficiency / ALDH18A1-795aa-Bifunctional-GammaGlutamyl-Kinase-Plus-Glutamate-5-Semialdehyde-Dehydrogenase-NADPH-ATP-Dependent-10q24.1-AR-AD / ALDH18A1-CATALYSES-Glutamate-To-P5C-COMMITTED-ENTRY-STEP-Proline-Ornithine-SYNTHESIS / SYNTHESIS-FAILURE-Proline-CRITICALLY-LOW-Less-60-umol-L-OPPOSITE-PRODH-ALDH4A1-ELEVATED / Ornithine-LOW-Less-30-P5C-NORMAL-LOW-NOT-Made-KEY-vs-ALDH4A1-P5C-HIGH / PLP-NORMAL-No-P5C-PLP-Inactivation-No-B6-Response / alpha-AASA-NORMAL-Pipecolic-NORMAL-KEY-NEGATIVES / Cutis-Laxa-95pct-Severe-AR-Pathognomonic-Collagen-Deficient / Cataracts-60-75pct / Infantile-Spasms-45pct-Modal / Seizures-50-65pct-AR / DRE-20-30pct / IDD-90pct-Severe-AR / Proline-Supplement-Level-A-PRIMARY-TREATMENT / Protein-Restriction-ABSOLUTE-CI-OPPOSITE-PRODH / De-Barsy-Syndrome-OMIM-219150-AR / OMIM-616603-AD / ~50-100-Cases-2026 / AR-AD / 10q24.1 / OMIM-Gene-138250)",
+    "route": "/aldh18a1",
+    "status": "built",
+    "api": "/api/aldh18a1/overview|breakdown|definitions",
+    "cohort_seed": 151,
+    "cohort_n": 40,
+    "registered": "2026-08-24"
   }
 ]

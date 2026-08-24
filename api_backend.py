@@ -33062,6 +33062,31 @@ async def prodh_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ── ALDH18A1 (P5CS Deficiency / Hyperprolinemia Type III Hypo) ────────────────
+@app.get("/api/aldh18a1/overview")
+async def aldh18a1_overview():
+    try:
+        import scripts.aldh18a1_dashboard as aldh18a1_
+        return _json_safe(aldh18a1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aldh18a1/breakdown")
+async def aldh18a1_breakdown():
+    try:
+        import scripts.aldh18a1_dashboard as aldh18a1_
+        return _json_safe(aldh18a1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aldh18a1/definitions")
+async def aldh18a1_definitions():
+    try:
+        import scripts.aldh18a1_dashboard as aldh18a1_
+        return _json_safe(aldh18a1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
