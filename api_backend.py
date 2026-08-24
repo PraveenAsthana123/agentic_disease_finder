@@ -33036,6 +33036,33 @@ async def aldh4a1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# PRODH — Hyperprolinemia Type I / Proline Dehydrogenase Deficiency
+
+@app.get("/api/prodh/overview")
+async def prodh_overview():
+    try:
+        import scripts.prodh_dashboard as prodh_
+        return _json_safe(prodh_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/prodh/breakdown")
+async def prodh_breakdown():
+    try:
+        import scripts.prodh_dashboard as prodh_
+        return _json_safe(prodh_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/prodh/definitions")
+async def prodh_definitions():
+    try:
+        import scripts.prodh_dashboard as prodh_
+        return _json_safe(prodh_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

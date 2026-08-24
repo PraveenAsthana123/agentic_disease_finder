@@ -5838,5 +5838,21 @@
     "category": "proline_catabolism_plp",
     "inheritance": "AR",
     "gene_locus": "1p36.13"
+  },
+  {
+    "id": "prodh",
+    "name": "PRODH Epilepsy (Hyperprolinemia-Type-I-Proline-Dehydrogenase-Deficiency / PRODH-601aa-FAD-Dependent-Inner-Mitochondrial-Membrane-19q13.2-Autosomal-Recessive / PRODH-CATALYSES-Proline-To-P5C-FIRST-Step-Proline-Catabolism / PRODH-LOF-Proline-ACCUMULATES-P5C-NORMAL-ALDH4A1-INTACT / P5C-NORMAL-KEY-DISTINCTION-From-Type-II / PLP-NORMAL-NO-Secondary-B6-Deficiency / B6-NOT-INDICATED / Proline-350-1000-umol-L-Less-Severe-Than-Type-II / Seizures-25-35pct-MILDER / DRE-Less-15pct / Psychiatric-Schizophrenia-Like-15-25pct-UNIQUE / Asymptomatic-Incidental-40pct-MODAL / 40-patient-cohort-seed-147 / 3-endpoints-verified-200 / OMIM-Gene-606810-Disease-239500 / 19q13.2 / AR / Registered-2026-08-24",
+    "status": "built",
+    "api_endpoints": [
+      "/api/prodh/overview",
+      "/api/prodh/breakdown",
+      "/api/prodh/definitions"
+    ],
+    "portal_page": "/prodh",
+    "component": "portal-next/app/prodh/page.jsx",
+    "script": "scripts/prodh_dashboard.py",
+    "cohort_seed": 147,
+    "cohort_n": 40,
+    "built_at": "2026-08-24"
   }
 ]
