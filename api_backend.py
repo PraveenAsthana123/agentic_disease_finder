@@ -11615,6 +11615,28 @@ async def epworth_definitions():
     return _json_safe(esd.definitions())
 
 
+# ── Mini-Mental State Examination (MMSE) Dashboard ───────────────────
+@app.get("/api/mmse-dashboard/overview")
+async def mmse_overview():
+    """MMSE summary: KPIs, severity distribution, per-patient latest scores."""
+    import scripts.mmse_dashboard as md
+    return _json_safe(md.overview())
+
+
+@app.get("/api/mmse-dashboard/breakdown")
+async def mmse_breakdown():
+    """MMSE per-domain analysis, monthly trend, severity transitions."""
+    import scripts.mmse_dashboard as md
+    return _json_safe(md.breakdown())
+
+
+@app.get("/api/mmse-dashboard/definitions")
+async def mmse_definitions():
+    """Metric definitions for the MMSE dashboard."""
+    import scripts.mmse_dashboard as md
+    return _json_safe(md.definitions())
+
+
 # ── Real-Time EEG QC Dashboard ────────────────────────────────────────
 @app.get("/api/realtime-eeg-qc/overview")
 async def realtime_eeg_qc_overview():

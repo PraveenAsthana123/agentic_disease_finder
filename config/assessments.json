@@ -1,7 +1,7 @@
 {
  "title": "Standardized Clinical Assessment Instruments (per role)",
  "note": "Real validated instruments with published scoring + interpretation bands. Auto-scored. CRUD: create/view/edit/delete completed assessments per patient.",
- "updated_at": "2026-08-24",
+ "updated_at": "2026-08-25",
  "instruments": [
   {
    "id": "MOCA",
@@ -354,6 +354,13 @@
      "label": "Severe impairment",
      "level": "severe"
     }
+   ],
+   "status": "built",
+   "dashboard": "mmse-dashboard/page.jsx",
+   "endpoints": [
+    "/api/mmse-dashboard/overview",
+    "/api/mmse-dashboard/breakdown",
+    "/api/mmse-dashboard/definitions"
    ]
   },
   {

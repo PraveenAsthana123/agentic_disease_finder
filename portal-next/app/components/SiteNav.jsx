@@ -209,6 +209,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/phq9-dashboard">&#x1f4cb; PHQ-9</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cssrs-dashboard">&#x26a0;&#xfe0f; C-SSRS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/moca-dashboard">&#x1f9e9; MoCA</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/mmse-dashboard">&#x1f9e0; MMSE</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/epworth-dashboard">&#x1f634; ESS (Epworth)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/qolie31-dashboard">&#x2764;&#xfe0f; QOLIE-31</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/nddi-e">&#x1f9e0; NDDI-E</Link></li>
