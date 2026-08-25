@@ -6208,5 +6208,24 @@
     "locus": "11q13.3",
     "omim_disease": "255120",
     "inheritance": "AR"
+  },
+  {
+    "id": "cact",
+    "gene": "SLC25A20",
+    "name": "CACT Epilepsy (CACT-Deficiency-Carnitine-Acylcarnitine-Translocase-Deficiency / SLC25A20-301aa-Inner-Mitochondrial-Membrane-Antiporter-3p21.31-Autosomal-Recessive / CARNITINE-SHUTTLE-STEP-2-Long-Chain-Acylcarnitine-IN-Free-Carnitine-OUT-Through-IMM / SLC25A20-LOF-Long-Chain-Acylcarnitines-TRAPPED-In-Intermembrane-Space-CANNOT-Enter-Matrix / C16-Palmitoylcarnitine-ELEVATED-Greater-1.5-umol-L-PRIMARY-NBS-MARKER / C18-1-Oleoylcarnitine-ELEVATED / C18-Stearoylcarnitine-ELEVATED / C0-FREE-CARNITINE-LOW-OPPOSITE-CPT1A / C16-OH-NORMAL-KEY-NEGATIVE-vs-LCHAD / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / CARDIOMYOPATHY-HALLMARK-UNLIKE-CPT1A-WHERE-ABSENT / ARRHYTHMIAS-VENTRICULAR-LIFE-THREATENING / MCT-OIL-THERAPEUTIC-Level-A / L-CARNITINE-ESSENTIAL-Level-A-C0-LOW / FASTING-ABSOLUTE-CI / KD-ABSOLUTE-CI / VPA-ABSOLUTE-CI / NO-Retinopathy-KEY-NEGATIVE-vs-LCHAD / c.199-10T-G-Splicing-Severe / 40-patient-cohort-seed-281 / 3-endpoints-verified-200 / Registered-2026-08-25)",
+    "status": "built",
+    "route": "/cact",
+    "api_prefix": "/api/cact",
+    "endpoints": [
+      "/api/cact/overview",
+      "/api/cact/breakdown",
+      "/api/cact/definitions"
+    ],
+    "seed": 281,
+    "n_patients": 40,
+    "registered": "2026-08-25",
+    "locus": "3p21.31",
+    "omim_disease": "212138",
+    "inheritance": "AR"
   }
 ]
