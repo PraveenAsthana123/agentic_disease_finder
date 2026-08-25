@@ -33481,6 +33481,33 @@ async def gcdh_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ivd/overview")
+async def ivd_overview():
+    try:
+        import scripts.ivd_dashboard as ivd_
+        return _json_safe(ivd_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ivd/breakdown")
+async def ivd_breakdown():
+    try:
+        import scripts.ivd_dashboard as ivd_
+        return _json_safe(ivd_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ivd/definitions")
+async def ivd_definitions():
+    try:
+        import scripts.ivd_dashboard as ivd_
+        return _json_safe(ivd_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -6038,5 +6038,16 @@
     "inheritance": "AR",
     "omim_gene": "608801",
     "omim_disease": "231670"
+  },
+  {
+    "id": "ivd",
+    "name": "IVD Epilepsy (Isovaleric-Acidemia-IVA / IVD-Isovaleryl-CoA-Dehydrogenase-415aa-Mitochondrial-Homotetrameric-FAD-Dependent-ACAD-Family-15q15.1-AR / IVD-LOF-Isovaleryl-CoA-Accumulates-IVA-Sweaty-Feet-PATHOGNOMONIC / C5-NBS-PRIMARY / IVG-Urine-PATHOGNOMONIC / Glycine-Level-A-UNIQUE-IVD / VPA-ABSOLUTE-CI-Valproyl-CoA-Competitive-Inhibitor / OMIM-243500 / 15q15.1 / AR / 40-patient-cohort-seed-253)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/ivd/overview",
+      "/api/ivd/breakdown",
+      "/api/ivd/definitions"
+    ],
+    "page": "/portal-next/app/ivd/page.jsx"
   }
 ]
