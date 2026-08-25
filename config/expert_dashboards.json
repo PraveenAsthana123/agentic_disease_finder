@@ -6471,5 +6471,14 @@
     "seed": 311,
     "built_date": "2026-08-25",
     "category": "monogenic_diabetes_mody"
+  },
+  {
+    "id": "mody6",
+    "name": "MODY6 (MODY6-NEUROD1-MODY-BETA2-MODY-Maturity-Onset-Diabetes-Young-Type-6 / NEUROD1-Neurogenic-Differentiation-1-BETA2-356aa-bHLH-E-Box-TF-601724 / Chr-2q31.3 / bHLH-E-Box-CANNTG-Dimerizes-E12-E47 / Cooperates-PDX1-MafA-Full-INS-Transcription / R111L-bHLH-Founding-Mutation-Malecki-1999 / NEUROLOGICAL-SPECTRUM-Cerebellar-Ataxia-Deafness-Biallelic / NOT-OLDEST-MODY-PANELS-Expanded-NGS-Required / SU-80-85pct / C-Peptide-PRESERVED / Progressive-HbA1c / Autoantibodies-NEGATIVE / ~1-2pct-Underdiagnosed / Autosomal-Dominant / 2q31.3 / OMIM-Gene-601724-Disease-606394",
+    "status": "built",
+    "api": "/api/mody6/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 313,
+    "registered": "2026-08-25"
   }
 ]
