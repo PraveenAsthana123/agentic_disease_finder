@@ -6314,5 +6314,23 @@
     "locus": "14q32.3",
     "omim_disease": "608149",
     "inheritance": "Genomic Imprinting \u2014 Maternal LOF"
+  },
+  {
+    "id": "srs",
+    "gene": "IGF2 / H19 / CDKN1C",
+    "name": "Silver-Russell Syndrome (SRS-Silver-Russell-Syndrome / IGF2-Insulin-Like-Growth-Factor-2-Paternally-Expressed-Growth-Driver-147470 / H19-lncRNA-Maternally-Expressed-ICR1-Methylation-Anchor-103280 / CDKN1C-p57KIP2-Maternally-Expressed-Growth-Inhibitor-600856 / 11p15.5-GENOMIC-IMPRINTING-Paternal-LOF-SAME-LOCUS-OPPOSITE-PHENOTYPE-BWS / H19-ICR1-Hypomethylation-Paternal-45pct-BIALLELIC-IGF2-SILENCING-ZERO-IGF2 / Maternal-UPD7-upd7mat-10pct-GRB10-Loss / CDKN1C-Gain-of-Function-Maternal-5pct-AD-50pct-Recurrence / Paternal-Deletion-11p15.5-4pct / Maternal-Duplication-11p15.5-2pct / Unknown-Mechanism-35pct / SGA-UNIVERSAL-96pct-Mean-Minus-3.5-SDS-Birth-Weight / RELATIVE-MACROCEPHALY-Brain-Sparing-HC-SDS-Minus-Weight-SDS-Greater-1.5 / HEMIHYPOTROPHY-50-65pct-KEY-DISCRIMINATOR-vs-Temple-No-Asymmetry / TRIANGULAR-FACE-Frontal-Bossing-Micrognathia-Fifth-Finger-Clinodactyly / NEONATAL-HYPOGLYCEMIA-50-60pct-FASTING-ABSOLUTE-CI-Seizures / CORNSTARCH-MANDATORY-Level-A-Overnight-Glucose-Maintenance / GH-THERAPY-Level-A-FDA-ODA-2003-Start-Before-Age-4-Plus7-10cm / KETOGENIC-DIET-CONTRAINDICATED-Severe-Hypoglycemia-SRS / PHENOBARBITAL-AVOID-Neonates-Impairs-Feeding / VPA-MODERATE-RISK-Weight-Gain-Thin-SRS-Hepatic-Monitoring / CPP-25-30pct-Less-Than-Temple-50-60pct / GnRH-Analog-Level-B-SRS-vs-Level-A-Temple / COGNITION-NORMAL-KEY-Contrast-Temple-80pct-Mild-Moderate-ID / ADHD-25pct / NETCHINE-HARBISON-NH-Score-4-of-6-Diagnostic / MS-MLPA-ICR1-FIRST-LINE-Test-60pct-Sensitivity / SNP-Array-UPD7-Detection-Second-Line / SRS-vs-BWS-Same-Locus-11p15.5-Paternal-LOF-Restriction-vs-Maternal-LOF-Overgrowth / IGF2-ABSENT-SRS-vs-IGF2-EXCESS-BWS-Canonical-Imprinting-Pair / ART-IVF-ICSI-10x-Increased-ICR1-Hypomethylation-Risk / ~1-30000-100000-Underdiagnosed / Genomic-Imprinting-Paternal-LOF / 11p15.5 / OMIM-Gene-IGF2-147470-H19-103280-CDKN1C-600856-Disease-180860)",
+    "status": "built",
+    "script": "scripts/srs_dashboard.py",
+    "api_endpoints": [
+      "/api/srs/overview",
+      "/api/srs/breakdown",
+      "/api/srs/definitions"
+    ],
+    "frontend": "portal-next/app/srs/page.jsx",
+    "nav_wired": true,
+    "cohort_seed": 295,
+    "cohort_size": 40,
+    "built_date": "2026-08-25",
+    "notes": "SRS Dashboard \u2014 /api/srs/* + portal-next/app/srs/page.jsx + SiteNav wired after Kagami-Ogata, 40-patient cohort seed-295, 3 endpoints /api/srs/overview|breakdown|definitions verified 200, expert_dashboards.json count 411->412. Built 2026-08-25."
   }
 ]

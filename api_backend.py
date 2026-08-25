@@ -34029,6 +34029,31 @@ async def kagami_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/srs/overview")
+async def srs_overview():
+    try:
+        import scripts.srs_dashboard as srs_
+        return _json_safe(srs_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srs/breakdown")
+async def srs_breakdown():
+    try:
+        import scripts.srs_dashboard as srs_
+        return _json_safe(srs_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srs/definitions")
+async def srs_definitions():
+    try:
+        import scripts.srs_dashboard as srs_
+        return _json_safe(srs_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
