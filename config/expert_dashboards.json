@@ -6227,5 +6227,21 @@
     "locus": "3p21.31",
     "omim_disease": "212138",
     "inheritance": "AR"
+  },
+  {
+    "id": "cpt2",
+    "name": "CPT2 Epilepsy (CPT2-Deficiency-Carnitine-Palmitoyltransferase-II-Deficiency / CPT2-590aa-Inner-Mitochondrial-Membrane-Matrix-Face-1p32.3-Autosomal-Recessive / CARNITINE-SHUTTLE-STEP-3-Final-Step-Converts-Long-Chain-Acylcarnitine-Plus-CoA-SH-To-Long-Chain-Acyl-CoA-Plus-Free-Carnitine-Inside-Mitochondrial-Matrix / CPT2-LOF-Long-Chain-Acylcarnitines-CANNOT-Be-Converted-To-Acyl-CoA-In-Matrix-Beta-Oxidation-BLOCKED / THREE-PHENOTYPES-Myopathic-Greater-90pct-Adult-Rhabdomyolysis-Severe-Infantile-Lethal-Neonatal / MYOPATHIC-MOST-COMMON-Exercise-Induced-Rhabdomyolysis-NO-Cardiomyopathy-Teens-Adults / p.Ser113Leu-TEMPERATURE-SENSITIVE-Hypomorphic-30-50pct-Myopathic-Allele-Freq-3-5pct-General-Pop-Heterozygote / C16-Palmitoylcarnitine-ELEVATED-PRIMARY-NBS-MARKER-Mildly-Myopathic-Markedly-Severe / C18-1-Oleoylcarnitine-ELEVATED-Co-Elevated / C18-Stearoylcarnitine-ELEVATED-Co-Elevated / C0-FREE-CARNITINE-VARIABLE-Normal-Low-Myopathic-Low-Severe-UNLIKE-CACT-Always-Low / C16-OH-NORMAL-KEY-NEGATIVE-vs-LCHAD / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / RENAL-CYSTS-BRAIN-MALFORMATIONS-HALLMARK-LETHAL-NEONATAL-KEY-DISCRIMINATOR-vs-CACT-No-Structural-Anomalies / NO-CARDIOMYOPATHY-MYOPATHIC-KEY-EXAM-TRAP-vs-CACT-LCHAD-VLCAD-Where-Cardiac-Is-Hallmark / NBS-FALSE-NEGATIVE-RISK-Myopathic-C16-Normalises-Between-Episodes-Crisis-Dependent / RHABDOMYOLYSIS-HALLMARK-MYOPATHIC-CK-Greater-10000-Dark-Brown-Myoglobinuria-AKI-Risk / MCT-OIL-Level-A-Severe-Level-B-Myopathic / L-CARNITINE-NOT-ROUTINE-Myopathic-Level-C-May-Worsen-UNLIKE-CACT-Where-ESSENTIAL / L-CARNITINE-Level-A-If-C0-Depleted-Severe-Forms / AVOID-PROLONGED-EXERCISE-PRIMARY-PREVENTION-Myopathic / HIGH-CARB-PRE-EXERCISE-Level-B-Myopathic / STATINS-HIGH-RISK-ALL-Phenotypes / GENERAL-ANAESTHESIA-HIGH-RISK-Myopathic / FASTING-ABSOLUTE-CI-Severe-Forms / KD-ABSOLUTE-CI-Severe-Forms / VPA-ABSOLUTE-CI-Severe-Forms-HIGH-RISK-Myopathic / Bezafibrate-Level-C-Investigational-PPAR-Alpha-Agonist / p.Ser113Leu-c.338C-T-MOST-COMMON-Temperature-Sensitive-Myopathic / p.Arg503Cys-c.1507C-T-Myopathic-European-Partial-LOF / p.Val368Ile-Mild-Compound-Het-Partner / p.Pro50His-c.149C-A-Severe-Neonatal-Infantile-European / p.Arg151Gln-c.452G-A-Severe-Infantile-Hepatocardiomuscular / p.Tyr628Ser-Lethal-Neonatal-Complete-LOF / CPT2-vs-CACT-Same-C16-C18-1-HIGH-But-Myopathic-Adult-Muscle-vs-CACT-Neonatal-Severe-Cardiac / CPT2-vs-CPT1A-C16-HIGH-vs-C0-HIGH-C16-NORMAL-Different-Step-3-vs-Step-1 / ~1-100000-Myopathic-Most-Common-FAO-Rhabdomyolysis-Disorder / AR-Biallelic-LOF / 1p32.3 / OMIM-Gene-600650-Disease-255110-Myopathic-600649-Severe-Infantile-608836-Lethal-Neonatal)",
+    "route": "/cpt2",
+    "category": "fatty-acid-oxidation",
+    "status": "built",
+    "api_endpoints": [
+      "/api/cpt2/overview",
+      "/api/cpt2/breakdown",
+      "/api/cpt2/definitions"
+    ],
+    "registered": "2026-08-25",
+    "seed": 283,
+    "n_patients": 40,
+    "notes": "CPT2 Epilepsy Dashboard \u2014 /api/cpt2/* + portal-next/app/cpt2/page.jsx, 40-patient cohort seed-283, 3 endpoints /api/cpt2/overview|breakdown|definitions verified 200, expert_dashboards.json count 405->406"
   }
 ]

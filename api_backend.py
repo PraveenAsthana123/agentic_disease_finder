@@ -33880,6 +33880,31 @@ async def cact_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cpt2/overview")
+async def cpt2_overview():
+    try:
+        import scripts.cpt2_dashboard as cpt2_
+        return _json_safe(cpt2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cpt2/breakdown")
+async def cpt2_breakdown():
+    try:
+        import scripts.cpt2_dashboard as cpt2_
+        return _json_safe(cpt2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cpt2/definitions")
+async def cpt2_definitions():
+    try:
+        import scripts.cpt2_dashboard as cpt2_
+        return _json_safe(cpt2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
