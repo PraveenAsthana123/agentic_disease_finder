@@ -33954,6 +33954,31 @@ async def ube3a_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pws/overview")
+async def pws_overview():
+    try:
+        import scripts.pws_dashboard as pws_
+        return _json_safe(pws_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pws/breakdown")
+async def pws_breakdown():
+    try:
+        import scripts.pws_dashboard as pws_
+        return _json_safe(pws_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pws/definitions")
+async def pws_definitions():
+    try:
+        import scripts.pws_dashboard as pws_
+        return _json_safe(pws_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
