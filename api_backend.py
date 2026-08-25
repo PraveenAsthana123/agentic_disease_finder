@@ -33248,6 +33248,30 @@ async def oat_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/otc/overview")
+async def otc_overview():
+    try:
+        import scripts.otc_dashboard as otc_
+        return _json_safe(otc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/otc/breakdown")
+async def otc_breakdown():
+    try:
+        import scripts.otc_dashboard as otc_
+        return _json_safe(otc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/otc/definitions")
+async def otc_definitions():
+    try:
+        import scripts.otc_dashboard as otc_
+        return _json_safe(otc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

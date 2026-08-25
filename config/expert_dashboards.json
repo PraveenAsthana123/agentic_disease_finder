@@ -5906,6 +5906,18 @@
     "registered": "2026-08-24"
   },
   {
+    "id": "otc",
+    "name": "OTC Epilepsy (Ornithine-Transcarbamylase-Deficiency-OTCD / OTC-354aa-Mitochondrial-Matrix-Homotrimer-Xp21.1-X-Linked / OTC-CATALYSES-Ornithine-Plus-Carbamoyl-Phosphate-To-Citrulline-Plus-Pi-UREA-CYCLE-STEP-2-OF-5 / OTC-LOF-Citrulline-CANNOT-Be-Made-Urea-Cycle-BLOCKED-Step-2 / CARBAMOYL-PHOSPHATE-OVERFLOWS-Pyrimidine-Synthesis-OROTIC-ACID-HIGH-Urine-PATHOGNOMONIC / Plasma-Ammonia-CRITICALLY-ELEVATED-Greater-200-umol-L-Crisis-Greater-500-Neonatal-PATHOGNOMONIC / Plasma-Citrulline-CRITICALLY-LOW-Less-5-umol-L-Normal-15-35-PATHOGNOMONIC / Urine-Orotic-Acid-HIGH-Greater-10-20-umol-mol-Cr-PATHOGNOMONIC / OTC-vs-CPS1-KEY-DISTINCTION-Orotic-HIGH-OTC-NORMAL-CPS1 / Seizures-60-70pct-Secondary-Hyperammonemia / GTCS-45pct-MODAL / Status-Epilepticus-25pct / VPA-ABSOLUTE-CONTRAINDICATION / Liver-Transplant-Level-A-CURATIVE / Most-Common-Urea-Cycle-Disorder / X-Linked / Xp21.1 / OMIM-Gene-300461-Disease-311250 / 40-patient-cohort-seed-193 / 3-endpoints-verified-200 / Registered-2026-08-24",
+    "status": "built",
+    "endpoint": "/api/otc/*",
+    "frontend": "/otc",
+    "chromosome": "Xp21.1",
+    "inheritance": "X-linked",
+    "omim_gene": "300461",
+    "omim_disease": "311250",
+    "registered": "2026-08-24"
+  },
+  {
     "id": "abat",
     "name": "ABAT Epilepsy (GABA-Transaminase-Deficiency-GABAT-Deficiency / ABAT-500aa-PLP-Dependent-Mitochondrial-Homodimer-16q22.2-Autosomal-Recessive / ABAT-CATALYSES-GABA-Plus-Alpha-KG-To-SSA-Plus-Glutamate-FIRST-Step-GABA-Catabolism / ABAT-LOF-GABA-CANNOT-Be-Degraded-Accumulates-15-30x-Normal / CSF-GABA-DRAMATICALLY-HIGH-800-3000-nmol-mL-Normal-Less-50-PATHOGNOMONIC / Urine-GABA-HIGH / Beta-Alanine-MILDLY-ELEVATED-Shared-ABAT-Substrate / Homocarnosine-CSF-ELEVATED / GHB-ONLY-MILDLY-ELEVATED-KEY-DISTINCTION-From-SSADH / SSA-LOW-NORMAL-Not-Made / alpha-AASA-NORMAL-KEY-NEGATIVE-vs-ALDH7A1-PDE / Pipecolic-NORMAL / MMA-NORMAL / tHcy-NORMAL / Epileptic-Seizures-97pct / Infantile-Spasms-66pct-MODAL / DRE-80pct / IDD-Profound-95pct / Axial-Hypotonia-90pct / Hyperkinetic-60pct / Somnolence-70pct / Accelerated-Growth-40pct-Unusual / ACTH-Level-A-IS / Pyridoxine-B6-Level-B-PLP-Cofactor / Vigabatrin-ABSOLUTE-CONTRAINDICATION / Valproate-MODERATE-RISK / Baclofen-MODERATE-RISK / Severe-Neonatal-72pct-MODAL / Classic-Infantile-22pct / Mild-6pct / ~25-50-Cases-Worldwide-2026-Ultrarare / AR-Biallelic-LOF / 16q22.2 / OMIM-Gene-137150-Disease-613163",
     "status": "built",
