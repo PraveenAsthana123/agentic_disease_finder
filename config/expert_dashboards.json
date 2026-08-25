@@ -6286,5 +6286,14 @@
     "cohort_n": "40",
     "seed": "289",
     "registered": "2026-08-25"
+  },
+  {
+    "id": "temple",
+    "name": "Temple Syndrome (TS14-Temple-Syndrome / MEG3-Maternally-Expressed-Gene-3-lncRNA / DLK1-Delta-Like-1-Homolog-383aa-Paternally-Expressed-Adipogenesis-Inhibitor-GnRH-Regulator / 14q32.3-GENOMIC-IMPRINTING-Paternal-LOF / upd14mat-70pct-Paternal-Del-15pct-IG-DMR-Epimutation-12pct / DLK1-ABSENT-Both-Alleles-Silenced-Maternally / CPP-CENTRAL-PRECOCIOUS-PUBERTY-50-60pct-Females-GnRH-Analog-Level-A / GH-USUALLY-NORMAL-Off-Label-Level-C-Contrast-PWS-GH-Deficient-Level-A / NEONATAL-HYPOTONIA-75-85pct-PWS-LIKE-MISDIAGNOSIS-RISK-Test-14q32.3-Not-15q11 / EPILEPSY-20-30pct-Focal-NO-Absolute-AED-CI / VPA-MODERATE-RISK-Not-Absolute-CI / Methylation-IG-DMR-FIRST-TEST-98pct-Sensitive / Kagami-Ogata-OPPOSITE-PARENT-upd14pat / ~1-50000-100000 / Genomic-Imprinting-Paternal-LOF / 14q32.3 / OMIM-Gene-MEG3-601626-DLK1-176290-Disease-616222)",
+    "status": "built",
+    "api": "/api/temple/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 291,
+    "registered": "2026-08-25"
   }
 ]

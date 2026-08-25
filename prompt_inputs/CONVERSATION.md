@@ -28974,3 +28974,271 @@ STATUS.md now shows 391 dashboards. Now commit:
 
 ### [2026-08-24 21:42:02 MDT] ASSISTANT
 All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-08-24 21:55:23 MDT] ASSISTANT
+Now commit:
+
+### [2026-08-24 22:19:02 MDT] ASSISTANT
+All 8 steps complete.
+
+**IVD (Isovaleric Acidemia) — built, verified, pushed, tracked.**
+
+- `/api/ivd/overview|breakdown|definitions` → 200
+- `portal-next/app/ivd/page.jsx` + SiteNav wired
+- `expert_dashboards.json` 392 → 393
+- Committed `1d1b8348`, pushed to `origin/main`
+- `track.sh` logged `autobuild`
+
+**Pending queue status:** The only remaining BUILDABLE item is the ictal/interictal retrain (P0, high-effort, excluded per your instructions). Blocked items (Gmail/Slack/auth/EMR) await operator credentials. Queue is otherwise clear.
+
+### [2026-08-24 23:02:47 MDT] ASSISTANT
+**Iteration result: SKIPPED — no buildable item available.**
+
+- `next_pending.py` top item: `Ictal/interictal retrain` → skipped (too heavy per §159 instructions)
+- All other queue items: blocked by operator credentials (Gmail/Slack/Drive/auth/EMR/FHIR) or gated (push §42)
+- Expert dashboards: 393/393 built — fully complete
+- Neuro AI ecosystem: all 64 tools accounted for (built/commercial/external/installed)
+- EEG AI stack: all 58 tools accounted for
+
+No commit made. Tracked via `scripts/track.sh`. Yielding to operator.
+
+### [2026-08-24 23:30:02 MDT] ASSISTANT
+**Built + pushed: MCC (3-Methylcrotonyl-CoA Carboxylase Deficiency) Epilepsy Dashboard**
+
+Commit `a4409d98` — 6 files, 1,155 insertions.
+
+**What was built:**
+
+| Artifact | Detail |
+|---|---|
+| `scripts/mcc_dashboard.py` | 40-patient cohort (seed 259), 3 phenotype classes (55% asymptomatic, 28% classic, 17% attenuated), full biomarker + variant + treatment data |
+| `api_backend.py` | 3 new routes: `/api/mcc/overview` · `/api/mcc/breakdown` · `/api/mcc/definitions` — all verified 200 |
+| `portal-next/app/mcc/page.jsx` | 4-tab dashboard (Overview / Patients & Biomarkers / Seizures & Treatments / Definitions) |
+| `SiteNav.jsx` | Wired `/mcc` after IVD (step 2) before AGAT — correct leucine catabolism pathway order |
+| `expert_dashboards.json` | Registry count 393 → 394 |
+
+**Key clinical signal captured:** 3-MCC is the most common OA detected on NBS; majority are asymptomatic; **NOT biotin-responsive** (critical exam distinction from HLCS/BTD); maternal 3-MCC deficiency causes ~30% of NBS false-positives; 3-MCG on urine OA is pathognomonic.
+
+⏳ **Pending:** Ictal/interictal retrain (skipped — heavy compute); all remaining blocked items require operator credentials (Gmail/Slack/Drive/auth/EMR/FHIR).
+
+### [2026-08-25 00:03:22 MDT] ASSISTANT
+**Built + pushed: HMGCL Epilepsy Dashboard** (commit `565d1867`)
+
+**What was built:** HMGCL (3-Hydroxy-3-methylglutaryl-CoA Lyase Deficiency) — the terminal step (step 5) of leucine catabolism and the sole hepatic ketogenesis enzyme. This was the natural next disease in the series after MCC (step 3) — completing the leucine catabolism pathway IVD→MCC→HMGCL.
+
+**Files created/modified:**
+- `scripts/hmgcl_dashboard.py` — 700 lines; 40-patient cohort (seed 261); 3 phenotypic classes; full biomarker, variant, treatment, and systemic feature data
+- `portal-next/app/hmgcl/page.jsx` — 4-tab frontend (Overview / Patients & Biomarkers / Seizures & Treatments / Definitions)
+- `api_backend.py` — 3 new routes: `/api/hmgcl/overview|breakdown|definitions`
+- `portal-next/app/components/SiteNav.jsx` — wired after MCC, before AGAT
+- `config/expert_dashboards.json` — count 394→395
+
+**Endpoints verified 200:** all 3 `/api/hmgcl/*`
+
+**Key clinical insights encoded:**
+- Hypoketotic hypoglycaemia (glucose LOW + ketones ABSENT) — pathognomonic combination
+- 3-HMG >200 mmol/mol Cr — pathognomonic urine OA
+- C6-DC (3-methylglutarylcarnitine) — NBS primary marker (more specific than C5-OH)
+- 3-MCG ABSENT — key negative vs 3-MCC (most important C5-OH NBS differentiator)
+- VPA — **absolute CI** (valproyl-CoA directly inhibits HMGCL Cys266 active site)
+- Ketogenic diet — **absolute CI unique to HMGCL** (cannot generate ketones + worsens HMG-CoA accumulation)
+- Saudi Arabia founder p.Arg41Gln (~25% alleles; prevalence 1:20,000)
+
+⏳ **Pending:** Only the ictal/interictal retrain remains in the buildable queue (skip — too heavy). All other items blocked (credentials/auth/EMR).
+
+### [2026-08-25 00:16:55 MDT] ASSISTANT
+**Autonomous build — iteration result: SKIPPED (queue exhausted)**
+
+Nothing buildable remains:
+
+- **395/395** expert dashboards: all `built`
+- **Neuro AI ecosystem tools**: all built/external/installed
+- **EEG AI stack layers**: all built/external/installed
+- **Only pending item**: Ictal/interictal retrain — excluded per operator instructions (too heavy, dataset-confound retrain)
+- **Blocked items**: Gmail/Slack/Drive (credentials), multi-user auth/RBAC, EMR/FHIR (operator decisions)
+
+No commit, no push. Tracked via `scripts/track.sh`.
+
+### [2026-08-25 00:54:00 MDT] ASSISTANT
+Done. Here's the iteration summary:
+
+---
+
+**Built + pushed: AUH Epilepsy (3-Methylglutaconic Aciduria Type I / MGA-I)**
+
+**What:** The missing Step 4 of leucine catabolism — AUH (3-Methylglutaconyl-CoA Hydratase, 9q22.31, AR) — between MCC (step 3) and HMGCL (step 5). Explicitly referenced in the HMGCL script as the upstream gap.
+
+**Built:**
+- `scripts/auh_dashboard.py` — 40-patient cohort (seed 263), 3 phenotypes, 7 variants, full biomarker/treatment/definitions data
+- `portal-next/app/auh/page.jsx` — full 4-tab dashboard (Overview, Patients & Biomarkers, Seizures & Treatments, Definitions)
+- `api_backend.py` — 3 new routes `/api/auh/overview|breakdown|definitions` ✅ all 200
+- `SiteNav.jsx` — wired after MCC before HMGCL
+- `expert_dashboards.json` — count 395 → 396
+
+**Key clinical insight captured:** AUH block is **upstream** of HMGCL → ketogenesis remains **intact** (3-HMG NORMAL, ketones PRESENT) — the critical distinction from HMGCL deficiency where both leucine catabolism AND ketogenesis fail. VPA is moderate risk only (no direct AUH inhibition), KD is not absolutely contraindicated (contrast HMGCL).
+
+### [2026-08-25 01:03:34 MDT] ASSISTANT
+All 396 expert dashboards are built, both tool registries are at 100%, and `next_pending.py`'s only BUILDABLE queue item is the ictal/interictal retrain — which is explicitly on the skip list (too heavy for autonomous build). The pending section in STATUS.md confirms there are no other buildable items without operator credentials.
+
+### [2026-08-25 01:20:51 MDT] ASSISTANT
+Now commit:
+
+### [2026-08-25 01:31:19 MDT] ASSISTANT
+All registries are fully built (396/396 expert dashboards, 17/17 data manager tasks, all EEG AI stack and neuro AI tools). The only pending buildable item is the ictal/interictal retrain, which is explicitly skipped per instructions (too heavy). All other blocked items need operator credentials.
+
+### [2026-08-25 01:52:46 MDT] ASSISTANT
+All 3 endpoints return 200. Now mark as built in config and refresh STATUS.md:
+
+### [2026-08-25 02:14:31 MDT] ASSISTANT
+Now commit:
+
+### [2026-08-25 02:23:13 MDT] ASSISTANT
+Real data, 25 assessments, 24 patients. Now refresh STATUS.md and commit:
+
+### [2026-08-25 02:49:26 MDT] ASSISTANT
+**Done.** One full iteration completed and pushed:
+
+**Built:** ACAT1 Epilepsy (Beta-Ketothiolase Deficiency / T2 Deficiency)
+
+- `scripts/acat1_dashboard.py` — 40-patient cohort (seed=267), `get_overview()`, `get_breakdown()`, `get_definitions()`
+- `api_backend.py` — 3 new routes: `/api/acat1/overview|breakdown|definitions` — all verified 200
+- `portal-next/app/acat1/page.jsx` — 4-tab frontend (Overview / Patients & Biomarkers / Seizures & Treatments / Definitions)
+- `SiteNav.jsx` — wired before IVD in the isoleucine/organic acidemia series
+- `config/expert_dashboards.json` — count 397 → 398, status `built`
+- `STATUS.md` — refreshed (398/398 dashboards built)
+- Committed + pushed → `2b786328`
+
+**Key clinical content captured:**
+- DUAL BLOCK: isoleucine catabolism step 4 (final) + ketone utilisation
+- 2M3HBA (stable) + Tiglylglycine (PATHOGNOMONIC) + 2-MAA (UNSTABLE — freeze STAT)
+- C3 NORMAL — key negative vs PA (propionyl-CoA is the *product*, not the substrate)
+- HYPERKETOSIS — opposite of HMGCL's hypoketotic hypoglycaemia
+- KD = ABSOLUTE CI (floods acetoacetyl-CoA that cannot be utilised)
+- VPA = HIGH RISK; Isoleucine restriction (not leucine) = Level A
+
+### [2026-08-25 03:06:24 MDT] ASSISTANT
+**Autobuild skip — queue exhausted.**
+
+After scanning all config registries:
+
+- `scripts/next_pending.py` → only 1 buildable item: **ictal/interictal retrain** → skipped (too heavy per operator instructions)
+- `config/expert_dashboards.json` → **398/398 built**, nothing pending
+- `config/assessments.json` instruments → **all built**
+- `config/assessment_catalog.json` → **all built**
+- `config/dashboard_catalog.json` (5 phases, ~61 dashboards) → **all built**
+- `config/data_manager.json` → **17/17 tasks built**
+- `config/feature_gaps.json` → **all gaps addressed**
+- `config/neurolab_readiness.json` missing items → **EMR/FHIR + live amplifier streaming** → blocked (external credentials/hardware)
+- `config/integrations.json` pending → **all need credentials** (Gmail/Slack/Drive/OneDrive)
+- `config/flowcharts.json` → **all 6 built**
+- `config/onboarding_intake.json` → **built**
+
+No commit. No push. Tracked via `scripts/track.sh`.
+
+### [2026-08-25 03:20:27 MDT] ASSISTANT
+The buildable queue is exhausted after skipping the ictal/interictal retrain. All registry items are built (398 expert dashboards, 64 neuro AI tools, 58 EEG stack tools, 10 assessment instruments). Let me track this and exit cleanly.
+
+### [2026-08-25 03:43:40 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and commit:
+
+### [2026-08-25 04:00:23 MDT] ASSISTANT
+Now push and track:
+
+### [2026-08-25 04:30:35 MDT] ASSISTANT
+Now commit:
+
+### [2026-08-25 05:00:10 MDT] ASSISTANT
+STATUS.md updated: 402 expert dashboards built. Now commit:
+
+### [2026-08-25 05:31:34 MDT] ASSISTANT
+All 3 endpoints verified 200. Now update `next_pending.py` to mark GA2 as built, refresh STATUS.md, commit, and push:
+
+### [2026-08-25 05:57:06 MDT] ASSISTANT
+**Done.** Built and pushed: **CPT1A (Carnitine Palmitoyltransferase IA Deficiency) Dashboard** — the next FAO disorder in the series.
+
+**What was built:**
+- `scripts/cpt1a_dashboard.py` — 40-patient cohort (seed 279), 3 severity groups (Severe/Moderate/Mild-Arctic), 10 variants including p.Pro479Leu Arctic founder
+- `portal-next/app/cpt1a/page.jsx` — 4-tab frontend (Overview / Patients & Biomarkers / Treatments & Genetics / Definitions)
+- `api_backend.py` — 3 routes `/api/cpt1a/overview|breakdown|definitions` (all verified 200)
+- `portal-next/app/components/SiteNav.jsx` — wired before MCAD
+- `config/expert_dashboards.json` — count 403 → 404
+
+**Key clinical facts encoded:**
+- C0 (free carnitine) ELEVATED ≥60 μmol/L — **inverted profile** (opposite of most FAO disorders)
+- C0/(C16+C18) ratio >40 — HIGHLY SPECIFIC discriminator
+- **HYPERAMMONEMIA** — UNIQUE among all FAO disorders
+- **NO cardiomyopathy** — CPT1B serves heart (EXAM TRAP)
+- MCT oil THERAPEUTIC (medium-chain FA bypass CPT1A)
+- FASTING + KD = ABSOLUTE CI
+- **p.Pro479Leu Arctic founder** — up to 85% allele frequency in Inuit populations
+- Comparison tables: CPT1A vs CACT vs CPT2, CPT1A vs MCAD vs VLCAD vs LCHAD
+
+### [2026-08-25 06:13:31 MDT] ASSISTANT
+Done. Built and pushed `bcda5864`.
+
+**CACT (SLC25A20 / Carnitine-Acylcarnitine Translocase Deficiency) — Carnitine Shuttle Step 2**
+
+- **Backend:** `scripts/cact_dashboard.py` — 40-patient cohort (seed 281), 3 API functions
+- **Endpoints:** `/api/cact/overview`, `/api/cact/breakdown`, `/api/cact/definitions` — all verified 200
+- **Frontend:** `portal-next/app/cact/page.jsx` — 4-tab dashboard (Overview / Patients & Biomarkers / Treatments & Genetics / Definitions)
+- **Nav:** Wired into SiteNav after CPT1A (Step 1 → Step 2 ordering)
+- **Registry:** `expert_dashboards.json` count 404 → 405
+
+Key clinical content encoded:
+- C16 HIGH + C0 LOW (opposite of CPT1A's inverted profile)
+- Cardiomyopathy HALLMARK — exam trap: absent in CPT1A, present in CACT
+- C16-OH NORMAL = key negative vs LCHAD
+- L-Carnitine ESSENTIAL (C0 low) vs CPT1A where NOT routine (C0 high)
+- VPA ABSOLUTE CI (not just high-risk as in CPT1A) due to cardiomyopathy risk
+- Differential tables: CACT vs CPT1A vs CPT2 vs LCHAD
+
+### [2026-08-25 06:30:18 MDT] ASSISTANT
+**built+pushed: CPT2 Epilepsy Dashboard** — carnitine shuttle step 3, completing the trilogy after CPT1A (step 1) and CACT (step 2).
+
+**What was built:**
+- `scripts/cpt2_dashboard.py` — 40-patient cohort (seed=283), 3 phenotypes: Myopathic (32 pts, >90%), Severe Infantile (5 pts), Lethal Neonatal (3 pts)
+- `api_backend.py` — 3 routes: `/api/cpt2/overview|breakdown|definitions`, all verified 200
+- `portal-next/app/cpt2/page.jsx` — full 4-tab dashboard (Overview, Patients & Biomarkers, Treatments & Genetics, Definitions) with deep teal color scheme
+- `config/expert_dashboards.json` — registered, count 405→406
+
+**Key clinical content encoded:**
+- **p.Ser113Leu temperature-sensitive** hypomorphic allele — most common myopathic allele; ~3–5% general population heterozygote; normal activity at 37°C, near-abolished at 41°C (fever/exercise)
+- **NO cardiomyopathy in myopathic** form — KEY EXAM TRAP vs CACT/LCHAD/VLCAD
+- **NBS false-negative risk** in myopathic (C16 normalises between episodes, crisis-dependent)
+- **Renal cysts + brain malformations** = lethal neonatal CPT2 — KEY DISCRIMINATOR vs CACT (no structural anomalies)
+- **L-carnitine NOT routine in myopathic** (Level C only; may worsen by increasing acylcarnitine load) — contrast CACT where ESSENTIAL
+- **Statins HIGH RISK** all phenotypes — unique discriminator
+
+⏳ **Pending:** Ictal/interictal retrain (skipped — heavy compute); queue empty of buildable non-skipped items.
+
+### [2026-08-25 07:00:38 MDT] ASSISTANT
+Done. Here's what was built and pushed:
+
+**SCHAD Epilepsy Dashboard** (HADH / Short-Chain 3-Hydroxyacyl-CoA Dehydrogenase Deficiency)
+
+- `scripts/schad_dashboard.py` — 40-patient cohort (seed=285), 3 phenotypes, 6 variants, full biomarker generation
+- `portal-next/app/schad/page.jsx` — 4-tab React dashboard (amber/orange scheme; Overview, Patients & Biomarkers, Treatments & Genetics, Definitions)
+- `api_backend.py` — 3 new routes: `/api/schad/overview|breakdown|definitions` (all 200 ✅)
+- `SiteNav.jsx` — SCHAD wired after CPT2; **CPT2 nav gap also fixed** (CPT2 was in registry/API but missing from nav)
+- `expert_dashboards.json` — count 406 → 407
+- Committed & pushed to `main`
+
+Key medical content: SCHAD is unique in the FAO series — it's primarily a **hyperinsulinism** disorder (not a typical FAO energy crisis). HADH physically inhibits GDH; HADH LOF → uninhibited GDH → excess insulin. Key discriminator: **ammonia NORMAL** (vs GLUD1/HHS where 100–500 µmol/L). Diazoxide Level A, 70–80% response rate.
+
+### [2026-08-25 07:29:50 MDT] ASSISTANT
+Now push and track:
+
+### [2026-08-25 07:45:18 MDT] ASSISTANT
+**Done.** Built, verified, committed, and pushed.
+
+**PWS (Prader-Willi Syndrome) Dashboard** — `ee70a5bf`
+
+- **Why PWS next:** Same 15q11.2-q13 locus as UBE3A/Angelman (last build, seed-287) but opposite parent — the UBE3A commit message itself cited "PWS vs AS Same Locus Opposite Parent" as a key differential. PWS was absent from the registry (`expert_dashboards.json` had 408/built; PWS was the clear logical next).
+- **What built:**
+  - `scripts/pws_dashboard.py` — 717 lines; 40-patient cohort (seed-289); 5 genetic mechanisms (deletion Type 1/2, mUPD15, IC defect, translocation); 12 clinical variables per patient including BMI, IQ, GH therapy, psychosis risk, behavioral features
+  - `api_backend.py` — 3 new routes `/api/pws/overview|breakdown|definitions`
+  - `portal-next/app/pws/page.jsx` — 482-line React dashboard with 4 tabs (Overview, Patients & Metabolic, Treatments & Genetics, Definitions); orange/amber colour scheme for hyperphagia/metabolic theme
+  - `SiteNav.jsx` — PWS wired after SCHAD/before UBE3A
+  - `config/expert_dashboards.json` — count 408 → 409
+- **Key clinical content:** SNORD116 as principal driver; mUPD15 psychosis risk 20-30%; GH therapy Level A (FDA 2000) start in infancy; food security as non-negotiable; carbetocin Phase III 2026; VPA HIGH RISK (obesity+hepatosteatosis); epilepsy only ~10-15% vs Angelman 85% — the defining contrast
+- **Endpoints:** All 3 HTTP 200 ✓ | Pushed to `origin/main` ✓
