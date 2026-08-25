@@ -6131,5 +6131,17 @@
     "cohort_n": 40,
     "seed": 269,
     "registered": "2026-08-25"
+  },
+  {
+    "id": "vlcad",
+    "name": "VLCAD Epilepsy (VLCAD-Deficiency-Very-Long-Chain-Acyl-CoA-Dehydrogenase-Deficiency / ACADVL-655aa-Mitochondrial-Inner-Membrane-FAD-Dependent-Homodimeric-17p13.1-Autosomal-Recessive / ACADVL-CATALYSES-C14-C20-Long-Chain-Acyl-CoA-Plus-FAD-To-trans-2-Enoyl-Acyl-CoA-Plus-FADH2-Beta-Oxidation-Step-1 / C14-1-Tetradecenoylcarnitine-PRIMARY-NBS-MARKER-Greater-0.3-umol-L / C14-1-C2-Ratio-ELEVATED-Greater-0.07-HIGHLY-SPECIFIC / C14-C14-2-C16-C18-1-ALSO-ELEVATED / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / CARDIOMYOPATHY-HALLMARK-HCM-DCM-ABSENT-In-MCAD / RHABDOMYOLYSIS-Exercise-Induced-CK-10000-100000-U-L / HYPOKETOTIC-HYPOGLYCAEMIA-HALLMARK / MCT-OIL-THERAPEUTIC-Bypasses-VLCAD-Via-Intact-MCAD / FASTING-ABSOLUTE-CI / KD-ABSOLUTE-CI-Long-Chain-Fat-Blocked-Substrate / Long-Chain-Fat-Restriction-Level-A / Triheptanoin-C7-Level-B-Anaplerotic / VPA-HIGH-RISK / L-Carnitine-CONTROVERSIAL / Cardiomyopathy-REVERSIBLE-With-MCT / Severe-Infantile-20pct / Childhood-Episodic-45pct / Mild-Adult-Myopathic-35pct / p.Val283Ala-25pct-Mild / p.Arg450His-15pct-Severe / ~1-40000-80000 / AR-Biallelic-LOF / 17p13.1 / OMIM-Gene-609575-Disease-201475)",
+    "status": "built",
+    "route": "/vlcad",
+    "api": "/api/vlcad/overview|breakdown|definitions",
+    "component": "portal-next/app/vlcad/page.jsx",
+    "script": "scripts/vlcad_dashboard.py",
+    "seed": 271,
+    "n_patients": 40,
+    "built": "2026-08-25"
   }
 ]

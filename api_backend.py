@@ -33719,6 +33719,36 @@ async def mcad_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# VLCAD (Very Long Chain Acyl-CoA Dehydrogenase Deficiency / ACADVL) Dashboard
+# C14:1 primary NBS marker; cardiomyopathy + rhabdomyolysis hallmark; MCT therapeutic; KD absolute CI
+
+@app.get("/api/vlcad/overview")
+async def vlcad_overview():
+    try:
+        import scripts.vlcad_dashboard as vlcad_
+        return _json_safe(vlcad_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/vlcad/breakdown")
+async def vlcad_breakdown():
+    try:
+        import scripts.vlcad_dashboard as vlcad_
+        return _json_safe(vlcad_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/vlcad/definitions")
+async def vlcad_definitions():
+    try:
+        import scripts.vlcad_dashboard as vlcad_
+        return _json_safe(vlcad_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
