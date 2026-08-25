@@ -34129,6 +34129,31 @@ async def pndm_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mody3/overview")
+async def mody3_overview():
+    try:
+        import scripts.mody3_dashboard as mody3_
+        return _json_safe(mody3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mody3/breakdown")
+async def mody3_breakdown():
+    try:
+        import scripts.mody3_dashboard as mody3_
+        return _json_safe(mody3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mody3/definitions")
+async def mody3_definitions():
+    try:
+        import scripts.mody3_dashboard as mody3_
+        return _json_safe(mody3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

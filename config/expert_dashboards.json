@@ -6388,5 +6388,28 @@
     "seed": 301,
     "cohort_size": 40,
     "registered": "2026-08-25"
+  },
+  {
+    "id": "mody3",
+    "name": "MODY3 (MODY3-HNF1A-MODY-Maturity-Onset-Diabetes-Young-Type-3 / HNF1A-Hepatocyte-Nuclear-Factor-1-Alpha-631aa-Transcription-Factor-142410 / Chr-12q24.31 / Most-Common-MODY-35pct / Haploinsufficiency-Single-Copy-Insufficient-GSIS / Renal-Glycosuria-50pct-SGLT2-LOF / P291fsinsC-Founder-Mutation / AD-50pct-Transmission / Onset-Teens-30s / SULFONYLUREA-FIRST-LINE-85-90pct-Excellent / Sulfo-100-1000x-More-Sensitive-Than-T2D / Misdiagnosis-55pct-T1D-T2D / ANTIBODY-NEGATIVE / ~1-10000-20000 / OMIM-Gene-HNF1A-142410-Disease-600496)",
+    "disease": "MODY3 (MODY3-HNF1A-MODY-Maturity-Onset-Diabetes-Young-Type-3 / HNF1A-Hepatocyte-Nuclear-Factor-1-Alpha-631aa-Transcription-Factor-142410 / Chr-12q24.31 / Most-Common-MODY-35pct / Haploinsufficiency-Single-Copy-Insufficient-GSIS / Renal-Glycosuria-50pct-SGLT2-LOF / P291fsinsC-Founder-Mutation / AD-50pct-Transmission / Onset-Teens-30s / SULFONYLUREA-FIRST-LINE-85-90pct-Excellent / Sulfo-100-1000x-More-Sensitive-Than-T2D / Misdiagnosis-55pct-T1D-T2D / ANTIBODY-NEGATIVE / ~1-10000-20000 / OMIM-Gene-HNF1A-142410-Disease-600496)",
+    "status": "built",
+    "route": "/mody3",
+    "api_routes": [
+      "/api/mody3/overview",
+      "/api/mody3/breakdown",
+      "/api/mody3/definitions"
+    ],
+    "script": "scripts/mody3_dashboard.py",
+    "seed": 303,
+    "cohort_size": 40,
+    "built_date": "2026-08-25",
+    "category": "monogenic-diabetes-mody",
+    "locus": "12q24.31",
+    "genes": [
+      "HNF1A"
+    ],
+    "omim_disease": "#600496",
+    "inheritance": "Autosomal Dominant \u2014 50% recurrence"
   }
 ]
