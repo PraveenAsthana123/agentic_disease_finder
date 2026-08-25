@@ -33321,6 +33321,30 @@ async def nags_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ass1/overview")
+async def ass1_overview():
+    try:
+        import scripts.ass1_dashboard as ass1_
+        return _json_safe(ass1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ass1/breakdown")
+async def ass1_breakdown():
+    try:
+        import scripts.ass1_dashboard as ass1_
+        return _json_safe(ass1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ass1/definitions")
+async def ass1_definitions():
+    try:
+        import scripts.ass1_dashboard as ass1_
+        return _json_safe(ass1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

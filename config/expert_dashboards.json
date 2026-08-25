@@ -5975,5 +5975,10 @@
     "id": "nags",
     "name": "NAGS Epilepsy (N-Acetylglutamate-Synthase-Deficiency-NAGSD / NAGS-534aa-GNAT-Superfamily-Mitochondrial-Matrix-17q21.31-Autosomal-Recessive / NAGS-CATALYSES-L-Glutamate-Plus-Acetyl-CoA-To-NAG-UPSTREAM-COFACTOR-GENERATOR-For-CPS1 / NAGS-LOF-NAG-CANNOT-Be-Made-CPS1-COMPLETELY-INACTIVE-Despite-Intact-CPS1 / Biochemically-IDENTICAL-To-CPS1-Ammonia-HIGH-Citrulline-LOW-Orotic-NORMAL / HALLMARK-NCG-COMPLETE-Response-65pct-ONLY-UCD-Single-Oral-Drug-Full-Control / Plasma-Glutamate-ELEVATED-NAGS-Substrate-Accumulates-NAGS-Specific / VPA-MOST-DIRECT-CI-Any-UCD-Competitive-Inhibitor-NAGS-Active-Site / NCG-Responsive-65pct-MODAL / Neonatal-Onset-20pct / Late-Onset-Episodic-15pct / ~1-2000000-Rarest-UCD / AR-Biallelic-LOF / 17q21.31 / OMIM-Gene-608300-Disease-237310 / 40-patient-cohort-seed-205 / 3-endpoints-verified-200 / Registered-2026-08-24",
     "status": "built"
+  },
+  {
+    "id": "ass1",
+    "name": "ASS1 Epilepsy (Argininosuccinate-Synthetase-1-Deficiency-Citrullinemia-Type-1-CTLN1 / ASS1-412aa-Cytoplasmic-Homotetrameric-Enzyme-9q34.11-AR / ASS1-CATALYSES-Citrulline-Plus-Aspartate-Plus-ATP-To-Argininosuccinate-UREA-CYCLE-STEP-3-OF-5 / ASS1-LOF-Citrulline-CANNOT-Enter-Argininosuccinate-ACCUMULATES-MASSIVELY / Plasma-Citrulline-VERY-HIGH-Greater-500-umol-L-Classic-Greater-2000-Neonatal-PATHOGNOMONIC-HALLMARK / Arginine-CONDITIONALLY-ESSENTIAL-NOT-Produced-Downstream / Urine-Orotic-NORMAL-MILD-OTC-Intact-Less-Overflow / Argininosuccinate-ABSENT-Block-AT-ASS1-Step-KEY-vs-ASL / Arginine-High-Dose-Level-A-PRIMARY / Liver-Transplant-Level-A-CURATIVE / VPA-ABSOLUTE-CI-Doubly-Blocks / seed-211 / 3-endpoints-verified-200 / Built-2026-08-24",
+    "status": "built"
   }
 ]
