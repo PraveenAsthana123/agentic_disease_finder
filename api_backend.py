@@ -33373,6 +33373,33 @@ async def asl_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/arg1/overview")
+async def arg1_overview():
+    try:
+        import scripts.arg1_dashboard as arg1_
+        return _json_safe(arg1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arg1/breakdown")
+async def arg1_breakdown():
+    try:
+        import scripts.arg1_dashboard as arg1_
+        return _json_safe(arg1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arg1/definitions")
+async def arg1_definitions():
+    try:
+        import scripts.arg1_dashboard as arg1_
+        return _json_safe(arg1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
