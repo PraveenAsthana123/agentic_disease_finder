@@ -33663,6 +33663,31 @@ async def pc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/acat1/overview")
+async def acat1_overview():
+    try:
+        import scripts.acat1_dashboard as acat1_
+        return _json_safe(acat1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/acat1/breakdown")
+async def acat1_breakdown():
+    try:
+        import scripts.acat1_dashboard as acat1_
+        return _json_safe(acat1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/acat1/definitions")
+async def acat1_definitions():
+    try:
+        import scripts.acat1_dashboard as acat1_
+        return _json_safe(acat1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

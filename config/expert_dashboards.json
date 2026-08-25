@@ -6107,5 +6107,20 @@
     ],
     "page": "/pc",
     "built_at": "2026-08-25T08:13:19Z"
+  },
+  {
+    "id": "acat1",
+    "name": "ACAT1 Epilepsy (Beta-Ketothiolase-Deficiency-T2-Deficiency / ACAT1-Mitochondrial-Acetoacetyl-CoA-Thiolase-427aa-Homotetrameric-Cys89-11q22.3-Autosomal-Recessive / DUAL-BLOCK-Isoleucine-Catabolism-Step-4-FINAL-Plus-Ketone-Utilisation-Ketolysis / 2M3HBA-ELEVATED-PRIMARY-STABLE / Tiglylglycine-PATHOGNOMONIC / C3-NORMAL-KEY-NEGATIVE-vs-PA / HYPERKETOSIS-KEY-NEGATIVE-vs-HMGCL-Hypoketosis / KD-ABSOLUTE-CI / VPA-HIGH-RISK / Isoleucine-Restriction-Level-A / EPISODIC-Biomarkers-Normal-Between-Crises / ~1-100000-250000 / AR / 11q22.3 / OMIM-Gene-607809-Disease-203750)",
+    "status": "built",
+    "role": "Metabolic Neurology / Organic Acidemia",
+    "route": "/acat1",
+    "api_route": "/api/acat1/overview|breakdown|definitions",
+    "built_date": "2026-08-25",
+    "built_note": "ACAT1 dashboard built 2026-08-25: /api/acat1/overview|breakdown|definitions + portal-next/app/acat1/page.jsx + SiteNav wired after IVD before existing IVD entry. 40-patient beta-ketothiolase deficiency cohort seed-267, 3 endpoints verified 200. expert_dashboards.json count 397->398.",
+    "endpoints": [
+      "/api/acat1/overview",
+      "/api/acat1/breakdown",
+      "/api/acat1/definitions"
+    ]
   }
 ]
