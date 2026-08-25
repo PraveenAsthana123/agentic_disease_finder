@@ -25,93 +25,67 @@ def overview():
     if not cfg:
         return {"available": False, "note": "expert_dashboards.json missing"}
 
-    dashboards = cfg.get('dashboards', [])
-    summary = cfg.get('summary', {})
-    total = summary.get('total', len(dashboards))
-    built = summary.get('built', 0)
-    partial = summary.get('partial', 0)
-    planned = summary.get('planned', 0)
-    must_have = cfg.get('must_have_p0', [])
-    libraries = cfg.get('libraries', {})
+    # expert_dashboards.json is a flat list of disease dashboard objects
+    dashboards = cfg if isinstance(cfg, list) else cfg.get('dashboards', [])
+    total = len(dashboards)
+    built = sum(1 for d in dashboards if d.get('status') == 'built')
+    partial = sum(1 for d in dashboards if d.get('status') == 'partial')
+    planned = sum(1 for d in dashboards if d.get('status') == 'planned')
+    libraries = {}
 
-    # Role distribution
-    role_counter = Counter()
-    priority_counter = Counter()
+    # Status distribution
     status_counter = Counter()
+    registration_counter = Counter()
     for d in dashboards:
-        role = d.get('role', d.get('label', 'Unknown'))
-        role_counter[role] += 1
-        priority_counter[d.get('priority', 'N/A')] += 1
         status_counter[d.get('status', 'unknown')] += 1
+        reg = d.get('registered', '')[:7]  # YYYY-MM
+        if reg:
+            registration_counter[reg] += 1
 
-    role_distribution = [
-        {"name": r, "value": c}
-        for r, c in role_counter.most_common()
-    ]
-    priority_distribution = [
-        {"name": p, "value": c}
-        for p, c in sorted(priority_counter.items())
-    ]
     status_distribution = [
         {"name": s, "value": c}
         for s, c in status_counter.most_common()
     ]
-
-    unique_roles = len(role_counter)
-
-    # Dashboards per role bar chart
-    dashboards_per_role = [
-        {"name": r, "value": c}
-        for r, c in role_counter.most_common()
+    registration_trend = [
+        {"month": m, "count": c}
+        for m, c in sorted(registration_counter.items())
     ]
 
-    # Endpoint coverage
-    total_endpoints = 0
-    dashboards_with_endpoints = 0
-    for d in dashboards:
-        eps = d.get('endpoints', [])
-        if eps:
-            dashboards_with_endpoints += 1
-            total_endpoints += len(eps)
+    # Endpoint coverage: each item has api field like "/api/id/overview|breakdown|definitions"
+    dashboards_with_api = sum(1 for d in dashboards if d.get('api'))
+    total_endpoints = dashboards_with_api * 3  # overview + breakdown + definitions
 
-    # Summary table
+    # Summary table (last 50 most recent)
+    recent = sorted(dashboards, key=lambda d: d.get('registered', ''), reverse=True)
     dashboards_table = []
-    for d in dashboards:
+    for d in recent[:50]:
         dashboards_table.append({
-            "name": d.get('name', d.get('title', d.get('label', ''))),
-            "role": d.get('role', ''),
-            "viz": d.get('viz', ''),
-            "priority": d.get('priority', 'N/A'),
+            "id": d.get('id', ''),
+            "name": d.get('name', '')[:100],
             "status": d.get('status', ''),
-            "endpoints": len(d.get('endpoints', [])),
+            "api": d.get('api', ''),
+            "cohort_n": d.get('cohort_n', ''),
+            "registered": d.get('registered', ''),
         })
 
-    # Libraries list
-    lib_list = [
-        {"purpose": k, "library": v}
-        for k, v in libraries.items()
-    ]
+    lib_list = []
 
     return {
         "available": True,
-        "title": cfg.get('title', 'Expert Dashboards Catalog'),
-        "note": cfg.get('note', ''),
-        "updated_at": cfg.get('updated_at', ''),
+        "title": "Expert Dashboards Catalog",
+        "note": "Disease-specific epilepsy dashboards with verified API endpoints",
+        "updated_at": dashboards[-1].get('registered', '') if dashboards else '',
         "kpis": {
             "total_dashboards": total,
             "built": built,
             "partial": partial,
             "planned": planned,
-            "unique_roles": unique_roles,
+            "dashboards_with_api": dashboards_with_api,
             "total_endpoints": total_endpoints,
-            "dashboards_with_endpoints": dashboards_with_endpoints,
-            "libraries_count": len(libraries),
         },
         "charts": {
             "status_distribution": status_distribution,
-            "role_distribution": role_distribution,
-            "priority_distribution": priority_distribution,
-            "dashboards_per_role": dashboards_per_role,
+            "registration_trend": registration_trend,
         },
         "dashboards_table": dashboards_table,
         "libraries": lib_list,
@@ -119,53 +93,44 @@ def overview():
 
 
 def breakdown():
-    """Per-role dashboard grouping with details."""
+    """Per-disease dashboard grouping with details."""
     cfg = _load('expert_dashboards.json')
     if not cfg:
         return {"available": False, "note": "expert_dashboards.json missing"}
 
-    dashboards = cfg.get('dashboards', [])
+    dashboards = cfg if isinstance(cfg, list) else cfg.get('dashboards', [])
 
-    # Group by role
-    by_role = {}
+    # Group by status
+    by_status = {}
     for d in dashboards:
-        role = d.get('role', d.get('label', 'Unknown'))
-        by_role.setdefault(role, []).append({
-            "name": d.get('name', d.get('title', d.get('label', ''))),
-            "viz": d.get('viz', ''),
-            "feature": d.get('feature', ''),
-            "why": d.get('why', ''),
-            "priority": d.get('priority', 'N/A'),
-            "status": d.get('status', ''),
-            "endpoints": d.get('endpoints', []),
-            "component": d.get('component', ''),
-            "tabs": d.get('tabs', []),
+        status = d.get('status', 'unknown')
+        by_status.setdefault(status, []).append({
+            "id": d.get('id', ''),
+            "name": d.get('name', '')[:120],
+            "status": status,
+            "api": d.get('api', ''),
+            "cohort_n": d.get('cohort_n', ''),
+            "seed": d.get('seed', ''),
+            "registered": d.get('registered', ''),
         })
 
-    per_role = [
-        {"role": role, "count": len(items), "dashboards": items}
-        for role, items in sorted(by_role.items(), key=lambda x: -len(x[1]))
+    per_status = [
+        {"status": status, "count": len(items), "dashboards": items}
+        for status, items in sorted(by_status.items(), key=lambda x: -len(x[1]))
     ]
 
-    # Must-have P0 items
-    must_have = cfg.get('must_have_p0', [])
-    must_have_list = []
-    for m in must_have:
-        if isinstance(m, str):
-            must_have_list.append({"name": m, "type": "visualization"})
-        elif isinstance(m, dict):
-            must_have_list.append({
-                "name": m.get('name', ''),
-                "status": m.get('status', ''),
-                "note": m.get('note', ''),
-                "type": "dashboard",
-            })
+    # Recent registrations (last 20)
+    recent = sorted(dashboards, key=lambda d: d.get('registered', ''), reverse=True)[:20]
+    recent_list = [
+        {"id": d.get('id', ''), "name": d.get('name', '')[:100], "registered": d.get('registered', '')}
+        for d in recent
+    ]
 
     return {
         "available": True,
-        "per_role": per_role,
-        "must_have_p0": must_have_list,
-        "libraries": cfg.get('libraries', {}),
+        "per_status": per_status,
+        "recent_registrations": recent_list,
+        "total": len(dashboards),
     }
 
 
