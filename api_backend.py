@@ -33905,6 +33905,31 @@ async def cpt2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/schad/overview")
+async def schad_overview():
+    try:
+        import scripts.schad_dashboard as schad_
+        return _json_safe(schad_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/schad/breakdown")
+async def schad_breakdown():
+    try:
+        import scripts.schad_dashboard as schad_
+        return _json_safe(schad_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/schad/definitions")
+async def schad_definitions():
+    try:
+        import scripts.schad_dashboard as schad_
+        return _json_safe(schad_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
