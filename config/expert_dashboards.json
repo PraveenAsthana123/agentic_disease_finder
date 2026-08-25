@@ -6598,5 +6598,29 @@
     "seed": 329,
     "built_date": "2026-08-25",
     "description": "DIDMOAD \u2014 ER-stress multi-organ apoptosis; C-peptide falls; AR biallelic LOF; ~1/770,000"
+  },
+  {
+    "id": "alstrom",
+    "name": "Alstr\u00f6m Syndrome (ALMS1)",
+    "route": "/alstrom",
+    "api_prefix": "/api/alstrom",
+    "gene": "ALMS1",
+    "chromosome": "2p13.1",
+    "omim_gene": "*606844",
+    "omim_disease": "#203800",
+    "inheritance": "Autosomal Recessive",
+    "category": "ciliopathy-monogenic-diabetes",
+    "mechanism": "ALMS1 ciliary dysfunction \u2014 cone-rod dystrophy, DCM, SNHL, obesity, insulin resistance, CKD, NASH",
+    "c_peptide_pattern": "PRESERVED / HIGH (hyperinsulinism; insulin resistance)",
+    "cohort_size": 40,
+    "seed": 331,
+    "status": "built",
+    "endpoints_verified": [
+      "/api/alstrom/overview",
+      "/api/alstrom/breakdown",
+      "/api/alstrom/definitions"
+    ],
+    "built_date": "2026-08-25",
+    "notes": "Built scripts/alstrom_dashboard.py, api_backend.py 3 routes /api/alstrom/overview|breakdown|definitions verified 200, portal-next/app/alstrom/page.jsx + SiteNav wired after Wolfram Syndrome 1, expert_dashboards.json count 429->430. Built 2026-08-25."
   }
 ]

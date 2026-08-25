@@ -34492,6 +34492,33 @@ async def wolfram_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/alstrom/overview")
+async def alstrom_overview():
+    try:
+        import scripts.alstrom_dashboard as alstrom_
+        return _json_safe(alstrom_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/alstrom/breakdown")
+async def alstrom_breakdown():
+    try:
+        import scripts.alstrom_dashboard as alstrom_
+        return _json_safe(alstrom_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/alstrom/definitions")
+async def alstrom_definitions():
+    try:
+        import scripts.alstrom_dashboard as alstrom_
+        return _json_safe(alstrom_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
