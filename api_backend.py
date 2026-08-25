@@ -33803,6 +33803,31 @@ async def scad_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ga2/overview")
+async def ga2_overview():
+    try:
+        import scripts.ga2_dashboard as ga2_
+        return _json_safe(ga2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ga2/breakdown")
+async def ga2_breakdown():
+    try:
+        import scripts.ga2_dashboard as ga2_
+        return _json_safe(ga2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ga2/definitions")
+async def ga2_definitions():
+    try:
+        import scripts.ga2_dashboard as ga2_
+        return _json_safe(ga2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

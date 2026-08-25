@@ -6170,5 +6170,24 @@
     "seed": 275,
     "n_patients": 40,
     "registered": "2026-08-25"
+  },
+  {
+    "id": "ga2",
+    "gene": "ETFA/ETFB/ETFDH",
+    "name": "GA2 Epilepsy (GA2-MADD-Glutaric-Acidemia-Type-II-Multiple-Acyl-CoA-Dehydrogenase-Deficiency / ETFA-333aa-ETF-Alpha-FAD-Binding-15q23-q25-AR / ETFB-255aa-ETF-Beta-AMP-Binding-19q13.41-AR / ETFDH-617aa-ETF-Ubiquinone-Oxidoreductase-FAD-Plus-FeS-Plus-CoQ10-4q32.1-AR / ETF-ETFA-Plus-ETFB-Heterodimer-Accepts-FADH2-From-ALL-Acyl-CoA-Dehydrogenases / PAN-ACYLCARNITINEMIA-C4-C5-C8-C10-C12-C14-1-C16-C5-DC-ALL-ELEVATED / RR-MADD-TYPE-III-ETFDH-Riboflavin-100-300mg-DRAMATIC-Response / p.Arg191Trp-ETFDH-East-Asian-Founder / VPA-ABSOLUTE-CI / KD-ABSOLUTE-CI / 40-patient-cohort-seed-277 / 3-endpoints-verified-200 / Registered-2026-08-25)",
+    "status": "built",
+    "route": "/ga2",
+    "api_prefix": "/api/ga2",
+    "endpoints": [
+      "/api/ga2/overview",
+      "/api/ga2/breakdown",
+      "/api/ga2/definitions"
+    ],
+    "seed": 277,
+    "n_patients": 40,
+    "registered": "2026-08-25",
+    "locus": "ETFA: 15q23-q25 / ETFB: 19q13.41 / ETFDH: 4q32.1",
+    "omim_disease": "231680",
+    "inheritance": "AR"
   }
 ]
