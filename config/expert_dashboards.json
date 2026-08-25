@@ -6443,5 +6443,19 @@
     "cohort_size": 40,
     "seed": 307,
     "registered": "2026-08-25"
+  },
+  {
+    "name": "MODY5 (MODY5-HNF1B-MODY-Maturity-Onset-Diabetes-Young-Type-5 / HNF1B-Hepatocyte-Nuclear-Factor-1-Beta-557aa-Homeodomain-Transcription-Factor-189907 / Chr-17q12 / RCAD-Renal-Cysts-And-Diabetes-Syndrome / 5pct-All-MODY / Multi-Organ-Kidney-Pancreas-Liver-Mullerian / Renal-Cysts-Precede-Diabetes / Pancreatic-Atrophy-CT-MRI / NO-Sulfonylure-Response-Structural-Atrophy / Insulin-Required / Hypomagnesaemia-FXYD2-LOF / De-novo-50pct-17q12-Microdeletion / MLPA-aCGH-Mandatory / Mullerian-Anomalies-25pct-Females / NO-Renal-Glycosuria / Family-Hx-50pct-vs-90pct-MODY3 / ~1-10000-50000 / Autosomal-Dominant / 17q12 / OMIM-Gene-HNF1B-189907-Disease-137920)",
+    "status": "built",
+    "route": "/mody5",
+    "api_endpoints": [
+      "/api/mody5/overview",
+      "/api/mody5/breakdown",
+      "/api/mody5/definitions"
+    ],
+    "cohort_size": 40,
+    "seed": 309,
+    "built_date": "2026-08-25",
+    "category": "monogenic_diabetes_mody"
   }
 ]

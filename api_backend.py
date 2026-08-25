@@ -34203,6 +34203,30 @@ async def mody2_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/mody5/overview")
+async def mody5_overview():
+    try:
+        import scripts.mody5_dashboard as mody5_
+        return _json_safe(mody5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mody5/breakdown")
+async def mody5_breakdown():
+    try:
+        import scripts.mody5_dashboard as mody5_
+        return _json_safe(mody5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mody5/definitions")
+async def mody5_definitions():
+    try:
+        import scripts.mody5_dashboard as mody5_
+        return _json_safe(mody5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
