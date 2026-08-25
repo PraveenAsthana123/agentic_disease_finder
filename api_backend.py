@@ -33688,6 +33688,37 @@ async def acat1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ---------------------------------------------------------------------------
+# MCAD (Medium-Chain Acyl-CoA Dehydrogenase Deficiency / ACADM) Dashboard
+# ---------------------------------------------------------------------------
+
+@app.get("/api/mcad/overview")
+async def mcad_overview():
+    try:
+        import scripts.mcad_dashboard as mcad_
+        return _json_safe(mcad_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mcad/breakdown")
+async def mcad_breakdown():
+    try:
+        import scripts.mcad_dashboard as mcad_
+        return _json_safe(mcad_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mcad/definitions")
+async def mcad_definitions():
+    try:
+        import scripts.mcad_dashboard as mcad_
+        return _json_safe(mcad_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -6122,5 +6122,14 @@
       "/api/acat1/breakdown",
       "/api/acat1/definitions"
     ]
+  },
+  {
+    "id": "mcad",
+    "name": "MCAD Epilepsy (MCAD-Deficiency-Medium-Chain-Acyl-CoA-Dehydrogenase-Deficiency / ACADM-421aa-Mitochondrial-Matrix-FAD-Dependent-Homotetrameric-1p31.1-AR / ACADM-CATALYSES-C6-C12-Acyl-CoA-Plus-FAD-To-trans-2-Enoyl-Acyl-CoA-FADH2-Beta-Oxidation-Step-1 / C8-Octanoylcarnitine-PRIMARY-NBS-Marker-Greater-0.3-umol-L / HYPOketotic-Hypoglycaemia-HALLMARK / Hexanoylglycine-Suberylglycine-PPG-Urine-PATHOGNOMONIC / FASTING-ABSOLUTE-CI / KD-ABSOLUTE-CI / VPA-HIGH-RISK / c.985A-G-p.Lys329Glu-FOUNDER-80-90pct-Northern-European / C14-NORMAL-KEY-NEGATIVE-vs-VLCAD / MOST-COMMON-FAO-Disorder / 40-patient-cohort-seed-269 / 3-endpoints-verified-200 / OMIM-Gene-607008-Disease-201450 / 1p31.1 / AR / Registered-2026-08-25)",
+    "status": "built",
+    "api": "/api/mcad/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 269,
+    "registered": "2026-08-25"
   }
 ]
