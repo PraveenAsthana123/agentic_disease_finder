@@ -6060,5 +6060,29 @@
       "/api/mcc/definitions"
     ],
     "page": "/mcc"
+  },
+  {
+    "id": "hmgcl",
+    "name": "HMGCL Epilepsy (3-Hydroxy-3-methylglutaryl-CoA-Lyase-Deficiency-HMG-CoA-Lyase-Deficiency / HMGCL-325aa-Mature-Homotrimeric-Mitochondrial-Cys266-Catalytic-Nucleophile-1p36.11-AR / HMGCL-CATALYSES-HMG-CoA-Plus-H2O-To-Acetoacetate-Plus-Acetyl-CoA-Leucine-Catabolism-STEP-5-TERMINAL-PLUS-SOLE-Hepatic-Ketogenesis / HMGCL-LOF-DUAL-FAILURE-Leucine-BLOCKED-PLUS-Ketogenesis-ABOLISHED / 3-HMG-PATHOGNOMONIC-Greater-200-mmol-mol-Cr / HYPOKETOTIC-HYPOGLYCAEMIA-HALLMARK / C6-DC-NBS-PRIMARY / VPA-ABSOLUTE-CI-Valproyl-CoA-Inhibits-HMGCL-Cys266 / Ketogenic-Diet-ABSOLUTE-CI-UNIQUE / OMIM-Gene-600234-Disease-246450 / 1p36.11 / AR / Registered-2026-08-24)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hmgcl/overview",
+      "/api/hmgcl/breakdown",
+      "/api/hmgcl/definitions"
+    ],
+    "page": "/hmgcl",
+    "component": "portal-next/app/hmgcl/page.jsx",
+    "script": "scripts/hmgcl_dashboard.py",
+    "cohort_seed": 261,
+    "n_patients": 40,
+    "category": "leucine_catabolism",
+    "pathway_step": "Step 5 (terminal) \u2014 HMG-CoA \u2192 Acetoacetate + Acetyl-CoA",
+    "inheritance": "AR",
+    "gene_locus": "1p36.11",
+    "omim_gene": "*600234",
+    "omim_disease": "#246450",
+    "nav": "SiteNav wired after MCC before AGAT",
+    "built_date": "2026-08-24",
+    "note": "Built scripts/hmgcl_dashboard.py (40-patient cohort seed-261, 3 phenotypic classes Classic-Infantile-Episodic-50%/Neonatal-Early-Onset-35%/Late-Onset-Attenuated-15%, HYPOKETOTIC-HYPOGLYCAEMIA hallmark, 3-HMG PATHOGNOMONIC, KD+VPA ABSOLUTE CI, 3 endpoints /api/hmgcl/overview|breakdown|definitions verified 200, SiteNav wired after MCC before AGAT, expert_dashboards.json count 394->395). Built 2026-08-24."
   }
 ]

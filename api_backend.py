@@ -33535,6 +33535,33 @@ async def mcc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hmgcl/overview")
+async def hmgcl_overview():
+    try:
+        import scripts.hmgcl_dashboard as hmgcl_
+        return _json_safe(hmgcl_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hmgcl/breakdown")
+async def hmgcl_breakdown():
+    try:
+        import scripts.hmgcl_dashboard as hmgcl_
+        return _json_safe(hmgcl_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hmgcl/definitions")
+async def hmgcl_definitions():
+    try:
+        import scripts.hmgcl_dashboard as hmgcl_
+        return _json_safe(hmgcl_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
