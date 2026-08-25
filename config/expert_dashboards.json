@@ -6152,6 +6152,23 @@
     "category": "lchad_mtp_fao",
     "n_patients": 40,
     "seed": 273,
+    "registered": "2026-08-25",
+    "id": "lchad",
+    "slug": "lchad"
+  },
+  {
+    "id": "scad",
+    "name": "SCAD Epilepsy (SCAD-Deficiency-Short-Chain-Acyl-CoA-Dehydrogenase-Deficiency / ACADS-412aa-Mitochondrial-Matrix-FAD-Dependent-Homotetrameric-12q24.31-Autosomal-Recessive / ACADS-CATALYSES-C4-C6-Acyl-CoA-Plus-FAD-To-trans-2-Enoyl-Acyl-CoA-Plus-FADH2-Beta-Oxidation-Step-1 / C4-Butyrylcarnitine-PRIMARY-NBS-MARKER-HIGHLY-NONSPECIFIC / 625G-A-p.Gly209Ser-7pct-Population-Susceptibility-Variant-NOT-Pathogenic-Alone / 511C-T-p.Arg171Trp-14pct-Population-Susceptibility-Variant-NOT-Pathogenic-Alone / EMA-MSA-Butyrylglycine-Urine-Characteristic / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / C14-1-NORMAL-KEY-NEGATIVE-vs-VLCAD / FAO-Triad-VLCAD-MCAD-SCAD / MAJORITY-ASYMPTOMATIC-UK-Removed-NBS-2012 / Riboflavin-Level-B-VPA-HIGH-RISK / NO-Absolute-CI / ~1-50000-True-Symptomatic / AR / 12q24.31 / OMIM-Gene-606885-Disease-201470)",
+    "slug": "scad",
+    "status": "built",
+    "route": "/scad",
+    "api": [
+      "/api/scad/overview",
+      "/api/scad/breakdown",
+      "/api/scad/definitions"
+    ],
+    "seed": 275,
+    "n_patients": 40,
     "registered": "2026-08-25"
   }
 ]

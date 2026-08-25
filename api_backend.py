@@ -33776,6 +33776,33 @@ async def lchad_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# SCAD (Short-Chain Acyl-CoA Dehydrogenase Deficiency) Dashboard
+
+@app.get("/api/scad/overview")
+async def scad_overview():
+    try:
+        import scripts.scad_dashboard as scad_
+        return _json_safe(scad_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/scad/breakdown")
+async def scad_breakdown():
+    try:
+        import scripts.scad_dashboard as scad_
+        return _json_safe(scad_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/scad/definitions")
+async def scad_definitions():
+    try:
+        import scripts.scad_dashboard as scad_
+        return _json_safe(scad_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
