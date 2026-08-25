@@ -34079,6 +34079,31 @@ async def bws_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/tndm/overview")
+async def tndm_overview():
+    try:
+        import scripts.tndm_dashboard as tndm_
+        return _json_safe(tndm_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/tndm/breakdown")
+async def tndm_breakdown():
+    try:
+        import scripts.tndm_dashboard as tndm_
+        return _json_safe(tndm_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/tndm/definitions")
+async def tndm_definitions():
+    try:
+        import scripts.tndm_dashboard as tndm_
+        return _json_safe(tndm_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

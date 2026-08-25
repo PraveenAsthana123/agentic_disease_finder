@@ -6350,5 +6350,28 @@
     "cohort_size": 40,
     "built_date": "2026-08-25",
     "notes": "BWS Dashboard \u2014 /api/bws/* + portal-next/app/bws/page.jsx + SiteNav wired after SRS, 40-patient cohort seed-297, 3 endpoints /api/bws/overview|breakdown|definitions verified 200, expert_dashboards.json count 412->413. Built 2026-08-25."
+  },
+  {
+    "id": "tndm",
+    "disease": "TNDM (TNDM1-Transient-Neonatal-Diabetes-Mellitus-Type-1 / PLAGL1-Pleomorphic-Adenoma-Gene-Like-1-ZAC1-LOT1-Paternally-Expressed-Zinc-Finger-Transcription-Factor-603044 / HYMAI-Hydatidiform-Mole-Associated-Imprinted-lncRNA-Paternally-Expressed-606522 / 6q24.2-GENOMIC-IMPRINTING-Paternal-GOF-Maternal-LOF / Paternal-Duplication-6q24-40pct / Paternal-UPD6-upd6pat-40pct / Maternal-DMR-Hypomethylation-20pct-MLID-Risk / PLAGL1-EXCESS-Neonatal-Beta-Cell-G1-Arrest / NEONATAL-DIABETES-Onset-Less-6-Weeks / IUGR-SGA-70-80pct-OPPOSITE-BWS-Macrosomia / MACROGLOSSIA-30-35pct / UMBILICAL-HERNIA-30pct / REMISSION-100pct-By-3-18-Months / RELAPSE-50pct-Adolescence-Adulthood / SULFONYLUREA-LEVEL-A-85-95pct-Response-Relapse / ABCC8-KCNJ11-MANDATORY-TESTING-ALL-Neonatal-DM / ANTIBODY-NEGATIVE-NOT-T1D / MS-MLPA-6q24-FIRST-LINE / ART-IVF-2-3x-DMR-Hypomethylation-Risk / ~1-400000-TNDM1 / Genomic-Imprinting-Paternal-GOF / 6q24.2 / OMIM-Gene-PLAGL1-603044-HYMAI-606522-Disease-601410)",
+    "status": "built",
+    "route": "/tndm",
+    "api_routes": [
+      "/api/tndm/overview",
+      "/api/tndm/breakdown",
+      "/api/tndm/definitions"
+    ],
+    "script": "scripts/tndm_dashboard.py",
+    "seed": 299,
+    "cohort_size": 40,
+    "built_date": "2026-08-25",
+    "category": "genomic-imprinting-neonatal-diabetes",
+    "locus": "6q24.2",
+    "genes": [
+      "PLAGL1",
+      "HYMAI"
+    ],
+    "omim_disease": "#601410",
+    "inheritance": "Genomic Imprinting \u2014 Paternal GOF / Maternal LOF"
   }
 ]
