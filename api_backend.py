@@ -34304,6 +34304,33 @@ async def mody7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mody8/overview")
+async def mody8_overview():
+    try:
+        import scripts.mody8_dashboard as mody8_
+        return _json_safe(mody8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody8/breakdown")
+async def mody8_breakdown():
+    try:
+        import scripts.mody8_dashboard as mody8_
+        return _json_safe(mody8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody8/definitions")
+async def mody8_definitions():
+    try:
+        import scripts.mody8_dashboard as mody8_
+        return _json_safe(mody8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
