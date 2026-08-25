@@ -6411,5 +6411,21 @@
     ],
     "omim_disease": "#600496",
     "inheritance": "Autosomal Dominant \u2014 50% recurrence"
+  },
+  {
+    "id": "mody1",
+    "name": "MODY1 (MODY1-HNF4A-MODY-Maturity-Onset-Diabetes-Young-Type-1 / HNF4A-Hepatocyte-Nuclear-Factor-4-Alpha-Nuclear-Receptor-600281 / Chr-20q13.12 / 2nd-Most-Common-MODY-10pct / Haploinsufficiency-Master-TF-HNF4A-Regulates-HNF1A / Macrosomia-Birth-50-60pct-Fetal-Hyperinsulinism-UNIQUE / TNH-Transient-Neonatal-Hyperinsulinism-50pct-Diazoxide-Responsive / NO-Renal-Glycosuria-0pct-KEY-Differentiator-vs-MODY3 / SULFONYLUREA-FIRST-LINE-85-90pct-Excellent-Good / AD-50pct / Onset-Teens-40s-Mean-27yr / ~1-50000-100000 / OMIM-Gene-HNF4A-600281-Disease-125850 / 40-patient-cohort-seed-305)",
+    "status": "built",
+    "route": "/mody1",
+    "api_endpoints": [
+      "/api/mody1/overview",
+      "/api/mody1/breakdown",
+      "/api/mody1/definitions"
+    ],
+    "script": "scripts/mody1_dashboard.py",
+    "seed": 305,
+    "cohort_size": 40,
+    "built_date": "2026-08-25",
+    "note": "MODY1 HNF4A-MODY Dashboard \u2014 HNF4A-Hepatocyte-Nuclear-Factor-4-Alpha-600281 / Chr-20q13.12 / 2nd-Most-Common-MODY-10pct / Macrosomia-50-60pct-Fetal-Hyperinsulinism-UNIQUE / TNH-Transient-Neonatal-Hyperinsulinism-50pct / NO-Renal-Glycosuria-0pct / SULFONYLUREA-FIRST-LINE-85-90pct / 40-patient cohort seed-305, 3 endpoints /api/mody1/overview|breakdown|definitions verified 200, portal-next/app/mody1/page.jsx + SiteNav wired after MODY3, expert_dashboards.json count 416->417. Built 2026-08-25."
   }
 ]
