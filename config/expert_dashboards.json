@@ -6189,5 +6189,24 @@
     "locus": "ETFA: 15q23-q25 / ETFB: 19q13.41 / ETFDH: 4q32.1",
     "omim_disease": "231680",
     "inheritance": "AR"
+  },
+  {
+    "id": "cpt1a",
+    "gene": "CPT1A",
+    "name": "CPT1A Epilepsy (CPT1A-Deficiency-Carnitine-Palmitoyltransferase-IA-Deficiency-Hepatic-CPT-Deficiency-Type-IA / CPT1A-773aa-Outer-Mitochondrial-Membrane-Liver-Specific-Isoform-Rate-Limiting-Step-Long-Chain-FA-Import-11q13.3-AR / CPT1B-Heart-Muscle-CPT1C-Brain-Both-INTACT-In-CPT1A-Deficiency / CPT1A-CATALYSES-Long-Chain-Acyl-CoA-Plus-Carnitine-To-Long-Chain-Acylcarnitine-Plus-CoA-SH-Step-1-Carnitine-Shuttle / C0-FREE-CARNITINE-ELEVATED-Greater-60-umol-L-PRIMARY-NBS-MARKER-INVERTED-PROFILE / C0-C16-Ratio-ELEVATED-Greater-40-HIGHLY-SPECIFIC / C16-NORMAL-LOW-KEY-NEGATIVE-vs-VLCAD-LCHAD / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / C14-1-NORMAL-KEY-NEGATIVE-vs-VLCAD / HYPERAMMONEMIA-UNIQUE-Among-ALL-FAO-Disorders / NO-CARDIOMYOPATHY-EXAM-TRAP-CPT1B-Serves-Heart / NO-RHABDOMYOLYSIS-Liver-Isoform / MCT-OIL-THERAPEUTIC-Level-A-Medium-Chain-Bypasses-CPT1A / FASTING-ABSOLUTE-CI / KD-ABSOLUTE-CI / VPA-HIGH-RISK / L-Carnitine-NOT-ROUTINE / p.Pro479Leu-Arctic-Founder-Up-To-85pct-Inuit / p.Thr735Ile-Severe-North-American / 40-patient-cohort-seed-279 / 3-endpoints-verified-200 / Registered-2026-08-25)",
+    "status": "built",
+    "route": "/cpt1a",
+    "api_prefix": "/api/cpt1a",
+    "endpoints": [
+      "/api/cpt1a/overview",
+      "/api/cpt1a/breakdown",
+      "/api/cpt1a/definitions"
+    ],
+    "seed": 279,
+    "n_patients": 40,
+    "registered": "2026-08-25",
+    "locus": "11q13.3",
+    "omim_disease": "255120",
+    "inheritance": "AR"
   }
 ]

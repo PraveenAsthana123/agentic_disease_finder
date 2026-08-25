@@ -33828,6 +33828,33 @@ async def ga2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# CPT1A (Carnitine Palmitoyltransferase IA Deficiency) Dashboard
+
+@app.get("/api/cpt1a/overview")
+async def cpt1a_overview():
+    try:
+        import scripts.cpt1a_dashboard as cpt1a_
+        return _json_safe(cpt1a_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cpt1a/breakdown")
+async def cpt1a_breakdown():
+    try:
+        import scripts.cpt1a_dashboard as cpt1a_
+        return _json_safe(cpt1a_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cpt1a/definitions")
+async def cpt1a_definitions():
+    try:
+        import scripts.cpt1a_dashboard as cpt1a_
+        return _json_safe(cpt1a_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
