@@ -5980,5 +5980,11 @@
     "id": "ass1",
     "name": "ASS1 Epilepsy (Argininosuccinate-Synthetase-1-Deficiency-Citrullinemia-Type-1-CTLN1 / ASS1-412aa-Cytoplasmic-Homotetrameric-Enzyme-9q34.11-AR / ASS1-CATALYSES-Citrulline-Plus-Aspartate-Plus-ATP-To-Argininosuccinate-UREA-CYCLE-STEP-3-OF-5 / ASS1-LOF-Citrulline-CANNOT-Enter-Argininosuccinate-ACCUMULATES-MASSIVELY / Plasma-Citrulline-VERY-HIGH-Greater-500-umol-L-Classic-Greater-2000-Neonatal-PATHOGNOMONIC-HALLMARK / Arginine-CONDITIONALLY-ESSENTIAL-NOT-Produced-Downstream / Urine-Orotic-NORMAL-MILD-OTC-Intact-Less-Overflow / Argininosuccinate-ABSENT-Block-AT-ASS1-Step-KEY-vs-ASL / Arginine-High-Dose-Level-A-PRIMARY / Liver-Transplant-Level-A-CURATIVE / VPA-ABSOLUTE-CI-Doubly-Blocks / seed-211 / 3-endpoints-verified-200 / Built-2026-08-24",
     "status": "built"
+  },
+  {
+    "id": "asl",
+    "status": "built",
+    "name": "ASL Epilepsy (Argininosuccinic-Aciduria-ASA / ASL-464aa-Cytoplasmic-Homotetrameric-Enzyme-7q11.21-Autosomal-Recessive / ASL-CATALYSES-Argininosuccinate-To-Arginine-Plus-Fumarate-UREA-CYCLE-STEP-4-OF-5-Cytoplasmic / ASL-LOF-Argininosuccinate-CANNOT-Be-Cleaved-ACCUMULATES-MASSIVELY / Plasma-Argininosuccinate-VERY-HIGH-PATHOGNOMONIC-Undetectable-All-Other-UCDs / Trichorrhexis-Nodosa-50-70pct-UNIQUE-Among-UCDs / Hypertension-40-50pct-UNIQUE-NO-Deficiency / Liver-Transplant-Caveat-Systemic-Features-May-Persist-UNIQUE / ~1-70000-Third-Most-Common-UCD / AR / 7q11.21 / OMIM-Gene-608310-Disease-207900)",
+    "note": "Built scripts/asl_dashboard.py (40-patient cohort seed-217, 3 phenotypic classes Classic-Neonatal-40%/Late-Onset-35%/Mild-NBS-25%, 12 biomarkers, 8 variants, trichorrhexis-unique/hypertension-unique/dual-seizure-mechanism, 3 endpoints /api/asl/overview|breakdown|definitions verified 200, SiteNav wired after ASS1, 2026-08-24)"
   }
 ]
