@@ -33508,6 +33508,33 @@ async def ivd_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mcc/overview")
+async def mcc_overview():
+    try:
+        import scripts.mcc_dashboard as mcc_
+        return _json_safe(mcc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mcc/breakdown")
+async def mcc_breakdown():
+    try:
+        import scripts.mcc_dashboard as mcc_
+        return _json_safe(mcc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mcc/definitions")
+async def mcc_definitions():
+    try:
+        import scripts.mcc_dashboard as mcc_
+        return _json_safe(mcc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

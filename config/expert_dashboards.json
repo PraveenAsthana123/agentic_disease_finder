@@ -6049,5 +6049,16 @@
       "/api/ivd/definitions"
     ],
     "page": "/portal-next/app/ivd/page.jsx"
+  },
+  {
+    "id": "mcc",
+    "name": "MCC Epilepsy (3-Methylcrotonyl-CoA-Carboxylase-Deficiency-3-MCC-Deficiency / MCCC1-725aa-Alpha-Biotin-Carboxylase-BCCP-3q27.1-AR / MCCC2-563aa-Beta-Carboxyl-Transferase-5q13.2-AR / MCC-CATALYSES-3-Methylcrotonyl-CoA-Plus-CO2-To-3-Methylglutaconyl-CoA-Leucine-Catabolism-Step-3-After-IVD / 3-MCG-PATHOGNOMONIC-Greater-50-mmol-mol-Cr-Urine / C5-OH-NBS-PRIMARY-MARKER / NOT-BIOTIN-RESPONSIVE-KEY-Exam-Fact / Most-Common-OA-NBS-Detection / MAJORITY-ASYMPTOMATIC-55pct-Low-Penetrance / MATERNAL-Detection-30pct / p.Arg385Cys-MCCC1-18pct / p.Val428Met-MCCC2-Portuguese-Founder-20pct / 40-patient-cohort-seed-259 / 3-endpoints-verified-200 / OMIM-Gene-609010-MCCC1-609014-MCCC2-Disease-210200-TypeI-210210-TypeII / 3q27.1-MCCC1-5q13.2-MCCC2 / AR / Registered-2026-08-24)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/mcc/overview",
+      "/api/mcc/breakdown",
+      "/api/mcc/definitions"
+    ],
+    "page": "/mcc"
   }
 ]
