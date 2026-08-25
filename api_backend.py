@@ -33929,6 +33929,30 @@ async def schad_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ube3a/overview")
+async def ube3a_overview():
+    try:
+        import scripts.ube3a_dashboard as ube3a_
+        return _json_safe(ube3a_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ube3a/breakdown")
+async def ube3a_breakdown():
+    try:
+        import scripts.ube3a_dashboard as ube3a_
+        return _json_safe(ube3a_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ube3a/definitions")
+async def ube3a_definitions():
+    try:
+        import scripts.ube3a_dashboard as ube3a_
+        return _json_safe(ube3a_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
