@@ -6332,5 +6332,23 @@
     "cohort_size": 40,
     "built_date": "2026-08-25",
     "notes": "SRS Dashboard \u2014 /api/srs/* + portal-next/app/srs/page.jsx + SiteNav wired after Kagami-Ogata, 40-patient cohort seed-295, 3 endpoints /api/srs/overview|breakdown|definitions verified 200, expert_dashboards.json count 411->412. Built 2026-08-25."
+  },
+  {
+    "id": "bws",
+    "gene": "IGF2 / H19 / CDKN1C / KCNQ1OT1",
+    "name": "Beckwith-Wiedemann Syndrome (BWS-Beckwith-Wiedemann-Syndrome / IGF2-Insulin-Like-Growth-Factor-2-Biallelically-Expressed-Maternal-LOF-147470 / H19-lncRNA-Silenced-ICR1-Hypermethylation-103280 / CDKN1C-p57KIP2-Maternally-Expressed-Growth-Inhibitor-LOST-In-BWS-600856 / KCNQ1OT1-ICR2-Control / 11p15.5-GENOMIC-IMPRINTING-Maternal-LOF-SAME-LOCUS-OPPOSITE-PHENOTYPE-SRS / ICR2-KCNQ1OT1-Hypomethylation-Maternal-50pct-CDKN1C-Silenced-Both-Alleles / upd11p15pat-Paternal-UPD11p15-20pct / CDKN1C-LOF-Maternal-10pct-AD-50pct-Recurrence / ICR1-Hypermethylation-Maternal-5pct-Biallelic-IGF2-HIGHEST-Wilms-29pct / MACROGLOSSIA-97pct-PATHOGNOMONIC / MACROSOMIA-LGA-60pct-OPPOSITE-SRS-SGA / HEMIHYPERTROPHY-35-40pct-One-Side-LARGER-vs-SRS-Hemihypotrophy / OMPHALOCELE-30pct / HYPERINSULINISM-30-50pct-DIAZOXIDE-First-Line-NOT-Cornstarch / WILMS-TUMOR-7pct-Overall-ICR1-Hypermeth-29pct-UPD-12pct-MANDATORY-US-AFP-Surveillance / HEPATOBLASTOMA-1pct3-AFP-Surveillance-Until-Age-4 / GH-THERAPY-CONTRAINDICATED-Overgrown-IGF2-Excess / VPA-CAUTION-AFP-Confusion-Hepatoblastoma / TUMOR-SURVEILLANCE-MANDATORY-US-q3mo-AFP-q3mo-Birth-To-Age-4-8 / COGNITION-NORMAL / MS-MLPA-11p15.5-FIRST-LINE-80pct / SNP-Array-UPD11p15 / CDKN1C-Sequencing-Third-Line / SRS-vs-BWS-Same-Locus-11p15.5-Paternal-LOF-Restriction-vs-Maternal-LOF-Overgrowth / ~1-10500-13700 / Genomic-Imprinting-Maternal-LOF / 11p15.5 / OMIM-Gene-IGF2-147470-H19-103280-CDKN1C-600856-Disease-130650)",
+    "status": "built",
+    "script": "scripts/bws_dashboard.py",
+    "api_endpoints": [
+      "/api/bws/overview",
+      "/api/bws/breakdown",
+      "/api/bws/definitions"
+    ],
+    "frontend": "portal-next/app/bws/page.jsx",
+    "nav_wired": true,
+    "cohort_seed": 297,
+    "cohort_size": 40,
+    "built_date": "2026-08-25",
+    "notes": "BWS Dashboard \u2014 /api/bws/* + portal-next/app/bws/page.jsx + SiteNav wired after SRS, 40-patient cohort seed-297, 3 endpoints /api/bws/overview|breakdown|definitions verified 200, expert_dashboards.json count 412->413. Built 2026-08-25."
   }
 ]

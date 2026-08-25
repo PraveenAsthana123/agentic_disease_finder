@@ -34054,6 +34054,31 @@ async def srs_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/bws/overview")
+async def bws_overview():
+    try:
+        import scripts.bws_dashboard as bws_
+        return _json_safe(bws_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bws/breakdown")
+async def bws_breakdown():
+    try:
+        import scripts.bws_dashboard as bws_
+        return _json_safe(bws_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bws/definitions")
+async def bws_definitions():
+    try:
+        import scripts.bws_dashboard as bws_
+        return _json_safe(bws_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
