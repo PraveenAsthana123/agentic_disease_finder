@@ -510,6 +510,13 @@
      "label": "Severe sleepiness",
      "level": "severe"
     }
+   ],
+   "status": "built",
+   "dashboard": "epworth-dashboard/page.jsx",
+   "endpoints": [
+    "/api/epworth-dashboard/overview",
+    "/api/epworth-dashboard/breakdown",
+    "/api/epworth-dashboard/definitions"
    ]
   },
   {
