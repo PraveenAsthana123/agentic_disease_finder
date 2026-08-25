@@ -466,6 +466,13 @@
      "label": "Very dependent",
      "level": "severe"
     }
+   ],
+   "status": "built",
+   "dashboard": "barthel/page.jsx",
+   "endpoints": [
+    "/api/barthel/overview",
+    "/api/barthel/breakdown",
+    "/api/barthel/definitions"
    ]
   },
   {
@@ -608,7 +615,14 @@
      "level": "critical"
     }
    ],
-   "note": "Self-report measure. 20 items scored 1-4 (1=least severe, 4=most severe). Validated for adult epilepsy patients. Lower scores indicate better seizure control."
+   "note": "Self-report measure. 20 items scored 1-4 (1=least severe, 4=most severe). Validated for adult epilepsy patients. Lower scores indicate better seizure control.",
+   "status": "built",
+   "dashboard": "lsss/page.jsx",
+   "endpoints": [
+    "/api/lsss/overview",
+    "/api/lsss/breakdown",
+    "/api/lsss/definitions"
+   ]
   }
  ],
  "dashboard_status": "built",

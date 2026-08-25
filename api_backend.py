@@ -17498,6 +17498,31 @@ async def lsss_definitions():
     return _json_safe(ld.definitions())
 
 
+# ── Barthel Index (ADL) Dashboard ───────────────────────────────────────────
+@app.get("/api/barthel/overview")
+async def barthel_overview(patient_id: str = None):
+    """Barthel ADL overview — KPIs (total assessments, unique patients, avg score),
+    independence distribution, score histogram (0-100), monthly trend."""
+    import scripts.barthel_dashboard as bd
+    return _json_safe(bd.overview(patient_id=patient_id))
+
+
+@app.get("/api/barthel/breakdown")
+async def barthel_breakdown(patient_id: str = None):
+    """Barthel ADL breakdown — per-patient summary with trend, assessment log,
+    item-level averages for all 10 ADL activities."""
+    import scripts.barthel_dashboard as bd
+    return _json_safe(bd.breakdown(patient_id=patient_id))
+
+
+@app.get("/api/barthel/definitions")
+async def barthel_definitions():
+    """Barthel ADL definitions — scale description, 10-item scoring guide,
+    independence bands, epilepsy relevance, references."""
+    import scripts.barthel_dashboard as bd
+    return _json_safe(bd.definitions())
+
+
 # ── Caregiver App Dashboard ─────────────────────────────────────────────────
 @app.get("/api/caregiver-app/overview")
 async def caregiver_app_overview():

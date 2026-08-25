@@ -206,6 +206,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/mobile-alerts">&#x1f4f1; Mobile Alerts</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/emergency-sos">&#x1f6a8; Emergency SOS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/lsss">&#x1f4ca; LSSS</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/barthel">&#x1f9bd; Barthel ADL</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/phq9-dashboard">&#x1f4cb; PHQ-9</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cssrs-dashboard">&#x26a0;&#xfe0f; C-SSRS</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/moca-dashboard">&#x1f9e9; MoCA</Link></li>
