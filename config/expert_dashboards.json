@@ -5958,5 +5958,17 @@
     "inheritance": "AR",
     "omim_disease": "258870",
     "registered": "2026-08-24"
+  },
+  {
+    "id": "cps1",
+    "name": "CPS1 Epilepsy (Carbamoyl-Phosphate-Synthetase-1-Deficiency / CPS1-1500aa-Mitochondrial-Matrix-NAG-Allosteric-Largest-Urea-Cycle-Enzyme-2q34-Autosomal-Recessive / CPS1-CATALYSES-NH3-Plus-CO2-Plus-2ATP-To-Carbamoyl-Phosphate-UREA-CYCLE-STEP-1-OF-5-MOST-PROXIMAL / CPS1-LOF-Carbamoyl-P-CANNOT-Be-Made-Total-Urea-Cycle-Arrest / NAG-Obligate-Allosteric-Activator-Made-By-NAGS / VPA-Inhibits-NAGS-No-NAG-CPS1-Off-Most-Direct-VPA-Mechanism / Plasma-Ammonia-CRITICALLY-ELEVATED-PATHOGNOMONIC / Plasma-Citrulline-CRITICALLY-LOW-Less-5-umol-L-Same-As-OTC / Urine-Orotic-Acid-NORMAL-KEY-DISTINCTION-From-OTC / CPS1-vs-NAGS-Identical-Biochemistry-NCG-Trial-Distinguishes / NCG-N-Carbamylglutamate-Level-A-Trial-Mandatory-All-Patients / Liver-Transplant-Level-A-CURATIVE / VPA-ABSOLUTE-CONTRAINDICATION / AR-Biallelic-LOF / 2q34 / OMIM-Gene-608307-Disease-237300 / 40-patient-cohort-seed-199 / 3-endpoints-verified-200 / Registered-2026-08-24",
+    "status": "built",
+    "endpoint": "/api/cps1/*",
+    "frontend": "/cps1",
+    "chromosome": "2q34",
+    "inheritance": "Autosomal Recessive",
+    "omim_gene": "608307",
+    "omim_disease": "237300",
+    "registered": "2026-08-24"
   }
 ]

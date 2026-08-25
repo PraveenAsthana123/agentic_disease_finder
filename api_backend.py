@@ -33273,6 +33273,31 @@ async def otc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cps1/overview")
+async def cps1_overview():
+    try:
+        import scripts.cps1_dashboard as cps1_
+        return _json_safe(cps1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cps1/breakdown")
+async def cps1_breakdown():
+    try:
+        import scripts.cps1_dashboard as cps1_
+        return _json_safe(cps1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cps1/definitions")
+async def cps1_definitions():
+    try:
+        import scripts.cps1_dashboard as cps1_
+        return _json_safe(cps1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
