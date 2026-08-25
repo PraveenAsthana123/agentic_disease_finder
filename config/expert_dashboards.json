@@ -5607,18 +5607,22 @@
     "omim_disease": "#251110"
   },
   {
-    "role": "Neurologist",
-    "name": "MMACHC (cblC) Epilepsy Dashboard",
-    "viz": "Combined MMA+HHcy biomarker panel, pathway diagram, variant table",
-    "feature": "tHcy PATHOGNOMONIC cblC, maculopathy tracking, OHCbl+betaine response, N2O CI alert",
-    "why": "MMACHC cblC \u2014 most common intracellular cobalamin disorder; combined MMA+HHcy; distinct from isolated MMA",
-    "priority": "P0",
+    "id": "mmachc",
+    "name": "MMACHC Epilepsy (Methylmalonic-Aciduria-Homocystinuria-cblC-type / MMACHC-282aa-Cytoplasmic-Bifunctional-Decyanase-Reductase-1p34.1-Autosomal-Recessive / MMACHC-MOST-UPSTREAM-Cytoplasmic-Cobalamin-Processor-Dealkylates-ALL-Cbl-Forms-To-cob(I)alamin / MMACHC-LOF-BOTH-Arms-Blocked-Simultaneously-AdoCbl-ABSENT-MeCbl-ABSENT-COMBINED-MMA-Plus-HHcy / MMA-ELEVATED-200-5000-mmol-molCr-Arm-A-MMA-Blocked / tHcy-ELEVATED-50-300-umol-L-Arm-B-HHcy-Blocked / Methionine-LOW-8-18-umol-L-MTR-Blocked-No-MeCbl / Maculopathy-PATHOGNOMONIC-cblC-50-80pct-UNIQUE-Among-All-Cobalamin-Disorders / c.271dupA-Most-Common-40-50pct-cblC-Alleles-Null-Neonatal-Severe / p.Arg161Gln-c.482G-A-Late-Onset-Partial-Function / OHCbl-Level-A-Bypasses-Decyanation-75pct-HHcy-55pct-MMA / Betaine-TMG-Level-A-MANDATORY-BHMT-Cobalamin-Independent / N2O-ABSOLUTE-CI-Life-Threatening / VPA-HIGH-RISK-AVOID / Most-Common-Inborn-Error-Intracellular-Cobalamin-Metabolism / AR-Biallelic-LOF / 1p34.1 / OMIM-Gene-609831-Disease-277400 / 40-patient-cohort-seed-247 / 3-endpoints-verified-200 / Registered-2026-08-24)",
     "status": "built",
-    "endpoints": [
+    "api_endpoints": [
       "/api/mmachc/overview",
       "/api/mmachc/breakdown",
       "/api/mmachc/definitions"
-    ]
+    ],
+    "page": "/mmachc",
+    "category": "cobalamin-disorder-epilepsy",
+    "cohort_seed": 247,
+    "n_patients": 40,
+    "gene_locus": "1p34.1",
+    "inheritance": "AR",
+    "omim_gene": "609831",
+    "omim_disease": "277400"
   },
   {
     "id": "mmadhc",
