@@ -6457,5 +6457,19 @@
     "seed": 309,
     "built_date": "2026-08-25",
     "category": "monogenic_diabetes_mody"
+  },
+  {
+    "name": "MODY4 (MODY4-PDX1-MODY-Maturity-Onset-Diabetes-Young-Type-4 / PDX1-Pancreatic-And-Duodenal-Homeobox-1-IPF1-Insulin-Promoter-Factor-1-600733 / Chr-13q12.2 / Rarest-MODY-1pct / PDX1-Master-Beta-Cell-TF-INS-GCK-GLUT2-PC1-MafA / Haploinsufficiency-GSIS-Failure / Two-Hit-Heterozygous-MODY4-Homozygous-Pancreatic-Agenesis / P63fsdelC-Founding-Mutation / SULFONYLUREA-FIRST-LINE-85-90pct / C-Peptide-Preserved / No-Pancreatic-Atrophy / No-Renal-Cysts / No-Renal-Glycosuria / Family-Hx-80-90pct / Autoantibodies-NEGATIVE / ~1pct-All-MODY / Autosomal-Dominant / 13q12.2 / OMIM-Gene-PDX1-600733-Disease-606392)",
+    "status": "built",
+    "route": "/mody4",
+    "api_endpoints": [
+      "/api/mody4/overview",
+      "/api/mody4/breakdown",
+      "/api/mody4/definitions"
+    ],
+    "cohort_size": 40,
+    "seed": 311,
+    "built_date": "2026-08-25",
+    "category": "monogenic_diabetes_mody"
   }
 ]
