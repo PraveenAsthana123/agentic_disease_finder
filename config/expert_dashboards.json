@@ -6536,5 +6536,19 @@
     "cohort_seed": 321,
     "cohort_size": 40,
     "registered": "2026-08-25"
+  },
+  {
+    "id": "mody11",
+    "name": "MODY11 (MODY11-BLK-MODY-Maturity-Onset-Diabetes-Young-Type-11 / BLK-B-Lymphocyte-Kinase-Src-Family-Non-Receptor-Tyrosine-Kinase-505aa-191305 / Chr-8p23.1 / Kinase-Signalling-Defect / BLK-Phosphorylates-PDX1-Ser269-Insulin-Gene-Transcription / BLK-Amplifies-KATP-Independent-Second-Phase-GSIS / A71T-Borowiec-2009-PNAS / P489L-Kinase-Catalytic-Domain / Hypomorphic-NOT-Null / C-Peptide-PRESERVED / SU-First-Line-60-70pct / T2D-Misdiagnosis-Highest-50pct / GWAS-Convergence-rs922879 / Latest-Mean-Onset-35-45yr / European-French-Enriched / OMIM-Gene-BLK-191305-Disease-613375)",
+    "status": "built",
+    "endpoints": [
+      "/api/mody11/overview",
+      "/api/mody11/breakdown",
+      "/api/mody11/definitions"
+    ],
+    "frontend": "portal-next/app/mody11/page.jsx",
+    "cohort_size": 40,
+    "seed": 323,
+    "registered_at": "2026-08-25"
   }
 ]
