@@ -6578,5 +6578,25 @@
     "cohort_seed": 327,
     "cohort_size": 40,
     "built_date": "2026-08-25"
+  },
+  {
+    "id": "wolfram",
+    "name": "Wolfram Syndrome 1 (WFS1 \u2014 DIDMOAD)",
+    "status": "built",
+    "route": "/wolfram",
+    "api_endpoints": [
+      "/api/wolfram/overview",
+      "/api/wolfram/breakdown",
+      "/api/wolfram/definitions"
+    ],
+    "category": "monogenic-diabetes-non-mody",
+    "gene": "WFS1",
+    "chromosome": "4p16.1",
+    "omim_gene": "606201",
+    "omim_disease": "222300",
+    "cohort_n": 40,
+    "seed": 329,
+    "built_date": "2026-08-25",
+    "description": "DIDMOAD \u2014 ER-stress multi-organ apoptosis; C-peptide falls; AR biallelic LOF; ~1/770,000"
   }
 ]

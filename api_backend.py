@@ -34466,6 +34466,32 @@ async def mody13_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Wolfram Syndrome 1 (WFS1 / DIDMOAD) ─────────────────────────────────────
+@app.get("/api/wolfram/overview")
+async def wolfram_overview():
+    try:
+        import scripts.wolfram_dashboard as wolfram_
+        return _json_safe(wolfram_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/wolfram/breakdown")
+async def wolfram_breakdown():
+    try:
+        import scripts.wolfram_dashboard as wolfram_
+        return _json_safe(wolfram_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/wolfram/definitions")
+async def wolfram_definitions():
+    try:
+        import scripts.wolfram_dashboard as wolfram_
+        return _json_safe(wolfram_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
