@@ -34546,6 +34546,33 @@ async def bbs_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/joubert/overview")
+async def joubert_overview():
+    try:
+        import scripts.joubert_dashboard as joubert_
+        return _json_safe(joubert_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/joubert/breakdown")
+async def joubert_breakdown():
+    try:
+        import scripts.joubert_dashboard as joubert_
+        return _json_safe(joubert_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/joubert/definitions")
+async def joubert_definitions():
+    try:
+        import scripts.joubert_dashboard as joubert_
+        return _json_safe(joubert_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

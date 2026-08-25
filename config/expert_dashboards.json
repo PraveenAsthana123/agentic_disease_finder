@@ -6646,5 +6646,29 @@
     ],
     "built_date": "2026-08-25",
     "description": "Rod-cone ciliopathy; post-axial polydactyly; learning disability; renal cysts; BBS1 M390R founder; BBSome IFT cargo; ~1/125,000"
+  },
+  {
+    "id": "joubert",
+    "name": "Joubert Syndrome (Joubert-Syndrome-JBTS-TZ-Ciliopathy-Molar-Tooth-Sign / CEP290-Centrosomal-Protein-290kDa-TZ-Matrix-Y-Links-610142 / Chr-12q21.32-Multi-Locus-35-Plus-Genes / TZ-Gate-Collapse-SHH-PDGF-Wnt-Signalling-Failure / MTS-PATHOGNOMONIC-SCP-Elongation-Vermis-Aplasia / Neonatal-Breathing-Dysrhythmia-Episodic-Hyperpnoea-Apnoea / NPHP-Like-Renal-ESRD-Teens-Transplant-EXCELLENT / CHF-TMEM67-Portal-HTN-Varices-Liver-Transplant / CEP290-Also-BBS14-Allele-Severity-Spectrum / IVS26-Most-Common-CEP290-Allele / ~1-80000-100000-Worldwide-AR / OMIM-Gene-CEP290-610142-Disease-213300)",
+    "route": "/joubert",
+    "api_prefix": "/api/joubert",
+    "gene": "CEP290",
+    "chromosome": "12q21.32 (CEP290); multi-locus (>35 JBTS genes)",
+    "omim_gene": "*610142",
+    "omim_disease": "#213300",
+    "inheritance": "Autosomal Recessive",
+    "category": "ciliopathy-tz-joubert",
+    "mechanism": "CEP290/AHI1/INPP5E/TMEM67 biallelic LOF — ciliary transition zone (TZ) structural failure — SHH/Wnt/PDGF signalling collapse — cerebellar vermis hypoplasia (Molar Tooth Sign), rod-cone retinal dystrophy, NPHP-like renal disease, congenital hepatic fibrosis (CHF)",
+    "c_peptide_pattern": "N/A — DM is NOT a primary JBTS feature; secondary only (ESRD/obesity); C-peptide PRESERVED when T2D occurs (insulin resistance); NOT autoimmune",
+    "cohort_size": 40,
+    "seed": 335,
+    "status": "built",
+    "endpoints_verified": [
+      "/api/joubert/overview",
+      "/api/joubert/breakdown",
+      "/api/joubert/definitions"
+    ],
+    "built_date": "2026-08-25",
+    "description": "TZ ciliopathy; Molar Tooth Sign; CEP290/AHI1/INPP5E/TMEM67; retinal dystrophy; NPHP-like renal ESRD; congenital hepatic fibrosis; ~1/80,000–1/100,000"
   }
 ]
