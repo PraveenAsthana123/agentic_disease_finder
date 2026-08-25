@@ -6373,5 +6373,20 @@
     ],
     "omim_disease": "#601410",
     "inheritance": "Genomic Imprinting \u2014 Paternal GOF / Maternal LOF"
+  },
+  {
+    "id": "pndm",
+    "name": "PNDM (PNDM-Permanent-Neonatal-Diabetes-Mellitus / KCNJ11-Kir6.2-K-ATP-Pore-Subunit-GOF-30-40pct-600937 / ABCC8-SUR1-K-ATP-Regulatory-Subunit-GOF-20pct-600509 / INS-Preproinsulin-Misfolded-ER-Stress-Beta-Cell-Apoptosis-10-20pct-176730 / GCK-Glucokinase-Glucose-Sensor-Homozygous-LOF-5pct-138079 / EIF2AK3-PERK-Wolcott-Rallison-ER-Stress-10pct-604032 / FOXP3-IPEX-Immune-Polyendocrinopathy-X-Linked-300292 / K-ATP-CHANNEL-Kir6.2x4-SUR1x4-Octameric-Complex-11p15.1 / GOF-Channel-Stays-Open-Despite-ATP-No-Depolarization-No-Ca2-No-Insulin / SULFONYLUREA-Closes-K-ATP-Directly-ATP-Independent-SUR1-NBD2-Binding / SULFO-90pct-SUCCESS-Off-Insulin-Lifelong / DEND-Syndrome-Developmental-Delay-Epilepsy-Neonatal-Diabetes-KCNJ11-V59M-I296L / iDEND-Intellectual-Disability-No-Epilepsy-Q52R-R201H / SULFO-ALSO-CLOSES-NEURONAL-K-ATP-Neuro-Improvement / PNDM-NEVER-REMITS-CONTRAST-TNDM1-100pct-Remission / ONSET-Less-6-Months / IUGR-SGA-60pct / ANTIBODY-NEGATIVE-Except-FOXP3 / TEST-ALL-Neonatal-DM-IMMEDIATELY-KCNJ11-ABCC8-First / INS-GCK-EIF2AK3-NO-SULFO-Insulin-Lifelong / GCK-Homozygous-PNDM-vs-GCK-Heterozygous-MODY2 / ~1-200000-400000 / K-ATP-Channel-Disorder / 11p15.1 / OMIM-Gene-KCNJ11-600937-ABCC8-600509-INS-176730-GCK-138079-EIF2AK3-604032-Disease-606176)",
+    "status": "built",
+    "category": "genomic-imprinting-neonatal-diabetes",
+    "route": "/pndm",
+    "api_routes": [
+      "/api/pndm/overview",
+      "/api/pndm/breakdown",
+      "/api/pndm/definitions"
+    ],
+    "seed": 301,
+    "cohort_size": 40,
+    "registered": "2026-08-25"
   }
 ]

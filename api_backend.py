@@ -34104,6 +34104,31 @@ async def tndm_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pndm/overview")
+async def pndm_overview():
+    try:
+        import scripts.pndm_dashboard as pndm_
+        return _json_safe(pndm_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pndm/breakdown")
+async def pndm_breakdown():
+    try:
+        import scripts.pndm_dashboard as pndm_
+        return _json_safe(pndm_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pndm/definitions")
+async def pndm_definitions():
+    try:
+        import scripts.pndm_dashboard as pndm_
+        return _json_safe(pndm_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
