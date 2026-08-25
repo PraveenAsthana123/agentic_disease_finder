@@ -34004,6 +34004,31 @@ async def temple_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/kagami/overview")
+async def kagami_overview():
+    try:
+        import scripts.kagami_dashboard as kagami_
+        return _json_safe(kagami_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/kagami/breakdown")
+async def kagami_breakdown():
+    try:
+        import scripts.kagami_dashboard as kagami_
+        return _json_safe(kagami_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/kagami/definitions")
+async def kagami_definitions():
+    try:
+        import scripts.kagami_dashboard as kagami_
+        return _json_safe(kagami_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

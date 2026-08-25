@@ -6295,5 +6295,24 @@
     "cohort_n": 40,
     "seed": 291,
     "registered": "2026-08-25"
+  },
+  {
+    "id": "kagami",
+    "name": "Kagami-Ogata Syndrome (KOS14-Kagami-Ogata-Syndrome / DLK1-Delta-Like-1-Homolog-383aa-Paternally-Expressed-176290 / RTL1-Retrotransposon-Like-1-Paternally-Expressed-Placental-Protease-603899 / MEG3-Maternally-Expressed-Gene-3-lncRNA-601626-ABSENT / 14q32.3-GENOMIC-IMPRINTING-Maternal-LOF-SAME-LOCUS-OPPOSITE-PARENT-Than-Temple-Syndrome / upd14pat-PATERNAL-UPD14-40pct / Maternal-Deletion-14q32.3-40pct / IG-DMR-Epimutation-10pct / Paternal-Duplication-10pct / COAT-HANGER-RIBS-PATHOGNOMONIC-Greater-95pct / RTL1-EXCESS-Placentomegaly-PMD-Polyhydramnios-Preterm / MEG3-ABSENT-Reduced-p53-Hepatoblastoma-5pct-Mandatory-AFP-Surveillance / MACROSOMIA-LGA-60pct-OPPOSITE-Temple-SGA / NEONATAL-RESPIRATORY-FAILURE-85pct / NEONATAL-MORTALITY-30-35pct / EPILEPSY-15-25pct-SURVIVORS-ONLY-Secondary-HIE / NO-ABSOLUTE-AED-CI / VPA-MODERATE-RISK-Hepatic-AFP-Overlap / NO-GnRH-Analog-No-CPP / IG-DMR-100pct-Methylated / ~1-50000-100000 / Genomic-Imprinting-Maternal-LOF / 14q32.3 / OMIM-Gene-DLK1-176290-MEG3-601626-RTL1-603899-Disease-608149 / 40-patient-cohort-seed-293)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/kagami/overview",
+      "/api/kagami/breakdown",
+      "/api/kagami/definitions"
+    ],
+    "page": "/kagami",
+    "seed": 293,
+    "cohort_n": 40,
+    "built_date": "2026-08-25",
+    "nav_position": "after temple",
+    "gene": "DLK1 / RTL1 / MEG3",
+    "locus": "14q32.3",
+    "omim_disease": "608149",
+    "inheritance": "Genomic Imprinting \u2014 Maternal LOF"
   }
 ]
