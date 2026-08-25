@@ -34519,6 +34519,33 @@ async def alstrom_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/bbs/overview")
+async def bbs_overview():
+    try:
+        import scripts.bbs_dashboard as bbs_
+        return _json_safe(bbs_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bbs/breakdown")
+async def bbs_breakdown():
+    try:
+        import scripts.bbs_dashboard as bbs_
+        return _json_safe(bbs_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bbs/definitions")
+async def bbs_definitions():
+    try:
+        import scripts.bbs_dashboard as bbs_
+        return _json_safe(bbs_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
