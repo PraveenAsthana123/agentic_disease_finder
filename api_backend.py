@@ -34412,6 +34412,33 @@ async def mody11_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mody12/overview")
+async def mody12_overview():
+    try:
+        import scripts.mody12_dashboard as mody12_
+        return _json_safe(mody12_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody12/breakdown")
+async def mody12_breakdown():
+    try:
+        import scripts.mody12_dashboard as mody12_
+        return _json_safe(mody12_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody12/definitions")
+async def mody12_definitions():
+    try:
+        import scripts.mody12_dashboard as mody12_
+        return _json_safe(mody12_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

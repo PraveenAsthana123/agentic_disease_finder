@@ -6550,5 +6550,19 @@
     "cohort_size": 40,
     "seed": 323,
     "registered_at": "2026-08-25"
+  },
+  {
+    "id": "mody12",
+    "name": "MODY12 (MODY12-ABCC8-MODY-SUR1-MODY-Maturity-Onset-Diabetes-Young-Type-12 / ABCC8-ATP-Binding-Cassette-Sub-Family-C-Member-8-SUR1-Sulfonylurea-Receptor-1-1581aa-600509 / Chr-11p15.1 / K-ATP-Channel-Regulatory-Subunit-GOF-Activating-Missense / PNDM2-TNDM-MODY12-Severity-Spectrum / Mild-GOF-MODY12-Teens-Adult / SU-First-Line-85-90pct-Highest-All-MODY / C-Peptide-PRESERVED / DKA-Presentation-20pct / Autosomal-Dominant / 11p15.1 / OMIM-Gene-ABCC8-600509)",
+    "status": "built",
+    "route": "/mody12",
+    "api_endpoints": [
+      "/api/mody12/overview",
+      "/api/mody12/breakdown",
+      "/api/mody12/definitions"
+    ],
+    "cohort_seed": 325,
+    "cohort_size": 40,
+    "built_date": "2026-08-25"
   }
 ]
