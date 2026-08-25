@@ -6143,5 +6143,15 @@
     "seed": 271,
     "n_patients": 40,
     "built": "2026-08-25"
+  },
+  {
+    "name": "LCHAD Epilepsy (LCHAD-Deficiency-Long-Chain-3-Hydroxyacyl-CoA-Dehydrogenase-Deficiency-MTP-Mitochondrial-Trifunctional-Protein-Deficiency / HADHA-763aa-MTP-Alpha-Enoyl-CoA-Hydratase-Step-2-Plus-LCHAD-Step-3-2p23.3-AR / HADHB-474aa-MTP-Beta-3-Ketoacyl-CoA-Thiolase-Step-4-2p23.3-AR / MTP-Alpha2-Beta2-Heterotetramer-Inner-Mitochondrial-Membrane / LCHAD-LOF-L-3-Hydroxyacyl-CoA-CANNOT-Be-Dehydrogenated-3-OH-Acylcarnitines-ACCUMULATE / C16-OH-3-Hydroxypalmitoylcarnitine-PRIMARY-NBS-MARKER-Greater-0.08-umol-L / C16-OH-C16-Ratio-Greater-0.07-HIGHLY-SPECIFIC / C14-OH-C18-1-OH-ALSO-ELEVATED / C8-NORMAL-KEY-NEGATIVE-vs-MCAD / C14-1-NORMAL-KEY-NEGATIVE-vs-VLCAD / RETINAL-PIGMENTARY-DEGENERATION-UNIQUE-ALL-FAO-Disorders / PERIPHERAL-NEUROPATHY-Axonal-UNIQUE-FAO / MATERNAL-AFLP-HELLP-Fetal-LCHAD-3-OH-Fatty-Acids-Cross-Placenta-UNIQUE / HYPOketotic-HYPOGLYCAEMIA-HALLMARK / CARDIOMYOPATHY-Dilated-Esp-TFP / RHABDOMYOLYSIS-Exercise-Induced / LACTIC-ACIDOSIS-Secondary / MCT-OIL-THERAPEUTIC-Level-A / DHA-SUPPLEMENTATION-Level-B-Retinal-Neural-UNIQUE / FASTING-ABSOLUTE-CI / KD-ABSOLUTE-CI / VPA-HIGH-RISK / Long-Chain-Fat-Restriction-Level-A / Triheptanoin-C7-Level-B / p.Glu474Gln-c.1528G-A-HADHA-FOUNDER-50-90pct-Northern-European-Isolated-LCHAD-Step-3 / p.Arg452Cys-10pct / p.Leu440Pro-8pct / Classic-LCHAD-Infantile-55pct / Severe-TFP-Neonatal-25pct / Adult-Myopathic-20pct / ~1-75000-100000 / AR-Biallelic-LOF / 2p23.3 / OMIM-Gene-HADHA-600890-HADHB-143450-Disease-LCHAD-609016-TFP-609015 / 40-patient-cohort-seed-273 / 3-endpoints-verified-200 / Registered-2026-08-25)",
+    "status": "built",
+    "route": "/lchad",
+    "api": "/api/lchad/overview|breakdown|definitions",
+    "category": "lchad_mtp_fao",
+    "n_patients": 40,
+    "seed": 273,
+    "registered": "2026-08-25"
   }
 ]

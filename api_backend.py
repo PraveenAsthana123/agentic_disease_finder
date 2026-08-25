@@ -33749,6 +33749,33 @@ async def vlcad_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# LCHAD / MTP (Long-Chain 3-Hydroxyacyl-CoA Dehydrogenase / Mitochondrial Trifunctional Protein) Dashboard
+
+@app.get("/api/lchad/overview")
+async def lchad_overview():
+    try:
+        import scripts.lchad_dashboard as lchad_
+        return _json_safe(lchad_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lchad/breakdown")
+async def lchad_breakdown():
+    try:
+        import scripts.lchad_dashboard as lchad_
+        return _json_safe(lchad_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lchad/definitions")
+async def lchad_definitions():
+    try:
+        import scripts.lchad_dashboard as lchad_
+        return _json_safe(lchad_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
