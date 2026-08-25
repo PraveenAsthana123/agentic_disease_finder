@@ -6564,5 +6564,19 @@
     "cohort_seed": 325,
     "cohort_size": 40,
     "built_date": "2026-08-25"
+  },
+  {
+    "id": "mody13",
+    "name": "MODY13 (MODY13-KCNJ11-MODY-Kir6.2-MODY-Maturity-Onset-Diabetes-Young-Type-13 / KCNJ11-Potassium-Inwardly-Rectifying-Channel-Subfamily-J-Member-11-Kir6.2-390aa-600937 / Chr-11p15.1 / K-ATP-Pore-Subunit-GOF-Activating-Missense / PNDM1-TNDM-MODY13-Severity-Spectrum / Mild-GOF-MODY13-Teens-Adult-NO-DEND / SU-First-Line-80-85pct-Via-SUR1-Partner / C-Peptide-PRESERVED / DKA-Presentation-15pct / DEND-Only-Severe-GOF-V59M-Not-MODY13 / Autosomal-Dominant / 11p15.1 / OMIM-Gene-KCNJ11-600937)",
+    "status": "built",
+    "route": "/mody13",
+    "api_endpoints": [
+      "/api/mody13/overview",
+      "/api/mody13/breakdown",
+      "/api/mody13/definitions"
+    ],
+    "cohort_seed": 327,
+    "cohort_size": 40,
+    "built_date": "2026-08-25"
   }
 ]
