@@ -6502,5 +6502,25 @@
     ],
     "description": "MODY8 CEL-MODY Dashboard \u2014 dual exocrine+endocrine pancreatic failure, pancreatic lipomatosis, VNTR frameshift, Norwegian founder p.V698Lfs*5, 40-patient cohort seed-317, 3 endpoints verified 200",
     "registered": "2026-08-25"
+  },
+  {
+    "id": "mody9",
+    "title": "MODY9 (PAX4-MODY \u2014 ARX Repression Deficit \u2014 KPD Onset \u2014 East Asian Enrichment)",
+    "status": "built",
+    "route": "/mody9",
+    "api_endpoints": [
+      "/api/mody9/overview",
+      "/api/mody9/breakdown",
+      "/api/mody9/definitions"
+    ],
+    "cohort_size": 40,
+    "seed": 319,
+    "gene": "PAX4",
+    "omim_gene": "167413",
+    "omim_disease": "612225",
+    "chromosome": "7q32.1",
+    "inheritance": "Autosomal Dominant",
+    "category": "MODY-Diabetes",
+    "registered": "2026-08-25"
   }
 ]
