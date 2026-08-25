@@ -33454,6 +33454,33 @@ async def slc25a13_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/gcdh/overview")
+async def gcdh_overview():
+    try:
+        import scripts.gcdh_dashboard as gcdh_
+        return _json_safe(gcdh_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gcdh/breakdown")
+async def gcdh_breakdown():
+    try:
+        import scripts.gcdh_dashboard as gcdh_
+        return _json_safe(gcdh_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gcdh/definitions")
+async def gcdh_definitions():
+    try:
+        import scripts.gcdh_dashboard as gcdh_
+        return _json_safe(gcdh_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

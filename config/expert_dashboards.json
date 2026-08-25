@@ -6016,5 +6016,23 @@
     ],
     "page": "/slc25a13",
     "dashboard_note": "SLC25A13 (Citrin Deficiency / CTLN2) Epilepsy Dashboard \u2014 /api/slc25a13/* + portal-next/app/slc25a13/page.jsx + SiteNav wired after SLC25A15 before AGAT, 40-patient cohort seed-235, 3 endpoints /api/slc25a13/overview|breakdown|definitions verified 200, expert_dashboards.json count 390->391. Built 2026-08-24."
+  },
+  {
+    "id": "gcdh",
+    "name": "GCDH Epilepsy (Glutaric-Aciduria-Type-1-GA1 / GCDH-438aa-Mitochondrial-Matrix-FAD-Dependent-Acyl-CoA-Dehydrogenase-19p13.2-AR / Glutaryl-CoA-CANNOT-Be-Dehydrogenated-GA-Plus-3-HGA-ACCUMULATE / 3-HGA-PRIMARY-NEUROTOXIN-NMDA-Agonist-Plus-Complex-II-Inhibitor / Macrocephaly-90pct-Pathognomonic / Striatal-Crisis-Febrile-Trigger / Emergency-Protocol-CRITICAL / Low-Excretor-15pct-NBS-May-Miss / OMIM-231670 / 19p13.2 / AR / 40-patient-cohort-seed-241)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/gcdh/overview",
+      "/api/gcdh/breakdown",
+      "/api/gcdh/definitions"
+    ],
+    "page": "/gcdh",
+    "category": "organic-acidemia-epilepsy",
+    "cohort_seed": 241,
+    "n_patients": 40,
+    "gene_locus": "19p13.2",
+    "inheritance": "AR",
+    "omim_gene": "608801",
+    "omim_disease": "231670"
   }
 ]
