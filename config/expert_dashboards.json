@@ -6095,5 +6095,17 @@
     "nav": "SiteNav wired after MCC before AGAT",
     "built_date": "2026-08-24",
     "note": "Built scripts/hmgcl_dashboard.py (40-patient cohort seed-261, 3 phenotypic classes Classic-Infantile-Episodic-50%/Neonatal-Early-Onset-35%/Late-Onset-Attenuated-15%, HYPOKETOTIC-HYPOGLYCAEMIA hallmark, 3-HMG PATHOGNOMONIC, KD+VPA ABSOLUTE CI, 3 endpoints /api/hmgcl/overview|breakdown|definitions verified 200, SiteNav wired after MCC before AGAT, expert_dashboards.json count 394->395). Built 2026-08-24."
+  },
+  {
+    "id": "pc",
+    "name": "PC Epilepsy (Pyruvate-Carboxylase-Deficiency-PCD / PC-1178aa-Mitochondrial-Homotetrameric-Biotin-Dependent-BCCP-Lys1119-11q13.2-AR / PC-CATALYSES-Pyruvate-Plus-HCO3-Plus-ATP-To-OAA-Anaplerosis / Lactate-VERY-HIGH-PRIMARY / LP-Ratio-ELEVATED-Greater-20-NADH-EXCESS / Alanine-ELEVATED / C5-OH-NORMAL-KEY-NEGATIVE-vs-HLCS-BTD-MCC / C3-NORMAL-KEY-NEGATIVE-vs-HLCS-PA / KD-ABSOLUTE-CI / IV-Glucose-Level-A / Biotin-Level-B-Partial / Type-A-50pct-Moderate-MODAL / Type-B-35pct-Neonatal-Severe / Type-C-15pct-Benign / ~1-250000-General-1-3000-Ojibwa-Cree / AR-Biallelic-LOF / 11q13.2 / OMIM-Gene-608786-Disease-266150 / 40-patient-cohort-seed-265 / 3-endpoints-verified-200 / Registered-2026-08-25)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/pc/overview",
+      "/api/pc/breakdown",
+      "/api/pc/definitions"
+    ],
+    "page": "/pc",
+    "built_at": "2026-08-25T08:13:19Z"
   }
 ]

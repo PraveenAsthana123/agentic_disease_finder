@@ -33611,6 +33611,33 @@ async def auh_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pc/overview")
+async def pc_overview():
+    try:
+        import scripts.pc_dashboard as pc_
+        return _json_safe(pc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pc/breakdown")
+async def pc_breakdown():
+    try:
+        import scripts.pc_dashboard as pc_
+        return _json_safe(pc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pc/definitions")
+async def pc_definitions():
+    try:
+        import scripts.pc_dashboard as pc_
+        return _json_safe(pc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
