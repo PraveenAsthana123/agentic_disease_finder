@@ -6004,5 +6004,17 @@
     ],
     "page": "/slc25a15",
     "dashboard_note": "SLC25A15 (HHH Syndrome) Epilepsy Dashboard \u2014 /api/slc25a15/* + portal-next/app/slc25a15/page.jsx + SiteNav wired after ARG1 before AGAT, 40-patient cohort seed-229, 3 endpoints /api/slc25a15/overview|breakdown|definitions verified 200, expert_dashboards.json count 389->390. Built 2026-08-24."
+  },
+  {
+    "id": "slc25a13",
+    "name": "SLC25A13 Epilepsy (Citrin-Deficiency-CTLN2-NICCD-FTTDCD / SLC25A13-Citrin-AGC2-675aa-Mitochondrial-Aspartate-Glutamate-Carrier-2-EF-Hand-Ca2-Sensing-7q21.3-AR / SLC25A13-EXPORTS-Aspartate-OUT-Of-Mitochondria-IMPORTS-Glutamate-Plus-H-Electrogenic / SLC25A13-LOF-Aspartate-CANNOT-Exit-Mitochondria-ASS1-Step-3-Stalled-No-Aspartate-Substrate / Citrulline-VERY-HIGH-300-1000-umol-L-CTLN2-Same-Biochemical-ASS1-But-Substrate-Not-Enzyme-Deficiency / NH3-ELEVATED-Episodic-100-400-MILDER-Than-Classic-ASS1 / Malate-Aspartate-Shuttle-MAS-IMPAIRED-NADH-NAD-Ratio-ELEVATED / CARBOHYDRATE-AVERSION-PATHOGNOMONIC-CTLN2 / THREE-AGE-PHENOTYPES-NICCD-0-1yr-PLUS-FTTDCD-1-11yr-PLUS-CTLN2-Adult / IVS16ins3kb-Founder-50-60pct-Japanese-Alleles / High-Fat-Low-Carb-Level-A / Arginine-Level-A / Liver-Transplant-Level-A-CURATIVE / VPA-ABSOLUTE-CI / IV-Glucose-HIGH-RISK / 1-17000-East-Asia / AR / 7q21.3 / OMIM-Gene-603859-CTLN2-603471-NICCD-605814)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/slc25a13/overview",
+      "/api/slc25a13/breakdown",
+      "/api/slc25a13/definitions"
+    ],
+    "page": "/slc25a13",
+    "dashboard_note": "SLC25A13 (Citrin Deficiency / CTLN2) Epilepsy Dashboard \u2014 /api/slc25a13/* + portal-next/app/slc25a13/page.jsx + SiteNav wired after SLC25A15 before AGAT, 40-patient cohort seed-235, 3 endpoints /api/slc25a13/overview|breakdown|definitions verified 200, expert_dashboards.json count 390->391. Built 2026-08-24."
   }
 ]
