@@ -6062,6 +6062,17 @@
     "page": "/mcc"
   },
   {
+    "id": "auh",
+    "name": "AUH Epilepsy (3-Methylglutaconic-Aciduria-Type-I-MGA-I / AUH-338aa-Bifunctional-AU-rich-RNA-Binding-Plus-3-Methylglutaconyl-CoA-Hydratase-Mitochondrial-Matrix-9q22.31-AR / AUH-CATALYSES-3-Methylglutaconyl-CoA-Plus-H2O-To-HMG-CoA-REVERSIBLE-Leucine-Catabolism-STEP-4 / 3-MGC-ELEVATED-PRIMARY / 3-HMG-NORMAL-KEY-NEGATIVE-vs-HMGCL / Ketones-PRESENT-Ketogenesis-INTACT / VPA-MODERATE-RISK-NOT-ABSOLUTE-CI / 40-patient-cohort-seed-263 / 3-endpoints-verified-200 / OMIM-Gene-600529-Disease-250950 / 9q22.31 / AR / Registered-2026-08-25)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/auh/overview",
+      "/api/auh/breakdown",
+      "/api/auh/definitions"
+    ],
+    "page": "/auh"
+  },
+  {
     "id": "hmgcl",
     "name": "HMGCL Epilepsy (3-Hydroxy-3-methylglutaryl-CoA-Lyase-Deficiency-HMG-CoA-Lyase-Deficiency / HMGCL-325aa-Mature-Homotrimeric-Mitochondrial-Cys266-Catalytic-Nucleophile-1p36.11-AR / HMGCL-CATALYSES-HMG-CoA-Plus-H2O-To-Acetoacetate-Plus-Acetyl-CoA-Leucine-Catabolism-STEP-5-TERMINAL-PLUS-SOLE-Hepatic-Ketogenesis / HMGCL-LOF-DUAL-FAILURE-Leucine-BLOCKED-PLUS-Ketogenesis-ABOLISHED / 3-HMG-PATHOGNOMONIC-Greater-200-mmol-mol-Cr / HYPOKETOTIC-HYPOGLYCAEMIA-HALLMARK / C6-DC-NBS-PRIMARY / VPA-ABSOLUTE-CI-Valproyl-CoA-Inhibits-HMGCL-Cys266 / Ketogenic-Diet-ABSOLUTE-CI-UNIQUE / OMIM-Gene-600234-Disease-246450 / 1p36.11 / AR / Registered-2026-08-24)",
     "status": "built",

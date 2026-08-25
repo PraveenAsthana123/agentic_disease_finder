@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-25T06:01:55Z",
+  "generated": "2026-08-25T06:52:47Z",
   "registries": {
     "Clinical Data Manager tasks": {
       "built": 17
     },
     "Expert dashboards": {
-      "built": 395
+      "built": 396
     },
     "Neuro AI ecosystem tools": {
       "external": 12,
