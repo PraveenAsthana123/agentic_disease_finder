@@ -33400,6 +33400,33 @@ async def arg1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/slc25a15/overview")
+async def slc25a15_overview():
+    try:
+        import scripts.slc25a15_dashboard as slc_
+        return _json_safe(slc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a15/breakdown")
+async def slc25a15_breakdown():
+    try:
+        import scripts.slc25a15_dashboard as slc_
+        return _json_safe(slc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a15/definitions")
+async def slc25a15_definitions():
+    try:
+        import scripts.slc25a15_dashboard as slc_
+        return _json_safe(slc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -5992,5 +5992,17 @@
     "name": "ARG1 Epilepsy (Hyperargininemia-Arginase-1-Deficiency / ARG1-322aa-Cytoplasmic-Homotrimeric-Binuclear-Mn2-Cluster-6q23.2-Autosomal-Recessive / ARG1-CATALYSES-Arginine-To-Ornithine-Plus-Urea-UREA-CYCLE-STEP-5-OF-5-FINAL-STEP-Cytoplasmic / ARG1-LOF-Arginine-CANNOT-Be-Hydrolysed-ACCUMULATES-MASSIVELY / Plasma-Arginine-VERY-HIGH-CRITICALLY-HIGH-Greater-200-500-umol-L-Normal-15-115-PATHOGNOMONIC-ONLY-UCD-With-Arginine-ELEVATED / Plasma-NH3-MILDLY-ELEVATED-50-150-umol-L-Or-NORMAL-CRITICAL-DISTINCTION-Steps-1-4-Intact / Plasma-Citrulline-NORMAL-15-80-umol-L-Upstream-Steps-Intact / Plasma-Ornithine-LOW-NORMAL-Less-50-umol-L-Cannot-Be-Regenerated / Urine-Orotic-MILDLY-ELEVATED-10-30-umol-mol-Cr / Guanidino-Compounds-ELEVATED-Homoarginine-Guanidinoacetate-NEUROTOXIC / Argininosuccinate-NORMAL-KEY-NEGATIVE / PLP-NORMAL-KEY-NEGATIVE / alpha-AASA-NORMAL-KEY-NEGATIVE / tHcy-NORMAL-KEY-NEGATIVE / MMA-NORMAL-KEY-NEGATIVE / GABA-NORMAL-KEY-NEGATIVE / GHB-NORMAL-KEY-NEGATIVE / Progressive-Spastic-Diplegia-Paraplegia-80-90pct-UNIQUE-Among-ALL-UCDs / IDD-80-90pct-MOST-SEVERE-Among-UCDs / Microcephaly-40-50pct / Growth-Retardation-50-60pct / Seizures-60-70pct / GTCS-40pct-MODAL / Focal-30pct / DRE-20-30pct / Low-Arginine-Diet-Level-A-PRIMARY / Arginine-Free-EAA-Formula-Level-A / Sodium-Benzoate-RAVICTI-Level-A / Baclofen-Level-B-Spasticity / LEV-Level-B-AED / Liver-Transplant-Level-B-Only / VPA-ABSOLUTE-CI / Arginine-ABSOLUTELY-CI-UNIQUE-REVERSAL-Primary-In-All-Other-UCDs / Classic-Spastic-70pct-MODAL / Mild-Attenuated-20pct / Neonatal-Acute-10pct / p.Arg21Cys-Mn2-Binding-20pct-Most-Common / p.Trp122Stop-Null-15pct / p.Arg291Ser-12pct / p.Gln158Stop-Null-10pct / ~1-300000-1000000-Rarest-Classical-UCD / AR-Biallelic-LOF / 6q23.2 / OMIM-Gene-608313-Disease-207800)",
     "status": "built",
     "dashboard_note": "ARG1 Epilepsy Dashboard \u2014 /api/arg1/* + portal-next/app/arg1/page.jsx + SiteNav wired after ASL before AGAT, 40-patient cohort seed-223, 3 endpoints /api/arg1/overview|breakdown|definitions verified 200, expert_dashboards.json count 388->389"
+  },
+  {
+    "id": "slc25a15",
+    "name": "SLC25A15 Epilepsy (HHH-Syndrome-Hyperornithinemia-Hyperammonemia-Homocitrullinuria / SLC25A15-ORC1-ORNT1-301aa-Mitochondrial-Ornithine-Transporter-13q14.11-AR / HHH-TRIAD-Ornithine-VERY-HIGH-400-1500-PLUS-NH3-Episodic-HIGH-PLUS-Homocitrullinuria-PATHOGNOMONIC / Citrulline-Bypass-Level-A / Ornithine-Supplementation-ABSOLUTE-CI / VPA-ABSOLUTE-CI / French-Canadian-Founder-p.Phe188del / OMIM-603861-238970)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/slc25a15/overview",
+      "/api/slc25a15/breakdown",
+      "/api/slc25a15/definitions"
+    ],
+    "page": "/slc25a15",
+    "dashboard_note": "SLC25A15 (HHH Syndrome) Epilepsy Dashboard \u2014 /api/slc25a15/* + portal-next/app/slc25a15/page.jsx + SiteNav wired after ARG1 before AGAT, 40-patient cohort seed-229, 3 endpoints /api/slc25a15/overview|breakdown|definitions verified 200, expert_dashboards.json count 389->390. Built 2026-08-24."
   }
 ]
