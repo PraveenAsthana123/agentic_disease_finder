@@ -5970,5 +5970,10 @@
     "omim_gene": "608307",
     "omim_disease": "237300",
     "registered": "2026-08-24"
+  },
+  {
+    "id": "nags",
+    "name": "NAGS Epilepsy (N-Acetylglutamate-Synthase-Deficiency-NAGSD / NAGS-534aa-GNAT-Superfamily-Mitochondrial-Matrix-17q21.31-Autosomal-Recessive / NAGS-CATALYSES-L-Glutamate-Plus-Acetyl-CoA-To-NAG-UPSTREAM-COFACTOR-GENERATOR-For-CPS1 / NAGS-LOF-NAG-CANNOT-Be-Made-CPS1-COMPLETELY-INACTIVE-Despite-Intact-CPS1 / Biochemically-IDENTICAL-To-CPS1-Ammonia-HIGH-Citrulline-LOW-Orotic-NORMAL / HALLMARK-NCG-COMPLETE-Response-65pct-ONLY-UCD-Single-Oral-Drug-Full-Control / Plasma-Glutamate-ELEVATED-NAGS-Substrate-Accumulates-NAGS-Specific / VPA-MOST-DIRECT-CI-Any-UCD-Competitive-Inhibitor-NAGS-Active-Site / NCG-Responsive-65pct-MODAL / Neonatal-Onset-20pct / Late-Onset-Episodic-15pct / ~1-2000000-Rarest-UCD / AR-Biallelic-LOF / 17q21.31 / OMIM-Gene-608300-Disease-237310 / 40-patient-cohort-seed-205 / 3-endpoints-verified-200 / Registered-2026-08-24",
+    "status": "built"
   }
 ]

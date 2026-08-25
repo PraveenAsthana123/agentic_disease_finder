@@ -33297,6 +33297,30 @@ async def cps1_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/nags/overview")
+async def nags_overview():
+    try:
+        import scripts.nags_dashboard as nags_
+        return _json_safe(nags_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nags/breakdown")
+async def nags_breakdown():
+    try:
+        import scripts.nags_dashboard as nags_
+        return _json_safe(nags_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nags/definitions")
+async def nags_definitions():
+    try:
+        import scripts.nags_dashboard as nags_
+        return _json_safe(nags_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
