@@ -34331,6 +34331,60 @@ async def mody8_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mody9/overview")
+async def mody9_overview():
+    try:
+        import scripts.mody9_dashboard as mody9_
+        return _json_safe(mody9_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody9/breakdown")
+async def mody9_breakdown():
+    try:
+        import scripts.mody9_dashboard as mody9_
+        return _json_safe(mody9_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody9/definitions")
+async def mody9_definitions():
+    try:
+        import scripts.mody9_dashboard as mody9_
+        return _json_safe(mody9_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody10/overview")
+async def mody10_overview():
+    try:
+        import scripts.mody10_dashboard as mody10_
+        return _json_safe(mody10_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody10/breakdown")
+async def mody10_breakdown():
+    try:
+        import scripts.mody10_dashboard as mody10_
+        return _json_safe(mody10_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody10/definitions")
+async def mody10_definitions():
+    try:
+        import scripts.mody10_dashboard as mody10_
+        return _json_safe(mody10_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

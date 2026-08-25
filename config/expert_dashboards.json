@@ -6522,5 +6522,19 @@
     "inheritance": "Autosomal Dominant",
     "category": "MODY-Diabetes",
     "registered": "2026-08-25"
+  },
+  {
+    "id": "mody10",
+    "name": "MODY10 (MODY10-INS-MODY-Maturity-Onset-Diabetes-Young-Type-10 / INS-Insulin-Preproinsulin-110aa-176730 / Chr-11p15.5 / Dominant-Negative-Misfolded-Proinsulin-ER-Stress-UPR / PERK-IRE1-ATF6-CHOP-Beta-Cell-Apoptosis / C-Peptide-FALLS-Structural-Apoptotic-Loss / INSULIN-REQUIRED-70-80pct / R46Q-Molven-2008 / R89C-C96Y-L68M-Stoy-2007 / NO-Exocrine-NO-Renal-Cysts-NO-KPD / Autoantibodies-NEGATIVE / T1D-Misdiagnosis-40pct / ~1pct / Autosomal-Dominant / 11p15.5 / OMIM-Gene-INS-176730-Disease-613370)",
+    "status": "built",
+    "route": "/mody10",
+    "api_endpoints": [
+      "/api/mody10/overview",
+      "/api/mody10/breakdown",
+      "/api/mody10/definitions"
+    ],
+    "cohort_seed": 321,
+    "cohort_size": 40,
+    "registered": "2026-08-25"
   }
 ]
