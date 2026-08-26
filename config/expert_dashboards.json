@@ -6975,5 +6975,19 @@
     "cohort_seed": 375,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp19",
+    "name": "Nephronophthisis Type 19 / Joubert Syndrome 35 (Nephronophthisis-Type-19-NPHP19-JBTS35-IFT81-Intraflagellar-Transport-81-698aa-IFT-B-Anterograde-Core-Bridge / IFT81-IFT74-Obligate-Heterodimer-Tubulin-Binding-Module-IFT-B1-Core / Chr-12q23.1 / IFT81-IFT74-CH-Domain-Heterodimer-Primary-Tubulin-Binding-Unit-IFT-B1-Anterograde-Axoneme-Assembly / JBTS35-Joubert-65pct-MTS-Higher-Than-NPHP18-55pct-Retinal-50-60pct-Higher-Than-NPHP18-30-40pct / IFT74-9p21.2-MUST-Co-Sequence-Obligate-Heterodimer-Digenic-Ciliopathy-Documented / 12q23.1-SAME-ARM-CEP83-12q22-CEP290-12q21.32-Single-Gene-Panels-Miss-IFT81 / ULTRA-RARE-Less-20-Families-2026-Absent-Many-Targeted-NPHP-JBTS-Panels / NO-SITUS-INVERSUS-NO-CHF-No-Nodal-No-Biliary-IFT81 / Renal-Transplant-CURATIVE-No-Recurrence-Cell-Autonomous-IFT-B-Defect / Retinal-Does-NOT-Improve-Post-Transplant / ~1-2000000-5000000-Less-20-Families-2026 / AR-Biallelic-LOF-Digenic-IFT81-IFT74-Possible / 12q23.1 / OMIM-Gene-IFT81-605489-Disease-617302-JBTS35-NPHP19)",
+    "status": "built",
+    "route": "/nphp19",
+    "api_endpoints": [
+      "/api/nphp19/overview",
+      "/api/nphp19/breakdown",
+      "/api/nphp19/definitions"
+    ],
+    "cohort_seed": 377,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]
