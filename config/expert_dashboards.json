@@ -7556,5 +7556,13 @@
     "cohort_n": 40,
     "seed": 351,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs12",
+    "name": "BBS12 Bardet-Biedl Syndrome Type 12 (BBS12-Bardet-Biedl-Syndrome-Type-12-BCC-Gamma-Ring-Structural-Subunit-BBSome-Chaperonin-Ciliopathy / BBS12-729aa-BCC-Gamma-Ring-Structural-Subunit-MKKS-BBS10-BBS12-Trimer-610188 / Chr-4q27 / BBS12-ONLY-BCC-Gamma-Ring-Subunit-Docks-MKKS-Alpha-Equatorial-Contacts-BBS10-Beta-Apical / BCC-Co-Folds-BBS2-BBS7-WD40-Barrels-Before-BBSome-Assembly-Step-0 / BBS12-LOF-BCC-Trimer-Collapses-MKKS-REDUCED-BBS10-REDUCED-BBS2-BBS7-Misfold / BBS12-ABSENT-IF-MKKS-REDUCED-BBS10-REDUCED-BBS2-ABSENT-Gene-Panel-Definitive-Discriminator-vs-BBS10 / BBS12-MOST-COMMON-3rd-Allele-BBS10-Tri-Allelic-Families-BCC-Beta-Ring-Partner / BBS12-Enriched-North-African-Maghrebi-MENA-Consanguineous-Stoetzel-2007-Nat-Genet / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-65pct / Obesity-82pct / Cognitive-LD-47pct / Renal-Anomaly-41pct / Hypogonadism-63pct / Anosmia-58pct / CHD-6pct / Arg140Cys-c418C-T-North-African-Founder / Leu287Pro-c860T-C-South-Asian / Arg445Trp-c1333C-T-European / Thr501Met-c1502C-T-Pan-Ethnic / Glu563Ter-c1687G-T-Truncating-Null / c1063+5G-A-Splice-European / Frequency-5-8pct-All-BBS / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 4q27 / OMIM-Gene-BBS12-610188-Disease-209900",
+    "status": "built",
+    "route": "/bbs12",
+    "api": "/api/bbs12/overview|breakdown|definitions",
+    "registered": "2026-08-26"
   }
 ]
