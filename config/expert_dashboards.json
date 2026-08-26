@@ -6648,6 +6648,31 @@
     "description": "Rod-cone ciliopathy; post-axial polydactyly; learning disability; renal cysts; BBS1 M390R founder; BBSome IFT cargo; ~1/125,000"
   },
   {
+    "id": "bbs2",
+    "name": "BBS2 Bardet-Biedl Syndrome Type 2 (BBS2-Bardet-Biedl-Syndrome-Type-2-BBSome-Core-Scaffold / BBS2-Bardet-Biedl-Syndrome-2-Protein-721aa-WD40-Beta-Propeller-Coiled-Coil-BBSome-Core-606151 / Chr-16q13 / BBSome-Core-Module-BBS2-BBS7-Dimer-Structural-Spine-BBS9-Bridge-BBS1-Cargo-Recognition / BBS2-Biallelic-LOF-BBS2-BBS7-Core-Dimer-Fails-BBSome-Catastrophic-Misassembly-Step-0 / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-70pct / Obesity-88pct-LepR-Mis-Trafficking / Learning-Disability-55pct / Renal-Anomaly-50pct / Hypogonadism-70pct / Anosmia-62pct / NO-M390R-European-Founder-Heterogeneous-Allele-Spectrum-Contrast-BBS1 / R631P-Bedouin-Arabian-Peninsula-Founder-30-45pct-MENA / Tri-Allelic-BBS-9pct-BBS2x2-Plus-BBS7-BBS9-Core-Partner / Frequency-10-20pct-All-BBS / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 16q13 / OMIM-Gene-BBS2-606151-Disease-209900)",
+    "disease": "Bardet-Biedl Syndrome Type 2 \u2014 BBS2 BBSome core scaffold; R631P Bedouin founder; 40-patient cohort seed-335; rod-cone, polydactyly 70%, obesity 88%, renal 50%, cognitive 55%",
+    "status": "built",
+    "route": "/bbs2",
+    "api_routes": [
+      "/api/bbs2/overview",
+      "/api/bbs2/breakdown",
+      "/api/bbs2/definitions"
+    ],
+    "script": "scripts/bbs2_dashboard.py",
+    "cohort_size": 40,
+    "seed": 335,
+    "built_date": "2026-08-26",
+    "category": "ciliopathy-bbsome",
+    "gene": "BBS2",
+    "chromosome": "16q13",
+    "omim_gene": "*606151",
+    "omim_disease": "#209900",
+    "inheritance": "Autosomal Recessive",
+    "mechanism": "BBSome core scaffold \u2014 BBS2-BBS7 dimer structural spine; BBS2 LOF -> catastrophic BBSome misassembly; IFT cargo mis-trafficking (LepR, SSTR3, MCHR1) -> multi-system ciliopathy",
+    "founder_mutation": "p.Arg631Pro (R631P, c.1892G>C) Bedouin/Arabian Peninsula founder \u2014 30-45% of MENA BBS2 alleles",
+    "description": "BBS2 BBSome core scaffold ciliopathy; rod-cone (rod first); post-axial polydactyly 70%; obesity 88% (LepR); cognitive LD 55%; renal 50%; R631P Bedouin founder; tri-allelic BBS 9%; ~10-20% of all BBS"
+  },
+  {
     "id": "joubert",
     "name": "Joubert Syndrome (Joubert-Syndrome-JBTS-TZ-Ciliopathy-Molar-Tooth-Sign / CEP290-Centrosomal-Protein-290kDa-TZ-Matrix-Y-Links-610142 / Chr-12q21.32-Multi-Locus-35-Plus-Genes / TZ-Gate-Collapse-SHH-PDGF-Wnt-Signalling-Failure / MTS-PATHOGNOMONIC-SCP-Elongation-Vermis-Aplasia / Neonatal-Breathing-Dysrhythmia-Episodic-Hyperpnoea-Apnoea / NPHP-Like-Renal-ESRD-Teens-Transplant-EXCELLENT / CHF-TMEM67-Portal-HTN-Varices-Liver-Transplant / CEP290-Also-BBS14-Allele-Severity-Spectrum / IVS26-Most-Common-CEP290-Allele / ~1-80000-100000-Worldwide-AR / OMIM-Gene-CEP290-610142-Disease-213300)",
     "route": "/joubert",

@@ -35761,6 +35761,34 @@ async def srtd14_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# BBS2 Bardet-Biedl Syndrome Type 2 (BBS2 gene / BBSome core scaffold / R631P Bedouin founder)
+# 40-patient cohort seed-335; 3 endpoints /api/bbs2/overview|breakdown|definitions
+@app.get("/api/bbs2/overview")
+async def bbs2_overview():
+    """BBS2 Bardet-Biedl Syndrome Type 2 — overview (cohort KPIs, BBSome subunit table, retinal stages)."""
+    try:
+        import scripts.bbs2_dashboard as bbs2_
+        return _json_safe(bbs2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs2/breakdown")
+async def bbs2_breakdown():
+    try:
+        import scripts.bbs2_dashboard as bbs2_
+        return _json_safe(bbs2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs2/definitions")
+async def bbs2_definitions():
+    try:
+        import scripts.bbs2_dashboard as bbs2_
+        return _json_safe(bbs2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
