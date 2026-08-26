@@ -7178,5 +7178,25 @@
     ],
     "cohort_seed": 401,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd13",
+    "name": "CLUAP1 Short-Rib Thoracic Dysplasia 13 (SRTD13 / ATD13 / Jeune Syndrome)",
+    "gene": "CLUAP1/IFT38",
+    "omim_gene": "616470",
+    "omim_disease": "616300",
+    "chromosome": "16q23.1",
+    "complex": "IFT-B2 (anterograde; hub/linchpin subunit)",
+    "status": "built",
+    "endpoints": [
+      "/api/srtd13/overview",
+      "/api/srtd13/breakdown",
+      "/api/srtd13/definitions"
+    ],
+    "page": "/srtd13",
+    "seed": 403,
+    "cohort_n": 40,
+    "note": "RAREST IFT-B2 SRTD (<10 families worldwide 2016\u20132026); CLUAP1/IFT38 is the IFT-B2 hub that directly contacts IFT80 (SRTD1) N-terminal WD40 AND bridges IFT-B1 to IFT-B2 (linchpin role); shortened cilia EM class (same IFT-B2 class as SRTD1/IFT80 and SRTD10/IFT172); Roosing et al. 2016 J Clin Invest; under-ascertained (CLUAP1 absent from pre-2016 SRTD panels); 3 endpoints verified 200; registered 2026-08-26",
+    "registered": "2026-08-26"
   }
 ]
