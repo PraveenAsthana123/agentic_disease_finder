@@ -7215,5 +7215,16 @@
     "molecular_class": "Basal Body Kinase (fourth SRTD class \u2014 distinct from IFT-B2, IFT-A, Dynein-2)",
     "ciliary_em": "Absent/Rudimentary",
     "notes": "NEK1 kinase; TTBK2 phosphorylation; CP110 removal; ciliogenesis initiation failure; highest polydactyly (65-75%); hydrops fetalis unique (20%); medianasal hypoplasia (30%); Majewski/SRPS-II spectrum"
+  },
+  {
+    "id": "srtd12",
+    "name": "C21orf2 Short-Rib Thoracic Dysplasia 12 (SRTD12-Jeune-ATD12-Asphyxiating-Thoracic-Dystrophy-12 / C21orf2-LRRC76-322aa-LRR-Leucine-Rich-Repeat-NEK1-IFT-A-Bridge-603503 / Chr-21q22.3 / FIFTH-DISTINCT-SRTD-MOLECULAR-CLASS-NOT-IFT-B2-NOT-IFT-A-NOT-Dynein-2-NOT-Basal-Body-Kinase-NEK1-IFT-A-Bridge / VARIABLE-EM-SHORT-STUBBY-IFT-A-Like-OR-PARTIALLY-ABSENT-Unique-SRTD12 / DUAL-PHENOTYPE-SRTD12-Skeletal-AND-LCA-CORD-Retinal-Dominant-Hypomorphic-LRR-9 / ULTRA-RARE-Under-20-Families-2026 / Renal-TIN-ESRD-15-20pct / Retinal-20-30pct / CHF-5-8pct / NO-Situs-NO-Joubert / CHROMOSOME-21q22.3-Not-Trisomy-21 / Autosomal-Recessive-Biallelic-LOF / OMIM-Gene-C21orf2-603503-Disease-616012-SRTD12-ATD12)",
+    "status": "built",
+    "category": "ciliopathy-srtd",
+    "route": "/api/srtd12",
+    "frontend": "/srtd12",
+    "seed": 407,
+    "cohort_n": 40,
+    "built_date": "2026-08-26"
   }
 ]
