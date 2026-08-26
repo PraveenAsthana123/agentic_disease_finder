@@ -36167,6 +36167,32 @@ async def bbs16_definitions():
     except Exception as e:
         return {"error": str(e)}
 
+# ── BBS17 / LZTFL1 (BBSome Ciliary Entry Gatekeeper) ─────────────────────────
+# 40-patient cohort seed-365; 3 endpoints /api/bbs17/overview|breakdown|definitions
+@app.get("/api/bbs17/overview")
+async def bbs17_overview():
+    try:
+        import scripts.bbs17_dashboard as bbs17_
+        return _json_safe(bbs17_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs17/breakdown")
+async def bbs17_breakdown():
+    try:
+        import scripts.bbs17_dashboard as bbs17_
+        return _json_safe(bbs17_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs17/definitions")
+async def bbs17_definitions():
+    try:
+        import scripts.bbs17_dashboard as bbs17_
+        return _json_safe(bbs17_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
 
 if __name__ == "__main__":
     import os

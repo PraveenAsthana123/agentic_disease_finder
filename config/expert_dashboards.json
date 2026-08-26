@@ -7635,5 +7635,19 @@
     "cohort_seed": 363,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "name": "Bardet-Biedl Syndrome Type 17 (BBS17-LZTFL1-HIPPI-Bardet-Biedl-Syndrome-Type-17-BBSome-Ciliary-Entry-Gatekeeper-Hh-Smo-Gate-Ciliopathy / LZTFL1-HIPPI-299aa-Leucine-Zipper-TF-Like-LZ-Domain-BBS9-PTHB1-Interface-C-Term-Phospho-Gate-606568 / Chr-2p22.1 / LZTFL1-ONLY-BBSome-CILIARY-ENTRY-GATEKEEPER-NOT-Assembly-NOT-BCC-NOT-TZ-NOT-IFT / BBS17-LOF-BBSome-CANNOT-ENTER-Cilia-Entry-Failure-OPPOSITE-BBS15-Exit-Failure / Cilia-FULL-LENGTH-Present-NOT-Shortened-Contrast-BBS16 / Smo-FAILS-Ciliary-Entry-Pathognomonic-BBS17 / LZTFL1-TULP3-Co-Scaffold-GPR75-GPR161-GPCR-Import-Blocked-Dual-Hh-cAMP-Defect / South-Asian-Pakistan-Enrichment-Trp203Ter-Most-Common-Null / Renal-Structural-Cystic-42pct-NOT-NPHP / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-55pct / Obesity-68pct / Cognitive-LD-40pct / Hypogonadism-48pct / Anosmia-44pct / CHD-6pct / Single-Disease-Tier-BBS17-Only / Frequency-Less-1pct-Very-Rare-20-35-Families-2026 / Tri-Allelic-BBS-2pct / ~1-1000000-3000000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 2p22.1 / OMIM-Gene-LZTFL1-606568-Disease-615991)",
+    "id": "bbs17",
+    "disease": "LZTFL1 Bardet-Biedl Syndrome Type 17 (BBS17-LZTFL1-BBSome-Entry-Gate-2p22.1-LOF-Ciliopathy / LZTFL1-HIPPI-299aa-LZ-Domain-BBS9-Interface-Phospho-Gate-606568 / Chr-2p22.1 / BBSome-Entry-Failure-Smo-Blocked / Single-BBS17-Tier / ~1-1000000-3000000 / AR-Biallelic-LOF / 2p22.1 / OMIM-Gene-LZTFL1-606568-Disease-615991)",
+    "route": "/bbs17",
+    "api_endpoints": [
+      "/api/bbs17/overview",
+      "/api/bbs17/breakdown",
+      "/api/bbs17/definitions"
+    ],
+    "status": "built",
+    "category": "Ciliopathy",
+    "subcategory": "Bardet-Biedl Syndrome"
   }
 ]
