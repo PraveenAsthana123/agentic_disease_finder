@@ -7047,5 +7047,14 @@
     "cohort_n": 40,
     "seed": 383,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd11",
+    "name": "WDR34 Short-Rib Thoracic Dysplasia 11 (SRTD11-Jeune-ATD11-Asphyxiating-Thoracic-Dystrophy-11 / WDR34-WD-Repeat-Domain-34-536aa-6-Blade-WD40-Beta-Propeller-Dynein2-Intermediate-Chain-Opposite-WDR60-604126 / Chr-9q34.11 / THIRD-MOST-COMMON-Dynein2-Subunit-SRTD-3-5pct-After-DYNC2H1-SRTD3-50pct-WDR60-SRTD8-5-10pct / WDR34-Opposite-WDR60-Contacts-DYNC2LI1-SRTD15-And-DYNC2H1-Stem / IFT-B-Accumulates-Ciliary-Tip-Club-Cilia-EM-Same-As-SRTD3-SRTD8 / NARROW-THORAX-PRIMARY-PATHOGNOMONIC / Polydactyly-45pct / Renal-TIN-ESRD-30-40pct-Survivors / Retinal-Rod-Cone-15-20pct / CHF-10pct / NO-Situs-Inversus / NO-Joubert-MTS / VEPTR-MAGEC / SRPS-Spectrum-Biallelic-Null-More-Lethal-Than-WDR60 / Renal-Transplant-CURATIVE / ~1-500000-1000000-30-50-Families-2026 / OMIM-Gene-604126-Disease-615633)",
+    "status": "built",
+    "api": "/api/srtd11/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 385,
+    "registered": "2026-08-26"
   }
 ]

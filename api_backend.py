@@ -35325,6 +35325,38 @@ async def srtd8_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# WDR34 Short-Rib Thoracic Dysplasia 11 (SRTD11) — Jeune Asphyxiating Thoracic Dystrophy type 11
+# WDR34 (*604126) — 9q34.11 — 536 aa — dynein-2 WD40 6-blade β-propeller intermediate chain;
+# opposite side of dynein-2 tail from WDR60 (SRTD8); contacts DYNC2H1 and DYNC2LI1;
+# 40-patient cohort seed-385; 3 endpoints /api/srtd11/overview|breakdown|definitions
+@app.get("/api/srtd11/overview")
+async def srtd11_overview():
+    """WDR34/SRTD11 — dynein-2 WD40 6-blade β-propeller intermediate chain; 9q34.11; 536aa;
+opposite side of tail from WDR60/SRTD8; ~3-5% of SRTD; retrograde IFT failure; narrow thorax primary;
+40-patient cohort seed-385; 3 endpoints /api/srtd11/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd11_dashboard as srtd11_
+        return _json_safe(srtd11_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd11/breakdown")
+async def srtd11_breakdown():
+    try:
+        import scripts.srtd11_dashboard as srtd11_
+        return _json_safe(srtd11_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd11/definitions")
+async def srtd11_definitions():
+    try:
+        import scripts.srtd11_dashboard as srtd11_
+        return _json_safe(srtd11_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
