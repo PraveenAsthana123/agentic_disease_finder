@@ -35697,6 +35697,35 @@ async def srtd2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-411; 3 endpoints /api/srtd14/overview|breakdown|definitions
+@app.get("/api/srtd14/overview")
+async def srtd14_overview():
+    """IFT43 (C14orf179) Short-Rib Thoracic Dysplasia 14 (SRTD14/ATD14) — IFT-A peripheral C-cap stabilizer;
+smallest IFT-A subunit (362 aa; alpha-helical); short stubby cilia; CED3-like dual phenotype; 14q24.3;
+40-patient cohort seed-411; 3 endpoints /api/srtd14/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd14_dashboard as srtd14_
+        return _json_safe(srtd14_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd14/breakdown")
+async def srtd14_breakdown():
+    try:
+        import scripts.srtd14_dashboard as srtd14_
+        return _json_safe(srtd14_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd14/definitions")
+async def srtd14_definitions():
+    try:
+        import scripts.srtd14_dashboard as srtd14_
+        return _json_safe(srtd14_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

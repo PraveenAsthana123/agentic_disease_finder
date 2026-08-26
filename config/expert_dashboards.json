@@ -7243,5 +7243,14 @@
       "/api/srtd2/breakdown",
       "/api/srtd2/definitions"
     ]
+  },
+  {
+    "id": "srtd14",
+    "name": "IFT43 Short-Rib Thoracic Dysplasia 14 (SRTD14-Jeune-ATD14-Asphyxiating-Thoracic-Dystrophy-14 / IFT43-C14orf179-Intraflagellar-Transport-43-362aa-Entirely-Alpha-Helical-IFT-A-Peripheral-C-Cap-Stabilizer-SMALLEST-IFT-A-Subunit-614068 / Chr-14q24.3 / SIXTH-FINAL-IFT-A-SRTD-Completes-IFT-A-Subunit-Table / SHORT-STUBBY-CILIA-IFT-A-Class / CED3-Like-Alpha-Helix-5-Hypomorphic / Under-10-15-Families-2026 / OMIM-Gene-IFT43-614068-Disease-616546-SRTD14-ATD14)",
+    "status": "built",
+    "api": "/api/srtd14/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 411,
+    "registered": "2026-08-26"
   }
 ]
