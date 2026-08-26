@@ -7521,5 +7521,24 @@
     "chromosome": "4q27",
     "disease_omim": "#209900",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs8",
+    "name": "BBS8 Bardet-Biedl Syndrome Type 8 (BBS8-TTC8-Bardet-Biedl-Syndrome-Type-8-BBSome-IFT-B-Docking-Arm-TPR-Solenoid-Ciliopathy / TTC8-Tetratricopeptide-Repeat-Domain-8-598aa-13-TPR-Domains-Solenoid-IFT-B-Bridge-608132 / Chr-14q32.11 / TTC8-ONLY-BBSome-Subunit-That-Directly-Contacts-IFT-B-Via-IFT38-CLUAP1-TPR7-9 / BBSome-ASSEMBLES-NORMALLY-At-PCM1-Satellites-BBS8-LOF-Fails-At-IFT-B-Docking-Most-Distal-Step / Anti-BBS2-IF-NORMAL-Anti-BBS4-IF-NORMAL-Anti-MKKS-IF-NORMAL-Only-Anti-BBS8-Absent-BBS8-Fingerprint / PCM1-CoIF-BBS2-Puncta-At-Satellites-BBSome-Assembled-Stranded-Pathognomonic-BBS8-LOF / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-62pct / Obesity-82pct-LepR-Mis-Trafficking / Cognitive-LD-43pct / Renal-Anomaly-40pct / Hypogonadism-62pct / Anosmia-58pct / CHD-4pct-LOWEST-BBS1-8 / Arg229Trp-c685C-T-TPR3-BBS1-BBS7-Interface-European / Thr347Met-c1040C-T-TPR7-Direct-IFT38-CLUAP1-Contact-South-Asian / Arg413Gln-c1238G-A-TPR8-9-Dual-IFT38-ARL6-Docking-MENA / Val479Ala-c1436T-C-TPR10-Hydrophobic-Core-European / Glu391Ter-c1171G-T-Truncating-Null-Pan-Ethnic / Frequency-2-4pct-All-BBS / Tri-Allelic-BBS-5pct-BBS9-Most-Common-Third-Allele / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 14q32.11 / OMIM-Gene-TTC8-608132-Disease-209900)",
+    "status": "built",
+    "route": "/bbs8",
+    "api_endpoints": [
+      "/api/bbs8/overview",
+      "/api/bbs8/breakdown",
+      "/api/bbs8/definitions"
+    ],
+    "cohort_n": 40,
+    "seed": 347,
+    "gene": "TTC8",
+    "gene_alias": "BBS8",
+    "omim_gene": "*608132",
+    "chromosome": "14q32.11",
+    "disease_omim": "#209900",
+    "registered": "2026-08-26"
   }
 ]

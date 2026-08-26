@@ -35925,6 +35925,32 @@ async def bbs7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-347; 3 endpoints /api/bbs8/overview|breakdown|definitions
+@app.get("/api/bbs8/overview")
+async def bbs8_overview():
+    try:
+        import scripts.bbs8_dashboard as bbs8_
+        return _json_safe(bbs8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs8/breakdown")
+async def bbs8_breakdown():
+    try:
+        import scripts.bbs8_dashboard as bbs8_
+        return _json_safe(bbs8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs8/definitions")
+async def bbs8_definitions():
+    try:
+        import scripts.bbs8_dashboard as bbs8_
+        return _json_safe(bbs8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
