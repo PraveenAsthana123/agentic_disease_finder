@@ -7546,5 +7546,15 @@
     "name": "BBS9 Bardet-Biedl Syndrome Type 9 (BBS9-PTHB1-Bardet-Biedl-Syndrome-Type-9-BBSome-Inter-Module-Bridge-Subunit-Ciliopathy / PTHB1-Parathyroid-Hormone-Responsive-B9-Domain-Protein-1-495aa-N-Term-Core-Contact-Central-Bridge-C-Term-Peripheral-Contact-607968 / Chr-7p14.3 / PTHB1-ONLY-BBSome-Subunit-That-Spans-BOTH-Core-Module-BBS2-BBS7-AND-Peripheral-Module-BBS1-BBS4-BBS5-BBS8 / PTHB1-LOF-Core-And-Peripheral-Half-Complexes-Each-Form-But-CANNOT-Join-Sub-Complex-Phenotype / Anti-BBS2-IF-REDUCED-NOT-ABSENT-Sub-Complex-Present-Anti-MKKS-IF-NORMAL-BCC-Intact / BBS9-Most-Common-Third-Allele-Across-BBS-Spectrum / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-60pct / Obesity-80pct-LepR-Mis-Trafficking / Cognitive-LD-46pct / Renal-Anomaly-39pct / Hypogonadism-61pct / Anosmia-57pct / CHD-5pct / Ala217Pro-c649G-C-European / Pro189Leu-c566C-T-South-Asian / Arg336Trp-c1006C-T-MENA / Glu412Ter-c1234G-T-Truncating-Null-Pan-Ethnic / Frequency-2pct-All-BBS / Tri-Allelic-BBS-6pct-BBS2-Most-Common-Third-Allele / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 7p14.3 / OMIM-Gene-PTHB1-607968-Disease-209900)",
     "status": "built",
     "route": "/bbs9"
+  },
+  {
+    "id": "bbs10",
+    "name": "BBS10 Bardet-Biedl Syndrome Type 10 (BBS10-C12orf58-Bardet-Biedl-Syndrome-Type-10-BCC-Beta-Ring-Structural-Subunit-BBSome-Chaperonin-Ciliopathy / BBS10-C12orf58-723aa-BCC-Beta-Ring-Structural-Subunit-MKKS-BBS10-BBS12-Trimer-610148 / Chr-12q21.2 / BBS10-ONLY-BCC-Beta-Ring-Subunit-Bridges-MKKS-Alpha-And-BBS12-Gamma-In-BBSome-Chaperonin-Complex / BCC-Co-Folds-BBS2-BBS7-WD40-Barrels-Before-BBSome-Assembly-Step-0 / BBS10-LOF-BCC-Trimer-Collapses-MKKS-Monomeric-REDUCED-NOT-ABSENT-BBS2-BBS7-Misfold / MKKS-REDUCED-NOT-ABSENT-Is-BBS10-Fingerprint-vs-MKKS-ABSENT-In-BBS6-MKKS-LOF / BBS10-SECOND-MOST-COMMON-BBS-GENE-20pct-Tied-With-BBS1-25pct-BBS1-Plus-BBS10-40-45pct-All-BBS / European-French-North-African-Maghrebi-Highest-Frequency-30pct-Plus-In-These-Groups / Rod-Cone-Dystrophy-Rod-FIRST-Scotopic-Extinguished-Same-BBS1-BBS2-BBS3-BBS4-BBS5-BBS6-BBS7-BBS8-BBS9-Pattern / Post-Axial-Polydactyly-68pct / Obesity-85pct-LepR-Mis-Trafficking / Cognitive-LD-48pct / Renal-Anomaly-42pct / Hypogonadism-65pct / Anosmia-60pct / CHD-7pct / Cys91Arg-c271T-C-Apical-Domain-MKKS-BBS10-Interface-European-Newfoundland-Founder / Ile339Thr-c1016T-C-Intermediate-Hinge-BBS2-Folding-Geometry-French-Canadian / Arg462Gln-c1385G-A-Equatorial-BBS12-Docking-Surface-MENA-North-African-Maghrebi / Leu394Pro-c1181T-C-Intermediate-Hydrophobic-Core-South-Asian / Thr483Met-c1448C-T-ATP-Analog-Loop-Equatorial-Pan-Ethnic / Glu559Ter-c1675G-T-Truncating-Null-Equatorial-C-Terminus-Scaffold-Lost-Pan-Ethnic / Frequency-20pct-All-BBS-Highest-Frequency-European-North-African-Cohorts / Tri-Allelic-BBS-8pct-BBS12-Most-Common-Third-Allele-BCC-Partner / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 12q21.2 / OMIM-Gene-BBS10-610148-Disease-209900)",
+    "status": "built",
+    "route": "/bbs10",
+    "api_prefix": "/api/bbs10",
+    "cohort_n": 40,
+    "seed": 351,
+    "registered": "2026-08-26"
   }
 ]
