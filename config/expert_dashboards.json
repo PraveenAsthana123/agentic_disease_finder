@@ -6894,5 +6894,10 @@
       "/api/nphp11/definitions"
     ],
     "registered": "2026-08-25"
+  },
+  {
+    "id": "nphp12",
+    "name": "Nephronophthisis Type 12 (Nephronophthisis-Type-12-NPHP12-TTC21B-IFT139-IFT-A-Retrograde-Complex / TTC21B-1317aa-18-TPR-Superhelix-NPHPF1-THM1 / Chr-2q24.3-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3 / ONLY-NPHP-IFT-A-Retrograde-Loss / ATD4-Jeune-Biallelic-Null-7pct / Pure-Renal-83pct / NO-CHF-NO-Joubert-NO-Situs-NO-Retinal / 40-patient-cohort-seed-363 / 3-endpoints-verified-200)",
+    "status": "built"
   }
 ]

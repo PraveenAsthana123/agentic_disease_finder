@@ -34951,6 +34951,37 @@ async def nphp11_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-363; 3 endpoints /api/nphp12/overview|breakdown|definitions
+# NPHP12 — TTC21B (IFT139/NPHPF1/THM1) — 2q24.3 — IFT-A retrograde complex — OMIM *612014 / #613820
+@app.get("/api/nphp12/overview")
+async def nphp12_overview():
+    """Nephronophthisis Type 12 (TTC21B/IFT139) — IFT-A retrograde — NPHP12 / ATD4.
+    40-patient cohort seed-363; 3 endpoints /api/nphp12/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp12_dashboard as nphp12_
+        return _json_safe(nphp12_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp12/breakdown")
+async def nphp12_breakdown():
+    try:
+        import scripts.nphp12_dashboard as nphp12_
+        return _json_safe(nphp12_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp12/definitions")
+async def nphp12_definitions():
+    try:
+        import scripts.nphp12_dashboard as nphp12_
+        return _json_safe(nphp12_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
