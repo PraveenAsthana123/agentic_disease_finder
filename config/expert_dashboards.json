@@ -7558,6 +7558,21 @@
     "registered": "2026-08-26"
   },
   {
+    "id": "bbs11",
+    "name": "BBS11 Bardet-Biedl Syndrome Type 11 (BBS11-TRIM32-Bardet-Biedl-Syndrome-Type-11-E3-Ubiquitin-Ligase-HDAC6-Ciliary-Tubulin-Homeostasis-Ciliopathy / TRIM32-Tripartite-Motif-Containing-32-653aa-RING-Finger-B-Box-Coiled-Coil-6-NHL-Repeats-602290 / Chr-9q33.1 / TRIM32-ONLY-E3-Ubiquitin-Ligase-Among-All-BBS-Causative-Proteins / BBSome-FULLY-INTACT-All-Subunits-Normal-IF-Only-TRIM32-Absent / LGMD2H-LGMD-R11-Allele-Specific / Pro130Ser-Hutterite-European-LGMD2H / Ala502Val-European-BBS-Specific / Asp487Asn-MENA-Dual / Arg394Trp-South-Asian / Leu619Ter-Pan-Ethnic / Rod-Cone-Dystrophy-55pct-Polydactyly / CHD-3pct-Lowest / Less-Than-2pct-BBS / 9q33.1 / OMIM-602290-209900-254110 / 40-patient-cohort-seed-355 / 3-endpoints-verified-200)",
+    "status": "built",
+    "route": "/bbs11",
+    "api_endpoints": [
+      "/api/bbs11/overview",
+      "/api/bbs11/breakdown",
+      "/api/bbs11/definitions"
+    ],
+    "cohort_seed": 355,
+    "cohort_n": 40,
+    "category": "ciliopathy-bbsyndrome",
+    "registered": "2026-08-26"
+  },
+  {
     "id": "bbs12",
     "name": "BBS12 Bardet-Biedl Syndrome Type 12 (BBS12-Bardet-Biedl-Syndrome-Type-12-BCC-Gamma-Ring-Structural-Subunit-BBSome-Chaperonin-Ciliopathy / BBS12-729aa-BCC-Gamma-Ring-Structural-Subunit-MKKS-BBS10-BBS12-Trimer-610188 / Chr-4q27 / BBS12-ONLY-BCC-Gamma-Ring-Subunit-Docks-MKKS-Alpha-Equatorial-Contacts-BBS10-Beta-Apical / BCC-Co-Folds-BBS2-BBS7-WD40-Barrels-Before-BBSome-Assembly-Step-0 / BBS12-LOF-BCC-Trimer-Collapses-MKKS-REDUCED-BBS10-REDUCED-BBS2-BBS7-Misfold / BBS12-ABSENT-IF-MKKS-REDUCED-BBS10-REDUCED-BBS2-ABSENT-Gene-Panel-Definitive-Discriminator-vs-BBS10 / BBS12-MOST-COMMON-3rd-Allele-BBS10-Tri-Allelic-Families-BCC-Beta-Ring-Partner / BBS12-Enriched-North-African-Maghrebi-MENA-Consanguineous-Stoetzel-2007-Nat-Genet / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-65pct / Obesity-82pct / Cognitive-LD-47pct / Renal-Anomaly-41pct / Hypogonadism-63pct / Anosmia-58pct / CHD-6pct / Arg140Cys-c418C-T-North-African-Founder / Leu287Pro-c860T-C-South-Asian / Arg445Trp-c1333C-T-European / Thr501Met-c1502C-T-Pan-Ethnic / Glu563Ter-c1687G-T-Truncating-Null / c1063+5G-A-Splice-European / Frequency-5-8pct-All-BBS / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 4q27 / OMIM-Gene-BBS12-610188-Disease-209900",
     "status": "built",

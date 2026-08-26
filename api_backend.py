@@ -36005,6 +36005,33 @@ async def bbs10_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BBS11 Bardet-Biedl Syndrome Type 11 (TRIM32) ─────────────────────────────
+# 40-patient cohort seed-355; 3 endpoints /api/bbs11/overview|breakdown|definitions
+@app.get("/api/bbs11/overview")
+async def bbs11_overview():
+    try:
+        import scripts.bbs11_dashboard as bbs11_
+        return _json_safe(bbs11_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs11/breakdown")
+async def bbs11_breakdown():
+    try:
+        import scripts.bbs11_dashboard as bbs11_
+        return _json_safe(bbs11_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs11/definitions")
+async def bbs11_definitions():
+    try:
+        import scripts.bbs11_dashboard as bbs11_
+        return _json_safe(bbs11_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # ── BBS12 Bardet-Biedl Syndrome Type 12 ──────────────────────────────────────
 # 40-patient cohort seed-353; 3 endpoints /api/bbs12/overview|breakdown|definitions
 @app.get("/api/bbs12/overview")
