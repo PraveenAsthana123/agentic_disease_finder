@@ -7488,5 +7488,20 @@
     "cohort_seed": 341,
     "cohort_n": 40,
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "bbs6",
+    "name": "BBS6 Bardet-Biedl Syndrome Type 6 / MKKS (BBS6-MKKS-McKusick-Kaufman-Syndrome-Gene-Bardet-Biedl-Syndrome-Type-6-BBSome-Chaperonin-Co-Chaperone-BCC-Upstream-Folding-Ciliopathy / MKKS-570aa-Group-II-Chaperonin-Like-Alpha-Subunit-Homolog-Apical-Intermediate-Equatorial-No-ATPase-604896 / Chr-20p12 / MKKS-ONLY-Founding-Member-BBSome-Chaperonin-Complex-BCC-MKKS-BBS10-BBS12-Trimer / BCC-Co-Folds-BBS2-BBS7-WD40-Barrels-BBS9-Before-BBSome-Assembly-Begins / MKKS-LOF-BCC-Destabilised-BBS2-BBS7-BBS9-Misfold-Degrade-BBSome-Core-Module-Step-0-Fails / Most-Upstream-BBSome-Biogenesis-Factor-Known-Upstream-Of-BBS2-Itself / Anti-BBS2-IF-Absent-MKKS-Null-Identical-BBS2-LOF-Anti-BBS10-BBS12-IF-Also-Abnormal-Unique-BBS6-Fingerprint / McKusick-Kaufman-Overlap-Hypomorphic-Ile339Val-Amish-Hydrometrocolpos-Polydactyly-CHD-No-Retinal-Renal / Ile339Val-c1015A-G-Amish-Founder-BCC-BBS10-Interface-Hypomorphic-McKusick-Kaufman-NOT-Full-BBS / Ala242Ser-c724G-T-Apical-BBS2-Contact-Hinge-BBS2-Folding-60pct-Reduced-European / Arg517His-c1550G-A-Equatorial-BBS12-Docking-Lost-BCC-Destabilised-South-Asian-MENA / Glu292Ter-c874G-T-Truncating-Null-Equatorial-Domain-Lost-Pan-Ethnic / Rod-Cone-Dystrophy-Rod-FIRST-Scotopic-Extinguished-Same-BBS1-BBS5-Pattern / Post-Axial-Polydactyly-65pct / Obesity-80pct-LepR-Mis-Trafficking / Cognitive-LD-45pct / Renal-Anomaly-42pct / Hypogonadism-60pct / Anosmia-55pct / CHD-8pct-HIGHEST-BBS1-6-MKKS-Cardiac-Cushion-Morphogenesis / Frequency-5-8pct-All-BBS-3rd-5th-After-BBS1-BBS10-BBS2 / Tri-Allelic-BBS-5pct-BBS10-BBS12-Third-Allele-BCC-Partner / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 20p12 / OMIM-Gene-MKKS-604896-Disease-209900-McKusick-Kaufman-236700)",
+    "status": "built",
+    "endpoints": [
+      "/api/bbs6/overview",
+      "/api/bbs6/breakdown",
+      "/api/bbs6/definitions"
+    ],
+    "component": "portal-next/app/bbs6/page.jsx",
+    "route": "/bbs6",
+    "seed": 343,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]

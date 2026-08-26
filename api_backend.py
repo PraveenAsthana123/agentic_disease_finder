@@ -35871,6 +35871,33 @@ async def bbs5_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# BBS6 — Bardet-Biedl Syndrome Type 6 (MKKS/BBS6 — BBSome Chaperonin Co-Chaperone; group II chaperonin-like; BCC trimer with BBS10+BBS12)
+# 40-patient cohort seed-343; 3 endpoints /api/bbs6/overview|breakdown|definitions
+@app.get("/api/bbs6/overview")
+async def bbs6_overview():
+    try:
+        import scripts.bbs6_dashboard as bbs6_
+        return _json_safe(bbs6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs6/breakdown")
+async def bbs6_breakdown():
+    try:
+        import scripts.bbs6_dashboard as bbs6_
+        return _json_safe(bbs6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs6/definitions")
+async def bbs6_definitions():
+    try:
+        import scripts.bbs6_dashboard as bbs6_
+        return _json_safe(bbs6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
