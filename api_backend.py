@@ -35614,6 +35614,34 @@ async def srtd13_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-405; 3 endpoints /api/srtd6/overview|breakdown|definitions
+@app.get("/api/srtd6/overview")
+async def srtd6_overview():
+    """NEK1 Short-Rib Thoracic Dysplasia 6 (SRTD6/ATD6/Majewski) — basal-body kinase; absent/rudimentary cilia; 4q33;
+40-patient cohort seed-405; 3 endpoints /api/srtd6/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd6_dashboard as srtd6_
+        return _json_safe(srtd6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd6/breakdown")
+async def srtd6_breakdown():
+    try:
+        import scripts.srtd6_dashboard as srtd6_
+        return _json_safe(srtd6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd6/definitions")
+async def srtd6_definitions():
+    try:
+        import scripts.srtd6_dashboard as srtd6_
+        return _json_safe(srtd6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

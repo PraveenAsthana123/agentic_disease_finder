@@ -7198,5 +7198,22 @@
     "cohort_n": 40,
     "note": "RAREST IFT-B2 SRTD (<10 families worldwide 2016\u20132026); CLUAP1/IFT38 is the IFT-B2 hub that directly contacts IFT80 (SRTD1) N-terminal WD40 AND bridges IFT-B1 to IFT-B2 (linchpin role); shortened cilia EM class (same IFT-B2 class as SRTD1/IFT80 and SRTD10/IFT172); Roosing et al. 2016 J Clin Invest; under-ascertained (CLUAP1 absent from pre-2016 SRTD panels); 3 endpoints verified 200; registered 2026-08-26",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd6",
+    "status": "built",
+    "title": "",
+    "route": "/srtd6",
+    "api_prefix": "/api/srtd6",
+    "seed": 405,
+    "built_date": "2026-08-26",
+    "gene": "NEK1",
+    "omim_gene": "604588",
+    "omim_disease": "263520",
+    "disease_name": "Short-Rib Thoracic Dysplasia 6 (SRTD6/ATD6/Majewski)",
+    "chromosome": "4q33",
+    "molecular_class": "Basal Body Kinase (fourth SRTD class \u2014 distinct from IFT-B2, IFT-A, Dynein-2)",
+    "ciliary_em": "Absent/Rudimentary",
+    "notes": "NEK1 kinase; TTBK2 phosphorylation; CP110 removal; ciliogenesis initiation failure; highest polydactyly (65-75%); hydrops fetalis unique (20%); medianasal hypoplasia (30%); Majewski/SRPS-II spectrum"
   }
 ]
