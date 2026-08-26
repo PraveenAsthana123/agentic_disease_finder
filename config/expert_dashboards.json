@@ -7649,5 +7649,22 @@
     "status": "built",
     "category": "Ciliopathy",
     "subcategory": "Bardet-Biedl Syndrome"
+  },
+  {
+    "name": "BBS18 Bardet-Biedl Syndrome Type 18 (BBS18-BBIP1-BBIP10-Bardet-Biedl-Syndrome-Type-18-BBSome-8th-Core-Subunit-Assembly-Failure-Ciliopathy / BBIP1-BBIP10-232aa-Coiled-Coil-Bridge-BBS9-Scaffold-To-BBS2-BBS7-Lid-613605 / Chr-10q25.2 / BBIP1-8TH-INTEGRAL-BBSOME-SUBUNIT-CC-Domain-Bridge-BBS9-BBS2-BBS7-Assembly-Failure-Unique / BBIP1-LOF-BBSome-OCTAMER-FAILS-TO-FORM-All-BBSome-Subunits-Absent-From-Cilia-Assembly-Failure / MKKS-BCC-NORMAL-MKS1-TZ-NORMAL-IFT-NORMAL-Cilia-FULL-LENGTH-Only-BBSome-Assembly-Fails / MENA-Consanguineous-Enrichment-Leu150del-First-Reported-Scheidecker-2014-Nat-Genet / Renal-Structural-Cystic-30pct-NOT-NPHP / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-50pct / Obesity-65pct / Cognitive-LD-35pct / Hypogonadism-45pct / Anosmia-40pct / CHD-4pct / Frequency-Less-1pct-Rarest-BBS-10-20-Families-2026 / Tri-Allelic-BBS-2pct / ~1-3000000-5000000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 10q25.2 / OMIM-Gene-BBIP1-613605-Disease-615994)",
+    "id": "bbs18",
+    "disease": "BBIP1 Bardet-Biedl Syndrome Type 18 (BBS18-BBIP1-BBSome-Assembly-Failure-10q25.2-LOF-Ciliopathy / BBIP1-232aa-CC-Bridge-BBS9-BBS2-BBS7-613605 / Chr-10q25.2 / Assembly-Failure-Rarest-BBS / ~1-3000000-5000000 / AR-Biallelic-LOF / 10q25.2 / OMIM-Gene-BBIP1-613605-Disease-615994)",
+    "route": "/bbs18",
+    "api_endpoints": [
+      "/api/bbs18/overview",
+      "/api/bbs18/breakdown",
+      "/api/bbs18/definitions"
+    ],
+    "status": "built",
+    "category": "Ciliopathy",
+    "subcategory": "Bardet-Biedl Syndrome",
+    "cohort_n": 40,
+    "seed": 367,
+    "registered": "2026-08-26"
   }
 ]

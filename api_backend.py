@@ -36194,6 +36194,32 @@ async def bbs17_definitions():
         return {"error": str(e)}
 
 
+# 40-patient cohort seed-367; 3 endpoints /api/bbs18/overview|breakdown|definitions
+@app.get("/api/bbs18/overview")
+async def bbs18_overview():
+    try:
+        import scripts.bbs18_dashboard as bbs18_
+        return _json_safe(bbs18_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs18/breakdown")
+async def bbs18_breakdown():
+    try:
+        import scripts.bbs18_dashboard as bbs18_
+        return _json_safe(bbs18_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs18/definitions")
+async def bbs18_definitions():
+    try:
+        import scripts.bbs18_dashboard as bbs18_
+        return _json_safe(bbs18_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
