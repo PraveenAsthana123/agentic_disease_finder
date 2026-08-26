@@ -34982,6 +34982,68 @@ async def nphp12_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-365; 3 endpoints /api/nphp13/overview|breakdown|definitions
+# NPHP13 — WDR19 (IFT144/ATD5/NPHP13) — 4p14 — IFT-A largest subunit — OMIM *608151 / #614377 / CED1 #218330
+@app.get("/api/nphp13/overview")
+async def nphp13_overview():
+    """Nephronophthisis Type 13 / CED1 / Sensenbrenner syndrome (WDR19/IFT144) — IFT-A retrograde largest subunit.
+    40-patient cohort seed-365; 3 endpoints /api/nphp13/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp13_dashboard as nphp13_
+        return _json_safe(nphp13_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp13/breakdown")
+async def nphp13_breakdown():
+    try:
+        import scripts.nphp13_dashboard as nphp13_
+        return _json_safe(nphp13_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp13/definitions")
+async def nphp13_definitions():
+    try:
+        import scripts.nphp13_dashboard as nphp13_
+        return _json_safe(nphp13_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 40-patient cohort seed-367; 3 endpoints /api/nphp14/overview|breakdown|definitions
+# Nephronophthisis Type 14 / Joubert Syndrome 19 — ZNF423/EBFAZ; ONLY DDR-protein NPHP; JBTS19 40-50%; NO retinal
+@app.get("/api/nphp14/overview")
+async def nphp14_overview():
+    """Nephronophthisis Type 14 / JBTS19 — ZNF423/EBFAZ; ONLY DDR-protein NPHP; nuclear zinc finger;
+    40-patient cohort seed-367; 3 endpoints /api/nphp14/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp14_dashboard as nphp14_
+        return _json_safe(nphp14_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp14/breakdown")
+async def nphp14_breakdown():
+    try:
+        import scripts.nphp14_dashboard as nphp14_
+        return _json_safe(nphp14_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp14/definitions")
+async def nphp14_definitions():
+    try:
+        import scripts.nphp14_dashboard as nphp14_
+        return _json_safe(nphp14_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

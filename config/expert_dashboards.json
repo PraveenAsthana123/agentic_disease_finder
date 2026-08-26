@@ -6899,5 +6899,33 @@
     "id": "nphp12",
     "name": "Nephronophthisis Type 12 (Nephronophthisis-Type-12-NPHP12-TTC21B-IFT139-IFT-A-Retrograde-Complex / TTC21B-1317aa-18-TPR-Superhelix-NPHPF1-THM1 / Chr-2q24.3-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3 / ONLY-NPHP-IFT-A-Retrograde-Loss / ATD4-Jeune-Biallelic-Null-7pct / Pure-Renal-83pct / NO-CHF-NO-Joubert-NO-Situs-NO-Retinal / 40-patient-cohort-seed-363 / 3-endpoints-verified-200)",
     "status": "built"
+  },
+  {
+    "id": "nphp13",
+    "name": "Nephronophthisis Type 13 / Cranioectodermal Dysplasia 1 / Sensenbrenner Syndrome (Nephronophthisis-Type-13-NPHP13-CED1-Sensenbrenner-WDR19-IFT144-ATD5-WD40-Beta-Propeller-1330aa-12-WD40-Repeats-Largest-IFT-A-Subunit / WDR19-IFT144-TTC21B-IFT139-NPHP12-Direct-IFT-A-Binding-Partner-Beta-Propeller-TPR-Interface / Chr-4p14-EVC-EVC2-4p16-Adjacent-Loci-Confusion-WES-Mandatory / ONLY-NPHP-ECTODERMAL-CED1-Hypotrichosis-Sparse-Hair-Hyponychia-Nails-Hypodontia-Dental / LARGEST-IFT-A-SUBUNIT-WD40-Beta-Propeller-Platform-Nucleates-IFT-A-Assembly-Broadest-Multi-Organ / NPHP13-RENAL-ESRD-15-20yr-TIN-Cysts-Concentrating-Defect / RETINAL-20-30pct-Rod-Cone-WDR19-Expressed-Photoreceptors / CHF-10-15pct / SRTD5-8pct / EVC-MOST-COMMON-MISDIAGNOSIS / NO-SITUS-NO-JOUBERT / ALLELE-SPECTRUM-Null-CED1-Hypomorphic-NPHP13 / p.Gly630Arg-European-Most-Common / Renal-Transplant-CURATIVE-No-Recurrence / ~1-500000-1000000 / AR-Biallelic-LOF / 4p14 / OMIM-Gene-WDR19-608151-Disease-614377-CED1-218330-SRTD5-613091)",
+    "status": "built",
+    "route": "/nphp13",
+    "api_endpoints": [
+      "/api/nphp13/overview",
+      "/api/nphp13/breakdown",
+      "/api/nphp13/definitions"
+    ],
+    "cohort_seed": 365,
+    "cohort_n": 40,
+    "registered": "2026-08-25"
+  },
+  {
+    "id": "nphp14",
+    "name": "Nephronophthisis Type 14 / Joubert Syndrome 19 (Nephronophthisis-Type-14-NPHP14-JBTS19-ZNF423-EBFAZ-OAZ-Zinc-Finger-Protein-423-1284aa-30-C2H2-Kruppel-Zinc-Fingers-Nuclear-DDR-Protein / ZNF423-CEP290-Direct-Binding-ATM-PARP1-DDR-Ciliogenesis-BBS10-BBS12-Transcription / Chr-16q12.1 / ONLY-NPHP-DDR-Protein-JBTS19-40-50pct-NO-Retinal-NO-CHF-NO-Situs / OMIM-Gene-ZNF423-604085-Disease-614844)",
+    "status": "built",
+    "route": "/nphp14",
+    "api_endpoints": [
+      "/api/nphp14/overview",
+      "/api/nphp14/breakdown",
+      "/api/nphp14/definitions"
+    ],
+    "cohort_seed": 367,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]
