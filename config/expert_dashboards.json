@@ -7141,5 +7141,25 @@
       "/api/srtd17/definitions"
     ],
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd1",
+    "name": "IFT80 Short-Rib Thoracic Dysplasia 1 (SRTD1 / ATD1 / Jeune Syndrome)",
+    "gene": "IFT80",
+    "omim_gene": "611229",
+    "omim_disease": "208500",
+    "chromosome": "3q25.33",
+    "complex": "IFT-B2 (anterograde, distal subcomplex)",
+    "status": "built",
+    "endpoints": [
+      "/api/srtd1/overview",
+      "/api/srtd1/breakdown",
+      "/api/srtd1/definitions"
+    ],
+    "page": "/srtd1",
+    "seed": 399,
+    "cohort_n": 40,
+    "note": "FOUNDING SRTD GENE (Beales et al., 2007, Nature Genetics) \u2014 first gene identified for Jeune ATD; IFT-B2 WD40 beta-propeller; shortened cilia EM class (distinct from IFT-A short stubby and dynein-2 club); 3 endpoints verified 200; registered 2026-08-26",
+    "registered": "2026-08-26"
   }
 ]

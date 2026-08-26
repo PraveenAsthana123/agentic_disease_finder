@@ -35530,6 +35530,34 @@ async def srtd4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-399; 3 endpoints /api/srtd1/overview|breakdown|definitions
+@app.get("/api/srtd1/overview")
+async def srtd1_overview():
+    """IFT80 Short-Rib Thoracic Dysplasia 1 (SRTD1/ATD1) — founding SRTD gene (Beales 2007); IFT-B2 WD40 β-propeller; 3q25.33;
+40-patient cohort seed-399; 3 endpoints /api/srtd1/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd1_dashboard as srtd1_
+        return _json_safe(srtd1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd1/breakdown")
+async def srtd1_breakdown():
+    try:
+        import scripts.srtd1_dashboard as srtd1_
+        return _json_safe(srtd1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd1/definitions")
+async def srtd1_definitions():
+    try:
+        import scripts.srtd1_dashboard as srtd1_
+        return _json_safe(srtd1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
