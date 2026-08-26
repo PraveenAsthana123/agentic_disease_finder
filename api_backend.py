@@ -35416,6 +35416,36 @@ async def srtd17_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SRTD9 — IFT140 Short-Rib Thoracic Dysplasia 9 (ATD9) ──────────────────────────────────────
+# IFT140-1462aa-WD40-beta-propeller-C-terminal-TPR-IFT-A-Complex-Core-Scaffold-614620
+# 40-patient cohort seed-391; 3 endpoints /api/srtd9/overview|breakdown|definitions
+@app.get("/api/srtd9/overview")
+async def srtd9_overview():
+    """IFT140 SRTD9 overview: 40-patient cohort; IFT-A complex; short/stubby cilia vs club tip dynein-2;
+40-patient cohort seed-391; 3 endpoints /api/srtd9/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd9_dashboard as srtd9_
+        return _json_safe(srtd9_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd9/breakdown")
+async def srtd9_breakdown():
+    try:
+        import scripts.srtd9_dashboard as srtd9_
+        return _json_safe(srtd9_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd9/definitions")
+async def srtd9_definitions():
+    try:
+        import scripts.srtd9_dashboard as srtd9_
+        return _json_safe(srtd9_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

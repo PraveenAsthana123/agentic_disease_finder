@@ -7049,6 +7049,26 @@
     "registered": "2026-08-26"
   },
   {
+    "id": "srtd9",
+    "name": "IFT140 Short-Rib Thoracic Dysplasia 9 (Short-Rib-Thoracic-Dysplasia-9-SRTD9-Jeune-ATD9-Asphyxiating-Thoracic-Dystrophy-9 / IFT140-Intraflagellar-Transport-Protein-140-1462aa-IFT-A-Complex-Core-Scaffold-WD40-Beta-Propeller-N-Terminal-TPR-C-Terminal-614620 / Chr-16p13.3 / SECOND-MOST-COMMON-IFT-A-SRTD-After-WDR19-SRTD5 / IFT-A-NOT-Dynein-2-Motor / SHORT-STUBBY-CILIA-EM-NOT-Club-Tip-Dynein-2-SRTD / IFT-B-Import-Defect-Cilia-Base-Transition-Zone / Hedgehog-Failure / Polydactyly-45-50pct / Renal-20-30pct / Retinal-15-20pct / CHF-8-12pct / NO-Situs-NO-Joubert / Renal-Tx-CURATIVE / ~1-200000-500000 / AR-Biallelic-LOF / OMIM-Gene-614620-Disease-266920-SRTD9-ATD9)",
+    "status": "built",
+    "route": "/srtd9",
+    "api_prefix": "/api/srtd9",
+    "gene": "IFT140",
+    "chromosome": "16p13.3",
+    "omim_gene": "614620",
+    "omim_disease": "266920",
+    "inheritance": "AR",
+    "cohort_n": 40,
+    "seed": 391,
+    "endpoints": [
+      "/api/srtd9/overview",
+      "/api/srtd9/breakdown",
+      "/api/srtd9/definitions"
+    ],
+    "registered": "2026-08-26"
+  },
+  {
     "id": "srtd11",
     "name": "WDR34 Short-Rib Thoracic Dysplasia 11 (SRTD11-Jeune-ATD11-Asphyxiating-Thoracic-Dystrophy-11 / WDR34-WD-Repeat-Domain-34-536aa-6-Blade-WD40-Beta-Propeller-Dynein2-Intermediate-Chain-Opposite-WDR60-604126 / Chr-9q34.11 / THIRD-MOST-COMMON-Dynein2-Subunit-SRTD-3-5pct-After-DYNC2H1-SRTD3-50pct-WDR60-SRTD8-5-10pct / WDR34-Opposite-WDR60-Contacts-DYNC2LI1-SRTD15-And-DYNC2H1-Stem / IFT-B-Accumulates-Ciliary-Tip-Club-Cilia-EM-Same-As-SRTD3-SRTD8 / NARROW-THORAX-PRIMARY-PATHOGNOMONIC / Polydactyly-45pct / Renal-TIN-ESRD-30-40pct-Survivors / Retinal-Rod-Cone-15-20pct / CHF-10pct / NO-Situs-Inversus / NO-Joubert-MTS / VEPTR-MAGEC / SRPS-Spectrum-Biallelic-Null-More-Lethal-Than-WDR60 / Renal-Transplant-CURATIVE / ~1-500000-1000000-30-50-Families-2026 / OMIM-Gene-604126-Disease-615633)",
     "status": "built",
