@@ -6927,5 +6927,14 @@
     "cohort_seed": 367,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp15",
+    "name": "Nephronophthisis Type 15 (Nephronophthisis-Type-15-NPHP15-CEP164-Centrosomal-Protein-164-1460aa-Distal-Appendage-Scaffold-Mother-Centriole-Transition-Fiber-DAP-Ring-TTBK2-Phospho-Target-Ser172 / CEP164-CEP83-SCLT1-FBF1-LRRC45-DAP-Hierarchy-Central-Hub-RABIN8-Rab8a-CP110-Removal-Ciliogenesis / Chr-11q23.3-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3-WDR19-NPHP13-4p14-ZNF423-NPHP14-16q12.1-CEP164-NPHP15-11q23.3 / SENIOR-L\u00d8KEN-SYNDROME-SLS-35-40pct-Retinal-Dystrophy-Rod-Cone-CEP164-Expressed-Photoreceptor-Connecting-Cilia / LCA-LIKE-10pct-Null-x-Null-ERG-Extinguished / NPHP1-DIRECT-BINDING-PARTNER-WW-Like-561-820aa-DAP-TZ-Bridge-NPHP4-Also-Binds / NO-JOUBERT-NO-ID-NO-CHF-NO-SITUS-CEP164-Not-Joubert-Gene-Not-Neuronal-Not-Biliary-Not-Nodal / ESRD-Median-13-15yr-Similar-NPHP1 / NPHP1-MLPA-Misses-CEP164-11q23.3 / LCA-Workup-Misses-Renal-SLS / Renal-Transplant-CURATIVE / Retinal-Independent / OMIM-Gene-614848-Disease-614845)",
+    "status": "built",
+    "api": "/api/nphp15/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 369,
+    "registered": "2026-08-26"
   }
 ]

@@ -35044,6 +35044,36 @@ async def nphp14_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── NPHP15 — Nephronophthisis Type 15 (CEP164 / NPHP15) ──────────────────────
+# 40-patient cohort seed-369; 3 endpoints /api/nphp15/overview|breakdown|definitions
+
+@app.get("/api/nphp15/overview")
+async def nphp15_overview():
+    """Nephronophthisis Type 15 — CEP164 distal appendage ciliopathy.
+    40-patient cohort seed-369; 3 endpoints /api/nphp15/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp15_dashboard as nphp15_
+        return _json_safe(nphp15_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp15/breakdown")
+async def nphp15_breakdown():
+    try:
+        import scripts.nphp15_dashboard as nphp15_
+        return _json_safe(nphp15_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp15/definitions")
+async def nphp15_definitions():
+    try:
+        import scripts.nphp15_dashboard as nphp15_
+        return _json_safe(nphp15_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
