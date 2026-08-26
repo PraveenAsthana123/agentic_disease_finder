@@ -6683,5 +6683,23 @@
     "cohort_n": 40,
     "seed": 337,
     "registered": "2026-08-25"
+  },
+  {
+    "name": "Primary Ciliary Dyskinesia (Primary-Ciliary-Dyskinesia-PCD-Kartagener-Syndrome-Motile-Ciliopathy / DNAH5-Dynein-Axonemal-Heavy-Chain-5-4624aa-ODA-Motor-Subunit-603335 / Chr-5p15.2-DNAH5-DNAI1-9p21.2-DNAI2-17q25.1-CCDC39-3q26.33-CCDC40-17q25.3-50-Plus-Genes / ODA-Outer-Dynein-Arm-Defect-Most-Common-70pct-Immotile-Static-Beat-Axoneme-Failure / MOTILE-CILIOPATHY-9plus2-Axoneme-Dynein-Arm-NOT-Primary-Non-Motile-TZ-Ciliopathy / Kartagener-Triad-Situs-Inversus-Bronchiectasis-Sinusitis-50pct-PCD-Nodal-Cilia-Random-Laterality / ~1-10000-20000-1-15000-Average-Underdiagnosed-Pan-Ethnic / Autosomal-Recessive-Biallelic-LOF / 5p15.2 / OMIM-Gene-DNAH5-603335-Disease-608644)",
+    "route": "/pcd",
+    "status": "built",
+    "seed": 339,
+    "gene": "DNAH5",
+    "chromosome": "5p15.2",
+    "inheritance": "AR",
+    "omim_gene": "603335",
+    "omim_disease": "608644",
+    "endpoints": [
+      "/api/pcd/overview",
+      "/api/pcd/breakdown",
+      "/api/pcd/definitions"
+    ],
+    "cohort_n": 40,
+    "registered": "2026-08-25"
   }
 ]

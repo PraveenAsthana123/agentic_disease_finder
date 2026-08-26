@@ -34600,6 +34600,33 @@ async def meckel_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pcd/overview")
+async def pcd_overview():
+    try:
+        import scripts.pcd_dashboard as pcd_
+        return _json_safe(pcd_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pcd/breakdown")
+async def pcd_breakdown():
+    try:
+        import scripts.pcd_dashboard as pcd_
+        return _json_safe(pcd_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pcd/definitions")
+async def pcd_definitions():
+    try:
+        import scripts.pcd_dashboard as pcd_
+        return _json_safe(pcd_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
