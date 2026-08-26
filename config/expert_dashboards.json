@@ -7226,5 +7226,22 @@
     "seed": 407,
     "cohort_n": 40,
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "srtd2",
+    "title": "IFT122 Short-Rib Thoracic Dysplasia 2 (SRTD2/ATD2/CED2) \u2014 IFT-A ARM Hub",
+    "status": "built",
+    "category": "rare-disease",
+    "gene": "IFT122",
+    "omim_gene": "606045",
+    "omim_disease": "611263",
+    "chromosome": "3q21.3-q22.1",
+    "seed": 409,
+    "built_date": "2026-08-26",
+    "endpoints": [
+      "/api/srtd2/overview",
+      "/api/srtd2/breakdown",
+      "/api/srtd2/definitions"
+    ]
   }
 ]

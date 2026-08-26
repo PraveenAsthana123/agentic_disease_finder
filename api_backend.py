@@ -35669,6 +35669,33 @@ async def srtd12_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# 40-patient cohort seed-409; 3 endpoints /api/srtd2/overview|breakdown|definitions
+@app.get("/api/srtd2/overview")
+async def srtd2_overview():
+    """IFT122 (WDR10) Short-Rib Thoracic Dysplasia 2 (SRTD2/ATD2/CED2) —
+40-patient cohort seed-409; 3 endpoints /api/srtd2/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd2_dashboard as srtd2_
+        return _json_safe(srtd2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd2/breakdown")
+async def srtd2_breakdown():
+    try:
+        import scripts.srtd2_dashboard as srtd2_
+        return _json_safe(srtd2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd2/definitions")
+async def srtd2_definitions():
+    try:
+        import scripts.srtd2_dashboard as srtd2_
+        return _json_safe(srtd2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
