@@ -6741,10 +6741,10 @@
   },
   {
     "id": "nphp1",
-    "name": "Nephronophthisis Type 1 (Nephronophthisis-Type-1-NPHP1-Juvenile-Nephronophthisis-Senior-Loken-Syndrome-1 / NPHP1-Nephrocystin-1-732aa-SH3-Ankyrin-Coiled-Coil-TZ-Scaffold-607100 / Chr-2q13 / MOST-COMMON-Inherited-Cause-ESRD-Under-25 / Homozygous-290kb-Deletion-80pct-MLPA-Array-CGH / ESRD-Median-13yr / Senior-Loken-Syndrome-10-15pct / Pure-Renal-No-CHF-No-Situs / ~1-50000-100000 / AR-Biallelic-LOF / OMIM-Gene-607100-Disease-256100)",
+    "name": "Nephronophthisis Type 1 (Nephronophthisis-Type-1-NPHP1-Juvenile-Nephronophthisis-MOST-COMMON-NPHP-80-85pct / NPHP1-Nephrocystin-1-736aa-TZ-Y-Link-NPHP1-4-8-Supercomplex-607100 / Chr-2q13-290kb-Del-66-80pct-MLPA-P369-First-Line / Juvenile-ESRD-Median-13yr / Senior-Loken-SLS1-10-15pct / JBTS4-5pct / NO-Situs-Inversus-NO-CHF / seed-341 / 3-endpoints-verified-200 / 2026-08-26)",
     "status": "built",
-    "api": "/api/nphp/overview|breakdown|definitions",
-    "route": "/nphp",
+    "api": "/api/nphp1/overview|breakdown|definitions",
+    "route": "/nphp1",
     "cohort_n": 40,
     "seed": 341,
     "registered": "2026-08-26"

@@ -34654,6 +34654,41 @@ async def nphp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Nephronophthisis Type 1 (NPHP1 — Juvenile; NPHP1/2q13; Nephrocystin-1) ─────────────────
+# Most common NPHP (~80-85% of solved cases); 290kb deletion 2q13 (66-80%); MLPA P369 first line;
+# juvenile ESRD median 13yr; Senior-Løken Syndrome 1 (SLS1) 10-15%; Joubert Syndrome 4 5%;
+# NO situs inversus; NO CHF; NO ID; 40-patient cohort seed-341; 3 endpoints verified 200
+@app.get("/api/nphp1/overview")
+async def nphp1_overview():
+    """NPHP1 Juvenile Nephronophthisis Dashboard — overview: NPHP1 (2q13) 736aa TZ Y-link
+    scaffold (NPHP1-4-8 supercomplex); 290kb del 2q13 66-80% (MLPA P369 first line); juvenile
+    ESRD median 13yr; SLS1 retinal 10-15%; JBTS4 5%; most common inherited ESRD children;
+    40-patient cohort seed-341; 3 endpoints /api/nphp1/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp1_dashboard as nphp1_
+        return _json_safe(nphp1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp1/breakdown")
+async def nphp1_breakdown():
+    try:
+        import scripts.nphp1_dashboard as nphp1_
+        return _json_safe(nphp1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp1/definitions")
+async def nphp1_definitions():
+    try:
+        import scripts.nphp1_dashboard as nphp1_
+        return _json_safe(nphp1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/nphp2/overview")
 async def nphp2_overview():
     """NPHP2 Infantile Nephronophthisis Dashboard — overview: INVS (9q31.1) 1065aa IFT-zone
