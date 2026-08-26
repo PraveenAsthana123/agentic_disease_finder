@@ -7503,5 +7503,23 @@
     "seed": 343,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs7",
+    "name": "BBS7 Bardet-Biedl Syndrome Type 7 (BBS7-Bardet-Biedl-Syndrome-Type-7-BBSome-Core-Dimer-WD40-BBS2-Obligate-Partner-Ciliopathy / BBS7-BBS2L1-672aa-WD40-Beta-Propeller-7-Blades-Obligate-BBS2-Heterodimer-Core-Module-607590 / Chr-4q27 / BBS7-ONLY-WD40-Beta-Propeller-BBS2-Dimer-Partner-Core-Module-Scaffold-Step-0-BBSome-Assembly / BBS2-BBS7-Obligate-Heterodimer-Structural-Spine-BBSome-Octamer-Core-Module / BBS7-LOF-BBS2-Orphaned-Proteasomal-Degradation-BBSome-Core-Module-Step-0-Fails-Identical-BBS2-LOF / Anti-MKKS-IF-NORMAL-BBS7-LOF-Folding-Succeeded-Assembly-Failed-Key-Distinction-BBS6 / Anti-BBS2-Absent-Anti-BBS7-Absent-MKKS-Normal-BBS10-BBS12-Normal-Same-As-BBS2-LOF / Gene-Panel-Only-Discriminator-BBS2-Vs-BBS7-No-Clinical-Cellular-Marker-Separates / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-63pct / Obesity-80pct-LepR-Mis-Trafficking / Cognitive-LD-45pct / Renal-Anomaly-40pct / Hypogonadism-60pct / Anosmia-55pct / CHD-5pct / Pro532Arg-c1595C-G-WD40-Repeat-6-7-BBS9-Bridge-Contact-European / Arg184Gln-c551G-A-NCoil-BBS2-Dimer-Interface-MENA / Leu523Pro-c1568T-C-WD40-Barrel-Core-South-Asian / Trp375Ter-c1124G-A-Truncating-Null-Pan-Ethnic / Frequency-2-4pct-All-BBS / Tri-Allelic-BBS-7pct-BBS2-Most-Common-Third-Allele-Core-Dimer-Partner / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 4q27 / OMIM-Gene-BBS7-607590-Disease-209900)",
+    "status": "built",
+    "route": "/bbs7",
+    "api_endpoints": [
+      "/api/bbs7/overview",
+      "/api/bbs7/breakdown",
+      "/api/bbs7/definitions"
+    ],
+    "cohort_n": 40,
+    "seed": 345,
+    "gene": "BBS7",
+    "omim_gene": "*607590",
+    "chromosome": "4q27",
+    "disease_omim": "#209900",
+    "registered": "2026-08-26"
   }
 ]
