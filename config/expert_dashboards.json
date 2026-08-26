@@ -7434,5 +7434,23 @@
       "VGKC"
     ],
     "inheritance": "Acquired \u2014 Antibody-mediated autoimmune"
+  },
+  {
+    "id": "bbs3",
+    "name": "BBS3 Bardet-Biedl Syndrome Type 3 (BBS3-ARL6-Bardet-Biedl-Syndrome-Type-3-BBSome-Membrane-Recruiter-GTPase-Ciliopathy / ARL6-ADP-Ribosylation-Factor-Like-GTPase-6-186aa-GTPase-Domain-Switch-I-Switch-II-Interswitch-Membrane-Anchor-608845 / Chr-3q11.2 / ARL6-ONLY-Small-GTPase-In-BBS-Pathway-Molecular-Switch-For-BBSome-Membrane-Docking / BBSome-INTACT-In-BBS3-Unlike-BBS2-Where-BBSome-Misassembles-Failure-At-Membrane-Recruitment-Step-NOT-Assembly / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-63pct / Obesity-78pct-LepR-Mis-Trafficking / Cognitive-LD-45pct / Renal-Anomaly-38pct / Hypogonadism-62pct / Anosmia-58pct / NO-Dominant-Ethnic-Founder-Contrast-BBS1-M390R-BBS2-R631P / Leu93Pro-Switch-II-GDP-Locked-European / Arg122Trp-Interswitch-BBS1-Dock-Lost-MENA / Thr31Ile-P-Loop-GTP-Binding-Abolished / Ile195Thr-C-Terminal-Membrane-Anchor-South-Asian / DRUG-TARGETABLE-GTPASE-CYCLE-GEF-Activator-Unique-To-BBS3 / Frequency-3-5pct-All-BBS / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 3q11.2 / OMIM-Gene-ARL6-608845-Disease-209900)",
+    "status": "built",
+    "gene": "ARL6",
+    "omim_gene": "608845",
+    "omim_disease": "209900",
+    "chromosome": "3q11.2",
+    "endpoints": [
+      "/api/bbs3/overview",
+      "/api/bbs3/breakdown",
+      "/api/bbs3/definitions"
+    ],
+    "frontend": "portal-next/app/bbs3/page.jsx",
+    "cohort_seed": 337,
+    "cohort_n": 40,
+    "built_date": "2026-08-26"
   }
 ]

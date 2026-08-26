@@ -35789,6 +35789,34 @@ async def bbs2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# BBS3 Bardet-Biedl Syndrome Type 3 (ARL6 / BBSome membrane recruiter GTPase / 3q11.2)
+# 40-patient cohort seed-337; 3 endpoints /api/bbs3/overview|breakdown|definitions
+@app.get("/api/bbs3/overview")
+async def bbs3_overview():
+    """BBS3 Bardet-Biedl Syndrome Type 3 — overview (cohort KPIs, BBS pathway comparison, retinal stages)."""
+    try:
+        import scripts.bbs3_dashboard as bbs3_
+        return _json_safe(bbs3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs3/breakdown")
+async def bbs3_breakdown():
+    try:
+        import scripts.bbs3_dashboard as bbs3_
+        return _json_safe(bbs3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs3/definitions")
+async def bbs3_definitions():
+    try:
+        import scripts.bbs3_dashboard as bbs3_
+        return _json_safe(bbs3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
