@@ -7588,5 +7588,14 @@
     "cohort_n": 40,
     "seed": 357,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs14",
+    "name": "BBS14 Bardet-Biedl Syndrome Type 14 (BBS14-CEP290-Bardet-Biedl-Syndrome-Type-14-TZ-Y-Link-Scaffold-NPHP-MKS-JBTS-Module-Multi-Ciliopathy-Hub-Ciliopathy / CEP290-Centrosomal-Protein-290kDa-2479aa-CC1-CC2-NPHP5-IQCB1-Interaction-CC3-Scaffold-CC4-CC5-Y-Link-Anchoring-610142 / Chr-12q21.32 / CEP290-SECOND-BBS-GENE-NOT-IN-BBSome-OR-BCC-TZ-Y-Link-Scaffold-Distal-TZ-Position / BBSome-NORMAL-MKS1-NORMAL-CEP290-ABSENT-NPHP5-IQCB1-Deranged-KEY-Distinction-From-BBS13 / CEP290-MOST-COMMONLY-MUTATED-CILIOPATHY-GENE-OVERALL-LCA10-JBTS5-NPHP6-MKS4-SLSN6-BBS14 / ALLELE-CLASS-Null-Null-MKS4-Lethal-Hypomorphic-BBS14-Or-LCA10-IVS26plus1655A-G-LCA10-BBS14-Spectrum / Renal-NPHP-Dominant-NO-Liver-Fibrosis-Distinguishes-BBS14-From-BBS13 / JBTS5-Overlap-10pct / LCA10-Spectrum-8pct / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-50pct / Obesity-65pct / Cognitive-LD-38pct / Renal-Anomaly-51pct-NPHP / Hypogonadism-48pct / Anosmia-42pct / CHD-4pct / Ile1925Asn-c5774T-A-CC4-European / Ser1521Trp-c4562C-G-CC3-MENA / Lys1575Met-c4724A-T-South-Asian / IVS26plus1655A-G-Deep-Intronic-LCA10-European / Arg1933Ter-c5797C-T-Truncating-Pan-Ethnic / Frequency-Less-Than-1-2pct-All-BBS / Tri-Allelic-BBS-2pct / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 12q21.32 / OMIM-Gene-CEP290-610142-Disease-209900-LCA10-611755-JBTS5-610188-MKS4-611134 / 40-patient-cohort-seed-359 / 3-endpoints-verified-200",
+    "status": "built",
+    "api": "/api/bbs14/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 359,
+    "registered": "2026-08-26"
   }
 ]
