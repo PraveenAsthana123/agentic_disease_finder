@@ -6740,6 +6740,36 @@
     "category": "ciliopathy"
   },
   {
+    "id": "nphp1",
+    "name": "Nephronophthisis Type 1 (Nephronophthisis-Type-1-NPHP1-Juvenile-Nephronophthisis-Senior-Loken-Syndrome-1 / NPHP1-Nephrocystin-1-732aa-SH3-Ankyrin-Coiled-Coil-TZ-Scaffold-607100 / Chr-2q13 / MOST-COMMON-Inherited-Cause-ESRD-Under-25 / Homozygous-290kb-Deletion-80pct-MLPA-Array-CGH / ESRD-Median-13yr / Senior-Loken-Syndrome-10-15pct / Pure-Renal-No-CHF-No-Situs / ~1-50000-100000 / AR-Biallelic-LOF / OMIM-Gene-607100-Disease-256100)",
+    "status": "built",
+    "api": "/api/nphp/overview|breakdown|definitions",
+    "route": "/nphp",
+    "cohort_n": 40,
+    "seed": 341,
+    "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp2",
+    "name": "Nephronophthisis Type 2 / Infantile Nephronophthisis (Nephronophthisis-Type-2-NPHP2-Infantile-INVS-Inversin-1065aa-IFT-Zone-Boundary-Wnt-Switch-243305 / Chr-9q31.1 / INFANTILE-ESRD-Median-3yr-Earliest-All-NPHP / SITUS-INVERSUS-30-50pct-UNIQUE-Nodal-Cilia-Dysfunction / ENLARGED-Kidneys-ARPKD-Mimic / CHF-55pct-Ductal-Plate / NO-Retinal / ~1-100000-200000 / AR-Biallelic-LOF / OMIM-Gene-243305-Disease-602088)",
+    "status": "built",
+    "api": "/api/nphp2/overview|breakdown|definitions",
+    "route": "/nphp2",
+    "cohort_n": 40,
+    "seed": 343,
+    "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp7",
+    "name": "Nephronophthisis Type 7 (Nephronophthisis-Type-7-NPHP7-GLIS2-Pure-Renal-Ciliopathy-Zinc-Finger-Transcription-Factor-525aa-C2H2-ZF-Kidney-Enriched-608539 / Chr-16p13.3 / PURE-RENAL-No-Retinal-No-CHF-No-Situs-No-Joubert / ADOLESCENT-ESRD-Median-16-20yr / EMT-Interstitial-Fibrosis-SHH-Downstream / VERY-RARE-50-80-Families / ~1-1000000 / AR-Biallelic-LOF / OMIM-Gene-608539-Disease-611498)",
+    "status": "built",
+    "api": "/api/nphp7/overview|breakdown|definitions",
+    "route": "/nphp7",
+    "cohort_n": 40,
+    "seed": 353,
+    "registered": "2026-08-26"
+  },
+  {
     "id": "nphp3",
     "name": "Nephronophthisis Type 3 (Nephronophthisis-Type-3-NPHP3-Adolescent-Nephronophthisis-NPHP3-Nephrocystin-3 / NPHP3-Nephrocystin-3-1330aa-TZ-Scaffold-NPHP1-NPHP3-NPHP4-Module-608002 / Chr-3q22.1-Multi-Locus-20-Plus-Genes / TZ-Gate-Dysfunction-NPHP1-3-4-Module-Hedgehog-Wnt-PCP-Failure / ADOLESCENT-ESRD-Median-19yr / SITUS-INVERSUS-15-20pct-Less-Penetrant-NPHP2 / KIDNEYS-SMALL-Echogenic-NOT-Enlarged / CHF-45pct-Ductal-Plate / NO-Senior-Loken / ~1-200000-500000 / Autosomal-Recessive-Biallelic-LOF / 3q22.1 / OMIM-Gene-NPHP3-608002-Disease-604387)",
     "route": "/nphp3",
