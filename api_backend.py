@@ -34824,6 +34824,38 @@ async def nphp7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── NPHP8 / RPGRIP1L / Joubert Type 7 ──────────────────────────────────────
+# 40-patient cohort seed-355; 3 endpoints /api/nphp8/overview|breakdown|definitions
+
+@app.get("/api/nphp8/overview")
+async def nphp8_overview():
+    """Nephronophthisis Type 8 (RPGRIP1L/NPHP8) / JBTS7 / MKS5 —
+    40-patient cohort seed-355; 3 endpoints /api/nphp8/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp8_dashboard as nphp8_
+        return _json_safe(nphp8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp8/breakdown")
+async def nphp8_breakdown():
+    try:
+        import scripts.nphp8_dashboard as nphp8_
+        return _json_safe(nphp8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp8/definitions")
+async def nphp8_definitions():
+    try:
+        import scripts.nphp8_dashboard as nphp8_
+        return _json_safe(nphp8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

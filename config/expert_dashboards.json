@@ -6813,7 +6813,7 @@
   },
   {
     "title": "Nephronophthisis Type 7",
-    "subtitle": "GLIS2/NPHP7 — Pure Renal Ciliopathy; Adolescent/Young-Adult ESRD 16–20yr; Very Rare ~1/1M; NO Extra-Renal Features",
+    "subtitle": "GLIS2/NPHP7 \u2014 Pure Renal Ciliopathy; Adolescent/Young-Adult ESRD 16\u201320yr; Very Rare ~1/1M; NO Extra-Renal Features",
     "status": "built",
     "route": "/nphp7",
     "api_prefix": "/api/nphp7",
@@ -6830,5 +6830,23 @@
       "/api/nphp7/definitions"
     ],
     "registered": "2026-08-25"
+  },
+  {
+    "id": "nphp8",
+    "name": "Nephronophthisis Type 8 / Joubert Syndrome Type 7 (Nephronophthisis-Type-8-NPHP8-RPGRIP1L-JBTS7-MKS5-Broadest-Allele-Phenotype-Spectrum-NPHP-After-CEP290 / RPGRIP1L-Retinitis-Pigmentosa-GTPase-Regulator-Interacting-Protein-1-Like-1315aa-TZ-Scaffold-Coiled-Coil-C2-RPGR-Interacting-Domain-610937 / Chr-16q12.2 / NPHP1-4-8-Ternary-TZ-Module-RPGRIP1L-Binds-NPHP4-Direct / BROADEST-NPHP-Spectrum-After-CEP290-MKS5-JBTS7-NPHP8-Pure / MOLAR-TOOTH-SIGN-JBTS7-40-45pct-Brain-MRI-Mandatory / DIGENIC-RPGRIP1L-Mono-Plus-NPHP4-Mono-Equals-Joubert / Retinal-25-35pct-JBTS7-CHF-15-20pct-JBTS7-NO-Situs / ESRD-15-18yr-Pure-12-15yr-JBTS7 / p.Arg826Ter-Pan-Ethnic / p.Leu1048Pro-JBTS7-Middle-Eastern / p.Glu1243Lys-Amish / ~1-200000-500000 / AR-Biallelic-LOF / OMIM-Gene-610937-Disease-613237)",
+    "status": "built",
+    "route": "/nphp8",
+    "api_endpoints": [
+      "/api/nphp8/overview",
+      "/api/nphp8/breakdown",
+      "/api/nphp8/definitions"
+    ],
+    "cohort_seed": 355,
+    "cohort_n": 40,
+    "gene": "RPGRIP1L",
+    "chromosome": "16q12.2",
+    "omim_gene": "610937",
+    "omim_disease": "613237",
+    "registered": "2026-08-26"
   }
 ]
