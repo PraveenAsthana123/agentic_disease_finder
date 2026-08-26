@@ -7363,5 +7363,51 @@
     ],
     "omim_disease": "#609812",
     "inheritance": "Autosomal Dominant \u2014 50% recurrence"
+  },
+  {
+    "id": "genetic-epilepsy",
+    "name": "Genetic Epilepsy Syndromes (SCN1A-Dravet-Spectrum / KCNQ2-Neonatal-Self-Limited-Epilepsy / Familial-Genetic-Epilepsy / Pharmacogenomics-SCN1A-Drug-Interactions / Gene-Panel-Epilepsy-3-Distinct-Genes-17-Genetic-Cases / Drug-Resistant-5-Cases-Drug-Responsive-4 / Pediatric-Onset-6-Cases / Avg-Onset-30.1yr / 172-SCN1A-PGx-Records / KCNQ2-Neonatal-Onset-Benign-Self-Limiting / SCN1A-Dravet-JME-Spectrum-Sodium-Channel-LOF / Familial-52pct-Most-Common / Carbamazepine-Phenytoin-Lamotrigine-CONTRAINDICATED-SCN1A / Phenobarbital-Valproate-Clobazam-Preferred / Stiripentol-Dravet / No-Chromosomal-Abnormality-Monogenic-Panel-Mandatory)",
+    "disease": "Genetic Epilepsy Syndromes \u2014 SCN1A/KCNQ2/Familial from clinical.db seizure_metadata 71 rows + pharmacogenomics 172 rows; 17 genetic-etiology cases",
+    "status": "built",
+    "route": "/genetic-epilepsy",
+    "api_routes": [
+      "/api/genetic-epilepsy/overview",
+      "/api/genetic-epilepsy/breakdown",
+      "/api/genetic-epilepsy/definitions"
+    ],
+    "script": "scripts/genetic_epilepsy_dashboard.py",
+    "cohort_size": 17,
+    "built_date": "2026-08-26",
+    "category": "epilepsy-syndromes",
+    "genes": [
+      "SCN1A",
+      "KCNQ2"
+    ],
+    "inheritance": "Autosomal Dominant / De novo"
+  },
+  {
+    "id": "autoimmune-epilepsy",
+    "name": "Autoimmune Epilepsy (Antibody-Mediated-Epilepsy / NMDA-R-Anti-NMDAR-Encephalitis-35pct / LGI1-Leucine-Rich-Glioma-Inactivated-1-22pct / CASPR2-Contactin-Associated-Protein-Like-2-14pct / GABA-B-Receptor-Limbic-Encephalitis-12pct / AMPA-R-9pct / VGKC-Complex-8pct / Immunotherapy-Steroids-IVIG-Plasma-Exchange-Rituximab-Cyclophosphamide-Azathioprine-Mycophenolate / Remission-48.8pct / CSF-Positive-31.7pct / MRI-Abnormal-71pct / Paraneoplastic-9-Cases / Treatment-Response-Good-First-Line-80pct / Relapse-Risk-NMDAR-25pct / 41-Patient-Cohort-All-Antibody-Positive / Steroid-First-Line-ALL-Types / Rituximab-Cyclophosphamide-Second-Line-Refractory / Azathioprine-Mycophenolate-Maintenance / AMPA-R-Paraneoplastic-HIGH-Relapse-Rituximab-Mandatory)",
+    "disease": "Autoimmune Epilepsy \u2014 6 antibody types (NMDA-R, LGI1, CASPR2, GABA-B, AMPA-R, VGKC); 41 patients; immunotherapy monitoring",
+    "status": "built",
+    "route": "/autoimmune-epilepsy",
+    "api_routes": [
+      "/api/autoimmune-epilepsy/overview",
+      "/api/autoimmune-epilepsy/breakdown",
+      "/api/autoimmune-epilepsy/definitions"
+    ],
+    "script": "scripts/autoimmune_epilepsy_dashboard.py",
+    "cohort_size": 41,
+    "built_date": "2026-08-26",
+    "category": "epilepsy-immunology",
+    "genes": [
+      "NMDA-R",
+      "LGI1",
+      "CASPR2",
+      "GABA-B",
+      "AMPA-R",
+      "VGKC"
+    ],
+    "inheritance": "Acquired \u2014 Antibody-mediated autoimmune"
   }
 ]
