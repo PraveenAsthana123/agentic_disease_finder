@@ -35296,6 +35296,35 @@ async def srtd3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-383; 3 endpoints /api/srtd8/overview|breakdown|definitions
+@app.get("/api/srtd8/overview")
+async def srtd8_overview():
+    """WDR60/SRTD8 — dynein-2 WD40 β-propeller intermediate chain; 7q36.3; 1173aa;
+2nd most common dynein-2-subunit SRTD (~5-10%); retrograde IFT failure; narrow thorax primary;
+40-patient cohort seed-383; 3 endpoints /api/srtd8/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd8_dashboard as srtd8_
+        return _json_safe(srtd8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd8/breakdown")
+async def srtd8_breakdown():
+    try:
+        import scripts.srtd8_dashboard as srtd8_
+        return _json_safe(srtd8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd8/definitions")
+async def srtd8_definitions():
+    try:
+        import scripts.srtd8_dashboard as srtd8_
+        return _json_safe(srtd8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

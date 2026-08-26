@@ -7038,5 +7038,14 @@
     "cohort_n": 40,
     "seed": 381,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd8",
+    "name": "WDR60 Short-Rib Thoracic Dysplasia 8 (SRTD8-Jeune-ATD8-Asphyxiating-Thoracic-Dystrophy-8 / WDR60-WD-Repeat-Domain-60-1173aa-7-Blade-WD40-Beta-Propeller-Dynein2-Intermediate-Chain-615462 / Chr-7q36.3 / SECOND-MOST-COMMON-Dynein2-Subunit-SRTD-5-10pct-After-DYNC2H1-SRTD3-50pct / Retrograde-IFT-Failure-WDR60-Destabilises-Dynein2-Tail-Complex-Opposite-WDR34-SRTD11 / IFT-B-Accumulates-Ciliary-Tip-Club-Cilia-EM-Same-As-SRTD3 / Hedgehog-Ihh-Shh-Signalling-Failure-Chondrocytes / NARROW-THORAX-PRIMARY-PATHOGNOMONIC / Polydactyly-40pct-Postaxial / Renal-TIN-ESRD-Secondary-25-35pct-Survivors / Retinal-Rod-Cone-20-25pct / CHF-8pct / NO-Situs-Inversus-Primary-Cilia-9plus0 / NO-Joubert-MTS / VEPTR-MAGEC-Primary-Surgical / SRPS-Spectrum-Biallelic-Null / Renal-Transplant-CURATIVE / ~1-200000-500000-50-75-Families-2026 / OMIM-Gene-615462-Disease-615503)",
+    "status": "built",
+    "api": "/api/srtd8/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 383,
+    "registered": "2026-08-26"
   }
 ]
