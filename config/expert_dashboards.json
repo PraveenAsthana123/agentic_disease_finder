@@ -6936,5 +6936,25 @@
     "cohort_n": 40,
     "seed": 369,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp16",
+    "name": "Nephronophthisis Type 16 (Nephronophthisis-Type-16-NPHP16-ANKS6-PKDR1-Ankyrin-Repeat-SAM-Domain-Containing-Protein-6-982aa-12-Ankyrin-Repeats-Sterile-Alpha-Motif-Inversin-Compartment-Scaffold / ANKS6-INVS-NPHP2-NPHP3-NEK8-NPHP9-Inversin-Compartment-IC-Tetramer-Obligate-Functional-Unit-Proximal-TZ-Subdomain / Chr-9q22.33-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3-WDR19-NPHP13-4p14-ZNF423-NPHP14-16q12.1-CEP164-NPHP15-11q23.3-ANKS6-NPHP16-9q22.33 / NEK8-PHOSPHORYLATES-ANKS6-Linker-Ser-aa-541-720-IC-Scaffold-Integrity / IC-Wnt-Switch-Canonical-Beta-Catenin-Suppression-Loss-IC-Collapse-Wnt-Up-EMT-TIN-ESRD / SITUS-INVERSUS-TOTALIS-20-30pct-SECOND-NPHP-SUBTYPE-IC-Nodal-Cilia-LR-Axis-Incomplete-Penetrance / ESRD-Median-13yr-Juvenile-NPHP-Similar-NPHP1 / NO-RETINAL-NO-CHF-NO-JOUBERT-NO-ID / IC-TETRAMER-CO-SEQUENCING-MANDATORY-INVS-ANKS6-NPHP3-NEK8 / NPHP1-MLPA-MISSES-ANKS6-9q22.33-WES-Mandatory / Renal-Transplant-CURATIVE-No-Recurrence / p.Arg823Trp-c.2467C-T-European-Founder-Otto-2013-AJHG / ~1-500000-1000000-60-80-Families-2026 / Autosomal-Recessive-Biallelic-LOF / 9q22.33 / OMIM-Gene-ANKS6-615803-Disease-615862-NPHP16)",
+    "route": "/nphp16",
+    "api_prefix": "/api/nphp16",
+    "status": "built",
+    "category": "nephronophthisis",
+    "gene": "ANKS6",
+    "chromosome": "9q22.33",
+    "omim_gene": "615803",
+    "omim_disease": "615862",
+    "cohort_seed": 371,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/nphp16/overview",
+      "/api/nphp16/breakdown",
+      "/api/nphp16/definitions"
+    ],
+    "registered": "2026-08-26"
   }
 ]

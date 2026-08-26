@@ -35074,6 +35074,37 @@ async def nphp15_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-371; 3 endpoints /api/nphp16/overview|breakdown|definitions
+# NPHP16 — ANKS6 (Ankyrin Repeat and SAM Domain-Containing Protein 6); 9q22.33
+# Inversin compartment (IC) ciliopathy; IC tetramer: INVS+ANKS6+NPHP3+NEK8
+# Juvenile NPHP (ESRD ~13yr) ± situs inversus 20-30%; NO retinal; NO CHF; NO Joubert
+@app.get("/api/nphp16/overview")
+async def nphp16_overview():
+    """NPHP16 (ANKS6) — inversin compartment ciliopathy; \
+40-patient cohort seed-371; 3 endpoints /api/nphp16/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp16_dashboard as nphp16_
+        return _json_safe(nphp16_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp16/breakdown")
+async def nphp16_breakdown():
+    try:
+        import scripts.nphp16_dashboard as nphp16_
+        return _json_safe(nphp16_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp16/definitions")
+async def nphp16_definitions():
+    try:
+        import scripts.nphp16_dashboard as nphp16_
+        return _json_safe(nphp16_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
