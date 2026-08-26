@@ -7056,5 +7056,14 @@
     "cohort_n": 40,
     "seed": 385,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd15",
+    "name": "DYNC2LI1 Short-Rib Thoracic Dysplasia 15 (SRTD15-Jeune-ATD15-Asphyxiating-Thoracic-Dystrophy-15 / DYNC2LI1-D2LIC-LIC3-Dynein-Cytoplasmic-2-Light-Intermediate-Chain-1-492aa-Scaffold-Bridge-RAS-Like-GTPase-No-Catalytic-Activity-617248 / Chr-2p21 / FOURTH-MOST-COMMON-Dynein2-Subunit-SRTD-1-2pct / DYNC2LI1-Keystone-Scaffold-Bridges-DYNC2H1-To-WDR34-WDR60-No-Beta-Propeller / IFT-B-Accumulates-Ciliary-Tip-Club-Cilia-EM-Same-As-SRTD3-SRTD8-SRTD11 / NARROW-THORAX-PRIMARY-PATHOGNOMONIC / Polydactyly-35pct / Renal-TIN-ESRD-25-30pct-Survivors / Retinal-Rod-Cone-10-15pct / CHF-8pct / NO-Situs-Inversus / NO-Joubert-MTS / VEPTR-MAGEC / SRPS-Spectrum-Biallelic-Null / Renal-Transplant-CURATIVE / ~1-500000-2000000-10-20-Families-2026 / OMIM-Gene-617248-Disease-617127)",
+    "status": "built",
+    "api": "/api/srtd15/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 387,
+    "registered": "2026-08-26"
   }
 ]

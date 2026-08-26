@@ -35356,6 +35356,34 @@ async def srtd11_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ── SRTD15 / DYNC2LI1 Short-Rib Thoracic Dysplasia 15 ─────────────────────
+# 40-patient cohort seed-387; 3 endpoints /api/srtd15/overview|breakdown|definitions
+@app.get("/api/srtd15/overview")
+async def srtd15_overview():
+    """DYNC2LI1 SRTD15 (ATD15) — scaffold light intermediate chain dynein-2 — #617127 — 2p21.
+40-patient cohort seed-387; 3 endpoints /api/srtd15/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd15_dashboard as srtd15_
+        return _json_safe(srtd15_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd15/breakdown")
+async def srtd15_breakdown():
+    try:
+        import scripts.srtd15_dashboard as srtd15_
+        return _json_safe(srtd15_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd15/definitions")
+async def srtd15_definitions():
+    try:
+        import scripts.srtd15_dashboard as srtd15_
+        return _json_safe(srtd15_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
