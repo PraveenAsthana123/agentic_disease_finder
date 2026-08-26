@@ -34792,6 +34792,38 @@ async def nphp6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# NPHP7 — Nephronophthisis Type 7 (GLIS2 / 16p13.3)
+# 40-patient cohort seed-353; 3 endpoints /api/nphp7/overview|breakdown|definitions
+# ─────────────────────────────────────────────────────────────────────────────
+@app.get("/api/nphp7/overview")
+async def nphp7_overview():
+    """NPHP7/GLIS2 — pure-renal NPHP; adolescent/young-adult ESRD; 16p13.3; seed-353."""
+    try:
+        import scripts.nphp7_dashboard as nphp7_
+        return _json_safe(nphp7_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp7/breakdown")
+async def nphp7_breakdown():
+    try:
+        import scripts.nphp7_dashboard as nphp7_
+        return _json_safe(nphp7_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp7/definitions")
+async def nphp7_definitions():
+    try:
+        import scripts.nphp7_dashboard as nphp7_
+        return _json_safe(nphp7_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

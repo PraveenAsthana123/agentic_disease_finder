@@ -6810,5 +6810,25 @@
       "/api/nphp6/definitions"
     ],
     "registered": "2026-08-25"
+  },
+  {
+    "title": "Nephronophthisis Type 7",
+    "subtitle": "GLIS2/NPHP7 — Pure Renal Ciliopathy; Adolescent/Young-Adult ESRD 16–20yr; Very Rare ~1/1M; NO Extra-Renal Features",
+    "status": "built",
+    "route": "/nphp7",
+    "api_prefix": "/api/nphp7",
+    "gene": "GLIS2",
+    "chromosome": "16p13.3",
+    "omim_gene": "608539",
+    "omim_disease": "611498",
+    "inheritance": "AR",
+    "cohort_n": 40,
+    "seed": 353,
+    "endpoints": [
+      "/api/nphp7/overview",
+      "/api/nphp7/breakdown",
+      "/api/nphp7/definitions"
+    ],
+    "registered": "2026-08-25"
   }
 ]
