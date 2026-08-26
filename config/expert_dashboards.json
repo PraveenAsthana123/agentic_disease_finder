@@ -7579,5 +7579,14 @@
     "route": "/bbs12",
     "api": "/api/bbs12/overview|breakdown|definitions",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs13",
+    "name": "BBS13 Bardet-Biedl Syndrome Type 13 (BBS13-MKS1-Bardet-Biedl-Syndrome-Type-13-Transition-Zone-Scaffold-NPHP-MKS-JBTS-Module-Ciliopathy / MKS1-Meckel-Syndrome-Type-1-Protein-559aa-N-Term-NPHP4-Binding-Central-MKSR-Domain-CC2D2A-B9D1-B9D2-C-Term-NPHP4-FBF1-609883 / Chr-17q22 / MKS1-FIRST-BBS-GENE-NOT-IN-BBSome-OR-BCC-Transition-Zone-Scaffold-NOT-BBSome-Subunit-NOT-BCC-Chaperonin / BBSome-IF-NORMAL-BBS2-BBS4-BBS8-BBS9-MKKS-ALL-PRESENT-MKS1-ABSENT-TZ-Gate-Leaky-Unique-IF-Pattern / ALLELE-CLASS-CONTROLS-DISEASE-TIER-Null-Null-Meckel-Gruber-Hypomorphic-BBS13-Hypomorphic-Truncating-JBTS28 / NPHP-MKS-JBTS-Module-MKS1-CC2D2A-TMEM216-TMEM67-B9D1-B9D2-Y-Links-TZ-Gate / Renal-NPHP-Dominant-Tubular-Atrophy-Interstitial-Fibrosis-NOT-Cystic-Contrast-BBS1-12 / Liver-Fibrosis-Ductal-Plate-Malformation-12pct-Unique-Among-All-BBS-Types / JBTS28-Overlap-8pct-Molar-Tooth-Sign-Cerebellar-Vermis-Hypoplasia / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-55pct / Obesity-68pct / Cognitive-LD-42pct / Renal-Anomaly-52pct-NPHP / Hypogonadism-50pct / Anosmia-45pct / CHD-5pct / Arg470Cys-c1408C-T-MENA-North-African / c577plus1G-A-Splice-European / Ile455Val-c1363A-G-South-Asian / Arg72His-c215G-A-JBTS28-Overlap / Gln404Ter-c1210C-T-Truncating-Null-Pan-Ethnic / Leu178Pro-c532T-C-European / Frequency-1pct-All-BBS-Very-Rare / Tri-Allelic-BBS-3pct / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF-At-Least-1-Hypomorphic / 17q22 / OMIM-Gene-MKS1-609883-Disease-613464-JBTS28-614291-MKS1-249000 / 40-patient-cohort-seed-357 / 3-endpoints-verified-200",
+    "status": "built",
+    "api": "/api/bbs13/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 357,
+    "registered": "2026-08-26"
   }
 ]

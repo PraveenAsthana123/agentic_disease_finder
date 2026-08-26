@@ -36059,6 +36059,35 @@ async def bbs12_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BBS13 / MKS1 ─────────────────────────────────────────────────────────────
+# MKS1 Transition Zone scaffold — NPHP-MKS-JBTS module; first BBS gene NOT in BBSome/BCC
+# Allele class: null/null→Meckel-Gruber; hypomorphic→BBS13; hypomorphic/truncating→JBTS28
+# 40-patient cohort seed-357; 3 endpoints /api/bbs13/overview|breakdown|definitions
+@app.get("/api/bbs13/overview")
+async def bbs13_overview():
+    try:
+        import scripts.bbs13_dashboard as bbs13_
+        return _json_safe(bbs13_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs13/breakdown")
+async def bbs13_breakdown():
+    try:
+        import scripts.bbs13_dashboard as bbs13_
+        return _json_safe(bbs13_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs13/definitions")
+async def bbs13_definitions():
+    try:
+        import scripts.bbs13_dashboard as bbs13_
+        return _json_safe(bbs13_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
