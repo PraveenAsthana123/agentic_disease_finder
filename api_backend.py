@@ -35385,6 +35385,41 @@ async def srtd15_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SRTD16 / KIAA0586 Short-Rib Thoracic Dysplasia 16 ─────────────────────
+# KIAA0586 (*610178) — TALPID3 / CPLANE1 — 14q23.1 — 1,624 aa — Centriolar/CPLANE
+# scaffold; SIXTH distinct SRTD molecular class; absent/rudimentary cilia EM (same as
+# SRTD6/NEK1); Joubert JBTS23 alleles (CC3 C-terminal hypomorphic) — ONLY SRTD with
+# Joubert overlap; polydactyly 55%; ultra-rare <20 families (2026);
+# 40-patient cohort seed-413; 3 endpoints /api/srtd16/overview|breakdown|definitions
+@app.get("/api/srtd16/overview")
+async def srtd16_overview():
+    """KIAA0586 SRTD16 (ATD16) — Centriolar/CPLANE scaffold — #617098 — 14q23.1.
+40-patient cohort seed-413; 3 endpoints /api/srtd16/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd16_dashboard as srtd16_
+        return _json_safe(srtd16_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/srtd16/breakdown")
+async def srtd16_breakdown():
+    try:
+        import scripts.srtd16_dashboard as srtd16_
+        return _json_safe(srtd16_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/srtd16/definitions")
+async def srtd16_definitions():
+    try:
+        import scripts.srtd16_dashboard as srtd16_
+        return _json_safe(srtd16_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # ── SRTD17 / TCTEX1D2 Short-Rib Thoracic Dysplasia 17 ─────────────────────
 # TCTEX1D2 (*617819) — 3q21.3 — 142 aa — dynein-2 light chain (T-complex 1-like);
 # contacts WDR60 (SRTD8) β-propeller C-face; extremely rare (~5–15 families, 2026);
