@@ -34765,6 +34765,32 @@ async def nphp5_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/nphp6/overview")
+async def nphp6_overview():
+    """NPHP6/CEP290 — Senior-Løken Syndrome 6; broadest allele spectrum (LCA10/JBTS5/NPHP6/MKS4).
+    40-patient cohort seed-351; 3 endpoints /api/nphp6/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp6_dashboard as nphp6_
+        return _json_safe(nphp6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp6/breakdown")
+async def nphp6_breakdown():
+    try:
+        import scripts.nphp6_dashboard as nphp6_
+        return _json_safe(nphp6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp6/definitions")
+async def nphp6_definitions():
+    try:
+        import scripts.nphp6_dashboard as nphp6_
+        return _json_safe(nphp6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

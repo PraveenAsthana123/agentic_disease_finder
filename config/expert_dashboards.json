@@ -6789,5 +6789,26 @@
       "/api/nphp5/definitions"
     ],
     "registered": "2026-08-25"
+  },
+  {
+    "id": "nphp6",
+    "title": "Nephronophthisis Type 6 / Senior-L\u00f8ken Syndrome 6",
+    "subtitle": "CEP290/NPHP6 \u2014 Broadest Allele-Phenotype Spectrum of Any NPHP Gene; IVS26\u2192LCA10 / Truncating+Missense\u2192NPHP6 / Intermediate\u2192Joubert / Biallelic Null\u2192Meckel",
+    "status": "built",
+    "route": "/nphp6",
+    "api_prefix": "/api/nphp6",
+    "gene": "CEP290",
+    "chromosome": "12q21.32",
+    "omim_gene": "610142",
+    "omim_disease": "610189",
+    "inheritance": "AR",
+    "cohort_n": 40,
+    "seed": 351,
+    "endpoints": [
+      "/api/nphp6/overview",
+      "/api/nphp6/breakdown",
+      "/api/nphp6/definitions"
+    ],
+    "registered": "2026-08-25"
   }
 ]
