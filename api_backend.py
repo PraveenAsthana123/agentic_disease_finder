@@ -35134,6 +35134,37 @@ async def nphp17_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-375; 3 endpoints /api/nphp18/overview|breakdown|definitions
+# NPHP18 / CEP83 (CCDC41) — Chr 12q22; most proximal distal appendage (DA) foundation;
+# nucleates DA hierarchy: CEP83→CEP89→SCLT1→FBF1→LRRC45→CEP164 (NPHP15);
+# JBTS22 Joubert ~55%; retinal ~30–40%; pure renal ~30%; CHF ~5–10%; no situs
+@app.get("/api/nphp18/overview")
+async def nphp18_overview():
+    """NPHP18 (CEP83/CCDC41) overview —
+40-patient cohort seed-375; 3 endpoints /api/nphp18/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp18_dashboard as nphp18_
+        return _json_safe(nphp18_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp18/breakdown")
+async def nphp18_breakdown():
+    try:
+        import scripts.nphp18_dashboard as nphp18_
+        return _json_safe(nphp18_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp18/definitions")
+async def nphp18_definitions():
+    try:
+        import scripts.nphp18_dashboard as nphp18_
+        return _json_safe(nphp18_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

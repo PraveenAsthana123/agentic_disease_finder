@@ -6961,5 +6961,19 @@
     "id": "nphp17",
     "status": "built",
     "name": "Nephronophthisis Type 17 (Nephronophthisis-Type-17-NPHP17-MAPKBP1-JIP4-SPAG9-Mitogen-Activated-Protein-Kinase-Binding-Protein-1-1388aa-Ankyrin-Repeat-Leucine-Zipper-JNK-MAPK-Scaffold / MAPKBP1-NPHP4-Supercomplex-Interactor-TZ-NPHP1-NPHP4-NPHP8-RPGRIP1L-JNK-Stress-Kinase-Bridge-Transition-Zone / Chr-2q13.3-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3-WDR19-NPHP13-4p14-ZNF423-NPHP14-16q12.1-CEP164-NPHP15-11q23.3-ANKS6-NPHP16-9q22.33 / ONLY-NPHP-JNK-SCAFFOLD-Loss-TZ-Unique-Kinase-Mechanism / 2q13.3-NOT-2q13-CHROMOSOME-ARM-TRAP-NPHP1-MLPA-Misses-MAPKBP1 / NPHP4-CO-SEQUENCE-MANDATORY-Direct-Binding / PURE-RENAL-NO-SITUS-NO-RETINAL-NO-CHF-NO-JOUBERT / ULTRA-RARE-25-35-Families / ESRD-Median-14-16yr-Adolescent / Renal-Transplant-CURATIVE-No-Recurrence / ~1-1000000-2000000 / AR-Biallelic-LOF / 2q13.3 / OMIM-Gene-MAPKBP1-610889-Disease-616140-NPHP17)"
+  },
+  {
+    "id": "nphp18",
+    "name": "Nephronophthisis Type 18 / Joubert Syndrome 22 (Nephronophthisis-Type-18-NPHP18-JBTS22-CEP83-CCDC41-Centrosomal-Protein-83-826aa-Most-Proximal-Distal-Appendage-Protein-DA-Foundation / CEP83-CEP89-SCLT1-FBF1-LRRC45-CEP164-NPHP15-DA-Hierarchy-Cascade-CEP83-Nucleates-Entire-Scaffold / Chr-12q22 / ONLY-NPHP-GENE-ENCODING-PROXIMAL-DA-FOUNDATION-Loss-Removes-ALL-Downstream-DA-Proteins-Simultaneously / JBTS22-Joubert-55-65pct-MTS-Retinal-30-40pct-Pure-Renal-30pct-CHF-5-10pct-No-Situs / ESRD-Median-14-18yr / CEP290-NPHP6-Same-12q-Arm-Different-Gene-WES-Mandatory / CEP164-NPHP15-Directly-Downstream-Always-Co-Sequence / Renal-Transplant-CURATIVE-No-Recurrence / ~1-500000-1000000-60-90-Families-2026 / AR-Biallelic-LOF / 12q22 / OMIM-Gene-CEP83-617233-Disease-617265-NPHP18-JBTS22)",
+    "status": "built",
+    "route": "/nphp18",
+    "api_endpoints": [
+      "/api/nphp18/overview",
+      "/api/nphp18/breakdown",
+      "/api/nphp18/definitions"
+    ],
+    "cohort_seed": 375,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]
