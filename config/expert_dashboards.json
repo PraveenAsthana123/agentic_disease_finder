@@ -7045,6 +7045,15 @@
     "built_date": "2026-08-26"
   },
   {
+    "id": "srtd7",
+    "name": "WDR35 Short-Rib Thoracic Dysplasia 7 (SRTD7-Jeune-ATD7-Asphyxiating-Thoracic-Dystrophy-7 / WDR35-IFT121-WD-Repeat-Domain-35-1181aa-14-Blade-WD40-Beta-Propeller-IFT-A-Complex-DIRECT-IFT140-Binding-Partner-613602 / Chr-2p24.1 / THIRD-MOST-COMMON-IFT-A-SRTD-After-WDR19-SRTD5-IFT140-SRTD9 / WDR35-C-Face-WD40-Directly-Docks-IFT140-N-Terminal-WD40-Domain-SRTD9-Molecular-Linchpin / SHORT-STUBBY-CILIA-EM-IFT-A-Class-Same-IFT140-SRTD9-WDR19-SRTD5-DISTINCT-From-Dynein-2-SRTDs-Club-Bulging-Tip / NARROW-THORAX-PRIMARY-PATHOGNOMONIC-NOT-Secondary-Unlike-NPHP / Polydactyly-40-45pct-Postaxial-Most-Common / Renal-TIN-ESRD-Secondary-15-25pct-Survivors / Retinal-Rod-Cone-10-15pct / CHF-5-10pct / NO-Situs-Inversus-Primary-Cilia-9plus0-Not-Nodal / NO-Joubert-MTS / VEPTR-MAGEC-Growing-Rod-Primary-Surgical-Treatment / SRPS-Spectrum-Biallelic-Null / Renal-Transplant-CURATIVE-No-Recurrence-Cell-Autonomous / IFT-A-Complex-WDR19-SRTD5-IFT140-SRTD9-WDR35-SRTD7-TTC21B-SRTD4-IFT122-IFT43-Complete-Subunit-Table / p.Thr1205Met-c.3614C-T-C-Terminal-WD40-Blade14-IFT140-C-Face-Binding-European-Compound-Het-Moderate-SRTD7 / p.Pro209Leu-c.626C-T-N-Terminal-WD40-Blade2-Middle-Eastern-Homozygous-Moderate-Severe / p.Arg549Ter-c.1645C-T-Central-Truncating-Null-SRPS-Spectrum-Pan-Ethnic / p.Ala812Thr-c.2434G-A-WD40-Blade10-South-Asian-Hypomorphic-Mild / p.Cys983Tyr-c.2948G-A-C-Terminal-WD40-MENA-Homozygous-Moderate / ~1-300000-700000-30-50-Families-2026 / Autosomal-Recessive-Biallelic-LOF-Compound-Het-Missense-Plus-Truncating-Most-Common / 2p24.1 / OMIM-Gene-WDR35-613602-Disease-614091-SRTD7-ATD7)",
+    "status": "built",
+    "api": "/api/srtd7/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 395,
+    "registered": "2026-08-26"
+  },
+  {
     "id": "srtd3",
     "name": "DYNC2H1 Short-Rib Thoracic Dysplasia 3 (SRTD3-Jeune-ATD3-Asphyxiating-Thoracic-Dystrophy-3 / DYNC2H1-Dynein-Cytoplasmic-2-Heavy-Chain-1-4307aa-AAA-Plus-ATPase-Ring-Retrograde-IFT-Motor-603297 / Chr-11q22.3 / MOST-COMMON-SRTD-Gene-50pct-Molecularly-Confirmed / Narrow-Thorax-Primary-Pathognomonic / Polydactyly-55pct / Renal-TIN-Secondary-40-60pct-Survivors / Retinal-18pct / CHF-14pct / NO-Situs-Inversus-Primary-Cilia / VEPTR-MAGEC-Surgical / SRPS3-Biallelic-Null-Lethal / ~1-40000-100000 / OMIM-Gene-603297-Disease-613091)",
     "status": "built",
