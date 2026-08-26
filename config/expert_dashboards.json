@@ -7065,5 +7065,20 @@
     "cohort_n": 40,
     "seed": 387,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd17",
+    "name": "TCTEX1D2 Short-Rib Thoracic Dysplasia 17 (SRTD17-Jeune-ATD17-Asphyxiating-Thoracic-Dystrophy-17 / TCTEX1D2-T-Complex-Protein-1-Like-Domain-Containing-2-142aa-Smallest-Dynein2-Subunit-Light-Chain-617819 / Chr-3q21.3 / FIFTH-Dynein2-Subunit-SRTD-Extremely-Rare-5-15-Families-2026 / TCTEX1D2-Light-Chain-WDR60-C-Face-Binding-Stabilises-WDR60-SRTD8 / Retrograde-IFT-Failure-Narrow-Thorax-Short-Ribs-Short-Limbs / Polydactyly-25pct / Renal-TIN-ESRD-15-20pct / Retinal-8pct / CHF-5pct / VEPTR-MAGEC / SRPS-Spectrum / Renal-Transplant-CURATIVE / ~1-2000000-5000000 / AR-Biallelic-LOF / 3q21.3 / OMIM-Gene-617819-Disease-617405)",
+    "status": "built",
+    "route": "/srtd17",
+    "api": "/api/srtd17",
+    "cohort_seed": 389,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/srtd17/overview",
+      "/api/srtd17/breakdown",
+      "/api/srtd17/definitions"
+    ],
+    "registered": "2026-08-26"
   }
 ]

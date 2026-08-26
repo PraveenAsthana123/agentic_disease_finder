@@ -35385,6 +35385,37 @@ async def srtd15_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SRTD17 / TCTEX1D2 Short-Rib Thoracic Dysplasia 17 ─────────────────────
+# TCTEX1D2 (*617819) — 3q21.3 — 142 aa — dynein-2 light chain (T-complex 1-like);
+# contacts WDR60 (SRTD8) β-propeller C-face; extremely rare (~5–15 families, 2026);
+# 40-patient cohort seed-389; 3 endpoints /api/srtd17/overview|breakdown|definitions
+@app.get("/api/srtd17/overview")
+async def srtd17_overview():
+    """TCTEX1D2 SRTD17 (ATD17) — dynein-2 light chain T-complex 1-like — #617405 — 3q21.3.
+40-patient cohort seed-389; 3 endpoints /api/srtd17/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd17_dashboard as srtd17_
+        return _json_safe(srtd17_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd17/breakdown")
+async def srtd17_breakdown():
+    try:
+        import scripts.srtd17_dashboard as srtd17_
+        return _json_safe(srtd17_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd17/definitions")
+async def srtd17_definitions():
+    try:
+        import scripts.srtd17_dashboard as srtd17_
+        return _json_safe(srtd17_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
