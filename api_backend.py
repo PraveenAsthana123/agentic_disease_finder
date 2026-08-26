@@ -34856,6 +34856,37 @@ async def nphp8_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-357; 3 endpoints /api/nphp9/overview|breakdown|definitions
+
+@app.get("/api/nphp9/overview")
+async def nphp9_overview():
+    """Nephronophthisis Type 9 (NEK8/NPHP9) —
+    40-patient cohort seed-357; 3 endpoints /api/nphp9/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp9_dashboard as nphp9_
+        return _json_safe(nphp9_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp9/breakdown")
+async def nphp9_breakdown():
+    try:
+        import scripts.nphp9_dashboard as nphp9_
+        return _json_safe(nphp9_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp9/definitions")
+async def nphp9_definitions():
+    try:
+        import scripts.nphp9_dashboard as nphp9_
+        return _json_safe(nphp9_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -6848,5 +6848,23 @@
     "omim_gene": "610937",
     "omim_disease": "613237",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp9",
+    "name": "Nephronophthisis Type 9 (Nephronophthisis-Type-9-NPHP9-NEK8-Never-In-Mitosis-A-Related-Kinase-8-Rarest-NPHP-Subtype / NEK8-NIMA-Kinase-Family-692aa-N-Terminal-Kinase-Domain-1-285aa-C-Terminal-RCC1-Like-7-Beta-Propeller-286-692aa-613312 / Chr-17q11.2 / NEK8-ANKS6-NPHP16-BICC1-IFT-Zone-Inversin-Compartment-Complex / PANCREATIC-DUCTAL-ECTASIA-15-25pct-UNIQUE-ABSENT-ALL-OTHER-NPHP-SUBTYPES / SITUS-INVERSUS-25-30pct-Nodal-Cilia / CHF-40-55pct-Biliary / KIDNEYS-ENLARGED-EARLY-ARPKD-Like / ESRD-Median-10-13yr / NO-RETINAL-NO-MTS / ARPKD-MOST-COMMON-MISDIAGNOSIS / 40-patient-cohort-seed-357 / 3-endpoints-verified-200)",
+    "status": "built",
+    "gene": "NEK8",
+    "omim_gene": "613312",
+    "omim_disease": "613824",
+    "chromosome": "17q11.2",
+    "seed": 357,
+    "endpoints": [
+      "/api/nphp9/overview",
+      "/api/nphp9/breakdown",
+      "/api/nphp9/definitions"
+    ],
+    "portal_page": "/nphp9",
+    "registered": "2026-08-25",
+    "cohort_n": 40
   }
 ]
