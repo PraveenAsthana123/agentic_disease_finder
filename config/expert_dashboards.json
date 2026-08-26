@@ -7271,5 +7271,97 @@
     "cohort_n": 40,
     "seed": 411,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "mody2",
+    "name": "MODY2 (MODY2-GCK-MODY-Maturity-Onset-Diabetes-Young-Type-2 / GCK-Glucokinase-Hexokinase-IV-Glucose-Sensor-Beta-Cell-465aa-138079 / Chr-7p13 / 25-35pct-All-MODY-Most-Underdiagnosed / Glucostat-Reset-Glucose-Sensing-Defect-NOT-Secretory-Failure / HbA1c-Stable-5-6-7-6pct-Non-Progressive-Over-Decades / NO-TREATMENT-NEEDED-Diet-Only-SU-Causes-Hypoglycaemia-Without-Benefit / Pregnancy-Exception-GCK-Negative-Fetus-Maternal-Insulin-Required / C-Peptide-NORMAL / Autoantibodies-NEGATIVE / OMIM-Gene-GCK-138079-Disease-125851)",
+    "disease": "MODY2 (MODY2-GCK-MODY / GCK-Glucokinase-465aa / Chr-7p13 / Glucostat-Reset / Stable-HbA1c / No-Treatment-In-Most / OMIM-Gene-138079-Disease-125851)",
+    "status": "built",
+    "route": "/mody2",
+    "api_routes": [
+      "/api/mody2/overview",
+      "/api/mody2/breakdown",
+      "/api/mody2/definitions"
+    ],
+    "script": "scripts/mody2_dashboard.py",
+    "seed": 307,
+    "cohort_size": 40,
+    "built_date": "2026-08-26",
+    "category": "monogenic-diabetes-mody",
+    "locus": "7p13",
+    "genes": [
+      "GCK"
+    ],
+    "omim_disease": "#125851",
+    "inheritance": "Autosomal Dominant \u2014 50% recurrence"
+  },
+  {
+    "id": "mody4",
+    "name": "MODY4 (MODY4-PDX1-MODY-IPF1-MODY-Maturity-Onset-Diabetes-Young-Type-4 / PDX1-Pancreatic-Duodenal-Homeobox-1-IPF1-283aa-600733 / Chr-13q12.2 / RAREST-MODY-1pct / MASTER-BETA-CELL-TF-INS-GCK-GLUT2-PC1-MafA-Nkx6.1 / TWO-HIT-DOSAGE-Heterozyg-MODY4-Homozyg-Pancreatic-Agenesis-PNDM / SULFONYLUREA-FIRST-LINE-85-90pct / OMIM-Gene-PDX1-600733-Disease-606392)",
+    "disease": "MODY4 (MODY4-PDX1-MODY / PDX1-IPF1-283aa / Chr-13q12.2 / Rarest-MODY / Master-Beta-Cell-TF / SU-First-Line / OMIM-Gene-600733-Disease-606392)",
+    "status": "built",
+    "route": "/mody4",
+    "api_routes": [
+      "/api/mody4/overview",
+      "/api/mody4/breakdown",
+      "/api/mody4/definitions"
+    ],
+    "script": "scripts/mody4_dashboard.py",
+    "seed": 311,
+    "cohort_size": 40,
+    "built_date": "2026-08-26",
+    "category": "monogenic-diabetes-mody",
+    "locus": "13q12.2",
+    "genes": [
+      "PDX1"
+    ],
+    "omim_disease": "#606392",
+    "inheritance": "Autosomal Dominant \u2014 50% recurrence"
+  },
+  {
+    "id": "mody5",
+    "name": "MODY5 (MODY5-HNF1B-MODY-RCAD-Syndrome-Maturity-Onset-Diabetes-Young-Type-5 / HNF1B-Hepatocyte-Nuclear-Factor-1-Beta-557aa-189907 / Chr-17q12 / RCAD-Renal-Cysts-And-Diabetes / 5pct-All-MODY / Multi-Organ-Kidney-Pancreas-Liver-Mullerian / RENAL-CYSTS-PRECEDE-DIABETES / PANCREATIC-ATROPHY-CT-MRI / NO-SULFONYLURE-INSULIN-REQUIRED / HYPOMAGNESAEMIA / DE-NOVO-50pct / OMIM-Gene-HNF1B-189907-Disease-137920)",
+    "disease": "MODY5 (MODY5-HNF1B-MODY-RCAD / HNF1B-557aa / Chr-17q12 / Renal-Cysts-Precede-Diabetes / Multi-Organ / No-SU-Insulin-Required / OMIM-Gene-189907-Disease-137920)",
+    "status": "built",
+    "route": "/mody5",
+    "api_routes": [
+      "/api/mody5/overview",
+      "/api/mody5/breakdown",
+      "/api/mody5/definitions"
+    ],
+    "script": "scripts/mody5_dashboard.py",
+    "seed": 309,
+    "cohort_size": 40,
+    "built_date": "2026-08-26",
+    "category": "monogenic-diabetes-mody",
+    "locus": "17q12",
+    "genes": [
+      "HNF1B"
+    ],
+    "omim_disease": "#137920",
+    "inheritance": "Autosomal Dominant \u2014 50% recurrence; ~50% de novo"
+  },
+  {
+    "id": "mody8",
+    "name": "MODY8 (MODY8-CEL-MODY-BSSL-MODY-Maturity-Onset-Diabetes-Young-Type-8 / CEL-Carboxyl-Ester-Lipase-BSSL-722aa-114840 / Chr-9q34.3 / VNTR-Frameshift-Exon-11 / Misfolded-CEL-Acinar-Apoptosis-Pancreatic-Lipomatosis / EXOCRINE-PLUS-ENDOCRINE-FAILURE-UNIQUE-MODY / NO-SU-INSULIN-MANDATORY / PERT-Creon / Norwegian-Founder / OMIM-Gene-CEL-114840-Disease-609812)",
+    "disease": "MODY8 (MODY8-CEL-MODY-BSSL / CEL-722aa / Chr-9q34.3 / Exocrine-Plus-Endocrine-Failure-Unique / Pancreatic-Lipomatosis / No-SU-Insulin / OMIM-Gene-114840-Disease-609812)",
+    "status": "built",
+    "route": "/mody8",
+    "api_routes": [
+      "/api/mody8/overview",
+      "/api/mody8/breakdown",
+      "/api/mody8/definitions"
+    ],
+    "script": "scripts/mody8_dashboard.py",
+    "seed": 317,
+    "cohort_size": 40,
+    "built_date": "2026-08-26",
+    "category": "monogenic-diabetes-mody",
+    "locus": "9q34.3",
+    "genes": [
+      "CEL"
+    ],
+    "omim_disease": "#609812",
+    "inheritance": "Autosomal Dominant \u2014 50% recurrence"
   }
 ]
