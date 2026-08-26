@@ -34713,6 +34713,33 @@ async def nphp3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nphp4/overview")
+async def nphp4_overview():
+    """Nephronophthisis Type 4 (NPHP4/Nephroretinin; 1p36.31; 1426aa; Senior-Løken SLS4; ocular motor);
+    40-patient cohort seed-347; 3 endpoints /api/nphp4/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp4_dashboard as nphp4_
+        return _json_safe(nphp4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp4/breakdown")
+async def nphp4_breakdown():
+    try:
+        import scripts.nphp4_dashboard as nphp4_
+        return _json_safe(nphp4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp4/definitions")
+async def nphp4_definitions():
+    try:
+        import scripts.nphp4_dashboard as nphp4_
+        return _json_safe(nphp4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -6754,5 +6754,19 @@
     "cohort_n": 40,
     "built_date": "2026-08-25",
     "notes": "Built scripts/nphp3_dashboard.py, api_backend.py 3 routes /api/nphp3/overview|breakdown|definitions verified 200, portal-next/app/nphp3/page.jsx + SiteNav wired after Nephronophthisis Type 2, expert_dashboards.json count 436->437."
+  },
+  {
+    "id": "nphp4",
+    "name": "Nephronophthisis Type 4 (Nephronophthisis-Type-4-NPHP4-Juvenile-Adolescent-Nephronophthisis-NPHP4-Nephrocystin-4-Nephroretinin / NPHP4-Nephrocystin-4-Nephroretinin-1426aa-TZ-Scaffold-NPHP1-NPHP3-NPHP4-Module-SH3-PxxP-Interaction-607215 / Chr-1p36.31-NPHP4-1p36-NPHP1-2q13-NPHP3-3q22.1-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-20-Plus-Genes / TZ-Gate-Dysfunction-NPHP1-3-4-Ternary-Module-Diffusion-Barrier-Collapse-Hedgehog-Wnt-PDGF-Failure / JUVENILE-ADOLESCENT-ESRD-Median-17-20yr-Overlaps-NPHP1-13yr-Later-Than-NPHP2-Infantile / SENIOR-LOKEN-SYNDROME-SLS4-15-20pct-Rod-Cone-Retinal-Dystrophy-Plus-NPHP-2nd-Most-Common-SLS-Gene-After-IQCB1 / OCULAR-MOTOR-ABNORMALITIES-Nystagmus-Oculomotor-Apraxia-20-25pct-KEY-DISTINGUISHING-NPHP4-Feature-Absent-NPHP1-2-3 / NO-SITUS-INVERSUS-NPHP4-Not-Expressed-Nodal-Cilia-Unlike-NPHP2-35pct-NPHP3-15-20pct / NO-CHF-No-Hepatic-Fibrosis-NPHP4-Not-Expressed-Biliary-Epithelium-Unlike-NPHP2-NPHP3 / KIDNEYS-SMALL-Echogenic-Loss-CMD-NOT-Enlarged-Similar-NPHP1 / Retinal-Disease-Does-NOT-Improve-After-Renal-Transplant-Cell-Autonomous / Renal-Transplant-EXCELLENT-No-Recurrence-Cell-Autonomous-CURATIVE / ~1-500000-1000000-Rarer-Than-NPHP1-NPHP2-NPHP3 / Autosomal-Recessive-Biallelic-LOF / 1p36.31 / OMIM-Gene-NPHP4-607215-Disease-606966)",
+    "status": "built",
+    "route": "/nphp4",
+    "api_routes": [
+      "/api/nphp4/overview",
+      "/api/nphp4/breakdown",
+      "/api/nphp4/definitions"
+    ],
+    "cohort_seed": 347,
+    "cohort_size": 40,
+    "notes": "Built scripts/nphp4_dashboard.py, api_backend.py 3 routes /api/nphp4/overview|breakdown|definitions verified 200, portal-next/app/nphp4/page.jsx + SiteNav wired after Nephronophthisis Type 3, expert_dashboards.json count 437->438. Built 2026-08-25."
   }
 ]
