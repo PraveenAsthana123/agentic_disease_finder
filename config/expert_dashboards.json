@@ -7470,5 +7470,23 @@
     "cohort_seed": 339,
     "cohort_n": 40,
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "bbs5",
+    "name": "BBS5 Bardet-Biedl Syndrome Type 5 (BBS5-Bardet-Biedl-Syndrome-Type-5-BBSome-PH-Domain-Lipid-Sensor-Membrane-Anchor-Ciliopathy / BBS5-Bardet-Biedl-Syndrome-5-Protein-520aa-PH-Pleckstrin-Homology-Domain-Phosphoinositide-Lipid-Binding-603650 / Chr-2q31.1 / BBS5-ONLY-Intrinsic-BBSome-PH-Domain-Phosphoinositide-Lipid-Sensor / BBSome-Assembles-Normally-BBS4-Intact-BBS5-LOF-Fails-PtdIns-Anchoring / Anti-BBS4-IF-NORMAL-BBS5-Null-Cells-Distinguishes-BBS4-LOF / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-60pct / Obesity-75pct-LepR-Mis-Trafficking / Cognitive-LD-42pct / Renal-Anomaly-38pct / Hypogonadism-58pct / Anosmia-55pct / Ala242Val-PH-D4D5-Loop-PtdIns-Contact-European / Arg217Trp-BBS4-Contact-Surface-MENA / Leu138Pro-NTerm-CC-BBS4-TPR-Contact-South-Asian / Glu303Ter-Truncating-Null / Frequency-2-3pct-All-BBS-Under-50-Families-2026 / Tri-Allelic-BBS-3pct / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 2q31.1 / OMIM-Gene-BBS5-603650-Disease-209900)",
+    "status": "built",
+    "gene": "BBS5",
+    "omim_gene": "603650",
+    "omim_disease": "209900",
+    "chromosome": "2q31.1",
+    "endpoints": [
+      "/api/bbs5/overview",
+      "/api/bbs5/breakdown",
+      "/api/bbs5/definitions"
+    ],
+    "frontend": "portal-next/app/bbs5/page.jsx",
+    "cohort_seed": 341,
+    "cohort_n": 40,
+    "built_date": "2026-08-26"
   }
 ]

@@ -35844,6 +35844,33 @@ async def bbs4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# BBS5 — Bardet-Biedl Syndrome Type 5 (BBS5-Bardet-Biedl-Syndrome-Type-5-BBSome-PH-Domain-Lipid-Sensor-Membrane-Anchor-Ciliopathy)
+# 40-patient cohort seed-341; 3 endpoints /api/bbs5/overview|breakdown|definitions
+@app.get("/api/bbs5/overview")
+async def bbs5_overview():
+    try:
+        import scripts.bbs5_dashboard as bbs5_
+        return _json_safe(bbs5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs5/breakdown")
+async def bbs5_breakdown():
+    try:
+        import scripts.bbs5_dashboard as bbs5_
+        return _json_safe(bbs5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs5/definitions")
+async def bbs5_definitions():
+    try:
+        import scripts.bbs5_dashboard as bbs5_
+        return _json_safe(bbs5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
