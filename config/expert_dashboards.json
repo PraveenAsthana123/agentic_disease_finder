@@ -7540,5 +7540,11 @@
     "chromosome": "14q32.11",
     "disease_omim": "#209900",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs9",
+    "name": "BBS9 Bardet-Biedl Syndrome Type 9 (BBS9-PTHB1-Bardet-Biedl-Syndrome-Type-9-BBSome-Inter-Module-Bridge-Subunit-Ciliopathy / PTHB1-Parathyroid-Hormone-Responsive-B9-Domain-Protein-1-495aa-N-Term-Core-Contact-Central-Bridge-C-Term-Peripheral-Contact-607968 / Chr-7p14.3 / PTHB1-ONLY-BBSome-Subunit-That-Spans-BOTH-Core-Module-BBS2-BBS7-AND-Peripheral-Module-BBS1-BBS4-BBS5-BBS8 / PTHB1-LOF-Core-And-Peripheral-Half-Complexes-Each-Form-But-CANNOT-Join-Sub-Complex-Phenotype / Anti-BBS2-IF-REDUCED-NOT-ABSENT-Sub-Complex-Present-Anti-MKKS-IF-NORMAL-BCC-Intact / BBS9-Most-Common-Third-Allele-Across-BBS-Spectrum / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-60pct / Obesity-80pct-LepR-Mis-Trafficking / Cognitive-LD-46pct / Renal-Anomaly-39pct / Hypogonadism-61pct / Anosmia-57pct / CHD-5pct / Ala217Pro-c649G-C-European / Pro189Leu-c566C-T-South-Asian / Arg336Trp-c1006C-T-MENA / Glu412Ter-c1234G-T-Truncating-Null-Pan-Ethnic / Frequency-2pct-All-BBS / Tri-Allelic-BBS-6pct-BBS2-Most-Common-Third-Allele / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 7p14.3 / OMIM-Gene-PTHB1-607968-Disease-209900)",
+    "status": "built",
+    "route": "/bbs9"
   }
 ]
