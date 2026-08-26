@@ -7029,5 +7029,14 @@
     "seed": 379,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd3",
+    "name": "DYNC2H1 Short-Rib Thoracic Dysplasia 3 (SRTD3-Jeune-ATD3-Asphyxiating-Thoracic-Dystrophy-3 / DYNC2H1-Dynein-Cytoplasmic-2-Heavy-Chain-1-4307aa-AAA-Plus-ATPase-Ring-Retrograde-IFT-Motor-603297 / Chr-11q22.3 / MOST-COMMON-SRTD-Gene-50pct-Molecularly-Confirmed / Narrow-Thorax-Primary-Pathognomonic / Polydactyly-55pct / Renal-TIN-Secondary-40-60pct-Survivors / Retinal-18pct / CHF-14pct / NO-Situs-Inversus-Primary-Cilia / VEPTR-MAGEC-Surgical / SRPS3-Biallelic-Null-Lethal / ~1-40000-100000 / OMIM-Gene-603297-Disease-613091)",
+    "status": "built",
+    "api": "/api/srtd3/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 381,
+    "registered": "2026-08-26"
   }
 ]

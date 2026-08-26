@@ -35264,6 +35264,38 @@ async def nphp20_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# DYNC2H1 Short-Rib Thoracic Dysplasia 3 (SRTD3) — Jeune Asphyxiating Thoracic Dystrophy type 3
+# Retrograde IFT motor heavy chain (dynein-2); MOST COMMON SRTD gene (~50% of molecularly confirmed SRTD)
+# Narrow thorax (primary) + polydactyly ~55% + renal TIN (secondary) + retinal ~18% + CHF ~14%
+# NO situs inversus (primary non-motile cilia, not nodal motile cilia); VEPTR surgical treatment
+# 40-patient cohort seed-381; 3 endpoints /api/srtd3/overview|breakdown|definitions
+@app.get("/api/srtd3/overview")
+async def srtd3_overview():
+    """DYNC2H1/SRTD3 — retrograde IFT motor; 11q22.3; most common SRTD gene (~50%);
+40-patient cohort seed-381; 3 endpoints /api/srtd3/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd3_dashboard as srtd3_
+        return _json_safe(srtd3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd3/breakdown")
+async def srtd3_breakdown():
+    try:
+        import scripts.srtd3_dashboard as srtd3_
+        return _json_safe(srtd3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd3/definitions")
+async def srtd3_definitions():
+    try:
+        import scripts.srtd3_dashboard as srtd3_
+        return _json_safe(srtd3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
