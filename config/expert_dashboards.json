@@ -6720,5 +6720,23 @@
     "cohort_n": 40,
     "category": "ciliopathy-tz-nphp-renal",
     "registered": "2026-08-25"
+  },
+  {
+    "name": "Nephronophthisis Type 2 (Nephronophthisis-Type-2-NPHP2-Infantile-Nephronophthisis-INVS-Inversin / INVS-Inversin-1065aa-IFT-Zone-Boundary-Scaffold-Wnt-Canonical-Noncanonical-Switch-243305 / Chr-9q31.1 / IFT-Zone-DVL-Sequestration-Noncanonical-PCP-Wnt-Canonical-Unopposed-Cystogenesis / INFANTILE-ESRD-Median-3yr / SITUS-INVERSUS-30-50pct-UNIQUE-NPHP2-Nodal-Cilia / KIDNEYS-ENLARGED-Infancy-Mimics-ARPKD / CHF-55pct-Ductal-Plate-Malformation / NO-Senior-Loken-No-Retinal / ~1-100000-200000 / Autosomal-Recessive-Biallelic-LOF / 9q31.1 / OMIM-Gene-INVS-243305-Disease-602088)",
+    "route": "/nphp2",
+    "status": "built",
+    "seed": 343,
+    "gene": "INVS",
+    "chromosome": "9q31.1",
+    "inheritance": "AR",
+    "omim_gene": "243305",
+    "omim_disease": "602088",
+    "endpoints": [
+      "/api/nphp2/overview",
+      "/api/nphp2/breakdown",
+      "/api/nphp2/definitions"
+    ],
+    "cohort_n": 40,
+    "category": "ciliopathy"
   }
 ]

@@ -34654,6 +34654,37 @@ async def nphp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nphp2/overview")
+async def nphp2_overview():
+    """NPHP2 Infantile Nephronophthisis Dashboard — overview: INVS (9q31.1) 1065aa IFT-zone
+    boundary Wnt-switch scaffold; biallelic LOF → infantile ESRD median 3yr; situs inversus
+    30-50% (unique NPHP2 feature); congenital hepatic fibrosis ~55%; NO retinal dystrophy;
+    40-patient cohort seed-343; 3 endpoints /api/nphp2/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp2_dashboard as nphp2_
+        return _json_safe(nphp2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp2/breakdown")
+async def nphp2_breakdown():
+    try:
+        import scripts.nphp2_dashboard as nphp2_
+        return _json_safe(nphp2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp2/definitions")
+async def nphp2_definitions():
+    try:
+        import scripts.nphp2_dashboard as nphp2_
+        return _json_safe(nphp2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
