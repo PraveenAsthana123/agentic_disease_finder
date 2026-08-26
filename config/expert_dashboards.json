@@ -6881,5 +6881,18 @@
     "cohort_n": 40,
     "built_date": "2026-08-25",
     "notes": "SDCCAG8/NPHP10 \u2014 centrosomal NPHP; retinal 50-60%; cerebellar 15-20%; BBS16 overlap 15-20%; NO situs/CHF/pancreatic; ESRD 13-16yr; 3 endpoints verified 200"
+  },
+  {
+    "id": "nphp11",
+    "name": "Nephronophthisis Type 11 / Joubert Syndrome 6 / COACH Syndrome (Nephronophthisis-Type-11-NPHP11-JBTS6-MKS3-TMEM67-Transmembrane-Protein-67-Meckelin-995aa-Type-I-Transmembrane-Glycoprotein-TZ-Scaffold-MKS-Module / TMEM67-609884-CC2D2A-RPGRIP1L-NPHP8-CEP290-NPHP1-B9D1-B9D2-MKS-NPHP-JBTS-TZ-Network-Interactome / Chr-8q22.1-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-20-Plus-Genes / CHF-CONGENITAL-HEPATIC-FIBROSIS-50-60pct-MOST-FREQUENT-EXTRA-RENAL-Ductal-Plate-Malformation-Portal-HTN-Liver-Tx-May-Precede-Renal-Tx / JOUBERT-JBTS6-30-40pct-Molar-Tooth-Sign-Cerebellar-Vermis-Hypoplasia-SCP-Elongation-Oculomotor-Apraxia-Ataxia / COACH-20-25pct-TMEM67-Most-Common-Greater-80pct-All-5-Criteria-Cerebellar-Oligophrenia-Ataxia-Coloboma-Hepatic / RETINOCHOROIDAL-COLOBOMA-20-25pct-Structural-NOT-Retinal-Dystrophy-ERG-Normal / NO-RETINAL-DYSTROPHY-TMEM67-Absent-Photoreceptors / ESRD-Median-18-22yr-Later-Than-NPHP1-Small-Echogenic-Kidneys-TIN / ALAGILLE-MOST-COMMON-MISDIAGNOSIS-Fibrosis-vs-Paucity-DDx-Critical / MECKEL-MKS3-Biallelic-Null-Lethal-Encephalocele-Polydactyly / TMEM67-Must-Be-On-ALL-NPHP-JBTS-MKS-COACH-CHF-Panels / Renal-Transplant-CURATIVE-No-Recurrence-EXCELLENT / p.Cys615Arg-European-Founder-Smith-2006-Nat-Genet / p.Trp290Cys-Middle-Eastern-NPHP11-CHF / ~1-300000-700000 / Autosomal-Recessive-Biallelic-LOF / 8q22.1 / OMIM-Gene-TMEM67-609884-Disease-613550-JBTS6-610688-MKS3-607361)",
+    "status": "built",
+    "seed": 361,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/nphp11/overview",
+      "/api/nphp11/breakdown",
+      "/api/nphp11/definitions"
+    ],
+    "registered": "2026-08-25"
   }
 ]

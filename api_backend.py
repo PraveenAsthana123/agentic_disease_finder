@@ -34919,6 +34919,38 @@ async def nphp10_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-361; 3 endpoints /api/nphp11/overview|breakdown|definitions
+# Nephronophthisis Type 11 / Joubert Syndrome 6 / COACH Syndrome (TMEM67/MKS3 — 8q22.1)
+
+@app.get("/api/nphp11/overview")
+async def nphp11_overview():
+    """Nephronophthisis Type 11 (TMEM67/NPHP11/JBTS6/COACH/MKS3) — overview.
+    40-patient cohort seed-361; 3 endpoints /api/nphp11/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp11_dashboard as nphp11_
+        return _json_safe(nphp11_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp11/breakdown")
+async def nphp11_breakdown():
+    try:
+        import scripts.nphp11_dashboard as nphp11_
+        return _json_safe(nphp11_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp11/definitions")
+async def nphp11_definitions():
+    try:
+        import scripts.nphp11_dashboard as nphp11_
+        return _json_safe(nphp11_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
