@@ -6866,5 +6866,20 @@
     "portal_page": "/nphp9",
     "registered": "2026-08-25",
     "cohort_n": 40
+  },
+  {
+    "id": "nphp10",
+    "name": "Nephronophthisis Type 10 / Bardet-Biedl Syndrome 16 (Nephronophthisis-Type-10-NPHP10-BBS16-SDCCAG8-Serologically-Defined-Colon-Cancer-Antigen-8-CCCAP-Centrosomal / SDCCAG8-713aa-Centrosomal-Basal-Body-Subdistal-Appendage-NOT-TZ-Scaffold-613524 / Chr-1q44-SDCCAG8-NPHP10-1q44 / RETINAL-DYSTROPHY-50-60pct-Rod-Cone-LCA-Like / CEREBELLAR-ATAXIA-15-20pct-AHI1-Interaction-NOT-Joubert-No-MTS / BBS16-OVERLAP-15-20pct-Obesity-Cognitive / CENTROSOMAL-NOT-TZ-Subdistal-Appendage-Ciliogenesis-Initiation / NO-SITUS-NO-CHF-NO-PANCREATIC / ESRD-13-16yr-Small-Echogenic-TIN / LCA-MOST-COMMON-MISDIAGNOSIS / BBS-SECOND-Misdiagnosis / p.Arg232Ter-Pan-Ethnic / p.Leu147Pro-CC-Domain / p.Ala505Glu-BBS16-Overlap / Renal-Transplant-CURATIVE / ~1-200000-500000 / AR-Biallelic-LOF / 1q44 / OMIM-Gene-613524-Disease-613615)",
+    "status": "built",
+    "route": "/nphp10",
+    "api_endpoints": [
+      "/api/nphp10/overview",
+      "/api/nphp10/breakdown",
+      "/api/nphp10/definitions"
+    ],
+    "cohort_seed": 359,
+    "cohort_n": 40,
+    "built_date": "2026-08-25",
+    "notes": "SDCCAG8/NPHP10 \u2014 centrosomal NPHP; retinal 50-60%; cerebellar 15-20%; BBS16 overlap 15-20%; NO situs/CHF/pancreatic; ESRD 13-16yr; 3 endpoints verified 200"
   }
 ]

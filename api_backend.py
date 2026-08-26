@@ -34887,6 +34887,38 @@ async def nphp9_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Nephronophthisis Type 10 / BBS16 (SDCCAG8 — 1q44) ──────────────────────
+# 40-patient cohort seed-359; 3 endpoints /api/nphp10/overview|breakdown|definitions
+
+@app.get("/api/nphp10/overview")
+async def nphp10_overview():
+    """Nephronophthisis Type 10 / Bardet-Biedl Syndrome 16 (SDCCAG8/NPHP10) —
+    40-patient cohort seed-359; 3 endpoints /api/nphp10/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp10_dashboard as nphp10_
+        return _json_safe(nphp10_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp10/breakdown")
+async def nphp10_breakdown():
+    try:
+        import scripts.nphp10_dashboard as nphp10_
+        return _json_safe(nphp10_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp10/definitions")
+async def nphp10_definitions():
+    try:
+        import scripts.nphp10_dashboard as nphp10_
+        return _json_safe(nphp10_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
