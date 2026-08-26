@@ -7031,6 +7031,20 @@
     "registered": "2026-08-26"
   },
   {
+    "id": "srtd5",
+    "status": "built",
+    "disease": "WDR19 Short-Rib Thoracic Dysplasia 5 (Short-Rib-Thoracic-Dysplasia-5-SRTD5-Jeune-Asphyxiating-Thoracic-Dystrophy-5-ATD5 / WDR19-IFT144-KIAA1638-WD-Repeat-Domain-19-1342aa-IFT-A-Complex-LARGEST-Subunit-Central-Scaffold-608151 / Chr-4p14 / MOST-COMMON-IFT-A-SRTD-1pct-All-SRTD-100-200-Families-2026 / ECTODERMAL-FEATURES-CED-LIKE-UNIQUE-WDR19-Among-SRTD-Genes-Sparse-Hair-Hypodontia-20-30pct / THREE-DISEASE-GENE-SRTD5-614376-NPHP13-614377-CED1-Overlap / ~1-150000-300000-100-200-Families-2026 / Autosomal-Recessive-Biallelic-LOF / 4p14 / OMIM-Gene-WDR19-608151-Disease-614376-SRTD5-ATD5-Also-NPHP13-614377)",
+    "route": "/srtd5",
+    "api_routes": [
+      "/api/srtd5/overview",
+      "/api/srtd5/breakdown",
+      "/api/srtd5/definitions"
+    ],
+    "seed": 393,
+    "cohort_n": 40,
+    "built_date": "2026-08-26"
+  },
+  {
     "id": "srtd3",
     "name": "DYNC2H1 Short-Rib Thoracic Dysplasia 3 (SRTD3-Jeune-ATD3-Asphyxiating-Thoracic-Dystrophy-3 / DYNC2H1-Dynein-Cytoplasmic-2-Heavy-Chain-1-4307aa-AAA-Plus-ATPase-Ring-Retrograde-IFT-Motor-603297 / Chr-11q22.3 / MOST-COMMON-SRTD-Gene-50pct-Molecularly-Confirmed / Narrow-Thorax-Primary-Pathognomonic / Polydactyly-55pct / Renal-TIN-Secondary-40-60pct-Survivors / Retinal-18pct / CHF-14pct / NO-Situs-Inversus-Primary-Cilia / VEPTR-MAGEC-Surgical / SRPS3-Biallelic-Null-Lethal / ~1-40000-100000 / OMIM-Gene-603297-Disease-613091)",
     "status": "built",
