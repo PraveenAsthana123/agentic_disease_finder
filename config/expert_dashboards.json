@@ -7161,5 +7161,22 @@
     "cohort_n": 40,
     "note": "FOUNDING SRTD GENE (Beales et al., 2007, Nature Genetics) \u2014 first gene identified for Jeune ATD; IFT-B2 WD40 beta-propeller; shortened cilia EM class (distinct from IFT-A short stubby and dynein-2 club); 3 endpoints verified 200; registered 2026-08-26",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd10",
+    "name": "IFT172 Short-Rib Thoracic Dysplasia 10 (Short-Rib-Thoracic-Dysplasia-10-SRTD10-Jeune-ATD10 / IFT172-Intraflagellar-Transport-Protein-172-1749aa-IFT-B2-Largest-Subunit-WD40-TPR-Kinesin2-Tip-Anchor-607386 / Chr-2p23.3 / SECOND-IFT-B2-SRTD-2015-Halbritter-Bujakowska / DUAL-PHENOTYPE-SRTD10-AND-BBS-Like-Retinal-Hypomorphic-TPR-Alleles / IFT-B2-SHORTENED-CILIA / NARROW-THORAX-PRIMARY / Polydactyly-40-50pct / Renal-20-30pct / Retinal-10-15pct-BBS-Like / CHF-8pct / NO-NPHP-NO-Joubert-NO-Ectodermal / VEPTR-MAGEC / SRPS-Spectrum / Renal-Tx-CURATIVE / ~1-200000-500000-30-50-Families-2026 / 2p23.3 / OMIM-IFT172-607386-SRTD10-615490)",
+    "status": "built",
+    "disease": "IFT172 Short-Rib Thoracic Dysplasia 10 (SRTD10 / ATD10 / Jeune Syndrome)",
+    "gene": "IFT172",
+    "omim_gene": "607386",
+    "omim_disease": "615490",
+    "chromosome": "2p23.3",
+    "endpoints": [
+      "/api/srtd10/overview",
+      "/api/srtd10/breakdown",
+      "/api/srtd10/definitions"
+    ],
+    "cohort_seed": 401,
+    "registered": "2026-08-26"
   }
 ]
