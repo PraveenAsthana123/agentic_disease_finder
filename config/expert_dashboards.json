@@ -7666,5 +7666,22 @@
     "cohort_n": 40,
     "seed": 367,
     "registered": "2026-08-26"
+  },
+  {
+    "name": "BBS19 Bardet-Biedl Syndrome Type 19 (BBS19-IFT172-Bardet-Biedl-Syndrome-Type-19-IFT-B2-Terminal-Cap-Tip-Turnaround-Failure-Dual-IFT-B-BBSome-Tip-Trapping-Ciliopathy / IFT172-1749aa-Largest-IFT-B-Subunit-N-Term-Adaptor-Central-Beta-Propeller-WD40-Array-607386 / Chr-2p23.3 / IFT172-TERMINAL-CAP-IFT-B2-Anchors-Anterograde-Train-Ciliary-Tip-Turnaround-Unique / IFT172-LOF-IFT-B2-DISASSEMBLES-IFT88-Tip-Accumulation-BBSome-Tip-Trapped-DUAL-Phenotype / Cilia-SHORTENED-BULGING-TIPS-Distinct-BBS15-Full-Length-BBS18-No-IFT-B / NPHP17-616033-Biallelic-Null-ESRD / MENA-Saudi-Aldahmesh-2014-First-Description / Renal-Cystic-42pct-BBS19 / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-55pct / Obesity-72pct / Cognitive-LD-38pct / Hypogonadism-55pct / Anosmia-48pct / CHD-4pct / Frequency-0.5-1pct-30-50-Families-2026 / ~1-500000-1000000 / AR-Biallelic-LOF / 2p23.3 / OMIM-Gene-IFT172-607386-Disease-615995-NPHP17-616033)",
+    "id": "bbs19",
+    "disease": "IFT172 Bardet-Biedl Syndrome Type 19 (BBS19-IFT172-IFT-B2-Tip-Turnaround-Failure-2p23.3-LOF-Ciliopathy / IFT172-1749aa-Terminal-Cap-607386 / Chr-2p23.3 / Tip-Turnaround-Failure-Dual-IFT-B-BBSome / ~1-500000-1000000 / AR-Biallelic-LOF / 2p23.3 / OMIM-Gene-IFT172-607386-Disease-615995)",
+    "route": "/bbs19",
+    "api_endpoints": [
+      "/api/bbs19/overview",
+      "/api/bbs19/breakdown",
+      "/api/bbs19/definitions"
+    ],
+    "status": "built",
+    "category": "Ciliopathy",
+    "subcategory": "Bardet-Biedl Syndrome",
+    "cohort_n": 40,
+    "seed": 369,
+    "registered": "2026-08-26"
   }
 ]
