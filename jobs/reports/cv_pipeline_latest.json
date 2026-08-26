@@ -1,11 +1,11 @@
 {
-  "run_at_local": "2026-08-26T03:00:02-06:00",
+  "run_at_local": "2026-08-26T16:00:02-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
   "detection": "YOLOv8n",
   "classification_model": "llava:7b (Ollama)",
-  "classification_sample": "An older man lays on a bed, his mouth is wide open.",
+  "classification_sample": "The image depicts a man lying in a hospital bed with a surprised expression on his face.",
   "results": [
     {
       "frame": "frame_0001.jpg",

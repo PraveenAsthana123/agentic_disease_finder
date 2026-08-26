@@ -36141,6 +36141,33 @@ async def bbs15_definitions():
         return {"error": str(e)}
 
 
+# ── BBS16 / SDCCAG8 (Centriolar Satellite Ciliogenesis) ──────────────────────
+# 40-patient cohort seed-363; 3 endpoints /api/bbs16/overview|breakdown|definitions
+@app.get("/api/bbs16/overview")
+async def bbs16_overview():
+    try:
+        import scripts.bbs16_dashboard as bbs16_
+        return _json_safe(bbs16_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs16/breakdown")
+async def bbs16_breakdown():
+    try:
+        import scripts.bbs16_dashboard as bbs16_
+        return _json_safe(bbs16_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs16/definitions")
+async def bbs16_definitions():
+    try:
+        import scripts.bbs16_dashboard as bbs16_
+        return _json_safe(bbs16_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

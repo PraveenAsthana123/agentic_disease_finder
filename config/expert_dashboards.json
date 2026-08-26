@@ -7609,7 +7609,7 @@
     "omim_disease": "#209900",
     "inheritance": "Autosomal Recessive",
     "category": "ciliopathy-bbsome",
-    "mechanism": "IFT27 biallelic LOF — BBSome assembled normally but TRAPPED in cilia (retrograde retrieval failure) — rod-cone degeneration, polydactyly, obesity, cognitive LD, renal cysts, hypogonadism, anosmia",
+    "mechanism": "IFT27 biallelic LOF \u2014 BBSome assembled normally but TRAPPED in cilia (retrograde retrieval failure) \u2014 rod-cone degeneration, polydactyly, obesity, cognitive LD, renal cysts, hypogonadism, anosmia",
     "c_peptide_pattern": "PRESERVED (insulin resistance; LepR trapped in cilia; NOT beta-cell apoptosis)",
     "cohort_size": 40,
     "seed": 361,
@@ -7621,5 +7621,19 @@
     ],
     "built_date": "2026-08-26",
     "description": "IFT-B retrograde BBSome retrieval failure; BBSome trapped in cilia; rod-cone dystrophy; polydactyly; IFT27 GTPase; ~1/10M-30M (very rare)"
+  },
+  {
+    "id": "bbs16",
+    "name": "BBS16 Bardet-Biedl Syndrome Type 16 (BBS16-SDCCAG8-NPHP10-Bardet-Biedl-Syndrome-Type-16-Centriolar-Satellite-Ciliogenesis-Defect-NPHP-Module-Ciliopathy / SDCCAG8-NPHP10-713aa-Centrosomal-Satellite-Protein-CC1-CC2-NPHP-Module-Domain-CC3-C-Term-PCM1-Tethering-613524 / Chr-1q43-44 / SDCCAG8-FIRST-BBS-GENE-Centriolar-Satellite-Ciliogenesis-Factor / Also-NPHP10-SLS7-Same-Gene / 40-patient-cohort-seed-363 / 3-endpoints-verified-200)",
+    "status": "built",
+    "route": "/bbs16",
+    "api_prefix": "/api/bbs16",
+    "gene": "SDCCAG8 / NPHP10",
+    "omim_gene": "*613524",
+    "omim_disease": "#615993",
+    "locus": "1q43-44",
+    "cohort_seed": 363,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]
