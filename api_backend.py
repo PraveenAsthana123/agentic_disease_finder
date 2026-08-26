@@ -34627,6 +34627,33 @@ async def pcd_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nphp/overview")
+async def nphp_overview():
+    try:
+        import scripts.nphp_dashboard as nphp_
+        return _json_safe(nphp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp/breakdown")
+async def nphp_breakdown():
+    try:
+        import scripts.nphp_dashboard as nphp_
+        return _json_safe(nphp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nphp/definitions")
+async def nphp_definitions():
+    try:
+        import scripts.nphp_dashboard as nphp_
+        return _json_safe(nphp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

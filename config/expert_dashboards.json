@@ -6701,5 +6701,24 @@
     ],
     "cohort_n": 40,
     "registered": "2026-08-25"
+  },
+  {
+    "name": "Nephronophthisis Type 1 (Nephronophthisis-Type-1-NPHP1-Juvenile-Nephronophthisis-Senior-Loken-Syndrome-1-When-Plus-Retinal / NPHP1-Nephrocystin-1-732aa-SH3-Ankyrin-Coiled-Coil-TZ-Scaffold-Primary-Cilia-607100 / Chr-2q13 / TZ-Gate-Dysfunction-Tubular-Planar-Cell-Polarity-Loss-Corticomedullary-Cysts-Fibrosis / MOST-COMMON-Inherited-Cause-ESRD-Under-25-Worldwide / ~1-50000-100000 / Autosomal-Recessive-Biallelic-LOF / 2q13 / OMIM-Gene-NPHP1-607100-Disease-256100)",
+    "route": "/nphp",
+    "status": "built",
+    "seed": 341,
+    "gene": "NPHP1",
+    "chromosome": "2q13",
+    "inheritance": "AR",
+    "omim_gene": "607100",
+    "omim_disease": "256100",
+    "endpoints": [
+      "/api/nphp/overview",
+      "/api/nphp/breakdown",
+      "/api/nphp/definitions"
+    ],
+    "cohort_n": 40,
+    "category": "ciliopathy-tz-nphp-renal",
+    "registered": "2026-08-25"
   }
 ]
