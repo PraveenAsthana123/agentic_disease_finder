@@ -7597,5 +7597,29 @@
     "cohort_n": 40,
     "seed": 359,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "bbs15",
+    "name": "BBS15 Bardet-Biedl Syndrome Type 15 (BBS15-IFT27-RABL4-Bardet-Biedl-Syndrome-Type-15-IFT-B-Retrograde-BBSome-Retrieval-GTPase-Ciliopathy / IFT27-RABL4-225aa-Rab-Like-GTPase-P-Loop-Switch-I-Switch-II-IFT-B1-Subunit-615870 / Chr-22q12.3 / IFT27-ONLY-IFT-SUBUNIT-CLASSIFIED-BBS-GENE / BBSome-TRAPPED-IN-CILIA-Retrograde-Retrieval-Failure / Rod-Cone-Rod-FIRST-Scotopic / Post-Axial-Polydactyly-52pct / Obesity-72pct / Renal-Cysts-35pct-NOT-NPHP / Val43Asp-European / Arg95Cys-European / Glu102Gly-MENA / Arg160Ter-Truncating / Frequency-Less-1pct / 22q12.3 / OMIM-Gene-IFT27-615870-Disease-209900)",
+    "route": "/bbs15",
+    "api_prefix": "/api/bbs15",
+    "gene": "IFT27",
+    "chromosome": "22q12.3",
+    "omim_gene": "*615870",
+    "omim_disease": "#209900",
+    "inheritance": "Autosomal Recessive",
+    "category": "ciliopathy-bbsome",
+    "mechanism": "IFT27 biallelic LOF — BBSome assembled normally but TRAPPED in cilia (retrograde retrieval failure) — rod-cone degeneration, polydactyly, obesity, cognitive LD, renal cysts, hypogonadism, anosmia",
+    "c_peptide_pattern": "PRESERVED (insulin resistance; LepR trapped in cilia; NOT beta-cell apoptosis)",
+    "cohort_size": 40,
+    "seed": 361,
+    "status": "built",
+    "endpoints_verified": [
+      "/api/bbs15/overview",
+      "/api/bbs15/breakdown",
+      "/api/bbs15/definitions"
+    ],
+    "built_date": "2026-08-26",
+    "description": "IFT-B retrograde BBSome retrieval failure; BBSome trapped in cilia; rod-cone dystrophy; polydactyly; IFT27 GTPase; ~1/10M-30M (very rare)"
   }
 ]

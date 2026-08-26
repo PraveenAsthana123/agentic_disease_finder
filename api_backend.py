@@ -36114,6 +36114,33 @@ async def bbs14_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BBS15 (IFT27/RABL4) ──────────────────────────────────────────────────────
+# 40-patient cohort seed-361; 3 endpoints /api/bbs15/overview|breakdown|definitions
+@app.get("/api/bbs15/overview")
+async def bbs15_overview():
+    try:
+        import scripts.bbs15_dashboard as bbs15_
+        return _json_safe(bbs15_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs15/breakdown")
+async def bbs15_breakdown():
+    try:
+        import scripts.bbs15_dashboard as bbs15_
+        return _json_safe(bbs15_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs15/definitions")
+async def bbs15_definitions():
+    try:
+        import scripts.bbs15_dashboard as bbs15_
+        return _json_safe(bbs15_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
