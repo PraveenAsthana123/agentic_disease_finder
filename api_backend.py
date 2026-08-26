@@ -35196,6 +35196,39 @@ async def nphp19_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Nephronophthisis Type 20 / Joubert Syndrome 31 (NPHP20/JBTS31 — CEP120/CCDC100) ──────────
+# CEP120: daughter centriole elongation scaffold; 5q23.2; ~1085 aa; ARM/HEAT repeats + coiled-coil
+# ONLY NPHP subtype caused by defective daughter centriole elongation — upstream of all other NPHP
+# mechanisms (DA subtypes NPHP15/NPHP18; IFT subtypes NPHP12/NPHP13/NPHP19; TZ subtypes NPHP1-4-8)
+# JBTS31 ~55%; retinal ~30%; SRPS2B 4-10% (null x null); CPAP/CENPJ co-sequence mandatory
+# 40-patient cohort seed-379; 3 endpoints /api/nphp20/overview|breakdown|definitions
+@app.get("/api/nphp20/overview")
+async def nphp20_overview():
+    """CEP120/NPHP20/JBTS31 — daughter centriole elongation scaffold; 5q23.2;
+40-patient cohort seed-379; 3 endpoints /api/nphp20/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp20_dashboard as nphp20_
+        return _json_safe(nphp20_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp20/breakdown")
+async def nphp20_breakdown():
+    try:
+        import scripts.nphp20_dashboard as nphp20_
+        return _json_safe(nphp20_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp20/definitions")
+async def nphp20_definitions():
+    try:
+        import scripts.nphp20_dashboard as nphp20_
+        return _json_safe(nphp20_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

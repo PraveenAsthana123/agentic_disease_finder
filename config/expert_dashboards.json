@@ -6989,5 +6989,15 @@
     "cohort_seed": 377,
     "cohort_n": 40,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "nphp20",
+    "name": "Nephronophthisis Type 20 / Joubert Syndrome 31 (Nephronophthisis-Type-20-NPHP20-JBTS31-CEP120-CCDC100-Centrosomal-Protein-120-1085aa-Daughter-Centriole-Elongation-Scaffold-ARM-HEAT-Repeats-Coiled-Coil / CEP120-CPAP-CENPJ-ARM-Domain-Direct-Binding-Daughter-Centriole-Distal-Tip / Chr-5q23.2-NPHP1-2q13-NPHP2-9q31.1-NPHP3-3q22.1-NPHP4-1p36-IQCB1-NPHP5-3q21.1-CEP290-NPHP6-12q21.32-GLIS2-NPHP7-16p13.3-RPGRIP1L-NPHP8-16q12.2-NEK8-NPHP9-17q11.2-SDCCAG8-NPHP10-1q44-TMEM67-NPHP11-8q22.1-TTC21B-NPHP12-2q24.3-WDR19-NPHP13-4p14-ZNF423-NPHP14-16q12.1-CEP164-NPHP15-11q23.3-ANKS6-NPHP16-9q22.33-MAPKBP1-NPHP17-2q13.3-CEP83-NPHP18-12q22-IFT81-NPHP19-12q23.1-CEP120-NPHP20-5q23.2 / ONLY-NPHP-CAUSED-BY-DAUGHTER-CENTRIOLE-ELONGATION-SCAFFOLD-LOSS-Upstream-ALL-Other-NPHP-Mechanisms / CPAP-CENPJ-JBTS9-OBLIGATE-CO-SEQUENCE-Direct-ARM-Domain-Binding-Partner-Digenic-Documented / JBTS31-JOUBERT-55pct-MTS / SRPS2B-4-10pct-BIALLELIC-NULL-Skeletal-Survey-Mandatory / RETINAL-30pct-Annual-ERG-Mandatory / NO-SITUS-NO-CHF / ULTRA-RARE-Less-25-Families-2026 / 5q23.2-UNIQUE-ARM / Renal-Transplant-CURATIVE-EXCELLENT / ~1-800000-2000000 / Autosomal-Recessive-Biallelic-LOF / 5q23.2 / OMIM-Gene-CEP120-613446-Disease-617761-JBTS31-NPHP20",
+    "status": "built",
+    "route": "/nphp20",
+    "api": "/api/nphp20",
+    "seed": 379,
+    "cohort_n": 40,
+    "registered": "2026-08-26"
   }
 ]
