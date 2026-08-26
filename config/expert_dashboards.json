@@ -6768,5 +6768,26 @@
     "cohort_seed": 347,
     "cohort_size": 40,
     "notes": "Built scripts/nphp4_dashboard.py, api_backend.py 3 routes /api/nphp4/overview|breakdown|definitions verified 200, portal-next/app/nphp4/page.jsx + SiteNav wired after Nephronophthisis Type 3, expert_dashboards.json count 437->438. Built 2026-08-25."
+  },
+  {
+    "id": "nphp5",
+    "title": "Nephronophthisis Type 5 / Senior-L\u00f8ken Syndrome 5",
+    "subtitle": "IQCB1/NPHP5 \u2014 Most Common Senior-L\u00f8ken Syndrome Gene; Severe LCA-like Retinal >> Renal",
+    "status": "built",
+    "route": "/nphp5",
+    "api_prefix": "/api/nphp5",
+    "gene": "IQCB1",
+    "chromosome": "3q21.1",
+    "omim_gene": "607526",
+    "omim_disease": "609254",
+    "inheritance": "AR",
+    "cohort_n": 40,
+    "seed": 349,
+    "endpoints": [
+      "/api/nphp5/overview",
+      "/api/nphp5/breakdown",
+      "/api/nphp5/definitions"
+    ],
+    "registered": "2026-08-25"
   }
 ]

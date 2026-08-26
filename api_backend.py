@@ -34739,6 +34739,32 @@ async def nphp4_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/nphp5/overview")
+async def nphp5_overview():
+    """Nephronophthisis Type 5 / Senior-Løken Syndrome 5 (IQCB1/NPHP5; 3q21.1; 590aa; Most Common SLS Gene; LCA-like retinal >> renal);
+    40-patient cohort seed-349; 3 endpoints /api/nphp5/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp5_dashboard as nphp5_
+        return _json_safe(nphp5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp5/breakdown")
+async def nphp5_breakdown():
+    try:
+        import scripts.nphp5_dashboard as nphp5_
+        return _json_safe(nphp5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp5/definitions")
+async def nphp5_definitions():
+    try:
+        import scripts.nphp5_dashboard as nphp5_
+        return _json_safe(nphp5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
