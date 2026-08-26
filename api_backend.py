@@ -35104,6 +35104,35 @@ async def nphp16_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# 40-patient cohort seed-373; 3 endpoints /api/nphp17/overview|breakdown|definitions
+# NPHP17 / MAPKBP1 — Chr 2q13.3; JNK/MAPK scaffold; NPHP4 supercomplex interactor;
+# pure renal NPHP; ESRD median ~14–16yr; no situs/retinal/CHF/Joubert/ID; ultra-rare
+@app.get("/api/nphp17/overview")
+async def nphp17_overview():
+    """NPHP17 (MAPKBP1/JIP4) overview —
+40-patient cohort seed-373; 3 endpoints /api/nphp17/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp17_dashboard as nphp17_
+        return _json_safe(nphp17_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp17/breakdown")
+async def nphp17_breakdown():
+    try:
+        import scripts.nphp17_dashboard as nphp17_
+        return _json_safe(nphp17_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp17/definitions")
+async def nphp17_definitions():
+    try:
+        import scripts.nphp17_dashboard as nphp17_
+        return _json_safe(nphp17_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
