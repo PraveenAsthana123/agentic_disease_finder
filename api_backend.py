@@ -34685,6 +34685,34 @@ async def nphp2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Nephronophthisis Type 3 (NPHP3 — Adolescent; NPHP3/3q22.1) ─────────────────────────────
+@app.get("/api/nphp3/overview")
+async def nphp3_overview():
+    """NPHP3 — Nephrocystin-3; 3q22.1; 1330 aa TZ scaffold; adolescent ESRD ~19yr;
+    40-patient cohort seed-345; 3 endpoints /api/nphp3/overview|breakdown|definitions."""
+    try:
+        import scripts.nphp3_dashboard as nphp3_
+        return _json_safe(nphp3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp3/breakdown")
+async def nphp3_breakdown():
+    try:
+        import scripts.nphp3_dashboard as nphp3_
+        return _json_safe(nphp3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nphp3/definitions")
+async def nphp3_definitions():
+    try:
+        import scripts.nphp3_dashboard as nphp3_
+        return _json_safe(nphp3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

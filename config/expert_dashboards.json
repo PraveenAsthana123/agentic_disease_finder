@@ -6738,5 +6738,21 @@
     ],
     "cohort_n": 40,
     "category": "ciliopathy"
+  },
+  {
+    "id": "nphp3",
+    "name": "Nephronophthisis Type 3 (Nephronophthisis-Type-3-NPHP3-Adolescent-Nephronophthisis-NPHP3-Nephrocystin-3 / NPHP3-Nephrocystin-3-1330aa-TZ-Scaffold-NPHP1-NPHP3-NPHP4-Module-608002 / Chr-3q22.1-Multi-Locus-20-Plus-Genes / TZ-Gate-Dysfunction-NPHP1-3-4-Module-Hedgehog-Wnt-PCP-Failure / ADOLESCENT-ESRD-Median-19yr / SITUS-INVERSUS-15-20pct-Less-Penetrant-NPHP2 / KIDNEYS-SMALL-Echogenic-NOT-Enlarged / CHF-45pct-Ductal-Plate / NO-Senior-Loken / ~1-200000-500000 / Autosomal-Recessive-Biallelic-LOF / 3q22.1 / OMIM-Gene-NPHP3-608002-Disease-604387)",
+    "route": "/nphp3",
+    "slug": "nphp3",
+    "status": "built",
+    "api_endpoints": [
+      "/api/nphp3/overview",
+      "/api/nphp3/breakdown",
+      "/api/nphp3/definitions"
+    ],
+    "cohort_seed": 345,
+    "cohort_n": 40,
+    "built_date": "2026-08-25",
+    "notes": "Built scripts/nphp3_dashboard.py, api_backend.py 3 routes /api/nphp3/overview|breakdown|definitions verified 200, portal-next/app/nphp3/page.jsx + SiteNav wired after Nephronophthisis Type 2, expert_dashboards.json count 436->437."
   }
 ]
