@@ -35817,6 +35817,33 @@ async def bbs3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BBS4 — Bardet-Biedl Syndrome Type 4 (BBS4/TPR scaffold; PCM1 satellite anchor) ──
+# 40-patient cohort seed-339; 3 endpoints /api/bbs4/overview|breakdown|definitions
+@app.get("/api/bbs4/overview")
+async def bbs4_overview():
+    try:
+        import scripts.bbs4_dashboard as bbs4_
+        return _json_safe(bbs4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs4/breakdown")
+async def bbs4_breakdown():
+    try:
+        import scripts.bbs4_dashboard as bbs4_
+        return _json_safe(bbs4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs4/definitions")
+async def bbs4_definitions():
+    try:
+        import scripts.bbs4_dashboard as bbs4_
+        return _json_safe(bbs4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

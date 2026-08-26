@@ -7452,5 +7452,23 @@
     "cohort_seed": 337,
     "cohort_n": 40,
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "bbs4",
+    "name": "BBS4 Bardet-Biedl Syndrome Type 4 (BBS4-Bardet-Biedl-Syndrome-Type-4-BBSome-PCM1-Satellite-Anchor-TPR-Scaffold-Ciliopathy / BBS4-Bardet-Biedl-Syndrome-4-Protein-519aa-8-TPR-Tetratricopeptide-Repeat-Domains-600374 / Chr-15q24.1 / BBS4-ONLY-BBSome-Subunit-Tethering-Assembling-Complex-To-PCM1-Pericentriolar-Satellites / BBSome-Partial-Intermediate-Persists-BBS4-Unlike-BBS2-Complete-Misassembly / Rod-Cone-Dystrophy-Rod-FIRST / Post-Axial-Polydactyly-65pct / Obesity-80pct-LepR-Mis-Trafficking / Cognitive-LD-50pct / Renal-Anomaly-45pct / Hypogonadism-65pct / Anosmia-60pct / Leu147Pro-TPR3-Hydrophobic-Core-European / Arg287Ter-Truncating-Null-MENA / Gly180Ser-BBS5-TPR4-Interface / Pro247Ser-PCM1-Anchor-Disrupted / BBS4-IF-Diagnostic-Absent-PCM1-Puncta-Unique / Frequency-2-4pct-All-BBS / ~1-100000-160000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 15q24.1 / OMIM-Gene-BBS4-600374-Disease-209900)",
+    "status": "built",
+    "gene": "BBS4",
+    "omim_gene": "600374",
+    "omim_disease": "209900",
+    "chromosome": "15q24.1",
+    "endpoints": [
+      "/api/bbs4/overview",
+      "/api/bbs4/breakdown",
+      "/api/bbs4/definitions"
+    ],
+    "frontend": "portal-next/app/bbs4/page.jsx",
+    "cohort_seed": 339,
+    "cohort_n": 40,
+    "built_date": "2026-08-26"
   }
 ]
