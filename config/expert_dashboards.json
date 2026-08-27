@@ -7706,5 +7706,18 @@
     "cohort_n": 40,
     "seed": 415,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts5",
+    "name": "JBTS5 Joubert Syndrome Type 5 (JBTS5-CEP290-Centrosomal-Protein-290-Joubert-Syndrome-Type-5-Most-Common-JBTS-Gene-10-15pct-All-JBTS-TZ-Y-Link-Scaffold-Pleiotropic-Allele-Tier-Ciliopathy / CEP290-Centrosomal-Protein-290kDa-2479aa-N-Term-CC-SMC-Hinge-Central-CC1-KIF3A-Central-CC2-NPHP5-IQCB1-Retinal-C-Term-Calmodulin-TZ-Anchor-610142 / Chr-12q21.32 / CEP290-MOST-COMMON-JBTS-GENE-10-15pct-All-Joubert-Syndrome / ALLELE-CLASS-5-TIER-RULE-Biallelic-Null-MKS4-One-Null-Hypomorphic-JBTS5-Biallelic-IVS26-LCA10-NPHP6-BBS14 / IVS26-c2991plus1655A-G-DEEP-INTRONIC-INVISIBLE-WES-Panel-Miss-Pearl / SEPOFARSEN-EDIT-101-ASO-CRISPR-IVS26 / HIGH-RETINAL-57pct / Renal-35pct / ~10-15pct-All-JBTS / ~1-500000-700000-Worldwide / OMIM-Gene-610142-Disease-610188-NPHP6-615454-MKS4-611134-BBS14-209900-LCA10-613142 / 40-patient-cohort-seed-417 / 3-endpoints-verified-200 / Registered-2026-08-26)",
+    "status": "built",
+    "seed": 417,
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/jbts5/overview",
+      "/api/jbts5/breakdown",
+      "/api/jbts5/definitions"
+    ],
+    "registered": "2026-08-26"
   }
 ]
