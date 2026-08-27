@@ -7779,5 +7779,23 @@
     ],
     "cohort_seed": 425,
     "registered": "2026-08-26"
+  },
+  {
+    "name": "JBTS10 OFD1 Joubert Syndrome Type 10 (JBTS10-OFD1-Oral-Facial-Digital-Syndrome-Type-1-Protein-Joubert-Syndrome-Type-10-X-Linked-Centriolar-Satellite-Ciliogenesis-RP23-Allelic-OFD1-Syndrome / OFD1-1012aa-LisH-CC1-CC2-CC3-Retinal-Isoform-CC4-CC5-Xp22.2-300170 / X-Linked / OMIM-Gene-OFD1-300170-Disease-300804-JBTS10-311200-OFD1-Syndrome-300424-RP23 / 40-patient-cohort-seed-427 / 3-endpoints-verified-200)",
+    "status": "built",
+    "route": "/jbts10",
+    "api_endpoints": [
+      "/api/jbts10/overview",
+      "/api/jbts10/breakdown",
+      "/api/jbts10/definitions"
+    ],
+    "gene": "OFD1",
+    "chromosome": "Xp22.2",
+    "inheritance": "X-linked",
+    "cohort_seed": 427,
+    "cohort_n": 40,
+    "omim_gene": "300170",
+    "omim_disease": "300804",
+    "registered": "2026-08-26"
   }
 ]
