@@ -36383,6 +36383,32 @@ async def jbts6_definitions():
         return {"error": str(e)}
 
 
+# 40-patient cohort seed-421; 3 endpoints /api/jbts7/overview|breakdown|definitions
+@app.get("/api/jbts7/overview")
+async def jbts7_overview():
+    try:
+        import scripts.jbts7_dashboard as jbts7_
+        return _json_safe(jbts7_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts7/breakdown")
+async def jbts7_breakdown():
+    try:
+        import scripts.jbts7_dashboard as jbts7_
+        return _json_safe(jbts7_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts7/definitions")
+async def jbts7_definitions():
+    try:
+        import scripts.jbts7_dashboard as jbts7_
+        return _json_safe(jbts7_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

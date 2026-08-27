@@ -7732,5 +7732,18 @@
       "/api/jbts6/definitions"
     ],
     "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts7",
+    "name": "JBTS7 Joubert Syndrome Type 7 (JBTS7-RPGRIP1L-Retinitis-Pigmentosa-GTPase-Regulator-Interacting-Protein-1-Like-Joubert-Syndrome-Type-7-TZ-Y-Link-Scaffold-European-Ala229Thr-Founder-MKS5-Lethal-Ciliopathy / RPGRIP1L-FTM-NPHP8-1315aa-N-Term-CC-RPGRIP1-Homology-RH-NPHP4-Binding-C2-RPGR-Membrane-610937 / Chr-16q12.2 / RPGRIP1L-TZ-Y-LINK-SCAFFOLD-NPHP4-RH-Domain-RPGR-C2-Domain-Y-Link-Axoneme-Junction-GPCR-Import / RPGRIP1L-LOF-TZ-Y-Link-Detaches-Smo-GPCR-Exclusion-Hedgehog-Failure-Molar-Tooth-Sign / ALLELE-CLASS-TIER-RULE-Biallelic-Null-MKS5-Lethal-One-Null-Hypomorphic-JBTS7-Biallelic-Hypomorphic-NPHP8-Mild / ALA229THR-c685G-A-EUROPEAN-FOUNDER-N-Term-CC-Hypomorphic-Most-Common-RPGRIP1L-Allele / NO-COACH-Mild-CHF-Only-Not-TMEM67-CC2D2A-Hepatic-Fibrosis-Distinctive / Renal-NPHP8-30pct-TIN-ESRD-Median-22yr / Oculomotor-Apraxia-45pct / Cerebellar-Ataxia-87pct / Neonatal-Hypotonia-83pct / Breathing-Dysregulation-55pct / Intellectual-Disability-70pct / Retinal-25pct-Rod-Cone-C2-RPGR-Axis / MKS5-Biallelic-Null-Encephalocele-Polydactyly-PKD-Perinatal-Lethal / Renal-Transplant-CURATIVE-NPHP8-Endpoint-Neurological-Retinal-NOT-Corrected / Ala229Thr-c685G-A-N-Term-CC-European-Founder-Biallelic-Mild-JBTS7 / Arg1174Gln-c3521G-A-RH-C-Term-NPHP4-Interface-MENA / Lys1326Ter-c3976A-T-C2-Truncating-Null-MKS5-Pan-Ethnic / Trp519Ter-c1557G-A-CC-RH-Boundary-Null-MKS5-Pan-Ethnic / c2407plus2T-A-Splice-Donor-Exon15-Null-European / Asn694Ser-c2081A-G-RH-Core-South-Asian-NPHP8 / Leu821Pro-c2462T-C-RH-C2-Junction-MENA / Frequency-2-3pct-All-Joubert-Syndrome / ~1-1000000-2000000-JBTS7-Worldwide / Autosomal-Recessive-Biallelic-LOF / 16q12.2 / OMIM-Gene-RPGRIP1L-610937-Disease-611560-JBTS7-611561-MKS5-613568-NPHP8)",
+    "status": "built",
+    "seed": 421,
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/jbts7/overview",
+      "/api/jbts7/breakdown",
+      "/api/jbts7/definitions"
+    ],
+    "registered": "2026-08-26"
   }
 ]
