@@ -7797,5 +7797,19 @@
     "omim_gene": "300170",
     "omim_disease": "300804",
     "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts11",
+    "name": "JBTS11 TCTN1 Joubert Syndrome Type 11 (JBTS11-TCTN1-Tectonic-1-Joubert-Syndrome-Type-11-Tectonic-Complex-TZ-Lipid-Gate-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TCTN1-1348aa-Signal-Peptide-N-Term-TCTN2-TCTN3-Dimerisation-Tectonic-Domain-Ciliary-Gate-Core-TMEM67-CC2D2A-MKS1-Binding-C-Term-Membrane-B9D1-TMEM231-609863 / Chr-12q24.11 / TCTN1-TECTONIC-COMPLEX-LIPID-GATE-TCTN1-TCTN2-TCTN3-Cholesterol-Sphingolipid-Enrichment-TZ-Membrane-SMO-Entry / TCTN1-LOF-Tectonic-Complex-Collapses-Lipid-Gate-Fails-SMO-Excluded-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-TCTN1-Biallelic-Null-JBTS11-Live-Birth-Unlike-TCTN2-MKS8-Lethal / TCTN2-MKS8-DISTINCTION-Same-Complex-Different-Disease / Retinal-35pct-Rod-Cone / Renal-NPHP-Like-TIN-28pct-ESRD-Median-22yr / Hepatic-12pct-Mild-CHF / Polydactyly-15pct / Cerebellar-Ataxia-85pct / Neonatal-Hypotonia-80pct / Oculomotor-Apraxia-55pct / Breathing-Dysregulation-60pct / Intellectual-Disability-70pct / Arg339Cys-c1015C-T-MENA / Gly347Arg-c1039G-A-Pan-Ethnic / Leu506Pro-c1517T-C-South-Asian / Trp623Ter-c1869G-A-European-Null / Arg847Ter-c2539C-T-Pan-Ethnic-Null / Ala298Val-c893C-T-North-African-Founder / Frequency-1-2pct-All-Joubert-Syndrome / ~1-1000000-2500000-JBTS11-Worldwide / Autosomal-Recessive-Biallelic-LOF / 12q24.11 / OMIM-Gene-TCTN1-609863-Disease-614170-JBTS11)",
+    "status": "built",
+    "route": "/jbts11",
+    "api_routes": [
+      "/api/jbts11/overview",
+      "/api/jbts11/breakdown",
+      "/api/jbts11/definitions"
+    ],
+    "cohort_seed": 429,
+    "cohort_size": 40,
+    "built_date": "2026-08-26"
   }
 ]
