@@ -36352,6 +36352,37 @@ async def jbts5_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS6 TMEM67/MKS3 Joubert Syndrome Type 6 ─────────────────────────────
+# TMEM67 (Meckelin/MKS3) — TZ membrane protein (FN-III extracellular + single TM + cytoplasmic);
+# 8q22.1; OMIM gene *609884; JBTS6 #610688; MKS3 #607361; NPHP11 #613550; COACH #216360;
+# ~5-10% all JBTS; biallelic NULL → MKS3 lethal; one null + hypomorphic → JBTS6 ± COACH;
+# COACH (hepatic fibrosis) in ~30%; p.Cys615Arg North African founder enriched;
+# 40-patient cohort seed-419; 3 endpoints /api/jbts6/overview|breakdown|definitions
+@app.get("/api/jbts6/overview")
+async def jbts6_overview():
+    try:
+        import scripts.jbts6_dashboard as jbts6_
+        return _json_safe(jbts6_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts6/breakdown")
+async def jbts6_breakdown():
+    try:
+        import scripts.jbts6_dashboard as jbts6_
+        return _json_safe(jbts6_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts6/definitions")
+async def jbts6_definitions():
+    try:
+        import scripts.jbts6_dashboard as jbts6_
+        return _json_safe(jbts6_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -7719,5 +7719,18 @@
       "/api/jbts5/definitions"
     ],
     "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts6",
+    "name": "JBTS6 Joubert Syndrome Type 6 (JBTS6-TMEM67-Meckelin-Joubert-Syndrome-Type-6-TZ-Membrane-Protein-COACH-Hepatic-Fibrosis-Distinctive-Ciliopathy / TMEM67-Meckelin-MKS3-995aa-FN-III-Extracellular-Single-TM-Cytoplasmic-NPHP4-CC2D2A-Binding-609884 / Chr-8q22.1 / TMEM67-TZ-MEMBRANE-PROTEIN-FN-III-Extracellular-Wnt-FZD-Sensing-TZ-Gate-Integrity-GPCR-Import / TMEM67-LOF-TZ-Membrane-Gate-Fails-Smo-GPCR-Entry-Impaired-Hedgehog-Wnt-Failure-Molar-Tooth-Sign / ALLELE-CLASS-TIER-RULE-Biallelic-Null-MKS3-Lethal-Encephalocele-One-Null-Hypomorphic-JBTS6-COACH-Biallelic-Hypomorphic-NPHP11-Mild / COACH-SYNDROME-Cerebellar-Oculo-renal-Coloboma-Hepatic-Fibrosis-TMEM67-AND-CC2D2A-ONLY-Two-JBTS-Genes / CYS615ARG-NORTH-AFRICAN-FOUNDER-Morocco-Algeria-Tunisia-Most-Common-TMEM67-Allele-COACH-Enriched / HEPATIC-FIBROSIS-30pct-DISTINCTIVE-Ductal-Plate-Malformation-Portal-Fibrosis-Portal-HTN-Varices / Renal-NPHP11-38pct-TIN-ESRD-Median-18yr / Oculomotor-Apraxia-60pct / Cerebellar-Ataxia-85pct / Neonatal-Hypotonia-85pct / Breathing-Dysregulation-58pct / Intellectual-Disability-68pct / Retinal-35pct-Rod-Cone / MKS3-Biallelic-Null-Encephalocele-Polydactyly-PKD-Lethal / Combined-Liver-Kidney-Transplant-ESRD-Portal-HTN-Both-Curative / Arg941Gln-c2822G-A-Cytoplasmic-NPHP4-Interface-European / Leu736Pro-c2207T-C-TM-Adjacent-MENA / Gln376Ter-c1126C-T-FN-III-Truncating-Null-Pan-Ethnic / Tyr78Cys-c233A-G-N-Term-FN-III-South-Asian / c1864plus1G-A-Splice-Donor-Intron17-European-Null / Trp628Cys-c1884G-T-TM-Extracellular-Linker-MENA-Hypomorphic / Cys615Arg-c1843T-C-TM-Proximal-North-African-Founder-COACH / Frequency-5-10pct-All-Joubert-Syndrome / ~1-300000-500000-JBTS6-Worldwide / Autosomal-Recessive-Biallelic-LOF / 8q22.1 / OMIM-Gene-TMEM67-609884-Disease-610688-JBTS6-607361-MKS3-613550-NPHP11-216360-COACH / 40-patient-cohort-seed-419 / 3-endpoints-verified-200 / Registered-2026-08-26)",
+    "status": "built",
+    "seed": 419,
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/jbts6/overview",
+      "/api/jbts6/breakdown",
+      "/api/jbts6/definitions"
+    ],
+    "registered": "2026-08-26"
   }
 ]
