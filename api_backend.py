@@ -36273,6 +36273,59 @@ async def srtd18_definitions():
         return {"error": str(e)}
 
 
+# 40-patient cohort seed-413; 3 endpoints /api/jbts3/overview|breakdown|definitions
+@app.get("/api/jbts3/overview")
+async def jbts3_overview():
+    """AHI1 JBTS3 — Transition zone scaffold/Jouberin — 40-patient cohort seed-413."""
+    try:
+        import scripts.jbts3_dashboard as jbts3_
+        return _json_safe(jbts3_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts3/breakdown")
+async def jbts3_breakdown():
+    try:
+        import scripts.jbts3_dashboard as jbts3_
+        return _json_safe(jbts3_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts3/definitions")
+async def jbts3_definitions():
+    try:
+        import scripts.jbts3_dashboard as jbts3_
+        return _json_safe(jbts3_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# 40-patient cohort seed-415; 3 endpoints /api/jbts4/overview|breakdown|definitions
+@app.get("/api/jbts4/overview")
+async def jbts4_overview():
+    try:
+        import scripts.jbts4_dashboard as jbts4_
+        return _json_safe(jbts4_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts4/breakdown")
+async def jbts4_breakdown():
+    try:
+        import scripts.jbts4_dashboard as jbts4_
+        return _json_safe(jbts4_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts4/definitions")
+async def jbts4_definitions():
+    try:
+        import scripts.jbts4_dashboard as jbts4_
+        return _json_safe(jbts4_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

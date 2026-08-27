@@ -7688,5 +7688,23 @@
     "id": "srtd18",
     "name": "SRTD18 Short-Rib Thoracic Dysplasia 18 (SRTD18-IFT43-Bardet-Jeune-Asphyxiating-Thoracic-Dystrophy-18-IFT-A-Satellite-Smallest-Subunit-Campomelia-CED3-Dual-Phenotype-Ciliopathy / IFT43-378aa-IFT-A-Satellite-Peripheral-Anchor-N-Terminal-Adaptor-Central-Linker-C-Terminal-Anchoring-614068 / Chr-14q24 / IFT43-SECOND-IFT-A-SATELLITE-SRTD-GENE-After-IFT121-WDR35-SRTD7-SMALLEST-IFT-A-Subunit / IFT43-LOF-IFT-A-SATELLITE-COLLAPSES-IFT121-WDR60-Destabilised-SHORT-STUBBY-CILIA-IFT-A-Class-EM / CAMPOMELIA-50pct-DISTINCTIVE-SRTD18-Bowing-Long-Bones-HIGHEST-IFT-A-SRTD-Frequency / DUAL-PHENOTYPE-Biallelic-Null-SRTD18-SRPS-Hypomorphic-CED3-Sensenbrenner-Craniosynostosis-Sparse-Hair-Dental / W174R-c520T-C-Central-Linker-IFT121-Contact-Arabian-Peninsula-Founder-SRTD18-Campomelia / SHORT-STUBBY-CILIA-EM-IFT-A-Class-Identical-SRTD2-4-5-7-9-NOT-Club-Bulging-Dynein-2 / MKKS-BCC-NORMAL-MKS1-TZ-NORMAL-Retrograde-IFT-IMPAIRED-Only-IFT-A-Satellite-Fails / Renal-TIN-Cystic-22pct-NOT-NPHP-Dominant / Rod-Cone-Dystrophy-13pct / Post-Axial-Polydactyly-40pct / CHF-Hepatic-Fibrosis-9pct-CED3-30pct-Hypomorphic / Cognitive-Normal-Contrast-BBS / Narrow-Thorax-VEPTR-MAGEC-Primary / SRPS-Spectrum-Biallelic-Null-Perinatal-Lethal / CED3-Craniosynostosis-Sparse-Hair-Hypodontia-Narrow-Thorax-Hepatic-Fibrosis-Hypomorphic / W174R-c520T-C-Central-Linker-Arabian-Peninsula-Founder / Glu98Lys-c292G-A-N-Terminal-Adaptor-MENA-Severe / Arg243Ter-c727C-T-Truncating-Null-SRPS-Pan-Ethnic / Leu312Pro-c935T-C-C-Term-Hypomorphic-CED3-European / Gly78Val-c233G-T-N-Term-Adaptor-Compound-Het-South-Asian / Frequency-Less-1pct-Very-Rare-10-25-Families-2026 / ~1-1000000-3000000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 14q24 / OMIM-Gene-IFT43-614068-Disease-617866-CED3-614099 / 40-patient-cohort-seed-391 / 3-endpoints-verified-200)",
     "status": "built"
+  },
+  {
+    "id": "jbts3",
+    "name": "JBTS3 Joubert Syndrome Type 3 (JBTS3-AHI1-Jouberin-Joubert-Syndrome-Type-3-Transition-Zone-Scaffold-WD40-SH3-Molar-Tooth-Sign-Ciliopathy / AHI1-Jouberin-1196aa-N-Term-WD40-7-Blade-Beta-Propeller-aa1-400-Coiled-Coil-aa400-700-C-Term-SH3-aa1050-1196-608894 / Chr-6q23.3 / AHI1-TRANSITION-ZONE-SCAFFOLD-NPHP1-NPHP4-Complex-Y-Link-Assembly-TZ-Gate-Control / AHI1-LOF-TZ-Gate-Incomplete-SSTR3-MCHR1-Smo-FAIL-Neuronal-Cilia-Entry-Hedgehog-Impaired / MOLAR-TOOTH-SIGN-MTS-PATHOGNOMONIC-Elongated-SCP-Cerebellar-Vermis-Hypoplasia-Brain-MRI / OCULOMOTOR-APRAXIA-OMA-~75pct-Horizontal-Gaze-Initiation-Failure-JBTS3-Distinctive / Arg830Trp-ASHKENAZI-JEWISH-FOUNDER-~1-92-Carrier-Frequency-Most-Common-AHI1-Variant-Worldwide / NO-Polydactyly-NO-Obesity-NO-Narrow-Thorax-Distinguishes-JBTS3-From-BBS-SRTD / Renal-Very-Rare-8pct-NO-NPHP-Allele-Distinguishes-From-NPHP / Retinal-Dystrophy-52pct-Rod-Cone-ERG-Mandatory / ~10-15pct-All-Joubert-Syndrome / ~1-600000-800000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 6q23.3 / OMIM-Gene-AHI1-608894-Disease-608629-JBTS3)",
+    "status": "built",
+    "api": "/api/jbts3/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 413,
+    "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts4",
+    "name": "JBTS4 Joubert Syndrome Type 4 (JBTS4-NPHP1-Nephrocystin-1-Joubert-Syndrome-Type-4-Transition-Zone-Y-Link-Scaffold-NPHP-Dual-Phenotype-High-Renal-Ciliopathy / NPHP1-Nephrocystin-1-732aa-CC1-NPHP4-Binding-SH3-AHI1-Contact-CC2-NPHP4-Heterodimerisation-IQ-Calmodulin-607100 / Chr-2q13 / NPHP1-TZ-Y-LINK-SCAFFOLD-AHI1-JBTS3-Partner-NPHP4-Tripartite-TZ-Complex / ALLELE-CLASS-GOVERNS-Biallelic-Null-NPHP1-No-MTS-One-Null-One-Hypomorphic-JBTS4-MTS / LARGE-610kb-DELETION-INVISIBLE-WES-MLPA-MANDATORY / HIGH-RENAL-45pct-vs-JBTS3-8pct / OMA-40pct-Lower-Than-JBTS3-75pct / Thr323Met-Key-JBTS4-Hypomorphic-Allele / Frequency-1-3pct-All-JBTS / OMIM-Gene-NPHP1-607100-Disease-609583)",
+    "status": "built",
+    "api": "/api/jbts4/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 415,
+    "registered": "2026-08-26"
   }
 ]
