@@ -36246,6 +36246,33 @@ async def bbs19_definitions():
         return {"error": str(e)}
 
 
+# 40-patient cohort seed-391; 3 endpoints /api/srtd18/overview|breakdown|definitions
+@app.get("/api/srtd18/overview")
+async def srtd18_overview():
+    """IFT43 SRTD18 — IFT-A satellite smallest subunit — 40-patient cohort seed-391."""
+    try:
+        import scripts.srtd18_dashboard as srtd18_
+        return _json_safe(srtd18_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/srtd18/breakdown")
+async def srtd18_breakdown():
+    try:
+        import scripts.srtd18_dashboard as srtd18_
+        return _json_safe(srtd18_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/srtd18/definitions")
+async def srtd18_definitions():
+    try:
+        import scripts.srtd18_dashboard as srtd18_
+        return _json_safe(srtd18_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

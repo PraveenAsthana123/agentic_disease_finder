@@ -7683,5 +7683,10 @@
     "cohort_n": 40,
     "seed": 369,
     "registered": "2026-08-26"
+  },
+  {
+    "id": "srtd18",
+    "name": "SRTD18 Short-Rib Thoracic Dysplasia 18 (SRTD18-IFT43-Bardet-Jeune-Asphyxiating-Thoracic-Dystrophy-18-IFT-A-Satellite-Smallest-Subunit-Campomelia-CED3-Dual-Phenotype-Ciliopathy / IFT43-378aa-IFT-A-Satellite-Peripheral-Anchor-N-Terminal-Adaptor-Central-Linker-C-Terminal-Anchoring-614068 / Chr-14q24 / IFT43-SECOND-IFT-A-SATELLITE-SRTD-GENE-After-IFT121-WDR35-SRTD7-SMALLEST-IFT-A-Subunit / IFT43-LOF-IFT-A-SATELLITE-COLLAPSES-IFT121-WDR60-Destabilised-SHORT-STUBBY-CILIA-IFT-A-Class-EM / CAMPOMELIA-50pct-DISTINCTIVE-SRTD18-Bowing-Long-Bones-HIGHEST-IFT-A-SRTD-Frequency / DUAL-PHENOTYPE-Biallelic-Null-SRTD18-SRPS-Hypomorphic-CED3-Sensenbrenner-Craniosynostosis-Sparse-Hair-Dental / W174R-c520T-C-Central-Linker-IFT121-Contact-Arabian-Peninsula-Founder-SRTD18-Campomelia / SHORT-STUBBY-CILIA-EM-IFT-A-Class-Identical-SRTD2-4-5-7-9-NOT-Club-Bulging-Dynein-2 / MKKS-BCC-NORMAL-MKS1-TZ-NORMAL-Retrograde-IFT-IMPAIRED-Only-IFT-A-Satellite-Fails / Renal-TIN-Cystic-22pct-NOT-NPHP-Dominant / Rod-Cone-Dystrophy-13pct / Post-Axial-Polydactyly-40pct / CHF-Hepatic-Fibrosis-9pct-CED3-30pct-Hypomorphic / Cognitive-Normal-Contrast-BBS / Narrow-Thorax-VEPTR-MAGEC-Primary / SRPS-Spectrum-Biallelic-Null-Perinatal-Lethal / CED3-Craniosynostosis-Sparse-Hair-Hypodontia-Narrow-Thorax-Hepatic-Fibrosis-Hypomorphic / W174R-c520T-C-Central-Linker-Arabian-Peninsula-Founder / Glu98Lys-c292G-A-N-Terminal-Adaptor-MENA-Severe / Arg243Ter-c727C-T-Truncating-Null-SRPS-Pan-Ethnic / Leu312Pro-c935T-C-C-Term-Hypomorphic-CED3-European / Gly78Val-c233G-T-N-Term-Adaptor-Compound-Het-South-Asian / Frequency-Less-1pct-Very-Rare-10-25-Families-2026 / ~1-1000000-3000000-Worldwide / Autosomal-Recessive-Biallelic-LOF / 14q24 / OMIM-Gene-IFT43-614068-Disease-617866-CED3-614099 / 40-patient-cohort-seed-391 / 3-endpoints-verified-200)",
+    "status": "built"
   }
 ]
