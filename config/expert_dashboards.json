@@ -7766,5 +7766,18 @@
     ],
     "registered": "2026-08-26",
     "notes": "ARL13B ciliary GTPase; INPP5E trafficking; NO MKS tier; all biallelic LOF \u2192 JBTS8; Arg79Gln North African/European founder"
+  },
+  {
+    "name": "JBTS9 CC2D2A Joubert Syndrome Type 9 (JBTS9-CC2D2A-Coiled-Coil-C2-Domain-Containing-Protein-2A-Joubert-Syndrome-Type-9-TZ-Scaffold-MKS6-Lethal-Tier-COACH-Hepato-Renal-Ciliopathy / CC2D2A-1620aa-CC1-TMEM67-Binding-CC2-RPGRIP1L-Binding-C2-Membrane-C-Terminal-CC-CEP290-B9D1-612013 / Chr-4p15.33 / MKS6-Biallelic-Null-Lethal / COACH-Second-Most-Common-Gene / Hepatic-CHF-25pct / Renal-TIN-38pct-ESRD-20yr / Retinal-40pct / Polydactyly-JSOFD-20pct / 40-patient-cohort-seed-425 / OMIM-Gene-CC2D2A-612013-Disease-612285-JBTS9-612284-MKS6 / Registered-2026-08-26)",
+    "status": "built",
+    "disease_code": "JBTS9",
+    "route": "/jbts9",
+    "api_endpoints": [
+      "/api/jbts9/overview",
+      "/api/jbts9/breakdown",
+      "/api/jbts9/definitions"
+    ],
+    "cohort_seed": 425,
+    "registered": "2026-08-26"
   }
 ]
