@@ -7745,5 +7745,26 @@
       "/api/jbts7/definitions"
     ],
     "registered": "2026-08-26"
+  },
+  {
+    "id": "jbts8",
+    "name": "ARL13B Joubert Syndrome Type 8 (JBTS8)",
+    "category": "ciliopathy",
+    "subcategory": "joubert_syndrome",
+    "gene": "ARL13B",
+    "omim_gene": "608922",
+    "omim_disease": "612291",
+    "status": "built",
+    "api_base": "/api/jbts8",
+    "frontend": "/jbts8",
+    "cohort_seed": 423,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/jbts8/overview",
+      "/api/jbts8/breakdown",
+      "/api/jbts8/definitions"
+    ],
+    "registered": "2026-08-26",
+    "notes": "ARL13B ciliary GTPase; INPP5E trafficking; NO MKS tier; all biallelic LOF \u2192 JBTS8; Arg79Gln North African/European founder"
   }
 ]
