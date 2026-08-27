@@ -7811,5 +7811,22 @@
     "cohort_seed": 429,
     "cohort_size": 40,
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "jbts12",
+    "name": "JBTS12 KIF7 Joubert Syndrome Type 12 / Acrocallosal Syndrome (JBTS12-KIF7-Kinesin-Family-Member-7-Joubert-Syndrome-Type-12-Acrocallosal-Syndrome-ACLS-Costal-2-Homolog-Immotile-Kinesin-Ciliary-Tip-GLI-Dual-Control-No-MKS-Tier / KIF7-1343aa-Motor-Domain-Kinesin-Fold-ATP-Binding-GLI-Scaffold-Neck-CC-Dimer-Central-CC-Regulatory-C-Tail-GLI2-3-Interaction-Ciliary-Tip-Targeting-611254 / Chr-15q26.1 / KIF7-VERTEBRATE-COSTAL-2-GLI-ACTIVATOR-REPRESSOR-CILIARY-TIP-CONTROL / KIF7-LOF-Ciliary-Tips-Disorganised-GLI-Activator-Lost-Ectopic-GLI3R-Excess-Hedgehog-Failure-MTS / NO-MKS-TIER-KIF7-BIALLELIC-NULL-JBTS12-LIVE-BIRTH-HLS2-Distinct-Lethal-Tier / ACLS-ALLELIC-Same-KIF7-Gene-CC-Agenesis-Polydactyly-Joubert / HIGHEST-POLYDACTYLY-35-45pct-BILATERAL-HANDS-FEET / CORPUS-CALLOSUM-ANOMALY-20-25pct-KIF7-Distinctive / Frequency-1-2pct-All-Joubert-Syndrome / ~1-1000000-2500000-JBTS12-Worldwide / Autosomal-Recessive-Biallelic-LOF / 15q26.1 / OMIM-Gene-KIF7-611254-Disease-200990-JBTS12-ACLS-614120-HLS2)",
+    "status": "built",
+    "route": "/jbts12",
+    "api_routes": [
+      "/api/jbts12/overview",
+      "/api/jbts12/breakdown",
+      "/api/jbts12/definitions"
+    ],
+    "cohort_seed": 431,
+    "cohort_size": 40,
+    "gene": "KIF7",
+    "omim_gene": "611254",
+    "omim_disease": "200990",
+    "built_date": "2026-08-26"
   }
 ]
