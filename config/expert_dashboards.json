@@ -7998,6 +7998,20 @@
     "registered": "2026-08-31"
   },
   {
+    "id": "jbts23",
+    "name": "JBTS23 KIAA0586 Joubert Syndrome Type 23 (JBTS23-KIAA0586-TALPID3-Joubert-Syndrome-Type-23-CPLANE-Centriolar-Scaffold-CC3-C-Terminal-Hypomorphic-SRTD16-Allelic-Only-JBTS-SRTD-Allelic-Pair-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / KIAA0586-1624aa-CC1-Centriolar-Anchoring-DA-Basal-Body-Transition-aa1-400-CC2-CPLANE-Interface-INTU-FUZ-WDPCP-IFT-Recruitment-aa401-1100-CC3-IFT-Platform-NEK1-Cooperation-CP110-Removal-JBTS23-Zone-aa1101-1624-610178 / Chr-14q23.1 / CPLANE-SCAFFOLD-CC3-HYPOMORPHIC-Cilia-SHORTENED-Not-Absent / SRTD16-ALLELIC-ONLY-JBTS-SRTD-ALLELIC-PAIR / SOUTH-ASIAN-FOUNDER-Arg1116His-c3347G-A-CC3-Entry / RENAL-18pct / RETINAL-22pct / Polydactyly-22pct-Post-Axial-CPLANE-IFT-Gli / Autosomal-Recessive-Biallelic-LOF-CC3 / 14q23.1 / OMIM-Gene-KIAA0586-610178-Disease-616490-JBTS23-617098-SRTD16 / 40-patient-cohort-seed-453 / 3-endpoints-verified-200 / Registered-2026-08-31)",
+    "role": "Neurologist",
+    "status": "built",
+    "endpoints": [
+      "/api/jbts23/overview",
+      "/api/jbts23/breakdown",
+      "/api/jbts23/definitions"
+    ],
+    "seed": 453,
+    "cohort_n": 40,
+    "registered": "2026-08-31"
+  },
+  {
     "id": "jbts22",
     "name": "JBTS22 CEP83 Joubert Syndrome Type 22 (JBTS22-CEP83-CCDC41-Centrosomal-Protein-83-Joubert-Syndrome-Type-22-Distal-Appendage-Foundation-Scaffold-DA-Hierarchy-Nucleator-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / CEP83-826aa-CC1-Centriole-Anchoring-SDA-Docking-aa1-120-CC2-CEP89-Recruitment-DA-Hierarchy-Nucleation-aa140-380-Central-Scaffold-SCLT1-Binding-aa380-600-C-Term-IFT-B-Docking-617233 / Chr-12q22 / CEP83-DISTAL-APPENDAGE-FOUNDATION-ALL-DOWNSTREAM-DA-Proteins-CEP89-SCLT1-FBF1-LRRC45-CEP164-NPHP15-Lost-Simultaneously / CEP83-LOF-DA-Scaffold-Absent-Cilia-ABSENT-Not-Shortened-Ciliogenesis-Initiation-Block-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-CEP83-BIALLELIC-NULL-JBTS22-LIVE-BIRTH-TZ-Gate-B9-Complex-Retained-Unlike-B9D1-JBTS19-MKS9 / VERY-HIGH-RENAL-68pct-Highest-Non-NPHP1-JBTS-ESRD-Median-14-18yr-Juvenile-Onset / MENA-FOUNDER-Arg252Cys-c754C-T-CC2-CEP89-Module / JBTS22-vs-NPHP18-Same-Gene-55pct-JBTS22-30pct-Pure-Renal-Brain-MRI-Mandatory / CEP164-Co-Sequence-Mandatory-NPHP15-Downstream / RENAL-68pct / RETINAL-35pct / Cerebellar-Ataxia-70pct / seed-451 / 3-endpoints-verified-200)",
     "status": "built",

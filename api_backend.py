@@ -36803,6 +36803,35 @@ async def jbts22_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS23 KIAA0586 / TALPID3 Joubert Syndrome Type 23 ───────────────────────
+# 40-patient cohort seed-453; 3 endpoints /api/jbts23/overview|breakdown|definitions
+# KIAA0586 (TALPID3) / CC3 C-terminal hypomorphic / CPLANE scaffold / SRTD16 allelic
+# Cilia SHORTENED (not absent); Renal ~18%; Polydactyly ~22%; South Asian Arg1116His founder
+@app.get("/api/jbts23/overview")
+async def jbts23_overview():
+    try:
+        import scripts.jbts23_dashboard as jbts23_
+        return _json_safe(jbts23_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts23/breakdown")
+async def jbts23_breakdown():
+    try:
+        import scripts.jbts23_dashboard as jbts23_
+        return _json_safe(jbts23_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts23/definitions")
+async def jbts23_definitions():
+    try:
+        import scripts.jbts23_dashboard as jbts23_
+        return _json_safe(jbts23_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
