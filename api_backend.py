@@ -37564,6 +37564,54 @@ async def slc6a5_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-501; 3 endpoints /api/gphn/overview|breakdown|definitions
+@app.get("/api/gphn/overview")
+async def gphn_overview():
+    """GPHN Hyperekplexia/DEE — Gephyrin / 14q23.3 / OMIM Gene 603930 — KPI overview.
+    40-patient cohort (GPHN 14q23.3); Gephyrin 736aa; G-domain trimers + E-domain dimers →
+    hexagonal iPSD scaffold; RAREST of 5-gene hyperekplexia panel (~1-2%);
+    UNIQUE: dual GlyR + GABA_A R anchoring → combined hyperekplexia + epilepsy + ID phenotype;
+    4 tiers: (1) biallelic null — DEE+hyperekplexia, (2) biallelic hypomorphic — hyperekplexia+ID,
+    (3) de novo dominant — DEE±ASD, (4) 14q23.3 CNV — ASD/schizophrenia;
+    Clonazepam Level A (hyperekplexia); ACTH/VGB Level A (IS); POLG mandatory before VPA;
+    EEG mandatory for phenotype classification; CNV 14q23.3 analysis mandatory if coding-seq negative."""
+    try:
+        import scripts.gphn_dashboard as gphn_
+        return _json_safe(gphn_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gphn/breakdown")
+async def gphn_breakdown():
+    """GPHN Hyperekplexia — detailed etiology breakdown, 15-patient sample, event types, triggers,
+    treatment detail, contraindications (5 etiology classes; 5 event types; 7 triggers;
+    8 treatment lines; 5 contraindications). Dual GlyR+GABA_A R failure unique to GPHN/ARHGEF9.
+    G-domain lattice vs E-domain receptor-binding distinction. GPHN vs GLRB gephyrin-interface DDx.
+    5-gene panel mandatory — GPHN vs GLRA1 vs GLRB vs SLC6A5 clinically indistinguishable."""
+    try:
+        import scripts.gphn_dashboard as gphn_
+        return _json_safe(gphn_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gphn/definitions")
+async def gphn_definitions():
+    """GPHN Hyperekplexia — 15 core concepts (GPHN-hexagonal-lattice / Dual-GlyR-GABAAR-anchoring /
+    G-domain-lattice-geometry / E-domain-receptor-binding / Collybistin-ARHGEF9-membrane-targeting /
+    GPHN-vs-GLRB-gephyrin-interface / Linker-C3-C4-C5-conformational-regulation /
+    Nose-tap-GPHN-subtypes / NKH-metabolic-DDx / MoCo-distinction /
+    iPSD-collapse / 14q23.3-CNV-ASD / POLG-mandatory / Vigevano-universal /
+    EEG-heterogeneous-by-subtype);
+    clinical thresholds; standards; references."""
+    try:
+        import scripts.gphn_dashboard as gphn_
+        return _json_safe(gphn_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

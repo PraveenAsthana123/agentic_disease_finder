@@ -8322,5 +8322,17 @@
     "cohort_n": 40,
     "seed": 499,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "gphn",
+    "name": "GPHN Hyperekplexia/DEE (Gephyrin-iPSD-Scaffold-Hexagonal-Lattice-G-domain-aa1-181-Trimer-E-domain-aa319-736-GlyR-GABAAR-Dual-Anchoring-Collybistin-ARHGEF9-Membrane-Targeting / GPHN-736aa-G-domain-MoaA-MoaC-Homology-Lattice-Geometry-aa1-181-Linker-C3-C4-C5-Alt-Spliced-Conformational-aa182-318-E-domain-GLRB-GABAAR-Binding-L1-L6-Epitopes-aa319-736-603930 / Chr-14q23.3 / DUAL-GlyR-GABAAR-ANCHORING-UNIQUE-TO-GPHN-ARHGEF9-Both-Inhibitory-Systems-Simultaneously-Unlike-GLRA1-GLRB-SLC6A5-GlyR-Only / AR-BIALLELIC-NULL-TIER1-DEE-Hyperekplexia-Infantile-Spasms-Profound-ID / AR-BIALLELIC-HYPOMORPHIC-TIER2-Hyperekplexia-ID-Partial-iPSD / AD-DE-NOVO-TIER3-DEE-ASD-E-domain-Missense / 14q23.3-CNV-TIER4-ASD-Schizophrenia-No-Hyperekplexia / RAREST-5GENE-PANEL-1-2pct-GLRA1-70pct-SLC6A5-15pct-GLRB-5pct-GPHN-1-2pct-ARHGEF9-Less-1pct / GPHN-vs-GLRB-GEPHYRIN-INTERFACE-DDx-GLRB-Arg381Trp-Gly396Asp-GPHN-Normal-GPHN-Direct-More-Severe / EEG-MANDATORY-Unlike-GLRA1-GLRB-SLC6A5-GPHN-DEE-EEG-Abnormal-Hypsarrhythmia / CLONAZEPAM-LEVEL-A-Hyperekplexia-Component / ACTH-VGB-UKISS-LEVEL-A-Infantile-Spasms-IS-Component / POLG-MANDATORY-Before-VPA-Fatal-Hepatic-Alpers-Huttenlocher / CNV-14q23.3-MLPA-ACGH-Mandatory-If-Coding-Seq-Negative / VIGEVANO-MANOEUVRE-LEVEL-A-Apnoea-Universal / NKH-DDx-Glycine-Normal-in-GPHN-CSF-Plasma-Ratio-Below-0.06 / MoCo-DDx-MOCOS-Not-GPHN-Sulfo-Xanthine-Screen-Neonatal-Severe / iPSD-COLLAPSE-Mechanism-GlyR-GABAAR-Drift-Lateral / 5-GENE-PANEL-MANDATORY-GPHN-GLRA1-GLRB-SLC6A5-ARHGEF9-Simultaneously / 40-patient-cohort-seed-501 / 14q23.3 / OMIM-Gene-GPHN-603930-Hyperekplexia-5-Gene-Panel)",
+    "status": "built",
+    "category": "Hyperekplexia",
+    "api_prefix": "/api/gphn",
+    "page_path": "/gphn",
+    "cohort_seed": 501,
+    "chromosome": "14q23.3",
+    "omim_gene": "603930",
+    "built_date": "2026-08-31"
   }
 ]
