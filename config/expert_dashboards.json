@@ -7912,5 +7912,27 @@
     "frontend_route": "/jbts16",
     "status": "built",
     "registered": "2026-08-30"
+  },
+  {
+    "id": "jbts17",
+    "name": "JBTS17 CPLANE1 Joubert Syndrome Type 17 (JBTS17-CPLANE1-C5orf42-Ciliogenesis-Planar-Polarity-Effector-1-Joubert-Syndrome-Type-17-IFT-A-Loader-OFD-Overlap-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / CPLANE1-1518aa-N-Term-OFD-Module-aa1-320-Central-CPLANE-Scaffold-INTU-FUZ-Interface-IFT-A-Interface-WDR19-IFT140-C-Term-PCP-Effector-WDPCP-614571 / Chr-5p13.2 / CPLANE-COMPLEX-IFT-A-LOADER-INTU-FUZ-WDPCP-MPND-Basal-Body-Docking-Retrograde-IFT-Assembly / CPLANE1-LOF-IFT-A-Fails-To-Load-Retrograde-IFT-Defective-Ciliary-Tip-Accumulation-IFT-B-Cargo-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-CPLANE1-BIALLELIC-NULL-JBTS17-LIVE-BIRTH / OFD-HIGHEST-RATE-30pct-Tongue-Hamartoma-Upper-Lip-Notch-Midline-Cleft-Palate-Highest-Non-OFD1-JBTS / Frequency-2-3pct-All-Joubert-Syndrome)",
+    "category": "ciliopathy",
+    "subcategory": "joubert_syndrome",
+    "gene": "CPLANE1",
+    "omim_gene": "614571",
+    "omim_disease": "614615",
+    "chromosome": "5p13.2",
+    "inheritance": "AR",
+    "mks_tier": "None",
+    "cohort_seed": 441,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/jbts17/overview",
+      "/api/jbts17/breakdown",
+      "/api/jbts17/definitions"
+    ],
+    "frontend_route": "/jbts17",
+    "status": "built",
+    "registered": "2026-08-30"
   }
 ]
