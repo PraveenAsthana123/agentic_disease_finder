@@ -8262,5 +8262,26 @@
     "cohort_n": 40,
     "seed": 371,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "gabra3",
+    "name": "GABRA3 Epilepsy (X-linked-DEE / GABA-A-\u03b13-Xq28 / TRN-Thalamic-Reticular-Nucleus / Dominant-Fetal-Neonatal-\u03b1-Isoform / Hyperekplexia-GOF-Ile246Val / PHB-Preferred-Rescue-Barbiturate-Site-Preserved / CLB-Reduced-Efficacy-LOF / X-linked-Dominant-De-Novo / 40-patient-cohort-seed-493)",
+    "status": "built",
+    "route": "/gabra3",
+    "api_prefix": "/api/gabra3",
+    "endpoints": [
+      "/api/gabra3/overview",
+      "/api/gabra3/breakdown",
+      "/api/gabra3/definitions"
+    ],
+    "gene": "GABRA3",
+    "genes": [
+      "GABRA3"
+    ],
+    "omim_gene": "305660",
+    "chromosome": "Xq28",
+    "inheritance": "X-linked dominant",
+    "color": "#7b1fa2",
+    "note": "40-patient GABRA3 cohort (GABRA3 Xq28, GABA-A receptor \u03b13 subunit \u2014 dominant fetal/neonatal isoform; TRN-enriched; X-linked dominant; GOF p.Ile246Val hyperekplexia; 5 etiology classes; PHB preferred rescue; CLB reduced in LOF; ABSOLUTE CI: LTG-myoclonic/TGB-NCSE/VPA-without-POLG; VGB \u226416wks REMS; ACTH+VGB UKISS Level A; 3 endpoints /api/gabra3/overview|breakdown|definitions verified 200, expert_dashboards.json count 539->540. Built 2026-08-31.)"
   }
 ]

@@ -24450,6 +24450,46 @@ async def gabra2_definitions():
     return _json_safe(ga2_.get_definitions())
 
 
+@app.get("/api/gabra3/overview")
+async def gabra3_overview():
+    """GABRA3 Epilepsy (X-linked DEE / Hyperekplexia / GABA-A α3 Subunit / Xq28) — KPI overview.
+    40-patient cohort (GABRA3 Xq28); α3 dominant fetal/neonatal isoform; TRN enrichment;
+    X-linked dominant (de novo female het / hemizygous male severe); GOF p.Ile246Val hyperekplexia;
+    5 etiology classes (Male-LOF-severe-35% / Female-deNovo-DEE-28% / GOF-Hyperekplexia-20% /
+    Female-Familial-mild-12% / Phenocopy-XLIE-5%); PHB preferred rescue (barbiturate site preserved);
+    CLB reduced efficacy in LOF; ABSOLUTE CI: LTG-myoclonic / TGB-NCSE / VPA-without-POLG;
+    VGB ≤16 weeks REMS; ACTH+VGB infantile spasms UKISS Level A; KD early escalation."""
+    import scripts.gabra3_dashboard as ga3_
+    try:
+        return _json_safe(ga3_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabra3/breakdown")
+async def gabra3_breakdown():
+    """GABRA3 Epilepsy — detailed etiology breakdown, 15-patient sample, seizure types, triggers,
+    treatment detail, contraindications (5 etiology classes; 5 seizure types; 7 triggers;
+    8 treatment lines; 6 contraindications)."""
+    import scripts.gabra3_dashboard as ga3_
+    try:
+        return _json_safe(ga3_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/gabra3/definitions")
+async def gabra3_definitions():
+    """GABRA3 Epilepsy — 15 core concepts (TRN / XCI / Hyperekplexia / GABA-shift / α3-switch /
+    PHB-barbiturate-site / CLB-reduced-LOF / POLG / UKISS / VGB-REMS / Nose-tap / Xq28-MECP2 /
+    Forward-flexion / cascade-testing / lifecycle-windows); clinical thresholds; standards; references."""
+    import scripts.gabra3_dashboard as ga3_
+    try:
+        return _json_safe(ga3_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/gabrd/overview")
 async def gabrd_overview():
     """GABRD Epilepsy (GGE / GEFS+ Spectrum / Catamenial / Tonic Inhibition / GABA-A δ Subunit / 1p36.33) — KPI overview.
