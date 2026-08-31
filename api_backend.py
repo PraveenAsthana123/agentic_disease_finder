@@ -37759,6 +37759,50 @@ async def slc25a22_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SLC9A6 MRXSCH — Christianson Syndrome / NHE6 / Xq26.3 ──
+# 40-patient cohort seed-511; 3 endpoints /api/slc9a6/overview|breakdown|definitions
+# X-linked NHE6 Na+/H+ exchanger LOF → hyperacidic endosomes → TrkB/TrkC recycling failure
+@app.get("/api/slc9a6/overview")
+async def slc9a6_overview():
+    """SLC9A6 Christianson Syndrome (MRXSCH) — NHE6 701aa / Xq26.3 / OMIM 300243.
+    40-patient cohort seed-511. 4 etiologies: Hemizygous-Classic-Severe (60%),
+    Hemizygous-Moderate (25%), Hemizygous-InfantileSpasms (10%), CarrierFemale-Phenocopy (5%).
+    Angelman-like phenotype in males. No precision therapy (2026). POLG mandatory before VPA."""
+    try:
+        import scripts.slc9a6_dashboard as slc9a6_
+        return _json_safe(slc9a6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc9a6/breakdown")
+async def slc9a6_breakdown():
+    """SLC9A6 MRXSCH breakdown — per-etiology: drug_resistant, cerebellar_atrophy_mri,
+    progressive_ataxia, absent_speech, profound_id, happy_affect, angelman_misdiagnosed,
+    ACTH/VGB for IS, POLG tested, mean AEDs failed. Key DDx: Angelman (methylation ABNORMAL
+    vs NORMAL in MRXSCH), Pitt-Hopkins (breathing episodes), FOXG1 (frontal not cerebellar)."""
+    try:
+        import scripts.slc9a6_dashboard as slc9a6_
+        return _json_safe(slc9a6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc9a6/definitions")
+async def slc9a6_definitions():
+    """SLC9A6 MRXSCH definitions — 15 concepts (NHE6-701aa-12TM-endosomal-pH /
+    V-ATPase-NHE6-balance / TrkB-BDNF-recycling-failure-cortical / TrkC-NT3-cerebellar /
+    Angelman-DDx-MRI-cerebellar-atrophy / X-linked-XCI / POLG-mandatory / VGB-REMS /
+    SARA-scale / NHE6-topology / MRXSCH-triad / XCI-HUMARA / cerebellar-MRI-monitoring /
+    Pitt-Hopkins-DDx / reproductive-counselling);
+    5 contraindications; 5 thresholds; 10 standards; 5 key facts."""
+    try:
+        import scripts.slc9a6_dashboard as slc9a6_
+        return _json_safe(slc9a6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

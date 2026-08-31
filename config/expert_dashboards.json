@@ -8365,5 +8365,14 @@
     "cohort_n": 40,
     "seed": 509,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "slc9a6",
+    "name": "SLC9A6 MRXSCH Christianson Syndrome (NHE6-701aa-12TM-EndosomalNaH-Exchanger-Xq26.3 / LOF-HyperacidicEndosomes-TrkB-TrkC-RecyclingFailure-BDNF-NT3-SignallingDefect / Angelman-Like-Males-Only-X-linked / Progressive-CerebellarAtrophy-MRI-KEY-DDx-vs-Angelman / NormalUBE3A-Methylation-MRXSCH-vs-Abnormal-Angelman / ProfoundID-AbsentSpeech-Epilepsy-Ataxia-Triad / HappyAffect-Hyperkinesia / No-Precision-Therapy-2026 / POLG-Mandatory-Before-VPA / VGB-REMS / XCI-HUMARA-Symptomatic-Carriers / ACTH-VGB-UKISS-Level-A-IS / LEV-CLB-Level-B / 40-patient-cohort-seed-511 / Xq26.3 / OMIM-Gene-300243-Disease-300243)",
+    "status": "built",
+    "api": "/api/slc9a6",
+    "cohort_n": 40,
+    "seed": 511,
+    "registered": "2026-08-31"
   }
 ]
