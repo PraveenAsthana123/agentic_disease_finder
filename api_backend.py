@@ -36747,6 +36747,33 @@ async def jbts20_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS21 CSPP1 Joubert Syndrome Type 21 ────────────────────────────────────
+# 40-patient cohort seed-449; 3 endpoints /api/jbts21/overview|breakdown|definitions
+@app.get("/api/jbts21/overview")
+async def jbts21_overview():
+    try:
+        import scripts.jbts21_dashboard as jbts21_
+        return _json_safe(jbts21_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts21/breakdown")
+async def jbts21_breakdown():
+    try:
+        import scripts.jbts21_dashboard as jbts21_
+        return _json_safe(jbts21_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts21/definitions")
+async def jbts21_definitions():
+    try:
+        import scripts.jbts21_dashboard as jbts21_
+        return _json_safe(jbts21_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

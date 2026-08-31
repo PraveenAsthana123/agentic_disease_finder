@@ -7976,5 +7976,25 @@
     "omim_disease": "614990",
     "chromosome": "16q23.1",
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts21",
+    "name": "JBTS21 CSPP1 Joubert Syndrome Type 21 (JBTS21-CSPP1-Centriole-Spindle-Pole-associated-Protein-1-Joubert-Syndrome-Type-21-Centriole-Distal-Lumen-Scaffold-Full-Axoneme-Decorator-Scandinavian-Founder-Gly248Arg-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / CSPP1-1409aa-CC1-Centriole-Localisation-SDA-Base-CEP120-Interface-aa1-350-CC2-Axoneme-Scaffold-IFT-B-Docking-CEP290-Interaction-aa351-900-CC3-Distal-Lumen-DA-Maturation-TTBK2-CEP164-Upstream-aa901-1409-611179 / Chr-8q13.1 / CSPP1-CENTRIOLE-DISTAL-LUMEN-SCAFFOLD-AXONEME-WIDE-ROLE-Shortened-Cilia-IFT-B-Tip-Docking-CEP290-Upstream / CSPP1-LOF-DA-Maturation-Impaired-Primary-Cilia-Shortened-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-CSPP1-BIALLELIC-NULL-JBTS21-LIVE-BIRTH-TZ-Gate-B9-Complex-Retained / SCANDINAVIAN-FOUNDER-Gly248Arg-Norway-Carrier-1-1800 / SKELETAL-20pct-HIGHEST-NON-SRTD-JBTS-CC3-Allele-Dependent / RENAL-18pct / RETINAL-25pct / Cerebellar-Ataxia-88pct / seed-449 / 3-endpoints-verified-200)",
+    "status": "built",
+    "route": "/jbts21",
+    "api_endpoints": [
+      "/api/jbts21/overview",
+      "/api/jbts21/breakdown",
+      "/api/jbts21/definitions"
+    ],
+    "cohort_seed": 449,
+    "cohort_n": 40,
+    "gene": "CSPP1",
+    "omim_gene": "611179",
+    "omim_disease": "615636",
+    "chromosome": "8q13.1",
+    "inheritance": "AR",
+    "mks_tier": "None",
+    "registered": "2026-08-31"
   }
 ]
