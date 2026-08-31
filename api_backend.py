@@ -37271,6 +37271,34 @@ async def jbts32_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── JBTS35 KIAA0753/OFIP ─────────────────────────────────────────────────────
+# 40-patient cohort seed-487; 3 endpoints /api/jbts35/overview|breakdown|definitions
+
+@app.get("/api/jbts35/overview")
+async def jbts35_overview():
+    try:
+        import scripts.jbts35_dashboard as jbts35_
+        return _json_safe(jbts35_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts35/breakdown")
+async def jbts35_breakdown():
+    try:
+        import scripts.jbts35_dashboard as jbts35_
+        return _json_safe(jbts35_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts35/definitions")
+async def jbts35_definitions():
+    try:
+        import scripts.jbts35_dashboard as jbts35_
+        return _json_safe(jbts35_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -8226,5 +8226,14 @@
     "cohort_n": 40,
     "seed": 485,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts35",
+    "name": "JBTS35 KIAA0753 Joubert Syndrome Type 35 (JBTS35-KIAA0753-OFIP-OFD1-Interacting-Protein-Joubert-Syndrome-Type-35-BB-Distal-Appendage-CP110-Removal-Coordinator-OFD1-Anchor-TTBK2-Docking-No-MKS-Tier-No-SRTD-Autosomal-Recessive-Ciliopathy / KIAA0753-1453aa-N-Term-IDR-CP110-CORD-Contact-aa1-150-CC1-OFD1-Binding-aa151-420-Central-IDR-CEP97-aa421-700-CC2-TTBK2-KEN-Box-aa701-1050-WD40-Like-IFT88-aa1051-1350-CT-CEP170-Anchor-aa1351-1453-617518 / Chr-17p13.1 / KIAA0753-CP110-REMOVAL-CP110-Retained-BB-Tip-Cilia-Absent-TTBK2-Mis-Docked-MTS / KIAA0753-LOF-CP110-Persists-Cilia-Initiation-Blocked / NO-MKS-TIER-All-Liveborn / CILIA-ABSENT-CP110-Retained-STED-Diagnostic / OFD1-Protein-Partner-NOT-OFD1-Gene-X-Linked / TTBK2-Scaffold-DDx-JBTS11 / Renal-15pct-Hepatic-5pct / Polydactyly-8pct-Very-Low / ~1-2000000-5000000-JBTS35-Worldwide / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 17p13.1 / OMIM-Gene-KIAA0753-617518-Disease-619712-JBTS35)",
+    "status": "built",
+    "api": "/api/jbts35/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 487,
+    "registered": "2026-08-31"
   }
 ]
