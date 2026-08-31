@@ -37004,6 +37004,35 @@ async def jbts29_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS30 TULP3 Joubert Syndrome Type 30 ─────────────────────────────────────
+# 40-patient cohort seed-475; 3 endpoints /api/jbts30/overview|breakdown|definitions
+# TULP3 — IFT-A Cargo Adaptor / INPP5E+ARL13B+GPR161 Ciliary Import / No MKS Tier / 12p13.31
+
+@app.get("/api/jbts30/overview")
+async def jbts30_overview():
+    try:
+        import scripts.jbts30_dashboard as jbts30_
+        return _json_safe(jbts30_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts30/breakdown")
+async def jbts30_breakdown():
+    try:
+        import scripts.jbts30_dashboard as jbts30_
+        return _json_safe(jbts30_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts30/definitions")
+async def jbts30_definitions():
+    try:
+        import scripts.jbts30_dashboard as jbts30_
+        return _json_safe(jbts30_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 # ── JBTS28 MKS1 Joubert Syndrome Type 28 ─────────────────────────────────────
 # 40-patient cohort seed-469; 3 endpoints /api/jbts28/overview|breakdown|definitions
 # MKS1 — B9-Complex Central Scaffold / TZ Inner-Leaflet Y-Link Gate / MKS TIER / Finnish Founder IVS14 / 17q22
