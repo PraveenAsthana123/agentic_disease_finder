@@ -37713,6 +37713,52 @@ async def plcb1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SLC25A22 DEE3/EIEE3 — Mitochondrial Glutamate Carrier 1 / GC1 / 11p15.5 ──
+# 40-patient cohort seed-507; 3 endpoints /api/slc25a22/overview|breakdown|definitions
+# SLC25A22 DEE3/EIEE3 — GC1 mitochondrial glutamate import / TCA & GABA precursor supply
+@app.get("/api/slc25a22/overview")
+async def slc25a22_overview():
+    """SLC25A22 DEE3/EIEE3 — GC1 / 11p15.5 / OMIM 609302 / 609304.
+    40-patient cohort seed-507. 4 etiologies: AR biallelic null (55%), hypomorphic (25%),
+    migratory focal (10%), phenocopy (10%). Pathognomonic: elevated plasma glutamate
+    >200 µmol/L; bilateral BG/thalamic MRI changes. Pyridoxine 100 mg IV mandatory.
+    PHT/CBZ/OXC ABSOLUTE CI. POLG mandatory before VPA (heightened mitochondrial risk)."""
+    try:
+        import scripts.slc25a22_dashboard as slc25a22_
+        return _json_safe(slc25a22_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a22/breakdown")
+async def slc25a22_breakdown():
+    """SLC25A22 DEE3/EIEE3 — per-etiology breakdown with plasma glutamate levels.
+    Key contrast: SLC25A22 (glutamate↑, BG MRI) vs PLCB1 (glutamate normal, cortical atrophy)
+    vs NKH (glycine↑, hiccups) vs STXBP1 (amino acids normal, vesicle fusion).
+    Pyridoxine B6 trial + PLP trial mandatory differential workup."""
+    try:
+        import scripts.slc25a22_dashboard as slc25a22_
+        return _json_safe(slc25a22_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a22/definitions")
+async def slc25a22_definitions():
+    """SLC25A22 DEE3/EIEE3 — 15 core concepts (GC1-323aa-6TM-3modules-glutamate-H-antiporter /
+    mitochondrial-carrier-family / Ohtahara-burst-suppression / malate-aspartate-shuttle /
+    elevated-plasma-glutamate-pathognomonic / bilateral-BG-MRI-changes /
+    pyridoxine-mandatory-trial / PLP-PNPO-DDx / NKH-DDx-glycine-vs-glutamate /
+    ALDH7A1-B6-responsive / KD-mechanism-GC1 / POLG-mandatory-VPA /
+    Arg71Cys-founder / GC1-vs-GC2 / MPSI-like-migrating-focal);
+    clinical thresholds; 5 key facts; mandatory workup; standards."""
+    try:
+        import scripts.slc25a22_dashboard as slc25a22_
+        return _json_safe(slc25a22_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -8365,5 +8365,10 @@
     "why": "PLCB1 (20p12.3) encodes PLC\u03b21, the principal G\u03b1q/11 effector in cortical neurons: PIP2 \u2192 IP3 + DAG. LOF \u2192 mGluR-LTD failure + PKC-NMDAR gating loss \u2192 neonatal/infantile epileptic encephalopathy (DEE12/EIEE12). Biallelic null \u2192 Ohtahara (burst-suppression); hypomorphic \u2192 West syndrome; somatic mosaic \u2192 FCD IIb (surgically curable). PHT/CBZ/OXC ABSOLUTE CI (worsen burst-suppression). Kurian et al. 2010 Am J Hum Genet 86:346-354.",
     "note": "PLCB1 DEE12/EIEE12 (G\u03b1q-IP3-DAG / Ohtahara-burst-suppression / West-hypsarrhythmia / FCD-IIb-somatic / 20p12.3) Dashboard \u2014 /api/plcb1/* + portal-next/app/plcb1/page.jsx, 40-patient cohort seed-505, 3 endpoints /api/plcb1/overview|breakdown|definitions verified 200; SiteNav wired after ARHGEF9. expert_dashboards.json count 545->546.",
     "built_note": "PLCB1 DEE12/EIEE12 (Phospholipase C beta-1 / G\u03b1q-IP3-DAG / Ohtahara-West-FCD) dashboard built 2026-08-31: /api/plcb1/overview|breakdown|definitions + portal-next/app/plcb1/page.jsx + SiteNav wired after ARHGEF9. expert_dashboards.json count 545->546."
+  },
+  {
+    "id": "slc25a22",
+    "status": "built",
+    "description": "40 patients, 4 etiology categories (AR biallelic null 55%/hypomorphic 25%/migratory focal 10%/phenocopy 10%), SLC25A22 GC1 (323aa, 6TM, 3 MCF repeat modules, 11p15.5), electrogenic glutamate/H+ antiporter, DEE3/EIEE3 (OMIM 609302/609304), elevated plasma glutamate >200 \u00b5mol/L (pathognomonic), bilateral BG/thalamic MRI changes, Ohtahara (null) + West (hypomorphic) + migratory focal (compound-het), pyridoxine 100mg IV mandatory, PLP trial mandatory, PHT/CBZ/OXC ABSOLUTE CI, VPA heightened mitochondrial toxicity + POLG mandatory, ACTH+VGB UKISS Level A, KD Level B, NKH DDx (glycine not glutamate), ALDH7A1 B6-responsive treatable mimic, Arg71Cys Arabian Peninsula founder, AR only (no de novo/somatic), 3 endpoints /api/slc25a22/overview|breakdown|definitions verified 200, portal-next/app/slc25a22/page.jsx + SiteNav wired after PLCB1. Built 2026-08-31."
   }
 ]
