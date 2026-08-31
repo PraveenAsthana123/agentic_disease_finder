@@ -8334,5 +8334,17 @@
     "chromosome": "14q23.3",
     "omim_gene": "603930",
     "built_date": "2026-08-31"
+  },
+  {
+    "id": "arhgef9",
+    "name": "ARHGEF9 Hyperekplexia/DEE (HYPER5-Collybistin-CDC42-GEF-DH-domain-aa1-200-PH-domain-aa205-310-SH3-domain-aa310-370-CB2SH3plus-Autoinhibited-CB3-Constitutively-Active-GPHN-Binding-aa370-480-300429 / Collybistin-480aa-DH-PH-SH3-Architecture-RhoGEF-Family-CDC42-Activator / Chr-Xq11.1 / ARHGEF9-UPSTREAM-GPHN-MEMBRANE-TARGETING-CDC42-GEF-Activity-F-actin-Polymerisation-Postsynaptic-Membrane-Anchor / GPHN-CYTOPLASMIC-Not-Absent-Key-Distinction-From-GPHN-LOF-GPHN-Protein-Normal-But-Membrane-Trapped / X-LINKED-Hemizygous-Males-Complete-LOF-Severe-DEE-Hyperekplexia-Profound-ID / Het-Females-XCI-Skewing-Governed-Unfavourable-GT70pct-Mutant-X-Symptomatic / HEMIZYGOUS-SEVERE-45pct-W24C-Nonsense-Frameshift-Xq11.1-Del-Null / HEMIZYGOUS-HYPOMORPHIC-22pct-R290H-PH-A119P-DH-Partial-CDC42-GEF-Residual / HET-FEMALE-XCI-UNFAVOURABLE-18pct-Symptomatic-XCI-Assay-Mandatory / PHENOCOPY-15pct-5Gene-Negative / RAREST-5GENE-PANEL-Less-1pct-GLRA1-70pct-SLC6A5-15pct-GLRB-5pct-GPHN-1-2pct-ARHGEF9-Less-1pct / ARHGEF9-vs-GPHN-DDx-GPHN-Cytoplasmic-vs-Absent-Genetic-Test-Required / EEG-MANDATORY-Unlike-GLRA1-GLRB-SLC6A5-ARHGEF9-DEE-EEG-Abnormal / CLONAZEPAM-LEVEL-A-Hyperekplexia-Component-Higher-Dose-May-Needed-GABAAR-Also-Reduced / ACTH-VGB-UKISS-LEVEL-A-Infantile-Spasms-IS-Component / POLG-MANDATORY-Before-VPA-Fatal-Hepatic-Alpers-Huttenlocher / XCI-ANALYSIS-MANDATORY-All-Heterozygous-Females-AR-Methylation-HUMARA-SNP-Array / Xq11.1-MLPA-MANDATORY-Exonic-Deletions-Not-Detected-By-Sequence-Alone / VIGEVANO-MANOEUVRE-LEVEL-A-Apnoea-Universal-Neonatal-Highest-Risk-Severe-Males / NKH-DDx-Plasma-Glycine-NORMAL-ARHGEF9-vs-Elevated-NKH-CSF-Ratio-Below-0.06 / 5-GENE-PANEL-MANDATORY-ARHGEF9-GLRA1-GLRB-SLC6A5-GPHN-Simultaneously / CASCADE-TESTING-Sisters-XCI-Brothers-Hemizygous-Screen-Carrier-Mothers / 40-patient-cohort-seed-503 / Xq11.1 / OMIM-Gene-ARHGEF9-300429-Disease-300855-HYPER5-X-linked-Hyperekplexia-DEE)",
+    "status": "built",
+    "category": "hyperekplexia",
+    "api_prefix": "/api/arhgef9",
+    "page_path": "/arhgef9",
+    "cohort_seed": 503,
+    "chromosome": "Xq11.1",
+    "omim_gene": "300429",
+    "built_date": "2026-08-31"
   }
 ]

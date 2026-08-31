@@ -37612,6 +37612,55 @@ async def gphn_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-503; 3 endpoints /api/arhgef9/overview|breakdown|definitions
+# ARHGEF9 Hyperekplexia/DEE — Collybistin / Xq11.1 — 5th (rarest) of 5-gene panel
+# X-linked; hemizygous males severe DEE+Hyperekplexia; het females XCI-governed
+@app.get("/api/arhgef9/overview")
+async def arhgef9_overview():
+    """ARHGEF9 Hyperekplexia/DEE — Collybistin / Xq11.1 / OMIM 300429 / 300855.
+    Rarest of 5-gene panel (<1%); upstream of GPHN membrane targeting (CDC42-GEF).
+    X-linked: hemizygous males → severe DEE + hyperekplexia + profound ID;
+    het females → variable (XCI-skewing-governed).
+    40-patient cohort seed-503; 4 etiology categories;
+    5-gene panel mandatory; Xq11.1 MLPA mandatory; XCI assay for females;
+    EEG mandatory; POLG mandatory before VPA; Vigevano manoeuvre mandatory."""
+    try:
+        import scripts.arhgef9_dashboard as arhgef9_
+        return _json_safe(arhgef9_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arhgef9/breakdown")
+async def arhgef9_breakdown():
+    """ARHGEF9 Hyperekplexia/DEE — per-etiology breakdown.
+    Categories: Hemizygous-LOF-Severe / Hemizygous-Hypomorphic /
+    Heterozygous-Female-XCI-Unfavourable / Phenocopy-5Gene-Negative.
+    5-gene panel mandatory — ARHGEF9 vs GPHN vs GLRA1 vs GLRB vs SLC6A5
+    clinically indistinguishable; only genetics distinguishes."""
+    try:
+        import scripts.arhgef9_dashboard as arhgef9_
+        return _json_safe(arhgef9_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arhgef9/definitions")
+async def arhgef9_definitions():
+    """ARHGEF9 Hyperekplexia/DEE — 15 core concepts (Collybistin-CDC42-GEF /
+    DH-PH-SH3-domains / iPSD-collapse-cytoplasmic-GPHN /
+    X-linked-hemizygous-males / XCI-skewing-females / Vigevano-manoeuvre /
+    Nose-tap-Iles-sign / NKH-metabolic-DDx / Biotinidase-DDx /
+    GPHN-vs-ARHGEF9-distinction / IS-ACTH-VGB-UKISS / POLG-mandatory /
+    Xq11.1-MLPA-structural-variants / 5-gene-panel / Cascade-testing);
+    clinical thresholds; standards; references."""
+    try:
+        import scripts.arhgef9_dashboard as arhgef9_
+        return _json_safe(arhgef9_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
