@@ -8304,5 +8304,14 @@
     "cohort_n": 40,
     "seed": 495,
     "notes": "Most common genetic cause of hyperekplexia (~70% of families); NON-EPILEPTIC (normal EEG at events); Clonazepam Level A + Forward-Flexion Manoeuvre (Vigevano); Arg271 dominant-negative TM2 gate residue; metabolic screen (NKH/biotinidase) at diagnosis; POLG mandatory before VPA"
+  },
+  {
+    "id": "glrb",
+    "name": "GLRB Hyperekplexia (HYPER1B-Glycine-Receptor-Beta1 / GLRB-474aa-ECD-Cys-Loop-aa1-208-TM1-TM2-TM3-TM4-TM2-Pore-aa230-251-Intracellular-Loop-Gephyrin-GPHN-Binding-aa305-455-CT-aa456-474-138492 / Chr-4q32.1 / GLRB-OBLIGATE-STRUCTURAL-PARTNER-GLRA1-Adult-GlyR-Alpha1-2-Beta3-Pentamer-Stoichiometry / GLRB-LOF-DUAL-DEFICIT-Homomeric-Alpha1-Formation-EC50-3x-Higher-Reduced-Conductance-AND-Gephyrin-Cannot-Anchor-Homomeric-Alpha1-Reduced-Synaptic-GlyR-Clustering / RAREST-HYPEREKPLEXIA-Gene-GLRA1-70pct-SLC6A5-15pct-GLRB-5pct-GPHN-ARHGEF9-Remainder / AR-BIALLELIC-LOF-45pct-Trp170Ser-MENA-Founder-Most-Common-Worldwide-AR-Allele / AD-DOMINANT-NEGATIVE-MISSENSE-25pct-Met177Arg-ECD-Arg316Gly-TM2-TM3 / ECD-FOLDING-INTERMEDIATE-15pct-Partial-Beta-Expression-Intermediate-Phenotype / GEPHYRIN-INTERFACE-ANCHOR-DEFECT-10pct-Mild-Hyperekplexia-Plus-ID-Distinct-GPHN-Direct / PHENOCOPY-GLRB-NEGATIVE-5pct-SLC6A5-GPHN-ARHGEF9-Alternative / NON-EPILEPTIC-Normal-EEG-at-Events-Forward-Flexion-Manoeuvre-Level-A / CLONAZEPAM-LEVEL-A-Lower-Doses-Than-GLRA1-Arg271 / 5-GENE-PANEL-MANDATORY-GLRB-GLRA1-SLC6A5-GPHN-ARHGEF9-Simultaneously / POLG-MANDATORY-Before-VPA-If-Epilepsy / GEPHYRIN-INTERFACE-DDx-GPHN-Direct-More-Severe / 40-patient-cohort-seed-497 / 4q32.1 / OMIM-Gene-GLRB-138492-Hyperekplexia-Type-1B)",
+    "status": "built",
+    "api": "/api/glrb",
+    "cohort_n": 40,
+    "seed": 497,
+    "registered": "2026-08-31"
   }
 ]

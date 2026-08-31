@@ -37469,6 +37469,52 @@ async def glra1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-497; 3 endpoints /api/glrb/overview|breakdown|definitions
+@app.get("/api/glrb/overview")
+async def glrb_overview():
+    """GLRB Hyperekplexia Type 1B (HYPER1B / Glycine Receptor β1 / 4q32.1) — KPI overview.
+    40-patient cohort (GLRB 4q32.1); companion β subunit of GLRA1 in adult GlyR pentamer (α1₂β₃);
+    ~5% of genetic hyperekplexia; DUAL MECHANISM: homomeric α1 formation (EC50 ~3× higher) +
+    loss of gephyrin-mediated GlyR synaptic anchoring; 5 etiology classes (AR-Biallelic-LOF-45% /
+    AD-Dominant-Negative-25% / ECD-Folding-Intermediate-15% / Gephyrin-Interface-10% / Phenocopy-5%);
+    Clonazepam Level A first-line; Forward-Flexion Manoeuvre Level A acute apnoea;
+    NON-EPILEPTIC (normal EEG at events); 5-gene panel mandatory (GLRB+GLRA1+SLC6A5+GPHN+ARHGEF9)."""
+    try:
+        import scripts.glrb_dashboard as glrb_
+        return _json_safe(glrb_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glrb/breakdown")
+async def glrb_breakdown():
+    """GLRB Hyperekplexia — detailed etiology breakdown, 15-patient sample, event types, triggers,
+    treatment detail, contraindications (5 etiology classes; 5 event types; 7 triggers;
+    5 treatment lines; 5 contraindications). Dual deficit: homomeric α1 conductance reduction
+    + gephyrin-anchoring loss. Gephyrin-interface class: mild hyperekplexia ± ID.
+    5-gene panel mandatory — GLRB vs GLRA1 vs SLC6A5 indistinguishable on clinical grounds."""
+    try:
+        import scripts.glrb_dashboard as glrb_
+        return _json_safe(glrb_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glrb/definitions")
+async def glrb_definitions():
+    """GLRB Hyperekplexia — 15 core concepts (GLRB-β1 / α1₂β₃-stoichiometry /
+    Homomeric-α1-formation / Gephyrin-binding-domain / Dual-deficit-mechanism /
+    Trp170Ser-founder / Non-habituating-startle / Vigevano-manoeuvre / Nose-tap /
+    5-gene-panel / NKH-DDx / GLRB-vs-GLRA1-severity / Gephyrin-vs-GPHN-DDx /
+    CLZ-mechanism / Driver-safety);
+    clinical thresholds; standards; references."""
+    try:
+        import scripts.glrb_dashboard as glrb_
+        return _json_safe(glrb_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
