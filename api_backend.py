@@ -37357,6 +37357,35 @@ async def srtd20_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BBS20 / WDPCP — Bardet-Biedl Syndrome Type 20 ────────────────────────────
+# 40-patient cohort seed-371; 3 endpoints /api/bbs20/overview|breakdown|definitions
+@app.get("/api/bbs20/overview")
+async def bbs20_overview():
+    """BBS20 (WDPCP/Fritz) overview — CPLANE↔BBSome bridge at BB/TZ; INTU absent at BB.
+40-patient cohort seed-371; 3 endpoints /api/bbs20/overview|breakdown|definitions."""
+    try:
+        import scripts.bbs20_dashboard as bbs20_
+        return _json_safe(bbs20_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs20/breakdown")
+async def bbs20_breakdown():
+    try:
+        import scripts.bbs20_dashboard as bbs20_
+        return _json_safe(bbs20_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bbs20/definitions")
+async def bbs20_definitions():
+    try:
+        import scripts.bbs20_dashboard as bbs20_
+        return _json_safe(bbs20_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

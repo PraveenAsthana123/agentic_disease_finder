@@ -8253,5 +8253,14 @@
     "cohort_n": 40,
     "seed": 491,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "bbs20",
+    "name": "BBS20 Bardet-Biedl Syndrome Type 20 (BBS20-WDPCP-Fritz-WD-Repeat-Containing-Planar-Cell-Polarity-Effector-Bardet-Biedl-Syndrome-Type-20-CPLANE-BBSome-Bridge-Basal-Body-TZ-PCP-Enriched-Polydactyly-Ciliopathy / WDPCP-Fritz-809aa-N-Term-IDR-INTU-FUZ-CPLANE-Binding-aa1-90-WD40-Beta-Propeller-BBS1-BBS9-Interface-aa91-500-C-Term-CC-Fritz-Dimerisation-BB-Anchor-aa501-809-613580 / Chr-2p15 / WDPCP-CPLANE-BBSome-BRIDGE-AT-BB-TZ-INTU-ABSENT-BB-Pathognomonic-PCP-Polydactyly-60pct / Single-Disease-Tier-No-NPHP-MKS-JBTS-Allelic-Variant / MENA-Enrichment-Arg350Gln-Most-Recurrent / Autosomal-Recessive-Biallelic-LOF / 2p15 / OMIM-Gene-WDPCP-613580-Disease-617119-BBS20)",
+    "status": "built",
+    "api": "/api/bbs20/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 371,
+    "registered": "2026-08-31"
   }
 ]
