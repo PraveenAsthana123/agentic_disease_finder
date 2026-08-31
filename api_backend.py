@@ -36888,6 +36888,64 @@ async def jbts2_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS24 ZNF423 Joubert Syndrome Type 24 ───────────────────────────────────
+# 40-patient cohort seed-459; 3 endpoints /api/jbts24/overview|breakdown|definitions
+# ZNF423 / 30-Domain C2H2 Zinc Finger TF / BMP-SMAD Cerebellar Axis / NPHP10-Allelic
+# No MKS Tier; cilia FORM normally (TF mechanism); European Arg544Gln founder; Renal ~35%; Retinal ~20%
+@app.get("/api/jbts24/overview")
+async def jbts24_overview():
+    try:
+        import scripts.jbts24_dashboard as jbts24_
+        return _json_safe(jbts24_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts24/breakdown")
+async def jbts24_breakdown():
+    try:
+        import scripts.jbts24_dashboard as jbts24_
+        return _json_safe(jbts24_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts24/definitions")
+async def jbts24_definitions():
+    try:
+        import scripts.jbts24_dashboard as jbts24_
+        return _json_safe(jbts24_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# ── BBS1 Bardet-Biedl Syndrome Type 1 ────────────────────────────────────────
+# 40-patient cohort seed-461; 3 endpoints /api/bbs1/overview|breakdown|definitions
+# BBS1 / BBSome Cargo-Recognition Subunit / Met390Arg European Founder / Most Common BBS Gene
+# No MKS tier; rod-cone dystrophy rod-first; LepR mis-trafficking obesity; renal structural 50%
+@app.get("/api/bbs1/overview")
+async def bbs1_overview():
+    try:
+        import scripts.bbs1_dashboard as bbs1_
+        return _json_safe(bbs1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs1/breakdown")
+async def bbs1_breakdown():
+    try:
+        import scripts.bbs1_dashboard as bbs1_
+        return _json_safe(bbs1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/bbs1/definitions")
+async def bbs1_definitions():
+    try:
+        import scripts.bbs1_dashboard as bbs1_
+        return _json_safe(bbs1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

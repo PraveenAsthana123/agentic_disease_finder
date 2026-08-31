@@ -8067,5 +8067,25 @@
       "/api/jbts2/definitions"
     ],
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts24",
+    "name": "JBTS24 ZNF423 Joubert Syndrome Type 24 (JBTS24-ZNF423-Zinc-Finger-Protein-423-Joubert-Syndrome-Type-24-C2H2-Zinc-Finger-TF-BMP-SMAD-Cerebellar-Axis-NPHP10-Allelic-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / ZNF423-1284aa-ZF1-11-BMP-SMAD1-4-5-Interaction-Cerebellar-Granule-Cell-Differentiation-aa1-450-ZF12-22-EBF1-RARa-Notch-Renal-Tubular-Progenitor-aa451-900-ZF23-30-PARP1-DNA-Damage-Response-Neuronal-Progenitor-Maintenance-NPHP10-Zone-aa901-1284-604557 / Chr-16q12.1 / ZNF423-BMP-SMAD-CEREBELLAR-AXIS-Unique-TF-NOT-TZ-Structural-NOT-IFT-Cilia-FORM-Normally-MTS-Developmental-Transcriptional-Defect / NPHP10-ALLELIC-Biallelic-Truncating-Null-NPHP10-613617-Pure-Renal-No-MTS-Biallelic-Missense-JBTS24-614444-MTS-Cerebellar / NO-MKS-TIER-BMP-SMAD-Transcriptional-Defect-Does-Not-Collapse-TZ-B9-Complex / EUROPEAN-FOUNDER-Arg544Gln-c1631G-A-ZF12-Entry-BMP-SMAD-Boundary-1-in-1200-1800-Carrier / RENAL-35pct-High-NPHP10-Allelic-Overlap-ZNF423-Renal-TEC-Progenitor / RETINAL-20pct-RARa-Retinal-Progenitor-Programme / HEPATIC-12pct-Biliary-Cholangiocyte-Progenitor / Cerebellar-Ataxia-85pct / Neonatal-Hypotonia-75pct / Oculomotor-Apraxia-45pct / Breathing-Dysregulation-48pct / Intellectual-Disability-68pct / Polydactyly-8pct-Rare-Hedgehog-Intact / Arg544Gln-c1631G-A-ZF12-European-Founder-Moderate / Pro216Leu-c647C-T-ZF6-SMAD1-MENA-Moderate / Arg378His-c1133G-A-ZF9-SMAD4-South-Asian-Moderate / Glu631Lys-c1891G-A-ZF14-EBF-Pan-Ethnic-Moderate-Severe / Tyr461Cys-c1382A-G-ZF11-North-African-Moderate / Leu799Pro-c2396T-C-ZF20-Pan-Ethnic-Severe-Misfolding / Arg889Ter-c2665C-T-NPHP10-If-Biallelic-JBTS24-If-Compound / Thr1155Met-c3464C-T-ZF28-PARP1-East-Asian-Mild-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2pct-All-Joubert-Syndrome / ~1-1000000-2000000-JBTS24-Worldwide / Autosomal-Recessive-Biallelic-Damaging-Missense-LOF / 16q12.1 / OMIM-Gene-ZNF423-604557-Disease-614444-JBTS24-613617-NPHP10)",
+    "status": "built",
+    "route": "/jbts24",
+    "api_prefix": "/api/jbts24",
+    "seed": 459,
+    "cohort_n": 40,
+    "registered": "2026-08-31"
+  },
+  {
+    "id": "bbs1",
+    "name": "BBS1 Bardet-Biedl Syndrome Type 1 (BBS1-Bardet-Biedl-Syndrome-1-Protein-BBSome-Cargo-Recognition-Subunit-Met390Arg-European-Founder-Most-Common-BBS-Gene-Rod-Cone-Dystrophy-Rod-FIRST-LepR-Obesity-Polydactyly-Renal-Structural-Hypogonadism-Anosmia-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / BBS1-593aa-N-Term-Beta-Propeller-Platform-aa1-300-BBS4-BBS5-Scaffold-Central-BBS9-Bridge-Met390-Docking-aa301-450-C-Term-ARM-Cargo-Recognition-Rab8-GTP-aa451-593-209901 / Chr-11q13.2 / BBS1-BBSOME-CARGO-RECOGNITION-ARM-BBSome-Assembles-Structurally-Cargo-Docking-Fails-Unlike-BBS2-Structural-Core-Failure / Met390Arg-EUROPEAN-FOUNDER-c1169T-G-BBS9-Bridge-Interface-Most-Common-BBS-Mutation-Worldwide-70pct-European-BBS1-Alleles / MOST-COMMON-BBS-GENE-20-25pct-All-Molecularly-Confirmed-BBS-European-Predominant / NO-MKS-TIER-BBSome-Cargo-Transport-Complex-Not-TZ-Gate-Structural-All-BBS1-Liveborn / ROD-CONE-DYSTROPHY-93pct-Rod-FIRST-Night-Blindness-Ring-Scotoma-Legal-Blindness-NOT-Cone-Rod / OBESITY-91pct-LepR-Mis-Trafficking-Hypothalamic-Leptin-Resistance-GLP1RA-Bariatric / POLYDACTYLY-65pct-Post-Axial-Hands-Feet / RENAL-STRUCTURAL-50pct-Cysts-Calyceal-Clubbing-NOT-Tubular / Cerebellar-Ataxia-Absent-BBS-Not-JBTS / Learning-Disability-63pct / Hypogonadism-77pct / Anosmia-62pct / CHD-7pct / Tri-allelic-BBS-5pct-BBS1x2-BBS4-BBS5-BBS9-Modifier / Met390Arg-c1169T-G-BBS9-Bridge-European-Moderate-Hypomorphic / Ile246Val-c736A-G-Beta-Propeller-Pan-Ethnic-Mild-Hypomorphic / Ala428Thr-c1282G-A-BBS9-Bridge-North-African-Moderate / Glu549Ter-c1645G-T-ARM-Domain-Truncating-Moderate-Severe / Leu295Pro-c884T-C-Platform-Junction-MENA-Moderate-Severe / Val458Gly-c1373T-G-ARM-First-Repeat-Pan-Ethnic-Moderate-Severe / Arg99Ter-c295C-T-N-Terminal-Null-Severe / Met390Arg-GLP1RA-Semaglutide-Obesity-Treatment / Rod-FIRST-ERG-Scotopic-Extinguished-Annual-Age-3 / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / ~20-25pct-All-BBS-European-Predominant / ~1-400000-600000-BBS1-Worldwide / Autosomal-Recessive-Biallelic-LOF / 11q13.2 / OMIM-Gene-BBS1-209901-Disease-209900)",
+    "status": "built",
+    "route": "/bbs1",
+    "api_prefix": "/api/bbs1",
+    "seed": 461,
+    "cohort_n": 40,
+    "registered": "2026-08-31"
   }
 ]
