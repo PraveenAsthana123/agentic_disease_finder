@@ -36975,6 +36975,35 @@ async def jbts25_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS27 ARMC9 Joubert Syndrome Type 27 ────────────────────────────────────
+# 40-patient cohort seed-467; 3 endpoints /api/jbts27/overview|breakdown|definitions
+# ARMC9 — Centriolar Satellite ARM-Repeat Platform / TOGARAM1 Coupler / CP110-TTBK2 Axis / No MKS Tier / 2q37.1
+
+@app.get("/api/jbts27/overview")
+async def jbts27_overview():
+    try:
+        import scripts.jbts27_dashboard as jbts27_
+        return _json_safe(jbts27_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts27/breakdown")
+async def jbts27_breakdown():
+    try:
+        import scripts.jbts27_dashboard as jbts27_
+        return _json_safe(jbts27_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts27/definitions")
+async def jbts27_definitions():
+    try:
+        import scripts.jbts27_dashboard as jbts27_
+        return _json_safe(jbts27_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 # ── JBTS26 KIAA0556 Joubert Syndrome Type 26 ─────────────────────────────────
 # 40-patient cohort seed-465; 3 endpoints /api/jbts26/overview|breakdown|definitions
 # KIAA0556 — IFT-B Basal Body Assembly Platform Adapter / No MKS Tier / 14q24.2

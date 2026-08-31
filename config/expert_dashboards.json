@@ -8117,5 +8117,20 @@
     "seed": 465,
     "cohort_n": 40,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts27",
+    "name": "JBTS27 ARMC9 Joubert Syndrome Type 27 (JBTS27-ARMC9-Armadillo-Repeat-Containing-Protein-9-Joubert-Syndrome-Type-27-Centriolar-Satellite-ARM-Repeat-Platform-TOGARAM1-Coupler-CP110-TTBK2-Ciliogenesis-Axis-No-MKS-Tier-MENA-Founder-Leu247Pro-Autosomal-Recessive-Ciliopathy / ARMC9-951aa-N-Term-IDR-Centriolar-Satellite-Targeting-aa1-200-Central-ARM-Repeat-Array-TOGARAM1-TULP3-aa201-780-CT-CC-TTBK2-Co-Recruitment-aa781-951-616948 / Chr-2q37.1 / CENTRIOLAR-SATELLITE-ARM-PLATFORM-TTBK2-DA-Co-Recruitment-CP110-Removal-Cilia-ABSENT-Null-SHORT-Hypomorphic / ARMC9-LOF-TTBK2-Unstable-DA-CP110-Persists-Cilia-Initiation-Fails-TOGARAM1-Complex-Disrupted / NO-MKS-TIER / TOGARAM1-JBTS35-Direct-Complex-Mandatory-Co-Sequencing / MENA-FOUNDER-Leu247Pro-c740T-C / EUROPEAN-CLUSTER-Val389Gly-c1166T-G / RETINAL-25pct / RENAL-18pct / 40-patient-cohort-seed-467)",
+    "status": "built",
+    "route": "/jbts27",
+    "api_prefix": "/api/jbts27",
+    "script": "scripts/jbts27_dashboard.py",
+    "gene": "ARMC9",
+    "omim_gene": "616948",
+    "omim_disease": "617120",
+    "chromosome": "2q37.1",
+    "cohort_seed": 467,
+    "cohort_n": 40,
+    "built_date": "2026-08-31"
   }
 ]
