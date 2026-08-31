@@ -36946,6 +36946,35 @@ async def bbs1_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS25 CEP104 Joubert Syndrome Type 25 ───────────────────────────────────
+# 40-patient cohort seed-463; 3 endpoints /api/jbts25/overview|breakdown|definitions
+# CEP104 / Ciliary Tip TOG Scaffold / TTBK2 Co-Scaffold / CLUAP1-IFT-B1 Coupling / No MKS Tier
+# Cilia form but are SHORT (~30-50% WT length); IFT-B1 tip accumulation on EM; MENA founder Thr544Met
+@app.get("/api/jbts25/overview")
+async def jbts25_overview():
+    try:
+        import scripts.jbts25_dashboard as jbts25_
+        return _json_safe(jbts25_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts25/breakdown")
+async def jbts25_breakdown():
+    try:
+        import scripts.jbts25_dashboard as jbts25_
+        return _json_safe(jbts25_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts25/definitions")
+async def jbts25_definitions():
+    try:
+        import scripts.jbts25_dashboard as jbts25_
+        return _json_safe(jbts25_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

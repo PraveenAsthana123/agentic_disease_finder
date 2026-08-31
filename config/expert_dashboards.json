@@ -8087,5 +8087,15 @@
     "seed": 461,
     "cohort_n": 40,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts25",
+    "name": "JBTS25 CEP104 Joubert Syndrome Type 25 (JBTS25-CEP104-Centrosomal-Protein-104-Joubert-Syndrome-Type-25-Ciliary-Tip-TOG-Scaffold-TTBK2-Co-Scaffold-CLUAP1-IFT-B1-Coupler-No-MKS-Tier-MENA-Founder-Thr544Met-Autosomal-Recessive-Ciliopathy / CEP104-1338aa-TOG-Tubulin-Binding-HEAT-Repeat-aa1-280-Central-Linker-TTBK2-Scaffold-aa281-600-CC-Homo-Oligomerisation-aa601-950-CTE-CLUAP1-IFT-B1-aa951-1338-616078 / Chr-1p36.32 / CEP104-CILIARY-TIP-TOG-SCAFFOLD-Cilia-SHORT-30-50pct-WT-NOT-Absent-TTBK2-Co-Scaffold-IFT-B1-Tip-Accumulation-EM-Diagnostic / NO-MKS-TIER / MENA-FOUNDER-Thr544Met-c1631C-T / ~1-500000-1000000-JBTS25-Worldwide / Autosomal-Recessive-Biallelic-LOF / 1p36.32 / OMIM-Gene-CEP104-616078-Disease-616778-JBTS25)",
+    "status": "built",
+    "route": "/jbts25",
+    "api_prefix": "/api/jbts25",
+    "seed": 463,
+    "cohort_n": 40,
+    "registered": "2026-08-31"
   }
 ]
