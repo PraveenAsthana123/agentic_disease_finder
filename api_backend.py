@@ -37176,6 +37176,39 @@ async def jbts34_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── JBTS31 CEP120 Joubert Syndrome Type 31 ───────────────────────────────────
+# 40-patient cohort seed-479; 3 endpoints /api/jbts31/overview|breakdown|definitions
+# CEP120 (CCDC100) — Daughter Centriole Elongation Scaffold / CPAP-Binding / Hypomorphic Alleles Only
+# JBTS31 = very hypomorphic biallelic CEP120; NO MKS tier; NO thoracic cage; all liveborn
+# Allelic: SRTD19 (moderate alleles, #617895) / NPHP20 (renal-dominant, same #617761) / SRPS2B (biallelic null)
+
+@app.get("/api/jbts31/overview")
+async def jbts31_overview():
+    """CEP120/JBTS31 — daughter centriole elongation scaffold; 5q23.2;
+40-patient cohort seed-479; 3 endpoints /api/jbts31/overview|breakdown|definitions."""
+    try:
+        import scripts.jbts31_dashboard as jbts31_
+        return _json_safe(jbts31_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts31/breakdown")
+async def jbts31_breakdown():
+    try:
+        import scripts.jbts31_dashboard as jbts31_
+        return _json_safe(jbts31_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts31/definitions")
+async def jbts31_definitions():
+    try:
+        import scripts.jbts31_dashboard as jbts31_
+        return _json_safe(jbts31_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

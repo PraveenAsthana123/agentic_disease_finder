@@ -8183,5 +8183,19 @@
     "cohort_n": 40,
     "seed": 475,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts31",
+    "name": "JBTS31 CEP120 Joubert Syndrome Type 31 (JBTS31-CEP120-CCDC100-Centrosomal-Protein-120-Joubert-Syndrome-Type-31-Daughter-Centriole-Elongation-Scaffold-CPAP-Binding-CEP135-Recruiter-Hypomorphic-Alleles-Only-No-MKS-Tier-No-Thoracic-Cage-SRTD19-NPHP20-Allelic-Autosomal-Recessive-Ciliopathy / CEP120-1007aa-N-Term-CPAP-Binding-aa1-200-Central-CC1-CEP135-SSNA1-aa201-550-Central-CC2-TULP3-aa551-750-C-Term-HEAT-PCM-Anchor-aa751-1007-613446 / Chr-5q23.2 / CEP120-HYPOMORPHIC-ALLELES-ONLY-Short-Cilia-50-70pct-WT-MTS-NO-Narrow-Thorax-NO-Short-Ribs-ALL-Liveborn / CEP120-LOF-CPAP-CEP120-Axis-Partially-Impaired-Short-Centrioles-70pct-WT-Short-Cilia-Hh-Impaired-Cerebellum-MTS-Thoracic-Threshold-NOT-Reached / ALLELE-CLASS-KEY-Very-Mild-Missense-Both-Alleles-Residual-30pct-JBTS31-Moderate-SRTD19-Null-SRPS2B / NO-MKS-TIER-CEP120-Not-TZ-Diffusion-Barrier-Centriole-Elongation-Scaffold-Not-B9-Complex-TCTN-TMEM / SRTD19-ALLELIC-Narrow-Thorax-Short-Ribs-Moderate-Alleles-617895 / NPHP20-SAME-OMIM-617761-Renal-Dominant-ESRD / CPAP-CENPJ-JBTS9-Obligate-Co-Sequencing-Digenic-Documented / CXR-NORMAL-KEY-DDx-vs-SRTD19-Normal-CXR-Joubert-JBTS31-Narrow-CXR-SRTD19 / SHORT-CILIA-50-70pct-WT-NOT-ABSENT-vs-ARMC9-JBTS27-Absent-vs-DYNC2H1-Tip-Club / MENA-Pro240Leu-c719C-T-CC1-Boundary-Mild / PAN-ETHNIC-Ala501Val-c1502C-T-Central-CC1-Hypomorphic / EUROPEAN-Glu562Lys-c1684G-A-CC2-N-Term-NPHP20-JBTS31 / SOUTH-ASIAN-Ala813Pro-c2437G-C-HEAT-Repeat-Moderate / EUROPEAN-Leu1019Pro-c3056T-C-HEAT-CT-JBTS31-ESRD / RENAL-30pct-NPHP-Like-Corticomedullary-Cysts / RETINAL-20pct-Rod-Cone-Connecting-Cilium / HEPATIC-5pct-Not-Primary-Biliary-Gene / Polydactyly-15pct-Postaxial-Mild-Hh-Only / Cerebellar-Ataxia-72pct / Neonatal-Hypotonia-72pct / Oculomotor-Apraxia-48pct / Breathing-Dysregulation-40pct / Intellectual-Disability-62pct / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2pct-All-Joubert-Syndrome / ~1-800000-2000000-JBTS31-Worldwide / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 5q23.2 / OMIM-Gene-CEP120-613446-Disease-617761-JBTS31-NPHP20)",
+    "status": "built",
+    "seed": 479,
+    "n_cohort": 40,
+    "endpoints": [
+      "/api/jbts31/overview",
+      "/api/jbts31/breakdown",
+      "/api/jbts31/definitions"
+    ],
+    "portal_page": "/jbts31",
+    "registered": "2026-08-31"
   }
 ]
