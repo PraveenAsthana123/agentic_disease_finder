@@ -37209,6 +37209,39 @@ async def jbts31_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── JBTS32 KIF14 Joubert Syndrome Type 32 ────────────────────────────────────
+# 40-patient cohort seed-483; 3 endpoints /api/jbts32/overview|breakdown|definitions
+# KIF14 — Kinesin Family Member 14; plus-end motor; 1q31.3; 1,648 aa
+# JBTS32 = biallelic hypomorphic KIF14 LOF; PRIMARY MICROCEPHALY (100%) + MTS; NO MKS tier; all liveborn
+# Allelic: MCPH20 (primary microcephaly 20, biallelic null, #617913)
+
+@app.get("/api/jbts32/overview")
+async def jbts32_overview():
+    """KIF14/JBTS32 — kinesin motor; cytokinesis + cilia length; 1q31.3;
+40-patient cohort seed-483; 3 endpoints /api/jbts32/overview|breakdown|definitions."""
+    try:
+        import scripts.jbts32_dashboard as jbts32_
+        return _json_safe(jbts32_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts32/breakdown")
+async def jbts32_breakdown():
+    try:
+        import scripts.jbts32_dashboard as jbts32_
+        return _json_safe(jbts32_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts32/definitions")
+async def jbts32_definitions():
+    try:
+        import scripts.jbts32_dashboard as jbts32_
+        return _json_safe(jbts32_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

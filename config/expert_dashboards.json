@@ -8197,5 +8197,25 @@
     ],
     "portal_page": "/jbts31",
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts32",
+    "name": "JBTS32 KIF14 Joubert Syndrome Type 32 (JBTS32-KIF14-Kinesin-Family-Member-14-Joubert-Syndrome-Type-32-Plus-End-Kinesin-Motor-Cytokinesis-Midbody-Ring-Cilia-Length-Regulation-Primary-Microcephaly-MCPH20-Allelic-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / KIF14-1648aa-N-Term-FHA-Domain-CIT-Binding-aa1-100-Motor-Domain-ATPase-Microtubule-Plus-End-aa101-700-Neck-CC-RACGAP1-Binding-aa701-900-Extended-Stalk-Tail-Cargo-PRC1-aa901-1648-611498 / Chr-1q31.3 / KIF14-DUAL-ROLE-Cytokinesis-Plus-Cilia-Length-Hh-Gradient / MICROCEPHALY-100pct-DISTINCTIVE-OFC-Minus2-to-Minus4-SD / NO-MKS-TIER-All-Liveborn / MCPH20-ALLELIC-617913 / Cerebellar-Ataxia-80pct / Neonatal-Hypotonia-78pct / Intellectual-Disability-85pct / 40-patient-cohort-seed-483 / 3-endpoints-verified-200 / Registered-2026-08-31)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/jbts32/overview",
+      "/api/jbts32/breakdown",
+      "/api/jbts32/definitions"
+    ],
+    "frontend_page": "/portal-next/app/jbts32/page.jsx",
+    "script": "scripts/jbts32_dashboard.py",
+    "disease_omim": "#616651",
+    "gene_omim": "*611498",
+    "gene": "KIF14",
+    "chromosome": "1q31.3",
+    "cohort_seed": 483,
+    "n_cohort": 40,
+    "registered": "2026-08-31",
+    "category": "Joubert Syndrome"
   }
 ]
