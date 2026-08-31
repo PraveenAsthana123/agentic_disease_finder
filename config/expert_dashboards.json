@@ -8097,5 +8097,15 @@
     "seed": 463,
     "cohort_n": 40,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts26",
+    "name": "JBTS26 KIAA0556 Joubert Syndrome Type 26 (JBTS26-KIAA0556-C14orf179-Joubert-Syndrome-Type-26-IFT-B-Basal-Body-Assembly-Platform-Adapter-CPLANE-Coupler-DA-Outer-Scaffold-TZ-Tether-No-MKS-Tier-MENA-Founder-Thr680Met-Autosomal-Recessive-Ciliopathy / KIAA0556-1311aa-MT-Binding-Centrosomal-Targeting-aa1-300-Central-IFT-B-Adapter-CPLANE-Coupling-aa301-800-CT-Basal-Body-Scaffold-TZ-Tether-aa801-1311-616650 / Chr-14q24.2 / IFT-B-BASE-ADAPTER-Cilia-SHORT-25-55pct-WT-NOT-Absent-IFT-B-Subunits-BASE-Accumulation-EM-Diagnostic / NO-MKS-TIER / MENA-FOUNDER-Thr680Met-c2039C-T / ~1-750000-1500000-JBTS26-Worldwide / Autosomal-Recessive-Biallelic-LOF / 14q24.2 / OMIM-Gene-KIAA0556-616650-Disease-616532-JBTS26)",
+    "status": "built",
+    "route": "/jbts26",
+    "api_prefix": "/api/jbts26",
+    "seed": 465,
+    "cohort_n": 40,
+    "registered": "2026-08-31"
   }
 ]

@@ -36975,6 +36975,35 @@ async def jbts25_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS26 KIAA0556 Joubert Syndrome Type 26 ─────────────────────────────────
+# 40-patient cohort seed-465; 3 endpoints /api/jbts26/overview|breakdown|definitions
+# KIAA0556 — IFT-B Basal Body Assembly Platform Adapter / No MKS Tier / 14q24.2
+
+@app.get("/api/jbts26/overview")
+async def jbts26_overview():
+    try:
+        import scripts.jbts26_dashboard as jbts26_
+        return _json_safe(jbts26_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts26/breakdown")
+async def jbts26_breakdown():
+    try:
+        import scripts.jbts26_dashboard as jbts26_
+        return _json_safe(jbts26_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts26/definitions")
+async def jbts26_definitions():
+    try:
+        import scripts.jbts26_dashboard as jbts26_
+        return _json_safe(jbts26_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
