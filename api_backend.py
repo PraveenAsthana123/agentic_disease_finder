@@ -36975,6 +36975,35 @@ async def jbts25_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS28 MKS1 Joubert Syndrome Type 28 ─────────────────────────────────────
+# 40-patient cohort seed-469; 3 endpoints /api/jbts28/overview|breakdown|definitions
+# MKS1 — B9-Complex Central Scaffold / TZ Inner-Leaflet Y-Link Gate / MKS TIER / Finnish Founder IVS14 / 17q22
+
+@app.get("/api/jbts28/overview")
+async def jbts28_overview():
+    try:
+        import scripts.jbts28_dashboard as jbts28_
+        return _json_safe(jbts28_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts28/breakdown")
+async def jbts28_breakdown():
+    try:
+        import scripts.jbts28_dashboard as jbts28_
+        return _json_safe(jbts28_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts28/definitions")
+async def jbts28_definitions():
+    try:
+        import scripts.jbts28_dashboard as jbts28_
+        return _json_safe(jbts28_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 # ── JBTS27 ARMC9 Joubert Syndrome Type 27 ────────────────────────────────────
 # 40-patient cohort seed-467; 3 endpoints /api/jbts27/overview|breakdown|definitions
 # ARMC9 — Centriolar Satellite ARM-Repeat Platform / TOGARAM1 Coupler / CP110-TTBK2 Axis / No MKS Tier / 2q37.1

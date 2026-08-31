@@ -8132,5 +8132,29 @@
     "cohort_seed": 467,
     "cohort_n": 40,
     "built_date": "2026-08-31"
+  },
+  {
+    "id": "jbts28",
+    "name": "JBTS28 MKS1 Joubert Syndrome Type 28 (JBTS28-MKS1-Meckel-Syndrome-Type-1-Protein-Joubert-Syndrome-Type-28-B9-Complex-Central-Scaffold-TZ-Inner-Leaflet-Y-Link-Gate-MKS-TIER-MKS1-Allelic-Finnish-Founder-IVS14-Splice-Autosomal-Recessive-Ciliopathy / MKS1-559aa-N-Term-B9D1-B9D2-Interaction-B9-Complex-Nucleation-aa1-130-Central-CC1-NPHP4-CC2-MKS3-TMEM67-CC3-CC2D2A-Scaffold-aa131-420-CT-TZ-Amphipathic-Helix-RPGRIP1L-Cross-Link-aa421-559-609883 / Chr-17q22 / B9-COMPLEX-SCAFFOLD-TZ-GATE-LEAKY-Cilia-PRESENT-Y-Link-Inner-Leaflet-Detachment / MKS1-LOF-NPHP4-MKS3-TMEM67-CC2D2A-Modules-Partially-Uncoupled-TZ-Diffusion-Barrier-Impaired / MKS-TIER-Biallelic-Null-MKS1-Lethal-Hypomorphic-JBTS28-Survivable-All-Liveborn / FINNISH-FOUNDER-c1408-7_1408-3delATTTT-IVS14-Splice-5nt-Exon15-Skip-Delta452-481-Carrier-1-50-Finland / HIGH-HEPATIC-CHF-30pct-MKS1-MKS3-TMEM67-Biliary-Axis-2nd-Highest-After-TMEM67-JBTS6-COACH / NO-COLOBOMA-Contrast-JBTS6-TMEM67-COACH-Coloboma-40pct / HIGH-RENAL-35pct-B9-NPHP4-Axis-NPHP-Like-Tubular-Cilia-Gate-Leaky / Cerebellar-Ataxia-80pct / Neonatal-Hypotonia-75pct / Oculomotor-Apraxia-48pct / Breathing-Dysregulation-45pct / Intellectual-Disability-68pct / Polydactyly-25pct-Post-Axial-Hedgehog / Renal-35pct-B9-NPHP4-Axis / ESRD-15pct / Arg296Gln-c887G-A-CC2-MKS3-TMEM67-MENA-Moderate-Severe / c1408-7_1408-3del-IVS14-Finnish-Founder-Moderate / Asp466His-c1396G-C-TZ-Helix-North-African-Moderate / Thr218Ala-c652A-G-B9D1-Docking-Pan-Ethnic-Moderate-Severe / Arg496Gln-c1487G-A-RPGRIP1L-South-Asian-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Hepatic-Transplant-if-ESLD / Frequency-1-2pct-All-Joubert-Syndrome / ~1-500000-1000000-JBTS28-Worldwide / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 17q22 / OMIM-Gene-MKS1-609883-Disease-617122-JBTS28-249000-MKS1 / 40-patient-cohort-seed-469 / 3-endpoints-verified-200 / Registered-2026-08-31)",
+    "status": "built",
+    "route": "/jbts28",
+    "api_prefix": "/api/jbts28",
+    "endpoints": [
+      "/api/jbts28/overview",
+      "/api/jbts28/breakdown",
+      "/api/jbts28/definitions"
+    ],
+    "frontend": "portal-next/app/jbts28/page.jsx",
+    "script": "scripts/jbts28_dashboard.py",
+    "gene": "MKS1",
+    "omim_gene": "609883",
+    "omim_disease": "617122",
+    "omim_allelic": "249000",
+    "chromosome": "17q22",
+    "cohort_seed": 469,
+    "cohort_n": 40,
+    "mks_tier": true,
+    "built_date": "2026-08-31",
+    "note": "Total: 529 dashboards"
   }
 ]
