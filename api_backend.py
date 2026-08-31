@@ -37426,6 +37426,49 @@ async def bbs20_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/glra1/overview")
+async def glra1_overview():
+    """GLRA1 Hyperekplexia Type 1 (HYPER1 / Glycine Receptor α1 / 5q33.1) — KPI overview.
+    40-patient cohort (GLRA1 5q33.1); most common genetic cause of hyperekplexia (~70% of families);
+    5 etiology classes (Arg271-Dominant-Classic-40% / LOF-Recessive-15% / Other-Dominant-25% /
+    Dominant-Haploinsufficiency-10% / Phenocopy-10%); Clonazepam Level A first-line;
+    Forward-Flexion Manoeuvre (Vigevano) Level A acute apnoea; NON-EPILEPTIC (normal EEG at events);
+    Nose-tap test diagnostic; ABSOLUTE: no discharge without forward-flexion carer training;
+    metabolic screen (NKH/biotinidase) at diagnosis; POLG mandatory before VPA."""
+    try:
+        import scripts.glra1_dashboard as glra1_
+        return _json_safe(glra1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glra1/breakdown")
+async def glra1_breakdown():
+    """GLRA1 Hyperekplexia — detailed etiology breakdown, 15-patient sample, event types, triggers,
+    treatment detail, contraindications (5 etiology classes; 5 event types; 7 triggers;
+    6 treatment lines; 5 contraindications). Distinguishes hyperekplexia events (non-ictal, CLZ+manoeuvre)
+    from epileptic seizures (ictal EEG, AEDs) — critical for recessive class with comorbid epilepsy."""
+    try:
+        import scripts.glra1_dashboard as glra1_
+        return _json_safe(glra1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/glra1/definitions")
+async def glra1_definitions():
+    """GLRA1 Hyperekplexia — 15 core concepts (GlyR-α1 / Arg271-gate / Dominant-negative /
+    Non-habituating-startle / Vigevano-manoeuvre / Nose-tap / Rigid-baby / NKH-DDx /
+    CLZ-GABAergic-compensation / Natural-history / Brainstem-startle-circuit /
+    GLRB-SLC6A5-phenocopy / Epilepsy-vs-hyperekplexia / Driver-safety / POLG);
+    clinical thresholds; standards; references."""
+    try:
+        import scripts.glra1_dashboard as glra1_
+        return _json_safe(glra1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

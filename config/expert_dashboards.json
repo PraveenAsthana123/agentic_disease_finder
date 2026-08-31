@@ -8283,5 +8283,26 @@
     "inheritance": "X-linked dominant",
     "color": "#7b1fa2",
     "note": "40-patient GABRA3 cohort (GABRA3 Xq28, GABA-A receptor \u03b13 subunit \u2014 dominant fetal/neonatal isoform; TRN-enriched; X-linked dominant; GOF p.Ile246Val hyperekplexia; 5 etiology classes; PHB preferred rescue; CLB reduced in LOF; ABSOLUTE CI: LTG-myoclonic/TGB-NCSE/VPA-without-POLG; VGB \u226416wks REMS; ACTH+VGB UKISS Level A; 3 endpoints /api/gabra3/overview|breakdown|definitions verified 200, expert_dashboards.json count 539->540. Built 2026-08-31.)"
+  },
+  {
+    "id": "glra1",
+    "name": "GLRA1 Hyperekplexia (Hyperekplexia-Type-1-HYPER1-Glycine-Receptor-Alpha-1-Arg271-Dominant-Negative-TM2-Gate-Residue-Forward-Flexion-Vigevano-Manoeuvre-Clonazepam-Level-A-Non-Epileptic-5q33.1-OMIM-138491-Disease-149400)",
+    "status": "built",
+    "gene": "GLRA1",
+    "omim_gene": "138491",
+    "omim_disease": "149400",
+    "chromosome": "5q33.1",
+    "inheritance": "AD/AR",
+    "disease_class": "Hyperekplexia / Startle Disease",
+    "api_endpoints": [
+      "/api/glra1/overview",
+      "/api/glra1/breakdown",
+      "/api/glra1/definitions"
+    ],
+    "portal_page": "portal-next/app/glra1/page.jsx",
+    "script": "scripts/glra1_dashboard.py",
+    "cohort_n": 40,
+    "seed": 495,
+    "notes": "Most common genetic cause of hyperekplexia (~70% of families); NON-EPILEPTIC (normal EEG at events); Clonazepam Level A + Forward-Flexion Manoeuvre (Vigevano); Arg271 dominant-negative TM2 gate residue; metabolic screen (NKH/biotinidase) at diagnosis; POLG mandatory before VPA"
   }
 ]
