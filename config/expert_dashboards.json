@@ -7890,5 +7890,27 @@
     "frontend_route": "/jbts14",
     "status": "built",
     "registered": "2026-08-30"
+  },
+  {
+    "id": "jbts16",
+    "name": "JBTS16 TMEM138 Joubert Syndrome Type 16 (JBTS16-TMEM138-Transmembrane-Protein-138-Joubert-Syndrome-Type-16-TZ-Membrane-TMEM216-Co-Dependency-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TMEM138-163aa-N-Cyto-Tail-TMEM216-Interface-TM1-Ciliary-TZ-Insertion-EL1-B9D1-B9D2-Docking-TM2-Hydrophobic-Core-TM2-TM3-Linker-TMEM231-Binding-TM3-Lipid-Raft-C-Tail-CEP290-IFT-614965 / Chr-11q12.2 / TMEM138-TZ-MEMBRANE-TMEM216-MUTUAL-STABILISATION-Adjacent-11q12.2-Genes-Co-Localise-TZ-Gate-GPCR-SMO-Import / TMEM138-LOF-TZ-Gate-Destabilised-SMO-Partially-Excluded-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-TMEM138-BIALLELIC-NULL-JBTS16-LIVE-BIRTH-Unlike-TCTN2-MKS8-RPGRIP1L-MKS5 / TMEM216-CO-DEPENDENCY-Adjacent-11q12.2-TMEM138-LOF-Destabilises-TMEM216-TZ-Mutual-Stabilisation-WES-Must-Distinguish / RENAL-22pct-NPHP-Like-Annual-Protocol-ESRD-Median-26yr / RETINAL-25pct-Rod-Cone-Annual-ERG-Age-3 / Cerebellar-Ataxia-85pct / Neonatal-Hypotonia-80pct / Oculomotor-Apraxia-50pct / Breathing-Dysregulation-55pct / Intellectual-Disability-68pct / Hepatic-CHF-8pct / Polydactyly-12pct-Post-Axial / Arg39Ter-c115C-T-N-Term-Truncating-Null-European-Severe / Arg89Cys-c265C-T-TM1-Proximal-Pan-Ethnic-Moderate / Tyr117Cys-c350A-G-TM2-South-Asian-Moderate-Severe / Glu146Lys-c436G-A-TM2-TM3-Linker-MENA-Moderate / Glu164Ter-c490G-T-C-Term-Near-Null-Pan-Ethnic-Severe / c190plus1G-A-Splice-Donor-Null-European-Severe / Arg47Trp-c139C-T-TM1-North-African-Founder-Mild / Val142Met-c424G-A-TM2-TM3-East-Asian-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1pct-All-Joubert-Syndrome / ~1-2000000-4000000-JBTS16-Worldwide / Autosomal-Recessive-Biallelic-LOF / 11q12.2 / OMIM-Gene-TMEM138-614965-Disease-614465-JBTS16)",
+    "category": "ciliopathy",
+    "subcategory": "joubert_syndrome",
+    "gene": "TMEM138",
+    "omim_gene": "614965",
+    "omim_disease": "614465",
+    "chromosome": "11q12.2",
+    "inheritance": "AR",
+    "mks_tier": "None",
+    "cohort_seed": 439,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/jbts16/overview",
+      "/api/jbts16/breakdown",
+      "/api/jbts16/definitions"
+    ],
+    "frontend_route": "/jbts16",
+    "status": "built",
+    "registered": "2026-08-30"
   }
 ]
