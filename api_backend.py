@@ -37895,6 +37895,52 @@ async def wdr45_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── PANK2 PKAN (Pantothenate Kinase-Associated Neurodegeneration / NBIA1) ──
+# 40-patient cohort seed-517; 3 endpoints /api/pank2/overview|breakdown|definitions
+# Most common NBIA (~35-50%); AR biallelic PANK2; eye-of-tiger sign PATHOGNOMONIC
+@app.get("/api/pank2/overview")
+async def pank2_overview():
+    """PANK2 PKAN — Pantothenate Kinase-Associated Neurodegeneration / NBIA1 / 570aa / 20p13 /
+    OMIM 606157/234200. Most common NBIA (35-50%). AR biallelic PANK2 → CoA deficiency +
+    cysteine accumulation → iron in globus pallidus. Classic PKAN (<6yr, dystonia, retinopathy 68%,
+    acanthocytes 50%) vs Atypical PKAN (~13yr, speech, OCD/psychiatric). Eye-of-tiger sign
+    PATHOGNOMONIC. GPi-DBS Level B. POLG mandatory before VPA. Deferiprone (TIRCON): no functional
+    benefit. Fosmetpantotenate (PANK2 bypass, RE-024) investigational. PHT/VGB AVOID. Seed-517."""
+    try:
+        import scripts.pank2_dashboard as pank2_
+        return _json_safe(pank2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pank2/breakdown")
+async def pank2_breakdown():
+    """PANK2 PKAN breakdown — per-etiology: missense (55%), null (25%), splice (15%), CNV (5%);
+    Classic (66%) vs Atypical (33%); seizure types (focal/GTCS/myoclonic/absence/status/tonic);
+    per-patient table: eye_of_tiger, dystonia_severity, ambulation_lost, retinal, acanthocytes,
+    dbs, psychiatric, ocd, polg_tested; treatment summary; contraindications; DDx; lifecycle.
+    """
+    try:
+        import scripts.pank2_dashboard as pank2_
+        return _json_safe(pank2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pank2/definitions")
+async def pank2_definitions():
+    """PANK2 PKAN definitions — 15 concepts (PKAN-NBIA1 / PANK2-570aa-CoA-pathway / eye-of-tiger-sign /
+    CoA-deficiency-mechanism / cysteine-iron-Fenton / Classic-PKAN-PKAN-C / Atypical-PKAN-PKAN-A /
+    GPi-DBS-Level-B / fosmetpantotenate-PANK2-bypass / deferiprone-TIRCON-no-functional-benefit /
+    pigmentary-retinopathy / acanthocytosis / POLG-mandatory / NBIA1 / trihexyphenidyl-dystonia).
+    """
+    try:
+        import scripts.pank2_dashboard as pank2_
+        return _json_safe(pank2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

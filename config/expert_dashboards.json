@@ -8412,5 +8412,29 @@
     "chromosome": "Xp11.23",
     "inheritance": "X-linked Dominant \u2014 De Novo in Females",
     "description": "40 patients, 4 etiology categories (truncating/frameshift null 75%/missense 15%/splice-site 7%/large-del-CNV 3%), WDR45 WIPI4 (309aa, 7-bladed beta-propeller, Xp11.23), autophagy scaffold PI3P-binding WFDE-motif/ATG2A-B recruitment/ferritinophagy-NCOA4, X-linked dominant de novo (90% females), biphasic: Phase 1 static encephalopathy (ID+epilepsy, focal 80%/absence 60%/GTCS 50%/myoclonic 40%/IS 25%) \u2192 Phase 2 SUDDEN rapidly-progressive parkinsonism+dementia (15-30yr), SN+GP iron T2*/SWI hypointensity+T1 halo sign PATHOGNOMONIC, PHT/CBZ/OXC AVOID, LEV/VPA/CLB Level B, POLG mandatory before VPA, ACTH+VGB UKISS Level A for IS, deferiprone investigational NBIA Research Institute, L-DOPA Level C Phase 2, 3 endpoints /api/wdr45/overview|breakdown|definitions verified 200, portal-next/app/wdr45/page.jsx + SiteNav wired after TCF4. Built 2026-08-31."
+  },
+  {
+    "id": "pank2",
+    "title": "PANK2 PKAN (Pantothenate-Kinase-Associated-Neurodegeneration / PANK2-570aa-MTS-CoA-Pathway / Most-Common-NBIA-35-50pct / Eye-of-Tiger-Sign-GP-PATHOGNOMONIC / Classic-PKAN-lt6yr-Dystonia-Retinopathy-Acanthocytes / Atypical-PKAN-13yr-Palilalia-OCD / GPi-DBS-Level-B / Deferiprone-TIRCON-No-Benefit / Fosmetpantotenate-RE024-PANK2-Bypass / PHT-VGB-AVOID / POLG-Mandatory-Before-VPA / 40-patient-cohort-seed-517 / 20p13 / OMIM-Gene-PANK2-606157-Disease-PKAN-234200)",
+    "status": "built",
+    "route": "/pank2",
+    "api_routes": [
+      "/api/pank2/overview",
+      "/api/pank2/breakdown",
+      "/api/pank2/definitions"
+    ],
+    "script": "scripts/pank2_dashboard.py",
+    "seed": 517,
+    "cohort_size": 40,
+    "built_date": "2026-08-31",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "gene": "PANK2",
+    "omim_gene": "606157",
+    "omim_disease": "234200",
+    "chromosome": "20p13",
+    "inheritance": "Autosomal Recessive \u2014 Biallelic PANK2 mutations",
+    "description": "40 patients, 4 etiology categories (missense 55%/null 25%/splice 15%/CNV 5%), PANK2 570aa mitochondrial pantothenate kinase (20p13), most common NBIA (~35-50%), AR biallelic, CoA deficiency + cysteine-iron Fenton \u2192 GP iron, Classic PKAN (onset <6yr, dystonia, retinopathy 68%, acanthocytes 50%) vs Atypical PKAN (~13yr, speech, OCD/psychiatric). Eye-of-tiger sign PATHOGNOMONIC. GPi-DBS Level B. POLG mandatory before VPA. Deferiprone (TIRCON 2019): no functional benefit. Fosmetpantotenate (PANK2 bypass, RE-024) investigational. PHT/VGB AVOID. 3 endpoints /api/pank2/overview|breakdown|definitions verified 200, portal-next/app/pank2/page.jsx + SiteNav wired after WDR45. Built 2026-08-31.",
+    "registered": "2026-08-31",
+    "built_note": "PANK2 PKAN (570aa / AR biallelic / Eye-of-Tiger-GP-PATHOGNOMONIC / GPi-DBS-Level-B / 20p13) dashboard built 2026-08-31: /api/pank2/overview|breakdown|definitions + portal-next/app/pank2/page.jsx + SiteNav wired after WDR45. expert_dashboards.json count 550->551."
   }
 ]
