@@ -37004,6 +37004,33 @@ async def jbts26_definitions():
         return {"error": str(e)}
 
 
+# CEP120 Short-Rib Thoracic Dysplasia 19 (SRTD19) — centriole elongation factor / JBTS31 allelic
+# 40-patient cohort seed-415; 3 endpoints /api/srtd19/overview|breakdown|definitions
+@app.get("/api/srtd19/overview")
+async def srtd19_overview():
+    try:
+        import scripts.srtd19_dashboard as srtd19_
+        return _json_safe(srtd19_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/srtd19/breakdown")
+async def srtd19_breakdown():
+    try:
+        import scripts.srtd19_dashboard as srtd19_
+        return _json_safe(srtd19_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/srtd19/definitions")
+async def srtd19_definitions():
+    try:
+        import scripts.srtd19_dashboard as srtd19_
+        return _json_safe(srtd19_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
