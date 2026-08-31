@@ -37850,6 +37850,51 @@ async def tcf4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── WDR45 BPAN (Beta-propeller protein-associated neurodegeneration / NBIA5) ──
+# 40-patient cohort seed-515; 3 endpoints /api/wdr45/overview|breakdown|definitions
+# X-linked dominant de novo in females; SN+GP iron PATHOGNOMONIC; biphasic course
+@app.get("/api/wdr45/overview")
+async def wdr45_overview():
+    """WDR45 BPAN — 7-bladed beta-propeller autophagy scaffold / Xp11.23 / OMIM 300526/300643.
+    Biphasic: childhood static encephalopathy (ID + epilepsy) → adolescent-onset rapidly
+    progressive parkinsonism + dementia. MRI SWI: SN + GP iron + halo sign PATHOGNOMONIC.
+    PHT/CBZ/OXC AVOID; LEV/VPA/CLB Level B; POLG mandatory before VPA; deferiprone investigational.
+    """
+    try:
+        import scripts.wdr45_dashboard as wdr45_
+        return _json_safe(wdr45_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/wdr45/breakdown")
+async def wdr45_breakdown():
+    """WDR45 BPAN breakdown — per-etiology: truncating/frameshift (75%), missense (15%),
+    splice (7%), CNV (3%); seizure types (focal 80%/absence 60%/GTCS 50%/myoclonic 40%/IS 25%);
+    per-patient table; treatment summary; contraindications; DDx; lifecycle; thresholds.
+    """
+    try:
+        import scripts.wdr45_dashboard as wdr45_
+        return _json_safe(wdr45_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/wdr45/definitions")
+async def wdr45_definitions():
+    """WDR45 BPAN definitions — 15 concepts (WDR45-WIPI4-309aa-7-bladed-beta-propeller /
+    PI3P-WFDE-motif / ferritinophagy-NCOA4 / phagophore-elongation-ATG2A-B / SN-iron-halo-sign /
+    NBIA5 / biphasic-Phase1-Phase2 / X-linked-dominant-de-novo / POLG-mandatory /
+    deferiprone-investigational / UKISS-IS-protocol / NBIA-Research-Institute /
+    REM-sleep-behaviour-disorder / BPAN-Hayflick-2013 / PHT-CBZ-OXC-AVOID).
+    """
+    try:
+        import scripts.wdr45_dashboard as wdr45_
+        return _json_safe(wdr45_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

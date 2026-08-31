@@ -8384,11 +8384,33 @@
     "cohort_seed": 513,
     "seed": 513,
     "chromosome": "18q21.2",
-    "protein": "TCF4 — bHLH E-protein Transcription Factor 4 / 667 aa / De novo AD haploinsufficiency or dominant negative",
+    "protein": "TCF4 \u2014 bHLH E-protein Transcription Factor 4 / 667 aa / De novo AD haploinsufficiency or dominant negative",
     "omim_gene": "602272",
     "omim_disease": "610954",
-    "description": "40 patients, 4 etiology categories (Classic-DeNovo-PittHopkins 55% / Truncating-Severe-EarlyCognitive 20% / bHLH-Missense-DominantNegative 15% / 18q21.2-Deletion-ContiguousGene 10%), TCF4 bHLH E-protein (667aa, 18q21.2), de novo AD haploinsufficiency or dominant negative (R576W/A597T/L600P), Pitt-Hopkins Syndrome (OMIM 602272/610954). Breathing episodes (episodic hyperventilation + apnoea) PATHOGNOMONIC — absent in all other Angelman-like syndromes. Beaked nasal bridge + Cupid-bow lip + deep-set eyes + wide mouth dysmorphic gestalt. Corpus callosum absent ~20%. CBZ/OXC HIGH CAUTION. LEV/VPA/CLB Level B. POLG mandatory before VPA. Acetazolamide Level C for breathing episodes. 3 endpoints /api/tcf4/overview|breakdown|definitions verified 200, portal-next/app/tcf4/page.jsx + SiteNav wired after SLC9A6. Built 2026-08-31.",
+    "description": "40 patients, 4 etiology categories (Classic-DeNovo-PittHopkins 55% / Truncating-Severe-EarlyCognitive 20% / bHLH-Missense-DominantNegative 15% / 18q21.2-Deletion-ContiguousGene 10%), TCF4 bHLH E-protein (667aa, 18q21.2), de novo AD haploinsufficiency or dominant negative (R576W/A597T/L600P), Pitt-Hopkins Syndrome (OMIM 602272/610954). Breathing episodes (episodic hyperventilation + apnoea) PATHOGNOMONIC \u2014 absent in all other Angelman-like syndromes. Beaked nasal bridge + Cupid-bow lip + deep-set eyes + wide mouth dysmorphic gestalt. Corpus callosum absent ~20%. CBZ/OXC HIGH CAUTION. LEV/VPA/CLB Level B. POLG mandatory before VPA. Acetazolamide Level C for breathing episodes. 3 endpoints /api/tcf4/overview|breakdown|definitions verified 200, portal-next/app/tcf4/page.jsx + SiteNav wired after SLC9A6. Built 2026-08-31.",
     "registered": "2026-08-31",
     "built_note": "TCF4 Pitt-Hopkins Syndrome (bHLH E-protein / De novo AD / Breathing-Episodes-PATHOGNOMONIC / 18q21.2) dashboard built 2026-08-31: /api/tcf4/overview|breakdown|definitions + portal-next/app/tcf4/page.jsx + SiteNav wired after SLC9A6. expert_dashboards.json count 548->549."
+  },
+  {
+    "id": "wdr45",
+    "title": "WDR45 BPAN/NBIA5 (Beta-propeller-protein-associated-neurodegeneration / WDR45-WIPI4-309aa-7-bladed-beta-propeller-Xp11.23 / X-linked-Dominant-DeNovo-Females-90pct / Biphasic-Phase1-StaticEncephalopathy-Phase2-SUDDENParkinsonism-Dementia / SN-GP-Iron-T2star-SWI-Hypointensity-PATHOGNOMONIC / T1-Halo-Sign-BPAN-Specific / Ferritinophagy-NCOA4-Failure / PHT-CBZ-OXC-AVOID / LEV-VPA-CLB-Level-B / POLG-Mandatory-Before-VPA / Deferiprone-Investigational-NBIA-Research-Institute / OMIM-Gene-WDR45-300526-Disease-BPAN-300643)",
+    "status": "built",
+    "route": "/wdr45",
+    "api_routes": [
+      "/api/wdr45/overview",
+      "/api/wdr45/breakdown",
+      "/api/wdr45/definitions"
+    ],
+    "script": "scripts/wdr45_dashboard.py",
+    "seed": 515,
+    "cohort_size": 40,
+    "built_date": "2026-08-31",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "gene": "WDR45",
+    "omim_gene": "300526",
+    "omim_disease": "300643",
+    "chromosome": "Xp11.23",
+    "inheritance": "X-linked Dominant \u2014 De Novo in Females",
+    "description": "40 patients, 4 etiology categories (truncating/frameshift null 75%/missense 15%/splice-site 7%/large-del-CNV 3%), WDR45 WIPI4 (309aa, 7-bladed beta-propeller, Xp11.23), autophagy scaffold PI3P-binding WFDE-motif/ATG2A-B recruitment/ferritinophagy-NCOA4, X-linked dominant de novo (90% females), biphasic: Phase 1 static encephalopathy (ID+epilepsy, focal 80%/absence 60%/GTCS 50%/myoclonic 40%/IS 25%) \u2192 Phase 2 SUDDEN rapidly-progressive parkinsonism+dementia (15-30yr), SN+GP iron T2*/SWI hypointensity+T1 halo sign PATHOGNOMONIC, PHT/CBZ/OXC AVOID, LEV/VPA/CLB Level B, POLG mandatory before VPA, ACTH+VGB UKISS Level A for IS, deferiprone investigational NBIA Research Institute, L-DOPA Level C Phase 2, 3 endpoints /api/wdr45/overview|breakdown|definitions verified 200, portal-next/app/wdr45/page.jsx + SiteNav wired after TCF4. Built 2026-08-31."
   }
 ]
