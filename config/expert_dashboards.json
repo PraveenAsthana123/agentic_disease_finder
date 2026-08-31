@@ -7828,5 +7828,23 @@
     "omim_gene": "611254",
     "omim_disease": "200990",
     "built_date": "2026-08-26"
+  },
+  {
+    "id": "jbts13",
+    "name": "JBTS13 TCTN2 Joubert Syndrome Type 13 (JBTS13-TCTN2-Tectonic-2-Joubert-Syndrome-Type-13-Tectonic-Complex-TZ-Lipid-Gate-MKS8-Lethal-Tier-Autosomal-Recessive-Ciliopathy / TCTN2-1424aa-Signal-Peptide-TCTN1-TCTN3-Dimerisation-Tectonic-Domain-Lipid-Gate-Core-TMEM67-CC2D2A-MKS1-Binding-C-Term-Membrane-B9D1-TMEM231-613846 / Chr-12q24.31 / TCTN2-TECTONIC-COMPLEX-LIPID-GATE-TCTN1-TCTN2-TCTN3-Cholesterol-Sphingolipid-Enrichment-TZ-Membrane-SMO-Entry-Hedgehog-Activation / TCTN2-LOF-Tectonic-Complex-Collapses-Lipid-Gate-Fails-SMO-Excluded-Hedgehog-Failure-Molar-Tooth-Sign / MKS8-TIER-TCTN2-BIALLELIC-NULL-MKS8-Perinatal-Lethal-Encephalocele-Unlike-TCTN1-JBTS11-Live-Birth / TCTN1-TCTN2-DISTINCTION-Same-12q24-Arm-12q24.11-vs-12q24.31-WES-Must-Distinguish-Different-Disease-Tier / HIGHER-RETINAL-45pct-Than-TCTN1-35pct-Photoreceptor-TZ-TCTN2-Annual-ERG-Mandatory / HIGHER-HEPATIC-22pct-Than-TCTN1-12pct-Ductal-Plate-Malformation-CHF-Portal-HTN / Renal-NPHP-Like-TIN-32pct-ESRD-Median-20yr / NO-COLOBOMA-0pct-DDx-vs-CC2D2A-JBTS9-15pct / Cerebellar-Ataxia-88pct / Neonatal-Hypotonia-83pct / Oculomotor-Apraxia-58pct / Breathing-Dysregulation-62pct / Intellectual-Disability-72pct / Polydactyly-12pct-Post-Axial-JSOFD / Arg378Cys-c1132C-T-Tectonic-Boundary-MENA-Founder-Moderate / Gly389Arg-c1165G-A-Tectonic-Entry-Pan-Ethnic-Moderate-Severe / Leu521Pro-c1562T-C-Tectonic-Core-South-Asian-Moderate-Severe / Trp634Ter-c1902G-A-Tectonic-Null-European-Severe-MKS8 / Arg858Ter-c2572C-T-C-Term-Null-Pan-Ethnic-Severe-MKS8 / c1431plus1G-A-Splice-Null-European-Severe / Ala309Val-c926C-T-N-Term-North-African-Founder-Mild / Tyr1123Cys-c3368A-G-C-Term-East-Asian-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous-AR / Frequency-1-2pct-All-Joubert-Syndrome / ~1-1000000-2500000-JBTS13-Worldwide / Autosomal-Recessive-Biallelic-LOF-Allele-Class-Determines-Tier / 12q24.31 / OMIM-Gene-TCTN2-613846-Disease-614245-JBTS13-MKS8-613885)",
+    "status": "built",
+    "route": "/jbts13",
+    "api_routes": [
+      "/api/jbts13/overview",
+      "/api/jbts13/breakdown",
+      "/api/jbts13/definitions"
+    ],
+    "cohort_seed": 433,
+    "cohort_size": 40,
+    "gene": "TCTN2",
+    "omim_gene": "613846",
+    "omim_disease": "614245",
+    "omim_mks8": "613885",
+    "built_date": "2026-08-30"
   }
 ]
