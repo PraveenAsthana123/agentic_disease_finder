@@ -8235,5 +8235,14 @@
     "cohort_n": 40,
     "seed": 487,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts36",
+    "name": "JBTS36 CCRK Joubert Syndrome Type 36 (JBTS36-CCRK-Cell-Cycle-Related-Kinase-Joubert-Syndrome-Type-36-ICK-Activating-Kinase-IFT-B-Tip-Turnaround-Regulator-Cilia-Hyperelongated-No-MKS-Tier-No-SRTD-Autosomal-Recessive-Ciliopathy / CCRK-456aa-N-Lobe-Gly-Loop-aa1-100-HRD-Catalytic-Loop-DFG-aa130-145-Activation-Segment-T-Loop-ICK-Thr157-aa161-188-C-Lobe-CTS-Linker-aa325-360-RVSP-CTS-aa393-396-609478 / Chr-14q23.2 / CCRK-ICK-ACTIVATING-KINASE-ICK-Thr157-T-Loop-Not-Phosphorylated-IFT-B-Tip-Accumulation-Cilia-Hyperelongated-MTS / NO-MKS-TIER-Kinase-Not-TZ-Structural-All-Liveborn / CILIA-HYPERELONGATED-200-400pct-WT-ARL13B-Plus-Greater-10um / pT157-ICK-ABSENT-Diagnostic-IF-Marker / GT335-NORMAL-DDx-TOGARAM1-JBTS29 / GLI3-Activator-Shift-Polydactyly-14pct / Retinal-28pct / Renal-22pct / ~1-1500000-3000000-JBTS36-Worldwide / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 14q23.2 / OMIM-Gene-CCRK-609478-Disease-618317-JBTS36)",
+    "status": "built",
+    "api": "/api/jbts36/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 489,
+    "registered": "2026-08-31"
   }
 ]

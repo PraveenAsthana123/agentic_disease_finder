@@ -37298,6 +37298,32 @@ async def jbts35_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# 40-patient cohort seed-489; 3 endpoints /api/jbts36/overview|breakdown|definitions
+# JBTS36 CCRK — Cell Cycle-Related Kinase / ICK-Activating Kinase / IFT-B Tip Turnaround / Cilia Hyperelongated / No MKS Tier / 14q23.2
+@app.get("/api/jbts36/overview")
+async def jbts36_overview():
+    try:
+        import scripts.jbts36_dashboard as jbts36_
+        return _json_safe(jbts36_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts36/breakdown")
+async def jbts36_breakdown():
+    try:
+        import scripts.jbts36_dashboard as jbts36_
+        return _json_safe(jbts36_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts36/definitions")
+async def jbts36_definitions():
+    try:
+        import scripts.jbts36_dashboard as jbts36_
+        return _json_safe(jbts36_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
