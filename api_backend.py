@@ -36774,6 +36774,35 @@ async def jbts21_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS22 CEP83 (CCDC41) Joubert Syndrome Type 22 ───────────────────────────
+# 40-patient cohort seed-451; 3 endpoints /api/jbts22/overview|breakdown|definitions
+# CEP83 / Distal Appendage Foundation / DA hierarchy: CEP83→CEP89→SCLT1→FBF1→LRRC45→CEP164
+# Renal ~68% (highest non-NPHP1 JBTS); ESRD median ~14-18yr; No MKS tier; MENA founder Arg252Cys
+@app.get("/api/jbts22/overview")
+async def jbts22_overview():
+    try:
+        import scripts.jbts22_dashboard as jbts22_
+        return _json_safe(jbts22_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts22/breakdown")
+async def jbts22_breakdown():
+    try:
+        import scripts.jbts22_dashboard as jbts22_
+        return _json_safe(jbts22_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts22/definitions")
+async def jbts22_definitions():
+    try:
+        import scripts.jbts22_dashboard as jbts22_
+        return _json_safe(jbts22_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

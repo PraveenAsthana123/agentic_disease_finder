@@ -7996,5 +7996,25 @@
     "inheritance": "AR",
     "mks_tier": "None",
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts22",
+    "name": "JBTS22 CEP83 Joubert Syndrome Type 22 (JBTS22-CEP83-CCDC41-Centrosomal-Protein-83-Joubert-Syndrome-Type-22-Distal-Appendage-Foundation-Scaffold-DA-Hierarchy-Nucleator-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / CEP83-826aa-CC1-Centriole-Anchoring-SDA-Docking-aa1-120-CC2-CEP89-Recruitment-DA-Hierarchy-Nucleation-aa140-380-Central-Scaffold-SCLT1-Binding-aa380-600-C-Term-IFT-B-Docking-617233 / Chr-12q22 / CEP83-DISTAL-APPENDAGE-FOUNDATION-ALL-DOWNSTREAM-DA-Proteins-CEP89-SCLT1-FBF1-LRRC45-CEP164-NPHP15-Lost-Simultaneously / CEP83-LOF-DA-Scaffold-Absent-Cilia-ABSENT-Not-Shortened-Ciliogenesis-Initiation-Block-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-CEP83-BIALLELIC-NULL-JBTS22-LIVE-BIRTH-TZ-Gate-B9-Complex-Retained-Unlike-B9D1-JBTS19-MKS9 / VERY-HIGH-RENAL-68pct-Highest-Non-NPHP1-JBTS-ESRD-Median-14-18yr-Juvenile-Onset / MENA-FOUNDER-Arg252Cys-c754C-T-CC2-CEP89-Module / JBTS22-vs-NPHP18-Same-Gene-55pct-JBTS22-30pct-Pure-Renal-Brain-MRI-Mandatory / CEP164-Co-Sequence-Mandatory-NPHP15-Downstream / RENAL-68pct / RETINAL-35pct / Cerebellar-Ataxia-70pct / seed-451 / 3-endpoints-verified-200)",
+    "status": "built",
+    "route": "/jbts22",
+    "api_endpoints": [
+      "/api/jbts22/overview",
+      "/api/jbts22/breakdown",
+      "/api/jbts22/definitions"
+    ],
+    "cohort_seed": 451,
+    "cohort_n": 40,
+    "gene": "CEP83",
+    "omim_gene": "617233",
+    "omim_disease": "617265",
+    "chromosome": "12q22",
+    "inheritance": "AR",
+    "mks_tier": "None",
+    "registered": "2026-08-31"
   }
 ]
