@@ -8374,5 +8374,21 @@
     "cohort_n": 40,
     "seed": 511,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "tcf4",
+    "name": "TCF4 Pitt-Hopkins Syndrome (bHLH-E-protein-667aa-HLH-Dimerisation-Eboxes / De-Novo-AD-LOF-DominantNegative / Breathing-Episodes-Hyperventilation-Apnoea-PATHOGNOMONIC / Beaked-Nose-CupidBow-Lip-DeepSet-Eyes-Dysmorphic / ID-AbsentSpeech-Epilepsy-Focal-TC-Myoclonic / CorpusCallosum-Absent-20pct-MRI / CBZ-OXC-HIGH-CAUTION / LEV-VPA-CLB-Level-B / POLG-Mandatory-Before-VPA / Angelman-DDx-Breathing-Absent-Angelman / Rett-DDx-Breathing-Irregular-MECP2 / SLC9A6-DDx-Beaked-Nose-vs-Cerebellar-Atrophy / Acetazolamide-Breathing-Level-C / TCF4-602272-PHS-610954 / 18q21.2 / OMIM-Gene-602272-Disease-610954)",
+    "status": "built",
+    "api": "/api/tcf4/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "cohort_seed": 513,
+    "seed": 513,
+    "chromosome": "18q21.2",
+    "protein": "TCF4 — bHLH E-protein Transcription Factor 4 / 667 aa / De novo AD haploinsufficiency or dominant negative",
+    "omim_gene": "602272",
+    "omim_disease": "610954",
+    "description": "40 patients, 4 etiology categories (Classic-DeNovo-PittHopkins 55% / Truncating-Severe-EarlyCognitive 20% / bHLH-Missense-DominantNegative 15% / 18q21.2-Deletion-ContiguousGene 10%), TCF4 bHLH E-protein (667aa, 18q21.2), de novo AD haploinsufficiency or dominant negative (R576W/A597T/L600P), Pitt-Hopkins Syndrome (OMIM 602272/610954). Breathing episodes (episodic hyperventilation + apnoea) PATHOGNOMONIC — absent in all other Angelman-like syndromes. Beaked nasal bridge + Cupid-bow lip + deep-set eyes + wide mouth dysmorphic gestalt. Corpus callosum absent ~20%. CBZ/OXC HIGH CAUTION. LEV/VPA/CLB Level B. POLG mandatory before VPA. Acetazolamide Level C for breathing episodes. 3 endpoints /api/tcf4/overview|breakdown|definitions verified 200, portal-next/app/tcf4/page.jsx + SiteNav wired after SLC9A6. Built 2026-08-31.",
+    "registered": "2026-08-31",
+    "built_note": "TCF4 Pitt-Hopkins Syndrome (bHLH E-protein / De novo AD / Breathing-Episodes-PATHOGNOMONIC / 18q21.2) dashboard built 2026-08-31: /api/tcf4/overview|breakdown|definitions + portal-next/app/tcf4/page.jsx + SiteNav wired after SLC9A6. expert_dashboards.json count 548->549."
   }
 ]

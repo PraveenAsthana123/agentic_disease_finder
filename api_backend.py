@@ -37803,6 +37803,53 @@ async def slc9a6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TCF4 Pitt-Hopkins Syndrome — bHLH-E-protein / 18q21.2 ──
+# 40-patient cohort seed-513; 3 endpoints /api/tcf4/overview|breakdown|definitions
+# De novo AD TCF4 haploinsufficiency/dominant-negative → breathing episodes PATHOGNOMONIC
+@app.get("/api/tcf4/overview")
+async def tcf4_overview():
+    """TCF4 Pitt-Hopkins Syndrome — bHLH E-protein 667aa / 18q21.2 / OMIM 602272/610954.
+    40-patient cohort seed-513. 4 etiologies: Classic-DeNovo-PittHopkins (55%),
+    Truncating-Severe-EarlyCognitive (20%), bHLH-Missense-DominantNegative (15%),
+    18q21.2-Deletion-ContiguousGene (10%). Episodic hyperventilation/apnoea PATHOGNOMONIC.
+    CBZ/OXC HIGH CAUTION. LEV/VPA/CLB Level B. POLG mandatory before VPA."""
+    try:
+        import scripts.tcf4_dashboard as tcf4_
+        return _json_safe(tcf4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tcf4/breakdown")
+async def tcf4_breakdown():
+    """TCF4 Pitt-Hopkins breakdown — per-etiology: breathing_episodes, drug_resistant,
+    absent_speech, profound_id, corpus_callosum_absent, beaked_nose, happy_affect,
+    hand_stereotypies, kd_tried, acetazolamide, mean_aeds_failed, seizure_free.
+    Key DDx: Angelman (no breathing episodes), Rett (regression + females), SLC9A6 (males/cerebellar),
+    FOXG1 (frontal MRI), Mowat-Wilson (Hirschsprung). CBZ/OXC HIGH CAUTION in myoclonic."""
+    try:
+        import scripts.tcf4_dashboard as tcf4_
+        return _json_safe(tcf4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tcf4/definitions")
+async def tcf4_definitions():
+    """TCF4 Pitt-Hopkins definitions — 15 concepts (TCF4-667aa-bHLH-E-protein /
+    breathing-episodes-PATHOGNOMONIC-preBötC / bHLH-domain-basic-H1-loop-H2 /
+    dominant-negative-R576W-A597T-L600P / TCF4-targets-NRXN1-CNTN2-SCN1A-GABRB3 /
+    PV+-interneuron-migration-failure / oligodendrocyte-white-matter / dysmorphic-gestalt /
+    Angelman-DDx-breathing / Rett-DDx-regression / 18q21.2-deletion-array / acetazolamide /
+    POLG-mandatory / de-novo-gonadal-mosaic / preBötC-respiratory-generator);
+    5 key facts; mandatory workup; standards."""
+    try:
+        import scripts.tcf4_dashboard as tcf4_
+        return _json_safe(tcf4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
