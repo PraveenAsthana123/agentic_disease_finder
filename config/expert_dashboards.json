@@ -8244,5 +8244,14 @@
     "cohort_n": 40,
     "seed": 489,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "srtd20",
+    "name": "SRTD20 TCTEX1D2 Short-Rib Thoracic Dysplasia 20 (SRTD20-TCTEX1D2-DYNLT2B-Tctex1-Domain-Containing-Protein-2-Short-Rib-Thoracic-Dysplasia-20-Dynein-2-Tctex-Type-Light-Chain-5th-Canonical-Dynein2-Subunit-SRTD-Gene-Club-Bulging-Cilia-No-JBTS-Allelism-Autosomal-Recessive-Ciliopathy / TCTEX1D2-276aa-Tctex1-N-Lobe-DYNC2H1-Tether-aa1-90-Tctex1-C-Lobe-WDR60-WDR34-Docking-aa91-200-CT-Linker-IFT-B-Contact-aa201-276-617022 / Chr-3q21.3 / TCTEX1D2-DYNEIN2-DESTABILISATION-Club-Bulging-Cilia-EM-IFT-B-Tip-Accumulation-Retrograde-IFT-Failure-MTS / SRTD20-FIFTH-DYNEIN2-SUBUNIT-GENE-DYNC2H1-SRTD3-DYNC2LI1-SRTD15-WDR34-SRTD11-WDR60-SRTD8-TCTEX1D2-SRTD20 / CLUB-BULGING-CILIA-IFT-B-Tip-Accumulation-Dynein2-Class-Identical-SRTD3-8-11-15-Gene-Panel-Only-Differentiator / NO-JBTS-ALLELISM-Pure-SRTD20-Spectrum-No-MTS-No-Cerebellar-Vermis-Hypoplasia-Confirmed-2026 / MENA-FOUNDER-Arg78Gln-c233G-A-Tctex1-N-Lobe-Ablates-DYNC2H1-Contact-Most-Common-SRTD20 / SOUTH-ASIAN-Leu142Pro-c425T-C-Tctex1-C-Lobe-WDR60-Docking-Impaired / PAN-ETHNIC-Gly118Arg-c352G-C-C-Lobe-Core-Dimerisation / EUROPEAN-Ala221Val-c662C-T-CT-Linker-Moderate / Splice-c218plus1G-A-N-C-Lobe-Junction-European / Narrow-Thorax-100pct / Polydactyly-46pct-Postaxial / Renal-30pct-Cysts-NPHP-Like / Retinal-16pct-Rod-Cone-IFT-Tip-Accumulation / Hepatic-CHF-9pct / SRPS-Spectrum-Biallelic-Null / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2000000-6000000-Rarest-Dynein2-SRTD-Subtype / ~10-20-Families-Worldwide-2026 / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 3q21.3 / OMIM-Gene-TCTEX1D2-617022-Disease-617925-SRTD20)",
+    "status": "built",
+    "api": "/api/srtd20/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 491,
+    "registered": "2026-08-31"
   }
 ]

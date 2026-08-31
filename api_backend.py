@@ -37325,6 +37325,38 @@ async def jbts36_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SRTD20 TCTEX1D2 Short-Rib Thoracic Dysplasia 20 ─────────────────────────
+# 40-patient cohort seed-491; 3 endpoints /api/srtd20/overview|breakdown|definitions
+# TCTEX1D2 — Dynein-2 Tctex-type Light Chain (DYNLT2B); 3q21.3; 276 aa
+# SRTD20 = biallelic hypomorphic TCTEX1D2 LOF; CLUB/BULGING cilia (dynein-2 class);
+# 5th canonical dynein-2 subunit SRTD gene; no JBTS allelism confirmed (2026)
+@app.get("/api/srtd20/overview")
+async def srtd20_overview():
+    """TCTEX1D2/SRTD20 — dynein-2 Tctex light chain; retrograde IFT; 3q21.3;
+40-patient cohort seed-491; 3 endpoints /api/srtd20/overview|breakdown|definitions."""
+    try:
+        import scripts.srtd20_dashboard as srtd20_
+        return _json_safe(srtd20_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd20/breakdown")
+async def srtd20_breakdown():
+    try:
+        import scripts.srtd20_dashboard as srtd20_
+        return _json_safe(srtd20_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/srtd20/definitions")
+async def srtd20_definitions():
+    try:
+        import scripts.srtd20_dashboard as srtd20_
+        return _json_safe(srtd20_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
