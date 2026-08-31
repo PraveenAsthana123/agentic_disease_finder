@@ -8048,5 +8048,24 @@
       "/api/jbts1/definitions"
     ],
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts2",
+    "name": "JBTS2 TMEM216 Joubert Syndrome Type 2 (JBTS2-TMEM216-Transmembrane-Protein-216-Joubert-Syndrome-Type-2-4-Pass-TZ-Membrane-Scaffold-Y-Link-TZ-Gate-MKS2-Allelic-MKS-Tier-Ashkenazi-Jewish-Founder-Arg73Leu-Autosomal-Recessive-Ciliopathy / TMEM216-148aa-N-Tail-RPGRIP1L-Interaction-TM1-EL1-TMEM67-TM2-ICL1-NPHP4-B9D1-Arg73-Founder-TM3-EL2-Tectonic-TM4-MKS1-RPGRIP1L-C-Tail-NPHP4-IFT-A-613277 / Chr-11q13.2 / MKS2-ALLELIC-Biallelic-Null-MKS2-Lethal-Hypomorphic-JBTS2-Live-Birth / MKS-TIER / ASHKENAZI-FOUNDER-Arg73Leu-1-in-92-Carrier / HEPATIC-20pct-MKS-Module-TMEM67-Overlap / RENAL-28pct-NPHP-Like / 40-patient-cohort-seed-457 / 3-endpoints-verified-200 / Registered-2026-08-31)",
+    "status": "built",
+    "category": "joubert_syndrome",
+    "gene": "TMEM216",
+    "omim_gene": "613277",
+    "omim_disease": "608091",
+    "omim_allelic": "603194",
+    "chromosome": "11q13.2",
+    "seed": 457,
+    "n_patients": 40,
+    "endpoints": [
+      "/api/jbts2/overview",
+      "/api/jbts2/breakdown",
+      "/api/jbts2/definitions"
+    ],
+    "registered": "2026-08-31"
   }
 ]

@@ -36859,6 +36859,35 @@ async def jbts1_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS2 TMEM216 Joubert Syndrome Type 2 ────────────────────────────────────
+# 40-patient cohort seed-457; 3 endpoints /api/jbts2/overview|breakdown|definitions
+# TMEM216 / 4-Pass TZ Membrane Scaffold / Y-Link TZ Gate / MKS2-Allelic / MKS Tier
+# Ashkenazi founder Arg73Leu (~1:92 carrier); Renal ~28%; Hepatic ~20% (MKS-module); Retinal ~35%
+@app.get("/api/jbts2/overview")
+async def jbts2_overview():
+    try:
+        import scripts.jbts2_dashboard as jbts2_
+        return _json_safe(jbts2_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts2/breakdown")
+async def jbts2_breakdown():
+    try:
+        import scripts.jbts2_dashboard as jbts2_
+        return _json_safe(jbts2_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts2/definitions")
+async def jbts2_definitions():
+    try:
+        import scripts.jbts2_dashboard as jbts2_
+        return _json_safe(jbts2_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
