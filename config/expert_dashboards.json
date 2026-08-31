@@ -7962,5 +7962,19 @@
     "cohort_seed": 445,
     "cohort_n": 40,
     "built_date": "2026-08-30"
+  },
+  {
+    "id": "jbts20",
+    "name": "JBTS20 TMEM231 Joubert Syndrome Type 20 (JBTS20-TMEM231-Transmembrane-Protein-231-Joubert-Syndrome-Type-20-B9-Tectonic-TZ-Bridge-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TMEM231-669aa-N-Tail-TMEM138-B9D1-Docking-aa1-75-TM1-4-TZ-Membrane-aa76-380-EL1-3-TMEM67-MKS1-aa381-550-C-Tail-NPHP4-IFT-A-aa551-669-614949 / Chr-16q23.1 / B9-TECTONIC-BRIDGE-No-MKS-Tier / RENAL-25pct / RETINAL-22pct / Cerebellar-Ataxia-85pct / seed-447 / 3-endpoints-verified-200)",
+    "status": "built",
+    "api_prefix": "/api/jbts20",
+    "page": "/jbts20",
+    "seed": 447,
+    "cohort_n": 40,
+    "gene": "TMEM231",
+    "omim_gene": "614949",
+    "omim_disease": "614990",
+    "chromosome": "16q23.1",
+    "registered": "2026-08-31"
   }
 ]
