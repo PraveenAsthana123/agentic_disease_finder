@@ -7949,5 +7949,18 @@
     "cohort_seed": 443,
     "cohort_n": 40,
     "built_date": "2026-08-30"
+  },
+  {
+    "id": "jbts19",
+    "name": "JBTS19 B9D1 Joubert Syndrome Type 19 (JBTS19-B9D1-B9-Domain-Containing-Protein-1-MKSR1-Joubert-Syndrome-Type-19-B9-Complex-TZ-Inner-Leaflet-Anchor-MKS9-Tier-Autosomal-Recessive-Ciliopathy / B9D1-250aa-N-Term-Unstructured-MKS1-Interface-B9-Domain-TZ-Anchor-B9D2-Interface-C-Tail-TMEM231-614144 / Chr-17p11.2 / B9D1-B9-COMPLEX-INNER-LEAFLET-TZ-ANCHOR-B9D1-B9D2-MKS1-TZ-Inner-Leaflet-Membrane-Anchoring-SMO-Entry-Gate-Hedgehog / B9D1-LOF-B9-Complex-Disassembly-TZ-Gate-Collapse-SMO-Excluded-Hedgehog-Failure-Molar-Tooth-Sign / MKS9-TIER-B9D1-BIALLELIC-NULL-MKS9-Perinatal-Lethal-Encephalocele-Renal-Cystic-Dysplasia-Polydactyly / NULL-HYPOMORPHIC-RESCUE-Null-Hypomorphic-Compound-Het-JBTS19-Live-Birth-Hypomorphic-Rescues-MKS-Lethality / B9-COMPLEX-DDX-B9D1-JBTS19-MKS9-B9D2-JBTS34-MKS10-MKS1-JBTS28-WES-Must-Distinguish-All-B9-Complex-Members / RENAL-35pct-NPHP-Like-Annual-Protocol-ESRD-Median-22yr-Higher-Than-TCTN1-TCTN3-Complete-TZ-Collapse / RETINAL-32pct-Rod-Cone-Annual-ERG-Age-3 / Cerebellar-Ataxia-88pct / Neonatal-Hypotonia-83pct / Oculomotor-Apraxia-55pct / Breathing-Dysregulation-58pct / Intellectual-Disability-72pct / Hepatic-CHF-18pct / Polydactyly-20pct-Post-Axial-Higher-Than-TCTN3 / MKS9-Risk-22pct-Null-Null-Genotype / Arg106Cys-c316C-T-N-Term-MKS1-Interface-MENA-Founder-Moderate / Gly67Arg-c199G-A-N-Term-B9D2-Docking-Pan-Ethnic-Moderate / Leu193Pro-c578T-C-B9D-Core-South-Asian-Moderate-Severe / Trp88Ter-c264G-A-N-Term-Truncating-Null-European-Severe-MKS9 / Arg222Ter-c664C-T-B9D-C-Term-Null-Pan-Ethnic-Severe-MKS9 / c441plus1G-A-Splice-Donor-Null-European-Severe-MKS9 / Ala34Val-c101C-T-N-Term-North-African-Founder-Hypomorphic-Mild-Rescues-MKS / Tyr216Cys-c647A-G-B9D-Core-East-Asian-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2pct-All-Joubert-Syndrome / ~1-3000000-6000000-JBTS19-Worldwide / Autosomal-Recessive-Biallelic-LOF / 17p11.2 / OMIM-Gene-B9D1-614144-Disease-614975-JBTS19-614209-MKS9)",
+    "status": "built",
+    "endpoints": [
+      "/api/jbts19/overview",
+      "/api/jbts19/breakdown",
+      "/api/jbts19/definitions"
+    ],
+    "cohort_seed": 445,
+    "cohort_n": 40,
+    "built_date": "2026-08-30"
   }
 ]
