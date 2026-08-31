@@ -8217,5 +8217,14 @@
     "n_cohort": 40,
     "registered": "2026-08-31",
     "category": "Joubert Syndrome"
+  },
+  {
+    "id": "jbts33",
+    "name": "JBTS33 CPLANE1 Joubert Syndrome Type 33 (JBTS33-CPLANE1-CFAP126-FLTP-Ciliogenesis-Planar-Cell-Polarity-Effector-1-Joubert-Syndrome-Type-33-BB-Docking-PCP-Effector-CPLANE-Complex-INTURNED-FUZZY-No-MKS-Tier-Polydactyly-Enriched-Autosomal-Recessive-Ciliopathy / CPLANE1-1373aa-N-Term-IDR-INTU-Binding-aa1-180-CC1-FUZ-Binding-aa181-430-Central-IDR-PCP-Switch-aa431-760-WD40-Like-BB-Docking-Anchor-aa761-1110-CT-CC-PI4P-aa1111-1373-614571 / Chr-16q24.1 / CPLANE1-PCP-EFFECTOR-BB-Docking-Cilia-Short-50-70pct-WT-Misoriented-Hh-Gradient-MTS / NO-MKS-TIER-Cytoplasmic-BB-Docking-Not-TZ-Diffusion-Barrier-All-Liveborn / POLYDACTYLY-24pct-PCP-GLI3-Enriched / NORMAL-OFC-DDx-vs-JBTS32 / Cerebellar-Ataxia-78pct / Neonatal-Hypotonia-73pct / Polydactyly-24pct-Postaxial / Frequency-1-2pct-All-Joubert-Syndrome / ~1-400000-800000-JBTS33-Worldwide / Autosomal-Recessive-Biallelic-Hypomorphic-LOF / 16q24.1 / OMIM-Gene-CPLANE1-614571-Disease-617409-JBTS33)",
+    "status": "built",
+    "api": "/api/jbts33/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 485,
+    "registered": "2026-08-31"
   }
 ]

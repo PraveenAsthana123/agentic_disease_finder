@@ -37147,6 +37147,35 @@ async def srtd19_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS33 CPLANE1 Joubert Syndrome Type 33 ───────────────────────────────────
+# 40-patient cohort seed-485; 3 endpoints /api/jbts33/overview|breakdown|definitions
+# CPLANE1 (CFAP126/FLTP) — Ciliogenesis PCP Effector / BB Docking / No MKS Tier / 16q24.1
+
+@app.get("/api/jbts33/overview")
+async def jbts33_overview():
+    """JBTS33 CPLANE1 overview — 40-patient cohort seed-485."""
+    try:
+        import scripts.jbts33_dashboard as jbts33_
+        return _json_safe(jbts33_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts33/breakdown")
+async def jbts33_breakdown():
+    try:
+        import scripts.jbts33_dashboard as jbts33_
+        return _json_safe(jbts33_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts33/definitions")
+async def jbts33_definitions():
+    try:
+        import scripts.jbts33_dashboard as jbts33_
+        return _json_safe(jbts33_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 # ── JBTS34 B9D2 Joubert Syndrome Type 34 ─────────────────────────────────────
 # 40-patient cohort seed-473; 3 endpoints /api/jbts34/overview|breakdown|definitions
 # B9D2 (MKSR2/C19orf52) — B9-Complex β-Strand Bridge / B9D1 Barrel Cap / MKS TIER / 19q13.2
