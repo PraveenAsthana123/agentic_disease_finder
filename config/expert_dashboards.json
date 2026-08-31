@@ -8030,5 +8030,23 @@
     "inheritance": "AR",
     "mks_tier": "None",
     "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts1",
+    "name": "JBTS1 INPP5E Joubert Syndrome Type 1 (JBTS1-INPP5E-Inositol-Polyphosphate-5-Phosphatase-E-Joubert-Syndrome-Type-1-Ciliary-PIP2-Phosphatase-Arl13b-Mutual-Dependency-PIP-Axis-MORM-Allelic-Cilia-Form-Normally-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / INPP5E-644aa-N-Term-Proline-Rich-PDE6D-aa1-160-INPP5-Phosphatase-PI45P2-Hydrolysis-aa161-530-CC-Arl13b-CAAX-Farnesylation-aa531-644-613037 / Chr-9q34.3 / INPP5E-CILIARY-PIP2-PHOSPHATASE / MORM-ALLELIC-Biallelic-Truncating-MORM-610156-Missense-JBTS1 / NO-MKS-TIER / ARL13B-JBTS8-DDX-Shared-PIP2-Module / EUROPEAN-FOUNDER-Arg435Gln / RETINAL-30pct / RENAL-12pct-INPP5B-Compensation / 9q34.3 / OMIM-Gene-INPP5E-613037-Disease-213300-JBTS1-610156-MORM / 40-patient-cohort-seed-455 / 3-endpoints-verified-200 / Registered-2026-08-31)",
+    "status": "built",
+    "category": "joubert_syndrome",
+    "gene": "INPP5E",
+    "omim_gene": "613037",
+    "omim_disease": "213300",
+    "chromosome": "9q34.3",
+    "seed": 455,
+    "n_patients": 40,
+    "endpoints": [
+      "/api/jbts1/overview",
+      "/api/jbts1/breakdown",
+      "/api/jbts1/definitions"
+    ],
+    "registered": "2026-08-31"
   }
 ]

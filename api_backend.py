@@ -36832,6 +36832,33 @@ async def jbts23_definitions():
         return {"error": str(e)}
 
 
+# 40-patient cohort seed-455; 3 endpoints /api/jbts1/overview|breakdown|definitions
+# INPP5E Joubert Syndrome Type 1 — Ciliary PIP2 Phosphatase / Arl13b PIP Axis / MORM-Allelic / No MKS Tier / 9q34.3
+@app.get("/api/jbts1/overview")
+async def jbts1_overview():
+    try:
+        import scripts.jbts1_dashboard as jbts1_
+        return _json_safe(jbts1_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts1/breakdown")
+async def jbts1_breakdown():
+    try:
+        import scripts.jbts1_dashboard as jbts1_
+        return _json_safe(jbts1_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts1/definitions")
+async def jbts1_definitions():
+    try:
+        import scripts.jbts1_dashboard as jbts1_
+        return _json_safe(jbts1_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
