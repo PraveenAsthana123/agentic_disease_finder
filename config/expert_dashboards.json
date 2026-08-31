@@ -7846,5 +7846,27 @@
     "omim_disease": "614245",
     "omim_mks8": "613885",
     "built_date": "2026-08-30"
+  },
+  {
+    "id": "jbts14",
+    "name": "JBTS14 TMEM237 Joubert Syndrome Type 14 (JBTS14-TMEM237-ALS2CR4-Transmembrane-Protein-237-Joubert-Syndrome-Type-14-TZ-NPHP-Module-Bridge-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TMEM237-ALS2CR4-541aa-N-Term-NPHP1-Binding-TM1-3-Hairpin-Extracellular-Loop-TMEM231-B9D1-TM4-6-C-Term-NPHP4-Inversin-614423 / Chr-2q33.1 / TMEM237-TZ-NPHP-MODULE-BRIDGE-NPHP1-NPHP4-Y-Link-TMEM231-B9D1-Membrane-Anchor-Cross-Module-Scaffold / TMEM237-LOF-Cross-Module-Uncoupling-TZ-Gate-Partial-GPCR-SMO-Import-Impaired-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-TMEM237-BIALLELIC-NULL-JBTS14-LIVE-BIRTH-Unlike-TCTN2-MKS8-CC2D2A-MKS6-RPGRIP1L-MKS5 / NPHP1-BRIDGE-RENAL-RISK-28pct-Annual-NPHP-Protocol-Mandatory-Even-Before-Proteinuria / Cerebellar-Ataxia / Neonatal-Hypotonia / Oculomotor-Apraxia / Breathing-Dysregulation / Retinal-Rod-Cone-27pct / Renal-NPHP-Like-TIN-28pct-ESRD-Median-24yr / Hepatic-Mild-CHF-8pct / Polydactyly-6pct-Rare / Arg8Trp-c22C-T-N-Term-NPHP1-Binding-Arab-MENA-Founder-Moderate / Gly78Arg-c232G-A-TM1-3-Pan-Ethnic-Moderate / Phe182Ser-c545T-C-Extracellular-Loop-South-Asian-Moderate-Severe / Trp255Ter-c765G-A-Extracellular-Loop-Null-European / Arg399Ter-c1195C-T-C-Term-Null-Pan-Ethnic-Severe / c846plus1G-A-Splice-European-Null / Ala447Val-c1340C-T-C-Term-North-African-Founder-Mild / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2pct-All-Joubert-Syndrome / ~1-1500000-3000000-JBTS14-Worldwide / Autosomal-Recessive-Biallelic-LOF / 2q33.1 / OMIM-Gene-TMEM237-614423-Disease-614424-JBTS14)",
+    "category": "ciliopathy",
+    "subcategory": "joubert_syndrome",
+    "gene": "TMEM237",
+    "omim_gene": "614423",
+    "omim_disease": "614424",
+    "chromosome": "2q33.1",
+    "inheritance": "AR",
+    "mks_tier": "None",
+    "cohort_seed": 435,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/jbts14/overview",
+      "/api/jbts14/breakdown",
+      "/api/jbts14/definitions"
+    ],
+    "frontend_route": "/jbts14",
+    "status": "built",
+    "registered": "2026-08-30"
   }
 ]
