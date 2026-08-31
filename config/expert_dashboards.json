@@ -8156,5 +8156,23 @@
     "mks_tier": true,
     "built_date": "2026-08-31",
     "note": "Total: 529 dashboards"
+  },
+  {
+    "id": "jbts29",
+    "name": "JBTS29 TOGARAM1 Joubert Syndrome Type 29 (JBTS29-TOGARAM1-MAATS1-MAP7D3-Tubulin-Overglutamylation-Rescue-Associated-Module-Glutamylation-Related-Protein-1-Joubert-Syndrome-Type-29-Axonemal-Polyglutamylase-Complex-ARMC9-ARM-Groove-Partner-GT335-IF-Biomarker-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TOGARAM1-1474aa-N-Term-IDR-ARMC9-CC-Stub-aa1-220-TOG1-TTLL-Presenter-aa221-470-CC1-Homodimerisation-aa471-720-TOG2-Catalytic-aa721-960-CTD-IFT81-Contact-aa961-1474-617965 / Chr-2p21 / TOGARAM1-ARMC9-AXIS-ARMC9-ARM7-10-Binds-TOGARAM1-N-CC-Obligate-Co-Sequencing-JBTS27-JBTS29 / CILIA-SHORTENED-30-60pct-WT-GT335-Reduced-35pct-WT-CP110-Cleared-ARL13B-Plus-NOT-Absent / GT335-IF-PATHOGNOMONIC-Only-JBTS-Gene-Reducing-Axonemal-Polyglutamylation / IFT81-JBTS35-CTD-Digenic-CEP290-JBTS5-CC1-Contact / NO-MKS-TIER-All-Liveborn / RETINAL-28pct / RENAL-15pct / 40-patient-cohort-seed-471 / OMIM-Gene-TOGARAM1-617965-Disease-617709-JBTS29 / Registered-2026-08-31)",
+    "status": "built",
+    "api": "/api/jbts29/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 471,
+    "registered": "2026-08-31"
+  },
+  {
+    "id": "jbts34",
+    "name": "JBTS34 B9D2 Joubert Syndrome Type 34 (JBTS34-B9D2-MKSR2-C19orf52-B9-Domain-Containing-Protein-2-Joubert-Syndrome-Type-34-B9-Complex-Beta-Strand-Bridge-B9D1-Barrel-Cap-MKS-TIER-MKS10-Allelic-No-Population-Founder-Autosomal-Recessive-Ciliopathy / B9D2-218aa-N-Term-IDR-MKS1-Primary-Contact-aa1-55-Beta-Strand-Exchange-B9D1-Barrel-Cap-aa56-100-B9-Domain-PI45P2-Membrane-Insertion-aa101-175-CT-MKS1-Secondary-TMEM231-Bridge-aa176-218-611951 / Chr-19q13.2 / B9D2-B9D1-OBLIGATE-HETERODIMER-Beta4-Beta5-Strand-Exchange-B9D1-Barrel-Cap-Y-Link-Bridge-B9-Complex-MKS1-B9D1-B9D2-Inner-Leaflet / B9D2-LOF-Beta-Strand-Exchange-Absent-B9D1-Barrel-Partially-Uncapped-B9D1-Membrane-Insertion-Impaired-Y-Link-Bridge-Absent-TEM / MKS-TIER-Biallelic-Null-MKS10-Perinatal-Lethal-Hypomorphic-JBTS34-Survivable / NO-POPULATION-FOUNDER-Pan-Ethnic / LOWER-HEPATIC-CHF-18pct / LOWER-RENAL-30pct / 40-patient-cohort-seed-473 / OMIM-Gene-B9D2-611951-Disease-614749-JBTS34-614175-MKS10 / Registered-2026-08-31)",
+    "status": "built",
+    "api": "/api/jbts34/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 473,
+    "registered": "2026-08-31"
   }
 ]

@@ -36975,6 +36975,35 @@ async def jbts25_definitions():
         return {"error": str(e)}
 
 
+# ── JBTS29 TOGARAM1 Joubert Syndrome Type 29 ─────────────────────────────────
+# 40-patient cohort seed-471; 3 endpoints /api/jbts29/overview|breakdown|definitions
+# TOGARAM1 — Axonemal Tubulin Polyglutamylase Complex / ARMC9-ARM-Groove Partner / GT335-IF-Biomarker / No MKS Tier / 2p21
+
+@app.get("/api/jbts29/overview")
+async def jbts29_overview():
+    try:
+        import scripts.jbts29_dashboard as jbts29_
+        return _json_safe(jbts29_.get_overview())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts29/breakdown")
+async def jbts29_breakdown():
+    try:
+        import scripts.jbts29_dashboard as jbts29_
+        return _json_safe(jbts29_.get_breakdown())
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/jbts29/definitions")
+async def jbts29_definitions():
+    try:
+        import scripts.jbts29_dashboard as jbts29_
+        return _json_safe(jbts29_.get_definitions())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 # ── JBTS28 MKS1 Joubert Syndrome Type 28 ─────────────────────────────────────
 # 40-patient cohort seed-469; 3 endpoints /api/jbts28/overview|breakdown|definitions
 # MKS1 — B9-Complex Central Scaffold / TZ Inner-Leaflet Y-Link Gate / MKS TIER / Finnish Founder IVS14 / 17q22
@@ -37087,6 +37116,35 @@ async def srtd19_definitions():
         return _json_safe(srtd19_.get_definitions())
     except Exception as e:
         return {"error": str(e)}
+
+
+# ── JBTS34 B9D2 Joubert Syndrome Type 34 ─────────────────────────────────────
+# 40-patient cohort seed-473; 3 endpoints /api/jbts34/overview|breakdown|definitions
+# B9D2 (MKSR2/C19orf52) — B9-Complex β-Strand Bridge / B9D1 Barrel Cap / MKS TIER / 19q13.2
+
+@app.get("/api/jbts34/overview")
+async def jbts34_overview():
+    try:
+        import scripts.jbts34_dashboard as jbts34_
+        return _json_safe(jbts34_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts34/breakdown")
+async def jbts34_breakdown():
+    try:
+        import scripts.jbts34_dashboard as jbts34_
+        return _json_safe(jbts34_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/jbts34/definitions")
+async def jbts34_definitions():
+    try:
+        import scripts.jbts34_dashboard as jbts34_
+        return _json_safe(jbts34_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":
