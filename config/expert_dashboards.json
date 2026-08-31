@@ -8313,5 +8313,14 @@
     "cohort_n": 40,
     "seed": 497,
     "registered": "2026-08-31"
+  },
+  {
+    "id": "slc6a5",
+    "name": "SLC6A5 Hyperekplexia (HYPER3-GlyT2-Glycine-Transporter-2 / SLC6A5-799aa-NT-Cytoplasmic-aa1-55-TM1-TM6-Na1-Cl-Gly-Binding-aa56-330-EL2-N-Glycosylation-aa162-238-TM7-TM12-Na2-aa331-780-CT-PDZ-PICK1-aa781-799-604159 / Chr-11p15.1 / SLC6A5-SECOND-MOST-COMMON-HYPEREKPLEXIA-GENE-GLRA1-70pct-SLC6A5-15pct-GLRB-5pct / PURELY-AR-BIALLELIC-LOF-No-Dominant-Negative-Unlike-GLRA1-GLRB / PRESYNAPTIC-MECHANISM-Vesicle-Glycine-Depletion-Not-Postsynaptic-GlyR-LOF / 3Na-1Cl-1Gly-Stoichiometry-Vesicle-Reload-Sole-Mechanism / AR-BIALLELIC-LOF-SEVERE-55pct-Trp482Arg-MENA-Founder-TM8-Gly-Binding-Block / AR-BIALLELIC-MISSENSE-MODERATE-25pct-Ala399Thr-TM7-Arg531Gln-TM10-Partial-Transport / AR-HOMOZYGOUS-FOUNDER-MENA-10pct-Trp482Arg-Homozygous-Consanguineous / AR-TRANS-COMPOUND-ATYPICAL-7pct-GlyT2-Assay-Required / PHENOCOPY-3pct-GLRA1-GLRB-GPHN-ARHGEF9-Alternative / NON-EPILEPTIC-Normal-EEG-at-Events / CLONAZEPAM-LEVEL-A-First-Line / VIGEVANO-MANOEUVRE-LEVEL-A-Mandatory-Before-Discharge / GLYCINE-SUPPLEMENTATION-PARTIAL-LOF-ONLY-Presynaptic-Substrate-Loading-Rationale / 5-GENE-PANEL-MANDATORY-GLRA1-GLRB-SLC6A5-GPHN-ARHGEF9-Simultaneously / NKH-DDx-Plasma-Glycine-NORMAL-in-SLC6A5-vs-Elevated-NKH / POLG-MANDATORY-Before-VPA-If-Epilepsy / GlyT1-vs-GlyT2-Distinction-Astrocytic-Bulk-vs-Presynaptic-Reload / 40-patient-cohort-seed-499 / 11p15.1 / OMIM-Gene-SLC6A5-604159-Hyperekplexia-Type-3-614618)",
+    "status": "built",
+    "api": "/api/slc6a5",
+    "cohort_n": 40,
+    "seed": 499,
+    "registered": "2026-08-31"
   }
 ]

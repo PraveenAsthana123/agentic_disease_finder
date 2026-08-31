@@ -37515,6 +37515,55 @@ async def glrb_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-499; 3 endpoints /api/slc6a5/overview|breakdown|definitions
+@app.get("/api/slc6a5/overview")
+async def slc6a5_overview():
+    """SLC6A5 Hyperekplexia Type 3 (HYPER3 / GlyT2 / Glycine Transporter 2 / 11p15.1) — KPI overview.
+    40-patient cohort (SLC6A5 11p15.1); GlyT2 = presynaptic glycine reuptake transporter; 799aa; 12 TM;
+    SECOND MOST COMMON genetic hyperekplexia gene (~15%); PURELY AR (biallelic LOF — no dominant-negative);
+    PRESYNAPTIC mechanism: vesicle-glycine-depletion (vs GLRA1/GLRB postsynaptic GlyR LOF);
+    5 etiology classes (AR-Biallelic-LOF-Severe-55% / AR-Biallelic-Missense-Moderate-25% /
+    AR-Homozygous-Founder-MENA-10% / AR-Trans-Compound-Atypical-7% / Phenocopy-3%);
+    Clonazepam Level A first-line; Forward-Flexion Manoeuvre Level A acute apnoea;
+    NON-EPILEPTIC (normal EEG at events); 5-gene panel mandatory (GLRA1+GLRB+SLC6A5+GPHN+ARHGEF9);
+    Trp482Arg MENA/North-African founder (TM8; glycine-binding-channel block);
+    Glycine supplementation Level C investigational (partial-LOF only — presynaptic substrate-loading rationale)."""
+    try:
+        import scripts.slc6a5_dashboard as slc6a5_
+        return _json_safe(slc6a5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc6a5/breakdown")
+async def slc6a5_breakdown():
+    """SLC6A5 Hyperekplexia — detailed etiology breakdown, 15-patient sample, event types, triggers,
+    treatment detail, contraindications (5 etiology classes; 5 event types; 7 triggers;
+    8 treatment lines; 5 contraindications). Presynaptic vesicle-glycine-depletion mechanism unique to
+    SLC6A5 LOF. Trp482Arg MENA founder TM8 block. Glycine supplementation partial-LOF rationale.
+    5-gene panel mandatory — SLC6A5 vs GLRA1 vs GLRB clinically indistinguishable."""
+    try:
+        import scripts.slc6a5_dashboard as slc6a5_
+        return _json_safe(slc6a5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc6a5/definitions")
+async def slc6a5_definitions():
+    """SLC6A5 Hyperekplexia — 15 core concepts (GlyT2-presynaptic-reuptake / Vesicle-glycine-depletion /
+    GlyT1-vs-GlyT2-distinction / Na-gradient-stoichiometry / AR-only-no-dominant-negative /
+    Trp482Arg-MENA-founder / Rigid-baby-non-epileptic / Vigevano-manoeuvre / Nose-tap-Iles /
+    Non-epileptic-EEG-normal / 5-gene-panel / NKH-DDx / Glycine-supplementation-partial-LOF /
+    Natural-history-CLZ-weaning / Driver-safety-reproductive);
+    clinical thresholds; standards; references."""
+    try:
+        import scripts.slc6a5_dashboard as slc6a5_
+        return _json_safe(slc6a5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
