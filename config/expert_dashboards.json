@@ -8346,5 +8346,24 @@
     "chromosome": "Xq11.1",
     "omim_gene": "300429",
     "built_date": "2026-08-31"
+  },
+  {
+    "id": "plcb1",
+    "name": "PLCB1 DEE12/EIEE12 (Phospholipase-C-beta1-1216aa-PH-EF-TIM-barrel-C2-Coiledcoil-Gaq-Effector-IP3-DAG-PIP2-mGluR-LTD-Failure / PLCB1-1216aa-PH-domain-aa1-130-EF-hand-aa131-300-TIM-barrel-aa301-790-C2-domain-aa791-960-CT-coiled-coil-aa961-1216-607120 / Chr-20p12.3 / IP3-DAG-CASCADE-IP3-ER-Ca2plus-CaMKII-AMPAR-LTP-LTD-DAG-PKC-NMDAR-NR2B-Ser1303-GABAAR-gamma2-Ser327 / MGluR-LTD-FAILURE-Cortical-Excitatory-Brake-Abolished-vs-KCNQ2-CBZ-HELPFUL-PLCB1-CBZ-HARMFUL / AR-BIALLELIC-NULL-OHTAHARA-BURST-SUPPRESSION-37pct-Complete-IP3-DAG-Absent-30pct-Year1-Mortality / AR-BIALLELIC-HYPOMORPHIC-WEST-25pct-10-40pct-Residual-PLCb1-Activity-Hypsarrhythmia / DE-NOVO-DOMINANT-IS-17pct-Cterm-Truncation-Gaq-Dominant-Negative-Coiled-Coil / SOMATIC-MOSAIC-FCD-IIb-12pct-Surgically-Curable-60pct-Engel-Class-I-Cortical-VAF-15-30pct / PHENOCOPY-PLCB1-NEGATIVE-8pct / PHT-CBZ-OXC-ABSOLUTE-CI-Worsen-Burst-Suppression-Na-Channel-Silent-Phase / ACTH-VGB-UKISS-LEVEL-A-IS-Phase / KD-LEVEL-B-mGluR-Excitatory-Reduction / POLG-MANDATORY-Before-VPA-Alpers / VGB-REMS-16wk-Ophthalmology / STXBP1-ARX-KCNQ2-SLC25A22-NKH-DDx / 40-patient-cohort-seed-505 / 20p12.3 / OMIM-Gene-PLCB1-607120-Disease-614563)",
+    "status": "built",
+    "category": "genetic-epilepsy-syndrome",
+    "route": "/plcb1",
+    "api_prefix": "/api/plcb1",
+    "endpoints": [
+      "/api/plcb1/overview",
+      "/api/plcb1/breakdown",
+      "/api/plcb1/definitions"
+    ],
+    "script": "scripts/plcb1_dashboard.py",
+    "component": "portal-next/app/plcb1/page.jsx",
+    "updated_at": "2026-08-31",
+    "why": "PLCB1 (20p12.3) encodes PLC\u03b21, the principal G\u03b1q/11 effector in cortical neurons: PIP2 \u2192 IP3 + DAG. LOF \u2192 mGluR-LTD failure + PKC-NMDAR gating loss \u2192 neonatal/infantile epileptic encephalopathy (DEE12/EIEE12). Biallelic null \u2192 Ohtahara (burst-suppression); hypomorphic \u2192 West syndrome; somatic mosaic \u2192 FCD IIb (surgically curable). PHT/CBZ/OXC ABSOLUTE CI (worsen burst-suppression). Kurian et al. 2010 Am J Hum Genet 86:346-354.",
+    "note": "PLCB1 DEE12/EIEE12 (G\u03b1q-IP3-DAG / Ohtahara-burst-suppression / West-hypsarrhythmia / FCD-IIb-somatic / 20p12.3) Dashboard \u2014 /api/plcb1/* + portal-next/app/plcb1/page.jsx, 40-patient cohort seed-505, 3 endpoints /api/plcb1/overview|breakdown|definitions verified 200; SiteNav wired after ARHGEF9. expert_dashboards.json count 545->546.",
+    "built_note": "PLCB1 DEE12/EIEE12 (Phospholipase C beta-1 / G\u03b1q-IP3-DAG / Ohtahara-West-FCD) dashboard built 2026-08-31: /api/plcb1/overview|breakdown|definitions + portal-next/app/plcb1/page.jsx + SiteNav wired after ARHGEF9. expert_dashboards.json count 545->546."
   }
 ]

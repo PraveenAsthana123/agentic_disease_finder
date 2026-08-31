@@ -37661,6 +37661,58 @@ async def arhgef9_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-505; 3 endpoints /api/plcb1/overview|breakdown|definitions
+# PLCB1 DEE12/EIEE12 — Phospholipase C beta-1 / 20p12.3 — Gαq/IP3/DAG pathway
+# AR biallelic (null→Ohtahara / hypomorphic→West) + de novo dominant + somatic mosaic (FCD IIb)
+@app.get("/api/plcb1/overview")
+async def plcb1_overview():
+    """PLCB1 DEE12/EIEE12 — PLCβ1 / 20p12.3 / OMIM 607120 / 614563.
+    PLCβ1 is the principal Gαq/11 effector: PIP2 → IP3 + DAG.
+    LOF abolishes mGluR-LTD (cortical excitatory brake) + PKC-NMDAR gating.
+    Biallelic null → Ohtahara (burst-suppression, neonatal);
+    hypomorphic → West syndrome (infantile spasms); de novo dominant → infantile spasms;
+    somatic mosaic → FCD IIb (surgically curable).
+    ABSOLUTE CI: PHT/CBZ/OXC worsen burst-suppression.
+    40-patient cohort seed-505; 5 etiology categories;
+    ACTH+VGB Level A; KD Level B; POLG mandatory before VPA."""
+    try:
+        import scripts.plcb1_dashboard as plcb1_
+        return _json_safe(plcb1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/plcb1/breakdown")
+async def plcb1_breakdown():
+    """PLCB1 DEE12/EIEE12 — per-etiology breakdown.
+    Categories: AR-Biallelic-Null (Ohtahara, ~37.5%) /
+    AR-Biallelic-Hypomorphic (West, ~25%) /
+    De-Novo-Dominant (IS, ~17.5%) / Somatic-Mosaic-FCD (focal, ~12.5%) /
+    Phenocopy (~7.5%).
+    Key contrast: Na-channel blockers worsen Ohtahara (PLCB1) vs help neonatal KCNQ2."""
+    try:
+        import scripts.plcb1_dashboard as plcb1_
+        return _json_safe(plcb1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/plcb1/definitions")
+async def plcb1_definitions():
+    """PLCB1 DEE12/EIEE12 — 15 core concepts (PLCβ1-1216aa-PH-EF-TIM-barrel-C2-coiledcoil /
+    IP3-DAG-cascade / Gαq-11-Effector / mGluR-LTD-failure / mGluR5-mTOR /
+    Ohtahara-burst-suppression / West-hypsarrhythmia / FCD-IIb-somatic /
+    KCNQ2-DDx-CBZ-contrast / STXBP1-ARX-SLC25A22-DDx /
+    POLG-mandatory / VPA-VGB-contraindications /
+    KD-mechanism / Surgery-Engel-outcome / Cascade-testing);
+    clinical thresholds; 5 key facts; mandatory workup; standards."""
+    try:
+        import scripts.plcb1_dashboard as plcb1_
+        return _json_safe(plcb1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
