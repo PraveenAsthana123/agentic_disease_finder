@@ -7768,6 +7768,7 @@
     "notes": "ARL13B ciliary GTPase; INPP5E trafficking; NO MKS tier; all biallelic LOF \u2192 JBTS8; Arg79Gln North African/European founder"
   },
   {
+    "id": "jbts9",
     "name": "JBTS9 CC2D2A Joubert Syndrome Type 9 (JBTS9-CC2D2A-Coiled-Coil-C2-Domain-Containing-Protein-2A-Joubert-Syndrome-Type-9-TZ-Scaffold-MKS6-Lethal-Tier-COACH-Hepato-Renal-Ciliopathy / CC2D2A-1620aa-CC1-TMEM67-Binding-CC2-RPGRIP1L-Binding-C2-Membrane-C-Terminal-CC-CEP290-B9D1-612013 / Chr-4p15.33 / MKS6-Biallelic-Null-Lethal / COACH-Second-Most-Common-Gene / Hepatic-CHF-25pct / Renal-TIN-38pct-ESRD-20yr / Retinal-40pct / Polydactyly-JSOFD-20pct / 40-patient-cohort-seed-425 / OMIM-Gene-CC2D2A-612013-Disease-612285-JBTS9-612284-MKS6 / Registered-2026-08-26)",
     "status": "built",
     "disease_code": "JBTS9",
@@ -7781,6 +7782,7 @@
     "registered": "2026-08-26"
   },
   {
+    "id": "jbts10",
     "name": "JBTS10 OFD1 Joubert Syndrome Type 10 (JBTS10-OFD1-Oral-Facial-Digital-Syndrome-Type-1-Protein-Joubert-Syndrome-Type-10-X-Linked-Centriolar-Satellite-Ciliogenesis-RP23-Allelic-OFD1-Syndrome / OFD1-1012aa-LisH-CC1-CC2-CC3-Retinal-Isoform-CC4-CC5-Xp22.2-300170 / X-Linked / OMIM-Gene-OFD1-300170-Disease-300804-JBTS10-311200-OFD1-Syndrome-300424-RP23 / 40-patient-cohort-seed-427 / 3-endpoints-verified-200)",
     "status": "built",
     "route": "/jbts10",
@@ -7934,5 +7936,18 @@
     "frontend_route": "/jbts17",
     "status": "built",
     "registered": "2026-08-30"
+  },
+  {
+    "id": "jbts18",
+    "name": "JBTS18 TCTN3 Joubert Syndrome Type 18 (JBTS18-TCTN3-Tectonic-3-Joubert-Syndrome-Type-18-Tectonic-Complex-TZ-Lipid-Gate-OFD4-Allelic-No-MKS-Tier-Autosomal-Recessive-Ciliopathy / TCTN3-1377aa-N-Term-TCTN1-TCTN2-Dimerisation-Central-Tectonic-Domain-Lipid-Gate-C-Term-B9D1-TMEM231-Membrane-613847 / Chr-10q24.1 / TCTN3-TECTONIC-COMPLEX-LIPID-GATE-TCTN1-TCTN2-TCTN3-Cholesterol-Sphingolipid-Enrichment-TZ-Membrane-SMO-Entry-Hedgehog / TCTN3-LOF-Tectonic-Complex-Partially-Destabilised-Lipid-Gate-Impaired-SMO-Excluded-Hedgehog-Failure-Molar-Tooth-Sign / NO-MKS-TIER-TCTN3-BIALLELIC-NULL-JBTS18-LIVE-BIRTH-Unlike-TCTN2-MKS8-TCTN3-Compensated-By-TCTN1-TCTN2 / OFD4-ALLELIC-TCTN3-Hypomorphic-Biallelic-OFD4-Dandy-Walker-OFD-Features-Intellectual-Disability / Renal-20pct-NPHP-Like-Annual-Protocol-ESRD-Median-24yr / Retinal-25pct-Rod-Cone-Annual-ERG-Age-3 / Cerebellar-Ataxia-85pct / Neonatal-Hypotonia-80pct / Oculomotor-Apraxia-52pct / Breathing-Dysregulation-55pct / Intellectual-Disability-70pct / Hepatic-12pct-CHF / Polydactyly-15pct-Post-Axial / OFD4-Features-18pct / Arg548Cys-c1642C-T-Tectonic-Domain-MENA-Founder-Moderate / Gly625Asp-c1874G-A-Tectonic-Core-Pan-Ethnic-Moderate-Severe / Leu859Pro-c2576T-C-C-Term-South-Asian-Moderate-Severe / Trp392Ter-c1176G-A-Mid-Protein-Null-European-Severe / Arg729Ter-c2185C-T-C-Term-Null-Pan-Ethnic-Severe / c1524plus1G-A-Splice-Donor-Null-European-Severe / Ala285Val-c854C-T-N-Term-North-African-Founder-Hypomorphic-Mild-OFD4 / Tyr1163Cys-c3488A-G-C-Term-East-Asian-Moderate / Renal-Transplant-Curative-No-Recurrence-Cell-Autonomous / Frequency-1-2pct-All-Joubert-Syndrome / ~1-2000000-4000000-JBTS18-Worldwide / Autosomal-Recessive-Biallelic-LOF / 10q24.1 / OMIM-Gene-TCTN3-613847-Disease-614815-JBTS18-258860-OFD4)",
+    "status": "built",
+    "endpoints": [
+      "/api/jbts18/overview",
+      "/api/jbts18/breakdown",
+      "/api/jbts18/definitions"
+    ],
+    "cohort_seed": 443,
+    "cohort_n": 40,
+    "built_date": "2026-08-30"
   }
 ]
