@@ -344,7 +344,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/stxbp1">&#x1f9e0; STXBP1 Encephalopathy (Munc18-1 / 9q34)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn2a">&#x26a1; SCN2A Encephalopathy (Nav1.2 / 2q24)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/scn8a">&#x26a1; SCN8A Encephalopathy (Nav1.6 / 12q13)</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" href="/kcnt1">&#x26a1; KCNT1 Encephalopathy (KNa1.1 / EIMFS / 9q34)</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/kcnt1">&#x1f9ec; KCNT1 DEE14/MMPSI (Malignant-Migrating-Partial-Seizures-Infancy / SLACK-KNa1.1-1237aa-S1-S6-RCK1-RCK2 / GoF-De-Novo-MMPSI / GoF-Familial-ADNFLE2 / Quinidine-GoF-Specific-QTc-Mandatory / CBZ-OXC-PHT-LTG-ABSOLUTE-CI / ACTH-VGB-Level-A / No-Metabolic-Biomarker / 9q34.3 / OMIM-608042-614959)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/kcnt2">&#x26a1; KCNT2 Epilepsy (DEE57 / West Syndrome / KNa1.2-Slick / Quinidine-No-Evidence / 1q31.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1h">&#x26a1; CACNA1H Epilepsy (GGE / CAE / JME / Cav3.2 T-type Ca&#178;&#8314; / Ethosuximide Precision / 16p13.3)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/cacna1g">&#x26a1; CACNA1G Epilepsy (GGE / CAE / JME / Cav3.1 T-type Ca&#178;&#8314; / TC-LTCS Primary / 17q21.33)</Link></li>

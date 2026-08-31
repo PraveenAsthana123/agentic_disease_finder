@@ -2330,20 +2330,6 @@
     "built_date": "2026-08-12"
   },
   {
-    "id": "kcnt1",
-    "name": "KCNT1 Encephalopathy (EIMFS / NFLE-KCNT1-DEE)",
-    "status": "built",
-    "category": "genetic-epilepsy-syndrome",
-    "api_endpoints": [
-      "/api/kcnt1/overview",
-      "/api/kcnt1/breakdown",
-      "/api/kcnt1/definitions"
-    ],
-    "frontend_component": "portal-next/app/kcnt1/page.jsx",
-    "description": "41-patient KCNT1 cohort, 5-class etiology, EIMFS migrating focal seizure EEG signature, KD 4:1 most effective, quinidine negative RCT",
-    "built_date": "2026-08-12"
-  },
-  {
     "id": "pcdh19",
     "name": "PCDH19 Clustering Epilepsy (PCDH19-CE)",
     "status": "built",
@@ -8370,5 +8356,14 @@
     "id": "slc25a22",
     "status": "built",
     "description": "40 patients, 4 etiology categories (AR biallelic null 55%/hypomorphic 25%/migratory focal 10%/phenocopy 10%), SLC25A22 GC1 (323aa, 6TM, 3 MCF repeat modules, 11p15.5), electrogenic glutamate/H+ antiporter, DEE3/EIEE3 (OMIM 609302/609304), elevated plasma glutamate >200 \u00b5mol/L (pathognomonic), bilateral BG/thalamic MRI changes, Ohtahara (null) + West (hypomorphic) + migratory focal (compound-het), pyridoxine 100mg IV mandatory, PLP trial mandatory, PHT/CBZ/OXC ABSOLUTE CI, VPA heightened mitochondrial toxicity + POLG mandatory, ACTH+VGB UKISS Level A, KD Level B, NKH DDx (glycine not glutamate), ALDH7A1 B6-responsive treatable mimic, Arg71Cys Arabian Peninsula founder, AR only (no de novo/somatic), 3 endpoints /api/slc25a22/overview|breakdown|definitions verified 200, portal-next/app/slc25a22/page.jsx + SiteNav wired after PLCB1. Built 2026-08-31."
+  },
+  {
+    "id": "kcnt1",
+    "name": "KCNT1 DEE14/MMPSI (Malignant-Migrating-Partial-Seizures-Infancy-KNa1.1-SLACK-SLO2.2-1237aa-S1-S6-RCK1-RCK2-Na-Activated-K-Channel / KCNT1-608042 / Chr-9q34.3 / GoF-AD-DeNovo-MMPSI-Migrating-Focal-EEG-Drug-Resistant / GoF-AD-ADNFLE2-Familial-Nocturnal-Frontal-Lobe / GoF-AR-Biallelic-Ohtahara-Like / PHENOCOPY-SCN1A-SCN8A-ATP1A3-DDx / QUINIDINE-GOF-SPECIFIC-OpenChannelBlock-QTc-Mandatory / CBZ-OXC-PHT-LTG-ABSOLUTE-CI-MMPSI-ProConvulsant / ACTH-VGB-UKISS-LEVEL-A / KD-LEVEL-B / POLG-MANDATORY-Before-VPA / No-Metabolic-Biomarker-Unlike-SLC25A22 / 40-patient-cohort-seed-509 / 9q34.3 / OMIM-Gene-KCNT1-608042-Disease-614959)",
+    "status": "built",
+    "api": "/api/kcnt1/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 509,
+    "registered": "2026-08-31"
   }
 ]
