@@ -38455,6 +38455,55 @@ async def dnajc19_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-539; 3 endpoints /api/serac1/overview|breakdown|definitions
+# MEGDEL Syndrome (SERAC1 — 3-MGA-uria + Deafness + Encephalopathy + Leigh-Like)
+# SERAC1-490aa-MAM-Phosphatidylglycerol-BMP-Remodeling / 3-MGA-uria-Type-V-MEGDEL
+# SNHL-100pct-CARDINAL-UNIQUE-No-Other-3-MGA-Disease / Leigh-like-MRI-87pct-Bilateral-Putamen
+# NO-GP-Iron-KEY-DDx-MECR-NBIA / NO-DCM-KEY-DDx-DNAJC19-Barth / NO-Optic-Atrophy-KEY-DDx-OPA3
+# Cochlear-Implant-Level-B / LEV-Preferred / VPA-Moderate-Caution / Neonatal-Liver-67pct-Transient
+# 6q22.1 / OMIM-Gene-614725-Disease-MEGDEL-614739
+@app.get("/api/serac1/overview")
+async def serac1_overview():
+    """MEGDEL Syndrome (SERAC1 / 3-MGA Type V) overview — 40-patient cohort seed-539
+    (SERAC1-490aa-MAM-BMP-Remodeling / 3-MGA-Type-V-MEGDEL / SNHL-100pct-CARDINAL /
+    Leigh-like-MRI-87pct-Bilateral-Putamen / NO-GP-Iron-DDx-MECR / NO-DCM-DDx-DNAJC19 /
+    Cochlear-Implant-Level-B / LEV-Preferred / VPA-Moderate-Caution / 6q22.1 / OMIM-614725-614739).
+    """
+    try:
+        import scripts.serac1_dashboard as serac1_
+        return _json_safe(serac1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/serac1/breakdown")
+async def serac1_breakdown():
+    """MEGDEL Syndrome (SERAC1) phenotype/variant/treatment breakdown — 40-patient cohort seed-539
+    (Phenotype: Classic-MEGDEL-45pct / Without-Liver-25pct / Severe-20pct / Mild-10pct /
+    Variant: Missense-serine-active-site-45pct / Frameshift-c1037delC-12pct / Splice-c890+1G>A-10pct /
+    Treatment: Cochlear-Implant-88pct / LEV-70pct / ACTH+VGB-IS-25pct / UDCA-68pct / L-Carnitine-75pct).
+    """
+    try:
+        import scripts.serac1_dashboard as serac1_
+        return _json_safe(serac1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/serac1/definitions")
+async def serac1_definitions():
+    """MEGDEL Syndrome (SERAC1) definitions — 10 concepts
+    (SERAC1-BMP-MAM / MEGDEL-Acronym / BMP-Bis-Monoacylglycerophosphate / MAM-ER-Mito /
+    3-MGA-Type-V / Leigh-like-MRI-vs-MECR / SNHL-Cochlear-Implant / Neonatal-Liver-VPA /
+    VPA-Moderate-Caution / SERAC1-vs-Barth-TAZ-DDx / OMIM-614725-614739-MEGDEL).
+    """
+    try:
+        import scripts.serac1_dashboard as serac1_
+        return _json_safe(serac1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -8617,5 +8617,16 @@
       "/api/dnajc19/definitions"
     ],
     "maps_to": "/api/dnajc19/overview|breakdown|definitions + portal-next/app/dnajc19/page.jsx + SiteNav wired after OPA3"
+  },
+  {
+    "id": "serac1",
+    "name": "SERAC1 MEGDEL Syndrome (SERAC1-490aa-MAM-Phosphatidylglycerol-BMP-Remodeling / 3-MGA-uria-Type-V-MEGDEL / SNHL-100pct-CARDINAL-UNIQUE-No-Other-3-MGA-Disease / Leigh-like-MRI-87pct-Bilateral-Putamen / NO-GP-Iron-KEY-DDx-MECR / NO-DCM-KEY-DDx-DNAJC19-Barth / Cochlear-Implant-Level-B / LEV-Preferred / VPA-Moderate-Caution / Neonatal-Liver-67pct-Transient / 40-patient-cohort-seed-539 / 6q22.1 / OMIM-Gene-SERAC1-614725-Disease-MEGDEL-614739)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/serac1/overview",
+      "/api/serac1/breakdown",
+      "/api/serac1/definitions"
+    ],
+    "page": "/serac1"
   }
 ]
