@@ -9333,5 +9333,21 @@
     "built_date": "2026-09-01",
     "note": "Total: 608 dashboards",
     "built_note": "Built scripts/ndufa9_dashboard.py, api_backend.py 3 routes /api/ndufa9/overview|breakdown|definitions, portal-next/app/ndufa9/page.jsx + SiteNav wired after NDUFS6, config/expert_dashboards.json count 607->608. Built 2026-09-01."
+  },
+  {
+    "id": "ndufa12",
+    "gene": "NDUFA12",
+    "disease": "NDUFA12 Leigh Syndrome \u2014 Isolated Complex I Deficiency (N-Module/Q-Module Interface / NDUFAF2-Paralog Assembly-Swap Subunit / B17.2)",
+    "omim_gene": "614846",
+    "omim_disease": "256000",
+    "omim_disease_ci": "618234",
+    "chromosome": "12q22",
+    "inheritance": "AR",
+    "status": "built",
+    "seed": 633,
+    "api_base": "/api/ndufa12",
+    "portal_path": "/ndufa12",
+    "category": "leigh_syndrome_ci",
+    "registered": "2026-09-01"
   }
 ]
