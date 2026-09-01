@@ -8436,5 +8436,17 @@
     "description": "40 patients, 4 etiology categories (missense 55%/null 25%/splice 15%/CNV 5%), PANK2 570aa mitochondrial pantothenate kinase (20p13), most common NBIA (~35-50%), AR biallelic, CoA deficiency + cysteine-iron Fenton \u2192 GP iron, Classic PKAN (onset <6yr, dystonia, retinopathy 68%, acanthocytes 50%) vs Atypical PKAN (~13yr, speech, OCD/psychiatric). Eye-of-tiger sign PATHOGNOMONIC. GPi-DBS Level B. POLG mandatory before VPA. Deferiprone (TIRCON 2019): no functional benefit. Fosmetpantotenate (PANK2 bypass, RE-024) investigational. PHT/VGB AVOID. 3 endpoints /api/pank2/overview|breakdown|definitions verified 200, portal-next/app/pank2/page.jsx + SiteNav wired after WDR45. Built 2026-08-31.",
     "registered": "2026-08-31",
     "built_note": "PANK2 PKAN (570aa / AR biallelic / Eye-of-Tiger-GP-PATHOGNOMONIC / GPi-DBS-Level-B / 20p13) dashboard built 2026-08-31: /api/pank2/overview|breakdown|definitions + portal-next/app/pank2/page.jsx + SiteNav wired after WDR45. expert_dashboards.json count 550->551."
+  },
+  {
+    "id": "c19orf12",
+    "title": "C19orf12 MPAN/NBIA4 (Mitochondrial-Membrane-Protein-Associated-Neurodegeneration / C19orf12-152aa-2TM-ER-Mito-Contact-Sites-MAM / 2nd-Most-Common-NBIA-20-35pct / p.Gly69Arg-Polish-Slavic-Founder / NO-Eye-of-Tiger-DDx-PKAN / Optic-Atrophy-80pct-KEY / Motor-Axonal-Neuropathy-60pct / Pyramidal-Signs-100pct / Cognitive-Decline-80pct / GPi-DBS-Level-C / Deferiprone-Investigational / POLG-Mandatory-Before-VPA / 40-patient-cohort-seed-519 / 19q12 / OMIM-Gene-C19orf12-614297-Disease-MPAN-614298)",
+    "status": "built",
+    "role": "Neurologist / Epileptologist / Movement Disorder Specialist",
+    "priority": "P0",
+    "description": "40 patients scored on C19orf12/MPAN NBIA4 (2nd most common NBIA ~20-35%). Juvenile (75%) vs Adult-onset (25%). Optic atrophy 80% KEY feature (vs PKAN pigmentary retinopathy). Motor axonal neuropathy 60%. Pyramidal signs 100%. Cognitive decline 80%. No eye-of-tiger sign (bilateral GP+SN iron SWI only). p.Gly69Arg Polish/Slavic founder (30-40% European). Deferiprone investigational. GPi-DBS Level C. POLG mandatory. 5-tab frontend.",
+    "endpoints": ["/api/c19orf12/overview", "/api/c19orf12/breakdown", "/api/c19orf12/definitions"],
+    "frontend": "portal-next/app/c19orf12/page.jsx",
+    "data_source": "Synthetic 40-patient cohort (seed-519, clinical.db pattern)",
+    "built_at": "2026-08-31"
   }
 ]

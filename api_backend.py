@@ -37941,6 +37941,52 @@ async def pank2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── C19orf12 / MPAN (NBIA4) — Mitochondrial Membrane Protein-Associated Neurodegeneration ───────
+# 40-patient cohort seed-519; 3 endpoints /api/c19orf12/overview|breakdown|definitions
+# 2nd most common NBIA (~20-35%); AR biallelic C19orf12; p.Gly69Arg Polish/Slavic founder; optic atrophy 80%
+@app.get("/api/c19orf12/overview")
+async def c19orf12_overview():
+    """C19orf12 MPAN — Mitochondrial Membrane Protein-Associated Neurodegeneration / NBIA4 / 152aa / 19q12 /
+    OMIM 614297/614298. 2nd most common NBIA (20-35%). AR biallelic C19orf12 → MAM dysfunction +
+    iron-sulfur cluster failure → iron in GP+SN. Optic atrophy 80% KEY feature (vs PKAN pigmentary
+    retinopathy). Motor axonal neuropathy 60%. NO eye-of-tiger. Pyramidal signs 100%. Spasticity.
+    p.Gly69Arg Slavic founder. GPi-DBS Level C. POLG mandatory before VPA. Deferiprone investigational. Seed-519."""
+    try:
+        import scripts.c19orf12_dashboard as c19orf12_
+        return _json_safe(c19orf12_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/c19orf12/breakdown")
+async def c19orf12_breakdown():
+    """C19orf12 MPAN breakdown — per-etiology: missense-founder (60%), compound-het (20%), null (12%), splice-CNV (8%);
+    Juvenile (75%) vs Adult-onset (25%); seizure types (focal/GTCS/myoclonic/absence/tonic);
+    per-patient table: optic_atrophy, axonal_neuropathy, spasticity_severe, dystonia_severity,
+    ambulation_lost, baclofen, dbs, cognitive_decline, psychiatric, parkinsonism, polg_tested.
+    """
+    try:
+        import scripts.c19orf12_dashboard as c19orf12_
+        return _json_safe(c19orf12_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/c19orf12/definitions")
+async def c19orf12_definitions():
+    """C19orf12 MPAN definitions — 15 concepts (MPAN-NBIA4 / C19orf12-152aa-MAM-protein /
+    p.Gly69Arg-Polish-Slavic-founder / optic-atrophy-80pct / motor-axonal-neuropathy-60pct /
+    iron-accumulation-MAM-dysfunction / MRI-no-eye-of-tiger / GPi-DBS-Level-C /
+    deferiprone-investigational / spastic-paraparesis-pyramidal-signs /
+    POLG-mandatory / cognitive-decline-80pct / psychiatric-40pct / neuropathy-DDx / NBIA4).
+    """
+    try:
+        import scripts.c19orf12_dashboard as c19orf12_
+        return _json_safe(c19orf12_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
