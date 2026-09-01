@@ -9226,5 +9226,26 @@
     "built_date": "2026-09-01",
     "note": "Total: 603 dashboards",
     "built_note": "Built scripts/ndufv2_dashboard.py, api_backend.py 3 routes /api/ndufv2/overview|breakdown|definitions, portal-next/app/ndufv2/page.jsx + SiteNav wired after NDUFS8, config/expert_dashboards.json count 602->603. Built 2026-09-01."
+  },
+  {
+    "id": "ndufs5",
+    "gene": "NDUFS5",
+    "disease": "NDUFS5 Leigh Syndrome \u2014 Isolated Complex I Deficiency (N-Module Peripheral Structural Subunit / NDUFS1 Contact / No Fe-S Cluster)",
+    "omim_gene": "603847",
+    "omim_disease": "256000 / 618235",
+    "chromosome": "1p34.3",
+    "inheritance": "AR",
+    "pathway": "CI-Leigh / NDUFS5 N-Module Peripheral Structural Stabiliser / Contacts NDUFS1 N5 [4Fe-4S] / No Fe-S Cluster / Assembly Failure",
+    "seed": 623,
+    "status": "built",
+    "endpoints": [
+      "/api/ndufs5/overview",
+      "/api/ndufs5/breakdown",
+      "/api/ndufs5/definitions"
+    ],
+    "page": "/ndufs5",
+    "built_date": "2026-09-01",
+    "note": "Total: 604 dashboards",
+    "built_note": "Built scripts/ndufs5_dashboard.py, api_backend.py 3 routes /api/ndufs5/overview|breakdown|definitions, portal-next/app/ndufs5/page.jsx + SiteNav wired after NDUFV2, config/expert_dashboards.json count 603->604. Built 2026-09-01."
   }
 ]
