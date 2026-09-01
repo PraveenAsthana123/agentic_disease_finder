@@ -9092,5 +9092,20 @@
     "api_prefix": "/api/ndufs4",
     "seed": 607,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufv1",
+    "name": "NDUFV1 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh FMN-Core (NDUFV1-464aa-N-Module-CORE-51kDa-FP1-FMN-Binding-PRIMARY-NADH-Electron-Acceptor-11q13.2 / OMIM-Gene-161015-Disease-252010 / AR-Biallelic / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / Leukodystrophy-White-Matter-40-50pct-DISTINGUISHING / NO-Olfactory-Bulb-Lesions-KEY-DDx-NDUFS4 / Leigh-MRI-88pct / Hypotonia-88pct / Seizures-65pct / Myoclonus-40pct-More-Prominent / Metformin-ABSOLUTE-CI / VPA-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / KD-CONTRAINDICATED / Riboflavin-MOST-DIRECT-FMN-Binds-NDUFV1 / Succinate-CI-Bypass / LEV-CLB-Preferred-AEDs / 40-patient-cohort-seed-609 / 11q13.2 / OMIM-Gene-NDUFV1-161015-Disease-252010)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/ndufv1/overview",
+      "/api/ndufv1/breakdown",
+      "/api/ndufv1/definitions"
+    ],
+    "portal_page": "/ndufv1",
+    "component": "portal-next/app/ndufv1/page.jsx",
+    "cohort_seed": 609,
+    "cohort_size": 40,
+    "registered_at": "2026-09-01"
   }
 ]
