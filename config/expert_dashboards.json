@@ -8503,5 +8503,16 @@
     "chromosome": "16q23.1",
     "inheritance": "Autosomal Recessive \u2014 Biallelic FA2H mutations",
     "built_note": "FA2H FAHN/NBIA3 (490aa / AR biallelic / Leukodystrophy-EARLIEST-MRI / Spastic-Paraplegia-DOMINANT / 16q23.1) dashboard built 2026-08-31: /api/fa2h/overview|breakdown|definitions + portal-next/app/fa2h/page.jsx + SiteNav wired after PLA2G6. expert_dashboards.json count 553->554."
+  },
+  {
+    "id": "coasy",
+    "name": "COASY CoPAN/NBIA6 (COASY-579aa-Bifunctional-PPAT-aa1-200-DPCK-aa231-579 / Very-Rare-NBIA-1-2pct / GP-Iron-Prominent-Early-SWI-Uniform-NOT-Eye-of-Tiger / NO-Leukodystrophy-DDx-FAHN / NO-Eye-of-Tiger-DDx-PKAN / BOTH-Spasticity-Dystonia-Prominent-Early / CoA-Biosynthesis-Final-2-Steps-Downstream-PANK2 / Classic-CoPAN-65pct / Neuropsychiatric-CoPAN-25pct-OCD-Impulsive / Late-onset-CoPAN-10pct / Seizures-60-70pct / PHT-AVOID-Dystonia / POLG-Mandatory-Before-VPA / Pantothenate-Investigational / Deferiprone-Investigational / GPi-DBS-Level-D / 40-patient-cohort-seed-525 / 17q21.2 / OMIM-Gene-COASY-609686-Disease-CoPAN-615643)",
+    "status": "built",
+    "api": "/api/coasy/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 525,
+    "registered": "2026-08-31",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "built_note": "COASY CoPAN/NBIA6 Dashboard \u2014 /api/coasy/overview|breakdown|definitions verified 200, 40-patient cohort seed-525, 3 endpoints. portal-next/app/coasy/page.jsx + SiteNav wired after FA2H."
   }
 ]

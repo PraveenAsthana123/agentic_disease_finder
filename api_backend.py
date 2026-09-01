@@ -38092,6 +38092,62 @@ async def fa2h_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── COASY / CoPAN (NBIA6) — CoA Synthase Protein-Associated Neurodegeneration ────────────────────
+# 40-patient cohort seed-525; 3 endpoints /api/coasy/overview|breakdown|definitions
+# Very rare NBIA (~1-2%); AR biallelic COASY (17q21.2); GP iron PROMINENT early; NO leukodystrophy; NO eye-of-tiger
+@app.get("/api/coasy/overview")
+async def coasy_overview():
+    """COASY CoPAN — CoA Synthase Protein-Associated Neurodegeneration / NBIA6 / 579aa bifunctional (PPAT aa1-200 + DPCK aa231-579) / 17q21.2 /
+    OMIM Gene 609686 / Disease CoPAN 615643.
+    Very rare NBIA (~1-2%; ~25-30 patients worldwide 2026). AR biallelic COASY (17q21.2).
+    3 phenotypes: Classic-CoPAN 65% (spastic-dystonic onset 5-10yr), Neuropsychiatric-CoPAN 25% (OCD/impulsive 10-15yr), Late-onset-CoPAN 10%.
+    GP iron PROMINENT from early disease (SWI/T2* — uniform hypointense, NOT eye-of-tiger).
+    SN iron moderate. NO leukodystrophy (key DDx FAHN/NBIA3). NO eye-of-tiger (key DDx PKAN/NBIA1).
+    BOTH spasticity + dystonia prominent simultaneously from early course (vs FAHN: spasticity dominant, dystonia late).
+    Seizures 60-70%; Cognitive decline 70-75%; OCD/neuropsychiatric 35%.
+    PHT AVOID (dystonia aggravation). POLG mandatory before VPA. Deferiprone + pantothenate investigational. Seed-525."""
+    try:
+        import scripts.coasy_dashboard as coasy_
+        return _json_safe(coasy_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coasy/breakdown")
+async def coasy_breakdown():
+    """COASY CoPAN breakdown — per-phenotype: Classic-CoPAN (65%)/Neuropsychiatric-CoPAN (25%)/Late-onset-CoPAN (10%);
+    per-etiology: missense-compound-het (~45%)/missense-biallelic (~30%)/null-biallelic (~15%)/splice (~10%);
+    seizure types (focal/generalised/myoclonic/absence);
+    per-patient table: phenotype, gp_iron, sn_iron, leukodystrophy(absent), spastic_paraplegia, dystonia,
+    dystonia_severity, dysarthria, ataxia, optic_atrophy, axonal_neuropathy, cognitive_decline,
+    psychiatric, ocd, ambulation_lost, has_seizures, drug_resistant, baclofen, trihexyphenidyl,
+    btx, dbs, physio_enrolled, polg_tested, deferiprone_trial, pantothenate_trial.
+    """
+    try:
+        import scripts.coasy_dashboard as coasy_
+        return _json_safe(coasy_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coasy/definitions")
+async def coasy_definitions():
+    """COASY CoPAN definitions — 15 concepts (CoPAN-NBIA6 / COASY-579aa-PPAT-DPCK-bifunctional /
+    GP-iron-prominent-early-SN-moderate-NO-leukodystrophy / spastic-dystonic-BOTH-prominent-early /
+    CoA-biosynthesis-final-steps-PPAT-DPCK-downstream-PANK2 / neuropsychiatric-OCD-impulsive-adolescent /
+    seizures-60-70pct-PHT-AVOID-POLG-mandatory / NO-eye-of-tiger-DDx-PKAN-GP-uniform /
+    pantothenate-investigational-CoA-precursor / deferiprone-investigational-NBIA6 /
+    GPi-DBS-Level-D-very-limited / POLG-mandatory-before-VPA-secondary-mito /
+    baclofen-trihexyphenidyl-combined-first-line / cognitive-decline-70-75pct-frontostriatal /
+    OMIM-Gene-COASY-609686-Disease-CoPAN-615643).
+    """
+    try:
+        import scripts.coasy_dashboard as coasy_
+        return _json_safe(coasy_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
