@@ -8444,9 +8444,30 @@
     "role": "Neurologist / Epileptologist / Movement Disorder Specialist",
     "priority": "P0",
     "description": "40 patients scored on C19orf12/MPAN NBIA4 (2nd most common NBIA ~20-35%). Juvenile (75%) vs Adult-onset (25%). Optic atrophy 80% KEY feature (vs PKAN pigmentary retinopathy). Motor axonal neuropathy 60%. Pyramidal signs 100%. Cognitive decline 80%. No eye-of-tiger sign (bilateral GP+SN iron SWI only). p.Gly69Arg Polish/Slavic founder (30-40% European). Deferiprone investigational. GPi-DBS Level C. POLG mandatory. 5-tab frontend.",
-    "endpoints": ["/api/c19orf12/overview", "/api/c19orf12/breakdown", "/api/c19orf12/definitions"],
+    "endpoints": [
+      "/api/c19orf12/overview",
+      "/api/c19orf12/breakdown",
+      "/api/c19orf12/definitions"
+    ],
     "frontend": "portal-next/app/c19orf12/page.jsx",
     "data_source": "Synthetic 40-patient cohort (seed-519, clinical.db pattern)",
+    "built_at": "2026-08-31"
+  },
+  {
+    "id": "pla2g6",
+    "gene": "PLA2G6",
+    "title": "PLA2G6 PLAN/NBIA2 (PLA2G6-Associated-Neurodegeneration / iPLA2\u03b2-806aa-Ankyrin-Repeats-1-290aa-Patatin-Like-Domain-461-799aa / 3rd-Most-Common-NBIA-5-15pct / Classic-INAD-6mo-3yr-60pct / Atypical-NAD-1-5yr-28pct / PARK14-Adult-Parkinsonism-12pct / Cerebellar-Cortical-Atrophy-EARLIEST-MRI / NO-Eye-of-Tiger-DDx-PKAN / GP-Iron-LATE-Absent-Early / Axonal-Neuropathy-100pct-INAD-NCS-Mandatory / Spheroid-Bodies-PATHOGNOMONIC / Optic-Atrophy-70pct-INAD / PHT-ABSOLUTE-CI / VGB-ABSOLUTE-CI-Optic-Atrophy / POLG-Mandatory-Before-VPA / GPi-DBS-Level-C / L-DOPA-Level-C-PARK14 / Deferiprone-Investigational / 40-patient-cohort-seed-521 / 22q13.1 / OMIM-Gene-PLA2G6-603604-Disease-INAD1-256600-NBIA2A-610217-PARK14-612953)",
+    "role": "Neurologist / Epileptologist / Movement Disorder Specialist",
+    "status": "built",
+    "priority": "P0",
+    "description": "40 patients scored on PLA2G6/PLAN NBIA2 (3rd most common NBIA ~5-15%). 3 phenotypes: Classic INAD 60% (onset 6mo-3yr), Atypical NAD 28% (1-5yr), PARK14 12% (adult). Cerebellar cortical atrophy EARLIEST MRI. NO eye-of-tiger (DDx PKAN). Axonal neuropathy 100% INAD (NCS mandatory). Spheroid bodies PATHOGNOMONIC. GP iron appears LATE. PHT ABSOLUTE CI. VGB ABSOLUTE CI (optic atrophy additive). Deferiprone investigational. 5-tab frontend.",
+    "endpoints": [
+      "/api/pla2g6/overview",
+      "/api/pla2g6/breakdown",
+      "/api/pla2g6/definitions"
+    ],
+    "frontend": "portal-next/app/pla2g6/page.jsx",
+    "data_source": "Synthetic 40-patient cohort (seed-521, clinical.db pattern)",
     "built_at": "2026-08-31"
   }
 ]

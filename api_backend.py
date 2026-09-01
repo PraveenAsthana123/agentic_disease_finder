@@ -37987,6 +37987,57 @@ async def c19orf12_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── PLA2G6 / PLAN (NBIA2) — PLA2G6-Associated Neurodegeneration ─────────────────────────────────
+# 40-patient cohort seed-521; 3 endpoints /api/pla2g6/overview|breakdown|definitions
+# 3rd most common NBIA (~5-15%); AR biallelic PLA2G6; cerebellar atrophy EARLIEST MRI; axonal neuropathy 100% INAD; NO eye-of-tiger
+@app.get("/api/pla2g6/overview")
+async def pla2g6_overview():
+    """PLA2G6 PLAN — PLA2G6-Associated Neurodegeneration / NBIA2 / 806aa / 22q13.1 /
+    OMIM Gene 603604 / Disease INAD1 256600 / NBIA2A 610217 / PARK14 612953.
+    3rd most common NBIA (~5-15%). 3 phenotypes: Classic INAD (onset 6mo-3yr, 60%),
+    Atypical NAD/ANAD (onset 1-5yr, 28%), PARK14 adult-onset parkinsonism-dystonia (12%).
+    Cerebellar cortical atrophy EARLIEST + MOST PROMINENT MRI (vs PKAN GP iron dominant).
+    Axonal neuropathy 100% INAD, 82% ANAD (NCS MANDATORY). NO eye-of-tiger sign (key DDx PKAN).
+    GP iron LATE — may be ABSENT at onset. Spheroid bodies on nerve biopsy PATHOGNOMONIC.
+    PHT ABSOLUTE CI (neuropathy). VGB ABSOLUTE CI (optic atrophy additive). POLG mandatory before VPA. Seed-521."""
+    try:
+        import scripts.pla2g6_dashboard as pla2g6_
+        return _json_safe(pla2g6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pla2g6/breakdown")
+async def pla2g6_breakdown():
+    """PLA2G6 PLAN breakdown — per-etiology: missense-compound-het (45%), null (30%), splice (15%), CNV (10%);
+    Classic INAD (60%) vs Atypical NAD (28%) vs PARK14 (12%); seizure types (complex-focal/myoclonic/absence);
+    per-patient table: phenotype, cerebellar_atrophy, optic_atrophy, axonal_neuropathy,
+    spastic_paraparesis, dystonia_severity, ambulation_lost, seizures, drug_resistant, baclofen,
+    levodopa, dbs, psychiatric, cognitive_decline, polg_tested.
+    """
+    try:
+        import scripts.pla2g6_dashboard as pla2g6_
+        return _json_safe(pla2g6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pla2g6/definitions")
+async def pla2g6_definitions():
+    """PLA2G6 PLAN definitions — 15 concepts (PLAN-NBIA2 / PLA2G6-806aa-iPLA2β /
+    infantile-neuroaxonal-dystrophy-INAD1 / atypical-NAD-ANAD / PARK14-adult-parkinsonism /
+    cerebellar-cortical-atrophy-earliest-MRI / spheroid-bodies-axons-pathognomonic /
+    axonal-neuropathy-NCS-mandatory / GP-iron-late-absent-early / no-eye-of-tiger-DDx-PKAN /
+    GPi-DBS-Level-C / deferiprone-investigational / PHT-absolute-CI-neuropathy /
+    VGB-absolute-CI-optic-atrophy / POLG-mandatory-secondary-mito).
+    """
+    try:
+        import scripts.pla2g6_dashboard as pla2g6_
+        return _json_safe(pla2g6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
