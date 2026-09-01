@@ -8872,5 +8872,17 @@
     ],
     "page": "portal-next/app/dna2/page.jsx",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "rnaseh1",
+    "name": "RNASEH1 AR Cerebellar Ataxia PEO mtDNA Multiple Deletions (RNASEH1-261aa-Ribonuclease-H1-RNA-DNA-Hybrid-R-Loop-2p25.1 / ARCO-PEO-Autosomal-Recessive-Cerebellar-Ataxia-PEO / AR-Biallelic-LOF-DDx-AD-PEOA4-PEOA5 / Cerebellar-Ataxia-85pct-PRIMARY / PEO-70pct-Secondary / Sensory-Neuropathy-60pct-Axonal / Cognitive-Decline-40pct-CCAS / SNHL-25pct / mtDNA-Multiple-Deletions-NOT-Depletion / Normal-mtDNA-Copy-Number / NO-Hepatopathy / NO-Epilepsy / NO-Leukoencephalopathy / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / LEV-Preferred-AED / Reyes-2015-NatGenet / 40-patient-cohort-seed-575 / 2p25.1 / OMIM-Gene-RNASEH1-604122)",
+    "status": "built",
+    "endpoints": [
+      "/api/rnaseh1/overview",
+      "/api/rnaseh1/breakdown",
+      "/api/rnaseh1/definitions"
+    ],
+    "page": "portal-next/app/rnaseh1/page.jsx",
+    "registered": "2026-09-01"
   }
 ]

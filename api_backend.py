@@ -39023,6 +39023,33 @@ async def dna2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/rnaseh1/overview")
+async def rnaseh1_overview():
+    try:
+        import scripts.rnaseh1_dashboard as rnaseh1_
+        return _json_safe(rnaseh1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rnaseh1/breakdown")
+async def rnaseh1_breakdown():
+    try:
+        import scripts.rnaseh1_dashboard as rnaseh1_
+        return _json_safe(rnaseh1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rnaseh1/definitions")
+async def rnaseh1_definitions():
+    try:
+        import scripts.rnaseh1_dashboard as rnaseh1_
+        return _json_safe(rnaseh1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
