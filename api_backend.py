@@ -39220,6 +39220,30 @@ async def melas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/kss/overview")
+async def kss_overview():
+    try:
+        import scripts.kss_dashboard as kss_
+        return _json_safe(kss_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/kss/breakdown")
+async def kss_breakdown():
+    try:
+        import scripts.kss_dashboard as kss_
+        return _json_safe(kss_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/kss/definitions")
+async def kss_definitions():
+    try:
+        import scripts.kss_dashboard as kss_
+        return _json_safe(kss_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

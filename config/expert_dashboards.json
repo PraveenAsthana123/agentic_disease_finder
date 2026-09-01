@@ -8985,5 +8985,24 @@
       "/api/melas/breakdown",
       "/api/melas/definitions"
     ]
+  },
+  {
+    "id": "kss",
+    "status": "built",
+    "disease_name": "KSS Kearns-Sayre Syndrome (mtDNA-Single-Large-Deletion-1.1-10kb / 4977bp-Common-Deletion-m.8483-13459del-65pct-Cases / KSS-OMIM-530000 / Pearson-Marrow-Pancreas-Syndrome-OMIM-557000-Same-Deletion-Infant-BM-Failure / Sporadic-De-Novo-NOT-Maternally-Transmitted-95pct / PEO-100pct-CARDINAL / Pigmentary-Retinopathy-Salt-Pepper-Macular-100pct-CARDINAL / Onset-Before-Age-20-100pct-CARDINAL / Complete-Heart-Block-57pct-Pacemaker-MANDATORY / Cerebellar-Ataxia-55pct / CSF-Protein-Above-100mgdL-50pct / SNHL-60pct / Diabetes-13pct / Hypoparathyroidism-20pct / Myopathy-RRF-55pct / SDH-Positive-COX-Negative-PATHOGNOMONIC / Single-Deletion-NOT-Multiple-DDx-POLG-TWNK / Blood-Heteroplasmy-UNDERESTIMATES-Muscle-20-40pct / VPA-ABSOLUTE-CI / Aminoglycosides-ABSOLUTE-CI-Cochlear-OXPHOS / Linezolid-ABSOLUTE-CI / Metformin-ABSOLUTE-CI-DM / KD-ABSOLUTE-CI / Pacemaker-DDD-Life-Saving / Leucovorin-Level-C-CSF-Folate / CoQ10-Level-C-300-1200mg / Kearns-Sayre-1958 / Holt-1988-Nature / Schon-1989-Science / 40-patient-cohort-seed-589 / mtDNA / OMIM-530000)",
+    "gene": "mtDNA single large deletion (4977 bp common deletion)",
+    "locus": "mtDNA (mitochondrial chromosome)",
+    "disease": "Kearns-Sayre Syndrome",
+    "omim": "#530000",
+    "api_routes": [
+      "/api/kss/overview",
+      "/api/kss/breakdown",
+      "/api/kss/definitions"
+    ],
+    "frontend": "portal-next/app/kss/page.jsx",
+    "script": "scripts/kss_dashboard.py",
+    "color": "#1565c0",
+    "cohort_size": 40,
+    "built_date": "2026-09-01"
   }
 ]
