@@ -38255,6 +38255,52 @@ async def cp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-531; 3 endpoints /api/dcaf17/overview|breakdown|definitions
+@app.get("/api/dcaf17/overview")
+async def dcaf17_overview():
+    """DCAF17 Woodhouse-Sakati Syndrome overview — 40-patient cohort (DCAF17-263aa-WD-repeat-Nucleolar-Protein /
+    Woodhouse-Sakati-Syndrome-WSS-AR-Biallelic-LOF / Cardinal-Pentad-Hypogonadism-Alopecia-DM-Extrapyramidal-Hearing-Loss /
+    Saudi-Founder-c436delC-pGln146Lysfs48-60pct-Cases / CUL4A-DDB1-E3-Ligase-Substrate-Receptor-Lost /
+    Ribosome-Biogenesis-Defect-Gonadal-Neuronal-HairFollicle-BetaCell / PHT-CBZ-AVOID-HRT-Interaction-Extrapyramidal /
+    LEV-PREFERRED-No-CYP-Induction-HRT-Safe / HRT-Estrogen-Testosterone-MANDATORY / GPi-DBS-Level-D /
+    40-patient-cohort-seed-531 / 2q31.1 / OMIM-Gene-DCAF17-612515-Disease-WSS-241080)."""
+    try:
+        import scripts.dcaf17_dashboard as dcaf17_
+        return _json_safe(dcaf17_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dcaf17/breakdown")
+async def dcaf17_breakdown():
+    """DCAF17 Woodhouse-Sakati Syndrome breakdown — phenotype × iron × variant × treatment (DCAF17-263aa /
+    Classic-WSS-50pct-All-4-Cardinal / Neurodegenerative-Predominant-25pct / Endocrine-Predominant-20pct /
+    Mild-Late-Onset-5pct / Saudi-Founder-c436delC-60pct / Hypogonadism-Primary-FSH-Elevated /
+    GP-Iron-Mild-No-Eye-of-Tiger / WM-T2-Changes-Frontal-Earliest / PHT-CBZ-AVOID-HRT-Failure /
+    2q31.1 / OMIM-DCAF17-612515-WSS-241080)."""
+    try:
+        import scripts.dcaf17_dashboard as dcaf17_
+        return _json_safe(dcaf17_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dcaf17/definitions")
+async def dcaf17_definitions():
+    """DCAF17 Woodhouse-Sakati Syndrome definitions — 15 concepts (WSS-Cardinal-Pentad /
+    DCAF17-CUL4A-DDB1-E3-Ligase-Nucleolar / Saudi-Founder-c436delC / Hypergonadotropic-Hypogonadism-PATHOGNOMONIC /
+    PHT-CBZ-AVOID-HRT-Interaction / LEV-Preferred-AED-No-CYP / HRT-Estrogen-Testosterone-MANDATORY /
+    Tetrabenazine-Chorea-Level-D / GPi-DBS-Investigational / WSS-vs-PKAN-No-Eye-of-Tiger /
+    WSS-vs-CP-No-Cortical-Iron / WM-Changes-vs-Leukodystrophy-DDx / Ribosome-Biogenesis-Selective-Vulnerability /
+    POLG-Mandatory-Before-VPA / OMIM-DCAF17-612515-WSS-241080).
+    """
+    try:
+        import scripts.dcaf17_dashboard as dcaf17_
+        return _json_safe(dcaf17_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

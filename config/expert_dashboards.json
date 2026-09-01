@@ -8545,5 +8545,21 @@
     "omim_disease": "604290",
     "cohort_seed": 529,
     "cohort_n": 40
+  },
+  {
+    "id": "dcaf17",
+    "gene": "DCAF17",
+    "name": "DCAF17 Woodhouse-Sakati Syndrome (DCAF17-C2orf37-263aa-WD-repeat-Nucleolar-Protein / Cardinal-Pentad-Hypogonadism-Alopecia-Diabetes-Extrapyramidal-Hearing-Loss / Saudi-Founder-c436delC-60pct / CUL4A-DDB1-E3-Ligase-Substrate-Receptor-Lost / Ribosome-Biogenesis-Defect / GP-Iron-MILD-No-Eye-of-Tiger / PHT-CBZ-AVOID-HRT-Failure / LEV-PREFERRED-HRT-Safe / HRT-MANDATORY / 40-patient-cohort-seed-531 / 2q31.1 / OMIM-Gene-DCAF17-612515-Disease-WSS-241080)",
+    "title": "DCAF17 Woodhouse-Sakati Syndrome (DCAF17-C2orf37-263aa-WD-repeat-Nucleolar-Protein / Cardinal-Pentad-Hypogonadism-Alopecia-Diabetes-Extrapyramidal-Hearing-Loss / Saudi-Founder-c436delC-pGln146Lysfs48-60pct-Cases / CUL4A-DDB1-E3-Ligase-Substrate-Receptor-Lost / Ribosome-Biogenesis-Defect-Gonadal-Neuronal / GP-Iron-MILD-No-Eye-of-Tiger-DDx-PKAN / NO-Cortical-Iron-DDx-CP / WM-T2-Frontal-EARLIEST / PHT-CBZ-AVOID / LEV-PREFERRED / HRT-MANDATORY / 40-patient-cohort-seed-531 / 2q31.1 / OMIM-Gene-612515-Disease-241080)",
+    "status": "built",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "route": "/dcaf17",
+    "maps_to": "/api/dcaf17/overview|breakdown|definitions + portal-next/app/dcaf17/page.jsx + SiteNav wired after CP",
+    "cohort": 40,
+    "seed": 531,
+    "chromosome": "2q31.1",
+    "omim_gene": "612515",
+    "omim_disease": "241080",
+    "built_date": "2026-08-31"
   }
 ]
