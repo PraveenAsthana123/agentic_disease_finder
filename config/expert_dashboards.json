@@ -8801,5 +8801,17 @@
       "/api/fbxl4/definitions"
     ],
     "page": "/fbxl4"
+  },
+  {
+    "id": "tymp",
+    "name": "TYMP MNGIE Mitochondrial Neurogastrointestinal Encephalomyopathy (TYMP-482aa-Thymidine-Phosphorylase-PD-ECGF-Cytoplasmic-Homodimer / MDDS1-Mitochondrial-DNA-Depletion-Syndrome-1 / GI-Dysmotility-100pct-Hallmark / Leukoencephalopathy-100pct-NOT-Leigh / Plasma-Thymidine-PATHOGNOMONIC / HSCT-Curative / 40-patient-cohort-seed-565 / 22q13.32 / OMIM-Gene-TYMP-131222-Disease-MNGIE-603041)",
+    "status": "built",
+    "routes": [
+      "/api/tymp/overview",
+      "/api/tymp/breakdown",
+      "/api/tymp/definitions"
+    ],
+    "frontend": "/tymp",
+    "seed": 565
   }
 ]

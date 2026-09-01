@@ -38888,6 +38888,33 @@ async def fbxl4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/tymp/overview")
+async def tymp_overview():
+    try:
+        import scripts.tymp_dashboard as tymp_
+        return _json_safe(tymp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tymp/breakdown")
+async def tymp_breakdown():
+    try:
+        import scripts.tymp_dashboard as tymp_
+        return _json_safe(tymp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tymp/definitions")
+async def tymp_definitions():
+    try:
+        import scripts.tymp_dashboard as tymp_
+        return _json_safe(tymp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
