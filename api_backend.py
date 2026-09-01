@@ -38942,6 +38942,33 @@ async def slc25a4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/sfxn4/overview")
+async def sfxn4_overview():
+    try:
+        import scripts.sfxn4_dashboard as sfxn4_
+        return _json_safe(sfxn4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/sfxn4/breakdown")
+async def sfxn4_breakdown():
+    try:
+        import scripts.sfxn4_dashboard as sfxn4_
+        return _json_safe(sfxn4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/sfxn4/definitions")
+async def sfxn4_definitions():
+    try:
+        import scripts.sfxn4_dashboard as sfxn4_
+        return _json_safe(sfxn4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

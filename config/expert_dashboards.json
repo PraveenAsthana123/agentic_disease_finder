@@ -8826,5 +8826,22 @@
     "frontend": "/slc25a4",
     "seed": 567,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "sfxn4",
+    "name": "SFXN4 Sideroflexin-4 Sideroblastic Anemia mtDNA Depletion Syndrome 8B (SFXN4-322aa-Sideroflexin-4-IMM-5-TM-Serine-Transporter-One-Carbon-Metabolism / MDDS8B-Mitochondrial-DNA-Depletion-Syndrome-8B / Sideroblastic-Anemia-100pct-PATHOGNOMONIC-Ring-Sideroblasts-Perls-Stain-UNIQUE-Among-MDDS / Transfusion-Dependent-82pct-Hgb-5-8-gdL-Presenting-Feature / B6-Pyridoxine-NONRESPONSIVE-KEY-DDx-ALAS2-XL-Sideroblastic / HSCT-Corrects-Anemia-NOT-MDDS-Systemic-Disease / DCM-60pct-vs-HCM-SLC25A4 / NO-MMA-KEY-DDx-SUCLA2-SUCLG1 / NO-Fanconi-KEY-DDx-RRM2B-52pct / NO-GI-Dysmotility-KEY-DDx-TYMP-MNGIE / Pan-OXPHOS-CI-CIII-CIV-Reduced-CII-SDH-SPARED / mtDNA-Depletion-Muscle-10-30pct / Secondary-Iron-Overload-Transfusion-Related-Deferasirox / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / LEV-Preferred-AED-Renal-Excretion / SFXN4-vs-SFXN1-CRITICAL / Hildick-Smith-2013-AmJHumGenet / 40-patient-cohort-seed-569 / 10q26.11 / OMIM-Gene-SFXN4-615564-Disease-MDDS8B-615081)",
+    "status": "built",
+    "category": "Mitochondrial Disease",
+    "api_endpoints": [
+      "/api/sfxn4/overview",
+      "/api/sfxn4/breakdown",
+      "/api/sfxn4/definitions"
+    ],
+    "page": "portal-next/app/sfxn4/page.jsx",
+    "script": "scripts/sfxn4_dashboard.py",
+    "seed": 569,
+    "n_patients": 40,
+    "built_date": "2026-09-01",
+    "registered": "2026-09-01"
   }
 ]
