@@ -38207,6 +38207,54 @@ async def ftl_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-529; 3 endpoints /api/cp/overview|breakdown|definitions
+@app.get("/api/cp/overview")
+async def cp_overview():
+    """CP Aceruloplasminemia overview — 40-patient cohort (CP-1065aa-Multi-Copper-Ferroxidase /
+    Classic-Triad-Brain-Iron-Diabetes-Retinal-Degeneration / HIGH-Serum-Ferritin-OPPOSITE-FTL /
+    Serum-Ceruloplasmin-Undetectable-PATHOGNOMONIC / Cortical-Iron-UNIQUE-Not-Seen-NBIA1-7 /
+    Cerebellar-Ataxia-DOMINANT-Dentate-Nucleus-Iron / VGB-ABSOLUTE-CI-Retinal-Additive /
+    VPA-PHT-CAUTION-Hepatic-Iron / Deferiprone-Deferasirox-Investigational-BBB /
+    Fresh-Frozen-Plasma-FFP-Temporary-Ferroxidase / 40-patient-cohort-seed-529 /
+    3q23-q24 / OMIM-Gene-CP-117700-Disease-Aceruloplasminemia-604290)."""
+    try:
+        import scripts.cp_dashboard as cp_
+        return _json_safe(cp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cp/breakdown")
+async def cp_breakdown():
+    """CP Aceruloplasminemia breakdown — phenotype × iron × variant × treatment (CP-1065aa /
+    Classic-Triad-55pct / Partial-Triad-25pct / Neurological-Predominant-15pct / Hepatic-5pct /
+    Variant-pArg852Cys-Japanese-Founder / Deferiprone-Preferred-BBB-Penetrant /
+    Iron-Regions-Cortex-Dentate-Hepatic / 3q23-q24 / OMIM-CP-117700-Aceruloplasminemia-604290)."""
+    try:
+        import scripts.cp_dashboard as cp_
+        return _json_safe(cp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cp/definitions")
+async def cp_definitions():
+    """CP Aceruloplasminemia definitions — 15 concepts (Aceruloplasminemia-CP-Ferroxidase-Deficiency /
+    Classic-Triad-Brain-Iron-Diabetes-Retinal-Degeneration / Serum-Ceruloplasmin-Undetectable-PATHOGNOMONIC /
+    HIGH-Serum-Ferritin-Opposite-FTL / Cortical-Iron-UNIQUE-MRI-Differentiator /
+    Cerebellar-Ataxia-Dominant-Dentate-Iron / Microcytic-Anemia-Normal-Iron-Stores-DDx /
+    Fresh-Frozen-Plasma-FFP-Temporary-Ferroxidase / Deferiprone-Deferasirox-Iron-Chelation-BBB /
+    VGB-ABSOLUTE-CI-Retinal-Iron-Additive / VPA-PHT-CAUTION-Hepatic-Iron-Overload /
+    Diabetes-Beta-Cell-Iron-Insulin-Dependent / Yoshida-1995-First-Description-Japanese-Founder /
+    OMIM-117700-CP-Gene-604290-Aceruloplasminemia / GPi-DBS-Level-D-Blepharospasm-Ataxia-No-Response).
+    """
+    try:
+        import scripts.cp_dashboard as cp_
+        return _json_safe(cp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

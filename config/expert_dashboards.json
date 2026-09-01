@@ -8525,5 +8525,25 @@
     "registered": "2026-08-31",
     "category": "nbia-neurodegeneration-epilepsy",
     "built_note": "FTL Neuroferritinopathy/NBIA7 Dashboard \u2014 /api/ftl/overview|breakdown|definitions verified 200, 40-patient cohort seed-527, 3 endpoints. portal-next/app/ftl/page.jsx + SiteNav wired after COASY."
+  },
+  {
+    "id": "cp",
+    "gene": "CP",
+    "title": "CP Aceruloplasminemia (CP-1065aa-Multi-Copper-Ferroxidase-6Cu-3CupredoxinDomains / Classic-Triad-Brain-Iron-Diabetes-Retinal-Degeneration / HIGH-Serum-Ferritin-OPPOSITE-FTL-500-5000ngmL / Serum-Ceruloplasmin-Undetectable-PATHOGNOMONIC / Cortical-Iron-UNIQUE-Not-Seen-NBIA1-7 / Cerebellar-Ataxia-DOMINANT-Dentate-Nucleus-Iron / VGB-ABSOLUTE-CI-Retinal-Additive / VPA-PHT-CAUTION-Hepatic-Iron / LEV-PREFERRED-Minimal-Hepatic / Deferiprone-Deferasirox-Investigational-BBB / Fresh-Frozen-Plasma-FFP-Temporary-Ferroxidase / Yoshida-1995-Japanese-Founder-pArg852Cys / 40-patient-cohort-seed-529 / 3q23-q24 / OMIM-Gene-CP-117700-Disease-Aceruloplasminemia-604290)",
+    "status": "built",
+    "route": "/cp",
+    "api_base": "/api/cp",
+    "endpoints": [
+      "/api/cp/overview",
+      "/api/cp/breakdown",
+      "/api/cp/definitions"
+    ],
+    "category": "iron-accumulation-disorder",
+    "chromosome": "3q23-q24",
+    "inheritance": "AR",
+    "omim_gene": "117700",
+    "omim_disease": "604290",
+    "cohort_seed": 529,
+    "cohort_n": 40
   }
 ]
