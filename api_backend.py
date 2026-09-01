@@ -38687,6 +38687,42 @@ async def mpv17_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TK2 Myopathic mtDNA Depletion Syndrome (MDDS4A) ────────────────────────
+# 40-patient cohort seed-553; 3 endpoints /api/tk2/overview|breakdown|definitions
+# TK2-265aa-Mitochondrial-Matrix-Thymidine-Kinase-dThd-dCyd-Phosphorylation
+# MDDS4A-Myopathic-Form; VPA-ABSOLUTE-CI; KD-CONTRAINDICATED
+# NO-Hepatopathy-KEY-DDx-DGUOK-MPV17-POLG; NO-Nystagmus; NO-3-MGA
+# Deoxynucleoside-dCyd-dThd-Supplementation-First-Disease-Modifying-MDDS-Rescue
+# Respiratory-Failure-85pct-NIV-Critical; CK-Elevated-90pct-Myopathic-Marker
+# 16q21 / OMIM-Gene-TK2-188250-Disease-MDDS4A-609560
+
+@app.get("/api/tk2/overview")
+async def tk2_overview():
+    try:
+        import scripts.tk2_dashboard as tk2_
+        return _json_safe(tk2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tk2/breakdown")
+async def tk2_breakdown():
+    try:
+        import scripts.tk2_dashboard as tk2_
+        return _json_safe(tk2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tk2/definitions")
+async def tk2_definitions():
+    try:
+        import scripts.tk2_dashboard as tk2_
+        return _json_safe(tk2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

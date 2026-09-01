@@ -8726,5 +8726,18 @@
       "/api/mpv17/definitions"
     ],
     "built_note": "MPV17 MDDS6 \u2014 /api/mpv17/overview|breakdown|definitions verified 200, portal-next/app/mpv17/page.jsx + SiteNav wired after DGUOK, expert_dashboards.json count 567->568. Built 2026-09-01."
+  },
+  {
+    "id": "tk2",
+    "name": "TK2 Myopathic mtDNA Depletion Syndrome (TK2-265aa-Mitochondrial-Matrix-Thymidine-Kinase-dThd-dCyd-Phosphorylation / MDDS4A-Myopathic-Form / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / NO-Hepatopathy-KEY-DDx-DGUOK-MPV17-POLG-Hepatocerebral / NO-Nystagmus-KEY-DDx-DGUOK-Has-Nystagmus-90pct / NO-3-MGA-KEY-DDx-All-3-MGA-Syndromes-SERAC1-TAZ-TMEM70-OPA3-DNAJC19-CLPB / Respiratory-Failure-85pct-Leading-Cause-Death-NIV-Critical / CK-Elevated-90pct-Myopathic-Marker-Absent-Hepatocerebral / dCyd-dThd-Deoxynucleoside-Supplementation-First-Disease-Modifying-MDDS-Rescue-FDA-Orphan / Proximal-Weakness-100pct-Progressive-Hip-Shoulder-Girdle / Facial-Diplegia-75pct / Ophthalmoplegia-PEO-40pct / LEV-Preferred-AED-Renal-Excretion / Propofol-AVOID-PRIS / Spinazzola-1999-AmJHumGenet-Mancuso-2002-AnnNeurol / 40-patient-cohort-seed-553 / 16q21 / OMIM-Gene-TK2-188250-Disease-MDDS4A-609560)",
+    "status": "built",
+    "route": "/tk2",
+    "api": "/api/tk2",
+    "category": "mtDNA Depletion Syndrome / Mitochondrial Myopathy",
+    "gene": "TK2",
+    "chromosome": "16q21",
+    "omim_gene": "188250",
+    "omim_disease": "609560",
+    "seed": 553
   }
 ]
