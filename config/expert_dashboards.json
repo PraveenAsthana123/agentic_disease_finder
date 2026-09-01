@@ -9142,5 +9142,27 @@
     "cohort_seed": 613,
     "cohort_size": 40,
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "ndufs3",
+    "gene": "NDUFS3",
+    "name": "NDUFS3 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh Q-Module-QP-C-30kDa-Scaffold",
+    "title": "NDUFS3 Leigh Syndrome \u2014 Isolated Complex I Deficiency (CI-Leigh / Q-Module QP-C 30 kDa Scaffold)",
+    "status": "built",
+    "route": "/ndufs3",
+    "api_prefix": "/api/ndufs3",
+    "endpoints": [
+      "/api/ndufs3/overview",
+      "/api/ndufs3/breakdown",
+      "/api/ndufs3/definitions"
+    ],
+    "frontend": "portal-next/app/ndufs3/page.jsx",
+    "script": "scripts/ndufs3_dashboard.py",
+    "locus": "11p11.11",
+    "omim": "603846 / Leigh 256000",
+    "color": "#1565c0",
+    "syndrome": "Leigh Syndrome / Mitochondrial Complex I Deficiency Nuclear Type (NDUFS3)",
+    "note": "Total: 600 dashboards",
+    "built_note": "Built scripts/ndufs3_dashboard.py, api_backend.py 3 routes /api/ndufs3/overview|breakdown|definitions verified 200, portal-next/app/ndufs3/page.jsx + SiteNav wired after NDUFS2, expert_dashboards.json count 599->600. Built 2026-09-01."
   }
 ]

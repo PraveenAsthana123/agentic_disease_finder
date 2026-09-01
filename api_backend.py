@@ -39551,6 +39551,33 @@ async def ndufs2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufs3/overview")
+async def ndufs3_overview():
+    try:
+        import scripts.ndufs3_dashboard as ndufs3_
+        return _json_safe(ndufs3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs3/breakdown")
+async def ndufs3_breakdown():
+    try:
+        import scripts.ndufs3_dashboard as ndufs3_
+        return _json_safe(ndufs3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs3/definitions")
+async def ndufs3_definitions():
+    try:
+        import scripts.ndufs3_dashboard as ndufs3_
+        return _json_safe(ndufs3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

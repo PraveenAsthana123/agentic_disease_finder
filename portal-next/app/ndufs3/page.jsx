@@ -1,0 +1,333 @@
+'use client';
+import { useState, useEffect } from 'react';
+
+const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8010';
+
+const TABS = ['Overview', 'Patients & Features', 'Treatments & DDx', 'Definitions'];
+const COLOR = '#1565c0';   // deep blue — Q-module scaffold / NDUFS3 assembly theme
+const LIGHT = '#e3f2fd';
+
+function KPI({ label, value, color }) {
+  return (
+    <div className="col-6 col-md-4 col-lg-2 mb-3">
+      <div className="card h-100 shadow-sm text-center">
+        <div className="card-body py-2 px-1">
+          <div className="fw-bold fs-5" style={{ color }}>{value}</div>
+          <div className="text-muted small">{label}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Bar({ label, value, color = COLOR }) {
+  return (
+    <div className="mb-2">
+      <div className="d-flex justify-content-between small mb-1">
+        <span>{label}</span><span className="text-muted">{value}%</span>
+      </div>
+      <div className="progress" style={{ height: 12 }}>
+        <div className="progress-bar" style={{ width: `${value}%`, backgroundColor: color }} />
+      </div>
+    </div>
+  );
+}
+
+function Alert({ variant, text }) {
+  const bg     = variant === 'danger'  ? '#ffebee' : variant === 'warning' ? '#fff8e1'
+               : variant === 'success' ? '#e8f5e9' : LIGHT;
+  const border = variant === 'danger'  ? '#c62828' : variant === 'warning' ? '#f57f17'
+               : variant === 'success' ? '#2e7d32' : COLOR;
+  return (
+    <div className="mb-2 p-2 rounded small" style={{ background: bg, borderLeft: `4px solid ${border}` }}>
+      {text}
+    </div>
+  );
+}
+
+function SectionCard({ title, children, borderColor = COLOR }) {
+  return (
+    <div className="card mb-4 shadow-sm" style={{ borderTop: `3px solid ${borderColor}` }}>
+      <div className="card-body">
+        <h6 className="card-title fw-bold mb-3" style={{ color: borderColor }}>{title}</h6>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Spinner() {
+  return <div className="text-center py-5"><div className="spinner-border" style={{ color: COLOR }} /></div>;
+}
+
+function featureColor(feat) {
+  const f = feat.toLowerCase();
+  if (f.includes('no ') || f.includes('never') || f.includes('normal') || f.includes('alive')) return '#2e7d32';
+  if (f.includes('leigh') || f.includes('regression')) return '#6a1b9a';
+  if (f.includes('lactic') || f.includes('died') || f.includes('fatal')) return '#b71c1c';
+  if (f.includes('resp'))   return '#b71c1c';
+  if (f.includes('hcm') || f.includes('cardiomyopathy')) return '#ad1457';
+  if (f.includes('hepato') || f.includes('liver')) return '#e65100';
+  return COLOR;
+}
+
+// ── Tab 1: Overview ──────────────────────────────────────────────────────────
+function OverviewTab({ data }) {
+  if (!data) return <Spinner />;
+  return (
+    <div>
+      <SectionCard title="Gene & Disease Identity">
+        <div className="row g-2 small">
+          {[
+            ['Gene', data.gene],
+            ['Protein', data.protein],
+            ['Disease', data.disease],
+            ['OMIM Gene', data.omim_gene],
+            ['OMIM Disease', data.omim_disease],
+            ['Locus', data.chromosome],
+            ['Inheritance', data.inheritance],
+            ['Onset', data.onset],
+          ].map(([k, v]) => (
+            <div key={k} className="col-12 col-md-6">
+              <span className="fw-semibold">{k}:</span> <span className="text-muted">{v}</span>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard title="NDUFS3 = Q-Module 30 kDa Scaffold — Assembly Platform for NDUFS2/N2 + NDUFA9" borderColor="#1565c0">
+        <Alert variant="info" text="NDUFS3 (QP-C/30 kDa) is the structural SCAFFOLD of the Q-module — it positions NDUFS2 (N2 [4Fe-4S] terminal Fe-S) and NDUFA9 for correct ubiquinone reduction geometry. Unlike NDUFS2 (direct N2 carrier), NDUFS3 loss causes Q-module ASSEMBLY FAILURE: BN-PAGE shows CI sub-assembly intermediates. Biochemical result is identical: CI 5–20%, CII/CIII/CIV NORMAL." />
+      </SectionCard>
+
+      <SectionCard title="NO Peripheral Neuropathy — KEY DDx vs NDUFS1 (~50% neuropathy)" borderColor="#2e7d32">
+        <Alert variant="success" text="NDUFS3-CI-Leigh does NOT show peripheral neuropathy. This distinguishes it from NDUFS1 (50% neuropathy). Absence of neuropathy + isolated CI deficiency + no olfactory bulb lesions + no leukodystrophy points toward NDUFS2, NDUFS3, or NDUFS4 — distinguishable by BN-PAGE assembly intermediates (NDUFS3) or genotyping." />
+      </SectionCard>
+
+      <SectionCard title={`KPIs — 40-patient NDUFS3 cohort (seed-615)`}>
+        <div className="row g-2">
+          {(data.kpis || []).map(k => (
+            <KPI key={k.label} label={k.label} value={k.value} color={k.color} />
+          ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard title="Feature Frequencies (40-patient cohort, seed-615)">
+        {Object.entries(data.feature_frequencies || {}).map(([feat, pct]) => (
+          <Bar key={feat} label={feat} value={pct} color={featureColor(feat)} />
+        ))}
+      </SectionCard>
+
+      <SectionCard title="Drug Contraindications" borderColor="#b71c1c">
+        {(data.contraindications || []).map(c => (
+          <div key={c.drug} className="mb-3 p-2 rounded" style={{ background: '#ffebee', borderLeft: '4px solid #c62828' }}>
+            <div className="fw-bold small" style={{ color: '#b71c1c' }}>{c.drug} — {c.severity}</div>
+            <div className="small text-muted mt-1" style={{ whiteSpace: 'pre-line' }}>{c.mechanism}</div>
+          </div>
+        ))}
+      </SectionCard>
+    </div>
+  );
+}
+
+// ── Tab 2: Patients & Features ────────────────────────────────────────────────
+function PatientsTab({ data }) {
+  if (!data) return <Spinner />;
+  const { patients = [], feature_frequencies = {}, genotype_distribution = {}, complex_activities = {} } = data;
+  return (
+    <div>
+      <SectionCard title="Complex Enzyme Activities (40-patient cohort)">
+        <div className="row text-center small">
+          {[
+            ['CI Mean', `${complex_activities.CI_mean}%`, '#c62828'],
+            ['CI Range', complex_activities.CI_range, '#b71c1c'],
+            ['CII Mean', `${complex_activities.CII_mean}%`, '#2e7d32'],
+            ['CIV Mean', `${complex_activities.CIV_mean}%`, '#2e7d32'],
+          ].map(([l, v, c]) => (
+            <div key={l} className="col-6 col-md-3 mb-2">
+              <div className="fw-bold" style={{ color: c }}>{v}</div>
+              <div className="text-muted">{l}</div>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard title="Genotype Distribution">
+        {Object.entries(genotype_distribution).map(([g, n]) => (
+          <div key={g} className="d-flex justify-content-between small border-bottom py-1">
+            <span className="text-truncate" style={{ maxWidth: '80%' }}>{g}</span>
+            <span className="fw-bold" style={{ color: COLOR }}>{n}</span>
+          </div>
+        ))}
+      </SectionCard>
+
+      <SectionCard title="Feature Frequencies (breakdown)">
+        {Object.entries(feature_frequencies).map(([feat, pct]) => (
+          <Bar key={feat} label={feat} value={pct} color={featureColor(feat)} />
+        ))}
+      </SectionCard>
+
+      <SectionCard title="Patient Cohort (40 patients, seed-615)">
+        <div style={{ overflowX: 'auto' }}>
+          <table className="table table-sm table-hover small">
+            <thead>
+              <tr>
+                {['ID', 'Sex', 'Onset (yr)', 'Lactate (mmol/L)', 'CI%', 'CII%', 'CIV%', 'Leigh MRI', 'Outcome'].map(h => (
+                  <th key={h}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {patients.map(p => (
+                <tr key={p.id}>
+                  <td>{p.id}</td>
+                  <td>{p.sex}</td>
+                  <td>{p.onset_yr}</td>
+                  <td style={{ color: '#b71c1c' }}>{p.lactate_mm}</td>
+                  <td style={{ color: '#c62828', fontWeight: 'bold' }}>{p.ci_pct}%</td>
+                  <td style={{ color: '#2e7d32' }}>{p.cii_pct}%</td>
+                  <td style={{ color: '#2e7d32' }}>{p.civ_pct}%</td>
+                  <td>{p.has_leigh_mri ? '✓' : '—'}</td>
+                  <td className="text-muted">{p.outcome.slice(0, 60)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+    </div>
+  );
+}
+
+// ── Tab 3: Treatments & DDx ──────────────────────────────────────────────────
+function TreatmentsTab({ overview, breakdown }) {
+  if (!overview || !breakdown) return <Spinner />;
+  const { patients = [] } = breakdown;
+  return (
+    <div>
+      <SectionCard title="CI-Leigh Differential Diagnosis (NDUFS3 vs Series)" borderColor="#6a1b9a">
+        <div className="table-responsive">
+          <table className="table table-sm small">
+            <thead>
+              <tr>
+                <th>Gene</th><th>Module / Role</th><th>Distinguishing Feature</th><th>MRI Extra</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['NDUFS4',  'N-module (accessory)',              'Olfactory bulb lesions 52–65% (pathognomonic)', 'Olfactory T2'],
+                ['NDUFV1',  'N-module (FMN core)',               'Leukodystrophy / white matter T2 40–50%',       'White matter'],
+                ['NDUFS1',  'N-module (IP1/75kDa)',              'Peripheral neuropathy ~50% (axonal/demyelin.)', 'None specific'],
+                ['NDUFS2',  'Q-module (N2/PSST/49kDa carrier)', 'NO neuropathy/olfactory/leukodystrophy; direct N2 loss', 'None specific'],
+                ['NDUFS3',  'Q-module (QP-C/30kDa scaffold)',   'NO neuropathy/olfactory/leukodystrophy; ASSEMBLY stall', 'CI intermediates BN-PAGE'],
+              ].map(([g, m, d, mr]) => (
+                <tr key={g} style={{ background: g === 'NDUFS3' ? LIGHT : '' }}>
+                  <td className="fw-bold" style={{ color: g === 'NDUFS3' ? COLOR : '#333' }}>{g}</td>
+                  <td className="text-muted">{m}</td>
+                  <td>{d}</td>
+                  <td className="text-muted">{mr}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+
+      <SectionCard title="Contraindications Summary" borderColor="#b71c1c">
+        {(overview.contraindications || []).map(c => (
+          <div key={c.drug} className="mb-2 p-2 rounded small" style={{ background: '#ffebee', borderLeft: '4px solid #c62828' }}>
+            <div className="fw-bold" style={{ color: '#b71c1c' }}>{c.drug} — {c.severity}</div>
+          </div>
+        ))}
+      </SectionCard>
+
+      <SectionCard title="Treatment Samples (per patient)">
+        <div className="small">
+          {patients.slice(0, 10).map(p => (
+            <div key={p.id} className="border-bottom py-1">
+              <span className="fw-semibold" style={{ color: COLOR }}>{p.id}</span>
+              <span className="text-muted ms-2">{p.treatments}</span>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+    </div>
+  );
+}
+
+// ── Tab 4: Definitions ───────────────────────────────────────────────────────
+function DefinitionsTab({ data }) {
+  if (!data) return <Spinner />;
+  const sections = [
+    { title: 'Pharmacology', items: data.pharmacology || [] },
+    { title: 'Gene & Molecular Biology', items: data.gene_concepts || [] },
+    { title: 'Disease Biology', items: data.disease_concepts || [] },
+    { title: 'Prescribing Safety', items: data.prescribing_safety || [] },
+  ];
+  return (
+    <div>
+      {sections.map(({ title, items }) => items.length > 0 && (
+        <SectionCard key={title} title={title}>
+          {items.map(item => (
+            <div key={item.term} className="mb-3">
+              <div className="fw-bold small" style={{ color: COLOR }}>{item.term}</div>
+              <div className="small text-muted mt-1" style={{ whiteSpace: 'pre-line' }}>{item.definition}</div>
+            </div>
+          ))}
+        </SectionCard>
+      ))}
+    </div>
+  );
+}
+
+// ── Main page ────────────────────────────────────────────────────────────────
+export default function NDUFS3Page() {
+  const [tab, setTab]           = useState(0);
+  const [overview, setOverview] = useState(null);
+  const [breakdown, setBreakdown] = useState(null);
+  const [defs, setDefs]         = useState(null);
+  const [error, setError]       = useState(null);
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`${API}/api/ndufs3/overview`).then(r => r.json()),
+      fetch(`${API}/api/ndufs3/breakdown`).then(r => r.json()),
+      fetch(`${API}/api/ndufs3/definitions`).then(r => r.json()),
+    ]).then(([ov, bk, df]) => {
+      setOverview(ov); setBreakdown(bk); setDefs(df);
+    }).catch(e => setError(String(e)));
+  }, []);
+
+  return (
+    <div className="container-fluid py-3">
+      <div className="mb-3">
+        <h4 className="fw-bold mb-1" style={{ color: COLOR }}>
+          🧬 NDUFS3 Leigh Syndrome — Isolated Complex I Deficiency
+        </h4>
+        <div className="text-muted small">
+          CI-Leigh / Q-Module 30 kDa QP-C Scaffold Subunit / Assembly Platform for NDUFS2/N2 + NDUFA9 · 11p11.11 · OMIM *603846 · AR Biallelic · 40-patient cohort seed-615
+        </div>
+      </div>
+
+      {error && <div className="alert alert-danger small">{error}</div>}
+
+      <ul className="nav nav-tabs mb-3">
+        {TABS.map((t, i) => (
+          <li key={t} className="nav-item">
+            <button
+              className={`nav-link${tab === i ? ' active' : ''}`}
+              style={tab === i ? { color: COLOR, borderBottomColor: COLOR, fontWeight: 'bold' } : {}}
+              onClick={() => setTab(i)}
+            >
+              {t}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {tab === 0 && <OverviewTab data={overview} />}
+      {tab === 1 && <PatientsTab data={breakdown} />}
+      {tab === 2 && <TreatmentsTab overview={overview} breakdown={breakdown} />}
+      {tab === 3 && <DefinitionsTab data={defs} />}
+    </div>
+  );
+}
