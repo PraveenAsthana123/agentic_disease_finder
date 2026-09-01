@@ -39443,6 +39443,33 @@ async def lrpprc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufs4/overview")
+async def ndufs4_overview():
+    try:
+        import scripts.ndufs4_dashboard as ndufs4_
+        return _json_safe(ndufs4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs4/breakdown")
+async def ndufs4_breakdown():
+    try:
+        import scripts.ndufs4_dashboard as ndufs4_
+        return _json_safe(ndufs4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs4/definitions")
+async def ndufs4_definitions():
+    try:
+        import scripts.ndufs4_dashboard as ndufs4_
+        return _json_safe(ndufs4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

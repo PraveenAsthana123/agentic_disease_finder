@@ -9083,5 +9083,14 @@
     "api_prefix": "/api/lrpprc",
     "seed": 605,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufs4",
+    "name": "NDUFS4 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh (NDUFS4-175aa-N-Module-Accessory-Subunit-NDU-N-Arm-5q11.2-q13.3 / OMIM-Gene-602694-Disease-256000 / AR-Biallelic / c462delA-pLys154Asnfs-Dutch-N-European-Founder / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / Olfactory-Bulb-Lesions-MRI-52-65pct-DISTINGUISHING-NOT-COX-Leigh / Psychomotor-Regression-100pct-CARDINAL / Leigh-MRI-92pct / Hypotonia-82pct / Lactic-Acidosis-82pct / Respiratory-Compromise-68pct / Seizures-48pct / NO-HCM-KEY-DDx-SCO2-100pct / NO-Hepatopathy-KEY-DDx-POLG-DGUOK / NO-Iron-Overload-KEY-DDx-GRACILE / NO-COX-Deficiency-KEY-DDx-SURF1-SCO2-COX10-COX15-LRPPRC / Metformin-ABSOLUTE-CI-Direct-CI-Inhibitor-At-Disease-Target / VPA-ABSOLUTE-CI-Triple-Mechanism / Linezolid-ABSOLUTE-CI-23S-rRNA-MT-ND1-6 / KD-CONTRAINDICATED / Phenobarbital-HIGH-CAUTION-Secondary-CI-Inhibitor / Riboflavin-B2-Level-C-CI-SPECIFIC / CoQ10-Level-C / Thiamine-B1-MANDATORY-Empiric / Biotin-MANDATORY-Empiric / Succinate-Level-C-CII-Bypass-CI-Entirely / LEV-Preferred-AED / IV-Dextrose-GIR-6-8 / Budde-2000-AmJHumGenet-First-NDUFS4 / Kruse-2008-CellMetab-NDUFS4-KO-Olfactory / 40-patient-cohort-seed-607 / 5q11.2-q13.3 / OMIM-Gene-NDUFS4-602694-Disease-Leigh-256000)",
+    "status": "built",
+    "route": "/ndufs4",
+    "api_prefix": "/api/ndufs4",
+    "seed": 607,
+    "registered": "2026-09-01"
   }
 ]
