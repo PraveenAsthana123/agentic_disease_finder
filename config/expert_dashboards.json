@@ -9164,5 +9164,27 @@
     "syndrome": "Leigh Syndrome / Mitochondrial Complex I Deficiency Nuclear Type (NDUFS3)",
     "note": "Total: 600 dashboards",
     "built_note": "Built scripts/ndufs3_dashboard.py, api_backend.py 3 routes /api/ndufs3/overview|breakdown|definitions verified 200, portal-next/app/ndufs3/page.jsx + SiteNav wired after NDUFS2, expert_dashboards.json count 599->600. Built 2026-09-01."
+  },
+  {
+    "id": "ndufs7",
+    "gene": "NDUFS7",
+    "name": "NDUFS7 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh Q-Module/N-Module Junction N4 Fe-S",
+    "title": "NDUFS7 Leigh Syndrome \u2014 Isolated Complex I Deficiency (CI-Leigh / Q-Module/N-Module Junction N4 [4Fe-4S])",
+    "status": "built",
+    "route": "/ndufs7",
+    "api_prefix": "/api/ndufs7",
+    "endpoints": [
+      "/api/ndufs7/overview",
+      "/api/ndufs7/breakdown",
+      "/api/ndufs7/definitions"
+    ],
+    "frontend": "portal-next/app/ndufs7/page.jsx",
+    "script": "scripts/ndufs7_dashboard.py",
+    "locus": "19p13.3",
+    "omim": "601825 / Leigh 256000 / CI Nuclear Type 3 618224",
+    "color": "#0d47a1",
+    "syndrome": "Leigh Syndrome / Mitochondrial Complex I Deficiency Nuclear Type 3 (NDUFS7)",
+    "note": "Total: 601 dashboards",
+    "built_note": "Built scripts/ndufs7_dashboard.py, api_backend.py 3 routes /api/ndufs7/overview|breakdown|definitions verified 200, portal-next/app/ndufs7/page.jsx + SiteNav wired after NDUFS3, expert_dashboards.json count 600->601. Built 2026-09-01."
   }
 ]
