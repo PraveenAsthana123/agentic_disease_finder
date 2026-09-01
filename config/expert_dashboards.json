@@ -9024,5 +9024,14 @@
     "omim_gene": "185620",
     "omim_disease": "256000",
     "built_note": "Built scripts/surf1_dashboard.py, api_backend.py 3 routes /api/surf1/overview|breakdown|definitions verified 200, portal-next/app/surf1/page.jsx + SiteNav wired after GRACILE, expert_dashboards.json count 588->589. Built 2026-09-01."
+  },
+  {
+    "id": "sco2",
+    "name": "SCO2 Fatal Infantile HCM Complex IV COX Deficiency (SCO2-266aa-Thioredoxin-Fold-IMS-Copper-Chaperone-CXXXC-Motif-COX2-MT-CO2-CuA-Binuclear-Copper-Delivery-22q13.33 / OMIM-Gene-604272-Disease-619012 / AR-Biallelic / pGlu140Lys-c418GA-Greek-Italian-Mediterranean-Founder-60pct / pLeu151Pro-c452TC-Second-Most-Common / HCM-100pct-CARDINAL-UNIQUE-Most-Severe-Cardiac-ALL-COX-Assembly-Factor-Diseases / Encephalomyopathy-90pct / Lactic-Acidosis-90pct / Hypotonia-80pct / Failure-To-Thrive-75pct / Leigh-Like-MRI-55pct / Seizures-40pct / Respiratory-Compromise-65pct / Fatal-In-First-Year-85pct / Isolated-COX-Deficiency-Complexes-I-II-III-NORMAL / COX17-SCO2-SCO1-CuA-Copper-Trafficking-Hierarchy / NO-Hepatopathy-KEY-DDx-SCO1-Hepatopathy-100pct / NO-3MGA-KEY-DDx-SERAC1-CLPB-DNAJC19 / SCO2-HCM-100pct-vs-SURF1-HCM-10pct-CRITICAL-DDx / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI-23S-rRNA-MT-CO2-Synthesis-Block / Propofol-ABSOLUTE-CI-PRIS-Amplified-Cardiac / KD-CONTRAINDICATED / Digoxin-AVOID-HCM-LVOT-Obstruction / CoQ10-Level-C / Carnitine-Level-C / LEV-Preferred-AED / IV-Dextrose-GIR-6-8 / Papadopoulou-1999-NatGenet-First-SCO2 / Jaksch-2000-HumMolGenet / 40-patient-cohort-seed-595 / 22q13.33 / OMIM-Gene-SCO2-604272-Disease-619012)",
+    "status": "built",
+    "api": "/api/sco2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 595,
+    "registered": "2026-09-01"
   }
 ]

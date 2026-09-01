@@ -39296,6 +39296,30 @@ async def surf1_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/sco2/overview")
+async def sco2_overview():
+    try:
+        import scripts.sco2_dashboard as sco2_
+        return _json_safe(sco2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sco2/breakdown")
+async def sco2_breakdown():
+    try:
+        import scripts.sco2_dashboard as sco2_
+        return _json_safe(sco2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sco2/definitions")
+async def sco2_definitions():
+    try:
+        import scripts.sco2_dashboard as sco2_
+        return _json_safe(sco2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
