@@ -38148,6 +38148,65 @@ async def coasy_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── FTL / Neuroferritinopathy (NBIA7) — FTL-Associated Neurodegeneration ────────────────────────
+# 40-patient cohort seed-527; 3 endpoints /api/ftl/overview|breakdown|definitions
+# ONLY AD NBIA (~50-70 families worldwide); heterozygous FTL exon4 frameshifts; LOW serum ferritin PATHOGNOMONIC
+# Caudate+Putamen iron DOMINANT (NOT GP-first like PKAN); cavitations pathognomonic advanced; chorea DOMINANT early; seizures RARE (<10%)
+@app.get("/api/ftl/overview")
+async def ftl_overview():
+    """FTL Neuroferritinopathy — FTL-Associated Neurodegeneration / NBIA7 / 175aa / 19q13.33 /
+    OMIM Gene 134790 / Disease Neuroferritinopathy 606159.
+    ONLY Autosomal Dominant NBIA (~50-70 affected families worldwide 2026).
+    Heterozygous FTL exon 4 frameshifts (c.460InsA most common ~50% European) destroy E-helix 4-fold channel.
+    LOW serum ferritin (<30 ng/mL) PATHOGNOMONIC — only NBIA with reliable biochemical marker.
+    Caudate+Putamen iron DOMINANT and earliest (NOT GP-first — critical DDx from PKAN).
+    Cavitations (cystic signal voids GP/putamen) PATHOGNOMONIC in advanced disease.
+    Chorea DOMINANT early motor feature (distinguishes from all other NBIA: dystonia-dominant).
+    3 phenotypes: Choreic-predominant 60% (onset 25-45yr), Mixed Hyperkinetic 30% (35-55yr), Parkinsonism-predominant 10% (>50yr).
+    PHT/CBZ AVOID (worsens chorea). Tetrabenazine/Deutetrabenazine Level C for chorea. Deferiprone investigational.
+    Seizures RARE (<10%) — distinguishes from PKAN 50%, CoPAN 60-70%, PLAN 80%. Seed-527."""
+    try:
+        import scripts.ftl_dashboard as ftl_
+        return _json_safe(ftl_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ftl/breakdown")
+async def ftl_breakdown():
+    """FTL Neuroferritinopathy breakdown — per-phenotype: Choreic-predominant (60%)/Mixed-Hyperkinetic (30%)/Parkinsonism-predominant (10%);
+    per-etiology: c.460dupA (~50%)/c.469_484dup16 (~20%)/c.458_461dup4-Japan (~10%)/p.Leu163Arg-missense (~8%)/p.Gly66Arg-missense (~5%)/novel (~7%);
+    seizure types (focal, rare <10%);
+    per-patient table: phenotype, etiology, onset_yr, ferritin_value, caudate_putamen_iron, sn_iron, gp_iron,
+    cerebellar_iron, cavitations, chorea, chorea_severity, dystonia, parkinsonism, cerebellar_ataxia,
+    dysarthria, dysphagia, ambulation_lost, cognitive_decline, psychiatric, has_seizures, drug_resistant,
+    tetrabenazine, deutetrabenazine, clonazepam, levodopa, dbs, deferiprone_trial, polg_tested.
+    """
+    try:
+        import scripts.ftl_dashboard as ftl_
+        return _json_safe(ftl_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ftl/definitions")
+async def ftl_definitions():
+    """FTL Neuroferritinopathy definitions — 15 concepts (Neuroferritinopathy-NBIA7 /
+    FTL-175aa-E-Helix-4-Fold-Channel-Frameshift / LOW-Serum-Ferritin-PATHOGNOMONIC /
+    Caudate-Putamen-Iron-DOMINANT-NOT-GP-First / Cavitations-Basal-Ganglia-Pathognomonic /
+    Chorea-Dominant-Early-Feature-AD-NBIA / AD-Only-NBIA-Heterozygous-Penetrant /
+    Tetrabenazine-Deutetrabenazine-VMAT2-Level-C-Chorea / PHT-CBZ-AVOID-Worsens-Chorea /
+    Deferiprone-Investigational-Iron-Chelation-FTL / GPi-DBS-Level-D-Very-Limited /
+    Serum-Ferritin-Electrophoresis-Diagnostic / Seizures-RARE-Less-10pct-DDx /
+    Curtis-2001-First-Description-Northern-England / OMIM-134790-FTL-Gene-606159-Neuroferritinopathy).
+    """
+    try:
+        import scripts.ftl_dashboard as ftl_
+        return _json_safe(ftl_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

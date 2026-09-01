@@ -8514,5 +8514,16 @@
     "registered": "2026-08-31",
     "category": "nbia-neurodegeneration-epilepsy",
     "built_note": "COASY CoPAN/NBIA6 Dashboard \u2014 /api/coasy/overview|breakdown|definitions verified 200, 40-patient cohort seed-525, 3 endpoints. portal-next/app/coasy/page.jsx + SiteNav wired after FA2H."
+  },
+  {
+    "id": "ftl",
+    "name": "FTL Neuroferritinopathy/NBIA7 (FTL-175aa-E-Helix-4-Fold-Channel-Frameshift / ONLY-AD-NBIA-50-70-Families-Worldwide / LOW-Serum-Ferritin-PATHOGNOMONIC-Only-NBIA-Biochemical-Marker / Caudate-Putamen-Iron-DOMINANT-NOT-GP-First / Cavitations-Basal-Ganglia-PATHOGNOMONIC-Advanced / Chorea-DOMINANT-Early-Feature-AD-NBIA / AD-Heterozygous-100pct-Penetrance / Tetrabenazine-Deutetrabenazine-VMAT2-Level-C / PHT-CBZ-AVOID-Worsens-Chorea / Deferiprone-Investigational / GPi-DBS-Level-D-Very-Limited / Seizures-RARE-Less-10pct-DDx-PKAN-CoPAN / Curtis-2001-First-Description-Northern-England / 40-patient-cohort-seed-527 / 19q13.33 / OMIM-Gene-FTL-134790-Disease-Neuroferritinopathy-606159)",
+    "status": "built",
+    "api": "/api/ftl/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 527,
+    "registered": "2026-08-31",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "built_note": "FTL Neuroferritinopathy/NBIA7 Dashboard \u2014 /api/ftl/overview|breakdown|definitions verified 200, 40-patient cohort seed-527, 3 endpoints. portal-next/app/ftl/page.jsx + SiteNav wired after COASY."
   }
 ]
