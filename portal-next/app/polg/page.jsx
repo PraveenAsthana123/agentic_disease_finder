@@ -3,12 +3,9 @@ import { useState, useEffect } from 'react';
 
 const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8010';
 
-const TABS = ['Overview', 'Patients & Etiology', 'Seizure Types & Triggers', 'Treatments', 'Definitions'];
-
-const ACCENT  = '#1a5276';   // deep navy — POLG / mitochondrial
-const ACCENT2 = '#7b241c';   // dark red — VPA CI / danger
-const ACCENT3 = '#1e6823';   // dark green — LEV safe / mitochondrial cofactors
-const ACCENT4 = '#6c3483';   // purple — EPC / Alpers
+const TABS = ['Overview', 'Patients & Variants', 'Epilepsy & Hepatopathy', 'Treatments', 'Definitions'];
+const COLOR = '#b71c1c';   // deep red — POLG/Alpers (VPA absolute CI, lethal hepatotoxicity)
+const LIGHT = '#ffebee';
 
 function KPI({ label, value, color }) {
   return (
@@ -23,524 +20,446 @@ function KPI({ label, value, color }) {
   );
 }
 
-function PctBar({ label, pct, color = ACCENT }) {
+function Bar({ label, value, color = COLOR }) {
   return (
     <div className="mb-2">
       <div className="d-flex justify-content-between small mb-1">
-        <span>{label}</span><span className="text-muted">{pct}%</span>
+        <span>{label}</span><span className="text-muted">{value}%</span>
       </div>
-      <div className="progress" style={{ height: 10 }}>
-        <div className="progress-bar" style={{ width: `${pct}%`, backgroundColor: color }} />
+      <div className="progress" style={{ height: 12 }}>
+        <div className="progress-bar" style={{ width: `${value}%`, backgroundColor: color }} />
       </div>
     </div>
   );
 }
 
-function Alert({ text, variant = 'warning' }) {
+function Alert({ variant, text }) {
+  const bg = variant === 'danger' ? '#ffebee' : variant === 'warning' ? '#fff8e1' : variant === 'success' ? '#e8f5e9' : '#e3f2fd';
+  const border = variant === 'danger' ? '#c62828' : variant === 'warning' ? '#f57f17' : variant === 'success' ? '#2e7d32' : '#1565c0';
   return (
-    <div className={`alert alert-${variant} py-2 mb-2`} style={{ fontSize: 13 }}>
+    <div className="mb-2 p-2 rounded small" style={{ background: bg, borderLeft: `4px solid ${border}` }}>
       {text}
     </div>
   );
 }
 
-function SectionCard({ title, children, borderColor = ACCENT }) {
+function SectionCard({ title, children, borderColor = COLOR }) {
   return (
-    <div className="card mb-4 shadow-sm" style={{ borderLeft: `4px solid ${borderColor}` }}>
-      <div className="card-header fw-bold" style={{ backgroundColor: '#eaf3fb', color: borderColor }}>
-        {title}
+    <div className="card mb-4 shadow-sm" style={{ borderTop: `3px solid ${borderColor}` }}>
+      <div className="card-body">
+        <h6 className="card-title fw-bold mb-3" style={{ color: borderColor }}>{title}</h6>
+        {children}
       </div>
-      <div className="card-body">{children}</div>
     </div>
   );
 }
 
-function TabBtn({ label, active, onClick }) {
-  return (
-    <button
-      className={`btn btn-sm me-1 mb-1 ${active ? 'btn-primary' : 'btn-outline-secondary'}`}
-      style={active ? { backgroundColor: ACCENT, borderColor: ACCENT } : {}}
-      onClick={onClick}
-    >{label}</button>
-  );
-}
-
-// ── Tab: Overview ──────────────────────────────────────────────────────────────
 function OverviewTab({ data }) {
-  if (!data) return <div className="text-muted">Loading…</div>;
-  const k = data.kpis || {};
+  if (!data) return <div className="text-center py-4 text-muted">Loading overview...</div>;
+  const kpis = data.kpis || {};
+  const highlights = data.clinical_highlights || [];
+  const cis = data.contraindications || [];
+  const thresholds = data.thresholds || [];
+  const ddx = data.ddx_table || [];
 
   return (
-    <>
-      <div className="alert alert-primary mb-4" style={{ borderLeft: `5px solid ${ACCENT}`, fontSize: 14 }}>
-        <strong>🧬 {data.syndrome}</strong><br />
-        Gene: <strong>{data.gene}</strong> · {data.inheritance}<br />
-        <strong>EEG hallmark:</strong> {data.eeg_hallmark}<br />
-        <strong>Key biomarker:</strong> {data.key_biomarker}
+    <div>
+      {/* Critical VPA Warning Banner */}
+      <div className="mb-4 p-3 rounded fw-bold text-center" style={{ background: '#b71c1c', color: 'white', fontSize: '1.1rem' }}>
+        ⛔ VPA (VALPROATE) = ABSOLUTE CONTRAINDICATION IN POLG — LETHAL HEPATOTOXICITY — DO NOT USE
       </div>
 
-      {/* VPA DANGER Banner — most prominent element */}
-      <div className="alert alert-danger mb-4" style={{ borderLeft: `5px solid ${ACCENT2}`, fontSize: 14 }}>
-        <strong>🚨 VPA ABSOLUTE CONTRAINDICATION — ALL POLG PATIENTS</strong><br />
-        Valproate in POLG = acute liver failure (Alpers hepatopathy) in <strong>32–45%</strong> · mortality <strong>&gt;80%</strong>.<br />
-        Document as <strong>ALLERGY</strong> in EMR immediately. Alert GP, school nurse, A&amp;E team.<br />
-        Use <strong>LEV 60 mg/kg IV</strong> as first-line — hepatically safe. <strong>Never VPA even in SE.</strong>
-      </div>
+      {/* Identity */}
+      <SectionCard title="🧬 Disease Identity">
+        <div className="row g-2 small">
+          <div className="col-md-6"><strong>Disease:</strong> {data.disease}</div>
+          <div className="col-md-6"><strong>Gene:</strong> {data.gene?.split(';')[0]}</div>
+          <div className="col-md-4"><strong>Chromosome:</strong> {data.chromosome}</div>
+          <div className="col-md-4"><strong>OMIM Gene:</strong> {data.omim_gene} &nbsp; <strong>Disease:</strong> {data.omim_disease}</div>
+          <div className="col-md-4"><strong>Inheritance:</strong> {data.inheritance?.split(';')[0]}</div>
+          <div className="col-md-6"><strong>Prevalence:</strong> {data.prevalence}</div>
+          <div className="col-md-6"><strong>First described:</strong> {data.first_described}</div>
+          <div className="col-md-6"><strong>Protein:</strong> {data.protein?.split(';')[0]}</div>
+          <div className="col-md-6"><strong>Category:</strong> {data.category}</div>
+        </div>
+      </SectionCard>
 
-      <div className="alert alert-success mb-4" style={{ borderLeft: `5px solid ${ACCENT3}`, fontSize: 13 }}>
-        <strong>✅ FIRST-LINE: {data.precision_therapy}</strong><br />
-        <span className="text-muted">Mitochondrial cofactors (Riboflavin B2 + CoQ10 + L-carnitine) for ALL POLG patients. Sick day plan mandatory (CLB rescue + glucose). POLG sequencing BEFORE VPA in at-risk children.</span>
-      </div>
+      {/* KPIs */}
+      <SectionCard title="📊 Key Clinical Metrics">
+        <div className="row">
+          <KPI label="Epilepsy" value={`${kpis.epilepsy_pct}%`} color={COLOR} />
+          <KPI label="EPC (hallmark)" value={`${kpis.epc_pct}%`} color="#c62828" />
+          <KPI label="Hepatopathy" value={`${kpis.hepatopathy_pct}%`} color="#e65100" />
+          <KPI label="Regression" value={`${kpis.regression_pct}%`} color="#4a148c" />
+          <KPI label="Visual involvement" value={`${kpis.visual_pct}%`} color="#1565c0" />
+          <KPI label="Acute liver failure" value={`${kpis.acute_liver_failure_pct}%`} color="#b71c1c" />
+        </div>
+        <div className="row mt-2 g-2">
+          <div className="col-md-4">
+            <div className="p-2 rounded text-center small fw-bold" style={{ background: '#b71c1c', color: 'white' }}>
+              <div>VPA Status</div>
+              <div className="fs-6">ABSOLUTE CONTRAINDICATION</div>
+              <div style={{ fontSize: '0.7rem', fontWeight: 400 }}>lethal hepatotoxicity — DO NOT USE</div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="p-2 rounded text-center small" style={{ background: '#fff8e1', border: '1px solid #f57f17' }}>
+              <div className="fw-bold" style={{ color: '#e65100' }}>mtDNA Depletion</div>
+              <div className="fs-6">{kpis.mtdna_depletion}</div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="p-2 rounded text-center small" style={{ background: '#e3f2fd', border: '1px solid #1565c0' }}>
+              <div className="fw-bold" style={{ color: '#1565c0' }}>Founder Variants</div>
+              <div className="fs-6" style={{ fontSize: '0.8rem' }}>{kpis.founder_variant}</div>
+            </div>
+          </div>
+        </div>
+      </SectionCard>
 
-      <div className="alert alert-warning mb-4" style={{ borderLeft: `5px solid ${ACCENT4}`, fontSize: 13 }}>
-        <strong>⚡ EPC = POLG UNTIL PROVEN OTHERWISE:</strong> Epilepsia partialis continua + liver disease + regression = Alpers-Huttenlocher syndrome.<br />
-        Start POLG workup immediately · LEV + CLB + ketamine infusion · NEVER phenobarbitone first-line
-      </div>
-
-      <div className="alert alert-info mb-4" style={{ fontSize: 13 }}>
-        <strong>💡 Clinical AHA:</strong> {data.key_aha}
-      </div>
-
-      <div className="row g-2 mb-4">
-        <KPI label="N Patients"       value={data.n_patients ?? '—'}               color={ACCENT} />
-        <KPI label="EPC Present"      value={`${k.epc_pct ?? '—'}%`}               color={ACCENT4} />
-        <KPI label="Drug Resistant"   value={`${k.dre_pct ?? '—'}%`}               color={ACCENT2} />
-        <KPI label="VPA Exposed"      value={`${k.vpa_exposed_pct ?? '—'}%`}       color='#922b21' />
-        <KPI label="VPA Liver Injury" value={`${k.vpa_liver_injury_pct ?? '—'}%`}  color={ACCENT2} />
-        <KPI label="KD Trialed"       value={`${k.kd_trialed_pct ?? '—'}%`}        color='#7d6608' />
-        <KPI label="On Cofactors"     value={`${k.cofactors_pct ?? '—'}%`}         color={ACCENT3} />
-      </div>
-
-      <SectionCard title="🚨 Clinical Alerts" borderColor={ACCENT2}>
-        {(data.clinical_alerts || []).map((a, i) => (
-          <Alert key={i} text={a}
-            variant={
-              a.includes('🚨') || a.includes('ABSOLUTE') || a.includes('NEVER') ? 'danger'
-              : a.includes('⚠️') || a.includes('MANDATORY') ? 'warning'
-              : a.includes('✅') ? 'success'
-              : 'info'
-            } />
+      {/* Clinical Highlights */}
+      <SectionCard title="⚡ Clinical Highlights">
+        {highlights.map((h, i) => (
+          <Alert key={i} variant={
+            h.includes('ABSOLUTE') || h.includes('CONTRAINDICATION') || h.includes('lethal') ? 'danger' :
+            h.includes('CARDINAL') || h.includes('INTRACTABLE') || h.includes('EPC') || h.includes('MANDATORY') ? 'warning' :
+            h.includes('preferred') || h.includes('Level A') ? 'success' : 'info'
+          } text={h} />
         ))}
       </SectionCard>
 
-      <SectionCard title="🧬 Etiology Distribution (N=41)" borderColor={ACCENT}>
-        {(data.etiologies || []).map((e, i) => (
-          <PctBar key={i} label={`${e.etiology} (N=${e.n})`} pct={e.pct}
-            color={i === 0 ? ACCENT2 : i === 1 ? '#2874a6' : i === 2 ? '#7d6608' : i === 3 ? '#117a65' : '#7f8c8d'} />
-        ))}
-      </SectionCard>
-
-      <div className="row">
-        <div className="col-md-6">
-          <SectionCard title="⚡ Seizure Type Prevalence">
-            {Object.entries(data.seizure_type_prevalence || {}).map(([k2, v], i) => (
-              <PctBar key={i} label={k2} pct={v} color={ACCENT4} />
-            ))}
-          </SectionCard>
-        </div>
-        <div className="col-md-6">
-          <SectionCard title="🌡️ Seizure Trigger Rates" borderColor={ACCENT2}>
-            {Object.entries(data.trigger_seizure_rates || {}).map(([k2, v], i) => (
-              <PctBar key={i} label={k2} pct={v} color={ACCENT2} />
-            ))}
-          </SectionCard>
-        </div>
-      </div>
-
-      <SectionCard title="🕐 Lifecycle Windows" borderColor={ACCENT}>
+      {/* Contraindications */}
+      <SectionCard title="🚫 Contraindications & Cautions">
         <div className="table-responsive">
-          <table className="table table-sm table-bordered small mb-0">
-            <thead style={{ backgroundColor: '#eaf3fb' }}>
-              <tr><th>Window</th><th>Age</th><th>Focus</th><th>Key Action</th></tr>
-            </thead>
+          <table className="table table-sm small">
+            <thead><tr>
+              <th>Drug / Intervention</th><th>Level</th><th>Reason</th>
+            </tr></thead>
             <tbody>
-              {(data.lifecycle_windows || []).map((w, i) => (
-                <tr key={i}>
-                  <td className="fw-bold">{w.window}</td>
-                  <td className="text-nowrap">{w.age_range}</td>
-                  <td>{w.focus}</td>
-                  <td><strong>{w.key_action}</strong></td>
+              {cis.map((c, i) => (
+                <tr key={i} style={{ background: c.level.includes('ABSOLUTE') ? '#ffcdd2' : c.level.includes('AVOID') || c.level.includes('CAUTION') ? '#fff8e1' : 'transparent' }}>
+                  <td><strong>{c.drug}</strong></td>
+                  <td><span className={`badge ${c.level.includes('ABSOLUTE') ? 'bg-danger' : c.level.includes('AVOID') || c.level.includes('CAUTION') ? 'bg-warning text-dark' : 'bg-info text-dark'}`}>{c.level.slice(0, 40)}</span></td>
+                  <td className="small">{c.reason}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </SectionCard>
-    </>
+
+      {/* Thresholds */}
+      <SectionCard title="🎯 Clinical Decision Thresholds">
+        <div className="table-responsive">
+          <table className="table table-sm small">
+            <thead><tr><th>Marker</th><th>Threshold</th><th>Interpretation</th></tr></thead>
+            <tbody>
+              {thresholds.map((t, i) => (
+                <tr key={i} style={{ background: i < 2 ? LIGHT : 'transparent' }}>
+                  <td><strong>{t.marker}</strong></td>
+                  <td><code>{t.cutoff}</code></td>
+                  <td>{t.interpretation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+
+      {/* DDx Table */}
+      <SectionCard title="🔍 Differential Diagnosis">
+        <div className="table-responsive">
+          <table className="table table-sm small">
+            <thead><tr><th>Disease</th><th>Shared with POLG/Alpers</th><th>Key Distinguishing Features</th></tr></thead>
+            <tbody>
+              {ddx.map((d, i) => (
+                <tr key={i}>
+                  <td><strong>{d.disease}</strong></td>
+                  <td>{d.shared}</td>
+                  <td>{d.distinguishing}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+    </div>
   );
 }
 
-// ── Tab: Patients & Etiology ──────────────────────────────────────────────────
 function PatientsTab({ data }) {
-  const [search, setSearch] = useState('');
-  const [catFilter, setCatFilter] = useState('All');
-  const [epcFilter, setEpcFilter] = useState('All');
-  if (!data) return <div className="text-muted">Loading…</div>;
-
-  const cats = ['All', ...new Set((data.patients || []).map(p => p.category))];
-  const filtered = (data.patients || []).filter(p => {
-    const matchCat   = catFilter === 'All' || p.category === catFilter;
-    const matchEpc   = epcFilter === 'All' || (epcFilter === 'EPC' ? p.epc_present : !p.epc_present);
-    const matchSearch = !search || JSON.stringify(p).toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchEpc && matchSearch;
-  });
+  if (!data) return <div className="text-center py-4 text-muted">Loading breakdown...</div>;
+  const groups = data.phenotype_groups || [];
+  const variants = data.variant_distribution || [];
+  const bm = data.biomarker_summary || {};
 
   return (
-    <>
-      <div className="row mb-3 g-2">
-        <div className="col-md-4">
-          <input className="form-control form-control-sm" placeholder="Search patients…"
-            value={search} onChange={e => setSearch(e.target.value)} />
-        </div>
-        <div className="col-md-4">
-          <select className="form-select form-select-sm" value={catFilter} onChange={e => setCatFilter(e.target.value)}>
-            {cats.map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
-        <div className="col-md-4">
-          <select className="form-select form-select-sm" value={epcFilter} onChange={e => setEpcFilter(e.target.value)}>
-            {['All','EPC','No EPC'].map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <div className="table-responsive mb-4">
-        <table className="table table-sm table-hover table-bordered small">
-          <thead className="table-dark">
-            <tr>
-              <th>ID</th><th>Age(M)</th><th>Sex</th><th>Onset(Y)</th>
-              <th>Class</th><th>Phase</th><th>Treatment</th><th>Control</th>
-              <th>EPC</th><th>VPA Exp</th><th>Liver Inj</th>
-              <th>CSF Lac</th><th>mtDNA%</th><th>Cofactors</th><th>KD</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map(p => (
-              <tr key={p.id}
-                style={{
-                  backgroundColor: p.vpa_exposed && p.liver_injury_vpa ? '#fdf2f2'
-                    : p.epc_present ? '#fdf5ff' : undefined
-                }}>
-                <td className="fw-bold">{p.id}</td>
-                <td>{p.age_months}</td>
-                <td>{p.sex}</td>
-                <td>{p.onset_years}</td>
-                <td>
-                  <span className={`badge ${
-                    p.functional_class === 'AR-mtDNA-depletion-Alpers' ? 'bg-danger'
-                    : p.functional_class === 'AR-mtDNA-depletion-infantile-severe' ? 'bg-dark'
-                    : p.functional_class === 'AR-mtDNA-depletion-juvenile' ? 'bg-warning text-dark'
-                    : p.functional_class === 'AD-mtDNA-deletions-PEO' ? 'bg-info text-dark'
-                    : 'bg-secondary'
-                  } small`} style={{ fontSize: 10 }}>{p.functional_class}</span>
-                </td>
-                <td className="text-nowrap small">{p.disease_phase}</td>
-                <td className="text-nowrap small">{p.current_treatment}</td>
-                <td>
-                  <span className={`badge ${
-                    p.seizure_control === 'drug-resistant' ? 'bg-danger'
-                    : 'bg-warning text-dark'
-                  }`}>{p.seizure_control}</span>
-                </td>
-                <td>
-                  {p.epc_present
-                    ? <span className="badge" style={{ backgroundColor: ACCENT4 }}>EPC ⚡</span>
-                    : <span className="text-muted small">—</span>}
-                </td>
-                <td>
-                  {p.vpa_exposed
-                    ? <span className="badge bg-danger">VPA⚠</span>
-                    : <span className="text-muted small">—</span>}
-                </td>
-                <td>
-                  {p.liver_injury_vpa
-                    ? <span className="badge bg-danger">ALF⚠</span>
-                    : <span className="text-muted small">—</span>}
-                </td>
-                <td className={p.csf_lactate_mmol > 3.0 ? 'text-danger fw-bold' : ''}>{p.csf_lactate_mmol}</td>
-                <td className={p.mtdna_depletion_pct > 70 ? 'text-danger fw-bold' : ''}>{p.mtdna_depletion_pct ?? '—'}%</td>
-                <td>{p.mito_cofactors ? '✓' : '—'}</td>
-                <td>{p.kd_trialed ? '✓' : '—'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="text-muted small">
-          Showing {filtered.length} of {(data.patients || []).length} patients ·
-          Red row = VPA-exposed + liver injury · Purple row = EPC present ·
-          CSF Lactate &gt;3.0 mmol/L = red · mtDNA depletion &gt;70% = red
-        </div>
-      </div>
-
-      <div className="row">
-        {(data.etiology_catalog || []).map((e, i) => (
-          <div className="col-md-6 mb-3" key={i}>
-            <div className="card h-100 shadow-sm" style={{ borderLeft: `4px solid ${
-              i===0 ? ACCENT2 : i===1 ? '#2874a6' : i===2 ? '#7d6608' : i===3 ? '#117a65' : '#7f8c8d'
-            }` }}>
-              <div className="card-header small fw-bold">{e.etiology} — N={e.n} ({e.pct}%)</div>
-              <div className="card-body small">
-                <p><strong>Mechanism:</strong> {e.mechanism}</p>
-                <p className="mb-1"><strong>EEG:</strong> {e.eeg_signature}</p>
-                <p className="mb-0"><strong>Clinical Note:</strong> {e.clinical_note}</p>
+    <div>
+      <SectionCard title="👥 Phenotype Groups (n=40)">
+        <div className="row">
+          {groups.map((g, i) => (
+            <div key={i} className="col-md-4 mb-3">
+              <div className="card h-100 shadow-sm">
+                <div className="card-body text-center">
+                  <div className="fw-bold fs-4" style={{ color: COLOR }}>{g.n}</div>
+                  <div className="text-muted small">{g.group}</div>
+                  <div className="text-muted small">{g.pct}% of cohort</div>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard title="🧬 Variant Distribution (biallelic AR)">
+        {variants.map((v, i) => (
+          <div key={i} className="mb-3 p-2 rounded" style={{ background: i < 2 ? LIGHT : '#fff' }}>
+            <div className="d-flex justify-content-between mb-1">
+              <span className="small fw-bold">{v.variant}</span>
+              <span className="small text-muted">{v.pct}% ({v.n_alleles} alleles)</span>
+            </div>
+            <div className="progress mb-1" style={{ height: 10 }}>
+              <div className="progress-bar" style={{ width: `${v.pct}%`, backgroundColor: i === 0 ? COLOR : i === 1 ? '#c62828' : '#888' }} />
+            </div>
+            <div className="text-muted" style={{ fontSize: '0.75rem' }}>{v.effect}</div>
           </div>
         ))}
-      </div>
-    </>
+      </SectionCard>
+
+      <SectionCard title="🔬 Key Biomarkers">
+        <div className="row g-3 small">
+          {[
+            { label: 'Epilepsy', pct: bm.epilepsy_pct, color: COLOR, desc: 'CARDINAL, INTRACTABLE; occipital onset' },
+            { label: 'EPC (hallmark)', pct: bm.epc_pct, color: '#c62828', desc: 'Epilepsia partialis continua; focal motor; continuous >1h' },
+            { label: 'Status Epilepticus', pct: bm.status_epilepticus_pct, color: '#d32f2f', desc: 'Refractory SE; precipitates rapid regression' },
+            { label: 'Hepatopathy', pct: bm.hepatopathy_pct, color: '#e65100', desc: `Transaminase elevation; liver failure ${bm.acute_liver_failure_pct}%` },
+            { label: 'Psychomotor regression', pct: bm.regression_pct, color: '#4a148c', desc: `Language loss ${bm.language_loss_pct}%; ambulation loss ${bm.ambulation_loss_pct}%` },
+            { label: 'Visual involvement', pct: bm.visual_pct, color: '#1565c0', desc: `Occipital cortical; cortical blindness ${bm.cortical_blindness_pct}%` },
+          ].map((b, i) => (
+            <div key={i} className="col-md-4 col-6">
+              <div className="card shadow-sm text-center">
+                <div className="card-body py-2">
+                  <div className="fw-bold fs-5" style={{ color: b.color }}>{b.pct}%</div>
+                  <div className="fw-semibold small">{b.label}</div>
+                  <div className="text-muted" style={{ fontSize: '0.7rem' }}>{b.desc}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+    </div>
   );
 }
 
-// ── Tab: Seizure Types & Triggers ──────────────────────────────────────────────
-function SeizureTriggersTab({ data }) {
-  if (!data) return <div className="text-muted">Loading…</div>;
+function EpilepsyHepatopathyTab({ data }) {
+  if (!data) return <div className="text-center py-4 text-muted">Loading data...</div>;
+  const bm = data.biomarker_summary || {};
+  const seizures = data.seizure_profile || [];
+  const hepatic = data.hepatic_outcomes || [];
+
   return (
-    <>
-      <SectionCard title="⚡ Seizure Types (N=41 cohort)" borderColor={ACCENT4}>
-        {(data.seizure_types || []).map((s, i) => (
-          <div className="mb-4 pb-3 border-bottom" key={i}>
-            <div className="d-flex justify-content-between align-items-center mb-1">
-              <span className="fw-bold">{s.type}</span>
-              <span className="badge" style={{ backgroundColor: ACCENT4 }}>{s.prevalence_pct}%</span>
-            </div>
-            <div className="progress mb-2" style={{ height: 8 }}>
-              <div className="progress-bar" style={{ width: `${s.prevalence_pct}%`, backgroundColor: ACCENT4 }} />
-            </div>
-            <div className="small text-muted mb-1"><strong>Onset:</strong> {s.onset_age}</div>
-            <div className="small mb-1"><strong>EEG correlate:</strong> {s.eeg_correlate}</div>
-            <div className="small"><strong>Clinical tip:</strong> <em>{s.clinical_tip}</em></div>
-          </div>
-        ))}
+    <div>
+      <SectionCard title="⚡ Epilepsy Profile — EPC + Status + Occipital Seizures" borderColor="#c62828">
+        <Alert variant="danger" text="VPA IS ABSOLUTELY CONTRAINDICATED — never use valproate in POLG/Alpers for ANY seizure type, duration, or severity. Use LEV (IV loading 20-40 mg/kg) + midazolam + lacosamide + phenobarbitone as SE protocol." />
+        <Alert variant="warning" text={`EPC (Epilepsia Partialis Continua) = ${bm.epc_pct}% — HALLMARK seizure of Alpers; continuous focal motor jerk >1h; highly resistant; occurs while child is conscious; correlates with occipital cortical neuronal loss.`} />
+        <div className="table-responsive mt-2">
+          <table className="table table-sm small">
+            <thead><tr style={{ background: LIGHT }}>
+              <th>Seizure Type</th><th>N</th><th>%</th><th>Clinical Notes</th>
+            </tr></thead>
+            <tbody>
+              {seizures.map((s, i) => (
+                <tr key={i} style={{ background: i === 0 ? '#ffcdd2' : 'transparent' }}>
+                  <td><strong>{s.type}</strong></td>
+                  <td>{s.n}</td>
+                  <td><span className={`badge ${s.pct >= 60 ? 'bg-danger' : s.pct >= 40 ? 'bg-warning text-dark' : 'bg-info text-dark'}`}>{s.pct}%</span></td>
+                  <td className="text-muted">{s.desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <Alert variant="info" text="SE PROTOCOL WITHOUT VPA: Stage 1: buccal midazolam 0.3 mg/kg; Stage 2: IV LEV 20-40 mg/kg + IV midazolam infusion; Stage 3: IV lacosamide 6-8 mg/kg; Stage 4: IV phenobarbitone 15-20 mg/kg; Stage 5: GA thiopentone (NOT propofol — PRIS). NEVER fosphenytoin high-dose." />
       </SectionCard>
 
-      <SectionCard title="🌡️ Seizure Triggers & Rates" borderColor={ACCENT2}>
-        {(data.triggers || []).map((t, i) => (
-          <div className="mb-3 pb-2 border-bottom" key={i}>
-            <div className="d-flex justify-content-between align-items-center mb-1">
-              <span className="fw-bold">{t.trigger}</span>
-              <span className="badge bg-danger">{t.rate_pct}%</span>
-            </div>
-            <div className="progress mb-2" style={{ height: 8 }}>
-              <div className="progress-bar bg-danger" style={{ width: `${t.rate_pct}%` }} />
-            </div>
-            <div className="small text-muted">{t.note}</div>
-          </div>
-        ))}
+      <SectionCard title="🫀 Hepatopathy — VPA Hepatotoxicity and Liver Outcomes" borderColor="#e65100">
+        <Alert variant="danger" text={`ACUTE LIVER FAILURE in ${bm.acute_liver_failure_pct}% — VPA is the precipitant in ${bm.vpa_exposure_in_hepatic_failure_pct}% of hepatic failure cases. Mortality 80% once liver failure established without transplant. Liver transplant does NOT cure neurological disease.`} />
+        <div className="table-responsive mt-2">
+          <table className="table table-sm small">
+            <thead><tr style={{ background: '#fff3e0' }}>
+              <th>Hepatic Outcome</th><th>N</th><th>%</th><th>Clinical Notes</th>
+            </tr></thead>
+            <tbody>
+              {hepatic.map((h, i) => (
+                <tr key={i} style={{ background: i === 1 ? '#ffcdd2' : 'transparent' }}>
+                  <td><strong>{h.outcome}</strong></td>
+                  <td>{h.n}</td>
+                  <td><span className={`badge ${h.pct >= 70 ? 'bg-danger' : h.pct >= 30 ? 'bg-warning text-dark' : 'bg-info text-dark'}`}>{h.pct}%</span></td>
+                  <td className="text-muted">{h.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <Alert variant="warning" text="LFT MONITORING: Quarterly minimum in all POLG patients. Stop ALL hepatotoxic drugs at ALT/AST >3× ULN. Weekly LFTs at 3× ULN. Liver team at 10× ULN or rising bilirubin. Coagulation + ammonia in acute decompensation." />
+        <Alert variant="info" text="LIVER TRANSPLANT: May prevent liver-failure death but does NOT cure neurological disease — brain mtDNA depletion continues. Only consider in patients with severe but not terminal liver failure + neurological function still present + family/team consensus. Most centres do NOT offer OLT in late-stage AHS." />
       </SectionCard>
-    </>
+
+      <SectionCard title="📊 Disease Outcomes">
+        <div className="row g-3 small">
+          {Object.entries(data.outcomes || {}).map(([k, v], i) => (
+            <div key={i} className="col-md-4 col-6">
+              <div className="card text-center shadow-sm">
+                <div className="card-body py-2">
+                  <div className="fw-bold" style={{ color: k.includes('vpa') || k.includes('failure') ? '#c62828' : COLOR }}>
+                    {typeof v === 'number' && k.includes('pct') ? `${v}%` :
+                     typeof v === 'number' && k.includes('months') ? `${v} mo` :
+                     v}
+                  </div>
+                  <div className="text-muted" style={{ fontSize: '0.72rem' }}>{k.replace(/_/g, ' ')}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+    </div>
   );
 }
 
-// ── Tab: Treatments ────────────────────────────────────────────────────────────
 function TreatmentsTab({ data }) {
-  const [expanded, setExpanded] = useState(null);
-  if (!data) return <div className="text-muted">Loading…</div>;
-
-  const evidenceColor = (ev) => {
-    if (!ev) return '#6c757d';
-    if (ev.includes('ABSOLUTE CI') || ev.includes('ABSOLUTE')) return '#922b21';
-    if (ev.includes('Level A')) return '#1a5276';
-    if (ev.includes('Level B')) return ACCENT;
-    if (ev.includes('Level C')) return ACCENT3;
-    return '#6c757d';
-  };
+  if (!data) return <div className="text-center py-4 text-muted">Loading treatments...</div>;
+  const treatments = data.treatment_distribution || [];
 
   return (
-    <>
-      <div className="alert alert-danger mb-3" style={{ fontSize: 13, borderLeft: `5px solid ${ACCENT2}` }}>
-        🚨 <strong>VPA / VALPROATE — ABSOLUTE CONTRAINDICATION IN ALL POLG</strong> — any dose, any route, any indication including SE. ALF in 32–45%; mortality &gt;80%. Document as allergy. Use LEV IV 60 mg/kg for SE.
-      </div>
-      <div className="alert alert-success mb-3" style={{ fontSize: 13 }}>
-        ✅ <strong>LEV 60 mg/kg IV loading</strong> — FIRST-LINE in SE (hepatically safe, no mitochondrial toxicity). Maintenance 30-60 mg/kg/day. No drug interactions. Preferred in all POLG disease stages.
-      </div>
-      <div className="alert alert-primary mb-3" style={{ fontSize: 13 }}>
-        🧬 <strong>MITOCHONDRIAL COFACTORS</strong> — ALL POLG patients: Riboflavin (B2) + CoQ10 10-30 mg/kg/day + L-carnitine 50-100 mg/kg/day. Rational metabolic support — no RCT but mechanistically justified, minimal risk.
-      </div>
+    <div>
+      <Alert variant="danger" text="⛔ ABSOLUTE RULE: VPA (VALPROATE) IS PERMANENTLY CONTRAINDICATED IN POLG/ALPERS. Document this in every medical record, allergy system, and emergency letter. No exceptions. No safe dose." />
 
-      {(data.treatments || []).map((t, i) => (
-        <div className="card mb-3 shadow-sm" key={i}
-          style={{ borderLeft: `4px solid ${evidenceColor(t.evidence)}` }}>
-          <div className="card-header d-flex justify-content-between align-items-center"
-            style={{ cursor: 'pointer', backgroundColor: t.evidence?.includes('ABSOLUTE') ? '#fdf2f2' : '#eaf3fb' }}
-            onClick={() => setExpanded(expanded === i ? null : i)}>
-            <span className="fw-bold small">{t.drug}</span>
-            <div className="d-flex align-items-center gap-2">
-              <span className="badge" style={{ backgroundColor: evidenceColor(t.evidence), fontSize: 10 }}>{t.evidence}</span>
-              <span>{expanded === i ? '▲' : '▼'}</span>
+      <SectionCard title="💊 Treatment Distribution (n=40)">
+        {treatments.map((t, i) => {
+          const isLevelA = t.indication?.includes('Level A');
+          const isLevelB = t.indication?.includes('Level B');
+          return (
+            <div key={i} className="mb-3 p-2 rounded" style={{ background: isLevelA ? LIGHT : '#f9f9f9', border: isLevelA ? `1px solid ${COLOR}` : '1px solid #eee' }}>
+              <div className="d-flex justify-content-between align-items-start mb-1">
+                <div>
+                  <span className="fw-bold small">{t.treatment}</span>
+                  {isLevelA && <span className="badge ms-2" style={{ background: COLOR, fontSize: '0.65rem' }}>LEVEL A</span>}
+                  {isLevelB && !isLevelA && <span className="badge ms-2 bg-info" style={{ fontSize: '0.65rem' }}>LEVEL B</span>}
+                </div>
+                <span className="small text-muted">{t.n}/{data.cohort} ({t.pct}%)</span>
+              </div>
+              <div className="progress mb-1" style={{ height: 8 }}>
+                <div className="progress-bar" style={{ width: `${t.pct}%`, backgroundColor: isLevelA ? COLOR : isLevelB ? '#1565c0' : '#888' }} />
+              </div>
+              <div className="text-muted" style={{ fontSize: '0.75rem' }}>{t.indication}</div>
             </div>
-          </div>
-          {expanded === i && (
-            <div className="card-body small">
-              <p><strong>Indication:</strong> {t.indication}</p>
-              <p><strong>Dose:</strong> {t.dose}</p>
-              <p><strong>MOA:</strong> {t.moa}</p>
-              <p><strong>Efficacy:</strong> {t.efficacy}</p>
-              <p><strong>Safety:</strong> {t.safety}</p>
-              <p><strong>Monitoring:</strong> {t.monitoring}</p>
-              <p className="mb-0"><strong>Contraindications:</strong> {t.contraindications}</p>
-            </div>
-          )}
-        </div>
-      ))}
-
-      <SectionCard title="🔬 Metabolic Monitoring Panel" borderColor={ACCENT}>
-        <div className="table-responsive">
-          <table className="table table-sm table-bordered small mb-0">
-            <thead style={{ backgroundColor: '#eaf3fb' }}>
-              <tr><th>Item</th><th>Target</th><th>Frequency</th><th>Rationale</th></tr>
-            </thead>
-            <tbody>
-              {(data.aed_monitoring || []).map((m, i) => (
-                <tr key={i}>
-                  <td className="fw-bold">{m.item}</td>
-                  <td className="text-nowrap small">{m.target}</td>
-                  <td className="small">{m.frequency}</td>
-                  <td className="small">{m.rationale}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+          );
+        })}
       </SectionCard>
-    </>
+
+      <SectionCard title="🚦 Prescribing Decision Guide">
+        <Alert variant="danger" text="VPA (Valproate): ABSOLUTE CONTRAINDICATION — lethal hepatotoxicity through 3 synergistic mechanisms: (1) direct POLG inhibition → complete mtDNA depletion; (2) CoA sequestration → fatty acid oxidation collapse; (3) VPA epoxide → direct hepatocyte necrosis. Published evidence: 65-70% of POLG liver failure had VPA exposure. Latency 3wk–9mo. Irreversible. NEVER USE." />
+        <Alert variant="success" text="LEV (levetiracetam): PREFERRED first-line AED — no hepatic metabolism; no mito toxicity; no ammonia effect; no cytochrome P450 induction; IV loading 20-40 mg/kg for SE; oral 30-50 mg/kg/day divided; renal excretion." />
+        <Alert variant="success" text="Buccal midazolam: LEVEL A — home rescue for all families; 0.3 mg/kg (max 10 mg); seizures >5min; families trained; all AHS families must have home supply with written protocol." />
+        <Alert variant="success" text="IV Dextrose: LEVEL A — mandatory for any NPO >4h; GIR 6-8 mg/kg/min of 10% dextrose; prevents catabolism → lactic acidosis; all families have sick-day action card." />
+        <Alert variant="warning" text="Propofol: AVOID — PRIS risk in any mitochondrial disease. Use ketamine + sevoflurane. Alert anaesthesia team at every procedural encounter. Document POLG diagnosis in pre-anaesthetic assessment." />
+        <Alert variant="warning" text="IV Fosphenytoin (high-dose): CAUTION — supratherapeutic doses inhibit Complex I; avoid as SE rescue. Use midazolam → IV LEV → IV lacosamide → IV phenobarbitone → thiopentone GA instead." />
+        <Alert variant="info" text="CoQ10 / Riboflavin: empirical (Level D) — no controlled evidence in POLG; generally safe; does not alter disease course. Focus on evidence-based: LEV, midazolam, dextrose protocol, NG/PEG feeds, palliative care." />
+        <Alert variant="info" text="Deoxynucleoside supplementation: investigational — compassionate use in European centres; replenishes dNTP pools; no RCT data; families must understand experimental nature." />
+      </SectionCard>
+    </div>
   );
 }
 
-// ── Tab: Definitions ──────────────────────────────────────────────────────────
 function DefinitionsTab({ data }) {
-  if (!data) return <div className="text-muted">Loading…</div>;
+  if (!data) return <div className="text-center py-4 text-muted">Loading definitions...</div>;
+  const defs = data.definitions || [];
+
   return (
-    <>
-      <SectionCard title="🚫 Absolute Contraindications / Critical Safety Rules" borderColor={ACCENT2}>
-        {(data.absolute_contraindications || []).map((c, i) => (
-          <div className="mb-3 pb-2 border-bottom" key={i}>
-            <div className="fw-bold text-danger">{c.drug}</div>
-            <div className="small mb-1"><strong>Scope:</strong> {c.scope}</div>
-            <div className="small mb-1"><strong>Mechanism:</strong> {c.mechanism}</div>
-            <div className="small mb-1"><strong>Action:</strong> <em>{c.action}</em></div>
-            <div className="small text-muted">{c.evidence}</div>
-          </div>
-        ))}
-      </SectionCard>
-
-      <SectionCard title="📏 Monitoring Thresholds (10)" borderColor={ACCENT}>
-        <div className="table-responsive">
-          <table className="table table-sm table-bordered small mb-0">
-            <thead style={{ backgroundColor: '#eaf3fb' }}>
-              <tr><th>Threshold</th><th>Required Action</th></tr>
-            </thead>
-            <tbody>
-              {(data.thresholds || []).map((t, i) => (
-                <tr key={i}>
-                  <td className="fw-bold text-nowrap">{t.threshold}</td>
-                  <td>{t.action}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div>
+      <SectionCard title="📖 POLG Alpers-Huttenlocher — Definitions">
+        <div className="small text-muted mb-3">
+          Disease: {data.disease} · Gene: {data.gene} · OMIM Gene: {data.omim_gene} · Disease: {data.omim_disease}
         </div>
-      </SectionCard>
-
-      <SectionCard title="🧠 Key Concepts (14)" borderColor={ACCENT}>
-        {(data.definitions || []).map((c, i) => (
-          <div className="mb-3 pb-2 border-bottom" key={i}>
-            <div className="fw-bold text-primary">{c.term}</div>
-            <div className="small">{c.definition}</div>
+        {defs.map((d, i) => (
+          <div key={i} className="mb-4 p-3 rounded" style={{ background: i % 2 === 0 ? '#fff' : '#fafafa', border: '1px solid #eee' }}>
+            <div className="fw-bold mb-1" style={{ color: COLOR }}>{d.term}</div>
+            <div className="small mb-2">{d.definition}</div>
+            <div className="small text-muted p-2 rounded" style={{ background: LIGHT, borderLeft: `3px solid ${COLOR}` }}>
+              <strong>Clinical relevance:</strong> {d.relevance}
+            </div>
           </div>
         ))}
       </SectionCard>
-
-      <SectionCard title="📚 Evidence Standards" borderColor={ACCENT}>
-        <div className="table-responsive">
-          <table className="table table-sm table-bordered small mb-0">
-            <thead style={{ backgroundColor: '#eaf3fb' }}>
-              <tr><th>Standard</th><th>Title</th><th>Relevance</th></tr>
-            </thead>
-            <tbody>
-              {(data.standards || []).map((s, i) => (
-                <tr key={i}>
-                  <td className="fw-bold text-nowrap">{s.standard}</td>
-                  <td>{s.title}</td>
-                  <td className="small">{s.relevance}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </SectionCard>
-
-      <SectionCard title="🔬 Key References (6)" borderColor={ACCENT}>
-        {(data.references || []).map((r, i) => (
-          <div className="mb-2 pb-1 border-bottom" key={i}>
-            <div className="fw-bold small">{r.ref}</div>
-            <div className="small text-muted">{r.title}</div>
-            <div className="small"><em>{r.relevance}</em></div>
-          </div>
-        ))}
-      </SectionCard>
-    </>
+    </div>
   );
 }
 
-// ── Main page ──────────────────────────────────────────────────────────────────
 export default function POLGPage() {
   const [tab, setTab] = useState(0);
   const [overview, setOverview] = useState(null);
   const [breakdown, setBreakdown] = useState(null);
   const [definitions, setDefinitions] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${API}/api/polg/overview`)
-      .then(r => r.json()).then(setOverview)
-      .catch(e => setError(e.message));
+    setLoading(true);
+    Promise.all([
+      fetch(`${API}/api/polg/overview`).then(r => r.json()),
+      fetch(`${API}/api/polg/breakdown`).then(r => r.json()),
+      fetch(`${API}/api/polg/definitions`).then(r => r.json()),
+    ])
+      .then(([ov, bd, df]) => { setOverview(ov); setBreakdown(bd); setDefinitions(df); setLoading(false); })
+      .catch(e => { setError(e.message); setLoading(false); });
   }, []);
 
-  useEffect(() => {
-    if (tab === 1 || tab === 2 || tab === 3) {
-      if (!breakdown) {
-        fetch(`${API}/api/polg/breakdown`)
-          .then(r => r.json()).then(setBreakdown)
-          .catch(e => setError(e.message));
-      }
-    }
-    if (tab === 4) {
-      if (!definitions) {
-        fetch(`${API}/api/polg/definitions`)
-          .then(r => r.json()).then(setDefinitions)
-          .catch(e => setError(e.message));
-      }
-    }
-  }, [tab, breakdown, definitions]);
-
   return (
-    <div className="container-fluid py-3">
-      <div className="d-flex align-items-center mb-3 gap-2">
-        <div>
-          <h4 className="mb-0" style={{ color: ACCENT }}>
-            🧬 POLG Epilepsy — Alpers-Huttenlocher Syndrome (POLG-DEE / mtDNA Depletion)
-          </h4>
-          <div className="text-muted small">
-            POLG 15q26.1 · Mitochondrial DNA Polymerase Gamma · AR (AHS) + AD (PEO/SANDO) ·
-            EPC hallmark · VPA ABSOLUTE CI · LEV first-line · Mitochondrial cofactors · 41 patients
-          </div>
+    <div style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+      {/* Header */}
+      <div style={{ background: COLOR, color: 'white', padding: '16px 24px' }}>
+        <h4 className="mb-1 fw-bold">⛔ POLG — Alpers-Huttenlocher Syndrome</h4>
+        <div className="small opacity-75">
+          mtDNA Depletion Syndrome · 15q25.1 · OMIM 203700 · VPA ABSOLUTE CI — LETHAL HEPATOTOXICITY
+        </div>
+        <div className="small opacity-75 mt-1">
+          POLG (1240aa) · DNA Polymerase Gamma · Exonuclease-Spacer-Polymerase · EPC 60% · Hepatopathy 80% · Naviaux 2004 AJHG
         </div>
       </div>
 
-      {error && <div className="alert alert-danger small">API error: {error}</div>}
-
-      <div className="mb-3">
-        {TABS.map((t, i) => (
-          <TabBtn key={t} label={t} active={tab === i} onClick={() => setTab(i)} />
-        ))}
+      {/* Tabs */}
+      <div style={{ background: 'white', borderBottom: '1px solid #dee2e6' }}>
+        <div className="container-fluid px-3">
+          <ul className="nav nav-tabs border-0">
+            {TABS.map((t, i) => (
+              <li key={i} className="nav-item">
+                <button
+                  className={`nav-link ${tab === i ? 'active' : ''}`}
+                  style={tab === i ? { color: COLOR, borderBottomColor: COLOR, fontWeight: 600 } : {}}
+                  onClick={() => setTab(i)}
+                >{t}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {tab === 0 && <OverviewTab data={overview} />}
-      {tab === 1 && <PatientsTab data={breakdown} />}
-      {tab === 2 && <SeizureTriggersTab data={breakdown} />}
-      {tab === 3 && <TreatmentsTab data={breakdown} />}
-      {tab === 4 && <DefinitionsTab data={definitions} />}
+      {/* Content */}
+      <div className="container-fluid px-3 py-3">
+        {loading && <div className="text-center py-5"><div className="spinner-border" style={{ color: COLOR }} /></div>}
+        {error && <div className="alert alert-danger">Error: {error}</div>}
+        {!loading && !error && (
+          <>
+            {tab === 0 && <OverviewTab data={overview} />}
+            {tab === 1 && <PatientsTab data={breakdown} />}
+            {tab === 2 && <EpilepsyHepatopathyTab data={breakdown} />}
+            {tab === 3 && <TreatmentsTab data={breakdown} />}
+            {tab === 4 && <DefinitionsTab data={definitions} />}
+          </>
+        )}
+      </div>
     </div>
   );
 }

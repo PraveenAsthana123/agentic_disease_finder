@@ -38597,6 +38597,36 @@ async def clpb_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-547; 3 endpoints /api/polg/overview|breakdown|definitions
+# POLG Alpers-Huttenlocher: VPA-ABSOLUTE-CI-Lethal-Hepatotoxicity / EPC-60pct / Hepatopathy-80pct
+# mtDNA-Depletion-Liver-Brain / Ala467Thr-Trp748Ser-European-Founder / 15q25.1 / OMIM-Gene-174763-Disease-203700
+@app.get("/api/polg/overview")
+async def polg_overview():
+    try:
+        import scripts.polg_dashboard as polg_
+        return _json_safe(polg_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/polg/breakdown")
+async def polg_breakdown():
+    try:
+        import scripts.polg_dashboard as polg_
+        return _json_safe(polg_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/polg/definitions")
+async def polg_definitions():
+    try:
+        import scripts.polg_dashboard as polg_
+        return _json_safe(polg_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -8668,5 +8668,27 @@
       "/api/clpb/definitions"
     ],
     "page": "/clpb"
+  },
+  {
+    "id": "polg",
+    "name": "POLG Alpers-Huttenlocher Syndrome (POLG-1240aa-mtDNA-Polymerase-Gamma-Exonuclease-Spacer-Polymerase / VPA-ABSOLUTE-CI-Lethal-Hepatotoxicity-3-Mechanisms / EPC-60pct-Hallmark-Epilepsia-Partialis-Continua / Hepatopathy-80pct-Acute-Liver-Failure-35pct / Psychomotor-Regression-100pct / mtDNA-Depletion-Liver-Brain-Under-30pct-DIAGNOSTIC / Ala467Thr-Trp748Ser-European-Founder / Liver-Transplant-Does-NOT-Cure-Neurological-Disease / LEV-Preferred-IV-Loading-20-40mgkg / Naviaux-2004-AJHG / 40-patient-cohort-seed-547 / 15q25.1 / OMIM-Gene-POLG-174763-Disease-Alpers-203700)",
+    "status": "built",
+    "category": "mtDNA-Depletion-Syndrome / POLG-Related-Disorder / Mitochondrial-DNA-Maintenance",
+    "gene": "POLG",
+    "locus": "15q25.1",
+    "color": "#b71c1c",
+    "api_prefix": "/api/polg",
+    "frontend_path": "/polg",
+    "cohort_size": 40,
+    "seed": 547,
+    "omim_gene": "174763",
+    "omim_disease": "203700",
+    "built_date": "2026-09-01",
+    "endpoints": [
+      "/api/polg/overview",
+      "/api/polg/breakdown",
+      "/api/polg/definitions"
+    ],
+    "maps_to": "/api/polg/overview|breakdown|definitions + portal-next/app/polg/page.jsx + SiteNav wired after CLPB"
   }
 ]
