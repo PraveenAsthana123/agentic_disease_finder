@@ -9047,5 +9047,19 @@
     "id": "cox10",
     "name": "COX10 Leigh Syndrome Renal Tubulopathy Complex IV COX Deficiency (COX10-441aa-IMM-Protoheme-IX-Farnesyltransferase-Heme-a-o-Synthase-Step1-COX1-MT-CO1-17p12 / OMIM-Gene-602125-Disease-220111 / AR-Biallelic / pLeu336His-c1007TA-Brazilian-Founder / pArg116Trp-c346CT-European / Leigh-Leigh-like-MRI-88pct-CARDINAL / Renal-Tubulopathy-Fanconi-65pct-DISTINGUISHING-KEY-DDx-SURF1-below10pct / Lactic-Acidosis-100pct / Hypotonia-90pct / NO-Hepatopathy-KEY-DDx-SCO1 / NO-HCM-Dominant-KEY-DDx-SCO2 / NO-Iron-Overload-KEY-DDx-GRACILE / Isolated-COX-Deficiency-Complexes-I-II-III-NORMAL / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI-23S-rRNA-MT-CO1 / KD-CONTRAINDICATED / LEV-Preferred-AED / Antonicka-2003-AmJHumGenet / 40-patient-cohort-seed-599 / 17p12 / OMIM-Gene-COX10-602125-Disease-220111)",
     "status": "built"
+  },
+  {
+    "id": "cox15",
+    "name": "COX15 Leigh Syndrome + Infantile HCM (Complex IV / COX Deficiency)",
+    "status": "built",
+    "gene": "COX15",
+    "omim_gene": "603646",
+    "chromosome": "10q24.2",
+    "inheritance": "AR",
+    "category": "mitochondrial_disease",
+    "api_prefix": "/api/cox15",
+    "portal_path": "/cox15",
+    "seed": 601,
+    "registered": "2026-09-01"
   }
 ]

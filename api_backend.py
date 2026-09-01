@@ -39370,6 +39370,30 @@ async def cox10_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/cox15/overview")
+async def cox15_overview():
+    try:
+        import scripts.cox15_dashboard as cox15_
+        return _json_safe(cox15_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cox15/breakdown")
+async def cox15_breakdown():
+    try:
+        import scripts.cox15_dashboard as cox15_
+        return _json_safe(cox15_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cox15/definitions")
+async def cox15_definitions():
+    try:
+        import scripts.cox15_dashboard as cox15_
+        return _json_safe(cox15_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
