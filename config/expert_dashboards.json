@@ -9014,5 +9014,15 @@
     "omim_gene": "603358",
     "omim_disease": "603839",
     "built_note": "Built scripts/gracile_dashboard.py, api_backend.py 3 routes /api/gracile/overview|breakdown|definitions verified 200, portal-next/app/gracile/page.jsx + SiteNav wired after KSS, expert_dashboards.json count 587->588. Built 2026-09-01."
+  },
+  {
+    "id": "surf1",
+    "name": "SURF1 Leigh Syndrome Complex IV COX Deficiency (SURF1-300aa-COX-Assembly-Factor-COX1-Heme-a3-CuB-Insertion-Scaffold-IMM / Leigh-Syndrome-Most-Common-Single-Gene-Cause-10-15pct-All-Molecular-Leigh / Isolated-COX-Deficiency-Complex-I-II-III-Normal-BIOCHEMICAL-FINGERPRINT / Psychomotor-Regression-100pct-CARDINAL / Leigh-MRI-Bilateral-Symmetric-Putamen-Brainstem-95pct / Hypotonia-95pct / Lactic-Acidosis-90pct-LP-Ratio-Above-20 / Resp-Compromise-75pct / NO-Hepatopathy-KEY-DDx-POLG-DGUOK-MPV17 / NO-Iron-Overload-KEY-DDx-GRACILE / c845-846delCT-pLeu282Profs3-European-Founder / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / Biotin-Thiamine-Empiric-MANDATORY-TREATABLE-Mimic / Zhu-1998-NatGenet / 40-patient-cohort-seed-593 / 9q34.2 / OMIM-Gene-SURF1-185620-Disease-Leigh-256000)",
+    "status": "built",
+    "locus": "9q34.2",
+    "disease": "Leigh Syndrome (SURF1-related Complex IV COX Deficiency)",
+    "omim_gene": "185620",
+    "omim_disease": "256000",
+    "built_note": "Built scripts/surf1_dashboard.py, api_backend.py 3 routes /api/surf1/overview|breakdown|definitions verified 200, portal-next/app/surf1/page.jsx + SiteNav wired after GRACILE, expert_dashboards.json count 588->589. Built 2026-09-01."
   }
 ]

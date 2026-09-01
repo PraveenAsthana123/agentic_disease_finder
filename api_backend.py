@@ -39272,6 +39272,31 @@ async def gracile_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/surf1/overview")
+async def surf1_overview():
+    try:
+        import scripts.surf1_dashboard as surf1_
+        return _json_safe(surf1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/surf1/breakdown")
+async def surf1_breakdown():
+    try:
+        import scripts.surf1_dashboard as surf1_
+        return _json_safe(surf1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/surf1/definitions")
+async def surf1_definitions():
+    try:
+        import scripts.surf1_dashboard as surf1_
+        return _json_safe(surf1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
