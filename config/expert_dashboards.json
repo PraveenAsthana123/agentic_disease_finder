@@ -9107,5 +9107,20 @@
     "cohort_seed": 609,
     "cohort_size": 40,
     "registered_at": "2026-09-01"
+  },
+  {
+    "id": "ndufs1",
+    "name": "NDUFS1 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh IP1-75kDa-Fe-S (NDUFS1-727aa-N-Module-IP1-75kDa-Fe-S-Clusters-N1b-N4-N5-CENTRAL-Electron-Relay-NDUFV1-to-N2-2q33.3 / OMIM-Gene-157655-Disease-618226 / AR-Biallelic / pArg196His-c587GA-Recurrent-Severe / pArg196Cys-c586CT-Severe / pGln522Lys-c1564CA-Intermediate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / Peripheral-Neuropathy-50pct-DISTINGUISHING-NOT-NDUFS4-NOT-NDUFV1 / NO-Olfactory-Bulb-KEY-DDx-NDUFS4 / NO-Leukodystrophy-KEY-DDx-NDUFV1 / Metformin-ABSOLUTE-CI / VPA-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / KD-CONTRAINDICATED / Succinate-CI-Bypass / LEV-Preferred / 40-patient-cohort-seed-611 / 2q33.3 / OMIM-Gene-NDUFS1-157655-Disease-618226)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/ndufs1/overview",
+      "/api/ndufs1/breakdown",
+      "/api/ndufs1/definitions"
+    ],
+    "portal_page": "/ndufs1",
+    "component": "portal-next/app/ndufs1/page.jsx",
+    "cohort_seed": 611,
+    "cohort_size": 40,
+    "registered_at": "2026-09-01"
   }
 ]
