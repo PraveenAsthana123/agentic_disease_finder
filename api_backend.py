@@ -6,7 +6,7 @@ REST API endpoints for EEG data analysis and classification.
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Form, Body, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.responses import Response, JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 from typing import Dict, List, Optional, Any
@@ -9186,6 +9186,70 @@ async def iot_engineer_sos_escalation():
     Addresses role_test: 'SOS alert fires + escalates'."""
     import scripts.iot_engineer_dashboard as iotd
     return _json_safe(iotd.sos_escalation())
+
+
+# ── IoT Continuous Monitoring Pipeline (device → SOS end-to-end) ───────
+
+@app.post("/api/iot-pipeline/ingest")
+async def iot_pipeline_ingest(request: Request):
+    """Run the full 7-stage IoT pipeline on an incoming EEG device packet.
+
+    Request body (JSON):
+      device_id  : str   — registered device ID
+      raw_signal : list  — 2-D list (channels × samples) or flat list
+      patient_id : str   — (optional) patient identifier
+
+    Returns pipeline result with seizure probability, decision, and SOS status.
+    Writes audit entry to iot_pipeline_log in clinical.db.
+    """
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse({"error": "invalid JSON body"}, status_code=400)
+
+    import scripts.iot_pipeline as iotp
+    result = iotp.run_pipeline(body)
+    status_code = 200
+    if result.get("status") == "error":
+        status_code = 422
+    return JSONResponse(result, status_code=status_code)
+
+
+@app.get("/api/iot-pipeline/simulate")
+async def iot_pipeline_simulate(seizure: bool = False, device_id: str = "DEV-SIM-001", patient_id: str = "P001"):
+    """Generate + run a simulated EEG device packet through the full pipeline.
+
+    Query params:
+      seizure    : bool (default false) — simulate ictal vs normal EEG
+      device_id  : str  — device identifier for the simulated packet
+      patient_id : str  — patient identifier
+
+    Useful for testing the pipeline end-to-end without real hardware.
+    """
+    import scripts.iot_pipeline as iotp
+    packet = iotp.simulate_packet(device_id=device_id, patient_id=patient_id,
+                                   seizure_mode=seizure)
+    result = iotp.run_pipeline(packet)
+    result["simulated"] = True
+    result["seizure_mode_requested"] = seizure
+    return _json_safe(result)
+
+
+@app.get("/api/iot-pipeline/status")
+async def iot_pipeline_status():
+    """Aggregate pipeline run statistics: total runs, SOS rate, decision distribution,
+    avg latency, recent events. Source: iot_pipeline_log table in clinical.db."""
+    import scripts.iot_pipeline as iotp
+    return _json_safe(iotp.pipeline_status())
+
+
+@app.get("/api/iot-pipeline/log")
+async def iot_pipeline_log(limit: int = 50):
+    """Return the most recent IoT pipeline log entries (max 200).
+    Source: iot_pipeline_log table in clinical.db."""
+    limit = min(limit, 200)
+    import scripts.iot_pipeline as iotp
+    return _json_safe(iotp.pipeline_log(limit=limit))
 
 
 # ── Clinical Pharmacist Dashboard ──────────────────────────────────────

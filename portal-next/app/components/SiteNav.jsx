@@ -298,6 +298,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-viz-montage">&#x1f4e1; Montage Comparison</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hitl">&#x1f9d1;&#x200d;&#x2695;&#xfe0f; HITL Evaluation</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-engineer">&#x1f4e1; IoT Engineer</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/iot-pipeline">&#x1f6a8; IoT Pipeline (SOS)</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-incident">&#x1f6a8; AI Incidents</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-security">&#x1f6e1;&#xfe0f; AI Security</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/ai-federation">&#x1f310; AI Federation</Link></li>

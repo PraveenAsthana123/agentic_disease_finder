@@ -60,8 +60,10 @@
     {"process": "Seizure Forecasting", "trigger": "on-demand", "endpoint": "GET /api/seizure-forecasting/overview|patients|definitions",
      "stages": ["seizure diary history", "temporal features + risk model", "FAR/hr + sensitivity@horizon", "patient risk profiles", "dashboard"],
      "status": "automatic"},
-    {"process": "Continuous Monitoring (IoT)", "trigger": "device stream", "endpoint": "(sim)",
-     "stages": ["device", "gateway", "ingest", "features", "model", "decision", "SOS alert"],
-     "status": "semi"}
+    {"process": "Continuous Monitoring (IoT)", "trigger": "device stream",
+     "endpoint": "POST /api/iot-pipeline/ingest | GET /api/iot-pipeline/simulate|status|log",
+     "stages": ["device", "gateway", "ingest", "features (47-dim)", "model (heuristic scorer)", "decision", "SOS alert"],
+     "status": "automatic",
+     "note": "Full 7-stage pipeline: wearable EEG packet → feature extract → seizure prob scorer → SOS alert if ≥70%. Portal: /iot-pipeline"}
   ]
 }
