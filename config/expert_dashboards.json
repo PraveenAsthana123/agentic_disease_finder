@@ -9205,5 +9205,26 @@
     ],
     "page": "/ndufs8",
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "ndufv2",
+    "gene": "NDUFV2",
+    "disease": "NDUFV2 Leigh Syndrome \u2014 Isolated Complex I Deficiency (N1b [2Fe-2S] Fe-S)",
+    "omim_gene": "600532",
+    "omim_disease": "256000 / 618259",
+    "chromosome": "18p11.22",
+    "inheritance": "AR",
+    "pathway": "CI-Leigh / NDUFV2 N1b [2Fe-2S] N-Module 2nd Electron Relay Step",
+    "seed": 621,
+    "status": "built",
+    "endpoints": [
+      "/api/ndufv2/overview",
+      "/api/ndufv2/breakdown",
+      "/api/ndufv2/definitions"
+    ],
+    "page": "/ndufv2",
+    "built_date": "2026-09-01",
+    "note": "Total: 603 dashboards",
+    "built_note": "Built scripts/ndufv2_dashboard.py, api_backend.py 3 routes /api/ndufv2/overview|breakdown|definitions, portal-next/app/ndufv2/page.jsx + SiteNav wired after NDUFS8, config/expert_dashboards.json count 602->603. Built 2026-09-01."
   }
 ]
