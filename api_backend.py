@@ -39083,6 +39083,40 @@ async def slc25a4_peoa1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TWNK PEOA3 Twinkle Helicase AD Progressive External Ophthalmoplegia 3 ───
+# TWNK-684aa-Twinkle-Helicase-C10orf2-Hexameric-Ring-5prime-3prime-mtDNA-Replication-Fork
+# PEOA3-Progressive-External-Ophthalmoplegia-Autosomal-Dominant-3
+# AD-Dominant-Negative-Linker-Domain-p.R303W-p.A318T-Hexameric-Ring-Disruption
+# TWNK-PEOA3-vs-MDDS7-IOSCA-SAME-GENE-OPPOSITE-PHENOTYPE-Allelic-Paradox
+# 40-patient-cohort-seed-579 / 10q24.31 / OMIM-Gene-TWNK-606075-Disease-PEOA3-609286
+
+@app.get("/api/twnk-peoa3/overview")
+async def twnk_peoa3_overview():
+    try:
+        import scripts.twnk_peoa3_dashboard as twnkp_
+        return _json_safe(twnkp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/twnk-peoa3/breakdown")
+async def twnk_peoa3_breakdown():
+    try:
+        import scripts.twnk_peoa3_dashboard as twnkp_
+        return _json_safe(twnkp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/twnk-peoa3/definitions")
+async def twnk_peoa3_definitions():
+    try:
+        import scripts.twnk_peoa3_dashboard as twnkp_
+        return _json_safe(twnkp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

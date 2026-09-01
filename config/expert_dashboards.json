@@ -8893,5 +8893,23 @@
     "cohort_n": 40,
     "seed": 577,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "twnk_peoa3",
+    "name": "TWNK Twinkle Helicase Progressive External Ophthalmoplegia AD 3 (PEOA3) (TWNK-684aa-Twinkle-Helicase-C10orf2-Hexameric-Ring-5prime-3prime-mtDNA-Replication-Fork / PEOA3-Progressive-External-Ophthalmoplegia-Autosomal-Dominant-3 / PEO-100pct-CARDINAL / mtDNA-Multiple-Deletions-NOT-Depletion / Normal-mtDNA-Copy-Number-KEY-DDx-Depletion-Syndromes / AD-Dominant-Negative-Linker-Domain-p.R303W-Hexameric-Ring / Ataxia-35pct-Intermediate / NO-Hepatopathy / NO-HCM / NO-Leigh-MRI-KEY-DDx-MDDS7-IOSCA / TWNK-PEOA3-vs-MDDS7-SAME-GENE-OPPOSITE-PHENOTYPE / Spelbrink-2001-NatGenet / 40-patient-cohort-seed-579 / 10q24.31 / OMIM-Gene-TWNK-606075-Disease-PEOA3-609286)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/twnk-peoa3/overview",
+      "/api/twnk-peoa3/breakdown",
+      "/api/twnk-peoa3/definitions"
+    ],
+    "frontend_page": "/twnk-peoa3",
+    "script": "scripts/twnk_peoa3_dashboard.py",
+    "cohort_seed": 579,
+    "cohort_n": 40,
+    "chromosome": "10q24.31",
+    "omim_gene": "606075",
+    "omim_disease": "609286",
+    "built_date": "2026-09-01"
   }
 ]
