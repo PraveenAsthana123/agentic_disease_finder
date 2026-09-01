@@ -9122,5 +9122,25 @@
     "cohort_seed": 611,
     "cohort_size": 40,
     "registered_at": "2026-09-01"
+  },
+  {
+    "id": "ndufs2",
+    "name": "NDUFS2 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh",
+    "disease": "NDUFS2 Leigh Syndrome \u2014 Isolated Complex I Deficiency (Q-Module 49 kDa PSST Subunit / N2 Terminal Fe-S)",
+    "gene": "NDUFS2",
+    "omim_gene": "*602985",
+    "omim_disease": "#256000",
+    "chromosome": "1q23.3",
+    "inheritance": "AR",
+    "status": "built",
+    "endpoints": [
+      "/api/ndufs2/overview",
+      "/api/ndufs2/breakdown",
+      "/api/ndufs2/definitions"
+    ],
+    "page": "/ndufs2",
+    "cohort_seed": 613,
+    "cohort_size": 40,
+    "built_date": "2026-09-01"
   }
 ]
