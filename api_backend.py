@@ -39245,6 +39245,33 @@ async def kss_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/gracile/overview")
+async def gracile_overview():
+    try:
+        import scripts.gracile_dashboard as gracile_
+        return _json_safe(gracile_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gracile/breakdown")
+async def gracile_breakdown():
+    try:
+        import scripts.gracile_dashboard as gracile_
+        return _json_safe(gracile_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/gracile/definitions")
+async def gracile_definitions():
+    try:
+        import scripts.gracile_dashboard as gracile_
+        return _json_safe(gracile_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

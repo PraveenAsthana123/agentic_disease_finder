@@ -9004,5 +9004,15 @@
     "color": "#1565c0",
     "cohort_size": 40,
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "gracile",
+    "name": "GRACILE Syndrome (BCS1L Complex III Assembly Deficiency / Growth-Restriction-Aminoaciduria-Cholestasis-Iron-Overload-Lactic-Acidosis-Early-Death / Finnish-Founder-pSer78Gly-1-in-36-Finland / Allelic-Bjornstad-OMIM-262000 / 40-patient-cohort-seed-591 / 2q35 / OMIM-Gene-BCS1L-603358-Disease-GRACILE-603839)",
+    "status": "built",
+    "locus": "2q35",
+    "disease": "GRACILE Syndrome",
+    "omim_gene": "603358",
+    "omim_disease": "603839",
+    "built_note": "Built scripts/gracile_dashboard.py, api_backend.py 3 routes /api/gracile/overview|breakdown|definitions verified 200, portal-next/app/gracile/page.jsx + SiteNav wired after KSS, expert_dashboards.json count 587->588. Built 2026-09-01."
   }
 ]
