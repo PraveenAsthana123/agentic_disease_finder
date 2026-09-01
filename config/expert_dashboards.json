@@ -9290,5 +9290,27 @@
     "inheritance": "AR",
     "module": "PP-module (Proximal Pump, Membrane Arm)",
     "note": "First nuclear-encoded CI subunit mutation in human disease (Andreu 1999 NatGenet)"
+  },
+  {
+    "id": "ndufs6",
+    "title": "NDUFS6 Leigh Syndrome \u2014 Isolated Complex I Deficiency (Q-Module Zinc-Finger Subunit / CXXC Tetracysteine / Structural Zn\u00b2\u207a / Quinone-Arm Junction)",
+    "subtitle": "NDUFS6-124aa-13.5kDa-Q-Module-Dual-CXXC-Zinc-Finger-Structural-Zn2-5p15.33",
+    "status": "built",
+    "category": "ci_leigh_nuclear_subunit",
+    "gene": "NDUFS6",
+    "omim_gene": "603848",
+    "omim_disease": "256000",
+    "omim_disease_ci": "618225",
+    "chromosome": "5p15.33",
+    "inheritance": "AR",
+    "seed": 629,
+    "routes": [
+      "/api/ndufs6/overview",
+      "/api/ndufs6/breakdown",
+      "/api/ndufs6/definitions"
+    ],
+    "page": "/ndufs6",
+    "built_date": "2026-09-01",
+    "description": "Q-module zinc-finger subunit with dual CXXC tetracysteine motif coordinating structural Zn2+. Only CI subunit with bona fide zinc-finger domain (not Fe-S). Loss collapses Q-module assembly \u2192 isolated CI deficiency 5-20%. 40-patient cohort seed-629. 3 endpoints verified 200."
   }
 ]
