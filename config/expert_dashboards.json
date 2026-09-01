@@ -8757,5 +8757,16 @@
     "omim_gene": "606075",
     "omim_disease": "271245",
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "sucla2",
+    "name": "SUCLA2 Encephalomyopathic mtDNA Depletion Syndrome (SUCLA2-463aa-Succinyl-CoA-Synthetase-ADP-Forming-Beta-Subunit-SCS-A / MDDS10-Mitochondrial-DNA-Depletion-Syndrome-10 / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration-Epoxide / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / NO-Hepatopathy-KEY-DDx-DGUOK-MPV17-TWNK-POLG / MMA-MILD-KEY-DDx-MUT-MMACHC-Severe / NO-Homocystinuria-KEY-DDx-MMACHC-cblC / SNHL-75pct-Cochlear-Implants-Effective / Leigh-MRI-80pct / Dystonia-70pct / Faroe-Islands-Founder-pAsp333Gly-1-in-1000-Births / SUCLA2-NDPK-Channelling-Complex / LEV-Preferred-AED / Propofol-AVOID-PRIS / Elpeleg-2005-AmJHumGenet / 40-patient-cohort-seed-557 / 13q14.2 / OMIM-Gene-SUCLA2-603921-Disease-MDDS10-615084)",
+    "status": "built",
+    "route": "/sucla2",
+    "api_prefix": "/api/sucla2",
+    "script": "scripts/sucla2_dashboard.py",
+    "seed": 557,
+    "cohort_n": 40,
+    "built_date": "2026-09-01"
   }
 ]

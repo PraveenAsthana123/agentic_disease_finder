@@ -38762,6 +38762,35 @@ async def twnk_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SUCLA2 MDDS10 — Encephalomyopathic mtDNA Depletion + Methylmalonic Aciduria ──
+
+@app.get("/api/sucla2/overview")
+async def sucla2_overview():
+    try:
+        import scripts.sucla2_dashboard as sucla2_
+        return _json_safe(sucla2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/sucla2/breakdown")
+async def sucla2_breakdown():
+    try:
+        import scripts.sucla2_dashboard as sucla2_
+        return _json_safe(sucla2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/sucla2/definitions")
+async def sucla2_definitions():
+    try:
+        import scripts.sucla2_dashboard as sucla2_
+        return _json_safe(sucla2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
