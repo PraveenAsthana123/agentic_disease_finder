@@ -38566,6 +38566,37 @@ async def tmem70_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-545; 3 endpoints /api/clpb/overview|breakdown|definitions
+# CLPB 3-MGA-uria Type VII (MGCA7): Cataracts+Neutropenia+3-MGA-NO-DCM-NO-Hyperammonemia
+# Cataracts-PATHOGNOMONIC-No-Other-3-MGA-Type-Has-Cataracts / G-CSF-Neutropenia-Level-B
+# AR-Biallelic-CLPB / 11q13.1 / OMIM-Gene-616654-Disease-616228
+@app.get("/api/clpb/overview")
+async def clpb_overview():
+    try:
+        import scripts.clpb_dashboard as clpb_
+        return _json_safe(clpb_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/clpb/breakdown")
+async def clpb_breakdown():
+    try:
+        import scripts.clpb_dashboard as clpb_
+        return _json_safe(clpb_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/clpb/definitions")
+async def clpb_definitions():
+    try:
+        import scripts.clpb_dashboard as clpb_
+        return _json_safe(clpb_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

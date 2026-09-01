@@ -8657,5 +8657,16 @@
     "description": "40 patients, 3 phenotype groups (classic neonatal 65%/PAH+ECMO 20%/attenuated 15%), TMEM70 260aa IMM ATP-synthase c-ring assembly factor (8q11.23), AR biallelic, most common NBIA-adjacent / 3-MGA Type VI. Czech/Slovak Roma founder c.317-2A>G (IVS2 splice donor) ~50% alleles. Neonatal crisis: lactic acidosis 100% (pH<7.1, lactate>10) + hyperammonemia 90% (NH3 50-500) + DCM 85% + 3-MGA-uria 100%. Normal acylcarnitine (no C4-DC \u2014 KEY DDx from TAZ/Barth). VPA ABSOLUTE CI (dual: Complex I + ammonia). KD CONTRAINDICATED (fat ATP requires Complex V). IV glucose mandatory. Sodium benzoate+phenylbutyrate for ammonia. LEV preferred. iNO for PAH. 3 endpoints /api/tmem70/overview|breakdown|definitions verified 200, portal-next/app/tmem70/page.jsx + SiteNav wired after TAZ. Built 2026-08-31.",
     "registered": "2026-08-31",
     "built_note": "TMEM70 Complex V Deficiency / 3-MGA-uria Type VI (260aa / AR biallelic / Neonatal-Lactic-Acidosis+Hyperammonemia+DCM / Roma-Founder-c317-2A-G / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / 8q11.23) dashboard built 2026-08-31: /api/tmem70/overview|breakdown|definitions + portal-next/app/tmem70/page.jsx + SiteNav wired after TAZ. expert_dashboards.json count 563->564."
+  },
+  {
+    "id": "clpb",
+    "name": "CLPB MGCA7 (CLPB-707aa-Mitochondrial-Matrix-AAA-Plus-Disaggregase-MTS-BAP-MD-NBD1-NBD2 / 3-MGA-uria-Type-VII / Cataracts-85pct-PATHOGNOMONIC-No-Other-3-MGA-Has-Cataracts / Neutropenia-60pct-Cyclic-Chronic-G-CSF-Level-B / NO-DCM-KEY-DDx-TAZ-Barth-TMEM70 / NO-Hyperammonemia-KEY-DDx-TMEM70 / NO-SNHL-KEY-DDx-SERAC1-MEGDEL / Normal-Acylcarnitine-NO-C4DC-KEY-DDx-Barth / VPA-MODERATE-CAUTION-Not-Absolute-CI-Rule-Out-POLG-First / Cataract-Surgery-Level-A-Early-Bilateral-Prevents-Amblyopia / LEV-Preferred-Seizures / BAP-Missense-Moderate-NBD1-Null-Severe / Wortmann-2015-AJHG-First-Description / 40-patient-cohort-seed-545 / 11q13.1 / OMIM-Gene-CLPB-616654-Disease-MGCA7-616228)",
+    "status": "built",
+    "api_endpoints": [
+      "/api/clpb/overview",
+      "/api/clpb/breakdown",
+      "/api/clpb/definitions"
+    ],
+    "page": "/clpb"
   }
 ]
