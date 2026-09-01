@@ -9349,5 +9349,24 @@
     "portal_path": "/ndufa12",
     "category": "leigh_syndrome_ci",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufa11",
+    "gene": "NDUFA11",
+    "disease": "NDUFA11 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-PD-Module-Boundary-B14.7-4-TM-Helix-Integral-Membrane-Scaffold (NDUFA11-147aa-14.7kDa-B14.7-4-TM-Helix-PP-Module-PD-Module-Inter-Module-Boundary-Membrane-Arm-Scaffold-Clamp-19q13.33 / OMIM-Gene-612638-Disease-256000 / AR-Biallelic / pIle54Phe-c160AT-TM1-Hydrophobic-Core-Disruption-Severe-Infantile / pLeu71Pro-c212TC-TM2-Helix-Breaking-Proline-Severe / pVal95Ala-c284TC-TM3-Boundary-Intermediate / pArg130Cys-c388CT-C-Terminal-Post-TM4-Moderate-Consanguineous / cIVS2plus1GA-Splice-Donor-Exon2-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / 4-TM-HELIX-UNIQUE-Most-TM-Helices-Any-Nuclear-Encoded-CI-Structural-Subunit / PP-PD-Inter-Module-Boundary-Scaffold-Clamp / BN-PAGE-Absent-CI-Cleaner-Membrane-Arm-Disintegration / NO-Peripheral-Neuropathy-KEY-DDx-NDUFS1-50pct-CRITICAL / NO-Olfactory-Bulb-Lesions-KEY-DDx-NDUFS4-52-65pct-CRITICAL / NO-Leukodystrophy-KEY-DDx-NDUFV1-40-50pct-CRITICAL / NO-HCM-KEY-DDx-NDUFV2-80pct-SCO2-100pct / NO-Hepatopathy-KEY-DDx-POLG-DGUOK / Metformin-ABSOLUTE-CI / VPA-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / Chloramphenicol-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / Phenobarbital-HIGH-CAUTION / Succinate-CII-Bypass / LEV-Preferred / 40-patient-cohort-seed-635 / 19q13.33 / OMIM-Gene-NDUFA11-612638-Disease-Leigh-256000)",
+    "omim_gene": "612638",
+    "omim_disease": "256000",
+    "chromosome": "19q13.33",
+    "inheritance": "AR",
+    "seed": 635,
+    "status": "built",
+    "endpoints": [
+      "/api/ndufa11/overview",
+      "/api/ndufa11/breakdown",
+      "/api/ndufa11/definitions"
+    ],
+    "portal_page": "/ndufa11",
+    "registered": "2026-09-01",
+    "category": "CI-Leigh"
   }
 ]
