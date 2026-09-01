@@ -38405,6 +38405,56 @@ async def opa3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-537; 3 endpoints /api/dnajc19/overview|breakdown|definitions
+# DCMA Syndrome (DNAJC19 — Dilated Cardiomyopathy with Ataxia)
+# DNAJC19-116aa-TIM23-Translocase-JDomain-Hsp40-Co-chaperone / 3-MGA-uria-Type-III-DCMA
+# DCM-100pct-CARDINAL / Cerebellar-Ataxia-95pct-Nonprogressive / Male-Genital-Anomalies-75pct-Males
+# NO-Optic-Atrophy-KEY-DDx-OPA3-MECR / NO-Chorea-KEY-DDx-OPA3 / Hutterite-Founder-c130-1G>C-88pct
+# ACE-Inhibitor-BB-Level-A-DCM / Heart-Transplant-30pct / LEV-Preferred / VPA-Moderate-Caution-NOT-Absolute-CI
+# 3q26.33 / OMIM-Gene-608977-Disease-DCMA-610198
+@app.get("/api/dnajc19/overview")
+async def dnajc19_overview():
+    """DCMA Syndrome (DNAJC19 / 3-MGA Type III) overview — 40-patient cohort seed-537
+    (DNAJC19-116aa-TIM23 / 3-MGA-Type-III-DCMA / DCM-100pct-CARDINAL /
+    Cerebellar-Ataxia-95pct-Nonprogressive / NO-Optic-Atrophy-DDx-OPA3 /
+    Hutterite-Founder-c130-1G>C / ACE-BB-Level-A / 3q26.33 / OMIM-608977-610198).
+    """
+    try:
+        import scripts.dnajc19_dashboard as dnajc19_
+        return _json_safe(dnajc19_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dnajc19/breakdown")
+async def dnajc19_breakdown():
+    """DCMA Syndrome (DNAJC19) phenotype/variant/treatment breakdown — 40-patient cohort seed-537
+    (Phenotype: Classic-DCMA-50pct / DCM+Ataxia-Only-25pct / DCM+Ataxia+ID-15pct /
+    Variant: Founder-c130-1G>C-88pct / c33-34delAT-5pct / His95Arg-J-domain-4pct /
+    Treatment: ACE-100pct / BB-93pct / Transplant-30pct / L-Carnitine-70pct).
+    """
+    try:
+        import scripts.dnajc19_dashboard as dnajc19_
+        return _json_safe(dnajc19_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dnajc19/definitions")
+async def dnajc19_definitions():
+    """DCMA Syndrome (DNAJC19) definitions — 10 concepts
+    (DNAJC19-Tim14-TIM23-JDomain / 3-MGA-Type-III-vs-OPA3 / Hutterite-Founder-c130-1G>C /
+    DCM-vs-Barth-TAZ-DDx / Nonprogressive-Ataxia / Male-Genital-Anomalies /
+    ACE-BB-First-Line / VPA-Moderate-Caution-NOT-Absolute-CI / Heart-Transplant-Caveats /
+    OMIM-608977-610198-DCMA).
+    """
+    try:
+        import scripts.dnajc19_dashboard as dnajc19_
+        return _json_safe(dnajc19_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

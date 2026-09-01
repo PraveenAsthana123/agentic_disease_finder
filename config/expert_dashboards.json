@@ -8595,5 +8595,27 @@
       "/api/opa3/breakdown",
       "/api/opa3/definitions"
     ]
+  },
+  {
+    "id": "dnajc19",
+    "name": "DNAJC19 DCMA Syndrome (DNAJC19-116aa-TIM23-Translocase-JDomain-Hsp40-Co-chaperone / 3-MGA-uria-Type-III-DCMA / DCM-100pct-CARDINAL / Cerebellar-Ataxia-95pct-Nonprogressive / Male-Genital-Anomalies-Cryptorchidism-75pct-Males-UNIQUE / NO-Optic-Atrophy-KEY-DDx-OPA3-MECR / Hutterite-Founder-c130-1G>C-88pct / ACE-BB-Level-A / Transplant-30pct / LEV-Preferred / VPA-Moderate-Caution / 40-patient-cohort-seed-537 / 3q26.33 / OMIM-Gene-DNAJC19-608977-Disease-DCMA-610198)",
+    "status": "built",
+    "category": "NBIA-adjacent / 3-MGA-uria / Mitochondrial-TIM23",
+    "gene": "DNAJC19",
+    "locus": "3q26.33",
+    "color": "#004d40",
+    "api_prefix": "/api/dnajc19",
+    "frontend_path": "/dnajc19",
+    "cohort_size": 40,
+    "seed": 537,
+    "omim_gene": "608977",
+    "omim_disease": "610198",
+    "built_date": "2026-08-31",
+    "endpoints": [
+      "/api/dnajc19/overview",
+      "/api/dnajc19/breakdown",
+      "/api/dnajc19/definitions"
+    ],
+    "maps_to": "/api/dnajc19/overview|breakdown|definitions + portal-next/app/dnajc19/page.jsx + SiteNav wired after OPA3"
   }
 ]
