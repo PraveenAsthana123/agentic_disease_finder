@@ -38825,6 +38825,42 @@ async def rrm2b_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
+
+# ── SUCLG1 MDDS9 — Encephalomyopathic mtDNA Depletion Syndrome 9 (Shared alpha SCS-A/SCS-G) ──
+# SUCLG1-394aa-Succinyl-CoA-Ligase-GDP-Forming-Alpha-Subunit-Shared-SCS-A-SCS-G
+# MDDS9 / Severe-MMA-KEY-DDx-SUCLA2-Mild-MMA / Hepatopathy-70pct-SCS-G-PEPCK-Gluconeogenesis
+# BOTH-SCS-A-and-SCS-G-deficient-MORE-SEVERE-than-SUCLA2 / C4-DC-Succinylcarnitine-ELEVATED-Pathognomonic
+# VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration-Hepatotoxicity / KD-CONTRAINDICATED
+# Propofol-AVOID-PRIS / NEVER-FAST-SCS-G-PEPCK-Impaired / NO-Homocystinuria-KEY-DDx-MMACHC
+# 40-patient-cohort-seed-561 / 2p11.2 / OMIM-Gene-SUCLG1-611224-Disease-MDDS9-612235
+
+@app.get("/api/suclg1/overview")
+async def suclg1_overview():
+    try:
+        import scripts.suclg1_dashboard as suclg1_
+        return _json_safe(suclg1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/suclg1/breakdown")
+async def suclg1_breakdown():
+    try:
+        import scripts.suclg1_dashboard as suclg1_
+        return _json_safe(suclg1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/suclg1/definitions")
+async def suclg1_definitions():
+    try:
+        import scripts.suclg1_dashboard as suclg1_
+        return _json_safe(suclg1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     import os
     import uvicorn

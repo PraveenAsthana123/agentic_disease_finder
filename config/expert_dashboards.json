@@ -8775,5 +8775,12 @@
     "status": "built",
     "route": "/rrm2b",
     "api_base": "/api/rrm2b"
+  },
+  {
+    "id": "suclg1",
+    "name": "SUCLG1 MDDS9 Encephalomyopathic mtDNA Depletion Syndrome 9 (SUCLG1-394aa-Succinyl-CoA-Ligase-GDP-Forming-Alpha-Subunit-Shared-SCS-A-SCS-G / MDDS9-Mitochondrial-DNA-Depletion-Syndrome-9 / MMA-SEVERE-KEY-DDx-SUCLA2-Mild / Hepatopathy-70pct-SCS-G-PEPCK / C4-DC-Succinylcarnitine-ELEVATED-Pathognomonic / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / 40-patient-cohort-seed-561 / 2p11.2 / OMIM-Gene-SUCLG1-611224-Disease-MDDS9-612235)",
+    "status": "built",
+    "category": "mdds_encephalomyopathic",
+    "seed": 561
   }
 ]
