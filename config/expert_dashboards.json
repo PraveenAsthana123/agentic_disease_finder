@@ -8782,5 +8782,24 @@
     "status": "built",
     "category": "mdds_encephalomyopathic",
     "seed": 561
+  },
+  {
+    "id": "fbxl4",
+    "name": "FBXL4 Encephalomyopathic mtDNA Depletion Syndrome 13 (FBXL4-891aa-F-box-Leucine-Rich-Repeat-Protein-4-Mitochondrial-Matrix-SCF-E3-Adaptor / MDDS13-Mitochondrial-DNA-Depletion-Syndrome-13 / NO-MMA-KEY-DDx-SUCLA2-SUCLG1 / NO-C4DC-KEY-DDx-SCS-Axis / Multi-Complex-OXPHOS-Deficiency / mtDNA-Muscle-below-20pct / NO-Fanconi-KEY-DDx-RRM2B / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / 40-patient-cohort-seed-563 / 6q16.1-q16.2 / OMIM-Gene-FBXL4-605654-Disease-MDDS13-615471)",
+    "status": "built",
+    "category": "mdds_encephalomyopathic",
+    "gene": "FBXL4",
+    "omim_gene": "605654",
+    "omim_disease": "615471",
+    "locus": "6q16.1-q16.2",
+    "inheritance": "AR",
+    "seed": 563,
+    "cohort_n": 40,
+    "endpoints": [
+      "/api/fbxl4/overview",
+      "/api/fbxl4/breakdown",
+      "/api/fbxl4/definitions"
+    ],
+    "page": "/fbxl4"
   }
 ]

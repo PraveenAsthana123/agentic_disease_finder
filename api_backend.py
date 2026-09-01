@@ -38861,6 +38861,33 @@ async def suclg1_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/fbxl4/overview")
+async def fbxl4_overview():
+    try:
+        import scripts.fbxl4_dashboard as fbxl4_
+        return _json_safe(fbxl4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fbxl4/breakdown")
+async def fbxl4_breakdown():
+    try:
+        import scripts.fbxl4_dashboard as fbxl4_
+        return _json_safe(fbxl4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fbxl4/definitions")
+async def fbxl4_definitions():
+    try:
+        import scripts.fbxl4_dashboard as fbxl4_
+        return _json_safe(fbxl4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
