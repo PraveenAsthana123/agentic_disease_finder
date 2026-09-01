@@ -9368,5 +9368,22 @@
     "portal_page": "/ndufa11",
     "registered": "2026-09-01",
     "category": "CI-Leigh"
+  },
+  {
+    "id": "ndufa13",
+    "status": "built",
+    "title": "NDUFA13 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh N-Module-Peripheral-Stabiliser-GRIM-19-B16.6-Dual-Function-Apoptosis-Regulator-STAT3-Inhibitor",
+    "gene": "NDUFA13",
+    "also_known_as": "GRIM-19 / B16.6 subunit",
+    "omim_gene": "609435",
+    "omim_disease": "256000",
+    "chromosome": "19p13.11",
+    "inheritance": "AR",
+    "seed": 637,
+    "endpoints": ["/api/ndufa13/overview", "/api/ndufa13/breakdown", "/api/ndufa13/definitions"],
+    "frontend": "portal-next/app/ndufa13/page.jsx",
+    "built_date": "2026-09-01",
+    "category": "expert_disease",
+    "subcategory": "mitochondrial_disease_ci_leigh"
   }
 ]
