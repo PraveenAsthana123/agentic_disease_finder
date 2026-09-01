@@ -38301,6 +38301,59 @@ async def dcaf17_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-533; 3 endpoints /api/mecr/overview|breakdown|definitions
+# MEPAN Syndrome (MECR — Mitochondrial Enoyl-CoA Reductase Deficiency)
+# MECR-342aa-mtFAS-II-Terminal-Enzyme-Rossmann-Fold / Lipoic-Acid-Synthesis-Failure-PDH-AlphaKGDH-Hypolipoylation
+# 3-MGA-uria-PATHOGNOMONIC-100pct / VPA-ABSOLUTE-CI-CoA-Sequestration-PDH-Collapse
+# Childhood-Dystonia-DOMINANT-Onset-2-14yr / Optic-Atrophy-80-90pct-Early
+# GP-Iron-SWI-Bilateral-NO-Eye-of-Tiger / Cerebellar-Atrophy-60-70pct
+# LEV-Preferred-No-Mito-Toxicity / Lipoic-Acid-Investigational-Bypass-MECR
+# Deferiprone-Investigational / GPi-DBS-Level-D
+# Israeli-Bedouin-Founder-pTyr200His-45pct-Worldwide / 1p35.3 / OMIM-Gene-608205-Disease-617282
+@app.get("/api/mecr/overview")
+async def mecr_overview():
+    """MEPAN Syndrome (MECR) overview — 40-patient cohort seed-533
+    (MECR-342aa-mtFAS-II-Terminal-Enzyme / Lipoic-Acid-Synthesis-Failure-PDH-AlphaKGDH-Hypolipoylation /
+    3-MGA-uria-PATHOGNOMONIC / VPA-ABSOLUTE-CI / Childhood-Dystonia-DOMINANT / Optic-Atrophy-80-90pct /
+    GP-Iron-NO-Eye-of-Tiger / Israeli-Bedouin-Founder-pTyr200His / 1p35.3 / OMIM-608205-617282).
+    """
+    try:
+        import scripts.mecr_dashboard as mecr_
+        return _json_safe(mecr_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mecr/breakdown")
+async def mecr_breakdown():
+    """MEPAN Syndrome (MECR) phenotype/variant/treatment breakdown — 40-patient cohort seed-533
+    (Phenotype: Dystonic-Classic-60pct / Optic-Dominant-20pct / Mixed-Severe-15pct / Mild-Hypomorphic-5pct /
+    Variant: Tyr200His-45pct / Active-site-Missense / Splice / Frameshift /
+    Treatment: LEV-40pct / Lipoic-acid-20pct / CLB-18pct / Riboflavin-CoQ10-12pct).
+    """
+    try:
+        import scripts.mecr_dashboard as mecr_
+        return _json_safe(mecr_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mecr/definitions")
+async def mecr_definitions():
+    """MEPAN Syndrome (MECR) definitions — 14 concepts
+    (MECR-ETR-mtFAS-II / Lipoic-Acid-Synthesis-Failure / 3-MGA-uria-Pathognomonic /
+    VPA-ABSOLUTE-CI-Mechanism / Optic-Atrophy-RGC-Vulnerability / GP-Iron-vs-PKAN-DDx /
+    Israeli-Bedouin-Tyr200His-Founder / Lipoic-Acid-Supplementation-Rationale /
+    Deferiprone-Investigational / GPi-DBS-Level-D / MEPAN-DDx-3-MGA-Diseases /
+    LEV-Preferred-AED / POLG-Screen-Mandatory / MEPAN-MRI-Signature / OMIM-608205-617282).
+    """
+    try:
+        import scripts.mecr_dashboard as mecr_
+        return _json_safe(mecr_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

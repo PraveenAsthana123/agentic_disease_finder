@@ -8561,5 +8561,22 @@
     "omim_gene": "612515",
     "omim_disease": "241080",
     "built_date": "2026-08-31"
+  },
+  {
+    "id": "mecr",
+    "name": "MECR MEPAN Syndrome (MECR-342aa-mtFAS-II-Terminal-Enzyme-Rossmann-Fold / Lipoic-Acid-Synthesis-Failure-PDH-AlphaKGDH-Hypolipoylation / 3-MGA-uria-PATHOGNOMONIC-100pct / VPA-ABSOLUTE-CI-CoA-Sequestration-PDH-Collapse / Childhood-Dystonia-DOMINANT-Onset-2-14yr / Optic-Atrophy-80-90pct-Early / GP-Iron-SWI-Bilateral-NO-Eye-of-Tiger / Cerebellar-Atrophy-60-70pct / LEV-Preferred-No-Mito-Toxicity / Lipoic-Acid-Investigational-Bypass-MECR / Israeli-Bedouin-Founder-pTyr200His-45pct-Worldwide / 40-patient-cohort-seed-533 / 1p35.3 / OMIM-Gene-MECR-608205-Disease-MEPAN-617282)",
+    "status": "built",
+    "category": "NBIA-adjacent / mtFAS-II",
+    "gene": "MECR",
+    "locus": "1p35.3",
+    "color": "#1b5e20",
+    "api_prefix": "/api/mecr",
+    "frontend_path": "/mecr",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/mecr/overview",
+      "/api/mecr/breakdown",
+      "/api/mecr/definitions"
+    ]
   }
 ]
