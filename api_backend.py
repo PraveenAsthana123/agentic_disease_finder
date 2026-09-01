@@ -38534,6 +38534,38 @@ async def taz_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-543; 3 endpoints /api/tmem70/overview|breakdown|definitions
+# TMEM70 Complex V Deficiency / 3-MGA-uria Type VI: Neonatal Lactic Acidosis+Hyperammonemia+DCM
+# Lactic-Acidosis+Hyperammonemia+3-MGA PATHOGNOMONIC triad / Normal-Acylcarnitine-NO-C4DC-DDx-TAZ
+# Czech/Slovak-Roma-Founder-c317-2A>G-IVS2-50pct-Alleles / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED
+# AR-Biallelic-TMEM70 / 8q11.23 / OMIM-Gene-612418-Disease-614052
+@app.get("/api/tmem70/overview")
+async def tmem70_overview():
+    try:
+        import scripts.tmem70_dashboard as tmem70_
+        return _json_safe(tmem70_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tmem70/breakdown")
+async def tmem70_breakdown():
+    try:
+        import scripts.tmem70_dashboard as tmem70_
+        return _json_safe(tmem70_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/tmem70/definitions")
+async def tmem70_definitions():
+    try:
+        import scripts.tmem70_dashboard as tmem70_
+        return _json_safe(tmem70_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

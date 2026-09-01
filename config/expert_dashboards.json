@@ -8633,5 +8633,29 @@
     "id": "taz",
     "name": "TAZ Barth Syndrome (TAZ-292aa-IMM-Tafazzin-Cardiolipin-Remodeling-Transacylase / 3-MGA-uria-Type-II-Barth / DCM-100pct-CARDINAL-Onset-Birth-2yr / Neutropenia-95pct-Cyclic-Chronic-Bacterial-Sepsis-Risk / Skeletal-Myopathy-100pct / Growth-Retardation-95pct / C4-DC-Elevated-PATHOGNOMONIC-No-Other-3-MGA-Has-C4DC / MLCL-CL-Ratio-Above-0.5-DIAGNOSTIC / Normal-Cognition-100pct-UNIQUE-All-Other-3-MGA-Have-ID / NO-SNHL-KEY-DDx-SERAC1 / NO-Optic-Atrophy-KEY-DDx-OPA3-MECR / NO-Movement-Disorder-KEY-DDx-OPA3-FTL / X-linked-Recessive-Males-Only / ACE-Inhibitor-BB-MANDATORY-Level-A-DCM / Heart-Transplant-30pct-EF-Less-25pct-Excellent-PostTx / G-CSF-Neutropenia-Level-B / VPA-ABSOLUTE-CI-Cardiolipin-Deficiency-Complex-I / LEV-Preferred-Seizures / Elamipretide-SS31-TAZPOWER-Investigational / Barth-1983-Dutch-Family-First-Description / 40-patient-cohort-seed-541 / Xq28 / OMIM-Gene-TAZ-300394-Disease-Barth-302060)",
     "status": "built"
+  },
+  {
+    "id": "tmem70",
+    "title": "TMEM70 Complex V Deficiency (TMEM70-260aa-IMM-ATPsynthase-c-ring-Assembly-Factor / 3-MGA-uria-Type-VI / Lactic-Acidosis-100pct-Neonatal-pH-below-7.1 / Hyperammonemia-90pct-NH3-50-500-UCD-MIMIC / DCM-85pct / Normal-Acylcarnitine-NO-C4DC-KEY-DDx-TAZ-Barth / Czech-Slovak-Roma-Founder-c317-2A-G-IVS2-50pct-Alleles / VPA-ABSOLUTE-CI-Dual-Complex-I-Plus-Ammonia / KD-CONTRAINDICATED / IV-Glucose-GIR-8-10-MANDATORY / Sodium-Benzoate-Phenylbutyrate-Level-A / LEV-Preferred / iNO-PAH-Level-B / AR-Biallelic-Both-Sexes / ID-65pct / 40-patient-cohort-seed-543 / 8q11.23 / OMIM-Gene-TMEM70-612418-Disease-614052)",
+    "status": "built",
+    "route": "/tmem70",
+    "api_routes": [
+      "/api/tmem70/overview",
+      "/api/tmem70/breakdown",
+      "/api/tmem70/definitions"
+    ],
+    "script": "scripts/tmem70_dashboard.py",
+    "seed": 543,
+    "cohort_size": 40,
+    "built_date": "2026-08-31",
+    "category": "3-mga-uria-type-vi-complex-v-neonatal",
+    "gene": "TMEM70",
+    "omim_gene": "612418",
+    "omim_disease": "614052",
+    "chromosome": "8q11.23",
+    "inheritance": "Autosomal Recessive \u2014 Biallelic TMEM70 mutations; both sexes",
+    "description": "40 patients, 3 phenotype groups (classic neonatal 65%/PAH+ECMO 20%/attenuated 15%), TMEM70 260aa IMM ATP-synthase c-ring assembly factor (8q11.23), AR biallelic, most common NBIA-adjacent / 3-MGA Type VI. Czech/Slovak Roma founder c.317-2A>G (IVS2 splice donor) ~50% alleles. Neonatal crisis: lactic acidosis 100% (pH<7.1, lactate>10) + hyperammonemia 90% (NH3 50-500) + DCM 85% + 3-MGA-uria 100%. Normal acylcarnitine (no C4-DC \u2014 KEY DDx from TAZ/Barth). VPA ABSOLUTE CI (dual: Complex I + ammonia). KD CONTRAINDICATED (fat ATP requires Complex V). IV glucose mandatory. Sodium benzoate+phenylbutyrate for ammonia. LEV preferred. iNO for PAH. 3 endpoints /api/tmem70/overview|breakdown|definitions verified 200, portal-next/app/tmem70/page.jsx + SiteNav wired after TAZ. Built 2026-08-31.",
+    "registered": "2026-08-31",
+    "built_note": "TMEM70 Complex V Deficiency / 3-MGA-uria Type VI (260aa / AR biallelic / Neonatal-Lactic-Acidosis+Hyperammonemia+DCM / Roma-Founder-c317-2A-G / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / 8q11.23) dashboard built 2026-08-31: /api/tmem70/overview|breakdown|definitions + portal-next/app/tmem70/page.jsx + SiteNav wired after TAZ. expert_dashboards.json count 563->564."
   }
 ]
