@@ -39605,6 +39605,33 @@ async def ndufs7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufs8/overview")
+async def ndufs8_overview():
+    try:
+        import scripts.ndufs8_dashboard as ndufs8_
+        return _json_safe(ndufs8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs8/breakdown")
+async def ndufs8_breakdown():
+    try:
+        import scripts.ndufs8_dashboard as ndufs8_
+        return _json_safe(ndufs8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufs8/definitions")
+async def ndufs8_definitions():
+    try:
+        import scripts.ndufs8_dashboard as ndufs8_
+        return _json_safe(ndufs8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

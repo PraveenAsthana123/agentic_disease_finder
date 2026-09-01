@@ -9186,5 +9186,24 @@
     "syndrome": "Leigh Syndrome / Mitochondrial Complex I Deficiency Nuclear Type 3 (NDUFS7)",
     "note": "Total: 601 dashboards",
     "built_note": "Built scripts/ndufs7_dashboard.py, api_backend.py 3 routes /api/ndufs7/overview|breakdown|definitions verified 200, portal-next/app/ndufs7/page.jsx + SiteNav wired after NDUFS3, expert_dashboards.json count 600->601. Built 2026-09-01."
+  },
+  {
+    "id": "ndufs8",
+    "gene": "NDUFS8",
+    "disease": "NDUFS8 Leigh Syndrome \u2014 Isolated Complex I Deficiency (CI-Leigh / NDUFS8 TYKY Subunit N6a + N6b [4Fe-4S] Fe-S Clusters)",
+    "omim_gene": "602141",
+    "omim_disease": "256000 / 618222",
+    "chromosome": "11q13.2",
+    "inheritance": "AR",
+    "pathway": "CI-Leigh / NDUFS8 TYKY Dual Fe-S N6a+N6b Q-Module Approach",
+    "seed": 619,
+    "status": "built",
+    "endpoints": [
+      "/api/ndufs8/overview",
+      "/api/ndufs8/breakdown",
+      "/api/ndufs8/definitions"
+    ],
+    "page": "/ndufs8",
+    "built_date": "2026-09-01"
   }
 ]
