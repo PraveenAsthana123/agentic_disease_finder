@@ -39394,6 +39394,30 @@ async def cox15_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/taco1/overview")
+async def taco1_overview():
+    try:
+        import scripts.taco1_dashboard as taco1_
+        return _json_safe(taco1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/taco1/breakdown")
+async def taco1_breakdown():
+    try:
+        import scripts.taco1_dashboard as taco1_
+        return _json_safe(taco1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/taco1/definitions")
+async def taco1_definitions():
+    try:
+        import scripts.taco1_dashboard as taco1_
+        return _json_safe(taco1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

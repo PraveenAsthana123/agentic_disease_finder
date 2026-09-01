@@ -9061,5 +9061,18 @@
     "portal_path": "/cox15",
     "seed": 601,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "taco1",
+    "name": "TACO1 Leigh Syndrome Childhood-Onset Complex IV COX Deficiency (TACO1-343aa-Matrix-MT-CO1-mRNA-Translational-Activator-17q23.3 / OMIM-Gene-612958-Disease-256000 / AR-Biallelic / c472insC-pTyr158Leufs-Inuit-Founder-Weraarpachai-2009 / Childhood-Onset-3-8yr-LATER-DISTINGUISHING / Dysarthria-85pct-CARDINAL / Cognitive-Decline-90pct / Ataxia-80pct / NO-HCM-KEY-DDx-SCO2 / NO-Tubulopathy-KEY-DDx-COX10 / NO-Hepatopathy-KEY-DDx-SCO1 / Isolated-COX-Deficiency-BIOCHEMICAL-FINGERPRINT / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI-MT-CO1-Translation-Compounds / Chloramphenicol-ABSOLUTE-CI / KD-CONTRAINDICATED / LEV-Preferred-AED / 40-patient-cohort-seed-603 / 17q23.3 / OMIM-Gene-TACO1-612958-Disease-Leigh-256000)",
+    "status": "built",
+    "endpoints": [
+      "/api/taco1/overview",
+      "/api/taco1/breakdown",
+      "/api/taco1/definitions"
+    ],
+    "frontend": "/taco1",
+    "seed": 603,
+    "registered": "2026-09-01"
   }
 ]
