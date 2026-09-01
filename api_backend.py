@@ -38969,6 +38969,33 @@ async def sfxn4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/polg2/overview")
+async def polg2_overview():
+    try:
+        import scripts.polg2_dashboard as polg2_
+        return _json_safe(polg2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/polg2/breakdown")
+async def polg2_breakdown():
+    try:
+        import scripts.polg2_dashboard as polg2_
+        return _json_safe(polg2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/polg2/definitions")
+async def polg2_definitions():
+    try:
+        import scripts.polg2_dashboard as polg2_
+        return _json_safe(polg2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

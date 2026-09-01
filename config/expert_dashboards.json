@@ -8843,5 +8843,22 @@
     "n_patients": 40,
     "built_date": "2026-09-01",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "polg2",
+    "name": "POLG2 Progressive External Ophthalmoplegia AD (POLG2-485aa-DNA-Polymerase-Gamma-2-Accessory-p55-Processivity-Subunit / PEOA4-Progressive-External-Ophthalmoplegia-Autosomal-Dominant-4 / PEO-100pct-CARDINAL / mtDNA-Multiple-Deletions-NOT-Depletion / Normal-mtDNA-Copy-Number-KEY-DDx-MDDS / AD-Dominant-Negative-p55-Homodimerization / Adult-Onset-Mean-30yr-Mildest / NO-Epilepsy-KEY-DDx-POLG1 / NO-Hepatopathy-KEY-DDx-POLG1-DGUOK-MPV17 / NO-Sideroblastic-Anemia-KEY-DDx-SFXN4 / SNHL-40pct / Ataxia-35pct / COX-Negative-Fibers / Long-Range-PCR / p.G451E-Founding-Walter-2010-AnnNeurol / CoQ10-Level-C / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / LEV-Preferred-AED / 40-patient-cohort-seed-571 / 17q24.1 / OMIM-Gene-POLG2-604983-Disease-PEOA4-610131)",
+    "status": "built",
+    "category": "Mitochondrial Disease",
+    "api_endpoints": [
+      "/api/polg2/overview",
+      "/api/polg2/breakdown",
+      "/api/polg2/definitions"
+    ],
+    "page": "portal-next/app/polg2/page.jsx",
+    "script": "scripts/polg2_dashboard.py",
+    "seed": 571,
+    "n_patients": 40,
+    "built_date": "2026-09-01",
+    "registered": "2026-09-01"
   }
 ]
