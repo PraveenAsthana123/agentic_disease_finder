@@ -38627,6 +38627,36 @@ async def polg_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-549; 3 endpoints /api/dguok/overview|breakdown|definitions
+# DGUOK MDDS3: VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / Nystagmus-90pct-PATHOGNOMONIC / NO-3-MGA-KEY-DDx
+# Hepatocerebral-75pct / Hepatic-Only-25pct-OLT-Curative / Liver-Transplant-Does-NOT-Cure-Brain / 2p13.1 / OMIM-Gene-601465-Disease-251880
+@app.get("/api/dguok/overview")
+async def dguok_overview():
+    try:
+        import scripts.dguok_dashboard as dguok_
+        return _json_safe(dguok_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dguok/breakdown")
+async def dguok_breakdown():
+    try:
+        import scripts.dguok_dashboard as dguok_
+        return _json_safe(dguok_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dguok/definitions")
+async def dguok_definitions():
+    try:
+        import scripts.dguok_dashboard as dguok_
+        return _json_safe(dguok_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

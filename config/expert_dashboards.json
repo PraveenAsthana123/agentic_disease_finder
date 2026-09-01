@@ -8690,5 +8690,27 @@
       "/api/polg/definitions"
     ],
     "maps_to": "/api/polg/overview|breakdown|definitions + portal-next/app/polg/page.jsx + SiteNav wired after CLPB"
+  },
+  {
+    "id": "dguok",
+    "name": "DGUOK Hepatocerebral mtDNA Depletion Syndrome (DGUOK-277aa-Mitochondrial-Matrix-Deoxyguanosine-Kinase-MTS-16aa-Catalytic-dGMP-dAMP-P-loop-NTPase / MDDS3 / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / Nystagmus-90pct-Rotary-Pendular-PATHOGNOMONIC-First-Sign / NO-3-MGA-KEY-DDx-SERAC1-TAZ-TMEM70-OPA3-DNAJC19-CLPB / Hepatocerebral-75pct-Fatal / Hepatic-Only-25pct-OLT-Curative / Liver-Transplant-Does-NOT-Prevent-Brain-Depletion-Hepatocerebral / Lactic-Acidosis-100pct-pH-below-7.1-Neonatal / Hypoglycemia-70pct-IV-Dextrose-GIR-8-10-Mandatory / LEV-Preferred-Renal-Excretion / Propofol-AVOID-PRIS / Mandel-2001-NatGenet / 40-patient-cohort-seed-549 / 2p13.1 / OMIM-Gene-DGUOK-601465-Disease-MDDS3-251880)",
+    "status": "built",
+    "category": "mtDNA-Depletion-Syndrome / DGUOK-Purine-Salvage-Disorder / Mitochondrial-DNA-Maintenance",
+    "gene": "DGUOK",
+    "locus": "2p13.1",
+    "color": "#1a237e",
+    "api_prefix": "/api/dguok",
+    "frontend_path": "/dguok",
+    "cohort_size": 40,
+    "seed": 549,
+    "omim_gene": "601465",
+    "omim_disease": "251880",
+    "built_date": "2026-09-01",
+    "endpoints": [
+      "/api/dguok/overview",
+      "/api/dguok/breakdown",
+      "/api/dguok/definitions"
+    ],
+    "maps_to": "/api/dguok/overview|breakdown|definitions + portal-next/app/dguok/page.jsx + SiteNav wired after POLG"
   }
 ]
