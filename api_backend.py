@@ -39418,6 +39418,30 @@ async def taco1_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/lrpprc/overview")
+async def lrpprc_overview():
+    try:
+        import scripts.lrpprc_dashboard as lrpprc_
+        return _json_safe(lrpprc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lrpprc/breakdown")
+async def lrpprc_breakdown():
+    try:
+        import scripts.lrpprc_dashboard as lrpprc_
+        return _json_safe(lrpprc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lrpprc/definitions")
+async def lrpprc_definitions():
+    try:
+        import scripts.lrpprc_dashboard as lrpprc_
+        return _json_safe(lrpprc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

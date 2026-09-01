@@ -9074,5 +9074,14 @@
     "frontend": "/taco1",
     "seed": 603,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "lrpprc",
+    "name": "LRPPRC Leigh Syndrome French-Canadian Type LSFC (Combined Complex I + IV Deficiency / LRPPRC-1394aa-PPR-mt-mRNA-Stabiliser-All-13-mt-mRNAs-SLIRP-Complex-2p21 / OMIM-Gene-607544-Disease-220111-LSFC / AR-Biallelic / pAla354Val-c1061CT-SLSJ-French-Canadian-Founder-1in2000-Births-Carrier-1in40 / Episodic-Metabolic-Crises-92pct-CARDINAL-Fever-Triggered-DISTINGUISHING / Combined-CI-CIV-Deficiency-100pct-ONLY-COX-Disease-With-Combined-Defect-BIOCHEMICAL-FINGERPRINT / Isolated-CIV-ABSENT-KEY-DDx-SURF1-SCO2-COX10-COX15-TACO1 / Lactic-Acidosis-100pct-Baseline-Elevated-Severe-In-Crisis / Psychomotor-Regression-85pct / Hypotonia-80pct / Leigh-MRI-75pct / Cognitive-Delay-80pct / Seizures-55pct / Hepatopathy-Mild-Moderate-45pct-KEY-DDx-SCO1-100pct-Severe-Neonatal / NO-HCM-Dominant-KEY-DDx-SCO2-100pct-COX15-78pct / NO-Severe-Neonatal-Hepatic-Failure-KEY-DDx-SCO1 / NO-Iron-Overload-KEY-DDx-GRACILE / LRPPRC-SLIRP-Ribonucleoprotein-Complex-Poly-A-ALL-13-mt-mRNAs-MT-CO1-CO2-CO3-ND1-6-ATP6-ATP8-CYB / Distinct-From-TACO1-MT-CO1-Only-vs-LRPPRC-All-mt-mRNAs / Distinct-From-SURF1-COX1-Assembly-vs-LRPPRC-mRNA-Stability / VPA-ABSOLUTE-CI-CoA-Sequestration-POLG-Inhibition-Hepatotoxicity-Triple-Mechanism / Metformin-ABSOLUTE-CI-Combined-CI-CIV-Block-Fatal / Linezolid-ABSOLUTE-CI-mt-Ribosome-Block-Eliminates-All-Residual-mt-mRNA-Translation / Propofol-ABSOLUTE-CI-PRIS-Hepatic-Impairment / KD-CONTRAINDICATED-CI-CIV-Both-Deficient-Beta-Oxidation-Block / Fasting-DANGEROUS-Major-Crisis-Trigger-Continuous-Glucose-Mandatory / CoQ10-Ubiquinol-Level-C / Riboflavin-B2-Level-C-Particularly-CI-CIV / Thiamine-B1-Level-C-MANDATORY-Empiric / Biotin-Level-C-MANDATORY-Empiric / Carnitine-Level-C / LEV-Preferred-AED-Renal-Excretion-Safe-Hepatopathy / IV-Dextrose-GIR-6-8-Crisis-Never-Fast / Fever-Management-Antipyretics-Cooling-Immediate / Metabolic-Emergency-Card / Mootha-2003-NatGenet-LSFC-Gene-Identification / Sasarman-2010-EMBOJ-LRPPRC-SLIRP-Mechanism / Falk-2013-JMedGenet-LSFC-Natural-History / 40-patient-cohort-seed-605 / 2p21 / OMIM-Gene-LRPPRC-607544-Disease-LSFC-220111)",
+    "status": "built",
+    "route": "/lrpprc",
+    "api_prefix": "/api/lrpprc",
+    "seed": 605,
+    "registered": "2026-09-01"
   }
 ]
