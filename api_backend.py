@@ -39050,6 +39050,39 @@ async def rnaseh1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SLC25A4 PEOA1 ANT1 AD Progressive External Ophthalmoplegia 1 ────────────
+# SLC25A4-298aa-Adenine-Nucleotide-Translocator-1-IMM-ADP-ATP-Antiport-AD-Dominant-Negative-TM3-TM5
+# PEOA1-Progressive-External-Ophthalmoplegia-Autosomal-Dominant-1
+# AD-Heterozygous-Dominant-Negative-TM3-TM5-Missense-KEY-DDx-AR-MDDS2-HCM-Biallelic-LOF
+# 40-patient-cohort-seed-577 / 4q35.1 / OMIM-Gene-SLC25A4-103220-Disease-PEOA1-157640
+
+@app.get("/api/slc25a4-peoa1/overview")
+async def slc25a4_peoa1_overview():
+    try:
+        import scripts.slc25a4_peoa1_dashboard as slc25a4p_
+        return _json_safe(slc25a4p_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a4-peoa1/breakdown")
+async def slc25a4_peoa1_breakdown():
+    try:
+        import scripts.slc25a4_peoa1_dashboard as slc25a4p_
+        return _json_safe(slc25a4p_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a4-peoa1/definitions")
+async def slc25a4_peoa1_definitions():
+    try:
+        import scripts.slc25a4_peoa1_dashboard as slc25a4p_
+        return _json_safe(slc25a4p_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

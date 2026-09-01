@@ -8884,5 +8884,14 @@
     ],
     "page": "portal-next/app/rnaseh1/page.jsx",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "slc25a4_peoa1",
+    "name": "SLC25A4 ANT1 Progressive External Ophthalmoplegia AD 1 (PEOA1)",
+    "status": "built",
+    "api": "/api/slc25a4-peoa1",
+    "cohort_n": 40,
+    "seed": 577,
+    "registered": "2026-09-01"
   }
 ]
