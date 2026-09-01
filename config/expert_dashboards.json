@@ -8860,5 +8860,17 @@
     "n_patients": 40,
     "built_date": "2026-09-01",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "dna2",
+    "name": "DNA2 Progressive External Ophthalmoplegia AD (DNA2-1060aa-DNA-Replication-Helicase-Nuclease-2-Bifunctional-FeS-Cluster-10q21.3 / PEOA5-Progressive-External-Ophthalmoplegia-Autosomal-Dominant-5 / PEO-100pct-CARDINAL / mtDNA-Multiple-Deletions-NOT-Depletion / Normal-mtDNA-Copy-Number-KEY-DDx-MDDS / AD-Dominant-Negative-FeS-Cluster-Helicase / Adult-Onset-Mean-40yr / MORE-Ataxia-55pct-vs-POLG2-35pct-CLINICAL-DISTINGUISHER / MORE-Dysarthria-25pct / NO-Epilepsy-KEY-DDx-POLG1-Alpers / NO-Hepatopathy-KEY-DDx-POLG1-DGUOK-MPV17-TWNK / NO-Leukoencephalopathy-KEY-DDx-TYMP-MNGIE / Ronchi-2013-AnnNeurol / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / Propofol-AVOID-PRIS / LEV-Preferred-AED / 40-patient-cohort-seed-573 / 10q21.3 / OMIM-Gene-DNA2-601810-Disease-PEOA5-618098)",
+    "status": "built",
+    "endpoints": [
+      "/api/dna2/overview",
+      "/api/dna2/breakdown",
+      "/api/dna2/definitions"
+    ],
+    "page": "portal-next/app/dna2/page.jsx",
+    "registered": "2026-09-01"
   }
 ]

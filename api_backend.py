@@ -38996,6 +38996,33 @@ async def polg2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/dna2/overview")
+async def dna2_overview():
+    try:
+        import scripts.dna2_dashboard as dna2_
+        return _json_safe(dna2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dna2/breakdown")
+async def dna2_breakdown():
+    try:
+        import scripts.dna2_dashboard as dna2_
+        return _json_safe(dna2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/dna2/definitions")
+async def dna2_definitions():
+    try:
+        import scripts.dna2_dashboard as dna2_
+        return _json_safe(dna2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
