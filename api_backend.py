@@ -38354,6 +38354,57 @@ async def mecr_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-535; 3 endpoints /api/opa3/overview|breakdown|definitions
+# Costeff Syndrome (OPA3 — 3-Methylglutaconic Aciduria Type III)
+# OPA3-179aa-OMM-Fragmentation-Fission-Dysregulation / 3-MGA-uria-Type-III-Costeff
+# Chorea-DOMINANT-NOT-Dystonia-KEY-DDx-MECR / Optic-Atrophy-100pct-Infantile-ERG-Normal
+# NO-GP-Iron-MRI-KEY-DDx-MECR-NBIA / Iraqi-Jewish-Founder-pGln105stop-70-80pct-Alleles
+# Tetrabenazine-Deutetrabenazine-Chorea-CYP2D6-Mandatory / VPA-Relative-Caution-NOT-Absolute-CI
+# LEV-Preferred-Seizures / Baclofen-Spasticity / 19q13.2-q13.3 / OMIM-Gene-606580-Disease-258501
+@app.get("/api/opa3/overview")
+async def opa3_overview():
+    """Costeff Syndrome (OPA3 / 3-MGA Type III) overview — 40-patient cohort seed-535
+    (OPA3-179aa-OMM / 3-MGA-Type-III-Costeff / Chorea-Dominant-NOT-Dystonia /
+    Optic-Atrophy-100pct-Infantile / NO-GP-Iron-DDx-MECR / Iraqi-Jewish-Founder-Gln105stop /
+    Tetrabenazine-CYP2D6 / VPA-Relative-Caution / 19q13.2 / OMIM-606580-258501).
+    """
+    try:
+        import scripts.opa3_dashboard as opa3_
+        return _json_safe(opa3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/opa3/breakdown")
+async def opa3_breakdown():
+    """Costeff Syndrome (OPA3) phenotype/variant/treatment breakdown — 40-patient cohort seed-535
+    (Phenotype: Classic-Costeff-75pct / Chorea-Dominant-15pct / Optic-Dominant-10pct /
+    Variant: Gln105stop-75pct / Missense-IMS / Splice / Frameshift /
+    Treatment: Tetrabenazine-30pct / Deutetrabenazine-28pct / Baclofen-LEV-18pct).
+    """
+    try:
+        import scripts.opa3_dashboard as opa3_
+        return _json_safe(opa3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/opa3/definitions")
+async def opa3_definitions():
+    """Costeff Syndrome (OPA3) definitions — 10 concepts
+    (OPA3-OMM-Fragmentation / 3-MGA-Type-III-vs-Type-IV-MECR / Iraqi-Jewish-Founder-Gln105stop /
+    Chorea-Dominant-vs-MECR-Dystonia / Optic-Atrophy-ERG-Normal-vs-MECR /
+    MRI-Normal-No-GP-Iron-vs-MECR / VPA-Relative-Caution-vs-Absolute-CI-MECR /
+    Tetrabenazine-Deutetrabenazine-CYP2D6 / OPA3-AD-vs-AR-DDx / POLG-Screen-Mandatory /
+    OMIM-606580-258501-Costeff).
+    """
+    try:
+        import scripts.opa3_dashboard as opa3_
+        return _json_safe(opa3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

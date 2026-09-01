@@ -8578,5 +8578,22 @@
       "/api/mecr/breakdown",
       "/api/mecr/definitions"
     ]
+  },
+  {
+    "id": "opa3",
+    "name": "OPA3 Costeff Syndrome (OPA3-179aa-OMM-Fragmentation-Fission-Dysregulation / 3-MGA-uria-Type-III-Costeff / Chorea-DOMINANT-NOT-Dystonia-KEY-DDx-MECR / Optic-Atrophy-100pct-Infantile-ERG-Normal / NO-GP-Iron-MRI-DDx-MECR-NBIA / Iraqi-Jewish-Founder-pGln105stop-70-80pct-Alleles / Tetrabenazine-Deutetrabenazine-Chorea-CYP2D6-Mandatory / VPA-Relative-Caution-NOT-Absolute-CI / LEV-Preferred-Seizures / Baclofen-Spasticity / 40-patient-cohort-seed-535 / 19q13.2-q13.3 / OMIM-Gene-OPA3-606580-Disease-Costeff-258501)",
+    "status": "built",
+    "category": "NBIA-adjacent / 3-MGA-uria / Mitochondrial-OMM",
+    "gene": "OPA3",
+    "locus": "19q13.2-q13.3",
+    "color": "#4a148c",
+    "api_prefix": "/api/opa3",
+    "frontend_path": "/opa3",
+    "cohort_size": 40,
+    "endpoints": [
+      "/api/opa3/overview",
+      "/api/opa3/breakdown",
+      "/api/opa3/definitions"
+    ]
   }
 ]
