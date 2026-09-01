@@ -39171,6 +39171,31 @@ async def lhon_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/narp/overview")
+async def narp_overview():
+    try:
+        import scripts.narp_dashboard as narp_
+        return _json_safe(narp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/narp/breakdown")
+async def narp_breakdown():
+    try:
+        import scripts.narp_dashboard as narp_
+        return _json_safe(narp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/narp/definitions")
+async def narp_definitions():
+    try:
+        import scripts.narp_dashboard as narp_
+        return _json_safe(narp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

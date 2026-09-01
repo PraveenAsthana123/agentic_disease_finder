@@ -8949,5 +8949,23 @@
       "/api/lhon/breakdown",
       "/api/lhon/definitions"
     ]
+  },
+  {
+    "id": "narp",
+    "gene": "MT-ATP6",
+    "disease_name": "NARP Neuropathy Ataxia Retinitis Pigmentosa MT-ATP6 Complex V (MT-ATP6-227aa-ATP-Synthase-Subunit-a-F0-Component-Proton-Half-Channel-a-c10-Interface-mtDNA-Encoded / NARP-OMIM-551500 / MILS-Maternally-Inherited-Leigh-Syndrome-OMIM-500017 / m.8993T-G-p.Leu156Arg-Most-Common-70pct / m.8993T-C-p.Leu156Pro-Milder-25pct / m.9176T-C-p.Leu217Pro-Rare-5pct / Heteroplasmy-Threshold-Under-70pct-Subclinical-70-90pct-NARP-Over-90pct-MILS / NARP-Triad-Neuropathy-Ataxia-Retinitis-Pigmentosa / Leigh-MRI-Bilateral-Symmetric-Basal-Ganglia-Brainstem-MILS / Equal-Sex-Penetrance-NOT-Male-Predominant-CRITICAL-DDx-LHON / Maternal-Inheritance-NOT-Autosomal-Dominant-DDx-OPA1 / Retinitis-Pigmentosa-NOT-Central-Vision-Loss-KEY-DDx-LHON / VPA-ABSOLUTE-CI-ALL-MT-ATP6-Complex-V-Depletion-CoA-Sequestration / VGB-ABSOLUTE-CI-NARP-RP-Retinal-Toxicity-Additive / KD-CONTRAINDICATED-OXPHOS-Dependent-Beta-Oxidation-Complex-V-Failure / Propofol-AVOID-PRIS / Linezolid-ABSOLUTE-CI-All-Mito / LEV-Preferred-AED / CoQ10-Level-C-300-600mg / Idebenone-Level-C-Investigational / Thiamine-B1-Level-C / PGT-M-Heteroplasmy-Selection-Preventive / Holt-1990-AJHG-First-NARP / Tatuch-1993-BBRC-m.8993T-G / de-Vries-1993-AJHG-MILS-vs-NARP-Threshold / 40-patient-cohort-seed-585 / mtDNA / OMIM-Gene-MT-ATP6-516060-Disease-NARP-551500-MILS-500017",
+    "status": "built",
+    "api_prefix": "/api/narp",
+    "page_path": "/narp",
+    "cohort_seed": 585,
+    "n_patients": 40,
+    "inheritance": "Maternal (mitochondrial)",
+    "chromosome": "mtDNA",
+    "registered": "2026-09-01",
+    "endpoints": [
+      "/api/narp/overview",
+      "/api/narp/breakdown",
+      "/api/narp/definitions"
+    ]
   }
 ]
