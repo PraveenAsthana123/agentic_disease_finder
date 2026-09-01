@@ -8813,5 +8813,18 @@
     ],
     "frontend": "/tymp",
     "seed": 565
+  },
+  {
+    "id": "slc25a4",
+    "name": "SLC25A4 ANT1 Cardiomyopathic mtDNA Depletion Syndrome 2 (SLC25A4-298aa-Adenine-Nucleotide-Translocator-1-IMM-ADP-ATP-Antiport / MDDS2-Mitochondrial-DNA-Depletion-Syndrome-2 / HCM-100pct-DOMINANT-FEATURE-UNIQUE-Among-MDDS / ANT1-AR-LOF-vs-AD-PEO2-Critical-Distinction / VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / NO-GI-Dysmotility-KEY-DDx-TYMP / NO-MMA-KEY-DDx-SUCLA2-SUCLG1 / NO-Fanconi-KEY-DDx-RRM2B / Cardiac-Transplant-Curative-Cardiac-NOT-Systemic / 40-patient-cohort-seed-567 / 4q35.1 / OMIM-Gene-SLC25A4-103220-Disease-MDDS2-615418)",
+    "status": "built",
+    "routes": [
+      "/api/slc25a4/overview",
+      "/api/slc25a4/breakdown",
+      "/api/slc25a4/definitions"
+    ],
+    "frontend": "/slc25a4",
+    "seed": 567,
+    "registered": "2026-09-01"
   }
 ]

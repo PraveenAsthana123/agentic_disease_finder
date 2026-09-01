@@ -38915,6 +38915,33 @@ async def tymp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/slc25a4/overview")
+async def slc25a4_overview():
+    try:
+        import scripts.slc25a4_dashboard as slc25a4_
+        return _json_safe(slc25a4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a4/breakdown")
+async def slc25a4_breakdown():
+    try:
+        import scripts.slc25a4_dashboard as slc25a4_
+        return _json_safe(slc25a4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/slc25a4/definitions")
+async def slc25a4_definitions():
+    try:
+        import scripts.slc25a4_dashboard as slc25a4_
+        return _json_safe(slc25a4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
