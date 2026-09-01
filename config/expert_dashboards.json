@@ -8628,5 +8628,10 @@
       "/api/serac1/definitions"
     ],
     "page": "/serac1"
+  },
+  {
+    "id": "taz",
+    "name": "TAZ Barth Syndrome (TAZ-292aa-IMM-Tafazzin-Cardiolipin-Remodeling-Transacylase / 3-MGA-uria-Type-II-Barth / DCM-100pct-CARDINAL-Onset-Birth-2yr / Neutropenia-95pct-Cyclic-Chronic-Bacterial-Sepsis-Risk / Skeletal-Myopathy-100pct / Growth-Retardation-95pct / C4-DC-Elevated-PATHOGNOMONIC-No-Other-3-MGA-Has-C4DC / MLCL-CL-Ratio-Above-0.5-DIAGNOSTIC / Normal-Cognition-100pct-UNIQUE-All-Other-3-MGA-Have-ID / NO-SNHL-KEY-DDx-SERAC1 / NO-Optic-Atrophy-KEY-DDx-OPA3-MECR / NO-Movement-Disorder-KEY-DDx-OPA3-FTL / X-linked-Recessive-Males-Only / ACE-Inhibitor-BB-MANDATORY-Level-A-DCM / Heart-Transplant-30pct-EF-Less-25pct-Excellent-PostTx / G-CSF-Neutropenia-Level-B / VPA-ABSOLUTE-CI-Cardiolipin-Deficiency-Complex-I / LEV-Preferred-Seizures / Elamipretide-SS31-TAZPOWER-Investigational / Barth-1983-Dutch-Family-First-Description / 40-patient-cohort-seed-541 / Xq28 / OMIM-Gene-TAZ-300394-Disease-Barth-302060)",
+    "status": "built"
   }
 ]

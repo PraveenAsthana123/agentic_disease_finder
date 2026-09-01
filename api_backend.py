@@ -38504,6 +38504,36 @@ async def serac1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-541; 3 endpoints /api/taz/overview|breakdown|definitions
+# TAZ Barth Syndrome: X-linked DCM+Neutropenia+Myopathy / 3-MGA-uria Type II / Cardiolipin Remodeling
+# C4-DC elevated PATHOGNOMONIC / MLCL:CL>0.5 diagnostic / VPA ABSOLUTE CI / ACE-I+BB MANDATORY / Xq28
+@app.get("/api/taz/overview")
+async def taz_overview():
+    try:
+        import scripts.taz_dashboard as taz_
+        return _json_safe(taz_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/taz/breakdown")
+async def taz_breakdown():
+    try:
+        import scripts.taz_dashboard as taz_
+        return _json_safe(taz_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/taz/definitions")
+async def taz_definitions():
+    try:
+        import scripts.taz_dashboard as taz_
+        return _json_safe(taz_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
