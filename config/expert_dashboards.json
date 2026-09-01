@@ -8768,5 +8768,12 @@
     "seed": 557,
     "cohort_n": 40,
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "rrm2b",
+    "name": "RRM2B MDDS8A Encephalomyopathic mtDNA Depletion Syndrome 8A (RRM2B-351aa-Ribonucleoside-Diphosphate-Reductase-Subunit-M2-B-p53R2-dNTP-Pool-Post-Mitotic-Cells / MDDS8A-Mitochondrial-DNA-Depletion-Syndrome-8A / PEO5-Progressive-External-Ophthalmoplegia-5-AD / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration-Epoxide / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / Fanconi-Syndrome-52pct-Renal-Tubular-Acidosis-DISTINCTIVE-DDx-No-Other-MDDS / NO-Hepatopathy-KEY-DDx-DGUOK-MPV17-TWNK-POLG-Hepatocerebral / NO-MMA-KEY-DDx-SUCLA2-Mild-MMA / CK-Mild-KEY-DDx-TK2-Very-High-CK / Respiratory-Failure-65pct-Leading-Cause-Death-NIV-Critical / Hypotonia-100pct-Universal / LEV-Preferred-AED-Renal-Excretion / Propofol-AVOID-PRIS / Bourdon-2007-NatGenet-First-Description / 40-patient-cohort-seed-559 / 8q22.3 / OMIM-Gene-RRM2B-604712-Disease-MDDS8A-612075)",
+    "status": "built",
+    "route": "/rrm2b",
+    "api_base": "/api/rrm2b"
   }
 ]

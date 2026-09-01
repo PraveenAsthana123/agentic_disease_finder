@@ -38791,6 +38791,40 @@ async def sucla2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── RRM2B MDDS8A — Encephalomyopathic mtDNA Depletion Syndrome 8A (p53R2 / dNTP Pool) ──
+# RRM2B-351aa-Ribonucleoside-Diphosphate-Reductase-Subunit-M2-B-p53R2-dNTP-Pool-Maintenance
+# MDDS8A / PEO5 / Fanconi-Syndrome-50pct-DISTINCTIVE-DDx / NO-Hepatopathy-KEY-DDx-DGUOK-MPV17-TWNK-POLG
+# NO-MMA-KEY-DDx-SUCLA2 / CK-Mild-KEY-DDx-TK2 / Respiratory-Failure-65pct / LEV-Preferred
+# VPA-ABSOLUTE-CI-mtDNA-Depletion / KD-CONTRAINDICATED / Propofol-AVOID-PRIS
+# 40-patient-cohort-seed-559 / 8q22.3 / OMIM-Gene-RRM2B-604712-Disease-MDDS8A-612075
+
+@app.get("/api/rrm2b/overview")
+async def rrm2b_overview():
+    try:
+        import scripts.rrm2b_dashboard as rrm2b_
+        return _json_safe(rrm2b_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rrm2b/breakdown")
+async def rrm2b_breakdown():
+    try:
+        import scripts.rrm2b_dashboard as rrm2b_
+        return _json_safe(rrm2b_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rrm2b/definitions")
+async def rrm2b_definitions():
+    try:
+        import scripts.rrm2b_dashboard as rrm2b_
+        return _json_safe(rrm2b_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
