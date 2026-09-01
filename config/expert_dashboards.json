@@ -8712,5 +8712,19 @@
       "/api/dguok/definitions"
     ],
     "maps_to": "/api/dguok/overview|breakdown|definitions + portal-next/app/dguok/page.jsx + SiteNav wired after POLG"
+  },
+  {
+    "id": "mpv17",
+    "name": "MPV17 Hepatocerebral mtDNA Depletion Syndrome (MPV17-176aa-IMM-Channel-4TM-Helix-dNTP-mtDNA-Copy-Number-Maintenance / MDDS6-Mitochondrial-DNA-Depletion-Syndrome-6 / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration-Epoxide / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / PeripheralNeuropathy-80pct-Sensorimotor-Demyelinating-CARDINAL / NO-Nystagmus-KEY-DDx-DGUOK-Has-Nystagmus-90pct / Navajo-Neurohepatopathy-NNH-Arg50Gln-Founder-75pct-Navajo-Alleles-1-in-1600-Births / NO-3-MGA-KEY-DDx-All-3-MGA-Syndromes-SERAC1-TAZ-TMEM70-OPA3-DNAJC19-CLPB / Hepatocerebral-90pct-Liver-Failure-Neuropathy-Leukoencephalopathy-Fatal / Hepatic-Only-10pct-OLT-May-Cure / Liver-Transplant-Does-NOT-Prevent-Neuropathy-Hepatocerebral / Lactic-Acidosis-100pct / Hypoglycemia-80pct-IV-Dextrose-GIR-8-10-Mandatory / LEV-Preferred-AED-Renal-Excretion-No-Hepatic-Metabolism / Propofol-AVOID-PRIS / Spinazzola-2006-NatGenet-First-Description / 40-patient-cohort-seed-551 / 2p23.3 / OMIM-Gene-MPV17-137960-Disease-MDDS6-256810)",
+    "status": "built",
+    "role": "Metabolic Neurologist",
+    "route": "/mpv17",
+    "frontend": "portal-next/app/mpv17/page.jsx",
+    "endpoints": [
+      "/api/mpv17/overview",
+      "/api/mpv17/breakdown",
+      "/api/mpv17/definitions"
+    ],
+    "built_note": "MPV17 MDDS6 \u2014 /api/mpv17/overview|breakdown|definitions verified 200, portal-next/app/mpv17/page.jsx + SiteNav wired after DGUOK, expert_dashboards.json count 567->568. Built 2026-09-01."
   }
 ]

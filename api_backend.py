@@ -38657,6 +38657,36 @@ async def dguok_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-551; 3 endpoints /api/mpv17/overview|breakdown|definitions
+# MPV17 MDDS6: VPA-ABSOLUTE-CI / KD-CONTRAINDICATED / PeripheralNeuropathy-80pct-CARDINAL / NO-Nystagmus-DDx-DGUOK
+# Hepatocerebral-90pct / Hepatic-Only-10pct / NO-3-MGA-KEY-DDx / Navajo-Founder-Arg50Gln / 2p23.3 / OMIM-Gene-137960-Disease-256810
+@app.get("/api/mpv17/overview")
+async def mpv17_overview():
+    try:
+        import scripts.mpv17_dashboard as mpv17_
+        return _json_safe(mpv17_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mpv17/breakdown")
+async def mpv17_breakdown():
+    try:
+        import scripts.mpv17_dashboard as mpv17_
+        return _json_safe(mpv17_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mpv17/definitions")
+async def mpv17_definitions():
+    try:
+        import scripts.mpv17_dashboard as mpv17_
+        return _json_safe(mpv17_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
