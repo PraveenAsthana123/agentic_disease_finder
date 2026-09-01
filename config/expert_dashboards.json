@@ -9040,6 +9040,12 @@
     "route": "/sco1",
     "api": "/api/sco1/{overview,breakdown,definitions}",
     "seed": 597,
-    "registered": "2026-09-01"
+    "registered": "2026-09-01",
+    "id": "sco1"
+  },
+  {
+    "id": "cox10",
+    "name": "COX10 Leigh Syndrome Renal Tubulopathy Complex IV COX Deficiency (COX10-441aa-IMM-Protoheme-IX-Farnesyltransferase-Heme-a-o-Synthase-Step1-COX1-MT-CO1-17p12 / OMIM-Gene-602125-Disease-220111 / AR-Biallelic / pLeu336His-c1007TA-Brazilian-Founder / pArg116Trp-c346CT-European / Leigh-Leigh-like-MRI-88pct-CARDINAL / Renal-Tubulopathy-Fanconi-65pct-DISTINGUISHING-KEY-DDx-SURF1-below10pct / Lactic-Acidosis-100pct / Hypotonia-90pct / NO-Hepatopathy-KEY-DDx-SCO1 / NO-HCM-Dominant-KEY-DDx-SCO2 / NO-Iron-Overload-KEY-DDx-GRACILE / Isolated-COX-Deficiency-Complexes-I-II-III-NORMAL / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI-23S-rRNA-MT-CO1 / KD-CONTRAINDICATED / LEV-Preferred-AED / Antonicka-2003-AmJHumGenet / 40-patient-cohort-seed-599 / 17p12 / OMIM-Gene-COX10-602125-Disease-220111)",
+    "status": "built"
   }
 ]

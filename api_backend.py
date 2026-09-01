@@ -39346,6 +39346,31 @@ async def sco1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cox10/overview")
+async def cox10_overview():
+    try:
+        import scripts.cox10_dashboard as cox10_
+        return _json_safe(cox10_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cox10/breakdown")
+async def cox10_breakdown():
+    try:
+        import scripts.cox10_dashboard as cox10_
+        return _json_safe(cox10_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cox10/definitions")
+async def cox10_definitions():
+    try:
+        import scripts.cox10_dashboard as cox10_
+        return _json_safe(cox10_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
