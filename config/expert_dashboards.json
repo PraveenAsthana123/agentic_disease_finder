@@ -8931,5 +8931,23 @@
     "status": "built",
     "note": "Total: 583 dashboards",
     "built_note": "Built scripts/opa1_dashboard.py, api_backend.py 3 routes /api/opa1/overview|breakdown|definitions verified 200, portal-next/app/opa1/page.jsx + SiteNav wired after TWNK-PEOA3, expert_dashboards.json count 582->583. Built 2026-09-01."
+  },
+  {
+    "id": "lhon",
+    "gene": "MT-ND4 / MT-ND1 / MT-ND6",
+    "disease_name": "LHON Leber Hereditary Optic Neuropathy (MT-ND4-459aa-NADH-Ubiquinone-Oxidoreductase-Chain-4-Complex-I-mtDNA-Encoded / MT-ND1-318aa-Most-Conserved-Complex-I / MT-ND6-174aa-L-Strand / OMIM-535000-Wallace-1988-Science / Maternal-Inheritance-mtDNA-NOT-AD-CRITICAL-DDx-OPA1 / Male-Predominance-80-90pct-X-linked-Modifier-Xq21 / Subacute-Painless-Central-Visual-Loss-HALLMARK / Sequential-Bilateral-97pct-Second-Eye-6-8-Weeks / Red-Green-Dyschromatopsia-DDx-OPA1-Blue-Yellow / Peripapillary-Telangiectasia-NO-FFA-Leak-DDx-NAION / m.11778G-A-MT-ND4-70pct-Worst-Prognosis-Under-4pct-Recovery / m.14484T-C-MT-ND6-15pct-50pct-Recovery / Tobacco-ABSOLUTE-CI-All / Ethambutol-ABSOLUTE-CI-ALL-Genotypes / Linezolid-ABSOLUTE-CI / Idebenone-Raxone-Level-B-RHODOS-EU-2015 / Lenadogene-Nolparvovec-Lumevoq-EU-2021-m.11778G-A / 40-patient-cohort-seed-583 / mtDNA / OMIM-535000",
+    "status": "built",
+    "api_prefix": "/api/lhon",
+    "page_path": "/lhon",
+    "cohort_seed": 583,
+    "n_patients": 40,
+    "inheritance": "Maternal (mitochondrial)",
+    "chromosome": "mtDNA",
+    "registered": "2026-09-01",
+    "endpoints": [
+      "/api/lhon/overview",
+      "/api/lhon/breakdown",
+      "/api/lhon/definitions"
+    ]
   }
 ]

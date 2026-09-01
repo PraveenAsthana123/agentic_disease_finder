@@ -39144,6 +39144,33 @@ async def opa1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/lhon/overview")
+async def lhon_overview():
+    try:
+        import scripts.lhon_dashboard as lhon_
+        return _json_safe(lhon_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/lhon/breakdown")
+async def lhon_breakdown():
+    try:
+        import scripts.lhon_dashboard as lhon_
+        return _json_safe(lhon_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/lhon/definitions")
+async def lhon_definitions():
+    try:
+        import scripts.lhon_dashboard as lhon_
+        return _json_safe(lhon_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
