@@ -39117,6 +39117,33 @@ async def twnk_peoa3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/opa1/overview")
+async def opa1_overview():
+    try:
+        import scripts.opa1_dashboard as opa1_
+        return _json_safe(opa1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/opa1/breakdown")
+async def opa1_breakdown():
+    try:
+        import scripts.opa1_dashboard as opa1_
+        return _json_safe(opa1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/opa1/definitions")
+async def opa1_definitions():
+    try:
+        import scripts.opa1_dashboard as opa1_
+        return _json_safe(opa1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

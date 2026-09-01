@@ -8911,5 +8911,25 @@
     "omim_gene": "606075",
     "omim_disease": "609286",
     "built_date": "2026-09-01"
+  },
+  {
+    "id": "opa1",
+    "gene": "OPA1",
+    "disease_name": "OPA1 Autosomal Dominant Optic Atrophy ADOA OPA1-Plus (OPA1-960aa-IMM-Dynamin-Like-GTPase-Inner-Membrane-Fusion-Cristae-Remodelling / ADOA-Kjer-Disease-Most-Common-Hereditary-Optic-Neuropathy-1-in-30000 / Optic-Atrophy-100pct-CARDINAL / Tritanopia-Blue-Yellow-DDx-LHON-Red-Green / Childhood-Onset-Slow-Progressive / OPA1-Plus-20pct-GTPase-Missense-Multisystem / mtDNA-Multiple-Deletions-OPA1-Plus-Same-Pattern-adPEO / Ethambutol-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / Tobacco-ABSOLUTE-CI / VPA-CAUTION-OPA1-Plus-Myopathy / Idebenone-Level-C / LEV-Preferred-AED / AD-Nuclear-NOT-Maternal-DDx-LHON / Delettre-2000-NatGenet / Alexander-2000-NatGenet / 40-patient-cohort-seed-581 / 3q29 / OMIM-Gene-OPA1-605290-Disease-ADOA-165500)",
+    "route": "/opa1",
+    "api_prefix": "/api/opa1",
+    "endpoints": [
+      "/api/opa1/overview",
+      "/api/opa1/breakdown",
+      "/api/opa1/definitions"
+    ],
+    "frontend": "portal-next/app/opa1/page.jsx",
+    "script": "scripts/opa1_dashboard.py",
+    "locus": "3q29",
+    "omim": "605290 (gene) / 165500 (ADOA) / 125250 (OPA1-Plus)",
+    "color": "#1b5e20",
+    "status": "built",
+    "note": "Total: 583 dashboards",
+    "built_note": "Built scripts/opa1_dashboard.py, api_backend.py 3 routes /api/opa1/overview|breakdown|definitions verified 200, portal-next/app/opa1/page.jsx + SiteNav wired after TWNK-PEOA3, expert_dashboards.json count 582->583. Built 2026-09-01."
   }
 ]
