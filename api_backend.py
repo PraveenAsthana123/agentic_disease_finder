@@ -38038,6 +38038,60 @@ async def pla2g6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── FA2H / FAHN (NBIA3) — FA2H-Associated Neurodegeneration ─────────────────────────────────────
+# 40-patient cohort seed-523; 3 endpoints /api/fa2h/overview|breakdown|definitions
+# 4th most common NBIA (~5-10%); AR biallelic FA2H; leukodystrophy EARLIEST + MOST PROMINENT MRI; spastic paraplegia dominant; NO eye-of-tiger
+@app.get("/api/fa2h/overview")
+async def fa2h_overview():
+    """FA2H FAHN — FA2H-Associated Neurodegeneration / NBIA3 / 490aa / 16q23.1 /
+    OMIM Gene 611026 / Disease FAHN 612319.
+    4th most common NBIA (~5-10%). 3 phenotypes: FAHN-Classic Spastic-Paraplegia/Leukodystrophy (50%),
+    HSP-Ataxia-Dystonia (35%), Complex-SPG adolescent-onset (15%).
+    Leukodystrophy (bilateral T2/FLAIR WM hyperintensity) EARLIEST + MOST PROMINENT MRI finding.
+    GP+SN iron (T2*/SWI) present but MILD early — leukodystrophy precedes iron on MRI.
+    Spastic paraplegia DOMINANT early motor feature. NO eye-of-tiger (key DDx PKAN/NBIA1).
+    PHT AVOID (leukodystrophy CNS depression + cerebellar toxicity). VGB AVOID (visual field + optic risk).
+    Baclofen first-line spasticity Level C. POLG mandatory before VPA. Deferiprone investigational. Seed-523."""
+    try:
+        import scripts.fa2h_dashboard as fa2h_
+        return _json_safe(fa2h_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fa2h/breakdown")
+async def fa2h_breakdown():
+    """FA2H FAHN breakdown — per-phenotype: FAHN-Classic (50%)/HSP-Ataxia-Dystonia (35%)/Complex-SPG (15%);
+    per-etiology: missense-compound-het (~55%)/null-biallelic (~20%)/splice (~15%)/CNV (~10%);
+    seizure types (focal/generalised/myoclonic/absence);
+    per-patient table: phenotype, leukodystrophy, gp_iron, sn_iron, thin_cc, cerebellar_atrophy,
+    spastic_paraplegia, ataxia, dysarthria, dystonia_severity, optic_atrophy, axonal_neuropathy,
+    ambulation_lost, cognitive_decline, baclofen, btx, trihexyphenidyl, dbs, physio_enrolled, polg_tested.
+    """
+    try:
+        import scripts.fa2h_dashboard as fa2h_
+        return _json_safe(fa2h_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fa2h/definitions")
+async def fa2h_definitions():
+    """FA2H FAHN definitions — 15 concepts (FAHN-NBIA3 / FA2H-490aa-FAD-Di-Iron-ER-Membrane /
+    leukodystrophy-earliest-most-prominent-MRI / GP-SN-iron-mild-early-leukodystrophy-first /
+    spastic-paraplegia-DOMINANT-early / 2-hydroxy-sphingolipid-HFA-GalC-myelin-stability /
+    cerebellar-ataxia-dysarthria-secondary / dystonia-late-2nd-3rd-decade /
+    no-eye-of-tiger-DDx-PKAN / PHT-AVOID-leukodystrophy / VGB-AVOID-visual-field /
+    POLG-mandatory-secondary-mito / baclofen-first-line-Level-C /
+    GPi-DBS-Level-D-investigational / deferiprone-investigational).
+    """
+    try:
+        import scripts.fa2h_dashboard as fa2h_
+        return _json_safe(fa2h_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

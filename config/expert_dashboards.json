@@ -8469,5 +8469,39 @@
     "frontend": "portal-next/app/pla2g6/page.jsx",
     "data_source": "Synthetic 40-patient cohort (seed-521, clinical.db pattern)",
     "built_at": "2026-08-31"
+  },
+  {
+    "id": "fa2h",
+    "gene": "FA2H",
+    "title": "FA2H FAHN/NBIA3 (FA2H-Associated-Neurodegeneration / FA2H-490aa-ER-Membrane-FAD-Binding-HX3H-Di-Iron-Motif / 4th-Most-Common-NBIA-5-10pct / FAHN-Classic-Spastic-Paraplegia-Leukodystrophy-50pct / HSP-Ataxia-Dystonia-35pct / Complex-SPG-Adolescent-15pct / Leukodystrophy-EARLIEST-MOST-PROMINENT-MRI / GP-SN-Iron-MILD-Early-Leukodystrophy-First / Spastic-Paraplegia-DOMINANT-Early-Motor / NO-Eye-of-Tiger-DDx-PKAN / 2-Hydroxy-Sphingolipid-HFA-GalC-Myelin-Stability / PHT-AVOID-Leukodystrophy / VGB-AVOID-Visual-Field / Baclofen-First-Line-Level-C / POLG-Mandatory-Before-VPA / GPi-DBS-Level-D-Investigational / Deferiprone-Investigational / 40-patient-cohort-seed-523 / 16q23.1 / OMIM-Gene-FA2H-611026-Disease-FAHN-612319)",
+    "role": "Neurologist / Epileptologist / Movement Disorder Specialist",
+    "status": "built",
+    "priority": "P0",
+    "description": "40 patients scored on FA2H/FAHN NBIA3 (4th most common NBIA ~5-10%). 3 phenotypes: FAHN-Classic 50% (onset 3-5yr), HSP-Ataxia-Dystonia 35% (onset 3-7yr), Complex-SPG 15% (onset 10-15yr). Leukodystrophy EARLIEST + MOST PROMINENT MRI. GP+SN iron present but MILD early (secondary to myelin loss). Spastic paraplegia DOMINANT. NO eye-of-tiger (DDx PKAN). PHT AVOID (leukodystrophy CNS depression). VGB AVOID. Baclofen first-line Level C. POLG mandatory. GPi-DBS Level D (3 case reports). 5-tab frontend.",
+    "endpoints": [
+      "/api/fa2h/overview",
+      "/api/fa2h/breakdown",
+      "/api/fa2h/definitions"
+    ],
+    "frontend": "portal-next/app/fa2h/page.jsx",
+    "data_source": "Synthetic 40-patient cohort (seed-523, clinical.db pattern)",
+    "built_at": "2026-08-31",
+    "registered": "2026-08-31",
+    "route": "/fa2h",
+    "api_routes": [
+      "/api/fa2h/overview",
+      "/api/fa2h/breakdown",
+      "/api/fa2h/definitions"
+    ],
+    "script": "scripts/fa2h_dashboard.py",
+    "seed": 523,
+    "cohort_size": 40,
+    "built_date": "2026-08-31",
+    "category": "nbia-neurodegeneration-epilepsy",
+    "omim_gene": "611026",
+    "omim_disease": "612319",
+    "chromosome": "16q23.1",
+    "inheritance": "Autosomal Recessive \u2014 Biallelic FA2H mutations",
+    "built_note": "FA2H FAHN/NBIA3 (490aa / AR biallelic / Leukodystrophy-EARLIEST-MRI / Spastic-Paraplegia-DOMINANT / 16q23.1) dashboard built 2026-08-31: /api/fa2h/overview|breakdown|definitions + portal-next/app/fa2h/page.jsx + SiteNav wired after PLA2G6. expert_dashboards.json count 553->554."
   }
 ]
