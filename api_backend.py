@@ -38723,6 +38723,45 @@ async def tk2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TWNK Hepatocerebral / IOSCA mtDNA Depletion Syndrome (MDDS7) ──────────────
+# TWNK-684aa-Mitochondrial-DNA-Helicase-5prime-3prime-SF4-Hexameric-Ring-mtDNA-Replication-Fork
+# MDDS7-Mitochondrial-DNA-Depletion-Syndrome-7 / IOSCA-Infantile-Onset-Spinocerebellar-Ataxia
+# VPA-ABSOLUTE-CI-mtDNA-Depletion / KD-CONTRAINDICATED / NO-Nystagmus-KEY-DDx-DGUOK
+# NO-3-MGA-KEY-DDx-SERAC1-TAZ-TMEM70-OPA3-DNAJC19-CLPB
+# Hepatocerebral-75pct / Hepatic-Only-25pct-OLT-May-Cure
+# Liver-Transplant-Does-NOT-Prevent-Brain-Depletion-Hepatocerebral
+# Lactic-Acidosis-100pct / Hypoglycemia-70pct-IV-Dextrose-GIR-8-10-Mandatory
+# LEV-Preferred-AED-Renal-Excretion / Propofol-AVOID-PRIS
+# Spelbrink-2001-NatGenet-First-Description-adPEO / Nikali-2005-Neurology-IOSCA-MDDS7
+# 40-patient-cohort-seed-555 / 10q24.31 / OMIM-Gene-TWNK-606075-Disease-MDDS7-271245
+
+@app.get("/api/twnk/overview")
+async def twnk_overview():
+    try:
+        import scripts.twnk_dashboard as twnk_
+        return _json_safe(twnk_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/twnk/breakdown")
+async def twnk_breakdown():
+    try:
+        import scripts.twnk_dashboard as twnk_
+        return _json_safe(twnk_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/twnk/definitions")
+async def twnk_definitions():
+    try:
+        import scripts.twnk_dashboard as twnk_
+        return _json_safe(twnk_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

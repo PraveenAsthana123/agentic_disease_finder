@@ -8739,5 +8739,23 @@
     "omim_gene": "188250",
     "omim_disease": "609560",
     "seed": 553
+  },
+  {
+    "id": "twnk",
+    "name": "TWNK Hepatocerebral mtDNA Depletion Syndrome (TWNK-684aa-Mitochondrial-DNA-Helicase-5prime-3prime-SF4-Hexameric-Ring-mtDNA-Replication-Fork / MDDS7-Mitochondrial-DNA-Depletion-Syndrome-7 / IOSCA-Infantile-Onset-Spinocerebellar-Ataxia / VPA-ABSOLUTE-CI-mtDNA-Depletion-CoA-Sequestration-Epoxide / KD-CONTRAINDICATED-Forces-OXPHOS-Dependent-Beta-Oxidation / NO-Nystagmus-KEY-DDx-DGUOK-Has-Nystagmus-90pct / NO-3-MGA-KEY-DDx-All-3-MGA-Syndromes-SERAC1-TAZ-TMEM70-OPA3-DNAJC19-CLPB / Hepatocerebral-75pct-Liver-Failure-Neurodegeneration / Hepatic-Only-25pct-OLT-May-Cure / Liver-Transplant-Does-NOT-Prevent-Brain-Depletion-Hepatocerebral / Lactic-Acidosis-100pct / Hypoglycemia-70pct-IV-Dextrose-GIR-8-10-Mandatory / LEV-Preferred-AED-Renal-Excretion-No-Hepatic-Metabolism / Propofol-AVOID-PRIS / Spelbrink-2001-NatGenet-First-Description-adPEO / Nikali-2005-Neurology-IOSCA-MDDS7 / 40-patient-cohort-seed-555 / 10q24.31 / OMIM-Gene-TWNK-606075-Disease-MDDS7-271245",
+    "status": "built",
+    "api_endpoints": [
+      "/api/twnk/overview",
+      "/api/twnk/breakdown",
+      "/api/twnk/definitions"
+    ],
+    "frontend_page": "/twnk",
+    "script": "scripts/twnk_dashboard.py",
+    "cohort_seed": 555,
+    "cohort_n": 40,
+    "chromosome": "10q24.31",
+    "omim_gene": "606075",
+    "omim_disease": "271245",
+    "built_date": "2026-09-01"
   }
 ]
