@@ -9312,5 +9312,26 @@
     "page": "/ndufs6",
     "built_date": "2026-09-01",
     "description": "Q-module zinc-finger subunit with dual CXXC tetracysteine motif coordinating structural Zn2+. Only CI subunit with bona fide zinc-finger domain (not Fe-S). Loss collapses Q-module assembly \u2192 isolated CI deficiency 5-20%. 40-patient cohort seed-629. 3 endpoints verified 200."
+  },
+  {
+    "id": "ndufa9",
+    "gene": "NDUFA9",
+    "disease": "NDUFA9 Leigh Syndrome \u2014 Isolated Complex I Deficiency (Q-Module/Membrane-Arm Junction / SDR-Fold 39kDa / I-gamma Sub-Assembly)",
+    "omim_gene": "603834",
+    "omim_disease": "256000 / 618245",
+    "chromosome": "12q24.31",
+    "inheritance": "AR",
+    "pathway": "CI-Leigh / NDUFA9 Q-Module/Membrane-Arm Junction SDR-Fold 39kDa / I-gamma Sub-Assembly Checkpoint",
+    "seed": 631,
+    "status": "built",
+    "endpoints": [
+      "/api/ndufa9/overview",
+      "/api/ndufa9/breakdown",
+      "/api/ndufa9/definitions"
+    ],
+    "page": "/ndufa9",
+    "built_date": "2026-09-01",
+    "note": "Total: 608 dashboards",
+    "built_note": "Built scripts/ndufa9_dashboard.py, api_backend.py 3 routes /api/ndufa9/overview|breakdown|definitions, portal-next/app/ndufa9/page.jsx + SiteNav wired after NDUFS6, config/expert_dashboards.json count 607->608. Built 2026-09-01."
   }
 ]
