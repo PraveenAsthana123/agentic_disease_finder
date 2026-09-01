@@ -9033,5 +9033,13 @@
     "cohort_n": 40,
     "seed": 595,
     "registered": "2026-09-01"
+  },
+  {
+    "name": "SCO1 Neonatal Hepatic Failure Encephalomyopathy Complex IV COX Deficiency (SCO1-301aa-IMM-IMS-Copper-Chaperone-CXXXXC-Motif-CuA-Cu2plus-to-Cuplus-Reduction-Final-Copper-Loading-COX2-MT-CO2 / OMIM-Gene-603644-Disease-604377 / AR-Biallelic / pPro174Leu-c521CT-North-European-Canadian-Founder-Most-Common / pHis221Gln-c663CA-Second-Most-Common / Neonatal-Hepatic-Failure-100pct-CARDINAL-UNIQUE-COX-Assembly-Factor-Diseases-Hepatic-Dominant / Encephalomyopathy-90pct / Lactic-Acidosis-100pct / Hypotonia-88pct / Hepatomegaly-82pct / Coagulopathy-78pct / Failure-To-Thrive-78pct / Cholestasis-78pct / HCM-20pct-ONLY-KEY-DDx-SCO2-HCM-100pct / Fatal-In-First-Year-85pct / Isolated-COX-Deficiency-Complexes-I-II-III-NORMAL-BIOCHEMICAL-FINGERPRINT / COX17-SCO2-SCO1-CuA-Copper-Trafficking-Hierarchy-SCO1-LAST-STEP / NO-Iron-Overload-KEY-DDx-GRACILE-Iron-100pct / SCO1-HEPATOPATHY-100pct-vs-SCO2-NO-HEPATOPATHY-CRITICAL-DDx-Both-COX-Deficient-Opposite-Organ-Dominance / SCO1-Cytoplasmic-Copper-Efflux-Hepatocyte-Role-Explains-Liver-Dominant-Phenotype / Liver-Transplant-Controversial-Does-NOT-Cure-Encephalomyopathy / VPA-ABSOLUTE-CI-Triple-Mechanism-Lethal-With-Hepatic-Failure / Metformin-ABSOLUTE-CI-Complex-I-Lactic-Crisis / Linezolid-ABSOLUTE-CI-23S-rRNA-COX-Synthesis-Block / Propofol-ABSOLUTE-CI-PRIS-Hepatic-Failure-Impairs-Clearance / KD-CONTRAINDICATED-Beta-Oxidation-Requires-Complex-IV / LEV-Preferred-AED-Renal-Excretion-No-Mito-No-Hepatic / CoQ10-Ubiquinol-Level-C / IV-Dextrose-GIR-6-8-Never-Fast / Valnot-2000-NatGenet-First-SCO1 / Leary-2007-HumMolGenet-Mechanism / 40-patient-cohort-seed-597 / 17p13.2 / OMIM-Gene-SCO1-603644-Disease-604377)",
+    "status": "built",
+    "route": "/sco1",
+    "api": "/api/sco1/{overview,breakdown,definitions}",
+    "seed": 597,
+    "registered": "2026-09-01"
   }
 ]
