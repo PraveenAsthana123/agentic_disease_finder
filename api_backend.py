@@ -39196,6 +39196,31 @@ async def narp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/melas/overview")
+async def melas_overview():
+    try:
+        import scripts.melas_dashboard as melas_
+        return _json_safe(melas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/melas/breakdown")
+async def melas_breakdown():
+    try:
+        import scripts.melas_dashboard as melas_
+        return _json_safe(melas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/melas/definitions")
+async def melas_definitions():
+    try:
+        import scripts.melas_dashboard as melas_
+        return _json_safe(melas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

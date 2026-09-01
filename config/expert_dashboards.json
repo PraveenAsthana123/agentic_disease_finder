@@ -8967,5 +8967,23 @@
       "/api/narp/breakdown",
       "/api/narp/definitions"
     ]
+  },
+  {
+    "id": "melas",
+    "gene": "MT-TL1",
+    "disease_name": "MELAS Mitochondrial Encephalomyopathy Lactic Acidosis Stroke-like Episodes (MT-TL1-72nt-tRNA-Leu-UUA-UUG-Anticodon-Stem-Loop-Wobble-U34-5-taurinomethyluridine-Loss-mtDNA-Encoded / MELAS-OMIM-540000 / m.3243A-G-MT-TL1-80pct-Most-Common / m.3271T-C-10pct-Milder / m.3252A-G-5pct / Multi-Complex-OXPHOS-Defect-CI-CIV-Most-Affected / Stroke-like-Episodes-SLE-100pct-Crosses-Vascular-Territories-NOT-Arterial-KEY-DDx-Ischemic-Stroke / Lactic-Acidosis-95pct / Encephalopathy-95pct / Seizures-70pct / SNHL-75pct / Diabetes-MIDD-45pct-Lean-NOT-Obese / Myopathy-RRF-70pct / Short-Stature-60pct / Cardiomyopathy-WPW-30pct / Blood-Heteroplasmy-Under-60pct-MIDD-60-80pct-MELAS-Over-80pct-Severe / Urine-Muscle-More-Accurate-Than-Blood / VPA-ABSOLUTE-CI-ALL-MELAS-3-Mechanisms / Metformin-ABSOLUTE-CI-ALL-MELAS-Including-MIDD-Fatal-Lactic-Acidosis / Linezolid-ABSOLUTE-CI / Propofol-AVOID-PRIS / Statins-HIGH-CAUTION-CoQ10-Depletion / Aminoglycosides-AVOID / L-Arginine-Level-B-IV-Acute-SLE-Koga-2005-Neurology / Taurine-Level-B-MELAS-Specific-tm5U34-Rikimaru-2012 / CoQ10-Level-C / LEV-Preferred-AED / Acute-SLE-IV-Dextrose-GIR-8-10-Arginine-Thiamine / MIDD-Screen-Maternal-DM-SNHL-Lean-Before-Metformin / Goto-1990-First-MELAS-Mutation / Pavlakis-1984-First-MELAS / 40-patient-cohort-seed-587 / mtDNA / OMIM-Gene-MT-TL1-590050-Disease-MELAS-540000",
+    "status": "built",
+    "api_prefix": "/api/melas",
+    "page_path": "/melas",
+    "cohort_seed": 587,
+    "n_patients": 40,
+    "inheritance": "Maternal (mitochondrial)",
+    "chromosome": "mtDNA",
+    "registered": "2026-09-01",
+    "endpoints": [
+      "/api/melas/overview",
+      "/api/melas/breakdown",
+      "/api/melas/definitions"
+    ]
   }
 ]
