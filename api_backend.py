@@ -40895,6 +40895,33 @@ async def sdhd_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── BCS1L — BCS1 Homolog / Ubiquinol-Cytochrome C Reductase Complex Chaperone /
+# CIII Assembly Factor — GRACILE Syndrome (#603358) + Björnstad Syndrome (#262000) / AR / 2q35
+@app.get("/api/bcs1l/overview")
+async def bcs1l_overview():
+    try:
+        import scripts.bcs1l_dashboard as bcs1l_
+        return _json_safe(bcs1l_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bcs1l/breakdown")
+async def bcs1l_breakdown():
+    try:
+        import scripts.bcs1l_dashboard as bcs1l_
+        return _json_safe(bcs1l_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bcs1l/definitions")
+async def bcs1l_definitions():
+    try:
+        import scripts.bcs1l_dashboard as bcs1l_
+        return _json_safe(bcs1l_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
