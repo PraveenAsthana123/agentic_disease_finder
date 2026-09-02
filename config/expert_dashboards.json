@@ -9625,5 +9625,22 @@
     "cohort_n": 40,
     "seed": 671,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ndufaf2",
+    "name": "NDUFAF2 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh Assembly-Factor-Swap Chaperone NDUFA12L N-Q-Module-Assembly-Intermediate (NDUFAF2-137aa-precursor-107aa-mature-12.5kDa-CI-Assembly-Factor-2-NDUFA12L-N-Q-Module-Interface-5q12.1 / OMIM-Gene-609653-Disease-Leigh-256000-MC1DN25-619777 / AR-Biallelic / cIVS1plus3AG-Splice-Donor-Intron1-First-NDUFAF2-Mutation-OGILVIE-2005 / pArg45Gln-c134GA-N-Q-Binding-Surface-NDUFA12-Displacement-Severe-Infantile / pLeu67Pro-c200TC-Helix-Breaking-Proline-Severe / pAla94Val-c281CT-Hydrophobic-Core-Packing-Intermediate / pGlu5Ter-c13GT-Near-Start-Nonsense-Null-Consanguineous-Severe-Neonatal / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / ASSEMBLY-FACTOR-SWAP-UNIQUE-ONLY-CI-Assembly-Factor-Structural-PARALOG-Mature-CI-Subunit-Same-Binding-Site / N-Q-Sub-Assembly-Intermediate-BN-PAGE-Stalled-Before-NDUFAF2-NDUFA12-Swap / NDUFAF2-5q12.1-vs-NDUFA12-12q22-CRITICAL-DDx-Near-Identical-Phenotype-WES-Mandatory / 40-patient-cohort-seed-673 / 5q12.1 / OMIM-Gene-NDUFAF2-609653-Disease-Leigh-256000)",
+    "status": "built",
+    "seed": 673,
+    "chromosome": "5q12.1",
+    "omim_gene": "609653",
+    "omim_disease": "256000",
+    "inheritance": "AR",
+    "category": "Leigh Syndrome / CI Assembly Factor / NDUFAF Series",
+    "endpoints": [
+      "/api/ndufaf2/overview",
+      "/api/ndufaf2/breakdown",
+      "/api/ndufaf2/definitions"
+    ],
+    "registered": "2026-09-02"
   }
 ]
