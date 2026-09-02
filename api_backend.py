@@ -40788,6 +40788,34 @@ async def sdhaf2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SDHA — Succinate Dehydrogenase Subunit A / Flavoprotein Catalytic Subunit /
+#    Complex II Deficiency Leigh Syndrome (AR) + Paraganglioma 5 PGL5 (AD) +
+#    Carney-Stratakis Syndrome (AD) / Dual-Disease Gene / 5p15.33 ──
+@app.get("/api/sdha/overview")
+async def sdha_overview():
+    try:
+        import scripts.sdha_dashboard as sdha_
+        return _json_safe(sdha_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdha/breakdown")
+async def sdha_breakdown():
+    try:
+        import scripts.sdha_dashboard as sdha_
+        return _json_safe(sdha_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdha/definitions")
+async def sdha_definitions():
+    try:
+        import scripts.sdha_dashboard as sdha_
+        return _json_safe(sdha_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
