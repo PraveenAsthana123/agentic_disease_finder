@@ -9734,5 +9734,16 @@
     "omim_disease": "618245",
     "seed": 685,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ndufaf5",
+    "status": "built",
+    "disease_name": "Mitochondrial Complex I Deficiency \u2014 NDUFAF5/C20orf7 (Isolated CI Deficiency; Leigh Syndrome)",
+    "category": "CI Deficiency / CI Assembly Factor / ND1-Module",
+    "chromosome": "20p12.1",
+    "omim_gene": "612360",
+    "omim_disease": "256000",
+    "seed": 687,
+    "registered": "2026-09-02"
   }
 ]
