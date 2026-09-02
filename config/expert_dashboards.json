@@ -9996,5 +9996,30 @@
     "n_patients": 40,
     "registered_date": "2026-09-02",
     "notes": "Succinate Dehydrogenase Subunit B (Iron-Sulfur Subunit); 280aa 32kDa; 3 FeS clusters (2Fe-2S 3Fe-4S 4Fe-4S); PGL4 highest malignancy SDH gene (20-50%); extra-adrenal PGL predominant; RCC 15%; IHC SDHB-null-only (SDHA proficient); NOT maternally imprinted; sunitinib best systemic therapy metastatic; Astuti 2001 first report"
+  },
+  {
+    "id": "sdhc",
+    "name": "SDHC PGL3 Paraganglioma-3 Cytochrome-b-Large-Subunit CII-Membrane-Anchor 3-TM-Helices LOW-Malignancy-1-3pct NOT-Imprinted Carney-Stratakis-GIST-10pct 1q23.3",
+    "gene": "SDHC",
+    "alias": "SDH3",
+    "omim_gene": "602413",
+    "omim_disease": "605373",
+    "disease": "PGL3 (Paraganglioma 3) / CSS (Carney-Stratakis Syndrome)",
+    "chromosome": "1q23.3",
+    "inheritance": "AD NOT-Imprinted",
+    "penetrance": "50-60% by age 50",
+    "malignancy": "~1-3%",
+    "protein": "169 aa 15 kDa 3-TM-Helices",
+    "seed": 709,
+    "n_patients": 40,
+    "status": "built",
+    "routes": [
+      "/api/sdhc/overview",
+      "/api/sdhc/breakdown",
+      "/api/sdhc/definitions"
+    ],
+    "frontend": "/sdhc",
+    "built_date": "2026-09-02",
+    "notes": "CII membrane anchor, heme b His91, ubiquinone QP site. NOT imprinted (unlike SDHD PGL1). Low malignancy 1-3%. Carney-Stratakis GIST ~10%. Niemann-M\u00fcller 2000 NatGenet first report."
   }
 ]

@@ -40839,6 +40839,33 @@ async def sdhb_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ── SDHC — Succinate Dehydrogenase Subunit C / Cytochrome b Large Subunit /
+#    Paraganglioma 3 (PGL3) / Carney-Stratakis Syndrome (CSS) /
+#    AD NOT-Imprinted / 1q23.3 ──
+@app.get("/api/sdhc/overview")
+async def sdhc_overview():
+    try:
+        import scripts.sdhc_dashboard as sdhc_
+        return _json_safe(sdhc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhc/breakdown")
+async def sdhc_breakdown():
+    try:
+        import scripts.sdhc_dashboard as sdhc_
+        return _json_safe(sdhc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhc/definitions")
+async def sdhc_definitions():
+    try:
+        import scripts.sdhc_dashboard as sdhc_
+        return _json_safe(sdhc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
