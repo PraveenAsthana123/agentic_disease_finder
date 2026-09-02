@@ -8919,7 +8919,9 @@
     "chromosome": "10q24.31",
     "omim_gene": "606075",
     "omim_disease": "609286",
-    "built_date": "2026-09-01"
+    "built_date": "2026-09-01",
+    "frontend": "portal-next/app/twnk-peoa3/page.jsx",
+    "nav_wired": true
   },
   {
     "id": "opa1",
