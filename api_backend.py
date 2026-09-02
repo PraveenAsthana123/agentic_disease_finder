@@ -41215,6 +41215,33 @@ async def cox14_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cox20/overview")
+async def cox20_overview():
+    try:
+        import scripts.cox20_dashboard as cox20_
+        return _json_safe(cox20_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox20/breakdown")
+async def cox20_breakdown():
+    try:
+        import scripts.cox20_dashboard as cox20_
+        return _json_safe(cox20_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox20/definitions")
+async def cox20_definitions():
+    try:
+        import scripts.cox20_dashboard as cox20_
+        return _json_safe(cox20_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

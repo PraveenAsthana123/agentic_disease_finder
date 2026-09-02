@@ -10248,5 +10248,29 @@
     "disease_type": "Complex IV Deficiency",
     "coxpd_type": "COXPD6",
     "notes": "Registered 2026-09-02"
+  },
+  {
+    "id": "cox20",
+    "title": "COX20 MITRAC-Assembly Complex IV Deficiency Nuclear Type 8 COXPD8",
+    "status": "built",
+    "category": "metabolic_disease",
+    "disease_gene": "COX20",
+    "omim_gene": "614698",
+    "omim_disease": "614607",
+    "chromosome": "2q11.2",
+    "inheritance": "AR",
+    "api_prefix": "/api/cox20",
+    "frontend": "portal-next/app/cox20/page.jsx",
+    "nav_wired": true,
+    "cohort_seed": 621,
+    "cohort_size": 40,
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/cox20/overview",
+      "/api/cox20/breakdown",
+      "/api/cox20/definitions"
+    ],
+    "color": "#283593",
+    "description": "COX20 (FAM36A) MITRAC-class early MT-CO2 assembly factor. Childhood-onset progressive ataxia, cerebellar atrophy, milder COX deficiency (10-30%). COXPD8."
   }
 ]
