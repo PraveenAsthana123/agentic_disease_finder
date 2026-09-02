@@ -9432,6 +9432,29 @@
     "registered": "2026-09-01"
   },
   {
+    "id": "ndufb6",
+    "gene": "NDUFB6",
+    "disease": "NDUFB6 Leigh Syndrome \u2014 Isolated Complex I Deficiency (B17 / PD-Module Coiled-Coil ND4-Face Triad Central Linker)",
+    "also_known_as": "B17 subunit / PD-module coiled-coil ND4-face triad central linker",
+    "omim_gene": "603879",
+    "omim_disease": "256000",
+    "chromosome": "9p21.1",
+    "inheritance": "AR",
+    "pathway": "CI-Leigh / NDUFB6 B17 Coiled-Coil PD-Module ND4-Face Triad Central Linker (NDUFB4-NDUFB6-NDUFB8)",
+    "seed": 645,
+    "status": "built",
+    "api_base": "/api/ndufb6",
+    "portal_path": "/ndufb6",
+    "category": "leigh_syndrome_ci",
+    "registered": "2026-09-01",
+    "endpoints": [
+      "/api/ndufb6/overview",
+      "/api/ndufb6/breakdown",
+      "/api/ndufb6/definitions"
+    ],
+    "page": "/ndufb6"
+  },
+  {
     "id": "ndufb8",
     "status": "built",
     "title": "NDUFB8 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PD-Module-B22-Subunit-1-TM-Helix-Membrane-Arm-ND4-Face-Triad-Member",
