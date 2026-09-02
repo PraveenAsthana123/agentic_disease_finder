@@ -40973,6 +40973,34 @@ async def uqcc2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── UQCC3 — Ubiquinol-Cytochrome C Reductase Complex Assembly Factor 3 /
+# CIII Assembly Factor (1-TM-Helix IMM-Anchored) — Complex III Deficiency Nuclear Type 8
+# (#615838) / AR biallelic / 11q12.3
+@app.get("/api/uqcc3/overview")
+async def uqcc3_overview():
+    try:
+        import scripts.uqcc3_dashboard as uqcc3_
+        return _json_safe(uqcc3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc3/breakdown")
+async def uqcc3_breakdown():
+    try:
+        import scripts.uqcc3_dashboard as uqcc3_
+        return _json_safe(uqcc3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc3/definitions")
+async def uqcc3_definitions():
+    try:
+        import scripts.uqcc3_dashboard as uqcc3_
+        return _json_safe(uqcc3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -10089,5 +10089,14 @@
     "cohort_n": 40,
     "seed": 717,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "uqcc3",
+    "name": "UQCC3 CIII-Assembly-Factor Complex-III-Deficiency-Nuclear-Type-8 CIII-D8 1-TM-Helix-IMM-Anchored C11orf83 Milder-Early-Childhood AR-Biallelic 11q12.3",
+    "status": "built",
+    "api": "/api/uqcc3/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 719,
+    "registered": "2026-09-02"
   }
 ]
