@@ -10139,5 +10139,28 @@
     "cohort_n": 40,
     "seed": 723,
     "registered": "2026-09-02T19:27:44Z"
+  },
+  {
+    "id": "cyc1",
+    "name": "CYC1 CIII-Core-Structural-Subunit Complex-III-Deficiency-Nuclear-Type-3 CIII-D3 Cytochrome-c1 UQCYC1 Heme-c-CXXCH-Motif Holocomplex-Loss Neonatal-Hepatic-Cataracts AR-Biallelic 8q24.13",
+    "gene": "CYC1",
+    "alias": "UQCYC1",
+    "omim_gene": "123980",
+    "omim_disease": "615158",
+    "disease": "Complex III Deficiency, Nuclear Type 3 (CIII-D3)",
+    "chromosome": "8q24.13",
+    "inheritance": "AR",
+    "status": "built",
+    "route": "/cyc1",
+    "api": "/api/cyc1",
+    "endpoints": [
+      "/api/cyc1/overview",
+      "/api/cyc1/breakdown",
+      "/api/cyc1/definitions"
+    ],
+    "cohort_n": 40,
+    "seed": 725,
+    "registered": "2026-09-02",
+    "notes": "3 endpoints verified 200; SiteNav wired after LYRM7 before expert-dashboards-catalog"
   }
 ]

@@ -41053,6 +41053,33 @@ async def lyrm7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cyc1/overview")
+async def cyc1_overview():
+    try:
+        import scripts.cyc1_dashboard as cyc1_
+        return _json_safe(cyc1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cyc1/breakdown")
+async def cyc1_breakdown():
+    try:
+        import scripts.cyc1_dashboard as cyc1_
+        return _json_safe(cyc1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cyc1/definitions")
+async def cyc1_definitions():
+    try:
+        import scripts.cyc1_dashboard as cyc1_
+        return _json_safe(cyc1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
