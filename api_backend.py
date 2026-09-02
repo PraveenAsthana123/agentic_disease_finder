@@ -40186,6 +40186,30 @@ async def ndufa3_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ndufa5/overview")
+async def ndufa5_overview():
+    try:
+        import scripts.ndufa5_dashboard as ndufa5_
+        return _json_safe(ndufa5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufa5/breakdown")
+async def ndufa5_breakdown():
+    try:
+        import scripts.ndufa5_dashboard as ndufa5_
+        return _json_safe(ndufa5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufa5/definitions")
+async def ndufa5_definitions():
+    try:
+        import scripts.ndufa5_dashboard as ndufa5_
+        return _json_safe(ndufa5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

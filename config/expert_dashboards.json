@@ -9527,5 +9527,14 @@
     "route": "/ndufa3",
     "api": "/api/ndufa3/overview|breakdown|definitions",
     "built_at": "2026-09-01"
+  },
+  {
+    "id": "ndufa5",
+    "name": "NDUFA5 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh Q-Module-B13-N-Q-Interface-Matrix-Arm-Beta-Sandwich-No-TM-Helix-AR (NDUFA5-116aa-13.5kDa-B13-Q-Module-N-Q-Interface-Matrix-Arm-Beta-Sandwich-Fold-No-TM-Helix-7q32.1 / OMIM-Gene-603835-Disease-Leigh-256000 / AR-Biallelic-Both-Sexes-Equal / pArg91Trp-c271CT-Beta-Strand-Core-N-Q-Interface-Contact-Severe-Infantile / pLeu78Pro-c233TC-Helix-Breaking-Proline-Beta-Sandwich-Disruption-Severe / pGlu53Lys-c157GA-Near-MTS-Cleavage-Targeting-Import-Severe-Neonatal / pAla98Val-c293CT-Beta-Sandwich-Core-Packing-Intermediate / cIVS2plus1GA-Splice-Donor-Exon2-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / B13-BETA-SANDWICH-UNIQUE-Only-NDUFA-Subunit-Beta-Sandwich-Fold-Q-Module-Matrix-Arm-N-Q-Interface-No-TM-Helix / NDUFS3-NDUFS2-Subcomplex-Destabilised-Quinone-Binding-Tunnel-Impaired / 7q32.1 / OMIM-Gene-NDUFA5-603835-Disease-Leigh-256000)",
+    "status": "built",
+    "api": "/api/ndufa5/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 657,
+    "registered": "2026-09-01"
   }
 ]
