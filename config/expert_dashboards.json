@@ -9642,5 +9642,22 @@
       "/api/ndufaf2/definitions"
     ],
     "registered": "2026-09-02"
+  },
+  {
+    "id": "acad9",
+    "name": "ACAD9 Complex I Deficiency MCIA-Complex Riboflavin-Responsive CI-Assembly-Factor (ACAD9-621aa-70kDa-ACAD-Superfamily-FAD-Binding-MCIA-Complex-Scaffold-3q21.3 / OMIM-Gene-611103-Disease-CI-Deficiency-256000 / AR-Biallelic / pArg518His-c1553GA-European-Founder-40pct-Alleles-Exercise-Intolerance-Dominant-Riboflavin-Responsive / pArg532Trp-c1594CT-Exercise-Intolerance-HCM-Riboflavin-Responsive / pArg266Gln-c797GA-Severe-Infantile-Leigh-Like-HCM / pAsp562Gly-c1685AG-MCIA-Complex-Integrity-Disruption-Neonatal-Severe / Isolated-CI-Deficiency-10-30pct-CII-CIII-CIV-NORMAL / RIBOFLAVIN-RESPONSIVE-UNIQUE-ONLY-CI-Assembly-Factor-50-60pct-FAD-Binding-Domain-ACAD-Superfamily-Level-B-Evidence / MCIA-COMPLEX-SCAFFOLD-ACAD9-NDUFAF1-ECSIT-TMEM126B-ND2-ND5-Membrane-Arm / 40-patient-cohort-seed-675 / 3q21.3 / OMIM-Gene-ACAD9-611103-Disease-CI-Deficiency-256000)",
+    "status": "built",
+    "seed": 675,
+    "chromosome": "3q21.3",
+    "omim_gene": "611103",
+    "omim_disease": "256000",
+    "inheritance": "AR",
+    "category": "CI Deficiency / MCIA Complex / ACAD Superfamily / Riboflavin-Responsive",
+    "endpoints": [
+      "/api/acad9/overview",
+      "/api/acad9/breakdown",
+      "/api/acad9/definitions"
+    ],
+    "registered": "2026-09-02"
   }
 ]
