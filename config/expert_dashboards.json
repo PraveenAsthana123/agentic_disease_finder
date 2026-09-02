@@ -9486,5 +9486,18 @@
     ],
     "frontend": "portal-next/app/ndufb9/page.jsx",
     "seed": 647
+  },
+  {
+    "id": "ndufb10",
+    "status": "built",
+    "category": "leigh_syndrome_ci",
+    "description": "NDUFB10 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PD-Module-PDSW-ND4L-Face-Beta-Hairpin-Peripheral-Scaffold (NDUFB10-172aa-20.9kDa-PDSW-PD-Module-ND4L-Lateral-Face-Beta-Hairpin-Loop-Anchor-No-Canonical-TM-Helix-16p13.3 / OMIM-Gene-603843-Disease-256000 / AR-Biallelic / pGly137Arg-c409GC-ND4L-Contact-Beta-Hairpin-Disruption-Severe-Infantile / pLeu88Pro-c263TC-Helix-Breaking-Proline-Severe / pArg103Gln-c308GA-ND4L-Interface-Intermediate / pCys50Ter-c150TA-Null-Consanguineous-Severe-Neonatal / cIVS2plus1GA-Splice-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / PD-MODULE-PDSW-ND4L-FACE-UNIQUE-Only-Nuclear-CI-PD-Module-Subunit-Contacting-MT-ND4L-Lateral-Face / BN-PAGE-Absent-CI-Cleaner-PD-Module-ND4L-Peripheral-Scaffold-Collapse / 40-patient-cohort-seed-649 / 16p13.3 / OMIM-Gene-NDUFB10-603843-Disease-Leigh-256000)",
+    "api_endpoints": [
+      "/api/ndufb10/overview",
+      "/api/ndufb10/breakdown",
+      "/api/ndufb10/definitions"
+    ],
+    "frontend": "portal-next/app/ndufb10/page.jsx",
+    "seed": 649
   }
 ]
