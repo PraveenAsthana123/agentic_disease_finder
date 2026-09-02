@@ -10296,5 +10296,27 @@
     ],
     "color": "#1565c0",
     "description": "COA3 (CCDC56/MITRAC12) MITRAC-class early MT-CO1 assembly factor. Neonatal/infantile severe encephalopathy, Leigh-like MRI, isolated COX <5%. COXPD10. WES mandatory to distinguish from COX14."
+  },
+  {
+    "id": "coa5",
+    "name": "COA5 Cardiomyopathic Complex IV Deficiency Nuclear Type 11 COXPD11",
+    "gene": "COA5",
+    "alias": "C2orf64 / PET191",
+    "omim_gene": "614657",
+    "omim_disease": "614932",
+    "chromosome": "2q11.2",
+    "inheritance": "AR",
+    "seed": 629,
+    "color": "#880e4f",
+    "status": "built",
+    "endpoints": [
+      "/api/coa5/overview",
+      "/api/coa5/breakdown",
+      "/api/coa5/definitions"
+    ],
+    "frontend": "portal-next/app/coa5/page.jsx",
+    "nav": "SiteNav wired after COA3",
+    "built_date": "2026-09-02",
+    "note": "HCM-dominant (88%), MT-CO1 co-translational assembly branch, COXPD11, 40-patient cohort seed-629"
   }
 ]

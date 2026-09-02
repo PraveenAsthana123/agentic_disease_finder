@@ -41269,6 +41269,33 @@ async def coa3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/coa5/overview")
+async def coa5_overview():
+    try:
+        import scripts.coa5_dashboard as coa5_
+        return _json_safe(coa5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa5/breakdown")
+async def coa5_breakdown():
+    try:
+        import scripts.coa5_dashboard as coa5_
+        return _json_safe(coa5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa5/definitions")
+async def coa5_definitions():
+    try:
+        import scripts.coa5_dashboard as coa5_
+        return _json_safe(coa5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
