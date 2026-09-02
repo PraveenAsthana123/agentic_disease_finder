@@ -40668,6 +40668,23 @@ async def nubpl_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── NDUFAF6 — Complex I Deficiency MC1DN26 / C8orf38 / Late-Stage CI Assembly 2OG-Dioxygenase ──────────────────────
+@app.get("/api/ndufaf6/overview")
+async def ndufaf6_overview():
+    import scripts.ndufaf6_dashboard as ndufaf6_
+    return ndufaf6_.get_overview()
+
+@app.get("/api/ndufaf6/breakdown")
+async def ndufaf6_breakdown():
+    import scripts.ndufaf6_dashboard as ndufaf6_
+    return ndufaf6_.get_breakdown()
+
+@app.get("/api/ndufaf6/definitions")
+async def ndufaf6_definitions():
+    import scripts.ndufaf6_dashboard as ndufaf6_
+    return ndufaf6_.get_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

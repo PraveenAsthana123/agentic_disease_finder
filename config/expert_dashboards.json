@@ -9796,5 +9796,25 @@
       "/api/nubpl/definitions"
     ],
     "page": "/nubpl"
+  },
+  {
+    "id": "ndufaf6",
+    "name": "NDUFAF6 Complex I Deficiency MC1DN26 Late-Stage-CI-Assembly-Factor C8orf38 2OG-Fe-II-Dioxygenase-Hydroxylase Only-CI-Assembly-Factor-With-PTM-Activity",
+    "gene": "NDUFAF6",
+    "omim_gene": "612392",
+    "omim_disease": "614924",
+    "disease": "Mitochondrial Complex I Deficiency MC1DN26 (NDUFAF6-related)",
+    "chromosome": "8q22.1",
+    "inheritance": "AR",
+    "module": "Late-stage CI assembly \u2014 2OG-Fe(II)-dependent dioxygenase; Q-module maturation hydroxylase; ONLY CI assembly factor with post-translational CI subunit modification activity",
+    "seed": 695,
+    "status": "built",
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/ndufaf6/overview",
+      "/api/ndufaf6/breakdown",
+      "/api/ndufaf6/definitions"
+    ],
+    "page": "/ndufaf6"
   }
 ]
