@@ -40736,6 +40736,32 @@ async def ndufaf8_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SDHAF1 — Complex II Deficiency / Infantile Leukoencephalopathy / CII Assembly Factor / 19q13.12 ──
+@app.get("/api/sdhaf1/overview")
+async def sdhaf1_overview():
+    try:
+        import scripts.sdhaf1_dashboard as sdhaf1_
+        return _json_safe(sdhaf1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhaf1/breakdown")
+async def sdhaf1_breakdown():
+    try:
+        import scripts.sdhaf1_dashboard as sdhaf1_
+        return _json_safe(sdhaf1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhaf1/definitions")
+async def sdhaf1_definitions():
+    try:
+        import scripts.sdhaf1_dashboard as sdhaf1_
+        return _json_safe(sdhaf1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
