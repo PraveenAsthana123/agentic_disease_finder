@@ -40815,6 +40815,30 @@ async def sdha_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/sdhb/overview")
+async def sdhb_overview():
+    try:
+        import scripts.sdhb_dashboard as sdhb_
+        return _json_safe(sdhb_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhb/breakdown")
+async def sdhb_breakdown():
+    try:
+        import scripts.sdhb_dashboard as sdhb_
+        return _json_safe(sdhb_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhb/definitions")
+async def sdhb_definitions():
+    try:
+        import scripts.sdhb_dashboard as sdhb_
+        return _json_safe(sdhb_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

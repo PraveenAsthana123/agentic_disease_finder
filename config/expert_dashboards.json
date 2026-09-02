@@ -9980,5 +9980,21 @@
     "n_patients": 40,
     "registered_date": "2026-09-02",
     "notes": "Dual-disease gene: biallelic SDHA \u2192 AR Leigh syndrome/CII deficiency; monoallelic SDHA \u2192 AD PGL5/Carney-Stratakis (NOT imprinted, biparental). 5p15.33 (unique locus). IHC: SDHA null + SDHB null (unique pattern). 3 endpoints verified 200."
+  },
+  {
+    "id": "sdhb",
+    "name": "SDHB PGL4 Paraganglioma-4 Iron-Sulfur Subunit Complex II Highest-Malignancy-SDH-Gene",
+    "gene": "SDHB",
+    "omim_gene": "185470",
+    "omim_disease": "115310",
+    "chromosome": "1p36.13",
+    "inheritance": "AD",
+    "status": "built",
+    "api_endpoint": "/api/sdhb/overview|breakdown|definitions",
+    "frontend_route": "/sdhb",
+    "seed": 707,
+    "n_patients": 40,
+    "registered_date": "2026-09-02",
+    "notes": "Succinate Dehydrogenase Subunit B (Iron-Sulfur Subunit); 280aa 32kDa; 3 FeS clusters (2Fe-2S 3Fe-4S 4Fe-4S); PGL4 highest malignancy SDH gene (20-50%); extra-adrenal PGL predominant; RCC 15%; IHC SDHB-null-only (SDHA proficient); NOT maternally imprinted; sunitinib best systemic therapy metastatic; Astuti 2001 first report"
   }
 ]
