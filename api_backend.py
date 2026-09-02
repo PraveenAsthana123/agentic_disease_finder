@@ -40685,6 +40685,32 @@ async def ndufaf6_definitions():
     return ndufaf6_.get_definitions()
 
 
+# ── NDUFAF7 — Complex I Deficiency MC1DN30 / C2orf56 / SAM-Dependent Methyltransferase ─��────────────────────
+@app.get("/api/ndufaf7/overview")
+async def ndufaf7_overview():
+    try:
+        import scripts.ndufaf7_dashboard as ndufaf7_
+        return _json_safe(ndufaf7_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf7/breakdown")
+async def ndufaf7_breakdown():
+    try:
+        import scripts.ndufaf7_dashboard as ndufaf7_
+        return _json_safe(ndufaf7_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf7/definitions")
+async def ndufaf7_definitions():
+    try:
+        import scripts.ndufaf7_dashboard as ndufaf7_
+        return _json_safe(ndufaf7_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

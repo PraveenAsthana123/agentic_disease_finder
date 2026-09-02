@@ -9816,5 +9816,42 @@
       "/api/ndufaf6/definitions"
     ],
     "page": "/ndufaf6"
+  },
+  {
+    "id": "ndufaf7",
+    "name": "NDUFAF7 Complex I Deficiency MC1DN30 SAM-Dependent-Methyltransferase C2orf56 Only-CI-Assembly-Factor-With-SAM-Methyltransferase-Activity NDUFS2-R85-Arginine-Methylation NDUFB9-Recruitment",
+    "gene": "NDUFAF7",
+    "omim_gene": "615898",
+    "omim_disease": "618248",
+    "disease": "Mitochondrial Complex I Deficiency MC1DN30 (OMIM #618248)",
+    "chromosome": "2q11.2",
+    "inheritance": "AR",
+    "category": "CI Deficiency / SAM-Methyltransferase / Q-Module / NDUFAF Series",
+    "status": "built",
+    "n_patients": 40,
+    "seed": 697,
+    "routes": [
+      "/api/ndufaf7/overview",
+      "/api/ndufaf7/breakdown",
+      "/api/ndufaf7/definitions"
+    ],
+    "portal_page": "/ndufaf7",
+    "color": "#004d40",
+    "registered": "2026-09-02",
+    "key_features": [
+      "Only CI assembly factor with SAM-dependent methyltransferase activity",
+      "NDUFS2 R-85 arginine methylation",
+      "NDUFB9 recruitment prerequisite",
+      "Q-module/membrane-arm interface assembly",
+      "No riboflavin response (no FAD domain)",
+      "Low HCM (<10%)",
+      "Same chr2q as NDUFS1 (2q33.3) \u2014 WES locus critical",
+      "Only two enzymatic CI assembly factors: NDUFAF7 (methyltransferase) + NDUFAF6 (dioxygenase)"
+    ],
+    "references": [
+      "Zurita-Rendon-2014-JBiolChem-First-NDUFAF7-Disease-Gene",
+      "Rhein-2016-JBiolChem-NDUFS2-R85-Methylation-Site-Confirmed",
+      "Guerrero-Castillo-2017-CellMetab-CI-Assembly-Pathway"
+    ]
   }
 ]
