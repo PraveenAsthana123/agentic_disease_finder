@@ -40235,6 +40235,33 @@ async def ndufa6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufa7/overview")
+async def ndufa7_overview():
+    try:
+        import scripts.ndufa7_dashboard as ndufa7_
+        return _json_safe(ndufa7_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufa7/breakdown")
+async def ndufa7_breakdown():
+    try:
+        import scripts.ndufa7_dashboard as ndufa7_
+        return _json_safe(ndufa7_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufa7/definitions")
+async def ndufa7_definitions():
+    try:
+        import scripts.ndufa7_dashboard as ndufa7_
+        return _json_safe(ndufa7_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

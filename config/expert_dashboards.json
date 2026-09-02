@@ -9549,5 +9549,23 @@
     "omim_disease": "256000",
     "chromosome": "22q13.2",
     "module": "Q-module Distal Arm LZ Coiled-Coil"
+  },
+  {
+    "id": "ndufa7",
+    "name": "NDUFA7 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh N-Module-B14.5a-Peripheral-Stabiliser-NDUFS1-Contact-No-Fe-S-No-TM-Helix-AR",
+    "status": "built",
+    "gene": "NDUFA7",
+    "omim_gene": "601796",
+    "omim_disease": "256000",
+    "chromosome": "19p13.3",
+    "inheritance": "AR",
+    "module": "N-module (Peripheral Stabiliser, B14.5a, NDUFS1-Contact, No TM Helix)",
+    "seed": 661,
+    "endpoints": [
+      "/api/ndufa7/overview",
+      "/api/ndufa7/breakdown",
+      "/api/ndufa7/definitions"
+    ],
+    "registered": "2026-09-01"
   }
 ]
