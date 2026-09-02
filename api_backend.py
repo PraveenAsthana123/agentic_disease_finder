@@ -1503,6 +1503,19 @@ async def eeg_false_alarm(file: str = None):
     return _eeg_viz_cache[key]
 
 
+@app.get("/api/eeg-viz/sleep")
+async def eeg_sleep(hypnogram: str = None):
+    """Sleep State Dashboard — combined overview: architecture (stages/efficiency/REM/N3) + recording list from Sleep-EDFx."""
+    import scripts.sleep_staging as ss
+    key = f"sleep_dash:{hypnogram}"
+    if key not in _eeg_viz_cache:
+        arch = ss.sleep_architecture(hypnogram)
+        recs = ss.list_sleep_recordings()
+        _eeg_viz_cache[key] = _json_safe({**arch, "recordings": recs.get("recordings", [])[:20],
+                                           "n_total": recs.get("n_total", 0)})
+    return _eeg_viz_cache[key]
+
+
 @app.get("/api/eeg-viz/connectivity")
 async def eeg_connectivity(file: str = None, band: str = "alpha"):
     """EEG Connectivity — pairwise spectral coherence (functional connectivity) + hub channels."""

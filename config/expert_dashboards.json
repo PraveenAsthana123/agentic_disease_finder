@@ -217,7 +217,8 @@
       "/api/eeg-viz/sleep-architecture",
       "/api/eeg-viz/sleep-recordings"
     ],
-    "id": "eeg-viz-sleep"
+    "id": "eeg-viz-sleep",
+    "built_at": "2026-09-01"
   },
   {
     "role": "Neurologist",
