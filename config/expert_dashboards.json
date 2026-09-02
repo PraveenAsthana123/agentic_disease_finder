@@ -9597,5 +9597,14 @@
     "cohort_n": 40,
     "seed": 663,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufb2",
+    "name": "NDUFB2 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-B13.7-2-TM-Helix-ND3-Lateral-Face-Peripheral-Scaffold-AR (NDUFB2-87aa-10kDa-CI-B13.7-PP-Module-2-TM-Helix-ND3-Lateral-Face-Peripheral-Scaffold-7p13 / OMIM-Gene-603838-Disease-Leigh-256000 / AR-Biallelic-Both-Sexes-Equal / pLeu32Pro-c95TC-TM1-Helix-Breaking-Proline-Severe-Infantile / pGly58Arg-c172GC-TM2-ND3-Contact-Severe / pArg8Ter-c22CT-Null-Consanguineous-Neonatal / pAla64Val-c191CT-TM2-Core-Intermediate / cIVS2plus1GA-Splice-Partial-CI-Residual-Moderate / 7p13 / OMIM-Gene-NDUFB2-603838-Disease-Leigh-256000)",
+    "status": "built",
+    "api": "/api/ndufb2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 667,
+    "registered": "2026-09-01"
   }
 ]
