@@ -41107,6 +41107,33 @@ async def uqcrc2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/uqcrc1/overview")
+async def uqcrc1_overview():
+    try:
+        import scripts.uqcrc1_dashboard as uqcrc1_
+        return _json_safe(uqcrc1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrc1/breakdown")
+async def uqcrc1_breakdown():
+    try:
+        import scripts.uqcrc1_dashboard as uqcrc1_
+        return _json_safe(uqcrc1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrc1/definitions")
+async def uqcrc1_definitions():
+    try:
+        import scripts.uqcrc1_dashboard as uqcrc1_
+        return _json_safe(uqcrc1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
