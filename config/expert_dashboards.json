@@ -10021,5 +10021,30 @@
     "frontend": "/sdhc",
     "built_date": "2026-09-02",
     "notes": "CII membrane anchor, heme b His91, ubiquinone QP site. NOT imprinted (unlike SDHD PGL1). Low malignancy 1-3%. Carney-Stratakis GIST ~10%. Niemann-M\u00fcller 2000 NatGenet first report."
+  },
+  {
+    "id": "sdhd",
+    "name": "SDHD PGL1-Paraganglioma-1 Cytochrome-b-Small-Subunit CII-Membrane-Anchor AD-MATERNAL-IMPRINTING Paternal-Transmission-Only HIGHEST-Penetrance-70-80pct HNPGL-Bilateral-38pct 11q23.1",
+    "gene": "SDHD",
+    "alias": "SDH4 / PGL / CBT",
+    "omim_gene": "602690",
+    "omim_disease": "168000",
+    "disease": "PGL1 (Paraganglioma 1) / CSS (Carney-Stratakis Syndrome, rare)",
+    "chromosome": "11q23.1",
+    "inheritance": "AD MATERNALLY IMPRINTED \u2014 paternal transmission only",
+    "penetrance": "70-80% by age 50 (paternal)",
+    "malignancy": "~3-5%",
+    "protein": "159 aa ~17 kDa 3-TM-Helices",
+    "seed": 711,
+    "n_patients": 40,
+    "status": "built",
+    "routes": [
+      "/api/sdhd/overview",
+      "/api/sdhd/breakdown",
+      "/api/sdhd/definitions"
+    ],
+    "frontend": "/sdhd",
+    "built_date": "2026-09-02",
+    "notes": "CII membrane anchor, heme b His19, highest penetrance SDH gene. MATERNALLY IMPRINTED \u2014 only paternal transmission causes PGL1. Female carriers children NOT at risk. HNPGL predominant, bilateral 38%. Baysal 2000 Science first report (Dutch founders: Leu12Arg, Cys11Tyr). CRITICAL DDx: SDHAF2 (11q13.1) \u2014 same chr11, same maternal imprinting, 10Mb apart."
   }
 ]

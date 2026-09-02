@@ -40867,6 +40867,34 @@ async def sdhc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SDHD — Succinate Dehydrogenase Subunit D / Cytochrome b Small Subunit /
+#    Paraganglioma 1 (PGL1) / AD MATERNALLY IMPRINTED / Paternal-Transmission-Only /
+#    11q23.1 ──
+@app.get("/api/sdhd/overview")
+async def sdhd_overview():
+    try:
+        import scripts.sdhd_dashboard as sdhd_
+        return _json_safe(sdhd_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhd/breakdown")
+async def sdhd_breakdown():
+    try:
+        import scripts.sdhd_dashboard as sdhd_
+        return _json_safe(sdhd_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhd/definitions")
+async def sdhd_definitions():
+    try:
+        import scripts.sdhd_dashboard as sdhd_
+        return _json_safe(sdhd_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
