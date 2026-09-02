@@ -9380,8 +9380,33 @@
     "chromosome": "19p13.11",
     "inheritance": "AR",
     "seed": 637,
-    "endpoints": ["/api/ndufa13/overview", "/api/ndufa13/breakdown", "/api/ndufa13/definitions"],
+    "endpoints": [
+      "/api/ndufa13/overview",
+      "/api/ndufa13/breakdown",
+      "/api/ndufa13/definitions"
+    ],
     "frontend": "portal-next/app/ndufa13/page.jsx",
+    "built_date": "2026-09-01",
+    "category": "expert_disease",
+    "subcategory": "mitochondrial_disease_ci_leigh"
+  },
+  {
+    "id": "ndufa10",
+    "status": "built",
+    "title": "NDUFA10 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh NDP-Kinase-Like-Rossmann-Fold-Q-Module-Peripheral-Scaffold-PINK1-Phosphorylation-Target",
+    "gene": "NDUFA10",
+    "also_known_as": "42kDa subunit / NDP-kinase-like Rossmann-fold / PINK1 phosphorylation target Ser250",
+    "omim_gene": "603835",
+    "omim_disease": "256000",
+    "chromosome": "2q37.3",
+    "inheritance": "AR",
+    "seed": 639,
+    "endpoints": [
+      "/api/ndufa10/overview",
+      "/api/ndufa10/breakdown",
+      "/api/ndufa10/definitions"
+    ],
+    "frontend": "portal-next/app/ndufa10/page.jsx",
     "built_date": "2026-09-01",
     "category": "expert_disease",
     "subcategory": "mitochondrial_disease_ci_leigh"
