@@ -9536,5 +9536,18 @@
     "cohort_n": 40,
     "seed": 657,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufa6",
+    "name": "NDUFA6 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh Q-Module-B14-Distal-Q-Module-LZ-Coiled-Coil-NDUFS7-Scaffold-No-TM-Helix-AR",
+    "status": "built",
+    "route": "/ndufa6",
+    "api_prefix": "/api/ndufa6",
+    "built_at": "2026-09-01",
+    "cohort_seed": 659,
+    "omim_gene": "602137",
+    "omim_disease": "256000",
+    "chromosome": "22q13.2",
+    "module": "Q-module Distal Arm LZ Coiled-Coil"
   }
 ]
