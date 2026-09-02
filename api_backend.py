@@ -41027,6 +41027,32 @@ async def uqcc1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── LYRM7 — Complex III Deficiency Nuclear Type 1 (CIII-D1) ──────────────────
+@app.get("/api/lyrm7/overview")
+async def lyrm7_overview():
+    try:
+        import scripts.lyrm7_dashboard as lyrm7_
+        return _json_safe(lyrm7_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lyrm7/breakdown")
+async def lyrm7_breakdown():
+    try:
+        import scripts.lyrm7_dashboard as lyrm7_
+        return _json_safe(lyrm7_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lyrm7/definitions")
+async def lyrm7_definitions():
+    try:
+        import scripts.lyrm7_dashboard as lyrm7_
+        return _json_safe(lyrm7_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -10117,5 +10117,27 @@
     "category": "CIII-Assembly-Factor",
     "chromosome": "20q11.22",
     "notes": "UQCC1-271aa-30kDa-C20orf44-Soluble-Matrix-NO-TM-Helix-20q11.22 / OMIM-Gene-611394-Disease-CIII-D6-615453 / AR-Biallelic-Both-Sexes-Equal / UQCC1-SCAFFOLD-UQCC2-Loss-of-UQCC1-destabilises-UQCC2 / BN-PAGE-CIII-COMPLETELY-ABSENT / NEONATAL-ONSET-SEVERE / 3-endpoints-verified-200 / Registered-2026-09-02"
+  },
+  {
+    "id": "lyrm7",
+    "name": "LYRM7 CIII-Assembly-Chaperone Complex-III-Deficiency-Nuclear-Type-1 CIII-D1 LYR-Motif-RISP-Chaperone MZM1L-Homolog Infantile-Onset-Moderate AR-Biallelic 5q33.1",
+    "gene": "LYRM7",
+    "alias": "MZM1L",
+    "omim_gene": "615831",
+    "omim_disease": "615834",
+    "disease": "Complex III Deficiency, Nuclear Type 1 (CIII-D1)",
+    "chromosome": "5q33.1",
+    "inheritance": "AR-Biallelic",
+    "status": "built",
+    "route": "/lyrm7",
+    "api": "/api/lyrm7",
+    "endpoints": [
+      "/api/lyrm7/overview",
+      "/api/lyrm7/breakdown",
+      "/api/lyrm7/definitions"
+    ],
+    "cohort_n": 40,
+    "seed": 723,
+    "registered": "2026-09-02T19:27:44Z"
   }
 ]
