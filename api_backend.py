@@ -40047,6 +40047,33 @@ async def ndufb6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufb9/overview")
+async def ndufb9_overview():
+    try:
+        import scripts.ndufb9_dashboard as ndufb9_
+        return _json_safe(ndufb9_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufb9/breakdown")
+async def ndufb9_breakdown():
+    try:
+        import scripts.ndufb9_dashboard as ndufb9_
+        return _json_safe(ndufb9_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufb9/definitions")
+async def ndufb9_definitions():
+    try:
+        import scripts.ndufb9_dashboard as ndufb9_
+        return _json_safe(ndufb9_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

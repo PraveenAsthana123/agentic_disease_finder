@@ -9473,5 +9473,18 @@
     "frontend": "/ndufb8",
     "nav_after": "ndufb4",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufb9",
+    "status": "built",
+    "category": "leigh_syndrome_ci",
+    "description": "NDUFB9 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-B22.2-AQDQ-Fold-Peripheral-Scaffold-ND2-ND3-Face (NDUFB9-179aa-22kDa-B22.2-AQDQ-Fold-PP-Module-ND2-ND3-Face-Peripheral-Scaffold-8q24.13 / OMIM-Gene-601605-Disease-256000-MC1DN6-618228 / AR-Biallelic / pGly112Arg-c334GC-AQDQ-Core-Beta-Strand-Severe-Infantile / pLeu94Pro-c281TC-Helix-Breaking-Proline-AQDQ-Fold-Collapse-Severe / pArg147Gln-c440GA-ND2-ND3-Contact-Surface-Intermediate / pTrp55Ter-c165GA-Null-Consanguineous-Severe-Neonatal / cIVS3plus1GA-Splice-Donor-Exon3-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / PP-MODULE-B22.2-AQDQ-FOLD-UNIQUE-Only-CI-Structural-Subunit-AQDQ-Fold-PP-Module-ND2-ND3-Face / BN-PAGE-Absent-CI-Cleaner-PP-Module-Scaffold-Loss-CONTRAST-N-Module-Sub-Assembly-Intermediates / 40-patient-cohort-seed-647 / 8q24.13 / OMIM-Gene-NDUFB9-601605-Disease-Leigh-256000-MC1DN6-618228)",
+    "api_endpoints": [
+      "/api/ndufb9/overview",
+      "/api/ndufb9/breakdown",
+      "/api/ndufb9/definitions"
+    ],
+    "frontend": "portal-next/app/ndufb9/page.jsx",
+    "seed": 647
   }
 ]
