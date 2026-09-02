@@ -40465,6 +40465,32 @@ async def ndufaf1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── ECSIT — Complex I Deficiency / MCIA Complex / TMEM126B-Recruiting Scaffold ──────────
+@app.get("/api/ecsit/overview")
+async def ecsit_overview():
+    try:
+        import scripts.ecsit_dashboard as ecsit_
+        return _json_safe(ecsit_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ecsit/breakdown")
+async def ecsit_breakdown():
+    try:
+        import scripts.ecsit_dashboard as ecsit_
+        return _json_safe(ecsit_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ecsit/definitions")
+async def ecsit_definitions():
+    try:
+        import scripts.ecsit_dashboard as ecsit_
+        return _json_safe(ecsit_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

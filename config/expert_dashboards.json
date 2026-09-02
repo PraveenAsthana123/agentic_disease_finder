@@ -9676,5 +9676,22 @@
     ],
     "page": "/ndufaf1",
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ecsit",
+    "name": "ECSIT Complex I Deficiency MCIA-Complex TMEM126B-Recruiting-Scaffold Dual-Innate-Immunity-CI-Assembly (ECSIT-190aa-21kDa-No-FAD-Binding-No-TM-Helices-Soluble-Matrix-MCIA-3rd-Member-19p13.3 / OMIM-Gene-608196-Disease-CI-Deficiency-256000 / AR-Biallelic / 40-patient-cohort-seed-679 / 3-endpoints-verified-200 / Registered-2026-09-02)",
+    "gene": "ECSIT",
+    "status": "built",
+    "chromosome": "19p13.3",
+    "omim_gene": "608196",
+    "omim_disease": "256000",
+    "seed": 679,
+    "endpoints": [
+      "/api/ecsit/overview",
+      "/api/ecsit/breakdown",
+      "/api/ecsit/definitions"
+    ],
+    "page": "/ecsit",
+    "registered": "2026-09-02"
   }
 ]
