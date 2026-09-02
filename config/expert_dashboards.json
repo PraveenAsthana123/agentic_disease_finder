@@ -9756,5 +9756,25 @@
     "omim_disease": "256000",
     "seed": 689,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "foxred1",
+    "name": "FOXRED1 Complex I Deficiency N-Module CI Assembly Chaperone FAD-Oxidoreductase",
+    "gene": "FOXRED1",
+    "omim_gene": "613622",
+    "omim_disease": "256000",
+    "disease": "Mitochondrial Complex I Deficiency (CI Deficiency)",
+    "chromosome": "11q24.2",
+    "inheritance": "AR",
+    "module": "N-module (NADH dehydrogenase) CI assembly chaperone",
+    "seed": 691,
+    "status": "built",
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/foxred1/overview",
+      "/api/foxred1/breakdown",
+      "/api/foxred1/definitions"
+    ],
+    "page": "/foxred1"
   }
 ]
