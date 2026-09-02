@@ -40922,6 +40922,33 @@ async def bcs1l_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TTC19 — Tetratricopeptide Repeat Domain 19 /
+# CIII Assembly Factor — Complex III Deficiency Nuclear Type 2 (#615157) / AR / 17p12
+@app.get("/api/ttc19/overview")
+async def ttc19_overview():
+    try:
+        import scripts.ttc19_dashboard as ttc19_
+        return _json_safe(ttc19_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ttc19/breakdown")
+async def ttc19_breakdown():
+    try:
+        import scripts.ttc19_dashboard as ttc19_
+        return _json_safe(ttc19_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ttc19/definitions")
+async def ttc19_definitions():
+    try:
+        import scripts.ttc19_dashboard as ttc19_
+        return _json_safe(ttc19_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
