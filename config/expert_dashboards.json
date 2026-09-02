@@ -9410,5 +9410,25 @@
     "built_date": "2026-09-01",
     "category": "expert_disease",
     "subcategory": "mitochondrial_disease_ci_leigh"
+  },
+  {
+    "id": "ndufb4",
+    "status": "built",
+    "title": "NDUFB4 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PD-Module-B15-Subunit-2-TM-Helix-Membrane-Arm-Structural-Scaffold-MT-ND4-Face",
+    "gene": "NDUFB4",
+    "also_known_as": "B15 subunit / PD-module 2-TM-helix membrane arm structural scaffold",
+    "omim_gene": "603840",
+    "omim_disease": "256000",
+    "chromosome": "3q13.33",
+    "inheritance": "AR",
+    "seed": 641,
+    "endpoints": [
+      "/api/ndufb4/overview",
+      "/api/ndufb4/breakdown",
+      "/api/ndufb4/definitions"
+    ],
+    "frontend": "/ndufb4",
+    "nav_after": "ndufa10",
+    "registered": "2026-09-01"
   }
 ]
