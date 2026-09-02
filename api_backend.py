@@ -41001,6 +41001,32 @@ async def uqcc3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── UQCC1 — Complex III Deficiency Nuclear Type 6 (CIII-D6) ──────────────────
+@app.get("/api/uqcc1/overview")
+async def uqcc1_overview():
+    try:
+        import scripts.uqcc1_dashboard as uqcc1_
+        return _json_safe(uqcc1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc1/breakdown")
+async def uqcc1_breakdown():
+    try:
+        import scripts.uqcc1_dashboard as uqcc1_
+        return _json_safe(uqcc1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc1/definitions")
+async def uqcc1_definitions():
+    try:
+        import scripts.uqcc1_dashboard as uqcc1_
+        return _json_safe(uqcc1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
