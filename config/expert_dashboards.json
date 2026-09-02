@@ -9273,6 +9273,27 @@
     "built_note": "Built scripts/ndufa2_dashboard.py, api_backend.py 3 routes /api/ndufa2/overview|breakdown|definitions, portal-next/app/ndufa2/page.jsx + SiteNav wired after NDUFS5, config/expert_dashboards.json count 604->605. Built 2026-09-01."
   },
   {
+    "id": "ndufb1",
+    "name": "NDUFB1 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-CI-MNLL-Peripheral-Matrix-Face-Scaffold-No-TM-Helix-Smallest-Nuclear-CI-Subunit-AR",
+    "category": "mitochondrial_disease",
+    "subcategory": "complex_i_deficiency",
+    "disease": "Leigh Syndrome",
+    "gene": "NDUFB1",
+    "omim_gene": "603836",
+    "omim_disease": "256000",
+    "chromosome": "14q32.13",
+    "inheritance": "AR",
+    "status": "built",
+    "api_prefix": "/api/ndufb1",
+    "portal_path": "/ndufb1",
+    "seed": 665,
+    "registered": "2026-09-01",
+    "module": "PP-module (proximal pump module) membrane arm matrix-face peripheral scaffold, no TM helix",
+    "also_known_as": "CI-MNLL",
+    "protein_kda": 6.4,
+    "protein_aa_mature": 56
+  },
+  {
     "id": "ndufb3",
     "title": "NDUFB3 Leigh Syndrome \u2014 Isolated Complex I Deficiency (PP-Module B12 Subunit / Proximal Membrane Arm / First Nuclear CI Mutation)",
     "status": "built",
