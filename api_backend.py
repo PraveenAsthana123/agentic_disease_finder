@@ -40541,6 +40541,30 @@ async def ndufaf3_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ndufaf4/overview")
+async def ndufaf4_overview():
+    try:
+        import scripts.ndufaf4_dashboard as ndufaf4_
+        return _json_safe(ndufaf4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf4/breakdown")
+async def ndufaf4_breakdown():
+    try:
+        import scripts.ndufaf4_dashboard as ndufaf4_
+        return _json_safe(ndufaf4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf4/definitions")
+async def ndufaf4_definitions():
+    try:
+        import scripts.ndufaf4_dashboard as ndufaf4_
+        return _json_safe(ndufaf4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

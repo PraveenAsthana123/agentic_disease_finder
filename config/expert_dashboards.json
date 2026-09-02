@@ -9723,5 +9723,16 @@
     "omim_disease": "618241",
     "seed": 683,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ndufaf4",
+    "status": "built",
+    "disease_name": "",
+    "category": "CI Deficiency / CI Assembly Factor / ND1-Module",
+    "chromosome": "6q16.3",
+    "omim_gene": "611776",
+    "omim_disease": "618245",
+    "seed": 685,
+    "registered": "2026-09-02"
   }
 ]
