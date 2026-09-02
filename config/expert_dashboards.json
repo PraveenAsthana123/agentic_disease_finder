@@ -194,7 +194,9 @@
     "endpoints": [
       "/api/eeg-viz/false-alarm"
     ],
-    "id": "eeg-viz-false-alarm"
+    "id": "eeg-viz-false-alarm",
+    "frontend": "portal-next/app/eeg-viz-false-alarm/page.jsx",
+    "nav_wired": true
   },
   {
     "role": "Neurologist",
@@ -247,7 +249,9 @@
     "endpoints": [
       "/api/eeg-viz/propagation"
     ],
-    "id": "eeg-viz-propagation"
+    "id": "eeg-viz-propagation",
+    "frontend": "portal-next/app/eeg-viz-propagation/page.jsx",
+    "nav_wired": true
   },
   {
     "role": "Epileptologist",
@@ -261,7 +265,9 @@
       "/api/eeg-viz/ictal-interictal",
       "/api/eeg-viz/seizure-annotations"
     ],
-    "id": "eeg-viz-ictal-interictal"
+    "id": "eeg-viz-ictal-interictal",
+    "frontend": "portal-next/app/eeg-viz-ictal-interictal/page.jsx",
+    "nav_wired": true
   },
   {
     "role": "Epileptologist",
