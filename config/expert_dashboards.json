@@ -10162,5 +10162,14 @@
     "seed": 725,
     "registered": "2026-09-02",
     "notes": "3 endpoints verified 200; SiteNav wired after LYRM7 before expert-dashboards-catalog"
+  },
+  {
+    "id": "uqcrc2",
+    "name": "UQCRC2 CIII-Core-Structural-Subunit Complex-III-Deficiency-Nuclear-Type-4 CIII-D4 Core-Protein-2 QCR2 UQCRC1-UQCRC2-Scaffold-Heterodimer Neonatal-Onset-Severe No-Cataracts AR-Biallelic 16p12.2 (UQCRC2-453aa-47kDa-QCR2-Soluble-Peripheral-IMM-NO-TM-Helix-16p12.2 / OMIM-Gene-191329-Disease-CIII-D4-615159 / AR-Biallelic-Both-Sexes-Equal / pArg284Cys-c850CT-UQCRC1-Binding-Interface-Most-Common-Severe-88pct / pLeu142Pro-c425TC-Scaffold-Helix-Breaking-Proline-Severe-87pct / pGly283Ser-c847GA-Conserved-Glycine-UQCRC1-Surface-Severe-85pct / pArg350Trp-c1048CT-UQCRC1-Distal-Contact-Severe-83pct / pAla195Val-c584CT-Hydrophobic-Core-Intermediate-68pct / cIVS4plus2TC-Splice-Donor-Moderate-Severe-80pct / pArg25Ter-c73CT-Early-Truncation-Null-Severe-92pct / ExonDel3-Central-Scaffold-Null-Severe-91pct / UQCRC1-Core1-ABSENT-Secondary-Reciprocal / BN-PAGE-CIII-ABSENT-Identical-CYC1-WES-Mandatory / NO-CATARACTS-KEY-DDx-CYC1 / CIII-Activity-Below-5pct / NEONATAL-ONSET-48pct / LACTIC-ACIDOSIS-97pct / DECEASED-68pct / 40-patient-cohort-seed-727 / 16p12.2 / OMIM-Gene-UQCRC2-191329-Disease-CIII-D4-615159)",
+    "status": "built",
+    "api": "/api/uqcrc2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 727,
+    "registered": "2026-09-02T20:13:27Z"
   }
 ]
