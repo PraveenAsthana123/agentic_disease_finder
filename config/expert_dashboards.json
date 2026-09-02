@@ -9853,5 +9853,36 @@
       "Rhein-2016-JBiolChem-NDUFS2-R85-Methylation-Site-Confirmed",
       "Guerrero-Castillo-2017-CellMetab-CI-Assembly-Pathway"
     ]
+  },
+  {
+    "id": "ndufaf8",
+    "gene": "NDUFAF8",
+    "alias": "C17orf89",
+    "omim_gene": "616051",
+    "omim_disease": "256000",
+    "disease_name": "Mitochondrial Complex I Deficiency",
+    "chromosome": "17p13.2",
+    "inheritance": "AR (biallelic)",
+    "protein": "211aa, 24kDa, soluble matrix, no FAD, no TM helices",
+    "assembly_class": "CI Assembly Scaffold \u2014 Intermediate-Stage",
+    "seed": 699,
+    "n_patients": 40,
+    "status": "built",
+    "portal_page": "/ndufaf8",
+    "color": "#1a237e",
+    "registered": "2026-09-02",
+    "key_features": [
+      "Purely structural scaffold \u2014 no enzymatic activity (distinct from NDUFAF6 dioxygenase, NDUFAF7 methyltransferase)",
+      "17p13.2 \u2014 unique locus among all NDUFAF family members",
+      "Intermediate-stage CI assembly (distinct from MCIA, ND1-module, N-module, late-stage)",
+      "No riboflavin response (no FAD domain) \u2014 critical DDx vs ACAD9 50-60%",
+      "Low HCM (<10%) \u2014 critical DDx vs TIMMDC1 >80%",
+      "No peripheral neuropathy, no leukodystrophy, no olfactory bulb lesions, no hepatopathy"
+    ],
+    "references": [
+      "Stroud-2016-Nature-CI-Assembly-Three-Classes",
+      "Guerrero-Castillo-2017-CellMetab-CI-Assembly-Pathway",
+      "Formosa-2018-CI-Assembly-Review"
+    ]
   }
 ]

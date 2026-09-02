@@ -40710,6 +40710,31 @@ async def ndufaf7_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ── NDUFAF8 — Complex I Deficiency / C17orf89 / CI Assembly Scaffold / Intermediate-Stage / 17p13.2 ──
+@app.get("/api/ndufaf8/overview")
+async def ndufaf8_overview():
+    try:
+        import scripts.ndufaf8_dashboard as ndufaf8_
+        return _json_safe(ndufaf8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf8/breakdown")
+async def ndufaf8_breakdown():
+    try:
+        import scripts.ndufaf8_dashboard as ndufaf8_
+        return _json_safe(ndufaf8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf8/definitions")
+async def ndufaf8_definitions():
+    try:
+        import scripts.ndufaf8_dashboard as ndufaf8_
+        return _json_safe(ndufaf8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
