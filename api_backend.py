@@ -40491,6 +40491,32 @@ async def ecsit_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── TMEM126B — Complex I Deficiency / MCIA Complex / Terminal Integral IMM Member / 2-TM ──────────
+@app.get("/api/tmem126b/overview")
+async def tmem126b_overview():
+    try:
+        import scripts.tmem126b_dashboard as tmem126b_
+        return _json_safe(tmem126b_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/tmem126b/breakdown")
+async def tmem126b_breakdown():
+    try:
+        import scripts.tmem126b_dashboard as tmem126b_
+        return _json_safe(tmem126b_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/tmem126b/definitions")
+async def tmem126b_definitions():
+    try:
+        import scripts.tmem126b_dashboard as tmem126b_
+        return _json_safe(tmem126b_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

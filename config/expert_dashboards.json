@@ -9693,5 +9693,24 @@
     ],
     "page": "/ecsit",
     "registered": "2026-09-02"
+  },
+  {
+    "id": "tmem126b",
+    "status": "built",
+    "name": "TMEM126B Complex I Deficiency MCIA-Complex Terminal-Integral-IMM-Member 2-TM-Helix-IMM-Anchor ECSIT-Recruited (TMEM126B-227aa-26kDa-2-TM-Helices-Integral-IMM-Protein-ONLY-MCIA-Member-With-TM-Helices-11q14.1 / OMIM-Gene-615533-Disease-CI-Deficiency-256000 / AR-Biallelic / pArg196His-TM1-TM2-Loop-Disruption-Intermediate / pLeu86Pro-c257TC-TM1-Helix-Breaking-Proline-Severe / pGly142Arg-c424GA-TM2-Hydrophobic-Core-Packing-Severe / pTrp23Ter-c69GA-N-Terminal-Truncation-Null-Consanguineous-Severe / cIVS3plus1GA-Splice-Donor-Exon3-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / 2-TM-INTEGRAL-IMM-PROTEIN-UNIQUE-ONLY-MCIA-Member-With-TM-Helices-Others-Soluble / TERMINAL-MCIA-MEMBER-ECSIT-DEPENDENT-RECRUITMENT-4th-Last-Member / NO-FAD-BINDING-NO-RIBOFLAVIN-RESPONSE / ACAD9-NDUFAF1-ECSIT-TERNARY-STILL-INTACT-In-TMEM126B-Deficiency / BN-PAGE-ND2-ND5-Sub-Assembly-Intermediates-MCIA-Class / 40-patient-cohort-seed-681 / 11q14.1 / OMIM-Gene-TMEM126B-615533-Disease-CI-Deficiency-256000)",
+    "api": [
+      "/api/tmem126b/overview",
+      "/api/tmem126b/breakdown",
+      "/api/tmem126b/definitions"
+    ],
+    "component": "TMEM126BPage",
+    "route": "/tmem126b",
+    "seed": 681,
+    "cohort_n": 40,
+    "chromosome": "11q14.1",
+    "omim_gene": "615533",
+    "omim_disease": "256000",
+    "inheritance": "AR",
+    "registered": "2026-09-02"
   }
 ]
