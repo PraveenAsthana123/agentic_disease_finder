@@ -40517,6 +40517,31 @@ async def tmem126b_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufaf3/overview")
+async def ndufaf3_overview():
+    try:
+        import scripts.ndufaf3_dashboard as ndufaf3_
+        return _json_safe(ndufaf3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf3/breakdown")
+async def ndufaf3_breakdown():
+    try:
+        import scripts.ndufaf3_dashboard as ndufaf3_
+        return _json_safe(ndufaf3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufaf3/definitions")
+async def ndufaf3_definitions():
+    try:
+        import scripts.ndufaf3_dashboard as ndufaf3_
+        return _json_safe(ndufaf3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
