@@ -10272,5 +10272,29 @@
     ],
     "color": "#283593",
     "description": "COX20 (FAM36A) MITRAC-class early MT-CO2 assembly factor. Childhood-onset progressive ataxia, cerebellar atrophy, milder COX deficiency (10-30%). COXPD8."
+  },
+  {
+    "id": "coa3",
+    "title": "COA3 MITRAC12-Assembly Complex IV Deficiency Nuclear Type 10 COXPD10",
+    "status": "built",
+    "category": "metabolic_disease",
+    "disease_gene": "COA3",
+    "omim_gene": "614775",
+    "omim_disease": "616006",
+    "chromosome": "17q24.2",
+    "inheritance": "AR",
+    "api_prefix": "/api/coa3",
+    "frontend": "portal-next/app/coa3/page.jsx",
+    "nav_wired": true,
+    "cohort_seed": 625,
+    "cohort_size": 40,
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/coa3/overview",
+      "/api/coa3/breakdown",
+      "/api/coa3/definitions"
+    ],
+    "color": "#1565c0",
+    "description": "COA3 (CCDC56/MITRAC12) MITRAC-class early MT-CO1 assembly factor. Neonatal/infantile severe encephalopathy, Leigh-like MRI, isolated COX <5%. COXPD10. WES mandatory to distinguish from COX14."
   }
 ]

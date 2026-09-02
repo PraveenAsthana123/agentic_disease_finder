@@ -41242,6 +41242,33 @@ async def cox20_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/coa3/overview")
+async def coa3_overview():
+    try:
+        import scripts.coa3_dashboard as coa3_
+        return _json_safe(coa3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa3/breakdown")
+async def coa3_breakdown():
+    try:
+        import scripts.coa3_dashboard as coa3_
+        return _json_safe(coa3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa3/definitions")
+async def coa3_definitions():
+    try:
+        import scripts.coa3_dashboard as coa3_
+        return _json_safe(coa3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
