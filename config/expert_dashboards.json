@@ -9511,5 +9511,13 @@
     "cohort_n": 40,
     "seed": 651,
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufa1",
+    "title": "NDUFA1 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-MWFE-ND3-Face-Single-TM-Helix-X-LINKED-Smallest-Nuclear-CI-Subunit-MC1DN2",
+    "status": "built",
+    "route": "/ndufa1",
+    "api": "/api/ndufa1/overview|breakdown|definitions",
+    "built_at": "2026-09-01"
   }
 ]
