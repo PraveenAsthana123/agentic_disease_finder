@@ -9519,5 +9519,13 @@
     "route": "/ndufa1",
     "api": "/api/ndufa1/overview|breakdown|definitions",
     "built_at": "2026-09-01"
+  },
+  {
+    "id": "ndufa3",
+    "title": "NDUFA3 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-B9-ND3-ND4L-Boundary-Peripheral-Scaffold-No-TM-Helix-AR",
+    "status": "built",
+    "route": "/ndufa3",
+    "api": "/api/ndufa3/overview|breakdown|definitions",
+    "built_at": "2026-09-01"
   }
 ]
