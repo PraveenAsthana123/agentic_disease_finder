@@ -9502,5 +9502,14 @@
     ],
     "frontend": "portal-next/app/ndufb10/page.jsx",
     "seed": 649
+  },
+  {
+    "id": "ndufb11",
+    "name": "NDUFB11 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PP-Module-ESSS-ND6-ND1-Face-Single-TM-Helix-X-LINKED-Only-X-Linked-Nuclear-NDUFB-Subunit (NDUFB11-136aa-15.6kDa-ESSS-PP-Module-ND6-ND1-Boundary-Face-Single-TM-Helix-Xp11.3 / OMIM-Gene-300403-Disease-256000 / X-LINKED-XL-recessive-Hemizygous-Males-Severe-Lethal-Neonatal-Heterozygous-Females-Variable-X-Inactivation / pArg37Ter-c109CT-Early-Stop-Null-Hemizygous-Males-Lethal / pPro174Leu-c521CT-TM-Helix-Proline-Disruption / pVal79Ala-c236TC-ND6-Contact-Intermediate / pGly15Arg-c43GA-Signal-Peptide-Severe / cIVS1plus1GA-Splice-Donor-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL / ONLY-X-Linked-Nuclear-NDUFB / Xp11.3 / OMIM-Gene-NDUFB11-300403-Disease-Leigh-256000)",
+    "status": "built",
+    "api": "/api/ndufb11/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 651,
+    "registered": "2026-09-01"
   }
 ]
