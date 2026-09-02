@@ -40336,6 +40336,30 @@ async def ndufb2_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ndufb5/overview")
+async def ndufb5_overview():
+    try:
+        import scripts.ndufb5_dashboard as ndufb5_
+        return _json_safe(ndufb5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufb5/breakdown")
+async def ndufb5_breakdown():
+    try:
+        import scripts.ndufb5_dashboard as ndufb5_
+        return _json_safe(ndufb5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ndufb5/definitions")
+async def ndufb5_definitions():
+    try:
+        import scripts.ndufb5_dashboard as ndufb5_
+        return _json_safe(ndufb5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
