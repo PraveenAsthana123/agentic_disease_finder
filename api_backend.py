@@ -40762,6 +40762,32 @@ async def sdhaf1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── SDHAF2 — PGL2 Paragangliomas 2 / SDHA Flavinylation Factor / AD + Maternal Imprinting / 11q13.1 ──
+@app.get("/api/sdhaf2/overview")
+async def sdhaf2_overview():
+    try:
+        import scripts.sdhaf2_dashboard as sdhaf2_
+        return _json_safe(sdhaf2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhaf2/breakdown")
+async def sdhaf2_breakdown():
+    try:
+        import scripts.sdhaf2_dashboard as sdhaf2_
+        return _json_safe(sdhaf2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sdhaf2/definitions")
+async def sdhaf2_definitions():
+    try:
+        import scripts.sdhaf2_dashboard as sdhaf2_
+        return _json_safe(sdhaf2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

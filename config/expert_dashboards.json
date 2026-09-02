@@ -9918,6 +9918,51 @@
       "Na-2014-CellMetab-SDHAF1-SDHAF3-Mediate-SDHB-FeS-Maturation",
       "Maio-Rouault-2016-BiochimBiophysActa-LYR-Protein-FeS-Delivery-Review"
     ],
-    "endpoints": ["/api/sdhaf1/overview", "/api/sdhaf1/breakdown", "/api/sdhaf1/definitions"]
+    "endpoints": [
+      "/api/sdhaf1/overview",
+      "/api/sdhaf1/breakdown",
+      "/api/sdhaf1/definitions"
+    ]
+  },
+  {
+    "id": "sdhaf2",
+    "name": "SDHAF2 PGL2 Paragangliomas-2 SDHA-Flavinylation-Factor SDH5 AD-Dominant-Maternal-Imprinting Paternal-Transmission-Only",
+    "gene": "SDHAF2",
+    "alias": "SDH5",
+    "omim_gene": "613019",
+    "omim_disease": "601650",
+    "disease_name": "Paragangliomas 2 (PGL2) \u2014 SDHA Flavinylation Factor / Hereditary Paraganglioma-Pheochromocytoma Syndrome",
+    "chromosome": "11q13.1",
+    "inheritance": "AD with MATERNAL IMPRINTING (paternal transmission only)",
+    "protein": "166aa, 19kDa, mitochondrial matrix, no TM helices, SDHA FAD-attachment scaffold",
+    "assembly_class": "CII Assembly Factor \u2014 Step 1: SDHA Flavinylation (autocatalytic FAD covalent attachment to His99)",
+    "seed": 703,
+    "n_patients": 40,
+    "status": "built",
+    "portal_page": "/sdhaf2",
+    "color": "#880e4f",
+    "registered": "2026-09-02",
+    "key_features": [
+      "SDHA flavinylation factor \u2014 covalently attaches FAD to SDHA His99 (autocatalytic)",
+      "Step 1 of CII assembly (SDHA FAD) \u2014 BEFORE SDHAF1 (Step 2: SDHB FeS)",
+      "DOMINANT (AD) \u2014 contrast SDHAF1 which is recessive",
+      "MATERNAL IMPRINTING \u2014 only paternal transmission causes PGL2",
+      "Female carriers: unaffected; their children: NOT at risk",
+      "Male carriers: 50% of children at risk",
+      "Paraganglioma (HNPGL 78%, PCC 15%) \u2014 NOT leukoencephalopathy",
+      "Low malignancy ~5% (critical DDx vs SDHB ~20-50%)",
+      "Dutch founder p.Arg107Leu (Hao 2009 Science)",
+      "11q13.1 \u2014 same chromosome as SDHD (11q23.1, PGL1), both maternal imprinting, 10 Mb apart"
+    ],
+    "references": [
+      "Hao-2009-Science-SDH5-First-PGL2-Dutch-Founder-pArg107Leu",
+      "Kunst-2011-LancetOncol-SDHAF2-Mutation-Spectrum-Maternal-Imprinting",
+      "Baysal-2013-CurrOpinOncol-SDH-Paraganglioma-Genetics-Review"
+    ],
+    "endpoints": [
+      "/api/sdhaf2/overview",
+      "/api/sdhaf2/breakdown",
+      "/api/sdhaf2/definitions"
+    ]
   }
 ]
