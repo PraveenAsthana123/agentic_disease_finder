@@ -40591,6 +40591,31 @@ async def ndufaf5_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/timmdc1/overview")
+async def timmdc1_overview():
+    try:
+        import scripts.timmdc1_dashboard as timmdc1_
+        return _json_safe(timmdc1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/timmdc1/breakdown")
+async def timmdc1_breakdown():
+    try:
+        import scripts.timmdc1_dashboard as timmdc1_
+        return _json_safe(timmdc1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/timmdc1/definitions")
+async def timmdc1_definitions():
+    try:
+        import scripts.timmdc1_dashboard as timmdc1_
+        return _json_safe(timmdc1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

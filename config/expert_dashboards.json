@@ -9745,5 +9745,16 @@
     "omim_disease": "256000",
     "seed": 687,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "timmdc1",
+    "status": "built",
+    "disease_name": "Mitochondrial Complex I Deficiency \u2014 TIMMDC1/C3orf58 (Isolated CI Deficiency; Leigh Syndrome spectrum)",
+    "category": "CI Deficiency / CI Assembly Factor / ND1-Module / Integral IMM",
+    "chromosome": "3q25.1",
+    "omim_gene": "615530",
+    "omim_disease": "256000",
+    "seed": 689,
+    "registered": "2026-09-02"
   }
 ]
