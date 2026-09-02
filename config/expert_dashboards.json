@@ -10229,5 +10229,22 @@
     "cohort_n": 40,
     "seed": 611,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "cox14",
+    "name": "COX14 MITRAC-Assembly Complex IV Deficiency Nuclear Type 6 COXPD6 (COX14-C12orf62-66aa-7.5kDa-Single-TM-Helix-IMM-12q24.31 / OMIM-Gene-614478-Disease-COXPD6-614749 / AR-Biallelic-Both-Sexes-Equal / pArg15His-c44GA-TM-Helix-Canadian-Founder-30pct / pGly47Arg-c139GC-IMS-COA3-Interface-20pct / MITRAC-Early-MT-CO1-Assembly / Isolated-COX-lt5pct / NO-HCM / NO-Hepatopathy / NO-Tubulopathy / Leigh-80pct / 40-patient-cohort-seed-617 / 12q24.31)",
+    "status": "built",
+    "frontend": true,
+    "nav_wired": true,
+    "route": "/cox14",
+    "api": "/api/cox14/overview|breakdown|definitions",
+    "cohort_seed": 617,
+    "gene": "COX14",
+    "omim_gene": "614478",
+    "omim_disease": "614749",
+    "chromosome": "12q24.31",
+    "disease_type": "Complex IV Deficiency",
+    "coxpd_type": "COXPD6",
+    "notes": "Registered 2026-09-02"
   }
 ]

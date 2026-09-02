@@ -41188,6 +41188,33 @@ async def uqcrc1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cox14/overview")
+async def cox14_overview():
+    try:
+        import scripts.cox14_dashboard as cox14_
+        return _json_safe(cox14_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox14/breakdown")
+async def cox14_breakdown():
+    try:
+        import scripts.cox14_dashboard as cox14_
+        return _json_safe(cox14_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox14/definitions")
+async def cox14_definitions():
+    try:
+        import scripts.cox14_dashboard as cox14_
+        return _json_safe(cox14_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
