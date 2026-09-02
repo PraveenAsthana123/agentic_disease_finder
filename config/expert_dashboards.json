@@ -9430,5 +9430,25 @@
     "frontend": "/ndufb4",
     "nav_after": "ndufa10",
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufb8",
+    "status": "built",
+    "title": "NDUFB8 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PD-Module-B22-Subunit-1-TM-Helix-Membrane-Arm-ND4-Face-Triad-Member",
+    "gene": "NDUFB8",
+    "also_known_as": "B22 subunit / PD-module 1-TM-helix ND4-face triad member (NDUFB4-NDUFB6-NDUFB8)",
+    "omim_gene": "602140",
+    "omim_disease": "256000",
+    "chromosome": "10q23.2",
+    "inheritance": "AR",
+    "seed": 643,
+    "endpoints": [
+      "/api/ndufb8/overview",
+      "/api/ndufb8/breakdown",
+      "/api/ndufb8/definitions"
+    ],
+    "frontend": "/ndufb8",
+    "nav_after": "ndufb4",
+    "registered": "2026-09-01"
   }
 ]

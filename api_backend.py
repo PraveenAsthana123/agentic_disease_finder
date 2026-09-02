@@ -39993,6 +39993,33 @@ async def ndufb4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ndufb8/overview")
+async def ndufb8_overview():
+    try:
+        import scripts.ndufb8_dashboard as ndufb8_
+        return _json_safe(ndufb8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufb8/breakdown")
+async def ndufb8_breakdown():
+    try:
+        import scripts.ndufb8_dashboard as ndufb8_
+        return _json_safe(ndufb8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ndufb8/definitions")
+async def ndufb8_definitions():
+    try:
+        import scripts.ndufb8_dashboard as ndufb8_
+        return _json_safe(ndufb8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
