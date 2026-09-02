@@ -10202,5 +10202,21 @@
     "frontend": "/uqcrc1",
     "built_date": "2026-09-02",
     "notes": "UQCRC1-480aa-52.6kDa-QCR1-Soluble-Peripheral-IMM-NO-TM-Helix-Matrix-Facing-LARGEST-Nuclear-CIII-3p21.31 / OMIM-Gene-191328-Disease-CIII-D5-615160 / AR-Biallelic-Both-Sexes-Equal / UQCRC1-DOMINANT-SCAFFOLD-LARGEST-Nuclear-CIII-Subunit-UQCRC1-UQCRC2-Heterodimer / UQCRC2-Core2-ABSENT-Secondary-Reciprocal-Degradation-KEY-DDx / BN-PAGE-CIII-ABSENT-Identical-UQCRC2-CYC1-WES-MANDATORY / NO-CATARACTS-KEY-DDx-CYC1-Cataracts-35pct / NO-BEDSIDE-DDx-vs-UQCRC2-WES-3p21.31-vs-16p12.2-MANDATORY / CIII-Activity-Below-5pct / 3-endpoints-verified-200 / Registered-2026-09-02"
+  },
+  {
+    "id": "cox6b1",
+    "name": "COX6B1 Encephalomyopathic Complex IV Deficiency Nuclear Type 7 COXPD7 (COX6B1-109aa-10.2kDa-Structural-Subunit-VIb1-Constitutive-IMS-Exposed-COX-Homodimer-Stabiliser-19q13.3 / OMIM-Gene-124977-Disease-COXPD7-607266 / AR-Biallelic / pTrp38Ser-c113GC-Turkish-Founder-Core-Disruption-35pct / pArg11Pro-c32GC-Dimer-Interface-Helix-Breaking-Severe-20pct / pSer72Tyr-c215CA-Surface-Charge-COX2-Interaction-Moderate-15pct / Isolated-COX-Deficiency-lt15pct-CI-CII-CIII-NORMAL-BIOCHEMICAL-FINGERPRINT / Encephalomyopathy-90pct / Lactic-Acidosis-90pct / Hypotonia-85pct / Leigh-MRI-70pct / Myopathy-80pct / Growth-Failure-75pct / Seizures-45pct / Psychomotor-Regression-85pct / Respiratory-Compromise-60pct / NO-HCM-KEY-DDx-SCO2-100pct-COX15-78pct / NO-Hepatopathy-KEY-DDx-SCO1-100pct-Neonatal / NO-Tubulopathy-KEY-DDx-COX10-65pct-Fanconi / VPA-ABSOLUTE-CI-CoA-Sequestration-POLG-Inhibition / Metformin-ABSOLUTE-CI-Complex-I-Lactic-Crisis / Propofol-ABSOLUTE-CI-PRIS-COX-Inhibition / Linezolid-ABSOLUTE-CI-23S-rRNA-MT-CO1-CO2-CO3-Block / KD-CONTRAINDICATED-Beta-Oxidation-Requires-Complex-IV / CoQ10-Riboflavin-Thiamine-Biotin-Carnitine-Level-C / LEV-Preferred-AED / GIR-6-8-Never-Fast / Massa-2008-AmJHumGenet-First-COX6B1 / Rak-2016-BiochimBiophysActa-COX6B1-Homodimer / 40-patient-cohort-seed-606 / 19q13.3 / OMIM-Gene-COX6B1-124977-Disease-COXPD7-607266)",
+    "status": "built",
+    "locus": "19q13.3",
+    "disease": "Encephalomyopathic Complex IV Deficiency, Nuclear Type 7 (COXPD7)",
+    "omim_gene": "124977",
+    "omim_disease": "607266",
+    "api": "/api/cox6b1/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 606,
+    "frontend": true,
+    "nav_wired": true,
+    "registered": "2026-09-02",
+    "built_note": "Built scripts/cox6b1_dashboard.py, api_backend.py 3 routes /api/cox6b1/overview|breakdown|definitions verified 200, portal-next/app/cox6b1/page.jsx + SiteNav wired after LRPPRC before NDUFS4, expert_dashboards.json count 657->658. Built 2026-09-02."
   }
 ]

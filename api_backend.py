@@ -39520,6 +39520,33 @@ async def lrpprc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cox6b1/overview")
+async def cox6b1_overview():
+    try:
+        import scripts.cox6b1_dashboard as cox6b1_
+        return _json_safe(cox6b1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox6b1/breakdown")
+async def cox6b1_breakdown():
+    try:
+        import scripts.cox6b1_dashboard as cox6b1_
+        return _json_safe(cox6b1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox6b1/definitions")
+async def cox6b1_definitions():
+    try:
+        import scripts.cox6b1_dashboard as cox6b1_
+        return _json_safe(cox6b1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/ndufs4/overview")
 async def ndufs4_overview():
     try:
