@@ -143,7 +143,9 @@
     "endpoints": [
       "/api/eeg-viz/localization"
     ],
-    "id": "eeg-viz-localization"
+    "id": "eeg-viz-localization",
+    "frontend": "portal-next/app/eeg-viz-localization/page.jsx",
+    "built_at": "2026-09-01"
   },
   {
     "role": "Neurologist",

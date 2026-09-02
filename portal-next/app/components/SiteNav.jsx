@@ -296,6 +296,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-viz-bad-channels">&#x1f4e1; Bad Channel QC</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-viz-raw">&#x1f4c9; Raw EEG Viewer</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-viz-montage">&#x1f4e1; Montage Comparison</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/eeg-viz-localization">&#x1f9e0; Seizure Localization</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hitl">&#x1f9d1;&#x200d;&#x2695;&#xfe0f; HITL Evaluation</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-engineer">&#x1f4e1; IoT Engineer</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/iot-pipeline">&#x1f6a8; IoT Pipeline (SOS)</Link></li>
