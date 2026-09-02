@@ -9659,5 +9659,22 @@
       "/api/acad9/definitions"
     ],
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ndufaf1",
+    "name": "NDUFAF1 Complex I Deficiency MCIA-Complex CIA30 Obligate-ACAD9-Binary-Partner First-CI-Assembly-Factor-Ever-Discovered (NDUFAF1-327aa-36kDa-CIA30-No-FAD-Binding-MCIA-Binary-ACAD9-Partner-15q11.2-q13 / OMIM-Gene-606934-Disease-CI-Deficiency-256000 / AR-Biallelic / 40-patient-cohort-seed-677 / 3-endpoints-verified-200 / Registered-2026-09-02)",
+    "gene": "NDUFAF1",
+    "status": "built",
+    "chromosome": "15q11.2-q13",
+    "omim_gene": "606934",
+    "omim_disease": "256000",
+    "seed": 677,
+    "endpoints": [
+      "/api/ndufaf1/overview",
+      "/api/ndufaf1/breakdown",
+      "/api/ndufaf1/definitions"
+    ],
+    "page": "/ndufaf1",
+    "registered": "2026-09-02"
   }
 ]
