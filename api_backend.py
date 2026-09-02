@@ -39547,6 +39547,33 @@ async def cox6b1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/coa6/overview")
+async def coa6_overview():
+    try:
+        import scripts.coa6_dashboard as coa6_
+        return _json_safe(coa6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa6/breakdown")
+async def coa6_breakdown():
+    try:
+        import scripts.coa6_dashboard as coa6_
+        return _json_safe(coa6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coa6/definitions")
+async def coa6_definitions():
+    try:
+        import scripts.coa6_dashboard as coa6_
+        return _json_safe(coa6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/ndufs4/overview")
 async def ndufs4_overview():
     try:

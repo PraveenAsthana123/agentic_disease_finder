@@ -10218,5 +10218,16 @@
     "nav_wired": true,
     "registered": "2026-09-02",
     "built_note": "Built scripts/cox6b1_dashboard.py, api_backend.py 3 routes /api/cox6b1/overview|breakdown|definitions verified 200, portal-next/app/cox6b1/page.jsx + SiteNav wired after LRPPRC before NDUFS4, expert_dashboards.json count 657->658. Built 2026-09-02."
+  },
+  {
+    "id": "coa6",
+    "name": "COA6 Infantile Cardiomyopathic Complex IV Deficiency Nuclear Type 14 COXPD14 (COA6-73aa-8.3kDa-Copper-Chaperone-Twin-CX9C-COX2-CuA-Metalation-SCO1-SCO2-Cooperator-1q42.2 / OMIM-Gene-614772-Disease-COXPD14-614924 / AR-Biallelic-Both-Sexes-Equal / pTrp59Cys-c177GC-Twin-CX9C-Copper-Binding-Disruption-Australian-UK-Founder-Severe-Most-Common-30pct / HCM-90pct-CARDINAL / Liver-35pct-KEY-DDx-SCO2-0pct / NO-Tubulopathy-KEY-DDx-COX10-65pct / NO-Anaemia-KEY-DDx-COX10-80pct / Isolated-COX-Deficiency-lt10pct-CI-CII-CIII-NORMAL / VPA-ABSOLUTE-CI / Propofol-ABSOLUTE-CI / Positive-Inotropes-HIGH-RISK / KD-CONTRAINDICATED / Lim-2014-AmJHumGenet / 40-patient-cohort-seed-611 / 1q42.2 / OMIM-Gene-COA6-614772-Disease-COXPD14-614924)",
+    "status": "built",
+    "api": "/api/coa6/overview|breakdown|definitions",
+    "frontend": "portal-next/app/coa6/page.jsx",
+    "nav_wired": true,
+    "cohort_n": 40,
+    "seed": 611,
+    "registered": "2026-09-02"
   }
 ]
