@@ -9567,5 +9567,14 @@
       "/api/ndufa7/definitions"
     ],
     "registered": "2026-09-01"
+  },
+  {
+    "id": "ndufa8",
+    "name": "NDUFA8 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh N-Q-Module-Boundary-B14.5b-Peripheral-Stabiliser-NDUFS3-Contact-No-Fe-S-No-TM-Helix-AR (NDUFA8-172aa-20.3kDa-B14.5b-N-Q-Module-Boundary-Peripheral-NDUFS3-QP-C-30kDa-Contact-No-Fe-S-Cluster-No-TM-Helix-9q33.2 / OMIM-Gene-603649-Disease-Leigh-256000 / AR-Biallelic-Both-Sexes-Equal / pArg127Trp-c379CT-NDUFS3-Contact-Surface-Severe-Infantile / pLeu74Pro-c221TC-Helix-Breaking-Proline-Alpha-Helix-Severe / pGlu38Lys-c112GA-Near-MTS-Cleavage-Import-Targeting-Severe-Neonatal / pAla135Val-c404CT-N-Q-Boundary-Core-Packing-Intermediate / cIVS2plus1GA-Splice-Donor-Exon2-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / B14.5b-N-Q-BOUNDARY-NDUFS3-CONTACT-UNIQUE / 40-patient-cohort-seed-663 / 9q33.2 / OMIM-Gene-NDUFA8-603649-Disease-Leigh-256000)",
+    "status": "built",
+    "api": "/api/ndufa8/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 663,
+    "registered": "2026-09-01"
   }
 ]
