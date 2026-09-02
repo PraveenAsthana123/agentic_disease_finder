@@ -40948,6 +40948,30 @@ async def ttc19_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/uqcc2/overview")
+async def uqcc2_overview():
+    try:
+        import scripts.uqcc2_dashboard as uqcc2_
+        return _json_safe(uqcc2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc2/breakdown")
+async def uqcc2_breakdown():
+    try:
+        import scripts.uqcc2_dashboard as uqcc2_
+        return _json_safe(uqcc2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/uqcc2/definitions")
+async def uqcc2_definitions():
+    try:
+        import scripts.uqcc2_dashboard as uqcc2_
+        return _json_safe(uqcc2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

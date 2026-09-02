@@ -10080,5 +10080,14 @@
     "cohort_n": 40,
     "seed": 715,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "uqcc2",
+    "name": "UQCC2 CIII-Assembly-Factor Complex-III-Deficiency-Nuclear-Type-7 CIII-D7 UQCC1-UQCC2-Heterodimer Earliest-CIII-Assembly-Factor MT-CYB-Stabilisation Neonatal-Onset-Severe AR-Biallelic 6p21.2",
+    "status": "built",
+    "api": "/api/uqcc2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 717,
+    "registered": "2026-09-02"
   }
 ]
