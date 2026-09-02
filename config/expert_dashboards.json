@@ -9615,5 +9615,15 @@
     "cohort_n": 40,
     "seed": 669,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "ndufb7",
+    "name": "NDUFB7 Leigh Syndrome Isolated Complex I Deficiency CI-Leigh PD-Module-B18-Subunit-2-TM-Helix-ND4-ND5-Boundary-Outer-Face-Scaffold (NDUFB7-136aa-14.8kDa-B18-PD-Module-2-TM-Helix-ND4-ND5-Boundary-Outer-Face-Bridges-ND4-Triad-And-ND5-19q13.42 / OMIM-Gene-601825-Disease-Leigh-256000 / AR-Biallelic / pGly105Arg-c313GC-TM2-Hydrophobic-Core-Disruption-Severe-Infantile / pLeu88Pro-c263TC-TM2-Helix-Breaking-Proline-ND4-ND5-Boundary-Scaffold-Collapse-Severe / pArg67Gln-c200GA-ND4-ND5-Boundary-Contact-Surface-Charge-Lost-Intermediate / pTrp24Ter-c71GA-Near-MTS-Early-Stop-Null-Consanguineous-Severe-Neonatal / cIVS2plus1GA-Splice-Donor-Exon2-Partial-CI-Residual-Moderate / Isolated-CI-Deficiency-5-20pct-CII-CIII-CIV-NORMAL-BIOCHEMICAL-FINGERPRINT / PD-MODULE-B18-2-TM-HELIX-ND4-ND5-BOUNDARY-UNIQUE-Only-PD-Module-NDUFB-Subunit-Spanning-ND4-And-ND5-Proton-Pump-Channel-Boundary / 40-patient-cohort-seed-671 / 19q13.42 / OMIM-Gene-NDUFB7-601825-Disease-Leigh-256000)",
+    "gene": "NDUFB7",
+    "status": "built",
+    "api": "/api/ndufb7",
+    "cohort_n": 40,
+    "seed": 671,
+    "registered": "2026-09-02"
   }
 ]
