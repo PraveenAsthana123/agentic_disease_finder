@@ -9776,5 +9776,25 @@
       "/api/foxred1/definitions"
     ],
     "page": "/foxred1"
+  },
+  {
+    "id": "nubpl",
+    "name": "NUBPL Complex I Deficiency N-Module [4Fe-4S] Cluster Delivery Factor IND1 Only-CI-Specific-4Fe4S-Delivery-Factor P-loop-GTPase-Walker-A",
+    "gene": "NUBPL",
+    "omim_gene": "613621",
+    "omim_disease": "256000",
+    "disease": "Mitochondrial Complex I Deficiency (CI Deficiency)",
+    "chromosome": "14q12",
+    "inheritance": "AR",
+    "module": "N-module CI-specific [4Fe-4S] cluster delivery factor (IND1/P-loop GTPase)",
+    "seed": 693,
+    "status": "built",
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/nubpl/overview",
+      "/api/nubpl/breakdown",
+      "/api/nubpl/definitions"
+    ],
+    "page": "/nubpl"
   }
 ]

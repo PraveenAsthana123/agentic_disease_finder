@@ -40641,6 +40641,33 @@ async def foxred1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nubpl/overview")
+async def nubpl_overview():
+    try:
+        import scripts.nubpl_dashboard as nubpl_
+        return _json_safe(nubpl_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nubpl/breakdown")
+async def nubpl_breakdown():
+    try:
+        import scripts.nubpl_dashboard as nubpl_
+        return _json_safe(nubpl_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nubpl/definitions")
+async def nubpl_definitions():
+    try:
+        import scripts.nubpl_dashboard as nubpl_
+        return _json_safe(nubpl_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
