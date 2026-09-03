@@ -14229,5 +14229,17 @@
     "strand": "H-strand",
     "built_date": "2026-09-03",
     "note": "HCM dominant; overlap mutation m.8528T>C (ATP8+ATP6 dual disruption \u2192 combined CI+CV); NO retinitis pigmentosa (DDx from NARP/ATP6); annual echo+Holter mandatory"
+  },
+  {
+    "id": "mttl1",
+    "name": "MT-TL1 MELAS Syndrome / MIDD / Pan-OXPHOS \u2014 tRNA-Leu(UUR) m.3243A>G MOST COMMON pathogenic mtDNA variant",
+    "status": "built",
+    "category": "mitochondrial_trna",
+    "gene": "MT-TL1",
+    "omim_gene": "590050",
+    "route": "/mttl1",
+    "api_prefix": "/api/mttl1",
+    "seed": 783,
+    "created_at": "2026-09-03"
   }
 ]

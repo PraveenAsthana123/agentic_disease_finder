@@ -41925,6 +41925,33 @@ async def mtatp8_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TL1 — 40-patient cohort seed-783; 3 endpoints /api/mttl1/overview|breakdown|definitions
+@app.get("/api/mttl1/overview")
+async def mttl1_overview():
+    """MT-TL1 tRNA-Leu(UUR) MELAS Syndrome — m.3243A>G MOST COMMON pathogenic mtDNA variant — Pan-OXPHOS — Stroke-like Episodes — MIDD — 40-patient cohort seed-783; 3 endpoints /api/mttl1/overview|breakdown|definitions."""
+    try:
+        import scripts.mttl1_dashboard as mttl1_
+        return _json_safe(mttl1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttl1/breakdown")
+async def mttl1_breakdown():
+    try:
+        import scripts.mttl1_dashboard as mttl1_
+        return _json_safe(mttl1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttl1/definitions")
+async def mttl1_definitions():
+    try:
+        import scripts.mttl1_dashboard as mttl1_
+        return _json_safe(mttl1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
