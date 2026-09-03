@@ -41727,6 +41727,34 @@ async def mtco3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# COA7 COXPD16 — Spinocerebellar Ataxia + Axonal Neuropathy / Mild CIV Deficiency
+# 40-patient cohort seed-755; 3 endpoints /api/coa7/overview|breakdown|definitions
+@app.get("/api/coa7/overview")
+async def coa7_overview():
+    """COA7 Late-Stage CIV Assembly Factor — COXPD16 — Spinocerebellar Ataxia + Axonal Neuropathy — 231aa ARM/SEL1 repeat scaffold — NO TM helices — mild CIV 30-60% residual — NO Leigh MRI — adolescent/adult onset — 40-patient cohort seed-755; 3 endpoints /api/coa7/overview|breakdown|definitions."""
+    try:
+        import scripts.coa7_dashboard as coa7_
+        return _json_safe(coa7_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/coa7/breakdown")
+async def coa7_breakdown():
+    try:
+        import scripts.coa7_dashboard as coa7_
+        return _json_safe(coa7_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/coa7/definitions")
+async def coa7_definitions():
+    try:
+        import scripts.coa7_dashboard as coa7_
+        return _json_safe(coa7_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

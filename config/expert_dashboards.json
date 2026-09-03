@@ -14112,5 +14112,23 @@
     "api": "/api/mtco3/overview|breakdown|definitions",
     "registered": "2026-09-03",
     "built_note": "Built scripts/mtco3_dashboard.py, api_backend.py 3 routes /api/mtco3/overview|breakdown|definitions verified 200, portal-next/app/mtco3/page.jsx + SiteNav wired after MT-CO2 before expert-dashboards-catalog, expert_dashboards.json count 920->921. Built 2026-09-03."
+  },
+  {
+    "id": "coa7",
+    "name": "COA7 COXPD16 Spinocerebellar Ataxia Axonal Neuropathy Mild CIV Deficiency Late-Stage CIV Assembly ARM-SEL1-Repeat AR (COA7-231aa-26kDa-ARM-SEL1-Repeat-Scaffold-NO-TM-Helices-Late-Stage-CIV-Assembly-6q25.3 / OMIM-Gene-COA7-615623-Disease-COXPD16-616838 / AR-Biallelic / pTyr137Cys-ARM-SEL1-Core-30pct / pArg157Trp-ARM-Mid-25pct / pGlu76Lys-N-Terminal-20pct / pAla194Thr-C-Terminal-12pct / Splice-IVS3plus1GA-11pct / Mild-CIV-30-60pct-Residual / NO-Leigh-MRI / Cerebellar-Atrophy / Ataxia-Neuropathy-Dominant / Adolescent-Adult-Onset / 40-patient-cohort-seed-755)",
+    "status": "built",
+    "category": "expert_gene_disease",
+    "disease_class": "Complex IV Deficiency (Nuclear / Assembly Factor)",
+    "gene": "COA7",
+    "omim_gene": "615623",
+    "omim_disease": "616838",
+    "inheritance": "AR",
+    "locus": "6q25.3",
+    "endpoints": [
+      "/api/coa7/overview",
+      "/api/coa7/breakdown",
+      "/api/coa7/definitions"
+    ],
+    "registered": "2026-09-03"
   }
 ]
