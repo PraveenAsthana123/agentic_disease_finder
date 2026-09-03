@@ -41134,6 +41134,34 @@ async def cyc1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/uqcrq/overview")
+async def uqcrq_overview():
+    """UQCRQ Isolated Complex III Deficiency — QCR8 Structural Subunit / Qo-site periphery — 40-patient cohort seed-729; 3 endpoints /api/uqcrq/overview|breakdown|definitions."""
+    try:
+        import scripts.uqcrq_dashboard as uqcrq_
+        return _json_safe(uqcrq_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrq/breakdown")
+async def uqcrq_breakdown():
+    try:
+        import scripts.uqcrq_dashboard as uqcrq_
+        return _json_safe(uqcrq_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrq/definitions")
+async def uqcrq_definitions():
+    try:
+        import scripts.uqcrq_dashboard as uqcrq_
+        return _json_safe(uqcrq_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/uqcrc2/overview")
 async def uqcrc2_overview():
     try:

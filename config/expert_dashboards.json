@@ -10416,5 +10416,29 @@
     "script": "scripts/mtfmt_dashboard.py",
     "frontend": "portal-next/app/mtfmt/page.jsx",
     "built_note": "Built 2026-09-02: scripts/mtfmt_dashboard.py, api_backend.py 3 routes /api/mtfmt/overview|breakdown|definitions, portal-next/app/mtfmt/page.jsx, SiteNav wired after FASTKD2, expert_dashboards.json count 668->669"
+  },
+  {
+    "id": "uqcrq",
+    "name": "UQCRQ CIII-Qo-Site-Structural-Subunit Isolated-Complex-III-Deficiency QCR8-Subunit-VII 1-TM-Helix-IMM-Anchored RISP-Stalk-Stabiliser Dystonia-CARDINAL Optic-Atrophy-DISTINGUISHING AR-Biallelic 5q31.1 (UQCRQ-82aa-9.4kDa-QCR8-1-N-Terminal-TM-Helix-IMS-Facing-5q31.1 / OMIM-Gene-612080 / AR-Biallelic-Both-Sexes-Equal / pAsn34Ser-c101AG-TM-Helix-Bedouin-Founder-Severe-90pct / pThr46Met-c137CT-TM-IMS-Junction-Severe-87pct / pPro19Leu-c56CT-TM-Proline-Kink-Moderate-72pct / pArg71Ter-c211CT-IMS-Truncation-Null-Severe-93pct / pAla55Val-c164CT-IMS-Core-Intermediate-68pct / cIVS2plus1GA-Splice-Severe-85pct / pGly62Arg-c184GC-IMS-Glycine-Fold-Severe-88pct / Qo-Site-Periphery-Structural-Not-Assembly-Factor / BN-PAGE-CIII-REDUCED-8-22pct-Sub-Complexes-Present / DYSTONIA-75pct-CARDINAL / OPTIC-ATROPHY-42-48pct-DISTINGUISHING / NO-CATARACTS-KEY-DDx-CYC1 / NO-GRACILE-Triad-KEY-DDx-BCS1L / NO-Psychiatric-KEY-DDx-TTC19 / KD-ABSOLUTELY-CONTRAINDICATED / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / Propofol-ABSOLUTE-CI-PRIS / Chloramphenicol-ABSOLUTE-CI / GIR-6-8-Mandatory / Barel-2008-AmJHumGenet-First-UQCRQ / 40-patient-cohort-seed-731 / 5q31.1)",
+    "status": "built",
+    "gene": "UQCRQ",
+    "alias": "QCR8",
+    "omim_gene": "612080",
+    "chromosome": "5q31.1",
+    "inheritance": "AR",
+    "category": "mitochondrial_disease",
+    "api_prefix": "/api/uqcrq",
+    "endpoints": [
+      "/api/uqcrq/overview",
+      "/api/uqcrq/breakdown",
+      "/api/uqcrq/definitions"
+    ],
+    "portal_path": "/uqcrq",
+    "frontend": "portal-next/app/uqcrq/page.jsx",
+    "script": "scripts/uqcrq_dashboard.py",
+    "seed": 731,
+    "note": "Total: 670 dashboards",
+    "built_note": "Built 2026-09-02. UQCRQ Isolated CIII Deficiency \u2014 QCR8 Structural Subunit / Qo-site periphery \u2014 40-patient cohort seed-731; 3 endpoints /api/uqcrq/overview|breakdown|definitions verified 200; SiteNav wired after UQCRC1 before expert-dashboards-catalog.",
+    "registered": "2026-09-02"
   }
 ]
