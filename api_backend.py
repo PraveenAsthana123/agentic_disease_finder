@@ -41406,6 +41406,34 @@ async def fastkd2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mtfmt/overview")
+async def mtfmt_overview():
+    """MTFMT Leigh Syndrome / Combined OXPHOS Deficiency (mt-tRNA Formylation Defect) — 40-patient cohort seed-651; 3 endpoints /api/mtfmt/overview|breakdown|definitions."""
+    try:
+        import scripts.mtfmt_dashboard as mtfmt_
+        return _json_safe(mtfmt_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtfmt/breakdown")
+async def mtfmt_breakdown():
+    try:
+        import scripts.mtfmt_dashboard as mtfmt_
+        return _json_safe(mtfmt_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtfmt/definitions")
+async def mtfmt_definitions():
+    try:
+        import scripts.mtfmt_dashboard as mtfmt_
+        return _json_safe(mtfmt_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -10399,11 +10399,22 @@
   },
   {
     "id": "fastkd2",
-    "name": "FASTKD2 Combined Oxidative Phosphorylation Deficiency (CI + CIV) — mt-RNA Processing Defect",
+    "name": "FASTKD2 Combined Oxidative Phosphorylation Deficiency (CI + CIV) \u2014 mt-RNA Processing Defect",
     "route": "/fastkd2",
     "api": "/api/fastkd2/overview",
     "status": "built",
     "disease_area": "mitochondrial",
     "built_note": "Built 2026-09-02: scripts/fastkd2_dashboard.py, api_backend.py 3 routes /api/fastkd2/overview|breakdown|definitions, portal-next/app/fastkd2/page.jsx, SiteNav wired after PET100, expert_dashboards.json count 667->668"
+  },
+  {
+    "id": "mtfmt",
+    "name": "MTFMT Leigh Syndrome / Combined OXPHOS Deficiency \u2014 mt-tRNA Formylation Defect (MTFMT-376aa-41.6kDa-mt-Matrix-No-TM-Helix-N10-Formyl-THF-Dependent-15q22.31 / OMIM-Gene-611766-Disease-614947 / AR-Biallelic-Both-Sexes-Equal / c.626C>T-Splice-Altering-Hypomorphic-Western-European-Founder-35pct / Pan-OXPHOS-CI-CIII-CIV-ALL-Deficient-CII-NORMAL / Tucker-2011-AmJHumGenet-First-MTFMT)",
+    "status": "built",
+    "category": "mitochondrial_disease",
+    "route": "/mtfmt",
+    "api_prefix": "/api/mtfmt",
+    "script": "scripts/mtfmt_dashboard.py",
+    "frontend": "portal-next/app/mtfmt/page.jsx",
+    "built_note": "Built 2026-09-02: scripts/mtfmt_dashboard.py, api_backend.py 3 routes /api/mtfmt/overview|breakdown|definitions, portal-next/app/mtfmt/page.jsx, SiteNav wired after FASTKD2, expert_dashboards.json count 668->669"
   }
 ]
