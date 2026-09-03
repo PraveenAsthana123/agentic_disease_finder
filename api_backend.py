@@ -41691,6 +41691,34 @@ async def mtnd2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ND3 — 40-patient cohort seed-767; 3 endpoints /api/mtnd3/overview|breakdown|definitions
+# MT-ND3 Leigh-Syndrome MELAS-Leigh-Overlap Exercise-Intolerance N-Module/Membrane-Arm-Junction-Bridge SMALLEST-H-strand-CI-Subunit 115aa-13.1kDa-3-TM-Helices NO-Primary-LHON H-strand-rCRS-10059-10404 Maternal-Inheritance
+@app.get("/api/mtnd3/overview")
+async def mtnd3_overview():
+    """MT-ND3 Leigh Syndrome / MELAS-Leigh Overlap / Exercise Intolerance — N-Module/Membrane-Arm-Junction-Bridge — SMALLEST H-strand CI Subunit — 115aa-3TM — NO primary LHON — 40-patient cohort seed-767; 3 endpoints /api/mtnd3/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd3_dashboard as mtnd3_
+        return _json_safe(mtnd3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtnd3/breakdown")
+async def mtnd3_breakdown():
+    try:
+        import scripts.mtnd3_dashboard as mtnd3_
+        return _json_safe(mtnd3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtnd3/definitions")
+async def mtnd3_definitions():
+    try:
+        import scripts.mtnd3_dashboard as mtnd3_
+        return _json_safe(mtnd3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # MT-CO1: Cytochrome c Oxidase Subunit I — CIV Assembly Nucleus — 514aa 57kDa 12-TM
 # H-strand mtDNA m.5904-7445; Heme a + Heme a3-CuB (O2-reduction site); Largest mtDNA CIV subunit
 # Bilateral Striatal Necrosis (m.6930G>A BSN) / CIV-Leigh / LHON-plus / MELAS-Leigh / KSS-CPEO

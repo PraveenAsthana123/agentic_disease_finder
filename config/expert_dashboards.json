@@ -14169,5 +14169,14 @@
     "script": "scripts/mtnd2_dashboard.py",
     "status": "built",
     "built_date": "2026-09-03"
+  },
+  {
+    "id": "mtnd3",
+    "name": "MT-ND3 Leigh Syndrome / MELAS-Leigh Overlap / Exercise Intolerance \u2014 SMALLEST H-strand CI Subunit \u2014 N-Module/Membrane-Arm-Junction-Bridge \u2014 115aa-3TM \u2014 NO Primary LHON (MT-ND3-115aa-13.1kDa-3-TM-Helices-N-Module-Membrane-Arm-Junction-Bridge-SMALLEST-H-strand-CI-Subunit-NO-Primary-LHON-mtDNA-H-strand-rCRS-10059-10404 / OMIM-Gene-MT-ND3-516002 / MATERNAL-Heteroplasmic / m.10191TC-pSer45Pro-TM2-3-Junction-Leigh-Infantile-30pct / m.10197GA-pArg46Gln-TM3-Entry-Leigh-MELAS-Overlap-25pct / m.10158TC-pThr29Ile-N-Module-Bridge-Exercise-Intolerance-20pct / m.10218TC-pLeu52Pro-TM3-Leigh-15pct / LargeDeletion-KSS-CPEO-Pearson-10pct / NO-PRIMARY-LHON / JUNCTION-BRIDGE-Unique-N-Module-Membrane-Arm-Interface / ISOLATED-CI-5-25pct / KD-CONTRAINDICATED / Metformin-ABSOLUTE-CI / VPA-ABSOLUTE-CI / 40-patient-cohort-seed-767 / mtDNA-H-strand-rCRS-10059-10404 / OMIM-Gene-MT-ND3-516002)",
+    "status": "built",
+    "api": "/api/mtnd3/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 767,
+    "registered": "2026-09-03"
   }
 ]
