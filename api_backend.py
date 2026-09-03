@@ -41579,6 +41579,38 @@ async def mtnd4_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-741; 3 endpoints /api/mtnd6/overview|breakdown|definitions
+# MT-ND6: ONLY L-strand encoded CI subunit; 174aa 19.6kDa 5-TM INVERTED topology
+# LHON #3 primary worldwide (m.14484T>C) — BEST spontaneous visual recovery 50%; youngest onset
+
+@app.get("/api/mtnd6/overview")
+async def mtnd6_overview():
+    """MT-ND6 LHON + Leigh Syndrome — ONLY L-strand encoded CI subunit — 174aa 5-TM INVERTED topology — m.14484T>C #3 LHON worldwide BEST recovery 50% — 40-patient cohort seed-741; 3 endpoints /api/mtnd6/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd6_dashboard as mtnd6_
+        return _json_safe(mtnd6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd6/breakdown")
+async def mtnd6_breakdown():
+    try:
+        import scripts.mtnd6_dashboard as mtnd6_
+        return _json_safe(mtnd6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd6/definitions")
+async def mtnd6_definitions():
+    try:
+        import scripts.mtnd6_dashboard as mtnd6_
+        return _json_safe(mtnd6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

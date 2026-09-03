@@ -10535,6 +10535,30 @@
     "registered": "2026-09-03"
   },
   {
+    "id": "mtnd6",
+    "name": "MT-ND6 LHON Best-Recovery ONLY-L-strand-Encoded-CI-Subunit Isolated-CI-Deficiency LHON-Plus-Dystonia-Dual-Phenotype 174aa-5-TM-Helices-INVERTED-IMM-Topology m.14484TC-#3-LHON-Worldwide Maternal-Inheritance 14p12",
+    "status": "built",
+    "gene": "MT-ND6",
+    "alias": "ND6",
+    "omim_gene": "516006",
+    "chromosome": "mtDNA-rCRS-14149-14673-L-strand",
+    "inheritance": "MATERNAL",
+    "category": "mitochondrial_disease",
+    "api_prefix": "/api/mtnd6",
+    "endpoints": [
+      "/api/mtnd6/overview",
+      "/api/mtnd6/breakdown",
+      "/api/mtnd6/definitions"
+    ],
+    "portal_path": "/mtnd6",
+    "frontend": "portal-next/app/mtnd6/page.jsx",
+    "script": "scripts/mtnd6_dashboard.py",
+    "seed": 741,
+    "note": "Total: 917 dashboards",
+    "built_note": "Built 2026-09-03. MT-ND6 LHON+Leigh+LHON+Dystonia \u2014 ONLY L-strand encoded CI subunit / 174aa 19.6kDa 5-TM INVERTED IMM topology \u2014 40-patient cohort seed-741; 3 endpoints /api/mtnd6/overview|breakdown|definitions verified 200; SiteNav wired after MT-ND4 before expert-dashboards-catalog.",
+    "registered": "2026-09-03"
+  },
+  {
     "id": "abpm",
     "name": "ABPM",
     "status": "built",
