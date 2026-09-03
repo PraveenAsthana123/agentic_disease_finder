@@ -14316,5 +14316,21 @@
     "seed": 797,
     "omim_gene": "590025",
     "built_date": "2026-09-03"
+  },
+  {
+    "id": "mttt",
+    "status": "built",
+    "title": "MT-TT tRNA-Thr Combined-CI-CIV-Deficiency CPEO-Myopathy-Cardiomyopathy-HCM m.15923AG-Most-Common-35pct-Anticodon-Loop AMIODARONE-ABSOLUTE-CI Annual-Echo-Holter-MANDATORY H-strand-rCRS-15888-15953 Maternal-Inheritance",
+    "route": "/mttt",
+    "api_base": "/api/mttt",
+    "endpoints": [
+      "/api/mttt/overview",
+      "/api/mttt/breakdown",
+      "/api/mttt/definitions"
+    ],
+    "seed": 799,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "notes": "MT-TT tRNA-Thr; OMIM *590094; H-strand rCRS 15888-15953; Combined CI+CIV Deficiency; HCM cardiomyopathy DISTINCTIVE; AMIODARONE ABSOLUTE CI; TARS2 nuclear DDx; 40-patient cohort seed-799; 3 endpoints verified 200"
   }
 ]
