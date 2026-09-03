@@ -14412,5 +14412,16 @@
     "omim_gene": "MT-TM *590065",
     "category": "mitochondrial_trna",
     "built_date": "2026-09-03"
+  },
+  {
+    "id": "mttw",
+    "name": "MT-TW tRNA-Trp Combined-CI-CIV-Deficiency CPEO-Myopathy UGA-Codon-Recoding-EXCLUSIVE CIV-Greater-CI-Asymmetry H-strand-rCRS-5512-5579 SEVENTH-tRNA WARS2-DDx-Neonatal",
+    "status": "built",
+    "api": "/api/mttw/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 813,
+    "omim_gene": "MT-TW *590095",
+    "category": "mitochondrial_trna",
+    "built_date": "2026-09-03"
   }
 ]

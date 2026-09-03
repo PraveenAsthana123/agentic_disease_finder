@@ -42285,6 +42285,33 @@ async def mttm_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TW — 40-patient cohort seed-813; 3 endpoints /api/mttw/overview|breakdown|definitions
+@app.get("/api/mttw/overview")
+async def mttw_overview():
+    """MT-TW tRNA-Trp Combined CI+CIV Deficiency — CPEO / Myopathy — H-strand rCRS 5512–5579 — SEVENTH tRNA in mt-genome — UGA codon recoding exclusive — WARS2 nuclear DDx — 40-patient cohort seed-813; 3 endpoints /api/mttw/overview|breakdown|definitions."""
+    try:
+        import scripts.mttw_dashboard as mttw_
+        return _json_safe(mttw_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttw/breakdown")
+async def mttw_breakdown():
+    try:
+        import scripts.mttw_dashboard as mttw_
+        return _json_safe(mttw_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttw/definitions")
+async def mttw_definitions():
+    try:
+        import scripts.mttw_dashboard as mttw_
+        return _json_safe(mttw_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
