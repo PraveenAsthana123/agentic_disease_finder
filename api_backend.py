@@ -42499,6 +42499,35 @@ async def mttg_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TR — 40-patient cohort seed-829; 3 endpoints /api/mttr/overview|breakdown|definitions
+@app.get("/api/mttr/overview")
+async def mttr_overview():
+    """MT-TR tRNA-Arg Combined CI+CIV Deficiency — CPEO / Myopathy / Exercise Intolerance — H-strand rCRS 10405–10469 — SIXTEENTH tRNA in mt-genome — 0nt gap MT-ND3 (5') and MT-ND4L (3') — RARS2 nuclear DDx — 40-patient cohort seed-829; 3 endpoints /api/mttr/overview|breakdown|definitions."""
+    try:
+        import scripts.mttr_dashboard as mttr_
+        return _json_safe(mttr_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttr/breakdown")
+async def mttr_breakdown():
+    try:
+        import scripts.mttr_dashboard as mttr_
+        return _json_safe(mttr_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttr/definitions")
+async def mttr_definitions():
+    try:
+        import scripts.mttr_dashboard as mttr_
+        return _json_safe(mttr_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

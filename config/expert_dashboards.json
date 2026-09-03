@@ -14535,5 +14535,21 @@
     ],
     "cohort_seed": 827,
     "n_patients": 40
+  },
+  {
+    "id": "mttr",
+    "name": "MT-TR tRNA-Arg Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance SIXTEENTH-tRNA-in-Mitochondrial-Genome H-strand-rCRS-10405-10469 0nt-GAP-MT-ND3-Shared-Boundary-5prime 0nt-GAP-MT-ND4L-Shared-Boundary-3prime RARS2-Nuclear-DDx-PCH6-NOT-Adult-CPEO KSS-Common-4977bp-Deletion Maternal-Inheritance",
+    "status": "built",
+    "endpoints": [
+      "/api/mttr/overview",
+      "/api/mttr/breakdown",
+      "/api/mttr/definitions"
+    ],
+    "page": "/mttr",
+    "omim": "*590005",
+    "seed": 829,
+    "cohort_n": 40,
+    "registered": "2026-09-03",
+    "notes": "SIXTEENTH human mt-tRNA; tRNA-Arg UCG anticodon; H-strand rCRS 10405-10469 65nt; Combined CI+CIV deficiency; CPEO+Myopathy+Exercise Intolerance; 0nt gap MT-ND3 (5) and MT-ND4L (3); RARS2 nuclear DDx PCH6; KSS common 4977bp deletion; 3 endpoints verified 200"
   }
 ]
