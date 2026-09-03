@@ -14274,5 +14274,18 @@
     "note": "Total: 931 dashboards",
     "built_note": "Built 2026-09-03. MT-TH tRNA-His Combined CI+CIV Deficiency / Leigh-like Syndrome / CPEO / Cardiomyopathy \u2014 40-patient cohort seed-791; 3 endpoints /api/mtth/overview|breakdown|definitions verified 200; SiteNav wired after MT-TK.",
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtts2",
+    "name": "MT-TS2 tRNA-Ser(AGY) Combined-CI-CIV-Deficiency CPEO-Myopathy-SNHL SHORTEST-mt-tRNA-59nt m.12258CA-Most-Common H-strand-rCRS-12207-12265 Maternal-Inheritance",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA",
+    "status": "built",
+    "route": "/mtts2",
+    "api_prefix": "/api/mtts2",
+    "omim_gene": "590085",
+    "seed": 793,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "note": "MT-TS2-tRNA-Ser-AGY-59nt-GCU-Anticodon-SHORTEST-mt-tRNA-CPEO-Myopathy-SNHL-Combined-CI-CIV-Deficiency / OMIM-Gene-MT-TS2-590085 / MATERNAL-Heteroplasmic / m.12258CA-Variable-Loop-38pct / m.12236TC-Anticodon-Stem-25pct / m.12246GA-Anticodon-Loop-20pct / m.12270TC-Acceptor-Stem-12pct / LargeDeletion-5pct / 40-patient-cohort-seed-793 / rCRS-H-strand-12207-12265"
   }
 ]

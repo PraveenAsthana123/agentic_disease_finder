@@ -42005,6 +42005,33 @@ async def mtth_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TS2 — 40-patient cohort seed-793; 3 endpoints /api/mtts2/overview|breakdown|definitions
+@app.get("/api/mtts2/overview")
+async def mtts2_overview():
+    """MT-TS2 tRNA-Ser(AGY) Combined CI+CIV Deficiency — CPEO / Myopathy / SNHL — m.12258C>A most common — SHORTEST mt-tRNA (59 nt) — H-strand rCRS 12207-12265 — 40-patient cohort seed-793; 3 endpoints /api/mtts2/overview|breakdown|definitions."""
+    try:
+        import scripts.mtts2_dashboard as mtts2_
+        return _json_safe(mtts2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtts2/breakdown")
+async def mtts2_breakdown():
+    try:
+        import scripts.mtts2_dashboard as mtts2_
+        return _json_safe(mtts2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtts2/definitions")
+async def mtts2_definitions():
+    try:
+        import scripts.mtts2_dashboard as mtts2_
+        return _json_safe(mtts2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
