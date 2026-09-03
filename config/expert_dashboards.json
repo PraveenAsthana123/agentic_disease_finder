@@ -14567,5 +14567,14 @@
     "registered": "2026-09-03",
     "category": "Mitochondrial DNA \u2014 mt-tRNA Genome-Wide Atlas",
     "notes": "Complete 22-gene mt-tRNA genome atlas; H-strand 14 genes (standard NGS) + L-strand 8 genes (NGS pitfall); Combined CI+CIV CPEO/Myopathy standard pattern (20 genes); MELAS hallmark MT-TL1; MERRF hallmark MT-TK; isolated HCM MT-TI m.4300AG; SNHL-low-heteroplasmy MT-TS1; MIDM MT-TE; HCM-DISTINCTIVE MT-TT; UGA-recoding MT-TW; universal absolute CI Metformin/VPA/Propofol/Linezolid/Chloramphenicol; KSS 4977bp deletion removes MT-TR+TH+TS2+TL2; BTBGD SLC19A3 exclusion mandatory; 3 endpoints verified 200"
+  },
+  {
+    "id": "mtrnr1",
+    "name": "MT-RNR1 12S-Ribosomal-RNA AISNHL-Aminoglycoside-Induced-SNHL m.1555AG-MOST-COMMON-Pathogenic-mtDNA-Variant-1-in-500-People m.1494CT-East-Asian-Founder HOMOPLASMIC-Blood-DNA-Sufficient NO-OXPHOS-Deficiency-UNIQUE H-strand-rCRS-648-1601-954nt Maternal-Inheritance",
+    "status": "built",
+    "api": "/api/mtrnr1/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 841,
+    "registered": "2026-09-03"
   }
 ]

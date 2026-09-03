@@ -42558,6 +42558,34 @@ async def mt_trna_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mtrnr1/overview")
+async def mtrnr1_overview():
+    """MT-RNR1 12S Ribosomal RNA — Aminoglycoside-Induced SNHL (AISNHL) + Non-Syndromic Maternally Inherited Hearing Loss — m.1555A>G (~0.1-0.2% population) / m.1494C>T — UNIQUE: ISOLATED SNHL, NO OXPHOS deficiency, HOMOPLASMIC — 40-patient cohort seed-841; 3 endpoints /api/mtrnr1/overview|breakdown|definitions."""
+    try:
+        import scripts.mtrnr1_dashboard as mtrnr1_
+        return _json_safe(mtrnr1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtrnr1/breakdown")
+async def mtrnr1_breakdown():
+    try:
+        import scripts.mtrnr1_dashboard as mtrnr1_
+        return _json_safe(mtrnr1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtrnr1/definitions")
+async def mtrnr1_definitions():
+    try:
+        import scripts.mtrnr1_dashboard as mtrnr1_
+        return _json_safe(mtrnr1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
