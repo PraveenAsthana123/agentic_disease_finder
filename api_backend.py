@@ -41378,6 +41378,34 @@ async def pet100_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/fastkd2/overview")
+async def fastkd2_overview():
+    """FASTKD2 Combined OXPHOS Deficiency (CI+CIV) — 40-patient cohort seed-649; 3 endpoints /api/fastkd2/overview|breakdown|definitions."""
+    try:
+        import scripts.fastkd2_dashboard as fkd2_
+        return _json_safe(fkd2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fastkd2/breakdown")
+async def fastkd2_breakdown():
+    try:
+        import scripts.fastkd2_dashboard as fkd2_
+        return _json_safe(fkd2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/fastkd2/definitions")
+async def fastkd2_definitions():
+    try:
+        import scripts.fastkd2_dashboard as fkd2_
+        return _json_safe(fkd2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

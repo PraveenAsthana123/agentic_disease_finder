@@ -10396,5 +10396,14 @@
     "cohort_n": 40,
     "seed": 645,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "fastkd2",
+    "name": "FASTKD2 Combined Oxidative Phosphorylation Deficiency (CI + CIV) — mt-RNA Processing Defect",
+    "route": "/fastkd2",
+    "api": "/api/fastkd2/overview",
+    "status": "built",
+    "disease_area": "mitochondrial",
+    "built_note": "Built 2026-09-02: scripts/fastkd2_dashboard.py, api_backend.py 3 routes /api/fastkd2/overview|breakdown|definitions, portal-next/app/fastkd2/page.jsx, SiteNav wired after PET100, expert_dashboards.json count 667->668"
   }
 ]
