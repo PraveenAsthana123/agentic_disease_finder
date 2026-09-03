@@ -42365,6 +42365,33 @@ async def mttn_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TC — 40-patient cohort seed-819; 3 endpoints /api/mttc/overview|breakdown|definitions
+@app.get("/api/mttc/overview")
+async def mttc_overview():
+    """MT-TC tRNA-Cys Combined CI+CIV Deficiency — CPEO / Myopathy — L-strand rCRS 5761–5826 — TENTH tRNA in mt-genome — THIRD of four consecutive L-strand tRNAs — CARS2 nuclear DDx neonatal multisystem OXPHOS — 40-patient cohort seed-819; 3 endpoints /api/mttc/overview|breakdown|definitions."""
+    try:
+        import scripts.mttc_dashboard as mttc_
+        return _json_safe(mttc_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttc/breakdown")
+async def mttc_breakdown():
+    try:
+        import scripts.mttc_dashboard as mttc_
+        return _json_safe(mttc_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttc/definitions")
+async def mttc_definitions():
+    try:
+        import scripts.mttc_dashboard as mttc_
+        return _json_safe(mttc_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

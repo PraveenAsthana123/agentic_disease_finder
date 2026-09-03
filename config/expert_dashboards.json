@@ -14453,5 +14453,18 @@
       "Definitions"
     ],
     "nav_label": "\ud83e\uddec MT-TN tRNA-Asn (NINTH tRNA, L-strand rCRS 5657\u20135729)"
+  },
+  {
+    "name": "MT-TC tRNA-Cys Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance TENTH-tRNA-in-Mitochondrial-Genome L-strand-NGS-Pitfall THIRD-of-FOUR-Consecutive-L-strand-tRNAs CARS2-DDx-Neonatal-Multisystem-OXPHOS-NOT-Adult-CPEO L-strand-rCRS-5761-5826",
+    "route": "/mttc",
+    "status": "built",
+    "omim": "MT-TC *590020",
+    "seed": 819,
+    "endpoints": [
+      "/api/mttc/overview",
+      "/api/mttc/breakdown",
+      "/api/mttc/definitions"
+    ],
+    "registered": "2026-09-03"
   }
 ]
