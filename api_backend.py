@@ -42198,6 +42198,35 @@ async def mttv_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TI — 40-patient cohort seed-807; 3 endpoints /api/mtti/overview|breakdown|definitions
+@app.get("/api/mtti/overview")
+async def mtti_overview():
+    """MT-TI tRNA-Ile Combined CI+CIV Deficiency — m.4300AG-Isolated-HCM-DISTINCTIVE / CPEO / Myopathy — H-strand rCRS 4263–4331 — FOURTH tRNA in mt-genome — MT-TQ-L-strand-overlap-4329–4331 — IARS2 nuclear DDx (CAGSSS) — 40-patient cohort seed-807; 3 endpoints /api/mtti/overview|breakdown|definitions."""
+    try:
+        import scripts.mtti_dashboard as mtti_
+        return _json_safe(mtti_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtti/breakdown")
+async def mtti_breakdown():
+    try:
+        import scripts.mtti_dashboard as mtti_
+        return _json_safe(mtti_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtti/definitions")
+async def mtti_definitions():
+    try:
+        import scripts.mtti_dashboard as mtti_
+        return _json_safe(mtti_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

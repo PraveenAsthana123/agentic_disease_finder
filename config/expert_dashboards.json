@@ -14383,5 +14383,14 @@
     "built_date": "2026-09-03",
     "notes": "MT-TV tRNA-Val; OMIM *590105; H-strand rCRS 1602-1670; Combined CI+CIV Deficiency; SECOND tRNA in mt-genome; Between 12S and 16S rRNA; No L-strand NGS pitfall (H-strand); VARS2 nuclear DDx (neonatal HCM NOT adult CPEO); 40-patient cohort seed-805; 3 endpoints verified 200",
     "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
+  },
+  {
+    "id": "mtti",
+    "name": "MT-TI tRNA-Ile Combined-CI-CIV-Deficiency CPEO-Myopathy-m.4300AG-Isolated-HCM-DISTINCTIVE FOURTH-tRNA-in-Mitochondrial-Genome H-strand-rCRS-4263-4331 MT-TQ-L-strand-Overlap-4329-4331 IARS2-Nuclear-DDx-CAGSSS-Neonatal-Leigh Maternal-Inheritance",
+    "status": "built",
+    "seed": 807,
+    "route": "/mtti",
+    "api": "/api/mtti/overview",
+    "registered": "2026-09-03"
   }
 ]
