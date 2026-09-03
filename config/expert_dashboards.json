@@ -14305,5 +14305,16 @@
     "primary_disease": "Combined CI+CIV Deficiency - CPEO / Myopathy / Optic Atrophy",
     "key_mutation": "m.12311T>C",
     "distinctive_mutation": "m.12308A>G CPEO+Optic Atrophy"
+  },
+  {
+    "id": "mtte",
+    "name": "MT-TE tRNA-Glu Combined-CI-CIV-Deficiency CPEO-Myopathy-MIDM-Maternally-Inherited-Diabetes m.14709TC-Most-Common-MIDM m.14674TC-Reversible-Infantile-COX-Deficiency-UNIQUE L-strand-rCRS-14674-14742",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA",
+    "status": "built",
+    "route": "/mtte",
+    "api": "/api/mtte/overview|breakdown|definitions",
+    "seed": 797,
+    "omim_gene": "590025",
+    "built_date": "2026-09-03"
   }
 ]
