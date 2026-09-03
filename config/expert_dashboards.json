@@ -10369,5 +10369,21 @@
     "seed": 641,
     "registered": "2026-09-02",
     "notes": "3 endpoints verified 200; SiteNav wired after COX8A before COA3; expert_dashboards.json count 664->665"
+  },
+  {
+    "id": "anomaly-detection",
+    "name": "EEG Anomaly Detection Dashboard (Z-Score + IQR Dual-Method Unsupervised Detection \u2014 47 EEG features, 50 patients, Time-Domain/Spectral/Complexity/Hjorth categories, Severity Normal/Mild/Moderate/Severe, per-patient anomaly table, feature stats, timeline)",
+    "status": "built",
+    "category": "eeg_analysis",
+    "route": "/anomaly-detection",
+    "api_prefix": "/api/anomaly-detection",
+    "script": "scripts/anomaly_detection_dashboard.py",
+    "frontend": "portal-next/app/anomaly-detection/page.jsx",
+    "endpoints": [
+      "/api/anomaly-detection/overview",
+      "/api/anomaly-detection/breakdown",
+      "/api/anomaly-detection/definitions"
+    ],
+    "built_at": "2026-09-02"
   }
 ]
