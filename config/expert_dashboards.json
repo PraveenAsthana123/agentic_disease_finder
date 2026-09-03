@@ -14551,5 +14551,21 @@
     "cohort_n": 40,
     "registered": "2026-09-03",
     "notes": "SIXTEENTH human mt-tRNA; tRNA-Arg UCG anticodon; H-strand rCRS 10405-10469 65nt; Combined CI+CIV deficiency; CPEO+Myopathy+Exercise Intolerance; 0nt gap MT-ND3 (5) and MT-ND4L (3); RARS2 nuclear DDx PCH6; KSS common 4977bp deletion; 3 endpoints verified 200"
+  },
+  {
+    "id": "mt-trna-atlas",
+    "name": "MT-tRNA-Atlas Complete-22-Gene-Mitochondrial-tRNA-Genome-Atlas All-22-Human-mt-tRNA-Genes H-strand-14-L-strand-8-NGS-Pitfall Combined-CI-CIV-CPEO-Myopathy-Standard-20-Genes MELAS-MT-TL1-MERRF-MT-TK-Hallmarks 880-Patient-Aggregate-Cohort-22x40 Universal-Drug-CIs Nuclear-DDx-Per-Gene WES-Misses-ALL-22",
+    "status": "built",
+    "endpoints": [
+      "/api/mt-trna-atlas/overview",
+      "/api/mt-trna-atlas/breakdown",
+      "/api/mt-trna-atlas/definitions"
+    ],
+    "page": "/mt-trna-atlas",
+    "seed": 831,
+    "cohort_n": 880,
+    "registered": "2026-09-03",
+    "category": "Mitochondrial DNA \u2014 mt-tRNA Genome-Wide Atlas",
+    "notes": "Complete 22-gene mt-tRNA genome atlas; H-strand 14 genes (standard NGS) + L-strand 8 genes (NGS pitfall); Combined CI+CIV CPEO/Myopathy standard pattern (20 genes); MELAS hallmark MT-TL1; MERRF hallmark MT-TK; isolated HCM MT-TI m.4300AG; SNHL-low-heteroplasmy MT-TS1; MIDM MT-TE; HCM-DISTINCTIVE MT-TT; UGA-recoding MT-TW; universal absolute CI Metformin/VPA/Propofol/Linezolid/Chloramphenicol; KSS 4977bp deletion removes MT-TR+TH+TS2+TL2; BTBGD SLC19A3 exclusion mandatory; 3 endpoints verified 200"
   }
 ]

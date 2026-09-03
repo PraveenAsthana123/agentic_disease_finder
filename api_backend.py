@@ -42528,6 +42528,36 @@ async def mttr_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-tRNA-Atlas — Complete 22-Gene Mitochondrial tRNA Genome Atlas — 880 patients (22×40) seed-831
+# Aggregates all 22 mt-tRNA genes: positions, strand, OXPHOS pattern, nuclear DDx, drug CIs
+@app.get("/api/mt-trna-atlas/overview")
+async def mt_trna_atlas_overview():
+    """MT-tRNA Atlas — All 22 human mitochondrial tRNA genes — H-strand (14) + L-strand (8) — Combined CI+CIV CPEO/Myopathy standard pattern (20 genes) + MELAS (MT-TL1) + MERRF (MT-TK) hallmarks — 880-patient aggregate cohort (22×40, seeds 799–839) — universal drug CIs + nuclear DDx per gene."""
+    try:
+        import scripts.mt_trna_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mt-trna-atlas/breakdown")
+async def mt_trna_atlas_breakdown():
+    try:
+        import scripts.mt_trna_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mt-trna-atlas/definitions")
+async def mt_trna_atlas_definitions():
+    try:
+        import scripts.mt_trna_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
