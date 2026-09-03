@@ -14433,5 +14433,25 @@
     "seed": 815,
     "omim_gene": "MT-TA *590000",
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mttn",
+    "status": "built",
+    "route": "/mttn",
+    "api": [
+      "/api/mttn/overview",
+      "/api/mttn/breakdown",
+      "/api/mttn/definitions"
+    ],
+    "script": "scripts/mttn_dashboard.py",
+    "frontend": "portal-next/app/mttn/page.jsx",
+    "description": "MT-TN Dashboard \u2014 40-patient cohort, tRNA-Asn GTT-anticodon, NINTH tRNA in mt-genome, SECOND-of-four consecutive L-strand tRNAs (MT-TA/TN/TC/TY cluster), L-strand rCRS 5657\u20135729, NARS2 nuclear DDx Perrault syndrome type 6, Combined CI+CIV Deficiency CPEO Myopathy, 3 endpoints /api/mttn/overview|breakdown|definitions verified 200, portal-next/app/mttn/page.jsx + SiteNav wired after MT-TA, expert_dashboards.json count 943->944",
+    "tabs": [
+      "Overview",
+      "Variants & Cohort",
+      "DDx & Management",
+      "Definitions"
+    ],
+    "nav_label": "\ud83e\uddec MT-TN tRNA-Asn (NINTH tRNA, L-strand rCRS 5657\u20135729)"
   }
 ]

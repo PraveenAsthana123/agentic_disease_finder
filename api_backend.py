@@ -42338,6 +42338,33 @@ async def mtta_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TN — 40-patient cohort seed-817; 3 endpoints /api/mttn/overview|breakdown|definitions
+@app.get("/api/mttn/overview")
+async def mttn_overview():
+    """MT-TN tRNA-Asn Combined CI+CIV Deficiency — CPEO / Myopathy — L-strand rCRS 5657–5729 — NINTH tRNA in mt-genome — SECOND of four consecutive L-strand tRNAs — NARS2 nuclear DDx Perrault syndrome — 40-patient cohort seed-817; 3 endpoints /api/mttn/overview|breakdown|definitions."""
+    try:
+        import scripts.mttn_dashboard as mttn_
+        return _json_safe(mttn_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttn/breakdown")
+async def mttn_breakdown():
+    try:
+        import scripts.mttn_dashboard as mttn_
+        return _json_safe(mttn_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttn/definitions")
+async def mttn_definitions():
+    try:
+        import scripts.mttn_dashboard as mttn_
+        return _json_safe(mttn_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
