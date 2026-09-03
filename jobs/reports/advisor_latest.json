@@ -1,6 +1,6 @@
 {
-  "scanned_at": "2026-08-12 07:38 MDT",
-  "count": 5,
+  "scanned_at": "2026-08-31 10:55 MDT",
+  "count": 4,
   "issues": [
     {
       "severity": "P1",
@@ -25,12 +25,6 @@
       "surface": "security",
       "issue": "No multi-user auth / RBAC (single-operator mode)",
       "guidance": "Fine for research/dev; required before multi-clinician or PHI deployment (see \u00a747.6)."
-    },
-    {
-      "severity": "P3",
-      "surface": "git",
-      "issue": "856 commit(s) unpushed",
-      "guidance": "safe_push.sh auto-pushes on shared repos; or push manually."
     }
   ]
 }

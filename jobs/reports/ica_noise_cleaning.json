@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T03:12:25-06:00",
+  "generated_at": "2026-09-03T03:07:30-06:00",
   "method": "MNE ICA: 1-45Hz band-pass + 60Hz notch + kurtosis/variance artifact rejection",
   "note": "Auto-detection (no EOG channel in CHB-MIT). Clinical use would add manual component review.",
   "per_file": [

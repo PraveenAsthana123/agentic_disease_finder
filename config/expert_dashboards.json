@@ -14183,5 +14183,28 @@
     "id": "mtnd4l",
     "status": "built",
     "name": "MT-ND4L Leigh Syndrome / MELAS-Leigh Overlap / Exercise Intolerance \u2014 SMALLEST CI mtDNA Subunit \u2014 ND4/ND4L Antiporter Hairpin Connector \u2014 98aa-3TM \u2014 NO Primary LHON (MT-ND4L-98aa-10.7kDa-3-TM-Helices-ND4-ND4L-Antiporter-Hairpin-Connector-SMALLEST-CI-mtDNA-Subunit-NO-Primary-LHON-mtDNA-H-strand-rCRS-10470-10766 / OMIM-Gene-MT-ND4L-516004 / MATERNAL-Heteroplasmic / m.10663TC-pVal65Ala-TM3-Exercise-Intolerance-Adult-30pct / m.10609TC-pLeu27Pro-TM1-Leigh-Infantile-25pct / m.10680GA-pAla70Thr-TM3-Leigh-MELAS-Overlap-20pct / m.10633AG-pThr43Ala-TM2-Moderate-Leigh-15pct / LargeDeletion-KSS-CPEO-Pearson-10pct / 40-patient-cohort-seed-771)"
+  },
+  {
+    "id": "mtatp6",
+    "name": "MT-ATP6 NARP / Maternally Inherited Leigh Syndrome Complex V F0 Proton Channel 226aa 24.8kDa 8 TM Helices H-strand",
+    "category": "mitochondrial_gene_cv",
+    "status": "built",
+    "routes": [
+      "/api/mtatp6/overview",
+      "/api/mtatp6/breakdown",
+      "/api/mtatp6/definitions"
+    ],
+    "page": "/mtatp6",
+    "seed": 775,
+    "n_patients": 40,
+    "gene": "MT-ATP6",
+    "omim_gene": "OMIM *516006",
+    "omim_disease": "NARP #551500, MILS #500017",
+    "protein": "ATP synthase F0 subunit a (226aa, 24.8kDa, 8 TM helices)",
+    "complex": "Complex V (ATP synthase)",
+    "rcrs": "8527-9207",
+    "strand": "H-strand",
+    "built_date": "2026-09-03",
+    "note": "NARP-Leigh-MILS; m.8993TG/TC heteroplasmy threshold; retinitis pigmentosa hallmark; isolated CV deficiency"
   }
 ]

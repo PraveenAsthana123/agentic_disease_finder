@@ -41871,6 +41871,33 @@ async def coa7_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ATP6 — 40-patient cohort seed-775; 3 endpoints /api/mtatp6/overview|breakdown|definitions
+@app.get("/api/mtatp6/overview")
+async def mtatp6_overview():
+    """MT-ATP6 Complex V F0 Proton Channel — NARP+MILS — 226aa-8TM — m.8993TG/TC-Heteroplasmy-Threshold — 40-patient cohort seed-775; 3 endpoints /api/mtatp6/overview|breakdown|definitions."""
+    try:
+        import scripts.mtatp6_dashboard as mtatp6_
+        return _json_safe(mtatp6_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtatp6/breakdown")
+async def mtatp6_breakdown():
+    try:
+        import scripts.mtatp6_dashboard as mtatp6_
+        return _json_safe(mtatp6_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtatp6/definitions")
+async def mtatp6_definitions():
+    try:
+        import scripts.mtatp6_dashboard as mtatp6_
+        return _json_safe(mtatp6_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
