@@ -14148,5 +14148,26 @@
     "api": "/api/mtnd1/overview|breakdown|definitions",
     "registered": "2026-09-03",
     "built_note": "Built scripts/mtnd1_dashboard.py, api_backend.py 3 routes /api/mtnd1/overview|breakdown|definitions verified 200, portal-next/app/mtnd1/page.jsx + SiteNav wired before MT-ND4, expert_dashboards.json count 922->923. Built 2026-09-03."
+  },
+  {
+    "id": "mtnd2",
+    "gene": "MT-ND2",
+    "omim_gene": "OMIM *516001",
+    "disease": "Leigh Syndrome / MELAS-Leigh Overlap / Exercise Intolerance Myopathy / KSS-CPEO",
+    "protein": "347 aa, 39.5 kDa, 13 TM helices \u2014 Proximal-Middle Antiporter Module",
+    "module": "Proximal-Middle Antiporter Module (ND2-module; rCRS H-strand 4470-5511)",
+    "inheritance": "Maternal (mtDNA heteroplasmic)",
+    "no_primary_lhon": true,
+    "seed": 763,
+    "n_patients": 40,
+    "endpoints": [
+      "/api/mtnd2/overview",
+      "/api/mtnd2/breakdown",
+      "/api/mtnd2/definitions"
+    ],
+    "portal_page": "/mtnd2",
+    "script": "scripts/mtnd2_dashboard.py",
+    "status": "built",
+    "built_date": "2026-09-03"
   }
 ]
