@@ -14423,5 +14423,15 @@
     "omim_gene": "MT-TW *590095",
     "category": "mitochondrial_trna",
     "built_date": "2026-09-03"
+  },
+  {
+    "id": "mtta",
+    "status": "built",
+    "name": "MT-TA tRNA-Ala Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance EIGHTH-tRNA-in-Mitochondrial-Genome L-strand-NGS-Pitfall FIRST-of-FOUR-Consecutive-L-strand-tRNAs AARS2-DDx-Ovario-Leukodystrophy L-strand-rCRS-5587-5655",
+    "api_prefix": "/api/mtta",
+    "frontend_path": "/mtta",
+    "seed": 815,
+    "omim_gene": "MT-TA *590000",
+    "registered": "2026-09-03"
   }
 ]

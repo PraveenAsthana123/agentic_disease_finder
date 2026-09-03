@@ -42311,6 +42311,32 @@ async def mttw_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# MT-TA — 40-patient cohort seed-815; 3 endpoints /api/mtta/overview|breakdown|definitions
+@app.get("/api/mtta/overview")
+async def mtta_overview():
+    """MT-TA tRNA-Ala Combined CI+CIV Deficiency — CPEO / Myopathy — L-strand rCRS 5587–5655 — EIGHTH tRNA in mt-genome — L-strand NGS pitfall FIRST of four consecutive L-strand tRNAs — AARS2 nuclear DDx ovario-leukodystrophy — 40-patient cohort seed-815; 3 endpoints /api/mtta/overview|breakdown|definitions."""
+    try:
+        import scripts.mtta_dashboard as mtta_
+        return _json_safe(mtta_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtta/breakdown")
+async def mtta_breakdown():
+    try:
+        import scripts.mtta_dashboard as mtta_
+        return _json_safe(mtta_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtta/definitions")
+async def mtta_definitions():
+    try:
+        import scripts.mtta_dashboard as mtta_
+        return _json_safe(mtta_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
