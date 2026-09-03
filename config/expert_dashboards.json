@@ -10440,5 +10440,26 @@
     "note": "Total: 670 dashboards",
     "built_note": "Built 2026-09-02. UQCRQ Isolated CIII Deficiency \u2014 QCR8 Structural Subunit / Qo-site periphery \u2014 40-patient cohort seed-731; 3 endpoints /api/uqcrq/overview|breakdown|definitions verified 200; SiteNav wired after UQCRC1 before expert-dashboards-catalog.",
     "registered": "2026-09-02"
+  },
+  {
+    "id": "uqcrb",
+    "name": "UQCRB CIII-Qi-Site-Peripheral-Structural-Subunit Isolated-Complex-III-Deficiency QCR7-QP-C NO-TM-Helix-Matrix-Face Hypoglycaemia-DISTINGUISHING Hepatopathy AR-Biallelic 8q22.1 (UQCRB-109aa-12.1kDa-QCR7-NO-TM-Helix-Peripheral-Matrix-Face-UQCRC1-UQCRC2-Contact-8q22.1 / OMIM-Gene-191330 / AR-Biallelic-Both-Sexes-Equal / pLys74Asnfs-c221_222delAA-Frameshift-Exon5-Haut2003-Severe-92pct / pGly43Ser-c127GA-UQCRC2-Contact-Loop-Severe-87pct / pArg85Trp-c253CT-C-Terminal-UQCRC1-Contact-Severe-83pct / Qi-Site-Peripheral-Structural-Subunit-NO-TM-Helix-Matrix-Face / BN-PAGE-CIII-5-15pct-More-Severe-Than-UQCRQ / HYPOGLYCAEMIA-65pct-DISTINGUISHING / HEPATOPATHY-55pct / Haut-2003-HumGenet-First-UQCRB-QP-C / 40-patient-cohort-seed-733 / 8q22.1 / OMIM-Gene-UQCRB-191330)",
+    "status": "built",
+    "category": "metabolic_disease",
+    "disease_gene": "UQCRB",
+    "omim_gene": "191330",
+    "chromosome": "8q22.1",
+    "inheritance": "AR",
+    "api_prefix": "/api/uqcrb",
+    "frontend": "portal-next/app/uqcrb/page.jsx",
+    "nav_wired": true,
+    "cohort_seed": 733,
+    "cohort_size": 40,
+    "built_date": "2026-09-02",
+    "endpoints": [
+      "/api/uqcrb/overview",
+      "/api/uqcrb/breakdown",
+      "/api/uqcrb/definitions"
+    ]
   }
 ]

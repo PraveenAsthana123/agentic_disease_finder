@@ -41462,6 +41462,34 @@ async def mtfmt_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/uqcrb/overview")
+async def uqcrb_overview():
+    """UQCRB Isolated Complex III Deficiency — QCR7/QP-C Qi-site Peripheral Structural Subunit (NO TM helix, matrix face) — 40-patient cohort seed-733; 3 endpoints /api/uqcrb/overview|breakdown|definitions."""
+    try:
+        import scripts.uqcrb_dashboard as uqcrb_
+        return _json_safe(uqcrb_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrb/breakdown")
+async def uqcrb_breakdown():
+    try:
+        import scripts.uqcrb_dashboard as uqcrb_
+        return _json_safe(uqcrb_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/uqcrb/definitions")
+async def uqcrb_definitions():
+    try:
+        import scripts.uqcrb_dashboard as uqcrb_
+        return _json_safe(uqcrb_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
