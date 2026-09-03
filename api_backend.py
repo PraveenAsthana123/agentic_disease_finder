@@ -41668,6 +41668,35 @@ async def mtco1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-CO2: Cytochrome c Oxidase Subunit II — CuA Binuclear Copper Center — 227aa 26kDa 2-TM
+# CuA=Primary-electron-acceptor-from-cytochrome-c; SMALLEST-mtDNA-CIV-subunit
+# 40-patient cohort seed-747; 3 endpoints /api/mtco2/overview|breakdown|definitions
+@app.get("/api/mtco2/overview")
+async def mtco2_overview():
+    """MT-CO2 CuA Binuclear Copper Center — CIV-Leigh / Multisystem CIV Neuropathy / MELAS-CIV / KSS-CPEO — 227aa 2-TM CuA→Heme-a→Heme-a3-CuB→O2 — m.7896GA stop + m.8249GA CuA-loop + m.8156TC TM2-IMS — 40-patient cohort seed-747; 3 endpoints /api/mtco2/overview|breakdown|definitions."""
+    try:
+        import scripts.mtco2_dashboard as mtco2_
+        return _json_safe(mtco2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtco2/breakdown")
+async def mtco2_breakdown():
+    try:
+        import scripts.mtco2_dashboard as mtco2_
+        return _json_safe(mtco2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtco2/definitions")
+async def mtco2_definitions():
+    try:
+        import scripts.mtco2_dashboard as mtco2_
+        return _json_safe(mtco2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

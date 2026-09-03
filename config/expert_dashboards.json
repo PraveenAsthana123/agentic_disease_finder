@@ -14085,5 +14085,14 @@
     "chromosome": "mtDNA rCRS m.5904-7445 H-strand",
     "cohort_seed": 743,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtco2",
+    "name": "MT-CO2 CuA Binuclear Copper Center CIV-Leigh Multisystem-CIV-Neuropathy MELAS-CIV-Overlap 227aa-26kDa-2-TM-Helices SMALLEST-mtDNA-CIV-Subunit Primary-Electron-Acceptor-from-CytC Maternal-Inheritance (MT-CO2-227aa-26kDa-2-TM-Helices-CuA-Binuclear-Copper-Center-SMALLEST-mtDNA-CIV-Subunit-mtDNA-H-strand-rCRS-7586-8269 / OMIM-Gene-MT-CO2-516040 / MATERNAL-Heteroplasmic-H-strand / m.7896GA-pTrp58Stop-Premature-Stop-CuA-Never-Formed-Classic-Leigh-Infantile-35pct / m.8249GA-pArg205Trp-CuA-Coordination-Loop-Multisystem-CIV-Neuropathy-25pct / m.8156TC-pLeu128Pro-TM2-IMS-Junction-MELAS-CIV-Overlap-20pct / m.7591GA-pVal4Ile-TM1-Proximal-Mild-Myopathy-8pct / Large-Deletion-KSS-CPEO-Pearson-12pct / SCO2-22q13.33-100pct-HCM-KEY-DDx-MT-CO2-NO-HCM / SCO1-17p13.2-Hepatopathy-KEY-DDx-MT-CO2-NO-Hepatopathy / COX20-FAM36A-MT-CO2-Specific-Chaperone / ISOLATED-CIV-CI-CII-CIII-NORMAL / Propofol-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / VPA-ABSOLUTE-CI / Linezolid-ABSOLUTE-CI / KD-CONTRAINDICATED / GIR-6-8 / 40-patient-cohort-seed-747)",
+    "status": "built",
+    "api": "/api/mtco2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 747,
+    "registered": "2026-09-03"
   }
 ]
