@@ -10461,5 +10461,21 @@
       "/api/uqcrb/breakdown",
       "/api/uqcrb/definitions"
     ]
+  },
+  {
+    "id": "longitudinal-timeline",
+    "name": "Longitudinal Patient Timeline Dashboard \u2014 842 events across 49 patients 2024-01 to 2026-08, 5 event streams (Seizure 25/Appointment 120/Telehealth 109/Assessment 473/Hospitalization 115), 32 months of data, avg 17.2 events/patient, monthly trend, per-patient breakdown, 4-tab frontend (Overview/Monthly Trend/Per Patient/Definitions)",
+    "status": "built",
+    "category": "clinical_operations",
+    "api_prefix": "/api/longitudinal-timeline",
+    "endpoints": [
+      "/api/longitudinal-timeline/overview",
+      "/api/longitudinal-timeline/breakdown",
+      "/api/longitudinal-timeline/definitions"
+    ],
+    "frontend": "portal-next/app/longitudinal-timeline/page.jsx",
+    "script": "scripts/longitudinal_timeline_dashboard.py",
+    "built_note": "Registered 2026-09-02: 3 endpoints /api/longitudinal-timeline/overview|breakdown|definitions verified 200, portal-next/app/longitudinal-timeline/page.jsx + SiteNav wired next to Seizure Diary, expert_dashboards.json count 671->672",
+    "registered": "2026-09-02"
   }
 ]
