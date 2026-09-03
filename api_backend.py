@@ -41350,6 +41350,34 @@ async def cox4i1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pet100/overview")
+async def pet100_overview():
+    """PET100 COXPD13 — 40-patient cohort seed-645; 3 endpoints /api/pet100/overview|breakdown|definitions."""
+    try:
+        import scripts.pet100_dashboard as pet100_
+        return _json_safe(pet100_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pet100/breakdown")
+async def pet100_breakdown():
+    try:
+        import scripts.pet100_dashboard as pet100_
+        return _json_safe(pet100_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pet100/definitions")
+async def pet100_definitions():
+    try:
+        import scripts.pet100_dashboard as pet100_
+        return _json_safe(pet100_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
