@@ -14332,5 +14332,22 @@
     "n_patients": 40,
     "built_date": "2026-09-03",
     "notes": "MT-TT tRNA-Thr; OMIM *590094; H-strand rCRS 15888-15953; Combined CI+CIV Deficiency; HCM cardiomyopathy DISTINCTIVE; AMIODARONE ABSOLUTE CI; TARS2 nuclear DDx; 40-patient cohort seed-799; 3 endpoints verified 200"
+  },
+  {
+    "id": "mttp",
+    "status": "built",
+    "title": "MT-TP tRNA-Pro Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance FINAL-tRNA-in-Mitochondrial-Genome m.15990CT-Most-Common-32pct-Variable-Loop L-strand-rCRS-15956-16023-L-strand-NGS-Pitfall D-loop-Adjacent Maternal-Inheritance",
+    "route": "/mttp",
+    "api_base": "/api/mttp",
+    "endpoints": [
+      "/api/mttp/overview",
+      "/api/mttp/breakdown",
+      "/api/mttp/definitions"
+    ],
+    "seed": 801,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "notes": "MT-TP tRNA-Pro; OMIM *590016; L-strand rCRS 15956-16023; Combined CI+CIV Deficiency; FINAL tRNA in mt-genome; L-strand NGS pitfall MANDATORY QC; PARS2 nuclear DDx; 40-patient cohort seed-801; 3 endpoints verified 200",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
   }
 ]

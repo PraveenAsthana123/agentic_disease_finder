@@ -42113,6 +42113,33 @@ async def mttt_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TP — 40-patient cohort seed-801; 3 endpoints /api/mttp/overview|breakdown|definitions
+@app.get("/api/mttp/overview")
+async def mttp_overview():
+    """MT-TP tRNA-Pro Combined CI+CIV Deficiency — CPEO / Myopathy / Exercise Intolerance — m.15990CT most common — L-strand rCRS 15956-16023 — FINAL tRNA in mitochondrial genome — L-strand NGS pitfall — 40-patient cohort seed-801; 3 endpoints /api/mttp/overview|breakdown|definitions."""
+    try:
+        import scripts.mttp_dashboard as mttp_
+        return _json_safe(mttp_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttp/breakdown")
+async def mttp_breakdown():
+    try:
+        import scripts.mttp_dashboard as mttp_
+        return _json_safe(mttp_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttp/definitions")
+async def mttp_definitions():
+    try:
+        import scripts.mttp_dashboard as mttp_
+        return _json_safe(mttp_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
