@@ -14206,5 +14206,28 @@
     "strand": "H-strand",
     "built_date": "2026-09-03",
     "note": "NARP-Leigh-MILS; m.8993TG/TC heteroplasmy threshold; retinitis pigmentosa hallmark; isolated CV deficiency"
+  },
+  {
+    "id": "mtatp8",
+    "name": "MT-ATP8 HCM / Leigh Syndrome / Encephalomyopathy Complex V F0 Peripheral Stalk Anchor 68aa 7.6kDa 2 TM Helices H-strand",
+    "category": "mitochondrial_gene_cv",
+    "status": "built",
+    "routes": [
+      "/api/mtatp8/overview",
+      "/api/mtatp8/breakdown",
+      "/api/mtatp8/definitions"
+    ],
+    "page": "/mtatp8",
+    "seed": 779,
+    "n_patients": 40,
+    "gene": "MT-ATP8",
+    "omim_gene": "OMIM *516070",
+    "omim_disease": "HCM / Leigh Syndrome / Encephalomyopathy",
+    "protein": "ATP synthase F0 peripheral stalk anchor / subunit 8 (68aa, 7.6kDa, 2 TM helices)",
+    "complex": "Complex V (ATP synthase)",
+    "rcrs": "8366-8572",
+    "strand": "H-strand",
+    "built_date": "2026-09-03",
+    "note": "HCM dominant; overlap mutation m.8528T>C (ATP8+ATP6 dual disruption \u2192 combined CI+CV); NO retinitis pigmentosa (DDx from NARP/ATP6); annual echo+Holter mandatory"
   }
 ]

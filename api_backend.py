@@ -41898,6 +41898,33 @@ async def mtatp6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ATP8 — 40-patient cohort seed-779; 3 endpoints /api/mtatp8/overview|breakdown|definitions
+@app.get("/api/mtatp8/overview")
+async def mtatp8_overview():
+    """MT-ATP8 Complex V F0 Peripheral Stalk Anchor — HCM+Leigh+Encephalomyopathy — 68aa-2TM — Overlap-ATP6-rCRS-8527-8572 — 40-patient cohort seed-779; 3 endpoints /api/mtatp8/overview|breakdown|definitions."""
+    try:
+        import scripts.mtatp8_dashboard as mtatp8_
+        return _json_safe(mtatp8_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtatp8/breakdown")
+async def mtatp8_breakdown():
+    try:
+        import scripts.mtatp8_dashboard as mtatp8_
+        return _json_safe(mtatp8_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtatp8/definitions")
+async def mtatp8_definitions():
+    try:
+        import scripts.mtatp8_dashboard as mtatp8_
+        return _json_safe(mtatp8_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
