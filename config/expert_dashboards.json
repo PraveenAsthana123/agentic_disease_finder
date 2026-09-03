@@ -14130,5 +14130,23 @@
       "/api/coa7/definitions"
     ],
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtnd1",
+    "name": "MT-ND1 LHON #2 Primary Worldwide Leigh Syndrome MOST CONSERVED CI Subunit Proximal Membrane Arm ND1-Module 318aa-36kDa-8-TM-Helices H-strand Maternal Inheritance (MT-ND1-318aa-36kDa-8-TM-Helices-Proximal-Membrane-Arm-ND1-Module-MOST-CONSERVED-CI-Subunit-mtDNA-H-strand-rCRS-3307-4262 / OMIM-Gene-MT-ND1-516000 / MATERNAL-Heteroplasmic / m.3460GA-pAla52Thr-TM1-LHON-PRIMARY-#2-15pct-Worldwide-22pct-Recovery-35pct / m.3697GA-pSer110Asn-TM4-Leigh-MELAS-20pct / m.3890GA-pArg195Gln-TM7-Leigh-Severe-15pct / m.4171CA-pLeu289Met-TM8-Leigh-Exercise-10pct / m.3376GA-pArg5Gln-Moderate-CI-8pct / LargeDeletion-KSS-CPEO-12pct / 40-patient-cohort-seed-759)",
+    "status": "built",
+    "route": "/mtnd1",
+    "api_prefix": "/api/mtnd1",
+    "seed": 759,
+    "omim_gene": "516000",
+    "omim_disease": "535000",
+    "locus": "mtDNA H-strand rCRS m.3307-4262",
+    "disease": "LHON #2 Primary Worldwide / Isolated CI Deficiency / Leigh Syndrome / Leigh-MELAS Overlap",
+    "frontend": true,
+    "nav_wired": true,
+    "cohort_n": 40,
+    "api": "/api/mtnd1/overview|breakdown|definitions",
+    "registered": "2026-09-03",
+    "built_note": "Built scripts/mtnd1_dashboard.py, api_backend.py 3 routes /api/mtnd1/overview|breakdown|definitions verified 200, portal-next/app/mtnd1/page.jsx + SiteNav wired before MT-ND4, expert_dashboards.json count 922->923. Built 2026-09-03."
   }
 ]

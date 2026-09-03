@@ -41635,6 +41635,34 @@ async def mtnd6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ND1 — 40-patient cohort seed-759; 3 endpoints /api/mtnd1/overview|breakdown|definitions
+# MT-ND1 LHON-PRIMARY-#2-Worldwide-m.3460GA-15pct-Intermediate-22pct-Recovery Leigh-Syndrome-High-Heteroplasmy Proximal-Membrane-Arm-ND1-Module MOST-CONSERVED-CI-Subunit 318aa-8-TM-Helices H-strand-rCRS-3307-4262 Maternal-Inheritance
+@app.get("/api/mtnd1/overview")
+async def mtnd1_overview():
+    """MT-ND1 LHON #2 Worldwide / Leigh Syndrome — Proximal Membrane Arm ND1-Module — 318aa-8TM — 40-patient cohort seed-759; 3 endpoints /api/mtnd1/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd1_dashboard as mtnd1_
+        return _json_safe(mtnd1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtnd1/breakdown")
+async def mtnd1_breakdown():
+    try:
+        import scripts.mtnd1_dashboard as mtnd1_
+        return _json_safe(mtnd1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtnd1/definitions")
+async def mtnd1_definitions():
+    try:
+        import scripts.mtnd1_dashboard as mtnd1_
+        return _json_safe(mtnd1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # MT-CO1: Cytochrome c Oxidase Subunit I — CIV Assembly Nucleus — 514aa 57kDa 12-TM
 # H-strand mtDNA m.5904-7445; Heme a + Heme a3-CuB (O2-reduction site); Largest mtDNA CIV subunit
 # Bilateral Striatal Necrosis (m.6930G>A BSN) / CIV-Leigh / LHON-plus / MELAS-Leigh / KSS-CPEO
