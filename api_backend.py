@@ -41719,6 +41719,38 @@ async def mtnd3_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ND4L — 40-patient cohort seed-771; 3 endpoints /api/mtnd4l/overview|breakdown|definitions
+# SMALLEST of all 7 mtDNA CI subunits (98aa, 10.7kDa, 3-TM); ND4/ND4L Antiporter Hairpin Connector
+# H-strand rCRS 10470-10766; NO primary LHON; Leigh/MELAS-Overlap/Exercise-Intolerance/KSS-CPEO
+
+@app.get("/api/mtnd4l/overview")
+async def mtnd4l_overview():
+    """MT-ND4L SMALLEST CI mtDNA Subunit — ND4/ND4L Antiporter Hairpin Connector — Leigh/MELAS-Overlap/Exercise-Intolerance — 98aa-3TM — NO primary LHON — 40-patient cohort seed-771; 3 endpoints /api/mtnd4l/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd4l_dashboard as mtnd4l_
+        return _json_safe(mtnd4l_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd4l/breakdown")
+async def mtnd4l_breakdown():
+    try:
+        import scripts.mtnd4l_dashboard as mtnd4l_
+        return _json_safe(mtnd4l_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd4l/definitions")
+async def mtnd4l_definitions():
+    try:
+        import scripts.mtnd4l_dashboard as mtnd4l_
+        return _json_safe(mtnd4l_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # MT-CO1: Cytochrome c Oxidase Subunit I — CIV Assembly Nucleus — 514aa 57kDa 12-TM
 # H-strand mtDNA m.5904-7445; Heme a + Heme a3-CuB (O2-reduction site); Largest mtDNA CIV subunit
 # Bilateral Striatal Necrosis (m.6930G>A BSN) / CIV-Leigh / LHON-plus / MELAS-Leigh / KSS-CPEO
