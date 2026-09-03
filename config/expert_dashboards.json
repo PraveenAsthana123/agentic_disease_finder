@@ -14287,5 +14287,23 @@
     "n_patients": 40,
     "built_date": "2026-09-03",
     "note": "MT-TS2-tRNA-Ser-AGY-59nt-GCU-Anticodon-SHORTEST-mt-tRNA-CPEO-Myopathy-SNHL-Combined-CI-CIV-Deficiency / OMIM-Gene-MT-TS2-590085 / MATERNAL-Heteroplasmic / m.12258CA-Variable-Loop-38pct / m.12236TC-Anticodon-Stem-25pct / m.12246GA-Anticodon-Loop-20pct / m.12270TC-Acceptor-Stem-12pct / LargeDeletion-5pct / 40-patient-cohort-seed-793 / rCRS-H-strand-12207-12265"
+  },
+  {
+    "id": "mttl2",
+    "name": "MT-TL2 tRNA-Leu(CUN) Combined-CI-CIV-Deficiency CPEO-Myopathy-Optic-Atrophy m.12311TC-Most-Common m.12308AG-CPEO-Optic-Atrophy-Distinctive H-strand-rCRS-12266-12336 Maternal-Inheritance",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA",
+    "status": "built",
+    "route": "/mttl2",
+    "api_prefix": "/api/mttl2",
+    "omim_gene": "590055",
+    "seed": 795,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "rCRS_position": "H-strand 12266-12336",
+    "anticodon": "UAA",
+    "codons": "CUN (CUA/CUC/CUG/CUU)",
+    "primary_disease": "Combined CI+CIV Deficiency - CPEO / Myopathy / Optic Atrophy",
+    "key_mutation": "m.12311T>C",
+    "distinctive_mutation": "m.12308A>G CPEO+Optic Atrophy"
   }
 ]

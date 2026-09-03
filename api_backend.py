@@ -42032,6 +42032,33 @@ async def mtts2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TL2 — 40-patient cohort seed-795; 3 endpoints /api/mttl2/overview|breakdown|definitions
+@app.get("/api/mttl2/overview")
+async def mttl2_overview():
+    """MT-TL2 tRNA-Leu(CUN) Combined CI+CIV Deficiency — CPEO / Myopathy / Optic Atrophy — m.12311TC most common — m.12308AG CPEO+Optic Atrophy distinctive — H-strand rCRS 12266-12336 — 40-patient cohort seed-795; 3 endpoints /api/mttl2/overview|breakdown|definitions."""
+    try:
+        import scripts.mttl2_dashboard as mttl2_
+        return _json_safe(mttl2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttl2/breakdown")
+async def mttl2_breakdown():
+    try:
+        import scripts.mttl2_dashboard as mttl2_
+        return _json_safe(mttl2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttl2/definitions")
+async def mttl2_definitions():
+    try:
+        import scripts.mttl2_dashboard as mttl2_
+        return _json_safe(mttl2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
