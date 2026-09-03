@@ -41951,6 +41951,32 @@ async def mttl1_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# MT-TK — 40-patient cohort seed-787; 3 endpoints /api/mttk/overview|breakdown|definitions
+@app.get("/api/mttk/overview")
+async def mttk_overview():
+    """MT-TK tRNA-Lys MERRF Syndrome — m.8344A>G MOST COMMON MERRF mutation — Pan-OXPHOS (CI+CIV) — Myoclonic Epilepsy + RRF + Cerebellar Ataxia + MSL — NO SLE — 40-patient cohort seed-787; 3 endpoints /api/mttk/overview|breakdown|definitions."""
+    try:
+        import scripts.mttk_dashboard as mttk_
+        return _json_safe(mttk_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttk/breakdown")
+async def mttk_breakdown():
+    try:
+        import scripts.mttk_dashboard as mttk_
+        return _json_safe(mttk_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mttk/definitions")
+async def mttk_definitions():
+    try:
+        import scripts.mttk_dashboard as mttk_
+        return _json_safe(mttk_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

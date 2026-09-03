@@ -14241,5 +14241,14 @@
     "api_prefix": "/api/mttl1",
     "seed": 783,
     "created_at": "2026-09-03"
+  },
+  {
+    "id": "mttk",
+    "name": "MT-TK MERRF-Syndrome-Myoclonic-Epilepsy-Ragged-Red-Fibres MSL-Multiple-Symmetrical-Lipomatosis-Madelung tRNA-Lys-69nt-RNA-Gene Pan-OXPHOS-CI-CIV-Reduced-CII-NORMAL m.8344AG-MOST-COMMON-MERRF-Mutation-80pct-Worldwide NO-Stroke-Like-Episodes H-strand-rCRS-8295-8364 Maternal-Inheritance (MT-TK-tRNA-Lys-69nt-RNA-Gene-Pan-OXPHOS-CI-CIV-MERRF-MSL-mtDNA-H-strand-rCRS-8295-8364 / OMIM-Gene-MT-TK-590060 / MATERNAL-Heteroplasmic-MERRF-High-Exercise-Low / m.8344AG-TPC-Loop-MERRF-80pct-Worldwide / m.8356TC-Acceptor-Stem-MERRF-10pct / m.8363GA-T-Loop-MERRF-Like-5pct / m.8296AG-Anticodon-Stem-MIDD-Like-3pct / LargeDeletion-TK-KSS-2pct / VPA-ABSOLUTE-CI / Metformin-ABSOLUTE-CI / LEV-Preferred-AED / Shoffner-1990-Cell-m.8344AG-First-MERRF / 40-patient-cohort-seed-787 / mtDNA-H-strand-rCRS-8295-8364 / OMIM-Gene-MT-TK-590060)",
+    "status": "built",
+    "api": "/api/mttk/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 787,
+    "registered": "2026-09-03"
   }
 ]
