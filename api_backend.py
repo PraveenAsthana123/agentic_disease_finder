@@ -42418,6 +42418,32 @@ async def mtty_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# MT-TS1 — 40-patient cohort seed-823; 3 endpoints /api/mtts1/overview|breakdown|definitions
+@app.get("/api/mtts1/overview")
+async def mtts1_overview():
+    """MT-TS1 tRNA-Ser(UCN) SNHL-Dominant Combined CI+CIV Deficiency — L-strand ISOLATED rCRS 7445–7516 — TWELFTH tRNA in mt-genome — DUAL-GENE BOUNDARY m.7445A>G (MT-CO1+MT-TS1) — SARS2 nuclear DDx HUPRA syndrome — 40-patient cohort seed-823; 3 endpoints /api/mtts1/overview|breakdown|definitions."""
+    try:
+        import scripts.mtts1_dashboard as mtts1_
+        return _json_safe(mtts1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtts1/breakdown")
+async def mtts1_breakdown():
+    try:
+        import scripts.mtts1_dashboard as mtts1_
+        return _json_safe(mtts1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtts1/definitions")
+async def mtts1_definitions():
+    try:
+        import scripts.mtts1_dashboard as mtts1_
+        return _json_safe(mtts1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

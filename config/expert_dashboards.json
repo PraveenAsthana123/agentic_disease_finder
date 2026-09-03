@@ -14479,5 +14479,29 @@
       "/api/mtty/definitions"
     ],
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtts1",
+    "name": "MT-TS1 tRNA-Ser(UCN) SNHL-Dominant Combined-CI-CIV-Deficiency CPEO-Myopathy TWELFTH-tRNA L-strand-ISOLATED-NGS-Pitfall m.7445AG-DUAL-GENE-MT-CO1-MT-TS1 SARS2-DDx-HUPRA",
+    "status": "built",
+    "route": "/mtts1",
+    "api_prefix": "/api/mtts1",
+    "script": "scripts/mtts1_dashboard.py",
+    "frontend": "portal-next/app/mtts1/page.jsx",
+    "endpoints": [
+      "/api/mtts1/overview",
+      "/api/mtts1/breakdown",
+      "/api/mtts1/definitions"
+    ],
+    "omim": "*590080",
+    "gene": "MT-TS1",
+    "locus": "mtDNA L-strand rCRS 7445-7516",
+    "inheritance": "Maternal (heteroplasmic)",
+    "phenotype": "SNHL-Dominant (non-syndromic at low heteroplasmy) / Combined CI+CIV Deficiency / CPEO / Myopathy",
+    "key_feature": "TWELFTH mt-tRNA; L-strand ISOLATED NGS pitfall (separate window from TA/TN/TC/TY cluster); m.7445A>G dual-gene MT-CO1+MT-TS1 boundary; SNHL at low heteroplasmy; SARS2 DDx HUPRA; tau-m5U34 taurine modification",
+    "cohort_n": 40,
+    "seed": 823,
+    "registered": "2026-09-03",
+    "built_note": "MT-TS1 tRNA-Ser(UCN) 72nt L-strand rCRS 7445-7516 TWELFTH-tRNA SNHL-Dominant Combined-CI-CIV-Deficiency (expert_dashboards.json count 946->947: MT-TS1 dashboard built \u2014 backend 3 endpoints /api/mtts1/overview|breakdown|definitions verified 200 / frontend portal-next/app/mtts1/page.jsx / SiteNav wired after MT-TY. Built 2026-09-03)"
   }
 ]
