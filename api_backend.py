@@ -41697,6 +41697,36 @@ async def mtco2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── MT-CO3 ──────────────────────────────────────────────────────────────────
+# MT-CO3 Proton Exit Pathway Structural Scaffold CIV-Leigh Exercise-Intolerance Myopathy
+# 261aa-30kDa-7-TM-Helices-NO-Metal-Centres-Wraps-MT-CO1-Back-Face-K-channel-D-channel
+# 40-patient cohort seed-751; 3 endpoints /api/mtco3/overview|breakdown|definitions
+@app.get("/api/mtco3/overview")
+async def mtco3_overview():
+    """MT-CO3 Proton Exit Pathway — Exercise-Intolerance Myopathy / CIV-Leigh / MELAS-CIV Overlap — 261aa 7-TM NO-Metal-Centres Structural-Scaffold — m.9438GA Gly78Asp Adult-Myopathy + m.9537InsC Frameshift-Leigh + m.9957TC MELAS-CIV — 40-patient cohort seed-751; 3 endpoints /api/mtco3/overview|breakdown|definitions."""
+    try:
+        import scripts.mtco3_dashboard as mtco3_
+        return _json_safe(mtco3_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtco3/breakdown")
+async def mtco3_breakdown():
+    try:
+        import scripts.mtco3_dashboard as mtco3_
+        return _json_safe(mtco3_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtco3/definitions")
+async def mtco3_definitions():
+    try:
+        import scripts.mtco3_dashboard as mtco3_
+        return _json_safe(mtco3_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

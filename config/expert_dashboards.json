@@ -14094,5 +14094,23 @@
     "cohort_n": 40,
     "seed": 747,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtco3",
+    "name": "MT-CO3 Proton Exit Pathway Structural Scaffold CIV-Leigh Exercise-Intolerance Myopathy MELAS-CIV Overlap (MT-CO3-261aa-30kDa-7-TM-Helices-Proton-Exit-Pathway-NO-Metal-Centres-Wraps-MT-CO1-Back-Face-mtDNA-H-strand-rCRS-9207-9990 / OMIM-Gene-MT-CO3-516050 / MATERNAL-Heteroplasmic / m.9438GA-pGly78Asp-TM4-Exercise-Intolerance-Adult-Myopathy-35pct / m.9537InsC-Frameshift-CIV-Leigh-Infantile-25pct / m.9957TC-pLeu246Pro-TM7-IMS-MELAS-CIV-Overlap-18pct / Large-Deletion-KSS-CPEO-Pearson-12pct / m.9804GA-pAla184Thr-Encephalomyopathy-10pct / NO-Metal-Centres-Unlike-MT-CO1-CO2 / ISOLATED-CIV-Point-Mutations / COMBINED-CI-CIV-Large-Deletion / NO-HCM-KEY-DDx-SCO2-100pct / NO-HEPATOPATHY-KEY-DDx-SCO1 / 40-patient-cohort-seed-751 / mtDNA-H-strand-rCRS-9207-9990 / OMIM-Gene-MT-CO3-516050)",
+    "status": "built",
+    "route": "/mtco3",
+    "api_prefix": "/api/mtco3",
+    "seed": 751,
+    "omim_gene": "516050",
+    "omim_disease": "256000",
+    "locus": "mtDNA H-strand rCRS m.9207-9990",
+    "disease": "Exercise-Intolerance Myopathy / CIV-Leigh / MELAS-CIV Overlap / Encephalomyopathy",
+    "frontend": true,
+    "nav_wired": true,
+    "cohort_n": 40,
+    "api": "/api/mtco3/overview|breakdown|definitions",
+    "registered": "2026-09-03",
+    "built_note": "Built scripts/mtco3_dashboard.py, api_backend.py 3 routes /api/mtco3/overview|breakdown|definitions verified 200, portal-next/app/mtco3/page.jsx + SiteNav wired after MT-CO2 before expert-dashboards-catalog, expert_dashboards.json count 920->921. Built 2026-09-03."
   }
 ]
