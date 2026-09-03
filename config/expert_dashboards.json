@@ -10477,5 +10477,14 @@
     "script": "scripts/longitudinal_timeline_dashboard.py",
     "built_note": "Registered 2026-09-02: 3 endpoints /api/longitudinal-timeline/overview|breakdown|definitions verified 200, portal-next/app/longitudinal-timeline/page.jsx + SiteNav wired next to Seizure Diary, expert_dashboards.json count 671->672",
     "registered": "2026-09-02"
+  },
+  {
+    "id": "mtcyb",
+    "name": "MT-CYB Isolated Complex III Deficiency \u2014 Mitochondrially Encoded Cytochrome b ONLY-mtDNA-Encoded-CIII-Subunit Catalytic-Core Qo-Site heme-bH Qi-Site heme-bL 8-TM-Helices Exercise-Intolerance-DISTINGUISHING Myoglobinuria-PATHOGNOMONIC Leigh-Syndrome Maternal-Inheritance Heteroplasmy",
+    "status": "built",
+    "api": "/api/mtcyb/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 735,
+    "registered": "2026-09-02"
   }
 ]

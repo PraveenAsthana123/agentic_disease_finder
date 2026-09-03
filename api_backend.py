@@ -41490,6 +41490,34 @@ async def uqcrb_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mtcyb/overview")
+async def mtcyb_overview():
+    """MT-CYB Isolated Complex III Deficiency — Mitochondrially Encoded Cytochrome b — ONLY mtDNA-encoded CIII subunit — Exercise Intolerance/Myopathy to Leigh Syndrome — Maternal Inheritance — 40-patient cohort seed-735; 3 endpoints /api/mtcyb/overview|breakdown|definitions."""
+    try:
+        import scripts.mtcyb_dashboard as mtcyb_
+        return _json_safe(mtcyb_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtcyb/breakdown")
+async def mtcyb_breakdown():
+    try:
+        import scripts.mtcyb_dashboard as mtcyb_
+        return _json_safe(mtcyb_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtcyb/definitions")
+async def mtcyb_definitions():
+    try:
+        import scripts.mtcyb_dashboard as mtcyb_
+        return _json_safe(mtcyb_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
