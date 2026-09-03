@@ -14401,5 +14401,16 @@
     "status": "built",
     "seed": 809,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mttm",
+    "name": "MT-TM tRNA-Met Combined-CI-CIV-Deficiency CPEO-Myopathy DUAL-FUNCTION-Initiator-AND-Elongator H-strand-rCRS-4402-4469 SIXTH-tRNA MARS2-DDx-ARSAL",
+    "status": "built",
+    "api": "/api/mttm/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 811,
+    "omim_gene": "MT-TM *590065",
+    "category": "mitochondrial_trna",
+    "built_date": "2026-09-03"
   }
 ]
