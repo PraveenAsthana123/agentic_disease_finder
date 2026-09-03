@@ -42614,6 +42614,31 @@ async def mtrnr2_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mt-genome-atlas/overview")
+async def mt_genome_atlas_overview():
+    try:
+        import scripts.mt_genome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mt-genome-atlas/breakdown")
+async def mt_genome_atlas_breakdown():
+    try:
+        import scripts.mt_genome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mt-genome-atlas/definitions")
+async def mt_genome_atlas_definitions():
+    try:
+        import scripts.mt_genome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

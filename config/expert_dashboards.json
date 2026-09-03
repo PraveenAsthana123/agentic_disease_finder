@@ -14587,5 +14587,21 @@
     "portal_path": "/mtrnr2",
     "omim_gene": "MT-RNR2-561010",
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mt-genome-atlas",
+    "title": "MT-Genome-Atlas Complete-37-Gene-Mitochondrial-Genome-Atlas 13-Protein-Coding-7xCI-1xCIII-3xCIV-2xCV 22-tRNA 2-rRNA CII-ZERO-mtDNA-Always-Normal 1480-Patient-Aggregate-37x40 Universal-Drug-CIs WES-Misses-ALL-37 Common-4977bp-KSS-Deletion LHON-MT-ND4-m11778GA MELAS-MT-TL1-m3243AG MERRF-MT-TK-m8344AG AISNHL-MT-RNR1-m1555AG NARP-MT-ATP6-m8993TG Humanin-MT-RNR2",
+    "category": "Mitochondrial DNA \u2014 mt-Genome Complete Atlas",
+    "status": "built",
+    "route": "/mt-genome-atlas",
+    "api_endpoints": [
+      "/api/mt-genome-atlas/overview",
+      "/api/mt-genome-atlas/breakdown",
+      "/api/mt-genome-atlas/definitions"
+    ],
+    "script": "scripts/mt_genome_atlas_dashboard.py",
+    "cohort": "1480 patients (37x40, seeds 845-917)",
+    "registered": "2026-09-03",
+    "note": "Capstone atlas: all 37 mtDNA genes (13 protein-coding + 22 tRNA + 2 rRNA). CII=0 mtDNA subunits (always normal). Universal drug CIs. 9 L-strand NGS pitfall genes. Common 4977bp KSS deletion (12 genes)."
   }
 ]
