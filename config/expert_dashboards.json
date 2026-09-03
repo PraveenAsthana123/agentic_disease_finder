@@ -14070,5 +14070,20 @@
     ],
     "frontend": "portal-next/app/workflow/page.jsx",
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtco1",
+    "title": "MT-CO1 CIV Assembly Nucleus Bilateral Striatal Necrosis CIV-Leigh LHON-plus 514aa-57kDa-12-TM-Helices Heme-a-Plus-Heme-a3-CuB-O2-Reduction Maternal-Inheritance",
+    "route": "/mtco1",
+    "api": "/api/mtco1/overview",
+    "status": "built",
+    "category": "mitochondrial_disease",
+    "gene": "MT-CO1",
+    "omim_gene": "516030",
+    "omim_disease": "256000",
+    "inheritance": "Maternal",
+    "chromosome": "mtDNA rCRS m.5904-7445 H-strand",
+    "cohort_seed": 743,
+    "registered": "2026-09-03"
   }
 ]

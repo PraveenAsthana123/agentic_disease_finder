@@ -41635,6 +41635,39 @@ async def mtnd6_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-CO1: Cytochrome c Oxidase Subunit I — CIV Assembly Nucleus — 514aa 57kDa 12-TM
+# H-strand mtDNA m.5904-7445; Heme a + Heme a3-CuB (O2-reduction site); Largest mtDNA CIV subunit
+# Bilateral Striatal Necrosis (m.6930G>A BSN) / CIV-Leigh / LHON-plus / MELAS-Leigh / KSS-CPEO
+# 40-patient cohort seed-743; 3 endpoints /api/mtco1/overview|breakdown|definitions
+
+@app.get("/api/mtco1/overview")
+async def mtco1_overview():
+    """MT-CO1 CIV Assembly Nucleus — Bilateral Striatal Necrosis / CIV-Leigh / LHON-plus — 514aa 12-TM Heme-a3-CuB O2-site — m.6930G>A BSN + m.6708T>A Leigh + m.7444G>A LHON-SNHL — 40-patient cohort seed-743; 3 endpoints /api/mtco1/overview|breakdown|definitions."""
+    try:
+        import scripts.mtco1_dashboard as mtco1_
+        return _json_safe(mtco1_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtco1/breakdown")
+async def mtco1_breakdown():
+    try:
+        import scripts.mtco1_dashboard as mtco1_
+        return _json_safe(mtco1_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtco1/definitions")
+async def mtco1_definitions():
+    try:
+        import scripts.mtco1_dashboard as mtco1_
+        return _json_safe(mtco1_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
