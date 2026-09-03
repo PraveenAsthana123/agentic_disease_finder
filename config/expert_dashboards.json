@@ -14503,5 +14503,21 @@
     "seed": 823,
     "registered": "2026-09-03",
     "built_note": "MT-TS1 tRNA-Ser(UCN) 72nt L-strand rCRS 7445-7516 TWELFTH-tRNA SNHL-Dominant Combined-CI-CIV-Deficiency (expert_dashboards.json count 946->947: MT-TS1 dashboard built \u2014 backend 3 endpoints /api/mtts1/overview|breakdown|definitions verified 200 / frontend portal-next/app/mtts1/page.jsx / SiteNav wired after MT-TY. Built 2026-09-03)"
+  },
+  {
+    "id": "mttd",
+    "name": "MT-TD tRNA-Asp Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance THIRTEENTH-tRNA-in-Mitochondrial-Genome H-strand-0nt-Gap-MT-CO2-Shared-Boundary DARS2-DDx-LBSL-White-Matter-NOT-Adult-CPEO H-strand-rCRS-7518-7585",
+    "status": "built",
+    "route": "/mttd",
+    "api": [
+      "/api/mttd/overview",
+      "/api/mttd/breakdown",
+      "/api/mttd/definitions"
+    ],
+    "script": "scripts/mttd_dashboard.py",
+    "frontend": "portal-next/app/mttd/page.jsx",
+    "description": "MT-TD Dashboard \u2014 40-patient cohort seed-825, 3 endpoints /api/mttd/overview|breakdown|definitions",
+    "omim": "*590015",
+    "seed": 825
   }
 ]
