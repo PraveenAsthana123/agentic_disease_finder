@@ -42586,6 +42586,34 @@ async def mtrnr1_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mtrnr2/overview")
+async def mtrnr2_overview():
+    """MT-RNR2 16S Ribosomal RNA — MIHH (m.2336T>C) + Cardiomyopathy-Myopathy (m.3260A>G) + LHON-like Optic Neuropathy (m.2617G>A) + SNHL (m.3093G>A) — mt-LSU / 39S PTC scaffold — HUMANIN ORF within 16S rRNA — 40-patient cohort seed-843; 3 endpoints /api/mtrnr2/overview|breakdown|definitions."""
+    try:
+        import scripts.mtrnr2_dashboard as mtrnr2_
+        return _json_safe(mtrnr2_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtrnr2/breakdown")
+async def mtrnr2_breakdown():
+    try:
+        import scripts.mtrnr2_dashboard as mtrnr2_
+        return _json_safe(mtrnr2_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtrnr2/definitions")
+async def mtrnr2_definitions():
+    try:
+        import scripts.mtrnr2_dashboard as mtrnr2_
+        return _json_safe(mtrnr2_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

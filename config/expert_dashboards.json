@@ -14576,5 +14576,16 @@
     "cohort_n": 40,
     "seed": 841,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtrnr2",
+    "name": "MT-RNR2 16S-Ribosomal-RNA mt-LSU-39S-Large-Subunit PTC-Peptidyl-Transferase-Centre HUMANIN-Neuroprotective-Microprotein-Within-16S-rRNA MIHH-m.2336TC-Hypertension-Hypercholesterolaemia Cardiomyopathy-m.3260AG LHON-like-Optic-Neuropathy-m.2617GA SNHL-m.3093GA Combined-OXPHOS-CI-CIII-CIV-CV HETEROPLASMIC-Most-Variants H-strand-rCRS-1671-3229-1559nt Maternal-Inheritance",
+    "status": "built",
+    "api": "/api/mtrnr2/overview|breakdown|definitions",
+    "cohort_n": 40,
+    "seed": 843,
+    "portal_path": "/mtrnr2",
+    "omim_gene": "MT-RNR2-561010",
+    "registered": "2026-09-03"
   }
 ]
