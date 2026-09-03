@@ -10486,5 +10486,23 @@
     "cohort_n": 40,
     "seed": 735,
     "registered": "2026-09-02"
+  },
+  {
+    "id": "mtnd5",
+    "gene": "MT-ND5",
+    "disease_name": "MT-ND5 Isolated CI Deficiency / Leigh-MELAS Overlap / CPEO (MT-ND5-603aa-67.9kDa-16-TM-Helices-Distal-Antiporter-Module-Lateral-Helix-\u03b2H1-mtDNA-rCRS-12337-14148 / LARGEST-mtDNA-Encoded-CI-Subunit / OMIM-Gene-MT-ND5-516005 / MATERNAL-Heteroplasmic / m.13514AG-pAsp458Asn-Leigh-MELAS-Overlap-50pct / m.12706TC-pPhe374Leu-Infantile-Leigh-20pct / m.13094TC-pPhe460Leu-Leigh-MELAS-12pct / m.13045AC-pHis295Pro-CPEO-Adult-8pct / m.12811TC-pLeu418Pro-Neonatal-Lethal-5pct / LargeDeletion-KSS-Pearson-5pct / Heteroplasmy-Threshold-60-80pct-Leigh-MELAS-Above-80pct-Severe-Leigh / WES-MISSES-MT-ND5 / Isolated-CI-5-25pct-CII-CIII-CIV-NORMAL / Metformin-VPA-Linezolid-Propofol-Tobacco-ABSOLUTE-CI / IV-tPA-CONTRAINDICATED-Stroke-Like / Thiamine-MANDATORY / GIR-6-8-NEVER-Fast / Liolitsa-2003-AnnNeurol / Corona-2001-AnnNeurol / 40-patient-cohort-seed-737",
+    "status": "built",
+    "api_prefix": "/api/mtnd5",
+    "page_path": "/mtnd5",
+    "cohort_seed": 737,
+    "n_patients": 40,
+    "inheritance": "Maternal (mitochondrial)",
+    "chromosome": "mtDNA (rCRS 12337-14148)",
+    "registered": "2026-09-02",
+    "endpoints": [
+      "/api/mtnd5/overview",
+      "/api/mtnd5/breakdown",
+      "/api/mtnd5/definitions"
+    ]
   }
 ]

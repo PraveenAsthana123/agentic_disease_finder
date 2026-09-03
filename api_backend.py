@@ -41518,6 +41518,38 @@ async def mtcyb_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 40-patient cohort seed-737; 3 endpoints /api/mtnd5/overview|breakdown|definitions
+# MT-ND5 Isolated CI Deficiency / Leigh-MELAS Overlap / CPEO: Largest mtDNA-Encoded CI Subunit
+# 603aa-67.9kDa-16-TM-Helices-Distal-Antiporter-Module-Lateral-Helix-βH1-mtDNA-rCRS-12337-14148
+# MATERNAL-Heteroplasmic / OMIM-Gene-516005
+@app.get("/api/mtnd5/overview")
+async def mtnd5_overview():
+    """MT-ND5 Isolated CI Deficiency / Leigh-MELAS Overlap / CPEO — Largest mtDNA-Encoded CI Subunit — 603aa-16TM-Distal-Antiporter-Module — 40-patient cohort seed-737; 3 endpoints /api/mtnd5/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd5_dashboard as mtnd5_
+        return _json_safe(mtnd5_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd5/breakdown")
+async def mtnd5_breakdown():
+    try:
+        import scripts.mtnd5_dashboard as mtnd5_
+        return _json_safe(mtnd5_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd5/definitions")
+async def mtnd5_definitions():
+    try:
+        import scripts.mtnd5_dashboard as mtnd5_
+        return _json_safe(mtnd5_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
