@@ -10533,5 +10533,3510 @@
     "cohort_seed": 739,
     "n_patients": 40,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "abpm",
+    "name": "ABPM",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/abpm",
+    "endpoints": [
+      "/api/abpm/breakdown",
+      "/api/abpm/definitions",
+      "/api/abpm/overview"
+    ],
+    "frontend": "portal-next/app/abpm/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "abpm-holter",
+    "name": "ABPM Holter",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/abpm-holter",
+    "endpoints": [
+      "/api/abpm-holter/breakdown",
+      "/api/abpm-holter/definitions",
+      "/api/abpm-holter/overview"
+    ],
+    "frontend": "portal-next/app/abpm-holter/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "accuracy-options",
+    "name": "Accuracy Options",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/accuracy-options",
+    "endpoints": [
+      "/api/accuracy-options/breakdown",
+      "/api/accuracy-options/definitions",
+      "/api/accuracy-options/overview"
+    ],
+    "frontend": "portal-next/app/accuracy-options/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "adl",
+    "name": "ADL",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/adl",
+    "endpoints": [
+      "/api/adl/breakdown",
+      "/api/adl/definitions",
+      "/api/adl/overview"
+    ],
+    "frontend": "portal-next/app/adl/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "advisor-issues",
+    "name": "Advisor Issues",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/advisor-issues",
+    "endpoints": [
+      "/api/advisor-issues/breakdown",
+      "/api/advisor-issues/definitions",
+      "/api/advisor-issues/overview"
+    ],
+    "frontend": "portal-next/app/advisor-issues/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "aed-compliance",
+    "name": "Aed Compliance",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/aed-compliance",
+    "endpoints": [
+      "/api/aed-compliance/breakdown",
+      "/api/aed-compliance/definitions",
+      "/api/aed-compliance/overview"
+    ],
+    "frontend": "portal-next/app/aed-compliance/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "aed-polypharmacy",
+    "name": "AED Polypharmacy",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/aed-polypharmacy",
+    "endpoints": [
+      "/api/aed-polypharmacy/breakdown",
+      "/api/aed-polypharmacy/definitions",
+      "/api/aed-polypharmacy/overview"
+    ],
+    "frontend": "portal-next/app/aed-polypharmacy/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "aed-side-effects",
+    "name": "Aed Side Effects",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/aed-side-effects",
+    "endpoints": [
+      "/api/aed-side-effects/breakdown",
+      "/api/aed-side-effects/definitions",
+      "/api/aed-side-effects/overview"
+    ],
+    "frontend": "portal-next/app/aed-side-effects/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-advisor",
+    "name": "AI Advisor",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-advisor",
+    "endpoints": [
+      "/api/ai-advisor/breakdown",
+      "/api/ai-advisor/definitions",
+      "/api/ai-advisor/overview"
+    ],
+    "frontend": "portal-next/app/ai-advisor/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-compliance",
+    "name": "AI Compliance",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-compliance",
+    "endpoints": [
+      "/api/ai-compliance/breakdown",
+      "/api/ai-compliance/definitions",
+      "/api/ai-compliance/overview"
+    ],
+    "frontend": "portal-next/app/ai-compliance/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-control-tower",
+    "name": "AI Control Tower",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-control-tower",
+    "endpoints": [
+      "/api/ai-control-tower/breakdown",
+      "/api/ai-control-tower/definitions",
+      "/api/ai-control-tower/overview"
+    ],
+    "frontend": "portal-next/app/ai-control-tower/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-dark-factory",
+    "name": "AI Dark Factory",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-dark-factory",
+    "endpoints": [
+      "/api/ai-dark-factory/breakdown",
+      "/api/ai-dark-factory/definitions",
+      "/api/ai-dark-factory/overview"
+    ],
+    "frontend": "portal-next/app/ai-dark-factory/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-federation",
+    "name": "AI Federation",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-federation",
+    "endpoints": [
+      "/api/ai-federation/breakdown",
+      "/api/ai-federation/definitions",
+      "/api/ai-federation/overview"
+    ],
+    "frontend": "portal-next/app/ai-federation/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-finops",
+    "name": "Ai Finops",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-finops",
+    "endpoints": [
+      "/api/ai-finops/breakdown",
+      "/api/ai-finops/definitions",
+      "/api/ai-finops/overview"
+    ],
+    "frontend": "portal-next/app/ai-finops/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-governance",
+    "name": "AI Governance",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-governance",
+    "endpoints": [
+      "/api/ai-governance/breakdown",
+      "/api/ai-governance/definitions",
+      "/api/ai-governance/overview"
+    ],
+    "frontend": "portal-next/app/ai-governance/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-incident",
+    "name": "AI Incident",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-incident",
+    "endpoints": [
+      "/api/ai-incident/breakdown",
+      "/api/ai-incident/definitions",
+      "/api/ai-incident/overview"
+    ],
+    "frontend": "portal-next/app/ai-incident/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-lifecycle",
+    "name": "AI Lifecycle",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-lifecycle",
+    "endpoints": [
+      "/api/ai-lifecycle/breakdown",
+      "/api/ai-lifecycle/definitions",
+      "/api/ai-lifecycle/overview"
+    ],
+    "frontend": "portal-next/app/ai-lifecycle/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-observability",
+    "name": "AI Observability",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-observability",
+    "endpoints": [
+      "/api/ai-observability/breakdown",
+      "/api/ai-observability/definitions",
+      "/api/ai-observability/overview"
+    ],
+    "frontend": "portal-next/app/ai-observability/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-risk",
+    "name": "AI Risk",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-risk",
+    "endpoints": [
+      "/api/ai-risk/breakdown",
+      "/api/ai-risk/definitions",
+      "/api/ai-risk/overview"
+    ],
+    "frontend": "portal-next/app/ai-risk/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-roi",
+    "name": "AIROI",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-roi",
+    "endpoints": [
+      "/api/ai-roi/breakdown",
+      "/api/ai-roi/definitions",
+      "/api/ai-roi/overview"
+    ],
+    "frontend": "portal-next/app/ai-roi/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-security",
+    "name": "AI Security",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-security",
+    "endpoints": [
+      "/api/ai-security/breakdown",
+      "/api/ai-security/definitions",
+      "/api/ai-security/overview"
+    ],
+    "frontend": "portal-next/app/ai-security/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-type-coverage",
+    "name": "AI Type Coverage",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-type-coverage",
+    "endpoints": [
+      "/api/ai-type-coverage/breakdown",
+      "/api/ai-type-coverage/definitions",
+      "/api/ai-type-coverage/overview"
+    ],
+    "frontend": "portal-next/app/ai-type-coverage/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ai-types",
+    "name": "AI Types",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/ai-types",
+    "endpoints": [
+      "/api/ai-types/{ai_type}"
+    ],
+    "frontend": "portal-next/app/ai-types/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "alerts",
+    "name": "Alerts Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/alerts",
+    "endpoints": [
+      "/api/alerts/category/{category}",
+      "/api/alerts/definitions",
+      "/api/alerts/severity/{severity}",
+      "/api/alerts/summary"
+    ],
+    "frontend": "portal-next/app/alerts/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "annotation",
+    "name": "Annotation QC",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/annotation",
+    "endpoints": [
+      "/api/annotation/agreement",
+      "/api/annotation/definitions",
+      "/api/annotation/overview"
+    ],
+    "frontend": "portal-next/app/annotation/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "appointments",
+    "name": "Appointments",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/appointments",
+    "endpoints": [
+      "/api/appointments/breakdown",
+      "/api/appointments/definitions",
+      "/api/appointments/overview"
+    ],
+    "frontend": "portal-next/app/appointments/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "assessment-catalog",
+    "name": "Assessment Catalog",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/assessment-catalog",
+    "endpoints": [
+      "/api/assessment-catalog/breakdown",
+      "/api/assessment-catalog/definitions",
+      "/api/assessment-catalog/overview"
+    ],
+    "frontend": "portal-next/app/assessment-catalog/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "automatic-pipelines",
+    "name": "Automatic Pipelines",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/automatic-pipelines",
+    "endpoints": [
+      "/api/automatic-pipelines/breakdown",
+      "/api/automatic-pipelines/definitions",
+      "/api/automatic-pipelines/overview"
+    ],
+    "frontend": "portal-next/app/automatic-pipelines/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "barthel",
+    "name": "Barthel",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/barthel",
+    "endpoints": [
+      "/api/barthel/breakdown",
+      "/api/barthel/definitions",
+      "/api/barthel/overview"
+    ],
+    "frontend": "portal-next/app/barthel/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "battery-scoring",
+    "name": "Battery Scoring",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/battery-scoring",
+    "endpoints": [
+      "/api/battery-scoring/breakdown",
+      "/api/battery-scoring/definitions",
+      "/api/battery-scoring/overview"
+    ],
+    "frontend": "portal-next/app/battery-scoring/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "billing-claims",
+    "name": "Billing Claims",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/billing-claims",
+    "endpoints": [
+      "/api/billing-claims/breakdown",
+      "/api/billing-claims/definitions",
+      "/api/billing-claims/overview"
+    ],
+    "frontend": "portal-next/app/billing-claims/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "blink-reflex",
+    "name": "Blink Reflex",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/blink-reflex",
+    "endpoints": [
+      "/api/blink-reflex/breakdown",
+      "/api/blink-reflex/definitions",
+      "/api/blink-reflex/overview"
+    ],
+    "frontend": "portal-next/app/blink-reflex/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "camera-monitoring",
+    "name": "Camera Monitoring",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/camera-monitoring",
+    "endpoints": [
+      "/api/camera-monitoring/breakdown",
+      "/api/camera-monitoring/definitions",
+      "/api/camera-monitoring/overview"
+    ],
+    "frontend": "portal-next/app/camera-monitoring/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "carbon-tracker",
+    "name": "Carbon Tracker",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/carbon-tracker",
+    "endpoints": [
+      "/api/carbon-tracker/breakdown",
+      "/api/carbon-tracker/definitions",
+      "/api/carbon-tracker/overview"
+    ],
+    "frontend": "portal-next/app/carbon-tracker/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "caregiver-app",
+    "name": "Caregiver App",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/caregiver-app",
+    "endpoints": [
+      "/api/caregiver-app/breakdown",
+      "/api/caregiver-app/definitions",
+      "/api/caregiver-app/overview"
+    ],
+    "frontend": "portal-next/app/caregiver-app/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "caregivers",
+    "name": "Caregivers",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/caregivers",
+    "endpoints": [
+      "/api/caregivers/breakdown",
+      "/api/caregivers/definitions",
+      "/api/caregivers/overview"
+    ],
+    "frontend": "portal-next/app/caregivers/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "catamenial",
+    "name": "Catamenial",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/catamenial",
+    "endpoints": [
+      "/api/catamenial/breakdown",
+      "/api/catamenial/definitions",
+      "/api/catamenial/overview"
+    ],
+    "frontend": "portal-next/app/catamenial/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "causal-ai",
+    "name": "Causal AI",
+    "status": "built",
+    "category": "ai_governance",
+    "api_prefix": "/api/causal-ai",
+    "endpoints": [
+      "/api/causal-ai/breakdown",
+      "/api/causal-ai/definitions",
+      "/api/causal-ai/overview"
+    ],
+    "frontend": "portal-next/app/causal-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ceeg-monitoring",
+    "name": "Ceeg Monitoring",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/ceeg-monitoring",
+    "endpoints": [
+      "/api/ceeg-monitoring/breakdown",
+      "/api/ceeg-monitoring/definitions",
+      "/api/ceeg-monitoring/overview"
+    ],
+    "frontend": "portal-next/app/ceeg-monitoring/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "change-management",
+    "name": "Change Management",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/change-management",
+    "endpoints": [
+      "/api/change-management/breakdown",
+      "/api/change-management/definitions",
+      "/api/change-management/overview"
+    ],
+    "frontend": "portal-next/app/change-management/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "channel-quality",
+    "name": "Channel Quality",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/channel-quality",
+    "endpoints": [
+      "/api/channel-quality/breakdown",
+      "/api/channel-quality/definitions",
+      "/api/channel-quality/overview",
+      "/api/channel-quality/rerecord-request",
+      "/api/channel-quality/rerecord-requests"
+    ],
+    "frontend": "portal-next/app/channel-quality/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-assessments",
+    "name": "Clinical Assessments",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-assessments",
+    "endpoints": [
+      "/api/clinical-assessments/breakdown",
+      "/api/clinical-assessments/definitions",
+      "/api/clinical-assessments/overview"
+    ],
+    "frontend": "portal-next/app/clinical-assessments/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-decisions",
+    "name": "Clinical Decisions",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-decisions",
+    "endpoints": [
+      "/api/clinical-decisions/breakdown",
+      "/api/clinical-decisions/definitions",
+      "/api/clinical-decisions/overview"
+    ],
+    "frontend": "portal-next/app/clinical-decisions/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-flowcharts",
+    "name": "Clinical Flowcharts",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-flowcharts",
+    "endpoints": [
+      "/api/clinical-flowcharts/analytics",
+      "/api/clinical-flowcharts/breakdown",
+      "/api/clinical-flowcharts/definitions",
+      "/api/clinical-flowcharts/detail/{flowchart_id}",
+      "/api/clinical-flowcharts/overview"
+    ],
+    "frontend": "portal-next/app/clinical-flowcharts/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-outcomes",
+    "name": "Clinical Outcomes",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-outcomes",
+    "endpoints": [
+      "/api/clinical-outcomes/breakdown",
+      "/api/clinical-outcomes/definitions",
+      "/api/clinical-outcomes/overview"
+    ],
+    "frontend": "portal-next/app/clinical-outcomes/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-psychologist",
+    "name": "Clinical Psychologist",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-psychologist",
+    "endpoints": [
+      "/api/clinical-psychologist/breakdown",
+      "/api/clinical-psychologist/definitions",
+      "/api/clinical-psychologist/overview"
+    ],
+    "frontend": "portal-next/app/clinical-psychologist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "clinical-risk-stratification",
+    "name": "Clinical Risk Stratification",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/clinical-risk-stratification",
+    "endpoints": [
+      "/api/clinical-risk-stratification/breakdown",
+      "/api/clinical-risk-stratification/definitions",
+      "/api/clinical-risk-stratification/overview"
+    ],
+    "frontend": "portal-next/app/clinical-risk-stratification/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cloud-ops",
+    "name": "Cloud Ops",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/cloud-ops",
+    "endpoints": [
+      "/api/cloud-ops/breakdown",
+      "/api/cloud-ops/definitions",
+      "/api/cloud-ops/overview"
+    ],
+    "frontend": "portal-next/app/cloud-ops/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cognition-link",
+    "name": "Cognition Link",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/cognition-link",
+    "endpoints": [
+      "/api/cognition-link/alerts",
+      "/api/cognition-link/definitions",
+      "/api/cognition-link/domains",
+      "/api/cognition-link/heatmap",
+      "/api/cognition-link/matrix",
+      "/api/cognition-link/overview"
+    ],
+    "frontend": "portal-next/app/cognition-link/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cognitive-decline",
+    "name": "Cognitive Decline",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/cognitive-decline",
+    "endpoints": [
+      "/api/cognitive-decline/breakdown",
+      "/api/cognitive-decline/definitions",
+      "/api/cognitive-decline/overview"
+    ],
+    "frontend": "portal-next/app/cognitive-decline/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cognitive-tests",
+    "name": "Cognitive Tests",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/cognitive-tests",
+    "endpoints": [
+      "/api/cognitive-tests/breakdown",
+      "/api/cognitive-tests/definitions",
+      "/api/cognitive-tests/overview",
+      "/api/cognitive-tests/score"
+    ],
+    "frontend": "portal-next/app/cognitive-tests/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "comorbidities",
+    "name": "Comorbidities",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/comorbidities",
+    "endpoints": [
+      "/api/comorbidities/breakdown",
+      "/api/comorbidities/definitions",
+      "/api/comorbidities/overview"
+    ],
+    "frontend": "portal-next/app/comorbidities/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "component-findings",
+    "name": "Component Findings",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/component-findings",
+    "endpoints": [
+      "/api/component-findings/breakdown",
+      "/api/component-findings/definitions",
+      "/api/component-findings/overview"
+    ],
+    "frontend": "portal-next/app/component-findings/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "consent-management",
+    "name": "Consent Management",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/consent-management",
+    "endpoints": [
+      "/api/consent-management/breakdown",
+      "/api/consent-management/definitions",
+      "/api/consent-management/overview"
+    ],
+    "frontend": "portal-next/app/consent-management/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "consultant-matrix",
+    "name": "Consultant Matrix",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/consultant-matrix",
+    "endpoints": [
+      "/api/consultant-matrix/breakdown",
+      "/api/consultant-matrix/definitions",
+      "/api/consultant-matrix/overview"
+    ],
+    "frontend": "portal-next/app/consultant-matrix/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "consultant-workflows",
+    "name": "Consultant Workflows",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/consultant-workflows",
+    "endpoints": [
+      "/api/consultant-workflows/breakdown",
+      "/api/consultant-workflows/definitions",
+      "/api/consultant-workflows/overview"
+    ],
+    "frontend": "portal-next/app/consultant-workflows/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "conversation-log",
+    "name": "Conversation Log",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/conversation-log",
+    "endpoints": [
+      "/api/conversation-log/breakdown",
+      "/api/conversation-log/definitions",
+      "/api/conversation-log/overview"
+    ],
+    "frontend": "portal-next/app/conversation-log/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "copm-dashboard",
+    "name": "Copm Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/copm-dashboard",
+    "endpoints": [
+      "/api/copm-dashboard/breakdown",
+      "/api/copm-dashboard/definitions",
+      "/api/copm-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/copm-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "copm-fim",
+    "name": "Copm Fim",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/copm-fim",
+    "endpoints": [
+      "/api/copm-fim/breakdown",
+      "/api/copm-fim/definitions",
+      "/api/copm-fim/overview"
+    ],
+    "frontend": "portal-next/app/copm-fim/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cross-patient-benchmark",
+    "name": "Cross Patient Benchmark",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/cross-patient-benchmark",
+    "endpoints": [
+      "/api/cross-patient-benchmark/breakdown",
+      "/api/cross-patient-benchmark/definitions",
+      "/api/cross-patient-benchmark/overview"
+    ],
+    "frontend": "portal-next/app/cross-patient-benchmark/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "cssrs-dashboard",
+    "name": "CSSRS Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/cssrs-dashboard",
+    "endpoints": [
+      "/api/cssrs-dashboard/breakdown",
+      "/api/cssrs-dashboard/definitions",
+      "/api/cssrs-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/cssrs-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "data-augmentation",
+    "name": "Data Augmentation",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/data-augmentation",
+    "endpoints": [
+      "/api/data-augmentation/breakdown",
+      "/api/data-augmentation/definitions",
+      "/api/data-augmentation/overview"
+    ],
+    "frontend": "portal-next/app/data-augmentation/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "data-manager",
+    "name": "Data Manager",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/data-manager",
+    "endpoints": [
+      "/api/data-manager/annotation-qc",
+      "/api/data-manager/archival",
+      "/api/data-manager/breakdown",
+      "/api/data-manager/cleaning",
+      "/api/data-manager/data-sharing",
+      "/api/data-manager/dataset-validation",
+      "/api/data-manager/dataset-version",
+      "/api/data-manager/definitions",
+      "/api/data-manager/governance",
+      "/api/data-manager/label-validation",
+      "/api/data-manager/mri-validation",
+      "/api/data-manager/overview",
+      "/api/data-manager/standardization",
+      "/api/data-manager/terminology",
+      "/api/data-manager/video-validation"
+    ],
+    "frontend": "portal-next/app/data-manager/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "data-ops",
+    "name": "Data Ops",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/data-ops",
+    "endpoints": [
+      "/api/data-ops/breakdown",
+      "/api/data-ops/definitions",
+      "/api/data-ops/overview"
+    ],
+    "frontend": "portal-next/app/data-ops/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "data-requirements",
+    "name": "Data Requirements",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/data-requirements",
+    "endpoints": [
+      "/api/data-requirements/breakdown",
+      "/api/data-requirements/definitions",
+      "/api/data-requirements/overview"
+    ],
+    "frontend": "portal-next/app/data-requirements/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "data-steward",
+    "name": "Data Steward",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/data-steward",
+    "endpoints": [
+      "/api/data-steward/breakdown",
+      "/api/data-steward/definitions",
+      "/api/data-steward/overview"
+    ],
+    "frontend": "portal-next/app/data-steward/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "dataset-coverage",
+    "name": "Dataset Coverage",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/dataset-coverage",
+    "endpoints": [
+      "/api/dataset-coverage/breakdown",
+      "/api/dataset-coverage/definitions",
+      "/api/dataset-coverage/overview"
+    ],
+    "frontend": "portal-next/app/dataset-coverage/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "datasets",
+    "name": "Datasets Registry",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/datasets",
+    "endpoints": [
+      "/api/datasets/breakdown",
+      "/api/datasets/definitions",
+      "/api/datasets/overview"
+    ],
+    "frontend": "portal-next/app/datasets/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "dba-research",
+    "name": "DBA Research",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/dba-research",
+    "endpoints": [
+      "/api/dba-research/breakdown",
+      "/api/dba-research/definitions",
+      "/api/dba-research/overview"
+    ],
+    "frontend": "portal-next/app/dba-research/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "decision-ai",
+    "name": "Decision AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/decision-ai",
+    "endpoints": [
+      "/api/decision-ai/breakdown",
+      "/api/decision-ai/definitions",
+      "/api/decision-ai/overview"
+    ],
+    "frontend": "portal-next/app/decision-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "deep-learning",
+    "name": "Deep Learning",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/deep-learning",
+    "endpoints": [
+      "/api/deep-learning/breakdown",
+      "/api/deep-learning/definitions",
+      "/api/deep-learning/overview"
+    ],
+    "frontend": "portal-next/app/deep-learning/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "device-mode",
+    "name": "Device Mode",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/device-mode",
+    "endpoints": [
+      "/api/device-mode/breakdown",
+      "/api/device-mode/definitions",
+      "/api/device-mode/overview"
+    ],
+    "frontend": "portal-next/app/device-mode/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "device-telemetry",
+    "name": "Device Telemetry",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/device-telemetry",
+    "endpoints": [
+      "/api/device-telemetry/breakdown",
+      "/api/device-telemetry/definitions",
+      "/api/device-telemetry/overview"
+    ],
+    "frontend": "portal-next/app/device-telemetry/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "dicom-viewer",
+    "name": "DICOM Viewer",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/dicom-viewer",
+    "endpoints": [
+      "/api/dicom-viewer/breakdown",
+      "/api/dicom-viewer/definitions",
+      "/api/dicom-viewer/overview"
+    ],
+    "frontend": "portal-next/app/dicom-viewer/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "dietitian",
+    "name": "Dietitian",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/dietitian",
+    "endpoints": [
+      "/api/dietitian/ketogenic",
+      "/api/dietitian/malnutrition",
+      "/api/dietitian/medication-nutrition",
+      "/api/dietitian/nutrient"
+    ],
+    "frontend": "portal-next/app/dietitian/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "drift",
+    "name": "Drift",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/drift",
+    "endpoints": [
+      "/api/drift/alerts",
+      "/api/drift/dashboard",
+      "/api/drift/definitions",
+      "/api/drift/features",
+      "/api/drift/severity",
+      "/api/drift/trend"
+    ],
+    "frontend": "portal-next/app/drift/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "ecg-patch",
+    "name": "ECG Patch",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/ecg-patch",
+    "endpoints": [
+      "/api/ecg-patch/definitions",
+      "/api/ecg-patch/overview",
+      "/api/ecg-patch/sessions"
+    ],
+    "frontend": "portal-next/app/ecg-patch/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "edge-deploy",
+    "name": "Edge Deploy",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/edge-deploy",
+    "endpoints": [
+      "/api/edge-deploy/breakdown",
+      "/api/edge-deploy/definitions",
+      "/api/edge-deploy/overview"
+    ],
+    "frontend": "portal-next/app/edge-deploy/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "education-modules",
+    "name": "Education Modules",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/education-modules",
+    "endpoints": [
+      "/api/education-modules/breakdown",
+      "/api/education-modules/definitions",
+      "/api/education-modules/overview"
+    ],
+    "frontend": "portal-next/app/education-modules/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-ai-rag-pipeline",
+    "name": "Eeg Ai Rag Pipeline",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-ai-rag-pipeline",
+    "endpoints": [
+      "/api/eeg-ai-rag-pipeline/breakdown",
+      "/api/eeg-ai-rag-pipeline/definitions",
+      "/api/eeg-ai-rag-pipeline/overview"
+    ],
+    "frontend": "portal-next/app/eeg-ai-rag-pipeline/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-ai-stack",
+    "name": "EEGAI Stack",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-ai-stack",
+    "endpoints": [
+      "/api/eeg-ai-stack/breakdown",
+      "/api/eeg-ai-stack/definitions",
+      "/api/eeg-ai-stack/overview"
+    ],
+    "frontend": "portal-next/app/eeg-ai-stack/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-analysis-results",
+    "name": "EEG Analysis Results",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-analysis-results",
+    "endpoints": [
+      "/api/eeg-analysis-results/breakdown",
+      "/api/eeg-analysis-results/definitions",
+      "/api/eeg-analysis-results/overview"
+    ],
+    "frontend": "portal-next/app/eeg-analysis-results/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-artifact-analysis",
+    "name": "Eeg Artifact Analysis",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-artifact-analysis",
+    "endpoints": [
+      "/api/eeg-artifact-analysis/breakdown",
+      "/api/eeg-artifact-analysis/definitions",
+      "/api/eeg-artifact-analysis/overview"
+    ],
+    "frontend": "portal-next/app/eeg-artifact-analysis/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-channel-quality-map",
+    "name": "EEG Channel Quality Map",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-channel-quality-map",
+    "endpoints": [
+      "/api/eeg-channel-quality-map/breakdown",
+      "/api/eeg-channel-quality-map/definitions",
+      "/api/eeg-channel-quality-map/overview"
+    ],
+    "frontend": "portal-next/app/eeg-channel-quality-map/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-clinical-panel",
+    "name": "EEG Clinical",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-clinical-panel",
+    "endpoints": [
+      "/api/eeg-clinical-panel/breakdown",
+      "/api/eeg-clinical-panel/definitions",
+      "/api/eeg-clinical-panel/overview"
+    ],
+    "frontend": "portal-next/app/eeg-clinical-panel/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-data-formats",
+    "name": "EEG Data Formats",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-data-formats",
+    "endpoints": [
+      "/api/eeg-data-formats/breakdown",
+      "/api/eeg-data-formats/definitions",
+      "/api/eeg-data-formats/overview"
+    ],
+    "frontend": "portal-next/app/eeg-data-formats/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-technician",
+    "name": "EEG Technician",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-technician",
+    "endpoints": [
+      "/api/eeg-technician/breakdown",
+      "/api/eeg-technician/definitions",
+      "/api/eeg-technician/overview",
+      "/api/eeg-technician/worklog"
+    ],
+    "frontend": "portal-next/app/eeg-technician/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-technologist",
+    "name": "EEG Technologist",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-technologist",
+    "endpoints": [
+      "/api/eeg-technologist/breakdown",
+      "/api/eeg-technologist/definitions",
+      "/api/eeg-technologist/overview"
+    ],
+    "frontend": "portal-next/app/eeg-technologist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "eeg-viz",
+    "name": "Eeg Viz",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/eeg-viz",
+    "endpoints": [
+      "/api/eeg-viz/artifacts",
+      "/api/eeg-viz/bad-channels",
+      "/api/eeg-viz/complexity",
+      "/api/eeg-viz/connectivity",
+      "/api/eeg-viz/false-alarm",
+      "/api/eeg-viz/ictal-interictal",
+      "/api/eeg-viz/localization",
+      "/api/eeg-viz/montage-comparison",
+      "/api/eeg-viz/presets",
+      "/api/eeg-viz/propagation",
+      "/api/eeg-viz/recordings",
+      "/api/eeg-viz/seizure-annotations",
+      "/api/eeg-viz/sleep",
+      "/api/eeg-viz/sleep-architecture",
+      "/api/eeg-viz/sleep-recordings",
+      "/api/eeg-viz/traces",
+      "/api/eeg-viz/tsfel-features"
+    ],
+    "frontend": "portal-next/app/eeg-viz/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "emergency-sos",
+    "name": "Emergency Sos",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/emergency-sos",
+    "endpoints": [
+      "/api/emergency-sos/breakdown",
+      "/api/emergency-sos/definitions",
+      "/api/emergency-sos/overview"
+    ],
+    "frontend": "portal-next/app/emergency-sos/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "emotiv-epoc-x",
+    "name": "Emotiv EPOCX",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/emotiv-epoc-x",
+    "endpoints": [
+      "/api/emotiv-epoc-x/breakdown",
+      "/api/emotiv-epoc-x/definitions",
+      "/api/emotiv-epoc-x/overview"
+    ],
+    "frontend": "portal-next/app/emotiv-epoc-x/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "emotiv-insight",
+    "name": "Emotiv Insight",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/emotiv-insight",
+    "endpoints": [
+      "/api/emotiv-insight/definitions",
+      "/api/emotiv-insight/overview",
+      "/api/emotiv-insight/sessions"
+    ],
+    "frontend": "portal-next/app/emotiv-insight/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "emotiv-wearable",
+    "name": "Emotiv Wearable",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/emotiv-wearable",
+    "endpoints": [
+      "/api/emotiv-wearable/breakdown",
+      "/api/emotiv-wearable/definitions",
+      "/api/emotiv-wearable/overview"
+    ],
+    "frontend": "portal-next/app/emotiv-wearable/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "epilepsy-in-women",
+    "name": "Epilepsy In Women",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/epilepsy-in-women",
+    "endpoints": [
+      "/api/epilepsy-in-women/breakdown",
+      "/api/epilepsy-in-women/definitions",
+      "/api/epilepsy-in-women/overview"
+    ],
+    "frontend": "portal-next/app/epilepsy-in-women/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "epilepsy-nurse",
+    "name": "Epilepsy Nurse",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/epilepsy-nurse",
+    "endpoints": [
+      "/api/epilepsy-nurse/action-plan",
+      "/api/epilepsy-nurse/adherence",
+      "/api/epilepsy-nurse/definitions",
+      "/api/epilepsy-nurse/education",
+      "/api/epilepsy-nurse/seizure-diary",
+      "/api/epilepsy-nurse/sudep-risk"
+    ],
+    "frontend": "portal-next/app/epilepsy-nurse/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "epworth-dashboard",
+    "name": "Epworth Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/epworth-dashboard",
+    "endpoints": [
+      "/api/epworth-dashboard/breakdown",
+      "/api/epworth-dashboard/definitions",
+      "/api/epworth-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/epworth-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "executive-ai",
+    "name": "Executive AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/executive-ai",
+    "endpoints": [
+      "/api/executive-ai/breakdown",
+      "/api/executive-ai/definitions",
+      "/api/executive-ai/overview"
+    ],
+    "frontend": "portal-next/app/executive-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "executive-scorecard",
+    "name": "Executive Scorecard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/executive-scorecard",
+    "endpoints": [
+      "/api/executive-scorecard/breakdown",
+      "/api/executive-scorecard/definitions",
+      "/api/executive-scorecard/overview"
+    ],
+    "frontend": "portal-next/app/executive-scorecard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "fairness",
+    "name": "Fairness",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/fairness",
+    "endpoints": [
+      "/api/fairness/{disease}"
+    ],
+    "frontend": "portal-next/app/fairness/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "feature-flags",
+    "name": "Feature Flags",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/feature-flags",
+    "endpoints": [
+      "/api/feature-flags/breakdown",
+      "/api/feature-flags/definitions",
+      "/api/feature-flags/overview"
+    ],
+    "frontend": "portal-next/app/feature-flags/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "feature-gaps",
+    "name": "Feature Gaps",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/feature-gaps",
+    "endpoints": [
+      "/api/feature-gaps/breakdown",
+      "/api/feature-gaps/definitions",
+      "/api/feature-gaps/overview"
+    ],
+    "frontend": "portal-next/app/feature-gaps/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "federated-learning",
+    "name": "Federated Learning",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/federated-learning",
+    "endpoints": [
+      "/api/federated-learning/breakdown",
+      "/api/federated-learning/definitions",
+      "/api/federated-learning/overview"
+    ],
+    "frontend": "portal-next/app/federated-learning/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "fim-dashboard",
+    "name": "Fim Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/fim-dashboard",
+    "endpoints": [
+      "/api/fim-dashboard/breakdown",
+      "/api/fim-dashboard/definitions",
+      "/api/fim-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/fim-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "fires",
+    "name": "FIRES",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/fires",
+    "endpoints": [
+      "/api/fires/breakdown",
+      "/api/fires/definitions",
+      "/api/fires/overview"
+    ],
+    "frontend": "portal-next/app/fires/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "governance-advisor",
+    "name": "Governance Advisor",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/governance-advisor",
+    "endpoints": [
+      "/api/governance-advisor/breakdown",
+      "/api/governance-advisor/definitions",
+      "/api/governance-advisor/overview"
+    ],
+    "frontend": "portal-next/app/governance-advisor/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "grounding-gate",
+    "name": "Grounding Gate",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/grounding-gate",
+    "endpoints": [
+      "/api/grounding-gate/breakdown",
+      "/api/grounding-gate/definitions",
+      "/api/grounding-gate/overview"
+    ],
+    "frontend": "portal-next/app/grounding-gate/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "guided-assessment",
+    "name": "Guided Assessment",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/guided-assessment",
+    "endpoints": [
+      "/api/guided-assessment/breakdown",
+      "/api/guided-assessment/definitions",
+      "/api/guided-assessment/overview"
+    ],
+    "frontend": "portal-next/app/guided-assessment/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "hallucination",
+    "name": "Hallucination",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/hallucination",
+    "endpoints": [
+      "/api/hallucination/breakdown",
+      "/api/hallucination/definitions",
+      "/api/hallucination/overview"
+    ],
+    "frontend": "portal-next/app/hallucination/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "hfo",
+    "name": "HFO",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/hfo",
+    "endpoints": [
+      "/api/hfo/breakdown",
+      "/api/hfo/definitions",
+      "/api/hfo/overview"
+    ],
+    "frontend": "portal-next/app/hfo/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "hitl",
+    "name": "Hitl",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/hitl",
+    "endpoints": [
+      "/api/hitl/history",
+      "/api/hitl/submit"
+    ],
+    "frontend": "portal-next/app/hitl/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "hrv",
+    "name": "HRV",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/hrv",
+    "endpoints": [
+      "/api/hrv/breakdown",
+      "/api/hrv/definitions",
+      "/api/hrv/overview"
+    ],
+    "frontend": "portal-next/app/hrv/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "hybrid-cnn",
+    "name": "Hybrid CNN",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/hybrid-cnn",
+    "endpoints": [
+      "/api/hybrid-cnn/breakdown",
+      "/api/hybrid-cnn/definitions",
+      "/api/hybrid-cnn/overview"
+    ],
+    "frontend": "portal-next/app/hybrid-cnn/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iec-irb-tracker",
+    "name": "Iec Irb Tracker",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iec-irb-tracker",
+    "endpoints": [
+      "/api/iec-irb-tracker/breakdown",
+      "/api/iec-irb-tracker/definitions",
+      "/api/iec-irb-tracker/overview"
+    ],
+    "frontend": "portal-next/app/iec-irb-tracker/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "inbox",
+    "name": "Inbox",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/inbox",
+    "endpoints": [
+      "/api/inbox/category/{category}",
+      "/api/inbox/definitions",
+      "/api/inbox/summary"
+    ],
+    "frontend": "portal-next/app/inbox/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "incident-management",
+    "name": "Incident Management",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/incident-management",
+    "endpoints": [
+      "/api/incident-management/breakdown",
+      "/api/incident-management/definitions",
+      "/api/incident-management/overview"
+    ],
+    "frontend": "portal-next/app/incident-management/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "inference-testing",
+    "name": "Inference Testing",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/inference-testing",
+    "endpoints": [
+      "/api/inference-testing/breakdown",
+      "/api/inference-testing/definitions",
+      "/api/inference-testing/overview"
+    ],
+    "frontend": "portal-next/app/inference-testing/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "insurance-preauth",
+    "name": "Insurance Pre Auth",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/insurance-preauth",
+    "endpoints": [
+      "/api/insurance-preauth/breakdown",
+      "/api/insurance-preauth/definitions",
+      "/api/insurance-preauth/overview"
+    ],
+    "frontend": "portal-next/app/insurance-preauth/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "interpretable-ai",
+    "name": "Interpretable AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/interpretable-ai",
+    "endpoints": [
+      "/api/interpretable-ai/breakdown",
+      "/api/interpretable-ai/definitions",
+      "/api/interpretable-ai/overview"
+    ],
+    "frontend": "portal-next/app/interpretable-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iot-devices",
+    "name": "Io TDevices",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iot-devices",
+    "endpoints": [
+      "/api/iot-devices/breakdown",
+      "/api/iot-devices/definitions",
+      "/api/iot-devices/overview"
+    ],
+    "frontend": "portal-next/app/iot-devices/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iot-engineer",
+    "name": "Io TEngineer",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iot-engineer",
+    "endpoints": [
+      "/api/iot-engineer/breakdown",
+      "/api/iot-engineer/definitions",
+      "/api/iot-engineer/edge-inference",
+      "/api/iot-engineer/gateway-health",
+      "/api/iot-engineer/overview",
+      "/api/iot-engineer/sos-escalation",
+      "/api/iot-engineer/stream-sim"
+    ],
+    "frontend": "portal-next/app/iot-engineer/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iot-fleet",
+    "name": "Io TFleet",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iot-fleet",
+    "endpoints": [
+      "/api/iot-fleet/breakdown",
+      "/api/iot-fleet/definitions",
+      "/api/iot-fleet/overview"
+    ],
+    "frontend": "portal-next/app/iot-fleet/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iot-gateway",
+    "name": "Io TGateway",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iot-gateway",
+    "endpoints": [
+      "/api/iot-gateway/breakdown",
+      "/api/iot-gateway/definitions",
+      "/api/iot-gateway/overview"
+    ],
+    "frontend": "portal-next/app/iot-gateway/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "iot-pipeline",
+    "name": "Io TPipeline",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/iot-pipeline",
+    "endpoints": [
+      "/api/iot-pipeline/ingest",
+      "/api/iot-pipeline/log",
+      "/api/iot-pipeline/simulate",
+      "/api/iot-pipeline/status"
+    ],
+    "frontend": "portal-next/app/iot-pipeline/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "irb-reviewer",
+    "name": "IRB Reviewer",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/irb-reviewer",
+    "endpoints": [
+      "/api/irb-reviewer/breakdown",
+      "/api/irb-reviewer/definitions",
+      "/api/irb-reviewer/overview"
+    ],
+    "frontend": "portal-next/app/irb-reviewer/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "is-sop",
+    "name": "IS Sop",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/is-sop",
+    "endpoints": [
+      "/api/is-sop/breakdown",
+      "/api/is-sop/definitions",
+      "/api/is-sop/overview"
+    ],
+    "frontend": "portal-next/app/is-sop/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "knowledge-graph",
+    "name": "Knowledge Graph",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/knowledge-graph",
+    "endpoints": [
+      "/api/knowledge-graph/breakdown",
+      "/api/knowledge-graph/definitions",
+      "/api/knowledge-graph/overview"
+    ],
+    "frontend": "portal-next/app/knowledge-graph/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "knowledge-management",
+    "name": "Knowledge Management",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/knowledge-management",
+    "endpoints": [
+      "/api/knowledge-management/breakdown",
+      "/api/knowledge-management/definitions",
+      "/api/knowledge-management/overview"
+    ],
+    "frontend": "portal-next/app/knowledge-management/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "llmops",
+    "name": "LLM Ops",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/llmops",
+    "endpoints": [
+      "/api/llmops/breakdown",
+      "/api/llmops/definitions",
+      "/api/llmops/overview"
+    ],
+    "frontend": "portal-next/app/llmops/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "loso",
+    "name": "LOSO",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/loso",
+    "endpoints": [
+      "/api/loso/breakdown",
+      "/api/loso/definitions",
+      "/api/loso/overview"
+    ],
+    "frontend": "portal-next/app/loso/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "mcp-security",
+    "name": "Mcp Security",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/mcp-security",
+    "endpoints": [
+      "/api/mcp-security/breakdown",
+      "/api/mcp-security/definitions",
+      "/api/mcp-security/overview"
+    ],
+    "frontend": "portal-next/app/mcp-security/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "medication",
+    "name": "Medication",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/medication",
+    "endpoints": [
+      "/api/medication/adherence",
+      "/api/medication/definitions",
+      "/api/medication/list",
+      "/api/medication/recommendations",
+      "/api/medication/schedule",
+      "/api/medication/side-effects"
+    ],
+    "frontend": "portal-next/app/medication/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "medication-adherence",
+    "name": "Medication Adherence",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/medication-adherence",
+    "endpoints": [
+      "/api/medication-adherence/breakdown",
+      "/api/medication-adherence/definitions",
+      "/api/medication-adherence/overview"
+    ],
+    "frontend": "portal-next/app/medication-adherence/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "medication-interaction",
+    "name": "Medication Interaction",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/medication-interaction",
+    "endpoints": [
+      "/api/medication-interaction/breakdown",
+      "/api/medication-interaction/definitions",
+      "/api/medication-interaction/overview"
+    ],
+    "frontend": "portal-next/app/medication-interaction/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "medication-refills",
+    "name": "Medication Refills",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/medication-refills",
+    "endpoints": [
+      "/api/medication-refills/breakdown",
+      "/api/medication-refills/definitions",
+      "/api/medication-refills/overview"
+    ],
+    "frontend": "portal-next/app/medication-refills/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "mef2c",
+    "name": "MEF2C",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/mef2c",
+    "endpoints": [
+      "/api/mef2c/breakdown",
+      "/api/mef2c/definitions",
+      "/api/mef2c/overview"
+    ],
+    "frontend": "portal-next/app/mef2c/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "methodology-advisor",
+    "name": "Methodology Advisor",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/methodology-advisor",
+    "endpoints": [
+      "/api/methodology-advisor/breakdown",
+      "/api/methodology-advisor/definitions",
+      "/api/methodology-advisor/overview"
+    ],
+    "frontend": "portal-next/app/methodology-advisor/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "mmse-dashboard",
+    "name": "MMSE Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/mmse-dashboard",
+    "endpoints": [
+      "/api/mmse-dashboard/breakdown",
+      "/api/mmse-dashboard/definitions",
+      "/api/mmse-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/mmse-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "mobile-alerts",
+    "name": "Mobile Alerts",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/mobile-alerts",
+    "endpoints": [
+      "/api/mobile-alerts/breakdown",
+      "/api/mobile-alerts/definitions",
+      "/api/mobile-alerts/overview"
+    ],
+    "frontend": "portal-next/app/mobile-alerts/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "moca-dashboard",
+    "name": "Mo CA Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/moca-dashboard",
+    "endpoints": [
+      "/api/moca-dashboard/breakdown",
+      "/api/moca-dashboard/definitions",
+      "/api/moca-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/moca-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "model-calibration",
+    "name": "Model Calibration",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/model-calibration",
+    "endpoints": [
+      "/api/model-calibration/breakdown",
+      "/api/model-calibration/definitions",
+      "/api/model-calibration/overview"
+    ],
+    "frontend": "portal-next/app/model-calibration/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "model-comparison",
+    "name": "Model Comparison",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/model-comparison",
+    "endpoints": [
+      "/api/model-comparison/breakdown",
+      "/api/model-comparison/definitions",
+      "/api/model-comparison/overview"
+    ],
+    "frontend": "portal-next/app/model-comparison/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "model-drift",
+    "name": "Model Drift",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/model-drift",
+    "endpoints": [
+      "/api/model-drift/breakdown",
+      "/api/model-drift/definitions",
+      "/api/model-drift/overview"
+    ],
+    "frontend": "portal-next/app/model-drift/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "model-registry",
+    "name": "Model Registry",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/model-registry",
+    "endpoints": [
+      "/api/model-registry/breakdown",
+      "/api/model-registry/definitions",
+      "/api/model-registry/overview"
+    ],
+    "frontend": "portal-next/app/model-registry/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "model-retirement",
+    "name": "Model Retirement",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/model-retirement",
+    "endpoints": [
+      "/api/model-retirement/breakdown",
+      "/api/model-retirement/definitions",
+      "/api/model-retirement/overview"
+    ],
+    "frontend": "portal-next/app/model-retirement/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "mri-review",
+    "name": "MRI Review",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/mri-review",
+    "endpoints": [
+      "/api/mri-review/breakdown",
+      "/api/mri-review/definitions",
+      "/api/mri-review/overview"
+    ],
+    "frontend": "portal-next/app/mri-review/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "multimodal-fusion",
+    "name": "Multimodal Fusion",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/multimodal-fusion",
+    "endpoints": [
+      "/api/multimodal-fusion/breakdown",
+      "/api/multimodal-fusion/definitions",
+      "/api/multimodal-fusion/overview"
+    ],
+    "frontend": "portal-next/app/multimodal-fusion/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "naglu",
+    "name": "Naglu",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/naglu",
+    "endpoints": [
+      "/api/naglu/breakdown",
+      "/api/naglu/definitions",
+      "/api/naglu/overview"
+    ],
+    "frontend": "portal-next/app/naglu/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neonatal-eeg",
+    "name": "Neonatal EEG",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neonatal-eeg",
+    "endpoints": [
+      "/api/neonatal-eeg/breakdown",
+      "/api/neonatal-eeg/definitions",
+      "/api/neonatal-eeg/overview"
+    ],
+    "frontend": "portal-next/app/neonatal-eeg/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neuro-advancements",
+    "name": "Neuro Advancements",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neuro-advancements",
+    "endpoints": [
+      "/api/neuro-advancements/breakdown",
+      "/api/neuro-advancements/definitions",
+      "/api/neuro-advancements/overview"
+    ],
+    "frontend": "portal-next/app/neuro-advancements/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neuro-ai-ecosystem",
+    "name": "Neuro Ai Ecosystem",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neuro-ai-ecosystem",
+    "endpoints": [
+      "/api/neuro-ai-ecosystem/breakdown",
+      "/api/neuro-ai-ecosystem/definitions",
+      "/api/neuro-ai-ecosystem/overview"
+    ],
+    "frontend": "portal-next/app/neuro-ai-ecosystem/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neuro-scales",
+    "name": "Neuro Scales",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neuro-scales",
+    "endpoints": [
+      "/api/neuro-scales/adl",
+      "/api/neuro-scales/adl/definitions",
+      "/api/neuro-scales/adl/katz",
+      "/api/neuro-scales/adl/lawton",
+      "/api/neuro-scales/bdi",
+      "/api/neuro-scales/bdi/definitions",
+      "/api/neuro-scales/bdi/detail",
+      "/api/neuro-scales/bdi/trend",
+      "/api/neuro-scales/catalog",
+      "/api/neuro-scales/clock-drawing",
+      "/api/neuro-scales/clock-drawing/definitions",
+      "/api/neuro-scales/clock-drawing/detail",
+      "/api/neuro-scales/clock-drawing/trend",
+      "/api/neuro-scales/cpt",
+      "/api/neuro-scales/cpt/definitions",
+      "/api/neuro-scales/cpt/detail",
+      "/api/neuro-scales/cpt/trend",
+      "/api/neuro-scales/digit-span",
+      "/api/neuro-scales/digit-span/definitions",
+      "/api/neuro-scales/digit-span/detail",
+      "/api/neuro-scales/digit-span/trend",
+      "/api/neuro-scales/engel",
+      "/api/neuro-scales/engel/definitions",
+      "/api/neuro-scales/engel/detail",
+      "/api/neuro-scales/engel/trend",
+      "/api/neuro-scales/gcs",
+      "/api/neuro-scales/gcs/definitions",
+      "/api/neuro-scales/gcs/detail",
+      "/api/neuro-scales/gcs/trend",
+      "/api/neuro-scales/gonogo",
+      "/api/neuro-scales/gonogo/definitions",
+      "/api/neuro-scales/gonogo/detail",
+      "/api/neuro-scales/gonogo/trend",
+      "/api/neuro-scales/hamd",
+      "/api/neuro-scales/hamd/definitions",
+      "/api/neuro-scales/hamd/detail",
+      "/api/neuro-scales/hamd/trend",
+      "/api/neuro-scales/ilae",
+      "/api/neuro-scales/ilae/definitions",
+      "/api/neuro-scales/ilae/detail",
+      "/api/neuro-scales/ilae/trend",
+      "/api/neuro-scales/laep",
+      "/api/neuro-scales/laep/definitions",
+      "/api/neuro-scales/laep/detail",
+      "/api/neuro-scales/laep/trend",
+      "/api/neuro-scales/mmas",
+      "/api/neuro-scales/mmas/definitions",
+      "/api/neuro-scales/mmas/detail",
+      "/api/neuro-scales/mmas/trend",
+      "/api/neuro-scales/nback",
+      "/api/neuro-scales/nback/definitions",
+      "/api/neuro-scales/nback/detail",
+      "/api/neuro-scales/nback/trend",
+      "/api/neuro-scales/nihss",
+      "/api/neuro-scales/nihss/definitions",
+      "/api/neuro-scales/nihss/detail",
+      "/api/neuro-scales/nihss/trend",
+      "/api/neuro-scales/panss",
+      "/api/neuro-scales/panss/definitions",
+      "/api/neuro-scales/panss/detail",
+      "/api/neuro-scales/panss/trend",
+      "/api/neuro-scales/psqi",
+      "/api/neuro-scales/psqi/definitions",
+      "/api/neuro-scales/psqi/detail",
+      "/api/neuro-scales/psqi/trend",
+      "/api/neuro-scales/rankin",
+      "/api/neuro-scales/rankin/definitions",
+      "/api/neuro-scales/rankin/detail",
+      "/api/neuro-scales/rankin/trend",
+      "/api/neuro-scales/ravlt",
+      "/api/neuro-scales/ravlt/definitions",
+      "/api/neuro-scales/ravlt/detail",
+      "/api/neuro-scales/ravlt/trend",
+      "/api/neuro-scales/stroop",
+      "/api/neuro-scales/stroop/definitions",
+      "/api/neuro-scales/stroop/detail",
+      "/api/neuro-scales/stroop/trend",
+      "/api/neuro-scales/sudep",
+      "/api/neuro-scales/sudep/definitions",
+      "/api/neuro-scales/sudep/detail",
+      "/api/neuro-scales/sudep/trend",
+      "/api/neuro-scales/tmt",
+      "/api/neuro-scales/tmt/definitions",
+      "/api/neuro-scales/tmt/detail",
+      "/api/neuro-scales/tmt/trend",
+      "/api/neuro-scales/verbal-fluency",
+      "/api/neuro-scales/verbal-fluency/definitions",
+      "/api/neuro-scales/verbal-fluency/detail",
+      "/api/neuro-scales/verbal-fluency/trend",
+      "/api/neuro-scales/wcst",
+      "/api/neuro-scales/wcst/definitions",
+      "/api/neuro-scales/wcst/detail",
+      "/api/neuro-scales/wcst/trend"
+    ],
+    "frontend": "portal-next/app/neuro-scales/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neuro-tests-catalog",
+    "name": "Neuro Tests Catalog",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neuro-tests-catalog",
+    "endpoints": [
+      "/api/neuro-tests-catalog/breakdown",
+      "/api/neuro-tests-catalog/definitions",
+      "/api/neuro-tests-catalog/overview"
+    ],
+    "frontend": "portal-next/app/neuro-tests-catalog/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neurophysiologist",
+    "name": "Neurophysiologist",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neurophysiologist",
+    "endpoints": [
+      "/api/neurophysiologist/breakdown",
+      "/api/neurophysiologist/definitions",
+      "/api/neurophysiologist/overview"
+    ],
+    "frontend": "portal-next/app/neurophysiologist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "neuropsychologist",
+    "name": "Neuropsychologist",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/neuropsychologist",
+    "endpoints": [
+      "/api/neuropsychologist/breakdown",
+      "/api/neuropsychologist/definitions",
+      "/api/neuropsychologist/overview"
+    ],
+    "frontend": "portal-next/app/neuropsychologist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "nphp",
+    "name": "Nphp",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/nphp",
+    "endpoints": [
+      "/api/nphp/breakdown",
+      "/api/nphp/definitions",
+      "/api/nphp/overview"
+    ],
+    "frontend": "portal-next/app/nphp/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "observability",
+    "name": "Observability",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/observability",
+    "endpoints": [
+      "/api/observability/breakdown",
+      "/api/observability/definitions",
+      "/api/observability/overview"
+    ],
+    "frontend": "portal-next/app/observability/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "occupational-therapist",
+    "name": "Occupational Therapist Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/occupational-therapist",
+    "endpoints": [
+      "/api/occupational-therapist/breakdown",
+      "/api/occupational-therapist/definitions",
+      "/api/occupational-therapist/history",
+      "/api/occupational-therapist/overview",
+      "/api/occupational-therapist/save-assessment"
+    ],
+    "frontend": "portal-next/app/occupational-therapist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "onboarding",
+    "name": "Onboarding",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/onboarding",
+    "endpoints": [
+      "/api/onboarding/breakdown",
+      "/api/onboarding/definitions",
+      "/api/onboarding/overview"
+    ],
+    "frontend": "portal-next/app/onboarding/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "onboarding-intake",
+    "name": "Onboarding Intake",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/onboarding-intake",
+    "endpoints": [
+      "/api/onboarding-intake/breakdown",
+      "/api/onboarding-intake/definitions",
+      "/api/onboarding-intake/overview"
+    ],
+    "frontend": "portal-next/app/onboarding-intake/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "openclaw",
+    "name": "Open Claw",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/openclaw",
+    "endpoints": [
+      "/api/openclaw/breakdown",
+      "/api/openclaw/definitions",
+      "/api/openclaw/overview"
+    ],
+    "frontend": "portal-next/app/openclaw/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "patient-appointments",
+    "name": "Patient Appointments",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/patient-appointments",
+    "endpoints": [
+      "/api/patient-appointments/breakdown",
+      "/api/patient-appointments/definitions",
+      "/api/patient-appointments/overview"
+    ],
+    "frontend": "portal-next/app/patient-appointments/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "patient-demographics",
+    "name": "Patient Demographics",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/patient-demographics",
+    "endpoints": [
+      "/api/patient-demographics/breakdown",
+      "/api/patient-demographics/definitions",
+      "/api/patient-demographics/overview"
+    ],
+    "frontend": "portal-next/app/patient-demographics/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "patient-documents",
+    "name": "Patient Documents",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/patient-documents",
+    "endpoints": [
+      "/api/patient-documents/breakdown",
+      "/api/patient-documents/definitions",
+      "/api/patient-documents/overview"
+    ],
+    "frontend": "portal-next/app/patient-documents/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "patient-journey",
+    "name": "Patient Journey",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/patient-journey",
+    "endpoints": [
+      "/api/patient-journey/breakdown",
+      "/api/patient-journey/definitions",
+      "/api/patient-journey/overview"
+    ],
+    "frontend": "portal-next/app/patient-journey/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "patient-mobile",
+    "name": "Patient Mobile App",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/patient-mobile",
+    "endpoints": [
+      "/api/patient-mobile/definitions",
+      "/api/patient-mobile/diary",
+      "/api/patient-mobile/overview"
+    ],
+    "frontend": "portal-next/app/patient-mobile/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "pcd",
+    "name": "PCD",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/pcd",
+    "endpoints": [
+      "/api/pcd/breakdown",
+      "/api/pcd/definitions",
+      "/api/pcd/overview"
+    ],
+    "frontend": "portal-next/app/pcd/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "pediatric-epilepsy",
+    "name": "Pediatric Epilepsy",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/pediatric-epilepsy",
+    "endpoints": [
+      "/api/pediatric-epilepsy/breakdown",
+      "/api/pediatric-epilepsy/definitions",
+      "/api/pediatric-epilepsy/overview"
+    ],
+    "frontend": "portal-next/app/pediatric-epilepsy/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "pharmacist",
+    "name": "Pharmacist",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/pharmacist",
+    "endpoints": [
+      "/api/pharmacist/adherence",
+      "/api/pharmacist/adr",
+      "/api/pharmacist/interactions",
+      "/api/pharmacist/pregnancy-safety",
+      "/api/pharmacist/reconciliation",
+      "/api/pharmacist/tdm"
+    ],
+    "frontend": "portal-next/app/pharmacist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "phase2-multimodal",
+    "name": "Phase2Multimodal",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/phase2-multimodal",
+    "endpoints": [
+      "/api/phase2-multimodal/breakdown",
+      "/api/phase2-multimodal/definitions",
+      "/api/phase2-multimodal/overview"
+    ],
+    "frontend": "portal-next/app/phase2-multimodal/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "phq9-dashboard",
+    "name": "PHQ9Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/phq9-dashboard",
+    "endpoints": [
+      "/api/phq9-dashboard/breakdown",
+      "/api/phq9-dashboard/definitions",
+      "/api/phq9-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/phq9-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "pnes-screening",
+    "name": "PNES Screening",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/pnes-screening",
+    "endpoints": [
+      "/api/pnes-screening/breakdown",
+      "/api/pnes-screening/definitions",
+      "/api/pnes-screening/overview"
+    ],
+    "frontend": "portal-next/app/pnes-screening/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "population-health",
+    "name": "Population Health",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/population-health",
+    "endpoints": [
+      "/api/population-health/breakdown",
+      "/api/population-health/definitions",
+      "/api/population-health/overview"
+    ],
+    "frontend": "portal-next/app/population-health/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "presurgical-evaluation",
+    "name": "Pre Surgical Evaluation",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/presurgical-evaluation",
+    "endpoints": [
+      "/api/presurgical-evaluation/breakdown",
+      "/api/presurgical-evaluation/definitions",
+      "/api/presurgical-evaluation/overview"
+    ],
+    "frontend": "portal-next/app/presurgical-evaluation/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "production-issues",
+    "name": "Production Issues",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/production-issues",
+    "endpoints": [
+      "/api/production-issues/breakdown",
+      "/api/production-issues/definitions",
+      "/api/production-issues/overview"
+    ],
+    "frontend": "portal-next/app/production-issues/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "production-monitoring",
+    "name": "Production Monitoring",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/production-monitoring",
+    "endpoints": [
+      "/api/production-monitoring/breakdown",
+      "/api/production-monitoring/definitions",
+      "/api/production-monitoring/overview"
+    ],
+    "frontend": "portal-next/app/production-monitoring/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "psychiatrist",
+    "name": "Psychiatrist Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/psychiatrist",
+    "endpoints": [
+      "/api/psychiatrist/breakdown",
+      "/api/psychiatrist/definitions",
+      "/api/psychiatrist/overview",
+      "/api/psychiatrist/threshold-flags"
+    ],
+    "frontend": "portal-next/app/psychiatrist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "qa-test-suite",
+    "name": "QA Test Suite",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/qa-test-suite",
+    "endpoints": [
+      "/api/qa-test-suite/breakdown",
+      "/api/qa-test-suite/definitions",
+      "/api/qa-test-suite/overview"
+    ],
+    "frontend": "portal-next/app/qa-test-suite/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "qolie31-dashboard",
+    "name": "QOLIE31Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/qolie31-dashboard",
+    "endpoints": [
+      "/api/qolie31-dashboard/breakdown",
+      "/api/qolie31-dashboard/definitions",
+      "/api/qolie31-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/qolie31-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "r-ipo",
+    "name": "Role IPO",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/r-ipo",
+    "endpoints": [
+      "/api/r-ipo/breakdown",
+      "/api/r-ipo/definitions",
+      "/api/r-ipo/overview"
+    ],
+    "frontend": "portal-next/app/r-ipo/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "radiologist",
+    "name": "Radiologist Dashboard",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/radiologist",
+    "endpoints": [
+      "/api/radiologist/breakdown",
+      "/api/radiologist/definitions",
+      "/api/radiologist/overview"
+    ],
+    "frontend": "portal-next/app/radiologist/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "raw-eeg-waveform",
+    "name": "Raw EEG Waveform",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/raw-eeg-waveform",
+    "endpoints": [
+      "/api/raw-eeg-waveform/breakdown",
+      "/api/raw-eeg-waveform/definitions",
+      "/api/raw-eeg-waveform/overview"
+    ],
+    "frontend": "portal-next/app/raw-eeg-waveform/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "recording-conditions",
+    "name": "Recording Conditions",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/recording-conditions",
+    "endpoints": [
+      "/api/recording-conditions/breakdown",
+      "/api/recording-conditions/definitions",
+      "/api/recording-conditions/overview"
+    ],
+    "frontend": "portal-next/app/recording-conditions/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "recovery-trajectory",
+    "name": "Recovery Trajectory",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/recovery-trajectory",
+    "endpoints": [
+      "/api/recovery-trajectory/breakdown",
+      "/api/recovery-trajectory/definitions",
+      "/api/recovery-trajectory/overview"
+    ],
+    "frontend": "portal-next/app/recovery-trajectory/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "referral-records",
+    "name": "Referral Records",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/referral-records",
+    "endpoints": [
+      "/api/referral-records/breakdown",
+      "/api/referral-records/definitions",
+      "/api/referral-records/overview"
+    ],
+    "frontend": "portal-next/app/referral-records/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "referral-triage",
+    "name": "Referral Triage",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/referral-triage",
+    "endpoints": [
+      "/api/referral-triage/breakdown",
+      "/api/referral-triage/definitions",
+      "/api/referral-triage/overview"
+    ],
+    "frontend": "portal-next/app/referral-triage/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "referrer-notify",
+    "name": "Referrer Notify",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/referrer-notify",
+    "endpoints": [
+      "/api/referrer-notify/breakdown",
+      "/api/referrer-notify/definitions",
+      "/api/referrer-notify/overview"
+    ],
+    "frontend": "portal-next/app/referrer-notify/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "regulatory-compliance",
+    "name": "Regulatory Compliance",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/regulatory-compliance",
+    "endpoints": [
+      "/api/regulatory-compliance/breakdown",
+      "/api/regulatory-compliance/definitions",
+      "/api/regulatory-compliance/overview"
+    ],
+    "frontend": "portal-next/app/regulatory-compliance/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "regulatory-submissions",
+    "name": "Regulatory Submissions",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/regulatory-submissions",
+    "endpoints": [
+      "/api/regulatory-submissions/breakdown",
+      "/api/regulatory-submissions/definitions",
+      "/api/regulatory-submissions/overview"
+    ],
+    "frontend": "portal-next/app/regulatory-submissions/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "rehab-goals",
+    "name": "Rehab Goals",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/rehab-goals",
+    "endpoints": [
+      "/api/rehab-goals/breakdown",
+      "/api/rehab-goals/definitions",
+      "/api/rehab-goals/overview"
+    ],
+    "frontend": "portal-next/app/rehab-goals/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "rehab-plans",
+    "name": "Rehab Plans",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/rehab-plans",
+    "endpoints": [
+      "/api/rehab-plans/breakdown",
+      "/api/rehab-plans/definitions",
+      "/api/rehab-plans/overview"
+    ],
+    "frontend": "portal-next/app/rehab-plans/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "report-layout",
+    "name": "Report Layout",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/report-layout",
+    "endpoints": [
+      "/api/report-layout/breakdown",
+      "/api/report-layout/definitions",
+      "/api/report-layout/overview"
+    ],
+    "frontend": "portal-next/app/report-layout/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "research-coordinator",
+    "name": "Research Coordinator",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/research-coordinator",
+    "endpoints": [
+      "/api/research-coordinator/breakdown",
+      "/api/research-coordinator/definitions",
+      "/api/research-coordinator/overview"
+    ],
+    "frontend": "portal-next/app/research-coordinator/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "responsible-ai-dashboard",
+    "name": "Responsible AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/responsible-ai-dashboard",
+    "endpoints": [
+      "/api/responsible-ai-dashboard/breakdown",
+      "/api/responsible-ai-dashboard/definitions",
+      "/api/responsible-ai-dashboard/overview"
+    ],
+    "frontend": "portal-next/app/responsible-ai-dashboard/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "role-challenges",
+    "name": "Role Challenges",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/role-challenges",
+    "endpoints": [
+      "/api/role-challenges/breakdown",
+      "/api/role-challenges/definitions",
+      "/api/role-challenges/overview"
+    ],
+    "frontend": "portal-next/app/role-challenges/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "role-dashboards",
+    "name": "Role Dashboards",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/role-dashboards",
+    "endpoints": [
+      "/api/role-dashboards/breakdown",
+      "/api/role-dashboards/definitions",
+      "/api/role-dashboards/overview"
+    ],
+    "frontend": "portal-next/app/role-dashboards/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "role-process-flows",
+    "name": "Role Process Flows",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/role-process-flows",
+    "endpoints": [
+      "/api/role-process-flows/breakdown",
+      "/api/role-process-flows/definitions",
+      "/api/role-process-flows/overview"
+    ],
+    "frontend": "portal-next/app/role-process-flows/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "role-specs",
+    "name": "Role Specs",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/role-specs",
+    "endpoints": [
+      "/api/role-specs/breakdown",
+      "/api/role-specs/definitions",
+      "/api/role-specs/overview"
+    ],
+    "frontend": "portal-next/app/role-specs/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "role-tests",
+    "name": "Role Tests",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/role-tests",
+    "endpoints": [
+      "/api/role-tests/breakdown",
+      "/api/role-tests/definitions",
+      "/api/role-tests/overview"
+    ],
+    "frontend": "portal-next/app/role-tests/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "safety-network",
+    "name": "Safety Network",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/safety-network",
+    "endpoints": [
+      "/api/safety-network/breakdown",
+      "/api/safety-network/definitions",
+      "/api/safety-network/overview"
+    ],
+    "frontend": "portal-next/app/safety-network/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "scheduled-jobs",
+    "name": "Scheduled Jobs",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/scheduled-jobs",
+    "endpoints": [
+      "/api/scheduled-jobs/breakdown",
+      "/api/scheduled-jobs/definitions",
+      "/api/scheduled-jobs/overview"
+    ],
+    "frontend": "portal-next/app/scheduled-jobs/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "sec-ops",
+    "name": "Sec Ops",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/sec-ops",
+    "endpoints": [
+      "/api/sec-ops/breakdown",
+      "/api/sec-ops/definitions",
+      "/api/sec-ops/overview"
+    ],
+    "frontend": "portal-next/app/sec-ops/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "secure-messaging",
+    "name": "Secure Messaging",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/secure-messaging",
+    "endpoints": [
+      "/api/secure-messaging/breakdown",
+      "/api/secure-messaging/definitions",
+      "/api/secure-messaging/overview"
+    ],
+    "frontend": "portal-next/app/secure-messaging/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-band",
+    "name": "Seizure Band",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-band",
+    "endpoints": [
+      "/api/seizure-band/breakdown",
+      "/api/seizure-band/definitions",
+      "/api/seizure-band/overview"
+    ],
+    "frontend": "portal-next/app/seizure-band/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-diary",
+    "name": "Seizure Diary",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-diary",
+    "endpoints": [
+      "/api/seizure-diary/{patient_id}"
+    ],
+    "frontend": "portal-next/app/seizure-diary/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-forecasting",
+    "name": "Seizure Forecasting",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-forecasting",
+    "endpoints": [
+      "/api/seizure-forecasting/definitions",
+      "/api/seizure-forecasting/overview",
+      "/api/seizure-forecasting/patients"
+    ],
+    "frontend": "portal-next/app/seizure-forecasting/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-metadata",
+    "name": "Seizure Metadata",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-metadata",
+    "endpoints": [
+      "/api/seizure-metadata/breakdown",
+      "/api/seizure-metadata/definitions",
+      "/api/seizure-metadata/overview"
+    ],
+    "frontend": "portal-next/app/seizure-metadata/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-prediction",
+    "name": "Seizure Prediction",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-prediction",
+    "endpoints": [
+      "/api/seizure-prediction/breakdown",
+      "/api/seizure-prediction/definitions",
+      "/api/seizure-prediction/overview"
+    ],
+    "frontend": "portal-next/app/seizure-prediction/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-semiology",
+    "name": "Seizure Semiology",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-semiology",
+    "endpoints": [
+      "/api/seizure-semiology/breakdown",
+      "/api/seizure-semiology/definitions",
+      "/api/seizure-semiology/overview"
+    ],
+    "frontend": "portal-next/app/seizure-semiology/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-timeline",
+    "name": "Seizure Timeline",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-timeline",
+    "endpoints": [
+      "/api/seizure-timeline/definitions",
+      "/api/seizure-timeline/events",
+      "/api/seizure-timeline/overview"
+    ],
+    "frontend": "portal-next/app/seizure-timeline/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "seizure-triggers",
+    "name": "Seizure Trigger Logs",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/seizure-triggers",
+    "endpoints": [
+      "/api/seizure-triggers/breakdown",
+      "/api/seizure-triggers/definitions",
+      "/api/seizure-triggers/overview"
+    ],
+    "frontend": "portal-next/app/seizure-triggers/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "shadow-ai",
+    "name": "Shadow AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/shadow-ai",
+    "endpoints": [
+      "/api/shadow-ai/breakdown",
+      "/api/shadow-ai/definitions",
+      "/api/shadow-ai/overview"
+    ],
+    "frontend": "portal-next/app/shadow-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "simulations",
+    "name": "Simulations",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/simulations",
+    "endpoints": [
+      "/api/simulations/breakdown",
+      "/api/simulations/definitions",
+      "/api/simulations/overview"
+    ],
+    "frontend": "portal-next/app/simulations/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "slc25a4-peoa1",
+    "name": "Slc25a4Peoa1",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/slc25a4-peoa1",
+    "endpoints": [
+      "/api/slc25a4-peoa1/breakdown",
+      "/api/slc25a4-peoa1/definitions",
+      "/api/slc25a4-peoa1/overview"
+    ],
+    "frontend": "portal-next/app/slc25a4-peoa1/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "sleep-stage-analysis",
+    "name": "Sleep Stage Analysis",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/sleep-stage-analysis",
+    "endpoints": [
+      "/api/sleep-stage-analysis/breakdown",
+      "/api/sleep-stage-analysis/definitions",
+      "/api/sleep-stage-analysis/overview"
+    ],
+    "frontend": "portal-next/app/sleep-stage-analysis/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "smartwatch",
+    "name": "Smartwatch",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/smartwatch",
+    "endpoints": [
+      "/api/smartwatch/breakdown",
+      "/api/smartwatch/definitions",
+      "/api/smartwatch/overview"
+    ],
+    "frontend": "portal-next/app/smartwatch/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "social-worker",
+    "name": "Social Worker",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/social-worker",
+    "endpoints": [
+      "/api/social-worker/benefits-vocational",
+      "/api/social-worker/caregiver-burden",
+      "/api/social-worker/sdoh-screening",
+      "/api/social-worker/treatment-barriers"
+    ],
+    "frontend": "portal-next/app/social-worker/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "stories-tests",
+    "name": "Stories Tests",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/stories-tests",
+    "endpoints": [
+      "/api/stories-tests/breakdown",
+      "/api/stories-tests/definitions",
+      "/api/stories-tests/overview"
+    ],
+    "frontend": "portal-next/app/stories-tests/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "sudep-risk",
+    "name": "Sudep Risk",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/sudep-risk",
+    "endpoints": [
+      "/api/sudep-risk/breakdown",
+      "/api/sudep-risk/definitions",
+      "/api/sudep-risk/overview"
+    ],
+    "frontend": "portal-next/app/sudep-risk/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "system-health",
+    "name": "System Health",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/system-health",
+    "endpoints": [
+      "/api/system-health/breakdown",
+      "/api/system-health/definitions",
+      "/api/system-health/overview"
+    ],
+    "frontend": "portal-next/app/system-health/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "tele-rehab",
+    "name": "Tele Rehab",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/tele-rehab",
+    "endpoints": [
+      "/api/tele-rehab/breakdown",
+      "/api/tele-rehab/definitions",
+      "/api/tele-rehab/overview"
+    ],
+    "frontend": "portal-next/app/tele-rehab/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "temporal-approval",
+    "name": "Temporal Approval",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/temporal-approval",
+    "endpoints": [
+      "/api/temporal-approval/breakdown",
+      "/api/temporal-approval/definitions",
+      "/api/temporal-approval/overview"
+    ],
+    "frontend": "portal-next/app/temporal-approval/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "therapy",
+    "name": "Therapy",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/therapy",
+    "endpoints": [
+      "/api/therapy/definitions",
+      "/api/therapy/exercises",
+      "/api/therapy/meditation",
+      "/api/therapy/physio",
+      "/api/therapy/rehab"
+    ],
+    "frontend": "portal-next/app/therapy/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "time-frequency",
+    "name": "Time Frequency",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/time-frequency",
+    "endpoints": [
+      "/api/time-frequency/breakdown",
+      "/api/time-frequency/definitions",
+      "/api/time-frequency/overview"
+    ],
+    "frontend": "portal-next/app/time-frequency/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "token-cost",
+    "name": "Token Cost",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/token-cost",
+    "endpoints": [
+      "/api/token-cost/breakdown",
+      "/api/token-cost/budget",
+      "/api/token-cost/definitions",
+      "/api/token-cost/overview"
+    ],
+    "frontend": "portal-next/app/token-cost/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "traces",
+    "name": "Traces",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/traces",
+    "endpoints": [
+      "/api/traces/breakdown",
+      "/api/traces/definitions",
+      "/api/traces/overview"
+    ],
+    "frontend": "portal-next/app/traces/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "transaction-log",
+    "name": "Transaction Log",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/transaction-log",
+    "endpoints": [
+      "/api/transaction-log/breakdown",
+      "/api/transaction-log/definitions",
+      "/api/transaction-log/overview"
+    ],
+    "frontend": "portal-next/app/transaction-log/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "transfer-learning",
+    "name": "Transfer Learning",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/transfer-learning",
+    "endpoints": [
+      "/api/transfer-learning/breakdown",
+      "/api/transfer-learning/definitions",
+      "/api/transfer-learning/overview"
+    ],
+    "frontend": "portal-next/app/transfer-learning/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "treatment-efficacy",
+    "name": "Treatment Efficacy",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/treatment-efficacy",
+    "endpoints": [
+      "/api/treatment-efficacy/breakdown",
+      "/api/treatment-efficacy/definitions",
+      "/api/treatment-efficacy/overview"
+    ],
+    "frontend": "portal-next/app/treatment-efficacy/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "trigger-logs",
+    "name": "Trigger Logs",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/trigger-logs",
+    "endpoints": [
+      "/api/trigger-logs/breakdown",
+      "/api/trigger-logs/definitions",
+      "/api/trigger-logs/overview"
+    ],
+    "frontend": "portal-next/app/trigger-logs/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "twnk-peoa3",
+    "name": "Twnk Peoa3",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/twnk-peoa3",
+    "endpoints": [
+      "/api/twnk-peoa3/breakdown",
+      "/api/twnk-peoa3/definitions",
+      "/api/twnk-peoa3/overview"
+    ],
+    "frontend": "portal-next/app/twnk-peoa3/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "validation-studies",
+    "name": "Validation Studies",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/validation-studies",
+    "endpoints": [
+      "/api/validation-studies/breakdown",
+      "/api/validation-studies/definitions",
+      "/api/validation-studies/overview"
+    ],
+    "frontend": "portal-next/app/validation-studies/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "vector-db",
+    "name": "Vector DB",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/vector-db",
+    "endpoints": [
+      "/api/vector-db/collections",
+      "/api/vector-db/definitions",
+      "/api/vector-db/operations",
+      "/api/vector-db/overview"
+    ],
+    "frontend": "portal-next/app/vector-db/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "video-correlation",
+    "name": "Video Correlation",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/video-correlation",
+    "endpoints": [
+      "/api/video-correlation/breakdown",
+      "/api/video-correlation/definitions",
+      "/api/video-correlation/overview"
+    ],
+    "frontend": "portal-next/app/video-correlation/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "video-eeg",
+    "name": "Video EEG",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/video-eeg",
+    "endpoints": [
+      "/api/video-eeg/breakdown",
+      "/api/video-eeg/definitions",
+      "/api/video-eeg/overview"
+    ],
+    "frontend": "portal-next/app/video-eeg/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "voice-ai",
+    "name": "Voice AI",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/voice-ai",
+    "endpoints": [
+      "/api/voice-ai/breakdown",
+      "/api/voice-ai/definitions",
+      "/api/voice-ai/overview"
+    ],
+    "frontend": "portal-next/app/voice-ai/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "wearable-devices",
+    "name": "Wearable Devices",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/wearable-devices",
+    "endpoints": [
+      "/api/wearable-devices/breakdown",
+      "/api/wearable-devices/definitions",
+      "/api/wearable-devices/overview"
+    ],
+    "frontend": "portal-next/app/wearable-devices/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "wearable-readings",
+    "name": "Wearable Readings",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/wearable-readings",
+    "endpoints": [
+      "/api/wearable-readings/breakdown",
+      "/api/wearable-readings/definitions",
+      "/api/wearable-readings/overview"
+    ],
+    "frontend": "portal-next/app/wearable-readings/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "wearables-digital-twin",
+    "name": "Wearables Digital Twin",
+    "status": "built",
+    "category": "clinical",
+    "api_prefix": "/api/wearables-digital-twin",
+    "endpoints": [
+      "/api/wearables-digital-twin/breakdown",
+      "/api/wearables-digital-twin/definitions",
+      "/api/wearables-digital-twin/overview"
+    ],
+    "frontend": "portal-next/app/wearables-digital-twin/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "workbench",
+    "name": "Workbench",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/workbench",
+    "endpoints": [
+      "/api/workbench/breakdown",
+      "/api/workbench/definitions",
+      "/api/workbench/overview"
+    ],
+    "frontend": "portal-next/app/workbench/page.jsx",
+    "registered": "2026-09-03"
+  },
+  {
+    "id": "workflow",
+    "name": "Workflow",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/workflow",
+    "endpoints": [
+      "/api/workflow/breakdown",
+      "/api/workflow/definitions",
+      "/api/workflow/overview"
+    ],
+    "frontend": "portal-next/app/workflow/page.jsx",
+    "registered": "2026-09-03"
   }
 ]
