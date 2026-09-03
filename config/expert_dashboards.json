@@ -14349,5 +14349,22 @@
     "built_date": "2026-09-03",
     "notes": "MT-TP tRNA-Pro; OMIM *590016; L-strand rCRS 15956-16023; Combined CI+CIV Deficiency; FINAL tRNA in mt-genome; L-strand NGS pitfall MANDATORY QC; PARS2 nuclear DDx; 40-patient cohort seed-801; 3 endpoints verified 200",
     "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
+  },
+  {
+    "id": "mttf",
+    "status": "built",
+    "title": "MT-TF tRNA-Phe Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance FIRST-tRNA-in-Mitochondrial-Genome m.611TC-Most-Common-30pct-Anticodon-Loop-Stem-Junction H-strand-rCRS-577-647 D-loop-Adjacent FARS2-Nuclear-DDx-Neonatal-Epileptic-Encephalopathy Maternal-Inheritance",
+    "route": "/mttf",
+    "api_base": "/api/mttf",
+    "endpoints": [
+      "/api/mttf/overview",
+      "/api/mttf/breakdown",
+      "/api/mttf/definitions"
+    ],
+    "seed": 803,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "notes": "MT-TF tRNA-Phe; OMIM *590070; H-strand rCRS 577-647; Combined CI+CIV Deficiency; FIRST tRNA in mt-genome; D-loop adjacent; No L-strand NGS pitfall (H-strand); FARS2 nuclear DDx (neonatal epileptic encephalopathy NOT adult CPEO); 40-patient cohort seed-803; 3 endpoints verified 200",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
   }
 ]

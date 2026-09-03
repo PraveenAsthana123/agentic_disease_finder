@@ -42140,6 +42140,35 @@ async def mttp_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TF — 40-patient cohort seed-803; 3 endpoints /api/mttf/overview|breakdown|definitions
+@app.get("/api/mttf/overview")
+async def mttf_overview():
+    """MT-TF tRNA-Phe Combined CI+CIV Deficiency — CPEO / Myopathy / Exercise Intolerance — m.611TC most common — H-strand rCRS 577-647 — FIRST tRNA in mitochondrial genome — D-loop adjacent — FARS2 nuclear DDx (neonatal encephalopathy) — 40-patient cohort seed-803; 3 endpoints /api/mttf/overview|breakdown|definitions."""
+    try:
+        import scripts.mttf_dashboard as mttf_
+        return _json_safe(mttf_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttf/breakdown")
+async def mttf_breakdown():
+    try:
+        import scripts.mttf_dashboard as mttf_
+        return _json_safe(mttf_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttf/definitions")
+async def mttf_definitions():
+    try:
+        import scripts.mttf_dashboard as mttf_
+        return _json_safe(mttf_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
