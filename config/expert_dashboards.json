@@ -14366,5 +14366,22 @@
     "built_date": "2026-09-03",
     "notes": "MT-TF tRNA-Phe; OMIM *590070; H-strand rCRS 577-647; Combined CI+CIV Deficiency; FIRST tRNA in mt-genome; D-loop adjacent; No L-strand NGS pitfall (H-strand); FARS2 nuclear DDx (neonatal epileptic encephalopathy NOT adult CPEO); 40-patient cohort seed-803; 3 endpoints verified 200",
     "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
+  },
+  {
+    "id": "mttv",
+    "status": "built",
+    "title": "MT-TV tRNA-Val Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance-SNHL SECOND-tRNA-in-Mitochondrial-Genome m.1624CT-Most-Common-30pct-Anticodon-Stem H-strand-rCRS-1602-1670 Between-12S-and-16S-rRNA VARS2-Nuclear-DDx-Neonatal-HCM Maternal-Inheritance",
+    "route": "/mttv",
+    "api_base": "/api/mttv",
+    "endpoints": [
+      "/api/mttv/overview",
+      "/api/mttv/breakdown",
+      "/api/mttv/definitions"
+    ],
+    "seed": 805,
+    "n_patients": 40,
+    "built_date": "2026-09-03",
+    "notes": "MT-TV tRNA-Val; OMIM *590105; H-strand rCRS 1602-1670; Combined CI+CIV Deficiency; SECOND tRNA in mt-genome; Between 12S and 16S rRNA; No L-strand NGS pitfall (H-strand); VARS2 nuclear DDx (neonatal HCM NOT adult CPEO); 40-patient cohort seed-805; 3 endpoints verified 200",
+    "category": "Mitochondrial DNA Gene \u2014 mt-tRNA"
   }
 ]

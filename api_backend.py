@@ -42169,6 +42169,35 @@ async def mttf_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TV — 40-patient cohort seed-805; 3 endpoints /api/mttv/overview|breakdown|definitions
+@app.get("/api/mttv/overview")
+async def mttv_overview():
+    """MT-TV tRNA-Val Combined CI+CIV Deficiency — CPEO / Myopathy / Exercise Intolerance — m.1624CT most common — H-strand rCRS 1602-1670 — SECOND tRNA in mitochondrial genome — between 12S and 16S rRNA — VARS2 nuclear DDx (neonatal HCM) — 40-patient cohort seed-805; 3 endpoints /api/mttv/overview|breakdown|definitions."""
+    try:
+        import scripts.mttv_dashboard as mttv_
+        return _json_safe(mttv_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttv/breakdown")
+async def mttv_breakdown():
+    try:
+        import scripts.mttv_dashboard as mttv_
+        return _json_safe(mttv_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mttv/definitions")
+async def mttv_definitions():
+    try:
+        import scripts.mttv_dashboard as mttv_
+        return _json_safe(mttv_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
