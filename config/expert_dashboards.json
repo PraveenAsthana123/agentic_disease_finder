@@ -14392,5 +14392,14 @@
     "route": "/mtti",
     "api": "/api/mtti/overview",
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mttq",
+    "name": "MT-TQ tRNA-Gln Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance FIFTH-tRNA-in-Mitochondrial-Genome L-strand-NGS-Pitfall-MANDATORY MT-TI-Junction-Overlap-4329-4331 QARS2-Nuclear-DDx-Neonatal-Encephalopathy L-strand-rCRS-4329-4400 Maternal-Inheritance",
+    "route": "/mttq",
+    "api": "/api/mttq/overview",
+    "status": "built",
+    "seed": 809,
+    "registered": "2026-09-03"
   }
 ]
