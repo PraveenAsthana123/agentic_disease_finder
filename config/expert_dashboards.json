@@ -14250,5 +14250,29 @@
     "cohort_n": 40,
     "seed": 787,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "mtth",
+    "name": "MT-TH tRNA-His Combined-CI-CIV-Deficiency Leigh-like-Syndrome CPEO-Chronic-Progressive-External-Ophthalmoplegia Cardiomyopathy m.12147GA-Most-Common-D-loop-Variable-Loop-Junction NO-SLE-KEY-DDx-MELAS NO-MSL-KEY-DDx-MERRF GUG-Anticodon 69nt-RNA-Gene H-strand-rCRS-12138-12206 Maternal-Inheritance",
+    "status": "built",
+    "gene": "MT-TH",
+    "alias": "tRNA-His",
+    "omim_gene": "590080",
+    "chromosome": "mtDNA-rCRS-12138-12206-H-strand",
+    "inheritance": "MATERNAL",
+    "category": "mitochondrial_disease",
+    "api_prefix": "/api/mtth",
+    "endpoints": [
+      "/api/mtth/overview",
+      "/api/mtth/breakdown",
+      "/api/mtth/definitions"
+    ],
+    "portal_path": "/mtth",
+    "frontend": "portal-next/app/mtth/page.jsx",
+    "script": "scripts/mtth_dashboard.py",
+    "seed": 791,
+    "note": "Total: 931 dashboards",
+    "built_note": "Built 2026-09-03. MT-TH tRNA-His Combined CI+CIV Deficiency / Leigh-like Syndrome / CPEO / Cardiomyopathy \u2014 40-patient cohort seed-791; 3 endpoints /api/mtth/overview|breakdown|definitions verified 200; SiteNav wired after MT-TK.",
+    "registered": "2026-09-03"
   }
 ]

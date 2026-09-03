@@ -41978,6 +41978,33 @@ async def mttk_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TH — 40-patient cohort seed-791; 3 endpoints /api/mtth/overview|breakdown|definitions
+@app.get("/api/mtth/overview")
+async def mtth_overview():
+    """MT-TH tRNA-His Combined CI+CIV Deficiency — Leigh-like Syndrome / CPEO / Cardiomyopathy — m.12147G>A most common — H-strand rCRS 12138-12206 — 40-patient cohort seed-791; 3 endpoints /api/mtth/overview|breakdown|definitions."""
+    try:
+        import scripts.mtth_dashboard as mtth_
+        return _json_safe(mtth_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtth/breakdown")
+async def mtth_breakdown():
+    try:
+        import scripts.mtth_dashboard as mtth_
+        return _json_safe(mtth_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtth/definitions")
+async def mtth_definitions():
+    try:
+        import scripts.mtth_dashboard as mtth_
+        return _json_safe(mtth_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
