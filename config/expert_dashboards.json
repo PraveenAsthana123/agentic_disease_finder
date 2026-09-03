@@ -10346,5 +10346,28 @@
     "category": "metabolic_disease",
     "built_date": "2026-09-02",
     "note": "COX8A structural subunit CIV peripheral rim; brain-dominant (no COX8B in brain); seizures CARDINAL 85%; NO HCM; Hallmann-2016-AnnNeurol first description. Total: 664 dashboards."
+  },
+  {
+    "id": "cox4i1",
+    "name": "COX4I1 PINDAC-Syndrome Exocrine-Pancreatic-Insufficiency Dyserythropoietic-Anaemia Calvarial-Hyperostosis Complex-IV-Deficiency-Nuclear-Type-12 COXPD12 (COX4I1-COX4-Subunit-IV-169aa-17.2kDa-Matrix-Facing-No-TM-Helix-ATP-Allosteric-Site-16q22.1 / OMIM-Gene-123864-Disease-COXPD12-616501 / AR-Biallelic-Both-Sexes-Equal / Homozygous-COX4I1-Deletion-16q22-Bedouin-Founder-PINDAC-35pct / pArg78Stop-c232CT-Matrix-Truncating-Severe-20pct / pGlu36Lys-c106GA-MTS-Import-Disruption-18pct / pGly108Arg-c322GC-Matrix-Beta-Sheet-Core-15pct / Biallelic-Null-12pct / PINDAC-TRIAD-PATHOGNOMONIC-EPI-Dyserythropoietic-Calvarial / ATP-Allosteric-Site-UNIQUE-CIV-Subunit / Isolated-COX-15-30pct-Residual / NO-HCM / NO-Fanconi / NO-Ataxia / 40-patient-cohort-seed-641 / 16q22.1 / OMIM-Gene-COX4I1-123864-Disease-COXPD12-616501)",
+    "gene": "COX4I1",
+    "alias": "COX4 \u00b7 COX IV-1 \u00b7 Subunit IV \u00b7 PINDAC gene",
+    "omim_gene": "123864",
+    "omim_disease": "616501",
+    "disease": "Complex IV Deficiency, Nuclear Type 12 (COXPD12) / PINDAC Syndrome",
+    "chromosome": "16q22.1",
+    "inheritance": "AR",
+    "status": "built",
+    "route": "/cox4i1",
+    "api": "/api/cox4i1",
+    "endpoints": [
+      "/api/cox4i1/overview",
+      "/api/cox4i1/breakdown",
+      "/api/cox4i1/definitions"
+    ],
+    "cohort_n": 40,
+    "seed": 641,
+    "registered": "2026-09-02",
+    "notes": "3 endpoints verified 200; SiteNav wired after COX8A before COA3; expert_dashboards.json count 664->665"
   }
 ]
