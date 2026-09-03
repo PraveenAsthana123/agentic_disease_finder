@@ -41296,6 +41296,33 @@ async def coa5_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cox8a/overview")
+async def cox8a_overview():
+    try:
+        import scripts.cox8a_dashboard as cox8a_
+        return _json_safe(cox8a_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox8a/breakdown")
+async def cox8a_breakdown():
+    try:
+        import scripts.cox8a_dashboard as cox8a_
+        return _json_safe(cox8a_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cox8a/definitions")
+async def cox8a_definitions():
+    try:
+        import scripts.cox8a_dashboard as cox8a_
+        return _json_safe(cox8a_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

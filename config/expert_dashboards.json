@@ -10318,5 +10318,33 @@
     "nav": "SiteNav wired after COA3",
     "built_date": "2026-09-02",
     "note": "HCM-dominant (88%), MT-CO1 co-translational assembly branch, COXPD11, 40-patient cohort seed-629"
+  },
+  {
+    "id": "cox8a",
+    "name": "COX8A Progressive Epileptic Encephalopathy Leigh Syndrome Complex IV Deficiency Nuclear Type 15 COXPD15 (COX8A-Subunit-VIIIa-70aa-8kDa-Single-TM-Helix-IMM-Anchored-IMS-Facing-C-Terminus-11q13.1 / OMIM-Gene-123870-Disease-COXPD15-619062 / AR-Biallelic-Both-Sexes-Equal / pArg20Gln-c59GA-TM-Region-NorthAfrican-ME-Founder-30pct / Structural-Subunit-Peripheral-Rim / Brain-Dominant-COX8B-Heart-Compensation / Seizures-85pct-CARDINAL / Leigh-MRI-80pct / NO-HCM / NO-Hepatopathy / NO-Tubulopathy / NO-Ataxia)",
+    "gene": "COX8A",
+    "alias": "COX8 / Subunit VIIIa",
+    "omim_gene": "123870",
+    "omim_disease": "619062",
+    "disease": "Complex IV Deficiency, Nuclear Type 15 (COXPD15) \u2014 Progressive Epileptic Encephalopathy / Leigh Syndrome",
+    "chromosome": "11q13.1",
+    "inheritance": "AR",
+    "seed": 633,
+    "color": "#00695c",
+    "status": "built",
+    "endpoints": [
+      "/api/cox8a/overview",
+      "/api/cox8a/breakdown",
+      "/api/cox8a/definitions"
+    ],
+    "api_prefix": "/api/cox8a",
+    "frontend": "portal-next/app/cox8a/page.jsx",
+    "script": "scripts/cox8a_dashboard.py",
+    "nav_wired": true,
+    "cohort_seed": 633,
+    "cohort_size": 40,
+    "category": "metabolic_disease",
+    "built_date": "2026-09-02",
+    "note": "COX8A structural subunit CIV peripheral rim; brain-dominant (no COX8B in brain); seizures CARDINAL 85%; NO HCM; Hallmann-2016-AnnNeurol first description. Total: 664 dashboards."
   }
 ]
