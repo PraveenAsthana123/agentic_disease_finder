@@ -14465,7 +14465,8 @@
       "/api/mttc/breakdown",
       "/api/mttc/definitions"
     ],
-    "registered": "2026-09-03"
+    "registered": "2026-09-03",
+    "id": "mttc"
   },
   {
     "name": "MT-TY tRNA-Tyr Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance ELEVENTH-tRNA-in-Mitochondrial-Genome L-strand-NGS-Pitfall FOURTH-and-FINAL-of-FOUR-Consecutive-L-strand-tRNAs YARS2-DDx-MLASA2-Sideroblastic-Anemia-NOT-Adult-CPEO L-strand-rCRS-5826-5891",
@@ -14478,7 +14479,8 @@
       "/api/mtty/breakdown",
       "/api/mtty/definitions"
     ],
-    "registered": "2026-09-03"
+    "registered": "2026-09-03",
+    "id": "mtty"
   },
   {
     "id": "mtts1",
@@ -14519,5 +14521,19 @@
     "description": "MT-TD Dashboard \u2014 40-patient cohort seed-825, 3 endpoints /api/mttd/overview|breakdown|definitions",
     "omim": "*590015",
     "seed": 825
+  },
+  {
+    "id": "mttg",
+    "name": "MT-TG tRNA-Gly Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance FIFTEENTH-tRNA-in-Mitochondrial-Genome H-strand-0nt-Gap-MT-CO3-AND-MT-ND3-Both-Shared-Boundaries GARS2-Nuclear-DDx-Combined-OXPHOS-NOT-Adult-CPEO KSS-Common-4977bp-Deletion H-strand-rCRS-9991-10058 Maternal-Inheritance",
+    "status": "built",
+    "category": "mt-tRNA",
+    "route": "/mttg",
+    "api_endpoints": [
+      "/api/mttg/overview",
+      "/api/mttg/breakdown",
+      "/api/mttg/definitions"
+    ],
+    "cohort_seed": 827,
+    "n_patients": 40
   }
 ]
