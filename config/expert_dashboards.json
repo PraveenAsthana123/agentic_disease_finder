@@ -14466,5 +14466,18 @@
       "/api/mttc/definitions"
     ],
     "registered": "2026-09-03"
+  },
+  {
+    "name": "MT-TY tRNA-Tyr Combined-CI-CIV-Deficiency CPEO-Myopathy-Exercise-Intolerance ELEVENTH-tRNA-in-Mitochondrial-Genome L-strand-NGS-Pitfall FOURTH-and-FINAL-of-FOUR-Consecutive-L-strand-tRNAs YARS2-DDx-MLASA2-Sideroblastic-Anemia-NOT-Adult-CPEO L-strand-rCRS-5826-5891",
+    "route": "/mtty",
+    "status": "built",
+    "omim": "MT-TY *590100",
+    "seed": 821,
+    "endpoints": [
+      "/api/mtty/overview",
+      "/api/mtty/breakdown",
+      "/api/mtty/definitions"
+    ],
+    "registered": "2026-09-03"
   }
 ]

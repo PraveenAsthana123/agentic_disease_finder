@@ -42392,6 +42392,33 @@ async def mttc_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-TY — 40-patient cohort seed-821; 3 endpoints /api/mtty/overview|breakdown|definitions
+@app.get("/api/mtty/overview")
+async def mtty_overview():
+    """MT-TY tRNA-Tyr Combined CI+CIV Deficiency — CPEO / Myopathy — L-strand rCRS 5826–5891 — ELEVENTH tRNA in mt-genome — FOURTH and FINAL consecutive L-strand tRNA — YARS2 nuclear DDx MLASA2 sideroblastic anemia — 40-patient cohort seed-821; 3 endpoints /api/mtty/overview|breakdown|definitions."""
+    try:
+        import scripts.mtty_dashboard as mtty_
+        return _json_safe(mtty_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtty/breakdown")
+async def mtty_breakdown():
+    try:
+        import scripts.mtty_dashboard as mtty_
+        return _json_safe(mtty_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mtty/definitions")
+async def mtty_definitions():
+    try:
+        import scripts.mtty_dashboard as mtty_
+        return _json_safe(mtty_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
