@@ -41550,6 +41550,35 @@ async def mtnd5_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# MT-ND4 routes — seed-739
+@app.get("/api/mtnd4/overview")
+async def mtnd4_overview():
+    """MT-ND4 Isolated CI Deficiency / LHON-Leigh Overlap — Central Antiporter Module (459aa-13TM) — LHON m.11778G>A #1 worldwide — 40-patient cohort seed-739; 3 endpoints /api/mtnd4/overview|breakdown|definitions."""
+    try:
+        import scripts.mtnd4_dashboard as mtnd4_
+        return _json_safe(mtnd4_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd4/breakdown")
+async def mtnd4_breakdown():
+    try:
+        import scripts.mtnd4_dashboard as mtnd4_
+        return _json_safe(mtnd4_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mtnd4/definitions")
+async def mtnd4_definitions():
+    try:
+        import scripts.mtnd4_dashboard as mtnd4_
+        return _json_safe(mtnd4_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
