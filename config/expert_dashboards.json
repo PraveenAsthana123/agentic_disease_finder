@@ -14871,15 +14871,35 @@
   },
   {
     "id": "gsd-atlas",
-    "title": "GSD-Atlas — Complete 10-Gene Glycogen Storage Disorder Atlas",
+    "title": "GSD-Atlas \u2014 Complete 10-Gene Glycogen Storage Disorder Atlas",
     "status": "built",
     "category": "metabolic_atlas",
-    "genes": ["G6PC", "SLC37A4", "AGL", "GBE1", "PYGM", "PYGL", "PFKM", "PHKA2", "SLC2A2", "GYS2"],
+    "genes": [
+      "G6PC",
+      "SLC37A4",
+      "AGL",
+      "GBE1",
+      "PYGM",
+      "PYGL",
+      "PFKM",
+      "PHKA2",
+      "SLC2A2",
+      "GYS2"
+    ],
     "patients": 400,
     "seeds": "868-877",
     "route": "/api/gsd-atlas",
     "frontend": "/gsd-atlas",
     "built_date": "2026-09-04",
     "notes": "10-gene GSD atlas: GSD Ia/Ib/IIIa-b/IV/V/VI/VII/IXa/XI/0a. 400-patient aggregate (10x40). G6PC-Cornstarch-NO-Glucose-Bolus, SLC37A4-G-CSF-MANDATORY-Neutropenia, AGL-High-Protein, GBE1-Polyglucosan-Liver-Tx-Hepatic-ONLY, PYGM-Sucrose-Trick-Second-Wind, PYGL-BENIGN, PFKM-Hemolysis-HIGH-CARB-PARADOX, PHKA2-X-LINKED-BENIGN, SLC2A2-Fanconi-GLUT2, GYS2-NO-Glycogen-Ketotic-HG"
+  },
+  {
+    "id": "cdg-atlas",
+    "name": "CDG-Atlas \u2014 Complete 10-Gene Congenital Disorders of Glycosylation Atlas",
+    "status": "built",
+    "api": "/api/cdg-atlas/overview|breakdown|definitions",
+    "cohort_n": 400,
+    "seed": "878-887",
+    "registered": "2026-09-04"
   }
 ]

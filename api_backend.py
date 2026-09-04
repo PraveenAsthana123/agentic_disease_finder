@@ -43082,6 +43082,33 @@ async def gsd_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/cdg-atlas/overview")
+async def cdg_atlas_overview():
+    """CDG-Atlas overview KPIs for all 10 congenital disorders of glycosylation genes."""
+    try:
+        import scripts.cdg_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cdg-atlas/breakdown")
+async def cdg_atlas_breakdown():
+    """CDG-Atlas per-gene breakdown for all 10 CDG genes."""
+    try:
+        import scripts.cdg_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cdg-atlas/definitions")
+async def cdg_atlas_definitions():
+    """CDG-Atlas clinical term definitions (14 terms)."""
+    try:
+        import scripts.cdg_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
