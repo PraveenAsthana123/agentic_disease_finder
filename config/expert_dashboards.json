@@ -14852,5 +14852,13 @@
       "emergency_contacts (30 rows)"
     ],
     "built_date": "2026-09-04"
+  },
+  {
+    "id": "lsd-atlas",
+    "name": "LSD-Atlas Complete-8-Gene-Lysosomal-Storage-Disorder-Atlas GBA-Gaucher-ERT-Level-A-GBA-PD-Risk-5-10x GLA-Fabry-X-Linked-Migalastat-Amenable-Only GAA-Pompe-CRIM-Negative-ITI-Mandatory SMPD1-NPA-Type-A-Fatal-NPB-Olipudase-ERT NPC1-VSGP-Cataplexy-Miglustat-SRT-No-ERT GALC-Krabbe-HSCT-Pre-Symptomatic-Only-Psychosine-Neurotoxin ARSA-MLD-Libmeldy-Gene-Therapy-EU-2020-Pseudo-Deficiency HEXA-Tay-Sachs-No-ERT-HexA-HexB-Ratio-Ashkenazi-Carrier-Screening 320-Patient-Aggregate-8x40",
+    "category": "clinical_atlas",
+    "status": "built",
+    "note": "Built scripts/lsd_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 850-857), api_backend.py 3 routes /api/lsd-atlas/overview|breakdown|definitions verified 200, portal-next/app/lsd-atlas/page.jsx + SiteNav wired after UCD-Atlas, expert_dashboards.json count 968->969. Built 2026-09-04.",
+    "maps_to": "/api/lsd-atlas/overview + /api/lsd-atlas/breakdown + /api/lsd-atlas/definitions"
   }
 ]

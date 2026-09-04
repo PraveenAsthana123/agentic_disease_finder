@@ -42999,6 +42999,32 @@ async def ucd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── LSD-Atlas — Complete 8-Gene Lysosomal Storage Disorder Atlas ──────────────
+@app.get("/api/lsd-atlas/overview")
+async def lsd_atlas_overview():
+    try:
+        import scripts.lsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lsd-atlas/breakdown")
+async def lsd_atlas_breakdown():
+    try:
+        import scripts.lsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/lsd-atlas/definitions")
+async def lsd_atlas_definitions():
+    try:
+        import scripts.lsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
