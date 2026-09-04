@@ -42663,6 +42663,31 @@ async def ci_subunit_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cii-deficiency-atlas/overview")
+async def cii_deficiency_atlas_overview():
+    try:
+        import scripts.cii_deficiency_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cii-deficiency-atlas/breakdown")
+async def cii_deficiency_atlas_breakdown():
+    try:
+        import scripts.cii_deficiency_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cii-deficiency-atlas/definitions")
+async def cii_deficiency_atlas_definitions():
+    try:
+        import scripts.cii_deficiency_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

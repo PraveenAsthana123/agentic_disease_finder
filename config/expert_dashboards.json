@@ -14619,5 +14619,22 @@
     "patients": 1680,
     "genes": 42,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "cii-deficiency-atlas",
+    "name": "CII-Deficiency-Atlas Complete-6-Gene-Nuclear-Encoded-Complex-II-Atlas 4-Structural-Subunits-SDHA-SDHB-SDHC-SDHD 2-Assembly-Factors-SDHAF1-SDHAF2 ALL-Nuclear-ZERO-mtDNA CII-ALWAYS-NORMAL-mtDNA-Disorders PGL-PHEO-SDHA-SDHB-SDHC-SDHD-SDHAF2 Leigh-CII-SDHA-SDHAF1 SDHB-Highest-Metastatic-25-40pct SDHD-SDHAF2-Paternal-Imprinting SDHB-IHC-Universal-Surrogate 240-Patient-Aggregate-6x40",
+    "status": "built",
+    "category": "Atlas",
+    "api_endpoints": [
+      "/api/cii-deficiency-atlas/overview",
+      "/api/cii-deficiency-atlas/breakdown",
+      "/api/cii-deficiency-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/cii-deficiency-atlas/page.jsx",
+    "script": "scripts/cii_deficiency_atlas_dashboard.py",
+    "patients": 240,
+    "genes": 6,
+    "registered": "2026-09-03",
+    "note": "Complex II atlas: all 6 nuclear-encoded SDH genes. CII all-nuclear (zero mtDNA). CII always normal in mtDNA disorders. Parental imprinting SDHD/SDHAF2. SDHB IHC universal SDHx surrogate. PGL/PHEO + Leigh dual phenotype."
   }
 ]
