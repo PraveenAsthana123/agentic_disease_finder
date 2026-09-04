@@ -15079,5 +15079,19 @@
     "page": "portal-next/app/nbia-atlas/page.jsx",
     "note": "Built scripts/nbia_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 926-933), api_backend.py 3 routes /api/nbia-atlas/overview|breakdown|definitions verified 200, portal-next/app/nbia-atlas/page.jsx + SiteNav wired after BH4-Atlas, expert_dashboards.json count 977->978. Built 2026-09-04.",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "is-sop-compliance",
+    "name": "IS-SOP Compliance Detail",
+    "status": "built",
+    "category": "operational",
+    "api_prefix": "/api/is-sop-compliance",
+    "endpoints": [
+      "/api/is-sop-compliance/overview",
+      "/api/is-sop-compliance/breakdown",
+      "/api/is-sop-compliance/definitions"
+    ],
+    "frontend": "portal-next/app/is-sop-compliance/page.jsx",
+    "registered": "2026-09-04"
   }
 ]
