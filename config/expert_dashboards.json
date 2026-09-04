@@ -15340,5 +15340,30 @@
     "seeds": "1022-1029",
     "patients": 320,
     "registered": "2026-09-04"
+  },
+  {
+    "id": "lgmd-atlas",
+    "title": "LGMD-Atlas Complete-8-Gene-Limb-Girdle-Muscular-Dystrophy-Atlas",
+    "status": "built",
+    "category": "neuromuscular",
+    "genes": [
+      "CAPN3",
+      "DYSF",
+      "SGCA",
+      "SGCB",
+      "FKRP",
+      "ANO5",
+      "LMNA",
+      "HNRNPDL"
+    ],
+    "patients": 320,
+    "seeds": "1030-1037",
+    "endpoints": [
+      "/api/lgmd-atlas/overview",
+      "/api/lgmd-atlas/breakdown",
+      "/api/lgmd-atlas/definitions"
+    ],
+    "frontend": "/lgmd-atlas",
+    "built_date": "2026-09-04"
   }
 ]
