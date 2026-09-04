@@ -15170,5 +15170,14 @@
     "patients": 320,
     "seeds": "958-965",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "vitamin-atlas",
+    "name": "Vitamin-Responsive Epileptic Encephalopathies Atlas",
+    "status": "built",
+    "api": "/api/vitamin-atlas/overview",
+    "cohort_n": 320,
+    "seed": 966,
+    "registered": "2026-09-04"
   }
 ]

@@ -43367,6 +43367,62 @@ async def homocystinuria_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/leukodystrophy-atlas/overview")
+async def leukodystrophy_atlas_overview():
+    """Leukodystrophy-Atlas overview: 8-Gene Leukodystrophy Atlas (ARSA/MLD, GALC/Krabbe, PLP1/PMD, ABCD1/X-ALD, ASPA/Canavan, GFAP/Alexander, MLC1, EIF2B5/VWM)."""
+    try:
+        import scripts.leukodystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/leukodystrophy-atlas/breakdown")
+async def leukodystrophy_atlas_breakdown():
+    """Leukodystrophy-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.leukodystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/leukodystrophy-atlas/definitions")
+async def leukodystrophy_atlas_definitions():
+    """Leukodystrophy-Atlas clinical term definitions."""
+    try:
+        import scripts.leukodystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/vitamin-atlas/overview")
+async def vitamin_atlas_overview():
+    """Vitamin-Atlas overview: 8-Gene Vitamin-Responsive Epileptic Encephalopathies Atlas (ALDH7A1/PDE, PNPO/PLP-neonatal, PLPBP, TPK1, SLC19A3/BTBGD, BTD/biotinidase, HLCS/MCD, SLC52A2/BVVL)."""
+    try:
+        import scripts.vitamin_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/vitamin-atlas/breakdown")
+async def vitamin_atlas_breakdown():
+    """Vitamin-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.vitamin_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/vitamin-atlas/definitions")
+async def vitamin_atlas_definitions():
+    """Vitamin-Atlas clinical term definitions."""
+    try:
+        import scripts.vitamin_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
