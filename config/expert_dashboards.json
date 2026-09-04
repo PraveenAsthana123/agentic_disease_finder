@@ -14763,5 +14763,15 @@
       "atlas",
       "oxphos"
     ]
+  },
+  {
+    "id": "mdds_atlas",
+    "name": "MDDS-Atlas",
+    "route": "/mdds-atlas",
+    "api": "/api/mdds-atlas",
+    "genes": 13,
+    "patients": 520,
+    "category": "atlas",
+    "built": true
   }
 ]

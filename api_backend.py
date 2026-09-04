@@ -42786,6 +42786,30 @@ async def mtars_deficiency_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/mdds-atlas/overview")
+async def mdds_atlas_overview():
+    try:
+        import scripts.mdds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mdds-atlas/breakdown")
+async def mdds_atlas_breakdown():
+    try:
+        import scripts.mdds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mdds-atlas/definitions")
+async def mdds_atlas_definitions():
+    try:
+        import scripts.mdds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.get("/api/coq10-biosynthesis-atlas/overview")
 async def coq10_biosynthesis_atlas_overview():
     try:
