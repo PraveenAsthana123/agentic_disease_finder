@@ -14772,6 +14772,17 @@
     "genes": 13,
     "patients": 520,
     "category": "atlas",
-    "built": true
+    "built": true,
+    "status": "built"
+  },
+  {
+    "id": "pdc_deficiency_atlas",
+    "name": "PDC-Deficiency-Atlas",
+    "route": "/pdc-deficiency-atlas",
+    "api": "/api/pdc-deficiency-atlas",
+    "genes": 7,
+    "patients": 280,
+    "category": "atlas",
+    "status": "built"
   }
 ]
