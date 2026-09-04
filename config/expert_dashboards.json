@@ -15272,12 +15272,56 @@
     "id": "cmt_atlas",
     "title": "CMT-Atlas Complete-8-Gene-Charcot-Marie-Tooth-Hereditary-Neuropathy-Atlas",
     "category": "Hereditary Neuropathy Atlas",
-    "genes": ["PMP22","MPZ","GJB1","MFN2","SH3TC2","GDAP1","HSPB1","NEFL"],
+    "genes": [
+      "PMP22",
+      "MPZ",
+      "GJB1",
+      "MFN2",
+      "SH3TC2",
+      "GDAP1",
+      "HSPB1",
+      "NEFL"
+    ],
     "patients": 320,
     "seeds": "998-1005",
     "api_prefix": "/api/cmt-atlas",
     "page": "/cmt-atlas",
     "status": "built",
     "built_date": "2026-09-04"
+  },
+  {
+    "id": "pme-atlas",
+    "title": "PME-Atlas \u2014 Complete 8-Gene Progressive Myoclonic Epilepsy Atlas",
+    "category": "Rare Genetic Epilepsy \u2014 Progressive Myoclonic Epilepsy Atlas",
+    "status": "built",
+    "route": "/pme-atlas",
+    "api_endpoints": [
+      "/api/pme-atlas/overview",
+      "/api/pme-atlas/breakdown",
+      "/api/pme-atlas/definitions"
+    ],
+    "genes": [
+      "CSTB",
+      "EPM2A",
+      "NHLRC1",
+      "MT-TK",
+      "SCARB2",
+      "GOSR2",
+      "KCNC1",
+      "PRICKLE1"
+    ],
+    "patient_count": 320,
+    "seeds": [
+      1006,
+      1007,
+      1008,
+      1009,
+      1010,
+      1011,
+      1012,
+      1013
+    ],
+    "description": "CSTB-EPM1-Unverricht-Lundborg-Dodecamer-Repeat-Most-Common-PME-N.Europe EPM2A-Lafora-Laforin-Skin-Biopsy-Lafora-Bodies-PATHOGNOMONIC NHLRC1-Lafora-Type2-Malin-E3-Ligase-Clinically-Identical-EPM2A MT-TK-MERRF-m.8344A>G-Ragged-Red-Fibers-Maternal-Inheritance SCARB2-AMRF-PME-Plus-Nephrotic-Syndrome-UNIQUE-No-GTCS GOSR2-North-Sea-PME-Elevated-CK-Scoliosis-Founder-p.Gly144Trp KCNC1-EPM7-Kv3.1-AD-De-Novo-p.Arg320His-Cerebellar-Atrophy-No-Dementia-LEV-Effective PRICKLE1-EPM1B-AR-PCP-Wnt-ULD-Like-CSTB-Negative-PME",
+    "registered": "2026-09-04"
   }
 ]

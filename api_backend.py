@@ -43534,6 +43534,34 @@ async def cmt_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pme-atlas/overview")
+async def pme_atlas_overview():
+    """PME-Atlas overview: 8-Gene Progressive Myoclonic Epilepsy Atlas (CSTB/ULD, EPM2A/Lafora, NHLRC1/Lafora2, MT-TK/MERRF, SCARB2/AMRF, GOSR2/NorthSea, KCNC1/EPM7, PRICKLE1/EPM1B)."""
+    try:
+        import scripts.pme_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pme-atlas/breakdown")
+async def pme_atlas_breakdown():
+    """PME-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.pme_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pme-atlas/definitions")
+async def pme_atlas_definitions():
+    """PME-Atlas clinical term definitions."""
+    try:
+        import scripts.pme_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
