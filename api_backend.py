@@ -43284,6 +43284,61 @@ async def nbia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ncl-atlas/overview")
+async def ncl_atlas_overview():
+    """NCL-Atlas overview: 8-Gene Neuronal Ceroid Lipofuscinosis (Batten Disease) Atlas."""
+    try:
+        import scripts.ncl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ncl-atlas/breakdown")
+async def ncl_atlas_breakdown():
+    """NCL-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.ncl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ncl-atlas/definitions")
+async def ncl_atlas_definitions():
+    """NCL-Atlas clinical term definitions."""
+    try:
+        import scripts.ncl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/msud-atlas/overview")
+async def msud_atlas_overview():
+    """MSUD-Atlas overview: 8-Gene Maple Syrup Urine Disease & BCAA Disorders Atlas."""
+    try:
+        import scripts.msud_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/msud-atlas/breakdown")
+async def msud_atlas_breakdown():
+    """MSUD-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.msud_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/msud-atlas/definitions")
+async def msud_atlas_definitions():
+    """MSUD-Atlas clinical term definitions."""
+    try:
+        import scripts.msud_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
