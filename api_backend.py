@@ -42859,6 +42859,31 @@ async def coq10_biosynthesis_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cii-subunit-atlas/overview")
+async def cii_subunit_atlas_overview():
+    try:
+        import scripts.cii_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cii-subunit-atlas/breakdown")
+async def cii_subunit_atlas_breakdown():
+    try:
+        import scripts.cii_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cii-subunit-atlas/definitions")
+async def cii_subunit_atlas_definitions():
+    try:
+        import scripts.cii_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

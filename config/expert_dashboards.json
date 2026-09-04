@@ -14784,5 +14784,15 @@
     "patients": 280,
     "category": "atlas",
     "status": "built"
+  },
+  {
+    "id": "cii_subunit_atlas",
+    "name": "CII-Subunit-Atlas",
+    "route": "/cii-subunit-atlas",
+    "api": "/api/cii-subunit-atlas",
+    "genes": 6,
+    "patients": 240,
+    "category": "atlas",
+    "status": "built"
   }
 ]
