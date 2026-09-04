@@ -14977,5 +14977,39 @@
       911
     ],
     "description": "Congenital Hyperinsulinism: K-ATP channel defects, GCK GOF, GLUD1-HHS, HADH-SCHAD, HNF4A-transient, SLC16A1-EIHI, INSR-Donohue"
+  },
+  {
+    "id": "mps-atlas",
+    "name": "MPS-Atlas Complete-8-Gene-Mucopolysaccharidoses-Atlas IDUA-MPS-I-Hurler-HSCT-Under-2yr-Laronidase-NOT-BBB-Corneal-Clouding IDS-Hunter-X-Linked-NO-Corneal-Clouding-Idursulfase-IT-Trials SGSH-Sanfilippo-A-Most-Common-Severe-Behavioral-Dementia-NO-ERT NAGLU-Sanfilippo-B-Same-Phenotype-Tralesinidase-IGFII-Tagged-ERT-Trials GALNS-Morquio-A-NORMAL-IQ-Atlantoaxial-Instability-C-Spine-MRI-MANDATORY-Elosulfase ARSB-Maroteaux-Lamy-NORMAL-IQ-DS-Only-Galsulfase GUSB-Sly-NIHF-Vestronidase-FDA-2017-Biweekly-Triple-GAG HGSNAT-Sanfilippo-C-Transmembrane-Enzyme-ERT-INAPPLICABLE-Gene-Therapy-Only 320-Patient-Aggregate-8x40",
+    "status": "built",
+    "route": "/mps-atlas",
+    "api_endpoints": [
+      "/api/mps-atlas/overview",
+      "/api/mps-atlas/breakdown",
+      "/api/mps-atlas/definitions"
+    ],
+    "genes": [
+      "IDUA",
+      "IDS",
+      "SGSH",
+      "NAGLU",
+      "GALNS",
+      "ARSB",
+      "GUSB",
+      "HGSNAT"
+    ],
+    "n_patients": 320,
+    "seeds": [
+      912,
+      913,
+      914,
+      915,
+      916,
+      917,
+      918,
+      919
+    ],
+    "registered": "2026-09-04",
+    "category": "Mucopolysaccharidoses Atlas"
   }
 ]

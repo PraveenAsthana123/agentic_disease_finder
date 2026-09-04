@@ -43198,6 +43198,35 @@ async def chi_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── MPS-Atlas — Complete 8-Gene Mucopolysaccharidoses Atlas ─────────────────────
+@app.get("/api/mps-atlas/overview")
+async def mps_atlas_overview():
+    """MPS-Atlas aggregate overview: 8 genes, 320 patients (seeds 912-919)."""
+    try:
+        import scripts.mps_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mps-atlas/breakdown")
+async def mps_atlas_breakdown():
+    """MPS-Atlas per-gene breakdown with clinical detail."""
+    try:
+        import scripts.mps_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mps-atlas/definitions")
+async def mps_atlas_definitions():
+    """MPS-Atlas clinical term definitions (12 terms)."""
+    try:
+        import scripts.mps_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
