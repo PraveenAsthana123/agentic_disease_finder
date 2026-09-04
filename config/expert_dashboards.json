@@ -14603,5 +14603,21 @@
     "cohort": "1480 patients (37x40, seeds 845-917)",
     "registered": "2026-09-03",
     "note": "Capstone atlas: all 37 mtDNA genes (13 protein-coding + 22 tRNA + 2 rRNA). CII=0 mtDNA subunits (always normal). Universal drug CIs. 9 L-strand NGS pitfall genes. Common 4977bp KSS deletion (12 genes)."
+  },
+  {
+    "id": "ci-subunit-atlas",
+    "name": "CI-Subunit-Atlas Complete-42-Gene-Nuclear-Encoded-Complex-I-Atlas 34-Structural-Subunits-NDUFS-NDUFV-NDUFA-NDUFB 8-Assembly-Factors-NDUFAF Isolated-CI-Deficiency-5-22pct 1680-Patient-Aggregate-42x40 NDUFS4-Olfactory-Bulb NDUFV1-Leukodystrophy NDUFV2-HCM-80pct NDUFS1-Neuropathy NDUFA1-NDUFB11-X-LINKED NDUFB3-FIRST-Nuclear-CI-Mutation NDUFAF2-Later-Onset NDUFA4-CIV-NOT-CI WES-Detects-ALL-42",
+    "status": "built",
+    "category": "Atlas",
+    "api_endpoints": [
+      "/api/ci-subunit-atlas/overview",
+      "/api/ci-subunit-atlas/breakdown",
+      "/api/ci-subunit-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/ci-subunit-atlas/page.jsx",
+    "script": "scripts/ci_subunit_atlas_dashboard.py",
+    "patients": 1680,
+    "genes": 42,
+    "registered": "2026-09-03"
   }
 ]

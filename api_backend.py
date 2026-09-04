@@ -42638,6 +42638,30 @@ async def mt_genome_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/ci-subunit-atlas/overview")
+async def ci_subunit_atlas_overview():
+    try:
+        import scripts.ci_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ci-subunit-atlas/breakdown")
+async def ci_subunit_atlas_breakdown():
+    try:
+        import scripts.ci_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ci-subunit-atlas/definitions")
+async def ci_subunit_atlas_definitions():
+    try:
+        import scripts.ci_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
