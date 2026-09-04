@@ -42884,6 +42884,39 @@ async def cii_subunit_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── FAO-Atlas: Complete 10-Gene Mitochondrial Fatty Acid Oxidation Disorders Atlas ──
+# ACADM(MCAD) · ACADVL(VLCAD) · HADHA(LCHAD/MTP-alpha) · HADHB(MTP-beta) · HADH(SCHAD)
+# ACADS(SCAD) · CPT1A · CPT2 · SLC25A20(CACT) · SLC22A5(OCTN2)
+# 400-patient aggregate (10×40, seeds 813–822)
+
+@app.get("/api/fao-atlas/overview")
+async def fao_atlas_overview():
+    """FAO-Atlas overview: aggregate clinical stats, chain-length classes, carnitine cycle, drug CIs."""
+    try:
+        import scripts.fao_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/fao-atlas/breakdown")
+async def fao_atlas_breakdown():
+    """FAO-Atlas per-gene breakdown for all 10 mitochondrial FAO genes."""
+    try:
+        import scripts.fao_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/fao-atlas/definitions")
+async def fao_atlas_definitions():
+    """FAO-Atlas clinical term definitions (12 terms)."""
+    try:
+        import scripts.fao_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

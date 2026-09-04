@@ -14794,5 +14794,17 @@
     "patients": 240,
     "category": "atlas",
     "status": "built"
+  },
+  {
+    "id": "fao_atlas",
+    "name": "FAO-Atlas Complete-10-Gene-Mitochondrial-Fatty-Acid-Oxidation-Disorders-Atlas ACADM-MCAD-Most-Common-NBS-C8 ACADVL-VLCAD-Cardiac-KD-ABSOLUTE-CI HADHA-LCHAD-Maternal-AFLP-HELLP-79pct-Retinopathy HADHB-MTP-Beta-Complete-MTP-Loss-Neuropathy HADH-SCHAD-Hyperinsulinism-GDH-Disinhibition ACADS-SCAD-Debated-Significance CPT1A-Liver-Arctic-pPro479Leu-Inuit CPT2-Three-Forms-Neonatal-Brain-Malformations-Adult-Rhabdomyolysis SLC25A20-CACT-Neonatal-Cardiac-Emergency SLC22A5-OCTN2-Primary-Carnitine-Deficiency-LCarnitine-Dramatic-Response KD-ABSOLUTE-CI-Long-Chain-VLCAD-LCHAD-MTP-CACT-CPT1A-CPT2 MCT-Diet-Bypass-Strategy Fasting-FORBIDDEN-ALL VPA-HIGH-RISK-ALL 400-Patient-Aggregate-10x40",
+    "status": "built",
+    "route": "/fao-atlas",
+    "api": "/api/fao-atlas/overview|breakdown|definitions",
+    "cohort_n": 400,
+    "n_genes": 10,
+    "seeds": "813-822",
+    "registered": "2026-09-03",
+    "category": "mitochondrial_fao_atlas"
   }
 ]
