@@ -15365,5 +15365,10 @@
     ],
     "frontend": "/lgmd-atlas",
     "built_date": "2026-09-04"
+  },
+  {
+    "id": "cm-atlas",
+    "name": "CM-Atlas Complete-8-Gene-Congenital-Myopathy-Atlas RYR1-Ryanodine-Receptor-1-Core-Myopathy-MALIGNANT-HYPERTHERMIA-Volatile-Agents-Succinylcholine-ABSOLUTELY-AVOID NEB-Nebulin-Nemaline-Myopathy-2-Largest-Sarcomeric-Gene-8537aa-MLPA-Mandatory ACTA1-Actin-Alpha1-Nemaline-Myopathy-3-Multiple-Histological-Patterns-Intranuclear-Rods-Most-Severe TPM2-Tropomyosin-Beta-Cap-Disease-Nemaline-AD-Milder-Arthrogryposis MYH7-Myosin-Heavy-Chain-7-Laing-Distal-Foot-Drop-Neck-Flexor-Allelic-HCM-DCM-Cardiac-Mandatory SELENON-Selenoprotein-N-RSMD1-Rigid-Spine-RESPIRATORY-DISPROPORTIONATE-NIV-MANDATORY-EARLY MTM1-Myotubularin-XLMTM-Neonatal-Severe-Ventilator-Birth-AT132-Gene-Therapy DNM2-Dynamin-2-AD-Centronuclear-Ptosis-Ophthalmoparesis-Hallmark-CMT-Allelic 320-Patient-Aggregate-8x40-seeds-1038-1045",
+    "status": "built"
   }
 ]

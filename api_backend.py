@@ -43618,6 +43618,34 @@ async def lgmd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cm-atlas/overview")
+async def cm_atlas_overview():
+    """CM-Atlas overview: 8-Gene Congenital Myopathy Atlas (RYR1, NEB, ACTA1, TPM2, MYH7, SELENON, MTM1, DNM2)."""
+    try:
+        import scripts.cm_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cm-atlas/breakdown")
+async def cm_atlas_breakdown():
+    """CM-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.cm_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cm-atlas/definitions")
+async def cm_atlas_definitions():
+    """CM-Atlas clinical term definitions."""
+    try:
+        import scripts.cm_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/cms-atlas/overview")
 async def cms_atlas_overview():
     """CMS-Atlas overview: 8-Gene Congenital Myasthenic Syndromes Atlas (CHRNE, RAPSN, DOK7, COLQ, CHAT, GFPT1, AGRN, SCN4A)."""
