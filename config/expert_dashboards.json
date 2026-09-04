@@ -15240,5 +15240,32 @@
       "CEP",
       "XLP"
     ]
+  },
+  {
+    "id": "sca-atlas",
+    "title": "SCA-Atlas \u2014 Complete 8-Gene Hereditary Ataxia / Spinocerebellar Ataxia Atlas",
+    "subtitle": "FXN/FRDA \u00b7 ATXN1/SCA1 \u00b7 ATXN2/SCA2 \u00b7 ATXN3/SCA3-MJD \u00b7 CACNA1A/SCA6-EA2 \u00b7 ATXN7/SCA7 \u00b7 TBP/SCA17 \u00b7 RFC1/CANVAS",
+    "category": "Hereditary Ataxia",
+    "genes": [
+      "FXN",
+      "ATXN1",
+      "ATXN2",
+      "ATXN3",
+      "CACNA1A",
+      "ATXN7",
+      "TBP",
+      "RFC1"
+    ],
+    "n_patients": 320,
+    "seeds": "990-997",
+    "endpoints": [
+      "/api/sca-atlas/overview",
+      "/api/sca-atlas/breakdown",
+      "/api/sca-atlas/definitions"
+    ],
+    "status": "built",
+    "registered": "2026-09-04",
+    "script": "scripts/sca_atlas_dashboard.py",
+    "page": "portal-next/app/sca-atlas/page.jsx"
   }
 ]

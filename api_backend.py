@@ -43478,6 +43478,33 @@ async def porphyria_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/sca-atlas/overview")
+async def sca_atlas_overview():
+    """SCA-Atlas overview: 8-Gene Hereditary Ataxia Atlas (FXN/FRDA, ATXN1/SCA1, ATXN2/SCA2, ATXN3/SCA3-MJD, CACNA1A/SCA6-EA2, ATXN7/SCA7, TBP/SCA17, RFC1/CANVAS)."""
+    try:
+        import scripts.sca_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sca-atlas/breakdown")
+async def sca_atlas_breakdown():
+    """SCA-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.sca_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sca-atlas/definitions")
+async def sca_atlas_definitions():
+    """SCA-Atlas clinical term definitions."""
+    try:
+        import scripts.sca_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
