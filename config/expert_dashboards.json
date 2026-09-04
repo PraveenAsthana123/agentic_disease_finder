@@ -15267,5 +15267,17 @@
     "registered": "2026-09-04",
     "script": "scripts/sca_atlas_dashboard.py",
     "page": "portal-next/app/sca-atlas/page.jsx"
+  },
+  {
+    "id": "cmt_atlas",
+    "title": "CMT-Atlas Complete-8-Gene-Charcot-Marie-Tooth-Hereditary-Neuropathy-Atlas",
+    "category": "Hereditary Neuropathy Atlas",
+    "genes": ["PMP22","MPZ","GJB1","MFN2","SH3TC2","GDAP1","HSPB1","NEFL"],
+    "patients": 320,
+    "seeds": "998-1005",
+    "api_prefix": "/api/cmt-atlas",
+    "page": "/cmt-atlas",
+    "status": "built",
+    "built_date": "2026-09-04"
   }
 ]

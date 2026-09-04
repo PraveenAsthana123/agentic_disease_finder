@@ -43506,6 +43506,34 @@ async def sca_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cmt-atlas/overview")
+async def cmt_atlas_overview():
+    """CMT-Atlas overview: 8-Gene Charcot-Marie-Tooth Hereditary Neuropathy Atlas (PMP22/CMT1A-HNPP, MPZ/CMT1B, GJB1/CMTX1, MFN2/CMT2A, SH3TC2/CMT4C, GDAP1/CMT4A, HSPB1/CMT2F, NEFL/CMT2E)."""
+    try:
+        import scripts.cmt_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cmt-atlas/breakdown")
+async def cmt_atlas_breakdown():
+    """CMT-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.cmt_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cmt-atlas/definitions")
+async def cmt_atlas_definitions():
+    """CMT-Atlas clinical term definitions."""
+    try:
+        import scripts.cmt_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
