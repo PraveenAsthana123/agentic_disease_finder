@@ -15011,5 +15011,37 @@
     ],
     "registered": "2026-09-04",
     "category": "Mucopolysaccharidoses Atlas"
+  },
+  {
+    "id": "bh4-atlas",
+    "name": "BH4-Atlas Complete-6-Gene-Tetrahydrobiopterin-Deficiency-Atlas GCH1-GTPCH1-DRD-Segawa PTS-Most-Common-60pct-BH4 QDPR-DHPR-Folinic-Acid-MANDATORY SPR-NBS-MISSED PCBD1-Benign-Transient DNAJC12-Chaperone-Sapropterin 240-Patient-Aggregate-6x40",
+    "status": "built",
+    "category": "metabolic-atlas",
+    "api_base": "/api/bh4-atlas",
+    "page": "/bh4-atlas",
+    "api_endpoints": [
+      "/api/bh4-atlas/overview",
+      "/api/bh4-atlas/breakdown",
+      "/api/bh4-atlas/definitions"
+    ],
+    "genes": [
+      "GCH1",
+      "PTS",
+      "QDPR",
+      "SPR",
+      "PCBD1",
+      "DNAJC12"
+    ],
+    "n_patients": 240,
+    "seeds": [
+      920,
+      921,
+      922,
+      923,
+      924,
+      925
+    ],
+    "registered": "2026-09-04",
+    "category": "BH4 Tetrahydrobiopterin Disorders Atlas"
   }
 ]

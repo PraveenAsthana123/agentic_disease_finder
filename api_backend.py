@@ -43227,6 +43227,35 @@ async def mps_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── BH4-Atlas — Complete 6-Gene Tetrahydrobiopterin Disorders Atlas ─────────────────
+@app.get("/api/bh4-atlas/overview")
+async def bh4_atlas_overview():
+    """BH4-Atlas aggregate overview: 6 genes, 240 patients (seeds 920-925)."""
+    try:
+        import scripts.bh4_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bh4-atlas/breakdown")
+async def bh4_atlas_breakdown():
+    """BH4-Atlas per-gene breakdown with clinical detail."""
+    try:
+        import scripts.bh4_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/bh4-atlas/definitions")
+async def bh4_atlas_definitions():
+    """BH4-Atlas clinical term definitions."""
+    try:
+        import scripts.bh4_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
