@@ -14816,5 +14816,23 @@
     "n_genes": 10,
     "n_patients": 400,
     "seeds": "823-832"
+  },
+  {
+    "id": "ucd-atlas",
+    "name": "UCD-Atlas Complete 6-Gene Urea Cycle Disorders Atlas NAGS-NCG-Curative CPS1-Most-Severe OTC-X-Linked-High-Orotate ASS1-Very-High-Citrulline-NBS ASL-Trichorrhexis-Neuro-Despite-Control ARG1-Spastic-Diplegia-Arginine-CI VPA-HIGH-RISK-ALL-6 240-Patient-Aggregate-6x40",
+    "status": "built",
+    "category": "ucd_atlas",
+    "seeds": "844-849",
+    "n_patients": 240,
+    "genes": 6,
+    "api_endpoints": [
+      "/api/ucd-atlas/overview",
+      "/api/ucd-atlas/breakdown",
+      "/api/ucd-atlas/definitions"
+    ],
+    "page": "portal-next/app/ucd-atlas/page.jsx",
+    "script": "scripts/ucd_atlas_dashboard.py",
+    "registered": "2026-09-04",
+    "note": "NAGS-NCG-Curative OTC-X-Linked-Orotate-High ARG1-Arginine-Absolute-CI VPA-High-Risk-All-6 Liver-Tx-Curative-CPS1-OTC-ASS1 BTBGD-Mandatory-Exclusion"
   }
 ]
