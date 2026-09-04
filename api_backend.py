@@ -43562,6 +43562,34 @@ async def pme_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hsp-atlas/overview")
+async def hsp_atlas_overview():
+    """HSP-Atlas overview: 8-Gene Hereditary Spastic Paraplegia Atlas (SPAST/SPG4, ATL1/SPG3A, REEP1/SPG31, SPG11, SPG7, CYP7B1/SPG5, ZFYVE26/SPG15, KIF1A/SPG30)."""
+    try:
+        import scripts.hsp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hsp-atlas/breakdown")
+async def hsp_atlas_breakdown():
+    """HSP-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hsp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hsp-atlas/definitions")
+async def hsp_atlas_definitions():
+    """HSP-Atlas clinical term definitions."""
+    try:
+        import scripts.hsp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -15323,5 +15323,10 @@
     ],
     "description": "CSTB-EPM1-Unverricht-Lundborg-Dodecamer-Repeat-Most-Common-PME-N.Europe EPM2A-Lafora-Laforin-Skin-Biopsy-Lafora-Bodies-PATHOGNOMONIC NHLRC1-Lafora-Type2-Malin-E3-Ligase-Clinically-Identical-EPM2A MT-TK-MERRF-m.8344A>G-Ragged-Red-Fibers-Maternal-Inheritance SCARB2-AMRF-PME-Plus-Nephrotic-Syndrome-UNIQUE-No-GTCS GOSR2-North-Sea-PME-Elevated-CK-Scoliosis-Founder-p.Gly144Trp KCNC1-EPM7-Kv3.1-AD-De-Novo-p.Arg320His-Cerebellar-Atrophy-No-Dementia-LEV-Effective PRICKLE1-EPM1B-AR-PCP-Wnt-ULD-Like-CSTB-Negative-PME",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "hsp-atlas",
+    "name": "HSP-Atlas Complete-8-Gene-Hereditary-Spastic-Paraplegia-Atlas SPAST-SPG4-Most-Common-40pct-AD-Microtubule-Severing-MLPA-Mandatory ATL1-SPG3A-Childhood-Onset-AD-Atlastin-GTPase-Milder-Than-SPG4 REEP1-SPG31-AD-ER-Tubule-Shaping-dHMN5B-Overlap SPG11-Spatacsin-Most-Common-AR-CSHSP-Thin-Corpus-Callosum-PATHOGNOMONIC-Cognitive-Impairment SPG7-Paraplegin-Mitochondrial-Cerebellar-Ataxia-Optic-Atrophy-p.Ala510Val-Founder CYP7B1-SPG5-SOLE-TREATABLE-HSP-Oxysterol-Atorvastatin-Level-B ZFYVE26-SPG15-Kjellin-Thin-CC-Pigmentary-Macular-Dystrophy-DISTINCTIVE-ERG-Mandatory KIF1A-SPG30-Kinesin-3-Severe-De-Novo-Axonal-Transport 320-Patient-Aggregate-8x40",
+    "status": "built"
   }
 ]
