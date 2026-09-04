@@ -43256,6 +43256,34 @@ async def bh4_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nbia-atlas/overview")
+async def nbia_atlas_overview():
+    """NBIA-Atlas aggregate overview: 8 genes, 320 patients (seeds 926-933)."""
+    try:
+        import scripts.nbia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nbia-atlas/breakdown")
+async def nbia_atlas_breakdown():
+    """NBIA-Atlas per-gene breakdown with clinical detail."""
+    try:
+        import scripts.nbia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/nbia-atlas/definitions")
+async def nbia_atlas_definitions():
+    """NBIA-Atlas clinical term definitions."""
+    try:
+        import scripts.nbia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -15016,7 +15016,7 @@
     "id": "bh4-atlas",
     "name": "BH4-Atlas Complete-6-Gene-Tetrahydrobiopterin-Deficiency-Atlas GCH1-GTPCH1-DRD-Segawa PTS-Most-Common-60pct-BH4 QDPR-DHPR-Folinic-Acid-MANDATORY SPR-NBS-MISSED PCBD1-Benign-Transient DNAJC12-Chaperone-Sapropterin 240-Patient-Aggregate-6x40",
     "status": "built",
-    "category": "metabolic-atlas",
+    "category": "BH4 Tetrahydrobiopterin Disorders Atlas",
     "api_base": "/api/bh4-atlas",
     "page": "/bh4-atlas",
     "api_endpoints": [
@@ -15041,7 +15041,43 @@
       924,
       925
     ],
-    "registered": "2026-09-04",
-    "category": "BH4 Tetrahydrobiopterin Disorders Atlas"
+    "registered": "2026-09-04"
+  },
+  {
+    "id": "nbia-atlas",
+    "name": "NBIA-Atlas \u2014 Complete 8-Gene Neurodegeneration with Brain Iron Accumulation Atlas",
+    "status": "built",
+    "category": "neurodegeneration",
+    "genes": [
+      "PANK2",
+      "PLA2G6",
+      "C19orf12",
+      "FA2H",
+      "WDR45",
+      "COASY",
+      "ATP13A2",
+      "DCAF17"
+    ],
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": [
+      926,
+      927,
+      928,
+      929,
+      930,
+      931,
+      932,
+      933
+    ],
+    "endpoints": [
+      "/api/nbia-atlas/overview",
+      "/api/nbia-atlas/breakdown",
+      "/api/nbia-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/nbia-atlas/page.jsx",
+    "page": "portal-next/app/nbia-atlas/page.jsx",
+    "note": "Built scripts/nbia_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 926-933), api_backend.py 3 routes /api/nbia-atlas/overview|breakdown|definitions verified 200, portal-next/app/nbia-atlas/page.jsx + SiteNav wired after BH4-Atlas, expert_dashboards.json count 977->978. Built 2026-09-04.",
+    "registered": "2026-09-04"
   }
 ]
