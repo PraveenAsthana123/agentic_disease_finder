@@ -43110,6 +43110,36 @@ async def cdg_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
+# ── PBD-Atlas — Complete 8-Gene Peroxisomal Biogenesis Disorders Atlas ─────────
+@app.get("/api/pbd-atlas/overview")
+async def pbd_atlas_overview():
+    """PBD-Atlas overview KPIs for all 8 peroxisomal biogenesis disorder genes."""
+    try:
+        import scripts.pbd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pbd-atlas/breakdown")
+async def pbd_atlas_breakdown():
+    """PBD-Atlas per-gene breakdown for all 8 PBD genes (PEX1/6/26/10/2/3/5/16)."""
+    try:
+        import scripts.pbd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pbd-atlas/definitions")
+async def pbd_atlas_definitions():
+    """PBD-Atlas clinical term definitions (13 terms)."""
+    try:
+        import scripts.pbd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -14901,5 +14901,37 @@
     "cohort_n": 400,
     "seed": "878-887",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "pbd-atlas",
+    "title": "PBD-Atlas \u2014 Complete 8-Gene Peroxisomal Biogenesis Disorders Atlas",
+    "status": "built",
+    "phase": "atlas",
+    "route": "/pbd-atlas",
+    "api_base": "/api/pbd-atlas",
+    "description": "PEX1\u00b7PEX6\u00b7PEX26 (AAA-ATPase recycling) + PEX10\u00b7PEX2 (RING-triad) + PEX3\u00b7PEX5\u00b7PEX16 (membrane biogenesis + PTS receptor). 320 patients (8\u00d740, seeds 888-895). Lorenzo Oil ABSOLUTE CI in ZSD. G843D/G843D\u2192NALD/IRD (never ZS). Plasmalogens separate ZSD from X-ALD.",
+    "n_patients": 320,
+    "n_genes": 8,
+    "genes": [
+      "PEX1",
+      "PEX6",
+      "PEX26",
+      "PEX10",
+      "PEX2",
+      "PEX3",
+      "PEX5",
+      "PEX16"
+    ],
+    "seeds": [
+      888,
+      889,
+      890,
+      891,
+      892,
+      893,
+      894,
+      895
+    ],
+    "built_date": "2026-09-04"
   }
 ]
