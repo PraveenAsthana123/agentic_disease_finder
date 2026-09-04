@@ -43140,6 +43140,64 @@ async def pbd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── PP-Atlas — Purine & Pyrimidine Metabolism Disorders Atlas ───────────────────
+@app.get("/api/pp-atlas/overview")
+async def pp_atlas_overview():
+    """PP-Atlas aggregate overview: 8 genes, 320 patients (seeds 896-903)."""
+    try:
+        import scripts.pp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pp-atlas/breakdown")
+async def pp_atlas_breakdown():
+    """PP-Atlas per-gene breakdown with clinical detail."""
+    try:
+        import scripts.pp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/pp-atlas/definitions")
+async def pp_atlas_definitions():
+    """PP-Atlas clinical term definitions (10 terms)."""
+    try:
+        import scripts.pp_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ─── CHI-Atlas — Congenital Hyperinsulinism Atlas ────────────────────────────────
+@app.get("/api/chi-atlas/overview")
+async def chi_atlas_overview():
+    """CHI-Atlas aggregate overview: 8 genes, 320 patients (seeds 904-911)."""
+    try:
+        import scripts.chi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/chi-atlas/breakdown")
+async def chi_atlas_breakdown():
+    """CHI-Atlas per-gene breakdown with clinical detail."""
+    try:
+        import scripts.chi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/chi-atlas/definitions")
+async def chi_atlas_definitions():
+    """CHI-Atlas clinical term definitions (10 terms)."""
+    try:
+        import scripts.chi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -14943,5 +14943,39 @@
     "api_base": "/api/pp-atlas",
     "description": "HPRT1\u00b7ADA\u00b7ADSL\u00b7PNP\u00b7ATIC\u00b7APRT\u00b7XDH\u00b7UMPS. 320 patients (8\u00d740, seeds 896-903). Allopurinol treats LNS gout NOT neuro. ADA-SCID first gene therapy disease (Strimvelis EMA 2016). XDH xanthinuria allopurinol ABSOLUTELY CI. UMPS orotic aciduria no hyperammonemia (DDx OTC). ADA/PNP no live vaccines. APRT 2,8-DHA stones radiolucent.",
     "category": "clinical_atlas"
+  },
+  {
+    "id": "chi-atlas",
+    "title": "CHI-Atlas \u2014 Complete 8-Gene Congenital Hyperinsulinism Atlas",
+    "category": "clinical_atlas",
+    "status": "built",
+    "route": "/chi-atlas",
+    "api_endpoints": [
+      "/api/chi-atlas/overview",
+      "/api/chi-atlas/breakdown",
+      "/api/chi-atlas/definitions"
+    ],
+    "genes": [
+      "ABCC8",
+      "KCNJ11",
+      "GCK",
+      "GLUD1",
+      "HADH",
+      "HNF4A",
+      "SLC16A1",
+      "INSR"
+    ],
+    "n_patients": 320,
+    "seeds": [
+      904,
+      905,
+      906,
+      907,
+      908,
+      909,
+      910,
+      911
+    ],
+    "description": "Congenital Hyperinsulinism: K-ATP channel defects, GCK GOF, GLUD1-HHS, HADH-SCHAD, HNF4A-transient, SLC16A1-EIHI, INSR-Donohue"
   }
 ]
