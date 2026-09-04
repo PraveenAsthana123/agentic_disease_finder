@@ -42917,6 +42917,34 @@ async def fao_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/organic-acidemia-atlas/overview")
+async def organic_acidemia_atlas_overview():
+    """Organic-Acidemia-Atlas overview: aggregate clinical stats, pathway classes, NBS markers, drug CIs for all 10 OA genes."""
+    try:
+        import scripts.organic_acidemia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/organic-acidemia-atlas/breakdown")
+async def organic_acidemia_atlas_breakdown():
+    """Organic-Acidemia-Atlas per-gene breakdown for all 10 organic acidemia genes."""
+    try:
+        import scripts.organic_acidemia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/organic-acidemia-atlas/definitions")
+async def organic_acidemia_atlas_definitions():
+    """Organic-Acidemia-Atlas clinical term definitions (12 terms)."""
+    try:
+        import scripts.organic_acidemia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

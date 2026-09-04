@@ -14806,5 +14806,15 @@
     "seeds": "813-822",
     "registered": "2026-09-03",
     "category": "mitochondrial_fao_atlas"
+  },
+  {
+    "id": "organic_acidemia_atlas",
+    "name": "Organic-Acidemia-Atlas Complete-10-Gene-Organic-Acidemia-Atlas PCCA-PCC-Alpha-Propionic-Acidemia-DCM-30-45pct PCCB-PCC-Beta-Korean-Founder-PA-B MUT-Classic-MMA-mut0-mut-Renal-Damage MMAA-cblA-OHCbl-GT80pct-Response MMAB-cblB-Variable-OHCbl-40-60pct MMACHC-cblC-MOST-COMMON-Combined-MMA-HCU-Retinopathy-80pct IVD-IVA-Sweaty-Feet-Glycine-250mgkg HMGCL-HMG-CoA-Lyase-KD-ABSOLUTE-CI-NO-Ketogenesis-Possible MCCC1-3-MCC-Alpha-USUALLY-BENIGN-NOT-Biotin-Responsive MCCC2-3-MCC-Beta-Maternal-NBS-False-Positive VPA-HIGH-RISK-ALL-10 KD-CI-7-of-10-PCCA-PCCB-MUT-MMAA-MMAB-MMACHC-HMGCL GIR-8-12-Emergency Zero-Protein-24-48h-Crisis OHCbl-Mandatory-Trial-MUT-MMAA-MMAB-MMACHC Biotin-NOT-Responsive-3-MCC 400-Patient-Aggregate-10x40",
+    "status": "built",
+    "url": "/organic-acidemia-atlas",
+    "api_prefix": "/api/organic-acidemia-atlas",
+    "n_genes": 10,
+    "n_patients": 400,
+    "seeds": "823-832"
   }
 ]
