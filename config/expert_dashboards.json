@@ -15093,5 +15093,42 @@
     ],
     "frontend": "portal-next/app/is-sop-compliance/page.jsx",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "ncl-atlas",
+    "name": "NCL-Atlas \u2014 Complete 8-Gene Neuronal Ceroid Lipofuscinosis (Batten Disease) Atlas",
+    "status": "built",
+    "category": "neurodegeneration",
+    "genes": [
+      "CLN1",
+      "CLN2",
+      "CLN3",
+      "CLN4B",
+      "CLN5",
+      "CLN6",
+      "CLN7",
+      "CLN10"
+    ],
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": [
+      934,
+      935,
+      936,
+      937,
+      938,
+      939,
+      940,
+      941
+    ],
+    "endpoints": [
+      "/api/ncl-atlas/overview",
+      "/api/ncl-atlas/breakdown",
+      "/api/ncl-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/ncl-atlas/page.jsx",
+    "page": "portal-next/app/ncl-atlas/page.jsx",
+    "note": "Built scripts/ncl_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 934-941), api_backend.py 3 routes /api/ncl-atlas/overview|breakdown|definitions verified 200, portal-next/app/ncl-atlas/page.jsx + SiteNav wired after NBIA-Atlas, expert_dashboards.json count 979->980. Built 2026-09-04.",
+    "registered": "2026-09-04"
   }
 ]
