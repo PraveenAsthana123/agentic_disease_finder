@@ -15328,5 +15328,17 @@
     "id": "hsp-atlas",
     "name": "HSP-Atlas Complete-8-Gene-Hereditary-Spastic-Paraplegia-Atlas SPAST-SPG4-Most-Common-40pct-AD-Microtubule-Severing-MLPA-Mandatory ATL1-SPG3A-Childhood-Onset-AD-Atlastin-GTPase-Milder-Than-SPG4 REEP1-SPG31-AD-ER-Tubule-Shaping-dHMN5B-Overlap SPG11-Spatacsin-Most-Common-AR-CSHSP-Thin-Corpus-Callosum-PATHOGNOMONIC-Cognitive-Impairment SPG7-Paraplegin-Mitochondrial-Cerebellar-Ataxia-Optic-Atrophy-p.Ala510Val-Founder CYP7B1-SPG5-SOLE-TREATABLE-HSP-Oxysterol-Atorvastatin-Level-B ZFYVE26-SPG15-Kjellin-Thin-CC-Pigmentary-Macular-Dystrophy-DISTINCTIVE-ERG-Mandatory KIF1A-SPG30-Kinesin-3-Severe-De-Novo-Axonal-Transport 320-Patient-Aggregate-8x40",
     "status": "built"
+  },
+  {
+    "id": "cms-atlas",
+    "title": "CMS-Atlas \u2014 Complete 8-Gene Congenital Myasthenic Syndromes Atlas",
+    "status": "built",
+    "phase": "atlas",
+    "route": "/cms-atlas",
+    "api_base": "/api/cms-atlas",
+    "description": "CHRNE\u00b7RAPSN\u00b7DOK7\u00b7COLQ\u00b7CHAT\u00b7GFPT1\u00b7AGRN\u00b7SCN4A. 320 patients (8\u00d740, seeds 1022-1029). COLQ: pyridostigmine ABSOLUTELY CI. DOK7: salbutamol first-line. CHAT: episodic apnea sick-day plan. SCN4A-GOF: quinidine. Aminoglycosides CI all CMS. CMS \u2260 MG (genetic not autoimmune).",
+    "seeds": "1022-1029",
+    "patients": 320,
+    "registered": "2026-09-04"
   }
 ]

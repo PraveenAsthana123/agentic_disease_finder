@@ -43590,6 +43590,34 @@ async def hsp_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cms-atlas/overview")
+async def cms_atlas_overview():
+    """CMS-Atlas overview: 8-Gene Congenital Myasthenic Syndromes Atlas (CHRNE, RAPSN, DOK7, COLQ, CHAT, GFPT1, AGRN, SCN4A)."""
+    try:
+        import scripts.cms_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cms-atlas/breakdown")
+async def cms_atlas_breakdown():
+    """CMS-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.cms_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/cms-atlas/definitions")
+async def cms_atlas_definitions():
+    """CMS-Atlas clinical term definitions."""
+    try:
+        import scripts.cms_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
