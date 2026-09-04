@@ -43053,6 +43053,36 @@ async def aa_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
+# ── GSD-Atlas — Complete 10-Gene Glycogen Storage Disorder Atlas ───────────────
+@app.get("/api/gsd-atlas/overview")
+async def gsd_atlas_overview():
+    """GSD-Atlas overview KPIs for all 10 glycogen storage disorder genes."""
+    try:
+        import scripts.gsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/gsd-atlas/breakdown")
+async def gsd_atlas_breakdown():
+    """GSD-Atlas per-gene breakdown for all 10 glycogen storage disorder genes."""
+    try:
+        import scripts.gsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/gsd-atlas/definitions")
+async def gsd_atlas_definitions():
+    """GSD-Atlas clinical term definitions (15 terms)."""
+    try:
+        import scripts.gsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
