@@ -14666,5 +14666,44 @@
     "genes": "COX4I1-COX6B1-COX8A-NDUFA4-SURF1-SCO1-SCO2-COX10-COX15-COX20-COA3-COA5-COA6-COA7-TACO1-LRPPRC-PET100-COX14-FASTKD2",
     "hallmarks": "SURF1-MostCommon-CIV-Leigh SCO2-HCM-100pct LRPPRC-LSFC-FrenchCanadian COX4I1-PINDAC COA7-SCA-Neuropathy Propofol-ABSOLUTE-CI",
     "built_date": "2026-09-03"
+  },
+  {
+    "id": "cv-subunit-atlas",
+    "title": "CV-Subunit-Atlas \u2014 Complete 16-Gene Nuclear-Encoded Complex V (F1F0-ATP Synthase) Atlas: 5 F1 Structural Subunits (ATP5F1A/B/C/D/E) + 8 F0 Structural Subunits (ATP5PO/PB/MC1/MC2/MC3/PD/ME/MF) + 3 Assembly Factors (TMEM70/ATPAF1/ATPAF2); TMEM70-Most-Common-CV-3-MGA-70pct-Roma-Founder; ATP5F1A-HCM-75pct-First-Nuclear-CV-Structural-Jonckheere-2012; ATPAF2-First-F1-Chaperone-Disease-DeMeirleir-2004; 3-MGA-Type-V-CV-Biomarker; Oligomycin-OSCP-Direct-CV-Inhibitor; 640-Patient-Aggregate-16x40-seeds-744-759",
+    "route": "/cv-subunit-atlas",
+    "api_endpoints": [
+      "/api/cv-subunit-atlas/overview",
+      "/api/cv-subunit-atlas/breakdown",
+      "/api/cv-subunit-atlas/definitions"
+    ],
+    "status": "built",
+    "n_genes": 16,
+    "n_patients": 640,
+    "gene_classes": {
+      "f1_structural": [
+        "ATP5F1A",
+        "ATP5F1B",
+        "ATP5F1C",
+        "ATP5F1D",
+        "ATP5F1E"
+      ],
+      "f0_structural": [
+        "ATP5PO",
+        "ATP5PB",
+        "ATP5MC1",
+        "ATP5MC2",
+        "ATP5MC3",
+        "ATP5PD",
+        "ATP5ME",
+        "ATP5MF"
+      ],
+      "assembly_factors": [
+        "TMEM70",
+        "ATPAF1",
+        "ATPAF2"
+      ]
+    },
+    "registered": "2026-09-03",
+    "note": "3-MGA-Type-V-CV-Biomarker TMEM70-Roma-c317-2A>G Rotary-Catalysis c8-ring-2.7-ATP-per-360 CV2-Dimer-Cristae-Morphology WES-Detects-All-16-Nuclear MT-ATP6-MT-ATP8-WES-MISSED BTBGD-Mandatory-Exclusion"
   }
 ]
