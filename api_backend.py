@@ -43423,6 +43423,34 @@ async def vitamin_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/gpi-anchor-atlas/overview")
+async def gpi_anchor_atlas_overview():
+    """GPI-Anchor-Atlas overview: 8-Gene GPI-Anchor Biosynthesis Disorders Atlas (PIGA/MCAHS1, PIGV/HPMRS1, PIGL/CHIME, PGAP2/HPMRS3, PGAP3/HPMRS4, PIGN, PIGT/MCAHS3, PIGG/HPMRS6)."""
+    try:
+        import scripts.gpi_anchor_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/gpi-anchor-atlas/breakdown")
+async def gpi_anchor_atlas_breakdown():
+    """GPI-Anchor-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.gpi_anchor_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/gpi-anchor-atlas/definitions")
+async def gpi_anchor_atlas_definitions():
+    """GPI-Anchor-Atlas clinical term definitions."""
+    try:
+        import scripts.gpi_anchor_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

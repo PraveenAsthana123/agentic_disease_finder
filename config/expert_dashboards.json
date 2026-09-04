@@ -15179,5 +15179,30 @@
     "cohort_n": 320,
     "seed": 966,
     "registered": "2026-09-04"
+  },
+  {
+    "id": "gpi-anchor-atlas",
+    "title": "GPI-Anchor-Atlas \u2014 Complete 8-Gene GPI-Anchor Biosynthesis Disorders Atlas",
+    "category": "rare-disease-atlas",
+    "status": "built",
+    "route": "/gpi-anchor-atlas",
+    "api_endpoints": [
+      "/api/gpi-anchor-atlas/overview",
+      "/api/gpi-anchor-atlas/breakdown",
+      "/api/gpi-anchor-atlas/definitions"
+    ],
+    "genes": [
+      "PIGA",
+      "PIGV",
+      "PIGL",
+      "PGAP2",
+      "PGAP3",
+      "PIGN",
+      "PIGT",
+      "PIGG"
+    ],
+    "patients": 320,
+    "seeds": "974-981",
+    "registered": "2026-09-04"
   }
 ]
