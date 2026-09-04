@@ -43339,6 +43339,34 @@ async def msud_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/homocystinuria-atlas/overview")
+async def homocystinuria_atlas_overview():
+    """Homocystinuria-Atlas overview: 8-Gene Homocystinuria & Remethylation Disorders Atlas."""
+    try:
+        import scripts.homocystinuria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/homocystinuria-atlas/breakdown")
+async def homocystinuria_atlas_breakdown():
+    """Homocystinuria-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.homocystinuria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/homocystinuria-atlas/definitions")
+async def homocystinuria_atlas_definitions():
+    """Homocystinuria-Atlas clinical term definitions."""
+    try:
+        import scripts.homocystinuria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
