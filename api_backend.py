@@ -12855,6 +12855,35 @@ async def emergency_sos_definitions():
     return _json_safe(esd.definitions())
 
 
+# Phone Alerts & SOS Escalation Dashboard
+# Real data: emergency_sos_events (41 rows, 26 patients) +
+# emergency_contacts (30 rows) — phone-initiated vs. automated alert split,
+# SLA compliance tiers, escalation chain, contact coverage.
+
+@app.get("/api/phone-alerts-sos/overview")
+async def phone_alerts_sos_overview():
+    """Phone alerts overview — total events, phone vs. auto split, SLA
+    compliance tiers, severe outcome rate, contact chain coverage."""
+    import scripts.phone_alerts_sos_dashboard as pad
+    return _json_safe(pad.overview())
+
+
+@app.get("/api/phone-alerts-sos/breakdown")
+async def phone_alerts_sos_breakdown():
+    """Phone alerts breakdown — per-patient profile, phone vs. auto by type,
+    SLA by trigger, escalation chain, SLA breaches, stale contacts."""
+    import scripts.phone_alerts_sos_dashboard as pad
+    return _json_safe(pad.breakdown())
+
+
+@app.get("/api/phone-alerts-sos/definitions")
+async def phone_alerts_sos_definitions():
+    """Phone alerts definitions — glossary, trigger categories, SLA tiers,
+    outcome descriptions, readiness standards."""
+    import scripts.phone_alerts_sos_dashboard as pad
+    return _json_safe(pad.definitions())
+
+
 @app.get("/api/feature-flags/overview")
 async def feature_flags_overview():
     """Feature flags overview — total flags, enabled/disabled counts, category

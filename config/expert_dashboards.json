@@ -14834,5 +14834,23 @@
     "script": "scripts/ucd_atlas_dashboard.py",
     "registered": "2026-09-04",
     "note": "NAGS-NCG-Curative OTC-X-Linked-Orotate-High ARG1-Arginine-Absolute-CI VPA-High-Risk-All-6 Liver-Tx-Curative-CPS1-OTC-ASS1 BTBGD-Mandatory-Exclusion"
+  },
+  {
+    "id": "phone_alerts_sos",
+    "title": "Phone Alerts & SOS Escalation",
+    "category": "Safety & Emergency",
+    "status": "built",
+    "api_endpoints": [
+      "/api/phone-alerts-sos/overview",
+      "/api/phone-alerts-sos/breakdown",
+      "/api/phone-alerts-sos/definitions"
+    ],
+    "frontend_page": "portal-next/app/phone-alerts-sos/page.jsx",
+    "description": "Phone-initiated vs. automated SOS alert analytics \u2014 41 events, 26 patients, SLA tiers, escalation chain, contact coverage, stale contact verification",
+    "data_sources": [
+      "emergency_sos_events (41 rows)",
+      "emergency_contacts (30 rows)"
+    ],
+    "built_date": "2026-09-04"
   }
 ]
