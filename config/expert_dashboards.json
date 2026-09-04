@@ -14732,5 +14732,36 @@
       "atlas",
       "oxphos"
     ]
+  },
+  {
+    "id": "mtars_deficiency_atlas",
+    "title": "mtARS-Deficiency-Atlas \u2014 Complete 17-Gene Mitochondrial Aminoacyl-tRNA Synthetase Deficiency Reference",
+    "status": "built",
+    "route": "/mtars-deficiency-atlas",
+    "api": [
+      "/api/mtars-deficiency-atlas/overview",
+      "/api/mtars-deficiency-atlas/breakdown",
+      "/api/mtars-deficiency-atlas/definitions"
+    ],
+    "script": "scripts/mtars_deficiency_atlas_dashboard.py",
+    "n_genes": 17,
+    "n_patients": 680,
+    "cohort": "17 \u00d7 40, seeds 770\u2013786",
+    "genes": "DARS2 \u00b7 EARS2 \u00b7 AARS2 \u00b7 MARS2 \u00b7 HARS2 \u00b7 LARS2 \u00b7 FARS2 \u00b7 PARS2 \u00b7 RARS2 \u00b7 WARS2 \u00b7 YARS2 \u00b7 VARS2 \u00b7 IARS2 \u00b7 SARS2 \u00b7 TARS2 \u00b7 NARS2 \u00b7 KARS1",
+    "built_date": "2026-09-03",
+    "tags": [
+      "mtars",
+      "aminoacyl_trna_synthetase",
+      "mitochondrial",
+      "lbsl",
+      "ltbl",
+      "perrault",
+      "pch6",
+      "mlasa",
+      "hupra",
+      "leukoencephalopathy",
+      "atlas",
+      "oxphos"
+    ]
   }
 ]
