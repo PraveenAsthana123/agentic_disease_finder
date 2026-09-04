@@ -14705,5 +14705,32 @@
     },
     "registered": "2026-09-03",
     "note": "3-MGA-Type-V-CV-Biomarker TMEM70-Roma-c317-2A>G Rotary-Catalysis c8-ring-2.7-ATP-per-360 CV2-Dimer-Cristae-Morphology WES-Detects-All-16-Nuclear MT-ATP6-MT-ATP8-WES-MISSED BTBGD-Mandatory-Exclusion"
+  },
+  {
+    "id": "coq10_biosynthesis_atlas",
+    "title": "CoQ10-Biosynthesis-Atlas \u2014 Complete 10-Gene Primary Coenzyme Q10 (Ubiquinone) Deficiency Reference",
+    "status": "built",
+    "route": "/coq10-biosynthesis-atlas",
+    "api": [
+      "/api/coq10-biosynthesis-atlas/overview",
+      "/api/coq10-biosynthesis-atlas/breakdown",
+      "/api/coq10-biosynthesis-atlas/definitions"
+    ],
+    "script": "scripts/coq10_biosynthesis_atlas_dashboard.py",
+    "n_genes": 10,
+    "n_patients": 400,
+    "cohort": "10 \u00d7 40, seeds 760\u2013769",
+    "genes": "PDSS1 \u00b7 PDSS2 \u00b7 COQ2 \u00b7 COQ4 \u00b7 COQ5 \u00b7 COQ6 \u00b7 COQ7 \u00b7 COQ8A (ADCK3) \u00b7 COQ8B (ADCK4) \u00b7 COQ9",
+    "built_date": "2026-09-03",
+    "tags": [
+      "coq10",
+      "ubiquinone",
+      "mitochondrial",
+      "srns",
+      "ataxia",
+      "leigh",
+      "atlas",
+      "oxphos"
+    ]
   }
 ]
