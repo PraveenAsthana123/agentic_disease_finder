@@ -43674,6 +43674,34 @@ async def cms_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mnd-atlas/overview")
+async def mnd_atlas_overview():
+    """MND-Atlas cohort overview — SOD1·C9orf72·TARDBP·FUS·VCP·SETX·NEK1·UBQLN2 (320 patients, seeds 1046–1053)."""
+    try:
+        import scripts.mnd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mnd-atlas/breakdown")
+async def mnd_atlas_breakdown():
+    """MND-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.mnd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/mnd-atlas/definitions")
+async def mnd_atlas_definitions():
+    """MND-Atlas clinical term definitions."""
+    try:
+        import scripts.mnd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
