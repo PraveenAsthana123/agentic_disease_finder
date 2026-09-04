@@ -43025,6 +43025,34 @@ async def lsd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── AA-Disorders-Atlas — Complete 10-Gene Amino Acid Disorders Atlas ──────────
+@app.get("/api/aa-disorders-atlas/overview")
+async def aa_disorders_atlas_overview():
+    try:
+        import scripts.aa_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aa-disorders-atlas/breakdown")
+async def aa_disorders_atlas_breakdown():
+    """AA-Disorders-Atlas per-gene breakdown for all 10 amino acid disorder genes."""
+    try:
+        import scripts.aa_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aa-disorders-atlas/definitions")
+async def aa_disorders_atlas_definitions():
+    """AA-Disorders-Atlas clinical term definitions (13 terms)."""
+    try:
+        import scripts.aa_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

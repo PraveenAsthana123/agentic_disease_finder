@@ -14860,5 +14860,13 @@
     "status": "built",
     "note": "Built scripts/lsd_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 850-857), api_backend.py 3 routes /api/lsd-atlas/overview|breakdown|definitions verified 200, portal-next/app/lsd-atlas/page.jsx + SiteNav wired after UCD-Atlas, expert_dashboards.json count 968->969. Built 2026-09-04.",
     "maps_to": "/api/lsd-atlas/overview + /api/lsd-atlas/breakdown + /api/lsd-atlas/definitions"
+  },
+  {
+    "id": "aa-disorders-atlas",
+    "name": "AA-Disorders-Atlas Complete-10-Gene-Amino-Acid-Disorders-Atlas PAH-PKU-BH4-Sapropterin-25-50pct-Responsive-Maternal-PKU-Teratogenic BCKDHA-MSUD-Leu-PRIMARY-Neurotoxin-Allo-Ile-Pathognomonic-Liver-Tx-Metabolic-Cure CBS-HCU-Lens-DOWNWARD-B6-Responsive-50pct-MTHFR-NOT-CBS FAH-HT1-Succinylacetone-Pathognomonic-NTBC-Curative-No-Liver-Biopsy-Before-SA TAT-HT2-Richner-Hanhart-Diet-RESOLVES-Keratitis-NTBC-NOT-Indicated GLDC-NKH-CSF-Gly-Ratio-GT0.08-VPA-CONTRAINDICATED-No-Cure OAT-Gyrate-Atrophy-B6-Trial-ALL-Chorioretinal-Blindness-40-50y SLC7A7-LPI-Citrulline-ESSENTIAL-PAP-65pct-Dibasic-Aminoaciduria PHGDH-Serine-Deficiency-CSF-Serine-NOT-Plasma-L-Serine-Early-Critical-Neu-Laxova-Lethal SLC6A19-Hartnup-MOSTLY-ASYMPTOMATIC-Neutral-Aminoaciduria-Nicotinamide 400-Patient-Aggregate-10x40",
+    "category": "clinical_atlas",
+    "status": "built",
+    "note": "Built scripts/aa_disorders_atlas_dashboard.py (400-patient aggregate cohort 10x40, seeds 858-867), api_backend.py 3 routes /api/aa-disorders-atlas/overview|breakdown|definitions verified 200, portal-next/app/aa-disorders-atlas/page.jsx + SiteNav wired after LSD-Atlas, expert_dashboards.json count 969->970. Built 2026-09-04.",
+    "maps_to": "/api/aa-disorders-atlas/overview + /api/aa-disorders-atlas/breakdown + /api/aa-disorders-atlas/definitions"
   }
 ]
