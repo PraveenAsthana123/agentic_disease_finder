@@ -14646,5 +14646,25 @@
     "n_patients": 600,
     "genes": 15,
     "registered": "2026-09-03"
+  },
+  {
+    "id": "civ-subunit-atlas",
+    "title": "CIV-Subunit-Atlas \u2014 Complete 19-Gene Nuclear-Encoded Complex IV (Cytochrome c Oxidase) Atlas",
+    "status": "built",
+    "category": "mitochondrial_atlas",
+    "route": "/civ-subunit-atlas",
+    "api_endpoints": [
+      "/api/civ-subunit-atlas/overview",
+      "/api/civ-subunit-atlas/breakdown",
+      "/api/civ-subunit-atlas/definitions"
+    ],
+    "n_genes": 19,
+    "n_structural_subunits": 4,
+    "n_assembly_factors": 15,
+    "n_patients": 760,
+    "cohort_formula": "19 x 40 seeds 725-743",
+    "genes": "COX4I1-COX6B1-COX8A-NDUFA4-SURF1-SCO1-SCO2-COX10-COX15-COX20-COA3-COA5-COA6-COA7-TACO1-LRPPRC-PET100-COX14-FASTKD2",
+    "hallmarks": "SURF1-MostCommon-CIV-Leigh SCO2-HCM-100pct LRPPRC-LSFC-FrenchCanadian COX4I1-PINDAC COA7-SCA-Neuropathy Propofol-ABSOLUTE-CI",
+    "built_date": "2026-09-03"
   }
 ]

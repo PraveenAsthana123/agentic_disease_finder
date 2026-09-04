@@ -42712,6 +42712,30 @@ async def ciii_subunit_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/civ-subunit-atlas/overview")
+async def civ_subunit_atlas_overview():
+    try:
+        import scripts.civ_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/civ-subunit-atlas/breakdown")
+async def civ_subunit_atlas_breakdown():
+    try:
+        import scripts.civ_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/civ-subunit-atlas/definitions")
+async def civ_subunit_atlas_definitions():
+    try:
+        import scripts.civ_subunit_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
