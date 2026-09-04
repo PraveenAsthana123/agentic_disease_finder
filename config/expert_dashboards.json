@@ -14636,5 +14636,15 @@
     "genes": 6,
     "registered": "2026-09-03",
     "note": "Complex II atlas: all 6 nuclear-encoded SDH genes. CII all-nuclear (zero mtDNA). CII always normal in mtDNA disorders. Parental imprinting SDHD/SDHAF2. SDHB IHC universal SDHx surrogate. PGL/PHEO + Leigh dual phenotype."
+  },
+  {
+    "id": "ciii-subunit-atlas",
+    "name": "CIII-Subunit-Atlas Complete 15-Gene Nuclear-Encoded Complex III Atlas 9-Structural-Subunits UQCRC1 UQCRC2 CYC1 UQCRFS1 UQCRB UQCRQ UQCR10 UQCR11 UQCRH 6-Assembly-Factors BCS1L TTC19 LYRM7 UQCC1 UQCC2 UQCC3 GRACILE-BCS1L Bjornstad TTC19-Progressive-Neuro UQCC2-Highest-Cardiac 600-Patient-Aggregate-15x40",
+    "status": "built",
+    "category": "ciii_deficiency_atlas",
+    "seeds": "710-724",
+    "n_patients": 600,
+    "genes": 15,
+    "registered": "2026-09-03"
   }
 ]
