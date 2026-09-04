@@ -14933,5 +14933,15 @@
       895
     ],
     "built_date": "2026-09-04"
+  },
+  {
+    "id": "pp-atlas",
+    "title": "PP-Atlas \u2014 Complete 8-Gene Purine & Pyrimidine Metabolism Disorders Atlas",
+    "status": "built",
+    "phase": "atlas",
+    "route": "/pp-atlas",
+    "api_base": "/api/pp-atlas",
+    "description": "HPRT1\u00b7ADA\u00b7ADSL\u00b7PNP\u00b7ATIC\u00b7APRT\u00b7XDH\u00b7UMPS. 320 patients (8\u00d740, seeds 896-903). Allopurinol treats LNS gout NOT neuro. ADA-SCID first gene therapy disease (Strimvelis EMA 2016). XDH xanthinuria allopurinol ABSOLUTELY CI. UMPS orotic aciduria no hyperammonemia (DDx OTC). ADA/PNP no live vaccines. APRT 2,8-DHA stones radiolucent.",
+    "category": "clinical_atlas"
   }
 ]
