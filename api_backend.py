@@ -43451,6 +43451,34 @@ async def gpi_anchor_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/porphyria-atlas/overview")
+async def porphyria_atlas_overview():
+    """Porphyria-Atlas overview: 8-Gene Porphyria Disorders Atlas (HMBS/AIP, ALAD/ADP, CPOX/HCP, PPOX/VP, FECH/EPP, UROD/PCT, UROS/CEP, ALAS2/XLP)."""
+    try:
+        import scripts.porphyria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/porphyria-atlas/breakdown")
+async def porphyria_atlas_breakdown():
+    """Porphyria-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.porphyria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/porphyria-atlas/definitions")
+async def porphyria_atlas_definitions():
+    """Porphyria-Atlas clinical term definitions."""
+    try:
+        import scripts.porphyria_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -15204,5 +15204,41 @@
     "patients": 320,
     "seeds": "974-981",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "porphyria-atlas",
+    "name": "Porphyria-Atlas \u2014 Complete 8-Gene Porphyria Disorders Atlas (HMBS/AIP \u00b7 ALAD/ADP \u00b7 CPOX/HCP \u00b7 PPOX/VP \u00b7 FECH/EPP \u00b7 UROD/PCT \u00b7 UROS/CEP \u00b7 ALAS2/XLP)",
+    "status": "built",
+    "component": "portal-next/app/porphyria-atlas/page.jsx",
+    "api": [
+      "/api/porphyria-atlas/overview",
+      "/api/porphyria-atlas/breakdown",
+      "/api/porphyria-atlas/definitions"
+    ],
+    "script": "scripts/porphyria_atlas_dashboard.py",
+    "patients": 320,
+    "seeds": "982-989",
+    "built": "2026-09-04",
+    "category": "Metabolic Disease Atlas",
+    "genes": [
+      "HMBS",
+      "ALAD",
+      "CPOX",
+      "PPOX",
+      "FECH",
+      "UROD",
+      "UROS",
+      "ALAS2"
+    ],
+    "diseases": [
+      "AIP",
+      "ADP",
+      "HCP",
+      "VP",
+      "EPP",
+      "PCT",
+      "CEP",
+      "XLP"
+    ]
   }
 ]
