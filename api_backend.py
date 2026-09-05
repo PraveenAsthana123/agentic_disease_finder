@@ -44679,6 +44679,36 @@ async def pituitary_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/reproductive-disorders-atlas/overview")
+async def reproductive_disorders_atlas_overview():
+    """Reproductive Disorders Atlas overview (ANOS1-680aa-Xp22.31-XLR-Kallmann1-Mirror-Movements-Pathognomonic, FGFR1-822aa-8p11.23-AD-Kallmann2-Normosmic-CHH-Craniofacial, GNRHR-328aa-4q13.2-AR-Normosmic-IHH-Pulsatile-GnRH-Diagnostic, KISS1R-398aa-19p13.3-AR-Normosmic-IHH-KP54-Test-Pathognomonic, FMR1-632aa-Xq27.3-FXPOI-Premutation-55-200-CGG-Test-FIRST, FOXL2-376aa-3q22.3-AD-BPES-Ptosis-Repair-Age3-4-Amblyopia, BMP15-392aa-Xp11.22-XLD-POI-FMR1-First, PROKR2-384aa-20p12.3-AR-Kallmann3-Hypersomnia-Obesity). 320 patients (8x40, seeds 1318-1325)."""
+    try:
+        import scripts.reproductive_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/reproductive-disorders-atlas/breakdown")
+async def reproductive_disorders_atlas_breakdown():
+    """Reproductive Disorders Atlas per-gene breakdown (ANOS1, FGFR1, GNRHR, KISS1R, FMR1, FOXL2, BMP15, PROKR2 — protein, locus, aa, OMIM, inheritance, phenotype, hallmarks, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.reproductive_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/reproductive-disorders-atlas/definitions")
+async def reproductive_disorders_atlas_definitions():
+    """Reproductive Disorders Atlas clinical definitions (Kallmann syndrome, normosmic IHH, mirror movements/ANOS1, pulsatile GnRH pump, POI diagnostic criteria, FXPOI/FMR1 premutation, BPES/FOXL2 ptosis-repair-first, HH reversal, KP54 stimulation test, HRT in POI mandatory, cascade testing)."""
+    try:
+        import scripts.reproductive_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

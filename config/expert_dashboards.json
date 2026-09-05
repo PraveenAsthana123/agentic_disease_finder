@@ -16050,5 +16050,31 @@
     "registered": "2026-09-05",
     "status": "built",
     "dashboard_id": 1027
+  },
+  {
+    "id": "reproductive-disorders-atlas",
+    "name": "Reproductive-Disorders-Atlas Complete-8-Gene-Hereditary-Reproductive-Disorders-Atlas ANOS1-680aa-Xp22.31-XLR-Kallmann1-Mirror-Movements-PATHOGNOMONIC FGFR1-822aa-8p11.23-AD-Kallmann2-Normosmic-CHH-Craniofacial GNRHR-328aa-4q13.2-AR-Normosmic-IHH-Pulsatile-GnRH-Diagnostic KISS1R-398aa-19p13.3-AR-Normosmic-IHH-KP54-Test-Pathognomonic FMR1-632aa-Xq27.3-FXPOI-Premutation-55-200-CGG-Test-FIRST-POI FOXL2-376aa-3q22.3-AD-BPES-Ptosis-Repair-Age3-4-Amblyopia BMP15-392aa-Xp11.22-XLD-POI-Oocyte-Paracrine PROKR2-384aa-20p12.3-AR-Kallmann3-Hypersomnia-Obesity 320-Patient-Aggregate-8x40-seeds-1318-1325",
+    "status": "built",
+    "route": "/reproductive-disorders-atlas",
+    "api": "/api/reproductive-disorders-atlas",
+    "category": "Hereditary Reproductive Disorders",
+    "genes": [
+      "ANOS1",
+      "FGFR1",
+      "GNRHR",
+      "KISS1R",
+      "FMR1",
+      "FOXL2",
+      "BMP15",
+      "PROKR2"
+    ],
+    "n_patients": 320,
+    "seeds": "1318-1325",
+    "registered": "2026-09-05",
+    "endpoints": [
+      "/api/reproductive-disorders-atlas/overview",
+      "/api/reproductive-disorders-atlas/breakdown",
+      "/api/reproductive-disorders-atlas/definitions"
+    ]
   }
 ]
