@@ -16121,5 +16121,26 @@
     "seeds": "1342-1349",
     "n_patients": 320,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "renal-tubular-disorders-atlas",
+    "title": "Renal-Tubular-Disorders-Atlas Complete-8-Gene-Hereditary-Renal-Tubular-Transport-Disorders-Atlas",
+    "route": "/renal-tubular-disorders-atlas",
+    "api_prefix": "/api/renal-tubular-disorders-atlas",
+    "status": "built",
+    "category": "atlas",
+    "genes": [
+      "SLC12A1",
+      "KCNJ1",
+      "CLCNKB",
+      "BSND",
+      "SLC12A3",
+      "SCNN1B",
+      "CLCN5",
+      "SLC34A1"
+    ],
+    "n_patients": 320,
+    "seeds": "1350-1357",
+    "description": "Bartter Types 1-4 (SLC12A1/KCNJ1/CLCNKB/BSND), Gitelman (SLC12A3), Liddle/PHA1B (SCNN1B), Dent Disease 1 (CLCN5), HHRH (SLC34A1)"
   }
 ]

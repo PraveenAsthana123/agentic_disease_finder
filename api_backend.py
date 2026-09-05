@@ -44799,6 +44799,36 @@ async def parathyroid_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/renal-tubular-disorders-atlas/overview")
+async def renal_tubular_disorders_atlas_overview():
+    """Renal-Tubular-Disorders-Atlas overview (SLC12A1-1099aa-15q21.1-AR-Bartter1-NKCC2-Antenatal-HYPERcalciuria, KCNJ1-391aa-11q24.3-AR-Bartter2-ROMK-Neonatal-HYPERkalemia-Resolves, CLCNKB-687aa-1p36.13-AR-Bartter3-Most-Common-MLPA-Mandatory, BSND-320aa-1p32.3-AR-Bartter4a-SNHL-PATHOGNOMONIC-GJB2-First, SLC12A3-1021aa-16q13-AR-Gitelman-HYPOcalciuria-HYPOmag-Mg-First, SCNN1B-640aa-16p12.2-AD-Liddle-LOW-Renin-Amiloride-NOT-Spiro, CLCN5-746aa-Xp11.23-XLR-Dent1-LMW-Proteinuria-Mandatory-MLPA, SLC34A1-639aa-5q35.3-AR-HHRH-FGF23-LOW-Burosumab-CI). 320 patients (8x40, seeds 1350-1357)."""
+    try:
+        import scripts.renal_tubular_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/renal-tubular-disorders-atlas/breakdown")
+async def renal_tubular_disorders_atlas_breakdown():
+    """Renal-Tubular-Disorders-Atlas per-gene breakdown (SLC12A1, KCNJ1, CLCNKB, BSND, SLC12A3, SCNN1B, CLCN5, SLC34A1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmarks, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.renal_tubular_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/renal-tubular-disorders-atlas/definitions")
+async def renal_tubular_disorders_atlas_definitions():
+    """Renal-Tubular-Disorders-Atlas clinical definitions (Calciuria-DDx-HYPER-vs-HYPO-anchor, Bartter1-NKCC2-loop-diuretic-phenocopy, ROMK-paradox-neonatal-hyperK-resolves, Bartter3-MLPA-mandatory-most-common, Barttin-SNHL-pathognomonic-GJB2-first, Gitelman-HYPOcalciuria-HYPOmag-avoid-thiazides, Liddle-amiloride-not-spiro, Dent-LMW-proteinuria-mandatory, HHRH-FGF23-LOW-burosumab-CI)."""
+    try:
+        import scripts.renal_tubular_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
