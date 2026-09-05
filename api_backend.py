@@ -44139,6 +44139,36 @@ async def autoinflammatory_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/skeletal-dysplasia-atlas/overview")
+async def skeletal_dysplasia_atlas_overview():
+    """Skeletal Dysplasia Atlas complete 8-gene hereditary skeletal dysplasia overview (320 patients, seeds 1182-1189)."""
+    try:
+        import scripts.skeletal_dysplasia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/skeletal-dysplasia-atlas/breakdown")
+async def skeletal_dysplasia_atlas_breakdown():
+    """Skeletal Dysplasia Atlas per-gene breakdown (COL1A1/COL1A2/FGFR3/EXT1/EXT2/SLC26A2/RMRP/COMP)."""
+    try:
+        import scripts.skeletal_dysplasia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/skeletal-dysplasia-atlas/definitions")
+async def skeletal_dysplasia_atlas_definitions():
+    """Skeletal Dysplasia Atlas clinical term definitions (wormian bones, blue sclerae, vosoritide, hitchhiker thumb, cauliflower ear, foramen magnum, chondrosarcoma, CHH lymphoma, PSACH, DTD club feet)."""
+    try:
+        import scripts.skeletal_dysplasia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hemoglobinopathy-atlas/overview")
 async def hemoglobinopathy_atlas_overview():
     """Hemoglobinopathy-Atlas complete 8-gene hereditary red cell disorder overview (320 patients, seeds 1166-1173)."""

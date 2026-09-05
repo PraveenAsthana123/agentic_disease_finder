@@ -15683,5 +15683,28 @@
     "seeds": "1174-1181",
     "built_date": "2026-09-05",
     "description": "Complete 8-Gene Hereditary Autoinflammatory Disorder Atlas"
+  },
+  {
+    "id": "skeletal-dysplasia-atlas",
+    "title": "Skeletal-Dysplasia-Atlas Complete-8-Gene-Hereditary-Skeletal-Dysplasia-Atlas COL1A1-OI-Type-I-Blue-Sclerae-PATHOGNOMONIC-Bisphosphonates COL1A2-OI-Type-III-Most-Severe-Survivable-Basilar-Invagination-MRI FGFR3-Achondroplasia-G380R-95pct-Vosoritide-FDA2021-GH-NOT-Effective-Foramen-Magnum EXT1-HME1-Chondrosarcoma-2-5pct-Cap-2cm-MRI-Malignant EXT2-HME2-Milder-EXT1-Chondrosarcoma-1-2pct SLC26A2-DTD-Hitchhiker-Thumb-Cauliflower-Ear-DO-NOT-ASPIRATE RMRP-CHH-Fine-Hair-Immune-Deficiency-Lymphoma-10pct-Live-Vaccines-CI COMP-PSACH-Normal-At-Birth-Normal-Face-C1-C2-Instability-Contact-Sports-CI 320-Patient-Aggregate-8x40-seeds-1182-1189",
+    "category": "Hereditary Skeletal Dysplasia Atlas",
+    "route": "/skeletal-dysplasia-atlas",
+    "api_overview": "/api/skeletal-dysplasia-atlas/overview",
+    "api_breakdown": "/api/skeletal-dysplasia-atlas/breakdown",
+    "api_definitions": "/api/skeletal-dysplasia-atlas/definitions",
+    "genes": [
+      "COL1A1",
+      "COL1A2",
+      "FGFR3",
+      "EXT1",
+      "EXT2",
+      "SLC26A2",
+      "RMRP",
+      "COMP"
+    ],
+    "n_patients": 320,
+    "seeds": "1182-1189",
+    "built": true,
+    "registered": "2026-09-05"
   }
 ]
