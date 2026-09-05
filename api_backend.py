@@ -43757,6 +43757,33 @@ async def md_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/dee-atlas/overview")
+async def dee_atlas_overview():
+    """DEE-Atlas overview — SCN1A·KCNQ2·CDKL5·ARX·STXBP1·PCDH19·SCN8A·GRIN2A (320 patients, seeds 1070–1077)."""
+    try:
+        import scripts.dee_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/dee-atlas/breakdown")
+async def dee_atlas_breakdown():
+    """DEE-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.dee_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/dee-atlas/definitions")
+async def dee_atlas_definitions():
+    """DEE-Atlas clinical term definitions."""
+    try:
+        import scripts.dee_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
