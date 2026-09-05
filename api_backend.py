@@ -43785,6 +43785,34 @@ async def dee_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/movement-disorders-atlas/overview")
+async def movement_disorders_atlas_overview():
+    """Movement-Disorders-Atlas overview — HTT·ATP7B·TOR1A·PANK2·VPS13A·GCH1·PRRT2·ATP1A3 (320 patients, seeds 1078–1085)."""
+    try:
+        import scripts.movement_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/movement-disorders-atlas/breakdown")
+async def movement_disorders_atlas_breakdown():
+    """Movement-Disorders-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.movement_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/movement-disorders-atlas/definitions")
+async def movement_disorders_atlas_definitions():
+    """Movement-Disorders-Atlas clinical term definitions."""
+    try:
+        import scripts.movement_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -15454,5 +15454,30 @@
     "seed_range": "1070-1077",
     "registered": "2026-09-04",
     "status": "built"
+  },
+  {
+    "id": "movement-disorders-atlas",
+    "name": "Movement-Disorders-Atlas Complete-8-Gene-Hereditary-Movement-Disorders-Atlas HTT-Huntingtin-CAG-Repeat-AD-Chorea-TBZ-DTBZ-SCREEN-Depression-NO-DMT-Approved ATP7B-Wilson-Disease-AR-Copper-KF-Rings-Wing-Beating-TREATABLE-Trientine-Zinc TOR1A-DYT1-GAG-Deletion-AD-30pct-Penetrance-Generalised-Dystonia-GPi-DBS-Effective PANK2-PKAN-NBIA1-Eye-of-Tiger-MRI-PATHOGNOMONIC-Pigmentary-Retinopathy-Deferiprone VPS13A-Chorea-Acanthocytosis-Orofacial-Self-Mutilation-PATHOGNOMONIC-Fresh-Smear-Chorein-WB GCH1-DRD-DIURNAL-VARIATION-PATHOGNOMONIC-Levodopa-CURATIVE-Female-3:1 PRRT2-PKD-Kinesigenic-SUDDEN-MOVEMENT-CBZ-Dramatically-Effective-EEG-Normal ATP1A3-AHC-Alternating-Hemiplegia-SLEEP-Terminates-WATER-IMMERSION-Shower-Only 320-Patient-Aggregate-8x40-seeds-1078-1085",
+    "status": "built",
+    "category": "hereditary-movement-disorders-atlas",
+    "endpoints": [
+      "/api/movement-disorders-atlas/overview",
+      "/api/movement-disorders-atlas/breakdown",
+      "/api/movement-disorders-atlas/definitions"
+    ],
+    "frontend_page": "/movement-disorders-atlas",
+    "n_patients": 320,
+    "genes": [
+      "HTT",
+      "ATP7B",
+      "TOR1A",
+      "PANK2",
+      "VPS13A",
+      "GCH1",
+      "PRRT2",
+      "ATP1A3"
+    ],
+    "seeds": "1078-1085",
+    "registered": "2026-09-04"
   }
 ]
