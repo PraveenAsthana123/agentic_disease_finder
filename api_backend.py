@@ -44649,6 +44649,36 @@ async def thyroid_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pituitary-disorders-atlas/overview")
+async def pituitary_disorders_atlas_overview():
+    """Pituitary Disorders Atlas overview (AIP-330aa-11q13.2-FIPA-AD-GH-Adenoma-Young-Macroadenoma-SSA-Resistant-Pegvisomant, PRKAR1A-381aa-17q24.2-Carney-Complex-AD-Cardiac-Myxoma-ANY-Chamber-PPNAD-Dexamethasone-Paradox, PROP1-226aa-5q35.3-CPHD2-AR-GH-TSH-LH-FSH-PRL-Pituitary-Hyperplasia-DO-NOT-BIOPSY, POU1F1-291aa-3p11.2-CPHD1-AD-AR-GH-TSH-PRL-Thyroxine-FIRST-Before-GH, LHX3-397aa-9q34.3-CPHD3-AR-Rigid-Cervical-Spine-PATHOGNOMONIC-Xray-Before-MRI, HESX1-185aa-3p14.3-SOD-AD-AR-Optic-Hypoplasia-Absent-Septum-ACTH-Crisis-Risk, GLI2-1586aa-2q14.2-HPE9-CPHD-AD-SCMI-Pathognomonic-Brain-MRI-Pituitary-Immediately, CABLES1-509aa-18q11.2-Familial-Corticotropinoma-AD-Bilateral-Adrenalectomy-Nelson-Syndrome). 320 patients (8x40, seeds 1310-1317)."""
+    try:
+        import scripts.pituitary_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pituitary-disorders-atlas/breakdown")
+async def pituitary_disorders_atlas_breakdown():
+    """Pituitary Disorders Atlas per-gene breakdown (AIP, PRKAR1A, PROP1, POU1F1, LHX3, HESX1, GLI2, CABLES1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.pituitary_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pituitary-disorders-atlas/definitions")
+async def pituitary_disorders_atlas_definitions():
+    """Pituitary Disorders Atlas clinical definitions (FIPA/AIP, Carney Complex/PRKAR1A, CPHD types 1-3, PROP1 hyperplasia do-not-biopsy, LHX3 rigid cervical spine protocol, SOD/HESX1, SCMI/GLI2 midline marker, Nelson syndrome, PPNAD dexamethasone paradox, HPE spectrum, SSA resistance, cascade testing)."""
+    try:
+        import scripts.pituitary_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

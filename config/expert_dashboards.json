@@ -16024,5 +16024,31 @@
     ],
     "seeds": "1302-1309",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "pituitary-disorders-atlas",
+    "title": "Pituitary-Disorders-Atlas Complete-8-Gene-Hereditary-Pituitary-Disorders-Atlas AIP-330aa-11q13.2-AD-FIPA-GH-Adenoma-Young-Macroadenoma-SSA-Resistant-Pegvisomant PRKAR1A-381aa-17q24.2-AD-Carney-Complex-Cardiac-Myxoma-ANY-Chamber-PPNAD-Dexamethasone-Paradox PROP1-226aa-5q35.3-AR-CPHD2-GH-TSH-LH-FSH-PRL-Pituitary-Hyperplasia-DO-NOT-BIOPSY POU1F1-291aa-3p11.2-AD-AR-CPHD1-GH-TSH-PRL-Thyroxine-FIRST-Before-GH LHX3-397aa-9q34.3-AR-CPHD3-Rigid-Cervical-Spine-PATHOGNOMONIC-Xray-Before-MRI HESX1-185aa-3p14.3-AD-AR-SOD-Optic-Hypoplasia-Absent-Septum-ACTH-Crisis-Risk GLI2-1586aa-2q14.2-AD-HPE9-CPHD-SCMI-Pathognomonic-Brain-MRI-Pituitary-Immediately CABLES1-509aa-18q11.2-AD-Familial-Corticotropinoma-Bilateral-Adrenalectomy-Nelson-Syndrome 320-Patient-Aggregate-8x40-seeds-1310-1317",
+    "name": "Pituitary-Disorders-Atlas",
+    "category": "Hereditary Pituitary Disorders Atlas",
+    "route": "/pituitary-disorders-atlas",
+    "api_overview": "/api/pituitary-disorders-atlas/overview",
+    "api_breakdown": "/api/pituitary-disorders-atlas/breakdown",
+    "api_definitions": "/api/pituitary-disorders-atlas/definitions",
+    "genes": [
+      "AIP",
+      "PRKAR1A",
+      "PROP1",
+      "POU1F1",
+      "LHX3",
+      "HESX1",
+      "GLI2",
+      "CABLES1"
+    ],
+    "n_patients": 320,
+    "seeds": "1310-1317",
+    "built": "2026-09-05",
+    "registered": "2026-09-05",
+    "status": "built",
+    "dashboard_id": 1027
   }
 ]
