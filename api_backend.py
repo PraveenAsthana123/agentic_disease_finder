@@ -44469,6 +44469,36 @@ async def adrenal_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/bone-mineral-atlas/overview")
+async def bone_mineral_atlas_overview():
+    """Bone and Mineral Metabolism Disorders Atlas aggregate overview (8 genes: PHEX, FGF23, SLC34A3, CASR, MEN1, RET, TCIRG1, CLCN7; 320 patients seeds 1262-1269; drug alerts; clinical pearls; hypophosphatemic rickets, calcium setpoint disorders, MEN syndromes, osteopetrosis)."""
+    try:
+        import scripts.bone_mineral_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bone-mineral-atlas/breakdown")
+async def bone_mineral_atlas_breakdown():
+    """Bone and Mineral Metabolism Disorders Atlas per-gene breakdown (PHEX XLH, FGF23 ADHR, SLC34A3 HHRH, CASR FHH1/ADH1/NSHPT, MEN1, RET MEN2A/2B, TCIRG1 ARO, CLCN7 ADO2; full clinical data + cohort stats)."""
+    try:
+        import scripts.bone_mineral_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bone-mineral-atlas/definitions")
+async def bone_mineral_atlas_definitions():
+    """Bone and Mineral Metabolism Disorders Atlas clinical definitions (FGF23 phosphatonin pathway, UCaR diagnostic, FHH1 no-PTX rule, pheo-before-thyroid-surgery, bisphosphonates CI in osteopetrosis, HSCT timing ARO, MEN1 vs MEN2 DDx, codon-based thyroidectomy)."""
+    try:
+        import scripts.bone_mineral_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

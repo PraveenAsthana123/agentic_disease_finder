@@ -15907,5 +15907,15 @@
     "built_date": "2026-09-05",
     "script": "scripts/adrenal_disorders_atlas_dashboard.py",
     "n_genes": 8
+  },
+  {
+    "id": "bone-mineral-atlas",
+    "name": "Bone and Mineral Metabolism Disorders Atlas (Bone-Mineral-Atlas Complete-8-Gene-Hereditary-Bone-Mineral-Metabolism-Disorders-Atlas PHEX-XLH-749aa-Xp22.11-XLD-Most-Common-Hereditary-Rickets-Burosumab-Standard FGF23-ADHR-251aa-12p13.32-AD-GOF-Fluctuating-Iron-Sensitive SLC34A3-HHRH-599aa-9q34.3-AR-FGF23-LOW-Calcitriol-CI CASR-FHH1-ADH1-1078aa-3q21.1-DO-NOT-PTX-UCaR-0.01 MEN1-Menin-610aa-11q13.1-Multiglandular-pHPT-pNET RET-MEN2-1114aa-10q11.21-MTC-Pheo-Codon-Timing TCIRG1-ARO-830aa-11q13.2-HSCT-Before-3months CLCN7-ADO2-803aa-16p13.3-HSCT-NOT-Effective-AD 320-Patient-Aggregate-8x40-seeds-1262-1269)",
+    "status": "built",
+    "api": "/api/bone-mineral-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seeds": "1262-1269",
+    "registered": "2026-09-05",
+    "built_note": "Bone-Mineral-Atlas Dashboard \u2014 /api/bone-mineral-atlas/overview|breakdown|definitions verified 200, 320-patient cohort (8x40, seeds 1262-1269), portal-next/app/bone-mineral-atlas/page.jsx + SiteNav wired after Adrenal-Disorders-Atlas, expert_dashboards.json count 1020->1021"
   }
 ]
