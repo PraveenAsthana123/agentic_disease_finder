@@ -44349,6 +44349,36 @@ async def lipid_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/rasopathies-atlas/overview")
+async def rasopathies_atlas_overview():
+    """Rasopathies Atlas complete 8-gene overview (PTPN11/RAF1/SOS1/KRAS/BRAF/MAP2K1/HRAS/CBL, 320 patients, seeds 1230-1237)."""
+    try:
+        import scripts.rasopathies_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rasopathies-atlas/breakdown")
+async def rasopathies_atlas_breakdown():
+    """Rasopathies Atlas per-gene breakdown (PTPN11-NS1/RAF1-NS5/SOS1-NS4/KRAS-NS3/BRAF-CFC/MAP2K1-CFC/HRAS-Costello/CBL-JMML)."""
+    try:
+        import scripts.rasopathies_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/rasopathies-atlas/definitions")
+async def rasopathies_atlas_definitions():
+    """Rasopathies Atlas clinical definitions (RASopathy, SHP2, MEK inhibitors, Costello papillomata, CBL-JMML spontaneous remission, CFC triad, LEOPARD, pterygium colli, coagulopathy)."""
+    try:
+        import scripts.rasopathies_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

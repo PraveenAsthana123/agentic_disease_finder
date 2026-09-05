@@ -15806,5 +15806,18 @@
     ],
     "n_patients": 320,
     "seeds": "1222-1229"
+  },
+  {
+    "id": "rasopathies-atlas",
+    "name": "Rasopathies-Atlas Complete-8-Gene-RAS-MAPK-Pathway-Disorders-Atlas PTPN11-NS1-593aa-12q24.13-SHP2-50pct-Noonan-PS-50-80pct-GH-On-Label RAF1-NS5-648aa-3p25.2-HCM-75pct-Most-Severe-RASopathy-HCM-Mavacamten SOS1-NS4-1333aa-2p22.1-Mildest-NS-Near-Normal-IQ-Tallest-Stature KRAS-NS3-189aa-12p12.1-NOT-G12-CancerAllele-Sotorasib-NOT-Applicable BRAF-CFC-766aa-7q34-NOT-V600E-Vemurafenib-ABSOLUTELY-CI-MEKi-Rational MAP2K1-CFC-393aa-15q22.31-MEK1-GOF-Trametinib-Most-Direct-LOVS1K-Trial HRAS-Costello-189aa-11p15.5-Gly12Ser-Papillomata-PATHOGNOMONIC-RapidIV-ABSOLUTELY-CI-RMS-15pct CBL-JMML-906aa-11q23.3-E3-Ligase-Spontaneous-Remission-40-60pct-Observe-First 320-Patient-Aggregate-8x40-seeds-1230-1237",
+    "status": "built",
+    "route": "/rasopathies-atlas",
+    "api": "/api/rasopathies-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "n_genes": 8,
+    "seeds": "1230-1237",
+    "registered": "2026-09-05",
+    "category": "rasopathies_ras_mapk_disorders",
+    "description": "Complete 8-Gene RAS/MAPK Pathway Disorders Atlas PTPN11-NS1 RAF1-NS5 SOS1-NS4 KRAS-NS3 BRAF-CFC MAP2K1-CFC HRAS-Costello CBL-JMML 320-Patient-Aggregate-8x40-seeds-1230-1237"
   }
 ]
