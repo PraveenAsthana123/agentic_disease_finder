@@ -15394,5 +15394,12 @@
       "UBQLN2"
     ],
     "registered": "2026-09-04"
+  },
+  {
+    "id": "channelopathy-atlas",
+    "name": "Channelopathy-Atlas Complete-8-Gene-Skeletal-Muscle-Cardiac-Channelopathy-Atlas SCN4A-Nav1.4-HyperPP-Myotonia-Congenita-Paramyotonia-Malignant-Hyperthermia-Susceptibility CACNA1S-Cav1.1-HypoPP1-MH-CACNA1S-Periodic-Paralysis KCNJ2-Kir2.1-Andersen-Tawil-Syndrome-CPVT2-Periodic-Paralysis-Dysmorphic CLCN1-ClC-1-Myotonia-Congenita-Thomsen-AD-Becker-AR-Warm-Up-PATHOGNOMONIC KCNQ1-Kv7.1-LQT1-JLNS-Bisoprolol-First-Line RYR2-Ryanodine-Receptor-2-CPVT1-Most-Common-CPVT-Adrenaline-Test KCNH2-Kv11.1-hERG-LQT2-Drug-Induced-DRUG-DRUG-INTERACTION-Critical SCN5A-Nav1.5-LQT3-Brugada-Sick-Sinus-SODIUM-CHANNEL-POLYVALENT 320-Patient-Aggregate-8x40-seeds-1054-1061",
+    "title": "Channelopathy-Atlas Complete-8-Gene-Skeletal-Muscle-Cardiac-Channelopathy-Atlas",
+    "status": "built",
+    "endpoint": "/api/channelopathy-atlas/overview"
   }
 ]
