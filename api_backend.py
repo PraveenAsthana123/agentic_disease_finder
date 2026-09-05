@@ -44739,6 +44739,36 @@ async def eds_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/platelet-disorders-atlas/overview")
+async def platelet_disorders_atlas_overview():
+    """Platelet-Disorders-Atlas overview (GP1BA-627aa-17p13.2-AR-BSS-Giant-Platelets-DDAVP-Ineffective, ITGA2B-1008aa-17q21.31-AR-GT-A-ALL-Aggregation-Absent-Normal-Count, ITGB3-788aa-17q21.32-AR-GT-B-HPA-1a-NAIT, MYH9-1960aa-22q11.2-AD-Giant-Platelets-Neutrophil-Inclusions-SNHL-Nephritis, NBEAL2-2806aa-3p21.31-AR-Gray-Platelet-Alpha-Granule-Absent-Myelofibrosis, ANKRD26-1982aa-10p12.1-AD-THC2-5UTR-WES-Misses-AML-Risk, GFI1B-330aa-9q34.13-AD-Macrocytosis-PATHOGNOMONIC-Delta-Granule-Absent-CD34-Platelets, RUNX1-453aa-21q22.12-AD-FPD-AML-35-44pct-AML-Risk-NO-Aspirin-HSCT-Exclude-Family-Donors). 320 patients (8x40, seeds 1334-1341)."""
+    try:
+        import scripts.platelet_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/platelet-disorders-atlas/breakdown")
+async def platelet_disorders_atlas_breakdown():
+    """Platelet-Disorders-Atlas per-gene breakdown (GP1BA, ITGA2B, ITGB3, MYH9, NBEAL2, ANKRD26, GFI1B, RUNX1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmarks, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.platelet_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/platelet-disorders-atlas/definitions")
+async def platelet_disorders_atlas_definitions():
+    """Platelet-Disorders-Atlas clinical definitions (BSS GPIb giant platelets DDAVP ineffective, GT GPIIb/IIIa absent clot retraction rFVIIa preferred, MYH9 neutrophil inclusions SNHL nephritis NO-aspirin, GPS alpha-granule myelofibrosis, ANKRD26 5UTR WES-misses TPO-agonist avoid, GFI1B macrocytosis CD34-platelets delta-granule, RUNX1 AML-35-44pct NO-aspirin HSCT-unrelated-donor, cascade testing AD-AR platelet disorders)."""
+    try:
+        import scripts.platelet_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

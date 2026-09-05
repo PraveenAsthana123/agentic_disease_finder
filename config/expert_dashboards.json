@@ -16099,5 +16099,16 @@
       "/api/eds-atlas/breakdown",
       "/api/eds-atlas/definitions"
     ]
+  },
+  {
+    "id": "platelet-disorders-atlas",
+    "name": "Platelet-Disorders-Atlas Complete-8-Gene-Hereditary-Platelet-Disorders-Atlas GP1BA-627aa-17p13.2-AR-BSS-Giant-Platelets-DDAVP-Ineffective ITGA2B-1008aa-17q21.31-AR-GT-A-ALL-Aggregation-Absent ITGB3-788aa-17q21.32-AR-GT-B-HPA-1a-NAIT MYH9-1960aa-22q11.2-AD-Neutrophil-Inclusions-SNHL-Nephritis-NO-Aspirin NBEAL2-2806aa-3p21.31-AR-Gray-Platelet-Myelofibrosis ANKRD26-1982aa-10p12.1-AD-5UTR-WES-Misses-AML-5-8pct GFI1B-330aa-9q34.13-AD-Macrocytosis-PATHOGNOMONIC-CD34-Platelets RUNX1-453aa-21q22.12-AD-FPD-AML-35-44pct-NO-Aspirin 320-Patient-Aggregate-8x40-seeds-1334-1341",
+    "route": "/api/platelet-disorders-atlas",
+    "page": "/platelet-disorders-atlas",
+    "status": "built",
+    "category": "Hereditary Platelet Disorders",
+    "seeds": "1334-1341",
+    "n_patients": 320,
+    "registered": "2026-09-05"
   }
 ]
