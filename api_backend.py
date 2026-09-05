@@ -44229,6 +44229,36 @@ async def pulmonary_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/cancer-syndromes-atlas/overview")
+async def cancer_syndromes_atlas_overview():
+    """Cancer Syndromes Atlas complete 8-gene hereditary cancer predisposition overview (320 patients, seeds 1198-1205)."""
+    try:
+        import scripts.cancer_syndromes_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cancer-syndromes-atlas/breakdown")
+async def cancer_syndromes_atlas_breakdown():
+    """Cancer Syndromes Atlas per-gene breakdown (BRCA1/BRCA2/MLH1/MSH2/TP53/RB1/CDKN2A/APC)."""
+    try:
+        import scripts.cancer_syndromes_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cancer-syndromes-atlas/definitions")
+async def cancer_syndromes_atlas_definitions():
+    """Cancer Syndromes Atlas clinical term definitions (HR deficiency, PARPi, MSI-H, Knudson two-hit, leukocoria, CHRPE, EPCAM, universal MMR testing, RRSO, desmoid)."""
+    try:
+        import scripts.cancer_syndromes_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

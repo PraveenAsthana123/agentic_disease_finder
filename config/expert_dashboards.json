@@ -15731,5 +15731,21 @@
     "built": null,
     "registered": "2026-09-05",
     "status": "built"
+  },
+  {
+    "id": "cancer-syndromes-atlas",
+    "name": "Cancer-Syndromes-Atlas Complete-8-Gene-Hereditary-Cancer-Predisposition-Atlas BRCA1-HBOC1-1863aa-17q21.31-TNBC-70pct-Ovarian-44pct-RRSO-35-40yo-Olaparib-PARP BRCA2-HBOC2-3418aa-13q12.3-Male-Breast-6pct-Pancreatic-5-7pct-Platinum-Sensitive-RAD51-Loader MLH1-Lynch-756aa-3p22.2-MutL-Alpha-MSI-H-CRC-25-70pct-Pembrolizumab-Aspirin-CAPP2-Level-A-5FU-HARMFUL-StageII MSH2-Lynch-934aa-2p21-MutS-Alpha-Urothelial-14pct-HIGHEST-Lynch-EPCAM-Deletion-MLPA-Mandatory TP53-LFS-393aa-17p13.1-Guardian-Genome-Radiation-ABSOLUTELY-CI-Choroid-Plexus-CPC-PATHOGNOMONIC-WBMRI-Annual RB1-Retinoblastoma-928aa-13q14.2-Leukocoria-PATHOGNOMONIC-Radiation-CI-1500x-Osteosarcoma-Red-Reflex-Mandatory CDKN2A-FAMMM-156aa-9p21.3-p16-CDK4-CDK6-Brake-Atypical-Nevi-PATHOGNOMONIC-Pancreatic-17-39x-EUS-MRCP APC-FAP-2843aa-5q22.2-Beta-Catenin-Wnt-100-Adenomas-PATHOGNOMONIC-Colectomy-20-25yo-Sulindac-NOT-Curative-CHRPE-Desmoid-Codon-1310 320-Patient-Aggregate-8x40-seeds-1198-1205",
+    "category": "Hereditary Cancer Predisposition Syndromes",
+    "status": "built",
+    "built": true,
+    "route": "/cancer-syndromes-atlas",
+    "api_endpoints": [
+      "/api/cancer-syndromes-atlas/overview",
+      "/api/cancer-syndromes-atlas/breakdown",
+      "/api/cancer-syndromes-atlas/definitions"
+    ],
+    "seeds": "1198-1205",
+    "n_patients": 320,
+    "registered": "2026-09-05"
   }
 ]
