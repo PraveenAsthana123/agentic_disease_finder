@@ -15949,5 +15949,19 @@
     "built_date": "2026-09-05",
     "registered": "2026-09-05",
     "dashboard_id": 1022
+  },
+  {
+    "id": "genodermatoses-atlas",
+    "name": "Genodermatoses-Atlas Complete-8-Gene-Hereditary-Skin-Disorder-Atlas ABCA12-2595aa-2q34-AR-Harlequin-Ichthyosis-Collodion-Membrane-ACITRETIN-48H-MANDATORY-Ectropion-Eclabium KRT1-644aa-12q13.13-AD-Epidermolytic-Ichthyosis-PPK-Bleach-Baths-Retinoids STS-583aa-Xp22.31-XLR-XLRI-MLPA-MANDATORY-Xp22.31-Deletion-Kallmann-KAL1 COL7A1-2944aa-3p21.31-DEB-AD-DDEB-AR-RDEB-Pseudosyndactyly-SCC-40-80pct-Oleogel-S10-FDA2023 LAMA3-3936aa-18q11.2-AR-JEB-Herlitz-LETHAL-Granulation-Tissue-PATHOGNOMONIC-LAMB3-Most-Common KRT5-590aa-12q13.13-AD-EBS-Dowling-Meara-Herpetiform-Cooling-Diacerein ATP2C1-919aa-3q22.1-AD-Hailey-Hailey-Intertriginous-Botox-KVE-Emergency EDA-391aa-Xq12-XLR-XLHED-Anhidrosis-HEAT-STROKE-Cooling-Vest-Prenatal-EDX111 320-Patient-Aggregate-8x40-seeds-1278-1285",
+    "status": "built",
+    "route": "/genodermatoses-atlas",
+    "api": "/api/genodermatoses-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "n_genes": 8,
+    "seeds": "1278-1285",
+    "registered": "2026-09-05",
+    "category": "hereditary_skin_genodermatoses_atlas",
+    "dashboard_id": 1023,
+    "description": "Genodermatoses-Atlas Complete-8-Gene-Hereditary-Skin-Disorder-Atlas ABCA12-KRT1-STS-COL7A1-LAMA3-KRT5-ATP2C1-EDA / 320-Patient-Aggregate-8x40-seeds-1278-1285 / 3-endpoints-/api/genodermatoses-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1022-1023 / SiteNav-wired-after-CHD-Atlas / Registered-2026-09-05"
   }
 ]

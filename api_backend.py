@@ -44499,6 +44499,36 @@ async def bone_mineral_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/genodermatoses-atlas/overview")
+async def genodermatoses_atlas_overview():
+    """Genodermatoses Atlas overview (ABCA12 Harlequin Ichthyosis acitretin 48h, KRT1 Epidermolytic Ichthyosis PPK bleach baths, STS XLRI MLPA mandatory Xp22.31 deletion Kallmann, COL7A1 RDEB pseudosyndactyly SCC 40-80% Oleogel-S10, LAMA3 JEB-Herlitz lethal granulation tissue, KRT5 EBS Dowling-Meara diacerein cooling, ATP2C1 Hailey-Hailey botox KVE emergency, EDA XLHED anhidrosis heat stroke cooling vest prenatal EDX111). 320 patients (8x40, seeds 1278-1285)."""
+    try:
+        import scripts.genodermatoses_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/genodermatoses-atlas/breakdown")
+async def genodermatoses_atlas_breakdown():
+    """Genodermatoses Atlas per-gene breakdown (ABCA12, KRT1, STS, COL7A1, LAMA3, KRT5, ATP2C1, EDA — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.genodermatoses_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/genodermatoses-atlas/definitions")
+async def genodermatoses_atlas_definitions():
+    """Genodermatoses Atlas clinical definitions (ichthyosis vs EB cleavage planes, ABCA12 HI acitretin rule, STS Xp22.31 deletion Kallmann, COL7A1 RDEB SCC surveillance, JEB granulation tissue sign, HHD Kaposi varicelliform eruption emergency, EDA anhidrosis heat stroke, botulinum toxin HHD)."""
+    try:
+        import scripts.genodermatoses_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/chd-atlas/overview")
 async def chd_atlas_overview():
     """Congenital Heart Disease Atlas overview (NKX2-5 AV block, TBX5 Holt-Oram radial ray, GATA4 ASD/VSD, TBX20 late DCM, GATA6 pancreatic agenesis, JAG1 Alagille peripheral PS + Kasai CI, NOTCH1 BAV TAVR uncertain, MYH6 sick sinus pacemaker risk post-repair). 320 patients (8x40, seeds 1270-1277)."""
