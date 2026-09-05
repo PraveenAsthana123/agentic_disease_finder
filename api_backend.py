@@ -44109,6 +44109,36 @@ async def nephropathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/autoinflammatory-atlas/overview")
+async def autoinflammatory_atlas_overview():
+    """Autoinflammatory-Atlas complete 8-gene hereditary autoinflammatory disorder overview (320 patients, seeds 1174-1181)."""
+    try:
+        import scripts.autoinflammatory_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/autoinflammatory-atlas/breakdown")
+async def autoinflammatory_atlas_breakdown():
+    """Autoinflammatory-Atlas per-gene breakdown (MEFV/NLRP3/TNFRSF1A/MVK/IL1RN/CECR1/NOD2/PSMB8)."""
+    try:
+        import scripts.autoinflammatory_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/autoinflammatory-atlas/definitions")
+async def autoinflammatory_atlas_definitions():
+    """Autoinflammatory-Atlas clinical term definitions (AA amyloid, colchicine, canakinumab, anakinra, CAPS, IFN score, migratory myalgia, mevalonic acid, Blau vs sarcoid, DADA2 stroke)."""
+    try:
+        import scripts.autoinflammatory_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hemoglobinopathy-atlas/overview")
 async def hemoglobinopathy_atlas_overview():
     """Hemoglobinopathy-Atlas complete 8-gene hereditary red cell disorder overview (320 patients, seeds 1166-1173)."""

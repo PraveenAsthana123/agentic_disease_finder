@@ -15657,5 +15657,31 @@
     "n_genes": 8,
     "seeds": "1166-1173",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "autoinflammatory_atlas",
+    "name": "Autoinflammatory-Atlas",
+    "category": "Hereditary Autoinflammatory Disorders",
+    "status": "built",
+    "route": "/autoinflammatory-atlas",
+    "api_routes": [
+      "/api/autoinflammatory-atlas/overview",
+      "/api/autoinflammatory-atlas/breakdown",
+      "/api/autoinflammatory-atlas/definitions"
+    ],
+    "genes": [
+      "MEFV",
+      "NLRP3",
+      "TNFRSF1A",
+      "MVK",
+      "IL1RN",
+      "CECR1",
+      "NOD2",
+      "PSMB8"
+    ],
+    "n_patients": 320,
+    "seeds": "1174-1181",
+    "built_date": "2026-09-05",
+    "description": "Complete 8-Gene Hereditary Autoinflammatory Disorder Atlas"
   }
 ]
