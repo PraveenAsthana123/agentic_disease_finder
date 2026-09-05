@@ -44019,6 +44019,36 @@ async def neurocutaneous_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/coagulopathy-atlas/overview")
+async def coagulopathy_atlas_overview():
+    """Coagulopathy Atlas complete 8-gene hereditary bleeding disorders overview (320 patients, seeds 1142-1149)."""
+    try:
+        import scripts.coagulopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coagulopathy-atlas/breakdown")
+async def coagulopathy_atlas_breakdown():
+    """Coagulopathy Atlas per-gene breakdown (F8/F9/VWF/F11/F7/F13A1/ITGA2B/GP1BA)."""
+    try:
+        import scripts.coagulopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/coagulopathy-atlas/definitions")
+async def coagulopathy_atlas_definitions():
+    """Coagulopathy Atlas clinical term definitions (haemostasis, inhibitors, VWF, ristocetin, emicizumab, GP nomenclature)."""
+    try:
+        import scripts.coagulopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

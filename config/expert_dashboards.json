@@ -15592,5 +15592,19 @@
     "category": "neurocutaneous_syndromes_tumor_predisposition_atlas",
     "dashboard_id": 1005,
     "description": "Neurocutaneous-Atlas Complete-8-Gene-Neurocutaneous-Syndromes-Tumor-Predisposition-Atlas NF1-NF2-TSC1-TSC2-VHL-PTEN-PTCH1-SMARCB1 / 320-Patient-Aggregate-8x40-seeds-1134-1141 / 3-endpoints-/api/neurocutaneous-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1004-1005 / SiteNav-wired-after-Deafness-Atlas / Registered-2026-09-05"
+  },
+  {
+    "id": "coagulopathy-atlas",
+    "name": "Coagulopathy-Atlas Complete-8-Gene-Hereditary-Bleeding-Disorders-Atlas F8-HemophiliaA-Emicizumab-FDA-2017-Inhibitors-25-30pct F9-HemophiliaB-Etranacogene-FDA-2022-FIX-Padua-Leyden VWF-vonWillebrand-DDAVP-Type1-2A-CI-Type2B F11-HemophiliaC-Ashkenazi-E117X-F283L-Poor-Bleed-Correlation F7-FactorVII-PT-Prolonged-aPTT-Normal-rFVIIa F13A1-FactorXIII-PT-aPTT-TT-Normal-Screening-Misses-Delayed-Bleeding ITGA2B-Glanzmann-Absent-Aggregation-GP2b3a-CI GP1BA-BernardSoulier-Giant-Platelets-Manual-Count-Mandatory 320-Patient-Aggregate-8x40-seeds-1142-1149",
+    "status": "built",
+    "route": "/coagulopathy-atlas",
+    "api": "/api/coagulopathy-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "n_genes": 8,
+    "seeds": "1142-1149",
+    "registered": "2026-09-05",
+    "category": "hereditary_bleeding_coagulopathy_atlas",
+    "dashboard_id": 1006,
+    "description": "Coagulopathy-Atlas Complete-8-Gene-Hereditary-Bleeding-Disorders-Atlas F8-F9-VWF-F11-F7-F13A1-ITGA2B-GP1BA / 320-Patient-Aggregate-8x40-seeds-1142-1149 / 3-endpoints-/api/coagulopathy-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1005-1006 / SiteNav-wired-after-Neurocutaneous-Atlas / Registered-2026-09-05"
   }
 ]
