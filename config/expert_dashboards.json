@@ -16156,5 +16156,14 @@
     "title": "HSAN-Atlas Complete-8-Gene-Hereditary-Sensory-Autonomic-Neuropathy-Atlas",
     "status": "built",
     "category": "Hereditary Sensory and Autonomic Neuropathy"
+  },
+  {
+    "id": "oi-atlas",
+    "name": "OI-Atlas Complete-8-Gene-Osteogenesis-Imperfecta-Atlas COL1A1-1464aa-17q21.33-AD-OI-type-I-II-III-IV-Glycine-C-terminal-Severity IFITM5-138aa-11p15.5-AD-GOF-OI-V-Hyperplastic-Callus-OSTEOSARCOMA-MIMIC SERPINF1-418aa-17p13.3-AR-OI-VI-PEDF-Undetectable-Fish-Scale-Bone CRTAP-333aa-3p22.3-AR-OI-VII-Rhizomelic-White-Sclerae P3H1-736aa-1p34.2-AR-OI-VIII-West-African-Arg989Cys FKBP10-582aa-17q21.2-AR-OI-XI-Bruck-Contractures-Absent-LP-Crosslinks WNT1-370aa-12q13.12-AR-OI-XV-Trabecular-Collapse-Brain-MRI-Mandatory-AD-EOOP 320-Patient-Aggregate-8x40-seeds-1374-1381",
+    "status": "built",
+    "api": "/api/oi-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 1374,
+    "registered": "2026-09-05"
   }
 ]

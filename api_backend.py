@@ -44859,6 +44859,36 @@ async def amyloidosis_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/oi-atlas/overview")
+async def oi_atlas_overview():
+    """OI-Atlas overview (COL1A1-1464aa-17q21.33-AD-OI-type-I-II-III-IV-glycine-substitution-C-terminal-severity, COL1A2-1366aa-7q21.3-AD-AR-OI-I-IV-recessive-EDS-overlap, IFITM5-138aa-11p15.5-AD-OI-V-hyperplastic-callus-interosseous-calcification-osteosarcoma-mimic, SERPINF1-418aa-17p13.3-AR-OI-VI-PEDF-undetectable-fish-scale-bone-bisphosphonates-less-effective, CRTAP-333aa-3p22.3-AR-OI-VII-rhizomelic-shortening-white-sclerae-Pro986-underhydroxylation, P3H1-736aa-1p34.2-AR-OI-VIII-West-African-founder-Arg989Cys-15-20pct-African-American-severe-OI, FKBP10-582aa-17q21.2-AR-OI-XI-Bruck-OI-plus-contractures-absent-LP-crosslinks, WNT1-370aa-12q13.12-AR-OI-XV-trabecular-collapse-brain-AD-early-onset-osteoporosis, 320 patients 8x40 seeds 1374-1381)."""
+    try:
+        import scripts.oi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/oi-atlas/breakdown")
+async def oi_atlas_breakdown():
+    """OI-Atlas per-gene breakdown (COL1A1-Gly-substitution-C-terminal-severity-PTC-haploinsufficiency-OI-I, COL1A2-moderate-severe-OI-III-IV-recessive-EDS-homotrimers, IFITM5-c.-14C>T-5UTR-GOF-BRIL-callus-interosseous, SERPINF1-PEDF-undetectable-fish-scale-bone-denosumab, CRTAP-rhizomelic-Pro986-mass-spec-complex-with-P3H1, P3H1-Arg989Cys-West-African-lethal-severe, FKBP10-FKBP65-urine-LP-crosslinks-absent-Bruck-contractures, WNT1-canonical-Wnt-osteoblast-brain-ACC-leukoencephalopathy-EOOP-heterozygous)."""
+    try:
+        import scripts.oi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/oi-atlas/definitions")
+async def oi_atlas_definitions():
+    """OI-Atlas clinical definitions (collagen-glycine-C-terminal-rule, OI-V-hyperplastic-callus-osteosarcoma-mimic-IFITM5-5UTR, PEDF-undetectable-fish-scale-bone-SERPINF1-OI-VI, Pro986-under-hydroxylation-P3H-complex-CRTAP-P3H1-rhizomelic-white-sclerae, Bruck-FKBP10-urine-LP-absent-contractures, WNT1-OI-XV-brain-MRI-EOOP-heterozygous-romosozumab, bisphosphonates-gene-specific-efficacy, basilar-invagination-surveillance, OI-panel-diagnostic-tiered-approach, cascade-testing)."""
+    try:
+        import scripts.oi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hsan-atlas/overview")
 async def hsan_atlas_overview():
     """HSAN-Atlas overview (SPTLC1-HSAN1A-deoxySL-L-serine-vincristine-CI, ELP1-FD-Ashkenazi-c.2204+6T>C-TUDCA-autonomic-crisis, NTRK1-CIPA-hyperthermia-kills-anhidrosis, NGFB-HSAN5-selective-deep-pain-Norwegian-founder, FAM134B-HSAN2B-ER-reticulophagy-neonatal-mutilations, DNMT1-HSAN1E-sensory+SNHL+dementia-triad, WNK1-HSAN2A-HSN2-exon-standard-panel-MISSES, PRDM12-HSAN8-pain-insensitivity-sweating-PRESERVED, 320 patients 8x40 seeds 1366-1373)."""
