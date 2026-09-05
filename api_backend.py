@@ -43813,6 +43813,34 @@ async def movement_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/congenital-myopathy-atlas/overview")
+async def congenital_myopathy_atlas_overview():
+    """Congenital-Myopathy-Atlas overview — NEB·RYR1·ACTA1·TPM2·TPM3·MTM1·DNM2·SELENON (320 patients, seeds 1086–1093)."""
+    try:
+        import scripts.congenital_myopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/congenital-myopathy-atlas/breakdown")
+async def congenital_myopathy_atlas_breakdown():
+    """Congenital-Myopathy-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.congenital_myopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/congenital-myopathy-atlas/definitions")
+async def congenital_myopathy_atlas_definitions():
+    """Congenital-Myopathy-Atlas clinical term definitions."""
+    try:
+        import scripts.congenital_myopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

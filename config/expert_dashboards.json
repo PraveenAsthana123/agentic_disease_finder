@@ -15479,5 +15479,12 @@
     ],
     "seeds": "1078-1085",
     "registered": "2026-09-04"
+  },
+  {
+    "id": "congenital-myopathy-atlas",
+    "name": "Congenital-Myopathy-Atlas Complete-8-Gene-Congenital-Myopathy-Atlas NEB-Nebulin-AR-NEM2-Nemaline-Rods-Gomori-PATHOGNOMONIC-MLPA-MANDATORY RYR1-CCD-MHS1-VOLATILE-SUCCINYLCHOLINE-ABSOLUTELY-CI-Dantrolene ACTA1-NEM3-Intranuclear-Rods-EM-PATHOGNOMONIC-Neonatal-Lethal TPM2-NEM4-DA1-Trismus-PATHOGNOMONIC TPM3-NEM1-Type1-Fibre-Uniformity-HALLMARK MTM1-XLMTM-Centrally-Placed-Nuclei-Hepatopathy-10pct DNM2-CNM1-Necklace-Fibres-CMT2M-Allelic SELENON-RSMD1-Rigid-Spine-Respiratory-Before-Limb-NIV-MANDATORY 320-Patient-Aggregate-8x40-seeds-1086-1093",
+    "status": "built",
+    "category": "Congenital Myopathy Atlas",
+    "description": "Built scripts/congenital_myopathy_atlas_dashboard.py, api_backend.py 3 routes /api/congenital-myopathy-atlas/overview|breakdown|definitions verified 200, portal-next/app/congenital-myopathy-atlas/page.jsx + SiteNav wired after Movement-Disorders-Atlas, expert_dashboards.json count 998->999. Built 2026-09-04."
   }
 ]
