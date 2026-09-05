@@ -43929,6 +43929,36 @@ async def aortic_ctd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pid-atlas/overview")
+async def pid_atlas_overview():
+    """PID-Atlas overview — IL2RG·ADA·RAG1·BTK·CYBB·WAS·TNFRSF13B·STAT3 (320 patients, seeds 1118–1125)."""
+    try:
+        import scripts.pid_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pid-atlas/breakdown")
+async def pid_atlas_breakdown():
+    """PID-Atlas per-gene breakdown."""
+    try:
+        import scripts.pid_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pid-atlas/definitions")
+async def pid_atlas_definitions():
+    """PID-Atlas clinical term definitions."""
+    try:
+        import scripts.pid_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
