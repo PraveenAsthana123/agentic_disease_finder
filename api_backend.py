@@ -43841,6 +43841,64 @@ async def congenital_myopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ird-atlas/overview")
+async def ird_atlas_overview():
+    """IRD-Atlas overview — RPGR·ABCA4·USH2A·PRPF31·CEP290·MYO7A·CRB1·BEST1 (320 patients, seeds 1094–1101)."""
+    try:
+        import scripts.ird_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ird-atlas/breakdown")
+async def ird_atlas_breakdown():
+    """IRD-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.ird_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/ird-atlas/definitions")
+async def ird_atlas_definitions():
+    """IRD-Atlas clinical term definitions."""
+    try:
+        import scripts.ird_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cardiomyopathy-atlas/overview")
+async def cardiomyopathy_atlas_overview():
+    """Cardiomyopathy-Atlas overview — MYH7·MYBPC3·TNNT2·PKP2·DSP·LMNA·TTN·RBM20 (320 patients, seeds 1102–1109)."""
+    try:
+        import scripts.cardiomyopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cardiomyopathy-atlas/breakdown")
+async def cardiomyopathy_atlas_breakdown():
+    """Cardiomyopathy-Atlas per-gene breakdown."""
+    try:
+        import scripts.cardiomyopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cardiomyopathy-atlas/definitions")
+async def cardiomyopathy_atlas_definitions():
+    """Cardiomyopathy-Atlas clinical term definitions."""
+    try:
+        import scripts.cardiomyopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

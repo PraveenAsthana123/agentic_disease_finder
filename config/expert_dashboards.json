@@ -15486,5 +15486,53 @@
     "status": "built",
     "category": "Congenital Myopathy Atlas",
     "description": "Built scripts/congenital_myopathy_atlas_dashboard.py, api_backend.py 3 routes /api/congenital-myopathy-atlas/overview|breakdown|definitions verified 200, portal-next/app/congenital-myopathy-atlas/page.jsx + SiteNav wired after Movement-Disorders-Atlas, expert_dashboards.json count 998->999. Built 2026-09-04."
+  },
+  {
+    "id": "ird-atlas",
+    "title": "IRD-Atlas \u2014 Complete 8-Gene Inherited Retinal Dystrophy Atlas",
+    "status": "built",
+    "phase": "atlas",
+    "route": "/ird-atlas",
+    "api_base": "/api/ird-atlas",
+    "description": "RPGR\u00b7ABCA4\u00b7USH2A\u00b7PRPF31\u00b7CEP290\u00b7MYO7A\u00b7CRB1\u00b7BEST1. 320 patients (8\u00d740, seeds 1094-1101). Vitamin A ABSOLUTELY CI in ABCA4. IVS26+1655A>G missed by exonic NGS. EOG Arden <1.5 PATHOGNOMONIC for BEST1. CI before 2y for MYO7A. CRB1 thickened retina OCT PATHOGNOMONIC.",
+    "n_patients": 320,
+    "n_genes": 8,
+    "genes": [
+      "RPGR",
+      "ABCA4",
+      "USH2A",
+      "PRPF31",
+      "CEP290",
+      "MYO7A",
+      "CRB1",
+      "BEST1"
+    ],
+    "seeds": [
+      1094,
+      1095,
+      1096,
+      1097,
+      1098,
+      1099,
+      1100,
+      1101
+    ],
+    "built_date": "2026-09-04"
+  },
+  {
+    "id": "cardiomyopathy-atlas",
+    "name": "Cardiomyopathy Atlas (8-Gene Hereditary Cardiomyopathy)",
+    "category": "Hereditary Cardiomyopathy",
+    "status": "built",
+    "route": "/cardiomyopathy-atlas",
+    "api_endpoints": [
+      "/api/cardiomyopathy-atlas/overview",
+      "/api/cardiomyopathy-atlas/breakdown",
+      "/api/cardiomyopathy-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/cardiomyopathy-atlas/page.jsx",
+    "built_date": "2026-09-04",
+    "dashboard_id": 1001,
+    "description": "Cardiomyopathy Atlas Complete-8-Gene-Hereditary-Cardiomyopathy-Atlas MYH7-HCM1-Thick-Filament-AD-35-40pct-Mavacamten-FDA-2022-ICD-SCD MYBPC3-HCM4-Haploinsufficiency-Most-Common-40-50pct-South-Asian-Founder-Age-Dependent-Penetrance TNNT2-HCM3-DCM1D-MALIGNANT-SCD-Disproportionate-LVH-ICD-Lower-Threshold-CMR-Mandatory PKP2-ARVC9-Most-Common-ARVC-40-50pct-Epsilon-Wave-PATHOGNOMONIC-Sports-Restriction-MANDATORY-ICD DSP-ARVC8-Biventricular-Woolly-Hair-PPK-Carvajal-PATHOGNOMONIC-Subepicardial-LGE-ICD-MANDATORY LMNA-DCM1A-EDMD2-AV-Block-PATHOGNOMONIC-ICD-MANDATORY-Pacemaker-INSUFFICIENT-SCD-15-40pct TTN-DCM1G-Largest-Human-Protein-A-Band-TTNtv-PATHOGENIC-25pct-Familial-DCM-15pct-PPCM-ClinGen RBM20-DCM1HH-Most-Aggressive-DCM-RS-Domain-Hotspot-Biventricular-ICD-MANDATORY-Early-Transplant 320-Patient-Aggregate-8x40-seeds-1102-1109 / 3-endpoints-/api/cardiomyopathy-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1000-1001 / SiteNav-wired-after-IRD-Atlas / Registered-2026-09-04"
   }
 ]
