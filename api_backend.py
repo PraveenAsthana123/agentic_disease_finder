@@ -44289,6 +44289,36 @@ async def ciliopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/mody-atlas/overview")
+async def mody_atlas_overview():
+    """MODY Atlas complete 8-gene hereditary diabetes overview (HNF4A/GCK/HNF1A/PDX1/HNF1B/NEUROD1/ABCC8/KCNJ11, 320 patients, seeds 1214-1221)."""
+    try:
+        import scripts.mody_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody-atlas/breakdown")
+async def mody_atlas_breakdown():
+    """MODY Atlas per-gene breakdown (HNF4A MODY1/GCK MODY2/HNF1A MODY3/PDX1 MODY4/HNF1B MODY5/NEUROD1 MODY6/ABCC8 MODY12/KCNJ11 MODY13)."""
+    try:
+        import scripts.mody_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mody-atlas/definitions")
+async def mody_atlas_definitions():
+    """MODY Atlas clinical term definitions (KATP channel, PNDM, DEND, sulfonylurea switch, glucokinase set-point, glucosuria MODY3, GCK pregnancy, CHI, 17q12 deletion, PERT, MLPA, hsCRP discriminator)."""
+    try:
+        import scripts.mody_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

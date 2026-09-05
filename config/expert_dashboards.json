@@ -15755,5 +15755,30 @@
     "api": "/api/ciliopathy-atlas/overview|breakdown|definitions",
     "cohort_n": 320,
     "seed": "1206-1213"
+  },
+  {
+    "id": "mody-atlas",
+    "name": "MODY-Atlas",
+    "category": "Hereditary Diabetes",
+    "status": "built",
+    "route": "/mody-atlas",
+    "api": [
+      "/api/mody-atlas/overview",
+      "/api/mody-atlas/breakdown",
+      "/api/mody-atlas/definitions"
+    ],
+    "description": "Complete 8-Gene Maturity-Onset Diabetes of Youth Atlas HNF4A-MODY1 GCK-MODY2 HNF1A-MODY3 PDX1-MODY4 HNF1B-MODY5 NEUROD1-MODY6 ABCC8-MODY12 KCNJ11-MODY13 320-Patient-Aggregate-8x40-seeds-1214-1221",
+    "genes": [
+      "HNF4A",
+      "GCK",
+      "HNF1A",
+      "PDX1",
+      "HNF1B",
+      "NEUROD1",
+      "ABCC8",
+      "KCNJ11"
+    ],
+    "n_patients": 320,
+    "seeds": "1214-1221"
   }
 ]
