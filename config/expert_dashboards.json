@@ -16142,5 +16142,13 @@
     "n_patients": 320,
     "seeds": "1350-1357",
     "description": "Bartter Types 1-4 (SLC12A1/KCNJ1/CLCNKB/BSND), Gitelman (SLC12A3), Liddle/PHA1B (SCNN1B), Dent Disease 1 (CLCN5), HHRH (SLC34A1)"
+  },
+  {
+    "id": "amyloidosis-atlas",
+    "name": "Amyloidosis-Atlas",
+    "status": "built",
+    "api": "/api/amyloidosis-atlas/overview|breakdown|definitions",
+    "frontend": "portal-next/app/amyloidosis-atlas/page.jsx",
+    "built_note": "Amyloidosis-Atlas \u2014 Complete 8-Gene Hereditary Amyloidosis Atlas TTR-147aa-18q12.1-AD-ATTR-FAP-CM-Val30Met-Patisiran-Inotersen-Tafamidis APOA1-267aa-11q23.3-AD-AApoAI-LOW-HDL APOA2-100aa-1q23.3-AD-AApoAII-Renal-Predominant LYZ-148aa-2q11.2-AD-ALys-Renal-Hepatic-GI-Bleeding GSN-782aa-9q34.13-AD-AGel-Meretoja-Cranial-Neuropathy-Lattice-Corneal-Dystrophy-PATHOGNOMONIC FGA-866aa-4q28.1-AD-AFib-Renal-Liver-Tx-CURATIVE-Renal-Tx-Alone-FAILS CST3-146aa-20p11.21-AD-ACys-Icelandic-Cerebrovascular-Young-Stroke-Fatal-30y B2M-119aa-15q21.1-AB2M-Dialysis-Carpal-Tunnel-PATHOGNOMONIC-HDF-Prevents 320-Patient-Aggregate-8x40-seeds-1358-1365 / 3-endpoints-/api/amyloidosis-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1032-1033 / SiteNav-wired-after-Renal-Tubular-Disorders-Atlas / Registered-2026-09-05"
   }
 ]

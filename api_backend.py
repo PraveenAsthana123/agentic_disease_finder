@@ -44829,6 +44829,36 @@ async def renal_tubular_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/amyloidosis-atlas/overview")
+async def amyloidosis_atlas_overview():
+    """Amyloidosis-Atlas overview (TTR-ATTR-FAP-CM-Val30Met-Patisiran-Tafamidis, APOA1-AApoAI-LOW-HDL, APOA2-AApoAII-Renal, LYZ-ALys-Renal-Hepatic-GI-Bleeding, GSN-AGel-Meretoja-Cranial-Neuropathy-Lattice-Corneal-Dystrophy-PATHOGNOMONIC, FGA-AFib-Renal-Liver-Tx-CURATIVE-Renal-Alone-Fails, CST3-ACys-Icelandic-Cerebrovascular-Young-Stroke-Fatal, B2M-AB2M-Dialysis-Carpal-Tunnel-PATHOGNOMONIC-HDF-Prevention, 320 patients 8x40 seeds 1358-1365)."""
+    try:
+        import scripts.amyloidosis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/amyloidosis-atlas/breakdown")
+async def amyloidosis_atlas_breakdown():
+    """Amyloidosis-Atlas per-gene breakdown (TTR-neuropathy-cardiomyopathy-patisiran-inotersen-tafamidis, APOA1-low-HDL-renal-hepatic, APOA2-renal-frameshift-C-terminal-extension, LYZ-Ile56Thr-Asp67His-renal-hepatic-GI-bleed, GSN-Asp187Asn-Finnish-founder-facial-palsy-lattice-corneal, FGA-Glu526Val-renal-liver-Tx-curative, CST3-Glu68Gln-Icelandic-cerebrovascular-haemorrhage-<40y, B2M-dialysis-carpal-tunnel-spondyloarthropathy-HDF-prevention)."""
+    try:
+        import scripts.amyloidosis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/amyloidosis-atlas/definitions")
+async def amyloidosis_atlas_definitions():
+    """Amyloidosis-Atlas clinical definitions (ATTR-liver-heart-paradox-wild-type-replaces-mutant-cardiac, Meretoja-cranial-neuropathy-corneal-dystrophy-pair, AFib-liver-Tx-curative-renal-alone-fails, ACys-Icelandic-fatal-<30y, patisiran-vs-inotersen-vs-tafamidis, Congo-red-SAP-scan, AB2M-HDF-prevention, cascade-testing)."""
+    try:
+        import scripts.amyloidosis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
