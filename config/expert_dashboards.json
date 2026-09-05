@@ -15849,7 +15849,7 @@
     "id": "retinal-dystrophy-atlas",
     "name": "Retinal-Dystrophy-Atlas Complete-8-Gene-Hereditary-Retinal-Dystrophy-Atlas RPGR-RP3-815aa-Xp21.1-X-linked-Most-Common-ORF15-Exon-Missed-by-NGS-AAV-Gene-Therapy-MeiraGTx USH2A-USH2-5202aa-1q41-Usher-Type-II-RP-Congenital-HL-Normal-Vestibular-Cochlear-Implant-Effective ABCA4-STGD1-2273aa-1p22.1-Stargardt-Juvenile-Macular-VitaminA-ABSOLUTELY-CI-A2E-Accumulation RDH12-LCA13-316aa-14q24.1-Severe-Infantile-No-DarkAdaptation-VitaminA-Safe PRPF31-RP11-499aa-19q13.42-AD-Spliceopathy-Incomplete-Penetrance-MLPA-Mandatory-15pct-Deletions EYS-RP25-3165aa-6q12-Largest-Retinal-Gene-3Mb-AR-Most-Common-Japanese-MLPA-Mandatory CNGB3-ACHM3-809aa-8q21.3-Achromatopsia-No-Color-Vision-GeneTherapy-Phase3-BIIB112 RS1-XLRS-224aa-Xp22.13-Retinoschisis-CAI-ABSOLUTELY-CI-Paradoxical-Worsening-Electronegative-ERG 320-Patient-Aggregate-8x40-seeds-1246-1253",
     "status": "built",
-    "description": "Retinal Dystrophy Atlas — /api/retinal-dystrophy-atlas/* + portal-next/app/retinal-dystrophy-atlas/page.jsx + SiteNav wired after Neurodegeneration-Atlas, 320 patients (8x40, seeds 1246-1253), 3 endpoints /api/retinal-dystrophy-atlas/overview|breakdown|definitions verified 200, expert_dashboards.json count 1018->1019",
+    "description": "Retinal Dystrophy Atlas \u2014 /api/retinal-dystrophy-atlas/* + portal-next/app/retinal-dystrophy-atlas/page.jsx + SiteNav wired after Neurodegeneration-Atlas, 320 patients (8x40, seeds 1246-1253), 3 endpoints /api/retinal-dystrophy-atlas/overview|breakdown|definitions verified 200, expert_dashboards.json count 1018->1019",
     "endpoints": [
       "/api/retinal-dystrophy-atlas/overview",
       "/api/retinal-dystrophy-atlas/breakdown",
@@ -15869,5 +15869,43 @@
     "seeds": "1246-1253",
     "registered": "2026-09-05",
     "category": "Hereditary Retinal Dystrophy"
+  },
+  {
+    "id": "adrenal-disorders-atlas",
+    "name": "Adrenal-Disorders-Atlas Complete-8-Gene-Hereditary-Adrenal-Steroidogenesis-Disorders-Atlas CYP21A2-CAH21-17OHP-PATHOGNOMONIC-MLPA-MANDATORY CYP11B1-CAH-11beta-Hypertension-Fludrocortisone-CI CYP11B2-CMO-Isolated-Mineralocorticoid-Cortisol-NORMAL CYP17A1-17alphaOHase-HTN-Sexual-Infantilism-17OHP-LOW STAR-CLAH-Most-Severe-All-Steroids-Absent-Lipid-Adrenal-MRI NR0B1-AHC-DAX1-XLinked-AI-plus-HH MC2R-FGD1-Isolated-GC-Renin-NORMAL-Tall-Hyperpigmented AAAS-TripleA-Allgrove-Alacrima-FIRST-Achalasia-ACTH-Resistant 320-Patient-Aggregate-8x40-seeds-1254-1261",
+    "status": "built",
+    "category": "Adrenal Steroidogenesis Disorders Atlas",
+    "api_base": "/api/adrenal-disorders-atlas",
+    "page": "/adrenal-disorders-atlas",
+    "api_endpoints": [
+      "/api/adrenal-disorders-atlas/overview",
+      "/api/adrenal-disorders-atlas/breakdown",
+      "/api/adrenal-disorders-atlas/definitions"
+    ],
+    "genes": [
+      "CYP21A2",
+      "CYP11B1",
+      "CYP11B2",
+      "CYP17A1",
+      "STAR",
+      "NR0B1",
+      "MC2R",
+      "AAAS"
+    ],
+    "n_patients": 320,
+    "seeds": [
+      1254,
+      1255,
+      1256,
+      1257,
+      1258,
+      1259,
+      1260,
+      1261
+    ],
+    "registered": "2026-09-05",
+    "built_date": "2026-09-05",
+    "script": "scripts/adrenal_disorders_atlas_dashboard.py",
+    "n_genes": 8
   }
 ]

@@ -44439,6 +44439,36 @@ async def retinal_dystrophy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/adrenal-disorders-atlas/overview")
+async def adrenal_disorders_atlas_overview():
+    """Adrenal Disorders Atlas aggregate overview (8 genes: CYP21A2, CYP11B1, CYP11B2, CYP17A1, STAR, NR0B1, MC2R, AAAS; 320 patients seeds 1254-1261; drug alerts; clinical pearls)."""
+    try:
+        import scripts.adrenal_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/adrenal-disorders-atlas/breakdown")
+async def adrenal_disorders_atlas_breakdown():
+    """Adrenal Disorders Atlas per-gene breakdown (CYP21A2 CAH21, CYP11B1 CAH-11β, CYP11B2 CMO, CYP17A1 17α-OHase, STAR CLAH, NR0B1 AHC, MC2R FGD1, AAAS Triple-A; full clinical data + cohort stats)."""
+    try:
+        import scripts.adrenal_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/adrenal-disorders-atlas/definitions")
+async def adrenal_disorders_atlas_definitions():
+    """Adrenal Disorders Atlas clinical definitions (17-OHP PATHOGNOMONIC, MLPA for CYP21A2, stress dose steroids, Synacthen test, 46,XY DSD, HH, alacrima Schirmer test, achalasia management, fludrocortisone contraindications)."""
+    try:
+        import scripts.adrenal_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
