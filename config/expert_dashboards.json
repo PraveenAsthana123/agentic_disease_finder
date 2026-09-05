@@ -15984,5 +15984,45 @@
     ],
     "seeds": "1286-1293",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "arrhythmia-atlas",
+    "name": "Arrhythmia-Atlas Complete-8-Gene-Inherited-Cardiac-Arrhythmia-Atlas KCNQ1-Kv7.1-580aa-11p15.5-LQT1-JLN1-IKs-Alpha-Swim-Trigger-Beta-Blocker-80pct-SCD-Protection KCNH2-hERG-Kv11.1-1159aa-7q36.1-LQT2-IKr-Auditory-Trigger-Drug-Induced-K-Supplementation-NO-Class-III-Antiarrhythmics SCN5A-Nav1.5-2016aa-3p22.2-LQT3-GOF-Mexiletine-Brugada-LOF-Fever-ABSOLUTELY-CI-Quinidine-PCCD-Pacemaker RYR2-RyR2-4967aa-1q43-CPVT1-SR-Ca-Leak-Bidirectional-VT-Nadolol-PREFERRED-Flecainide-Adjunct-ICD-Paradox CASQ2-Calsequestrin2-399aa-1p13-CPVT2-AR-Earlier-Severe-Biallelic-LCSD-Mandatory HCN4-If-Funny-Current-1203aa-15q24.1-Sick-Sinus-Ivabradine-ABSOLUTE-CI-Pacemaker-Required ANK2-Ankyrin-B-3952aa-4q25-LQT4-Multimorphic-SND-AF-VF-Not-4Gene-Panel KCNE1-MinK-129aa-21q22.12-LQT5-JLN2-IKs-Beta-Female-Predominant-Cochlear-Deafness 320-Patient-Aggregate-8x40-seeds-1294-1301",
+    "title": "Arrhythmia-Atlas \u2014 Complete 8-Gene Inherited Cardiac Arrhythmia Atlas",
+    "route": "/arrhythmia-atlas",
+    "api_prefix": "/api/arrhythmia-atlas",
+    "status": "built",
+    "n_patients": 320,
+    "genes": [
+      "KCNQ1",
+      "KCNH2",
+      "SCN5A",
+      "RYR2",
+      "CASQ2",
+      "HCN4",
+      "ANK2",
+      "KCNE1"
+    ]
+  },
+  {
+    "id": "thyroid-disorders-atlas",
+    "name": "Thyroid-Disorders-Atlas Complete-8-Gene-Hereditary-Thyroid-Disorders-Atlas TSHR-764aa-14q31.1-AR-RTSH-TSH-Resistance-Congenital-Hypothyroidism-TRH-Unresponsive PAX8-450aa-2q14.1-AD-Thyroid-Dysgenesis-Ectopy-DO-NOT-Remove-Without-Scan TPO-933aa-2p25.3-AR-DH1-Organification-Defect-Perchlorate-POSITIVE-Goiter TG-2768aa-8q24.22-AR-DH3-Goiter-Low-Tg-Paradox-Perchlorate-NEGATIVE SLC5A5-643aa-19p13.11-AR-NIS-Iodide-Transport-Defect-Radioiodine-ABSENT DUOX2-1548aa-15q21.1-AR-DH6-Monoallelic-TRANSIENT-Cessation-Trial-Age-3 SLC26A4-780aa-7q22.3-AR-Pendred-EVA-PATHOGNOMONIC-Deafness-Goiter FOXE1-373aa-9q22.33-AR-Bamforth-Lazarus-Choanal-Atresia-EMERGENCY-Athyreosis 320-Patient-Aggregate-8x40-seeds-1302-1309",
+    "title": "Thyroid Disorders Atlas \u2014 8-Gene Hereditary Thyroid Disorders",
+    "route": "/thyroid-disorders-atlas",
+    "api_prefix": "/api/thyroid-disorders-atlas",
+    "status": "built",
+    "n_patients": 320,
+    "genes": [
+      "TSHR",
+      "PAX8",
+      "TPO",
+      "TG",
+      "SLC5A5",
+      "DUOX2",
+      "SLC26A4",
+      "FOXE1"
+    ],
+    "seeds": "1302-1309",
+    "registered": "2026-09-05"
   }
 ]

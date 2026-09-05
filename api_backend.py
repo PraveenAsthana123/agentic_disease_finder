@@ -44559,6 +44559,36 @@ async def iron_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/arrhythmia-atlas/overview")
+async def arrhythmia_atlas_overview():
+    """Arrhythmia Atlas overview (KCNQ1-LQT1-JLN1-swim-trigger-BB-80pct, KCNH2-LQT2-hERG-auditory-drug-induced-K-supplementation, SCN5A-LQT3+Brugada+PCCD-GOF-LOF-mexiletine-quinidine-fever-ABSOLUTELY-CI, RYR2-CPVT1-bidirectional-VT-nadolol+flecainide-ICD-paradox, CASQ2-CPVT2-AR-earlier-severe-LCSD, HCN4-sick-sinus-pacemaker-ivabradine-CONTRAINDICATED, ANK2-LQT4-multimorphic-SND+AF+VF, KCNE1-LQT5-MinK-IKs-beta-female-predominant-JLN2). 320 patients (8x40, seeds 1294-1301)."""
+    try:
+        import scripts.arrhythmia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arrhythmia-atlas/breakdown")
+async def arrhythmia_atlas_breakdown():
+    """Arrhythmia Atlas per-gene breakdown (KCNQ1, KCNH2, SCN5A, RYR2, CASQ2, HCN4, ANK2, KCNE1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.arrhythmia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/arrhythmia-atlas/definitions")
+async def arrhythmia_atlas_definitions():
+    """Arrhythmia Atlas clinical definitions (IKs-IKr distinction, TdP mechanism, bidirectional VT CPVT, Brugada coved pattern, drug-induced QT CredibleMeds, LCSD left cardiac sympathetic denervation, JLN Jervell-Lange-Nielsen, QTc Fridericia correction)."""
+    try:
+        import scripts.arrhythmia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/chd-atlas/overview")
 async def chd_atlas_overview():
     """Congenital Heart Disease Atlas overview (NKX2-5 AV block, TBX5 Holt-Oram radial ray, GATA4 ASD/VSD, TBX20 late DCM, GATA6 pancreatic agenesis, JAG1 Alagille peripheral PS + Kasai CI, NOTCH1 BAV TAVR uncertain, MYH6 sick sinus pacemaker risk post-repair). 320 patients (8x40, seeds 1270-1277)."""
@@ -44584,6 +44614,36 @@ async def chd_atlas_definitions():
     """Congenital Heart Disease Atlas clinical definitions (cardiac TF network NKX2-5/GATA4/TBX5, Holt-Oram radial ray rule, GATA6 neonatal diabetes + CHD, JAG1/Alagille Kasai CI, NOTCH1 BAV TAVR surgical preference, MYH6 pacemaker post-ASD-repair, JAG1/NOTCH1 same pathway)."""
     try:
         import scripts.chd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/thyroid-disorders-atlas/overview")
+async def thyroid_disorders_atlas_overview():
+    """Thyroid Disorders Atlas overview (TSHR-764aa-14q31.1-RTSH-AR-TSH-Resistance-Levothyroxine-TRH-Unresponsive, PAX8-450aa-2q14.1-AD-Thyroid-Dysgenesis-Ectopy-DO-NOT-Remove-Without-Scan, TPO-933aa-2p25.3-AR-DH1-Organification-Defect-Perchlorate-POSITIVE-Goiter, TG-2768aa-8q24.22-AR-DH3-Goiter-Low-Tg-Paradox-Perchlorate-NEGATIVE, SLC5A5-643aa-19p13.11-AR-NIS-Iodide-Transport-Defect-Radioiodine-ABSENT, DUOX2-1548aa-15q21.1-AR-DH6-Monoallelic-TRANSIENT-Cessation-Trial-Age-3, SLC26A4-780aa-7q22.3-AR-Pendred-EVA-PATHOGNOMONIC-Deafness-Goiter, FOXE1-373aa-9q22.33-AR-Bamforth-Lazarus-Choanal-Atresia-EMERGENCY-Athyreosis). 320 patients (8x40, seeds 1302-1309)."""
+    try:
+        import scripts.thyroid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/thyroid-disorders-atlas/breakdown")
+async def thyroid_disorders_atlas_breakdown():
+    """Thyroid Disorders Atlas per-gene breakdown (TSHR, PAX8, TPO, TG, SLC5A5, DUOX2, SLC26A4, FOXE1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.thyroid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/thyroid-disorders-atlas/definitions")
+async def thyroid_disorders_atlas_definitions():
+    """Thyroid Disorders Atlas clinical definitions (congenital hypothyroidism overview, dyshormonogenesis vs dysgenesis imaging rule, TSHR resistance, perchlorate discharge test, PAX8 ectopy rule, NIS iodide transport defect, DUOX2 transient hypothyroidism cessation trial, Pendred EVA sign, Bamforth-Lazarus choanal emergency, neonatal screening pitfalls)."""
+    try:
+        import scripts.thyroid_disorders_atlas_dashboard as atlas_
         return _json_safe(atlas_.get_definitions())
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
