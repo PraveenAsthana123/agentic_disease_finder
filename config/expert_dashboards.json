@@ -15633,5 +15633,17 @@
       "JAG1",
       "SLC25A13"
     ]
+  },
+  {
+    "id": "nephropathy-atlas",
+    "title": "Nephropathy-Atlas Complete-8-Gene-Hereditary-Nephropathy-Atlas PKD1-ADPKD1-Polycystin1-Bilateral-Cysts-Tolvaptan-FDA2018-Hepatotoxicity-Berry-Aneurysm PKD2-ADPKD2-TRPP2-Channel-Milder-ESRD-Later-10yrs COL4A5-Alport-XL-CollagenIV-alpha5-SNHL-Anterior-Lenticonus-PATHOGNOMONIC-ACEi-Pre-Proteinuria COL4A3-Alport-AR-Most-Severe-ESRD-20-30-Goodpasture-Antigen-NC1-Post-Transplant NPHS1-Nephrin-Congenital-Nephrotic-Finnish-Fin-major-Fin-minor-Amniotic-AFP-25pct-Recurrence NPHS2-Podocin-FSGS1-SRNS-R138Q-European-Steroid-Resistant-Low-Transplant-Recurrence UMOD-Uromodulin-UAKD-FJHN-Gout-Teens-PATHOGNOMONIC-NSAIDs-ABSOLUTELY-CI-Allopurinol HNF1B-MODY5-RCAD-Renal-Cysts-Diabetes-Hypomagnesaemia-Pancreatic-Atrophy-Sulfonylureas-INEFFECTIVE-Insulin 320-Patient-Aggregate-8x40-seeds-1158-1165",
+    "category": "Hereditary Nephropathy Atlas",
+    "status": "built",
+    "route": "/api/nephropathy-atlas/overview|breakdown|definitions",
+    "page": "/nephropathy-atlas",
+    "n_patients": 320,
+    "n_genes": 8,
+    "seeds": "1158-1165",
+    "registered": "2026-09-05"
   }
 ]

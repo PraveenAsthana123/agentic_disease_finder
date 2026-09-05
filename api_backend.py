@@ -44079,6 +44079,36 @@ async def hepatic_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/nephropathy-atlas/overview")
+async def nephropathy_atlas_overview():
+    """Nephropathy-Atlas complete 8-gene hereditary nephropathy overview (320 patients, seeds 1158-1165)."""
+    try:
+        import scripts.nephropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nephropathy-atlas/breakdown")
+async def nephropathy_atlas_breakdown():
+    """Nephropathy-Atlas per-gene breakdown (PKD1/PKD2/COL4A5/COL4A3/NPHS1/NPHS2/UMOD/HNF1B)."""
+    try:
+        import scripts.nephropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/nephropathy-atlas/definitions")
+async def nephropathy_atlas_definitions():
+    """Nephropathy-Atlas clinical term definitions (ADPKD, tolvaptan, Alport basket-weave, slit diaphragm, SRNS, UAKD/FJHN, RCAD/MODY5, anti-nephrin recurrence)."""
+    try:
+        import scripts.nephropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
