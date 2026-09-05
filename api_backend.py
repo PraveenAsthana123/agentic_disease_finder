@@ -43988,6 +43988,37 @@ async def deafness_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Neurocutaneous Syndromes Atlas ──────────────────────────────────────
+@app.get("/api/neurocutaneous-atlas/overview")
+async def neurocutaneous_atlas_overview():
+    """Neurocutaneous Syndromes Atlas aggregate overview (320 patients, 8 genes)."""
+    try:
+        import scripts.neurocutaneous_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/neurocutaneous-atlas/breakdown")
+async def neurocutaneous_atlas_breakdown():
+    """Neurocutaneous Syndromes Atlas per-gene breakdown."""
+    try:
+        import scripts.neurocutaneous_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/neurocutaneous-atlas/definitions")
+async def neurocutaneous_atlas_definitions():
+    """Neurocutaneous Syndromes Atlas clinical term definitions."""
+    try:
+        import scripts.neurocutaneous_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

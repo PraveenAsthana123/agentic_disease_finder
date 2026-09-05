@@ -15578,5 +15578,19 @@
     "seeds": "1126-1133",
     "registered": "2026-09-04",
     "category": "hereditary_deafness_usher_atlas"
+  },
+  {
+    "id": "neurocutaneous-atlas",
+    "name": "Neurocutaneous-Atlas Complete-8-Gene-Neurocutaneous-Syndromes-Tumor-Predisposition-Atlas NF1-Neurofibromatosis1-RAS-MAPK-Selumetinib-FDA-2020-MPNST-Radiation-AVOID NF2-Schwannomatosis-Bilateral-VS-PATHOGNOMONIC-Bevacizumab-Meningioma TSC1-Hamartin-mTORC1-Everolimus-SEGA-Vigabatrin-Visual-Field-MANDATORY TSC2-Tuberin-mTORC1-More-Severe-Cardiac-Rhabdomyoma-LAM-Everolimus VHL-HIF2\u03b1-Belzutifan-FDA-2021-RCC-Hemangioblastoma-Annual-MRI PTEN-Hamartoma-PI3K-AKT-mTOR-Macrocephaly-Breast-Thyroid-Surveillance PTCH1-Hedgehog-Gorlin-RADIATION-ABSOLUTELY-CI-Hundreds-BCCs-Vismodegib SMARCB1-SWI-SNF-INI1-IHC-PATHOGNOMONIC-AT-RT-Rhabdoid-Sibling-Surveillance 320-Patient-Aggregate-8x40-seeds-1134-1141",
+    "status": "built",
+    "route": "/neurocutaneous-atlas",
+    "api": "/api/neurocutaneous-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "n_genes": 8,
+    "seeds": "1134-1141",
+    "registered": "2026-09-05",
+    "category": "neurocutaneous_syndromes_tumor_predisposition_atlas",
+    "dashboard_id": 1005,
+    "description": "Neurocutaneous-Atlas Complete-8-Gene-Neurocutaneous-Syndromes-Tumor-Predisposition-Atlas NF1-NF2-TSC1-TSC2-VHL-PTEN-PTCH1-SMARCB1 / 320-Patient-Aggregate-8x40-seeds-1134-1141 / 3-endpoints-/api/neurocutaneous-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1004-1005 / SiteNav-wired-after-Deafness-Atlas / Registered-2026-09-05"
   }
 ]
