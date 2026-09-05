@@ -44049,6 +44049,36 @@ async def coagulopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hepatic-atlas/overview")
+async def hepatic_atlas_overview():
+    """Hepatic-Atlas complete 8-gene hereditary liver disease overview (320 patients, seeds 1150-1157)."""
+    try:
+        import scripts.hepatic_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hepatic-atlas/breakdown")
+async def hepatic_atlas_breakdown():
+    """Hepatic-Atlas per-gene breakdown (ATP7B/HFE/SERPINA1/ABCB11/ATP8B1/ABCB4/JAG1/SLC25A13)."""
+    try:
+        import scripts.hepatic_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hepatic-atlas/definitions")
+async def hepatic_atlas_definitions():
+    """Hepatic-Atlas clinical term definitions (GGT paradox, Wilson's, PFIC triad, haemochromatosis, A1AT Z-polymer, citrin MAS, KF rings, Alagille Notch)."""
+    try:
+        import scripts.hepatic_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

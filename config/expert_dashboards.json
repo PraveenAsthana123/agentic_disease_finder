@@ -15606,5 +15606,32 @@
     "category": "hereditary_bleeding_coagulopathy_atlas",
     "dashboard_id": 1006,
     "description": "Coagulopathy-Atlas Complete-8-Gene-Hereditary-Bleeding-Disorders-Atlas F8-F9-VWF-F11-F7-F13A1-ITGA2B-GP1BA / 320-Patient-Aggregate-8x40-seeds-1142-1149 / 3-endpoints-/api/coagulopathy-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1005-1006 / SiteNav-wired-after-Neurocutaneous-Atlas / Registered-2026-09-05"
+  },
+  {
+    "id": "hepatic-atlas",
+    "name": "Hepatic-Atlas",
+    "category": "Hereditary Liver Disease",
+    "description": "Complete 8-Gene Hereditary Liver Disease Atlas \u2014 ATP7B (Wilson), HFE (Haemochromatosis), SERPINA1 (A1AT), ABCB11 (PFIC2/BSEP), ATP8B1 (PFIC1/FIC1), ABCB4 (PFIC3/MDR3), JAG1 (Alagille), SLC25A13 (Citrin/CTLN2). 320 patients (8x40, seeds 1150-1157).",
+    "status": "built",
+    "endpoints": [
+      "/api/hepatic-atlas/overview",
+      "/api/hepatic-atlas/breakdown",
+      "/api/hepatic-atlas/definitions"
+    ],
+    "frontend": "/hepatic-atlas",
+    "n_patients": 320,
+    "n_genes": 8,
+    "seeds": "1150-1157",
+    "registered": "2026-09-05",
+    "genes": [
+      "ATP7B",
+      "HFE",
+      "SERPINA1",
+      "ABCB11",
+      "ATP8B1",
+      "ABCB4",
+      "JAG1",
+      "SLC25A13"
+    ]
   }
 ]
