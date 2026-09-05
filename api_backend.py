@@ -43730,6 +43730,34 @@ async def channelopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/md-atlas/overview")
+async def md_atlas_overview():
+    """MD-Atlas overview — DMD·DMPK·CNBP·EMD·SMCHD1·COL6A1·LAMA2·POMT1 (320 patients, seeds 1062–1069)."""
+    try:
+        import scripts.md_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/md-atlas/breakdown")
+async def md_atlas_breakdown():
+    """MD-Atlas per-gene clinical breakdown."""
+    try:
+        import scripts.md_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/md-atlas/definitions")
+async def md_atlas_definitions():
+    """MD-Atlas clinical term definitions."""
+    try:
+        import scripts.md_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

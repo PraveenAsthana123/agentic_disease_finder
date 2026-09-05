@@ -15401,5 +15401,32 @@
     "title": "Channelopathy-Atlas Complete-8-Gene-Skeletal-Muscle-Cardiac-Channelopathy-Atlas",
     "status": "built",
     "endpoint": "/api/channelopathy-atlas/overview"
+  },
+  {
+    "id": "md-atlas",
+    "title": "MD-Atlas Complete-8-Gene-Muscular-Dystrophy-Atlas DMD-Dystrophin-Duchenne-Becker-Exon-Skip-Deflazacort-Gene-Therapy DMPK-DM1-CTG-Repeat-RNA-Toxicity-Cardiac-Pacemaker-ICD CNBP-DM2-CCTG-Repeat-Proximal-Weakness-NO-Congenital-Form EMD-Emerin-EDMD1-XLR-LETHAL-Arrhythmia-Atrial-Standstill-ICD-MANDATORY SMCHD1-FSHD2-DUX4-Derepression-Beevor-Sign-PATHOGNOMONIC-Digenic COL6A1-Bethlem-Myopathy-AD-Mild-Ullrich-CMD-AR-Severe-Collagen-6-Spectrum LAMA2-MDC1A-Merosin-Absent-White-Matter-T2-UNIVERSAL-Normal-Cognition POMT1-Walker-Warburg-Cobblestone-Lissencephaly-Ocular-CMD-FATAL-Palliative 320-Patient-Aggregate-8x40-seeds-1062-1069",
+    "category": "Muscular Dystrophy Atlas",
+    "genes": [
+      "DMD",
+      "DMPK",
+      "CNBP",
+      "EMD",
+      "SMCHD1",
+      "COL6A1",
+      "LAMA2",
+      "POMT1"
+    ],
+    "patients": 320,
+    "seeds": "1062-1069",
+    "status": "built",
+    "route": "/md-atlas",
+    "api_endpoints": [
+      "/api/md-atlas/overview",
+      "/api/md-atlas/breakdown",
+      "/api/md-atlas/definitions"
+    ],
+    "page": "portal-next/app/md-atlas/page.jsx",
+    "script": "scripts/md_atlas_dashboard.py",
+    "registered": "2026-09-04"
   }
 ]
