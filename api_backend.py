@@ -43959,6 +43959,35 @@ async def pid_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Deafness & Usher Syndrome Atlas ──────────────────────────────────────
+@app.get("/api/deafness-atlas/overview")
+async def deafness_atlas_overview():
+    """Deafness-Atlas complete 8-gene hereditary deafness & Usher syndrome overview."""
+    try:
+        import scripts.deafness_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/deafness-atlas/breakdown")
+async def deafness_atlas_breakdown():
+    """Deafness-Atlas per-gene clinical breakdown (8 genes × 40 patients)."""
+    try:
+        import scripts.deafness_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/deafness-atlas/definitions")
+async def deafness_atlas_definitions():
+    """Deafness-Atlas clinical term definitions."""
+    try:
+        import scripts.deafness_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
