@@ -44529,6 +44529,36 @@ async def genodermatoses_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/iron-disorders-atlas/overview")
+async def iron_disorders_atlas_overview():
+    """Iron Disorders Atlas overview (HFE HH1 C282Y AR most common phlebotomy curative, HJV HH2A juvenile cardiomyopathy hepcidin absent, HAMP HH2B hepcidin structural juvenile, TFR2 HH3 adult HFE-normal, SLC40A1 HH4 ferroportin AD type4A-macrophage-DO-NOT-venesect type4B-classical, TMPRSS6 IRIDA oral-iron-FAILS IV-iron-effective, CP aceruloplasminemia neurodegeneration+DM+retina hepcidin-unaffected, FTL HHCS cataracts DO-NOT-VENESECT). 320 patients (8x40, seeds 1286-1293)."""
+    try:
+        import scripts.iron_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/iron-disorders-atlas/breakdown")
+async def iron_disorders_atlas_breakdown():
+    """Iron Disorders Atlas per-gene breakdown (HFE, HJV, HAMP, TFR2, SLC40A1, TMPRSS6, CP, FTL — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.iron_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/iron-disorders-atlas/definitions")
+async def iron_disorders_atlas_definitions():
+    """Iron Disorders Atlas clinical definitions (hepcidin-iron axis, HFE C282Y genotype, transferrin saturation rule, juvenile HH emergency, SLC40A1 Type4A vs 4B, IRIDA oral iron failure, aceruloplasminemia triple triad, HHCS do-not-venesect rule)."""
+    try:
+        import scripts.iron_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/chd-atlas/overview")
 async def chd_atlas_overview():
     """Congenital Heart Disease Atlas overview (NKX2-5 AV block, TBX5 Holt-Oram radial ray, GATA4 ASD/VSD, TBX20 late DCM, GATA6 pancreatic agenesis, JAG1 Alagille peripheral PS + Kasai CI, NOTCH1 BAV TAVR uncertain, MYH6 sick sinus pacemaker risk post-repair). 320 patients (8x40, seeds 1270-1277)."""

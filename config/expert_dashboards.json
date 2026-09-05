@@ -15963,5 +15963,26 @@
     "category": "hereditary_skin_genodermatoses_atlas",
     "dashboard_id": 1023,
     "description": "Genodermatoses-Atlas Complete-8-Gene-Hereditary-Skin-Disorder-Atlas ABCA12-KRT1-STS-COL7A1-LAMA3-KRT5-ATP2C1-EDA / 320-Patient-Aggregate-8x40-seeds-1278-1285 / 3-endpoints-/api/genodermatoses-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1022-1023 / SiteNav-wired-after-CHD-Atlas / Registered-2026-09-05"
+  },
+  {
+    "id": "iron-disorders-atlas",
+    "name": "Iron-Disorders-Atlas Complete-8-Gene-Hereditary-Iron-Metabolism-Disorders-Atlas HFE-348aa-6p21.3-AR-HH1-C282Y-Most-Common-Phlebotomy-Curative-Transferrin-Sat-45pct-MCP-Arthropathy-PATHOGNOMONIC HJV-426aa-1q21.1-AR-HH2A-Juvenile-Cardiomyopathy-Before-30-Hepcidin-ABSENT-Urgent-Phlebotomy HAMP-84aa-19q13.12-AR-HH2B-Hepcidin-Structural-Juvenile-Same-Phenotype-HJV TFR2-801aa-7q22.1-AR-HH3-Adult-HFE-NORMAL-TFR2-Sequencing-MANDATORY SLC40A1-571aa-2q32.2-AD-HH4-Ferroportin-Type4A-Macrophage-Normal-TSAT-Erythrocytapheresis-Type4B-Classical TMPRSS6-811aa-22q12.3-AR-IRIDA-Oral-Iron-FAILS-IV-Iron-Ferric-Carboxymaltose-Effective CP-1065aa-3q25.1-AR-Aceruloplasminemia-Neurodegeneration-DM-Retina-Triple-Triad-Ceruloplasmin-ABSENT FTL-175aa-19q13.33-AD-HHCS-Cataracts-Ferritin-HIGH-TSAT-NORMAL-DO-NOT-VENESECT 320-Patient-Aggregate-8x40-seeds-1286-1293",
+    "title": "Iron Disorders Atlas \u2014 8-Gene Hereditary Iron Metabolism",
+    "route": "/iron-disorders-atlas",
+    "api_prefix": "/api/iron-disorders-atlas",
+    "status": "built",
+    "n_patients": 320,
+    "genes": [
+      "HFE",
+      "HJV",
+      "HAMP",
+      "TFR2",
+      "SLC40A1",
+      "TMPRSS6",
+      "CP",
+      "FTL"
+    ],
+    "seeds": "1286-1293",
+    "registered": "2026-09-05"
   }
 ]
