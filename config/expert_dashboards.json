@@ -15534,5 +15534,21 @@
     "built_date": "2026-09-04",
     "dashboard_id": 1001,
     "description": "Cardiomyopathy Atlas Complete-8-Gene-Hereditary-Cardiomyopathy-Atlas MYH7-HCM1-Thick-Filament-AD-35-40pct-Mavacamten-FDA-2022-ICD-SCD MYBPC3-HCM4-Haploinsufficiency-Most-Common-40-50pct-South-Asian-Founder-Age-Dependent-Penetrance TNNT2-HCM3-DCM1D-MALIGNANT-SCD-Disproportionate-LVH-ICD-Lower-Threshold-CMR-Mandatory PKP2-ARVC9-Most-Common-ARVC-40-50pct-Epsilon-Wave-PATHOGNOMONIC-Sports-Restriction-MANDATORY-ICD DSP-ARVC8-Biventricular-Woolly-Hair-PPK-Carvajal-PATHOGNOMONIC-Subepicardial-LGE-ICD-MANDATORY LMNA-DCM1A-EDMD2-AV-Block-PATHOGNOMONIC-ICD-MANDATORY-Pacemaker-INSUFFICIENT-SCD-15-40pct TTN-DCM1G-Largest-Human-Protein-A-Band-TTNtv-PATHOGENIC-25pct-Familial-DCM-15pct-PPCM-ClinGen RBM20-DCM1HH-Most-Aggressive-DCM-RS-Domain-Hotspot-Biventricular-ICD-MANDATORY-Early-Transplant 320-Patient-Aggregate-8x40-seeds-1102-1109 / 3-endpoints-/api/cardiomyopathy-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1000-1001 / SiteNav-wired-after-IRD-Atlas / Registered-2026-09-04"
+  },
+  {
+    "id": "aortic-ctd-atlas",
+    "name": "Aortic-CTD-Atlas (8-Gene Hereditary Aortic & Connective Tissue Disorders)",
+    "category": "Hereditary Aortic & Connective Tissue Disorders",
+    "status": "built",
+    "route": "/aortic-ctd-atlas",
+    "api_endpoints": [
+      "/api/aortic-ctd-atlas/overview",
+      "/api/aortic-ctd-atlas/breakdown",
+      "/api/aortic-ctd-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/aortic-ctd-atlas/page.jsx",
+    "built_date": "2026-09-04",
+    "dashboard_id": 1002,
+    "description": "Aortic-CTD-Atlas Complete-8-Gene-Hereditary-Aortic-Connective-Tissue-Disorders-Atlas FBN1-Marfan-MFS1-AD-35pct-HTAAD-Aortic-Root-Lens-Ectopia-Superior-Temporal-PATHOGNOMONIC-\u03b2-Blocker-Losartan-Fluoroquinolone-AVOID-Repair-4.5cm TGFBR2-LDS2-AGGRESSIVE-Bifid-Uvula-PATHOGNOMONIC-Repair-4.0cm-Arterial-Tortuosity TGFBR1-LDS1-Craniosynostosis-MORE-PROMINENT-Bifid-Uvula-Repair-4.0cm-Cervical-Instability COL3A1-vEDS-MOST-LETHAL-Spontaneous-Rupture-NO-Aneurysm-NO-Elective-Surgery-Celiprolol-ONLY-RCT ACTA2-FTAAD-Moya-Moya-Iris-Flocculi-Arg179His-Straight-Aorta-Brain-MRA-MANDATORY SMAD3-LDS3-AOS-Early-OA-Aortic-Aneurysm-DUAL-PHENOTYPE-OA-Under-40-MANDATORY-Screen MYH11-FTAAD-PDA-PATHOGNOMONIC-Combination-Aortic-Media-Hypocellularity SKI-Shprintzen-Goldberg-De-Novo-Craniosynostosis-Marfanoid-Intellectual-Disability 320-Patient-Aggregate-8x40-seeds-1110-1117 / 3-endpoints-/api/aortic-ctd-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1001-1002 / SiteNav-wired-after-Cardiomyopathy-Atlas / Registered-2026-09-04"
   }
 ]

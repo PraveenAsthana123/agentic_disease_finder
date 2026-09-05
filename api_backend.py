@@ -43899,6 +43899,36 @@ async def cardiomyopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/aortic-ctd-atlas/overview")
+async def aortic_ctd_atlas_overview():
+    """Aortic-CTD-Atlas overview — FBN1·TGFBR2·TGFBR1·COL3A1·ACTA2·SMAD3·MYH11·SKI (320 patients, seeds 1110–1117)."""
+    try:
+        import scripts.aortic_ctd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/aortic-ctd-atlas/breakdown")
+async def aortic_ctd_atlas_breakdown():
+    """Aortic-CTD-Atlas per-gene breakdown."""
+    try:
+        import scripts.aortic_ctd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/aortic-ctd-atlas/definitions")
+async def aortic_ctd_atlas_definitions():
+    """Aortic-CTD-Atlas clinical term definitions."""
+    try:
+        import scripts.aortic_ctd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
