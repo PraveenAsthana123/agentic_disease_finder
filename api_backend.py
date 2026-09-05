@@ -44319,6 +44319,36 @@ async def mody_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/lipid-disorders-atlas/overview")
+async def lipid_disorders_atlas_overview():
+    """Hereditary Lipid Disorders Atlas complete 8-gene overview (LDLR/APOB/PCSK9/APOE/LPL/ABCA1/LIPA/APOC2, 320 patients, seeds 1222-1229)."""
+    try:
+        import scripts.lipid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/lipid-disorders-atlas/breakdown")
+async def lipid_disorders_atlas_breakdown():
+    """Hereditary Lipid Disorders Atlas per-gene breakdown (LDLR-FH1/APOB-FDB/PCSK9-FH3/APOE-TypeIII/LPL-FCS/ABCA1-Tangier/LIPA-Wolman/APOC2-ApoC-II-Def)."""
+    try:
+        import scripts.lipid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/lipid-disorders-atlas/definitions")
+async def lipid_disorders_atlas_definitions():
+    """Hereditary Lipid Disorders Atlas clinical term definitions (FH, PCSK9 inhibitors, chylomicronemia, APOE isoforms, Tangier, LAL deficiency, sebelipase alfa, volanesorsen, cascade testing, LPL activity assay)."""
+    try:
+        import scripts.lipid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

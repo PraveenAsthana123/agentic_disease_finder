@@ -15780,5 +15780,31 @@
     ],
     "n_patients": 320,
     "seeds": "1214-1221"
+  },
+  {
+    "id": "lipid-disorders-atlas",
+    "name": "Lipid-Disorders-Atlas",
+    "category": "Hereditary Lipid Disorders",
+    "status": "built",
+    "built": true,
+    "route": "/lipid-disorders-atlas",
+    "api": [
+      "/api/lipid-disorders-atlas/overview",
+      "/api/lipid-disorders-atlas/breakdown",
+      "/api/lipid-disorders-atlas/definitions"
+    ],
+    "description": "Complete 8-Gene Hereditary Lipid/Lipoprotein Disorders Atlas LDLR-FH1 APOB-FDB PCSK9-FH3-GOF APOE-TypeIII LPL-FCS ABCA1-Tangier/FHA LIPA-Wolman/CESD APOC2-ApoC-II-Def 320-Patient-Aggregate-8x40-seeds-1222-1229",
+    "genes": [
+      "LDLR",
+      "APOB",
+      "PCSK9",
+      "APOE",
+      "LPL",
+      "ABCA1",
+      "LIPA",
+      "APOC2"
+    ],
+    "n_patients": 320,
+    "seeds": "1222-1229"
   }
 ]
