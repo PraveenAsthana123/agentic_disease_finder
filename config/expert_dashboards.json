@@ -15704,7 +15704,8 @@
     ],
     "n_patients": 320,
     "seeds": "1182-1189",
-    "built": true,
-    "registered": "2026-09-05"
+    "built": null,
+    "registered": "2026-09-05",
+    "status": "built"
   }
 ]
