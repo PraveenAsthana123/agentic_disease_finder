@@ -44709,6 +44709,36 @@ async def reproductive_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/eds-atlas/overview")
+async def eds_atlas_overview():
+    """Ehlers-Danlos-Atlas overview (COL5A1-1838aa-9q34.3-AD-Classical-EDS-1-Atrophic-Scarring-Gorlin, COL5A2-1499aa-2q32.2-AD-Classical-EDS-2, COL3A1-1466aa-2q32.2-AD-Vascular-EDS-MOST-LETHAL-No-Surgery, TNXB-4268aa-6p21.3-AR-Classical-like-Adrenal-Screen-Mandatory, ADAMTS2-1211aa-5q35.3-AR-Dermatosparaxis-Sagging-Skin-Birth, PLOD1-727aa-1p36.3-AR-kEDS-1-LP-HP-Pathognomonic-Ocular-Fragility, FKBP14-150aa-7p14.3-AR-kEDS-2-Normal-LP-HP-SNHL-50pct, COL1A2-1366aa-7q21.3-AR-Cardiac-Valvular-Valve-Replacement-Annual-Echo). 320 patients (8x40, seeds 1326-1333)."""
+    try:
+        import scripts.eds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/eds-atlas/breakdown")
+async def eds_atlas_breakdown():
+    """Ehlers-Danlos-Atlas per-gene breakdown (COL5A1, COL5A2, COL3A1, TNXB, ADAMTS2, PLOD1, FKBP14, COL1A2 — protein, locus, aa, OMIM, inheritance, phenotype, hallmarks, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.eds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/eds-atlas/definitions")
+async def eds_atlas_definitions():
+    """Ehlers-Danlos-Atlas clinical definitions (cEDS diagnostic criteria, vEDS celiprolol protocol NO-surgery NO-colonoscopy, Beighton score, urine LP:HP PLOD1 pathognomonic, TNXB haploinsufficiency vs biallelic, dEDS procollagen retention, ocular fragility kEDS, cvEDS vs OI, EDS pregnancy, cascade testing)."""
+    try:
+        import scripts.eds_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

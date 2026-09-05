@@ -16076,5 +16076,28 @@
       "/api/reproductive-disorders-atlas/breakdown",
       "/api/reproductive-disorders-atlas/definitions"
     ]
+  },
+  {
+    "id": "eds-atlas",
+    "name": "EDS-Atlas Complete-8-Gene-Ehlers-Danlos-Syndromes-Atlas COL5A1-1838aa-9q34.3-AD-Classical-EDS-1-Atrophic-Scarring-Gorlin-Sign COL5A2-1499aa-2q32.2-AD-Classical-EDS-2-Digenic-COL5A1 COL3A1-1466aa-2q32.2-AD-Vascular-EDS-MOST-LETHAL-No-Surgery-Celiprolol TNXB-4268aa-6p21.3-AR-Classical-like-Adrenal-Insufficiency-Screen ADAMTS2-1211aa-5q35.3-AR-Dermatosparaxis-Sagging-Skin-Birth-Rarest PLOD1-727aa-1p36.3-AR-kEDS-1-Urine-LP-HP-PATHOGNOMONIC-Ocular-Fragility FKBP14-150aa-7p14.3-AR-kEDS-2-Normal-LP-HP-SNHL-50pct COL1A2-1366aa-7q21.3-AR-Biallelic-Cardiac-Valvular-Annual-Echo 320-Patient-Aggregate-8x40-seeds-1326-1333",
+    "status": "built",
+    "genes": [
+      "COL5A1",
+      "COL5A2",
+      "COL3A1",
+      "TNXB",
+      "ADAMTS2",
+      "PLOD1",
+      "FKBP14",
+      "COL1A2"
+    ],
+    "n_patients": 320,
+    "seeds": "1326-1333",
+    "registered": "2026-09-05",
+    "endpoints": [
+      "/api/eds-atlas/overview",
+      "/api/eds-atlas/breakdown",
+      "/api/eds-atlas/definitions"
+    ]
   }
 ]
