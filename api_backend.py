@@ -44259,6 +44259,36 @@ async def cancer_syndromes_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/ciliopathy-atlas/overview")
+async def ciliopathy_atlas_overview():
+    """Ciliopathy Atlas complete 8-gene hereditary ciliopathy overview (320 patients, seeds 1206-1213)."""
+    try:
+        import scripts.ciliopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ciliopathy-atlas/breakdown")
+async def ciliopathy_atlas_breakdown():
+    """Ciliopathy Atlas per-gene breakdown (BBS1/BBS10/CEP290/NPHP1/DNAI1/DYNC2H1/TMEM67/RPGRIP1L)."""
+    try:
+        import scripts.ciliopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ciliopathy-atlas/definitions")
+async def ciliopathy_atlas_definitions():
+    """Ciliopathy Atlas clinical term definitions (molar tooth sign, BBSome, IFT, transition zone, nasal NO, Kartagener, sepofarsen, VEPTR, CHF, coloboma, NPHP cysts, ODA)."""
+    try:
+        import scripts.ciliopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

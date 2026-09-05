@@ -15747,5 +15747,13 @@
     "seeds": "1198-1205",
     "n_patients": 320,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "ciliopathy-atlas",
+    "name": "Ciliopathy-Atlas Complete-8-Gene-Hereditary-Ciliopathy-Atlas BBS1-BBSome-Core-593aa-11q13.2-pMet390Arg-Founder-RP-Obesity-Polydactyly-Renal-Leptin-NOT-Effective BBS10-Chaperonin-Complex-723aa-12q21.2-More-Severe-BBS1-NSAIDs-CI-Renal-Cysts CEP290-NPHP6-2479aa-12q21.32-Pan-Ciliopathy-IVS26-Sepofarsen-IVS26-Only-Molar-Tooth-PATHOGNOMONIC NPHP1-Nephrocystin1-732aa-2q13-MLPA-Mandatory-Normotensive-ESRD-Age13-mTOR-NO-Benefit DNAI1-ODA-IC1-699aa-9p21.2-PCD-Situs-Inversus-50pct-Kartagener-Nasal-NO-77-DIAGNOSTIC DYNC2H1-IFT-Dynein-4307aa-11q22.3-JATD-Jeune-Horizontal-Short-Ribs-VEPTR-Neonatal-Resp-Failure TMEM67-Meckelin-995aa-8q22.1-JBTS6-Hepatic-Fibrosis-DISTINCTIVE-NSAIDs-CI-UDCA RPGRIP1L-TZ-Scaffold-1315aa-16q12.2-JBTS7-Coloboma-35pct-DISTINCTIVE-NPHP8-Mild-Alleles 320-Patient-Aggregate-8x40-seeds-1206-1213",
+    "status": "built",
+    "api": "/api/ciliopathy-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": "1206-1213"
   }
 ]
