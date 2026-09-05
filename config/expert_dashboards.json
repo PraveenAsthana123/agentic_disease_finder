@@ -16110,5 +16110,16 @@
     "seeds": "1334-1341",
     "n_patients": 320,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "parathyroid-disorders-atlas",
+    "name": "Parathyroid-Disorders-Atlas Complete-8-Gene-Hereditary-Parathyroid-Calcium-Metabolism-Disorders-Atlas CASR-1078aa-3q21.1-AD-FHH1-CCCR<0.01-Thiazide-CI/ADH1-Target-Ca-2.0-2.1/AR-NSHPT-Emergency GNA11-359aa-19p13.3-AD-FHH2/ADH2-CASR-Negative-Ga11 AP2S1-142aa-19q13.3-AD-FHH3-Arg15-Hotspot-More-Symptomatic MEN1-610aa-11q13.1-AD-4-Gland-Hyperplasia-Annual-Screen-Age-8 CDC73-531aa-1q25.3-AD-HPT-JT-Carcinoma-15pct-Parafibromin-IHC-Absent CDKN1B-198aa-12p13.1-AD-MEN4-MEN1-Negative GCM2-502aa-6p24.2-AD-AR-FIH-Mg-First PTH-115aa-11p15.3-AD-AR-IHP-Undetectable-PTH 320-Patient-Aggregate-8x40-seeds-1342-1349",
+    "route": "/api/parathyroid-disorders-atlas",
+    "page": "/parathyroid-disorders-atlas",
+    "status": "built",
+    "category": "Hereditary Parathyroid & Calcium Metabolism Disorders",
+    "seeds": "1342-1349",
+    "n_patients": 320,
+    "registered": "2026-09-05"
   }
 ]

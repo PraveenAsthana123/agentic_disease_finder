@@ -44769,6 +44769,36 @@ async def platelet_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/parathyroid-disorders-atlas/overview")
+async def parathyroid_disorders_atlas_overview():
+    """Parathyroid-Disorders-Atlas overview (CASR-1078aa-3q21.1-AD-FHH1-CCCR<0.01-Thiazide-CI/ADH1-Target-Ca-2.0-2.1/AR-NSHPT-Emergency, GNA11-359aa-19p13.3-AD-FHH2-CASR-Negative/ADH2-Gα11, AP2S1-142aa-19q13.3-AD-FHH3-Arg15-Hotspot-More-Symptomatic, MEN1-610aa-11q13.1-AD-4-Gland-Hyperplasia-Annual-Screen-Age-8, CDC73-531aa-1q25.3-AD-HPT-JT-Carcinoma-15pct-Parafibromin-IHC-Absent, CDKN1B-198aa-12p13.1-AD-MEN4-MEN1-Negative, GCM2-502aa-6p24.2-AD-AR-FIH-Mg-First, PTH-115aa-11p15.3-AD-AR-IHP-Undetectable-PTH). 320 patients (8x40, seeds 1342-1349)."""
+    try:
+        import scripts.parathyroid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/parathyroid-disorders-atlas/breakdown")
+async def parathyroid_disorders_atlas_breakdown():
+    """Parathyroid-Disorders-Atlas per-gene breakdown (CASR, GNA11, AP2S1, MEN1, CDC73, CDKN1B, GCM2, PTH — protein, locus, aa, OMIM, inheritance, phenotype, hallmarks, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.parathyroid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/parathyroid-disorders-atlas/definitions")
+async def parathyroid_disorders_atlas_definitions():
+    """Parathyroid-Disorders-Atlas clinical definitions (CCCR<0.01-FHH-anchor, FHH-cascade-CASR→GNA11→AP2S1, MEN1-4-gland-surgery-annual-screen, CDC73-carcinoma-parafibromin-IHC-en-bloc, ADH-nephrocalcinosis-risk, PHP-vs-true-hypoPTH, Mg-first-rule, cascade-testing-parathyroid-panel)."""
+    try:
+        import scripts.parathyroid_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
