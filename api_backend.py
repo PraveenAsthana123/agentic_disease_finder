@@ -44919,6 +44919,36 @@ async def hsan_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/vascular-malformation-atlas/overview")
+async def vascular_malformation_atlas_overview():
+    """Vascular-Malformation-Atlas overview (ENG-658aa-9q34.11-AD-HHT1-PAVM-IV-Iron-Bevacizumab, ACVRL1-503aa-12q13.13-AD-HHT2-Hepatic-AVM-PAH-Avoid-Hepatic-Embolization, SMAD4-552aa-18q21.2-AD-HHT-JPS-Polyps-CRC-Aorta, KRIT1-736aa-7q21.2-AD-CCM1-Popcorn-Hispanic-Founder, CCM2-380aa-7p13-AD-CCM2-DeNovo-20pct, PDCD10-212aa-3q26.1-AD-CCM3-Most-Severe-Meningioma, TEK-1124aa-9p21.2-AD-VM-LIC-Sirolimus-LMWH, RASA1-1047aa-5q14.3-AD-CM-AVM-Parkes-Weber-Never-Embolize-Alone, 320 patients 8x40 seeds 1382-1389)."""
+    try:
+        import scripts.vascular_malformation_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/vascular-malformation-atlas/breakdown")
+async def vascular_malformation_atlas_breakdown():
+    """Vascular-Malformation-Atlas per-gene breakdown (ENG-Endoglin-TGFb-BMP9-HHT1-PAVM-GI-Cerebral, ACVRL1-ALK1-BMP9-HHT2-Hepatic-PAH-Bevacizumab, SMAD4-R-SMAD-HHT-JPS-CRC40pct-Aortic-Root, KRIT1-CCM1-RhoA-Junction-Popcorn-SWI-GRE, CCM2-Malcavernin-PTB-Central-Scaffold-DeNovo, PDCD10-CCM3-STK24-Meningioma-Most-Severe, TEK-TIE2-Ang1-LIC-Sirolimus-Compressible-Blue, RASA1-RasGAP-CM-AVM-Fast-Flow-Parkes-Weber)."""
+    try:
+        import scripts.vascular_malformation_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/vascular-malformation-atlas/definitions")
+async def vascular_malformation_atlas_definitions():
+    """Vascular-Malformation-Atlas clinical definitions (HHT-Curacao-criteria, IV-Iron-preferred-HHT, SMAD4-test-first-polyps, Avoid-hepatic-embolization-HHT2, CCM-popcorn-SWI, PDCD10-meningioma, VM-DDx-AVM-compressibility, LIC-D-dimer-LMWH-pre-procedure, Sirolimus-VM, Never-embolize-alone-RASA1, cascade-testing)."""
+    try:
+        import scripts.vascular_malformation_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

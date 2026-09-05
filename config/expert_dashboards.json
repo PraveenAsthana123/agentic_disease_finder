@@ -16165,5 +16165,32 @@
     "cohort_n": 320,
     "seed": 1374,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "vascular-malformation-atlas",
+    "name": "Hereditary Vascular Malformation Atlas",
+    "status": "built",
+    "category": "atlas",
+    "description": "Complete 8-Gene Hereditary Vascular Malformation & Telangiectasia Atlas \u2014 ENG/HHT1/ACVRL1/HHT2/SMAD4/HHT-JPS/KRIT1/CCM1/CCM2/PDCD10/CCM3/TEK/VM/RASA1/CM-AVM",
+    "api_endpoints": [
+      "/api/vascular-malformation-atlas/overview",
+      "/api/vascular-malformation-atlas/breakdown",
+      "/api/vascular-malformation-atlas/definitions"
+    ],
+    "portal_page": "/vascular-malformation-atlas",
+    "script": "scripts/vascular_malformation_atlas_dashboard.py",
+    "genes": [
+      "ENG",
+      "ACVRL1",
+      "SMAD4",
+      "KRIT1",
+      "CCM2",
+      "PDCD10",
+      "TEK",
+      "RASA1"
+    ],
+    "n_patients": 320,
+    "seeds": "1382-1389",
+    "registered": "2026-09-05"
   }
 ]
