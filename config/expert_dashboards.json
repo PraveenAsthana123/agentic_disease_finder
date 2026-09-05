@@ -15645,5 +15645,17 @@
     "n_genes": 8,
     "seeds": "1158-1165",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hemoglobinopathy-atlas",
+    "title": "Hemoglobinopathy-Atlas Complete-8-Gene-Hereditary-Red-Cell-Disorder-Atlas HBB-SCD-HbSS-BetaThal-Casgevy-CRISPR-FDA2023-ACS-Exchange-Transfusion-Hydroxyurea HBA1-AlphaThal-MLPA-MANDATORY-Sanger-MISSES-HbH-HbBarts-LETHAL-IUT G6PD-400M-Worldwide-PRIMAQUINE-ABSOLUTELY-CI-Test-AFTER-Episode-NOT-During PKLR-2-3-DPG-ELEVATED-Mitapivat-FDA2022-Paradoxical-Reticulocytosis-PATHOGNOMONIC ANK1-HS1-MCHC-ELEVATED-PATHOGNOMONIC-EMA-BEST-Splenectomy-Curative-OPSI SPTA1-HPP-Heat-Instability-45C-PATHOGNOMONIC-AlphaLELY-MCV-50-70 SLC4A1-Band3-SAO-Malaria-Protection-Homozygote-LETHAL-dRTA1 PIEZO1-DHS-GOF-SPLENECTOMY-ABSOLUTELY-CI-Ektacytometry-Iron-Overload 320-Patient-Aggregate-8x40-seeds-1166-1173",
+    "category": "Hereditary Hemoglobinopathy Red Cell Atlas",
+    "status": "built",
+    "route": "/api/hemoglobinopathy-atlas/overview|breakdown|definitions",
+    "page": "/hemoglobinopathy-atlas",
+    "n_patients": 320,
+    "n_genes": 8,
+    "seeds": "1166-1173",
+    "registered": "2026-09-05"
   }
 ]

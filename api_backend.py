@@ -44109,6 +44109,36 @@ async def nephropathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hemoglobinopathy-atlas/overview")
+async def hemoglobinopathy_atlas_overview():
+    """Hemoglobinopathy-Atlas complete 8-gene hereditary red cell disorder overview (320 patients, seeds 1166-1173)."""
+    try:
+        import scripts.hemoglobinopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hemoglobinopathy-atlas/breakdown")
+async def hemoglobinopathy_atlas_breakdown():
+    """Hemoglobinopathy-Atlas per-gene breakdown (HBB/HBA1/G6PD/PKLR/ANK1/SPTA1/SLC4A1/PIEZO1)."""
+    try:
+        import scripts.hemoglobinopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hemoglobinopathy-atlas/definitions")
+async def hemoglobinopathy_atlas_definitions():
+    """Hemoglobinopathy-Atlas clinical term definitions (ACS, Casgevy, G6PD timing, MLPA, ektacytometry, EMA, SAO, 2,3-DPG, OPSI, HPP heat instability)."""
+    try:
+        import scripts.hemoglobinopathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
