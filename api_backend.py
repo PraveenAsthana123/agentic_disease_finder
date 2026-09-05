@@ -44859,6 +44859,36 @@ async def amyloidosis_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hsan-atlas/overview")
+async def hsan_atlas_overview():
+    """HSAN-Atlas overview (SPTLC1-HSAN1A-deoxySL-L-serine-vincristine-CI, ELP1-FD-Ashkenazi-c.2204+6T>C-TUDCA-autonomic-crisis, NTRK1-CIPA-hyperthermia-kills-anhidrosis, NGFB-HSAN5-selective-deep-pain-Norwegian-founder, FAM134B-HSAN2B-ER-reticulophagy-neonatal-mutilations, DNMT1-HSAN1E-sensory+SNHL+dementia-triad, WNK1-HSAN2A-HSN2-exon-standard-panel-MISSES, PRDM12-HSAN8-pain-insensitivity-sweating-PRESERVED, 320 patients 8x40 seeds 1366-1373)."""
+    try:
+        import scripts.hsan_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hsan-atlas/breakdown")
+async def hsan_atlas_breakdown():
+    """HSAN-Atlas per-gene breakdown (SPTLC1-Cys133Trp-deoxySL-L-serine-foot-ulcers, ELP1-c.2204+6T>C-TUDCA-alacrima-scoliosis, NTRK1-TrkA-NGF-CIPA-hyperthermia, NGFB-Arg221Trp-selective-nociceptor-loss, FAM134B-RETREG1-ER-autophagy-neonatal, DNMT1-RFTS-Tyr495Cys-methylation-dementia-SNHL, WNK1-HSN2-exon-KCC2-panmodal-sensory, PRDM12-PR-domain-nociceptor-specification-sweating-intact)."""
+    try:
+        import scripts.hsan_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hsan-atlas/definitions")
+async def hsan_atlas_definitions():
+    """HSAN-Atlas clinical definitions (deoxySL-L-serine-competitor, FD-autonomic-crisis-TUDCA, CIPA-hyperthermia-cooling-vest, HSAN5-selective-nociceptor, FAM134B-ER-reticulophagy, DNMT1-epigenetic-triad, WNK1-HSN2-exon-diagnostic-alert, PRDM12-sweating-preserved-DDx-CIPA, IENFD-biopsy, cascade-testing, HSAN-classification)."""
+    try:
+        import scripts.hsan_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
