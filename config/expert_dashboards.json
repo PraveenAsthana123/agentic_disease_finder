@@ -15844,5 +15844,30 @@
     "seeds": "1238-1245",
     "registered": "2026-09-05",
     "category": "Hereditary Neurodegeneration"
+  },
+  {
+    "id": "retinal-dystrophy-atlas",
+    "name": "Retinal-Dystrophy-Atlas Complete-8-Gene-Hereditary-Retinal-Dystrophy-Atlas RPGR-RP3-815aa-Xp21.1-X-linked-Most-Common-ORF15-Exon-Missed-by-NGS-AAV-Gene-Therapy-MeiraGTx USH2A-USH2-5202aa-1q41-Usher-Type-II-RP-Congenital-HL-Normal-Vestibular-Cochlear-Implant-Effective ABCA4-STGD1-2273aa-1p22.1-Stargardt-Juvenile-Macular-VitaminA-ABSOLUTELY-CI-A2E-Accumulation RDH12-LCA13-316aa-14q24.1-Severe-Infantile-No-DarkAdaptation-VitaminA-Safe PRPF31-RP11-499aa-19q13.42-AD-Spliceopathy-Incomplete-Penetrance-MLPA-Mandatory-15pct-Deletions EYS-RP25-3165aa-6q12-Largest-Retinal-Gene-3Mb-AR-Most-Common-Japanese-MLPA-Mandatory CNGB3-ACHM3-809aa-8q21.3-Achromatopsia-No-Color-Vision-GeneTherapy-Phase3-BIIB112 RS1-XLRS-224aa-Xp22.13-Retinoschisis-CAI-ABSOLUTELY-CI-Paradoxical-Worsening-Electronegative-ERG 320-Patient-Aggregate-8x40-seeds-1246-1253",
+    "status": "built",
+    "description": "Retinal Dystrophy Atlas — /api/retinal-dystrophy-atlas/* + portal-next/app/retinal-dystrophy-atlas/page.jsx + SiteNav wired after Neurodegeneration-Atlas, 320 patients (8x40, seeds 1246-1253), 3 endpoints /api/retinal-dystrophy-atlas/overview|breakdown|definitions verified 200, expert_dashboards.json count 1018->1019",
+    "endpoints": [
+      "/api/retinal-dystrophy-atlas/overview",
+      "/api/retinal-dystrophy-atlas/breakdown",
+      "/api/retinal-dystrophy-atlas/definitions"
+    ],
+    "genes": [
+      "RPGR",
+      "USH2A",
+      "ABCA4",
+      "RDH12",
+      "PRPF31",
+      "EYS",
+      "CNGB3",
+      "RS1"
+    ],
+    "n_patients": 320,
+    "seeds": "1246-1253",
+    "registered": "2026-09-05",
+    "category": "Hereditary Retinal Dystrophy"
   }
 ]

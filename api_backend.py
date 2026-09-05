@@ -44409,6 +44409,36 @@ async def neurodegeneration_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/retinal-dystrophy-atlas/overview")
+async def retinal_dystrophy_atlas_overview():
+    """Retinal Dystrophy Atlas aggregate overview (8 genes: RPGR, USH2A, ABCA4, RDH12, PRPF31, EYS, CNGB3, RS1; 320 patients seeds 1246-1253; drug alerts; clinical pearls)."""
+    try:
+        import scripts.retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/retinal-dystrophy-atlas/breakdown")
+async def retinal_dystrophy_atlas_breakdown():
+    """Retinal Dystrophy Atlas per-gene breakdown (RPGR ORF15, USH2A Usher-IIA, ABCA4 Stargardt, RDH12 LCA13, PRPF31 RP11, EYS RP25, CNGB3 ACHM3, RS1 XLRS; full clinical data + cohort stats)."""
+    try:
+        import scripts.retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/retinal-dystrophy-atlas/definitions")
+async def retinal_dystrophy_atlas_definitions():
+    """Retinal Dystrophy Atlas clinical definitions (ERG interpretation, FAF, gene therapy vectors, achromatopsia, XLRS/electronegative ERG, Usher types I/II/III, ABCA4 bisretinoid, ORF15 NGS limitation, PRPF31 incomplete penetrance, MLPA, vitamin A CI vs SAFE)."""
+    try:
+        import scripts.retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
