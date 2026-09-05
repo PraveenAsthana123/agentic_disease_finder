@@ -15819,5 +15819,30 @@
     "registered": "2026-09-05",
     "category": "rasopathies_ras_mapk_disorders",
     "description": "Complete 8-Gene RAS/MAPK Pathway Disorders Atlas PTPN11-NS1 RAF1-NS5 SOS1-NS4 KRAS-NS3 BRAF-CFC MAP2K1-CFC HRAS-Costello CBL-JMML 320-Patient-Aggregate-8x40-seeds-1230-1237"
+  },
+  {
+    "id": "neurodegeneration-atlas",
+    "title": "Neurodegeneration-Atlas Complete-8-Gene-Hereditary-Neurodegeneration-Atlas PSEN1-FAD3-467aa-14q24.2-Presenilin1-100pct-Penetrance-Lecanemab-Eligible PSEN2-FAD4-448aa-1q42.13-Volga-German-Asn141Ile-95pct-Penetrance MAPT-FTDP17-758aa-17q21.31-bvFTD-PSP-No-DMT GRN-FTD-TDP-593aa-17q21.32-PGRN-Below-130-DIAGNOSTIC-Latozinemab-Phase3 C9orf72-ALS-FTD-481aa-9p21.2-G4C2-Repeat-ALS-FTD-PATHOGNOMONIC LRRK2-PD-2527aa-12q12-Gly2019Ser-Levodopa-87pct-DNL151-Phase3 SNCA-PD-DLB-140aa-4q22.1-RBD-80pct-Haloperidol-ABSOLUTELY-CI APP-CAA-770aa-21q21.3-Anticoagulants-ABSOLUTELY-CI-Lobar-ICH 320-Patient-Aggregate-8x40-seeds-1238-1245",
+    "status": "built",
+    "route": "/neurodegeneration-atlas",
+    "api_endpoints": [
+      "/api/neurodegeneration-atlas/overview",
+      "/api/neurodegeneration-atlas/breakdown",
+      "/api/neurodegeneration-atlas/definitions"
+    ],
+    "genes": [
+      "PSEN1",
+      "PSEN2",
+      "APP",
+      "MAPT",
+      "GRN",
+      "C9orf72",
+      "LRRK2",
+      "SNCA"
+    ],
+    "n_patients": 320,
+    "seeds": "1238-1245",
+    "registered": "2026-09-05",
+    "category": "Hereditary Neurodegeneration"
   }
 ]

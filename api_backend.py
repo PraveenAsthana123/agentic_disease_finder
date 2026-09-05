@@ -44379,6 +44379,36 @@ async def rasopathies_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/neurodegeneration-atlas/overview")
+async def neurodegeneration_atlas_overview():
+    """Hereditary Neurodegeneration Atlas overview (PSEN1-FAD3/PSEN2-FAD4/APP-CAA/MAPT-FTDP/GRN-FTD/C9orf72-ALS-FTD/LRRK2-PD/SNCA-PD-DLB)."""
+    try:
+        import scripts.neurodegeneration_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/neurodegeneration-atlas/breakdown")
+async def neurodegeneration_atlas_breakdown():
+    """Hereditary Neurodegeneration Atlas per-gene breakdown (PSEN1/PSEN2/APP/MAPT/GRN/C9orf72/LRRK2/SNCA)."""
+    try:
+        import scripts.neurodegeneration_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/neurodegeneration-atlas/definitions")
+async def neurodegeneration_atlas_definitions():
+    """Hereditary Neurodegeneration Atlas clinical definitions (ACH, ARIA, gamma-secretase, TDP-43, DPR/RAN, LRRK2/pRab10, alpha-synuclein, RBD, DLB neuroleptic sensitivity, PGRN/latozinemab, DIAN, CSF biomarkers)."""
+    try:
+        import scripts.neurodegeneration_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
