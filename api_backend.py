@@ -44499,6 +44499,36 @@ async def bone_mineral_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/chd-atlas/overview")
+async def chd_atlas_overview():
+    """Congenital Heart Disease Atlas overview (NKX2-5 AV block, TBX5 Holt-Oram radial ray, GATA4 ASD/VSD, TBX20 late DCM, GATA6 pancreatic agenesis, JAG1 Alagille peripheral PS + Kasai CI, NOTCH1 BAV TAVR uncertain, MYH6 sick sinus pacemaker risk post-repair). 320 patients (8x40, seeds 1270-1277)."""
+    try:
+        import scripts.chd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/chd-atlas/breakdown")
+async def chd_atlas_breakdown():
+    """Congenital Heart Disease Atlas per-gene breakdown (NKX2-5, GATA4, TBX5, TBX20, GATA6, JAG1, NOTCH1, MYH6 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.chd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/chd-atlas/definitions")
+async def chd_atlas_definitions():
+    """Congenital Heart Disease Atlas clinical definitions (cardiac TF network NKX2-5/GATA4/TBX5, Holt-Oram radial ray rule, GATA6 neonatal diabetes + CHD, JAG1/Alagille Kasai CI, NOTCH1 BAV TAVR surgical preference, MYH6 pacemaker post-ASD-repair, JAG1/NOTCH1 same pathway)."""
+    try:
+        import scripts.chd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

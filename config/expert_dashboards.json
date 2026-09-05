@@ -15917,5 +15917,37 @@
     "seeds": "1262-1269",
     "registered": "2026-09-05",
     "built_note": "Bone-Mineral-Atlas Dashboard \u2014 /api/bone-mineral-atlas/overview|breakdown|definitions verified 200, 320-patient cohort (8x40, seeds 1262-1269), portal-next/app/bone-mineral-atlas/page.jsx + SiteNav wired after Adrenal-Disorders-Atlas, expert_dashboards.json count 1020->1021"
+  },
+  {
+    "id": "chd-atlas",
+    "name": "CHD-Atlas Complete-8-Gene-Hereditary-Structural-Congenital-Heart-Disease-Atlas NKX2-5-ASD-Plus-Progressive-AV-Block-PATHOGNOMONIC-Annual-ECG-Mandatory-After-Repair GATA4-ASD-VSD-AVSD-G296S-Most-Penetrant TBX5-Holt-Oram-RADIAL-RAY-ANOMALY-PATHOGNOMONIC GATA6-TOF-PANCREATIC-AGENESIS-Neonatal-Diabetes-Plus-CHD JAG1-Alagille-Peripheral-PS-DO-NOT-KASAI NOTCH1-BAV-TAVR-UNCERTAIN-Prefer-Surgical-AVR MYH6-ASD3-Sick-Sinus-PACEMAKER-Near-Certain-After-Repair",
+    "title": "CHD-Atlas Complete-8-Gene-Hereditary-Structural-Congenital-Heart-Disease-Atlas",
+    "category": "hereditary_structural_chd_atlas",
+    "status": "built",
+    "route": "/chd-atlas",
+    "api": "/api/chd-atlas/overview|breakdown|definitions",
+    "api_endpoints": [
+      "/api/chd-atlas/overview",
+      "/api/chd-atlas/breakdown",
+      "/api/chd-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/chd-atlas/page.jsx",
+    "script": "scripts/chd_atlas_dashboard.py",
+    "cohort_n": 320,
+    "n_genes": 8,
+    "seeds": "1270-1277",
+    "genes": [
+      "NKX2-5",
+      "GATA4",
+      "TBX5",
+      "TBX20",
+      "GATA6",
+      "JAG1",
+      "NOTCH1",
+      "MYH6"
+    ],
+    "built_date": "2026-09-05",
+    "registered": "2026-09-05",
+    "dashboard_id": 1022
   }
 ]
