@@ -15707,5 +15707,29 @@
     "built": null,
     "registered": "2026-09-05",
     "status": "built"
+  },
+  {
+    "id": "pulmonary-atlas",
+    "title": "Pulmonary-Atlas Complete-8-Gene-Hereditary-Pulmonary-Disease-Atlas CFTR-CF-DeltaF508-ETI-Trikafta-FDA2019-SweatCl-PATHOGNOMONIC SERPINA1-AATD-PiZZ-Lower-Lobe-Panacinar-Emphysema-Smoking-ABSOLUTELY-CI BMPR2-HPAH-70-80pct-Familial-PAH-ERA-Teratogenic-Bosentan-Glyburide-CI SFTPB-Neonatal-Lethal-Surfactant-INEFFECTIVE-Lung-Transplant-Only SFTPC-Childhood-ILD-I73T-HCQ-First-Line ABCA3-Small-Dense-LBs-EM-PATHOGNOMONIC-Most-Common-Genetic-Surfactant NKX2-1-BLT-Brain-Lung-Thyroid-Antipsychotics-CI-L-thyroxine-Urgent FLCN-BHD-Fibrofolliculoma-PATHOGNOMONIC-Pneumothorax-25-35pct-Radical-Nephrectomy-CI 320-Patient-Aggregate-8x40-seeds-1190-1197",
+    "category": "Hereditary Pulmonary Disease Atlas",
+    "route": "/pulmonary-atlas",
+    "api_overview": "/api/pulmonary-atlas/overview",
+    "api_breakdown": "/api/pulmonary-atlas/breakdown",
+    "api_definitions": "/api/pulmonary-atlas/definitions",
+    "genes": [
+      "CFTR",
+      "SERPINA1",
+      "BMPR2",
+      "SFTPB",
+      "SFTPC",
+      "ABCA3",
+      "NKX2-1",
+      "FLCN"
+    ],
+    "n_patients": 320,
+    "seeds": "1190-1197",
+    "built": null,
+    "registered": "2026-09-05",
+    "status": "built"
   }
 ]

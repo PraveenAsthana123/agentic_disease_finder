@@ -44199,6 +44199,36 @@ async def hemoglobinopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/pulmonary-atlas/overview")
+async def pulmonary_atlas_overview():
+    """Pulmonary Atlas complete 8-gene hereditary pulmonary disease overview (320 patients, seeds 1190-1197)."""
+    try:
+        import scripts.pulmonary_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pulmonary-atlas/breakdown")
+async def pulmonary_atlas_breakdown():
+    """Pulmonary Atlas per-gene breakdown (CFTR/SERPINA1/BMPR2/SFTPB/SFTPC/ABCA3/NKX2-1/FLCN)."""
+    try:
+        import scripts.pulmonary_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/pulmonary-atlas/definitions")
+async def pulmonary_atlas_definitions():
+    """Pulmonary Atlas clinical term definitions (sweat chloride, PiZZ, RHC, tubular myelin, LBs EM, HCQ, BLT triad, fibrofolliculoma, BHD renal, BHD pneumothorax)."""
+    try:
+        import scripts.pulmonary_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
