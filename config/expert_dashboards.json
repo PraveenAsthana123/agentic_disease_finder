@@ -16518,5 +16518,13 @@
     "seeds": "1526-1533",
     "n_patients": 320,
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-immunodeficiency-atlas",
+    "name": "Hereditary-Immunodeficiency-Atlas Complete-8-Gene-Hereditary-Primary-Immunodeficiency-Atlas BTK-659aa-Xq22.1-XL-XLA-No-B-Cells-IVIG-Lifelong-No-Live-Vaccines-EVER RAG1-1043aa-11p12-AR-Omenn-SCID-TREC-BCG-Avoid-HSCT ADA-363aa-20q13.11-AR-ADA-SCID-Strimvelis-EMA-2016-PEG-ADA-dATP-Skeletal CYBB-570aa-Xp21.1-XL-CGD-gp91phox-DHR-Assay-IFN-gamma-Itraconazole-TMP-SMX-Lifelong WAS-502aa-Xp11.23-XL-Triad-Small-Platelets-Eczema-Immunodeficiency-HSCT LRBA-2863aa-4q31.3-AR-CVID-IBD-Organomegaly-Abatacept-SPECIFIC CTLA4-223aa-2q33.2-AD-Haploinsufficiency-Lymphoproliferation-Abatacept-Sirolimus PIK3CD-1044aa-1p36.22-AD-GOF-APDS1-Leniolisib-FDA-2023-EBV-CMV",
+    "status": "built",
+    "patients": 320,
+    "seeds": "1534-1541",
+    "registered": "2026-09-06"
   }
 ]
