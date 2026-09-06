@@ -45672,6 +45672,31 @@ async def hereditary_genodermatoses_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-gi-cancer-atlas/overview")
+async def hereditary_gi_cancer_atlas_overview():
+    try:
+        import scripts.hereditary_gi_cancer_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-gi-cancer-atlas/breakdown")
+async def hereditary_gi_cancer_atlas_breakdown():
+    try:
+        import scripts.hereditary_gi_cancer_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-gi-cancer-atlas/definitions")
+async def hereditary_gi_cancer_atlas_definitions():
+    try:
+        import scripts.hereditary_gi_cancer_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

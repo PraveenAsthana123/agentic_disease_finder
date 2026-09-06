@@ -16644,5 +16644,20 @@
     "seeds": "1590-1597",
     "api": "/api/hereditary-genodermatoses-atlas/overview|breakdown|definitions",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-gi-cancer-atlas",
+    "name": "Hereditary-GI-Cancer-Atlas Complete-8-Gene-Hereditary-GI-Cancer-Syndrome-Atlas APC-2843aa-5q22.2-AD-FAP-100pct-CRC-Lifetime-CHRPE-PATHOGNOMONIC-Colectomy-Mandatory MUTYH-546aa-1p34.1-AR-MAP-Y179C-G396D-Founders-Partner-Testing-MANDATORY MLH1-756aa-3p22.2-AD-Lynch1-MSI-H-PATHOGNOMONIC-Aspirin-600mg-CAPP2 MSH2-934aa-2p21-AD-Lynch2-Muir-Torre-EPCAM-Silencing MSH6-1360aa-2p16.3-AD-Lynch3-Endometrial-71pct-Highest MSH6-MSI-L-Confounds PMS2-862aa-7p22.1-AD-Lynch4-Lowest-Penetrance-4-Pseudogenes-MLPA-MANDATORY-CMMRD STK11-433aa-19p13.3-AD-PJS-Perioral-Pigmentation-PATHOGNOMONIC-SCTAT-PATHOGNOMONIC-Intussusception-Emergency SMAD4-552aa-18q21.2-AD-JPS-HHT-Telangiectasia-Plus-Polyposis-SMAD4-Aortic-Dilatation 320-Patient-Aggregate-8x40-seeds-1598-1605",
+    "status": "built",
+    "category": "hereditary-gi-cancer",
+    "patients": 320,
+    "seeds": "1598-1605",
+    "api_routes": [
+      "/api/hereditary-gi-cancer-atlas/overview",
+      "/api/hereditary-gi-cancer-atlas/breakdown",
+      "/api/hereditary-gi-cancer-atlas/definitions"
+    ],
+    "frontend_page": "/hereditary-gi-cancer-atlas",
+    "registered": "2026-09-06"
   }
 ]
