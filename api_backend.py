@@ -45279,6 +45279,36 @@ async def hereditary_cerebral_svd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-muscular-dystrophy-atlas/overview")
+async def hereditary_muscular_dystrophy_atlas_overview():
+    """Hereditary-Muscular-Dystrophy-Atlas overview (DMD Duchenne/Becker succinylcholine-ABSOLUTE-CI exon-skip glucocorticoids-mandatory, DYSF LGMD2B dysferlin-absent-Western-blot AVOID-statins not-polymyositis, CAPN3 LGMD2A most-common-AR-LGMD scapular-winging Arg490Gln-Basque, LMNA EDMD2 AV-block-LETHAL ICD-mandatory annual-Holter, EMD EDMD1 emerin-absent-immunostaining pacemaker-ICD female-carrier-cardiac, SGCA LGMD2D test-ALL-4-sarcoglycans secondary-loss-panel, DMPK DM1 CTG-repeat anticipation anaesthesia-ABSOLUTE-RISK propofol-TIVA mexiletine, CNBP DM2 CCTG-repeat proximal-pain repeat-primed-PCR-required). 320 patients (8x40, seeds 1478-1485)."""
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-muscular-dystrophy-atlas/breakdown")
+async def hereditary_muscular_dystrophy_atlas_breakdown():
+    """Hereditary-Muscular-Dystrophy-Atlas per-gene breakdown (DMD, DYSF, CAPN3, LMNA, EMD, SGCA, DMPK, CNBP — protein, locus, aa, OMIM, inheritance, phenotype, hallmark, treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-muscular-dystrophy-atlas/definitions")
+async def hereditary_muscular_dystrophy_atlas_definitions():
+    """Hereditary-Muscular-Dystrophy-Atlas clinical definitions (reading-frame-rule DMD-BMD, succinylcholine-CI-dystrophinopathy, dysferlin-Western-blot-LGMD2B-diagnostic, secondary-sarcoglycan-loss-panel-rule, laminopathy-arrhythmia-ICD-HRS-EHRA-2019, emerin-immunostaining-EDMD1, DM1-anticipation-congenital-risk, DM1-anaesthesia-protocol, DM2-repeat-primed-PCR, LGMD-classification-2018-ENMC, cascade-testing-hereditary-MD)."""
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

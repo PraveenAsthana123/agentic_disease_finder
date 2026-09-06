@@ -16371,5 +16371,32 @@
     ],
     "registered": "2026-09-05",
     "category": "hereditary-cerebral-svd"
+  },
+  {
+    "id": "hereditary-muscular-dystrophy-atlas",
+    "title": "Hereditary-Muscular-Dystrophy-Atlas \u2014 Complete 8-Gene Hereditary Muscular Dystrophy Atlas",
+    "status": "built",
+    "route": "/hereditary-muscular-dystrophy-atlas",
+    "api_endpoints": [
+      "/api/hereditary-muscular-dystrophy-atlas/overview",
+      "/api/hereditary-muscular-dystrophy-atlas/breakdown",
+      "/api/hereditary-muscular-dystrophy-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-muscular-dystrophy-atlas/page.jsx",
+    "script": "scripts/hereditary_muscular_dystrophy_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "1478-1485",
+    "genes": [
+      "DMD",
+      "DYSF",
+      "CAPN3",
+      "LMNA",
+      "EMD",
+      "SGCA",
+      "DMPK",
+      "CNBP"
+    ],
+    "registered": "2026-09-05",
+    "category": "hereditary-muscular-dystrophy"
   }
 ]
