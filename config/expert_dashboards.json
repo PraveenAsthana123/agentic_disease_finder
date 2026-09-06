@@ -16707,5 +16707,37 @@
     "api": "/api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions",
     "seeds": "1518-1525",
     "registered": "2026-09-06"
+  },
+  {
+    "name": "Hereditary-Amyloidosis-Atlas \u2014 Complete 8-Gene Hereditary Systemic Amyloidosis Atlas",
+    "route": "/hereditary-amyloidosis-atlas",
+    "status": "built",
+    "endpoints": [
+      "/api/hereditary-amyloidosis-atlas/overview",
+      "/api/hereditary-amyloidosis-atlas/breakdown",
+      "/api/hereditary-amyloidosis-atlas/definitions"
+    ],
+    "genes": [
+      "TTR",
+      "APOA1",
+      "APOA2",
+      "FGA",
+      "LYZ",
+      "CST3",
+      "GSN",
+      "B2M"
+    ],
+    "patients": 320,
+    "seeds": [
+      1622,
+      1623,
+      1624,
+      1625,
+      1626,
+      1627,
+      1628,
+      1629
+    ],
+    "registered": "2026-09-06"
   }
 ]
