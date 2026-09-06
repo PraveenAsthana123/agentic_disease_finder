@@ -404,7 +404,10 @@ def xai_lime(file=None, seconds=10.0):
 
 def xai_shap(file=None, seconds=10.0):
     """SHAP values — global + local feature importance."""
-    import shap
+    try:
+        import shap
+    except (ImportError, Exception) as e:
+        return {"available": False, "note": f"SHAP unavailable: {e}"}
     from sklearn.ensemble import GradientBoostingClassifier
 
     X, feat_names, ch_names, labels, meta = _extract_features(file, seconds)

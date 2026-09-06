@@ -402,7 +402,9 @@ def overview():
             "total_billed": round(total_billed, 2),
             "total_collected": round(total_collected, 2),
             "collection_rate_pct": collection_rate,
+            "collection_rate": collection_rate,
             "denial_rate_pct": denial_rate,
+            "denial_rate": denial_rate,
             "avg_days_to_payment": avg_days_to_payment,
             "outstanding_balance": round(outstanding, 2),
             "unique_patients": unique_patients

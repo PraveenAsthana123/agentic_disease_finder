@@ -33,6 +33,80 @@ warnings.filterwarnings("ignore")
 ROOT = Path(__file__).parent.parent
 
 _BAND_NAMES = ["delta", "theta", "alpha", "beta"]
+_BAND_RANGES = {"delta": (0.5, 4), "theta": (4, 8), "alpha": (8, 13), "beta": (13, 30)}
+
+
+# ── scipy fallback transforms (used when pywt is unavailable in venv) ──
+
+def _band_power_scipy(seg: np.ndarray, sfreq: float) -> np.ndarray:
+    """PSD per channel per band using scipy.signal.welch. Shape: (n_ch, 4)."""
+    from scipy.signal import welch
+    n_ch = seg.shape[0]
+    out = np.zeros((n_ch, 4), dtype=np.float32)
+    freqs, psd = welch(seg, fs=sfreq, nperseg=min(seg.shape[1], 256))
+    for b, (name, (lo, hi)) in enumerate(_BAND_RANGES.items()):
+        mask = (freqs >= lo) & (freqs < hi)
+        out[:, b] = np.mean(psd[:, mask], axis=1) if mask.any() else 0.0
+    return out
+
+
+def _band_de_scipy(seg: np.ndarray, sfreq: float) -> np.ndarray:
+    """Differential entropy per channel per band. Shape: (n_ch, 4)."""
+    psd = _band_power_scipy(seg, sfreq)
+    de = 0.5 * np.log(2 * np.pi * np.e * (psd + 1e-12))
+    return de.astype(np.float32)
+
+
+def _band_hjorth_scipy(seg: np.ndarray, sfreq: float) -> np.ndarray:
+    """Hjorth mobility per channel per band. Shape: (n_ch, 4)."""
+    from scipy.signal import butter, sosfilt
+    n_ch = seg.shape[0]
+    out = np.zeros((n_ch, 4), dtype=np.float32)
+    for b, (name, (lo, hi)) in enumerate(_BAND_RANGES.items()):
+        sos = butter(4, [lo / (sfreq / 2), hi / (sfreq / 2)], btype='band', output='sos')
+        filtered = sosfilt(sos, seg)
+        diff1 = np.diff(filtered, axis=1)
+        var_x = np.var(filtered, axis=1, ddof=1) + 1e-12
+        var_d1 = np.var(diff1, axis=1, ddof=1)
+        out[:, b] = np.sqrt(var_d1 / var_x)
+    return out
+
+
+def _band_kurtosis_scipy(seg: np.ndarray, sfreq: float) -> np.ndarray:
+    """Kurtosis per channel per band. Shape: (n_ch, 4)."""
+    from scipy.signal import butter, sosfilt
+    from scipy.stats import kurtosis
+    n_ch = seg.shape[0]
+    out = np.zeros((n_ch, 4), dtype=np.float32)
+    for b, (name, (lo, hi)) in enumerate(_BAND_RANGES.items()):
+        sos = butter(4, [lo / (sfreq / 2), hi / (sfreq / 2)], btype='band', output='sos')
+        filtered = sosfilt(sos, seg)
+        out[:, b] = kurtosis(filtered, axis=1, fisher=False)
+    return out.astype(np.float32)
+
+
+def _band_skewness_scipy(seg: np.ndarray, sfreq: float) -> np.ndarray:
+    """Skewness per channel per band. Shape: (n_ch, 4)."""
+    from scipy.signal import butter, sosfilt
+    from scipy.stats import skew
+    n_ch = seg.shape[0]
+    out = np.zeros((n_ch, 4), dtype=np.float32)
+    for b, (name, (lo, hi)) in enumerate(_BAND_RANGES.items()):
+        sos = butter(4, [lo / (sfreq / 2), hi / (sfreq / 2)], btype='band', output='sos')
+        filtered = sosfilt(sos, seg)
+        out[:, b] = skew(filtered, axis=1)
+    return out.astype(np.float32)
+
+
+def _extract_features_scipy(seg: np.ndarray, sfreq: float) -> Dict[str, np.ndarray]:
+    """Compute all 5 torcheeg-equivalent transforms using scipy. Returns dict of (n_ch,4)."""
+    return {
+        "differential_entropy": _band_de_scipy(seg, sfreq),
+        "power_spectral_density": _band_power_scipy(seg, sfreq),
+        "hjorth": _band_hjorth_scipy(seg, sfreq),
+        "kurtosis": _band_kurtosis_scipy(seg, sfreq),
+        "skewness": _band_skewness_scipy(seg, sfreq),
+    }
 
 
 # ── data discovery ──────────────────────────────────────────────────
@@ -55,20 +129,12 @@ def _find_edf() -> Optional[Path]:
 # ── feature extraction with torcheeg ──────────────────────────────
 
 def _extract_torcheeg_features(file=None, seconds=10.0):
-    """Extract EEG features using real torcheeg transforms on EDF data.
+    """Extract EEG features using torcheeg transforms (falls back to scipy if pywt absent).
 
     Returns (features_dict, ch_names, metadata) where features_dict maps
     transform names to (n_epochs, n_channels, n_bands) arrays.
     """
     import mne
-    from torcheeg.transforms import (
-        BandDifferentialEntropy,
-        BandPowerSpectralDensity,
-        BandHjorth,
-        BandKurtosis,
-        BandSkewness,
-    )
-
     mne.set_log_level("ERROR")
 
     if file:
@@ -91,24 +157,43 @@ def _extract_torcheeg_features(file=None, seconds=10.0):
 
     n_epochs = max(total_samples // n_samples_epoch, 1)
 
-    transforms = {
-        "differential_entropy": BandDifferentialEntropy(sampling_rate=int(sfreq)),
-        "power_spectral_density": BandPowerSpectralDensity(sampling_rate=int(sfreq)),
-        "hjorth": BandHjorth(sampling_rate=int(sfreq)),
-        "kurtosis": BandKurtosis(sampling_rate=int(sfreq)),
-        "skewness": BandSkewness(sampling_rate=int(sfreq)),
-    }
+    # Try torcheeg first; fall back to scipy if pywt is unavailable in this venv
+    try:
+        from torcheeg.transforms import (
+            BandDifferentialEntropy,
+            BandPowerSpectralDensity,
+            BandHjorth,
+            BandKurtosis,
+            BandSkewness,
+        )
+        _torcheeg_transforms = {
+            "differential_entropy": BandDifferentialEntropy(sampling_rate=int(sfreq)),
+            "power_spectral_density": BandPowerSpectralDensity(sampling_rate=int(sfreq)),
+            "hjorth": BandHjorth(sampling_rate=int(sfreq)),
+            "kurtosis": BandKurtosis(sampling_rate=int(sfreq)),
+            "skewness": BandSkewness(sampling_rate=int(sfreq)),
+        }
+        use_scipy_fallback = False
+    except (ImportError, ModuleNotFoundError):
+        _torcheeg_transforms = None
+        use_scipy_fallback = True
 
-    features = {name: [] for name in transforms}
+    features = {name: [] for name in ["differential_entropy", "power_spectral_density",
+                                       "hjorth", "kurtosis", "skewness"]}
 
     for ep in range(n_epochs):
         start = ep * n_samples_epoch
         end = start + n_samples_epoch
         seg = data[:, start:end].astype(np.float32)
 
-        for name, transform in transforms.items():
-            result = transform(eeg=seg)
-            features[name].append(result["eeg"])
+        if use_scipy_fallback:
+            epoch_feats = _extract_features_scipy(seg, sfreq)
+            for name in features:
+                features[name].append(epoch_feats[name])
+        else:
+            for name, transform in _torcheeg_transforms.items():
+                result = transform(eeg=seg)
+                features[name].append(result["eeg"])
 
     features_arrays = {}
     for name, epoch_list in features.items():
@@ -122,6 +207,7 @@ def _extract_torcheeg_features(file=None, seconds=10.0):
         "n_bands": len(_BAND_NAMES),
         "epoch_duration_s": epoch_len,
         "seconds_analyzed": float(n_epochs * epoch_len),
+        "backend": "scipy-fallback" if use_scipy_fallback else "torcheeg",
     }
     return features_arrays, ch_names, meta
 

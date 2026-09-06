@@ -16501,5 +16501,22 @@
     "patients": 320,
     "seeds": "1518-1525",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-haemolytic-anaemia-atlas",
+    "name": "Hereditary-Haemolytic-Anaemia-Atlas Complete-8-Gene-Hereditary-Haemolytic-Anaemia-Atlas ANK1-1881aa-8p11.21-AD-HS1-Most-Common-30-40pct-Ankyrin-Vertical-Linkage-EMA-Flow-Splenectomy-Vaccination-Mandatory SPTB-2137aa-14q23.3-AD-HS2-Beta-Spectrin-HPP-Neonatal-Severe-aLELY-Trap-RBC-Thermolability SLC4A1-911aa-17q21.31-AD-HS4-SAO-Malaria-Protection-No-Haemolysis-AR-dRTA-Alkali-Mandatory-SAO-Homozygous-Lethal SPTA1-2429aa-1q23.1-AD-HE1-AR-HPP-Most-Severe-Neonatal-HA-RBC-Thermolability-45C-Pathognomonic PKLR-574aa-1q22-AR-PK-Deficiency-Mitapivat-FDA-2022-2,3-DPG-Right-Shift-Paradoxical-Reticulocytosis G6PD-515aa-Xq28-XL-400M-Worldwide-Rasburicase-ABSOLUTE-CI-Primaquine-Dapsone-Triggers-Assay-False-Normal-Crisis PIEZO1-2521aa-16q24.3-AD-GOF-DHS-High-MCHC-Pseudohyperkalaemia-SPLENECTOMY-CONTRAINDICATED-DVT-PE KCNN4-427aa-19q13.31-AD-GOF-Gardos-Channelopathy-DHS-Senicapoc-Trial-SPLENECTOMY-CONTRAINDICATED 320-Patient-Aggregate-8x40-seeds-1526-1533",
+    "title": "Hereditary-Haemolytic-Anaemia-Atlas \u2014 Complete 8-Gene Hereditary Haemolytic Anaemia Atlas",
+    "category": "Hereditary Haemolytic Anaemia",
+    "status": "built",
+    "built": true,
+    "route": "/hereditary-haemolytic-anaemia-atlas",
+    "api_endpoints": [
+      "/api/hereditary-haemolytic-anaemia-atlas/overview",
+      "/api/hereditary-haemolytic-anaemia-atlas/breakdown",
+      "/api/hereditary-haemolytic-anaemia-atlas/definitions"
+    ],
+    "seeds": "1526-1533",
+    "n_patients": 320,
+    "registered": "2026-09-06"
   }
 ]
