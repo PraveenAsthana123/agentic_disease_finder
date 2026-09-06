@@ -16260,5 +16260,24 @@
     "cohort_n": 320,
     "seed": 1422,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-hearing-loss-atlas",
+    "name": "Hereditary-Hearing-Loss-Atlas Complete-8-Gene-Hereditary-Sensorineural-Hearing-Loss-Atlas GJB2-226aa-13q12.11-AR-DFNB1-Most-Common-50pct-AR-SNHL-35delG-235delC-GJB6-Deletion-Exclusion-CI-Before-12-Months SLC26A4-780aa-7q22.3-AR-DFNB4-Pendred-EVA-Head-Trauma-ABSOLUTE-PROHIBITION OTOF-1997aa-2p23.3-AR-DFNB9-ANSD-Pre-Neural-Synaptic-CI-EXCELLENT COCH-550aa-14q12-AD-DFNA9-Adult-Progressive-Meniere-Like-No-Cure TMC1-757aa-9q21.13-AR-DFNB7-AD-DFNA36-M298K-Gene-Therapy-2024 MYO7A-2215aa-11q13.5-AR-Usher1B-Deaf-RP-Vestibular-Annual-ERG CDH23-3354aa-10q22.1-AR-Usher1D-DFNB12-Tip-Link-Upper PCDH15-1955aa-10q21.1-AR-Usher1F-R245X-Ashkenazi-1in148 320-Patient-Aggregate-8x40-seeds-1430-1437",
+    "title": "Hereditary-Hearing-Loss-Atlas \u2014 Complete 8-Gene Hereditary Sensorineural Hearing Loss Atlas",
+    "route": "/hereditary-hearing-loss-atlas",
+    "api_prefix": "/api/hereditary-hearing-loss-atlas",
+    "status": "built",
+    "n_patients": 320,
+    "genes": [
+      "GJB2",
+      "SLC26A4",
+      "OTOF",
+      "COCH",
+      "TMC1",
+      "MYO7A",
+      "CDH23",
+      "PCDH15"
+    ]
   }
 ]

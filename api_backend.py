@@ -45099,6 +45099,36 @@ async def red_cell_disorders_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-hearing-loss-atlas/overview")
+async def hereditary_hearing_loss_atlas_overview():
+    """Hereditary-Hearing-Loss-Atlas overview (GJB2-226aa-13q12.11-AR-DFNB1-Most-Common-50pct-AR-SNHL-35delG-235delC-CI-Excellent, SLC26A4-780aa-7q22.3-AR-DFNB4-Pendred-EVA-Head-Trauma-Avoid, OTOF-1997aa-2p23.3-AR-DFNB9-ANSD-Pre-Neural-CI-Excellent, COCH-550aa-14q12-AD-DFNA9-Adult-Progressive-Meniere-Like-No-Cure, TMC1-757aa-9q21.13-AR-DFNB7-AD-DFNA36-M298K-Gene-Therapy-2024, MYO7A-2215aa-11q13.5-AR-Usher1B-Most-Common-Deaf-RP-Vestibular, CDH23-3354aa-10q22.1-AR-Usher1D-DFNB12-Tip-Link-Upper, PCDH15-1955aa-10q21.1-AR-Usher1F-R245X-Ashkenazi-1in148, 320-patients-8x40-seeds-1430-1437)."""
+    try:
+        import scripts.hereditary_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hearing-loss-atlas/breakdown")
+async def hereditary_hearing_loss_atlas_breakdown():
+    """Hereditary-Hearing-Loss-Atlas per-gene breakdown (GJB2-GJB6-deletion-mandatory-monoallelic-excluded, SLC26A4-head-trauma-written-prohibition-EVA, OTOF-ANSD-pre-neural-CI-works-distinguish-from-neuropathy-ANSD, COCH-DFNA9-incurable-progressive-fit-hearing-aid-40dB-HL, TMC1-M298K-AD-annual-audiogram-gene-therapy-ClinicalTrials, MYO7A-Usher1B-CI-early-annual-ERG-mandatory-vestibular-PT, CDH23-null-Usher1D-hypomorphic-DFNB12-genotype-predicts-RP, PCDH15-R245X-Ashkenazi-1in148-test-first-Usher1F)."""
+    try:
+        import scripts.hereditary_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hearing-loss-atlas/definitions")
+async def hereditary_hearing_loss_atlas_definitions():
+    """Hereditary-Hearing-Loss-Atlas clinical definitions (GJB2-GJB6-monoallelic-exclusion, SLC26A4-head-trauma-EVA-prohibition, OTOF-ANSD-CI-distinction-pre-neural-vs-neuropathy, Usher1-ERG-mandatory-annual-RP-detection, PCDH15-R245X-Ashkenazi-targeted-test, TMC1-neonatal-screen-false-negative-TMC2-backup, CI-critical-period-before-12-months-universal)."""
+    try:
+        import scripts.hereditary_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
