@@ -16942,5 +16942,12 @@
     "api_prefix": "/api/hereditary-mody-atlas",
     "page": "/hereditary-mody-atlas",
     "built_date": "2026-09-06"
+  },
+  {
+    "name": "Hereditary-Muscular-Dystrophy-Atlas Complete-8-Gene-Hereditary-Muscular-Dystrophy-Atlas DMD-3685aa-Xp21.2-XLR-Duchenne-Becker-Elevidys-FDA2023-Exon-Skipping-Cardiac-DCM-90pct-Age18 DMPK-629aa-19q13.32-AD-DM1-Steinert-CTG-Repeat-Multisystem-ANAESTHESIA-EXTREME-RISK-Depolarising-NMB-CI SMCHD1-2005aa-18p11.32-AD-FSHD2-Epigenetic-D4Z4-Hypomethylation-4qA-Permissive-Asymmetric-Weakness-PATHOGNOMONIC EMD-254aa-Xq28-XLR-EDMD1-Early-Contractures-BEFORE-Weakness-PATHOGNOMONIC-ICD-Mandatory-Lethal-Arrhythmia LMNA-664aa-1q22-AD-MOST-LETHAL-MD-ICD-Regardless-LVEF-Padua-Score-Non-Missense-Highest-Risk-Mean-Cardiac-Age-36y CAPN3-821aa-15q15.1-AR-LGMD-R1-Most-Common-LGMD-30pct-Pelvifemoral-NO-Cardiac-CK-Normal-Possible DYSF-2080aa-2p13.2-AR-LGMD-R2-Miyoshi-CK-50-100x-PATHOGNOMONIC-STEROIDS-CONTRAINDICATED GNE-722aa-9p13.3-AR-IBM2-Nonaka-QUADRICEPS-SPARED-PATHOGNOMONIC-Rimmed-Vacuoles-NeuAc-Trial 320-Patient-Aggregate-8x40-seeds-1702-1709",
+    "status": "built",
+    "category": "Hereditary-Muscular-Dystrophy",
+    "api": "/api/hereditary-muscular-dystrophy-atlas/overview",
+    "page": "/hereditary-muscular-dystrophy-atlas"
   }
 ]

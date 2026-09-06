@@ -46007,6 +46007,33 @@ async def hereditary_mody_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-muscular-dystrophy-atlas/overview")
+async def hereditary_muscular_dystrophy_atlas_overview():
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-muscular-dystrophy-atlas/breakdown")
+async def hereditary_muscular_dystrophy_atlas_breakdown():
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-muscular-dystrophy-atlas/definitions")
+async def hereditary_muscular_dystrophy_atlas_definitions():
+    try:
+        import scripts.hereditary_muscular_dystrophy_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
