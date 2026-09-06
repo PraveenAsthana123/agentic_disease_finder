@@ -16417,5 +16417,25 @@
     "patients": 320,
     "seeds": "1486-1493",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-retinal-dystrophy-atlas",
+    "title": "Hereditary-Retinal-Dystrophy-Atlas \u2014 Complete 8-Gene Inherited Retinal Disease Reference \u2014 RPGR-903aa-Xp11.23-XLR-RP3-ORF15-WES-MISSES-50pct USH2A-5202aa-1q41-AR-Usher2A-RP-SNHL-NO-Vestibular ABCA4-2273aa-1p22.1-AR-Stargardt-FAF-AVOID-Light-AVOID-VitA RHO-348aa-3q22.1-AD-RP4-P23H-ClassII PRPF31-499aa-19q13.42-AD-RP11-Reduced-Penetrance-CNOT3 CRB1-1406aa-1q31.3-AR-RP12-LCA8-PPRPE-PATHOGNOMONIC CNGB3-809aa-8q21.3-AR-Achromatopsia-STABLE-FL41-Gene-Therapy BEST1-585aa-11q12.3-AD-EOG-Arden-PATHOGNOMONIC-ERG-NORMAL",
+    "category": "hereditary-retinal-dystrophy",
+    "route": "/hereditary-retinal-dystrophy-atlas",
+    "api_base": "/api/hereditary-retinal-dystrophy-atlas",
+    "genes": [
+      "RPGR",
+      "USH2A",
+      "ABCA4",
+      "RHO",
+      "PRPF31",
+      "CRB1",
+      "CNGB3",
+      "BEST1"
+    ],
+    "n_patients": 320,
+    "seeds": "1494-1501",
+    "registered": "2026-09-05"
   }
 ]

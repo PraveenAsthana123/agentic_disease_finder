@@ -45339,6 +45339,36 @@ async def hereditary_epilepsy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-retinal-dystrophy-atlas/overview")
+async def hereditary_retinal_dystrophy_atlas_overview():
+    """Hereditary-Retinal-Dystrophy-Atlas overview (RPGR-903aa-Xp11.23-XLR-RP3-most-common-XLRP-ORF15-WES-MISSES-50pct-specific-sequencing-mandatory, USH2A-5202aa-1q41-AR-Usher2A-RP-congenital-SNHL-NO-vestibular-c2299delG-joint-ENT-ophtho, ABCA4-2273aa-1p22.1-AR-Stargardt-most-common-hereditary-MD-FAF-diagnostic-AVOID-light-AVOID-VitA, RHO-348aa-3q22.1-AD-RP4-most-common-ADRP-P23H-ClassII-dominant-negative-VitA-recommended, PRPF31-499aa-19q13.42-AD-RP11-reduced-penetrance-60-80pct-CNOT3-modifier-unaffected-carriers, CRB1-1406aa-1q31.3-AR-RP12-LCA8-PPRPE-PATHOGNOMONIC-NOT-Luxturna, CNGB3-809aa-8q21.3-AR-Achromatopsia-STABLE-NO-blindness-FL41-lenses-gene-therapy-Phase2-3, BEST1-585aa-11q12.3-AD-BestVMD2-EOG-Arden-PATHOGNOMONIC-ERG-NORMAL-CNV-anti-VEGF). 320 patients (8x40, seeds 1494-1501)."""
+    try:
+        import scripts.hereditary_retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-retinal-dystrophy-atlas/breakdown")
+async def hereditary_retinal_dystrophy_atlas_breakdown():
+    """Hereditary-Retinal-Dystrophy-Atlas per-gene breakdown (RPGR, USH2A, ABCA4, RHO, PRPF31, CRB1, CNGB3, BEST1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.hereditary_retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-retinal-dystrophy-atlas/definitions")
+async def hereditary_retinal_dystrophy_atlas_definitions():
+    """Hereditary-Retinal-Dystrophy-Atlas clinical definitions (RPGR-ORF15-WES-miss-diagnostic-gap, USH2A-vs-Usher1-vestibular-distinguisher, ABCA4-VitA-contraindicated-light-restriction, RHO-P23H-Class-I-II-mechanism, PRPF31-reduced-penetrance-CNOT3-modifier, CRB1-PPRPE-pathognomonic-not-Luxturna, CNGB3-achromatopsia-stable-counselling, BEST1-EOG-Arden-ratio-normal-ERG, VitA-gene-specific-rules, gene-therapy-landscape-2024, cascade-testing-hereditary-retinal-dystrophy)."""
+    try:
+        import scripts.hereditary_retinal_dystrophy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
