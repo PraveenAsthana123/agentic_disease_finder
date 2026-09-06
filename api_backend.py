@@ -45219,6 +45219,36 @@ async def hereditary_primary_lymphedema_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-hmsn-atlas/overview")
+async def hereditary_hmsn_atlas_overview():
+    """Hereditary-HMSN-Atlas aggregate overview (PMP22-160aa-17p12-AD-CMT1A-duplication-MLPA-mandatory-HNPP-deletion, MPZ-248aa-1q23.3-AD-CMT1B-NCV-less-20ms-CMT2IJ-adult-axonal, GJB1-283aa-Xq13.1-XLD-CMTX1-intermediate-NCV-CNS-white-matter, MFN2-741aa-1p36.22-AD-CMT2A2-upper-limb-optic-atrophy-15pct, GDAP1-358aa-8q21.11-AR-CMT4A-vocal-cord-paresis-pathognomonic, SH3TC2-1288aa-5q32-AR-CMT4C-scoliosis-60pct-cranial-nerve, NEFL-543aa-8p21.2-AD-CMT2E-giant-axon-serum-NF-L-biomarker, EGR2-472aa-10q21.2-AD-CMT1D-hypomyelination-congenital-R359W)."""
+    try:
+        import scripts.hereditary_hmsn_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hmsn-atlas/breakdown")
+async def hereditary_hmsn_atlas_breakdown():
+    """Hereditary-HMSN-Atlas per-gene breakdown (PMP22-MLPA-CMT1A-duplication-HNPP-deletion-vincristine-CI, MPZ-NCV-branch-CMT1B-CMT2IJ-audiogram-mandatory, GJB1-intermediate-NCV-male-no-male-to-male-CNS-strokelike, MFN2-upper-limb-optic-atrophy-annual-ophthalmology-de-novo, GDAP1-vocal-cord-laryngoscopy-respiratory-PFT-sleep-study, SH3TC2-R954W-Romani-scoliosis-spine-surveillance-Cobb-40, NEFL-giant-axon-serum-NFL-facial-bulbar-monitoring, EGR2-R359W-R381H-hypomyelination-CHN-respiratory-NICU)."""
+    try:
+        import scripts.hereditary_hmsn_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hmsn-atlas/definitions")
+async def hereditary_hmsn_atlas_definitions():
+    """Hereditary-HMSN-Atlas clinical definitions (CMT-HMSN-classification-demyelinating-axonal-intermediate, MLPA-PMP22-CMT1A-duplication-HNPP-deletion-gold-standard, vincristine-absolute-CI-all-CMT-neurotoxic-tubulin-binding, CMTX1-intermediate-NCV-CNS-white-matter-strokelike-supportive, CMT2A2-MFN2-upper-limb-optic-atrophy-15pct-annual-fundoscopy, CMT4A-GDAP1-vocal-cord-paresis-diaphragm-respiratory-monitoring, CMT4C-SH3TC2-R954W-Romani-scoliosis-60pct-cranial-nerve, CHN-EGR2-congenital-hypomyelination-NCV-0-10ms-NICU-alert, cascade-testing-CMT-families-NCV-presymptomatic-vincristine-alert)."""
+    try:
+        import scripts.hereditary_hmsn_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

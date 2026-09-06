@@ -16317,5 +16317,32 @@
     "seeds": "1454-1461",
     "registered": "2026-09-05",
     "notes": "Complete 8-gene primary lymphedema atlas. FLT4/VEGFR3 Milroy congenital; FOXC2 distichiasis-lymphedema pubertal; PROX1 HLTS master LEC fate; GJC2 late-onset AR + SPG44 biallelic LOF; SOX18 HLTRS ragged dominant negative renal; CCBE1+ADAMTS3 Hennekam HLS1+HLS3 intestinal lymphangiectasia MCT diet; KIF11 MCLMR microcephaly chorioretinopathy de novo."
+  },
+  {
+    "id": "hereditary-hmsn-atlas",
+    "title": "Hereditary-HMSN-Atlas \u2014 Complete 8-Gene Hereditary Motor and Sensory Neuropathy (CMT/HMSN) Atlas",
+    "status": "built",
+    "route": "/hereditary-hmsn-atlas",
+    "api_endpoints": [
+      "/api/hereditary-hmsn-atlas/overview",
+      "/api/hereditary-hmsn-atlas/breakdown",
+      "/api/hereditary-hmsn-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-hmsn-atlas/page.jsx",
+    "script": "scripts/hereditary_hmsn_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "1462-1469",
+    "genes": [
+      "PMP22",
+      "MPZ",
+      "GJB1",
+      "MFN2",
+      "GDAP1",
+      "SH3TC2",
+      "NEFL",
+      "EGR2"
+    ],
+    "registered": "2026-09-05",
+    "category": "hereditary-neuropathy"
   }
 ]
