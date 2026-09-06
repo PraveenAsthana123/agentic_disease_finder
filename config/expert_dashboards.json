@@ -16921,5 +16921,26 @@
     "seed_range": "1686-1693",
     "built_date": "2026-09-06",
     "description": "Complete 8-gene hereditary pheochromocytoma-paraganglioma atlas: SDHB/SDHD/VHL/RET/NF1/MAX/SDHA/SDHC"
+  },
+  {
+    "id": "hereditary-mody-atlas",
+    "title": "Hereditary-MODY-Atlas Complete-8-Gene-Hereditary-Monogenic-Diabetes-MODY-Atlas HNF1A-631aa-12q24.31-AD-MODY3-Most-Common-50pct-Renal-Glucosuria-SU-98pct GCK-499aa-7p13-AD-MODY2-Stable-Fasting-NO-Treatment-NO-Complications-Pregnancy-Exception HNF4A-474aa-20q13.12-AD-MODY1-Neonatal-Macrosomia-Diazoxide-Responsive-Hypoglycaemia-PATHOGNOMONIC HNF1B-557aa-17q12-AD-MODY5-Renal-Cysts-RCAD-Pancreatic-Atrophy-Insulin-Required-SU-INEFFECTIVE-50pct-De-Novo ABCC8-1581aa-11p15.1-AD-SUR1-K-ATP-Variable-NDM-CHI-Diazoxide-Glibenclamide-70pct KCNJ11-390aa-11p15.1-AD-Kir6.2-K-ATP-NDM-Glibenclamide-90pct-DEND-SU-BBB INS-110aa-11p15.5-AD-Dominant-Negative-ER-Stress-Beta-Cell-Apoptosis-Insulin-Required PDX1-283aa-13q12.2-AR-Biallelic-Pancreatic-Agenesis-Master-TF-PERT-Required 320-Patient-Aggregate-8x40-seeds-1694-1701",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "genes": [
+      "HNF1A",
+      "GCK",
+      "HNF4A",
+      "HNF1B",
+      "ABCC8",
+      "KCNJ11",
+      "INS",
+      "PDX1"
+    ],
+    "patients": 320,
+    "seeds": "1694-1701",
+    "api_prefix": "/api/hereditary-mody-atlas",
+    "page": "/hereditary-mody-atlas",
+    "built_date": "2026-09-06"
   }
 ]
