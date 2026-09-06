@@ -16457,5 +16457,30 @@
     "patients": 320,
     "seeds": "1502-1509",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-thrombophilia-atlas",
+    "title": "Hereditary-Thrombophilia-Atlas Complete-8-Gene-Hereditary-Thrombophilia-Atlas F5-2224aa-1q24.2-AD-FactorVLeiden-APC-Resistance-OCP-35x-Risk F2-622aa-11p11.2-AD-Prothrombin-G20210A-3UTR-WES-May-Miss SERPINC1-464aa-1q25.1-AD-AntithrombinIII-Highest-VTE-Risk-Heparin-Resistance-AT-Concentrate PROC-461aa-2q14.3-AD-ProteinC-Warfarin-Skin-Necrosis-Heparin-Bridge-MANDATORY PROS1-676aa-3q11.2-AD-ProteinS-OCP-Confound-Type-I-II-III MTHFR-656aa-1p36.22-AR-C677T-Hyperhomocysteine-Folate-NOT-Routine-Screen THBD-575aa-20p11.21-AD-Thrombomodulin-PC-Activation-aHUS-Complement SERPINE1-402aa-7q22.1-AR-PAI1-4G4G-Fibrinolysis-Deficiency-Bleeds 320-Patient-Aggregate-8x40-seeds-1510-1517",
+    "status": "built",
+    "route": "/hereditary-thrombophilia-atlas",
+    "api_endpoints": [
+      "/api/hereditary-thrombophilia-atlas/overview",
+      "/api/hereditary-thrombophilia-atlas/breakdown",
+      "/api/hereditary-thrombophilia-atlas/definitions"
+    ],
+    "genes": [
+      "F5",
+      "F2",
+      "SERPINC1",
+      "PROC",
+      "PROS1",
+      "MTHFR",
+      "THBD",
+      "SERPINE1"
+    ],
+    "n_patients": 320,
+    "seeds": "1510-1517",
+    "registered": "2026-09-06",
+    "category": "Hereditary Thrombophilia"
   }
 ]
