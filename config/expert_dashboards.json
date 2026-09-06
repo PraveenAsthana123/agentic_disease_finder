@@ -16867,5 +16867,32 @@
     "api_prefix": "/api/hereditary-hyperlipidemia-atlas",
     "page": "/hereditary-hyperlipidemia-atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-hemochromatosis-atlas",
+    "title": "Hereditary-Hemochromatosis-Atlas Complete-8-Gene-Hereditary-Iron-Overload-Atlas HFE-380aa-6p22.2-AR-HH1-C282Y-1:200-Northern-Europeans HAMP-84aa-19q13.12-AR-JH2B HJV-426aa-1q21.1-AR-JH2A-Most-Severe TFR2-801aa-7q22.1-AR-HH3 SLC40A1-571aa-2q32.2-AD-HH4 CP-1065aa-3q25.1-AR-Aceruloplasminemia FTL-175aa-19q13.33-AD-HHCS BMP6-513aa-6p24.3-AR-BMP6-HH 320-Patient-Aggregate-8x40-seeds-1678-1685",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-hemochromatosis-atlas",
+    "api_base": "/api/hereditary-hemochromatosis-atlas",
+    "endpoints": [
+      "overview",
+      "breakdown",
+      "definitions"
+    ],
+    "patients": 320,
+    "genes": [
+      "HFE",
+      "HJV",
+      "HAMP",
+      "TFR2",
+      "SLC40A1",
+      "CP",
+      "FTL",
+      "BMP6"
+    ],
+    "seed_range": "1678-1685",
+    "built_date": "2026-09-06",
+    "description": "Complete 8-gene hereditary iron overload atlas: HH1/JH2A/JH2B/HH3/HH4/Aceruloplasminemia/HHCS/BMP6-HH"
   }
 ]
