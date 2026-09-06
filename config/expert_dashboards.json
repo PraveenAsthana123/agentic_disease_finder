@@ -16671,5 +16671,14 @@
     "patients": 320,
     "seeds": "1606-1613",
     "built": "2026-09-06"
+  },
+  {
+    "id": "hereditary-angioedema-atlas",
+    "name": "Hereditary-Angioedema-Atlas Complete-8-Gene-Hereditary-Angioedema-Atlas SERPING1-478aa-11q12.1-AD-HAE-TypeI-II-C1INH-LOF-C4-Low-PATHOGNOMONIC-Icatibant-Lanadelumab F12-596aa-5q35.3-AD-GOF-HAE-FXII-TypeIII-Estrogen-Driven-OCP-CI PLG-810aa-6q26-AD-GOF-HAE-PLG-Lys330Glu-Tranexamic-Rational ANGPT1-498aa-8q23.1-AD-HAE-ANGPT1-Tie2-EndothelialBarrier KNG1-644aa-3q27.3-AD-HAE-KNG1-HMWK-BradykininPrecursor HS3ST6-333aa-16p13.3-AD-HAE-HS3ST6-ContactActivation MYOF-2057aa-10q24.11-AD-HAE-MYOF-LargestHAEGene KLKB1-638aa-4q35.2-AR-PrekallikreinDeficiency-ProlongedAPTT-NoBleeding 320-Patient-Aggregate-8x40-seeds-1614-1621",
+    "status": "built",
+    "route": "/hereditary-angioedema-atlas",
+    "api": "/api/hereditary-angioedema-atlas/overview|breakdown|definitions",
+    "seeds": "1614-1621",
+    "registered": "2026-09-06"
   }
 ]

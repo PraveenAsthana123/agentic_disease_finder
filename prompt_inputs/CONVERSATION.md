@@ -33523,3 +33523,42 @@ Now push and track:
 
 ### [2026-09-06 01:32:48 MDT] ASSISTANT
 All 3 endpoints return 200. Now update the `next_pending.py` registry and refresh `STATUS.md`:
+
+### [2026-09-06 02:08:06 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-06 02:17:14 MDT] ASSISTANT
+The queue has only one buildable item — **Ictal/interictal retrain** — which is explicitly in the skip list. All 1054 dashboards are built; no other items exist in `BUILDABLE`. Logging the skip and exiting per §57.7.
+
+### [2026-09-06 02:52:20 MDT] ASSISTANT
+Now refresh STATUS.md and commit:
+
+### [2026-09-06 03:51:48 MDT] ASSISTANT
+Now refresh STATUS.md and commit:
+
+### [2026-09-06 04:17:35 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-06 05:01:38 MDT] ASSISTANT
+All verified. Now refresh STATUS.md and commit:
+
+### [2026-09-06 05:17:29 MDT] ASSISTANT
+The BUILDABLE queue is empty after skipping the ictal/interictal retrain. All 1058 dashboards are built, all other configs show either "built" status or are blocked by credentials. Let me verify and track:
+
+### [2026-09-06 05:48:12 MDT] ASSISTANT
+Expert dashboards count updated from 1058 to 1059. Now commit:
+
+### [2026-09-06 06:18:01 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-06 06:46:54 MDT] ASSISTANT
+Now refresh STATUS.md and commit:
+
+### [2026-09-06 07:20:28 MDT] ASSISTANT
+Now refresh STATUS.md and commit:
+
+### [2026-09-06 07:48:32 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-06 08:18:17 MDT] ASSISTANT
+Committed. Now push:
