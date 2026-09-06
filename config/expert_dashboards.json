@@ -16299,5 +16299,23 @@
     "name": "Hereditary-Spastic-Paraplegia-Atlas Complete-8-Gene-Hereditary-Spastic-Paraplegia-Atlas SPAST-616aa-2p22.3-AD-SPG4-Most-Common-40pct-Incomplete-Penetrance-Microtubule-Severing ATL1-558aa-14q22.1-AD-SPG3A-Childhood-Onset-Pure-HSP-Mild-ER-Fusion REEP1-201aa-2p11.2-AD-SPG31-ER-Tubule-Shaping-CMT2B5-Overlap SPG11-2443aa-15q21.1-AR-Most-Common-AR-HSP-TCC-Intellectual-Disability-Spatacsin ZFYVE26-2539aa-14q24.1-AR-SPG15-Kjellin-Macular-Degeneration-Annual-Fundus CYP7B1-506aa-8q12.3-AR-SPG5A-Oxysterol-Accumulation-CDCA-Therapy KIF1A-1826aa-2q37.3-AR-SPG30-AD-KAND-Kinesin-Motor-AR-vs-AD-Different-Prognosis DDHD2-711aa-8p11.23-AR-SPG54-Brain-Lipid-Droplets-MRS-1.3ppm-Pathognomonic 320-Patient-Aggregate-8x40-seeds-1446-1453",
     "status": "built",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-primary-lymphedema-atlas",
+    "name": "Hereditary-Primary-Lymphedema-Atlas Complete-8-Gene-Hereditary-Primary-Lymphedema-Atlas FLT4-1363aa-5q35.3-AD-Milroy-PCL1-Dominant-Negative-TK-Domain-Congenital-Onset FOXC2-501aa-16q24.1-AD-LDS-Distichiasis-Pathognomonic-Pubertal-Onset-Corneal-Scarring-Risk PROX1-737aa-1q32.3-AD-HLTS-Master-LEC-Fate-Regulator-Hypotrichosis-Lymphedema-Telangiectasia GJC2-436aa-1q42.13-AR-Late-Onset-Lymphedema-SPG44-Leukodystrophy-Biallelic-LOF-Brain-MRI SOX18-384aa-20q13.33-AD-HLTRS-Ragged-HMG-Box-Dominant-Negative-Renal-Anomalies-30pct-Annual-US CCBE1-429aa-18q21.32-AR-Hennekam-HLS1-Intestinal-Lymphangiectasia-Protein-Losing-Enteropathy-ID-50pct-MCT ADAMTS3-1232aa-4q13.3-AR-Hennekam-HLS3-VEGFC-Activating-Protease-Phenocopy-CCBE1-Test-Both-Simultaneously KIF11-1056aa-10q23.33-AD-MCLMR-Microcephaly-Chorioretinopathy-Lymphedema-De-Novo-OCT-Mandatory 320-Patient-Aggregate-8x40-seeds-1454-1461",
+    "status": "built",
+    "category": "Atlas",
+    "route": "/hereditary-primary-lymphedema-atlas",
+    "api_endpoints": [
+      "/api/hereditary-primary-lymphedema-atlas/overview",
+      "/api/hereditary-primary-lymphedema-atlas/breakdown",
+      "/api/hereditary-primary-lymphedema-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/hereditary-primary-lymphedema-atlas/page.jsx",
+    "script": "scripts/hereditary_primary_lymphedema_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "1454-1461",
+    "registered": "2026-09-05",
+    "notes": "Complete 8-gene primary lymphedema atlas. FLT4/VEGFR3 Milroy congenital; FOXC2 distichiasis-lymphedema pubertal; PROX1 HLTS master LEC fate; GJC2 late-onset AR + SPG44 biallelic LOF; SOX18 HLTRS ragged dominant negative renal; CCBE1+ADAMTS3 Hennekam HLS1+HLS3 intestinal lymphangiectasia MCT diet; KIF11 MCLMR microcephaly chorioretinopathy de novo."
   }
 ]

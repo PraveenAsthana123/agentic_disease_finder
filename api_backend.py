@@ -45189,6 +45189,36 @@ async def hereditary_spastic_paraplegia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-primary-lymphedema-atlas/overview")
+async def hereditary_primary_lymphedema_atlas_overview():
+    """Hereditary-Primary-Lymphedema-Atlas aggregate overview (FLT4-1363aa-5q35.3-AD-Milroy-PCL1-dominant-negative-TK-domain-congenital-onset, FOXC2-501aa-16q24.1-AD-LDS-distichiasis-pathognomonic-pubertal-onset-corneal-risk, PROX1-737aa-1q32.3-AD-HLTS-master-LEC-fate-hypotrichosis-lymphedema-telangiectasia, GJC2-436aa-1q42.13-AR-late-onset-lymphedema-SPG44-leukodystrophy-biallelic-LOF, SOX18-384aa-20q13.33-AD-HLTRS-ragged-dominant-negative-HMG-box-renal-anomalies-30pct, CCBE1-429aa-18q21.32-AR-Hennekam-HLS1-intestinal-lymphangiectasia-protein-losing-enteropathy-ID-50pct, KIF11-1056aa-10q23.33-AD-MCLMR-microcephaly-chorioretinopathy-lymphedema-de-novo, ADAMTS3-1232aa-4q13.3-AR-Hennekam-HLS3-VEGF-C-activating-protease-phenocopy-CCBE1)."""
+    try:
+        import scripts.hereditary_primary_lymphedema_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-primary-lymphedema-atlas/breakdown")
+async def hereditary_primary_lymphedema_atlas_breakdown():
+    """Hereditary-Primary-Lymphedema-Atlas per-gene breakdown (FLT4-lymphoscintigraphy-absent-lymphatics-compression-lifelong, FOXC2-distichiasis-ophthalmology-corneal-scarring-varicose-veins-cardiac-7pct, PROX1-triad-incomplete-60pct-telangiectasia-mucosa-buccal, GJC2-M283T-R260C-hotspot-biallelic-brain-MRI-CNS, SOX18-ragged-HMG-box-dominant-negative-renal-ultrasound-annual, CCBE1-MCT-diet-albumin-octreotide-ID-50pct-consanguinity, KIF11-de-novo-trio-exome-chorioretinopathy-macular-hypoplasia-OCT, ADAMTS3-simultaneous-CCBE1-panel-MCT-diet-VEGFC-activation)."""
+    try:
+        import scripts.hereditary_primary_lymphedema_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-primary-lymphedema-atlas/definitions")
+async def hereditary_primary_lymphedema_atlas_definitions():
+    """Hereditary-Primary-Lymphedema-Atlas clinical definitions (primary-lymphedema-classification-congenital-praecox-tarda, VEGFC-VEGFR3-signalling-axis-lymphangiogenesis-core-pathway, distichiasis-FOXC2-pathognomonic-slit-lamp-corneal-risk, intestinal-lymphangiectasia-Hennekam-protein-losing-enteropathy-CCBE1-ADAMTS3, Milroy-FLT4-dominant-negative-TK-kinase-lymphoscintigraphy, GJC2-dual-phenotype-lymphedema-SPG44-leukodystrophy-brain-MRI, MCLMR-KIF11-microcephaly-chorioretinopathy-ophthalmology-mandatory, MCT-diet-intestinal-lymphangiectasia-bypass-lacteals, PROX1-master-LEC-fate-regulator-SOX18-upstream, compression-therapy-CDT-lifelong-primary-lymphedema, cascade-testing-AD-AR-primary-lymphedema)."""
+    try:
+        import scripts.hereditary_primary_lymphedema_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
