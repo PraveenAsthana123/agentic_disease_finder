@@ -16894,5 +16894,32 @@
     "seed_range": "1678-1685",
     "built_date": "2026-09-06",
     "description": "Complete 8-gene hereditary iron overload atlas: HH1/JH2A/JH2B/HH3/HH4/Aceruloplasminemia/HHCS/BMP6-HH"
+  },
+  {
+    "id": "hereditary-pheo-pgl-atlas",
+    "title": "Hereditary-Pheo-PGL-Atlas Complete-8-Gene-Hereditary-Pheochromocytoma-Paraganglioma-Atlas SDHB-280aa-1p36.13-AD-SDH4-Most-Aggressive-40pct-Malignant SDHD-159aa-11q23.1-AD-Paternal-Imprinting-Head-Neck-PGL VHL-213aa-3p25.3-AD-Bilateral-Adrenal-Pheo-RCC-Belzutifan RET-1114aa-10q11.21-AD-GOF-MEN2A-MEN2B-MTC-Pheo NF1-2818aa-17q11.2-AD-Cafe-au-Lait-Epinephrine-Secreting MAX-151aa-14q23.3-AD-Paternal-Imprinting-Bilateral-Adrenal-Young-Onset SDHA-664aa-5p15.33-AR-AD-SDH5-Pituitary-Adenoma-UNIQUE SDHC-169aa-1q23.3-AD-Head-Neck-PGL-Gastric-GIST-UNIQUE 320-Patient-Aggregate-8x40-seeds-1686-1693",
+    "status": "built",
+    "category": "hereditary-cancer",
+    "route": "/hereditary-pheo-pgl-atlas",
+    "api_base": "/api/hereditary-pheo-pgl-atlas",
+    "endpoints": [
+      "overview",
+      "breakdown",
+      "definitions"
+    ],
+    "patients": 320,
+    "genes": [
+      "SDHB",
+      "SDHD",
+      "VHL",
+      "RET",
+      "NF1",
+      "MAX",
+      "SDHA",
+      "SDHC"
+    ],
+    "seed_range": "1686-1693",
+    "built_date": "2026-09-06",
+    "description": "Complete 8-gene hereditary pheochromocytoma-paraganglioma atlas: SDHB/SDHD/VHL/RET/NF1/MAX/SDHA/SDHC"
   }
 ]
