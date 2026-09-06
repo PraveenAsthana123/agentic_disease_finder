@@ -33562,3 +33562,46 @@ All 3 endpoints return 200. Now refresh STATUS.md and commit:
 
 ### [2026-09-06 08:18:17 MDT] ASSISTANT
 Committed. Now push:
+
+### [2026-09-06 08:48:42 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-06 09:03:04 MDT] ASSISTANT
+The BUILDABLE queue in `scripts/next_pending.py` has only one item remaining: the ictal/interictal retrain, which the instructions say to skip. After skipping, the queue is exhausted. Blocked items require operator credentials.
+
+### [2026-09-06 09:22:46 MDT] ASSISTANT
+STATUS.md now shows **1068 expert dashboards** (up from 1065). All 3 are now registered.
+
+### [2026-09-06 09:49:13 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built & pushed: `Hereditary-Amyloidosis-Atlas`**
+
+| Item | Detail |
+|---|---|
+| Atlas | Complete 8-Gene Hereditary Systemic Amyloidosis |
+| Genes | TTR · APOA1 · APOA2 · FGA · LYZ · CST3 · GSN · B2M |
+| Seeds | 1622–1629 (8×40 = 320 patients) |
+| Endpoints | `/api/hereditary-amyloidosis-atlas/overview\|breakdown\|definitions` — all 200 ✅ |
+| Script | `scripts/hereditary_amyloidosis_atlas_dashboard.py` |
+| Page | `portal-next/app/hereditary-amyloidosis-atlas/page.jsx` |
+| Registry | `expert_dashboards.json` 1068→1069 |
+| SiteNav | Wired after Hereditary-Angioedema-Atlas |
+| Pushed | `main` @ `500a7879` |
+
+Clinical highlights wired: TTR-Val122Ile African-American under-diagnosis, carpal tunnel as early ATTRv sign, inotersen REMS thrombocytopenia, FGA liver transplant curative, LYZ hepatic rupture emergency, CST3-L68Q young cerebral haemorrhage + anticoagulation CI, GSN corneal lattice type II PATHOGNOMONIC + facial palsy, B2M-D76N distinct from dialysis-related amyloidosis.
+
+### [2026-09-06 10:15:23 MDT] ASSISTANT
+Now push and track:
+
+### [2026-09-06 10:47:45 MDT] ASSISTANT
+STATUS.md updated: 1071 expert dashboards. Now commit:
+
+### [2026-09-06 11:15:33 MDT] ASSISTANT
+All 3 endpoints return 200. Now update next_pending.py, refresh STATUS.md, and commit:
+
+### [2026-09-06 11:51:37 MDT] ASSISTANT
+All 3 endpoints → 200. Now commit:
+
+### [2026-09-06 12:15:37 MDT] ASSISTANT
+Now push and track:

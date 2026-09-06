@@ -16823,5 +16823,27 @@
     "api_prefix": "/api/hereditary-cardiac-arrhythmia-atlas",
     "page": "/hereditary-cardiac-arrhythmia-atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-amyloidosis-atlas",
+    "title": "Hereditary-Amyloidosis-Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Systemic Amyloidosis Atlas — TTR/APOA1/APOA2/FGA/LYZ/CST3/GSN/B2M",
+    "category": "hereditary-atlas",
+    "genes": [
+      "TTR",
+      "APOA1",
+      "APOA2",
+      "FGA",
+      "LYZ",
+      "CST3",
+      "GSN",
+      "B2M"
+    ],
+    "patients": 320,
+    "seeds": "1622-1629",
+    "status": "built",
+    "api_prefix": "/api/hereditary-amyloidosis-atlas",
+    "page": "/hereditary-amyloidosis-atlas",
+    "registered": "2026-09-06"
   }
 ]
