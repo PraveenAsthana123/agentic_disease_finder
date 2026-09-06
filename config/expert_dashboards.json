@@ -16202,5 +16202,26 @@
     "seeds": "1390-1397",
     "n_patients": 320,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "connective-tissue-atlas",
+    "title": "Connective-Tissue-Atlas Complete-8-Gene-Hereditary-Connective-Tissue-Disorders-Atlas",
+    "route": "/connective-tissue-atlas",
+    "api_prefix": "/api/connective-tissue-atlas",
+    "category": "hereditary-connective-tissue",
+    "genes": [
+      "COL5A1",
+      "COL3A1",
+      "TNXB",
+      "PLOD1",
+      "ADAMTS2",
+      "FBN1",
+      "TGFBR2",
+      "ACTA2"
+    ],
+    "n_patients": 320,
+    "seed_range": "1398-1405",
+    "built": "2026-09-05",
+    "status": "built"
   }
 ]

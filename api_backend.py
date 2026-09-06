@@ -44979,6 +44979,36 @@ async def hereditary_ataxia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/connective-tissue-atlas/overview")
+async def connective_tissue_atlas_overview():
+    """Connective-Tissue-Atlas overview (COL5A1-cEDS-haploinsufficiency-atrophic-scars, COL3A1-vEDS-arterial-rupture-celiprolol-avoid-angioscopy, TNXB-clEDS-low-tenascin-X-no-atrophic-scars, PLOD1-kEDS-neonatal-kyphoscoliosis-ocular-fragility-pyridoxine, ADAMTS2-dEDS-extreme-skin-fragility-hieroglyphic-EM-fibrils, FBN1-Marfan-losartan-ectopia-lentis-upward-4.5cm, TGFBR2-LDS2-bifid-uvula-4.0cm-aggressive, ACTA2-MSMD-iris-flocculi-moya-moya, 320-patients-8x40-seeds-1398-1405)."""
+    try:
+        import scripts.connective_tissue_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/connective-tissue-atlas/breakdown")
+async def connective_tissue_atlas_breakdown():
+    """Connective-Tissue-Atlas per-gene breakdown (COL5A1-cEDS, COL3A1-vEDS, TNXB-clEDS, PLOD1-kEDS, ADAMTS2-dEDS, FBN1-Marfan, TGFBR2-LDS2, ACTA2-MSMD-FTAAD6, 40-patients-per-gene, seeds-1398-1405)."""
+    try:
+        import scripts.connective_tissue_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/connective-tissue-atlas/definitions")
+async def connective_tissue_atlas_definitions():
+    """Connective-Tissue-Atlas clinical definitions (COL3A1-avoid-colonoscopy-angiography, PLOD1-pyridoxine-B6-trial-mandatory-30pct-respond, FBN1-losartan-level-A, TGFBR2-surgery-4.0cm-not-4.5cm, ACTA2-iris-flocculi-pathognomonic, TNXB-low-serum-tenascin-X-diagnostic, cascade-testing)."""
+    try:
+        import scripts.connective_tissue_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
