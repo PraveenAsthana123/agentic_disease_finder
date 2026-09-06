@@ -45770,6 +45770,30 @@ async def hereditary_amyloidosis_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/hereditary-hboc-atlas/overview")
+async def hereditary_hboc_atlas_overview():
+    try:
+        import scripts.hereditary_hboc_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-hboc-atlas/breakdown")
+async def hereditary_hboc_atlas_breakdown():
+    try:
+        import scripts.hereditary_hboc_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-hboc-atlas/definitions")
+async def hereditary_hboc_atlas_definitions():
+    try:
+        import scripts.hereditary_hboc_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os

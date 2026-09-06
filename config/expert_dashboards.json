@@ -16739,5 +16739,13 @@
       1629
     ],
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-hboc-atlas",
+    "name": "Hereditary-HBOC-Atlas Complete-8-Gene-Hereditary-Breast-Ovarian-Cancer-Atlas BRCA1-1863aa-17q21.31-AD-HBOC1-70pct-Breast-46pct-Ovarian-TripleNeg-Olaparib-Talazoparib-BSO-Age35-40 BRCA2-3418aa-13q12.3-AD-HBOC2-69pct-Breast-25pct-Ovarian-ER+-MaleBreast5-7pct-Pancreatic-Prostate-Olaparib-Niraparib PALB2-1186aa-16p12.2-AD-BRCA1-BRCA2-Bridge-35-58pct-Breast-5pct-Ovarian-PARPi-Sensitive-TBCRC048 CHEK2-543aa-22q12.1-AD-Moderate-25-35pct-Breast-c.1100delC-European-NO-RRSO-NO-PARPi-ER-Standard ATM-3056aa-11q22.3-AD-Heterozygous-25-33pct-Breast-RadiationSensitivity-Biallelic-Ataxia-Telangiectasia RAD51C-376aa-17q22-AD-Ovarian-Dominant-10-14pct-Ovarian-3pct-Breast-FANCO-HGSC-PARPi-Platinum RAD51D-328aa-17q12-AD-Ovarian-Dominant-10-13pct-Ovarian-FANCS-PARPi-Platinum BRIP1-1249aa-17q23.2-AD-Ovarian-Moderate-5-10pct-Ovarian-FANCJ-G4-Helicase-Cisplatin-BRCA1-BRCT 320-Patient-Aggregate-8x40-seeds-1630-1637",
+    "status": "built",
+    "category": "hereditary-oncology",
+    "route": "/hereditary-hboc-atlas",
+    "api": "/api/hereditary-hboc-atlas/overview"
   }
 ]
