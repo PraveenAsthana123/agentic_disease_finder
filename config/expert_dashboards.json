@@ -16659,5 +16659,17 @@
     ],
     "frontend_page": "/hereditary-gi-cancer-atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-platelet-disorder-atlas",
+    "name": "Hereditary-Platelet-Disorder-Atlas Complete-8-Gene-Hereditary-Platelet-Disorder-Atlas ITGA2B-1176aa-17q21.31-AR-GlanzmannThrombasthenia1-AbsentClotRetraction-PATHOGNOMONIC-rFVIIa-Inhibitors ITGB3-788aa-17q21.32-AR-GlanzmannThrombasthenia2-HPA1a-NAIT-FirstPregnancy ITGB3-IVIG-HPACompatiblePlatelets GP1BA-626aa-17p13.2-AR-BernardSoulier-GiantPlatelets-PATHOGNOMONIC-AbsentRistocetin-NOT-ITP GP1BB-206aa-22q11.21-AR-BernardSoulierB-22q11Deletion-DiGeorge-MLPA-Mandatory MYH9-1960aa-22q12.3-AD-MYH9RD-DohlelikeNeutrophilInclusions-PATHOGNOMONIC-NOT-ITP ANKRD26-1710aa-10p12.1-AD-Thrombocytopenia2-5UTRVariants-WES-MISS-AML-8pct ETV6-452aa-12p13.2-AD-THC5-ALL-Predisposition-25-35pct-DonorScreening-MANDATORY RUNX1-480aa-21q22.12-AD-FPD-AML-DeltaGranule-AML-MDS-35-44pct-DonorScreening-MANDATORY 320-Patient-Aggregate-8x40-seeds-1606-1613",
+    "route": "/hereditary-platelet-disorder-atlas",
+    "api": "/api/hereditary-platelet-disorder-atlas/overview|breakdown|definitions",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "genes": 8,
+    "patients": 320,
+    "seeds": "1606-1613",
+    "built": "2026-09-06"
   }
 ]
