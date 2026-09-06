@@ -45039,6 +45039,36 @@ async def hereditary_pancreatitis_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-optic-neuropathy-atlas/overview")
+async def hereditary_optic_neuropathy_atlas_overview():
+    """Hereditary-Optic-Neuropathy-Atlas overview (OPA1-3304aa-3q29-AD-ADOA-Centrocecal-Scotoma-OPA1-plus-GTPase-Missense-Syndromic, OPA3-179aa-19q13.32-AR-Costeff-3MGC-Urine-OA-Chorea-Spastic-Paraplegia, MT-ND4-mtDNA-Maternal-LHON-m11778GA-Worst-Prognosis-20pct-Recovery-Idebenone, MT-ND1-mtDNA-Maternal-LHON-m3460GA-LHON-Plus-MS-Like-Lesions, MT-ND6-mtDNA-Maternal-LHON-m14484TC-Best-Prognosis-70pct-Recovery, WFS1-890aa-4p16.1-AR-Wolfram-DIDMOAD-DM-OA-DI-SNHL-Neurogenic-Bladder, TMEM126A-149aa-11q14.1-AR-AROA-North-African-Arg55-Founder, ACO2-780aa-22q13.2-AR-Infantile-OA-Cerebellar-Ataxia-Avoid-Valproate, 320-patients-8x40-seeds-1414-1421)."""
+    try:
+        import scripts.hereditary_optic_neuropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-optic-neuropathy-atlas/breakdown")
+async def hereditary_optic_neuropathy_atlas_breakdown():
+    """Hereditary-Optic-Neuropathy-Atlas per-gene breakdown (OPA1-haploinsufficiency-ADOA-vs-GTPase-missense-OPA1-plus, OPA3-Costeff-3MGC-urine-cheap-diagnostic-Iraqi-Jewish-founder, MT-ND4-m11778-worst-prognosis-idebenone-lenadogene-nolparvovec, MT-ND1-m3460-lhon-plus-MS-like-lesions-brain-MRI, MT-ND6-m14484-best-prognosis-70pct-recovery-youngest-onset, WFS1-DIDMOAD-bladder-surveillance-hydronephrosis-prevent-CKD, TMEM126A-Arg55-North-African-slowly-progressive-pure-OA, ACO2-avoid-valproate-levetiracetam-cerebellar-ataxia-TCA-cycle)."""
+    try:
+        import scripts.hereditary_optic_neuropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-optic-neuropathy-atlas/definitions")
+async def hereditary_optic_neuropathy_atlas_definitions():
+    """Hereditary-Optic-Neuropathy-Atlas clinical definitions (OPA1-GTPase-missense-OPA1-plus-vs-haploinsufficiency, OPA3-3MGC-urine-Costeff-diagnostic, LHON-mtDNA-not-nuclear-DNA, prognosis-mutation-specific-ND4-20pct-ND6-70pct, WFS1-DM-precedes-OA-bladder-annual, TMEM126A-Arg55-North-African-targeted-testing, ACO2-valproate-contraindicated, LHON-Plus-brain-MRI-CNS-MS-like-lesions)."""
+    try:
+        import scripts.hereditary_optic_neuropathy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

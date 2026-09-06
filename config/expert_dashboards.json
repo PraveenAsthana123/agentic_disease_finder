@@ -16245,5 +16245,11 @@
     "built": "2026-09-05",
     "status": "built",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-optic-neuropathy-atlas",
+    "name": "Hereditary-Optic-Neuropathy-Atlas Complete-8-Gene-Hereditary-Optic-Neuropathy-Atlas OPA1-3304aa-3q29-AD-ADOA-Haploinsufficiency-OPA1-plus-GTPase-Missense-Syndromic-Ptosis-CPEO OPA3-179aa-19q13.32-AR-Costeff-3MGC-Urine-OA-Chorea-Spastic-Paraplegia-Iraqi-Jewish-c143-1GA MT-ND4-mtDNA-Maternal-LHON-m11778GA-Most-Common-70pct-Worst-Prognosis-20pct-Recovery-Idebenone-Lumevoq MT-ND1-mtDNA-Maternal-LHON-m3460GA-Second-Primary-13pct-LHON-Plus-MS-Like-CNS-Lesions MT-ND6-mtDNA-Maternal-LHON-m14484TC-Third-Primary-14pct-Best-Prognosis-70pct-Recovery-Youngest WFS1-890aa-4p16.1-AR-Wolfram-DIDMOAD-DM-OA-DI-SNHL-Neurogenic-Bladder-Hydronephrosis-CKD TMEM126A-149aa-11q14.1-AR-AROA-Complex-I-Assembly-North-African-Arg55-Founder-Pure-OA ACO2-780aa-22q13.2-AR-Infantile-OA-Cerebellar-Ataxia-TCA-Cycle-Aconitase-Avoid-Valproate 320-Patient-Aggregate-8x40-seeds-1414-1421",
+    "status": "built",
+    "category": "atlas"
   }
 ]
