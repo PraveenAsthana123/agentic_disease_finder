@@ -45598,6 +45598,31 @@ async def hereditary_endocrine_tumour_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-coagulation-atlas/overview")
+async def hereditary_coagulation_atlas_overview():
+    try:
+        import scripts.hereditary_coagulation_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-coagulation-atlas/breakdown")
+async def hereditary_coagulation_atlas_breakdown():
+    try:
+        import scripts.hereditary_coagulation_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-coagulation-atlas/definitions")
+async def hereditary_coagulation_atlas_definitions():
+    try:
+        import scripts.hereditary_coagulation_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

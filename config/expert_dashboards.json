@@ -16581,5 +16581,26 @@
     "patients": 320,
     "seeds": "1566-1573",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-coagulation-atlas",
+    "title": "Hereditary Coagulation Atlas",
+    "status": "built",
+    "category": "hereditary-disease-atlas",
+    "endpoint": "/api/hereditary-coagulation-atlas/overview",
+    "page": "/hereditary-coagulation-atlas",
+    "genes": [
+      "F8",
+      "F9",
+      "VWF",
+      "F11",
+      "F13A1",
+      "F7",
+      "FGA",
+      "ADAMTS13"
+    ],
+    "n_patients": 320,
+    "seeds": "1574-1581",
+    "built": "2026-09-06"
   }
 ]
