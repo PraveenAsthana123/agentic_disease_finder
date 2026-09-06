@@ -46034,6 +46034,60 @@ async def hereditary_muscular_dystrophy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-lung-disease-atlas/overview")
+async def hereditary_lung_disease_atlas_overview():
+    try:
+        import scripts.hereditary_lung_disease_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-lung-disease-atlas/breakdown")
+async def hereditary_lung_disease_atlas_breakdown():
+    try:
+        import scripts.hereditary_lung_disease_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-lung-disease-atlas/definitions")
+async def hereditary_lung_disease_atlas_definitions():
+    try:
+        import scripts.hereditary_lung_disease_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-als-mnd-atlas/overview")
+async def hereditary_als_mnd_atlas_overview():
+    try:
+        import scripts.hereditary_als_mnd_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-als-mnd-atlas/breakdown")
+async def hereditary_als_mnd_atlas_breakdown():
+    try:
+        import scripts.hereditary_als_mnd_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-als-mnd-atlas/definitions")
+async def hereditary_als_mnd_atlas_definitions():
+    try:
+        import scripts.hereditary_als_mnd_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

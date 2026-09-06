@@ -16949,5 +16949,18 @@
     "category": "Hereditary-Muscular-Dystrophy",
     "api": "/api/hereditary-muscular-dystrophy-atlas/overview",
     "page": "/hereditary-muscular-dystrophy-atlas"
+  },
+  {
+    "id": "hereditary-als-mnd-atlas",
+    "name": "Hereditary-ALS-MND-Atlas Complete-8-Gene-Hereditary-ALS-Motor-Neuron-Disease-Atlas SOD1-153aa-21q22.11-AD-AR-ALS1-A4V-Rapid-<1y-Tofersen-FDA2023-ATLAS-Presymptomatic-Trial TARDBP-414aa-1p36.22-AD-ALS10-TDP43-Cytoplasmic-Inclusions-PATHOGNOMONIC-97pct-Sporadic-ALS-Nuclear-Depletion FUS-526aa-16p11.2-AD-AR-ALS6-Young-Onset-P525L-Juvenile-Lethal-NLS-Mutations-Basophilic-Inclusions C9ORF72-481aa-9p21.2-AD-MOST-COMMON-Familial-ALS-40pct-FTD-25pct-GGGGCC-Repeat-Primed-PCR-Mandatory UBQLN2-624aa-Xp11.21-XD-ALS15-First-X-Linked-ALS-Proteasomal-PXX-Domain-Males-More-Severe VCP-806aa-9p13.3-AD-ALS14-IBMPFD-IBM-90pct-Paget-50pct-FTD-30pct-R155H-TDP43-Steroids-CI OPTN-577aa-10p13-AD-AR-ALS12-Autophagy-Receptor-TBK1-Pair-E478G-Q398X-Slowly-Progressive TBK1-729aa-12q14.2-AD-ALS-FTD-Haploinsufficiency-FTD-40pct-Kinase-Inhibitors-ABSOLUTELY-CI-MLPA-Deletions 320-Patient-Aggregate-8x40-seeds-1710-1717",
+    "route": "/hereditary-als-mnd-atlas",
+    "status": "built",
+    "endpoints": [
+      "/api/hereditary-als-mnd-atlas/overview",
+      "/api/hereditary-als-mnd-atlas/breakdown",
+      "/api/hereditary-als-mnd-atlas/definitions"
+    ],
+    "category": "Hereditary ALS/MND Atlas",
+    "registered": "2026-09-06"
   }
 ]
