@@ -16747,5 +16747,17 @@
     "category": "hereditary-oncology",
     "route": "/hereditary-hboc-atlas",
     "api": "/api/hereditary-hboc-atlas/overview"
+  },
+  {
+    "id": "hereditary-prostate-cancer-atlas",
+    "name": "Hereditary-Prostate-Cancer-Atlas Complete-8-Gene-Hereditary-Prostate-Cancer-Atlas BRCA2-3418aa-13q12.3-AD-HPCA1-15-20x-Prostate-RR-PROfound-Olaparib-FDA2020-PSMA-PET-Mandatory ATM-3056aa-11q22.3-AD-HPCA2-2-4x-PROfound-Olaparib-Modest-HR-0.72-Radiation-Sensitivity CHEK2-543aa-22q12.1-AD-HPCA3-2-3x-c.1100delC-European-NO-PARPi HOXB13-284aa-17q21.32-AD-HPCA4-G84E-Founder-Scandinavian-4-8x-Prostate-Only-No-Targeted-Therapy MSH2-934aa-2p21-AD-HPCA5-Lynch-5-10x-dMMR-Pembrolizumab-mPRIMO BRCA1-1863aa-17q21.31-AD-HPCA6-2-3x-PARPi-Less-Effective-HR-0.82-Female-HBOC PALB2-1186aa-16p12.2-AD-HPCA7-Emerging-2-4x-PARPi-Sensitive-BRCA1-BRCA2-Bridge NBN-754aa-8q21.3-HPCA8-657del5-Slavic-Founder-3-4x-Prostate-RR-MRN-Complex 320-Patient-Aggregate-8x40-seeds-1638-1645",
+    "status": "built",
+    "route": "/hereditary-prostate-cancer-atlas",
+    "api": "/api/hereditary-prostate-cancer-atlas/overview|breakdown|definitions",
+    "category": "hereditary-cancer",
+    "genes": 8,
+    "patients": 320,
+    "seeds": "1638-1645",
+    "built": "2026-09-06"
   }
 ]
