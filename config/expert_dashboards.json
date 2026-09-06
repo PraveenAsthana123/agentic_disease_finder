@@ -16526,5 +16526,15 @@
     "patients": 320,
     "seeds": "1534-1541",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-connective-tissue-atlas",
+    "name": "Hereditary Connective Tissue Disorders Atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "route": "/hereditary-connective-tissue-atlas",
+    "api": "/api/hereditary-connective-tissue-atlas",
+    "description": "Complete 8-Gene Hereditary Connective Tissue Disorder Atlas: FBN1 (Marfan) TGFBR1 (LDS1) TGFBR2 (LDS2) COL3A1 (vEDS) COL5A1 (Classical EDS) ACTA2 (HTAD) MYH11 (HTAD+PDA) SMAD3 (LDS3/AOS). 320 patients (8x40, seeds 1542-1549).",
+    "built_date": "2026-09-06"
   }
 ]
