@@ -16680,5 +16680,32 @@
     "api": "/api/hereditary-angioedema-atlas/overview|breakdown|definitions",
     "seeds": "1614-1621",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-epilepsy-atlas",
+    "name": "Hereditary-Epilepsy-Atlas Complete-8-Gene-Hereditary-Monogenic-Epilepsy-Atlas SCN1A-1998aa-2q24.3-AD-Dravet-AVOID-CBZ-LTG-PHT-Stiripentol-Cannabidiol-Fenfluramine-SUDEP-HIGHEST-RISK SCN2A-2005aa-2q24.3-AD-GOF-Early-less-3m-CBZ-HIGHLY-EFFECTIVE-LOF-Late-more-3m-CBZ-HARMFUL-Age-Onset-Pharmacogenomic SCN8A-1980aa-12q13.13-AD-DEE-GOF-Phenytoin-CBZ-HIGHLY-EFFECTIVE-OPPOSITE-SCN1A-Asn1768Asp-Hotspot KCNQ2-872aa-20q13.33-AD-BFNE-DEE-M-Current-CBZ-Neonatal-Window-SNHL-Screen CDKL5-1030aa-Xp22.13-XLD-CDD-Onset-less-5m-Ganaxolone-FDA-2022-Ketogenic-Diet-NOT-MECP2-Rett PCDH19-1148aa-Xq22.1-XLD-Female-Epilepsy-CELLULAR-INTERFERENCE-Unaffected-Carrier-Males-Mosaic-Males-Affected KCNT1-1257aa-9q34.3-AD-EIMFS-Quinidine-GOF-QTc-MANDATORY SLC6A1-797aa-3p25.3-AD-MAE-Doose-AVOID-CBZ-LTG-VGB-Tiagabine-Valproate-KD-Drop-Attack-Helmet-MANDATORY 320-Patient-Aggregate-8x40-seeds-1486-1493",
+    "status": "built",
+    "route": "/hereditary-epilepsy-atlas",
+    "api": "/api/hereditary-epilepsy-atlas/overview|breakdown|definitions",
+    "seeds": "1486-1493",
+    "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-parkinsons-atlas",
+    "name": "Hereditary-Parkinsons-Atlas Complete-8-Gene-Hereditary-Parkinsons-Disease-Atlas LRRK2-2527aa-12q12-AD-PARK8-Gly2019S-Kinase-Inhibitor-Trials-Ashkenazi-North-African-Mandatory PRKN-465aa-6q25.2-AR-PARK2-Most-Common-AR-PD-MLPA-MANDATORY-Exon-Rearrangements-50pct-Missed PINK1-581aa-1p36.12-AR-PARK6-Mitophagy-PINK1-Parkin-Pathway-Exercise-Therapeutic SNCA-140aa-4q22.1-AD-PARK1-Duplication-Mild-Triplication-Severe-Dementia-Anti-Synuclein-Trials DJ1-189aa-1p36.23-AR-PARK7-Rare-Mild-Tremor-L166P-Oxidative-Stress-Sensor GBA-497aa-1q22-Most-Common-PD-Risk-Gene-Heterozygous-5-8x-Risk-NOT-Gaucher-Ambroxol-Trial VPS35-796aa-16q11.2-AD-PARK17-D620N-Sole-Variant-Retromer-Complex-Late-Onset ATP13A2-1180aa-1p36.13-AR-PARK9-Kufor-Rakeb-MRI-Iron-PATHOGNOMONIC-Pyramidal-Supranuclear-Gaze 320-Patient-Aggregate-8x40-seeds-1502-1509",
+    "status": "built",
+    "route": "/hereditary-parkinsons-atlas",
+    "api": "/api/hereditary-parkinsons-atlas/overview|breakdown|definitions",
+    "seeds": "1502-1509",
+    "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-cardiomyopathy-atlas",
+    "name": "Hereditary-Cardiomyopathy-Atlas Complete-8-Gene-Hereditary-Cardiomyopathy-Atlas MYBPC3-1274aa-11p11.2-AD-HCM-Most-Common-35-40pct-Haploinsufficiency-Mavacamten-FDA-2022 MYH7-1935aa-14q11.2-AD-HCM-2nd-Most-Common-Dominant-Negative-Arg403Gln-Malignant TNNT2-288aa-1q32.1-AD-HCM-Arg92Trp-High-SCD-Mild-LVH-Dual-HCM-DCM LMNA-664aa-1q22-AD-DCM-CCD-ICD-Padua-Score-4-Regardless-LVEF-Non-Missense-Highest-Risk SCN5A-2016aa-3p22.2-AD-Brugada-Flecainide-ABSOLUTE-CI-LQTS3-Mexiletine-Fever-Trigger DSP-2871aa-6p24.3-AD-ARVC-Left-Dominant-Woolly-Hair-Keratoderma-PATHOGNOMONIC-Carvajal-Biallelic PKP2-837aa-12p11.21-AD-ARVC-Most-Common-40pct-Epsilon-Wave-LBBB-VT-Exercise-ABSOLUTE-Prohibition PLN-52aa-6q22.31-AD-DCM-Arg14del-Dutch-Belgian-Founder-SERCA2a-Inhibition-ICD-Transplant 320-Patient-Aggregate-8x40-seeds-1518-1525",
+    "status": "built",
+    "route": "/hereditary-cardiomyopathy-atlas",
+    "api": "/api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions",
+    "seeds": "1518-1525",
+    "registered": "2026-09-06"
   }
 ]
