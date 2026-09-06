@@ -45129,6 +45129,36 @@ async def hereditary_hearing_loss_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-bmf-atlas/overview")
+async def hereditary_bmf_atlas_overview():
+    """Hereditary-BMF-Atlas overview (FANCA-1455aa-16q24.3-AR-FA-Most-Common-60-70pct-DEB-Test-RIC-Mandatory, FANCD2-1451aa-3p25.3-AR-Central-FA-Node-K561-Monoubiquitination-VACTERL-Severe, DKC1-514aa-Xq28-XL-DC-Triad-Telomere-1pctile-PF-ABSOLUTE-CI-HSCT, TERC-451nt-3q26.2-AD-DC-Anticipation-Androgen-Responsive, TERT-1132aa-5p15.33-AD-AR-Liver-Cirrhosis-IPF-Dominant-TBD, ELANE-267aa-19p13.3-AD-SCN-Cyclic-Neutropenia-GCSF-Standard-AML-Surveillance, SBDS-250aa-7q11.21-AR-Shwachman-Diamond-EPI-PERT-Mandatory-Gene-Conversion, GATA2-480aa-3q21.3-AD-MonoMAC-Monocytes-10-Pathognomonic-HSCT-Curative, 320-patients-8x40-seeds-1438-1445)."""
+    try:
+        import scripts.hereditary_bmf_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-bmf-atlas/breakdown")
+async def hereditary_bmf_atlas_breakdown():
+    """Hereditary-BMF-Atlas per-gene breakdown (FANCA-DEB-fragility-mandatory-before-NGS-mosaic-reversion-false-negative, FANCD2-K561-monoubiquitination-central-node-VACTERL-38pct-severe, DKC1-triad-nail-leukoplakia-pigmentation-PF-absolute-CI-HSCT-androgen-55pct, TERC-anticipation-grandparents-mild-grandchildren-severe-danazol-70pct, TERT-cryptogenic-cirrhosis-IPF-5-8pct-liver-transplant-screen, ELANE-SCN-vs-cyclic-neutropenia-biweekly-ANC-6-8wks, SBDS-gene-conversion-SBDSP1-75pct-standard-NGS-misses-PERT-mandatory, GATA2-monocytes-below-10-pathognomonic-MonoMAC-MDS-82pct-HSCT-curative)."""
+    try:
+        import scripts.hereditary_bmf_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-bmf-atlas/definitions")
+async def hereditary_bmf_atlas_definitions():
+    """Hereditary-BMF-Atlas clinical definitions (FA-DEB-MMC-fragility-radial-chromosomes, telomere-biology-disorder-flow-FISH-1pctile, TERC-anticipation-generational-worsening, GATA2-MonoMAC-monocytopenia-pathognomonic, SBDS-gene-conversion-SBDSP1-dedicated-analysis, ELANE-SCN-vs-cyclic-ANC-biweekly-6wks, RIC-mandatory-FA-alkylator-lethal, PF-absolute-CI-HSCT-telomere-disorders, cascade-testing-inherited-BMF)."""
+    try:
+        import scripts.hereditary_bmf_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -16279,5 +16279,19 @@
       "CDH23",
       "PCDH15"
     ]
+  },
+  {
+    "id": "hereditary-bmf-atlas",
+    "name": "Hereditary-BMF-Atlas Complete-8-Gene-Hereditary-Bone-Marrow-Failure-Syndromes-Atlas FANCA-1455aa-16q24.3-AR-FA-Most-Common-60-70pct-DEB-Test-RIC-Mandatory FANCD2-1451aa-3p25.3-AR-Central-FA-Node-K561-VACTERL TERC-451nt-3q26.2-AD-DC-Anticipation-Androgen-Responsive TERT-1132aa-5p15.33-AD-AR-Liver-IPF-Dominant ELANE-267aa-19p13.3-AD-SCN-Cyclic-GCSF-Standard SBDS-250aa-7q11.21-AR-Shwachman-Diamond-EPI-PERT GATA2-480aa-3q21.3-AD-MonoMAC-HSCT-Curative",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-bmf-atlas/overview",
+      "/api/hereditary-bmf-atlas/breakdown",
+      "/api/hereditary-bmf-atlas/definitions"
+    ],
+    "page": "/hereditary-bmf-atlas",
+    "seeds": "1438-1445",
+    "n_patients": 320,
+    "registered": "2026-09-05"
   }
 ]
