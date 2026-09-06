@@ -45009,6 +45009,36 @@ async def connective_tissue_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-pancreatitis-atlas/overview")
+async def hereditary_pancreatitis_atlas_overview():
+    """Hereditary-Pancreatitis-Atlas overview (PRSS1-247aa-7q35-AD-HP-R122H-N29I-GOF-Trypsin-Autolysis-40pct-PDAC-Annual-MRI, SPINK1-79aa-5q32-AR-modifier-N34S-Risk-3x-NOT-Causal-Alone, CTRC-271aa-1p36.21-AR-CP-Chymotrypsin-C-LOF-Fails-Cleave-Trypsin-Arg122, CPA1-419aa-7q32.2-AD-HP-Misfolding-ER-Stress-DDIT3-NOT-Trypsin, CFTR-1480aa-7q31.2-AR-CFTR-P-Compound-Heterozygote-Borderline-Sweat, CLDN2-211aa-Xq22.3-XL-Alcoholic-P-Hemizygous-Males-5x, CEL-722aa-9q34.13-AD-MODY8-EPI-CEL-HYB-VNTR-Required, CASR-1078aa-3q21.1-AD-Hypercalc-P-Cinacalcet, 320-patients-8x40-seeds-1406-1413)."""
+    try:
+        import scripts.hereditary_pancreatitis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pancreatitis-atlas/breakdown")
+async def hereditary_pancreatitis_atlas_breakdown():
+    """Hereditary-Pancreatitis-Atlas per-gene breakdown (PRSS1-trypsin-GOF-40pct-PDAC-annual-MRI-smoking-cessation, SPINK1-N34S-modifier-not-causal-alone-2nd-hit-required, CTRC-chymotrypsin-C-LOF-trypsin-accumulates-A73T-G61del, CPA1-ER-stress-DDIT3-CHOP-misfolding-NOT-trypsin, CFTR-compound-het-borderline-sweat-bicarbonate-failure, CLDN2-Xq22.3-hemizygous-male-only-alcoholic-pancreatitis, CEL-MODY8-VNTR-dual-EPI-diabetes-failure, CASR-hypercalcemia-cinacalcet-treat-Ca-first)."""
+    try:
+        import scripts.hereditary_pancreatitis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pancreatitis-atlas/definitions")
+async def hereditary_pancreatitis_atlas_definitions():
+    """Hereditary-Pancreatitis-Atlas clinical definitions (PRSS1-hotspot-first-full-sequencing-if-negative, SPINK1-N34S-modifier-not-pathogenic, CPA1-ER-stress-not-trypsin-DDIT3, CEL-HYB-VNTR-standard-sequencing-misses, CFTR-P-sweat-test-borderline-not-classic-CF, CLDN2-male-only-hemizygous-female-protected, CASR-treat-hypercalcemia-first-cinacalcet-FHH-not-surgery, cascade-testing)."""
+    try:
+        import scripts.hereditary_pancreatitis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

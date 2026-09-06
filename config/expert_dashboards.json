@@ -16223,5 +16223,27 @@
     "seed_range": "1398-1405",
     "built": "2026-09-05",
     "status": "built"
+  },
+  {
+    "id": "hereditary-pancreatitis-atlas",
+    "title": "Hereditary-Pancreatitis-Atlas Complete-8-Gene-Hereditary-Pancreatitis-and-Exocrine-Pancreatic-Insufficiency-Atlas PRSS1-247aa-7q35-AD-HP-R122H-N29I-GOF-Trypsin-Autoactivation SPINK1-79aa-5q32-AR-modifier-N34S-Risk-3x-NOT-Causal-Alone CTRC-271aa-1p36.21-AR-CP-Chymotrypsin-C-LOF CPA1-419aa-7q32.2-AD-HP-ER-Stress-Misfolding CFTR-1480aa-7q31.2-AR-CFTR-P-Compound-Heterozygote-Borderline-Sweat CLDN2-211aa-Xq22.3-XL-Alcoholic-P-Hemizygous-Males-5x CEL-722aa-9q34.13-AD-MODY8-EPI-CEL-HYB-VNTR-Required CASR-1078aa-3q21.1-AD-Hypercalc-P-Cinacalcet-Treat-Ca-First 320-Patient-Aggregate-8x40-seeds-1406-1413",
+    "route": "/hereditary-pancreatitis-atlas",
+    "api_prefix": "/api/hereditary-pancreatitis-atlas",
+    "category": "atlas",
+    "genes": [
+      "PRSS1",
+      "SPINK1",
+      "CTRC",
+      "CPA1",
+      "CFTR",
+      "CLDN2",
+      "CEL",
+      "CASR"
+    ],
+    "n_patients": 320,
+    "seed_range": "1406-1413",
+    "built": "2026-09-05",
+    "status": "built",
+    "registered": "2026-09-05"
   }
 ]
