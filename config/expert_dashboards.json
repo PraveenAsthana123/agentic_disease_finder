@@ -16602,5 +16602,26 @@
     "n_patients": 320,
     "seeds": "1574-1581",
     "built": "2026-09-06"
+  },
+  {
+    "id": "hereditary-liver-disease-atlas",
+    "page": "/hereditary-liver-disease-atlas",
+    "title": "Hereditary-Liver-Disease-Atlas \u2014 Complete 8-Gene Hereditary Liver Disease Atlas",
+    "category": "Hereditary Liver Disease Atlas",
+    "status": "built",
+    "genes": [
+      "ATP7B",
+      "HFE",
+      "SERPINA1",
+      "JAG1",
+      "ATP8B1",
+      "ABCB11",
+      "ABCB4",
+      "ALDOB"
+    ],
+    "n_patients": 320,
+    "seeds": "1582-1589",
+    "api": "/api/hereditary-liver-disease-atlas/overview|breakdown|definitions",
+    "registered": "2026-09-06"
   }
 ]

@@ -45622,6 +45622,30 @@ async def hereditary_coagulation_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/hereditary-liver-disease-atlas/overview")
+async def hereditary_liver_disease_atlas_overview():
+    try:
+        import scripts.hereditary_liver_disease_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-liver-disease-atlas/breakdown")
+async def hereditary_liver_disease_atlas_breakdown():
+    try:
+        import scripts.hereditary_liver_disease_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-liver-disease-atlas/definitions")
+async def hereditary_liver_disease_atlas_definitions():
+    try:
+        import scripts.hereditary_liver_disease_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
