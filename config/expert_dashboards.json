@@ -16771,5 +16771,35 @@
     "patients": 320,
     "seeds": "1646-1653",
     "built": "2026-09-06"
+  },
+  {
+    "id": "hereditary-renal-cancer-atlas",
+    "name": "Hereditary-Renal-Cancer-Atlas \u2014 Complete 8-Gene Hereditary Renal Cell Carcinoma Atlas",
+    "route": "/hereditary-renal-cancer-atlas",
+    "status": "built",
+    "category": "hereditary-oncology",
+    "api": "/api/hereditary-renal-cancer-atlas/overview|breakdown|definitions",
+    "genes": [
+      "VHL",
+      "SDHB",
+      "FH",
+      "FLCN",
+      "MET",
+      "BAP1",
+      "SDHA",
+      "PTEN"
+    ],
+    "patients": 320,
+    "seeds": [
+      1654,
+      1655,
+      1656,
+      1657,
+      1658,
+      1659,
+      1660,
+      1661
+    ],
+    "registered": "2026-09-06"
   }
 ]
