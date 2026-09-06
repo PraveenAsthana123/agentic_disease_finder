@@ -16482,5 +16482,24 @@
     "seeds": "1510-1517",
     "registered": "2026-09-06",
     "category": "Hereditary Thrombophilia"
+  },
+  {
+    "page": "/hereditary-cardiomyopathy-atlas",
+    "title": "Hereditary-Cardiomyopathy-Atlas \u2014 Complete 8-Gene Hereditary Cardiomyopathy Atlas",
+    "category": "Hereditary Cardiomyopathy Atlas",
+    "status": "built",
+    "genes": [
+      "MYBPC3",
+      "MYH7",
+      "TNNT2",
+      "LMNA",
+      "SCN5A",
+      "DSP",
+      "PKP2",
+      "PLN"
+    ],
+    "patients": 320,
+    "seeds": "1518-1525",
+    "registered": "2026-09-06"
   }
 ]
