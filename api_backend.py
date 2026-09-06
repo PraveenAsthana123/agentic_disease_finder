@@ -45369,6 +45369,36 @@ async def hereditary_retinal_dystrophy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-parkinsons-atlas/overview")
+async def hereditary_parkinsons_atlas_overview():
+    """Hereditary-Parkinsons-Atlas overview (LRRK2-2527aa-12q12-AD-PARK8-Gly2019S-Kinase-Inhibitor-Trials-Ashkenazi-North-African-Mandatory, PRKN-465aa-6q25.2-AR-PARK2-Most-Common-AR-PD-MLPA-Mandatory-Exon-Rearrangements-50pct-Missed, PINK1-581aa-1p36.12-AR-PARK6-Mitophagy-PINK1-Parkin-Pathway-Exercise-Therapeutic, SNCA-140aa-4q22.1-AD-PARK1-Duplication-Mild-Triplication-Severe-Dementia-Anti-Synuclein-Trials, DJ1-189aa-1p36.23-AR-PARK7-Rare-Mild-Tremor-L166P-Oxidative-Stress-Sensor, GBA-497aa-1q22-Most-Common-PD-Risk-Gene-Heterozygous-5-8x-Risk-NOT-Gaucher-Ambroxol-Trial, VPS35-796aa-16q11.2-AD-PARK17-D620N-Sole-Variant-Retromer-Complex-Late-Onset, ATP13A2-1180aa-1p36.13-AR-PARK9-Kufor-Rakeb-MRI-Iron-PATHOGNOMONIC-Pyramidal-Supranuclear-Gaze). 320 patients (8x40, seeds 1502-1509)."""
+    try:
+        import scripts.hereditary_parkinsons_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-parkinsons-atlas/breakdown")
+async def hereditary_parkinsons_atlas_breakdown():
+    """Hereditary-Parkinsons-Atlas per-gene breakdown (LRRK2, PRKN, PINK1, SNCA, DJ-1, GBA, VPS35, ATP13A2 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.hereditary_parkinsons_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-parkinsons-atlas/definitions")
+async def hereditary_parkinsons_atlas_definitions():
+    """Hereditary-Parkinsons-Atlas clinical definitions (LRRK2-kinase-penetrance, PRKN-MLPA-mandatory-exon-rearrangements, PINK1-Parkin-mitophagy-pathway, SNCA-gene-dosage-duplication-triplication, GBA-heterozygous-vs-biallelic-Gaucher-distinction, VPS35-retromer-D620N, ATP13A2-iron-MRI-DDx, exercise-disease-modifying, cascade-testing-hereditary-PD, genotype-matched-trial-enrolment)."""
+    try:
+        import scripts.hereditary_parkinsons_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

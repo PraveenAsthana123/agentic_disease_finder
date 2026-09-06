@@ -16438,5 +16438,24 @@
     "seeds": "1494-1501",
     "registered": "2026-09-05",
     "status": "built"
+  },
+  {
+    "page": "/hereditary-parkinsons-atlas",
+    "title": "Hereditary-Parkinsons-Atlas \u2014 Complete 8-Gene Hereditary Parkinson's Disease Atlas",
+    "category": "Hereditary Parkinson's Disease Atlas",
+    "status": "built",
+    "genes": [
+      "LRRK2",
+      "PRKN",
+      "PINK1",
+      "SNCA",
+      "DJ-1",
+      "GBA",
+      "VPS35",
+      "ATP13A2"
+    ],
+    "patients": 320,
+    "seeds": "1502-1509",
+    "registered": "2026-09-06"
   }
 ]
