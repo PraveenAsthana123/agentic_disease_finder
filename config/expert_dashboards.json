@@ -16536,5 +16536,15 @@
     "api": "/api/hereditary-connective-tissue-atlas",
     "description": "Complete 8-Gene Hereditary Connective Tissue Disorder Atlas: FBN1 (Marfan) TGFBR1 (LDS1) TGFBR2 (LDS2) COL3A1 (vEDS) COL5A1 (Classical EDS) ACTA2 (HTAD) MYH11 (HTAD+PDA) SMAD3 (LDS3/AOS). 320 patients (8x40, seeds 1542-1549).",
     "built_date": "2026-09-06"
+  },
+  {
+    "id": "hereditary-autoinflammatory-atlas",
+    "name": "Hereditary Autoinflammatory Disorders Atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "route": "/hereditary-autoinflammatory-atlas",
+    "api": "/api/hereditary-autoinflammatory-atlas",
+    "description": "Complete 8-Gene Hereditary Autoinflammatory Disorders Atlas: MEFV (FMF/Colchicine) TNFRSF1A (TRAPS/Etanercept) MVK (HIDS/Canakinumab) NLRP3 (CAPS/Canakinumab) NOD2 (Blau/Adalimumab) IL1RN (DIRA/Anakinra-Curative) ADA2 (DADA2/TNF-Stroke-Prevention) PSTPIP1 (PAPA/Never-Debride). 320 patients (8x40, seeds 1550-1557).",
+    "built_date": "2026-09-06"
   }
 ]
