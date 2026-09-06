@@ -16344,5 +16344,32 @@
     ],
     "registered": "2026-09-05",
     "category": "hereditary-neuropathy"
+  },
+  {
+    "id": "hereditary-cerebral-svd-atlas",
+    "title": "Hereditary-Cerebral-SVD-Atlas \u2014 Complete 8-Gene Hereditary Cerebral Small Vessel Disease Atlas",
+    "status": "built",
+    "route": "/hereditary-cerebral-svd-atlas",
+    "api_endpoints": [
+      "/api/hereditary-cerebral-svd-atlas/overview",
+      "/api/hereditary-cerebral-svd-atlas/breakdown",
+      "/api/hereditary-cerebral-svd-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-cerebral-svd-atlas/page.jsx",
+    "script": "scripts/hereditary_cerebral_svd_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "1470-1477",
+    "genes": [
+      "NOTCH3",
+      "HTRA1",
+      "COL4A1",
+      "COL4A2",
+      "TREX1",
+      "GLA",
+      "ADA2",
+      "CST3"
+    ],
+    "registered": "2026-09-05",
+    "category": "hereditary-cerebral-svd"
   }
 ]

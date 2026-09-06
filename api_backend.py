@@ -45249,6 +45249,36 @@ async def hereditary_hmsn_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-cerebral-svd-atlas/overview")
+async def hereditary_cerebral_svd_atlas_overview():
+    """Hereditary-Cerebral-SVD-Atlas aggregate overview (NOTCH3-2321aa-19p13.12-AD-CADASIL-most-common-hereditary-SVD-GOM-EGF-domain-cysteine-no-tPA, HTRA1-480aa-10q26.13-AR-CARASIL-alopecia-spondylosis-pathognomonic-AD-htra1-ad-milder, COL4A1-1669aa-13q34-AD-porencephaly-no-anticoagulants-retinal-tortuosity, COL4A2-1712aa-13q34-AD-porencephaly-test-col4a1-simultaneously, TREX1-314aa-3p21.31-AD-RVCL-S-retinal-vasculopathy-first-Gd-mass-lesions-pathognomonic, GLA-429aa-Xq22.1-XLD-Fabry-treatable-posterior-stroke-pulvinar-sign, ADA2-511aa-22q11.1-AR-DADA2-livedo-mixed-strokes-TNF-blockade-curative, CST3-146aa-20p11.21-AD-HCCAA-L68Q-cystatin-C-low-ICH)."""
+    try:
+        import scripts.hereditary_cerebral_svd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cerebral-svd-atlas/breakdown")
+async def hereditary_cerebral_svd_atlas_breakdown():
+    """Hereditary-Cerebral-SVD-Atlas per-gene breakdown (NOTCH3-CADASIL-EGF-cysteine-rule-skin-biopsy-GOM-no-tPA-no-OCP, HTRA1-CARASIL-alopecia-spondylosis-young-stroke-no-RF-HTRA1-AD-heterozygous, COL4A1-porencephaly-retinal-tortuosity-no-anticoag-COL4A2-simultaneously, COL4A2-13q34-test-both-ICH-porencephaly, TREX1-RVCL-S-retinal-FA-mass-Gd-lesions-NOT-tumour-no-immunosuppression, GLA-Fabry-posterior-lacunar-pulvinar-ERT-migalastat-amenable-lyso-Gb3-female, ADA2-DADA2-livedo-mixed-strokes-enzyme-assay-TNF-blockade-BMF-HSCT, CST3-HCCAA-L68Q-plasma-cystatin-C-low-ICH-no-anticoag-family-screen)."""
+    try:
+        import scripts.hereditary_cerebral_svd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cerebral-svd-atlas/definitions")
+async def hereditary_cerebral_svd_atlas_definitions():
+    """Hereditary-Cerebral-SVD-Atlas clinical definitions (CADASIL-NOTCH3-EGF-cysteine-GOM-skin-biopsy-pathognomonic, CARASIL-HTRA1-alopecia-spondylosis-no-GOM-recessive, COL4A1-COL4A2-13q34-panel-porencephaly-no-anticoag, RVCL-S-TREX1-retinal-first-mass-Gd-lesions-no-immunosuppression, Fabry-GLA-treatable-pulvinar-sign-posterior-stroke-ERT-migalastat, DADA2-ADA2-mixed-strokes-livedo-enzyme-TNF-blockade, HCCAA-CST3-L68Q-cystatin-C-low-ICH-no-anticoag, cascade-testing-hereditary-SVD-first-degree-relatives)."""
+    try:
+        import scripts.hereditary_cerebral_svd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
