@@ -16759,5 +16759,17 @@
     "patients": 320,
     "seeds": "1638-1645",
     "built": "2026-09-06"
+  },
+  {
+    "id": "hereditary-pancreatic-cancer-atlas",
+    "name": "Hereditary-Pancreatic-Cancer-Atlas Complete-8-Gene-Hereditary-Pancreatic-Cancer-Atlas BRCA2-3418aa-13q12.3-AD-HPANCA1-5-10x-Pancreatic-RR-POLO-Olaparib-FDA2019-Cisplatin-Preferred CDKN2A-156aa-9p21.3-AD-FAMMM-25-58pct-Lifetime-Pancreatic-Risk-Highest-Single-Gene ATM-3056aa-11q22.3-AD-HPANCA3-6x-Pancreatic-RR-Platinum-Sensitive-PARPi-Emerging STK11-433aa-19p13.3-AD-Peutz-Jeghers-36pct-Lifetime-Pancreatic-Risk-Mucocutaneous-Pigmentation-Pathognomonic BRCA1-1863aa-17q21.31-AD-HPANCA5-2pct-Lifetime-Risk-POLO-Limited-HBOC-Priority PALB2-1186aa-16p12.2-AD-HPANCA6-2-4pct-PARPi-Off-Label-Rational-TBCRC048-82pct-ORR PRSS1-247aa-7q34-AD-GOF-Hereditary-Pancreatitis-40-57x-PDAC-RR-TPIAT-Smoking-ABSOLUTE-CI MLH1-756aa-3p22.2-AD-Lynch-3-4pct-Pancreatic-Risk-dMMR-Pembrolizumab-FDA2017-IHC-Mandatory 320-Patient-Aggregate-8x40-seeds-1646-1653",
+    "status": "built",
+    "category": "hereditary-oncology",
+    "route": "/hereditary-pancreatic-cancer-atlas",
+    "api": "/api/hereditary-pancreatic-cancer-atlas/overview|breakdown|definitions",
+    "genes": 8,
+    "patients": 320,
+    "seeds": "1646-1653",
+    "built": "2026-09-06"
   }
 ]
