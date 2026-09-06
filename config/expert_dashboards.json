@@ -16398,5 +16398,24 @@
     ],
     "registered": "2026-09-05",
     "category": "hereditary-muscular-dystrophy"
+  },
+  {
+    "page": "/hereditary-epilepsy-atlas",
+    "title": "Hereditary-Epilepsy-Atlas \u2014 Complete 8-Gene Hereditary Monogenic Epilepsy Atlas",
+    "category": "Hereditary Epilepsy Atlas",
+    "status": "built",
+    "genes": [
+      "SCN1A",
+      "SCN2A",
+      "KCNQ2",
+      "CDKL5",
+      "PCDH19",
+      "SCN8A",
+      "KCNT1",
+      "SLC6A1"
+    ],
+    "patients": 320,
+    "seeds": "1486-1493",
+    "registered": "2026-09-05"
   }
 ]

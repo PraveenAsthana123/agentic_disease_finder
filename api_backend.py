@@ -45309,6 +45309,36 @@ async def hereditary_muscular_dystrophy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-epilepsy-atlas/overview")
+async def hereditary_epilepsy_atlas_overview():
+    """Hereditary-Epilepsy-Atlas overview (SCN1A-1998aa-2q24.3-AD-Dravet-AVOID-carbamazepine-lamotrigine-phenytoin-stiripentol-cannabidiol-fenfluramine-SUDEP-highest-risk, SCN2A-2005aa-2q24.3-AD-GOF-early-onset-CBZ-EFFECTIVE-LOF-late-onset-CBZ-HARMFUL-age-predicts-pharmacogenomics, KCNQ2-872aa-20q13.33-AD-BFNE-DEE-M-current-carbamazepine-neonatal-window-SNHL-screen, CDKL5-1030aa-Xp22.13-XLD-CDD-onset-less-5m-ganaxolone-FDA-2022-ketogenic-diet-NOT-MECP2-Rett, PCDH19-1148aa-Xq22.1-XLD-female-epilepsy-CELLULAR-INTERFERENCE-unaffected-carrier-males-mosaic-males-affected, SCN8A-1980aa-12q13.13-AD-DEE-GOF-phenytoin-HIGHLY-EFFECTIVE-OPPOSITE-SCN1A-Asn1768Asp-hotspot, KCNT1-1257aa-9q34.3-AD-EIMFS-quinidine-GOF-blocker-QTc-monitoring-MANDATORY, SLC6A1-797aa-3p25.3-AD-MAE-Doose-AVOID-carbamazepine-lamotrigine-vigabatrin-valproate-ketogenic-diet). 320 patients (8x40, seeds 1486-1493)."""
+    try:
+        import scripts.hereditary_epilepsy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-epilepsy-atlas/breakdown")
+async def hereditary_epilepsy_atlas_breakdown():
+    """Hereditary-Epilepsy-Atlas per-gene breakdown (SCN1A, SCN2A, KCNQ2, CDKL5, PCDH19, SCN8A, KCNT1, SLC6A1 — protein, locus, aa, OMIM, inheritance, phenotype, hallmark treatment alerts, key DDx, cohort stats)."""
+    try:
+        import scripts.hereditary_epilepsy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-epilepsy-atlas/definitions")
+async def hereditary_epilepsy_atlas_definitions():
+    """Hereditary-Epilepsy-Atlas clinical definitions (SCN1A-Na-channel-blocker-CI-Dravet, SCN2A-age-onset-GOF-LOF-pharmacogenomic-rule, KCNQ2-DEE-neonatal-treatment-window, CDKL5-CDD-distinct-MECP2-Rett-ganaxolone, PCDH19-cellular-interference-unaffected-males-mosaic-males, SCN8A-GOF-CBZ-effective-opposite-SCN1A, KCNT1-quinidine-protocol-QTc-monitoring, SLC6A1-MAE-contraindicated-ASMs-drop-attack-helmet, SUDEP-SCN1A-SCN8A-risk-mitigation, ketogenic-diet-evidence-by-gene, cascade-testing-hereditary-epilepsy)."""
+    try:
+        import scripts.hereditary_epilepsy_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
