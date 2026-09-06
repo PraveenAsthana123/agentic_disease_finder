@@ -44949,6 +44949,36 @@ async def vascular_malformation_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ataxia-atlas/overview")
+async def hereditary_ataxia_atlas_overview():
+    """Hereditary-Ataxia-Atlas overview (FXN-GAA-repeat-expansion-standard-panels-miss, APTX-AOA1-hypoalbuminaemia-hypercholesterolaemia, SETX-AOA2-AFP-hallmark, ATM-IgA-deficiency-cancer-radiosensitivity, SACS-ARSACS-spastic-ataxia-retinal-hypermyelination-Quebec-founder, ANO10-SCAR10-adult-onset-slowly-progressive, ADCK3-ARCA2-CoQ10-deficiency-supplementation-trial, ABHD12-PHARC-polyneuropathy-SNHL-RP-cataract-Iran-founder, 320-patients-8x40-seeds-1390-1397)."""
+    try:
+        import scripts.hereditary_ataxia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ataxia-atlas/breakdown")
+async def hereditary_ataxia_atlas_breakdown():
+    """Hereditary-Ataxia-Atlas per-gene breakdown (FXN-cardiomyopathy-80pct-echo-mandatory-omaveloxolone, APTX-hypoalbuminaemia-chorea-oculomotor-apraxia, SETX-AFP-elevated-axonal-neuropathy, ATM-telangiectasia-IgA-cancer-surveillance-avoid-radiation, SACS-retinal-NFL-hypermyelination-spastic-ataxia-Quebec, ANO10-pure-cerebellar-adult-onset-slowly-progressive, ADCK3-elevated-CK-exercise-intolerance-CoQ10-trial, ABHD12-PHARC-sequence-neuropathy-SNHL-first)."""
+    try:
+        import scripts.hereditary_ataxia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ataxia-atlas/definitions")
+async def hereditary_ataxia_atlas_definitions():
+    """Hereditary-Ataxia-Atlas clinical definitions (FXN-repeat-assay-mandatory-exome-misses, AFP-first-in-recessive-ataxia-AOA2-AT, ATM-radiosensitivity-MRI-over-CT, ATM-carrier-breast-cancer-2x-risk, ADCK3-CoQ10-trial-6-months-mandatory, SACS-retinal-hypermyelination-pathognomonic, ABHD12-PHARC-sequence, cascade-testing)."""
+    try:
+        import scripts.hereditary_ataxia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

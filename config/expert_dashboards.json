@@ -16192,5 +16192,15 @@
     "n_patients": 320,
     "seeds": "1382-1389",
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-ataxia-atlas",
+    "name": "Hereditary-Ataxia-Atlas Complete-8-Gene-Hereditary-Recessive-Ataxia-Atlas FXN-210aa-9q21.11-AR-FRDA-GAA-Repeat-Expansion-Standard-Panels-MISS-Cardiomyopathy-80pct-Omaveloxolone APTX-342aa-9p21.1-AR-AOA1-Oculomotor-Apraxia-Hypoalbuminaemia-Hypercholesterolaemia SETX-2677aa-9q34.13-AR-AOA2-AFP-Elevated-Hallmark ATM-3056aa-11q22.3-AR-AT-IgA-Deficiency-Cancer-Radiosensitivity SACS-4579aa-13q12.12-AR-ARSACS-Spastic-Ataxia-Retinal-NFL-Hypermyelination-Quebec-Founder ANO10-660aa-3p22.3-AR-SCAR10-Adult-Onset-25y-Slowly-Progressive ADCK3-669aa-1q42.13-AR-ARCA2-CoQ10-Deficiency-CoQ10-Trial-Mandatory ABHD12-398aa-20p11.21-AR-PHARC-Polyneuropathy-SNHL-Ataxia-RP-Cataract 320-Patient-Aggregate-8x40-seeds-1390-1397",
+    "status": "built",
+    "api_base": "/api/hereditary-ataxia-atlas",
+    "portal_route": "/hereditary-ataxia-atlas",
+    "seeds": "1390-1397",
+    "n_patients": 320,
+    "registered": "2026-09-05"
   }
 ]
