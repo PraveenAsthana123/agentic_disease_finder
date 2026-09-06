@@ -16293,5 +16293,11 @@
     "seeds": "1438-1445",
     "n_patients": 320,
     "registered": "2026-09-05"
+  },
+  {
+    "id": "hereditary-spastic-paraplegia-atlas",
+    "name": "Hereditary-Spastic-Paraplegia-Atlas Complete-8-Gene-Hereditary-Spastic-Paraplegia-Atlas SPAST-616aa-2p22.3-AD-SPG4-Most-Common-40pct-Incomplete-Penetrance-Microtubule-Severing ATL1-558aa-14q22.1-AD-SPG3A-Childhood-Onset-Pure-HSP-Mild-ER-Fusion REEP1-201aa-2p11.2-AD-SPG31-ER-Tubule-Shaping-CMT2B5-Overlap SPG11-2443aa-15q21.1-AR-Most-Common-AR-HSP-TCC-Intellectual-Disability-Spatacsin ZFYVE26-2539aa-14q24.1-AR-SPG15-Kjellin-Macular-Degeneration-Annual-Fundus CYP7B1-506aa-8q12.3-AR-SPG5A-Oxysterol-Accumulation-CDCA-Therapy KIF1A-1826aa-2q37.3-AR-SPG30-AD-KAND-Kinesin-Motor-AR-vs-AD-Different-Prognosis DDHD2-711aa-8p11.23-AR-SPG54-Brain-Lipid-Droplets-MRS-1.3ppm-Pathognomonic 320-Patient-Aggregate-8x40-seeds-1446-1453",
+    "status": "built",
+    "registered": "2026-09-05"
   }
 ]

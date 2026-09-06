@@ -45159,6 +45159,36 @@ async def hereditary_bmf_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-spastic-paraplegia-atlas/overview")
+async def hereditary_spastic_paraplegia_atlas_overview():
+    """Hereditary-Spastic-Paraplegia-Atlas aggregate overview (SPAST-616aa-2p22.3-AD-SPG4-most-common-40pct-incomplete-penetrance-microtubule-severing, ATL1-558aa-14q22.1-AD-SPG3A-childhood-onset-pure-HSP-mild, REEP1-201aa-2p11.2-AD-SPG31-ER-tubule-shaping-CMT2B5-overlap, SPG11-2443aa-15q21.1-AR-most-common-AR-HSP-TCC-intellectual-disability-spatacsin, ZFYVE26-2539aa-14q24.1-AR-SPG15-Kjellin-macular-degeneration-annual-fundus, CYP7B1-506aa-8q12.3-AR-SPG5A-oxysterol-accumulation-CDCA-therapy, KIF1A-1826aa-2q37.3-AR-SPG30-AD-KAND-kinesin-AR-vs-AD-different-prognosis, DDHD2-711aa-8p11.23-AR-SPG54-brain-lipid-droplets-MRS-1.3ppm-pathognomonic)."""
+    try:
+        import scripts.hereditary_spastic_paraplegia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-spastic-paraplegia-atlas/breakdown")
+async def hereditary_spastic_paraplegia_atlas_breakdown():
+    """Hereditary-Spastic-Paraplegia-Atlas per-gene breakdown (SPAST-incomplete-penetrance-40pct-MLPA-required, ATL1-childhood-onset-mild-pure-HSP, REEP1-ER-morphogenesis-CMT2-overlap, SPG11-TCC-mandatory-MRI-cognitive-progressive, ZFYVE26-Kjellin-annual-fundoscopy-OCT-blindness-3rd-4th-decade, CYP7B1-oxysterol-biomarker-CDCA-liver-monitoring, KIF1A-AR-SPG30-mild-AD-KAND-severe-optic-atrophy-epilepsy, DDHD2-brain-MRS-lipid-peak-pathognomonic-TCC)."""
+    try:
+        import scripts.hereditary_spastic_paraplegia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-spastic-paraplegia-atlas/definitions")
+async def hereditary_spastic_paraplegia_atlas_definitions():
+    """Hereditary-Spastic-Paraplegia-Atlas clinical definitions (HSP-pure-vs-complicated, TCC-AR-HSP-SPG11-SPG15, SPAST-incomplete-penetrance-counselling, MLPA-copy-number-SPAST, spatacsin-spastizin-ALR-complex, oxysterols-CYP7B1-biomarker-CDCA-treatment, KIF1A-KAND-de-novo-severe-AR-SPG30-mild, brain-MRS-lipid-peak-DDHD2-pathognomonic, ER-morphogenesis-SPAST-ATL1-REEP1-shared, SPRS-annual-severity-scale)."""
+    try:
+        import scripts.hereditary_spastic_paraplegia_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
