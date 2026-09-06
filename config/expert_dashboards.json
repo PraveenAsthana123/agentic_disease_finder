@@ -16827,7 +16827,7 @@
   {
     "id": "hereditary-amyloidosis-atlas",
     "title": "Hereditary-Amyloidosis-Atlas",
-    "subtitle": "Complete 8-Gene Hereditary Systemic Amyloidosis Atlas — TTR/APOA1/APOA2/FGA/LYZ/CST3/GSN/B2M",
+    "subtitle": "Complete 8-Gene Hereditary Systemic Amyloidosis Atlas \u2014 TTR/APOA1/APOA2/FGA/LYZ/CST3/GSN/B2M",
     "category": "hereditary-atlas",
     "genes": [
       "TTR",
@@ -16844,6 +16844,28 @@
     "status": "built",
     "api_prefix": "/api/hereditary-amyloidosis-atlas",
     "page": "/hereditary-amyloidosis-atlas",
+    "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-hyperlipidemia-atlas",
+    "title": "Hereditary-Hyperlipidemia-Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Hyperlipidemia Atlas \u2014 LDLR/APOB/PCSK9/LDLRAP1/ABCG5/ABCG8/APOE/LPA",
+    "category": "hereditary-atlas",
+    "genes": [
+      "LDLR",
+      "APOB",
+      "PCSK9",
+      "LDLRAP1",
+      "ABCG5",
+      "ABCG8",
+      "APOE",
+      "LPA"
+    ],
+    "patients": 320,
+    "seeds": "1670-1677",
+    "status": "built",
+    "api_prefix": "/api/hereditary-hyperlipidemia-atlas",
+    "page": "/hereditary-hyperlipidemia-atlas",
     "registered": "2026-09-06"
   }
 ]
