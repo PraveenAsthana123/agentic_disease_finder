@@ -16623,5 +16623,26 @@
     "seeds": "1582-1589",
     "api": "/api/hereditary-liver-disease-atlas/overview|breakdown|definitions",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-genodermatoses-atlas",
+    "page": "/hereditary-genodermatoses-atlas",
+    "title": "Hereditary-Genodermatoses-Atlas \u2014 Complete 8-Gene Hereditary Skin Disease Atlas",
+    "category": "Hereditary Genodermatoses Atlas",
+    "status": "built",
+    "genes": [
+      "COL7A1",
+      "LAMB3",
+      "KRT5",
+      "ABCA12",
+      "SPINK5",
+      "ATP2A2",
+      "STS",
+      "IKBKG"
+    ],
+    "n_patients": 320,
+    "seeds": "1590-1597",
+    "api": "/api/hereditary-genodermatoses-atlas/overview|breakdown|definitions",
+    "registered": "2026-09-06"
   }
 ]
