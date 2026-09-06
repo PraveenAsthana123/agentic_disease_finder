@@ -16801,5 +16801,27 @@
       1661
     ],
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-cardiac-arrhythmia-atlas",
+    "title": "Hereditary-Cardiac-Arrhythmia-Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Cardiac Arrhythmia Atlas \u2014 Ion Channel Disease (LQT/Brugada/CPVT/SSS)",
+    "category": "hereditary-atlas",
+    "genes": [
+      "KCNQ1",
+      "KCNH2",
+      "SCN5A",
+      "CALM1",
+      "RYR2",
+      "CASQ2",
+      "KCNJ2",
+      "HCN4"
+    ],
+    "patients": 320,
+    "seeds": "1662-1669",
+    "status": "built",
+    "api_prefix": "/api/hereditary-cardiac-arrhythmia-atlas",
+    "page": "/hereditary-cardiac-arrhythmia-atlas",
+    "registered": "2026-09-06"
   }
 ]
