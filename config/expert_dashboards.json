@@ -16546,5 +16546,15 @@
     "api": "/api/hereditary-autoinflammatory-atlas",
     "description": "Complete 8-Gene Hereditary Autoinflammatory Disorders Atlas: MEFV (FMF/Colchicine) TNFRSF1A (TRAPS/Etanercept) MVK (HIDS/Canakinumab) NLRP3 (CAPS/Canakinumab) NOD2 (Blau/Adalimumab) IL1RN (DIRA/Anakinra-Curative) ADA2 (DADA2/TNF-Stroke-Prevention) PSTPIP1 (PAPA/Never-Debride). 320 patients (8x40, seeds 1550-1557).",
     "built_date": "2026-09-06"
+  },
+  {
+    "id": "hereditary-nephropathy-atlas",
+    "name": "Hereditary Nephropathy Atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "route": "/hereditary-nephropathy-atlas",
+    "api": "/api/hereditary-nephropathy-atlas",
+    "description": "Complete 8-Gene Hereditary Nephropathy Atlas: COL4A5 (XL-Alport/ACEi-ASAP) COL4A3 (AR-Alport/TBMN) NPHS1 (CNS-Finnish/Bilateral-Nephrectomy) NPHS2 (FSGS2/Steroid-Resistant) WT1 (DDS-Frasier/Gonadectomy-Mandatory) UMOD (FJHN-MCKD2/Gout-Presenting) PKD1 (ADPKD/Tolvaptan-FDA2018) TRPC6 (FSGS6/Living-Donor-Exclusion). 320 patients (8x40, seeds 1558-1565).",
+    "built_date": "2026-09-06"
   }
 ]
