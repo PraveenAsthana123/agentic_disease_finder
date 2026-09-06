@@ -16556,5 +16556,30 @@
     "api": "/api/hereditary-nephropathy-atlas",
     "description": "Complete 8-Gene Hereditary Nephropathy Atlas: COL4A5 (XL-Alport/ACEi-ASAP) COL4A3 (AR-Alport/TBMN) NPHS1 (CNS-Finnish/Bilateral-Nephrectomy) NPHS2 (FSGS2/Steroid-Resistant) WT1 (DDS-Frasier/Gonadectomy-Mandatory) UMOD (FJHN-MCKD2/Gout-Presenting) PKD1 (ADPKD/Tolvaptan-FDA2018) TRPC6 (FSGS6/Living-Donor-Exclusion). 320 patients (8x40, seeds 1558-1565).",
     "built_date": "2026-09-06"
+  },
+  {
+    "id": "hereditary-endocrine-tumour-atlas",
+    "name": "Hereditary-Endocrine-Tumour-Atlas Complete-8-Gene-Hereditary-Endocrine-Tumour-Syndrome-Atlas MEN1-610aa-11q13.1-AD-Parathyroid-95pct-Pituitary-40pct-PancreaticNET-70pct-Sunitinib-Everolimus RET-1114aa-10q11.21-AD-GOF-MEN2A-MEN2B-MTC-Prophylactic-Thyroidectomy-Codon-Stratified-M918T-6m VHL-213aa-3p25.3-AD-ccRCC-Hemangioblastoma-Retinal-Angioma-Belzutifan-FDA2021 SDHB-280aa-1p36.13-AD-PGL4-Highest-Malignant-30-50pct-SDHB-IHC-Ga-DOTATATE SDHD-159aa-11q23.1-AD-PGL1-Head-Neck-PGL-Paternal-Imprinting-Maternal-Silent-Multifocal CDKN1B-198aa-12p13.1-AD-MEN4-p27-MEN1-Like-Sequence-MEN1-First CDC73-531aa-1q31.2-AD-HPT-JT-Parathyroid-Carcinoma-15pct-Jaw-Ossifying-Fibroma-Parafibromin-IHC PRKAR1A-381aa-17q24.2-AD-Carney-Complex-Cardiac-Myxoma-Embolic-Annual-Echo-PPNAD-Paradoxical-Dex-LCCSCT 320-Patient-Aggregate-8x40-seeds-1566-1573",
+    "status": "built",
+    "route": "/hereditary-endocrine-tumour-atlas",
+    "api_endpoints": [
+      "/api/hereditary-endocrine-tumour-atlas/overview",
+      "/api/hereditary-endocrine-tumour-atlas/breakdown",
+      "/api/hereditary-endocrine-tumour-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-endocrine-tumour-atlas/page.jsx",
+    "genes": [
+      "MEN1",
+      "RET",
+      "VHL",
+      "SDHB",
+      "SDHD",
+      "CDKN1B",
+      "CDC73",
+      "PRKAR1A"
+    ],
+    "patients": 320,
+    "seeds": "1566-1573",
+    "registered": "2026-09-06"
   }
 ]

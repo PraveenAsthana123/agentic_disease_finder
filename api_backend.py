@@ -45573,6 +45573,31 @@ async def hereditary_nephropathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-endocrine-tumour-atlas/overview")
+async def hereditary_endocrine_tumour_atlas_overview():
+    try:
+        import scripts.hereditary_endocrine_tumour_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-endocrine-tumour-atlas/breakdown")
+async def hereditary_endocrine_tumour_atlas_breakdown():
+    try:
+        import scripts.hereditary_endocrine_tumour_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-endocrine-tumour-atlas/definitions")
+async def hereditary_endocrine_tumour_atlas_definitions():
+    try:
+        import scripts.hereditary_endocrine_tumour_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
