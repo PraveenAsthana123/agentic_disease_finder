@@ -45069,6 +45069,36 @@ async def hereditary_optic_neuropathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/red-cell-disorders-atlas/overview")
+async def red_cell_disorders_atlas_overview():
+    """Red-Cell-Disorders-Atlas overview (G6PD-515aa-Xq28-XL-G6PD-Deficiency-Rasburicase-Absolute-CI-Primaquine-CI-Fava-Beans, PKLR-574aa-1q22-AR-PK-Deficiency-2,3-BPG-Paradox-Mitapivat-FDA2022, ANK1-1881aa-8p11.21-AD-HS1-Most-Common-40-65pct-EMA-Flow-Cytometry, SPTA1-2429aa-1q23.1-AR-HE-HPP-αLELY-Modifier-Critical, SLC4A1-911aa-17q21.31-AD-HS4-SAO-Δ400-408-dRTA, EPB42-691aa-15q15.2-AR-HS5-Japanese-Founder-Ala142Thr, HK1-917aa-10q22.1-AR-Hexokinase-Deficiency-EMA-Normal-Non-Spherocytic, PIEZO1-2521aa-16q24.3-AD-GOF-Xerocytosis-Splenectomy-Absolute-CI, 320-patients-8x40-seeds-1422-1429)."""
+    try:
+        import scripts.red_cell_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/red-cell-disorders-atlas/breakdown")
+async def red_cell_disorders_atlas_breakdown():
+    """Red-Cell-Disorders-Atlas per-gene breakdown (G6PD-rasburicase-CI-primaquine-CI-test-3-months-after-crisis, PKLR-2,3-BPG-paradox-tolerate-low-Hb-mitapivat-iron-overload-without-transfusion, ANK1-EMA-flow-cytometry-replace-osmotic-fragility-splenectomy-curative, SPTA1-αLELY-in-trans-HPP-severe-neonatal, SLC4A1-SAO-homozygous-lethal-malaria-protection-dRTA, EPB42-AR-both-parents-carriers-Japanese-founder, HK1-EMA-normal-non-spherocytic-enzyme-assay-reticulocyte-corrected, PIEZO1-splenectomy-CI-thromboembolic-risk-pseudohyperkalaemia)."""
+    try:
+        import scripts.red_cell_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/red-cell-disorders-atlas/definitions")
+async def red_cell_disorders_atlas_definitions():
+    """Red-Cell-Disorders-Atlas clinical definitions (G6PD-test-timing-3-months-post-crisis, G6PD-rasburicase-CI-fatal-haemolysis, PKLR-23-BPG-paradox-do-not-overtransfuse, PIEZO1-splenectomy-absolutely-CI-portal-vein-thrombosis, SPTA1-αLELY-modifier-HE-vs-HPP, HK1-EMA-normal-non-spherocytic, EPB42-AR-25pct-recurrence, SLC4A1-SAO-homozygous-lethal-reproductive-counselling)."""
+    try:
+        import scripts.red_cell_disorders_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
