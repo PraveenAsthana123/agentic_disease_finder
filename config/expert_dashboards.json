@@ -17213,5 +17213,12 @@
     "total_patients": 320,
     "genes": 8,
     "registered_at": "2026-09-07"
+  },
+  {
+    "id": "hereditary-fao-atlas",
+    "title": "Hereditary-FAO-Atlas Complete-8-Gene-Hereditary-Fatty-Acid-Oxidation-Disorders-Atlas ACADM-421aa-1p31.1-AR-MCAD-Most-Common-FAO-NBS-c985AG-Fasting-CI-MCT-CI ACADVL-655aa-17p13.1-AR-VLCAD-C14:1-NBS-Cardiac-MCT-Therapeutic-Triheptanoin HADHA-763aa-2p23.3-AR-LCHAD-TFP-Neuropathy+Retinopathy-PATHOGNOMONIC-Maternal-AFLP-DHA CPT1A-773aa-11q13.3-AR-C0-High-Inuit-Founder-p.P479L-MCT-CI CPT2-658aa-1p32.3-AR-Myoglobinuria-Exercise-Statins-NSAIDs-CI-MCT-Therapeutic SLC25A20-301aa-3p21.31-AR-CACT-Neonatal-Arrhythmia-Hyperammonaemia ETFA-333aa-15q24.2-AR-MADD-GA2-Multiple-Acylcarnitines-Riboflavin-Responsive HMGCL-325aa-1p36.11-AR-HMGCoA-Lyase-Hypo-Without-Ketosis-Leucine-CI 320-Patient-Aggregate-8x40-seeds-1830-1837",
+    "status": "built",
+    "route": "/api/hereditary-fao-atlas",
+    "page": "/hereditary-fao-atlas"
   }
 ]
