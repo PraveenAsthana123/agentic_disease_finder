@@ -17144,5 +17144,13 @@
     "category": "hereditary-atlas",
     "description": "Complete 8-Gene Hereditary Hyperinsulinism Atlas \u2014 ABCC8/KCNJ11 KATP-CHI / GLUD1 HI-HA / GCK Activating / HADH SCHAD / SLC16A1 EIHI / HNF4A\u2192MODY1 / FOXA2 HI+Hypopituitarism \u2014 320 patients (8x40, seeds 1774-1781)",
     "built_note": "Built 2026-09-06"
+  },
+  {
+    "id": "hereditary-lsd-atlas",
+    "name": "Hereditary-LSD-Atlas Complete-8-Gene-Hereditary-Lysosomal-Storage-Disorder-Atlas GBA-497aa-1q22-AR-Gaucher-ERT-SRT-Parkinson-Risk-5-10x GLA-429aa-Xq22.1-XL-Fabry-Kidney-Heart-Migalastat-Amenable-Only GAA-952aa-17q25.3-AR-Pompe-IOPD-Cardiomegaly-Avalglucosidase-Preferred HEXA-529aa-15q23-AR-Tay-Sachs-Cherry-Red-Spot-NO-ERT-Ashkenazi-Carrier-1-27 IDUA-653aa-4p16.3-AR-MPS-I-Hurler-HSCT-Before-2.5-MANDATORY-Laronidase IDS-550aa-Xq28-XL-MPS-II-Hunter-No-Corneal-Clouding-KEY-DDx-Idursulfase GALC-669aa-14q31.3-AR-Krabbe-Pre-Symptomatic-HSCT-Curative-Symptomatic-FUTILE ARSA-507aa-22q13.33-AR-MLD-Libmeldy-EMA2020-Pseudo-Deficiency-EXCLUDE 320-Patient-Aggregate-8x40-seeds-1790-1797",
+    "category": "clinical_atlas",
+    "status": "built",
+    "note": "Built scripts/hereditary_lsd_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 1790-1797), api_backend.py 3 routes /api/hereditary-lsd-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-lsd-atlas/page.jsx + SiteNav wired after Hereditary-HI-Atlas, expert_dashboards.json count 1090->1091. Built 2026-09-06.",
+    "maps_to": "/api/hereditary-lsd-atlas/overview + /api/hereditary-lsd-atlas/breakdown + /api/hereditary-lsd-atlas/definitions"
   }
 ]
