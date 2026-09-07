@@ -17122,5 +17122,27 @@
     "seeds": "1766-1773",
     "category": "hereditary_atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary_hi_atlas",
+    "label": "Hereditary Hyperinsulinism Atlas \u2014 Complete 8-Gene Reference",
+    "route": "/hereditary-hi-atlas",
+    "api_prefix": "/api/hereditary-hi-atlas",
+    "status": "built",
+    "genes": [
+      "ABCC8",
+      "KCNJ11",
+      "GLUD1",
+      "GCK",
+      "HADH",
+      "SLC16A1",
+      "HNF4A",
+      "FOXA2"
+    ],
+    "patients": 320,
+    "seeds": "1774-1781",
+    "category": "hereditary-atlas",
+    "description": "Complete 8-Gene Hereditary Hyperinsulinism Atlas \u2014 ABCC8/KCNJ11 KATP-CHI / GLUD1 HI-HA / GCK Activating / HADH SCHAD / SLC16A1 EIHI / HNF4A\u2192MODY1 / FOXA2 HI+Hypopituitarism \u2014 320 patients (8x40, seeds 1774-1781)",
+    "built_note": "Built 2026-09-06"
   }
 ]
