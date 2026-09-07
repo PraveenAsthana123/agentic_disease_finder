@@ -17187,5 +17187,14 @@
     "seeds": "1806-1813",
     "category": "hereditary_atlas",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-purine-atlas",
+    "name": "Hereditary-Purine-Atlas Complete-8-Gene-Hereditary-Purine-Pyrimidine-Metabolism-Atlas HPRT1-217aa-Xq26.2-XLR-Lesch-Nyhan-SIB-12-24m-PATHOGNOMONIC-Allopurinol-Uric-Acid-NOT-Neurology ADSL-484aa-22q13.1-AR-SAICAR-SAdo-Urine-PATHOGNOMONIC-3-Phenotypes-Autism-Features ADA-363aa-20q13.12-AR-ADA-SCID-Most-Common-Enzyme-SCID-dATP-Destroys-T-B-NK-Strimvelis-EMA2016-NBS-TREC PNP-289aa-14q11.2-AR-T-Cell-Selective-DDx-ADA-Autoimmune-Haemolytic-Anaemia-50pct-Spastic-Diplegia XDH-1333aa-2p23.1-AR-Xanthinuria-I-Radiolucent-Xanthine-Stones-Uric-Acid-VERY-LOW-KEY-DDx-Allopurinol-CONTRAINDICATED APRT-180aa-16q24.3-AR-2,8-DHA-Crystals-PATHOGNOMONIC-Renal-Failure-Allopurinol-CURATIVE-Japanese-Founder AMPD1-747aa-1p13.3-AR-Forearm-Ammonia-ABSENT-PATHOGNOMONIC-Lactate-Rises-Contrast-McArdle-Common-2pct-European UMPS-480aa-3q13.33-AR-Orotic-Aciduria-Megaloblastic-NOT-B12-Folate-Uridine-Replacement-CURATIVE-DDx-OTC-Ammonia-NORMAL 320-Patient-Aggregate-8x40-seeds-1814-1821",
+    "status": "built",
+    "api_prefix": "/api/hereditary-purine-atlas",
+    "category": "hereditary_metabolic",
+    "genes": 8,
+    "patients": 320
   }
 ]
