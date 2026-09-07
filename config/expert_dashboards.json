@@ -17335,5 +17335,27 @@
     "n_patients": 320,
     "genes": 8,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-ncl-atlas",
+    "name": "Hereditary-NCL-Atlas Complete-8-Gene-Hereditary-Neuronal-Ceroid-Lipofuscinosis-Batten-Disease-Atlas CLN1/PPT1-306aa-1p34.2-AR-INCL-GRODs-PATHOGNOMONIC-No-Therapy-Rapid-Death CLN2/TPP1-563aa-11p15.4-AR-Cerliponase-Alfa-Brineura-ICV-FDA2017-ONLY-NCL-ERT CLN3-438aa-16p12.1-AR-JNCL-Batten-Vision-Loss-FIRST-5yr-Sea-Blue-Histiocytes-BM CLN5-407aa-13q22.3-AR-Finnish-Variant-TPP1-Normal-p.Y392X CLN6-311aa-15q23-AR-Kufs-Adult-NCL-No-Vision-Loss CLN7/MFSD8-518aa-4q28.2-AR-Turkish-Founder-Fingerprint-EM CLN8-286aa-8p23.3-AR-EPMR-Slowest-NCL-Survival-35-50yr CLN10/CTSD-412aa-11p15.5-AR-Congenital-NCL-Lethal-Aspartyl-Protease 320-Patient-Aggregate-8x40-seeds-1902-1909",
+    "status": "built",
+    "api_prefix": "/api/hereditary-ncl-atlas",
+    "portal_page": "/hereditary-ncl-atlas",
+    "script": "scripts/hereditary_ncl_atlas_dashboard.py",
+    "seed_range": "1902-1909",
+    "n_patients": 320,
+    "genes": 8,
+    "gene_list": [
+      "CLN1",
+      "CLN2",
+      "CLN3",
+      "CLN5",
+      "CLN6",
+      "CLN7",
+      "CLN8",
+      "CLN10"
+    ],
+    "registered": "2026-09-07"
   }
 ]
