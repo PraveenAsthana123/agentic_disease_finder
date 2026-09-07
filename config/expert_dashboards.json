@@ -17466,5 +17466,25 @@
     "status": "built",
     "note": "3 endpoints verified 200; portal-next/app/devops/page.jsx + SiteNav wired after System Health",
     "built_note": "Built 2026-09-07"
+  },
+  {
+    "id": "hereditary-ciliopathy-atlas",
+    "name": "Hereditary-Ciliopathy-Atlas Complete-8-Gene-Primary-Cilia-Disorder-Atlas BBS1-593aa-11q13.2-AR-Bardet-Biedl-Syndrome1-Most-Common-23pct-Rod-Cone-ALWAYS-First-M1L-Caucasian-Founder CEP290-2479aa-12q21.32-AR-Joubert-JBTS5-LCA10-NPHP6-Meckel-c.2991+1655A>G-Deep-Intronic-IVS26-MISSED-by-Exome NPHP1-732aa-2q13-AR-Nephronophthisis-Type1-Homozygous-2q13-Deletion-85pct-MLPA-Required-Most-Common-Genetic-ESRD-Children RPGR-815aa-Xp11.3-XLR-XLRP-ORF15-70-75pct-XLRP-Hotspot-Specific-Sequencing-Female-Carriers-20pct AHI1-1196aa-6q23.3-AR-Joubert-JBTS3-Highest-Retinal-80pct-All-JBTS-R830W-Ashkenazi-Founder ALMS1-4169aa-2p13.1-AR-Alstrom-NO-Polydactyly-NO-Cognitive-Cone-Rod-NOT-Rod-Cone-Cardiomyopathy-2-Episodes-T2DM-Childhood KIF7-1343aa-15q26.1-AR-Acrocallosal-Hydrolethalus-JBTS12-Hedgehog-Gatekeeper-Lethal-to-Mild-Same-Gene DYNC2H1-4307aa-11q22.3-AR-SRTD3-Jeune-Most-Common-SRTD-45pct-Narrow-Thorax-Neonatal-Respiratory-Failure-VEPTR 320-Patient-Aggregate-8x40-seeds-1950-1957",
+    "status": "built",
+    "route": "/hereditary-ciliopathy-atlas",
+    "api_prefix": "/api/hereditary-ciliopathy-atlas",
+    "genes": [
+      "BBS1",
+      "CEP290",
+      "NPHP1",
+      "RPGR",
+      "AHI1",
+      "ALMS1",
+      "KIF7",
+      "DYNC2H1"
+    ],
+    "seeds": "1950-1957",
+    "patient_count": 320,
+    "category": "hereditary-atlas"
   }
 ]

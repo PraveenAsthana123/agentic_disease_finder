@@ -46889,6 +46889,36 @@ async def hereditary_connective_tissue_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ciliopathy-atlas/overview")
+async def hereditary_ciliopathy_atlas_overview():
+    """Hereditary-Ciliopathy-Atlas aggregate overview (BBS1/CEP290/NPHP1/RPGR/AHI1/ALMS1/KIF7/DYNC2H1)."""
+    try:
+        import scripts.hereditary_ciliopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ciliopathy-atlas/breakdown")
+async def hereditary_ciliopathy_atlas_breakdown():
+    """Hereditary-Ciliopathy-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_ciliopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ciliopathy-atlas/definitions")
+async def hereditary_ciliopathy_atlas_definitions():
+    """Hereditary-Ciliopathy-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_ciliopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
