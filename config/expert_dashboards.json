@@ -17045,5 +17045,18 @@
     "genes": 8,
     "status": "built",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-dementia-atlas",
+    "category": "hereditary-atlas",
+    "title": "Hereditary-Dementia-Atlas",
+    "name": "Hereditary-Dementia-Atlas Complete-8-Gene-Hereditary-Dementia-Atlas PSEN1-467aa-14q24.2-AD-EOAD3-Most-Common-EOFAD-50-70pct-E280A-Paisas-100pct-Penetrance-Lecanemab-ARIA-HIGH PSEN2-448aa-1q42.13-AD-EOAD4-N141I-Volga-German-Penetrance-95pct-Later-Onset APP-770aa-21q21.3-AD-EOAD1-Duplication-V717I-London-E693Q-Dutch-CAA-ARIA-HIGHEST GRN-593aa-17q21.31-AD-FTD-GRN-Progranulin-Haploinsufficiency-Plasma-PGRN-<100-DIAGNOSTIC-Latozinemab-INFRONT3 MAPT-758aa-17q21.31-AD-FTDP17-P301L-4R:3R-Ratio-Tau-PET-Positive-Amyloid-PET-NEGATIVE-NO-Anti-Amyloid C9ORF72-481aa-9p21.2-AD-ALS-FTD-GGGGCC-Repeat-Primed-PCR-MANDATORY-Standard-PCR-FAILS-40pct-Familial-ALS-25pct-FTD PRNP-253aa-20p13-AD-Prion-GSS-P102L-FFI-D178N-Val129-fCJD-D178N-Met129-NO-Organ-Donation-ABSOLUTE-Biosafety-Universally-Fatal TREM2-230aa-6p21.1-R47H-AD-Risk-2-4x-Biallelic-Nasu-Hakola-PLOSL-AL001-INVOKE2 320-Patient-Aggregate-8x40-seeds-1742-1749",
+    "status": "built",
+    "route": "/hereditary-dementia-atlas",
+    "api_prefix": "/api/hereditary-dementia-atlas",
+    "genes": 8,
+    "patients": 320,
+    "seed_range": "1742-1749",
+    "registered": "2026-09-06"
   }
 ]

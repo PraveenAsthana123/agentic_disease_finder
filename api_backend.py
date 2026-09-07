@@ -46061,6 +46061,33 @@ async def hereditary_lung_disease_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-dementia-atlas/overview")
+async def hereditary_dementia_atlas_overview():
+    try:
+        import scripts.hereditary_dementia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dementia-atlas/breakdown")
+async def hereditary_dementia_atlas_breakdown():
+    try:
+        import scripts.hereditary_dementia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dementia-atlas/definitions")
+async def hereditary_dementia_atlas_definitions():
+    try:
+        import scripts.hereditary_dementia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-als-mnd-atlas/overview")
 async def hereditary_als_mnd_atlas_overview():
     try:
