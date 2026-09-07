@@ -46799,6 +46799,36 @@ async def hereditary_renal_tubular_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-leukodystrophy-atlas/overview")
+async def hereditary_leukodystrophy_atlas_overview():
+    """Hereditary-Leukodystrophy-Atlas aggregate overview (ARSA/GALC/PLP1/ABCD1/ASPA/GFAP/EIF2B5/POLR3A)."""
+    try:
+        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-leukodystrophy-atlas/breakdown")
+async def hereditary_leukodystrophy_atlas_breakdown():
+    """Hereditary-Leukodystrophy-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-leukodystrophy-atlas/definitions")
+async def hereditary_leukodystrophy_atlas_definitions():
+    """Hereditary-Leukodystrophy-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-complement-disorder-atlas/overview")
 async def hereditary_complement_disorder_atlas_overview():
     """Hereditary-Complement-Disorder-Atlas aggregate overview (aHUS / C3G)."""

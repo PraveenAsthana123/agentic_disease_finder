@@ -17419,5 +17419,18 @@
     "portal_page": "/hereditary-complement-disorder-atlas",
     "built_date": "2026-09-07",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary_leukodystrophy_atlas",
+    "slug": "hereditary-leukodystrophy-atlas",
+    "name": "Hereditary-Leukodystrophy-Atlas Complete-8-Gene-Hereditary-White-Matter-Disorders-Atlas ARSA/ArylsulfataseA-507aa-22q13.33-AR-MLD-Libmeldy-EMA2020-Pseudodeficiency-Pitfall GALC/Galactocerebrosidase-669aa-14q31.3-AR-Krabbe-Psychosine-Toxic-HSCT-Pre-Symptomatic-ONLY-NBS PLP1-276aa-Xq22.2-X-linked-PMD-Duplication-70pct-MLPA-Mandatory-Nystagmus-Birth ABCD1-745aa-Xq28-X-linked-X-ALD-VLCFA-CCALD-Skysona-FDA2022-Adrenal-71pct-PHT-ABSOLUTE-CI ASPA-313aa-17p13.2-AR-Canavan-NAA-MRS-Most-Specific-U-Fibres-Ashkenazi GFAP-432aa-17q21.31-AD-Alexander-ALL-GOF-NOT-LOF-Rosenthal-Fibres-PATHOGNOMONIC EIF2B5-712aa-3q27.1-AR-VWM-Stress-Triggered-EMERGENCY-ISRIB-Ovarioleukodystrophy POLR3A-1390aa-10q22.3-AR-HLD7-POLR3-Related-Dental-Abnormalities-Hypomyelination-Slow 320-Patient-Aggregate-8x40-seeds-1934-1941",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "page": "/hereditary-leukodystrophy-atlas",
+    "endpoint": "/api/hereditary-leukodystrophy-atlas/overview",
+    "genes": 8,
+    "seeds": "1934-1941",
+    "patients": 320,
+    "registered": "2026-09-07"
   }
 ]
