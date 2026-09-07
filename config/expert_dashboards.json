@@ -17080,5 +17080,26 @@
     "route": "/hereditary-bone-disease-atlas",
     "api": "/api/hereditary-bone-disease-atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary_porphyria_atlas",
+    "label": "Hereditary Porphyria Atlas \u2014 Complete 8-Gene Reference",
+    "route": "/hereditary-porphyria-atlas",
+    "api_prefix": "/api/hereditary-porphyria-atlas",
+    "status": "built",
+    "genes": [
+      "HMBS",
+      "CPOX",
+      "PPOX",
+      "UROS",
+      "FECH",
+      "ALAS2",
+      "UROD",
+      "ALAD"
+    ],
+    "patients": 320,
+    "seeds": "1758-1765",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-06"
   }
 ]
