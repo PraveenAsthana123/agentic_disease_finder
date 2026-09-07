@@ -17272,5 +17272,17 @@
     "n_genes": 8,
     "n_patients": 320,
     "seeds": "1862-1869"
+  },
+  {
+    "id": "hereditary-organic-acidemia-atlas",
+    "name": "Hereditary-Organic-Acidemia-Atlas Complete-8-Gene-Hereditary-Organic-Acidemia-Atlas PCCA-728aa-13q32.3-AR-Propionic-Acidemia-TypeA-C3-NBS-DCM-VPA-ABSOLUTELY-CI PCCB-539aa-3q22.3-AR-Propionic-Acidemia-TypeB-Korean-Founder-p.Gln272Ter MMUT-750aa-6p12.3-AR-MMA-mut-AdoCbl-Renal-CKD-Liver-Kidney-Transplant IVD-415aa-15q15.1-AR-Isovaleric-Acidemia-C5-PATHOGNOMONIC-Sweaty-Feet-Glycine-Therapy GCDH-438aa-19p13.2-AR-GA1-Macrocephaly-HALLMARK-Striatal-Necrosis-NAI-DDx MCCC1-709aa-3q27.1-AR-3-MCC-C5OH-USUALLY-BENIGN-NOT-Biotin-Responsive ACAT1-427aa-11q22.3-AR-Beta-Ketothiolase-Episodic-Ketoacidosis-Excellent-Prognosis-VPA-CI HLCS-726aa-21q22.13-AR-Neonatal-MCD-ALL-4-Biotin-Carboxylases-BIOTIN-RESPONSIVE 320-Patient-Aggregate-8x40-seeds-1870-1877",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "api": "/api/hereditary-organic-acidemia-atlas",
+    "route": "/hereditary-organic-acidemia-atlas",
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": "1870-1877",
+    "registered": "2026-09-07"
   }
 ]
