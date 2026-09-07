@@ -17262,5 +17262,15 @@
     "n_patients": 320,
     "seeds": "1854-1861",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-cdg-atlas",
+    "name": "Hereditary-CDG-Atlas Complete-8-Gene-Congenital-Disorders-of-Glycosylation-Atlas PMM2-246aa-16p13.2-AR-CDG-Ia-Most-Common-70pct-Cerebellar-Hypoplasia-Inverted-Nipples MPI-423aa-15q24.1-AR-CDG-Ib-NO-Neurology-D-Mannose-CURATIVE ALG6-507aa-1p31.3-AR-CDG-Ic-2nd-Most-Common PGM1-562aa-1p31.3-AR-CDG-PGM1-Bifid-Uvula-PATHOGNOMONIC-Galactose-TREATABLE SLC35A2-396aa-Xp11.23-XL-DeNovo-Female-Epilepsy SLC35C1-364aa-11p11.2-AR-CDG-IIc-LAD-II-Bombay-PATHOGNOMONIC-L-Fucose-TREATABLE DOLK-538aa-9q34.11-AR-CDG-Im-DCM-Ichthyosis COG7-841aa-16p12.2-AR-CDG-IIe-Severe-Neonatal-Wrinkled-Skin 320-Patient-Aggregate-8x40-seeds-1862-1869",
+    "status": "built",
+    "url": "/hereditary-cdg-atlas",
+    "api_prefix": "/api/hereditary-cdg-atlas",
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": "1862-1869"
   }
 ]

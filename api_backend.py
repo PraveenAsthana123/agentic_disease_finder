@@ -46577,6 +46577,33 @@ async def hereditary_peroxisomal_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-cdg-atlas/overview")
+async def hereditary_cdg_atlas_overview():
+    try:
+        import scripts.hereditary_cdg_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cdg-atlas/breakdown")
+async def hereditary_cdg_atlas_breakdown():
+    try:
+        import scripts.hereditary_cdg_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cdg-atlas/definitions")
+async def hereditary_cdg_atlas_definitions():
+    try:
+        import scripts.hereditary_cdg_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
