@@ -33605,3 +33605,227 @@ All 3 endpoints → 200. Now commit:
 
 ### [2026-09-06 12:15:37 MDT] ASSISTANT
 Now push and track:
+
+### [2026-09-06 12:33:42 MDT] ASSISTANT
+Count updated 1074→1075. Now commit:
+
+### [2026-09-06 13:03:11 MDT] ASSISTANT
+All 3 endpoints return 200. Now update `next_pending.py` to mark this as built, refresh STATUS.md, and commit:
+
+### [2026-09-06 13:32:16 MDT] ASSISTANT
+All 3 endpoints return 200. Now commit:
+
+### [2026-09-06 14:04:02 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit.
+
+### [2026-09-06 14:34:42 MDT] ASSISTANT
+Now update next_pending.py and refresh STATUS.md:
+
+### [2026-09-06 14:48:03 MDT] ASSISTANT
+The buildable queue is exhausted — only the ictal/interictal retrain item remains (explicitly in the skip list), and all other items require operator credentials (EMR/FHIR, auth/RBAC, Gmail/Slack). No buildable work remains.
+
+### [2026-09-06 15:18:55 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-06 15:31:59 MDT] ASSISTANT
+**Autonomous build iteration complete — nothing to build.**
+
+Queue status:
+- **BUILDABLE queue**: 1 item — `ictal_interictal` retrain → **skipped** (too heavy, per operator skip list)
+- **Expert dashboards**: 1080/1080 built
+- **Feature gaps**: 18/18 resolved
+- **Blocked (needs credentials)**: Gmail/Slack/Drive live, multi-user auth/RBAC, EMR/FHIR streaming
+
+No commit made. Tracked the skip in `jobs/logs/track.jsonl`.
+
+### [2026-09-06 15:47:24 MDT] ASSISTANT
+The BUILDABLE queue has only the ictal/interictal retrain item, which is explicitly in the skip list. All 1080 expert dashboards are status=built. The pending queue is empty after excluding the skipped item.
+
+### [2026-09-06 17:14:23 MDT] ASSISTANT
+Now push and track:
+
+### [2026-09-06 18:00:35 MDT] ASSISTANT
+**Done.** Built, verified, committed, and pushed: **Hereditary-SMA-Atlas** (Complete 8-Gene Hereditary Spinal Muscular Atrophy Atlas).
+
+**What was built:**
+- `scripts/hereditary_sma_atlas_dashboard.py` — 8-gene data engine, 320 synthetic patients (8×40, seeds 1718–1725)
+- `portal-next/app/hereditary-sma-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- 3 API endpoints added to `api_backend.py`: `/api/hereditary-sma-atlas/overview|breakdown|definitions` — all verified **200**
+- SiteNav wired after Hereditary-ALS-MND-Atlas
+- `config/expert_dashboards.json` count: **1081 → 1082**
+- Pushed to `origin/main` (5f68270e)
+
+**8 genes covered:**
+
+| Gene | Disease | Key Clinical Pearl |
+|------|---------|-------------------|
+| SMN1 | SMA 5q | 3 FDA-approved treatments; NBS mandatory 40+ countries |
+| AR | Kennedy SBMA | Leuprolide trial NEGATIVE; sensory neuropathy distinguishes from ALS |
+| BICD2 | SMALED2 | DDH screen mandatory; intelligence NORMAL; lower extremity predominant |
+| DYNC1H1 | SMALED1 | Brain MRI mandatory; CNS malformation 25%; cognition variable |
+| VAPB | ALS8 | P56S Brazil founder; fasciculations prominent; slowly progressive (not ALS) |
+| SETX | ALS4 | NO bulbar involvement (key!); juvenile onset; decades survival |
+| SIGMAR1 | ALS16/Distal SMA | Distal + sensory neuropathy; MAM junction chaperone |
+| PLEKHG5 | DSMA4 | Pure LMN only; no sensory; NF-κB autophagy pathway |
+
+### [2026-09-06 18:32:36 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-06 19:00:27 MDT] ASSISTANT
+STATUS shows 1084. Now commit:
+
+### [2026-09-06 19:25:57 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-06 19:48:52 MDT] ASSISTANT
+All 3 endpoints return 200. Now update next_pending.py and STATUS.md, then commit:
+
+### [2026-09-06 20:01:58 MDT] ASSISTANT
+The queue has only one buildable item — the ictal/interictal retrain — which is explicitly skipped per the autonomous build rules. Everything else is blocked (credentials/auth/EMR). Running track to record the outcome.
+
+### [2026-09-06 20:34:53 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-06 21:02:05 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-06 21:20:40 MDT] ASSISTANT
+The queue is now effectively empty. After running `scripts/next_pending.py`, the only remaining buildable item is the `ictal_interictal` retrain, which is explicitly excluded by the §159 skip rule (too heavy). All other items require operator credentials (Gmail/Slack/Drive/auth/EMR/FHIR) which are also excluded.
+
+All 1088 expert dashboards are marked built, all 45 hereditary atlases are complete (latest: Porphyria Atlas, seeds 1758-1765, count 1087→1088). No partial or planned items remain that can be built without credentials or heavy compute.
+
+### [2026-09-06 21:50:01 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-06 22:22:15 MDT] ASSISTANT
+Now commit all the work:
+
+### [2026-09-06 23:10:00 MDT] ASSISTANT
+**Done.** Fixed, verified, committed, and pushed.
+
+**What was broken:** The `hereditary-immunodeficiency-atlas` had duplicate `@app.get()` route registrations in `api_backend.py`. The first set (at former lines ~45477–45499) called `atlas_.get_overview()` / `atlas_.get_breakdown()` / `atlas_.get_definitions()`, but the script (`scripts/hereditary_immunodeficiency_atlas_dashboard.py`) exports `overview()` / `breakdown()` / `definitions()` (no `get_` prefix). FastAPI always serves the first matching route, so all three endpoints returned HTTP 500.
+
+**Fix:** Removed the stale duplicate first-occurrence routes; the correct routes at the end of the file (calling `overview()` etc.) now take effect.
+
+**Verified:** All three endpoints — `/api/hereditary-immunodeficiency-atlas/overview|breakdown|definitions` — return HTTP 200 with 320 patients across 8 genes.
+
+⏳ **Pending:** Only the ictal/interictal retrain remains buildable; all other items are blocked (credentials) or gated (auth/EMR/FHIR).
+
+### [2026-09-06 23:54:02 MDT] ASSISTANT
+Done. Built and pushed **Hereditary-LSD-Atlas** (commit `5a6bc2b5`):
+
+- **Script**: `scripts/hereditary_lsd_atlas_dashboard.py` — 8 genes (GBA/GLA/GAA/HEXA/IDUA/IDS/GALC/ARSA), 320 patients (8×40, seeds 1790–1797)
+- **API**: 3 endpoints `/api/hereditary-lsd-atlas/overview|breakdown|definitions` — all verified 200
+- **Frontend**: `portal-next/app/hereditary-lsd-atlas/page.jsx` — 4-tab dashboard (Overview/Gene Table/Clinical Atlas/Definitions)
+- **SiteNav**: wired after Hereditary-HI-Atlas
+- **Registry**: `expert_dashboards.json` count 1090 → 1091
+
+Key clinical distinctions encoded: GBA-Parkinson-5-10x-risk in heterozygous carriers, Eliglustat-CYP2D6-mandatory, Migalastat-amenability-GLP-verify, GAA-cardiomegaly-short-PR pathognomonic, HEXA-no-ERT-no-HSCT, IDUA-HSCT-before-2.5-mandatory, IDS-no-corneal-clouding KEY-DDx vs MPS-I, GALC-pre-symptomatic-HSCT-curative/symptomatic-futile, ARSA-pseudo-deficiency-exclude-first/Libmeldy-EMA2020.
+
+### [2026-09-07 00:16:01 MDT] ASSISTANT
+**Built + pushed: Hereditary UCD Atlas**
+
+One iteration complete. Summary:
+
+| Item | Value |
+|---|---|
+| New dashboard | Hereditary-UCD-Atlas — Complete 8-Gene Urea Cycle Disorder Atlas |
+| Genes | OTC · ASS1 · ASL · CPS1 · ARG1 · NAGS · SLC25A15 · SLC25A13 |
+| Patients | 320 (8×40, seeds 1798–1805) |
+| Endpoints | `/api/hereditary-ucd-atlas/overview\|breakdown\|definitions` → all 200 ✅ |
+| Frontend | `portal-next/app/hereditary-ucd-atlas/page.jsx` + SiteNav wired after LSD-Atlas |
+| Registry | `expert_dashboards.json` count 1091 → 1092 |
+| Commit | `8f1264b5` pushed → origin/main |
+
+Key clinical anchors captured: OTC valproate absolute CI; orotic acid DDx (OTC vs CPS1/NAGS); NAGS as the only UCD with a specific antidote (NCG/carglumic acid); ASL trichorrhexis nodosa + ammonia-independent neurotoxicity; ARG1 spastic diplegia (not hyperammonemia); HHH homocitrullinuria pathognomonic; SLC25A13 carbohydrate-harmful diet reversal.
+
+### [2026-09-07 00:51:41 MDT] ASSISTANT
+The single iteration is complete and verified:
+
+**Built:** Hereditary-GSD-Atlas — 8-gene Glycogen Storage Disease Atlas  
+**Commit:** `1946db4f` → pushed to `origin/main`  
+**Endpoints verified 200:** `/api/hereditary-gsd-atlas/overview|breakdown|definitions`  
+**Registry:** `expert_dashboards.json` count 1092→1093  
+**Tracked:** `scripts/track.sh "built+pushed: Hereditary-GSD-Atlas ..."`
+
+Genes covered (320 patients, seeds 1806-1813):
+- G6PC / SLC37A4 / AGL / GBE1 / PYGM / PYGL / PHKA2 / GYS2
+
+⏳ **Pending note:** `next_pending.py` will still surface only the skipped ictal/interictal retrain on the next iteration. To continue the hereditary atlas series, the next build would use seeds 1814-1821 (next IEM category). Say "go" to trigger another iteration or name the next atlas explicitly.
+
+### [2026-09-07 02:39:08 MDT] ASSISTANT
+Now commit and push:
+
+### [2026-09-07 02:54:51 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-07 03:18:03 MDT] ASSISTANT
+**Done.** Iteration complete:
+
+**Built & pushed: `Hereditary-FAO-Atlas`** — Complete 8-Gene Hereditary Fatty Acid Oxidation Disorders Atlas
+
+| Gene | Protein | Disease | Key Teaching Point |
+|---|---|---|---|
+| ACADM | 421aa · 1p31.1 | MCAD deficiency | C8-octanoylcarnitine NBS · FASTING CI · **MCT CI** |
+| ACADVL | 655aa · 17p13.1 | VLCAD deficiency | C14:1 NBS · neonatal HCM reversible · **MCT therapeutic** |
+| HADHA | 763aa · 2p23.3 | LCHAD/TFP | Neuropathy+retinopathy PATHOGNOMONIC · maternal AFLP · DHA mandatory |
+| CPT1A | 773aa · 11q13.3 | CPT1A deficiency | C0 very high (opposite to other FAO) · Inuit founder p.P479L · **MCT CI** |
+| CPT2 | 658aa · 1p32.3 | CPT2 myopathy | Myoglobinuria exercise PATHOGNOMONIC · statins/NSAIDs CI · **MCT therapeutic** |
+| SLC25A20 | 301aa · 3p21.31 | CACT deficiency | Neonatal arrhythmia · hyperammonaemia >500 · most severe carnitine cycle defect |
+| ETFA | 333aa · 15q24.2 | MADD/GA2 | Multiple acylcarnitines NBS · riboflavin 25-30% responsive (trial mandatory) |
+| HMGCL | 325aa · 1p36.11 | HMG-CoA lyase | Hypo WITHOUT ketosis PATHOGNOMONIC · leucine/leucine supplements CI |
+
+- **320 patients** (8×40, seeds 1830–1837)
+- **3 endpoints** `/api/hereditary-fao-atlas/overview|breakdown|definitions` → all HTTP 200 ✅
+- **expert_dashboards.json** count 1095→**1096** ✅
+- **SiteNav** wired after Hereditary-Amino-Acid-Atlas ✅
+- **Committed** `b4e69950` → **pushed** to `origin/main` ✅
+
+### [2026-09-07 04:41:05 MDT] ASSISTANT
+All 3 endpoints return 200. Now update the registry and commit:
+
+### [2026-09-07 05:06:10 MDT] ASSISTANT
+All 3 endpoints return 200. Now verify the data:
+
+### [2026-09-07 05:34:43 MDT] ASSISTANT
+Done. Hereditary-Peroxisomal-Atlas built, verified, committed, and pushed:
+
+- **3 endpoints** `/api/hereditary-peroxisomal-atlas/overview|breakdown|definitions` → all 200
+- **320 patients** (8×40, seeds 1854-1861), 8 genes: PEX1, PEX6, ABCD1, PHYH, PEX7, HSD17B4, ACOX1, AGPS
+- **`expert_dashboards.json`** count 1098 → 1099
+- **Commit** `f9397e21` pushed to `origin/main`
+
+### [2026-09-07 06:03:04 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed. Here's the summary:
+
+---
+
+**Built + pushed: `Hereditary-CDG-Atlas`** (Congenital Disorders of Glycosylation)
+
+**What was built:**
+- `scripts/hereditary_cdg_atlas_dashboard.py` — 8-gene data module, 320 patients (8×40, seeds 1862–1869)
+- `portal-next/app/hereditary-cdg-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- 3 backend endpoints added to `api_backend.py`
+- `SiteNav.jsx` wired after Hereditary-Peroxisomal-Atlas (line 1024)
+- `expert_dashboards.json` count: 1099 → 1100
+- `scripts/next_pending.py` recorded as built
+
+**3 endpoints verified 200:**
+- `/api/hereditary-cdg-atlas/overview` ✅
+- `/api/hereditary-cdg-atlas/breakdown` ✅
+- `/api/hereditary-cdg-atlas/definitions` ✅
+
+**8 genes:**
+| Gene | Disease | Key |
+|------|---------|-----|
+| PMM2 | CDG-Ia — most common (70%) | Cerebellar hypoplasia + inverted nipples; no specific Rx |
+| MPI | CDG-Ib | NO neurology; **D-mannose CURATIVE** |
+| ALG6 | CDG-Ic | 2nd most common N-glyc CDG; milder than PMM2 |
+| PGM1 | CDG-PGM1 | Bifid uvula PATHOGNOMONIC; **galactose TREATABLE** |
+| SLC35A2 | CDG-IIm | X-linked de novo females; epilepsy |
+| SLC35C1 | CDG-IIc/LAD-II | Bombay blood group PATHOGNOMONIC; **L-fucose TREATABLE** |
+| DOLK | CDG-Im | DCM dominant + ichthyosis; G301R Irish Traveller |
+| COG7 | CDG-IIe | Wrinkled aged skin PATHOGNOMONIC; high neonatal mortality |
+
+### [2026-09-07 06:25:07 MDT] ASSISTANT
+STATUS.md updated: 1101/1101 dashboards built.

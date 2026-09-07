@@ -1,1251 +1,1248 @@
 #!/usr/bin/env python3
-"""Hereditary-Immunodeficiency-Atlas — Complete 8-Gene Hereditary Primary Immunodeficiency Atlas
-BTK     (Bruton's Tyrosine Kinase; 659 aa; ~76 kDa; Xq22.1; XL;
-         OMIM gene 300300; XLA OMIM 300755;
-         X-linked agammaglobulinemia; absent B cells + absent immunoglobulins;
-         monthly IVIG LIFELONG; no live vaccines EVER;
-         Ibrutinib BTK-inhibitor research in XLA;
-         seed SEED_BASE+0) ·
-RAG1    (Recombination Activating Gene 1; 1043 aa; ~119 kDa; 11p12; AR;
-         OMIM gene 179615; Omenn/SCID OMIM 601457;
-         V(D)J recombination arrest → spectrum SCID to Omenn syndrome
-         (erythroderma, eosinophilia, elevated IgE) to leaky CID;
-         HSCT curative; no live vaccines;
-         seed SEED_BASE+1) ·
-ADA     (Adenosine Deaminase; 363 aa; ~41 kDa; 20q13.11; AR;
-         OMIM gene 608958; ADA-SCID OMIM 102700;
-         metabolic SCID — dATP accumulates → lymphotoxic; purine salvage arrest;
-         pegademase bovine (PEG-ADA) enzyme replacement;
-         Strimvelis ADA gene therapy (EMA 2016 — first approved gene therapy
-         for single-gene disorder); HSCT curative;
-         seed SEED_BASE+2) ·
-CYBB    (Cytochrome b-245 beta chain gp91phox; 570 aa; ~65 kDa; Xp21.1; XL;
-         OMIM gene 300481; CGD OMIM 306400;
-         chronic granulomatous disease; NADPH oxidase defect → absent respiratory burst;
-         catalase-positive organisms (Aspergillus, Staph aureus, Serratia, Nocardia,
-         Burkholderia cepacia); prophylactic itraconazole + TMP-SMX lifelong;
-         IFN-gamma reduces infections 70%; HSCT curative in young;
-         seed SEED_BASE+3) ·
-WAS     (Wiskott-Aldrich Syndrome Protein; 502 aa; ~57 kDa; Xp11.23; XL;
-         OMIM gene 300392; WAS OMIM 301000;
-         classic triad: thrombocytopenia (small platelets) + eczema + immunodeficiency;
-         WASP regulates actin polymerisation in haematopoietic cells;
-         gene score 1-5 determines phenotype severity;
-         HSCT curative; WAS gene therapy trials;
-         seed SEED_BASE+4) ·
-LRBA    (LPS-Responsive Beige-Like Anchor Protein; 2863 aa; ~321 kDa; 4q31.3; AR;
-         OMIM gene 606453; LRBA deficiency OMIM 614700;
-         CVID phenotype + autoimmunity + IBD + organomegaly;
-         LRBA recycles CTLA4 from endosomes to cell surface;
-         abatacept (CTLA4-Ig) restores CTLA4 signalling — dramatic response;
-         IVIG + abatacept combination;
-         seed SEED_BASE+5) ·
-CTLA4   (Cytotoxic T Lymphocyte Antigen 4; 223 aa; ~25 kDa; 2q33.2; AD haploinsufficiency;
-         OMIM gene 123890; CTLA4-HI OMIM 616100;
-         CTLA4 haploinsufficiency; autoimmunity, CVID-like hypogammaglobulinemia,
-         lymphoproliferation, granulomatous disease; Treg dysfunction;
-         abatacept (CTLA4-Ig) SPECIFIC treatment — replaces missing CTLA4 function;
-         sirolimus for lymphoproliferation; IVIG;
-         seed SEED_BASE+6) ·
-PIK3CD  (PI3-Kinase Catalytic Delta; 1044 aa; ~119 kDa; 1p36.22; AD GOF;
-         OMIM gene 602839; APDS1 OMIM 615513;
-         activated PI3K delta syndrome 1;
-         GOF → constitutive AKT/mTOR signalling → T cell senescence
-         + B cell maturation defect → susceptibility EBV/CMV herpesvirus infections;
-         idelalisib PI3Kδ inhibitor clinical trial;
-         leniolisib (OMGARD) FDA 2023 — first approved PI3Kδ inhibitor for APDS;
-         seed SEED_BASE+7)
-320-patient aggregate cohort (8 × 40, seeds 1534–1541)
+"""Hereditary-Immunodeficiency-Atlas — Complete 8-Gene Primary Immunodeficiency Atlas
+BTK     (Bruton tyrosine kinase; 638 aa; Xq22.1; XLR;
+         X-linked Agammaglobulinemia (XLA); OMIM gene 300300; disease OMIM 300755;
+         LOF -> no mature B cells -> absent all immunoglobulin classes;
+         profound recurrent bacterial infections; live vaccines ABSOLUTELY CI;
+         IVIG lifelong; no T-cell defect; seed SEED_BASE+0) .
+ADA     (adenosine deaminase; 363 aa; 20q13.12; AR;
+         ADA-SCID / SCID1; OMIM gene 608958; disease OMIM 102700;
+         LOF -> dATP accumulates -> toxic to all lymphocytes -> T-B-NK absent;
+         gene therapy (Strimvelis/PEG-ADA); HLA-identical HSCT curative; seed SEED_BASE+1) .
+IL2RG   (common gamma chain gamma-c; 369 aa; Xq13.1; XLR;
+         XSCID / SCIDX1; OMIM gene 308380; disease OMIM 300400;
+         shared gamma-c for IL-2/-4/-7/-9/-15/-21 receptors;
+         LOF -> T-B+NK- phenotype; gene therapy OTL-101 FDA2024;
+         live vaccines ABSOLUTELY CI; seed SEED_BASE+2) .
+RAG1    (recombination activating gene 1; 1043 aa; 11p13; AR;
+         Omenn Syndrome / RAG1-SCID; OMIM gene 179615; disease OMIM 601457/267500;
+         V(D)J recombination enzyme; hypomorphic -> Omenn; complete LOF -> SCID; seed SEED_BASE+3) .
+WAS     (Wiskott-Aldrich Syndrome Protein; 502 aa; Xp11.23; XLR;
+         Wiskott-Aldrich Syndrome; OMIM gene 300392; disease OMIM 301000;
+         eczema + thrombocytopenia + immunodeficiency TRIAD PATHOGNOMONIC;
+         small platelets PATHOGNOMONIC; splenectomy CI; HSCT curative; seed SEED_BASE+4) .
+DOCK8   (dedicator of cytokinesis 8; 2099 aa; 9p24.3; AR;
+         DOCK8 deficiency / HIES type 2; OMIM gene 611432; disease OMIM 243700;
+         severe eczema + cutaneous viral infections PATHOGNOMONIC + elevated IgE;
+         STAT3-HIES TYPE 1 is AD form -- KEY DDx; HSCT curative; seed SEED_BASE+5) .
+TNFRSF13B (TACI; 293 aa; 17p11.2; AD/AR;
+         CVID2; OMIM gene 604907; disease OMIM 240500;
+         LOF -> hypogammaglobulinaemia IgG + IgA; IVIG/SCIG lifelong;
+         granulomatous disease 10-20%; increased lymphoma risk; seed SEED_BASE+6) .
+LRBA    (LPS-responsive beige-like anchor protein; 2863 aa; 4q31.3; AR;
+         CVID8 / LRBA deficiency; OMIM gene 606453; disease OMIM 614700;
+         regulates CTLA-4 recycling; LOF -> immune dysregulation;
+         Abatacept DRAMATICALLY effective -- PATHOGNOMONIC TREATMENT RESPONSE; seed SEED_BASE+7)
+320-patient aggregate cohort (8 x 40, seeds 1782-1789)
 """
 
 import random
 
-SEED_BASE = 1534
+SEED_BASE = 1782
 
-IMMUNODEFICIENCY_GENES = [
-    # ── BTK — X-linked Agammaglobulinemia ──
+IMID_GENES = [
+    # -- BTK -- X-linked Agammaglobulinemia (XLA) ----------------------------
     {
         "gene": "BTK",
-        "protein": "Bruton's Tyrosine Kinase — XLA, Absent B Cells, Monthly IVIG Lifelong, No Live Vaccines",
-        "alias": (
-            "BTK; OMIM gene 300300; XLA OMIM 300755; Xq22.1; 659 aa; ~76 kDa; "
-            "BTK encodes Bruton's tyrosine kinase, a cytoplasmic non-receptor tyrosine "
-            "kinase of the Tec family essential for B-cell development beyond the pre-B "
-            "cell stage. BTK is activated downstream of the pre-B cell receptor (pre-BCR) "
-            "and mature B cell receptor (BCR) signalling cascades via LYN, SYK, and "
-            "PI3-kinase-mediated PIP3 production at the membrane. BTK contains five domains: "
-            "PH (pleckstrin homology) — recruits BTK to membrane via PIP3; TH (Tec homology); "
-            "SH3; SH2; and catalytic kinase domain. Loss-of-function variants (missense, "
-            "truncating, splice-site — all causing absent or non-functional BTK protein) "
-            "arrest B-cell maturation at the pro-B to pre-B transition in bone marrow. "
-            "Result: complete absence of circulating B lymphocytes (CD19/CD20 negative), "
-            "all immunoglobulin isotypes absent or markedly reduced (IgG <2 g/L, IgA and "
-            "IgM undetectable), and no antigen-specific antibody responses. X-linked "
-            "inheritance: almost exclusively affects males; female carriers are clinically "
-            "unaffected (random X-inactivation favouring normal X in mature B cells provides "
-            "sufficient BTK). Clinical onset: recurrent bacterial infections with encapsulated "
-            "organisms (Streptococcus pneumoniae, Haemophilus influenzae, Neisseria "
-            "meningitidis) beginning after maternal IgG wanes (age 6-18 months). "
-            "Diagnosis: absent CD19+ B cells on flow cytometry + undetectable "
-            "immunoglobulins + absent BTK protein on monocyte BTK protein assay + BTK "
-            "mutation. Treatment: intravenous immunoglobulin (IVIG) replacement LIFELONG "
-            "— every 3-4 weeks to maintain trough IgG >8 g/L; subcutaneous IG (SCIG) "
-            "alternative. Critical safety rule: NO LIVE ATTENUATED VACCINES EVER — "
-            "OPV (oral polio) has caused paralytic poliomyelitis; live viral vaccines "
-            "(MMR, varicella, rotavirus, yellow fever) contraindicated. Echovirus/enterovirus "
-            "meningoencephalitis is a late, severe complication. Ibrutinib (BTK kinase inhibitor) "
-            "paradoxically used in lymphomas is under research as a BTK-pathway modifier in XLA."
+        "protein": (
+            "BTK -- Xq22.1 XLR -- Bruton-tyrosine-kinase-638aa -- "
+            "X-linked-Agammaglobulinemia-XLA -- "
+            "LOF->No-Mature-B-Cells->Absent-ALL-Immunoglobulin-Classes -- "
+            "Recurrent-Encapsulated-Bacterial-Infections -- "
+            "Live-Vaccines-ABSOLUTELY-CONTRAINDICATED -- "
+            "IVIG-Lifelong -- No-T-Cell-Defect"
         ),
-        "aa": "659 aa",
-        "kDa": "~76 kDa",
+        "alias": (
+            "BTK (Bruton tyrosine kinase); OMIM gene 300300; "
+            "X-linked Agammaglobulinemia (XLA; Bruton disease) OMIM 300755. "
+            "Xq22.1; 638 aa; ~76 kDa; X-linked recessive -- affects males, females are carriers. "
+            "FUNCTION: BTK is a non-receptor tyrosine kinase of the Tec kinase family, "
+            "essential for B-cell development and activation. "
+            "BTK mediates signalling downstream of the pre-B-cell receptor (pre-BCR) and mature BCR: "
+            "B-cell progenitor -> pre-B cell (requires pre-BCR signalling via BTK) -> "
+            "BTK LOF -> signal fails -> B-cell maturation arrests at the pro-B to pre-B transition -> "
+            "NO mature B cells in peripheral blood -> "
+            "NO immunoglobulin production of any class (IgG, IgA, IgM, IgE, IgD all absent). "
+            "BTK is also expressed in monocytes, macrophages, and platelets (but not T cells or NK cells). "
+            "CLINICAL PHENOTYPE: "
+            "Boys only (XLR); mothers are obligate carriers (usually asymptomatic). "
+            "Recurrent sinopulmonary bacterial infections: Streptococcus pneumoniae, Haemophilus influenzae, "
+            "Staphylococcus aureus, Pseudomonas aeruginosa. "
+            "Onset: typically 6-18 months (maternal antibody wanes by 3-6 months -- protects early). "
+            "PATHOGNOMONIC INFECTIONS: encapsulated bacteria (polysaccharide-capsulated) -- "
+            "these require opsonisation by specific antibody for clearance; "
+            "without antibodies -> repeated pneumonias, sinusitis, otitis media, meningitis, septicaemia. "
+            "Giardia lamblia: intestinal infection common in XLA (IgA in gut normally clears Giardia). "
+            "Enteroviral encephalitis: CRITICAL complication -- enteroviruses (echovirus, poliovirus) "
+            "normally cleared by antibody; XLA patients can develop fatal chronic enteroviral "
+            "meningoencephalitis; live polio vaccine ABSOLUTELY CONTRAINDICATED (OPV). "
+            "ABSENT T-CELL DEFECT: BTK not expressed in T cells -- T-cell numbers and function NORMAL; "
+            "no opportunistic infections (Pneumocystis, CMV, fungi) -- "
+            "this distinguishes XLA from SCID (T-cell defects). "
+            "LABORATORY DIAGNOSIS: "
+            "Absent/very low serum IgG, IgA, IgM, IgE (<0.01 g/L typical); "
+            "CD19+ B cells absent or <1% of lymphocytes (flow cytometry DIAGNOSTIC); "
+            "T cells normal; NK cells normal; "
+            "BTK protein expression absent on monocytes (flow cytometry for BTK protein); "
+            "BTK gene sequencing confirms. "
+            "TREATMENT: "
+            "IVIG (intravenous immunoglobulin) or SCIG (subcutaneous): lifelong replacement; "
+            "Target trough IgG >8 g/L (or higher with chronic lung disease); "
+            "Dose: 400-600 mg/kg IV every 3-4 weeks or SCIG equivalent; "
+            "Antibiotic prophylaxis during infections; "
+            "LIVE VACCINES ABSOLUTELY CONTRAINDICATED: OPV, MMR, varicella, yellow fever, rotavirus -- "
+            "live attenuated organisms can cause disease in immunodeficient patients; "
+            "BCG: absolutely CI (disseminated BCG reported); "
+            "HSCT: not routinely indicated (IVIG management effective); rare cases with malignancy. "
+            "PROGNOSIS: with adequate IVIG replacement, normal lifespan is achievable; "
+            "chronic lung disease (bronchiectasis) from recurrent pneumonias is the main long-term complication."
+        ),
         "locus": "Xq22.1",
-        "omim_gene": 300300,
-        "omim_disease": 300755,
-        "inheritance": "XL — X-linked recessive; males affected; female carriers unaffected (BTK monocyte protein assay detects carriers)",
-        "gene_class": (
-            "BTK is a 659-amino acid Tec-family non-receptor tyrosine kinase. Domain architecture: "
-            "(1) N-terminal PH domain (aa 1-177) — binds phosphatidylinositol-3,4,5-trisphosphate "
-            "(PIP3) generated by PI3Kδ/PI3Kγ downstream of BCR activation, recruiting BTK to "
-            "inner plasma membrane leaflet; (2) TH (Tec homology) domain (aa 178-229) — "
-            "proline-rich region binds SH3 domains for signalling complex assembly; "
-            "(3) SH3 domain (aa 230-285) — protein-protein interaction; (4) SH2 domain "
-            "(aa 286-382) — binds phosphotyrosines on LAB, BLNK, and other adaptor proteins; "
-            "(5) kinase domain (aa 383-659) — catalytic domain; Thr316 auto-phosphorylation "
-            "in PH-TH region and Tyr551 in activation loop of kinase domain are required "
-            "for full BTK activation. In BCR signalling: Antigen → BCR crosslinking → "
-            "LYN-mediated phosphorylation → CD19/PI3Kδ → PIP3 at membrane → BTK-PH "
-            "membrane recruitment → BTK Tyr551 phosphorylation by LYN → BTK "
-            "auto-phosphorylation Tyr223 → BLNK scaffold → PLCγ2 activation → "
-            "DAG + IP3 → PKC + Ca2+ influx → NF-κB + NFAT transcription → B cell "
-            "survival, proliferation, differentiation. Variant distribution in XLA: "
-            "~40% missense (kinase domain most common), ~20% splice-site, ~20% nonsense, "
-            "~15% small deletions/insertions, ~5% large deletions. BTK protein absent in "
-            "monocytes/platelets — Western blot or flow cytometry of BTK protein in "
-            "peripheral monocytes is a rapid diagnostic screen and carrier detection test. "
-            "Genotype-phenotype: no strict correlation — even hypomorphic variants can cause "
-            "full XLA; some PH domain missense → less severe phenotype (partial XLA/CID)."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE,
-        "etiologies": [
-            ("BTK kinase domain missense XL — absent BTK protein, classic XLA, recurrent bacterial infections", 0.40),
-            ("BTK truncating (nonsense/frameshift) XL — absent B cells, severe XLA, early onset <12 months", 0.30),
-            ("BTK splice-site XL — reduced/absent BTK, moderate-severe XLA", 0.20),
-            ("BTK PH domain missense XL — partial XLA, CID phenotype, some residual B cells", 0.10),
-        ],
+        "aa": 638,
+        "kDa": 76,
+        "omim_gene": "300300",
+        "omim_disease": "300755",
+        "inheritance": "XLR -- affects males; females are carriers",
+        "gene_class": "Non-receptor Tec-family tyrosine kinase -- B-cell pre-BCR/BCR signalling",
         "key_alerts": [
-            "BTK-IVIG-LIFELONG-MANDATORY: IVIG replacement is LIFELONG in XLA — every 3-4 weeks to maintain trough IgG >8 g/L; NEVER discontinue; failure to maintain trough levels → recurrent pneumonia, bronchiectasis, irreversible lung damage",
-            "BTK-NO-LIVE-VACCINES-EVER: Live attenuated vaccines ABSOLUTELY CONTRAINDICATED in XLA — oral poliovirus vaccine (OPV) has caused paralytic poliomyelitis; MMR, varicella, rotavirus, yellow fever, live typhoid all contraindicated; INACTIVATED vaccines safe and recommended",
-            "BTK-ECHOVIRUS-MENINGOENCEPHALITIS: Chronic enterovirus/echovirus meningoencephalitis is a late, devastating complication of XLA — presents as progressive neurological decline; diagnose by CSF viral PCR; high-dose IVIG + intrathecal IgG experimental",
-            "BTK-MONOCYTE-PROTEIN-ASSAY-CARRIER: BTK protein absent in monocytes of XLA patients — peripheral blood monocyte BTK Western blot / flow cytometry is a rapid screening test AND identifies female carriers (mosaic BTK expression); request before full sequencing when flow shows absent B cells",
-            "BTK-B-CELL-ABSENT-FLOW: Absent CD19+/CD20+ B cells on peripheral blood flow cytometry (<2% of lymphocytes) is the cardinal diagnostic finding in XLA; complement with absent serum immunoglobulins; normal or elevated T cells and NK cells",
-            "BTK-BRONCHIECTASIS-SURVEILLANCE: Long-term XLA on IVIG → chronic sinopulmonary infections → bronchiectasis in 50% by adulthood; annual HRCT chest from age 10 years; chest physiotherapy; intensive antibiotic treatment of all pulmonary infections",
+            "BTK-LIVE-VACCINES-ABSOLUTELY-CI: ALL live attenuated vaccines are absolutely contraindicated in XLA -- oral polio vaccine (OPV) can cause vaccine-derived poliomyelitis; MMR, varicella, yellow fever, rotavirus, BCG all CI; family contacts should use inactivated polio vaccine (IPV) only",
+            "BTK-ENTEROVIRAL-ENCEPHALITIS: Chronic enteroviral meningoencephalitis is a life-threatening complication of XLA -- echovirus and other enteroviruses cause progressive encephalitis; no effective treatment; high-dose IVIG may slow progression; polio immunisation of contacts is critical",
+            "BTK-B-CELLS-ABSENT-T-CELLS-NORMAL: XLA is a PURE B-cell/antibody defect -- no T-cell or NK-cell defect; no risk of Pneumocystis, fungal, or viral (CMV, EBV) opportunistic infections; this distinguishes XLA from SCID; absence of CD19+ B cells on flow cytometry is the key laboratory marker",
+            "BTK-IVIG-LIFELONG-TROUGH-TARGET: IVIG or SCIG replacement is lifelong and must achieve trough IgG >8 g/L (higher if bronchiectasis present); inadequate replacement -> recurrent sinopulmonary infections -> bronchiectasis -> progressive respiratory failure; trough IgG must be checked before every infusion",
+            "BTK-GIARDIA-ANTIBIOTICS: Giardia lamblia causes chronic diarrhoea in XLA (normally cleared by secretory IgA in the gut); metronidazole or tinidazole treatment; recurrences common; consider longer courses",
+            "BTK-MATERNAL-PROTECTION-6-18M: Maternal IgG is passively transferred transplacentally and protects XLA infants until 3-6 months of age; diagnosis typically delayed until 6-18 months when maternal antibody wanes and infections begin",
         ],
-    },
-    # ── RAG1 — Omenn Syndrome / SCID / Combined Immunodeficiency ──
-    {
-        "gene": "RAG1",
-        "protein": "RAG1 — V(D)J Recombination, Spectrum SCID to Omenn Syndrome to Leaky CID",
-        "alias": (
-            "RAG1; OMIM gene 179615; Omenn OMIM 603554 / SCID OMIM 601457; 11p12; 1043 aa; ~119 kDa; "
-            "RAG1 encodes Recombination-Activating Gene 1, the catalytic endonuclease "
-            "component of the RAG1/RAG2 recombinase complex that initiates V(D)J "
-            "recombination — the somatic DNA rearrangement process that assembles the "
-            "immunoglobulin heavy chain, immunoglobulin light chain, and T cell receptor "
-            "alpha/beta/gamma/delta genes from germline V, D, and J gene segments. "
-            "RAG1 (plus RAG2) introduces double-strand DNA breaks at recombination signal "
-            "sequences (RSS) flanking V, D, and J segments; hairpin intermediates are "
-            "resolved by non-homologous end-joining (NHEJ) factors (Ku70/80, DNA-PKcs, "
-            "Artemis, XRCC4, LigaseIV). Without RAG1 activity, neither B-cell "
-            "immunoglobulin genes nor T-cell receptor genes can be assembled → combined "
-            "B-cell and T-cell developmental arrest. Clinical spectrum of RAG1 variants "
-            "is uniquely broad: (1) Null variants (frameshift, nonsense, large deletion) → "
-            "complete absence of all mature B and T lymphocytes → classic SCID (T-B- NK+ SCID) — "
-            "the most severe combined immunodeficiency; presents within weeks of birth with "
-            "infections, failure to thrive; (2) Hypomorphic missense variants → partial "
-            "RAG1 activity → partial V(D)J recombination → oligoclonal (restricted) T cells "
-            "capable of peripheral expansion; few B cells, elevated IgE → Omenn syndrome: "
-            "erythroderma/generalised rash (95%), hepatosplenomegaly, lymphadenopathy, "
-            "eosinophilia, elevated IgE (despite absent other Ig isotypes), failure to "
-            "thrive; oligoclonal activated T cells infiltrate skin and gut; (3) Intermediate "
-            "variants → combined immunodeficiency (CID) without full Omenn phenotype. "
-            "Diagnosis: absent T and B cells (TREC/KREC NEWBORN SCREENING detects SCID); "
-            "Omenn: elevated IgE, eosinophilia, erythroderma, restricted TCR Vbeta spectratype. "
-            "Treatment: HSCT is curative for all forms; conditioning required; RAG gene therapy "
-            "under development. No live vaccines. IVIG support until HSCT."
-        ),
-        "aa": "1043 aa",
-        "kDa": "~119 kDa",
-        "locus": "11p12",
-        "omim_gene": 179615,
-        "omim_disease": 601457,
-        "inheritance": "AR — biallelic loss-of-function (null SCID); biallelic hypomorphic missense → Omenn/CID phenotype",
-        "gene_class": (
-            "RAG1 is a 1043-amino acid multidomain protein forming a heterotetrameric "
-            "RAG1/RAG2/RAG1/RAG2 synaptic complex. Structural domains: (1) N-terminal "
-            "ubiquitin-like domain (UBL, aa 1-218) — autoinhibitory; binds histone H3K4me3 "
-            "via RAG2 PHD domain for chromatin targeting; (2) central domain (aa 219-383) — "
-            "contributes to RAG1 dimerisation and RAG2 interaction; zinc-binding RING domain "
-            "(aa 265-380) with E3 ubiquitin ligase activity for histone H3 ubiquitylation; "
-            "(3) core RAG1 (aa 384-1008) — essential for catalytic activity; contains the "
-            "nonamer-binding domain (NBD, aa 389-464) that contacts the conserved ACAAAAACC "
-            "nonamer in RSS; the catalytic RNH (RNase H-like) fold with the DDE triad "
-            "(Asp600, Asp708, Glu962) that performs strand cleavage; (4) C-terminal homeodomain "
-            "(aa 1009-1040) — contributes to RSS recognition. Mechanism: RAG1/RAG2 "
-            "recognises 12-RSS and 23-RSS sequences flanking V, D, J segments (12/23 rule) → "
-            "synaptic complex formation → single-strand nicking at RSS border → hairpin "
-            "formation on coding end → NHEJ opening and joining → covalently sealed V(D)J "
-            "joint. Hypomorphic RAG1 variants: residual ~1-5% recombination activity → "
-            "oligoclonal T cells escape thymic selection and cause Omenn syndrome; the same "
-            "variants in compound heterozygosity with null alleles produce intermediate CID. "
-            "Structural studies show Omenn missense variants concentrate at NBD-RSS interface, "
-            "catalytic DDE residues, and RAG2 dimer interface — explaining partial activity. "
-            "RAG2 variants produce an indistinguishable phenotype spectrum (RAG2 also null → "
-            "SCID; hypomorphic → Omenn)."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 1,
         "etiologies": [
-            ("RAG1 biallelic null — classic T-B- NK+ SCID, absent T and B cells, neonatal onset", 0.40),
-            ("RAG1 biallelic hypomorphic missense — Omenn syndrome, erythroderma, eosinophilia, elevated IgE", 0.30),
-            ("RAG1 compound het null/hypomorphic — combined immunodeficiency (CID), partial T/B cells", 0.20),
-            ("RAG1 biallelic partial loss — leaky SCID, delayed-onset CID, recurrent sinopulmonary infections", 0.10),
+            {"variant": "p.Arg525Gln (c.1574G>A)", "type": "missense LOF -- kinase domain", "frequency": "common", "severity": "severe XLA"},
+            {"variant": "p.Leu511Pro (c.1532T>C)", "type": "missense LOF -- kinase domain", "frequency": "moderate", "severity": "severe"},
+            {"variant": "Exon deletion/frameshift", "type": "LOF truncating", "frequency": "~30% of XLA", "severity": "severe"},
+            {"variant": "Splice site mutations", "type": "LOF splice", "frequency": "~15% of XLA", "severity": "variable"},
+            {"variant": "p.Cys154Arg (c.460T>C)", "type": "missense LOF -- SH2 domain", "frequency": "moderate", "severity": "severe"},
         ],
-        "key_alerts": [
-            "RAG1-NEWBORN-SCREENING-TREC: SCID caused by RAG1 biallelic null variants is DETECTED by newborn screening via TREC (T-cell receptor excision circles) quantitation — absent TRECs → immediate immunological work-up; TREC screening saves lives by enabling HSCT before infections",
-            "RAG1-OMENN-ERYTHRODERMA-DIAGNOSIS: Omenn syndrome presents with generalised erythroderma, hepatosplenomegaly, lymphadenopathy, eosinophilia, elevated IgE — DESPITE absent IgG/IgA/IgM; distinguish from Netherton syndrome, GVHD, and IPEX; RAG1/RAG2 sequencing mandatory",
-            "RAG1-HSCT-CURATIVE-URGENT: HSCT is the curative treatment for ALL forms of RAG1 immunodeficiency — SCID and Omenn; pre-HSCT conditioning required (unlike some other SCID forms); refer to PID/HSCT centre IMMEDIATELY on diagnosis; delay increases infection burden and mortality",
-            "RAG1-NO-LIVE-VACCINES: Live attenuated vaccines ABSOLUTELY CONTRAINDICATED — BCG (bacille Calmette-Guérin) administered at birth in many countries can cause disseminated BCG disease in SCID; if BCG given before diagnosis → screen for BCG-osis and treat with anti-mycobacterials",
-            "RAG1-IVIG-BRIDGE-TO-HSCT: IVIG replacement as a bridge to HSCT — maintains passive immunity; does NOT treat the underlying T-cell immunodeficiency; Omenn patients require immunosuppression (cyclosporin + steroids) pre-HSCT to control oligoclonal T-cell-mediated inflammation",
-            "RAG1-GENE-SCORE-SPECTRUM: RAG1 genotype predicts phenotype — null/null → SCID; hypomorphic/hypomorphic → Omenn; null/hypomorphic → CID; request full RAG1 + RAG2 sequencing including large deletions (MLPA) to characterise both alleles and predict severity before HSCT conditioning",
-        ],
+        "stats": {
+            "incidence": "~1:190,000 male births",
+            "igg_at_diagnosis": "<0.1 g/L typical",
+            "cd19_b_cells": "<1% of lymphocytes",
+            "bronchiectasis_risk": "~50% by adult age without good IgG control",
+            "ivig_trough_target": ">8 g/L (>10 g/L with lung disease)",
+        },
+        "dx_delay_distribution": {
+            "infant_6_12m": 30,
+            "infant_12_24m": 45,
+            "child_2_5y": 20,
+            "late_5y_plus": 5,
+        },
     },
-    # ── ADA — ADA-SCID ──
+
+    # -- ADA -- ADA-SCID (Adenosine Deaminase Deficiency) --------------------
     {
         "gene": "ADA",
-        "protein": "Adenosine Deaminase — ADA-SCID, dATP Lymphotoxicity, Strimvelis Gene Therapy EMA 2016",
+        "protein": (
+            "ADA -- 20q13.12 AR -- Adenosine-deaminase-363aa -- "
+            "ADA-SCID-SCID1 -- "
+            "dATP-Accumulates->Lymphocyte-Toxicity->T-B-NK-All-Absent -- "
+            "Gene-Therapy-Strimvelis-EMA-Approved-OTL-101 -- "
+            "PEG-ADA-Bridge-Therapy -- "
+            "HLA-Identical-HSCT-Curative"
+        ),
         "alias": (
-            "ADA; OMIM gene 608958; ADA-SCID OMIM 102700; 20q13.11; 363 aa; ~41 kDa; "
-            "ADA encodes adenosine deaminase, a purine salvage pathway enzyme that "
-            "catalyses the irreversible deamination of adenosine and deoxyadenosine to "
-            "inosine and deoxyinosine respectively. ADA deficiency causes metabolic SCID "
-            "through a distinct mechanism from RAG1: accumulation of deoxyadenosine "
-            "(dAdo) in cells → phosphorylation by intracellular kinases → dATP "
-            "accumulation → severe lymphotoxicity. The key metabolic events: dAdo → "
-            "inhibits S-adenosylhomocysteine hydrolase (SAH hydrolase) → accumulation "
-            "of S-adenosylhomocysteine → transmethylation inhibition; dAdo phosphorylated "
-            "to dATP → dATP accumulates to extraordinarily high levels in lymphocytes "
-            "(which uniquely express deoxycytidine kinase with high dAdo affinity) → "
-            "dATP-mediated inhibition of ribonucleotide reductase → impaired DNA synthesis "
-            "→ lymphocyte apoptosis. T cells are most sensitive, followed by B cells and NK "
-            "cells → severe combined immunodeficiency. Clinical: T-B- NK- or T-B- NK+ SCID "
-            "depending on residual ADA activity; autosomal recessive; affects both sexes. "
-            "Unique features: skeletal abnormalities (chondro-osseous dysplasia — abnormal "
-            "costochondral junctions visible on chest X-ray in 50%); elevated dATP in "
-            "erythrocytes is a diagnostic marker. Treatment options: (1) HSCT — curative "
-            "if matched sibling available; (2) PEG-ADA (pegademase bovine) — intramuscular "
-            "enzyme replacement, corrects metabolic toxicity partially, allows interim "
-            "immune reconstitution; (3) Gene therapy: Strimvelis (autologous CD34+ "
-            "haematopoietic stem cells transduced with ADA-expressing gamma-retroviral vector) "
-            "approved by EMA May 2016 — the first conditionally approved gene therapy for a "
-            "single-gene primary immunodeficiency; manufactured by Orchard Therapeutics at "
-            "a single centre (Milan); superior to PEG-ADA long-term; no graft-vs-host disease risk."
+            "ADA (adenosine deaminase); OMIM gene 608958; "
+            "ADA-SCID (Severe Combined Immunodeficiency type 1) OMIM 102700. "
+            "20q13.12; 363 aa; ~41 kDa; autosomal recessive -- biallelic LOF. "
+            "FUNCTION: ADA is a ubiquitous enzyme of the purine salvage pathway: "
+            "ADA catalyses the irreversible deamination of adenosine -> inosine and "
+            "deoxyadenosine -> deoxyinosine. "
+            "MECHANISM OF IMMUNODEFICIENCY: "
+            "ADA LOF -> deoxyadenosine (dAdo) accumulates -> "
+            "dAdo phosphorylated by deoxycytidine kinase -> dATP accumulates intracellularly; "
+            "dATP is selectively toxic to lymphocytes (especially T cells) because: "
+            "(1) dATP inhibits ribonucleotide reductase -> blocks DNA synthesis; "
+            "(2) dATP triggers apoptosis via mitochondrial pathway; "
+            "(3) lymphocytes have high deoxycytidine kinase and low 5-nucleotidase activity; "
+            "result: T, B, AND NK cells ALL absent (T-B-NK- SCID -- pan-lymphopenia). "
+            "ADA-SCID accounts for ~15% of all SCID cases. "
+            "CLINICAL PHENOTYPE: "
+            "Recurrent opportunistic and non-opportunistic infections from birth; "
+            "Pneumocystis jirovecii pneumonia (PJP/PCP) -- hallmark of T-cell deficiency; "
+            "CMV, EBV, adenovirus, fungal infections; "
+            "Failure to thrive; "
+            "Thymic shadow absent on chest X-ray; "
+            "Skeletal dysplasia (costochondral junctions abnormal on X-ray) -- "
+            "ADA also expressed in osteoblasts -> bony abnormalities unique to ADA-SCID; "
+            "Neurological features: behavioural issues, deafness reported -- ADA expressed in nervous system; "
+            "NBS (newborn screening): T-cell receptor excision circles (TRECs) -- absent in all SCID. "
+            "DIAGNOSIS: "
+            "ADA enzyme activity: measured in erythrocytes (ADA activity <1% of normal); "
+            "dATP elevated in erythrocytes (metabolic marker); "
+            "lymphopenia: absolute lymphocyte count <1000/uL (often <500/uL); "
+            "T, B, NK cells all absent; ADA gene sequencing confirms. "
+            "TREATMENT: "
+            "HSCT (HLA-identical sibling or MUD): curative if available; "
+            "Gene therapy: "
+            "Strimvelis (EMA-approved 2016): ex vivo autologous HSC gamma-retroviral vector gene therapy "
+            "for ADA-SCID; available at San Raffaele Hospital Milan; long-term immune reconstitution; "
+            "OTL-101 (Orchard Therapeutics, lentiviral): FDA/EMA regulatory review pathway; "
+            "PEG-ADA (pegylated bovine ADA; Adagen): enzyme replacement therapy; "
+            "weekly SC injections; provides ADA activity; bridge to HSCT or gene therapy; "
+            "does NOT fully reconstitute immunity but prevents metabolite accumulation; "
+            "prophylaxis: TMP-SMX for PJP; antifungal; CMV monitoring."
         ),
-        "aa": "363 aa",
-        "kDa": "~41 kDa",
-        "locus": "20q13.11",
-        "omim_gene": 608958,
-        "omim_disease": 102700,
-        "inheritance": "AR — autosomal recessive; biallelic loss-of-function causes complete ADA-SCID; hypomorphic → partial/late-onset",
-        "gene_class": (
-            "ADA is a 363-amino acid enzyme of the purine salvage pathway. It functions "
-            "as a homodimer (each monomer ~41 kDa) of the alpha/beta barrel (TIM barrel) "
-            "superfamily. Catalytic mechanism: Zn2+-dependent deamination; the active site "
-            "contains a binuclear zinc centre that activates water for nucleophilic attack "
-            "on the C6-amino group of adenosine/deoxyadenosine — converting the 6-amino "
-            "group to a 6-hydroxyl (keto) group, releasing ammonia and generating inosine/ "
-            "deoxyinosine. Tissue expression: highest in lymphocytes (10-15x higher than "
-            "red blood cells) — explaining lymphocyte-selective toxicity of ADA deficiency. "
-            "ADA is also expressed as a cell surface ecto-enzyme complexed with DPP4/CD26 "
-            "(dipeptidyl peptidase IV), where it modulates adenosine signalling in the "
-            "extracellular microenvironment. Variant distribution: >60 pathogenic variants "
-            "documented; missense variants most common (Arg101Trp, Gly216Arg, Arg211His "
-            "among the more prevalent); null variants (nonsense, frameshift) → complete "
-            "deficiency → classic neonatal SCID; hypomorphic missense (Glu217Lys) → "
-            "residual 1-5% activity → delayed-onset or partial SCID (presenting in late "
-            "childhood or adulthood with recurrent infections and declining lymphocytes). "
-            "Erythrocyte dATP level is the primary metabolic monitoring marker for "
-            "PEG-ADA therapy (target: dATP <0.001 μmol/mL RBC). ADA2 (encoded by CECR1) "
-            "is a separate enzyme causing ADA2 deficiency (DADA2) — a vasculitis/autoinflammatory "
-            "syndrome with polyarteritis nodosa-like features and stroke, NOT immunodeficiency."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 2,
-        "etiologies": [
-            ("ADA biallelic null — classic neonatal T-B- NK- SCID, dATP accumulation, absent lymphocytes", 0.40),
-            ("ADA biallelic missense (hypomorphic) — late-onset SCID, progressive lymphopenia childhood", 0.25),
-            ("ADA compound het null/missense — moderate ADA-SCID, partial immune function, PEG-ADA responsive", 0.25),
-            ("ADA biallelic partial — 'leaky' ADA-SCID, adult-onset lymphopenia, recurrent opportunistic infections", 0.10),
-        ],
+        "locus": "20q13.12",
+        "aa": 363,
+        "kDa": 41,
+        "omim_gene": "608958",
+        "omim_disease": "102700",
+        "inheritance": "AR -- biallelic loss-of-function",
+        "gene_class": "Purine salvage pathway enzyme -- adenosine/deoxyadenosine deaminase",
         "key_alerts": [
-            "ADA-STRIMVELIS-GENE-THERAPY-EMA-2016: Strimvelis (autologous CD34+ HSC + ADA gamma-retroviral vector) is the EMA-approved gene therapy for ADA-SCID — first approved gene therapy for a PIDs; curative without GvHD risk; manufactured at single centre (Milan); consider when no matched sibling donor available",
-            "ADA-PEG-ADA-ENZYME-REPLACEMENT: Pegademase bovine (PEG-ADA) IM weekly/biweekly — corrects metabolic dATP toxicity; allows partial immune reconstitution; use as bridge to HSCT or gene therapy; monitor erythrocyte dATP (target <0.001 μmol/mL RBC) and lymphocyte counts monthly",
-            "ADA-DATP-METABOLIC-MONITORING: dATP accumulation in erythrocytes is the metabolic diagnostic marker — measure erythrocyte dATP by HPLC; elevated dATP confirms ADA deficiency; monitoring on PEG-ADA: dATP should normalise; failure to normalise → insufficient PEG-ADA dosing",
-            "ADA-SKELETAL-CHONDRO-OSSEOUS: Chondro-osseous dysplasia (abnormal costochondral junctions, metaphyseal irregularities) on chest X-ray in ~50% of ADA-SCID — a diagnostic clue distinguishing ADA-SCID from other SCID forms; radiological finding unique to ADA deficiency",
-            "ADA-LATE-ONSET-ADULT-MIMICRY: Hypomorphic ADA variants → delayed-onset ADA deficiency presenting in adulthood with progressive lymphopenia, recurrent infections, and declining immunoglobulins — may mimic CVID; measure ADA enzyme activity in erythrocytes before CVID diagnosis in unexplained progressive lymphopenia",
-            "ADA-NO-LIVE-VACCINES: Live vaccines ABSOLUTELY CONTRAINDICATED; BCG-osis risk if BCG given at birth before diagnosis; on PEG-ADA or gene therapy, immune reconstitution should be documented (T cell counts, lymphoproliferative responses, serology) before any vaccine decisions",
+            "ADA-SCID-T-B-NK-ALL-ABSENT: ADA-SCID is a pan-lymphopenic SCID -- T, B, AND NK cells are all absent; this distinguishes it from XLA (only B cells absent) and XSCID/IL2RG (T-NK absent, B present); dATP toxicity affects ALL lymphocyte lineages",
+            "ADA-GENE-THERAPY-APPROVED: Strimvelis (EMA 2016) is the first approved gene therapy for ADA-SCID; ex vivo autologous HSC treatment with gamma-retroviral vector; available at specialist centres; OTL-101 (lentiviral) in regulatory pipeline; early referral to gene therapy centre is mandatory",
+            "ADA-PEG-ADA-BRIDGE: PEG-ADA (Adagen) enzyme replacement is the bridge to HSCT or gene therapy; weekly SC injection restores ADA activity; does NOT fully reconstitute immunity; do not withhold prophylactic antibiotics (TMP-SMX) while on PEG-ADA",
+            "ADA-SKELETAL-DYSPLASIA-CLUE: Costochondral junction abnormalities on chest X-ray are unique to ADA-SCID among all SCID causes -- a radiological clue that should prompt ADA enzyme assay",
+            "ADA-NBS-TREC: ADA-SCID is detected by newborn screening (TREC assay) -- TRECs absent due to absent T cells; early pre-symptomatic diagnosis dramatically improves outcomes from gene therapy and HSCT",
         ],
+        "etiologies": [
+            {"variant": "p.Arg156Cys (c.466C>T)", "type": "missense LOF", "frequency": "common", "severity": "severe ADA-SCID"},
+            {"variant": "p.Gln3Ter (c.7C>T)", "type": "nonsense LOF", "frequency": "moderate", "severity": "severe"},
+            {"variant": "p.Asp8Asn (c.22G>A)", "type": "missense partial", "frequency": "late-onset phenotype", "severity": "mild/partial ADA deficiency"},
+            {"variant": "Exon deletions (various)", "type": "LOF deletion", "frequency": "~20% of ADA-SCID", "severity": "severe"},
+            {"variant": "p.Gly216Arg (c.646G>A)", "type": "missense LOF", "frequency": "moderate", "severity": "severe"},
+        ],
+        "stats": {
+            "proportion_scid": "~15% of all SCID",
+            "ada_enzyme_activity": "<1% of normal at diagnosis",
+            "lymphocyte_count": "<500/uL typical",
+            "gene_therapy_success": ">90% immune reconstitution with Strimvelis",
+            "hsct_matched_sibling": "~85% survival",
+        },
+        "dx_delay_distribution": {
+            "nbs_detected_0_1m": 25,
+            "infant_1_3m": 45,
+            "infant_3_6m": 20,
+            "late_6m_plus": 10,
+        },
     },
-    # ── CYBB — Chronic Granulomatous Disease ──
+
+    # -- IL2RG -- X-linked SCID (XSCID) --------------------------------------
     {
-        "gene": "CYBB",
-        "protein": "gp91phox / Cytochrome b-245 Beta — CGD, Absent Respiratory Burst, Catalase-Positive Organisms",
+        "gene": "IL2RG",
+        "protein": (
+            "IL2RG -- Xq13.1 XLR -- Common-gamma-chain-gammac-369aa -- "
+            "X-linked-SCID-XSCID-SCIDX1 -- "
+            "Shared-gammac-for-IL-2-IL-4-IL-7-IL-9-IL-15-IL-21-Receptors -- "
+            "LOF->T-B+NK--Phenotype -- "
+            "Gene-Therapy-OTL-101-FDA2024 -- "
+            "HSCT-Curative -- Live-Vaccines-ABSOLUTELY-CI"
+        ),
         "alias": (
-            "CYBB; OMIM gene 300481; CGD OMIM 306400; Xp21.1; 570 aa; ~65 kDa; "
-            "CYBB encodes gp91phox (glycoprotein 91 kDa of phagocyte oxidase), the "
-            "beta subunit and catalytic core of the NADPH oxidase complex (NOX2). "
-            "CYBB mutations cause the most common form of chronic granulomatous disease "
-            "(CGD), accounting for approximately 65-70% of all CGD cases. The NADPH "
-            "oxidase complex is the primary mechanism by which phagocytes (neutrophils, "
-            "macrophages, monocytes, eosinophils) generate reactive oxygen species (ROS) "
-            "to kill ingested pathogens. gp91phox forms a heterodimer with p22phox "
-            "(CYBA) in the phagosomal and plasma membranes; upon phagocyte activation, "
-            "the cytosolic components p47phox (NCF1), p67phox (NCF2), p40phox (NCF4), "
-            "and Rac2 (RHOG2) translocate to the membrane and assemble the active oxidase, "
-            "which transfers electrons from cytosolic NADPH to molecular oxygen across the "
-            "membrane, producing superoxide (O2-) in the phagosome lumen. Superoxide "
-            "is subsequently converted to hydrogen peroxide (H2O2), hydroxyl radical "
-            "(OH•), and hypochlorous acid (HOCl, via myeloperoxidase) — collectively "
-            "killing engulfed microorganisms. In CGD: absent respiratory burst → inability "
-            "to kill CATALASE-POSITIVE organisms (those that destroy their own H2O2, "
-            "thereby evading the H2O2-mediated killing that partially compensates for "
-            "absent O2- in CGD). Classical susceptibility organisms: Aspergillus species "
-            "(most dangerous — pulmonary aspergillosis, invasive aspergillosis), "
-            "Staphylococcus aureus (skin abscesses, lymphadenitis, osteomyelitis), "
-            "Serratia marcescens, Nocardia, Burkholderia cepacia complex (highly lethal "
-            "in CGD — can cause rapidly fatal sepsis), Chromobacterium violaceum "
-            "(tropical CGD), Candida (less common). Catalase-negative organisms "
-            "(Streptococcus, Haemophilus) rarely cause infections — their own H2O2 "
-            "contributes to oxidative killing even in CGD."
+            "IL2RG (interleukin-2 receptor subunit gamma; common gamma chain; gamma-c); "
+            "OMIM gene 308380; X-linked SCID (XSCID; SCIDX1) OMIM 300400. "
+            "Xq13.1; 369 aa; ~42 kDa; X-linked recessive -- affects males; females carriers. "
+            "FUNCTION: IL2RG encodes the common gamma chain (gamma-c), a shared signalling subunit used by "
+            "the receptors for IL-2, IL-4, IL-7, IL-9, IL-15, and IL-21. "
+            "IL-7 receptor (IL-7Ra + gamma-c): essential for T-cell and NK-cell development in the thymus; "
+            "IL-15 receptor (IL-15Ra + IL-2Rb + gamma-c): essential for NK-cell development and homeostasis; "
+            "IL-2 receptor (IL-2Ra + IL-2Rb + gamma-c): T-cell proliferation and survival. "
+            "LOF -> signalling failure through all gamma-c-dependent cytokine receptors -> "
+            "T-cell development fails (IL-7 signalling absent) -> "
+            "NK-cell development fails (IL-15 signalling absent) -> "
+            "B cells are present (B-cell development is not gamma-c-dependent) but FUNCTIONLESS "
+            "(no T-cell help -> no antibody production) -> "
+            "XSCID IMMUNOPHENOTYPE: T-B+NK- (T cells absent, B cells present but non-functional, NK cells absent). "
+            "MOST COMMON FORM OF SCID: XSCID accounts for ~45-50% of all SCID. "
+            "CLINICAL PHENOTYPE: "
+            "Profound susceptibility to ALL pathogens from birth (no T or NK cells). "
+            "Recurrent respiratory infections (RSV, parainfluenza, adenovirus); "
+            "PJP (Pneumocystis jirovecii pneumonia); Mucocutaneous candidiasis; "
+            "CMV, EBV, adenovirus viral infections; Failure to thrive, chronic diarrhoea; "
+            "GvHD from MATERNAL lymphocytes crossing the placenta -- XSCID infants cannot reject non-self lymphocytes; "
+            "GvHD from blood transfusions: ALL blood products must be irradiated and CMV-negative. "
+            "TREATMENT: "
+            "HSCT: HLA-identical sibling: ~95% survival; MUD: ~70-80% survival; "
+            "best outcomes when performed before 3 months of age (before infections); "
+            "Gene therapy: OTL-101 (Lentigen, ex vivo lentiviral, autologous HSC) -- FDA approved 2024; "
+            "earlier generation retroviral vectors associated with insertional oncogenesis (T-cell lymphoma); "
+            "lentiviral vectors have improved safety profile; "
+            "Blood products: MUST be irradiated + CMV-negative + leucodepleted -- "
+            "non-irradiated blood -> transfusion-associated GvHD -> fatal; "
+            "Live vaccines ABSOLUTELY CI: no immune system to contain live organisms."
         ),
-        "aa": "570 aa",
-        "kDa": "~65 kDa",
-        "locus": "Xp21.1",
-        "omim_gene": 300481,
-        "omim_disease": 306400,
-        "inheritance": "XL — X-linked recessive (CYBB); AR forms: CYBA (p22phox), NCF1 (p47phox), NCF2 (p67phox), NCF4 (p40phox)",
-        "gene_class": (
-            "gp91phox (CYBB) is a 570-amino acid integral membrane glycoprotein and the "
-            "catalytic component of NOX2. Structure: six transmembrane helices (TM1-TM6) "
-            "with two heme groups (Fe3+/Fe2+) at fixed potentials coordinated by "
-            "histidine residues in TM3 (His101) and TM5 (His209, His222, His281) — forming "
-            "a bishistidyl heme bridge at the outer TM3-TM5 interface; a large cytosolic "
-            "C-terminal domain (aa 290-570) containing the FAD-binding domain and "
-            "NADPH-binding domain. Electron transport chain: NADPH (cytosolic) → FAD "
-            "(gp91phox C-terminal) → heme 1 → heme 2 → O2 (phagosome lumen) → O2-. "
-            "gp91phox is heavily N-glycosylated (N-glycans on ectodomains at Asn132, "
-            "Asn149, Asn240, Asn265, Asn303) — N-glycosylation is required for "
-            "membrane targeting and p22phox stabilisation; unglycosylated gp91phox is "
-            "retained in ER and rapidly degraded. gp91phox and p22phox (CYBA) are "
-            "obligate heterodimers — absence of either causes degradation of the other "
-            "(explaining why CYBA mutations phenocopy gp91phox deficiency). DHR "
-            "(dihydrorhodamine 123) oxidation assay by flow cytometry is the gold-standard "
-            "CGD diagnostic test — neutrophils from CGD patients show absent or markedly "
-            "reduced DHR fluorescence after PMA stimulation vs robust oxidative burst in "
-            "healthy controls. X-linked CGD: gp91phox protein absent in Western blot; "
-            "female carriers show mosaic DHR oxidation (bimodal distribution — "
-            "proportion of negative cells reflects X-inactivation skewing). AR CGD "
-            "variants (NCF1 most common AR form, ~25% of CGD): DHR absent; gp91phox "
-            "protein present but inactive (cytosolic component missing)."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 3,
-        "etiologies": [
-            ("CYBB null/truncating XL — absent gp91phox, classic severe CGD, recurrent Aspergillus/Staph infections", 0.45),
-            ("CYBB missense XL — absent/reduced gp91phox, CGD, variable severity based on residual oxidase activity", 0.30),
-            ("CYBB splice-site XL — reduced gp91phox, intermediate CGD severity, some residual respiratory burst", 0.15),
-            ("NCF1/CYBA AR — absent p47phox/p22phox, CGD phenotype identical to CYBB, AR inheritance", 0.10),
-        ],
+        "locus": "Xq13.1",
+        "aa": 369,
+        "kDa": 42,
+        "omim_gene": "308380",
+        "omim_disease": "300400",
+        "inheritance": "XLR -- affects males; females are carriers",
+        "gene_class": "Cytokine receptor common gamma chain -- IL-2/-4/-7/-9/-15/-21 signalling subunit",
         "key_alerts": [
-            "CYBB-ASPERGILLUS-MOST-DANGEROUS: Aspergillus is the MOST DANGEROUS pathogen in CGD — invasive pulmonary aspergillosis (IPA) has 30-40% mortality in CGD despite treatment; CT chest at first fever >38.5°C in any CGD patient; empiric voriconazole + specialist consultation; lifelong itraconazole prophylaxis MANDATORY",
-            "CYBB-BURKHOLDERIA-CEPACIA-LETHAL: Burkholderia cepacia complex causes RAPIDLY FATAL sepsis in CGD — intrinsically resistant to many antibiotics; if isolated from any CGD patient → emergency combination antibiotics (meropenem + TMP-SMX ± minocycline); notify CGD specialist immediately",
-            "CYBB-PROPHYLAXIS-LIFELONG-MANDATORY: Lifelong antifungal prophylaxis (itraconazole 100-200 mg/day) AND antibacterial prophylaxis (TMP-SMX 5 mg/kg/day) MANDATORY in ALL CGD patients from diagnosis; prophylaxis reduces infection frequency by >50%; never discontinue prophylaxis",
-            "CYBB-IFN-GAMMA-REDUCES-INFECTIONS-70PCT: IFN-gamma (Actimmune) subcutaneous 3x/week reduces serious infections by ~70% in CGD — mechanism involves upregulation of residual NADPH oxidase activity and alternative antimicrobial pathways; recommended as adjunctive therapy particularly in severe CGD",
-            "CYBB-DHR-ASSAY-DIAGNOSTIC: Dihydrorhodamine (DHR) oxidation flow cytometry is the gold-standard CGD diagnostic test — PMA-stimulated neutrophils show absent DHR fluorescence shift in CGD (vs bright shift in normal); mosaic DHR in female CYBB carriers (X-inactivation); request DHR before genetic confirmation",
-            "CYBB-HSCT-CURATIVE-YOUNG: HSCT is CURATIVE for CGD — consider in young patients with severe/frequently infected CGD, inflammatory complications (colitis, obstructive granulomas), or after life-threatening infections; gene therapy (lentiviral gp91phox) in clinical trials with early promising results",
+            "IL2RG-LIVE-VACCINES-ABSOLUTELY-CI: Live vaccines are absolutely contraindicated in XSCID -- BCG given before diagnosis can cause disseminated BCGosis (fatal); OPV causes vaccine-derived poliovirus infection; MMR, varicella all CI; any live vaccine in the NICU period must be withheld until SCID excluded",
+            "IL2RG-IRRADIATED-BLOOD-MANDATORY: ALL blood transfusions in XSCID/SCID must be irradiated (and CMV-negative, leucodepleted) -- non-irradiated blood contains donor lymphocytes -> transfusion-associated GvHD -> fatal in an immune-deficient host; this is a critical emergency order",
+            "IL2RG-MATERNAL-LYMPHOCYTE-GVHD: Maternal lymphocytes cross the placenta during pregnancy; XSCID infants cannot reject them -> maternal engraftment -> neonatal GvHD (rash, liver disease, failure to thrive); check for maternal T-cell chimaerism if unexplained GvHD features in a male neonate",
+            "IL2RG-GENE-THERAPY-OTL-101: OTL-101 lentiviral gene therapy FDA-approved 2024 for XSCID; early gamma-retroviral vectors caused insertional oncogenesis (T-cell leukaemia); lentiviral vectors have dramatically improved safety; specialist centres only",
+            "IL2RG-T-B-PLUS-NK-MINUS: XSCID immunophenotype is T-B+NK- -- B cells are present (gamma-c not needed for B-cell development) but completely non-functional without T-cell help; NK cells absent (require IL-15/gamma-c); do not be misled by a normal B-cell count",
         ],
+        "etiologies": [
+            {"variant": "p.Arg222Cys (c.664C>T)", "type": "missense LOF -- extracellular domain", "frequency": "common", "severity": "severe XSCID"},
+            {"variant": "p.Tyr103Ter (c.309C>A)", "type": "nonsense LOF", "frequency": "moderate", "severity": "severe"},
+            {"variant": "Exon deletions (various)", "type": "LOF deletion", "frequency": "~20% of XSCID", "severity": "severe"},
+            {"variant": "Splice site variants", "type": "LOF splice", "frequency": "~15% of XSCID", "severity": "variable"},
+            {"variant": "p.Trp237Ter (c.711G>A)", "type": "nonsense LOF -- cytoplasmic domain", "frequency": "less common", "severity": "severe"},
+        ],
+        "stats": {
+            "proportion_scid": "~45-50% of all SCID (most common SCID)",
+            "immunophenotype": "T-B+NK-",
+            "hsct_matched_sibling_survival": "~95%",
+            "hsct_before_3m_advantage": "Best outcomes -- pre-infection HSCT target",
+            "gene_therapy_otl101": "FDA approved 2024 -- lentiviral ex vivo",
+        },
+        "dx_delay_distribution": {
+            "nbs_detected_0_1m": 30,
+            "infant_1_3m": 42,
+            "infant_3_6m": 20,
+            "late_6m_plus": 8,
+        },
     },
-    # ── WAS — Wiskott-Aldrich Syndrome ──
+
+    # -- RAG1 -- Omenn Syndrome / RAG1-SCID -----------------------------------
+    {
+        "gene": "RAG1",
+        "protein": (
+            "RAG1 -- 11p13 AR -- RAG1-1043aa -- "
+            "Omenn-Syndrome-Hypomorphic / RAG1-SCID-Complete-LOF -- "
+            "V-D-J-Recombination-Enzyme -- "
+            "Omenn: Erythroderma+Eosinophilia+Hepatosplenomegaly+Elevated-IgE -- "
+            "Complete-LOF->T-B--SCID-NK-Cells-Present"
+        ),
+        "alias": (
+            "RAG1 (recombination activating gene 1); OMIM gene 179615; "
+            "Omenn Syndrome OMIM 267500; RAG1-SCID (combined immunodeficiency) OMIM 601457. "
+            "11p13; 1043 aa; ~119 kDa; autosomal recessive. "
+            "FUNCTION: RAG1 (together with RAG2) forms the RAG recombinase complex, "
+            "which is essential for V(D)J recombination -- the process by which "
+            "T-cell receptors (TCR) and B-cell receptors (BCR/immunoglobulins) generate diversity. "
+            "RAG1/RAG2 introduce DNA double-strand breaks at recombination signal sequences (RSS) -> "
+            "DNA repair machinery joins V, D, J segments randomly -> "
+            "generates the vast TCR and BCR diversity (>10^18 possible combinations). "
+            "WITHOUT RAG1: No V(D)J recombination -> No functional TCR -> No T cells; "
+            "No functional BCR -> No B cells -> T-B- SCID (NK cells present). "
+            "DUAL PHENOTYPE -- COMPLETE vs HYPOMORPHIC RAG1 MUTATIONS: "
+            "COMPLETE LOF (biallelic null mutations): "
+            "No V(D)J recombination possible -> T-B-NK+ SCID; "
+            "no T or B cells; opportunistic infections from birth; "
+            "HYPOMORPHIC MUTATIONS (partial residual RAG1 activity): "
+            "Omenn Syndrome -- the oligoclonal T-cell expansion syndrome: "
+            "a few T cells escape thymic selection -> oligoclonal activated T cells "
+            "that are autoreactive -> multi-organ infiltration -> "
+            "Erythroderma (total body erythematous rash): lymphocytic skin infiltration; "
+            "Eosinophilia (eosinophils >1500/uL) -- Th2 cytokine skewing; "
+            "Hepatosplenomegaly (lymphocytic organ infiltration); "
+            "Elevated IgE (Th2 bias -- IL-4/IL-13 driven); "
+            "Absent IgG, IgA, IgM (B cells absent/dysfunctional); "
+            "Lymphadenopathy. "
+            "OMENN TRIAD: erythroderma + eosinophilia + hepatosplenomegaly. "
+            "DIAGNOSIS: "
+            "Flow cytometry: T-B-NK+ SCID (complete LOF) or "
+            "oligoclonal T+ (Omenn -- TCR spectratyping shows restricted repertoire); "
+            "RAG1 gene sequencing; elevated serum IgE in Omenn; absent IgG, IgA, IgM. "
+            "TREATMENT: "
+            "HSCT: the ONLY curative option for both SCID and Omenn; "
+            "Omenn pre-transplant: immunosuppression (ciclosporin + steroids) to control "
+            "the autoreactive T cells and skin disease before HSCT; "
+            "PJP prophylaxis (TMP-SMX); antifungal; IVIG; irradiated blood products; live vaccines CI."
+        ),
+        "locus": "11p13",
+        "aa": 1043,
+        "kDa": 119,
+        "omim_gene": "179615",
+        "omim_disease": "601457",
+        "inheritance": "AR -- biallelic (complete LOF or hypomorphic)",
+        "gene_class": "V(D)J recombinase -- adaptive immune receptor diversity generator",
+        "key_alerts": [
+            "RAG1-OMENN-ERYTHRODERMA-PATHOGNOMONIC: Omenn syndrome triad -- total erythroderma + eosinophilia + hepatosplenomegaly in an infant = hypomorphic RAG1/RAG2 (or other SCID gene) until proven otherwise; IgE elevated (unique among SCID presentations); oligoclonal T cells on TCR spectratyping",
+            "RAG1-COMPLETE-LOF-T-B-MINUS: Complete RAG1 biallelic null mutations -> T-B-NK+ SCID; no T or B cells at all; NK cells present (do not use V(D)J recombination); distinguish from XSCID (T-B+NK-) and ADA-SCID (T-B-NK-) by immunophenotype",
+            "RAG1-OMENN-IMMUNOSUPPRESSION-PRE-HSCT: Omenn syndrome requires ciclosporin + corticosteroids BEFORE HSCT to control autoreactive oligoclonal T-cell activation and skin disease; untreated Omenn -> progressive organ damage; HSCT is the only cure",
+            "RAG1-IVIG-MANDATORY: In both SCID and Omenn, IgG, IgA, IgM are absent or severely reduced; IVIG replacement mandatory until post-HSCT B-cell reconstitution; Omenn may have high IgE but this is non-functional allergen-reactive Ig",
+        ],
+        "etiologies": [
+            {"variant": "p.Arg559Ser (c.1675C>A)", "type": "hypomorphic missense -- Omenn", "frequency": "common Omenn", "severity": "Omenn syndrome"},
+            {"variant": "p.Arg229Gln (c.686G>A)", "type": "hypomorphic missense", "frequency": "moderate Omenn", "severity": "Omenn syndrome"},
+            {"variant": "p.Ala444Val (c.1331C>T)", "type": "hypomorphic missense", "frequency": "Omenn", "severity": "Omenn"},
+            {"variant": "Frameshift/nonsense (biallelic)", "type": "complete LOF", "frequency": "SCID phenotype", "severity": "severe T-B-NK+ SCID"},
+            {"variant": "p.Ser401Asn + complete LOF (compound het)", "type": "compound het Omenn", "frequency": "variable", "severity": "Omenn or partial SCID"},
+        ],
+        "stats": {
+            "proportion_scid": "~10-15% of all SCID (RAG1+RAG2 combined)",
+            "omenn_frequency": "Hypomorphic mutations -> ~50% present as Omenn",
+            "ige_omenn": "Typically >1000 IU/mL",
+            "eosinophilia_omenn": ">1500 eosinophils/uL",
+            "hsct_survival": "~70-80% with MUD or haploidentical",
+        },
+        "dx_delay_distribution": {
+            "neonatal_0_1m": 20,
+            "infant_1_3m": 35,
+            "infant_3_6m": 30,
+            "late_6m_plus": 15,
+        },
+    },
+
+    # -- WAS -- Wiskott-Aldrich Syndrome --------------------------------------
     {
         "gene": "WAS",
-        "protein": "WASP — Wiskott-Aldrich Syndrome, Triad Thrombocytopenia+Eczema+Immunodeficiency, HSCT Curative",
+        "protein": (
+            "WAS -- Xp11.23 XLR -- WASP-502aa -- "
+            "Wiskott-Aldrich-Syndrome -- "
+            "Eczema+Thrombocytopenia+Immunodeficiency-TRIAD-PATHOGNOMONIC -- "
+            "Small-Platelets-MPV-less-than-7fL-PATHOGNOMONIC -- "
+            "Splenectomy-CONTRAINDICATED -- "
+            "HSCT-Curative -- Gene-Therapy-OTL-103"
+        ),
         "alias": (
-            "WAS; OMIM gene 300392; WAS OMIM 301000; Xp11.23; 502 aa; ~57 kDa; "
-            "WAS encodes the Wiskott-Aldrich syndrome protein (WASP), a cytoplasmic "
-            "scaffolding/actin nucleation-promoting factor expressed exclusively in "
-            "haematopoietic cells (lymphocytes, platelets, monocytes, neutrophils, "
-            "dendritic cells, NK cells). WASP is an essential regulator of actin "
-            "polymerisation downstream of surface receptor signalling in all haematopoietic "
-            "lineages. Loss-of-function WAS variants cause Wiskott-Aldrich syndrome (WAS), "
-            "with the classic clinical TRIAD: (1) THROMBOCYTOPENIA with SMALL PLATELETS "
-            "(microthromobocytopenia) — platelet count typically 20,000-80,000/μL; platelet "
-            "volume (MPV) LOW (4-5 fL vs normal 7-11 fL); small platelet size is unique "
-            "and near-pathognomonic; autoimmune platelet destruction component (splenic) "
-            "also contributes; life-threatening bleeding episodes (intracranial haemorrhage "
-            "in 1-10%); (2) ECZEMA — atopic dermatitis-like, often severe, refractory to "
-            "standard treatment, begins in infancy; driven by T regulatory cell dysfunction "
-            "and Th2 skewing; (3) IMMUNODEFICIENCY — combined B and T cell dysfunction; "
-            "progressive decline in lymphocyte numbers and function with age; poor antibody "
-            "responses to polysaccharide antigens; recurrent bacterial otitis media, "
-            "pneumonia, sinusitis; viral infections (herpesviruses, CMV, EBV); susceptibility "
-            "to P. jirovecii pneumonia (PJP); elevated IgA/IgE but low IgM. WAS gene score "
-            "1-5 correlates with clinical severity based on variant type and WASP expression: "
-            "score 1-2 (missense, partial WASP) → X-linked thrombocytopenia (XLT) — "
-            "thrombocytopenia predominant, milder immunodeficiency; score 3-5 (null, absent "
-            "WASP) → classic WAS with full triad + autoimmune complications + lymphoma risk. "
-            "HSCT is curative for all forms. WAS gene therapy (lentiviral) shows excellent "
-            "results in clinical trials."
+            "WAS (Wiskott-Aldrich Syndrome Protein; WASP); OMIM gene 300392; "
+            "Wiskott-Aldrich Syndrome (WAS) OMIM 301000. "
+            "Xp11.23; 502 aa; ~53 kDa; X-linked recessive -- affects males; females are carriers. "
+            "FUNCTION: WASP is a haematopoietic cell-specific intracellular signalling molecule "
+            "that links surface receptors to the actin cytoskeleton. "
+            "WASP activates the Arp2/3 complex -> branched actin polymerisation -> "
+            "essential for: "
+            "(1) T-cell immune synapse formation (WASP required for TCR-APC contact); "
+            "(2) NK-cell cytotoxic synapse; "
+            "(3) B-cell receptor signalling and antibody class switching; "
+            "(4) Platelet formation from megakaryocytes -- absence -> small, poorly functional platelets -- "
+            "MICROPLATELETS, MPV <7 fL; "
+            "(5) Dendritic cell migration and antigen presentation. "
+            "THE PATHOGNOMONIC TRIAD: "
+            "1. ECZEMA: typically severe, atopic-like; starts in infancy; may be the first sign; "
+            "mechanism: impaired T regulatory cell function -> Th2 skewing -> atopic disease. "
+            "2. THROMBOCYTOPENIA: low platelet COUNT + small platelet SIZE (microplatelets MPV <7 fL); "
+            "bleeding risk: petechiae, bruising, gastrointestinal bleeding, intracranial haemorrhage (ICH); "
+            "ICH is the most feared complication (10-15% of untreated patients); "
+            "MICROPLATELETS ARE PATHOGNOMONIC: MPV <7 fL distinguishes WAS from all other "
+            "thrombocytopenias (ITP, Bernard-Soulier, MYH9 disorders -- all have LARGE platelets). "
+            "3. IMMUNODEFICIENCY: "
+            "Recurrent sinopulmonary bacterial infections; "
+            "Opportunistic infections (PJP, CMV, herpes); "
+            "Autoimmune disease (haemolytic anaemia, vasculitis, nephritis) -- 40-70%; "
+            "Lymphoma (especially EBV-driven B-cell lymphoma) -- long-term risk 13-22%. "
+            "SPLENECTOMY -- ABSOLUTELY CONTRAINDICATED: "
+            "Splenectomy raises platelet count but removes the last line of phagocytic defence -> "
+            "overwhelming post-splenectomy infection (OPSI) from encapsulated bacteria. "
+            "TREATMENT: "
+            "HSCT: only curative option; best outcomes before age 5; MSD/MUD acceptable; "
+            "excellent outcomes (>90% survival) at experienced centres; "
+            "Gene therapy: OTL-103 (Orchard Therapeutics, lentiviral, ex vivo) -- clinical trials; "
+            "IVIG (for antibody deficiency); TMP-SMX (PJP prophylaxis); "
+            "Acyclovir/antiviral prophylaxis; "
+            "Platelet transfusion for bleeding (not routine -- alloimmunisation risk)."
         ),
-        "aa": "502 aa",
-        "kDa": "~57 kDa",
         "locus": "Xp11.23",
-        "omim_gene": 300392,
-        "omim_disease": 301000,
-        "inheritance": "XL — X-linked recessive; WAS gene score 1-5 determines severity (XLT vs classic WAS vs severe WAS)",
-        "gene_class": (
-            "WASP is a 502-amino acid multi-domain scaffold and actin nucleation-promoting "
-            "factor (NPF). Domain architecture: (1) N-terminal WASP homology 1 domain "
-            "(WH1/EVH1, aa 1-106) — binds WASp-interacting protein (WIP/WIPF1), which "
-            "stabilises WASP and prevents its degradation; (2) basic region (BR, aa 107-170) — "
-            "binds phosphoinositides (PIP2) and TOCA1 for membrane localisation; contains "
-            "GTPase-binding domain (GBD/CRIB, aa 201-321) — binds active Cdc42-GTP, "
-            "releasing autoinhibitory conformation; (3) polyproline (PP) region (aa 322-400) — "
-            "binds SH3-domain adaptor proteins (NCK, FYN, GRB2, ITK, PSTPIP1) for signalling "
-            "complex assembly; (4) VCA (verprolin homology-central-acidic) domain (aa 401-502) — "
-            "binds Arp2/3 complex and G-actin; activates Arp2/3 to nucleate branched F-actin "
-            "networks. Activation mechanism: resting WASP is autoinhibited (GBD folds back onto "
-            "VCA, masking Arp2/3-binding); Cdc42-GTP binding to GBD + PIP2 binding to BR → "
-            "conformational opening → VCA exposed → Arp2/3 activation → actin branching. "
-            "Cellular functions: immunological synapse formation (TCR and BCR signalling), "
-            "platelet cytoskeletal organisation (platelet spreading and activation), NK cell "
-            "cytotoxic lytic granule polarisation, dendritic cell migration and podosome "
-            "formation. WAS phenotype of platelets: absent WASP → impaired platelet "
-            "cytoskeletal dynamics → small, fragile platelets with accelerated splenic "
-            "destruction and impaired megakaryocyte proplatelet formation. Small platelet "
-            "size (MPV <5 fL) + low platelet count = pathognomonic; normal MPV in ITP "
-            "distinguishes ITP from XLT/WAS. WASP protein expression in lymphocytes "
-            "by flow cytometry is a rapid functional screen."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 4,
-        "etiologies": [
-            ("WAS null/absent WASP — score 3-5, classic WAS triad (thrombocytopenia + eczema + immunodeficiency), autoimmunity", 0.40),
-            ("WAS missense partial WASP — score 1-2, X-linked thrombocytopenia (XLT), mild-moderate phenotype", 0.30),
-            ("WAS truncating/splice-site — score 4-5, severe WAS, lymphoma risk, autoimmune haemolytic anaemia", 0.20),
-            ("WAS GOF missense (gain of function) — X-linked neutropenia (XLN), constitutive WASP activation", 0.10),
-        ],
+        "aa": 502,
+        "kDa": 53,
+        "omim_gene": "300392",
+        "omim_disease": "301000",
+        "inheritance": "XLR -- affects males; females are carriers",
+        "gene_class": "Haematopoietic actin cytoskeleton regulator -- Arp2/3 activator (WASP)",
         "key_alerts": [
-            "WAS-SMALL-PLATELETS-PATHOGNOMONIC: Small platelet size (MPV <5 fL) + thrombocytopenia is near-PATHOGNOMONIC for WAS/XLT — normal or large platelets in ITP; ALWAYS measure MPV in thrombocytopenic male infants; do NOT diagnose ITP in a male infant without ruling out WAS",
-            "WAS-INTRACRANIAL-HAEMORRHAGE-RISK: Intracranial haemorrhage (ICH) occurs in 1-10% of WAS patients — leading cause of death in unsupported patients; URGENT platelet transfusion for ICH; low threshold for prophylactic platelet transfusion before procedures; HSCT eliminates ICH risk",
-            "WAS-HSCT-CURATIVE-ALL-FORMS: HSCT is CURATIVE for classic WAS AND XLT — corrects thrombocytopenia, eczema, immunodeficiency, and autoimmune complications; best outcomes with matched sibling donor (OS >90%) or MUD before age 5; gene therapy (lentiviral WAS) shows equivalent results in trials",
-            "WAS-GENE-SCORE-PREDICTS-THERAPY: WAS gene score 1-2 (XLT) → may consider watchful waiting for mild cases; score 3-5 (classic WAS) → HSCT recommended early; GOF variants (score 5 XLN) → different management; always classify by WASP protein expression + clinical score before therapy decision",
-            "WAS-AUTOIMMUNITY-LATE-COMPLICATION: Autoimmune complications (haemolytic anaemia, neutropenia, vasculitis, nephritis, inflammatory bowel disease) develop in ~70% of classic WAS with increasing age — driven by Treg dysfunction; rituximab + IVIG for autoimmune cytopenias; HSCT prevents autoimmune progression",
-            "WAS-EBV-LYMPHOMA-SURVEILLANCE: Classic WAS (score 3-5) has 10-22% lifetime risk of EBV-associated B-cell lymphoma — annual EBV PCR in peripheral blood; low threshold for LDH + imaging; rituximab for EBV-driven lymphoproliferation; HSCT before lymphoma development is strongly preferred",
+            "WAS-TRIAD-PATHOGNOMONIC: Eczema + thrombocytopenia + recurrent infections in a male infant = Wiskott-Aldrich Syndrome until proven otherwise; the combination of all three is virtually pathognomonic; any one alone has a broad differential",
+            "WAS-MICROPLATELETS-PATHOGNOMONIC: Mean platelet volume (MPV) <7 fL with thrombocytopenia is PATHOGNOMONIC for WAS -- all other thrombocytopenias causing concern (ITP, TTP, Bernard-Soulier) have large or normal platelets; always request MPV with platelet count in infant thrombocytopenia",
+            "WAS-SPLENECTOMY-CONTRAINDICATED: Splenectomy is ABSOLUTELY CONTRAINDICATED in WAS -- it raises platelets temporarily but removes critical anti-bacterial phagocytic defence and risks fatal overwhelming post-splenectomy infection (OPSI); HSCT is the only appropriate curative intervention",
+            "WAS-ICH-RISK: Intracranial haemorrhage (ICH) occurs in 10-15% of untreated WAS -- a leading cause of death; maintain platelet count >20 x 10^9/L target; avoid NSAIDs and aspirin; any severe headache or altered consciousness in WAS = emergency CT head",
+            "WAS-LYMPHOMA-RISK: EBV-driven B-cell lymphoma risk is 13-22% by adult age in WAS; annual surveillance with EBV PCR (quantitative); any lymphadenopathy + EBV viraemia -> investigate urgently; HSCT before lymphoma is strongly preferred",
         ],
+        "etiologies": [
+            {"variant": "p.Arg86Cys (c.256C>T)", "type": "missense -- WH1 domain", "frequency": "common -- mild phenotype", "severity": "XLT (X-linked thrombocytopenia)"},
+            {"variant": "p.Arg86His (c.257G>A)", "type": "missense -- WH1 domain", "frequency": "common -- variable", "severity": "variable WAS/XLT"},
+            {"variant": "p.Ala47Thr (c.139G>A)", "type": "missense", "frequency": "moderate", "severity": "classical WAS"},
+            {"variant": "Exon deletions/frameshift", "type": "LOF truncating", "frequency": "~30% WAS", "severity": "severe WAS"},
+            {"variant": "Splice site mutations", "type": "LOF splice", "frequency": "~20% WAS", "severity": "variable"},
+        ],
+        "stats": {
+            "incidence": "~1:100,000 male births",
+            "platelet_count": "20-80 x 10^9/L typical",
+            "mpv": "<7 fL (pathognomonic)",
+            "ich_risk": "10-15% without definitive treatment",
+            "autoimmune_risk": "40-70%",
+            "lymphoma_risk": "13-22% by adult age",
+        },
+        "dx_delay_distribution": {
+            "neonatal_0_1m": 35,
+            "infant_1_6m": 40,
+            "child_6m_2y": 20,
+            "late_2y_plus": 5,
+        },
     },
-    # ── LRBA — LRBA Deficiency ──
+
+    # -- DOCK8 -- DOCK8 Deficiency / HIES Type 2 ------------------------------
+    {
+        "gene": "DOCK8",
+        "protein": (
+            "DOCK8 -- 9p24.3 AR -- DOCK8-2099aa -- "
+            "DOCK8-Deficiency-HIES-Type-2-Hyper-IgE-Syndrome-2 -- "
+            "Severe-Eczema+Cutaneous-Viral-Molluscum-HPV-PATHOGNOMONIC -- "
+            "Elevated-IgE+Low-IgM -- "
+            "STAT3-HIES-TYPE-1-AD-form-KEY-DDx -- "
+            "HSCT-Curative"
+        ),
+        "alias": (
+            "DOCK8 (dedicator of cytokinesis 8); OMIM gene 611432; "
+            "Hyper-IgE Syndrome type 2 (HIES2; DOCK8 deficiency) OMIM 243700. "
+            "9p24.3; 2099 aa; ~237 kDa; autosomal recessive -- biallelic LOF. "
+            "FUNCTION: DOCK8 is a guanine nucleotide exchange factor (GEF) for CDC42 and RAC1, "
+            "activating Rho-family GTPases that regulate the actin cytoskeleton. "
+            "DOCK8 is essential for: "
+            "(1) NK-cell and T-cell immune synapse formation and cytotoxic killing; "
+            "(2) T-cell survival in peripheral non-lymphoid tissues (especially skin); "
+            "(3) B-cell migration and survival in germinal centres; "
+            "(4) NK-cell antiviral responses in peripheral tissues. "
+            "DOCK8 LOF -> NK cells fail to form immunological synapses against virus-infected cells -> "
+            "T cells fail to survive in peripheral tissues -> "
+            "profound susceptibility to cutaneous viral infections. "
+            "CLINICAL PHENOTYPE -- THE DOCK8 FINGERPRINT: "
+            "SEVERE ECZEMA: recalcitrant atopic dermatitis; begins in infancy. "
+            "CUTANEOUS VIRAL INFECTIONS -- PATHOGNOMONIC: "
+            "Molluscum contagiosum: extensive, confluent, resistant to treatment -- "
+            "hundreds of lesions; persistent despite standard treatments; "
+            "Human papillomavirus (HPV): extensive warts (verrucae); anogenital HPV; "
+            "HPV-associated squamous cell carcinoma risk; "
+            "Herpes simplex virus (HSV): recurrent extensive herpetic lesions; eczema herpeticum; "
+            "Varicella-zoster virus (VZV): severe primary chickenpox; recurrent zoster. "
+            "THESE EXTENSIVE CUTANEOUS VIRAL INFECTIONS ARE THE PATHOGNOMONIC FEATURE: "
+            "extensive Molluscum + HPV warts in a child with eczema = DOCK8 until proven otherwise. "
+            "IMMUNOLOGICAL PARAMETERS: "
+            "Elevated serum IgE: often >1000-10000 IU/mL; "
+            "Low serum IgM: characteristic (unlike STAT3-HIES where IgM is typically normal); "
+            "Variable IgG; Low NK-cell function; Low CD8+ T-cell counts. "
+            "MALIGNANCY RISK: HPV-associated squamous cell carcinoma; EBV-associated lymphoma. "
+            "STAT3-HIES (TYPE 1) -- KEY DDx: "
+            "STAT3 GOF mutations -> HIES type 1 (autosomal DOMINANT): "
+            "eczema + elevated IgE + recurrent pneumonias + skeletal abnormalities "
+            "(hyperextensible joints, retained primary teeth, scoliosis) + coarse facies; "
+            "Pneumatocele formation (hallmark of STAT3-HIES, NOT seen in DOCK8); "
+            "DOCK8: AR, more severe T and NK defects, cutaneous viral infections dominant; "
+            "STAT3-HIES: AD, skeletal/dental/pulmonary dominant. "
+            "TREATMENT: "
+            "HSCT: curative for DOCK8 deficiency; eliminates skin infections post-transplant; "
+            "IFN-alpha: some benefit for Molluscum; Prophylactic antivirals (acyclovir) and antibiotics; "
+            "HPV vaccination (before HPV exposure if possible); IVIG (antibody replacement)."
+        ),
+        "locus": "9p24.3",
+        "aa": 2099,
+        "kDa": 237,
+        "omim_gene": "611432",
+        "omim_disease": "243700",
+        "inheritance": "AR -- biallelic loss-of-function",
+        "gene_class": "Rho-GEF actin cytoskeleton regulator -- CDC42/RAC1 GEF in lymphocytes",
+        "key_alerts": [
+            "DOCK8-CUTANEOUS-VIRAL-INFECTIONS-PATHOGNOMONIC: Extensive Molluscum contagiosum + HPV warts in a child with severe eczema = DOCK8 deficiency until proven otherwise; hundreds of Molluscum lesions resistant to treatment; extensive anogenital HPV warts; this combination is the PATHOGNOMONIC fingerprint of DOCK8 deficiency",
+            "DOCK8-VS-STAT3-HIES-DDx: DOCK8 deficiency (AR) and STAT3 HIES (AD) both cause eczema + elevated IgE but differ: DOCK8 has cutaneous viral infections + low IgM + T/NK dysfunction; STAT3-HIES has pneumatoceles + retained primary teeth + skeletal abnormalities + coarse facies -- perform STAT3 sequencing simultaneously",
+            "DOCK8-HPV-CARCINOMA-RISK: Extensive HPV infection -> HPV-associated squamous cell carcinoma risk (anal, oropharyngeal, vulval/cervical); annual surveillance with gynaecological and dermatological examination; HPV vaccination should be offered early; HSCT may halt HPV-driven dysplasia progression",
+            "DOCK8-LOW-IGM-CLUE: Low serum IgM is characteristic of DOCK8 deficiency and helps distinguish it from STAT3-HIES (where IgM is usually normal); combined low IgM + elevated IgE + eczema + cutaneous viral infections = DOCK8 panel sequencing mandatory",
+            "DOCK8-HSCT-CURATIVE: HSCT is the only curative treatment; post-HSCT resolution of Molluscum contagiosum and HPV warts is dramatic and often complete; best outcomes with early HSCT before HPV-associated malignancy or organ damage develops",
+        ],
+        "etiologies": [
+            {"variant": "Large exon deletions (genomic)", "type": "LOF deletion -- most common", "frequency": "~50% of DOCK8 deficiency", "severity": "severe"},
+            {"variant": "Frameshift insertions/deletions", "type": "LOF frameshift", "frequency": "~25%", "severity": "severe"},
+            {"variant": "Splice site mutations", "type": "LOF splice", "frequency": "~15%", "severity": "severe"},
+            {"variant": "Nonsense mutations (various exons)", "type": "LOF nonsense", "frequency": "~10%", "severity": "severe"},
+            {"variant": "p.Arg1749Ter (c.5245C>T)", "type": "nonsense LOF", "frequency": "reported", "severity": "severe"},
+        ],
+        "stats": {
+            "proportion_hies": "AR form -- HIES type 2; STAT3-HIES is the AD type 1",
+            "ige_range": "1000-100000 IU/mL",
+            "igm_level": "Low -- characteristic DDx from STAT3-HIES",
+            "molluscum_prevalence": ">90% of DOCK8 patients",
+            "malignancy_risk": "Significant HPV-SCC and EBV-lymphoma risk",
+        },
+        "dx_delay_distribution": {
+            "infant_0_12m": 15,
+            "child_1_5y": 45,
+            "child_5_10y": 30,
+            "late_10y_plus": 10,
+        },
+    },
+
+    # -- TNFRSF13B / TACI -- CVID2 --------------------------------------------
+    {
+        "gene": "TNFRSF13B",
+        "protein": (
+            "TNFRSF13B -- 17p11.2 AD/AR -- TACI-293aa -- "
+            "CVID2-Common-Variable-Immunodeficiency-type-2 -- "
+            "B-cell-survival-receptor-for-BAFF-and-APRIL -- "
+            "LOF->Hypogammaglobulinaemia-IgG+IgA-predominantly -- "
+            "IVIG-SCIG-Lifelong -- Granulomatous-Disease-10-20pct -- "
+            "Autoimmune-Cytopenias -- Lymphoma-Risk-5-fold"
+        ),
+        "alias": (
+            "TNFRSF13B (tumour necrosis factor receptor superfamily member 13B; TACI -- "
+            "transmembrane activator and CAML interactor); OMIM gene 604907; "
+            "Common Variable Immunodeficiency type 2 (CVID2) OMIM 240500. "
+            "17p11.2; 293 aa; ~32 kDa; autosomal dominant (heterozygous LOF) or "
+            "autosomal recessive (biallelic LOF -- typically more severe). "
+            "FUNCTION: TACI is a receptor on B cells that binds two key survival/differentiation factors: "
+            "BAFF (B-cell activating factor of the TNF family; BLyS) and APRIL "
+            "(A proliferation-inducing ligand). "
+            "TACI signalling is essential for: "
+            "(1) Class-switch recombination (IgM -> IgG, IgA, IgE); "
+            "(2) B-cell survival in the marginal zone and germinal centre; "
+            "(3) Plasma cell differentiation and long-lived plasma cell maintenance. "
+            "TACI LOF -> impaired BAFF/APRIL signalling -> "
+            "failure of B-cell class-switching -> predominantly IgG and IgA deficiency -> "
+            "hypogammaglobulinaemia. "
+            "CVID -- THE CLINICAL SYNDROME: "
+            "Most common symptomatic primary immunodeficiency in adults; "
+            "Onset: typically second-fourth decade (bimodal: 5-10y and 20-40y); "
+            "DIAGNOSTIC CRITERIA for CVID: "
+            "Serum IgG <7 g/L (>2 SD below age-normal); "
+            "One or both of IgA <0.07 g/L and IgM <0.40 g/L; "
+            "Absent vaccine responses (pneumococcal/tetanus); "
+            "Age >2 years; other causes excluded. "
+            "TNFRSF13B is found in ~8-10% of CVID cases. "
+            "CLINICAL COMPLICATIONS: "
+            "Recurrent sinopulmonary bacterial infections: Streptococcus pneumoniae, H. influenzae; "
+            "Giardia lamblia intestinal infection (secretory IgA deficiency); "
+            "Granulomatous disease: sarcoid-like non-caseating granulomas in lung (GLILD), "
+            "liver, spleen, lymph nodes -- in 10-20% of CVID; "
+            "GLILD (granulomatous-lymphocytic interstitial lung disease): "
+            "progressive pulmonary infiltrates + restrictive lung disease; "
+            "CT chest: bilateral ground-glass opacities, nodules, hilar lymphadenopathy; "
+            "Autoimmune cytopenias: AIHA, ITP, neutropenia -- in ~20-30% of CVID; "
+            "Lymphoma risk: 5-fold increased risk versus general population; "
+            "particularly MALT lymphoma and diffuse large B-cell lymphoma. "
+            "LIVE VACCINES CI: no live vaccines -- antibody-deficient, impaired immune responses. "
+            "TREATMENT: "
+            "IVIG: 400-600 mg/kg q3-4 weeks; target trough >8 g/L; "
+            "SCIG: equivalent subcutaneous alternative -- preferred by many patients; "
+            "Granulomatous disease: rituximab +/- steroids; "
+            "Autoimmune cytopenias: steroids, IVIG high-dose, rituximab."
+        ),
+        "locus": "17p11.2",
+        "aa": 293,
+        "kDa": 32,
+        "omim_gene": "604907",
+        "omim_disease": "240500",
+        "inheritance": "AD (heterozygous LOF -- incomplete penetrance) or AR (biallelic -- more severe)",
+        "gene_class": "TNF receptor superfamily -- BAFF/APRIL B-cell survival receptor",
+        "key_alerts": [
+            "TNFRSF13B-CVID-IVIG-LIFELONG: CVID requires lifelong IVIG or SCIG replacement -- not a temporary measure; target trough IgG >8 g/L (>10 g/L with bronchiectasis or GLILD); inadequate replacement -> progressive bronchiectasis; never stop replacement without specialist review",
+            "TNFRSF13B-GLILD-PULMONARY: Granulomatous-lymphocytic interstitial lung disease (GLILD) in 10-20% of CVID -- sarcoid-like granulomas in lung, liver, spleen; CT chest: bilateral nodules, ground-glass, hilar lymphadenopathy; rituximab +/- steroids are treatment; annual lung function testing mandatory",
+            "TNFRSF13B-AUTOIMMUNE-CYTOPENIAS: Autoimmune haemolytic anaemia and ITP occur in 20-30% of CVID -- paradoxically, immune dysregulation alongside immunodeficiency; AIHA + ITP workup (DAT, reticulocytes, platelet antibodies) at any cytopaenia",
+            "TNFRSF13B-LYMPHOMA-SURVEILLANCE: 5-fold increased lymphoma risk in CVID -- annual examination for lymphadenopathy; LDH monitoring; PET-CT if suspicious lymphadenopathy; EBV PCR annually; any unexplained B symptoms -> urgent lymphoma workup",
+            "TNFRSF13B-LIVE-VACCINES-CI: No live vaccines -- CVID patients cannot generate protective responses and live organisms may cause disease; all household contacts should use inactivated vaccines; annual inactivated influenza vaccine recommended",
+        ],
+        "etiologies": [
+            {"variant": "p.Cys104Arg (c.310T>C)", "type": "LOF missense -- BAFF-R binding domain", "frequency": "most common CVID-associated TACI variant", "severity": "CVID -- variable penetrance"},
+            {"variant": "p.Ala181Glu (c.542C>A)", "type": "LOF missense", "frequency": "common -- AD", "severity": "CVID"},
+            {"variant": "p.Pro251Leu (c.752C>T)", "type": "missense -- partial LOF", "frequency": "moderate", "severity": "mild CVID"},
+            {"variant": "Homozygous TACI LOF", "type": "AR biallelic", "frequency": "rare -- more severe", "severity": "severe CVID"},
+            {"variant": "p.Arg202His (c.605G>A)", "type": "missense LOF", "frequency": "moderate", "severity": "CVID"},
+        ],
+        "stats": {
+            "proportion_cvid": "~8-10% of CVID has TNFRSF13B variants",
+            "igg_at_diagnosis": "<5 g/L typical",
+            "granulomatous_disease": "10-20% of CVID",
+            "autoimmune_cytopenias": "20-30% of CVID",
+            "lymphoma_risk": "5-fold above general population",
+        },
+        "dx_delay_distribution": {
+            "child_1_5y": 10,
+            "child_5_15y": 25,
+            "young_adult_15_30y": 45,
+            "adult_30y_plus": 20,
+        },
+    },
+
+    # -- LRBA -- LRBA Deficiency / CVID8 --------------------------------------
     {
         "gene": "LRBA",
-        "protein": "LRBA — CVID-like + Autoimmunity + IBD + Organomegaly, CTLA4 Recycling Defect, Abatacept Response",
-        "alias": (
-            "LRBA; OMIM gene 606453; LRBA deficiency OMIM 614700; 4q31.3; 2863 aa; ~321 kDa; "
-            "LRBA encodes LPS-responsive beige-like anchor protein, a member of the BEACH "
-            "(beige and Chediak-Higashi) domain-containing protein family involved in "
-            "vesicular trafficking and endosomal recycling. LRBA is essential for the "
-            "recycling of CTLA4 (CD152) from late endosomal compartments back to the cell "
-            "surface in regulatory T cells (Tregs) and activated effector T cells. The "
-            "mechanistic pathway: CTLA4 is constitutively internalised from the plasma "
-            "membrane via clathrin-mediated endocytosis into early endosomes → normally "
-            "LRBA recruits the retromer complex (VPS35/VPS26/VPS29) and AP1 to CTLA4-"
-            "containing endosomes → CTLA4 is recycled back to the cell surface for "
-            "continued B7 ligand downregulation on antigen-presenting cells. Without LRBA: "
-            "internalised CTLA4 is shunted to lysosomes for degradation rather than "
-            "recycled → net reduction in surface CTLA4 expression on Tregs and activated "
-            "T cells despite normal CTLA4 mRNA. The consequence is functional CTLA4 "
-            "haploinsufficiency — identical to CTLA4 haploinsufficiency syndrome "
-            "(heterozygous CTLA4 mutations). Clinical phenotype of LRBA deficiency is "
-            "a primary immunodeficiency WITH prominent autoimmunity: (1) "
-            "Hypogammaglobulinaemia (CVID-like) — low IgG, IgA, IgM; recurrent bacterial "
-            "infections; (2) Autoimmunity — autoimmune haemolytic anaemia, autoimmune "
-            "thrombocytopenia (ITP), type 1 diabetes, thyroiditis, hepatitis; (3) "
-            "Inflammatory bowel disease — severe Crohn's-like or UC-like intestinal "
-            "inflammation in >50%; (4) Organomegaly — splenomegaly, hepatomegaly, "
-            "lymphadenopathy, lymphoproliferation; (5) Granulomatous disease — granulomata "
-            "in lung, gut, liver. Critical treatment insight: abatacept (CTLA4-Ig, "
-            "Orencia) — a fusion protein of CTLA4 ectodomain and IgG1-Fc — directly "
-            "restores CTLA4 signalling by binding and downregulating B7.1/CD80 and "
-            "B7.2/CD86 on APCs, bypassing the LRBA recycling defect; dramatic clinical "
-            "responses reported, including resolution of IBD, autoimmune cytopenias, "
-            "and lymphoproliferation."
+        "protein": (
+            "LRBA -- 4q31.3 AR -- LRBA-2863aa -- "
+            "CVID8-LRBA-Deficiency-Immune-Dysregulation -- "
+            "Regulates-CTLA-4-Recycling -- "
+            "LOF->CTLA-4-Degraded->Uncontrolled-T-Cell-Activation -- "
+            "AIHA+IBD+Interstitial-Lung-Disease-DOMINANT -- "
+            "Abatacept-DRAMATICALLY-Effective-PATHOGNOMONIC-TREATMENT-RESPONSE -- "
+            "IVIG-Abatacept-HSCT-Curative"
         ),
-        "aa": "2863 aa",
-        "kDa": "~321 kDa",
+        "alias": (
+            "LRBA (LPS-responsive beige-like anchor protein); OMIM gene 606453; "
+            "Common Variable Immunodeficiency type 8 with autoimmunity (CVID8) OMIM 614700. "
+            "4q31.3; 2863 aa; ~319 kDa; autosomal recessive -- biallelic LOF. "
+            "FUNCTION: LRBA is a member of the BEACH (beige and Chediak-Higashi) domain-containing "
+            "protein family involved in intracellular vesicle trafficking. "
+            "KEY MOLECULAR FUNCTION: LRBA regulates the intracellular recycling of CTLA-4 "
+            "(cytotoxic T-lymphocyte antigen 4; CD152). "
+            "CTLA-4 BIOLOGY: "
+            "CTLA-4 is the master negative regulator of T-cell activation: "
+            "CTLA-4 competes with CD28 for binding to CD80/CD86 on antigen-presenting cells -> "
+            "CTLA-4 binding inhibits T-cell activation (dominant-negative over CD28 co-stimulation); "
+            "CTLA-4 is constitutively expressed on regulatory T cells (Tregs) -- "
+            "Tregs use CTLA-4 to suppress effector T cells. "
+            "LRBA-CTLA-4 RECYCLING: "
+            "After CTLA-4 is internalised (endocytosis from cell surface) -> "
+            "LRBA is required to recycle CTLA-4 from endosomes back to the cell surface; "
+            "LRBA LOF -> CTLA-4 is not recycled -> directed to lysosomes -> degraded -> "
+            "CTLA-4 surface expression dramatically reduced on T cells and Tregs. "
+            "CONSEQUENCE: Without CTLA-4 -> T-cell activation unchecked -> "
+            "effector T cells overactivated -> immune dysregulation -> "
+            "autoimmune attack on multiple organs. "
+            "CLINICAL PHENOTYPE: "
+            "IMMUNE DYSREGULATION dominates the presentation (unlike other CVID): "
+            "Autoimmune haemolytic anaemia (AIHA): Coombs-positive -- common presenting feature; "
+            "Evans syndrome (AIHA + ITP simultaneously); "
+            "Inflammatory bowel disease (IBD): Crohn-like or ulcerative colitis-like; "
+            "Granulomatous-lymphocytic interstitial lung disease (GLILD); "
+            "Autoimmune hepatitis; Arthritis; "
+            "Hypogammaglobulinaemia (IgG low, IgA low): IVIG replacement needed; "
+            "Lymphadenopathy, splenomegaly. "
+            "TREATMENT -- THE ABATACEPT RESPONSE: "
+            "Abatacept (CTLA-4 Ig fusion protein -- Orencia): "
+            "Abatacept = CTLA-4 extracellular domain fused to IgG1 Fc; "
+            "provides exogenous CTLA-4 function -> blocks CD80/CD86 -> suppresses overactivated T cells -> "
+            "DRAMATICALLY effective in LRBA deficiency -- "
+            "clinical response is rapid and striking (autoimmune features resolve, "
+            "AIHA corrects, IBD improves, lung disease stabilises); "
+            "this dramatic response to abatacept is PATHOGNOMONIC for LRBA deficiency "
+            "(and CTLA-4 haploinsufficiency); "
+            "IVIG: concurrent antibody replacement; "
+            "HSCT: curative; considered for severe cases or abatacept-refractory."
+        ),
         "locus": "4q31.3",
-        "omim_gene": 606453,
-        "omim_disease": 614700,
-        "inheritance": "AR — autosomal recessive biallelic loss-of-function; LRBA is one of the largest PIDs genes (2863 aa)",
-        "gene_class": (
-            "LRBA is a 2863-amino acid protein organised around a central BEACH (beige "
-            "and Chediak-Higashi) domain characteristic of the BEACH-WD40 superfamily. "
-            "Domain architecture: (1) N-terminal ARM/HEAT repeats (aa 1-800) — predicted "
-            "protein-protein interaction scaffold; (2) DUF domain (aa 801-900); (3) "
-            "BEACH domain (aa 2347-2507) — the defining structural module of the family; "
-            "in Chediak-Higashi protein (LYST), BEACH mediates vesicle fusion; in LRBA, "
-            "BEACH mediates retromer/AP1 recruitment to CTLA4-endosomes; (4) WD40 repeats "
-            "(aa 2508-2863) — seven-bladed beta-propeller; binds phosphoinositide-enriched "
-            "endosomal membranes. LRBA colocalises with CTLA4 in Rab8+/Rab11+ recycling "
-            "endosomal compartments; LRBA-deficient T cells retain CTLA4 in LAMP1+ "
-            "lysosomal compartments rather than recycling to the surface. Western blot "
-            "for LRBA in PBMCs is a rapid functional diagnostic screen (absent band "
-            "confirms biallelic LoF). Genetic diagnosis: LRBA is 2863 aa (~60 exons); "
-            "missense, truncating, and splice variants distributed across the gene; no "
-            "mutational hotspot; large deletions reported. Differential diagnosis: LRBA "
-            "deficiency vs CVID — LRBA lacks CVID's predominant B-cell maturation block; "
-            "LRBA has early-onset (~3-5 years), more severe autoimmunity, and prominent "
-            "IBD vs typical CVID onset in 2nd-3rd decade; abatacept response distinguishes "
-            "LRBA/CTLA4-HI from standard CVID which shows little abatacept benefit."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 5,
-        "etiologies": [
-            ("LRBA biallelic truncating — absent LRBA protein, severe CVID+autoimmunity+IBD, childhood onset", 0.45),
-            ("LRBA biallelic missense (BEACH domain) — absent/reduced LRBA, moderate phenotype, IBD+lymphoproliferation", 0.30),
-            ("LRBA compound het — CVID-like with autoimmune haemolytic anaemia, ITP, granulomatous lung disease", 0.15),
-            ("LRBA splice-site biallelic — reduced LRBA expression, intermediate phenotype, late-onset CVID+autoimmunity", 0.10),
-        ],
+        "aa": 2863,
+        "kDa": 319,
+        "omim_gene": "606453",
+        "omim_disease": "614700",
+        "inheritance": "AR -- biallelic loss-of-function",
+        "gene_class": "BEACH-domain vesicle trafficking protein -- CTLA-4 endosomal recycling regulator",
         "key_alerts": [
-            "LRBA-ABATACEPT-DRAMATIC-RESPONSE: Abatacept (CTLA4-Ig, Orencia) produces DRAMATIC clinical responses in LRBA deficiency — resolution of inflammatory bowel disease, autoimmune cytopenias, lymphoproliferation, and granulomata reported; always trial abatacept before more toxic immunosuppression; IV or SC formulation",
-            "LRBA-IBD-MIMICS-CROHNS: Intestinal disease in LRBA deficiency (>50% of patients) mimics Crohn's disease or UC — diagnose LRBA BEFORE starting biologics for apparent IBD in a child with recurrent infections + autoimmune cytopenias; standard IBD biologics may be insufficient; abatacept is the preferred intervention",
-            "LRBA-WESTERN-BLOT-DIAGNOSTIC: LRBA protein expression in PBMCs by Western blot or intracellular flow cytometry is a rapid diagnostic screen — absent LRBA protein in lymphocytes confirms biallelic LoF; perform before complete sequencing of this large gene (60 exons); reduces turnaround time for critical treatment decisions",
-            "LRBA-IVIG-AND-ABATACEPT-COMBINATION: LRBA deficiency management = IVIG lifelong (for hypogammaglobulinaemia) PLUS abatacept (for CTLA4-mediated autoimmunity/IBD/lymphoproliferation); abatacept does NOT replace IVIG — both are required; monitor immunoglobulin troughs and clinical response to each",
-            "LRBA-MISDIAGNOSED-AS-CVID: LRBA deficiency is frequently diagnosed as CVID initially — distinguish by: early onset (<10 years), prominent autoimmunity and IBD, splenomegaly, absent LRBA protein, abatacept response; screen for LRBA in all young CVID patients with autoimmune/inflammatory features",
-            "LRBA-HSCT-CONSIDERATION: HSCT is curative for LRBA deficiency in severe cases — consider for patients with severe IBD, organomegaly, lymphoproliferation unresponsive to abatacept, or recurrent serious infections; HSCT corrects both immunodeficiency and autoimmunity; timing and conditioning regiment depend on disease activity",
+            "LRBA-ABATACEPT-PATHOGNOMONIC-RESPONSE: Dramatic, rapid response to abatacept (CTLA-4 Ig) is PATHOGNOMONIC for LRBA deficiency -- AIHA resolves, IBD improves, lung disease stabilises; this response distinguishes LRBA from other CVID; if abatacept-responsive immune dysregulation -> sequence LRBA immediately",
+            "LRBA-IMMUNE-DYSREGULATION-DOMINATES: Unlike typical CVID, LRBA deficiency presents with IMMUNE DYSREGULATION as the dominant feature -- AIHA, Evans syndrome, IBD, hepatitis -- not just recurrent infections; the combination of hypogammaglobulinaemia + autoimmunity in a young patient = LRBA deficiency until proven otherwise",
+            "LRBA-CTLA4-HAPLOINSUFFICIENCY-DDx: CTLA4 heterozygous LOF mutations cause a similar syndrome (CTLA-4 haploinsufficiency -- CHAI disease) -- also abatacept-responsive; sequence both LRBA and CTLA4 when abatacept-responsive immune dysregulation is found; LRBA is AR (biallelic); CTLA4 haploinsufficiency is AD (heterozygous)",
+            "LRBA-IVIG-PLUS-ABATACEPT: LRBA deficiency requires BOTH IVIG (for antibody deficiency) AND abatacept (for immune dysregulation/CTLA-4 deficiency) -- one without the other is insufficient; do not use abatacept alone without addressing hypogammaglobulinaemia",
+            "LRBA-HSCT-CURATIVE: HSCT is curative for LRBA deficiency and can replace the need for lifelong abatacept; considered when abatacept is insufficient or for young patients with a suitable donor; post-HSCT immune reconstitution restores LRBA function",
         ],
-    },
-    # ── CTLA4 — CTLA4 Haploinsufficiency ──
-    {
-        "gene": "CTLA4",
-        "protein": "CTLA4-HI — Haploinsufficiency, Autoimmunity + CVID-like + Lymphoproliferation, Abatacept SPECIFIC",
-        "alias": (
-            "CTLA4; OMIM gene 123890; CTLA4-HI OMIM 616100; 2q33.2; 223 aa; ~25 kDa; "
-            "CTLA4 encodes cytotoxic T-lymphocyte-associated protein 4 (CD152), a "
-            "transmembrane immunoreceptor of the CD28 family expressed on activated T cells "
-            "and constitutively on regulatory T cells (Tregs). CTLA4 functions as the "
-            "primary T-cell immune checkpoint — it competitively outcompetes CD28 for "
-            "B7.1/CD80 and B7.2/CD86 ligands on APCs (10-100x higher binding affinity "
-            "and avidity than CD28) and trans-endocytoses B7 molecules from the APC surface, "
-            "preventing CD28 costimulation and inducing T-cell anergy or tolerance. "
-            "CTLA4 haploinsufficiency (CTLA4-HI) is caused by heterozygous loss-of-function "
-            "variants in CTLA4 — a dominantly inherited immune dysregulation syndrome. "
-            "Reduced CTLA4 expression on Tregs and activated T cells → insufficient B7 "
-            "downregulation → CD28-mediated T-cell costimulation escapes checkpoint control "
-            "→ lymphoproliferation, autoimmunity, and paradoxically ALSO impaired humoral "
-            "immunity. Clinical phenotype: (1) Hypogammaglobulinaemia (CVID-like) — "
-            "reduced IgG, IgA, IgM; paradoxical because autoimmune activation is present "
-            "but B-cell output is impaired (follicular helper T cell dysregulation); "
-            "(2) Autoimmunity — autoimmune cytopenia (AIHA, ITP), thyroiditis, "
-            "enteropathy, hepatitis, nephritis, type 1 diabetes; (3) Lymphoproliferation "
-            "— splenomegaly, hepatomegaly, lymphadenopathy, T regulatory cell infiltration "
-            "of multiple organs (lung, gut, brain); (4) Granulomatous disease — pulmonary "
-            "granulomata clinically mimicking sarcoidosis. CTLA4-HI is clinically almost "
-            "IDENTICAL to LRBA deficiency because LRBA deficiency causes functional CTLA4 "
-            "deficiency via recycling impairment. Treatment: abatacept (CTLA4-Ig) is the "
-            "SPECIFIC treatment — by providing exogenous CTLA4 function, abatacept "
-            "compensates for haploinsufficiency; mTOR inhibitor sirolimus for "
-            "lymphoproliferation; IVIG for hypogammaglobulinaemia."
-        ),
-        "aa": "223 aa",
-        "kDa": "~25 kDa",
-        "locus": "2q33.2",
-        "omim_gene": 123890,
-        "omim_disease": 616100,
-        "inheritance": "AD — autosomal dominant haploinsufficiency; heterozygous LoF variants; variable penetrance",
-        "gene_class": (
-            "CTLA4 is a 223-amino acid type I transmembrane glycoprotein. Domain structure: "
-            "(1) N-terminal signal peptide (aa 1-35) — ER translocation; (2) extracellular "
-            "domain (aa 36-161) — immunoglobulin V-set domain; contains the B7-binding "
-            "MYPPPY motif (aa 99-104) conserved with CD28; two N-glycosylation sites "
-            "(Asn78, Asn110); (3) transmembrane domain (aa 162-182); (4) cytoplasmic "
-            "tail (aa 183-223) — contains YVKM motif (Tyr182) for PI3K p85 subunit binding, "
-            "AP-2 clathrin adaptor binding (endocytosis signal), and Lck-SH2 binding. "
-            "CTLA4 is constitutively internalised by AP-2-mediated endocytosis every "
-            "10-20 minutes and recycled to the surface via LRBA-dependent recycling "
-            "endosomes — this rapid cycling allows CTLA4 to continuously strip B7 "
-            "from APC surfaces via trans-endocytosis. CTLA4 binds both B7.1 (CD80) "
-            "and B7.2 (CD86) homodimers; CTLA4 homodimerises via disulfide bond (Cys120) "
-            "to present bivalent B7-binding surfaces; avidity of bivalent CTLA4 for B7 "
-            "dimers exceeds CD28 by 100x. Haploinsufficiency mechanism: heterozygous LoF "
-            "reduces CTLA4 expression by ~50% on Tregs — since CTLA4 function at the "
-            "immune synapse is critically dependent on competitive kinetics with CD28 "
-            "for B7, even a 50% reduction substantially impairs B7 downregulation, "
-            "particularly in settings of high antigen/B7 expression. Variable penetrance "
-            "(30-70%) is observed in CTLA4-HI families — additional genetic and "
-            "environmental modifiers regulate clinical expression. The most common "
-            "CTLA4-HI variants are missense affecting the MYPPPY motif, truncating "
-            "variants, and splice-site variants."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 6,
         "etiologies": [
-            ("CTLA4 truncating heterozygous — haploinsufficiency, CVID-like + lymphoproliferation + autoimmunity", 0.40),
-            ("CTLA4 MYPPPY-motif missense heterozygous — impaired B7 binding, immune dysregulation phenotype", 0.30),
-            ("CTLA4 splice-site heterozygous — reduced CTLA4 expression, variable penetrance, lymphoproliferation", 0.20),
-            ("CTLA4 large deletion heterozygous — complete haploinsufficiency, severe early-onset phenotype", 0.10),
+            {"variant": "Large exon/multiexon deletions", "type": "LOF deletion -- most common", "frequency": "~40% of LRBA deficiency", "severity": "severe immune dysregulation"},
+            {"variant": "Frameshift insertions/deletions", "type": "LOF frameshift", "frequency": "~25%", "severity": "severe"},
+            {"variant": "Splice site mutations", "type": "LOF splice", "frequency": "~20%", "severity": "moderate-severe"},
+            {"variant": "p.Gln2253Ter (c.6757C>T)", "type": "nonsense LOF", "frequency": "reported", "severity": "severe"},
+            {"variant": "p.Leu3082Arg (c.9245T>G)", "type": "missense LOF -- BEACH domain", "frequency": "reported", "severity": "severe"},
         ],
-        "key_alerts": [
-            "CTLA4-ABATACEPT-SPECIFIC-TREATMENT: Abatacept (CTLA4-Ig) is the SPECIFIC and rationally targeted treatment for CTLA4-HI — provides exogenous CTLA4 function, restoring B7 downregulation; multiple case series report dramatic responses in lymphoproliferation, autoimmune cytopenia, enteropathy, and lung disease; trial before other immunosuppressants",
-            "CTLA4-IDENTICAL-TO-LRBA: CTLA4-HI is clinically indistinguishable from LRBA deficiency — both cause CTLA4 functional deficiency (direct haploinsufficiency vs indirect recycling defect); both respond to abatacept; distinguish by: CTLA4-HI = AD (heterozygous), LRBA = AR (biallelic); CTLA4 protein reduced on flow cytometry in CTLA4-HI; LRBA protein absent in LRBA deficiency",
-            "CTLA4-SIROLIMUS-LYMPHOPROLIFERATION: Sirolimus (mTOR inhibitor) reduces lymphoproliferation in CTLA4-HI — lymph node size, splenomegaly, and organ infiltration improve; combine with abatacept for severe lymphoproliferative disease; monitor mTOR toxicities (infections, metabolic, mucositis)",
-            "CTLA4-VARIABLE-PENETRANCE-FAMILY: CTLA4-HI has variable penetrance (30-70%) — not all heterozygous family members are clinically affected; always offer genetic testing to first-degree relatives of index cases; clinically unaffected carriers may have subclinical lymphopenia or organ-specific autoimmunity on careful evaluation",
-            "CTLA4-PULMONARY-GRANULOMA-MIMICS-SARCOIDOSIS: Pulmonary granulomata in CTLA4-HI are frequently misdiagnosed as sarcoidosis — distinguish by: young age of onset, associated hypogammaglobulinaemia, autoimmune cytopenia, family history, absent ACE elevation in CTLA4-HI; test ACE + CTLA4 gene panel in any young 'sarcoidosis' with combined features",
-            "CTLA4-IVIG-REQUIRED-ALONGSIDE-ABATACEPT: IVIG is required alongside abatacept in CTLA4-HI — abatacept corrects immune dysregulation but does not restore immunoglobulin production; maintain IgG trough >7-8 g/L; both treatments required long-term; regular monitoring of immunoglobulins, T/B cell counts, and autoantibodies",
-        ],
-    },
-    # ── PIK3CD — APDS1 / Activated PI3K-Delta Syndrome ──
-    {
-        "gene": "PIK3CD",
-        "protein": "PI3Kδ Catalytic — APDS1, GOF AKT/mTOR, T-cell Senescence, EBV/CMV Susceptibility, Leniolisib FDA 2023",
-        "alias": (
-            "PIK3CD; OMIM gene 602839; APDS1 OMIM 615513; 1p36.22; 1044 aa; ~119 kDa; "
-            "PIK3CD encodes the p110δ catalytic subunit of phosphatidylinositol 3-kinase "
-            "delta (PI3Kδ), a class IA PI3K predominantly expressed in haematopoietic cells "
-            "(T cells, B cells, NK cells, neutrophils, mast cells, dendritic cells). "
-            "Activated PI3K delta syndrome 1 (APDS1) is caused by GAIN-OF-FUNCTION (GOF) "
-            "heterozygous variants in PIK3CD that increase PI3Kδ catalytic activity, "
-            "producing excessive PIP3 generation and constitutive activation of the "
-            "AKT→mTOR→S6K1 signalling axis. The pathological downstream consequences: "
-            "(1) T-cell senescence — constitutive mTOR activation drives premature T-cell "
-            "differentiation into a senescent, terminally differentiated (CD57+ PD-1+) "
-            "phenotype; naive T cells are depleted; T-cell receptor diversity is markedly "
-            "reduced; cytotoxic function against viral-infected cells is impaired; "
-            "(2) B-cell maturation arrest — PI3Kδ hyperactivation blocks B-cell transition "
-            "from naive to memory and class-switched memory B cells; germinal centre "
-            "reactions are impaired; immunoglobulin class-switching is defective → "
-            "hypogammaglobulinaemia despite normal/elevated IgM (HIGM-like pattern); "
-            "(3) Herpesvirus susceptibility — EBV and CMV are incompletely controlled → "
-            "recurrent EBV viraemia, EBV-associated lymphoproliferation (EBV+ B cell "
-            "lymphoma risk), CMV disease; chronic herpesvirus antigenic drive further "
-            "promotes T-cell senescence; (4) Recurrent sinopulmonary bacterial infections "
-            "from humoral immunodeficiency. Clinical features: onset in childhood with "
-            "recurrent respiratory infections, herpes labialis/zoster, EBV/CMV viraemia, "
-            "progressive lymphadenopathy, splenomegaly. Key treatment advance: "
-            "leniolisib (OMGARD) received FDA approval March 2023 for APDS1 patients "
-            "≥12 years — selective PI3Kδ inhibitor; reduces AKT phosphorylation, "
-            "normalises B-cell maturation, reduces lymphoproliferation and infections. "
-            "Idelalisib was earlier studied but hepatotoxicity limited its use in children."
-        ),
-        "aa": "1044 aa",
-        "kDa": "~119 kDa",
-        "locus": "1p36.22",
-        "omim_gene": 602839,
-        "omim_disease": 615513,
-        "inheritance": "AD — autosomal dominant gain-of-function; heterozygous activating variants; APDS2 from PIK3R1 (p85α regulatory subunit LoF)",
-        "gene_class": (
-            "PI3Kδ (p110δ) is a 1044-amino acid class IA PI3K catalytic subunit. Domain "
-            "architecture: (1) N-terminal adaptor-binding domain (ABD, aa 1-108) — binds "
-            "the SH2 domains of the regulatory subunit p85α (PIK3R1) or p85β (PIK3R2) via "
-            "the iSH2 coiled-coil domain of p85; maintains PI3K in an autoinhibited "
-            "low-basal-activity state; (2) RAS-binding domain (RBD, aa 179-291) — binds "
-            "RAS-GTP for allosteric activation; (3) C2 domain (aa 323-480) — membrane "
-            "targeting; (4) helical domain (aa 481-686) — connects RBD and kinase "
-            "domains; (5) kinase domain (aa 697-1044) — catalytic C-terminal domain; "
-            "DFG motif (Asp911, Phe912, Gly913) in activation loop; ATP-binding cleft "
-            "with Val828 as the 'gatekeeper' residue (targeted by p110δ-selective "
-            "inhibitors via van der Waals contacts); transfers γ-phosphate of ATP to the "
-            "3-OH position of phosphatidylinositol-4,5-bisphosphate (PIP2) → "
-            "phosphatidylinositol-3,4,5-trisphosphate (PIP3). PIP3 recruits PH-domain-"
-            "containing proteins to the inner plasma membrane: AKT (PKB) → phosphorylated "
-            "at Thr308 (PDK1) and Ser473 (mTORC2) → activated AKT phosphorylates TSC2 "
-            "→ mTORC1 activation → S6K1 → cell growth, protein synthesis, T-cell "
-            "differentiation. GOF variants in APDS1: E1021K (Glu1021Lys, the most "
-            "common APDS1 variant — located in the kinase domain C-lobe) constitutively "
-            "disrupts an autoinhibitory interaction between the kinase C-lobe and the "
-            "regulatory p85 nSH2 domain, increasing basal kinase activity 3-5 fold. "
-            "Other GOF variants: N334K, C416R (helical domain), and others clustering "
-            "in regions that stabilise the open/active kinase conformation. Leniolisib "
-            "and idelalisib bind the ATP-binding site within the kinase domain with "
-            "high selectivity for p110δ over p110α/β/γ."
-        ),
-        "n_patients": 40,
-        "seed": SEED_BASE + 7,
-        "etiologies": [
-            ("PIK3CD E1021K GOF AD — most common APDS1 variant, constitutive PI3Kδ, T-cell senescence + B-cell maturation arrest", 0.45),
-            ("PIK3CD helical domain GOF AD — APDS1, EBV/CMV viraemia, lymphoproliferation, hypogammaglobulinaemia", 0.25),
-            ("PIK3CD kinase domain GOF AD (non-E1021K) — APDS1, variable severity, herpesvirus susceptibility", 0.20),
-            ("PIK3R1 LoF AD — APDS2, p85α regulatory subunit LoF → PI3Kδ GOF equivalent phenotype, HIGM pattern", 0.10),
-        ],
-        "key_alerts": [
-            "PIK3CD-LENIOLISIB-FDA-2023: Leniolisib (OMGARD) received FDA approval March 2023 for APDS1 (PIK3CD GOF) in patients ≥12 years — first approved PI3Kδ inhibitor for APDS; reduces AKT phosphorylation, normalises B-cell differentiation, reduces lymphoproliferation, infections, and splenomegaly; refer eligible patients to treating centre",
-            "PIK3CD-EBV-CMV-HERPEVIRUS-SUSCEPTIBILITY: APDS1 patients have markedly impaired control of EBV and CMV due to senescent cytotoxic T cells — recurrent EBV viraemia, EBV-associated lymphoproliferation (including EBV+ lymphoma), and CMV disease; monitor EBV/CMV DNA PCR quarterly; antiviral prophylaxis (valaciclovir) in high-viraemia periods",
-            "PIK3CD-T-CELL-SENESCENCE-IRREVERSIBLE: Constitutive mTOR activation drives irreversible T-cell senescence (CD57+PD-1+CD28-) in APDS1 — senescent T cells cannot be reinvigorated by IVIG; leniolisib may partially restore naive T-cell compartment; T-cell immunological monitoring (TREC, TCR repertoire, naive CD4/CD8 counts) guides therapy",
-            "PIK3CD-HIGM-PATTERN-DIAGNOSTIC: APDS1 frequently presents with HIGM-like pattern — elevated or normal IgM with low IgG/IgA due to B-cell class-switching defect; distinguish from CD40L/CD40/AID/UNG-HIGM by: lymphoproliferation, herpesvirus susceptibility, GOF PIK3CD; HIGM pattern + EBV viraemia + lymphadenopathy → order PI3Kδ gene panel",
-            "PIK3CD-IVIG-PLUS-LENIOLISIB: IVIG replacement for hypogammaglobulinaemia remains required alongside leniolisib — leniolisib improves B-cell differentiation but does not immediately restore IgG production; maintain IgG trough >7 g/L; reassess need for IVIG after 12+ months of leniolisib therapy",
-            "PIK3CD-APDS2-PIK3R1-PANEL: APDS2 (caused by PIK3R1 loss-of-function, p85α regulatory subunit) is clinically identical to APDS1 — SAME phenotype (T-cell senescence, EBV/CMV, HIGM, lymphoproliferation) via equivalent GOF effect on PI3Kδ; ALWAYS sequence BOTH PIK3CD AND PIK3R1 in APDS diagnosis; leniolisib works in APDS2 as well",
-        ],
+        "stats": {
+            "igg_at_diagnosis": "<5 g/L typical",
+            "aiha_prevalence": "~60-70% of LRBA patients",
+            "ibd_prevalence": "~40% of LRBA patients",
+            "glild_prevalence": "~30% of LRBA patients",
+            "abatacept_response": "Dramatic -- pathognomonic for CTLA-4 pathway defects",
+        },
+        "dx_delay_distribution": {
+            "infant_0_12m": 20,
+            "child_1_5y": 40,
+            "child_5_15y": 30,
+            "adult_15y_plus": 10,
+        },
     },
 ]
 
 
-def _make_cohort(gd):
-    r = random.Random(gd["seed"])
-    gene = gd["gene"]
-    pts = []
-    etiols = gd["etiologies"]
-    weights = [e[1] for e in etiols]
-    labels = [e[0] for e in etiols]
+def _generate_patients():
+    """Generate 40 deterministic synthetic patients per gene using seeded RNG."""
+    for idx, gene_data in enumerate(IMID_GENES):
+        seed = SEED_BASE + idx
+        rng = random.Random(seed)
+        gene = gene_data["gene"]
+        patients = []
 
-    for i in range(gd["n_patients"]):
-        # Weighted etiology selection
-        roll = r.random()
-        cumul = 0.0
-        etiol = labels[-1]
-        for lbl, wt in zip(labels, weights):
-            cumul += wt
-            if roll < cumul:
-                etiol = lbl
-                break
+        for i in range(40):
+            if gene == "BTK":
+                # XLR -- all males
+                age_dx_months = rng.randint(6, 36)
+                dx_delay_months = rng.randint(3, 24)
+                igg_at_dx = round(rng.uniform(0.01, 0.15), 2)
+                b_cells_pct = round(rng.uniform(0.0, 0.8), 1)
+                presenting_infection = rng.choices(
+                    ["pneumonia", "sinusitis", "meningitis", "otitis_media", "septicaemia", "giardiasis"],
+                    weights=[35, 25, 10, 15, 10, 5]
+                )[0]
+                ivig_trough_achieved = round(rng.uniform(6.5, 12.0), 1)
+                bronchiectasis = rng.random() < (0.3 if age_dx_months < 18 else 0.5)
+                enteroviral_enc = rng.random() < 0.05
+                patients.append({
+                    "patient_id": f"BTK-{i+1:03d}",
+                    "sex": "M",
+                    "age_dx_months": age_dx_months,
+                    "dx_delay_months": dx_delay_months,
+                    "igg_at_dx_gL": igg_at_dx,
+                    "cd19_b_cells_pct": b_cells_pct,
+                    "presenting_infection": presenting_infection,
+                    "ivig_trough_gL": ivig_trough_achieved,
+                    "bronchiectasis": bronchiectasis,
+                    "enteroviral_encephalitis": enteroviral_enc,
+                    "live_vaccines_ci": True,
+                    "gene": gene, "seed": seed,
+                })
 
-        # Sex — XL conditions predominantly affect males
-        if gene in ("BTK", "CYBB", "WAS"):
-            sex = "M" if r.random() < 0.92 else "F"
-        else:
-            sex = r.choice(["M", "F"])
+            elif gene == "ADA":
+                sex = rng.choices(["M", "F"], weights=[50, 50])[0]
+                dx_age_days = rng.randint(0, 90)
+                lymphocyte_count = rng.randint(150, 800)
+                ada_activity_pct = round(rng.uniform(0.1, 1.0), 1)
+                datp_elevated = True
+                skeletal_dysplasia = rng.random() < 0.50
+                treatment = rng.choices(
+                    ["gene_therapy_strimvelis", "hsct_msd", "hsct_mud", "peg_ada_bridge"],
+                    weights=[25, 20, 35, 20]
+                )[0]
+                nbs_detected = rng.random() < 0.30
+                patients.append({
+                    "patient_id": f"ADA-{i+1:03d}",
+                    "sex": sex,
+                    "age_dx_days": dx_age_days,
+                    "lymphocyte_count_per_uL": lymphocyte_count,
+                    "ada_activity_pct_normal": ada_activity_pct,
+                    "datp_elevated": datp_elevated,
+                    "skeletal_dysplasia_xray": skeletal_dysplasia,
+                    "nbs_detected": nbs_detected,
+                    "treatment": treatment,
+                    "gene": gene, "seed": seed,
+                })
 
-        # Age at onset
-        if gene == "BTK":
-            age_onset = r.gauss(1.2, 0.8)        # onset after maternal IgG wanes ~6-18 months
-        elif gene == "RAG1":
-            age_onset = r.gauss(0.3, 0.5) if "SCID" in etiol else r.gauss(1.5, 2.0)
-        elif gene == "ADA":
-            age_onset = r.gauss(0.2, 0.4) if "neonatal" in etiol else r.gauss(8.0, 5.0)
-        elif gene == "CYBB":
-            age_onset = r.gauss(3.0, 3.0)        # CGD often diagnosed in early childhood
-        elif gene == "WAS":
-            age_onset = r.gauss(0.5, 0.5)        # thrombocytopenia apparent from birth/infancy
-        elif gene == "LRBA":
-            age_onset = r.gauss(4.0, 3.0)        # early childhood
-        elif gene == "CTLA4":
-            age_onset = r.gauss(12.0, 8.0)       # variable, childhood to adulthood
-        elif gene == "PIK3CD":
-            age_onset = r.gauss(6.0, 4.0)
-        else:
-            age_onset = r.gauss(5.0, 5.0)
-        age_onset = max(0.0, round(age_onset, 1))
+            elif gene == "IL2RG":
+                # XLR -- all males
+                dx_age_days = rng.randint(0, 90)
+                immunophenotype = "T-B+NK-"
+                presenting_infection = rng.choices(
+                    ["pjp", "cmv", "failure_to_thrive", "rsv_severe", "candidiasis"],
+                    weights=[30, 20, 20, 15, 15]
+                )[0]
+                maternal_gvhd = rng.random() < 0.20
+                treatment = rng.choices(
+                    ["hsct_msd", "hsct_mud", "hsct_haploidentical", "gene_therapy_otl101"],
+                    weights=[20, 45, 20, 15]
+                )[0]
+                irradiated_blood_used = True
+                nbs_detected = rng.random() < 0.35
+                patients.append({
+                    "patient_id": f"IL2RG-{i+1:03d}",
+                    "sex": "M",
+                    "age_dx_days": dx_age_days,
+                    "immunophenotype": immunophenotype,
+                    "presenting_infection": presenting_infection,
+                    "maternal_lymphocyte_gvhd": maternal_gvhd,
+                    "irradiated_blood_products": irradiated_blood_used,
+                    "nbs_detected": nbs_detected,
+                    "treatment": treatment,
+                    "live_vaccines_ci": True,
+                    "gene": gene, "seed": seed,
+                })
 
-        # Dx delay
-        if gene in ("BTK", "WAS"):
-            dx_delay = r.gauss(18, 12)
-        elif gene in ("LRBA", "CTLA4"):
-            dx_delay = r.gauss(48, 24)           # frequently misdiagnosed as CVID
-        elif gene == "PIK3CD":
-            dx_delay = r.gauss(36, 18)
-        else:
-            dx_delay = r.gauss(24, 18)
-        dx_delay = max(0.0, round(dx_delay, 1))
+            elif gene == "RAG1":
+                sex = rng.choices(["M", "F"], weights=[50, 50])[0]
+                phenotype = rng.choices(
+                    ["omenn_syndrome", "scid_t_b_minus", "partial_scid"],
+                    weights=[50, 35, 15]
+                )[0]
+                ige_level = round(rng.uniform(1200, 18000), 0) if phenotype == "omenn_syndrome" else round(rng.uniform(0.1, 2.0), 1)
+                eosinophilia = rng.random() < 0.90 if phenotype == "omenn_syndrome" else rng.random() < 0.10
+                erythroderma = (phenotype == "omenn_syndrome")
+                dx_age_days = rng.randint(7, 120)
+                treatment = rng.choices(
+                    ["hsct_msd", "hsct_mud", "hsct_haploidentical"],
+                    weights=[15, 50, 35]
+                )[0]
+                pre_hsct_immunosuppression = (phenotype == "omenn_syndrome")
+                patients.append({
+                    "patient_id": f"RAG1-{i+1:03d}",
+                    "sex": sex,
+                    "age_dx_days": dx_age_days,
+                    "phenotype": phenotype,
+                    "erythroderma": erythroderma,
+                    "eosinophilia": eosinophilia,
+                    "ige_iu_mL": ige_level,
+                    "pre_hsct_immunosuppression": pre_hsct_immunosuppression,
+                    "treatment": treatment,
+                    "gene": gene, "seed": seed,
+                })
 
-        # ── universal fields ──────────────────────────────────────────
-        ivig_given = r.random() < (
-            0.98 if gene in ("BTK", "RAG1", "ADA") else
-            0.85 if gene in ("CYBB", "WAS") else
-            0.90 if gene in ("LRBA", "CTLA4", "PIK3CD") else 0.80
-        )
-        live_vaccine_avoided = r.random() < (
-            0.82 if gene in ("BTK", "RAG1", "ADA", "CYBB", "WAS", "PIK3CD") else 0.70
-        )
-        hsct_performed = r.random() < (
-            0.55 if gene in ("RAG1", "ADA") else
-            0.40 if gene in ("WAS", "CYBB") else
-            0.10 if gene in ("BTK", "LRBA", "CTLA4", "PIK3CD") else 0.10
-        )
-        gene_therapy_given = r.random() < (
-            0.08 if gene == "ADA" else
-            0.04 if gene == "WAS" else 0.0
-        )
-        prophylaxis_given = r.random() < (
-            0.95 if gene == "CYBB" else
-            0.70 if gene in ("BTK", "WAS", "RAG1", "ADA") else
-            0.50 if gene in ("LRBA", "CTLA4", "PIK3CD") else 0.40
-        )
+            elif gene == "WAS":
+                # XLR -- all males
+                age_dx_months = rng.randint(0, 12)
+                platelet_count = rng.randint(20, 80)
+                mpv_fL = round(rng.uniform(4.0, 6.8), 1)
+                eczema_severity = rng.choices(["mild", "moderate", "severe"], weights=[15, 35, 50])[0]
+                ich_event = rng.random() < 0.10
+                autoimmune = rng.random() < 0.45
+                autoimmune_type = rng.choice(["aiha", "itp_additional", "vasculitis", "nephritis"]) if autoimmune else None
+                lymphoma = rng.random() < 0.08
+                treatment = rng.choices(
+                    ["hsct_msd", "hsct_mud", "hsct_haploidentical", "gene_therapy_otl103"],
+                    weights=[20, 45, 20, 15]
+                )[0]
+                patients.append({
+                    "patient_id": f"WAS-{i+1:03d}",
+                    "sex": "M",
+                    "age_dx_months": age_dx_months,
+                    "platelet_count_x10_9_L": platelet_count,
+                    "mpv_fL": mpv_fL,
+                    "eczema_severity": eczema_severity,
+                    "ich_event": ich_event,
+                    "autoimmune_complication": autoimmune,
+                    "autoimmune_type": autoimmune_type,
+                    "lymphoma": lymphoma,
+                    "splenectomy_ci": True,
+                    "splenectomy_performed": False,
+                    "treatment": treatment,
+                    "gene": gene, "seed": seed,
+                })
 
-        # ── BTK-specific ──────────────────────────────────────────────
-        btk_b_cells_absent = r.random() < 0.96 if gene == "BTK" else False
-        btk_monocyte_assay = r.random() < 0.78 if gene == "BTK" else False
-        btk_bronchiectasis = r.random() < 0.28 if gene == "BTK" else False
-        btk_enterovirus_meningoencephalitis = r.random() < 0.06 if gene == "BTK" else False
+            elif gene == "DOCK8":
+                sex = rng.choices(["M", "F"], weights=[50, 50])[0]
+                age_dx_years = rng.randint(1, 12)
+                ige_level = round(rng.uniform(1000, 50000), 0)
+                igm_low = True
+                molluscum_extensive = rng.random() < 0.92
+                hpv_warts = rng.random() < 0.75
+                hsv_recurrent = rng.random() < 0.60
+                hpv_scc = rng.random() < (0.10 if age_dx_years > 8 else 0.02)
+                eczema_severity = rng.choices(["moderate", "severe"], weights=[30, 70])[0]
+                stat3_excluded = True
+                treatment = rng.choices(
+                    ["hsct_mud", "hsct_haploidentical", "supportive_ivig_antivirals"],
+                    weights=[50, 25, 25]
+                )[0]
+                patients.append({
+                    "patient_id": f"DOCK8-{i+1:03d}",
+                    "sex": sex,
+                    "age_dx_years": age_dx_years,
+                    "ige_iu_mL": ige_level,
+                    "igm_low": igm_low,
+                    "molluscum_extensive": molluscum_extensive,
+                    "hpv_warts_extensive": hpv_warts,
+                    "hsv_recurrent": hsv_recurrent,
+                    "hpv_associated_scc": hpv_scc,
+                    "eczema_severity": eczema_severity,
+                    "stat3_hies_excluded": stat3_excluded,
+                    "treatment": treatment,
+                    "gene": gene, "seed": seed,
+                })
 
-        # ── RAG1-specific ─────────────────────────────────────────────
-        rag1_omenn_phenotype = ("Omenn" in etiol) if gene == "RAG1" else False
-        rag1_trec_detected = r.random() < 0.65 if gene == "RAG1" else False
-        rag1_bcg_disease = r.random() < 0.12 if gene == "RAG1" else False
+            elif gene == "TNFRSF13B":
+                sex = rng.choices(["M", "F"], weights=[45, 55])[0]
+                age_dx_years = rng.randint(5, 55)
+                igg_at_dx = round(rng.uniform(1.5, 5.5), 1)
+                iga_at_dx = round(rng.uniform(0.01, 0.5), 2)
+                vaccine_response = "absent"
+                presenting_feature = rng.choices(
+                    ["recurrent_sinopulmonary", "giardiasis", "autoimmune_cytopenia", "glild", "lymphoma_workup"],
+                    weights=[45, 10, 20, 15, 10]
+                )[0]
+                granulomatous_disease = rng.random() < 0.15
+                autoimmune_cytopenia = rng.random() < 0.25
+                lymphoma_risk_monitoring = rng.random() < 0.08
+                inheritance_pattern = rng.choices(["AD_het", "AR_biallelic"], weights=[80, 20])[0]
+                patients.append({
+                    "patient_id": f"TACI-{i+1:03d}",
+                    "sex": sex,
+                    "age_dx_years": age_dx_years,
+                    "igg_at_dx_gL": igg_at_dx,
+                    "iga_at_dx_gL": iga_at_dx,
+                    "vaccine_response": vaccine_response,
+                    "presenting_feature": presenting_feature,
+                    "glild_granulomatous": granulomatous_disease,
+                    "autoimmune_cytopenia": autoimmune_cytopenia,
+                    "lymphoma_surveillance_flag": lymphoma_risk_monitoring,
+                    "inheritance_pattern": inheritance_pattern,
+                    "ivig_or_scig_lifelong": True,
+                    "gene": gene, "seed": seed,
+                })
 
-        # ── ADA-specific ──────────────────────────────────────────────
-        ada_peg_ada_given = r.random() < 0.52 if gene == "ADA" else False
-        ada_skeletal_anomaly = r.random() < 0.45 if gene == "ADA" else False
-        ada_datp_elevated = r.random() < 0.90 if gene == "ADA" else False
-
-        # ── CYBB-specific ─────────────────────────────────────────────
-        cybb_aspergillus_infection = r.random() < 0.62 if gene == "CYBB" else False
-        cybb_dhr_done = r.random() < 0.88 if gene == "CYBB" else False
-        cybb_ifn_gamma_given = r.random() < 0.55 if gene == "CYBB" else False
-        cybb_burkholderia = r.random() < 0.12 if gene == "CYBB" else False
-
-        # ── WAS-specific ──────────────────────────────────────────────
-        was_small_platelets = r.random() < 0.94 if gene == "WAS" else False
-        was_eczema = r.random() < 0.82 if gene == "WAS" else False
-        was_splenectomy = r.random() < 0.20 if gene == "WAS" else False
-        was_ich = r.random() < 0.06 if gene == "WAS" else False  # intracranial haemorrhage
-        was_ebv_lymphoma = r.random() < 0.08 if gene == "WAS" else False
-        was_autoimmunity = r.random() < 0.45 if gene == "WAS" else False
-
-        # ── LRBA-specific ─────────────────────────────────────────────
-        lrba_abatacept_given = r.random() < 0.72 if gene == "LRBA" else False
-        lrba_ibd = r.random() < 0.55 if gene == "LRBA" else False
-        lrba_western_blot_done = r.random() < 0.68 if gene == "LRBA" else False
-        lrba_organomegaly = r.random() < 0.78 if gene == "LRBA" else False
-        lrba_autoimmune_cytopenia = r.random() < 0.52 if gene == "LRBA" else False
-
-        # ── CTLA4-specific ────────────────────────────────────────────
-        ctla4_abatacept_given = r.random() < 0.75 if gene == "CTLA4" else False
-        ctla4_sirolimus_given = r.random() < 0.40 if gene == "CTLA4" else False
-        ctla4_lymphoproliferation = r.random() < 0.80 if gene == "CTLA4" else False
-        ctla4_granulomata = r.random() < 0.35 if gene == "CTLA4" else False
-        ctla4_autoimmune_cytopenia = r.random() < 0.50 if gene == "CTLA4" else False
-
-        # ── PIK3CD-specific ───────────────────────────────────────────
-        pik3cd_leniolisib_given = r.random() < 0.38 if gene == "PIK3CD" else False
-        pik3cd_ebv_viraemia = r.random() < 0.70 if gene == "PIK3CD" else False
-        pik3cd_cmv_disease = r.random() < 0.35 if gene == "PIK3CD" else False
-        pik3cd_t_cell_senescence = r.random() < 0.85 if gene == "PIK3CD" else False
-        pik3cd_lymphadenopathy = r.random() < 0.72 if gene == "PIK3CD" else False
-
-        pts.append({
-            "id": f"{gene}-{i+1:03d}",
-            "gene": gene,
-            "sex": sex,
-            "age_at_onset": age_onset,
-            "age_at_dx": max(age_onset, round(age_onset + dx_delay / 12, 1)),
-            "dx_delay_months": dx_delay,
-            "etiology": etiol,
-            "inheritance": gd["inheritance"].split(";")[0].strip(),
-            # ── universal treatment/management ──
-            "ivig_given": ivig_given,
-            "live_vaccine_avoided": live_vaccine_avoided,
-            "hsct_performed": hsct_performed,
-            "gene_therapy_given": gene_therapy_given,
-            "prophylaxis_given": prophylaxis_given,
-            # ── BTK ──
-            "btk_b_cells_absent": btk_b_cells_absent,
-            "btk_monocyte_assay": btk_monocyte_assay,
-            "btk_bronchiectasis": btk_bronchiectasis,
-            "btk_enterovirus_meningoencephalitis": btk_enterovirus_meningoencephalitis,
-            # ── RAG1 ──
-            "rag1_omenn_phenotype": rag1_omenn_phenotype,
-            "rag1_trec_detected": rag1_trec_detected,
-            "rag1_bcg_disease": rag1_bcg_disease,
-            # ── ADA ──
-            "ada_peg_ada_given": ada_peg_ada_given,
-            "ada_skeletal_anomaly": ada_skeletal_anomaly,
-            "ada_datp_elevated": ada_datp_elevated,
-            # ── CYBB ──
-            "cybb_aspergillus_infection": cybb_aspergillus_infection,
-            "cybb_dhr_done": cybb_dhr_done,
-            "cybb_ifn_gamma_given": cybb_ifn_gamma_given,
-            "cybb_burkholderia": cybb_burkholderia,
-            # ── WAS ──
-            "was_small_platelets": was_small_platelets,
-            "was_eczema": was_eczema,
-            "was_splenectomy": was_splenectomy,
-            "was_ich": was_ich,
-            "was_ebv_lymphoma": was_ebv_lymphoma,
-            "was_autoimmunity": was_autoimmunity,
-            # ── LRBA ──
-            "lrba_abatacept_given": lrba_abatacept_given,
-            "lrba_ibd": lrba_ibd,
-            "lrba_western_blot_done": lrba_western_blot_done,
-            "lrba_organomegaly": lrba_organomegaly,
-            "lrba_autoimmune_cytopenia": lrba_autoimmune_cytopenia,
-            # ── CTLA4 ──
-            "ctla4_abatacept_given": ctla4_abatacept_given,
-            "ctla4_sirolimus_given": ctla4_sirolimus_given,
-            "ctla4_lymphoproliferation": ctla4_lymphoproliferation,
-            "ctla4_granulomata": ctla4_granulomata,
-            "ctla4_autoimmune_cytopenia": ctla4_autoimmune_cytopenia,
-            # ── PIK3CD ──
-            "pik3cd_leniolisib_given": pik3cd_leniolisib_given,
-            "pik3cd_ebv_viraemia": pik3cd_ebv_viraemia,
-            "pik3cd_cmv_disease": pik3cd_cmv_disease,
-            "pik3cd_t_cell_senescence": pik3cd_t_cell_senescence,
-            "pik3cd_lymphadenopathy": pik3cd_lymphadenopathy,
-        })
-    return pts
-
-
-def _pct(pts, key):
-    if not pts:
-        return 0.0
-    return round(100 * sum(1 for p in pts if p.get(key)) / len(pts), 1)
-
-
-def _make_patients(gene_dict):
-    """Public alias for _make_cohort — generates 40 patients for a single gene dict."""
-    return _make_cohort(gene_dict)
-
-
-def get_overview():
-    all_pts = []
-    gene_summaries = []
-    all_alerts = []
-
-    for gd in IMMUNODEFICIENCY_GENES:
-        pts = _make_cohort(gd)
-        all_pts.extend(pts)
-        gene_summaries.append({
-            "gene": gd["gene"],
-            "protein": gd["protein"][:80],
-            "aa": gd["aa"],
-            "kDa": gd["kDa"],
-            "locus": gd["locus"],
-            "omim_gene": gd["omim_gene"],
-            "omim_disease": gd["omim_disease"],
-            "inheritance": gd["inheritance"],
-            "n_patients": gd["n_patients"],
-            "seed": gd["seed"],
-            "mean_onset_years": round(
-                sum(p["age_at_onset"] for p in pts) / len(pts), 1
-            ),
-            "mean_dx_delay_months": round(
-                sum(p["dx_delay_months"] for p in pts) / len(pts), 1
-            ),
-        })
-        all_alerts.extend(gd["key_alerts"])
-
-    # Per-gene cohort subsets
-    btk     = [p for p in all_pts if p["gene"] == "BTK"]
-    rag1    = [p for p in all_pts if p["gene"] == "RAG1"]
-    ada     = [p for p in all_pts if p["gene"] == "ADA"]
-    cybb    = [p for p in all_pts if p["gene"] == "CYBB"]
-    was     = [p for p in all_pts if p["gene"] == "WAS"]
-    lrba    = [p for p in all_pts if p["gene"] == "LRBA"]
-    ctla4   = [p for p in all_pts if p["gene"] == "CTLA4"]
-    pik3cd  = [p for p in all_pts if p["gene"] == "PIK3CD"]
-
-    agg = {
-        "total_patients": len(all_pts),
-        "mean_dx_delay_months": round(
-            sum(p["dx_delay_months"] for p in all_pts) / len(all_pts), 1
-        ),
-        "hsct_performed_pct": _pct(all_pts, "hsct_performed"),
-        "ivig_given_pct": _pct(all_pts, "ivig_given"),
-        "live_vaccine_avoided_pct": _pct(all_pts, "live_vaccine_avoided"),
-        "gene_therapy_given_pct": _pct(all_pts, "gene_therapy_given"),
-        "prophylaxis_given_pct": _pct(all_pts, "prophylaxis_given"),
-        # ── BTK stats ──────────────────────────────────────────────────
-        "btk_ivig_pct": _pct(btk, "ivig_given"),
-        "btk_live_vaccine_avoided_pct": _pct(btk, "live_vaccine_avoided"),
-        "btk_b_cells_absent_pct": _pct(btk, "btk_b_cells_absent"),
-        "btk_monocyte_assay_pct": _pct(btk, "btk_monocyte_assay"),
-        "btk_bronchiectasis_pct": _pct(btk, "btk_bronchiectasis"),
-        # ── RAG1 stats ─────────────────────────────────────────────────
-        "rag1_hsct_pct": _pct(rag1, "hsct_performed"),
-        "rag1_omenn_pct": _pct(rag1, "rag1_omenn_phenotype"),
-        "rag1_trec_pct": _pct(rag1, "rag1_trec_detected"),
-        "rag1_bcg_disease_pct": _pct(rag1, "rag1_bcg_disease"),
-        # ── ADA stats ──────────────────────────────────────────────────
-        "ada_gene_therapy_pct": _pct(ada, "gene_therapy_given"),
-        "ada_hsct_pct": _pct(ada, "hsct_performed"),
-        "ada_peg_ada_pct": _pct(ada, "ada_peg_ada_given"),
-        "ada_skeletal_pct": _pct(ada, "ada_skeletal_anomaly"),
-        "ada_datp_elevated_pct": _pct(ada, "ada_datp_elevated"),
-        # ── CYBB stats ─────────────────────────────────────────────────
-        "cybb_prophylaxis_pct": _pct(cybb, "prophylaxis_given"),
-        "cybb_ifn_gamma_pct": _pct(cybb, "cybb_ifn_gamma_given"),
-        "cybb_aspergillus_pct": _pct(cybb, "cybb_aspergillus_infection"),
-        "cybb_dhr_done_pct": _pct(cybb, "cybb_dhr_done"),
-        "cybb_hsct_pct": _pct(cybb, "hsct_performed"),
-        # ── WAS stats ──────────────────────────────────────────────────
-        "was_hsct_pct": _pct(was, "hsct_performed"),
-        "was_splenectomy_pct": _pct(was, "was_splenectomy"),
-        "was_small_platelets_pct": _pct(was, "was_small_platelets"),
-        "was_eczema_pct": _pct(was, "was_eczema"),
-        "was_ich_pct": _pct(was, "was_ich"),
-        "was_autoimmunity_pct": _pct(was, "was_autoimmunity"),
-        # ── LRBA stats ─────────────────────────────────────────────────
-        "lrba_abatacept_pct": _pct(lrba, "lrba_abatacept_given"),
-        "lrba_ibd_pct": _pct(lrba, "lrba_ibd"),
-        "lrba_western_blot_pct": _pct(lrba, "lrba_western_blot_done"),
-        "lrba_organomegaly_pct": _pct(lrba, "lrba_organomegaly"),
-        "lrba_autoimmune_cytopenia_pct": _pct(lrba, "lrba_autoimmune_cytopenia"),
-        # ── CTLA4 stats ────────────────────────────────────────────────
-        "ctla4_abatacept_pct": _pct(ctla4, "ctla4_abatacept_given"),
-        "ctla4_sirolimus_pct": _pct(ctla4, "ctla4_sirolimus_given"),
-        "ctla4_lymphoproliferation_pct": _pct(ctla4, "ctla4_lymphoproliferation"),
-        "ctla4_granulomata_pct": _pct(ctla4, "ctla4_granulomata"),
-        # ── PIK3CD stats ───────────────────────────────────────────────
-        "pik3cd_leniolisib_pct": _pct(pik3cd, "pik3cd_leniolisib_given"),
-        "pik3cd_ebv_viraemia_pct": _pct(pik3cd, "pik3cd_ebv_viraemia"),
-        "pik3cd_cmv_disease_pct": _pct(pik3cd, "pik3cd_cmv_disease"),
-        "pik3cd_t_cell_senescence_pct": _pct(pik3cd, "pik3cd_t_cell_senescence"),
-    }
-
-    return {
-        "title": (
-            "Hereditary-Immunodeficiency-Atlas — Complete 8-Gene Hereditary "
-            "Primary Immunodeficiency Reference"
-        ),
-        "subtitle": (
-            "BTK · RAG1 · ADA · CYBB · WAS · LRBA · CTLA4 · PIK3CD — "
-            "320 patients (8×40, seeds 1534–1541) — XLA IVIG Lifelong No-Live-Vaccines, "
-            "ADA-SCID Strimvelis Gene Therapy EMA 2016, CGD Aspergillus Prophylaxis, "
-            "LRBA/CTLA4-HI Abatacept SPECIFIC Treatment, APDS Leniolisib FDA 2023"
-        ),
-        "genes": gene_summaries,
-        "aggregate_stats": agg,
-        "top_alerts": all_alerts[:20],
-    }
+            else:  # LRBA
+                sex = rng.choices(["M", "F"], weights=[50, 50])[0]
+                age_dx_years = rng.randint(1, 20)
+                igg_at_dx = round(rng.uniform(1.0, 4.5), 1)
+                aiha = rng.random() < 0.65
+                ibd = rng.random() < 0.42
+                glild = rng.random() < 0.30
+                autoimmune_hepatitis = rng.random() < 0.20
+                evans_syndrome = aiha and rng.random() < 0.40
+                abatacept_response = rng.choices(
+                    ["dramatic_response", "good_response", "partial_response"],
+                    weights=[55, 30, 15]
+                )[0]
+                ctla4_surface_expression = round(rng.uniform(5, 25), 1)  # % of normal
+                hsct_planned = rng.random() < 0.25
+                patients.append({
+                    "patient_id": f"LRBA-{i+1:03d}",
+                    "sex": sex,
+                    "age_dx_years": age_dx_years,
+                    "igg_at_dx_gL": igg_at_dx,
+                    "aiha": aiha,
+                    "ibd": ibd,
+                    "glild_lung": glild,
+                    "autoimmune_hepatitis": autoimmune_hepatitis,
+                    "evans_syndrome": evans_syndrome,
+                    "ctla4_surface_expression_pct_normal": ctla4_surface_expression,
+                    "abatacept_response": abatacept_response,
+                    "hsct_planned_or_completed": hsct_planned,
+                    "ivig_replacement": True,
+                    "gene": gene, "seed": seed,
+                })
+        gene_data["patients"] = patients
 
 
-def get_breakdown():
-    breakdown = []
-    for gd in IMMUNODEFICIENCY_GENES:
-        pts = _make_cohort(gd)
-        sex_dist = {
-            "M": sum(1 for p in pts if p["sex"] == "M"),
-            "F": sum(1 for p in pts if p["sex"] == "F"),
+_generate_patients()
+
+
+def overview():
+    all_genes_info = [
+        {
+            "gene": g["gene"],
+            "locus": g["locus"],
+            "aa": g["aa"],
+            "n_patients": len(g["patients"]),
         }
-        mean_onset = round(sum(p["age_at_onset"] for p in pts) / len(pts), 1)
-        mean_delay = round(sum(p["dx_delay_months"] for p in pts) / len(pts), 1)
-        etiol_counts = {}
-        for p in pts:
-            etiol_counts[p["etiology"]] = etiol_counts.get(p["etiology"], 0) + 1
-
-        breakdown.append({
-            "gene": gd["gene"],
-            "protein": gd["protein"],
-            "aa": gd["aa"],
-            "kDa": gd["kDa"],
-            "locus": gd["locus"],
-            "omim_gene": gd["omim_gene"],
-            "omim_disease": gd["omim_disease"],
-            "inheritance": gd["inheritance"],
-            "n_patients": gd["n_patients"],
-            "seed": gd["seed"],
-            "mean_onset_years": mean_onset,
-            "mean_dx_delay_months": mean_delay,
-            "sex_distribution": sex_dist,
-            "etiology_counts": etiol_counts,
-            "key_alerts": gd["key_alerts"],
-            "alias": gd["alias"],
-            "gene_class": gd["gene_class"],
-            "patients": pts,
-        })
-    return {"breakdown": breakdown}
-
-
-def get_definitions():
+        for g in IMID_GENES
+    ]
+    total = sum(len(g["patients"]) for g in IMID_GENES)
     return {
-        "atlas": (
-            "Hereditary-Immunodeficiency-Atlas — Complete 8-Gene Hereditary "
-            "Primary Immunodeficiency Reference"
+        "atlas": "Hereditary Immunodeficiency Atlas -- Complete 8-Gene Primary Immunodeficiency Atlas",
+        "subtitle": (
+            "BTK (XLA-Agammaglobulinaemia) . ADA (ADA-SCID-T-B-NK-) . IL2RG (XSCID-T-B+NK-) . "
+            "RAG1 (Omenn/RAG1-SCID) . WAS (Wiskott-Aldrich-Triad) . "
+            "DOCK8 (HIES2-Cutaneous-Viral) . TNFRSF13B (CVID2-TACI) . LRBA (CVID8-Abatacept) -- "
+            "320 Patients (8x40, Seeds 1782-1789)"
         ),
-        "genes": [gd["gene"] for gd in IMMUNODEFICIENCY_GENES],
-        "clinical_definitions": [
-            {
-                "gene": gd["gene"],
-                "full_name": gd["protein"],
-                "alias": gd["alias"],
-                "aa": gd["aa"],
-                "kDa": gd["kDa"],
-                "locus": gd["locus"],
-                "omim_gene": gd["omim_gene"],
-                "omim_disease": gd["omim_disease"],
-                "inheritance": gd["inheritance"],
-                "gene_class": gd["gene_class"],
-                "key_alerts": gd["key_alerts"],
-            }
-            for gd in IMMUNODEFICIENCY_GENES
+        "total_patients": total,
+        "seed_range": f"{SEED_BASE}-{SEED_BASE + 7}",
+        "aggregate_stats": {
+            "genes_covered": 8,
+            "patients_per_gene": 40,
+            "xlr_genes": 3,
+            "ar_genes": 4,
+            "ad_ar_genes": 1,
+            "scid_genes": 3,
+            "antibody_deficiency_genes": 2,
+            "combined_immunodeficiency_genes": 3,
+        },
+        "genes": all_genes_info,
+        "top_alerts": [
+            "BTK-LIVE-VACCINES-ABSOLUTELY-CI: ALL live vaccines absolutely contraindicated in XLA -- OPV causes vaccine-derived poliomyelitis; BCG causes disseminated BCGosis; MMR, varicella, rotavirus all CI; enteroviral encephalitis is fatal XLA complication; IVIG trough >8 g/L is mandatory lifelong",
+            "ADA-GENE-THERAPY-STRIMVELIS-APPROVED: ADA-SCID is the first SCID with EMA-approved gene therapy (Strimvelis 2016); dATP accumulation causes T-B-NK- pan-lymphopenia; NBS (TREC) detects pre-symptomatically; skeletal dysplasia on CXR is a unique ADA-SCID radiological clue",
+            "IL2RG-IRRADIATED-BLOOD-MANDATORY-AND-LIVE-VACCINES-CI: All XSCID blood products must be irradiated + CMV-negative -- transfusion-associated GvHD is fatal; maternal lymphocyte GvHD also possible; OTL-101 lentiviral gene therapy FDA approved 2024; HSCT before 3 months gives best outcomes",
+            "RAG1-OMENN-TRIAD-IMMUNOSUPPRESSION-BEFORE-HSCT: Omenn syndrome (erythroderma + eosinophilia + hepatosplenomegaly + elevated IgE) from hypomorphic RAG1/RAG2 requires ciclosporin + steroids before HSCT to control autoreactive T-cell activation; complete RAG1 LOF = T-B-NK+ SCID",
+            "WAS-MICROPLATELETS-PATHOGNOMONIC-SPLENECTOMY-CI: MPV <7 fL + thrombocytopenia = WAS until proven otherwise -- pathognomonic; eczema + thrombocytopenia + infections triad; splenectomy absolutely contraindicated (fatal OPSI); ICH risk 10-15%; HSCT curative with >90% survival at specialist centres",
+            "DOCK8-MOLLUSCUM-HPV-PATHOGNOMONIC-STAT3-DDx: Extensive Molluscum contagiosum + HPV warts + severe eczema = DOCK8 deficiency; elevated IgE + low IgM; HSCT curative; STAT3-HIES (AD) is KEY DDx -- pneumatoceles + skeletal abnormalities + retained primary teeth distinguish STAT3; sequence both",
+            "TNFRSF13B-CVID-GLILD-LYMPHOMA-IVIG-LIFELONG: CVID requires lifelong IVIG/SCIG (trough >8 g/L); GLILD (granulomatous lung disease) in 10-20% -- rituximab treatment; autoimmune cytopenias 20-30%; 5-fold lymphoma risk -- annual surveillance; no live vaccines",
+            "LRBA-ABATACEPT-PATHOGNOMONIC-RESPONSE-CTLA4: Dramatic abatacept (CTLA-4 Ig) response is pathognomonic for LRBA deficiency -- AIHA resolves, IBD improves, GLILD stabilises; immune dysregulation (AIHA + IBD + interstitial lung disease) dominates over infections; CTLA-4 surface expression reduced to 5-25% of normal; HSCT curative",
         ],
-        "cross_cutting_definitions": [
-            {
-                "term": "Primary Immunodeficiency — Live Vaccine Absolute Contraindication",
-                "definition": (
-                    "Live attenuated vaccines are ABSOLUTELY CONTRAINDICATED in virtually all "
-                    "primary immunodeficiency disorders affecting T-cell or B-cell function. "
-                    "Documented risks: oral poliovirus vaccine (OPV) → vaccine-associated "
-                    "paralytic poliomyelitis (VAPP) in XLA (BTK deficiency); BCG (Bacille "
-                    "Calmette-Guérin) administered at birth in many countries → disseminated "
-                    "BCG disease (BCG-osis) in SCID (RAG1, ADA) and CGD (CYBB) patients; "
-                    "MMR (measles-mumps-rubella) live vaccine → measles inclusion body "
-                    "encephalitis in combined immunodeficiency. Inactivated vaccines (IPV, "
-                    "DTaP, Hib, PCV, MenACWY, hepatitis A/B, influenza inactivated) are safe "
-                    "and recommended but may produce suboptimal responses depending on the "
-                    "underlying immunodeficiency. In IVIG-treated XLA, passively administered "
-                    "antibodies in IVIG preparations may interfere with live vaccine "
-                    "immunogenicity (additional reason to avoid live vaccines). CRITICAL: "
-                    "check BCG status at birth record for any infant newly diagnosed with SCID; "
-                    "if BCG given before diagnosis, initiate anti-mycobacterial therapy "
-                    "(isoniazid + rifampicin) while awaiting HSCT."
-                ),
+    }
+
+
+def breakdown():
+    result = []
+    for idx, g in enumerate(IMID_GENES):
+        result.append({
+            "gene": g["gene"],
+            "protein": g["protein"],
+            "alias": g["alias"],
+            "locus": g["locus"],
+            "aa": g["aa"],
+            "kDa": g["kDa"],
+            "omim_gene": g["omim_gene"],
+            "omim_disease": g["omim_disease"],
+            "inheritance": g["inheritance"],
+            "gene_class": g["gene_class"],
+            "key_alerts": g["key_alerts"],
+            "etiologies": g["etiologies"],
+            "stats": g["stats"],
+            "dx_delay_distribution": g["dx_delay_distribution"],
+            "computed": {
+                "n_patients": len(g["patients"]),
+                "seed": SEED_BASE + idx,
             },
-            {
-                "term": "HSCT — Curative Treatment for SCID, CGD, WAS, and Severe Combined PID",
-                "definition": (
-                    "Haematopoietic stem cell transplantation (HSCT) is curative for multiple "
-                    "primary immunodeficiencies. Disease-specific outcomes: RAG1/ADA-SCID — "
-                    "overall survival >90% with matched sibling donor (MSD), >80% with MUD "
-                    "when performed in infection-free state before 3 months of age; conditioning "
-                    "with busulfan/fludarabine or melphalan required for engraftment. CGD (CYBB) "
-                    "— myeloablative conditioning + MSD/MUD HSCT; best results in young patients "
-                    "(<10 years) before accumulation of fungal infection burden. WAS — HSCT "
-                    "corrects all three components of the triad (thrombocytopenia, eczema, "
-                    "immunodeficiency) and eliminates lymphoma and autoimmune risk; >90% OS "
-                    "with MSD, >80% with MUD. Gene therapy (autologous CD34+ cells) is "
-                    "emerging as an alternative for ADA-SCID (Strimvelis, EMA 2016) and WAS "
-                    "(lentiviral WASP) — avoids GvHD risk and HLA-barrier. For LRBA, CTLA4-HI, "
-                    "and APDS — HSCT is reserved for severe cases unresponsive to medical "
-                    "therapy (abatacept for LRBA/CTLA4; leniolisib for APDS)."
-                ),
-            },
-            {
-                "term": "IVIG — Immunoglobulin Replacement Therapy in Primary Immunodeficiency",
-                "definition": (
-                    "Intravenous immunoglobulin (IVIG) replacement is the cornerstone of "
-                    "humoral immunodeficiency management in XLA (BTK), CVID-like (LRBA, "
-                    "CTLA4-HI, PIK3CD/APDS), and as a bridge to HSCT in SCID (RAG1, ADA). "
-                    "Standard dosing: 400-600 mg/kg every 3-4 weeks IV; or 100-200 mg/kg/week "
-                    "subcutaneously (SCIG). Target trough IgG: minimum 6-8 g/L for most "
-                    "conditions; higher targets (>10 g/L) in patients with chronic lung disease "
-                    "or recurrent infections despite standard dosing. IVIG contains pooled IgG "
-                    "from ≥1,000 donors — provides broad opsonising and neutralising antibodies. "
-                    "IVIG does NOT treat the cellular immunodeficiency component (T cells, NK "
-                    "cells, phagocytes) — additional therapies are required. Monitoring: "
-                    "trough IgG before each infusion; 6-monthly IgA, IgM; annual renal function "
-                    "(sucrose-containing preparations → osmotic nephropathy); thrombotic risk "
-                    "in high-dose IVIG (rate-control, hydration). SCIG is preferred for "
-                    "home-based management — provides more stable IgG levels, fewer infusion "
-                    "reactions, greater patient autonomy."
-                ),
-            },
-            {
-                "term": "Abatacept — CTLA4-Ig Fusion for LRBA Deficiency and CTLA4 Haploinsufficiency",
-                "definition": (
-                    "Abatacept (Orencia; CTLA4-Ig) is a fusion protein of the extracellular "
-                    "CTLA4 domain (IgV-set) with human IgG1-Fc. It binds B7.1/CD80 and "
-                    "B7.2/CD86 on antigen-presenting cells with high avidity, downregulating "
-                    "CD28 costimulatory signals and restoring immune tolerance. In LRBA "
-                    "deficiency and CTLA4 haploinsufficiency, abatacept provides exogenous "
-                    "CTLA4 function, compensating for either impaired CTLA4 recycling (LRBA) "
-                    "or reduced CTLA4 expression (CTLA4-HI). Clinical evidence: multiple case "
-                    "series and cohort studies document dramatic responses — resolution of "
-                    "inflammatory bowel disease (complete mucosal healing in 60-70%), "
-                    "remission of autoimmune cytopenia (AIHA, ITP), regression of "
-                    "lymphoproliferation and organomegaly, and improvement in pulmonary "
-                    "granulomata. Dosing: IV formulation 10 mg/kg every 2-4 weeks (most used "
-                    "in PID); SC formulation (125 mg weekly) used in some centres. Monitoring: "
-                    "clinical response at 3-6 months; abatacept infection risk (increased "
-                    "susceptibility particularly to intracellular pathogens — TB screening "
-                    "before initiation); abatacept does NOT replace IVIG for "
-                    "hypogammaglobulinaemia."
-                ),
-            },
-            {
-                "term": "Leniolisib (OMGARD) — FDA 2023 Approved PI3Kδ Inhibitor for APDS1",
-                "definition": (
-                    "Leniolisib (OMGARD; Pharming Group) received FDA approval March 2023 for "
-                    "the treatment of adults and adolescents ≥12 years with Activated PI3K Delta "
-                    "Syndrome (APDS), including both APDS1 (PIK3CD gain-of-function) and APDS2 "
-                    "(PIK3R1 loss-of-function). It is the first FDA-approved drug specifically "
-                    "for APDS. Leniolisib is an orally bioavailable, selective PI3Kδ inhibitor "
-                    "that blocks the constitutive AKT/mTOR signalling caused by PIK3CD GOF "
-                    "variants. Clinical trial results (APDS1/2 phase 3): leniolisib reduced "
-                    "lymph node size (primary endpoint), reduced splenomegaly, improved B-cell "
-                    "differentiation (increased naive B cells, class-switched memory B cells), "
-                    "and reduced EBV viraemia. Dose: 70 mg twice daily orally. Safety: "
-                    "hepatotoxicity monitoring (LFTs monthly first 3 months then quarterly); "
-                    "serious infection risk (opportunistic infections); diarrhoea. Idelalisib "
-                    "(earlier studied) had unacceptable hepatotoxicity and colitis at doses "
-                    "required in APDS, limiting its use to adults. IVIG continues alongside "
-                    "leniolisib — leniolisib restores B-cell differentiation but does not "
-                    "immediately correct immunoglobulin production; assess need for IVIG "
-                    "continuation annually."
-                ),
-            },
-            {
-                "term": "Strimvelis — EMA 2016 Approved Gene Therapy for ADA-SCID",
-                "definition": (
-                    "Strimvelis (GlaxoSmithKline/Orchard Therapeutics) received EMA conditional "
-                    "approval in May 2016 for ADA-SCID — the first conditionally approved gene "
-                    "therapy product for a primary immunodeficiency. It is manufactured by "
-                    "ex vivo transduction of autologous patient CD34+ haematopoietic stem cells "
-                    "with a gamma-retroviral vector expressing functional human ADA cDNA. "
-                    "Corrected CD34+ cells are re-infused after mild myeloablative conditioning "
-                    "(busulfan), allowing engraftment of gene-corrected HSCs. Long-term efficacy: "
-                    "100% overall survival at 3 years in treated patients; progressive immune "
-                    "reconstitution over 12-24 months; most patients achieve T-cell counts >500 "
-                    "cells/μL, functional T-cell responses, and reduction of IVIG requirement. "
-                    "Advantages over HSCT: no GvHD risk; no allogeneic donor required; "
-                    "autologous procedure avoids HLA barriers. Advantages over PEG-ADA: "
-                    "potentially curative (stable integration) vs lifelong PEG-ADA injections; "
-                    "superior immune reconstitution long-term. Manufactured at a single centre "
-                    "(Ospedale San Raffaele, Milan) — patients must travel to Italy for "
-                    "treatment. Insertional mutagenesis risk (retroviral vectors) acknowledged "
-                    "but not observed in ADA-SCID trials; lentiviral vectors with safer "
-                    "integration profiles under development."
-                ),
-            },
-            {
-                "term": "DHR Oxidation Assay — Gold-Standard Diagnostic Test for CGD",
-                "definition": (
-                    "Dihydrorhodamine 123 (DHR) oxidation by flow cytometry is the gold-standard "
-                    "functional diagnostic assay for chronic granulomatous disease. Principle: "
-                    "neutrophils are loaded with DHR-123 (non-fluorescent), then activated with "
-                    "phorbol 12-myristate 13-acetate (PMA), which directly activates PKC → "
-                    "NADPH oxidase assembly and activation → superoxide production → conversion "
-                    "of DHR-123 to rhodamine 123 (highly fluorescent, measured in FL-1/FITC "
-                    "channel). Result interpretation: normal neutrophils show a large rightward "
-                    "shift in DHR fluorescence after PMA (positive oxidative burst); CGD "
-                    "neutrophils show NO shift (absent oxidative burst) or markedly reduced "
-                    "shift (partial CGD, carrier females, attenuated variants). Female CYBB "
-                    "carriers: bimodal DHR pattern — two distinct neutrophil populations (one "
-                    "DHR-positive [normal allele] and one DHR-negative [CYBB-allele]), reflecting "
-                    "X-inactivation mosaicism; proportion of DHR-negative cells correlates "
-                    "with clinical severity in carriers. The NBT (nitroblue tetrazolium) slide "
-                    "test is an older alternative (reduced NBT → blue formazan in normal "
-                    "phagocytes; no colour change in CGD) but less sensitive and less "
-                    "quantitative than DHR. DHR should be performed before genetic confirmation "
-                    "and is the definitive functional test."
-                ),
-            },
-            {
-                "term": "Primary Immunodeficiency Diagnostic Ladder — Flow Cytometry to Genetic Panel",
-                "definition": (
-                    "A systematic approach to primary immunodeficiency diagnosis: "
-                    "(1) Complete blood count with differential — absolute lymphocyte count "
-                    "(ALC <3,000/μL in neonates suspect SCID; ALC <1,500/μL in older children); "
-                    "thrombocytopenia with small platelets (MPV <5 fL) → WAS; neutropenia; "
-                    "(2) Serum immunoglobulins (IgG, IgA, IgM) — absent all isotypes → XLA; "
-                    "low IgG/IgA/IgM with elevated IgE → Omenn/RAG1; elevated IgM + low "
-                    "IgG/IgA → HIGM syndromes, APDS; (3) Lymphocyte subsets by flow "
-                    "cytometry — absent B cells (CD19) → XLA; T-B- → SCID (RAG1, ADA, "
-                    "Artemis); T-B+ → SCID (IL2RG/JAK3/IL7R); BTK protein monocytes → XLA "
-                    "screen; DHR oxidation → CGD; CTLA4 expression on T cells → CTLA4-HI; "
-                    "LRBA Western blot → LRBA deficiency; (4) Functional tests — "
-                    "lymphoproliferative responses (PHA, anti-CD3); specific antibody "
-                    "responses (post-vaccination titres); oxidative burst (DHR); "
-                    "(5) TREC/KREC (newborn screening for SCID); "
-                    "(6) Genetic panel — minimum: BTK, RAG1/RAG2, ADA, CYBB, WAS, LRBA, "
-                    "CTLA4, PIK3CD, PIK3R1, IL2RG, JAK3, IL7R, DOCK8, CARD11, STAT3, STAT1, "
-                    "ITCH, FOXP3, and others; whole exome sequencing for unsolved cases."
-                ),
-            },
+            "sample_patients": g["patients"][:10],
+        })
+    return result
+
+
+def definitions():
+    return {
+        "concepts": {
+            "Primary Immunodeficiency -- Classification, Pathophysiology and the PIDD Spectrum": (
+                "Primary immunodeficiency diseases (PIDs; also primary immune deficiency disorders, PIDDs) "
+                "are a heterogeneous group of >450 monogenic disorders causing innate or adaptive immune "
+                "failure. The International Union of Immunological Societies (IUIS) classifies PIDs into "
+                "10 major categories: "
+                "(1) Combined immunodeficiencies (T and B cell defects -- SCID, combined ID): "
+                "ADA-SCID, IL2RG-XSCID, RAG1/RAG2-SCID, DCLRE1C (Artemis), JAK3, IL7R deficiencies; "
+                "T-cell dysfunction -> opportunistic infections (PJP, CMV, fungal); "
+                "(2) Predominantly antibody deficiencies: "
+                "BTK-XLA (absent B cells), CVID (hypogammaglobulinaemia, TNFRSF13B/LRBA), "
+                "IgA deficiency (most common PID -- 1:300), HIGM syndromes (CD40/CD40L); "
+                "bacterial infections from encapsulated organisms; "
+                "(3) Diseases of immune dysregulation: "
+                "LRBA, CTLA4 haploinsufficiency, FOXP3-IPEX, XIAP, NLRC4 -- "
+                "combined deficiency + autoimmunity; "
+                "(4) Congenital defects of phagocyte number, function or both: "
+                "Chronic granulomatous disease (CYBB/NCF1/2), Severe congenital neutropaenia, LAD; "
+                "(5) Defects in intrinsic and innate immunity: TLR, IRAK, NEMO pathway defects; "
+                "(6) Autoinflammatory disorders: Periodic fever syndromes, NLRP3, MVK, TNFRSF1A; "
+                "(7) Complement deficiencies: C1q, C3, C5-C9 (N. meningitidis risk); "
+                "(8) Phenocopies: STAT3 GOF, RAC2 GOF, CARD11 GOF -- somatic or de novo; "
+                "(9) Bone marrow failure syndromes with immunological features; "
+                "(10) SCID and other well-defined immunodeficiency syndromes. "
+                "INCIDENCE: Overall PID ~1:2000 live births (if all forms included); "
+                "SCID ~1:40,000-75,000 (NBS programs detect ~1:58,000); "
+                "XLA ~1:190,000 male births; WAS ~1:100,000 male births; CVID ~1:25,000. "
+                "TEN WARNING SIGNS OF PID (Jeffrey Modell Foundation): "
+                ">=4 new ear infections in 1 year; >=2 serious sinus infections per year; "
+                ">=2 months on antibiotics with little effect; >=2 pneumonias in 1 year; "
+                "failure to thrive in an infant; recurrent deep skin/organ abscesses; "
+                "persistent thrush or skin fungal infections; need for IV antibiotics to clear infections; "
+                ">=2 deep-seated infections (meningitis, osteomyelitis, septicaemia); "
+                "family history of PID."
+            ),
+            "HSCT in Primary Immunodeficiency -- Indications, Timing and Conditioning": (
+                "Haematopoietic stem cell transplantation (HSCT) is curative for many PIDs by "
+                "replacing the defective immune system with a donor-derived immune system. "
+                "INDICATIONS: "
+                "CURATIVE HSCT indicated in: ADA-SCID (if gene therapy unavailable), "
+                "IL2RG-XSCID, RAG1/2-SCID, all other SCID forms; "
+                "WAS (best outcomes <5 years), DOCK8 deficiency, LRBA deficiency (severe/refractory); "
+                "Chronic granulomatous disease, LAD (severe). "
+                "TIMING -- CRITICAL PRINCIPLE: "
+                "HSCT before infection gives dramatically better outcomes -- "
+                "SCID: HSCT in first 3-6 months of life (pre-infection) -> >90% survival; "
+                "SCID with active infection: ~60-70% survival. "
+                "Newborn screening (TREC assay) enables pre-symptomatic SCID HSCT. "
+                "DONOR HIERARCHY: "
+                "(1) HLA-identical sibling (MSD) -- best outcomes, lowest GvHD; "
+                "(2) Matched unrelated donor (MUD, 10/10 HLA match): increasingly good outcomes; "
+                "(3) Haploidentical family donor (parent, 5/6 match): "
+                "T-cell depleted or post-transplant cyclophosphamide approaches; "
+                "(4) Cord blood: limited cell dose but low GvHD. "
+                "CONDITIONING REGIMENS: "
+                "Myeloablative conditioning (MAC): busulfan + cyclophosphamide/fludarabine -- "
+                "full donor engraftment; risk of toxicity; "
+                "Reduced-intensity conditioning (RIC): lower toxicity, more mixed chimaerism; "
+                "No conditioning (SCID only): T-depleted MSD SCID -- some donor T-cell engraftment. "
+                "SPECIAL CONSIDERATIONS: "
+                "Irradiated + CMV-negative + leucodepleted blood products mandatory for all SCID; "
+                "Live vaccines CI post-HSCT until >2 years post-transplant with confirmed immunity; "
+                "GvHD prophylaxis: ciclosporin +/- methotrexate +/- MMF; "
+                "Engraftment monitoring: chimaerism studies at weeks 4, 8, 12, 6 months, annually."
+            ),
+            "Immunoglobulin Replacement Therapy -- IVIG vs SCIG, Dosing and Monitoring": (
+                "Immunoglobulin replacement is lifelong therapy for antibody deficiency "
+                "(XLA, CVID, WAS, IgG subclass deficiency). "
+                "PREPARATIONS: "
+                "IVIG (intravenous immunoglobulin): "
+                "Pooled IgG from >=1000 donors; half-life ~21 days; "
+                "Dose: 400-600 mg/kg every 3-4 weeks (IV infusion over 2-4 hours); "
+                "Higher doses (600-800 mg/kg) for chronic lung disease or refractory infections. "
+                "SCIG (subcutaneous immunoglobulin): "
+                "Same product administered subcutaneously; "
+                "Weekly or bi-weekly self-administration at home (via infusion pump); "
+                "More stable IgG troughs (no peak-and-trough cycles); "
+                "Preferred by many patients -- home administration, no IV access needed. "
+                "Facilitated SCIG (fSCIG, hyaluronidase-facilitated): monthly. "
+                "TROUGH TARGETS: "
+                "Minimum: IgG trough >8 g/L; "
+                "With chronic lung disease/bronchiectasis: IgG trough >10-12 g/L; "
+                "Measure trough immediately before each infusion. "
+                "MONITORING: "
+                "Trough IgG: before every infusion (IVIG) or monthly (SCIG); "
+                "Infection frequency: number of significant infections per year -- "
+                "target <1 significant sinopulmonary infection per year; "
+                "Pulmonary function: annual spirometry for all established antibody deficiency; "
+                "CT chest (HRCT): every 3-5 years to screen for bronchiectasis/GLILD; "
+                "Vaccine responses: pneumococcal polysaccharide (PPV23) + conjugate (PCV13) "
+                "and tetanus toxoid responses -- absent responses confirm diagnosis. "
+                "ADVERSE REACTIONS: "
+                "Systemic reactions (fever, chills, headache, myalgia): 5-15% -- "
+                "slow infusion rate, pre-medicate with paracetamol/antihistamine; "
+                "Aseptic meningitis: rare, usually resolves with slowing infusion; "
+                "Thrombosis risk (high IgG doses, immobility): use low-IgA preparations if IgA-deficient "
+                "with anti-IgA antibodies (anaphylaxis risk)."
+            ),
+            "Gene Therapy in Primary Immunodeficiency -- ADA-SCID, XSCID, WAS": (
+                "Gene therapy has transformed the treatment of several PIDs, offering curative potential "
+                "without the immune risks of allogeneic HSCT. "
+                "ADA-SCID -- FIRST APPROVED GENE THERAPY: "
+                "Strimvelis (GSK/Orchard Therapeutics): "
+                "Ex vivo autologous HSC transduction with gamma-retroviral vector carrying ADA cDNA; "
+                "EMA approved 2016 -- the first approved HSC gene therapy; "
+                "Autologous cells used -> no GvHD risk; no need for HLA-matched donor; "
+                "Procedure: collect patient HSCs -> transduce ex vivo -> reinfuse after mild conditioning; "
+                "Outcomes: >90% immune reconstitution; available at San Raffaele Hospital, Milan; "
+                "OTL-101 (Orchard): lentiviral vector -- regulatory approval pathway (FDA/EMA); "
+                "PEG-ADA remains the bridge enzyme replacement while awaiting GT or HSCT. "
+                "XSCID (IL2RG) -- GENE THERAPY EVOLUTION: "
+                "Early trials (1999-2002, Paris/London): gamma-retroviral vectors -> insertional oncogenesis "
+                "-> 5 cases of T-cell acute lymphoblastic leukaemia from LMO2 insertion; "
+                "Lentiviral vectors: self-inactivating (SIN) LV -> dramatically reduced insertional risk; "
+                "OTL-101 (Lentigen/Orchard): SIN-LV IL2RG -- FDA approved 2024; "
+                "clinical trials show T, B, NK reconstitution; good safety profile to date. "
+                "WAS -- OTL-103: "
+                "Ex vivo autologous HSC lentiviral transduction with WAS cDNA; "
+                "OTL-103 (Orchard): clinical trials showing platelet recovery + immune reconstitution; "
+                "earlier retroviral WAS trials: some insertional mutagenesis events -> lentiviral switch. "
+                "GENERAL GENE THERAPY PRINCIPLES: "
+                "Autologous GT avoids GvHD (no donor T cells) -- major advantage over allogeneic HSCT; "
+                "Mild conditioning (busulfan-only) for HSC engraftment space -- less toxic than MAC; "
+                "Long-term follow-up for insertional oncogenesis mandatory (20+ years); "
+                "Restricted to specialist centres with HSC collection and manufacturing capabilities."
+            ),
+            "Live Vaccines -- Absolute Contraindications in Primary Immunodeficiency": (
+                "Live attenuated vaccines contain replication-competent organisms that are attenuated "
+                "(weakened) to not cause disease in immunocompetent hosts -- but CAN cause disease "
+                "in immunocompromised patients who cannot control the organism. "
+                "LIVE VACCINES CI IN ALL CELLULAR IMMUNODEFICIENCY (T-cell defects, SCID, WAS): "
+                "BCG (Bacille Calmette-Guerin): mycobacterial vaccine -- can cause disseminated BCG "
+                "disease (BCGosis) in SCID -> fatal; given in many countries at birth -- "
+                "neonatal SCID may receive BCG before diagnosis; urgent isoniazid + rifampicin "
+                "prophylaxis needed if BCG given to a subsequently diagnosed SCID; "
+                "OPV (oral poliovirus vaccine -- Sabin): live polio virus strains -> "
+                "vaccine-derived poliovirus infection in immune-deficient patients; "
+                "XLA: enteroviral susceptibility -> OPV can cause poliomyelitis + encephalitis; "
+                "IPV (inactivated polio vaccine -- Salk) is the SAFE alternative; "
+                "MMR (measles-mumps-rubella): live viral vaccine -> measles pneumonia, "
+                "giant cell pneumonia, measles encephalitis in T-cell-deficient patients; "
+                "Varicella (VZV): varicella-zoster virus -> progressive varicella, visceral VZV disease; "
+                "Yellow fever vaccine: live flavivirus -> viscerotropic/neurotropic disease; "
+                "Rotavirus: live attenuated -> chronic diarrhoea in SCID patients; "
+                "Intranasal influenza (FluMist/Fluenz): live attenuated influenza virus; "
+                "Oral typhoid (Ty21a): live S. typhi. "
+                "HOUSEHOLD CONTACTS: "
+                "OPV given to a household contact of an immunocompromised patient -> "
+                "vaccine-derived poliovirus shed in stool -> contact transmission -> CI; "
+                "recommend IPV for household contacts; "
+                "BCG given to a sibling should prompt isolation until shedding stops. "
+                "INACTIVATED VACCINES SAFE (may give reduced responses): "
+                "IPV, DTaP, Hib, PCV, PPV23, meningococcal ACWY/B, hepatitis A/B, "
+                "HPV (inactivated), inactivated influenza, Japanese encephalitis (inactivated); "
+                "responses may be absent (SCID, XLA) but still recommended (partial benefit possible). "
+                "MEDICAL ALERT: every PID patient should carry/wear documentation of live vaccine CI."
+            ),
+        },
+        "pharmacological_distinctions": [
+            "IVIG (pooled IgG 400-600 mg/kg IV q3-4w) -- lifelong replacement for XLA, CVID (TNFRSF13B, LRBA), WAS; target trough IgG >8 g/L (>10-12 g/L with bronchiectasis or GLILD); always check trough immediately before infusion; reduce infusion rate if systemic reactions occur",
+            "SCIG (subcutaneous IgG, equivalent monthly dose divided weekly) -- home-administered alternative to IVIG; more stable trough levels; preferred by patients for convenience; facilitated SCIG (with hyaluronidase) allows monthly administration; same target trough as IVIG",
+            "PEG-ADA (pegylated bovine adenosine deaminase; Adagen; weekly SC) -- enzyme replacement for ADA-SCID; bridge to HSCT or gene therapy; restores ADA enzyme activity; reduces dATP toxicity; does NOT fully reconstitute lymphocyte counts; do not stop TMP-SMX prophylaxis while on PEG-ADA",
+            "Abatacept (CTLA-4 Ig fusion protein; Orencia; SC weekly or IV monthly) -- PATHOGNOMONIC treatment for LRBA deficiency and CTLA-4 haploinsufficiency; provides exogenous CTLA-4 function; rapidly reverses AIHA, IBD, and GLILD; must be combined with IVIG; not a substitute for HSCT in severe cases",
+            "TMP-SMX (trimethoprim-sulfamethoxazole; co-trimoxazole; daily or 3x/week) -- Pneumocystis jirovecii pneumonia (PJP) prophylaxis for all T-cell deficient patients (SCID, WAS, DOCK8); continue until post-HSCT immune reconstitution confirmed (CD4 >200/uL); alternative: atovaquone or dapsone",
+            "Ciclosporin (5-8 mg/kg/day, target trough 100-200 ng/mL) -- pre-HSCT immunosuppression for Omenn syndrome (RAG1 hypomorphic); suppresses oligoclonal autoreactive T cells; combined with prednisolone; allows skin disease control before HSCT; monitor renal function",
+            "Rituximab (anti-CD20 375 mg/m2 IV x4 doses) -- treatment for EBV-driven lymphoproliferation, AIHA, and granulomatous disease in CVID (TNFRSF13B) and LRBA; combined with ciclosporin or steroids for GLILD; monitor for hypogammaglobulinaemia worsening post-rituximab",
+            "Acyclovir/valacyclovir (prophylactic dosing 400 mg BD or weight-adjusted) -- HSV and VZV prophylaxis in DOCK8 deficiency; reduces HSV/VZV reactivation frequency; does NOT prevent HPV or Molluscum contagiosum (different virus mechanisms); continue until post-HSCT immune reconstitution",
+            "Sirolimus (mTOR inhibitor, target trough 5-10 ng/mL) -- for lymphoproliferation and granulomatous disease in LRBA and CVID; alternative to ciclosporin for immune dysregulation; monitor pneumonitis risk; significant immunosuppression -- infection screening before starting",
+            "Interferon-alpha (IFN-alpha SC; off-label) -- some benefit for extensive Molluscum contagiosum in DOCK8 deficiency; anti-viral activity; limited evidence; bridge while awaiting HSCT; not curative for DOCK8 immune defect",
+        ],
+        "key_standards": [
+            "ESID/AAAAI Primary Immunodeficiency Guidelines: all patients with PID should be managed at or in consultation with a specialist PID centre; genetic diagnosis mandatory for all suspected monogenic PID; newborn screening (TREC + KREC assay) recommended for early SCID and XLA detection; annual clinical review minimum",
+            "Newborn Screening for SCID (TREC Assay): T-cell receptor excision circles (TRECs) absent in all SCID types; implemented in all US states, UK, many EU countries; pre-symptomatic HSCT before 3 months gives >90% survival vs ~70% with symptomatic presentation; all TREC-low results require urgent lymphocyte subset flow cytometry",
+            "IVIG Trough Monitoring Protocol: trough IgG measured immediately before every IVIG infusion; target >8 g/L minimum; >10-12 g/L if chronic lung disease; annual chest CT (HRCT) for bronchiectasis; annual spirometry; annual infection count; adjust dose to achieve target -- not weight-based alone",
+            "XLA Enteroviral Surveillance: all XLA patients should have annual review for neurological symptoms; brain MRI if any cognitive change or headache; enteroviral PCR (stool + CSF) if suspected encephalitis; high-dose IVIG for enteroviral encephalitis (limited evidence but first-line); no antiviral approved for treatment",
+            "WAS Transplant Decision Protocol: HSCT indication for all classical WAS (score 3-5); optimal timing before age 5 years; MSD or 10/10 MUD preferred; haploidentical transplant with post-transplant cyclophosphamide (PTCy) acceptable; splenectomy absolutely contraindicated pre-HSCT; ICH surveillance: platelet count maintained >20 x 10^9/L target",
+            "DOCK8 HSCT Timing and Surveillance: HSCT indicated for all DOCK8 deficiency; perform before HPV-associated malignancy develops; annual gynaecological/dermatological examination for HPV dysplasia; EBV PCR quarterly; HPV vaccination before HPV exposure ideally; post-HSCT Molluscum/HPV resolution is dramatic and confirms successful engraftment",
+            "CVID Complication Monitoring (TNFRSF13B/LRBA): annual HRCT chest for GLILD (ground-glass, nodules, hilar lymphadenopathy); annual spirometry; annual full blood count for autoimmune cytopenias; LDH + EBV PCR annually for lymphoma surveillance; colonoscopy if IBD symptoms (LRBA); biopsy of granulomatous lesions to exclude lymphoma before immunosuppression",
+            "LRBA/CTLA-4 Abatacept Protocol: diagnosis of LRBA or CTLA-4 haploinsufficiency -> start abatacept (CTLA-4 Ig) SC 125 mg weekly or IV 10 mg/kg monthly; response expected within 4-8 weeks; concurrent IVIG replacement; monitor AIHA (DAT, Hb), IBD (faecal calprotectin), lung (spirometry); sequence LRBA and CTLA4 together in all abatacept-responsive immune dysregulation",
         ],
     }
