@@ -16962,5 +16962,18 @@
     ],
     "category": "Hereditary ALS/MND Atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-sma-atlas",
+    "name": "Hereditary-SMA-Atlas Complete-8-Gene-Hereditary-Spinal-Muscular-Atrophy-Atlas SMN1-294aa-5q13.2-AR-SMA-5q-MOST-COMMON-HeredMND-Nusinersen-FDA2016-Onasemnogene-FDA2019-Risdiplam-FDA2020-NBS-Mandatory-40+Countries AR-919aa-Xq11.2-XLR-Kennedy-SBMA-CAG-Repeat->36-PolyQ-Gynecomastia-Sensory-Neuropathy-Leuprolide-FUTILE BICD2-820aa-9q22.31-AD-SMALED2-LowerExtremity-Congenital-DDH-Screen-Mandatory DYNC1H1-4646aa-14q32.31-AD-SMALED1-CNS-Malformation-25pct-BrainMRI-Mandatory VAPB-243aa-20q13.32-AD-ALS8-P56S-Brazil-Founder-LateOnset-SlowlyProgressive SETX-2677aa-9q34.13-AD-ALS4-Juvenile-NO-Bulbar-KEY-Decades-Survival SIGMAR1-291aa-9p13.3-AR-ALS16-DistalSMA-MAM-Junction PLEKHG5-1007aa-1p36.31-AR-DSMA4-PureLMN-NF-kB-Autophagy 320-Patient-Aggregate-8x40-seeds-1718-1725",
+    "route": "/hereditary-sma-atlas",
+    "status": "built",
+    "endpoints": [
+      "/api/hereditary-sma-atlas/overview",
+      "/api/hereditary-sma-atlas/breakdown",
+      "/api/hereditary-sma-atlas/definitions"
+    ],
+    "category": "Hereditary SMA Atlas",
+    "registered": "2026-09-06"
   }
 ]

@@ -46088,6 +46088,33 @@ async def hereditary_als_mnd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-sma-atlas/overview")
+async def hereditary_sma_atlas_overview():
+    try:
+        import scripts.hereditary_sma_atlas_dashboard as atlas_
+        return atlas_.get_overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-sma-atlas/breakdown")
+async def hereditary_sma_atlas_breakdown():
+    try:
+        import scripts.hereditary_sma_atlas_dashboard as atlas_
+        return atlas_.get_breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-sma-atlas/definitions")
+async def hereditary_sma_atlas_definitions():
+    try:
+        import scripts.hereditary_sma_atlas_dashboard as atlas_
+        return atlas_.get_definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
