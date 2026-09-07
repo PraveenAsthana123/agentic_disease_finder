@@ -17166,5 +17166,26 @@
     "patient_count": 320,
     "seeds": "1798-1805",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-gsd-atlas",
+    "name": "Hereditary-GSD-Atlas Complete-8-Gene-Hereditary-Glycogen-Storage-Disease-Atlas G6PC-357aa-17q21.31-AR-GSD-Ia-von-Gierke-NO-Fructose-Galactose-Corn-Starch-KEYSTONE-Flat-Glucagon-PATHOGNOMONIC SLC37A4-429aa-11q23.3-AR-GSD-Ib-Neutropenia-PATHOGNOMONIC-G-CSF-Mandatory-Empagliflozin-Emerging AGL-1532aa-1p21.2-AR-GSD-III-Cori-Forbes-High-Protein-KEY-Liver-Improves-Puberty GBE1-702aa-3p12.3-AR-GSD-IV-Andersen-Polyglucosan-Liver-Transplant-Curative-APBD-Neurogenic-Bladder-Ashkenazi PYGM-841aa-11q13.1-AR-GSD-V-McArdle-IEFT-Lactate-Flat-PATHOGNOMONIC-Second-Wind-NO-Statins PYGL-848aa-14q22.1-AR-GSD-VI-Hers-Benign-Ketotic-Hypoglycaemia-No-Lactic-Acidosis PHKA2-1235aa-Xp22.13-XLR-GSD-IXa-Most-Common-GSD-Overall-Benign-Liver-Resolves-Puberty GYS2-703aa-12p12.1-AR-GSD-0a-Fasting-Hypo-PLUS-Postprandial-Hyper-UNIQUE-No-Hepatomegaly-NBS-MISSES-Insulin-ABSOLUTE-CI 320-Patient-Aggregate-8x40-seeds-1806-1813",
+    "status": "built",
+    "route": "/hereditary-gsd-atlas",
+    "api_prefix": "/api/hereditary-gsd-atlas",
+    "genes": [
+      "G6PC",
+      "SLC37A4",
+      "AGL",
+      "GBE1",
+      "PYGM",
+      "PYGL",
+      "PHKA2",
+      "GYS2"
+    ],
+    "patients": 320,
+    "seeds": "1806-1813",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-07"
   }
 ]
