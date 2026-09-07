@@ -17311,5 +17311,17 @@
     "n_patients": 320,
     "seeds": "1878-1885",
     "registered": "2026-09-07"
+  },
+  {
+    "name": "Hereditary-Thyroid-Disorder-Atlas Complete-8-Gene-Hereditary-Thyroid-Disorder-Atlas TPO-933aa-2p25.3-AR-Dyshormonogenesis-2A-Perchlorate-Discharge-POSITIVE-SNHL-ABSENT TG-2767aa-8q24.22-AR-DH3-Serum-Tg-LOW-ABSENT-Despite-TSH-HIGH-PATHOGNOMONIC SLC26A4-780aa-7q22.3-AR-Pendred-Goitre-SNHL-EVA-TRIAD SLC5A5-643aa-19p13.11-AR-NIS-RAI-Uptake-ABSENT-PATHOGNOMONIC DUOX2-1548aa-15q21.1-AR-DH6-Most-Common-Worldwide-Monoallelic-Transient-NH TSHR-764aa-14q31.1-AR-LOF-TSH-Resistance-CH-Normal-Gland-AD-GOF-Familial-Hyperthyroidism PAX8-457aa-2q14.1-AD-Thyroid-Dysgenesis-Renal-Anomaly-50pct FOXE1-373aa-9q22.33-AR-Bamforth-Lazarus-Agenesis-Cleft-Palate-Spiky-Hair-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-1886-1893",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "endpoints": [
+      "/api/hereditary-thyroid-disorder-atlas/overview",
+      "/api/hereditary-thyroid-disorder-atlas/breakdown",
+      "/api/hereditary-thyroid-disorder-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-thyroid-disorder-atlas",
+    "registered": "2026-09-07"
   }
 ]
