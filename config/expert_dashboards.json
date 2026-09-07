@@ -17101,5 +17101,26 @@
     "seeds": "1758-1765",
     "category": "hereditary_atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary_adrenal_atlas",
+    "label": "Hereditary Adrenal Disorders Atlas \u2014 Complete 8-Gene Reference",
+    "route": "/hereditary-adrenal-atlas",
+    "api_prefix": "/api/hereditary-adrenal-atlas",
+    "status": "built",
+    "genes": [
+      "CYP21A2",
+      "CYP11B1",
+      "CYP17A1",
+      "STAR",
+      "NR0B1",
+      "MC2R",
+      "AAAS",
+      "ABCD1"
+    ],
+    "patients": 320,
+    "seeds": "1766-1773",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-06"
   }
 ]
