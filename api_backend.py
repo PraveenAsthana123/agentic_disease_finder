@@ -46469,6 +46469,60 @@ async def hereditary_fao_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-organic-acidemia-atlas/overview")
+async def hereditary_organic_acidemia_atlas_overview():
+    try:
+        import scripts.hereditary_organic_acidemia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-organic-acidemia-atlas/breakdown")
+async def hereditary_organic_acidemia_atlas_breakdown():
+    try:
+        import scripts.hereditary_organic_acidemia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-organic-acidemia-atlas/definitions")
+async def hereditary_organic_acidemia_atlas_definitions():
+    try:
+        import scripts.hereditary_organic_acidemia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-metal-metabolism-atlas/overview")
+async def hereditary_metal_metabolism_atlas_overview():
+    try:
+        import scripts.hereditary_metal_metabolism_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-metal-metabolism-atlas/breakdown")
+async def hereditary_metal_metabolism_atlas_breakdown():
+    try:
+        import scripts.hereditary_metal_metabolism_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-metal-metabolism-atlas/definitions")
+async def hereditary_metal_metabolism_atlas_definitions():
+    try:
+        import scripts.hereditary_metal_metabolism_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

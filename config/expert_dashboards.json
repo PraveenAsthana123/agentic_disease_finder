@@ -17220,5 +17220,23 @@
     "status": "built",
     "route": "/api/hereditary-fao-atlas",
     "page": "/hereditary-fao-atlas"
+  },
+  {
+    "id": "hereditary-metal-metabolism-atlas",
+    "gene": "ATP7B / ATP7A / HFE / HAMP / SLC40A1 / CP / SLC30A10 / TMPRSS6",
+    "disease_name": "Hereditary-Metal-Metabolism-Atlas Complete-8-Gene-Hereditary-Metal-Trace-Element-Metabolism-Atlas (Wilson/Menkes/HH1/JHH/Ferroportin/Aceruloplasminemia/Hypermanganesemia/IRIDA)",
+    "route": "/hereditary-metal-metabolism-atlas",
+    "api_prefix": "/api/hereditary-metal-metabolism-atlas",
+    "endpoints": [
+      "/api/hereditary-metal-metabolism-atlas/overview",
+      "/api/hereditary-metal-metabolism-atlas/breakdown",
+      "/api/hereditary-metal-metabolism-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-metal-metabolism-atlas/page.jsx",
+    "script": "scripts/hereditary_metal_metabolism_atlas_dashboard.py",
+    "status": "built",
+    "registered": "2026-09-07",
+    "note": "Total: 1097 dashboards",
+    "built_note": "Built scripts/hereditary_metal_metabolism_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-metal-metabolism-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-metal-metabolism-atlas/page.jsx + SiteNav wired after Hereditary-FAO-Atlas, expert_dashboards.json count 1096->1097. Built 2026-09-07."
   }
 ]
