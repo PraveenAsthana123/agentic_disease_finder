@@ -17445,5 +17445,26 @@
     "seeds": "1942-1949",
     "patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "devops",
+    "role": "Engineering",
+    "name": "DevOps / CI-CD Dashboard",
+    "route": "/devops",
+    "api_prefix": "/api/devops",
+    "endpoints": [
+      "/api/devops/overview",
+      "/api/devops/pipelines",
+      "/api/devops/definitions"
+    ],
+    "frontend": "portal-next/app/devops/page.jsx",
+    "script": "scripts/devops_dashboard.py",
+    "viz": "Deploy freq, MTTR, change-fail rate, commit velocity bar chart, hot files table",
+    "feature": "DORA metrics from real git history, pipeline + cron status snapshot",
+    "why": "Engineering velocity and reliability visibility \u2014 DORA four keys from real data",
+    "priority": "P1",
+    "status": "built",
+    "note": "3 endpoints verified 200; portal-next/app/devops/page.jsx + SiteNav wired after System Health",
+    "built_note": "Built 2026-09-07"
   }
 ]

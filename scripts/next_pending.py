@@ -396,7 +396,7 @@ BUILDABLE = [
 # inference_gpu (Inference/GPU Dashboard — real nvidia-smi + model scan + system info, 3 endpoints verified 200)
 # medication_dashboard (Medication Dashboard — 6 endpoints + Next.js page + nav wired, real clinical.db prescriptions/schedule/adherence/warnings/side-effects)
 # knowledge_graph (Knowledge Graph Dashboard — real clinical.db + ChromaDB entity-relationship graph, 81 nodes 191 edges, 3 endpoints verified 200)
-# devops_cicd (DevOps/CI-CD Dashboard — real git analytics, DORA metrics, pipeline/cron status, 3 endpoints verified 200)
+# devops_cicd (DevOps/CI-CD Dashboard — real git analytics, DORA metrics, pipeline/cron status, 3 endpoints /api/devops/overview|pipelines|definitions verified 200, portal-next/app/devops/page.jsx + SiteNav wired after System Health, expert_dashboards.json count 1110→1111. Built 2026-09-07.)
 # ai_risk (AI Risk Dashboard — real clinical.db risk register, severity scoring, alert trends, guardrail blocks, 3 endpoints verified 200)
 # mri_brain_review (MRI Brain Review Dashboard — real clinical.db mri_findings, 40 patients, lesion types/classification/volumetrics/concordance, 3 endpoints verified 200, Next.js page + nav wired)
 # observability (Observability Dashboard — real transaction_log 596 events, 25 components, log levels + latency percentiles + trace correlation + alerts, 3 endpoints verified 200, Next.js page + nav wired)
