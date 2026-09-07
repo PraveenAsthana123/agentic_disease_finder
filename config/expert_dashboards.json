@@ -17432,5 +17432,18 @@
     "seeds": "1934-1941",
     "patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary_connective_tissue_disorder_atlas",
+    "slug": "hereditary-connective-tissue-disorder-atlas",
+    "name": "Hereditary-Connective-Tissue-Disorder-Atlas Complete-8-Gene-Hereditary-Connective-Tissue-Disorders-Atlas FBN1/Fibrillin1-2871aa-15q21.1-AD-Marfan-Aortic-Root-Ectopia-Lentis-Losartan-ARB-Surgery-4.5-5.0cm COL3A1/CollagenIII-1466aa-2q32.2-AD-Vascular-EDS-NO-Elective-Surgery-Celiprolol-ONLY-Most-Lethal TGFBR2-592aa-3p24.1-AD-Loeys-Dietz-LDS2-Surgery-4.0cm-NOT-4.5cm-Whole-Body-Imaging COL1A1-1464aa-17q21.33-AD-OI-Bisphosphonates-Wormian-Bones-Blue-Sclerae ELN-786aa-7q11.23-AD/deletion-SVAS-Williams-Beuren-Elfin-Facies-Anaesthetic-Sudden-Death ABCC6-1503aa-16p13.1-AR-PXE-Angioid-Streaks-PATHOGNOMONIC-Vitamin-K2-Anti-VEGF COL5A1-2836aa-9q34.3-AD-Classical-EDS-Atrophic-Scars-REQUIRED-Molluscoid-Pseudotumours TNXB-4243aa-6p21.3-AR-TNX-EDS-Serum-TNX-ONLY-EDS-Biomarker-CAH-X-CYP21A2-Adrenal 320-Patient-Aggregate-8x40-seeds-1942-1949",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "page": "/hereditary-connective-tissue-disorder-atlas",
+    "endpoint": "/api/hereditary-connective-tissue-disorder-atlas/overview",
+    "genes": 8,
+    "seeds": "1942-1949",
+    "patients": 320,
+    "registered": "2026-09-07"
   }
 ]

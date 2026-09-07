@@ -46859,6 +46859,36 @@ async def hereditary_complement_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-connective-tissue-disorder-atlas/overview")
+async def hereditary_connective_tissue_disorder_atlas_overview():
+    """Hereditary-Connective-Tissue-Disorder-Atlas aggregate overview (FBN1/COL3A1/TGFBR2/COL1A1/ELN/ABCC6/COL5A1/TNXB)."""
+    try:
+        import scripts.hereditary_connective_tissue_disorder_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-connective-tissue-disorder-atlas/breakdown")
+async def hereditary_connective_tissue_disorder_atlas_breakdown():
+    """Hereditary-Connective-Tissue-Disorder-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_connective_tissue_disorder_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-connective-tissue-disorder-atlas/definitions")
+async def hereditary_connective_tissue_disorder_atlas_definitions():
+    """Hereditary-Connective-Tissue-Disorder-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_connective_tissue_disorder_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
