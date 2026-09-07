@@ -17392,5 +17392,32 @@
     ],
     "portal_page": "/hereditary-renal-cystic-disease-atlas",
     "built_date": "2026-09-07"
+  },
+  {
+    "id": "hereditary_complement_disorder_atlas",
+    "slug": "hereditary-complement-disorder-atlas",
+    "name": "Hereditary-Complement-Disorder-Atlas Complete-8-Gene-Hereditary-Complement-Disorder-aHUS-C3G-Atlas CFH/FactorH-1231aa-1q31.3-AD/AR-aHUS1-Most-Common-25-30pct-C3G-AMD-SCR19-20-Self-Recognition-High-Relapse-Transplant CFI/FactorI-583aa-4q25-AD/AR-aHUS2-10pct-C3-Very-Low-Secondary-Immunodeficiency-Homozygous C3-1663aa-19p13.3-AD/AR-Central-Hub-GOF-C3G-aHUS-LOF-C3-Deficiency-DDD-EM-PATHOGNOMONIC CFB/FactorB-739aa-6p21.33-AD-GOF-Asp279Gly-Activating-aHUS-Iptacopan-Target CD46/MCP-347aa-1q32.2-AD-aHUS3-15pct-Youngest-BEST-Transplant-PE-INEFFECTIVE-50pct-Penetrance THBD/Thrombomodulin-557aa-20p11.21-AD/AR-Rare-5pct-Complement-Coagulation-Bridge-PAH-Overlap DGKE-520aa-17q22-AR-COMPLEMENT-INDEPENDENT-Eculizumab-FAILS-Infantile-Before-2yr-Normal-Complement C5-1676aa-9q33.2-AD-Eculizumab-Direct-Target-Arg885His-ECULIZUMAB-RESISTANT-Switch-Ravulizumab 320-Patient-Aggregate-8x40-seeds-1926-1933",
+    "status": "built",
+    "genes": [
+      "CFH",
+      "CFI",
+      "C3",
+      "CFB",
+      "CD46",
+      "THBD",
+      "DGKE",
+      "C5"
+    ],
+    "n_patients": 320,
+    "seed_start": 1926,
+    "seed_end": 1933,
+    "api_routes": [
+      "/api/hereditary-complement-disorder-atlas/overview",
+      "/api/hereditary-complement-disorder-atlas/breakdown",
+      "/api/hereditary-complement-disorder-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-complement-disorder-atlas",
+    "built_date": "2026-09-07",
+    "registered": "2026-09-07"
   }
 ]

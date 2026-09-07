@@ -46799,6 +46799,36 @@ async def hereditary_renal_tubular_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-complement-disorder-atlas/overview")
+async def hereditary_complement_disorder_atlas_overview():
+    """Hereditary-Complement-Disorder-Atlas aggregate overview (aHUS / C3G)."""
+    try:
+        import scripts.hereditary_complement_disorder_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-complement-disorder-atlas/breakdown")
+async def hereditary_complement_disorder_atlas_breakdown():
+    """Hereditary-Complement-Disorder-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_complement_disorder_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-complement-disorder-atlas/definitions")
+async def hereditary_complement_disorder_atlas_definitions():
+    """Hereditary-Complement-Disorder-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_complement_disorder_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
