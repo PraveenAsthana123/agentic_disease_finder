@@ -17058,5 +17058,27 @@
     "patients": 320,
     "seed_range": "1742-1749",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-bone-disease-atlas",
+    "name": "Hereditary-Metabolic-Bone-Disease-Atlas",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "description": "Complete 8-Gene Hereditary Metabolic Bone Disease Atlas \u2014 COL1A1/COL1A2 OI / ALPL Hypophosphatasia / PHEX XLH / FGF23 ADHR / ACVR1 FOP / RUNX2 CCD / LRP5 OPPG-HBM \u2014 320 patients (8x40, seeds 1750-1757)",
+    "genes": [
+      "COL1A1",
+      "COL1A2",
+      "ALPL",
+      "PHEX",
+      "FGF23",
+      "ACVR1",
+      "RUNX2",
+      "LRP5"
+    ],
+    "patients": 320,
+    "seeds": "1750-1757",
+    "route": "/hereditary-bone-disease-atlas",
+    "api": "/api/hereditary-bone-disease-atlas",
+    "registered": "2026-09-06"
   }
 ]
