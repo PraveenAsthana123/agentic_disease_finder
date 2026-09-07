@@ -17508,5 +17508,32 @@
     "seeds": "1958-1965",
     "status": "built",
     "built_date": "2026-09-07"
+  },
+  {
+    "id": "hereditary-vascular-malformation-atlas",
+    "title": "Hereditary-Vascular-Malformation-Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Vascular Malformation Atlas",
+    "genes": [
+      "ENG",
+      "ACVRL1",
+      "SMAD4",
+      "KRIT1",
+      "CCM2",
+      "PDCD10",
+      "RASA1",
+      "TEK"
+    ],
+    "seeds": "1966-1973",
+    "patients": 320,
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-vascular-malformation-atlas/overview",
+      "/api/hereditary-vascular-malformation-atlas/breakdown",
+      "/api/hereditary-vascular-malformation-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-vascular-malformation-atlas",
+    "script": "scripts/hereditary_vascular_malformation_atlas_dashboard.py",
+    "category": "Hereditary Vascular Malformation",
+    "registered": "2026-09-07"
   }
 ]

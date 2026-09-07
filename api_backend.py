@@ -46949,6 +46949,36 @@ async def hereditary_dystroglycanopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-vascular-malformation-atlas/overview")
+async def hereditary_vascular_malformation_atlas_overview():
+    """Hereditary-Vascular-Malformation-Atlas aggregate overview (ENG/ACVRL1/SMAD4/KRIT1/CCM2/PDCD10/RASA1/TEK)."""
+    try:
+        import scripts.hereditary_vascular_malformation_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-vascular-malformation-atlas/breakdown")
+async def hereditary_vascular_malformation_atlas_breakdown():
+    """Hereditary-Vascular-Malformation-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_vascular_malformation_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-vascular-malformation-atlas/definitions")
+async def hereditary_vascular_malformation_atlas_definitions():
+    """Hereditary-Vascular-Malformation-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_vascular_malformation_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
