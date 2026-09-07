@@ -17033,5 +17033,17 @@
       "AGRN",
       "MUSK"
     ]
+  },
+  {
+    "id": "hereditary-lung-disease-atlas",
+    "category": "hereditary-atlas",
+    "title": "Hereditary-Lung-Disease-Atlas",
+    "name": "Hereditary-Lung-Disease-Atlas Complete-8-Gene-Hereditary-Lung-Disease-Atlas CFTR-1480aa-7q31.2-AR-CF-F508del-70pct-Trikafta-FDA2019-SweatCl-60-DIAGNOSTIC-PATHOGNOMONIC SERPINA1-418aa-14q32.13-AR-AATD-PiZZ-LowerLobe-PanacinarEmphysema-Smoking-ABSOLUTE-PROHIBITION-Augmentation-LUNG-ONLY SFTPC-197aa-8p21.3-AD-SP-C-Deficiency-I73T-FamilialILD-HCQ-FirstLine-NOT-Chloroquine TERT-1132aa-5p15.33-AD-TelomereBiology-FamilialIPF-IS-ABSOLUTELY-CONTRAINDICATED-Nintedanib-Danazol FLCN-579aa-17p11.2-AD-BHD-Fibrofolliculoma-PATHOGNOMONIC-Pneumothorax-25-33pct-RCC-NoAviation ABCA3-1704aa-16p13.3-AR-SurfactantDysfunction3-SmallDenseLamellarBodies-EM-PATHOGNOMONIC-NullNull-Neonatal-Lethal TSC1-1164aa-9q34.13-AD-LAM-ExclusivelyFemales-Sirolimus-FDA2015-VEGFD-800-PATHOGNOMONIC NKX2-1-371aa-14q13.3-AD-BrainLungThyroid-Triad-PATHOGNOMONIC-Antipsychotics-ABSOLUTELY-CI-LThyroxine-Urgent 320-Patient-Aggregate-8x40-seeds-1710-1717",
+    "endpoint": "/api/hereditary-lung-disease-atlas/overview",
+    "patients": 320,
+    "seeds": "1710-1717",
+    "genes": 8,
+    "status": "built",
+    "registered": "2026-09-06"
   }
 ]
