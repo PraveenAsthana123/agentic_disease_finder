@@ -17284,5 +17284,32 @@
     "n_patients": 320,
     "seeds": "1870-1877",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-neurotransmitter-atlas",
+    "title": "Hereditary-Neurotransmitter-Atlas Complete-8-Gene-Hereditary-Neurotransmitter-Synthesis-Disorders-Atlas DDC-480aa-7p12.2-AR-AADC-Oculogyric-Crises-PATHOGNOMONIC-Upstaza-FDA2023 GCH1-250aa-14q22.2-AD-DRD-Segawa-Diurnal-Variation-PATHOGNOMONIC-L-Dopa-CURATIVE TH-498aa-11p15.5-AR-TH-Deficiency-BH4-NORMAL-Infantile-Parkinsonism SPR-263aa-2p14-AR-CSF-Sepiapterin-PATHOGNOMONIC-L-Dopa-PLUS-5HTP-MANDATORY ALDH7A1-539aa-5q31.2-AR-PDE-alpha-AASA-PATHOGNOMONIC-Pyridoxine-NOT-PLP PNPO-261aa-17q21.32-AR-PLP-MANDATORY-NOT-Pyridoxine-Burst-Suppression-Fatal-Mistake SLC6A3-620aa-5p15.33-AR-DTDS-DAT-SPECT-Absent-PATHOGNOMONIC-L-Dopa-ABSOLUTELY-CI GATM-423aa-15q21.1-AR-AGAT-GAA-LOW-NOT-HIGH-Creatine-400mgkgday-CURATIVE",
+    "category": "hereditary-metabolism",
+    "subcategory": "neurotransmitter-synthesis-disorders",
+    "status": "built",
+    "script": "scripts/hereditary_neurotransmitter_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-neurotransmitter-atlas/overview",
+      "/api/hereditary-neurotransmitter-atlas/breakdown",
+      "/api/hereditary-neurotransmitter-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-neurotransmitter-atlas",
+    "genes": [
+      "DDC",
+      "GCH1",
+      "TH",
+      "SPR",
+      "ALDH7A1",
+      "PNPO",
+      "SLC6A3",
+      "GATM"
+    ],
+    "n_patients": 320,
+    "seeds": "1878-1885",
+    "registered": "2026-09-07"
   }
 ]
