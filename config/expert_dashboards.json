@@ -17250,5 +17250,17 @@
     "n_patients": 320,
     "seeds": "1846-1853",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-peroxisomal-atlas",
+    "name": "Hereditary-Peroxisomal-Atlas Complete-8-Gene-Hereditary-Peroxisomal-Disorders-Atlas PEX1-1283aa-7q21.2-AR-ZSD1-Most-Common-PBD-60-70pct-Ghost-Peroxisomes-DHA-MANDATORY PEX6-980aa-6p21.1-AR-ZSD4-Attenuated-ZSD-Adult-RP-SNHL-Ataxia ABCD1-745aa-Xq28-XLR-ALD-C26:0/C22:0-DIAGNOSTIC-HSCT-Loes<9-Lorenzos-Oil-NOT-Halt PHYH-338aa-10p13-AR-Refsum-Phytanic-Restriction-CURATIVE-NEVER-Fast PEX7-323aa-6q23.3-AR-RCDP1-Stippled-Epiphyses-PATHOGNOMONIC-VLCFA-Normal HSD17B4-736aa-5q23.1-AR-DBP-Most-Severe-Peroxisomal-Beta-Ox-Peroxisomes-INTACT ACOX1-700aa-17q25.1-AR-AD-LOF-Neonatal-ALD-GOF-Inflammatory-AID-Steroids AGPS-728aa-2q31.2-AR-RCDP3-Ether-Lipid-Step2-Phytanic-NORMAL-Unlike-RCDP1 320-Patient-Aggregate-8x40-seeds-1854-1861",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "api": "/api/hereditary-peroxisomal-atlas",
+    "route": "/hereditary-peroxisomal-atlas",
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": "1854-1861",
+    "registered": "2026-09-07"
   }
 ]
