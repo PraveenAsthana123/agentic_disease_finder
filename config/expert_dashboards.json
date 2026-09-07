@@ -16975,5 +16975,34 @@
     ],
     "category": "Hereditary SMA Atlas",
     "registered": "2026-09-06"
+  },
+  {
+    "id": "hereditary-congenital-myopathy-atlas",
+    "name": "Hereditary-Congenital-Myopathy-Atlas Complete-8-Gene-Hereditary-Congenital-Myopathy-Atlas RYR1-5037aa-19q13.2-AD/AR-CCD-MmD-MHS1-ANAESTHESIA-EMERGENCY-Dantrolene MYH7-1935aa-14q11.2-AD-LaingDistal-DCM-CARDIAC-SURVEILLANCE-MANDATORY ACTA1-377aa-1q42.13-AD(70%deNovo)/AR-NEM3-NemalineRods-RESPIRATORY-MANDATORY NEB-6669aa-2q23.3-AR-NEM2-LARGEST-HUMAN-GENE-MLPA-Triplicate-Mandatory SELENON-590aa-1p36.11-AR-RSMD1-RigidSpine-NO-Cardiac-KEY-DDx-EMD-LMNA MTM1-603aa-Xq28-XLR-XLMTM-MOST-SEVERE-VentilatorDependent-GeneTherapy DNM2-870aa-19p13.2-AD-CNM3-GTPase-CentralNuclei-CMT-Overlap BIN1-452aa-2q14.3-AR-CNM2-TtubuleBiogenesis-Milder-SiblingRisk25pct 320-Patient-Aggregate-8x40-seeds-1726-1733",
+    "title": "Hereditary-Congenital-Myopathy-Atlas Complete-8-Gene Hereditary Congenital Myopathy Atlas",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "api_base": "/api/hereditary-congenital-myopathy-atlas",
+    "portal_route": "/hereditary-congenital-myopathy-atlas",
+    "seeds": "1726-1733",
+    "n_patients": 320,
+    "registered": "2026-09-06",
+    "api_endpoints": [
+      "/api/hereditary-congenital-myopathy-atlas/overview",
+      "/api/hereditary-congenital-myopathy-atlas/breakdown",
+      "/api/hereditary-congenital-myopathy-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/hereditary-congenital-myopathy-atlas/page.jsx",
+    "script": "scripts/hereditary_congenital_myopathy_atlas_dashboard.py",
+    "genes": [
+      "RYR1",
+      "MYH7",
+      "ACTA1",
+      "NEB",
+      "SELENON",
+      "MTM1",
+      "DNM2",
+      "BIN1"
+    ]
   }
 ]
