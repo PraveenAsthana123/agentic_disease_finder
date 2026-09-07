@@ -17486,5 +17486,27 @@
     "seeds": "1950-1957",
     "patient_count": 320,
     "category": "hereditary-atlas"
+  },
+  {
+    "id": "hereditary-dystroglycanopathy-atlas",
+    "name": "Hereditary-Dystroglycanopathy-Atlas Complete-8-Gene-Alpha-Dystroglycan-O-Glycosylation-Disorder-Atlas FKRP-495aa-19q13.32-AR-LGMD2I-Most-Common-AR-LGMD-Northern-Europe-L276I-Caucasian-Founder-Cardiomyopathy-Mandatory FKTN-461aa-9q31.2-AR-Fukuyama-CMD-Japan-SVA-Retrotransposon-Founder-NOT-Detected-WES-Cardiomyopathy-Cardiac-Transplant POMT1-747aa-9q34.13-AR-Walker-Warburg-WWS1-Most-Severe-Lethal-Cobblestone-Lissencephaly POMT2-750aa-14q24.3-AR-Walker-Warburg-WWS2-Dandy-Walker-Indistinguishable-POMT1 POMGNT1-740aa-1p34.1-AR-MEB-Progressive-HIGH-Myopia-PATHOGNOMONIC-Flat-ERG-Cerebellar-Cysts LARGE1-756aa-22q12.3-AR-MDC1D-Most-Severe-Intellectual-Disability-White-Matter-LARGE2-NOT-Compensate ISPD-352aa-7p21.2-AR-WWS-Subtype-Cardiomyopathy-Leigh-Like-MRI-Trap-Arg272Cys-Founder GMPPB-395aa-3p24.3-AR-LGMD2T-Myasthenic-Pyridostigmine-RESPONSIVE-ONLY-NMJ-Normal-Brain 320-Patient-Aggregate-8x40-seeds-1958-1965",
+    "category": "Hereditary Neuromuscular",
+    "subcategory": "Dystroglycanopathy",
+    "route": "/hereditary-dystroglycanopathy-atlas",
+    "api_prefix": "/api/hereditary-dystroglycanopathy-atlas",
+    "genes": [
+      "FKRP",
+      "FKTN",
+      "POMT1",
+      "POMT2",
+      "POMGNT1",
+      "LARGE1",
+      "ISPD",
+      "GMPPB"
+    ],
+    "n_patients": 320,
+    "seeds": "1958-1965",
+    "status": "built",
+    "built_date": "2026-09-07"
   }
 ]

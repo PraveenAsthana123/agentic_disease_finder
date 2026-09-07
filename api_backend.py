@@ -46919,6 +46919,36 @@ async def hereditary_ciliopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-dystroglycanopathy-atlas/overview")
+async def hereditary_dystroglycanopathy_atlas_overview():
+    """Hereditary-Dystroglycanopathy-Atlas aggregate overview (FKRP/FKTN/POMT1/POMT2/POMGNT1/LARGE1/ISPD/GMPPB)."""
+    try:
+        import scripts.hereditary_dystroglycanopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystroglycanopathy-atlas/breakdown")
+async def hereditary_dystroglycanopathy_atlas_breakdown():
+    """Hereditary-Dystroglycanopathy-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_dystroglycanopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystroglycanopathy-atlas/definitions")
+async def hereditary_dystroglycanopathy_atlas_definitions():
+    """Hereditary-Dystroglycanopathy-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_dystroglycanopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
