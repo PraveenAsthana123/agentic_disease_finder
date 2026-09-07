@@ -17004,5 +17004,34 @@
       "DNM2",
       "BIN1"
     ]
+  },
+  {
+    "id": "hereditary-cms-atlas",
+    "name": "Hereditary-CMS-Atlas Complete-8-Gene-Hereditary-Congenital-Myasthenic-Syndrome-Atlas CHRNE-473aa-22q11.21-AR-CMS4-EndplateAChR-Deficiency-Most-Common-Europe-Pyridostigmine RAPSN-412aa-11p11.2-AR-CMS11-NeonatalApneicCrises-N88K-Founder-AChRClustering COLQ-528aa-3p24.3-AR-CMS5-AChE-ABSENT-AChEI-ABSOLUTELY-CI-PupillaryHallmark DOK7-504aa-4p16.3-AR-CMS10-LimbGirdle-SALBUTAMOL-1stLine-AChEI-ABSOLUTELY-CI CHAT-748aa-10q11.23-AR-CMS6-PreSynaptic-EPISODIC-FATAL-APNEA-ProphylacticPyridostigmine SCN4A-1836aa-17q23.3-AD/AR-CMS16-SodiumChannel-PeriodicParalysis-Quinidine AGRN-2045aa-1p36.33-AR-CMS8-Agrin-LRP4-MuSK-LimbGirdle-Distal MUSK-869aa-9q31.3-AR-CMS9-MuSK-Kinase-NOT-AutoimmuneMuSK-MG-Ephedrine 320-Patient-Aggregate-8x40-seeds-1734-1741",
+    "title": "Hereditary-CMS-Atlas Complete-8-Gene Hereditary Congenital Myasthenic Syndrome Atlas",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "api_base": "/api/hereditary-cms-atlas",
+    "portal_route": "/hereditary-cms-atlas",
+    "seeds": "1734-1741",
+    "n_patients": 320,
+    "registered": "2026-09-06",
+    "api_endpoints": [
+      "/api/hereditary-cms-atlas/overview",
+      "/api/hereditary-cms-atlas/breakdown",
+      "/api/hereditary-cms-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/hereditary-cms-atlas/page.jsx",
+    "script": "scripts/hereditary_cms_atlas_dashboard.py",
+    "genes": [
+      "CHRNE",
+      "RAPSN",
+      "DOK7",
+      "COLQ",
+      "CHAT",
+      "SCN4A",
+      "AGRN",
+      "MUSK"
+    ]
   }
 ]
