@@ -45474,30 +45474,6 @@ async def hereditary_haemolytic_anaemia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/api/hereditary-immunodeficiency-atlas/overview")
-async def hereditary_immunodeficiency_atlas_overview():
-    try:
-        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
-        return atlas_.get_overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/hereditary-immunodeficiency-atlas/breakdown")
-async def hereditary_immunodeficiency_atlas_breakdown():
-    try:
-        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
-        return atlas_.get_breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/hereditary-immunodeficiency-atlas/definitions")
-async def hereditary_immunodeficiency_atlas_definitions():
-    try:
-        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
-        return atlas_.get_definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
 @app.get("/api/hereditary-connective-tissue-atlas/overview")
 async def hereditary_connective_tissue_atlas_overview():
     try:
@@ -46299,6 +46275,33 @@ async def hereditary_hi_atlas_breakdown():
 async def hereditary_hi_atlas_definitions():
     try:
         import scripts.hereditary_hi_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-immunodeficiency-atlas/overview")
+async def hereditary_immunodeficiency_atlas_overview():
+    try:
+        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-immunodeficiency-atlas/breakdown")
+async def hereditary_immunodeficiency_atlas_breakdown():
+    try:
+        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-immunodeficiency-atlas/definitions")
+async def hereditary_immunodeficiency_atlas_definitions():
+    try:
+        import scripts.hereditary_immunodeficiency_atlas_dashboard as atlas_
         return atlas_.definitions()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
