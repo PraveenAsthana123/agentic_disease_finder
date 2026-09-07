@@ -17196,5 +17196,22 @@
     "category": "hereditary_metabolic",
     "genes": 8,
     "patients": 320
+  },
+  {
+    "id": "hereditary-amino-acid-atlas",
+    "name": "Hereditary-Amino-Acid-Atlas Complete-8-Gene-Hereditary-Aminoacidopathy-Atlas PAH-452aa-12q23.2-AR-PKU-Most-Common-Aminoacidopathy-NBS-Universal-BH4-Sapropterin-30pct-Pegvaliase-Refractory CBS-551aa-21q22.3-AR-Homocystinuria-B6-Responsive-50pct-Ectopia-Lentis-Downward-Thromboembolism-PATHOGNOMONIC BCKDHA-445aa-19q13.2-AR-MSUD-Alloisoleucine-PATHOGNOMONIC-Leucine-Most-Neurotoxic-Maple-Syrup-Odour-Mennonite-Founder FAH-419aa-15q25.1-AR-HT1-Succinylacetone-PATHOGNOMONIC-NTBC-Standard-of-Care-HCC-Risk-AFP-Surveillance HGD-445aa-3q13.33-AR-Alkaptonuria-Urine-Darkens-Standing-PATHOGNOMONIC-Ochronosis-Nitisinone-SONIA2-2019 GLDC-1020aa-9p24.1-AR-NKH-CSF:Plasma-Glycine->0.08-PATHOGNOMONIC-Burst-Suppression-EEG-Sodium-Benzoate-Sink OAT-439aa-10q26.13-AR-Gyrate-Atrophy-Ornithine->10x-Chorioretinal-Degeneration-B6-5pct-Arginine-Restrict TAT-454aa-16q22.2-AR-HT2-Richner-Hanhart-Palmar-Plantar-Keratosis+Pseudodendritic-Keratitis-TRIAD-Low-Phe-Tyr-Diet-CURATIVE-No-HCC 320-Patient-Aggregate-8x40-seeds-1822-1829",
+    "category": "hereditary-metabolic",
+    "status": "built",
+    "api_routes": [
+      "/api/hereditary-amino-acid-atlas/overview",
+      "/api/hereditary-amino-acid-atlas/breakdown",
+      "/api/hereditary-amino-acid-atlas/definitions"
+    ],
+    "frontend_page": "/hereditary-amino-acid-atlas",
+    "script": "scripts/hereditary_amino_acid_atlas_dashboard.py",
+    "seed_range": "1822-1829",
+    "total_patients": 320,
+    "genes": 8,
+    "registered_at": "2026-09-07"
   }
 ]

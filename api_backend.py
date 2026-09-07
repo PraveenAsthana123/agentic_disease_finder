@@ -46415,6 +46415,33 @@ async def hereditary_purine_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-amino-acid-atlas/overview")
+async def hereditary_amino_acid_atlas_overview():
+    try:
+        import scripts.hereditary_amino_acid_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-amino-acid-atlas/breakdown")
+async def hereditary_amino_acid_atlas_breakdown():
+    try:
+        import scripts.hereditary_amino_acid_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-amino-acid-atlas/definitions")
+async def hereditary_amino_acid_atlas_definitions():
+    try:
+        import scripts.hereditary_amino_acid_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
