@@ -17366,5 +17366,31 @@
     "cohort_n": 320,
     "seed": "1910-1917",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary_renal_cystic_disease_atlas",
+    "slug": "hereditary-renal-cystic-disease-atlas",
+    "name": "Hereditary-Renal-Cystic-Disease-Atlas",
+    "status": "built",
+    "genes": [
+      "PKD1",
+      "PKD2",
+      "PKHD1",
+      "MUC1",
+      "UMOD",
+      "REN",
+      "HNF1B",
+      "DNAJB11"
+    ],
+    "seed_start": 1918,
+    "seed_end": 1925,
+    "n_patients": 320,
+    "api_routes": [
+      "/api/hereditary-renal-cystic-disease-atlas/overview",
+      "/api/hereditary-renal-cystic-disease-atlas/breakdown",
+      "/api/hereditary-renal-cystic-disease-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-renal-cystic-disease-atlas",
+    "built_date": "2026-09-07"
   }
 ]

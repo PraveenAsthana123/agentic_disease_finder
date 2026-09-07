@@ -46739,6 +46739,36 @@ async def hereditary_hamartoma_syndrome_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-renal-cystic-disease-atlas/overview")
+async def hereditary_renal_cystic_disease_atlas_overview():
+    """Hereditary-Renal-Cystic-Disease-Atlas overview: PKD1 PKD2 PKHD1 MUC1 UMOD REN HNF1B DNAJB11."""
+    try:
+        import scripts.hereditary_renal_cystic_disease_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-renal-cystic-disease-atlas/breakdown")
+async def hereditary_renal_cystic_disease_atlas_breakdown():
+    """Hereditary-Renal-Cystic-Disease-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_renal_cystic_disease_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-renal-cystic-disease-atlas/definitions")
+async def hereditary_renal_cystic_disease_atlas_definitions():
+    """Hereditary-Renal-Cystic-Disease-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_renal_cystic_disease_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-renal-tubular-atlas/overview")
 async def hereditary_renal_tubular_atlas_overview():
     """Hereditary-Renal-Tubular-Atlas overview: 8-Gene Renal Tubular Disorders Atlas."""
