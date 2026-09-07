@@ -17357,5 +17357,14 @@
       "CLN10"
     ],
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-hamartoma-syndrome-atlas",
+    "name": "Hereditary-Hamartoma-Syndrome-Atlas",
+    "status": "built",
+    "api": "/api/hereditary-hamartoma-syndrome-atlas/overview",
+    "cohort_n": 320,
+    "seed": "1910-1917",
+    "registered": "2026-09-07"
   }
 ]

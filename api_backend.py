@@ -46712,6 +46712,63 @@ async def hereditary_ncl_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-hamartoma-syndrome-atlas/overview")
+async def hereditary_hamartoma_syndrome_atlas_overview():
+    try:
+        import scripts.hereditary_hamartoma_syndrome_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hamartoma-syndrome-atlas/breakdown")
+async def hereditary_hamartoma_syndrome_atlas_breakdown():
+    try:
+        import scripts.hereditary_hamartoma_syndrome_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hamartoma-syndrome-atlas/definitions")
+async def hereditary_hamartoma_syndrome_atlas_definitions():
+    try:
+        import scripts.hereditary_hamartoma_syndrome_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-renal-tubular-atlas/overview")
+async def hereditary_renal_tubular_atlas_overview():
+    """Hereditary-Renal-Tubular-Atlas overview: 8-Gene Renal Tubular Disorders Atlas."""
+    try:
+        import scripts.hereditary_renal_tubular_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-renal-tubular-atlas/breakdown")
+async def hereditary_renal_tubular_atlas_breakdown():
+    """Hereditary-Renal-Tubular-Atlas per-gene breakdown and patient cohort."""
+    try:
+        import scripts.hereditary_renal_tubular_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-renal-tubular-atlas/definitions")
+async def hereditary_renal_tubular_atlas_definitions():
+    """Hereditary-Renal-Tubular-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_renal_tubular_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
