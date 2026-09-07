@@ -17238,5 +17238,17 @@
     "registered": "2026-09-07",
     "note": "Total: 1097 dashboards",
     "built_note": "Built scripts/hereditary_metal_metabolism_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-metal-metabolism-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-metal-metabolism-atlas/page.jsx + SiteNav wired after Hereditary-FAO-Atlas, expert_dashboards.json count 1096->1097. Built 2026-09-07."
+  },
+  {
+    "id": "hereditary-mitochondrial-rc-atlas",
+    "name": "Hereditary-Mitochondrial-RC-Atlas Complete-8-Gene-Hereditary-Mitochondrial-Respiratory-Chain-Atlas POLG-1240aa-15q25.1-AR-Alpers-SANDO-PEO3-VPA-ABSOLUTE-CI-mtDNA-Depletion-Hepatic-Failure TWNK-684aa-10q24.31-AD-PEO1-Ptosis-Ophthalmoplegia-Multiple-Deletions-IOSCA-AR-Finnish SURF1-309aa-9q34.2-AR-Leigh-CIV-Most-Common-European-COX-Deficient-RRF-ABSENT BCS1L-419aa-2q35-AR-GRACILE-Neonatal-Lethal-p.Ser78Gly-Finno-Ugric-Founder SCO2-266aa-22q13.33-AR-Fatal-HCM-CIV-Copper-p.Glu140Lys-Emerging-Copper PDHA1-390aa-Xp22.12-XL-PDH-E1Alpha-Ketogenic-Diet-THERAPEUTIC-Thiamine-MANDATORY ACAD9-621aa-3q21.3-AR-CI-Assembly-Riboflavin-50pct-RESPONSIVE NDUFS1-727aa-2q33.3-AR-CI-Core-Leigh-Leukoencephalopathy-Most-Common-Nuclear-CI 320-Patient-Aggregate-8x40-seeds-1846-1853",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "api": "/api/hereditary-mitochondrial-rc-atlas",
+    "route": "/hereditary-mitochondrial-rc-atlas",
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": "1846-1853",
+    "registered": "2026-09-07"
   }
 ]
