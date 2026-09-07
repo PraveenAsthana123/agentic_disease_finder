@@ -17546,5 +17546,14 @@
     "script": "scripts/hereditary_vascular_malformation_atlas_dashboard.py",
     "category": "Hereditary Vascular Malformation",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-coagulation-disorder-atlas",
+    "name": "Hereditary-Coagulation-Disorder-Atlas Complete-8-Gene-Haemophilia-VWD-Rare-Coagulation-Factor-Deficiency-Atlas F8-2351aa-Xq28-XLR-HaemophiliaA-Inhibitor-25-30pct-Emicizumab-Bispecific-Antibody F9-461aa-Xq27.1-XLR-HaemophiliaB-Christmas-Hemgenix-FDA2022-Leyden-Variant-Promoter VWF-2813aa-12p13.31-AD-AR-VWD-Most-Common-Type2B-DDAVP-ABSOLUTELY-CI-Thrombocytopenia-Type2N-Mimics-MildHA F11-625aa-4q35.2-AR-FactorXI-HaemophiliaC-Ashkenazi-1in450-Level-NOT-Correlate-Bleeding F7-444aa-13q34-AR-FactorVII-Most-Common-Rare-Factor-Isolated-PT-APTT-Normal-ICH-rFVIIa F13A1-732aa-6p24.3-AR-FactorXIII-A-Umbilical-Cord-Stump-PATHOGNOMONIC-Normal-PT-APTT-TRAP F10-488aa-13q34-AR-FactorX-Stuart-Prower-Both-PT-APTT-Prolonged-AL-Amyloidosis-Acquired LMAN1-525aa-18q21.3-AR-CombinedFV-FVIII-FV-NOT-In-FVIII-Concentrates-FFP-MANDATORY-MCFD2-Also-Test 320-Patient-Aggregate-8x40-seeds-1982-1989",
+    "status": "built",
+    "api": "/api/hereditary-coagulation-disorder-atlas/overview",
+    "cohort_n": 320,
+    "seed": "1982-1989",
+    "registered": "2026-09-07"
   }
 ]

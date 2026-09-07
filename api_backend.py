@@ -46979,6 +46979,33 @@ async def hereditary_vascular_malformation_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-coagulation-disorder-atlas/overview")
+async def hereditary_coagulation_disorder_atlas_overview():
+    try:
+        import scripts.hereditary_coagulation_disorder_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-coagulation-disorder-atlas/breakdown")
+async def hereditary_coagulation_disorder_atlas_breakdown():
+    try:
+        import scripts.hereditary_coagulation_disorder_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-coagulation-disorder-atlas/definitions")
+async def hereditary_coagulation_disorder_atlas_definitions():
+    try:
+        import scripts.hereditary_coagulation_disorder_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
