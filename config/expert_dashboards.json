@@ -16521,11 +16521,22 @@
   },
   {
     "id": "hereditary-immunodeficiency-atlas",
-    "name": "Hereditary-Immunodeficiency-Atlas Complete-8-Gene-Primary-Immunodeficiency-Atlas BTK-638aa-Xq22.1-XLR-XLA-No-B-Cells-IVIG-Lifelong-Live-Vaccines-ABSOLUTELY-CI ADA-363aa-20q13.12-AR-ADA-SCID-T-B-NK-Strimvelis-EMA2016-PEG-ADA-dATP-Toxic IL2RG-369aa-Xq13.1-XLR-XSCID-T-B+NK-Common-gamma-c-OTL101-FDA2024 RAG1-1043aa-11p13-AR-Omenn-Syndrome-VDJ-Recombination-Ciclosporin-Before-HSCT WAS-502aa-Xp11.23-XLR-Eczema-Microplatelets-Immunodeficiency-TRIAD-Splenectomy-CI DOCK8-2099aa-9p24.3-AR-HIES2-Molluscum-HPV-Cutaneous-Viral-STAT3-DDx TNFRSF13B-293aa-17p11.2-AD-AR-CVID2-TACI-GLILD-Lymphoma-IVIG-Lifelong LRBA-2863aa-4q31.3-AR-CVID8-Abatacept-PATHOGNOMONIC-Response-CTLA4-Recycling 320-Patient-Aggregate-8x40-seeds-1782-1789",
+    "name": "Hereditary-Immunodeficiency-Atlas Complete-8-Gene-Primary-Immunodeficiency-Atlas BTK-659aa-Xq22.2-XLR-XLA-No-B-Cells-IVIG-Lifelong-Live-Vaccines-ABSOLUTELY-CI IL2RG-369aa-Xq13.1-XLR-SCID-X1-T-B+NK-OTL101-EMA2021 ADA-363aa-20q13.12-AR-ADA-SCID-Strimvelis-EMA2016-dATP-Lymphotoxic RAG1-1043aa-11p13-AR-Omenn-VDJ-Recombination-Ciclosporin-Before-HSCT RAG2-527aa-11p13-AR-RAG2-SCID-Omenn-Panel-Both-RAG1-RAG2 DCLRE1C-692aa-10p13-AR-Artemis-Radiation-Sensitive-RIC-MANDATORY JAK3-1124aa-19p13.11-AR-JAK3-SCID-Females-Affected-SCID-X1-Phenocopy TNFRSF13B-293aa-17p11.2-AD-AR-CVID-Absent-Vaccine-Responses-REQUIRED-Lymphoma-8x 320-Patient-Aggregate-8x40-seeds-1974-1981",
     "status": "built",
     "patients": 320,
-    "seeds": "1782-1789",
-    "registered": "2026-09-07"
+    "seeds": "1974-1981",
+    "registered": "2026-09-07",
+    "genes": [
+      "BTK",
+      "IL2RG",
+      "ADA",
+      "RAG1",
+      "RAG2",
+      "DCLRE1C",
+      "JAK3",
+      "TNFRSF13B"
+    ],
+    "rework": 2
   },
   {
     "id": "hereditary-connective-tissue-atlas",
