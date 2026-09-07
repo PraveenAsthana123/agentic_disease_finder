@@ -17152,5 +17152,19 @@
     "status": "built",
     "note": "Built scripts/hereditary_lsd_atlas_dashboard.py (320-patient aggregate cohort 8x40, seeds 1790-1797), api_backend.py 3 routes /api/hereditary-lsd-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-lsd-atlas/page.jsx + SiteNav wired after Hereditary-HI-Atlas, expert_dashboards.json count 1090->1091. Built 2026-09-06.",
     "maps_to": "/api/hereditary-lsd-atlas/overview + /api/hereditary-lsd-atlas/breakdown + /api/hereditary-lsd-atlas/definitions"
+  },
+  {
+    "id": "hereditary-ucd-atlas",
+    "name": "Hereditary-UCD-Atlas Complete-8-Gene-Hereditary-Urea-Cycle-Disorder-Atlas OTC-354aa-Xp21.1-XLR-OTC-Deficiency-Most-Common-UCD-~50pct-Valproate-ABSOLUTE-CI ASS1-412aa-9q34.11-AR-CTLN1-Citrulline>1000\u00b5mol/L-PATHOGNOMONIC-Arginine-ESSENTIAL ASL-464aa-7q-AR-Argininosuccinic-Aciduria-Trichorrhexis-Nodosa-PATHOGNOMONIC-NH3-Independent-Neurotox CPS1-1500aa-2q35-AR-Absent-Citrulline-Normal-Orotic-NCG-Trial-MANDATORY ARG1-322aa-6q23.2-AR-Arginemia-Spastic-Diplegia-NOT-Hyperammonemia-RESTRICT-Arginine NAGS-534aa-17q21.31-AR-ONLY-UCD-Antidote-NCG-Carglumic-Acid-DRAMATIC-Response SLC25A15-301aa-13q14.11-AR-HHH-Syndrome-Homocitrullinuria-PATHOGNOMONIC-French-Canadian SLC25A13-675aa-7q21.3-AR-Citrin-NICCD-CTLN2-Carbohydrate-HARMFUL-High-Protein-BENEFICIAL-East-Asian-Japan-1:17000 320-Patient-Aggregate-8x40-seeds-1798-1805",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-ucd-atlas/overview",
+      "/api/hereditary-ucd-atlas/breakdown",
+      "/api/hereditary-ucd-atlas/definitions"
+    ],
+    "frontend_page": "/hereditary-ucd-atlas",
+    "patient_count": 320,
+    "seeds": "1798-1805",
+    "registered": "2026-09-07"
   }
 ]
