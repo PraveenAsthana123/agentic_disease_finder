@@ -17323,5 +17323,17 @@
     ],
     "portal_page": "/hereditary-thyroid-disorder-atlas",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-cholestasis-atlas",
+    "name": "Hereditary-Cholestasis-Atlas Complete-8-Gene-Hereditary-Cholestatic-Liver-Disease-Atlas ATP8B1-1251aa-18q21.31-AR-PFIC1-Low-GGT-Post-LTx-Diarrhea-WORSENS ABCB11-1321aa-2q31.1-AR-PFIC2-BSEP-Low-GGT-HCC-WITHOUT-Cirrhosis-Odevixibat-FDA2021 ABCB4-1279aa-7q21.12-AR/AD-PFIC3/LPAC-MDR3-HIGH-GGT-PATHOGNOMONIC-UDCA-First-Line TJP2-1221aa-9q21.11-AR-PFIC4-ZO2-Low-GGT-HCC-Without-Cirrhosis NR1H4-472aa-12q23.1-AR-PFIC5-FXR-Most-Severe-Neonatal-FXR-Agonists-CANNOT-Work MYO5B-1852aa-18q21.1-AR-PFIC6/MVID-Low-GGT-Neonatal-Diarrhea-300mL-per-kg-TPN JAG1-1218aa-20p12.2-AD-Alagille1-Butterfly-Vertebrae-PATHOGNOMONIC-Odevixibat-FDA2023 NOTCH2-2471aa-1p12-AD-Alagille2-Renal-MORE-Prominent-Hajdu-Cheney-GOF-Distinct 320-Patient-Aggregate-8x40-seeds-1894-1901",
+    "status": "built",
+    "api_prefix": "/api/hereditary-cholestasis-atlas",
+    "portal_page": "/hereditary-cholestasis-atlas",
+    "script": "scripts/hereditary_cholestasis_atlas_dashboard.py",
+    "seed_range": "1894-1901",
+    "n_patients": 320,
+    "genes": 8,
+    "registered": "2026-09-07"
   }
 ]
