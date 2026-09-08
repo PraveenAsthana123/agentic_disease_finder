@@ -47392,6 +47392,36 @@ async def hereditary_myoclonus_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-tremor-ataxia-atlas/overview")
+async def hereditary_tremor_ataxia_atlas_overview():
+    """Hereditary-Tremor-Ataxia-Atlas — 8-gene aggregate overview (320 patients, seeds 2094-2101)."""
+    try:
+        import scripts.hereditary_tremor_ataxia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-tremor-ataxia-atlas/breakdown")
+async def hereditary_tremor_ataxia_atlas_breakdown():
+    """Hereditary-Tremor-Ataxia-Atlas per-gene breakdown (FMR1/CACNA1A/FGF14/RFC1/NOTCH2NLC/PRKCG/ITPR1/ELOVL5)."""
+    try:
+        import scripts.hereditary_tremor_ataxia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-tremor-ataxia-atlas/definitions")
+async def hereditary_tremor_ataxia_atlas_definitions():
+    """Hereditary-Tremor-Ataxia-Atlas gene definitions, glossary and treatment protocols."""
+    try:
+        import scripts.hereditary_tremor_ataxia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
