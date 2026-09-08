@@ -47602,6 +47602,36 @@ async def hereditary_cmt_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-pch-atlas/overview")
+async def hereditary_pch_atlas_overview():
+    """Hereditary-PCH-Atlas — 8-gene aggregate overview (320 patients, seeds 2150-2157)."""
+    try:
+        import scripts.hereditary_pch_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pch-atlas/breakdown")
+async def hereditary_pch_atlas_breakdown():
+    """Hereditary-PCH-Atlas per-gene breakdown (TSEN54/TSEN2/RARS2/EXOSC3/VRK1/CASK/AMPD2/TOE1)."""
+    try:
+        import scripts.hereditary_pch_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pch-atlas/definitions")
+async def hereditary_pch_atlas_definitions():
+    """Hereditary-PCH-Atlas gene definitions, MRI patterns, biomarkers and surveillance protocols."""
+    try:
+        import scripts.hereditary_pch_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

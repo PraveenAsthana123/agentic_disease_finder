@@ -18242,5 +18242,32 @@
       "PRX"
     ],
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-pch-atlas",
+    "name": "Hereditary-PCH-Atlas Complete-8-Gene-Pontocerebellar-Hypoplasia-Atlas TSEN54-576aa-17q25.1-AR-PCH2A-Dragonfly-Wing-MRI-A307S-Most-Common TSEN2-483aa-3p25.1-AR-PCH2B-TSEN-Complex-Indistinguishable RARS2-576aa-6q15-AR-PCH6-Absent-Vermis-Lactate-VPA-ABSOLUTE-CI EXOSC3-275aa-9p13.2-AR-PCH1B-Motor-Neuron-Disease-D132A-Founder VRK1-396aa-14q32.2-AR-PCH1B-SMA-PCH-R133C-Arab CASK-922aa-Xp11.4-XLD-PCH3-MICPCH-Female-Predominant AMPD2-900aa-1p13.3-AR-PCH9-SAICAR-Hypomyelination TOE1-421aa-1p34.1-AR-PCH7-Gonadal-Dysgenesis-46XY 320-Patient-Aggregate-8x40-seeds-2150-2157",
+    "status": "built",
+    "category": "hereditary-neurology",
+    "route": "/hereditary-pch-atlas",
+    "api_endpoints": [
+      "/api/hereditary-pch-atlas/overview",
+      "/api/hereditary-pch-atlas/breakdown",
+      "/api/hereditary-pch-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-pch-atlas/page.jsx",
+    "script": "scripts/hereditary_pch_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "2150-2157",
+    "genes": [
+      "TSEN54",
+      "TSEN2",
+      "RARS2",
+      "EXOSC3",
+      "VRK1",
+      "CASK",
+      "AMPD2",
+      "TOE1"
+    ],
+    "registered": "2026-09-08"
   }
 ]
