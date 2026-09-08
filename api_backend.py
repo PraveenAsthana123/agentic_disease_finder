@@ -47542,6 +47542,36 @@ async def hereditary_hsan_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-dhsn-atlas/overview")
+async def hereditary_dhsn_atlas_overview():
+    """Hereditary-dHMN-Atlas — 8-gene aggregate overview (320 patients, seeds 2134-2141)."""
+    try:
+        import scripts.hereditary_dhsn_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dhsn-atlas/breakdown")
+async def hereditary_dhsn_atlas_breakdown():
+    """Hereditary-dHMN-Atlas per-gene breakdown (HSPB1/HSPB8/GARS1/DCTN1/BICD2/DYNC1H1/IGHMBP2/TRPV4)."""
+    try:
+        import scripts.hereditary_dhsn_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dhsn-atlas/definitions")
+async def hereditary_dhsn_atlas_definitions():
+    """Hereditary-dHMN-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_dhsn_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -18188,5 +18188,32 @@
       "ATL1"
     ],
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-dhsn-atlas",
+    "name": "Hereditary-dHMN-Atlas Complete-8-Gene-Distal-Hereditary-Motor-Neuropathy-Atlas HSPB1-640aa-7q11.23-AD-dHMN2B-Foot-Drop-NO-Sensory-Loss-DDx-CMT2F HSPB8-196aa-12q24.23-AD-dHMN2A-pLys141Asn-Juvenile-Founder GARS1-685aa-7p14.3-AD-dHMN5A-Upper-Limb-Predominant-Phrenic-Nerve DCTN1-1278aa-2p13.1-AD-dHMN7B-Vocal-Fold-Paralysis-PATHOGNOMONIC BICD2-820aa-9q22.31-AD-SMALED1-Congenital-Hip-Dislocation DYNC1H1-4646aa-14q32.31-AD-SMALED1-Intellectual-Disability-30pct IGHMBP2-993aa-11q13.3-AR-SMARD1-Infantile-Respiratory-Failure TRPV4-871aa-12q24.11-AD-SMALED2-Skeletal-Dysplasia 320-Patient-Aggregate-8x40-seeds-2134-2141",
+    "status": "built",
+    "category": "hereditary-neuropathy",
+    "route": "/hereditary-dhsn-atlas",
+    "api_endpoints": [
+      "/api/hereditary-dhsn-atlas/overview",
+      "/api/hereditary-dhsn-atlas/breakdown",
+      "/api/hereditary-dhsn-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-dhsn-atlas/page.jsx",
+    "script": "scripts/hereditary_dhsn_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "2134-2141",
+    "genes": [
+      "HSPB1",
+      "HSPB8",
+      "GARS1",
+      "DCTN1",
+      "BICD2",
+      "DYNC1H1",
+      "IGHMBP2",
+      "TRPV4"
+    ],
+    "registered": "2026-09-08"
   }
 ]
