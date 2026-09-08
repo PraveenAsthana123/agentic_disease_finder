@@ -17705,5 +17705,180 @@
     "patients": 320,
     "seeds": "2022-2029",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-porphyria-atlas",
+    "name": "Hereditary-Porphyria-Atlas Complete-8-Gene-Hereditary-Porphyria-Atlas HMBS-361aa-11q23.3-AD-AIP-Most-Common-Acute-Porphyria CPOX-454aa-3q11.2-AD-HCP PPOX-477aa-1q23.3-AD-VP UROS-265aa-10q25.2-AR-CEP FECH-423aa-18q21.31-AR-EPP ALAS2-587aa-Xp11.21-XLD-GOF UROD-367aa-1p34.1-AD-PCT ALAD-330aa-9q32-AR-ADP 320-Patient-Aggregate-8x40-seeds-1758-1765",
+    "status": "built",
+    "script": "scripts/hereditary_porphyria_atlas_dashboard.py",
+    "portal_page": "/hereditary-porphyria-atlas",
+    "api_endpoints": [
+      "/api/hereditary-porphyria-atlas/overview",
+      "/api/hereditary-porphyria-atlas/breakdown",
+      "/api/hereditary-porphyria-atlas/definitions"
+    ],
+    "genes": [
+      "HMBS",
+      "CPOX",
+      "PPOX",
+      "UROS",
+      "FECH",
+      "ALAS2",
+      "UROD",
+      "ALAD"
+    ],
+    "seed_range": "1758-1765",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-adrenal-atlas",
+    "name": "Hereditary-Adrenal-Disorders-Atlas Complete-8-Gene-Hereditary-Adrenal-Disorders-Atlas CYP21A2-495aa-6p21.33-AR-CAH-21OHD CYP11B1-503aa-8q24.3-AR-CAH-11\u03b2OHD CYP17A1-508aa-10q24.32-AR STAR-285aa-8p11.23-AR NR0B1-470aa-Xp21.2-XLR MC2R-297aa-18p11.21-AR AAAS-546aa-12q13.13-AR ABCD1-745aa-Xq28-XLR 320-Patient-Aggregate-8x40-seeds-1766-1773",
+    "status": "built",
+    "script": "scripts/hereditary_adrenal_atlas_dashboard.py",
+    "portal_page": "/hereditary-adrenal-atlas",
+    "api_endpoints": [
+      "/api/hereditary-adrenal-atlas/overview",
+      "/api/hereditary-adrenal-atlas/breakdown",
+      "/api/hereditary-adrenal-atlas/definitions"
+    ],
+    "genes": [
+      "CYP21A2",
+      "CYP11B1",
+      "CYP17A1",
+      "STAR",
+      "NR0B1",
+      "MC2R",
+      "AAAS",
+      "ABCD1"
+    ],
+    "seed_range": "1766-1773",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-hi-atlas",
+    "name": "Hereditary-Hyperinsulinism-Atlas Complete-8-Gene-Hereditary-Hyperinsulinism-Atlas ABCC8-1581aa-11p15.1-AR/AD KCNJ11-390aa-11p15.1-AR/AD GLUD1-558aa-10q23.33-AD-GOF GCK-465aa-7p13-AD-GOF HADH-314aa-4q25-AR SLC16A1-494aa-1p13.2-AD-GOF HNF4A-455aa-20q13.12-AD FOXA2-1161aa-20p11.21-AD 320-Patient-Aggregate-8x40-seeds-1774-1781",
+    "status": "built",
+    "script": "scripts/hereditary_hi_atlas_dashboard.py",
+    "portal_page": "/hereditary-hi-atlas",
+    "api_endpoints": [
+      "/api/hereditary-hi-atlas/overview",
+      "/api/hereditary-hi-atlas/breakdown",
+      "/api/hereditary-hi-atlas/definitions"
+    ],
+    "genes": [
+      "ABCC8",
+      "KCNJ11",
+      "GLUD1",
+      "GCK",
+      "HADH",
+      "SLC16A1",
+      "HNF4A",
+      "FOXA2"
+    ],
+    "seed_range": "1774-1781",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-renal-cystic-disease-atlas",
+    "name": "Hereditary-Renal-Cystic-Disease-Atlas Complete-8-Gene PKD1-4304aa-16p13.3-AD PKD2-968aa-4q22.1-AD PKHD1-4074aa-6p21.2-AR MUC1-1255aa-1q22-AD UMOD-640aa-16p12.3-AD REN-406aa-1q32.1-AD HNF1B-557aa-17q12-AD DNAJB11-354aa-3q27.3-AD 320-Patient-Aggregate-8x40-seeds-1918-1925",
+    "status": "built",
+    "script": "scripts/hereditary_renal_cystic_disease_atlas_dashboard.py",
+    "portal_page": "/hereditary-renal-cystic-disease-atlas",
+    "api_endpoints": [
+      "/api/hereditary-renal-cystic-disease-atlas/overview",
+      "/api/hereditary-renal-cystic-disease-atlas/breakdown",
+      "/api/hereditary-renal-cystic-disease-atlas/definitions"
+    ],
+    "genes": [
+      "PKD1",
+      "PKD2",
+      "PKHD1",
+      "MUC1",
+      "UMOD",
+      "REN",
+      "HNF1B",
+      "DNAJB11"
+    ],
+    "seed_range": "1918-1925",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-complement-disorder-atlas",
+    "name": "Hereditary-Complement-Disorder-Atlas Complete-8-Gene-aHUS-C3G CFH-1231aa-1q31.3-AD/AR CFI-583aa-4q25-AD/AR C3-1663aa-19p13.3-AD/AR CFB-739aa-6p21.33-AD CD46-347aa-1q32.2-AD THBD-557aa-20p11.21-AD/AR DGKE-520aa-17q22-AR C5-1676aa-9q33.2-AD 320-Patient-Aggregate-8x40-seeds-1926-1933",
+    "status": "built",
+    "script": "scripts/hereditary_complement_disorder_atlas_dashboard.py",
+    "portal_page": "/hereditary-complement-disorder-atlas",
+    "api_endpoints": [
+      "/api/hereditary-complement-disorder-atlas/overview",
+      "/api/hereditary-complement-disorder-atlas/breakdown",
+      "/api/hereditary-complement-disorder-atlas/definitions"
+    ],
+    "genes": [
+      "CFH",
+      "CFI",
+      "C3",
+      "CFB",
+      "CD46",
+      "THBD",
+      "DGKE",
+      "C5"
+    ],
+    "seed_range": "1926-1933",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-leukodystrophy-atlas",
+    "name": "Hereditary-Leukodystrophy-Atlas Complete-8-Gene-Hereditary-White-Matter-Disorders-Atlas ARSA-507aa-22q13.33-AR GALC-669aa-14q31.3-AR PLP1-276aa-Xq22.2-X-linked ABCD1-745aa-Xq28-X-linked ASPA-313aa-17p13.2-AR GFAP-432aa-17q21.31-AD EIF2B5-712aa-3q27.1-AR POLR3A-1390aa-10q22.3-AR 320-Patient-Aggregate-8x40-seeds-1934-1941",
+    "status": "built",
+    "script": "scripts/hereditary_leukodystrophy_atlas_dashboard.py",
+    "portal_page": "/hereditary-leukodystrophy-atlas",
+    "api_endpoints": [
+      "/api/hereditary-leukodystrophy-atlas/overview",
+      "/api/hereditary-leukodystrophy-atlas/breakdown",
+      "/api/hereditary-leukodystrophy-atlas/definitions"
+    ],
+    "genes": [
+      "ARSA",
+      "GALC",
+      "PLP1",
+      "ABCD1",
+      "ASPA",
+      "GFAP",
+      "EIF2B5",
+      "POLR3A"
+    ],
+    "seed_range": "1934-1941",
+    "n_patients": 320,
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-connective-tissue-disorder-atlas",
+    "name": "Hereditary-Connective-Tissue-Disorder-Atlas Complete-8-Gene FBN1-2871aa-15q21.1-AD COL3A1-1466aa-2q32.2-AD TGFBR2-592aa-3p24.1-AD COL1A1-1464aa-17q21.33-AD ELN-786aa-7q11.23-AD ABCC6-1503aa-16p13.1-AR COL5A1-2836aa-9q34.3-AD TNXB-4243aa-6p21.3-AR/AD 320-Patient-Aggregate-8x40-seeds-1942-1949",
+    "status": "built",
+    "script": "scripts/hereditary_connective_tissue_disorder_atlas_dashboard.py",
+    "portal_page": "/hereditary-connective-tissue-disorder-atlas",
+    "api_endpoints": [
+      "/api/hereditary-connective-tissue-disorder-atlas/overview",
+      "/api/hereditary-connective-tissue-disorder-atlas/breakdown",
+      "/api/hereditary-connective-tissue-disorder-atlas/definitions"
+    ],
+    "genes": [
+      "FBN1",
+      "COL3A1",
+      "TGFBR2",
+      "COL1A1",
+      "ELN",
+      "ABCC6",
+      "COL5A1",
+      "TNXB"
+    ],
+    "seed_range": "1942-1949",
+    "n_patients": 320,
+    "registered": "2026-09-07"
   }
 ]
