@@ -17555,5 +17555,30 @@
     "cohort_n": 320,
     "seed": "1982-1989",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-rasopathy-atlas",
+    "title": "Hereditary-RASopathy-Atlas",
+    "status": "built",
+    "route": "/hereditary-rasopathy-atlas",
+    "api_routes": [
+      "/api/hereditary-rasopathy-atlas/overview",
+      "/api/hereditary-rasopathy-atlas/breakdown",
+      "/api/hereditary-rasopathy-atlas/definitions"
+    ],
+    "genes": [
+      "PTPN11",
+      "SOS1",
+      "RAF1",
+      "RIT1",
+      "BRAF",
+      "MAP2K1",
+      "HRAS",
+      "SHOC2"
+    ],
+    "seeds": "1990-1997",
+    "patients": 320,
+    "registered": "2026-09-07",
+    "description": "Complete 8-Gene RAS-MAPK Pathway Disorder Atlas: Noonan Syndrome, CFC Syndrome, Costello Syndrome"
   }
 ]

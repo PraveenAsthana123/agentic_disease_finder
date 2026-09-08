@@ -47006,6 +47006,34 @@ async def hereditary_coagulation_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-rasopathy-atlas/overview")
+async def hereditary_rasopathy_atlas_overview():
+    try:
+        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-rasopathy-atlas/breakdown")
+async def hereditary_rasopathy_atlas_breakdown():
+    try:
+        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-rasopathy-atlas/definitions")
+async def hereditary_rasopathy_atlas_definitions():
+    """Hereditary-RASopathy-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
