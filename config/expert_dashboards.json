@@ -18397,5 +18397,27 @@
     ],
     "seeds": "2198-2205",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-myofibrillar-myopathy-atlas",
+    "name": "Hereditary-Myofibrillar-Myopathy-Atlas Complete-8-Gene-Myofibrillar-Myopathy-MFM-Spectrum-Atlas DES-470aa-2q35-AD/AR-MFM1-CYTOPLASMIC-DESMIN-AGGREGATES-PATHOGNOMONIC-Cardiac-DCM-Mandatory CRYAB-175aa-11q23.1-AD/AR-MFM2-POSTERIOR-SUBCAPSULAR-CATARACTS-PATHOGNOMONIC-R120G MYOT-498aa-5q31.2-AD-MFM3-LGMD1A-LATE-ONSET-40-65yr-NO-Cardiac FLNC-2725aa-7q32.1-AD-MFM5-HYALINE-BODIES-Truncating-DCM-ARVC-Missense-MFM5 BAG3-575aa-10q26.11-AD-MFM6-CHILDHOOD-2-15yr-DCM-Mandatory-P209L-P209S PYROXD1-500aa-12p12.1-AR-Childhood-MFM-Hybrid-Biopsy-No-Cardiac ACTN2-894aa-1q43-AD-CARDIAC-DOMINANT-HCM-DCM-LVNC-Mavacamten-2022 HSPB8-196aa-12q24.23-AD-CMT2L-K141N-K141E-HOTSPOT-DISTAL-Neuropathy 320-Patient-Aggregate-8x40-seeds-2206-2213",
+    "status": "built",
+    "seeds": "2206-2213",
+    "registered": "2026-09-08",
+    "genes": [
+      "DES",
+      "CRYAB",
+      "MYOT",
+      "FLNC",
+      "BAG3",
+      "PYROXD1",
+      "ACTN2",
+      "HSPB8"
+    ],
+    "endpoints": [
+      "/api/hereditary-myofibrillar-myopathy-atlas/overview",
+      "/api/hereditary-myofibrillar-myopathy-atlas/breakdown",
+      "/api/hereditary-myofibrillar-myopathy-atlas/definitions"
+    ]
   }
 ]

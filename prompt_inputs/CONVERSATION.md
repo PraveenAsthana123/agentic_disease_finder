@@ -34517,3 +34517,87 @@ Hereditary-Dystonia-Atlas tracked. Autonomous build loop iteration complete.
 | ATP1A2 | 1020aa | FHM2 | TRIPTANS ABSOLUTELY CI |
 | ADCY5 | 1261aa | ADCY5-RMD | Nocturnal NREM + EEG normal — caffeine CI |
 | SLC6A5 | 797aa | Hyperekplexia | Nose-tip life-saving — clonazepam curative |
+
+### [2026-09-08 06:48:10 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Myotonic-Disorder-Atlas** (expert_dashboards entry 1148)
+
+**8 genes · 320 patients · seeds 2174-2181:**
+| Gene | aa | Locus | Inh | Disease | Key Pathognomonic |
+|---|---|---|---|---|---|
+| DMPK | 639 | 19q13.32 | AD | DM1/Steinert | CTG >50; succinylcholine **ABSOLUTELY CI**; anaesthesia alert card |
+| CNBP | 347 | 3q21.3 | AD | DM2/PROMM | PROXIMAL weakness (not distal DDx DM1); myalgia misdiagnosed fibromyalgia; **NO congenital form** |
+| CLCN1 | 988 | 7q34 | AD/AR | Myotonia Congenita Thomsen/Becker | **WARM-UP PHENOMENON** PATHOGNOMONIC; mexiletine level A |
+| SCN4A | 1836 | 17q23.3 | AD | PMC / HyperPP2 | **COLD worsens + warm-up FAILS** PATHOGNOMONIC DDx CLCN1 |
+| CACNA1S | 1873 | 1q32.1 | AD | HypoPP1 | Carbohydrate+rest triggers; **glucose IV ABSOLUTELY CI**; acetazolamide first-line |
+| KCNJ2 | 427 | 17q24.3 | AD | Andersen-Tawil ATS/LQT7 | **TRIAD**: paralysis + bidirectional VT + dysmorphic PATHOGNOMONIC; flecainide |
+| RYR1 | 5038 | 19q13.2 | AR/AD | MHS1 / Central Core Disease | **ALL volatile + succinylcholine ABSOLUTELY CI**; dantrolene 26 vials mandatory |
+| ATP2A1 | 994 | 16p11.2 | AR | Brody Myopathy | **EMG ELECTRICALLY SILENT** during stiffness PATHOGNOMONIC DDx CLCN1/SCN4A |
+
+**Delivered:** `scripts/hereditary_myotonic_disorder_atlas_dashboard.py` · `api_backend.py` (3 routes, all 200) · `portal-next/app/hereditary-myotonic-disorder-atlas/page.jsx` (4 tabs) · SiteNav wired after Hereditary-Paroxysmal-Movement-Disorder-Atlas · `config/expert_dashboards.json` count 1147→1148 · committed `cf52d680` · pushed to origin/main.
+
+### [2026-09-08 07:19:14 MDT] ASSISTANT
+Done. Here's what was built and pushed:
+
+---
+
+**Built+Pushed: Hereditary-Sarcoglycanopathy-LGMD-Atlas** (seeds 2182-2189)
+
+**8 genes — LGMD-R3 through R12 sarcoglycanopathy spectrum:**
+
+| Gene | Size | Locus | LGMD Class | Key Distinguisher |
+|------|------|-------|------------|-------------------|
+| SGCA | 387aa | 17q21.33 | LGMD-R3 | CK 10-70× ULN; IHC absent αSG; gene therapy trials |
+| SGCB | 318aa | 4q12 | LGMD-R4 | C283Y founder N.Africa/M.East; DMD-like severe alleles |
+| SGCG | 291aa | 13q12.12 | LGMD-R5 | MOST SEVERE; del521T N.Africa; cardiac DCM 6m echo mandatory |
+| SGCD | 290aa | 5q33.3 | LGMD-R6 | DCM 100% PATHOGNOMONIC; DCM may precede weakness; gene panel all unexplained DCM |
+| FKRP | 495aa | 19q13.32 | LGMD-R9 | Most common AR LGMD UK/Scandinavia; DCM 30-40%; calf hypertrophy 85% |
+| ANO5 | 913aa | 11p14.3 | LGMD-R12 | Quads spared PATHOGNOMONIC DDx DYSF; R758C Dutch/Belgian; NO cardiac |
+| TRIM32 | 653aa | 9q33.1 | LGMD-R8 | Sarcotubular aggregates EM PATHOGNOMONIC; facial weakness; D487N Hutterite |
+| TCAP | 167aa | 17q12 | LGMD-R7 | Rarest LGMD; DCM significant; rimmed vacuoles; Uruguay/Brazil/China |
+
+**Deliverables:**
+- `scripts/hereditary_sarcoglycanopathy_lgmd_atlas_dashboard.py` — 320 patients (8×40)
+- 3 API endpoints verified 200: `/api/hereditary-sarcoglycanopathy-lgmd-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-sarcoglycanopathy-lgmd-atlas/page.jsx` — 4-tab portal
+- SiteNav wired after Hereditary-Myotonic-Disorder-Atlas
+- `expert_dashboards.json` count 1148 → 1149
+- Commit `d982f9bb` pushed to `main`
+
+⏳ **Pending:** Ictal/interictal retrain (skipped — heavy compute); Gmail/Slack/Drive live (blocked — credentials); multi-user auth/RBAC (blocked).
+
+### [2026-09-08 07:49:33 MDT] ASSISTANT
+**Built + pushed: Hereditary-Distal-Myopathy-Atlas** (`b001745e`)
+
+**What was built:**
+- `scripts/hereditary_distal_myopathy_atlas_dashboard.py` — 8-gene atlas (DYSF · GNE · MYH7 · TTN · VCP · MATR3 · HNRNPA2B1 · LDB3), 320 patients, seeds 2190-2197
+- 3 API endpoints — `/api/hereditary-distal-myopathy-atlas/overview|breakdown|definitions` — all verified **200**
+- `portal-next/app/hereditary-distal-myopathy-atlas/page.jsx` — 4 tabs (Overview / Gene Table / Clinical Atlas / Definitions)
+- SiteNav wired after Hereditary-Sarcoglycanopathy-LGMD-Atlas
+- `expert_dashboards.json` count 1149 → **1150**
+
+**Key clinical content built in:**
+- DYSF: IMMUNOSUPPRESSION ABSOLUTELY CI (inflammatory infiltrate mimics PM — fatal misdiagnosis trap); PBMC monocyte test; CK 10-150×
+- GNE: QUADRICEPS SPARED LATE PATHOGNOMONIC (DDx sIBM quads early); M712T Japanese/Korean; V572L Middle Eastern founders
+- MYH7: CONGENITAL FOOT DROP onset infancy; NO cardiac in Laing alleles — critical DDx vs HCM alleles
+- TTN: ANTERIOR TIBIAL >35yr; FINmaj Finnish founder; AD truncating = titinopathy DCM echo mandatory
+- VCP: IBMPFD triad (Myopathy+Paget+FTD) pathognomonic; R155H >50%; bisphosphonate for Paget
+- MATR3: VOCAL CORD + PHARYNGEAL + DISTAL triad pathognomonic; SNHL; S85C founder; ALS-MATR3 spectrum
+- HNRNPA2B1: MSP2 = VCP phenotype clone (DDx by gene panel only); D290V LCD prion-like domain
+- LDB3: Late 40-60yr anterior tibial; A165V founder; CARDIAC ECHO MANDATORY (DCM/HCM co-segregation)
+
+### [2026-09-08 08:49:37 MDT] ASSISTANT
+Done. **Hereditary-EDMD-Nuclear-Envelope-Atlas** committed and pushed.
+
+**Built:** 8-gene EDMD / Nuclear Envelope Myopathy atlas (seeds 2198-2205):
+- EMD 254aa (Xq28, XLR, EDMD1 — emerin IHC absent, pacemaker/ICD mandatory)
+- LMNA 664aa (1q22, AD, EDMD2/LGMD1B/DCM/FPLD2 — most allelic gene, 15 phenotypes)
+- SYNE1 8797aa (6q25.2, AR/AD, EDMD4/ARCA1 — Quebec founder, largest human protein)
+- SYNE2 6885aa (14q23.2, AD, EDMD5 — LINC outer NM, very rare)
+- TMEM43 400aa (3p25.1, AD, ARVC5/EDMD7 — S358L Newfoundland, 100% penetrance males, ICD all carriers)
+- FHL1 323aa (Xq26.3, XLR, EDMD6 — reducing body myopathy, BT stain pathognomonic)
+- SUN1 916aa (7q32.2, AR/AD — LINC inner NM, SUN domain)
+- LEMD3 922aa (12q14.3, AD — BOS, osteopoikilosis + dermatofibrosis dual pathognomonic)
+
+**Verified:** 3 endpoints `/api/hereditary-edmd-nuclear-envelope-atlas/overview|breakdown|definitions` → 200. Registry count 1150→1151. Pushed `b001745e..1ad6e07d`.

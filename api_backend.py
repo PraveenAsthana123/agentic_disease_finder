@@ -47812,6 +47812,36 @@ async def hereditary_edmd_nuclear_envelope_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-myofibrillar-myopathy-atlas/overview")
+async def hereditary_myofibrillar_myopathy_atlas_overview():
+    """Hereditary-Myofibrillar-Myopathy-Atlas — 8-gene aggregate overview (320 patients, seeds 2206-2213)."""
+    try:
+        import scripts.hereditary_myofibrillar_myopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myofibrillar-myopathy-atlas/breakdown")
+async def hereditary_myofibrillar_myopathy_atlas_breakdown():
+    """Hereditary-Myofibrillar-Myopathy-Atlas per-gene breakdown (DES/CRYAB/MYOT/FLNC/BAG3/PYROXD1/ACTN2/HSPB8)."""
+    try:
+        import scripts.hereditary_myofibrillar_myopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myofibrillar-myopathy-atlas/definitions")
+async def hereditary_myofibrillar_myopathy_atlas_definitions():
+    """Hereditary-Myofibrillar-Myopathy-Atlas gene definitions, biopsy IHC panel, cardiac table, MFM DDx."""
+    try:
+        import scripts.hereditary_myofibrillar_myopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
