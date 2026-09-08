@@ -18384,5 +18384,18 @@
     ],
     "portal_page": "/hereditary-distal-myopathy-atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "name": "Hereditary-EDMD-Nuclear-Envelope-Atlas Complete-8-Gene-EDMD-Nuclear-Envelope-Myopathy-Spectrum-Atlas EMD-254aa-Xq28-XLR-EDMD1-Emerin-ELBOW-CONTRACTURES-IHC-ABSENT-PACEMAKER-ICD-MANDATORY LMNA-664aa-1q22-AD-EDMD2-LGMD1B-DCM-CD-FPLD2-MOST-ALLELIC-GENE-15-PHENOTYPES SYNE1-8797aa-6q25.2-AR-AD-EDMD4-ARCA1-Quebec-Founder SYNE2-6885aa-14q23.2-AD-EDMD5-LINC-Outer-NM TMEM43-400aa-3p25.1-AD-ARVC5-EDMD7-S358L-Newfoundland-100pct-Penetrance FHL1-323aa-Xq26.3-XLR-EDMD6-Reducing-Body-Myopathy SUN1-916aa-7q32.2-AR-AD-LINC-Inner-NM LEMD3-922aa-12q14.3-AD-BOS-Osteopoikilosis-Dermatofibrosis 320-Patient-Aggregate-8x40-seeds-2198-2205",
+    "status": "built",
+    "script": "scripts/hereditary_edmd_nuclear_envelope_atlas_dashboard.py",
+    "portal_page": "/hereditary-edmd-nuclear-envelope-atlas",
+    "api_routes": [
+      "/api/hereditary-edmd-nuclear-envelope-atlas/overview",
+      "/api/hereditary-edmd-nuclear-envelope-atlas/breakdown",
+      "/api/hereditary-edmd-nuclear-envelope-atlas/definitions"
+    ],
+    "seeds": "2198-2205",
+    "registered": "2026-09-08"
   }
 ]

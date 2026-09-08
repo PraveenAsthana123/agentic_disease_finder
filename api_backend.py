@@ -47782,6 +47782,36 @@ async def hereditary_distal_myopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-edmd-nuclear-envelope-atlas/overview")
+async def hereditary_edmd_nuclear_envelope_atlas_overview():
+    """Hereditary-EDMD-Nuclear-Envelope-Atlas — 8-gene aggregate overview (320 patients, seeds 2198-2205)."""
+    try:
+        import scripts.hereditary_edmd_nuclear_envelope_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-edmd-nuclear-envelope-atlas/breakdown")
+async def hereditary_edmd_nuclear_envelope_atlas_breakdown():
+    """Hereditary-EDMD-Nuclear-Envelope-Atlas per-gene breakdown (EMD/LMNA/SYNE1/SYNE2/TMEM43/FHL1/SUN1/LEMD3)."""
+    try:
+        import scripts.hereditary_edmd_nuclear_envelope_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-edmd-nuclear-envelope-atlas/definitions")
+async def hereditary_edmd_nuclear_envelope_atlas_definitions():
+    """Hereditary-EDMD-Nuclear-Envelope-Atlas gene definitions, LINC complex panel, emerin IHC decision tree, cardiac table."""
+    try:
+        import scripts.hereditary_edmd_nuclear_envelope_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
