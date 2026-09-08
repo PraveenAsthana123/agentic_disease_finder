@@ -33,7 +33,8 @@
       "in_project": "built",
       "why": "Time-Frequency Representations Dashboard \u2014 6 TFR methods (STFT, CWT, DWT, Spectrogram, Mel-Spectrogram, WVD/SPWVD), 6 EEG frequency bands, 6-stage pipeline (raw EEG \u2192 TFR \u2192 model input), resolution matrix, use-case map, glossary, references. 3 endpoints (/api/time-frequency/overview|breakdown|definitions verified 200) + portal-next /time-frequency page + nav wired. Built 2026-08-06.",
       "priority": "high",
-      "dashboard": "/api/time-frequency/*"
+      "dashboard": "/api/time-frequency/*",
+      "status": "built"
     },
     {
       "category": "functional",
@@ -47,7 +48,9 @@
       "feature": "Deep learning models (EEGNet / 1D-CNN / LSTM / Transformer)",
       "in_project": "built",
       "why": "Project ships RandomForest only; review's SOTA is deep models",
-      "priority": "high"
+      "priority": "high",
+      "status": "partial",
+      "note": "RNN/LSTM built (/rnn-lstm, /deep-learning, /hybrid-cnn). EEGNet, Transformer still gap."
     },
     {
       "category": "technology",
@@ -131,8 +134,9 @@
       "in_project": "built",
       "why": "Hybrid Pipeline Dashboard \u2014 CNN-LSTM vs CNN-Transformer architecture comparison, layer analysis, attention weights, LSTM gates, training curves (3 endpoints verified 200)",
       "priority": "high",
-      "status": "built",
-      "built_note": "hybrid-cnn dashboard built 2026-08-12: /api/hybrid-cnn/overview|breakdown|definitions + portal-next/app/hybrid-cnn/page.jsx"
+      "status": "partial",
+      "built_note": "hybrid-cnn dashboard built 2026-08-12: /api/hybrid-cnn/overview|breakdown|definitions + portal-next/app/hybrid-cnn/page.jsx",
+      "note": "RNN/LSTM built (/rnn-lstm, /deep-learning, /hybrid-cnn). EEGNet, Transformer still gap."
     },
     {
       "category": "architecture",

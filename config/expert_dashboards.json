@@ -18419,5 +18419,17 @@
       "/api/hereditary-myofibrillar-myopathy-atlas/breakdown",
       "/api/hereditary-myofibrillar-myopathy-atlas/definitions"
     ]
+  },
+  {
+    "id": "rnn-lstm",
+    "name": "RNN / LSTM \u2014 Temporal EEG Classifier",
+    "status": "built",
+    "description": "RNN-LSTM-GRU Temporal EEG Classifier Dashboard \u2014 133 EEG sequences, 50 patients, 5 architectures (Vanilla RNN/LSTM/GRU/Bidirectional-LSTM/Attention-LSTM), mean confidence 69.1%, 5 frequency bands (Delta/Theta/Alpha/Beta/Gamma), 9 disease classes, seizure events 25, daily pipeline activity, sequence inventory with confidence + signal quality per record, 4-tab frontend (Overview/Sequence Inventory/Band Power/Definitions), 3 endpoints /api/rnn-lstm/overview|breakdown|definitions verified 200, SiteNav wired after Hybrid CNN-LSTM, expert_dashboards.json count 1152->1153, feature_gaps.json Deep-Learning-LSTM status updated to built",
+    "page": "/rnn-lstm",
+    "endpoints": [
+      "/api/rnn-lstm/overview",
+      "/api/rnn-lstm/breakdown",
+      "/api/rnn-lstm/definitions"
+    ]
   }
 ]
