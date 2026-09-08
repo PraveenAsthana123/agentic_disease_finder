@@ -8935,6 +8935,31 @@ async def eegnet_definitions():
     return _json_safe(egd.definitions())
 
 
+# ---------------------------------------------------------------------------
+# EEG Transformer Classifier Dashboard
+# ---------------------------------------------------------------------------
+
+@app.get("/api/eeg-transformer/overview")
+async def eeg_transformer_overview():
+    """EEG Transformer — KPIs, attention distribution, band power, daily activity."""
+    import scripts.eeg_transformer_dashboard as etd
+    return _json_safe(etd.overview())
+
+
+@app.get("/api/eeg-transformer/breakdown")
+async def eeg_transformer_breakdown():
+    """EEG Transformer — patch inventory, patient profiles, architecture comparison."""
+    import scripts.eeg_transformer_dashboard as etd
+    return _json_safe(etd.breakdown())
+
+
+@app.get("/api/eeg-transformer/definitions")
+async def eeg_transformer_definitions():
+    """EEG Transformer — self-attention, MHA, patch tokens, regulatory context."""
+    import scripts.eeg_transformer_dashboard as etd
+    return _json_safe(etd.definitions())
+
+
 # ── Neuropsychologist Dashboard ────────────────────────────────────────────
 @app.get("/api/neuropsychologist/overview")
 async def neuropsychologist_overview():

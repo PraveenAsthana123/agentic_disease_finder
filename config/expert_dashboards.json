@@ -18476,5 +18476,24 @@
       "/api/hereditary-nemaline-myopathy-atlas/breakdown",
       "/api/hereditary-nemaline-myopathy-atlas/definitions"
     ]
+  },
+  {
+    "id": "eeg-transformer",
+    "name": "EEG Transformer \u2014 Attention-Based EEG Classifier",
+    "category": "AI Architecture",
+    "status": "built",
+    "route": "/eeg-transformer",
+    "api_endpoints": [
+      "/api/eeg-transformer/overview",
+      "/api/eeg-transformer/breakdown",
+      "/api/eeg-transformer/definitions"
+    ],
+    "description": "EEG Transformer Classifier Dashboard \u2014 4 Transformer variants (EEGformer 1.25M-params-temporal+spatial-attention / Conformer 498K-CNN+self-attention / ViT-EEG 3.12M-TUH-pretrain / EEGformer-Lite 312K-edge), multi-head self-attention over 125ms EEG patch tokens, CHB-MIT benchmarks (ViT-EEG 93.5% accuracy, 91.2% sensitivity), 8 attention heads d_model=128, 4-tab portal (Overview/Patch-Inventory/Architectures/Definitions), 15 glossary terms (Self-Attention/MHA/Patch-Token/Positional-Encoding/CLS-Token/Temporal-Attention-Map/Conformer/EEGformer/Fine-Tuning/SSL/CHB-MIT/TUH), 5 regulatory standards (IEC62304/FDA-AI-SaMD/ISO14971/ICMR/GDPR-DPDP), 6 references (Chen2022/Song2022/Xu2023/Vaswani2017/Lawhern2018/Roy2019). 3 endpoints /api/eeg-transformer/overview|breakdown|definitions verified 200. SiteNav wired after EEGNet. Registered 2026-09-08.",
+    "n_variants": 4,
+    "n_concepts": 15,
+    "n_regulatory": 5,
+    "n_references": 6,
+    "seeds": null,
+    "built_date": "2026-09-08"
   }
 ]
