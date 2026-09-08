@@ -47982,6 +47982,36 @@ async def hereditary_metabolic_myopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-hepatic-gsd-atlas/overview")
+async def hereditary_hepatic_gsd_atlas_overview():
+    """Hereditary-Hepatic-GSD-Atlas KPIs, gene summary, pathognomonic features (8 genes, 320 patients)."""
+    try:
+        import scripts.hereditary_hepatic_gsd_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hepatic-gsd-atlas/breakdown")
+async def hereditary_hepatic_gsd_atlas_breakdown():
+    """Hereditary-Hepatic-GSD-Atlas per-patient breakdown, gene profiles, monitoring tables."""
+    try:
+        import scripts.hereditary_hepatic_gsd_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hepatic-gsd-atlas/definitions")
+async def hereditary_hepatic_gsd_atlas_definitions():
+    """Hereditary-Hepatic-GSD-Atlas gene definitions, GSD enzyme pathways, diagnostic algorithm, treatment standards."""
+    try:
+        import scripts.hereditary_hepatic_gsd_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
