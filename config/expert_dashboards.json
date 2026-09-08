@@ -18515,5 +18515,21 @@
       "Architectures",
       "Definitions"
     ]
+  },
+  {
+    "id": "hereditary-metabolic-myopathy-atlas",
+    "name": "Hereditary-Metabolic-Myopathy-Atlas Complete-8-Gene-Exercise-Intolerance-Rhabdomyolysis-Spectrum-Atlas PYGM-842aa-11q13.1-AR-McArdle-GSD-V ACADVL-655aa-17p13.1-AR-VLCAD-NBS CPT2-658aa-1p32.3-AR-Thermogenic-Triggers ETFDH-617aa-4q32.1-AR-MADD-Riboflavin-Responsive HADHA-763aa-2p23.3-AR-LCHAD-Retinopathy-Neuropathy PFKM-780aa-12q13.3-AR-Tarui-HIGH-CARB-PARADOX AMPD1-747aa-1p13.3-AR-Ammonia-Fails-Forearm SLC22A5-557aa-5q31.1-AR-Carnitine-Deficiency-Curative seeds-2230-2237",
+    "category": "Hereditary Metabolic Myopathy",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-metabolic-myopathy-atlas/overview",
+      "/api/hereditary-metabolic-myopathy-atlas/breakdown",
+      "/api/hereditary-metabolic-myopathy-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-metabolic-myopathy-atlas",
+    "genes": 8,
+    "patients": 320,
+    "seeds": "2230-2237",
+    "registered": "2026-09-08"
   }
 ]
