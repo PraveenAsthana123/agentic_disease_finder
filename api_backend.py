@@ -47842,6 +47842,36 @@ async def hereditary_myofibrillar_myopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-cmd-atlas/overview")
+async def hereditary_cmd_atlas_overview():
+    """Hereditary-CMD-Atlas — 8-gene aggregate overview (320 patients, seeds 2214-2221)."""
+    try:
+        import scripts.hereditary_cmd_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cmd-atlas/breakdown")
+async def hereditary_cmd_atlas_breakdown():
+    """Hereditary-CMD-Atlas per-gene breakdown (LAMA2/COL6A1/COL6A2/COL6A3/FKTN/POMT1/POMT2/POMGNT1)."""
+    try:
+        import scripts.hereditary_cmd_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-cmd-atlas/definitions")
+async def hereditary_cmd_atlas_definitions():
+    """Hereditary-CMD-Atlas gene definitions, IHC markers, brain MRI table, dystroglycanopathy spectrum, CMD DDx."""
+    try:
+        import scripts.hereditary_cmd_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

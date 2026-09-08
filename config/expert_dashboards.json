@@ -18431,5 +18431,26 @@
       "/api/rnn-lstm/breakdown",
       "/api/rnn-lstm/definitions"
     ]
+  },
+  {
+    "id": "hereditary-cmd-atlas",
+    "name": "Hereditary-CMD-Atlas Complete-8-Gene-Congenital-Muscular-Dystrophy-CMD-Spectrum-Atlas LAMA2-3122aa-6q22.33-AR-MDC1A-ABSENT-MEROSIN-IHC-PATHOGNOMONIC-WHITE-MATTER-T2-LEUKODYSTROPHY-Non-Progressive-Demyelinating-Neuropathy COL6A1-1028aa-21q22.3-AD/AR-Ullrich-CMD-Bethlem-PROXIMAL-WEAKNESS-DISTAL-HYPERLAXITY-PARADOX-PATHOGNOMONIC-FOLLICULAR-HYPERKERATOSIS-KELOID COL6A2-1019aa-21q22.3-AR/AD-Ullrich-Bethlem-Beta-Chain-21q22.3-Same-Chromosome-COL6A1 COL6A3-3177aa-2q37.3-AD/AR-Ullrich-Bethlem-Largest-Subunit-Most-Common-Bethlem FKTN-461aa-9q31.2-AR-Fukuyama-CMD-INTELLECTUAL-DISABILITY-MANDATORY-COBBLESTONE-LISSENCEPHALY-Type-II-PATHOGNOMONIC-DCM-Adolescence-c3036-IVS-Retrotransposon-Japan-Founder POMT1-747aa-9q34.13-AR-Walker-Warburg-Syndrome-WWS-MOST-SEVERE-CMD-COBBLESTONE-LISSENCEPHALY-Z-BRAINSTEM-OCULAR-DEFECTS-LETHAL-1st-Year POMT2-750aa-14q24.3-AR-WWS-Type-2-IDENTICAL-POMT1-OBLIGATE-HETERODIMER-Hypomorphic-MEB-Like-LGMD-R14 POMGNT1-660aa-1p34.1-AR-Muscle-Eye-Brain-MEB-MYOPIA-GLAUCOMA-CEREBELLAR-HYPOPLASIA-PATHOGNOMONIC-Finnish-Founder-pTyr688Cys-85pct-Survival-Adulthood 320-Patient-Aggregate-8x40-seeds-2214-2221",
+    "status": "built",
+    "route": "/hereditary-cmd-atlas",
+    "api": "/api/hereditary-cmd-atlas",
+    "genes": [
+      "LAMA2",
+      "COL6A1",
+      "COL6A2",
+      "COL6A3",
+      "FKTN",
+      "POMT1",
+      "POMT2",
+      "POMGNT1"
+    ],
+    "seeds": "2214-2221",
+    "n_patients": 320,
+    "built_date": "2026-09-08",
+    "category": "hereditary-muscle-disease"
   }
 ]
