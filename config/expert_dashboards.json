@@ -18215,5 +18215,32 @@
       "TRPV4"
     ],
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-cmt-atlas",
+    "name": "Hereditary-CMT-Atlas Complete-8-Gene-Charcot-Marie-Tooth-Disease-Atlas PMP22-160aa-17p12-AD-CMT1A-UNIFORM-NCV-<38-m/s-PATHOGNOMONIC-MLPA-MANDATORY MPZ-248aa-1q23.3-AD-CMT1B-pThr124Met-Late-Onset GJB1-283aa-Xq13.1-XLD-CMTX1-NO-Male-to-Male-Transmission MFN2-741aa-1p36.22-AD-CMT2A-Optic-Atrophy-PATHOGNOMONIC SH3TC2-1288aa-5q32-AR-CMT4C-Early-Scoliosis-PATHOGNOMONIC GDAP1-358aa-8q21.11-AR-CMT4A-Vocal-Cord-Paralysis-PATHOGNOMONIC NEFL-543aa-8p21.2-AD-CMT2E-Giant-Axons-PATHOGNOMONIC PRX-1461aa-19q13.13-AR-CMT4F-Focally-Folded-Myelin-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2142-2149",
+    "status": "built",
+    "category": "hereditary-neuropathy",
+    "route": "/hereditary-cmt-atlas",
+    "api_endpoints": [
+      "/api/hereditary-cmt-atlas/overview",
+      "/api/hereditary-cmt-atlas/breakdown",
+      "/api/hereditary-cmt-atlas/definitions"
+    ],
+    "component": "portal-next/app/hereditary-cmt-atlas/page.jsx",
+    "script": "scripts/hereditary_cmt_atlas_dashboard.py",
+    "n_patients": 320,
+    "seeds": "2142-2149",
+    "genes": [
+      "PMP22",
+      "MPZ",
+      "GJB1",
+      "MFN2",
+      "SH3TC2",
+      "GDAP1",
+      "NEFL",
+      "PRX"
+    ],
+    "registered": "2026-09-08"
   }
 ]
