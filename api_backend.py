@@ -47662,6 +47662,36 @@ async def hereditary_dystonia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-paroxysmal-movement-disorder-atlas/overview")
+async def hereditary_paroxysmal_movement_disorder_atlas_overview():
+    """Hereditary-Paroxysmal-Movement-Disorder-Atlas — 8-gene aggregate overview (320 patients, seeds 2166-2173)."""
+    try:
+        import scripts.hereditary_paroxysmal_movement_disorder_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-paroxysmal-movement-disorder-atlas/breakdown")
+async def hereditary_paroxysmal_movement_disorder_atlas_breakdown():
+    """Hereditary-Paroxysmal-Movement-Disorder-Atlas per-gene breakdown (PRRT2/SLC2A1/PNKD/KCNA1/CACNA1A/ATP1A2/ADCY5/SLC6A5)."""
+    try:
+        import scripts.hereditary_paroxysmal_movement_disorder_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-paroxysmal-movement-disorder-atlas/definitions")
+async def hereditary_paroxysmal_movement_disorder_atlas_definitions():
+    """Hereditary-Paroxysmal-Movement-Disorder-Atlas gene definitions, pharmacology, contraindications and DDx table."""
+    try:
+        import scripts.hereditary_paroxysmal_movement_disorder_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

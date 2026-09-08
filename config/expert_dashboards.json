@@ -18295,5 +18295,31 @@
     ],
     "category": "hereditary-movement-disorder",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-paroxysmal-movement-disorder-atlas",
+    "name": "Hereditary-Paroxysmal-Movement-Disorder-Atlas Complete-8-Gene-Paroxysmal-Movement-Disorder-Atlas PRRT2-340aa-16p11.2-AD-PKD SLC2A1-492aa-1p34.2-AD-GLUT1D-PED PNKD-385aa-2q35-AD-PNKD2 KCNA1-495aa-12p13.32-AD-EA1 CACNA1A-2510aa-19p13.13-AD-EA2-SCA6-FHM1 ATP1A2-1020aa-1q23.2-AD-FHM2 ADCY5-1261aa-3q21.3-AD-GoF-Nocturnal SLC6A5-797aa-11p15.1-AR-Hyperekplexia 320-Patient-Aggregate-8x40-seeds-2166-2173",
+    "status": "built",
+    "script": "scripts/hereditary_paroxysmal_movement_disorder_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-paroxysmal-movement-disorder-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-paroxysmal-movement-disorder-atlas/overview",
+      "/api/hereditary-paroxysmal-movement-disorder-atlas/breakdown",
+      "/api/hereditary-paroxysmal-movement-disorder-atlas/definitions"
+    ],
+    "seeds": "2166-2173",
+    "n_patients": 320,
+    "genes": [
+      "PRRT2",
+      "SLC2A1",
+      "PNKD",
+      "KCNA1",
+      "CACNA1A",
+      "ATP1A2",
+      "ADCY5",
+      "SLC6A5"
+    ],
+    "category": "hereditary-paroxysmal-movement-disorder",
+    "registered": "2026-09-08"
   }
 ]
