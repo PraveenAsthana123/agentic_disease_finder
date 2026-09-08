@@ -17598,5 +17598,30 @@
     ],
     "n_patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-obesity-melanocortin-atlas",
+    "name": "Hereditary-Obesity-Melanocortin-Atlas Complete-8-Gene-Leptin-Melanocortin-Pathway-Atlas MC4R-332aa-18q21.32-AD-Most-Common-Monogenic-Obesity LEPR-1165aa-1p31.3-AR-Setmelanotide-FDA-2020 LEP-167aa-7q32.1-AR-Metreleptin-CURATIVE PCSK1-753aa-5q15-AR-Neonatal-Diarrhoea-Setmelanotide-FDA-2021 POMC-267aa-2p23.3-AR-Red-Hair-Triad-Setmelanotide-FDA-2020 SH2B1-613aa-16p11.2-AD-16p11.2-Deletion KSR2-950aa-12q24.22-AR-Metformin-UNIQUE SIM1-786aa-6q16.3-AD-PWS-Like",
+    "slug": "hereditary-obesity-melanocortin-atlas",
+    "category": "Hereditary-Obesity-Melanocortin-Atlas",
+    "status": "built",
+    "seeds": "2006-2013",
+    "genes": [
+      "MC4R",
+      "LEPR",
+      "LEP",
+      "PCSK1",
+      "POMC",
+      "SH2B1",
+      "KSR2",
+      "SIM1"
+    ],
+    "n_patients": 320,
+    "endpoints": [
+      "/api/hereditary-obesity-melanocortin-atlas/overview",
+      "/api/hereditary-obesity-melanocortin-atlas/breakdown",
+      "/api/hereditary-obesity-melanocortin-atlas/definitions"
+    ],
+    "registered": "2026-09-07"
   }
 ]

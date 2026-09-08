@@ -47062,6 +47062,36 @@ async def hereditary_pah_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-obesity-melanocortin-atlas/overview")
+async def hereditary_obesity_melanocortin_atlas_overview():
+    """Hereditary-Obesity-Melanocortin-Atlas overview — 8-gene leptin-melanocortin pathway."""
+    try:
+        import scripts.hereditary_obesity_melanocortin_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-obesity-melanocortin-atlas/breakdown")
+async def hereditary_obesity_melanocortin_atlas_breakdown():
+    """Hereditary-Obesity-Melanocortin-Atlas per-gene breakdown."""
+    try:
+        import scripts.hereditary_obesity_melanocortin_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-obesity-melanocortin-atlas/definitions")
+async def hereditary_obesity_melanocortin_atlas_definitions():
+    """Hereditary-Obesity-Melanocortin-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_obesity_melanocortin_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
