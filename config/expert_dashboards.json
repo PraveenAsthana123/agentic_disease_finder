@@ -18359,5 +18359,30 @@
     ],
     "portal_page": "/hereditary-sarcoglycanopathy-lgmd-atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-distal-myopathy-atlas",
+    "name": "Hereditary-Distal-Myopathy-Atlas Complete-8-Gene-Distal-Myopathy-Spectrum-Atlas DYSF-2080aa-2p13.2-AR-LGMD-R2-Miyoshi-CK-10-150x-IMMUNOSUPPRESSION-CI GNE-722aa-9p13.3-AR-GNE-Myopathy-QUADRICEPS-SPARED-LATE-PATHOGNOMONIC MYH7-1935aa-14q11.2-AD-Laing-CONGENITAL-FOOT-DROP TTN-34350aa-2q31.2-AR-AD-Udd-TMD-FINmaj-Finnish VCP-806aa-17p13.3-AD-IBMPFD-MYOPATHY+PAGET+FTD-R155H MATR3-847aa-5q31.2-AD-VCPDM-VOCAL-CORD+PHARYNGEAL-SNHL HNRNPA2B1-353aa-7p15.2-AD-MSP2-D290V-LCD LDB3-727aa-10q22.2-AD-Markesbery-Griggs-A165V-CARDIAC-ECHO-MANDATORY 320-Patient-Aggregate-8x40-seeds-2190-2197",
+    "status": "built",
+    "category": "hereditary-neuromuscular-distal-myopathy",
+    "genes": [
+      "DYSF",
+      "GNE",
+      "MYH7",
+      "TTN",
+      "VCP",
+      "MATR3",
+      "HNRNPA2B1",
+      "LDB3"
+    ],
+    "seeds": "2190-2197",
+    "n_patients": 320,
+    "endpoints": [
+      "/api/hereditary-distal-myopathy-atlas/overview",
+      "/api/hereditary-distal-myopathy-atlas/breakdown",
+      "/api/hereditary-distal-myopathy-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-distal-myopathy-atlas",
+    "registered": "2026-09-08"
   }
 ]

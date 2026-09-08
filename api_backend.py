@@ -47752,6 +47752,36 @@ async def hereditary_sarcoglycanopathy_lgmd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-distal-myopathy-atlas/overview")
+async def hereditary_distal_myopathy_atlas_overview():
+    """Hereditary-Distal-Myopathy-Atlas — 8-gene aggregate overview (320 patients, seeds 2190-2197)."""
+    try:
+        import scripts.hereditary_distal_myopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-distal-myopathy-atlas/breakdown")
+async def hereditary_distal_myopathy_atlas_breakdown():
+    """Hereditary-Distal-Myopathy-Atlas per-gene breakdown (DYSF/GNE/MYH7/TTN/VCP/MATR3/HNRNPA2B1/LDB3)."""
+    try:
+        import scripts.hereditary_distal_myopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-distal-myopathy-atlas/definitions")
+async def hereditary_distal_myopathy_atlas_definitions():
+    """Hereditary-Distal-Myopathy-Atlas gene definitions, biopsy patterns, cardiac/DDx/founder tables."""
+    try:
+        import scripts.hereditary_distal_myopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
