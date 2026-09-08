@@ -17985,5 +17985,32 @@
     "seeds": "2062-2069",
     "patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-dystonia-atlas",
+    "name": "Hereditary-Dystonia-Atlas",
+    "slug": "hereditary-dystonia-atlas",
+    "status": "built",
+    "category": "hereditary-movement-disorder-atlas",
+    "genes": [
+      "TOR1A",
+      "THAP1",
+      "GCH1",
+      "ATP1A3",
+      "KMT2B",
+      "ADCY5",
+      "ANO3",
+      "GNAL"
+    ],
+    "patients": 320,
+    "seeds": "2070-2077",
+    "api_routes": [
+      "/api/hereditary-dystonia-atlas/overview",
+      "/api/hereditary-dystonia-atlas/breakdown",
+      "/api/hereditary-dystonia-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-dystonia-atlas",
+    "registered": "2026-09-07",
+    "description": "Complete 8-Gene Hereditary Dystonia Atlas \u2014 DYT-TOR1A(DYT1)/DYT-THAP1(DYT6)/DRD-GCH1/ATP1A3-AHC-RDP-CAPOS/DYT-KMT2B(DYT28)/ADCY5-RMD/DYT-ANO3(DYT24)/DYT-GNAL(DYT25)"
   }
 ]

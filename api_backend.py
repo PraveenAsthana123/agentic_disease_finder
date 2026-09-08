@@ -47302,6 +47302,36 @@ async def hereditary_ovarian_cancer_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-dystonia-atlas/overview")
+async def hereditary_dystonia_atlas_overview():
+    """Hereditary-Dystonia-Atlas — 8-gene aggregate overview (320 patients, seeds 2070-2077)."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystonia-atlas/breakdown")
+async def hereditary_dystonia_atlas_breakdown():
+    """Hereditary-Dystonia-Atlas per-gene breakdown (TOR1A/THAP1/GCH1/ATP1A3/KMT2B/ADCY5/ANO3/GNAL)."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystonia-atlas/definitions")
+async def hereditary_dystonia_atlas_definitions():
+    """Hereditary-Dystonia-Atlas gene definitions, glossary and treatment protocols."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
