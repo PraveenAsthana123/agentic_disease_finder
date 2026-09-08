@@ -47152,6 +47152,36 @@ async def hereditary_hm_predisposition_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-skeletal-dysplasia-atlas/overview")
+async def hereditary_skeletal_dysplasia_atlas_overview():
+    """Hereditary-Skeletal-Dysplasia-Atlas — 8-gene aggregate overview (320 patients, seeds 2038-2045)."""
+    try:
+        import scripts.hereditary_skeletal_dysplasia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-skeletal-dysplasia-atlas/breakdown")
+async def hereditary_skeletal_dysplasia_atlas_breakdown():
+    """Hereditary-Skeletal-Dysplasia-Atlas per-gene breakdown (FGFR3/COL2A1/EXT1/EXT2/COMP/SLC26A2/TRPV4/ACAN)."""
+    try:
+        import scripts.hereditary_skeletal_dysplasia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-skeletal-dysplasia-atlas/definitions")
+async def hereditary_skeletal_dysplasia_atlas_definitions():
+    """Hereditary-Skeletal-Dysplasia-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_skeletal_dysplasia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-ion-channel-disease-atlas/overview")
 async def hereditary_ion_channel_atlas_overview():
     """Hereditary-Ion-Channel-Disease-Atlas — 8-gene aggregate overview (320 patients, seeds 2030-2037)."""

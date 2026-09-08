@@ -17905,5 +17905,24 @@
     "seed_range": "2030-2037",
     "n_patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-skeletal-dysplasia-atlas",
+    "category": "Hereditary Skeletal Dysplasia",
+    "route": "/hereditary-skeletal-dysplasia-atlas",
+    "api": "/api/hereditary-skeletal-dysplasia-atlas",
+    "genes": [
+      "FGFR3",
+      "COL2A1",
+      "EXT1",
+      "EXT2",
+      "COMP",
+      "SLC26A2",
+      "TRPV4",
+      "ACAN"
+    ],
+    "seeds": "2038-2045",
+    "patients": 320,
+    "status": "built"
   }
 ]
