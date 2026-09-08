@@ -18452,5 +18452,17 @@
     "n_patients": 320,
     "built_date": "2026-09-08",
     "category": "hereditary-muscle-disease"
+  },
+  {
+    "id": "eegnet",
+    "name": "EEGNet \u2014 Compact CNN for Raw EEG",
+    "status": "built",
+    "description": "EEGNet Compact CNN Dashboard \u2014 4 EEGNet variants (EEGNet-8,2 / EEGNet-4,2 / +Attention / +SMOTE), depthwise+separable conv architecture, literature benchmarks (CHB-MIT: 88-92% accuracy, 80-87% sensitivity), per-channel preprocessing config (bandpass/notch/z-score/augmentation), window inventory with patient profiles, preprocessing readiness flags (class imbalance/SMOTE guidance), 4-tab frontend (Overview/Window Inventory/Architectures/Definitions), 12 EEGNet concepts, 5 regulatory frameworks (IEC 62304/FDA AI ML/GDPR/ICMR/ISO 14971), 5 references. 3 endpoints /api/eegnet/overview|breakdown|definitions verified 200.",
+    "page": "/eegnet",
+    "endpoints": [
+      "/api/eegnet/overview",
+      "/api/eegnet/breakdown",
+      "/api/eegnet/definitions"
+    ]
   }
 ]

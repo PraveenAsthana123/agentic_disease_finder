@@ -8910,6 +8910,31 @@ async def rnn_lstm_definitions():
     return _json_safe(rld.definitions())
 
 
+# ---------------------------------------------------------------------------
+# EEGNet Compact CNN Dashboard
+# ---------------------------------------------------------------------------
+
+@app.get("/api/eegnet/overview")
+async def eegnet_overview():
+    """EEGNet compact CNN — KPIs, band power, signal quality, window inventory."""
+    import scripts.eegnet_dashboard as egd
+    return _json_safe(egd.overview())
+
+
+@app.get("/api/eegnet/breakdown")
+async def eegnet_breakdown():
+    """EEGNet compact CNN — window inventory, patient profiles, architecture comparison."""
+    import scripts.eegnet_dashboard as egd
+    return _json_safe(egd.breakdown())
+
+
+@app.get("/api/eegnet/definitions")
+async def eegnet_definitions():
+    """EEGNet compact CNN — depthwise conv, separable conv, F1/D/F2, regulatory context."""
+    import scripts.eegnet_dashboard as egd
+    return _json_safe(egd.definitions())
+
+
 # ── Neuropsychologist Dashboard ────────────────────────────────────────────
 @app.get("/api/neuropsychologist/overview")
 async def neuropsychologist_overview():

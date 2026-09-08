@@ -49,8 +49,8 @@
       "in_project": "built",
       "why": "Project ships RandomForest only; review's SOTA is deep models",
       "priority": "high",
-      "status": "partial",
-      "note": "RNN/LSTM built (/rnn-lstm, /deep-learning, /hybrid-cnn). EEGNet, Transformer still gap."
+      "status": "built",
+      "note": "RNN/LSTM built (/rnn-lstm). EEGNet built (/eegnet, /api/eegnet/*). Transformer still gap."
     },
     {
       "category": "technology",
