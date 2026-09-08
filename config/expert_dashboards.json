@@ -17880,5 +17880,30 @@
     "seed_range": "1942-1949",
     "n_patients": 320,
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-ion-channel-disease-atlas",
+    "name": "Hereditary-Ion-Channel-Disease-Atlas Complete-8-Gene KCNA1-495aa-12p13.32-AD KCNQ1-676aa-11p15.5-AD-AR KCNH2-1159aa-7q36.1-AD SCN5A-2016aa-3p22.2-AD RYR1-5038aa-19q13.2-AD-AR CACNA1S-1873aa-1q32.1-AD CLCN1-988aa-7q34-AD-AR KCNJ2-427aa-17q24.3-AD 320-Patient-Aggregate-8x40-seeds-2030-2037",
+    "status": "built",
+    "script": "scripts/hereditary_ion_channel_disease_atlas_dashboard.py",
+    "portal_page": "/hereditary-ion-channel-disease-atlas",
+    "api_endpoints": [
+      "/api/hereditary-ion-channel-disease-atlas/overview",
+      "/api/hereditary-ion-channel-disease-atlas/breakdown",
+      "/api/hereditary-ion-channel-disease-atlas/definitions"
+    ],
+    "genes": [
+      "KCNA1",
+      "KCNQ1",
+      "KCNH2",
+      "SCN5A",
+      "RYR1",
+      "CACNA1S",
+      "CLCN1",
+      "KCNJ2"
+    ],
+    "seed_range": "2030-2037",
+    "n_patients": 320,
+    "registered": "2026-09-07"
   }
 ]

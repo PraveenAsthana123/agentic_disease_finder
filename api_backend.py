@@ -47152,6 +47152,36 @@ async def hereditary_hm_predisposition_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ion-channel-disease-atlas/overview")
+async def hereditary_ion_channel_atlas_overview():
+    """Hereditary-Ion-Channel-Disease-Atlas — 8-gene aggregate overview (320 patients, seeds 2030-2037)."""
+    try:
+        import scripts.hereditary_ion_channel_disease_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ion-channel-disease-atlas/breakdown")
+async def hereditary_ion_channel_atlas_breakdown():
+    """Hereditary-Ion-Channel-Disease-Atlas per-gene breakdown (KCNA1/KCNQ1/KCNH2/SCN5A/RYR1/CACNA1S/CLCN1/KCNJ2)."""
+    try:
+        import scripts.hereditary_ion_channel_disease_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ion-channel-disease-atlas/definitions")
+async def hereditary_ion_channel_atlas_definitions():
+    """Hereditary-Ion-Channel-Disease-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_ion_channel_disease_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
