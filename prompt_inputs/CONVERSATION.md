@@ -33829,3 +33829,374 @@ Done. Built, verified, committed, and pushed. Here's the summary:
 
 ### [2026-09-07 06:25:07 MDT] ASSISTANT
 STATUS.md updated: 1101/1101 dashboards built.
+
+### [2026-09-07 07:30:06 MDT] ASSISTANT
+**Done.** One verified iteration completed:
+
+**Item:** Hereditary-Immunodeficiency-Atlas rework (orphaned in-progress work from prior session)
+
+**What was done:**
+- `scripts/hereditary_immunodeficiency_atlas_dashboard.py` had been reworked to better clinical genes (BTK, ADA, **IL2RG**, RAG1, WAS, **DOCK8**, **TNFRSF13B**, LRBA; seeds 1782-1789) but left uncommitted with a mismatched portal page still referencing the old gene set (CYBB, PIK3CD, CTLA4)
+- **Portal page rebuilt** (`portal-next/app/hereditary-immunodeficiency-atlas/page.jsx`) for the new gene set — 4 tabs: Overview, Gene Table, Clinical Atlas, Definitions
+- **Registry updated** (`config/expert_dashboards.json`) — seeds corrected 1534-1541 → 1782-1789, gene list updated
+- **3 endpoints verified 200**: `/api/hereditary-immunodeficiency-atlas/overview|breakdown|definitions`
+- Committed, pushed (fast-forward), tracked
+
+**⏳ Pending:** Queue is now effectively empty (only remaining item is ictal/interictal retrain, marked skip-heavy). Blocked: Gmail/Slack/Drive credentials · multi-user auth · EMR/FHIR.
+
+### [2026-09-07 07:47:32 MDT] ASSISTANT
+The BUILDABLE queue has only one item — the ictal/interictal retrain, which the operator has marked as too heavy to run unattended. All other planned items require external credentials (Gmail/Slack/Drive/EMR/FHIR). Queue is effectively empty after the mandatory skip.
+
+### [2026-09-07 08:24:08 MDT] ASSISTANT
+Done. Built, verified, committed, pushed, tracked.
+
+**Hereditary-Neurotransmitter-Atlas** — `20420208` — complete:
+
+- `scripts/hereditary_neurotransmitter_atlas_dashboard.py` — 8-gene atlas, SEED_BASE=1878, seeds 1878-1885, 320 patients (8×40)
+- `api_backend.py` — 3 routes wired: `/api/hereditary-neurotransmitter-atlas/overview|breakdown|definitions` all returning 200
+- `portal-next/app/hereditary-neurotransmitter-atlas/page.jsx` — 4-tab panel (Overview / Gene Table / Clinical Atlas / Definitions) with NT-specific KPIs and 22-term glossary
+- `SiteNav.jsx` — entry inserted at line 1025 (after OA, before CDG)
+- `config/expert_dashboards.json` — count 1101 → 1102
+
+Key clinical pearls encoded: DDC OGC PATHOGNOMONIC + HVA/5-HIAA both low; GCH1 diurnal variation + L-Dopa CURATIVE trial first; PNPO pyridoxine = FATAL mistake (PLP mandatory); SLC6A3 L-Dopa ABSOLUTELY CI + HVA HIGH (opposite all other dopamine disorders); GATM GAA LOW (vs GAMT GAA HIGH — same test, opposite result).
+
+⏳ **Pending** — buildable queue exhausted (ictal/interictal retrain skipped per instructions). Blocked: Gmail/Slack/Drive (credentials), multi-user auth, EMR/FHIR.
+
+### [2026-09-07 08:35:27 MDT] ASSISTANT
+The buildable queue has only the excluded ictal/interictal retrain. All other items are credential-blocked. Let me confirm and call track.sh properly.
+
+### [2026-09-07 09:05:53 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and commit:
+
+### [2026-09-07 09:31:33 MDT] ASSISTANT
+Done. Here's the summary:
+
+**Built + pushed: Hereditary Cholestasis Atlas** (count 1103→1104)
+
+**What was built:**
+- `scripts/hereditary_cholestasis_atlas_dashboard.py` — 8-gene atlas, 320 patients (8×40, seeds 1894-1901), complete clinical content per gene
+- `api_backend.py` — 3 new routes added and verified 200:
+  - `/api/hereditary-cholestasis-atlas/overview`
+  - `/api/hereditary-cholestasis-atlas/breakdown`
+  - `/api/hereditary-cholestasis-atlas/definitions`
+- `portal-next/app/hereditary-cholestasis-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Thyroid-Disorder-Atlas
+- `expert_dashboards.json` — registry updated 1103→1104
+
+**8 Genes (PFIC types + Alagille):**
+
+| Gene | Disease | Key Discriminator |
+|------|---------|-------------------|
+| ATP8B1 | PFIC1 (Byler) | Low GGT + post-LTx diarrhea WORSENS |
+| ABCB11 | PFIC2 (BSEP) | Low GGT + HCC without cirrhosis; odevixibat FDA2021 |
+| ABCB4 | PFIC3/LPAC | **HIGH GGT PATHOGNOMONIC** (only PFIC with high GGT); UDCA most effective |
+| TJP2 | PFIC4 | Low GGT + HCC without cirrhosis + neurological subset |
+| NR1H4 | PFIC5 (FXR) | Most severe; FXR agonists CANNOT work; AFP disproportionately HIGH |
+| MYO5B | PFIC6/MVID | 300 mL/kg/day neonatal diarrhea; TPN; combined intestine+liver Tx |
+| JAG1 | Alagille-1 | Butterfly vertebrae PATHOGNOMONIC; odevixibat FDA2023 for pruritus |
+| NOTCH2 | Alagille-2 | Renal anomalies more prominent; Hajdu-Cheney GOF distinct |
+
+### [2026-09-07 09:47:17 MDT] ASSISTANT
+The BUILDABLE queue is exhausted after skipping the required item. The only non-blocked item is the ictal/interictal retrain (explicitly excluded). All other pending items require operator credentials (Gmail/Slack/Drive/auth/EMR/FHIR).
+
+### [2026-09-07 10:14:28 MDT] ASSISTANT
+Autobuild iteration complete — **nothing to commit**.
+
+**Summary:**
+- `python3 scripts/next_pending.py` → top item is `ictal/interictal retrain` — skipped (too heavy per instructions)
+- **No other buildable items** in the queue; all remaining items are blocked (credentials: Gmail/Slack/Drive, auth/RBAC, EMR/FHIR) or gated (git push)
+- Investigated expert_dashboards.json (1104/1104 built), all 60 hereditary atlas portal pages exist with live endpoints, neuro AI ecosystem (51/64 built — remaining are external/commercial/installed, not buildable here), EEG AI stack (55/58 built — remaining external)
+- Found 2 minor registry naming mismatches (`hfo_biomarkers` → actual page at `/hfo`, `catamenial_epilepsy` → actual page at `/catamenial`) — both are fully built; only IDs in registry differ from page paths
+- No code committed, no push attempted
+
+**⏳ Pending:**
+- Retrain ictal/interictal (same-setup, removes dataset confound) — P0, high effort, needs operator go-ahead
+- **Blocked:** Gmail/Slack/Drive live · Multi-user auth/RBAC · EMR/FHIR + device streaming
+
+### [2026-09-07 10:17:55 MDT] ASSISTANT
+The buildable queue is exhausted. The only remaining item is the ictal/interictal retrain (explicitly excluded per instructions). All other items are blocked by credentials. Let me log this and exit cleanly.
+
+### [2026-09-07 10:48:16 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed.
+
+**Hereditary-NCL-Atlas** (Neuronal Ceroid Lipofuscinosis / Batten Disease) — 8 genes, seeds 1902–1909:
+
+| Gene | Alt | Size | Disease | Key fact |
+|------|-----|------|---------|----------|
+| CLN1 | PPT1 | 306aa | INCL (infantile) | GRODs on EM PATHOGNOMONIC; no therapy; death 5–10yr |
+| CLN2 | TPP1 | 563aa | Late-infantile | **Cerliponase alfa (Brineura) ICV FDA2017** — ONLY NCL with ERT |
+| CLN3 | Battenin | 438aa | JNCL/Batten | Vision loss **5yr before seizures** PATHOGNOMONIC; sea-blue histiocytes |
+| CLN5 | — | 407aa | Finnish variant | TPP1 enzyme NORMAL (key CLN2 distinction); p.Y392X Finnish founder |
+| CLN6 | Linclin | 311aa | Variant LI / Kufs | Adult Kufs NCL: NO visual loss; Sri Lankan/Romani founders |
+| CLN7 | MFSD8 | 518aa | Late-infantile variant | Turkish founder c.103C>T; fingerprint EM predominant |
+| CLN8 | — | 286aa | EPMR/Northern epilepsy | **Slowest NCL — Finnish survival 35–50yr**; vision preserved |
+| CLN10 | CTSD | 412aa | Congenital NCL | Null mutations → **born dying, days–weeks**; only aspartyl protease in NCL |
+
+3 endpoints `/api/hereditary-ncl-atlas/overview|breakdown|definitions` verified 200 · expert_dashboards 1104→1105 · pushed `a819cea8`.
+
+### [2026-09-07 12:32:09 MDT] ASSISTANT
+Done. One iteration complete.
+
+**Built + pushed: Hereditary-Hamartoma-Syndrome-Atlas**
+
+8 genes (seeds 1910–1917, count 1105→1106):
+- **NF1** (2839aa, 17q11.2) — RAS-GAP; selumetinib MEK1/2 FDA2020 FIRST NF1 therapy; MPNST 8–13%
+- **NF2** (595aa, 22q12.2) — bilateral vestibular schwannomas PATHOGNOMONIC; bevacizumab first systemic
+- **TSC1** (1164aa, 9q34.13) — cardiac rhabdomyoma PATHOGNOMONIC in neonate; vigabatrin first for IS (not ACTH); everolimus
+- **TSC2** (1807aa, 16p13.3) — MORE SEVERE than TSC1; LAM predominantly TSC2; sirolimus (MILES trial); TSC2/PKD1 contiguous
+- **VHL** (213aa, 3p25.3) — clear cell RCC PATHOGNOMONIC; belzutifan HIF-2α FDA2021 FIRST VHL-targeted; alpha-before-beta for pheo
+- **PTCH1** (1447aa, 9q22.32) — Gorlin/NBCCS; calcified falx PATHOGNOMONIC; RADIATION ABSOLUTELY CI; vismodegib (teratogenic)
+- **STK11/LKB1** (433aa, 19p13.3) — Peutz-Jeghers; mucocutaneous lentigines PATHOGNOMONIC; intussusception emergency; breast 45%
+- **PTEN** (403aa, 10q23.31) — Cowden/PHTS; macrocephaly PATHOGNOMONIC; trichilemmoma PATHOGNOMONIC; breast 85% = BRCA1
+
+3 endpoints verified 200 · committed 2773c343 · pushed to main.
+
+### [2026-09-07 13:02:46 MDT] ASSISTANT
+**Built + pushed: Hereditary-Renal-Cystic-Disease-Atlas** (commit `f1ce5950`)
+
+8 genes covering ADPKD, ARPKD, and the full ADTKD spectrum (seeds 1918–1925, count 1106→1107):
+
+- **PKD1** (4304aa, 16p13.3, AD) — ADPKD1 85%; tolvaptan V2R FDA2018 FIRST approved ADPKD therapy; ESRD median 54 yr; ICA 4× risk; Mayo 1C-1E rapid progressors only; hepatotoxicity monitoring mandatory
+- **PKD2** (968aa, 4q22.1, AD) — ADPKD2 15%; MILDER — ESRD median 74 yr (20 yr later than PKD1); same tolvaptan if rapid; genetic test required to distinguish from PKD1
+- **PKHD1** (4074aa, 6p21.2, AR) — ARPKD; CHF ALWAYS present; collecting duct ectasia (NOT balloon cysts); Potter sequence → 30% neonatal mortality; liver disease may dominate in survivors
+- **MUC1** (1255aa, 1q22, AD) — ADTKD-MUC1; **STANDARD NGS MISSES** VNTR frameshift; long-read/VNTR assay required; MUC1-fs toxic protein → ER stress
+- **UMOD** (640aa, 16p12.3, AD) — ADTKD-UMOD; gout + hyperuricemia in teens/20s **PATHOGNOMONIC** — screen UMOD first; allopurinol early; avoid diuretics
+- **REN** (406aa, 1q32.1, AD) — ADTKD-REN; childhood anemia + hyperkalemia + low/normal BP; **ACE-i/ARB CONTRAINDICATED** (worsen hyperkalemia); rarest ADTKD; ESA for anemia
+- **HNF1B** (557aa, 17q12, AD) — RCAD/MODY5; **MLPA mandatory** (50% large 17q12 deletions missed by NGS); sulfonylurea **INEFFECTIVE** — insulin required; pancreatic hypoplasia → PERT; hypomagnesaemia triad
+- **DNAJB11** (354aa, 3q27.3, AD) — newest ADTKD gene (2018); atypical polycystic mimicking PKD1/2; PKD1/PKD2 negative → sequence DNAJB11 + full ADTKD panel
+
+3 endpoints verified 200 · pushed to main.
+
+### [2026-09-07 13:35:23 MDT] ASSISTANT
+**Done.** One iteration complete:
+
+**Built + pushed: Hereditary-Complement-Disorder-Atlas** (aHUS / C3 Glomerulopathy)
+
+- **Dashboard script**: `scripts/hereditary_complement_disorder_atlas_dashboard.py` — 8 genes, seeds 1926–1933, 320-patient aggregate
+- **Portal page**: `portal-next/app/hereditary-complement-disorder-atlas/page.jsx` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions)
+- **API routes** in `api_backend.py`: 3 endpoints verified 200
+- **Registry**: `config/expert_dashboards.json` updated 1107 → 1108
+- **SiteNav**: wired after Hereditary-Renal-Cystic-Disease-Atlas
+
+Key medical content encoded (high-stakes clinical distinctions):
+- **DGKE** — complement-INDEPENDENT aHUS; eculizumab FAILS; always infantile onset (<2 yr); normal complement
+- **CD46** — BEST transplant outcome (donor kidney has normal MCP → no recurrence); plasma exchange INEFFECTIVE
+- **C5 Arg885His** — Japanese founder variant at eculizumab epitope; switch to ravulizumab
+- **CFH** — most common (25–30%); >80% allograft loss without lifelong eculizumab post-transplant
+- **Meningococcal vaccination** mandatory before any C5 inhibitor
+
+### [2026-09-07 14:04:14 MDT] ASSISTANT
+320 patients, 8 genes, seeds 1934-1941. Now update `next_pending.py` with a built comment and refresh STATUS.md:
+
+### [2026-09-07 14:28:03 MDT] ASSISTANT
+Built, verified, committed, and pushed. Here's the summary:
+
+**Built: Hereditary-Connective-Tissue-Disorder-Atlas** (seeds 1942–1949, expert_dashboards.json 1109→1110)
+
+**8 genes / 320 patients:**
+| Gene | Disease | Key Distinction |
+|---|---|---|
+| FBN1 2871aa | Marfan Syndrome | Revised Ghent 2010; ectopia lentis UPWARD; surgery 4.5–5.0 cm; losartan/ARB |
+| COL3A1 1466aa | Vascular EDS | NO elective surgery ABSOLUTE CI; celiprolol ONLY Level B drug; arterial rupture WITHOUT warning; most lethal EDS |
+| TGFBR2 592aa | Loeys-Dietz LDS2 | Surgery at 4.0 cm (not 4.5–5.0); whole-body imaging mandatory; hypertelorism + bifid uvula triad |
+| COL1A1 1464aa | Osteogenesis Imperfecta | Haploinsufficiency→type I mild/blue sclerae; glycine substitution→severe; bisphosphonates; wormian bones |
+| ELN 786aa | SVAS / Williams-Beuren | 7q11.23 deletion = WBS (25 genes); isolated SVAS = ELN point mutation; anaesthetic sudden death risk |
+| ABCC6 1503aa | Pseudoxanthoma Elasticum | Angioid streaks PATHOGNOMONIC; NO ocular trauma ABSOLUTE; anti-VEGF for CNV; vitamin K2 |
+| COL5A1 2836aa | Classical EDS | Atrophic scars REQUIRED for diagnosis; molluscoid pseudotumours; NO aortic risk; 50% de novo |
+| TNXB 4243aa | TNX-EDS | Serum tenascin-X = ONLY EDS blood biomarker; CAH-X (contiguous CYP21A2 deletion) → adrenal crisis |
+
+**Verified:** 3 endpoints `/api/hereditary-connective-tissue-disorder-atlas/overview|breakdown|definitions` all HTTP 200 · portal page `/hereditary-connective-tissue-disorder-atlas` wired in SiteNav after Leukodystrophy-Atlas · pushed `dd92f7a3` → origin/main.
+
+### [2026-09-07 14:38:03 MDT] ASSISTANT
+Done. Built and pushed: **DevOps / CI-CD Dashboard**
+
+- `portal-next/app/devops/page.jsx` — 4-tab page (Overview / Commit Velocity / Pipelines & Jobs / Definitions)
+- SiteNav wired after "System Health" 
+- `config/expert_dashboards.json` — count 1110 → 1111
+- 3 endpoints verified 200: `/api/devops/overview|pipelines|definitions`
+- Commit `c594a3ec` pushed to `main`
+
+Dashboard shows real DORA metrics from git history: 18.96 deploys/day, 3.3% change-fail rate, 131 min MTTR, 30-day commit velocity chart, commit type breakdown, recent deploys table, and hot files.
+
+### [2026-09-07 15:02:35 MDT] ASSISTANT
+**Built + pushed: Hereditary Ciliopathy Atlas** (count 1111 → 1112)
+
+**What was built:**
+- `scripts/hereditary_ciliopathy_atlas_dashboard.py` — 8-gene primary cilia disorder atlas, 320 patients (8×40), seeds 1950–1957
+- `portal-next/app/hereditary-ciliopathy-atlas/page.jsx` — 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions)
+- `api_backend.py` — 3 new endpoints (`/api/hereditary-ciliopathy-atlas/overview|breakdown|definitions`), all verified **200**
+- `SiteNav.jsx` — wired after Hereditary-Connective-Tissue-Disorder-Atlas
+- `expert_dashboards.json` — registry updated 1111 → 1112
+
+**8 genes covered:**
+
+| Gene | Protein | Locus | Inh | Disease | Critical flag |
+|------|---------|-------|-----|---------|--------------|
+| BBS1 | 593aa | 11q13.2 | AR | Bardet-Biedl Syndrome 1 (23%) | M1L founder; rod-cone irreversible |
+| CEP290 | 2479aa | 12q21.32 | AR | Joubert/LCA10/Meckel | c.2991+1655A>G deep intronic **MISSED by standard exome** |
+| NPHP1 | 732aa | 2q13 | AR | Nephronophthisis 1 | 2q13 deletion ~85% — **MLPA required, not sequencing** |
+| RPGR | 815aa | Xp11.3 | XLR | X-linked RP | ORF15 hotspot 70-75% XLRP; female carriers 20% symptomatic |
+| AHI1 | 1196aa | 6q23.3 | AR | Joubert JBTS3 | Highest retinal (80%); R830W Ashkenazi founder |
+| ALMS1 | 4169aa | 2p13.1 | AR | Alström Syndrome | NO polydactyly, NO cognitive impairment; cardiomyopathy resolves then returns |
+| KIF7 | 1343aa | 15q26.1 | AR | Acrocallosal/Hydrolethalus/JBTS12 | Hedgehog gatekeeper; lethal to mild from same gene |
+| DYNC2H1 | 4307aa | 11q22.3 | AR | SRTD3/Jeune | Most common SRTD (45%); narrow thorax → neonatal respiratory failure |
+
+### [2026-09-07 15:19:30 MDT] ASSISTANT
+All registries are fully built (1112/1112 dashboards, all hereditary atlases complete). The only item in the BUILDABLE queue is `ictal_interictal` which must be skipped per instructions. Logging and exiting.
+
+### [2026-09-07 15:44:00 MDT] ASSISTANT
+**Built + pushed: Hereditary-Dystroglycanopathy-Atlas**
+
+**Item built:** Hereditary-Dystroglycanopathy-Atlas — Complete 8-Gene Alpha-Dystroglycan O-Glycosylation Disorder Atlas
+
+**What was built:**
+- `scripts/hereditary_dystroglycanopathy_atlas_dashboard.py` — 8 genes, 320 patients (seeds 1958–1965)
+- `api_backend.py` — 3 new routes (`/api/hereditary-dystroglycanopathy-atlas/overview|breakdown|definitions`) all verified 200
+- `portal-next/app/hereditary-dystroglycanopathy-atlas/page.jsx` — 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Ciliopathy-Atlas
+- `expert_dashboards.json` — count 1112 → 1113
+
+**8 Genes covered:**
+| Gene | Disease | Key Fact |
+|------|---------|----------|
+| FKRP | LGMD2I / MDC1C | L276I Caucasian founder; most common AR LGMD N.Europe; DCM mandatory surveillance; steroids NOT effective |
+| FKTN | Fukuyama CMD / LGMD2M | 3kb SVA retrotransposon — NOT detected by WES; cardiac transplant 2nd–3rd decade |
+| POMT1 | Walker-Warburg WWS1 | Most lethal; cobblestone lissencephaly; median survival <3yr; LGMD2K (mild alleles) |
+| POMT2 | Walker-Warburg WWS2 | Dandy-Walker malformation; clinically indistinguishable from POMT1 — gene test required |
+| POMGNT1 | MEB (Muscle-Eye-Brain) | Progressive HIGH myopia = pathognomonic clue; flat ERG; cerebellar cysts; better survival than WWS |
+| LARGE1 | MDC1D | Most severe intellectual disability; white matter leukodystrophy; LARGE2 does NOT compensate |
+| ISPD | WWS subtype | Leigh-like MRI trap (metabolic screen NORMAL); cardiomyopathy distinctive; Arg272Cys founder |
+| GMPPB | LGMD2T | **Only** dystroglycanopathy with NMJ component; pyridostigmine responsive; normal brain MRI |
+
+### [2026-09-07 16:03:49 MDT] ASSISTANT
+STATUS.md now shows 1114 expert dashboards. Now commit:
+
+### [2026-09-07 17:23:22 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-07 17:49:39 MDT] ASSISTANT
+Done. One iteration complete.
+
+**Built + pushed: Hereditary Coagulation Disorder Atlas** (`420af737`)
+
+- **Script:** `scripts/hereditary_coagulation_disorder_atlas_dashboard.py` — 1,086 lines, 8 genes × 40 patients, seeds 1982-1989
+- **8 genes:** F8 (Haemophilia A, XLR), F9 (Haemophilia B, XLR), VWF (VWD, AD/AR), F11 (Haemophilia C, AR), F7 (FVII deficiency, AR), F13A1 (FXIII-A deficiency, AR), F10 (FX Stuart-Prower, AR), LMAN1 (combined FV+FVIII, AR)
+- **3 endpoints verified 200:** `/api/hereditary-coagulation-disorder-atlas/overview|breakdown|definitions`
+- **Portal page:** `portal-next/app/hereditary-coagulation-disorder-atlas/page.jsx` — 4 tabs (Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav** wired after Hereditary-Immunodeficiency-Atlas
+- **Registry:** `expert_dashboards.json` count 1114 → 1115
+
+Key clinical safety flags captured: Type 2B VWD DDAVP absolute CI (thrombocytopenia crisis); F13A1 normal PT/APTT trap (missed by standard coag screen); F8 emicizumab + aPCC TMA risk; F9 Hemgenix FDA Nov 2022 gene therapy; LMAN1 FV absent from FVIII concentrates (FFP mandatory); F11 level–bleeding dissociation.
+
+### [2026-09-07 18:15:18 MDT] ASSISTANT
+Done. Built and pushed: **Hereditary-RASopathy-Atlas** (Complete 8-Gene RAS-MAPK Pathway Disorder Atlas), commit `ba62f98c`.
+
+**What was built:**
+- `scripts/hereditary_rasopathy_atlas_dashboard.py` — 8-gene cohort generator (320 patients, seeds 1990-1997): PTPN11 · SOS1 · RAF1 · RIT1 · BRAF · MAP2K1 · HRAS · SHOC2
+- `api_backend.py` — 3 new routes `/api/hereditary-rasopathy-atlas/overview|breakdown|definitions` verified 200
+- `portal-next/app/hereditary-rasopathy-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Coagulation-Disorder-Atlas
+- `config/expert_dashboards.json` — count 1115 → 1116
+
+**Key clinical pearls encoded:**
+- PTPN11: JMML risk 200× — mandatory FBC screen in all NS-PTPN11 children
+- SOS1: best cognitive prognosis in NS; sparse outer eyebrows + KP = ectodermal clue
+- RAF1: highest HCM risk (~90%); p.S257L hotspot; GH caution if HCM present
+- RIT1: second highest HCM (72%) + chylothorax combination; MCT diet + octreotide
+- BRAF: severe intellectual disability distinguishes CFC from NS; V600E is cancer, NOT a CFC variant
+- MAP2K1: ichthyosis PATHOGNOMONIC; trametinib is the direct mechanistic target (MEK1)
+- HRAS: 15-17% malignant tumour risk by age 20 — mandatory 6-monthly surveillance; papillomata diagnostic
+- SHOC2: painless hair extraction PATHOGNOMONIC; p.S2G hotspot >80% of NSLH; anagen effluvium on trichogram
+
+### [2026-09-07 18:54:07 MDT] ASSISTANT
+All steps complete. Autonomous iteration done:
+
+- **Built**: `scripts/hereditary_pah_atlas_dashboard.py` (8 genes, 320 patients, seeds 1998-2005)
+- **Wired**: 3 API routes in `api_backend.py` — all verified HTTP 200
+- **Portal**: `portal-next/app/hereditary-pah-atlas/page.jsx` (4 tabs, EIF2AK4 PVOD critical warning)
+- **Nav**: SiteNav wired after Hereditary-RASopathy-Atlas
+- **Registry**: `expert_dashboards.json` count 1116→1117
+- **Committed**: `3d3c6ad7` — pushed to `origin/main`
+- **Tracked**: `autobuild` log updated
+
+### [2026-09-07 19:15:38 MDT] ASSISTANT
+Done. Built and pushed:
+
+**Hereditary-Obesity-Melanocortin-Atlas** — seeds 2006–2013, expert_dashboards.json count 1117→1118
+
+**8 genes covered:**
+| Gene | aa | Locus | Inh | Key Feature |
+|------|-----|-------|-----|-------------|
+| MC4R | 332 | 18q21.32 | AD | Most common monogenic obesity (1-2%); hyperinsulinaemia early marker; tall stature |
+| LEPR | 1165 | 1p31.3 | AR | Very high leptin (paradox); setmelanotide FDA-2020; NOT metreleptin |
+| LEP | 167 | 7q32.1 | AR | Undetectable leptin pathognomonic; metreleptin CURATIVE; NOT setmelanotide |
+| PCSK1 | 753 | 5q15 | AR | Neonatal diarrhoea first; panhypopituitarism; adrenal crisis risk; setmelanotide FDA-2021 |
+| POMC | 267 | 2p23.3 | AR | Red hair + obesity + hypocortisolism TRIAD pathognomonic; setmelanotide FDA-2020 |
+| SH2B1 | 613 | 16p11.2 | AD | 16p11.2 deletion; microarray mandatory; behavioural dysregulation |
+| KSR2 | 950 | 12q24.22 | AR | Low resting HR distinctive; metformin DRAMATICALLY effective (unique mechanism) |
+| SIM1 | 786 | 6q16.3 | AD | PWS-like but normal 15q11-q13; aggressive food-seeking; OXT trials ongoing |
+
+**3 endpoints verified 200:** `/api/hereditary-obesity-melanocortin-atlas/overview|breakdown|definitions`
+**Committed** `f7f434a4` · **pushed** to `origin/main`
+
+### [2026-09-07 19:38:35 MDT] ASSISTANT
+Backend healthy (root 200). All 4 atlas endpoints return 200. Now commit.
+
+### [2026-09-07 20:02:16 MDT] ASSISTANT
+Done. One iteration complete.
+
+**Built + pushed: Hereditary-Lipodystrophy-Atlas** — commit `f31a8ac7`
+
+**Item:** Next buildable from the continuous hereditary-atlas series (SEED_BASE incremented to 2014)
+
+**What was built:**
+- `scripts/hereditary_lipodystrophy_atlas_dashboard.py` — 8-gene cohort generator (320 patients, seeds 2014–2021): BSCL2 · AGPAT2 · LMNA · PPARG · PLIN1 · AKT2 · CAV1 · ZMPSTE24
+- `api_backend.py` — 3 new routes `/api/hereditary-lipodystrophy-atlas/overview|breakdown|definitions` all verified 200
+- `portal-next/app/hereditary-lipodystrophy-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Renal-Tubular-Atlas
+- `config/expert_dashboards.json` — count 1120 → 1121
+
+**8 genes encoded:**
+
+| Gene | aa | Locus | Inh | Key Clinical Pearl |
+|------|----|-------|-----|--------------------|
+| BSCL2 | 398 | 11q13.1 | AR | CGL2 — ALL fat absent (including mechanical); intellectual disability ~50%; metreleptin FDA-2014 |
+| AGPAT2 | 278 | 9q34.3 | AR | CGL1 — mechanical fat PRESERVED (palms/soles/periorbit); bone cysts on X-ray PATHOGNOMONIC; no ID |
+| LMNA | 664 | 1q22 | AD | FPLD2 Dunnigan — fat redistribution (not absence); CARDIAC MANDATORY; ICD if NSVT+HB+EF<45%; exon 8 R482W/Q |
+| PPARG | 505 | 3p25.2 | AD | FPLD3 — dominant negative LBD; TZD direct target but impaired response; adiponectin very low |
+| PLIN1 | 522 | 15q26.1 | AD | FPLD4 — TG often >20 mmol/L; pancreatitis HIGH RISK; fibrates mandatory; diagnosis often delayed |
+| AKT2 | 481 | 19q13.2 | AD | LOF → severe IR + partial lipodystrophy; GOF → neonatal hypoglycaemia + macrosomia; diazoxide may fail |
+| CAV1 | 178 | 7q31.2 | AR/AD | CGL3 (AR) + PAH overlap — echo mandatory; FPLD7 (AD); caveolae absent on EM; BMPR2 panel if PAH |
+| ZMPSTE24 | 475 | 1p34.2 | AR | MADB — progeroid + mandibular hypoplasia + ACROOSTEOLYSIS pathognomonic; prelamin A accumulation; lonafarnib FTI |
+
+⏳ **Pending:** Ictal/interictal retrain (s
+
+### [2026-09-07 20:33:43 MDT] ASSISTANT
+Pushed `69820a09` → `origin/main`. Iteration complete.
+
+**Built & pushed: Hereditary-Haematological-Malignancy-Predisposition-Atlas**
+- 8 genes (RUNX1, CEBPA, DDX41, TP53, ETV6, ANKRD26, SAMD9L, NF1), seeds 2022–2029, 320 patients
+- 3 endpoints verified 200, 4-tab frontend, SiteNav wired, registry count 1121→1122
+
+⏳ **Pending**: ictal/interictal retrain (SKIP — too heavy for unattended build). Queue otherwise empty.
+
+### [2026-09-07 20:52:18 MDT] ASSISTANT
+All 7 endpoints return 200, expert-dashboards count confirmed at 1129.
+
+### [2026-09-07 21:16:12 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-07 21:45:35 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-Skeletal-Dysplasia-Atlas** (commit `dea3a6f3`).
+
+**What was built:**
+- `scripts/hereditary_skeletal_dysplasia_atlas_dashboard.py` — 8 genes: FGFR3 · COL2A1 · EXT1 · EXT2 · COMP · SLC26A2 · TRPV4 · ACAN (seeds 2038-2045, 320 patients)
+- `portal-next/app/hereditary-skeletal-dysplasia-atlas/page.jsx` — 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions)
+- 3 API routes added to `api_backend.py` — all return 200: `/api/hereditary-skeletal-dysplasia-atlas/overview|breakdown|definitions`
+- SiteNav wired after Hereditary-Ion-Channel-Disease-Atlas
+- `config/expert_dashboards.json` registry: count 1130 → 1131
+
+**Key clinical knowledge encoded:** FGFR3-ACH G380R foramen-magnum screen year-1, vosoritide FDA 2021; COL2A1-Stickler membranous vitreous PATHOGNOMONIC + retinal detachment laser mandatory + SEDC C-spine CI; EXT1 chondrosarcoma 1-2% highest risk cap >2 cm biopsy urgently; COMP-PSACH normal face/head = CRITICAL DDx from ACH (not apparent at birth); SLC26A2-DTD cauliflower ear + hitchhiker thumb + bilateral club foot pathognomonic triad; TRPV4 metatropic dumbbell metaphyses; ACAN-FSS advanced bone age (opposite of GH deficiency) with normal GH axis.
+
+### [2026-09-07 22:13:22 MDT] ASSISTANT
+Committed. Now push and track:

@@ -17950,5 +17950,15 @@
     "patient_count": 320,
     "seeds": "2046-2053",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-hepatic-disease-atlas",
+    "name": "Hereditary-Hepatic-Disease-Atlas Complete-8-Gene-Hereditary-Liver-Disease-Atlas ATP7B-1465aa-13q14.3-AR Wilson-Disease-Kayser-Fleischer-Rings-PATHOGNOMONIC HFE-348aa-6p21.3-AR Haemochromatosis-C282Y-Phlebotomy SERPINA1-418aa-14q32.13-AR AATD-PiZZ-Emphysema-Smoking-CI JAG1-1218aa-20p12.2-AD Alagille-Butterfly-Vertebrae ABCB11-1321aa-2q31.1-AR PFIC2-HIGH-GGT ATP8B1-1251aa-18q21.31-AR PFIC1-LOW-GGT SLC25A13-675aa-7q21.3-AR Citrinemia-NICCD-CTLN2 NPC1-1278aa-18q11.2-AR NPC-Vertical-Gaze-Palsy 320-Patient-Aggregate-8x40-seeds-2054-2061",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "route": "/hereditary-hepatic-disease-atlas",
+    "api": "/api/hereditary-hepatic-disease-atlas",
+    "description": "Hereditary-Hepatic-Disease-Atlas Complete-8-Gene-Hereditary-Liver-Disease-Atlas ATP7B-1465aa-13q14.3-AR-Wilson-Disease-Kayser-Fleischer-Rings-PATHOGNOMONIC-Chelation HFE-348aa-6p21.3-AR-Haemochromatosis-C282Y-Phlebotomy-Curative SERPINA1-418aa-14q32.13-AR-AATD-PiZZ-Panacinar-Emphysema-Smoking-ABSOLUTELY-CI JAG1-1218aa-20p12.2-AD-Alagille-Butterfly-Vertebrae-PATHOGNOMONIC-Maralixibat-FDA-2021 ABCB11-1321aa-2q31.1-AR-PFIC2-BSEP-HIGH-GGT-Childhood-HCC-LT-Curative ATP8B1-1251aa-18q21.31-AR-PFIC1-FIC1-LOW-GGT-Extrahepatic-Post-LT-Steatosis SLC25A13-675aa-7q21.3-AR-Citrinemia-NICCD-CTLN2-Protein-Preference-PATHOGNOMONIC NPC1-1278aa-18q11.2-AR-NPC-VSGP-PATHOGNOMONIC-Miglustat 320-Patient-Aggregate-8x40-seeds-2054-2061 / 3-endpoints-/api/hereditary-hepatic-disease-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1132-1133 / SiteNav-wired-after-Hereditary-Brain-Malformation-Atlas / Registered-2026-09-07",
+    "built_date": "2026-09-07"
   }
 ]

@@ -47242,6 +47242,36 @@ async def hereditary_brain_malformation_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-hepatic-disease-atlas/overview")
+async def hereditary_hepatic_disease_atlas_overview():
+    """Hereditary-Hepatic-Disease-Atlas — 8-gene aggregate overview (320 patients, seeds 2054-2061)."""
+    try:
+        import scripts.hereditary_hepatic_disease_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hepatic-disease-atlas/breakdown")
+async def hereditary_hepatic_disease_atlas_breakdown():
+    """Hereditary-Hepatic-Disease-Atlas per-gene breakdown (ATP7B/HFE/SERPINA1/JAG1/ABCB11/ATP8B1/SLC25A13/NPC1)."""
+    try:
+        import scripts.hereditary_hepatic_disease_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hepatic-disease-atlas/definitions")
+async def hereditary_hepatic_disease_atlas_definitions():
+    """Hereditary-Hepatic-Disease-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_hepatic_disease_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
