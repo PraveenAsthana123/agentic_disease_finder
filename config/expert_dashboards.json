@@ -17924,5 +17924,31 @@
     "seeds": "2038-2045",
     "patients": 320,
     "status": "built"
+  },
+  {
+    "id": "hereditary-brain-malformation-atlas",
+    "name": "Hereditary Brain Malformation Atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "description": "Complete 8-gene hereditary brain malformation atlas: PAFAH1B1/LIS1 lissencephaly, DCX band heterotopia, TUBA1A tubulinopathy, FLNA PVNH, ASPM/CDK5RAP2 primary microcephaly, ADGRG1 BFPP, RELN LCH. 320 patients, seeds 2046-2053.",
+    "endpoints": [
+      "/api/hereditary-brain-malformation-atlas/overview",
+      "/api/hereditary-brain-malformation-atlas/breakdown",
+      "/api/hereditary-brain-malformation-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-brain-malformation-atlas",
+    "genes": [
+      "PAFAH1B1",
+      "DCX",
+      "TUBA1A",
+      "FLNA",
+      "ASPM",
+      "CDK5RAP2",
+      "ADGRG1",
+      "RELN"
+    ],
+    "patient_count": 320,
+    "seeds": "2046-2053",
+    "registered": "2026-09-07"
   }
 ]

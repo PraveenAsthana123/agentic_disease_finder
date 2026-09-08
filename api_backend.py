@@ -47212,6 +47212,36 @@ async def hereditary_ion_channel_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-brain-malformation-atlas/overview")
+async def hereditary_brain_malformation_atlas_overview():
+    """Hereditary-Brain-Malformation-Atlas — 8-gene aggregate overview (320 patients, seeds 2046-2053)."""
+    try:
+        import scripts.hereditary_brain_malformation_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-brain-malformation-atlas/breakdown")
+async def hereditary_brain_malformation_atlas_breakdown():
+    """Hereditary-Brain-Malformation-Atlas per-gene breakdown (PAFAH1B1/DCX/TUBA1A/FLNA/ASPM/CDK5RAP2/ADGRG1/RELN)."""
+    try:
+        import scripts.hereditary_brain_malformation_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-brain-malformation-atlas/definitions")
+async def hereditary_brain_malformation_atlas_definitions():
+    """Hereditary-Brain-Malformation-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_brain_malformation_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

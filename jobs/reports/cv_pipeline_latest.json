@@ -1,5 +1,5 @@
 {
-  "run_at_local": "2026-09-07T20:00:03-06:00",
+  "run_at_local": "2026-09-07T22:00:01-06:00",
   "frames_processed": 10,
   "noise_cleaning": "OpenCV fastNlMeansDenoisingColored",
   "segmentation": "OpenCV Otsu threshold + contours",
