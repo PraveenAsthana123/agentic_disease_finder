@@ -18495,5 +18495,25 @@
     "n_references": 6,
     "seeds": null,
     "built_date": "2026-09-08"
+  },
+  {
+    "id": "cnn-resnet-spectrogram-eeg-classifier",
+    "name": "CNN-ResNet-Spectrogram-EEG-Classifier 1D-CNN-2.3M-params-Temporal-Convolutions 2D-CNN-1.8M-Spectrogram-Image ResNet-18-11.2M-Skip-Connections ResNet-34-21.8M-Deep-Residual CHB-MIT-Benchmarks-90.2pct-1D-CNN-91.8pct-ResNet-18",
+    "category": "deep-learning-eeg",
+    "status": "built",
+    "route": "/cnn-resnet",
+    "api_endpoints": [
+      "/api/cnn-resnet/overview",
+      "/api/cnn-resnet/breakdown",
+      "/api/cnn-resnet/definitions"
+    ],
+    "script": "scripts/cnn_resnet_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Spectrogram Inventory",
+      "Architectures",
+      "Definitions"
+    ]
   }
 ]
