@@ -48012,6 +48012,36 @@ async def hereditary_hepatic_gsd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-congenital-heart-disease-atlas/overview")
+async def hereditary_congenital_heart_disease_atlas_overview():
+    """Hereditary-Congenital-Heart-Disease-Atlas overview — 8 genes (GATA4/TBX5/NKX2-5/NOTCH1/JAG1/CHD7/TFAP2B/TBX1), 320 patients, seeds 2254-2261."""
+    try:
+        import scripts.hereditary_congenital_heart_disease_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-congenital-heart-disease-atlas/breakdown")
+async def hereditary_congenital_heart_disease_atlas_breakdown():
+    """Hereditary-Congenital-Heart-Disease-Atlas per-patient breakdown — gene profiles, CHD anatomy, pathognomonic features, treatment plans."""
+    try:
+        import scripts.hereditary_congenital_heart_disease_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-congenital-heart-disease-atlas/definitions")
+async def hereditary_congenital_heart_disease_atlas_definitions():
+    """Hereditary-Congenital-Heart-Disease-Atlas glossary — CHD anatomy, syndrome definitions, CHARGE/Alagille/22q11/HOS, diagnostic tests."""
+    try:
+        import scripts.hereditary_congenital_heart_disease_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-glycogen-storage-myopathy-atlas/overview")
 async def hereditary_glycogen_storage_myopathy_atlas_overview():
     """Hereditary-Glycogen-Storage-Myopathy-Atlas overview — 8 genes (GAA/PYGM/PFKM/LAMP2/AGL/GBE1/GYS1/PGAM2), 320 patients, seeds 2246-2253."""

@@ -18091,26 +18091,24 @@
     "description": "Hereditary-Tremor-Ataxia-Atlas Complete-8-Gene-Hereditary-Tremor-Episodic-Progressive-Ataxia-Atlas FMR1-Xq27.3-XL-FXTAS-Premutation-55-200-CGG-MCP-Hyperintensity-PATHOGNOMONIC CACNA1A-2505aa-19p13.13-AD-EA2-SCA6-Interictal-Nystagmus-PATHOGNOMONIC-Acetazolamide-Level-B FGF14-252aa-13q33.1-AD-SCA27B-GAA-TTC->250-Most-Common-Late-Onset-Standard-Panels-MISS-4-AP RFC1-1148aa-4p14-AR-CANVAS-AAGGG-Biallelic-Sensory-Neuropathy-Vestibular-Areflexia-Cough-70pct NOTCH2NLC-1q22-AD-NIID-GGC->60-Skin-Biopsy-p62-PATHOGNOMONIC-DWI-Cortico-Medullary PRKCG-697aa-19q13.42-AD-SCA14-Action-Tremor-PROMINENT-Slow-Progression ITPR1-2695aa-3p26.1-AD-SCA15-Pure-Cerebellar-Deletions-35-45pct-MLPA-MANDATORY ELOVL5-299aa-6p12.3-AD-SCA38-DHA-Deficiency-PATHOGNOMONIC-Dietary-DHA-1g-Day 320-Patient-Aggregate-8x40-seeds-2094-2101 / 3-endpoints-/api/hereditary-tremor-ataxia-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1137-1138 / SiteNav-wired-after-Hereditary-Myoclonus-Atlas / Registered-2026-09-08"
   },
   {
-    "name": "Hereditary-Polyglutamine-SCA-Atlas",
+    "id": "hereditary-polyglutamine-sca-atlas",
+    "name": "Hereditary-Polyglutamine-SCA-Atlas Complete-8-Gene-Polyglutamine-Repeat-Expansion-Spinocerebellar-Ataxia-Atlas ATXN1-816aa-6p22.3-AD-SCA1-CAG>=39-Hyperreflexia-PATHOGNOMONIC-Fastest-Progression ATXN2-1312aa-12q24.12-AD-SCA2-Slow-Saccades-PATHOGNOMONIC-ALS-Modifier-27-33-Repeats ATXN3-361aa-14q32.12-AD-SCA3-MJD-Most-Common-SCA-Worldwide-28pct-Exophthalmos-PATHOGNOMONIC ATXN7-892aa-3p14.1-AD-SCA7-Retinal-Degeneration-Annual-Fundoscopy-PATHOGNOMONIC ATXN10-475aa-22q13.31-AD-SCA10-ATTCT-Seizures-50pct-Standard-Panels-Miss ATXN8OS-CTG-CAG-13q21.33-AD-SCA8-Incomplete-Penetrance-30pct-Bidirectional-Assay PPP2R2B-443aa-5q32-AD-SCA12-Tremor-Dominant-Misdiagnosed-ET-Indian-Subcontinent KCNC3-735aa-19q13.33-AD-SCA13-R420H-Childhood-ID-F448L-Adult-Two-Phenotypes seeds-2102-2109",
+    "category": "Hereditary Neurological",
     "status": "built",
-    "category": "hereditary-neurological",
-    "route": "/hereditary-polyglutamine-sca-atlas",
-    "api": "/api/hereditary-polyglutamine-sca-atlas",
-    "script": "scripts/hereditary_polyglutamine_sca_atlas_dashboard.py",
-    "genes": [
-      "ATXN1",
-      "ATXN2",
-      "ATXN3",
-      "ATXN7",
-      "ATXN10",
-      "ATXN8OS",
-      "PPP2R2B",
-      "KCNC3"
+    "api_endpoints": [
+      "/api/hereditary-polyglutamine-sca-atlas/overview",
+      "/api/hereditary-polyglutamine-sca-atlas/breakdown",
+      "/api/hereditary-polyglutamine-sca-atlas/definitions"
     ],
-    "patients": 320,
-    "seeds": "2102-2109",
-    "built_date": "2026-09-08",
-    "description": "Complete 8-Gene Polyglutamine and Repeat-Expansion Spinocerebellar Ataxia Atlas (SCA1/2/3/7/8/10/12/13)"
+    "script": "scripts/hereditary_polyglutamine_sca_atlas_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ],
+    "description": "Hereditary-Polyglutamine-SCA-Atlas Complete-8-Gene Polyglutamine and Repeat-Expansion SCA Atlas: ATXN1 (SCA1 hyperreflexia PATHOGNOMONIC, fastest progression); ATXN2 (SCA2 slow saccades PATHOGNOMONIC, ALS modifier); ATXN3 (SCA3/MJD most common SCA worldwide 28%, exophthalmos PATHOGNOMONIC); ATXN7 (SCA7 retinal degeneration annual fundoscopy); ATXN10 (SCA10 ATTCT seizures 50%, standard panels miss); ATXN8OS (SCA8 incomplete penetrance 30%, bidirectional assay); PPP2R2B (SCA12 tremor dominant, Indian subcontinent); KCNC3 (SCA13 two alleles two phenotypes). 320-patient aggregate seeds-2102-2109. 4-tab frontend, SiteNav wired. 3 endpoints verified 200. Registered 2026-09-08."
   },
   {
     "id": "hereditary-non-polyglutamine-dominant-sca-atlas",
@@ -18386,17 +18384,24 @@
     "registered": "2026-09-08"
   },
   {
-    "name": "Hereditary-EDMD-Nuclear-Envelope-Atlas Complete-8-Gene-EDMD-Nuclear-Envelope-Myopathy-Spectrum-Atlas EMD-254aa-Xq28-XLR-EDMD1-Emerin-ELBOW-CONTRACTURES-IHC-ABSENT-PACEMAKER-ICD-MANDATORY LMNA-664aa-1q22-AD-EDMD2-LGMD1B-DCM-CD-FPLD2-MOST-ALLELIC-GENE-15-PHENOTYPES SYNE1-8797aa-6q25.2-AR-AD-EDMD4-ARCA1-Quebec-Founder SYNE2-6885aa-14q23.2-AD-EDMD5-LINC-Outer-NM TMEM43-400aa-3p25.1-AD-ARVC5-EDMD7-S358L-Newfoundland-100pct-Penetrance FHL1-323aa-Xq26.3-XLR-EDMD6-Reducing-Body-Myopathy SUN1-916aa-7q32.2-AR-AD-LINC-Inner-NM LEMD3-922aa-12q14.3-AD-BOS-Osteopoikilosis-Dermatofibrosis 320-Patient-Aggregate-8x40-seeds-2198-2205",
+    "id": "hereditary-edmd-nuclear-envelope-atlas",
+    "name": "Hereditary-EDMD-Nuclear-Envelope-Atlas Complete-8-Gene-EDMD-Nuclear-Envelope-Myopathy-Spectrum-Atlas EMD-254aa-Xq28-XLR-EDMD1-ELBOW-FLEXION-CONTRACTURES-EARLIEST-PATHOGNOMONIC-Emerin-IHC-ABSENT-PACEMAKER-ICD-MANDATORY LMNA-664aa-1q22-AD-EDMD2-MOST-ALLELIC-GENE-15-PHENOTYPES-ICD-MANDATORY-EARLY-SCD SYNE1-8797aa-6q25.2-AR-EDMD4-ARCA1-Quebec-Founder-LINC-Outer-NM SYNE2-6885aa-14q23.2-AD-EDMD5-LINC-Outer-NM-Very-Rare TMEM43-400aa-3p25.1-AD-ARVC5-EDMD7-S358L-Newfoundland-100pct-Penetrance-ICD-ALL-CARRIERS FHL1-323aa-Xq26.3-XLR-EDMD6-REDUCING-BODY-MYOPATHY-PATHOGNOMONIC SUN1-916aa-7q32.2-AR-LINC-Inner-NM-EDMD-Like LEMD3-922aa-12q14.3-AD-BOS-OSTEOPOIKILOSIS-DERMATOFIBROSIS-DUAL-PATHOGNOMONIC seeds-2198-2205",
+    "category": "Hereditary Muscular",
     "status": "built",
-    "script": "scripts/hereditary_edmd_nuclear_envelope_atlas_dashboard.py",
-    "portal_page": "/hereditary-edmd-nuclear-envelope-atlas",
-    "api_routes": [
+    "api_endpoints": [
       "/api/hereditary-edmd-nuclear-envelope-atlas/overview",
       "/api/hereditary-edmd-nuclear-envelope-atlas/breakdown",
       "/api/hereditary-edmd-nuclear-envelope-atlas/definitions"
     ],
-    "seeds": "2198-2205",
-    "registered": "2026-09-08"
+    "script": "scripts/hereditary_edmd_nuclear_envelope_atlas_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ],
+    "description": "Hereditary-EDMD-Nuclear-Envelope-Atlas Complete-8-Gene EDMD/Nuclear Envelope Myopathy Spectrum: EMD (elbow flexion contractures earliest PATHOGNOMONIC, emerin IHC absent, ICD MANDATORY); LMNA (most allelic gene 15+ phenotypes, ICD mandatory early preserved EF, Lonafarnib HGPS FDA2020); SYNE1 (ARCA1 Quebec founder, largest protein 8797aa); SYNE2 (EDMD5 very rare); TMEM43 (S358L Newfoundland 100% penetrance males, ICD ALL carriers, mean death 41yr); FHL1 (reducing body myopathy BT stain PATHOGNOMONIC); SUN1 (LINC inner NM SUN domain); LEMD3 (osteopoikilosis+dermatofibrosis DUAL PATHOGNOMONIC, mostly benign). 320-patient aggregate seeds-2198-2205. 4-tab frontend, SiteNav wired. 3 endpoints verified 200. Registered 2026-09-08."
   },
   {
     "id": "hereditary-myofibrillar-myopathy-atlas",
@@ -18562,5 +18567,25 @@
       "Definitions"
     ],
     "description": "Hereditary-Glycogen-Storage-Myopathy-Atlas Complete-8-Gene-GSD-Muscle-Spectrum-Atlas GAA-762aa-17q25.3-AR-Pompe-GSD-II-CLASSIC-INFANTILE-Cardiomegaly-LOPD-ERT-CRIM-Negative-ITI-Mandatory PYGM-842aa-11q13.1-AR-McArdle-GSD-V-SECOND-WIND-Most-Pathognomonic-NO-Lactate-Rise-Forearm PFKM-780aa-12q13.11-AR-Tarui-GSD-VII-OUT-OF-WIND-Hemolytic-Anemia-Gout-Triad LAMP2-410aa-Xq24-XLD-Danon-WPW-HCM-ECG-PATHOGNOMONIC-ICD-Mandatory AGL-1532aa-1p21.2-AR-Cori-Forbes-GSD-IIIa-Liver-Muscle-IIIb-Liver-Only-NO-Cirrhosis GBE1-702aa-3p24.2-AR-Andersen-GSD-IV-MOST-SEVERE-PAS-Polyglucosan-PATHOGNOMONIC-LT-Curative GYS1-700aa-19q13.33-AR-GSD-0a-Exercise-VT-SCD-PATHOGNOMONIC-Paradoxical-Low-Glycogen-ICD PGAM2-254aa-7p13-AR-GSD-X-Tubular-Aggregates-PATHOGNOMONIC-African-American-W78X-Myoglobinuria 320-patient-aggregate-seeds-2246-2253. 4-tab frontend (Overview/Gene Table/Clinical Atlas/Definitions), SiteNav wired after Hereditary-Hepatic-GSD-Atlas, expert_dashboards.json count 1160->1161. 3 endpoints /api/hereditary-glycogen-storage-myopathy-atlas/overview|breakdown|definitions verified 200. Registered 2026-09-08."
+  },
+  {
+    "id": "hereditary-congenital-heart-disease-atlas",
+    "name": "Hereditary-Congenital-Heart-Disease-Atlas Complete-8-Gene-Hereditary-CHD-Atlas GATA4-442aa-8p23.1-AD-Isolated-CHD-ASD-VSD-TOF TBX5-518aa-12q24.21-AD-Holt-Oram-Bilateral-Thumb-Heart-PATHOGNOMONIC NKX2-5-324aa-5q35.1-AD-ASD-Progressive-AV-Block-Worsens-Post-Repair NOTCH1-2555aa-9q34.3-AD-BAV-Aortopathy-Annual-Echo-MANDATORY JAG1-1218aa-20p12.2-AD-Alagille-Butterfly-Vertebrae-PATHOGNOMONIC CHD7-2997aa-8q12.2-AD-CHARGE-Semicircular-Canal-Aplasia-PATHOGNOMONIC TFAP2B-463aa-6p24.3-AD-Char-PDA-Avoid-Indomethacin TBX1-504aa-22q11.21-AD-22q11DS-Conotruncal-Hypocalcemia-T-Cell-Lymphopenia seeds-2254-2261",
+    "category": "Hereditary Congenital Heart Disease",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-congenital-heart-disease-atlas/overview",
+      "/api/hereditary-congenital-heart-disease-atlas/breakdown",
+      "/api/hereditary-congenital-heart-disease-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_congenital_heart_disease_atlas_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ],
+    "description": "Hereditary-Congenital-Heart-Disease-Atlas Complete-8-Gene CHD Atlas: GATA4 (isolated CHD ASD/VSD/TOF); TBX5 (Holt-Oram bilateral thumb+CHD PATHOGNOMONIC); NKX2-5 (ASD+progressive AV block worsens post-repair PATHOGNOMONIC); NOTCH1 (BAV+aortopathy annual echo MANDATORY); JAG1 (Alagille butterfly vertebrae 95% PATHOGNOMONIC); CHD7 (CHARGE semicircular canal aplasia MRI PATHOGNOMONIC); TFAP2B (Char PDA avoid indomethacin); TBX1 (22q11DS conotruncal+hypocalcemia+T-cell lymphopenia PATHOGNOMONIC TRIAD). 320-patient aggregate seeds-2254-2261. 4-tab frontend, SiteNav wired after Hereditary-Glycogen-Storage-Myopathy-Atlas. 3 endpoints verified 200. Registered 2026-09-08."
   }
 ]
