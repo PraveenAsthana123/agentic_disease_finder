@@ -47272,6 +47272,36 @@ async def hereditary_hepatic_disease_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ovarian-cancer-atlas/overview")
+async def hereditary_ovarian_cancer_atlas_overview():
+    """Hereditary-Ovarian-Cancer-Atlas — 8-gene aggregate overview (320 patients, seeds 2062-2069)."""
+    try:
+        import scripts.hereditary_ovarian_cancer_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ovarian-cancer-atlas/breakdown")
+async def hereditary_ovarian_cancer_atlas_breakdown():
+    """Hereditary-Ovarian-Cancer-Atlas per-gene breakdown (BRCA1/BRCA2/BRIP1/RAD51C/RAD51D/PALB2/MLH1/MSH2)."""
+    try:
+        import scripts.hereditary_ovarian_cancer_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ovarian-cancer-atlas/definitions")
+async def hereditary_ovarian_cancer_atlas_definitions():
+    """Hereditary-Ovarian-Cancer-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_ovarian_cancer_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
