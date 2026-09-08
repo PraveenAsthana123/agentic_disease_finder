@@ -47452,6 +47452,36 @@ async def hereditary_polyglutamine_sca_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-non-polyglutamine-dominant-sca-atlas/overview")
+async def hereditary_non_polyglutamine_dominant_sca_atlas_overview():
+    """Hereditary-Non-Polyglutamine-Dominant-SCA-Atlas — 8-gene aggregate overview (320 patients, seeds 2110-2117)."""
+    try:
+        import scripts.hereditary_non_polyglutamine_dominant_sca_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-non-polyglutamine-dominant-sca-atlas/breakdown")
+async def hereditary_non_polyglutamine_dominant_sca_atlas_breakdown():
+    """Hereditary-Non-Polyglutamine-Dominant-SCA-Atlas per-gene breakdown (SPTBN2/CACNA1G/KCND3/TMEM240/STUB1/GRM1/FAT2/PUM1)."""
+    try:
+        import scripts.hereditary_non_polyglutamine_dominant_sca_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-non-polyglutamine-dominant-sca-atlas/definitions")
+async def hereditary_non_polyglutamine_dominant_sca_atlas_definitions():
+    """Hereditary-Non-Polyglutamine-Dominant-SCA-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_non_polyglutamine_dominant_sca_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

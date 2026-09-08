@@ -18111,5 +18111,28 @@
     "seeds": "2102-2109",
     "built_date": "2026-09-08",
     "description": "Complete 8-Gene Polyglutamine and Repeat-Expansion Spinocerebellar Ataxia Atlas (SCA1/2/3/7/8/10/12/13)"
+  },
+  {
+    "id": "hereditary-non-polyglutamine-dominant-sca-atlas",
+    "name": "Hereditary-Non-Polyglutamine-Dominant-SCA-Atlas",
+    "status": "built",
+    "category": "hereditary-neurological",
+    "route": "/hereditary-non-polyglutamine-dominant-sca-atlas",
+    "api": "/api/hereditary-non-polyglutamine-dominant-sca-atlas",
+    "script": "scripts/hereditary_non_polyglutamine_dominant_sca_atlas_dashboard.py",
+    "genes": [
+      "SPTBN2",
+      "CACNA1G",
+      "KCND3",
+      "TMEM240",
+      "STUB1",
+      "GRM1",
+      "FAT2",
+      "PUM1"
+    ],
+    "patients": 320,
+    "seeds": "2110-2117",
+    "built_date": "2026-09-08",
+    "description": "Complete 8-Gene Non-Polyglutamine Autosomal-Dominant Spinocerebellar Ataxia Atlas (SCA5/SCA19/SCA21/SCA42/SCA44/SCA45/SCA47/SCA48)"
   }
 ]
