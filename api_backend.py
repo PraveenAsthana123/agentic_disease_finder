@@ -47897,6 +47897,36 @@ async def hereditary_cmd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-nemaline-myopathy-atlas/overview")
+async def hereditary_nemaline_myopathy_atlas_overview():
+    """Hereditary-Nemaline-Myopathy-Atlas KPIs, gene summary, pathognomonic features (8 genes, 320 patients)."""
+    try:
+        import scripts.hereditary_nemaline_myopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-nemaline-myopathy-atlas/breakdown")
+async def hereditary_nemaline_myopathy_atlas_breakdown():
+    """Hereditary-Nemaline-Myopathy-Atlas per-patient breakdown, gene profiles, monitoring tables."""
+    try:
+        import scripts.hereditary_nemaline_myopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-nemaline-myopathy-atlas/definitions")
+async def hereditary_nemaline_myopathy_atlas_definitions():
+    """Hereditary-Nemaline-Myopathy-Atlas gene definitions, biopsy subtypes, diagnostic algorithm, treatment standards."""
+    try:
+        import scripts.hereditary_nemaline_myopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -18464,5 +18464,17 @@
       "/api/eegnet/breakdown",
       "/api/eegnet/definitions"
     ]
+  },
+  {
+    "id": "hereditary-nemaline-myopathy-atlas",
+    "name": "Hereditary Nemaline Myopathy Atlas \u2014 Complete 8-Gene NM Spectrum",
+    "status": "built",
+    "description": "Hereditary-Nemaline-Myopathy-Atlas Complete-8-Gene-NM-Spectrum-Atlas NEB-6669aa-2q23.3-AR-Most-Common-AR-NM-50pct-Nemaline-Rods-Exon55-Deletion-Ashkenazi ACTA1-375aa-1q42.13-AD-de-novo/AR-Intranuclear-Rods-PATHOGNOMONIC-Salbutamol-Level-C TPM2-284aa-9p13.3-AD/AR-Cap-Disease-DA2A-DA2B-Allelic TPM3-285aa-1q21.2-AD/AR-Slow-Fiber-Selective-CK-Normal TNNT1-328aa-19q13.42-AR-Amish-E180X-Lethal-Infantile CFL2-166aa-14q13.1-AR-Cores-And-Rods-PATHOGNOMONIC KBTBD13-571aa-15q22.31-AD-Slow-Relaxation-Electrically-Silent-PATHOGNOMONIC LMOD3-547aa-3p14.1-AR-DCM-Possible-Severe-Congenital 320-patient-aggregate-seeds-2222-2229. 4-tab frontend (Overview/Gene Table/Clinical Atlas/Definitions), SiteNav wired after Hereditary-CMD-Atlas, expert_dashboards.json count 1155-1156. 3 endpoints /api/hereditary-nemaline-myopathy-atlas/overview|breakdown|definitions verified 200. Registered 2026-09-08.",
+    "page": "/hereditary-nemaline-myopathy-atlas",
+    "endpoints": [
+      "/api/hereditary-nemaline-myopathy-atlas/overview",
+      "/api/hereditary-nemaline-myopathy-atlas/breakdown",
+      "/api/hereditary-nemaline-myopathy-atlas/definitions"
+    ]
   }
 ]
