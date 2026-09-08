@@ -17667,5 +17667,31 @@
     "api_prefix": "/api/hereditary-renal-tubular-atlas",
     "page": "/hereditary-renal-tubular-atlas",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-lipodystrophy-atlas",
+    "name": "Hereditary-Lipodystrophy-Atlas Complete-8-Gene-CGL-FPLD-Lipodystrophy-Atlas BSCL2-398aa-11q13.1-AR-CGL2-Most-Common-CGL-ALL-Fat-Absent-Metreleptin-FDA-2014 AGPAT2-278aa-9q34.3-AR-CGL1-Mechanical-Fat-PRESERVED-Bone-Cysts-PATHOGNOMONIC LMNA-664aa-1q22-AD-FPLD2-Dunnigan-CARDIAC-MANDATORY-ICD-NSVT-HB-EF45 PPARG-505aa-3p25.2-AD-FPLD3-Dominant-Negative-TZD-Direct-Target PLIN1-522aa-15q26.1-AD-FPLD4-TG-Above-20mmol-Pancreatitis-Fibrates-Mandatory AKT2-481aa-19q13.2-AD-LOF-Severe-IR-GOF-Neonatal-Hypoglycaemia CAV1-178aa-7q31.2-AR-CGL3-PAH-Overlap-AD-FPLD7-Caveolae-Absent ZMPSTE24-475aa-1p34.2-AR-MADB-Progeroid-Acroosteolysis-PATHOGNOMONIC-Lonafarnib 320-Patient-Aggregate-8x40-seeds-2014-2021",
+    "status": "built",
+    "script": "scripts/hereditary_lipodystrophy_atlas_dashboard.py",
+    "portal_page": "/hereditary-lipodystrophy-atlas",
+    "api_endpoints": [
+      "/api/hereditary-lipodystrophy-atlas/overview",
+      "/api/hereditary-lipodystrophy-atlas/breakdown",
+      "/api/hereditary-lipodystrophy-atlas/definitions"
+    ],
+    "genes": [
+      "BSCL2",
+      "AGPAT2",
+      "LMNA",
+      "PPARG",
+      "PLIN1",
+      "AKT2",
+      "CAV1",
+      "ZMPSTE24"
+    ],
+    "seed_range": "2014-2021",
+    "n_patients": 320,
+    "registered": "2026-09-07",
+    "nav_position": "after Hereditary-Renal-Tubular-Atlas"
   }
 ]

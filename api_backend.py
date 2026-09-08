@@ -47092,6 +47092,36 @@ async def hereditary_obesity_melanocortin_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-lipodystrophy-atlas/overview")
+async def hereditary_lipodystrophy_atlas_overview():
+    """Hereditary-Lipodystrophy-Atlas — 8-gene CGL/FPLD aggregate overview (320 patients, seeds 2014-2021)."""
+    try:
+        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-lipodystrophy-atlas/breakdown")
+async def hereditary_lipodystrophy_atlas_breakdown():
+    """Hereditary-Lipodystrophy-Atlas per-gene clinical breakdown (BSCL2/AGPAT2/LMNA/PPARG/PLIN1/AKT2/CAV1/ZMPSTE24)."""
+    try:
+        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-lipodystrophy-atlas/definitions")
+async def hereditary_lipodystrophy_atlas_definitions():
+    """Hereditary-Lipodystrophy-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
