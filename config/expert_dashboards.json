@@ -17580,5 +17580,23 @@
     "patients": 320,
     "registered": "2026-09-07",
     "description": "Complete 8-Gene RAS-MAPK Pathway Disorder Atlas: Noonan Syndrome, CFC Syndrome, Costello Syndrome"
+  },
+  {
+    "id": "hereditary-pah-atlas",
+    "name": "Hereditary-PAH-Atlas Complete-8-Gene-Hereditary-PAH-PVOD-Atlas BMPR2-2037aa-2q33.1-AD-Most-Common-HPAH-70-80pct-Penetrance-20pct-Only ACVRL1-503aa-12q13.13-AD-HHT2-PAH-Hepatic-AVM-Overlap ENG-658aa-9q34.11-AD-HHT1-PAVM-Antibiotic-Prophylaxis SMAD9-530aa-13q13.3-AD-BMP-SMAD-Downstream CAV1-178aa-7q31.2-AD-AR-Caveolin-Rare-HPAH KCNK3-354aa-2p23.3-AD-TASK1-GOF-Doxapram TBX4-520aa-17q23.2-AD-Paediatric-PAH-Small-Patella EIF2AK4-1649aa-15q15.1-AR-PVOD-VASODILATORS-CI-Transplant-ONLY 320-Patient-Aggregate-8x40-seeds-1998-2005",
+    "status": "built",
+    "seeds": "1998-2005",
+    "genes": [
+      "BMPR2",
+      "ACVRL1",
+      "ENG",
+      "SMAD9",
+      "CAV1",
+      "KCNK3",
+      "TBX4",
+      "EIF2AK4"
+    ],
+    "n_patients": 320,
+    "registered": "2026-09-07"
   }
 ]

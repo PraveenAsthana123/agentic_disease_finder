@@ -47034,6 +47034,34 @@ async def hereditary_rasopathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-pah-atlas/overview")
+async def hereditary_pah_atlas_overview():
+    try:
+        import scripts.hereditary_pah_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pah-atlas/breakdown")
+async def hereditary_pah_atlas_breakdown():
+    try:
+        import scripts.hereditary_pah_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-pah-atlas/definitions")
+async def hereditary_pah_atlas_definitions():
+    """Hereditary-PAH-Atlas gene definitions and glossary."""
+    try:
+        import scripts.hereditary_pah_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
