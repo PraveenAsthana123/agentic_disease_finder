@@ -47422,6 +47422,36 @@ async def hereditary_tremor_ataxia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-polyglutamine-sca-atlas/overview")
+async def hereditary_polyglutamine_sca_atlas_overview():
+    """Hereditary-Polyglutamine-SCA-Atlas — 8-gene aggregate overview (320 patients, seeds 2102-2109)."""
+    try:
+        import scripts.hereditary_polyglutamine_sca_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-polyglutamine-sca-atlas/breakdown")
+async def hereditary_polyglutamine_sca_atlas_breakdown():
+    """Hereditary-Polyglutamine-SCA-Atlas per-gene breakdown (ATXN1/ATXN2/ATXN3/ATXN7/ATXN10/ATXN8OS/PPP2R2B/KCNC3)."""
+    try:
+        import scripts.hereditary_polyglutamine_sca_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-polyglutamine-sca-atlas/definitions")
+async def hereditary_polyglutamine_sca_atlas_definitions():
+    """Hereditary-Polyglutamine-SCA-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_polyglutamine_sca_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

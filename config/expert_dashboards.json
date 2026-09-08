@@ -18089,5 +18089,27 @@
       "/api/hereditary-tremor-ataxia-atlas/definitions"
     ],
     "description": "Hereditary-Tremor-Ataxia-Atlas Complete-8-Gene-Hereditary-Tremor-Episodic-Progressive-Ataxia-Atlas FMR1-Xq27.3-XL-FXTAS-Premutation-55-200-CGG-MCP-Hyperintensity-PATHOGNOMONIC CACNA1A-2505aa-19p13.13-AD-EA2-SCA6-Interictal-Nystagmus-PATHOGNOMONIC-Acetazolamide-Level-B FGF14-252aa-13q33.1-AD-SCA27B-GAA-TTC->250-Most-Common-Late-Onset-Standard-Panels-MISS-4-AP RFC1-1148aa-4p14-AR-CANVAS-AAGGG-Biallelic-Sensory-Neuropathy-Vestibular-Areflexia-Cough-70pct NOTCH2NLC-1q22-AD-NIID-GGC->60-Skin-Biopsy-p62-PATHOGNOMONIC-DWI-Cortico-Medullary PRKCG-697aa-19q13.42-AD-SCA14-Action-Tremor-PROMINENT-Slow-Progression ITPR1-2695aa-3p26.1-AD-SCA15-Pure-Cerebellar-Deletions-35-45pct-MLPA-MANDATORY ELOVL5-299aa-6p12.3-AD-SCA38-DHA-Deficiency-PATHOGNOMONIC-Dietary-DHA-1g-Day 320-Patient-Aggregate-8x40-seeds-2094-2101 / 3-endpoints-/api/hereditary-tremor-ataxia-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1137-1138 / SiteNav-wired-after-Hereditary-Myoclonus-Atlas / Registered-2026-09-08"
+  },
+  {
+    "name": "Hereditary-Polyglutamine-SCA-Atlas",
+    "status": "built",
+    "category": "hereditary-neurological",
+    "route": "/hereditary-polyglutamine-sca-atlas",
+    "api": "/api/hereditary-polyglutamine-sca-atlas",
+    "script": "scripts/hereditary_polyglutamine_sca_atlas_dashboard.py",
+    "genes": [
+      "ATXN1",
+      "ATXN2",
+      "ATXN3",
+      "ATXN7",
+      "ATXN10",
+      "ATXN8OS",
+      "PPP2R2B",
+      "KCNC3"
+    ],
+    "patients": 320,
+    "seeds": "2102-2109",
+    "built_date": "2026-09-08",
+    "description": "Complete 8-Gene Polyglutamine and Repeat-Expansion Spinocerebellar Ataxia Atlas (SCA1/2/3/7/8/10/12/13)"
   }
 ]
