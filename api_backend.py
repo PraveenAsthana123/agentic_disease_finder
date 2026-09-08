@@ -47362,6 +47362,36 @@ async def hereditary_chorea_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-myoclonus-atlas/overview")
+async def hereditary_myoclonus_atlas_overview():
+    """Hereditary-Myoclonus-Atlas — 8-gene PME aggregate overview (320 patients, seeds 2086-2093)."""
+    try:
+        import scripts.hereditary_myoclonus_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myoclonus-atlas/breakdown")
+async def hereditary_myoclonus_atlas_breakdown():
+    """Hereditary-Myoclonus-Atlas per-gene breakdown (CSTB/EPM2A/NHLRC1/SCARB2/GOSR2/KCNC1/PRICKLE1/KCTD7)."""
+    try:
+        import scripts.hereditary_myoclonus_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myoclonus-atlas/definitions")
+async def hereditary_myoclonus_atlas_definitions():
+    """Hereditary-Myoclonus-Atlas gene definitions, glossary and treatment protocols."""
+    try:
+        import scripts.hereditary_myoclonus_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -18039,5 +18039,30 @@
     "portal_page": "/hereditary-chorea-atlas",
     "description": "Complete 8-Gene Hereditary Chorea Atlas \u2014 HTT (Huntington Disease), VPS13A (Chorea-Acanthocytosis), PANK2 (PKAN/NBIA1), WDR45 (BPAN/NBIA5), FTL (Neuroferritinopathy), NKX2-1 (Benign Hereditary Chorea), JPH3 (HDL2), TBP (SCA17/HDL4)",
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-myoclonus-atlas",
+    "name": "Hereditary-Myoclonus-Atlas",
+    "slug": "hereditary-myoclonus-atlas",
+    "status": "built",
+    "category": "hereditary-movement-disorder-atlas",
+    "genes": [
+      "CSTB",
+      "EPM2A",
+      "NHLRC1",
+      "SCARB2",
+      "GOSR2",
+      "KCNC1",
+      "PRICKLE1",
+      "KCTD7"
+    ],
+    "patients": 320,
+    "seeds": "2086-2093",
+    "api_routes": [
+      "/api/hereditary-myoclonus-atlas/overview",
+      "/api/hereditary-myoclonus-atlas/breakdown",
+      "/api/hereditary-myoclonus-atlas/definitions"
+    ],
+    "description": "Hereditary-Myoclonus-Atlas Complete-8-Gene-Progressive-Myoclonic-Epilepsy-PME-Atlas CSTB-98aa-21q22.3-AR-EPM1-Unverricht-Lundborg-Dodecamer-Repeat->30-Piracetam-Level-A-NOT-Fatal EPM2A-331aa-6q24.3-AR-Lafora-Disease-Type-1-Laforin-Skin-Biopsy-PATHOGNOMONIC-Fatal NHLRC1-395aa-6p22.3-AR-Lafora-Type-2-Malin-Mediterranean-Clinically-Identical-EPM2A SCARB2-478aa-4q21.1-AR-EPM4-AMRF-Renal-Failure-PATHOGNOMONIC-Avoid-NSAIDs GOSR2-235aa-17q21.32-AR-EPM6-Nord-Disease-Scoliosis-100pct-PATHOGNOMONIC KCNC1-585aa-11p15.1-AD-EPM7-R320H-Finnish-Baltic-Giant-SEPs-PATHOGNOMONIC PRICKLE1-831aa-12q12-AR-EPM1B-ULD-Like-Slower-Progression KCTD7-289aa-12q14.2-AR-EPM3-Infantile-1-2yr-EARLIEST-PME-Severe-ID 320-Patient-Aggregate-8x40-seeds-2086-2093 / 3-endpoints-/api/hereditary-myoclonus-atlas/overview|breakdown|definitions-verified-200 / expert_dashboards.json-count-1136-1137 / SiteNav-wired-after-Hereditary-Chorea-Atlas / Registered-2026-09-08"
   }
 ]
