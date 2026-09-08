@@ -18334,5 +18334,30 @@
     ],
     "category": "Hereditary Myotonic Disorder & Periodic Paralysis Atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-sarcoglycanopathy-lgmd-atlas",
+    "name": "Hereditary-Sarcoglycanopathy-LGMD-Atlas Complete-8-Gene-Sarcoglycanopathy-LGMD-Spectrum-Atlas SGCA-387aa-17q21.33-AR-LGMD-R3-alpha-Sarcoglycanopathy-CK-10-70x-Childhood-Gene-Therapy-rAAVrh74-Phase2 SGCB-318aa-4q12-AR-LGMD-R4-C283Y-Founder-N-Africa-Middle-East SGCG-291aa-13q12.12-AR-LGMD-R5-MOST-SEVERE-del521T-N-Africa-CK-20-100x-CARDIAC-DCM SGCD-290aa-5q33.3-AR-LGMD-R6-DCM-100pct-PATHOGNOMONIC-DCM-May-Precede-Weakness FKRP-495aa-19q13.32-AR-LGMD-R9-Most-Common-AR-LGMD-UK-L276I-CARDIAC-DCM-30-40pct-Calf-Hypertrophy-85pct ANO5-913aa-11p14.3-AR-LGMD-R12-QUADRICEPS-SPARED-PATHOGNOMONIC-DDx-DYSF-NO-Cardiac TRIM32-653aa-9q33.1-AR-LGMD-R8-SARCOTUBULAR-AGGREGATES-EM-PATHOGNOMONIC-Facial-Weakness TCAP-167aa-17q12-AR-LGMD-R7-Telethonin-DCM-RIMMED-VACUOLES-Rarest 320-Patient-Aggregate-8x40-seeds-2182-2189",
+    "slug": "hereditary-sarcoglycanopathy-lgmd-atlas",
+    "status": "built",
+    "genes": [
+      "SGCA",
+      "SGCB",
+      "SGCG",
+      "SGCD",
+      "FKRP",
+      "ANO5",
+      "TRIM32",
+      "TCAP"
+    ],
+    "seed_base": 2182,
+    "n_patients": 320,
+    "api_endpoints": [
+      "/api/hereditary-sarcoglycanopathy-lgmd-atlas/overview",
+      "/api/hereditary-sarcoglycanopathy-lgmd-atlas/breakdown",
+      "/api/hereditary-sarcoglycanopathy-lgmd-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-sarcoglycanopathy-lgmd-atlas",
+    "registered": "2026-09-08"
   }
 ]

@@ -47722,6 +47722,36 @@ async def hereditary_myotonic_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-sarcoglycanopathy-lgmd-atlas/overview")
+async def hereditary_sarcoglycanopathy_lgmd_atlas_overview():
+    """Hereditary-Sarcoglycanopathy-LGMD-Atlas — 8-gene aggregate overview (320 patients, seeds 2182-2189)."""
+    try:
+        import scripts.hereditary_sarcoglycanopathy_lgmd_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-sarcoglycanopathy-lgmd-atlas/breakdown")
+async def hereditary_sarcoglycanopathy_lgmd_atlas_breakdown():
+    """Hereditary-Sarcoglycanopathy-LGMD-Atlas per-gene breakdown (SGCA/SGCB/SGCG/SGCD/FKRP/ANO5/TRIM32/TCAP)."""
+    try:
+        import scripts.hereditary_sarcoglycanopathy_lgmd_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-sarcoglycanopathy-lgmd-atlas/definitions")
+async def hereditary_sarcoglycanopathy_lgmd_atlas_definitions():
+    """Hereditary-Sarcoglycanopathy-LGMD-Atlas gene definitions, IHC patterns, cardiac surveillance, DDx table."""
+    try:
+        import scripts.hereditary_sarcoglycanopathy_lgmd_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
