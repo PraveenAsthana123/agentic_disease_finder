@@ -18269,5 +18269,31 @@
       "TOE1"
     ],
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-dystonia-atlas",
+    "name": "Hereditary-Dystonia-Atlas Complete-8-Gene-Hereditary-Dystonia-Atlas TOR1A-332aa-9q34.11-AD-DYT1 SGCE-437aa-7q21.3-AD-PatImp-DYT11 GCH1-250aa-14q22.2-AD-DRD-DYT5a TH-528aa-11p15.5-AR-DRD-DYT5b KMT2B-3969aa-19q13.12-AD-DYT28 THAP1-213aa-8p21.3-AD-DYT6 ATP1A3-1013aa-19q13.2-AD-AHC-CAPOS-RDP ANO3-913aa-11p14.3-AD-DYT24 320-Patient-Aggregate-8x40-seeds-2158-2165",
+    "status": "built",
+    "script": "scripts/hereditary_dystonia_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-dystonia-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-dystonia-atlas/overview",
+      "/api/hereditary-dystonia-atlas/breakdown",
+      "/api/hereditary-dystonia-atlas/definitions"
+    ],
+    "seeds": "2158-2165",
+    "n_patients": 320,
+    "genes": [
+      "TOR1A",
+      "SGCE",
+      "GCH1",
+      "TH",
+      "KMT2B",
+      "THAP1",
+      "ATP1A3",
+      "ANO3"
+    ],
+    "category": "hereditary-movement-disorder",
+    "registered": "2026-09-08"
   }
 ]

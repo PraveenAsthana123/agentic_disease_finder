@@ -47632,6 +47632,36 @@ async def hereditary_pch_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-dystonia-atlas/overview")
+async def hereditary_dystonia_atlas_overview():
+    """Hereditary-Dystonia-Atlas — 8-gene aggregate overview (320 patients, seeds 2158-2165)."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystonia-atlas/breakdown")
+async def hereditary_dystonia_atlas_breakdown():
+    """Hereditary-Dystonia-Atlas per-gene breakdown (TOR1A/SGCE/GCH1/TH/KMT2B/THAP1/ATP1A3/ANO3)."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-dystonia-atlas/definitions")
+async def hereditary_dystonia_atlas_definitions():
+    """Hereditary-Dystonia-Atlas gene definitions, pharmacology, contraindications and DDx table."""
+    try:
+        import scripts.hereditary_dystonia_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

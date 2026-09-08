@@ -1,1004 +1,1484 @@
 #!/usr/bin/env python3
-"""Hereditary-Dystonia-Atlas — Complete 8-Gene Hereditary Dystonia Atlas.
+"""Hereditary-Dystonia-Atlas — Complete 8-Gene Hereditary Dystonia Atlas
+(DYT-TOR1A/DYT1 · DYT-SGCE/DYT11 · DRD-GCH1/DYT5a · DRD-TH/DYT5b ·
+ DYT-KMT2B/DYT28 · DYT-THAP1/DYT6 · ATP1A3-AHC/RDP · DYT-ANO3/DYT24).
 
-TOR1A   (Torsin 1A; 332 aa; 9q34.11; AD;
-          DYT-TOR1A (DYT1) — Early-Onset Generalized Dystonia;
-          c.904_906delGAG (p.Glu302del) 90%+ of cases; penetrance 30%;
-          onset <26 yr; GPi-DBS highly responsive; anticholinergics 1st line;
-          seed SEED_BASE+0).
-THAP1   (THAP domain containing protein 1 / THAP1; 213 aa; 8p11.21; AD;
-          DYT-THAP1 (DYT6) — Mixed-Onset Primary Dystonia;
-          cranial-cervical-laryngeal spread; onset 5-46 yr;
-          botulinum toxin + DBS; reduced penetrance;
-          seed SEED_BASE+1).
-GCH1    (GTP cyclohydrolase 1; 250 aa; 14q22.2; AD;
-          DYT-GCH1 (DRD/Segawa disease) — Dopa-Responsive Dystonia;
-          MIRACULOUS levodopa response PATHOGNOMONIC; diurnal fluctuation;
-          female predominance 3:1; phenylalanine loading test;
-          seed SEED_BASE+2).
-ATP1A3  (ATPase Na+/K+ alpha-3 subunit; 1013 aa; 19q13.2; AD;
-          ATP1A3-related disorders — AHC/RDP/CAPOS triad;
-          AHC (alternating hemiplegia of childhood); RDP (rapid-onset dystonia-parkinsonism);
-          CAPOS (cerebellar-areflexia-pes cavus-optic atrophy-SNHL);
-          seed SEED_BASE+3).
-KMT2B   (Lysine methyltransferase 2B / MLL4; 2715 aa; 19q13.12; AD;
-          DYT-KMT2B (DYT28) — Childhood-Onset Complex Dystonia;
-          oculomotor abnormalities; mild ID; GPi-DBS highly responsive;
-          de novo dominant; microdeletion detected only by CMA;
-          seed SEED_BASE+4).
-ADCY5   (Adenylate cyclase 5; 1261 aa; 3q21.3; AD;
-          ADCY5-related hyperkinetic movement disorder;
-          childhood onset; nocturnal dyskinesia; caffeine-sensitive;
-          clonazepam + acetazolamide; facial hypotonia;
-          seed SEED_BASE+5).
-ANO3    (Anoctamin 3; 981 aa; 11p14.3; AD;
-          DYT-ANO3 (DYT24) — Craniocervical Adult-Onset Focal Dystonia;
-          onset 30-40 yr; cervical >> cranial; botulinum toxin responsive;
-          DBS emerging; tremor prominent;
-          seed SEED_BASE+6).
-GNAL    (G protein subunit alpha L / Golf; 381 aa; 18p11.21; AD;
-          DYT-GNAL (DYT25) — Primary Cranial / Spasmodic Dysphonia Dystonia;
-          adult onset 40s; isolated cranial-laryngeal; botulinum toxin mainstay;
-          striatal dopamine signalling; NOT DYT1;
-          seed SEED_BASE+7).
-320-patient aggregate cohort (8 × 40, seeds 2070-2077).
+TOR1A   (Torsin-1A; 332 aa; 9q34.11; AD;
+         DYT-TOR1A / DYT1 — most common genetic generalised dystonia;
+         GAG deletion (c.907_909delGAG) removes Glu302/303; pathognomonic variant;
+         seed SEED_BASE+0).
+SGCE    (ε-Sarcoglycan; 437 aa; 7q21.3; AD — paternal imprint;
+         DYT-SGCE / Myoclonus-Dystonia (M-D) / DYT11;
+         MYOCLONUS PREDOMINATES over dystonia — lightning-fast jerks;
+         ALCOHOL RESPONSIVE (temporary; ethanol test has diagnostic utility);
+         seed SEED_BASE+1).
+GCH1    (GTP Cyclohydrolase I; 250 aa; 14q22.2; AD;
+         DRD / DYT-GCH1 / DYT5a — Dopa-Responsive Dystonia (Segawa syndrome);
+         L-DOPA CURATIVE — MUST try before botox in any childhood dystonia with diurnal variation;
+         DIURNAL VARIATION (better morning, worse evening) PATHOGNOMONIC;
+         seed SEED_BASE+2).
+TH      (Tyrosine Hydroxylase; 528 aa; 11p15.5; AR;
+         DRD / DYT-TH / DYT5b — severe infantile form of DRD;
+         L-DOPA responsive at lower doses; infantile encephalopathy phenotype;
+         seed SEED_BASE+3).
+KMT2B   (Lysine Methyltransferase 2B; 3969 aa; 19q13.12; AD (90% de novo);
+         DYT-KMT2B / DYT28 — childhood onset focal dystonia → generalises;
+         INTELLECTUAL DISABILITY 40%; DBS-GPi HIGHLY EFFECTIVE even with ID;
+         seed SEED_BASE+4).
+THAP1   (THAP domain-containing protein 1; 213 aa; 8p21.3; AD;
+         DYT-THAP1 / DYT6 — young adult onset;
+         LARYNGEAL / CRANIAL INVOLVEMENT PATHOGNOMONIC;
+         Ashkenazi Jewish founder enrichment;
+         seed SEED_BASE+5).
+ATP1A3  (Na+/K+-ATPase alpha-3; 1013 aa; 19q13.2; AD (de novo);
+         AHC (Alternating Hemiplegia of Childhood) / CAPOS / RDP;
+         FEVER = ABSOLUTE trigger for AHC attacks — FEVER PROTOCOL MANDATORY;
+         FLUNARIZINE first-line for AHC episodes;
+         seed SEED_BASE+6).
+ANO3    (Anoctamin-3; 913 aa; 11p14.3; AD;
+         DYT-ANO3 / DYT24 — adult onset craniocervical dystonia;
+         CRANIOCERVICAL + TREMULOUS DYSTONIA PATHOGNOMONIC (tremor distinguishes from THAP1);
+         Botulinum toxin first-line; DBS-GPi considered;
+         seed SEED_BASE+7).
+320-patient aggregate cohort (8 × 40, seeds 2158-2165).
 """
 
 import random
 
-SEED_BASE = 2070
+SEED_BASE = 2158
 
-DYT_GENES = [
-    # -- TOR1A — DYT-TOR1A (DYT1) --------------------------------------------------
+DYSTONIA_GENES = [
+    # -- TOR1A — DYT1 / DYT-TOR1A -----------------------------------------------
     {
         "gene": "TOR1A",
         "alt_name": (
-            "TOR1A (TOR1A-332aa-9q34.11 / AD — DYT-TOR1A-DYT1-Early-Onset-Generalized-Dystonia — "
-            "c.904_906delGAG-p.Glu302del-90pct-Cases — Penetrance-30pct-NOT-100pct — "
-            "GPi-DBS-Highly-Responsive — Anticholinergics-1st-Line — Onset-<26yr)"
+            "TOR1A (TOR1A-332aa-9q34.11 / AD — DYT-TOR1A-DYT1-Oppenheim-Dystonia — "
+            "GAG-DELETION-Glu302303-PATHOGNOMONIC-Single-Variant-95pct — "
+            "MOST-COMMON-GENETIC-GENERALISED-DYSTONIA — "
+            "DBS-GPi-HIGHLY-EFFECTIVE->70pct-Improvement — "
+            "PENETRANCE-30-40pct-Incomplete)"
         ),
         "protein": (
             "TOR1A -- 9q34.11 AD -- TOR1A-332aa -- "
-            "Torsin-1A-AAA-Plus-ATPase-ER-Lumen-Nuclear-Envelope -- "
-            "DYT-TOR1A-DYT1-Early-Onset-Primary-Generalised-Dystonia -- "
-            "c.904_906delGAG-p.Glu302del-3bp-deletion-exon5-loss-glutamic-acid-302 -- "
-            "Penetrance-30pct-NOT-fully-penetrant-modifier-genes-influence -- "
-            "Autosomal-Dominant-Haploinsufficiency-Dominant-Negative -- "
-            "Onset-<26yr-leg-foot-arm-CLASSIC-sequence-generalises -- "
-            "GPi-DBS-Globus-Pallidus-Internus-Highly-Responsive-Axial-Sparing -- "
-            "Anticholinergics-Trihexyphenidyl-1st-Line-High-Dose"
+            "Torsin-1A-AAA+-ATPase-Superfamily-ER-Lumen-Nuclear-Envelope-Torsion-Function -- "
+            "DYT-TOR1A-Oppenheim-Dystonia-DYT1-OMIM-128100 -- "
+            "GAG-Deletion-c907_909delGAG-Removes-Glu302-or-Glu303-PATHOGNOMONIC-SINGLE-VARIANT-IN-95pct -- "
+            "Most-Common-Genetic-Generalised-Dystonia-Worldwide-1-in-3000-Ashkenazi-Jewish -- "
+            "Childhood-Onset-6-26yr-Lower-Limb-FIRST-PATHOGNOMONIC-Then-Spreads -- "
+            "Incomplete-Penetrance-30-40pct-Most-Carriers-Unaffected -- "
+            "DBS-GPi-Highly-Effective->70pct-Improvement-Even-Severe-Cases -- "
+            "Trihexyphenidyl-HIGH-DOSE-Anticholinergic-Trial-MANDATORY-Before-DBS -- "
+            "Torsin-1A-ER-Lumen-AAA-ATPase-LAP1-LULL1-Cofactors-Nuclear-Pore-Complex -- "
+            "9q34.11"
         ),
         "locus": "9q34.11",
         "protein_size": "332 aa",
         "inheritance": (
-            "AD (autosomal dominant) — TOR1A haploinsufficiency / dominant-negative; "
-            "Penetrance: 30% only (NOT 100%); major clinical implication — carrier ≠ affected; "
-            "Ashkenazi Jewish founder: c.904_906delGAG — 1 in 2,000 AJ; "
-            "Non-AJ prevalence: 1 in 10,000-20,000; "
-            "90%+ of pathogenic TOR1A variants = single delGAG deletion; "
-            "Siblings at risk: 50% inherit, 30% of those → affected = 15% sibling risk; "
-            "Modifier: ΔGAG homozygous → higher penetrance; TOR1B modifier locus 9q34"
+            "AD (autosomal dominant); incomplete penetrance 30-40%; "
+            "GAG deletion (c.907_909delGAG) = 95%+ of DYT-TOR1A worldwide; "
+            "sequencing alone may miss complex indels — long-read sequencing in negative cases; "
+            "de novo rare (<5%); familial mutation in most; "
+            "founder effect Ashkenazi Jewish (1 in 2000-3000 carriers); "
+            "heterozygous = risk; homozygous = lethal (embryonic); "
+            "modifier genes proposed (HDAC) — environmental triggers uncertain"
         ),
-        "age_of_onset": (
-            "Onset <26 yr (MANDATORY for DYT-TOR1A diagnosis); "
-            "Classic onset 5-28 yr (peak 11-15 yr); "
-            "Childhood-onset: foot/leg → arm → trunk → generalised within 5 years; "
-            "Adult-onset: VERY rare in TOR1A — consider THAP1/KMT2B/other; "
-            "Onset in leg during walking PATHOGNOMONIC; "
-            "Task-specific onset: writer's cramp → generalises in TOR1A; "
-            "Facial/pharyngeal spared in DYT1 (contrast DYT6/THAP1); "
-            "After age 26: generalisation much less common; prognosis improves"
-        ),
-        "key_biomarker": (
-            "Genetic: TOR1A sequencing — delGAG detected; "
-            "MRI brain: NORMAL (essential to exclude secondary); "
-            "No cerebellar signs, no parkinsonism, no myoclonus (pure dystonia); "
-            "DATscan: NORMAL (distinguishes from dystonia-parkinsonism); "
-            "Penetrance testing: positive genetic test does NOT predict affectedness; "
-            "NMO, copper, ceruloplasmin, thyroid: exclude secondary; "
-            "EEG normal (no epilepsy); EMG: overflow co-contraction pattern"
-        ),
+        "age_of_onset": "Childhood 6-26 yr (median 12 yr); lower limb onset first",
         "pathognomonic": (
-            "ONSET IN LEG/FOOT UNDER AGE 26 = TOR1A until proven otherwise; "
-            "DELGAG SINGLE DELETION = 90%+ of DYT1 pathogenic variants — targeted test FIRST; "
-            "PENETRANCE 30% = positive test in asymptomatic sibling does NOT mean they will develop dystonia; "
-            "FACE AND PHARYNX SPARED = critical DDx from DYT6/THAP1 (cranial involvement); "
-            "GPi-DBS HIGHLY EFFECTIVE = 70-90% improvement with bilateral GPi; "
-            "GENERALISED DYSTONIA IN CHILD/TEEN = TOR1A + KMT2B panel MANDATORY first; "
-            "NORMAL MRI + NORMAL DATscan = primary dystonia confirmed"
+            "GAG DELETION in TOR1A is the PATHOGNOMONIC VARIANT — 95%+ of DYT-TOR1A; "
+            "LOWER LIMB ONSET first (foot inversion/plantar flexion) then spreads to trunk/arms; "
+            "SUSTAINED TORSIONAL MOVEMENTS distinguishing from tremor or myoclonus; "
+            "Diurnal variation ABSENT (distinguishes from DRD/GCH1 — critical DDx); "
+            "Normal cognitive function — cognition preserved in uncomplicated DYT1; "
+            "MRI brain normal — structural neuroimaging does not confirm; "
+            "Penetrance 30-40%: family members with same variant may be unaffected; "
+            "Action-induced dystonia worsens with specific movement then spills over; "
+            "Oromandibular and cranial involvement RARE in DYT1 (unlike THAP1 or KMT2B)"
         ),
         "treatment": (
-            "1st line: Trihexyphenidyl (high-dose anticholinergic) — 6-80 mg/day; "
-            "tolerated better in children (titrate slowly to minimise dry mouth/confusion); "
-            "Baclofen: oral or intrathecal (ITB) for generalised; "
-            "Benzodiazepines: clonazepam adjunct; "
-            "Botulinum toxin A: focal bothersome muscle group — useful for writer's cramp; "
-            "GPi-DBS: MOST EFFECTIVE — bilateral GPi; 70-90% improvement; "
-            "DBS response predicts: young age at surgery, shorter duration, no fixed deformity; "
-            "NOT levodopa-responsive (contrast DYT-GCH1); "
-            "NOT tetrabenazine (worsens primary dystonia); "
-            "Genetic counselling: penetrance 30% — counsel asymptomatic relatives carefully"
+            "FIRST-LINE PHARMACOLOGICAL: Trihexyphenidyl (benztropine/THP) — HIGH DOSE titrated; "
+            "start 1-2 mg/day → target 20-30 mg/day in children; monitor for dry mouth, urinary retention; "
+            "CHILDREN tolerate high doses better than adults; "
+            "SECOND-LINE: Tetrabenazine (VMAT2 inhibitor) — monoamine depletion; "
+            "risk depression and parkinsonism — monitor; "
+            "Clonazepam / diazepam — adjunct for task-specific relief; "
+            "Baclofen oral or INTRATHECAL for severe generalised; "
+            "SURGERY — DBS-GPi: HIGHLY EFFECTIVE (>70% BFMDRS improvement); "
+            "DBS-GPi first-line surgery for generalised DYT-TOR1A with functional impairment; "
+            "Bilateral GPi targets; programming key to outcome; "
+            "DBS efficacy better the younger the implant; "
+            "BOTULINUM TOXIN: for focal involvement (cervical, writer's cramp) as adjunct; "
+            "SENSORY TRICK (geste antagoniste): many patients have transient relief with touch — exploitable"
         ),
-        "critical_flags": [
-            "ONSET-LEG-FOOT-UNDER-26yr-PATHOGNOMONIC-DYT1",
-            "PENETRANCE-30pct-NOT-100pct-POSITIVE-TEST-NEQV-DISEASE",
-            "DELGAG-TARGETED-TEST-FIRST-90pct-CASES",
-            "GPi-DBS-70-90pct-IMPROVEMENT-HIGHLY-EFFECTIVE",
-            "FACE-PHARYNX-SPARED-DDx-DYT6-THAP1",
-            "NOT-LEVODOPA-RESPONSIVE-CONTRAST-DRD-GCH1",
-            "NORMAL-MRI-NORMAL-DATSCAN-PRIMARY-DYSTONIA",
-            "ASHKENAZI-JEWISH-FOUNDER-1-IN-2000",
-            "ANTICHOLINERGIC-TRIHEXYPHENIDYL-HIGH-DOSE-FIRST-LINE",
-            "TETRABENAZINE-WORSENS-PRIMARY-DYSTONIA-AVOID",
+        "contraindications": (
+            "AVOID DOPAMINE BLOCKERS (haloperidol, metoclopramide, chlorpromazine): "
+            "may worsen DYT1 dystonia and precipitate acute dystonic reaction; "
+            "CAUTION LEVODOPA — dystonia worsens in TOR1A (unlike GCH1 which responds); "
+            "L-DOPA TRIAL IS NOT RECOMMENDED as primary treatment for DYT1; "
+            "AVOID HIGH-DOSE ANTICHOLINERGICS IN ELDERLY: urinary retention, cognitive decline; "
+            "TETRABENAZINE: avoid in depression — suicide risk; "
+            "DO NOT MISTAKE FOR CONVERSION DISORDER: imaging normal but real organic condition; "
+            "AVOID NECK SURGERY without neurological review (cervical dystonia may require DBS not surgery)"
+        ),
+        "monitoring": (
+            "BFMDRS (Burke-Fahn-Marsden Dystonia Rating Scale): at diagnosis + 6-monthly; "
+            "TRIHEXYPHENIDYL ESCALATION: monthly visits during titration; "
+            "DBS PROGRAMMING: 3-monthly post-implant first year, then 6-monthly; "
+            "OPHTHALMOLOGY: if high-dose anticholinergic (intraocular pressure); "
+            "SWALLOWING: SLT assessment if oropharyngeal involvement; "
+            "SCHOOL/OCCUPATIONAL THERAPY: for hand/limb involvement — adaptive aids; "
+            "TOR1A GENETIC COUNSELLING: 50% offspring risk; penetrance 30-40% (most carriers unaffected); "
+            "FAMILY CASCADE: offer testing to first-degree relatives — penetrance counselling; "
+            "PSYCHIATRIC: depression in chronic dystonia — annual PHQ-9; "
+            "DBS BATTERY: monitor impedance and battery life 6-monthly (10-15 year lifespan typical)"
+        ),
+        "lifecycle": [
+            "Childhood (6-12 yr): foot inversion onset, misdiagnosis as orthopaedic common",
+            "Adolescence (12-18 yr): spread to trunk/arms, school impact, THP trial",
+            "Young adult (18-30 yr): DBS evaluation if functional impairment",
+            "Adult (30-50 yr): DBS maintenance, battery replacement, programming adjustments",
+            "Mid-adult (50+ yr): hardware maintenance, cognitive effects of anticholinergics monitored",
+            "Family planning: 50% transmission risk; penetrance counselling; prenatal testing available",
+        ],
+        "concepts": [
+            "DYT1 / DYT-TOR1A: most common genetic generalised dystonia worldwide",
+            "GAG deletion: 3-nucleotide deletion removing Glu302 or Glu303 from Torsin-1A",
+            "Penetrance 30-40%: most TOR1A carriers are unaffected (modifier genes)",
+            "Lower limb onset: pathognomonic for DYT1 (foot/ankle first)",
+            "DBS-GPi: >70% improvement in BFMDRS — gold-standard surgical treatment",
+            "No diurnal variation: distinguishes DYT1 from DRD (GCH1/TH) — critical DDx",
+            "Trihexyphenidyl: high-dose anticholinergic — tolerated better by children",
+            "Normal MRI: structural neuroimaging cannot confirm or exclude DYT1",
+            "Sensory trick (geste antagoniste): transient dystonia relief with touch",
+            "Action-induced: dystonia worse with movement, may spill over to rest",
+            "No cognitive involvement: pure motor disorder (unlike KMT2B 40% ID)",
+            "Tetrabenazine caution: depression risk — baseline mood assessment required",
+            "Ashkenazi founder: 1 in 2000-3000 Ashkenazi Jewish carry GAG deletion",
+            "Bilateral DBS: both GPi electrodes — response better than unilateral",
+            "Early DBS: younger age at implant → better dystonia response",
+        ],
+        "thresholds": [
+            "BFMDRS >20: consider DBS-GPi referral if pharmacology inadequate",
+            "Trihexyphenidyl dose >4 mg without effect in 4 weeks: escalate or switch strategy",
+            "Age <7 years: avoid high-dose anticholinergics (cognitive effects in development)",
+            "DBS battery voltage <2.8 V: plan replacement within 3 months",
+            "Depression PHQ-9 >10: pause tetrabenazine; psychiatric referral",
+            "Penetrance 30-40%: counsel families that most carriers will not develop dystonia",
+        ],
+        "standards": [
+            "ESDA European Dystonia Consortium guidelines 2021",
+            "EFNS/MDS-ES recommendations for DBS in dystonia",
+            "BFMDRS Burke-Fahn-Marsden Dystonia Rating Scale (validated outcome measure)",
+            "ACMG-AMP-2015 variant classification",
+            "MDS Task Force dystonia classification 2013",
+            "DBS programming guidelines — Neuromodulation Society",
+        ],
+        "etiologies": [
+            {"type": "TOR1A GAG deletion het — DYT1 Generalised", "pct": 62},
+            {"type": "TOR1A GAG deletion het — DYT1 Focal (reduced penetrance phenotype)", "pct": 18},
+            {"type": "TOR1A Atypical/Missense — Non-GAG variant", "pct": 8},
+            {"type": "TOR1A GAG deletion + modifier — Severe Early-Onset", "pct": 8},
+            {"type": "Phenocopy (negative TOR1A, DYT1 clinical)", "pct": 4},
+        ],
+        "seizure_types": [
+            {"type": "Generalised Dystonia (trunk + limbs)", "pct": 72},
+            {"type": "Multifocal Dystonia (2-3 body regions)", "pct": 45},
+            {"type": "Focal Limb Dystonia (single limb)", "pct": 32},
+            {"type": "Axial Dystonia (trunk predominant)", "pct": 28},
+            {"type": "Dystonic Storm (status dystonicus)", "pct": 5},
+        ],
+        "triggers": [
+            {"trigger": "Voluntary Movement / Action", "pct": 95},
+            {"trigger": "Stress / Anxiety", "pct": 68},
+            {"trigger": "Fatigue", "pct": 62},
+            {"trigger": "Sleep Deprivation", "pct": 48},
+            {"trigger": "Caffeine / Stimulants", "pct": 35},
+            {"trigger": "Intercurrent Illness (fever)", "pct": 28},
+            {"trigger": "Hormonal Changes (menstrual)", "pct": 22},
+            {"trigger": "Missed Medication", "pct": 45},
+        ],
+        "references": [
+            "Ozelius LJ 1997 Nat Genet (TOR1A GAG deletion discovery)",
+            "Albanese A 2013 Mov Disord (dystonia classification MDS)",
+            "Kupsch A 2006 NEJM (DBS-GPi for DYT1 RCT)",
+            "Vidailhet M 2005 NEJM (DBS bilateral GPi)",
+            "Jankovic J 2013 Lancet Neurol (dystonia therapeutics review)",
+            "Siokas V 2019 Front Neurol (TOR1A penetrance genetics)",
         ],
     },
-
-    # -- THAP1 — DYT-THAP1 (DYT6) --------------------------------------------------
+    # -- SGCE — DYT11 / Myoclonus-Dystonia --------------------------------------
     {
-        "gene": "THAP1",
+        "gene": "SGCE",
         "alt_name": (
-            "THAP1 (THAP1-213aa-8p11.21 / AD — DYT-THAP1-DYT6-Mixed-Onset-Primary-Dystonia — "
-            "Cranial-Cervical-Laryngeal-Spread-PATHOGNOMONIC — "
-            "Botulinum-Toxin-A-1st-Line-Focal — DBS-Generalised — "
-            "Onset-5-46yr-Bimodal)"
+            "SGCE (SGCE-437aa-7q21.3 / AD-Paternal-Imprint — DYT-SGCE-DYT11-Myoclonus-Dystonia — "
+            "MYOCLONUS-LIGHTNING-JERKS-PREDOMINATE-PATHOGNOMONIC — "
+            "ALCOHOL-RESPONSIVE-Diagnostic-Not-Treatment — "
+            "PATERNAL-IMPRINTING-Maternal-Allele-Silent)"
         ),
         "protein": (
-            "THAP1 -- 8p11.21 AD -- THAP1-213aa -- "
-            "THAP-Domain-Zinc-Finger-Transcription-Factor-E2F-Target-Gene-Repressor -- "
-            "DYT-THAP1-DYT6-Mixed-Primary-Dystonia -- "
-            "Cranial-Cervical-Arm-Onset-Laryngeal-Spread -- "
-            "Reduced-Penetrance-60-pct-Modifier-Genes -- "
-            "Autosomal-Dominant-Loss-of-Function -- "
-            "Onset-5-46yr-Bimodal-Distribution -- "
-            "Botulinum-Toxin-A-Focal-1st-Line -- "
-            "GPi-DBS-Generalised-Forms"
+            "SGCE -- 7q21.3 AD-paternal-imprint -- SGCE-437aa -- "
+            "Epsilon-Sarcoglycan-Dystroglycan-Complex-Muscle-Neuronal-Scaffold -- "
+            "DYT-SGCE-Myoclonus-Dystonia-DYT11-OMIM-159900 -- "
+            "PATERNAL-IMPRINT-Maternal-SGCE-Allele-Silenced-Paternal-Allele-Expressed -- "
+            "MYOCLONUS-PREDOMINATES-Lightning-Fast-Millisecond-Jerks-Arms-Neck-Trunk -- "
+            "Dystonia-Cervical-Writer-Cramp-Milder-Component -- "
+            "ALCOHOL-TRANSIENT-SUPPRESSION-Ethanol-1-drink-Relieves-Myoclonus-50-80pct -- "
+            "Psychiatric-Comorbidity-OCD-30pct-Depression-50pct-Anxiety -- "
+            "SSRI-Risk-Serotonin-Myoclonus-Aggravation-MONITOR -- "
+            "Clonazepam-Alcohol-Same-GABA-Mechanism-Explains-Ethanol-Response -- "
+            "7q21.3"
         ),
-        "locus": "8p11.21",
-        "protein_size": "213 aa",
+        "locus": "7q21.3",
+        "protein_size": "437 aa",
         "inheritance": (
-            "AD (autosomal dominant) — THAP1 loss of function; "
-            "Penetrance: ~60% (reduced, not as low as DYT1's 30%); "
-            "Prevalence: 1 in 50,000-100,000; "
-            "Bimodal onset: childhood (10-20 yr) and adult (30-50 yr); "
-            "De novo variants account for ~20% of cases; "
-            "Intragenic and splice-site mutations predominate; "
-            "THAP domain (zinc finger, exon 1-2): most pathogenic variants cluster here; "
-            "Coiled-coil domain mutations: milder phenotype"
+            "AD (autosomal dominant) with PATERNAL IMPRINTING; "
+            "maternal SGCE allele is epigenetically silenced — only paternal copy expressed; "
+            "therefore: mutation on PATERNAL chromosome → affected child; "
+            "mutation on MATERNAL chromosome → UNAFFECTED (silenced); "
+            "KEY: test parent of origin before counselling; "
+            "50% offspring risk IF inherited from father; 0% if from mother; "
+            "de novo mutations: 30-40% (apparent sporadic — maternal silencing may masquerade)"
         ),
-        "age_of_onset": (
-            "Bimodal: childhood (10-20 yr) and adult (30-50 yr); "
-            "Overall range: 5-46 yr; "
-            "Arm/hand onset: most common (writer's cramp, instrument dystonia); "
-            "Cranial onset: blepharospasm, oromandibular dystonia, spasmodic dysphonia; "
-            "Cervical onset: torticollis (20%); "
-            "Generalisation: 50% with childhood onset generalise; "
-            "Adult-onset: typically remains focal or segmental; "
-            "Laryngeal involvement: 50-70% — DISTINGUISHES from DYT1; "
-            "Spasmodic dysphonia: voice breaks, strained-strangled quality"
-        ),
-        "key_biomarker": (
-            "Genetic: THAP1 sequencing — coding region + splice sites; "
-            "THAP domain variants: most pathogenic; "
-            "MRI brain: NORMAL; "
-            "DATscan: NORMAL (no parkinsonism); "
-            "CSF BH4/pterins: NORMAL (contrast DRD/GCH1); "
-            "EMG: overflow, co-contraction; "
-            "Levodopa trial: POOR response (contrast GCH1/DRD); "
-            "Botulinum toxin response: GOOD for focal muscle groups"
-        ),
+        "age_of_onset": "Childhood 5-20 yr; myoclonus typically precedes dystonia",
         "pathognomonic": (
-            "CRANIAL-CERVICAL-LARYNGEAL SPREAD = hallmark of DYT-THAP1; critical DDx from DYT1 (face/pharynx spared in DYT1); "
-            "SPASMODIC DYSPHONIA (voice breaks) = 50-70% in THAP1 — uncommon in DYT1; "
-            "BIMODAL ONSET = childhood generalised OR adult focal/segmental; "
-            "REDUCED PENETRANCE 60% = positive test in asymptomatic relative does not guarantee disease; "
-            "THAP DOMAIN VARIANTS = highest pathogenicity — cluster in exon 1-2; "
-            "LEVODOPA POOR RESPONSE = distinguishes from DRD-GCH1 (levodopa MIRACULOUS in DRD); "
-            "NORMAL MRI + NORMAL DATSCAN = primary dystonia, NOT parkinson-plus"
+            "MYOCLONUS PREDOMINATES — lightning-fast (<100 ms) involuntary jerks of arms/neck/trunk; "
+            "Dystonia (cervical or upper limb) is milder secondary feature; "
+            "ALCOHOL RESPONSIVE: 1-2 units ethanol suppress myoclonus 50-80% temporarily; "
+            "ethanol test has DIAGNOSTIC utility (ethanol = GABA-A potentiator = same mechanism as clonazepam); "
+            "PATERNAL IMPRINTING: test parent of mutation to confirm paternal origin before counselling; "
+            "Psychiatric comorbidities PATHOGNOMONIC in some families (OCD 30%, depression 50%); "
+            "SSRI-aggravated myoclonus: SSRIs increase serotonin → worsen myoclonus in some patients; "
+            "EEG cortical correlate absent (subcortical/cortical mixed origin, unlike cortical myoclonus)"
         ),
         "treatment": (
-            "Focal dystonia: Botulinum toxin A (onabotulinumtoxinA / abobotulinumtoxinA); "
-            "Cervical dystonia: BoNT-A 200-500 MU abobo every 12 weeks; "
-            "Spasmodic dysphonia: BoNT-A laryngeal injection thyroarytenoid; "
-            "Blepharospasm: BoNT-A orbicularis oculi; "
-            "Generalised/segmental: Trihexyphenidyl + baclofen; "
-            "GPi-DBS: effective for generalised forms (less consistent than TOR1A); "
-            "STN-DBS: limited evidence; "
-            "Levodopa trial: always try to exclude DRD (GCH1/SPR) — poor response expected in THAP1; "
-            "Clonazepam: adjunct for anxiety-triggered worsening"
+            "FIRST-LINE: Clonazepam — reduces myoclonus via GABA-A (same mechanism as alcohol); "
+            "titrate 0.5-4 mg/day; sedation dose-limiting; "
+            "LEVETIRACETAM — second-line anti-myoclonic; well tolerated; "
+            "ALCOHOL: NOT a treatment — ethanol dependence risk is HIGH in this condition; "
+            "educate patients explicitly: alcohol is diagnostic clue, NOT a therapeutic strategy; "
+            "VALPROATE: some evidence for myoclonus suppression in M-D (Level C); "
+            "avoid in females of reproductive age (teratogenicity); "
+            "BOTULINUM TOXIN: for cervical dystonia or upper limb dystonia component; "
+            "DBS-GPi or THALAMIC (Vim/VoA): effective for severe cases — bilateral stimulation; "
+            "PSYCHIATRIC: treat OCD (CBT preferred; SSRI caution — monitor myoclonus worsening); "
+            "Treat depression (avoid serotonergic if myoclonus worsens on SSRI); "
+            "PHYSICAL THERAPY: proprioceptive exercises; OCCUPATIONAL THERAPY: task modification"
         ),
-        "critical_flags": [
-            "CRANIAL-CERVICAL-LARYNGEAL-SPREAD-PATHOGNOMONIC-THAP1",
-            "SPASMODIC-DYSPHONIA-50-70pct-DDx-DYT1-FACE-SPARED",
-            "PENETRANCE-60pct-NOT-FULLY-PENETRANT",
-            "THAP-DOMAIN-EXON-1-2-HIGHEST-PATHOGENICITY",
-            "LEVODOPA-POOR-RESPONSE-EXCLUDES-GCH1-DRD",
-            "BOTULINUMTOXIN-A-FOCAL-1ST-LINE-CERVICAL-CRANIAL",
-            "GPi-DBS-GENERALISED-FORMS",
-            "NORMAL-MRI-NORMAL-DATSCAN-PRIMARY-DYSTONIA",
-            "BIMODAL-ONSET-CHILDHOOD-OR-ADULT",
-            "WRITER-CRAMP-ARM-ONSET-MOST-COMMON",
+        "contraindications": (
+            "AVOID ALCOHOL AS TREATMENT: ethanol dependence rate VERY HIGH in M-D (up to 30%); "
+            "explicitly counsel: alcohol suppresses symptoms but causes addiction — do not self-medicate; "
+            "SSRI CAUTION: serotonin excess worsens myoclonus in some SGCE patients; "
+            "start low, monitor carefully; switch to SNRI or bupropion if worsening; "
+            "CAUTION DOPAMINE BLOCKERS: may worsen dystonia; "
+            "AVOID HIGH CLONAZEPAM ABRUPT CESSATION: seizure risk — taper only; "
+            "VALPROATE in females: teratogenicity risk — contraceptive counselling; "
+            "DO NOT COUNSEL AS 50% RISK without determining parent of origin — maternal mutation = 0% risk"
+        ),
+        "monitoring": (
+            "FAHN-TOLOSA-MARIN (FTM) tremor rating scale for myoclonus severity monthly during titration; "
+            "ALCOHOL USE: CAGE screening 6-monthly; addiction risk HIGH; "
+            "PSYCHIATRIC: PHQ-9 depression + OCD-YBOCS 6-monthly; "
+            "SSRI MONITORING: myoclonus frequency diary after SSRI initiation; "
+            "GENETIC — PARENT OF ORIGIN: confirm paternal transmission before counselling; "
+            "DBS programming: 3-monthly first year (thalamic or GPi); "
+            "LIVER FUNCTION: if valproate used; "
+            "SGCE FAMILY CASCADE: first-degree relatives; paternal imprinting counselling mandatory"
+        ),
+        "lifecycle": [
+            "Childhood (5-12 yr): myoclonus appears first; school disruption; clonazepam initiation",
+            "Adolescence (12-18 yr): alcohol discovery (self-medicate risk); psychiatric comorbidities emerge",
+            "Young adult (18-30 yr): alcohol dependence vigilance; DBS evaluation if refractory",
+            "Adult (30-50 yr): DBS maintenance; psychiatric treatment; family planning",
+            "Reproductive age: valproate teratogenicity — switch before conception",
+            "Family planning: paternal imprint counselling; parent-of-origin testing",
+        ],
+        "concepts": [
+            "DYT-SGCE: myoclonus-dystonia, myoclonus PREDOMINATES over dystonia",
+            "Paternal imprinting: maternal SGCE allele silenced — only paternal copy active",
+            "Alcohol-responsive: ethanol suppresses myoclonus (GABA-A) — diagnostic not therapeutic",
+            "Ethanol dependence: up to 30% of M-D patients develop alcohol use disorder",
+            "SSRI caution: serotonin excess may worsen myoclonus — baseline and monitor",
+            "Clonazepam: same mechanism as alcohol (GABA-A) — preferred pharmacotherapy",
+            "Parent-of-origin testing: mandatory before genetic counselling — maternal = 0% risk",
+            "OCD comorbidity: 30% of SGCE patients; CBT preferred over SSRI",
+            "Depression comorbidity: 50% — high burden; treat but monitor serotonin-myoclonus",
+            "DBS targets: GPi (dystonia predominant) vs Vim/VoA (myoclonus predominant)",
+            "Subcortical origin: EEG cortical correlate typically absent in SGCE myoclonus",
+            "No cognitive impairment in SGCE (unlike KMT2B which has 40% ID)",
+            "Levetiracetam: well-tolerated second-line anti-myoclonic",
+            "ε-Sarcoglycan: component of dystroglycan complex in brain and muscle",
+            "De novo rate 30-40%: apparent sporadic cases often have new mutation",
+        ],
+        "thresholds": [
+            "CAGE ≥2: alcohol use disorder — addictions referral before DBS evaluation",
+            "OCD-YBOCS >16: OCD treatment required; prefer CBT over SSRI",
+            "Clonazepam >4 mg/day without adequate response: DBS evaluation",
+            "SSRI initiation: myoclonus diary for 4 weeks post-start",
+            "Ethanol use >14 units/week: formal dependence assessment mandatory",
+            "Valproate female of reproductive age: switch before conception planning",
+        ],
+        "standards": [
+            "MDS Task Force Myoclonus-Dystonia Classification",
+            "ESDA Myoclonus-Dystonia Management Guidelines",
+            "Consensus statement SGCE imprinting (van der Salm 2012 Brain)",
+            "ACMG-AMP-2015 variant classification",
+            "WHO ICD-11 movement disorders classification",
+            "CAGE alcohol screening validated tool",
+        ],
+        "etiologies": [
+            {"type": "SGCE Nonsense/Frameshift — LOF Paternal — Classic M-D", "pct": 48},
+            {"type": "SGCE Missense — Partial LOF Paternal", "pct": 25},
+            {"type": "SGCE Large Deletion — Contiguous gene (7q21)", "pct": 12},
+            {"type": "SGCE Maternal Mutation — Phenotypically Unaffected (imprinting)", "pct": 8},
+            {"type": "SGCE Negative Phenocopy (other myoclonus-dystonia genes)", "pct": 7},
+        ],
+        "seizure_types": [
+            {"type": "Myoclonus (lightning jerks arms/neck dominant)", "pct": 88},
+            {"type": "Cervical Dystonia + Myoclonus", "pct": 58},
+            {"type": "Upper Limb Dystonia (writer's cramp + jerks)", "pct": 42},
+            {"type": "Trunk Myoclonus", "pct": 35},
+            {"type": "Generalised Myoclonus-Dystonia", "pct": 18},
+        ],
+        "triggers": [
+            {"trigger": "Voluntary Movement / Action", "pct": 82},
+            {"trigger": "Stress / Anxiety", "pct": 75},
+            {"trigger": "Fatigue", "pct": 68},
+            {"trigger": "Missed Clonazepam Dose", "pct": 62},
+            {"trigger": "Sleep Deprivation", "pct": 48},
+            {"trigger": "SSRI Initiation", "pct": 30},
+            {"trigger": "Caffeine", "pct": 25},
+            {"trigger": "Alcohol Withdrawal", "pct": 20},
+        ],
+        "references": [
+            "Zimprich A 2001 Nat Genet (SGCE Myoclonus-Dystonia discovery)",
+            "Nardocci N 2008 Neurology (SGCE phenotype spectrum)",
+            "Grunewald A 2008 Neurology (alcohol and M-D)",
+            "van der Salm SM 2012 Brain (SGCE imprinting paternal)",
+            "Mencacci NE 2015 Am J Hum Genet (M-D genetics update)",
+            "Espay AJ 2018 Mov Disord (DBS in myoclonus-dystonia)",
         ],
     },
-
-    # -- GCH1 — DYT-GCH1 (DRD / Segawa) -------------------------------------------
+    # -- GCH1 — DRD / DYT5a / Segawa Syndrome -----------------------------------
     {
         "gene": "GCH1",
         "alt_name": (
-            "GCH1 (GCH1-250aa-14q22.2 / AD — DYT-GCH1-DRD-Segawa-Disease — "
-            "Levodopa-MIRACULOUS-RESPONSE-PATHOGNOMONIC — "
-            "Diurnal-Fluctuation-Worse-Evening-PATHOGNOMONIC — "
-            "Phenylalanine-Loading-Test — Female-Predominance-3:1 — "
-            "Low-Dose-Levodopa-Life-Long)"
+            "GCH1 (GCH1-250aa-14q22.2 / AD — DRD-DYT-GCH1-DYT5a-Segawa-Syndrome — "
+            "L-DOPA-CURATIVE-MUST-TRY-BEFORE-BOTOX-IN-CHILDHOOD-DYSTONIA — "
+            "DIURNAL-VARIATION-BETTER-MORNING-WORSE-EVENING-PATHOGNOMONIC — "
+            "TREATABLE-NEVER-MISS)"
         ),
         "protein": (
             "GCH1 -- 14q22.2 AD -- GCH1-250aa -- "
-            "GTP-Cyclohydrolase-1-Rate-Limiting-Enzyme-Tetrahydrobiopterin-BH4-Synthesis -- "
-            "DYT-GCH1-Dopa-Responsive-Dystonia-DRD-Segawa-Disease -- "
-            "BH4-Cofactor-for-Tyrosine-Hydroxylase-TH-Dopamine-Synthesis -- "
-            "BH4-Deficiency-→-TH-Dysfunction-→-Striatal-Dopamine-Deficiency -- "
-            "Autosomal-Dominant-Haploinsufficiency-BH4 -- "
-            "Diurnal-Fluctuation-Worse-Evening-Better-Morning-Sleep -- "
-            "Levodopa-MIRACULOUS-Dramatic-Response-Even-Low-Doses -- "
-            "Female-Predominance-3:1-Hormonal-Oestrogen-BH4-Interaction"
+            "GTP-Cyclohydrolase-I-Tetrahydrobiopterin-Synthesis-First-Committed-Step -- "
+            "BH4-Cofactor-Aromatic-Amino-Acid-Hydroxylases-TH-PAH-TPH -- "
+            "DRD-Dopa-Responsive-Dystonia-DYT5a-Segawa-Syndrome-OMIM-128230 -- "
+            "BH4-Deficiency-Reduces-TH-Activity-Reduces-Dopamine-Nigro-Striatal -- "
+            "L-DOPA-COMPLETELY-CURATIVE-3-5-mg-kg-Day-Low-Dose-SUFFICIENT -- "
+            "DIURNAL-VARIATION-PATHOGNOMONIC-Better-Morning-After-Rest-Worse-Evening -- "
+            "Walk-On-Toes-Foot-Dystonia-Child-Misdiagnosed-As-Cerebral-Palsy -- "
+            "DO-NOT-USE-BOTOX-BEFORE-L-DOPA-TRIAL-IN-CHILDHOOD-DYSTONIA -- "
+            "Female-Predominant-4:1-Incomplete-Penetrance -- "
+            "14q22.2"
         ),
         "locus": "14q22.2",
         "protein_size": "250 aa",
         "inheritance": (
-            "AD (autosomal dominant) — GCH1 haploinsufficiency; "
-            "Penetrance: female 87%; male 38% (sex-specific penetrance — unique feature); "
-            "Prevalence: 1 in 2,000,000 (underdiagnosed due to diagnostic delay); "
-            "Female predominance: 3:1 (oestrogen reduces residual GCH1 activity); "
-            "AR biallelic GCH1: severe hyperphenylalaninaemia (HPA) + neurological crisis (different phenotype); "
-            "Allelic: SPR (sepiapterin reductase) mutations → AR DRD with cerebrospinal biogenic amine deficiency; "
-            "Median diagnostic delay: 10-15 yr (misdiagnosed as CP/spastic diplegia/functional)"
+            "AD (autosomal dominant); incomplete penetrance; "
+            "female predominance 4:1 (females more severely affected); "
+            "female penetrance ~85%; male penetrance ~40%; "
+            "biallelic GCH1 = severe hyperphenylalaninaemia + infantile encephalopathy (rare); "
+            "monoallelic = classic DRD (Segawa syndrome); "
+            "point mutations: truncating > missense > deletions; "
+            "CSF BH4 / neopterin analysis confirms biochemistry; "
+            "L-DOPA trial has 100% diagnostic accuracy in GCH1 DRD"
         ),
-        "age_of_onset": (
-            "Onset: 1-20 yr (peak 5-10 yr); "
-            "Foot dystonia with equinus gait: CLASSIC presentation (misdiagnosed as spastic diplegia/CP); "
-            "Morning normal — worsening through day — evening severe: DIURNAL FLUCTUATION PATHOGNOMONIC; "
-            "After sleep: marked improvement (hours); "
-            "Older age: may present with parkinsonism (without dystonia initially) — 'Parkinsonism with diurnal fluctuation'; "
-            "Leg dystonia → generalised if untreated; "
-            "Writer's cramp: adult presentation; "
-            "Female: earlier onset, more severe if untreated"
-        ),
-        "key_biomarker": (
-            "CSF neurotransmitter: LOW biopterin + LOW neopterin + LOW HVA (dopamine metabolite); "
-            "Phenylalanine loading test: exaggerated rise in phenylalanine after oral load (GCH1 haploinsufficiency); "
-            "Urine pterins: abnormal biopterin:neopterin ratio; "
-            "Genetic: GCH1 sequencing — missense/nonsense/splice mutations; "
-            "Levodopa therapeutic trial: MIRACULOUS response (1-3 mg/kg/day) = diagnostic; "
-            "DATscan: NORMAL (striatal dopamine transporter NOT lost — contrast Parkinson's); "
-            "Serum prolactin: elevated (dopamine deficiency disinhibits PRL); "
-            "MRI: NORMAL; "
-            "DO NOT MISS: levodopa trial in ALL childhood-onset dystonia with diurnal fluctuation"
-        ),
+        "age_of_onset": "Childhood 1-12 yr (typically 3-8 yr); rare adult onset",
         "pathognomonic": (
-            "DIURNAL FLUCTUATION (worse evening, better morning after sleep) = DRD PATHOGNOMONIC — no other dystonia; "
-            "LEVODOPA MIRACULOUS DRAMATIC RESPONSE = low dose 1-3 mg/kg/day → abolishes dystonia; "
-            "CHILDHOOD LEG DYSTONIA MISDIAGNOSED AS CP/SPASTIC DIPLEGIA = DRD until levodopa trial proves otherwise; "
-            "DATSCAN NORMAL = contrast Parkinson's (DATscan ABNORMAL in PD — GCH1/DRD DATscan NORMAL); "
-            "FEMALE PREDOMINANCE 3:1 = oestrogen reduces residual GCH1; sex-specific penetrance; "
-            "PHENYLALANINE LOADING TEST = GCH1 pathway test; abnormal BH4 metabolism; "
-            "DO NOT MISS DRD = levodopa is curative and lifelong treatment is required"
+            "DIURNAL VARIATION — better in morning after sleep, progressively worse through day: PATHOGNOMONIC; "
+            "Patient walks better in the morning; by evening can barely walk; "
+            "FOOT DYSTONIA / EQUINOVARUS — walking on toes or foot turning in: presenting sign; "
+            "MISDIAGNOSIS AS CEREBRAL PALSY: common, especially if birth history slightly abnormal; "
+            "L-DOPA TRIAL: COMPLETE RESOLUTION with small doses (3-5 mg/kg/day) = diagnostic and curative; "
+            "MUST TRY L-DOPA IN ANY CHILD WITH UNEXPLAINED DYSTONIA before botox or orthopaedic surgery; "
+            "Hyperreflexia often present (dopamine deficit reduces D2 inhibition at spinal cord); "
+            "Normal MRI brain; FDG-PET and DAT-SPECT normal (presynaptic intact, post-synaptic intact); "
+            "Female predominance 4:1 (incomplete penetrance sex-modified)"
         ),
         "treatment": (
-            "Levodopa/carbidopa: FIRST LINE — miraculous response; "
-            "Dose: start 1-2 mg/kg/day levodopa (with carbidopa 1:4 ratio); "
-            "Typical adult dose: 100-300 mg levodopa/day in 3 divided doses; "
-            "Life-long therapy required — never stop; "
-            "NO wearing off / NO dyskinesia at therapeutic DRD doses (contrast Parkinson's); "
-            "BH4 (sapropterin): alternative/adjunct especially in AR forms; "
-            "DO NOT use botulinum toxin as primary therapy (misses diagnosis); "
-            "DO NOT use DBS for DRD (levodopa restores function); "
-            "Genetic counselling: 50% risk each child; sex-specific penetrance counselling; "
-            "Folic acid: supplementation during pregnancy (BH4 pathway)"
+            "L-DOPA / CARBIDOPA: CURATIVE — complete resolution of dystonia; "
+            "Start: levodopa 0.5-1 mg/kg/day in 3 divided doses (with carbidopa 1:4 ratio); "
+            "Target: 3-5 mg/kg/day; typical final dose 50-300 mg levodopa/day (LOW compared to PD); "
+            "RESPONSE EXPECTED WITHIN DAYS TO WEEKS — dramatic improvement; "
+            "LIFELONG treatment required — stopping → relapse; "
+            "NEVER INCREASES DOSE LIKE PARKINSON'S: GCH1-DRD responds to low dose permanently; "
+            "Pramipexole/ropinirole (DA agonists): alternative if L-DOPA intolerant; "
+            "DIETARY: no specific restrictions; "
+            "NO BOTULINUM TOXIN needed if L-DOPA adequate; "
+            "ORTHOPAEDIC SURGERY: CONTRAINDICATED before L-DOPA trial — foot surgery on dystonic foot is disaster; "
+            "PHYSIOTHERAPY: adjunct during dose establishment; "
+            "BH4 supplementation (sapropterin): for biallelic GCH1 / AR forms"
         ),
-        "critical_flags": [
-            "LEVODOPA-MIRACULOUS-RESPONSE-PATHOGNOMONIC-DRD",
-            "DIURNAL-FLUCTUATION-WORSE-EVENING-BETTER-MORNING-PATHOGNOMONIC",
-            "CHILDHOOD-FOOT-DYSTONIA-CP-MISDIAGNOSIS-DRD-LEVODOPA-TRIAL-MANDATORY",
-            "DATSCAN-NORMAL-CONTRAST-PARKINSONS-ABNORMAL",
-            "FEMALE-PREDOMINANCE-3:1-SEX-SPECIFIC-PENETRANCE",
-            "PHENYLALANINE-LOADING-TEST-GCH1-PATHWAY",
-            "LIFELONG-LEVODOPA-NEVER-STOP",
-            "NO-WEARING-OFF-NO-DYSKINESIA-AT-DRD-DOSES",
-            "CSF-LOW-BIOPTERIN-NEOPTERIN-HVA",
-            "DO-NOT-DBS-FOR-DRD-LEVODOPA-CURATIVE",
+        "contraindications": (
+            "BOTULINUM TOXIN BEFORE L-DOPA TRIAL: ABSOLUTE CI — always try L-DOPA first in childhood dystonia; "
+            "ORTHOPAEDIC SURGERY BEFORE L-DOPA TRIAL: many children with GCH1-DRD have undergone "
+            "unnecessary foot surgery; L-DOPA resolves equinovarus without surgery; "
+            "DOPAMINE BLOCKERS (metoclopramide): antagonise treatment — avoid; "
+            "STOPPING L-DOPA ABRUPTLY: gradual taper only — acute withdrawal may cause dystonic crisis; "
+            "HIGH-DOSE L-DOPA (Parkinson doses): unnecessary and may cause dyskinesia — use low dose; "
+            "VALPROATE: consider if seizures present but monitor L-DOPA interaction; "
+            "DO NOT LABEL AS CEREBRAL PALSY without GCH1 testing in childhood dystonia with diurnal variation"
+        ),
+        "monitoring": (
+            "RESPONSE TO L-DOPA: daily dystonia diary first 4 weeks; BFMDRS at 4 and 12 weeks; "
+            "DOSE OPTIMISATION: monthly until stable; "
+            "LONG-TERM L-DOPA: 6-monthly review; avoid dyskinesia (rare at DRD doses); "
+            "DIURNAL VARIATION TRACKING: parent/patient diary to confirm response pattern; "
+            "BLOOD PRESSURE: orthostatic hypotension on L-DOPA initiation; "
+            "GCH1 FAMILY CASCADE: 50% risk to offspring; female relatives more likely symptomatic; "
+            "PREGNANCY: L-DOPA in pregnancy — limited data but benefits outweigh risk; "
+            "PSYCHIATRIC: anxiety common from years of misdiagnosis; counselling support; "
+            "CSF BH4/NEOPTERIN: at diagnosis to confirm biochemistry (optional if molecular confirmed)"
+        ),
+        "lifecycle": [
+            "Infancy-toddler (1-3 yr): toe-walking, foot dystonia noted, often misattributed",
+            "Childhood (3-8 yr): classic presentation; diurnal variation observed; misdiagnosis common",
+            "School age (8-12 yr): L-DOPA initiation → dramatic resolution; return to normal activity",
+            "Adolescence (12-18 yr): stable on L-DOPA; normal neurological development continues",
+            "Adulthood: lifelong L-DOPA; dose rarely needs escalation; full functional life",
+            "Pregnancy: L-DOPA continues; counselling; 50% risk to children",
+        ],
+        "concepts": [
+            "DRD: Dopa-Responsive Dystonia — GCH1 is commonest cause (AD form)",
+            "GCH1: GTP cyclohydrolase I — first enzyme in BH4 (tetrahydrobiopterin) synthesis",
+            "BH4: cofactor for TH (tyrosine hydroxylase) — BH4 deficiency → dopamine deficiency",
+            "Diurnal variation: PATHOGNOMONIC — better morning, worse evening (dopamine depletes during day)",
+            "L-DOPA curative: complete resolution at low doses (3-5 mg/kg/day)",
+            "NEVER botox first: always try L-DOPA in childhood lower limb dystonia",
+            "Misdiagnosis as CP: most common misdiagnosis — diurnal variation clue",
+            "Female predominance 4:1: sex-modified penetrance",
+            "Low dose forever: unlike Parkinson's, DRD doses remain low lifelong",
+            "BH4 synthesis: GCH1 → BH4 → TH active → tyrosine → L-DOPA → dopamine",
+            "FDG-PET/DAT normal: helps distinguish from early-onset Parkinson's",
+            "Foot equinovarus: presenting sign — toe-walking, foot inversion on walking",
+            "Orthopaedic surgery avoidance: L-DOPA resolves deformity without surgery",
+            "Complete penetrance at 10 mg/kg/day: diagnostic trial dose",
+            "Lifelong treatment: stopping = relapse; emphasise compliance",
+        ],
+        "thresholds": [
+            "Diurnal variation + childhood dystonia: L-DOPA trial MANDATORY before any other intervention",
+            "L-DOPA 5 mg/kg/day × 4 weeks: no response → reconsider diagnosis (but extend to 8 weeks)",
+            "L-DOPA induced dyskinesia at DRD doses: reduce dose by 25% — very rare",
+            "Female first-degree relative of GCH1 carrier: 85% lifetime penetrance risk",
+            "Orthopaedic referral for dystonic foot: PAUSE — GCH1 testing first",
+            "L-DOPA >10 mg/kg/day in child: unlikely DRD — reconsider diagnosis",
+        ],
+        "standards": [
+            "EFNS/MDS-ES Guidelines for DRD management",
+            "Ichinose H 1994 Nat Genet (GCH1 discovery)",
+            "Furukawa Y 2002 Ann Neurol (DRD clinical guidelines)",
+            "ACMG-AMP-2015 variant classification",
+            "Kurian MA 2011 Lancet Neurol (DRD review)",
+            "NICE-NG217 Movement Disorders",
+        ],
+        "etiologies": [
+            {"type": "GCH1 Truncating (Nonsense/Frameshift) het — Classic DRD", "pct": 55},
+            {"type": "GCH1 Missense het — DRD (variable severity)", "pct": 30},
+            {"type": "GCH1 Large Deletion het — DRD", "pct": 8},
+            {"type": "GCH1 Biallelic (AR) — Severe HPAenia + encephalopathy", "pct": 4},
+            {"type": "GCH1 Phenocopy (TH/SPR/other BH4 enzyme)", "pct": 3},
+        ],
+        "seizure_types": [
+            {"type": "Foot/Lower Limb Dystonia (equinovarus)", "pct": 88},
+            {"type": "Multifocal Dystonia (lower + upper limbs)", "pct": 52},
+            {"type": "Generalised Dystonia (severe, late presentation)", "pct": 18},
+            {"type": "Cervical Dystonia (adult onset)", "pct": 15},
+            {"type": "Parkinsonism Features (untreated adult)", "pct": 10},
+        ],
+        "triggers": [
+            {"trigger": "Afternoon / Evening (diurnal worsening)", "pct": 98},
+            {"trigger": "Exercise / Prolonged Walking", "pct": 85},
+            {"trigger": "Stress", "pct": 62},
+            {"trigger": "Missed L-DOPA Dose", "pct": 78},
+            {"trigger": "Illness / Fever", "pct": 35},
+            {"trigger": "Sleep Deprivation", "pct": 28},
+            {"trigger": "Cold Weather", "pct": 22},
+            {"trigger": "Caffeine (minor)", "pct": 15},
+        ],
+        "references": [
+            "Ichinose H 1994 Nat Genet (GCH1 mutations in DRD)",
+            "Segawa M 1976 Adv Neurol (original DRD description Segawa)",
+            "Furukawa Y 2002 Ann Neurol (GCH1 spectrum)",
+            "Kurian MA 2011 Lancet Neurol (DRD comprehensive review)",
+            "Tadic V 2012 Neurology (DRD long-term outcomes)",
+            "Charlesworth G 2013 Hum Mutat (GCH1 genotype-phenotype)",
         ],
     },
-
-    # -- ATP1A3 — AHC / RDP / CAPOS ------------------------------------------------
+    # -- TH — DYT5b / AR-DRD ---------------------------------------------------
+    {
+        "gene": "TH",
+        "alt_name": (
+            "TH (TH-528aa-11p15.5 / AR — DRD-DYT-TH-DYT5b-Tyrosine-Hydroxylase-Deficiency — "
+            "SEVERE-INFANTILE-ENCEPHALOPATHY-L-DOPA-Responsive-LOWER-DOSES — "
+            "BIALLELIC-LOF-Reduces-Catecholamine-Synthesis-AR-DRD)"
+        ),
+        "protein": (
+            "TH -- 11p15.5 AR -- TH-528aa -- "
+            "Tyrosine-Hydroxylase-Rate-Limiting-Catecholamine-Synthesis-Enzyme -- "
+            "BH4-Dependent-Aromatic-Amino-Acid-Hydroxylase-Converts-Tyrosine-to-L-DOPA -- "
+            "DRD-Tyrosine-Hydroxylase-Deficiency-DYT5b-OMIM-605407 -- "
+            "AR-Biallelic-More-Severe-Than-GCH1-AD-DRD -- "
+            "Type-A-L-DOPA-Responsive-Milder-Compound-Het -- "
+            "Type-B-L-DOPA-Poorly-Responsive-Truncating-Mutations-Severe-Neonatal -- "
+            "Infantile-Encephalopathy-Hypotonia-Parkinsonian-Features-in-Infants -- "
+            "HVA-5HIAA-Reduced-CSF-DIAGNOSTIC-PATHOGNOMONIC -- "
+            "Pterin-Profile-Normal-unlike-GCH1-deficiency -- "
+            "11p15.5"
+        ),
+        "locus": "11p15.5",
+        "protein_size": "528 aa",
+        "inheritance": (
+            "AR (autosomal recessive); biallelic loss-of-function; "
+            "compound heterozygous most common (missense + truncating = Type A, better response); "
+            "truncating/truncating = Type B (severe, poor L-DOPA response); "
+            "parents are obligate carriers — asymptomatic; "
+            "25% recurrence risk to siblings; "
+            "consanguinity in severe forms; "
+            "TH is the rate-limiting enzyme in the catecholamine pathway"
+        ),
+        "age_of_onset": "Neonatal to infancy (1-6 months) — earlier than GCH1-DRD",
+        "pathognomonic": (
+            "INFANTILE HYPOTONIA + HYPOKINESIA + RIGIDITY (parkinsonian triad in infant); "
+            "CSF: reduced HVA (homovanillic acid) + reduced 5-HIAA = PATHOGNOMONIC (catecholamine/serotonin deficiency); "
+            "CSF pterins NORMAL (unlike GCH1-deficiency which has low BH4/neopterin); "
+            "L-DOPA RESPONSIVE but at LOWER doses than GCH1-DRD; "
+            "Type A (missense/mild): significant L-DOPA response; "
+            "Type B (truncating/severe): poor or partial L-DOPA response; "
+            "Oculogyric crises: episodic upward eye deviation + dystonic posturing — PATHOGNOMONIC in infants; "
+            "Diurnal variation may be present but less striking than GCH1-DRD; "
+            "Ptosis, miosis (Horner-like): autonomic catecholamine deficit"
+        ),
+        "treatment": (
+            "L-DOPA/CARBIDOPA: first-line — lower dose than GCH1-DRD; "
+            "Start 1 mg/kg/day levodopa; titrate slowly to 3-10 mg/kg/day; "
+            "Type A: good response; Type B: partial response — augment with serotonin precursors; "
+            "5-HTP (5-hydroxytryptophan): adjunct for serotonin deficiency (reduces oculogyric crises); "
+            "CARBIDOPA: co-administer to reduce peripheral conversion; "
+            "PYRIDOXINE (B6): some patients benefit — enzyme cofactor; "
+            "MONOAMINE OXIDASE INHIBITORS: controversial — not standard; "
+            "AVOID SUDDEN L-DOPA STOP: autonomic instability; "
+            "RESPIRATORY SUPPORT: neonates may require ventilatory support; "
+            "NASOGASTRIC FEEDING: early — poor suck/swallow reflex in neonatal-onset; "
+            "PHYSIOTHERAPY: for hypertonia/dystonia management; "
+            "OCCUPATIONAL THERAPY: motor skills"
+        ),
+        "contraindications": (
+            "AVOID DOPAMINE BLOCKERS (metoclopramide, haloperidol): worsen dopamine deficiency — ABSOLUTE CI; "
+            "AVOID SEROTONIN DEPLETING DRUGS: tetrabenazine in Type B may reduce residual monoamines; "
+            "CAUTION HIGH-DOSE L-DOPA IN TYPE B: dyskinesia at low doses may occur; "
+            "AVOID PYRIDOXINE MEGADOSE (>50 mg/day): potential peripheral neuropathy; "
+            "DO NOT DIAGNOSE AS HYPOTONIC CP without catecholamine metabolite testing; "
+            "AVOID ANTICHOLINERGICS IN INFANTS: cognitive and autonomic side effects; "
+            "DO NOT STOP L-DOPA ABRUPTLY: severe rebound dystonia"
+        ),
+        "monitoring": (
+            "CSF HVA + 5-HIAA: at diagnosis and 6-monthly for dose adjustment; "
+            "L-DOPA PLASMA LEVELS: peak and trough during dose adjustment; "
+            "OCULOGYRIC CRISIS FREQUENCY: diary; aim for elimination with adequate dosing; "
+            "PTERIN PROFILE: once at diagnosis to exclude GCH1 (BH4 normal in TH-DRD); "
+            "DEVELOPMENTAL MILESTONES: monthly in first 2 years; "
+            "FEEDING/SWALLOWING: SLT 3-monthly; "
+            "RESPIRATORY: sleep study 6-monthly for hypoventilation; "
+            "TH FAMILY CASCADE: siblings 25% risk; prenatal testing available"
+        ),
+        "lifecycle": [
+            "Neonatal (0-4 wk): hypotonia, poor feeding, oculogyric crises, NG tube",
+            "Infancy (1-12 mo): L-DOPA initiation, oculogyric crisis control, developmental assessment",
+            "Toddler (1-3 yr): L-DOPA optimisation, motor delay, physiotherapy",
+            "Childhood (3-12 yr): stable treatment, school support, adaptive equipment",
+            "Adolescence (12-18 yr): dose adjustment for weight, independence planning",
+            "Adulthood: ongoing L-DOPA; variable outcome (Type A near-normal; Type B significant disability)",
+        ],
+        "concepts": [
+            "TH: tyrosine hydroxylase — rate-limiting enzyme in catecholamine pathway",
+            "AR-DRD (DYT5b): more severe than AD-DRD (GCH1/DYT5a) — biallelic required",
+            "CSF HVA reduced: catecholamine deficiency biomarker",
+            "CSF 5-HIAA reduced: serotonin deficiency — cofactor for oculogyric crisis management",
+            "Pterin profile NORMAL: distinguishes TH-DRD from GCH1-deficiency (pterins reduced in GCH1)",
+            "Type A vs B: compound het missense (A, better) vs truncating (B, worse response)",
+            "Oculogyric crises: episodic upward eye deviation + dystonia — PATHOGNOMONIC in infants",
+            "L-DOPA lower dose: TH-DRD uses lower L-DOPA than GCH1-DRD typically",
+            "Infantile parkinsonism: hypokinesia + rigidity + hypotonia in neonate",
+            "5-HTP adjunct: helps serotonin deficiency component",
+            "Diurnal variation: present but less striking than GCH1-DRD",
+            "Dopamine blockers ABSOLUTE CI: worsen already-depleted dopamine",
+            "CSF diagnosis critical: cannot distinguish on clinical grounds from other hypotonic infants",
+            "Catecholamine pathway: TH converts Tyr→L-DOPA; DOPA decarboxylase → dopamine",
+            "Neonatal onset: earlier than GCH1-DRD which presents in childhood",
+        ],
+        "thresholds": [
+            "CSF HVA <200 nmol/L: TH deficiency likely — confirm with TH sequencing",
+            "Oculogyric crisis >3 per week: L-DOPA dose inadequate — titrate up",
+            "L-DOPA >15 mg/kg/day in infant: consider alternative diagnosis or Type B",
+            "Peak plasma L-DOPA <1200 ng/mL: under-absorption — formulation review",
+            "Pterin profile: BH4 normal in TH-DRD; low in GCH1 — distinguishing test",
+            "Type B: realistic outcome goal is reduction not elimination of motor deficits",
+        ],
+        "standards": [
+            "Willemsen MA 2010 Neurology (TH deficiency clinical spectrum)",
+            "Brun L 2010 J Inherit Metab Dis (TH deficiency treatment)",
+            "Verbeek MM 2007 Clin Chim Acta (CSF monoamine metabolites)",
+            "ACMG-AMP-2015 variant classification",
+            "BIOPTERIN-GROUP European metabolic neurology standards",
+            "SSIEM guidelines for inherited metabolic neurology",
+        ],
+        "etiologies": [
+            {"type": "TH Missense/Missense biallelic — Type A (L-DOPA responsive)", "pct": 42},
+            {"type": "TH Missense + Truncating — Type A intermediate", "pct": 28},
+            {"type": "TH Truncating/Truncating — Type B (poor L-DOPA response)", "pct": 18},
+            {"type": "TH Single Missense + VUS — Uncertain", "pct": 8},
+            {"type": "TH Phenocopy (AADC/DOPA decarboxylase deficiency)", "pct": 4},
+        ],
+        "seizure_types": [
+            {"type": "Oculogyric Crises (episodic upward eye deviation + dystonia)", "pct": 72},
+            {"type": "Generalised Hypotonia + Dystonia (infantile)", "pct": 65},
+            {"type": "Parkinsonian Features (rigidity + hypokinesia)", "pct": 55},
+            {"type": "Focal Limb Dystonia", "pct": 30},
+            {"type": "Axial Dystonia (truncal)", "pct": 25},
+        ],
+        "triggers": [
+            {"trigger": "Missed L-DOPA Dose", "pct": 88},
+            {"trigger": "Stress / Illness / Fever", "pct": 72},
+            {"trigger": "Afternoon / Evening (diurnal)", "pct": 60},
+            {"trigger": "Sleep Deprivation", "pct": 48},
+            {"trigger": "Emotional Excitement", "pct": 35},
+            {"trigger": "Cold Exposure", "pct": 22},
+            {"trigger": "Dopamine Blocker Exposure", "pct": 18},
+            {"trigger": "Fasting / Hypoglycaemia", "pct": 15},
+        ],
+        "references": [
+            "Ludecke B 1995 Hum Genet (TH mutations DRD)",
+            "Willemsen MA 2010 Neurology (TH deficiency spectrum 18 patients)",
+            "Brun L 2010 J Inherit Metab Dis (TH management)",
+            "Nardocci N 2003 Neurology (DRD types A and B)",
+            "Verbeek MM 2007 Clin Chim Acta (CSF metabolomics)",
+            "Kulak W 2019 Brain Dev (TH deficiency long-term outcomes)",
+        ],
+    },
+    # -- KMT2B — DYT28 ----------------------------------------------------------
+    {
+        "gene": "KMT2B",
+        "alt_name": (
+            "KMT2B (KMT2B-3969aa-19q13.12 / AD-90pct-De-Novo — DYT-KMT2B-DYT28 — "
+            "CHILDHOOD-FOCAL-DYSTONIA-GENERALISES-PATHOGNOMONIC — "
+            "INTELLECTUAL-DISABILITY-40pct-PATHOGNOMONIC — "
+            "DBS-GPi-HIGHLY-EFFECTIVE-EVEN-WITH-ID)"
+        ),
+        "protein": (
+            "KMT2B -- 19q13.12 AD (90% de novo) -- KMT2B-3969aa -- "
+            "Lysine-Methyltransferase-2B-Trithorax-Group-Histone-H3-Lys4-Methyltransferase -- "
+            "SET-Domain-CXXC-PHD-Zinc-Finger-Chromatin-Remodelling-Transcriptional-Regulation -- "
+            "DYT-KMT2B-Dystonia-28-OMIM-617284 -- "
+            "Childhood-Onset-Focal-Dystonia-Foot-Leg-FIRST-Then-Generalises -- "
+            "Intellectual-Disability-40pct-Microcephaly-Short-Stature-PATHOGNOMONIC-Constellation -- "
+            "DBS-GPi-HIGHLY-EFFECTIVE->80pct-BFMDRS-Even-Cognitive-Impaired-Patients -- "
+            "De-Novo-90pct-Frameshift-Nonsense-LOF-Haploinsufficiency -- "
+            "Neuroophthalmological-Signs-30pct-Cataracts-Optic-Atrophy -- "
+            "Facial-Dysmorphism-Mild-Low-Set-Ears-Bitemporal-Narrowing -- "
+            "19q13.12"
+        ),
+        "locus": "19q13.12",
+        "protein_size": "3969 aa",
+        "inheritance": (
+            "AD (autosomal dominant); 90% de novo; "
+            "LOF haploinsufficiency (truncating > missense); "
+            "familial cases reported (10%) with variable expressivity; "
+            "large gene 3969 aa — requires comprehensive sequencing + CNV analysis; "
+            "de novo rate high → negative family history does not exclude; "
+            "GENETIC TESTING: WES/WGS preferred; small exon panels may miss large deletions"
+        ),
+        "age_of_onset": "Childhood 2-10 yr; focal foot/leg onset → generalisation over years",
+        "pathognomonic": (
+            "FOCAL LOWER LIMB DYSTONIA at onset (foot/ankle) → GENERALISES to all body regions over years; "
+            "Generalisation trajectory: foot → trunk → upper limbs → cranial; "
+            "INTELLECTUAL DISABILITY ~40% (mild-moderate): distinguishes KMT2B from TOR1A (no ID); "
+            "MICROCEPHALY + SHORT STATURE constellation in syndromic cases; "
+            "Ophthalmic: cataracts (30%), optic atrophy — PATHOGNOMONIC in KMT2B; "
+            "Mild facial dysmorphism: bitemporal narrowing, low-set ears; "
+            "DBS-GPi REMARKABLY EFFECTIVE (>80% BFMDRS improvement) even in patients with ID; "
+            "DO NOT exclude DBS because of cognitive impairment — KMT2B responds well; "
+            "MRI: small volume white matter changes in some — non-specific"
+        ),
+        "treatment": (
+            "PHARMACOLOGICAL (limited benefit, supportive role): "
+            "Trihexyphenidyl high-dose: trial first (same as DYT1); "
+            "Clonazepam: adjunct for task-specific relief; "
+            "Tetrabenazine: limited evidence in KMT2B; "
+            "Botulinum toxin: focal symptom relief while awaiting DBS; "
+            "SURGERY — DBS-GPi: TREATMENT OF CHOICE — bilateral GPi; "
+            ">80% improvement in BFMDRS in several case series; "
+            "DBS INDICATED EVEN WITH INTELLECTUAL DISABILITY — outcome equally good; "
+            "Early DBS referral: do not wait for severe generalisation; "
+            "OPHTHALMOLOGICAL REVIEW: cataract extraction when visually significant; "
+            "EDUCATIONAL SUPPORT: 40% have ID — educational psychology assessment; "
+            "SPEECH AND LANGUAGE THERAPY: oro-cranial involvement; "
+            "PHYSIOTHERAPY: contracture prevention during titration waiting period"
+        ),
+        "contraindications": (
+            "DO NOT EXCLUDE DBS DUE TO INTELLECTUAL DISABILITY: KMT2B responds remarkably well; "
+            "AVOID HIGH-DOSE TRIHEXYPHENIDYL IN ID PATIENTS: cognitive worsening — lower target doses; "
+            "CAUTION TETRABENAZINE IN DEPRESSION: KMT2B has psychiatric comorbidity; "
+            "CAUTION BOTULINUM TOXIN GENERALISED DYSTONIA: insufficient for widespread involvement; "
+            "AVOID DELAY IN DBS REFERRAL: early intervention → better outcome"
+        ),
+        "monitoring": [
+            "BFMDRS: 6-monthly; pre-DBS baseline; 3-monthly post-implant first year",
+            "OPHTHALMOLOGY: annual slit-lamp for cataracts; OCT for optic atrophy",
+            "DEVELOPMENTAL ASSESSMENT: Griffiths/Bayley 6-monthly in childhood",
+            "EDUCATIONAL PSYCHOLOGY: school-based support plan annual review",
+            "HEAD CIRCUMFERENCE: 6-monthly in childhood (microcephaly tracking)",
+            "KMT2B FAMILY: de novo 90% — low recurrence; parental testing to exclude germline mosaic",
+            "DBS battery and impedance: 3-monthly first year, then 6-monthly",
+            "PSYCHIATRIC: PHQ-9 annual; cognitive testing biennial",
+        ],
+        "lifecycle": [
+            "Toddler (2-5 yr): focal foot dystonia onset; physiotherapy; THP trial",
+            "Childhood (5-10 yr): generalisation; school placement; DBS evaluation",
+            "Adolescence (10-18 yr): DBS implant (optimal timing); programming; education",
+            "Young adult (18-30 yr): DBS maintenance; independent living support",
+            "Adult (30+ yr): hardware management; ongoing support; cataract management",
+            "Family planning: 90% de novo → low recurrence; germline mosaic testing of parents",
+        ],
+        "concepts": [
+            "DYT28 / DYT-KMT2B: childhood generalised dystonia with ID — 2017 discovery",
+            "KMT2B: histone methyltransferase (H3K4me3) — epigenetic chromatin regulation",
+            "De novo 90%: most cases sporadic — no family history does not exclude",
+            "Focal → generalised: invariable trajectory distinguishes from adult-onset focal dystonia",
+            "ID 40%: cognitive impairment NOT a contraindication to DBS",
+            "DBS highly effective: >80% BFMDRS — best surgical outcome of any inherited dystonia",
+            "Cataracts 30%: ophthalmological surveillance mandatory",
+            "Optic atrophy: rare but may cause visual impairment — OCT monitoring",
+            "Short stature + microcephaly: syndromic KMT2B constellation",
+            "Early DBS referral: do not await severe generalisation",
+            "Trihexyphenidyl lower dose: tolerance reduced in ID patients",
+            "LOF haploinsufficiency: one functioning copy insufficient for normal development",
+            "3969 aa: one of largest human proteins — WGS preferred for full coverage",
+            "Phenotype spectrum: pure dystonia to syndromic with ID/eye/growth",
+            "Botox bridge: use while DBS evaluation/implant waiting period",
+        ],
+        "thresholds": [
+            "BFMDRS >30 or rapid generalisation: urgent DBS referral",
+            "IQ <70: educational support mandatory; DBS still indicated — counsel family",
+            "Cataract visual acuity <6/18: ophthalmology referral for extraction",
+            "DBS age: no lower limit established; case reports from age 5 yr",
+            "Trihexyphenidyl >12 mg/day in ID patient: cognitive monitoring every visit",
+            "Generalisation from focal to multifocal: reassess DBS urgency",
+        ],
+        "standards": [
+            "Meyer E 2017 Nat Genet (KMT2B DYT28 discovery)",
+            "Zech M 2017 Ann Neurol (KMT2B phenotype expansion)",
+            "Cif L 2019 Lancet Neurol (DBS in inherited dystonia)",
+            "ACMG-AMP-2015 variant classification",
+            "ESDA European Dystonia Consortium guidelines",
+            "MDS Task Force dystonia classification",
+        ],
+        "etiologies": [
+            {"type": "KMT2B Truncating (Frameshift/Nonsense) de novo — Classic DYT28", "pct": 55},
+            {"type": "KMT2B Missense de novo — DYT28 (variable severity)", "pct": 22},
+            {"type": "KMT2B Large Deletion (CNV) — Syndromic DYT28 + ID", "pct": 12},
+            {"type": "KMT2B Familial (inherited) — 10% of cases", "pct": 7},
+            {"type": "KMT2B Phenocopy (other epigenetic dystonia genes)", "pct": 4},
+        ],
+        "seizure_types": [
+            {"type": "Generalised Dystonia (trunk + all limbs)", "pct": 78},
+            {"type": "Multifocal Dystonia (3+ body regions)", "pct": 55},
+            {"type": "Focal Lower Limb (initial presentation)", "pct": 45},
+            {"type": "Cranial-Cervical Dystonia (dysarthria/dysphagia)", "pct": 30},
+            {"type": "Status Dystonicus (dystonic storm)", "pct": 8},
+        ],
+        "triggers": [
+            {"trigger": "Voluntary Movement", "pct": 90},
+            {"trigger": "Stress / Anxiety", "pct": 70},
+            {"trigger": "Missed Medication", "pct": 60},
+            {"trigger": "Fatigue", "pct": 65},
+            {"trigger": "Illness / Fever", "pct": 45},
+            {"trigger": "Sleep Deprivation", "pct": 40},
+            {"trigger": "Emotional Excitement", "pct": 35},
+            {"trigger": "Cold (peripheral stimulus)", "pct": 18},
+        ],
+        "references": [
+            "Meyer E 2017 Nat Genet (KMT2B DYT28 discovery)",
+            "Zech M 2017 Ann Neurol (KMT2B genotype-phenotype)",
+            "Cif L 2019 Lancet Neurol (DBS DYT28)",
+            "Carecchio M 2019 Mov Disord (DYT-KMT2B clinical series)",
+            "Maudet A 2020 Neurology (KMT2B DBS outcomes)",
+            "ESDA 2021 Dystonia Guidelines",
+        ],
+    },
+    # -- THAP1 — DYT6 -----------------------------------------------------------
+    {
+        "gene": "THAP1",
+        "alt_name": (
+            "THAP1 (THAP1-213aa-8p21.3 / AD — DYT-THAP1-DYT6 — "
+            "LARYNGEAL-CRANIAL-INVOLVEMENT-PATHOGNOMONIC-Young-Adult — "
+            "ASHKENAZI-JEWISH-FOUNDER-ENRICHMENT — "
+            "BOTULINUM-TOXIN-FOR-CERVICAL-DBS-FOR-SEVERE)"
+        ),
+        "protein": (
+            "THAP1 -- 8p21.3 AD -- THAP1-213aa -- "
+            "THAP-Domain-Containing-Protein-1-Zinc-Finger-BED-DNA-Binding-Transcription-Factor -- "
+            "Proapoptotic-Target-Gene-Regulation-Endothelial-Cell-G1-S-Cell-Cycle -- "
+            "DYT-THAP1-Dystonia-6-OMIM-602629 -- "
+            "Young-Adult-Onset-12-50yr-Mixed-Focal-Segmental-Generalised -- "
+            "LARYNGEAL-DYSTONIA-Hoarseness-Strained-Voice-PATHOGNOMONIC-THAP1 -- "
+            "Cranio-Cervical-Involvement-Blepharospasm-Torticollis-Oromandibular -- "
+            "Upper-Limb-Less-Common-Writers-Cramp-10-20pct -- "
+            "ASHKENAZI-JEWISH-FOUNDER-C-terminal-mutations-p.Pro41 -- "
+            "Incomplete-Penetrance-60pct -- "
+            "8p21.3"
+        ),
+        "locus": "8p21.3",
+        "protein_size": "213 aa",
+        "inheritance": (
+            "AD (autosomal dominant); incomplete penetrance ~60%; "
+            "variable expressivity (focal to segmental); "
+            "Ashkenazi Jewish founder enrichment (p.Pro41 region variants); "
+            "THAP domain mutations (N-terminus): affects DNA binding; "
+            "C-terminal mutations: variable; "
+            "de novo: 5-10%; familial majority; "
+            "GENETIC TESTING: THAP1 Sanger or NGS panel"
+        ),
+        "age_of_onset": "Young adult 12-50 yr; most 20-40 yr",
+        "pathognomonic": (
+            "LARYNGEAL DYSTONIA — hoarse, strained, strangled voice quality — PATHOGNOMONIC for THAP1; "
+            "Voice involvement distinguishes THAP1 from DYT1 (rare cranial) and DYT-KMT2B; "
+            "Cranio-cervical dystonia: blepharospasm, torticollis, oromandibular; "
+            "Upper limb: writer's cramp 10-20% (less than TOR1A); "
+            "Generalisation to lower limbs RARE (unlike KMT2B which generalises); "
+            "Penetrance 60%: carriers may be asymptomatic; "
+            "Ashkenazi enrichment: test THAP1 first in Ashkenazi Jewish with laryngeal dystonia; "
+            "Task-specific onset: voice worse with speaking (strained); "
+            "Whispering preserved initially (spasmodic dysphonia pattern)"
+        ),
+        "treatment": (
+            "FIRST-LINE: BOTULINUM TOXIN — injected into affected muscles; "
+            "LARYNGEAL (spasmodic dysphonia): botox into thyroarytenoid muscle via EMG guidance; "
+            "CERVICAL DYSTONIA: botox into sternocleidomastoid / splenius capitis; "
+            "BLEPHAROSPASM: botox periorbital; "
+            "Repeat injections 3-monthly; effectiveness maintained long-term; "
+            "PHARMACOLOGICAL: trihexyphenidyl (moderate benefit); clonazepam (adjunct); "
+            "DBS-GPi: reserved for severe, generalised, botox-refractory cases; "
+            "DBS LESS EFFECTIVE than in DYT1 for focal THAP1 — botox preferred for focal; "
+            "VOICE THERAPY: SLT for compensatory strategies; "
+            "PSYCHOLOGY: significant quality of life impact from voice change; "
+            "OCCUPATIONAL THERAPY: if upper limb involvement"
+        ),
+        "contraindications": (
+            "AVOID DOPAMINE BLOCKERS: worsen dystonia; "
+            "CAUTION HIGH-DOSE TRIHEXYPHENIDYL: limited benefit in THAP1 vs DYT1; "
+            "BOTOX LARYNGEAL: requires EMG guidance — ENT/neurologist with laryngeal botox expertise; "
+            "AVOID GENERAL ANAESTHESIA without airway assessment in severe laryngeal dystonia; "
+            "DO NOT COUNSEL 100% PENETRANCE: 60% penetrance — many carriers unaffected"
+        ),
+        "monitoring": [
+            "VOICE RECORDING: baseline + 3-monthly post-botox (objective voice analysis)",
+            "BOTULINUM TOXIN EFFECTS: symptom diary; re-injection at 12 weeks if wearing off",
+            "BFMDRS / TWSTRS (cervical): 6-monthly",
+            "SWALLOWING: modified barium swallow if dysphagia (oromandibular involvement)",
+            "THAP1 FAMILY CASCADE: 50% offspring risk; penetrance 60%",
+            "PSYCHIATRIC: quality of life scales (SF-36, DystoniaQoL); depression screening",
+            "AIRWAY: ENT review if severe laryngeal involvement",
+        ],
+        "lifecycle": [
+            "Young adult (12-25 yr): voice changes onset; ENT misdiagnosis common",
+            "Adult (25-40 yr): established diagnosis; botox programme; cervical involvement",
+            "Mid-adult (40-55 yr): stable or slow progression; DBS if refractory",
+            "Later adult (55+ yr): maintenance; hardware if DBS implanted",
+            "Ashkenazi carrier: 50% offspring risk with 60% penetrance — genetic counselling",
+            "Family cascade: testing first-degree relatives (siblings/offspring of confirmed carriers)",
+        ],
+        "concepts": [
+            "DYT6/DYT-THAP1: young-adult onset cranio-cervical and laryngeal dystonia",
+            "Laryngeal dystonia: strained/strangled voice — PATHOGNOMONIC distinguishing feature",
+            "THAP domain: zinc finger DNA-binding domain — transcription factor",
+            "Spasmodic dysphonia: adductor type (voice breaks) in THAP1",
+            "Botox thyroarytenoid: gold standard for laryngeal dystonia — 3-monthly",
+            "Ashkenazi enrichment: test THAP1 first in Ashkenazi with voice/neck dystonia",
+            "Penetrance 60%: lower than TOR1A; family counselling critical",
+            "DBS less effective focal: botox preferred for cervical/laryngeal; DBS for generalised",
+            "No cognitive impairment: pure motor disorder (unlike KMT2B)",
+            "Voice misdiagnosed: often diagnosed as functional voice disorder or laryngitis",
+            "Cranio-cervical spectrum: blepharospasm, oromandibular, torticollis all possible",
+            "Upper limb rare: writer's cramp <20% (TOR1A >60%)",
+            "Generalisation uncommon: THAP1 tends to remain cranio-cervical",
+            "EMG-guided botox: mandatory for accurate laryngeal muscle injection",
+            "Age 12-50 yr: younger onset than typical adult-onset focal dystonia",
+        ],
+        "thresholds": [
+            "Laryngeal botox: re-injection at 12 weeks or when symptoms return >70% baseline",
+            "Cervical TWSTRS >30: botox referral; >50: DBS evaluation",
+            "Voice handicap index (VHI) >40: laryngeal botox priority",
+            "DBS referral: BFMDRS >25 with inadequate botox response",
+            "Penetrance 60%: 3 in 5 carriers will develop symptoms — counselling figure",
+            "Airway assessment: FVC <60%: anaesthetic alert card",
+        ],
+        "standards": [
+            "Fuchs T 2009 Nat Genet (THAP1 DYT6 discovery)",
+            "Blanchard A 2011 Arch Neurol (THAP1 genotype-phenotype)",
+            "ESDA laryngeal dystonia botox guidelines",
+            "ACMG-AMP-2015 variant classification",
+            "MDS Task Force spasmodic dysphonia consensus",
+            "Botulinum toxin certification — NICE guidance NG217",
+        ],
+        "etiologies": [
+            {"type": "THAP1 THAP-domain Missense — Cranio-Cervical DYT6", "pct": 50},
+            {"type": "THAP1 C-terminal Truncating — Generalised DYT6", "pct": 22},
+            {"type": "THAP1 Ashkenazi Founder Variant — Laryngeal Predominant", "pct": 15},
+            {"type": "THAP1 Deep Intronic / Splice — Atypical", "pct": 8},
+            {"type": "THAP1 Phenocopy (other cranio-cervical dystonia genes)", "pct": 5},
+        ],
+        "seizure_types": [
+            {"type": "Laryngeal Dystonia (spasmodic dysphonia)", "pct": 75},
+            {"type": "Cervical Dystonia (torticollis)", "pct": 65},
+            {"type": "Blepharospasm", "pct": 42},
+            {"type": "Oromandibular Dystonia", "pct": 28},
+            {"type": "Upper Limb Dystonia (writer's cramp)", "pct": 18},
+        ],
+        "triggers": [
+            {"trigger": "Speaking / Voice Use", "pct": 92},
+            {"trigger": "Stress / Anxiety", "pct": 78},
+            {"trigger": "Fatigue", "pct": 68},
+            {"trigger": "Missed Botox Window (>12 weeks)", "pct": 62},
+            {"trigger": "Sleep Deprivation", "pct": 42},
+            {"trigger": "Caffeine", "pct": 30},
+            {"trigger": "Intercurrent URTI (voice strain)", "pct": 25},
+            {"trigger": "Missed Anticholinergic Dose", "pct": 35},
+        ],
+        "references": [
+            "Fuchs T 2009 Nat Genet (THAP1 mutations in DYT6)",
+            "Blanchard A 2011 Arch Neurol (THAP1 phenotype spectrum)",
+            "Xiromerisiou G 2012 PLoS One (THAP1 Ashkenazi)",
+            "Cif L 2019 Lancet Neurol (DBS inherited dystonia)",
+            "Coubes P 2004 Neurology (laryngeal botox dystonia)",
+            "Bressman S 2009 Neurology (DYT6 families NY Ashkenazi)",
+        ],
+    },
+    # -- ATP1A3 — AHC / CAPOS / RDP -----------------------------------------------
     {
         "gene": "ATP1A3",
         "alt_name": (
-            "ATP1A3 (ATP1A3-1013aa-19q13.2 / AD — ATP1A3-Related-Neurological-Spectrum — "
-            "AHC-Alternating-Hemiplegia-of-Childhood-Flunarizine-1st-Line — "
-            "RDP-Rapid-Onset-Dystonia-Parkinsonism-Rostrocaudal-Gradient-PATHOGNOMONIC — "
-            "CAPOS-Cerebellar-Areflexia-Pes-Cavus-Optic-Atrophy-SNHL — "
-            "AVOID-Triggers-Fever-Emotional-Stress)"
+            "ATP1A3 (ATP1A3-1013aa-19q13.2 / AD-De-Novo — AHC-Alternating-Hemiplegia-Of-Childhood — "
+            "FEVER-ABSOLUTE-TRIGGER-AHC-ATTACKS-FEVER-PROTOCOL-MANDATORY — "
+            "FLUNARIZINE-FIRST-LINE-AHC-Episodes — "
+            "CAPOS-RDP-Rapid-Onset-Dystonia-Parkinsonism-Same-Gene)"
         ),
         "protein": (
-            "ATP1A3 -- 19q13.2 AD -- ATP1A3-1013aa -- "
-            "ATPase-Na+/K+-Transporting-Alpha-3-Subunit-Neuron-Specific-Isoform -- "
-            "Na+/K+-ATPase-α3-Electrogenics-Neuronal-Membrane-Potential -- "
-            "Autosomal-Dominant-Gain-of-Function-Partial-Loss-of-Function -- "
-            "Three-Clinical-Syndromes-AHC-RDP-CAPOS-Genotype-Phenotype -- "
-            "AHC-pE815K-Alternating-Hemiplegia-Episodic-Paroxysmal -- "
-            "RDP-pD801N-Rapid-Onset-Dystonia-Parkinsonism-Rostrocaudal-Spread -- "
-            "CAPOS-pE818K-Febrile-Onset-Cerebellar-Optic-Auditory"
+            "ATP1A3 -- 19q13.2 AD (de novo) -- ATP1A3-1013aa -- "
+            "Na-K-ATPase-Alpha-3-Subunit-Neuronal-Specific-Ion-Pump-Electrochemical-Gradient -- "
+            "AHC-Alternating-Hemiplegia-Childhood-OMIM-614820 -- "
+            "CAPOS-Cerebellar-Ataxia-Areflexia-Pes-Cavus-Optic-Atrophy-OMIM-601338 -- "
+            "RDP-Rapid-Onset-Dystonia-Parkinsonism-OMIM-128235 -- "
+            "p.D801N-Most-Common-AHC-Variant-WORLDWIDE -- "
+            "p.E815K-More-Severe-AHC-Phenotype -- "
+            "p.G947R-E945K-CAPOS -- "
+            "p.D923N-I363N-RDP -- "
+            "FEVER-ABSOLUTE-TRIGGER-LIFE-THREATENING-FEVER-PROTOCOL-MANDATORY -- "
+            "Episodic-Hemiplegia-Both-Sides-Alternating-PATHOGNOMONIC -- "
+            "19q13.2"
         ),
         "locus": "19q13.2",
         "protein_size": "1013 aa",
         "inheritance": (
-            "AD (autosomal dominant) — gain/loss of function; "
-            "Mostly de novo (AHC/RDP/CAPOS all predominantly de novo); "
-            "Rare familial cases with variable expressivity; "
-            "Genotype-phenotype correlations: "
-            "AHC: p.E815K (most common), p.T672A, p.G947R; "
-            "RDP: p.D801N (distinctive); "
-            "CAPOS: p.E818K (highly specific — single variant causes CAPOS); "
-            "Prevalence AHC: 1 in 1,000,000; "
-            "No parental mosaicism testing required (de novo confirmed usually)"
+            "AD (autosomal dominant); >95% de novo; "
+            "three distinct allelic syndromes: "
+            "(1) AHC: D801N (most common), E815K (severe); "
+            "(2) CAPOS: G947R, E945K; "
+            "(3) RDP: D923N, I363N (young adult, acute onset); "
+            "genotype-phenotype correlation strong — variant determines syndrome; "
+            "no familial recurrence typical (de novo); "
+            "germline mosaicism in 1-2% (recurrence risk)"
         ),
-        "age_of_onset": (
-            "AHC: onset <18 months (DIAGNOSTIC CRITERION); "
-            "AHC: hemiplegic episodes from age 3-18 months; "
-            "AHC: nystagmus at birth/neonatal — earliest sign; "
-            "AHC: episodes triggered by fever, emotional stress, water; "
-            "AHC: bilateral hemiplegia = respiratory compromise EMERGENCY; "
-            "RDP: onset 4-55 yr (most adolescent/young adult); "
-            "RDP: ABRUPT onset within hours-4 weeks; NEVER gradual; "
-            "CAPOS: onset during febrile illness age 1-6 yr"
-        ),
-        "key_biomarker": (
-            "Genetic: ATP1A3 sequencing — targeted variant panels; "
-            "AHC: clinical diagnosis (criteria: onset <18 months, alternating hemiplegia, "
-            "normal MRI between episodes, improvement with sleep); "
-            "EEG: ictal EEG during hemiplegia — NOT epileptiform (distinguishes from seizure); "
-            "MRI: NORMAL between episodes (AHC/RDP); "
-            "CSF: NORMAL (no inflammatory); "
-            "CAPOS: VEP (visual evoked potential) abnormal; ABR (auditory brainstem response) abnormal; "
-            "Ophthalmology: optic atrophy (CAPOS); "
-            "Nerve conduction: ABSENT reflexes (CAPOS areflexia); "
-            "DATscan: NORMAL (RDP — contrast Parkinson's; DAT intact)"
-        ),
+        "age_of_onset": "AHC: neonatal/infancy (<18 months); CAPOS: childhood; RDP: young adult (sudden)",
         "pathognomonic": (
-            "ALTERNATING HEMIPLEGIA <18 MONTHS = ATP1A3-AHC until proven otherwise; "
-            "BILATERAL HEMIPLEGIA = respiratory compromise EMERGENCY — CAREGIVER TRAINING MANDATORY; "
-            "EPISODES RESOLVE WITH SLEEP = AHC PATHOGNOMONIC (hemiplegia disappears after sleep); "
-            "NYSTAGMUS IN NEONATAL PERIOD = earliest ATP1A3-AHC sign; "
-            "RAPID-ONSET DYSTONIA-PARKINSONISM ROSTROCAUDAL GRADIENT = RDP PATHOGNOMONIC (cranial > arm > leg); "
-            "RDP ABRUPT ONSET HOURS-WEEKS THEN PLATEAU = NOT progressive (contrasts PD); "
-            "CAPOS p.E818K = single variant causing entire syndrome; "
-            "FEVER TRIGGERS AHC EPISODES = avoid antipyretics delay (treat fever aggressively); "
-            "DATSCAN NORMAL IN RDP = contrasts Parkinson's (DAT ABNORMAL in PD)"
+            "AHC — ALTERNATING HEMIPLEGIA: episodes affecting right then left side alternately PATHOGNOMONIC; "
+            "FEVER = ABSOLUTE TRIGGER FOR AHC ATTACKS: even minor temperature elevation → prolonged hemiplegia; "
+            "FEVER PROTOCOL MANDATORY: paracetamol, cooling, reduce fever IMMEDIATELY; "
+            "AHC attacks also triggered by: water immersion, emotional upset, specific foods; "
+            "Episodes resolve with SLEEP (pathognomonic — hemiplegia disappears when child wakes); "
+            "CAPOS: acute cerebellar ataxia + areflexia + pes cavus + optic atrophy + SNHL — episodic; "
+            "RDP: RAPID-ONSET (hours) dystonia + parkinsonism in young adult after physical/emotional stress; "
+            "RDP: caudal-rostral distribution (legs > arms > face — PATHOGNOMONIC RDP direction); "
+            "Nystagmus: present in AHC and CAPOS; "
+            "D801N variant: typical AHC severity; E815K: severe AHC + worse epilepsy"
         ),
         "treatment": (
-            "AHC: Flunarizine (calcium channel blocker) — reduces frequency/severity; "
-            "AHC: 5-10 mg/day flunarizine; most effective preventive; "
-            "AHC: Benzodiazepines (clonazepam/diazepam) PRN during episodes; "
-            "AHC: Sleep induction aborts episodes (carry sleeping medication); "
-            "AHC: AVOID triggers — fever (treat early), emotional stress, water; "
-            "RDP: No effective treatment for core dystonia-parkinsonism (no levodopa response); "
-            "RDP: Botulinum toxin for focal dystonia components; "
-            "RDP: DBS limited evidence; "
-            "CAPOS: Supportive — hearing aids (SNHL), low-vision support (optic atrophy); "
-            "All ATP1A3: genetic counselling (de novo — sibling risk very low)"
+            "AHC — ACUTE ATTACKS: "
+            "FLUNARIZINE (calcium channel blocker): first-line prevention; 2.5-10 mg/day; "
+            "reduces attack frequency 40-60%; not curative; "
+            "BENZODIAZEPINES (diazepam): for prolonged attacks — abort episode; "
+            "FEVER: IMMEDIATE FEVER CONTROL (paracetamol + cooling) — MOST IMPORTANT MANAGEMENT; "
+            "AVOID ALL TRIGGERS: water immersion, emotional stress, specific foods; "
+            "INTER-ATTACK: physical + cognitive development support; "
+            "STATUS HEMIPLEGICUS: IV diazepam; hospital protocol required; "
+            "CAPOS: same trigger avoidance; vestibular therapy for balance; "
+            "CAPOS SNHL: hearing aids early; cochlear implant if profound; "
+            "RDP: no effective pharmacological treatment; DBS-GPi attempted with limited success; "
+            "PHYSIOTHERAPY: all three syndromes; "
+            "KETOGENIC DIET: some AHC benefit reported (Level C)"
         ),
-        "critical_flags": [
-            "AHC-ALTERNATING-HEMIPLEGIA-<18MONTHS-PATHOGNOMONIC",
-            "BILATERAL-HEMIPLEGIA-RESPIRATORY-EMERGENCY-AHC",
-            "EPISODES-RESOLVE-WITH-SLEEP-PATHOGNOMONIC-AHC",
-            "NYSTAGMUS-NEONATAL-EARLIEST-AHC-SIGN",
-            "RDP-ABRUPT-ONSET-HOURS-WEEKS-ROSTROCAUDAL-GRADIENT",
-            "FEVER-TRIGGERS-AHC-TREAT-EARLY-AGGRESSIVELY",
-            "FLUNARIZINE-FIRST-LINE-AHC-PREVENTION",
-            "CAPOS-p.E818K-SINGLE-VARIANT-CEREBELLAR-SNHL-OPTIC",
-            "DATSCAN-NORMAL-RDP-CONTRASTS-PARKINSONS",
-            "NO-LEVODOPA-RESPONSE-RDP-CONTRAST-GCH1-DRD",
+        "contraindications": (
+            "FEVER IN AHC: NEVER IGNORE — FEVER IS LIFE-THREATENING TRIGGER; "
+            "AVOID FEVER EXPOSURE: no live attenuated vaccines during illness; "
+            "WATER IMMERSION RESTRICTIONS: bathing supervised; no swimming alone; "
+            "AVOID EMOTIONAL EXTREMES: excitement, fear — attack triggers; "
+            "ACETAZOLAMIDE: reported to worsen some AHC — NOT routinely used; "
+            "CAUTION SODIUM CHANNEL BLOCKERS: may worsen Na+/K+-ATPase dysfunction; "
+            "AVOID GENERAL ANAESTHESIA WITHOUT NEUROLOGICAL ALERT: Na+/K+-ATPase dysfunction; "
+            "DO NOT DISMISS HEMIPLEGIA AS TODD'S PARESIS without ATP1A3 testing in infant"
+        ),
+        "monitoring": [
+            "AHC ATTACK DIARY: daily; record duration, side, trigger, temperature",
+            "FEVER TEMPERATURE: threshold 37.5°C → activate fever protocol",
+            "FLUNARIZINE DOSE: 3-monthly review during titration (weight-based)",
+            "COGNITIVE DEVELOPMENT: Bayley / WISC 6-monthly — cognitive regression risk",
+            "OPHTHALMOLOGY: optic atrophy (CAPOS); annual OCT",
+            "AUDIOLOGY: SNHL in CAPOS — annual audiogram",
+            "CARDIAC: arrhythmia reported in ATP1A3 — 12-lead ECG annually",
+            "EEG: 6-monthly (AHC + epilepsy comorbidity 50%)",
+            "ATP1A3 EMERGENCY LETTER: patient carries letter + protocol card at all times",
+        ],
+        "lifecycle": [
+            "Neonatal (AHC): nystagmus, episodic floppiness, first hemiplegic episodes",
+            "Infancy (AHC): fever protocol established; flunarizine initiation",
+            "Childhood (AHC): cognitive/motor development; school support; attack diary",
+            "Adolescence (AHC): independence; self-management of fever protocol",
+            "Adult (AHC/RDP/CAPOS): transition; driving restrictions; employment",
+            "Family planning: 95% de novo → low recurrence; rare germline mosaic counselling",
+        ],
+        "concepts": [
+            "ATP1A3: Na+/K+-ATPase alpha-3 — neuronal electrogenic pump",
+            "AHC: alternating hemiplegia of childhood — episodes both sides alternating",
+            "Sleep resolution: hemiplegia resolves with sleep — PATHOGNOMONIC",
+            "Fever absolute trigger: even mild temperature elevation → attack",
+            "Fever protocol: immediate paracetamol + cooling — most important intervention",
+            "D801N: most common AHC variant; E815K: more severe",
+            "CAPOS: completely different phenotype (cerebellar + optic + SNHL) — same gene",
+            "RDP: young adult acute dystonia-parkinsonism — hours onset",
+            "RDP caudal-rostral: legs > arms > face — direction of spread pathognomonic",
+            "Flunarizine: Ca2+ channel blocker — reduces AHC frequency",
+            "Water immersion trigger: bathing supervised at all times in AHC",
+            "Sleep resolves attack: clinically useful — induce nap for acute attack",
+            "Allelic heterogeneity: 3 distinct syndromes from different ATP1A3 variants",
+            "De novo 95%: most cases new mutation — negative family history expected",
+            "Emergency letter: always carry fever protocol and diagnosis card",
+        ],
+        "thresholds": [
+            "Temperature 37.5°C in AHC: activate fever protocol immediately",
+            "Attack duration >2 hours: consider IV diazepam; hospital attendance",
+            "Attack frequency >4/month on flunarizine: dose increase or KD trial",
+            "CAPOS audiogram: pure tone average >40 dB: hearing aid fitting",
+            "AHC ECG: QTc >450 ms: cardiology referral",
+            "Cognitive regression: 2-point drop on standardised score: increase support",
+        ],
+        "standards": [
+            "Heinzen EL 2012 Nat Genet (ATP1A3 AHC discovery)",
+            "Rosewich H 2012 Nat Genet (ATP1A3 CAPOS)",
+            "AHC of Childhood International Working Group consensus 2015",
+            "ACMG-AMP-2015 variant classification",
+            "Flunarizine dosing — European Paediatric Neurology guidelines",
+            "CAPOS Management — Kagawa metabolic neurology consensus",
+        ],
+        "etiologies": [
+            {"type": "ATP1A3 p.D801N — Classic AHC (alternating hemiplegia)", "pct": 45},
+            {"type": "ATP1A3 p.E815K — Severe AHC + Epilepsy", "pct": 18},
+            {"type": "ATP1A3 CAPOS variants (G947R/E945K) — CAPOS syndrome", "pct": 15},
+            {"type": "ATP1A3 RDP variants (D923N/I363N) — Rapid-Onset Dystonia-Parkinsonism", "pct": 12},
+            {"type": "ATP1A3 Other Missense — Atypical AHC/Overlap", "pct": 10},
+        ],
+        "seizure_types": [
+            {"type": "Alternating Hemiplegia Episodes (AHC)", "pct": 88},
+            {"type": "Epileptic Seizures (comorbid in AHC)", "pct": 52},
+            {"type": "Generalised Dystonia (inter-attack baseline in severe)", "pct": 35},
+            {"type": "Cerebellar Ataxia Episodes (CAPOS)", "pct": 22},
+            {"type": "Acute Dystonia-Parkinsonism Onset (RDP)", "pct": 15},
+        ],
+        "triggers": [
+            {"trigger": "FEVER (ANY TEMPERATURE ELEVATION)", "pct": 98},
+            {"trigger": "Water Immersion (bathing / swimming)", "pct": 82},
+            {"trigger": "Emotional Stress / Excitement", "pct": 75},
+            {"trigger": "Fatigue / Sleep Deprivation", "pct": 65},
+            {"trigger": "Specific Foods (chocolate, citrus — patient-specific)", "pct": 40},
+            {"trigger": "Physical Exertion (RDP)", "pct": 35},
+            {"trigger": "Bright Light / Flicker", "pct": 28},
+            {"trigger": "Missed Flunarizine Dose", "pct": 45},
+        ],
+        "references": [
+            "Heinzen EL 2012 Nat Genet (ATP1A3 AHC discovery)",
+            "Rosewich H 2012 Nat Genet (ATP1A3 CAPOS)",
+            "Mikati MA 2013 Neurology (AHC clinical management)",
+            "Brashear A 1997 Neurology (RDP original description)",
+            "Sweney MT 2015 Pediatr Neurol (AHC fever protocol)",
+            "Dard R 2015 Dev Med Child Neurol (AHC flunarizine outcomes)",
         ],
     },
-
-    # -- KMT2B — DYT-KMT2B (DYT28) ------------------------------------------------
-    {
-        "gene": "KMT2B",
-        "alt_name": (
-            "KMT2B (KMT2B-2715aa-19q13.12 / AD — DYT-KMT2B-DYT28-Childhood-Complex-Dystonia — "
-            "Oculomotor-Abnormalities-PATHOGNOMONIC-DDx-DYT1 — "
-            "Mild-ID-Facial-Dysmorphism — "
-            "GPi-DBS-HIGHLY-RESPONSIVE — "
-            "De-Novo-Dominant-Microdeletion-CMA-Mandatory)"
-        ),
-        "protein": (
-            "KMT2B -- 19q13.12 AD -- KMT2B-2715aa -- "
-            "Lysine-Methyltransferase-2B-MLL4-Histone-H3K4-Methyltransferase -- "
-            "DYT-KMT2B-DYT28-Childhood-Onset-Complex-Dystonia -- "
-            "De-Novo-Dominant-Mostly-Truncating-Missense -- "
-            "Oculomotor-Abnormalities-Supranuclear-Gaze-Palsy-Nystagmus -- "
-            "Mild-Intellectual-Disability-Facial-Dysmorphism-Short-Stature -- "
-            "GPi-DBS-Bilateral-Highly-Effective-Earlier-Is-Better -- "
-            "Microdeletion-19q13.12-CMA-Required-Sequencing-May-Miss"
-        ),
-        "locus": "19q13.12",
-        "protein_size": "2715 aa",
-        "inheritance": (
-            "AD (autosomal dominant) — mostly de novo; "
-            "Loss of function: truncating variants (nonsense/frameshift/splice) predominate; "
-            "Microdeletions of 19q13.12: up to 30% — sequencing ALONE misses these; "
-            "CMA (chromosomal microarray) MANDATORY alongside sequencing; "
-            "Rare familial cases with variable expressivity; "
-            "No parental mosaicism data; "
-            "Prevalence: rare, exact figure unknown; "
-            "Constitutes ~3-6% of children with unexplained generalised dystonia"
-        ),
-        "age_of_onset": (
-            "Onset: 1-12 yr (childhood mandatory for classical DYT28); "
-            "Lower limbs first — then rapid generalisation; "
-            "Oculomotor abnormalities early (supranuclear gaze palsy, nystagmus); "
-            "Facial dystonia + oromandibular: distinguish from DYT1 (face spared in DYT1); "
-            "Mild ID/developmental delay: present in most; "
-            "Facial dysmorphism: wide forehead, broad nasal bridge; "
-            "Short stature: 30-50%; "
-            "Rapid progressive course without treatment; "
-            "After GPi-DBS: improvement within weeks"
-        ),
-        "key_biomarker": (
-            "Genetic: KMT2B sequencing + CMA for 19q13.12 microdeletion (both required); "
-            "MRI brain: NORMAL (no structural lesion — primary dystonia); "
-            "Ophthalmology: supranuclear gaze palsy, nystagmus assessment; "
-            "Neuropsychology: mild ID documented; "
-            "DATscan: NORMAL; "
-            "CSF: NORMAL (no neurotransmitter deficiency); "
-            "Levodopa trial: POOR response (contrast GCH1/DRD); "
-            "EMG: overflow co-contraction; "
-            "EEG: NORMAL (no epilepsy in typical DYT28)"
-        ),
-        "pathognomonic": (
-            "CHILDHOOD GENERALISED DYSTONIA + OCULOMOTOR ABNORMALITIES = KMT2B until proven otherwise; "
-            "OCULOMOTOR SIGNS (supranuclear gaze palsy, nystagmus) = critical DDx from DYT1 (no oculomotor in DYT1); "
-            "MILD ID + FACIAL DYSMORPHISM + GENERALISED DYSTONIA = DYT28/KMT2B phenotype; "
-            "MICRODELETION NOT DETECTED BY SEQUENCING ALONE = CMA MANDATORY alongside sequence; "
-            "GPi-DBS HIGHLY EFFECTIVE = respond even better than DYT1 in some series; "
-            "EARLIER DBS = BETTER OUTCOME — do not delay; "
-            "LEVODOPA POOR RESPONSE = distinguishes from DRD/GCH1"
-        ),
-        "treatment": (
-            "GPi-DBS: MOST EFFECTIVE — bilateral GPi; earlier surgery = better outcome; "
-            "Do not delay DBS waiting for age threshold if disease is severe; "
-            "Trihexyphenidyl: high-dose anticholinergic before DBS; "
-            "Baclofen: oral or intrathecal adjunct; "
-            "Botulinum toxin: focal/segmental burden reduction pre-DBS; "
-            "Levodopa trial: perform to exclude DRD (poor response expected in KMT2B); "
-            "Tetrabenazine: AVOID (worsens primary dystonia); "
-            "Multidisciplinary: physiotherapy, OT, speech (oromandibular dystonia); "
-            "Genetic counselling: de novo — sibling risk very low; "
-            "Educational support for mild ID"
-        ),
-        "critical_flags": [
-            "OCULOMOTOR-ABNORMALITIES-PATHOGNOMONIC-DDx-DYT1-NO-OCULOMOTOR",
-            "CMA-MANDATORY-19q13.12-MICRODELETION-SEQUENCING-MISSES-30pct",
-            "GPi-DBS-HIGHLY-EFFECTIVE-EARLIER-IS-BETTER",
-            "MILD-ID-FACIAL-DYSMORPHISM-DISTINGUISH-DYT1",
-            "DE-NOVO-DOMINANT-MOSTLY-TRUNCATING",
-            "LEVODOPA-POOR-RESPONSE-CONTRAST-GCH1-DRD",
-            "CHILDHOOD-ONSET-<12yr-GENERALISED-RAPID",
-            "TETRABENAZINE-AVOID-WORSENS-PRIMARY-DYSTONIA",
-            "NORMAL-MRI-PRIMARY-DYSTONIA-KMT2B",
-            "FACIAL-OROMANDIBULAR-DYSTONIA-DISTINGUISH-DYT1",
-        ],
-    },
-
-    # -- ADCY5 — ADCY5-Related Hyperkinetic Movement Disorder -----------------------
-    {
-        "gene": "ADCY5",
-        "alt_name": (
-            "ADCY5 (ADCY5-1261aa-3q21.3 / AD — ADCY5-Related-Hyperkinetic-Movement-Disorder — "
-            "Nocturnal-Dyskinesia-Worsening-PATHOGNOMONIC — "
-            "Facial-Hypotonia-Chorea-Dystonia-Myoclonus-Triad — "
-            "Caffeine-ABSOLUTELY-CI — "
-            "Clonazepam-Acetazolamide-1st-Line)"
-        ),
-        "protein": (
-            "ADCY5 -- 3q21.3 AD -- ADCY5-1261aa -- "
-            "Adenylate-Cyclase-5-Striatal-cAMP-Production-Dopamine-Receptor-Signal -- "
-            "ADCY5-Related-Hyperkinetic-Movement-Disorder-ADCY5-RMD -- "
-            "Gain-of-Function-Increased-cAMP-Striatal-Dysfunction -- "
-            "Autosomal-Dominant-De-Novo-Variable-Expressivity -- "
-            "Facial-Hypotonia-Prominent-Neonatal-Hypotonia -- "
-            "Nocturnal-Worsening-Dyskinesia-Sleep-Disruption -- "
-            "Chorea-Dystonia-Myoclonus-Mixed-Hyperkinetic-Disorder -- "
-            "Caffeine-ABSOLUTELY-CI-Adenosine-Pathway-Interaction"
-        ),
-        "locus": "3q21.3",
-        "protein_size": "1261 aa",
-        "inheritance": (
-            "AD (autosomal dominant) — gain of function; "
-            "Mostly de novo; rare familial cases; "
-            "Mosaicism: parental mosaicism documented — siblings may have lower-level mosaic variants; "
-            "Gain-of-function mutation → increased striatal cAMP → dysregulated basal ganglia signalling; "
-            "Two recurrent mutations: p.R418W, p.A726T (hotspot variants >50% of cases); "
-            "Prevalence: rare, exact figure unknown; "
-            "Variable expressivity: mild chorea → severe generalised mixed hyperkinetic disorder"
-        ),
-        "age_of_onset": (
-            "Neonatal/infantile onset: hypotonia prominent first sign; "
-            "Movement disorder: emerges 1-3 yr; "
-            "Facial hypotonia: drooping, floppy facies — persists; "
-            "Hyperkinetic movements: chorea, dystonia, myoclonus — all present (MIXED); "
-            "NOCTURNAL WORSENING: episodes during non-REM sleep; violent limb movements; "
-            "Daytime: variable; worsens with excitement/emotion; "
-            "Respiratory dysfunction: nocturnal episodes may affect breathing; "
-            "Course: non-progressive; may improve with age in some; "
-            "Cognition: usually normal or borderline"
-        ),
-        "key_biomarker": (
-            "Genetic: ADCY5 sequencing — target p.R418W, p.A726T first (recurrent hotspots); "
-            "Parental mosaicism testing (blood AND saliva): if proband is de novo — test parents; "
-            "MRI brain: NORMAL (or mild signal change — non-specific); "
-            "Nocturnal video-EEG: movement episodes NOT epileptiform — EEG NORMAL during episodes; "
-            "DATscan: NORMAL; "
-            "Caffeine challenge: CONTRAINDICATED (may trigger severe episodes); "
-            "Levodopa trial: POOR response (contrast DRD); "
-            "Sleep study (polysomnography): nocturnal NREM episodes documented; "
-            "EMG: irregular myoclonic bursts + choreoathetoid activity"
-        ),
-        "pathognomonic": (
-            "NOCTURNAL DYSKINESIA WORSENING DURING SLEEP = ADCY5-RMD PATHOGNOMONIC; episodes during NREM sleep; "
-            "FACIAL HYPOTONIA (drooping face) + CHILDHOOD HYPERKINETIC DISORDER = ADCY5 suspect; "
-            "MIXED CHOREA + DYSTONIA + MYOCLONUS = triad typical of ADCY5 (other dystonia genes: usually pure dystonia); "
-            "CAFFEINE ABSOLUTELY CONTRAINDICATED = adenosine A1 blockade by caffeine → worsens cAMP pathway GOF; "
-            "EEG NORMAL DURING NOCTURNAL EPISODES = NOT epilepsy (critical DDx nocturnal frontal lobe epilepsy); "
-            "p.R418W OR p.A726T = recurrent hotspot — targeted panel FIRST; "
-            "DATSCAN NORMAL = contrasts parkinsonism (no presynaptic dopamine loss)"
-        ),
-        "treatment": (
-            "Clonazepam: FIRST LINE — reduces frequency/severity of nocturnal dyskinesia; "
-            "Acetazolamide: second line — carbonic anhydrase inhibitor, reduces cAMP; "
-            "Combined clonazepam + acetazolamide: often effective; "
-            "CAFFEINE ABSOLUTELY CONTRAINDICATED — educate patient/family; "
-            "Tetrabenazine: some response for chorea component; "
-            "Benzodiazepines: PRN for severe episodes; "
-            "DBS: limited evidence in ADCY5-RMD — variable response; "
-            "Physiotherapy: prevent contractures from dystonic posturing; "
-            "Sleep hygiene: regular sleep schedule; "
-            "Genetic counselling: mosaicism risk — sequence parents blood AND saliva"
-        ),
-        "critical_flags": [
-            "NOCTURNAL-DYSKINESIA-NREM-SLEEP-PATHOGNOMONIC-ADCY5",
-            "CAFFEINE-ABSOLUTELY-CONTRAINDICATED-cAMP-GOF",
-            "FACIAL-HYPOTONIA-MIXED-CHOREA-DYSTONIA-MYOCLONUS-TRIAD",
-            "EEG-NORMAL-DURING-EPISODES-NOT-EPILEPSY-DDx-NFLE",
-            "p.R418W-p.A726T-RECURRENT-HOTSPOTS-50pct",
-            "PARENTAL-MOSAICISM-TEST-BLOOD-AND-SALIVA",
-            "CLONAZEPAM-ACETAZOLAMIDE-FIRST-LINE",
-            "DATSCAN-NORMAL-NOT-PARKINSONISM",
-            "LEVODOPA-POOR-RESPONSE-CONTRAST-DRD-GCH1",
-            "TETRABENAZINE-PARTIAL-RESPONSE-CHOREA-COMPONENT",
-        ],
-    },
-
-    # -- ANO3 — DYT-ANO3 (DYT24) ---------------------------------------------------
+    # -- ANO3 — DYT24 -----------------------------------------------------------
     {
         "gene": "ANO3",
         "alt_name": (
-            "ANO3 (ANO3-981aa-11p14.3 / AD — DYT-ANO3-DYT24-Craniocervical-Adult-Focal-Dystonia — "
-            "Cervical-Dystonia-Torticollis-Most-Common — "
-            "Tremor-Prominent-Distinguish-ETor-CD — "
-            "Botulinum-Toxin-A-1st-Line — "
-            "DBS-Emerging-Generalised)"
+            "ANO3 (ANO3-913aa-11p14.3 / AD — DYT-ANO3-DYT24 — "
+            "CRANIOCERVICAL-TREMULOUS-DYSTONIA-PATHOGNOMONIC-Adult-Onset — "
+            "BOTULINUM-TOXIN-FIRST-LINE — "
+            "DBS-GPi-FOR-SEVERE)"
         ),
         "protein": (
-            "ANO3 -- 11p14.3 AD -- ANO3-981aa -- "
-            "Anoctamin-3-Calcium-Activated-Chloride-Channel-TMEM16-Family -- "
-            "DYT-ANO3-DYT24-Adult-Onset-Focal-Craniocervical-Dystonia -- "
-            "Autosomal-Dominant-Reduced-Penetrance -- "
-            "Cervical-Dystonia-Torticollis-Primary-Presentation -- "
-            "Cranial-Dystonia-Blepharospasm-Oromandibular-Spread -- "
-            "Tremor-Prominent-Often-Misdiagnosed-Essential-Tremor -- "
-            "Botulinum-Toxin-A-Cervical-Cranial-Primary-Treatment"
+            "ANO3 -- 11p14.3 AD -- ANO3-913aa -- "
+            "Anoctamin-3-TMEM16-Family-Calcium-Activated-Chloride-Channel-Scramblase -- "
+            "DYT-ANO3-Dystonia-24-OMIM-615034 -- "
+            "Adult-Onset-Craniocervical-Dystonia-20-50yr -- "
+            "TREMULOUS-DYSTONIA-Tremor-Prominent-Component-PATHOGNOMONIC-DISTINGUISHES-From-THAP1 -- "
+            "Cervical-Dystonia-Head-Tremor-Blepharospasm-Laryngeal-Dysphonia-Variable -- "
+            "Botulinum-Toxin-First-Line-Effective-Focal-Involvement -- "
+            "DBS-GPi-Considered-Botox-Refractory-Generalised -- "
+            "Incomplete-Penetrance-Variable-Expressivity -- "
+            "TMEM16-Family-8-TM-Domains-Homodimer-Ca2+-Activated -- "
+            "11p14.3"
         ),
         "locus": "11p14.3",
-        "protein_size": "981 aa",
+        "protein_size": "913 aa",
         "inheritance": (
-            "AD (autosomal dominant) — loss of function; "
-            "Penetrance: reduced (~60%); "
-            "Founder effect: Northern European (Danish/British); "
-            "ANO3 accounts for approximately 7-15% of familial adult-onset focal dystonia; "
-            "Rare de novo cases reported; "
-            "Expressivity: cervical dystonia most common; blepharospasm, oromandibular rare; "
-            "Non-penetrant carriers: identified in genetic studies"
+            "AD (autosomal dominant); incomplete penetrance; "
+            "variable expressivity within families; "
+            "missense dominant (gain-of-function or dominant negative proposed); "
+            "de novo: ~15-20%; familial majority; "
+            "multiple families reported European and Asian populations; "
+            "GENETIC TESTING: ANO3 targeted sequencing or NGS movement disorder panel"
         ),
-        "age_of_onset": (
-            "Adult onset: 30-60 yr (peak 35-50 yr); "
-            "Childhood onset: RARE — if present, consider other genes; "
-            "Cervical dystonia: most common (torticollis/laterocollis/retrocollis); "
-            "Tremor: head/neck tremor prominent — often precedes or accompanies dystonia; "
-            "Cranial spread: blepharospasm (10%), oromandibular (5%) over time; "
-            "Arm involvement: focal arm dystonia (15%); "
-            "Generalisation: RARE in ANO3 (mostly stays focal/segmental); "
-            "Course: slowly progressive; often plateaus after years"
-        ),
-        "key_biomarker": (
-            "Genetic: ANO3 sequencing — look for missense variants in transmembrane domains; "
-            "MRI brain: NORMAL (primary focal dystonia); "
-            "DATscan: NORMAL (no parkinsonism); "
-            "Sensory trick (geste antagoniste): PRESENT in cervical dystonia (touch chin area relieves spasm); "
-            "EMG: antagonist co-contraction pattern in sternocleidomastoid; "
-            "Botulinum toxin response: GOOD for cervical dystonia; "
-            "Levodopa trial: POOR (not DRD); "
-            "Family history: helpful — adult focal dystonia in multiple relatives suggests ANO3"
-        ),
+        "age_of_onset": "Adult onset 20-50 yr (mean ~40 yr); rare childhood forms reported",
         "pathognomonic": (
-            "ADULT-ONSET CERVICAL DYSTONIA + TREMOR + FAMILY HISTORY = ANO3 highly suspect; "
-            "TREMOR PROMINENT IN CERVICAL DYSTONIA = distinguishes from pure torticollis — may resemble ET; "
-            "SENSORY TRICK (geste antagoniste) = specific to cervical/focal dystonia (absent in Parkinson's); "
-            "FOCAL CRANIOCERVICAL DISTRIBUTION = ANO3 rarely generalises (contrast DYT1/KMT2B childhood); "
-            "FAMILY HISTORY OF ADULT FOCAL DYSTONIA = autosomal dominant reduced penetrance pedigree; "
-            "BOTULINUM TOXIN RESPONSE = excellent for cervical/cranial component; "
-            "DATSCAN NORMAL = not Parkinson's (cervical rigidity DDx PD — DATscan distinguishes)"
+            "CRANIOCERVICAL DYSTONIA WITH TREMULOUS COMPONENT — tremor distinguishes from THAP1; "
+            "CERVICAL DYSTONIA predominant: head turned/tilted + tremulous head shaking; "
+            "Tremor component in ANO3 more prominent than in other dystonia genes; "
+            "BLEPHAROSPASM: involuntary eye closure — common in ANO3 craniocervical; "
+            "Laryngeal involvement: dysphonia/spasmodic dysphonia (less prominent than THAP1); "
+            "Upper limb dystonia: writer's cramp, focal arm dystonia — variable; "
+            "Generalisation uncommon (craniocervical restricted in most); "
+            "ANOCTAMIN-3 CLUE: calcium-activated chloride channel in neurons — basal ganglia; "
+            "MRI normal; DAT-SPECT normal (not parkinsonism)"
         ),
         "treatment": (
-            "Botulinum toxin A (cervical dystonia): MAINSTAY — onabotulinumtoxinA 150-300 U or abobotulinumtoxinA 500-1000 MU; "
-            "Injection every 12 weeks; sternocleidomastoid + splenius capitis targeted; "
-            "Blepharospasm: BoNT-A orbicularis oculi; "
-            "Clonazepam/baclofen: oral adjunct for pain/anxiety component; "
-            "Trihexyphenidyl: some benefit for tremor component; "
-            "Physiotherapy: head/neck stretching, sensory trick training; "
-            "GPi-DBS: emerging evidence for medically refractory cervical dystonia; "
-            "Levodopa: POOR response (not DRD); "
-            "Genetic counselling: reduced penetrance — counselling about asymptomatic relatives"
+            "FIRST-LINE: BOTULINUM TOXIN — effective for focal craniocervical involvement; "
+            "CERVICAL: botox into sternocleidomastoid, splenius capitis, semispinalis (3-monthly); "
+            "BLEPHAROSPASM: periorbital botox (orbicularis oculi); "
+            "TREMULOUS component: may be partially responsive to botox or propranolol; "
+            "PROPRANOLOL / PRIMIDONE: for tremulous dystonia component (trial Level C); "
+            "TRIHEXYPHENIDYL: moderate benefit; "
+            "CLONAZEPAM: adjunct for task-specific relief; "
+            "DBS-GPi or DBS-Vim (tremulous): for severe, refractory cases; "
+            "DBS-GPi preferred if dystonia predominant; DBS-Vim if tremor predominant; "
+            "PHYSIOTHERAPY: head position support, neck exercises; "
+            "SENSORY TRICK: patients often find specific touch relieves dystonia temporarily"
         ),
-        "critical_flags": [
-            "ADULT-ONSET-CERVICAL-DYSTONIA-TREMOR-FAMILY-HX-ANO3",
-            "SENSORY-TRICK-GESTE-ANTAGONISTE-FOCAL-DYSTONIA",
-            "TREMOR-PROMINENT-MISDIAGNOSED-ESSENTIAL-TREMOR",
-            "BOTULINUMTOXIN-A-MAINSTAY-CERVICAL-CRANIAL",
-            "FOCAL-RARELY-GENERALISES-CONTRAST-DYT1-KMT2B",
-            "DATSCAN-NORMAL-NOT-PARKINSONS-DDx-CERVICAL-PD",
-            "REDUCED-PENETRANCE-60pct-FAMILY-COUNSELLING",
-            "NORTHERN-EUROPEAN-FOUNDER-DANISH-BRITISH",
-            "LEVODOPA-POOR-RESPONSE-NOT-DRD",
-            "GPi-DBS-EMERGING-REFRACTORY-CERVICAL",
+        "contraindications": (
+            "AVOID DOPAMINE BLOCKERS: worsen dystonia (same as all hereditary dystonias); "
+            "AVOID LABELLING AS ESSENTIAL TREMOR without ANO3 testing in familial tremulous dystonia; "
+            "CAUTION PROPRANOLOL IN ASTHMA: tremorous component treatment; "
+            "BOTOX OVERDOSE: dysphagia risk with excessive cervical injection; "
+            "DO NOT ASSUME FUNCTIONAL: ANO3 dystonia can look unusual (tremulous makes it complex)"
+        ),
+        "monitoring": [
+            "BFMDRS / TWSTRS-2: 6-monthly",
+            "BOTULINUM TOXIN: symptom diary; re-injection at 12 weeks",
+            "TREMOR (Fahn-Tolosa-Marin): 6-monthly — track tremor vs dystonia ratio",
+            "VOICE (VHI): if laryngeal involved",
+            "DBS PROGRAMMING: 3-monthly first year",
+            "ANO3 FAMILY CASCADE: 50% offspring risk; penetrance incomplete",
+            "PSYCHIATRIC: depression / anxiety — QoL scales 6-monthly",
+            "DYSPHAGIA ASSESSMENT: SLT if oromandibular or laryngeal involvement",
         ],
-    },
-
-    # -- GNAL — DYT-GNAL (DYT25) ---------------------------------------------------
-    {
-        "gene": "GNAL",
-        "alt_name": (
-            "GNAL (GNAL-381aa-18p11.21 / AD — DYT-GNAL-DYT25-Primary-Cranial-Spasmodic-Dysphonia — "
-            "Isolated-Cranial-Laryngeal-Dystonia — "
-            "Striatal-Golf-Dopamine-Adenylyl-Cyclase-Pathway — "
-            "Botulinum-Toxin-A-Laryngeal-Mainstay — "
-            "NOT-DYT1-Limbs-Spared)"
-        ),
-        "protein": (
-            "GNAL -- 18p11.21 AD -- GNAL-381aa -- "
-            "G-Protein-Subunit-Alpha-L-Golf-Striatal-G-Protein-D1-Receptor-Coupling -- "
-            "DYT-GNAL-DYT25-Primary-Isolated-Cranial-Dystonia -- "
-            "Striatal-cAMP-Signalling-Golf-Adenylyl-Cyclase-Pathway -- "
-            "Autosomal-Dominant-Loss-of-Function-Haploinsufficiency -- "
-            "Spasmodic-Dysphonia-Abductor-Adductor-Laryngeal-Dystonia -- "
-            "Blepharospasm-Oromandibular-Spread-Cranial-Segmental -- "
-            "Botulinum-Toxin-A-Laryngeal-Injection-Mainstay-Treatment"
-        ),
-        "locus": "18p11.21",
-        "protein_size": "381 aa",
-        "inheritance": (
-            "AD (autosomal dominant) — GNAL haploinsufficiency; "
-            "Reduced penetrance (~60%); "
-            "Variable expressivity: spasmodic dysphonia, blepharospasm, craniocervical dystonia; "
-            "GNAL accounts for ~7% of isolated focal cranial dystonia families; "
-            "Predominantly female-predominant presentation; "
-            "Rare familial cases with variable cranial phenotypes"
-        ),
-        "age_of_onset": (
-            "Adult onset: 30-60 yr (peak 40-55 yr); "
-            "Spasmodic dysphonia: strained-strangled voice (adductor) or breathy (abductor); "
-            "Blepharospasm: involuntary eye closure, photophobia; "
-            "Oromandibular: jaw opening/closing deviation; "
-            "Cervical dystonia: minority; "
-            "Limbs: SPARED in DYT-GNAL (contrast DYT1/DYT6); "
-            "Generalisation: RARE; stays cranial/laryngeal; "
-            "Course: slowly progressive; responsive to BoNT-A treatment"
-        ),
-        "key_biomarker": (
-            "Genetic: GNAL sequencing — loss of function variants; "
-            "Laryngoscopy: adductor/abductor laryngeal spasm (dystonic adduction during phonation); "
-            "MRI brain: NORMAL; "
-            "DATscan: NORMAL; "
-            "Speech pathology assessment: voice quality, vocal breaks; "
-            "Botulinum toxin injection (laryngeal) response: GOOD; "
-            "Levodopa: POOR response; "
-            "CSF: NORMAL; "
-            "Acoustic analysis: strained-strangled pattern (adductor SD) or aphonic breaks (abductor SD)"
-        ),
-        "pathognomonic": (
-            "SPASMODIC DYSPHONIA (strained-strangled or aphonic voice breaks) = GNAL suspect if familial adult-onset; "
-            "ISOLATED CRANIAL-LARYNGEAL DISTRIBUTION = DYT-GNAL characteristic; LIMBS SPARED (contrast DYT1: limbs first); "
-            "GOLF (Gαolf) = striatal G-protein coupling D1-receptor to adenylyl cyclase; "
-            "GNAL LOSS-OF-FUNCTION → REDUCED cAMP → STRIATAL DOPAMINE PATHWAY DYSFUNCTION; "
-            "ADULT FEMALE PREDOMINANT CRANIAL DYSTONIA = GNAL in differential; "
-            "BOTULINUM TOXIN LARYNGEAL INJECTION = mainstay — thyroarytenoid injection for adductor SD; "
-            "DATSCAN NORMAL = not PD/parkinson-plus; striatal dopamine transporter intact"
-        ),
-        "treatment": (
-            "Spasmodic dysphonia: BoNT-A laryngeal injection — thyroarytenoid (adductor SD); "
-            "Posterior cricoarytenoid injection (abductor SD); "
-            "Dose: onabotulinumtoxinA 2.5-5 U bilaterally thyroarytenoid; "
-            "Frequency: every 3-4 months; sustained benefit; "
-            "Blepharospasm: BoNT-A orbicularis oculi 5-10 U per site; "
-            "Oromandibular: BoNT-A masseter/pterygoid (jaw closing) or mylohyoid (jaw opening); "
-            "Trihexyphenidyl: adjunct systemic benefit limited; "
-            "DBS: STN/GPi — limited evidence for isolated cranial/laryngeal dystonia; "
-            "Voice therapy: adjunct (not curative); "
-            "Levodopa: POOR response"
-        ),
-        "critical_flags": [
-            "SPASMODIC-DYSPHONIA-STRAINED-STRANGLED-OR-APHONIC-GNAL",
-            "ISOLATED-CRANIAL-LARYNGEAL-LIMBS-SPARED-CONTRAST-DYT1",
-            "BOTULINUMTOXIN-A-LARYNGEAL-INJECTION-MAINSTAY-THYROARYTENOID",
-            "GNAL-GOLF-D1-RECEPTOR-STRIATAL-cAMP-PATHWAY",
-            "REDUCED-PENETRANCE-60pct-ADULT-FEMALE-PREDOMINANT",
-            "DATSCAN-NORMAL-NOT-PARKINSONS",
-            "LEVODOPA-POOR-RESPONSE-NOT-DRD-GCH1",
-            "ADULT-ONSET-40s-CRANIAL-DISTRIBUTION",
-            "BLEPHAROSPASM-OROMANDIBULAR-SPREAD-SEGMENTAL",
-            "BOTULINUM-TOXIN-3-4-MONTHS-REPEAT-EVERY-CYCLE",
+        "lifecycle": [
+            "Young adult (20-35 yr): cervical dystonia onset; misdiagnosed as cervical spondylosis",
+            "Mid-adult (35-50 yr): established; botox programme; tremulous component prominent",
+            "Adult (50-65 yr): DBS if refractory; maintenance",
+            "Older adult (65+ yr): hardware considerations; DBS battery planning",
+            "Family planning: 50% risk; penetrance incomplete counselling",
+            "Family cascade: test symptomatic relatives; genetic counselling for carriers",
+        ],
+        "concepts": [
+            "DYT-ANO3 / DYT24: adult-onset craniocervical tremulous dystonia",
+            "Anoctamin-3 (ANO3): TMEM16 family Ca2+-activated chloride channel",
+            "Tremulous dystonia: tremor component distinguishes from THAP1 (less tremulous)",
+            "Craniocervical restriction: most cases do not generalise to limbs",
+            "Botox first-line: focal craniocervical responds well",
+            "DBS dual option: GPi (dystonia dominant) or Vim (tremor dominant)",
+            "Blepharospasm common: part of craniocervical spectrum",
+            "Propranolol adjunct: for tremulous component",
+            "Sensory trick: transient relief with touch — exploitable for therapy",
+            "Incomplete penetrance: family members with same variant may be unaffected",
+            "DAT-SPECT normal: helps exclude early Parkinson's with dystonia",
+            "Misdiagnosis risk: tremulous + neck pain → spondylosis or ET misdiagnosis",
+            "Variable expressivity: same variant → blepharospasm vs cervical vs mixed",
+            "Ca2+-activated Cl- channel: ANO3 dysfunction alters basal ganglia neuronal firing",
+            "Movement disorder panel: ANO3 should be included in familial focal dystonia panels",
+        ],
+        "thresholds": [
+            "Cervical TWSTRS >30: botox referral; >50: DBS evaluation",
+            "Botox: re-injection if symptoms return >70% baseline at 12 weeks",
+            "Tremor FTM >20 on tremor subscale: propranolol/primidone trial",
+            "BFMDRS >25 botox-refractory: DBS referral",
+            "Penetrance: 50-60% estimated — counsel accordingly",
+            "DBS Vim vs GPi: if tremor FTM score > dystonia BFMDRS, favour Vim target",
+        ],
+        "standards": [
+            "Charlesworth G 2012 Am J Hum Genet (ANO3 DYT24 discovery)",
+            "Huang XJ 2018 Mov Disord (ANO3 genotype-phenotype expansion)",
+            "ESDA craniocervical dystonia guidelines",
+            "ACMG-AMP-2015 variant classification",
+            "MDS Task Force dystonia classification 2013",
+            "Botulinum toxin dystonia — ABTA standards",
+        ],
+        "etiologies": [
+            {"type": "ANO3 Missense het — Craniocervical Tremulous Dystonia Classic", "pct": 55},
+            {"type": "ANO3 Missense het — Blepharospasm Predominant", "pct": 22},
+            {"type": "ANO3 Missense het — Cervical Dystonia + Writer's Cramp", "pct": 15},
+            {"type": "ANO3 de novo — Early Onset Variant", "pct": 5},
+            {"type": "ANO3 Phenocopy (other craniocervical dystonia genes)", "pct": 3},
+        ],
+        "seizure_types": [
+            {"type": "Cervical Dystonia + Head Tremor", "pct": 88},
+            {"type": "Blepharospasm", "pct": 55},
+            {"type": "Laryngeal Dystonia (spasmodic dysphonia)", "pct": 35},
+            {"type": "Upper Limb Dystonia (writer's cramp)", "pct": 25},
+            {"type": "Oromandibular Dystonia", "pct": 20},
+        ],
+        "triggers": [
+            {"trigger": "Head Movement / Specific Posture", "pct": 88},
+            {"trigger": "Stress / Anxiety", "pct": 78},
+            {"trigger": "Speaking / Voice Use", "pct": 58},
+            {"trigger": "Fatigue", "pct": 68},
+            {"trigger": "Missed Botox Window (>12 weeks)", "pct": 60},
+            {"trigger": "Cold Weather", "pct": 35},
+            {"trigger": "Sleep Deprivation", "pct": 45},
+            {"trigger": "Caffeine", "pct": 28},
+        ],
+        "references": [
+            "Charlesworth G 2012 Am J Hum Genet (ANO3 DYT24 discovery)",
+            "Huang XJ 2018 Mov Disord (ANO3 clinical expansion)",
+            "Norgren N 2011 Neurogenetics (ANO3 early report)",
+            "Albanese A 2013 Mov Disord (dystonia classification)",
+            "Jinnah HA 2017 Mov Disord (dystonia mechanisms)",
+            "Cif L 2019 Lancet Neurol (DBS inherited dystonia)",
         ],
     },
 ]
 
 
-def _generate_cohort():
-    """Generate 320-patient aggregate (8 × 40 patients, seeds 2070-2077)."""
+def _make_cohort(gene_data, seed):
+    rng = random.Random(seed)
+    ages = [rng.randint(2, 70) for _ in range(40)]
+    # female predominance in GCH1 (4:1), balanced otherwise
+    female_bias = {"GCH1": 0.80}.get(gene_data["gene"], 0.50)
+    sexes = ["F" if rng.random() < female_bias else "M" for _ in range(40)]
+    # survival — all adult-onset generally have normal lifespan except ATP1A3 (AHC attacks)
+    alive_prob = 0.55 if gene_data["gene"] == "ATP1A3" else 0.88
+    alive = [rng.random() < alive_prob for _ in range(40)]
+    etiol_types = [e["type"] for e in gene_data["etiologies"]]
+    etiol_wts = [e["pct"] for e in gene_data["etiologies"]]
+    etiols = rng.choices(etiol_types, weights=etiol_wts, k=40)
+    sz_types = [s["type"] for s in gene_data["seizure_types"]]
+    sz_wts = [s["pct"] for s in gene_data["seizure_types"]]
+    szs = rng.choices(sz_types, weights=sz_wts, k=40)
+    trig_types = [t["trigger"] for t in gene_data["triggers"]]
+    trig_wts = [t["pct"] for t in gene_data["triggers"]]
+    trigs = rng.choices(trig_types, weights=trig_wts, k=40)
+    patients = []
+    for i in range(40):
+        patients.append({
+            "id": f"{gene_data['gene']}-{seed}-{i+1:02d}",
+            "gene": gene_data["gene"],
+            "age": ages[i],
+            "sex": sexes[i],
+            "alive": alive[i],
+            "etiology": etiols[i],
+            "dystonia_type": szs[i],
+            "trigger": trigs[i],
+        })
+    return patients
+
+
+def _build_all():
     all_patients = []
-    for idx, gene_data in enumerate(DYT_GENES):
-        gene = gene_data["gene"]
-        rng = random.Random(SEED_BASE + idx)
-        for i in range(40):
-            age = rng.randint(3, 72)
-            if gene == "TOR1A":
-                onset_age = rng.randint(5, 25)
-                generalised = rng.random() < 0.70
-                gpi_dbs = rng.random() < 0.45
-                delgag = rng.random() < 0.92
-                anticholinergic = rng.random() < 0.75
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "generalised_dystonia": generalised,
-                    "gpi_dbs": gpi_dbs,
-                    "delgag_variant": delgag,
-                    "anticholinergic_use": anticholinergic,
-                })
-            elif gene == "THAP1":
-                onset_age = rng.randint(5, 46)
-                laryngeal = rng.random() < 0.55
-                cervical = rng.random() < 0.45
-                generalised = onset_age < 20 and rng.random() < 0.50
-                bont_use = rng.random() < 0.70
-                dbs = generalised and rng.random() < 0.35
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "laryngeal_involvement": laryngeal,
-                    "cervical_involvement": cervical,
-                    "generalised_dystonia": generalised,
-                    "botulinum_toxin": bont_use,
-                    "gpi_dbs": dbs,
-                })
-            elif gene == "GCH1":
-                onset_age = rng.randint(1, 18)
-                female = rng.random() < 0.75
-                diurnal_fluctuation = True
-                levodopa_response = True
-                misdiagnosed_cp = onset_age < 10 and rng.random() < 0.55
-                parkinsonism_later = age > 40 and rng.random() < 0.25
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "female": female,
-                    "diurnal_fluctuation": diurnal_fluctuation,
-                    "levodopa_dramatic_response": levodopa_response,
-                    "misdiagnosed_cerebral_palsy": misdiagnosed_cp,
-                    "parkinsonism_in_adult": parkinsonism_later,
-                })
-            elif gene == "ATP1A3":
-                syndrome = rng.choice(["AHC", "RDP", "CAPOS"])
-                onset_age = rng.randint(0, 55) if syndrome == "RDP" else (rng.randint(0, 18) if syndrome == "CAPOS" else rng.randint(0, 2))
-                flunarizine = syndrome == "AHC" and rng.random() < 0.80
-                bilateral_hemi = syndrome == "AHC" and rng.random() < 0.30
-                capos_snhl = syndrome == "CAPOS"
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "syndrome": syndrome,
-                    "onset_age": onset_age,
-                    "flunarizine_use": flunarizine,
-                    "bilateral_hemiplegia_event": bilateral_hemi,
-                    "capos_snhl": capos_snhl,
-                })
-            elif gene == "KMT2B":
-                onset_age = rng.randint(1, 12)
-                oculomotor = rng.random() < 0.85
-                mild_id = rng.random() < 0.80
-                microdeletion = rng.random() < 0.28
-                gpi_dbs = rng.random() < 0.60
-                generalised = True
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "oculomotor_abnormality": oculomotor,
-                    "mild_id": mild_id,
-                    "microdeletion_detected": microdeletion,
-                    "gpi_dbs": gpi_dbs,
-                    "generalised_dystonia": generalised,
-                })
-            elif gene == "ADCY5":
-                onset_age = rng.randint(0, 3)
-                nocturnal_dyskinesia = True
-                facial_hypotonia = rng.random() < 0.90
-                chorea = rng.random() < 0.80
-                dystonia = rng.random() < 0.75
-                myoclonus = rng.random() < 0.65
-                caffeine_exposure = rng.random() < 0.20
-                clonazepam = rng.random() < 0.70
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "nocturnal_dyskinesia": nocturnal_dyskinesia,
-                    "facial_hypotonia": facial_hypotonia,
-                    "chorea": chorea,
-                    "dystonia": dystonia,
-                    "myoclonus": myoclonus,
-                    "caffeine_exposure": caffeine_exposure,
-                    "clonazepam_use": clonazepam,
-                })
-            elif gene == "ANO3":
-                onset_age = rng.randint(30, 65)
-                cervical = rng.random() < 0.85
-                tremor = rng.random() < 0.75
-                cranial = rng.random() < 0.30
-                generalised = rng.random() < 0.05
-                bont_use = rng.random() < 0.85
-                sensory_trick = rng.random() < 0.70
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "cervical_dystonia": cervical,
-                    "tremor_prominent": tremor,
-                    "cranial_involvement": cranial,
-                    "generalised": generalised,
-                    "botulinum_toxin": bont_use,
-                    "sensory_trick": sensory_trick,
-                })
-            elif gene == "GNAL":
-                onset_age = rng.randint(30, 65)
-                spasmodic_dysphonia = rng.random() < 0.75
-                blepharospasm = rng.random() < 0.40
-                oromandibular = rng.random() < 0.25
-                cervical = rng.random() < 0.20
-                limb_involvement = False  # spared
-                bont_laryngeal = spasmodic_dysphonia and rng.random() < 0.88
-                all_patients.append({
-                    "gene": gene, "patient_id": f"{gene}-{i+1:03d}",
-                    "age_at_presentation": age,
-                    "onset_age": onset_age,
-                    "spasmodic_dysphonia": spasmodic_dysphonia,
-                    "blepharospasm": blepharospasm,
-                    "oromandibular_dystonia": oromandibular,
-                    "cervical_involvement": cervical,
-                    "limb_involvement": limb_involvement,
-                    "botulinum_toxin_laryngeal": bont_laryngeal,
-                })
+    for idx, g in enumerate(DYSTONIA_GENES):
+        seed = SEED_BASE + idx
+        all_patients.extend(_make_cohort(g, seed))
     return all_patients
 
 
 def overview():
-    """Return atlas-level aggregate overview."""
-    patients = _generate_cohort()
-    generalised = sum(1 for p in patients if p.get("generalised_dystonia") or p.get("generalised"))
-    gpi_dbs = sum(1 for p in patients if p.get("gpi_dbs"))
-    levodopa_response = sum(1 for p in patients if p.get("levodopa_dramatic_response"))
-    bont_use = sum(1 for p in patients if p.get("botulinum_toxin") or p.get("botulinum_toxin_laryngeal"))
-    nocturnal = sum(1 for p in patients if p.get("nocturnal_dyskinesia"))
-    oculomotor = sum(1 for p in patients if p.get("oculomotor_abnormality"))
-    misdiagnosed = sum(1 for p in patients if p.get("misdiagnosed_cerebral_palsy"))
-    spasmodic_dysphonia = sum(1 for p in patients if p.get("spasmodic_dysphonia"))
-    tremor_prominent = sum(1 for p in patients if p.get("tremor_prominent"))
-    flunarizine = sum(1 for p in patients if p.get("flunarizine_use"))
+    pts = _build_all()
+    total = len(pts)
+    alive_pct = round(100 * sum(1 for p in pts if p["alive"]) / total, 1)
+
+    gene_summaries = {}
+    for idx, g in enumerate(DYSTONIA_GENES):
+        seed = SEED_BASE + idx
+        cohort = _make_cohort(g, seed)
+        gene_summaries[g["gene"]] = {
+            "gene": g["gene"],
+            "alt_name": g["alt_name"],
+            "locus": g["locus"],
+            "protein_size": g["protein_size"],
+            "inheritance": g["inheritance"].split(";")[0].strip(),
+            "n_patients": len(cohort),
+            "alive_pct": round(100 * sum(1 for p in cohort if p["alive"]) / len(cohort), 1),
+            "top_etiology": max(g["etiologies"], key=lambda e: e["pct"])["type"],
+            "top_dystonia_type": max(g["seizure_types"], key=lambda s: s["pct"])["type"],
+            "top_trigger": max(g["triggers"], key=lambda t: t["pct"])["trigger"],
+            "pathognomonic_summary": g["pathognomonic"][:160] + "…",
+        }
+
+    from collections import Counter
+    all_etiol = Counter(p["etiology"] for p in pts)
+    all_dyst = Counter(p["dystonia_type"] for p in pts)
+
     return {
-        "atlas": "Hereditary-Dystonia-Atlas",
-        "genes": [g["gene"] for g in DYT_GENES],
-        "total_patients": len(patients),
-        "seeds": f"{SEED_BASE}-{SEED_BASE + 7}",
-        "generalised_dystonia_patients": generalised,
-        "gpi_dbs_patients": gpi_dbs,
-        "levodopa_responsive_drd_patients": levodopa_response,
-        "botulinum_toxin_patients": bont_use,
-        "nocturnal_dyskinesia_patients": nocturnal,
-        "oculomotor_abnormality_patients": oculomotor,
-        "misdiagnosed_cerebral_palsy": misdiagnosed,
-        "spasmodic_dysphonia_patients": spasmodic_dysphonia,
-        "tremor_prominent_patients": tremor_prominent,
-        "flunarizine_use_ahc": flunarizine,
+        "title": "Hereditary-Dystonia-Atlas",
+        "subtitle": (
+            "Complete 8-Gene Hereditary Dystonia Atlas — "
+            "TOR1A (DYT1) · SGCE (DYT11/M-D) · GCH1 (DRD/DYT5a) · TH (DRD/DYT5b) · "
+            "KMT2B (DYT28) · THAP1 (DYT6) · ATP1A3 (AHC/CAPOS/RDP) · ANO3 (DYT24)"
+        ),
+        "n_patients": total,
+        "seeds": f"{SEED_BASE}-{SEED_BASE+7}",
+        "alive_pct": alive_pct,
+        "gene_summaries": gene_summaries,
+        "etiology_distribution": dict(all_etiol.most_common(10)),
+        "dystonia_type_distribution": dict(all_dyst.most_common(8)),
+        "key_flags": [
+            "GCH1-L-DOPA-CURATIVE-MUST-TRY-BEFORE-BOTOX-IN-CHILDHOOD-DYSTONIA",
+            "GCH1-DIURNAL-VARIATION-PATHOGNOMONIC-BETTER-MORNING",
+            "TOR1A-GAG-DELETION-MOST-COMMON-GENETIC-GENERALISED-DYSTONIA",
+            "TOR1A-DBS-GPi->70pct-IMPROVEMENT",
+            "SGCE-MYOCLONUS-PREDOMINATES-PATERNAL-IMPRINTING",
+            "SGCE-ALCOHOL-RESPONSIVE-DIAGNOSTIC-NOT-TREATMENT",
+            "SGCE-ALCOHOL-DEPENDENCE-RISK-30pct",
+            "TH-AR-DRD-BIALLELIC-CSF-HVA-5HIAA-REDUCED-PATHOGNOMONIC",
+            "KMT2B-DBS-GPi-HIGHLY-EFFECTIVE-EVEN-WITH-INTELLECTUAL-DISABILITY",
+            "THAP1-LARYNGEAL-DYSTONIA-PATHOGNOMONIC",
+            "ATP1A3-FEVER-ABSOLUTE-TRIGGER-FEVER-PROTOCOL-MANDATORY",
+            "ATP1A3-SLEEP-RESOLVES-AHC-ATTACK-PATHOGNOMONIC",
+            "ANO3-CRANIOCERVICAL-TREMULOUS-DYSTONIA-PATHOGNOMONIC",
+            "L-DOPA-FIRST-IN-CHILDHOOD-DYSTONIA-ALWAYS",
+        ],
     }
 
 
 def breakdown():
-    """Return per-gene breakdown with clinical details."""
-    patients = _generate_cohort()
     result = {}
-    for gene_data in DYT_GENES:
-        gene = gene_data["gene"]
-        gene_patients = [p for p in patients if p["gene"] == gene]
-        result[gene] = {
-            "gene": gene,
-            "alt_name": gene_data["alt_name"],
-            "locus": gene_data["locus"],
-            "protein_size": gene_data["protein_size"],
-            "inheritance": gene_data["inheritance"],
-            "patient_count": len(gene_patients),
-            "pathognomonic": gene_data["pathognomonic"],
-            "treatment": gene_data["treatment"],
-            "critical_flags": gene_data["critical_flags"],
-            "age_of_onset": gene_data["age_of_onset"],
-            "key_biomarker": gene_data["key_biomarker"],
+    for idx, g in enumerate(DYSTONIA_GENES):
+        seed = SEED_BASE + idx
+        cohort = _make_cohort(g, seed)
+        result[g["gene"]] = {
+            "gene": g["gene"],
+            "protein": g["protein"],
+            "locus": g["locus"],
+            "protein_size": g["protein_size"],
+            "inheritance": g["inheritance"],
+            "age_of_onset": g["age_of_onset"],
+            "pathognomonic": g["pathognomonic"],
+            "treatment": g["treatment"],
+            "contraindications": g["contraindications"],
+            "monitoring": g["monitoring"],
+            "lifecycle": g["lifecycle"],
+            "concepts": g["concepts"],
+            "thresholds": g["thresholds"],
+            "standards": g["standards"],
+            "etiologies": g["etiologies"],
+            "dystonia_types": g["seizure_types"],
+            "triggers": g["triggers"],
+            "references": g["references"],
+            "n_patients": len(cohort),
+            "alive_pct": round(100 * sum(1 for p in cohort if p["alive"]) / len(cohort), 1),
+            "cohort": cohort,
         }
     return result
 
 
 def definitions():
-    """Return gene definitions, glossary and treatment protocols."""
     return {
-        "genes": {g["gene"]: g["protein"] for g in DYT_GENES},
-        "glossary": {
-            "Primary Dystonia": "Dystonia as the only or predominant feature; no identifiable secondary cause (normal brain MRI, normal metabolic workup); includes TOR1A (DYT1), THAP1 (DYT6), ANO3 (DYT24), GNAL (DYT25)",
-            "Dopa-Responsive Dystonia (DRD)": "Childhood-onset dystonia with MIRACULOUS levodopa response; caused by GCH1 (most common), TH, SPR mutations; BH4 biosynthesis deficiency → dopamine deficiency; diurnal fluctuation pathognomonic; low-dose levodopa curative",
-            "DYT Nomenclature": "International Parkinson and Movement Disorder Society (IPMDS) classification: DYT-TOR1A, DYT-THAP1, DYT-GCH1, DYT-ATP1A3, DYT-KMT2B, DYT-ADCY5, DYT-ANO3, DYT-GNAL; replaces old DYT1-DYT25 numerical designations",
-            "GPi-DBS (Globus Pallidus Interna Deep Brain Stimulation)": "Neurostimulation targeting GPi bilaterally; most effective surgical treatment for generalised primary dystonia; TOR1A (DYT1): 70-90% improvement; KMT2B (DYT28): highly responsive; THAP1: moderate; GCH1: CONTRA (levodopa sufficient); SNc-DBS rarely used",
-            "Diurnal Fluctuation": "Worsening of symptoms during the day (afternoon/evening) with improvement after sleep; PATHOGNOMONIC for DRD (GCH1); absent in all other dystonia genes; if present, always trial levodopa before any other treatment",
-            "Botulinum Toxin A (BoNT-A)": "Serotype A clostridial toxin; blocks acetylcholine release at NMJ; types: onabotulinumtoxinA (Botox), abobotulinumtoxinA (Dysport); used in focal/segmental dystonia — cervical, cranial, laryngeal, limb; repeat every 10-16 weeks; gold standard for focal dystonia",
-            "Reduced Penetrance": "Pathogenic variant carrier does NOT always develop the disease; TOR1A: 30% penetrance; THAP1: 60%; GNAL: 60%; ANO3: 60%; GCH1: female 87%, male 38%; counselling critical — asymptomatic carrier test positive does not predict disease",
-            "Sensory Trick (Geste Antagoniste)": "Tactile or proprioceptive manoeuvre that temporarily reduces dystonic posturing; classic: touching chin relieves cervical dystonia (torticollis); absent in Parkinson's cervical rigidity; pathognomonic for dystonia (not Parkinsonism)",
-            "AHC (Alternating Hemiplegia of Childhood)": "ATP1A3 disorder; onset <18 months; paroxysmal alternating hemiplegias; episodes triggered by fever/stress/water; resolve with sleep (PATHOGNOMONIC); bilateral hemiplegia = respiratory emergency; flunarizine for prevention",
-            "RDP (Rapid-Onset Dystonia-Parkinsonism)": "ATP1A3 disorder; ABRUPT onset hours to weeks; rostrocaudal gradient (cranial > arm > leg); plateau after onset — NOT progressive like PD; no levodopa response; DATscan NORMAL (contrasts PD)",
-            "Spasmodic Dysphonia": "Focal laryngeal dystonia; adductor type: strained-strangled voice with pitch breaks; abductor type: breathy/aphonic breaks; GNAL and THAP1 genes; BoNT-A laryngeal injection (thyroarytenoid) primary treatment; highly effective",
-            "Tetrabenazine": "VMAT2 inhibitor (depletes presynaptic monoamines); indicated for Huntington's chorea and secondary hyperkinesia; CONTRAINDICATED in primary dystonia (TOR1A/THAP1/KMT2B) — worsens dystonia by depleting dopamine in context of already dysregulated circuitry",
-            "Nocturnal Dyskinesia (ADCY5)": "ADCY5-related hyperkinetic movement disorder; characterised by episodes during NREM sleep — chorea/dystonia/myoclonus; EEG NORMAL during episodes (NOT epilepsy); caffeine absolutely contraindicated; clonazepam and acetazolamide first-line treatment",
-            "BH4 (Tetrahydrobiopterin)": "Essential cofactor for tyrosine hydroxylase (TH), phenylalanine hydroxylase (PAH), and nitric oxide synthase; GCH1 → BH4; BH4 deficiency → TH dysfunction → dopamine deficiency → DRD; phenylalanine loading test screens GCH1 pathway function",
-            "Levodopa Trial in Childhood Dystonia": "MANDATORY in ALL children with unexplained dystonia before other treatments; GCH1/DRD responds miraculously — low dose 2-5 mg/kg/day; TOR1A/THAP1/KMT2B: poor response; ATP1A3/ADCY5: poor response; low cost and low side-effect profile — always try first",
+        "dystonia_classification": {
+            "DYT1": "DYT-TOR1A — generalised, childhood onset, GAG deletion, DBS-GPi highly effective",
+            "DYT5a": "DRD-GCH1 — dopa-responsive, AD, diurnal variation, L-DOPA curative",
+            "DYT5b": "DRD-TH — AR, infantile, CSF HVA/5-HIAA reduced, L-DOPA responsive",
+            "DYT6": "DYT-THAP1 — young adult, cranio-cervical + laryngeal, Ashkenazi enrichment",
+            "DYT11": "DYT-SGCE — myoclonus-dystonia, paternal imprint, alcohol responsive",
+            "DYT24": "DYT-ANO3 — adult craniocervical tremulous dystonia, botox first-line",
+            "DYT28": "DYT-KMT2B — childhood generalised + ID, de novo, DBS highly effective",
+            "AHC": "Alternating Hemiplegia of Childhood — ATP1A3, fever trigger absolute",
+            "CAPOS": "Cerebellar Ataxia Areflexia Pes Cavus Optic Atrophy — ATP1A3 allelic to AHC",
+            "RDP": "Rapid-Onset Dystonia-Parkinsonism — ATP1A3, young adult, acute hours onset",
         },
-        "surveillance_protocols": {
-            "TOR1A (DYT1)": "Genetic testing with specific delGAG targeted PCR first (90%+ of cases); full sequencing if delGAG negative; penetrance counselling (30%); initiate trihexyphenidyl if symptomatic; refer to DBS centre if pharmacotherapy inadequate; family cascade testing; antenatal counselling if requested",
-            "THAP1 (DYT6)": "THAP1 sequencing (exons 1-3 priority — THAP domain); levodopa trial to exclude DRD; botulinum toxin clinic every 12 weeks if focal; DBS centre referral if generalised; voice assessment (spasmodic dysphonia); penetrance counselling",
-            "GCH1 (DRD)": "GCH1 sequencing; CSF neurotransmitters (biopterin, HVA) if available; phenylalanine loading test; urine pterins; LEVODOPA TRIAL FIRST (1-2 mg/kg/day); DATscan if parkinsonism in adult presentation; lifelong levodopa; annual clinic; folate supplementation in pregnancy; cascade family testing",
-            "ATP1A3 (AHC/RDP/CAPOS)": "ATP1A3 sequencing (targeted p.E815K/p.D801N/p.E818K first); AHC: flunarizine 5-10 mg/day; emergency protocol for bilateral hemiplegia; ABR and VEP for CAPOS; ophthalmology (optic atrophy); audiometry; trigger avoidance education; emergency travel card",
-            "KMT2B (DYT28)": "KMT2B sequencing + CMA (chromosomal microarray — mandatory, not optional); ophthalmology (oculomotor assessment); neuropsychology (mild ID); levodopa trial; early GPi-DBS referral (do not delay); physiotherapy; educational support",
-            "ADCY5 (ADCY5-RMD)": "ADCY5 sequencing (target p.R418W, p.A726T hotspots); parental mosaicism testing (blood AND saliva); nocturnal video-EEG (exclude epilepsy during episodes); sleep study (PSG); caffeine absolutely prohibited (patient/family education); clonazepam titration; acetazolamide if incomplete response",
-            "ANO3 (DYT24)": "ANO3 sequencing; cervical dystonia botulinum toxin clinic every 12 weeks; DATscan if parkinsonism suspected; neurophysiology (EMG); physiotherapy; geste antagoniste training; family genetic counselling (reduced penetrance); DBS referral if refractory",
-            "GNAL (DYT25)": "GNAL sequencing; ENT laryngoscopy (laryngeal dystonia assessment); speech pathology; botulinum toxin laryngeal clinic (thyroarytenoid injection); ophthalmology (blepharospasm); levodopa trial to exclude DRD; cascade family testing; voice therapy adjunct",
+        "key_pharmacology": {
+            "L-DOPA_DRD": "L-DOPA 3-5 mg/kg/day CURATIVE in GCH1-DRD — must try before any other intervention in childhood dystonia",
+            "THP_DYT1": "Trihexyphenidyl HIGH DOSE (up to 30 mg/day) — children tolerate better than adults",
+            "Botox_focal": "Botulinum toxin — first-line for focal dystonia (cervical, laryngeal, blepharospasm)",
+            "Clonazepam_SGCE": "Clonazepam GABA-A — same mechanism as alcohol in SGCE; prevents ethanol dependence cycle",
+            "Flunarizine_AHC": "Flunarizine (Ca2+ channel blocker) — first-line prevention AHC attacks (2.5-10 mg/day)",
+            "DBS_GPi": "DBS-GPi — highly effective in DYT1 (>70%), KMT2B (>80%), variable in others",
+        },
+        "critical_contraindications": {
+            "Botox_before_LDOPA": "NEVER inject botox in childhood lower limb dystonia without L-DOPA trial — GCH1 must be excluded",
+            "Orthopaedic_DRD": "DO NOT perform foot surgery for equinovarus in child without GCH1 L-DOPA trial",
+            "Dopamine_blockers": "AVOID haloperidol/metoclopramide in all hereditary dystonias — precipitate dystonic crisis",
+            "Alcohol_SGCE": "ALCOHOL NOT A TREATMENT in SGCE — dependence risk very high (30%)",
+            "Fever_AHC": "FEVER ABSOLUTE TRIGGER in ATP1A3-AHC — immediate paracetamol + cooling MANDATORY",
+            "DBS_KMT2B_ID": "DO NOT EXCLUDE DBS because of intellectual disability in KMT2B — equally effective",
+            "Valproate_female": "VALPROATE teratogenicity — contraceptive counselling in females of reproductive age",
+        },
+        "pathognomonic_signs": {
+            "TOR1A_lower_limb": "Lower limb onset in childhood generalised dystonia — DYT1 pathognomonic presentation",
+            "GCH1_diurnal": "Diurnal variation (better morning, worse evening) — DRD/GCH1 PATHOGNOMONIC",
+            "SGCE_myoclonus": "Lightning-fast myoclonus predominating over dystonia — SGCE hallmark",
+            "THAP1_laryngeal": "Strained/strangled voice in young adult dystonia — THAP1 pathognomonic",
+            "KMT2B_focal_to_general": "Childhood focal lower limb → generalised + ID — KMT2B pathognomonic trajectory",
+            "AHC_sleep_resolution": "Hemiplegia resolving completely with sleep — AHC/ATP1A3 pathognomonic",
+            "AHC_alternating": "Episodes affecting alternating sides — AHC specific",
+            "ANO3_tremulous": "Craniocervical dystonia with prominent tremulous component — ANO3 distinguishing feature",
+        },
+        "ddx_table": {
+            "DYT1_vs_DRD": "DYT1: no diurnal variation, no L-DOPA response; DRD/GCH1: diurnal variation, L-DOPA curative",
+            "GCH1_vs_TH": "GCH1 AD: pterin profile reduced; TH AR: CSF HVA/5-HIAA reduced, pterin normal",
+            "SGCE_vs_cortical_myoclonus": "SGCE: no EEG cortical correlate; cortical myoclonus: EEG spike before jerk",
+            "THAP1_vs_ANO3": "THAP1: laryngeal predominant, less tremor; ANO3: tremulous craniocervical",
+            "AHC_vs_Todd": "AHC: alternating, sleep resolves, recurring; Todd's paresis: unilateral, post-seizure, single",
+            "KMT2B_vs_DYT1": "KMT2B: ID 40%, generalises always, childhood; DYT1: no ID, same GAG deletion, variable",
+        },
+        "glossary": {
+            "Dystonia": "Sustained or intermittent muscle contractions causing abnormal postures or repetitive movements",
+            "DBS": "Deep Brain Stimulation — implanted neurostimulator delivering electrical pulses to basal ganglia targets",
+            "GPi": "Globus Pallidus internus — primary DBS target for dystonia",
+            "Vim": "Ventral intermediate nucleus of thalamus — DBS target for tremor-predominant conditions",
+            "BFMDRS": "Burke-Fahn-Marsden Dystonia Rating Scale — validated clinical outcome measure",
+            "TWSTRS": "Toronto Western Spasmodic Torticollis Rating Scale — cervical dystonia severity",
+            "Geste_antagoniste": "Sensory trick — touching an area near dystonic muscle temporarily relieves dystonia",
+            "Diurnal_variation": "Symptom variation through day — worse evening; key clue for DRD/GCH1",
+            "Myoclonus": "Brief, shock-like involuntary muscle jerks (<100 ms) — different from dystonia",
+            "Botulinum_toxin": "Neuromuscular blocking agent from Clostridium botulinum — focal dystonia treatment",
+            "BH4": "Tetrahydrobiopterin — cofactor for aromatic amino acid hydroxylases including TH",
+            "Penetrance": "Proportion of genotype carriers who develop clinical phenotype",
+            "Imprinting": "Epigenetic silencing of one parental allele — SGCE is paternally expressed",
+            "Status_dystonicus": "Life-threatening dystonic storm requiring intensive care — IV diazepam/sedation",
+            "Flunarizine": "Calcium channel blocker — first-line for AHC prevention in ATP1A3",
         },
     }
 
 
 if __name__ == "__main__":
     import json
+    print("=== OVERVIEW ===")
     ov = overview()
-    print(f"Atlas: {ov['atlas']}")
-    print(f"Total patients: {ov['total_patients']}")
-    print(f"Seeds: {ov['seeds']}")
-    print(f"Genes: {', '.join(ov['genes'])}")
-    print(f"Generalised dystonia patients: {ov['generalised_dystonia_patients']}")
-    print(f"GPi-DBS patients: {ov['gpi_dbs_patients']}")
-    print(f"Levodopa-responsive (DRD) patients: {ov['levodopa_responsive_drd_patients']}")
-    print(f"Botulinum toxin patients: {ov['botulinum_toxin_patients']}")
-    print(f"Spasmodic dysphonia patients: {ov['spasmodic_dysphonia_patients']}")
+    print(json.dumps({k: v for k, v in ov.items() if k != "gene_summaries"}, indent=2))
+    print("\n=== BREAKDOWN keys ===")
+    br = breakdown()
+    for gene, data in br.items():
+        print(f"  {gene}: {data['n_patients']} patients, alive={data['alive_pct']}%")
+    print("\n=== DEFINITIONS keys ===")
+    defs = definitions()
+    print(list(defs.keys()))
