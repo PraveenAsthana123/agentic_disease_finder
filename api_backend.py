@@ -48012,6 +48012,36 @@ async def hereditary_hepatic_gsd_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-glycogen-storage-myopathy-atlas/overview")
+async def hereditary_glycogen_storage_myopathy_atlas_overview():
+    """Hereditary-Glycogen-Storage-Myopathy-Atlas overview — 8 genes (GAA/PYGM/PFKM/LAMP2/AGL/GBE1/GYS1/PGAM2), 320 patients, seeds 2246-2253."""
+    try:
+        import scripts.hereditary_glycogen_storage_myopathy_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-glycogen-storage-myopathy-atlas/breakdown")
+async def hereditary_glycogen_storage_myopathy_atlas_breakdown():
+    """Hereditary-Glycogen-Storage-Myopathy-Atlas per-patient breakdown — gene profiles, pathognomonic features, treatment plans."""
+    try:
+        import scripts.hereditary_glycogen_storage_myopathy_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-glycogen-storage-myopathy-atlas/definitions")
+async def hereditary_glycogen_storage_myopathy_atlas_definitions():
+    """Hereditary-Glycogen-Storage-Myopathy-Atlas glossary — GSD enzyme pathways, second wind, CRIM, ERT, diagnostic standards."""
+    try:
+        import scripts.hereditary_glycogen_storage_myopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

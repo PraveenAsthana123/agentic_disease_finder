@@ -18542,5 +18542,25 @@
     "genes": 8,
     "seeds": "2238-2245",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-glycogen-storage-myopathy-atlas",
+    "name": "Hereditary-Glycogen-Storage-Myopathy-Atlas Complete-8-Gene-GSD-Muscle-Spectrum-Atlas GAA-762aa-17q25.3-AR-Pompe-GSD-II PYGM-842aa-11q13.1-AR-McArdle-GSD-V-SECOND-WIND PFKM-780aa-12q13.11-AR-Tarui-GSD-VII-OUT-OF-WIND LAMP2-410aa-Xq24-XLD-Danon-WPW-HCM-TRIAD AGL-1532aa-1p21.2-AR-Cori-Forbes-GSD-III GBE1-702aa-3p24.2-AR-Andersen-GSD-IV-MOST-SEVERE GYS1-700aa-19q13.33-AR-GSD-0a-SCD-PARADOXICAL PGAM2-254aa-7p13-AR-GSD-X-TUBULAR-AGGREGATES seeds-2246-2253",
+    "category": "Hereditary Glycogen Storage Myopathy",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-glycogen-storage-myopathy-atlas/overview",
+      "/api/hereditary-glycogen-storage-myopathy-atlas/breakdown",
+      "/api/hereditary-glycogen-storage-myopathy-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_glycogen_storage_myopathy_atlas_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ],
+    "description": "Hereditary-Glycogen-Storage-Myopathy-Atlas Complete-8-Gene-GSD-Muscle-Spectrum-Atlas GAA-762aa-17q25.3-AR-Pompe-GSD-II-CLASSIC-INFANTILE-Cardiomegaly-LOPD-ERT-CRIM-Negative-ITI-Mandatory PYGM-842aa-11q13.1-AR-McArdle-GSD-V-SECOND-WIND-Most-Pathognomonic-NO-Lactate-Rise-Forearm PFKM-780aa-12q13.11-AR-Tarui-GSD-VII-OUT-OF-WIND-Hemolytic-Anemia-Gout-Triad LAMP2-410aa-Xq24-XLD-Danon-WPW-HCM-ECG-PATHOGNOMONIC-ICD-Mandatory AGL-1532aa-1p21.2-AR-Cori-Forbes-GSD-IIIa-Liver-Muscle-IIIb-Liver-Only-NO-Cirrhosis GBE1-702aa-3p24.2-AR-Andersen-GSD-IV-MOST-SEVERE-PAS-Polyglucosan-PATHOGNOMONIC-LT-Curative GYS1-700aa-19q13.33-AR-GSD-0a-Exercise-VT-SCD-PATHOGNOMONIC-Paradoxical-Low-Glycogen-ICD PGAM2-254aa-7p13-AR-GSD-X-Tubular-Aggregates-PATHOGNOMONIC-African-American-W78X-Myoglobinuria 320-patient-aggregate-seeds-2246-2253. 4-tab frontend (Overview/Gene Table/Clinical Atlas/Definitions), SiteNav wired after Hereditary-Hepatic-GSD-Atlas, expert_dashboards.json count 1160->1161. 3 endpoints /api/hereditary-glycogen-storage-myopathy-atlas/overview|breakdown|definitions verified 200. Registered 2026-09-08."
   }
 ]
