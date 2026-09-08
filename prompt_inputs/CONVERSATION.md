@@ -34385,3 +34385,135 @@ Built, verified, committed, and pushed. One iteration complete.
 - 3 endpoints `/api/hereditary-ar-sca-atlas/overview|breakdown|definitions` — all 200
 - expert_dashboards.json: 1140 → **1141**
 - Pushed to `main` (commit `e4113b7b`)
+
+### [2026-09-08 03:36:16 MDT] ASSISTANT
+Done. One iteration complete.
+
+**Built + pushed: `Hereditary-HSAN-Atlas`** — Complete 8-Gene Hereditary Sensory and Autonomic Neuropathy Atlas
+
+| Gene | aa | Locus | HSAN | Key Clinical Pearl |
+|------|-----|-------|------|-------------------|
+| SPTLC1 | 479 | 9q22.31 | HSAN1A (AD) | Shooting/lancinating pains PATHOGNOMONIC · L-serine 400 mg/kg/day reduces deoxy-SL — TREATABLE |
+| IKBKAP/ELP1 | 1332 | 9q31.3 | HSAN3/FD (AR) | Absent fungiform papillae PATHOGNOMONIC (inspect tongue first) · autonomic crises · Ashkenazi IVS20+6T>C 99.5% |
+| NTRK1 | 796 | 1q23.1 | HSAN4/CIPA (AR) | Pain insensitivity + anhidrosis + self-mutilation PATHOGNOMONIC · hyperthermia deaths · AVOID AMPUTATION |
+| SCN9A | 1988 | 2q24.3 | PARADOX | LOF(AR)=CIP+anosmia / GOF(AD)=Erythromelalgia burning feet PATHOGNOMONIC · carbamazepine for GOF |
+| RETREG1/FAM134B | 460 | 5p15.1 | HSAN2B (AR) | Corneal anaesthesia → neurotrophic ulceration PATHOGNOMONIC · ER-phagy mechanism |
+| WNK1 (HSN2) | 2382 | 12p13.33 | HSAN2A (AR) | Severe mutilation of extremities PATHOGNOMONIC · HSN2 exon only — standard WES MISSES it |
+| DNMT1 | 1616 | 19p13.2 | HSAN1E (AD) | Narcolepsy + hearing loss + dementia + neuropathy = 4-feature PATHOGNOMONIC · REMD domain |
+| ATL1 | 558 | 14q22.1 | HSAN1D (AD) | Chronic dry cough + GERD PATHOGNOMONIC · hearing loss · late-onset 40-60yr · ≠SPG3A |
+
+- 320 patients (8×40), seeds 2126–2133
+- 3 endpoints all 200: `/api/hereditary-hsan-atlas/overview|breakdown|definitions`
+- expert_dashboards.json: 1141 → **1142**
+- Pushed to `main` (commit `8a7ab318`)
+
+**⏳ Pending** — Buildable queue exhausted (only item = ictal/interictal retrain, skip-listed). Blocked: Gmail/Slack/Drive credentials · multi-user auth · EMR/FHIR.
+
+### [2026-09-08 03:59:05 MDT] ASSISTANT
+**Built + pushed: `Hereditary-dHMN-Atlas`** (commit `cf0c200c`)
+
+**What was built:**
+- `scripts/hereditary_dhsn_atlas_dashboard.py` — 8-gene dHMN dashboard (320 patients, seeds 2134-2141)
+- `portal-next/app/hereditary-dhsn-atlas/page.jsx` — 4-tab Next.js page (Overview / Gene Table / Clinical Atlas / Definitions)
+- `api_backend.py` — 3 new endpoints, all returning 200:
+  - `/api/hereditary-dhsn-atlas/overview`
+  - `/api/hereditary-dhsn-atlas/breakdown`
+  - `/api/hereditary-dhsn-atlas/definitions`
+- `SiteNav.jsx` — wired after Hereditary-HSAN-Atlas
+- `expert_dashboards.json` — count 1142 → 1143
+
+**8 genes covered:**
+| Gene | Size | Locus | Disease | Key flag |
+|---|---|---|---|---|
+| HSPB1 | 640aa | 7q11.23 | dHMN2B | NO sensory loss / foot drop DDx-CMT2F |
+| HSPB8 | 196aa | 12q24.23 | dHMN2A | pLys141Asn European founder |
+| GARS1 | 685aa | 7p14.3 | dHMN5A | UPPER LIMB PREDOMINANT PATHOGNOMONIC |
+| DCTN1 | 1278aa | 2p13.1 | dHMN7B | VOCAL FOLD PARALYSIS PATHOGNOMONIC / Laryngoscopy MANDATORY |
+| BICD2 | 820aa | 9q22.31 | SMALED1 | Congenital hip dislocation PATHOGNOMONIC / de novo 40% |
+| DYNC1H1 | 4646aa | 14q32.31 | SMALED1 | Intellectual disability 30% PATHOGNOMONIC / de novo 60% |
+| IGHMBP2 | 993aa | 11q13.3 | SMARD1 | Infantile respiratory failure PATHOGNOMONIC / NOT SMA1 |
+| TRPV4 | 871aa | 12q24.11 | SMALED2 | Skeletal dysplasia + neuropathy PATHOGNOMONIC |
+
+⏳ **Pending:** Only the skipped ictal/interictal retrain remains in the buildable queue (too heavy for unattended); Gmail/Slack/Drive blocked (credentials); push was auto-approved via `safe_push.sh`.
+
+### [2026-09-08 04:18:47 MDT] ASSISTANT
+**Built + pushed: Hereditary-CMT-Atlas**
+
+**What was built:**
+- `scripts/hereditary_cmt_atlas_dashboard.py` — 8-gene CMT atlas, 320 patients (seeds 2142-2149), with `overview()`, `breakdown()`, `definitions()` functions
+- `portal-next/app/hereditary-cmt-atlas/page.jsx` — 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions) including NCS-based gene prioritisation table
+- `api_backend.py` — 3 new endpoints verified 200: `/api/hereditary-cmt-atlas/overview|breakdown|definitions`
+- `portal-next/app/components/SiteNav.jsx` — wired after Hereditary-dHMN-Atlas
+- `config/expert_dashboards.json` — registry count 1143 → 1144
+
+**8 Genes covered:**
+| Gene | Size | Locus | Inh | Disease / Key PATHOGNOMONIC |
+|---|---|---|---|---|
+| PMP22 | 160aa | 17p12 | AD | CMT1A (dup) / HNPP (del) — UNIFORM NCV <38 m/s ALL NERVES · MLPA MANDATORY |
+| MPZ | 248aa | 1q23.3 | AD | CMT1B — pThr124Met LATE-ONSET DISTINCTIVE · pSer44Phe Dejerine-Sottas |
+| GJB1 | 283aa | Xq13.1 | XLD | CMTX1 — NO male-to-male transmission · CNS WM lesions (fever) |
+| MFN2 | 741aa | 1p36.22 | AD | CMT2A — OPTIC ATROPHY 20-30% PATHOGNOMONIC · most severe CMT2 |
+| SH3TC2 | 1288aa | 5q32 | AR | CMT4C — EARLY SCOLIOSIS 50-70% · hearing loss 40-50% |
+| GDAP1 | 358aa | 8q21.11 | AR | CMT4A — VOCAL CORD PARALYSIS 20-30% · laryngoscopy MANDATORY |
+| NEFL | 543aa | 8p21.2 | AD | CMT2E — GIANT AXONS nerve biopsy · CSF/serum NF-L elevated |
+| PRX | 1461aa | 19q13.13 | AR | CMT4F — FOCALLY FOLDED MYELIN · sensory > motor DISTINCTIVE |
+
+**Insight:** CMT is the most common hereditary neuropathy (1:2,500) — PMP22 MLPA always-first rule (NGS/WES alone misses 70% of CMT1A), and the GJB1/CMTX1 CNS white matter lesion phenotype are the two highest-yield diagnostic traps avoided in this atlas.
+
+### [2026-09-08 04:50:23 MDT] ASSISTANT
+**Done.** Iteration complete.
+
+**Built + pushed: `Hereditary-PCH-Atlas`** — Complete 8-Gene Pontocerebellar Hypoplasia Atlas
+
+| Gene | aa | Locus | Type | Disease | Key |
+|---|---|---|---|---|---|
+| TSEN54 | 576 | 17q25.1 | AR | PCH2A | Dragonfly-wing MRI PATHOGNOMONIC; A307S most common worldwide |
+| TSEN2 | 483 | 3p25.1 | AR | PCH2B | Same TSEN complex; clinically indistinguishable; full TSEN panel required |
+| RARS2 | 576 | 6q15 | AR | PCH6 | Absent vermis PATHOGNOMONIC; elevated lactate; VPA ABSOLUTE CI (mito) |
+| EXOSC3 | 275 | 9p13.2 | AR | PCH1B | Motor neuron disease concurrent PATHOGNOMONIC; D132A Polish/Roma founder; nusinersen NOT indicated |
+| VRK1 | 396 | 14q32.2 | AR | PCH1B-SMA | SMA phenotype + cerebellar PATHOGNOMONIC; R133C Arab/Saudi founder; SMN1 normal |
+| CASK | 922 | Xp11.4 | XLD | PCH3/MICPCH | Female predominant; male hemizygous lethal PATHOGNOMONIC; nystagmus 80% |
+| AMPD2 | 900 | 1p13.3 | AR | PCH9 | Hypomyelination+cerebellar+optic atrophy triad PATHOGNOMONIC; SAICAR elevated |
+| TOE1 | 421 | 1p34.1 | AR | PCH7 | Gonadal dysgenesis 46,XY + cerebellar PATHOGNOMONIC; gonadectomy mandatory |
+
+- **320 patients** (8×40), seeds 2150-2157
+- **3 endpoints** `/api/hereditary-pch-atlas/overview|breakdown|definitions` → all 200 ✓
+- **Portal page** `portal-next/app/hereditary-pch-atlas/page.jsx` (4 tabs)
+- **SiteNav** wired after Hereditary-CMT-Atlas
+- **expert_dashboards.json** count 1144→1145
+- **Committed** `d12083d6` · **Pushed** → `origin/main`
+
+### [2026-09-08 05:20:17 MDT] ASSISTANT
+Hereditary-Dystonia-Atlas tracked. Autonomous build loop iteration complete.
+
+**Summary — iteration done:**
+- Built: `Hereditary-Dystonia-Atlas` (8 genes: TOR1A/SGCE/GCH1/TH/KMT2B/THAP1/ATP1A3/ANO3, 320 patients, seeds 2158-2165)
+- 3 endpoints verified 200: `/api/hereditary-dystonia-atlas/overview|breakdown|definitions`
+- Registry: 1145 → 1146 entries
+- Committed `ce72c8ac` + pushed `main`
+- Tracked ✓
+
+### [2026-09-08 06:15:09 MDT] ASSISTANT
+**Built + pushed: Hereditary-Paroxysmal-Movement-Disorder-Atlas** (commit `d471c3ca`)
+
+**What was built:**
+- `scripts/hereditary_paroxysmal_movement_disorder_atlas_dashboard.py` — 8-gene dashboard (320 patients, seeds 2166-2173)
+- 3 API endpoints added to `api_backend.py` — all verified 200:
+  - `/api/hereditary-paroxysmal-movement-disorder-atlas/overview`
+  - `/api/hereditary-paroxysmal-movement-disorder-atlas/breakdown`
+  - `/api/hereditary-paroxysmal-movement-disorder-atlas/definitions`
+- `portal-next/app/hereditary-paroxysmal-movement-disorder-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- SiteNav wired after Hereditary-Dystonia-Atlas
+- `expert_dashboards.json` count 1146 → 1147
+
+**8 genes covered:**
+| Gene | Size | Disease | Key fact |
+|---|---|---|---|
+| PRRT2 | 340aa | PKD/BFIS/ICCA | Movement-triggered <1 min — CBZ >90% |
+| SLC2A1 | 492aa | GLUT1D/PED | CSF glucose <45 PATHOGNOMONIC — ketogenic diet |
+| PNKD | 385aa | PNKD2/BDC | Caffeine+alcohol trigger — CBZ ineffective |
+| KCNA1 | 495aa | EA1 | Interictal myokymia EMG PATHOGNOMONIC |
+| CACNA1A | 2510aa | EA2/SCA6/FHM1 | Interictal nystagmus — acetazolamide >80% |
+| ATP1A2 | 1020aa | FHM2 | TRIPTANS ABSOLUTELY CI |
+| ADCY5 | 1261aa | ADCY5-RMD | Nocturnal NREM + EEG normal — caffeine CI |
+| SLC6A5 | 797aa | Hyperekplexia | Nose-tip life-saving — clonazepam curative |

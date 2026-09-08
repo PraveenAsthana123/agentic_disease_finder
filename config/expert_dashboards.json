@@ -18321,5 +18321,18 @@
     ],
     "category": "hereditary-paroxysmal-movement-disorder",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-myotonic-disorder-atlas",
+    "name": "Hereditary-Myotonic-Disorder-Atlas Complete-8-Gene-Myotonic-Disorder-Periodic-Paralysis-Atlas DMPK-639aa-19q13.32-AD-DM1-CTG-REPEAT->50-SUCCINYLCHOLINE-ABSOLUTELY-CI-Volatile-EXTREME-CAUTION CNBP-347aa-3q21.3-AD-DM2-CCTG-PROXIMAL-WEAKNESS-PATHOGNOMONIC-DDx-DM1-Distal-NO-Congenital CLCN1-988aa-7q34-AD-AR-Myotonia-Congenita-WARM-UP-PHENOMENON-PATHOGNOMONIC-Mexiletine-First-Line SCN4A-1836aa-17q23.3-AD-PMC-HyperPP2-COLD-WORSENS-Warm-Up-FAILS-PATHOGNOMONIC-DDx-CLCN1 CACNA1S-1873aa-1q32.1-AD-HypoPP1-CARBOHYDRATE+REST-After-Exercise-PATHOGNOMONIC-GLUCOSE-IV-ABSOLUTELY-CI KCNJ2-427aa-17q24.3-AD-ATS-LQT7-TRIAD-Paralysis+Bidirectional-VT+Dysmorphic-PATHOGNOMONIC-Flecainide-ICD RYR1-5038aa-19q13.2-AR-AD-MHS1-CCD-ALL-VOLATILE+SUCCINYLCHOLINE-ABSOLUTELY-CI-DANTROLENE-26-Vials-TIVA ATP2A1-994aa-16p11.2-AR-Brody-SERCA1-SILENT-MYOTONIA-EMG-SILENT-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2174-2181",
+    "route": "/hereditary-myotonic-disorder-atlas",
+    "status": "built",
+    "endpoints": [
+      "/api/hereditary-myotonic-disorder-atlas/overview",
+      "/api/hereditary-myotonic-disorder-atlas/breakdown",
+      "/api/hereditary-myotonic-disorder-atlas/definitions"
+    ],
+    "category": "Hereditary Myotonic Disorder & Periodic Paralysis Atlas",
+    "registered": "2026-09-08"
   }
 ]

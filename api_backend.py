@@ -47692,6 +47692,36 @@ async def hereditary_paroxysmal_movement_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-myotonic-disorder-atlas/overview")
+async def hereditary_myotonic_disorder_atlas_overview():
+    """Hereditary-Myotonic-Disorder-Atlas — 8-gene aggregate overview (320 patients, seeds 2174-2181)."""
+    try:
+        import scripts.hereditary_myotonic_disorder_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myotonic-disorder-atlas/breakdown")
+async def hereditary_myotonic_disorder_atlas_breakdown():
+    """Hereditary-Myotonic-Disorder-Atlas per-gene breakdown (DMPK/CNBP/CLCN1/SCN4A/CACNA1S/KCNJ2/RYR1/ATP2A1)."""
+    try:
+        import scripts.hereditary_myotonic_disorder_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-myotonic-disorder-atlas/definitions")
+async def hereditary_myotonic_disorder_atlas_definitions():
+    """Hereditary-Myotonic-Disorder-Atlas gene definitions, pharmacology, contraindications and DDx table."""
+    try:
+        import scripts.hereditary_myotonic_disorder_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
