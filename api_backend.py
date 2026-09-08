@@ -47482,6 +47482,36 @@ async def hereditary_non_polyglutamine_dominant_sca_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ar-sca-atlas/overview")
+async def hereditary_ar_sca_atlas_overview():
+    """Hereditary-AR-SCA-Atlas — 8-gene aggregate overview (320 patients, seeds 2118-2125)."""
+    try:
+        import scripts.hereditary_ar_sca_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ar-sca-atlas/breakdown")
+async def hereditary_ar_sca_atlas_breakdown():
+    """Hereditary-AR-SCA-Atlas per-gene breakdown (FXN/SACS/APTX/SETX/TTPA/POLG/ADCK3/SYNE1)."""
+    try:
+        import scripts.hereditary_ar_sca_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ar-sca-atlas/definitions")
+async def hereditary_ar_sca_atlas_definitions():
+    """Hereditary-AR-SCA-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_ar_sca_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

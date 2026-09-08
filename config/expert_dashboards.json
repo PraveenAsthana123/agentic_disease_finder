@@ -18134,5 +18134,32 @@
     "seeds": "2110-2117",
     "built_date": "2026-09-08",
     "description": "Complete 8-Gene Non-Polyglutamine Autosomal-Dominant Spinocerebellar Ataxia Atlas (SCA5/SCA19/SCA21/SCA42/SCA44/SCA45/SCA47/SCA48)"
+  },
+  {
+    "id": "hereditary-ar-sca-atlas",
+    "name": "Hereditary-AR-SCA-Atlas Complete-8-Gene-Autosomal-Recessive-Cerebellar-Ataxia-Atlas FXN-210aa-9q21.11-AR-Friedreich-Ataxia-GAA-Repeat->66-Absent-Lower-Limb-Reflexes-PATHOGNOMONIC-Omaveloxolone-FDA-2023 SACS-4579aa-13q12.12-AR-ARSACS-Spasticity-PATHOGNOMONIC-Retinal-Hypermyelination-French-Canadian APTX-342aa-9p21.1-AR-AOA1-Oculomotor-Apraxia-Hypoalbuminaemia-Hypercholesterolaemia SETX-2667aa-9q34.13-AR-AOA2-Elevated-AFP-PATHOGNOMONIC-Normal-Albumin TTPA-278aa-8q12.3-AR-AVED-Very-Low-Vitamin-E-PATHOGNOMONIC-TREATABLE POLG-1239aa-15q26.1-AR-POLG-Ataxia-VALPROATE-ABSOLUTE-CI ADCK3-454aa-1q42.13-AR-ARCA2-CoQ10-Deficiency SYNE1-8797aa-6q25.2-AR-ARCA1-Pure-Cerebellar-French-Canadian 320-Patient-Aggregate-8x40-seeds-2118-2125",
+    "status": "built",
+    "route": "/hereditary-ar-sca-atlas",
+    "api_prefix": "/api/hereditary-ar-sca-atlas",
+    "endpoints": [
+      "/api/hereditary-ar-sca-atlas/overview",
+      "/api/hereditary-ar-sca-atlas/breakdown",
+      "/api/hereditary-ar-sca-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-ar-sca-atlas/page.jsx",
+    "script": "scripts/hereditary_ar_sca_atlas_dashboard.py",
+    "genes": [
+      "FXN",
+      "SACS",
+      "APTX",
+      "SETX",
+      "TTPA",
+      "POLG",
+      "ADCK3",
+      "SYNE1"
+    ],
+    "seeds": "2118-2125",
+    "patients": 320,
+    "built_note": "Built 2026-09-08"
   }
 ]
