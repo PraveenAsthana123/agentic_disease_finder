@@ -17623,5 +17623,49 @@
       "/api/hereditary-obesity-melanocortin-atlas/definitions"
     ],
     "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-thyroid-disorder-atlas",
+    "slug": "hereditary-thyroid-disorder-atlas",
+    "name": "Hereditary-Thyroid-Disorder-Atlas Complete-8-Gene-Hereditary-Thyroid-Disorder-Atlas TPO-933aa-2p25.3-AR-Dyshormonogenesis-2A-Perchlorate-Discharge-POSITIVE-Most-Common-DH TG-2767aa-8q24.22-AR-DH3-Serum-Tg-LOW-ABSENT-Despite-TSH-HIGH-PATHOGNOMONIC SLC26A4-780aa-7q22.3-AR-Pendred-Goitre-SNHL-EVA-PATHOGNOMONIC-TRIAD SLC5A5-643aa-19p13.11-AR-NIS-Iodide-Transport-Defect-RAI-Uptake-ABSENT DUOX2-1548aa-15q21.1-AR-DH6-Most-Common-Dyshormonogenesis-Worldwide TSHR-764aa-14q31.1-AR-LOF-TSH-Resistance-CH-AD-GOF-Familial-Hyperthyroidism PAX8-457aa-2q14.1-AD-Thyroid-Dysgenesis-Renal-Anomaly-50pct FOXE1-373aa-9q22.33-AR-Bamforth-Lazarus-Agenesis-Cleft-Palate-Spiky-Hair-TRIAD 320-Patient-Aggregate-8x40-seeds-1886-1893",
+    "category": "hereditary-atlas",
+    "genes": [
+      "TPO",
+      "TG",
+      "SLC26A4",
+      "SLC5A5",
+      "DUOX2",
+      "TSHR",
+      "PAX8",
+      "FOXE1"
+    ],
+    "patients": 320,
+    "seeds": "1886-1893",
+    "status": "built",
+    "api_prefix": "/api/hereditary-thyroid-disorder-atlas",
+    "page": "/hereditary-thyroid-disorder-atlas",
+    "registered": "2026-09-07"
+  },
+  {
+    "id": "hereditary-renal-tubular-atlas",
+    "slug": "hereditary-renal-tubular-atlas",
+    "name": "Hereditary-Renal-Tubular-Atlas Complete-8-Gene-Hereditary-Renal-Tubular-Disorders-Atlas SLC12A1/NKCC2-1099aa-15q21.1-AR-Bartter-Type-1-Polyhydramnios-Indomethacin KCNJ1/ROMK-391aa-11q24.3-AR-Bartter-Type-2-Transient-Neonatal-HyperK-PATHOGNOMONIC CLCNKB/ClC-Kb-687aa-1p36.13-AR-Bartter-Type-3-MOST-COMMON-MLPA-Mandatory BSND/Barttin-320aa-1p32.3-AR-Bartter-Type-4-Plus-SNHL-PATHOGNOMONIC SLC12A3/NCCT-1021aa-16q13-AR-Gitelman-HypoMg-Low-Urine-Ca-PATHOGNOMONIC CLCN5/ClC-5-746aa-Xp11.23-XLR-Dent-Disease-1-LMW-Proteinuria-Dipstick-Negative OCRL/OCRL1-901aa-Xq26.1-XLR-Lowe-Cataracts-ID-Fanconi-RTA-TRIAD AGXT/PH1-392aa-2q37.3-AR-Primary-Hyperoxaluria-1-Lumasiran-FDA2020-Combined-LKT-CURATIVE 320-Patient-Aggregate-8x40-seeds-1910-1917",
+    "category": "hereditary-atlas",
+    "genes": [
+      "SLC12A1",
+      "KCNJ1",
+      "CLCNKB",
+      "BSND",
+      "SLC12A3",
+      "CLCN5",
+      "OCRL",
+      "AGXT"
+    ],
+    "patients": 320,
+    "seeds": "1910-1917",
+    "status": "built",
+    "api_prefix": "/api/hereditary-renal-tubular-atlas",
+    "page": "/hereditary-renal-tubular-atlas",
+    "registered": "2026-09-07"
   }
 ]
