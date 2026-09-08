@@ -18012,5 +18012,32 @@
     "portal_page": "/hereditary-dystonia-atlas",
     "registered": "2026-09-07",
     "description": "Complete 8-Gene Hereditary Dystonia Atlas \u2014 DYT-TOR1A(DYT1)/DYT-THAP1(DYT6)/DRD-GCH1/ATP1A3-AHC-RDP-CAPOS/DYT-KMT2B(DYT28)/ADCY5-RMD/DYT-ANO3(DYT24)/DYT-GNAL(DYT25)"
+  },
+  {
+    "id": "hereditary-chorea-atlas",
+    "name": "Hereditary-Chorea-Atlas",
+    "slug": "hereditary-chorea-atlas",
+    "status": "built",
+    "category": "hereditary-movement-disorder-atlas",
+    "genes": [
+      "HTT",
+      "VPS13A",
+      "PANK2",
+      "WDR45",
+      "FTL",
+      "NKX2-1",
+      "JPH3",
+      "TBP"
+    ],
+    "patients": 320,
+    "seeds": "2078-2085",
+    "endpoints": [
+      "/api/hereditary-chorea-atlas/overview",
+      "/api/hereditary-chorea-atlas/breakdown",
+      "/api/hereditary-chorea-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-chorea-atlas",
+    "description": "Complete 8-Gene Hereditary Chorea Atlas \u2014 HTT (Huntington Disease), VPS13A (Chorea-Acanthocytosis), PANK2 (PKAN/NBIA1), WDR45 (BPAN/NBIA5), FTL (Neuroferritinopathy), NKX2-1 (Benign Hereditary Chorea), JPH3 (HDL2), TBP (SCA17/HDL4)",
+    "registered": "2026-09-07"
   }
 ]

@@ -47332,6 +47332,36 @@ async def hereditary_dystonia_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-chorea-atlas/overview")
+async def hereditary_chorea_atlas_overview():
+    """Hereditary-Chorea-Atlas — 8-gene aggregate overview (320 patients, seeds 2078-2085)."""
+    try:
+        import scripts.hereditary_chorea_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-chorea-atlas/breakdown")
+async def hereditary_chorea_atlas_breakdown():
+    """Hereditary-Chorea-Atlas per-gene breakdown (HTT/VPS13A/PANK2/WDR45/FTL/NKX2-1/JPH3/TBP)."""
+    try:
+        import scripts.hereditary_chorea_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-chorea-atlas/definitions")
+async def hereditary_chorea_atlas_definitions():
+    """Hereditary-Chorea-Atlas gene definitions, glossary and treatment protocols."""
+    try:
+        import scripts.hereditary_chorea_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
