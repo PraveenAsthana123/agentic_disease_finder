@@ -47122,6 +47122,36 @@ async def hereditary_lipodystrophy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-haematological-malignancy-predisposition-atlas/overview")
+async def hereditary_hm_predisposition_atlas_overview():
+    """Hereditary-Haematological-Malignancy-Predisposition-Atlas — 8-gene aggregate overview (320 patients, seeds 2022-2029)."""
+    try:
+        import scripts.hereditary_haematological_malignancy_predisposition_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-haematological-malignancy-predisposition-atlas/breakdown")
+async def hereditary_hm_predisposition_atlas_breakdown():
+    """Hereditary-Haematological-Malignancy-Predisposition-Atlas per-gene breakdown (RUNX1/CEBPA/DDX41/TP53/ETV6/ANKRD26/SAMD9L/NF1)."""
+    try:
+        import scripts.hereditary_haematological_malignancy_predisposition_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-haematological-malignancy-predisposition-atlas/definitions")
+async def hereditary_hm_predisposition_atlas_definitions():
+    """Hereditary-Haematological-Malignancy-Predisposition-Atlas gene definitions, glossary and surveillance protocols."""
+    try:
+        import scripts.hereditary_haematological_malignancy_predisposition_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

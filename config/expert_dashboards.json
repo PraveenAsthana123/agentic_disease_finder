@@ -17693,5 +17693,17 @@
     "n_patients": 320,
     "registered": "2026-09-07",
     "nav_position": "after Hereditary-Renal-Tubular-Atlas"
+  },
+  {
+    "id": "hereditary-haematological-malignancy-predisposition-atlas",
+    "name": "Hereditary-Haematological-Malignancy-Predisposition-Atlas Complete-8-Gene-Inherited-Haematological-Cancer-Predisposition-Atlas RUNX1-453aa-21q22.12-AD-FPD-AML-Most-Common-RUNX1-AML-30-44pct-Lifetime-AML-MDS-Sibling-Donor-Testing-MANDATORY CEBPA-358aa-19q13.11-AD-Familial-AML-ELN-Favourable-CD19-Positive-Blasts-DISTINCTIVE-HSCT-CR1-CONTROVERSIAL DDX41-622aa-5q35.3-AD-Most-Prevalent-Germline-MDS-AML-Adults-Splice-Variants-R525H-Somatic-Second-Hit TP53-393aa-17p13.1-AD-Li-Fraumeni-Therapy-Related-AML-Venetoclax-POOR-AVOID-Radiation ETV6-452aa-12p13.2-AD-Thrombocytopenia-5-30pct-Childhood-ALL-ITP-Mimic ANKRD26-1710aa-10p12.1-AD-Thrombocytopenia-2-5prime-UTR-WES-MISSES-Targeted-Mandatory SAMD9L-1589aa-7q21.2-AD-GOF-Ataxia-Pancytopenia-Monosomy-7-Paradoxically-Favourable NF1-2839aa-17q11.2-AD-JMML-30pct-Germline-Selumetinib-FDA-2020 320-Patient-Aggregate-8x40-seeds-2022-2029",
+    "status": "built",
+    "endpoint": "/api/hereditary-haematological-malignancy-predisposition-atlas/overview",
+    "page": "portal-next/app/hereditary-haematological-malignancy-predisposition-atlas/page.jsx",
+    "script": "scripts/hereditary_haematological_malignancy_predisposition_atlas_dashboard.py",
+    "genes": 8,
+    "patients": 320,
+    "seeds": "2022-2029",
+    "registered": "2026-09-07"
   }
 ]
