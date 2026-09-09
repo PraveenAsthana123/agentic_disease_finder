@@ -48217,6 +48217,24 @@ def hereditary_pid_atlas_definitions():
     from scripts.hereditary_primary_immunodeficiency_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-interferonopathy-atlas/overview")
+def hereditary_ifn_atlas_overview():
+    """Hereditary-Type-I-Interferonopathy-Atlas overview — 8 genes (TREX1/RNASEH2B/RNASEH2A/RNASEH2C/SAMHD1/ADAR1/IFIH1/STING1), 320 patients, seeds 2318-2325."""
+    from scripts.hereditary_interferonopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-interferonopathy-atlas/breakdown")
+def hereditary_ifn_atlas_breakdown():
+    """Hereditary-Type-I-Interferonopathy-Atlas per-gene breakdown — AGS subtypes/SAVI/ISG score/JAK inhibitor response/cerebrovascular/ILD."""
+    from scripts.hereditary_interferonopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-interferonopathy-atlas/definitions")
+def hereditary_ifn_atlas_definitions():
+    """Hereditary-Type-I-Interferonopathy-Atlas glossary — ISG score, cGAS-STING, RNase H2, MDA5/IFIH1, JAK inhibitors, SAVI, FCL, AGS."""
+    from scripts.hereditary_interferonopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 @app.get("/api/hereditary-palmoplantar-keratoderma-atlas/overview")
 def hereditary_ppk_atlas_overview():

@@ -18713,5 +18713,34 @@
     "seeds": "2310-2317",
     "category": "hereditary_atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-interferonopathy-atlas",
+    "name": "Hereditary Type I Interferonopathy Atlas",
+    "category": "Hereditary Immunology",
+    "subcategory": "Type I Interferonopathies",
+    "status": "built",
+    "genes": [
+      "TREX1",
+      "RNASEH2B",
+      "RNASEH2A",
+      "RNASEH2C",
+      "SAMHD1",
+      "ADAR1",
+      "IFIH1",
+      "STING1"
+    ],
+    "n_genes": 8,
+    "n_patients": 320,
+    "seeds": "2318-2325",
+    "api_endpoints": [
+      "/api/hereditary-interferonopathy-atlas/overview",
+      "/api/hereditary-interferonopathy-atlas/breakdown",
+      "/api/hereditary-interferonopathy-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-interferonopathy-atlas",
+    "script": "scripts/hereditary_interferonopathy_atlas_dashboard.py",
+    "description": "Complete 8-Gene Hereditary Type I Interferonopathy Atlas \u2014 AGS1-7 + SAVI (TREX1/RNASEH2B/RNASEH2A/RNASEH2C/SAMHD1/ADAR1/IFIH1/STING1); ISG score biomarker; JAK inhibitor therapy",
+    "built_date": "2026-09-08"
   }
 ]
