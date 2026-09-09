@@ -18625,5 +18625,51 @@
     "cohort_n": 320,
     "seed": 2278,
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-palmoplantar-keratoderma-atlas",
+    "status": "built",
+    "category": "hereditary-skin-disease",
+    "seed_base": 2286,
+    "seeds": "2286-2293",
+    "n_patients": 320,
+    "genes": [
+      "KRT9",
+      "SLURP1",
+      "CTSC",
+      "GJB2",
+      "DSP",
+      "JUP",
+      "SERPINB7",
+      "LORICRIN"
+    ],
+    "endpoints": [
+      "/api/hereditary-palmoplantar-keratoderma-atlas/overview",
+      "/api/hereditary-palmoplantar-keratoderma-atlas/breakdown",
+      "/api/hereditary-palmoplantar-keratoderma-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-palmoplantar-keratoderma-atlas",
+    "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-ectodermal-dysplasia-atlas",
+    "label": "Hereditary Ectodermal Dysplasia Atlas \u2014 Complete 8-Gene Hereditary ED Atlas",
+    "route": "/hereditary-ectodermal-dysplasia-atlas",
+    "api_prefix": "/api/hereditary-ectodermal-dysplasia-atlas",
+    "status": "built",
+    "genes": [
+      "EDA",
+      "EDAR",
+      "WNT10A",
+      "TP63",
+      "IKBKG",
+      "GJB6",
+      "IRF6",
+      "PVRL1"
+    ],
+    "patients": 320,
+    "seeds": "2294-2301",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-08"
   }
 ]

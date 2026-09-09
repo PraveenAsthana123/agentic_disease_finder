@@ -48162,6 +48162,44 @@ async def hereditary_ichthyosis_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ectodermal-dysplasia-atlas/overview")
+def hereditary_ed_atlas_overview():
+    """Hereditary-ED-Atlas overview — 8 genes (EDA/EDAR/WNT10A/TP63/IKBKG/GJB6/IRF6/PVRL1), 320 patients, seeds 2294-2301."""
+    from scripts.hereditary_ectodermal_dysplasia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-ectodermal-dysplasia-atlas/breakdown")
+def hereditary_ed_atlas_breakdown():
+    """Hereditary-ED-Atlas per-gene breakdown — HED/hiroticED/syndromic-cleft, heat/retinal/immunodeficiency emergencies."""
+    from scripts.hereditary_ectodermal_dysplasia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-ectodermal-dysplasia-atlas/definitions")
+def hereditary_ed_atlas_definitions():
+    """Hereditary-ED-Atlas glossary — ED biology, EDA pathway, NF-kB/IP, WNT-oligodontia, TP63 spectrum, diagnostic tests."""
+    from scripts.hereditary_ectodermal_dysplasia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-palmoplantar-keratoderma-atlas/overview")
+def hereditary_ppk_atlas_overview():
+    """Hereditary-PPK-Atlas overview — 8 genes (KRT9/SLURP1/CTSC/GJB2/DSP/JUP/SERPINB7/LORICRIN), 320 patients, seeds 2286-2293."""
+    from scripts.hereditary_palmoplantar_keratoderma_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-palmoplantar-keratoderma-atlas/breakdown")
+def hereditary_ppk_atlas_breakdown():
+    """Hereditary-PPK-Atlas per-gene breakdown — PPK types, cardiac/dental emergencies, pseudoainhum, treatments, complications."""
+    from scripts.hereditary_palmoplantar_keratoderma_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-palmoplantar-keratoderma-atlas/definitions")
+def hereditary_ppk_atlas_definitions():
+    """Hereditary-PPK-Atlas glossary — PPK biology, gene definitions, cardiac PPK, dental PPK, aquagenic PPK, diagnostic tests."""
+    from scripts.hereditary_palmoplantar_keratoderma_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
