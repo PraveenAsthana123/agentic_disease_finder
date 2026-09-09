@@ -19062,5 +19062,14 @@
     "category": "hereditary-atlas",
     "status": "built",
     "registered": "2026-09-09"
+  },
+  {
+    "id": "hereditary-precocious-puberty-atlas",
+    "title": "Hereditary-Precocious-Puberty-Atlas Complete-8-Gene-MKRN3-DLK1-KISS1-KISS1R-LIN28B-GNAS-LEPR-GNRH1-Atlas MKRN3-507aa-Xq27.1-AD-Paternal-Imprinting-LOF-MOST-COMMON-Hereditary-CPP-46pct-Familial-GnRHa-Curative DLK1-383aa-14q32.2-AD-Maternal-LOF-2nd-Most-Common-GWAS-Puberty-Timing KISS1-145aa-1q32.1-AR/AD-GOF-Kisspeptin-Ligand-R73C-Extreme-Early-Onset KISS1R-398aa-19p13.3-AD-GOF-A243V-Constitutive-GPR54-CPP-vs-LOF-IHH LIN28B-250aa-6q16.3-AD-GOF-let7-miRNA-Repressor-GWAS-Strongest-Hit GNAS-395aa-20q13.32-Somatic-GOF-McCune-Albright-PERIPHERAL-PP-GnRHa-FAILS LEPR-1165aa-1p31.3-AR-LOF-Severe-Obesity-CPP-Metreleptin-Rebound GNRH1-92aa-8p21.2-AD-Activating-Rare-3-5pct-Familial-CPP 320-Patient-Aggregate-8x40-seeds-2494-2501",
+    "name": "Hereditary-Precocious-Puberty-Atlas Complete-8-Gene-MKRN3-DLK1-KISS1-KISS1R-LIN28B-GNAS-LEPR-GNRH1-Atlas MKRN3-507aa-Xq27.1-AD-Paternal-Imprinting-LOF-MOST-COMMON-Hereditary-CPP-~46pct-Familial-GnRHa-Curative DLK1-383aa-14q32.2-AD-Maternal-LOF-Notch-Astrocyte-2nd-Most-Common KISS1-145aa-1q32.1-AR/AD-GOF-Kisspeptin-R73C-MMP-Resistant-Extreme-Early-2yr KISS1R-398aa-19p13.3-AD-GOF-A243V-Constitutive-GPR54-CPP-vs-LOF-IHH-SAME-GENE LIN28B-250aa-6q16.3-AD-GOF-let7-Repressor-KISS1R-GNRH1-Derepressed-GWAS GNAS-395aa-20q13.32-Somatic-GOF-McCune-Albright-PERIPHERAL-PP-GnRHa-FAILS-Aromatase-Inhibitor LEPR-1165aa-1p31.3-AR-LOF-Hyperphagia-Severe-Obesity-Absent-Puberty-CPP-Metreleptin-Rebound GNRH1-92aa-8p21.2-AD-Activating-Rare-Normal-Smell-vs-Kallmann-IHH-LOF 320-Patient-Aggregate-8x40-seeds-2494-2501",
+    "endpoint": "/api/hereditary-precocious-puberty-atlas/overview",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "registered": "2026-09-09"
   }
 ]

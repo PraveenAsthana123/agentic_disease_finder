@@ -48706,6 +48706,64 @@ def hereditary_hypopituitarism_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-precocious-puberty-atlas/overview")
+def hereditary_precocious_puberty_atlas_overview():
+    """Hereditary-Precocious-Puberty-Atlas overview (MKRN3-507aa-Xq27.1-AD-paternal-imprinting-LOF-MOST-COMMON-hereditary-CPP-46pct-familial, DLK1-383aa-14q32.2-AD-maternal-LOF-2nd-most-common, KISS1-145aa-1q32.1-GOF-kisspeptin-ligand-R73C-extreme-early-onset, KISS1R-398aa-19p13.3-GOF-A243V-CPP-vs-LOF-IHH, LIN28B-250aa-6q16.3-GOF-let7-repressor-GWAS, GNAS-395aa-20q13.32-somatic-GOF-McCune-Albright-PERIPHERAL-PP-GnRHa-FAILS, LEPR-1165aa-1p31.3-AR-LOF-severe-obesity-CPP-metreleptin-rebound, GNRH1-92aa-8p21.2-AD-activating-rare-3-5pct-familial-CPP, 320-patients-8x40-seeds-2494-2501)."""
+    try:
+        import scripts.hereditary_precocious_puberty_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-precocious-puberty-atlas/breakdown")
+def hereditary_precocious_puberty_atlas_breakdown():
+    """Hereditary-Precocious-Puberty-Atlas per-gene breakdown (MKRN3-paternal-imprinting-GnRHa-curative, DLK1-maternal-imprinting-adiposity-risk, KISS1-GOF-R73C-kisspeptin-prolonged-half-life, KISS1R-GOF-A243V-constitutive-GPR54, LIN28B-let7-repression-KISS1R-GNRH1-derepressed, GNAS-MAS-peripheral-PP-aromatase-inhibitor-bisphosphonate, LEPR-hyperphagia-obesity-hypogonadism-metreleptin-CPP, GNRH1-activating-rare-IHH-sibling-normal-smell)."""
+    try:
+        import scripts.hereditary_precocious_puberty_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-precocious-puberty-atlas/definitions")
+def hereditary_precocious_puberty_atlas_definitions():
+    """Hereditary-Precocious-Puberty-Atlas clinical definitions (central-vs-peripheral-PP-GnRH-stimulation-test, paternally-imprinted-maternally-silenced-MKRN3-DLK1, hypothalamic-hamartoma-MRI-mandatory, GnRHa-mechanism-pituitary-receptor-downregulation, McCune-Albright-MAS-GNAS-cafe-au-lait-coast-of-maine, kisspeptin-KNDy-GnRH-axis, bone-age-interpretation, aromatase-inhibitor-MAS-letrozole, LEPR-leptin-permissive-signal-puberty)."""
+    try:
+        import scripts.hereditary_precocious_puberty_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-calcium-homeostasis-atlas/overview")
+def hereditary_calcium_homeostasis_atlas_overview():
+    """Hereditary-Calcium-Homeostasis-Atlas overview (CASR-FHH1-FECa-surgery-contraindicated, PTH-hypoparathyroidism-sporadic-vs-hereditary, GATA3-HDR-Barakat-triad-PATHOGNOMONIC, GCM2-isolated-hypoparathyroidism-AD-AR, GNA11-FHH2-ADH1, AP2S1-FHH3-cinacalcet-responsive, GNAS-PHP1a-AHO-maternal-imprinting, CDC73-HPT-JT-parathyroid-carcinoma-15-20pct)."""
+    try:
+        import scripts.hereditary_calcium_homeostasis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-calcium-homeostasis-atlas/breakdown")
+def hereditary_calcium_homeostasis_atlas_breakdown():
+    """Hereditary-Calcium-Homeostasis-Atlas per-gene breakdown (CASR-PTH-GATA3-GCM2-GNA11-AP2S1-GNAS-CDC73 cohort data, presentations, management, pathognomonic features)."""
+    try:
+        import scripts.hereditary_calcium_homeostasis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-calcium-homeostasis-atlas/definitions")
+def hereditary_calcium_homeostasis_atlas_definitions():
+    """Hereditary-Calcium-Homeostasis-Atlas clinical definitions (FECa-fractional-excretion-calcium-threshold, FHH-types-1-2-3, PHP-vs-hypoparathyroidism, AHO-Albright-hereditary-osteodystrophy, parathyroid-carcinoma-CDC73-no-biopsy, HP-treatment-targets-albumin-corrected, HDR-Barakat-triad, ossifying-jaw-fibroma-HPT-JT)."""
+    try:
+        import scripts.hereditary_calcium_homeostasis_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
