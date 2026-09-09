@@ -34601,3 +34601,226 @@ Done. **Hereditary-EDMD-Nuclear-Envelope-Atlas** committed and pushed.
 - LEMD3 922aa (12q14.3, AD — BOS, osteopoikilosis + dermatofibrosis dual pathognomonic)
 
 **Verified:** 3 endpoints `/api/hereditary-edmd-nuclear-envelope-atlas/overview|breakdown|definitions` → 200. Registry count 1150→1151. Pushed `b001745e..1ad6e07d`.
+
+### [2026-09-08 09:19:35 MDT] ASSISTANT
+Done. Built + verified + pushed in one iteration:
+
+**Hereditary-Myofibrillar-Myopathy-Atlas** — seeds 2206-2213, 320 patients (8×40)
+
+**8 genes:**
+| Gene | aa | Locus | Disease | Key Clinical Fact |
+|---|---|---|---|---|
+| DES | 470 | 2q35 | MFM1 | Cytoplasmic desmin aggregates PATHOGNOMONIC; cardiac conduction+DCM mandatory |
+| CRYAB | 175 | 11q23.1 | MFM2 | Posterior subcapsular cataracts 50% AD carriers PATHOGNOMONIC; R120G hotspot |
+| MYOT | 498 | 5q31.2 | MFM3/LGMD1A | Late onset 40-65yr PATHOGNOMONIC; NO cardiac — critical DDx |
+| FLNC | 2725 | 7q32.1 | MFM5 | Hyaline bodies PATHOGNOMONIC; truncating→DCM/ARVC; missense→MFM5 |
+| BAG3 | 575 | 10q26.11 | MFM6 | Childhood 2-15yr PATHOGNOMONIC; most severe; DCM mandatory; P209L/P209S |
+| PYROXD1 | 500 | 12p12.1 | AR-childhood MFM | Hybrid biopsy (nemaline rods + MFM disruption); no cardiac |
+| ACTN2 | 894 | 1q43 | HCM/DCM/LVNC | Cardiac dominant; mavacamten 2022; skeletal mild |
+| HSPB8 | 196 | 12q24.23 | CMT2L/MFM | K141N/K141E hotspot; distal peroneal; axonal neuropathy NCS mandatory |
+
+**Delivered:** dashboard script · 3 endpoints (200 ✅) · portal page (4 tabs) · SiteNav wired after EDMD · expert_dashboards.json 1151→1152 · committed + pushed → `b9e20153`
+
+### [2026-09-08 09:35:25 MDT] ASSISTANT
+The BUILDABLE queue in `next_pending.py` has only the explicitly-skipped ictal/interictal retrain. Queue is exhausted after applying the skip rule. Tracking and exiting per instructions.
+
+### [2026-09-08 09:55:59 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-08 10:16:19 MDT] ASSISTANT
+Done. Built, verified (all 3 endpoints HTTP 200), committed, and pushed.
+
+**Built: Hereditary-CMD-Atlas** — Complete 8-Gene Congenital Muscular Dystrophy (CMD) Spectrum Atlas
+
+| Gene | aa | Locus | Disease | Key Pathognomonic |
+|---|---|---|---|---|
+| LAMA2 | 3122 | 6q22.33 | MDC1A | Absent merosin IHC + white matter T2 leukodystrophy (non-progressive) |
+| COL6A1 | 1028 | 21q22.3 | Ullrich CMD / Bethlem | Proximal weakness + distal hyperlaxity paradox + follicular hyperkeratosis/keloid skin |
+| COL6A2 | 1019 | 21q22.3 | Ullrich CMD / Bethlem | Same spectrum as COL6A1; β-chain; 21q22.3 same chromosome — cosegregation critical |
+| COL6A3 | 3177 | 2q37.3 | Ullrich CMD / Bethlem | Most common Bethlem gene; largest subunit; 2q37.3 different chromosome |
+| FKTN | 461 | 9q31.2 | Fukuyama CMD | Intellectual disability mandatory + cobblestone lissencephaly; DCM adolescence; Japan c.3036+IVS founder 85% |
+| POMT1 | 747 | 9q34.13 | Walker-Warburg Syndrome | Most severe CMD — cobblestone agyria + Z-brainstem + ocular defects; lethal 1st year |
+| POMT2 | 750 | 14q24.3 | Walker-Warburg Syndrome type 2 | Identical WWS to POMT1; POMT1+POMT2 obligate heterodimer |
+| POMGNT1 | 660 | 1p34.1 | Muscle-Eye-Brain (MEB) | Myopia + glaucoma + cerebellar hypoplasia; Finnish founder p.Tyr688Cys 85%; survival adulthood |
+
+- 320 patients (8×40, seeds 2214-2221)
+- 3 endpoints verified: `/api/hereditary-cmd-atlas/overview|breakdown|definitions` → HTTP 200
+- Portal page: `/hereditary-cmd-atlas` (4 tabs: Overview/Gene Table/Clinical Atlas/Definitions)
+- SiteNav wired after Hereditary-Myofibrillar-Myopathy-Atlas
+- `expert_dashboards.json` count: 1153 → 1154
+- Pushed to `origin/main` (fast-forward)
+
+### [2026-09-08 10:42:22 MDT] ASSISTANT
+Endpoints confirmed ✅. Now refresh STATUS.md and commit:
+
+### [2026-09-08 10:57:59 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-08 11:09:49 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-08 11:23:04 MDT] ASSISTANT
+Done. One real iteration completed:
+
+**Built + pushed:** `CNN-ResNet Spectrogram EEG Classifier Dashboard`
+
+- **Portal page:** `portal-next/app/cnn-resnet/page.jsx` — 4 tabs: Overview, Spectrogram Inventory, Architectures, Definitions
+- **SiteNav:** wired after EEG-Transformer (`/cnn-resnet` → "CNN / ResNet Spectrogram")
+- **Registry:** `expert_dashboards.json` count 1157 → 1158
+- **Endpoints verified 200:** `/api/cnn-resnet/overview` | `/api/cnn-resnet/breakdown` | `/api/cnn-resnet/definitions`
+- **Commit:** `3eaf92a5` pushed to `origin/main`
+
+**Architectures covered:** 1D-CNN (2.3M params), 2D-CNN (1.8M), ResNet-18 (11.2M skip connections), ResNet-34 (21.8M deep residual). Training readiness: 133 spectrograms, 5 classes, severe class imbalance flagged.
+
+### [2026-09-08 13:35:20 MDT] ASSISTANT
+Done. One complete, verified, committed, pushed iteration:
+
+**Built: Hereditary Metabolic Myopathy Atlas** (`/hereditary-metabolic-myopathy-atlas`)
+
+- **Script**: `scripts/hereditary_metabolic_myopathy_atlas_dashboard.py` — 1072 lines, 8 genes × 40 patients (seeds 2230–2237)
+- **8 genes**: PYGM (McArdle/GSD V) · CPT2 · ACADVL (VLCAD) · ETFDH (MADD/GA2) · HADHA (LCHAD/TFP) · PFKM (Tarui/GSD VII) · AMPD1 · SLC22A5 (Primary Carnitine Deficiency)
+- **3 endpoints verified 200**: `/api/hereditary-metabolic-myopathy-atlas/overview|breakdown|definitions`
+- **Portal page**: 4-tab UI (Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav wired** after Hereditary-Nemaline-Myopathy-Atlas
+- **expert_dashboards.json**: count 1158 → 1159
+- **Pushed**: `3eaf92a5..a2a17216` → origin/main
+
+Key pharmacological distinctions encoded: PYGM glucose/sucrose trick · CPT2 thermogenic triggers + high-carb diet · ETFDH riboflavin essentially curative (trial mandatory) · PFKM high-carb paradox (IV glucose absolutely CI) · SLC22A5 L-carnitine curative + cardiomyopathy reversible.
+
+⏳ **Pending**: Only ictal/interictal retrain remains (too heavy for autonomous loop); credential-gated items (Gmail/Slack/Drive/EMR/FHIR) blocked.
+
+### [2026-09-08 14:04:36 MDT] ASSISTANT
+Pushed. Now track the completion:
+
+### [2026-09-08 14:22:23 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: `hereditary-glycogen-storage-myopathy-atlas`**
+
+The page.jsx and dashboard script existed but were orphaned — missing backend endpoints, SiteNav entry, and registry registration. Fixed:
+
+- **Seed conflict resolved**: script had `SEED_BASE = 2230` (already used by metabolic myopathy atlas) → updated to `2246` (seeds 2246-2253, next available after hepatic GSD atlas at 2238-2245)
+- **3 backend endpoints added** to `api_backend.py`: `/api/hereditary-glycogen-storage-myopathy-atlas/overview|breakdown|definitions` — all verified 200
+- **SiteNav wired** after `hereditary-hepatic-gsd-atlas` (line 1056)
+- **Registry entry added** to `config/expert_dashboards.json` (count 1160 → 1161)
+- **Committed + pushed** to `origin/main` (fast-forward, `00b1da9f`)
+
+8 genes covered: GAA (Pompe/GSD-II, ERT+CRIM), PYGM (McArdle/GSD-V, second wind), PFKM (Tarui/GSD-VII, out-of-wind), LAMP2 (Danon, WPW+HCM triad), AGL (Cori-Forbes/GSD-III, IIIa vs IIIb), GBE1 (Andersen/GSD-IV, most severe), GYS1 (GSD-0a, SCD paradox), PGAM2 (GSD-X, tubular aggregates).
+
+⏳ **Pending**: Ictal/interictal retrain (skipped — too heavy) · Gmail/Slack/Drive live (needs credentials) · Multi-user auth/RBAC (needs operator go-ahead)
+
+### [2026-09-08 15:04:50 MDT] ASSISTANT
+Done. One iteration completed and pushed.
+
+**What was fixed:**
+
+The `next_pending.py` script only showed the blocked ictal/interictal retrain item because two atlases were invisible to registry lookups — their `expert_dashboards.json` entries existed but lacked the `id` field:
+
+- **`hereditary-polyglutamine-sca-atlas`** (index 1138) — ATXN1/2/3/7/10/ATXN8OS/PPP2R2B/KCNC3; seeds 2102-2109
+- **`hereditary-edmd-nuclear-envelope-atlas`** (index 1150) — EMD/LMNA/SYNE1/SYNE2/TMEM43/FHL1/SUN1/LEMD3; seeds 2198-2205
+
+Both had portal pages, backend endpoints (all 6 returning 200), and SiteNav entries already in place — only the registry `id` field was missing.
+
+Also bundled in the same commit: the **Hereditary-Congenital-Heart-Disease-Atlas** portal page + script that were staged from the prior session but never committed (GATA4/TBX5/NKX2-5/NOTCH1/JAG1/CHD7/TFAP2B/TBX1; seeds 2254-2261).
+
+Pushed to `origin/main` (fast-forward, `19e0abf5`).
+
+⏳ **Pending:** Ictal/interictal retrain (blocked — too heavy for unattended) · Gmail/Slack/Drive live (credentials blocked) · Multi-user auth/RBAC (credentials blocked)
+
+### [2026-09-08 18:26:05 MDT] ASSISTANT
+**Done.** Iteration complete.
+
+**Built + pushed: `Hereditary-Primary-Glaucoma-Atlas`**
+
+- **8 genes** (seeds 2262-2269):
+  - MYOC 504aa — JOAG/POAG: highest IOP 30-50 mmHg PATHOGNOMONIC, steroid-response, trabeculectomy effective
+  - CYP1B1 543aa — PCG: buphthalmos + Haab striae PATHOGNOMONIC, goniotomy first-line, avoid brimonidine <2yr
+  - FOXC1 553aa — ARS3: iris hypoplasia + posterior embryotoxon 100% PATHOGNOMONIC, MLPA mandatory
+  - PITX2 317aa — ARS1: iridocorneal adhesions + posterior embryotoxon PATHOGNOMONIC, midface + hypodontia
+  - PAX6 422aa — Aniridia-Related Glaucoma: iris absent PATHOGNOMONIC, LSCD, WAGR CMA mandatory, tube shunt
+  - OPTN 577aa — NTG: normal IOP + disc haemorrhages PATHOGNOMONIC, E50K 10× risk, ALS overlap
+  - LTBP2 1821aa — PCG + Microspherophakia: spherical subluxated lens PATHOGNOMONIC, avoid miotics
+  - TEK 1124aa — PCG Schlemm's Canal Agenesis: canal absent on AS-OCT PATHOGNOMONIC, trabeculotomy not goniotomy
+
+- **Verified**: 3 endpoints `/api/hereditary-primary-glaucoma-atlas/overview|breakdown|definitions` → 200
+- **Registry**: expert_dashboards.json 1162 → 1163
+- **Pushed**: `19e0abf5..2a181f3a`
+
+⏳ **Pending**: `hereditary_epidermolysis_bullosa_atlas_dashboard.py` (untracked, needs backend endpoints + SiteNav + registry; seeds need reassignment to 2270-2277 to avoid conflict with glaucoma atlas); ictal/interictal retrain (skipped — too heavy).
+
+### [2026-09-08 18:41:31 MDT] ASSISTANT
+Now push:
+
+### [2026-09-08 19:18:07 MDT] ASSISTANT
+The buildable queue has exactly one item — `ictal_interictal` retrain — which is explicitly excluded per the autobuild instruction ("too heavy"). All other items in the queue are already built. There is nothing else to build this iteration.
+
+### [2026-09-08 19:33:40 MDT] ASSISTANT
+Good — only ichthyosis endpoints added. Now refresh STATUS.md and commit.
+
+### [2026-09-08 20:31:48 MDT] ASSISTANT
+Done. One iteration complete.
+
+**Built + pushed: `Hereditary-Ectodermal-Dysplasia-Atlas`**
+
+- **8 genes** (seeds 2294-2301):
+  - EDA 391aa / Xq12 / XLR — XLHED: Anhidrosis+Hypotrichosis+Hypodontia TRIAD PATHOGNOMONIC; heat stroke LIFE-THREATENING; EDX111 prenatal DMT
+  - EDAR 448aa / 2q13 / AD-AR — Autosomal HED: same triad; EDAR-D374A East Asian hair variant (not disease); AD milder, AR = severe phenocopy
+  - WNT10A 417aa / 2q35 / AR — OODD: 20-28 missing permanent teeth PATHOGNOMONIC; most common isolated oligodontia gene Europe (20%); sweating NORMAL (KEY DDx from HED)
+  - TP63 680aa / 3q28 / AD — EEC: Split hand/foot + cleft + EDA TRIAD PATHOGNOMONIC; AEC allelic: ankyloblepharon at birth = neonatal surgical emergency
+  - IKBKG 419aa / Xq28 / XLD — Incontinentia Pigmenti: 4-stage Blaschko skin PATHOGNOMONIC; retinal traction detachment = ophtho emergency; males usually lethal
+  - GJB6 261aa / 13q12.11 / AD — Clouston: diffuse alopecia + nail dystrophy + PPK TRIAD; sweating NORMAL = KEY DDx from EDA/EDAR; Quebec founder
+  - IRF6 467aa / 1q32.3 / AD — Van der Woude: lower lip pits + cleft PATHOGNOMONIC; lip pits unique to VWS; most common syndromic CLP (2-5% all)
+  - PVRL1 517aa / 11q23.3 / AR — CLPED1: cleft + hypodontia + nail + sparse hair TETRAD; recurrent herpetic keratitis PATHOGNOMONIC; aciclovir prophylaxis mandatory
+
+- **Verified**: 3 endpoints `/api/hereditary-ectodermal-dysplasia-atlas/overview|breakdown|definitions` → 200
+- **Registry**: expert_dashboards.json 1166 → 1167
+- **Pushed**: `856816e7..3c2caf54`
+
+⏳ **Pending**: Ictal/interictal retrain (blocked — too heavy for unattended) · Gmail/Slack/Drive live (credentials blocked) · Multi-user auth/RBAC (credentials blocked)
+
+### [2026-09-08 21:03:41 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed:
+
+**Hereditary Pigmentation Disorder Atlas** — 8 genes, 320 patients, seeds 2302-2309
+
+| Gene | Locus | Protein | Disease | Key Clinical Fact |
+|---|---|---|---|---|
+| TYR | 11q14.3 | Tyrosinase 58kDa | OCA1A/OCA1B | Zero melanin (OCA1A) / yellow-blonde accrues yr 1-2 (OCA1B); VEP chiasmal misrouting PATHOGNOMONIC |
+| OCA2 | 15q13.3 | P-protein 110kDa | OCA2 | Most common OCA worldwide (1:3,900 Africa); yellow-blonde dark races; 15q deletion → Prader-Willi/Angelman overlap |
+| TYRP1 | 9p23 | TRP1 75kDa | OCA3/Rufous | Red-rufous hair + bronze skin + brown eyes in Africans; pigment REDUCED not absent; UNDERDIAGNOSED |
+| SLC45A2 | 5p13.2 | MATP 58kDa | OCA4 | Most common OCA Japan (>70%); variable expressivity; full OCA panel required |
+| HPS1 | 10q24.2 | BLOC-3 80kDa | Hermansky-Pudlak | OCA + platelet dense granule deficiency + pulmonary fibrosis (lethal 3rd-4th decade); NO ASPIRIN ABSOLUTE |
+| LYST | 1q42.3 | CHS1 430kDa | Chédiak-Higashi | Silver-grey hair + giant MPO+ granules on smear PATHOGNOMONIC; accelerated phase = HLH LETHAL; HSCT curative |
+| KIT | 4q12 | RTK 145kDa | Piebaldism | White forelock + STABLE leukoderma from birth = KEY DDx vitiligo (acquired/progressive) |
+| MC1R | 16q24.3 | GPCR 35kDa | Red hair/melanoma | R/R variants 4-10x melanoma risk; brown-haired R/R = full risk; SPF50 + annual dermoscopy |
+
+**Endpoints verified 200:** `/api/hereditary-pigmentation-disorder-atlas/overview|breakdown|definitions`
+**Registry:** `expert_dashboards.json` count 1167→1168
+**Commit:** `e940cbc1` → pushed to `main`
+
+### [2026-09-08 21:37:33 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-Primary-Immunodeficiency-Atlas** — complete 8-gene reference covering the major primary immunodeficiency categories:
+
+| Gene | Size | Locus | Inh | Disease | Key Pathognomonic |
+|------|------|-------|-----|---------|-------------------|
+| IL2RG | 369aa | Xq13.1 | XLR | SCID-X1 | T-B+NK- immunophenotype; NO live vaccines (BCG-osis) |
+| ADA | 363aa | 20q13.12 | AR | ADA-SCID | T-B-NK- (worst SCID); rib-costal cupping on CXR |
+| RAG1 | 1043aa | 11p13 | AR | RAG1-SCID/Omenn | NK preserved (DDx from IL2RG); Omenn = erythroderma+high IgE+eosinophilia |
+| BTK | 659aa | Xq22.1 | XLR | XLA (Bruton) | B cells <1%; all Ig isotypes zero; enteroviral encephalitis |
+| AIRE | 552aa | 21q22.3 | AR | APECED/APS-1 | Candidiasis FIRST (age 1-5yr) + hypoparathyroidism + adrenal insufficiency triad |
+| LRBA | 2863aa | 4q31.3 | AR | LRBA deficiency | Hypogamma + autoimmunity combined; abatacept reverses in weeks |
+| CTLA4 | 223aa | 2q33.2 | AD | CTLA4-H | GLILD; paradoxical infections+splenomegaly; abatacept dramatic |
+| PIK3CD | 1044aa | 1p36.22 | AD GOF | APDS | EBV lymphoma risk; leniolisib (FDA 2023 — first targeted therapy) |
+
+- 320 patients (8×40, seeds 2310-2317)
+- 3 endpoints verified 200: `/api/hereditary-primary-immunodeficiency-atlas/overview|breakdown|definitions`
+- Portal page: 4 tabs (Overview / Gene Table / Clinical Atlas / Definitions)
+- SiteNav wired after Hereditary-Pigmentation-Disorder-Atlas
+- `expert_dashboards.json` count 1168→1169
+- Committed `6661f11d` · pushed to `origin/main`
+
+### [2026-09-08 22:38:09 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-08 23:21:05 MDT] ASSISTANT
+Queue is exhausted. The only buildable pending item (`Ictal/interictal retrain`) is explicitly skipped per operator instructions; all remaining items (`Gmail/Slack/Drive`, multi-user auth, EMR/FHIR) are blocked on credentials. No commit made. Tracked via `track.sh`.

@@ -18742,5 +18742,26 @@
     "script": "scripts/hereditary_interferonopathy_atlas_dashboard.py",
     "description": "Complete 8-Gene Hereditary Type I Interferonopathy Atlas \u2014 AGS1-7 + SAVI (TREX1/RNASEH2B/RNASEH2A/RNASEH2C/SAMHD1/ADAR1/IFIH1/STING1); ISG score biomarker; JAK inhibitor therapy",
     "built_date": "2026-09-08"
+  },
+  {
+    "id": "hereditary-phagocyte-deficiency-atlas",
+    "label": "Hereditary Phagocyte Deficiency Atlas \u2014 Complete 8-Gene CGD/LAD/SCN Atlas",
+    "route": "/hereditary-phagocyte-deficiency-atlas",
+    "api_prefix": "/api/hereditary-phagocyte-deficiency-atlas",
+    "status": "built",
+    "genes": [
+      "CYBB",
+      "NCF1",
+      "CYBA",
+      "NCF2",
+      "ITGB2",
+      "FERMT3",
+      "ELANE",
+      "HAX1"
+    ],
+    "patients": 320,
+    "seeds": "2326-2333",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-08"
   }
 ]

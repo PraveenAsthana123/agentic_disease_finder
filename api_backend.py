@@ -48255,6 +48255,25 @@ def hereditary_ppk_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-phagocyte-deficiency-atlas/overview")
+def hereditary_phagocyte_atlas_overview():
+    """Hereditary-Phagocyte-Deficiency-Atlas overview — 8 genes (CYBB/NCF1/CYBA/NCF2/ITGB2/FERMT3/ELANE/HAX1), 320 patients, seeds 2326-2333."""
+    from scripts.hereditary_phagocyte_deficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-phagocyte-deficiency-atlas/breakdown")
+def hereditary_phagocyte_atlas_breakdown():
+    """Hereditary-Phagocyte-Deficiency-Atlas per-gene breakdown — CGD/LAD/SCN subtypes, DHR results, triple prophylaxis, HSCT."""
+    from scripts.hereditary_phagocyte_deficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-phagocyte-deficiency-atlas/definitions")
+def hereditary_phagocyte_atlas_definitions():
+    """Hereditary-Phagocyte-Deficiency-Atlas glossary — CGD/LAD/SCN biology, DHR test, triple prophylaxis, G-CSF, Kindlin-3, MDS risk."""
+    from scripts.hereditary_phagocyte_deficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
