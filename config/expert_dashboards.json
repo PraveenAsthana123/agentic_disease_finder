@@ -18616,5 +18616,14 @@
     "cohort_n": 320,
     "seed": 2270,
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-ichthyosis-atlas",
+    "name": "Hereditary-Ichthyosis-Atlas Complete-8-Gene-Hereditary-Ichthyosis-Keratinization-Disorder-Atlas TGM1-817aa-14q12-AR-ARCI1-Lamellar-Ichthyosis-COLLODION-BABY-PATHOGNOMONIC ABCA12-2595aa-2q35-AR-Harlequin-Ichthyosis-ARMOR-PLATE-SCALE-BIRTH-PATHOGNOMONIC-ACITRETIN-24h-LIFE-SAVING CYP4F22-524aa-19p13.12-AR-ARCI6-NON-ERYTHRODERMIC-LI-PPK-TGase-1-Negative NIPAL4-399aa-5q33.3-AR-ARCI4-PRURITUS-PROMINENT-Anhidrosis-Dupilumab-Trial STS-583aa-Xp22.31-XLR-X-Linked-Ichthyosis-POLYGONAL-SCALE-NECK-CORNEAL-OPACITY-PATHOGNOMONIC-CRYPTORCHIDISM-20pct KRT1-644aa-12q13.13-AD-Epidermolytic-Ichthyosis-EHK-BIOPSY-PATHOGNOMONIC-S-Aureus-Superinfection GJB3-270aa-1p34.3-AD-Erythrokeratoderma-Variabilis-FIGURATE-ERYTHEMA-UNIQUE-Stress-Trigger ALOX12B-701aa-17p13.1-AR-ARCI8-PALMAR-FISSURING-PATHOGNOMONIC-No-Blistering-ALOXE3-Tandem 320-Patient-Aggregate-8x40-seeds-2278-2285",
+    "status": "built",
+    "api": "/api/hereditary-ichthyosis-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 2278,
+    "registered": "2026-09-08"
   }
 ]

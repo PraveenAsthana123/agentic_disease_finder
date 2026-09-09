@@ -48132,6 +48132,36 @@ async def hereditary_epidermolysis_bullosa_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-ichthyosis-atlas/overview")
+async def hereditary_ichthyosis_atlas_overview():
+    """Hereditary-Ichthyosis-Atlas overview — 8 genes (TGM1/ABCA12/CYP4F22/NIPAL4/STS/KRT1/GJB3/ALOX12B), 320 patients, seeds 2278-2285."""
+    try:
+        import scripts.hereditary_ichthyosis_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ichthyosis-atlas/breakdown")
+async def hereditary_ichthyosis_atlas_breakdown():
+    """Hereditary-Ichthyosis-Atlas per-gene breakdown — ichthyosis types, scale morphology, collodion baby, treatments, complications."""
+    try:
+        import scripts.hereditary_ichthyosis_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-ichthyosis-atlas/definitions")
+async def hereditary_ichthyosis_atlas_definitions():
+    """Hereditary-Ichthyosis-Atlas glossary — skin biology, ichthyosis types (ARCI/HI/EI/XLI/EKV), retinoids, diagnostic tests."""
+    try:
+        import scripts.hereditary_ichthyosis_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
