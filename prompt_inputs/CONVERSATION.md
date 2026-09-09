@@ -34859,3 +34859,49 @@ One complete iteration:
 The complement atlas is already in SiteNav and the registry (status=built, seeds 1926-1933). The current script had the wrong function interface (`atlas_.overview()` called but only `generate_overview()` existed). My fix adds the aliases. All 3 endpoints now return 200.
 
 Let me verify the backend restart script exits clean, then refresh STATUS and commit:
+
+### [2026-09-09 02:03:03 MDT] ASSISTANT
+Done. Here's the iteration summary:
+
+---
+
+**Built + pushed: Hereditary-Immune-Dysregulation-Atlas** (expert_dashboards count 1172→1173)
+
+**8 genes · 320 patients · seeds 2358-2365:**
+
+| Gene | Protein | Disease | Key Feature |
+|------|---------|---------|-------------|
+| FAS | 335aa / 10q23.31 / AD | ALPS-Ia (~70% of ALPS) | DNT cells >1.5% PATHOGNOMONIC; sirolimus ACNS2020 first-line; lymphoma 10-50x |
+| FASLG | 281aa / 1q24.3 / AD | ALPS-Ib | FAS apoptosis assay NORMAL — KEY DDx; sFasL >200 pg/mL biomarker |
+| CASP10 | 521aa / 2q33.1 / AD | ALPS-IIa | All FAS-pathway assays NORMAL; somatic reversion mosaicism — germline may miss |
+| CASP8 | 479aa / 2q33.1 / AR | ALPS-IIb + CID | UNIQUE: ALPS lymphoproliferation + recurrent infections SIMULTANEOUSLY PATHOGNOMONIC; AR (biallelic) |
+| FOXP3 | 431aa / Xp11.23 / XLR | IPEX | Neonatal T1DM + intractable enteropathy + eczema TRIAD IN BOYS; TREG absent; FATAL without HSCT |
+| WAS | 502aa / Xp11.22 / XLR | Wiskott-Aldrich | SMALL platelets (MPV <7fL) PATHOGNOMONIC — KEY DDx from ITP; HSCT + OTL-103 EMA2022 |
+| DOCK8 | 2099aa / 9p24.3 / AR | HIES2 | Disseminated HSV/molluscum PATHOGNOMONIC vs STAT3-HIES; CD8 lymphopenia progressive; aciclovir mandatory |
+| STAT3 | 770aa / 17q21.2 / AD GOF | STAT3-GOF | Lymphoproliferation + multi-organ autoimmunity + short stature + early T1DM; DISTINCT from STAT3-LOF; JAK inhibitors DRAMATIC RESPONSE |
+
+**Deliverables:** `scripts/hereditary_immune_dysregulation_atlas_dashboard.py` · `portal-next/app/hereditary-immune-dysregulation-atlas/page.jsx` · SiteNav wired after Hereditary-Autoinflammatory-Syndrome-Atlas · 3 endpoints `/api/hereditary-immune-dysregulation-atlas/overview|breakdown|definitions` verified 200 · committed `dd3a081c` · pushed to `origin/main`
+
+### [2026-09-09 02:23:07 MDT] ASSISTANT
+Now update STATUS.md and update the expert_dashboards.json registry entry:
+
+### [2026-09-09 03:19:33 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-09 03:47:41 MDT] ASSISTANT
+Now push and track:
+
+### [2026-09-09 04:19:58 MDT] ASSISTANT
+All 3 endpoints return 200. Now update next_pending.py, refresh STATUS.md, and commit:
+
+### [2026-09-09 04:50:52 MDT] ASSISTANT
+Done. Hereditary-Ectopia-Lentis-Atlas is built and pushed.
+
+- `scripts/hereditary_ectopia_lentis_atlas_dashboard.py` — 8 genes, 320 patients, seeds 2398-2405
+- 3 endpoints verified 200: `/api/hereditary-ectopia-lentis-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-ectopia-lentis-atlas/page.jsx` — 4-tab UI
+- SiteNav wired after ASD atlas
+- `expert_dashboards.json` count 1177→1178
+- Committed `86e976a7` and pushed to `origin/main`
+
+**⏳ Pending:** Retrain on same-setup ictal/interictal (skip — too heavy) · Gmail/Slack/Drive/auth/EMR/FHIR (blocked — needs credentials)

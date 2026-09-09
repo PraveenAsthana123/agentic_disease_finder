@@ -48417,6 +48417,25 @@ def hereditary_el_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-macular-dystrophy-atlas/overview")
+def hereditary_md_atlas_overview():
+    """Hereditary-Macular-Dystrophy-Atlas overview — 8 genes (ABCA4/BEST1/PRPH2/TIMP3/ELOVL4/C1QTNF5/PRDM13/EFEMP1), 320 patients, seeds 2406-2413."""
+    from scripts.hereditary_macular_dystrophy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-macular-dystrophy-atlas/breakdown")
+def hereditary_md_atlas_breakdown():
+    """Hereditary-Macular-Dystrophy-Atlas per-gene breakdown — ABCA4 Stargardt (bull's eye/dark choroid), BEST1 BVMD (egg-yolk/EOG), PRPH2 pattern dystrophy, TIMP3 Sorsby (CNV haemorrhage), ELOVL4 STGD3 (AD flecks), C1QTNF5 LORD (iris crystals), PRDM13 NCMD (stationary/non-progressive), EFEMP1 DHRD/ML (honeycomb drusen R345W)."""
+    from scripts.hereditary_macular_dystrophy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-macular-dystrophy-atlas/definitions")
+def hereditary_md_atlas_definitions():
+    """Hereditary-Macular-Dystrophy-Atlas glossary — ABCA4 Vitamin A CI, BEST1 EOG Arden ratio protocol, PRDM13 NCMD exome-miss diagnostic trap, TIMP3 Vitamin A vs STGD contrast, EFEMP1 R345W single-variant honeycomb drusen."""
+    from scripts.hereditary_macular_dystrophy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
