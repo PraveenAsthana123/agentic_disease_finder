@@ -48496,6 +48496,36 @@ def hereditary_md_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-nshl-atlas/overview")
+def hereditary_nshl_atlas_overview():
+    """Hereditary-Non-Syndromic-Hearing-Loss-Atlas overview (GJB2-226aa-13q12.11-AR-DFNB1A-most-common-AR-NSHL-globally-50pct-p.35delG-European-founder-CI-excellent, SLC26A4-780aa-7q22.3-AR-DFNB4-Pendred-EVA-enlarged-vestibular-aqueduct-CT-pathognomonic-contact-sports-CI, OTOF-1997aa-2p23.3-AR-DFNB9-ANSD-present-OAE-absent-ABR-CI-first-line-p.Ile515Thr-Iberian, MYO15A-3530aa-17p11.2-AR-DFNB3-profound-short-stereocilia-3530aa-largest-cochlear-myosin, TECTA-2155aa-11q23.3-AR-DFNB21-profound-AD-DFNA8-12-mid-frequency-U-shaped-same-gene-opposite-inheritance, KCNQ4-695aa-1p34.2-AD-DFNA2A-progressive-HF-SNHL-dominant-negative-pharmacological-target, LHFPL5-219aa-6p21.31-AR-DFNB67-profound-TMC1-TMC2-mechanotransduction-auxiliary, GJB6-261aa-13q12.11-AR-digenic-GJB2-DFNB1B-del-GJB6-D13S1830-MLPA-mandatory-exome-misses, 320-patients-8x40-seeds-2438-2445)."""
+    try:
+        import scripts.hereditary_nshl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-nshl-atlas/breakdown")
+def hereditary_nshl_atlas_breakdown():
+    """Hereditary-Non-Syndromic-Hearing-Loss-Atlas per-gene breakdown (GJB2-DFNB1A-most-common-50pct-p.35delG-founder-connexin-K+-recycling-CI-excellent, SLC26A4-DFNB4-Pendred-EVA-CT-pathognomonic-contact-sports-CI-thyroid-goiter-perchlorate-test, OTOF-DFNB9-ANSD-OAE-present-ABR-absent-hearing-aids-ineffective-CI-first-line, MYO15A-DFNB3-profound-short-stereocilia-EPS8-cargo-3530aa, TECTA-DFNB21-AR-profound-DFNA8-12-AD-mid-freq-U-shape-same-gene-two-phenotypes, KCNQ4-DFNA2A-progressive-HF-dominant-negative-noise-protection-mandatory, LHFPL5-DFNB67-profound-TMC1-TMC2-tetraspan-mechanotransduction, GJB6-DFNB1B-del-D13S1830-342kb-digenic-GJB2-MLPA-CNV-mandatory)."""
+    try:
+        import scripts.hereditary_nshl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-nshl-atlas/definitions")
+def hereditary_nshl_atlas_definitions():
+    """Hereditary-Non-Syndromic-Hearing-Loss-Atlas clinical definitions (ANSD-present-OAE-absent-ABR-OTOF, EVA-SLC26A4-contact-sports-CI, DFNB1-GJB2-GJB6-13q12.11, GJB6-MLPA-mandatory, Pendred-goiter-perchlorate, KCNQ4-dominant-negative-pharmacological, TECTA-dual-inheritance-AR-profound-AD-mid-freq, temperature-sensitive-OTOF-p.Ile515Thr, CI-outcomes-ranking-GJB2-OTOF-excellent)."""
+    try:
+        import scripts.hereditary_nshl_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

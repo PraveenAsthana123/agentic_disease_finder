@@ -34905,3 +34905,30 @@ Done. Hereditary-Ectopia-Lentis-Atlas is built and pushed.
 - Committed `86e976a7` and pushed to `origin/main`
 
 **⏳ Pending:** Retrain on same-setup ictal/interictal (skip — too heavy) · Gmail/Slack/Drive/auth/EMR/FHIR (blocked — needs credentials)
+
+### [2026-09-09 05:16:52 MDT] ASSISTANT
+All verified. Now commit:
+
+### [2026-09-09 06:11:11 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-09 06:32:58 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary Color Vision & Photoreceptor Disorder Atlas**
+
+- **8 genes:** CNGB3 (ACHM3 ~50%, p.T383fsX, gene therapy Phase 2/3) · CNGA3 (ACHM2 ~25%, p.R427W, gene therapy Phase 2) · GNAT2 (ACHM4 rare complete) · PDE6C (ACHM5 incomplete) · PDE6H (ACHM6 mildest) · ATF6 (ACHM7 foveal hypoplasia OCT DISTINCT) · KCNV2 (CDSRR supernormal rod ERG PATHOGNOMONIC, PROGRESSIVE) · OPN1LW (BCM X-linked males, WES MISSES LCR rearrangement)
+- **320 patients** · 8×40 · seeds 2422–2429
+- **3 endpoints verified 200:** `/api/hereditary-color-vision-disorder-atlas/overview|breakdown|definitions`
+- **Portal page:** `/hereditary-color-vision-disorder-atlas` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions)
+- **SiteNav** wired after Hereditary-Optic-Neuropathy-Atlas
+- **expert_dashboards.json** count 1180→1181
+- **Pushed** to `origin/main` (fast-forward)
+
+### [2026-09-09 07:07:44 MDT] ASSISTANT
+Pushed `5b297c92` → `origin/main`. **Hereditary-Usher-Syndrome-Atlas** complete:
+
+- 8 genes (MYO7A · USH2A · CDH23 · PCDH15 · ADGRV1 · CLRN1 · WHRN · SANS), 320 patients, seeds 2430-2437
+- 3 endpoints `/api/hereditary-usher-syndrome-atlas/{overview,breakdown,definitions}` — all 200
+- 4-tab React page + SiteNav wired + `expert_dashboards.json` count 1181→1182
+- 9 files, 1785 insertions, committed + pushed, tracked

@@ -18960,5 +18960,30 @@
     "seeds": "2430-2437",
     "status": "built",
     "built_date": "2026-09-09"
+  },
+  {
+    "id": "hereditary-nshl-atlas",
+    "title": "Hereditary-Non-Syndromic-Hearing-Loss-Atlas Complete-8-Gene-GJB2-SLC26A4-OTOF-MYO15A-TECTA-KCNQ4-LHFPL5-GJB6-Atlas GJB2-226aa-13q12.11-AR-DFNB1A-MOST-COMMON-AR-NSHL-GLOBALLY-~50pct-p.35delG-EUROPEAN-FOUNDER SLC26A4-780aa-7q22.3-AR-DFNB4-Pendred-EVA-CT-MRI-PATHOGNOMONIC OTOF-1997aa-2p23.3-AR-DFNB9-ANSD-PRESENT-OAE-ABSENT-ABR MYO15A-3530aa-17p11.2-AR-DFNB3-PROFOUND-SHORT-STEREOCILIA TECTA-2155aa-11q23.3-AR-DFNB21-AD-DFNA8-12-SAME-GENE-OPPOSITE-INHERITANCE KCNQ4-695aa-1p34.2-AD-DFNA2A-PROGRESSIVE-HF-DOMINANT-NEGATIVE LHFPL5-219aa-6p21.31-AR-DFNB67-TMC1-TMC2-MECHANOTRANSDUCTION GJB6-261aa-13q12.11-AR-DFNB1B-del-GJB6-D13S1830-MLPA-MANDATORY 320-Patient-Aggregate-8x40-seeds-2438-2445",
+    "status": "built",
+    "category": "Hereditary Hearing Loss",
+    "page": "/hereditary-nshl-atlas",
+    "api_endpoints": [
+      "/api/hereditary-nshl-atlas/overview",
+      "/api/hereditary-nshl-atlas/breakdown",
+      "/api/hereditary-nshl-atlas/definitions"
+    ],
+    "genes": [
+      "GJB2",
+      "SLC26A4",
+      "OTOF",
+      "MYO15A",
+      "TECTA",
+      "KCNQ4",
+      "LHFPL5",
+      "GJB6"
+    ],
+    "n_patients": 320,
+    "seed_range": "2438-2445",
+    "built_date": "2026-09-09"
   }
 ]
