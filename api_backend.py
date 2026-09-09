@@ -48342,6 +48342,25 @@ def hereditary_corneal_dystrophy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-vitreoretinopathy-atlas/overview")
+def hereditary_vitreoretinopathy_atlas_overview():
+    """Hereditary-Vitreoretinopathy-Atlas overview — 8 genes (COL2A1/COL11A1/VCAN/FZD4/NDP/LRP5/TSPAN12/ZNF408), 320 patients, seeds 2374-2381."""
+    from scripts.hereditary_vitreoretinopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-vitreoretinopathy-atlas/breakdown")
+def hereditary_vitreoretinopathy_atlas_breakdown():
+    """Hereditary-Vitreoretinopathy-Atlas per-gene breakdown — Stickler Type1/2 (COL2A1/COL11A1), Wagner (VCAN), FEVR (FZD4/NDP/LRP5/TSPAN12/ZNF408)."""
+    from scripts.hereditary_vitreoretinopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-vitreoretinopathy-atlas/definitions")
+def hereditary_vitreoretinopathy_atlas_definitions():
+    """Hereditary-Vitreoretinopathy-Atlas glossary — Stickler Type1/2 vitreous phenotypes, FEVR staging, Wagner DDx, Norrie/Rb leukocoria DDx, PFV/PHPV ZNF408, prophylactic retinopexy."""
+    from scripts.hereditary_vitreoretinopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
