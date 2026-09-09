@@ -48360,6 +48360,24 @@ def hereditary_vitreoretinopathy_atlas_definitions():
     from scripts.hereditary_vitreoretinopathy_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-cataract-atlas/overview")
+def hereditary_cataract_atlas_overview():
+    """Hereditary-Cataract-Atlas overview — 8 genes (CRYAA/CRYAB/GJA8/GJA3/MIP/EPHA2/NHS/FYCO1), 320 patients, seeds 2382-2389."""
+    from scripts.hereditary_cataract_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-cataract-atlas/breakdown")
+def hereditary_cataract_atlas_breakdown():
+    """Hereditary-Cataract-Atlas per-gene breakdown — crystallins (CRYAA/CRYAB), connexins (GJA8/GJA3), AQP0 (MIP), RTK (EPHA2), XLR (NHS), AR-autophagy (FYCO1)."""
+    from scripts.hereditary_cataract_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-cataract-atlas/definitions")
+def hereditary_cataract_atlas_definitions():
+    """Hereditary-Cataract-Atlas glossary — congenital cataract surgical urgency, lens anatomy zones, connexin lens microcirculation, crystallin chaperone CRYAA vs CRYAB, XLR NHS, FYCO1 autophagy founder mutations, amblyopia prevention."""
+    from scripts.hereditary_cataract_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

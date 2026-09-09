@@ -18838,5 +18838,13 @@
     "status": "built",
     "seeds": "2374-2381",
     "category": "hereditary-atlas"
+  },
+  {
+    "id": "hereditary-cataract-atlas",
+    "name": "Hereditary-Cataract-Atlas Complete-8-Gene-CRYAA-CRYAB-GJA8-GJA3-MIP-EPHA2-NHS-FYCO1-Atlas",
+    "api_prefix": "/api/hereditary-cataract-atlas",
+    "status": "built",
+    "seeds": "2382-2389",
+    "category": "hereditary-atlas"
   }
 ]
