@@ -45119,6 +45119,36 @@ async def hereditary_optic_neuropathy_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-color-vision-disorder-atlas/overview")
+async def hereditary_color_vision_disorder_atlas_overview():
+    """Hereditary-Color-Vision-And-Photoreceptor-Disorder-Atlas overview (CNGB3-809aa-8q21.3-AR-Achromatopsia-ACHM3-most-common-50pct-p.T383fsX-European-founder-gene-therapy-Phase2-3, CNGA3-694aa-2q11.2-AR-Achromatopsia-ACHM2-25pct-p.R427W-gene-therapy-Phase2, GNAT2-354aa-1p13.3-AR-Achromatopsia-ACHM4-rare-complete, PDE6C-858aa-10q23.33-AR-Achromatopsia-ACHM5-incomplete-more-common, PDE6H-84aa-12p13.33-AR-Achromatopsia-ACHM6-mildest-residual-color-vision, ATF6-670aa-1q23.2-AR-Achromatopsia-ACHM7-foveal-hypoplasia-OCT-DISTINCT, KCNV2-545aa-9p24.2-AR-CDSRR-supernormal-rod-ERG-PATHOGNOMONIC-PROGRESSIVE, OPN1LW-364aa-Xq28-XLR-Blue-Cone-Monochromatism-BCM-WES-MISSES-LCR-rearrangement, 320-patients-8x40-seeds-2422-2429)."""
+    try:
+        import scripts.hereditary_color_vision_disorder_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-color-vision-disorder-atlas/breakdown")
+async def hereditary_color_vision_disorder_atlas_breakdown():
+    """Hereditary-Color-Vision-And-Photoreceptor-Disorder-Atlas per-gene breakdown (CNGB3-ACHM3-most-common-50pct-p.T383fsX-gene-therapy-Phase2-3-AGTC-402, CNGA3-ACHM2-25pct-p.R427W-gene-therapy-Phase2-BTT-401, GNAT2-ACHM4-complete-rare-transducin-alpha2, PDE6C-ACHM5-incomplete-photophobia-prominent-cGMP-PDE-alpha-prime, PDE6H-ACHM6-mildest-incomplete-residual-color-vision-cGMP-PDE-gamma-prime, ATF6-ACHM7-foveal-hypoplasia-OCT-DISTINCT-macular-atrophy-ER-stress-TF, KCNV2-CDSRR-supernormal-rod-ERG-PATHOGNOMONIC-PROGRESSIVE-macular-dystrophy-Kv8-2, OPN1LW-BCM-males-only-XLR-only-S-cones-WES-MISSES-LCR-rearrangement-gene-array-mandatory)."""
+    try:
+        import scripts.hereditary_color_vision_disorder_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-color-vision-disorder-atlas/definitions")
+async def hereditary_color_vision_disorder_atlas_definitions():
+    """Hereditary-Color-Vision-And-Photoreceptor-Disorder-Atlas clinical definitions (CNGB3-vs-CNGA3-complete-achromatopsia-DDx-p.T383fsX-vs-p.R427W, KCNV2-supernormal-rod-ERG-protocol-dark-adapted-10cd-bright-flash, ATF6-foveal-hypoplasia-OCT-distinct-from-CNGB3-CNGA3-initially-normal-fovea, OPN1LW-BCM-WES-fails-order-gene-array-LCR-Xq28, FL-41-rose-tinted-lenses-ALL-photoreceptor-disorders-photophobia, gene-therapy-2026-landscape-CNGB3-CNGA3-most-advanced, complete-vs-incomplete-achromatopsia-criteria, phototransduction-cascade-CNGA3-CNGB3-GNAT2-PDE6C-PDE6H-ATF6-pathway)."""
+    try:
+        import scripts.hereditary_color_vision_disorder_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/red-cell-disorders-atlas/overview")
 async def red_cell_disorders_atlas_overview():
     """Red-Cell-Disorders-Atlas overview (G6PD-515aa-Xq28-XL-G6PD-Deficiency-Rasburicase-Absolute-CI-Primaquine-CI-Fava-Beans, PKLR-574aa-1q22-AR-PK-Deficiency-2,3-BPG-Paradox-Mitapivat-FDA2022, ANK1-1881aa-8p11.21-AD-HS1-Most-Common-40-65pct-EMA-Flow-Cytometry, SPTA1-2429aa-1q23.1-AR-HE-HPP-αLELY-Modifier-Critical, SLC4A1-911aa-17q21.31-AD-HS4-SAO-Δ400-408-dRTA, EPB42-691aa-15q15.2-AR-HS5-Japanese-Founder-Ala142Thr, HK1-917aa-10q22.1-AR-Hexokinase-Deficiency-EMA-Normal-Non-Spherocytic, PIEZO1-2521aa-16q24.3-AD-GOF-Xerocytosis-Splenectomy-Absolute-CI, 320-patients-8x40-seeds-1422-1429)."""

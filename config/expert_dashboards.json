@@ -18918,5 +18918,26 @@
     "why": "Hereditary Optic Neuropathy Atlas \u2014 320-patient cohort (8x40, seeds 2414-2421), 3 endpoints /api/hereditary-optic-neuropathy-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-optic-neuropathy-atlas/page.jsx + SiteNav wired after Hereditary-Macular-Dystrophy-Atlas. Built 2026-09-09.",
     "priority": "P1",
     "status": "built"
+  },
+  {
+    "id": "hereditary-color-vision-disorder-atlas",
+    "title": "Hereditary Color Vision & Photoreceptor Disorder Atlas",
+    "status": "built",
+    "genes": [
+      "CNGB3",
+      "CNGA3",
+      "GNAT2",
+      "PDE6C",
+      "PDE6H",
+      "ATF6",
+      "KCNV2",
+      "OPN1LW"
+    ],
+    "n_patients": 320,
+    "seeds": "2422-2429",
+    "api_prefix": "/api/hereditary-color-vision-disorder-atlas",
+    "portal_path": "/hereditary-color-vision-disorder-atlas",
+    "built": "2026-09-09",
+    "category": "Ophthalmology"
   }
 ]
