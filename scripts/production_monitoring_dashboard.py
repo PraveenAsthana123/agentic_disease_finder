@@ -183,12 +183,12 @@ def _check_vector_db():
                 "doc_counts": doc_counts,
                 "total_docs": sum(doc_counts.values()),
             })
-        except Exception as e:
+        except BaseException as e:  # catches pyo3 Rust panics (PanicException < BaseException)
             checks.append({
                 "db": label,
                 "path": db_path,
                 "status": "error",
-                "error": str(e),
+                "error": type(e).__name__ + ": " + str(e),
             })
 
     all_ok = all(c.get("status") == "ok" for c in checks)
@@ -428,8 +428,8 @@ def live_checks():
     for fn in check_fns:
         try:
             results.append(fn())
-        except Exception as e:
-            results.append({"check": fn.__name__, "status": "error", "error": str(e)})
+        except BaseException as e:  # catches pyo3 Rust panics (PanicException < BaseException)
+            results.append({"check": fn.__name__, "status": "error", "error": type(e).__name__ + ": " + str(e)})
 
     counts = {"ok": 0, "warning": 0, "critical": 0, "error": 0}
     for r in results:
