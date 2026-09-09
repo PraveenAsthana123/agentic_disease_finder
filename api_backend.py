@@ -48616,6 +48616,96 @@ def hereditary_poi_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-46xx-dsd-atlas/overview")
+def hereditary_46xx_dsd_atlas_overview():
+    """Hereditary-46XX-DSD-Atlas overview (CYP21A2-495aa-6p21.33-AR-CAH-most-common-90pct-17OHP-elevated-salt-wasting-SW-simple-virilising-SV-non-classic-NC, HSD3B2-372aa-1p12-AR-DHEA-elevated-delta5delta4-ratio-paradoxical-46XX-virilisation-undervirilised-46XY, CYP11B1-503aa-8q24.3-AR-2nd-most-common-CAH-11-DOC-excess-HYPERTENSION-NO-fludrocortisone, CYP17A1-508aa-10q24.32-AR-hypertension-absent-puberty-46XX-female-phenotype-46XY-progesterone-DOC-HIGH, STAR-285aa-8p11.23-AR-lipoid-CAH-ALL-steroids-absent-enlarged-adrenals-CT-PATHOGNOMONIC, CYP11A1-521aa-15q24.1-AR-P450scc-similar-to-STAR-milder-molecular-panel-distinguishes, POR-680aa-7q11.23-AR-Antley-Bixler-craniosynostosis-radiohumeral-synostosis-maternal-virilisation, MC2R-297aa-18p11.21-AR-FGD-isolated-cortisol-absent-mineralocorticoids-NORMAL-hyperpigmentation-hypoglycaemia, 320-patients-8x40-seeds-2478-2485)."""
+    try:
+        import scripts.hereditary_46xx_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-46xx-dsd-atlas/breakdown")
+def hereditary_46xx_dsd_atlas_breakdown():
+    """Hereditary-46XX-DSD-Atlas per-gene breakdown (CYP21A2-17OHP-PATHOGNOMONIC-salt-crisis-days7-21-stress-dosing-IM-kit, HSD3B2-DHEA-HIGH-17OHP-NOT-elevated-NBS-misses-HSD3B2, CYP11B1-hypertension-virilisation-11-deoxycortisol-HIGH-fludrocortisone-CONTRAINDICATED, CYP17A1-progesterone-DOC-HIGH-absent-puberty-gonadectomy-46XY-oestrogen-HRT, STAR-neonatal-crisis-week1-ALL-steroids-absent-lipid-adrenals-CT, CYP11A1-partial-form-spontaneous-puberty-then-POF-milder-STAR, POR-maternal-virilisation-craniosynostosis-combined-partial-blocks, MC2R-ACTH-very-high-cortisol-absent-hyperpigmentation-NO-salt-wasting)."""
+    try:
+        import scripts.hereditary_46xx_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-46xx-dsd-atlas/definitions")
+def hereditary_46xx_dsd_atlas_definitions():
+    """Hereditary-46XX-DSD-Atlas clinical definitions (CAH-steroidogenesis-pathway, 46XX-DSD-virilisation, Prader-scale, salt-wasting-vs-simple-virilising, Synacthen-test, adrenal-crisis-protocol, mineralocorticoid-rules-per-gene, TART-OART, Antley-Bixler-POR, FGD-MC2R-MRAP, puberty-induction, neonatal-ambiguous-genitalia-workup)."""
+    try:
+        import scripts.hereditary_46xx_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-46xy-dsd-atlas/overview")
+def hereditary_46xy_dsd_atlas_overview():
+    """Hereditary-46XY-DSD-Atlas overview (AR-919aa-Xq11.2-CAIS-PAIS-MAIS-most-common-46XY-DSD-inguinal-hernia-female-karyotype-mandatory, SRD5A2-254aa-2p23.1-AR-T-DHT-ratio-gt10-diagnostic-virilisation-puberty, HSD17B3-310aa-9q22.32-AR-A4-T-ratio-diagnostic-Gaza-founder, NR5A1-461aa-9q33.3-AD-SF1-gonadal-dysgenesis-Synacthen-mandatory, WT1-449aa-11p13-AD-Denys-Drash-DMS-bilateral-Wilms-Frasier-FSGS-gonadoblastoma, DHH-396aa-12q13.12-AR-CGD-minifascicular-neuropathy-streak-gonads, LHCGR-699aa-2p21-AR-Leydig-hypoplasia-testosterone-UNDETECTABLE-hCG-flat, AMH-560aa-19p13.3-AR-PMDS-type1-uterus-in-46XY-male-vas-protection-mandatory, 320-patients-8x40-seeds-2470-2477)."""
+    try:
+        import scripts.hereditary_46xy_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-46xy-dsd-atlas/breakdown")
+def hereditary_46xy_dsd_atlas_breakdown():
+    """Hereditary-46XY-DSD-Atlas per-gene breakdown (AR-CAIS-T-high-AMH-high-vaginal-dilation-gonadectomy-adult, SRD5A2-T-DHT-ratio-hCG-stimulation-virilisation-puberty-founder, HSD17B3-A4-T-ratio-Gaza-founder-Wolffian-partial, NR5A1-Synacthen-adrenal-reserve-sick-day-rules, WT1-DDS-bilateral-nephrectomy-Frasier-gonadoblastoma-30pct, DHH-streak-gonads-minifascicular-neuropathy-uterus-present, LHCGR-zero-T-hCG-flat-AMH-normal-no-Wolffian, AMH-PMDS-serum-AMH-lt5-bilateral-cryptorchidism-vas-at-risk)."""
+    try:
+        import scripts.hereditary_46xy_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-46xy-dsd-atlas/definitions")
+def hereditary_46xy_dsd_atlas_definitions():
+    """Hereditary-46XY-DSD-Atlas clinical definitions (46XY-DSD, CGD-complete-gonadal-dysgenesis, androgen-insensitivity-spectrum, hCG-stimulation-test, T-DHT-ratio-SRD5A2, A4-T-ratio-HSD17B3, PMDS-type1-type2, minifascicular-neuropathy-DHH, gonadoblastoma, diffuse-mesangial-sclerosis-DDS, Quigley-scale, AMH-diagnostic-threshold, Synacthen-test-NR5A1, DSD-MDT-team)."""
+    try:
+        import scripts.hereditary_46xy_dsd_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hypopituitarism-atlas/overview")
+def hereditary_hypopituitarism_atlas_overview():
+    """Hereditary-Hypopituitarism-Atlas overview (POU1F1-291aa-3p11.2-AR/AD-CPHD1-GH+PRL+TSH-only-spared-LH/FSH/ACTH, PROP1-226aa-5q35.3-AR-CPHD2-most-common-CPHD-GH+TSH+PRL+LH/FSH+evolving-ACTH, HESX1-185aa-3p14.3-AR/AD-SOD-de-Morsier-optic-nerve-hypoplasia+absent-septum+pituitary, OTX2-289aa-14q22.3-AD-anophthalmia-microphthalmia-GH-deficiency-ectopic-PP, SOX3-446aa-Xq27.1-XLR-intellectual-disability+GH+hypopituitarism-infundibular-hypoplasia, LHX3-397aa-9q34.3-AR-CPHD3-rigid-cervical-spine-PATHOGNOMONIC+GH+TSH+LH/FSH, LHX4-390aa-1q25.2-AD-CPHD4-ectopic-PP+Chiari+GH+TSH+ACTH-early, GLI2-1586aa-2q14.2-AD-HPE9-PSIS-most-variable-expressivity-single-incisor, 320-patients-8x40-seeds-2486-2493)."""
+    try:
+        import scripts.hereditary_hypopituitarism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hypopituitarism-atlas/breakdown")
+def hereditary_hypopituitarism_atlas_breakdown():
+    """Hereditary-Hypopituitarism-Atlas per-gene breakdown (POU1F1-CPHD1-triple-GH+PRL+TSH-spares-LH/FSH/ACTH-PATHOGNOMONIC, PROP1-pituitary-mass-then-involution-evolving-ACTH-loss-adulthood, HESX1-SOD-pendular-nystagmus-birth-EPP-MRI, OTX2-eye-anomalies-dominant-GH-deficiency-secondary, SOX3-XLR-ID+GH-infundibular-hypoplasia, LHX3-rigid-neck-PATHOGNOMONIC-CPHD3, LHX4-ACTH-early-Chiari-EPP, GLI2-HPE-spectrum-PSIS-single-central-incisor)."""
+    try:
+        import scripts.hereditary_hypopituitarism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-hypopituitarism-atlas/definitions")
+def hereditary_hypopituitarism_atlas_definitions():
+    """Hereditary-Hypopituitarism-Atlas clinical definitions (combined-pituitary-hormone-deficiency-CPHD, GH-deficiency-diagnosis-provocation-tests, ectopic-posterior-pituitary-EPP-MRI, pituitary-stalk-interruption-syndrome-PSIS, septo-optic-dysplasia-SOD-triad, holoprosencephaly-spectrum, central-adrenal-insufficiency-cortisol-replacement, GH-replacement-monitoring, puberty-induction-hypogonadotropic, single-central-incisor-midline-marker)."""
+    try:
+        import scripts.hereditary_hypopituitarism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
