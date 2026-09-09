@@ -18692,5 +18692,26 @@
     "seeds": "2302-2309",
     "category": "hereditary_atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-primary-immunodeficiency-atlas",
+    "label": "Hereditary Primary Immunodeficiency Atlas \u2014 Complete 8-Gene SCID/XLA/APECED/LRBA/CTLA4H/APDS Atlas",
+    "route": "/hereditary-primary-immunodeficiency-atlas",
+    "api_prefix": "/api/hereditary-primary-immunodeficiency-atlas",
+    "status": "built",
+    "genes": [
+      "IL2RG",
+      "ADA",
+      "RAG1",
+      "BTK",
+      "AIRE",
+      "LRBA",
+      "CTLA4",
+      "PIK3CD"
+    ],
+    "patients": 320,
+    "seeds": "2310-2317",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-08"
   }
 ]

@@ -48199,6 +48199,24 @@ def hereditary_pigment_atlas_definitions():
     from scripts.hereditary_pigmentation_disorder_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-primary-immunodeficiency-atlas/overview")
+def hereditary_pid_atlas_overview():
+    """Hereditary-Primary-Immunodeficiency-Atlas overview — 8 genes (IL2RG/ADA/RAG1/BTK/AIRE/LRBA/CTLA4/PIK3CD), 320 patients, seeds 2310-2317."""
+    from scripts.hereditary_primary_immunodeficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-primary-immunodeficiency-atlas/breakdown")
+def hereditary_pid_atlas_breakdown():
+    """Hereditary-Primary-Immunodeficiency-Atlas per-gene breakdown — SCID/XLA/APECED/LRBA/CTLA4-H/APDS immunophenotypes and complications."""
+    from scripts.hereditary_primary_immunodeficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-primary-immunodeficiency-atlas/definitions")
+def hereditary_pid_atlas_definitions():
+    """Hereditary-Primary-Immunodeficiency-Atlas glossary — SCID immunophenotypes, V(D)J recombination, TREC newborn screen, abatacept, leniolisib."""
+    from scripts.hereditary_primary_immunodeficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 @app.get("/api/hereditary-palmoplantar-keratoderma-atlas/overview")
 def hereditary_ppk_atlas_overview():
