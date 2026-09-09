@@ -18939,5 +18939,26 @@
     "portal_path": "/hereditary-color-vision-disorder-atlas",
     "built": "2026-09-09",
     "category": "Ophthalmology"
+  },
+  {
+    "id": "hereditary-usher-syndrome-atlas",
+    "title": "Hereditary-Usher-Syndrome-Atlas Complete-8-Gene-MYO7A-USH2A-CDH23-PCDH15-ADGRV1-CLRN1-WHRN-SANS-Atlas MYO7A-2314aa-11q13.5-AR-USH1B-most-common-USH1-cochlear-implant-before-age-2 USH2A-5202aa-1q41-AR-most-common-overall-c.2299delG-normal-vestibular ADGRV1-6307aa-5q14.3-AR-USH2C-LARGEST-HUMAN-PROTEIN-692kDa CLRN1-232aa-3q25.1-AR-USH3A-PROGRESSIVE-SNHL-PATHOGNOMONIC CDH23-tip-link-upper-end PCDH15-tip-link-lower-end WHRN-rarest-USH2 SANS-rarest-USH1 320-Patient-Aggregate-8x40-seeds-2430-2437",
+    "route": "/hereditary-usher-syndrome-atlas",
+    "api_prefix": "/api/hereditary-usher-syndrome-atlas",
+    "category": "Hereditary Ophthalmology / Dual Sensory Atlas",
+    "genes": [
+      "MYO7A",
+      "USH2A",
+      "CDH23",
+      "PCDH15",
+      "ADGRV1",
+      "CLRN1",
+      "WHRN",
+      "SANS"
+    ],
+    "n_patients": 320,
+    "seeds": "2430-2437",
+    "status": "built",
+    "built_date": "2026-09-09"
   }
 ]

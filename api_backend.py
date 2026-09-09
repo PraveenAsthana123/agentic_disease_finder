@@ -45149,6 +45149,36 @@ async def hereditary_color_vision_disorder_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-usher-syndrome-atlas/overview")
+async def hereditary_usher_syndrome_atlas_overview():
+    """Hereditary-Usher-Syndrome-Atlas overview (MYO7A-2314aa-11q13.5-AR-USH1B-most-common-USH1-40-55pct-cochlear-implant-before-age-2, USH2A-5202aa-1q41-AR-USH2A-most-common-overall-40pct-c.2299delG-European-founder-30pct, CDH23-3354aa-10q22.1-AR-USH1D-tip-link-upper-end-DFNB12, PCDH15-1955aa-10q21.1-AR-USH1F-tip-link-lower-end-Roma-founder, ADGRV1-6307aa-5q14.3-AR-USH2C-LARGEST-HUMAN-PROTEIN-692kDa, CLRN1-232aa-3q25.1-AR-USH3A-PROGRESSIVE-SNHL-Finnish-Ashkenazi-founders, WHRN-907aa-9q32-AR-USH2D-rarest-USH2-PDZ-scaffold, SANS-461aa-17q25.1-AR-USH1G-rarest-USH1-tip-link-assembly-scaffold, 320-patients-8x40-seeds-2430-2437)."""
+    try:
+        import scripts.hereditary_usher_syndrome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-usher-syndrome-atlas/breakdown")
+async def hereditary_usher_syndrome_atlas_breakdown():
+    """Hereditary-Usher-Syndrome-Atlas per-gene breakdown (MYO7A-USH1B-most-common-USH1-cochlear-implant-excellent-Acadian-founder, USH2A-USH2A-most-common-overall-c.2299delG-30pct-European-normal-vestibular, CDH23-USH1D-tip-link-upper-end-DFNB12-milder-alleles, PCDH15-USH1F-tip-link-lower-end-TMC-gating-Roma-p.Arg929Stop, ADGRV1-USH2C-6307aa-LARGEST-HUMAN-PROTEIN-ankle-link-complex, CLRN1-USH3A-PROGRESSIVE-SNHL-pathognomonic-Finnish-Ashkenazi, WHRN-USH2D-rarest-PDZ-scaffold-ankle-links-stereocilia-tip, SANS-USH1G-rarest-MYO7A-SANS-harmonin-CDH23-PCDH15-TMC-assembly)."""
+    try:
+        import scripts.hereditary_usher_syndrome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-usher-syndrome-atlas/definitions")
+async def hereditary_usher_syndrome_atlas_definitions():
+    """Hereditary-Usher-Syndrome-Atlas clinical definitions (USH1-triad-profound-SNHL-early-RP-vestibular-areflexia, USH2-triad-moderate-HF-SNHL-RP-teens-NORMAL-vestibular, USH3-PROGRESSIVE-SNHL-CLRN1-pathognomonic-DDx, tip-link-anatomy-CDH23-upper-PCDH15-lower-TMC-gating, cochlear-implant-all-Usher-types-excellent-before-age-2-USH1, USH2A-c.2299delG-test-first-European-30pct-alleles, ADGRV1-6307aa-largest-human-protein-AAV-delivery-challenge, CLRN1-progressive-vs-congenital-DDx-clinical-pearl, vitamin-A-palmitate-level-B-avoid-vitamin-E, bicycle-test-USH1-no-USH2-yes)."""
+    try:
+        import scripts.hereditary_usher_syndrome_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/red-cell-disorders-atlas/overview")
 async def red_cell_disorders_atlas_overview():
     """Red-Cell-Disorders-Atlas overview (G6PD-515aa-Xq28-XL-G6PD-Deficiency-Rasburicase-Absolute-CI-Primaquine-CI-Fava-Beans, PKLR-574aa-1q22-AR-PK-Deficiency-2,3-BPG-Paradox-Mitapivat-FDA2022, ANK1-1881aa-8p11.21-AD-HS1-Most-Common-40-65pct-EMA-Flow-Cytometry, SPTA1-2429aa-1q23.1-AR-HE-HPP-αLELY-Modifier-Critical, SLC4A1-911aa-17q21.31-AD-HS4-SAO-Δ400-408-dRTA, EPB42-691aa-15q15.2-AR-HS5-Japanese-Founder-Ala142Thr, HK1-917aa-10q22.1-AR-Hexokinase-Deficiency-EMA-Normal-Non-Spherocytic, PIEZO1-2521aa-16q24.3-AD-GOF-Xerocytosis-Splenectomy-Absolute-CI, 320-patients-8x40-seeds-1422-1429)."""
