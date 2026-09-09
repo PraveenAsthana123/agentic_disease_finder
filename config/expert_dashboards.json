@@ -19071,5 +19071,26 @@
     "category": "hereditary-atlas",
     "status": "built",
     "registered": "2026-09-09"
+  },
+  {
+    "id": "hereditary-calcium-homeostasis-atlas",
+    "title": "Hereditary-Calcium-Homeostasis-Atlas Complete-8-Gene-CASR-PTH-GATA3-GCM2-GNA11-AP2S1-GNAS-CDC73-Atlas CASR-1078aa-3q21.1-AD-LOF-FHH1-Most-Common-Genetic-Hypercalcaemia-AR-NSHPT-Neonatal-Emergency-AD-GOF-ADH1-Bartter5 PTH-115aa-11p15.3-AR/AD-Isolated-Familial-Hypoparathyroidism-Prepro-PTH-Mutations GATA3-444aa-10p14-AD-HDR-Barakat-Hypoparathyroidism-SNHL-Renal-TRIAD-PATHOGNOMONIC GCM2-506aa-6p24.2-AR-LOF-Most-Common-Genetic-Isolated-HP-AD-GOF-Familial-HPT GNA11-359aa-19p13.3-AD-FHH2-ADH2-CASR-Downstream-Effector AP2S1-142aa-19q13.32-AD-FHH3-R15-Hotspot-Cinacalcet-Responsive GNAS-395aa-20q13.32-AD-Imprinted-PHP1a-AHO-PTH-Resistance-pseudoPHP-PHP1b-Methylation CDC73-531aa-1q31.2-AD-HPT-JT-Ossifying-Jaw-Fibroma-PATHOGNOMONIC-Parathyroid-Carcinoma-15-20pct 320-Patient-Aggregate-8x40-seeds-2494-2501",
+    "status": "built",
+    "api_prefix": "/api/hereditary-calcium-homeostasis-atlas",
+    "page": "/hereditary-calcium-homeostasis-atlas",
+    "script": "scripts/hereditary_calcium_homeostasis_atlas_dashboard.py",
+    "genes": [
+      "CASR",
+      "PTH",
+      "GATA3",
+      "GCM2",
+      "GNA11",
+      "AP2S1",
+      "GNAS",
+      "CDC73"
+    ],
+    "patients": 320,
+    "seeds": "2494-2501",
+    "registered_at": "2026-09-09"
   }
 ]
