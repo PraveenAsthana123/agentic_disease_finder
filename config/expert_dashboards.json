@@ -18908,5 +18908,15 @@
     "why": "Hereditary Macular Dystrophy Atlas \u2014 320-patient cohort (8x40, seeds 2406-2413), 3 endpoints verified 200 (/api/hereditary-macular-dystrophy-atlas/overview|breakdown|definitions), portal-next/app/hereditary-macular-dystrophy-atlas/page.jsx, SiteNav wired after Hereditary-Ectopia-Lentis-Atlas",
     "priority": "P1",
     "status": "built"
+  },
+  {
+    "id": "hereditary-optic-neuropathy-atlas",
+    "name": "Hereditary-Optic-Neuropathy-Atlas Complete-8-Gene-OPA1-OPA3-WFS1-CISD2-TIMM8A-ACO2-RTN4IP1-SLC25A46-Atlas",
+    "role": "Ophthalmologist / Neuro-Ophthalmologist / Medical Geneticist",
+    "viz": "4-tab atlas (Overview, Gene Table, Clinical Atlas, Definitions)",
+    "feature": "Complete 8-gene hereditary optic neuropathy reference: OPA1 (ADOA/Kjer, tritanopia-blue-yellow DDx-LHON, OPA1-plus 20%), OPA3 (Costeff AR 3-MGC urine, Iraqi-Jewish founder), WFS1 (Wolfram DIDMOAD, OA first sign age 5-8y), CISD2 (WFS2, GI bleeding pathognomonic), TIMM8A (Mohr-Tranebjaerg, SNHL\u2192dystonia\u2192OA sequential), ACO2 (infantile OA+cerebellar, avoid valproate), RTN4IP1 (AROA2, pure OA), SLC25A46 (CMT-like+OA, vincristine absolute CI). 320-patient cohort, seeds 2414-2421. Ethambutol absolute CI all types.",
+    "why": "Hereditary Optic Neuropathy Atlas \u2014 320-patient cohort (8x40, seeds 2414-2421), 3 endpoints /api/hereditary-optic-neuropathy-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-optic-neuropathy-atlas/page.jsx + SiteNav wired after Hereditary-Macular-Dystrophy-Atlas. Built 2026-09-09.",
+    "priority": "P1",
+    "status": "built"
   }
 ]
