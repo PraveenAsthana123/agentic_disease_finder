@@ -19092,5 +19092,32 @@
     "patients": 320,
     "seeds": "2494-2501",
     "registered_at": "2026-09-09"
+  },
+  {
+    "id": "hereditary-primary-hyperaldosteronism-atlas",
+    "title": "Hereditary-Primary-Hyperaldosteronism-Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 KCNJ5 \u00b7 CLCN2 \u00b7 CACNA1H \u00b7 CACNA1D \u00b7 ATP1A1 \u00b7 ATP2B3 \u00b7 ARMC5 \u00b7 PRKACA",
+    "status": "built",
+    "category": "hereditary-endocrine",
+    "genes": [
+      "KCNJ5",
+      "CLCN2",
+      "CACNA1H",
+      "CACNA1D",
+      "ATP1A1",
+      "ATP2B3",
+      "ARMC5",
+      "PRKACA"
+    ],
+    "patients": 320,
+    "seeds": "2502-2509",
+    "route": "/hereditary-primary-hyperaldosteronism-atlas",
+    "api_endpoints": [
+      "/api/hereditary-primary-hyperaldosteronism-atlas/overview",
+      "/api/hereditary-primary-hyperaldosteronism-atlas/breakdown",
+      "/api/hereditary-primary-hyperaldosteronism-atlas/definitions"
+    ],
+    "built_date": "2026-09-09",
+    "domain": "Hereditary PA, FH2, FH3, FH4, PASNA, BMAH, Somatic APAs"
   }
 ]

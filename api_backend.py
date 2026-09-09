@@ -48763,6 +48763,33 @@ def hereditary_calcium_homeostasis_atlas_definitions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/hereditary-primary-hyperaldosteronism-atlas/overview")
+def hereditary_primary_hyperaldosteronism_atlas_overview():
+    """Hereditary-Primary-Hyperaldosteronism-Atlas overview (KCNJ5-FH3-germline-GOF-somatic-APA-most-common-35-40pct, CLCN2-FH2-bilateral-adult-mild, CACNA1H-FH4-PASNA-childhood-seizures, CACNA1D-PASNA-SNHL-cardiac, ATP1A1-severe-early-onset-cortisol-cosecretion, ATP2B3-X-linked-male-predominant, ARMC5-BMAH-food-dependent-cortisol-PATHOGNOMONIC, PRKACA-bilateral-Cushings-aldosterone)."""
+    try:
+        import scripts.hereditary_primary_hyperaldosteronism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-primary-hyperaldosteronism-atlas/breakdown")
+def hereditary_primary_hyperaldosteronism_atlas_breakdown():
+    """Hereditary-Primary-Hyperaldosteronism-Atlas per-gene breakdown (KCNJ5-CLCN2-CACNA1H-CACNA1D-ATP1A1-ATP2B3-ARMC5-PRKACA cohort data, presentations, management, pathognomonic features, AVS-lateralisation, emergency-protocols)."""
+    try:
+        import scripts.hereditary_primary_hyperaldosteronism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hereditary-primary-hyperaldosteronism-atlas/definitions")
+def hereditary_primary_hyperaldosteronism_atlas_definitions():
+    """Hereditary-Primary-Hyperaldosteronism-Atlas clinical definitions (ARR-screening-threshold, FH1-GRA-dexamethasone-suppressible, FH2-FH3-FH4-PASNA, AVS-lateralisation-index, BMAH-food-dependent-cortisol, MRA-spironolactone-eplerenone, cortisol-cosecretion-perioperative-cover)."""
+    try:
+        import scripts.hereditary_primary_hyperaldosteronism_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import os
