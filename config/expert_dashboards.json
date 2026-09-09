@@ -18789,5 +18789,28 @@
       "Clinical Atlas",
       "Definitions"
     ]
+  },
+  {
+    "id": "hereditary-immune-dysregulation-atlas",
+    "label": "Hereditary-Immune-Dysregulation-Atlas",
+    "title": "Hereditary-Immune-Dysregulation-Atlas Complete-8-Gene-ALPS-IPEX-WAS-DOCK8-STAT3-GOF-Atlas",
+    "slug": "/hereditary-immune-dysregulation-atlas",
+    "api_base": "/api/hereditary-immune-dysregulation-atlas",
+    "genes": [
+      "FAS",
+      "FASLG",
+      "CASP10",
+      "CASP8",
+      "FOXP3",
+      "WAS",
+      "DOCK8",
+      "STAT3"
+    ],
+    "n_patients": 320,
+    "seeds": "2358-2365",
+    "status": "built",
+    "registered": "2026-09-09",
+    "script": "scripts/hereditary_immune_dysregulation_atlas_dashboard.py",
+    "notes": "FAS-335aa-ALPS-Ia / FASLG-281aa-ALPS-Ib / CASP10-521aa-ALPS-IIa / CASP8-479aa-ALPS-IIb-CID / FOXP3-431aa-IPEX / WAS-502aa-Wiskott-Aldrich / DOCK8-2099aa-HIES2 / STAT3-770aa-GOF"
   }
 ]

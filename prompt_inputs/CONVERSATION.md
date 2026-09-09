@@ -34824,3 +34824,38 @@ Committed. Now push and track:
 
 ### [2026-09-08 23:21:05 MDT] ASSISTANT
 Queue is exhausted. The only buildable pending item (`Ictal/interictal retrain`) is explicitly skipped per operator instructions; all remaining items (`Gmail/Slack/Drive`, multi-user auth, EMR/FHIR) are blocked on credentials. No commit made. Tracked via `track.sh`.
+
+### [2026-09-08 23:48:07 MDT] ASSISTANT
+**Built + pushed:** `Hereditary-Phagocyte-Deficiency-Atlas` — commit `9e704645`
+
+**What was built:**
+- `scripts/hereditary_phagocyte_deficiency_atlas_dashboard.py` — 8-gene dashboard (CYBB/NCF1/CYBA/NCF2 = CGD, ITGB2/FERMT3 = LAD, ELANE/HAX1 = SCN), 320 patients, seeds 2326-2333
+- `portal-next/app/hereditary-phagocyte-deficiency-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- `api_backend.py` — 3 new endpoints verified 200 (`/api/hereditary-phagocyte-deficiency-atlas/overview|breakdown|definitions`)
+- `SiteNav.jsx` — wired after Hereditary-Type-I-Interferonopathy-Atlas
+- `config/expert_dashboards.json` — registry updated (1170 → 1171)
+
+**Key clinical content:**
+- **CGD:** DHR zero burst (CYBB), GT deletion founder in NCF1 pseudogenes, Western blot mutual b558 destabilisation (CYBA), b558-present DDx (NCF2), triple prophylaxis (TMP-SMX + itraconazole + IFN-gamma) mandatory lifelong
+- **LAD:** Delayed cord >21 days + leukocytosis without pus pathognomonic (ITGB2), Kindlin-3 dual beta-2+beta-3 integrin defect = LAD + Glanzmann-like bleeding pathognomonic (FERMT3)
+- **SCN:** 21-day ANC cycle + oral ulcers at nadir pathognomonic (ELANE), HAX1 isoform B neurological involvement unique to Kostmann disease (original 1956 Swedish pedigree), annual BM biopsy mandatory for MDS/AML risk
+
+### [2026-09-09 00:19:02 MDT] ASSISTANT
+**Built + pushed: Hereditary-HLH-Lymphohistiocytosis-Atlas**
+
+One complete iteration:
+
+- **New disease category** (not previously covered): Familial HLH & X-Linked Lymphoproliferative Disease
+- **8 genes / seeds 2334–2341**: PRF1 (FHL2, most common ~30%, perforin zero), UNC13D (FHL3, CD107a absent, MAS in JIA), STX11 (FHL4, Kurdish founder, CD107a NORMAL paradox), STXBP2 (FHL5, earliest onset, IBD pathognomonic), RAB27A (GS2, silver hair + HLH), AP3B1 (HPS-2, albinism + neutropenia + absent dense granules), SH2D1A (XLP-1, EBV-selective, NKT absent, HSCT before EBV), XIAP (XLP-2, IBD + HLH combination)
+- **Script**: `scripts/hereditary_hlh_atlas_dashboard.py` — 320 patients, deterministic cohorts
+- **3 API routes** added to `api_backend.py` — all verified 200
+- **Portal page**: `portal-next/app/hereditary-hlh-atlas/page.jsx` — 4 tabs (Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav** wired after Hereditary-Phagocyte-Deficiency-Atlas
+- **Registry**: expert_dashboards.json count 1171→1172
+- **Committed** `358a7881` → **pushed** to `main`
+- **Remaining queue**: ictal/interictal retrain only (skipped per instructions — too heavy)
+
+### [2026-09-09 01:39:03 MDT] ASSISTANT
+The complement atlas is already in SiteNav and the registry (status=built, seeds 1926-1933). The current script had the wrong function interface (`atlas_.overview()` called but only `generate_overview()` existed). My fix adds the aliases. All 3 endpoints now return 200.
+
+Let me verify the backend restart script exits clean, then refresh STATUS and commit:

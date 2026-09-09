@@ -48286,6 +48286,43 @@ def hereditary_autoinflammatory_atlas_definitions():
     from scripts.hereditary_autoinflammatory_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-complement-disorder-atlas/overview")
+def hereditary_complement_disorder_atlas_overview():
+    """Hereditary-Complement-Disorder-Atlas overview — 8 genes (C1QB/C4A/C2/C3/C5/CFH/SERPING1/C9), 320 patients, seeds 2350-2357."""
+    from scripts.hereditary_complement_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-complement-disorder-atlas/breakdown")
+def hereditary_complement_disorder_atlas_breakdown():
+    """Hereditary-Complement-Disorder-Atlas per-gene breakdown — C1q-SLE/C4A-null/C2-Caucasian/C3-severe/C5-Neisseria/CFH-aHUS-AMD/SERPING1-HAE/C9-Japanese, Eculizumab, Icatibant, Lanadelumab."""
+    from scripts.hereditary_complement_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-complement-disorder-atlas/definitions")
+def hereditary_complement_disorder_atlas_definitions():
+    """Hereditary-Complement-Disorder-Atlas glossary — complement pathways, CH50/AP50, HAE bradykinin-vs-histamine, Eculizumab-Neisseria risk, Factor H 3 phenotypes, vaccination protocol."""
+    from scripts.hereditary_complement_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-immune-dysregulation-atlas/overview")
+def hereditary_immune_dysregulation_atlas_overview():
+    """Hereditary-Immune-Dysregulation-Atlas overview — 8 genes (FAS/FASLG/CASP10/CASP8/FOXP3/WAS/DOCK8/STAT3-GOF), 320 patients, seeds 2358-2365."""
+    from scripts.hereditary_immune_dysregulation_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-immune-dysregulation-atlas/breakdown")
+def hereditary_immune_dysregulation_atlas_breakdown():
+    """Hereditary-Immune-Dysregulation-Atlas per-gene breakdown — ALPS-Ia/Ib/IIa/IIb/IPEX/WAS/DOCK8/STAT3-GOF subtypes, sirolimus, JAK inhibitors, HSCT, lymphoma surveillance."""
+    from scripts.hereditary_immune_dysregulation_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-immune-dysregulation-atlas/definitions")
+def hereditary_immune_dysregulation_atlas_definitions():
+    """Hereditary-Immune-Dysregulation-Atlas glossary — ALPS biology/DNT cells/sirolimus ACNS2020, IPEX FOXP3/HSCT, WAS small platelets DDx ITP, DOCK8 vs STAT3-HIES, STAT3-GOF vs LOF opposite phenotypes, JAK inhibitors."""
+    from scripts.hereditary_immune_dysregulation_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os
