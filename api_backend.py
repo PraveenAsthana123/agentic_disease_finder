@@ -48181,6 +48181,25 @@ def hereditary_ed_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-pigmentation-disorder-atlas/overview")
+def hereditary_pigment_atlas_overview():
+    """Hereditary-Pigmentation-Disorder-Atlas overview — 8 genes (TYR/OCA2/TYRP1/SLC45A2/HPS1/LYST/KIT/MC1R), 320 patients, seeds 2302-2309."""
+    from scripts.hereditary_pigmentation_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-pigmentation-disorder-atlas/breakdown")
+def hereditary_pigment_atlas_breakdown():
+    """Hereditary-Pigmentation-Disorder-Atlas per-gene breakdown — OCA/HPS/CHS/piebaldism/MC1R melanoma risk."""
+    from scripts.hereditary_pigmentation_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-pigmentation-disorder-atlas/definitions")
+def hereditary_pigment_atlas_definitions():
+    """Hereditary-Pigmentation-Disorder-Atlas glossary — melanin biology, OCA VEP, HPS platelet EM, CHS HLH, piebaldism vs vitiligo."""
+    from scripts.hereditary_pigmentation_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-palmoplantar-keratoderma-atlas/overview")
 def hereditary_ppk_atlas_overview():
     """Hereditary-PPK-Atlas overview — 8 genes (KRT9/SLURP1/CTSC/GJB2/DSP/JUP/SERPINB7/LORICRIN), 320 patients, seeds 2286-2293."""

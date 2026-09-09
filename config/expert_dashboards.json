@@ -18671,5 +18671,26 @@
     "seeds": "2294-2301",
     "category": "hereditary_atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-pigmentation-disorder-atlas",
+    "label": "Hereditary Pigmentation Disorder Atlas \u2014 Complete 8-Gene OCA/HPS/CHS/Piebaldism/RHC Atlas",
+    "route": "/hereditary-pigmentation-disorder-atlas",
+    "api_prefix": "/api/hereditary-pigmentation-disorder-atlas",
+    "status": "built",
+    "genes": [
+      "TYR",
+      "OCA2",
+      "TYRP1",
+      "SLC45A2",
+      "HPS1",
+      "LYST",
+      "KIT",
+      "MC1R"
+    ],
+    "patients": 320,
+    "seeds": "2302-2309",
+    "category": "hereditary_atlas",
+    "registered": "2026-09-08"
   }
 ]
