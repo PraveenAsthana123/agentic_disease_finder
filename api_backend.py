@@ -48586,6 +48586,36 @@ def hereditary_kallmann_ihh_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-poi-atlas/overview")
+def hereditary_poi_atlas_overview():
+    """Hereditary-Primary-Ovarian-Insufficiency-Atlas overview (FMR1-632aa-Xq27.3-FXPOI-premutation-55-200-CGG-test-first-all-POI, FOXL2-376aa-3q22.3-AD-BPES-typeI-eyelid-triad-POI-ptosis-repair-age3-4-mandatory, BMP15-392aa-Xp11.22-XLD-oocyte-TGFbeta-OHSS-risk-IVF, GDF9-454aa-5q31.1-AR-AD-cumulin-heterodimer-ICSI-preferred, NR5A1-461aa-9q33.3-AD-SF1-POI-adrenal-insufficiency-Synacthen-mandatory, NOBOX-672aa-7q35-AR-primordial-follicle-transition-primary-amenorrhoea, FIGLA-115aa-2p13.3-AR-streak-gonads-primordial-follicle-assembly, MCM8-840aa-20p12.3-AR-meiotic-DNA-repair-cancer-surveillance-age30, 320-patients-8x40-seeds-2462-2469)."""
+    try:
+        import scripts.hereditary_poi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-poi-atlas/breakdown")
+def hereditary_poi_atlas_breakdown():
+    """Hereditary-Primary-Ovarian-Insufficiency-Atlas per-gene breakdown (FMR1-FXPOI-CGG-premutation-WES-misses, FOXL2-BPES-eyelid-triad-ptosis-repair-mandatory, BMP15-XLD-OHSS-risk-low-dose-FSH, GDF9-AR-AD-cumulin-ICSI, NR5A1-SF1-adrenal-Synacthen, NOBOX-AR-primary-amenorrhoea-puberty-induction, FIGLA-AR-streak-gonads, MCM8-AR-cancer-surveillance-cisplatin-avoid)."""
+    try:
+        import scripts.hereditary_poi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-poi-atlas/definitions")
+def hereditary_poi_atlas_definitions():
+    """Hereditary-Primary-Ovarian-Insufficiency-Atlas clinical definitions (POI-FSH>25-hypergonadotropic, hypergonadotropic-vs-hypogonadotropic, FMR1-premutation-PCR-mandatory, BPES-eyelid-triad-ptosis-timing, cumulin-BMP15-GDF9-heterodimer, NR5A1-adrenal-Synacthen-sick-day, MCM8-cancer-surveillance-colonoscopy, POI-HRT-protocol, puberty-induction, fertility-options, inhibin-B-earliest-marker)."""
+    try:
+        import scripts.hereditary_poi_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
