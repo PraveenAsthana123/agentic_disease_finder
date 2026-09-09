@@ -16549,16 +16549,6 @@
     "built_date": "2026-09-06"
   },
   {
-    "id": "hereditary-autoinflammatory-atlas",
-    "name": "Hereditary Autoinflammatory Disorders Atlas",
-    "category": "hereditary-atlas",
-    "status": "built",
-    "route": "/hereditary-autoinflammatory-atlas",
-    "api": "/api/hereditary-autoinflammatory-atlas",
-    "description": "Complete 8-Gene Hereditary Autoinflammatory Disorders Atlas: MEFV (FMF/Colchicine) TNFRSF1A (TRAPS/Etanercept) MVK (HIDS/Canakinumab) NLRP3 (CAPS/Canakinumab) NOD2 (Blau/Adalimumab) IL1RN (DIRA/Anakinra-Curative) ADA2 (DADA2/TNF-Stroke-Prevention) PSTPIP1 (PAPA/Never-Debride). 320 patients (8x40, seeds 1550-1557).",
-    "built_date": "2026-09-06"
-  },
-  {
     "id": "hereditary-nephropathy-atlas",
     "name": "Hereditary Nephropathy Atlas",
     "category": "hereditary-atlas",
@@ -18778,6 +18768,21 @@
     "script": "scripts/hereditary_hlh_atlas_dashboard.py",
     "seeds": "2334-2341",
     "registered_at": "2026-09-09",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ]
+  },
+  {
+    "id": "hereditary-autoinflammatory-atlas",
+    "name": "Hereditary-Autoinflammatory-Syndrome-Atlas Complete-8-Gene-FMF-TRAPS-CAPS-MKD-PAPA-Blau-DIRA-DITRA-Atlas (MEFV-781aa-16p13.3-AR-FMF / TNFRSF1A-455aa-12p13.31-AD-TRAPS / NLRP3-1036aa-1q44-AD-GOF-CAPS / MVK-396aa-12q24.11-AR-MKD-HIDS / PSTPIP1-416aa-15q24.3-AD-PAPA / NOD2-1040aa-16q12.1-AD-Blau / IL1RN-177aa-2q14.1-AR-DIRA / IL36RN-155aa-2q14.1-AR-DITRA / seeds-2342-2349 / 320-patients)",
+    "status": "built",
+    "page": "/hereditary-autoinflammatory-atlas",
+    "api": "/api/hereditary-autoinflammatory-atlas/overview",
+    "category": "hereditary-disease-atlas",
+    "registered": "2026-09-09",
     "tabs": [
       "Overview",
       "Gene Table",

@@ -45549,31 +45549,6 @@ async def hereditary_connective_tissue_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/api/hereditary-autoinflammatory-atlas/overview")
-async def hereditary_autoinflammatory_atlas_overview():
-    try:
-        import scripts.hereditary_autoinflammatory_atlas_dashboard as atlas_
-        return atlas_.get_overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/hereditary-autoinflammatory-atlas/breakdown")
-async def hereditary_autoinflammatory_atlas_breakdown():
-    try:
-        import scripts.hereditary_autoinflammatory_atlas_dashboard as atlas_
-        return atlas_.get_breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/hereditary-autoinflammatory-atlas/definitions")
-async def hereditary_autoinflammatory_atlas_definitions():
-    try:
-        import scripts.hereditary_autoinflammatory_atlas_dashboard as atlas_
-        return atlas_.get_definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 @app.get("/api/hereditary-nephropathy-atlas/overview")
 async def hereditary_nephropathy_atlas_overview():
     try:
@@ -48290,6 +48265,25 @@ def hereditary_hlh_atlas_breakdown():
 def hereditary_hlh_atlas_definitions():
     """Hereditary-HLH-Atlas glossary — FHL biology, HLH-2004 criteria, HScore, CD107a, NK cytotoxicity, emapalumab, XLP, GS2, HPS-2."""
     from scripts.hereditary_hlh_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-autoinflammatory-atlas/overview")
+def hereditary_autoinflammatory_atlas_overview():
+    """Hereditary-Autoinflammatory-Syndrome-Atlas overview — 8 genes (MEFV/TNFRSF1A/NLRP3/MVK/PSTPIP1/NOD2/IL1RN/IL36RN), 320 patients, seeds 2342-2349."""
+    from scripts.hereditary_autoinflammatory_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-autoinflammatory-atlas/breakdown")
+def hereditary_autoinflammatory_atlas_breakdown():
+    """Hereditary-Autoinflammatory-Atlas per-gene breakdown — FMF/TRAPS/CAPS/MKD/PAPA/Blau/DIRA/DITRA subtypes, IL-1 blockade, colchicine, amyloid, spesolimab."""
+    from scripts.hereditary_autoinflammatory_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-autoinflammatory-atlas/definitions")
+def hereditary_autoinflammatory_atlas_definitions():
+    """Hereditary-Autoinflammatory-Atlas glossary — AID biology, IL-1 blockade, AA amyloidosis, CAPS spectrum, DIRA neonatal, DITRA spesolimab, Blau NOD2 GOF, PAPA PSTPIP1."""
+    from scripts.hereditary_autoinflammatory_atlas_dashboard import generate_definitions
     return generate_definitions()
 
 

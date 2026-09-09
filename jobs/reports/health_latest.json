@@ -1,11 +1,11 @@
 {
- "now": "2026-09-08 23:30 MDT",
+ "now": "2026-09-09 00:30 MDT",
  "backend_http": "200",
- "api_errors": 0,
+ "api_errors": 1,
  "api_total": 27,
  "backend_500s": 0,
  "tracebacks": 0,
  "db": "ok",
  "frontend_http": "000",
- "total_errors": 0
+ "total_errors": 1
 }
