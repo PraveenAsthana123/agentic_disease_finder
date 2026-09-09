@@ -19119,5 +19119,32 @@
     ],
     "built_date": "2026-09-09",
     "domain": "Hereditary PA, FH2, FH3, FH4, PASNA, BMAH, Somatic APAs"
+  },
+  {
+    "id": "hereditary-corneal-dystrophy-atlas",
+    "title": "Hereditary-Corneal-Dystrophy-Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 TGFBI \u00b7 SLC4A11 \u00b7 ZEB1 \u00b7 OVOL2 \u00b7 TCF4 \u00b7 COL8A2 \u00b7 VSX1 \u00b7 KRT12",
+    "status": "built",
+    "category": "hereditary-ophthalmology",
+    "genes": [
+      "TGFBI",
+      "SLC4A11",
+      "ZEB1",
+      "OVOL2",
+      "TCF4",
+      "COL8A2",
+      "VSX1",
+      "KRT12"
+    ],
+    "patients": 320,
+    "seeds": "2366-2373",
+    "route": "/hereditary-corneal-dystrophy-atlas",
+    "api_endpoints": [
+      "/api/hereditary-corneal-dystrophy-atlas/overview",
+      "/api/hereditary-corneal-dystrophy-atlas/breakdown",
+      "/api/hereditary-corneal-dystrophy-atlas/definitions"
+    ],
+    "built_date": "2026-09-09",
+    "domain": "Hereditary Corneal Dystrophies \u2014 TGFBI-variant-specific, CHED2, PPCD1-3, Fuchs FECD1+FECD3, Keratoconus, Meesmann"
   }
 ]

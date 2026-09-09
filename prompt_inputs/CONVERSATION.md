@@ -34932,3 +34932,199 @@ Pushed `5b297c92` → `origin/main`. **Hereditary-Usher-Syndrome-Atlas** complet
 - 3 endpoints `/api/hereditary-usher-syndrome-atlas/{overview,breakdown,definitions}` — all 200
 - 4-tab React page + SiteNav wired + `expert_dashboards.json` count 1181→1182
 - 9 files, 1785 insertions, committed + pushed, tracked
+
+### [2026-09-09 07:31:55 MDT] ASSISTANT
+**Built + pushed: Hereditary Non-Syndromic Hearing Loss Atlas**
+
+- **Script**: `scripts/hereditary_nshl_atlas_dashboard.py` (320 patients, 8×40, seeds 2438-2445)
+- **API**: 3 endpoints verified 200
+  - `/api/hereditary-nshl-atlas/overview`
+  - `/api/hereditary-nshl-atlas/breakdown`
+  - `/api/hereditary-nshl-atlas/definitions`
+- **Portal**: `portal-next/app/hereditary-nshl-atlas/page.jsx` — 4-tab UI (Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav**: wired after Hereditary-Usher-Syndrome-Atlas
+- **Registry**: `expert_dashboards.json` 1182 → 1183
+- **Pushed**: `8f70ba15` → `origin/main`
+
+**8 genes covered:**
+| Gene | Locus | Disease | Key Pearl |
+|------|-------|---------|-----------|
+| GJB2 | 13q12.11 AR | DFNB1A — most common AR NSHL ~50% | p.35delG European; CI EXCELLENT |
+| SLC26A4 | 7q22.3 AR | DFNB4/Pendred — EVA | Contact sports CONTRAINDICATED |
+| OTOF | 2p23.3 AR | DFNB9 — ANSD | Present OAE + absent ABR; CI first-line |
+| MYO15A | 17p11.2 AR | DFNB3 — profound | Short stereocilia; 3530 aa largest cochlear myosin |
+| TECTA | 11q23.3 AR/AD | DFNB21 / DFNA8-12 | Same gene → opposite inheritance → different phenotype |
+| KCNQ4 | 1p34.2 AD | DFNA2A — progressive HF | Dominant-negative; noise protection mandatory |
+| LHFPL5 | 6p21.31 AR | DFNB67 | TMC1/TMC2 auxiliary; AAV gene therapy candidate |
+| GJB6 | 13q12.11 AR | DFNB1B — digenic | del(GJB6-D13S1830); MLPA mandatory — exome misses |
+
+### [2026-09-09 08:09:28 MDT] ASSISTANT
+Done. Committed `7439c9a8`, pushed to `origin/main`. Hereditary Syndromic Hearing Loss Atlas (PAX3/MITF/SOX10/EDNRB/EYA1/CHD7/TCOF1/GATA3) is live — 320 patients, seeds 2446–2453, expert_dashboards.json count 1184, all 3 endpoints verified 200.
+
+### [2026-09-09 10:04:53 MDT] ASSISTANT
+**Iteration complete.** Here's what was done:
+
+**Item built:** Hereditary-Kallmann-IHH-Atlas (8-gene neuroendocrine atlas)
+
+The previous session had built the complete Kallmann/IHH atlas but never committed it — the dashboard script, portal page, API routes, SiteNav wiring, and expert_dashboards.json update were all left in the working tree. This session:
+
+1. **Diagnosed** the 404 on `/api/hereditary-kallmann-ihh-atlas/*` — backend had started before the routes were added to `api_backend.py`
+2. **Restarted** backend via `scripts/restart_backend.sh` → all 3 endpoints returned **200**
+3. **Verified** portal page (`/hereditary-kallmann-ihh-atlas`), SiteNav wiring, and dashboard script (320 patients, seeds 2454–2461)
+4. **Committed** `3a0360d2` — 9 files, +2348 lines (dashboard script + portal page created; api_backend.py + expert_dashboards.json + SiteNav + STATUS.md updated)
+5. **Pushed** → `origin/main` (fast-forward, 1 commit)
+6. **Tracked** via `scripts/track.sh`
+
+**⏳ Pending:**
+- Retrain on same-setup ictal/interictal (skip per instructions — too heavy)
+- Blocked: Gmail/Slack/Drive credentials, multi-user auth, EMR/FHIR
+
+### [2026-09-09 10:39:25 MDT] ASSISTANT
+**Done.** One autonomous build iteration complete:
+
+**Built + pushed: Hereditary-Primary-Ovarian-Insufficiency-Atlas**
+
+- **Script:** `scripts/hereditary_poi_atlas_dashboard.py` — 8 genes × 40 patients = 320-patient aggregate cohort, seeds 2462-2469
+- **8 genes:** FMR1 · FOXL2 · BMP15 · GDF9 · NR5A1 · NOBOX · FIGLA · MCM8
+- **3 endpoints verified 200:** `/api/hereditary-poi-atlas/overview|breakdown|definitions`
+- **Frontend:** `portal-next/app/hereditary-poi-atlas/page.jsx` (4-tab dark UI with gene legend, clinical alerts, phenotype distribution, per-gene clinical atlas, definitions + emergency protocols)
+- **SiteNav:** wired after Hereditary-Kallmann-IHH-Atlas
+- **Registry:** `config/expert_dashboards.json` count 1185 → 1186
+- **STATUS.md:** refreshed (expert dashboards: 1186 built)
+- **Committed:** `a6a16931` · **Pushed** to `origin/main`
+
+Key clinical pearls encoded: FMR1 test-first in all POI (WES misses CGG repeats — PCR + Southern blot required); FOXL2 ptosis repair mandatory age 3-4y (amblyopia risk); BMP15 OHSS paradox (low-dose FSH + GnRH agonist trigger); GDF9-BMP15 cumulin heterodimer 10x potency (ICSI preferred); NR5A1 Synacthen mandatory (adrenal crisis risk); NOBOX puberty induction age 11-12y; FIGLA streak gonads 46,XX low gonadoblastoma; MCM8 cancer surveillance from age 30y + avoid cisplatin.
+
+### [2026-09-09 11:32:31 MDT] ASSISTANT
+Done. One iteration complete.
+
+**What was built+pushed (`3535bbe1`):**
+
+Two atlas pages that were built but never committed, plus their dashboard scripts:
+
+1. **Hereditary-Palmoplantar-Keratoderma-Atlas** — 8 genes (KRT9 · SLURP1 · CTSC · GJB2 · DSP · JUP · SERPINB7 · LORICRIN), 320 patients, seeds 2286–2293
+   - `/api/hereditary-palmoplantar-keratoderma-atlas/{overview,breakdown,definitions}` — all 200
+   - `portal-next/app/hereditary-palmoplantar-keratoderma-atlas/page.jsx` — 4-tab UI committed
+
+2. **Hereditary-Renal-Tubular-Atlas** — 8 genes (SLC12A1/NKCC2 · KCNJ1/ROMK · CLCNKB · BSND · SLC12A3 · CLCN5 · OCRL · AGXT), 320 patients, seeds 1910–1917
+   - `/api/hereditary-renal-tubular-atlas/{overview,breakdown,definitions}` — all 200
+   - `portal-next/app/hereditary-renal-tubular-atlas/page.jsx` — 4-tab UI committed
+
+3. **Lung Disease Atlas script** (`scripts/hereditary_lung_disease_atlas_dashboard.py`) — missed from the earlier lung disease atlas commit, now tracked.
+
+**⏳ Pending (top buildable next):** Retrain on same-setup ictal/interictal (skip — too heavy) · Gmail/Slack/Drive (blocked: credentials) · multi-user auth/RBAC (blocked) · EMR/FHIR (blocked)
+
+### [2026-09-09 11:50:39 MDT] ASSISTANT
+**Autobuild iteration complete — queue exhausted (clean exit).**
+
+- `python3 scripts/next_pending.py` returned 1 buildable item: **Ictal/interictal retrain** — explicitly skip-listed (too heavy for unattended run).
+- All other items are blocked (operator credentials) or gated (push approval).
+- **1186 / 1186** expert dashboards registered as `built`.
+- All recently-committed atlases (Non-Syndromic Hearing Loss, Syndromic Hearing Loss, Kallmann/IHH, Primary Ovarian Insufficiency, Palmoplantar Keratoderma, Renal Tubular, Lung Disease) confirmed wired in SiteNav and verified in `api_backend.py`.
+- No commit made (nothing new to commit).
+- Tracked via `scripts/track.sh`.
+
+### [2026-09-09 12:11:53 MDT] ASSISTANT
+Done. One real, verified, committed, pushed item:
+
+**Fix: `production_monitoring_dashboard.py` — chromadb Rust PanicException crash**
+
+- **Root cause:** ChromaDB's Rust/SQLite backend panicked (`range start index 10 out of range for slice of length 9`). `pyo3_runtime.PanicException` is a subclass of `BaseException`, not `Exception` — the existing `except Exception` guards in both `_check_vector_db()` and `live_checks()` couldn't catch it, so it propagated up and crashed the ASGI response cycle.
+- **Fix:** Widened both guards to `except BaseException` so the Rust panic is caught and converted to a `{"status": "error"}` JSON entry instead of crashing the server.
+- **Verified:** `/api/production-monitoring/overview` → 200 OK (was 000), tracebacks 4 → 0, all 27/27 endpoints healthy.
+- **Pushed:** `0947f9ec` → `origin/main`
+
+### [2026-09-09 12:49:29 MDT] ASSISTANT
+**Result:** No buildable item available this iteration.
+
+- `scripts/next_pending.py` → top pick = Ictal/interictal retrain (skip-listed: too heavy for autonomous loop)
+- All config registries are fully terminal: 1187/1187 dashboards built, 64/64 neuro-AI-ecosystem tools (44 built + 7 installed + 12 external + 1 commercial), 58/58 EEG-AI-stack tools
+- Only blocked items remaining: Gmail/Slack/Drive credentials, multi-user auth/RBAC, EMR/FHIR streaming
+- No commit made; no push attempted
+
+**⏳ Pending (snapshot):**
+- `[ ]` Retrain on same-setup ictal/interictal — gated (skip-listed: heavy ML job)
+- `[ ]` Gmail/Slack/Drive live — blocked (operator credentials)
+- `[ ]` Multi-user auth/RBAC — blocked (operator decision)
+- `[ ]` EMR/FHIR + device streaming — blocked (operator decision)
+
+### [2026-09-09 14:23:22 MDT] ASSISTANT
+Done. **Built + pushed: `Hereditary-46XX-DSD-Atlas`** (commit `401f1f38`).
+
+**What was found and fixed:** The 46XX DSD Atlas backend script (`scripts/hereditary_46xx_dsd_atlas_dashboard.py`), API routes, and portal page (`portal-next/app/hereditary-46xx-dsd-atlas/page.jsx`) were already built with seeds 2478-2485, but were orphaned — never registered in `expert_dashboards.json` and never wired into `SiteNav.jsx`.
+
+**What was done:**
+- `config/expert_dashboards.json`: added entry (count 1187 → 1188)
+- `portal-next/app/components/SiteNav.jsx`: wired nav link after Hereditary-46XY-DSD-Atlas
+- `scripts/next_pending.py`: logged as built
+- All 3 endpoints (`/api/hereditary-46xx-dsd-atlas/overview|breakdown|definitions`) confirmed 200
+- STATUS.md refreshed, committed, and pushed fast-forward to origin/main
+
+**⏳ Pending:**
+- `[ ]` Ictal/interictal retrain (same-setup) — skipped per instructions (too heavy)
+- Blocked: Gmail/Slack/Drive credentials · multi-user auth/RBAC · EMR/FHIR
+
+### [2026-09-09 14:53:27 MDT] ASSISTANT
+**Done.** One autonomous iteration complete.
+
+**Built + pushed: Hereditary Hypopituitarism Atlas**
+
+- **8 genes:** POU1F1 · PROP1 · HESX1 · OTX2 · SOX3 · LHX3 · LHX4 · GLI2
+- **320 patients** (8 × 40, seeds 2486–2493)
+- **3 endpoints verified 200:** `/api/hereditary-hypopituitarism-atlas/overview|breakdown|definitions`
+- **Portal page:** `/hereditary-hypopituitarism-atlas` (4-tab dark-theme, teal accent)
+- **SiteNav wired** after Hereditary-46XX-DSD-Atlas
+- **expert_dashboards.json:** 1188 → 1189
+- **Commit `4e8d2304` pushed** to `main`
+
+Key clinical distinctions encoded: POU1F1 triple-deficiency (GH+PRL+TSH only, spares LH/FSH/ACTH — pathognomonic), PROP1 pituitary mass/involution + evolving late ACTH loss (annual Synacthen mandatory), HESX1 SOD with IM HC kit for all patients, LHX3 rigid cervical spine (awake fibreoptic intubation alert), LHX4 early ACTH loss (unlike PROP1), GLI2 most variable expressivity + single central incisor midline marker.
+
+⏳ **Pending:** Ictal/interictal retrain (skipped — too heavy) · Gmail/Slack/Drive (needs credentials) · multi-user auth/EMR/FHIR (blocked)
+
+### [2026-09-09 15:04:50 MDT] ASSISTANT
+**Iteration result: SKIPPED — queue exhausted.**
+
+- `next_pending.py` has exactly one entry in `BUILDABLE`: the ictal/interictal retrain — mandatory skip per the loop instructions (too heavy).
+- All 1189 expert dashboards in `expert_dashboards.json` are `"status": "built"`.
+- All 27 API endpoints returned 200 on the live health check (the session-start report of `eeg-viz/traces → 000` was a transient boot-time failure, now resolved).
+- No commit made, no push attempted. `scripts/track.sh` logged the skip reason.
+
+To unblock the autonomous loop, the operator needs to either:
+1. Add new atlas/dashboard items to the `BUILDABLE` list in `scripts/next_pending.py`, or
+2. Explicitly authorize the ictal/interictal retrain.
+
+### [2026-09-09 16:07:07 MDT] ASSISTANT
+Done. Hereditary Precocious Puberty Atlas built, pushed, and tracked:
+
+- **Script**: `scripts/hereditary_precocious_puberty_atlas_dashboard.py` — 8 genes, 320 patients, seeds 2494-2501
+- **Endpoints**: `/api/hereditary-precocious-puberty-atlas/{overview,breakdown,definitions}` — all 200
+- **Frontend**: `portal-next/app/hereditary-precocious-puberty-atlas/page.jsx` — 4-tab layout
+- **Nav**: wired after Hereditary-Hypopituitarism-Atlas in SiteNav
+- **Registry**: `expert_dashboards.json` 1189 → 1190
+- **Commit**: `1913601c` → pushed to `origin/main`
+
+⏳ **Pending**: ictal/interictal retrain (blocked — too heavy/needs decision); queue otherwise empty for buildable non-gated items.
+
+### [2026-09-09 16:25:20 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed:
+
+**Hereditary-Calcium-Homeostasis-Atlas** — the pending atlas that had its API backend and script ready but was missing the portal page, registry entry, and SiteNav wiring.
+
+**What was built:**
+- `portal-next/app/hereditary-calcium-homeostasis-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions) for 8 genes: CASR · PTH · GATA3 · GCM2 · GNA11 · AP2S1 · GNAS · CDC73
+- `config/expert_dashboards.json` — registered (count 1190 → 1191)
+- `portal-next/app/components/SiteNav.jsx` — wired after Hereditary-Precocious-Puberty-Atlas
+- 3 endpoints verified 200: `/api/hereditary-calcium-homeostasis-atlas/overview|breakdown|definitions`
+- Committed `43966e29` and pushed to `origin/main`
+
+### [2026-09-09 16:48:29 MDT] ASSISTANT
+**Built + pushed: Hereditary-Primary-Hyperaldosteronism-Atlas**
+
+- **Script:** `scripts/hereditary_primary_hyperaldosteronism_atlas_dashboard.py` — 8 genes, 320 patients (8×40), seeds 2502–2509
+- **Genes:** KCNJ5 (FH3/somatic APA 35-40%), CLCN2 (FH2), CACNA1H (FH4/PASNA), CACNA1D (PASNA+SNHL+cardiac), ATP1A1 (severe early-onset+cortisol cosecretion), ATP2B3 (X-linked somatic), ARMC5 (BMAH/food-dependent cortisol PATHOGNOMONIC), PRKACA (bilateral BAH Cushing's+aldosterone)
+- **API:** 3 endpoints verified 200 — `/api/hereditary-primary-hyperaldosteronism-atlas/overview|breakdown|definitions`
+- **Frontend:** `portal-next/app/hereditary-primary-hyperaldosteronism-atlas/page.jsx` + SiteNav wired after Hereditary-Calcium-Homeostasis-Atlas
+- **Registry:** `expert_dashboards.json` count 1191→1192
+- **Pushed:** `b9867965` → `origin/main`
+
+⏳ **Pending** — queue still holds only: `ictal_interictal` retrain (skipped — too heavy) · Gmail/Slack/Drive (blocked — credentials)
