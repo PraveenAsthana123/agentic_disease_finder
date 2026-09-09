@@ -48526,6 +48526,36 @@ def hereditary_nshl_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-syndromic-hearing-loss-atlas/overview")
+def hereditary_syndromic_hearing_loss_atlas_overview():
+    """Hereditary-Syndromic-Hearing-Loss-Atlas overview (PAX3-505aa-2q36.1-AD-WS1-dystopia-canthorum-W-index-≥1.95-PATHOGNOMONIC-most-common-WS-SNHL-57pct, MITF-526aa-3p13-AD-WS2A-most-common-WS2-40pct-NO-dystopia-canthorum-Tietz-severe-alleles-complete-albinism, SOX10-466aa-22q13.1-AD-WS4C-PCWH-HSCR-peripheral-demyelinating-neuropathy-NMD-escape-most-severe, EDNRB-442aa-13q22.3-AR-WS4A-Waardenburg-Shah-biallelic-HSCR-WS-features-heterozygous-HSCR-only, EYA1-559aa-8q13.3-AD-BOR-branchial-fistulae-Mondini-cochlea-renal-dysplasia-AVOID-aminoglycosides, CHD7-2997aa-8q12.2-AD-de-novo-CHARGE-semicircular-canal-aplasia-CT-near-pathognomonic-choanal-atresia-neonatal-airway-emergency, TCOF1-1411aa-5q33.1-AD-Treacher-Collins-absent-malar-zygoma-CHL-BAHA-first-line-bilateral-atresia, GATA3-444aa-10p15.3-AD-HDR-Barakat-hypoparathyroidism-SNHL-renal-calcium-correction-before-audiometry, 320-patients-8x40-seeds-2446-2453)."""
+    try:
+        import scripts.hereditary_syndromic_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-syndromic-hearing-loss-atlas/breakdown")
+def hereditary_syndromic_hearing_loss_atlas_breakdown():
+    """Hereditary-Syndromic-Hearing-Loss-Atlas per-gene breakdown (PAX3-WS1-dystopia-canthorum-W-index-≥1.95-white-forelock-SNHL-57pct-most-common-WS, MITF-WS2A-no-dystopia-canthorum-most-common-WS2-Tietz-complete-albinism, SOX10-WS4C-PCWH-HSCR-peripheral-neuropathy-NMD-escape, EDNRB-WS4A-AR-biallelic-HSCR-full-WS4A-het-HSCR-only, EYA1-BOR-branchial-fistulae-Mondini-renal, CHD7-CHARGE-SCC-aplasia-choanal-atresia-emergency-absent-VOR, TCOF1-TCS-absent-malar-zygoma-CHL-BAHA, GATA3-HDR-low-PTH-low-Ca-high-PO4-calcium-before-audiometry)."""
+    try:
+        import scripts.hereditary_syndromic_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-syndromic-hearing-loss-atlas/definitions")
+def hereditary_syndromic_hearing_loss_atlas_definitions():
+    """Hereditary-Syndromic-Hearing-Loss-Atlas clinical definitions (W-index-≥1.95-dystopia-canthorum-WS1, Tietz-complete-albinism-MITF-severe, PCWH-NMD-escape-SOX10, HSCR-rectal-biopsy-aganglionosis, BOR-aminoglycosides-double-jeopardy, CHARGE-SCC-aplasia-absent-VOR-choanal-emergency, BAHA-first-line-Treacher-Collins, HDR-calcium-correction-before-audiometry-IV-calcium-tetany)."""
+    try:
+        import scripts.hereditary_syndromic_hearing_loss_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

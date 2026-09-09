@@ -18985,5 +18985,14 @@
     "n_patients": 320,
     "seed_range": "2438-2445",
     "built_date": "2026-09-09"
+  },
+  {
+    "id": "hereditary-syndromic-hearing-loss-atlas",
+    "name": "Hereditary-Syndromic-Hearing-Loss-Atlas Complete-8-Gene-PAX3-MITF-SOX10-EDNRB-EYA1-CHD7-TCOF1-GATA3-Atlas PAX3-505aa-2q36.1-AD-WS1-Dystopia-Canthorum-W-index-\u22651.95-PATHOGNOMONIC MITF-526aa-3p13-AD-WS2A-Most-Common-WS2-40pct-NO-Dystopia-Canthorum-Tietz-Complete-Albinism SOX10-466aa-22q13.1-AD-WS4C-PCWH-HSCR-Peripheral-Demyelinating-Neuropathy-NMD-Escape EDNRB-442aa-13q22.3-AR-WS4A-Waardenburg-Shah-AR-Biallelic-HSCR-WS-Features EYA1-559aa-8q13.3-AD-BOR-Branchial-Fistulae-Mondini-Cochlea-Renal-Dysplasia-AVOID-Aminoglycosides CHD7-2997aa-8q12.2-AD-de-novo-CHARGE-SCC-Aplasia-CT-Near-Pathognomonic-Choanal-Atresia-Emergency TCOF1-1411aa-5q33.1-AD-Treacher-Collins-Absent-Malar-Zygoma-CHL-BAHA-First-Line GATA3-444aa-10p15.3-AD-HDR-Barakat-Hypoparathyroidism-SNHL-Renal-Calcium-Correction-Before-Audiometry 320-Patient-Aggregate-8x40-seeds-2446-2453",
+    "status": "built",
+    "api": "/api/hereditary-syndromic-hearing-loss-atlas/overview",
+    "cohort_n": 320,
+    "seed": 2446,
+    "registered": "2026-09-09"
   }
 ]
