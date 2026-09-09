@@ -18587,5 +18587,25 @@
       "Definitions"
     ],
     "description": "Hereditary-Congenital-Heart-Disease-Atlas Complete-8-Gene CHD Atlas: GATA4 (isolated CHD ASD/VSD/TOF); TBX5 (Holt-Oram bilateral thumb+CHD PATHOGNOMONIC); NKX2-5 (ASD+progressive AV block worsens post-repair PATHOGNOMONIC); NOTCH1 (BAV+aortopathy annual echo MANDATORY); JAG1 (Alagille butterfly vertebrae 95% PATHOGNOMONIC); CHD7 (CHARGE semicircular canal aplasia MRI PATHOGNOMONIC); TFAP2B (Char PDA avoid indomethacin); TBX1 (22q11DS conotruncal+hypocalcemia+T-cell lymphopenia PATHOGNOMONIC TRIAD). 320-patient aggregate seeds-2254-2261. 4-tab frontend, SiteNav wired after Hereditary-Glycogen-Storage-Myopathy-Atlas. 3 endpoints verified 200. Registered 2026-09-08."
+  },
+  {
+    "id": "hereditary-primary-glaucoma-atlas",
+    "name": "Hereditary-Primary-Glaucoma-Atlas Complete-8-Gene-Hereditary-Primary-Glaucoma-Atlas MYOC-504aa-1q24.3-AD-JOAG-HIGHEST-IOP-30-50mmHg-PATHOGNOMONIC-Trabecular-ER-Stress-Steroid-Response-Trabeculectomy-Effective CYP1B1-543aa-2p22.2-AR-PCG-BUPHTHALMOS-HAAB-STRIAE-PATHOGNOMONIC-Goniotomy-First-AVOID-Brimonidine-under-2yr FOXC1-553aa-6p25.3-AD-ARS3-IRIS-HYPOPLASIA-POSTERIOR-EMBRYOTOXON-100pct-PATHOGNOMONIC-MLPA-Mandatory PITX2-317aa-4q25-AD-ARS1-IRIDOCORNEAL-ADHESIONS-POSTERIOR-EMBRYOTOXON-PATHOGNOMONIC-Midface-Hypodontia PAX6-422aa-11p13-AD-Aniridia-ARG-IRIS-ABSENT-PATHOGNOMONIC-LSCD-WAGR-CMA-Mandatory-Tube-Shunt OPTN-577aa-10p13-AD-NTG-NORMAL-IOP-DISC-HAEMORRHAGES-PATHOGNOMONIC-E50K-10x-Risk-ALS-Overlap LTBP2-1821aa-14q24.3-AR-PCG-Microspherophakia-SPHERICAL-SUBLUXATED-LENS-PATHOGNOMONIC-AVOID-Miotics-Gulf-Arab TEK-1124aa-9p21.2-AD-PCG-SCHLEMM-CANAL-ABSENT-AS-OCT-PATHOGNOMONIC-Trabeculotomy-Not-Goniotomy seeds-2262-2269",
+    "category": "Hereditary Primary Glaucoma",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-primary-glaucoma-atlas/overview",
+      "/api/hereditary-primary-glaucoma-atlas/breakdown",
+      "/api/hereditary-primary-glaucoma-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_primary_glaucoma_atlas_dashboard.py",
+    "registered_at": "2026-09-08",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ],
+    "description": "Hereditary-Primary-Glaucoma-Atlas Complete-8-Gene Primary Glaucoma Atlas: MYOC (JOAG/POAG \u2014 highest IOP 30-50 mmHg PATHOGNOMONIC; trabecular ER stress; steroid response; trabeculectomy effective); CYP1B1 (PCG \u2014 buphthalmos + Haab striae PATHOGNOMONIC; goniotomy first-line; avoid brimonidine <2yr); FOXC1 (ARS3 \u2014 iris hypoplasia + posterior embryotoxon 100% PATHOGNOMONIC; MLPA mandatory; goniosynechialysis); PITX2 (ARS1 \u2014 iridocorneal adhesions + posterior embryotoxon PATHOGNOMONIC; midface hypoplasia + hypodontia); PAX6 (Aniridia-Related Glaucoma \u2014 iris absent PATHOGNOMONIC; LSCD keratopathy; WAGR CMA mandatory; tube shunt); OPTN (Normal Tension Glaucoma \u2014 normal IOP + disc haemorrhages PATHOGNOMONIC; E50K 10x risk; ALS overlap screen); LTBP2 (PCG + Microspherophakia \u2014 spherical subluxated lens PATHOGNOMONIC; avoid miotics; Gulf Arab founder p.Arg299Cys); TEK (PCG Schlemm's Canal Agenesis \u2014 canal absent on AS-OCT PATHOGNOMONIC; trabeculotomy not goniotomy; early tube shunt). 320-patient aggregate seeds-2262-2269. 4-tab frontend, SiteNav wired after Hereditary-Congenital-Heart-Disease-Atlas. 3 endpoints verified 200. Registered 2026-09-08."
   }
 ]
