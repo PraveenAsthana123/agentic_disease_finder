@@ -48556,6 +48556,36 @@ def hereditary_syndromic_hearing_loss_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-kallmann-ihh-atlas/overview")
+def hereditary_kallmann_ihh_atlas_overview():
+    """Hereditary-Kallmann-IHH-Atlas overview (ANOS1-680aa-Xp22.31-XLR-KS1-absent-olfactory-bulbs-bimanual-synkinesis-50pct-renal-agenesis-25pct, FGFR1-822aa-8p11.23-AD-KS2-most-common-AD-cleft-palate-digital-anomalies-incomplete-penetrance, PROKR2-384aa-20p13-AR-dig-KS3-GPCR-variable-anosmia-sleep-disorder, PROK2-81aa-3p13-AR-dig-KS4-prokineticin2-ligand-circadian-obesity, CHD7-2997aa-8q12.2-AD-CHARGE-anosmia-HH-SCC-aplasia-choanal-atresia-emergency, FGF8-215aa-10q24.32-AD-KS6-FGF8-FGFR1-ligand-cleft-palate-cerebellar-vermis, GNRHR-328aa-4q13.2-AR-normosmic-IHH-pituitary-GnRH-resistant-pump-fails, KISS1R-398aa-19p13.3-AR-normosmic-IHH-kisspeptin-receptor-pump-works-reversal-10-20pct, 320-patients-8x40-seeds-2454-2461)."""
+    try:
+        import scripts.hereditary_kallmann_ihh_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_overview())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-kallmann-ihh-atlas/breakdown")
+def hereditary_kallmann_ihh_atlas_breakdown():
+    """Hereditary-Kallmann-IHH-Atlas per-gene breakdown (ANOS1-KS1-absent-OB-bimanual-synkinesis-renal-agenesis-XLR, FGFR1-KS2-AD-cleft-palate-digital-FGF-pathway, PROKR2-KS3-AR-digenic-GPCR-variable-anosmia, PROK2-KS4-AR-digenic-81aa-ligand-circadian, CHD7-CHARGE-SCC-aplasia-coloboma-choanal-emergency, FGF8-KS6-FGF-ligand-cerebellar-vermis, GNRHR-nIHH-normosmic-pump-fails, KISS1R-nIHH-normosmic-pump-works-reversal)."""
+    try:
+        import scripts.hereditary_kallmann_ihh_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_breakdown())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-kallmann-ihh-atlas/definitions")
+def hereditary_kallmann_ihh_atlas_definitions():
+    """Hereditary-Kallmann-IHH-Atlas clinical definitions (Kallmann-absent-OB-MRI-GnRH-neuron-migration, normosmic-IHH-OB-present-smell-normal, pulsatile-GnRH-pump-KS-works-GNRHR-fails, bimanual-synkinesis-ANOS1-50pct, reversal-phenomenon-10-20pct, oligogenic-digenic-KS, UPSIT-smell-testing, KNDy-neurons-puberty-switch, CHARGE-HH-under-recognised, orchidopexy-before-12-months)."""
+    try:
+        import scripts.hereditary_kallmann_ihh_atlas_dashboard as atlas_
+        return _json_safe(atlas_.get_definitions())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
