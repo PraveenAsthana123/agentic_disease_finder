@@ -48398,6 +48398,25 @@ def hereditary_asd_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ectopia-lentis-atlas/overview")
+def hereditary_el_atlas_overview():
+    """Hereditary-Ectopia-Lentis-Atlas overview — 8 genes (FBN1/CBS/ADAMTSL4/ADAMTS10/ADAMTS17/LTBP2/SUOX/FBN2), 320 patients, seeds 2398-2405."""
+    from scripts.hereditary_ectopia_lentis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-ectopia-lentis-atlas/breakdown")
+def hereditary_el_atlas_breakdown():
+    """Hereditary-Ectopia-Lentis-Atlas per-gene breakdown — fibrillin (FBN1/FBN2), transsulfuration (CBS), isolated EL (ADAMTSL4), WMS (ADAMTS10/17), microspherophakia (LTBP2), sulfite-oxidase (SUOX)."""
+    from scripts.hereditary_ectopia_lentis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-ectopia-lentis-atlas/definitions")
+def hereditary_el_atlas_definitions():
+    """Hereditary-Ectopia-Lentis-Atlas glossary — EL direction as DDx, microspherophakia miotics CI, Marfan vs HCU table, WMS inverse-Marfan emergency, SUOX fresh urine dipstick protocol."""
+    from scripts.hereditary_ectopia_lentis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

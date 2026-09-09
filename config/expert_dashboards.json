@@ -18872,5 +18872,31 @@
   ],
   "description": "Complete 8-Gene Hereditary Anterior Segment Dysgenesis Reference \u2014 Peters anomaly, Axenfeld-Rieger, Aniridia, PCG, MIDAS",
   "built_date": "2026-09-09"
+ },
+ {
+  "id": "hereditary-ectopia-lentis-atlas",
+  "name": "Hereditary-Ectopia-Lentis-Atlas Complete-8-Gene-FBN1-CBS-ADAMTSL4-ADAMTS10-ADAMTS17-LTBP2-SUOX-FBN2-Atlas",
+  "slug": "hereditary-ectopia-lentis-atlas",
+  "genes": [
+   "FBN1",
+   "CBS",
+   "ADAMTSL4",
+   "ADAMTS10",
+   "ADAMTS17",
+   "LTBP2",
+   "SUOX",
+   "FBN2"
+  ],
+  "status": "built",
+  "category": "hereditary-ophthalmology",
+  "patients": 320,
+  "seeds": "2398-2405",
+  "endpoints": [
+   "/api/hereditary-ectopia-lentis-atlas/overview",
+   "/api/hereditary-ectopia-lentis-atlas/breakdown",
+   "/api/hereditary-ectopia-lentis-atlas/definitions"
+  ],
+  "description": "Complete 8-Gene Hereditary Ectopia Lentis Reference \u2014 Marfan (FBN1), Homocystinuria (CBS), Isolated EL (ADAMTSL4), Weill-Marchesani (ADAMTS10/17/LTBP2), Sulfite Oxidase (SUOX), CCA (FBN2)",
+  "built_date": "2026-09-09"
  }
 ]
