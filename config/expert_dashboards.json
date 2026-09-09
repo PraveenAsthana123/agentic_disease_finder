@@ -18763,5 +18763,26 @@
     "seeds": "2326-2333",
     "category": "hereditary_atlas",
     "registered": "2026-09-08"
+  },
+  {
+    "id": "hereditary-hlh-atlas",
+    "name": "Hereditary-HLH-Lymphohistiocytosis-Atlas Complete-8-Gene-FHL-XLP-GS2-HPS2-Atlas PRF1-555aa-10q22.1-AR-FHL2-MOST-COMMON-FHL-30pct-NK-CTL-ZERO-CYTOTOXICITY-PERFORIN-PORE-ABSENT-PATHOGNOMONIC-ETOPOSIDE+DEX+CICLOSPORIN-HLH-2004-Emapalumab-HSCT-MANDATORY UNC13D-2090aa-17q25.1-AR-FHL3-25pct-MUNC13-4-CD107a-ABSENT-NK-Degranulation-Zero-MAS-IN-JIA-MOST-COMMON-FHL-GENE STX11-287aa-6q24.2-AR-FHL4-Kurdish-Turkish-pThr265Ile-NORMAL-CD107a-BUT-ZERO-CYTOTOXICITY-PARADOX STXBP2-593aa-19p13.2-AR-FHL5-EARLIEST-ONSET-Neonatal-IBD-CROHNS-LIKE-COLITIS-PATHOGNOMONIC RAB27A-221aa-15q21.3-AR-GS2-SILVER-GREY-HAIR-BIRTH+EPISODIC-HLH-PATHOGNOMONIC AP3B1-1094aa-5q14.1-AR-HPS-2-ALBINISM+NEUTROPENIA+ABSENT-PLATELET-DENSE-GRANULES-TRIAD SH2D1A-128aa-Xq25-XLR-XLP-1-EBV-TRIGGERED-HLH-NKT-ABSENT-HSCT-BEFORE-EBV-MANDATORY XIAP-497aa-Xq25-XLR-XLP-2-IBD-CROHNS+HLH-COMBINATION-PATHOGNOMONIC-NOT-EBV-EXCLUSIVE 320-Patient-Aggregate-8x40-seeds-2334-2341",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "route": "/hereditary-hlh-atlas",
+    "api_endpoints": [
+      "/api/hereditary-hlh-atlas/overview",
+      "/api/hereditary-hlh-atlas/breakdown",
+      "/api/hereditary-hlh-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_hlh_atlas_dashboard.py",
+    "seeds": "2334-2341",
+    "registered_at": "2026-09-09",
+    "tabs": [
+      "Overview",
+      "Gene Table",
+      "Clinical Atlas",
+      "Definitions"
+    ]
   }
 ]

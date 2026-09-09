@@ -48274,6 +48274,25 @@ def hereditary_phagocyte_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hlh-atlas/overview")
+def hereditary_hlh_atlas_overview():
+    """Hereditary-HLH-Lymphohistiocytosis-Atlas overview — 8 genes (PRF1/UNC13D/STX11/STXBP2/RAB27A/AP3B1/SH2D1A/XIAP), 320 patients, seeds 2334-2341."""
+    from scripts.hereditary_hlh_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-hlh-atlas/breakdown")
+def hereditary_hlh_atlas_breakdown():
+    """Hereditary-HLH-Atlas per-gene breakdown — FHL2-5/GS2/HPS-2/XLP-1/XLP-2 subtypes, NK cytotoxicity, CD107a, emapalumab, HSCT."""
+    from scripts.hereditary_hlh_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-hlh-atlas/definitions")
+def hereditary_hlh_atlas_definitions():
+    """Hereditary-HLH-Atlas glossary — FHL biology, HLH-2004 criteria, HScore, CD107a, NK cytotoxicity, emapalumab, XLP, GS2, HPS-2."""
+    from scripts.hereditary_hlh_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
