@@ -19035,5 +19035,23 @@
     ],
     "registered": "2026-09-09",
     "notes": "Complete 8-gene POI atlas. FMR1/FXPOI premutation test-first WES-misses CGG; FOXL2/BPES-I ptosis repair mandatory age 3-4y amblyopia; BMP15 XLD OHSS paradox low-dose FSH; GDF9 AR/AD cumulin heterodimer ICSI; NR5A1/SF-1 Synacthen mandatory adrenal crisis; NOBOX AR primary amenorrhoea puberty induction 11-12y; FIGLA AR streak gonads ZP assembly; MCM8 AR meiotic DNA repair cancer surveillance age 30y colonoscopy endometrial cisplatin avoid Ashkenazi p.Lys325Glu."
+  },
+  {
+    "id": "hereditary-46xy-dsd-atlas",
+    "title": "Hereditary-46XY-DSD-Atlas Complete-8-Gene-AR-SRD5A2-HSD17B3-NR5A1-WT1-DHH-LHCGR-AMH-Atlas AR-919aa-Xq11.2-XLR-CAIS-PAIS-MAIS-Most-Common-46XY-DSD SRD5A2-254aa-2p23.1-AR-T-DHT-ratio-gt10-Virilisation-Puberty HSD17B3-310aa-9q22.32-AR-A4-T-ratio-gt0.8-Gaza-Founder NR5A1-461aa-9q33.3-AD-SF1-Synacthen-Mandatory WT1-449aa-11p13-AD-Denys-Drash-Frasier DHH-396aa-12q13.12-AR-CGD-Minifascicular-Neuropathy LHCGR-699aa-2p21-AR-Leydig-Hypoplasia-T-Undetectable AMH-560aa-19p13.3-AR-PMDS-Uterus-46XY-Male 320-Patient-Aggregate-8x40-seeds-2470-2477",
+    "name": "Hereditary-46XY-DSD-Atlas Complete-8-Gene-AR-SRD5A2-HSD17B3-NR5A1-WT1-DHH-LHCGR-AMH-Atlas AR-919aa-Xq11.2-XLR-CAIS-PAIS-MAIS-Most-Common-46XY-DSD-Inguinal-Hernia-Female-Karyotype-MANDATORY SRD5A2-254aa-2p23.1-AR-5alphaRD2-T-DHT-ratio-gt10-DIAGNOSTIC-Virilisation-Puberty-Dramatic HSD17B3-310aa-9q22.32-AR-17betaHSD3-A4-T-ratio-gt0.8-DIAGNOSTIC-T-DHT-NORMAL-Gaza-p.Arg80Gln NR5A1-461aa-9q33.3-AD-SF1-46XY-Gonadal-Dysgenesis-Synacthen-MANDATORY-46XX-POI-Same-Gene WT1-449aa-11p13-AD-Denys-Drash-DMS-Bilateral-Wilms-Nephrectomy-Age3-Frasier-KTS-FSGS-Gonadoblastoma-30pct DHH-396aa-12q13.12-AR-CGD-Minifascicular-Neuropathy-PATHOGNOMONIC-Streak-Gonads-Uterus-Present LHCGR-699aa-2p21-AR-Leydig-Hypoplasia-T-UNDETECTABLE-hCG-Flat-AMH-Normal-No-Wolffian AMH-560aa-19p13.3-AR-PMDS-Type1-Uterus-Tubes-46XY-Male-Serum-AMH-lt5-VAS-at-Risk 320-Patient-Aggregate-8x40-seeds-2470-2477",
+    "endpoint": "/api/hereditary-46xy-dsd-atlas/overview",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "registered": "2026-09-09"
+  },
+  {
+    "id": "hereditary-46xx-dsd-atlas",
+    "title": "Hereditary-46XX-DSD-Atlas Complete-8-Gene-CYP21A2-HSD3B2-CYP11B1-CYP17A1-STAR-CYP11A1-POR-MC2R-Atlas CYP21A2-495aa-6p21.33-AR-CAH-21OHD-Most-Common-90-95pct-17OHP-NBS-Stress-Dosing-MANDATORY HSD3B2-372aa-1p12-AR-DHEA-elevated-delta5-delta4-ratio-46XX-paradoxical-virilisation CYP11B1-503aa-8q24.3-AR-2nd-most-common-CAH-HYPERTENSION-Unique-NO-Fludrocortisone CYP17A1-508aa-10q24.32-AR-Hypertension-Primary-Amenorrhoea-46XX-Female-Phenotype-46XY STAR-285aa-8p11.23-AR-Lipoid-CAH-Most-Severe-ALL-Steroids-Absent-Adrenal-CT-PATHOGNOMONIC CYP11A1-521aa-15q24.1-AR-P450scc-Similar-to-STAR-Milder-Partial-Spontaneous-Puberty-Possible POR-680aa-7q11.23-AR-Antley-Bixler-Craniosynostosis-Radiohumeral-Synostosis-Combined-Partial-Blocks MC2R-297aa-18p11.21-AR-FGD1-ISOLATED-Cortisol-Mineralocorticoids-NORMAL-Hyperpigmentation-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2478-2485",
+    "name": "Hereditary-46XX-DSD-Atlas Complete-8-Gene-CYP21A2-HSD3B2-CYP11B1-CYP17A1-STAR-CYP11A1-POR-MC2R-Atlas CYP21A2-495aa-6p21.33-AR-CAH-21OHD-Most-Common-90-95pct-17OHP-NBS-Stress-Dosing-MANDATORY HSD3B2-372aa-1p12-AR-DHEA-elevated-delta5-delta4-ratio-46XX-paradoxical-virilisation CYP11B1-503aa-8q24.3-AR-2nd-most-common-CAH-HYPERTENSION-Unique-NO-Fludrocortisone CYP17A1-508aa-10q24.32-AR-Hypertension-Primary-Amenorrhoea-46XX-Female-Phenotype-46XY STAR-285aa-8p11.23-AR-Lipoid-CAH-Most-Severe-ALL-Steroids-Absent-Adrenal-CT-PATHOGNOMONIC CYP11A1-521aa-15q24.1-AR-P450scc-Similar-to-STAR-Milder-Partial-Spontaneous-Puberty-Possible POR-680aa-7q11.23-AR-Antley-Bixler-Craniosynostosis-Radiohumeral-Synostosis-Combined-Partial-Blocks MC2R-297aa-18p11.21-AR-FGD1-ISOLATED-Cortisol-Mineralocorticoids-NORMAL-Hyperpigmentation-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2478-2485",
+    "endpoint": "/api/hereditary-46xx-dsd-atlas/overview",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "registered": "2026-09-09"
   }
 ]
