@@ -48379,6 +48379,25 @@ def hereditary_cataract_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-anterior-segment-dysgenesis-atlas/overview")
+def hereditary_asd_atlas_overview():
+    """Hereditary-Anterior-Segment-Dysgenesis-Atlas overview — 8 genes (PITX2/FOXC1/PAX6/FOXE3/B3GLCT/PXDN/HCCS/CYP1B1), 320 patients, seeds 2390-2397."""
+    from scripts.hereditary_anterior_segment_dysgenesis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-anterior-segment-dysgenesis-atlas/breakdown")
+def hereditary_asd_atlas_breakdown():
+    """Hereditary-Anterior-Segment-Dysgenesis-Atlas per-gene breakdown — NCC TF (PITX2/FOXC1), master eye TF (PAX6), lens-sep (FOXE3), TSR-glycosyl (B3GLCT), collagen-IV crosslink (PXDN), XLD-mitoch (HCCS), CYP-steroid (CYP1B1)."""
+    from scripts.hereditary_anterior_segment_dysgenesis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-anterior-segment-dysgenesis-atlas/definitions")
+def hereditary_asd_atlas_definitions():
+    """Hereditary-Anterior-Segment-Dysgenesis-Atlas glossary — Peters anomaly types, ARS triad, PCG surgical emergency, PAX6 keratopathy LSC management, WAGR Wilms surveillance, Blaschko lines HCCS."""
+    from scripts.hereditary_anterior_segment_dysgenesis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
