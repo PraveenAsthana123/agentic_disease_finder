@@ -48323,6 +48323,24 @@ def hereditary_immune_dysregulation_atlas_definitions():
     from scripts.hereditary_immune_dysregulation_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-corneal-dystrophy-atlas/overview")
+def hereditary_corneal_dystrophy_atlas_overview():
+    """Hereditary-Corneal-Dystrophy-Atlas overview — 8 genes (TGFBI/SLC4A11/ZEB1/OVOL2/TCF4/COL8A2/VSX1/KRT12), 320 patients, seeds 2366-2373."""
+    from scripts.hereditary_corneal_dystrophy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-corneal-dystrophy-atlas/breakdown")
+def hereditary_corneal_dystrophy_atlas_breakdown():
+    """Hereditary-Corneal-Dystrophy-Atlas per-gene breakdown — TGFBI variant-specific (LCD/GCD/Avellino/Thiel-Behnke/Reis-Bucklers), CHED2 congenital, PPCD1/2/3, Fuchs early-onset+late-onset, keratoconus CXL, Meesmann epithelial."""
+    from scripts.hereditary_corneal_dystrophy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-corneal-dystrophy-atlas/definitions")
+def hereditary_corneal_dystrophy_atlas_definitions():
+    """Hereditary-Corneal-Dystrophy-Atlas glossary — IC3D classification, TGFBI variant-phenotype map, Fuchs DMEK/DSAEK timing, PPCD vs ICE DDx, OVOL2 regulatory trap, CXL keratoconus standard-of-care, corneal transplant algorithm."""
+    from scripts.hereditary_corneal_dystrophy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

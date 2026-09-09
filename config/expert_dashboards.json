@@ -18812,5 +18812,23 @@
     "registered": "2026-09-09",
     "script": "scripts/hereditary_immune_dysregulation_atlas_dashboard.py",
     "notes": "FAS-335aa-ALPS-Ia / FASLG-281aa-ALPS-Ib / CASP10-521aa-ALPS-IIa / CASP8-479aa-ALPS-IIb-CID / FOXP3-431aa-IPEX / WAS-502aa-Wiskott-Aldrich / DOCK8-2099aa-HIES2 / STAT3-770aa-GOF"
+  },
+  {
+    "name": "Hereditary-Corneal-Dystrophy-Atlas Complete-8-Gene-TGFBI-SLC4A11-ZEB1-OVOL2-TCF4-COL8A2-VSX1-KRT12-Atlas",
+    "status": "built",
+    "slug": "hereditary-corneal-dystrophy-atlas",
+    "api_prefix": "/api/hereditary-corneal-dystrophy-atlas",
+    "seeds": "2366-2373",
+    "genes": [
+      "TGFBI",
+      "SLC4A11",
+      "ZEB1",
+      "OVOL2",
+      "TCF4",
+      "COL8A2",
+      "VSX1",
+      "KRT12"
+    ],
+    "built": "2026-09-09"
   }
 ]
