@@ -17656,7 +17656,9 @@
     "status": "built",
     "api_prefix": "/api/hereditary-renal-tubular-atlas",
     "page": "/hereditary-renal-tubular-atlas",
-    "registered": "2026-09-07"
+    "registered": "2026-09-07",
+    "title": "Hereditary-Renal-Tubular-Atlas Complete-8-Gene-SLC12A1-KCNJ1-CLCNKB-BSND-SLC12A3-CLCN5-OCRL-AGXT-Atlas SLC12A1-1099aa-15q21.1-AR-Bartter-Type-1-Neonatal-Polyhydramnios-Indomethacin KCNJ1-391aa-11q24.3-AR-Bartter-Type-2-Transient-Neonatal-HyperK CLCNKB-687aa-1p36.13-AR-Bartter-Type-3-MOST-COMMON-MLPA-Mandatory BSND-320aa-1p32.3-AR-Bartter-Type-4-SNHL-PATHOGNOMONIC SLC12A3-1021aa-16q13-AR-Gitelman-MOST-COMMON-HypoMg-Low-Urine-Ca-Thiazide-Mimic CLCN5-746aa-Xp11.23-XLR-Dent-Disease-1-LMW-Proteinuria-Dipstick-Negative OCRL-901aa-Xq26.1-XLR-Lowe-Cataracts-ID-Fanconi-RTA-TRIAD-PATHOGNOMONIC AGXT-392aa-2q37.3-AR-Primary-Hyperoxaluria-1-Systemic-Oxalosis-Lumasiran-FDA2020-Combined-LKT-CURATIVE 320-Patient-Aggregate-8x40-seeds-1910-1917",
+    "route": "/hereditary-renal-tubular-atlas"
   },
   {
     "id": "hereditary-lipodystrophy-atlas",
@@ -18639,7 +18641,9 @@
       "/api/hereditary-palmoplantar-keratoderma-atlas/definitions"
     ],
     "portal_page": "/hereditary-palmoplantar-keratoderma-atlas",
-    "registered": "2026-09-08"
+    "registered": "2026-09-08",
+    "title": "Hereditary-Palmoplantar-Keratoderma-Atlas Complete-8-Gene-KRT9-SLURP1-CTSC-GJB2-DSP-JUP-SERPINB7-LORICRIN-Atlas KRT9-464aa-17q21.2-AD-EPPK-Voerner-Palm-Only-Suprabasal-Epidermolysis-BIOPSY-PATHOGNOMONIC SLURP1-103aa-8q24.13-AR-Mal-de-Meleda-TRANSGREDIENT-Dorsal-Extension-PATHOGNOMONIC CTSC-463aa-11q14.2-AR-Papillon-Lefevre-PPK-Severe-Periodontitis-Premature-Tooth-Loss-Antibiotics-Mandatory GJB2-226aa-13q12.11-AD-Vohwinkel-Honeycomb-PPK-Starfish-Knuckle-Pads-SNHL DSP-2871aa-6p24.3-AR-Carvajal-PPK-Woolly-Hair-DCM-Cardiac-MRI-Mandatory JUP-745aa-17q21.2-AR-Naxos-PPK-Woolly-Hair-ARVC-ICD-Mandatory-Sports-CI SERPINB7-394aa-18q21.33-AR-Bothnian-PPK-Aquagenic-Wrinkling-Palms-PATHOGNOMONIC LORICRIN-312aa-1q21.3-AD-Loricrin-Keratoderma-PPK-NO-Hearing-Loss-KEY-DDx 320-Patient-Aggregate-8x40-seeds-2286-2293",
+    "route": "/hereditary-palmoplantar-keratoderma-atlas"
   },
   {
     "id": "hereditary-ectodermal-dysplasia-atlas",
