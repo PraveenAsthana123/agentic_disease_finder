@@ -48042,6 +48042,36 @@ async def hereditary_congenital_heart_disease_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-primary-glaucoma-atlas/overview")
+async def hereditary_primary_glaucoma_atlas_overview():
+    """Hereditary-Primary-Glaucoma-Atlas overview — 8 genes (MYOC/CYP1B1/FOXC1/PITX2/PAX6/OPTN/LTBP2/TEK), 320 patients, seeds 2262-2269."""
+    try:
+        import scripts.hereditary_primary_glaucoma_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-primary-glaucoma-atlas/breakdown")
+async def hereditary_primary_glaucoma_atlas_breakdown():
+    """Hereditary-Primary-Glaucoma-Atlas per-patient breakdown — gene profiles, IOP, VF, gonioscopy, pathognomonic features, treatment plans."""
+    try:
+        import scripts.hereditary_primary_glaucoma_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-primary-glaucoma-atlas/definitions")
+async def hereditary_primary_glaucoma_atlas_definitions():
+    """Hereditary-Primary-Glaucoma-Atlas glossary — glaucoma anatomy, syndromes (JOAG/PCG/ARS/NTG/Aniridia), treatment, diagnostic tests."""
+    try:
+        import scripts.hereditary_primary_glaucoma_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/hereditary-glycogen-storage-myopathy-atlas/overview")
 async def hereditary_glycogen_storage_myopathy_atlas_overview():
     """Hereditary-Glycogen-Storage-Myopathy-Atlas overview — 8 genes (GAA/PYGM/PFKM/LAMP2/AGL/GBE1/GYS1/PGAM2), 320 patients, seeds 2246-2253."""
@@ -48067,6 +48097,36 @@ async def hereditary_glycogen_storage_myopathy_atlas_definitions():
     """Hereditary-Glycogen-Storage-Myopathy-Atlas glossary — GSD enzyme pathways, second wind, CRIM, ERT, diagnostic standards."""
     try:
         import scripts.hereditary_glycogen_storage_myopathy_atlas_dashboard as atlas_
+        return atlas_.definitions()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-epidermolysis-bullosa-atlas/overview")
+async def hereditary_epidermolysis_bullosa_atlas_overview():
+    """Hereditary-Epidermolysis-Bullosa-Atlas overview — 8 genes (KRT5/KRT14/COL17A1/LAMB3/COL7A1/ITGB4/PLEC/FERMT1), 320 patients, seeds 2270-2277."""
+    try:
+        import scripts.hereditary_epidermolysis_bullosa_atlas_dashboard as atlas_
+        return atlas_.overview()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-epidermolysis-bullosa-atlas/breakdown")
+async def hereditary_epidermolysis_bullosa_atlas_breakdown():
+    """Hereditary-Epidermolysis-Bullosa-Atlas per-patient breakdown — gene profiles, EB subtype, blistering triggers, wound care, gene therapy status."""
+    try:
+        import scripts.hereditary_epidermolysis_bullosa_atlas_dashboard as atlas_
+        return atlas_.breakdown()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/hereditary-epidermolysis-bullosa-atlas/definitions")
+async def hereditary_epidermolysis_bullosa_atlas_definitions():
+    """Hereditary-Epidermolysis-Bullosa-Atlas glossary — skin anatomy, EB subtypes (EBS/JEB/DEB/KEB), treatments, diagnostic tests."""
+    try:
+        import scripts.hereditary_epidermolysis_bullosa_atlas_dashboard as atlas_
         return atlas_.definitions()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

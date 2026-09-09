@@ -18607,5 +18607,14 @@
       "Definitions"
     ],
     "description": "Hereditary-Primary-Glaucoma-Atlas Complete-8-Gene Primary Glaucoma Atlas: MYOC (JOAG/POAG \u2014 highest IOP 30-50 mmHg PATHOGNOMONIC; trabecular ER stress; steroid response; trabeculectomy effective); CYP1B1 (PCG \u2014 buphthalmos + Haab striae PATHOGNOMONIC; goniotomy first-line; avoid brimonidine <2yr); FOXC1 (ARS3 \u2014 iris hypoplasia + posterior embryotoxon 100% PATHOGNOMONIC; MLPA mandatory; goniosynechialysis); PITX2 (ARS1 \u2014 iridocorneal adhesions + posterior embryotoxon PATHOGNOMONIC; midface hypoplasia + hypodontia); PAX6 (Aniridia-Related Glaucoma \u2014 iris absent PATHOGNOMONIC; LSCD keratopathy; WAGR CMA mandatory; tube shunt); OPTN (Normal Tension Glaucoma \u2014 normal IOP + disc haemorrhages PATHOGNOMONIC; E50K 10x risk; ALS overlap screen); LTBP2 (PCG + Microspherophakia \u2014 spherical subluxated lens PATHOGNOMONIC; avoid miotics; Gulf Arab founder p.Arg299Cys); TEK (PCG Schlemm's Canal Agenesis \u2014 canal absent on AS-OCT PATHOGNOMONIC; trabeculotomy not goniotomy; early tube shunt). 320-patient aggregate seeds-2262-2269. 4-tab frontend, SiteNav wired after Hereditary-Congenital-Heart-Disease-Atlas. 3 endpoints verified 200. Registered 2026-09-08."
+  },
+  {
+    "id": "hereditary-epidermolysis-bullosa-atlas",
+    "name": "Hereditary-Epidermolysis-Bullosa-Atlas Complete-8-Gene-EB-Atlas KRT5-590aa-12q13.13-AD-EBS-TONOFILAMENT-CLUMPING-EM-PATHOGNOMONIC KRT14-472aa-17q21.2-AD-p.Arg125His-MOST-COMMON-KRT14-WORLDWIDE COL17A1-1497aa-10q25.1-AR-JEB-nH-GABEB-PREMATURE-TOOTH-LOSS-CERVICAL-CANCER-5x LAMB3-1172aa-1q32.2-AR-JEB-Herlitz-GRANULATION-TISSUE-PATHOGNOMONIC-AIRWAY-EMERGENCY COL7A1-2944aa-3p21.31-AD-AR-DEB-MITTEN-HAND-PATHOGNOMONIC-SCC-70pct-B-VEC-FDA2023 ITGB4-1822aa-17q25.1-AR-JEB-PA-PYLORIC-ATRESIA-NEONATAL-EMERGENCY PLEC-4684aa-8q24.13-AR-EBS-MD-MUSCULAR-DYSTROPHY-CARDIOMYOPATHY-30pct FERMT1-677aa-20p12.3-AR-Kindler-EB-PHOTOSENSITIVITY-UV-TRIGGERED-COLITIS-60pct 320-Patient-Aggregate-8x40-seeds-2270-2277",
+    "status": "built",
+    "api": "/api/hereditary-epidermolysis-bullosa-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 2270,
+    "registered": "2026-09-08"
   }
 ]
