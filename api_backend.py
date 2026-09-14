@@ -46975,6 +46975,27 @@ async def hereditary_sphingolipidosis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mps-atlas/overview")
+async def hereditary_mps_atlas_overview():
+    """Hereditary-MPS-Atlas overview — IDUA-MPS-I-Hurler-DS+HS-Laronidase-ERT-FDA2003-HSCT-curative-Hurler-age<2yr, IDS-MPS-II-Hunter-XLR-DS+HS-NO-CornealClouding-PebblySkin-PATHOGNOMONIC-Idursulfase-ERT-FDA2006, SGSH-MPS-IIIA-Sanfilippo-A-HS-only-Behaviour-Regression-NoERT-GeneTherapy, GALNS-MPS-IVA-Morquio-A-KS+C6S-Skeletal-NormalIntellect-OdontoidHypoplasia-ElosulfaseERT-FDA2014, ARSB-MPS-VI-DS-only-NormalIntellect-GalsulfaseERT-FDA2005, GUSB-MPS-VII-Sly-DS+HS+CS-HydropsFetalis-PATHOGNOMONIC-VestronidaseERT-FDA2017-NBS2024, NAGLU-MPS-IIIB-Sanfilippo-B-HS-only-identical-IIIA-BMN250-trials, HGSNAT-MPS-IIIC-Sanfilippo-C-TransmembraneEnzyme-ERT-infeasible-GeneTherapy-primary 320-Patient-Aggregate-8x40-seeds-2630-2637."""
+    from scripts.hereditary_mps_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-mps-atlas/breakdown")
+async def hereditary_mps_atlas_breakdown():
+    """Hereditary-MPS-Atlas per-gene breakdown — IDUA MPS-I-Hurler-Scheie-laronidase-HSCT-curative-Hurler, IDS MPS-II-Hunter-XLR-NO-corneal-clouding-pebbly-skin-idursulfase, SGSH MPS-IIIA-Sanfilippo-A-HS-only-behaviour-regression-no-ERT, GALNS MPS-IVA-Morquio-A-KS+C6S-skeletal-normal-intellect-elosulfase, ARSB MPS-VI-DS-only-normal-intellect-galsulfase, GUSB MPS-VII-Sly-hydrops-fetalis-vestronidase-FDA2017, NAGLU MPS-IIIB-Sanfilippo-B-HS-only-BMN250, HGSNAT MPS-IIIC-Sanfilippo-C-transmembrane-gene-therapy."""
+    from scripts.hereditary_mps_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-mps-atlas/definitions")
+async def hereditary_mps_atlas_definitions():
+    """Hereditary-MPS-Atlas glossary — MPS-Classification-GAG-Substrates, Dysostosis-Multiplex-Radiology, ERT-Landscape-approved-vs-no-ERT, Odontoid-Hypoplasia-Anaesthetic-Risk."""
+    from scripts.hereditary_mps_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-complement-disorder-atlas/overview")
 async def hereditary_complement_disorder_atlas_overview():
     """Hereditary-Complement-Disorder-Atlas aggregate overview (aHUS / C3G)."""

@@ -19465,5 +19465,40 @@
     "portal_page": "/hereditary-sphingolipidosis-atlas",
     "description": "Hereditary Sphingolipidosis Atlas \u2014 8 genes: GBA1-Gaucher, GLA-Fabry, HEXA-TaySachs, HEXB-Sandhoff, GLB1-GM1, SMPD1-NPD-A/B, NPC1-NPC, ASAH1-Farber. 320 patients 8x40 seeds 2622-2629. SiteNav after Hereditary-Leukodystrophy-Atlas.",
     "built_date": "2026-09-14"
+  },
+  {
+    "id": "hereditary-mps-atlas",
+    "name": "Hereditary-MPS-Atlas",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "genes": [
+      "IDUA",
+      "IDS",
+      "SGSH",
+      "GALNS",
+      "ARSB",
+      "GUSB",
+      "NAGLU",
+      "HGSNAT"
+    ],
+    "n_patients": 320,
+    "seeds": [
+      2630,
+      2631,
+      2632,
+      2633,
+      2634,
+      2635,
+      2636,
+      2637
+    ],
+    "endpoints": [
+      "/api/hereditary-mps-atlas/overview",
+      "/api/hereditary-mps-atlas/breakdown",
+      "/api/hereditary-mps-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-mps-atlas",
+    "description": "Mucopolysaccharidoses (MPS) 8-gene atlas: IDUA MPS-I Hurler/Scheie, IDS MPS-II Hunter XLR no-corneal-clouding, SGSH MPS-IIIA Sanfilippo-A behaviour-sleep-no-ERT, GALNS MPS-IVA Morquio-A skeletal-normal-intellect-odontoid, ARSB MPS-VI normal-intellect-galsulfase, GUSB MPS-VII Sly hydrops-fetalis-PATHOGNOMONIC, NAGLU MPS-IIIB Sanfilippo-B BMN250, HGSNAT MPS-IIIC Sanfilippo-C transmembrane-gene-therapy",
+    "built_date": "2026-09-14"
   }
 ]
