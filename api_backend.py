@@ -48810,6 +48810,25 @@ def hereditary_primary_hyperaldosteronism_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/hereditary-men-atlas/overview")
+def hereditary_men_atlas_overview():
+    """Hereditary-Multiple-Endocrine-Neoplasia-Atlas overview — 8 genes (MEN1/RET/CDKN1B/AIP/PRKAR1A/VHL/SDHB/MAX), 320 patients, seeds 2518-2525."""
+    from scripts.hereditary_men_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-men-atlas/breakdown")
+def hereditary_men_atlas_breakdown():
+    """Hereditary-Multiple-Endocrine-Neoplasia-Atlas gene breakdown — MEN1 3P-triad multiglandular-HPT, RET MTC-pheo MEN2A/2B ATA-risk, CDKN1B MEN4 MEN1-phenotype-negative, AIP FIPA gigantism SSA-resistant, PRKAR1A Carney-complex PPNAD-paradoxical-dexamethasone, VHL hemangioblastoma-RCC-pheo belzutifan, SDHB highest-malignancy DOTATATE-PET, MAX bilateral-pheo paternal-imprinting."""
+    from scripts.hereditary_men_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-men-atlas/definitions")
+def hereditary_men_atlas_definitions():
+    """Hereditary-Multiple-Endocrine-Neoplasia-Atlas glossary — MEN classification, MEN1 surveillance, MTC ATA-risk prophylactic-thyroidectomy, pheo alpha-blockade mandatory, VHL belzutifan HIF-pathway, SDHx IHC functional-confirmation."""
+    from scripts.hereditary_men_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
