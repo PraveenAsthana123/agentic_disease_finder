@@ -19203,5 +19203,19 @@
     "patients": 320,
     "seeds": "2526-2533",
     "registered": "2026-09-13"
+  },
+  {
+    "id": "hereditary-monogenic-hypertension-atlas",
+    "title": "Hereditary-Monogenic-Hypertension-Atlas Complete-8-Gene-SCNN1B-SCNN1G-HSD11B2-NR3C2-WNK4-WNK1-KLHL3-CUL3 Liddle-Gordon-AME-MR-GOF-Atlas 320-Patient-Aggregate-8x40-seeds-2534-2541",
+    "status": "built",
+    "category": "hereditary-endocrine",
+    "route": "/hereditary-monogenic-hypertension-atlas",
+    "api_base": "/api/hereditary-monogenic-hypertension-atlas",
+    "endpoints": ["overview", "breakdown", "definitions"],
+    "patients": 320,
+    "genes": ["SCNN1B","SCNN1G","HSD11B2","NR3C2","WNK4","WNK1","KLHL3","CUL3"],
+    "seed_range": "2534-2541",
+    "built_date": "2026-09-14",
+    "description": "Complete 8-gene hereditary monogenic hypertension atlas: Liddle syndrome (SCNN1B/SCNN1G), AME (HSD11B2), MR-GOF Geller (NR3C2), Gordon syndrome (WNK4/WNK1/KLHL3/CUL3)"
   }
 ]

@@ -46737,6 +46737,27 @@ async def hereditary_thyroid_disorder_atlas_definitions_legacy():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-monogenic-hypertension-atlas/overview")
+async def hereditary_monogenic_hypertension_atlas_overview():
+    """Hereditary-Monogenic-Hypertension-Atlas overview — 8 genes (SCNN1B/SCNN1G/HSD11B2/NR3C2/WNK4/WNK1/KLHL3/CUL3), 320 patients, seeds 2534-2541."""
+    from scripts.hereditary_monogenic_hypertension_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-monogenic-hypertension-atlas/breakdown")
+async def hereditary_monogenic_hypertension_atlas_breakdown():
+    """Hereditary-Monogenic-Hypertension-Atlas gene breakdown — Liddle (SCNN1B/SCNN1G), AME (HSD11B2), MR-GOF (NR3C2), Gordon (WNK4/WNK1/KLHL3/CUL3)."""
+    from scripts.hereditary_monogenic_hypertension_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-monogenic-hypertension-atlas/definitions")
+async def hereditary_monogenic_hypertension_atlas_definitions():
+    """Hereditary-Monogenic-Hypertension-Atlas glossary — Liddle amiloride, AME dexamethasone, Gordon thiazide diagnostic response, WNK1 MLPA mandatory."""
+    from scripts.hereditary_monogenic_hypertension_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-cholestasis-atlas/overview")
 async def hereditary_cholestasis_atlas_overview():
     try:
