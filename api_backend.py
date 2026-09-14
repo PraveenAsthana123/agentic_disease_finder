@@ -48882,6 +48882,25 @@ def hereditary_men_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-monogenic-ibd-atlas/overview")
+async def hereditary_monogenic_ibd_atlas_overview():
+    """Hereditary-Monogenic-IBD-Atlas overview — IL10-infant-onset-curative-HSCT, IL10RA-ethnic-founders-pCys171Tyr-Chinese, IL10RB-combined-IFN-lambda-IL22-higher-HLH, XIAP-XLP2-male-Crohn-HLH, LRBA-abatacept-CTLA4-mechanism, CYBB-XCGD-antifungal-mandatory, CYBA-ARCGD-p22phox-both-sexes, NCF2-p67phox-perianal-prominent."""
+    from scripts.hereditary_monogenic_ibd_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-monogenic-ibd-atlas/breakdown")
+async def hereditary_monogenic_ibd_atlas_breakdown():
+    """Hereditary-Monogenic-IBD-Atlas per-gene breakdown — 320 patients 8 genes seeds 2558-2565."""
+    from scripts.hereditary_monogenic_ibd_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-monogenic-ibd-atlas/definitions")
+async def hereditary_monogenic_ibd_atlas_definitions():
+    """Hereditary-Monogenic-IBD-Atlas glossary — IL-10 pathway HSCT, XIAP XLP-2 mechanism, LRBA CTLA4 recycling abatacept, NBT-DHR CGD diagnosis, NADPH oxidase complex, HSCT timing and outcomes monogenic IBD."""
+    from scripts.hereditary_monogenic_ibd_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

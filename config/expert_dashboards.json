@@ -19263,5 +19263,27 @@
     "n_patients": 320,
     "seeds": "2550-2557",
     "registered": "2026-09-14"
+  },
+  {
+    "id": "hereditary-monogenic-ibd-atlas",
+    "title": "Hereditary-Monogenic-IBD-Atlas Complete-8-Gene-IL10-IL10RA-IL10RB-XIAP-LRBA-CYBB-CYBA-NCF2-Atlas IL10-178aa-1q32.1-AR-VEO-IBD-INFANT-ONSET-<3M-PAN-COLITIS-PERIANAL-CURATIVE-HSCT-MANDATORY IL10RA-576aa-11q23.3-AR-IDENTICAL-IL10-ELEVATED-SERUM-IL10-pCys171Tyr-CHINESE-FOUNDER->60pct IL10RB-325aa-21q22.11-AR-SHARED-RECEPTOR-IFN-LAMBDA-IL22-LOSS-HLH-RISK-HIGHER-NEONATAL XIAP-497aa-Xq25-XLR-XLP2-CROHN-LIKE-HLH-MALE-ONLY-HSCT-CURATIVE-BOTH LRBA-2863aa-4q31.3-AR-CVID-CROHN-AUTOIMMUNE-CYTOPENIAS-ABATACEPT-CTLA4-MECHANISM CYBB-570aa-Xp21.1-XLR-X-CGD-GRANULOMATOUS-COLITIS-NBT-DHR-DIAGNOSTIC-ANTIFUNGAL-MANDATORY CYBA-195aa-16q24.2-AR-CGD-p22phox-IDENTICAL-XCGD-BOTH-SEXES-STABILISES-GP91PHOX NCF2-526aa-1q25.3-AR-CGD-p67phox-PERIANAL-PROMINENT-RAREST-GP91PHOX-PRESENT-WB 320-Patient-Aggregate-8x40-seeds-2558-2565",
+    "status": "built",
+    "category": "hereditary-monogenic-ibd-atlas",
+    "tags": [
+      "hereditary",
+      "monogenic-ibd",
+      "veoibd",
+      "IL10",
+      "IL10RA",
+      "IL10RB",
+      "XIAP",
+      "LRBA",
+      "CYBB",
+      "CYBA",
+      "NCF2",
+      "hsct",
+      "cgd",
+      "hlh"
+    ]
   }
 ]
