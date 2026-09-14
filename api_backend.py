@@ -46996,6 +46996,27 @@ async def hereditary_mps_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-vitamin-metabolism-atlas/overview")
+async def hereditary_vitamin_metabolism_atlas_overview():
+    """Hereditary-Vitamin-Metabolism-Atlas overview — BTD-Biotinidase-3p25.1-AR-biotin-recycling-alopecia-SNHL-seizures-biotin5-10mg-curative, HLCS-Holocarboxylase-Synthetase-21q22.13-AR-neonatal-MCD-hyperammonaemia-biotin10-40mg, SLC19A3-BTBGD-2q36.3-AR-thiamine-transporter-2-stress-triggered-BG-MRI-biotin+thiamine, MTHFR-severe-1p36.22-AR-homocystinuria-type4-LOW-methionine-betaine+5MTHF+B12, SLC52A2-RTD2-BVVL2-8q24.13-AR-riboflavin-transporter-SNHL+pontobulbar-palsy-riboflavin10-40mg, FLAD1-FAD-synthase-1q21.3-AR-MADD-like-lipid-storage-myopathy-riboflavin-responsive, TCN2-Transcobalamin-II-22q12.2-AR-B12-cellular-delivery-NORMAL-serum-B12-TRAP-parenteral-B12, AMN-IGS2-14q32.32-AR-selective-B12-malabsorption-tubular-proteinuria-50pct-IM-B12-curative 320-Patient-Aggregate-8x40-seeds-2638-2645."""
+    from scripts.hereditary_vitamin_metabolism_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-vitamin-metabolism-atlas/breakdown")
+async def hereditary_vitamin_metabolism_atlas_breakdown():
+    """Hereditary-Vitamin-Metabolism-Atlas per-gene breakdown — BTD biotinidase-recycling-alopecia-dermatitis-SNHL-biotin-curative, HLCS neonatal-MCD-hyperammonaemia-triple-organic-acid, SLC19A3 BTBGD-stress-triggered-BG-MRI-biotin+thiamine, MTHFR severe-homocystinuria-LOW-methionine-betaine, SLC52A2 BVVL2-pontobulbar-SNHL-riboflavin-responsive, FLAD1 lipid-storage-myopathy-MADD-riboflavin, TCN2 NORMAL-B12-trap-holotranscobalamin-parenteral, AMN IGS2-tubular-proteinuria-IM-B12."""
+    from scripts.hereditary_vitamin_metabolism_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-vitamin-metabolism-atlas/definitions")
+async def hereditary_vitamin_metabolism_atlas_definitions():
+    """Hereditary-Vitamin-Metabolism-Atlas glossary — Biotin-Thiamine-Riboflavin-Cobalamin-Folate-MCD-MADD-Transcobalamin-vs-Haptocorrin-Imerslund-Gräsbeck."""
+    from scripts.hereditary_vitamin_metabolism_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-complement-disorder-atlas/overview")
 async def hereditary_complement_disorder_atlas_overview():
     """Hereditary-Complement-Disorder-Atlas aggregate overview (aHUS / C3G)."""

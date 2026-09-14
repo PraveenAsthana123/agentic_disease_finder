@@ -19500,5 +19500,14 @@
     "portal_page": "/hereditary-mps-atlas",
     "description": "Mucopolysaccharidoses (MPS) 8-gene atlas: IDUA MPS-I Hurler/Scheie, IDS MPS-II Hunter XLR no-corneal-clouding, SGSH MPS-IIIA Sanfilippo-A behaviour-sleep-no-ERT, GALNS MPS-IVA Morquio-A skeletal-normal-intellect-odontoid, ARSB MPS-VI normal-intellect-galsulfase, GUSB MPS-VII Sly hydrops-fetalis-PATHOGNOMONIC, NAGLU MPS-IIIB Sanfilippo-B BMN250, HGSNAT MPS-IIIC Sanfilippo-C transmembrane-gene-therapy",
     "built_date": "2026-09-14"
+  },
+  {
+    "id": "hereditary-vitamin-metabolism-atlas",
+    "name": "Hereditary Vitamin Metabolism Atlas",
+    "status": "built",
+    "api": "/api/hereditary-vitamin-metabolism-atlas/overview",
+    "cohort_n": 320,
+    "seeds": "2638-2645",
+    "registered": "2026-09-14"
   }
 ]
