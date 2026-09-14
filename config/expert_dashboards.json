@@ -19357,5 +19357,18 @@
     "seeds": "2574-2581",
     "built_date": "2026-09-14",
     "category": "Hereditary Surfactant Dysfunction / Childhood Interstitial Lung Disease"
+  },
+  {
+    "id": "hereditary-hemolytic-anemia-atlas",
+    "title": "Hereditary-Hemolytic-Anemia-Atlas Complete-8-Gene-HBB-HBA1-G6PD-PKLR-ANK1-SLC4A1-SPTA1-KCNN4-Atlas HBB-147aa-11p15.4-AR-SCD-Beta-Thal HBA1-142aa-16p13.3-AR-Alpha-Thal-MLPA-Mandatory G6PD-515aa-Xq28-XLR-400M-Affected-Bite-Cells PKLR-574aa-1q22-AR-Echinocytes-Mitapivat-FDA2022 ANK1-1881aa-8p11.21-AD-HS1-EMA-Pathognomonic SLC4A1-911aa-17q21.31-SAO-Malaria-Protection SPTA1-2429aa-1q23.1-AR-HE-HPP-alphaLELY KCNN4-427aa-19q13.31-AD-GOF-DHS-Splenectomy-Absolutely-CI 320-Patient-Aggregate-8x40-seeds-2582-2589",
+    "status": "built",
+    "seeds": "2582-2589",
+    "count": 1203,
+    "date_built": "2026-09-14",
+    "api_endpoints": [
+      "/api/hereditary-hemolytic-anemia-atlas/overview",
+      "/api/hereditary-hemolytic-anemia-atlas/breakdown",
+      "/api/hereditary-hemolytic-anemia-atlas/definitions"
+    ]
   }
 ]

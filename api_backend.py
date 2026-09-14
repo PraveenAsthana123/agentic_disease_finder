@@ -48943,6 +48943,27 @@ async def hereditary_surfactant_dysfunction_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hemolytic-anemia-atlas/overview")
+async def hereditary_hemolytic_anemia_atlas_overview():
+    """Hereditary-Hemolytic-Anemia-Atlas overview — HBB-SCD-beta-thal HBA1-alpha-thal G6PD-favism-oxidant-trigger PKLR-mitapivat-FDA2022 ANK1-HS1-EMA-test SLC4A1-HS2-SAO-malaria-protection SPTA1-HE-HPP-alphaLELY KCNN4-DHS-splenectomy-ABSOLUTELY-CI 8-gene haemolytic anaemia reference 320 patients seeds 2582-2589."""
+    from scripts.hereditary_hemolytic_anemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hemolytic-anemia-atlas/breakdown")
+async def hereditary_hemolytic_anemia_atlas_breakdown():
+    """Hereditary-Hemolytic-Anemia-Atlas per-gene breakdown — HBB sickle-cell hydroxyurea-voxelotor-crizanlizumab, HBA1 MLPA-GAP-PCR deletions, G6PD bite-cells-Heinz-bodies-test-3months-post-crisis, PKLR echinocytes-2,3-DPG-mitapivat, ANK1 spherocytes-EMA-osmotic-fragility, SLC4A1 SAO-ovalocytes-malaria-protection, SPTA1 HPP-thermal-lability-alphaLELY, KCNN4 MCHC-elevated-splenectomy-CI."""
+    from scripts.hereditary_hemolytic_anemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hemolytic-anemia-atlas/definitions")
+async def hereditary_hemolytic_anemia_atlas_definitions():
+    """Hereditary-Hemolytic-Anemia-Atlas glossary — haemolytic anaemia classification, osmotic fragility vs EMA test, PBS morphology keys, MCHC DHS vs OHS, splenectomy indications/contraindications, NBS coverage, iron overload, Parvovirus B19 aplastic crisis."""
+    from scripts.hereditary_hemolytic_anemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
