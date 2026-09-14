@@ -19211,11 +19211,33 @@
     "category": "hereditary-endocrine",
     "route": "/hereditary-monogenic-hypertension-atlas",
     "api_base": "/api/hereditary-monogenic-hypertension-atlas",
-    "endpoints": ["overview", "breakdown", "definitions"],
+    "endpoints": [
+      "overview",
+      "breakdown",
+      "definitions"
+    ],
     "patients": 320,
-    "genes": ["SCNN1B","SCNN1G","HSD11B2","NR3C2","WNK4","WNK1","KLHL3","CUL3"],
+    "genes": [
+      "SCNN1B",
+      "SCNN1G",
+      "HSD11B2",
+      "NR3C2",
+      "WNK4",
+      "WNK1",
+      "KLHL3",
+      "CUL3"
+    ],
     "seed_range": "2534-2541",
     "built_date": "2026-09-14",
     "description": "Complete 8-gene hereditary monogenic hypertension atlas: Liddle syndrome (SCNN1B/SCNN1G), AME (HSD11B2), MR-GOF Geller (NR3C2), Gordon syndrome (WNK4/WNK1/KLHL3/CUL3)"
+  },
+  {
+    "id": "hereditary-periodic-fever-atlas",
+    "name": "Hereditary-Periodic-Fever-Atlas Complete-8-Gene-MEFV-MVK-TNFRSF1A-NLRP3-NOD2-PSTPIP1-IL1RN-NLRP12-Atlas MEFV-781aa-16p13.3-AR-FMF-COLCHICINE-MANDATORY-LIFELONG-AA-AMYLOIDOSIS-PREVENTION MVK-396aa-12q24.11-AR-HIDS-VACCINATION-TRIGGER-PATHOGNOMONIC-CANAKINUMAB TNFRSF1A-455aa-12p13.31-AD-TRAPS-ATTACKS->7d-MIGRATORY-MYALGIA-PERIORBITAL-EDEMA NLRP3-1036aa-1q44-AD-GOF-CAPS-NON-PRURITIC-URTICARIA-COLD-TRIGGER-CANAKINUMAB NOD2-1040aa-16q12.1-AD-GOF-BLAU-GRANULOMA-TRIAD-INFLIXIMAB PSTPIP1-416aa-15q24.3-AD-PAPA-PG-PATHERGY-ANAKINRA IL1RN-177aa-2q14.2-AR-DIRA-NEONATAL-ANAKINRA-CURATIVE NLRP12-1062aa-19q13.42-AD-LOF-FCAS2-COLD-COLCHICINE-PARTIAL 320-Patient-Aggregate-8x40-seeds-2542-2549",
+    "status": "built",
+    "route": "/hereditary-periodic-fever-atlas",
+    "api": "/api/hereditary-periodic-fever-atlas/overview|breakdown|definitions",
+    "seeds": "2542-2549",
+    "registered": "2026-09-14"
   }
 ]

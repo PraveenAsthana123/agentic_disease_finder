@@ -46758,6 +46758,25 @@ async def hereditary_monogenic_hypertension_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-periodic-fever-atlas/overview")
+async def hereditary_periodic_fever_atlas_overview():
+    """Hereditary-Periodic-Fever-Atlas overview — MEFV-FMF-colchicine, MVK-HIDS-vaccination-trigger, TNFRSF1A-TRAPS-migratory-myalgia, NLRP3-CAPS-non-pruritic-urticaria, NOD2-Blau-granuloma-triad, PSTPIP1-PAPA-PG-pathergy, IL1RN-DIRA-neonatal-anakinra-curative, NLRP12-FCAS2-cold-triggered."""
+    from scripts.hereditary_periodic_fever_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-periodic-fever-atlas/breakdown")
+async def hereditary_periodic_fever_atlas_breakdown():
+    """Hereditary-Periodic-Fever-Atlas per-gene breakdown — 320 patients 8 genes seeds 2542-2549."""
+    from scripts.hereditary_periodic_fever_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-periodic-fever-atlas/definitions")
+async def hereditary_periodic_fever_atlas_definitions():
+    """Hereditary-Periodic-Fever-Atlas glossary — pyrin inflammasome, NLRP3-CAPS spectrum, IL-1Ra DIRA, colchicine vs IL-1 blocker selection, AA amyloidosis prevention, pathergy."""
+    from scripts.hereditary_periodic_fever_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-cholestasis-atlas/overview")
 async def hereditary_cholestasis_atlas_overview():
     try:
