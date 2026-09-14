@@ -48960,6 +48960,27 @@ async def hereditary_hemolytic_anemia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-kidney-disease-atlas/overview")
+async def hereditary_kidney_disease_atlas_overview():
+    """Hereditary-Kidney-Disease-Atlas overview — PKD1 ADPKD1-tolvaptan-htTKV-Mayo-Class, PKD2 ADPKD2-milder-ESRD-74yr, PKHD1 ARPKD-massive-echogenic-kidneys-CHF-Potter, COL4A5 X-linked-Alport-anterior-lenticonus-SNHL-ACEi, COL4A3 AR-Alport-TBMN-het, UMOD-ADTKD-young-gout-low-FEUA, HNF1B-RCAD-MODY5-pancreas-atrophy, NPHS2-SRNS2-steroid-resistant-FSGS-transplant-curative."""
+    from scripts.hereditary_kidney_disease_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-kidney-disease-atlas/breakdown")
+async def hereditary_kidney_disease_atlas_breakdown():
+    """Hereditary-Kidney-Disease-Atlas per-gene breakdown — PKD1 tolvaptan-TKV-ICA-liver-cysts, PKD2 milder-ESRD-genotyping-essential, PKHD1 portal-HTN-CHF-normal-synthesis, COL4A5 lenticonus-SNHL-GBM-EM-ACEi-early, COL4A3 AR-full-Alport-vs-het-TBMN-20pct-progress, UMOD gout-low-FEUA-medullary-cysts-allopurinol, HNF1B MODY5-pancreas-atrophy-mullerian-hypoMg, NPHS2 steroid-resistant-FSGS-no-recurrence-transplant."""
+    from scripts.hereditary_kidney_disease_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-kidney-disease-atlas/definitions")
+async def hereditary_kidney_disease_atlas_definitions():
+    """Hereditary-Kidney-Disease-Atlas glossary — ADPKD Mayo classification, Alport GBM EM basket-weave vs TBMN thin-uniform, tolvaptan REMS LFT-monitoring, ARPKD CHF normal-liver-synthesis, NPHS2 podocin slit-diaphragm, ADTKD UMOD low-FEUA gout, HNF1B 17q12-deletion chromosomal-microarray, anti-GBM post-transplant Alport risk."""
+    from scripts.hereditary_kidney_disease_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

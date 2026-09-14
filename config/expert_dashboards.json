@@ -19378,5 +19378,22 @@
       "/api/hereditary-hemolytic-anemia-atlas/breakdown",
       "/api/hereditary-hemolytic-anemia-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-kidney-disease-atlas",
+    "name": "Hereditary-Kidney-Disease-Atlas Complete-8-Gene-PKD1-PKD2-PKHD1-COL4A5-COL4A3-UMOD-HNF1B-NPHS2-Atlas PKD1-4303aa-16p13.3-AD-ADPKD1-85pct-ESRD-54yr-Tolvaptan-FDA2018-Mayo-Class PKD2-968aa-4q22.1-AD-ADPKD2-15pct-ESRD-74yr-Milder-20yr-Later PKHD1-4074aa-6p12.2-AR-ARPKD-Massive-Echogenic-Kidneys-CHF-Portal-HTN-Potter COL4A5-1454aa-Xq22.3-XLD-XLR-X-Linked-Alport-Anterior-Lenticonus-PATHOGNOMONIC-SNHL-90pct COL4A3-1670aa-2q36.3-AR-Alport-AD-TBMN-1pct-Population UMOD-640aa-16p12.3-AD-ADTKD-Young-Gout-Low-FEUA-Medullary-Cysts HNF1B-557aa-17q12-AD-RCAD-MODY5-Pancreatic-Atrophy-Mullerian-17q12-Deletion NPHS2-383aa-1q25.2-AR-SRNS2-Steroid-Resistant-FSGS-Transplant-Curative 320-Patient-Aggregate-8x40-seeds-2598-2605",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-kidney-disease-atlas",
+    "api": "/api/hereditary-kidney-disease-atlas/overview|breakdown|definitions",
+    "api_endpoints": [
+      "/api/hereditary-kidney-disease-atlas/overview",
+      "/api/hereditary-kidney-disease-atlas/breakdown",
+      "/api/hereditary-kidney-disease-atlas/definitions"
+    ],
+    "seeds": "2598-2605",
+    "count": 1205,
+    "date_built": "2026-09-14",
+    "registered": "2026-09-14"
   }
 ]
