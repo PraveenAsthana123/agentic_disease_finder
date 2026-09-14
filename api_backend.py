@@ -48981,6 +48981,28 @@ async def hereditary_kidney_disease_atlas_definitions():
     return generate_definitions()
 
 
+
+@app.get("/api/hereditary-nbia-atlas/overview")
+async def hereditary_nbia_atlas_overview():
+    """Hereditary-NBIA-Atlas overview — PANK2-Eye-of-Tiger-PATHOGNOMONIC-50pct-NBIA, PLA2G6-Spheroids-EM-PATHOGNOMONIC-PLAN-INAD-PARK14, WDR45-BPAN-Females-Biphasic-PATHOGNOMONIC-de-novo, C19orf12-MPAN-OpticAtrophy-MotorNeuropathy-Polish-Founder, FA2H-FAHN-SPG35-Leukodystrophy-EARLIEST-ThinCC, ATP13A2-KRS-JuvenileParkinson-GazePalsy-LEVODOPA-RESPONSIVE, COASY-CoPAN-SamePathway-PANK2-SpasticityDominant, DCAF17-WSS-Hypogonadism-Alopecia-DM-SNHL-UNIQUE 320-Patient-Aggregate-8x40-seeds-2606-2613."""
+    from scripts.hereditary_nbia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-nbia-atlas/breakdown")
+async def hereditary_nbia_atlas_breakdown():
+    """Hereditary-NBIA-Atlas per-gene breakdown — PANK2 eye-of-tiger deferiprone-DFP-B-PKAN-2022, PLA2G6 INAD-infantile-spheroids-optic-atrophy-PARK14-levodopa, WDR45 de-novo-females-biphasic-seizures-parkinson-dementia, C19orf12 Polish-founder-optic-atrophy-motor-neuropathy-psychiatric, FA2H leukodystrophy-spasticity-thin-CC-SPG35, ATP13A2 KRS-gaze-palsy-pyramidal-levodopa, COASY CoA-biosynthesis-PANK2-downstream-mild-iron, DCAF17 WSS-pentad-hypogonadism-alopecia-DM-SNHL-Gulf-Arab."""
+    from scripts.hereditary_nbia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-nbia-atlas/definitions")
+async def hereditary_nbia_atlas_definitions():
+    """Hereditary-NBIA-Atlas glossary — NBIA-overview, Eye-of-Tiger-sign-PKAN-PATHOGNOMONIC, Deferiprone-B-PKAN-2022-no-neurological-benefit, CoA-biosynthesis-PANK2-COASY-same-pathway, Neuroaxonal-spheroids-PLAN-EM, BPAN-biphasic-WDR45-de-novo, MPAN-C19orf12-Polish-founder, WSS-pentad-DCAF17-Gulf-Arab."""
+    from scripts.hereditary_nbia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

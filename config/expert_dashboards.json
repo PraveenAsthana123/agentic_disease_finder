@@ -19395,5 +19395,22 @@
     "count": 1205,
     "date_built": "2026-09-14",
     "registered": "2026-09-14"
+  },
+  {
+    "id": "hereditary-nbia-atlas",
+    "name": "Hereditary-NBIA-Atlas Complete-8-Gene-PANK2-PLA2G6-WDR45-C19orf12-FA2H-ATP13A2-COASY-DCAF17",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-nbia-atlas",
+    "api": "/api/hereditary-nbia-atlas/overview|breakdown|definitions",
+    "api_endpoints": [
+      "/api/hereditary-nbia-atlas/overview",
+      "/api/hereditary-nbia-atlas/breakdown",
+      "/api/hereditary-nbia-atlas/definitions"
+    ],
+    "seeds": "2606-2613",
+    "count": 1206,
+    "date_built": "2026-09-14",
+    "registered": "2026-09-14"
   }
 ]
