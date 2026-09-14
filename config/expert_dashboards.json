@@ -19577,5 +19577,31 @@
     "script": "scripts/hereditary_biopterin_atlas_dashboard.py",
     "note": "Total: 1213 dashboards",
     "built_note": "Built 2026-09-14. 8-gene biopterin BH4 metabolism atlas: GCH1/PTS/QDPR/PCBD1/SPR/DNAJC12/TH/DDC. 320 patients seeds 2670-2677. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-bile-acid-sterol-atlas",
+    "name": "Hereditary Bile Acid Synthesis & Sterol Biosynthesis Atlas",
+    "status": "built",
+    "category": "hereditary-disease-atlas",
+    "genes": [
+      "DHCR7",
+      "CYP27A1",
+      "HSD3B7",
+      "AKR1D1",
+      "CYP7B1",
+      "AMACR",
+      "SC5D",
+      "EBP"
+    ],
+    "n_patients": 320,
+    "seeds": "2678-2685",
+    "endpoints": [
+      "/api/hereditary-bile-acid-sterol-atlas/overview",
+      "/api/hereditary-bile-acid-sterol-atlas/breakdown",
+      "/api/hereditary-bile-acid-sterol-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-bile-acid-sterol-atlas",
+    "description": "Hereditary Bile Acid Synthesis & Sterol Biosynthesis Atlas \u2014 8 genes: DHCR7-SLO (7-DHC elevated, 2nd-3rd toe syndactyly, statins ABSOLUTELY CI), CYP27A1-CTX (cholestanol elevated PATHOGNOMONIC, Achilles xanthomas, CDCA reverses neurodegeneration), HSD3B7-CBAS1 (normal GGT, 3beta-OH-delta5 precursors, cholic acid cures), AKR1D1-CBAS2 (allo-bile acids PATHOGNOMONIC, VPA ABSOLUTELY CI), CYP7B1-CBAS3/SPG5 (dual phenotype, oxysterols, CDCA), AMACR-CBAS4 (adult-onset, pristanic+THCA, VLCFA NORMAL DDx ALD), SC5D-Lathosterolosis (lathosterol elevated, <20 cases, 7-DHC LOW DDx SLO), EBP-CDPX2 (XLD, males lethal, Blaschko ichthyosis, stippled epiphyses resolves). 320 patients 8x40 seeds 2678-2685. SiteNav after Hereditary-Biopterin-Atlas.",
+    "built_date": "2026-09-14"
   }
 ]

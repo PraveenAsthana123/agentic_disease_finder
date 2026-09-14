@@ -49141,6 +49141,27 @@ async def hereditary_biopterin_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-bile-acid-sterol-atlas/overview")
+async def hereditary_bile_acid_sterol_atlas_overview():
+    """Hereditary-Bile-Acid-Sterol-Atlas overview — DHCR7 SLO-7DHC-elevated-PATHOGNOMONIC-2nd-3rd-toe-syndactyly-97pct-cholesterol-low-statins-ABSOLUTELY-CI, CYP27A1 CTX-cholestanol-elevated-PATHOGNOMONIC-Achilles-xanthomas-dentate-nucleus-T2-CDCA-reverses-neurodegeneration, HSD3B7 CBAS1-neonatal-cholestasis-normal-GGT-3beta-hydroxy-precursors-cholic-acid-cures, AKR1D1 CBAS2-allo-bile-acids-PATHOGNOMONIC-severe-neonatal-hepatitis-VPA-ABSOLUTELY-CI, CYP7B1 CBAS3-SPG5-dual-phenotype-oxysterols-CDCA, AMACR CBAS4-adult-onset-pristanic-THCA-dietary-restriction, SC5D lathosterolosis-lathosterol-elevated-ultrarare-<20-cases, EBP CDPX2-XLD-males-lethal-Blaschko-ichthyosis-stippled-epiphyses-resolves."""
+    from scripts.hereditary_bile_acid_sterol_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-bile-acid-sterol-atlas/breakdown")
+async def hereditary_bile_acid_sterol_atlas_breakdown():
+    """Hereditary-Bile-Acid-Sterol-Atlas per-gene breakdown — DHCR7 IVS8-1G>C-25pct-European-SLO-cholesterol-supplement-photoprotect, CYP27A1 Moroccan-Jewish-pGln403Arg-CDCA-750mg-TDS-cholestanol-normalises-MRI-stabilises, HSD3B7 normal-GGT-3beta-OH-delta5-cholenoate-urine-LSIMS-cholic-acid-excellent-prognosis, AKR1D1 allo-5alpha-bile-acids-hepatotoxic-VPA-CI-liver-transplant, CYP7B1 25-OH-27-OH-cholesterol-elevated-SPG5-CDCA-oxysterol-neurotoxicity, AMACR VLCFA-NORMAL-DDx-ALD-pristanic-phytanic-restriction-bile-acid, SC5D lathosterol-chol-ratio-0.05-microcephaly-cleft-palate, EBP 8-DHC-Blaschko-stippled-resolves-female-survivors-male-lethal."""
+    from scripts.hereditary_bile_acid_sterol_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-bile-acid-sterol-atlas/definitions")
+async def hereditary_bile_acid_sterol_atlas_definitions():
+    """Hereditary-Bile-Acid-Sterol-Atlas glossary — 7DHC-SLO-biomarker, cholestanol-CTX-pathognomonic, lathosterol-SC5D, 8DHC-EBP, allo-bile-acids-AKR1D1, 3beta-OH-delta5-HSD3B7, THCA-DHCA-AMACR, CDPX2-Blaschko-XLD-male-lethal, CBAS1-4-classification, GGT-normal-cholestasis-discriminator, FXR-cholic-acid-CDCA-mechanism, statins-CI-in-SLO-SC5D, maternal-uE3-low-prenatal-SLO."""
+    from scripts.hereditary_bile_acid_sterol_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
