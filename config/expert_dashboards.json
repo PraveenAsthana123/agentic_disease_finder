@@ -19509,5 +19509,22 @@
     "cohort_n": 320,
     "seeds": "2638-2645",
     "registered": "2026-09-14"
+  },
+  {
+    "id": "hereditary-glycoprotein-storage-atlas",
+    "name": "Hereditary Glycoprotein Storage Atlas",
+    "gene": "MAN2B1-MANBA-FUCA1-NEU1-AGA-NAGA-GNPTAB-MCOLN1",
+    "status": "built",
+    "route": "/hereditary-glycoprotein-storage-atlas",
+    "api_prefix": "/api/hereditary-glycoprotein-storage-atlas",
+    "endpoints": [
+      "/api/hereditary-glycoprotein-storage-atlas/overview",
+      "/api/hereditary-glycoprotein-storage-atlas/breakdown",
+      "/api/hereditary-glycoprotein-storage-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-glycoprotein-storage-atlas/page.jsx",
+    "script": "scripts/hereditary_glycoprotein_storage_atlas_dashboard.py",
+    "note": "Total: 1210 dashboards",
+    "built_note": "Built 2026-09-14. 8-gene lysosomal glycoprotein storage atlas: MAN2B1/MANBA/FUCA1/NEU1/AGA/NAGA/GNPTAB/MCOLN1. 320 patients seeds 2646-2653. 3 endpoints verified 200."
   }
 ]

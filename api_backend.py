@@ -49057,6 +49057,27 @@ async def hereditary_nbia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-glycoprotein-storage-atlas/overview")
+async def hereditary_glycoprotein_storage_atlas_overview():
+    """Hereditary-Glycoprotein-Storage-Atlas overview — MAN2B1-AlphaMannosidosis-VacuolatedLymphocytes-VelmanaseAlfa-EMA2018, MANBA-BetaMannosidosis-ManGlcNAc-Disaccharide-NoERT, FUCA1-Fucosidosis-Angiokeratoma-GlobusPallidusT2-HSCT, NEU1-Sialidosis-CherryRed-Myoclonus-NormalIQ-Type1-Adult, AGA-Aspartylglucosaminuria-Finnish-Biphasic-GlcNAcAsn, NAGA-SchindlerKanzaki-GalNAc-Type2-Angiokeratoma-Adult, GNPTAB-MucolipidosisII-ICell-PlasmaEnzymes10-40x-PATHOGNOMONIC, MCOLN1-MucolipidosisIV-CornealClouding-Gastrin1000-Ashkenazi 320-Patient-Aggregate-8x40-seeds-2646-2653."""
+    from scripts.hereditary_glycoprotein_storage_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-glycoprotein-storage-atlas/breakdown")
+async def hereditary_glycoprotein_storage_atlas_breakdown():
+    """Hereditary-Glycoprotein-Storage-Atlas per-gene breakdown — MAN2B1 vacuolated-lymphocytes-mannose-rich-oligosacchariduria-velmanase-EMA2018, MANBA Man-GlcNAc-disaccharide-neonatal-severe-adult-angiokeratoma, FUCA1 fucose-oligosacchariduria-globus-pallidus-T2-HSCT-pseudo-deficiency-pitfall, NEU1 sialidosis-cherry-red-myoclonus-Type1-NormalIQ-Type2-childhood-dysmorphic, AGA aspartylglucosaminuria-Finnish-1:18000-biphasic-regression-5-10yr, NAGA Schindler-Kanzaki-Type1-infantile-neurodegeneration-Type2-adult-angiokeratoma, GNPTAB I-cell-disease-multiple-plasma-lysosomal-enzymes-elevated-I-cells-fibroblasts, MCOLN1 ML-IV-corneal-clouding-birth-gastrin-1000-PATHOGNOMONIC-Ashkenazi-founder."""
+    from scripts.hereditary_glycoprotein_storage_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-glycoprotein-storage-atlas/definitions")
+async def hereditary_glycoprotein_storage_atlas_definitions():
+    """Hereditary-Glycoprotein-Storage-Atlas glossary — LGPSDs-overview, N-glycan-catabolism-pathway-NEU1-GLB1-HEXA-MAN2B1-MANBA-FUCA1-AGA-sequential-steps, urine-oligosaccharide-TLC-LC-MS-patterns, M6P-lysosomal-targeting-GNPTAB-mechanism, TRPML1-channel-MCOLN1-achlorhydria-gastrin, angiokeratoma-differential-GLA-FUCA1-MANBA-NAGA, vacuolated-lymphocytes-LSD-screening, galactosialidosis-vs-sialidosis-CTSA-NEU1."""
+    from scripts.hereditary_glycoprotein_storage_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
