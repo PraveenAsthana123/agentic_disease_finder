@@ -19603,5 +19603,14 @@
     "portal_page": "/hereditary-bile-acid-sterol-atlas",
     "description": "Hereditary Bile Acid Synthesis & Sterol Biosynthesis Atlas \u2014 8 genes: DHCR7-SLO (7-DHC elevated, 2nd-3rd toe syndactyly, statins ABSOLUTELY CI), CYP27A1-CTX (cholestanol elevated PATHOGNOMONIC, Achilles xanthomas, CDCA reverses neurodegeneration), HSD3B7-CBAS1 (normal GGT, 3beta-OH-delta5 precursors, cholic acid cures), AKR1D1-CBAS2 (allo-bile acids PATHOGNOMONIC, VPA ABSOLUTELY CI), CYP7B1-CBAS3/SPG5 (dual phenotype, oxysterols, CDCA), AMACR-CBAS4 (adult-onset, pristanic+THCA, VLCFA NORMAL DDx ALD), SC5D-Lathosterolosis (lathosterol elevated, <20 cases, 7-DHC LOW DDx SLO), EBP-CDPX2 (XLD, males lethal, Blaschko ichthyosis, stippled epiphyses resolves). 320 patients 8x40 seeds 2678-2685. SiteNav after Hereditary-Biopterin-Atlas.",
     "built_date": "2026-09-14"
+  },
+  {
+    "id": "seizure-risk-forecast",
+    "name": "Seizure Risk Forecasting \u2014 4-tier decision layer (low/moderate/high/critical), 5 forecast horizons, alert threshold config, per-patient risk forecasts, escalation action chains, gap analysis. 3 endpoints /api/seizure-risk-forecast/overview|breakdown|definitions verified 200. portal-next/app/seizure-risk-forecast/page.jsx + SiteNav wired after Seizure Prediction.",
+    "status": "built",
+    "api": "/api/seizure-risk-forecast",
+    "cohort_n": 30,
+    "seed": null,
+    "registered": "2026-09-14"
   }
 ]

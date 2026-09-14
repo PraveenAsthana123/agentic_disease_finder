@@ -123,6 +123,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-forecasting">&#x1f52e; Seizure Forecasting</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-horizon">&#x23f1;&#xfe0f; Seizure Horizon Analysis</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/seizure-prediction">&#x1f4c8; Seizure Prediction</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/seizure-risk-forecast">&#x26a0;&#xfe0f; Seizure Risk Forecasting</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/raw-eeg-waveform">&#x1f9e0; Raw EEG Waveform</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-clinical-panel">&#x1f4c8; EEG Clinical Signal Panel</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-channel-quality-map">&#x1f4f6; EEG Channel Quality Map</Link></li>

@@ -150,7 +150,9 @@
       "feature": "Seizure-risk forecasting decision layer (alert thresholds + escalation)",
       "in_project": "built",
       "why": "Dashboard with 4-tier risk scoring (low/moderate/high/critical), 5 forecast horizons, threshold config, per-patient forecasts, escalation log, and gap analysis",
-      "priority": "high"
+      "priority": "high",
+      "status": "built",
+      "built_note": "seizure-risk-forecast dashboard built 2026-09-14: /api/seizure-risk-forecast/overview|breakdown|definitions verified 200, portal-next/app/seizure-risk-forecast/page.jsx + SiteNav wired after Seizure Prediction, expert_dashboards.json count 1214->1215"
     },
     {
       "category": "decision_ai",
