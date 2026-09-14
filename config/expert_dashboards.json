@@ -19239,5 +19239,29 @@
     "api": "/api/hereditary-periodic-fever-atlas/overview|breakdown|definitions",
     "seeds": "2542-2549",
     "registered": "2026-09-14"
+  },
+  {
+    "id": "hereditary-osteogenesis-imperfecta-atlas",
+    "name": "Hereditary-Osteogenesis-Imperfecta-Atlas Complete-8-Gene-COL1A1-COL1A2-IFITM5-SERPINF1-CRTAP-LEPRE1-PPIB-FKBP10-Atlas COL1A1-1464aa-17q21.33-AD-OI-Types-I-IV-Null-TypeI-Glycine-TypeII-Lethal IFITM5-132aa-11p15.5-AD-OI-TypeV-Hyperplastic-Callus-IOM-Calcification-PATHOGNOMONIC SERPINF1-418aa-17p13.3-AR-OI-TypeVI-Fish-Scale-Lamellae-PEDF-Absent CRTAP-339aa-3p22.3-AR-OI-TypeVII-Rhizomelia-Overmodified-Collagen LEPRE1-736aa-1p34.2-AR-OI-TypeVIII-West-African-Founder-pTrp339Ter PPIB-212aa-15q22.31-AR-OI-TypeIX-P3H1-Normal FKBP10-582aa-17q21.2-AR-Bruck-Syndrome-1-Contractures-Birth-OI-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2550-2557",
+    "status": "built",
+    "route": "/hereditary-osteogenesis-imperfecta-atlas",
+    "api_endpoints": [
+      "/api/hereditary-osteogenesis-imperfecta-atlas/overview",
+      "/api/hereditary-osteogenesis-imperfecta-atlas/breakdown",
+      "/api/hereditary-osteogenesis-imperfecta-atlas/definitions"
+    ],
+    "genes": [
+      "COL1A1",
+      "COL1A2",
+      "IFITM5",
+      "SERPINF1",
+      "CRTAP",
+      "LEPRE1",
+      "PPIB",
+      "FKBP10"
+    ],
+    "n_patients": 320,
+    "seeds": "2550-2557",
+    "registered": "2026-09-14"
   }
 ]

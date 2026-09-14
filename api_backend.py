@@ -46777,6 +46777,25 @@ async def hereditary_periodic_fever_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-osteogenesis-imperfecta-atlas/overview")
+async def hereditary_osteogenesis_imperfecta_atlas_overview():
+    """Hereditary-Osteogenesis-Imperfecta-Atlas overview — COL1A1-null-type-I-glycine-type-II-IV, COL1A2-arthrochalasis-EDS, IFITM5-type-V-hyperplastic-callus-IOM-calcification, SERPINF1-type-VI-fish-scale-lamellae-PEDF-absent, CRTAP-type-VII-rhizomelia, LEPRE1-type-VIII-West-African-founder, PPIB-type-IX-ternary-complex, FKBP10-Bruck-contractures-pterygium."""
+    from scripts.hereditary_osteogenesis_imperfecta_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-osteogenesis-imperfecta-atlas/breakdown")
+async def hereditary_osteogenesis_imperfecta_atlas_breakdown():
+    """Hereditary-Osteogenesis-Imperfecta-Atlas per-gene breakdown — 320 patients 8 genes seeds 2550-2557."""
+    from scripts.hereditary_osteogenesis_imperfecta_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-osteogenesis-imperfecta-atlas/definitions")
+async def hereditary_osteogenesis_imperfecta_atlas_definitions():
+    """Hereditary-Osteogenesis-Imperfecta-Atlas glossary — collagen triple helix glycine substitutions, prolyl-3-hydroxylation complex, OI type V hyperplastic callus, OI type VI fish-scale lamellae, Bruck syndrome contractures, bisphosphonate therapy, NAI mimicry."""
+    from scripts.hereditary_osteogenesis_imperfecta_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-cholestasis-atlas/overview")
 async def hereditary_cholestasis_atlas_overview():
     try:
