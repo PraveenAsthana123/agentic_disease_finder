@@ -19439,5 +19439,31 @@
     ],
     "built_date": "2026-09-14",
     "description": "Complete 8-gene hereditary leukodystrophy reference atlas covering ABCD1-X-ALD, ARSA-MLD, GALC-Krabbe, PLP1-PMD, GJC2-PMLD, POLR3A-4H, EIF2B5-VWM, ADAR-AGS6"
+  },
+  {
+    "id": "hereditary-sphingolipidosis-atlas",
+    "name": "Hereditary-Sphingolipidosis-Atlas",
+    "status": "built",
+    "category": "hereditary-disease-atlas",
+    "genes": [
+      "GBA1",
+      "GLA",
+      "HEXA",
+      "HEXB",
+      "GLB1",
+      "SMPD1",
+      "NPC1",
+      "ASAH1"
+    ],
+    "n_patients": 320,
+    "seeds": "2622-2629",
+    "endpoints": [
+      "/api/hereditary-sphingolipidosis-atlas/overview",
+      "/api/hereditary-sphingolipidosis-atlas/breakdown",
+      "/api/hereditary-sphingolipidosis-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-sphingolipidosis-atlas",
+    "description": "Hereditary Sphingolipidosis Atlas \u2014 8 genes: GBA1-Gaucher, GLA-Fabry, HEXA-TaySachs, HEXB-Sandhoff, GLB1-GM1, SMPD1-NPD-A/B, NPC1-NPC, ASAH1-Farber. 320 patients 8x40 seeds 2622-2629. SiteNav after Hereditary-Leukodystrophy-Atlas.",
+    "built_date": "2026-09-14"
   }
 ]

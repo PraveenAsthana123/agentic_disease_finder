@@ -46954,6 +46954,27 @@ async def hereditary_leukodystrophy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-sphingolipidosis-atlas/overview")
+async def hereditary_sphingolipidosis_atlas_overview():
+    """Hereditary-Sphingolipidosis-Atlas overview — GBA1-Gaucher-GCase-62kDa-Imiglucerase-ERT-FDA1994-Eliglustat-SRT-FDA2014-GauCells-CrinkledPaper-GBA1-PD-5x-Risk, GLA-Fabry-AlphaGalA-50kDa-Gb3-Angiokeratoma-CorneaVerticillata-ZebraBodies-AgalsidaseBeta-Migalastat, HEXA-TaySachs-GM2-HexA-CherryRedSpot-Hyperacusis-Ashkenazi-1in30-NoERT, HEXB-Sandhoff-GM2+GA2-BothHexAandHexBlow-CherryRedSpot-NoEthnicFounder, GLB1-GM1-BetaGal-FacialCoarseningAtBirth-CherryRed50pct-MPS-IVB-MorquioB, SMPD1-NiemPickAB-ASMase-FoamCells-OlipudaseERT-FDA2022-NPD-B-PulmonaryDisease, NPC1-NiemPickC-CholesterolTrafficking-VSGP-GelasticCataplexy-Filipin-Oxysterols-Miglustat, ASAH1-Farber-AcidCeramidase-FarberTriad-Nodules-Joints-HoarseVoice-HSCT-visceral 320-Patient-Aggregate-8x40-seeds-2622-2629."""
+    from scripts.hereditary_sphingolipidosis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-sphingolipidosis-atlas/breakdown")
+async def hereditary_sphingolipidosis_atlas_breakdown():
+    """Hereditary-Sphingolipidosis-Atlas per-gene breakdown — GBA1 GauCells-imiglucerase-eliglustat-CYP2D6-PD5xRisk, GLA Gb3-angiokeratoma-cornea-verticillata-zebra-bodies-migalastat-amenable, HEXA TaySachs-cherry-red-hyperacusis-ashkenazi-noERT, HEXB Sandhoff-bothHexlow-GA2-mild-hepato, GLB1 GM1-facialCoarseningAtBirth-hepato-MorquioB-odontoid, SMPD1 NPD-A-noTherapy-NPD-B-olipudase-low-dose-pulmonary, NPC1 VSGP-cataplexy-filipin-oxysterols-miglustat-cyclodextrin, ASAH1 Farber-triad-HSCT-visceral-noERT."""
+    from scripts.hereditary_sphingolipidosis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-sphingolipidosis-atlas/definitions")
+async def hereditary_sphingolipidosis_atlas_definitions():
+    """Hereditary-Sphingolipidosis-Atlas glossary — Sphingolipidosis-Classification-7-types, ERT-Landscape-approved-vs-no-ERT, Cherry-Red-Spot-Pathophysiology-DDx, Filipin-Test-vs-Oxysterols-NPC-Diagnosis."""
+    from scripts.hereditary_sphingolipidosis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-complement-disorder-atlas/overview")
 async def hereditary_complement_disorder_atlas_overview():
     """Hereditary-Complement-Disorder-Atlas aggregate overview (aHUS / C3G)."""
