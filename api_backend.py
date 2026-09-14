@@ -46717,30 +46717,24 @@ async def hereditary_neurotransmitter_atlas_definitions():
 
 
 @app.get("/api/hereditary-thyroid-disorder-atlas/overview")
-async def hereditary_thyroid_disorder_atlas_overview():
-    try:
-        import scripts.hereditary_thyroid_disorder_atlas_dashboard as atlas_
-        return atlas_.overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def hereditary_thyroid_disorder_atlas_overview_legacy():
+    """Hereditary-Thyroid-Disorder-Atlas overview — 8 genes (TSHR/DUOX2/TPO/TG/SLC5A5/FOXE1/PAX8/NKX2-1), 320 patients, seeds 2526-2533."""
+    from scripts.hereditary_thyroid_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
 
 
 @app.get("/api/hereditary-thyroid-disorder-atlas/breakdown")
-async def hereditary_thyroid_disorder_atlas_breakdown():
-    try:
-        import scripts.hereditary_thyroid_disorder_atlas_dashboard as atlas_
-        return atlas_.breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def hereditary_thyroid_disorder_atlas_breakdown_legacy():
+    """Hereditary-Thyroid-Disorder-Atlas gene breakdown — TSHR GOF/LOF, DUOX2 partial organification, TPO total defect, TG paradox, SLC5A5 ITD, FOXE1 Bamforth-Lazarus, PAX8 dysgenesis, NKX2-1 BLT."""
+    from scripts.hereditary_thyroid_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
 
 
 @app.get("/api/hereditary-thyroid-disorder-atlas/definitions")
-async def hereditary_thyroid_disorder_atlas_definitions():
-    try:
-        import scripts.hereditary_thyroid_disorder_atlas_dashboard as atlas_
-        return atlas_.definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def hereditary_thyroid_disorder_atlas_definitions_legacy():
+    """Hereditary-Thyroid-Disorder-Atlas glossary — CH NBS, perchlorate discharge, TSH receptor GOF/LOF, Bamforth-Lazarus, BLT syndrome, ITD."""
+    from scripts.hereditary_thyroid_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
 
 
 @app.get("/api/hereditary-cholestasis-atlas/overview")
