@@ -35137,3 +35137,219 @@ All verified. Now commit:
 
 ### [2026-09-13 23:07:06 MDT] ASSISTANT
 All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-13 23:49:42 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Thyroid-Disorder-Atlas** (`cd5e2670`)
+
+- **8 genes**: TSHR · DUOX2 · TPO · TG · SLC5A5 · FOXE1 · PAX8 · NKX2-1 (seeds 2526–2533)
+- **Dashboard script** updated with full clinical content for all 8 genes including TSHR GOF/LOF, DUOX2 transient CH, TPO total organification defect, TG paradox (undetectable Tg with goitre), SLC5A5 ITD (absent RAI uptake), FOXE1 Bamforth-Lazarus tetrad, PAX8 variable expressivity, NKX2-1 BLT syndrome
+- **3 endpoints** verified 200: `/api/hereditary-thyroid-disorder-atlas/overview|breakdown|definitions`
+- **Portal page** updated at `/hereditary-thyroid-disorder-atlas`
+- **SiteNav** wired after Hereditary-MEN-Atlas
+- **`expert_dashboards.json`**: 1195 → **1196**
+- Pushed fast-forward to `origin/main`
+
+⏳ **Pending**: Retrain on same-setup ictal/interictal (skipped — too heavy for autonomous loop) · Gmail/Slack/Drive live (blocked: credentials) · multi-user auth/RBAC (blocked) · EMR/FHIR streaming (blocked)
+
+### [2026-09-14 00:23:53 MDT] ASSISTANT
+Done. One full autonomous iteration completed:
+
+**Built + pushed: Hereditary-Monogenic-Hypertension-Atlas**
+
+| Item | Detail |
+|------|--------|
+| **Atlas** | Hereditary-Monogenic-Hypertension-Atlas |
+| **Genes** | SCNN1B · SCNN1G · HSD11B2 · NR3C2 · WNK4 · WNK1 · KLHL3 · CUL3 |
+| **Seeds** | 2534-2541 · 320 patients (8×40) |
+| **Mechanisms** | Liddle (ENaC GOF) · AME (11β-HSD2) · MR-GOF Geller · Gordon PHA2 (WNK-SPAK-NCC) |
+| **Endpoints** | `/api/hereditary-monogenic-hypertension-atlas/overview\|breakdown\|definitions` — all 200 ✅ |
+| **expert_dashboards.json** | 1196 → 1197 |
+| **Commit** | `9fc3341b` → pushed to `origin/main` |
+
+Key clinical pearls encoded: SCNN1B/G amiloride NOT spironolactone; NR3C2 pregnancy exacerbation PATHOGNOMONIC (progestins dangerous); WNK4/Gordon thiazide = diagnostic response within days; WNK1 intronic deletion — standard exome misses, MLPA mandatory; CUL3 exon-9-skip = most severe neonatal Gordon syndrome.
+
+### [2026-09-14 00:48:45 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-Periodic-Fever-Atlas** — a new hereditary disease category not previously in the registry.
+
+**What was built:**
+- `scripts/hereditary_periodic_fever_atlas_dashboard.py` — 8-gene dashboard script with full clinical data (320 patients, seeds 2542–2549)
+- `portal-next/app/hereditary-periodic-fever-atlas/page.jsx` — 4-tab frontend (Overview, Gene Table, Clinical Atlas, Definitions)
+- 3 new API endpoints verified 200: `/api/hereditary-periodic-fever-atlas/overview|breakdown|definitions`
+- `SiteNav.jsx` wired after Hereditary-Monogenic-Hypertension-Atlas
+- `expert_dashboards.json` count: 1197 → 1198
+- Committed `d6efa444` · pushed to `origin/main`
+
+**8 genes covered:**
+| Gene | Disease | Key Pearl |
+|---|---|---|
+| MEFV | FMF | Colchicine mandatory lifelong — prevents AA amyloidosis |
+| MVK | HIDS | Vaccination-triggered attacks PATHOGNOMONIC; colchicine NOT effective |
+| TNFRSF1A | TRAPS | Attacks >7 days + migratory myalgia + periorbital edema; etanercept NOT infliximab |
+| NLRP3 | CAPS | Non-pruritic urticaria PATHOGNOMONIC; antihistamines ineffective; NOMID treat urgently |
+| NOD2 | Blau/EOS | Granuloma triad; NOT Crohn NOD2 variants; infliximab best |
+| PSTPIP1 | PAPA | PG pathergy — AVOID debridement; culture-negative purulent arthritis |
+| IL1RN | DIRA | Neonatal onset; anakinra curative and life-saving; start urgently |
+| NLRP12 | FCAS2 | Cold-triggered; colchicine partially effective (unlike CAPS); less deafness |
+
+### [2026-09-14 01:17:35 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Osteogenesis-Imperfecta-Atlas** (`d0d62ad0`)
+
+| Item | Detail |
+|------|--------|
+| **Atlas** | Hereditary-Osteogenesis-Imperfecta-Atlas |
+| **Genes** | COL1A1 · COL1A2 · IFITM5 · SERPINF1 · CRTAP · LEPRE1 · PPIB · FKBP10 |
+| **Seeds** | 2550–2557 · 320 patients (8×40) |
+| **Endpoints** | `/api/hereditary-osteogenesis-imperfecta-atlas/overview\|breakdown\|definitions` — all 200 ✅ |
+| **expert_dashboards.json** | 1198 → 1199 |
+| **Commit** | `d0d62ad0` → pushed to `origin/main` |
+
+Key clinical pearls encoded:
+- **COL1A1 NULL** → OI type I mild (haploinsufficiency); **GLYCINE SUBSTITUTION** → types II–IV dominant-negative — always classify variant class before prognosis
+- **IFITM5 type V**: hyperplastic callus misdiagnosed as osteosarcoma — always check c.-14C>T before biopsy; collagen biochemistry NORMAL (missed by standard panel)
+- **SERPINF1 type VI**: serum PEDF undetectable = screening test; fish-scale lamellae on biopsy PATHOGNOMONIC; denosumab superior to bisphosphonates
+- **CRTAP type VII**: RHIZOMELIA (proximal limb shortening) PATHOGNOMONIC — distinguishes from LEPRE1/PPIB
+- **LEPRE1 type VIII**: West African founder p.Trp339Ter (>80%) — biochemical collagen electrophoresis essential before WES in West African families
+- **PPIB type IX**: P3H1 enzyme activity NORMAL despite overmodified collagen — isomerase not hydroxylase (DDx from LEPRE1)
+- **FKBP10 / Bruck syndrome 1**: contractures at birth + OI = PATHOGNOMONIC; pterygium; Turkish founder c.831+1G>T
+- **NAI mimicry**: OI mandatory exclusion before safeguarding report
+
+⏳ **Pending**: ictal/interictal retrain (skipped — too heavy) · Gmail/Slack/Drive (blocked — credentials) · multi-user auth/RBAC (blocked)
+
+### [2026-09-14 03:03:05 MDT] ASSISTANT
+Queue empty after skipping the excluded item. No buildable pending items remain (after excluding: ictal/interictal retrain, Gmail/Slack/Drive credentials, multi-user auth, EMR/FHIR). Nothing committed, nothing pushed. Loop exits clean.
+
+### [2026-09-14 03:33:49 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and next_pending.py, then commit and push:
+
+### [2026-09-14 03:54:40 MDT] ASSISTANT
+All routes confirmed working. Let me do a final check before running track.sh.
+
+### [2026-09-14 04:04:27 MDT] ASSISTANT
+The queue has only `ictal_interictal` which must be skipped per instructions. After skipping, the queue is empty. I'll track this and exit cleanly:
+
+### [2026-09-14 04:29:48 MDT] ASSISTANT
+All 3 endpoints verified. Now refresh STATUS.md and commit:
+
+### [2026-09-14 04:49:29 MDT] ASSISTANT
+All 3 new endpoints return 200. Backend is healthy.
+
+### [2026-09-14 05:16:59 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-14 05:48:43 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md, commit, push, and track.
+
+### [2026-09-14 06:19:11 MDT] ASSISTANT
+Committed. Now push then track:
+
+### [2026-09-14 07:20:16 MDT] ASSISTANT
+**Done.** One iteration complete.
+
+**Built + pushed: Hereditary-NBIA-Atlas**
+
+| Item | Detail |
+|---|---|
+| Genes | PANK2 · PLA2G6 · WDR45 · C19orf12 · FA2H · ATP13A2 · COASY · DCAF17 |
+| Patients | 320 (8 × 40, seeds 2606–2613) |
+| Registry count | 1205 → 1206 |
+| API endpoints | `/api/hereditary-nbia-atlas/overview` · `breakdown` · `definitions` — all **200** ✓ |
+| Portal page | `portal-next/app/hereditary-nbia-atlas/page.jsx` |
+| SiteNav | Wired after Hereditary-Kidney-Disease-Atlas |
+| Commit | `a3161b8d` → pushed to `origin/main` |
+
+**Key clinical insight encoded:** Each gene has a distinct PATHOGNOMONIC signature — Eye-of-Tiger (PANK2), neuroaxonal spheroids on EM (PLA2G6), biphasic childhood-seizures→adult-Parkinsonism course (WDR45), hypogonadism+alopecia+DM+SNHL pentad (DCAF17), leukodystrophy as earliest MRI finding (FA2H), and levodopa-responsive juvenile Parkinsonism (ATP13A2 — unique among NBIA).
+
+### [2026-09-14 08:53:28 MDT] ASSISTANT
+Done. Built and pushed **Hereditary-Leukodystrophy-Atlas**:
+
+- **Script**: `scripts/hereditary_leukodystrophy_atlas_dashboard.py` — 8 genes, 320 patients (8×40), seeds 2614-2621
+- **API**: 3 routes verified 200 — `/api/hereditary-leukodystrophy-atlas/overview|breakdown|definitions`
+- **Frontend**: `portal-next/app/hereditary-leukodystrophy-atlas/page.jsx` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions)
+- **SiteNav**: Wired after Hereditary-NBIA-Atlas (line 994)
+- **Registry**: `config/expert_dashboards.json` 1205→1206
+- **Pushed**: `a3161b8d..fc774056 main -> main`
+
+**8 genes covered**:
+| Gene | Disease | Pathognomonic |
+|------|---------|---------------|
+| ABCD1 | X-ALD (XLR) | CALD posterior-advancing MRI; HSCT/Skysona-FDA2022 if Loes≤9 |
+| ARSA | MLD (AR) | Metachromatic granules nerve biopsy; Libmeldy EMA2020 |
+| GALC | Krabbe (AR) | Globoid cells + extreme irritability (touch→screaming) |
+| PLP1 | PMD (XLR) | Nystagmus at birth; hypomyelination static |
+| GJC2 | PMLD/SPG44 (AR/AD) | Milder hypomyelination; connexin 47; nystagmus less prominent |
+| POLR3A | 4H syndrome (AR) | 4H TRIAD: Hypomyelination+Hypodontia+Hypogonadism |
+| EIF2B5 | VWM/CACH (AR) | Stress-triggered crises (fever/trauma); white matter vanishes; ISRIB preclinical |
+| ADAR | AGS6 (AD GOF/AR) | Pseudo-TORCH (calcifications+negative-TORCH); IFN-alpha CSF; baricitinib |
+
+### [2026-09-14 09:18:21 MDT] ASSISTANT
+I can see the pattern. The "already built" comment goes AFTER the `]` closing the BUILDABLE list (line 91). Let me add the sphingolipidosis atlas comment right after the existing "kidney_disease_atlas" comment since that was the last one in this session:
+
+### [2026-09-14 09:53:26 MDT] ASSISTANT
+Done. **Hereditary-MPS-Atlas** is built, verified, committed, and pushed.
+
+**What was built:**
+- `scripts/hereditary_mps_atlas_dashboard.py` — 8-gene MPS dashboard (IDUA/IDS/SGSH/GALNS/ARSB/GUSB/NAGLU/HGSNAT, 320 patients, seeds 2630–2637)
+- `api_backend.py` — 3 new routes `/api/hereditary-mps-atlas/overview|breakdown|definitions` (all 200 ✅)
+- `portal-next/app/hereditary-mps-atlas/page.jsx` — Next.js portal page with Overview/Gene Table/Clinical Atlas/Definitions tabs
+- `portal-next/app/components/SiteNav.jsx` — new `<li>` entry after Sphingolipidosis
+- `config/expert_dashboards.json` — 1207→1208 entries
+- `scripts/next_pending.py` — completion log added
+
+**Key clinical insight encoded:** HGSNAT (MPS IIIC) is the only MPS where ERT is structurally infeasible — it encodes a transmembrane enzyme, not a soluble one, so gene therapy is the only viable route.
+
+### [2026-09-14 10:15:27 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built & pushed: `hereditary-vitamin-metabolism-atlas`**
+
+- **8 genes** (BTD · HLCS · SLC19A3 · MTHFR · SLC52A2 · FLAD1 · TCN2 · AMN), **320 patients** (8×40), seeds 2638–2645
+- **3 endpoints verified 200**: `/api/hereditary-vitamin-metabolism-atlas/overview|breakdown|definitions`
+- **`expert_dashboards.json`**: 1208 → 1209
+- **SiteNav** wired after Hereditary-MPS-Atlas
+- **Committed** `c704ab59` · **pushed** to origin/main
+
+Key clinical content captured per gene:
+- **BTD**: alopecia+dermatitis+SNHL triad; SNHL 40-75% (may be permanent); biotin 5-10 mg/day curative via NBS
+- **HLCS**: neonatal hyperammonaemia; triple OA pattern; C5-OH+C3 on NBS; Km-mutant pLeu216Arg; biotin 10-40 mg
+- **SLC19A3** (BTBGD): bilateral symmetric BG MRI lesions PATHOGNOMONIC; stress-triggered; **both biotin+thiamine required**; Saudi pGlu320Gln founder
+- **MTHFR** severe: **LOW methionine** DDx from CBS (CBS = HIGH methionine); C677T/A1298C are polymorphisms NOT disease
+- **SLC52A2** (BVVL2): SNHL+pontobulbar palsy PATHOGNOMONIC; riboflavin **reverses established SNHL** — unique
+- **FLAD1**: lipid storage myopathy on biopsy; MADD biochemistry; fasting avoidance critical; riboflavin-responsive
+- **TCN2**: **normal serum B12 = diagnostic trap**; low holotranscobalamin is the key marker; lifelong parenteral B12
+- **AMN** (IGS-2): low B12 (contrast TCN2); tubular proteinuria 50%; oral B12 not absorbed; Schilling not corrected by IF
+
+### [2026-09-14 10:35:56 MDT] ASSISTANT
+**Autobuild iteration complete — no action taken.**
+
+**Reason:** The BUILDABLE queue contains exactly one item — `ictal_interictal` (retrain, high effort) — which is on the explicit session skip list. All other pending items are blocked:
+
+| Status | Items |
+|---|---|
+| Skip (too heavy) | Ictal/interictal retrain |
+| Blocked (credentials) | Gmail, Slack, Drive integrations |
+| Blocked (operator) | Multi-user auth/RBAC |
+| Blocked (EMR/FHIR) | Device streaming, EMR integration |
+| Gated (§42) | git push |
+
+No commit made. Tracked via `scripts/track.sh`. The queue needs a new item added to `scripts/next_pending.py` BUILDABLE list before the next autonomous iteration can proceed.
+
+### [2026-09-14 13:15:08 MDT] ASSISTANT
+Done. One complete, verified, committed, and pushed iteration:
+
+**Built: Hereditary Glycoprotein Storage Atlas** (seeds 2646-2653)
+
+8 genes covering lysosomal glycoprotein catabolism disorders:
+- **MAN2B1** — Alpha-mannosidosis · vacuolated lymphocytes · mannose-rich oligosacchariduria · Velmanase alfa EMA2018
+- **MANBA** — Beta-mannosidosis · Man-GlcNAc disaccharide (pathognomonic) · neonatal severe or adult angiokeratoma · no ERT
+- **FUCA1** — Fucosidosis · angiokeratoma · globus pallidus T2 · pseudo-deficiency allele pitfall · HSCT
+- **NEU1** — Sialidosis · cherry-red spot + myoclonus + NORMAL IQ (Type 1) · CTSA complex required · galactosialidosis DDx
+- **AGA** — Aspartylglucosaminuria · Finnish 1:18,000 · biphasic (normal infancy → regression 5-10yr) · GlcNAc-Asn urine
+- **NAGA** — Schindler/Kanzaki disease · Type I infantile neurodegeneration · Type II adult angiokeratoma + SNHL · GalNAc-glycopeptides
+- **GNPTAB** — Mucolipidosis II (I-cell disease) · **MULTIPLE plasma lysosomal enzymes 10-40× elevated — PATHOGNOMONIC** · I-cells in fibroblasts
+- **MCOLN1** — Mucolipidosis IV · TRPML1 channel · corneal clouding from birth · **serum gastrin >1000 pg/mL PATHOGNOMONIC** · Ashkenazi founder
+
+320 patients · 3 endpoints verified 200 · page.jsx + SiteNav wired · expert_dashboards.json 1209→1210 · pushed to `main`

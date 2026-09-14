@@ -19526,5 +19526,22 @@
     "script": "scripts/hereditary_glycoprotein_storage_atlas_dashboard.py",
     "note": "Total: 1210 dashboards",
     "built_note": "Built 2026-09-14. 8-gene lysosomal glycoprotein storage atlas: MAN2B1/MANBA/FUCA1/NEU1/AGA/NAGA/GNPTAB/MCOLN1. 320 patients seeds 2646-2653. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-chi-atlas",
+    "name": "Hereditary Congenital Hyperinsulinism Atlas",
+    "gene": "ABCC8-KCNJ11-HADH-GLUD1-GCK-HNF4A-INSR-SLC16A1",
+    "status": "built",
+    "route": "/hereditary-chi-atlas",
+    "api_prefix": "/api/hereditary-chi-atlas",
+    "endpoints": [
+      "/api/hereditary-chi-atlas/overview",
+      "/api/hereditary-chi-atlas/breakdown",
+      "/api/hereditary-chi-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-chi-atlas/page.jsx",
+    "script": "scripts/hereditary_chi_atlas_dashboard.py",
+    "note": "Total: 1211 dashboards",
+    "built_note": "Built 2026-09-14. 8-gene congenital hyperinsulinism atlas: ABCC8/KCNJ11/HADH/GLUD1/GCK/HNF4A/INSR/SLC16A1. 320 patients seeds 2654-2661. 3 endpoints verified 200."
   }
 ]

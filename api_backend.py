@@ -49078,6 +49078,27 @@ async def hereditary_glycoprotein_storage_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-chi-atlas/overview")
+async def hereditary_chi_atlas_overview():
+    """Hereditary-CHI-Atlas overview — ABCC8-SUR1-KATP-CHI-DiffuseFocal-18FDOPA, KCNJ11-Kir6.2-CHI-NDM-DEND-Sulphonylurea-Switch, HADH-SCHAD-ProteinSensitive-C4OH-NoHyperammon, GLUD1-GDH-HIHA-Syndrome-ProteinSensitive-Hyperammonaemia, GCK-GOF-SetPoint-MODY2-LOF-Dual, HNF4A-Macrosomia-CHI-then-MODY1-Dual, INSR-Donohue-ExtremeInsulin-ElfInFacies, SLC16A1-EIHI-ExerciseOnly-Anaerobic-NormalAtRest 320-Patient-Aggregate-8x40-seeds-2654-2661."""
+    from scripts.hereditary_chi_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-chi-atlas/breakdown")
+async def hereditary_chi_atlas_breakdown():
+    """Hereditary-CHI-Atlas per-gene breakdown — ABCC8 KATP-diffuse-focal-18FDOPA-near-total-pancreatectomy, KCNJ11 NDM-DEND-sulphonylurea-dramatic-neurological-improvement, HADH SCHAD-protein-sensitive-C4OH-diazoxide-responsive-no-ammonia, GLUD1 HI-HA-hyperammonaemia-leucine-valproate-CI, GCK set-point-CHI-AD-MODY2-LOF-same-gene, HNF4A macrosomia-CHI-infant-MODY1-adult-HNF-transcription-factor, INSR Donohue-extreme-insulin-acanthosis-IGF1-therapy, SLC16A1 EIHI-anaerobic-only-normal-rest-exercise-provocation."""
+    from scripts.hereditary_chi_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-chi-atlas/definitions")
+async def hereditary_chi_atlas_definitions():
+    """Hereditary-CHI-Atlas glossary — CHI-definition-types-neurotoxicity, KATP-channel-octamer-SUR1-Kir6.2-pharmacology, focal-vs-diffuse-CHI-18FDOPA-surgical-implications, HIHA-syndrome-GLUD1-ammonia-valproate-CI, diazoxide-mechanism-dosing-chlorothiazide, 18F-DOPA-PET-CT-focal-CHI-guide, NDM-vs-CHI-same-gene-opposite-direction, EIHI-exercise-provocation-test-SLC16A1."""
+    from scripts.hereditary_chi_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
