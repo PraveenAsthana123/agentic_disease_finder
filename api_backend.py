@@ -49162,6 +49162,27 @@ async def hereditary_bile_acid_sterol_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hypertriglyceridemia-atlas/overview")
+async def hereditary_hypertriglyceridemia_atlas_overview():
+    """Hereditary-Hypertriglyceridemia-Atlas overview — LPL FCS-TypeI-postheparin-LPL-low-cream-plasma-pancreatitis-NO-CVD, APOC2 FCS-TypeIb-APOC2-correction-test-POSITIVE-FFP-effective, APOA5 TypeV-VLDL-chylomicrons-fibrates-better, GPIHBP1 FCS-postheparin-LPL-NORMAL-acquired-autoantibody, LMF1 combined-LPL-HL-low-BOTH, APOC3 FHTG-LPL-inhibitor-volanesorsen-platelet-monitoring, ANGPTL3 LOF-all-lipids-low-evinacumab-FDA2021-HoFH-LDLR-independent, LIPC hepatic-lipase-deficiency-IDL-elevated-HDL-paradox-CVD-high."""
+    from scripts.hereditary_hypertriglyceridemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hypertriglyceridemia-atlas/breakdown")
+async def hereditary_hypertriglyceridemia_atlas_breakdown():
+    """Hereditary-Hypertriglyceridemia-Atlas per-gene breakdown — LPL postheparin-LPL-near-zero-cream-layer-PATHOGNOMONIC-volanesorsen-EMA2019, APOC2 exogenous-APOC2-restores-LPL-PATHOGNOMONIC-FFP-first-line-acute, APOA5 -1131T>C-common-variant-fibrates-PPARa-upregulate-APOA5, GPIHBP1 Ly6-domain-LPL-shuttle-anti-GPIHBP1-autoantibody-immunosuppression, LMF1 salt-resistant-HL-ALSO-low-distinguishes-from-pure-LPL-FCS, APOC3 R19X-natural-LOF-CV-protective-volanesorsen-285mg-SC-weekly, ANGPTL3 pan-lipase-inhibitor-evinacumab-15mgkg-monthly, LIPC palmar-xanthomas-IDL-elevated-salt-resistant-HL-low-postheparin."""
+    from scripts.hereditary_hypertriglyceridemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hypertriglyceridemia-atlas/definitions")
+async def hereditary_hypertriglyceridemia_atlas_definitions():
+    """Hereditary-Hypertriglyceridemia-Atlas glossary — FCS-definition-TG>2000-cream-layer, postheparin-LPL-assay-normal-vs-FCS, APOC2-correction-test-positive=APOC2-negative=LPL, volanesorsen-platelet-monitoring-mandatory, evinacumab-LDLR-independent-HoFH, alipogene-tiparvovec-historical, TypeI-vs-TypeV-phenotype, GPIHBP1-autoantibody-acquired-FCS, salt-resistant-HL-assay, familial-combined-hypolipidaemia-ANGPTL3-LOF, palmar-xanthomas-IDL-HL-APOE, FFP-APOC2-deficiency, APOC3-vs-APOC2-opposing-functions."""
+    from scripts.hereditary_hypertriglyceridemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
