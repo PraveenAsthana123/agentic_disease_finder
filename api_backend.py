@@ -48402,6 +48402,25 @@ def hereditary_corneal_dystrophy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-short-stature-atlas/overview")
+def hereditary_short_stature_atlas_overview():
+    """Hereditary-Short-Stature-Atlas overview — 8 genes (SHOX/GH1/GHR/IGF1/IGFALS/STAT5B/CUL7/NPR2), 320 patients, seeds 2510-2517."""
+    from scripts.hereditary_short_stature_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-short-stature-atlas/breakdown")
+def hereditary_short_stature_atlas_breakdown():
+    """Hereditary-Short-Stature-Atlas gene breakdown — SHOX Madelung/LWD/LMD rGH, GH1 IGHD types IA/IB/II anti-GH-Ab, GHR Laron high-GH mecasermin, IGF1 IUGR+SNHL+microcephaly, IGFALS mild/IGFBP3-low, STAT5B GH-insensitivity+varicella, CUL7 3-M severe-normal-axis, NPR2 BDE2/ADM vosoritide-not-effective."""
+    from scripts.hereditary_short_stature_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-short-stature-atlas/definitions")
+def hereditary_short_stature_atlas_definitions():
+    """Hereditary-Short-Stature-Atlas glossary — IGF-1 generation test, GH stimulation tests, mecasermin hypoglycaemia safety, Laron vs STAT5B GHBP distinguisher, PAR1 SHOX biology, CNP/NPR2/cGMP vs FGFR3/MAPK pathway, 3-M syndrome triad."""
+    from scripts.hereditary_short_stature_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-vitreoretinopathy-atlas/overview")
 def hereditary_vitreoretinopathy_atlas_overview():
     """Hereditary-Vitreoretinopathy-Atlas overview — 8 genes (COL2A1/COL11A1/VCAN/FZD4/NDP/LRP5/TSPAN12/ZNF408), 320 patients, seeds 2374-2381."""
