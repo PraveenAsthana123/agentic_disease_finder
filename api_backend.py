@@ -46935,32 +46935,23 @@ async def hereditary_renal_tubular_atlas_definitions():
 
 @app.get("/api/hereditary-leukodystrophy-atlas/overview")
 async def hereditary_leukodystrophy_atlas_overview():
-    """Hereditary-Leukodystrophy-Atlas aggregate overview (ARSA/GALC/PLP1/ABCD1/ASPA/GFAP/EIF2B5/POLR3A)."""
-    try:
-        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
-        return atlas_.overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Leukodystrophy-Atlas overview — ABCD1-X-ALD-VLCFA-CALD-Posterior-Advancing-HSCT-Skysona-FDA2022-Loes9-Addison-70pct, ARSA-MLD-Sulfatide-Metachromatic-Granules-PATHOGNOMONIC-Libmeldy-EMA2020, GALC-Krabbe-Psychosine-Globoid-Cells-PATHOGNOMONIC-Extreme-Irritability-HSCT-NBS, PLP1-PMD-Nystagmus-Birth-PATHOGNOMONIC-Hypomyelination-XLR-Duplication, GJC2-PMLD-Connexin47-AR-Milder-SPG44, POLR3A-4H-Hypomyelination-Hypodontia-Hypogonadism-TRIAD-PATHOGNOMONIC, EIF2B5-VWM-Stress-Triggered-Crises-PATHOGNOMONIC-VanishingWM-ISRIB, ADAR-AGS6-PseudoTORCH-PATHOGNOMONIC-Calcifications-IFN-Alpha-JAK-Inhibitors 320-Patient-Aggregate-8x40-seeds-2614-2621."""
+    from scripts.hereditary_leukodystrophy_atlas_dashboard import generate_overview
+    return generate_overview()
 
 
 @app.get("/api/hereditary-leukodystrophy-atlas/breakdown")
 async def hereditary_leukodystrophy_atlas_breakdown():
-    """Hereditary-Leukodystrophy-Atlas per-gene breakdown and patient cohort."""
-    try:
-        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
-        return atlas_.breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Leukodystrophy-Atlas per-gene breakdown — ABCD1 VLCFA-Addison-AMN-CALD-Loes-Skysona, ARSA sulfatide-metachromatic-libmeldy-adult-MLD-schizophrenia, GALC psychosine-globoid-irritability-HSCT-NBS, PLP1 nystagmus-at-birth-duplication-ASO, GJC2 connexin47-AR-SPG44, POLR3A 4H-hypodontia-hypogonadism-HRT, EIF2B5 VWM-ISR-ISRIB-fever-protocol-ovarian-failure, ADAR AGS6-baricitinib-CT-calcifications-IFN-score."""
+    from scripts.hereditary_leukodystrophy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
 
 
 @app.get("/api/hereditary-leukodystrophy-atlas/definitions")
 async def hereditary_leukodystrophy_atlas_definitions():
-    """Hereditary-Leukodystrophy-Atlas gene definitions and glossary."""
-    try:
-        import scripts.hereditary_leukodystrophy_atlas_dashboard as atlas_
-        return atlas_.definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Leukodystrophy-Atlas glossary — Leukodystrophy-Classification-5-types, ISR-ISRIB-VWM-mechanism, Type-I-Interferonopathy-AGS-JAK-inhibitors, HSCT-Gene-Therapy-Windows-X-ALD-MLD-Krabbe."""
+    from scripts.hereditary_leukodystrophy_atlas_dashboard import generate_definitions
+    return generate_definitions()
 
 
 @app.get("/api/hereditary-complement-disorder-atlas/overview")

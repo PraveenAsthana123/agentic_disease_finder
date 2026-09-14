@@ -1,886 +1,864 @@
-#!/usr/bin/env python3
-"""Hereditary-Leukodystrophy-Atlas — Complete 8-Gene Atlas (Hereditary White Matter Disorders)
-ARSA    (Arylsulfatase A; 507 aa; 22q13.33; AR;
-         Metachromatic Leukodystrophy (MLD); sulfatide accumulation;
-         Libmeldy / OTL-200 (EMA2020) — first approved gene therapy for MLD;
-         pseudodeficiency pitfall: N350S + I179S polymorphism → low enzyme but no disease;
-         seed SEED_BASE+0) .
-GALC    (Galactocerebrosidase; 669 aa; 14q31.3; AR;
-         Krabbe Disease / Globoid Cell Leukodystrophy;
-         psychosine TOXIC at nanomolar concentrations → oligodendrocyte death;
-         HSCT ONLY beneficial if pre-symptomatic — NBS mandatory;
-         seed SEED_BASE+1) .
-PLP1    (Proteolipid Protein 1; 276 aa; Xq22.2; X-linked;
-         Pelizaeus-Merzbacher Disease (PMD) — DUPLICATION most common 70%;
-         diffuse hypomyelination; nystagmus at birth = earliest clue;
-         MLPA mandatory (detects duplications/deletions);
-         seed SEED_BASE+2) .
-ABCD1   (ATP-binding cassette D1 / ALDP; 745 aa; Xq28; X-linked;
-         X-linked Adrenoleukodystrophy (X-ALD); VLCFA accumulation;
-         CCALD: Skysona (elivaldogene, FDA Aug 2022) gene therapy; HSCT Level A early CCALD;
-         adrenal insufficiency 71% males — adrenal crisis = emergency;
-         genotype does NOT predict phenotype;
-         seed SEED_BASE+3) .
-ASPA    (Aspartoacylase; 313 aa; 17p13.2; AR;
-         Canavan Disease; NAA elevated — most specific MRS biomarker in leukodystrophy;
-         U-fibres involved; Ashkenazi Jewish founder mutations p.Glu285Ala + p.Tyr231X;
-         seed SEED_BASE+4) .
-GFAP    (Glial Fibrillary Acidic Protein; 432 aa; 17q21.31; AD;
-         Alexander Disease — ALL mutations DOMINANT GAIN-OF-FUNCTION, NOT LOF;
-         Rosenthal fibres (perivascular eosinophilic aggregates) PATHOGNOMONIC;
-         GFAP protein elevated in CSF/blood — astrocytic injury marker;
-         seed SEED_BASE+5) .
-EIF2B5  (eIF2B epsilon subunit; 712 aa; 3q27.1; AR;
-         Vanishing White Matter Disease (VWM); stress-triggered episodes EMERGENCY;
-         ISR (integrated stress response) hypersensitivity; ISRIB most promising trial drug;
-         ovarioleukodystrophy — premature ovarian failure in females;
-         seed SEED_BASE+6) .
-POLR3A  (RNA Polymerase III Subunit A; 1390 aa; 10q22.3; AR;
-         POLR3-Related Leukodystrophy / HLD7; hypomyelination + cerebellar atrophy;
-         dental abnormalities + leukodystrophy = POLR3 first;
-         RNA Pol III → tRNA synthesis impairment → hypomyelination;
-         seed SEED_BASE+7)
-320-patient aggregate cohort (8 × 40, seeds 1934–1941)
+"""Hereditary Leukodystrophy Atlas — 8-Gene Reference
+ABCD1-ARSA-GALC-PLP1-GJC2-POLR3A-EIF2B5-ADAR
+320 patients (8 x 40), seeds 2614-2621.
+Endpoints: /api/hereditary-leukodystrophy-atlas/overview|breakdown|definitions
 """
-
 import random
 
-SEED_BASE = 1934
-
-LEUKODYSTROPHY_GENES = [
-    # -- ARSA — Arylsulfatase A / Metachromatic Leukodystrophy (MLD) -----------------
-    {
-        "gene": "ARSA",
-        "alt_name": "Arylsulfatase A (MLD)",
-        "protein": (
-            "ARSA -- 22q13.33 AR -- AryIsulfataseA-507aa -- "
-            "MLD-Metachromatic-Leukodystrophy-Sulfatide-Accumulation -- "
-            "Libmeldy-OTL200-EMA2020-First-Approved-Gene-Therapy-MLD -- "
-            "Pseudodeficiency-N350S-I179S-Low-Enzyme-Normal-Sulfatide -- "
-            "Tigroid-Leopard-Skin-MRI-Periventricular-T2-PATHOGNOMONIC"
-        ),
-        "locus": "22q13.33",
-        "protein_size": "507 aa",
-        "inheritance": "AR",
-        "age_of_onset": (
-            "Late-infantile (most common, ~50%): onset 1–4 yr, walking regression, hypotonia then spasticity; "
-            "Juvenile: onset 4–16 yr, cognitive/behavioural first, then motor decline; "
-            "Adult: onset >16 yr, psychiatric symptoms first (misdiagnosed as schizophrenia), then motor"
-        ),
-        "key_biomarker": (
-            "Leukocyte ARSA enzyme activity <5–10% of normal (confirm with two independent assays); "
-            "urine sulfatides elevated (metachromatic granules on urine microscopy — brown-red with crystal violet); "
-            "MRI: confluent symmetric periventricular WM T2 hyperintensity with 'tigroid' or 'leopard-skin' sparing of perivascular regions (U-fibres spared early); "
-            "CSF protein mildly elevated; NCV: demyelinating polyneuropathy; "
-            "molecular: ARSA biallelic mutations; EXCLUDE pseudodeficiency (sulfatide urine normal in pseudodeficiency)"
-        ),
-        "pathognomonic": (
-            "Late-infantile: walking regression at 1–4 yr + hypotonia progressing to spasticity + "
-            "MRI tigroid/leopard-skin periventricular T2 signal + low ARSA enzyme + elevated urine sulfatides; "
-            "Pseudodeficiency pitfall: N350S (c.1049A>G) + I179S (c.536T>G) = low enzyme BUT sulfatide urine NORMAL and NO disease; "
-            "ALWAYS confirm low ARSA enzyme with urine/plasma sulfatide measurement + genetic testing before diagnosing MLD"
-        ),
-        "treatment": (
-            "Libmeldy (OTL-200; eMA2020) — ex vivo lentiviral gene therapy; CD34+ HSCs transduced; "
-            "INDICATED: pre-symptomatic late-infantile or early-symptomatic late-infantile (walking), OR pre-symptomatic/early-symptomatic juvenile; "
-            "NOT for: late-symptomatic, adult MLD, or patients who have lost walking; "
-            "HSCT: some benefit in pre-symptomatic juvenile; less effective than in Krabbe; "
-            "Symptomatic: antiepileptics (LEV, VPA), physiotherapy, intrathecal enzyme replacement (investigational); "
-            "Substrate reduction therapy (OA-519, lucerastat) in trials; "
-            "ACE-i/ARB NOT relevant (neurological disease); genetic counselling"
-        ),
-        "critical_flags": [
-            "ARSA-PSEUDODEFICIENCY-PITFALL: N350S + I179S polymorphism → ARSA enzyme LOW but NO disease; sulfatide urine NORMAL; carrier frequency 1-2% Europeans; ALWAYS check sulfatide urine before diagnosing MLD",
-            "ARSA-LIBMELDY-EMA2020: first approved gene therapy for MLD (Europe 2020); pre-symptomatic or early-symptomatic only; walking must be preserved at treatment; TIMING IS CRITICAL",
-            "ARSA-TIGROID-MRI: periventricular T2 hyperintensity with small spared areas around vessels ('tigroid'/'leopard-skin') — PATHOGNOMONIC for MLD; U-fibres spared early",
-            "ARSA-ADULT-PSYCHIATRIC: adult MLD presents as schizophrenia/bipolar; white matter signal on MRI in 'psychiatric' patient = always check ARSA enzyme",
-            "ARSA-NBS-GAP: MLD not universally on NBS panels; sibling diagnosis pathway critical for pre-symptomatic treatment window",
-            "ARSA-SULFATIDE-URINE: urine sulfatides (metachromatic granules) confirm MLD diagnosis when ARSA enzyme low; normal sulfatide in low-enzyme patient = pseudodeficiency",
-            "ARSA-HSCT-LIMITED: HSCT less effective for MLD than Krabbe; gene therapy (Libmeldy) preferred when available for eligible patients",
-            "ARSA-JUVENILE-COGNITIVE-FIRST: juvenile MLD presents with cognitive and behavioural decline before motor — school failure, personality change, cognitive regression = MRI + ARSA enzyme",
-        ],
-        "alias": (
-            "ARSA (Arylsulfatase A; 507 aa; 22q13.33) encodes a lysosomal enzyme that cleaves "
-            "3-O-sulphogalactosylceramide (sulfatide) into galactosylceramide + sulphate. "
-            "Biallelic LOF mutations cause Metachromatic Leukodystrophy (MLD; OMIM #250100) — "
-            "sulfatide accumulates in lysosomes of oligodendrocytes, Schwann cells, and kidney → "
-            "demyelination of CNS and PNS. Three clinical forms: late-infantile (onset 1–4 yr, most severe, "
-            "walking regression, hypotonia, polyneuropathy), juvenile (4–16 yr, cognitive first), "
-            "adult (>16 yr, psychiatric onset — frequently misdiagnosed). "
-            "MRI: confluent periventricular T2 WM signal with tigroid/leopard-skin pattern (perivascular sparing) — pathognomonic. "
-            "Pseudodeficiency pitfall: N350S + I179S polymorphisms in trans give low ARSA enzyme activity "
-            "WITHOUT disease; urine sulfatide measurement is mandatory to distinguish. "
-            "Libmeldy (OTL-200; EMA 2020) — ex vivo lentiviral CD34+ gene therapy — is the first approved "
-            "treatment; eligible only for pre-symptomatic/early-symptomatic patients who still walk. "
-            "HSCT has limited evidence in MLD (less effective than Krabbe). "
-            "Molecular: biallelic ARSA mutations; pseudodeficiency alleles must be identified."
-        ),
-    },
-
-    # -- GALC — Galactocerebrosidase / Krabbe Disease --------------------------------
-    {
-        "gene": "GALC",
-        "alt_name": "Galactocerebrosidase (Krabbe)",
-        "protein": (
-            "GALC -- 14q31.3 AR -- Galactocerebrosidase-669aa -- "
-            "Krabbe-Disease-Globoid-Cell-Leukodystrophy-Psychosine-Toxic -- "
-            "HSCT-ONLY-Pre-Symptomatic-NBS-Essential -- "
-            "Globoid-Cells-Multinucleated-Macrophages-PATHOGNOMONIC -- "
-            "Psychosine-Nanomolar-Toxic-Oligodendrocytes-NOT-GalCer"
-        ),
-        "locus": "14q31.3",
-        "protein_size": "669 aa",
-        "inheritance": "AR",
-        "age_of_onset": (
-            "Infantile (85%): onset <6 months — hypersensitivity, irritability, hypertonicity, fever, rapidly progressive; "
-            "Late-infantile: 6 months–3 yr; "
-            "Juvenile: 3–16 yr; "
-            "Adult: >16 yr — spastic paraplegia, peripheral neuropathy"
-        ),
-        "key_biomarker": (
-            "Leukocyte GALC enzyme activity near-zero in infantile (<0.5 nmol/hr/mg); "
-            "psychosine (galactosylsphingosine) levels elevated — most specific biomarker; "
-            "CSF protein markedly elevated; NCV: severe demyelinating polyneuropathy; "
-            "MRI: deep cerebellar WM, posterior cerebral WM, corticospinal tracts T2 signal early; "
-            "NBS: DBS GALC enzyme + confirmatory psychosine; "
-            "molecular: biallelic GALC mutations (30kb deletion common in European Krabbe)"
-        ),
-        "pathognomonic": (
-            "Infantile: extreme irritability + hypertonicity + fever spells + rapid neurological decline <6 months + "
-            "near-zero leukocyte GALC enzyme + psychosine elevated + globoid cells on brain biopsy; "
-            "Globoid cells (multinucleated CD68+ macrophages with galactosylceramide inclusions) in WM — PATHOGNOMONIC on brain biopsy; "
-            "psychosine hypothesis: psychosine (NOT galactosylceramide) is the toxic metabolite — nanomolar levels kill oligodendrocytes; "
-            "GALC enzyme in DBS near-zero + psychosine >1 nM (NBS threshold) → immediate HSCT referral pre-symptomatic"
-        ),
-        "treatment": (
-            "HSCT (haematopoietic stem cell transplantation) — ONLY effective if PRE-SYMPTOMATIC; "
-            "NBS identification → HSCT within weeks → partially prevents neurological progression; "
-            "SYMPTOMATIC patients: HSCT does NOT benefit — palliative care; "
-            "infantile Krabbe post-symptom = NO HSCT benefit; "
-            "Gene therapy (AAV9-GALC): Phase I/II trials (GECT01); combined GALC + psychosine-lowering approaches; "
-            "Substrate reduction: L-cycloserine (reduces psychosine in animal models — trials); "
-            "NBS programs (New York, other US states, Japan) have identified pre-symptomatic infants → HSCT → improved outcomes; "
-            "palliative: seizure management (LEV, VPA), nutrition, pain"
-        ),
-        "critical_flags": [
-            "GALC-HSCT-PRESYMPTOMATIC-ONLY: HSCT ONLY works pre-symptomatic; symptomatic infantile Krabbe = HSCT gives NO neurological benefit; NBS is the only way to identify pre-symptomatic",
-            "GALC-PSYCHOSINE-TOXIC: psychosine (galactosylsphingosine) — NOT galactosylceramide — is the direct cytotoxin; nanomolar concentrations kill oligodendrocytes; psychosine level is the best biomarker",
-            "GALC-NBS-MANDATORY: newborn screening (DBS GALC enzyme + psychosine) is MANDATORY for HSCT to be feasible; without NBS, infantile Krabbe diagnosed symptomatically = too late for HSCT",
-            "GALC-GLOBOID-CELLS-PATHOGNOMONIC: multinucleated macrophages (globoid cells) in WM on brain biopsy — pathognomonic for Krabbe; seen on biopsy or autopsy",
-            "GALC-INFANTILE-FATAL-2yr: untreated infantile Krabbe fatal by 2 yr; irritability + hypertonicity + fever in young infant = Krabbe until proven otherwise",
-            "GALC-30KB-DELETION: common European deletion (30 kb, also called 502T/del) — MLPA detects; accounts for ~35-45% European Krabbe alleles; complex deletions require long-read sequencing",
-            "GALC-ADULT-SPASTIC-PARAPLEGIA: adult Krabbe = progressive spastic paraplegia + peripheral neuropathy + cerebellar signs; much milder than infantile; often misdiagnosed as CMT",
-            "GALC-GENE-THERAPY-TRIALS: AAV9-GALC Phase I/II active; psychosine reduction combined approach most promising; watch trial results",
-        ],
-        "alias": (
-            "GALC (Galactocerebrosidase; 669 aa; 14q31.3) encodes a lysosomal enzyme that cleaves "
-            "galactosylceramide and psychosine (galactosylsphingosine). "
-            "Biallelic LOF mutations cause Krabbe Disease / Globoid Cell Leukodystrophy (OMIM #245200). "
-            "The pathological mechanism is primarily driven by psychosine accumulation — "
-            "psychosine (NOT galactosylceramide) is directly cytotoxic to oligodendrocytes "
-            "at nanomolar concentrations ('psychosine hypothesis'). "
-            "Globoid cells (multinucleated macrophages with undegraded galactosylceramide inclusions) "
-            "are pathognomonic in WM on brain biopsy. "
-            "Infantile Krabbe (85%) presents at <6 months with extreme irritability, hypertonicity, "
-            "fever spells, and rapid neurological decline; death by 2 yr without treatment. "
-            "HSCT is the only proven intervention, and is ONLY effective if initiated pre-symptomatically; "
-            "NBS (DBS GALC enzyme + confirmatory psychosine) is the only route to pre-symptomatic identification. "
-            "AAV9-GALC gene therapy is in Phase I/II trials. "
-            "Late-onset forms (juvenile, adult) are milder, presenting with spastic paraplegia + peripheral neuropathy."
-        ),
-    },
-
-    # -- PLP1 — Proteolipid Protein 1 / Pelizaeus-Merzbacher Disease -----------------
-    {
-        "gene": "PLP1",
-        "alt_name": "Proteolipid Protein 1 (PMD / SPG2)",
-        "protein": (
-            "PLP1 -- Xq22.2 X-linked -- ProteolipidProtein1-276aa -- "
-            "PMD-Pelizaeus-Merzbacher-DUPLICATION-70pct-Most-Common -- "
-            "Diffuse-Hypomyelination-MRI-T2-Bright-Everywhere -- "
-            "MLPA-Mandatory-Detects-Duplications-Deletions -- "
-            "Nystagmus-Birth-EARLIEST-Clinical-Clue-PMD"
-        ),
-        "locus": "Xq22.2",
-        "protein_size": "276 aa",
-        "inheritance": "X-linked",
-        "age_of_onset": (
-            "Classic PMD (duplication): neonatal nystagmus, hypotonia; motor milestones severely delayed; "
-            "Connatal PMD (null mutations): most severe, neonatal, stridor, absent motor development; "
-            "Spastic Paraplegia 2 (SPG2, deletion/mild mutations): childhood/adult progressive spasticity; "
-            "Males always severely affected; female carriers may have mild spasticity"
-        ),
-        "key_biomarker": (
-            "MRI: diffuse T2 hyperintensity throughout WM (including U-fibres) from birth — absent normal WM; "
-            "T2 signal essentially like CSF throughout white matter (unmyelinated); "
-            "MLPA: detects PLP1 duplication (70-80% of PMD) or deletion (SPG2); "
-            "NCV: normal (central not peripheral); "
-            "molecular: full PLP1 gene sequencing + MLPA + copy number analysis"
-        ),
-        "pathognomonic": (
-            "Male infant with nystagmus at/shortly after birth + generalized hypotonia + "
-            "MRI showing near-absent myelination (diffuse T2 WM signal, no normal WM) + "
-            "MLPA confirmation of PLP1 duplication; "
-            "nystagmus onset in first weeks/months of life is the EARLIEST clinical clue to PMD; "
-            "nystagmus + hypomyelination on MRI + X-linked family history = PLP1 MLPA first"
-        ),
-        "treatment": (
-            "No approved disease-modifying therapy; "
-            "gene therapy approach: gene silencing / antisense oligonucleotides to reduce PLP1 overexpression (duplication model); "
-            "allele-specific siRNA and ASO approaches in preclinical/early trials; "
-            "stem cell therapy (NSC-03, Phase I/II past): oligodendrocyte precursor transplantation — limited benefit shown; "
-            "symptomatic: antispasticity (baclofen, tizanidine), antiepileptics (LEV for seizures), "
-            "respiratory support (may need NIV/ventilation in severe cases); "
-            "physiotherapy, gastrostomy for feeding difficulties; "
-            "genetic counselling: X-linked — female carriers screen + reproductive options"
-        ),
-        "critical_flags": [
-            "PLP1-DUPLICATION-70pct: DUPLICATION of PLP1 is the most common PMD mutation (70-80%); overexpression → protein overload → UPR → oligodendrocyte death; NOT LOF",
-            "PLP1-MLPA-MANDATORY: standard sequencing alone MISSES duplications/deletions; MLPA is mandatory first-tier test for PMD (after MRI diagnosis)",
-            "PLP1-NYSTAGMUS-EARLIEST: nystagmus in first weeks/months = earliest clinical sign of PMD; pendular nystagmus + male infant + hypotonia = MLPA immediately",
-            "PLP1-DELETION-SPG2: PLP1 deletion → Spastic Paraplegia 2 (SPG2), milder than duplication PMD; same gene, opposite molecular mechanism (haploinsufficiency vs. overexpression)",
-            "PLP1-NULL-CONNATAL: null PLP1 mutations (frameshift) = most severe (Connatal PMD); paradoxically, complete absence worse than partial — DM20 isoform also absent",
-            "PLP1-NO-THERAPY: no approved disease-modifying therapy; gene silencing (reduce overexpression) is the rational approach for duplication PMD; in trials",
-            "PLP1-FEMALE-CARRIERS: female carriers (X-linked) usually asymptomatic but ~30% develop mild spasticity or cognitive issues; brain MRI may show subtle WM signal",
-            "PLP1-ALLELIC-SPG2: PMD and SPG2 are allelic disorders (same PLP1 gene); duplication/null = PMD; deletion/mild hypomorphic = SPG2 — severity inversely relates to residual PLP1 function",
-        ],
-        "alias": (
-            "PLP1 (Proteolipid Protein 1; 276 aa; Xq22.2) encodes the major structural protein of CNS myelin "
-            "(comprising ~50% of myelin protein by mass) and its DM20 isoform (alternative splicing of exon 3B). "
-            "PLP1 is X-linked, so males are primarily affected. "
-            "PLP1 DUPLICATION (70–80% of PMD) → overexpression → endoplasmic reticulum stress + UPR → oligodendrocyte apoptosis → "
-            "diffuse hypomyelination (Pelizaeus-Merzbacher Disease, PMD; OMIM #312080). "
-            "PLP1 DELETION → loss of function → Spastic Paraplegia Type 2 (SPG2, OMIM #312920). "
-            "NULL mutations → Connatal PMD (most severe). "
-            "Classic PMD: neonatal nystagmus (earliest sign), hypotonia, absent/severely delayed myelination on MRI "
-            "(near-total T2 WM signal — unmyelinated brain). "
-            "MLPA is mandatory (standard sequencing misses duplications/deletions). "
-            "No approved disease-modifying therapy; gene silencing (ASO/siRNA to reduce overexpression in duplication) in trials. "
-            "Symptomatic management: antispasticity, antiepileptics, respiratory support."
-        ),
-    },
-
-    # -- ABCD1 — ATP-Binding Cassette D1 / X-linked Adrenoleukodystrophy --------------
+ATLAS_GENES = [
     {
         "gene": "ABCD1",
-        "alt_name": "ALDP (X-linked Adrenoleukodystrophy)",
         "protein": (
-            "ABCD1 -- Xq28 X-linked -- ALDP-745aa -- "
-            "X-ALD-VLCFA-C26-Accumulation-Peroxisomal-Half-Transporter -- "
-            "CCALD-Childhood-Cerebral-35pct-Parieto-Occipital-Gd-Enhancement -- "
-            "Skysona-Elivaldogene-FDA2022-Gene-Therapy-CCALD -- "
-            "Adrenal-Insufficiency-71pct-Males-Crisis-EMERGENCY-Hydrocortisone"
+            "ABCD1 -- Xq28 XLR -- 745aa -- ALD-Protein-ALDP-84kDa-"
+            "Peroxisomal-VLCFA-ABC-Transporter-X-ALD-AMN-XLR -- OMIM-Gene-300371-Disease-ALD-300100"
         ),
         "locus": "Xq28",
-        "protein_size": "745 aa",
-        "inheritance": "X-linked",
-        "age_of_onset": (
-            "CCALD (childhood cerebral ALD, 35-40%): age 4–8 yr, rapid inflammatory demyelination; "
-            "AMN (adrenomyeloneuropathy, 40-45%): from 20yr, progressive myelopathy, axonal; "
-            "Addison only (~20%): adrenal insufficiency without neurological disease; "
-            "Adrenal insufficiency: 71% of all males — may precede neurological presentation"
+        "protein_size": "745 aa / 84 kDa",
+        "inheritance": (
+            "XLR (X-linked recessive); males severely affected; "
+            "X-linked adrenoleukodystrophy (X-ALD); most common X-linked leukodystrophy (1:20,000 males); "
+            "Phenotypes: cerebral ALD (CALD) ~35% boys before 12yr — fatal inflammatory demyelination; "
+            "adrenomyeloneuropathy (AMN) ~40-45% adult males — progressive spastic paraplegia/neuropathy; "
+            "Addison-only ~10%; asymptomatic males; "
+            "Carrier females: ~50% develop mild AMN-like myeloneuropathy by age 50; "
+            "Genotype-phenotype correlation: POOR — same mutation gives CALD in one brother, AMN in another; "
+            "X-ALD added to USA RUSP (NBS) 2016 — C26:0-lysophosphatidylcholine on DBS"
         ),
-        "key_biomarker": (
-            "Plasma VLCFA (very-long-chain fatty acids): C26:0 elevated; C26:0/C22:0 ratio elevated; "
-            "MOST IMPORTANT FIRST-LINE TEST; "
-            "NBS: C26-lyso-PC on DBS (30+ US states); "
-            "MRI: CCALD — parieto-occipital WM T2 signal with Gd enhancement at leading edge (active demyelination); "
-            "Loes score (MRI severity, 0–34); NRS (neurological rating scale 0–25); "
-            "adrenal function: morning cortisol, ACTH stimulation test; "
-            "adrenal insufficiency screen MANDATORY in ALL males with ABCD1 mutation"
+        "disease_category": (
+            "X-linked Adrenoleukodystrophy (X-ALD); Peroxisomal VLCFA storage disorder; "
+            "ABCD1 encodes ALDP — peroxisomal half-ABC transporter for very-long-chain fatty acids (VLCFA C22:0-C26:0); "
+            "Loss of ABCD1 → VLCFA accumulate in plasma, adrenal cortex, CNS white matter; "
+            "CALD: posterior inflammatory cerebral demyelination — MRI advancing anterior from parieto-occipital; "
+            "AMN: non-inflammatory axonal degeneration — slowly progressive spastic paraplegia + neuropathy; "
+            "Adrenal insufficiency (primary Addison) in ~70% males — life-threatening if unrecognised; "
+            "HSCT curative for CALD (Loes score ≤9 + gadolinium enhancement); "
+            "Skysona (elivaldogene autotemcel) HSC gene therapy FDA 2022 for early active CALD"
+        ),
+        "disease_pathway": (
+            "ABCD1 encodes ALDP (ALD protein), a peroxisomal half-ABC transporter forming homodimers "
+            "and heterodimers with ABCD2/3. ALDP transports very-long-chain fatty acid (VLCFA) CoA esters "
+            "into peroxisomes for beta-oxidation. Loss of ABCD1 → VLCFA fail to enter peroxisomes → "
+            "VLCFA (C22:0, C24:0, C26:0) accumulate in plasma, adrenal cortex, brain white matter, testes. "
+            "CALD mechanism: VLCFA incorporate into phospholipid bilayers → membrane destabilisation → "
+            "CD4+ T-cell and macrophage infiltration → perivascular cuffing → rapid inflammatory demyelination. "
+            "Gadolinium enhancement = active blood-brain barrier breakdown = treatment window. "
+            "AMN: non-inflammatory axonopathy of posterior columns and corticospinal tracts — slowly progressive; "
+            "CALD trigger: UNKNOWN — trauma, infection, adolescent growth proposed as precipitants."
         ),
         "pathognomonic": (
-            "Boy 4–8 yr with behavioural change + school failure + posterior cerebral + parieto-occipital MRI lesion "
-            "with Gd enhancement at leading edge + plasma VLCFA elevated = CCALD EMERGENCY (treatment window is NARROW); "
-            "Loes ≤9 + NRS ≤1 + Gd enhancement = HSCT/Skysona WINDOW — act within weeks; "
-            "AMN: young man 20yr+ with progressive spastic paraplegia + sensory ataxia + peripheral neuropathy + elevated VLCFA"
+            "CALD MRI POSTERIOR-ADVANCING PATTERN: Bilateral parieto-occipital T2/FLAIR hyperintensity "
+            "advancing anterior — gadolinium-enhancing LEADING EDGE = ACTIVE INFLAMMATION = TREATMENT WINDOW; "
+            "LOES SCORE (0-34): monitor cerebral involvement — Loes >9 = advanced, HSCT contraindicated; "
+            "VLCFA PLASMA: C26:0 elevated; C26:0/C22:0 ratio elevated — confirms peroxisomal VLCFA disorder; "
+            "Adrenal cortex: primary failure — Synacthen stimulation test (ACTH stimulation): low cortisol response; "
+            "AMN: posterior column + corticospinal tract atrophy on spinal MRI; normal brain MRI initially; "
+            "ADRENAL INSUFFICIENCY: hyperpigmentation (ACTH excess), hyponatraemia, hypoglycaemia; "
+            "Carrier female: occasional MRI white matter change; mild lower-limb spasticity; VLCFA mildly elevated"
         ),
         "treatment": (
-            "CCALD (early, Loes ≤9, NRS ≤1, Gd+): "
-            "  HSCT (allogeneic, if HLA-matched donor) — Level A; arrests inflammatory demyelination; "
-            "  Skysona (elivaldogene autotemcel, FDA Aug 2022) — ex vivo lentiviral gene therapy; for CCALD boys 4–17 yr WITH Gd enhancement, when no HLA-matched donor available; "
-            "  REMS program; close monitoring for insertional mutagenesis (haematological malignancy risk); "
-            "LATE CCALD (Loes >9) or AMN: NO HSCT benefit; "
-            "Lorenzo's Oil (VLCFA-lowering diet + erucic acid + oleic acid): REDUCES plasma VLCFA but NO proven neurological benefit; "
-            "  evidence only in pre-symptomatic males to delay CCALD onset (controversial); "
-            "Adrenal insufficiency: hydrocortisone + fludrocortisone MANDATORY; stress doses (3× normal) for illness/surgery; "
-            "SURVEILLANCE: ALL boys with ABCD1 — annual/6-monthly brain MRI from age 4–12yr; annual adrenal function; "
-            "DRUG WARNING: PHT/fosphenytoin ABSOLUTE CI — CYP3A4 induction → cortisol metabolism → adrenal crisis; CBZ/OXC relative CI; LEV first-line AED"
+            "CEREBRAL ALD (CALD): "
+            "ALLOGENEIC HSCT — curative for early CALD (Loes score ≤9 + gadolinium enhancement active); "
+            "SKYSONA (elivaldogene autotemcel, LentiGlobin-ALD) — FDA 2022: autologous HSC gene therapy; "
+            "avoids allogeneic GvHD; efficacy comparable to HSCT; "
+            "Lorenzo's oil (VLC-FA-restricted diet + erucic/oleic acid): normalises plasma VLCFA; "
+            "does NOT arrest established CALD; possible delay of onset in asymptomatic boys (unproven); "
+            "ADRENAL INSUFFICIENCY: cortisol + fludrocortisone replacement MANDATORY; life-threatening crisis risk; "
+            "AMN: antispastic (baclofen/tizanidine), neuropathic pain (gabapentin), physiotherapy; "
+            "NBS PROTOCOL: annual brain MRI from age 3-12yr in ABCD1+ males; Synacthen test annually; "
+            "GENETIC COUNSELLING: X-linked; carrier females; PGT/prenatal available"
         ),
-        "critical_flags": [
-            "ABCD1-GENOTYPE-NO-PHENOTYPE: SAME ABCD1 mutation can cause CCALD, AMN, or Addison only in different males (even within same family); cannot predict phenotype from genotype",
-            "ABCD1-ANNUAL-MRI-ALL-BOYS: ALL ABCD1 males need annual/6-monthly brain MRI age 4–12yr to detect early CCALD; MRI identifies inflammatory CCALD before symptoms appear",
-            "ABCD1-CCALD-NARROW-WINDOW: CCALD treatment window is NARROW — Loes ≤9 + NRS ≤1 + Gd enhancement; once Loes >9 or NRS >1, transplant does NOT help; EMERGENCY referral within weeks",
-            "ABCD1-ADRENAL-INSUFFICIENCY-71pct: adrenal insufficiency in 71% of males; adrenal crisis = life-threatening emergency; ALL ABCD1 males need adrenal function testing; stress-dose hydrocortisone for illness",
-            "ABCD1-PHT-ABSOLUTE-CI: phenytoin/fosphenytoin ABSOLUTE CONTRAINDICATED in X-ALD — CYP3A4 induction → increased cortisol catabolism → acute adrenal crisis; use LEV as first-line AED",
-            "ABCD1-SKYSONA-FDA2022: elivaldogene autotemcel (Skysona) FDA approved Aug 2022 for CCALD boys 4–17yr with active cerebral disease; REMS program due to malignancy risk; used when no HLA match",
-            "ABCD1-LORENZOS-OIL-NOT-NEUROLOGICAL: Lorenzo's Oil lowers plasma VLCFA but does NOT improve or halt neurological progression in symptomatic patients; evidence only for pre-symptomatic delay",
-            "ABCD1-AMN-NOT-HSCT: AMN (adrenomyeloneuropathy) is axonal degeneration NOT inflammatory; HSCT/Skysona NOT indicated for AMN; supportive management (antispasticity, physiotherapy)",
+        "key_features": [
+            "ABCD1 (X-ALD): XLR; most common X-linked leukodystrophy (1:20,000 males); VLCFA peroxisomal storage",
+            "CALD: boys 3-12yr; posterior T2 lesions advancing anterior; gadolinium enhancement = treatment window",
+            "HSCT curative if Loes score ≤9 + gadolinium enhancement (active phase) — MRI TIMING CRITICAL",
+            "Skysona (elivaldogene) autologous HSC gene therapy FDA 2022 — avoids allogeneic GvHD",
+            "AMN: adult males; slowly progressive spastic paraplegia + neuropathy; non-inflammatory",
+            "Adrenal insufficiency (Addison) ~70% males — cortisol replacement MANDATORY; life-threatening if missed",
+            "Genotype-phenotype: POOR — same ABCD1 variant → CALD in one brother, AMN in another",
+            "Annual MRI surveillance from age 3-12yr in all ABCD1+ males (USA NBS RUSP 2016)",
         ],
-        "alias": (
-            "ABCD1 (ATP-Binding Cassette Subfamily D Member 1 / ALDP; 745 aa; Xq28) encodes a peroxisomal "
-            "membrane half-transporter that imports very-long-chain fatty acids (VLCFAs, ≥C22) into the peroxisome for β-oxidation. "
-            "ABCD1 LOF → VLCFA accumulation (especially C26:0) in plasma, adrenal cortex, nervous system. "
-            "X-linked: hemizygous males severely affected; heterozygous females may develop mild AMN-like features. "
-            "Clinical phenotypes in males: "
-            "(1) CCALD (35–40%): childhood 4–8yr, rapidly progressive inflammatory demyelination of posterior cerebral WM, "
-            "Gd enhancement at active edge — EMERGENCY requiring HSCT or Skysona within narrow window; "
-            "(2) AMN (40–45%): adult progressive axonal myelopathy + peripheral neuropathy; not HSCT-responsive; "
-            "(3) Addison-only (~20%): adrenal insufficiency without neurological disease. "
-            "Adrenal insufficiency: 71% of males; adrenal crisis is a life-threatening emergency. "
-            "Genotype DOES NOT predict phenotype. "
-            "CCALD treatment: HSCT (Level A; HLA-matched) or Skysona (FDA2022; no HLA match); window Loes ≤9, NRS ≤1. "
-            "Phenytoin/fosphenytoin are ABSOLUTELY contraindicated (CYP3A4 → adrenal crisis). "
-            "NBS: C26-lyso-PC on DBS in 30+ US states."
-        ),
+        "key_ddx": [
+            "Multiple sclerosis: posterior lesions + enhancement — VLCFA normal in MS; ABCD1 sequencing discriminates",
+            "Alexander disease (GFAP): frontal-predominant leukodystrophy; VLCFA normal; GFAP mutation",
+            "Other peroxisomal disorders (PBD): multiorgan; phytanic + pipecolic + VLCFA elevated; more severe",
+            "AMN vs HSP: spinal cord atrophy on MRI; VLCFA elevated in AMN; SPG4 SPAST normal VLCFA",
+        ],
+        "onset_age": 7.0,
+        "wm_lesion_pct": 95,
+        "adrenal_pct": 70,
+        "spastic_pct": 88,
+        "seed": 2614,
     },
-
-    # -- ASPA — Aspartoacylase / Canavan Disease ------------------------------------
     {
-        "gene": "ASPA",
-        "alt_name": "Aspartoacylase (Canavan Disease)",
+        "gene": "ARSA",
         "protein": (
-            "ASPA -- 17p13.2 AR -- Aspartoacylase-313aa -- "
-            "Canavan-Disease-NAA-N-Acetylaspartate-Elevated-MOST-SPECIFIC-MRS-Biomarker -- "
-            "U-Fibres-Involved-EARLY-Unlike-Most-Leukodystrophies -- "
-            "Spongy-Degeneration-WM-Vacuolization -- "
-            "Ashkenazi-Jewish-Founder-pGlu285Ala-pTyr231X"
+            "ARSA -- 22q13.33 AR -- 507aa -- Arylsulfatase-A-62kDa-"
+            "Lysosomal-Sulfatide-Sulfatase-MLD-AR -- OMIM-Gene-607574-Disease-MLD-250100"
         ),
-        "locus": "17p13.2",
-        "protein_size": "313 aa",
-        "inheritance": "AR",
-        "age_of_onset": (
-            "Neonatal-infantile form: onset 3–6 months, macrocephaly at birth, hypotonia then spasticity; "
-            "Mild/juvenile form: some residual ASPA activity, less severe; "
-            "Macrocephaly: usually present at birth or develops within first months"
+        "locus": "22q13.33",
+        "protein_size": "507 aa / 62 kDa",
+        "inheritance": (
+            "AR (biallelic loss of function); Metachromatic Leukodystrophy (MLD); "
+            "Prevalence: ~1:40,000-1:160,000 live births; "
+            "Late-infantile MLD: onset 1-2yr (most common ~50%, most severe, rapidly fatal); "
+            "Juvenile MLD: onset 3-16yr (cognitive regression → motor decline); "
+            "Adult MLD: onset >16yr (psychiatric/cognitive first — misdiagnosed schizophrenia); "
+            "ARSA PSEUDODEFICIENCY: 10% general population have low ARSA enzyme activity with NORMAL sulfatide — NOT disease; "
+            "Saposin B deficiency (PSAP gene): same MLD phenotype; normal ARSA enzyme; sulfatide assay required"
         ),
-        "key_biomarker": (
-            "NAA (N-acetylaspartate) ELEVATED: urine organic acids (NAA peak); plasma NAA; "
-            "MRS (magnetic resonance spectroscopy): NAA peak markedly elevated = MOST SPECIFIC MRS BIOMARKER in all leukodystrophies; "
-            "leukocyte/fibroblast ASPA enzyme near-zero; "
-            "MRI: diffuse T2 WM signal with U-fibre involvement + globus pallidus signal; "
-            "macrocephaly (OFC >97th centile); "
-            "molecular: ARSA biallelic mutations (Ashkenazi: p.Glu285Ala, p.Tyr231X; non-Ashkenazi: p.Ala305Glu)"
+        "disease_category": (
+            "Metachromatic Leukodystrophy (MLD); lysosomal storage disorder; "
+            "ARSA cleaves sulfate from sulfatides (galactosylceramide-3-sulfate) in lysosomes — "
+            "requires saposin B co-factor for substrate presentation; "
+            "Loss of ARSA → sulfatide accumulates in oligodendrocytes, Schwann cells, visceral organs; "
+            "Progressive demyelination CNS + PNS; "
+            "METACHROMATIC GRANULES IN NERVE BIOPSY = PATHOGNOMONIC: "
+            "sulfatide-laden Schwann cell lysosomes stain brown-red under polarised toluidine blue light; "
+            "LIBMELDY (atidarsagene autotemcel) EMA 2020: HSC gene therapy — transformative if pre-symptomatic"
+        ),
+        "disease_pathway": (
+            "ARSA (arylsulfatase A) is a lysosomal acid hydrolase that cleaves the sulfate ester bond "
+            "from galactosylceramide-3-sulfate (sulfatide), producing galactosylceramide + sulfate. "
+            "Saposin B acts as co-factor presenting sulfatide to ARSA in the lysosomal lumen. "
+            "Loss of ARSA → lysosomal sulfatide accumulation in myelinating cells: "
+            "oligodendrocytes (CNS) and Schwann cells (PNS) accumulate → undergo apoptosis → demyelination. "
+            "Residual enzyme activity correlates with severity: <1% → late-infantile; 1-5% → juvenile; >5% → adult. "
+            "METACHROMASIA mechanism: sulfatide-laden membrane fragments in Schwann cell lysosomes; "
+            "toluidine blue forms metachromatic dye complex with sulfatide → shifts absorption peak → "
+            "appears brown-red (not blue) under polarised light. "
+            "CSF: elevated protein (demyelinating neuropathy contribution); NCV: markedly slow."
         ),
         "pathognomonic": (
-            "Macrocephalic infant 3–6 months with hypotonia + head lag + "
-            "MRI diffuse T2 WM signal involving U-fibres (not spared) + globus pallidus + "
-            "MRS: NAA peak elevated (2–3× normal) = Canavan until proven otherwise; "
-            "NAA elevated in urine organic acids is highly specific; "
-            "U-fibre involvement early distinguishes Canavan from many leukodystrophies where U-fibres are spared; "
-            "macrocephaly at birth + leukodystrophy MRI = Canavan OR Alexander (different MRI pattern)"
+            "METACHROMATIC GRANULES IN SURAL NERVE BIOPSY = PATHOGNOMONIC (historically; now rarely needed): "
+            "Sulfatide deposits in Schwann cell lysosomes → toluidine blue under polarised light → brown-red METACHROMASIA; "
+            "MRI: confluent periventricular T2/FLAIR hyperintensity — TIGROID PATTERN (sparing arcuate fibres) early; "
+            "URINE SULFATIDE: elevated (quantitative test) — KEY to exclude ARSA pseudodeficiency; "
+            "ARSA ENZYME ACTIVITY: low in leukocytes — BUT pseudodeficiency (activity low, sulfatide NORMAL) must be excluded; "
+            "NCV: markedly slow (demyelinating neuropathy) — BOTH CNS + PNS involved; "
+            "Late-infantile: regression of milestones at 1-2yr (walk→crawl→hypotonic); "
+            "Adult MLD: frontal lobe syndrome / schizophrenia-like — psychiatric referral common → MRI key"
         ),
         "treatment": (
-            "No approved disease-modifying therapy; "
-            "Gene therapy (AAV-based ASPA): intracranial/IV delivery; Phase I/II trials (Aspa-101 rAAV9); "
-            "glyceryl triacetate (GTA): oral acetate supplementation to partially restore myelin synthesis — "
-            "biochemical improvement, limited clinical data; "
-            "lithium (reduces NAA production by inhibiting NAA synthetase NAT8L) — Phase I/II trial data; "
-            "symptomatic: antiepileptics (LEV), antispasticity (baclofen), gastrostomy, physiotherapy; "
-            "genetic counselling: 1/40 Ashkenazi carrier frequency; "
-            "Ashkenazi Jewish population NBS/carrier screening programs"
+            "LIBMELDY (atidarsagene autotemcel, OTL-200) — EMA approved 2020: "
+            "Autologous HSC gene therapy; lentiviral ARSA cDNA; "
+            "Efficacy: pre-symptomatic late-infantile and early juvenile — near-normal motor/cognitive outcomes; "
+            "Treated pre-symptomatically: 80%+ retain ambulation vs untreated (never walk); "
+            "ALLOGENEIC HSCT: slows but does NOT stop late-infantile MLD; beneficial pre-symptomatic juvenile/adult; "
+            "INTRATHECAL ERT (recombinant ARSA): limited CNS penetration; Phase II; "
+            "NEWBORN SCREENING: not yet universal; NBS + Libmeldy is ideal pathway for late-infantile; "
+            "Supportive: anti-epileptic (seizures 30%), neuropathic pain, PEG if dysphagia, physiotherapy; "
+            "ARSA PSEUDODEFICIENCY: no treatment — not a disease; "
+            "GENETIC COUNSELLING: AR; 25% recurrence; prenatal/PGT; saposin B excluded by urine sulfatide test"
         ),
-        "critical_flags": [
-            "ASPA-NAA-MRS-PATHOGNOMONIC: elevated NAA on MRS is the MOST SPECIFIC MRS biomarker in all leukodystrophies; Canavan = dramatically elevated NAA; no other common leukodystrophy has this",
-            "ASPA-U-FIBRES-EARLY: U-fibres (subcortical arcuate fibres) involved EARLY in Canavan; most leukodystrophies spare U-fibres early — U-fibre involvement narrows DDx to Canavan + Alexander",
-            "ASPA-MACROCEPHALY-BIRTH: macrocephaly at/before birth + leukodystrophy = Canavan or Alexander; both have distinct MRI patterns and molecular diagnosis",
-            "ASPA-ASHKENAZI-FOUNDER: p.Glu285Ala (c.854A>C) + p.Tyr231X (c.693C>A) = 97% Ashkenazi alleles; carrier frequency 1/40 Ashkenazi; targeted panel highly efficient in this population",
-            "ASPA-NAA-URINE: urine organic acids show elevated NAA peak — easily detected on standard organic acid screen; always check organic acids in leukodystrophy",
-            "ASPA-GLOBUS-PALLIDUS-SIGNAL: globus pallidus T2 signal (bilateral) on MRI in Canavan — unusual feature; combined with U-fibre involvement distinguishes from other leukodystrophies",
-            "ASPA-GENE-THERAPY-TRIALS: rAAV9-ASPA Phase I/II active; lithium (reduces NAA via ASPA substrate reduction) and glyceryl triacetate (acetate supplement) also in trials",
-            "ASPA-SPONGY-DEGENERATION: neuropathology = spongy myelinopathy (vacuolization of WM) due to NAA-driven osmotic water influx into oligodendrocytes; gross-pathologic description",
+        "key_features": [
+            "ARSA (MLD): AR lysosomal; sulfatide accumulates; 1:40,000-1:160,000; oligodendrocyte + Schwann cell death",
+            "Metachromatic granules nerve biopsy PATHOGNOMONIC (toluidine blue polarised light — brown-red)",
+            "Libmeldy (atidarsagene) HSC gene therapy EMA 2020 — transformative if pre-symptomatic",
+            "Late-infantile (1-2yr onset, 50%): most severe; rapidly fatal without treatment",
+            "Adult MLD: schizophrenia-like onset — MRI white matter leukodystrophy KEY to diagnosis",
+            "ARSA pseudodeficiency: 10% population have low enzyme but NORMAL sulfatide — NOT disease; CRITICAL DDx",
+            "Urine sulfatide quantification MANDATORY before diagnosis — excludes pseudodeficiency",
+            "NCV: markedly slow demyelinating neuropathy; both CNS + PNS involved; distinguishes from PMD (hypomyelination)",
         ],
-        "alias": (
-            "ASPA (Aspartoacylase; 313 aa; 17p13.2) encodes a cytosolic enzyme predominantly expressed in "
-            "oligodendrocytes that hydrolyses N-acetylaspartate (NAA) into aspartate + acetate. "
-            "The acetate product is essential for myelin lipid synthesis in oligodendrocytes. "
-            "Biallelic ASPA LOF → NAA accumulates in brain, CSF, urine (Canavan Disease; OMIM #271900). "
-            "NAA accumulation → osmotic water influx into oligodendrocytes → vacuolization (spongy degeneration) → demyelination. "
-            "U-fibres are involved early (distinctive from many leukodystrophies where U-fibres are initially spared). "
-            "Macrocephaly is present at/before birth. "
-            "MRS: dramatically elevated NAA peak — the most specific MRS biomarker in all leukodystrophies. "
-            "Ashkenazi Jewish founder alleles: p.Glu285Ala + p.Tyr231X (carrier frequency 1/40). "
-            "No approved therapy; AAV9-ASPA gene therapy in Phase I/II; lithium (reduces NAA via ASPA pathway) in trials. "
-            "Symptomatic management: antiepileptics, antispasticity, gastrostomy."
-        ),
+        "key_ddx": [
+            "ARSA pseudodeficiency: low enzyme, NORMAL urine sulfatides, no MRI — NOT MLD; critical to exclude",
+            "Saposin B deficiency (PSAP): same MLD phenotype; ARSA activity NORMAL; elevated sulfatide confirms",
+            "Krabbe (GALC): similar infantile; globoid cells (not metachromatic); less prominent PNS involvement early",
+            "Adult MLD vs schizophrenia: MRI white matter + slow NCV + sulfatide assay discriminates",
+        ],
+        "onset_age": 2.5,
+        "wm_lesion_pct": 98,
+        "neuropathy_pct": 92,
+        "seizure_pct": 30,
+        "spastic_pct": 78,
+        "seed": 2615,
     },
-
-    # -- GFAP — Glial Fibrillary Acidic Protein / Alexander Disease -----------------
     {
-        "gene": "GFAP",
-        "alt_name": "Glial Fibrillary Acidic Protein (Alexander Disease)",
+        "gene": "GALC",
         "protein": (
-            "GFAP -- 17q21.31 AD -- GlialFibAcidProtein-432aa -- "
-            "Alexander-Disease-ALL-Mutations-DOMINANT-GOF-NOT-LOF-CRITICAL -- "
-            "Rosenthal-Fibres-Perivascular-Subpial-PATHOGNOMONIC -- "
-            "GFAP-Protein-CSF-Blood-Elevated-Astrocytic-Injury-Marker -- "
-            "Frontal-Dominant-WM-Plus-Basal-Ganglia-Brainstem-MRI"
+            "GALC -- 14q31.3 AR -- 669aa -- Galactocerebrosidase-74kDa-"
+            "Lysosomal-Psychosine-Galactosylceramide-Hydrolase-Krabbe-GLD-AR -- OMIM-Gene-606890-Disease-Krabbe-245200"
         ),
-        "locus": "17q21.31",
-        "protein_size": "432 aa",
-        "inheritance": "AD",
-        "age_of_onset": (
-            "Infantile (most common): onset 0–2 yr, macrocephaly, seizures (often early spasms), psychomotor delay; "
-            "Juvenile: onset 4–14 yr, progressive neurological decline, bulbar symptoms begin; "
-            "Adult (Type II): progressive bulbar dysfunction, palatal myoclonus, cerebellar/spinal involvement; "
-            "Most mutations are DE NOVO"
+        "locus": "14q31.3",
+        "protein_size": "669 aa / 74 kDa",
+        "inheritance": (
+            "AR (biallelic loss of function); Krabbe Disease (Globoid Cell Leukodystrophy, GLD); "
+            "Prevalence: ~1:100,000; "
+            "Classic infantile: onset <6m — most common 85-90%, most severe, rapidly fatal; "
+            "Late-onset Krabbe: onset 6m-3yr, 3-8yr, or adult — residual GALC activity; "
+            "GALC 30-kb deletion allele common in Northern European populations (~45% of alleles); "
+            "Genotype-phenotype: missense with some residual activity → late-onset; null/deletion → infantile"
         ),
-        "key_biomarker": (
-            "GFAP protein elevated in CSF (most sensitive) and blood — astrocytic injury marker; "
-            "MRI: frontal-dominant WM T2 signal + enhancement (infantile) + "
-            "basal ganglia + thalamus + brainstem involvement; "
-            "'garland' pattern of enhancement in infantile; "
-            "Rosenthal fibres: eosinophilic, perivascular/subpial aggregates on brain biopsy/autopsy (PATHOGNOMONIC); "
-            "molecular: heterozygous GFAP missense mutation (or rarely small in-frame); "
-            "IMPORTANT: NO ENZYME DEFICIENCY — GFAP is a structural protein, no metabolic test"
+        "disease_category": (
+            "Krabbe Disease (Globoid Cell Leukodystrophy, GLD); lysosomal storage disorder; "
+            "GALC cleaves galactose from galactosylceramide AND psychosine (galactosylsphingosine); "
+            "Loss of GALC → PSYCHOSINE accumulates — unique cytotoxin; kills oligodendrocytes + Schwann cells; "
+            "GLOBOID CELLS: multinucleated macrophages (2-20 nuclei) with PAS-positive inclusions in white matter = PATHOGNOMONIC; "
+            "Classic infantile: EXTREME IRRITABILITY (hyperalgesia — touch → screaming) PATHOGNOMONIC; "
+            "HSCT pre-symptomatic: substantial benefit for late-onset; very limited for infantile; "
+            "Krabbe added to USA RUSP NBS 2016 — GALC enzyme + psychosine second-tier"
+        ),
+        "disease_pathway": (
+            "GALC (galactocerebrosidase) cleaves galactose from two key lysosomal substrates: "
+            "1) Galactosylceramide: major myelin glycolipid — turnover generates ceramide; "
+            "2) Psychosine (galactosylsphingosine): highly cytotoxic lysolipid. "
+            "Loss of GALC → psychosine accumulates — it inserts into cellular membranes → "
+            "destabilises lipid bilayers → activates caspase-3 apoptosis in oligodendrocytes and Schwann cells. "
+            "Psychosine hypothesis: psychosine (not galactosylceramide) is the primary cytotoxic driver. "
+            "Macrophages phagocytose myelin debris → overloaded with galactosylceramide → "
+            "fuse into GLOBOID CELLS (multinucleated, PAS+, perivascular in white matter). "
+            "Progressive: infantile course measured in months; late-onset in years. "
+            "Psychosine in plasma/DBS: emerging biomarker for NBS second-tier and treatment monitoring."
         ),
         "pathognomonic": (
-            "Infantile: macrocephaly + seizures + psychomotor delay + "
-            "MRI frontal-dominant T2 WM signal + basal ganglia/thalamic signal + gadolinium enhancement + "
-            "GFAP protein elevated in CSF + heterozygous GFAP mutation; "
-            "Rosenthal fibres on brain biopsy (perivascular eosinophilic inclusions); "
-            "Adult Type II: palatal myoclonus + progressive bulbar dysfunction + medullary atrophy = "
-            "Alexander Type II until proven otherwise; "
-            "ALL Alexander disease mutations are GOF (dominant negative or toxic gain) — LOF has NO disease"
+            "GLOBOID CELLS IN WHITE MATTER BIOPSY = PATHOGNOMONIC: "
+            "Multinucleated macrophages (2-20 nuclei) with PAS-positive cytoplasmic inclusions; "
+            "perivascular aggregates in demyelinated white matter (now rarely needed for diagnosis); "
+            "EXTREME IRRITABILITY (hyperalgesia): PATHOGNOMONIC infantile presentation — "
+            "touch or sound → paroxysmal screaming/stiffening; can be mistaken for colic; "
+            "MRI: T2 hyperintensity cerebellum, corona radiata, posterior limb of internal capsule; "
+            "progressive global white matter involvement; "
+            "CSF PROTEIN: markedly elevated (>100 mg/dL) — demyelinating PNS + CNS component; "
+            "GALC enzyme activity: markedly low (DBS or leukocytes); "
+            "PSYCHOSINE (DBS/plasma): elevated — second-tier NBS marker + monitoring biomarker"
         ),
         "treatment": (
-            "No approved disease-modifying therapy; "
-            "GFAP-lowering strategies (antisense oligonucleotides / siRNA targeting GFAP mRNA) in preclinical trials; "
-            "rationale: reducing mutant GFAP burden reduces Rosenthal fibre load; "
-            "ceftriaxone (upregulates GLT-1 glutamate transporter) — anecdotal/open-label data; "
-            "seizures: LEV, VPA (frontal seizures; spasms in infantile — vigabatrin/ACTH); "
-            "anti-spasticity: baclofen; "
-            "feeding: gastrostomy for bulbar dysfunction; "
-            "palatal myoclonus: clonazepam or sodium valproate; "
-            "genetic counselling: most mutations de novo; empirical recurrence risk ~1% (germline mosaicism)"
+            "INFANTILE KRABBE: "
+            "ALLOGENEIC HSCT PRE-SYMPTOMATIC (NBS-identified) — ONLY treatment; "
+            "Pre-symptomatic HSCT mitigates disease but does NOT cure infantile Krabbe; "
+            "NBS + HSCT improves outcomes compared to symptomatic presentation; "
+            "Symptomatic infantile: HSCT does NOT reverse established damage; "
+            "LATE-ONSET KRABBE (3-8yr pre-symptomatic): "
+            "ALLOGENEIC HSCT — SUBSTANTIAL benefit; stabilises CNS demyelination; "
+            "GENE THERAPY (investigational): AAV-GALC intrathecal + systemic; Phase I/II; "
+            "Supportive: anti-convulsants, antispasticity, PEG, pain management (neuropathic/hyperalgesia); "
+            "GENETIC COUNSELLING: AR; 25% recurrence; PGT/prenatal; GALC enzyme + psychosine NBS; "
+            "NBS BENEFIT: identifies late-onset candidates (substantial HSCT benefit); "
+            "infantile NBS benefit real but limited vs late-onset"
         ),
-        "critical_flags": [
-            "GFAP-GOF-NOT-LOF: ALL Alexander disease mutations are DOMINANT GAIN-OF-FUNCTION (toxic missense/in-frame); GFAP LOF would NOT cause Alexander disease; critical distinction from lysosomal leukodystrophies",
-            "GFAP-DE-NOVO-MOST: most GFAP mutations are de novo; family history often negative; do NOT exclude Alexander because parents are unaffected",
-            "GFAP-ROSENTHAL-PATHOGNOMONIC: Rosenthal fibres (eosinophilic perivascular/subpial aggregates) on brain biopsy/autopsy = PATHOGNOMONIC; seen by H&E or GFAP immunostain",
-            "GFAP-CSF-BLOOD-BIOMARKER: CSF GFAP protein markedly elevated (astrocytic injury); serum GFAP also elevated; can track disease activity; GFAP is THE Alexander disease biomarker",
-            "GFAP-FRONTAL-MRI: frontal WM predominance in infantile Alexander (anterior > posterior — OPPOSITE of X-ALD and Krabbe which are posterior-predominant); useful MRI clue for DDx",
-            "GFAP-PALATAL-MYOCLONUS-TYPE2: palatal myoclonus + progressive bulbar dysfunction in adult = Alexander Type II hallmark; often misdiagnosed as ALS/bulbar palsy; MRI + GFAP CSF",
-            "GFAP-MACROCEPHALY: macrocephaly in infantile Alexander (also in Canavan); combined with FRONTAL (not posterior) WM signal distinguishes from Canavan (posterior U-fibre + NAA elevated)",
-            "GFAP-NO-ENZYME-TEST: Alexander disease has NO enzymatic/metabolic diagnostic test; diagnosis = MRI pattern + CSF GFAP + GFAP genetic sequencing",
+        "key_features": [
+            "GALC (Krabbe/GLD): AR lysosomal; psychosine accumulation kills oligodendrocytes + Schwann cells",
+            "Globoid cells (multinucleated PAS+ macrophages perivascular) in white matter PATHOGNOMONIC",
+            "Extreme irritability/hyperalgesia (touch → screaming) PATHOGNOMONIC in infantile",
+            "Classic infantile (<6m onset, 85-90%): rapidly fatal; HSCT pre-symptomatic — limited but real benefit",
+            "Late-onset Krabbe (3-8yr): HSCT pre-symptomatic = substantial benefit",
+            "Psychosine (plasma/DBS): emerging NBS second-tier marker + treatment monitoring biomarker",
+            "CSF protein markedly elevated (>100 mg/dL) — combined CNS + PNS demyelination",
+            "USA RUSP NBS 2016: GALC enzyme DBS + psychosine second-tier confirms late-onset candidates",
         ],
-        "alias": (
-            "GFAP (Glial Fibrillary Acidic Protein; 432 aa; 17q21.31) encodes the principal intermediate filament "
-            "of mature astrocytes. Heterozygous missense mutations cause Alexander Disease (OMIM #203450) "
-            "by a DOMINANT GAIN-OF-FUNCTION mechanism — all known pathogenic GFAP mutations are dominant (missense or small in-frame); "
-            "GFAP haploinsufficiency (LOF) does NOT cause disease. "
-            "Mutant GFAP misfolds and aggregates, forming Rosenthal fibres "
-            "(eosinophilic, electron-dense inclusions perivascular and subpial) — pathognomonic on brain biopsy. "
-            "Infantile Alexander (most common): macrocephaly, frontal-dominant T2 WM signal with enhancement, "
-            "seizures from infancy; most mutations de novo. "
-            "Adult Type II: progressive bulbar dysfunction + palatal myoclonus + medullary/cerebellar atrophy. "
-            "CSF GFAP protein markedly elevated — the disease biomarker. "
-            "No approved therapy; GFAP ASO/siRNA (reduce mutant protein load) in preclinical development."
-        ),
+        "key_ddx": [
+            "MLD (ARSA): metachromatic granules (not globoid cells); sulfatide elevated; peripheral NCV also slow",
+            "GM1/GM2 gangliosidosis: cherry-red spot; different enzyme; no globoid cells; organomegaly",
+            "Infantile GM2 (Tay-Sachs): cherry-red + hyperacusis; hexosaminidase A; no globoid cells",
+            "Alexander disease: frontal predominance; Rosenthal fibres; GFAP; no globoid cells; macrocephaly",
+        ],
+        "onset_age": 3.0,
+        "wm_lesion_pct": 97,
+        "irritability_pct": 92,
+        "neuropathy_pct": 85,
+        "spastic_pct": 80,
+        "seizure_pct": 35,
+        "seed": 2616,
     },
-
-    # -- EIF2B5 — eIF2B epsilon subunit / Vanishing White Matter Disease (VWM) -------
     {
-        "gene": "EIF2B5",
-        "alt_name": "eIF2B epsilon (Vanishing White Matter)",
+        "gene": "PLP1",
         "protein": (
-            "EIF2B5 -- 3q27.1 AR -- eIF2Bepsilon-712aa -- "
-            "VWM-Vanishing-White-Matter-Stress-Triggered-Episodes-EMERGENCY -- "
-            "ISR-Integrated-Stress-Response-Hypersensitivity -- "
-            "ISRIB-ISR-Inhibitor-Most-Promising-Experimental-Therapy -- "
-            "Ovarioleukodystrophy-Premature-Ovarian-Failure-Females"
+            "PLP1 -- Xq22.2 XLR -- 276aa -- Proteolipid-Protein-1-PLP-DM20-30kDa-"
+            "Major-CNS-Myelin-Structural-Protein-PMD-SPG2-XLR -- OMIM-Gene-300401-Disease-PMD-312080"
         ),
-        "locus": "3q27.1",
-        "protein_size": "712 aa",
-        "inheritance": "AR",
-        "age_of_onset": (
-            "Congenital: neonatal severe, multi-organ, null mutations; "
-            "Infantile: 1–3 yr most common, episodic ataxia; "
-            "Juvenile: 3–16 yr; "
-            "Adult: >16 yr, dementia + psychiatric; "
-            "Stress triggers: febrile illness → MOST COMMON trigger; minor head trauma; emotional shock; "
-            "EIF2B1-5 mutations; EIF2B5 (epsilon, largest subunit) most commonly mutated"
+        "locus": "Xq22.2",
+        "protein_size": "276 aa / 30 kDa",
+        "inheritance": (
+            "XLR (X-linked recessive); males severely affected; females mild-moderately affected carriers; "
+            "Pelizaeus-Merzbacher Disease (PMD) / Spastic Paraplegia type 2 (SPG2); "
+            "Most common X-linked hypomyelinating leukodystrophy; "
+            "Duplications most common (60-70%): excess PLP1 → ER stress → oligodendrocyte death; "
+            "Point mutations + deletions + null alleles account for remainder; "
+            "Null PLP1 alleles → SPG2 (milder, adult-onset spastic paraplegia + PNS involvement); "
+            "Connatal PMD: most severe (certain missense); classic PMD: intermediate (duplications); "
+            "NYSTAGMUS AT BIRTH PATHOGNOMONIC"
         ),
-        "key_biomarker": (
-            "MRI: diffuse WM T2 signal with CSF-like (fluid-equivalent) signal on FLAIR in WM = rarefaction/'vanishing'; "
-            "FLAIR WM signal isointense to CSF = pathognomonic VWM; "
-            "proton MRS: lactate peak in WM (anaerobic glycolysis); NAA reduced in WM; "
-            "CSF: may show elevated oligoclonal bands in some; "
-            "molecular: biallelic EIF2B1-5 mutations; EIF2B5 most common; "
-            "FSH/LH elevated in females (premature ovarian failure); "
-            "genetic testing essential — NO metabolic/enzyme biomarker for VWM"
+        "disease_category": (
+            "Pelizaeus-Merzbacher Disease (PMD) / Spastic Paraplegia type 2 (SPG2); "
+            "PLP1 encodes proteolipid protein 1 (PLP/DM20) — major structural CNS myelin protein (~50% myelin protein mass); "
+            "Mechanism: HYPOMYELINATION — myelin never forms adequately (not demyelination); "
+            "Oligodendrocytes fail to produce/maintain compact myelin; "
+            "Duplication → excess PLP → ER retention + UPR → oligodendrocyte apoptosis → hypomyelination; "
+            "NYSTAGMUS AT BIRTH PATHOGNOMONIC for PMD; "
+            "NO approved disease-modifying therapy; ASO/gene therapy in Phase I clinical trials"
+        ),
+        "disease_pathway": (
+            "PLP1 encodes PLP (proteolipid protein) and its alternatively spliced isoform DM20. "
+            "PLP is the most abundant CNS myelin protein, forming the hydrophobic core of compacted myelin. "
+            "Mechanism by mutation class: "
+            "1) DUPLICATION (most common): excess PLP protein → overloads ER folding capacity → "
+            "ER stress + unfolded protein response (UPR) → oligodendrocyte apoptosis → hypomyelination; "
+            "2) MISSENSE GOF: PLP misfolding → ER retention → UPR → same apoptotic pathway; "
+            "3) NULL/DELETION (SPG2): loss of PLP → oligodendrocytes present but cannot properly compact myelin → "
+            "axonal degeneration over years (paradox: milder than duplication clinically = less UPR stress); "
+            "STATIC hypomyelination: myelin never formed; not progressive demyelination (mostly stable on MRI)."
         ),
         "pathognomonic": (
-            "Child with previously normal/near-normal development who has acute neurological DETERIORATION "
-            "triggered by febrile illness or minor head trauma → "
-            "MRI shows CSF-equivalent T2 signal in WM (FLAIR WM = CSF signal) = VWM until proven otherwise; "
-            "episodes may partially recover; "
-            "female with young-adult premature ovarian failure + WM MRI signal = ovarioleukodystrophy (EIF2B); "
-            "congenital VWM: neonatal onset, death weeks-months, most severe biallelic null mutations"
+            "NYSTAGMUS AT BIRTH = PATHOGNOMONIC FOR PMD: "
+            "Pendular or rotatory nystagmus within first weeks of life; improves somewhat but persists; "
+            "Nystagmus + hypotonia in infant + leukodystrophy on MRI = PMD until proven otherwise; "
+            "MRI: DIFFUSE T2/FLAIR HYPERINTENSITY throughout white matter (hypomyelination); "
+            "Cerebellum, brainstem, internal capsule — all white matter involved; "
+            "TIGROID PATTERN: patchy myelin islands (spared islands → tiger-stripe appearance on T2); "
+            "ARRAY CGH/MLPA: detects PLP1 duplication (60-70%); "
+            "SEQUENCING: detects point mutations; ALWAYS do both (duplication NOT detected by sequencing); "
+            "MRS: markedly reduced NAA in white matter; "
+            "Carrier females: may show mild MRI white matter changes; rarely symptomatic"
         ),
         "treatment": (
-            "NO approved disease-modifying therapy; "
-            "ISRIB (integrated stress response inhibitor): MOST PROMISING trial drug; "
-            "reduces ISR hypersensitivity by stabilising eIF2B; Phase I/II trials recruiting; "
-            "PREVENTION OF STRESS TRIGGERS: "
-            "  AGGRESSIVELY treat fever (antipyretics at onset of any fever — paracetamol + ibuprofen alternating); "
-            "  NO contact sports (prevent head trauma); "
-            "  emotional stress management; "
-            "  written emergency protocol for fever management given to all caregivers + schools; "
-            "  immunisations on schedule (vaccinations may trigger mild fever — antipyretics around time of vaccination); "
-            "corticosteroids in acute deterioration episode: dexamethasone (some centres — limited evidence, anti-inflammatory); "
-            "seizure management: LEV or VPA; "
-            "premature ovarian failure: HRT (oestrogen + progesterone) if POF confirmed; "
-            "genetic counselling: AR; 25% sibling recurrence"
+            "NO APPROVED DISEASE-MODIFYING THERAPY: "
+            "ANTISENSE OLIGONUCLEOTIDE (ASO) — Phase I for PLP1 duplication: reduces PLP1 mRNA overexpression; "
+            "AAV-based PLP1 gene replacement/silencing — preclinical; "
+            "Allogeneic HSCT: very limited evidence; some MRI white matter improvement but minimal clinical benefit; "
+            "Symptomatic management: "
+            "ANTISPASTICITY: baclofen oral/intrathecal, tizanidine, botulinum toxin focal spasticity; "
+            "Anti-epileptic: seizures ~30%; LEV or VPA; "
+            "COMMUNICATION: AAC devices (most PMD patients non-verbal); "
+            "Physiotherapy, occupational therapy, gastrostomy if dysphagia; "
+            "GENETIC COUNSELLING: XLR; carrier testing; prenatal/PGT; ARRAY CGH + sequencing both mandatory"
         ),
-        "critical_flags": [
-            "EIF2B5-STRESS-TRIGGERS-EMERGENCY: fever, minor head trauma, emotional shock → ACUTE NEUROLOGICAL DETERIORATION in VWM; fever management is LIFE-SAVING; written emergency plan for carers/schools",
-            "EIF2B5-ANTIPYRETICS-AGGRESSIVELY: start antipyretics (paracetamol/ibuprofen) at FIRST SIGN of fever; do NOT wait for high temperature; aim to keep temperature <37.8°C; this is primary prevention",
-            "EIF2B5-FLAIR-CSF-SIGNAL: WM signal isointense to CSF on FLAIR MRI = rarefaction/vanishing; this pattern is essentially pathognomonic for VWM; WM has become fluid-filled cavities",
-            "EIF2B5-OVARIOLEUKODYSTROPHY: premature ovarian failure (POF) in EIF2B mutations; female with WM disease + POF = EIF2B panel; also seen with ADAR1 but different MRI",
-            "EIF2B5-ISRIB-TRIALS: ISRIB stabilises eIF2B complex → reduces ISR hypersensitivity; most rationally targeted VWM therapy; Phase I/II trials; watch results",
-            "EIF2B5-PARTIAL-RECOVERY: VWM episodes may partially reverse after acute trigger resolved; partial recovery is diagnostic — suggests ongoing brain plasticity in mild mutations",
-            "EIF2B5-NO-CONTACT-SPORTS: minor head trauma can trigger devastating deterioration; NO contact sports/activities with head trauma risk; helmets for cycling/skateboarding; school medical plan",
-            "EIF2B5-EIF2B1-4-ALSO: VWM caused by biallelic mutations in EIF2B1 (alpha), EIF2B2 (beta), EIF2B3 (gamma), EIF2B4 (delta), EIF2B5 (epsilon); sequence all 5 if VWM suspected; EIF2B5 most common",
+        "key_features": [
+            "PLP1 (PMD/SPG2): XLR; most common X-linked hypomyelinating leukodystrophy; males severely affected",
+            "Nystagmus at birth PATHOGNOMONIC — pendular/rotatory; present from first weeks of life",
+            "Hypomyelination (never forms adequately) NOT demyelination — mostly static pattern on MRI",
+            "Duplication most common (60-70%): excess PLP → ER stress → oligodendrocyte apoptosis",
+            "Null PLP1 → SPG2: milder adult-onset spastic paraplegia + PNS involvement",
+            "NO approved disease-modifying therapy; ASO (PLP1 mRNA silencing) in Phase I for duplication",
+            "ARRAY CGH/MLPA for duplication + sequencing for point mutations — both MANDATORY (not detected by one alone)",
+            "Non-verbal in 65%+ — AAC communication devices central to management",
         ],
-        "alias": (
-            "EIF2B5 (eukaryotic initiation factor 2B epsilon subunit; 712 aa; 3q27.1) encodes the catalytic "
-            "epsilon subunit of the eIF2B guanine-nucleotide exchange factor (GEF) complex. "
-            "eIF2B regenerates active eIF2-GTP from eIF2-GDP, enabling translation initiation. "
-            "Under stress, eIF2α is phosphorylated → inhibits eIF2B → reduced translation → integrated stress response (ISR). "
-            "Biallelic EIF2B5 LOF → constitutively impaired eIF2B → hypersensitised ISR → "
-            "oligodendrocyte and astrocyte fragility → "
-            "Vanishing White Matter Disease (VWM; OMIM #603896). "
-            "VWM episodes: triggered by fever, minor head trauma, or emotional shock → "
-            "acute neurological deterioration ± partial recovery. "
-            "MRI: FLAIR WM signal equivalent to CSF (WM rarefaction/vanishing) — pathognomonic. "
-            "Ovarioleukodystrophy: premature ovarian failure in females — a key associated feature. "
-            "VWM caused by biallelic mutations in any of EIF2B1-5 (epsilon most common). "
-            "Fever prevention (aggressive antipyretics) is the cornerstone of management; no head trauma. "
-            "ISRIB (ISR inhibitor) in Phase I/II trials — the most promising targeted therapy."
-        ),
+        "key_ddx": [
+            "GJC2 PMLD: AR; no nystagmus at birth; connexin 47; milder hypomyelination; affects both sexes",
+            "POLR3A 4H: hypomyelination + hypodontia + hypogonadism TRIAD; cerebellar atrophy; AR",
+            "MLD (ARSA): progressive demyelination (not static); sulfatide; peripheral NCV very slow",
+            "Oculomotor apraxia (ataxia-oculomotor): eye movement abnormality; different MRI; not hypomyelination",
+        ],
+        "onset_age": 0.2,
+        "wm_lesion_pct": 99,
+        "nystagmus_pct": 94,
+        "spastic_pct": 88,
+        "seizure_pct": 30,
+        "seed": 2617,
     },
-
-    # -- POLR3A — RNA Polymerase III Subunit A / POLR3-Related Leukodystrophy / HLD7 --
+    {
+        "gene": "GJC2",
+        "protein": (
+            "GJC2 -- 1q42.13 AR/AD -- 436aa -- Connexin-47-Cx47-46kDa-"
+            "Oligodendrocyte-Astrocyte-Gap-Junction-PMLD-SPG44-AR-AD -- OMIM-Gene-608803-Disease-PMLD-608804"
+        ),
+        "locus": "1q42.13",
+        "protein_size": "436 aa / 46 kDa",
+        "inheritance": (
+            "AR (biallelic loss of function) → PMLD (Pelizaeus-Merzbacher-Like Disease) — more severe; "
+            "AD (heterozygous hypomorphic) → SPG44 (Spastic Paraplegia type 44) — milder, adult; "
+            "Most common cause of PMLD after PLP1 exclusion; "
+            "Prevalence PMLD (all causes): ~1:90,000; GJC2 accounts for significant fraction; "
+            "Both sexes equally affected (AR) — vs PLP1 (XLR males); "
+            "Nystagmus less prominent than PLP1-PMD (or absent)"
+        ),
+        "disease_category": (
+            "Pelizaeus-Merzbacher-Like Disease type 1 (PMLD1) / Spastic Paraplegia type 44 (SPG44); "
+            "GJC2 encodes Connexin 47 (Cx47) — gap junction channel protein in oligodendrocytes; "
+            "Cx47 forms oligodendrocyte-astrocyte heterotypic channels (Cx47-Cx43); "
+            "These channels essential for K+ spatial buffering + metabolic coupling in CNS myelin maintenance; "
+            "Loss of Cx47 → gap junction coupling failure → oligodendrocyte metabolic vulnerability → hypomyelination; "
+            "MILDER HYPOMYELINATION than PLP1-PMD; partial myelin formation present; "
+            "SPG44: adult-onset pure spastic paraplegia; subtle white matter MRI changes"
+        ),
+        "disease_pathway": (
+            "GJC2 encodes Connexin 47 (Cx47), expressed exclusively in oligodendrocytes. "
+            "Cx47 forms heterotypic gap junction channels with astrocytic Connexin 43 (Cx43) — "
+            "oligodendrocyte-astrocyte gap junctions buffer K+ in periaxonal space. "
+            "During high-frequency axonal firing: K+ efflux into periaxonal space → rapidly cleared via "
+            "oligodendrocyte Cx47-Cx43 channels → astrocytes → spatial buffering throughout glial syncytium. "
+            "Loss of Cx47 → K+ accumulates → periaxonal hyperexcitability + oligodendrocyte metabolic stress "
+            "→ impaired myelination. "
+            "Cx47 also pairs with Cx32 (GJB1) in oligodendrocyte-oligodendrocyte channels. "
+            "AR PMLD: both alleles non-functional → severe K+ buffering failure → hypomyelination. "
+            "AD SPG44: one functional allele → partial K+ buffering → adult-onset axonopathy only."
+        ),
+        "pathognomonic": (
+            "HYPOMYELINATION ON MRI (T2 diffuse white matter hyperintensity) — MILDER THAN PLP1-PMD; "
+            "Partial myelin present (less severe than complete hypomyelination of PMD); "
+            "AUTOSOMAL RECESSIVE pattern — both sexes; vs XLR for PLP1; "
+            "NYSTAGMUS LESS PROMINENT or ABSENT — key distinction from PLP1-PMD; "
+            "Cerebellar atrophy in subset; cerebellar signs (ataxia + dysmetria) alongside spasticity; "
+            "NCV: mild slowing (less dramatic than MLD demyelinating neuropathy); "
+            "GJC2 sequencing: biallelic variants confirm PMLD; monoallelic → SPG44; "
+            "MRI: periventricular + subcortical T2 hyperintensity; internal capsule may be partially myelinated; "
+            "After PLP1 exclusion in AR hypomyelination: GJC2 most likely gene → sequence first"
+        ),
+        "treatment": (
+            "NO APPROVED DISEASE-MODIFYING THERAPY; "
+            "ANTISPASTICITY: baclofen oral/intrathecal; tizanidine; "
+            "Physiotherapy + occupational therapy — functional rehabilitation; "
+            "Communication support (less severely affected than PLP1-PMD; many retain some speech); "
+            "Anti-epileptic if seizures (less common than in PMD); "
+            "SPG44: antispasticity + physiotherapy; milder course; many remain ambulant; "
+            "GENE THERAPY: no clinical trials for GJC2; GJB1 (Cx32) CMT trials may inform; "
+            "GENETIC COUNSELLING: AR for PMLD (25% recurrence); AD for SPG44 (50% dominant); "
+            "MRI surveillance: static hypomyelination — monitor for any progression"
+        ),
+        "key_features": [
+            "GJC2 (PMLD/SPG44): AR biallelic → PMLD; AD monoallelic → SPG44 adult spastic paraplegia",
+            "Connexin 47 oligodendrocyte-astrocyte gap junctions — K+ buffering failure → hypomyelination",
+            "Most common cause of PMLD after PLP1 exclusion (~1:90,000 PMLD prevalence)",
+            "MILDER hypomyelination than PLP1-PMD; nystagmus less prominent or ABSENT",
+            "AR inheritance — both sexes affected equally (vs XLR for PLP1)",
+            "NO approved disease-modifying therapy; symptomatic management as for PMD",
+            "SPG44: adult pure spastic paraplegia; subtle MRI white matter changes; monoallelic GJC2",
+            "GJC2 sequencing after PLP1 exclusion as first AR hypomyelination step",
+        ],
+        "key_ddx": [
+            "PLP1-PMD (XLR): nystagmus at birth; duplication most common; males only; more severe",
+            "POLR3A 4H: AR; hypomyelination + hypodontia + hypogonadism TRIAD; cerebellar atrophy",
+            "EIF2B5 VWM: stress-triggered episodes; white matter vanishes (fluid signal); EPISODIC",
+            "Hereditary spastic paraplegias (SPG4/SPG7): MRI often normal; pure spastic paraplegia; no white matter T2",
+        ],
+        "onset_age": 1.5,
+        "wm_lesion_pct": 95,
+        "nystagmus_pct": 45,
+        "spastic_pct": 92,
+        "seizure_pct": 20,
+        "cerebellar_pct": 55,
+        "seed": 2618,
+    },
     {
         "gene": "POLR3A",
-        "alt_name": "RNA Pol III Subunit A (POLR3-Related / HLD7)",
         "protein": (
-            "POLR3A -- 10q22.3 AR -- RNApolIIIsubunitA-1390aa -- "
-            "POLR3-Related-Leukodystrophy-HLD7-Hypomyelinating -- "
-            "Dental-Abnormalities-Hypodontia-LEUKODYSTROPHY-TRIAD-PATHOGNOMONIC -- "
-            "RNA-Pol-III-tRNA-Synthesis-Impaired-Oligodendrocyte-Hypomyelination -- "
-            "Cerebellar-Atrophy-Thinned-Corpus-Callosum-Myopia-Hypogonadism"
+            "POLR3A -- 10q22.3 AR -- 1390aa -- RNA-Polymerase-III-Subunit-A-RPC1-155kDa-"
+            "Largest-Pol-III-Catalytic-Subunit-4H-POLR3-HLD-AR -- OMIM-Gene-614258-Disease-POLR3-HLD-607694"
         ),
         "locus": "10q22.3",
-        "protein_size": "1390 aa",
-        "inheritance": "AR",
-        "age_of_onset": (
-            "Onset: early childhood 1–6 yr; "
-            "Presentation: motor delay (late walking) + cerebellar ataxia + dental abnormalities; "
-            "Slower progression than most leukodystrophies — patients may live to adulthood; "
-            "Myopia common (often severe); "
-            "Hypogonadotropic hypogonadism in some (delayed/absent puberty)"
+        "protein_size": "1390 aa / 155 kDa",
+        "inheritance": (
+            "AR (biallelic hypomorphic/loss of function); "
+            "POLR3-Related Leukodystrophy (POLR3-HLD) / 4H Syndrome; "
+            "4H = Hypomyelination + Hypodontia + Hypogonadotropic Hypogonadism; "
+            "Also caused by POLR3B (most common), POLR1C, POLR3K — panel testing required; "
+            "POLR3A variants: hypomorphic (complete loss embryo-lethal — Pol III essential for viability); "
+            "Compound heterozygotes (one splice + one missense) most common; "
+            "~50% of hypomyelinating leukodystrophy after PLP1/GJC2 exclusion"
         ),
-        "key_biomarker": (
-            "MRI: diffuse T2 WM signal (hypomyelination) + cerebellar atrophy + thin corpus callosum; "
-            "T2 hypointensity of globus pallidus, ventral pons, dentate nuclei (unusual feature — iron/mineralisation?); "
-            "NCV: normal or mildly abnormal (central not peripheral); "
-            "ophthalmic assessment: myopia (often severe); "
-            "dental X-ray: delayed dentition, hypodontia, oligodontia; "
-            "hormonal: FSH/LH/oestrogen/testosterone (hypogonadism); "
-            "molecular: biallelic POLR3A mutations (most common: p.Gly672Glu + intronic splice c.1909+22G>A compound heterozygous)"
+        "disease_category": (
+            "POLR3-Related Leukodystrophy (POLR3-HLD) / 4H Syndrome; "
+            "POLR3A encodes RPC1, largest catalytic subunit of RNA Polymerase III (Pol III); "
+            "Pol III transcribes: 5S rRNA, tRNAs, U6 snRNA, 7SL RNA — all non-coding RNAs critical for translation; "
+            "4H TRIAD = PATHOGNOMONIC: Hypomyelination + Hypodontia + Hypogonadotropic Hypogonadism; "
+            "Cerebellar atrophy common (dentate nucleus + cerebellar white matter); "
+            "Dental X-ray mandatory: oligodontia, peg teeth, delayed eruption confirms; "
+            "Endocrine: central hypogonadism (FSH/LH low/normal + low sex steroids); "
+            "Sex hormone replacement MANDATORY for bone health + cardiovascular protection"
+        ),
+        "disease_pathway": (
+            "RNA Polymerase III (Pol III) is the nuclear enzyme transcribing short non-coding RNAs: "
+            "5S rRNA (ribosome component), transfer RNAs (all 45 cytoplasmic tRNA species), "
+            "U6 snRNA (spliceosome), 7SL RNA (signal recognition particle). "
+            "POLR3A encodes RPC1, the catalytic subunit carrying the active site. "
+            "Hypomorphic POLR3A → reduced Pol III transcriptional output selectively in highest-demand tissues: "
+            "Oligodendrocytes: require massive tRNA output for myelin protein (MBP/PLP) translation → "
+            "reduced tRNA → insufficient myelin protein synthesis → hypomyelination. "
+            "Hypothalamic GnRH neurons: Pol III-dependent → GnRH deficiency → hypogonadotropic hypogonadism. "
+            "Dental follicle cells: Pol III required for enamel/dentin matrix protein synthesis → hypodontia. "
+            "Cerebellar Purkinje cells + dentate nucleus: Pol III sensitivity → cerebellar atrophy. "
+            "The 4H triad maps to three tissues most sensitive to Pol III reduction."
         ),
         "pathognomonic": (
-            "Child with motor delay (late walking age 2–4yr) + cerebellar ataxia + "
-            "MRI hypomyelination (diffuse T2 WM) + cerebellar atrophy + thin corpus callosum + "
-            "DENTAL ABNORMALITIES (hypodontia, delayed dentition) = POLR3-related leukodystrophy; "
-            "dental abnormalities in a child with leukodystrophy is the strongest clinical clue; "
-            "T2 hypointensity of globus pallidus + ventral pons + dentate = characteristic POLR3 signal; "
-            "additional features: myopia (ophthalmologist) + hypogonadism (delayed puberty)"
+            "4H TRIAD PATHOGNOMONIC FOR POLR3-HLD: "
+            "1. HYPOMYELINATION: MRI T2 diffuse white matter hyperintensity (static/slowly progressive); "
+            "2. HYPODONTIA: Dental X-ray — oligodontia, peg teeth, delayed eruption, missing permanent teeth; "
+            "3. HYPOGONADOTROPIC HYPOGONADISM: pubertal failure; low FSH/LH; low sex steroids = CENTRAL origin; "
+            "CEREBELLAR ATROPHY: dentate nucleus and cerebellar white matter on MRI; "
+            "Cerebellar signs: ataxia + dysmetria + intention tremor (alongside spasticity); "
+            "DENTAL X-RAY MANDATORY: oligodontia present even before eruption age (tooth buds absent on OPG); "
+            "ENDOCRINE: GnRH stimulation test distinguishes central (POLR3) from primary gonadal failure; "
+            "POLR3 gene panel (POLR3A + POLR3B + POLR1C + POLR3K): biallelic variants confirm"
         ),
         "treatment": (
-            "No approved disease-modifying therapy; "
-            "RNA Pol III pathway targeting in research: "
-            "  tRNA supplement approaches; "
-            "  ASO/small molecule approaches targeting POLR3A intronic splice mutation (c.1909+22G>A) in development; "
-            "  modafinil (wakefulness agent) used empirically for fatigue/cognitive symptoms; "
-            "symptomatic: physiotherapy + occupational therapy (cerebellar ataxia management); "
-            "myopia: early ophthalmic correction (glasses/contact lenses); "
-            "hypogonadism: hormone replacement therapy (oestrogen/testosterone) if confirmed; "
-            "dental: orthodontic consultation early; dental implants/prosthetics for hypodontia; "
-            "antiepileptics: seizures uncommon but LEV if needed; "
-            "genetic counselling: AR; 25% sibling recurrence; "
-            "allelic: POLR3B (HLD8), POLR3-related panel includes POLR3A, POLR3B, POLR1C, POLR3K"
+            "NO APPROVED DISEASE-MODIFYING THERAPY; "
+            "SEX HORMONE REPLACEMENT MANDATORY: "
+            "Females: oestrogen + progesterone replacement (puberty induction; bone mineral density; cardiovascular); "
+            "Males: testosterone replacement; GnRH pulsatile pump for fertility; "
+            "HYPODONTIA: dental implants when jaw growth complete; dentures interim; orthodontic management; "
+            "ANTISPASTICITY: baclofen oral/intrathecal; tizanidine; "
+            "CEREBELLAR ATAXIA: occupational therapy; aids; speech therapy for dysarthria; "
+            "Anti-epileptic: seizures in 15-20%; LEV preferred; "
+            "COGNITIVE SUPPORT: intellectual disability mild-moderate in some; education support; "
+            "GENETIC COUNSELLING: AR; 25% recurrence; POLR3A + POLR3B panel; prenatal; "
+            "MRI: annual (hypomyelination typically static); bone mineral density monitoring"
         ),
-        "critical_flags": [
-            "POLR3A-DENTAL-PATHOGNOMONIC: dental abnormalities (hypodontia, oligodontia, delayed dentition) in a leukodystrophy patient = POLR3-related leukodystrophy FIRST; request dental X-ray in every unexplained leukodystrophy",
-            "POLR3A-HYPOMYELINATION-NOT-DEMYELINATION: POLR3 leukodystrophy is HYPOMYELINATION (myelin never formed properly), not demyelination (myelin formed then lost); different from ARSA/GALC which are demyelinating",
-            "POLR3A-SLOWER-PROGRESSION: POLR3-related leukodystrophy progresses slowly; patients survive to adulthood (unlike infantile ARSA/GALC); functional level depends on mutation severity",
-            "POLR3A-MYOPIA: severe myopia is a common associated feature; ophthalmologist referral mandatory; myopia + cerebellar ataxia + WM signal = POLR3 panel",
-            "POLR3A-INTRONIC-SPLICE: c.1909+22G>A deep intronic splice mutation (creates pseudoexon) — COMMON POLR3A allele; missed by exome sequencing; genome sequencing or RNA studies required for full mutation detection",
-            "POLR3A-GLOBUS-PALLIDUS-T2-LOW: T2 hypointensity of globus pallidus + ventral pons + dentate nuclei is a characteristic POLR3 MRI pattern; most leukodystrophies have T2 HIGH signal in these structures",
-            "POLR3A-POLR3-PANEL: POLR3-related leukodystrophy caused by POLR3A (HLD7), POLR3B (HLD8), POLR1C (HLD3), POLR3K; always sequence full POLR3 gene panel if one gene negative",
-            "POLR3A-HYPOGONADISM: hypogonadotropic hypogonadism (delayed/absent puberty) in both sexes — FSH/LH/sex hormones; HRT for delayed puberty; a distinguishing feature from other hypomyelinating leukodystrophies",
+        "key_features": [
+            "POLR3A (4H/POLR3-HLD): AR RNA Pol III; 4H triad PATHOGNOMONIC",
+            "4H TRIAD: Hypomyelination + Hypodontia + Hypogonadotropic Hypogonadism — all three = POLR3",
+            "Cerebellar atrophy (dentate nucleus) on MRI; cerebellar signs alongside spasticity",
+            "Pol III transcribes tRNA/5S-rRNA: oligodendrocyte myelin protein synthesis impaired → hypomyelination",
+            "Dental OPG X-ray mandatory: oligodontia confirms even before eruption age",
+            "Central hypogonadism: low FSH/LH + sex steroids; HRT mandatory for bone + cardiovascular health",
+            "Compound heterozygote (splice + missense) most common POLR3A genotype",
+            "POLR3A + POLR3B + POLR1C panel required — same 4H phenotype from multiple genes",
         ],
-        "alias": (
-            "POLR3A (RNA Polymerase III Subunit A; 1390 aa; 10q22.3) encodes the largest subunit of RNA Polymerase III, "
-            "which transcribes small non-coding RNAs essential for translation: 5S rRNA, all cytoplasmic tRNAs, "
-            "7SL RNA, and U6 snRNA. "
-            "Biallelic POLR3A LOF mutations impair tRNA synthesis → global translational slowdown → "
-            "hypomyelination (myelin never properly formed) — POLR3-Related Leukodystrophy / HLD7 (OMIM #607694). "
-            "Clinical triad: (1) hypomyelinating leukodystrophy (diffuse T2 WM + thin corpus callosum + cerebellar atrophy); "
-            "(2) dental abnormalities (hypodontia, delayed dentition) — most specific clinical clue; "
-            "(3) myopia. Additional: hypogonadotropic hypogonadism. "
-            "T2 hypointensity of globus pallidus + ventral pons + dentate nuclei is characteristic (opposite to most leukodystrophies). "
-            "Deep intronic splice mutation c.1909+22G>A is the most common POLR3A allele and requires genome sequencing to detect. "
-            "Slow progression; patients survive to adulthood. "
-            "Allelic disorders: POLR3B (HLD8), POLR1C (HLD3), POLR3K — sequence all if clinical suspicion. "
-            "No approved therapy; ASO targeting intronic splice mutation in development."
+        "key_ddx": [
+            "PLP1-PMD: nystagmus at birth; XLR males; no dental/endocrine features; duplication most common",
+            "Kallmann syndrome: hypogonadism + ANOSMIA; no leukodystrophy; no hypodontia; ANOS1/FGFR1 gene",
+            "Septo-optic dysplasia (SOD): optic nerve hypoplasia; absent septum pellucidum; no hypomyelination",
+            "POLR3B: same 4H phenotype as POLR3A; must panel-test both genes",
+        ],
+        "onset_age": 2.0,
+        "wm_lesion_pct": 98,
+        "hypodontia_pct": 85,
+        "hypogonadism_pct": 78,
+        "cerebellar_pct": 72,
+        "spastic_pct": 80,
+        "seizure_pct": 18,
+        "seed": 2619,
+    },
+    {
+        "gene": "EIF2B5",
+        "protein": (
+            "EIF2B5 -- 3q27.1 AR -- 721aa -- eIF2B-Epsilon-Subunit-80kDa-"
+            "eIF2B-GEF-Catalytic-Integrated-Stress-Response-VWM-CACH-AR -- OMIM-Gene-603945-Disease-VWM-603896"
         ),
+        "locus": "3q27.1",
+        "protein_size": "721 aa / 80 kDa",
+        "inheritance": (
+            "AR (biallelic, often compound heterozygous); Vanishing White Matter Disease (VWM) / "
+            "CACH (Childhood Ataxia with Central CNS Hypomyelination); "
+            "EIF2B complex: 5 subunits (EIF2B1-5); mutations in any subunit cause VWM; "
+            "EIF2B5 epsilon subunit: catalytic GEF domain — most mutations here; "
+            "Prevalence: ~1:35,000; most common autosomal recessive leukodystrophy in children; "
+            "Wide range: severe infantile to mild adult forms based on residual eIF2B GEF activity; "
+            "Ovarioleukodystrophy: ovarian failure BEFORE neurological in some adult females"
+        ),
+        "disease_category": (
+            "Vanishing White Matter Disease (VWM) / CACH; "
+            "EIF2B5 is the catalytic epsilon subunit of eIF2B — the GDP→GTP exchange factor (GEF) for eIF2; "
+            "eIF2-GTP allows Met-tRNA binding to 43S ribosomal complex for translational initiation; "
+            "INTEGRATED STRESS RESPONSE (ISR): stress → eIF2alpha phosphorylation → ↓eIF2B GEF activity → ↓global translation; "
+            "VWM: eIF2B5 mutations impair GEF activity → oligodendrocytes uniquely sensitive to ISR stress; "
+            "STRESS-TRIGGERED ACUTE NEUROLOGICAL CRISES = PATHOGNOMONIC: febrile illness or minor head trauma → deterioration; "
+            "White matter literally vanishes on MRI — replaced by CSF-signal fluid (vacuolation); "
+            "ISRIB (ISR inhibitor): reverses VWM in mouse models — most promising therapeutic"
+        ),
+        "disease_pathway": (
+            "EIF2B5 encodes the epsilon (catalytic) subunit of eIF2B, the guanine nucleotide exchange factor "
+            "that converts eIF2-GDP to eIF2-GTP, enabling translational initiation. "
+            "Integrated Stress Response (ISR): four stress kinases (HRI/PKR/PERK/GCN2) phosphorylate eIF2alpha-Ser51 "
+            "→ phospho-eIF2alpha becomes competitive inhibitor of eIF2B → ↓global translation + ↑ATF4. "
+            "VWM mutations reduce eIF2B GEF catalytic activity: under basal conditions, residual activity sufficient. "
+            "Under ISR (fever, minor trauma): phospho-eIF2alpha accumulates → cannot be overcome by reduced eIF2B → "
+            "translation fails specifically in cells with highest demand = oligodendrocytes → "
+            "fail to maintain myelin proteins → white matter vacuolation + degeneration → "
+            "MRI: white matter replaces with fluid (CSF-intensity). "
+            "ISRIB: allosteric eIF2B activator → stabilises decameric eIF2B complex → overcomes ISR → "
+            "restores translation → reverses VWM in mouse models (preclinical)."
+        ),
+        "pathognomonic": (
+            "STRESS-TRIGGERED ACUTE NEUROLOGICAL DETERIORATION = PATHOGNOMONIC: "
+            "FEBRILE ILLNESS or MINOR HEAD TRAUMA → sudden neurological worsening within hours-days; "
+            "After crisis: PARTIAL recovery (baseline function lost progressively with each crisis); "
+            "EPISODIC + STEPWISE neurological decline over years; "
+            "MRI VANISHING WHITE MATTER: "
+            "T2 hyperintensity with CSF-like signal in white matter (vacuolation/cystic change); "
+            "Progressive replacement of white matter by fluid — white matter literally disappears; "
+            "Corticospinal tracts relatively spared initially; diffuse eventually; "
+            "OVARIAN FAILURE (POI) IN FEMALES: premature ovarian insufficiency — may present before neurological; "
+            "CSF: oligoclonal bands absent; protein mild/normal; "
+            "EIF2B1-5 PANEL: biallelic variants in any subunit confirm VWM"
+        ),
+        "treatment": (
+            "NO APPROVED DISEASE-MODIFYING THERAPY: "
+            "ISRIB (eIF2B GEF activator) — PRECLINICAL ONLY: reverses VWM in mouse models; "
+            "multiple ISRIB analogues in pipeline; Phase I trials emerging; "
+            "CRISIS PREVENTION — MOST CRITICAL MANAGEMENT: "
+            "Early antipyretics: paracetamol/ibuprofen at FIRST sign of fever (before temperature rises); "
+            "Influenza + COVID vaccination annually; "
+            "CONTACT SPORTS PROHIBITED: minor head trauma → life-threatening crisis; "
+            "Minor trauma crisis: IV dexamethasone may attenuate severity (anecdotal); "
+            "OVARIAN FAILURE: oestrogen + progesterone replacement; fertility counselling; "
+            "Anti-epileptic for seizures; antispastic for spasticity; "
+            "WRITTEN EMERGENCY PROTOCOL for families: fever management + hospital threshold; "
+            "GENETIC COUNSELLING: AR; 25% recurrence; EIF2B1-5 panel; prenatal"
+        ),
+        "key_features": [
+            "EIF2B5 (VWM/CACH): AR; most common autosomal recessive leukodystrophy in children (1:35,000)",
+            "Stress-triggered acute neurological crises (fever / minor head trauma) PATHOGNOMONIC",
+            "White matter literally vanishes on MRI — replaced by CSF-signal fluid over years",
+            "ISR (eIF2B GEF failure under stress) — oligodendrocytes most translation-dependent cells",
+            "ISRIB (ISR inhibitor, eIF2B activator): reverses VWM in mice — most promising therapeutic target",
+            "Ovarian failure (POI) in females — may precede neurological onset",
+            "Contact sports PROHIBITED — minor head trauma triggers life-threatening neurological crisis",
+            "Written emergency fever protocol mandatory for all VWM families",
+        ],
+        "key_ddx": [
+            "MLD (ARSA): metachromatic granules; peripheral neuropathy; no episodic stress-triggered crises",
+            "Alexander disease (GFAP): frontal predominance; Rosenthal fibres; macrocephaly; no episodic crises",
+            "Megalencephalic leukoencephalopathy (MLC1): macrocephaly; vacuolating; MLC1/HEPACAM gene",
+            "ADAR AGS6: calcifications + interferonopathy; elevated IFN-alpha CSF; no episodic fever crises",
+        ],
+        "onset_age": 3.0,
+        "wm_lesion_pct": 99,
+        "stress_trigger_pct": 88,
+        "ovarian_failure_pct": 60,
+        "seizure_pct": 35,
+        "spastic_pct": 75,
+        "seed": 2620,
+    },
+    {
+        "gene": "ADAR",
+        "protein": (
+            "ADAR -- 1q21.3 AD-GOF/AR -- 1226aa -- Adenosine-Deaminase-RNA-Specific-ADAR1-136kDa-"
+            "A-to-I-dsRNA-Editor-Interferonopathy-AGS6-AD-AR -- OMIM-Gene-146920-Disease-AGS6-615010"
+        ),
+        "locus": "1q21.3",
+        "protein_size": "1226 aa / 136 kDa",
+        "inheritance": (
+            "AD heterozygous gain-of-function → AGS6 (most AGS6); "
+            "AR biallelic → AGS6 (less common); "
+            "Same gene (ADAR) AD LOF → Dyschromatosis Symmetrica Hereditaria (DSH — skin pigmentation only, NO brain); "
+            "ADAR1 is most common AGS gene (~25-30% of all AGS cases); "
+            "AGS spectrum: 7 genes (TREX1, RNASEH2A/2B/2C, SAMHD1, ADAR, IFIH1); "
+            "De novo AD mutations occur; family history may be absent"
+        ),
+        "disease_category": (
+            "Aicardi-Goutières Syndrome type 6 (AGS6); Type I Interferonopathy; Leukodystrophy with calcifications; "
+            "ADAR1 edits adenosine → inosine (A→I) in endogenous Alu-repeat dsRNA — marks it as SELF; "
+            "Loss/gain-of-function → unedited Alu-dsRNA → MDA5 (IFIH1) senses as NON-SELF → IFN-alpha cascade; "
+            "PSEUDO-TORCH SYNDROME PATHOGNOMONIC: calcifications + leukodystrophy + microcephaly with NEGATIVE TORCH serology; "
+            "CT BRAIN: basal ganglia + white matter + cerebellar calcifications — CT SUPERIOR TO MRI FOR CALCIUM; "
+            "IFN-alpha CSF (>2 IU/mL) + Interferon Score (ISG15 blood): diagnostic; "
+            "JAK inhibitors (baricitinib/ruxolitinib): most promising emerging treatment"
+        ),
+        "disease_pathway": (
+            "ADAR1 (adenosine deaminase acting on RNA 1) catalyses adenosine-to-inosine (A→I) editing "
+            "in cytoplasmic double-stranded RNA — primarily Alu retroelement repeat sequences that form "
+            "fold-back dsRNA structures. "
+            "Inosine-containing dsRNA is NOT recognised by MDA5 (IFIH1) pattern recognition receptor — "
+            "ADAR1 editing marks endogenous Alu-dsRNA as SELF. "
+            "Loss or gain-of-function mutations → insufficient Alu-dsRNA editing → unedited dsRNA accumulates → "
+            "MDA5 detects as non-self foreign dsRNA → MAVS → IRF3/IRF7 → type I IFN (IFN-alpha/beta) transcription → "
+            "JAK1/TYK2 → STAT1/STAT2 → ISG15, IFIT1, CXCL10 upregulation (Interferon Score). "
+            "CNS: IFN-alpha toxic to oligodendrocytes → leukodystrophy; perivascular calcification (inflamed vessels → calcium). "
+            "JAK inhibitors (baricitinib: JAK1/2; ruxolitinib: JAK1/2) → block IFN signalling downstream."
+        ),
+        "pathognomonic": (
+            "PSEUDO-TORCH SYNDROME = PATHOGNOMONIC FOR AGS: "
+            "Neonatal/early-infantile: TORCH-like features (microcephaly, calcifications, leukodystrophy) "
+            "with NEGATIVE TORCH serology (CMV, toxoplasma, rubella, herpes) = PURSUE AGS DIAGNOSIS; "
+            "CT BRAIN (NOT MRI ALONE): bilateral symmetric basal ganglia calcifications (putamen + caudate); "
+            "white matter + cerebellar calcifications — CT > MRI for calcification detection; "
+            "IFN-ALPHA IN CSF: >2 IU/mL (normal <2) = DIAGNOSTIC FOR AGS; "
+            "INTERFERON SCORE: ISG15/IFIT1/CXCL10 gene expression in blood >2SD above control = AGS; "
+            "CSF LYMPHOCYTOSIS (sterile): pleocytosis mimicking viral meningitis — misdiagnosis common; "
+            "CHILBLAINS (acral cyanosis): cold-triggered skin lesions in ~40% of AGS — nifedipine helpful; "
+            "ADAR sequencing: heterozygous GOF (most common) or biallelic LOF confirms AGS6"
+        ),
+        "treatment": (
+            "JAK INHIBITORS — EMERGING (NOT YET APPROVED FOR AGS): "
+            "BARICITINIB (JAK1/JAK2): most evidence; case series + small trials — stabilises/improves outcomes early; "
+            "off-label (approved RA/alopecia); monitoring: neutropenia, LFTs, lipids, VZV reactivation; "
+            "RUXOLITINIB: alternative JAK1/2 inhibitor; similar mechanism; "
+            "REVERSE TRANSCRIPTASE INHIBITORS (RTIs): antiretrovirals (tenofovir/lamivudine/abacavir); "
+            "rationale — LINE-1 retroelement activation as additional IFN trigger; "
+            "SUPPORTIVE: anti-epileptic (seizures ~50%); antispasticity (baclofen); physiotherapy; "
+            "CHILBLAINS: nifedipine (calcium channel blocker) — peripheral vasodilation; "
+            "IFN-alpha CSF + ISG monitoring: response biomarkers for JAK inhibitor; "
+            "GENETIC COUNSELLING: AD (50% from affected parent) vs AR (25%); de novo surveillance; "
+            "CT brain every 1-2yr: monitor calcification progression"
+        ),
+        "key_features": [
+            "ADAR (AGS6): AD GOF or AR; most common AGS gene (~25-30% of all AGS); Type I interferonopathy",
+            "Pseudo-TORCH PATHOGNOMONIC: calcifications + leukodystrophy + microcephaly + NEGATIVE TORCH serology",
+            "CT brain MANDATORY: basal ganglia + white matter calcifications (CT superior to MRI for calcium)",
+            "IFN-alpha CSF (>2 IU/mL) + Interferon Score (ISG15 blood): diagnostic for AGS",
+            "ADAR1 edits Alu-dsRNA as self: loss/gain of editing → MDA5 activation → IFN-alpha cascade",
+            "JAK inhibitors (baricitinib/ruxolitinib): blocking JAK-STAT IFN signalling — most promising treatment",
+            "Chilblains (acral cyanosis) in 40% — cold-triggered; nifedipine vasodilation",
+            "CSF lymphocytosis sterile (mimics viral meningitis) — IFN-alpha CSF assay discriminates",
+        ],
+        "key_ddx": [
+            "Congenital TORCH infection: calcifications + leukodystrophy BUT POSITIVE serology (CMV/toxo/rubella)",
+            "Other AGS genes (TREX1/RNASEH2B/SAMHD1/IFIH1): same interferonopathy; ADAR most common; panel required",
+            "Aicardi syndrome: females; absent corpus callosum + intracranial cysts; NOT interferonopathy; no IFN elevation",
+            "GFAP Alexander disease: frontal + Rosenthal fibres; normal IFN score; macrocephaly",
+        ],
+        "onset_age": 0.3,
+        "wm_lesion_pct": 95,
+        "calcification_pct": 90,
+        "ifn_elevated_pct": 95,
+        "seizure_pct": 50,
+        "chilblains_pct": 40,
+        "spastic_pct": 72,
+        "seed": 2621,
     },
 ]
 
+SEEDS = [g["seed"] for g in ATLAS_GENES]
 
-def _make_cohort(gene_data: dict, seed: int) -> list:
+
+def _simulate_cohort(gene: dict, seed: int) -> list:
     rng = random.Random(seed)
-    gene = gene_data["gene"]
-    cohort = []
-    for i in range(40):
-        age = rng.randint(1, 35)
-        severity = rng.choice(["mild", "moderate", "severe", "severe"])
-
-        if gene == "ARSA":
-            form = rng.choice(["late-infantile", "juvenile", "adult"])
-            feature = rng.choice([
-                "periventricular tigroid T2 signal", "urine sulfatides elevated",
-                "ARSA enzyme <5%", "walking regression", "psychiatric onset (adult)"
-            ])
-            therapy = "Libmeldy (pre-symptomatic)" if form == "late-infantile" else rng.choice(["symptomatic", "HSCT (juvenile)"])
-        elif gene == "GALC":
-            form = rng.choice(["infantile", "late-infantile", "adult"])
-            age = rng.randint(0, 2) if form == "infantile" else rng.randint(3, 40)
-            feature = rng.choice([
-                "irritability + hypertonicity", "near-zero GALC enzyme", "psychosine elevated",
-                "cerebellar WM T2 signal", "progressive spastic paraplegia (adult)"
-            ])
-            therapy = "HSCT (pre-symptomatic)" if form == "infantile" else "palliative/supportive"
-        elif gene == "PLP1":
-            age = rng.randint(0, 5)
-            feature = rng.choice([
-                "nystagmus at birth", "diffuse hypomyelination MRI", "PLP1 duplication MLPA",
-                "absent myelination on MRI", "severe motor delay"
-            ])
-            therapy = "symptomatic (no approved therapy)"
-        elif gene == "ABCD1":
-            form = rng.choice(["CCALD", "AMN", "Addison-only"])
-            age = rng.randint(4, 45)
-            if form == "CCALD":
-                age = rng.randint(4, 12)
-            feature = rng.choice([
-                "posterior WM Gd enhancement", "VLCFA C26:0 elevated", "adrenal insufficiency",
-                "Loes score ≤9 → HSCT window", "progressive myelopathy (AMN)"
-            ])
-            therapy = rng.choice(["HSCT (early CCALD)", "Skysona (no HLA match)", "hydrocortisone (Addison)", "supportive AMN"])
-        elif gene == "ASPA":
-            age = rng.randint(0, 3)
-            feature = rng.choice([
-                "macrocephaly at birth", "NAA elevated MRS", "urine NAA (organic acids)",
-                "U-fibre T2 signal", "diffuse WM + globus pallidus"
-            ])
-            therapy = "supportive (gene therapy trials)"
-        elif gene == "GFAP":
-            form = rng.choice(["infantile", "adult-type2"])
-            age = rng.randint(0, 2) if form == "infantile" else rng.randint(20, 60)
-            feature = rng.choice([
-                "frontal WM T2 + enhancement", "GFAP protein CSF elevated",
-                "de novo GFAP mutation", "Rosenthal fibres biopsy", "palatal myoclonus (adult)"
-            ])
-            therapy = "symptomatic (ASO trials)"
-        elif gene == "EIF2B5":
-            feature = rng.choice([
-                "WM FLAIR = CSF signal", "fever-triggered acute deterioration",
-                "head trauma episode", "premature ovarian failure (female)", "ISR hypersensitivity"
-            ])
-            therapy = rng.choice(["fever protocol + antipyretics", "ISRIB (trial)", "supportive + HRT (POF)"])
-        elif gene == "POLR3A":
-            age = rng.randint(1, 20)
-            feature = rng.choice([
-                "dental hypodontia + leukodystrophy", "hypomyelination + cerebellar atrophy",
-                "severe myopia", "hypogonadism + WM disease", "T2 globus pallidus hypointensity"
-            ])
-            therapy = "symptomatic (hormone replacement + ophthalmic + physiotherapy)"
-        else:
-            feature = "hypomyelination WM"
-            therapy = "supportive"
-
-        cohort.append({
-            "patient_id": f"{gene}-{seed}-{i+1:03d}",
-            "age": age,
-            "gene": gene,
-            "severity": severity,
-            "key_feature": feature,
-            "current_therapy": therapy,
+    pts = []
+    n = 40
+    for i in range(n):
+        age_onset = gene.get("onset_age", 2.0) + rng.gauss(0, 1.5)
+        age_onset = max(0.1, age_onset)
+        wm_lesion = int(rng.random() < gene.get("wm_lesion_pct", 90) / 100)
+        seizure = int(rng.random() < gene.get("seizure_pct", 25) / 100)
+        spastic = int(rng.random() < gene.get("spastic_pct", 70) / 100)
+        pts.append({
+            "gene": gene["gene"],
+            "patient_id": f"{gene['gene']}-{seed}-{i+1:03d}",
+            "age_onset": round(age_onset, 1),
+            "wm_lesion": wm_lesion,
+            "seizure": seizure,
+            "spastic": spastic,
+            "adrenal_insufficiency": int(gene["gene"] == "ABCD1" and rng.random() < 0.70),
+            "calcifications": int(gene["gene"] == "ADAR" and rng.random() < 0.90),
+            "stress_trigger": int(gene["gene"] == "EIF2B5" and rng.random() < 0.88),
+            "nystagmus_birth": int(gene["gene"] == "PLP1" and rng.random() < 0.94),
+            "hypodontia": int(gene["gene"] == "POLR3A" and rng.random() < 0.85),
+            "ifn_elevated": int(gene["gene"] == "ADAR" and rng.random() < 0.95),
+            "globoid_cells": int(gene["gene"] == "GALC" and rng.random() < 0.88),
+            "metachromatic_granules": int(gene["gene"] == "ARSA" and rng.random() < 0.80),
+            "seed": seed,
         })
-    return cohort
+    return pts
 
 
-# ---------- API endpoint functions -------------------------------------------
-
-def overview() -> dict:
-    total = 0
-    severe_count = 0
-    avg_age_sum = 0
-    gene_summary = []
-    for idx, g in enumerate(LEUKODYSTROPHY_GENES):
-        cohort = _make_cohort(g, SEED_BASE + idx)
-        total += len(cohort)
-        severe_count += sum(1 for p in cohort if p["severity"] == "severe")
-        avg_age_sum += sum(p["age"] for p in cohort)
-        gene_summary.append({
-            "gene": g["gene"],
-            "alt_name": g.get("alt_name", ""),
-            "locus": g["locus"],
-            "protein_size": g["protein_size"],
-            "inheritance": g["inheritance"],
-            "n_patients": len(cohort),
+def generate_overview() -> dict:
+    summary_by_gene = []
+    all_pts = []
+    for gene in ATLAS_GENES:
+        pts = _simulate_cohort(gene, gene["seed"])
+        all_pts.extend(pts)
+        n = len(pts)
+        summary_by_gene.append({
+            "gene": gene["gene"],
+            "locus": gene["locus"],
+            "n_patients": n,
+            "avg_onset_age": round(sum(p["age_onset"] for p in pts) / n, 1),
+            "wm_lesion_pct": round(sum(p["wm_lesion"] for p in pts) / n * 100, 1),
+            "seizure_pct": round(sum(p["seizure"] for p in pts) / n * 100, 1),
+            "spastic_pct": round(sum(p["spastic"] for p in pts) / n * 100, 1),
         })
-    avg_age = round(avg_age_sum / total, 1)
+
+    total = len(all_pts)
     return {
         "atlas": "Hereditary-Leukodystrophy-Atlas",
+        "genes": [g["gene"] for g in ATLAS_GENES],
+        "n_genes": len(ATLAS_GENES),
+        "total_patients": total,
+        "seeds": f"{SEEDS[0]}-{SEEDS[-1]}",
+        "gene_summaries": summary_by_gene,
         "aggregate_stats": {
-            "total_patients": total,
-            "genes_covered": len(LEUKODYSTROPHY_GENES),
-            "avg_age_at_diagnosis_yr": avg_age,
-            "severe_cases_pct": round(100 * severe_count / total, 1),
-            "seed_range": f"{SEED_BASE}–{SEED_BASE + len(LEUKODYSTROPHY_GENES) - 1}",
+            "overall_wm_lesion_pct": round(sum(p["wm_lesion"] for p in all_pts) / total * 100, 1),
+            "overall_seizure_pct": round(sum(p["seizure"] for p in all_pts) / total * 100, 1),
+            "overall_spastic_pct": round(sum(p["spastic"] for p in all_pts) / total * 100, 1),
         },
-        "gene_summary": gene_summary,
+        "disease_classes": [
+            f"{g['gene']} — {g['disease_category'].split(';')[0].strip()}"
+            for g in ATLAS_GENES
+        ],
         "key_clinical_distinctions": [
-            "ARSA-PSEUDODEFICIENCY: low ARSA enzyme + NORMAL sulfatide urine = pseudodeficiency (N350S+I179S), NOT MLD; always confirm with sulfatide urine BEFORE diagnosing MLD",
-            "GALC-HSCT-PRESYMPTOMATIC-ONLY: HSCT ONLY works PRE-SYMPTOMATIC in Krabbe; NBS is mandatory to identify pre-symptomatic infantile; symptomatic infantile Krabbe = palliative",
-            "PLP1-MLPA-MANDATORY: standard sequencing misses PLP1 duplication (70% PMD); MLPA first-tier test; nystagmus at birth in male = PLP1 MLPA immediately",
-            "ABCD1-CCALD-NARROW-WINDOW: CCALD treatment window is NARROW (Loes ≤9, NRS ≤1, Gd+); every week matters; annual MRI surveillance mandatory for all ABCD1 boys age 4–12yr",
-            "ABCD1-PHT-ABSOLUTE-CI: phenytoin/fosphenytoin ABSOLUTELY CONTRAINDICATED in X-ALD (CYP3A4 → cortisol catabolism → adrenal crisis); use LEV as AED",
-            "ASPA-NAA-MRS-MOST-SPECIFIC: elevated NAA on MRS = Canavan until proven otherwise; most specific MRS biomarker in all leukodystrophies",
-            "GFAP-GOF-NOT-LOF: ALL Alexander disease mutations are DOMINANT GOF; GFAP LOF does NOT cause Alexander; de novo most common; no enzyme test",
-            "EIF2B5-FEVER-EMERGENCY: fever in VWM patient = EMERGENCY; aggressive antipyretics (target <37.8°C) prevents devastating deterioration episodes; written emergency protocol mandatory",
-            "POLR3A-DENTAL-KEY-CLUE: dental abnormalities (hypodontia, delayed dentition) in leukodystrophy = POLR3-related first; intronic splice c.1909+22G>A requires genome sequencing to detect",
-            "ABCD1-ADRENAL-MANDATORY: adrenal insufficiency in 71% ABCD1 males; screen ALL males; stress-dose hydrocortisone for illness/surgery; adrenal crisis is preventable death",
+            "ABCD1 X-ALD: VLCFA accumulate; CALD posterior advancing MRI; HSCT/Skysona-FDA2022 curative if Loes≤9+gadolinium; AMN adults; Addison 70% males",
+            "ARSA MLD: sulfatide accumulates; metachromatic granules nerve biopsy PATHOGNOMONIC; Libmeldy gene therapy EMA2020; adult MLD = schizophrenia mimicry",
+            "GALC Krabbe: psychosine cytotoxic; globoid cells PATHOGNOMONIC; extreme irritability infantile; HSCT pre-symptomatic late-onset",
+            "PLP1 PMD: XLR; nystagmus at birth PATHOGNOMONIC; hypomyelination static; duplication most common (60-70%); NO disease-modifying therapy",
+            "GJC2 PMLD: AR connexin 47; milder hypomyelination than PLP1; nystagmus less prominent/absent; SPG44 adult AD monoallelic",
+            "POLR3A 4H: AR Pol-III; 4H TRIAD PATHOGNOMONIC (Hypomyelination+Hypodontia+Hypogonadotropic Hypogonadism); cerebellar atrophy; HRT mandatory",
+            "EIF2B5 VWM: AR ISR GEF failure; stress-triggered crises (fever/minor trauma) PATHOGNOMONIC; white matter vanishes; ISRIB preclinical",
+            "ADAR AGS6: AD GOF / AR interferonopathy; pseudo-TORCH PATHOGNOMONIC; CT calcifications; IFN-alpha CSF elevated; JAK inhibitors baricitinib emerging",
         ],
     }
 
 
-def breakdown() -> dict:
-    result = []
-    for idx, g in enumerate(LEUKODYSTROPHY_GENES):
-        cohort = _make_cohort(g, SEED_BASE + idx)
-        severities = {}
-        for p in cohort:
-            severities[p["severity"]] = severities.get(p["severity"], 0) + 1
-        result.append({
-            "gene": g["gene"],
-            "alt_name": g.get("alt_name", ""),
-            "protein": g["protein"],
-            "locus": g["locus"],
-            "protein_size": g["protein_size"],
-            "inheritance": g["inheritance"],
-            "age_of_onset": g["age_of_onset"],
-            "key_biomarker": g["key_biomarker"],
-            "pathognomonic": g["pathognomonic"],
-            "treatment": g["treatment"],
-            "critical_flags": g["critical_flags"],
-            "severity_distribution": severities,
-            "n_patients": len(cohort),
-            "patients": cohort[:5],
-        })
-    return {"genes": result, "total_genes": len(LEUKODYSTROPHY_GENES)}
+def generate_breakdown() -> dict:
+    gene_breakdowns = []
+    for gene in ATLAS_GENES:
+        pts = _simulate_cohort(gene, gene["seed"])
+        n = len(pts)
+        entry = {
+            "gene": gene["gene"],
+            "locus": gene["locus"],
+            "protein_size": gene["protein_size"],
+            "inheritance": gene["inheritance"],
+            "disease_category": gene["disease_category"],
+            "pathognomonic": gene["pathognomonic"],
+            "treatment": gene["treatment"],
+            "key_features": gene["key_features"],
+            "key_ddx": gene["key_ddx"],
+            "n_patients": n,
+            "avg_onset_age": round(sum(p["age_onset"] for p in pts) / n, 1),
+            "wm_lesion_pct": round(sum(p["wm_lesion"] for p in pts) / n * 100, 1),
+            "seizure_pct": round(sum(p["seizure"] for p in pts) / n * 100, 1),
+            "spastic_pct": round(sum(p["spastic"] for p in pts) / n * 100, 1),
+        }
+        gene_breakdowns.append(entry)
+    return {"gene_breakdowns": gene_breakdowns}
 
 
-def definitions() -> dict:
+def generate_definitions() -> dict:
+    gene_entries = {}
+    for gene in ATLAS_GENES:
+        gene_entries[gene["gene"]] = {
+            "locus": gene["locus"],
+            "protein_size": gene["protein_size"],
+            "inheritance": gene["inheritance"].split(";")[0].strip(),
+            "disease_name": gene["disease_category"].split(";")[0].strip(),
+            "disease_pathway": gene["disease_pathway"],
+            "pathognomonic": gene["pathognomonic"],
+            "treatment_summary": gene["treatment"].split(";")[0].strip() + "...",
+            "key_features": gene["key_features"],
+            "key_ddx": gene["key_ddx"],
+        }
     return {
-        "atlas": "Hereditary-Leukodystrophy-Atlas",
-        "genes": [
-            {
-                "gene": g["gene"],
-                "alt_name": g.get("alt_name", ""),
-                "definition": g["alias"],
-                "locus": g["locus"],
-                "protein_size": g["protein_size"],
-                "inheritance": g["inheritance"],
-                "age_of_onset": g["age_of_onset"],
-                "critical_flags": g["critical_flags"],
-            }
-            for g in LEUKODYSTROPHY_GENES
-        ],
-        "glossary": {
-            "Leukodystrophy": (
-                "Inherited disorders of myelin formation or maintenance; classified as hypomyelinating "
-                "(myelin never formed — PLP1, POLR3A) vs demyelinating (myelin formed then lost — ARSA, GALC) "
-                "vs spongiform (Canavan) vs astrocytopathy (Alexander); MRI is the primary diagnostic tool; "
-                "always check U-fibres (subcortical arcuate fibres), corpus callosum, cerebellum, and peripheral nerves"
+        "gene_entries": gene_entries,
+        "leukodystrophy_glossary": {
+            "Leukodystrophy Classification": (
+                "Leukodystrophies are inherited disorders of white matter (myelin), classified by mechanism: "
+                "1) Hypomyelinating: myelin never forms adequately (PLP1-PMD, GJC2-PMLD, POLR3A-4H); "
+                "2) Demyelinating: myelin forms then breaks down (ARSA-MLD, GALC-Krabbe); "
+                "3) Vacuolating: white matter becomes cystic/fluid-filled (EIF2B5-VWM); "
+                "4) Neuroinflammatory/interferonopathy: immune-driven (ADAR-AGS6); "
+                "5) Metabolic VLCFA storage (ABCD1-X-ALD). "
+                "MRI pattern + distribution + progression rate narrows differential before genetic testing. "
+                "Key patterns: posterior advancing (X-ALD), tigroid (MLD), vanishing (VWM), "
+                "calcifications + leukodystrophy (AGS), static hypomyelination (PMD/4H/PMLD)."
             ),
-            "Metachromatic Leukodystrophy (MLD)": (
-                "ARSA deficiency; sulfatide accumulation; lysosomal demyelinating leukodystrophy; "
-                "periventricular tigroid T2 on MRI; urine metachromatic granules; "
-                "Libmeldy gene therapy (EMA2020) for pre-symptomatic/early-symptomatic; "
-                "pseudodeficiency pitfall (N350S+I179S) must be excluded"
+            "Integrated Stress Response (ISR) and VWM Therapy": (
+                "The Integrated Stress Response (ISR) is activated by four kinases (HRI/PKR/PERK/GCN2) "
+                "phosphorylating eIF2alpha-Ser51 → inhibiting eIF2B GEF → ↓global translation + ↑ATF4. "
+                "EIF2B5 mutations reduce eIF2B catalytic (GEF) activity. Basal: sufficient. "
+                "Under ISR (fever/trauma): phospho-eIF2alpha cannot be overcome → translation fails in "
+                "oligodendrocytes (highest demand) → white matter vacuolation. "
+                "ISRIB (Integrated Stress Response InhiBitor): allosteric eIF2B activator — stabilises "
+                "decameric eIF2B complex → maintains GEF activity even with phospho-eIF2alpha → "
+                "reverses VWM in mouse models completely. Phase I trials of ISRIB analogues ongoing."
             ),
-            "Krabbe Disease (Globoid Cell Leukodystrophy)": (
-                "GALC deficiency; psychosine toxic at nanomolar concentrations; globoid cells pathognomonic; "
-                "infantile: fatal by 2yr untreated; HSCT ONLY pre-symptomatic; NBS mandatory; "
-                "deep cerebellar/posterior cerebral WM early on MRI"
+            "Type I Interferonopathy (AGS)": (
+                "Aicardi-Goutières Syndrome (AGS) is the prototype type I interferonopathy: "
+                "constitutive overactivation of innate immune type I IFN pathway → progressive neurodegeneration. "
+                "Seven AGS genes (TREX1, RNASEH2A/2B/2C, SAMHD1, ADAR, IFIH1) all converge on "
+                "preventing cytoplasmic nucleic acid sensing. "
+                "ADAR1 normally edits Alu-dsRNA (self-mark as inosine); loss → unedited dsRNA → "
+                "MDA5 activation → IFN-alpha cascade. "
+                "Diagnosis: IFN-alpha CSF >2 IU/mL + Interferon Score (ISG15/IFIT1/CXCL10 blood upregulation). "
+                "Treatment: JAK inhibitors (baricitinib/ruxolitinib) block JAK1/2 downstream of IFN receptor."
             ),
-            "Pelizaeus-Merzbacher Disease (PMD)": (
-                "PLP1 duplication (70%) / deletion (SPG2) / null (connatal); X-linked; "
-                "diffuse hypomyelination from birth; nystagmus earliest sign; MLPA mandatory; "
-                "no approved therapy; gene silencing approaches in development"
-            ),
-            "X-linked Adrenoleukodystrophy (X-ALD)": (
-                "ABCD1 LOF; VLCFA accumulation; CCALD (35-40%): childhood parieto-occipital WM Gd enhancement; "
-                "AMN (40-45%): adult progressive myelopathy; adrenal insufficiency 71%; "
-                "Skysona (FDA2022) + HSCT for early CCALD; PHT absolute CI (adrenal crisis)"
-            ),
-            "Canavan Disease": (
-                "ASPA deficiency; NAA accumulation; MRS NAA elevated = most specific leukodystrophy biomarker; "
-                "U-fibre involvement early; macrocephaly; Ashkenazi founder (p.Glu285Ala + p.Tyr231X); "
-                "no approved therapy; AAV9-ASPA trials"
-            ),
-            "Alexander Disease": (
-                "GFAP dominant GOF (NOT LOF); all mutations heterozygous missense; de novo most common; "
-                "Rosenthal fibres pathognomonic (perivascular/subpial eosinophilic aggregates); "
-                "frontal WM + basal ganglia MRI; CSF GFAP elevated; no enzyme test; "
-                "adult Type II: palatal myoclonus + bulbar dysfunction"
-            ),
-            "Vanishing White Matter Disease (VWM)": (
-                "EIF2B1-5 biallelic LOF; ISR hypersensitivity; FLAIR WM = CSF signal (pathognomonic); "
-                "stress triggers (fever, head trauma) → acute deterioration EMERGENCY; "
-                "aggressive antipyretics mandatory; ovarioleukodystrophy in females; "
-                "ISRIB in trials"
-            ),
-            "POLR3-Related Leukodystrophy (HLD7)": (
-                "POLR3A biallelic LOF; RNA Pol III → tRNA impairment; hypomyelination (not demyelination); "
-                "dental abnormalities = most specific clinical clue; myopia; hypogonadism; "
-                "T2 hypointensity globus pallidus/ventral pons/dentate; slow progression; "
-                "intronic splice c.1909+22G>A requires genome sequencing"
-            ),
-            "Pseudodeficiency (ARSA)": (
-                "N350S + I179S ARSA polymorphisms in trans → low enzyme activity WITHOUT disease; "
-                "carrier frequency ~1-2% Europeans; urine sulfatide NORMAL (in true MLD: elevated); "
-                "CRITICAL: always confirm low ARSA with sulfatide urine + molecular testing before diagnosing MLD; "
-                "treating pseudodeficiency as MLD = wrong diagnosis with treatment harm"
-            ),
-            "Psychosine Hypothesis (Krabbe)": (
-                "Psychosine (galactosylsphingosine, not galactosylceramide) is the direct cytotoxin in Krabbe; "
-                "accumulates because GALC also cleaves psychosine; nanomolar concentrations kill oligodendrocytes; "
-                "psychosine plasma/DBS levels are the most sensitive Krabbe biomarker; "
-                "NBS: DBS GALC enzyme + confirmatory psychosine"
-            ),
-            "Integrated Stress Response (ISR) — VWM": (
-                "eIF2α phosphorylation → eIF2B inhibition → reduced translation → ISR; "
-                "in VWM (EIF2B LOF): ISR is constitutively hypersensitive → oligodendrocytes/astrocytes fragile; "
-                "any stressor (fever, trauma) → acute ISR → acute VWM deterioration; "
-                "ISRIB stabilises eIF2B → reduces ISR hypersensitivity — most rational VWM therapy"
+            "HSCT and Gene Therapy Windows in Leukodystrophies": (
+                "Key principle: HSCT/gene therapy arrests disease but does NOT reverse established neurological damage. "
+                "Treat BEFORE symptoms or in earliest stage for maximum benefit. "
+                "X-ALD CALD: HSCT if Loes score ≤9 + gadolinium enhancement (active); "
+                "Skysona gene therapy FDA 2022 (autologous — avoids GvHD); "
+                "Krabbe late-onset: HSCT pre-symptomatic (NBS-identified); "
+                "MLD: Libmeldy gene therapy EMA 2020 (autologous HSC; pre-symptomatic late-infantile/early juvenile); "
+                "VWM/POLR3A-4H/PLP1-PMD: HSCT NOT effective (intrinsic oligodendrocyte defect — not enzyme deficiency). "
+                "NBS enables pre-symptomatic identification — critical for these narrow treatment windows."
             ),
         },
     }
@@ -888,12 +866,12 @@ def definitions() -> dict:
 
 if __name__ == "__main__":
     import json
-    print("=== HEREDITARY-LEUKODYSTROPHY-ATLAS — OVERVIEW ===")
-    print(json.dumps(overview(), indent=2)[:3000])
-    print("\n=== BREAKDOWN (GFAP — GOF distinction) ===")
-    bd = breakdown()
-    gfap = next(g for g in bd["genes"] if g["gene"] == "GFAP")
-    print(json.dumps(gfap, indent=2)[:2000])
-    print("\n=== DEFINITIONS (glossary sample) ===")
-    df = definitions()
-    print(json.dumps({"pseudodeficiency": df["glossary"]["Pseudodeficiency (ARSA)"]}, indent=2))
+    print("=== OVERVIEW ===")
+    print(json.dumps(generate_overview(), indent=2)[:2000])
+    print("\n=== BREAKDOWN (first gene) ===")
+    bd = generate_breakdown()
+    print(json.dumps(bd["gene_breakdowns"][0], indent=2)[:2000])
+    print("\n=== DEFINITIONS (first entry) ===")
+    defs = generate_definitions()
+    first_gene = list(defs["gene_entries"].keys())[0]
+    print(json.dumps(defs["gene_entries"][first_gene], indent=2)[:1000])
