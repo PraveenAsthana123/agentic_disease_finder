@@ -48901,6 +48901,27 @@ async def hereditary_monogenic_ibd_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-thoracic-aortic-atlas/overview")
+async def hereditary_thoracic_aortic_atlas_overview():
+    """Hereditary-Thoracic-Aortic-Atlas overview — FBN1-Marfan TGFBR1-LDS1 TGFBR2-LDS2 SMAD3-AOS ACTA2-MSMDS MYH11-PDA COL3A1-vEDS SLC2A10-ATS 8-gene HTAD reference 320 patients seeds 2566-2573."""
+    from scripts.hereditary_thoracic_aortic_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-thoracic-aortic-atlas/breakdown")
+async def hereditary_thoracic_aortic_atlas_breakdown():
+    """Hereditary-Thoracic-Aortic-Atlas per-gene breakdown — FBN1 ectopia-lentis aortic-root, TGFBR1/2 LDS bifid-uvula, SMAD3 osteoarthritis, ACTA2 Moyamoya, MYH11 PDA, COL3A1 surgery-contraindicated, SLC2A10 tortuosity."""
+    from scripts.hereditary_thoracic_aortic_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-thoracic-aortic-atlas/definitions")
+async def hereditary_thoracic_aortic_atlas_definitions():
+    """Hereditary-Thoracic-Aortic-Atlas glossary — TGF-beta paradox, LDS surgery thresholds, vEDS celiprolol, ACTA2 MSMDS triad, MYH11 PDA clue, SLC2A10 DHA ascorbate transporter."""
+    from scripts.hereditary_thoracic_aortic_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

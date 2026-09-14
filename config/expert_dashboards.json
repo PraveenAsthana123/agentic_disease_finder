@@ -19285,5 +19285,50 @@
       "cgd",
       "hlh"
     ]
+  },
+  {
+    "id": "hereditary-thoracic-aortic-atlas",
+    "title": "Hereditary-Thoracic-Aortic-Atlas Complete-8-Gene-FBN1-TGFBR1-TGFBR2-SMAD3-ACTA2-MYH11-COL3A1-SLC2A10-Atlas FBN1-2871aa-15q21.1-AD-Marfan-50mm-Threshold-Ectopia-Lentis-Dural-Ectasia TGFBR1-503aa-9q22.33-AD-LDS1-Bifid-Uvula-Hypertelorism-Aggressive TGFBR2-567aa-3p24.1-AD-LDS2-Most-Aggressive-Mean-Dissection-26y SMAD3-425aa-15q22.33-AD-AOS-Early-OA-PATHOGNOMONIC-TGF-Beta-Paradox ACTA2-377aa-10q23.31-AD-MSMDS-pArg179His-Triad-PATHOGNOMONIC MYH11-1972aa-16p13.11-AD-HTAD-Plus-PDA-PATHOGNOMONIC-Pairing COL3A1-1466aa-2q32.2-AD-vEDS-Celiprolol-Only-RCT-Surgery-Contraindicated SLC2A10-541aa-20q13.12-AR-ATS-100pct-Tortuosity-TGF-Beta-Excess 320-Patient-Aggregate-8x40-seeds-2566-2573",
+    "status": "built",
+    "route": "/hereditary-thoracic-aortic-atlas",
+    "api_endpoints": [
+      "/api/hereditary-thoracic-aortic-atlas/overview",
+      "/api/hereditary-thoracic-aortic-atlas/breakdown",
+      "/api/hereditary-thoracic-aortic-atlas/definitions"
+    ],
+    "genes": [
+      "FBN1",
+      "TGFBR1",
+      "TGFBR2",
+      "SMAD3",
+      "ACTA2",
+      "MYH11",
+      "COL3A1",
+      "SLC2A10"
+    ],
+    "n_patients": 320,
+    "seeds": "2566-2573",
+    "registered": "2026-09-14",
+    "tags": [
+      "hereditary",
+      "thoracic-aortic",
+      "htad",
+      "marfan",
+      "lds",
+      "veds",
+      "ats",
+      "FBN1",
+      "TGFBR1",
+      "TGFBR2",
+      "SMAD3",
+      "ACTA2",
+      "MYH11",
+      "COL3A1",
+      "SLC2A10",
+      "tgf-beta-paradox",
+      "aortic-dissection",
+      "losartan",
+      "celiprolol"
+    ]
   }
 ]
