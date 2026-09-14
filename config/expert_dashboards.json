@@ -19543,5 +19543,39 @@
     "script": "scripts/hereditary_chi_atlas_dashboard.py",
     "note": "Total: 1211 dashboards",
     "built_note": "Built 2026-09-14. 8-gene congenital hyperinsulinism atlas: ABCC8/KCNJ11/HADH/GLUD1/GCK/HNF4A/INSR/SLC16A1. 320 patients seeds 2654-2661. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-cobalamin-processing-atlas",
+    "name": "Hereditary Intracellular Cobalamin Processing Atlas",
+    "gene": "MMACHC-MMADHC-LMBRD1-ABCD4-MMAA-MMAB-MTR-MTRR",
+    "status": "built",
+    "route": "/hereditary-cobalamin-processing-atlas",
+    "api_prefix": "/api/hereditary-cobalamin-processing-atlas",
+    "endpoints": [
+      "/api/hereditary-cobalamin-processing-atlas/overview",
+      "/api/hereditary-cobalamin-processing-atlas/breakdown",
+      "/api/hereditary-cobalamin-processing-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-cobalamin-processing-atlas/page.jsx",
+    "script": "scripts/hereditary_cobalamin_processing_atlas_dashboard.py",
+    "note": "Total: 1212 dashboards",
+    "built_note": "Built 2026-09-14. 8-gene intracellular cobalamin processing atlas: MMACHC/MMADHC/LMBRD1/ABCD4/MMAA/MMAB/MTR/MTRR. 320 patients seeds 2662-2669. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-biopterin-atlas",
+    "name": "Hereditary Biopterin (BH4) Metabolism Atlas",
+    "gene": "GCH1-PTS-QDPR-PCBD1-SPR-DNAJC12-TH-DDC",
+    "status": "built",
+    "route": "/hereditary-biopterin-atlas",
+    "api_prefix": "/api/hereditary-biopterin-atlas",
+    "endpoints": [
+      "/api/hereditary-biopterin-atlas/overview",
+      "/api/hereditary-biopterin-atlas/breakdown",
+      "/api/hereditary-biopterin-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-biopterin-atlas/page.jsx",
+    "script": "scripts/hereditary_biopterin_atlas_dashboard.py",
+    "note": "Total: 1213 dashboards",
+    "built_note": "Built 2026-09-14. 8-gene biopterin BH4 metabolism atlas: GCH1/PTS/QDPR/PCBD1/SPR/DNAJC12/TH/DDC. 320 patients seeds 2670-2677. 3 endpoints verified 200."
   }
 ]

@@ -49099,6 +49099,48 @@ async def hereditary_chi_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cobalamin-processing-atlas/overview")
+async def hereditary_cobalamin_processing_atlas_overview():
+    """Hereditary-Cobalamin-Processing-Atlas overview — MMACHC-cblC-Combined-MMA-HHcy-Maculopathy-80pct-Most-Common, MMADHC-cblD-Genotype-Predicts-Subtype-Unique, LMBRD1-cblF-Lysosomal-Trap-VacuolatedLymphocytes-Stomatitis, ABCD4-cblJ-ATPaseMotor-VLCFA-Normal-KEY-Negative-vs-ABCD1, MMAA-cblA-Strong-OHCbl-Response-60-80pct-HALLMARK, MMAB-cblB-Moderate-OHCbl-40-60pct-Synthesis-Defect, MTR-cblG-MethionineSynthase-MethylfolateTrap-MegaloblasticAnaemia, MTRR-cblE-MTR-Regenerator-Identical-cblG-Polymorphism-Pitfall 320-Patient-Aggregate-8x40-seeds-2662-2669."""
+    from scripts.hereditary_cobalamin_processing_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cobalamin-processing-atlas/breakdown")
+async def hereditary_cobalamin_processing_atlas_breakdown():
+    """Hereditary-Cobalamin-Processing-Atlas per-gene breakdown — MMACHC cblC-maculopathy-80pct-HUS-PulmHTN-betaine-mandatory, MMADHC cblD-C-terminus-isolated-MMA-N-terminus-isolated-HHcy-NBS-gap, LMBRD1 cblF-lysosomal-trap-vacuolated-lymphocytes-stomatitis-pathognomonic, ABCD4 cblJ-ATPase-lysosomal-no-vacuoles-no-stomatitis-VLCFA-normal, MMAA cblA-strong-OHCbl-60-80pct-chaperone-defect-mildest, MMAB cblB-moderate-OHCbl-40-60pct-synthesis-defect-more-severe, MTR cblG-methionine-synthase-methylfolate-trap-N2O-catastrophic, MTRR cblE-MTR-reductase-identical-cblG-N2O-permanent-inactivation."""
+    from scripts.hereditary_cobalamin_processing_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cobalamin-processing-atlas/definitions")
+async def hereditary_cobalamin_processing_atlas_definitions():
+    """Hereditary-Cobalamin-Processing-Atlas glossary — intracellular-Cbl-pathway-LMBRD1-ABCD4-MMACHC-MMADHC-MMAB-MMAA-MTR-MTRR, NBS-gaps-isolated-HHcy-missed-cblD-HHcy-cblG-cblE, N2O-absolute-CI-MTR-oxidation-catastrophic-cblG-cblE-highest-risk, betaine-cobalamin-independent-BHMT-remethylation-mandatory-HHcy, OHCbl-vs-CNCbl-MMACHC-decyanase-bypass, maculopathy-cblC-RPE-80pct-pathognomonic-bull-eye."""
+    from scripts.hereditary_cobalamin_processing_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-biopterin-atlas/overview")
+async def hereditary_biopterin_atlas_overview():
+    """Hereditary-Biopterin-Atlas overview — GCH1-GTPCH1-AR-BH4def+HPA-AD-DRD-Segawa-GOF-feedback, PTS-PTPS-MostCommon-60-75pct-BH4def-central-vs-peripheral, QDPR-DHPR-BH4recycle-folinicAcid-MANDATORY-secondaryFolateDef, PCBD1-transient-benign-HPA-dual-PCD-HNF1-cofactor, SPR-NORMAL-Phe-PATHOGNOMONIC-NBS-miss-combined-BH4-monoamine, DNAJC12-PAH-cochaperone-HPA-neurotransmitter-BH4normal, TH-dopamine-deficiency-BH4dependent-L-DOPA-highly-responsive, DDC-AADC-oculogyric-crises-PATHOGNOMONIC-gene-therapy-Upstaza-EU2022 320-Patient-Aggregate-8x40-seeds-2670-2677."""
+    from scripts.hereditary_biopterin_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-biopterin-atlas/breakdown")
+async def hereditary_biopterin_atlas_breakdown():
+    """Hereditary-Biopterin-Atlas per-gene breakdown — GCH1 AR-severe-BH4def-AD-DRD-diurnal-fluctuation-sapropterin, PTS PTPS-peripheral-no-CSF-def-central-CSF-low-HVA-5HIAA, QDPR DHPR-folinicAcid-MANDATORY-basal-ganglia-calcification, PCBD1 transient-NBS-benign-PCD-HNF1-mody-like, SPR CSF-HVA-5HIAA-profound-NormalPhe-NBS-miss-5HTP+ldopa, DNAJC12 PAH-chaperone-novel-HPA-BH4normal-L-DOPA-adjunct, TH infantile-parkinsonism-DRD-L-DOPA-near-complete-remission, DDC oculogyric-3OMD-upstaza-gene-therapy-selegiline-bromocriptine."""
+    from scripts.hereditary_biopterin_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-biopterin-atlas/definitions")
+async def hereditary_biopterin_atlas_definitions():
+    """Hereditary-Biopterin-Atlas glossary — BH4-synthesis-recycling-pathway-GCH1-PTS-SPR-QDPR-PCBD1, BH4-dependent-enzymes-PAH-TH-TPH-NOS, sapropterin-BH4-pharmacological-chaperone-PAH-HPA, CSF-neurotransmitters-HVA-5HIAA-mandatory-central-BH4def, AADC-deficiency-oculogyric-crises-gene-therapy-Upstaza, NBS-gap-SPR-normal-phenylalanine-always-missed, L-DOPA-diurnal-fluctuation-GCH1-DRD-morning-worst."""
+    from scripts.hereditary_biopterin_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
