@@ -16485,22 +16485,22 @@
   },
   {
     "page": "/hereditary-cardiomyopathy-atlas",
-    "title": "Hereditary-Cardiomyopathy-Atlas \u2014 Complete 8-Gene Hereditary Cardiomyopathy Atlas",
+    "title": "Hereditary-Cardiomyopathy-Atlas \u2014 Complete 8-Gene Hereditary Cardiomyopathy Atlas MYH7-MYBPC3-TNNT2-TNNI3-TPM1-ACTC1-MYL2-MYL3",
     "category": "Hereditary Cardiomyopathy Atlas",
     "status": "built",
     "genes": [
-      "MYBPC3",
       "MYH7",
+      "MYBPC3",
       "TNNT2",
-      "LMNA",
-      "SCN5A",
-      "DSP",
-      "PKP2",
-      "PLN"
+      "TNNI3",
+      "TPM1",
+      "ACTC1",
+      "MYL2",
+      "MYL3"
     ],
     "patients": 320,
-    "seeds": "1518-1525",
-    "registered": "2026-09-06"
+    "seeds": "2590-2597",
+    "registered": "2026-09-14"
   },
   {
     "id": "hereditary-haemolytic-anaemia-atlas",
@@ -16702,12 +16702,20 @@
   },
   {
     "id": "hereditary-cardiomyopathy-atlas",
-    "name": "Hereditary-Cardiomyopathy-Atlas Complete-8-Gene-Hereditary-Cardiomyopathy-Atlas MYBPC3-1274aa-11p11.2-AD-HCM-Most-Common-35-40pct-Haploinsufficiency-Mavacamten-FDA-2022 MYH7-1935aa-14q11.2-AD-HCM-2nd-Most-Common-Dominant-Negative-Arg403Gln-Malignant TNNT2-288aa-1q32.1-AD-HCM-Arg92Trp-High-SCD-Mild-LVH-Dual-HCM-DCM LMNA-664aa-1q22-AD-DCM-CCD-ICD-Padua-Score-4-Regardless-LVEF-Non-Missense-Highest-Risk SCN5A-2016aa-3p22.2-AD-Brugada-Flecainide-ABSOLUTE-CI-LQTS3-Mexiletine-Fever-Trigger DSP-2871aa-6p24.3-AD-ARVC-Left-Dominant-Woolly-Hair-Keratoderma-PATHOGNOMONIC-Carvajal-Biallelic PKP2-837aa-12p11.21-AD-ARVC-Most-Common-40pct-Epsilon-Wave-LBBB-VT-Exercise-ABSOLUTE-Prohibition PLN-52aa-6q22.31-AD-DCM-Arg14del-Dutch-Belgian-Founder-SERCA2a-Inhibition-ICD-Transplant 320-Patient-Aggregate-8x40-seeds-1518-1525",
+    "name": "Hereditary-Cardiomyopathy-Atlas Complete-8-Gene-MYH7-MYBPC3-TNNT2-TNNI3-TPM1-ACTC1-MYL2-MYL3-Atlas MYH7-1935aa-14q11.2-AD-Beta-Myosin-Heavy-Chain-HCM-35pct-MAVACAMTEN-FDA2022-DISOPYRAMIDE-ICD MYBPC3-1274aa-11p11.2-AD-Myosin-Binding-Protein-C3-HCM-35pct-Founder-South-Asian-Incomplete-Penetrance TNNT2-298aa-1q32.1-AD-Cardiac-TnT-MALIGNANT-SCD-Without-Hypertrophy-LOWER-ICD-THRESHOLD TNNI3-210aa-19q13.42-AD-Cardiac-TnI-AR-BIALLELIC-RCM-INFANTILE-MOST-SEVERE TPM1-284aa-15q22.2-AD-Tropomyosin-Alpha-SAME-GENE-HCM-OR-DCM-Variant-Class ACTC1-375aa-15q14-AD-Alpha-Cardiac-Actin-APICAL-HCM-GIANT-NEGATIVE-T-WAVES MYL2-166aa-12q24.11-AD-Regulatory-Light-Chain-MID-VENTRICULAR-OBSTRUCTION-AR-NEONATAL-LETHAL MYL3-195aa-3p21.31-AD-Essential-Light-Chain-Asp94Ala-MIDDLE-EAST-FOUNDER 320-Patient-Aggregate-8x40-seeds-2590-2597",
     "status": "built",
+    "category": "hereditary-atlas",
     "route": "/hereditary-cardiomyopathy-atlas",
     "api": "/api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions",
-    "seeds": "1518-1525",
-    "registered": "2026-09-06"
+    "api_endpoints": [
+      "/api/hereditary-cardiomyopathy-atlas/overview",
+      "/api/hereditary-cardiomyopathy-atlas/breakdown",
+      "/api/hereditary-cardiomyopathy-atlas/definitions"
+    ],
+    "seeds": "2590-2597",
+    "count": 1204,
+    "date_built": "2026-09-14",
+    "registered": "2026-09-14"
   },
   {
     "name": "Hereditary-Amyloidosis-Atlas \u2014 Complete 8-Gene Hereditary Systemic Amyloidosis Atlas",

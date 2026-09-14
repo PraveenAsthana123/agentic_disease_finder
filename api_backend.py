@@ -45536,27 +45536,23 @@ async def hereditary_thrombophilia_atlas_definitions():
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/overview")
 async def hereditary_cardiomyopathy_atlas_overview():
-    try:
-        import scripts.hereditary_cardiomyopathy_atlas_dashboard as atlas_
-        return atlas_.get_overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Cardiomyopathy-Atlas overview — MYH7-dominant-negative-HCM-35pct-Mavacamten-FDA2022 MYBPC3-haploinsufficiency-HCM-35pct-SouthAsian-founder-incomplete-penetrance TNNT2-MALIGNANT-SCD-without-hypertrophy-ICD-lower-threshold TNNI3-AR-RCM-infantile-most-severe TPM1-HCM-OR-DCM-same-gene-calcium-sensitisation ACTC1-apical-HCM-giant-negative-T-waves MYL2-mid-ventricular-obstruction-AR-neonatal-lethal MYL3-Asp94Ala-Middle-East-founder 320 patients seeds 2590-2597."""
+    from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/breakdown")
 async def hereditary_cardiomyopathy_atlas_breakdown():
-    try:
-        import scripts.hereditary_cardiomyopathy_atlas_dashboard as atlas_
-        return atlas_.get_breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Cardiomyopathy-Atlas per-gene breakdown — MYH7-Arg403Gln-malignant, MYBPC3-South-Asian-founder, TNNT2-CMR-LGE-mandatory, TNNI3-RCM-vs-constrictive-pericarditis, TPM1-calcium-sensitisation-dual-phenotype, ACTC1-apical-spade-LV, MYL2-mid-ventricular-obstruction-neonatal-lethal, MYL3-Asp94Ala-founder."""
+    from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/definitions")
 async def hereditary_cardiomyopathy_atlas_definitions():
-    try:
-        import scripts.hereditary_cardiomyopathy_atlas_dashboard as atlas_
-        return atlas_.get_definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-Cardiomyopathy-Atlas glossary — HCM phenotypic classification, mavacamten REMS, ICD thresholds, septal reduction myectomy vs ASA, disopyramide QTc monitoring, genetic cascade testing, AF anticoagulation mandatory, exercise restriction competitive sports CONTRAINDICATED."""
+    from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
 
 
 @app.get("/api/hereditary-haemolytic-anaemia-atlas/overview")
