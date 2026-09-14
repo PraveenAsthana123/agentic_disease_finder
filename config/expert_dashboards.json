@@ -19612,5 +19612,14 @@
     "cohort_n": 30,
     "seed": null,
     "registered": "2026-09-14"
+  },
+  {
+    "id": "portal-tabs",
+    "name": "Patient Self-Service Portal Tabs \u2014 11 tabs (Forms/Campaigns/Notifications/Alerts/Inbox/Medication/Therapy/Assessments/Reports/AskAI/History), all built, 23 endpoints. 3 API endpoints /api/portal-tabs/overview|breakdown|definitions verified 200. portal-next/app/portal-tabs/page.jsx + SiteNav wired after Admin Users.",
+    "status": "built",
+    "api": "/api/portal-tabs",
+    "cohort_n": null,
+    "seed": null,
+    "registered": "2026-09-14"
   }
 ]
