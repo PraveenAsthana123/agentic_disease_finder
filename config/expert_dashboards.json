@@ -19330,5 +19330,32 @@
       "losartan",
       "celiprolol"
     ]
+  },
+  {
+    "id": "hereditary-surfactant-dysfunction-atlas",
+    "title": "Hereditary-Surfactant-Dysfunction-Atlas Complete-8-Gene-SFTPB-SFTPC-ABCA3-NKX2-1-MARS1-SLC34A2-CSF2RA-CSF2RB-Atlas SFTPB-279aa-2p11.2-AR-Fatal-Neonatal-RDS-Absent-Lamellar-Bodies-EM-Lung-TX SFTPC-197aa-8p21.3-AD-BRICHOS-ILD-HCQ ABCA3-1704aa-16p13.3-AR-Most-Common-chILD NKX2-1-371aa-14q13.3-AD-Brain-Thyroid-Lung MARS1-900aa-12q13.3-AR-ILLD SLC34A2-689aa-4p15.31-AR-PAM CSF2RA-400aa-Xp22.33-PAP-WLL CSF2RB-897aa-22q12.3-AR-PAP-HSCT 320-Patient-Aggregate-8x40-seeds-2574-2581",
+    "status": "built",
+    "route": "/hereditary-surfactant-dysfunction-atlas",
+    "api_base": "/api/hereditary-surfactant-dysfunction-atlas",
+    "endpoints": [
+      "/api/hereditary-surfactant-dysfunction-atlas/overview",
+      "/api/hereditary-surfactant-dysfunction-atlas/breakdown",
+      "/api/hereditary-surfactant-dysfunction-atlas/definitions"
+    ],
+    "genes": [
+      "SFTPB",
+      "SFTPC",
+      "ABCA3",
+      "NKX2-1",
+      "MARS1",
+      "SLC34A2",
+      "CSF2RA",
+      "CSF2RB"
+    ],
+    "n_genes": 8,
+    "patients": 320,
+    "seeds": "2574-2581",
+    "built_date": "2026-09-14",
+    "category": "Hereditary Surfactant Dysfunction / Childhood Interstitial Lung Disease"
   }
 ]

@@ -48922,6 +48922,27 @@ async def hereditary_thoracic_aortic_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-surfactant-dysfunction-atlas/overview")
+async def hereditary_surfactant_dysfunction_atlas_overview():
+    """Hereditary-Surfactant-Dysfunction-Atlas overview — SFTPB-fatal-neonatal-RDS SFTPC-BRICHOS-ILD ABCA3-most-common-chILD NKX2-1-brain-thyroid-lung MARS1-ILLD SLC34A2-PAM CSF2RA-PAP CSF2RB-PAP-HSCT 8-gene chILD reference 320 patients seeds 2574-2581."""
+    from scripts.hereditary_surfactant_dysfunction_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-surfactant-dysfunction-atlas/breakdown")
+async def hereditary_surfactant_dysfunction_atlas_breakdown():
+    """Hereditary-Surfactant-Dysfunction-Atlas per-gene breakdown — SFTPB absent-LBs, SFTPC p.Ile73Thr ER-stress, ABCA3 small-dense-LBs, NKX2-1 TTF-1 triad, MARS1 liver+lung, SLC34A2 snowstorm-CXR, CSF2RA/B PAP WLL HSCT."""
+    from scripts.hereditary_surfactant_dysfunction_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-surfactant-dysfunction-atlas/definitions")
+async def hereditary_surfactant_dysfunction_atlas_definitions():
+    """Hereditary-Surfactant-Dysfunction-Atlas glossary — chILD types, lamellar body EM key, PAP three types, PAM vs PAP, WLL procedure, BRICHOS domain, Brain-Thyroid-Lung NKX2-1 triad."""
+    from scripts.hereditary_surfactant_dysfunction_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
