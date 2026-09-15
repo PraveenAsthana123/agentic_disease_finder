@@ -49437,6 +49437,25 @@ async def hereditary_sterol_biosynthesis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-telomere-biology-atlas/overview")
+async def hereditary_telomere_biology_atlas_overview():
+    """Hereditary-Telomere-Biology-Atlas overview — DKC1/TERC/TERT/NHP2/NOP10/WRAP53/ACD/PARN / DC/HH/IPF spectrum / 320 patients / seeds 2790-2797."""
+    from scripts.hereditary_telomere_biology_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-telomere-biology-atlas/breakdown")
+async def hereditary_telomere_biology_atlas_breakdown():
+    """Hereditary-Telomere-Biology-Atlas per-gene breakdown — DKC1-triad-pathognomonic/TERC-anticipation/TERT-IPF/NHP2-NOP10-H-ACA/WRAP53-cajal/ACD-TEL-patch/PARN-deadenylase."""
+    from scripts.hereditary_telomere_biology_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-telomere-biology-atlas/definitions")
+async def hereditary_telomere_biology_atlas_definitions():
+    """Hereditary-Telomere-Biology-Atlas glossary — telomere biology disorder/DC/HH/IPF/flow-FISH/H-ACA-snoRNP/PAPD5-PARN/TEL-patch/Cajal-body/androgen-therapy/RIC-HSCT/anticipation."""
+    from scripts.hereditary_telomere_biology_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

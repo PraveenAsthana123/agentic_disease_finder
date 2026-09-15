@@ -19930,5 +19930,30 @@
     "frontend": "portal-next/app/hereditary-sterol-biosynthesis-atlas/page.jsx",
     "registered": "2026-09-15",
     "note": "Hereditary-Sterol-Biosynthesis-Atlas Complete-8-Gene-DHCR7-EBP-NSDHL-SC5D-DHCR24-LSS-MVK-SQLE-Post-Squalene-Cholesterol-Biosynthesis-Isoprenoid-Pathway-Reference"
+  },
+  {
+    "id": "hereditary-telomere-biology-atlas",
+    "title": "Hereditary Telomere Biology Disorder Atlas",
+    "route": "/hereditary-telomere-biology-atlas",
+    "status": "built",
+    "category": "hereditary-disease-atlas",
+    "genes": [
+      "DKC1",
+      "TERC",
+      "TERT",
+      "NHP2",
+      "NOP10",
+      "WRAP53",
+      "ACD",
+      "PARN"
+    ],
+    "api_endpoints": [
+      "/api/hereditary-telomere-biology-atlas/overview",
+      "/api/hereditary-telomere-biology-atlas/breakdown",
+      "/api/hereditary-telomere-biology-atlas/definitions"
+    ],
+    "patients": 320,
+    "seeds": "2790-2797",
+    "registered": "2026-09-15"
   }
 ]
