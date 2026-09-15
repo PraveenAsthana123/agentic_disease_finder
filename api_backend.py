@@ -49204,6 +49204,29 @@ async def hereditary_pyrimidine_disorder_atlas_definitions():
     return generate_definitions()
 
 
+# ── Hereditary Purine Disorder Atlas ─────────────────────────────────────────
+
+@app.get("/api/hereditary-purine-disorder-atlas/overview")
+async def hereditary_purine_disorder_atlas_overview():
+    """Hereditary-Purine-Disorder-Atlas overview — HPRT1-ADSL-ATIC-ADA-PNP-APRT-DGUOK-PRPS1 320 patients seeds-2702-2709, pathway-categories, critical-distinctions, gene-summaries."""
+    from scripts.hereditary_purine_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-purine-disorder-atlas/breakdown")
+async def hereditary_purine_disorder_atlas_breakdown():
+    """Hereditary-Purine-Disorder-Atlas breakdown — per-gene 40-patient cohorts, phenotype rates, HPRT1-Lesch-Nyhan-SIB-PATHOGNOMONIC, ADA-SCID-dATP-lymphocyte-apoptosis, PNP-hypouricaemia-selective-T-cell, APRT-DHA-urolithiasis-radiolucent, DGUOK-hepatocerebral-MDDS, PRPS1-Arts-syndrome."""
+    from scripts.hereditary_purine_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-purine-disorder-atlas/definitions")
+async def hereditary_purine_disorder_atlas_definitions():
+    """Hereditary-Purine-Disorder-Atlas glossary — PRPP-central-metabolite, HGPRT-basal-ganglia, succinylpurines-ADSL, AICAR-ATIC-ribosiduria, DHA-urolithiasis-radiolucent-APRT, selective-T-cell-vs-combined-immunodeficiency, Arts-syndrome-CMTX5-PRPS1, hepatocerebral-mtDNA-depletion-DGUOK, purine-de-novo-vs-salvage."""
+    from scripts.hereditary_purine_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

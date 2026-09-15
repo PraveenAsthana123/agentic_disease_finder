@@ -19656,5 +19656,32 @@
     "category": "hereditary_metabolic",
     "genes": 8,
     "patients": 320
+  },
+  {
+    "id": "hereditary-purine-disorder-atlas",
+    "name": "Hereditary-Purine-Disorder-Atlas Complete-8-Gene-HPRT1-ADSL-ATIC-ADA-PNP-APRT-DGUOK-PRPS1-Atlas HPRT1-218aa-Xq26.2-XLR-Lesch-Nyhan-SIB-PATHOGNOMONIC-hyperuricaemia-dystonia-dopaminergic-allopurinol-NO-NEURO-benefit ADSL-484aa-22q13.1-AR-succinylpurines-SAICAr-S-Ado-CSF-PATHOGNOMONIC-autism-epilepsy-ID-Belgian-founder ATIC-592aa-2q35-AR-AICAR-ribosiduria-ULTRAORPHAN-LT5-cases-refractory-epilepsy-blindness-MTX-ABSOLUTELY-CI ADA-363aa-20q13.12-AR-ADA-SCID-dATP-T+B+NK-depleted-STRIMVELIS-EMA2016-SNHL-40-60pct-despite-treatment PNP-289aa-14q11.2-AR-SELECTIVE-T-cell-dGTP-HYPOURICAEMIA-PATHOGNOMONIC-B-cells-NORMAL-autoimmune APRT-180aa-16q24.3-AR-2-8-DHA-urolithiasis-RADIOLUCENT-OPAQUE-CT-NORMAL-UA-ALLOPURINOL-CURATIVE DGUOK-277aa-2p13.1-AR-hepatocerebral-MDDS3-mtDNA-depletion-ROTATORY-NYSTAGMUS-VPA-ABSOLUTELY-CI PRPS1-318aa-Xq22.3-XLR-Arts-syndrome-PRPP-deficiency-SNHL+ataxia+ID+optic-atrophy+immune-pentad-CMTX5 320-Patient-Aggregate-8x40-seeds-2702-2709",
+    "status": "built",
+    "category": "hereditary-metabolic",
+    "api_prefix": "/api/hereditary-purine-disorder-atlas",
+    "endpoints": [
+      "/api/hereditary-purine-disorder-atlas/overview",
+      "/api/hereditary-purine-disorder-atlas/breakdown",
+      "/api/hereditary-purine-disorder-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-purine-disorder-atlas/page.jsx",
+    "registered": "2026-09-14",
+    "seeds": "2702-2709",
+    "n_patients": 320,
+    "genes": [
+      "HPRT1",
+      "ADSL",
+      "ATIC",
+      "ADA",
+      "PNP",
+      "APRT",
+      "DGUOK",
+      "PRPS1"
+    ],
+    "note": "HPRT1-218aa-Xq26.2-Hypoxanthine-Guanine-Phosphoribosyltransferase-25kDa-Homotetramer-Purine-Salvage-XLR / ADSL-484aa-22q13.1-Adenylosuccinate-Lyase-54kDa-Homotetramer-Two-Reaction-De-Novo-AMP-AR / ATIC-592aa-2q35-AICAR-Transformylase-IMP-Cyclohydrolase-65kDa-Homodimer-Steps-9-10-AR / ADA-363aa-20q13.12-Adenosine-Deaminase-41kDa-Monomer-Zinc-Metalloenzyme-ADA-SCID-AR / PNP-289aa-14q11.2-Purine-Nucleoside-Phosphorylase-32kDa-Homotrimer-Selective-T-Cell-AR / APRT-180aa-16q24.3-Adenine-Phosphoribosyltransferase-20kDa-Homodimer-DHA-Urolithiasis-AR / DGUOK-277aa-2p13.1-Deoxyguanosine-Kinase-30kDa-Monomer-Mitochondrial-Matrix-MDDS3-AR / PRPS1-318aa-Xq22.3-PRPP-Synthetase-1-34kDa-Hexamer-Arts-Syndrome-CMTX5-XLR"
   }
 ]

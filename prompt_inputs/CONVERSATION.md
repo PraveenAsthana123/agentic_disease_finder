@@ -35353,3 +35353,157 @@ Done. One complete, verified, committed, and pushed iteration:
 - **MCOLN1** — Mucolipidosis IV · TRPML1 channel · corneal clouding from birth · **serum gastrin >1000 pg/mL PATHOGNOMONIC** · Ashkenazi founder
 
 320 patients · 3 endpoints verified 200 · page.jsx + SiteNav wired · expert_dashboards.json 1209→1210 · pushed to `main`
+
+### [2026-09-14 13:45:23 MDT] ASSISTANT
+**Autobuild iteration complete.** Built and pushed **Hereditary-CHI-Atlas** (Congenital Hyperinsulinism):
+
+| Item | Detail |
+|---|---|
+| **Script** | `scripts/hereditary_chi_atlas_dashboard.py` — 8 genes, 320 patients (8×40), seeds 2654–2661 |
+| **API** | 3 routes verified 200 — `/api/hereditary-chi-atlas/overview\|breakdown\|definitions` |
+| **Frontend** | `portal-next/app/hereditary-chi-atlas/page.jsx` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions) |
+| **SiteNav** | Wired after Hereditary-Glycoprotein-Storage-Atlas |
+| **Registry** | `config/expert_dashboards.json` 1210 → 1211 |
+| **Commit** | `4e54f568` → pushed to `origin/main` |
+
+**8 genes encoded with full clinical depth:**
+
+| Gene | Mechanism | Pathognomonic |
+|---|---|---|
+| **ABCC8** | SUR1 KATP channel (most common, 40-45%) | Diazoxide-UNRESPONSIVE; 18F-DOPA PET-CT → focal vs diffuse; near-total pancreatectomy for diffuse |
+| **KCNJ11** | Kir6.2 KATP pore — LOF=CHI, GOF=NDM/DEND | DEND triad; sulphonylurea switch in 90% of NDM — dramatic neurological improvement |
+| **HADH** | SCHAD — GDH physical inhibitor | Protein-sensitive CHI + C4-OH acylcarnitine + NO hyperammonaemia (DDx from GLUD1) |
+| **GLUD1** | GDH GOF — HI/HA syndrome | Hyperinsulinism + hyperammonaemia PATHOGNOMONIC; valproate ABSOLUTELY CI |
+| **GCK** | Glucokinase set-point shifted left | Fasting glucose 2.5-3.5 (GOF) vs 5.4-8.3 (MODY2 LOF) — same gene, opposite phenotype |
+| **HNF4A** | Nuclear receptor haploinsufficiency | Macrosomia +600g + CHI in infancy → spontaneous resolution → MODY1 in adulthood |
+| **INSR** | Insulin receptor LOF — Donohue | Insulin >1000 mU/L PATHOGNOMONIC; elfin facies; glucose infusion can paradoxically worsen hypoglycaemia |
+| **SLC16A1** | MCT1 ectopic expression in beta-cells | Exercise-induced ONLY (anaerobic); completely normal at rest; anaerobic provocation test required |
+
+⏳ **Pending:** Only `ictal_interictal` retrain remains in queue (heavy, skip). Queue needs a new item for the next autono
+
+### [2026-09-14 14:51:42 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary Biopterin (BH4) Metabolism Atlas**
+
+- **8 genes**: GCH1 · PTS · QDPR · PCBD1 · SPR · DNAJC12 · TH · DDC
+- **320 patients** (8×40, seeds 2670–2677)
+- **3 endpoints** verified 200: `/api/hereditary-biopterin-atlas/overview|breakdown|definitions`
+- **expert_dashboards.json**: 1212 → 1213
+- **SiteNav** wired after Hereditary-Cobalamin-Processing-Atlas
+- **Pushed** to `origin/main` (fast-forward)
+
+Key clinical highlights encoded: GCH1 dual AR/AD phenotype (Segawa DRD diurnal fluctuation PATHOGNOMONIC), PTS most common (60-75%) with peripheral vs central distinction, QDPR folinic acid MANDATORY (secondary folate deficiency), PCBD1 transient/benign with primapterinuria PATHOGNOMONIC, SPR NORMAL phenylalanine → always missed by NBS (PATHOGNOMONIC), DNAJC12 novel 2017 cochaperone with BH4-normal HPA, TH isolated dopamine deficiency with near-complete L-DOPA remission, DDC/AADC oculogyric crises PATHOGNOMONIC + Upstaza gene therapy (EU/UK 2022).
+
+### [2026-09-14 15:18:00 MDT] ASSISTANT
+Done. One complete, verified, committed, and pushed iteration:
+
+**Built: Hereditary Bile Acid Synthesis & Sterol Biosynthesis Atlas** (seeds 2678-2685)
+
+| Item | Detail |
+|---|---|
+| **Script** | `scripts/hereditary_bile_acid_sterol_atlas_dashboard.py` — 8 genes, 320 patients (8×40) |
+| **API** | 3 routes verified 200 — `/api/hereditary-bile-acid-sterol-atlas/overview\|breakdown\|definitions` |
+| **Frontend** | `portal-next/app/hereditary-bile-acid-sterol-atlas/page.jsx` — 4 tabs |
+| **SiteNav** | Wired after Hereditary-Biopterin-Atlas |
+| **Registry** | `config/expert_dashboards.json` 1213 → 1214 |
+| **Commit** | `081f6bbe` → pushed to `origin/main` |
+
+**8 genes with full clinical depth:**
+
+| Gene | Disease | Pathognomonic |
+|---|---|---|
+| **DHCR7** | Smith-Lemli-Opitz (SLO) | 7-DHC elevated; 2nd-3rd toe syndactyly >97%; statins ABSOLUTELY CI |
+| **CYP27A1** | Cerebrotendinous Xanthomatosis (CTX) | Cholestanol elevated; Achilles xanthomas; dentate nucleus T2; CDCA reverses neurodegeneration |
+| **HSD3B7** | CBAS1 | 3β-OH-Δ5 precursors on LSIMS; NORMAL GGT in cholestasis; cholic acid cures |
+| **AKR1D1** | CBAS2 | Allo-bile acids (5α stereoisomers); VPA ABSOLUTELY CI; more severe than CBAS1 |
+| **CYP7B1** | CBAS3 / SPG5 | Dual phenotype (neonatal liver failure + adult HSP); only HSP with oxysterol biomarker + treatment |
+| **AMACR** | CBAS4 | Adult-onset; pristanic+THCA/DHCA elevated; VLCFA NORMAL (DDx from X-ALD/ZSD) |
+| **SC5D** | Lathosterolosis | Lathosterol elevated (NOT 7-DHC); <20 cases worldwide; DDx SLO requires full sterol profile |
+| **EBP** | CDPX2 | X-linked dominant; hemizygous males virtually always lethal in utero; Blaschko-line ichthyosis; stippled epiphyses RESOLVE |
+
+### [2026-09-14 15:32:47 MDT] ASSISTANT
+**Autonomous build — iteration complete (no-op)**
+
+- `python3 scripts/next_pending.py` → single buildable item: **ictal/interictal retrain** — skipped (too heavy per instructions)
+- All remaining items: **blocked** — require operator credentials (Gmail/Slack/Drive, auth/RBAC, EMR/FHIR)
+- No commit made (nothing to build)
+- Tracked via `scripts/track.sh`
+
+**⏳ Pending (top items):**
+- Ictal/interictal retrain — *skipped (heavy compute)*
+- Gmail/Slack/Drive live integration — *blocked (credentials)*
+- Multi-user auth/RBAC — *blocked (operator decision)*
+- EMR/FHIR + device streaming — *blocked (credentials)*
+
+### [2026-09-14 15:50:53 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Seizure Risk Forecasting portal page**
+
+- **Item**: `seizure-risk-forecast` — backend had 3 working endpoints but no portal page and wasn't registered
+- **Portal page**: `portal-next/app/seizure-risk-forecast/page.jsx` — 3-tab dashboard (Overview / Breakdown / Definitions)
+  - Overview: KPI cards (30 patients, avg risk 0.611, 9 critical/14 high), risk-tier progress bars, forecast horizon chart, risk score histogram, escalation actions bar, alert threshold config table (4 tiers: low/moderate/high/critical with response times)
+  - Breakdown: per-patient table with inline risk bars + escalation action lists, capability gaps panel
+  - Definitions: 10-term grid (Pre-ictal, Risk Score, Forecast Horizon, Risk Tier, Alert Threshold, Escalation Action, FAR, Sensitivity, Decision AI, Closed-Loop Response)
+- **SiteNav**: wired after Seizure Prediction
+- **Registry**: `expert_dashboards.json` 1214 → 1215, `feature_gaps.json` marked built
+- **Endpoints verified**: overview/breakdown/definitions all 200
+- **Commit**: `14e195f2` → pushed to `origin/main`
+
+### [2026-09-14 16:07:35 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: `portal-tabs` dashboard**
+
+- **What was found:** The `portal-tabs` item had a working API (`/api/portal-tabs/overview|breakdown|definitions` all returning 200) but was missing a frontend page and SiteNav entry — genuinely incomplete.
+- **Built:** `portal-next/app/portal-tabs/page.jsx` — 3-tab UI (Overview / Tab Directory / Definitions) showing 11 patient self-service portal tabs, endpoints-per-tab bar chart, and full glossary.
+- **Wired:** SiteNav entry added after Admin Users.
+- **Registered:** `expert_dashboards.json` count 1215 → 1216.
+- **Verified:** All 3 endpoints return 200 (11 tabs, 23 endpoints confirmed).
+- **Committed & pushed:** `1df47b1c` → `origin/main` (fast-forward).
+
+⏳ **Pending:** ictal/interictal retrain (skipped — too heavy for autonomous loop) · Gmail/Slack/Drive live (credentials blocked) · multi-user auth/RBAC · EMR/FHIR streaming.
+
+### [2026-09-14 16:39:12 MDT] ASSISTANT
+Done. Hereditary-Hypertriglyceridemia-Atlas (LPL/APOC2/APOA5/GPIHBP1/LMF1/APOC3/ANGPTL3/LIPC) fully built and pushed:
+
+- `scripts/hereditary_hypertriglyceridemia_atlas_dashboard.py` — 320 patients, seeds 2686–2693
+- 3 endpoints verified 200: `/api/hereditary-hypertriglyceridemia-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-hypertriglyceridemia-atlas/page.jsx` — 4-tab portal page
+- `config/expert_dashboards.json` — count 1216→1217
+- `SiteNav.jsx` — wired after Hereditary-Bile-Acid-Sterol-Atlas
+- Committed `2facb147` → pushed → tracked
+
+### [2026-09-14 18:05:15 MDT] ASSISTANT
+Queue exhausted — no commit made. Summary:
+
+**Result: No-op (logged)**
+
+- `python3 scripts/next_pending.py` returned one buildable item: **Ictal/interictal retrain** — skipped per instructions (too heavy)
+- All other pending items are blocked (require operator credentials: Gmail/Slack/Drive/auth/EMR/FHIR) or gated (push requires operator go-ahead)
+- All config registries show 0 unbuilt items (`neuro_ai_ecosystem.json`, `eeg_ai_stack.json`, `expert_dashboards.json`, `portal_tabs.json`, `jobs.json`, `automatic_pipelines.json`, `feature_gaps.json` — all 100% built)
+- `scripts/track.sh` logged: `autobuild-skip: queue exhausted`
+- No commit, no push
+
+### [2026-09-14 18:33:21 MDT] ASSISTANT
+**Done.** Built + verified + committed + pushed in one iteration.
+
+---
+
+**What was built: Hereditary-Pyrimidine-Disorder-Atlas** (expert_dashboards.json count 1217→1218)
+
+8 genes covering the complete pyrimidine metabolism landscape — catabolism, de novo synthesis, and mitochondrial salvage:
+
+| Gene | Disease | Key Pearl |
+|------|---------|-----------|
+| **TYMP** | MNGIE | Plasma dThd/dUrd PATHOGNOMONIC; HSCT only curative; AVOID dThd analogues |
+| **DPYD** | DPD deficiency + 5-FU PGx | CPIC Grade A — *2A het → 50% dose reduction; uridine triacetate antidote |
+| **DPYS** | Dihydropyrimidinase deficiency | Dihydrouracil/dihydrothymine accumulate; asymptomatic subset; NO 5-FU risk |
+| **UPB1** | Beta-ureidopropionase deficiency | Beta-alanine DEFICIENT → GABA-T inhibition → seizures; beta-alanine Rx |
+| **CAD** | CAD trifunctional enzyme deficiency | URIDINE CURATIVE within 48-72h (PATHOGNOMONIC response); orotic acid LOW (contrast UMPS) |
+| **DHODH** | Miller syndrome (POADS) | Postaxial limb + craniofacial; NORMAL intelligence; LEFLUNOMIDE ABSOLUTELY CI |
+| **RRM2B** | p53R2 MDDS8 | AR = severe multi-system neonatal; AD = adult PEO + deletions |
+| **TK2** | Myopathic MDDS4 | dThd+dCyd deoxynucleoside therapy disease-modifying; CNS spared; CONTRAST TYMP |
+
+3 endpoints verified 200: `/api/hereditary-pyrimidine-disorder-atlas/overview|breakdown|definitions`
