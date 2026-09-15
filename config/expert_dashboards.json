@@ -19767,5 +19767,53 @@
       "/api/hereditary-fanconi-anemia-atlas/definitions"
     ],
     "description": "Fanconi Anemia / DNA Interstrand Crosslink (ICL) Repair 8-gene atlas: FANCA (FA-CORE scaffold 163kDa, 60-65pct most-common, bipartite-NLS, thumb-radial-35pct), FANCC (FA-CORE 64kDa, Ashkenazi IVS4+4A>T 1in89, FANCD2-Ub partner), FANCD2 (ID2 central hub 164kDa, K561-monoUb gatekeeper Western-blot-shift gold-standard, somatic-mosaicism 25-30pct false-negative DEB), FANCG (FA-CORE XPG-ortholog 68kDa, SA Black founder IVS1+5G>A, azoospermia), BRCA2/FANCD1 (HR RAD51-loader 380kDa, biallelic FA-D1 early-childhood desmoplastic-medulloblastoma+Wilms, monoallelic HBOC, CY-ABSOLUTE-CI), PALB2/FANCN (BRCA1-BRCA2 bridge 130kDa, 53pct lifetime breast, TBCRC048 olaparib 82pct ORR highest non-BRCA), BRIP1/FANCJ (5prime3prime DEAH helicase ICL unwinding, monoallelic OC-only 11-13x NO breast elevation), FANCI (ID2 partner 149kDa, K523-monoUb, DEB/MMC chromosomal breakage gold standard)"
+  },
+  {
+    "id": "hereditary-hr-repair-atlas",
+    "name": "Hereditary-HR-Repair-Atlas Complete-8-Gene-BRCA1-ATM-NBN-RAD51C-RAD51D-BARD1-MRE11-RAD50-Atlas BRCA1-1863aa-17q21.31-AD-HBOC1-46-87pct-breast-39-44pct-OC ATM-3056aa-11q22.3-AR-AD-A-T-biallelic-ataxia-telangiectasias-AFP NBN-754aa-8q21.3-AR-NBS-Slavic-c657del-microcephaly RAD51C-376aa-17q22-AR-AD-FANCR-OC-5-9x RAD51D-328aa-17q12-AD-OC-10-11x-NO-breast BARD1-777aa-2q35-AD-BRCA1-interacting-breast-only MRE11-708aa-11q21-AR-ATLD-NO-telangiectasias RAD50-1312aa-5q33.1-AR-AD-NBSLD-NBS-like 320-Patient-Aggregate-8x40-seeds-2734-2741",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-hr-repair-atlas",
+    "api": "/api/hereditary-hr-repair-atlas/overview|breakdown|definitions",
+    "script": "scripts/hereditary_hr_repair_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-hr-repair-atlas/page.jsx",
+    "genes": [
+      "BRCA1",
+      "ATM",
+      "NBN",
+      "RAD51C",
+      "RAD51D",
+      "BARD1",
+      "MRE11",
+      "RAD50"
+    ],
+    "seed_range": "2734-2741",
+    "n_patients": 320,
+    "built_date": "2026-09-14",
+    "note": "Hereditary HR Repair Atlas \u2014 8-gene homologous recombination repair reference. BRCA1/BARD1 E3-ligase group, ATM/MRN complex (A-T/ATLD/NBS/NBSLD), RAD51 paralogs (OC-only RAD51D). 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-ber-atlas",
+    "name": "Hereditary-BER-Atlas Complete-8-Gene-MUTYH-OGG1-NTHL1-NEIL1-NEIL2-NEIL3-UNG-MPG-Atlas MUTYH-546aa-1p34.1-AR-MAP-Most-Common-BER-Polyposis OGG1-345aa-3p25.3-AR-8-oxoG-Bifunctional-Glycosylase NTHL1-312aa-16p13.3-AR-NTHL1-Associated-Polyposis-NAP NEIL1-390aa-15q24.2-AR-Formamidopyrimidine NEIL2-342aa-8p21.3-AR-Transcribed-Strand-BER NEIL3-605aa-4q24-AR-G-Quadruplex-Meiotic UNG-304aa-12q24.11-AR-Hyper-IgM-Type-5-HIGM5 MPG-298aa-16p13.3-AR-Alkylated-Base-TMZ-Sensitivity 320-Patient-Aggregate-8x40-seeds-2742-2749",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-ber-atlas",
+    "api": "/api/hereditary-ber-atlas/overview|breakdown|definitions",
+    "script": "scripts/hereditary_ber_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-ber-atlas/page.jsx",
+    "genes": [
+      "MUTYH",
+      "OGG1",
+      "NTHL1",
+      "NEIL1",
+      "NEIL2",
+      "NEIL3",
+      "UNG",
+      "MPG"
+    ],
+    "seed_range": "2742-2749",
+    "n_patients": 320,
+    "built_date": "2026-09-14",
+    "note": "Hereditary BER Atlas \u2014 8-gene base excision repair reference. MUTYH-MAP biallelic polyposis, NTHL1-NAP polyposis, UNG-HIGM5 immunodeficiency, OGG1/NEIL1/NEIL2/NEIL3 oxidative base repair, MPG alkylated base removal. 3 endpoints verified 200."
   }
 ]

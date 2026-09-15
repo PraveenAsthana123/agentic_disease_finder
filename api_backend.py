@@ -49290,6 +49290,48 @@ async def hereditary_fanconi_anemia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hr-repair-atlas/overview")
+async def hereditary_hr_repair_atlas_overview():
+    """Hereditary-HR-Repair-Atlas overview — BRCA1-ATM-NBN-RAD51C-RAD51D-BARD1-MRE11-RAD50 gene summary table, BRCA1-BARD1/MRN-ATM/RAD51-paralog pathway categories, HRD/PARPi/RRSO, 320 patients seeds 2734-2741."""
+    from scripts.hereditary_hr_repair_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hr-repair-atlas/breakdown")
+async def hereditary_hr_repair_atlas_breakdown():
+    """Hereditary-HR-Repair-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for BRCA1-ATM-NBN-RAD51C-RAD51D-BARD1-MRE11-RAD50."""
+    from scripts.hereditary_hr_repair_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hr-repair-atlas/definitions")
+async def hereditary_hr_repair_atlas_definitions():
+    """Hereditary-HR-Repair-Atlas glossary — HR/HRD/PARPi/MRN-complex/AFP-A-T-DDx/RRSO-timing/RAD51-paralogs/BARD1-vs-BRCA1/NBN-Slavic-founder/cascade-testing/genomic-scar-HRD-score."""
+    from scripts.hereditary_hr_repair_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-ber-atlas/overview")
+async def hereditary_ber_atlas_overview():
+    """Hereditary-BER-Atlas overview — 8-gene BER reference MUTYH-OGG1-NTHL1-NEIL1-NEIL2-NEIL3-UNG-MPG."""
+    from scripts.hereditary_ber_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ber-atlas/breakdown")
+async def hereditary_ber_atlas_breakdown():
+    """Hereditary-BER-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for MUTYH-OGG1-NTHL1-NEIL1-NEIL2-NEIL3-UNG-MPG."""
+    from scripts.hereditary_ber_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ber-atlas/definitions")
+async def hereditary_ber_atlas_definitions():
+    """Hereditary-BER-Atlas glossary — BER pathway/8-oxoG/MAP-polyposis/NTHL1-NAP/UNG-HIGM5/TMZ-MPG/cascade-testing/aspirin-MAP/colectomy."""
+    from scripts.hereditary_ber_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
