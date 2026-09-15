@@ -20088,5 +20088,23 @@
     "title": "Hereditary Sideroblastic Anemia Atlas",
     "subtitle": "Complete 8-Gene Sideroblastic Anaemia Reference",
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-congenital-neutropenia-atlas",
+    "name": "",
+    "role": "Haematologist / Clinical Immunologist / Paediatric Haematologist",
+    "viz": "ANC nadir distribution + G-CSF response rates + AML/MDS risk by gene + pathway categories",
+    "feature": "ELANE-SCN vs CN oscillator + CXCR4-myelokathexis egress failure vs maturation arrest + VPS45-BM-fibrosis unique + WAS/XLN actin pathway dual phenotype",
+    "why": "Comprehensive 8-gene SCN reference covering 5 distinct mechanisms: ER-stress/UPR, CXCR4-egress, WASp-actin, glycosylation, lysosomal-vesicle-trafficking",
+    "priority": "P1",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-congenital-neutropenia-atlas/overview",
+      "/api/hereditary-congenital-neutropenia-atlas/breakdown",
+      "/api/hereditary-congenital-neutropenia-atlas/definitions"
+    ],
+    "page": "/hereditary-congenital-neutropenia-atlas",
+    "frontend": "portal-next/app/hereditary-congenital-neutropenia-atlas/page.jsx",
+    "built_note": "Hereditary-Congenital-Neutropenia-Atlas \u2014 /api/hereditary-congenital-neutropenia-atlas/overview|breakdown|definitions verified 200, 320-patient aggregate 8x40 seeds 2822-2829, 3 endpoints, SiteNav wired after Hereditary-Sideroblastic-Anemia-Atlas"
   }
 ]

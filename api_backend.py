@@ -49498,6 +49498,27 @@ async def hereditary_sideroblastic_anemia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-congenital-neutropenia-atlas/overview")
+async def hereditary_congenital_neutropenia_atlas_overview():
+    """Hereditary-Congenital-Neutropenia-Atlas overview — ELANE-HAX1-G6PC3-WAS-CXCR4-GFI1-VPS45-JAGN1 gene summary table, ER-stress/UPR/ELANE-axis/CXCR4-egress-failure/WASp-actin/VPS45-lysosomal pathway categories, G-CSF-response/myelokathexis/bone-marrow-fibrosis/AML-risk distinctions, 320 patients seeds 2822-2829."""
+    from scripts.hereditary_congenital_neutropenia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-congenital-neutropenia-atlas/breakdown")
+async def hereditary_congenital_neutropenia_atlas_breakdown():
+    """Hereditary-Congenital-Neutropenia-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for ELANE-HAX1-G6PC3-WAS-CXCR4-GFI1-VPS45-JAGN1."""
+    from scripts.hereditary_congenital_neutropenia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-congenital-neutropenia-atlas/definitions")
+async def hereditary_congenital_neutropenia_atlas_definitions():
+    """Hereditary-Congenital-Neutropenia-Atlas glossary — SCN/cyclic-neutropenia/ANC/myelokathexis-WHIM/maturation-arrest/G-CSF/plerixafor-CXCR4/Kostmann-HAX1/WASp-WAS-XLN/BM-fibrosis-VPS45/JAGN1-glycosylation/AML-MDS-transformation/CSF3R-truncation."""
+    from scripts.hereditary_congenital_neutropenia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-dba-atlas/overview")
 async def hereditary_dba_atlas_overview():
     """Hereditary-DBA-Atlas overview — RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2 gene summary table, 40S/60S subunit RP categories, MDM2-p53 universal pathway, eADA-PATHOGNOMONIC/triphalangeal-thumb/cleft-palate distinctions, 320 patients seeds 2806-2813."""
