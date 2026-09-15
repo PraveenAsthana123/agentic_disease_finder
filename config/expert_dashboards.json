@@ -19904,5 +19904,31 @@
     "seeds": "2774-2781",
     "n_patients": 320,
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-sterol-biosynthesis-atlas",
+    "title": "Hereditary-Sterol-Biosynthesis-Atlas",
+    "subtitle": "Complete 8-Gene Post-Squalene Cholesterol Biosynthesis & Isoprenoid Pathway Reference",
+    "genes": [
+      "DHCR7",
+      "EBP",
+      "NSDHL",
+      "SC5D",
+      "DHCR24",
+      "LSS",
+      "MVK",
+      "SQLE"
+    ],
+    "n_patients": 320,
+    "seeds": "2782-2789",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-sterol-biosynthesis-atlas/overview",
+      "/api/hereditary-sterol-biosynthesis-atlas/breakdown",
+      "/api/hereditary-sterol-biosynthesis-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-sterol-biosynthesis-atlas/page.jsx",
+    "registered": "2026-09-15",
+    "note": "Hereditary-Sterol-Biosynthesis-Atlas Complete-8-Gene-DHCR7-EBP-NSDHL-SC5D-DHCR24-LSS-MVK-SQLE-Post-Squalene-Cholesterol-Biosynthesis-Isoprenoid-Pathway-Reference"
   }
 ]

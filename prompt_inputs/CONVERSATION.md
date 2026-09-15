@@ -35507,3 +35507,171 @@ Queue exhausted — no commit made. Summary:
 | **TK2** | Myopathic MDDS4 | dThd+dCyd deoxynucleoside therapy disease-modifying; CNS spared; CONTRAST TYMP |
 
 3 endpoints verified 200: `/api/hereditary-pyrimidine-disorder-atlas/overview|breakdown|definitions`
+
+### [2026-09-14 19:06:46 MDT] ASSISTANT
+Done. Here's what was built and pushed in this iteration:
+
+**Hereditary Purine Disorder Atlas** — `d488dfa4` → `origin/main`
+
+| File | Action |
+|---|---|
+| `scripts/hereditary_purine_disorder_atlas_dashboard.py` | Created — 8-gene dashboard script, 320 synthetic patients (seeds 2702-2709) |
+| `api_backend.py` | Added 3 routes: `/api/hereditary-purine-disorder-atlas/overview|breakdown|definitions` |
+| `portal-next/app/hereditary-purine-disorder-atlas/page.jsx` | Created — 4-tab React page (Overview / Gene Table / Clinical Atlas / Definitions) |
+| `portal-next/app/components/SiteNav.jsx` | Wired nav link after Hereditary-Pyrimidine-Disorder-Atlas |
+| `config/expert_dashboards.json` | Count: 1218 → 1219 |
+| `scripts/next_pending.py` | Logged as built in comments |
+
+**8 genes covered** (companion to the Pyrimidine Disorder Atlas just built):
+- **HPRT1** — Lesch-Nyhan; SIB + hyperuricaemia PATHOGNOMONIC; allopurinol has no neurological benefit
+- **ADSL** — Succinylpurines (SAICAr + S-Ado) in CSF PATHOGNOMONIC; NOT on standard metabolic screens
+- **ATIC** — AICA-ribosiduria; ultraorphan (<5 cases worldwide); methotrexate ABSOLUTELY CI
+- **ADA** — ADA-SCID; T+B+NK depleted; STRIMVELIS EMA 2016 (first approved gene therapy); SNHL 40-60% despite reconstitution
+- **PNP** — Selective T-cell only; hypouricaemia PATHOGNOMONIC; B cells normal; forodesine ABSOLUTELY CI
+- **APRT** — 2,8-DHA urolithiasis; radiolucent on X-ray, opaque on CT; normal uric acid; allopurinol curative; azathioprine + allopurinol = fatal myelosuppression
+- **DGUOK** — Hepatocerebral MDDS3; rotatory nystagmus early PATHOGNOMONIC; VPA ABSOLUTELY CI; liver transplant contraindicated if neuro present
+- **PRPS1** — Arts syndrome pentad; PRPP deficiency; LOF vs GOF = opposite uric acid direction
+
+All 3 endpoints verified 200 ✅
+
+### [2026-09-14 19:34:40 MDT] ASSISTANT
+Done. Built, verified (3 endpoints → 200), committed, and pushed.
+
+**Built: Hereditary NER/XP Atlas** — the next atlas in the metabolic disease series, following Purine and Pyrimidine Disorder Atlases.
+
+**What was built:**
+- `scripts/hereditary_ner_xp_atlas_dashboard.py` — 1,187 lines; 8 XP genes, 320 patients (seeds 2710-2717)
+- `portal-next/app/hereditary-ner-xp-atlas/page.jsx` — 4-tab frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- 3 API routes wired in `api_backend.py` — all returned 200
+- SiteNav entry added after Hereditary-Purine-Disorder-Atlas
+- `expert_dashboards.json` count: 1219 → 1220
+
+**8 genes covered:**
+
+| Gene | XP Group | Distinctive feature |
+|---|---|---|
+| XPA | XP-A | Both GGR+TCR abolished; most severe; neurodegeneration |
+| ERCC3 | XP-B / TTD | TFIIH; tiger-tail banding PATHOGNOMONIC; <30 patients worldwide |
+| XPC | XP-C | GGR only, TCR intact → NO neurodegeneration; most common USA/Europe |
+| ERCC2 | XP-D / TTD | Widest spectrum: XP/CS/TTD/COFS; most common TTD gene (50%) |
+| DDB2 | XP-E | Mildest; UDS 30-50% normal (highest); CPD sensor |
+| ERCC4 | XP-F / FANCQ | DEB chromosomal fragility PATHOGNOMONIC; bone marrow failure; HSCT |
+| ERCC5 | XP-G + CS | Worst XP+CS; XPG null = TFIIH anchor lost → TCR also fails |
+| POLH | XP-Variant | NORMAL UDS (only XP group!); Pol η TLS; delayed cancer 2nd-3rd decade |
+
+### [2026-09-14 20:02:34 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed in one iteration.
+
+**Built: Hereditary-Lynch-MMR-Atlas** — 8-gene Mismatch Repair / Lynch Syndrome reference
+
+| Component | Status |
+|---|---|
+| `scripts/hereditary_lynch_mmr_atlas_dashboard.py` | Created (1,189 lines) |
+| `api_backend.py` — 3 new endpoints | `/api/hereditary-lynch-mmr-atlas/overview\|breakdown\|definitions` |
+| All 3 endpoints | ✅ HTTP 200 verified |
+| `portal-next/app/hereditary-lynch-mmr-atlas/page.jsx` | Created (4-tab UI) |
+| `SiteNav.jsx` | Wired after Hereditary-NER-XP-Atlas |
+| `config/expert_dashboards.json` | 1220 → 1221 |
+| Commit `825a89f9` | Pushed to `origin/main` (fast-forward) |
+
+**8 genes covered:** MLH1 · MSH2 · MSH6 · PMS2 · EPCAM · MLH3 · MSH3 · PMS1 — 320 patients (8×40, seeds 2718–2725)
+
+Key clinical distinctions encoded: BRAF-V600E discriminator (Lynch vs sporadic MLH1-methylation), MSI-L false-negative pitfall in MSH6 (30%), CMMRD café-au-lait NF1-phenocopy, constitutional blood-MSI pathognomonic for CMMRD, EPCAM 3'-deletion-to-MSH2-methylation mechanism, MSH3-specific dinucleotide-unstable/mononucleotide-stable MSI signature, CAPP2 aspirin 63% CRC risk reduction, pembrolizumab FDA 2017 for dMMR.
+
+### [2026-09-14 20:39:18 MDT] ASSISTANT
+Done. Hereditary-Fanconi-Anemia-Atlas built, verified, committed, and pushed:
+
+- **7 files changed** — `scripts/hereditary_fanconi_anemia_atlas_dashboard.py` (NEW), `portal-next/app/hereditary-fanconi-anemia-atlas/page.jsx` (NEW), `api_backend.py` (+3 routes), `SiteNav.jsx` (wired after Lynch-MMR), `config/expert_dashboards.json` (count 1221→1222), `scripts/next_pending.py` (FA atlas marked built), `STATUS.md`
+- **3 endpoints verified 200**: `/api/hereditary-fanconi-anemia-atlas/overview|breakdown|definitions`
+- **Seeds**: 2726-2733 · **8 genes**: FANCA/FANCC/FANCD2/FANCG/BRCA2(FANCD1)/PALB2(FANCN)/BRIP1(FANCJ)/FANCI · **320 patients**
+- **Pushed** `825a89f9..678db612` → `origin/main`
+
+### [2026-09-14 20:47:29 MDT] ASSISTANT
+**Autonomous build iteration complete — nothing built.**
+
+- `next_pending.py` returned one buildable item: **Ictal/interictal retrain (P0)** — skipped (too heavy, per instructions).
+- All remaining items are blocked: Gmail/Slack/Drive (credentials), multi-user auth/RBAC, EMR/FHIR.
+- Logged via `track.sh`.
+
+No commit, no push. Operator input required to unblock the queue.
+
+### [2026-09-14 21:49:56 MDT] ASSISTANT
+**Done.** Built and pushed **Hereditary-BER-Atlas** (Base Excision Repair) — the logical successor to the HR-Repair Atlas in the DNA repair series.
+
+**What was built:**
+
+| File | Action |
+|---|---|
+| `scripts/hereditary_ber_atlas_dashboard.py` | NEW — 8-gene BER data generator, 320 patients (seeds 2742-2749) |
+| `portal-next/app/hereditary-ber-atlas/page.jsx` | NEW — React page with Overview/Gene Table/Clinical Atlas/Definitions tabs |
+| `api_backend.py` | +3 endpoints: `/api/hereditary-ber-atlas/overview\|breakdown\|definitions` |
+| `portal-next/app/components/SiteNav.jsx` | +nav entry (before HR-Repair Atlas) |
+| `config/expert_dashboards.json` | 1223 → 1224 entries |
+
+**8 genes covered** (seeds 2742-2749):
+- **MUTYH** — MAP polyposis (biallelic Y179C+G396D), CRC 50-80%, monoallelic 1.5-2×
+- **OGG1** — 8-oxoG repair, Lys326Gln variant, oxidative stress cancer link
+- **NTHL1** — NAP (NTHL1-associated polyposis), breast+endometrial+urothelial+CRC, C→T CpG signature
+- **NEIL1** — formamidopyrimidine/ring-opened purine glycosylase, metabolic syndrome overlap
+- **NEIL2** — transcribed-strand-preferring BER, 5-OHU oxidized cytosine
+- **NEIL3** — G-quadruplex unhooking, FA-pathway backup, meiotic SSB repair
+- **UNG** — Hyper-IgM type 5 (HIGM5), class-switch recombination failure, IVIG treatment
+- **MPG** — alkylated base removal (3-MeAdenine/7-MeGuanine), TMZ pharmacogenomics
+
+All 3 endpoints verified 200 ✅ · Pushed to `main` ✅
+
+### [2026-09-14 22:19:44 MDT] ASSISTANT
+Done. Built and pushed: **Hereditary-NHEJ-SSBR-Atlas** — the next DNA repair pathway atlas in the series, following BER (seeds 2742-2749).
+
+**What was built:**
+
+| Gene | Size | Locus | Disease |
+|------|------|-------|---------|
+| LIG4 | 911aa | 13q33.3 AR | LIG4 Syndrome — RS-SCID + microcephaly + pancytopenia + lymphoma; TBI FATAL |
+| DCLRE1C | 692aa | 10p13 AR | Artemis-SCID — RS-SCID; Navajo/Athabascan 2% carrier; Omenn variant; cyclophosphamide-CI |
+| PRKDC | 4128aa | 8q11.21 AR | DNA-PKcs SCID — ultra-rare <30 cases; PIKK scaffold kinase; T-B-NK+ SCID |
+| XRCC4 | 336aa | 5q14.2 AR | Primordial microcephalic dwarfism — **NO immunodeficiency** (DDx from LIG4) |
+| NHEJ1 | 299aa | 2q35 AR | XLF/Cernunnos SCID — milder; variable B cells; filament scaffold |
+| PNKP | 521aa | 19q13.33 AR | MCSZ (seizures+microcephaly) OR AOA4 (ataxia+OMA) — dual phenotype, same gene |
+| APTX | 342aa | 9p21.1 AR | AOA1 — ataxia+OMA+hypoalbuminaemia; AFP NORMAL (DDx from A-T); Portuguese/Japanese |
+| TDP1 | 608aa | 14q31.3 AR | SCAN1 — ataxia+neuropathy; NO OMA (DDx AOA1); camptothecin/irinotecan ABSOLUTELY CI |
+
+- **Seeds:** 2750-2757 · **320 patients** (8 × 40) · expert_dashboards.json: 1224 → 1225
+- **3 endpoints verified 200:** `/api/hereditary-nhej-ssbr-atlas/overview|breakdown|definitions`
+- **SiteNav wired** after Hereditary-BER-Atlas
+- **Pushed** to `origin/main` (c8336d81)
+
+### [2026-09-14 23:32:12 MDT] ASSISTANT
+Done. Summary:
+
+**Item completed:** `Hereditary-Progeroid-Atlas` (WRN · BLM · RECQL4 · ERCC6 · ERCC8 · BANF1 · TINF2 · RTEL1)
+
+The work was already built and staged from a prior session but never committed. This iteration:
+1. Confirmed backend healthy on port 8010
+2. Verified all 3 endpoints return 200: `/api/hereditary-progeroid-atlas/overview|breakdown|definitions`
+3. Refreshed STATUS.md
+4. Committed 7 files (1,714 insertions) — `3d5eca09`
+5. Pushed fast-forward to `origin/main`
+
+**Queue status:** The only remaining `BUILDABLE` item is `ictal/interictal retrain` (SKIP — too heavy). All other pending items are BLOCKED (credentials) or GATED (push approval). Queue exhausted.
+
+### [2026-09-14 23:57:58 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and commit:
+
+### [2026-09-15 00:18:37 MDT] ASSISTANT
+**Done.** One verified, committed, pushed iteration:
+
+**Built: Hereditary-HDL-Metabolism-Atlas** — extending the lipid series after FH-Atlas.
+
+| Item | Detail |
+|---|---|
+| **Atlas** | Hereditary-HDL-Metabolism-Atlas |
+| **Genes (8)** | ABCA1 · APOA1 · LCAT · LIPC · CETP · APOE · SCARB1 · LIPG |
+| **Seeds** | 2774-2781 · 320 patients (8×40) |
+| **Dashboard count** | 1227 → 1228 |
+| **Endpoints** | `/api/hereditary-hdl-metabolism-atlas/overview\|breakdown\|definitions` — all 3 × 200 ✅ |
+| **Files added** | `scripts/hereditary_hdl_metabolism_atlas_dashboard.py` · `portal-next/app/hereditary-hdl-metabolism-atlas/page.jsx` |
+| **Files updated** | `api_backend.py` · `SiteNav.jsx` · `config/expert_dashboards.json` · `STATUS.md` |
+| **Commit** | `9b076502` → pushed `main` |
+
+Key clinical content: ABCA1 orange/yellow tonsils (Tangier) PATHOGNOMONIC, ApoA-I Milano paradox, LCAT FLD triad (corneal haze+hemolytic anemia+proteinuria)+Lp-X, LIPC high HDL+high TG paradox, CETP Asp442Gly Japanese 7% centenarian longevity association, APOE palmar xanthomas PATHOGNOMONIC for Type III HLP, SCARB1 SR-BI RCT final-step block+adrenal crisis risk, LIPG inflammation-mediated HDL-C drop in sepsis.

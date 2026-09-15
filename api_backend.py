@@ -49416,6 +49416,27 @@ async def hereditary_hdl_metabolism_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-sterol-biosynthesis-atlas/overview")
+async def hereditary_sterol_biosynthesis_atlas_overview():
+    """Hereditary-Sterol-Biosynthesis-Atlas overview — DHCR7-EBP-NSDHL-SC5D-DHCR24-LSS-MVK-SQLE / 320 patients seeds 2782-2789 / SLO/CDPX2/CHILD/Lathosterolosis/Desmosterolosis/LSS-cataracts-alopecia/HIDS/SQLE-alopecia spectrum."""
+    from scripts.hereditary_sterol_biosynthesis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-sterol-biosynthesis-atlas/breakdown")
+async def hereditary_sterol_biosynthesis_atlas_breakdown():
+    """Hereditary-Sterol-Biosynthesis-Atlas per-gene breakdown — 40 patients/gene / DHCR7-2,3-syndactyly/EBP-stippled-epiphyses/NSDHL-CHILD-midline/SC5D-lathosterol-liver/DHCR24-desmosterol-statin-CI/LSS-cataracts/MVK-HIDS-canakinumab/SQLE-alopecia-squalene."""
+    from scripts.hereditary_sterol_biosynthesis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-sterol-biosynthesis-atlas/definitions")
+async def hereditary_sterol_biosynthesis_atlas_definitions():
+    """Hereditary-Sterol-Biosynthesis-Atlas glossary — SLO/DHCR7/2,3-syndactyly/CDPX2/EBP/stippled-epiphyses/CHILD/NSDHL/midline/lathosterolosis/SC5D/lathocholate/desmosterolosis/DHCR24/seladin-1/LSS/lanosterol-chaperone/HIDS/MVK/mevalonic-aciduria/SQLE/terbinafine/statin-rule."""
+    from scripts.hereditary_sterol_biosynthesis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
