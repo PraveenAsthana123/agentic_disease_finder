@@ -19955,5 +19955,59 @@
     "patients": 320,
     "seeds": "2790-2797",
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-lynch-mmr-atlas",
+    "title": "Hereditary Lynch Syndrome / MMR Atlas",
+    "subtitle": "Complete 8-Gene Mismatch Repair Reference \u2014 Lynch Syndrome, CMMRD, MMR-Deficient Polyposis",
+    "genes": [
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "EPCAM",
+      "MLH3",
+      "MSH3",
+      "PMS1"
+    ],
+    "n_patients": 320,
+    "seeds": "2718-2725",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-lynch-mmr-atlas/overview",
+      "/api/hereditary-lynch-mmr-atlas/breakdown",
+      "/api/hereditary-lynch-mmr-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-lynch-mmr-atlas/page.jsx",
+    "script": "scripts/hereditary_lynch_mmr_atlas_dashboard.py",
+    "registered": "2026-09-15",
+    "note": "Hereditary Lynch Syndrome / MMR Atlas \u2014 8-gene mismatch repair reference. MLH1/MSH2 most common Lynch; MSH6 endometrial highest; PMS2 lowest penetrance 4 pseudogenes MLPA mandatory; EPCAM upstream silencing MSH2; MLH3/MSH3/PMS1 polyposis and modifier roles; CMMRD biallelic PMS2/MSH6. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-fanconi-anemia-atlas",
+    "title": "Hereditary Fanconi Anemia & DNA Crosslink Repair Atlas",
+    "subtitle": "Complete 8-Gene ICL Repair Reference \u2014 FANCA/FANCC/FANCD2/FANCG/BRCA2/PALB2/BRIP1/FANCI",
+    "genes": [
+      "FANCA",
+      "FANCC",
+      "FANCD2",
+      "FANCG",
+      "BRCA2",
+      "PALB2",
+      "BRIP1",
+      "FANCI"
+    ],
+    "n_patients": 320,
+    "seeds": "2726-2733",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-fanconi-anemia-atlas/overview",
+      "/api/hereditary-fanconi-anemia-atlas/breakdown",
+      "/api/hereditary-fanconi-anemia-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-fanconi-anemia-atlas/page.jsx",
+    "script": "scripts/hereditary_fanconi_anemia_atlas_dashboard.py",
+    "registered": "2026-09-15",
+    "note": "Hereditary Fanconi Anemia & DNA Crosslink Repair Atlas \u2014 8-gene ICL repair reference. FANCA 60-65% all FA; FANCD2 central ubiquitination pivot; BRCA2(FANCD1) HBOC overlap biallelic lethal; PALB2(FANCN) BRCA2 partner; BRIP1(FANCJ) BRCA1 partner FANCJ helicase; FANCI monoubiquitinated with FANCD2; FANCC cytoplasmic chaperone; FANCG FA-CORE NLS import. 3 endpoints verified 200."
   }
 ]
