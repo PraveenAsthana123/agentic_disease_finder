@@ -20157,5 +20157,25 @@
     ],
     "seeds": "2846-2853",
     "patients": 320
+  },
+  {
+    "id": "hereditary-iron-overload-atlas",
+    "name": "Hereditary Iron Overload Atlas",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-iron-overload-atlas/overview",
+    "page": "/hereditary-iron-overload-atlas",
+    "genes": [
+      "HFE",
+      "HJV",
+      "HAMP",
+      "TFR2",
+      "SLC40A1",
+      "CP",
+      "TMPRSS6",
+      "BMP6"
+    ],
+    "seeds": "2854-2861",
+    "patients": 320
   }
 ]
