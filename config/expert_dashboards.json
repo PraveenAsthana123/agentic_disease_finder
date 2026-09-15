@@ -20121,12 +20121,41 @@
     "name": "Hereditary Red Cell Enzymopathy Atlas",
     "category": "Hereditary Haematological Disorders",
     "subcategory": "Red Cell Enzymopathy",
-    "genes": ["G6PD", "PKLR", "HK1", "GPI", "PGK1", "TPI1", "ALDOA", "PFKM"],
+    "genes": [
+      "G6PD",
+      "PKLR",
+      "HK1",
+      "GPI",
+      "PGK1",
+      "TPI1",
+      "ALDOA",
+      "PFKM"
+    ],
     "status": "built",
     "api_base": "/api/hereditary-red-cell-enzymopathy-atlas",
     "portal_route": "/hereditary-red-cell-enzymopathy-atlas",
     "seeds": "2838-2845",
     "patients": 320,
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-red-cell-membrane-disorder-atlas",
+    "name": "Hereditary Red Cell Membrane Disorder Atlas",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-red-cell-membrane-disorder-atlas/overview",
+    "page": "/hereditary-red-cell-membrane-disorder-atlas",
+    "genes": [
+      "ANK1",
+      "SPTA1",
+      "SPTB",
+      "SLC4A1",
+      "EPB42",
+      "EPB41",
+      "PIEZO1",
+      "KCNN4"
+    ],
+    "seeds": "2846-2853",
+    "patients": 320
   }
 ]

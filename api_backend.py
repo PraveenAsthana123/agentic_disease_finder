@@ -49540,6 +49540,27 @@ async def hereditary_platelet_disorders_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-red-cell-membrane-disorder-atlas/overview")
+async def hereditary_red_cell_membrane_disorder_atlas_overview():
+    """Hereditary-Red-Cell-Membrane-Disorder-Atlas overview — ANK1-SPTA1-SPTB-SLC4A1-EPB42-EPB41-PIEZO1-KCNN4 gene summary table, HS/HE/DHS disorder categories, splenectomy-CI-DHS/xerocytosis/SAO distinctions, 320 patients seeds 2846-2853."""
+    from scripts.hereditary_red_cell_membrane_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-red-cell-membrane-disorder-atlas/breakdown")
+async def hereditary_red_cell_membrane_disorder_atlas_breakdown():
+    """Hereditary-Red-Cell-Membrane-Disorder-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for ANK1-SPTA1-SPTB-SLC4A1-EPB42-EPB41-PIEZO1-KCNN4."""
+    from scripts.hereditary_red_cell_membrane_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-red-cell-membrane-disorder-atlas/definitions")
+async def hereditary_red_cell_membrane_disorder_atlas_definitions():
+    """Hereditary-Red-Cell-Membrane-Disorder-Atlas glossary — HS/EMA/osmotic-fragility/HPP-heat-sensitivity/LELY/DHS-pseudohyperkalemia/splenectomy-absolute-CI/SAO-malaria-protection/senicapoc/Gardos-effect."""
+    from scripts.hereditary_red_cell_membrane_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-red-cell-enzymopathy-atlas/overview")
 async def hereditary_red_cell_enzymopathy_atlas_overview():
     """Hereditary-Red-Cell-Enzymopathy-Atlas overview — G6PD-PKLR-HK1-GPI-PGK1-TPI1-ALDOA-PFKM gene summary table, PPP/glycolysis pathway categories, episodic-vs-CNSHA-vs-multisystem distinctions, 320 patients seeds 2838-2845."""
