@@ -49353,6 +49353,27 @@ async def hereditary_nhej_ssbr_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-progeroid-atlas/overview")
+async def hereditary_progeroid_atlas_overview():
+    """Hereditary-Progeroid-Atlas overview — WRN-BLM-RECQL4-ERCC6-ERCC8-BANF1-TINF2-RTEL1 / 320 patients seeds 2758-2765 / Werner/Bloom/RTS2/CS-B/CS-A/NGPS/DC2-Revesz/HHS segmental progeroid syndromes."""
+    from scripts.hereditary_progeroid_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-progeroid-atlas/breakdown")
+async def hereditary_progeroid_atlas_breakdown():
+    """Hereditary-Progeroid-Atlas per-gene breakdown — 40 patients/gene / RecQ-helicase/Cockayne/nuclear-lamina/telomere-maintenance per gene / progeroid clinical variables."""
+    from scripts.hereditary_progeroid_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-progeroid-atlas/definitions")
+async def hereditary_progeroid_atlas_definitions():
+    """Hereditary-Progeroid-Atlas glossary — Werner/Bloom/RTS2/CS-B/CS-A/NGPS/Revesz/HHS/RecQ-helicase/SCE/TC-NER/shelterin/Flow-FISH/lonafarnib/VTM/cascade-testing."""
+    from scripts.hereditary_progeroid_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

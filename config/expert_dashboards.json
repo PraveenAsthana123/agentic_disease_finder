@@ -19836,5 +19836,32 @@
     "n_patients": 320,
     "seeds": "2750-2757",
     "built_date": "2026-09-14"
+  },
+  {
+    "id": "hereditary-progeroid-atlas",
+    "name": "Hereditary-Progeroid-Atlas Complete-8-Gene-WRN-BLM-RECQL4-ERCC6-ERCC8-BANF1-TINF2-RTEL1-Segmental-Progeroid-Premature-Aging-Atlas WRN-1432aa-8p12-AR-Werner-Syndrome-Adult-Onset-Bilateral-Cataracts-Mesenchymal-Cancer BLM-1417aa-15q26.1-AR-Bloom-Syndrome-SCE-10x-PATHOGNOMONIC-BLMAsh-Ashkenazi-Azoospermia RECQL4-1208aa-8q24.12-AR-RTS2-Poikiloderma-Osteosarcoma-30-50pct-Rapadilino-Finnish ERCC6-1493aa-10q11.23-AR-CS-B-Most-Severe-TC-NER-NO-Skin-Cancer-Cachectic-Dwarfism ERCC8-396aa-5q12.1-AR-CS-A-Milder-Same-Assay-Gene-Sequencing-Distinguishes BANF1-89aa-11q13.1-AR-NGPS-Ultra-Rare-LMNA-Normal-Clavicular-Resorption-Ala12Thr TINF2-354aa-14q12-AD-de-novo-DC2-Revesz-Bilateral-Exudative-Retinopathy-PATHOGNOMONIC-Shortest-Telomeres RTEL1-1219aa-20q13.33-AR-AD-HHS-Most-Severe-DC-Cerebellar-Hypoplasia-SCID-BMF-D-Loop-IPF-Monoallelic",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-progeroid-atlas/overview",
+      "/api/hereditary-progeroid-atlas/breakdown",
+      "/api/hereditary-progeroid-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-progeroid-atlas",
+    "script": "scripts/hereditary_progeroid_atlas_dashboard.py",
+    "seeds": "2758-2765",
+    "n_genes": 8,
+    "n_patients": 320,
+    "genes": [
+      "WRN",
+      "BLM",
+      "RECQL4",
+      "ERCC6",
+      "ERCC8",
+      "BANF1",
+      "TINF2",
+      "RTEL1"
+    ],
+    "description": "Complete 8-Gene Hereditary Progeroid Premature-Aging Atlas \u2014 Werner/Bloom/RTS2/CS-B/CS-A/NGPS/DC2-Revesz/HHS; RecQ helicases + Cockayne syndrome + nuclear lamina + telomere maintenance; seeds 2758-2765",
+    "built_date": "2026-09-14"
   }
 ]
