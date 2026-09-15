@@ -49332,6 +49332,27 @@ async def hereditary_ber_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-nhej-ssbr-atlas/overview")
+async def hereditary_nhej_ssbr_atlas_overview():
+    """Hereditary-NHEJ-SSBR-Atlas overview — LIG4-DCLRE1C-PRKDC-XRCC4-NHEJ1-PNKP-APTX-TDP1 / 320 patients seeds 2750-2757 / RS-SCID/LIG4-Syndrome/Artemis-SCID/DNA-PKcs-SCID/XRCC4-Dwarfism/XLF-SCID/MCSZ/AOA1/SCAN1."""
+    from scripts.hereditary_nhej_ssbr_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-nhej-ssbr-atlas/breakdown")
+async def hereditary_nhej_ssbr_atlas_breakdown():
+    """Hereditary-NHEJ-SSBR-Atlas per-gene breakdown — 40 patients/gene / SCID/radiosensitivity/microcephaly/ataxia/HSCT/camptothecin-CI per gene."""
+    from scripts.hereditary_nhej_ssbr_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-nhej-ssbr-atlas/definitions")
+async def hereditary_nhej_ssbr_atlas_definitions():
+    """Hereditary-NHEJ-SSBR-Atlas glossary — NHEJ/SSBR/V(D)J/radiosensitivity/LIG4-Syndrome/Artemis-SCID/XRCC4-dwarfism/AOA1/SCAN1/MCSZ/chromosomal-breakage/RIC-conditioning."""
+    from scripts.hereditary_nhej_ssbr_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

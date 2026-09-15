@@ -19815,5 +19815,26 @@
     "n_patients": 320,
     "built_date": "2026-09-14",
     "note": "Hereditary BER Atlas \u2014 8-gene base excision repair reference. MUTYH-MAP biallelic polyposis, NTHL1-NAP polyposis, UNG-HIGM5 immunodeficiency, OGG1/NEIL1/NEIL2/NEIL3 oxidative base repair, MPG alkylated base removal. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-nhej-ssbr-atlas",
+    "name": "Hereditary-NHEJ-SSBR-Atlas Complete-8-Gene-LIG4-DCLRE1C-PRKDC-XRCC4-NHEJ1-PNKP-APTX-TDP1-Atlas LIG4-911aa-13q33.3-AR-LIG4-Syndrome-RS-SCID-TBI-FATAL-Microcephaly-Pancytopenia DCLRE1C-692aa-10p13-AR-Artemis-SCID-Navajo-Founder-Omenn-Cyclophosphamide-CI PRKDC-4128aa-8q11.21-AR-DNA-PKcs-SCID-Ultra-Rare XRCC4-336aa-5q14.2-AR-Primordial-Dwarfism-NO-SCID NHEJ1-299aa-2q35-AR-XLF-SCID-Milder PNKP-521aa-19q13.33-AR-MCSZ-AOA4-Dual-Phenotype APTX-342aa-9p21.1-AR-AOA1-Hypoalbuminaemia-Normal-AFP TDP1-608aa-14q31.3-AR-SCAN1-Camptothecin-CI 320-Patient-Aggregate-8x40-seeds-2750-2757",
+    "status": "built",
+    "route": "/hereditary-nhej-ssbr-atlas",
+    "api_prefix": "/api/hereditary-nhej-ssbr-atlas",
+    "category": "Hereditary DNA Repair",
+    "genes": [
+      "LIG4",
+      "DCLRE1C",
+      "PRKDC",
+      "XRCC4",
+      "NHEJ1",
+      "PNKP",
+      "APTX",
+      "TDP1"
+    ],
+    "n_patients": 320,
+    "seeds": "2750-2757",
+    "built_date": "2026-09-14"
   }
 ]
