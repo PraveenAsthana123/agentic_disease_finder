@@ -49227,6 +49227,27 @@ async def hereditary_purine_disorder_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ner-xp-atlas/overview")
+async def hereditary_ner_xp_atlas_overview():
+    """Hereditary-NER-XP-Atlas overview — XPA-ERCC3-XPC-ERCC2-DDB2-ERCC4-ERCC5-POLH, 320 patients seeds 2710-2717, NER pathway categories, GGR+TCR, TFIIH, CPD-6-4PP, UV-avoidance, photosensitising-drug-CI."""
+    from scripts.hereditary_ner_xp_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ner-xp-atlas/breakdown")
+async def hereditary_ner_xp_atlas_breakdown():
+    """Hereditary-NER-XP-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for XPA-ERCC3-XPC-ERCC2-DDB2-ERCC4-ERCC5-POLH."""
+    from scripts.hereditary_ner_xp_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ner-xp-atlas/definitions")
+async def hereditary_ner_xp_atlas_definitions():
+    """Hereditary-NER-XP-Atlas glossary — NER-GGR-TCR, CPD-6-4PP, TFIIH, TTD-tiger-tail-banding, UV-avoidance-protocol, photosensitising-drugs-CI, UDS-assay, DEB-test-FANCQ, Pol-eta-TLS, Cockayne-syndrome-XP-overlap."""
+    from scripts.hereditary_ner_xp_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

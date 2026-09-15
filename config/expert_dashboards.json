@@ -19683,5 +19683,30 @@
       "PRPS1"
     ],
     "note": "HPRT1-218aa-Xq26.2-Hypoxanthine-Guanine-Phosphoribosyltransferase-25kDa-Homotetramer-Purine-Salvage-XLR / ADSL-484aa-22q13.1-Adenylosuccinate-Lyase-54kDa-Homotetramer-Two-Reaction-De-Novo-AMP-AR / ATIC-592aa-2q35-AICAR-Transformylase-IMP-Cyclohydrolase-65kDa-Homodimer-Steps-9-10-AR / ADA-363aa-20q13.12-Adenosine-Deaminase-41kDa-Monomer-Zinc-Metalloenzyme-ADA-SCID-AR / PNP-289aa-14q11.2-Purine-Nucleoside-Phosphorylase-32kDa-Homotrimer-Selective-T-Cell-AR / APRT-180aa-16q24.3-Adenine-Phosphoribosyltransferase-20kDa-Homodimer-DHA-Urolithiasis-AR / DGUOK-277aa-2p13.1-Deoxyguanosine-Kinase-30kDa-Monomer-Mitochondrial-Matrix-MDDS3-AR / PRPS1-318aa-Xq22.3-PRPP-Synthetase-1-34kDa-Hexamer-Arts-Syndrome-CMTX5-XLR"
+  },
+  {
+    "id": "hereditary-ner-xp-atlas",
+    "name": "Hereditary-NER-XP-Atlas Complete-8-Gene-Nucleotide-Excision-Repair-Xeroderma-Pigmentosum-Atlas XPA-273aa-9q22.33-AR-XP-A-GGR+TCR-BOTH-ABOLISHED-most-severe-neurodegeneration ERCC3-782aa-2q21.3-AR-XPB-TFIIH-TTD-tiger-tail-PATHOGNOMONIC-XP+CS-ultraorphan XPC-940aa-3p25.1-AR-XP-C-GGR-only-TCR-intact-NO-neurodegeneration-most-common-USA-Europe ERCC2-760aa-19q13.32-AR-XPD-TFIIH-TTD-XP+CS-COFS-widest-spectrum DDB2-428aa-11p11.2-AR-XPE-mildest-UDS-30-50pct-CPD-sensor ERCC4-916aa-16p13.12-AR-XPF-ERCC1-FANCQ-allelic-DEB-fragility-PATHOGNOMONIC-HSCT-BMF ERCC5-1186aa-13q33.1-AR-XPG-3prime-incision-TFIIH-anchor-null-worst-XP+CS POLH-713aa-6p21.1-AR-XP-Variant-NORMAL-UDS-Pol-eta-TLS-delayed-cancer-Japan-most-common 320-Patient-Aggregate-8x40-seeds-2710-2717",
+    "status": "built",
+    "category": "hereditary-dna-repair",
+    "api_prefix": "/api/hereditary-ner-xp-atlas",
+    "endpoints": [
+      "/api/hereditary-ner-xp-atlas/overview",
+      "/api/hereditary-ner-xp-atlas/breakdown",
+      "/api/hereditary-ner-xp-atlas/definitions"
+    ],
+    "frontend": "/hereditary-ner-xp-atlas",
+    "registered": "2026-09-14",
+    "seeds": [
+      2710,
+      2711,
+      2712,
+      2713,
+      2714,
+      2715,
+      2716,
+      2717
+    ],
+    "n_patients": 320
   }
 ]
