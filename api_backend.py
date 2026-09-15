@@ -49540,6 +49540,27 @@ async def hereditary_platelet_disorders_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-red-cell-enzymopathy-atlas/overview")
+async def hereditary_red_cell_enzymopathy_atlas_overview():
+    """Hereditary-Red-Cell-Enzymopathy-Atlas overview — G6PD-PKLR-HK1-GPI-PGK1-TPI1-ALDOA-PFKM gene summary table, PPP/glycolysis pathway categories, episodic-vs-CNSHA-vs-multisystem distinctions, 320 patients seeds 2838-2845."""
+    from scripts.hereditary_red_cell_enzymopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-red-cell-enzymopathy-atlas/breakdown")
+async def hereditary_red_cell_enzymopathy_atlas_breakdown():
+    """Hereditary-Red-Cell-Enzymopathy-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for G6PD-PKLR-HK1-GPI-PGK1-TPI1-ALDOA-PFKM."""
+    from scripts.hereditary_red_cell_enzymopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-red-cell-enzymopathy-atlas/definitions")
+async def hereditary_red_cell_enzymopathy_atlas_definitions():
+    """Hereditary-Red-Cell-Enzymopathy-Atlas glossary — CNSHA/favism/Heinz-bodies/2,3-DPG-paradox/aplastic-crisis/DHAP-toxicity/mitapivat/ischemic-forearm-test/no-second-wind-PFKM/G6PD-assay-timing."""
+    from scripts.hereditary_red_cell_enzymopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-dba-atlas/overview")
 async def hereditary_dba_atlas_overview():
     """Hereditary-DBA-Atlas overview — RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2 gene summary table, 40S/60S subunit RP categories, MDM2-p53 universal pathway, eADA-PATHOGNOMONIC/triphalangeal-thumb/cleft-palate distinctions, 320 patients seeds 2806-2813."""

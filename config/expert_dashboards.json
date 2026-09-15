@@ -20115,5 +20115,18 @@
     "page": "/hereditary-platelet-disorders-atlas",
     "frontend": "portal-next/app/hereditary-platelet-disorders-atlas/page.jsx",
     "built_note": "Hereditary-Platelet-Disorders-Atlas \u2014 /api/hereditary-platelet-disorders-atlas/overview|breakdown|definitions verified 200, 320-patient aggregate 8x40 seeds 2830-2837, 3 endpoints, SiteNav wired after Hereditary-Congenital-Neutropenia-Atlas"
+  },
+  {
+    "id": "hereditary_red_cell_enzymopathy_atlas",
+    "name": "Hereditary Red Cell Enzymopathy Atlas",
+    "category": "Hereditary Haematological Disorders",
+    "subcategory": "Red Cell Enzymopathy",
+    "genes": ["G6PD", "PKLR", "HK1", "GPI", "PGK1", "TPI1", "ALDOA", "PFKM"],
+    "status": "built",
+    "api_base": "/api/hereditary-red-cell-enzymopathy-atlas",
+    "portal_route": "/hereditary-red-cell-enzymopathy-atlas",
+    "seeds": "2838-2845",
+    "patients": 320,
+    "registered": "2026-09-15"
   }
 ]
