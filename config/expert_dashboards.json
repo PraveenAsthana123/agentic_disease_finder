@@ -20106,5 +20106,14 @@
     "page": "/hereditary-congenital-neutropenia-atlas",
     "frontend": "portal-next/app/hereditary-congenital-neutropenia-atlas/page.jsx",
     "built_note": "Hereditary-Congenital-Neutropenia-Atlas \u2014 /api/hereditary-congenital-neutropenia-atlas/overview|breakdown|definitions verified 200, 320-patient aggregate 8x40 seeds 2822-2829, 3 endpoints, SiteNav wired after Hereditary-Sideroblastic-Anemia-Atlas"
+  },
+  {
+    "id": "hereditary-platelet-disorders-atlas",
+    "title": "Hereditary Platelet Disorders Atlas",
+    "category": "Hereditary Platelet Disorders",
+    "status": "built",
+    "page": "/hereditary-platelet-disorders-atlas",
+    "frontend": "portal-next/app/hereditary-platelet-disorders-atlas/page.jsx",
+    "built_note": "Hereditary-Platelet-Disorders-Atlas \u2014 /api/hereditary-platelet-disorders-atlas/overview|breakdown|definitions verified 200, 320-patient aggregate 8x40 seeds 2830-2837, 3 endpoints, SiteNav wired after Hereditary-Congenital-Neutropenia-Atlas"
   }
 ]

@@ -49519,6 +49519,27 @@ async def hereditary_congenital_neutropenia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-platelet-disorders-atlas/overview")
+async def hereditary_platelet_disorders_atlas_overview():
+    """Hereditary-Platelet-Disorders-Atlas overview — ITGA2B-ITGB3-GP1BA-GP9-MYH9-ANKRD26-RUNX1-GFI1B gene summary table, alphaIIbbeta3/GPIb-IX-V/NMHC-IIA/MK-differentiation/GFI1B pathway categories, GT-vs-BSS-vs-MYH9-RD-vs-FPD-AML distinctions, 320 patients seeds 2830-2837."""
+    from scripts.hereditary_platelet_disorders_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-platelet-disorders-atlas/breakdown")
+async def hereditary_platelet_disorders_atlas_breakdown():
+    """Hereditary-Platelet-Disorders-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for ITGA2B-ITGB3-GP1BA-GP9-MYH9-ANKRD26-RUNX1-GFI1B."""
+    from scripts.hereditary_platelet_disorders_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-platelet-disorders-atlas/definitions")
+async def hereditary_platelet_disorders_atlas_definitions():
+    """Hereditary-Platelet-Disorders-Atlas glossary — GT/BSS/MYH9-RD/FPD-AML/THC2/GFI1B/alphaIIbbeta3/GPIb-IX-V/ristocetin/dense-granule/AML-predisposition/alloimmunisation."""
+    from scripts.hereditary_platelet_disorders_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-dba-atlas/overview")
 async def hereditary_dba_atlas_overview():
     """Hereditary-DBA-Atlas overview — RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2 gene summary table, 40S/60S subunit RP categories, MDM2-p53 universal pathway, eADA-PATHOGNOMONIC/triphalangeal-thumb/cleft-palate distinctions, 320 patients seeds 2806-2813."""
