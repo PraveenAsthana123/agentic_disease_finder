@@ -19733,5 +19733,39 @@
       "/api/hereditary-lynch-mmr-atlas/definitions"
     ],
     "description": "Lynch Syndrome / HNPCC + CMMRD + DMMR-Polyposis 8-gene MMR reference: MLH1 (MutL\u03b1-anchor, most-common-Lynch-35pct, BRAF-V600E-discriminator), MSH2 (MutS\u03b1+MutS\u03b2-shared, Muir-Torre-sebaceous, urinary-tract-28pct-HIGHEST), MSH6 (MutS\u03b1-binding, EC-70pct-HIGHEST, MSI-L-30pct-FN), PMS2 (MutL\u03b1-endonuclease-DQHAXE, CMMRD-childhood-GBM-CALMs, pseudogene-pitfall), EPCAM (3prime-deletion-MSH2-methylation, CTE-biallelic), MLH3 (MutL\u03b3-meiotic-MMR, male-infertility), MSH3 (MutS\u03b2-IDL, AR-DMMR-polyposis-glioblastoma-EGGD, dinucleotide-unstable), PMS1 (MutL\u03b2-modifier, no-endonuclease, low-penetrance)"
+  },
+  {
+    "name": "Hereditary-Fanconi-Anemia-Atlas Complete-8-Gene-DNA-ICL-Repair-Reference FANCA-FANCC-FANCD2-FANCG-BRCA2-PALB2-BRIP1-FANCI",
+    "slug": "/hereditary-fanconi-anemia-atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "built_date": "2026-09-14",
+    "genes": [
+      "FANCA",
+      "FANCC",
+      "FANCD2",
+      "FANCG",
+      "BRCA2",
+      "PALB2",
+      "BRIP1",
+      "FANCI"
+    ],
+    "seeds": [
+      2726,
+      2727,
+      2728,
+      2729,
+      2730,
+      2731,
+      2732,
+      2733
+    ],
+    "n_patients": 320,
+    "endpoints": [
+      "/api/hereditary-fanconi-anemia-atlas/overview",
+      "/api/hereditary-fanconi-anemia-atlas/breakdown",
+      "/api/hereditary-fanconi-anemia-atlas/definitions"
+    ],
+    "description": "Fanconi Anemia / DNA Interstrand Crosslink (ICL) Repair 8-gene atlas: FANCA (FA-CORE scaffold 163kDa, 60-65pct most-common, bipartite-NLS, thumb-radial-35pct), FANCC (FA-CORE 64kDa, Ashkenazi IVS4+4A>T 1in89, FANCD2-Ub partner), FANCD2 (ID2 central hub 164kDa, K561-monoUb gatekeeper Western-blot-shift gold-standard, somatic-mosaicism 25-30pct false-negative DEB), FANCG (FA-CORE XPG-ortholog 68kDa, SA Black founder IVS1+5G>A, azoospermia), BRCA2/FANCD1 (HR RAD51-loader 380kDa, biallelic FA-D1 early-childhood desmoplastic-medulloblastoma+Wilms, monoallelic HBOC, CY-ABSOLUTE-CI), PALB2/FANCN (BRCA1-BRCA2 bridge 130kDa, 53pct lifetime breast, TBCRC048 olaparib 82pct ORR highest non-BRCA), BRIP1/FANCJ (5prime3prime DEAH helicase ICL unwinding, monoallelic OC-only 11-13x NO breast elevation), FANCI (ID2 partner 149kDa, K523-monoUb, DEB/MMC chromosomal breakage gold standard)"
   }
 ]

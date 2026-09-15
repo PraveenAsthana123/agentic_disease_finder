@@ -49269,6 +49269,27 @@ async def hereditary_lynch_mmr_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-fanconi-anemia-atlas/overview")
+async def hereditary_fanconi_anemia_atlas_overview():
+    """Hereditary-Fanconi-Anemia-Atlas overview — FANCA-FANCC-FANCD2-FANCG-BRCA2(FANCD1)-PALB2(FANCN)-BRIP1(FANCJ)-FANCI gene summary table, FA-CORE/ID2/HR-downstream pathway categories, DEB/FANCD2-Ub diagnostics, 320 patients seeds 2726-2733."""
+    from scripts.hereditary_fanconi_anemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-fanconi-anemia-atlas/breakdown")
+async def hereditary_fanconi_anemia_atlas_breakdown():
+    """Hereditary-Fanconi-Anemia-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for FANCA-FANCC-FANCD2-FANCG-BRCA2-PALB2-BRIP1-FANCI."""
+    from scripts.hereditary_fanconi_anemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-fanconi-anemia-atlas/definitions")
+async def hereditary_fanconi_anemia_atlas_definitions():
+    """Hereditary-Fanconi-Anemia-Atlas glossary — FA-ICL-repair, DEB-MMC-chromosomal-breakage, FANCD2-monoubiquitination-Western-blot, FA-CORE-complex, ID2-clamp, somatic-mosaicism, radial-ray-defect, cyclophosphamide-CI, desmoplastic-medulloblastoma-FA-D1, BRIP1-ovarian-NOT-breast, PARPi-PALB2-TBCRC048."""
+    from scripts.hereditary_fanconi_anemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
