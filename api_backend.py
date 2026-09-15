@@ -49456,6 +49456,48 @@ async def hereditary_telomere_biology_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-apc-polyposis-atlas/overview")
+async def hereditary_apc_polyposis_atlas_overview():
+    """Hereditary-APC-Polyposis-Atlas overview — APC-POLE-POLD1-AXIN2-GREM1-STK11-SMAD4-RNF43 gene summary table, WNT/BMP/STK11/ultramutator pathway categories, critical CHRPE/MSS/JP-HHT/oligodontia distinctions, 320 patients seeds 2798-2805."""
+    from scripts.hereditary_apc_polyposis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-apc-polyposis-atlas/breakdown")
+async def hereditary_apc_polyposis_atlas_breakdown():
+    """Hereditary-APC-Polyposis-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for APC-POLE-POLD1-AXIN2-GREM1-STK11-SMAD4-RNF43."""
+    from scripts.hereditary_apc_polyposis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-apc-polyposis-atlas/definitions")
+async def hereditary_apc_polyposis_atlas_definitions():
+    """Hereditary-APC-Polyposis-Atlas glossary — FAP/AFAP/Gardner/Turcot-APC, CHRPE-pathognomonic, codon-1309-severe, POLE-ultramutator-MSS-paradox, POLD1-EC-dominant, AXIN2-oligodontia-dental-route, GREM1-3prime-duplication-CNV-normal-coding, STK11-SCTAT-hamartoma-mucocutaneous, SMAD4-JP-HHT-pulmonary-AVM, RNF43-G659fs-Danish-serrated-porcupine-inhibitor."""
+    from scripts.hereditary_apc_polyposis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-dba-atlas/overview")
+async def hereditary_dba_atlas_overview():
+    """Hereditary-DBA-Atlas overview — RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2 gene summary table, 40S/60S subunit RP categories, MDM2-p53 universal pathway, eADA-PATHOGNOMONIC/triphalangeal-thumb/cleft-palate distinctions, 320 patients seeds 2806-2813."""
+    from scripts.hereditary_dba_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-dba-atlas/breakdown")
+async def hereditary_dba_atlas_breakdown():
+    """Hereditary-DBA-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2."""
+    from scripts.hereditary_dba_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-dba-atlas/definitions")
+async def hereditary_dba_atlas_definitions():
+    """Hereditary-DBA-Atlas glossary — DBA/PRCA/eADA-pathognomonic, nucleolar-stress, MDM2-p53-axis, RPL5-cleft-palate-PATHOGNOMONIC, RPL11-thenar-hypoplasia, TSR2-X-linked-RPS26-chaperone, triphalangeal-thumb, steroid-response, HSCT-curative, DBAR-registry, TEC-DDx."""
+    from scripts.hereditary_dba_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

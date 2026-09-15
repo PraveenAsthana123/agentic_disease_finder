@@ -20009,5 +20009,58 @@
     "script": "scripts/hereditary_fanconi_anemia_atlas_dashboard.py",
     "registered": "2026-09-15",
     "note": "Hereditary Fanconi Anemia & DNA Crosslink Repair Atlas \u2014 8-gene ICL repair reference. FANCA 60-65% all FA; FANCD2 central ubiquitination pivot; BRCA2(FANCD1) HBOC overlap biallelic lethal; PALB2(FANCN) BRCA2 partner; BRIP1(FANCJ) BRCA1 partner FANCJ helicase; FANCI monoubiquitinated with FANCD2; FANCC cytoplasmic chaperone; FANCG FA-CORE NLS import. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-apc-polyposis-atlas",
+    "title": "Hereditary APC & Non-Lynch Polyposis Atlas",
+    "subtitle": "Complete 8-Gene Non-Lynch Colorectal Cancer / Polyposis Reference \u2014 APC/POLE/POLD1/AXIN2/GREM1/STK11/SMAD4/RNF43",
+    "genes": [
+      "APC",
+      "POLE",
+      "POLD1",
+      "AXIN2",
+      "GREM1",
+      "STK11",
+      "SMAD4",
+      "RNF43"
+    ],
+    "n_patients": 320,
+    "seeds": "2798-2805",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-apc-polyposis-atlas/overview",
+      "/api/hereditary-apc-polyposis-atlas/breakdown",
+      "/api/hereditary-apc-polyposis-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-apc-polyposis-atlas/page.jsx",
+    "script": "scripts/hereditary_apc_polyposis_atlas_dashboard.py",
+    "registered": "2026-09-15",
+    "note": "Hereditary APC & Non-Lynch Polyposis Atlas \u2014 8-gene non-Lynch CRC/polyposis reference. APC FAP 100% CRC; codon 1309 most severe; POLE/POLD1 PPAP ultramutator MSS paradox IO-responsive; AXIN2 oligodontia dental route attenuated polyposis; GREM1 coding-normal CNV trap; STK11 Peutz-Jeghers SCTAT pathognomonic pancreatic 30%; SMAD4 JPS/JP-HHT pulmonary AVM mandatory echo; RNF43 serrated polyposis G659Vfs Danish founder porcupine inhibitor. 3 endpoints verified 200."
+  },
+  {
+    "id": "hereditary-dba-atlas",
+    "category": "hereditary-disease-atlas",
+    "status": "built",
+    "route": "/hereditary-dba-atlas",
+    "api_routes": [
+      "/api/hereditary-dba-atlas/overview",
+      "/api/hereditary-dba-atlas/breakdown",
+      "/api/hereditary-dba-atlas/definitions"
+    ],
+    "genes": [
+      "RPS19",
+      "RPL5",
+      "RPL11",
+      "RPS26",
+      "RPL35A",
+      "RPS17",
+      "RPL26",
+      "TSR2"
+    ],
+    "seeds": "2806-2813",
+    "patients": 320,
+    "title": "Hereditary Diamond-Blackfan Anaemia Atlas",
+    "subtitle": "Complete 8-Gene DBA & Ribosomopathy Reference",
+    "registered": "2026-09-15"
   }
 ]
