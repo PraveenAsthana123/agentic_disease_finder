@@ -19708,5 +19708,30 @@
       2717
     ],
     "n_patients": 320
+  },
+  {
+    "name": "Hereditary-Lynch-MMR-Atlas Complete-8-Gene-Mismatch-Repair-Reference MLH1-MSH2-MSH6-PMS2-EPCAM-MLH3-MSH3-PMS1",
+    "slug": "/hereditary-lynch-mmr-atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "built_date": "2026-09-14",
+    "genes": [
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "EPCAM",
+      "MLH3",
+      "MSH3",
+      "PMS1"
+    ],
+    "n_patients": 320,
+    "seeds": "2718-2725",
+    "endpoints": [
+      "/api/hereditary-lynch-mmr-atlas/overview",
+      "/api/hereditary-lynch-mmr-atlas/breakdown",
+      "/api/hereditary-lynch-mmr-atlas/definitions"
+    ],
+    "description": "Lynch Syndrome / HNPCC + CMMRD + DMMR-Polyposis 8-gene MMR reference: MLH1 (MutL\u03b1-anchor, most-common-Lynch-35pct, BRAF-V600E-discriminator), MSH2 (MutS\u03b1+MutS\u03b2-shared, Muir-Torre-sebaceous, urinary-tract-28pct-HIGHEST), MSH6 (MutS\u03b1-binding, EC-70pct-HIGHEST, MSI-L-30pct-FN), PMS2 (MutL\u03b1-endonuclease-DQHAXE, CMMRD-childhood-GBM-CALMs, pseudogene-pitfall), EPCAM (3prime-deletion-MSH2-methylation, CTE-biallelic), MLH3 (MutL\u03b3-meiotic-MMR, male-infertility), MSH3 (MutS\u03b2-IDL, AR-DMMR-polyposis-glioblastoma-EGGD, dinucleotide-unstable), PMS1 (MutL\u03b2-modifier, no-endonuclease, low-penetrance)"
   }
 ]

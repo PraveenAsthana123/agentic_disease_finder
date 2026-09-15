@@ -49248,6 +49248,27 @@ async def hereditary_ner_xp_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lynch-mmr-atlas/overview")
+async def hereditary_lynch_mmr_atlas_overview():
+    """Hereditary-Lynch-MMR-Atlas overview — MLH1-MSH2-MSH6-PMS2-EPCAM-MLH3-MSH3-PMS1 Lynch/MMR gene summary table, MutS/MutL pathway categories, critical IHC/MSI distinctions, 320 patients seeds 2718-2725."""
+    from scripts.hereditary_lynch_mmr_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lynch-mmr-atlas/breakdown")
+async def hereditary_lynch_mmr_atlas_breakdown():
+    """Hereditary-Lynch-MMR-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for MLH1-MSH2-MSH6-PMS2-EPCAM-MLH3-MSH3-PMS1."""
+    from scripts.hereditary_lynch_mmr_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lynch-mmr-atlas/definitions")
+async def hereditary_lynch_mmr_atlas_definitions():
+    """Hereditary-Lynch-MMR-Atlas glossary — Lynch-syndrome-HNPCC, CMMRD-childhood-brain-tumors-CALMs, MSI-H-MSI-L-dMMR, IHC-4-panel-rules, BRAF-V600E-discriminator, EPCAM-3prime-deletion, pembrolizumab-FDA2017, CAPP2-aspirin, Amsterdam-II-Bethesda, DMMR-polyposis-MSH3."""
+    from scripts.hereditary_lynch_mmr_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
