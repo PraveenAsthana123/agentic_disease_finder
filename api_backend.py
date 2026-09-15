@@ -49477,6 +49477,27 @@ async def hereditary_apc_polyposis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-sideroblastic-anemia-atlas/overview")
+async def hereditary_sideroblastic_anemia_atlas_overview():
+    """Hereditary-Sideroblastic-Anemia-Atlas overview — ALAS2-SLC25A38-GLRX5-HSPA9-ABCB7-PUS1-YARS2-TRNT1 gene summary, haem-synthesis/Fe-S/MLASA/SIFD pathway categories, pyridoxine-responsiveness/ring-sideroblast/XLSA-A-ataxia/SIFD-immunodeficiency distinctions, 320 patients seeds 2814-2821."""
+    from scripts.hereditary_sideroblastic_anemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-sideroblastic-anemia-atlas/breakdown")
+async def hereditary_sideroblastic_anemia_atlas_breakdown():
+    """Hereditary-Sideroblastic-Anemia-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for ALAS2-SLC25A38-GLRX5-HSPA9-ABCB7-PUS1-YARS2-TRNT1."""
+    from scripts.hereditary_sideroblastic_anemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-sideroblastic-anemia-atlas/definitions")
+async def hereditary_sideroblastic_anemia_atlas_definitions():
+    """Hereditary-Sideroblastic-Anemia-Atlas glossary — ring-sideroblast/ALAS2-pyridoxine-responsive/XLSA-A-ataxia-ABCB7/MLASA-PUS1-YARS2/SIFD-TRNT1-immunodeficiency/Fe-S-cluster-ISC-CIA/ferrochelatase-FECH/pseudouridine/CCA-tRNA-TRNT1/SF3B1-acquired-MDS-RS."""
+    from scripts.hereditary_sideroblastic_anemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-dba-atlas/overview")
 async def hereditary_dba_atlas_overview():
     """Hereditary-DBA-Atlas overview — RPS19-RPL5-RPL11-RPS26-RPL35A-RPS17-RPL26-TSR2 gene summary table, 40S/60S subunit RP categories, MDM2-p53 universal pathway, eADA-PATHOGNOMONIC/triphalangeal-thumb/cleft-palate distinctions, 320 patients seeds 2806-2813."""

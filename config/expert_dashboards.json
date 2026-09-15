@@ -20062,5 +20062,31 @@
     "title": "Hereditary Diamond-Blackfan Anaemia Atlas",
     "subtitle": "Complete 8-Gene DBA & Ribosomopathy Reference",
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-sideroblastic-anemia-atlas",
+    "category": "hereditary-disease-atlas",
+    "status": "built",
+    "route": "/hereditary-sideroblastic-anemia-atlas",
+    "api_routes": [
+      "/api/hereditary-sideroblastic-anemia-atlas/overview",
+      "/api/hereditary-sideroblastic-anemia-atlas/breakdown",
+      "/api/hereditary-sideroblastic-anemia-atlas/definitions"
+    ],
+    "genes": [
+      "ALAS2",
+      "SLC25A38",
+      "GLRX5",
+      "HSPA9",
+      "ABCB7",
+      "PUS1",
+      "YARS2",
+      "TRNT1"
+    ],
+    "seeds": "2814-2821",
+    "patients": 320,
+    "title": "Hereditary Sideroblastic Anemia Atlas",
+    "subtitle": "Complete 8-Gene Sideroblastic Anaemia Reference",
+    "registered": "2026-09-15"
   }
 ]
