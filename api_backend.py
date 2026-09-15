@@ -49561,6 +49561,27 @@ async def hereditary_red_cell_membrane_disorder_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-iron-overload-atlas/overview")
+async def hereditary_iron_overload_atlas_overview():
+    """Hereditary-Iron-Overload-Atlas overview — HFE-HJV-HAMP-TFR2-SLC40A1-CP-TMPRSS6-BMP6 gene summary table, hepcidin-BMP-SMAD categories, ferroportin-vs-classic-HH distinctions, 320 patients seeds 2854-2861."""
+    from scripts.hereditary_iron_overload_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-iron-overload-atlas/breakdown")
+async def hereditary_iron_overload_atlas_breakdown():
+    """Hereditary-Iron-Overload-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for HFE-HJV-HAMP-TFR2-SLC40A1-CP-TMPRSS6-BMP6."""
+    from scripts.hereditary_iron_overload_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-iron-overload-atlas/definitions")
+async def hereditary_iron_overload_atlas_definitions():
+    """Hereditary-Iron-Overload-Atlas glossary — hepcidin-BMP-SMAD/transferrin-saturation-screening/C282Y-H63D-penetrance/phlebotomy-protocol/ferroportin-type4A-4B/IRIDA-oral-iron-failure/aceruloplasminemia-paradox/juvenile-HH-cardiomyopathy."""
+    from scripts.hereditary_iron_overload_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-red-cell-enzymopathy-atlas/overview")
 async def hereditary_red_cell_enzymopathy_atlas_overview():
     """Hereditary-Red-Cell-Enzymopathy-Atlas overview — G6PD-PKLR-HK1-GPI-PGK1-TPI1-ALDOA-PFKM gene summary table, PPP/glycolysis pathway categories, episodic-vs-CNSHA-vs-multisystem distinctions, 320 patients seeds 2838-2845."""
@@ -49600,6 +49621,27 @@ async def hereditary_dba_atlas_breakdown():
 async def hereditary_dba_atlas_definitions():
     """Hereditary-DBA-Atlas glossary — DBA/PRCA/eADA-pathognomonic, nucleolar-stress, MDM2-p53-axis, RPL5-cleft-palate-PATHOGNOMONIC, RPL11-thenar-hypoplasia, TSR2-X-linked-RPS26-chaperone, triphalangeal-thumb, steroid-response, HSCT-curative, DBAR-registry, TEC-DDx."""
     from scripts.hereditary_dba_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-mpn-predisposition-atlas/overview")
+async def hereditary_mpn_predisposition_atlas_overview():
+    """Hereditary-MPN-Predisposition-Atlas overview — JAK2-CALR-MPL-SH2B3-EPOR-VHL-EPAS1-THPO gene summary table, clonal-driver/germline-predisposition/familial-erythrocytosis/familial-ET categories, EPO-suppressed-vs-elevated distinctions, 320 patients seeds 2862-2869."""
+    from scripts.hereditary_mpn_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-mpn-predisposition-atlas/breakdown")
+async def hereditary_mpn_predisposition_atlas_breakdown():
+    """Hereditary-MPN-Predisposition-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for JAK2-CALR-MPL-SH2B3-EPOR-VHL-EPAS1-THPO."""
+    from scripts.hereditary_mpn_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-mpn-predisposition-atlas/definitions")
+async def hereditary_mpn_predisposition_atlas_definitions():
+    """Hereditary-MPN-Predisposition-Atlas glossary — JAK2-V617F-allele-burden/CALR-type1-vs-type2/aquagenic-pruritus-PV/triple-negative-MPN/erythrocytosis-EPO-algorithm/ruxolitinib-withdrawal/acquired-VWD/belzutifan/THPO-5-UTR."""
+    from scripts.hereditary_mpn_predisposition_atlas_dashboard import generate_definitions
     return generate_definitions()
 
 

@@ -20177,5 +20177,30 @@
     ],
     "seeds": "2854-2861",
     "patients": 320
+  },
+  {
+    "id": "hereditary-mpn-predisposition-atlas",
+    "title": "Hereditary MPN Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary MPN Predisposition & Familial Erythrocytosis Reference \u2014 JAK2-CALR-MPL-SH2B3-EPOR-VHL-EPAS1-THPO",
+    "status": "built",
+    "genes": [
+      "JAK2",
+      "CALR",
+      "MPL",
+      "SH2B3",
+      "EPOR",
+      "VHL",
+      "EPAS1",
+      "THPO"
+    ],
+    "seeds": "2862-2869",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-mpn-predisposition-atlas/overview",
+      "/api/hereditary-mpn-predisposition-atlas/breakdown",
+      "/api/hereditary-mpn-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-mpn-predisposition-atlas",
+    "registered": "2026-09-15"
   }
 ]
