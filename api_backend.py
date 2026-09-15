@@ -49374,6 +49374,27 @@ async def hereditary_progeroid_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-fh-atlas/overview")
+async def hereditary_fh_atlas_overview():
+    """Hereditary-FH-Atlas overview — LDLR-APOB-PCSK9-LDLRAP1-ABCG5-ABCG8-LIPA-LPA / 320 patients seeds 2766-2773 / FH/FDB/ARH/Sitosterolemia/LAL-D/Lp(a) spectrum."""
+    from scripts.hereditary_fh_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-fh-atlas/breakdown")
+async def hereditary_fh_atlas_breakdown():
+    """Hereditary-FH-Atlas per-gene breakdown — 40 patients/gene / LDLR-class/PCSK9-GOF/ARH-fibroblast-normal/Sitosterolemia-xanthoma-normal-LDL/LAL-D-Wolman-CESD/Lp(a)-OxPL per gene."""
+    from scripts.hereditary_fh_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-fh-atlas/definitions")
+async def hereditary_fh_atlas_definitions():
+    """Hereditary-FH-Atlas glossary — HeFH/HoFH/Dutch-score/FDB/PCSK9-GOF/ARH/Sitosterolemia/LAL-D/Wolman/CESD/Lp(a)/statin/PCSK9i/evinacumab/inclisiran/olpasiran/apheresis."""
+    from scripts.hereditary_fh_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

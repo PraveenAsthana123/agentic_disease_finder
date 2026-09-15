@@ -19863,5 +19863,30 @@
     ],
     "description": "Complete 8-Gene Hereditary Progeroid Premature-Aging Atlas \u2014 Werner/Bloom/RTS2/CS-B/CS-A/NGPS/DC2-Revesz/HHS; RecQ helicases + Cockayne syndrome + nuclear lamina + telomere maintenance; seeds 2758-2765",
     "built_date": "2026-09-14"
+  },
+  {
+    "id": "hereditary-fh-atlas",
+    "name": "Hereditary-FH-Atlas Complete-8-Gene-LDLR-APOB-PCSK9-LDLRAP1-ABCG5-ABCG8-LIPA-LPA-Atlas LDLR-860aa-19p13.2-AD-FH1-Most-Common-1in200-500-HeFH-Tendon-Xanthomas-PATHOGNOMONIC-Dutch-Score-Statins-PCSK9i APOB-4563aa-2p24.1-AD-FDB-Arg3500Gln-European-1in700-Milder-LDL-LDLR-Intact-PCSK9i-Most-Effective PCSK9-692aa-1p32.3-AD-GOF-FH3-D374Y-Norwegian-Inclisiran-siRNA-FDA2021-LOF-R46L-PROTECTIVE LDLRAP1-308aa-1p36.11-AR-ARH-Fibroblast-LDLR-NORMAL-Hepatocyte-Specific-Apheresis-Evinacumab ABCG5-651aa-2p21-AR-Sitosterolemia-Type-A-Childhood-Xanthomas-NORMAL-LDL-KEY-DDx-Ezetimibe-CURATIVE ABCG8-673aa-2p21-AR-Sitosterolemia-Type-B-D19H-Asian-Stomatocytes-Macrothrombocytopenia-Ezetimibe LIPA-399aa-10q23.31-AR-LAL-D-Wolman-Bilateral-Adrenal-Calcification-PATHOGNOMONIC-Fatal-Infant-CESD-Sebelipase-Alfa-FDA2015 LPA-5927aa-6q27-AD-Lp(a)-dose-effect-KIV-2-Repeats-Statins-May-RAISE-Pelacarsen-Olpasiran-Phase-3 320-Patient-Aggregate-8x40-seeds-2766-2773",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "route": "/hereditary-fh-atlas",
+    "api": "/api/hereditary-fh-atlas/overview|breakdown|definitions",
+    "script": "scripts/hereditary_fh_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-fh-atlas/page.jsx",
+    "genes": [
+      "LDLR",
+      "APOB",
+      "PCSK9",
+      "LDLRAP1",
+      "ABCG5",
+      "ABCG8",
+      "LIPA",
+      "LPA"
+    ],
+    "seed_range": "2766-2773",
+    "n_patients": 320,
+    "built_date": "2026-09-14",
+    "note": "Hereditary FH & Hyperlipidaemia Atlas \u2014 8-gene familial hypercholesterolaemia reference. LDLR-FH1 most common monogenic FH 1:200-500 HeFH / APOB-FDB Arg3500Gln milder PCSK9i-best / PCSK9-GOF FH3 inclisiran target / LDLRAP1-ARH fibroblast LDLR normal / ABCG5-ABCG8-sitosterolemia childhood xanthomas normal LDL ezetimibe curative / LIPA-LAL-D Wolman bilateral adrenal Ca sebelipase alfa / LPA-Lp(a) statins may raise pelacarsen. 3 endpoints verified 200.",
+    "registered": "2026-09-14"
   }
 ]
