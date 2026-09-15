@@ -49395,6 +49395,27 @@ async def hereditary_fh_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hdl-metabolism-atlas/overview")
+async def hereditary_hdl_metabolism_atlas_overview():
+    """Hereditary-HDL-Metabolism-Atlas overview — ABCA1-APOA1-LCAT-LIPC-CETP-APOE-SCARB1-LIPG / 320 patients seeds 2774-2781 / Tangier/FHA/FLD/FED/HALP/TypeIII-HLP/SR-BI/EL spectrum."""
+    from scripts.hereditary_hdl_metabolism_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hdl-metabolism-atlas/breakdown")
+async def hereditary_hdl_metabolism_atlas_breakdown():
+    """Hereditary-HDL-Metabolism-Atlas per-gene breakdown — 40 patients/gene / ABCA1-orange-tonsils/APOA1-Milano-paradox/LCAT-FLD-triad/LIPC-HDL2-dysfunctional/CETP-Asp442Gly/APOE-palmar-xanthomas/SCARB1-RCT-final/LIPG-inflammation."""
+    from scripts.hereditary_hdl_metabolism_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hdl-metabolism-atlas/definitions")
+async def hereditary_hdl_metabolism_atlas_definitions():
+    """Hereditary-HDL-Metabolism-Atlas glossary — RCT/ABCA1/Tangier/APOA1-Milano/LCAT/FLD/FED/Lp-X/LIPC/PHLA/CETP/HALP/APOE-epsilon2/Type-III-HLP/palmar-xanthomas/SCARB1/SR-BI/LIPG/EL/HDL-function/RCT-paradox."""
+    from scripts.hereditary_hdl_metabolism_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

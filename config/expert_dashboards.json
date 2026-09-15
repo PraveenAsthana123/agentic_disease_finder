@@ -19888,5 +19888,21 @@
     "built_date": "2026-09-14",
     "note": "Hereditary FH & Hyperlipidaemia Atlas \u2014 8-gene familial hypercholesterolaemia reference. LDLR-FH1 most common monogenic FH 1:200-500 HeFH / APOB-FDB Arg3500Gln milder PCSK9i-best / PCSK9-GOF FH3 inclisiran target / LDLRAP1-ARH fibroblast LDLR normal / ABCG5-ABCG8-sitosterolemia childhood xanthomas normal LDL ezetimibe curative / LIPA-LAL-D Wolman bilateral adrenal Ca sebelipase alfa / LPA-Lp(a) statins may raise pelacarsen. 3 endpoints verified 200.",
     "registered": "2026-09-14"
+  },
+  {
+    "id": "hereditary-hdl-metabolism-atlas",
+    "slug": "/hereditary-hdl-metabolism-atlas",
+    "name": "Hereditary-HDL-Metabolism-Atlas Complete-8-Gene-ABCA1-APOA1-LCAT-LIPC-CETP-APOE-SCARB1-LIPG-Atlas ABCA1-2058aa-9q31.1-AR-AD-Tangier-Orange-Tonsils-PATHOGNOMONIC-HDL-Near-Zero-RCT-Master-Initiator APOA1-267aa-11q23.3-AD-ApoA-I-Deficiency-LCAT-Activator-Milano-Paradox-Low-HDL-No-CAD LCAT-440aa-16q22.1-AR-FLD-Triad-Fish-Eye-Disease-Lp-X-MEDI6012 LIPC-476aa-15q21.3-AR-Hepatic-Lipase-High-HDL-High-TG-PHLA-Dysfunctional-HDL2 CETP-493aa-16q21-AD-HALP-Asp442Gly-Japanese-Centenarian-Longevity APOE-317aa-19q13.32-AD-Type-III-HLP-Palmar-Xanthomas-PATHOGNOMONIC-Fibrates SCARB1-509aa-12q24.31-AR-SR-BI-RCT-Final-Stomatocytes-Adrenal-Crisis LIPG-500aa-18q21.1-AR-Endothelial-Lipase-Inflammation-HDL-Drop 320-Patient-Aggregate-8x40-seeds-2774-2781",
+    "status": "built",
+    "category": "Hereditary Lipid-Metabolism Atlas",
+    "note": "Hereditary HDL-Metabolism Atlas \u2014 ABCA1-APOA1-LCAT-LIPC-CETP-APOE-SCARB1-LIPG 8-gene RCT pathway reference; Tangier orange tonsils PATHOGNOMONIC; ApoA-I Milano paradox; FLD triad; HALP Asp442Gly Japanese; palmar xanthomas PATHOGNOMONIC Type III HLP; SR-BI RCT final step; endothelial lipase inflammation-HDL drop; 320 patients 8x40 seeds 2774-2781; 3 endpoints verified 200",
+    "api_endpoints": [
+      "/api/hereditary-hdl-metabolism-atlas/overview",
+      "/api/hereditary-hdl-metabolism-atlas/breakdown",
+      "/api/hereditary-hdl-metabolism-atlas/definitions"
+    ],
+    "seeds": "2774-2781",
+    "n_patients": 320,
+    "registered": "2026-09-15"
   }
 ]
