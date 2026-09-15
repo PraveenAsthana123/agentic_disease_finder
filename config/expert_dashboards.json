@@ -19647,5 +19647,14 @@
     "seeds": "2686-2693",
     "note": "Hereditary Hypertriglyceridemia & Familial Chylomicronemia Atlas \u2014 8 genes, 320 patients (8x40), seeds 2686-2693. LPL-475aa-8p21.3-AR-FCS-TypeI-postheparin-LPL-low-cream-plasma-pancreatitis-NO-CVD-volanesorsen-EMA2019 APOC2-101aa-19q13.32-AR-FCS-TypeIb-APOC2-correction-test-POSITIVE-PATHOGNOMONIC-FFP-first-line-acute APOA5-366aa-11q23.3-AR-TypeV-VLDL-chylomicrons-fibrates-effective-pregnancy-risk GPIHBP1-184aa-8q24.13-AR-FCS-postheparin-LPL-NORMAL-paradox-Ly6-domain-acquired-autoantibody LMF1-567aa-16p13.3-AR-combined-LPL-HL-both-low-PATHOGNOMONIC-ER-chaperone APOC3-99aa-19q13.32-dominant-LPL-inhibitor-FHTG-volanesorsen-platelet-monitoring-MANDATORY ANGPTL3-460aa-1p31.3-AR-LOF-all-lipids-low-evinacumab-FDA2021-HoFH-LDLR-independent LIPC-499aa-15q22.1-AR-hepatic-lipase-IDL-elevated-HDL-paradox-CVD-high-palmar-xanthomas 3 endpoints /api/hereditary-hypertriglyceridemia-atlas/overview|breakdown|definitions verified 200. portal-next/app/hereditary-hypertriglyceridemia-atlas/page.jsx + SiteNav wired after Hereditary-Bile-Acid-Sterol-Atlas. Registered 2026-09-14",
     "registered_date": "2026-09-14"
+  },
+  {
+    "id": "hereditary-pyrimidine-disorder-atlas",
+    "name": "Hereditary-Pyrimidine-Disorder-Atlas Complete-8-Gene-TYMP-DPYD-DPYS-UPB1-CAD-DHODH-RRM2B-TK2-Atlas TYMP-482aa-22q13.33-AR-MNGIE-plasma-dThd-dUrd-PATHOGNOMONIC-GI-pentad-HSCT DPYD-1025aa-1p21.3-AR-DPD-deficiency-5FU-CPIC-Grade-A-*2A-50pct-dose-reduction DPYS-414aa-8q22.3-AR-dihydrouracil-dihydrothymine-asymptomatic-subset-NO-5FU UPB1-404aa-22q11.23-AR-ureidopropionic-beta-alanine-DEFICIENT-GABA-mechanism CAD-2225aa-2p23.3-AR-de-novo-steps1-3-URIDINE-CURATIVE-orotic-LOW DHODH-395aa-16q22.2-AR-Miller-postaxial-NORMAL-intelligence-LEFLUNOMIDE-CI RRM2B-351aa-8q23.1-AR-AD-p53R2-mtDNA-depletion-multi-system-AR-PEO-AD TK2-234aa-16q21-AR-myopathic-MDDS4-dThd-dCyd-DEOXYNUCLEOSIDE-THERAPY 320-Patient-Aggregate-8x40-seeds-2694-2701",
+    "status": "built",
+    "api_prefix": "/api/hereditary-pyrimidine-disorder-atlas",
+    "category": "hereditary_metabolic",
+    "genes": 8,
+    "patients": 320
   }
 ]

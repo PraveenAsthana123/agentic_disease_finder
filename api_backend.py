@@ -49183,6 +49183,27 @@ async def hereditary_hypertriglyceridemia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-pyrimidine-disorder-atlas/overview")
+async def hereditary_pyrimidine_disorder_atlas_overview():
+    """Hereditary-Pyrimidine-Disorder-Atlas overview — TYMP MNGIE-GI-dysmotility-cachexia-leukoenceph-neuropathy-CPEO-pentad-dThd-dUrd-elevated-PATHOGNOMONIC-HSCT-curative, DPYD DPD-deficiency-uracil-thymine-accumulate-5FU-pharmacogenomics-CPIC-Grade-A-uridine-triacetate-antidote, DPYS dihydrouracil-dihydrothymine-accumulate-variable-penetrance-asymptomatic-subset-NO-5FU-risk, UPB1 ureidopropionic-acid-accumulate-beta-alanine-DEFICIENT-seizures-ID-beta-alanine-supplementation, CAD de-novo-pyrimidine-steps1-3-deficient-epileptic-encephalopathy-megaloblastic-anaemia-URIDINE-CURATIVE, DHODH Miller-syndrome-postaxial-limb-defects-craniofacial-NORMAL-intelligence-LEFLUNOMIDE-ABSOLUTELY-CI, RRM2B p53R2-mtDNA-depletion-AR-severe-multi-system-AD-adult-PEO-multiple-deletions, TK2 myopathic-MDDS-dTTP-dCTP-mitochondrial-depletion-dThd-dCyd-DEOXYNUCLEOSIDE-THERAPY-disease-modifying."""
+    from scripts.hereditary_pyrimidine_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-pyrimidine-disorder-atlas/breakdown")
+async def hereditary_pyrimidine_disorder_atlas_breakdown():
+    """Hereditary-Pyrimidine-Disorder-Atlas per-gene breakdown — TYMP-482aa-22q13.33-plasma-dThd-dUrd-PATHOGNOMONIC-TP-activity-zero-buffy-coat-HSCT-only-cure, DPYD-1025aa-1p21.3-uracil-thymine-urine-OA-*2A-IVS14+1GA-50pct-dose-reduction-plasma-uracil-screening, DPYS-414aa-8q22.3-dihydrouracil-dihydrothymine-OA-ureidopropionic-absent-NO-pharmacogenomics, UPB1-404aa-22q11.23-ureidopropionic-elevated-beta-alanine-absent-GABA-T-inhibition-mechanism, CAD-2225aa-2p23.3-dihydroorotate-elevated-orotic-LOW-contrast-UMPS-hypersegmented-neutrophils, DHODH-395aa-16q22.2-postaxial-4th5th-digit-aplasia-malar-hypoplasia-lower-eyelid-coloboma, RRM2B-351aa-8q23.1-mtDNA-depletion-30pct-muscle-AR-vs-deletions-AD-PEO-p53R2, TK2-234aa-16q21-His90Asn-recurrent-COX-negative-fibres-dThd-dCyd-200mgkgday."""
+    from scripts.hereditary_pyrimidine_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-pyrimidine-disorder-atlas/definitions")
+async def hereditary_pyrimidine_disorder_atlas_definitions():
+    """Hereditary-Pyrimidine-Disorder-Atlas glossary — MNGIE-pentad-dThd-dUrd-PATHOGNOMONIC-HSCT, DPD-DPYD-deficiency-5FU-CPIC-Grade-A-uridine-triacetate, DPD-vs-DHP-DPYD-vs-DPYS-urine-OA-distinction, UPB1-beta-alanine-GABA-T-mechanism, CAD-deficiency-uridine-CURATIVE-orotic-LOW, Miller-syndrome-DHODH-leflunomide-CI, RRM2B-MDDS8-AR-severe-AD-PEO, TK2-MDDS4-deoxynucleoside-therapy, MDDS-classification, pyrimidine-catabolism-pathway, CPIC-DPYD-pharmacogenomics, de-novo-pyrimidine-biosynthesis-CAD-DHODH-UMPS."""
+    from scripts.hereditary_pyrimidine_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
