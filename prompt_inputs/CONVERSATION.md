@@ -35675,3 +35675,209 @@ All 3 endpoints return 200. Now update STATUS.md and commit:
 | **Commit** | `9b076502` → pushed `main` |
 
 Key clinical content: ABCA1 orange/yellow tonsils (Tangier) PATHOGNOMONIC, ApoA-I Milano paradox, LCAT FLD triad (corneal haze+hemolytic anemia+proteinuria)+Lp-X, LIPC high HDL+high TG paradox, CETP Asp442Gly Japanese 7% centenarian longevity association, APOE palmar xanthomas PATHOGNOMONIC for Type III HLP, SCARB1 SR-BI RCT final-step block+adrenal crisis risk, LIPG inflammation-mediated HDL-C drop in sepsis.
+
+### [2026-09-15 00:49:28 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: `Hereditary-Sterol-Biosynthesis-Atlas`**
+
+- **8 genes** (DHCR7 · EBP · NSDHL · SC5D · DHCR24 · LSS · MVK · SQLE), seeds 2782-2789, 320 patients
+- **3 API endpoints** verified 200: `/api/hereditary-sterol-biosynthesis-atlas/overview|breakdown|definitions`
+- **Portal page**: `portal-next/app/hereditary-sterol-biosynthesis-atlas/page.jsx` (4-tab: Overview / Gene Breakdown / Clinical Atlas / Definitions)
+- **SiteNav** wired after Hereditary-HDL-Metabolism-Atlas
+- **expert_dashboards.json** count 1228 → 1229
+- **Pushed** to `origin/main` (`4f88fd7f`)
+
+Key clinical highlights encoded:
+- DHCR7/SLO: 2,3-toe syndactyly PATHOGNOMONIC; statins **paradoxically help** (reduce 7-DHC)
+- EBP/CDPX2: stippled epiphyses PATHOGNOMONIC; Blaschko-line females only; males lethal
+- NSDHL/CHILD: unilateral nevus strictly at midline PATHOGNOMONIC; topical statin = dramatic response
+- DHCR24/desmosterolosis: statins **absolutely contraindicated** (worsen, unlike SLO)
+- LSS: cataracts + alopecia + **normal neurodevelopment** (lanosterol crystallin chaperone)
+- MVK/HIDS: I268T thermolabile founder; canakinumab FDA-approved 2016; mevalonic acid during fever attacks
+- SQLE: congenital alopecia + elevated squalene in sebum; **terbinafine interaction risk**
+
+### [2026-09-15 01:22:42 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-15 01:36:27 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-15 02:22:33 MDT] ASSISTANT
+Done. Here's what was built and pushed:
+
+**Item:** `Hereditary-Hypopituitarism-Atlas` — SiteNav stub fix
+
+**Problem:** The atlas was fully built (script + 3 API endpoints + portal page + config registered) but its SiteNav entry was a bare stub: `Hereditary Hypopituitarism Atlas` with no gene details — inconsistent with all 210+ other hereditary atlas nav entries.
+
+**Fix:** Expanded the stub to the full detailed clinical reference format, matching sibling atlases:
+- 8 genes with protein/locus/inheritance/disease details: POU1F1 · PROP1 · HESX1 · OTX2 · SOX3 · LHX3 · LHX4 · GLI2
+- 40+ pathognomonic clinical pearls (e.g. `LHX3-RIGID-CERVICAL-SPINE-CANNOT-ROTATE-PATHOGNOMONIC`, `POU1F1-GH-PRL-TSH-ONLY-SPARED-LH-FSH-ACTH-PATHOGNOMONIC`)
+- Cascade testing, seeds 2486-2493, 320 patients, endpoint verification
+
+**Verified:** All 3 endpoints `/api/hereditary-hypopituitarism-atlas/overview|breakdown|definitions` → 200 ✅  
+**Committed + pushed:** `6d65036d` → `origin/main`
+
+### [2026-09-15 02:51:16 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit.
+
+### [2026-09-15 03:16:11 MDT] ASSISTANT
+**Autonomous build — queue empty, yielding.**
+
+`python3 scripts/next_pending.py` output after mandatory skips:
+
+| Queue slot | Item | Action |
+|---|---|---|
+| P0 | Ictal/interictal retrain | SKIPPED — too heavy per §159 |
+| — | Gmail/Slack/Drive/EMR/FHIR | BLOCKED — operator credentials |
+
+**System state verified before exit:**
+- `9/9` API endpoints → all 200 ✅
+- `172` hereditary atlases in SiteNav → all have backend routes + frontend pages ✅
+- `22` routes that appeared to have missing APIs → all actually return 200 (different slug naming) ✅
+- `0` uncommitted pending changes worth pushing
+
+**No commit made** (nothing new to commit — §57.7 honesty: queue exhausted, not faked done).
+
+To resume autonomous building, add a new item to the `BUILDABLE` list in `scripts/next_pending.py` — e.g. the next hereditary atlas (seeds 2814-2821) or a new feature from `config/feature_gaps.json`.
+
+### [2026-09-15 03:32:37 MDT] ASSISTANT
+**Autonomous build — queue exhausted, loop yields.**
+
+- `scripts/next_pending.py` returned exactly one buildable item: **ictal/interictal retrain** (P0, effort: high)
+- Per instructions: skipped as "too heavy"
+- All remaining queue slots are either **blocked** (Gmail/Slack/Drive/auth/EMR/FHIR credentials) or **gated** (push needs operator go-ahead §42)
+- No stub built, no commit made — per §57.7 honesty
+
+Logged to `jobs/logs/track.jsonl` + `track.md`. Loop yields until the operator either:
+1. Adds a new buildable item to `scripts/next_pending.py`'s `BUILDABLE` list, or
+2. Provides credentials/go-ahead for a blocked/gated item
+
+### [2026-09-15 04:04:46 MDT] ASSISTANT
+Now commit:
+
+### [2026-09-15 04:30:56 MDT] ASSISTANT
+**Built + pushed: Hereditary-Congenital-Neutropenia-Atlas**
+
+**What was built:**
+- `scripts/hereditary_congenital_neutropenia_atlas_dashboard.py` — 1,339-line dashboard script with 8 genes × 40 patients (320 total), seeds 2822-2829
+- `portal-next/app/hereditary-congenital-neutropenia-atlas/page.jsx` — 4-tab Next.js frontend (Overview / Gene Table / Clinical Atlas / Definitions)
+- **3 API endpoints** all verified 200:
+  - `/api/hereditary-congenital-neutropenia-atlas/overview`
+  - `/api/hereditary-congenital-neutropenia-atlas/breakdown`  
+  - `/api/hereditary-congenital-neutropenia-atlas/definitions`
+- SiteNav wired after Hereditary-Sideroblastic-Anemia-Atlas
+- `config/expert_dashboards.json` count: 1235 → 1236
+- Pushed to `origin/main` (fast-forward, commit `9be30fd1`)
+
+**8 genes covered** (5 distinct mechanisms):
+| Gene | Disease | Mechanism |
+|------|---------|-----------|
+| ELANE | SCN1/CN1 | ER stress/UPR — promyelocyte arrest |
+| HAX1 | Kostmann SCN3 | Mitochondrial/ER anti-apoptotic; HAX1-II neurological isoform |
+| G6PC3 | Dursun SCN4 | ER glucose-6-phosphatase; cardiac + urogenital + inner ear |
+| WAS | WAS/XLN | Actin/Arp2-3; LOF = triad; GOF = isolated SCN + highest AML 30% |
+| CXCR4 | WHIM | GOF BM egress failure; myelokathexis; plerixafor FDA 2024 |
+| GFI1 | SCN2 | Dominant-negative ELANE de-repression; milder phenotype |
+| VPS45 | SCN5 | BM fibrosis (PATHOGNOMONIC); nephromegaly; urgent HSCT |
+| JAGN1 | SCN7 | N-glycosylation QC; G-CSFR misglycosylated → G-CSF resistance |
+
+### [2026-09-15 05:02:40 MDT] ASSISTANT
+Built, verified, committed, pushed, and tracked. Summary:
+
+**Hereditary-Platelet-Disorders-Atlas — complete.**
+
+- `scripts/hereditary_platelet_disorders_atlas_dashboard.py` — 8 genes × 40 patients = 320 aggregate, seeds 2830-2837
+  - ITGA2B · ITGB3 (Glanzmann Thrombasthenia: absent all agonists, preserved ristocetin)
+  - GP1BA · GP9 (Bernard-Soulier: giant platelets PATHOGNOMONIC, absent ristocetin)
+  - MYH9 (Döhle-body inclusions PATHOGNOMONIC, SNHL 45%, nephritis 32%)
+  - ANKRD26 (5′UTR MISSED by WES, AML 5%, elevated TPO)
+  - RUNX1 (FPD/AML: dense granule defect, absent second wave, AML 35–40% HIGHEST)
+  - GFI1B (CD42b on RBCs PATHOGNOMONIC, grey platelets)
+- `api_backend.py` — 3 new endpoints `/api/hereditary-platelet-disorders-atlas/overview|breakdown|definitions` all HTTP 200 ✓
+- `portal-next/app/hereditary-platelet-disorders-atlas/page.jsx` — full 4-tab portal page
+- `SiteNav.jsx` — wired after Hereditary-Congenital-Neutropenia-Atlas
+- `config/expert_dashboards.json` — count 1236 → 1237
+- Commit `b5157172` pushed to `origin/main`
+
+### [2026-09-15 05:33:17 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-15 06:33:56 MDT] ASSISTANT
+All 3 endpoints return 200. Now update next_pending.py (mark as built), refresh STATUS.md, and commit:
+
+### [2026-09-15 07:27:17 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-09-15 09:21:15 MDT] ASSISTANT
+Done. **Hereditary-MPN-Predisposition-Atlas** built, verified, committed, and pushed.
+
+**Summary:**
+- `scripts/hereditary_mpn_predisposition_atlas_dashboard.py` — 8-gene atlas (JAK2/CALR/MPL/SH2B3/EPOR/VHL/EPAS1/THPO), 320 patients (seeds 2862-2869)
+- `api_backend.py` — 3 routes wired (`/overview`, `/breakdown`, `/definitions`) — all return 200 ✅
+- `portal-next/app/hereditary-mpn-predisposition-atlas/page.jsx` — 4-tab portal page with EPO/Hb/thrombosis clinical atlas
+- `config/expert_dashboards.json` — count 1240 → 1241
+- `portal-next/app/components/SiteNav.jsx` — `<li>` inserted after iron-overload-atlas at line 1011
+- Pushed: `588f0dbf..6f0bda22`
+
+⏳ **Pending:** Retrain on same-setup ictal/interictal (excluded — too heavy) · Gmail/Slack/Drive/auth/EMR/FHIR (blocked — credentials needed)
+
+### [2026-09-21 13:33:20 MDT] ASSISTANT
+**Built + pushed: Hereditary-AML-MDS-JMML-Predisposition-Atlas**
+
+**What was built:**
+- `scripts/hereditary_aml_mds_jmml_predisposition_atlas_dashboard.py` — 8 genes × 40 patients = 320 aggregate, seeds 2870-2877
+- `portal-next/app/hereditary-aml-mds-jmml-predisposition-atlas/page.jsx` — 4-tab Next.js portal page
+- **3 API endpoints** all verified HTTP 200:
+  - `/api/hereditary-aml-mds-jmml-predisposition-atlas/overview`
+  - `/api/hereditary-aml-mds-jmml-predisposition-atlas/breakdown`
+  - `/api/hereditary-aml-mds-jmml-predisposition-atlas/definitions`
+- SiteNav wired after Hereditary-MPN-Predisposition-Atlas
+- `config/expert_dashboards.json` count: 1241 → 1242
+- Commit `4bf5176a` pushed to `origin/main`
+
+**8 genes covered** (4 distinct clinical axes):
+
+| Gene | Disease | Key Clinical Point |
+|------|---------|-------------------|
+| GATA2 | GATA2 Deficiency / MonoMAC / Emberger | Near-absent monocytes + NTM = pathognomonic; HSCT only cure |
+| DDX41 | Adult AML germline predisposition | Most common (~4% AML); sibling donor exclusion critical; R525H somatic 2nd hit |
+| CEBPA | Familial AML (biallelic bZIP) | ELN favourable; buccal germline test mandatory in all biallelic CEBPA AML |
+| ETV6 | Thrombocytopenia + ALL/AML predisposition | ITP misdiagnosis common; dense granule defect; 15-35% lifetime malignancy |
+| SAMD9 | MIRAGE syndrome + monosomy 7 | Adrenal crisis at birth if missed; monosomy 7 = BM somatic rescue |
+| SAMD9L | Ataxia-Pancytopenia + monosomy 7 | HSCT corrects BM — NOT ataxia; critical counselling point |
+| PTPN11 | Noonan-JMML (SHP2 GOF) | GM-CSF hypersensitivity pathognomonic; 20-30% spontaneous remission |
+| CBL | CBL-JMML + UPD11q | UPD11q near-pathognomonic; vasculitis unique to CBL |
+
+⏳ **Pending:** Retrain on same-setup ictal/interictal (excluded — too heavy) · Gmail/Slack/Drive/auth/EMR/FHIR (blocked — credentials needed)
+
+### [2026-09-21 14:00:32 MDT] ASSISTANT
+**Built + pushed: Hereditary-Lymphoid-Malignancy-Predisposition-Atlas**
+
+- **Script:** `scripts/hereditary_lymphoid_malignancy_predisposition_atlas_dashboard.py` — 8 genes × 40 patients = 320, seeds 2878–2885
+- **Genes:** ATM · TP53 · CHEK2 · PAX5 · IKZF1 · POT1 · RUNX1 · STAT3
+- **Pathways:** DDR/Genome Guardian (ATM, TP53, CHEK2) · B-Cell Dev TF (PAX5, IKZF1) · Telomere Protection (POT1) · Haematopoietic TF (RUNX1) · JAK-STAT (STAT3 GOF)
+- **3 endpoints verified 200:** `/api/hereditary-lymphoid-malignancy-predisposition-atlas/overview|breakdown|definitions`
+- **Frontend page:** `/hereditary-lymphoid-malignancy-predisposition-atlas` (4 tabs: Overview, Gene Table, Clinical Atlas, Definitions)
+- **Nav wired** after AML/MDS/JMML atlas · **`expert_dashboards.json`** 1242 → 1243
+- **Commit** `455136f7` pushed to `origin/main`
+
+⏳ **Pending:** ictal/interictal retrain (skipped — heavy/complex), Gmail/Slack/Drive (credentials blocked), multi-user auth/RBAC (credentials blocked)
+
+### [2026-09-21 14:28:14 MDT] ASSISTANT
+**Done.** Committed `dda02154` and pushed to `origin/main`.
+
+**Built: Hereditary-Congenital-Erythrocytosis-Atlas** — 8 genes, 320 patients, seeds 2886-2893
+
+| What | Detail |
+|---|---|
+| Script | `scripts/hereditary_congenital_erythrocytosis_atlas_dashboard.py` (seeds updated 2862→2886) |
+| Backend | 3 new endpoints — `/api/hereditary-congenital-erythrocytosis-atlas/{overview,breakdown,definitions}` — all verified **200** |
+| Frontend | `portal-next/app/hereditary-congenital-erythrocytosis-atlas/page.jsx` — 4-tab UI (Overview, Gene Table, Clinical Atlas, Definitions) |
+| Nav | SiteNav wired after Hereditary-Lymphoid-Malignancy-Predisposition-Atlas |
+| Registry | `expert_dashboards.json` count 1243 → **1244** |
+
+**Genes:** EPOR (CE1 — *only* hereditary erythrocytosis with EPO suppressed) · VHL (Chuvash, thrombosis, belzutifan) · EGLN1 (PHD2, paraganglioma) · EPAS1 (HIF-2α, PAH triad, belzutifan) · HBB/HBA1/BPGM (high-affinity Hb, low p50, no Rx unless Hct >0.56) · EPO (rare GOF, promoter region misses exon sequencing)
+
+### [2026-09-21 15:04:43 MDT] ASSISTANT
+The BUILDABLE queue has exactly one item (ictal/interictal retrain) which is explicitly excluded. All other pending items require operator credentials (auth/EMR/FHIR/Slack/Gmail). Let me verify STATUS.md completely and confirm the empty queue before tracking.

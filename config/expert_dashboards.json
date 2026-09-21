@@ -20272,5 +20272,22 @@
     "subcategory": "congenital-erythrocytosis",
     "built_date": "2026-09-21",
     "description": "Complete 8-gene hereditary congenital erythrocytosis atlas: EPOR (CE1, EPO suppressed), VHL-EGLN1-EPAS1 (HIF pathway, EPO elevated), HBB-HBA1-BPGM (high-affinity Hb/2,3-BPG), EPO-GOF (CE5) \u2014 320 patients seeds 2886-2893"
+  },
+  {
+    "id": "hereditary-neonatal-diabetes-atlas",
+    "name": "Hereditary-Neonatal-Diabetes-Atlas Complete-8-Gene-Monogenic-Neonatal-Infancy-Onset-Diabetes-Atlas KCNJ11-390aa-11p15.1-AD-GOF-Kir6.2-K-ATP-Pore-PNDM-TNDM-DEND-Glibenclamide-CURATIVE-90pct-Transfer-From-Insulin ABCC8-1581aa-11p15.1-AD-GOF-SUR1-K-ATP-Regulatory-TNDM-PNDM-Sulfonylurea-75-80pct-LOF-OPPOSITE-CHI INS-110aa-11p15.5-AD-ER-Stress-Misfolded-Proinsulin-Beta-Cell-Apoptosis-PNDM-Insulin-ONLY-No-SU EIF2AK3-1116aa-2p11.2-AR-PERK-WRS-Wolcott-Rallison-ND-Epiphyseal-Dysplasia-Liver-Failure-Most-Common-AR-ND FOXP3-431aa-Xp11.23-XLR-IPEX-Treg-LOF-Autoantibodies-POSITIVE-ONLY-Monogenic-ND-Enteropathy-HSCT-Cure RFX6-890aa-6q22.31-AR-Mitchell-Riley-ND-Hypothyroidism-Intestinal-Atresia-Gallbladder-Agenesis-PERT GLIS3-829aa-9p24.2-AR-ND-Congenital-Hypothyroidism-CHD-Renal-Cysts-Liver-Fibrosis-Simultaneous-Dual-Endocrine PDX1-283aa-13q12.2-AR-Pancreatic-Agenesis-Complete-Exocrine-Endocrine-Absent-Glucagon-Pen-FAILS-PERT-MANDATORY 320-Patient-Aggregate-8x40-seeds-2894-2901",
+    "title": "Hereditary-Neonatal-Diabetes-Atlas \u2014 Complete 8-Gene Monogenic Neonatal/Infancy-Onset Diabetes Atlas",
+    "category": "hereditary-atlas",
+    "status": "built",
+    "built": true,
+    "route": "/hereditary-neonatal-diabetes-atlas",
+    "api_endpoints": [
+      "/api/hereditary-neonatal-diabetes-atlas/overview",
+      "/api/hereditary-neonatal-diabetes-atlas/breakdown",
+      "/api/hereditary-neonatal-diabetes-atlas/definitions"
+    ],
+    "seeds": "2894-2901",
+    "n_patients": 320,
+    "registered": "2026-09-21"
   }
 ]

@@ -49708,6 +49708,27 @@ async def hereditary_congenital_erythrocytosis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-neonatal-diabetes-atlas/overview")
+async def hereditary_neonatal_diabetes_atlas_overview():
+    """Hereditary-Neonatal-Diabetes-Atlas overview — KCNJ11-ABCC8-INS-EIF2AK3-FOXP3-RFX6-GLIS3-PDX1 gene summary table, K-ATP/ER-stress/IPEX/developmental-TF categories, sulfonylurea-curative/insulin-only/HSCT distinctions, 320 patients seeds 2894-2901."""
+    from scripts.hereditary_neonatal_diabetes_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-neonatal-diabetes-atlas/breakdown")
+async def hereditary_neonatal_diabetes_atlas_breakdown():
+    """Hereditary-Neonatal-Diabetes-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for KCNJ11-ABCC8-INS-EIF2AK3-FOXP3-RFX6-GLIS3-PDX1."""
+    from scripts.hereditary_neonatal_diabetes_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-neonatal-diabetes-atlas/definitions")
+async def hereditary_neonatal_diabetes_atlas_definitions():
+    """Hereditary-Neonatal-Diabetes-Atlas glossary — NDM-definition/K-ATP-channel/glibenclamide-switchover/DEND-syndrome/IPEX-FOXP3/Wolcott-Rallison-WRS/Mitchell-Riley-MRS/pancreatic-agenesis-PDX1/GLIS3-syndrome/islet-autoantibodies."""
+    from scripts.hereditary_neonatal_diabetes_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
