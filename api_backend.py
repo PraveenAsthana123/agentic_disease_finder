@@ -49666,6 +49666,27 @@ async def hereditary_aml_mds_jmml_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lymphoid-malignancy-predisposition-atlas/overview")
+async def hereditary_lymphoid_malignancy_predisposition_atlas_overview():
+    """Hereditary-Lymphoid-Malignancy-Predisposition-Atlas overview — ATM-TP53-CHEK2-PAX5-IKZF1-POT1-RUNX1-STAT3 gene summary table, CLL/ALL/NHL/T-LGL/Li-Fraumeni pathway breakdown, 320 patients seeds 2878-2885."""
+    from scripts.hereditary_lymphoid_malignancy_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lymphoid-malignancy-predisposition-atlas/breakdown")
+async def hereditary_lymphoid_malignancy_predisposition_atlas_breakdown():
+    """Hereditary-Lymphoid-Malignancy-Predisposition-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for ATM-TP53-CHEK2-PAX5-IKZF1-POT1-RUNX1-STAT3."""
+    from scripts.hereditary_lymphoid_malignancy_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lymphoid-malignancy-predisposition-atlas/definitions")
+async def hereditary_lymphoid_malignancy_predisposition_atlas_definitions():
+    """Hereditary-Lymphoid-Malignancy-Predisposition-Atlas glossary — ATM-A-T-radiosensitivity/TP53-LFS-hypodiploid-ALL/CHEK2-I157T-founder/PAX5-familial-B-ALL/IKZF1-IK6-dominant-negative/POT1-shelterin/RUNX1-FPD-donor-exclusion/STAT3-GOF-Y640F-LGL."""
+    from scripts.hereditary_lymphoid_malignancy_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

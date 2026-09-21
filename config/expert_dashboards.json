@@ -20226,5 +20226,28 @@
       "/api/hereditary-aml-mds-jmml-predisposition-atlas/definitions"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-lymphoid-malignancy-predisposition-atlas",
+    "name": "Hereditary-Lymphoid-Malignancy-Predisposition-Atlas",
+    "route": "/hereditary-lymphoid-malignancy-predisposition-atlas",
+    "api_prefix": "/api/hereditary-lymphoid-malignancy-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "ATM",
+      "TP53",
+      "CHEK2",
+      "PAX5",
+      "IKZF1",
+      "POT1",
+      "RUNX1",
+      "STAT3"
+    ],
+    "n_patients": 320,
+    "seeds": "2878-2885",
+    "category": "hereditary-haematology",
+    "subcategory": "lymphoid-malignancy-predisposition",
+    "built_date": "2026-09-21",
+    "description": "Complete 8-gene germline CLL/ALL/NHL/T-LGL/Li-Fraumeni lymphoid malignancy predisposition atlas"
   }
 ]
