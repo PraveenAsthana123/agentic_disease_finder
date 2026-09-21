@@ -35899,3 +35899,26 @@ All 3 endpoints return 200. Now update STATUS.md and commit:
 
 ### [2026-09-21 16:26:21 MDT] ASSISTANT
 Now push and track:
+
+### [2026-09-21 16:42:41 MDT] ASSISTANT
+Built and pushed: **Hereditary-Thyroid-Dyshormonogenesis-Atlas** (`c551415c`)
+
+**What was built:**
+- `scripts/hereditary_thyroid_dyshormonogenesis_atlas_dashboard.py` — 8-gene dashboard (320 patients, seeds 2918–2925)
+- 3 API endpoints verified 200: `/api/hereditary-thyroid-dyshormonogenesis-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-thyroid-dyshormonogenesis-atlas/page.jsx` — 4-tab portal page
+- `config/expert_dashboards.json` → 1247→1248 entries
+- `SiteNav.jsx` wired after Hereditary-Congenital-Hyperinsulinism-Atlas
+
+**8 genes covered (seeds 2918–2925):**
+
+| Gene | Locus | Key clinical fact |
+|---|---|---|
+| TPO | 2p25.3 AR | Organification defect — **perchlorate discharge POSITIVE**, ~25% of all CH |
+| TSHR | 14q31.1 AR LOF | TSH resistance — **NO GOITER**, hypoplastic in-situ gland |
+| TG | 8q24.22 AR | **Low TG despite large goiter** — paradox is pathognomonic |
+| SLC5A5 | 19p13.11 AR | **Absent scan uptake + normal urine iodide** = NIS defect |
+| DUOX2 | 15q15.3 AR | Monoallelic → **transient CH** (most common cause); biallelic → permanent |
+| DUOXA2 | 15q15.3 AR | DUOX2 chaperone — identical to biallelic DUOX2; **missed by older panels** |
+| SLC26A4 | 7q22.3 AR | Pendred syndrome — CH + SNHL + Mondini/EVA; **contact sports contraindicated** |
+| DEHAL1 | 6q25.1 AR | Iodotyrosine recycling defect — **NBS may miss**; urine MIT/DIT pathognomonic |

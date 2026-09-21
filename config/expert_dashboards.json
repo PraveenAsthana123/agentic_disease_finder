@@ -20314,5 +20314,14 @@
     "status": "built",
     "api": "/api/hereditary-thyroid-dyshormonogenesis-atlas/overview|breakdown|definitions",
     "cohort_n": 320
+  },
+  {
+    "id": "hereditary-hypoparathyroidism-atlas",
+    "name": "Hereditary-Hypoparathyroidism-Atlas (Parathyroid-Calcium-Homeostasis / GCM2-495aa-6p24.2-AD-AR-Master-Parathyroid-TF-Most-Common-Familial-Isolated-HP / PTH-115aa-11p15.3-AR-AD-Direct-PTH-Signal-Peptide-Non-Secretion / CASR-1078aa-3q13.3-AD-GOF-ADH1-Relative-Hypercalciuria-PATHOGNOMONIC-Cinacalcet-ABSOLUTE-CI-Nephrocalcinosis / GNA11-359aa-19p13.3-AD-GOF-ADH2-Galpha11-Downstream-CaSR-Cinacalcet-Ineffective / TBCE-527aa-1q42.3-AR-HRD-Sanjad-Sakati-HP-Retardation-Dysmorphism-Arab-Founder / FAM111A-611aa-11q13.1-AD-GOF-KCS2-Dense-Bones-Short-Stature-NORMAL-Intelligence / GATA3-444aa-10p14-AD-LOF-HDR-Barakat-HP-SNHL-Renal-SNHL-Often-First / SOX3-446aa-Xq27.1-XL-Males-Only-Regulatory-Standard-Sequencing-MISSES / 320-Patient-Aggregate-8x40-seeds-2926-2933 / OMIM-GCM2-603716 / OMIM-CASR-ADH1-601198 / OMIM-GNA11-ADH2-615361 / OMIM-TBCE-HRD-241410 / OMIM-FAM111A-KCS2-127000 / OMIM-GATA3-HDR-146255)",
+    "status": "built",
+    "api": "/api/hereditary-hypoparathyroidism-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": "2926-2933",
+    "registered": "2026-09-21"
   }
 ]

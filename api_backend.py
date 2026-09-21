@@ -49771,6 +49771,24 @@ async def hereditary_congenital_hyperinsulinism_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hypoparathyroidism-atlas/overview")
+async def hereditary_hypoparathyroidism_atlas_overview():
+    """Hereditary-Hypoparathyroidism-Atlas overview — 8-gene GCM2-PTH-CASR-GNA11-TBCE-FAM111A-GATA3-SOX3 parathyroid/calcium-homeostasis reference. Seeds 2926-2933."""
+    from scripts.hereditary_hypoparathyroidism_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-hypoparathyroidism-atlas/breakdown")
+async def hereditary_hypoparathyroidism_atlas_breakdown():
+    """Hereditary-Hypoparathyroidism-Atlas per-gene breakdown — ADH1-CASR-GOF/ADH2-GNA11-GOF/GCM2-isolated/GATA3-HDR-triad/TBCE-HRD/FAM111A-KCS2/SOX3-XL/PTH-direct."""
+    from scripts.hereditary_hypoparathyroidism_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-hypoparathyroidism-atlas/definitions")
+async def hereditary_hypoparathyroidism_atlas_definitions():
+    """Hereditary-Hypoparathyroidism-Atlas glossary — urine-Ca-ADH-discriminator/cinacalcet-CI/nephrocalcinosis-risk/GCM2-first-gene/GATA3-SNHL-first/TBCE-vs-FAM111A/SOX3-regulatory-pitfall/rPTH-indications."""
+    from scripts.hereditary_hypoparathyroidism_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 @app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/overview")
 async def hereditary_thyroid_dyshormonogenesis_atlas_overview():
     """Hereditary-Thyroid-Dyshormonogenesis-Atlas overview — 8-gene TPO-TSHR-TG-SLC5A5-DUOX2-DUOXA2-SLC26A4-DEHAL1 congenital hypothyroidism reference. Seeds 2918-2925."""
