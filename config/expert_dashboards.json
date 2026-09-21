@@ -20298,5 +20298,14 @@
     "cohort_n": 320,
     "seeds": "2902-2909",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-congenital-hyperinsulinism-atlas",
+    "name": "Hereditary-Congenital-Hyperinsulinism-Atlas Complete-8-Gene-CHI-ABCC8-KCNJ11-GLUD1-GCK-HADH-HNF4A-UCP2-SLC16A1-Atlas ABCC8-1582aa-11p15.1-AR-SUR1-K-ATP-Most-Common-65pct-Diazoxide-Unresponsive-18F-DOPA-PET KCNJ11-390aa-11p15.1-AR-Kir6.2-K-ATP-Pore-Diazoxide-Unresponsive GLUD1-558aa-10q23.3-AD-GOF-GDH-HI-HA-NH3-Protein-Induced-Diazoxide-Responsive GCK-465aa-7p13-AD-GOF-Glucosensor-Set-Point-Lowered-Variable HADH-314aa-4q25-AR-SCHAD-3-OH-Glutaric-Acid-PATHOGNOMONIC-Diazoxide-Responsive HNF4A-474aa-20q13.12-AD-LOF-Macrosomia-Neonatal-CHI-MODY1-Biphasic UCP2-309aa-11q13.4-AD-GOF-Mild-Spontaneous-Resolution-3-6-Years SLC16A1-478aa-17q24.2-AD-GOF-MCT1-Exercise-Induced-EIHI-Promoter-Mutation 320-Patient-Aggregate-8x40-seeds-2910-2917",
+    "status": "built",
+    "api": "/api/hereditary-congenital-hyperinsulinism-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seeds": "2910-2917",
+    "registered": "2026-09-21"
   }
 ]

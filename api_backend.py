@@ -49750,6 +49750,27 @@ async def hereditary_primary_adrenal_insufficiency_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-congenital-hyperinsulinism-atlas/overview")
+async def hereditary_congenital_hyperinsulinism_atlas_overview():
+    """Hereditary-Congenital-Hyperinsulinism-Atlas overview — ABCC8-SUR1-KATP-65pct/KCNJ11-Kir6.2-18F-DOPA-PET/GLUD1-HI-HA-NH3-protein-induced/GCK-GOF-set-point/HADH-3OH-glutarate-PATHOGNOMONIC/HNF4A-macrosomia-MODY1/UCP2-mild-resolves/SLC16A1-EIHI-exercise-promoter/320-patients-8x40-seeds-2910-2917."""
+    from scripts.hereditary_congenital_hyperinsulinism_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-congenital-hyperinsulinism-atlas/breakdown")
+async def hereditary_congenital_hyperinsulinism_atlas_breakdown():
+    """Hereditary-Congenital-Hyperinsulinism-Atlas per-gene breakdown — ABCC8-diazoxide-unresponsive/KCNJ11-pore-subunit/GLUD1-GDH-GOF-HI-HA/GCK-glucosensor-shift/HADH-SCHAD-GDH-inhibitor/HNF4A-biphasic-CHI-MODY1/UCP2-uncoupling-mild/SLC16A1-MCT1-pyruvate-ectopic."""
+    from scripts.hereditary_congenital_hyperinsulinism_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-congenital-hyperinsulinism-atlas/definitions")
+async def hereditary_congenital_hyperinsulinism_atlas_definitions():
+    """Hereditary-Congenital-Hyperinsulinism-Atlas glossary — critical-sample/KATP-18F-DOPA-PET-focal-diffuse/HI-HA-GLUD1/HADH-3OHG-biomarker/HNF4A-biphasic/SLC16A1-EIHI-promoter/diazoxide-mechanism/hypoglycaemia-brain-injury."""
+    from scripts.hereditary_congenital_hyperinsulinism_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
