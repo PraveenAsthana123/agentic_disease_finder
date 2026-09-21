@@ -20289,5 +20289,14 @@
     "seeds": "2894-2901",
     "n_patients": 320,
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-primary-adrenal-insufficiency-atlas",
+    "name": "Hereditary-Primary-Adrenal-Insufficiency-Atlas Complete-8-Gene-Non-CAH-PAI-APS1-XL-AHC-Triple-A-FGD-X-ALD-Reference AIRE-545aa-21q22.3-AR-APS1-APECED-Anti-IFN-omega-Pathognomonic NR0B1-470aa-Xp21.2-XLR-DAX1-X-Linked-AHC-Adrenal-Aplasia-IHH AAAS-546aa-12q13.13-AR-Allgrove-Triple-A-Alacrima-Achalasia-ACTH-Resistant MC2R-297aa-18p11.21-AR-FGD1-Pure-Glucocorticoid-Deficiency-Aldosterone-Preserved MRAP-227aa-21q22.11-AR-FGD2-MC2R-Chaperone-Neonatal-Onset NNT-1086aa-5p12-AR-FGD5-Mitochondrial-NADPH-Adrenocortical-Oxidative-Stress TXNRD2-524aa-22q11.21-AR-FGD4-Thioredoxin-Reductase-Selenoprotein-Cardiomyopathy ABCD1-745aa-Xq28-XLR-X-ALD-VLCFA-C26-0-Pathognomonic-HSCT-Cerebral-ALD-LOES-le-9 320-Patient-Aggregate-8x40-seeds-2902-2909",
+    "status": "built",
+    "api": "/api/hereditary-primary-adrenal-insufficiency-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seeds": "2902-2909",
+    "registered": "2026-09-21"
   }
 ]

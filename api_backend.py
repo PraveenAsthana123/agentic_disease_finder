@@ -49729,6 +49729,27 @@ async def hereditary_neonatal_diabetes_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-primary-adrenal-insufficiency-atlas/overview")
+async def hereditary_primary_adrenal_insufficiency_atlas_overview():
+    """Hereditary-Primary-Adrenal-Insufficiency-Atlas overview — AIRE-APS1-anti-IFN-omega/NR0B1-DAX1-AHC-IHH/AAAS-TripleA/MC2R-FGD1/MRAP-FGD2/NNT-FGD5/TXNRD2-FGD4/ABCD1-XLD-VLCFA-C26-0/320-patients-8x40-seeds-2902-2909."""
+    from scripts.hereditary_primary_adrenal_insufficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-primary-adrenal-insufficiency-atlas/breakdown")
+async def hereditary_primary_adrenal_insufficiency_atlas_breakdown():
+    """Hereditary-Primary-Adrenal-Insufficiency-Atlas per-gene breakdown — AIRE-CARD-SAND-PHD-mTEC-central-tolerance/NR0B1-adrenal-aplasia-IHH/AAAS-nuclear-pore-alacrima/MC2R-ACTH-receptor-FGD1/MRAP-MC2R-chaperone-FGD2/NNT-NADPH-mitochondrial/TXNRD2-thioredoxin-reductase/ABCD1-peroxisomal-VLCFA."""
+    from scripts.hereditary_primary_adrenal_insufficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-primary-adrenal-insufficiency-atlas/definitions")
+async def hereditary_primary_adrenal_insufficiency_atlas_definitions():
+    """Hereditary-Primary-Adrenal-Insufficiency-Atlas glossary — PAI-definition/APS1-APECED-anti-IFNomega/FGD-types-1-5/X-ALD-VLCFA-screening/Triple-A-alacrima/AHC-NR0B1/mitochondrial-antioxidant-FGD/adrenal-crisis-emergency."""
+    from scripts.hereditary_primary_adrenal_insufficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

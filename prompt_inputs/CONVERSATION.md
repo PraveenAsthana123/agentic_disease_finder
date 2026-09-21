@@ -35881,3 +35881,15 @@ Done. **Hereditary-MPN-Predisposition-Atlas** built, verified, committed, and pu
 
 ### [2026-09-21 15:04:43 MDT] ASSISTANT
 The BUILDABLE queue has exactly one item (ictal/interictal retrain) which is explicitly excluded. All other pending items require operator credentials (auth/EMR/FHIR/Slack/Gmail). Let me verify STATUS.md completely and confirm the empty queue before tracking.
+
+### [2026-09-21 15:37:45 MDT] ASSISTANT
+Iteration complete.
+
+**built+pushed: Hereditary-Neonatal-Diabetes-Atlas**
+
+- `scripts/hereditary_neonatal_diabetes_atlas_dashboard.py` — 8-gene K-ATP/ER-stress/IPEX/Dev-TF atlas, seeds 2894-2901, 320 patients
+- `api_backend.py` — 3 GET endpoints `/overview|breakdown|definitions` all verified 200
+- `portal-next/app/hereditary-neonatal-diabetes-atlas/page.jsx` — 4-tab portal page
+- `config/expert_dashboards.json` — count 1244→1245
+- `portal-next/app/components/SiteNav.jsx` — wired after Hereditary-Primary-Hyperaldosteronism-Atlas
+- Committed `29f248ca` → pushed to `origin/main`
