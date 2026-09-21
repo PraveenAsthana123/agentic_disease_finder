@@ -20249,5 +20249,28 @@
     "subcategory": "lymphoid-malignancy-predisposition",
     "built_date": "2026-09-21",
     "description": "Complete 8-gene germline CLL/ALL/NHL/T-LGL/Li-Fraumeni lymphoid malignancy predisposition atlas"
+  },
+  {
+    "id": "hereditary-congenital-erythrocytosis-atlas",
+    "name": "Hereditary-Congenital-Erythrocytosis-Atlas",
+    "route": "/hereditary-congenital-erythrocytosis-atlas",
+    "api_prefix": "/api/hereditary-congenital-erythrocytosis-atlas",
+    "status": "built",
+    "genes": [
+      "EPOR",
+      "VHL",
+      "EGLN1",
+      "EPAS1",
+      "HBB",
+      "HBA1",
+      "BPGM",
+      "EPO"
+    ],
+    "n_patients": 320,
+    "seeds": "2886-2893",
+    "category": "hereditary-haematology",
+    "subcategory": "congenital-erythrocytosis",
+    "built_date": "2026-09-21",
+    "description": "Complete 8-gene hereditary congenital erythrocytosis atlas: EPOR (CE1, EPO suppressed), VHL-EGLN1-EPAS1 (HIF pathway, EPO elevated), HBB-HBA1-BPGM (high-affinity Hb/2,3-BPG), EPO-GOF (CE5) \u2014 320 patients seeds 2886-2893"
   }
 ]

@@ -49687,6 +49687,27 @@ async def hereditary_lymphoid_malignancy_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-congenital-erythrocytosis-atlas/overview")
+async def hereditary_congenital_erythrocytosis_atlas_overview():
+    """Hereditary-Congenital-Erythrocytosis-Atlas overview — EPOR-VHL-EGLN1-EPAS1-HBB-HBA1-BPGM-EPO gene summary table, primary/HIF-pathway/high-affinity-Hb/2,3-BPG mechanistic categories, EPO-suppressed-vs-elevated algorithm, 320 patients seeds 2886-2893."""
+    from scripts.hereditary_congenital_erythrocytosis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-congenital-erythrocytosis-atlas/breakdown")
+async def hereditary_congenital_erythrocytosis_atlas_breakdown():
+    """Hereditary-Congenital-Erythrocytosis-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for EPOR-VHL-EGLN1-EPAS1-HBB-HBA1-BPGM-EPO."""
+    from scripts.hereditary_congenital_erythrocytosis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-congenital-erythrocytosis-atlas/definitions")
+async def hereditary_congenital_erythrocytosis_atlas_definitions():
+    """Hereditary-Congenital-Erythrocytosis-Atlas glossary — Erythrocytosis-definition/EPO-suppressed-vs-elevated/p50-O2/Chuvash-polycythemia-VHL/PV-vs-hereditary/2,3-BPG/belzutifan-HIF2alpha/EGLN1-paraganglioma/high-affinity-Hb."""
+    from scripts.hereditary_congenital_erythrocytosis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
