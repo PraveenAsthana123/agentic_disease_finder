@@ -49645,6 +49645,27 @@ async def hereditary_mpn_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-aml-mds-jmml-predisposition-atlas/overview")
+async def hereditary_aml_mds_jmml_predisposition_atlas_overview():
+    """Hereditary-AML-MDS-JMML-Predisposition-Atlas overview — GATA2-DDX41-CEBPA-ETV6-SAMD9-SAMD9L-PTPN11-CBL gene summary table, AML/MDS/ALL/JMML/monosomy7 categories, pathway breakdown, 320 patients seeds 2870-2877."""
+    from scripts.hereditary_aml_mds_jmml_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-aml-mds-jmml-predisposition-atlas/breakdown")
+async def hereditary_aml_mds_jmml_predisposition_atlas_breakdown():
+    """Hereditary-AML-MDS-JMML-Predisposition-Atlas gene breakdown — per-gene protein/locus/inheritance/disease/pathway/pathognomonic/treatment for GATA2-DDX41-CEBPA-ETV6-SAMD9-SAMD9L-PTPN11-CBL."""
+    from scripts.hereditary_aml_mds_jmml_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-aml-mds-jmml-predisposition-atlas/definitions")
+async def hereditary_aml_mds_jmml_predisposition_atlas_definitions():
+    """Hereditary-AML-MDS-JMML-Predisposition-Atlas glossary — GATA2-MonoMAC/DDX41-R525H/CEBPA-biallelic-bZIP/ETV6-thrombocytopenia/MIRAGE-SAMD9/ataxia-pancytopenia-SAMD9L/Noonan-JMML-PTPN11/CBL-UPD11q/GM-CSF-hypersensitivity/donor-exclusion-algorithm."""
+    from scripts.hereditary_aml_mds_jmml_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

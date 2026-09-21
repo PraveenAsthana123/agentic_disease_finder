@@ -20202,5 +20202,29 @@
     ],
     "portal_page": "/hereditary-mpn-predisposition-atlas",
     "registered": "2026-09-15"
+  },
+  {
+    "id": "hereditary-aml-mds-jmml-predisposition-atlas",
+    "name": "Hereditary-AML-MDS-JMML-Predisposition-Atlas",
+    "status": "built",
+    "category": "hereditary-atlas",
+    "genes": [
+      "GATA2",
+      "DDX41",
+      "CEBPA",
+      "ETV6",
+      "SAMD9",
+      "SAMD9L",
+      "PTPN11",
+      "CBL"
+    ],
+    "seeds": "2870-2877",
+    "n_patients": 320,
+    "endpoints": [
+      "/api/hereditary-aml-mds-jmml-predisposition-atlas/overview",
+      "/api/hereditary-aml-mds-jmml-predisposition-atlas/breakdown",
+      "/api/hereditary-aml-mds-jmml-predisposition-atlas/definitions"
+    ],
+    "registered": "2026-09-21"
   }
 ]
