@@ -49844,6 +49844,25 @@ async def hereditary_thyroid_dyshormonogenesis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-primary-hyperparathyroidism-atlas/overview")
+async def hereditary_primary_hyperparathyroidism_atlas_overview():
+    """Hereditary-Primary-Hyperparathyroidism-Atlas overview — 8-gene MEN1-CASR-CDC73-GNA11-AP2S1-RET-CDKN1B-GCM2 hereditary PHPT/FHH/HPT-JT/MEN reference. Seeds 2950-2957."""
+    from scripts.hereditary_primary_hyperparathyroidism_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-primary-hyperparathyroidism-atlas/breakdown")
+async def hereditary_primary_hyperparathyroidism_atlas_breakdown():
+    """Hereditary-Primary-Hyperparathyroidism-Atlas per-gene breakdown — MEN1-multiglandular/FHH1-2-3-CCCR-benign/CDC73-carcinoma-15pct/HPT-JT-jaw-fibroma/MEN2A-pheo-exclusion/MEN4-p27/GCM2-GOF-FIHPT."""
+    from scripts.hereditary_primary_hyperparathyroidism_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-primary-hyperparathyroidism-atlas/definitions")
+async def hereditary_primary_hyperparathyroidism_atlas_definitions():
+    """Hereditary-Primary-Hyperparathyroidism-Atlas glossary — FHH-CCCR-lt0.01-benign/parathyroid-carcinoma/MEN1-multiglandular/GCM2-bidirectional/MEN4-p27/NSHPT-biallelic-CASR-emergency."""
+    from scripts.hereditary_primary_hyperparathyroidism_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -20341,5 +20341,24 @@
     "cohort_n": 320,
     "seed": "2942-2949",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-primary-hyperparathyroidism-atlas",
+    "name": "Hereditary-Primary-Hyperparathyroidism-Atlas \u2014 Complete 8-Gene MEN1/FHH1-2-3/HPT-JT/MEN2A/MEN4/FIHPT Reference (MEN1-610aa-11q13.1-AD-LOF-Menin-Multiglandular-PHPT-GT90pct-Annual-Ca-Age8 / CASR-1078aa-3q13.3-AD-LOF-FHH1-CCCR-lt0.01-PATHOGNOMONIC-BENIGN-DO-NOT-OPERATE / CDC73-531aa-1q31.2-AD-LOF-HPT-JT-Carcinoma-15pct-Jaw-Fibroma-50pct / GNA11-359aa-19p13.3-AD-LOF-FHH2-Identical-FHH1-Benign / AP2S1-142aa-19q13.32-AD-LOF-FHH3-Highest-Ca2+-FHH / RET-1114aa-10q11.21-AD-GOF-MEN2A-PHPT-C634-PHEO-Exclusion / CDKN1B-196aa-12p13.1-AD-LOF-MEN4-p27-MEN1-Like / GCM2-495aa-6p24.2-AD-GOF-FIHPT-Bidirectional-LOF=HP-GOF=PHPT)",
+    "status": "built",
+    "route": "/hereditary-primary-hyperparathyroidism-atlas",
+    "seeds": "2950-2957",
+    "n_genes": 8,
+    "genes": [
+      "MEN1",
+      "CASR",
+      "CDC73",
+      "GNA11",
+      "AP2S1",
+      "RET",
+      "CDKN1B",
+      "GCM2"
+    ],
+    "registered": "2026-09-21"
   }
 ]
