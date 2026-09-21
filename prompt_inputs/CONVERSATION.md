@@ -35893,3 +35893,9 @@ Iteration complete.
 - `config/expert_dashboards.json` — count 1244→1245
 - `portal-next/app/components/SiteNav.jsx` — wired after Hereditary-Primary-Hyperaldosteronism-Atlas
 - Committed `29f248ca` → pushed to `origin/main`
+
+### [2026-09-21 16:06:30 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and commit:
+
+### [2026-09-21 16:26:21 MDT] ASSISTANT
+Now push and track:

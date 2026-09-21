@@ -20307,5 +20307,12 @@
     "cohort_n": 320,
     "seeds": "2910-2917",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-thyroid-dyshormonogenesis-atlas",
+    "name": "Hereditary-Thyroid-Dyshormonogenesis-Atlas Complete-8-Gene-Congenital-Hypothyroidism-CH-TPO-TSHR-TG-SLC5A5-DUOX2-DUOXA2-SLC26A4-DEHAL1-Atlas TPO-933aa-2p25.3-AR-Thyroid-Peroxidase-Most-Common-25pct-Organification-Defect-Perchlorate-Positive TSHR-764aa-14q31.1-AR-LOF-TSH-Receptor-Resistance-No-Goiter-Hypoplastic-In-Situ-Gland TG-2768aa-8q24.22-AR-Thyroglobulin-Scaffold-Low-TG-Despite-Goiter-PARADOX-PATHOGNOMONIC SLC5A5-643aa-19p13.11-AR-NIS-Absent-Scan-Uptake-PATHOGNOMONIC-Normal-Urine-Iodide DUOX2-1548aa-15q15.3-AR-H2O2-Generator-Biallelic-Permanent-Monoallelic-Transient-Most-Common-Europe DUOXA2-320aa-15q15.3-AR-DUOX2-Chaperone-Identical-Biallelic-DUOX2-Missed-Older-Panels SLC26A4-780aa-7q22.3-AR-Pendrin-Pendred-Syndrome-CH-SNHL-Mondini-EVA-Contact-Sports-CI DEHAL1-289aa-6q25.1-AR-Iodotyrosine-Recycling-MIT-DIT-Urine-PATHOGNOMONIC-NBS-May-Miss-Late-Onset 320-Patient-Aggregate-8x40-seeds-2918-2925",
+    "status": "built",
+    "api": "/api/hereditary-thyroid-dyshormonogenesis-atlas/overview|breakdown|definitions",
+    "cohort_n": 320
   }
 ]

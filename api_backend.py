@@ -49771,6 +49771,25 @@ async def hereditary_congenital_hyperinsulinism_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/overview")
+async def hereditary_thyroid_dyshormonogenesis_atlas_overview():
+    """Hereditary-Thyroid-Dyshormonogenesis-Atlas overview — 8-gene TPO-TSHR-TG-SLC5A5-DUOX2-DUOXA2-SLC26A4-DEHAL1 congenital hypothyroidism reference. Seeds 2918-2925."""
+    from scripts.hereditary_thyroid_dyshormonogenesis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/breakdown")
+async def hereditary_thyroid_dyshormonogenesis_atlas_breakdown():
+    """Hereditary-Thyroid-Dyshormonogenesis-Atlas per-gene breakdown — organification defects/TSHR-resistance/TG-scaffold/NIS-transport/Pendred-SNHL/DEHAL1-recycling."""
+    from scripts.hereditary_thyroid_dyshormonogenesis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/definitions")
+async def hereditary_thyroid_dyshormonogenesis_atlas_definitions():
+    """Hereditary-Thyroid-Dyshormonogenesis-Atlas glossary — perchlorate-discharge/dyshormonogenesis-vs-dysgenesis/DUOX2-transient/Pendred-EVA-emergency/DEHAL1-late-NBS/TG-paradox/NIS-absent-uptake/gene-panel."""
+    from scripts.hereditary_thyroid_dyshormonogenesis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
