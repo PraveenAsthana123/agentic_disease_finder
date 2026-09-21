@@ -20323,5 +20323,14 @@
     "cohort_n": 320,
     "seed": "2926-2933",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-mineralocorticoid-excess-atlas",
+    "name": "Hereditary-Mineralocorticoid-Excess-Atlas \u2014 Complete 8-Gene AME/Liddle/Gordon/Geller Reference (HSD11B2-405aa-11q22.1-AR-AME-PATHOGNOMONIC-THF-THE-ratio-gt10 / SCNN1B-640aa-16p12.2-AD-GOF-Liddle-ENaC-beta-amiloride-curative / SCNN1G-649aa-16p12.2-AD-GOF-Liddle-ENaC-gamma / WNK4-1243aa-17q21.31-AD-Gordon-PHA2B-thiazide-curative / WNK1-2382aa-12p13.33-AD-Gordon-PHA2A-intronic-deletion-CNV-required / KLHL3-587aa-5q31.2-AD-AR-Gordon-PHA2C-E3-adaptor / CUL3-768aa-2q36.2-AD-Gordon-PHA2E-exon9-dominant-negative-most-severe / NR3C2-984aa-4q31.23-AD-GOF-Geller-progesterone-agonist-spiro-CI)",
+    "status": "built",
+    "api": "/api/hereditary-mineralocorticoid-excess-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 2934,
+    "registered": "2026-09-21"
   }
 ]

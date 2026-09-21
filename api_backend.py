@@ -49789,6 +49789,24 @@ async def hereditary_hypoparathyroidism_atlas_definitions():
     from scripts.hereditary_hypoparathyroidism_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-mineralocorticoid-excess-atlas/overview")
+async def hereditary_mineralocorticoid_excess_atlas_overview():
+    """Hereditary-Mineralocorticoid-Excess-Atlas overview — 8-gene HSD11B2-SCNN1B-SCNN1G-WNK4-WNK1-KLHL3-CUL3-NR3C2 AME/Liddle/Gordon/Geller reference. Seeds 2934-2941."""
+    from scripts.hereditary_mineralocorticoid_excess_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-mineralocorticoid-excess-atlas/breakdown")
+async def hereditary_mineralocorticoid_excess_atlas_breakdown():
+    """Hereditary-Mineralocorticoid-Excess-Atlas per-gene breakdown — AME-THF-THE-ratio/Liddle-ENaC-GOF/Gordon-NCC-overactivation/Geller-progesterone-agonist/thiazide-curative-Gordon/amiloride-curative-Liddle."""
+    from scripts.hereditary_mineralocorticoid_excess_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-mineralocorticoid-excess-atlas/definitions")
+async def hereditary_mineralocorticoid_excess_atlas_definitions():
+    """Hereditary-Mineralocorticoid-Excess-Atlas glossary — AME-THF-THE-pathognomonic/Liddle-amiloride-curative/Gordon-thiazide-curative/Geller-spironolactone-CI/WNK1-intronic-deletion-pitfall/CUL3-dominant-negative-severe."""
+    from scripts.hereditary_mineralocorticoid_excess_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 @app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/overview")
 async def hereditary_thyroid_dyshormonogenesis_atlas_overview():
     """Hereditary-Thyroid-Dyshormonogenesis-Atlas overview — 8-gene TPO-TSHR-TG-SLC5A5-DUOX2-DUOXA2-SLC26A4-DEHAL1 congenital hypothyroidism reference. Seeds 2918-2925."""

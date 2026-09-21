@@ -35922,3 +35922,21 @@ Built and pushed: **Hereditary-Thyroid-Dyshormonogenesis-Atlas** (`c551415c`)
 | DUOXA2 | 15q15.3 AR | DUOX2 chaperone — identical to biallelic DUOX2; **missed by older panels** |
 | SLC26A4 | 7q22.3 AR | Pendred syndrome — CH + SNHL + Mondini/EVA; **contact sports contraindicated** |
 | DEHAL1 | 6q25.1 AR | Iodotyrosine recycling defect — **NBS may miss**; urine MIT/DIT pathognomonic |
+
+### [2026-09-21 16:57:04 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-Hypoparathyroidism-Atlas** (commit `a8275a0e`).
+
+**What was built:**
+- `scripts/hereditary_hypoparathyroidism_atlas_dashboard.py` — 8-gene dashboard (GCM2, PTH, CASR, GNA11, TBCE, FAM111A, GATA3, SOX3), 320 patients, seeds 2926–2933
+- 3 routes added to `api_backend.py` — all return 200: `/api/hereditary-hypoparathyroidism-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-hypoparathyroidism-atlas/page.jsx` — 4-tab frontend (Overview, Gene Table, Clinical Atlas, Definitions)
+- SiteNav wired after Hereditary-Thyroid-Dyshormonogenesis-Atlas
+- `config/expert_dashboards.json` count: 1248 → **1249**
+
+**Key clinical content encoded:**
+- CASR ADH1: cinacalcet **absolute CI**, relative hypercalciuria despite hypocalcaemia **PATHOGNOMONIC**, nephrocalcinosis risk with Ca+calcitriol → rPTH preferred
+- GNA11 ADH2: identical biochemistry to ADH1, cinacalcet ineffective (acts upstream of Gα11)
+- 24h urine Ca as the **ADH1/ADH2 discriminator** (HIGH) vs all other HP (LOW)
+- GATA3 HDR triad: bilateral SNHL often **first presenting feature**
+- TBCE HRD (Arab founder IVS1-2A>G): HP + intellectual disability differentiates from FAM111A KCS2 (normal IQ)
+- SOX3 X-linked HP: **standard sequencing misses** (regulatory insertion, not coding)
