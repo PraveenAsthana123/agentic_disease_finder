@@ -20332,5 +20332,14 @@
     "cohort_n": 320,
     "seed": 2934,
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-cah-atlas",
+    "name": "Hereditary-CAH-Atlas \u2014 Complete 8-Gene Congenital-Adrenal-Hyperplasia Steroidogenesis Reference (CYP21A2-495aa-6p21.33-AR-21-hydroxylase-most-common-95pct-17OHP-PATHOGNOMONIC-salt-wasting/SV/NC-MLPA-mandatory / CYP11B1-503aa-8q24.3-AR-hypertensive-virilising-compound-S-NO-fludrocortisone / HSD3B2-372aa-1p12-AR-all-zone-DHEA-delta5-paradox-46XX-virilised-46XY-undervirilised / CYP17A1-508aa-10q24.32-AR-HTN-absent-puberty-46XY-female-phenotype / STAR-285aa-8p11.23-AR-lipoid-CAH-most-severe-all-steroids-absent-lipid-laden-adrenals-PATHOGNOMONIC / CYP11A1-521aa-15q24.1-AR-P450scc-less-lipid-than-STAR-partial-late-onset / POR-680aa-7q11.23-AR-Antley-Bixler-maternal-virilisation-PATHOGNOMONIC / CYP11B2-503aa-8q24.3-AR-CMO-I-II-isolated-aldosterone-deficiency-fludrocortisone-ONLY)",
+    "status": "built",
+    "api": "/api/hereditary-cah-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": "2942-2949",
+    "registered": "2026-09-21"
   }
 ]

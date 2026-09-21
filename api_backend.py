@@ -49807,6 +49807,24 @@ async def hereditary_mineralocorticoid_excess_atlas_definitions():
     from scripts.hereditary_mineralocorticoid_excess_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-cah-atlas/overview")
+async def hereditary_cah_atlas_overview():
+    """Hereditary-CAH-Atlas overview (CYP21A2-495aa-6p21.33-AR-21-hydroxylase-most-common-95pct-17OHP-PATHOGNOMONIC-salt-wasting/simple-virilising/non-classic, CYP11B1-503aa-8q24.3-AR-11beta-hydroxylase-2nd-most-common-HYPERTENSION-compound-S-NO-fludrocortisone, HSD3B2-372aa-1p12-AR-3betaHSD2-all-zones-DHEA-paradox-46XX-virilised-46XY-undervirilised, CYP17A1-508aa-10q24.32-AR-17alpha-hydroxylase-HTN-absent-puberty-46XY-sex-reversal, STAR-285aa-8p11.23-AR-lipoid-CAH-most-severe-all-steroids-absent-lipid-laden-adrenals-PATHOGNOMONIC, CYP11A1-521aa-15q24.1-AR-P450scc-similar-STAR-variable-severity-partial-late-onset, POR-680aa-7q11.23-AR-oxidoreductase-Antley-Bixler-maternal-virilisation-PATHOGNOMONIC, CYP11B2-503aa-8q24.3-AR-aldosterone-synthase-CMO-I-II-pure-salt-wasting-normal-17OHP-fludrocortisone-ONLY, 320-patients-8x40-seeds-2942-2949)."""
+    from scripts.hereditary_cah_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-cah-atlas/breakdown")
+async def hereditary_cah_atlas_breakdown():
+    """Hereditary-CAH-Atlas per-gene breakdown — 21OH-deficiency/hypertensive-CAH/3betaHSD-paradox/17alpha-OH-sex-reversal/lipoid-CAH/P450scc/POR-Antley-Bixler/aldosterone-synthase."""
+    from scripts.hereditary_cah_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-cah-atlas/definitions")
+async def hereditary_cah_atlas_definitions():
+    """Hereditary-CAH-Atlas glossary — 17OHP-PATHOGNOMONIC/MLPA-mandatory/compound-S-CYP11B1/DOC-HTN/delta5-paradox/lipoid-CT-PATHOGNOMONIC/maternal-virilisation-POR/18OHB-CMO2-ratio."""
+    from scripts.hereditary_cah_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 @app.get("/api/hereditary-thyroid-dyshormonogenesis-atlas/overview")
 async def hereditary_thyroid_dyshormonogenesis_atlas_overview():
     """Hereditary-Thyroid-Dyshormonogenesis-Atlas overview — 8-gene TPO-TSHR-TG-SLC5A5-DUOX2-DUOXA2-SLC26A4-DEHAL1 congenital hypothyroidism reference. Seeds 2918-2925."""
