@@ -21111,5 +21111,23 @@
       "DICER1"
     ],
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-biliary-tract-cancer-atlas",
+    "name": "Hereditary Biliary Tract Cancer Predisposition Atlas",
+    "status": "built",
+    "api": "/api/hereditary-biliary-tract-cancer-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed_range": "3182-3189",
+    "genes": [
+      "BRCA1",
+      "BRCA2",
+      "BAP1",
+      "MSH2",
+      "STK11",
+      "ATM",
+      "CDKN2A",
+      "PALB2"
+    ]
   }
 ]

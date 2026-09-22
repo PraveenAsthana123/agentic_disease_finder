@@ -50419,6 +50419,27 @@ async def hereditary_acc_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-biliary-tract-cancer-atlas/overview")
+async def hereditary_biliary_tract_cancer_atlas_overview():
+    """Hereditary-Biliary-Tract-Cancer-Predisposition-Atlas overview (BRCA1-BRCA2-BAP1-MSH2-STK11-ATM-CDKN2A-PALB2; 320-patient aggregate 8x40 seeds 3182-3189; BRCA1-iCCA-2-4x; BRCA2-biliary-5-7x-HIGHEST-BRCA; BAP1-iCCA-40-50pct-HIGHEST; MSH2-Lynch-biliary-2-4pct-Muir-Torre-PATHOGNOMONIC; STK11-Gallbladder-5-13pct-Pancreatic-30pct; ATM-biliary-2-4x-Radiosensitivity-ABSOLUTE; CDKN2A-biliary-2-3x-Pancreatic-20x; PALB2-biliary-2-3x-Olaparib-82pct-ORR)."""
+    from scripts.hereditary_biliary_tract_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-biliary-tract-cancer-atlas/breakdown")
+async def hereditary_biliary_tract_cancer_atlas_breakdown():
+    """Hereditary-Biliary-Tract-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; BRCA1-biliary_pct-iCCA; BRCA2-biliary_pct-5-7x-HIGHEST; BAP1-biliary_pct-40-50pct-iCCA; MSH2-biliary_pct-Lynch; STK11-gallbladder-pancreatic; ATM-biliary_pct-radiosensitivity; CDKN2A-biliary_pct-pancreatic-melanoma; PALB2-biliary_pct-olaparib; mean_age_onset per gene)."""
+    from scripts.hereditary_biliary_tract_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-biliary-tract-cancer-atlas/definitions")
+async def hereditary_biliary_tract_cancer_atlas_definitions():
+    """Hereditary-Biliary-Tract-Cancer-Predisposition-Atlas clinical definitions (BRCA1-PARP-Olaparib; BRCA2-FA-D1-biliary-5-7x; BAP1-TPDS-BAP1-null-IHC-AVOID-ASBESTOS; MSH2-Muir-Torre-EPCAM; STK11-PJS-Gallbladder-Pancreatic; ATM-A-T-Radiosensitivity-Ceralasertib; CDKN2A-FAMM-CDK4-6i; PALB2-TBCRC048-FA-N; CASCADE-Hereditary-Biliary)."""
+    from scripts.hereditary_biliary_tract_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
