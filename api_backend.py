@@ -49862,6 +49862,24 @@ async def hereditary_primary_hyperparathyroidism_atlas_definitions():
     from scripts.hereditary_primary_hyperparathyroidism_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-gh-igf1-axis-atlas/overview")
+async def hereditary_gh_igf1_axis_atlas_overview():
+    """Hereditary-GH-IGF1-Axis-Atlas overview — AIP-FIPA-somatotropinoma/GHR-Laron-rhGH-ineffective/IGF1-LOF-severe/IGF1R-haploinsuff/STAT5B-GH-immune/IGFALS-ALS-deficiency/PAPPA2-IGF-bioavail/GPR101-XLAG-gigantism."""
+    from scripts.hereditary_gh_igf1_axis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-gh-igf1-axis-atlas/breakdown")
+async def hereditary_gh_igf1_axis_atlas_breakdown():
+    """Hereditary-GH-IGF1-Axis-Atlas per-gene breakdown — AIP-octreotide-resistant/GHR-rhIGF-1-treatment/IGF1-prenatal-SNHL/IGF1R-haploinsuff-SGA/STAT5B-immune-dysreg/IGFALS-mild-delay/PAPPA2-high-total-low-free/GPR101-infant-gigantism."""
+    from scripts.hereditary_gh_igf1_axis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-gh-igf1-axis-atlas/definitions")
+async def hereditary_gh_igf1_axis_atlas_definitions():
+    """Hereditary-GH-IGF1-Axis-Atlas glossary — FIPA/Laron-GH-insensitivity/IGF1-LOF/STAT5B-dual/X-LAG/PAPPA2-vs-IGFALS/Biochemical-Fingerprint-Map."""
+    from scripts.hereditary_gh_igf1_axis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

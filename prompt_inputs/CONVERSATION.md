@@ -35940,3 +35940,59 @@ Built and pushed: **Hereditary-Thyroid-Dyshormonogenesis-Atlas** (`c551415c`)
 - GATA3 HDR triad: bilateral SNHL often **first presenting feature**
 - TBCE HRD (Arab founder IVS1-2A>G): HP + intellectual disability differentiates from FAM111A KCS2 (normal IQ)
 - SOX3 X-linked HP: **standard sequencing misses** (regulatory insertion, not coding)
+
+### [2026-09-21 17:13:40 MDT] ASSISTANT
+**Built and pushed: Hereditary-Mineralocorticoid-Excess-Atlas**
+
+- **Script:** `scripts/hereditary_mineralocorticoid_excess_atlas_dashboard.py` (8 genes, 320 patients, seeds 2934–2941)
+- **API:** 3 routes `/api/hereditary-mineralocorticoid-excess-atlas/{overview|breakdown|definitions}` — all verified 200
+- **Frontend:** `portal-next/app/hereditary-mineralocorticoid-excess-atlas/page.jsx` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions)
+- **Nav:** SiteNav wired after Hereditary-Hypoparathyroidism-Atlas
+- **Registry:** `expert_dashboards.json` count 1249→1250
+- **Pushed:** `01604ad4` → `origin/main`
+
+**8 genes covered:**
+| Gene | Syndrome | Key rule |
+|---|---|---|
+| HSD11B2 | AME | THF/THE ratio >10 PATHOGNOMONIC |
+| SCNN1B | Liddle | Amiloride curative; spironolactone ineffective |
+| SCNN1G | Liddle | Identical to SCNN1B; tested together |
+| WNK4 | Gordon PHA2B | Thiazide curative; hyperK + normal aldosterone paradox |
+| WNK1 | Gordon PHA2A | Large intronic deletion — exon sequencing MISSES; CNV required |
+| KLHL3 | Gordon PHA2C | AD missense milder; AR biallelic severe |
+| CUL3 | Gordon PHA2E | Δexon9 dominant negative; most severe; de novo |
+| NR3C2 | Geller | Spironolactone ABSOLUTE CI; pregnancy HTN crisis PATHOGNOMONIC |
+
+### [2026-09-21 17:30:02 MDT] ASSISTANT
+Done. Built and pushed **Hereditary-CAH-Atlas** — the complete 8-gene congenital adrenal hyperplasia steroidogenesis reference (#1251 in the registry):
+
+| Gene | aa / kDa | Locus | Syndrome | Key Distinguisher |
+|---|---|---|---|---|
+| CYP21A2 | 495 / 55 | 6p21.33 | Classic-SW/SV/NC | 17-OHP >100 nmol/L PATHOGNOMONIC; MLPA mandatory |
+| CYP11B1 | 503 / 56 | 8q24.3 | Hypertensive-CAH | Compound S elevated + HTN; NO fludrocortisone |
+| HSD3B2 | 372 / 42 | 1p12 | All-Zone-CAH | DHEA paradox: 46XX virilised, 46XY undervirilised |
+| CYP17A1 | 508 / 57 | 10q24.32 | Hypertensive-CAH | HTN + absent puberty + 46XY female phenotype |
+| STAR | 285 / 32 | 8p11.23 | Lipoid-CAH | CT lipid-laden adrenals PATHOGNOMONIC; neonatal day 1–4 |
+| CYP11A1 | 521 / 60 | 15q24.1 | Lipoid-CAH | Less lipid than STAR; partial LOF = late-onset Addison |
+| POR | 680 / 77 | 7q11.23 | Combined-Block | Antley-Bixler + maternal virilisation PATHOGNOMONIC |
+| CYP11B2 | 503 / 56 | 8q24.3 | Isolated-MC-Def | Normal 17-OHP + cortisol; fludrocortisone ONLY |
+
+- 320-patient cohort · seeds 2942–2949
+- 3 endpoints (`/api/hereditary-cah-atlas/overview|breakdown|definitions`) — all verified 200
+- Portal page `/hereditary-cah-atlas` wired; SiteNav wired after Hereditary-Mineralocorticoid-Excess-Atlas
+- Pushed to `PraveenAsthana123/agentic_disease_finder` main
+
+### [2026-09-21 18:00:26 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: `Hereditary-Primary-Hyperparathyroidism-Atlas`**
+
+- **8 genes** (seeds 2950-2957): MEN1 · CASR(FHH1) · CDC73(HPT-JT) · GNA11(FHH2) · AP2S1(FHH3) · RET(MEN2A) · CDKN1B(MEN4) · GCM2(FIHPT)
+- **320 patients** (8 × 40), deterministic synthetic simulation
+- **3 endpoints verified 200**: `/api/hereditary-primary-hyperparathyroidism-atlas/overview|breakdown|definitions`
+- **Frontend page**: `/hereditary-primary-hyperparathyroidism-atlas` — 4-tab dashboard (Overview, Gene Table, Clinical Atlas, Definitions)
+- **SiteNav wired** after Hereditary-CAH-Atlas
+- **expert_dashboards.json**: 1251 → 1252
+- **Pushed** to `origin/main` (fast-forward, commit `51e2415a`)
+
+Key clinical content encoded: FHH CCCR <0.01 PATHOGNOMONIC / DO-NOT-OPERATE FHH rule / CDC73 parathyroid carcinoma 15% en-bloc / RET pheo-exclusion before surgery / GCM2 bidirectional (LOF=hypoparathyroidism ↔ GOF=PHPT) / NSHPT neonatal emergency / MEN4 = MEN1-negative then sequence CDKN1B.

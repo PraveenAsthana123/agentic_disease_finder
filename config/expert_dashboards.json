@@ -20360,5 +20360,31 @@
       "GCM2"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-gh-igf1-axis-atlas",
+    "title": "Hereditary-GH-IGF1-Axis-Atlas",
+    "category": "hereditary-endocrine",
+    "status": "built",
+    "description": "Complete 8-gene GH/IGF-1 axis reference: AIP-FIPA-somatotropinoma, GHR-Laron-rhGH-ineffective, IGF1-LOF-severe-SNHL, IGF1R-haploinsufficiency, STAT5B-GH+immune-combined, IGFALS-ALS-deficiency, PAPPA2-IGF-bioavailability-defect, GPR101-X-LAG-infant-gigantism. 320-patient aggregate, seeds 2958-2965.",
+    "genes": [
+      "AIP",
+      "GHR",
+      "IGF1",
+      "IGF1R",
+      "STAT5B",
+      "IGFALS",
+      "PAPPA2",
+      "GPR101"
+    ],
+    "n_patients": 320,
+    "seeds": "2958-2965",
+    "api_endpoints": [
+      "/api/hereditary-gh-igf1-axis-atlas/overview",
+      "/api/hereditary-gh-igf1-axis-atlas/breakdown",
+      "/api/hereditary-gh-igf1-axis-atlas/definitions"
+    ],
+    "page": "/hereditary-gh-igf1-axis-atlas",
+    "registered": "2026-09-21"
   }
 ]
