@@ -50524,6 +50524,27 @@ async def hereditary_esophageal_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cervical-cancer-atlas/overview")
+async def hereditary_cervical_cancer_atlas_overview():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas overview (STK11-BRCA1-TP53-MSH2-FANCA-PTEN-ATM-BRCA2; 320-patient aggregate 8x40 seeds 3222-3229; STK11-PJS-SCTAT-PATHOGNOMONIC-Adenoma-Malignum-PATHOGNOMONIC; BRCA1-Cervical-2-3x-BSO-35-40; TP53-LFS-AVOID-RADIATION-Surgery-NOT-Chemoradiation; MSH2-Lynch2-Cervical-Adenocarcinoma-NOT-Squamous; FANCA-FA-Cervical-150-200x-HPV-Vaccination-CRITICAL; PTEN-Cowden-Macrocephaly-PATHOGNOMONIC; ATM-Radiosensitivity-ABSOLUTE-Chemoradiation-CI; BRCA2-HBOC-FA-D1-Most-Severe)."""
+    from scripts.hereditary_cervical_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cervical-cancer-atlas/breakdown")
+async def hereditary_cervical_cancer_atlas_breakdown():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; STK11-SCTAT-severe_pct-HIGHEST; BRCA1-Cervical-2-3x; TP53-LFS-Carcinosarcoma; MSH2-Adenocarcinoma; FANCA-SCC-150-200x; PTEN-Adenocarcinoma; ATM-Chemoradiation-CI; BRCA2-Adenocarcinoma; mean_age_onset per gene)."""
+    from scripts.hereditary_cervical_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cervical-cancer-atlas/definitions")
+async def hereditary_cervical_cancer_atlas_definitions():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas clinical definitions (STK11-PJS-SCTAT-PATHOGNOMONIC-Adenoma-Malignum-PATHOGNOMONIC; BRCA1-BSO-35-40-HBOC; TP53-LFS-AVOID-RADIATION-Surgery-Cervical; MSH2-Lynch2-Muir-Torre-PATHOGNOMONIC-EPCAM-3prime; FANCA-FA-HPV-Vaccination-CRITICAL-AVOID-ALDEHYDE; PTEN-Macrocephaly-Lhermitte-Duclos-PATHOGNOMONIC; ATM-Radiosensitivity-ABSOLUTE-Ceralasertib; BRCA2-FA-D1-Most-Severe; CASCADE-Hereditary-Cervical-Cancer)."""
+    from scripts.hereditary_cervical_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
