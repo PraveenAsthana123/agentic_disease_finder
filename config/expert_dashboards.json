@@ -20775,5 +20775,44 @@
       "/api/hereditary-pheo-pgl-sdh-atlas/definitions"
     ],
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-crc-polyposis-atlas",
+    "name": "Hereditary-CRC-Polyposis-Atlas",
+    "subtitle": "Complete 8-Gene Colorectal Cancer & Polyposis Syndrome Atlas (MLH1-MSH2-MSH6-PMS2-APC-MUTYH-STK11-SMAD4)",
+    "category": "Hereditary Cancer / Polyposis Syndromes",
+    "status": "built",
+    "genes": [
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "APC",
+      "MUTYH",
+      "STK11",
+      "SMAD4"
+    ],
+    "total_patients": 320,
+    "seed_range": "3086-3093",
+    "api_endpoints": [
+      "/api/hereditary-crc-polyposis-atlas/overview",
+      "/api/hereditary-crc-polyposis-atlas/breakdown",
+      "/api/hereditary-crc-polyposis-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-crc-polyposis-atlas",
+    "tags": [
+      "Lynch-Syndrome",
+      "MMR",
+      "FAP",
+      "APC",
+      "MUTYH-MAP",
+      "Peutz-Jeghers",
+      "Juvenile-Polyposis",
+      "dMMR",
+      "MSI-H",
+      "Pembrolizumab",
+      "CRC"
+    ],
+    "built_date": "2026-09-22"
   }
 ]

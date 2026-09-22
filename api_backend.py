@@ -50167,6 +50167,27 @@ async def hereditary_pheo_pgl_sdh_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-crc-polyposis-atlas/overview")
+async def hereditary_crc_polyposis_atlas_overview():
+    """Hereditary-CRC-Polyposis-Atlas overview (MLH1-MSH2-MSH6-PMS2-APC-MUTYH-STK11-SMAD4; 320-patient aggregate 8x40 seeds 3086-3093; MLH1-METHYLATION-EXCLUSION-MANDATORY-BEFORE-LYNCH; MSH2-EPCAM-DELETION-SILENCING; MSH6-ENDOMETRIAL-PREDOMINANT; PMS2-CMMRD-BIALLELIC-CHILDHOOD; APC-PROPHYLACTIC-COLECTOMY-MANDATORY; MUTYH-BIALLELIC-REQUIRED-AR; STK11-LENTIGINES-PERIORAL-PATHOGNOMONIC-PANCREATIC-132x; SMAD4-JPS-HHT-OVERLAP-ECHO-BUBBLE-MANDATORY)."""
+    from scripts.hereditary_crc_polyposis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-crc-polyposis-atlas/breakdown")
+async def hereditary_crc_polyposis_atlas_breakdown():
+    """Hereditary-CRC-Polyposis-Atlas per-gene breakdown (8 genes, 40 patients each; crc_pct, endometrial_pct, msi_h_pct, synchronous_crc_pct, polyposis_gt100_pct, duodenal_adenoma_pct, desmoid_pct, chrpe_pct, colectomy_pct, lentigines_pct, intussusception_pct, pancreatic_cancer_pct, breast_cancer_pct, juvenile_polyps_pct, hht_features_pct, pulmonary_avm_pct, biallelic_mutyh_pct per gene; mean age at diagnosis)."""
+    from scripts.hereditary_crc_polyposis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-crc-polyposis-atlas/definitions")
+async def hereditary_crc_polyposis_atlas_definitions():
+    """Hereditary-CRC-Polyposis-Atlas clinical definitions (MMR-IHC-cascade; MLH1-methylation-BRAF-exclusion; FAP-management-colectomy-Spigelman; Peutz-Jeghers-STK11-surveillance-pancreatic-132x; JPS-SMAD4-HHT-echo-bubble-PAVM; Lynch-surveillance-aspirin-CAPP2; MUTYH-MAP-vs-AFAP-differentiation; dMMR-MSI-pembrolizumab-KEYNOTE-177)."""
+    from scripts.hereditary_crc_polyposis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
