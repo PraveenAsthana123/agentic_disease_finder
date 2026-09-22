@@ -50461,6 +50461,27 @@ async def hereditary_hcc_liver_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-gist-atlas/overview")
+async def hereditary_gist_atlas_overview():
+    """Hereditary-GIST-Predisposition-Atlas overview (KIT-PDGFRA-SDHA-SDHB-SDHC-SDHD-NF1-MAX; 320-patient aggregate 8x40 seeds 3198-3205; KIT-IHC-95pct-PATHOGNOMONIC; PDGFRA-D842V-IMATINIB-RESISTANT-Avapritinib-FDA2020; SDHB-IHC-Loss-PATHOGNOMONIC-All-SDH-Deficient-GIST; SDHB-Malignancy-30-50pct-HIGHEST; SDHD-PATERNAL-IMPRINTING-Maternal-NOT-AT-RISK; NF1-GIST-Multifocal-Small-Bowel-PATHOGNOMONIC; MAX-PATERNAL-IMPRINTING-Bilateral-Adrenal-PHEO-Adrenaline-Secreting)."""
+    from scripts.hereditary_gist_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-gist-atlas/breakdown")
+async def hereditary_gist_atlas_breakdown():
+    """Hereditary-GIST-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; KIT-severe_pct; PDGFRA-severe_pct; SDHA-severe_pct; SDHB-severe_pct-HIGHEST-77pct; SDHC-severe_pct; SDHD-severe_pct; NF1-severe_pct; MAX-severe_pct; mean_age_onset per gene)."""
+    from scripts.hereditary_gist_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-gist-atlas/definitions")
+async def hereditary_gist_atlas_definitions():
+    """Hereditary-GIST-Predisposition-Atlas clinical definitions (KIT-IHC-PATHOGNOMONIC-Exon9-800mg; PDGFRA-D842V-AVAPRITINIB; SDHA-SDHB-IHC-PATHOGNOMONIC; SDHB-CSS-METHOXYTYRAMINE; SDHC-LOW-MALIGNANCY; SDHD-PATERNAL-IMPRINTING; NF1-GIST-SMALL-BOWEL-MEK; MAX-BILATERAL-ADRENAL-ADRENALINE; CASCADE-Hereditary-GIST)."""
+    from scripts.hereditary_gist_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

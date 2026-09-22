@@ -21145,5 +21145,26 @@
     "frontend": "portal-next/app/hereditary-hcc-liver-cancer-atlas/page.jsx",
     "note": "Total: 1283 dashboards",
     "built_note": "FAH-ABCB11-HFE-ATP7B-SERPINA1-APC-TSC2-SMAD4; 8x40 patients seeds 3190-3197; 3 endpoints verified 200. Built 2026-09-22."
+  },
+  {
+    "id": "hereditary-gist-atlas",
+    "name": "Hereditary-GIST-Predisposition-Atlas Complete-8-Gene-KIT-PDGFRA-SDHA-SDHB-SDHC-SDHD-NF1-MAX",
+    "status": "built",
+    "category": "hereditary-cancer-atlas",
+    "subcategory": "gastrointestinal",
+    "genes": ["KIT", "PDGFRA", "SDHA", "SDHB", "SDHC", "SDHD", "NF1", "MAX"],
+    "seed_range": "3198-3205",
+    "cohort_n": 320,
+    "patients_per_gene": 40,
+    "registered": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-gist-atlas/overview",
+      "/api/hereditary-gist-atlas/breakdown",
+      "/api/hereditary-gist-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_gist_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-gist-atlas/page.jsx",
+    "note": "Total: 1284 dashboards",
+    "built_note": "KIT-PDGFRA-SDHA-SDHB-SDHC-SDHD-NF1-MAX; 8x40 patients seeds 3198-3205; 3 endpoints verified 200. Built 2026-09-22."
   }
 ]
