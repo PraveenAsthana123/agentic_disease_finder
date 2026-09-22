@@ -50398,6 +50398,27 @@ async def hereditary_bladder_urothelial_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-acc-atlas/overview")
+async def hereditary_acc_atlas_overview():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas overview (TP53-NF1-MEN1-ARMC5-PRKAR1A-CDKN1C-APC-DICER1; 320-patient aggregate 8x40 seeds 3174-3181; TP53-LFS-Pediatric-ACC-50-70pct-HIGHEST-R337H-Brazilian-Founder; NF1-Adrenocortical-3-5pct-MPNST-Dominant; MEN1-Adrenocortical-Adenoma-30-75pct; ARMC5-PBMAH-Bilateral-Macronodular-Subclinical-Cushing; PRKAR1A-Carney-PPNAD-Paradoxical-Liddle-Cardiac-Myxoma; CDKN1C-BWS-Pediatric-ACC-2nd-Wilms; APC-FAP-CHRPE-PATHOGNOMONIC; DICER1-PPB-SLCT-ERMS-MNG)."""
+    from scripts.hereditary_acc_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-acc-atlas/breakdown")
+async def hereditary_acc_atlas_breakdown():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-acc_pct-pediatric-r337h; NF1-acc_pct-adrenal-pheo; MEN1-acc_pct-adenoma-bilateral; ARMC5-bilateral-pbmah-cushing; PRKAR1A-ppnad-cardiac-myxoma-paradoxical; CDKN1C-bws-wilms-hepatoblastoma; APC-chrpe-fap-gardner; DICER1-ppb-slct-erms-mng; mean_age_onset per gene)."""
+    from scripts.hereditary_acc_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-acc-atlas/definitions")
+async def hereditary_acc_atlas_definitions():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas clinical definitions (TP53-LFS-R337H-Avoid-Radiation-WBMRI; NF1-Cafe-au-Lait-MPNST-Pheo; MEN1-Parathyroid-pNET-Pituitary-Adrenal; ARMC5-PBMAH-Bilateral-Adrenalectomy; PRKAR1A-PPNAD-Paradoxical-Liddle-Cardiac-Myxoma; CDKN1C-BWS-Macrosomia-Omphalocele; APC-CHRPE-Prophylactic-Colectomy; DICER1-PPB-Syndrome; CASCADE-Testing-Hereditary-ACC)."""
+    from scripts.hereditary_acc_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -21092,5 +21092,24 @@
       "TP53": "ACC age<4 = LFS PATHOGNOMONIC; CPC age<5 PATHOGNOMONIC; AVOID RADIATION ABSOLUTELY",
       "HRAS": "Bladder TCC/RMS in adolescent + perianal papillomata + coarse facies + HCM = Costello PATHOGNOMONIC"
     }
+  },
+  {
+    "id": "hereditary-acc-atlas",
+    "name": "Hereditary Adrenocortical Carcinoma (ACC) Predisposition Atlas",
+    "status": "built",
+    "api": "/api/hereditary-acc-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed_range": "3174-3181",
+    "genes": [
+      "TP53",
+      "NF1",
+      "MEN1",
+      "ARMC5",
+      "PRKAR1A",
+      "CDKN1C",
+      "APC",
+      "DICER1"
+    ],
+    "registered": "2026-09-22"
   }
 ]
