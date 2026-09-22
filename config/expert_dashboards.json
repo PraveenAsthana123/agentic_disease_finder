@@ -20614,5 +20614,27 @@
       "/api/hereditary-overgrowth-syndromes-atlas/definitions"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-neurodevelopmental-atlas",
+    "name": "Hereditary Neurodevelopmental Disorders Atlas",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-neurodevelopmental-atlas/overview",
+    "page": "/hereditary-neurodevelopmental-atlas",
+    "genes": [
+      "SHANK3",
+      "SYNGAP1",
+      "ADNP",
+      "ANKRD11",
+      "KAT6A",
+      "WAC",
+      "MED13L",
+      "FOXP1"
+    ],
+    "seeds": "3038-3045",
+    "patients": 320,
+    "built_date": "2026-09-22",
+    "note": "SHANK3-1730aa-22q13.33-PMS-Absent-Speech-Autism-94pct-Lymphedema-50pct SYNGAP1-1343aa-6p21.32-MRD5-Epilepsy-Photoparoxysmal-70pct ADNP-1102aa-20q13.13-HVDAS-Autism-90pct-pTyr719Ter-Hotspot ANKRD11-2663aa-16q24.3-KBG-Macrodontia-PathognomONIC FOXP1-677aa-3p13-MRDFOXP1-Verbal-Dyspraxia-ID"
   }
 ]

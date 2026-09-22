@@ -50067,6 +50067,29 @@ async def hereditary_overgrowth_syndromes_atlas_definitions():
     return generate_definitions()
 
 
+
+# ── Hereditary Neurodevelopmental Disorders Atlas ───────────────────
+
+@app.get("/api/hereditary-neurodevelopmental-atlas/overview")
+async def hereditary_neurodevelopmental_atlas_overview():
+    """Hereditary-Neurodevelopmental-Disorders-Atlas overview (SHANK3-1730aa-22q13.33-AD-LOF-Phelan-McDermid-ABSENT-SPEECH-PATHOGNOMONIC-Autism-94pct-Lymphedema-50pct, SYNGAP1-1343aa-6p21.32-AD-LOF-MRD5-Epilepsy-50pct-PHOTOPAROXYSMAL-RESPONSE-70pct-ASD-50pct, ADNP-1102aa-20q13.13-AD-LOF-Helsmoortel-Van-Der-Aa-Autism-90pct-pTyr719Ter-HOTSPOT-25pct, ANKRD11-2663aa-16q24.3-AD-LOF-KBG-MACRODONTIA-UPPER-INCISORS-PATHOGNOMONIC-Short-Stature-Delayed-BA, KAT6A-1004aa-8p11.21-AD-LOF-KAT6A-Syndrome-Absent-Speech-Feeding-Tube-40pct-Cardiac-CHD-30pct, WAC-647aa-10p12.1-AD-LOF-DeSanto-Shinawi-BEHAVIORAL-DYSREGULATION-Aggression-SIB-Hyperactivity, MED13L-2210aa-12q24.21-AD-LOF-MED13L-Non-Verbal-50pct-Wide-Mouth-Gait-Ataxia, FOXP1-677aa-3p13-AD-LOF-MRDFOXP1-ID-VERBAL-DYSPRAXIA-ASD-Macrocephaly, 320-patients-8x40-seeds-3038-3045)."""
+    from scripts.hereditary_neurodevelopmental_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-neurodevelopmental-atlas/breakdown")
+async def hereditary_neurodevelopmental_atlas_breakdown():
+    """Hereditary-Neurodevelopmental-Disorders-Atlas per-gene breakdown (SHANK3-PMS-absent-speech-autism-lymphedema, SYNGAP1-myoclonic-atonic-PPR-valproate, ADNP-HVDAS-autism-hotspot, ANKRD11-KBG-macrodontia-short-stature, KAT6A-absent-speech-cardiac-feeding, WAC-behavioural-dysregulation-ABA, MED13L-non-verbal-wide-mouth-ataxia, FOXP1-verbal-dyspraxia-ID-ASD, 320 patients)."""
+    from scripts.hereditary_neurodevelopmental_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-neurodevelopmental-atlas/definitions")
+async def hereditary_neurodevelopmental_atlas_definitions():
+    """Hereditary-Neurodevelopmental-Disorders-Atlas clinical definitions (NDD-classification-diagnostic-approach, absent-speech-differential-SHANK3-ADNP-KAT6A-MED13L, SYNGAP1-epilepsy-photoparoxysmal-response-treatment, ANKRD11-KBG-macrodontia-dental-protocol-cervical-spine, FOXP1-vs-FOXP2-verbal-dyspraxia-differential-language-treatment)."""
+    from scripts.hereditary_neurodevelopmental_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 if __name__ == "__main__":
     import os
     import uvicorn
