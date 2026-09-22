@@ -49900,6 +49900,25 @@ async def hereditary_autoimmune_polyglandular_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hypophosphatemic-rickets-atlas/overview")
+async def hereditary_hypophosphatemic_rickets_atlas_overview():
+    """Hereditary-Hypophosphatemic-Rickets-Atlas overview (PHEX-749aa-Xp22.11-XL-LOF-XLH-iFGF23-HIGH-Burosumab-CURATIVE, FGF23-251aa-12p13.32-AD-GOF-ADHR-Intermittent/AR-LOF-Tumoral-Calcinosis-HYPERPHOSPHATEMIA, DMP1-473aa-4q22.1-AR-ARHR1-Enthesopathy, ENPP1-925aa-6q23.2-AR-GACI-ARHR2-Etidronate, CLCN5-746aa-Xp11.23-XL-Dent1-LMW-Proteinuria, OCRL-901aa-Xq26.1-XL-Lowe-Cataracts-ID-Fanconi, SLC34A3-599aa-9q34.3-AR-HHRH-Suppressed-PTH-HIGH-1,25D-Pathognomonic, CYP27B1-508aa-12q14.1-AR-VDDR1-Calcitriol-CURATIVE, 320-patients-8x40-seeds-2974-2981)."""
+    from scripts.hereditary_hypophosphatemic_rickets_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-hypophosphatemic-rickets-atlas/breakdown")
+async def hereditary_hypophosphatemic_rickets_atlas_breakdown():
+    """Hereditary-Hypophosphatemic-Rickets-Atlas per-gene breakdown (PHEX-XLH-burosumab, FGF23-ADHR-intermittent/Tumoral-Calcinosis-opposite, DMP1-ARHR1-enthesopathy, ENPP1-GACI-etidronate, CLCN5-Dent1-LMW-proteinuria, OCRL-Lowe-cataracts-ID, SLC34A3-HHRH-phosphate-alone, CYP27B1-VDDR1-calcitriol, 320 patients)."""
+    from scripts.hereditary_hypophosphatemic_rickets_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-hypophosphatemic-rickets-atlas/definitions")
+async def hereditary_hypophosphatemic_rickets_atlas_definitions():
+    """Hereditary-Hypophosphatemic-Rickets-Atlas clinical definitions (XLH-burosumab-CURATIVE, HHRH-suppressed-PTH-HIGH-1,25D-PATHOGNOMONIC-phosphate-alone, VDDR1-calcitriol-curative, FGF23-GOF-vs-LOF-opposite, GACI-etidronate, Dent1-Dent2-LMW-proteinuria, Lowe-cataracts-ID, ARHR1-enthesopathy-differential)."""
+    from scripts.hereditary_hypophosphatemic_rickets_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

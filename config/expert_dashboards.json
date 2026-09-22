@@ -20411,5 +20411,30 @@
     ],
     "portal_page": "/hereditary-autoimmune-polyglandular-atlas",
     "built_date": "2026-09-21"
+  },
+  {
+    "id": "hereditary-hypophosphatemic-rickets-atlas",
+    "title": "Hereditary-Hypophosphatemic-Rickets-Atlas",
+    "category": "hereditary-metabolic-bone",
+    "status": "built",
+    "description": "Complete 8-gene FGF23/phosphate-wasting rickets reference: PHEX-XLH (burosumab CURATIVE, iFGF23 HIGH, dental abscesses), FGF23-ADHR-GOF/Tumoral-Calcinosis-LOF (opposite phenotypes), DMP1-ARHR1 (enthesopathy distinctive), ENPP1-GACI-ARHR2 (etidronate first-line), CLCN5-Dent1 (LMW proteinuria pathognomonic), OCRL-Lowe/Dent2 (cataracts+ID+Fanconi), SLC34A3-HHRH (suppressed PTH+HIGH 1,25D+hypercalciuria pathognomonic, phosphate alone), CYP27B1-VDDR1 (calcitriol curative). 320-patient aggregate, seeds 2974-2981.",
+    "genes": [
+      "PHEX",
+      "FGF23",
+      "DMP1",
+      "ENPP1",
+      "CLCN5",
+      "OCRL",
+      "SLC34A3",
+      "CYP27B1"
+    ],
+    "seeds": "2974-2981",
+    "routes": [
+      "/api/hereditary-hypophosphatemic-rickets-atlas/overview",
+      "/api/hereditary-hypophosphatemic-rickets-atlas/breakdown",
+      "/api/hereditary-hypophosphatemic-rickets-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-hypophosphatemic-rickets-atlas",
+    "built_date": "2026-09-21"
   }
 ]
