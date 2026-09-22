@@ -20864,5 +20864,16 @@
     ],
     "portal_page": "/hereditary-melanoma-skin-cancer-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-neurofibromatosis-atlas",
+    "name": "Hereditary-Neurofibromatosis-Schwannomatosis-Atlas Complete-8-Gene-NF1-NF2-SMARCB1-LZTR1-SPRED1-SMARCE1-PRKAR1A-AKT1-Neurofibromatosis-Schwannomatosis-Predisposition-Atlas NF1-2839aa-17q11.2-AD-LOF-NF-Type1-1in3000-Caf\u00e9-au-Lait-PATHOGNOMONIC-Lisch-Nodules-Plexiform-MPNST-8-13pct-Selumetinib-FDA2020-Avoid-Radiation NF2-595aa-22q12.2-AD-LOF-Bilateral-VS-PATHOGNOMONIC-Meningioma-50-75pct-Ependymoma-Lens-Opacity-Bevacizumab-Annual-MRI SMARCB1-385aa-22q11.23-AD-LOF-Schwannomatosis-2-RTPS2-AT-RT-PATHOGNOMONIC-Under-3-INI1-IHC-Loss-Tazemetostat-Sibling-Surveillance LZTR1-827aa-22q11.21-AD-OR-AR-Schwannomatosis-1-BIDIRECTIONAL-Painful-Schwannomas-No-Skin-Findings-Test-Both-Parents-Noonan-10-AR SPRED1-444aa-15q14-AD-LOF-Legius-Syndrome-NF1-DDx-Caf\u00e9-au-Lait-NO-Neurofibroma-NO-Lisch-NO-MPNST-Critical-DDx SMARCE1-411aa-17q21.2-AD-LOF-Multiple-Spinal-Meningioma-Young-Women-Clear-Cell-BAF57-Full-Spine-MRI-Mandatory PRKAR1A-381aa-17q24.2-AD-LOF-Carney-Complex-Spotty-Pigmentation-PATHOGNOMONIC-Cardiac-Myxoma-30pct-LIFE-THREATENING-PPNAD-Annual-Echo-MANDATORY AKT1-480aa-14q32.33-Somatic-Mosaic-GOF-Proteus-Syndrome-CCTN-PATHOGNOMONIC-Hemihyperplasia-DVT-PE-Mosaic-Tissue-Required-320-Patient-Aggregate-8x40-seeds-3110-3117",
+    "route": "/api/hereditary-neurofibromatosis-atlas",
+    "page": "/hereditary-neurofibromatosis-atlas",
+    "status": "built",
+    "category": "Hereditary Cancer Genetics",
+    "seeds": "3110-3117",
+    "n_patients": 320,
+    "registered": "2026-09-22"
   }
 ]

@@ -50230,6 +50230,27 @@ async def hereditary_melanoma_skin_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-neurofibromatosis-atlas/overview")
+async def hereditary_neurofibromatosis_atlas_overview():
+    """Hereditary-Neurofibromatosis-Schwannomatosis-Atlas overview (NF1-NF2-SMARCB1-LZTR1-SPRED1-SMARCE1-PRKAR1A-AKT1; 320-patient aggregate 8x40 seeds 3110-3117; NF1-CAFE-AU-LAIT-PATHOGNOMONIC-MPNST-8-13pct-SELUMETINIB-FDA2020-AVOID-RADIATION; NF2-BILATERAL-VS-PATHOGNOMONIC-BEVACIZUMAB-ANNUAL-MRI; SMARCB1-AT-RT-PATHOGNOMONIC-INI1-IHC-LOSS-TAZEMETOSTAT; LZTR1-BIDIRECTIONAL-AD-AR-PAINFUL-SCHWANNOMAS-TEST-BOTH-PARENTS; SPRED1-LEGIUS-NF1-DDx-NO-MPNST-NO-LISCH; SMARCE1-SPINAL-MENINGIOMA-YOUNG-WOMEN-CLEAR-CELL; PRKAR1A-CARNEY-COMPLEX-CARDIAC-MYXOMA-ANNUAL-ECHO-MANDATORY; AKT1-PROTEUS-CCTN-PATHOGNOMONIC-MOSAIC-TISSUE-DVT-PE)."""
+    from scripts.hereditary_neurofibromatosis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-neurofibromatosis-atlas/breakdown")
+async def hereditary_neurofibromatosis_atlas_breakdown():
+    """Hereditary-Neurofibromatosis-Schwannomatosis-Atlas per-gene breakdown (8 genes, 40 patients each; NF1-neurofibroma-cafe_au_lait-plexiform-mpnst-learning-optic_glioma per gene; NF2-bilateral_vs-meningioma-ependymoma-lens_opacity-hearing_loss; SMARCB1-schwannoma-atrt-ini1_loss; LZTR1-painful_schwannoma-no_skin_findings; SPRED1-cafe_au_lait-no_neurofibroma-no_lisch; SMARCE1-spinal_meningioma-clear_cell; PRKAR1A-spotty_pigmentation-cardiac_myxoma-ppnad; AKT1-cctn-hemihyperplasia-dvt; mean age at diagnosis per gene)."""
+    from scripts.hereditary_neurofibromatosis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-neurofibromatosis-atlas/definitions")
+async def hereditary_neurofibromatosis_atlas_definitions():
+    """Hereditary-Neurofibromatosis-Schwannomatosis-Atlas clinical definitions (NF1-diagnostic-criteria-selumetinib-surveillance; NF2-bilateral-VS-bevacizumab-ABI; SMARCB1-RTPS-AT-RT-sibling-surveillance-tazemetostat; LZTR1-bidirectional-inheritance-protocol; SPRED1-Legius-NF1-differential; SMARCE1-spinal-meningioma-surveillance; PRKAR1A-Carney-complex-annual-echo-PPNAD; AKT1-Proteus-mosaic-diagnosis-DVT; neurocutaneous-differential-guide)."""
+    from scripts.hereditary_neurofibromatosis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
