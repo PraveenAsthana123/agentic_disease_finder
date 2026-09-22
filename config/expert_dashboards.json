@@ -20924,6 +20924,36 @@
     "status": "built"
   },
   {
+    "id": "hereditary-endometrial-cancer-atlas",
+    "name": "Hereditary-Endometrial-Cancer-Atlas Complete-8-Gene-MLH1-MSH6-PTEN-POLE-TP53-BRCA1-STK11-MSH2",
+    "status": "built",
+    "category": "hereditary-cancer-atlas",
+    "subcategory": "gynaecological",
+    "genes": [
+      "MLH1",
+      "MSH6",
+      "PTEN",
+      "POLE",
+      "TP53",
+      "BRCA1",
+      "STK11",
+      "MSH2"
+    ],
+    "seed_range": "3126-3133",
+    "cohort_n": 320,
+    "patients_per_gene": 40,
+    "registered": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-endometrial-cancer-atlas/overview",
+      "/api/hereditary-endometrial-cancer-atlas/breakdown",
+      "/api/hereditary-endometrial-cancer-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_endometrial_cancer_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-endometrial-cancer-atlas/page.jsx",
+    "note": "Total: 1285 dashboards",
+    "built_note": "MLH1-MSH6-PTEN-POLE-TP53-BRCA1-STK11-MSH2; 8x40 patients seeds 3126-3133; 3 endpoints verified 200. Built 2026-09-22."
+  },
+  {
     "id": 1275,
     "name": "Hereditary-Endometrial-Cancer-Atlas",
     "slug": "hereditary-endometrial-cancer-atlas",
@@ -21152,7 +21182,16 @@
     "status": "built",
     "category": "hereditary-cancer-atlas",
     "subcategory": "gastrointestinal",
-    "genes": ["KIT", "PDGFRA", "SDHA", "SDHB", "SDHC", "SDHD", "NF1", "MAX"],
+    "genes": [
+      "KIT",
+      "PDGFRA",
+      "SDHA",
+      "SDHB",
+      "SDHC",
+      "SDHD",
+      "NF1",
+      "MAX"
+    ],
     "seed_range": "3198-3205",
     "cohort_n": 320,
     "patients_per_gene": 40,
