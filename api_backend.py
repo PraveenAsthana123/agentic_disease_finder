@@ -50004,6 +50004,27 @@ async def hereditary_thalassemia_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-craniosynostosis-atlas/overview")
+async def hereditary_craniosynostosis_atlas_overview():
+    """Hereditary-Craniosynostosis-Atlas overview (FGFR2-821aa-10q26.13-AD-GOF-Crouzon-Apert-Pfeiffer-Beare-Stevenson-Apert-MITTEN-HAND-PATHOGNOMONIC, FGFR1-822aa-8p11.23-AD-GOF-Pfeiffer-type1-P252R-Broad-Thumb-Big-Toe, FGFR3-806aa-4p16.3-AD-GOF-Muenke-P250R-MOST-COMMON-single-gene-1in30000-SNHL-30pct-Incomplete-Penetrance, TWIST1-202aa-7p21.1-AD-LOF-Saethre-Chotzen-Unicoronal-PTOSIS-LOW-SET-HAIRLINE-PATHOGNOMONIC, TCF12-598aa-15q21.3-AD-LOF-Coronal-ID-35pct-MISSED-older-panels, EFNB1-346aa-Xq12-XL-CFNS-Heterozygous-FEMALES-MORE-SEVERE-PARADOX-Cellular-Interference, ERF-548aa-19q13.2-AD-LOF-Multi-suture-CHIARI-40pct-Somatic-Mosaicism, RAB23-237aa-6p12.1-AR-Carpenter-POLYSYNDACTYLY-CARDIAC-50pct-ID-all, 320-patients-8x40-seeds-3014-3021)."""
+    from scripts.hereditary_craniosynostosis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-craniosynostosis-atlas/breakdown")
+async def hereditary_craniosynostosis_atlas_breakdown():
+    """Hereditary-Craniosynostosis-Atlas per-gene breakdown (FGFR2-Apert-mitten-hand-Crouzon-Pfeiffer, FGFR1-Pfeiffer-type1-P252R, FGFR3-Muenke-P250R-SNHL, TWIST1-Saethre-Chotzen-ptosis-low-hairline, TCF12-coronal-ID-35pct, EFNB1-CFNS-females-worse-paradox, ERF-multi-suture-Chiari-40pct-mosaicism, RAB23-Carpenter-polysyndactyly-cardiac-ID, 320 patients)."""
+    from scripts.hereditary_craniosynostosis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-craniosynostosis-atlas/definitions")
+async def hereditary_craniosynostosis_atlas_definitions():
+    """Hereditary-Craniosynostosis-Atlas clinical definitions (suture-patterns-diagnostic-approach, FGFR-syndromes-Apert-Crouzon-Pfeiffer-Muenke-differential, EFNB1-cellular-interference-females-worse-X-linked-paradox, surgical-management-FOA-timing-techniques, 8-gene-differential-diagnosis-algorithm)."""
+    from scripts.hereditary_craniosynostosis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

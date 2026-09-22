@@ -20542,5 +20542,29 @@
       "/api/hereditary-thalassemia-atlas/definitions"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-craniosynostosis-atlas",
+    "slug": "hereditary-craniosynostosis-atlas",
+    "title": "Hereditary-Craniosynostosis-Atlas",
+    "status": "built",
+    "genes": [
+      "FGFR2",
+      "FGFR1",
+      "FGFR3",
+      "TWIST1",
+      "TCF12",
+      "EFNB1",
+      "ERF",
+      "RAB23"
+    ],
+    "seeds": "3014-3021",
+    "patient_count": 320,
+    "endpoints": [
+      "/api/hereditary-craniosynostosis-atlas/overview",
+      "/api/hereditary-craniosynostosis-atlas/breakdown",
+      "/api/hereditary-craniosynostosis-atlas/definitions"
+    ],
+    "registered": "2026-09-21"
   }
 ]
