@@ -20950,5 +20950,33 @@
     "page": "/hereditary-endometrial-cancer-atlas",
     "registered": "2026-09-22",
     "status": "built"
+  },
+  {
+    "id": 1276,
+    "name": "Hereditary-Thyroid-Cancer-Atlas",
+    "slug": "hereditary-thyroid-cancer-atlas",
+    "title": "Hereditary Thyroid Cancer Atlas \u2014 Complete 8-Gene Reference (RET-TP53-PTEN-APC-PRKAR1A-DICER1-CDC73-VHL)",
+    "description": "320-patient aggregate hereditary thyroid cancer predisposition atlas (8 genes \u00d7 40 patients, seeds 3134-3141). RET MEN2A/MEN2B/FMTC MTC 95%+ thyroidectomy \u22646 months MEN2B M918T most urgent prophylactic cancer surgery selpercatinib; TP53 LFS anaplastic TC AVOID RADIATION ABSOLUTELY WBMRI Toronto; PTEN Cowden/PHTS follicular TC 25-38% macrocephaly PATHOGNOMONIC Lhermitte-Duclos PATHOGNOMONIC mTOR Everolimus; APC FAP/Gardner cribriform-morular PTC PATHOGNOMONIC annual US all FAP; PRKAR1A Carney Complex follicular TC 75% cardiac myxoma 30% LIFE-THREATENING annual echo MANDATORY spotty pigmentation PATHOGNOMONIC; DICER1 Syndrome MNG 75% females PPB Type I PATHOGNOMONIC infancy SLCT ERMS cervix; CDC73 HPT-JT parathyroid carcinoma PATHOGNOMONIC jaw ossifying fibroma PATHOGNOMONIC en-bloc NEVER disrupt capsule; VHL Disease hemangioblastoma CNS/retinal PATHOGNOMONIC ccRCC belzutifan HIF-2alpha FDA2021.",
+    "category": "hereditary-cancer-atlas",
+    "genes": [
+      "RET",
+      "TP53",
+      "PTEN",
+      "APC",
+      "PRKAR1A",
+      "DICER1",
+      "CDC73",
+      "VHL"
+    ],
+    "seed_range": "3134-3141",
+    "total_patients": 320,
+    "endpoints": [
+      "/api/hereditary-thyroid-cancer-atlas/overview",
+      "/api/hereditary-thyroid-cancer-atlas/breakdown",
+      "/api/hereditary-thyroid-cancer-atlas/definitions"
+    ],
+    "page": "/hereditary-thyroid-cancer-atlas",
+    "registered": "2026-09-22",
+    "status": "built"
   }
 ]

@@ -50293,6 +50293,27 @@ async def hereditary_endometrial_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-thyroid-cancer-atlas/overview")
+async def hereditary_thyroid_cancer_atlas_overview():
+    """Hereditary-Thyroid-Cancer-Atlas overview (RET-TP53-PTEN-APC-PRKAR1A-DICER1-CDC73-VHL; 320-patient aggregate 8x40 seeds 3134-3141; RET-MEN2A-MEN2B-FMTC-MTC-95pct-Thyroidectomy-6months-MEN2B-Selpercatinib; TP53-LFS-Anaplastic-TC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; PTEN-Cowden-PHTS-Follicular-TC-25-38pct-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC; APC-FAP-Gardner-Cribriform-Morular-PTC-PATHOGNOMONIC-Annual-US; PRKAR1A-Carney-Complex-Follicular-TC-75pct-Cardiac-Myxoma-Annual-Echo-MANDATORY; DICER1-Syndrome-MNG-DTC-PPB-Type-I-PATHOGNOMONIC; CDC73-HPT-JT-Parathyroid-Carcinoma-PATHOGNOMONIC-Jaw-Ossifying-Fibroma; VHL-Hemangioblastoma-PATHOGNOMONIC-ccRCC-Belzutifan-HIF2alpha-FDA2021)."""
+    from scripts.hereditary_thyroid_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-thyroid-cancer-atlas/breakdown")
+async def hereditary_thyroid_cancer_atlas_breakdown():
+    """Hereditary-Thyroid-Cancer-Atlas per-gene breakdown (8 genes, 40 patients each; RET-mtc_lifetime-pheo-prophylactic_thyroidectomy-selpercatinib; TP53-anaplastic_tc-radiation_avoid-wbmri; PTEN-thyroid_ca-macrocephaly-lhermitte_duclos; APC-cmv_ptc-crc-desmoid; PRKAR1A-follicular_tc-cardiac_myxoma-ppnad-spotty_pigmentation; DICER1-mng-dtc-ppb-slct_ovary; CDC73-phpt-parathyroid_carcinoma-jaw_tumour; VHL-ccrcc-hemangioblastoma-pheo-retinal_angioma; mean age at diagnosis per gene)."""
+    from scripts.hereditary_thyroid_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-thyroid-cancer-atlas/definitions")
+async def hereditary_thyroid_cancer_atlas_definitions():
+    """Hereditary-Thyroid-Cancer-Atlas clinical definitions (RET-ATA-risk-stratification-thyroidectomy-timing; APC-cribriform-morular-PTC-FAP-protocol; PRKAR1A-Carney-cardiac-myxoma-annual-echo-protocol; VHL-belzutifan-HIF2alpha-targeted-therapy; CDC73-parathyroid-carcinoma-en-bloc-never-disrupt-capsule; hereditary-thyroid-cancer-differential-guide)."""
+    from scripts.hereditary_thyroid_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
