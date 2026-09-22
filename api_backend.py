@@ -50503,6 +50503,27 @@ async def hereditary_mesothelioma_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-esophageal-cancer-atlas/overview")
+async def hereditary_esophageal_cancer_atlas_overview():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas overview (RHBDF2-TP53-CDKN2A-ATM-BRCA2-FANCA-MLH1-PALB2; 320-patient aggregate 8x40 seeds 3214-3221; RHBDF2-Tylosis-Howel-Evans-ESCC-100PCT-PPK-PATHOGNOMONIC; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; CDKN2A-9p21-Deletion-ESCC-EAC; ATM-Radiosensitivity-UGI; BRCA2-EAC-2-3x-Olaparib; FANCA-FA-ESCC-400x-RR-HIGHEST; MLH1-Lynch-Pembrolizumab-MSI-H; PALB2-HBOC2-UGI-Emerging)."""
+    from scripts.hereditary_esophageal_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-esophageal-cancer-atlas/breakdown")
+async def hereditary_esophageal_cancer_atlas_breakdown():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; RHBDF2-ESCC-PPK-severe_pct-HIGHEST; TP53-LFS-EAC; CDKN2A-9p21; ATM-UGI; BRCA2-EAC; FANCA-FA-ESCC; MLH1-CRC-EAC; PALB2-UGI; mean_age_onset per gene)."""
+    from scripts.hereditary_esophageal_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-esophageal-cancer-atlas/definitions")
+async def hereditary_esophageal_cancer_atlas_definitions():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas clinical definitions (RHBDF2-Tylosis-PPK-PATHOGNOMONIC-Lugol-Iodine-Endoscopy; TP53-LFS-AVOID-RADIATION-WBMRI; CDKN2A-9p21-EAC-ESCC-CDK4-6i; ATM-Radiosensitivity-Ceralasertib; BRCA2-HRD-Olaparib-FA-D1; FANCA-FA-A-ESCC-400x-AVOID-ALDEHYDE; MLH1-Lynch-Pembrolizumab-Aspirin; PALB2-TBCRC048-FA-N; CASCADE-Hereditary-Esophageal)."""
+    from scripts.hereditary_esophageal_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

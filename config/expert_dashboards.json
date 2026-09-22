@@ -21235,5 +21235,17 @@
     "frontend": "portal-next/app/hereditary-mesothelioma-atlas/page.jsx",
     "note": "Total: 1286 dashboards",
     "built_note": "BAP1-BRCA2-NF2-CDKN2A-TP53-SMARCB1-MLH1-ATM; 8x40 patients seeds 3206-3213; 3 endpoints verified 200. Built 2026-09-22."
+  },
+  {
+    "id": "hereditary-esophageal-cancer-atlas",
+    "name": "Hereditary-Esophageal-Cancer-Predisposition-Atlas Complete-8-Gene-RHBDF2-TP53-CDKN2A-ATM-BRCA2-FANCA-MLH1-PALB2",
+    "status": "built",
+    "category": "hereditary-cancer-atlas",
+    "subcategory": "upper-gastrointestinal",
+    "genes": ["RHBDF2", "TP53", "CDKN2A", "ATM", "BRCA2", "FANCA", "MLH1", "PALB2"],
+    "seeds": "3214-3221",
+    "patients": 320,
+    "api": "/api/hereditary-esophageal-cancer-atlas",
+    "registered": "2026-09-22"
   }
 ]
