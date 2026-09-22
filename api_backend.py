@@ -50335,6 +50335,27 @@ async def hereditary_lung_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-brain-cns-tumour-atlas/overview")
+async def hereditary_brain_cns_tumour_atlas_overview():
+    """Hereditary-Brain-CNS-Tumour-Predisposition-Atlas overview (TP53-PTCH1-SUFU-PTEN-APC-VHL-SMARCB1-PMS2; 320-patient aggregate 8x40 seeds 3150-3157; TP53-LFS-CPC-Age5-PATHOGNOMONIC-AVOID-RADIATION-WBMRI; PTCH1-Gorlin-DesmoplasticMB-CalcifiedFalx-PATHOGNOMONIC-AVOID-RADIATION-Vismodegib; SUFU-BCNS2-MBEN-Infant-HigherPenetranceThanPTCH1; PTEN-LhermitteDuclos-PATHOGNOMONIC-Macrocephaly-Cowden; APC-Turcot2-WNT-MB-CHRPE-PATHOGNOMONIC-Gardner; VHL-CNSHemangioblastoma-PATHOGNOMONIC-RetinalAge1-Belzutifan-HIF2alpha-FDA2021; SMARCB1-RTPS2-ATRT-Age3-PATHOGNOMONIC-INI1-IHC-Sibling-Tazemetostat; PMS2-CMMRD-GBM-TMB100-PATHOGNOMONIC-CALMs-PD1)."""
+    from scripts.hereditary_brain_cns_tumour_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-brain-cns-tumour-atlas/breakdown")
+async def hereditary_brain_cns_tumour_atlas_breakdown():
+    """Hereditary-Brain-CNS-Tumour-Predisposition-Atlas per-gene breakdown (8 genes, 40 patients each; TP53-brain_pct-sarcoma-cpc-radiation_avoid; PTCH1-mb_pct-bcc-okc-calcified_falx; SUFU-mb_pct-bcc-mben-radiation_avoid; PTEN-ldd_pct-breast-thyroid-macrocephaly; APC-mb_pct-polyp-chrpe-desmoid; VHL-cns_hb_pct-ret_hb-rcc-pheo; SMARCB1-atrt_pct-schwann-ini1_loss-sibling_risk; PMS2-gbm_pct-calm-tmb_high-pd1_response; mean age at diagnosis per gene)."""
+    from scripts.hereditary_brain_cns_tumour_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-brain-cns-tumour-atlas/definitions")
+async def hereditary_brain_cns_tumour_atlas_definitions():
+    """Hereditary-Brain-CNS-Tumour-Predisposition-Atlas clinical definitions (TP53-CPC-PATHOGNOMONIC-LFS-AVOID-RADIATION; PTCH1-Gorlin-CalcifiedFalx-DesmoplasticMB-Vismodegib; SUFU-BCNS2-MBEN-infant-chemo-only; PTEN-LhermitteDuclos-PATHOGNOMONIC-striatedMRI-Cowden; APC-WNT-MB-CHRPE-PATHOGNOMONIC-Gardner-desmoid; VHL-hemangioblastoma-retinal-Belzutifan; SMARCB1-ATRT-INI1-sibling-tazemetostat; PMS2-CMMRD-TMB100-CALMs-PD1)."""
+    from scripts.hereditary_brain_cns_tumour_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
