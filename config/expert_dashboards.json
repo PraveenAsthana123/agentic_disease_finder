@@ -20839,5 +20839,30 @@
     ],
     "portal_page": "/hereditary-gastric-cancer-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-melanoma-skin-cancer-atlas",
+    "name": "Hereditary-Melanoma-Skin-Cancer-Atlas Complete-8-Gene-CDKN2A-CDK4-BAP1-PTCH1-SUFU-MITF-POT1-RB1-Melanoma-Skin-Cancer-Predisposition-Atlas",
+    "status": "built",
+    "category": "Hereditary Cancer Genetics",
+    "genes": [
+      "CDKN2A",
+      "CDK4",
+      "BAP1",
+      "PTCH1",
+      "SUFU",
+      "MITF",
+      "POT1",
+      "RB1"
+    ],
+    "seeds": "3102-3109",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-melanoma-skin-cancer-atlas/overview",
+      "/api/hereditary-melanoma-skin-cancer-atlas/breakdown",
+      "/api/hereditary-melanoma-skin-cancer-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-melanoma-skin-cancer-atlas",
+    "registered": "2026-09-22"
   }
 ]

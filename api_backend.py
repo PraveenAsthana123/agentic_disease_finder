@@ -50209,6 +50209,27 @@ async def hereditary_gastric_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-melanoma-skin-cancer-atlas/overview")
+async def hereditary_melanoma_skin_cancer_atlas_overview():
+    """Hereditary-Melanoma-Skin-Cancer-Atlas overview (CDKN2A-CDK4-BAP1-PTCH1-SUFU-MITF-POT1-RB1; 320-patient aggregate 8x40 seeds 3102-3109; CDKN2A-FAMMM-PANCREATIC-17x-RR-MLPA-MANDATORY; CDK4-R24C-R24H-ONLY-HOTSPOT; BAP1-UVEAL-MELANOMA-50pct-BAPomas-PATHOGNOMONIC; PTCH1-GORLIN-BCC-OKC-AVOID-RADIATION; SUFU-MEDULLOBLASTOMA-HIGHER-PTCH1-BRAIN-MRI-MANDATORY; MITF-E318K-MODERATE-PENETRANCE-RCC; POT1-FAMILIAL-MELANOMA-GLIOMA-TELOMERE; RB1-BILATERAL-PATHOGNOMONIC-SECONDARY-SARCOMA-AVOID-RADIATION)."""
+    from scripts.hereditary_melanoma_skin_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-melanoma-skin-cancer-atlas/breakdown")
+async def hereditary_melanoma_skin_cancer_atlas_breakdown():
+    """Hereditary-Melanoma-Skin-Cancer-Atlas per-gene breakdown (8 genes, 40 patients each; melanoma_primary_pct, uveal_melanoma_pct, pancreatic_cancer_pct, multiple_primaries_pct, atypical_nevi_pct, bcc_pct, glioma_pct, rcc_pct, mesothelioma_pct, bapoma_pct, retinoblastoma_pct, odontogenic_keratocyst_pct, dermoscopy_pct, immunotherapy_pct, avoid_radiation_pct, medulloblastoma_pct, secondary_sarcoma_pct per gene; mean age at diagnosis)."""
+    from scripts.hereditary_melanoma_skin_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-melanoma-skin-cancer-atlas/definitions")
+async def hereditary_melanoma_skin_cancer_atlas_definitions():
+    """Hereditary-Melanoma-Skin-Cancer-Atlas clinical definitions (CDKN2A-FAMMM-surveillance; BAP1-TPDS-uveal-melanoma-BAPomas; PTCH1-Gorlin-radiation-avoidance; SUFU-SHH-medulloblastoma-protocol; RB1-secondary-cancer-surveillance; hereditary-melanoma-panel-algorithm; melanoma-immunotherapy-targeted-therapy)."""
+    from scripts.hereditary_melanoma_skin_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
