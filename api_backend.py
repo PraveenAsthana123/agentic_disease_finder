@@ -50111,6 +50111,27 @@ async def hereditary_chromatinopathy_epigenetic_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-rett-spectrum-atlas/overview")
+async def hereditary_rett_spectrum_atlas_overview():
+    """Hereditary-Rett-Spectrum-Atlas overview (MECP2-CDKL5-FOXG1-MEF2C-WDR45-DDX3X-PURA-HNRNPH2; 320-patient aggregate 8x40 seeds 3054-3061; HAND-STEREOTYPIES-BREATHING-IRREGULARITIES-MECP2-PATHOGNOMONIC; EARLY-ONSET-SEIZURES-BEFORE-5MO-CDKL5-PATHOGNOMONIC; NO-REGRESSION-DYSKINESIA-HYPERSALIVATION-FOXG1-PATHOGNOMONIC; MYELOID-LEUKEMIA-MEF2C-UNIQUE; BIPHASIC-IRON-ACCUMULATION-BPAN-WDR45-PATHOGNOMONIC; MOST-COMMON-XL-ID-FEMALES-DDX3X; EXCESSIVE-DAYTIME-SLEEPINESS-PURA-PATHOGNOMONIC; PROMINENT-FOREHEAD-HYPERTELORISM-BROAD-NASAL-TIP-HNRNPH2-PATHOGNOMONIC)."""
+    from scripts.hereditary_rett_spectrum_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-rett-spectrum-atlas/breakdown")
+async def hereditary_rett_spectrum_atlas_breakdown():
+    """Hereditary-Rett-Spectrum-Atlas per-gene breakdown (8 genes, 40 patients each; epilepsy-pct, speech-absent-pct, independent-walk-pct, hand-stereo-pct, breath-irreg-pct, regression-pct, scoliosis-pct, autism-pct, gastrostomy-pct, corpus-callosum-pct, parkinsonism-pct, myeloid-risk-pct, daytime-sleepiness-pct, iron-accumulation-pct per gene; mean IQ and age at diagnosis)."""
+    from scripts.hereditary_rett_spectrum_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-rett-spectrum-atlas/definitions")
+async def hereditary_rett_spectrum_atlas_definitions():
+    """Hereditary-Rett-Spectrum-Atlas clinical definitions (Rett-spectrum-classification-staging-differential; MECP2-classic-Rett-trofinetide-FDA2023-surveillance; CDKL5-CDD-vs-Rett-differential-ketogenic-diet-protocol; FOXG1-MEF2C-congenital-Rett-variants-no-regression; WDR45-BPAN-biphasic-iron-chelation-deferiprone-NBIA-neuroimaging)."""
+    from scripts.hereditary_rett_spectrum_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

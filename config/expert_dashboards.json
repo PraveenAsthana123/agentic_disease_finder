@@ -20664,5 +20664,39 @@
       "KAT6B": "Absent/hypoplastic patella on knee X-ray",
       "KANSL1": "Persistent friendly/sociable behaviour"
     }
+  },
+  {
+    "name": "Hereditary-Rett-Spectrum-Atlas",
+    "slug": "hereditary-rett-spectrum-atlas",
+    "status": "built",
+    "genes": [
+      "MECP2",
+      "CDKL5",
+      "FOXG1",
+      "MEF2C",
+      "WDR45",
+      "DDX3X",
+      "PURA",
+      "HNRNPH2"
+    ],
+    "seed_range": "3054-3061",
+    "patient_count": 320,
+    "category": "Rett-Spectrum / X-linked + AD NDD",
+    "built_date": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-rett-spectrum-atlas/overview",
+      "/api/hereditary-rett-spectrum-atlas/breakdown",
+      "/api/hereditary-rett-spectrum-atlas/definitions"
+    ],
+    "pathognomonic": [
+      "MECP2: HAND STEREOTYPIES (wringing) + BREATHING IRREGULARITIES",
+      "CDKL5: EARLY-ONSET SEIZURES BEFORE 5 MONTHS",
+      "FOXG1: NO REGRESSION (congenital) + DYSKINESIA + HYPERSALIVATION",
+      "MEF2C: MYELOID LEUKEMIA SUSCEPTIBILITY (unique)",
+      "WDR45: BIPHASIC + T2 HYPOINTENSITY GP+SN (iron)",
+      "DDX3X: MOST COMMON XL-ID IN FEMALES",
+      "PURA: EXCESSIVE DAYTIME SLEEPINESS",
+      "HNRNPH2: PROMINENT FOREHEAD + HYPERTELORISM + BROAD NASAL TIP"
+    ]
   }
 ]
