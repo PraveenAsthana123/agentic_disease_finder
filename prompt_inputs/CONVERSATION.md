@@ -35996,3 +35996,58 @@ Done. One iteration complete:
 - **Pushed** to `origin/main` (fast-forward, commit `51e2415a`)
 
 Key clinical content encoded: FHH CCCR <0.01 PATHOGNOMONIC / DO-NOT-OPERATE FHH rule / CDC73 parathyroid carcinoma 15% en-bloc / RET pheo-exclusion before surgery / GCM2 bidirectional (LOF=hypoparathyroidism ↔ GOF=PHPT) / NSHPT neonatal emergency / MEN4 = MEN1-negative then sequence CDKN1B.
+
+### [2026-09-21 18:39:18 MDT] ASSISTANT
+Done. **Hereditary-GH-IGF1-Axis-Atlas** built, verified, committed, and pushed.
+
+**What was delivered:**
+- `scripts/hereditary_gh_igf1_axis_atlas_dashboard.py` — 8-gene dashboard script (AIP, GHR, IGF1, IGF1R, STAT5B, IGFALS, PAPPA2, GPR101 · seeds 2958–2965 · 320 patients)
+- 3 API endpoints added to `api_backend.py` — all return 200
+- `portal-next/app/hereditary-gh-igf1-axis-atlas/page.jsx` — 4-tab frontend (Overview · Gene Table · Clinical Atlas · Definitions)
+- SiteNav wired after Hereditary-CAH-Atlas
+- `config/expert_dashboards.json` count 1252 → 1253
+- `scripts/next_pending.py` build record added
+- Committed `dddf6727` · pushed to `origin/main`
+
+⏳ **Pending:** Only item remaining in the buildable queue is the ictal/interictal retrain (high-effort, skip per instructions). All other items blocked (credentials/auth) or gated (push already done).
+
+### [2026-09-21 18:59:30 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-Autoimmune-Polyglandular-Syndrome-Atlas**
+
+- **Script:** `scripts/hereditary_autoimmune_polyglandular_atlas_dashboard.py` — 8 genes, 320 patients (seeds 2966–2973)
+- **Genes:** AIRE · FOXP3 · CTLA4 · LRBA · IL2RA · STAT3 · STAT1 · ITCH
+- **3 endpoints verified 200:**
+  - `/api/hereditary-autoimmune-polyglandular-atlas/overview`
+  - `/api/hereditary-autoimmune-polyglandular-atlas/breakdown`
+  - `/api/hereditary-autoimmune-polyglandular-atlas/definitions`
+- **Portal page:** `/hereditary-autoimmune-polyglandular-atlas` — 4 tabs (Overview, Gene Table, Clinical Atlas, Definitions)
+- **SiteNav wired** after Hereditary-GH-IGF1-Axis-Atlas
+- **expert_dashboards.json** count 1253 → 1254
+- **Pushed** to `origin/main` (fast-forward, `dddf6727 → 9a659c70`)
+
+Key clinical signal packed in: anti-IFN-ω pathognomonic for AIRE/APS-1; abatacept curative for CTLA4 + LRBA (shared CTLA-4 pathway); elevated serum IL-2 distinguishes IL2RA deficiency; STAT3 GOF vs LOF are opposites; STAT1 GOF intracranial aneurysm → MRA mandatory; ITCH is the only hereditary APS gene with dysmorphic features + intellectual disability.
+
+### [2026-09-21 19:18:38 MDT] ASSISTANT
+Done. Pushed `de173b10`. Summary:
+
+- **Built**: `scripts/hereditary_hypophosphatemic_rickets_atlas_dashboard.py` (320 patients, 8 genes, seeds 2974–2981)
+- **Frontend**: `portal-next/app/hereditary-hypophosphatemic-rickets-atlas/page.jsx` (4 tabs: Overview, Gene Table, Clinical Atlas, Definitions)
+- **Backend**: 3 routes wired in `api_backend.py` — `/api/hereditary-hypophosphatemic-rickets-atlas/overview|breakdown|definitions` all verified 200
+- **Nav**: `SiteNav.jsx` entry added after Hereditary-Autoimmune-Polyglandular-Atlas
+- **Registry**: `config/expert_dashboards.json` count 1254→1255
+- **Queue**: `scripts/next_pending.py` updated with 4 missing built entries (CAH, Primary HPT, GH-IGF1 axis, Autoimmune Polyglandular, and now HPR)
+- **Pushed**: fast-forward to `origin/main`
+
+### [2026-09-21 19:44:59 MDT] ASSISTANT
+**Done.** One iteration complete:
+
+**Built + pushed: Hereditary-Pheochromocytoma-Paraganglioma-Atlas**
+
+- **Script:** `scripts/hereditary_ppgl_atlas_dashboard.py` — 8 genes (VHL-SDHB-SDHD-SDHA-SDHC-SDHAF2-RET-MAX), 320 patients (seeds 2982-2989), 7 clinical definitions
+- **API:** 3 endpoints `/api/hereditary-ppgl-atlas/overview|breakdown|definitions` all verified **200**
+- **Frontend:** `portal-next/app/hereditary-ppgl-atlas/page.jsx` — 4-tab page (Overview, Gene Table, Clinical Atlas, Definitions) with malignancy-risk highlighting and imprinting badges
+- **SiteNav:** wired after Hereditary-Hypophosphatemic-Rickets-Atlas
+- **Registry:** `expert_dashboards.json` 1255 → 1256
+- **Commit:** `00381b6c` → pushed to `origin/main`
+
+Key clinical content encoded: SDHB 40% malignancy highest, three paternal-imprinted genes (SDHD/SDHAF2/MAX), RET exclude-PHEO-before-surgery rule, M918T MEN2B neonatal thyroidectomy, SDHAF2 exclusively head-neck Dutch founder, MAX bilateral adrenal young males, SDHA-IHC specificity vs SDHB-IHC pan-SDHx, imatinib-resistant GIST pearl.

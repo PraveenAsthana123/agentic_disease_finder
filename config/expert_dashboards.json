@@ -20459,5 +20459,14 @@
       "/api/hereditary-ppgl-atlas/breakdown",
       "/api/hereditary-ppgl-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-diabetes-insipidus-atlas",
+    "name": "Hereditary-Diabetes-Insipidus-Atlas Complete-8-Gene-AVP-AVPR2-AQP2-WFS1-CISD2-PCSK1-KCNJ1-SLC12A1-Reference AVP-164aa-20p13-AD-LOF-FNDI-Desmopressin-EFFECTIVE AVPR2-371aa-Xq28-XLR-NDI1-V2R-COMPLETELY-UNRESPONSIVE AQP2-271aa-12q13.12-AR-AD-NDI2-Urine-AQP2-Absent WFS1-890aa-4p16.1-AR-Wolfram-DIDMOAD-NonImmune-DM CISD2-135aa-4q24-AR-Wolfram2-NO-DI-Bleeding PCSK1-753aa-5q15-AR-Malabsorption-First-DI-55pct KCNJ1-391aa-11q24.3-AR-Bartter2-Neonatal-Hyperkalemia SLC12A1-1099aa-15q21.1-AR-Bartter1-Furosemide-Like-Nephrocalcinosis 320-Patient-Aggregate-8x40-seeds-2990-2997",
+    "status": "built",
+    "api": "/api/hereditary-diabetes-insipidus-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": "2990-2997",
+    "registered": "2026-09-21"
   }
 ]

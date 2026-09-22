@@ -49942,6 +49942,29 @@ async def hereditary_ppgl_atlas_definitions():
     return generate_definitions()
 
 
+# ── Hereditary Diabetes Insipidus Atlas ───────────────────
+
+@app.get("/api/hereditary-diabetes-insipidus-atlas/overview")
+async def hereditary_diabetes_insipidus_atlas_overview():
+    """Hereditary-Diabetes-Insipidus-Atlas overview (AVP-164aa-20p13-AD/AR-LOF-FNDI-Desmopressin-EFFECTIVE, AVPR2-371aa-Xq28-XLR-NDI1-Desmopressin-UNRESPONSIVE, AQP2-271aa-12q13.12-AR/AD-NDI2-Water-Channel, WFS1-890aa-4p16.1-AR-Wolfram-DIDMOAD, CISD2-135aa-4q24-AR-Wolfram2-Bleeding, PCSK1-753aa-5q15-AR-PC1-Deficiency-Malabsorption-First, KCNJ1-391aa-11q24.3-AR-Bartter2-Neonatal-Hyperkalemia, SLC12A1-1099aa-15q21.1-AR-Bartter1-Furosemide-Like-Nephrocalcinosis, 320-patients-8x40-seeds-2990-2997)."""
+    from scripts.hereditary_diabetes_insipidus_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-diabetes-insipidus-atlas/breakdown")
+async def hereditary_diabetes_insipidus_atlas_breakdown():
+    """Hereditary-DI-Atlas per-gene breakdown (AVP-FNDI-desmopressin-effective, AVPR2-NDI1-X-linked-thiazide, AQP2-NDI2-AR-AD-urine-AQP2-absent, WFS1-DIDMOAD-DI-central-70pct, CISD2-WFS2-no-DI-mostly-bleeding, PCSK1-malabsorption-first-DI-55pct, KCNJ1-Bartter2-neonatal-hyperkalemia, SLC12A1-Bartter1-nephrocalcinosis-80pct, 320 patients)."""
+    from scripts.hereditary_diabetes_insipidus_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-diabetes-insipidus-atlas/definitions")
+async def hereditary_diabetes_insipidus_atlas_definitions():
+    """Hereditary-DI-Atlas clinical definitions (desmopressin-response-test, Wolfram-DIDMOAD-sequence, FNDI-MRI-bright-spot, NDI-vs-central-DI, Bartter-polyuria-TAL-dysfunction, PCSK1-malabsorption-first, 8-gene-differential)."""
+    from scripts.hereditary_diabetes_insipidus_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
