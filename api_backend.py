@@ -49981,6 +49981,29 @@ async def hereditary_primary_dyslipidemia_atlas_definitions():
     return generate_definitions()
 
 
+# ── Hereditary Thalassemia Atlas ───────────────────
+
+@app.get("/api/hereditary-thalassemia-atlas/overview")
+async def hereditary_thalassemia_atlas_overview():
+    """Hereditary-Thalassemia-Atlas overview (HBB-147aa-11p15.4-AR/codominant-Beta-Thalassemia-Major-NTDT-Trait-HbS-HbE-HbC-Casgevy-CRISPR-FDA2023, HBA2-142aa-16p13.3-AR-Alpha-Thal-Hb-Barts-Hydrops-4Gene-HbH-3Gene-CIS-vs-TRANS-CRITICAL, HBA1-142aa-16p13.3-AR-Alpha-Thal-Tandem-Constant-Spring-Non-Deletion, ATRX-2492aa-Xq21.1-XLR-ATR-X-Non-Deletion-Alpha-Thal-ID-Facial, KLF1-362aa-2p12-AD-HPFH6-HbF-3-10pct-HbA2-Elevated-Sardinian-Thalassemia-Modifier, BCL11A-835aa-2p16.1-AD-LOF-Erythroid-Enhancer-Casgevy-CRISPR-Target-Elevated-HbF, CDAN1-1255aa-15q15.2-AR-CDA-I-H-Bridges-PATHOGNOMONIC-EM-IFN-alpha-HCC-Risk, SEC23B-767aa-20p11.21-AR-CDA-II-HEMPAS-Ham-Positive-Binucleate-Most-Common-CDA, 320-patients-8x40-seeds-2998-3005)."""
+    from scripts.hereditary_thalassemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-thalassemia-atlas/breakdown")
+async def hereditary_thalassemia_atlas_breakdown():
+    """Hereditary-Thalassemia-Atlas per-gene breakdown (HBB-TDT-NTDT-trait-betibeglogene-Zynteglo, HBA2-cis-trans-Hb-Barts-hydrops-MLPA, HBA1-tandem-Constant-Spring, ATRX-XLR-non-deletion-ID, KLF1-HPFH6-thalassemia-modifier, BCL11A-Casgevy-CRISPR-HbF, CDAN1-CDA-I-H-bridges-IFN-alpha, SEC23B-HEMPAS-Ham-positive-binucleate, 320 patients)."""
+    from scripts.hereditary_thalassemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-thalassemia-atlas/definitions")
+async def hereditary_thalassemia_atlas_definitions():
+    """Hereditary-Thalassemia-Atlas clinical definitions (beta-thal TDT-vs-NTDT-vs-trait, alpha-thal cis-vs-trans-hydrops-risk, CDA-I-vs-CDA-II Ham-test-IFN-alpha, Casgevy-first-CRISPR-drug-FDA2023, BCL11A-erythroid-enhancer, HbF-induction-therapy, luspatercept-Reblozyl, 8-gene-differential-algorithm)."""
+    from scripts.hereditary_thalassemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

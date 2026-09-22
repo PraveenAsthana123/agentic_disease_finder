@@ -20517,5 +20517,30 @@
       "/api/hereditary-primary-dyslipidemia-atlas/definitions"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-thalassemia-atlas",
+    "slug": "hereditary-thalassemia-atlas",
+    "name": "Hereditary-Thalassemia-Atlas",
+    "title": "Hereditary-Thalassemia-Atlas",
+    "status": "built",
+    "genes": [
+      "HBB",
+      "HBA2",
+      "HBA1",
+      "ATRX",
+      "KLF1",
+      "BCL11A",
+      "CDAN1",
+      "SEC23B"
+    ],
+    "seeds": "2998-3005",
+    "patient_count": 320,
+    "endpoints": [
+      "/api/hereditary-thalassemia-atlas/overview",
+      "/api/hereditary-thalassemia-atlas/breakdown",
+      "/api/hereditary-thalassemia-atlas/definitions"
+    ],
+    "registered": "2026-09-21"
   }
 ]
