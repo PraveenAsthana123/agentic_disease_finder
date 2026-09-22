@@ -50046,6 +50046,27 @@ async def hereditary_orofacial_clefting_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-overgrowth-syndromes-atlas/overview")
+async def hereditary_overgrowth_syndromes_atlas_overview():
+    """Hereditary-Overgrowth-Syndromes-Atlas overview (NSD1-1992aa-5q35.3-AD-de-novo-LOF-Sotos-MOST-COMMON-1in14000, EZH2-746aa-7q36.1-AD-de-novo-LOF-Weaver-ACCELERATED-OSSEOUS-MATURATION-PATHOGNOMONIC, GPC3-580aa-Xq26.2-XLR-SGBS1-SUPERNUMERARY-NIPPLES-PATHOGNOMONIC, CDKN1C-316aa-11p15.4-BWS-type3-OMPHALOCELE-MACROGLOSSIA-MACROSOMIA-TRIAD, PTEN-403aa-10q23.31-AD-LOF-PHTS-MACROCEPHALY-trigger, SETD2-2564aa-3p21.31-AD-LOF-Luscan-Lumish-autism-50pct, NFIX-391aa-19p13.3-AD-LOF-Malan-GOF-Marshall-Smith, PIK3CA-1068aa-3q26.32-somatic-GOF-mosaic-PROS-alpelisib-FDA2022, 320-patients-8x40-seeds-3030-3037)."""
+    from scripts.hereditary_overgrowth_syndromes_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-overgrowth-syndromes-atlas/breakdown")
+async def hereditary_overgrowth_syndromes_atlas_breakdown():
+    """Hereditary-Overgrowth-Syndromes-Atlas per-gene breakdown (NSD1-Sotos-macrocephaly-tall-ID-Wilms-2-3pct, EZH2-Weaver-osseous-maturation-AML-ALL-risk, GPC3-SGBS1-supernumerary-nipples-Wilms-10pct, CDKN1C-BWS-omphalocele-macroglossia-macrosomia, PTEN-PHTS-macrocephaly-cancer-surveillance, SETD2-Luscan-Lumish-autism-50pct, NFIX-Malan-vs-Marshall-Smith-LOF-GOF, PIK3CA-PROS-MCAP-CLOVES-hemimegalencephaly-alpelisib, 320 patients)."""
+    from scripts.hereditary_overgrowth_syndromes_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-overgrowth-syndromes-atlas/definitions")
+async def hereditary_overgrowth_syndromes_atlas_definitions():
+    """Hereditary-Overgrowth-Syndromes-Atlas clinical definitions (overgrowth-syndromes-classification-diagnostic-approach, NSD1-EZH2-SETD2-NFIX-chromatin-epigenetic-mechanism, PIK3CA-PROS-deep-sequencing-500x-mandatory-alpelisib-Vijoice, CDKN1C-BWS-methylation-11p15-imprinting, PTEN-PHTS-macrocephaly-cancer-surveillance-algorithm, 8-gene-overgrowth-differential-diagnosis)."""
+    from scripts.hereditary_overgrowth_syndromes_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
