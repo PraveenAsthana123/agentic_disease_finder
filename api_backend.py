@@ -50132,6 +50132,27 @@ async def hereditary_rett_spectrum_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-tsc-mtor-pathway-atlas/overview")
+async def hereditary_tsc_mtor_pathway_atlas_overview():
+    """Hereditary-TSC-mTOR-Pathway-Atlas overview (TSC1-TSC2-DEPDC5-NPRL2-NPRL3-MTOR-PIK3R2-AKT3; 320-patient aggregate 8x40 seeds 3062-3069; CORTICAL-TUBERS-SUBEPENDYMAL-NODULES-ANGIOMYOLIPOMATA-TSC-PATHOGNOMONIC; EVEROLIMUS-FDA-SEGA-LAM-RENAL-AML-TSC; TSC2-MORE-SEVERE-TSC1; GATOR1-DEPDC5-NPRL2-NPRL3-SUDEP-ELEVATED; SOMATIC-MTOR-PIK3R2-AKT3-DEEP-SEQUENCING-500x-MANDATORY; BALLOON-CELLS-MTOR-FCD-IIb-PATHOGNOMONIC; HEMIMEGALENCEPHALY-AKT3-PATHOGNOMONIC)."""
+    from scripts.hereditary_tsc_mtor_pathway_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-tsc-mtor-pathway-atlas/breakdown")
+async def hereditary_tsc_mtor_pathway_atlas_breakdown():
+    """Hereditary-TSC-mTOR-Pathway-Atlas per-gene breakdown (8 genes, 40 patients each; sega-pct, renal-aml-pct, lam-pct, balloon-cells-pct, hemisphere-asymmetry-pct, surgical-candidate-pct, everolimus-eligible-pct, deep-seq-required-pct, sudep-risk-pct, somatic-variant-pct per gene)."""
+    from scripts.hereditary_tsc_mtor_pathway_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-tsc-mtor-pathway-atlas/definitions")
+async def hereditary_tsc_mtor_pathway_atlas_definitions():
+    """Hereditary-TSC-mTOR-Pathway-Atlas clinical definitions (mTOR-pathway-architecture-TSC1-TSC2-DEPDC5-NPRL2-NPRL3-GATOR1-MTOR-PIK3R2-AKT3; everolimus-protocol-SEGA-LAM-AML; GATOR1-SUDEP-surveillance; somatic-deep-sequencing-500x-FCD-surgery-protocol; everolimus-rapamycin-convergence-mechanism)."""
+    from scripts.hereditary_tsc_mtor_pathway_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

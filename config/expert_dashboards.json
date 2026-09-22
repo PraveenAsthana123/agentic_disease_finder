@@ -20698,5 +20698,32 @@
       "PURA: EXCESSIVE DAYTIME SLEEPINESS",
       "HNRNPH2: PROMINENT FOREHEAD + HYPERTELORISM + BROAD NASAL TIP"
     ]
+  },
+  {
+    "id": "hereditary-tsc-mtor-pathway-atlas",
+    "name": "Hereditary-TSC-mTOR-Pathway-Atlas",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-tsc-mtor-pathway-atlas/overview",
+    "page": "/hereditary-tsc-mtor-pathway-atlas",
+    "genes": [
+      "TSC1",
+      "TSC2",
+      "DEPDC5",
+      "NPRL2",
+      "NPRL3",
+      "MTOR",
+      "PIK3R2",
+      "AKT3"
+    ],
+    "seed_range": "3062-3069",
+    "patients": 320,
+    "built_date": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-tsc-mtor-pathway-atlas/overview",
+      "/api/hereditary-tsc-mtor-pathway-atlas/breakdown",
+      "/api/hereditary-tsc-mtor-pathway-atlas/definitions"
+    ],
+    "built_note": "Hereditary-TSC-mTOR-Pathway-Atlas -- /api/hereditary-tsc-mtor-pathway-atlas/overview|breakdown|definitions verified 200, 320-patient cohort seeds-3062-3069, TSC1-TSC2-DEPDC5-NPRL2-NPRL3-MTOR-PIK3R2-AKT3, portal-next/app/hereditary-tsc-mtor-pathway-atlas/page.jsx + SiteNav wired after Hereditary-Rett-Spectrum-Atlas. expert_dashboards.json count 1266->1267. Built 2026-09-22."
   }
 ]
