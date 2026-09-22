@@ -50524,6 +50524,27 @@ async def hereditary_esophageal_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-colorectal-cancer-atlas/overview")
+async def hereditary_colorectal_cancer_atlas_overview():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas overview (POLE-POLD1-EPCAM-NTHL1-RNF43-BMPR1A-MSH3-GREM1; 320-patient aggregate 8x40 seeds 3230-3237; POLE-PPAP-1-Ultra-Hypermutated-TMB-GT100-MSS-PATHOGNOMONIC-Exceptional-Pembrolizumab; POLD1-PPAP-2-Sebaceous-PATHOGNOMONIC-Brain-Tumours; EPCAM-Lynch-by-MSH2-Silencing-3prime-Deletion-MLPA-Mandatory; NTHL1-NAP-SBS30-CpG-TpG-PATHOGNOMONIC-CMMRD-NOT-Expected; RNF43-SFPN-Sessile-Serrated-PATHOGNOMONIC-BRAF-V600E; BMPR1A-JPS-Juvenile-Polyps-PATHOGNOMONIC-Gastric-21pct; MSH3-EMAST-PATHOGNOMONIC-Biallelic-CRC-100pct; GREM1-HMPS-Mixed-Polyps-PATHOGNOMONIC-Ashkenazi-Founder-MLPA-CNV-Mandatory)."""
+    from scripts.hereditary_colorectal_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-colorectal-cancer-atlas/breakdown")
+async def hereditary_colorectal_cancer_atlas_breakdown():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; POLE-TMB-GT100-MSS-PPAP-1; POLD1-Sebaceous-PPAP-2-CRC-80pct; EPCAM-MSH2-Silencing-Small-Bowel; NTHL1-NAP-SBS30-CRC-100pct; RNF43-SFPN-Serrated; BMPR1A-JPS-Gastric-21pct; MSH3-EMAST-Biallelic-severe_pct-HIGHEST; GREM1-HMPS-Ashkenazi; mean_age_onset per gene)."""
+    from scripts.hereditary_colorectal_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-colorectal-cancer-atlas/definitions")
+async def hereditary_colorectal_cancer_atlas_definitions():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas clinical definitions (POLE-PPAP-1-Ultra-Hypermutated-TMB-GT100-MSS-NOT-MSI-H-SBS10a-SBS10b; POLD1-PPAP-2-Sebaceous-PATHOGNOMONIC-Brain-Ceralasertib; EPCAM-3prime-Deletion-MSH2-Silencing-MLPA-Mandatory-Small-Bowel-PATHOGNOMONIC; NTHL1-NAP-SBS30-CpG-TpG-Q90X-Founder-CMMRD-NOT-Expected; RNF43-SFPN-SSLs-PATHOGNOMONIC-RSPO-Fusion-Sporadic-BRAF-V600E; BMPR1A-JPS-Juvenile-Polyps-PATHOGNOMONIC-HHT-ABSENT-Gastric-21pct; MSH3-EMAST-PATHOGNOMONIC-Biallelic-CMMRD-Lower; GREM1-HMPS-Mixed-PATHOGNOMONIC-Ashkenazi-Founder-MLPA-CNV; CASCADE-Hereditary-Colorectal-Cancer)."""
+    from scripts.hereditary_colorectal_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-cervical-cancer-atlas/overview")
 async def hereditary_cervical_cancer_atlas_overview():
     """Hereditary-Cervical-Cancer-Predisposition-Atlas overview (STK11-BRCA1-TP53-MSH2-FANCA-PTEN-ATM-BRCA2; 320-patient aggregate 8x40 seeds 3222-3229; STK11-PJS-SCTAT-PATHOGNOMONIC-Adenoma-Malignum-PATHOGNOMONIC; BRCA1-Cervical-2-3x-BSO-35-40; TP53-LFS-AVOID-RADIATION-Surgery-NOT-Chemoradiation; MSH2-Lynch2-Cervical-Adenocarcinoma-NOT-Squamous; FANCA-FA-Cervical-150-200x-HPV-Vaccination-CRITICAL; PTEN-Cowden-Macrocephaly-PATHOGNOMONIC; ATM-Radiosensitivity-ABSOLUTE-Chemoradiation-CI; BRCA2-HBOC-FA-D1-Most-Severe)."""

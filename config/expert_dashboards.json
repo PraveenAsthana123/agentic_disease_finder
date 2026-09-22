@@ -21292,5 +21292,25 @@
     "frontend_page": "portal-next/app/hybrid-pipeline/page.jsx",
     "description": "CNN-LSTM vs CNN-Transformer real-time architecture selection dashboard \u2014 133 patient analyses, 50 patients, 5 diseases, LSTM gate analysis, Transformer attention weights, feature importance, clinical references",
     "notes": "3 endpoints verified 200 \u2014 overview/breakdown/definitions. 5-tab frontend: Overview, Patient Breakdown, Architecture Internals, Feature Selection, Definitions."
+  },
+  {
+    "id": "hereditary-colorectal-cancer-atlas",
+    "title": "Hereditary Colorectal Cancer Predisposition Atlas",
+    "category": "hereditary-cancer-atlas",
+    "genes": [
+      "POLE",
+      "POLD1",
+      "EPCAM",
+      "NTHL1",
+      "RNF43",
+      "BMPR1A",
+      "MSH3",
+      "GREM1"
+    ],
+    "status": "built",
+    "seed_range": "3230-3237",
+    "patients": 320,
+    "api": "/api/hereditary-colorectal-cancer-atlas",
+    "registered": "2026-09-22"
   }
 ]

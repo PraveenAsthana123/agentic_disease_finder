@@ -36250,3 +36250,243 @@ Done. Hereditary-PHEO-PGL-SDH-Atlas built, verified, committed, and pushed.
 - `expert_dashboards.json` count: 1269 → 1270
 
 **Key clinical content encoded:** MLH1 somatic methylation exclusion mandatory; MSH2 EPCAM deletion cascade; MSH6 endometrial-predominant with MSI-L/MSS possibility; PMS2 pseudogene LR-PCR requirement + CMMRD; APC prophylactic colectomy + Spigelman staging; MUTYH biallelic-required AR (heterozygous = 2× only, NOT Lynch-level); STK11 perioral lentigines fade puberty/buccal persists + pancreatic 132× relative risk; SMAD4 JPS-HHT overlap 22% + echo bubble mandatory for PAVM; dMMR/MSI-H pembrolizumab FDA2017 KEYNOTE-177.
+
+### [2026-09-22 03:46:49 MDT] ASSISTANT
+Committed. Now push and track:
+
+### [2026-09-22 04:17:44 MDT] ASSISTANT
+**Iteration complete.** Built, verified, committed, and pushed:
+
+**Hereditary-Melanoma-Skin-Cancer-Atlas** — 8-gene predisposition atlas:
+
+| Gene | Locus | Mode | Disease |
+|------|-------|------|---------|
+| **CDKN2A** | 9p21.3 | AD LOF | FAMMM — most common 30-40%; pancreatic 17× RR; MLPA mandatory |
+| **CDK4** | 12q14.1 | AD GOF R24C/H | FAMMM Type 2 — rare <1%; p16-binding pocket; identical surveillance |
+| **BAP1** | 3p21.1 | AD LOF | BAP1-TPDS — uveal melanoma 50% lifetime; BAPomas PATHOGNOMONIC |
+| **PTCH1** | 9q22.32 | AD LOF | Gorlin/BCNS — BCCs from puberty; OKC PATHOGNOMONIC; AVOID RADIATION |
+| **SUFU** | 10q24.32 | AD LOF | Gorlin-Like — medulloblastoma >10% (higher than PTCH1); brain MRI age 1–15 |
+| **MITF** | 3p14.1 | AD GOF E318K | Melanoma-Astrocytoma — moderate penetrance 14–20%; RCC 10–15% |
+| **POT1** | 7q31.33 | AD LOF | Familial melanoma 3–4%; shelterin; glioma elevated; telomere elongation |
+| **RB1** | 13q14.2 | AD LOF | Hereditary RB — bilateral PATHOGNOMONIC; trilateral PATHOGNOMONIC; secondary sarcoma 30–40%; AVOID RADIATION |
+
+- **320 patients** (8×40, seeds 3102–3109)
+- **3 endpoints verified 200**: `/api/hereditary-melanoma-skin-cancer-atlas/overview|breakdown|definitions`
+- **SiteNav wired** after Hereditary-Gastric-Cancer-Atlas
+- **expert_dashboards.json** count: 1271→1272
+- Commit `89728484` pushed to `main`
+
+### [2026-09-22 05:18:49 MDT] ASSISTANT
+**Built + pushed: Hereditary-Neurofibromatosis-Schwannomatosis-Atlas** (`33ce1700`)
+
+**What was built:**
+- `scripts/hereditary_neurofibromatosis_atlas_dashboard.py` — 8-gene dashboard data generator (NF1/NF2/SMARCB1/LZTR1/SPRED1/SMARCE1/PRKAR1A/AKT1, seeds 3110-3117, 320 patients)
+- 3 API routes in `api_backend.py` — `/api/hereditary-neurofibromatosis-atlas/overview|breakdown|definitions` → all return 200 ✅
+- `portal-next/app/hereditary-neurofibromatosis-atlas/page.jsx` — 4-tab portal page (Overview, Gene Table, Clinical Atlas, Definitions)
+- Registered in `config/expert_dashboards.json` (1272 → 1273 entries)
+- Wired into `SiteNav.jsx` after Hereditary-Melanoma-Skin-Cancer-Atlas
+
+**Key clinical facts encoded:**
+- NF1: café-au-lait PATHOGNOMONIC, MPNST 8-13%, selumetinib-FDA2020, AVOID RADIATION
+- NF2: bilateral VS PATHOGNOMONIC, bevacizumab for progressive VS
+- SMARCB1: AT/RT PATHOGNOMONIC in children <3yr, INI1 IHC loss PATHOGNOMONIC, tazemetostat
+- LZTR1: BIDIRECTIONAL AD/AR — always test both parents (50% vs 25% risk)
+- SPRED1: Legius syndrome — critical NF1 DDx (no MPNST, no Lisch, no neurofibromas)
+- SMARCE1: multiple spinal meningiomas, young women, clear-cell, full-spine MRI mandatory
+- PRKAR1A: Carney complex, cardiac myxoma 30% LIFE-THREATENING, annual echo MANDATORY, paradoxical Liddle PATHOGNOMONIC
+- AKT1: Proteus syndrome, CCTN PATHOGNOMONIC, DVT/PE major mortality, must biopsy affected tissue (not blood)
+
+### [2026-09-22 05:49:05 MDT] ASSISTANT
+**Built + pushed:** `Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas`
+
+- **8 genes** (seeds 3118-3125, 320-patient aggregate 8×40):
+  - `TP53` — Li-Fraumeni; osteosarcoma 28-30% LFS adolescents; AVOID RADIATION ABSOLUTELY; WBMRI Toronto annually
+  - `RB1` — bilateral retinoblastoma PATHOGNOMONIC; secondary osteosarcoma 30-40%; AVOID RADIATION
+  - `DICER1` — FAPOL; pleuropulmonary blastoma PATHOGNOMONIC; ERMS cervix; SLCT ovary
+  - `EXT1` — HME Type 1; multiple osteochondromas; chondrosarcoma 1-5%; cartilage cap >2cm = alarm
+  - `EXT2` — HME Type 2; milder than EXT1; same surveillance protocol
+  - `RECQL4` — RTS2; osteosarcoma 30% — HIGHEST hereditary risk; congenital poikiloderma PATHOGNOMONIC
+  - `WRN` — Werner syndrome; bilateral cataracts <30yr PATHOGNOMONIC; sarcoma in adult 40s
+  - `NF1` — MPNST 8-13% most common hereditary sarcoma; FDG-PET MANDATORY; AVOID RADIATION
+
+- **3 endpoints verified 200:** `/api/hereditary-sarcoma-bone-tumor-atlas/overview|breakdown|definitions`
+- **expert_dashboards.json:** 1273 → 1274
+- **Committed:** `d2a38100` · **Pushed** to `origin/main`
+
+### [2026-09-22 06:03:47 MDT] ASSISTANT
+1274/1274 — all expert dashboards now built. Now restart & verify backend, then commit and push.
+
+### [2026-09-22 06:17:26 MDT] ASSISTANT
+The `next_pending.py` queue has only one buildable item: the ictal/interictal retrain — which is explicitly on the skip list for this run (too heavy). All other items are blocked (credentials) or gated. Queue is exhausted of buildable-non-skipped items.
+
+### [2026-09-22 06:53:33 MDT] ASSISTANT
+6 files staged. Now commit.
+
+### [2026-09-22 07:02:51 MDT] ASSISTANT
+The only item in the `BUILDABLE` queue is `ictal_interictal retrain` — which the instructions explicitly say to skip (too heavy). Queue is empty after that skip. Running track with the reason:
+
+### [2026-09-22 07:33:48 MDT] ASSISTANT
+**Built + pushed: Hereditary-Thyroid-Cancer-Atlas** (`0996190f`)
+
+**What was built:**
+- `scripts/hereditary_thyroid_cancer_atlas_dashboard.py` — 8-gene data generator (SEED_BASE=3134, seeds 3134-3141, 320-patient cohort 8×40)
+- 3 Flask routes: `/api/hereditary-thyroid-cancer-atlas/overview|breakdown|definitions` — all verified **200**
+- `portal-next/app/hereditary-thyroid-cancer-atlas/page.jsx` — 4-tab portal page
+- SiteNav wired after Hereditary-Endometrial-Cancer-Atlas
+- `config/expert_dashboards.json`: **1275 → 1276**
+- STATUS.md: **1276/1276** expert dashboards
+
+**8 genes covered:** RET (MEN2A/MEN2B/FMTC — thyroidectomy ≤6mo M918T) · TP53 (LFS — AVOID RADIATION ABSOLUTELY) · PTEN (Cowden/PHTS — macrocephaly/Lhermitte-Duclos PATHOGNOMONIC) · APC (FAP — cribriform-morular PTC PATHOGNOMONIC) · PRKAR1A (Carney Complex — cardiac myxoma annual echo MANDATORY) · DICER1 (PPB Type I PATHOGNOMONIC infant) · CDC73 (HPT-JT — parathyroid carcinoma en-bloc NEVER disrupt capsule) · VHL (hemangioblastoma PATHOGNOMONIC — belzutifan HIF-2α FDA2021)
+
+**⏳ Pending:** ictal/interictal retrain (P0, heavy — skipped) · Gmail/Slack/Drive/auth/EMR/FHIR (blocked, needs credentials)
+
+### [2026-09-22 08:01:31 MDT] ASSISTANT
+**Done.** Built and pushed the **Hereditary Lung Cancer Atlas** (id 1277, seeds 3142-3149):
+
+- **8 genes:** EGFR · STK11 · TP53 · RB1 · BRCA2 · FLCN · ATM · BAP1
+- **320-patient aggregate** (8 × 40)
+- **3 endpoints verified 200:** `/api/hereditary-lung-cancer-atlas/overview|breakdown|definitions`
+- **Frontend:** `portal-next/app/hereditary-lung-cancer-atlas/page.jsx` (4 tabs)
+- **SiteNav wired** after Hereditary-Thyroid-Cancer-Atlas
+- **expert_dashboards.json** updated 1276 → 1277
+- **Pushed:** `0996190f..4a306c6f`
+
+Key clinical signals in this atlas: EGFR germline T790M → osimertinib (bilateral GGOs in never-smoker PATHOGNOMONIC); STK11/PJS → lung adeno 7-17× RR (highest hereditary lung risk) + KRAS co-mut = immunotherapy resistance; TP53 LFS → AVOID RADIATION ABSOLUTELY; ATM biallelic → standard RT LETHAL; BAP1 TPDS → mesothelioma 30-60× RR + AVOID ALL ASBESTOS (asbestos synergy multiplicative).
+
+### [2026-09-22 08:30:41 MDT] ASSISTANT
+**Built + pushed:** `Hereditary-Brain-CNS-Tumour-Predisposition-Atlas` — commit `78a099a5`
+
+**What was built:**
+- `scripts/hereditary_brain_cns_tumour_atlas_dashboard.py` — 8-gene dashboard (TP53 / PTCH1 / SUFU / PTEN / APC / VHL / SMARCB1 / PMS2), 320-patient aggregate, seeds 3150-3157
+- `portal-next/app/hereditary-brain-cns-tumour-atlas/page.jsx` — 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions)
+- `api_backend.py` — 3 new routes (`/overview`, `/breakdown`, `/definitions`) — all verified 200
+- `portal-next/app/components/SiteNav.jsx` — wired after Hereditary-Lung-Cancer-Atlas
+- `config/expert_dashboards.json` — 1277 → **1278** entries
+
+**Key clinical content encoded:**
+| Gene | Pathognomonic |
+|------|--------------|
+| TP53 | CPC age <5yr = PATHOGNOMONIC LFS; AVOID RADIATION ABSOLUTELY |
+| PTCH1 | Calcified falx cerebri; desmoplastic MB SHH; AVOID RADIATION; Vismodegib |
+| SUFU | MBEN in infant = PATHOGNOMONIC; 15-20% MB penetrance (higher than PTCH1) |
+| PTEN | Lhermitte-Duclos striated MRI = PATHOGNOMONIC; macrocephaly >97th centile |
+| APC | CHRPE = PATHOGNOMONIC FAP; WNT-MB best prognosis; β-catenin IHC |
+| VHL | CNS/retinal hemangioblastoma = PATHOGNOMONIC; annual retinal from age 1; Belzutifan FDA 2021 |
+| SMARCB1 | AT/RT <3yr = PATHOGNOMONIC; INI1 IHC loss = PATHOGNOMONIC; sibling testing MANDATORY |
+| PMS2 | CMMRD GBM TMB >100 = PATHOGNOMONIC; CALMs + brain tumour → CMMRD excluded; PD-1 active |
+
+⏳ **Pending:** only the skipped ictal/interictal retrain remains in queue.
+
+### [2026-09-22 09:03:20 MDT] ASSISTANT
+Done. Here's what was built and pushed:
+
+**Hereditary Head & Neck Cancer Predisposition Atlas** — complete 8-gene atlas, the genuine next gap after the Brain/CNS Tumour Atlas (seeds 3150-3157).
+
+**What was built (commit `19082c27`):**
+- `scripts/hereditary_head_neck_cancer_atlas_dashboard.py` — 8-gene dashboard (FANCA, XPC, TP53, CDKN2A, ATM, MSH2, BRCA2, RECQL4), seeds 3158-3165, 320 patients (8×40)
+- 3 API routes wired into `api_backend.py`:
+  - `GET /api/hereditary-head-neck-cancer-atlas/overview` → 200 ✅
+  - `GET /api/hereditary-head-neck-cancer-atlas/breakdown` → 200 ✅
+  - `GET /api/hereditary-head-neck-cancer-atlas/definitions` → 200 ✅
+- `portal-next/app/hereditary-head-neck-cancer-atlas/page.jsx` — 4-tab frontend (Overview, Gene Table, Clinical Atlas, Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Brain-CNS-Tumour-Atlas
+- `expert_dashboards.json` — count 1278 → 1279
+- `STATUS.md` refreshed
+
+**Key clinical content:**
+- FANCA: oral/oropharyngeal SCC **700× PATHOGNOMONIC**, AVOID RADIATION ABSOLUTELY, BMT fludarabine conditioning
+- XPC: UV-SCC face/scalp **10,000× PATHOGNOMONIC**, no neurological (DDx XP-A/D), strict UV avoidance
+- TP53: LFS, AVOID RADIATION ABSOLUTELY, WBMRI Toronto
+- CDKN2A: FAMM, oral SCC 10-30×, pancreatic **20× PATHOGNOMONIC**, melanoma 25-36×
+- ATM: cerebellar ataxia + telangiectasias **PATHOGNOMONIC**, radiosensitivity absolute biallelic, HNC 3-5× monoallelic
+- MSH2: Muir-Torre sebaceous neoplasms face **PATHOGNOMONIC**, EPCAM 3-prime deletion pitfall
+- BRCA2: HBOC, oropharyngeal SCC 2-3×, PARP inhibitor olaparib, platinum-sensitive
+- RECQL4: Rothmund-Thomson poikiloderma congenitale **PATHOGNOMONIC**, osteosarcoma 30-40×
+
+### [2026-09-22 09:30:25 MDT] ASSISTANT
+**Built + pushed: Hereditary Bladder/Urothelial Cancer Predisposition Atlas**
+
+- **Commit:** `953d4869` → `main` (fast-forward pushed)
+- **Atlas:** MSH2-MLH1-MSH6-BRCA2-RB1-TP53-HRAS-CHEK2 · 8 genes · 320 patients (8×40) · seeds 3166-3173
+- **Endpoints verified 200:**
+  - `/api/hereditary-bladder-urothelial-cancer-atlas/overview`
+  - `/api/hereditary-bladder-urothelial-cancer-atlas/breakdown`
+  - `/api/hereditary-bladder-urothelial-cancer-atlas/definitions`
+- **expert_dashboards.json:** 1279 → 1280
+- **SiteNav wired** after Hereditary-Head-Neck-Cancer-Atlas
+
+Key clinical facts encoded: MSH2 urothelial 25% HIGHEST Lynch gene · MSH6 MSI-L 30% false-negative IHC-primary pitfall · RB1 BCG-contraindicated + CDK4/6i-inactive in RB1-null · TP53 AVOID-RADIATION-ABSOLUTELY/radical-cystectomy-not-RT · HRAS Costello bladder TCC/RMS adolescent PATHOGNOMONIC/papillomata PATHOGNOMONIC/MEK trametinib · MLH1 BRAF-V600E excludes Lynch · CHEK2 c.1100delC 1% Northern European intermediate penetrance.
+
+### [2026-09-22 09:48:06 MDT] ASSISTANT
+**Autonomous build iteration — no action taken.**
+
+- `next_pending.py` returned 1 buildable item: **Ictal/interictal retrain** (P0, high-effort) — skipped per instructions.
+- All other pending items are blocked on operator credentials/decisions (Gmail/Slack/Drive/auth/EMR/FHIR).
+- Queue is effectively empty after the skip rule. No commit, no push.
+- Logged via `scripts/track.sh`.
+
+**⏳ Pending:** Retrain on same-setup ictal/interictal (blocked — too heavy for unattended auto-build) · Gmail/Slack/Drive live (credentials) · Multi-user auth/RBAC · EMR/FHIR + device streaming.
+
+### [2026-09-22 10:18:47 MDT] ASSISTANT
+Done. Iteration complete:
+
+**built+pushed: Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas**
+
+- `scripts/hereditary_acc_atlas_dashboard.py` — 8-gene × 40-patient cohort, seeds 3174-3181 (TP53 / NF1 / MEN1 / ARMC5 / PRKAR1A / CDKN1C / APC / DICER1)
+- `api_backend.py` — 3 routes `/api/hereditary-acc-atlas/overview|breakdown|definitions` verified 200
+- `portal-next/app/hereditary-acc-atlas/page.jsx` — 4-tab panel (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Bladder-Urothelial-Cancer-Atlas
+- `config/expert_dashboards.json` — count 1280 → 1281
+- committed `0c15fdd4`, pushed to `origin/main`
+
+### [2026-09-22 10:46:02 MDT] ASSISTANT
+Committed. Now push:
+
+### [2026-09-22 11:17:14 MDT] ASSISTANT
+Good, 6 files staged. Now commit:
+
+### [2026-09-22 11:52:01 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md:
+
+### [2026-09-22 14:21:50 MDT] ASSISTANT
+**Done.** Iteration complete.
+
+**Built+pushed:** `Hereditary-Endometrial-Cancer-Atlas` — registered in `expert_dashboards.json` (count 1284→1285)
+
+- **Gap found:** Script, 3 backend endpoints, portal page, and SiteNav were all already present from a prior session — but the entry was missing from `expert_dashboards.json`.
+- **Action:** Inserted entry at index 1274 (after `hereditary-sarcoma-bone-tumor-atlas`, matching SiteNav order) with 8 genes: MLH1-MSH6-PTEN-POLE-TP53-BRCA1-STK11-MSH2, seeds 3126-3133, 320 patients.
+- **Verified:** All 3 endpoints `/api/hereditary-endometrial-cancer-atlas/overview|breakdown|definitions` return 200.
+- **Committed & pushed:** `6be88276` → `origin/main` (fast-forward).
+
+⏳ **Pending:** Top buildable next is still ictal/interictal retrain (skipped per instructions). Blocked: Gmail/Slack/Drive (credentials), multi-user auth, EMR/FHIR.
+
+### [2026-09-22 14:53:01 MDT] ASSISTANT
+All verified. Now commit:
+
+### [2026-09-22 15:10:14 MDT] ASSISTANT
+Let me do one final verification — check if any of the API endpoints linked in pages are actually broken:
+
+### [2026-09-22 15:32:31 MDT] ASSISTANT
+Done. One clean iteration:
+
+**Built + pushed:** Hereditary-Esophageal-Cancer-Predisposition-Atlas
+
+- **8 genes** (seeds 3214–3221): RHBDF2 · TP53 · CDKN2A · ATM · BRCA2 · FANCA · MLH1 · PALB2
+- **320 patients** (8 × 40)
+- **3 endpoints** verified 200: `/api/hereditary-esophageal-cancer-atlas/overview|breakdown|definitions`
+- **Portal page**: `/hereditary-esophageal-cancer-atlas` (4-tab: Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav** wired after Hereditary-Mesothelioma-Predisposition-Atlas
+- `expert_dashboards.json` count: 1286 → 1287
+- Pushed `bd3e6e1b` → `origin/main` (fast-forward)
+
+Key clinical signals encoded:
+- **RHBDF2 (Tylosis/Howel-Evans)**: PPK PATHOGNOMONIC + Lugol iodine chromoendoscopy annual mandatory + AVOID tobacco/alcohol ABSOLUTELY + ESCC ~100% penetrance (82.5% severe rate, highest gene)
+- **FANCA (FA type A)**: ESCC 400× RR = HIGHEST solid tumour in Fanconi anemia; AVOID ALDEHYDE ABSOLUTELY; DEB test PATHOGNOMONIC; HSCT curative for BMF
+- **TP53**: AVOID RADIATION ABSOLUTELY; WBMRI Toronto Protocol
+- **ATM**: RADIOSENSITIVITY ABSOLUTE (biallelic); ceralasertib ATRi + olaparib trials
+
+### [2026-09-22 16:05:28 MDT] ASSISTANT
+Now commit (§51 substrate, §54 NO Co-Authored-By):
+
+### [2026-09-22 16:24:08 MDT] ASSISTANT
+1289/1289. Now commit:
