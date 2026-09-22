@@ -50090,6 +50090,27 @@ async def hereditary_neurodevelopmental_atlas_definitions():
     from scripts.hereditary_neurodevelopmental_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-chromatinopathy-epigenetic-atlas/overview")
+async def hereditary_chromatinopathy_epigenetic_atlas_overview():
+    """Hereditary-Chromatinopathy-Epigenetic-Atlas overview (KMT2D-5768aa-19p13.11-AD-LOF-Kabuki1-ARCHED-EYEBROWS-FINGERTIP-PADS-PATHOGNOMONIC-60-75pct-Kabuki, KDM6A-1401aa-Xp11.3-XL-LOF-Kabuki2-MILDER-FEMALES-MORE-SEVERE-MALES, CREBBP-2442aa-16p13.3-AD-LOF-RTS1-BROAD-THUMBS-HALLUCES-PATHOGNOMONIC-MALIGNANCY-10-15pct, EP300-2161aa-22q13.2-AD-LOF-RTS2-MILDER-RTS1-SAME-BROAD-THUMBS, ARID1B-2285aa-6q25.3-AD-LOF-CSS1-ABSENT-5th-NAIL-PATHOGNOMONIC-SWI-SNF, EHMT1-1210aa-9q34.3-AD-LOF-Kleefstra-9q34.3-DELETION-75pct-HYPOTONIA-BRACHYCEPHALY-FRIENDLY-REGRESSES, KAT6B-2073aa-10q22.2-AD-LOF-SBBYS-Genitopatellar-ABSENT-PATELLA-PATHOGNOMONIC-CC-AGENESIS-80pct, KANSL1-1119aa-17q21.31-AD-LOF-Koolen-de-Vries-FRIENDLY-BEHAVIOUR-PATHOGNOMONIC-17q21.31-DEL-75pct, 320-patients-8x40-seeds-3046-3053)."""
+    from scripts.hereditary_chromatinopathy_epigenetic_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-chromatinopathy-epigenetic-atlas/breakdown")
+async def hereditary_chromatinopathy_epigenetic_atlas_breakdown():
+    """Hereditary-Chromatinopathy-Epigenetic-Atlas per-gene breakdown (KMT2D-Kabuki1-fingertip-pads-cardiac-immune, KDM6A-Kabuki2-X-linked-sex-severity, CREBBP-RTS1-broad-thumbs-malignancy, EP300-RTS2-milder, ARID1B-CSS1-absent-5th-nail, EHMT1-Kleefstra-hypotonia-brachycephaly, KAT6B-SBBYS-absent-patella-CC-agenesis, KANSL1-KdVS-friendly-epilepsy-CHD, 320 patients)."""
+    from scripts.hereditary_chromatinopathy_epigenetic_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-chromatinopathy-epigenetic-atlas/definitions")
+async def hereditary_chromatinopathy_epigenetic_atlas_definitions():
+    """Hereditary-Chromatinopathy-Epigenetic-Atlas clinical definitions (chromatinopathy-classification-histone-modifications, Kabuki-KMT2D-KDM6A-differential-X-linked-severity, RTS-CREBBP-EP300-broad-thumb-protocol-malignancy-surveillance, CSS1-ARID1B-5th-nail-SWI-SNF-complex, Kleefstra-KdVS-friendly-behaviour-differential-microdeletion-testing)."""
+    from scripts.hereditary_chromatinopathy_epigenetic_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
