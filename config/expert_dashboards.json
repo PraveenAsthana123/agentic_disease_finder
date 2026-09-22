@@ -20875,5 +20875,51 @@
     "seeds": "3110-3117",
     "n_patients": 320,
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-sarcoma-bone-tumor-atlas",
+    "category": "hereditary-atlas",
+    "title": "Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas",
+    "name": "Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas Complete-8-Gene-TP53-RB1-DICER1-EXT1-EXT2-RECQL4-WRN-NF1-Sarcoma-Bone-Tumour-Predisposition-Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Sarcoma and Bone Tumour Predisposition Reference (TP53-RB1-DICER1-EXT1-EXT2-RECQL4-WRN-NF1; seeds 3118-3125; 320-patient aggregate)",
+    "route": "/hereditary-sarcoma-bone-tumor-atlas",
+    "api": "/api/hereditary-sarcoma-bone-tumor-atlas",
+    "endpoints": [
+      "/api/hereditary-sarcoma-bone-tumor-atlas/overview",
+      "/api/hereditary-sarcoma-bone-tumor-atlas/breakdown",
+      "/api/hereditary-sarcoma-bone-tumor-atlas/definitions"
+    ],
+    "genes": [
+      "TP53",
+      "RB1",
+      "DICER1",
+      "EXT1",
+      "EXT2",
+      "RECQL4",
+      "WRN",
+      "NF1"
+    ],
+    "seed_range": "3118-3125",
+    "total_patients": 320,
+    "tags": [
+      "hereditary-cancer",
+      "sarcoma",
+      "bone-tumour",
+      "TP53",
+      "RB1",
+      "DICER1",
+      "EXT1",
+      "EXT2",
+      "RECQL4",
+      "WRN",
+      "NF1",
+      "Li-Fraumeni",
+      "retinoblastoma",
+      "PPB",
+      "HME",
+      "osteosarcoma",
+      "MPNST"
+    ],
+    "registered": "2026-09-22"
   }
 ]

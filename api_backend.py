@@ -50251,6 +50251,27 @@ async def hereditary_neurofibromatosis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-sarcoma-bone-tumor-atlas/overview")
+async def hereditary_sarcoma_bone_tumor_atlas_overview():
+    """Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas overview (TP53-RB1-DICER1-EXT1-EXT2-RECQL4-WRN-NF1; 320-patient aggregate 8x40 seeds 3118-3125; TP53-LFS-OSTEOSARCOMA-28-30pct-AVOID-RADIATION-ABSOLUTELY-WBMRI-TORONTO; RB1-BILATERAL-RETINOBLASTOMA-PATHOGNOMONIC-SECONDARY-OSTEOSARCOMA-30-40pct-AVOID-RADIATION; DICER1-PPB-PLEUROPULMONARY-BLASTOMA-PATHOGNOMONIC-ERMS-CERVIX-SLCT-OVARY; EXT1-MULTIPLE-OSTEOCHONDROMAS-CHONDROSARCOMA-1-5pct-CARTILAGE-CAP-2CM-ALARM; EXT2-HME2-MILDER-EXT1-CHONDROSARCOMA-1pct; RECQL4-RTS2-OSTEOSARCOMA-30pct-HIGHEST-HEREDITARY-RISK-POIKILODERMA-PATHOGNOMONIC; WRN-WERNER-BILATERAL-CATARACTS-30yr-PATHOGNOMONIC-SARCOMA-ADULT; NF1-MPNST-8-13pct-MOST-COMMON-HEREDITARY-SARCOMA-FDG-PET-MANDATORY)."""
+    from scripts.hereditary_sarcoma_bone_tumor_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-sarcoma-bone-tumor-atlas/breakdown")
+async def hereditary_sarcoma_bone_tumor_atlas_breakdown():
+    """Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas per-gene breakdown (8 genes, 40 patients each; TP53-lfs_cancer-sarcoma-breast-brain_tumour-acc-radiation_sarcoma; RB1-bilateral_rb-secondary_osteosarcoma-trilateral; DICER1-ppb_type_i-thyroid_nodule-slct_ovary-erms_cervix; EXT1-multiple_exostoses-chondrosarcoma-forearm_deformity; EXT2-multiple_exostoses-chondrosarcoma-milder; RECQL4-poikiloderma-osteosarcoma-short_stature; WRN-bilateral_cataracts-sarcoma-diabetes-atherosclerosis; NF1-cafe_au_lait-plexiform-mpnst-fdg_pet_positive; mean age at diagnosis per gene)."""
+    from scripts.hereditary_sarcoma_bone_tumor_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-sarcoma-bone-tumor-atlas/definitions")
+async def hereditary_sarcoma_bone_tumor_atlas_definitions():
+    """Hereditary-Sarcoma-Bone-Tumor-Predisposition-Atlas clinical definitions (TP53-LFS-sarcoma-surveillance-WBMRI-Toronto-avoid-radiation; RB1-retinoblastoma-secondary-osteosarcoma-trilateral; DICER1-PPB-surveillance-FAPOL-SLCT-ERMS; EXT1-EXT2-HME-chondrosarcoma-transformation-cartilage-cap; RECQL4-Rothmund-Thomson-osteosarcoma-protocol; WRN-Werner-sarcoma-cataracts-management; NF1-MPNST-FDG-PET-protocol; hereditary-sarcoma-differential-guide)."""
+    from scripts.hereditary_sarcoma_bone_tumor_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
