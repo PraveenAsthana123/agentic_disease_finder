@@ -50272,6 +50272,27 @@ async def hereditary_sarcoma_bone_tumor_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-endometrial-cancer-atlas/overview")
+async def hereditary_endometrial_cancer_atlas_overview():
+    """Hereditary-Endometrial-Cancer-Atlas overview (MLH1-MSH6-PTEN-POLE-TP53-BRCA1-STK11-MSH2; 320-patient aggregate 8x40 seeds 3126-3133; MLH1-Lynch-Type1-Endometrial-40-50pct-MSI-H-Pembrolizumab-Aspirin-CAPP2; MSH6-Lynch-Type3-HIGHEST-Endometrial-40-71pct-MSI-L-30pct-FALSE-NEGATIVE-PITFALL; PTEN-Cowden-PHTS-Endometrial-28-44pct-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC-mTOR-Everolimus; POLE-Ultra-Hypermutated-TMB-gt100-MSS-EXCEPTIONAL-Pembrolizumab-Complete-Remissions; TP53-LFS-Serous-Endometrial-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; BRCA1-HBOC-Serous-Like-Endometrial-2-3x-RR-BSO-Age40-Olaparib; STK11-Peutz-Jeghers-SCTAT-PATHOGNOMONIC-Endometrial-9-12x-RR-OCP-Reduces-Risk; MSH2-Lynch-Type2-Endometrial-40-60pct-MUIR-TORRE-PATHOGNOMONIC-EPCAM-3prime-deletion)."""
+    from scripts.hereditary_endometrial_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-endometrial-cancer-atlas/breakdown")
+async def hereditary_endometrial_cancer_atlas_breakdown():
+    """Hereditary-Endometrial-Cancer-Atlas per-gene breakdown (8 genes, 40 patients each; MLH1-msi_h-endometrial-crc-aspirin_capp2; MSH6-msi_l_pitfall-endometrial_dominant-msh6_iHC; PTEN-cowden-macrocephaly-endometrial-mtor; POLE-tmb_gt100-mss-pembrolizumab_exceptional; TP53-serous_endometrial-lfs-avoid_radiation; BRCA1-hboc-serous_like-bso_age40; STK11-pjs-sctat-perioral_pigmentation; MSH2-lynch_t2-muir_torre-epcam_deletion; mean age at diagnosis per gene)."""
+    from scripts.hereditary_endometrial_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-endometrial-cancer-atlas/definitions")
+async def hereditary_endometrial_cancer_atlas_definitions():
+    """Hereditary-Endometrial-Cancer-Atlas clinical definitions (MSH6-MSI-L-pitfall-IHC-primary-test-protocol; POLE-pembrolizumab-TMB-gt100-MSS-exceptional-response; PTEN-Cowden-macrocephaly-Lhermitte-Duclos-endometrial-protocol; Universal-MMR-IHC-all-endometrial-biopsies; STK11-Peutz-Jeghers-SCTAT-OCP; BRCA1-TH-BSO-serous-uterine; MLH1-methylation-vs-Lynch-protocol; hereditary-endometrial-differential-guide)."""
+    from scripts.hereditary_endometrial_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

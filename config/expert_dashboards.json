@@ -20922,5 +20922,33 @@
     ],
     "registered": "2026-09-22",
     "status": "built"
+  },
+  {
+    "id": 1275,
+    "name": "Hereditary-Endometrial-Cancer-Atlas",
+    "slug": "hereditary-endometrial-cancer-atlas",
+    "title": "Hereditary Endometrial Cancer Atlas \u2014 Complete 8-Gene Reference (MLH1-MSH6-PTEN-POLE-TP53-BRCA1-STK11-MSH2)",
+    "description": "320-patient aggregate hereditary endometrial cancer predisposition atlas (8 genes \u00d7 40 patients, seeds 3126-3133). MLH1 Lynch Type1 endometrial 40-50% MSI-H aspirin CAPP2; MSH6 Lynch Type3 HIGHEST endometrial 40-71% MSI-L 30% false-negative pitfall IHC primary; PTEN Cowden/PHTS endometrial 28-44% macrocephaly PATHOGNOMONIC Lhermitte-Duclos PATHOGNOMONIC mTOR Everolimus; POLE ultra-hypermutated TMB>100 MSS exceptional pembrolizumab complete remissions; TP53 LFS serous endometrial AVOID RADIATION ABSOLUTELY WBMRI Toronto; BRCA1 HBOC serous-like 2-3x RR BSO age40 olaparib; STK11 Peutz-Jeghers SCTAT PATHOGNOMONIC 9-12x RR OCP reduces risk; MSH2 Lynch Type2 endometrial 40-60% Muir-Torre PATHOGNOMONIC EPCAM 3prime deletion. TCGA classification: POLE-best > MMRd > NSMP > p53-abnormal-worst. Universal MMR IHC all endometrial biopsies.",
+    "category": "hereditary-cancer-atlas",
+    "genes": [
+      "MLH1",
+      "MSH6",
+      "PTEN",
+      "POLE",
+      "TP53",
+      "BRCA1",
+      "STK11",
+      "MSH2"
+    ],
+    "seed_range": "3126-3133",
+    "total_patients": 320,
+    "endpoints": [
+      "/api/hereditary-endometrial-cancer-atlas/overview",
+      "/api/hereditary-endometrial-cancer-atlas/breakdown",
+      "/api/hereditary-endometrial-cancer-atlas/definitions"
+    ],
+    "page": "/hereditary-endometrial-cancer-atlas",
+    "registered": "2026-09-22",
+    "status": "built"
   }
 ]
