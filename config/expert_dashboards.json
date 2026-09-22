@@ -21129,5 +21129,21 @@
       "CDKN2A",
       "PALB2"
     ]
+  },
+  {
+    "id": "hereditary-hcc-liver-cancer-atlas",
+    "name": "Hereditary HCC & Primary Liver Cancer Predisposition Atlas",
+    "status": "built",
+    "route": "/hereditary-hcc-liver-cancer-atlas",
+    "api_prefix": "/api/hereditary-hcc-liver-cancer-atlas",
+    "endpoints": [
+      "/api/hereditary-hcc-liver-cancer-atlas/overview",
+      "/api/hereditary-hcc-liver-cancer-atlas/breakdown",
+      "/api/hereditary-hcc-liver-cancer-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_hcc_liver_cancer_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-hcc-liver-cancer-atlas/page.jsx",
+    "note": "Total: 1283 dashboards",
+    "built_note": "FAH-ABCB11-HFE-ATP7B-SERPINA1-APC-TSC2-SMAD4; 8x40 patients seeds 3190-3197; 3 endpoints verified 200. Built 2026-09-22."
   }
 ]

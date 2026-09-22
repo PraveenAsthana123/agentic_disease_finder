@@ -50440,6 +50440,27 @@ async def hereditary_biliary_tract_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hcc-liver-cancer-atlas/overview")
+async def hereditary_hcc_liver_cancer_atlas_overview():
+    """Hereditary-HCC-Liver-Cancer-Predisposition-Atlas overview (FAH-ABCB11-HFE-ATP7B-SERPINA1-APC-TSC2-SMAD4; 320-patient aggregate 8x40 seeds 3190-3197; FAH-HCC-37pct-AGE2-EXTREME; ABCB11-HCC-CCA-CHILDREN-HIGHEST; HFE-C282Y-HCC-20-200x-HIGHEST-IRON-OVERLOAD; ATP7B-WD-Kayser-Fleischer-PATHOGNOMONIC; SERPINA1-PASD-Globules-PATHOGNOMONIC; APC-Hepatoblastoma-750-7500x-HIGHEST; TSC2-Hepatic-AML-75pct-Everolimus-FDA; SMAD4-JPS-HHT-Hepatic-AVMs-Bevacizumab)."""
+    from scripts.hereditary_hcc_liver_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hcc-liver-cancer-atlas/breakdown")
+async def hereditary_hcc_liver_cancer_atlas_breakdown():
+    """Hereditary-HCC-Liver-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; FAH-liver_ca_pct-extreme; ABCB11-liver_ca_pct-children; HFE-liver_ca_pct-iron-overload; ATP7B-liver_ca_pct-WD; SERPINA1-liver_ca_pct-AATD; APC-liver_ca_pct-hepatoblastoma; TSC2-liver_ca_pct-AML; SMAD4-liver_ca_pct-JPS; mean_age_onset per gene)."""
+    from scripts.hereditary_hcc_liver_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hcc-liver-cancer-atlas/definitions")
+async def hereditary_hcc_liver_cancer_atlas_definitions():
+    """Hereditary-HCC-Liver-Cancer-Predisposition-Atlas clinical definitions (FAH-HT1-NTBC-succinylacetone; ABCB11-PFIC2-BSEP-null-IHC; HFE-HH1-C282Y-phlebotomy; ATP7B-WD-KF-D-pen; SERPINA1-AATD-Pi*ZZ-PASD; APC-FAP-hepatoblastoma-CHRPE; TSC2-TSC-AML-everolimus; SMAD4-JPS-HHT-hepatic-AVM-bevacizumab; CASCADE-Hereditary-HCC-Liver)."""
+    from scripts.hereditary_hcc_liver_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
