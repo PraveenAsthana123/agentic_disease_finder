@@ -1,7 +1,7 @@
 {
   "title": "Epilepsy DL Review (50 papers) \u2192 Project Gap Analysis",
   "source": "Epilepsy/paper/epilepsy-dl-review.pdf (50 references)",
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-09-22",
   "review_covers": [
     "CNN",
     "RNN/LSTM",
@@ -134,8 +134,8 @@
       "in_project": "built",
       "why": "Hybrid Pipeline Dashboard \u2014 CNN-LSTM vs CNN-Transformer architecture comparison, layer analysis, attention weights, LSTM gates, training curves (3 endpoints verified 200)",
       "priority": "high",
-      "status": "partial",
-      "built_note": "hybrid-cnn dashboard built 2026-08-12: /api/hybrid-cnn/overview|breakdown|definitions + portal-next/app/hybrid-cnn/page.jsx",
+      "status": "built",
+      "built_note": "hybrid-cnn dashboard built 2026-08-12: /api/hybrid-cnn/overview|breakdown|definitions + portal-next/app/hybrid-cnn/page.jsx hybrid-pipeline frontend built 2026-09-22: /api/hybrid-pipeline/overview|breakdown|definitions + portal-next/app/hybrid-pipeline/page.jsx",
       "note": "RNN/LSTM built (/rnn-lstm, /deep-learning, /hybrid-cnn). EEGNet, Transformer built (/eeg-transformer, /api/eeg-transformer/*)."
     },
     {

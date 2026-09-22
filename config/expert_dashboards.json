@@ -21242,7 +21242,16 @@
     "status": "built",
     "category": "hereditary-cancer-atlas",
     "subcategory": "upper-gastrointestinal",
-    "genes": ["RHBDF2", "TP53", "CDKN2A", "ATM", "BRCA2", "FANCA", "MLH1", "PALB2"],
+    "genes": [
+      "RHBDF2",
+      "TP53",
+      "CDKN2A",
+      "ATM",
+      "BRCA2",
+      "FANCA",
+      "MLH1",
+      "PALB2"
+    ],
     "seeds": "3214-3221",
     "patients": 320,
     "api": "/api/hereditary-esophageal-cancer-atlas",
@@ -21252,11 +21261,36 @@
     "id": "hereditary-cervical-cancer-atlas",
     "title": "Hereditary Cervical Cancer Predisposition Atlas",
     "category": "hereditary-cancer-atlas",
-    "genes": ["STK11", "BRCA1", "TP53", "MSH2", "FANCA", "PTEN", "ATM", "BRCA2"],
+    "genes": [
+      "STK11",
+      "BRCA1",
+      "TP53",
+      "MSH2",
+      "FANCA",
+      "PTEN",
+      "ATM",
+      "BRCA2"
+    ],
     "status": "built",
     "seed_range": "3222-3229",
     "patients": 320,
     "api": "/api/hereditary-cervical-cancer-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hybrid-pipeline",
+    "name": "Hybrid CNN Pipeline \u2014 CNN-LSTM vs CNN-Transformer",
+    "status": "built",
+    "category": "AI Architecture",
+    "route": "/hybrid-pipeline",
+    "api_prefix": "/api/hybrid-pipeline",
+    "endpoints": [
+      "/api/hybrid-pipeline/overview",
+      "/api/hybrid-pipeline/breakdown",
+      "/api/hybrid-pipeline/definitions"
+    ],
+    "frontend_page": "portal-next/app/hybrid-pipeline/page.jsx",
+    "description": "CNN-LSTM vs CNN-Transformer real-time architecture selection dashboard \u2014 133 patient analyses, 50 patients, 5 diseases, LSTM gate analysis, Transformer attention weights, feature importance, clinical references",
+    "notes": "3 endpoints verified 200 \u2014 overview/breakdown/definitions. 5-tab frontend: Overview, Patient Breakdown, Architecture Internals, Feature Selection, Definitions."
   }
 ]

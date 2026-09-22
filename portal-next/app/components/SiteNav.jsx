@@ -249,6 +249,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/deep-learning">&#x1f9e0; Deep Learning</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/transfer-learning">&#x1f504; Transfer Learning</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/hybrid-cnn">&#x1f9ec; Hybrid CNN-LSTM</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/hybrid-pipeline">&#x1f500; Hybrid CNN Pipeline</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/rnn-lstm">&#x1f501; RNN / LSTM</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eegnet">&#x1f9e0; EEGNet Compact CNN</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/eeg-transformer">&#x26a1; EEG Transformer</Link></li>
