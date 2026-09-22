@@ -47196,30 +47196,23 @@ async def hereditary_coagulation_disorder_atlas_definitions():
 
 @app.get("/api/hereditary-rasopathy-atlas/overview")
 async def hereditary_rasopathy_atlas_overview():
-    try:
-        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
-        return atlas_.overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-RASopathy-Atlas overview (PTPN11-SOS1-RAF1-BRAF-MAP2K1-HRAS-KRAS-LZTR1; 320-patient aggregate 8x40 seeds 3070-3077; WEBBED-NECK-PS-SHORT-STATURE-PTPN11-PATHOGNOMONIC; SOS1-NORMAL-IQ-KEY-DIFFERENTIATOR; RAF1-HCM-75pct-UNIQUE-RASOPATHY; BRAF-MAP2K1-CFC-ECTODERMAL-TRIAD; HRAS-COSTELLO-LOOSE-SKIN-PAPILLOMATA-CANCER-15pct; KRAS-MOST-SEVERE-NOONAN-AML-RISK; LZTR1-BIDIRECTIONAL-AD-OR-AR-UNIQUE)."""
+    from scripts.hereditary_rasopathy_atlas_dashboard import generate_overview
+    return generate_overview()
 
 
 @app.get("/api/hereditary-rasopathy-atlas/breakdown")
 async def hereditary_rasopathy_atlas_breakdown():
-    try:
-        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
-        return atlas_.breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-RASopathy-Atlas per-gene breakdown (8 genes, 40 patients each; cardiac_hcm_pct, ps_pct, short_stature_pct, webbed_neck_pct, ectodermal_pct, epilepsy_pct, speech_absent_pct, cancer_risk_pct, autism_pct per gene)."""
+    from scripts.hereditary_rasopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
 
 
 @app.get("/api/hereditary-rasopathy-atlas/definitions")
 async def hereditary_rasopathy_atlas_definitions():
-    """Hereditary-RASopathy-Atlas gene definitions and glossary."""
-    try:
-        import scripts.hereditary_rasopathy_atlas_dashboard as atlas_
-        return atlas_.definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    """Hereditary-RASopathy-Atlas clinical definitions (RASopathy-classification-RAS-MAPK-pathway; Noonan-PTPN11-SOS1-RAF1-KRAS-LZTR1-cardiac-GH-protocol; CFC-BRAF-MAP2K1-Costello-HRAS-ectodermal-cancer-surveillance; LZTR1-bidirectional-AD-vs-AR-schwannomatosis-DDx)."""
+    from scripts.hereditary_rasopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
 
 
 @app.get("/api/hereditary-pah-atlas/overview")

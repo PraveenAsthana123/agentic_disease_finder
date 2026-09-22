@@ -20725,5 +20725,32 @@
       "/api/hereditary-tsc-mtor-pathway-atlas/definitions"
     ],
     "built_note": "Hereditary-TSC-mTOR-Pathway-Atlas -- /api/hereditary-tsc-mtor-pathway-atlas/overview|breakdown|definitions verified 200, 320-patient cohort seeds-3062-3069, TSC1-TSC2-DEPDC5-NPRL2-NPRL3-MTOR-PIK3R2-AKT3, portal-next/app/hereditary-tsc-mtor-pathway-atlas/page.jsx + SiteNav wired after Hereditary-Rett-Spectrum-Atlas. expert_dashboards.json count 1266->1267. Built 2026-09-22."
+  },
+  {
+    "id": "hereditary-rasopathy-atlas",
+    "name": "Hereditary-RASopathy-Atlas",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-rasopathy-atlas/overview",
+    "page": "/hereditary-rasopathy-atlas",
+    "genes": [
+      "PTPN11",
+      "SOS1",
+      "RAF1",
+      "BRAF",
+      "MAP2K1",
+      "HRAS",
+      "KRAS",
+      "LZTR1"
+    ],
+    "seed_range": "3070-3077",
+    "patients": 320,
+    "built_date": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-rasopathy-atlas/overview",
+      "/api/hereditary-rasopathy-atlas/breakdown",
+      "/api/hereditary-rasopathy-atlas/definitions"
+    ],
+    "built_note": "Hereditary-RASopathy-Atlas -- /api/hereditary-rasopathy-atlas/overview|breakdown|definitions verified 200, 320-patient cohort seeds-3070-3077, PTPN11-SOS1-RAF1-BRAF-MAP2K1-HRAS-KRAS-LZTR1, portal-next/app/hereditary-rasopathy-atlas/page.jsx + SiteNav wired after Hereditary-TSC-mTOR-Pathway-Atlas. PTPN11-580aa-12q24.13-SHP2-Noonan1-50-70pct-WEBBED-NECK-PS-SHORT-STATURE-PATHOGNOMONIC. SOS1-1333aa-2p22.1-NORMAL-IQ-KEY-DIFFERENTIATOR. RAF1-648aa-3p25.2-HCM-75pct-UNIQUE-RASOPATHY. BRAF-766aa-7q34-CFC1-ECTODERMAL-TRIAD-PATHOGNOMONIC. MAP2K1-393aa-15q22.31-CFC3-DIRECT-MEK-TARGET. HRAS-189aa-11p15.5-COSTELLO-LOOSE-SKIN-PAPILLOMATA-CANCER-15pct. KRAS-189aa-12p12.1-MOST-SEVERE-NOONAN-AML-RISK. LZTR1-827aa-22q11.21-UNIQUE-BIDIRECTIONAL-AD-OR-AR-NOONAN-10. expert_dashboards.json count 1267->1268. Built 2026-09-22."
   }
 ]

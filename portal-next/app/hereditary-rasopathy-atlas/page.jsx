@@ -2,418 +2,302 @@
 import { useState, useEffect } from 'react';
 
 const API = process.env.NEXT_PUBLIC_API || 'http://localhost:8010';
-
+const SLUG = 'hereditary-rasopathy-atlas';
 const TABS = ['Overview', 'Gene Table', 'Clinical Atlas', 'Definitions'];
 
 const GENE_COLORS = {
-  PTPN11: '#1565c0',  // deep blue     — SHP-2 / Noonan NS#1 / JMML risk
-  SOS1:   '#0d6e3d',  // deep green    — RAS-GEF / NS type 4 / best cognition
-  RAF1:   '#b71c1c',  // deep red      — RAF kinase / NS+HCM highest risk
-  RIT1:   '#880e4f',  // deep magenta  — small GTPase / NS type 8 / chylothorax
-  BRAF:   '#4a148c',  // deep purple   — B-Raf / CFC #1 / severe ID
-  MAP2K1: '#e65100',  // deep orange   — MEK1 / CFC type 3 / ichthyosis
-  HRAS:   '#1b5e20',  // forest green  — Harvey RAS / Costello / tumour risk
-  SHOC2:  '#f57f17',  // amber         — scaffold / NSLH / loose anagen hair
+  'PTPN11': '#1565c0',  // deep blue      — SHP2; Noonan 1; ~50-70% all Noonan; PTPN11 first
+  'SOS1':   '#2e7d32',  // deep green     — RAS-GEF; Noonan 4; NORMAL IQ unique
+  'RAF1':   '#b71c1c',  // deep red       — cRAF; Noonan 5; HCM 75% UNIQUE RASopathy
+  'BRAF':   '#e65100',  // deep orange    — B-Raf; CFC type 1; ectodermal triad; severe ID
+  'MAP2K1': '#6a1b9a',  // deep purple    — MEK1; CFC type 3; direct MEK inhibitor target
+  'HRAS':   '#006064',  // dark cyan      — H-RAS; Costello; loose skin + papillomata; cancer 15%
+  'KRAS':   '#4a148c',  // deep violet    — K-RAS; Noonan 3; most severe; AML risk
+  'LZTR1':  '#bf360c',  // deep brown     — CUL3 adaptor; Noonan 10; bidirectional AD/AR unique
 };
 
 const GENE_INFO = {
-  PTPN11: { aa: 593,  locus: '12q24.13', inh: 'AD', disease: 'Noonan-NS1 — SHP2-GOF — JMML-Risk-200x — Pulmonary-Stenosis-60-70pct — Coagulopathy-Pre-Op' },
-  SOS1:   { aa: 1333, locus: '2p22.1',   inh: 'AD', disease: 'Noonan-NS4 — RAS-GEF-GOF — Best-Cognition-NS — Sparse-Eyebrows-KP-Ectodermal — Low-JMML-Risk' },
-  RAF1:   { aa: 648,  locus: '3p25.2',   inh: 'AD', disease: 'Noonan+HCM — HIGHEST-HCM-Risk-90pct — pS257L-Hotspot — Biventricular-Neonatal — GH-Caution-HCM' },
-  RIT1:   { aa: 219,  locus: '1q22',     inh: 'AD', disease: 'Noonan-NS8 — Second-Highest-HCM-72pct — Chylothorax-Lymphatic — MCT-Diet-Octreotide — High-NT-Prenatal' },
-  BRAF:   { aa: 766,  locus: '7q34',     inh: 'AD', disease: 'CFC-type1 — Most-Common-CFC-75pct — Severe-ID-DISTINCTIVE — V600E-Cancer-NOT-CFC — Absent-Eyebrows-Ichthyosis' },
-  MAP2K1: { aa: 393,  locus: '15q22.31', inh: 'AD', disease: 'CFC-type3 — MEK1-GOF — Ichthyosis-PATHOGNOMONIC — Trametinib-Direct-Target — Test-MAP2K2-Also' },
-  HRAS:   { aa: 189,  locus: '11p15.5',  inh: 'AD', disease: 'Costello — Tumour-15-17pct-Age20 — Papillomata-PATHOGNOMONIC — Rhabdomyosarcoma-Bladder-Ca — GH-Controversial' },
-  SHOC2:  { aa: 580,  locus: '10q25.2',  inh: 'AD', disease: 'NSLH-Mazzanti — Painless-Hair-Extraction-PATHOGNOMONIC — pS2G-80pct-Hotspot — Anagen-Effluvium — Trichogram' },
+  'PTPN11': { full: 'Noonan Syndrome type 1',          locus: '12q24.13', size: '580 aa / 68 kDa', inh: 'AD GOF' },
+  'SOS1':   { full: 'Noonan Syndrome type 4',          locus: '2p22.1',   size: '1333 aa / 152 kDa', inh: 'AD GOF' },
+  'RAF1':   { full: 'Noonan Syndrome type 5',          locus: '3p25.2',   size: '648 aa / 73 kDa', inh: 'AD GOF' },
+  'BRAF':   { full: 'CFC Syndrome type 1',             locus: '7q34',     size: '766 aa / 84 kDa', inh: 'AD GOF' },
+  'MAP2K1': { full: 'CFC Syndrome type 3',             locus: '15q22.31', size: '393 aa / 44 kDa', inh: 'AD GOF' },
+  'HRAS':   { full: 'Costello Syndrome',               locus: '11p15.5',  size: '189 aa / 21 kDa', inh: 'AD GOF' },
+  'KRAS':   { full: 'Noonan Syndrome type 3 / CFC',    locus: '12p12.1',  size: '189 aa / 21 kDa', inh: 'AD GOF' },
+  'LZTR1':  { full: 'Noonan Syndrome type 10',         locus: '22q11.21', size: '827 aa / 92 kDa', inh: 'AD or AR (unique)' },
 };
 
-function Loading() {
-  return <div style={{ padding: '2rem', color: '#94a3b8' }}>Loading…</div>;
-}
-function ErrorBox({ msg }) {
+function Badge({ text, color }) {
   return (
-    <div style={{ padding: '1rem', background: '#450a0a', borderRadius: 8, color: '#fca5a5', margin: '1rem 0' }}>
-      Error: {msg}
-    </div>
-  );
-}
-function KPI({ label, value, color }) {
-  return (
-    <div style={{
-      background: '#1e293b', borderRadius: 10, padding: '1rem 1.2rem',
-      borderLeft: `4px solid ${color || '#6366f1'}`, minWidth: 160,
-    }}>
-      <div style={{ fontSize: 22, fontWeight: 700, color: color || '#a5b4fc' }}>{value}</div>
-      <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>{label}</div>
-    </div>
-  );
-}
-function Alert({ text }) {
-  const lv = /ABSOLUTELY.CI|PATHOGNOMONIC|MANDATORY|ABSOLUTELY|FATAL|NEVER|LETHAL|HIGHEST/i.test(text) ? 'critical'
-           : /\bCI\b|RISK|MONITOR|WARNING|AVOID|CAUTION/i.test(text) ? 'warning' : 'info';
-  const colors = { critical: '#fca5a5', warning: '#fcd34d', info: '#93c5fd' };
-  const bg     = { critical: '#450a0a', warning: '#451a03', info: '#0c1a3a' };
-  return (
-    <div style={{
-      background: bg[lv], border: `1px solid ${colors[lv]}33`,
-      borderLeft: `3px solid ${colors[lv]}`, borderRadius: 6,
-      padding: '0.4rem 0.7rem', fontSize: 12, color: colors[lv], marginBottom: 4,
-    }}>{text}</div>
+    <span style={{
+      background: color + '22', color,
+      border: `1px solid ${color}55`,
+      borderRadius: 4, padding: '2px 7px',
+      fontSize: 11, fontWeight: 600, marginRight: 4,
+    }}>{text}</span>
   );
 }
 
-/* ── OVERVIEW TAB ─────────────────────────────────────────────────────────── */
-function OverviewTab({ data }) {
-  if (!data) return <Loading />;
-  const geneCounts = data.gene_patient_counts || {};
-  return (
-    <div>
-      <h2 style={{ color: '#f1f5f9', marginBottom: 4 }}>{data.atlas}</h2>
-      <p style={{ color: '#94a3b8', fontSize: 13, marginBottom: '1.5rem', lineHeight: 1.5 }}>
-        {data.subtitle}
-      </p>
-
-      {/* KPIs */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '1.5rem' }}>
-        <KPI label="Total Patients"             value={data.total_patients}            color="#6366f1" />
-        <KPI label="Genes Covered"              value={(data.genes || []).length || 8} color="#10b981" />
-        <KPI label="Seeds"                      value={data.seeds}                     color="#f59e0b" />
-        <KPI label="HCM Patients"               value={data.hcm_patients}              color="#ef4444" />
-        <KPI label="Pulmonary Stenosis Pts"     value={data.pulmonary_stenosis_patients} color="#3b82f6" />
-        <KPI label="JMML Patients (PTPN11)"     value={data.jmml_patients}             color="#dc2626" />
-        <KPI label="Malignant Tumour Pts (HRAS)"value={data.tumour_patients}           color="#f97316" />
-        <KPI label="Papillomata Pts (Costello)" value={data.papillomata_patients}      color="#8b5cf6" />
-        <KPI label="Loose Anagen Hair (SHOC2)"  value={data.loose_anagen_hair_patients} color="#f59e0b" />
-        <KPI label="Ichthyosis (CFC)"           value={data.ichthyosis_patients}       color="#0d9488" />
-        <KPI label="GH Therapy Patients"        value={data.gh_therapy_patients}       color="#6366f1" />
-        <KPI label="Chylothorax Pts (RIT1+)"    value={data.chylothorax_patients}      color="#0ea5e9" />
-      </div>
-
-      {/* Inheritance breakdown bar */}
-      <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem', marginBottom: '1.5rem' }}>
-        <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8 }}>Inheritance Pattern (8 genes — all AD)</div>
-        <div style={{ display: 'flex', height: 20, borderRadius: 6, overflow: 'hidden', gap: 2 }}>
-          {[
-            { label: 'AD Noonan spectrum (PTPN11, SOS1, RAF1, RIT1, SHOC2)', val: 5, color: '#3b82f6' },
-            { label: 'AD CFC syndrome (BRAF, MAP2K1)', val: 2, color: '#8b5cf6' },
-            { label: 'AD Costello syndrome (HRAS)', val: 1, color: '#ef4444' },
-          ].map(b => (
-            <div key={b.label} title={b.label} style={{ flex: b.val, background: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#fff', fontWeight: 700, overflow: 'hidden' }}>
-              {b.val}
-            </div>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: 16, marginTop: 6, fontSize: 11, color: '#64748b', flexWrap: 'wrap' }}>
-          <span style={{ color: '#3b82f6' }}>■ NS spectrum (5: PTPN11, SOS1, RAF1, RIT1, SHOC2)</span>
-          <span style={{ color: '#8b5cf6' }}>■ CFC syndrome (2: BRAF, MAP2K1)</span>
-          <span style={{ color: '#ef4444' }}>■ Costello syndrome (1: HRAS)</span>
-        </div>
-      </div>
-
-      {/* Pathway */}
-      {data.pathway && (
-        <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem', marginBottom: '1.5rem' }}>
-          <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8 }}>RAS-MAPK Molecular Pathway</div>
-          <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.7 }}>{data.pathway}</div>
-        </div>
-      )}
-
-      {/* Key clinical insight */}
-      {data.key_clinical_insight && (
-        <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem', marginBottom: '1.5rem' }}>
-          <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8 }}>Key Clinical Insights per Gene</div>
-          {data.key_clinical_insight.split('. ').filter(Boolean).map((s, i) => (
-            <Alert key={i} text={s.trim()} />
-          ))}
-        </div>
-      )}
-
-      {/* Gene summary table */}
-      <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem' }}>
-        <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8 }}>Gene Summary (320 patients, 8 × 40)</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-          <thead>
-            <tr style={{ color: '#64748b', borderBottom: '1px solid #334155' }}>
-              {['Gene', 'Locus', 'aa', 'Inheritance', 'Disease Class', 'Patients'].map(h => (
-                <th key={h} style={{ padding: '6px 8px', textAlign: 'left' }}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(geneCounts).map(([gene, cnt]) => {
-              const info = GENE_INFO[gene] || {};
-              return (
-                <tr key={gene} style={{ borderBottom: '1px solid #1e293b55' }}>
-                  <td style={{ padding: '5px 8px', color: GENE_COLORS[gene] || '#f1f5f9', fontWeight: 700 }}>{gene}</td>
-                  <td style={{ padding: '5px 8px', color: '#cbd5e1', fontFamily: 'monospace' }}>{info.locus || '—'}</td>
-                  <td style={{ padding: '5px 8px', color: '#94a3b8' }}>{info.aa || '—'}</td>
-                  <td style={{ padding: '5px 8px', color: '#94a3b8' }}>{info.inh || '—'}</td>
-                  <td style={{ padding: '5px 8px', color: '#64748b', fontSize: 11, maxWidth: 320, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{info.disease || '—'}</td>
-                  <td style={{ padding: '5px 8px', color: '#f1f5f9', fontWeight: 600 }}>{cnt}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-/* ── GENE TABLE TAB ───────────────────────────────────────────────────────── */
-function GeneTableTab({ data }) {
-  if (!data) return <Loading />;
-  const genes = Object.values(data);
-  return (
-    <div>
-      <h3 style={{ color: '#f1f5f9', marginBottom: '1rem' }}>RASopathy Gene Detail Table</h3>
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
-          <thead>
-            <tr style={{ background: '#0f172a', color: '#64748b' }}>
-              {['Gene', 'Locus', 'aa', 'Inh.', 'n', 'HCM%', 'PS%', 'JMML%', 'Tumour%', 'CogImp%', 'SevID%', 'ShortSt%', 'GH%', 'KP%', 'Papill%', 'LooseHair%', 'Ichthy%', 'Chyloth%', 'MEKinh%'].map(h => (
-                <th key={h} style={{ padding: '6px 6px', textAlign: 'left', whiteSpace: 'nowrap', borderBottom: '2px solid #334155' }}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {genes.map(g => (
-              <tr key={g.gene} style={{ borderBottom: '1px solid #1e293b' }}>
-                <td style={{ padding: '5px 6px', color: GENE_COLORS[g.gene] || '#f1f5f9', fontWeight: 700, whiteSpace: 'nowrap' }}>{g.gene}</td>
-                <td style={{ padding: '5px 6px', color: '#94a3b8', fontFamily: 'monospace' }}>{g.locus}</td>
-                <td style={{ padding: '5px 6px', color: '#94a3b8' }}>{g.protein_size}</td>
-                <td style={{ padding: '5px 6px', color: '#94a3b8' }}>{g.inheritance.split(' ')[0]}</td>
-                <td style={{ padding: '5px 6px', color: '#f1f5f9', fontWeight: 600 }}>{g.n_patients}</td>
-                <td style={{ padding: '5px 6px', color: g.hcm_pct > 60 ? '#ef4444' : '#cbd5e1' }}>{g.hcm_pct}%</td>
-                <td style={{ padding: '5px 6px', color: '#cbd5e1' }}>{g.pulmonary_stenosis_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.jmml_pct > 0 ? '#ef4444' : '#475569' }}>{g.jmml_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.tumour_pct > 0 ? '#f97316' : '#475569' }}>{g.tumour_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.cognitive_impairment_pct > 60 ? '#fcd34d' : '#cbd5e1' }}>{g.cognitive_impairment_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.severe_id_pct > 50 ? '#ef4444' : '#cbd5e1' }}>{g.severe_id_pct}%</td>
-                <td style={{ padding: '5px 6px', color: '#cbd5e1' }}>{g.short_stature_pct}%</td>
-                <td style={{ padding: '5px 6px', color: '#94a3b8' }}>{g.gh_therapy_pct}%</td>
-                <td style={{ padding: '5px 6px', color: '#94a3b8' }}>{g.keratosis_pilaris_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.papillomata_pct > 0 ? '#8b5cf6' : '#475569' }}>{g.papillomata_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.loose_anagen_hair_pct > 50 ? '#f59e0b' : '#475569' }}>{g.loose_anagen_hair_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.ichthyosis_pct > 50 ? '#0d9488' : '#475569' }}>{g.ichthyosis_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.chylothorax_pct > 20 ? '#0ea5e9' : '#475569' }}>{g.chylothorax_pct}%</td>
-                <td style={{ padding: '5px 6px', color: g.mek_inhibitor_pct > 0 ? '#10b981' : '#475569' }}>{g.mek_inhibitor_pct}%</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div style={{ marginTop: '1rem', fontSize: 11, color: '#475569' }}>
-        KP = keratosis pilaris · Papill = papillomata · LooseHair = loose anagen hair · Ichthy = ichthyosis · Chyloth = chylothorax · MEKinh = on MEK inhibitor (trametinib)
-      </div>
-    </div>
-  );
-}
-
-/* ── CLINICAL ATLAS TAB ───────────────────────────────────────────────────── */
-function ClinicalAtlasTab({ data }) {
-  const [sel, setSel] = useState(null);
-  if (!data) return <Loading />;
-  const genes = Object.values(data);
-  const cur = sel ? data[sel] : null;
-  return (
-    <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-      {/* Left: gene selector */}
-      <div style={{ minWidth: 180 }}>
-        <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8 }}>Select Gene</div>
-        {genes.map(g => (
-          <div key={g.gene}
-            onClick={() => setSel(g.gene)}
-            style={{
-              padding: '8px 12px', marginBottom: 4, borderRadius: 8, cursor: 'pointer',
-              background: sel === g.gene ? '#1e3a5f' : '#1e293b',
-              borderLeft: `3px solid ${GENE_COLORS[g.gene] || '#6366f1'}`,
-              color: sel === g.gene ? '#f1f5f9' : '#94a3b8', fontSize: 13, fontWeight: 600,
-            }}>
-            {g.gene}
-            <div style={{ fontSize: 10, color: '#475569', fontWeight: 400 }}>{g.locus}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Right: gene details */}
-      <div style={{ flex: 1, minWidth: 0 }}>
-        {!cur ? (
-          <div style={{ color: '#475569', padding: '2rem' }}>Select a gene to view clinical details</div>
-        ) : (
-          <div>
-            <h3 style={{ color: GENE_COLORS[cur.gene] || '#f1f5f9', marginBottom: 4 }}>{cur.gene}</h3>
-            <div style={{ fontSize: 12, color: '#64748b', marginBottom: '1rem' }}>{cur.alt_name}</div>
-
-            {/* Critical flags */}
-            <div style={{ background: '#1e293b', borderRadius: 8, padding: '0.8rem', marginBottom: '1rem' }}>
-              <div style={{ fontSize: 12, color: '#94a3b8', marginBottom: 6 }}>Critical Flags</div>
-              {(cur.critical_flags || []).map((f, i) => <Alert key={i} text={f} />)}
-            </div>
-
-            {/* Stats bar */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: '1rem' }}>
-              {[
-                ['HCM', cur.hcm_pct, '#ef4444'],
-                ['PS', cur.pulmonary_stenosis_pct, '#3b82f6'],
-                ['Cognit.Imp', cur.cognitive_impairment_pct, '#fcd34d'],
-                ['Severe ID', cur.severe_id_pct, '#f97316'],
-                ['JMML', cur.jmml_pct, '#dc2626'],
-                ['Tumour', cur.tumour_pct, '#f97316'],
-                ['ShortSt.', cur.short_stature_pct, '#10b981'],
-                ['GH Rx', cur.gh_therapy_pct, '#6366f1'],
-                ['KP', cur.keratosis_pilaris_pct, '#0d9488'],
-                ['Papillomata', cur.papillomata_pct, '#8b5cf6'],
-                ['LooseHair', cur.loose_anagen_hair_pct, '#f59e0b'],
-                ['Ichthyosis', cur.ichthyosis_pct, '#0ea5e9'],
-                ['Chylothorax', cur.chylothorax_pct, '#0ea5e9'],
-              ].map(([label, val, col]) => (
-                <div key={label} style={{ background: '#0f172a', borderRadius: 6, padding: '6px 10px', minWidth: 80 }}>
-                  <div style={{ fontSize: 10, color: '#64748b' }}>{label}</div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: col }}>{val}%</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Clinical details */}
-            {[
-              ['Age of Onset', cur.age_of_onset],
-              ['Key Biomarkers', cur.key_biomarker],
-              ['Pathognomonic Features', cur.pathognomonic],
-              ['Treatment', cur.treatment],
-            ].map(([title, text]) => (
-              <div key={title} style={{ background: '#1e293b', borderRadius: 8, padding: '0.8rem', marginBottom: '0.8rem' }}>
-                <div style={{ fontSize: 12, color: '#94a3b8', marginBottom: 6 }}>{title}</div>
-                <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.7 }}>{text}</div>
-              </div>
-            ))}
-
-            {/* Cohort preview */}
-            {cur.cohort_preview && (
-              <div style={{ background: '#1e293b', borderRadius: 8, padding: '0.8rem' }}>
-                <div style={{ fontSize: 12, color: '#94a3b8', marginBottom: 6 }}>Cohort Preview (first 5)</div>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
-                  <thead>
-                    <tr style={{ color: '#475569', borderBottom: '1px solid #334155' }}>
-                      {['ID', 'Age', 'Sex', 'HCM', 'PS', 'JMML', 'Tumour', 'Papill', 'LooseHair', 'Ichthy', 'Chyloth'].map(h => (
-                        <th key={h} style={{ padding: '4px 6px', textAlign: 'left' }}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cur.cohort_preview.map((p, i) => (
-                      <tr key={i} style={{ borderBottom: '1px solid #0f172a' }}>
-                        <td style={{ padding: '3px 6px', color: '#64748b', fontFamily: 'monospace', fontSize: 10 }}>{p.patient_id}</td>
-                        <td style={{ padding: '3px 6px', color: '#94a3b8' }}>{p.age}</td>
-                        <td style={{ padding: '3px 6px', color: '#94a3b8' }}>{p.sex}</td>
-                        <td style={{ padding: '3px 6px', color: p.hcm ? '#ef4444' : '#475569' }}>{p.hcm ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.pulmonary_stenosis ? '#3b82f6' : '#475569' }}>{p.pulmonary_stenosis ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.jmml ? '#dc2626' : '#475569' }}>{p.jmml ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.tumour_malignant ? '#f97316' : '#475569' }}>{p.tumour_malignant ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.papillomata ? '#8b5cf6' : '#475569' }}>{p.papillomata ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.loose_anagen_hair ? '#f59e0b' : '#475569' }}>{p.loose_anagen_hair ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.ichthyosis ? '#0d9488' : '#475569' }}>{p.ichthyosis ? 'Y' : '—'}</td>
-                        <td style={{ padding: '3px 6px', color: p.chylothorax ? '#0ea5e9' : '#475569' }}>{p.chylothorax ? 'Y' : '—'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/* ── DEFINITIONS TAB ──────────────────────────────────────────────────────── */
-function DefinitionsTab({ data }) {
-  if (!data) return <Loading />;
-  return (
-    <div>
-      <h3 style={{ color: '#f1f5f9', marginBottom: '0.5rem' }}>RASopathy — Glossary & Pathway</h3>
-
-      <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem', marginBottom: '1rem' }}>
-        <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 6 }}>Shared Mechanism</div>
-        <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.7 }}>{data.shared_mechanism}</div>
-      </div>
-
-      <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem', marginBottom: '1rem' }}>
-        <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 6 }}>Tumour Surveillance Protocols</div>
-        {Object.entries(data.surveillance_protocols || {}).map(([gene, proto]) => (
-          <div key={gene} style={{ marginBottom: 8 }}>
-            <span style={{ color: GENE_COLORS[gene] || '#f1f5f9', fontWeight: 700, fontSize: 12 }}>{gene}: </span>
-            <span style={{ color: '#94a3b8', fontSize: 12 }}>{proto}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ background: '#1e293b', borderRadius: 10, padding: '1rem' }}>
-        <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 10 }}>Glossary</div>
-        {Object.entries(data.glossary || {}).map(([term, def]) => (
-          <div key={term} style={{ marginBottom: 10, borderBottom: '1px solid #0f172a', paddingBottom: 8 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: '#a5b4fc', marginBottom: 2 }}>{term}</div>
-            <div style={{ fontSize: 12, color: '#94a3b8', lineHeight: 1.5 }}>{def}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ── ROOT PAGE ────────────────────────────────────────────────────────────── */
-export default function HereditaryRASopathyAtlasPage() {
-  const [tab, setTab] = useState('Overview');
-  const [overview, setOverview] = useState(null);
+export default function HereditaryRASopathyAtlas() {
+  const [tab, setTab]             = useState('Overview');
+  const [overview, setOverview]   = useState(null);
   const [breakdown, setBreakdown] = useState(null);
   const [definitions, setDefinitions] = useState(null);
-  const [error, setError] = useState(null);
+  const [loading, setLoading]     = useState(false);
+  const [error, setError]         = useState(null);
+  const [expandedGene, setExpandedGene] = useState(null);
 
   useEffect(() => {
-    Promise.all([
-      fetch(`${API}/api/hereditary-rasopathy-atlas/overview`).then(r => r.json()),
-      fetch(`${API}/api/hereditary-rasopathy-atlas/breakdown`).then(r => r.json()),
-      fetch(`${API}/api/hereditary-rasopathy-atlas/definitions`).then(r => r.json()),
-    ]).then(([ov, bd, df]) => {
-      setOverview(ov);
-      setBreakdown(bd);
-      setDefinitions(df);
-    }).catch(e => setError(e.message));
-  }, []);
+    setLoading(true);
+    setError(null);
+    const ep = tab === 'Definitions' ? 'definitions' : tab === 'Overview' ? 'overview' : 'breakdown';
+    fetch(`${API}/api/${SLUG}/${ep}`)
+      .then(r => r.json())
+      .then(data => {
+        if (tab === 'Overview') setOverview(data);
+        else if (tab === 'Definitions') setDefinitions(data);
+        else setBreakdown(data);
+        setLoading(false);
+      })
+      .catch(e => { setError(e.message); setLoading(false); });
+  }, [tab]);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f1f5f9', padding: '1.5rem' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h1 style={{ fontSize: 22, fontWeight: 800, color: '#f1f5f9', marginBottom: 4 }}>
-            🧬 Hereditary RASopathy Atlas
-          </h1>
-          <div style={{ fontSize: 13, color: '#64748b' }}>
-            Complete 8-Gene RAS-MAPK Pathway Disorder Reference — PTPN11 · SOS1 · RAF1 · RIT1 · BRAF · MAP2K1 · HRAS · SHOC2 · seeds 1990-1997
-          </div>
+    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '24px 16px' }}>
+      {/* Header */}
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ fontSize: 26, fontWeight: 700, marginBottom: 4 }}>
+          🧬 Hereditary RASopathy Atlas
+        </h1>
+        <p style={{ color: '#555', marginBottom: 8 }}>
+          Complete 8-Gene Reference: PTPN11 · SOS1 · RAF1 · BRAF · MAP2K1 · HRAS · KRAS · LZTR1
+        </p>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          <Badge text="320 Patients" color="#1565c0" />
+          <Badge text="8 Genes" color="#6a1b9a" />
+          <Badge text="Seeds 3070–3077" color="#37474f" />
+          <Badge text="Noonan + CFC + Costello" color="#b71c1c" />
+          <Badge text="RAS-MAPK Pathway" color="#2e7d32" />
+          <Badge text="LZTR1 Bidirectional AD/AR" color="#bf360c" />
         </div>
+      </div>
 
-        {error && <ErrorBox msg={error} />}
+      {/* Gene colour chips */}
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
+        {Object.entries(GENE_COLORS).map(([g, c]) => (
+          <span key={g} style={{
+            background: c + '18', border: `1px solid ${c}44`,
+            borderRadius: 20, padding: '3px 12px',
+            fontSize: 13, fontWeight: 600, color: c,
+          }}>
+            {g}
+            <span style={{ fontSize: 10, fontWeight: 400, color: '#888', marginLeft: 4 }}>
+              {GENE_INFO[g]?.locus}
+            </span>
+          </span>
+        ))}
+      </div>
 
-        {/* Tabs */}
-        <div style={{ display: 'flex', gap: 4, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-          {TABS.map(t => (
-            <button key={t} onClick={() => setTab(t)} style={{
-              padding: '6px 16px', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 13,
-              background: tab === t ? '#6366f1' : '#1e293b',
-              color: tab === t ? '#fff' : '#94a3b8', fontWeight: tab === t ? 700 : 400,
-            }}>{t}</button>
+      {/* Tabs */}
+      <ul className="nav nav-tabs mb-4">
+        {TABS.map(t => (
+          <li key={t} className="nav-item">
+            <button
+              className={`nav-link ${tab === t ? 'active' : ''}`}
+              onClick={() => setTab(t)}
+              style={{ cursor: 'pointer' }}
+            >{t}</button>
+          </li>
+        ))}
+      </ul>
+
+      {loading && <div className="text-center py-5"><div className="spinner-border" /></div>}
+      {error && <div className="alert alert-danger">{error}</div>}
+
+      {/* Overview Tab */}
+      {!loading && !error && tab === 'Overview' && overview && (
+        <div>
+          {/* KPI row */}
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>
+            {[
+              { label: 'Total Genes', value: overview.total_genes, color: '#1565c0' },
+              { label: 'Total Patients', value: overview.total_patients, color: '#6a1b9a' },
+              { label: 'Seed Range', value: overview.seed_range, color: '#37474f' },
+              { label: 'Noonan Genes', value: '5 (PTPN11/SOS1/RAF1/KRAS/LZTR1)', color: '#1565c0' },
+              { label: 'CFC Genes', value: '2 (BRAF/MAP2K1)', color: '#e65100' },
+              { label: 'Costello Gene', value: '1 (HRAS)', color: '#006064' },
+            ].map(k => (
+              <div key={k.label} style={{
+                background: k.color + '12', border: `1px solid ${k.color}33`,
+                borderRadius: 8, padding: '12px 18px', minWidth: 140, textAlign: 'center',
+              }}>
+                <div style={{ fontSize: 20, fontWeight: 700, color: k.color }}>{k.value}</div>
+                <div style={{ fontSize: 11, color: '#666', marginTop: 2 }}>{k.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Inheritance modes */}
+          <h5 style={{ fontWeight: 600, marginBottom: 12 }}>Inheritance &amp; Disease Mechanism</h5>
+          <div style={{ display: 'grid', gap: 10, marginBottom: 24 }}>
+            {Object.entries(overview.inheritance_modes || {}).map(([gene, desc]) => (
+              <div key={gene} style={{
+                background: (GENE_COLORS[gene] || '#888') + '0d',
+                border: `1px solid ${(GENE_COLORS[gene] || '#888')}33`,
+                borderRadius: 8, padding: '10px 14px',
+              }}>
+                <span style={{
+                  fontWeight: 700, color: GENE_COLORS[gene] || '#333',
+                  fontSize: 14, marginRight: 8,
+                }}>{gene}</span>
+                <span style={{ fontSize: 13, color: '#444' }}>{desc}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Key clinical rules */}
+          <h5 style={{ fontWeight: 600, marginBottom: 12 }}>Key Clinical Rules</h5>
+          <ul style={{ paddingLeft: 20 }}>
+            {(overview.key_clinical_rules || []).map((rule, i) => (
+              <li key={i} style={{ marginBottom: 8, fontSize: 13, color: '#333' }}>{rule}</li>
+            ))}
+          </ul>
+
+          {/* Gene panel note */}
+          {overview.gene_panel_note && (
+            <div style={{
+              background: '#e3f2fd', border: '1px solid #90caf9',
+              borderRadius: 8, padding: '12px 16px', marginTop: 20,
+              fontSize: 13, color: '#1565c0',
+            }}>
+              <strong>Gene Panel Note:</strong> {overview.gene_panel_note}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Gene Table Tab */}
+      {!loading && !error && tab === 'Gene Table' && breakdown && (
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ background: '#f5f5f5' }}>
+                {['Gene', 'Locus', 'Disease', 'Patients', 'HCM%', 'PS%', 'Short Stature%', 'Ectodermal%', 'Epilepsy%', 'Speech Absent%', 'Cancer Risk%', 'Mean IQ'].map(h => (
+                  <th key={h} style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '2px solid #ddd', whiteSpace: 'nowrap' }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {(breakdown.genes || []).map((g, i) => (
+                <tr key={g.gene} style={{ background: i % 2 === 0 ? '#fff' : '#fafafa' }}>
+                  <td style={{ padding: '7px 10px', fontWeight: 700, color: GENE_COLORS[g.gene] || '#333' }}>{g.gene}</td>
+                  <td style={{ padding: '7px 10px', color: '#555' }}>{g.locus}</td>
+                  <td style={{ padding: '7px 10px', color: '#555', fontSize: 11 }}>{GENE_INFO[g.gene]?.full || g.disease_category}</td>
+                  <td style={{ padding: '7px 10px' }}>{g.n}</td>
+                  <td style={{ padding: '7px 10px' }}>{g.cardiac_hcm_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.ps_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.short_stature_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.ectodermal_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.epilepsy_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.speech_absent_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.cancer_risk_pct ?? '—'}%</td>
+                  <td style={{ padding: '7px 10px' }}>{g.mean_iq ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Clinical Atlas Tab */}
+      {!loading && !error && tab === 'Clinical Atlas' && breakdown && (
+        <div>
+          {(breakdown.genes || []).map(g => (
+            <div key={g.gene} style={{
+              marginBottom: 16,
+              border: `1px solid ${(GENE_COLORS[g.gene] || '#888')}44`,
+              borderRadius: 10, overflow: 'hidden',
+            }}>
+              <div
+                style={{
+                  background: (GENE_COLORS[g.gene] || '#888') + '18',
+                  padding: '10px 16px', cursor: 'pointer',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                }}
+                onClick={() => setExpandedGene(expandedGene === g.gene ? null : g.gene)}
+              >
+                <span style={{ fontWeight: 700, color: GENE_COLORS[g.gene] || '#333', fontSize: 15 }}>
+                  {g.gene}{' '}
+                  <span style={{ fontWeight: 400, fontSize: 12, color: '#666' }}>
+                    {g.locus} · {GENE_INFO[g.gene]?.full} · n={g.n}
+                  </span>
+                </span>
+                <span style={{ fontSize: 18, color: '#888' }}>{expandedGene === g.gene ? '▲' : '▼'}</span>
+              </div>
+              {expandedGene === g.gene && (
+                <div style={{ padding: '14px 16px', background: '#fff' }}>
+                  {/* Stats grid */}
+                  <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 14 }}>
+                    {[
+                      { k: 'cardiac_hcm_pct', label: 'HCM' },
+                      { k: 'ps_pct', label: 'Pulmonary Stenosis' },
+                      { k: 'short_stature_pct', label: 'Short Stature' },
+                      { k: 'webbed_neck_pct', label: 'Webbed Neck' },
+                      { k: 'ectodermal_pct', label: 'Ectodermal Features' },
+                      { k: 'epilepsy_pct', label: 'Epilepsy' },
+                      { k: 'speech_absent_pct', label: 'Speech Absent' },
+                      { k: 'loose_skin_pct', label: 'Loose Skin' },
+                      { k: 'papillomata_pct', label: 'Papillomata' },
+                      { k: 'cancer_risk_pct', label: 'Cancer Risk' },
+                      { k: 'autism_pct', label: 'Autism Features' },
+                      { k: 'mean_iq', label: 'Mean IQ' },
+                    ].filter(f => g[f.k] != null).map(f => (
+                      <div key={f.k} style={{
+                        background: (GENE_COLORS[g.gene] || '#888') + '10',
+                        border: `1px solid ${(GENE_COLORS[g.gene] || '#888')}30`,
+                        borderRadius: 6, padding: '6px 12px', textAlign: 'center',
+                      }}>
+                        <div style={{ fontSize: 17, fontWeight: 700, color: GENE_COLORS[g.gene] || '#333' }}>
+                          {f.k === 'mean_iq' ? g[f.k] : `${g[f.k]}%`}
+                        </div>
+                        <div style={{ fontSize: 10, color: '#666' }}>{f.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Clinical note */}
+                  {g.clinical_note && (
+                    <p style={{ fontSize: 13, color: '#444', marginBottom: 0 }}>{g.clinical_note}</p>
+                  )}
+                </div>
+              )}
+            </div>
           ))}
         </div>
+      )}
 
-        {/* Tab content */}
-        {tab === 'Overview'      && <OverviewTab      data={overview}     />}
-        {tab === 'Gene Table'    && <GeneTableTab     data={breakdown}    />}
-        {tab === 'Clinical Atlas'&& <ClinicalAtlasTab data={breakdown}    />}
-        {tab === 'Definitions'   && <DefinitionsTab   data={definitions}  />}
-      </div>
+      {/* Definitions Tab */}
+      {!loading && !error && tab === 'Definitions' && definitions && (
+        <div>
+          {(definitions.definitions || []).map((def, i) => (
+            <div key={i} style={{
+              marginBottom: 16,
+              border: '1px solid #e0e0e0',
+              borderRadius: 10, overflow: 'hidden',
+            }}>
+              <div style={{
+                background: '#f5f5f5',
+                padding: '10px 16px',
+                fontWeight: 600, fontSize: 14,
+              }}>
+                {def.term || def.title || `Definition ${i + 1}`}
+              </div>
+              <div style={{ padding: '12px 16px', background: '#fff', fontSize: 13, color: '#333', whiteSpace: 'pre-wrap' }}>
+                {def.definition || def.body || def.text || JSON.stringify(def, null, 2)}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
