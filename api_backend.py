@@ -50146,6 +50146,27 @@ async def hereditary_tsc_mtor_pathway_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-pheo-pgl-sdh-atlas/overview")
+async def hereditary_pheo_pgl_sdh_atlas_overview():
+    """Hereditary-PHEO-PGL-SDH-Atlas overview (SDHB-SDHD-SDHC-SDHA-VHL-RET-TMEM127-MAX; 320-patient aggregate 8x40 seeds 3078-3085; SDHB-HIGHEST-MALIGNANT-RISK-35-40pct-PATHOGNOMONIC; SDHD-MAX-PATERNAL-IMPRINTING-UNIQUE; VHL-BELZUTIFAN-FDA2021-HIF2A-INHIBITOR; RET-MTC-100pct-PROPHYLACTIC-THYROIDECTOMY-CODON-BASED; SDHA-GIST-CO-RISK; SDHB-IHC-LOSS-CONFIRMS-ANY-SDHx; TMEM127-BILATERAL-ADRENAL-mTOR)."""
+    from scripts.hereditary_pheo_pgl_sdh_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-pheo-pgl-sdh-atlas/breakdown")
+async def hereditary_pheo_pgl_sdh_atlas_breakdown():
+    """Hereditary-PHEO-PGL-SDH-Atlas per-gene breakdown (8 genes, 40 patients each; malignant_pct, extra_adrenal_pct, bilateral_pct, functional_pct, head_neck_pgl_pct, adrenal_pheo_pct, hypertension_pct, gist_pct, rcc_pct, hemangioblastoma_pct, retinal_hbl_pct, pnet_pct, mtc_pct, phpt_pct, sstr_pet_positive_pct per gene; mean age at diagnosis)."""
+    from scripts.hereditary_pheo_pgl_sdh_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-pheo-pgl-sdh-atlas/definitions")
+async def hereditary_pheo_pgl_sdh_atlas_definitions():
+    """Hereditary-PHEO-PGL-SDH-Atlas clinical definitions (SDHx-malignant-risk-ranking-SDHB-highest; paternal-imprinting-SDHD-MAX-protocol; VHL-type-1-2A-2B-2C-classification-belzutifan; RET-MEN2-thyroidectomy-codon-protocol; IHC-SDH-cascade-SDHB-SDHA; biochemical-surveillance-metanephrines-SSTR-PET; SDHB-metastatic-Lu-DOTATATE-algorithm)."""
+    from scripts.hereditary_pheo_pgl_sdh_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

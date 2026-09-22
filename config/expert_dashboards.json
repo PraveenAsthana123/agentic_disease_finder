@@ -20752,5 +20752,28 @@
       "/api/hereditary-rasopathy-atlas/definitions"
     ],
     "built_note": "Hereditary-RASopathy-Atlas -- /api/hereditary-rasopathy-atlas/overview|breakdown|definitions verified 200, 320-patient cohort seeds-3070-3077, PTPN11-SOS1-RAF1-BRAF-MAP2K1-HRAS-KRAS-LZTR1, portal-next/app/hereditary-rasopathy-atlas/page.jsx + SiteNav wired after Hereditary-TSC-mTOR-Pathway-Atlas. PTPN11-580aa-12q24.13-SHP2-Noonan1-50-70pct-WEBBED-NECK-PS-SHORT-STATURE-PATHOGNOMONIC. SOS1-1333aa-2p22.1-NORMAL-IQ-KEY-DIFFERENTIATOR. RAF1-648aa-3p25.2-HCM-75pct-UNIQUE-RASOPATHY. BRAF-766aa-7q34-CFC1-ECTODERMAL-TRIAD-PATHOGNOMONIC. MAP2K1-393aa-15q22.31-CFC3-DIRECT-MEK-TARGET. HRAS-189aa-11p15.5-COSTELLO-LOOSE-SKIN-PAPILLOMATA-CANCER-15pct. KRAS-189aa-12p12.1-MOST-SEVERE-NOONAN-AML-RISK. LZTR1-827aa-22q11.21-UNIQUE-BIDIRECTIONAL-AD-OR-AR-NOONAN-10. expert_dashboards.json count 1267->1268. Built 2026-09-22."
+  },
+  {
+    "id": "hereditary-pheo-pgl-sdh-atlas",
+    "name": "Hereditary-PHEO-PGL-SDH-Atlas Complete-8-Gene-SDHB-SDHD-SDHC-SDHA-VHL-RET-TMEM127-MAX-Pheochromocytoma-Paraganglioma-SDH-Syndrome-Atlas",
+    "status": "built",
+    "genes": [
+      "SDHB",
+      "SDHD",
+      "SDHC",
+      "SDHA",
+      "VHL",
+      "RET",
+      "TMEM127",
+      "MAX"
+    ],
+    "seeds": "3078-3085",
+    "patient_count": 320,
+    "endpoints": [
+      "/api/hereditary-pheo-pgl-sdh-atlas/overview",
+      "/api/hereditary-pheo-pgl-sdh-atlas/breakdown",
+      "/api/hereditary-pheo-pgl-sdh-atlas/definitions"
+    ],
+    "registered": "2026-09-22"
   }
 ]
