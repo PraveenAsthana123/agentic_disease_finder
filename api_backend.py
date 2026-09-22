@@ -50356,6 +50356,27 @@ async def hereditary_brain_cns_tumour_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-head-neck-cancer-atlas/overview")
+async def hereditary_head_neck_cancer_atlas_overview():
+    """Hereditary-Head-Neck-Cancer-Predisposition-Atlas overview (FANCA-XPC-TP53-CDKN2A-ATM-MSH2-BRCA2-RECQL4; 320-patient aggregate 8x40 seeds 3158-3165; FANCA-FA-A-HNC-700x-PATHOGNOMONIC-AVOID-RADIATION-BMT; XPC-UV-SCC-Face-10000x-PATHOGNOMONIC-Strict-UV-Avoidance; TP53-LFS-HNC-AVOID-RADIATION-ABSOLUTELY; CDKN2A-FAMM-OralSCC-10-30x-Pancreatic-20x-PATHOGNOMONIC; ATM-Ataxia-Telangiectasia-Radiosensitivity-PATHOGNOMONIC; MSH2-Lynch-Muir-Torre-Sebaceous-Face-PATHOGNOMONIC-EPCAM; BRCA2-HBOC-HNC-2-3x-PARP-Olaparib; RECQL4-Rothmund-Thomson-Poikiloderma-PATHOGNOMONIC)."""
+    from scripts.hereditary_head_neck_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-head-neck-cancer-atlas/breakdown")
+async def hereditary_head_neck_cancer_atlas_breakdown():
+    """Hereditary-Head-Neck-Cancer-Predisposition-Atlas per-gene breakdown (8 genes, 40 patients each; FANCA-hnc_pct-aplasia-aml-bmt; XPC-hnc_pct-scc_face-uv_sensitivity-photoph; TP53-hnc_pct-sarcoma-radiation_avoid-wbmri; CDKN2A-hnc_pct-melanoma-pancreatic-atypical_naevi; ATM-hnc_pct-ataxia-teleang-radiation_sensitive; MSH2-hnc_pct-sebaceous-crc-muir_torre; BRCA2-hnc_pct-breast-ovarian-parp_eligible; RECQL4-hnc_pct-osteo-poikiloderm-cataracts; mean age at diagnosis per gene)."""
+    from scripts.hereditary_head_neck_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-head-neck-cancer-atlas/definitions")
+async def hereditary_head_neck_cancer_atlas_definitions():
+    """Hereditary-Head-Neck-Cancer-Predisposition-Atlas clinical definitions (FANCA-FA-A-HNC-700x-PATHOGNOMONIC-AVOID-RADIATION; XPC-UV-SCC-Face-10000x-UV-Avoidance; CDKN2A-FAMM-Oral-SCC-Pancreatic-PATHOGNOMONIC; ATM-Ataxia-Telangiectasia-Radiosensitivity; MSH2-Muir-Torre-Sebaceous-PATHOGNOMONIC-EPCAM; BRCA2-HNC-PARP-Olaparib-Platinum; RECQL4-Poikiloderma-PATHOGNOMONIC-Osteosarcoma; CASCADE-Testing)."""
+    from scripts.hereditary_head_neck_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
