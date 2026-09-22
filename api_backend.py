@@ -50482,6 +50482,27 @@ async def hereditary_gist_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mesothelioma-atlas/overview")
+async def hereditary_mesothelioma_atlas_overview():
+    """Hereditary-Mesothelioma-Predisposition-Atlas overview (BAP1-BRCA2-NF2-CDKN2A-TP53-SMARCB1-MLH1-ATM; 320-patient aggregate 8x40 seeds 3206-3213; BAP1-TPDS-Mesothelioma-30-60pct-HIGHEST-AVOID-ASBESTOS; BRCA2-Mesothelioma-2-5x-Cisplatin-PARP; NF2-Bilateral-VS-PATHOGNOMONIC-Somatic-40-80pct-Sporadic; CDKN2A-9p21-Deletion-50-80pct-Sporadic-Melanoma-25-36pct; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI; SMARCB1-ATRT-MRT-EZH2i-Tazemetostat; MLH1-Lynch-Pembrolizumab-MSI-H; ATM-Radiosensitivity-Biallelic-Olaparib-BRCAness)."""
+    from scripts.hereditary_mesothelioma_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-mesothelioma-atlas/breakdown")
+async def hereditary_mesothelioma_atlas_breakdown():
+    """Hereditary-Mesothelioma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; BAP1-meso_pct-HIGHEST-30-60pct; BRCA2-meso_pct-2-5x; NF2-bilateral-VS-meso-pct; CDKN2A-melanoma-pancreatic-pct; TP53-LFS-sarcoma-pct; SMARCB1-ATRT-MRT-pct; MLH1-CRC-endometrial-pct; ATM-monoallelic-meso-pct; mean_age_onset per gene)."""
+    from scripts.hereditary_mesothelioma_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-mesothelioma-atlas/definitions")
+async def hereditary_mesothelioma_atlas_definitions():
+    """Hereditary-Mesothelioma-Predisposition-Atlas clinical definitions (BAP1-TPDS-MBAITs-PATHOGNOMONIC-AVOID-ASBESTOS; BRCA2-Cisplatin-PARP-FA-D1; NF2-Merlin-Bilateral-VS-Bevacizumab; CDKN2A-p16-ARF-CDK4-6i; TP53-LFS-R337H-AVOID-RADIATION-WBMRI; SMARCB1-ATRTi-Tazemetostat-EZH2i; MLH1-Lynch-Pembrolizumab-Aspirin-CAPP2; ATM-A-T-Radiosensitivity-Ceralasertib; CASCADE-Hereditary-Mesothelioma)."""
+    from scripts.hereditary_mesothelioma_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -21205,5 +21205,35 @@
     "frontend": "portal-next/app/hereditary-gist-atlas/page.jsx",
     "note": "Total: 1284 dashboards",
     "built_note": "KIT-PDGFRA-SDHA-SDHB-SDHC-SDHD-NF1-MAX; 8x40 patients seeds 3198-3205; 3 endpoints verified 200. Built 2026-09-22."
+  },
+  {
+    "id": "hereditary-mesothelioma-atlas",
+    "name": "Hereditary-Mesothelioma-Predisposition-Atlas Complete-8-Gene-BAP1-BRCA2-NF2-CDKN2A-TP53-SMARCB1-MLH1-ATM",
+    "status": "built",
+    "category": "hereditary-cancer-atlas",
+    "subcategory": "thoracic-mesothelial",
+    "genes": [
+      "BAP1",
+      "BRCA2",
+      "NF2",
+      "CDKN2A",
+      "TP53",
+      "SMARCB1",
+      "MLH1",
+      "ATM"
+    ],
+    "seed_range": "3206-3213",
+    "cohort_n": 320,
+    "patients_per_gene": 40,
+    "registered": "2026-09-22",
+    "endpoints": [
+      "/api/hereditary-mesothelioma-atlas/overview",
+      "/api/hereditary-mesothelioma-atlas/breakdown",
+      "/api/hereditary-mesothelioma-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_mesothelioma_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-mesothelioma-atlas/page.jsx",
+    "note": "Total: 1286 dashboards",
+    "built_note": "BAP1-BRCA2-NF2-CDKN2A-TP53-SMARCB1-MLH1-ATM; 8x40 patients seeds 3206-3213; 3 endpoints verified 200. Built 2026-09-22."
   }
 ]
