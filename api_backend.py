@@ -50377,6 +50377,27 @@ async def hereditary_head_neck_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-bladder-urothelial-cancer-atlas/overview")
+async def hereditary_bladder_urothelial_cancer_atlas_overview():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas overview (MSH2-MLH1-MSH6-BRCA2-RB1-TP53-HRAS-CHEK2; 320-patient aggregate 8x40 seeds 3166-3173; MSH2-Lynch-Urothelial-25pct-HIGHEST-PATHOGNOMONIC-Muir-Torre-Sebaceous-EPCAM; MLH1-BRAF-V600E-Excludes-Lynch-Constitutional-Methylation; MSH6-MSI-L-30pct-FALSE-NEGATIVE-IHC-PRIMARY; BRCA2-HBOC-Platinum-Sensitive-PARP-Olaparib; RB1-BCG-CONTRAINDICATED-CDK4-6I-INACTIVE-Secondary-Bladder-SCC; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; HRAS-Costello-Bladder-TCC-RMS-Papillomata-PATHOGNOMONIC-MEK-Trametinib; CHEK2-c1100delC-Intermediate-Penetrance-Bladder-2-3x)."""
+    from scripts.hereditary_bladder_urothelial_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-bladder-urothelial-cancer-atlas/breakdown")
+async def hereditary_bladder_urothelial_cancer_atlas_breakdown():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas per-gene breakdown (8 genes, 40 patients each; MSH2-urothelial_pct-crc-sebaceous-muir_torre; MLH1-urothelial_pct-crc-endometrial-braf_excludes; MSH6-urothelial_pct-endometrial_highest-msi_l_pitfall; BRCA2-urothelial_rr-platinum-parp; RB1-secondary_bladder_rr-bcg_ci-cdk46i_inactive; TP53-avoid_radiation-wbmri_toronto; HRAS-bladder_tcc_pct-rms-papillomata; CHEK2-bladder_rr-intermediate_penetrance; mean age at diagnosis per gene)."""
+    from scripts.hereditary_bladder_urothelial_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-bladder-urothelial-cancer-atlas/definitions")
+async def hereditary_bladder_urothelial_cancer_atlas_definitions():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas clinical definitions (MSH2-Muir-Torre-EPCAM-3prime-Urothelial-25pct; MLH1-BRAF-V600E-Constitutional-Methylation; MSH6-MSI-L-FALSE-NEGATIVE-IHC-PRIMARY; BRCA2-Platinum-PARP-FA-D1; RB1-BCG-CONTRAINDICATED-CDK4-6I-INACTIVE; TP53-AVOID-RADIATION-WBMRI-Toronto; HRAS-Costello-Papillomata-MEK-Trametinib; CHEK2-c1100delC-Intermediate; CASCADE-Testing-Hereditary-Bladder)."""
+    from scripts.hereditary_bladder_urothelial_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

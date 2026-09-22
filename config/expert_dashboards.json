@@ -21063,5 +21063,34 @@
       "MSH2": "Sebaceous adenomas face/scalp + CRC family history = Muir-Torre PATHOGNOMONIC",
       "RECQL4": "Poikiloderma congenitale (facial reticulated pigmentation) in infant = PATHOGNOMONIC RTS"
     }
+  },
+  {
+    "id": "hereditary-bladder-urothelial-cancer-atlas",
+    "name": "Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas Complete-8-Gene-MSH2-MLH1-MSH6-BRCA2-RB1-TP53-HRAS-CHEK2",
+    "category": "hereditary_atlas",
+    "status": "built",
+    "endpoint": "/api/hereditary-bladder-urothelial-cancer-atlas/overview",
+    "page": "/hereditary-bladder-urothelial-cancer-atlas",
+    "genes": [
+      "MSH2",
+      "MLH1",
+      "MSH6",
+      "BRCA2",
+      "RB1",
+      "TP53",
+      "HRAS",
+      "CHEK2"
+    ],
+    "seed_range": "3166-3173",
+    "patients": 320,
+    "registered": "2026-09-22",
+    "pathognomonic": {
+      "MSH2": "Sebaceous adenomas/carcinomas of face/scalp + ANY cancer patient <60yr = Muir-Torre = MSH2/MLH1 germline PATHOGNOMONIC",
+      "MLH1": "MLH1/PMS2 co-loss on IHC without BRAF V600E = Lynch Type 1; BRAF V600E in tumour = SPORADIC (NOT Lynch)",
+      "MSH6": "MSH6 IHC loss = Lynch Type 3 regardless of MSI-L/MSS result; IHC is PRIMARY screen",
+      "RB1": "Bilateral retinoblastoma = GERMLINE PATHOGNOMONIC; BCG CONTRAINDICATED in RB1-null bladder",
+      "TP53": "ACC age<4 = LFS PATHOGNOMONIC; CPC age<5 PATHOGNOMONIC; AVOID RADIATION ABSOLUTELY",
+      "HRAS": "Bladder TCC/RMS in adolescent + perianal papillomata + coarse facies + HCM = Costello PATHOGNOMONIC"
+    }
   }
 ]
