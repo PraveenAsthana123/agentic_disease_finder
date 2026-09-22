@@ -47280,34 +47280,6 @@ async def hereditary_obesity_melanocortin_atlas_definitions():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/api/hereditary-lipodystrophy-atlas/overview")
-async def hereditary_lipodystrophy_atlas_overview():
-    """Hereditary-Lipodystrophy-Atlas — 8-gene CGL/FPLD aggregate overview (320 patients, seeds 2014-2021)."""
-    try:
-        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
-        return atlas_.overview()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.get("/api/hereditary-lipodystrophy-atlas/breakdown")
-async def hereditary_lipodystrophy_atlas_breakdown():
-    """Hereditary-Lipodystrophy-Atlas per-gene clinical breakdown (BSCL2/AGPAT2/LMNA/PPARG/PLIN1/AKT2/CAV1/ZMPSTE24)."""
-    try:
-        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
-        return atlas_.breakdown()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.get("/api/hereditary-lipodystrophy-atlas/definitions")
-async def hereditary_lipodystrophy_atlas_definitions():
-    """Hereditary-Lipodystrophy-Atlas gene definitions, glossary and surveillance protocols."""
-    try:
-        import scripts.hereditary_lipodystrophy_atlas_dashboard as atlas_
-        return atlas_.definitions()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/api/hereditary-haematological-malignancy-predisposition-atlas/overview")
@@ -49962,6 +49934,29 @@ async def hereditary_diabetes_insipidus_atlas_breakdown():
 async def hereditary_diabetes_insipidus_atlas_definitions():
     """Hereditary-DI-Atlas clinical definitions (desmopressin-response-test, Wolfram-DIDMOAD-sequence, FNDI-MRI-bright-spot, NDI-vs-central-DI, Bartter-polyuria-TAL-dysfunction, PCSK1-malabsorption-first, 8-gene-differential)."""
     from scripts.hereditary_diabetes_insipidus_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+# ── Hereditary Lipodystrophy Atlas ───────────────────
+
+@app.get("/api/hereditary-lipodystrophy-atlas/overview")
+async def hereditary_lipodystrophy_atlas_overview():
+    """Hereditary-Lipodystrophy-Atlas overview (AGPAT2-278aa-9q34.3-AR-CGL1-Metreleptin-SPECIFIC, BSCL2-462aa-11q12.3-AR-CGL2-MOST-COMMON-Intellectual-Disability-30pct, CAV1-178aa-7q31.2-AR-CGL3-Caveolae-ABSENT-EM-PATHOGNOMONIC-PAH, CAVIN1-392aa-17q21.2-AR-CGL4-MYOPATHY-CK-Arrhythmia-UNIQUE, LMNA-664aa-1q22-AD-FPLD2-Dunnigan-Arg482-Hotspot-Cardiomyopathy, PPARG-477aa-3p25.2-AD-FPLD3-TZD-SPECIFIC-Treatment, AKT2-481aa-19q13.2-AD-FPLD6-Severe-Insulin-Resistance, PLIN1-522aa-15q26.1-AD-FPLD4-Pancreatitis-Unregulated-Lipolysis, 320-patients-8x40-seeds-2998-3005)."""
+    from scripts.hereditary_lipodystrophy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lipodystrophy-atlas/breakdown")
+async def hereditary_lipodystrophy_atlas_breakdown():
+    """Hereditary-Lipodystrophy-Atlas per-gene breakdown (AGPAT2-CGL1-TG-very-high-leptin-absent, BSCL2-CGL2-ID-30pct, CAV1-CGL3-PAH, CAVIN1-CGL4-myopathy-CK, LMNA-FPLD2-puberty-onset-females-worse, PPARG-FPLD3-TZD-responsive, AKT2-FPLD6-severe-IR, PLIN1-FPLD4-pancreatitis, 320 patients)."""
+    from scripts.hereditary_lipodystrophy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lipodystrophy-atlas/definitions")
+async def hereditary_lipodystrophy_atlas_definitions():
+    """Hereditary-Lipodystrophy-Atlas clinical definitions (CGL-vs-FPLD-differential, metreleptin-mechanism, caveolae-EM-pathognomonic, CGL4-myopathy-arrhythmia, FPLD2-laminopathy, TZD-PPARG-specific, PLIN1-lipolysis-pancreatitis, 8-gene-differential-guide)."""
+    from scripts.hereditary_lipodystrophy_atlas_dashboard import generate_definitions
     return generate_definitions()
 
 

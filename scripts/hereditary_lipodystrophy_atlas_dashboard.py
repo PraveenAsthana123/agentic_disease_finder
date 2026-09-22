@@ -1,930 +1,1333 @@
 #!/usr/bin/env python3
-"""Hereditary-Lipodystrophy-Atlas — Complete 8-Gene Congenital & Familial Lipodystrophy Atlas
-BSCL2   (seipin; 398 aa; 11q13.1; AR;
-         Berardinelli-Seip CGL type 2 — most common CGL worldwide;
-         ABSENT ALL metabolically-active fat from birth (subcutaneous, visceral, bone marrow);
-         Serum leptin VERY LOW — metreleptin FDA-2014 indicated;
-         seed SEED_BASE+0) .
+"""Hereditary-Lipodystrophy-Atlas — Complete 8-Gene Lipodystrophy Atlas
 AGPAT2  (1-acylglycerol-3-phosphate O-acyltransferase 2; 278 aa; 9q34.3; AR;
-         Berardinelli-Seip CGL type 1 — preserves mechanical fat (palms, soles, periorbit, scalp);
-         Distinguishes from BSCL2: mechanical fat PRESENT = type 1 not type 2;
-         Severe metabolic disease: hypertriglyceridaemia + pancreatitis risk + T2D;
-         seed SEED_BASE+1) .
-LMNA    (lamin A/C; 664 aa; 1q22; AD;
-         Dunnigan FPLD type 2 — most common hereditary partial lipodystrophy;
-         Fat redistribution NOT absence: limb/gluteal wasting + neck/trunk/face accumulation;
-         LMNA laminopathy: cardiac surveillance MANDATORY — ICD indicated if NSVT+HB+EF<45+syncope;
-         seed SEED_BASE+2) .
-PPARG   (peroxisome proliferator-activated receptor gamma; 505 aa; 3p25.2; AD;
-         FPLD type 3 — dominant negative effect via ligand-binding domain mutations;
-         TZD (thiazolidinedione) direct molecular target but dominant negative impairs response;
-         Severe insulin resistance + dyslipidaemia + partial fat loss limbs;
-         seed SEED_BASE+3) .
-PLIN1   (perilipin-1; 522 aa; 15q26.1; AD;
-         FPLD type 4 — rare; severe hypertriglyceridaemia + ectopic fat + insulin resistance;
-         Delayed diagnosis common: subcutaneous fat loss mild; TG often >20 mmol/L → pancreatitis;
-         PLIN1 scaffolds lipid droplet surface — loss → unregulated lipolysis;
-         seed SEED_BASE+4) .
+         Congenital Generalized Lipodystrophy type 1 (CGL1/Berardinelli-Seip);
+         AGPAT2 deficiency -> severely reduced phosphatidic acid and DAG -> failure to
+         form fat droplets -> near-complete absence of metabolically active adipose tissue;
+         severely elevated triglycerides (500-3000 mg/dL), insulin resistance (HOMA-IR 10-80),
+         diabetes, hepatic steatosis, acanthosis nigricans;
+         recombinant leptin (metreleptin) = SPECIFIC treatment; seed SEED_BASE+0) *
+BSCL2   (Seipin / BSCL2; 462 aa; 11q12.3; AR;
+         CGL2 - MOST COMMON and MOST SEVERE CGL; Seipin is ER membrane protein essential
+         for lipid droplet biogenesis; biallelic LOF -> CGL2 with intellectual disability
+         30-60% (unlike CGL1); severe hypertriglyceridemia; acanthosis nigricans;
+         metreleptin effective; seed SEED_BASE+1) *
+CAV1    (Caveolin-1; 178 aa; 7q31.2; AR;
+         CGL3; Caveolin-1 deficiency; phenotype similar CGL1/CGL2 but milder;
+         caveolae absent on electron microscopy (PATHOGNOMONIC);
+         associated with pulmonary arterial hypertension; seed SEED_BASE+2) *
+CAVIN1  (Cavin-1 / PTRF; 392 aa; 17q21.2; AR;
+         CGL4; ONLY CGL with skeletal muscle involvement (myopathy + elevated CK)
+         + cardiac arrhythmia; caveolae absent; muscular dystrophy phenotype
+         DISTINGUISHES from CGL1/2/3; seed SEED_BASE+3) *
+LMNA    (Lamin A/C; 664 aa; 1q22; AD;
+         FPLD2 - Dunnigan syndrome - MOST COMMON familial partial lipodystrophy;
+         p.Arg482 hotspot mutations (Arg482Trp/Gln/Leu) -> loss of fat from
+         extremities/gluteal + accumulation face/neck/abdomen starting puberty;
+         females more severely affected; cardiomyopathy + laminopathy overlap;
+         premature death cardiac/arrhythmia; seed SEED_BASE+4) *
+PPARG   (PPAR-gamma; 477 aa; 3p25.2; AD;
+         FPLD3; PPAR-gamma haploinsufficiency -> partial loss of peripheral fat;
+         hypertension + dyslipidemia + DM;
+         thiazolidinediones (TZDs) = SPECIFIC treatment (PPARG agonist replaces
+         the lost function); seed SEED_BASE+5) *
 AKT2    (AKT serine/threonine kinase 2; 481 aa; 19q13.2; AD;
-         GOF gain-of-function: severe generalised hypoglycaemia + macrosomia (Donohue-like);
-         LOF loss-of-function: severe insulin resistance + partial lipodystrophy + T2D;
-         AKT2 is central insulin-signalling node: PI3K→AKT2→GLUT4 translocation;
-         seed SEED_BASE+5) .
-CAV1    (caveolin-1; 178 aa; 7q31.2; AR/AD;
-         AR biallelic → CGL type 3: generalised lipoatrophy + pulmonary arterial hypertension (PAH) overlap;
-         AD heterozygous → FPLD type 7 or acquired partial lipodystrophy phenotype;
-         Caveolae absent — DPPIV-linked: check BMPR2 panel if PAH coexists;
-         seed SEED_BASE+6) .
-ZMPSTE24 (zinc metalloprotease STE24; 475 aa; 1p34.2; AR;
-         Mandibuloacral dysplasia type B (MADB) — lipodystrophy + progeroid + bone anomalies;
-         Prelamin A accumulation (ZMPSTE24 fails to cleave prelamin A → farnesyl stays);
-         DISTINGUISH from LMNA: ZMPSTE24 is AR + mandibular hypoplasia + clavicular acroosteolysis;
-         seed SEED_BASE+7)
-320-patient aggregate cohort (8 x 40, seeds 2014-2021)
+         FPLD6; AKT2 LOF mutations; partial lipodystrophy + SEVERE insulin resistance;
+         unlike other FPLDs, AD with incomplete penetrance;
+         somatic activating mutations -> hypoglycemia (opposite phenotype); seed SEED_BASE+6) *
+PLIN1   (Perilipin-1; 522 aa; 15q26.1; AD;
+         FPLD4; Perilipin-1 deficiency; partial lipodystrophy + severe
+         hypertriglyceridemia + pancreatitis risk;
+         PLIN1 is the dominant lipid droplet coat protein;
+         mutations reduce lipolysis regulation;
+         frameshift mutations via heterozygous loss; seed SEED_BASE+7)
+320-patient aggregate cohort (8 x 40, seeds 2998-3005)
 """
-
 import random
 
-SEED_BASE = 2014
+SEED_BASE = 2998
 
-LIPO_GENES = [
-    # -- BSCL2 — Berardinelli-Seip CGL type 2 (AR, most common CGL) -------------------
-    {
-        "gene": "BSCL2",
-        "alt_name": "BSCL2 (Seipin / AR — CGL2 — Most Common CGL Worldwide — ALL Metabolically-Active Fat Absent — Metreleptin FDA-2014)",
-        "protein": (
-            "BSCL2 -- 11q13.1 AR -- BSCL2-398aa -- "
-            "Most-Common-CGL-Worldwide-CGL-Type-2 -- "
-            "ALL-Metabolically-Active-Fat-ABSENT-From-Birth-Subcutaneous-Visceral-Bone-Marrow -- "
-            "Mechanical-Fat-Also-Absent-Distinguishes-from-AGPAT2 -- "
-            "Serum-Leptin-VERY-LOW-Metreleptin-FDA-2014-Indicated"
-        ),
-        "locus": "11q13.1",
-        "protein_size": "398 aa",
-        "inheritance": "AR (autosomal recessive) — biallelic LOF",
-        "age_of_onset": (
-            "Birth: generalised lipoatrophy visible from neonatal period; "
-            "Absent subcutaneous fat — prominent musculature (pseudoathleticism); "
-            "Absent mechanical fat (palms, soles, periorbit, scalp) — distinguishes from CGL1/AGPAT2; "
-            "Acanthosis nigricans: insulin resistance marker; "
-            "Hepatomegaly: ectopic fat in liver → steatosis → cirrhosis risk; "
-            "Hypertriglyceridaemia: TG often >10 mmol/L by age 10 — acute pancreatitis risk; "
-            "T2D: early onset — median age 15–20 years; "
-            "Polycystic ovaries: hyperandrogenaemia in females; "
-            "Leptin: profoundly low (no fat = no leptin) → hypothalamic amenorrhoea possible; "
-            "Intellectual disability: mild-moderate in BSCL2 subset (~50%) — distinguishes from AGPAT2"
-        ),
-        "key_biomarker": (
-            "Serum leptin: VERY LOW (<2 ng/mL) — diagnostic; "
-            "Fasting TG: markedly elevated (>10–50 mmol/L); "
-            "Fasting insulin + HOMA-IR: severe insulin resistance; "
-            "HbA1c: T2D by early adulthood; "
-            "Liver enzymes: ALT/AST elevated → steatohepatitis; "
-            "Androgens: testosterone + DHEA-S elevated in females; "
-            "LH:FSH ratio: polycystic ovary pattern; "
-            "Molecular: BSCL2 biallelic sequencing — p.A212V and p.S90L common variants; "
-            "MRI whole-body fat: absent in all depots (visceral, subcutaneous, gluteal, bone marrow); "
-            "Liver ultrasound/fibroscan: hepatic steatosis grading"
-        ),
-        "pathognomonic": (
-            "Generalised lipoatrophy from birth + ABSENT mechanical fat (palms, soles, scalp) + low leptin = BSCL2; "
-            "DISTINGUISH from AGPAT2/CGL1: CGL1 PRESERVES mechanical fat; CGL2 loses ALL fat including mechanical; "
-            "Pseudoathleticism: prominent musculature due to absent subcutaneous fat + normal/increased muscle; "
-            "Intellectual disability (~50% BSCL2): NOT seen in AGPAT2 — key differentiator; "
-            "Hepatosplenomegaly: bone marrow fat also absent → extramedullary haematopoiesis in spleen; "
-            "Leptin level: < 2 ng/mL is near-diagnostic for generalised lipodystrophy; "
-            "MRI: absent signal in ALL subcutaneous/visceral/bone marrow fat compartments"
-        ),
-        "treatment": (
-            "Metreleptin (Myalept): recombinant methionyl-leptin — subcutaneous daily injection; "
-            "FDA approved 2014 for GENERALISED LIPODYSTROPHY (CGL + acquired GL); "
-            "Mechanism: replaces absent leptin → improves hypothalamic energy sensing, TG, glucose, liver fat; "
-            "Clinical trials: TG reduction ~60-70%; HbA1c improvement; liver fat reduction; "
-            "Metreleptin NOT effective for partial lipodystrophies (leptin only mildly reduced); "
-            "Diabetes management: insulin-sensitising agents (metformin, pioglitazone) + massive insulin doses; "
-            "Hypertriglyceridaemia: fibrates (first-line), omega-3, low-fat diet (<15% calories from fat); "
-            "Acute pancreatitis prevention: TG target <5 mmol/L — intensive lipid management; "
-            "Liver disease: non-alcoholic steatohepatitis surveillance (fibroscan 2-yearly); "
-            "Genetic counselling: AR — 25% recurrence; extended family screening"
-        ),
-        "critical_flags": [
-            "BSCL2-CGL2-MOST-COMMON-CGL-WORLDWIDE",
-            "BSCL2-ALL-FAT-ABSENT-INCLUDING-MECHANICAL-DISTINGUISHES-FROM-AGPAT2",
-            "BSCL2-METRELEPTIN-FDA-2014-GENERALISED-LIPODYSTROPHY",
-            "BSCL2-INTELLECTUAL-DISABILITY-50pct-NOT-IN-AGPAT2",
-            "BSCL2-TG-PANCREATITIS-RISK-TARGET-BELOW-5mmol",
-            "BSCL2-LIVER-STEATOHEPATITIS-FIBROSCAN-SURVEILLANCE",
-            "BSCL2-PSEUDOATHLETICISM-VISIBLE-FROM-BIRTH",
-        ],
-        "seed": SEED_BASE + 0,
-    },
-    # -- AGPAT2 — CGL type 1 (AR, mechanical fat preserved) ---------------------------
+ATLAS_GENES = [
     {
         "gene": "AGPAT2",
-        "alt_name": "AGPAT2 (1-AG-3-P O-acyltransferase 2 / AR — CGL1 — Mechanical Fat PRESERVED — Severe Metabolic Disease)",
         "protein": (
-            "AGPAT2 -- 9q34.3 AR -- AGPAT2-278aa -- "
-            "Berardinelli-Seip-CGL-Type-1 -- "
-            "Metabolically-Active-Fat-ABSENT-Mechanical-Fat-PRESERVED-Palms-Soles-Periorbit-Scalp -- "
-            "Severe-Hypertriglyceridaemia-T2D-Hepatomegaly -- "
-            "AGPAT2-Converts-LPA-to-PA-in-Glycerophospholipid-Synthesis-in-Adipocytes"
+            "AGPAT2 -- 9q34.3 AR -- 278aa -- 1-Acylglycerol-3-Phosphate-O-Acyltransferase-2-"
+            "31kDa-ER-Membrane-Lysophosphatidic-Acid-Acyltransferase-"
+            "CGL1-Berardinelli-Seip-Near-Complete-Fat-Absence-Metreleptin-SPECIFIC-OMIM-603100"
         ),
         "locus": "9q34.3",
-        "protein_size": "278 aa",
-        "inheritance": "AR (autosomal recessive) — biallelic LOF",
-        "age_of_onset": (
-            "Birth: generalised lipoatrophy of metabolically active depots; "
-            "PRESERVED: mechanical fat in palms, soles, periorbitally, scalp — KEY distinguishing feature vs BSCL2; "
-            "Acanthosis nigricans: insulin resistance; "
-            "Hepatomegaly: liver ectopic fat; hepatic steatosis → cirrhosis; "
-            "Hypertriglyceridaemia: TG >10 mmol/L; acute pancreatitis risk; "
-            "T2D: onset puberty/early adulthood; "
-            "No intellectual disability (distinguishes from BSCL2); "
-            "Polycystic ovary syndrome in females; "
-            "Bone cysts: metaphyseal cysts on X-ray (characteristic for CGL1)"
+        "protein_size": (
+            "278 aa / 31 kDa (AGPAT2 -- 1-acylglycerol-3-phosphate O-acyltransferase 2; "
+            "FUNCTION: enzyme in the de novo glycerophospholipid synthesis pathway (Kennedy pathway); "
+            "  Catalyses: lysophosphatidic acid (LPA) + acyl-CoA -> phosphatidic acid (PA); "
+            "  PA is the central metabolic precursor for: "
+            "    (1) Diacylglycerol (DAG) -> triacylglycerol (TAG) storage -> lipid droplet formation; "
+            "    (2) Phosphatidylcholine, phosphatidylethanolamine (membrane phospholipids); "
+            "  ER membrane localisation; highest expression in adipose tissue; "
+            "  Essential for de novo adipogenesis and fat droplet biogenesis; "
+            "AGPAT2 LOF -> CGL1 MECHANISM: "
+            "  Without functional AGPAT2: PA severely reduced -> DAG pool collapses; "
+            "  Lipid droplets cannot form in pre-adipocytes -> adipogenesis arrested; "
+            "  Near-complete absence of metabolically active adipose tissue from birth; "
+            "  Mechanical/structural adipose (palms, scalp, periarticular, orbits) partially spared; "
+            "  Consequence of absent fat: "
+            "    No leptin production -> leptin level extremely low (<1 ng/mL); "
+            "    Ectopic fat deposition: liver (severe hepatic steatosis -> cirrhosis), muscle, heart; "
+            "    Severely elevated triglycerides (500-3000 mg/dL -> pancreatitis risk); "
+            "    Extreme insulin resistance (HOMA-IR 10-80+); DM in 70-90%; "
+            "    Acanthosis nigricans (severe insulin resistance marker); "
+            "  DISTINCT from BSCL2/CGL2: mechanical fat spared in CGL1; no intellectual disability; "
+            "encoded 9q34.3; OMIM gene 603100, disease CGL1 #608594"
         ),
-        "key_biomarker": (
-            "Serum leptin: very low; "
-            "TG: markedly elevated — acute pancreatitis threshold watch; "
-            "HbA1c + HOMA-IR: severe insulin resistance; "
-            "Liver enzymes: ALT/AST elevated steatohepatitis; "
-            "X-ray: metaphyseal bone cysts — PATHOGNOMONIC for CGL1/AGPAT2; "
-            "MRI: absent metabolic fat; PRESERVED palmar/plantar/periorbit fat; "
-            "Molecular: AGPAT2 biallelic sequencing — p.R96H, p.E213K common"
+        "inheritance": (
+            "AUTOSOMAL RECESSIVE -- AGPAT2 / CONGENITAL GENERALIZED LIPODYSTROPHY TYPE 1 (CGL1): "
+            "  ONSET: congenital; near-complete absence of subcutaneous fat from birth; "
+            "  CLINICAL FEATURES: "
+            "    Muscular appearance (paradox: no fat -> visible musculature); "
+            "    Prominent superficial veins (absence of subcutaneous fat); "
+            "    Acromegaloid features (prominent jaw, large hands/feet -- GH excess from low leptin feedback); "
+            "    Hepatomegaly: severe hepatic steatosis -> cirrhosis risk (3rd-5th decade); "
+            "    Metabolic: severe hypertriglyceridemia (eruptive xanthomata + pancreatitis); "
+            "    Diabetes mellitus: 70-90%; insulin-resistant (type A extreme insulin resistance); "
+            "    Acanthosis nigricans: axillae, neck -- severe insulin resistance marker; "
+            "    Polycystic ovaries (PCOS) in females (hyperinsulinaemia); "
+            "  LEPTIN: extremely low (<1 ng/mL) -- no adipose -> no leptin source; "
+            "  MECHANICAL FAT SPARED (CGL1): palms, soles, scalp, periarticular, orbits partially preserved; "
+            "    CGL2 (BSCL2): even mechanical fat absent; more severe; "
+            "  CARDIAC: hypertrophic cardiomyopathy (ectopic myocardial fat + metabolic cardiomyopathy); "
+            "  INTELLECTUAL DISABILITY: NOT in CGL1 (distinguishes from CGL2/BSCL2); "
+            "  DIAGNOSIS: "
+            "    Clinical: congenital absence of subcutaneous fat + muscular appearance; "
+            "    Low leptin + severe hypertriglyceridemia + extreme HOMA-IR; "
+            "    Genetic: AGPAT2 sequencing; biallelic LOF mutations; "
+            "  TREATMENT: "
+            "    Metreleptin (recombinant leptin) = SPECIFIC TREATMENT: "
+            "      Replaces absent leptin -> restores leptin signalling -> reduced hyperphagia; "
+            "      Dramatically lowers triglycerides + HbA1c; improves hepatic steatosis; "
+            "      FDA/EMA approved for CGL; titrated by body weight; "
+            "    Low fat diet: reduce triglycerides; "
+            "    Insulin (diabetes) + fibrates (hypertriglyceridemia); "
+            "    Liver monitoring: annual USS + LFTs; cirrhosis screening; "
+            "  PROGNOSIS: without metreleptin: early cirrhosis + pancreatitis + cardiomyopathy; "
+            "    With metreleptin: markedly improved metabolic control"
         ),
-        "pathognomonic": (
-            "Generalised lipoatrophy from birth + PRESERVED mechanical fat + bone cysts = AGPAT2/CGL1; "
-            "DISTINGUISH from BSCL2/CGL2: CGL2 has absent mechanical fat + intellectual disability; "
-            "CGL1: preserved fat in palms, soles, periorbit, scalp — palpable fat present; "
-            "Metaphyseal bone cysts: X-ray finding PATHOGNOMONIC for CGL1 — not seen in CGL2; "
-            "No intellectual disability: AGPAT2 does NOT affect CNS; "
-            "Serum leptin: low but often higher than BSCL2 (some mechanical fat preserved)"
+        "disease_category": (
+            "CGL1-AGPAT2-METRELEPTIN-SPECIFIC-NEAR-COMPLETE-FAT-ABSENT: "
+            "  KEY RULE: congenital near-complete fat absence + low leptin + severe HTG -> CGL1/CGL2; "
+            "  METRELEPTIN SPECIFIC: replaces absent leptin -> corrects metabolic syndrome; FDA approved; "
+            "  CGL1 vs CGL2: CGL1 mechanical fat SPARED; CGL2 even mechanical fat absent; CGL1 NO intellectual disability; "
+            "  TRIGLYCERIDES 500-3000: pancreatitis risk; fibrates + low-fat diet + metreleptin; "
+            "  HEPATIC STEATOSIS: universal; progression to cirrhosis without treatment; "
+            "  INSULIN RESISTANCE EXTREME: HOMA-IR 10-80; acanthosis nigricans; DM 70-90%; "
+            "  GENETIC TESTING: AGPAT2 sequencing + MLPA; biallelic mutations confirm CGL1"
         ),
-        "treatment": (
-            "Metreleptin: FDA-approved for generalised lipodystrophy (CGL1 + CGL2) — improves TG, HbA1c, liver fat; "
-            "Hypertriglyceridaemia: fibrates (fenofibrate/bezafibrate) + very-low-fat diet; "
-            "T2D: insulin sensitisers + insulin (often massive doses needed); "
-            "Pancreatitis prevention: TG <5 mmol/L target; apheresis if TG >50 mmol/L with pancreatitis risk; "
-            "Hepatic surveillance: fibroscan every 2 years; annual liver biochemistry; "
-            "Orthopaedic: bone cysts — low risk of fracture, monitor; "
-            "Reproductive: metformin for PCOS; fertility counselling; "
-            "Genetic counselling: AR — 25% recurrence"
-        ),
-        "critical_flags": [
-            "AGPAT2-CGL1-MECHANICAL-FAT-PRESERVED-PALMS-SOLES-PERIORBIT",
-            "AGPAT2-BONE-CYSTS-METAPHYSEAL-PATHOGNOMONIC-CGL1",
-            "AGPAT2-NO-INTELLECTUAL-DISABILITY-UNLIKE-BSCL2",
-            "AGPAT2-METRELEPTIN-FDA-APPROVED-GENERALISED",
-            "AGPAT2-TG-PANCREATITIS-RISK",
-            "AGPAT2-HEPATIC-STEATOSIS-CIRRHOSIS-RISK",
-            "AGPAT2-DISTINGUISH-FROM-BSCL2-MECHANICAL-FAT-KEY",
-        ],
-        "seed": SEED_BASE + 1,
     },
-    # -- LMNA — Dunnigan FPLD type 2 (AD, most common hereditary FPLD) -----------------
     {
-        "gene": "LMNA",
-        "alt_name": "LMNA (Lamin A/C / AD — FPLD2 Dunnigan — Most Common Hereditary FPLD — Cardiac Surveillance MANDATORY — ICD Risk)",
+        "gene": "BSCL2",
         "protein": (
-            "LMNA -- 1q22 AD -- LMNA-664aa -- "
-            "Familial-Partial-Lipodystrophy-Dunnigan-FPLD2 -- "
-            "Fat-REDISTRIBUTION-Not-Absence-Limb-Gluteal-Wasting-Neck-Trunk-Face-Accumulation -- "
-            "LMNA-Laminopathy-Cardiac-Surveillance-MANDATORY-ICD-Indication-NSVT-HB-EF45 -- "
-            "Hotspot-p.R482W-p.R482Q-Lipodystrophy-Exon8-HGMD-FPLD2"
+            "BSCL2 -- 11q12.3 AR -- 462aa -- Seipin-"
+            "ER-Integral-Membrane-Protein-52kDa-Lipid-Droplet-Biogenesis-ER-Tubular-ER-Junctions-"
+            "CGL2-MOST-COMMON-MOST-SEVERE-Intellectual-Disability-30-60pct-Metreleptin-EFFECTIVE-OMIM-606158"
         ),
-        "locus": "1q22",
-        "protein_size": "664 aa",
-        "inheritance": "AD (autosomal dominant) — heterozygous missense, usually exon 8",
-        "age_of_onset": (
-            "Puberty/adolescence: limb + gluteal fat loss begins; "
-            "Fat redistribution (NOT absence): subcutaneous fat LOST from limbs/gluteal + GAINED in neck/trunk/face/labial; "
-            "Cushingoid-like face: fat accumulation in face and neck despite limb fat loss — diagnostic trap (not Cushing's); "
-            "Acanthosis nigricans + polycystic ovaries: insulin resistance; "
-            "Hypertriglyceridaemia + T2D: metabolic disease from 2nd–3rd decade; "
-            "Cardiac disease: 1st-degree heart block → complete heart block → NSVT → dilated cardiomyopathy + SCD; "
-            "Skeletal muscle: proximal myopathy possible (same LMNA gene — laminopathy spectrum); "
-            "Carpal tunnel syndrome + early atherosclerosis reported"
+        "locus": "11q12.3",
+        "protein_size": (
+            "462 aa / 52 kDa (BSCL2 / Seipin -- integral ER membrane protein; "
+            "FUNCTION: oligomeric ring structure at ER-lipid droplet contact sites; "
+            "  Seipin forms 11-mer ring at ER tubular junctions; "
+            "  Essential for lipid droplet (LD) biogenesis: "
+            "    Nucleates LD formation: concentrates TAG/DAG at ER sites where LDs bud; "
+            "    Without Seipin: LD biogenesis severely impaired or aberrant (tiny LDs, mislocalised); "
+            "  Regulates ER-LD contact: maintains protein/lipid flux between ER and growing LD; "
+            "  Expressed ubiquitously but highest in adipose + brain (explains neurological features); "
+            "  Absence -> adipose tissue cannot form and/or maintain lipid droplets -> lipodystrophy; "
+            "BSCL2 LOF -> CGL2 (MOST SEVERE AND MOST COMMON CGL): "
+            "  Virtually complete absence of ALL adipose (metabolic AND mechanical fat both absent); "
+            "    Mechanically active fat (palms, orbits) ALSO absent -- distinguishes from CGL1; "
+            "  Very low to absent leptin (<0.5 ng/mL); "
+            "  Severe ectopic fat: liver, muscle, heart -> cirrhosis, myopathy, cardiomyopathy; "
+            "  More severe metabolic phenotype than CGL1; "
+            "  INTELLECTUAL DISABILITY: 30-60% of CGL2 patients (Seipin expressed in brain); "
+            "    Not present in CGL1 (AGPAT2) -- KEY DISTINGUISHER; "
+            "  Hypertrophic cardiomyopathy: more frequent and earlier than CGL1; "
+            "  Founder mutations: p.Asn88Ser (Lebanese/Middle Eastern); "
+            "    p.Glu189Lys and others in other populations; "
+            "encoded 11q12.3; OMIM gene 606158, disease CGL2 #269700"
         ),
-        "key_biomarker": (
-            "Serum leptin: LOW-NORMAL to low (partial lipodystrophy — some fat remains); "
-            "Fasting TG: elevated; LDL: elevated (dyslipidaemia pattern); "
-            "HbA1c + HOMA-IR: insulin resistance; "
-            "ECG + Holter: PR prolongation, NSVT, heart block — MANDATORY; "
-            "Echo + cardiac MRI: LV function + fibrosis; "
-            "Serum CK: elevated if skeletal myopathy component; "
-            "Testosterone/DHEA-S: elevated females; LH:FSH; "
-            "Molecular: LMNA exon 8 hotspot (p.R482W, p.R482Q) — targeted sequencing first; "
-            "MRI body: limb fat absent; neck/trunk/face fat increased (classic redistribution pattern)"
+        "inheritance": (
+            "AUTOSOMAL RECESSIVE -- BSCL2 / CONGENITAL GENERALIZED LIPODYSTROPHY TYPE 2 (CGL2): "
+            "  ONSET: congenital; virtually complete absence of all adipose tissue; "
+            "  KEY DIFFERENCES FROM CGL1 (AGPAT2): "
+            "    1. MECHANICAL FAT ABSENT: even orbital/palmar/plantar fat gone -- more severe; "
+            "    2. INTELLECTUAL DISABILITY: 30-60% (vs 0% in CGL1) -- Seipin expressed in brain; "
+            "    3. SLIGHTLY MORE SEVERE METABOLIC: earlier/worse hepatic disease; "
+            "    4. HYPERTROPHIC CARDIOMYOPATHY: more common; earlier onset; "
+            "  CLINICAL: "
+            "    Near-complete lipoatrophy from birth; muscular appearance; prominent veins; "
+            "    Acromegaloid features; "
+            "    Hepatomegaly + severe steatohepatitis -> cirrhosis (often 2nd-3rd decade); "
+            "    Extreme hypertriglyceridemia + insulin resistance + DM in >80%; "
+            "    Pancreatitis events (eruptive xanthomata); "
+            "    PCOS in females; "
+            "    Intellectual disability: mild-moderate (IQ 50-70 range in affected cases); "
+            "  LEPTIN: near-absent (<0.5 ng/mL); "
+            "  DIAGNOSIS: "
+            "    Same as CGL1 clinically + genetic confirmation BSCL2 biallelic LOF; "
+            "    Liver biopsy if cirrhosis staging needed; "
+            "  TREATMENT: "
+            "    Metreleptin: SPECIFIC and EFFECTIVE (same as CGL1); FDA/EMA approved; "
+            "    Low-fat diet; fibrates; insulin; "
+            "    Neurological support if intellectual disability; "
+            "    Cardiac surveillance: echo annually (hypertrophic cardiomyopathy); "
+            "    Liver surveillance: annual USS + LFTs; hepatology referral; "
+            "  PROGNOSIS: more complications than CGL1; intellectual disability subset; "
+            "    Metreleptin substantially improves metabolic outcomes"
         ),
-        "pathognomonic": (
-            "Limb + gluteal fat wasting + neck/trunk/face fat accumulation + metabolic syndrome + cardiac conduction disease = LMNA-FPLD2; "
-            "DISTINGUISH from Cushing's: FPLD2 has NO cortisol excess; limb fat ABSENT (not just relatively thin); "
-            "DISTINGUISH from acquired lipodystrophy: onset puberty + AD family history + LMNA variant; "
-            "DISTINGUISH from PPARG/FPLD3: LMNA has cardiac disease; PPARG does not; "
-            "Cardiac risk: NSVT + any of (HB or EF<45% or syncope) → ICD implant recommended; "
-            "Exon 8 hotspot: p.R482W and p.R482Q account for >80% of FPLD2 — targeted testing first; "
-            "Labial fat accumulation in females: prominent labia majora from fat redistribution — pathognomonic"
+        "disease_category": (
+            "CGL2-BSCL2-MOST-COMMON-MOST-SEVERE-CGL-INTELLECTUAL-DISABILITY: "
+            "  KEY RULE: CGL2 = MOST COMMON CGL globally; MOST SEVERE; ALL fat absent (including mechanical); "
+            "  INTELLECTUAL DISABILITY 30-60%: distinguishes CGL2 from CGL1/3/4; Seipin in brain; "
+            "  METRELEPTIN: SPECIFIC and EFFECTIVE; same as CGL1; replace absent leptin; "
+            "  CARDIAC: hypertrophic cardiomyopathy more frequent + earlier than CGL1; echo annually; "
+            "  LIVER: severe steatohepatitis -> cirrhosis often 2nd-3rd decade without treatment; "
+            "  GENETIC TESTING: BSCL2 sequencing; biallelic LOF confirms CGL2"
         ),
-        "treatment": (
-            "Metreleptin: NOT routinely effective (partial lipodystrophy — leptin only moderately low; "
-            "no FDA approval for FPLD specifically — used off-label in severe cases with very low leptin); "
-            "Metabolic: metformin (insulin resistance) + fibrates (hypertriglyceridaemia) + statins (LDL); "
-            "Pioglitazone: PPARγ agonist — modest benefit for insulin resistance in FPLD2; "
-            "Cardiac: annual ECG + Holter + echo; "
-            "ICD indication: NSVT + (LBBB or HV>70ms or EF<45% or syncope) per ESC 2022 HCM/LMNA guidelines; "
-            "Pacemaker: complete heart block; "
-            "Exercise restriction: intense exertion avoided until cardiac assessment; "
-            "Genetic counselling: AD — 50% offspring risk; cascade family cardiac screening"
-        ),
-        "critical_flags": [
-            "LMNA-FPLD2-DUNNIGAN-MOST-COMMON-HEREDITARY-FPLD",
-            "LMNA-CARDIAC-SURVEILLANCE-MANDATORY-ANNUAL-ECG-HOLTER-ECHO",
-            "LMNA-ICD-INDICATION-NSVT-HB-EF45-SYNCOPE",
-            "LMNA-FAT-REDISTRIBUTION-NOT-ABSENCE-CUSHINGOID-TRAP",
-            "LMNA-EXON8-HOTSPOT-R482W-R482Q-80pct-FPLD2",
-            "LMNA-METRELEPTIN-NOT-FDA-APPROVED-FPLD-OFF-LABEL-ONLY",
-            "LMNA-LABIAL-FAT-ACCUMULATION-FEMALES-PATHOGNOMONIC",
-        ],
-        "seed": SEED_BASE + 2,
     },
-    # -- PPARG — FPLD type 3 (AD, dominant negative, TZD target) -----------------------
-    {
-        "gene": "PPARG",
-        "alt_name": "PPARG (PPARγ / AD — FPLD3 — Dominant Negative LBD Mutations — TZD Direct Target — Severe Insulin Resistance)",
-        "protein": (
-            "PPARG -- 3p25.2 AD -- PPARG-505aa -- "
-            "Familial-Partial-Lipodystrophy-Type-3-FPLD3 -- "
-            "Dominant-Negative-Ligand-Binding-Domain-Mutations-Impair-PPARgamma-Coactivation -- "
-            "TZD-Thiazolidinedione-Is-Direct-PPARgamma-Ligand-Dominant-Negative-Impairs-TZD-Benefit -- "
-            "Severe-Insulin-Resistance-Dyslipidaemia-Partial-Limb-Fat-Loss"
-        ),
-        "locus": "3p25.2",
-        "protein_size": "505 aa",
-        "inheritance": "AD (autosomal dominant) — heterozygous missense (usually LBD)",
-        "age_of_onset": (
-            "Adult onset: partial fat loss from limbs/buttocks; "
-            "Onset often 20s–30s; "
-            "Hypertriglyceridaemia: often severe; acute pancreatitis risk; "
-            "Severe insulin resistance: T2D; "
-            "Hyperandrogenaemia in females: PCOS; "
-            "Fat redistribution: some visceral fat increase; "
-            "Variable expressivity: penetrance variable — heterozygous relatives may be asymptomatic or have T2D only; "
-            "Hepatic steatosis: ectopic fat in liver; "
-            "Muscle insulin resistance: IRS/PI3K signalling impaired downstream of absent PPARγ transcription"
-        ),
-        "key_biomarker": (
-            "Serum leptin: low-normal; "
-            "TG: markedly elevated; LDL-C: elevated; HDL-C: low; "
-            "HbA1c + HOMA-IR: severe insulin resistance; "
-            "Testosterone/DHEA-S elevated females; "
-            "Liver enzymes: steatohepatitis pattern; "
-            "Molecular: PPARG LBD hotspot variants — p.P467L, p.V290M, p.R397C most common; "
-            "Adiponectin: markedly low (PPARγ drives adiponectin expression); "
-            "Functional assay: dominant negative effect on PPARγ-mediated transcription"
-        ),
-        "pathognomonic": (
-            "Partial lipodystrophy (limb) + severe insulin resistance + very low adiponectin + PPARG LBD variant = FPLD3; "
-            "DISTINGUISH from LMNA-FPLD2: PPARG lacks cardiac conduction disease; "
-            "DISTINGUISH from acquired partial lipodystrophy: PPARG has family history + onset 2nd–3rd decade; "
-            "TZD (pioglitazone/rosiglitazone): these drugs are PPARγ ligands — dominant negative IMPAIRS response; "
-            "Adiponectin: severely low — PPARγ is the master regulator of adiponectin gene (ADIPOQ); "
-            "Variable expressivity: family members may have T2D/dyslipidaemia without visible fat loss"
-        ),
-        "treatment": (
-            "Pioglitazone/TZD: direct PPARγ ligand — may partially overcome dominant negative (clinical effect variable); "
-            "Some patients respond; others do not — trial warranted; "
-            "Metformin: insulin sensitiser for T2D; "
-            "Fibrates + omega-3: hypertriglyceridaemia; acute pancreatitis prevention; "
-            "Statin: LDL-C management; "
-            "Metreleptin: not typically effective (partial lipodystrophy; leptin not severely reduced); "
-            "Hepatic: NASH management (metabolic approach); "
-            "Genetic counselling: AD — 50% recurrence; variable expressivity — screen relatives for T2D/dyslipidaemia"
-        ),
-        "critical_flags": [
-            "PPARG-FPLD3-DOMINANT-NEGATIVE-LBD-MUTATIONS",
-            "PPARG-TZD-DIRECT-TARGET-DOMINANT-NEGATIVE-IMPAIRS-RESPONSE",
-            "PPARG-ADIPONECTIN-MARKEDLY-LOW-PPARgamma-MASTER-REGULATOR",
-            "PPARG-NO-CARDIAC-DISEASE-UNLIKE-LMNA",
-            "PPARG-VARIABLE-EXPRESSIVITY-FAMILY-T2D-SCREEN",
-            "PPARG-PANCREATITIS-TG-MONITORING-MANDATORY",
-            "PPARG-P467L-V290M-R397C-LBD-HOTSPOTS",
-        ],
-        "seed": SEED_BASE + 3,
-    },
-    # -- PLIN1 — FPLD type 4 (AD, severe hypertriglyceridaemia) -----------------------
-    {
-        "gene": "PLIN1",
-        "alt_name": "PLIN1 (Perilipin-1 / AD — FPLD4 — Severe Hypertriglyceridaemia TG>20mmol — Unregulated Lipolysis — Delayed Diagnosis)",
-        "protein": (
-            "PLIN1 -- 15q26.1 AD -- PLIN1-522aa -- "
-            "Familial-Partial-Lipodystrophy-Type-4-FPLD4 -- "
-            "Perilipin-1-Scaffolds-Lipid-Droplet-Surface-Loss-Causes-Unregulated-Lipolysis -- "
-            "Severe-Hypertriglyceridaemia-TG-Often-Above-20mmol-Pancreatitis-Risk -- "
-            "Delayed-Diagnosis-Subcutaneous-Fat-Loss-Subtle-Insulin-Resistance-Severe"
-        ),
-        "locus": "15q26.1",
-        "protein_size": "522 aa",
-        "inheritance": "AD (autosomal dominant) — heterozygous frameshift/premature stop",
-        "age_of_onset": (
-            "Adult onset (typically 3rd–4th decade); "
-            "Partial fat loss from limbs/buttocks — often MILD and easily overlooked; "
-            "Very severe hypertriglyceridaemia: TG >20–50 mmol/L common — pancreatitis major risk; "
-            "Ectopic fat: liver (steatohepatitis), muscle, pancreas; "
-            "Insulin resistance: severe despite modest visible lipodystrophy; "
-            "PLIN1 normally gates lipolysis (HSL/ATGL activation); absent → uncontrolled FFA release; "
-            "Free fatty acid spillover: ectopic fat deposition; "
-            "T2D: usually present; "
-            "Family history: often multiple members with severe hypertriglyceridaemia labelled 'familial hypertriglyceridaemia'"
-        ),
-        "key_biomarker": (
-            "TG: MARKEDLY ELEVATED >20 mmol/L — may exceed 50 mmol/L; "
-            "HDL-C: very low; "
-            "HbA1c + HOMA-IR: severe insulin resistance; "
-            "Free fatty acids (FFA): elevated — unregulated lipolysis; "
-            "Leptin: low-normal; "
-            "Liver enzymes: NASH pattern; "
-            "Molecular: PLIN1 sequencing — frameshift/premature stop in C-terminal domain; "
-            "Adiponectin: low; "
-            "Lipase activity: normal (HSL/ATGL normal — regulatory protein absent)"
-        ),
-        "pathognomonic": (
-            "Severe hypertriglyceridaemia (>20 mmol/L) + mild partial lipodystrophy + family history pancreatitis = PLIN1; "
-            "PLIN1 diagnosis is often missed: fat loss is subtle (partial, limb) — metabolic disease is the presenting feature; "
-            "Unregulated lipolysis: FFA spillover → ectopic fat everywhere → insulin resistance; "
-            "Distinguish from multifactorial hypertriglyceridaemia: PLIN1 has family history + lipodystrophy phenotype; "
-            "Pancreatitis prevention: TG must be aggressively managed — fibrates mandatory; "
-            "Frameshift/truncating variants: C-terminal PKA-binding domain most clinically significant"
-        ),
-        "treatment": (
-            "Fibrates (fenofibrate/bezafibrate): MANDATORY — first-line for TG reduction; "
-            "Omega-3 fatty acids: high-dose (4g/day EPA/DHA); "
-            "Very-low-fat diet (<15% of calories as fat); "
-            "Pancreatitis prevention: TG target <5 mmol/L — hospital admission + insulin infusion if >50 mmol/L; "
-            "Metformin: insulin resistance; "
-            "Metreleptin: not typically effective (partial lipodystrophy); "
-            "Volanesorsen (antisense oligonucleotide for APOC3): investigational but may help severe cases; "
-            "Hepatic NASH: metabolic control; "
-            "Genetic counselling: AD — 50% recurrence; family screening for hypertriglyceridaemia"
-        ),
-        "critical_flags": [
-            "PLIN1-TG-ABOVE-20mmol-PANCREATITIS-MANDATORY-MANAGEMENT",
-            "PLIN1-DELAYED-DIAGNOSIS-SUBTLE-FAT-LOSS",
-            "PLIN1-UNREGULATED-LIPOLYSIS-FFA-SPILLOVER",
-            "PLIN1-FIBRATES-OMEGA3-MANDATORY-TG-CONTROL",
-            "PLIN1-FAMILY-HISTORY-PANCREATITIS-SCREEN",
-            "PLIN1-ECTOPIC-FAT-LIVER-MUSCLE-PANCREAS",
-            "PLIN1-FRAMESHIFT-C-TERMINAL-DOMAIN-MOST-COMMON",
-        ],
-        "seed": SEED_BASE + 4,
-    },
-    # -- AKT2 — AKT2 GOF/LOF lipodystrophy + severe insulin resistance ----------------
-    {
-        "gene": "AKT2",
-        "alt_name": "AKT2 (AKT Serine/Threonine Kinase 2 / AD — LOF Severe Insulin Resistance + Partial Lipodystrophy — GOF Hypoglycaemia)",
-        "protein": (
-            "AKT2 -- 19q13.2 AD -- AKT2-481aa -- "
-            "PI3K-AKT2-GLUT4-Central-Insulin-Signalling-Node -- "
-            "LOF-AD-Severe-Insulin-Resistance-Partial-Lipodystrophy-T2D -- "
-            "GOF-AD-Severe-Hypoglycaemia-Macrosomia-Donohue-Rabson-Mendenhall-Overlap -- "
-            "mTOR-S6K-FOXO-Downstream-AKT2-Substrate-Phosphorylation"
-        ),
-        "locus": "19q13.2",
-        "protein_size": "481 aa",
-        "inheritance": "AD (autosomal dominant) — both GOF and LOF variants described",
-        "age_of_onset": (
-            "LOF (more common clinical presentation): "
-            "Adult onset severe insulin resistance + partial lipodystrophy; T2D; "
-            "Fat loss from limbs; visceral fat accumulation; "
-            "Acanthosis nigricans; PCOS females; "
-            "GOF (de novo): "
-            "Neonatal: macrosomia + severe generalised hypoglycaemia (persistent neonatal hypoglycaemia); "
-            "GOF AKT2: constitutively active insulin signalling → hypoglycaemia + GLUT4 upregulation; "
-            "GOF phenotype overlaps with Donohue syndrome and Rabson-Mendenhall syndrome but different mechanism; "
-            "AKT2 is the critical kinase: PI3K→PIP3→PDK1→AKT2→GLUT4 vesicle translocation to plasma membrane"
-        ),
-        "key_biomarker": (
-            "LOF: fasting insulin MARKEDLY elevated; HOMA-IR >10; HbA1c elevated; "
-            "C-peptide elevated (not insulin deficiency); "
-            "Leptin: low-normal (partial lipodystrophy); "
-            "GOF: plasma glucose VERY LOW (<2 mmol/L); insulin: inappropriately elevated relative to glucose; "
-            "C-peptide: suppressed in GOF (hypoglycaemia is driven by AKT2 not pancreatic insulin); "
-            "Molecular: AKT2 sequencing — LOF (p.R274H) vs GOF (p.E17K, p.W80R) variants; "
-            "IGFBP-1: low (insulin-stimulated FOXO1 inhibition reduces IGFBP-1 transcription); "
-            "Adiponectin: low"
-        ),
-        "pathognomonic": (
-            "Severe insulin resistance + partial lipodystrophy (limb) + AD family history + AKT2 variant = AKT2-LOF; "
-            "Neonatal macrosomia + persistent hypoglycaemia unresponsive to glucose + AKT2 GOF = AKT2-GOF; "
-            "DISTINGUISH LOF from LMNA: AKT2 has no cardiac disease; "
-            "DISTINGUISH LOF from PPARG: AKT2 is a kinase not nuclear receptor — TZD therapy not indicated; "
-            "GOF trap: persistent neonatal hypoglycaemia → workup for hyperinsulinism → AKT2 GOF missed unless sequenced; "
-            "Diazoxide resistance: GOF AKT2 hypoglycaemia may not respond to diazoxide (different from KATP-HI)"
-        ),
-        "treatment": (
-            "LOF: metformin (first-line insulin sensitiser); "
-            "mTOR inhibitors (rapamycin/sirolimus): investigational — inhibit downstream mTOR which is overactive in AKT2-LOF; "
-            "Fibrates + statins: dyslipidaemia; "
-            "GLP-1 agonists + SGLT-2 inhibitors: T2D management; "
-            "Metreleptin: not standard (partial lipodystrophy); "
-            "GOF: diazoxide (may work partially); "
-            "Octreotide: suppresses GLP-1 downstream; "
-            "Sirolimus: mTOR inhibition reduces constitutive AKT2 signalling — GOF responds better than LOF; "
-            "Genetic counselling: AD — 50% recurrence; distinguish GOF vs LOF critical for management"
-        ),
-        "critical_flags": [
-            "AKT2-LOF-SEVERE-INSULIN-RESISTANCE-PARTIAL-LIPODYSTROPHY",
-            "AKT2-GOF-NEONATAL-HYPOGLYCAEMIA-MACROSOMIA-DIAZOXIDE-MAY-FAIL",
-            "AKT2-DISTINGUISH-LOF-FROM-GOF-CRITICAL-OPPOSITE-PHENOTYPES",
-            "AKT2-MTOR-SIROLIMUS-INVESTIGATIONAL",
-            "AKT2-NO-CARDIAC-DISEASE-UNLIKE-LMNA",
-            "AKT2-C-PEPTIDE-SUPPRESSED-IN-GOF-NOT-PANCREATIC",
-            "AKT2-DIAZOXIDE-RESISTANCE-GOF-KATP-CHANNEL-INTACT",
-        ],
-        "seed": SEED_BASE + 5,
-    },
-    # -- CAV1 — CGL type 3 + FPLD7 (AR/AD, PAH overlap) ------------------------------
     {
         "gene": "CAV1",
-        "alt_name": "CAV1 (Caveolin-1 / AR CGL3 + AD FPLD7 — PAH Overlap — Caveolae ABSENT — Check BMPR2 If PAH Coexists)",
         "protein": (
-            "CAV1 -- 7q31.2 AR/AD -- CAV1-178aa -- "
-            "AR-Biallelic-LOF-CGL-Type-3-Generalised-Lipoatrophy-PAH-Overlap -- "
-            "AD-Heterozygous-FPLD7-Partial-Lipodystrophy-Acquired-Phenotype -- "
-            "Caveolae-Absent-Plasma-Membrane-Invaginations-DPPIV-Cholesterol-eNOS-Signalling -- "
-            "BMPR2-Panel-If-PAH-Coexists-CAV1-Not-Commonest-Hereditary-PAH-Gene"
+            "CAV1 -- 7q31.2 AR -- 178aa -- Caveolin-1-"
+            "21kDa-Integral-Membrane-Protein-Caveolae-Scaffold-Cholesterol-Sphingolipid-Raft-"
+            "CGL3-Milder-CGL-Caveolae-Absent-EM-PATHOGNOMONIC-Pulmonary-Arterial-Hypertension-OMIM-601047"
         ),
         "locus": "7q31.2",
-        "protein_size": "178 aa",
-        "inheritance": "AR (biallelic) for CGL3; AD (heterozygous) for FPLD7",
-        "age_of_onset": (
-            "CGL3 (AR): generalised lipoatrophy from birth; "
-            "Mechanical fat: variable — some preserved (intermediate between CGL1 and CGL2); "
-            "PAH: pulmonary arterial hypertension develops in subset — median age 20–35 years; "
-            "Dyslipidaemia + insulin resistance + T2D; "
-            "Hepatomegaly: steatohepatitis; "
-            "FPLD7 (AD): partial lipodystrophy adult onset; milder metabolic disease than CGL3; "
-            "Female sex: females more severely affected in both AR and AD forms; "
-            "Caveolae absent: affects lipid trafficking, eNOS signalling, mechano-sensing"
+        "protein_size": (
+            "178 aa / 21 kDa (CAV1 -- Caveolin-1; integral plasma membrane protein; "
+            "FUNCTION: principal structural protein of caveolae; "
+            "  Caveolae: flask-shaped plasma membrane invaginations (50-100 nm); "
+            "  Caveolin-1 inserts into inner membrane leaflet via hairpin hydrophobic domain; "
+            "  Oligomerises into 7-14-mer complexes -> scaffolds caveolae; "
+            "  CAVEOLAE FUNCTIONS: "
+            "    Lipid regulation: cholesterol + sphingolipid trafficking; "
+            "    Lipid droplet formation and dynamics; "
+            "    Signal transduction: concentrates and regulates receptor tyrosine kinases, eNOS, G-proteins; "
+            "    Endocytosis: caveolae-dependent endocytosis (distinct from clathrin); "
+            "    Mechanosensing: plasma membrane tension sensing; "
+            "  ADIPOCYTE: caveolae particularly abundant in adipocytes; "
+            "    CAV1 essential for adipocyte caveolae -> lipid droplet regulation; "
+            "  PULMONARY ENDOTHELIUM: CAV1 regulates eNOS -> NO production -> pulmonary vascular tone; "
+            "    CAV1 deficiency -> eNOS dysregulation -> pulmonary arterial hypertension (PAH); "
+            "CAV1 LOF -> CGL3: "
+            "  Milder than CGL1/CGL2: partial lipoatrophy (metabolically active fat mainly affected); "
+            "  Caveolae absent on electron microscopy -- PATHOGNOMONIC for CAV1 and CAVIN1 mutations; "
+            "  PAH: 10-20% of CGL3 patients -- unique complication not in CGL1/CGL2; "
+            "encoded 7q31.2; OMIM gene 601047, disease CGL3 #612526"
         ),
-        "key_biomarker": (
-            "Serum leptin: low (generalised) or low-normal (partial); "
-            "TG + HbA1c: metabolic disease markers; "
-            "Echocardiogram + right heart catheterisation: PAH screening (TR velocity; mPAP if echo abnormal); "
-            "Electron microscopy of fibroblasts: caveolae absent — diagnostic if available; "
-            "Molecular: CAV1 biallelic sequencing for CGL3; heterozygous for FPLD7; "
-            "BMPR2 panel: if PAH prominent, check BMPR2 + other PAH genes (CAV1 rare cause of PAH); "
-            "Adiponectin: low; "
-            "LFTs: hepatic steatosis"
+        "inheritance": (
+            "AUTOSOMAL RECESSIVE -- CAV1 / CONGENITAL GENERALIZED LIPODYSTROPHY TYPE 3 (CGL3): "
+            "  ONSET: congenital but milder than CGL1/CGL2; "
+            "  PHENOTYPE: "
+            "    Generalised lipoatrophy (mainly metabolically active fat; some mechanical fat spared); "
+            "    Similar to CGL1 but metabolic features generally milder; "
+            "    Hypertriglyceridemia + insulin resistance + DM (as in CGL1/CGL2 but less severe); "
+            "    Hepatic steatosis present; "
+            "    No intellectual disability; "
+            "  PATHOGNOMONIC FINDING: "
+            "    CAVEOLAE ABSENT on electron microscopy (skin biopsy, muscle biopsy); "
+            "    No flask-shaped membrane invaginations visible -> confirms CAV1 (or CAVIN1) mutation; "
+            "    Normal caveolae requires BOTH CAV1 and CAVIN1; either absent -> caveolae absent; "
+            "  PULMONARY ARTERIAL HYPERTENSION (PAH): "
+            "    Unique to CGL3 among CGL types; "
+            "    CAV1 regulates eNOS in pulmonary endothelium -> CAV1 LOF -> eNOS dysregulation -> PAH; "
+            "    Screen with ECHO for TR jet velocity; RHC if elevated; "
+            "  LEPTIN: low (but generally higher than CGL1/CGL2 as some fat preserved); "
+            "  DIAGNOSIS: "
+            "    Clinical lipoatrophy + absent caveolae on EM + genetic confirmation; "
+            "    CAV1 sequencing; biallelic LOF; "
+            "    Pulmonary evaluation: echo at diagnosis, annually; "
+            "  TREATMENT: "
+            "    Metreleptin: effective (less studied than CGL1/2 but used); "
+            "    Low-fat diet; fibrates for HTG; "
+            "    PAH management if confirmed: sildenafil, bosentan (as for PAH); "
+            "  PROGNOSIS: better than CGL1/2; PAH major complication to monitor"
         ),
-        "pathognomonic": (
-            "Generalised lipoatrophy + PAH (variable) + absent caveolae on EM = CAV1-CGL3; "
-            "DISTINGUISH from CGL1/AGPAT2: CAV1 may have PAH; AGPAT2 has bone cysts not PAH; "
-            "DISTINGUISH from CGL2/BSCL2: BSCL2 has intellectual disability; CAV1 does not; "
-            "PAH + CGL phenotype: RARE combination — CAV1 should be sequenced; "
-            "Note: CAV1 is also listed in hereditary PAH atlas (minority cause of PAH); "
-            "FPLD7 (AD): female predominance; metabolic syndrome without severe lipoatrophy; "
-            "Caveolae absent: key mechanistic finding on electron microscopy of fibroblasts or fat"
+        "disease_category": (
+            "CGL3-CAV1-CAVEOLAE-ABSENT-EM-PATHOGNOMONIC-PAH: "
+            "  KEY RULE: CGL3 milder than CGL1/CGL2; CAVEOLAE ABSENT on EM = pathognomonic (also in CAVIN1/CGL4); "
+            "  PAH: unique to CGL3 among CGL subtypes; screen with ECHO at diagnosis; treat if confirmed; "
+            "  NO INTELLECTUAL DISABILITY: distinguishes from CGL2 (BSCL2); "
+            "  ELECTRON MICROSCOPY: absence of flask-shaped caveolae in skin/muscle biopsy confirms CAV1; "
+            "  METRELEPTIN: effective; same approach as CGL1/2; "
+            "  GENETIC TESTING: CAV1 sequencing; biallelic LOF confirms CGL3"
         ),
-        "treatment": (
-            "CGL3 metabolic: metreleptin (generalised lipodystrophy — FDA approved); fibrates; metformin; "
-            "PAH: ERA (bosentan/ambrisentan) + PDE5i (sildenafil) + prostacyclin (if severe) — standard PAH protocol; "
-            "PAH risk stratification: annual echo from diagnosis; RHC if TR velocity elevated; "
-            "FPLD7: metformin + fibrates + statins; metreleptin not typically effective; "
-            "Liver: NASH management; "
-            "Genetic counselling: AR — 25% CGL3; AD — 50% FPLD7; "
-            "Distinguish AR vs AD for family planning; PAH surveillance for all CAV1 biallelic"
-        ),
-        "critical_flags": [
-            "CAV1-CGL3-AR-PAH-OVERLAP-SCREEN-ALL-CGL3-PATIENTS",
-            "CAV1-CAVEOLAE-ABSENT-PATHOGNOMONIC-ON-EM",
-            "CAV1-BMPR2-PANEL-IF-PAH-PROMINENT",
-            "CAV1-AR-CGL3-VS-AD-FPLD7-DIFFERENT-PHENOTYPES",
-            "CAV1-METRELEPTIN-FOR-GENERALISED-CGL3-FORM",
-            "CAV1-FEMALE-SEX-MORE-SEVERELY-AFFECTED",
-            "CAV1-PAH-ERA-PDE5I-PROSTACYCLIN-STANDARD-PROTOCOL",
-        ],
-        "seed": SEED_BASE + 6,
     },
-    # -- ZMPSTE24 — Mandibuloacral dysplasia type B (AR, prelamin A accumulation) ------
     {
-        "gene": "ZMPSTE24",
-        "alt_name": "ZMPSTE24 (Zinc Metalloprotease STE24 / AR — MADB — Lipodystrophy + Progeroid + Bone — Prelamin A Accumulation — Distinguish from LMNA)",
+        "gene": "CAVIN1",
         "protein": (
-            "ZMPSTE24 -- 1p34.2 AR -- ZMPSTE24-475aa -- "
-            "Mandibuloacral-Dysplasia-Type-B-MADB-Lipodystrophy-Progeroid-Bone -- "
-            "Prelamin-A-Accumulation-ZMPSTE24-Cleaves-Farnesylated-Prelamin-A-Last-18aa -- "
-            "DISTINGUISH-from-LMNA-FPLD2-AR-vs-AD-Mandibular-Hypoplasia-Acro-Osteolysis-Progeroid -- "
-            "HGPB-Progeria-Like-Restricted-Growth-Alopecia-Joint-Contractures"
+            "CAVIN1 -- 17q21.2 AR -- 392aa -- Cavin-1-PTRF-"
+            "Polymerase-I-and-Transcript-Release-Factor-44kDa-Caveolae-Coat-Protein-"
+            "CGL4-ONLY-CGL-Myopathy-CK-Elevated-Cardiac-Arrhythmia-Muscular-Dystrophy-Distinguishes-OMIM-603198"
         ),
-        "locus": "1p34.2",
-        "protein_size": "475 aa",
-        "inheritance": "AR (autosomal recessive) — biallelic LOF",
-        "age_of_onset": (
-            "Infancy/childhood: lipodystrophy + progeroid features; "
-            "Lipoatrophy: generalised OR partial (TYPE B = generalised includes trunk; TYPE A/MADA = LMNA partial); "
-            "Progeroid features: premature ageing appearance, alopecia (scalp hair loss), skin atrophy; "
-            "Bone anomalies: mandibular hypoplasia (small jaw) + maxillary hypoplasia; "
-            "Acro-osteolysis: resorption of clavicular ends + distal phalanges (acroosteolysis) PATHOGNOMONIC; "
-            "Joint contractures: digits + elbows; "
-            "Restricted growth: short stature; "
-            "Metabolic: insulin resistance + T2D + dyslipidaemia (less severe than CGL1/2); "
-            "Prelamin A accumulation: ZMPSTE24 fails to cleave 18 C-terminal aa → farnesylated prelamin A persists"
+        "locus": "17q21.2",
+        "protein_size": (
+            "392 aa / 44 kDa (CAVIN1 / PTRF -- polymerase-I and transcript release factor; "
+            "FUNCTION: coat protein required for caveolae biogenesis and stability; "
+            "  Cavin1 is the founding member of the cavin family (cavin1-4); "
+            "  Co-localises with Caveolin-1 at caveolae; "
+            "  Mechanism: cavin1 oligomers coat the cytoplasmic face of caveolae; "
+            "    Without cavin1: caveolin-1 cannot form stable caveolae -> caveolae absent; "
+            "    Cavin1 KO mice: caveolae absent, same as CAV1 KO -- confirming essential role; "
+            "  MUSCLE: caveolae particularly abundant in skeletal and cardiac muscle; "
+            "    Caveolae function in muscle: membrane repair, T-tubule organisation, mechanosensing; "
+            "    CAVIN1 LOF -> caveolae absent in muscle -> MYOPATHY; "
+            "  ADIPOSE: same as CAV1 -- caveolae absent -> lipodystrophy; "
+            "CGL4 DISTINGUISHING FEATURES (unique among all CGL types): "
+            "  1. SKELETAL MUSCLE INVOLVEMENT: myopathy (muscle weakness + wasting); "
+            "     CK markedly elevated (500-5000 IU/L); "
+            "     Muscular dystrophy phenotype (limb-girdle distribution); "
+            "     NOT present in CGL1/2/3; "
+            "  2. CARDIAC ARRHYTHMIA: conduction abnormalities; sudden cardiac death risk; "
+            "     Likely: caveolae absent in cardiomyocytes -> ion channel dysregulation -> arrhythmia; "
+            "  3. CAVEOLAE ABSENT on EM (same as CAV1/CGL3); "
+            "encoded 17q21.2; OMIM gene 603198, disease CGL4 #613327"
         ),
-        "key_biomarker": (
-            "X-ray: mandibular hypoplasia + acroosteolysis (clavicle + distal phalanges) PATHOGNOMONIC for MADB; "
-            "Serum prelamin A: elevated (Western blot/ELISA — research tool); "
-            "Fasting insulin + HbA1c: insulin resistance; "
-            "TG + HDL: dyslipidaemia; "
-            "Molecular: ZMPSTE24 biallelic sequencing — p.W340* common founder; "
-            "Skin biopsy fibroblasts: nuclear blebbing/misshapen nuclei on microscopy (progerin-like effect); "
-            "Echocardiogram: cardiomyopathy surveillance (less common than LMNA but monitor); "
-            "Leptin: low-normal"
+        "inheritance": (
+            "AUTOSOMAL RECESSIVE -- CAVIN1 / CONGENITAL GENERALIZED LIPODYSTROPHY TYPE 4 (CGL4): "
+            "  ONSET: congenital; "
+            "  LIPODYSTROPHY FEATURES: "
+            "    Generalised lipoatrophy (metabolically active fat absent); similar to CGL3 in severity; "
+            "    Hypertriglyceridemia + insulin resistance + DM (moderate-severe); "
+            "    Hepatic steatosis; "
+            "    Low leptin; "
+            "  UNIQUE CGL4 FEATURES (not in CGL1/2/3): "
+            "    1. SKELETAL MUSCLE MYOPATHY: "
+            "       Muscle weakness (limb-girdle distribution) + wasting; "
+            "       CK markedly elevated (500-5000 IU/L) -- KEY BIOMARKER; "
+            "       Muscular dystrophy phenotype; muscle biopsy: dystrophic changes; "
+            "       Diaphragm involvement: respiratory insufficiency possible; "
+            "    2. CARDIAC ARRHYTHMIA: "
+            "       Conduction abnormalities on ECG (PR prolongation, BBB, QT prolongation); "
+            "       Sudden cardiac death reported -- require cardiac monitoring; "
+            "       Annual Holter/ECG + echocardiogram; "
+            "    3. CAVEOLAE ABSENT on EM: shared with CGL3 (CAV1); "
+            "  DISTINGUISHING FROM CGL3: "
+            "    CGL4 (CAVIN1): myopathy + elevated CK + cardiac arrhythmia; "
+            "    CGL3 (CAV1): PAH but NO myopathy, NO elevated CK; "
+            "    Both: caveolae absent on EM; "
+            "  DIAGNOSIS: "
+            "    Clinical: lipoatrophy + myopathy + elevated CK; "
+            "    Caveolae absent on EM (muscle or skin biopsy); "
+            "    CAVIN1 sequencing; biallelic LOF; "
+            "  TREATMENT: "
+            "    Metreleptin: effective for metabolic features; "
+            "    Low-fat diet; fibrates; insulin; "
+            "    Cardiac surveillance: ECG + Holter + echo annually; ICD if significant arrhythmia; "
+            "    Respiratory monitoring: spirometry if diaphragm involvement; "
+            "    Physiotherapy for myopathy; "
+            "  PROGNOSIS: cardiac arrhythmia = main mortality risk"
         ),
-        "pathognomonic": (
-            "Lipodystrophy + progeroid appearance + mandibular hypoplasia + acroosteolysis = ZMPSTE24/MADB; "
-            "DISTINGUISH from LMNA-FPLD2: ZMPSTE24 is AR + progeroid + bone anomalies; LMNA-FPLD2 is AD + cardiac; "
-            "DISTINGUISH from Hutchinson-Gilford progeria (HGPS): HGPS is de novo LMNA p.G608G; ZMPSTE24 is biallelic AR; "
-            "Acroosteolysis: X-ray finding — clavicle resorption + distal phalangeal resorption PATHOGNOMONIC; "
-            "Mandibuloacral dysplasia TYPE A vs B: TYPE A = LMNA AR (partial FPLD); TYPE B = ZMPSTE24 AR (generalised); "
-            "Prelamin A pathway: ZMPSTE24 is the protease step; LMNA encodes the substrate — both affect nuclear lamina"
+        "disease_category": (
+            "CGL4-CAVIN1-ONLY-CGL-WITH-MYOPATHY-CK-ELEVATED-CARDIAC-ARRHYTHMIA: "
+            "  PATHOGNOMONIC: CGL + myopathy + elevated CK = CGL4 (CAVIN1) -- not in CGL1/2/3; "
+            "  CARDIAC ARRHYTHMIA: sudden death risk; ECG + Holter + echo annual surveillance mandatory; "
+            "  CK 500-5000 IU/L: key biomarker distinguishing CGL4 from other CGLs; "
+            "  CAVEOLAE ABSENT on EM: shared with CGL3 (CAV1); both cavin1 + cav1 needed; "
+            "  DISTINGUISHES from CGL3: CGL4 = myopathy + arrhythmia; CGL3 = PAH (no myopathy); "
+            "  GENETIC TESTING: CAVIN1 sequencing; biallelic LOF confirms CGL4"
         ),
-        "treatment": (
-            "Metabolic: metformin for insulin resistance; fibrates for dyslipidaemia; "
-            "Metreleptin: if generalised lipodystrophy + very low leptin — may be beneficial; "
-            "Farnesyltransferase inhibitors (FTIs): e.g. lonafarnib — prevents farnesylation of prelamin A; "
-            "FDA approved lonafarnib for HGPS (Hutchinson-Gilford) — may benefit ZMPSTE24 by same mechanism; "
-            "Statin: additional effect — statins reduce farnesyl pyrophosphate production; "
-            "Dental/maxillofacial: orthodontic management for mandibular hypoplasia; "
-            "Orthopaedic: physio for joint contractures; "
-            "Cardiac: echo surveillance; "
-            "Genetic counselling: AR — 25% recurrence; "
-            "Distinguish from HGPS: ZMPSTE24 less fatal than HGPS (median survival HGPS ~14yr; MADB longer)"
+    },
+    {
+        "gene": "LMNA",
+        "protein": (
+            "LMNA -- 1q22 AD -- 664aa -- Lamin-A-C-"
+            "74kDa-Nuclear-Lamina-Type-V-Intermediate-Filament-"
+            "FPLD2-Dunnigan-Syndrome-MOST-COMMON-FPLD-Arg482-Hotspot-Females-More-Severe-Cardiomyopathy-OMIM-150330"
         ),
-        "critical_flags": [
-            "ZMPSTE24-ACROOSTEOLYSIS-CLAVICLE-DISTAL-PHALANGES-PATHOGNOMONIC",
-            "ZMPSTE24-MADB-MANDIBULAR-HYPOPLASIA-PROGEROID",
-            "ZMPSTE24-AR-UNLIKE-LMNA-FPLD2-AD",
-            "ZMPSTE24-PRELAMIN-A-ACCUMULATION-FARNESYL-STAYS",
-            "ZMPSTE24-LONAFARNIB-FTI-HGPS-APPROVED-MAY-BENEFIT",
-            "ZMPSTE24-MADA-LMNA-VS-MADB-ZMPSTE24-BOTH-MANDIBULOACRAL",
-            "ZMPSTE24-DISTINGUISH-FROM-HGPS-LMNA-DE-NOVO-VS-BIALLELIC",
-        ],
-        "seed": SEED_BASE + 7,
+        "locus": "1q22",
+        "protein_size": (
+            "664 aa / 74 kDa (LMNA -- Lamin A/C; type V intermediate filament protein; "
+            "FUNCTION: structural component of the nuclear lamina (inner nuclear membrane scaffold); "
+            "  Lamin A and Lamin C: two major isoforms from LMNA (alternative splicing); "
+            "    Lamin A: 664 aa; includes CaaX motif (farnesylation + proteolytic processing); "
+            "    Lamin C: 572 aa; shorter isoform; not farnesylated; "
+            "  Nuclear lamina: meshwork underlying inner nuclear membrane; "
+            "    Functions: nuclear shape + mechanical stability; heterochromatin organisation; "
+            "    Gene expression regulation: lamin-associated domains (LADs) = transcriptionally silent; "
+            "    DNA repair, replication, cell cycle; "
+            "  Adipocyte lamin A/C: regulates adipogenic gene expression (PPARgamma, C/EBPalpha LADs); "
+            "FPLD2 (DUNNIGAN SYNDROME) -- Arg482 HOTSPOT MUTATIONS: "
+            "  p.Arg482Trp, p.Arg482Gln, p.Arg482Leu: >90% of FPLD2 mutations cluster at codon 482; "
+            "  Mutation changes surface charge of Ig-fold domain -> altered interactions with HP1/BAF; "
+            "  Leads to redistribution of heterochromatin -> altered gene expression in mature adipocytes; "
+            "  Adipogenesis proceeds but mature adipocyte maintenance fails at PUBERTY; "
+            "  ONSET AT PUBERTY: fat lost from extremities + gluteal starting puberty (key feature); "
+            "  Fat accumulates face/neck/abdomen (compensatory or altered distribution); "
+            "  Females more severely affected metabolically (more visible clinical phenotype); "
+            "  LAMINOPATHY OVERLAP: LMNA mutations also cause EDMD, LGMD1B, DCM, FPLD2, Hutchinson-Gilford progeria; "
+            "encoded 1q22; OMIM gene 150330, disease FPLD2 #151660"
+        ),
+        "inheritance": (
+            "AUTOSOMAL DOMINANT -- LMNA / FAMILIAL PARTIAL LIPODYSTROPHY TYPE 2 (FPLD2 -- DUNNIGAN SYNDROME): "
+            "  MOST COMMON hereditary partial lipodystrophy; "
+            "  ONSET: puberty (distinguishes from CGL -- not congenital); "
+            "  FAT DISTRIBUTION: "
+            "    LOSS: extremities (arms + legs) + gluteal region -> limbs thin/muscular appearance; "
+            "    ACCUMULATION: face + neck + abdomen (moon-face appearance, abdomen prominent); "
+            "    Neck fat often mistaken for Cushing syndrome; "
+            "    Females: more severe loss of extremity fat; more pronounced metabolic syndrome; "
+            "    Males: milder and sometimes missed; "
+            "  METABOLIC: "
+            "    Hypertriglyceridemia (200-800 mg/dL); "
+            "    Insulin resistance + DM (40-70%); "
+            "    Hypertension; "
+            "    Low HDL; "
+            "    Leptin: low-normal (partial fat preserved in face/neck; some leptin production); "
+            "  LAMINOPATHY COMPLICATIONS: "
+            "    CARDIOMYOPATHY (dilated or hypertrophic): major complication; "
+            "    Conduction system disease: AV block, sudden cardiac death -- LMNA well-known cause; "
+            "    Muscular dystrophy overlap (some FPLD2 families: proximal weakness); "
+            "    Premature death: cardiac/arrhythmia (main cause of premature mortality in FPLD2); "
+            "  DIAGNOSIS: "
+            "    Clinical: partial fat redistribution (loss from limbs, gain face/neck) starting puberty; "
+            "    Exclude Cushing (neck fat accumulation); "
+            "    Genetic: LMNA p.Arg482 codon (>90% of FPLD2) -- if suspicious, sequence LMNA; "
+            "  TREATMENT: "
+            "    Metreleptin: EFFECTIVE (leptin partially low -- replacement improves metabolic); "
+            "    Fibrates + statins + antihypertensives; "
+            "    Insulin / GLP-1 agonists / SGLT2i for diabetes; "
+            "    TZDs (PPARG agonists): may help but limited by fluid retention; "
+            "    Cardiac surveillance: ECG + Holter + echo annually; ICD if significant arrhythmia; "
+            "    Genetic counselling: AD; 50% offspring risk"
+        ),
+        "disease_category": (
+            "FPLD2-LMNA-DUNNIGAN-MOST-COMMON-FPLD-PUBERTY-ONSET-ARG482-CARDIOMYOPATHY: "
+            "  KEY RULE: partial lipodystrophy starting PUBERTY = FPLD2 (LMNA) most likely; "
+            "  ARG482 HOTSPOT: >90% of FPLD2; test p.Arg482Trp/Gln/Leu first; "
+            "  FAT PATTERN: loss from extremities/gluteal + gain face/neck/abdomen (CUSHING MIMIC); "
+            "  FEMALES MORE SEVERE: more pronounced metabolic + phenotypic expression; "
+            "  CARDIOMYOPATHY + ARRHYTHMIA: LMNA = major cause of sudden cardiac death; annual cardiac surveillance; "
+            "  LAMINOPATHY OVERLAP: LMNA -> EDMD / LGMD1B / DCM / progeria -- screen for overlap; "
+            "  GENETIC TESTING: LMNA sequencing; Arg482 first; heterozygous AD"
+        ),
+    },
+    {
+        "gene": "PPARG",
+        "protein": (
+            "PPARG -- 3p25.2 AD -- 477aa -- Peroxisome-Proliferator-Activated-Receptor-Gamma-"
+            "57kDa-Nuclear-Receptor-Ligand-Activated-TF-Master-Adipogenesis-Regulator-"
+            "FPLD3-Haploinsufficiency-TZD-SPECIFIC-Treatment-PPARG-Agonist-OMIM-601487"
+        ),
+        "locus": "3p25.2",
+        "protein_size": (
+            "477 aa / 57 kDa (PPARG -- peroxisome proliferator-activated receptor gamma; "
+            "FUNCTION: nuclear receptor; ligand-activated transcription factor; "
+            "  MASTER REGULATOR OF ADIPOGENESIS: "
+            "    PPARG1 (477 aa): ubiquitous; PPARG2 (505 aa): adipose-specific (28 extra N-terminal aa); "
+            "    Heterodimer with RXR -> binds PPRE (PPAR response element) in target gene promoters; "
+            "    Activates: adipogenic gene programme (FABP4, LPL, GLUT4, perilipin, adiponectin, leptin); "
+            "    Without PPARG: adipogenesis cannot proceed; "
+            "  INSULIN SENSITISER: PPARG activation -> increases fatty acid uptake into adipocytes; "
+            "    Reduces ectopic fat; improves peripheral insulin sensitivity; "
+            "  LIGANDS: endogenous = fatty acid derivatives; pharmacological = TZDs (rosiglitazone, pioglitazone); "
+            "FPLD3 -- PPARG HAPLOINSUFFICIENCY: "
+            "  Heterozygous LOF: reduced PPARG activity -> partial failure of adipogenesis; "
+            "  PARTIAL lipodystrophy: less severe than CGL; fat lost from extremities but face/neck preserved; "
+            "  Metabolic syndrome: hypertension + dyslipidemia + insulin resistance + DM; "
+            "  THIAZOLIDINEDIONES (TZDs) = SPECIFIC TREATMENT: "
+            "    TZDs are PPARG agonists -> pharmacologically supplement the lost PPARG function; "
+            "    Rosiglitazone/pioglitazone: improve insulin sensitivity, reduce HTG, improve fat distribution; "
+            "    MECHANISM: TZDs activate remaining wild-type PPARG allele -> partial functional recovery; "
+            "    Note: fluid retention side effect; cardiac risk with rosiglitazone (monitor); "
+            "PPARG GOF mutations: "
+            "  Rare; cause severe obesity + insulin hypersensitivity (opposite direction); "
+            "encoded 3p25.2; OMIM gene 601487, disease FPLD3 #604367"
+        ),
+        "inheritance": (
+            "AUTOSOMAL DOMINANT -- PPARG / FAMILIAL PARTIAL LIPODYSTROPHY TYPE 3 (FPLD3): "
+            "  ONSET: typically adult (post-pubertal; less clear onset than FPLD2); "
+            "  PHENOTYPE: "
+            "    Partial lipoatrophy: mainly lower limbs + gluteal; less severe than FPLD2; "
+            "    Face/neck fat relatively preserved (unlike FPLD2 where face gains fat); "
+            "    Some patients have face fat loss as well; "
+            "    Metabolic: hypertension + hypertriglyceridemia + low HDL + insulin resistance + DM (40-70%); "
+            "    PCOS in females; "
+            "  LEPTIN: low-normal (partial fat preserved); "
+            "  METABOLIC SYNDROME PROMINENT: "
+            "    Hypertension often severe; resistant hypertension; "
+            "    Dyslipidemia (hypertriglyceridemia + low HDL); "
+            "    Type 2 DM (insulin resistant); "
+            "  TZD SPECIFIC TREATMENT: "
+            "    Pioglitazone or rosiglitazone: PPARG agonist -> activates remaining WT PPARG -> "
+            "      improves peripheral fat storage -> reduces ectopic fat -> improves insulin sensitivity; "
+            "    Clinically: reduces HbA1c + triglycerides + improves fat distribution; "
+            "    Contraindications: heart failure (TZD fluid retention); pioglitazone preferred; "
+            "  DIAGNOSIS: "
+            "    Clinical: partial lipodystrophy + metabolic syndrome; "
+            "    Genetic: PPARG sequencing; heterozygous LOF mutation; "
+            "    Functional: luciferase reporter assay for novel variants; "
+            "  TREATMENT: "
+            "    TZDs (SPECIFIC); metformin; GLP-1 agonists; fibrates; antihypertensives; "
+            "    Metreleptin: less studied than CGL; may help in severe cases; "
+            "  PROGNOSIS: metabolic syndrome complications (CV disease); less laminopathy overlap than FPLD2"
+        ),
+        "disease_category": (
+            "FPLD3-PPARG-HAPLOINSUFFICIENCY-TZD-SPECIFIC-TREATMENT: "
+            "  KEY RULE: FPLD3 specific treatment = TZD (PPARG agonist replaces haploinsufficient function); "
+            "  TZD MECHANISM: pharmacological PPARG agonism supplements reduced PPARG activity; "
+            "  METABOLIC SYNDROME PROMINENT: hypertension + dyslipidemia + DM 40-70%; "
+            "  PPARG = MASTER ADIPOGENESIS: LOF -> partial adipogenesis failure -> partial lipodystrophy; "
+            "  FPLD3 vs FPLD2: FPLD3 less severe fat redistribution; no cardiomyopathy/laminopathy overlap; "
+            "  GENETIC TESTING: PPARG sequencing; heterozygous LOF; AD inheritance"
+        ),
+    },
+    {
+        "gene": "AKT2",
+        "protein": (
+            "AKT2 -- 19q13.2 AD -- 481aa -- AKT-Serine-Threonine-Kinase-2-"
+            "56kDa-PI3K-Downstream-Effector-PH-Kinase-Regulatory-Domain-"
+            "FPLD6-Partial-Lipodystrophy-SEVERE-Insulin-Resistance-AD-Incomplete-Penetrance-Somatic-GOF-Hypoglycemia-OMIM-164731"
+        ),
+        "locus": "19q13.2",
+        "protein_size": (
+            "481 aa / 56 kDa (AKT2 -- AKT serine/threonine kinase 2; Protein Kinase B beta; "
+            "FUNCTION: central effector kinase downstream of insulin receptor / PI3K; "
+            "  Insulin -> InsR -> IRS1/2 -> PI3K -> PIP3 -> AKT2 activation (by PDK1 + mTORC2); "
+            "  AKT2 substrates in adipocytes: "
+            "    AS160 (TBC1D4): phosphorylation -> GLUT4 vesicle translocation to membrane -> glucose uptake; "
+            "    FOXO1: phosphorylation -> nuclear exclusion -> suppress gluconeogenesis; "
+            "    GSK3: phosphorylation -> glycogen synthesis; "
+            "    TSC2: phosphorylation -> mTORC1 -> protein synthesis; "
+            "  AKT2 is the predominant AKT isoform in adipose tissue + liver for metabolic functions; "
+            "AKT2 LOF -> FPLD6 (GERMLINE): "
+            "  Heterozygous LOF: partial lipodystrophy (mild to moderate lipoatrophy); "
+            "  SEVERE insulin resistance (despite partial fat loss -- insulin signalling intrinsically impaired); "
+            "  AD with INCOMPLETE PENETRANCE: not all carriers develop full phenotype; "
+            "  Triglycerides elevated (200-600 mg/dL); "
+            "AKT2 SOMATIC GOF MUTATIONS (OPPOSITE PHENOTYPE): "
+            "  Somatic gain-of-function AKT2 mutations in pancreatic islets -> constitutive AKT2 -> "
+            "    Hyperinsulinaemia -> hypoglycaemia (insulinoma-like without structural tumour); "
+            "  NOT inherited germline -- somatic mosaicism; "
+            "  OPPOSITE: germline LOF = insulin resistance; somatic GOF = hypoglycaemia; "
+            "encoded 19q13.2; OMIM gene 164731, disease FPLD6 #615980"
+        ),
+        "inheritance": (
+            "AUTOSOMAL DOMINANT (INCOMPLETE PENETRANCE) -- AKT2 / FPLD TYPE 6 (FPLD6): "
+            "  ONSET: variable; often adult onset; "
+            "  PHENOTYPE: "
+            "    Partial lipodystrophy (variable severity of lipoatrophy; generally milder fat loss than FPLD2); "
+            "    SEVERE insulin resistance: disproportionately severe relative to fat loss; "
+            "      HOMA-IR markedly elevated; extreme post-prandial hyperinsulinaemia; "
+            "    Diabetes mellitus (40-60%); "
+            "    Hypertriglyceridemia (200-600 mg/dL); "
+            "    Acanthosis nigricans; "
+            "    Polycystic ovaries in females; "
+            "  INCOMPLETE PENETRANCE: "
+            "    Not all heterozygous carriers manifest full phenotype; "
+            "    Variable expressivity within families; "
+            "    Can be missed in family cascade testing; "
+            "  SOMATIC GOF -- DIFFERENT DISEASE: "
+            "    Somatic AKT2 gain-of-function mutations -> constitutive kinase activity in islets; "
+            "    -> Hypoglycaemia (hyperinsulinaemic) in isolated islets; "
+            "    -> Treated with diazoxide or pancreatectomy (different from FPLD6); "
+            "    CLINICAL PEARL: AKT2 mutations can cause OPPOSITE phenotypes depending on germline vs somatic + LOF vs GOF; "
+            "  DIAGNOSIS: "
+            "    Clinical: partial lipodystrophy + severe insulin resistance; "
+            "    Genetic: AKT2 sequencing; heterozygous LOF germline; "
+            "    If hypoglycaemia: test for somatic GOF (requires tissue from affected area); "
+            "  TREATMENT: "
+            "    Metformin + insulin sensitisers; GLP-1 agonists; SGLT2 inhibitors; "
+            "    Insulin if DM; "
+            "    Metreleptin: data limited; may help in severe cases; "
+            "    Fibrates for HTG; "
+            "  PROGNOSIS: severe insulin resistance; CV risk from metabolic syndrome"
+        ),
+        "disease_category": (
+            "FPLD6-AKT2-SEVERE-INSULIN-RESISTANCE-INCOMPLETE-PENETRANCE-SOMATIC-GOF-HYPOGLYCEMIA: "
+            "  KEY RULE: AKT2 germline LOF = FPLD + SEVERE insulin resistance; somatic GOF = hypoglycaemia (OPPOSITE); "
+            "  INCOMPLETE PENETRANCE: AD but variable; do not dismiss carriers as unaffected without metabolic testing; "
+            "  SEVERE INSULIN RESISTANCE: disproportionate to degree of fat loss -- intrinsic signalling defect; "
+            "  AKT2 = central insulin signalling effector in adipose/liver; LOF -> downstream cascade fails; "
+            "  SOMATIC GOF DISTINCT: requires tissue testing; different treatment (diazoxide/pancreatectomy); "
+            "  GENETIC TESTING: AKT2 germline sequencing; heterozygous LOF confirms FPLD6"
+        ),
+    },
+    {
+        "gene": "PLIN1",
+        "protein": (
+            "PLIN1 -- 15q26.1 AD -- 522aa -- Perilipin-1-"
+            "56kDa-Lipid-Droplet-Coat-Protein-PAT-Domain-ABHD5-Interaction-Lipolysis-Regulation-"
+            "FPLD4-Partial-Lipodystrophy-Severe-HTG-Pancreatitis-Frameshift-Heterozygous-LOF-OMIM-170290"
+        ),
+        "locus": "15q26.1",
+        "protein_size": (
+            "522 aa / 56 kDa (PLIN1 -- Perilipin-1; founding member of the PAT (perilipin-adipophilin-TIP47) family; "
+            "FUNCTION: dominant coat protein of lipid droplets in adipocytes; "
+            "  Localisation: cytoplasmic surface of lipid droplets in white and brown adipocytes; "
+            "  LIPOLYSIS REGULATION (dual gatekeeper): "
+            "    BASAL STATE (unstimulated): "
+            "      PLIN1 coats LD surface -> physical barrier against lipases; "
+            "      Sequesters ABHD5 (ATGL co-activator, also called CGI-58) -> ATGL inactive; "
+            "      ATGL (adipose triglyceride lipase) = rate-limiting triglyceride hydrolase; "
+            "      Net: basal lipolysis suppressed; fat stored efficiently; "
+            "    STIMULATED (catecholamines -> PKA): "
+            "      PKA phosphorylates PLIN1 at Ser81/Ser522 -> PLIN1 conformation change; "
+            "      ABHD5 released from PLIN1 -> binds and activates ATGL; "
+            "      Phosphorylated PLIN1 also recruits HSL (hormone-sensitive lipase) -> TAG -> DAG; "
+            "      Net: hormonally stimulated lipolysis proceeds; "
+            "  PLIN1 LOF -> unregulated basal lipolysis: "
+            "    ABHD5 not sequestered -> ATGL constitutively active -> unregulated lipolysis; "
+            "    Excess FFA release -> ectopic fat accumulation + severe hypertriglyceridemia; "
+            "    Reduced fat storage capacity -> partial lipodystrophy; "
+            "FPLD4 -- HETEROZYGOUS FRAMESHIFT/LOF: "
+            "  Frameshift mutations cause haploinsufficiency -> partial PLIN1 loss -> partial lipolysis dysregulation; "
+            "encoded 15q26.1; OMIM gene 170290, disease FPLD4 #613877"
+        ),
+        "inheritance": (
+            "AUTOSOMAL DOMINANT -- PLIN1 / FAMILIAL PARTIAL LIPODYSTROPHY TYPE 4 (FPLD4): "
+            "  ONSET: variable; often becomes apparent in 2nd-4th decade; "
+            "  PHENOTYPE: "
+            "    Partial lipodystrophy: loss of subcutaneous fat from extremities; "
+            "    Fat preserved face/neck (pattern similar to FPLD2 but milder); "
+            "    SEVERE HYPERTRIGLYCERIDEMIA: 400-2000+ mg/dL; often most prominent feature; "
+            "      Mechanism: unregulated lipolysis -> excess FFA -> hepatic VLDL overproduction; "
+            "    PANCREATITIS RISK: severe HTG -> recurrent pancreatitis (chylomicronaemia); "
+            "      Pancreatitis = major morbidity in FPLD4; "
+            "    Insulin resistance + DM (40-60%); "
+            "    Hepatic steatosis (ectopic fat from unregulated FFA flux); "
+            "    Leptin: low-normal (partial fat preserved); "
+            "  LIPOLYSIS DYSREGULATION -- CORE MECHANISM: "
+            "    PLIN1 haploinsufficiency -> impaired ABHD5/ATGL gating -> basal lipolysis elevated; "
+            "    Elevated basal FFA -> hypertriglyceridemia -> VLDL overproduction; "
+            "    Even moderate dietary fat intake -> extreme HTG; "
+            "  PANCREATITIS: "
+            "    Recurrent acute pancreatitis; "
+            "    Mechanism: TG >1000 mg/dL -> pancreatic lipase -> FFA in pancreatic capillaries -> injury; "
+            "    Complications: necrosis, pseudocyst, chronic pancreatitis, exocrine insufficiency; "
+            "  DIAGNOSIS: "
+            "    Clinical: partial lipodystrophy + severe HTG + pancreatitis history; "
+            "    Genetic: PLIN1 sequencing; heterozygous frameshift/LOF; "
+            "  TREATMENT: "
+            "    Severe HTG management: fibrates (first-line) + omega-3 fatty acids + strict low-fat diet; "
+            "    Volanesorsen/evinacumab for refractory severe HTG; "
+            "    Insulin for DM; "
+            "    Metreleptin: limited data; may help; "
+            "    Pancreatitis: acute management (NPO, IV fluids, analgesia); prophylactic HTG control; "
+            "  PROGNOSIS: pancreatitis events = main acute morbidity; chronic DM + CV risk"
+        ),
+        "disease_category": (
+            "FPLD4-PLIN1-SEVERE-HTG-PANCREATITIS-RISK-UNREGULATED-LIPOLYSIS: "
+            "  KEY RULE: FPLD4 = severe HTG + pancreatitis risk = PLIN1 unregulated lipolysis; "
+            "  PANCREATITIS: recurrent when TG >1000 mg/dL; aggressive HTG control mandatory; "
+            "  PLIN1 = LIPID DROPLET GATEKEEPER: LOF -> ABHD5/ATGL dysregulated -> basal lipolysis unrestrained; "
+            "  SEVERE HTG MECHANISM: unregulated FFA -> hepatic VLDL overproduction; "
+            "  TREATMENT: fibrates + omega-3 + strict low-fat diet; volanesorsen for refractory; "
+            "  GENETIC TESTING: PLIN1 sequencing; heterozygous frameshift confirms FPLD4"
+        ),
     },
 ]
 
 
-def _make_cohort(gene_entry: dict, seed: int, n: int = 40) -> list:
+def _make_patients(seed: int, gene: str) -> list:
+    """Generate 40 synthetic lipodystrophy-spectrum patients per gene."""
     rng = random.Random(seed)
-    gene = gene_entry["gene"]
-    cohort = []
-    for i in range(n):
-        age = rng.randint(1, 65)
-        sex = rng.choice(["M", "F"])
 
+    # CGL genes: near-absent leptin, very high TG, severe IR, high DM rate
+    # FPLD genes: partial fat loss, low-normal leptin, moderate-high TG, variable DM
+    gene_profiles = {
+        "AGPAT2": dict(
+            tg_min=500,  tg_max=3000,
+            leptin_min=0.1, leptin_max=0.8,
+            homa_ir_min=15, homa_ir_max=80,
+            dm_pct=0.85,
+            metreleptin_eligible_pct=0.95,
+            pancreatitis_pct=0.45,
+            is_cgl=True,
+        ),
+        "BSCL2": dict(
+            tg_min=600,  tg_max=3500,
+            leptin_min=0.05, leptin_max=0.5,
+            homa_ir_min=20, homa_ir_max=90,
+            dm_pct=0.90,
+            metreleptin_eligible_pct=0.95,
+            pancreatitis_pct=0.50,
+            is_cgl=True,
+        ),
+        "CAV1": dict(
+            tg_min=400,  tg_max=2000,
+            leptin_min=0.3, leptin_max=1.5,
+            homa_ir_min=10, homa_ir_max=60,
+            dm_pct=0.70,
+            metreleptin_eligible_pct=0.80,
+            pancreatitis_pct=0.35,
+            is_cgl=True,
+        ),
+        "CAVIN1": dict(
+            tg_min=400,  tg_max=2200,
+            leptin_min=0.3, leptin_max=1.8,
+            homa_ir_min=12, homa_ir_max=65,
+            dm_pct=0.72,
+            metreleptin_eligible_pct=0.80,
+            pancreatitis_pct=0.38,
+            is_cgl=True,
+        ),
+        "LMNA": dict(
+            tg_min=200,  tg_max=800,
+            leptin_min=2.0, leptin_max=8.0,
+            homa_ir_min=4,  homa_ir_max=30,
+            dm_pct=0.60,
+            metreleptin_eligible_pct=0.65,
+            pancreatitis_pct=0.12,
+            is_cgl=False,
+        ),
+        "PPARG": dict(
+            tg_min=180,  tg_max=700,
+            leptin_min=2.5, leptin_max=9.0,
+            homa_ir_min=3,  homa_ir_max=25,
+            dm_pct=0.55,
+            metreleptin_eligible_pct=0.40,
+            pancreatitis_pct=0.10,
+            is_cgl=False,
+        ),
+        "AKT2": dict(
+            tg_min=200,  tg_max=600,
+            leptin_min=3.0, leptin_max=10.0,
+            homa_ir_min=8,  homa_ir_max=50,
+            dm_pct=0.55,
+            metreleptin_eligible_pct=0.35,
+            pancreatitis_pct=0.08,
+            is_cgl=False,
+        ),
+        "PLIN1": dict(
+            tg_min=400,  tg_max=2000,
+            leptin_min=2.0, leptin_max=8.0,
+            homa_ir_min=5,  homa_ir_max=35,
+            dm_pct=0.50,
+            metreleptin_eligible_pct=0.50,
+            pancreatitis_pct=0.55,
+            is_cgl=False,
+        ),
+    }
+    p = gene_profiles.get(gene, gene_profiles["AGPAT2"])
+
+    associated_features_map = {
+        "AGPAT2": [
+            ["near-complete-lipoatrophy", "acanthosis-nigricans", "hepatomegaly"],
+            ["severe-hypertriglyceridemia", "eruptive-xanthomata"],
+            ["near-complete-lipoatrophy", "muscular-appearance", "prominent-veins"],
+            ["DM-extreme-insulin-resistance", "pancreatitis", "hepatic-steatosis"],
+            ["acromegaloid-features", "near-complete-lipoatrophy", "severe-HTG"],
+        ],
+        "BSCL2": [
+            ["complete-lipoatrophy-all-fat-absent", "intellectual-disability", "hepatomegaly"],
+            ["hypertrophic-cardiomyopathy", "severe-HTG", "DM"],
+            ["mechanical-fat-absent", "severe-lipoatrophy", "acanthosis-nigricans"],
+            ["intellectual-disability", "pancreatitis", "hepatic-cirrhosis"],
+            ["complete-lipoatrophy", "BSCL2-most-severe-CGL", "near-absent-leptin"],
+        ],
+        "CAV1": [
+            ["generalised-lipoatrophy-milder", "pulmonary-arterial-hypertension"],
+            ["caveolae-absent-EM-pathognomonic", "hepatic-steatosis"],
+            ["partial-mechanical-fat-spared", "PAH", "moderate-HTG"],
+            ["lipoatrophy", "insulin-resistance", "PAH-screening-required"],
+        ],
+        "CAVIN1": [
+            ["generalised-lipoatrophy", "skeletal-muscle-myopathy", "elevated-CK"],
+            ["cardiac-arrhythmia", "myopathy", "caveolae-absent-EM"],
+            ["limb-girdle-myopathy", "elevated-CK-500-5000", "HTG"],
+            ["muscular-dystrophy-phenotype", "arrhythmia", "lipoatrophy"],
+            ["elevated-CK", "respiratory-insufficiency-risk", "cardiac-conduction-abnormality"],
+        ],
+        "LMNA": [
+            ["partial-lipodystrophy-puberty-onset", "fat-loss-extremities", "fat-gain-face-neck"],
+            ["cardiomyopathy", "arrhythmia", "conduction-disease"],
+            ["Dunnigan-phenotype", "partial-lipoatrophy-limbs", "metabolic-syndrome"],
+            ["Arg482-mutation", "females-more-severe", "hypertriglyceridemia"],
+            ["laminopathy-overlap", "cardiac-sudden-death-risk", "fat-redistribution"],
+        ],
+        "PPARG": [
+            ["partial-lipoatrophy-lower-limbs", "hypertension", "dyslipidemia"],
+            ["FPLD3-TZD-responsive", "insulin-resistance", "DM"],
+            ["hypertension-resistant", "low-HDL", "hypertriglyceridemia"],
+            ["partial-lipodystrophy", "PCOS-females", "metabolic-syndrome"],
+        ],
+        "AKT2": [
+            ["partial-lipodystrophy", "severe-insulin-resistance-disproportionate"],
+            ["acanthosis-nigricans", "severe-HOMA-IR", "incomplete-penetrance"],
+            ["partial-lipoatrophy", "DM-insulin-resistant", "HTG"],
+            ["AKT2-LOF", "severe-post-prandial-hyperinsulinemia", "PCOS"],
+        ],
+        "PLIN1": [
+            ["partial-lipodystrophy", "severe-HTG-400-2000", "pancreatitis-recurrent"],
+            ["chylomicronaemia", "eruptive-xanthomata", "pancreatitis"],
+            ["unregulated-lipolysis", "hepatic-steatosis", "severe-HTG"],
+            ["FPLD4-PLIN1-frameshift", "lipoatrophy-extremities", "severe-HTG"],
+        ],
+    }
+    features_options = associated_features_map.get(gene, [["lipodystrophy"]])
+
+    treatment_map = {
+        "AGPAT2": [
+            "metreleptin+low-fat-diet+fibrates",
+            "metreleptin+insulin+low-fat-diet",
+            "metreleptin+fibrates+omega3",
+        ],
+        "BSCL2": [
+            "metreleptin+insulin+low-fat-diet",
+            "metreleptin+fibrates+cardiac-surveillance",
+            "metreleptin+low-fat-diet+fibrates+hepatology",
+        ],
+        "CAV1": [
+            "metreleptin+low-fat-diet+PAH-screening",
+            "metreleptin+fibrates+sildenafil-for-PAH",
+            "low-fat-diet+fibrates+insulin+echo-annually",
+        ],
+        "CAVIN1": [
+            "metreleptin+low-fat-diet+cardiac-surveillance+ICD-if-arrhythmia",
+            "metreleptin+fibrates+ECG-Holter-annually+physiotherapy",
+            "low-fat-diet+insulin+cardiac-monitoring+spirometry",
+        ],
+        "LMNA": [
+            "metreleptin+fibrates+statins+cardiac-surveillance",
+            "insulin+fibrates+ACE-inhibitor+ECG-Holter-annually",
+            "GLP1-agonist+fibrates+cardiomyopathy-management",
+        ],
+        "PPARG": [
+            "pioglitazone-TZD-SPECIFIC+fibrates+antihypertensives",
+            "rosiglitazone+metformin+fibrates",
+            "pioglitazone+GLP1-agonist+SGLT2i+fibrates",
+        ],
+        "AKT2": [
+            "metformin+GLP1-agonist+fibrates",
+            "insulin+SGLT2i+fibrates",
+            "metformin+insulin+fibrates+PCOS-management",
+        ],
+        "PLIN1": [
+            "fibrates+omega3+strict-low-fat-diet+pancreatitis-protocol",
+            "volanesorsen+fibrates+low-fat-diet",
+            "insulin+fibrates+omega3+pancreatitis-prevention",
+        ],
+    }
+    treatments = treatment_map.get(gene, ["low-fat-diet+fibrates"])
+
+    mutation_map = {
+        "AGPAT2": ["p.Asn94Ser", "p.Glu260Lys", "p.Gly188Arg", "del_exon3", "p.Arg218Ter"],
+        "BSCL2":  ["p.Asn88Ser", "p.Glu189Lys", "p.Phe286Leu", "p.Cys295Arg", "p.Trp341Ter"],
+        "CAV1":   ["p.Pro132Leu", "p.Phe160Ter", "del_exon2-3", "p.Arg169Trp", "p.Leu141Arg"],
+        "CAVIN1": ["p.Glu264Ter", "p.Gln258Ter", "del_exon5", "p.Arg244Ter", "p.Ser186Phe"],
+        "LMNA":   ["p.Arg482Trp", "p.Arg482Gln", "p.Arg482Leu", "p.Asn466Asp", "p.Lys486Asn"],
+        "PPARG":  ["p.Pro467Leu", "p.Phe388Leu", "p.Arg280Cys", "p.Val290Met", "p.Cys114Arg"],
+        "AKT2":   ["p.Arg274His", "p.Arg208Cys", "p.Arg274Cys", "p.Val270Ala", "p.Asp219Asn"],
+        "PLIN1":  ["c.1210_1211insC", "c.1546_1547insTG", "c.1210delC", "p.Leu404Ter", "c.1209_1213del"],
+    }
+    mutations = mutation_map.get(gene, ["unknown"])
+
+    patients = []
+    for i in range(40):
+        tg = round(rng.uniform(p["tg_min"], p["tg_max"]), 1)
+        leptin = round(rng.uniform(p["leptin_min"], p["leptin_max"]), 2)
+        homa_ir = round(rng.uniform(p["homa_ir_min"], p["homa_ir_max"]), 1)
+        has_dm = rng.random() < p["dm_pct"]
+        has_pancreatitis = rng.random() < p["pancreatitis_pct"]
+        metreleptin_used = rng.random() < p["metreleptin_eligible_pct"]
+
+        # HbA1c: DM patients elevated; non-DM lower
+        if has_dm:
+            hba1c = round(rng.uniform(7.5, 12.0), 1)
+        else:
+            hba1c = round(rng.uniform(5.2, 6.9), 1)
+
+        # Gene-specific additional features
+        ck_elevated = False
+        ck_value = rng.randint(30, 180)
+        has_pah = False
+        has_intellectual_disability = False
+        has_cardiac_arrhythmia = False
+
+        if gene == "CAVIN1":
+            ck_elevated = rng.random() < 0.82  # >80% CAVIN1 have elevated CK
+            ck_value = rng.randint(500, 5000) if ck_elevated else rng.randint(50, 200)
+            has_cardiac_arrhythmia = rng.random() < 0.55
+        if gene == "CAV1":
+            has_pah = rng.random() < 0.18
         if gene == "BSCL2":
-            generalised_lipoatrophy = True
-            mechanical_fat_absent   = True   # CGL2 pathognomonic
-            partial_lipodystrophy   = False
-            severe_hypertrigly      = rng.random() < 0.90
-            t2d                     = rng.random() < 0.85
-            pancreatitis            = rng.random() < 0.35
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = rng.random() < 0.50   # CGL2 ~50%
-            hepatomegaly            = rng.random() < 0.90
-            cardiac_conduction      = False
-            metreleptin_eligible    = True
-            severe_ir               = True
-            hypoglycaemia           = False
+            has_intellectual_disability = rng.random() < 0.45  # 30-60% range
+        if gene == "LMNA":
+            has_cardiac_arrhythmia = rng.random() < 0.40
 
-        elif gene == "AGPAT2":
-            generalised_lipoatrophy = True
-            mechanical_fat_absent   = False  # CGL1 preserves mechanical fat
-            partial_lipodystrophy   = False
-            severe_hypertrigly      = rng.random() < 0.88
-            t2d                     = rng.random() < 0.82
-            pancreatitis            = rng.random() < 0.30
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = rng.random() < 0.80   # metaphyseal cysts
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.88
-            cardiac_conduction      = False
-            metreleptin_eligible    = True
-            severe_ir               = True
-            hypoglycaemia           = False
+        # Onset: CGL = congenital; FPLD = puberty/adult
+        if p["is_cgl"]:
+            age_dx = rng.randint(0, 5)
+        else:
+            age_dx = rng.randint(14, 55)
 
-        elif gene == "LMNA":
-            generalised_lipoatrophy = False
-            mechanical_fat_absent   = False
-            partial_lipodystrophy   = True   # FPLD2
-            severe_hypertrigly      = rng.random() < 0.70
-            t2d                     = rng.random() < 0.75
-            pancreatitis            = rng.random() < 0.10
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.60
-            cardiac_conduction      = rng.random() < 0.70   # MANDATORY surveillance
-            metreleptin_eligible    = False  # partial, off-label only
-            severe_ir               = rng.random() < 0.80
-            hypoglycaemia           = False
+        lipodystrophy_type = "CGL" if p["is_cgl"] else "FPLD"
 
-        elif gene == "PPARG":
-            generalised_lipoatrophy = False
-            mechanical_fat_absent   = False
-            partial_lipodystrophy   = True   # FPLD3
-            severe_hypertrigly      = rng.random() < 0.80
-            t2d                     = rng.random() < 0.78
-            pancreatitis            = rng.random() < 0.20
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.65
-            cardiac_conduction      = False
-            metreleptin_eligible    = False
-            severe_ir               = rng.random() < 0.85
-            hypoglycaemia           = False
+        treatment = rng.choice(treatments)
+        mutation = rng.choice(mutations)
+        features = rng.choice(features_options)
 
-        elif gene == "PLIN1":
-            generalised_lipoatrophy = False
-            mechanical_fat_absent   = False
-            partial_lipodystrophy   = True   # FPLD4 — subtle
-            severe_hypertrigly      = rng.random() < 0.95   # HALLMARK
-            t2d                     = rng.random() < 0.75
-            pancreatitis            = rng.random() < 0.50   # HIGH RISK with TG >20
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.70
-            cardiac_conduction      = False
-            metreleptin_eligible    = False
-            severe_ir               = rng.random() < 0.80
-            hypoglycaemia           = False
-
-        elif gene == "AKT2":
-            generalised_lipoatrophy = False
-            mechanical_fat_absent   = False
-            partial_lipodystrophy   = rng.random() < 0.70   # LOF variant
-            severe_hypertrigly      = rng.random() < 0.60
-            t2d                     = rng.random() < 0.70
-            pancreatitis            = rng.random() < 0.10
-            pah                     = False
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.50
-            cardiac_conduction      = False
-            metreleptin_eligible    = False
-            severe_ir               = rng.random() < 0.90
-            hypoglycaemia           = rng.random() < 0.30   # GOF subset
-
-        elif gene == "CAV1":
-            generalised_lipoatrophy = rng.random() < 0.60   # CGL3 AR vs FPLD7 AD
-            mechanical_fat_absent   = rng.random() < 0.30
-            partial_lipodystrophy   = rng.random() < 0.40
-            severe_hypertrigly      = rng.random() < 0.65
-            t2d                     = rng.random() < 0.65
-            pancreatitis            = rng.random() < 0.12
-            pah                     = rng.random() < 0.35   # PAH overlap DISTINCTIVE
-            progeroid               = False
-            bone_anomaly            = False
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.65
-            cardiac_conduction      = False
-            metreleptin_eligible    = rng.random() < 0.60   # if generalised
-            severe_ir               = rng.random() < 0.70
-            hypoglycaemia           = False
-
-        else:  # ZMPSTE24
-            generalised_lipoatrophy = rng.random() < 0.70
-            mechanical_fat_absent   = rng.random() < 0.40
-            partial_lipodystrophy   = rng.random() < 0.30
-            severe_hypertrigly      = rng.random() < 0.50
-            t2d                     = rng.random() < 0.55
-            pancreatitis            = rng.random() < 0.08
-            pah                     = False
-            progeroid               = True   # ALWAYS progeroid in ZMPSTE24
-            bone_anomaly            = True   # ALWAYS acroosteolysis/mandibular
-            intellectual_disability = False
-            hepatomegaly            = rng.random() < 0.45
-            cardiac_conduction      = rng.random() < 0.20
-            metreleptin_eligible    = rng.random() < 0.50
-            severe_ir               = rng.random() < 0.65
-            hypoglycaemia           = False
-
-        cohort.append({
-            "patient_id":              f"{gene}-{i+1:03d}",
-            "age":                     age,
-            "sex":                     sex,
-            "gene":                    gene,
-            "generalised_lipoatrophy": generalised_lipoatrophy,
-            "mechanical_fat_absent":   mechanical_fat_absent,
-            "partial_lipodystrophy":   partial_lipodystrophy,
-            "severe_hypertrigly":      severe_hypertrigly,
-            "t2d":                     t2d,
-            "pancreatitis":            pancreatitis,
-            "pah":                     pah,
-            "progeroid":               progeroid,
-            "bone_anomaly":            bone_anomaly,
-            "intellectual_disability": intellectual_disability,
-            "hepatomegaly":            hepatomegaly,
-            "cardiac_conduction":      cardiac_conduction,
-            "metreleptin_eligible":    metreleptin_eligible,
-            "severe_ir":               severe_ir,
-            "hypoglycaemia":           hypoglycaemia,
+        patients.append({
+            "id":                          f"{gene}-{seed}-{i+1:03d}",
+            "gene":                        gene,
+            "lipodystrophy_type":          lipodystrophy_type,
+            "age_at_diagnosis":            age_dx,
+            "triglycerides_mg_dL":         tg,
+            "leptin_ng_mL":                leptin,
+            "homa_ir":                     homa_ir,
+            "diabetes_mellitus":           has_dm,
+            "hba1c_pct":                   hba1c,
+            "pancreatitis_episode":        has_pancreatitis,
+            "metreleptin_treatment":       metreleptin_used,
+            "ck_IU_L":                     ck_value,
+            "ck_elevated":                 ck_elevated,
+            "pulmonary_arterial_hypert":   has_pah,
+            "intellectual_disability":     has_intellectual_disability,
+            "cardiac_arrhythmia":          has_cardiac_arrhythmia,
+            "associated_features":         features,
+            "treatment":                   treatment,
+            "mutation":                    mutation,
         })
-    return cohort
+    return patients
 
 
-def _generate_cohort(gene_entry: dict) -> list:
-    return _make_cohort(gene_entry, gene_entry["seed"])
-
-
-def overview() -> dict:
-    all_cohorts = [_generate_cohort(g) for g in LIPO_GENES]
-    all_pts = [p for c in all_cohorts for p in c]
-    total = len(all_pts)
-
-    def N(key): return sum(1 for p in all_pts if p[key])
-
+def generate_overview() -> dict:
+    """Overview data for Hereditary-Lipodystrophy-Atlas."""
     return {
-        "atlas": "Hereditary-Lipodystrophy-Atlas",
-        "subtitle": (
-            "Complete 8-Gene Congenital & Familial Lipodystrophy Atlas: "
-            "BSCL2 (CGL2 — most common CGL, all fat absent) + AGPAT2 (CGL1 — mechanical fat preserved) + "
-            "LMNA (FPLD2 Dunnigan — cardiac surveillance mandatory) + PPARG (FPLD3 — TZD target, dominant negative) + "
-            "PLIN1 (FPLD4 — TG>20mmol, pancreatitis) + AKT2 (severe IR ± hypoglycaemia GOF) + "
-            "CAV1 (CGL3/FPLD7 — PAH overlap) + ZMPSTE24 (MADB — progeroid + acroosteolysis)"
+        "atlas":          "Hereditary-Lipodystrophy-Atlas",
+        "subtitle":       (
+            "Complete 8-Gene Lipodystrophy Reference Atlas "
+            "(AGPAT2-BSCL2-CAV1-CAVIN1-LMNA-PPARG-AKT2-PLIN1)"
         ),
-        "genes": [g["gene"] for g in LIPO_GENES],
-        "total_patients": total,
-        "seeds": f"{SEED_BASE}–{SEED_BASE + len(LIPO_GENES) - 1}",
-        "generalised_lipoatrophy_patients":  N("generalised_lipoatrophy"),
-        "mechanical_fat_absent_patients":    N("mechanical_fat_absent"),
-        "partial_lipodystrophy_patients":    N("partial_lipodystrophy"),
-        "severe_hypertrigly_patients":       N("severe_hypertrigly"),
-        "t2d_patients":                      N("t2d"),
-        "pancreatitis_patients":             N("pancreatitis"),
-        "pah_patients":                      N("pah"),
-        "progeroid_patients":                N("progeroid"),
-        "bone_anomaly_patients":             N("bone_anomaly"),
-        "intellectual_disability_patients":  N("intellectual_disability"),
-        "hepatomegaly_patients":             N("hepatomegaly"),
-        "cardiac_conduction_patients":       N("cardiac_conduction"),
-        "metreleptin_eligible_patients":     N("metreleptin_eligible"),
-        "severe_ir_patients":                N("severe_ir"),
-        "hypoglycaemia_patients":            N("hypoglycaemia"),
-        "gene_patient_counts": {g["gene"]: 40 for g in LIPO_GENES},
-        "pathway": (
-            "Lipodystrophy — shared final pathway: insufficient functional adipose tissue → "
-            "circulating free fatty acid (FFA) excess → ectopic fat deposition (liver, muscle, pancreas) → "
-            "insulin resistance → T2D + dyslipidaemia (severe hypertriglyceridaemia). "
-            "CGL (generalised): BSCL2 (seipin — ER morphology/lipid droplet biogenesis) + AGPAT2 (phospholipid synthesis) → "
-            "absent adipogenesis. FPLD (partial): LMNA (nuclear lamina) + PPARG (adipogenic transcription factor) + "
-            "PLIN1 (lipid droplet scaffold) → failed fat maintenance in peripheral depots. "
-            "AKT2: insulin signalling node. CAV1: caveolae scaffold (lipid rafts + eNOS). "
-            "ZMPSTE24: prelamin A processing → nuclear lamina instability (same final pathway as LMNA)."
-        ),
-        "key_clinical_insight": (
-            "BSCL2: CGL2 — ALL fat absent (including mechanical); intellectual disability 50%; metreleptin FDA-2014. "
-            "AGPAT2: CGL1 — mechanical fat PRESERVED; bone cysts on X-ray PATHOGNOMONIC; no intellectual disability. "
-            "LMNA: FPLD2 — fat redistribution (NOT absence); CARDIAC SURVEILLANCE MANDATORY; ICD if NSVT+HB+EF<45. "
-            "PPARG: FPLD3 — dominant negative; TZD direct target but impaired response; adiponectin very low. "
-            "PLIN1: FPLD4 — TG often >20 mmol/L; PANCREATITIS HIGH RISK; subtle visible lipodystrophy. "
-            "AKT2: LOF → severe IR + partial lipodystrophy; GOF → neonatal hypoglycaemia + macrosomia. "
-            "CAV1: CGL3 (AR) + FPLD7 (AD); PAH overlap — echo MANDATORY; BMPR2 panel if PAH prominent. "
-            "ZMPSTE24: MADB — progeroid + mandibular hypoplasia + ACROOSTEOLYSIS pathognomonic; lonafarnib FTI."
-        ),
+        "total_genes":    len(ATLAS_GENES),
+        "seed_range":     f"{SEED_BASE}-{SEED_BASE + 7}",
+        "total_patients": 320,
+        "genes":          [g["gene"] for g in ATLAS_GENES],
+        "gene_loci":      {g["gene"]: g["locus"] for g in ATLAS_GENES},
+        "inheritance_modes": {
+            "AGPAT2": "AR LOF (AGPAT2 deficiency; CGL1; near-complete fat absence from birth; metreleptin SPECIFIC)",
+            "BSCL2":  "AR LOF (Seipin; CGL2 MOST COMMON + MOST SEVERE; all fat absent; intellectual disability 30-60%)",
+            "CAV1":   "AR LOF (Caveolin-1; CGL3; caveolae absent EM PATHOGNOMONIC; PAH unique complication)",
+            "CAVIN1": "AR LOF (Cavin1/PTRF; CGL4; ONLY CGL with myopathy + elevated CK + cardiac arrhythmia)",
+            "LMNA":   "AD LOF (Lamin A/C; FPLD2 Dunnigan MOST COMMON FPLD; Arg482 hotspot; puberty onset; cardiomyopathy)",
+            "PPARG":  "AD LOF (PPAR-gamma haploinsufficiency; FPLD3; TZDs = SPECIFIC treatment)",
+            "AKT2":   "AD LOF (AKT2 germline LOF; FPLD6; severe insulin resistance; incomplete penetrance)",
+            "PLIN1":  "AD LOF (Perilipin-1 frameshift; FPLD4; severe HTG + pancreatitis; unregulated lipolysis)",
+        },
+        "key_clinical_rules": [
+            "CGL-vs-FPLD: CGL (AGPAT2/BSCL2/CAV1/CAVIN1) = congenital near-complete fat absence + near-absent leptin (<1 ng/mL) + TG 500-3000 mg/dL + HOMA-IR 10-80; FPLD (LMNA/PPARG/AKT2/PLIN1) = puberty/adult onset partial fat redistribution + partial leptin loss + TG 200-800 mg/dL",
+            "METRELEPTIN-SPECIFIC: recombinant leptin is SPECIFIC treatment for CGL (all 4 types) and beneficial in FPLD; replaces absent/low leptin -> reduces hyperphagia, lowers TG + HbA1c, improves hepatic steatosis; FDA/EMA approved for CGL",
+            "CGL1-vs-CGL2: AGPAT2 (CGL1) = mechanical fat spared (palms/orbits); NO intellectual disability; BSCL2 (CGL2) = ALL fat absent including mechanical; intellectual disability 30-60%; more severe cardiomyopathy",
+            "CGL3-vs-CGL4-CAVEOLAE: both CAV1 (CGL3) and CAVIN1 (CGL4) = caveolae absent on EM (PATHOGNOMONIC); CGL3 = pulmonary arterial hypertension (unique); CGL4 = myopathy + elevated CK (500-5000 IU/L) + cardiac arrhythmia (UNIQUE -- not in any other CGL)",
+            "LMNA-ARG482-DUNNIGAN: >90% FPLD2 mutations at Arg482 codon (Trp/Gln/Leu); puberty onset fat loss from extremities/gluteal + gain face/neck/abdomen; females more severely affected; cardiomyopathy + arrhythmia = LMNA laminopathy; ECG + Holter annually",
+            "PPARG-TZD-SPECIFIC: FPLD3 = PPAR-gamma haploinsufficiency -> TZDs (pioglitazone/rosiglitazone) pharmacologically supplement lost function -> SPECIFIC treatment; TZDs reduce insulin resistance + TG + improve fat distribution",
+            "AKT2-GERMLINE-vs-SOMATIC: AKT2 germline LOF = FPLD6 + severe insulin resistance; AKT2 somatic GOF = hypoglycaemia (OPPOSITE PHENOTYPE); incomplete penetrance in FPLD6 families -- check all carriers metabolically",
+            "PLIN1-PANCREATITIS: FPLD4 = severe HTG (400-2000 mg/dL) + pancreatitis risk; PLIN1 is lipid droplet gatekeeper; LOF -> unregulated ATGL/ABHD5 -> basal lipolysis -> FFA excess -> HTG; fibrates + omega-3 + low-fat diet mandatory; volanesorsen for refractory",
+            "LEPTIN-BIOMARKER: leptin level as lipodystrophy severity marker -- CGL leptin <1 ng/mL (confirms near-complete fat absence); FPLD leptin low-normal (2-10 ng/mL); leptin deficiency = metabolic driver across all types",
+            "8-GENE-DIFFERENTIAL: CGL (congenital, leptin <1, TG >500) vs FPLD (puberty/adult, leptin partial, TG 200-800); within CGL: CGL2 most severe + intellectual disability; within FPLD: FPLD2 most common (LMNA Arg482); TZD specific for PPARG; pancreatitis prominent in PLIN1",
+        ],
     }
 
 
-def breakdown() -> dict:
-    result = {}
-    for gene_entry in LIPO_GENES:
-        cohort = _generate_cohort(gene_entry)
-        gene = gene_entry["gene"]
+def generate_breakdown() -> dict:
+    """Per-gene breakdown for all 8 hereditary lipodystrophy-spectrum genes."""
+    genes_data = []
+    for idx, g in enumerate(ATLAS_GENES):
+        pts = _make_patients(SEED_BASE + idx, g["gene"])
+        treatments = {}
+        for pt in pts:
+            treatments[pt["treatment"]] = treatments.get(pt["treatment"], 0) + 1
+        mutations_seen = {}
+        for pt in pts:
+            mutations_seen[pt["mutation"]] = mutations_seen.get(pt["mutation"], 0) + 1
 
-        def pct(key):
-            return round(100 * sum(1 for p in cohort if p[key]) / len(cohort))
+        mean_tg = round(sum(pt["triglycerides_mg_dL"] for pt in pts) / len(pts), 1)
+        mean_leptin = round(sum(pt["leptin_ng_mL"] for pt in pts) / len(pts), 2)
+        mean_homa_ir = round(sum(pt["homa_ir"] for pt in pts) / len(pts), 1)
+        dm_pct = round(100 * sum(1 for pt in pts if pt["diabetes_mellitus"]) / len(pts), 1)
+        pancreatitis_pct = round(100 * sum(1 for pt in pts if pt["pancreatitis_episode"]) / len(pts), 1)
+        metreleptin_pct = round(100 * sum(1 for pt in pts if pt["metreleptin_treatment"]) / len(pts), 1)
+        ck_elevated_pct = round(100 * sum(1 for pt in pts if pt["ck_elevated"]) / len(pts), 1)
+        pah_pct = round(100 * sum(1 for pt in pts if pt["pulmonary_arterial_hypert"]) / len(pts), 1)
+        id_pct = round(100 * sum(1 for pt in pts if pt["intellectual_disability"]) / len(pts), 1)
+        arrhythmia_pct = round(100 * sum(1 for pt in pts if pt["cardiac_arrhythmia"]) / len(pts), 1)
+        mean_age_dx = round(sum(pt["age_at_diagnosis"] for pt in pts) / len(pts), 1)
+        mean_hba1c = round(sum(pt["hba1c_pct"] for pt in pts) / len(pts), 1)
 
-        result[gene] = {
-            "gene":               gene,
-            "alt_name":           gene_entry["alt_name"],
-            "locus":              gene_entry["locus"],
-            "protein_size":       gene_entry["protein_size"],
-            "inheritance":        gene_entry["inheritance"],
-            "n_patients":         len(cohort),
-            "generalised_lipoatrophy_pct": pct("generalised_lipoatrophy"),
-            "mechanical_fat_absent_pct":   pct("mechanical_fat_absent"),
-            "partial_lipodystrophy_pct":   pct("partial_lipodystrophy"),
-            "severe_hypertrigly_pct":      pct("severe_hypertrigly"),
-            "t2d_pct":                     pct("t2d"),
-            "pancreatitis_pct":            pct("pancreatitis"),
-            "pah_pct":                     pct("pah"),
-            "progeroid_pct":               pct("progeroid"),
-            "bone_anomaly_pct":            pct("bone_anomaly"),
-            "intellectual_disability_pct": pct("intellectual_disability"),
-            "hepatomegaly_pct":            pct("hepatomegaly"),
-            "cardiac_conduction_pct":      pct("cardiac_conduction"),
-            "metreleptin_eligible_pct":    pct("metreleptin_eligible"),
-            "severe_ir_pct":               pct("severe_ir"),
-            "hypoglycaemia_pct":           pct("hypoglycaemia"),
-            "age_of_onset":    gene_entry["age_of_onset"],
-            "key_biomarker":   gene_entry["key_biomarker"],
-            "pathognomonic":   gene_entry["pathognomonic"],
-            "treatment":       gene_entry["treatment"],
-            "critical_flags":  gene_entry["critical_flags"],
-            "seed":            gene_entry["seed"],
-            "cohort_preview":  cohort[:5],
-        }
-    return result
-
-
-def definitions() -> dict:
+        genes_data.append({
+            "gene":                       g["gene"],
+            "locus":                      g["locus"],
+            "protein":                    g["protein"],
+            "protein_size":               g["protein_size"],
+            "inheritance":                g["inheritance"],
+            "disease_category":           g["disease_category"],
+            "n_patients":                 len(pts),
+            "mean_triglycerides_mg_dL":   mean_tg,
+            "mean_leptin_ng_mL":          mean_leptin,
+            "mean_homa_ir":               mean_homa_ir,
+            "dm_prevalence_pct":          dm_pct,
+            "pancreatitis_pct":           pancreatitis_pct,
+            "metreleptin_treatment_pct":  metreleptin_pct,
+            "ck_elevated_pct":            ck_elevated_pct,
+            "pah_pct":                    pah_pct,
+            "intellectual_disability_pct": id_pct,
+            "cardiac_arrhythmia_pct":     arrhythmia_pct,
+            "mean_age_dx":                mean_age_dx,
+            "mean_hba1c_pct":             mean_hba1c,
+            "treatment_breakdown":        treatments,
+            "mutation_breakdown":         mutations_seen,
+            "patients":                   pts,
+        })
     return {
         "atlas": "Hereditary-Lipodystrophy-Atlas",
-        "pathway": "Adipogenesis / Lipid-Droplet Biology / Nuclear Lamina / Insulin Signalling",
-        "shared_mechanism": (
-            "Hereditary lipodystrophies share a final common pathway: insufficient functional adipose tissue "
-            "→ impaired leptin/adiponectin secretion → circulating FFA excess → ectopic fat deposition "
-            "(liver steatosis, skeletal muscle IR, pancreatic beta-cell lipotoxicity) "
-            "→ severe insulin resistance → T2D + hypertriglyceridaemia + NASH. "
-            "Generalised forms (CGL): absent adipogenesis from birth — most severe metabolic disease; metreleptin effective. "
-            "Partial forms (FPLD): inadequate fat maintenance in peripheral depots — metabolic disease variable; "
-            "metreleptin less effective (leptin not severely depleted). "
-            "Nuclear lamina defects (LMNA, ZMPSTE24): impair adipogenic transcription programme via prelamin A accumulation. "
-            "Lipid-droplet defects (PLIN1): unregulated lipolysis → FFA flood. "
-            "Nuclear receptor (PPARG): master adipogenic transcription factor — loss prevents adipocyte differentiation."
-        ),
-        "genes": {
-            g["gene"]: {
-                "full_name": g["alt_name"],
-                "locus": g["locus"],
-                "protein_size": g["protein_size"],
-                "inheritance": g["inheritance"],
-                "critical_flags": g["critical_flags"],
-                "pathognomonic": g["pathognomonic"],
-                "treatment_summary": g["treatment"],
-            }
-            for g in LIPO_GENES
+        "count": len(genes_data),
+        "genes": genes_data,
+    }
+
+
+def generate_definitions() -> dict:
+    """Key clinical definitions for Hereditary-Lipodystrophy-Atlas."""
+    definitions = [
+        {
+            "term": "CGL vs FPLD -- Congenital Generalised vs Familial Partial Lipodystrophy Differential",
+            "genes": ["AGPAT2", "BSCL2", "CAV1", "CAVIN1", "LMNA", "PPARG", "AKT2", "PLIN1"],
+            "definition": (
+                "CGL vs FPLD -- DIFFERENTIAL DIAGNOSIS: "
+                "CONGENITAL GENERALISED LIPODYSTROPHY (CGL): "
+                "  ONSET: congenital (birth or first year); "
+                "  FAT DISTRIBUTION: near-complete or complete absence of subcutaneous fat; "
+                "    Muscular appearance (no subcutaneous fat -> visible musculature); "
+                "    Prominent superficial veins; acromegaloid features; "
+                "  LEPTIN: near-absent (<1 ng/mL for CGL1/3/4; <0.5 ng/mL for CGL2); "
+                "  TRIGLYCERIDES: very high (500-3000+ mg/dL); eruptive xanthomata; pancreatitis; "
+                "  HOMA-IR: severely elevated (10-80+); "
+                "  DM prevalence: 70-90%; "
+                "  METRELEPTIN: SPECIFIC treatment; FDA/EMA approved for CGL; "
+                "  Subtypes: "
+                "    CGL1 (AGPAT2): mechanical fat spared; no intellectual disability; "
+                "    CGL2 (BSCL2): all fat absent; intellectual disability 30-60%; MOST SEVERE; "
+                "    CGL3 (CAV1): milder; caveolae absent EM; PAH; "
+                "    CGL4 (CAVIN1): myopathy + CK elevated + arrhythmia; caveolae absent EM; "
+                "FAMILIAL PARTIAL LIPODYSTROPHY (FPLD): "
+                "  ONSET: puberty or adult (NOT congenital -- key distinguishing feature); "
+                "  FAT DISTRIBUTION: PARTIAL -- loss from specific depots (extremities/gluteal); "
+                "    fat may ACCUMULATE elsewhere (face/neck in FPLD2); "
+                "  LEPTIN: low-normal (partial fat preserved -> partial leptin production); "
+                "  TRIGLYCERIDES: moderate-high (200-800 mg/dL); "
+                "  HOMA-IR: elevated (3-50); "
+                "  DM prevalence: 40-70%; "
+                "  Subtypes: "
+                "    FPLD2 (LMNA Arg482): MOST COMMON; puberty onset; cardiomyopathy; "
+                "    FPLD3 (PPARG): haploinsufficiency; TZDs SPECIFIC treatment; "
+                "    FPLD4 (PLIN1): severe HTG + pancreatitis predominant; "
+                "    FPLD6 (AKT2): severe insulin resistance; incomplete penetrance; "
+                "DIAGNOSIS CLUE: "
+                "  Congenital + muscular appearance + leptin <1 ng/mL -> CGL panel (AGPAT2, BSCL2, CAV1, CAVIN1); "
+                "  Puberty onset + partial fat redistribution -> FPLD panel (LMNA, PPARG, AKT2, PLIN1)."
+            ),
         },
-        "glossary": {
-            "Congenital generalised lipodystrophy (CGL)": "Autosomal recessive complete absence of metabolically active adipose tissue from birth; extreme metabolic disease; metreleptin indicated",
-            "Familial partial lipodystrophy (FPLD)": "Autosomal dominant regional fat loss (usually limbs/gluteal) + compensatory fat gain (trunk/neck/face); metabolic disease; metreleptin less effective",
-            "BSCL2 (seipin)": "ER-resident protein; controls lipid droplet biogenesis and adipogenesis; CGL type 2 — all fat absent including mechanical depots; most common CGL worldwide",
-            "AGPAT2": "Enzyme in glycerophospholipid synthesis (LPA → PA); CGL type 1 — metabolically active fat absent; mechanical fat preserved; bone cysts on X-ray PATHOGNOMONIC",
-            "LMNA (lamin A/C)": "Nuclear lamina structural protein; FPLD2 Dunnigan — most common hereditary FPLD; cardiac laminopathy: conduction disease + DCM + SCD risk — ICD mandatory in high-risk",
-            "PPARG (PPARγ)": "Master adipogenic nuclear receptor; direct target for TZDs; FPLD3 dominant negative mutations impair PPARγ co-activation; adiponectin markedly low",
-            "PLIN1 (perilipin-1)": "Lipid droplet surface scaffold protein; gates ATGL/HSL lipolysis; FPLD4 frameshift → unregulated lipolysis → FFA spillover → severe hypertriglyceridaemia (TG >20 mmol/L)",
-            "AKT2": "Central insulin signalling kinase: PI3K→PIP3→PDK1→AKT2→AS160→GLUT4 vesicle translocation; LOF → severe IR + partial lipodystrophy; GOF → constitutive GLUT4 → neonatal hypoglycaemia",
-            "CAV1 (caveolin-1)": "Scaffolding protein for caveolae (plasma membrane invaginations); lipid raft organisation, eNOS signalling; CGL3 (AR biallelic) + PAH overlap; FPLD7 (AD heterozygous)",
-            "ZMPSTE24 (FACE1)": "Zinc metalloprotease; cleaves 18 C-terminal aa from farnesylated prelamin A → mature lamin A; LOF → prelamin A accumulates → nuclear lamina instability → MADB progeroid lipodystrophy",
-            "Prelamin A": "Precursor of lamin A; farnesylated at C-terminal CAAX → ZMPSTE24 cleaves last 18 aa → mature lamin A; accumulation causes progerin-like nuclear toxicity",
-            "Metreleptin (Myalept)": "Recombinant methionyl-leptin; FDA approved 2014 for GENERALISED lipodystrophy (CGL1+2); improves TG, HbA1c, liver fat by replacing leptin; NOT effective for FPLD (leptin only mildly low)",
-            "Thiazolidinedione (TZD)": "PPARγ ligand; pioglitazone/rosiglitazone; insulin sensitiser; PPARG FPLD3 dominant negative variants impair TZD benefit (receptor dysfunctional); modest effect in LMNA-FPLD2",
-            "Caveolae": "Flask-shaped plasma membrane invaginations; require CAV1/CAV3 + cavin proteins; lipid raft microdomains; signalling platforms (eNOS, EGFR, IR); absent in CAV1-CGL3",
-            "Seipin (BSCL2)": "ER-resident oligomeric protein; controls lipid droplet size and number; adipogenesis initiation; loss → lipid droplets fail to mature → adipocytes cannot differentiate",
-            "Pseudoathleticism": "Appearance of prominent musculature in CGL patients due to absent subcutaneous fat exposing muscle contour; NOT actual athletic capacity; diagnostic clue",
-            "Mechanical fat": "Subcutaneous fat in non-energy-storing depots (palms, soles, periorbit, scalp, joints); structural role not metabolic; PRESERVED in CGL1/AGPAT2; ABSENT in CGL2/BSCL2",
-            "Acanthosis nigricans": "Dark velvety skin thickening in neck/axillae/groin; marker of severe insulin resistance; prominent in all CGL forms and FPLD",
-            "Acroosteolysis": "Resorption of distal phalanges and clavicular ends; PATHOGNOMONIC for ZMPSTE24/MADB on X-ray; also seen in progeria/Werner syndrome",
-            "Perilipin-1 (PLIN1)": "Lipid-droplet surface protein coating; recruits HSL (hormone-sensitive lipase) on PKA phosphorylation; normally gates lipolysis to hormonal control; loss → uncontrolled FFA release",
-            "ICD indication in LMNA": "ICD implant recommended per ESC 2022 guidelines: LMNA + ≥2 of: NSVT, LBBB/HV>70ms, EF<45%, unexplained syncope — primary prevention SCD in laminopathy",
-            "Adiponectin": "Adipokine from white adipocytes; anti-inflammatory + insulin-sensitising; PPARγ drives ADIPOQ expression; severely low in PPARG-FPLD3 and all CGL forms",
-            "Lonafarnib (Zokinvy)": "Farnesyltransferase inhibitor; FDA approved 2020 for Hutchinson-Gilford progeria; inhibits farnesylation of prelamin A at CAAX motif; may benefit ZMPSTE24/MADB by reducing farnesyl-prelamin A burden",
-            "Fibrates": "PPARα agonists (fenofibrate, bezafibrate, gemfibrozil); reduce VLDL TG synthesis; MANDATORY in lipodystrophy hypertriglyceridaemia; TG target <5 mmol/L to prevent pancreatitis",
-            "HOMA-IR": "Homeostatic Model Assessment of Insulin Resistance = fasting insulin × fasting glucose / 22.5; markedly elevated in all CGL forms; >10 indicates severe insulin resistance",
-            "Pancreatitis threshold": "TG >10 mmol/L: pancreatitis risk begins; >20 mmol/L: HIGH risk; >50 mmol/L: severe/acute pancreatitis — urgent lipid-lowering (insulin infusion + plasmapheresis if needed)",
+        {
+            "term": "Metreleptin -- Recombinant Leptin Therapy for Lipodystrophy",
+            "genes": ["AGPAT2", "BSCL2", "CAV1", "CAVIN1", "LMNA"],
+            "definition": (
+                "METRELEPTIN -- RECOMBINANT LEPTIN THERAPY: "
+                "RATIONALE: all lipodystrophies share leptin deficiency (CGL: near-absent; FPLD: low); "
+                "  Leptin normally produced by adipocytes: signals satiety + regulates energy homeostasis; "
+                "  Absent fat -> absent leptin -> hyperphagia + neuroendocrine dysregulation; "
+                "  Leptin also: regulates hepatic fat oxidation; suppresses VLDL production; sensitises insulin; "
+                "MECHANISM OF ACTION: "
+                "  Metreleptin = recombinant human leptin (Met-leptin); SC injection daily; "
+                "  Acts on hypothalamic leptin receptor (LEPR / Ob-R); "
+                "  -> POMC activation -> satiety; -> NPY/AgRP suppression -> reduced appetite; "
+                "  -> Hepatic: reduces hepatic lipogenesis + increases fat oxidation -> reduces hepatic steatosis; "
+                "  -> Triglycerides: markedly reduced (mechanisms: FFA flux reduction + hepatic VLDL suppression); "
+                "  -> HbA1c: reduced (insulin sensitisation via central + peripheral mechanisms); "
+                "CLINICAL OUTCOMES (randomised + observational data): "
+                "  TG reduction: 50-80% from baseline in CGL patients; "
+                "  HbA1c reduction: 2-4 percentage points in treated CGL; "
+                "  Hepatic steatosis: reduced on MRI; fibrosis may stabilise; "
+                "  Pancreatitis: risk reduced when TG lowered below 500 mg/dL threshold; "
+                "DOSING: "
+                "  CGL: 0.04-0.08 mg/kg/day SC (males lower dose -- lower fat); "
+                "    Females (higher adipose target): 0.06-0.12 mg/kg/day; "
+                "  Titrate by TG + HbA1c response; "
+                "  Monitor: CBC (lymphoma risk signal -- neutralising antibodies reported); "
+                "APPROVAL STATUS: "
+                "  FDA (Myalept): approved for CGL + severe FPLD; "
+                "  EMA (Myalepta): approved for lipodystrophy + leptin deficiency evidence; "
+                "SIDE EFFECTS: "
+                "  Hypoglycaemia: if insulin not titrated down as sensitivity improves; "
+                "  Lymphoma signal: T-cell lymphoma cases in FPLD patients (REMS program in USA); "
+                "  Antibody formation: neutralising anti-leptin antibodies; rare but monitor; "
+                "FPLD: "
+                "  Less dramatic than CGL but beneficial; TG and HbA1c reduction; "
+                "  Approved in severe cases with metabolic complications."
+            ),
         },
-        "surveillance_protocols": {
-            "BSCL2": "Annual: leptin, TG, HbA1c, insulin, LFTs, fibroscan; TG target <5 mmol/L; metreleptin dose review; ophthalmology (cataract reported); developmental assessment if ID",
-            "AGPAT2": "Annual: leptin, TG, HbA1c, LFTs, fibroscan; X-ray if bone symptoms; TG target <5 mmol/L; metreleptin review; reproductive endocrinology",
-            "LMNA": "Annual: ECG + 24h Holter + echo; HbA1c; TG; LFTs; CK; assess for ICD indication; genetics re-review if new cardiac symptoms; exercise restriction pending cardiac assessment",
-            "PPARG": "Annual: TG, HbA1c, LFTs, adiponectin; fibrate + omega-3 TG management; TZD trial — document response; family metabolic screening (T2D/hypertriglyceridaemia)",
-            "PLIN1": "Annual: TG (target <5 mmol/L MANDATORY), HbA1c, LFTs; fibrate dose optimisation; dietary fat review (<15% calories); ER protocol for acute pancreatitis; family TG screening",
-            "AKT2": "Annual (LOF): HbA1c, fasting insulin, TG, LFTs; (GOF): glucose monitoring; adjust sirolimus/diazoxide; distinguish GOF vs LOF — management opposite",
-            "CAV1": "Annual: echo (PAH screen — TR velocity + RVSP); LFTs; TG; HbA1c; RHC if echo abnormal; metreleptin if generalised + low leptin; PAH MDT involvement",
-            "ZMPSTE24": "Annual: HbA1c, TG, X-ray (acroosteolysis progression), echo, dental OPG (mandibular), dermatology; lonafarnib trial consideration; physio for contractures; genetic counselling",
+        {
+            "term": "Caveolae Absent on Electron Microscopy -- Pathognomonic for CGL3 (CAV1) and CGL4 (CAVIN1)",
+            "genes": ["CAV1", "CAVIN1"],
+            "definition": (
+                "CAVEOLAE ABSENT ON EM -- PATHOGNOMONIC FINDING (CGL3/CGL4): "
+                "NORMAL CAVEOLAE: "
+                "  Flask-shaped plasma membrane invaginations (50-100 nm diameter); "
+                "  Electron microscopy (EM): visible as omega/flask-shaped structures at plasma membrane; "
+                "  Caveolin-1 (CAV1) + Cavin-1 (CAVIN1) both required: "
+                "    CAV1 scaffolds the caveolae membrane; "
+                "    CAVIN1 coats the cytoplasmic face; stabilises the complex; "
+                "    Without EITHER: stable caveolae cannot form -> absent on EM; "
+                "  Adipocytes: particularly enriched in caveolae (30% of plasma membrane); "
+                "  Skeletal muscle: abundant caveolae (membrane repair + mechanosensing); "
+                "PATHOGNOMONIC IN CGL3 AND CGL4: "
+                "  CGL3 (CAV1 LOF): caveolae absent on EM of skin or adipose biopsy; "
+                "  CGL4 (CAVIN1 LOF): caveolae absent on EM of skeletal muscle or skin biopsy; "
+                "  Both CAV1 and CAVIN1 absent -> absent caveolae; "
+                "  NOT absent in CGL1 (AGPAT2) or CGL2 (BSCL2) -- different mechanism; "
+                "DISTINGUISHING CGL3 vs CGL4 (BOTH have absent caveolae): "
+                "  CGL3 (CAV1): "
+                "    NO myopathy; normal CK; "
+                "    PAH (pulmonary arterial hypertension) -- unique to CGL3; "
+                "    Milder metabolic phenotype; "
+                "  CGL4 (CAVIN1): "
+                "    MYOPATHY: limb-girdle weakness; muscular dystrophy on biopsy; "
+                "    CK markedly elevated (500-5000 IU/L) -- distinguishing biomarker; "
+                "    CARDIAC ARRHYTHMIA + conduction disease; "
+                "    NO PAH; "
+                "  Summary: absent caveolae = CAV1 or CAVIN1; myopathy + high CK = CAVIN1; PAH = CAV1; "
+                "BIOPSY PROTOCOL: "
+                "  Skin biopsy (punch 4 mm) or muscle biopsy; "
+                "  EM processing: glutaraldehyde fix -> osmium stain -> thin sections; "
+                "  Report: presence/absence of flask-shaped caveolae at plasma membrane; "
+                "GENETIC CONFIRMATION: CAV1 or CAVIN1 sequencing; biallelic LOF."
+            ),
         },
+        {
+            "term": "CGL4 (CAVIN1) -- Myopathy and Cardiac Arrhythmia Distinguish from All Other CGL Types",
+            "genes": ["CAVIN1"],
+            "definition": (
+                "CGL4 (CAVIN1) -- UNIQUE FEATURES: MYOPATHY + CARDIAC ARRHYTHMIA: "
+                "WHY MUSCLE IN CAVIN1: "
+                "  Caveolae are most abundant in skeletal and cardiac muscle (membrane repair + T-tubule organisation); "
+                "  CAVIN1 is essential for muscle caveolae (not just adipose); "
+                "  Loss of caveolae in muscle -> membrane fragility (like muscular dystrophies) -> myopathy; "
+                "  Cardiomyocytes: caveolae regulate ion channel distribution (Na/K channels, L-type Ca); "
+                "    Loss -> arrhythmogenic substrate; "
+                "SKELETAL MUSCLE INVOLVEMENT: "
+                "  Proximal muscle weakness (limb-girdle distribution); "
+                "  Muscle wasting (on exam and MRI musculoskeletal); "
+                "  CK markedly elevated (500-5000 IU/L) -- present in >80% of CAVIN1 patients; "
+                "  Muscle biopsy: dystrophic changes (variation in fibre size, central nuclei, fibrosis); "
+                "    + EM: caveolae absent; "
+                "  Diaphragm: may be involved -> respiratory insufficiency; spirometry required; "
+                "CARDIAC: "
+                "  Conduction abnormalities: PR prolongation, bundle branch block, QT prolongation; "
+                "  Arrhythmias: ventricular arrhythmia; sudden cardiac death reported; "
+                "  Dilated cardiomyopathy component in some patients; "
+                "  MANAGEMENT: annual ECG + Holter + echocardiogram; ICD if significant VT/VF; "
+                "  Genetic cardiomyopathy team co-management; "
+                "CK AS DIAGNOSTIC CLUE: "
+                "  CGL + CK 500-5000 IU/L = CGL4 (CAVIN1) until proven otherwise; "
+                "  Check CK in all CGL patients at diagnosis; "
+                "  No other CGL type (AGPAT2, BSCL2, CAV1) has significantly elevated CK; "
+                "TREATMENT: "
+                "  Metabolic: metreleptin + low-fat diet + fibrates; "
+                "  Cardiac: ECG monitoring; consider ICD prophylactically in those with significant arrhythmia; "
+                "  Muscular: physiotherapy; respiratory support if diaphragm involved; "
+                "  Avoid aggressive exercise in severe myopathy."
+            ),
+        },
+        {
+            "term": "FPLD2 (LMNA Arg482) -- Dunnigan Syndrome Puberty Onset, Cardiomyopathy, Laminopathy",
+            "genes": ["LMNA"],
+            "definition": (
+                "FPLD2 / DUNNIGAN SYNDROME (LMNA Arg482) -- MOST COMMON FPLD: "
+                "ARG482 HOTSPOT: "
+                "  >90% of FPLD2 mutations: p.Arg482Trp, p.Arg482Gln, p.Arg482Leu; "
+                "  Arg482 in immunoglobulin-fold domain of Lamin A/C; "
+                "  Mutation changes surface charge -> altered binding to HP1alpha, BAF, emerin; "
+                "  Alters LAD (lamin-associated domain) organisation -> adipogenic gene expression disrupted; "
+                "  Adipogenesis proceeds at puberty but fat MAINTENANCE fails -> progressive fat loss; "
+                "PUBERTY ONSET (KEY FEATURE): "
+                "  Fat loss from extremities + gluteal BEGINS AT PUBERTY (not congenital); "
+                "  Females: more severe loss; more pronounced metabolic syndrome; "
+                "  Males: milder; may be subtle/missed; "
+                "FAT REDISTRIBUTION: "
+                "  Lost from: arms, legs, gluteal region; "
+                "  Gained at: face (round face), neck (fat cushion), abdomen (prominent); "
+                "  Neck fat: mimics Cushing syndrome (exclude with 24h UFC + overnight dexamethasone suppression); "
+                "  DIFFERENTIAL: Cushing (hypercortisolism), HIV lipodystrophy (ARV use), multiple symmetric lipomatosis; "
+                "METABOLIC: "
+                "  Hypertriglyceridemia (200-800 mg/dL); "
+                "  Low HDL; insulin resistance; DM (60%); hypertension; "
+                "  Premature atherosclerosis; "
+                "  Acanthosis nigricans (insulin resistance); PCOS in females; "
+                "LAMINOPATHY CARDIAC COMPLICATIONS: "
+                "  Dilated cardiomyopathy OR hypertrophic cardiomyopathy; "
+                "  Conduction disease: AV block, LBBB, atrial fibrillation; "
+                "  SUDDEN CARDIAC DEATH: LMNA = one of most common single-gene causes of sudden cardiac death; "
+                "  Risk factors for SCD: LMNA + NSVT + LVEF <45% + male sex; "
+                "  ICD indications: LVEF <45% + NSVT/syncope; "
+                "  Cardiac surveillance: ECG + Holter annually; echo every 1-3 years; "
+                "TREATMENT: "
+                "  Metabolic: metreleptin; fibrates + statins; ACE-I/ARB; insulin/GLP-1 agonist; "
+                "  TZDs: potentially beneficial (PPARG activation) but fluid retention risk; "
+                "  Cardiac: evidence-based heart failure therapy (ACE-I/beta-blocker/MRA if DCM); ICD; "
+                "  Genetic counselling: AD; 50% offspring risk; screen family."
+            ),
+        },
+        {
+            "term": "TZD Specific Treatment for FPLD3 (PPARG Haploinsufficiency) -- Mechanism and Evidence",
+            "genes": ["PPARG"],
+            "definition": (
+                "THIAZOLIDINEDIONES (TZDs) -- SPECIFIC TREATMENT FOR FPLD3 (PPARG): "
+                "WHY TZDs ARE SPECIFIC FOR FPLD3: "
+                "  FPLD3 = PPARG haploinsufficiency -> 50% reduction in PPARG transcriptional activity; "
+                "  TZDs = high-affinity synthetic PPARG ligands (agonists): "
+                "    Pioglitazone (preferred): full PPARG agonist; "
+                "    Rosiglitazone: full PPARG agonist (CV risk concerns -- restricted); "
+                "  TZD activates remaining WT PPARG allele -> partial functional restoration; "
+                "  Net effect: PPARG-driven adipogenic programme re-activated -> "
+                "    improved peripheral fat storage -> ectopic fat redistribution -> reduced HTG + insulin resistance; "
+                "MECHANISM OF BENEFIT: "
+                "  Enhanced GLUT4 expression in adipocytes -> better glucose uptake; "
+                "  Increased adiponectin secretion -> hepatic + peripheral insulin sensitisation; "
+                "  Reduced ectopic fat (liver, muscle) -> improves hepatic insulin sensitivity; "
+                "  Triglyceride lowering: LPL activation + adipocyte FFA uptake; "
+                "CLINICAL OUTCOMES IN FPLD3: "
+                "  TG reduction: 30-60% from baseline; "
+                "  HbA1c: 1-2 point reduction; "
+                "  Fat redistribution: some restoration of peripheral fat (slow; months to years); "
+                "  Blood pressure: modest reduction; "
+                "  Insulin dose reduction in DM; "
+                "CAUTIONS: "
+                "  Fluid retention: oedema + heart failure risk (avoid in NYHA III/IV); "
+                "  Weight gain: increased adiposity (desired effect for lipodystrophy!); "
+                "  Bone: fracture risk in women with long-term TZD use; "
+                "  Pioglitazone preferred over rosiglitazone (CV safety); "
+                "TZD USE IN OTHER FPLD TYPES: "
+                "  FPLD2 (LMNA): potentially beneficial (PPARG-responsive pathway); "
+                "    Limited data; fluid retention risk with cardiomyopathy -- caution; "
+                "  FPLD4 (PLIN1): not specifically studied; "
+                "  CGL types: TZDs less effective (PPARG-independent mechanisms); "
+                "PPARG MASTER REGULATOR: "
+                "  PPARG2 (adipose-specific): master transcription factor for adipogenesis; "
+                "  TZD ligand -> PPARG-RXR heterodimer -> PPRE -> adipogenic gene expression; "
+                "  This is why PPARG LOF -> lipodystrophy AND why TZD agonism can partially restore function."
+            ),
+        },
+        {
+            "term": "PLIN1 Unregulated Lipolysis -- Severe Hypertriglyceridemia and Pancreatitis Risk",
+            "genes": ["PLIN1"],
+            "definition": (
+                "PLIN1 (PERILIPIN-1) -- LIPID DROPLET GATEKEEPER AND UNREGULATED LIPOLYSIS: "
+                "NORMAL PLIN1 FUNCTION: "
+                "  Perilipin-1 coats lipid droplet surface in adipocytes; "
+                "  BASAL STATE: PLIN1 sequesters ABHD5 (CGI-58, ATGL co-activator) -> ATGL inactive -> "
+                "    Basal lipolysis suppressed; fat stored; "
+                "  STIMULATED (PKA activation -> catecholamines): "
+                "    PKA phosphorylates PLIN1 -> conformation change; "
+                "    ABHD5 released -> activates ATGL -> TAG -> DAG + FFA (first step lipolysis); "
+                "    HSL recruited to phospho-PLIN1 -> DAG -> MAG + FFA (second step); "
+                "    Regulated FFA release; "
+                "PLIN1 LOF (FPLD4 MECHANISM): "
+                "  Heterozygous frameshift -> haploinsufficiency -> partial PLIN1 reduction; "
+                "  ABHD5 not sequestered -> constitutive ATGL activation -> UNREGULATED BASAL LIPOLYSIS; "
+                "  Excess FFA release at all times -> "
+                "    Hepatic: FFA -> VLDL overproduction -> severe hypertriglyceridemia; "
+                "    Peripheral: FFA toxicity -> insulin resistance; "
+                "    Muscle/liver: ectopic fat deposition; "
+                "SEVERE HYPERTRIGLYCERIDEMIA: "
+                "  400-2000+ mg/dL (vs normal <150 mg/dL); "
+                "  Chylomicronaemia syndrome when TG >1000 mg/dL: "
+                "    Eruptive xanthomata (orange-red skin eruptions); "
+                "    Lipaemia retinalis (cream-white retinal vessels on fundoscopy); "
+                "    Abdominal pain (even before acute pancreatitis); "
+                "    TG >1000 mg/dL = impending pancreatitis; "
+                "PANCREATITIS (MAJOR COMPLICATION): "
+                "  Recurrent acute pancreatitis; "
+                "  Mechanism: TG >1000 mg/dL -> pancreatic lipase -> FFA in pancreatic capillaries -> injury; "
+                "  Complications: necrosis, pseudocyst, chronic pancreatitis, exocrine insufficiency; "
+                "TG MANAGEMENT: "
+                "  Fibrates (fenofibrate): first-line; reduce TG 30-50%; "
+                "  Omega-3 fatty acids (4 g/day): additional 20-30% TG reduction; "
+                "  Strict low-fat diet (<20 g fat/day in acute phase; <50 g/day long-term); "
+                "  Volanesorsen (antisense ApoC3 inhibitor): 70-80% TG reduction; "
+                "  Evinacumab (ANGPTL3 inhibitor): alternative for refractory HTG; "
+                "  Acute pancreatitis: NPO + IV fluids; insulin infusion (lowers TG acutely); plasmapheresis if severe."
+            ),
+        },
+        {
+            "term": "8-Gene Hereditary Lipodystrophy Differential Guide -- CGL vs FPLD by Gene",
+            "genes": ["AGPAT2", "BSCL2", "CAV1", "CAVIN1", "LMNA", "PPARG", "AKT2", "PLIN1"],
+            "definition": (
+                "8-GENE HEREDITARY LIPODYSTROPHY DIFFERENTIAL: "
+                "BY ONSET: "
+                "  CONGENITAL (birth): AGPAT2 (CGL1), BSCL2 (CGL2), CAV1 (CGL3), CAVIN1 (CGL4); "
+                "  PUBERTY / ADULT: LMNA (FPLD2), PPARG (FPLD3), AKT2 (FPLD6), PLIN1 (FPLD4); "
+                "BY LEPTIN: "
+                "  Near-absent (<1 ng/mL): AGPAT2, BSCL2, CAV1, CAVIN1 (all CGL); "
+                "  Low-normal (2-10 ng/mL): LMNA, PPARG, AKT2, PLIN1 (all FPLD); "
+                "BY INHERITANCE: "
+                "  AR: AGPAT2, BSCL2, CAV1, CAVIN1; "
+                "  AD: LMNA, PPARG, AKT2, PLIN1; "
+                "BY TRIGLYCERIDES: "
+                "  Very high (>500 mg/dL): AGPAT2, BSCL2, CAV1, CAVIN1, PLIN1; "
+                "  Moderate-high (200-800 mg/dL): LMNA, PPARG, AKT2; "
+                "BY SPECIFIC DISTINGUISHING FEATURE: "
+                "  Intellectual disability 30-60%: BSCL2 (CGL2) ONLY; "
+                "  Caveolae absent on EM + PAH: CAV1 (CGL3); "
+                "  Caveolae absent on EM + myopathy + elevated CK + arrhythmia: CAVIN1 (CGL4); "
+                "  Puberty onset fat redistribution + cardiomyopathy + Arg482: LMNA (FPLD2); "
+                "  TZD specific treatment (PPARG agonist replaces lost function): PPARG (FPLD3); "
+                "  Severe insulin resistance disproportionate + incomplete penetrance + somatic GOF opposite: AKT2 (FPLD6); "
+                "  Severe HTG + pancreatitis + unregulated lipolysis: PLIN1 (FPLD4); "
+                "  Mechanical fat spared + NO intellectual disability: AGPAT2 (CGL1); "
+                "BY TREATMENT: "
+                "  Metreleptin SPECIFIC: AGPAT2 (CGL1), BSCL2 (CGL2), CAV1 (CGL3), CAVIN1 (CGL4); "
+                "  TZD SPECIFIC: PPARG (FPLD3); "
+                "  Fibrates + volanesorsen (HTG + pancreatitis): PLIN1 (FPLD4); "
+                "  Annual cardiac surveillance mandatory: LMNA (arrhythmia + cardiomyopathy); "
+                "    Also: CAVIN1 (arrhythmia); "
+                "  PAH monitoring: CAV1 (echo annually); "
+                "BY BIOMARKER: "
+                "  Leptin <1 ng/mL: CGL (any); "
+                "  CK >500 IU/L: CAVIN1 (CGL4); "
+                "  Echo TR jet velocity elevated: CAV1 (CGL3); "
+                "PRACTICAL FIRST STEP: "
+                "  Congenital + leptin <1 + TG >500 -> CGL panel; then CK to distinguish CAVIN1 (CGL4); "
+                "    EM for caveolae to distinguish CAV1/CAVIN1 from AGPAT2/BSCL2; "
+                "    Intellectual disability -> BSCL2 first; mechanical fat spared -> AGPAT2 first; "
+                "  Puberty onset + partial fat redistribution -> FPLD panel; "
+                "    Arg482 sequencing first for LMNA; PPARG if metabolic syndrome prominent + TZD candidate; "
+                "    Pancreatitis + severe HTG -> PLIN1."
+            ),
+        },
+    ]
+    return {
+        "atlas":       "Hereditary-Lipodystrophy-Atlas",
+        "count":       len(definitions),
+        "definitions": definitions,
     }
 
 
 if __name__ == "__main__":
     import json
-    ov = overview()
-    print(f"Atlas: {ov['atlas']}")
-    print(f"Total patients: {ov['total_patients']}")
-    print(f"Seeds: {ov['seeds']}")
-    print(f"Genes: {', '.join(ov['genes'])}")
-    print(f"Generalised lipoatrophy: {ov['generalised_lipoatrophy_patients']}")
-    print(f"Metreleptin eligible: {ov['metreleptin_eligible_patients']}")
-    print(f"PAH patients: {ov['pah_patients']}")
-    print(f"Progeroid patients: {ov['progeroid_patients']}")
-    print(f"Pancreatitis patients: {ov['pancreatitis_patients']}")
-    print("Breakdown keys:", list(breakdown().keys()))
+    print("=== OVERVIEW ===")
+    print(json.dumps(generate_overview(), indent=2)[:1000])
+    print("\n=== BREAKDOWN (count) ===")
+    bd = generate_breakdown()
+    print(f"Genes: {bd['count']}")
+    for g in bd["genes"]:
+        print(
+            f"  {g['gene']:8s}: n={g['n_patients']}, "
+            f"mean_TG={g['mean_triglycerides_mg_dL']} mg/dL, "
+            f"mean_leptin={g['mean_leptin_ng_mL']} ng/mL, "
+            f"HOMA-IR={g['mean_homa_ir']}, "
+            f"DM={g['dm_prevalence_pct']}%, "
+            f"pancreatitis={g['pancreatitis_pct']}%, "
+            f"metreleptin={g['metreleptin_treatment_pct']}%, "
+            f"mean_age_dx={g['mean_age_dx']}"
+        )
+    print("\n=== DEFINITIONS (count) ===")
+    df = generate_definitions()
+    print(f"Terms: {df['count']}")
+    for d in df["definitions"]:
+        print(f"  - {d['term'][:80]}")

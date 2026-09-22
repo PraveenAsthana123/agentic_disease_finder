@@ -20468,5 +20468,30 @@
     "cohort_n": 320,
     "seed": "2990-2997",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-lipodystrophy-atlas",
+    "name": "Hereditary-Lipodystrophy-Atlas Complete-8-Gene-AGPAT2-BSCL2-CAV1-CAVIN1-LMNA-PPARG-AKT2-PLIN1-CGL-FPLD-Reference AGPAT2-278aa-9q34.3-AR-CGL1-Metreleptin-SPECIFIC BSCL2-462aa-11q12.3-AR-CGL2-MOST-COMMON-Intellectual-Disability CAV1-178aa-7q31.2-AR-CGL3-Caveolae-ABSENT-EM-PAH CAVIN1-392aa-17q21.2-AR-CGL4-MYOPATHY-Arrhythmia-UNIQUE LMNA-664aa-1q22-AD-FPLD2-Dunnigan-Arg482-Cardiomyopathy PPARG-477aa-3p25.2-AD-FPLD3-TZD-SPECIFIC AKT2-481aa-19q13.2-AD-FPLD6-Severe-IR PLIN1-522aa-15q26.1-AD-FPLD4-Pancreatitis 320-Patient-Aggregate-8x40-seeds-2998-3005",
+    "status": "built",
+    "route": "/hereditary-lipodystrophy-atlas",
+    "api_endpoints": [
+      "/api/hereditary-lipodystrophy-atlas/overview",
+      "/api/hereditary-lipodystrophy-atlas/breakdown",
+      "/api/hereditary-lipodystrophy-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_lipodystrophy_atlas_dashboard.py",
+    "genes": [
+      "AGPAT2",
+      "BSCL2",
+      "CAV1",
+      "CAVIN1",
+      "LMNA",
+      "PPARG",
+      "AKT2",
+      "PLIN1"
+    ],
+    "seeds": "2998-3005",
+    "patients": 320,
+    "registered": "2026-09-21"
   }
 ]
