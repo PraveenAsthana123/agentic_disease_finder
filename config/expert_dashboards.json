@@ -20493,5 +20493,29 @@
     "seeds": "2998-3005",
     "patients": 320,
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-primary-dyslipidemia-atlas",
+    "slug": "hereditary-primary-dyslipidemia-atlas",
+    "name": "Hereditary-Primary-Dyslipidemia-Atlas",
+    "status": "built",
+    "genes": [
+      "LDLR",
+      "APOB",
+      "PCSK9",
+      "LDLRAP1",
+      "LIPA",
+      "ABCA1",
+      "ABCG5",
+      "ABCG8"
+    ],
+    "seeds": "3006-3013",
+    "patient_count": 320,
+    "endpoints": [
+      "/api/hereditary-primary-dyslipidemia-atlas/overview",
+      "/api/hereditary-primary-dyslipidemia-atlas/breakdown",
+      "/api/hereditary-primary-dyslipidemia-atlas/definitions"
+    ],
+    "registered": "2026-09-21"
   }
 ]

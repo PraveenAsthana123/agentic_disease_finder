@@ -49960,6 +49960,27 @@ async def hereditary_lipodystrophy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-primary-dyslipidemia-atlas/overview")
+async def hereditary_primary_dyslipidemia_atlas_overview():
+    """Hereditary-Primary-Dyslipidemia-Atlas overview (LDLR-860aa-19p13.2-AR/AD-FH1-Most-Common-1in250-Tendon-Xanthomata-PATHOGNOMONIC, APOB-4563aa-2p24.1-AD-FDB-Arg3527Gln-European-Founder, PCSK9-692aa-1p32.3-AD-GOF-FH3-LOF-CVD-Protection-88pct, LDLRAP1-308aa-1p36.11-AR-ARH-Lymphocyte-LDLR-Normal, LIPA-399aa-10q23.31-AR-Wolman-Adrenal-Calcification-PATHOGNOMONIC-LAL-D-Sebelipase, ABCA1-2261aa-9q31.1-AR-Tangier-Orange-Tonsils-PATHOGNOMONIC-HDL-Near-Zero, ABCG5-651aa-2p21-AR-Sitosterolaemia-Childhood-Xanthomata-Ezetimibe, ABCG8-673aa-2p21-AR-Sitosterolaemia-Type2-South-Asian-D19H-Gallstones, 320-patients-8x40-seeds-3006-3013)."""
+    from scripts.hereditary_primary_dyslipidemia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-primary-dyslipidemia-atlas/breakdown")
+async def hereditary_primary_dyslipidemia_atlas_breakdown():
+    """Hereditary-Primary-Dyslipidemia-Atlas per-gene breakdown (LDLR-FH1-tendon-xanthomata, APOB-FDB-statin-responsive, PCSK9-GOF-FH3-LOF-CVD-protection, LDLRAP1-ARH-lymphocyte-LDLR-normal, LIPA-Wolman-LAL-D-sebelipase, ABCA1-Tangier-HDL-zero, ABCG5-ABCG8-sitosterolaemia-plant-sterols, 320 patients)."""
+    from scripts.hereditary_primary_dyslipidemia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-primary-dyslipidemia-atlas/definitions")
+async def hereditary_primary_dyslipidemia_atlas_definitions():
+    """Hereditary-Primary-Dyslipidemia-Atlas clinical definitions (LDLR-class1-5-mutations, PCSK9i-FOURIER-ODYSSEY-ORION, Tangier-orange-tonsils-HDL-zero, sitosterolaemia-ezetimibe, Wolman-adrenal-calcification-sebelipase, ARH-lymphocyte-LDLR-HoFH-differential, 8-gene-differential-guide, DLCN-score-cascade-testing)."""
+    from scripts.hereditary_primary_dyslipidemia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
