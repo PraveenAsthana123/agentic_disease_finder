@@ -20386,5 +20386,30 @@
     ],
     "page": "/hereditary-gh-igf1-axis-atlas",
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-autoimmune-polyglandular-atlas",
+    "title": "Hereditary-Autoimmune-Polyglandular-Syndrome-Atlas",
+    "category": "hereditary-endocrine",
+    "status": "built",
+    "description": "Complete 8-gene APS / polyendocrine autoimmunity reference: AIRE-APS1-APECED (anti-IFN-\u03c9 pathognomonic), FOXP3-IPEX (absent Tregs, neonatal T1DM), CTLA4-CHAI (abatacept), LRBA-CTLA4-recycling-defect (abatacept), IL2RA-CD25-deficiency (elevated IL-2), STAT3-GOF (T1DM+thyroiditis+short stature, JAK-i), STAT1-GOF (CMC+aneurysm, ruxolitinib), ITCH-syndromic-dysmorphic. 320-patient aggregate, seeds 2966-2973.",
+    "genes": [
+      "AIRE",
+      "FOXP3",
+      "CTLA4",
+      "LRBA",
+      "IL2RA",
+      "STAT3",
+      "STAT1",
+      "ITCH"
+    ],
+    "seeds": "2966-2973",
+    "routes": [
+      "/api/hereditary-autoimmune-polyglandular-atlas/overview",
+      "/api/hereditary-autoimmune-polyglandular-atlas/breakdown",
+      "/api/hereditary-autoimmune-polyglandular-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-autoimmune-polyglandular-atlas",
+    "built_date": "2026-09-21"
   }
 ]

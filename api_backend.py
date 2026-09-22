@@ -49881,6 +49881,25 @@ async def hereditary_gh_igf1_axis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-autoimmune-polyglandular-atlas/overview")
+async def hereditary_autoimmune_polyglandular_atlas_overview():
+    """Hereditary-Autoimmune-Polyglandular-Syndrome-Atlas overview (AIRE-545aa-21q22.3-AR-APS1-APECED-CMC-HP-Addison-Anti-IFNw-Pathognomonic, FOXP3-431aa-Xp11.23-XL-IPEX-Neonatal-T1DM-Diarrhoea-Eczema-Tregs-Absent-HSCT, CTLA4-223aa-2q33.2-AD-CHAI-Thyroiditis-Lymphoproliferation-Abatacept-Curative, LRBA-2863aa-4q31.3-AR-CVID-Autoimmunity-CTLA4-Recycling-Defect-Abatacept, IL2RA-272aa-10p15.1-AR-CD25-Deficiency-IPEX-Like-Elevated-IL2-Treg-Starvation, STAT3-770aa-17q21.2-AD-GOF-T1DM-Thyroiditis-Short-Stature-JAK-Inhibitors, STAT1-750aa-2q32.2-AD-GOF-CMC-Autoimmunity-Intracranial-Aneurysm-MRA-Mandatory-Ruxolitinib, ITCH-864aa-20q11.22-AR-Syndromic-Autoimmunity-Dysmorphic-DD-Unique, 320-patients-8x40-seeds-2966-2973)."""
+    from scripts.hereditary_autoimmune_polyglandular_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-autoimmune-polyglandular-atlas/breakdown")
+async def hereditary_autoimmune_polyglandular_atlas_breakdown():
+    """Hereditary-Autoimmune-Polyglandular-Syndrome-Atlas per-gene breakdown (AIRE-APS1-triad-CMC-HP-Addison, FOXP3-IPEX-absent-Tregs, CTLA4-LRBA-abatacept-shared-pathway, IL2RA-elevated-IL2, STAT3-GOF-short-stature-JAKi, STAT1-GOF-CMC-aneurysm-ruxolitinib, ITCH-syndromic-dysmorphic, 320 patients)."""
+    from scripts.hereditary_autoimmune_polyglandular_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-autoimmune-polyglandular-atlas/definitions")
+async def hereditary_autoimmune_polyglandular_atlas_definitions():
+    """Hereditary-Autoimmune-Polyglandular-Syndrome-Atlas clinical definitions (APS1-APECED-triad, IPEX-Treg-absent, CTLA4-LRBA-abatacept, STAT3-GOF-vs-LOF, STAT1-GOF-CMC-aneurysm, IL2RA-elevated-IL2, ITCH-syndromic, APS-differential-diagnosis-summary)."""
+    from scripts.hereditary_autoimmune_polyglandular_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
