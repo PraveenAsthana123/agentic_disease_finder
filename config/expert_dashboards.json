@@ -21312,5 +21312,25 @@
     "patients": 320,
     "api": "/api/hereditary-colorectal-cancer-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-lymphoma-predisposition-atlas",
+    "title": "Hereditary Lymphoma Predisposition Atlas",
+    "category": "hereditary-cancer-atlas",
+    "genes": [
+      "ATM",
+      "BRCA2",
+      "CARD11",
+      "PIK3CD",
+      "KMT2D",
+      "TP53",
+      "TNFRSF13B",
+      "LRBA"
+    ],
+    "status": "built",
+    "seed_range": "3238-3245",
+    "patients": 320,
+    "api": "/api/hereditary-lymphoma-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]

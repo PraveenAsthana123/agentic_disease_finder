@@ -50545,6 +50545,27 @@ async def hereditary_colorectal_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lymphoma-predisposition-atlas/overview")
+async def hereditary_lymphoma_predisposition_atlas_overview():
+    """Hereditary-Lymphoma-Predisposition-Atlas overview (ATM-BRCA2-CARD11-PIK3CD-KMT2D-TP53-TNFRSF13B-LRBA; 320-patient aggregate 8x40 seeds 3238-3245; ATM-CLL-4-7x-Monoallelic-Biallelic-AT-Radiation-ABSOLUTE-CI; BRCA2-NHL-2-3x-HRD-FA-D1-Medulloblastoma; CARD11-BENTA-B-Cell-Lymphocytosis-PATHOGNOMONIC; PIK3CD-APDS1-EBV-Plus-NHL-PATHOGNOMONIC-Leniolisib-FDA2023; KMT2D-Kabuki-Somatic-83pct-FL-Driver; TP53-LFS-AVOID-RADIATION-WBMRI-Toronto; TNFRSF13B-TACI-CVID-MALT-Dominant-Rituximab-Caution; LRBA-EBV-Plus-B-NHL-PATHOGNOMONIC-Abatacept-CTLA4)."""
+    from scripts.hereditary_lymphoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lymphoma-predisposition-atlas/breakdown")
+async def hereditary_lymphoma_predisposition_atlas_breakdown():
+    """Hereditary-Lymphoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-CLL-MCL; BRCA2-NHL-HRD; CARD11-BENTA-DLBCL; PIK3CD-APDS1-EBV-Plus; KMT2D-Kabuki-FL; TP53-LFS-NHL; TNFRSF13B-TACI-MALT; LRBA-EBV-Plus; mean_age_dx per gene; CR pct per gene; EBV positive counts)."""
+    from scripts.hereditary_lymphoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lymphoma-predisposition-atlas/definitions")
+async def hereditary_lymphoma_predisposition_atlas_definitions():
+    """Hereditary-Lymphoma-Predisposition-Atlas clinical definitions (ATM-CLL-4-7x-AT-Radiation-ABSOLUTE-CI-Ceralasertib; BRCA2-FA-D1-Medulloblastoma-PATHOGNOMONIC-Cisplatin-Olaparib; CARD11-BENTA-B-Cell-Lymphocytosis-Constitutive-NF-kB; PIK3CD-APDS1-EBV-NHL-PATHOGNOMONIC-Leniolisib-NOT-Idelalisib; KMT2D-Kabuki-Fingertip-Pads-PATHOGNOMONIC-83pct-FL; TP53-LFS-AVOID-XRT-WBMRI-R337H; TNFRSF13B-TACI-MALT-RITUXIMAB-CAUTION-A181E-C104R; LRBA-EBV-NHL-Abatacept-CTLA4-HSCT-Curative; CASCADE-Hereditary-Lymphoma)."""
+    from scripts.hereditary_lymphoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-cervical-cancer-atlas/overview")
 async def hereditary_cervical_cancer_atlas_overview():
     """Hereditary-Cervical-Cancer-Predisposition-Atlas overview (STK11-BRCA1-TP53-MSH2-FANCA-PTEN-ATM-BRCA2; 320-patient aggregate 8x40 seeds 3222-3229; STK11-PJS-SCTAT-PATHOGNOMONIC-Adenoma-Malignum-PATHOGNOMONIC; BRCA1-Cervical-2-3x-BSO-35-40; TP53-LFS-AVOID-RADIATION-Surgery-NOT-Chemoradiation; MSH2-Lynch2-Cervical-Adenocarcinoma-NOT-Squamous; FANCA-FA-Cervical-150-200x-HPV-Vaccination-CRITICAL; PTEN-Cowden-Macrocephaly-PATHOGNOMONIC; ATM-Radiosensitivity-ABSOLUTE-Chemoradiation-CI; BRCA2-HBOC-FA-D1-Most-Severe)."""
