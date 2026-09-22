@@ -49919,6 +49919,29 @@ async def hereditary_hypophosphatemic_rickets_atlas_definitions():
     return generate_definitions()
 
 
+# ── Hereditary Pheochromocytoma-Paraganglioma Atlas ───────────────────
+
+@app.get("/api/hereditary-ppgl-atlas/overview")
+async def hereditary_ppgl_atlas_overview():
+    """Hereditary-Pheochromocytoma-Paraganglioma-Atlas overview (VHL-213aa-3p25.3-AD-LOF-PPGL-RCC-Hemangioblastoma, SDHB-280aa-1p36.13-AD-LOF-PPGL2-40pct-Malignancy-Extra-Adrenal, SDHD-159aa-11q23.1-AD-LOF-Maternal-Imprinting-PPGL1-Head-Neck, SDHA-664aa-5p15.33-AD-LOF-PPGL5-GIST-Imatinib-Resistant, SDHC-169aa-1q23.3-AD-LOF-PPGL3-Head-Neck-Low-Malignancy, SDHAF2-166aa-11q13.1-AD-LOF-Paternal-Imprinting-PGL2-Exclusively-HN, RET-1114aa-10q11.21-AD-GOF-MEN2A-MTC-PHEO-PHPT, MAX-160aa-14q23.3-AD-LOF-Paternal-Imprinting-Bilateral-Adrenal-PHEO, 320-patients-8x40-seeds-2982-2989)."""
+    from scripts.hereditary_ppgl_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ppgl-atlas/breakdown")
+async def hereditary_ppgl_atlas_breakdown():
+    """Hereditary-PPGL-Atlas per-gene breakdown (VHL-biallelic-second-hit, SDHB-PPGL2-succinate-CIMP, SDHD-paternal-imprinting-head-neck, SDHA-PPGL5-GIST-imatinib-resistant, SDHC-PPGL3-head-neck-no-imprinting, SDHAF2-PGL2-exclusively-HN-ultra-rare, RET-codon-guided-thyroidectomy, MAX-bilateral-adrenal-paternal-imprinting, 320 patients)."""
+    from scripts.hereditary_ppgl_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ppgl-atlas/definitions")
+async def hereditary_ppgl_atlas_definitions():
+    """Hereditary-PPGL-Atlas clinical definitions (SDHB-40pct-malignancy, paternal-imprinting-SDHD-SDHAF2-MAX, RET-exclude-PHEO-before-surgery, VHL-clear-cell-RCC-MLPA-mandatory, SDHA-SDHB-IHC-interpretation, SDHC-PPGL3-no-imprinting, 8-gene-differential-guide)."""
+    from scripts.hereditary_ppgl_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -20436,5 +20436,28 @@
     ],
     "portal_page": "/hereditary-hypophosphatemic-rickets-atlas",
     "built_date": "2026-09-21"
+  },
+  {
+    "id": "hereditary-ppgl-atlas",
+    "title": "Hereditary-Pheochromocytoma-Paraganglioma-Atlas",
+    "category": "hereditary-endocrine-tumour",
+    "status": "built",
+    "description": "Complete 8-gene hereditary PPGL reference: VHL-VHL-Disease (clear cell RCC + hemangioblastoma + PPGL, biallelic), SDHB-PPGL2 (highest malignancy 40%, extra-adrenal, succinate CIMP), SDHD-PPGL1 (paternal imprinting, head-neck multifocal), SDHA-PPGL5 (GIST imatinib-resistant, SDHA IHC specific), SDHC-PPGL3 (head-neck no imprinting), SDHAF2-PGL2 (exclusively head-neck, paternal imprinting, Dutch Gly78Val ultra-rare), RET-MEN2A/2B (MTC+PHEO+PHPT, exclude PHEO before surgery, codon-guided thyroidectomy), MAX-bilateral-adrenal-PHEO (young males, paternal imprinting, cortical-sparing). 320-patient aggregate, seeds 2982-2989.",
+    "genes": [
+      "VHL",
+      "SDHB",
+      "SDHD",
+      "SDHA",
+      "SDHC",
+      "SDHAF2",
+      "RET",
+      "MAX"
+    ],
+    "seeds": "2982-2989",
+    "routes": [
+      "/api/hereditary-ppgl-atlas/overview",
+      "/api/hereditary-ppgl-atlas/breakdown",
+      "/api/hereditary-ppgl-atlas/definitions"
+    ]
   }
 ]
