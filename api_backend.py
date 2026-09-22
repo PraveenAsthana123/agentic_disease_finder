@@ -50025,6 +50025,27 @@ async def hereditary_craniosynostosis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-orofacial-clefting-atlas/overview")
+async def hereditary_orofacial_clefting_atlas_overview():
+    """Hereditary-Orofacial-Clefting-Atlas overview (IRF6-467aa-1q32.3-AD-LOF-VWS1-LIP-PITS-PATHOGNOMONIC-Most-Common-Hereditary-CLP, GRHL3-624aa-1p36.11-AD-LOF-VWS2-PVRL1-Negative-VWS, PVRL1-517aa-11q23.3-AR-CLPED1-CLP-Hypodontia-Mediterranean-Founder, MSX1-303aa-4p16.2-AD-LOF-OFC5-TOOTH-AGENESIS-CLP, TBX22-520aa-Xq21.1-XLR-CPX-ANKYLOGLOSSIA-Cleft-Palate-PATHOGNOMONIC, SATB2-733aa-2q33.1-AD-De-Novo-Glass-Syndrome-ABSENT-SPEECH-Severe-ID, TP63-680aa-3q28-AD-GOF-DN-EEC-ECTRODACTYLY-Ectodermal-Dysplasia-CLP-TRIAD, COL11A1-1806aa-1p21.1-AD-Marshall-Stickler2-Cleft-Palate-HIGH-MYOPIA-SNHL-Triad, 320-patients-8x40-seeds-3022-3029)."""
+    from scripts.hereditary_orofacial_clefting_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-orofacial-clefting-atlas/breakdown")
+async def hereditary_orofacial_clefting_atlas_breakdown():
+    """Hereditary-Orofacial-Clefting-Atlas per-gene breakdown (IRF6-VWS1-lip-pits-most-common-hereditary-CLP, GRHL3-VWS2-downstream-IRF6-pathway, PVRL1-CLPED1-AR-hypodontia-ectodermal-Mediterranean-founder, MSX1-OFC5-tooth-agenesis-CLP-premolars, TBX22-CPX-ankyloglossia-cleft-XLR, SATB2-Glass-severe-ID-absent-speech-de-novo, TP63-EEC-ectrodactyly-triad-AEC-allele-specific, COL11A1-Marshall-Stickler2-myopia-SNHL-retinal-detachment, 320 patients)."""
+    from scripts.hereditary_orofacial_clefting_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-orofacial-clefting-atlas/definitions")
+async def hereditary_orofacial_clefting_atlas_definitions():
+    """Hereditary-Orofacial-Clefting-Atlas clinical definitions (orofacial-clefting-classification-epidemiology-diagnostic-approach, VWS-IRF6-vs-GRHL3-lip-pit-recognition, TP63-EEC-AEC-RHS-LMS-allele-specific-genotype-phenotype, Marshall-Stickler-COL11A1-vs-COL2A1-vitreous-distinction, 8-gene-orofacial-clefting-differential-diagnosis-algorithm)."""
+    from scripts.hereditary_orofacial_clefting_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

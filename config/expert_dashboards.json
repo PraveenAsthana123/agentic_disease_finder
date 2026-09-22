@@ -20566,5 +20566,20 @@
       "/api/hereditary-craniosynostosis-atlas/definitions"
     ],
     "registered": "2026-09-21"
+  },
+  {
+    "id": "hereditary-orofacial-clefting-atlas",
+    "slug": "hereditary-orofacial-clefting-atlas",
+    "title": "Hereditary-Orofacial-Clefting-Atlas",
+    "status": "built",
+    "genes": ["IRF6", "GRHL3", "PVRL1", "MSX1", "TBX22", "SATB2", "TP63", "COL11A1"],
+    "seeds": "3022-3029",
+    "patient_count": 320,
+    "endpoints": [
+      "/api/hereditary-orofacial-clefting-atlas/overview",
+      "/api/hereditary-orofacial-clefting-atlas/breakdown",
+      "/api/hereditary-orofacial-clefting-atlas/definitions"
+    ],
+    "registered": "2026-09-21"
   }
 ]
