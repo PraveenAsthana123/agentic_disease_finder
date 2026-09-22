@@ -21332,5 +21332,34 @@
     "patients": 320,
     "api": "/api/hereditary-lymphoma-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-cns-brain-tumor-atlas",
+    "title": "Hereditary CNS / Brain Tumor Predisposition Atlas",
+    "category": "hereditary-cancer-atlas",
+    "subtitle": "Complete 8-Gene Hereditary CNS & Brain Tumor Predisposition Reference \u2014 NF1-NF2-VHL-TSC1-PTEN-SMARCB1-SUFU-TP53",
+    "genes": [
+      "NF1",
+      "NF2",
+      "VHL",
+      "TSC1",
+      "PTEN",
+      "SMARCB1",
+      "SUFU",
+      "TP53"
+    ],
+    "status": "built",
+    "seed_range": "3246-3253",
+    "patients": 320,
+    "api": "/api/hereditary-cns-brain-tumor-atlas",
+    "api_endpoints": [
+      "/api/hereditary-cns-brain-tumor-atlas/overview",
+      "/api/hereditary-cns-brain-tumor-atlas/breakdown",
+      "/api/hereditary-cns-brain-tumor-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-cns-brain-tumor-atlas/page.jsx",
+    "script": "scripts/hereditary_cns_brain_tumor_atlas_dashboard.py",
+    "registered": "2026-09-22",
+    "note": "Hereditary CNS / Brain Tumor Predisposition Atlas \u2014 8-gene reference. NF1 optic glioma PATHOGNOMONIC selumetinib FDA2020; NF2 bilateral VS PATHOGNOMONIC bevacizumab; VHL hemangioblastoma PATHOGNOMONIC belzutifan HIF-2alpha FDA2021; TSC1 SEGA PATHOGNOMONIC everolimus; PTEN Lhermitte-Duclos PATHOGNOMONIC macrocephaly; SMARCB1 ATRT under-3yr PATHOGNOMONIC INI1-IHC-loss tazemetostat; SUFU SHH medulloblastoma HIGHEST germline 50-60pct; TP53 LFS DIPG PATHOGNOMONIC AVOID RADIATION ABSOLUTELY ONC201 FDA2022. 3 endpoints verified 200."
   }
 ]

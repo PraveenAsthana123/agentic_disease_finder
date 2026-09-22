@@ -50587,6 +50587,27 @@ async def hereditary_cervical_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cns-brain-tumor-atlas/overview")
+async def hereditary_cns_brain_tumor_atlas_overview():
+    """Hereditary-CNS-Brain-Tumor-Predisposition-Atlas overview (NF1-NF2-VHL-TSC1-PTEN-SMARCB1-SUFU-TP53; 320-patient aggregate 8x40 seeds 3246-3253; NF1-Optic-Glioma-PATHOGNOMONIC-Selumetinib-FDA2020; NF2-Bilateral-VS-PATHOGNOMONIC-Bevacizumab; VHL-Hemangioblastoma-PATHOGNOMONIC-Belzutifan-FDA2021; TSC1-SEGA-PATHOGNOMONIC-Everolimus; PTEN-Lhermitte-Duclos-PATHOGNOMONIC; SMARCB1-ATRT-Under3yr-PATHOGNOMONIC-INI1-IHC-Loss; SUFU-SHH-Medulloblastoma-HIGHEST-Germline; TP53-LFS-DIPG-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY)."""
+    from scripts.hereditary_cns_brain_tumor_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cns-brain-tumor-atlas/breakdown")
+async def hereditary_cns_brain_tumor_atlas_breakdown():
+    """Hereditary-CNS-Brain-Tumor-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; NF1-Optic-Glioma-MPNST-Selumetinib; NF2-Bilateral-VS-Meningioma-Ependymoma; VHL-Hemangioblastoma-ccRCC-Belzutifan; TSC1-SEGA-Cortical-Tubers-Everolimus; PTEN-LDD-Macrocephaly-Glioma; SMARCB1-ATRT-INI1-Loss-Tazemetostat; SUFU-SHH-MB-Vismodegib-CI-Children; TP53-LFS-DIPG-GBM-AVOID-Radiation; mean_age_dx per gene; CR pct; radiation usage)."""
+    from scripts.hereditary_cns_brain_tumor_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cns-brain-tumor-atlas/definitions")
+async def hereditary_cns_brain_tumor_atlas_definitions():
+    """Hereditary-CNS-Brain-Tumor-Predisposition-Atlas clinical definitions (NF1-Optic-Glioma-PATHOGNOMONIC-Lisch-Nodules-Cafe-au-Lait-MPNST-Selumetinib-AVOID-Radiation; NF2-Bilateral-VS-PATHOGNOMONIC-Cataract-80pct-Bevacizumab-Annual-Audiogram; VHL-Hemangioblastoma-PATHOGNOMONIC-ELST-PATHOGNOMONIC-Belzutifan-HIF2alpha-FDA2021; TSC1-SEGA-PATHOGNOMONIC-Cortical-Tubers-Cardiac-Rhabdomyoma-PATHOGNOMONIC-Everolimus; PTEN-Lhermitte-Duclos-PATHOGNOMONIC-Macrocephaly-Trichilemmoma-mTOR; SMARCB1-ATRT-Under3yr-PATHOGNOMONIC-INI1-IHC-Nuclear-Loss-Tazemetostat-HSCT; SUFU-SHH-MB-HIGHEST-50-60pct-Germline-Vismodegib-AVOID-Children; TP53-LFS-DIPG-H3K27M-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-ONC201-FDA2022; CASCADE-Hereditary-CNS-Brain-Tumor)."""
+    from scripts.hereditary_cns_brain_tumor_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
