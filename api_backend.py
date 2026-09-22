@@ -50314,6 +50314,27 @@ async def hereditary_thyroid_cancer_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lung-cancer-atlas/overview")
+async def hereditary_lung_cancer_atlas_overview():
+    """Hereditary-Lung-Cancer-Atlas overview (EGFR-STK11-TP53-RB1-BRCA2-FLCN-ATM-BAP1; 320-patient aggregate 8x40 seeds 3142-3149; EGFR-GermlineT790M-Osimertinib-NeverSmokerNSCLC; STK11-PJS-LungAdenocarcinoma-7-17x-RR-KRAScoMut-ImmunotherapyResistance; TP53-LFS-SCLC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; RB1-Retinoblastoma-SecondaryScLC-15-20x-CDK4-6i-Inactive; BRCA2-HBOC-Lung-2-3x-Platinum-PARP-Olaparib; FLCN-BHD-PulmonaryCysts-PATHOGNOMONIC-Pneumothorax-24-38pct-Pleurodesis; ATM-A-T-Radiosensitivity-ABSOLUTE-MonoalleLicLung-2-4x-Ceralasertib; BAP1-TPDS-Mesothelioma-PATHOGNOMONIC-30-60x-AVOID-ASBESTOS-Tazemetostat)."""
+    from scripts.hereditary_lung_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lung-cancer-atlas/breakdown")
+async def hereditary_lung_cancer_atlas_breakdown():
+    """Hereditary-Lung-Cancer-Atlas per-gene breakdown (8 genes, 40 patients each; EGFR-lung_pct-never_smoker-brain_met; STK11-lung_pct-gi_polyp-pancreas-skin; TP53-lung_pct-sarcoma-breast-acc; RB1-sclc_pct-bilateral_rb-osteosarcoma; BRCA2-lung_pct-breast-pancreatic-platinum_sens; FLCN-pneumo_pct-cyst-renal-fibrofolliculoma; ATM-lung_pct-ataxia-telangiectasia-radiosensitive; BAP1-meso_pct-uveal_mel-renal-lung; mean age at diagnosis per gene)."""
+    from scripts.hereditary_lung_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lung-cancer-atlas/definitions")
+async def hereditary_lung_cancer_atlas_definitions():
+    """Hereditary-Lung-Cancer-Atlas clinical definitions (EGFR-germline-T790M-osimertinib-protocol; STK11-PJS-lung-immunotherapy-resistance-KRAS; BAP1-TPDS-mesothelioma-asbestos-tazemetostat; ATM-radiosensitivity-PARP-inhibitor-lung; FLCN-BHD-pneumothorax-pleurodesis-renal-surveillance)."""
+    from scripts.hereditary_lung_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

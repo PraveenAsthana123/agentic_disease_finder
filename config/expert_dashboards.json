@@ -20978,5 +20978,33 @@
     "page": "/hereditary-thyroid-cancer-atlas",
     "registered": "2026-09-22",
     "status": "built"
+  },
+  {
+    "id": 1277,
+    "name": "Hereditary-Lung-Cancer-Atlas",
+    "slug": "hereditary-lung-cancer-atlas",
+    "title": "Hereditary Lung Cancer Atlas \u2014 Complete 8-Gene Reference (EGFR-STK11-TP53-RB1-BRCA2-FLCN-ATM-BAP1)",
+    "description": "320-patient aggregate hereditary lung cancer predisposition atlas (8 genes \u00d7 40 patients, seeds 3142-3149). EGFR germline T790M hereditary NSCLC never-smoker bilateral GGOs osimertinib 3rd-gen TKI; STK11 Peutz-Jeghers lung adenocarcinoma 7-17\u00d7 RR highest hereditary lung risk KRAS co-mut immunotherapy resistance; TP53 LFS SCLC + lung AVOID RADIATION ABSOLUTELY WBMRI Toronto; RB1 retinoblastoma survivors secondary SCLC 15-20\u00d7 bilateral Rb germline CDK4/6i inactive RB1-null; BRCA2 HBOC lung Ca 2-3\u00d7 platinum PARPi olaparib male breast PATHOGNOMONIC; FLCN Birt-Hogg-Dub\u00e9 bilateral basal cysts PATHOGNOMONIC spontaneous pneumothorax 24-38% pleurodesis first episode fibrofolliculomas; ATM biallelic A-T radiosensitivity ABSOLUTE monoallelic lung 2-4\u00d7 ceralasertib; BAP1 TPDS mesothelioma PATHOGNOMONIC 30-60\u00d7 AVOID ALL ASBESTOS tazemetostat nivolumab+ipilimumab.",
+    "category": "hereditary-cancer-atlas",
+    "genes": [
+      "EGFR",
+      "STK11",
+      "TP53",
+      "RB1",
+      "BRCA2",
+      "FLCN",
+      "ATM",
+      "BAP1"
+    ],
+    "seed_range": "3142-3149",
+    "total_patients": 320,
+    "endpoints": [
+      "/api/hereditary-lung-cancer-atlas/overview",
+      "/api/hereditary-lung-cancer-atlas/breakdown",
+      "/api/hereditary-lung-cancer-atlas/definitions"
+    ],
+    "page": "/hereditary-lung-cancer-atlas",
+    "registered": "2026-09-22",
+    "status": "built"
   }
 ]
