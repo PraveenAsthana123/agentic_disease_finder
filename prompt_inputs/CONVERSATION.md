@@ -36051,3 +36051,202 @@ Done. Pushed `de173b10`. Summary:
 - **Commit:** `00381b6c` → pushed to `origin/main`
 
 Key clinical content encoded: SDHB 40% malignancy highest, three paternal-imprinted genes (SDHD/SDHAF2/MAX), RET exclude-PHEO-before-surgery rule, M918T MEN2B neonatal thyroidectomy, SDHAF2 exclusively head-neck Dutch founder, MAX bilateral adrenal young males, SDHA-IHC specificity vs SDHB-IHC pan-SDHx, imatinib-resistant GIST pearl.
+
+### [2026-09-21 20:00:45 MDT] ASSISTANT
+Done. One complete, verified, committed, and pushed iteration:
+
+**Built: Hereditary Diabetes Insipidus Atlas** (seeds 2990–2997)
+
+8 genes wired end-to-end:
+- **AVP** 164aa 20p13 AD/AR LOF — neurohypophyseal DI; desmopressin EFFECTIVE; posterior pituitary bright spot ABSENT on MRI
+- **AVPR2** 371aa Xq28 XLR — NDI type 1; V2R LOF; desmopressin COMPLETELY UNRESPONSIVE; thiazide+amiloride treatment
+- **AQP2** 271aa 12q13.12 AR/AD — NDI type 2; water channel; urine AQP2 absent (diagnostic)
+- **WFS1** 890aa 4p16.1 AR — Wolfram/DIDMOAD; optic atrophy FIRST (age 6) → DM → DI (age 14) → deafness; DM non-immune (no autoantibodies)
+- **CISD2** 135aa 4q24 AR — Wolfram 2; NO DI in most; bleeding tendency differentiates from WFS1; Israeli Arab Trp45Ser founder
+- **PCSK1** 753aa 5q15 AR — PC1/3 deficiency; malabsorption PATHOGNOMONIC and FIRST; DI in 55%; ACTH deficiency
+- **KCNJ1** 391aa 11q24.3 AR — Bartter type 2; neonatal PARADOXICAL HYPERKALEMIA; polyhydramnios; indomethacin treatment
+- **SLC12A1** 1099aa 15q21.1 AR — Bartter type 1; most severe; furosemide-like phenotype; nephrocalcinosis 80%
+
+**Verified:** 3 endpoints → 200 · 320 patients · expert_dashboards.json 1256→1257 · pushed to `main` (3ba2fc6f)
+
+⏳ **Pending:** ictal/interictal retrain (skipped — heavy compute) · Gmail/Slack/Drive live (credentials blocked) · multi-user auth/RBAC (operator decision needed)
+
+### [2026-09-21 21:09:21 MDT] ASSISTANT
+**Done.** One iteration complete:
+
+**Built + pushed: Hereditary-Lipodystrophy-Atlas**
+
+- **Script:** `scripts/hereditary_lipodystrophy_atlas_dashboard.py` (1,333 lines, 8 genes, seeds 2998-3005, 320 patients)
+- **3 endpoints verified 200:**
+  - `/api/hereditary-lipodystrophy-atlas/overview`
+  - `/api/hereditary-lipodystrophy-atlas/breakdown`
+  - `/api/hereditary-lipodystrophy-atlas/definitions`
+- **Portal page:** `portal-next/app/hereditary-lipodystrophy-atlas/page.jsx` — 4-tab UI (Overview / Gene Table / Clinical Atlas / Definitions)
+- **SiteNav wired** after Hereditary-Diabetes-Insipidus-Atlas
+- **expert_dashboards.json:** 1257 → 1258
+- **Pushed** to `origin/main` (fast-forward)
+
+**8 genes covered:**
+| Gene | aa | Locus | Inheritance | Disease | Key clinical rule |
+|---|---|---|---|---|---|
+| AGPAT2 | 278 | 9q34.3 | AR | CGL1 | Metreleptin SPECIFIC treatment |
+| BSCL2 | 462 | 11q12.3 | AR | CGL2 most common | Intellectual disability 30-60% — distinguishes from CGL1 |
+| CAV1 | 178 | 7q31.2 | AR | CGL3 | Caveolae ABSENT on EM — PATHOGNOMONIC; PAH 15% |
+| CAVIN1 | 392 | 17q21.2 | AR | CGL4 | ONLY CGL with myopathy + cardiac arrhythmia |
+| LMNA | 664 | 1q22 | AD | FPLD2 Dunnigan | Arg482 hotspot; females more severe; annual cardiac surveillance MANDATORY |
+| PPARG | 477 | 3p25.2 | AD | FPLD3 | TZDs are SPECIFIC treatment (PPARG agonist) |
+| AKT2 | 481 | 19q13.2 | AD | FPLD6 | GOF → neonatal hypoglycemia (OPPOSITE of LOF) |
+| PLIN1 | 522 | 15q26.1 | AD | FPLD4 | Unregulated lipolysis → pancreatitis (62.5% in cohort) |
+
+⏳ **Pending:** Only the ictal/interictal retrain remains in the buildable queue (on skip list). All credentials-blocked items (EMR/FHIR, RBAC, device streaming) remain blocked.
+
+### [2026-09-21 21:28:38 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Primary-Dyslipidemia-Atlas**
+
+- **8 genes**: LDLR · APOB · PCSK9 · LDLRAP1 · LIPA · ABCA1 · ABCG5 · ABCG8
+- **320 patients** (8 × 40, seeds 3006-3013)
+- **expert_dashboards.json**: 1258 → 1259
+- **3 endpoints verified 200**: `/api/hereditary-primary-dyslipidemia-atlas/overview|breakdown|definitions`
+- **Portal page** + **SiteNav** wired after Hereditary-Lipodystrophy-Atlas
+- **Pushed** → `main` (c4ac11be)
+
+Key clinical anchors encoded: LDLR class 1-5 mutation classification · APOB Arg3527Gln European founder · PCSK9 GOF D374Y (statin-resistant FH3) / LOF 88% CVD protection · LDLRAP1 ARH lymphocyte LDLR binding test vs HoFH · LIPA Wolman bilateral adrenal calcification PATHOGNOMONIC + Sebelipase alfa FDA 2015 · ABCA1 Tangier orange tonsils + HDL near zero PATHOGNOMONIC + relapsing polyneuropathy · ABCG5/ABCG8 sitosterolaemia childhood xanthomata + plasma sitosterol >200 µmol/L + ezetimibe first-line.
+
+### [2026-09-21 21:39:49 MDT] ASSISTANT
+**Built + pushed: Hereditary-Thalassemia-Atlas**
+
+The unregistered `scripts/hereditary_thalassemia_atlas_dashboard.py` (which already had all 3 data functions) was the top buildable item. Wired it fully:
+
+- **3 API routes** added to `api_backend.py`: `/api/hereditary-thalassemia-atlas/overview|breakdown|definitions` — all verified **200**
+- **Portal page** created: `portal-next/app/hereditary-thalassemia-atlas/page.jsx` — 4-tab UI (Overview / Gene Table / Clinical Atlas / Definitions) with thalassemia-specific metrics (Hb g/dL, TDT%, NTDT%, Trait%, Iron%, HbF%)
+- **SiteNav** wired after Hereditary-Primary-Dyslipidemia-Atlas
+- **expert_dashboards.json** count: 1259 → **1260**
+- Commit `fbc14100` pushed to `origin/main`
+
+**Insight:** The thalassemia atlas covers HBB (first FDA-approved CRISPR drug Casgevy target via BCL11A), cis/trans alpha-deletion distinction (hydrops risk), ATR-X non-deletion alpha-thal (missed by standard PCR), and CDA-I/II Ham-test differential — clinically the richest hemoglobinopathy reference in the atlas series.
+
+### [2026-09-21 22:09:04 MDT] ASSISTANT
+Iteration complete. Committed `16e020a1` and pushed to `origin/main`.
+
+**Hereditary-Craniosynostosis-Atlas — built+pushed**
+- `scripts/hereditary_craniosynostosis_atlas_dashboard.py` — 8-gene dashboard (FGFR2·FGFR1·FGFR3·TWIST1·TCF12·EFNB1·ERF·RAB23), 320 patients, seeds 3014-3021
+- `api_backend.py` — 3 routes `/api/hereditary-craniosynostosis-atlas/{overview|breakdown|definitions}` all returning 200 ✅
+- `portal-next/app/hereditary-craniosynostosis-atlas/page.jsx` — 4-tab React page (Overview / Gene Table / Clinical Atlas / Definitions)
+- `SiteNav.jsx` — wired after Hereditary-Thalassemia-Atlas
+- `config/expert_dashboards.json` — count 1260 → 1261
+- `scripts/next_pending.py` — built comment logged
+
+**⏳ Pending — top buildable:**
+- Ictal/interictal retrain (same-setup, removes dataset confound) — `P0 high` — skipped (too heavy for unattended)
+- **Blocked:** Gmail/Slack/Drive live credentials · multi-user auth · EMR/FHIR
+
+### [2026-09-21 23:30:54 MDT] ASSISTANT
+Done. One complete iteration:
+
+**Built + pushed: Hereditary-Orofacial-Clefting-Atlas**
+
+- **8 genes**: IRF6 · GRHL3 · PVRL1 · MSX1 · TBX22 · SATB2 · TP63 · COL11A1
+- **Seeds**: 3022–3029 · **320 patients** (8×40)
+- **3 endpoints verified 200**: `/api/hereditary-orofacial-clefting-atlas/overview|breakdown|definitions`
+- **Frontend**: `portal-next/app/hereditary-orofacial-clefting-atlas/page.jsx`
+- **SiteNav**: wired after Hereditary-Craniosynostosis-Atlas
+- **Registry**: `expert_dashboards.json` 1261→1262
+- **Commit**: `9a98650c` · pushed to `origin/main`
+
+Key clinical highlights encoded: IRF6 lip-pits PATHOGNOMONIC (most common hereditary CL/P), TBX22 ankyloglossia+cleft palate males-full/females-mosaic, SATB2 absent speech PATHOGNOMONIC, TP63 ectrodactyly-ectodermal dysplasia-clefting triad, COL11A1 cleft palate+high myopia+SNHL (Marshall/Stickler2 triad).
+
+### [2026-09-21 23:54:35 MDT] ASSISTANT
+All 3 endpoints return 200 with real data. GPC3 Wilms 20%, EZH2 AML 10%, SETD2 autism 50% — all match clinical expectations.
+
+### [2026-09-22 00:18:18 MDT] ASSISTANT
+STATUS.md now shows 1264 expert dashboards. Now commit (§51 substrate, NO Co-Authored-By per §54):
+
+### [2026-09-22 00:48:48 MDT] ASSISTANT
+Done. The autonomous build iteration is fully complete:
+
+- **Built:** `Hereditary-Chromatinopathy-Epigenetic-Atlas` (KMT2D-KDM6A-CREBBP-EP300-ARID1B-EHMT1-KAT6B-KANSL1, 320 patients, seeds 3046-3053)
+- **Endpoints:** 3/3 verified 200 (`overview` / `breakdown` / `definitions`)
+- **Registry:** `expert_dashboards.json` 1264 → 1265
+- **Pushed:** `95d01dbc..98aa2367 main → main`
+- **Tracked:** `[2026-09-22 00:48:43 MDT]`
+
+### [2026-09-22 01:17:08 MDT] ASSISTANT
+Done. **Hereditary-Rett-Spectrum-Atlas** built, verified, committed, and pushed.
+
+**What was built:**
+
+| Item | Detail |
+|---|---|
+| Dashboard script | `scripts/hereditary_rett_spectrum_atlas_dashboard.py` (1 086 lines) |
+| Backend endpoints | `/api/hereditary-rett-spectrum-atlas/overview|breakdown|definitions` — all HTTP 200 ✅ |
+| Frontend page | `portal-next/app/hereditary-rett-spectrum-atlas/page.jsx` (4 tabs: Overview, Gene Table, Clinical Atlas, Definitions) |
+| SiteNav | Wired after Hereditary-Chromatinopathy-Epigenetic-Atlas |
+| Registry | `expert_dashboards.json` 1265 → 1266 |
+| Commit | `39cf316d` → pushed to `origin/main` |
+
+**8 genes covered (seeds 3054–3061, 320 patients):**
+
+| Gene | Locus | Pathognomonic |
+|---|---|---|
+| MECP2 | Xq28 | Hand stereotypies (wringing) + breathing irregularities; Trofinetide FDA 2023 |
+| CDKL5 | Xp22.13 | Seizures before 5 months; hand mouthing (not wringing); no regression |
+| FOXG1 | 14q12 | No regression (congenital onset); dyskinesia + hypersalivation |
+| MEF2C | 5q14.3 | Stereotypies + hyperkinesis; **myeloid leukemia risk** (unique — annual FBC) |
+| WDR45 | Xp11.23 | Biphasic (childhood ID→adolescent parkinsonism); T2 hypointensity GP+SN on MRI; deferiprone |
+| DDX3X | Xp11.3 | Most common X-linked ID in females; ASD 50%; CC anomalies 30% |
+| PURA | 5q31.2 | Excessive daytime sleepiness; neonatal hypotonia + apnoea + feeding tube |
+| HNRNPH2 | Xq22.1 | Prominent forehead + hypertelorism + broad nasal tip; cardiac CHD 15-20% |
+
+### [2026-09-22 01:52:40 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-TSC-mTOR-Pathway-Atlas**
+
+- **8 genes:** TSC1 · TSC2 · DEPDC5 · NPRL2 · NPRL3 · MTOR · PIK3R2 · AKT3
+- **Seeds:** 3062–3069 · **320 patients** (8 × 40)
+- **3 endpoints verified 200:** `/api/hereditary-tsc-mtor-pathway-atlas/overview|breakdown|definitions`
+- **Files:** `scripts/hereditary_tsc_mtor_pathway_atlas_dashboard.py` (1374 lines) + `portal-next/app/hereditary-tsc-mtor-pathway-atlas/page.jsx` + `api_backend.py` (3 routes) + `portal-next/app/components/SiteNav.jsx` (wired after Rett Spectrum Atlas) + `config/expert_dashboards.json` (count 1266→1267)
+- **Pushed:** `39cf316d..b9f1a3d0` → `origin/main`
+
+Key clinical rules encoded: everolimus FDA-approved for SEGA/LAM/renal AML (TSC1/TSC2 disease-modifying); TSC2 more severe than TSC1; GATOR1 triad (DEPDC5/NPRL2/NPRL3) SUDEP risk elevated; NPRL3+TSC2 16p13.3 co-localisation; somatic MTOR/PIK3R2/AKT3 require 500× deep sequencing (standard NGS misses them); MTOR FCD IIb balloon cells pathognomonic — surgery ~70% cure; rapamycin/everolimus converges the entire pathway.
+
+### [2026-09-22 02:34:59 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-RASopathy-Atlas**
+
+- Item: Uncommitted atlas work (scripts/hereditary_rasopathy_atlas_dashboard.py + page.jsx + SiteNav + expert_dashboards.json + api_backend.py) was sitting built but never committed from a prior session
+- 8 genes: PTPN11 · SOS1 · RAF1 · BRAF · MAP2K1 · HRAS · KRAS · LZTR1 (seeds 3070-3077, 320-patient aggregate)
+- Backend restarted and verified: all 3 endpoints return 200 (`/api/hereditary-rasopathy-atlas/overview|breakdown|definitions`)
+- SiteNav wired after Hereditary-TSC-mTOR-Pathway-Atlas
+- `expert_dashboards.json` count 1267→1268
+- Committed `99710699` and pushed to `origin/main`
+
+**⏳ Pending:** Only remaining buildable item is `ictal/interictal retrain (same-setup)` which is skip-gated (heavy compute). Blocked items: Gmail/Slack/Drive live (credentials) · multi-user auth · EMR/FHIR.
+
+### [2026-09-22 03:05:43 MDT] ASSISTANT
+Done. Hereditary-PHEO-PGL-SDH-Atlas built, verified, committed, and pushed.
+
+**Summary:**
+- `scripts/hereditary_pheo_pgl_sdh_atlas_dashboard.py` — 8-gene atlas (SDHB/SDHD/SDHC/SDHA/VHL/RET/TMEM127/MAX), seeds 3078–3085, 320 synthetic patients
+- 3 endpoints verified 200: `/api/hereditary-pheo-pgl-sdh-atlas/overview|breakdown|definitions`
+- `portal-next/app/hereditary-pheo-pgl-sdh-atlas/page.jsx` — 4-tab portal page with malignant% highlighted red >20%, gene color coding, SSTR-PET+ column
+- SiteNav wired after Hereditary-RASopathy-Atlas, `expert_dashboards.json` count 1268→1269
+- Commit `e37f0482` pushed to `origin/main`
+
+### [2026-09-22 03:28:23 MDT] ASSISTANT
+**Done.** Built and pushed: **Hereditary-CRC-Polyposis-Atlas** (dashboard #1270).
+
+**What was built:**
+- `scripts/hereditary_crc_polyposis_atlas_dashboard.py` — 8-gene data engine (MLH1, MSH2, MSH6, PMS2, APC, MUTYH, STK11, SMAD4), 320-patient aggregate, seeds 3086-3093
+- 3 API endpoints, all verified 200:
+  - `/api/hereditary-crc-polyposis-atlas/overview`
+  - `/api/hereditary-crc-polyposis-atlas/breakdown`
+  - `/api/hereditary-crc-polyposis-atlas/definitions`
+- `portal-next/app/hereditary-crc-polyposis-atlas/page.jsx` — full 4-tab portal page (Overview / Gene Table / Clinical Atlas / Definitions)
+- SiteNav wired after Hereditary-PHEO-PGL-SDH-Atlas
+- `expert_dashboards.json` count: 1269 → 1270
+
+**Key clinical content encoded:** MLH1 somatic methylation exclusion mandatory; MSH2 EPCAM deletion cascade; MSH6 endometrial-predominant with MSI-L/MSS possibility; PMS2 pseudogene LR-PCR requirement + CMMRD; APC prophylactic colectomy + Spigelman staging; MUTYH biallelic-required AR (heterozygous = 2× only, NOT Lynch-level); STK11 perioral lentigines fade puberty/buccal persists + pancreatic 132× relative risk; SMAD4 JPS-HHT overlap 22% + echo bubble mandatory for PAVM; dMMR/MSI-H pembrolizumab FDA2017 KEYNOTE-177.

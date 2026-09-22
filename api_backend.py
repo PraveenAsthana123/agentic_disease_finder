@@ -50188,6 +50188,27 @@ async def hereditary_crc_polyposis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-gastric-cancer-atlas/overview")
+async def hereditary_gastric_cancer_atlas_overview():
+    """Hereditary-Gastric-Cancer-Atlas overview (CDH1-CTNNA1-BRCA2-PALB2-ATM-TP53-RNF43-POLE; 320-patient aggregate 8x40 seeds 3094-3101; CDH1-PROPHYLACTIC-TOTAL-GASTRECTOMY-MANDATORY-OCCULT-SRC-80-100pct; CTNNA1-HDGC-WITHOUT-CDH1; BRCA2-HPYLORI-ERADICATION-MANDATORY; ATM-AVOID-EXCESS-RADIATION; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI; POLE-ULTRA-HYPERMUTATED-TMB-HIGH-MSS-EXCEPTIONAL-IMMUNOTHERAPY)."""
+    from scripts.hereditary_gastric_cancer_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-gastric-cancer-atlas/breakdown")
+async def hereditary_gastric_cancer_atlas_breakdown():
+    """Hereditary-Gastric-Cancer-Atlas per-gene breakdown (8 genes, 40 patients each; gastric_cancer_pct, lobular_breast_pct, breast_cancer_pct, ovarian_cancer_pct, pancreatic_cancer_pct, prostate_cancer_pct, colorectal_cancer_pct, sarcoma_pct, brain_tumour_pct, acc_pct, signet_ring_pct, intestinal_histology_pct, gastric_polyps_pct, prophylactic_gastrectomy_pct, occult_src_pct, parp_eligible_pct, tmb_high_pct, immunotherapy_response_pct, hpylori_eradication_pct, wbmri_surveillance_pct per gene; mean age at diagnosis)."""
+    from scripts.hereditary_gastric_cancer_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-gastric-cancer-atlas/definitions")
+async def hereditary_gastric_cancer_atlas_definitions():
+    """Hereditary-Gastric-Cancer-Atlas clinical definitions (CDH1-gastrectomy-decision; HDGC-lobular-breast-surveillance; BRCA2-gastric-H-pylori-protocol; TP53-LFS-radiation-avoidance-WBMRI; POLE-ultra-hypermutation-immunotherapy; hereditary-gastric-panel-algorithm; RNF43-gastric-serrated-polyposis-Wnt)."""
+    from scripts.hereditary_gastric_cancer_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

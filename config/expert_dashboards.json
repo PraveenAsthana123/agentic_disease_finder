@@ -20814,5 +20814,30 @@
       "CRC"
     ],
     "built_date": "2026-09-22"
+  },
+  {
+    "id": "hereditary-gastric-cancer-atlas",
+    "name": "Hereditary-Gastric-Cancer-Atlas Complete-8-Gene-CDH1-CTNNA1-BRCA2-PALB2-ATM-TP53-RNF43-POLE-Hereditary-Gastric-Cancer-Predisposition-Atlas",
+    "status": "built",
+    "category": "Hereditary Cancer Genetics",
+    "genes": [
+      "CDH1",
+      "CTNNA1",
+      "BRCA2",
+      "PALB2",
+      "ATM",
+      "TP53",
+      "RNF43",
+      "POLE"
+    ],
+    "seeds": "3094-3101",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-gastric-cancer-atlas/overview",
+      "/api/hereditary-gastric-cancer-atlas/breakdown",
+      "/api/hereditary-gastric-cancer-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-gastric-cancer-atlas",
+    "registered": "2026-09-22"
   }
 ]
