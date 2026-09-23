@@ -51041,6 +51041,25 @@ async def hereditary_lung_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-melanoma-predisposition-atlas/overview")
+async def hereditary_melanoma_predisposition_atlas_overview():
+    """Hereditary-Melanoma-Predisposition-Atlas overview — CDKN2A-FAMMM-melanoma-40-50x-RR-HIGHEST; CDK4-R24C-p16-binding-abrogated; BAP1-uveal-50pct-PATHOGNOMONIC-asbestos-MANDATORY-avoided; MITF-E318K-European-founder; POT1-telomere-ELONGATION-paradox; TERT-C228T-most-common-somatic-melanoma-mutation; MC1R-CDKN2A-amplifier; NF1-MPNST-sarcoma-NOT-melanoma. 320-patient aggregate 8x40 seeds 3422-3429."""
+    from scripts.hereditary_melanoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-melanoma-predisposition-atlas/breakdown")
+async def hereditary_melanoma_predisposition_atlas_breakdown():
+    """Hereditary-Melanoma-Predisposition-Atlas breakdown — per-gene: CDKN2A-pancreatic-20x; CDK4-GOF-p16-paradox; BAP1-uveal-tebentafusp; MITF-E318K-RCC; POT1-thyroid-glioma; TERT-promoter-C228T; MC1R-compound-risk; NF1-MPNST-doxorubicin."""
+    from scripts.hereditary_melanoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-melanoma-predisposition-atlas/definitions")
+async def hereditary_melanoma_predisposition_atlas_definitions():
+    """Hereditary-Melanoma-Predisposition-Atlas clinical definitions — CDKN2A-FAMMM-highest-risk; CDK4-GOF-p16-binding-abrogated; BAP1-uveal-asbestos-tebentafusp; MITF-E318K-SUMO-founder; POT1-telomere-elongation-paradox; TERT-promoter-vs-coding-LOF; MC1R-modifier-CDKN2A-amplifier; NF1-MPNST-vs-melanoma-critical-distinction."""
+    from scripts.hereditary_melanoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
