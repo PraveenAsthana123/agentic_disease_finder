@@ -21948,5 +21948,32 @@
     "page": "/hereditary-ovarian-cancer-predisposition-atlas",
     "built_date": "2026-09-23",
     "notes": "BRCA1-ovarian-39-44pct-HIGHEST-RRSO-35-40yr-MANDATORY-olaparib-PAOLA-1-SOLO2 BRCA2-ovarian-11-17pct-RRSO-40-45yr-olaparib-SOLO1 BRIP1-FANCJ-ovarian-5-8x-NO-breast-risk-KEY-DISTINCTION RAD51C-FANCO-ovarian-6pct-HRD-scar-positive-PARPi RAD51D-ovarian-10pct-HIGHEST-paralogue-PARP-sensitivity PALB2-FANCN-ovarian-3-5pct-breast-53pct-DOMINATES MLH1-Lynch1-ovarian-8-13pct-endometrioid-MSI-H-pembrolizumab STK11-PJS-ovarian-21pct-SCTAT-PATHOGNOMONIC-adenoma-malignum-cervix"
+  },
+  {
+    "id": "hereditary-head-neck-cancer-predisposition-atlas",
+    "title": "Hereditary-Head-Neck-Cancer-Predisposition-Atlas Complete-8-Gene-FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A",
+    "status": "built",
+    "category": "hereditary_cancer_predisposition_atlas",
+    "seeds": "3454-3461",
+    "genes": [
+      "FANCA",
+      "FANCC",
+      "FANCD2",
+      "FANCG",
+      "TP53",
+      "ATM",
+      "NBN",
+      "CDKN2A"
+    ],
+    "patients": 320,
+    "route": "/hereditary-head-neck-cancer-predisposition-atlas",
+    "api": "/api/hereditary-head-neck-cancer-predisposition-atlas/overview",
+    "script": "scripts/hereditary_head_neck_cancer_predisposition_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-head-neck-cancer-predisposition-atlas/overview",
+      "/api/hereditary-head-neck-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-head-neck-cancer-predisposition-atlas/definitions"
+    ],
+    "registered": "2026-09-23"
   }
 ]

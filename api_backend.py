@@ -50944,6 +50944,25 @@ async def hereditary_ovarian_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
+async def hereditary_head_neck_cancer_predisposition_atlas_overview():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate seeds 3454-3461; FANCA/C/D2/G-ALKYLATING-ABSOLUTELY-CI-cetuximab-surgery-protocol; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto; ATM-heterozygotes-radiation-hypersensitivity; NBN-657del5-Slavic-founder; CDKN2A-FAMMM-oral-exam-18yr-pancreatic-MRI-40yr)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/breakdown")
+async def hereditary_head_neck_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas breakdown (per-gene HNSCC rates, site distribution, FA-specific alkylating CI rule, DDR pathway summary)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/definitions")
+async def hereditary_head_neck_cancer_predisposition_atlas_definitions():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas definitions (gene structures, variants, clinical concepts, DEB/MMC fragility test, abbreviations)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/overview")
 async def hereditary_uterine_endometrial_cancer_predisposition_atlas_overview():
     """Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas overview (MLH1-MSH2-MSH6-PMS2-PTEN-TP53-BRCA1-STK11; 320-patient aggregate seeds 3382-3389; MSH6-71pct-ABSOLUTE-HIGHEST-single-MMR-gene-endometrial; MLH1-somatic-methylation-90pct-confirm-germline; PMS2-4-pseudogenes-MLPA-MANDATORY; PTEN-28-44pct-macrocephaly-PATHOGNOMONIC-everolimus-lenvatinib-FDA2019; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA1-hysterectomy-at-BSO; STK11-adenoma-malignum-PATHOGNOMONIC)."""
