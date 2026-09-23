@@ -50608,6 +50608,27 @@ async def hereditary_cns_brain_tumor_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-soft-tissue-sarcoma-atlas/overview")
+async def hereditary_soft_tissue_sarcoma_atlas_overview():
+    """Hereditary-Soft-Tissue-Sarcoma-Desmoid-Predisposition-Atlas overview (TP53-NF1-APC-DICER1-SMARCB1-BRCA2-RB1-FH; 320-patient aggregate 8x40 seeds 3254-3261; TP53-LFS-STS-30-50pct-AVOID-RADIATION-ABSOLUTELY; NF1-MPNST-8-13pct-PATHOGNOMONIC-Selumetinib-FDA2020; APC-Desmoid-Mesenteric-PATHOGNOMONIC-Surgery-AVOID-Nirogacestat-FDA2023; DICER1-PPB-PATHOGNOMONIC-Cervical-ERMS-PATHOGNOMONIC; SMARCB1-MRT-ATRT-INI1-IHC-Loss-Tazemetostat-EZH2i-FDA2020; BRCA2-LMS-3-4x-FA-D1-RMS-Cisplatin-HRD; RB1-Secondary-STS-15-20x-Post-RT-CDK4-6i-RESISTANT; FH-HLRCC-Uterine-Leiomyoma-PATHOGNOMONIC-2SC-IHC-PATHOGNOMONIC)."""
+    from scripts.hereditary_soft_tissue_sarcoma_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-soft-tissue-sarcoma-atlas/breakdown")
+async def hereditary_soft_tissue_sarcoma_atlas_breakdown():
+    """Hereditary-Soft-Tissue-Sarcoma-Desmoid-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-UPS-LMS-RMS-Angiosarcoma-AVOID-Radiation; NF1-MPNST-Plexiform-NF-DFSP-Selumetinib; APC-Desmoid-Mesenteric-Abdominal-Wall-Nirogacestat; DICER1-PPB-Cervical-ERMS-SLCT-Thyroid; SMARCB1-MRT-ATRT-Epithelioid-Sarcoma-Tazemetostat; BRCA2-Uterine-LMS-Retroperitoneal-LMS-Cisplatin; RB1-Retinoblastoma-Secondary-LMS-Post-RT-CDK4-6i-RESISTANT; FH-Uterine-Leiomyoma-Cutaneous-Leiomyoma-Type2-pRCC-Bevacizumab-Erlotinib; mean_age_dx per gene; CR pct; radiation usage)."""
+    from scripts.hereditary_soft_tissue_sarcoma_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-soft-tissue-sarcoma-atlas/definitions")
+async def hereditary_soft_tissue_sarcoma_atlas_definitions():
+    """Hereditary-Soft-Tissue-Sarcoma-Desmoid-Predisposition-Atlas clinical definitions (TP53-LFS-STS-30-50pct-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; NF1-MPNST-8-13pct-PATHOGNOMONIC-Plexiform-NF-Selumetinib-FDA2020-PET-FDG-SUV-3-5; APC-Desmoid-PATHOGNOMONIC-Gardner-Surgery-AVOID-Mesenteric-Nirogacestat-FDA2023-Sorafenib-RCT; DICER1-PPB-PATHOGNOMONIC-Cervical-ERMS-PATHOGNOMONIC-AVOID-Radiation-RNase-IIIb-Hotspot; SMARCB1-MRT-ATRT-PATHOGNOMONIC-INI1-IHC-Loss-PATHOGNOMONIC-Tazemetostat-HSCT; BRCA2-LMS-HRD-Cisplatin-Olaparib-FA-D1-RMS-Wilms-PATHOGNOMONIC; RB1-Secondary-STS-15-20x-Post-RT-PATHOGNOMONIC-CDK4-6i-RESISTANT-Offspring-Day-1; FH-HLRCC-Uterine-Leiomyoma-PATHOGNOMONIC-Cutaneous-Leiomyoma-PATHOGNOMONIC-2SC-IHC-PATHOGNOMONIC-Bevacizumab-Erlotinib; CASCADE-Hereditary-Soft-Tissue-Sarcoma)."""
+    from scripts.hereditary_soft_tissue_sarcoma_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

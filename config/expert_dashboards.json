@@ -21361,5 +21361,24 @@
     "script": "scripts/hereditary_cns_brain_tumor_atlas_dashboard.py",
     "registered": "2026-09-22",
     "note": "Hereditary CNS / Brain Tumor Predisposition Atlas \u2014 8-gene reference. NF1 optic glioma PATHOGNOMONIC selumetinib FDA2020; NF2 bilateral VS PATHOGNOMONIC bevacizumab; VHL hemangioblastoma PATHOGNOMONIC belzutifan HIF-2alpha FDA2021; TSC1 SEGA PATHOGNOMONIC everolimus; PTEN Lhermitte-Duclos PATHOGNOMONIC macrocephaly; SMARCB1 ATRT under-3yr PATHOGNOMONIC INI1-IHC-loss tazemetostat; SUFU SHH medulloblastoma HIGHEST germline 50-60pct; TP53 LFS DIPG PATHOGNOMONIC AVOID RADIATION ABSOLUTELY ONC201 FDA2022. 3 endpoints verified 200."
+  },
+  {
+    "name": "Hereditary-Soft-Tissue-Sarcoma-Desmoid-Predisposition-Atlas Complete-8-Gene-TP53-NF1-APC-DICER1-SMARCB1-BRCA2-RB1-FH TP53-393aa-17p13.1-LFS-STS-30-50pct-AVOID-RADIATION-ABSOLUTELY NF1-2839aa-17q11.2-MPNST-8-13pct-PATHOGNOMONIC-Selumetinib-FDA2020 APC-2843aa-5q22.2-Gardner-Desmoid-PATHOGNOMONIC-Surgery-AVOID-Mesenteric-Nirogacestat-FDA2023 DICER1-1922aa-14q32.13-PPB-PATHOGNOMONIC-Cervical-ERMS-PATHOGNOMONIC-AVOID-Radiation SMARCB1-385aa-22q11.23-MRT-ATRT-PATHOGNOMONIC-INI1-IHC-Loss-Tazemetostat-EZH2i-FDA2020 BRCA2-3418aa-13q12.3-LMS-3-4x-FA-D1-RMS-Cisplatin-HRD RB1-928aa-13q14.2-Secondary-STS-15-20x-Post-RT-CDK4-6i-RESISTANT FH-510aa-1q43-HLRCC-Uterine-Leiomyoma-PATHOGNOMONIC-2SC-IHC-Bevacizumab-Erlotinib 320-Patient-Aggregate-8x40-seeds-3254-3261",
+    "route": "/hereditary-soft-tissue-sarcoma-atlas",
+    "api": "/api/hereditary-soft-tissue-sarcoma-atlas",
+    "status": "built",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "TP53",
+      "NF1",
+      "APC",
+      "DICER1",
+      "SMARCB1",
+      "BRCA2",
+      "RB1",
+      "FH"
+    ],
+    "seed_range": "3254-3261",
+    "patients": 320
   }
 ]
