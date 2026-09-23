@@ -51086,6 +51086,31 @@ async def trigger_logs_definitions():
     return definitions()
 
 
+@app.get("/api/hereditary-brain-tumor-predisposition-atlas/overview")
+async def hereditary_brain_tumor_predisposition_atlas_overview():
+    """Hereditary-Brain-Tumor-Predisposition-Atlas overview — 8 genes (TP53, NF1, NF2, VHL, PTCH1, TSC2, PTEN, SUFU),
+    320-patient aggregate (8x40, seeds 3430-3437), radiation contraindication rates, targeted therapy rates,
+    SEGA/hemangioblastoma/medulloblastoma SHH/bilateral VS rates, key clinical facts per gene."""
+    from scripts.hereditary_brain_tumor_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-brain-tumor-predisposition-atlas/breakdown")
+async def hereditary_brain_tumor_predisposition_atlas_breakdown():
+    """Hereditary-Brain-Tumor-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    top tumour types, top variants, treatment protocols, surveillance protocols, gene info."""
+    from scripts.hereditary_brain_tumor_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-brain-tumor-predisposition-atlas/definitions")
+async def hereditary_brain_tumor_predisposition_atlas_definitions():
+    """Hereditary-Brain-Tumor-Predisposition-Atlas definitions — clinical definitions per gene,
+    key clinical distinctions (radiation avoidance, SEGA Everolimus, LDD PATHOGNOMONIC, bilateral VS, etc.)."""
+    from scripts.hereditary_brain_tumor_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

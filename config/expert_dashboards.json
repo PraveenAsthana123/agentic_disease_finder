@@ -21853,5 +21853,20 @@
     "page": "/hereditary-melanoma-predisposition-atlas",
     "built_date": "2026-09-23",
     "notes": "CDKN2A-FAMMM-40-50x-HIGHEST CDKN2A-pancreatic-20x CDK4-R24C-p16-binding-abrogated CDK4-6i-paradox BAP1-uveal-50pct-PATHOGNOMONIC BAP1-asbestos-MANDATORY-avoided tebentafusp-FDA2022 MITF-E318K-European-founder POT1-telomere-ELONGATION-NOT-DC-IPF TERT-C228T-most-common-somatic-melanoma MC1R-CDKN2A-compound-100x NF1-MPNST-sarcoma-doxorubicin-NOT-immunotherapy"
+  },
+  {
+    "id": "hereditary-brain-tumor-predisposition-atlas",
+    "title": "Hereditary Brain Tumor Predisposition Atlas",
+    "status": "built",
+    "script": "scripts/hereditary_brain_tumor_predisposition_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-brain-tumor-predisposition-atlas/overview",
+      "/api/hereditary-brain-tumor-predisposition-atlas/breakdown",
+      "/api/hereditary-brain-tumor-predisposition-atlas/definitions"
+    ],
+    "genes": ["TP53", "NF1", "NF2", "VHL", "PTCH1", "TSC2", "PTEN", "SUFU"],
+    "page": "/hereditary-brain-tumor-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "TP53-LFS-AVOID-RADIATION-ABSOLUTELY WB-MRI-Toronto NF1-OPG-15-20pct-PATHOGNOMONIC selumetinib-FDA2020 NF1-MPNST-sarcoma NF2-bilateral-VS-PATHOGNOMONIC bevacizumab VHL-hemangioblastoma-PATHOGNOMONIC belzutifan-FDA2021 PTCH1-Gorlin-AVOID-RADIATION-ABSOLUTELY desmoplastic-MB-5pct TSC2-SEGA-PATHOGNOMONIC everolimus-FDA2012 PTEN-Lhermitte-Duclos-PATHOGNOMONIC macrocephaly-90pct SUFU-SHH-MB-33pct-HIGHEST MRI-from-BIRTH"
   }
 ]
