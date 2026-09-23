@@ -50797,6 +50797,27 @@ async def hereditary_ewing_sarcoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-thyroid-cancer-predisposition-atlas/overview")
+async def hereditary_thyroid_cancer_predisposition_atlas_overview():
+    """Hereditary-Thyroid-Cancer-Predisposition-Atlas overview (RET-PTEN-APC-DICER1-MEN1-PRKAR1A-TP53-NF1; 320-patient aggregate 8x40 seeds 3326-3333; RET-1114aa-10q11.21-AD-GOF-MEN2A-FMTC-MEN2B-MTC-95pct-C634R-PATHOGNOMONIC-M918T-PATHOGNOMONIC-Prophylactic-Thyroidectomy-MEN2B-6mo; PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-Follicular-Papillary-TC-35-67pct-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus; APC-2843aa-5q22.2-AD-LOF-FAP-Cribriform-Morular-PTC-PATHOGNOMONIC-CHRPE-PATHOGNOMONIC-Prophylactic-Colectomy; DICER1-1922aa-14q32.13-AD-LOF-MNG-75pct-Females-DTC-1pct-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr; MEN1-610aa-11q13.1-AD-LOF-MEN1-Triad-Thyroid-Adenoma-30-75pct-Everolimus-Sunitinib; PRKAR1A-381aa-17q24.2-AD-LOF-Carney-Complex-Thyroid-Adenoma-Cardiac-Myxoma-ANNUAL-ECHO-MANDATORY-Spotty-Pigmentation-PATHOGNOMONIC; TP53-393aa-17p13.1-AD-LOF-LFS-Anaplastic-TC-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; NF1-2839aa-17q11.2-AD-LOF-Follicular-TC-2-3x-Cafe-au-Lait-PATHOGNOMONIC-Selumetinib-FDA2020)."""
+    from scripts.hereditary_thyroid_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-thyroid-cancer-predisposition-atlas/breakdown")
+async def hereditary_thyroid_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Thyroid-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; RET-MTC-95pct-PROPHYLACTIC-THYROIDECTOMY-MEN2B-6mo-Selpercatinib-Pralsetinib-FDA2020; PTEN-Cowden-TC-35-67pct-MACROCEPHALY-PATHOGNOMONIC-Everolimus; APC-FAP-CMVPTC-PATHOGNOMONIC-CHRPE-PATHOGNOMONIC-Total-Thyroidectomy; DICER1-MNG-75pct-DTC-1pct-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr; MEN1-Thyroid-Adenoma-30-75pct-3pt5-Gland-Parathyroid-Everolimus; PRKAR1A-Carney-Cardiac-Myxoma-ANNUAL-ECHO-MANDATORY-PPNAD-Spotty-Pigmentation; TP53-LFS-Anaplastic-TC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; NF1-Follicular-TC-2-3x-Cafe-au-Lait-PATHOGNOMONIC-Selumetinib-FDA2020; mean_age_dx per gene; CR pct; radiation pct; relapse pct)."""
+    from scripts.hereditary_thyroid_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-thyroid-cancer-predisposition-atlas/definitions")
+async def hereditary_thyroid_cancer_predisposition_atlas_definitions():
+    """Hereditary-Thyroid-Cancer-Predisposition-Atlas clinical definitions (RET-PROPHYLACTIC-THYROIDECTOMY-MANDATORY-MEN2B-6mo-MEN2A-5yr; PRKAR1A-ANNUAL-ECHO-MANDATORY-CARDIAC-MYXOMA-FATAL; APC-CRIBRIFORM-MORULAR-PTC-PATHOGNOMONIC-TOTAL-THYROIDECTOMY; TP53-AVOID-RADIATION-ABSOLUTELY; DICER1-CT-CHEST-SIBLINGS-LT-8YR-MANDATORY; MEN1-3pt5-GLAND-PARATHYROID-RESECTION; PTEN-MACROCEPHALY-TEST-PTEN-IMMEDIATELY; NF1-CAFE-AU-LAIT-NF1-THYROID-SURVEILLANCE; CASCADE-Testing-Hereditary-Thyroid-Cancer)."""
+    from scripts.hereditary_thyroid_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

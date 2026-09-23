@@ -21553,5 +21553,30 @@
     "frontend_page": "portal-next/app/hereditary-ewing-sarcoma-predisposition-atlas/page.jsx",
     "portal_page": "/hereditary-ewing-sarcoma-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-thyroid-cancer-predisposition-atlas",
+    "title": "Hereditary Thyroid Cancer Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Thyroid Cancer Predisposition Reference \u2014 RET-PTEN-APC-DICER1-MEN1-PRKAR1A-TP53-NF1",
+    "status": "built",
+    "genes": [
+      "RET",
+      "PTEN",
+      "APC",
+      "DICER1",
+      "MEN1",
+      "PRKAR1A",
+      "TP53",
+      "NF1"
+    ],
+    "seeds": "3326-3333",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-thyroid-cancer-predisposition-atlas/overview",
+      "/api/hereditary-thyroid-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-thyroid-cancer-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-thyroid-cancer-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]
