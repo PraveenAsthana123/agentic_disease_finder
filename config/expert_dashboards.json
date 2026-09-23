@@ -22052,5 +22052,76 @@
     "notes": "BRCA2-PCa-15pct-mCRPC-Olaparib-PROfound-HR-0.34-FDA2020 BRCA1-PCa-2-3x-PROfound-Cohort-A-HR-0.35 ATM-HIGH-GRADE-Gleason-8-10-RT-Reduce-20-30pct-PROfound-Cohort-B PALB2-PCa-2-3x-Breast-53pct-HRD-Emerging MLH1-Lynch1-MSI-H-PCa-3-8x-Pembrolizumab-FDA2017 MSH2-Lynch2-PCa-HIGHEST-11-14x-EPCAM-MLPA-MANDATORY HOXB13-G84E-3.5pct-N-European-PCa-3-6x-PROSTATE-SPECIFIC CHEK2-I157T-1100delC-Moderate-PCa-2-3x-No-PARPi",
     "api_base": "/api/hereditary-prostate-cancer-predisposition-atlas",
     "portal_path": "/hereditary-prostate-cancer-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-testicular-cancer-predisposition-atlas",
+    "name": "Hereditary-Testicular-Cancer-Predisposition-Atlas Complete-8-Gene-BRCA2-BRCA1-ATM-PALB2-DICER1-MLH1-TP53-CHEK2 BRCA2-3418aa-13q12.3-AD-LOF-HBOC-TGCT-4.4x-RR-STRONGEST-BEP-Olaparib-HRD-Emerging BRCA1-1863aa-17q21.31-AD-LOF-TGCT-2.7x-Bilateral-Elevated ATM-3056aa-11q22.3-AD-LOF-RT-Reduce-20-30pct-CRITICAL PALB2-1186aa-16p12.2-AD-LOF-HRD-Emerging DICER1-1922aa-14q32.13-AD-LOF-Sertoli-Cell-PATHOGNOMONIC-NOT-TGCT-PPB-Mandatory MLH1-756aa-3p22.2-AD-LOF-Lynch1-MSI-H-Pembrolizumab TP53-393aa-17p13.1-AD-LOF-LFS-AVOID-RT-ABSOLUTELY CHEK2-543aa-22q12.1-AD-LOF-I157T-Eastern-1100delC-Western 320-Patient-Aggregate-8x40-seeds-3494-3501",
+    "route": "/hereditary-testicular-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-testicular-cancer-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "BRCA2",
+      "BRCA1",
+      "ATM",
+      "PALB2",
+      "DICER1",
+      "MLH1",
+      "TP53",
+      "CHEK2"
+    ],
+    "seed_range": "3494-3501",
+    "patients": 320,
+    "category": "hereditary-cancer-predisposition",
+    "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary-hematologic-malignancy-predisposition-atlas",
+    "name": "Hereditary-Hematologic-Malignancy-Predisposition-Atlas Complete-8-Gene-CEBPA-GATA2-RUNX1-DDX41-ETV6-TP53-ATM-BRCA2 CEBPA-358aa-19q13.11-AD-LOF-Familial-AML-Biallelic-HSCT-Donors-OK GATA2-480aa-3q21.3-AD-LOF-GATA2-Deficiency-Emberger-PATHOGNOMONIC-HSCT-CURATIVE RUNX1-453aa-21q22.12-AD-LOF-FPD-AML-AML-35-44pct-HIGHEST-Exclude-Donors DDX41-622aa-5q35.3-AD-LOF-Late-Onset-60yr-HMA-Effective ETV6-452aa-12p13.2-AD-LOF-ALL-20-30x-RR-Avoid-NSAIDs TP53-393aa-17p13.1-AD-LOF-LFS-AVOID-RT-ABSOLUTELY ATM-3056aa-11q22.3-AD-AR-LOF-Biallelic-ALL-100x-CLL-4-5x BRCA2-3418aa-13q12.3-AD-AR-LOF-FA-D1-AML-Childhood-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-3502-3509",
+    "route": "/hereditary-hematologic-malignancy-predisposition-atlas",
+    "api_base": "/api/hereditary-hematologic-malignancy-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "CEBPA",
+      "GATA2",
+      "RUNX1",
+      "DDX41",
+      "ETV6",
+      "TP53",
+      "ATM",
+      "BRCA2"
+    ],
+    "seed_range": "3502-3509",
+    "patients": 320,
+    "category": "hereditary-cancer-predisposition",
+    "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "name": "Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas Complete-8-Gene-MLH1-MSH2-MSH6-PMS2-PTEN-TP53-BRCA1-STK11 MLH1-756aa-3p22.2-AD-LOF-Lynch1-Endometrial-40-60pct-MSI-H-PATHOGNOMONIC-Pembrolizumab-FDA2017-Aspirin-CAPP2-50pct-Risk-Reduction MSH2-934aa-2p21-AD-LOF-Lynch2-Muir-Torre-Sebaceous-PATHOGNOMONIC-EPCAM-3prime-MLPA-MANDATORY-Urothelial-14pct-HIGHEST MSH6-1360aa-2p16.3-AD-LOF-Lynch3-Endometrial-71pct-ABSOLUTE-HIGHEST-Single-MMR-Gene-MSI-L-30pct-False-Negative PMS2-862aa-7p22.1-AD-LOF-Lynch4-Lowest-Penetrance-15-26pct-4-Pseudogenes-MLPA-MANDATORY-Biallelic-CMMRD PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-Endometrial-28-44pct-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus-Lenvatinib-FDA2019 TP53-393aa-17p13.1-AD-LOF-LFS-Uterine-Serous-2-5x-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto BRCA1-1863aa-17q21.31-AD-LOF-HBOC1-Uterine-Serous-2-3x-BSO-Hysterectomy-35-40yr-Olaparib-PAOLA-1-SOLO2 STK11-433aa-19p13.3-AD-LOF-PJS-Endometrial-13pct-Adenoma-Malignum-PATHOGNOMONIC-GI-Endoscopy-8yr-MANDATORY 320-Patient-Aggregate-8x40-seeds-3382-3389",
+    "route": "/hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "PTEN",
+      "TP53",
+      "BRCA1",
+      "STK11"
+    ],
+    "seed_range": "3382-3389",
+    "patients": 320,
+    "category": "hereditary-cancer-predisposition",
+    "routes": [
+      "/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/overview",
+      "/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/definitions"
+    ],
+    "page": "/hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "MLH1-Lynch1-Endometrial-40-60pct-MSI-H-Pembrolizumab-FDA2017 MSH6-Lynch3-Endometrial-71pct-ABSOLUTE-HIGHEST-MSI-L-30pct-Pitfall PMS2-4-Pseudogenes-MLPA-MANDATORY-CMMRD-Biallelic PTEN-Cowden-Macrocephaly-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus-Lenvatinib-FDA2019 TP53-Uterine-Serous-AVOID-RADIATION-ABSOLUTELY BRCA1-BSO-Hysterectomy-35-40yr-Serous-Histology STK11-Adenoma-Malignum-PATHOGNOMONIC-GI-8yr Universal-MMR-IHC-ALL-Endometrial-Tumours",
+    "registered": "2026-09-23"
   }
 ]
