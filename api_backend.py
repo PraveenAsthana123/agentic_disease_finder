@@ -50839,6 +50839,27 @@ async def hereditary_acc_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-pancreatic-cancer-predisposition-atlas/overview")
+async def hereditary_pancreatic_cancer_predisposition_atlas_overview():
+    """Hereditary-Pancreatic-Cancer-Predisposition-Atlas overview (BRCA2-CDKN2A-ATM-PALB2-STK11-MLH1-TP53-PRSS1; 320-patient aggregate 8x40 seeds 3342-3349; BRCA2-3418aa-13q12.3-AD-LOF-HBOC-PDAC-5-7pct-Olaparib-FDA2019-POLO-Platinum-HRD; CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-PDAC-17-39pct-HIGHEST-p16-IHC-Loss-PATHOGNOMONIC-Palbociclib-Melanoma-25-36x; ATM-3056aa-11q22.3-AR-AD-LOF-PDAC-5-8x-Monoallelic-RADIOSENSITIVITY-ABSOLUTE-Biallelic-Ceralasertib; PALB2-1186aa-16p12.2-AD-LOF-HBOC2-PDAC-3-4x-BRCA2-Anchor-FA-N-Olaparib; STK11-433aa-19p13.3-AD-LOF-PJS-PDAC-11-36pct-HIGHEST-EARLIEST-Age30-Mucocutaneous-Macules-PATHOGNOMONIC; MLH1-756aa-3p22.2-AD-LOF-Lynch1-MSI-H-PATHOGNOMONIC-Pembrolizumab-FDA2017-Aspirin-CAPP2-50pct; TP53-393aa-17p13.1-AD-LOF-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-R337H-Brazilian; PRSS1-247aa-7q34-AD-GOF-Hereditary-Pancreatitis-PDAC-40-55pct-HIGHEST-NO-SMOKING-ABSOLUTELY)."""
+    from scripts.hereditary_pancreatic_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-pancreatic-cancer-predisposition-atlas/breakdown")
+async def hereditary_pancreatic_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Pancreatic-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; BRCA2-HBOC-PDAC-5-7pct-Olaparib-FDA2019-POLO-Platinum; CDKN2A-FAMMM-PDAC-17-39pct-HIGHEST-p16-IHC-Loss-PATHOGNOMONIC-Annual-MRI-EUS-40; ATM-Monoallelic-PDAC-5-8x-RADIOSENSITIVITY-ABSOLUTE-Biallelic-Ceralasertib; PALB2-HBOC2-PDAC-3-4x-FA-N-Breast-53pct-Olaparib; STK11-PJS-PDAC-11-36pct-EARLIEST-30yr-SCTAT-PATHOGNOMONIC; MLH1-Lynch-PDAC-3-4x-MSI-H-Pembrolizumab-Aspirin-CAPP2; TP53-LFS-R337H-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; PRSS1-HP-PDAC-40-55pct-HIGHEST-NO-SMOKING-40x-Multiplier-TPIAT; mean_age_dx per gene; CR pct; radiation pct; relapse pct)."""
+    from scripts.hereditary_pancreatic_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-pancreatic-cancer-predisposition-atlas/definitions")
+async def hereditary_pancreatic_cancer_predisposition_atlas_definitions():
+    """Hereditary-Pancreatic-Cancer-Predisposition-Atlas clinical definitions (BRCA2-OLAPARIB-FDA2019-POLO-MAINTENANCE; CDKN2A-ANNUAL-MRI-EUS-FROM-40-MANDATORY; ATM-RADIOSENSITIVITY-ABSOLUTE-BIALLELIC; PALB2-BRCA2-ANCHOR-FA-N-BREAST-53PCT; STK11-ANNUAL-MRI-EUS-FROM-30-EARLIEST; MLH1-PEMBROLIZUMAB-FDA2017-MSI-H-AGNOSTIC; TP53-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; PRSS1-NO-SMOKING-ABSOLUTELY-40X-MULTIPLIER-TPIAT; CASCADE-Testing-Hereditary-Pancreatic-Cancer-Predisposition)."""
+    from scripts.hereditary_pancreatic_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

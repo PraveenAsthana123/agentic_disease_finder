@@ -21603,5 +21603,30 @@
     ],
     "portal_page": "/hereditary-acc-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-pancreatic-cancer-predisposition-atlas",
+    "title": "Hereditary Pancreatic Cancer Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Pancreatic Cancer Predisposition Reference \u2014 BRCA2-CDKN2A-ATM-PALB2-STK11-MLH1-TP53-PRSS1",
+    "status": "built",
+    "genes": [
+      "BRCA2",
+      "CDKN2A",
+      "ATM",
+      "PALB2",
+      "STK11",
+      "MLH1",
+      "TP53",
+      "PRSS1"
+    ],
+    "seeds": "3342-3349",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-pancreatic-cancer-predisposition-atlas/overview",
+      "/api/hereditary-pancreatic-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-pancreatic-cancer-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-pancreatic-cancer-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]
