@@ -21388,5 +21388,26 @@
     "category": "hereditary-cancer-atlas",
     "seed_range": "3262-3269",
     "patients": 320
+  },
+  {
+    "id": "hereditary-neuroblastoma-predisposition-atlas",
+    "title": "Hereditary Neuroblastoma Predisposition Atlas",
+    "subtitle": "ALK-PHOX2B-BARD1-KIF1B-NF1-TP53-DICER1-BRCA2 8-Gene Reference Panel",
+    "status": "built",
+    "route": "/hereditary-neuroblastoma-predisposition-atlas",
+    "api_base": "/api/hereditary-neuroblastoma-predisposition-atlas",
+    "genes": [
+      "ALK",
+      "PHOX2B",
+      "BARD1",
+      "KIF1B",
+      "NF1",
+      "TP53",
+      "DICER1",
+      "BRCA2"
+    ],
+    "category": "hereditary-cancer-atlas",
+    "seed_range": "3270-3277",
+    "patients": 320
   }
 ]

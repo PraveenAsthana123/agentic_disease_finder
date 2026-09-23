@@ -50650,6 +50650,27 @@ async def hereditary_nephroblastoma_wilms_tumor_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-neuroblastoma-predisposition-atlas/overview")
+async def hereditary_neuroblastoma_predisposition_atlas_overview():
+    """Hereditary-Neuroblastoma-Predisposition-Atlas overview (ALK-PHOX2B-BARD1-KIF1B-NF1-TP53-DICER1-BRCA2; 320-patient aggregate 8x40 seeds 3270-3277; ALK-R1275Q-40pct-F1174L-25pct-Most-Aggressive-MYCN-Co-Amp-Crizotinib-FDA2022-Lorlatinib; PHOX2B-NPARMs-NB-50pct-PATHOGNOMONIC-CCHS-PATHOGNOMONIC-Anesthesia-HIGH-RISK; BARD1-C557S-NB-Susceptibility-2-HRD-Cisplatin-Olaparib; KIF1B-1p36.22-1p36-LOH-70pct-NB-Somatic-Pheo-Risk; NF1-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-Selumetinib-FDA2020-AVOID-Radiation; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-Tandem-HDCT-ASCT; DICER1-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr-NB-2-4x; BRCA2-FA-D1-Bilateral-Wilms-PATHOGNOMONIC-DEB-MMC-PATHOGNOMONIC-Sibling-Donor-Exclusion-MANDATORY)."""
+    from scripts.hereditary_neuroblastoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-neuroblastoma-predisposition-atlas/breakdown")
+async def hereditary_neuroblastoma_predisposition_atlas_breakdown():
+    """Hereditary-Neuroblastoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ALK-R1275Q-F1174L-Crizotinib-Lorlatinib; PHOX2B-NPARMs-50pct-NB-PATHOGNOMONIC-CCHS-ANESTHESIA-HIGH-RISK; BARD1-C557S-NB-Susceptibility-2; KIF1B-1p36.22-Q598X-Truncating; NF1-Cafe-au-Lait-PATHOGNOMONIC-Selumetinib-AVOID-Radiation; TP53-AVOID-RADIATION-ABSOLUTELY-Tandem-HDCT; DICER1-PPB-PATHOGNOMONIC-Siblings-CT-Chest; BRCA2-FA-D1-SIBLING-DONOR-EXCLUSION-MANDATORY; mean_age_dx per gene; CR pct; radiation_avoided_pct)."""
+    from scripts.hereditary_neuroblastoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-neuroblastoma-predisposition-atlas/definitions")
+async def hereditary_neuroblastoma_predisposition_atlas_definitions():
+    """Hereditary-Neuroblastoma-Predisposition-Atlas clinical definitions (ALK-R1275Q-Hotspot-Familial-NB-40pct-F1174L-Hotspot-MYCN-Co-Amp-Most-Aggressive-25pct-Crizotinib-FDA2022; PHOX2B-NPARMs-NB-50pct-PATHOGNOMONIC-CCHS-PATHOGNOMONIC-Tumor-Only-NOT-CCHS; BARD1-C557S-NB-Susceptibility-2-HRD; KIF1B-1p36-LOH-70pct-Somatic-Q598X-Truncating; NF1-Cafe-au-Lait-6plus-5mm-Prepubertal-PATHOGNOMONIC-Selumetinib-FDA2020-AVOID-Radiation; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-Tandem-HDCT-ASCT-Preferred-Over-TBI; DICER1-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr-NB-2-4x-Elevated; BRCA2-FA-D1-Bilateral-Wilms-PATHOGNOMONIC-DEB-MMC-PATHOGNOMONIC-Sibling-Donor-Exclusion-MANDATORY-AVOID-Alkylating-Agents; CASCADE-Testing-Hereditary-Neuroblastoma)."""
+    from scripts.hereditary_neuroblastoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

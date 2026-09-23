@@ -36530,3 +36530,54 @@ Done. Hereditary Lymphoma Predisposition Atlas built, verified, committed, and p
 - Top buildable: Ictal/interictal retrain (skip — too heavy)
 - Blocked: Gmail/Slack/Drive credentials · multi-user auth · EMR/FHIR · frontend dev-server (:3003 needs `npm run dev`)
 - Gated §42: 0 unpushed commits
+
+### [2026-09-22 17:48:26 MDT] ASSISTANT
+Done. One complete, verified, pushed iteration:
+
+**Built: Hereditary CNS/Brain Tumor Predisposition Atlas** (`/hereditary-cns-brain-tumor-atlas`)
+
+- **8 genes**: NF1 · NF2 · VHL · TSC1 · PTEN · SMARCB1 · SUFU · TP53
+- **Seeds**: 3246–3253 · 320 patients (8 × 40)
+- **3 endpoints verified 200**: `/api/hereditary-cns-brain-tumor-atlas/overview|breakdown|definitions`
+- **Files**: `scripts/hereditary_cns_brain_tumor_atlas_dashboard.py` + `portal-next/app/hereditary-cns-brain-tumor-atlas/page.jsx` + 3 API routes in `api_backend.py`
+- **expert_dashboards.json**: 1291 → 1292
+- **SiteNav**: wired after Hereditary-Lymphoma-Predisposition-Atlas
+- **Pushed**: `50ef8ebc` → `origin/main`
+
+Key clinical precision wired in: NF1 optic glioma PATHOGNOMONIC + selumetinib FDA2020 + AVOID radiation (secondary MPNST); NF2 bilateral VS PATHOGNOMONIC 90–95% + bevacizumab hearing preservation; VHL hemangioblastoma PATHOGNOMONIC + belzutifan HIF-2α FDA2021; TSC1 SEGA PATHOGNOMONIC + everolimus FDA; PTEN Lhermitte-Duclos PATHOGNOMONIC + macrocephaly 90%; SMARCB1 ATRT under-3yr PATHOGNOMONIC + INI1 IHC loss + tazemetostat; SUFU SHH-MB HIGHEST germline risk 50–60% + vismodegib AVOID children; TP53 LFS DIPG/H3K27M PATHOGNOMONIC + AVOID RADIATION ABSOLUTELY + ONC201/dordaviprone FDA2022.
+
+### [2026-09-22 18:17:39 MDT] ASSISTANT
+Done. One clean iteration complete:
+
+**Built & Pushed: Hereditary Soft Tissue Sarcoma & Desmoid Predisposition Atlas**
+
+- **8 genes**: TP53 · NF1 · APC · DICER1 · SMARCB1 · BRCA2 · RB1 · FH (seeds 3254–3261, 320-patient aggregate)
+- **3 endpoints** verified 200: `/api/hereditary-soft-tissue-sarcoma-atlas/{overview,breakdown,definitions}`
+- **Portal page**: `/hereditary-soft-tissue-sarcoma-atlas` (4-tab React frontend)
+- **SiteNav** wired after Hereditary-CNS-Brain-Tumor-Predisposition-Atlas
+- **expert_dashboards.json**: 1292 → 1293
+- **Committed + pushed** to `main` (175b7010)
+
+Key clinical distinctions encoded:
+- TP53: AVOID RADIATION ABSOLUTELY (0% radiation in cohort)
+- NF1: MPNST 8–13% PATHOGNOMONIC, selumetinib FDA2020
+- APC: surgery AVOID mesenteric desmoid (paradoxical growth), nirogacestat FDA2023
+- DICER1: PPB PATHOGNOMONIC, AVOID radiation children
+- SMARCB1: INI1 IHC loss PATHOGNOMONIC, tazemetostat EZH2i FDA2020
+- BRCA2: LMS 3–4×, FA-D1 RMS PATHOGNOMONIC, cisplatin HRD
+- RB1: secondary STS 15–20× post-RT, CDK4/6i RESISTANT in RB1-null
+- FH: uterine/cutaneous leiomyoma PATHOGNOMONIC, 2SC IHC PATHOGNOMONIC, bevacizumab+erlotinib
+
+### [2026-09-22 18:51:55 MDT] ASSISTANT
+Built, verified, committed `e3ab3ea8`, pushed to `origin/main`.
+
+**Hereditary-Nephroblastoma-Wilms-Tumor-Predisposition-Atlas** — complete.
+
+- `scripts/hereditary_nephroblastoma_wilms_tumor_atlas_dashboard.py` — 8-gene dashboard (WT1·CDKN1C·SIX1·SIX2·DICER1·TP53·WTX·BRCA2, SEED_BASE=3262, 320 patients)
+- `api_backend.py` — 3 endpoints `/api/hereditary-nephroblastoma-wilms-tumor-atlas/overview|breakdown|definitions` → all returning HTTP 200
+- `portal-next/app/hereditary-nephroblastoma-wilms-tumor-atlas/page.jsx` — tabbed Next.js page (deep-blue theme)
+- `portal-next/app/components/SiteNav.jsx` — nav entry added after soft-tissue-sarcoma
+- `config/expert_dashboards.json` — count 1293 → **1294**
+- `scripts/next_pending.py` — history logged (also backfilled missing lymphoma + soft-tissue-sarcoma entries)
+
+⏳ **Pending**: Only remaining buildable item is `ictal/interictal retrain` (marked skip per operator instruction).
