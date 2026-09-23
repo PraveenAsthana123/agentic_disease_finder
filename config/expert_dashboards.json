@@ -21718,5 +21718,26 @@
     "script": "scripts/hereditary_ovarian_cancer_predisposition_atlas_dashboard.py",
     "seeds": "3374-3381",
     "registered": "2026-09-23"
+  },
+  {
+    "id": "1310",
+    "title": "Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas Complete-8-Gene-MLH1-MSH2-MSH6-PMS2-PTEN-TP53-BRCA1-STK11-Atlas MLH1-756aa-3p22.2-AD-LOF-Lynch1-Endometrial-40-60pct-MSI-H-PATHOGNOMONIC-Pembrolizumab-FDA2017-Aspirin-CAPP2-50pct MLH1-756aa-3p22.2-AD-LOF-Lynch1-Endometrial-40-60pct-HIGHEST-Lynch-Gene-Endometrial-MSI-H-PATHOGNOMONIC-Somatic-Methylation-90pct-Confirm-Germline MSH2-934aa-2p21-AD-LOF-Lynch2-Muir-Torre-Sebaceous-PATHOGNOMONIC-EPCAM-3prime-Deletion-MLPA-MANDATORY-Urothelial-14pct-HIGHEST-Lynch MSH6-1360aa-2p16.3-AD-LOF-Lynch3-Endometrial-71pct-ABSOLUTE-HIGHEST-Single-MMR-Gene-Endometrial-Dominant-CRC-Only-10-22pct PMS2-862aa-7p22.1-AD-LOF-Lynch4-Lowest-15-26pct-4-Pseudogenes-MLPA-MANDATORY-Biallelic-CMMRD-Childhood-CNS PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-Endometrial-28-44pct-HIGHEST-Non-Lynch-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus-Lenvatinib-FDA2019 TP53-393aa-17p13.1-AD-LOF-LFS-Uterine-Serous-2-5x-Elevated-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-De-Novo-20pct BRCA1-1863aa-17q21.31-AD-LOF-HBOC1-Uterine-Serous-2-3x-Clear-Cell-BSO-Hysterectomy-35-40yr-Olaparib-PAOLA-1-SOLO2 STK11-433aa-19p13.3-AD-LOF-PJS-Endometrial-13pct-Adenoma-Malignum-Cervix-PATHOGNOMONIC-GI-Endoscopy-8yr-MANDATORY 320-Patient-Aggregate-8x40-seeds-3382-3389",
+    "route": "/hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-uterine-endometrial-cancer-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "PTEN",
+      "TP53",
+      "BRCA1",
+      "STK11"
+    ],
+    "seed_range": "3382-3389",
+    "patients": 320,
+    "category": "hereditary-cancer-predisposition",
+    "registered": "2026-09-23"
   }
 ]

@@ -50944,6 +50944,27 @@ async def hereditary_ovarian_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/overview")
+async def hereditary_uterine_endometrial_cancer_predisposition_atlas_overview():
+    """Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas overview (MLH1-MSH2-MSH6-PMS2-PTEN-TP53-BRCA1-STK11; 320-patient aggregate seeds 3382-3389; MSH6-71pct-ABSOLUTE-HIGHEST-single-MMR-gene-endometrial; MLH1-somatic-methylation-90pct-confirm-germline; PMS2-4-pseudogenes-MLPA-MANDATORY; PTEN-28-44pct-macrocephaly-PATHOGNOMONIC-everolimus-lenvatinib-FDA2019; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA1-hysterectomy-at-BSO; STK11-adenoma-malignum-PATHOGNOMONIC)."""
+    from scripts.hereditary_uterine_endometrial_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/breakdown")
+async def hereditary_uterine_endometrial_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas per-gene breakdown (MLH1-Lynch1-endometrial-40-60pct; MSH2-Lynch2-Muir-Torre-EPCAM-MLPA; MSH6-Lynch3-endometrial-dominant-71pct-MSI-L-30pct; PMS2-Lynch4-lowest-penetrance-pseudogenes; PTEN-Cowden-PHTS-28-44pct; TP53-LFS-serous-AVOID-RT; BRCA1-HBOC-uterine-serous-BSO-hysterectomy; STK11-PJS-adenoma-malignum-GI-8yr)."""
+    from scripts.hereditary_uterine_endometrial_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/definitions")
+async def hereditary_uterine_endometrial_cancer_predisposition_atlas_definitions():
+    """Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas clinical definitions (MSH6-ENDOMETRIAL-71PCT-HIGHEST; MLH1-SOMATIC-METHYLATION-90PCT-CONFIRM-GERMLINE; PMS2-4-PSEUDOGENES-MLPA-MANDATORY; PTEN-MACROCEPHALY-PATHOGNOMONIC-LHERMITTE-DUCLOS-PATHOGNOMONIC-EVEROLIMUS-LENVATINIB-FDA2019; TP53-AVOID-RADIATION-ABSOLUTELY-20-FOLD-SECONDARY-MALIGNANCY; BRCA1-HYSTERECTOMY-AT-BSO-NOT-BSO-ALONE; STK11-ADENOMA-MALIGNUM-PATHOGNOMONIC-KI67-CEA-IHC; CASCADE-Universal-MMR-IHC-All-Endometrial-Tumours)."""
+    from scripts.hereditary_uterine_endometrial_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
