@@ -50734,6 +50734,27 @@ async def hereditary_hepatoblastoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-medulloblastoma-predisposition-atlas/overview")
+async def hereditary_medulloblastoma_predisposition_atlas_overview():
+    """Hereditary-Medulloblastoma-Predisposition-Atlas overview (PTCH1-SUFU-TP53-APC-CREBBP-EP300-BRCA2-PALB2; 320-patient aggregate 8x40 seeds 3302-3309; PTCH1-1447aa-9q22.32-AD-LOF-Gorlin-NBCCS-SHH-MB-25-30pct-Germline-AVOID-RADIATION-ABSOLUTELY-10-BCC-Per-Gray; SUFU-484aa-10q24.32-AD-LOF-SHH-MB-HIGHEST-50-60pct-Vismodegib-RESISTANT-Distal-To-SMO; TP53-393aa-17p13.1-AD-LOF-LFS-SHH-MB-Anaplastic-Chromothripsis-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; APC-2843aa-5q22.2-AD-LOF-FAP-Turcot-Type2-WNT-MB-Monosomy6-Excellent-Prognosis-GT90pct-5yr; CREBBP-2441aa-16p13.3-AD-LOF-RTS1-WNT-MB-Broad-Thumbs-Big-Toes-PATHOGNOMONIC-Vorinostat-HDAC; EP300-2414aa-22q13.2-AD-LOF-RTS2-WNT-MB-Milder-Than-RTS1-CREBBP-EP300-Sequence-Both; BRCA2-3418aa-13q12.3-AD-LOF-FA-D1-Desmoplastic-MB-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion-MANDATORY; PALB2-1186aa-16p12.2-AD-LOF-FA-N-Brain-Tumours-MB-Olaparib-FDA-Monoallelic-Breast-53pct)."""
+    from scripts.hereditary_medulloblastoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-medulloblastoma-predisposition-atlas/breakdown")
+async def hereditary_medulloblastoma_predisposition_atlas_breakdown():
+    """Hereditary-Medulloblastoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; PTCH1-Gorlin-SHH-MB-25-30pct-AVOID-RADIATION-BCC-10-Per-Gray; SUFU-SHH-MB-HIGHEST-50-60pct-Vismodegib-RESISTANT; TP53-LFS-SHH-MB-Anaplastic-AVOID-RADIATION-WBMRI-Toronto; APC-Turcot2-WNT-MB-Monosomy6-Excellent-Prognosis; CREBBP-RTS1-WNT-MB-Broad-Thumbs-PATHOGNOMONIC; EP300-RTS2-WNT-MB-Milder-Phenotype; BRCA2-FA-D1-Desmoplastic-MB-PATHOGNOMONIC-AVOID-Alkylating; PALB2-FA-N-Brain-Tumours-Olaparib-FDA; mean_age_dx per gene; CR pct; radiation pct; chemo pct; HSCT pct)."""
+    from scripts.hereditary_medulloblastoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-medulloblastoma-predisposition-atlas/definitions")
+async def hereditary_medulloblastoma_predisposition_atlas_definitions():
+    """Hereditary-Medulloblastoma-Predisposition-Atlas clinical definitions (PTCH1-GORLIN-AVOID-RADIATION-10-BCC-PER-GRAY-PATHOGNOMONIC; SUFU-SHH-MB-HIGHEST-VISMODEGIB-RESISTANT-DISTAL-SMO; TP53-LFS-SHH-MB-ANAPLASTIC-CHROMOTHRIPSIS-AVOID-RADIATION-WBMRI; APC-TURCOT2-WNT-MB-MONOSOMY6-EXCELLENT-PROGNOSIS; CREBBP-RTS1-BROAD-THUMBS-PATHOGNOMONIC-VORINOSTAT-HDAC; EP300-RTS2-MILDER-RTS1-SEQUENCE-BOTH-CREBBP-EP300; BRCA2-FA-D1-DESMOPLASTIC-MB-PATHOGNOMONIC-AVOID-ALKYLATING-SIBLING-EXCLUSION; PALB2-FA-N-BRAIN-TUMOURS-OLAPARIB-FDA-BREAST-53PCT; CASCADE-Testing-Hereditary-Medulloblastoma)."""
+    from scripts.hereditary_medulloblastoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

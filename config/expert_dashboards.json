@@ -21474,5 +21474,30 @@
     ],
     "portal_page": "/hereditary-hepatoblastoma-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-medulloblastoma-predisposition-atlas",
+    "title": "Hereditary Medulloblastoma Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Medulloblastoma Predisposition Reference \u2014 PTCH1-SUFU-TP53-APC-CREBBP-EP300-BRCA2-PALB2",
+    "status": "built",
+    "genes": [
+      "PTCH1",
+      "SUFU",
+      "TP53",
+      "APC",
+      "CREBBP",
+      "EP300",
+      "BRCA2",
+      "PALB2"
+    ],
+    "seeds": "3302-3309",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-medulloblastoma-predisposition-atlas/overview",
+      "/api/hereditary-medulloblastoma-predisposition-atlas/breakdown",
+      "/api/hereditary-medulloblastoma-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-medulloblastoma-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]
