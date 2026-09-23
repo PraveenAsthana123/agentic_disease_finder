@@ -50963,6 +50963,25 @@ async def hereditary_head_neck_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/overview")
+async def hereditary_esophageal_cancer_predisposition_atlas_overview():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas overview (RHBDF2-TP53-CDH1-BRCA2-ATM-MLH1-MSH2-PALB2; 320-patient aggregate seeds 3462-3469; RHBDF2-TOC-Howel-Evans-95pct-esophageal-SCC-annual-OGD-Lugol-20yr; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-omit-CROSS-protocol; CDH1-HDGC-gastrectomy-20-30yr-MANDATORY; BRCA2-PALB2-HRD-cisplatin-preferred-olaparib-maintenance; ATM-heterozyg-reduce-RT-20-30pct; MLH1-MSH2-Lynch-MSI-H-pembrolizumab-FDA2017)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/breakdown")
+async def hereditary_esophageal_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas breakdown (per-gene esophageal rates, histology SCC-vs-adenocarcinoma by gene, HRD cisplatin/PARP rules, Lynch MSI-H pembrolizumab, surveillance stratification by risk tier)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/definitions")
+async def hereditary_esophageal_cancer_predisposition_atlas_definitions():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas definitions (gene structures, TOC RHBDF2-ADAM17 mechanism, TP53 radiation rule, CDH1 gastrectomy protocol, HRD cisplatin preference, Lynch MLPA mandatory, PALB2 TBCRC048 olaparib data, abbreviations)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/overview")
 async def hereditary_uterine_endometrial_cancer_predisposition_atlas_overview():
     """Hereditary-Uterine-Endometrial-Cancer-Predisposition-Atlas overview (MLH1-MSH2-MSH6-PMS2-PTEN-TP53-BRCA1-STK11; 320-patient aggregate seeds 3382-3389; MSH6-71pct-ABSOLUTE-HIGHEST-single-MMR-gene-endometrial; MLH1-somatic-methylation-90pct-confirm-germline; PMS2-4-pseudogenes-MLPA-MANDATORY; PTEN-28-44pct-macrocephaly-PATHOGNOMONIC-everolimus-lenvatinib-FDA2019; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA1-hysterectomy-at-BSO; STK11-adenoma-malignum-PATHOGNOMONIC)."""

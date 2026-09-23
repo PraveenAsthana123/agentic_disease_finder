@@ -21975,5 +21975,26 @@
       "/api/hereditary-head-neck-cancer-predisposition-atlas/definitions"
     ],
     "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary-esophageal-cancer-predisposition-atlas",
+    "title": "Hereditary-Esophageal-Cancer-Predisposition-Atlas Complete-8-Gene-RHBDF2-TP53-CDH1-BRCA2-ATM-MLH1-MSH2-PALB2",
+    "status": "built",
+    "category": "hereditary_cancer_predisposition",
+    "genes": [
+      "RHBDF2",
+      "TP53",
+      "CDH1",
+      "BRCA2",
+      "ATM",
+      "MLH1",
+      "MSH2",
+      "PALB2"
+    ],
+    "seeds": "3462-3469",
+    "patient_count": 320,
+    "built_date": "2026-09-23",
+    "api_base": "/api/hereditary-esophageal-cancer-predisposition-atlas",
+    "portal_path": "/hereditary-esophageal-cancer-predisposition-atlas"
   }
 ]
