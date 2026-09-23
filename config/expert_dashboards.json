@@ -21628,5 +21628,22 @@
     ],
     "portal_page": "/hereditary-pancreatic-cancer-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-gastric-cancer-predisposition-atlas",
+    "title": "Hereditary Gastric Cancer Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Reference · CDH1-CTNNA1-APC-SMAD4-STK11-MLH1-TP53-BRCA2 · 320-Patient Aggregate (8×40, seeds 3350–3357)",
+    "category": "Hereditary Cancer Predisposition Atlases",
+    "status": "built",
+    "genes": ["CDH1", "CTNNA1", "APC", "SMAD4", "STK11", "MLH1", "TP53", "BRCA2"],
+    "seeds": "3350-3357",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-gastric-cancer-predisposition-atlas/overview",
+      "/api/hereditary-gastric-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-gastric-cancer-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-gastric-cancer-predisposition-atlas",
+    "registered": "2026-09-23"
   }
 ]

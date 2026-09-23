@@ -50860,6 +50860,27 @@ async def hereditary_pancreatic_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-gastric-cancer-predisposition-atlas/overview")
+async def hereditary_gastric_cancer_predisposition_atlas_overview():
+    """Hereditary-Gastric-Cancer-Predisposition-Atlas overview (CDH1-PROPHYLACTIC-GASTRECTOMY-MANDATORY-20-30YR; CTNNA1-CAMBRIDGE-PROTOCOL-ANNUAL; APC-FUNDIC-GLAND-POLYPOSIS-PATHOGNOMONIC; SMAD4-PULMONARY-AVM-CT-MANDATORY; STK11-GI-ENDOSCOPY-8YR; MLH1-HPYLORI-ERADICATION-MANDATORY; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA2-PLATINUM-HRD; seeds-3350-3357)."""
+    from scripts.hereditary_gastric_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-gastric-cancer-predisposition-atlas/breakdown")
+async def hereditary_gastric_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Gastric-Cancer-Predisposition-Atlas per-gene breakdown (CDH1-67-83PCT-HIGHEST; CTNNA1-HDGC-LIKE; APC-FAP-GARDNER; SMAD4-JPS-HHT-OVERLAP; STK11-PJS-29PCT; MLH1-LYNCH-6-13PCT-MSI-H; TP53-LFS-UNDIFFERENTIATED; BRCA2-HBOC-2-3X; seeds-3350-3357)."""
+    from scripts.hereditary_gastric_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-gastric-cancer-predisposition-atlas/definitions")
+async def hereditary_gastric_cancer_predisposition_atlas_definitions():
+    """Hereditary-Gastric-Cancer-Predisposition-Atlas clinical definitions (CDH1-PROPHYLACTIC-GASTRECTOMY-MANDATORY; SMAD4-ANNUAL-CT-CHEST-MANDATORY; MLH1-HPYLORI-ERADICATION-MANDATORY; APC-UPPER-GI-SURVEILLANCE-25YR; STK11-GI-ENDOSCOPY-8YR-MANDATORY; MLH1-PEMBROLIZUMAB-FDA2017; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA2-HPYLORI-PLATINUM-BASED; CASCADE-Testing-Hereditary-Gastric-Cancer-Predisposition)."""
+    from scripts.hereditary_gastric_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
