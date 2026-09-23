@@ -50923,6 +50923,27 @@ async def hereditary_breast_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ovarian-cancer-predisposition-atlas/overview")
+async def hereditary_ovarian_cancer_predisposition_atlas_overview():
+    """Hereditary-Ovarian-Cancer-Predisposition-Atlas overview (BRCA1-BRCA2-BRIP1-RAD51C-RAD51D-PALB2-MLH1-STK11; 320-patient aggregate seeds 3374-3381; BRCA1-39-44pct-RRSO-35-40yr-MANDATORY; BRCA2-11-17pct-later-onset-55yr; BRIP1-RAD51C-RAD51D-NO-breast-risk-RRSO-45-50yr; RAD51D-HIGHEST-paralog-10pct-PARPi-sensitivity; PALB2-breast-53pct-DOMINATES; MLH1-Lynch-endometrioid-NOT-HGSOC-pembrolizumab; STK11-SCTAT-PATHOGNOMONIC-benign-PJS)."""
+    from scripts.hereditary_ovarian_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ovarian-cancer-predisposition-atlas/breakdown")
+async def hereditary_ovarian_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Ovarian-Cancer-Predisposition-Atlas per-gene breakdown (BRCA1-HGSOC-RRSO-35-40yr; BRCA2-later-onset-RRSO-40-45yr; BRIP1-NO-breast-risk-FANCJ; RAD51C-FANCO-ovarian-selective; RAD51D-HIGHEST-paralog-PARPi; PALB2-TBCRC048-82pct-ORR; MLH1-dMMR-pembrolizumab-CAPP2-aspirin; STK11-SCTAT-PATHOGNOMONIC-PJS-mucocutaneous-macules)."""
+    from scripts.hereditary_ovarian_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ovarian-cancer-predisposition-atlas/definitions")
+async def hereditary_ovarian_cancer_predisposition_atlas_definitions():
+    """Hereditary-Ovarian-Cancer-Predisposition-Atlas clinical definitions (BRCA1-PAOLA-1-SOLO2-NIRAPARIB-PRIMA; BRCA2-SOLO1-MALE-BREAST-PROSTATE; BRIP1-NO-BREAST-RISK-FANCJ; RAD51C-FANCO-RRSO-45-50YR; RAD51D-PARP-SENSITIVITY-HIGHEST-PARALOG; PALB2-BREAST-DOMINATES-TBCRC048; MLH1-ENDOMETRIOID-NOT-HGSOC-PEMBROLIZUMAB-FDA2017-ASPIRIN-CAPP2; STK11-SCTAT-PATHOGNOMONIC-ADENOMA-MALIGNUM-CERVIX-PATHOGNOMONIC; CASCADE-Testing-Hereditary-Ovarian-Cancer-Predisposition)."""
+    from scripts.hereditary_ovarian_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
