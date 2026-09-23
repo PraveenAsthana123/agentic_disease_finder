@@ -21760,5 +21760,27 @@
     "seed_range": "3390-3397",
     "status": "built",
     "registered": "2026-09-23"
+  },
+  {
+    "id": "1312",
+    "name": "Hereditary-Colorectal-Cancer-Predisposition-Atlas",
+    "title": "Hereditary-Colorectal-Cancer-Predisposition-Atlas Complete-8-Gene-APC-MUTYH-MLH1-MSH2-MSH6-PMS2-STK11-SMAD4 APC-2843aa-5q22.2-AD-LOF-FAP-CRC-100pct-CHRPE-PATHOGNOMONIC-Prophylactic-Colectomy-20-25yr-MANDATORY MUTYH-546aa-1p34.1-AR-biallelic-LOF-MAP-Y179C-G396D-Founders-MSS-NOT-MSI-H-KEY-DISTINCTION MLH1-756aa-3p22.2-AD-LOF-Lynch1-CRC-40-70pct-BRAF-V600E-Absent-Germline MSH2-935aa-2p21-AD-LOF-Lynch2-Urothelial-14pct-HIGHEST-Lynch-Gene-Muir-Torre-Sebaceous-PATHOGNOMONIC MSH6-1360aa-2p16.3-AD-LOF-Lynch3-Endometrial-71pct-ABSOLUTE-HIGHEST-IHC-Primary PMS2-862aa-7p22.1-AD-LOF-Lynch4-LOWEST-Lynch-CRC-15-20pct-4-Pseudogenes-MLPA-MANDATORY STK11-433aa-19p13.3-AD-LOF-PJS-CRC-39pct-Perioral-Pigmentation-PATHOGNOMONIC-Pancreatic-36pct SMAD4-552aa-18q21.2-AD-LOF-JPS-HHT-Overlap-SMAD4-ONLY-NOT-BMPR1A-Aortic-Dilatation-Annual-Echo-MANDATORY 320-Patient-Aggregate-8x40-seeds-3398-3405",
+    "route": "/hereditary-colorectal-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-colorectal-cancer-predisposition-atlas",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "APC",
+      "MUTYH",
+      "MLH1",
+      "MSH2",
+      "MSH6",
+      "PMS2",
+      "STK11",
+      "SMAD4"
+    ],
+    "patients": 320,
+    "seed_range": "3398-3405",
+    "status": "built",
+    "registered": "2026-09-23"
   }
 ]

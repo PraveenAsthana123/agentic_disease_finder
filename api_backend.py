@@ -50984,6 +50984,25 @@ async def hereditary_prostate_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-colorectal-cancer-predisposition-atlas/overview")
+async def hereditary_crc_predisposition_atlas_overview():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas overview — 8 genes (APC-MUTYH-MLH1-MSH2-MSH6-PMS2-STK11-SMAD4), 320 patients, seeds 3398-3405. APC-100pct-CRC-FAP-CHRPE-PATHOGNOMONIC-Colectomy-20-25yr-MANDATORY; MUTYH-MAP-Biallelic-Y179C-G396D-MSS-NOT-MSI-H; MLH1-Lynch1-MSI-H-BRAF-V600E-Absent-Aspirin-CAPP2-50pct; MSH2-Lynch2-Urothelial-14pct-HIGHEST-EPCAM-MLPA-MANDATORY; MSH6-Lynch3-Endometrial-71pct-HIGHEST-MSI-L-30pct-False-Negative; PMS2-Lynch4-LOWEST-15-20pct-4-Pseudogenes-MLPA-MANDATORY; STK11-PJS-Perioral-Pigmentation-PATHOGNOMONIC-Pancreatic-36pct; SMAD4-JPS-HHT-Overlap-Aortic-Dilatation-PATHOGNOMONIC."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-colorectal-cancer-predisposition-atlas/breakdown")
+async def hereditary_crc_predisposition_atlas_breakdown():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas per-gene breakdown — APC-WNT-Gatekeeper-310kDa-FAP-Codon1309-Dense; MUTYH-DNA-Glycosylase-60kDa-OG-A-Mispairs-BER-MAP; MLH1-MutLalpha-85kDa-MMR-Dimerises-PMS2-Lynch1; MSH2-MutSalpha-MutSbeta-105kDa-Lynch2-Urothelial-Highest; MSH6-MutSalpha-160kDa-Endometrial-71pct-Lynch3; PMS2-MutLalpha-96kDa-Endonuclease-Lynch4-Pseudogenes; STK11-LKB1-AMPK-48kDa-PJS-Hamartomatous; SMAD4-TGF-Beta-60kDa-JPS-HHT-Aortic."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-colorectal-cancer-predisposition-atlas/definitions")
+async def hereditary_crc_predisposition_atlas_definitions():
+    """Hereditary-Colorectal-Cancer-Predisposition-Atlas clinical definitions — APC-FAP-CHRPE-PATHOGNOMONIC-COLECTOMY-MANDATORY; MUTYH-MAP-BIALLELIC-REQUIRED-MSS-NOT-MSI-H; MLH1-BRAF-V600E-GATE-SOMATIC-METHYLATION-VS-GERMLINE; MSH2-EPCAM-MLPA-MANDATORY-UROTHELIAL-14pct-HIGHEST; MSH6-MSI-L-30pct-FALSE-NEGATIVE-IHC-PRIMARY; PMS2-4-PSEUDOGENES-MLPA-MANDATORY-CMMRD-CHILDHOOD; STK11-PERIORAL-PIGMENTATION-PATHOGNOMONIC-INTUSSUSCEPTION-EMERGENCY; SMAD4-HHT-EXCLUSIVE-AORTIC-DILATATION-ANNUAL-ECHO."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
