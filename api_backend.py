@@ -50713,6 +50713,27 @@ async def hereditary_leukemia_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hepatoblastoma-predisposition-atlas/overview")
+async def hereditary_hepatoblastoma_predisposition_atlas_overview():
+    """Hereditary-Hepatoblastoma-Predisposition-Atlas overview (APC-CTNNB1-BRCA2-TP53-GPC3-NSD1-DICER1-NFE2L2; 320-patient aggregate 8x40 seeds 3294-3301; APC-FAP-Hepatoblastoma-50-100x-AFP-US-q3-6m-Birth-to-7yr-5prime-Codons-200-1600; CTNNB1-Somatic-GOF-90pct-HBL-Exon3-InFrame-Del-AFP-Normalisation-CR; BRCA2-FA-D1-Hepatoblastoma-PATHOGNOMONIC-AVOID-Alkylating-Cisplatin-Dose-Reduced-Sibling-Exclusion; TP53-LFS-HBL-Sentinel-1-3pct-AVOID-RADIATION-ABSOLUTELY-PLADO-WBMRI-Toronto; GPC3-SGBS-HBL-5-8pct-Supernumerary-Nipples-PATHOGNOMONIC-GPC3-IHC-GT90pct-HBL; NSD1-Sotos-HBL-5-10x-Triad-Macrocephaly-Overgrowth-ID-PATHOGNOMONIC-MLPA-5q35-Mandatory; DICER1-HBL-2-4x-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr-AVOID-Radiation; NFE2L2-GOF-Early-HCC-Teens-20s-Without-Cirrhosis-PATHOGNOMONIC-ETGE-Domain-MRI-Liver-Age-16yr)."""
+    from scripts.hereditary_hepatoblastoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hepatoblastoma-predisposition-atlas/breakdown")
+async def hereditary_hepatoblastoma_predisposition_atlas_breakdown():
+    """Hereditary-Hepatoblastoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; APC-FAP-Hepatoblastoma-50-100x-AFP-US-q3-6m; CTNNB1-Somatic-GOF-90pct-HBL-Exon3-AFP-Normalisation-CR; BRCA2-FA-D1-HBL-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion; TP53-LFS-HBL-Sentinel-AVOID-RADIATION-WBMRI-Toronto; GPC3-SGBS-HBL-5-8pct-GPC3-IHC-PATHOGNOMONIC; NSD1-Sotos-HBL-5-10x-MLPA-5q35; DICER1-HBL-2-4x-PPB-PATHOGNOMONIC-CT-Chest-Siblings; NFE2L2-Early-HCC-ETGE-PATHOGNOMONIC; mean_age_dx per gene; CR pct; resection pct; transplant pct)."""
+    from scripts.hereditary_hepatoblastoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hepatoblastoma-predisposition-atlas/definitions")
+async def hereditary_hepatoblastoma_predisposition_atlas_definitions():
+    """Hereditary-Hepatoblastoma-Predisposition-Atlas clinical definitions (APC-FAP-HBL-50-100X-AFP-US-BIRTH-TO-7YR; CTNNB1-SOMATIC-90PCT-NOT-GERMLINE-AFP-NORMALISATION-CR; BRCA2-FA-D1-HBL-PATHOGNOMONIC-AVOID-ALKYLATING-SIBLING-EXCLUSION; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-TORONTO; GPC3-SGBS-SUPERNUMERARY-NIPPLES-PATHOGNOMONIC-GPC3-IHC-HBL; NSD1-SOTOS-MLPA-5Q35-MANDATORY-OVERGROWTH-MACROCEPHALY-PATHOGNOMONIC; DICER1-PPB-PATHOGNOMONIC-CT-CHEST-SIBLINGS-LT-8YR-AVOID-RADIATION; NFE2L2-ETGE-GOF-EARLY-HCC-WITHOUT-CIRRHOSIS-PATHOGNOMONIC; CASCADE-Testing-Hereditary-Hepatoblastoma)."""
+    from scripts.hereditary_hepatoblastoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

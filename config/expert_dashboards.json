@@ -21449,5 +21449,30 @@
     "patient_count": 320,
     "status": "built",
     "built_date": "2026-09-22"
+  },
+  {
+    "id": "hereditary-hepatoblastoma-predisposition-atlas",
+    "title": "Hereditary Hepatoblastoma Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Hepatoblastoma Predisposition Reference \u2014 APC-CTNNB1-BRCA2-TP53-GPC3-NSD1-DICER1-NFE2L2",
+    "status": "built",
+    "genes": [
+      "APC",
+      "CTNNB1",
+      "BRCA2",
+      "TP53",
+      "GPC3",
+      "NSD1",
+      "DICER1",
+      "NFE2L2"
+    ],
+    "seeds": "3294-3301",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-hepatoblastoma-predisposition-atlas/overview",
+      "/api/hereditary-hepatoblastoma-predisposition-atlas/breakdown",
+      "/api/hereditary-hepatoblastoma-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-hepatoblastoma-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]
