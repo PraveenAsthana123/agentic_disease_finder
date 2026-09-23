@@ -50671,6 +50671,27 @@ async def hereditary_neuroblastoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-rhabdomyosarcoma-atlas/overview")
+async def hereditary_rhabdomyosarcoma_atlas_overview():
+    """Hereditary-Rhabdomyosarcoma-Predisposition-Atlas overview (TP53-NF1-DICER1-RB1-HRAS-BRCA2-PTPN11-SMARCB1; 320-patient aggregate 8x40 seeds 3278-3285; TP53-LFS-RMS-10-15pct-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; NF1-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-Selumetinib-FDA2020-AVOID-Radiation; DICER1-Cervical-ERMS-PATHOGNOMONIC-Bladder-ERMS-PATHOGNOMONIC-Fertility-Sparing; RB1-Secondary-RMS-10-15x-Post-RT-CDK4-6i-INACTIVE-Bilateral-RB-PATHOGNOMONIC; HRAS-Costello-ERMS-15-20pct-PATHOGNOMONIC-HCM-LIFE-THREATENING-Echo-Annual-MANDATORY; BRCA2-FA-D1-Embryonal-RMS-PATHOGNOMONIC-Sibling-Donor-Exclusion-MANDATORY-AVOID-Alkylating; PTPN11-Noonan-JMML-Self-Limited-vs-Sporadic-JMML-HSCT-Pulmonary-Stenosis-PATHOGNOMONIC; SMARCB1-ATRT-Under-3yr-PATHOGNOMONIC-INI1-IHC-Loss-Tazemetostat-EZH2i-FDA2020)."""
+    from scripts.hereditary_rhabdomyosarcoma_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-rhabdomyosarcoma-atlas/breakdown")
+async def hereditary_rhabdomyosarcoma_atlas_breakdown():
+    """Hereditary-Rhabdomyosarcoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-AVOID-RT-ERMS-Spindle; NF1-Cafe-au-Lait-MPNST-Selumetinib; DICER1-Cervical-ERMS-Fertility-Sparing-Botryoid; RB1-Secondary-RMS-CDK4-6i-Inactive; HRAS-G12S-Costello-HCM-Annual-Echo; BRCA2-FA-D1-Modified-VAC-Sibling-Exclusion; PTPN11-Noonan-JMML-Watch-Wait; SMARCB1-INI1-Loss-Tazemetostat-HSCT; mean_age_dx per gene; CR pct; radiation_avoided_pct)."""
+    from scripts.hereditary_rhabdomyosarcoma_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-rhabdomyosarcoma-atlas/definitions")
+async def hereditary_rhabdomyosarcoma_atlas_definitions():
+    """Hereditary-Rhabdomyosarcoma-Predisposition-Atlas clinical definitions (TP53-LFS-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-ERMS-Spindle-Predominant; NF1-MPNST-8-13pct-PATHOGNOMONIC-Selumetinib-FDA2020-AVOID-Radiation; DICER1-Cervical-ERMS-PATHOGNOMONIC-Botryoid-Vaginal-Fertility-Sparing; RB1-Bilateral-RB-PATHOGNOMONIC-Secondary-RMS-10-15x-CDK4-6i-Inactive; HRAS-G12S-Costello-ERMS-15-20pct-PATHOGNOMONIC-HCM-Annual-Echo; BRCA2-FA-D1-Embryonal-RMS-PATHOGNOMONIC-DEB-MMC-Sibling-Exclusion-MANDATORY; PTPN11-Noonan-JMML-Self-Limited-Sporadic-E76K-HSCT; SMARCB1-ATRT-PATHOGNOMONIC-INI1-IHC-Tazemetostat-HSCT; CASCADE-Testing-Hereditary-Rhabdomyosarcoma)."""
+    from scripts.hereditary_rhabdomyosarcoma_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

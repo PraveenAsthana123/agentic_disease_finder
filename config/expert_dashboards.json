@@ -21409,5 +21409,25 @@
     "category": "hereditary-cancer-atlas",
     "seed_range": "3270-3277",
     "patients": 320
+  },
+  {
+    "id": "hereditary-rhabdomyosarcoma-atlas",
+    "title": "Hereditary Rhabdomyosarcoma Predisposition Atlas",
+    "slug": "hereditary-rhabdomyosarcoma-atlas",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "TP53",
+      "NF1",
+      "DICER1",
+      "RB1",
+      "HRAS",
+      "BRCA2",
+      "PTPN11",
+      "SMARCB1"
+    ],
+    "seeds": "3278-3285",
+    "patient_count": 320,
+    "status": "built",
+    "built_date": "2026-09-22"
   }
 ]
