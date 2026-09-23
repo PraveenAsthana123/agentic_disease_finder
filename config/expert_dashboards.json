@@ -21864,9 +21864,37 @@
       "/api/hereditary-brain-tumor-predisposition-atlas/breakdown",
       "/api/hereditary-brain-tumor-predisposition-atlas/definitions"
     ],
-    "genes": ["TP53", "NF1", "NF2", "VHL", "PTCH1", "TSC2", "PTEN", "SUFU"],
+    "genes": [
+      "TP53",
+      "NF1",
+      "NF2",
+      "VHL",
+      "PTCH1",
+      "TSC2",
+      "PTEN",
+      "SUFU"
+    ],
     "page": "/hereditary-brain-tumor-predisposition-atlas",
     "built_date": "2026-09-23",
     "notes": "TP53-LFS-AVOID-RADIATION-ABSOLUTELY WB-MRI-Toronto NF1-OPG-15-20pct-PATHOGNOMONIC selumetinib-FDA2020 NF1-MPNST-sarcoma NF2-bilateral-VS-PATHOGNOMONIC bevacizumab VHL-hemangioblastoma-PATHOGNOMONIC belzutifan-FDA2021 PTCH1-Gorlin-AVOID-RADIATION-ABSOLUTELY desmoplastic-MB-5pct TSC2-SEGA-PATHOGNOMONIC everolimus-FDA2012 PTEN-Lhermitte-Duclos-PATHOGNOMONIC macrocephaly-90pct SUFU-SHH-MB-33pct-HIGHEST MRI-from-BIRTH"
+  },
+  {
+    "title": "Hereditary-Soft-Tissue-Sarcoma-Predisposition-Atlas Complete-8-Gene-TP53-NF1-RB1-SMARCB1-DICER1-BRCA2-EXT1-SMARCA4",
+    "route": "/hereditary-soft-tissue-sarcoma-predisposition-atlas",
+    "api_base": "/api/hereditary-soft-tissue-sarcoma-predisposition-atlas",
+    "status": "built",
+    "seeds": "3438-3445",
+    "genes": [
+      "TP53",
+      "NF1",
+      "RB1",
+      "SMARCB1",
+      "DICER1",
+      "BRCA2",
+      "EXT1",
+      "SMARCA4"
+    ],
+    "patients": 320,
+    "category": "hereditary_cancer_predisposition_atlas"
   }
 ]

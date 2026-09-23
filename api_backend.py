@@ -51111,6 +51111,32 @@ async def hereditary_brain_tumor_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-soft-tissue-sarcoma-predisposition-atlas/overview")
+async def hereditary_soft_tissue_sarcoma_predisposition_atlas_overview():
+    """Hereditary-Soft-Tissue-Sarcoma-Predisposition-Atlas overview — 8 genes (TP53, NF1, RB1, SMARCB1, DICER1, BRCA2, EXT1, SMARCA4),
+    320-patient aggregate (8x40, seeds 3438-3445), MPNST/ATRT/PPB/epithelioid sarcoma/eRMS/osteochondroma rates,
+    radiation contraindication, INI1-loss IHC, alkylator-CI rates, key clinical facts per gene."""
+    from scripts.hereditary_soft_tissue_sarcoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-soft-tissue-sarcoma-predisposition-atlas/breakdown")
+async def hereditary_soft_tissue_sarcoma_predisposition_atlas_breakdown():
+    """Hereditary-Soft-Tissue-Sarcoma-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    top tumour types, top variants, treatment protocols, surveillance protocols, gene info."""
+    from scripts.hereditary_soft_tissue_sarcoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-soft-tissue-sarcoma-predisposition-atlas/definitions")
+async def hereditary_soft_tissue_sarcoma_predisposition_atlas_definitions():
+    """Hereditary-Soft-Tissue-Sarcoma-Predisposition-Atlas definitions — clinical definitions per gene,
+    key clinical distinctions (AVOID radiation LFS/RB1, MPNST=SARCOMA not glioma, INI1-loss tazemetostat,
+    FA-D1 alkylator CI, PPB CT birth to 8yr, EXT1 cap >2cm alert, SMARCA4 BRG1-IHC)."""
+    from scripts.hereditary_soft_tissue_sarcoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
