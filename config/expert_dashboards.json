@@ -22123,5 +22123,57 @@
     "built_date": "2026-09-23",
     "notes": "MLH1-Lynch1-Endometrial-40-60pct-MSI-H-Pembrolizumab-FDA2017 MSH6-Lynch3-Endometrial-71pct-ABSOLUTE-HIGHEST-MSI-L-30pct-Pitfall PMS2-4-Pseudogenes-MLPA-MANDATORY-CMMRD-Biallelic PTEN-Cowden-Macrocephaly-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus-Lenvatinib-FDA2019 TP53-Uterine-Serous-AVOID-RADIATION-ABSOLUTELY BRCA1-BSO-Hysterectomy-35-40yr-Serous-Histology STK11-Adenoma-Malignum-PATHOGNOMONIC-GI-8yr Universal-MMR-IHC-ALL-Endometrial-Tumours",
     "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary-cervical-cancer-predisposition-atlas",
+    "name": "Hereditary-Cervical-Cancer-Predisposition-Atlas Complete-8-Gene-MLH1-MSH6-RAD51C-RAD51D-CHEK2-PALB2-CDKN2A-NBN MLH1-756aa-3p22.2-AD-LOF-Lynch1-Cervical-Adeno-2-3x-HPV-Vaccination-MANDATORY-Pembrolizumab-FDA2017 MSH6-1360aa-2p16.3-AD-LOF-Lynch3-Cervical-2x-Endometrial-71pct-DOMINANT-MSI-L-30pct-Pitfall RAD51C-376aa-17q22-AD-AR-LOF-FANCO-HGSOC-5-7pct-Cervical-Glandular-HRD-Olaparib-RRSO-40-45yr RAD51D-328aa-17q12-AD-LOF-Ovarian-10-13pct-Cervical-Glandular-HRD-RRSO-40-45yr-No-FA-Disease CHEK2-543aa-22q12.1-AD-LOF-I157T-Eastern-1100delC-Western-Cervical-1.5-2x-Moderate-NO-PARPi PALB2-1186aa-16p12.2-AD-AR-LOF-FANCN-Cervical-HRD-1.8-2.5x-Breast-53pct-DOMINANT-AVOID-Alkylating-RT-FA-N CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-Cervical-2-3x-p16-HPV-Synergy-Melanoma-28-67pct-PDAC-17-39pct-Annual-MRI-EUS-Palbociclib-RESISTANCE NBN-754aa-8q21.3-AR-AD-LOF-657del5-Slavic-Founder-Cervical-SCC-2-4x-Biallelic-NBS-AVOID-RADIATION-ABSOLUTELY 320-Patient-Aggregate-8x40-seeds-3510-3517",
+    "route": "/hereditary-cervical-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-cervical-cancer-predisposition-atlas",
+    "status": "built",
+    "genes": [
+      "MLH1",
+      "MSH6",
+      "RAD51C",
+      "RAD51D",
+      "CHEK2",
+      "PALB2",
+      "CDKN2A",
+      "NBN"
+    ],
+    "seed_range": "3510-3517",
+    "patients": 320,
+    "category": "hereditary-cancer-predisposition",
+    "routes": [
+      "/api/hereditary-cervical-cancer-predisposition-atlas/overview",
+      "/api/hereditary-cervical-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-cervical-cancer-predisposition-atlas/definitions"
+    ],
+    "page": "/hereditary-cervical-cancer-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "MLH1-Lynch1-HPV-Vaccination-MANDATORY-Pembrolizumab-FDA2017 MSH6-Lynch3-MSI-L-30pct-Pitfall-Lenvatinib-Pembrolizumab-KEYNOTE-775 RAD51C-FANCO-HGSOC-HRD-Olaparib RAD51D-Ovarian-10-13pct-HRD-RRSO CHEK2-I157T-Eastern-1100delC-Western-NO-PARPi PALB2-FA-N-AVOID-Alkylating-RT-Breast-53pct CDKN2A-p16-HPV-Synergy-Palbociclib-Resistance-PDAC-Annual-MRI-EUS NBN-657del5-Slavic-Biallelic-AVOID-RT-ABSOLUTELY",
+    "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary-biliary-cancer-predisposition-atlas",
+    "name": "Hereditary Biliary Cancer Predisposition Atlas",
+    "status": "built",
+    "api": "/api/hereditary-biliary-cancer-predisposition-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed_range": "3518-3525",
+    "genes": [
+      "BAP1",
+      "BRCA1",
+      "BRCA2",
+      "ATM",
+      "MLH1",
+      "MSH2",
+      "CDKN2A",
+      "STK11"
+    ],
+    "route": "/hereditary-biliary-cancer-predisposition-atlas",
+    "page": "portal-next/app/hereditary-biliary-cancer-predisposition-atlas/page.jsx",
+    "script": "scripts/hereditary_biliary_cancer_predisposition_atlas_dashboard.py",
+    "built_date": "2026-09-23",
+    "notes": "Built scripts/hereditary_biliary_cancer_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-biliary-cancer-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-biliary-cancer-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-Hematologic-Malignancy-Predisposition-Atlas, expert_dashboards.json count 1327->1328. Built 2026-09-23. Genes: BAP1-BRCA1-BRCA2-ATM-MLH1-MSH2-CDKN2A-STK11 seeds 3518-3525."
   }
 ]

@@ -51241,6 +51241,101 @@ async def hereditary_bladder_urothelial_cancer_predisposition_atlas_definitions(
     return generate_definitions()
 
 
+@app.get("/api/hereditary-testicular-cancer-predisposition-atlas/overview")
+async def hereditary_testicular_cancer_predisposition_atlas_overview():
+    """Hereditary-Testicular-Cancer-Predisposition-Atlas overview — 8 genes (BRCA2, BRCA1, ATM, PALB2, DICER1, MLH1, TP53, CHEK2),
+    320-patient aggregate (8x40, seeds 3494-3501), TGCT rates, bilateral rates, HRD rates, RT-sensitivity rates,
+    DICER1 Sertoli-cell distinction, TP53 RT-absolute-CI, olaparib HRD emerging, pembrolizumab MSI-H."""
+    from scripts.hereditary_testicular_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-testicular-cancer-predisposition-atlas/breakdown")
+async def hereditary_testicular_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Testicular-Cancer-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    TGCT/seminoma/bilateral/metastatic rates, HRD rates, key avoid rules, key management rules per gene."""
+    from scripts.hereditary_testicular_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-testicular-cancer-predisposition-atlas/definitions")
+async def hereditary_testicular_cancer_predisposition_atlas_definitions():
+    """Hereditary-Testicular-Cancer-Predisposition-Atlas definitions — clinical definitions per gene,
+    key clinical distinctions (BRCA2 4.4x RR strongest, DICER1 Sertoli-cell NOT TGCT PPB-lung-CT-mandatory,
+    TP53 AVOID-RT-ABSOLUTELY BEP-ONLY WBMRI-Toronto, ATM RT-reduce-20-30pct, MLH1 MSI-H pembrolizumab,
+    CHEK2 I157T-eastern 1100delC-western moderate founders)."""
+    from scripts.hereditary_testicular_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-hematologic-malignancy-predisposition-atlas/overview")
+async def hereditary_hematologic_malignancy_predisposition_atlas_overview():
+    """Hereditary-Hematologic-Malignancy-Predisposition-Atlas overview — 8 genes (CEBPA, GATA2, RUNX1, DDX41, ETV6, TP53, ATM, BRCA2),
+    320-patient aggregate (8x40, seeds 3502-3509), AML/MDS/ALL rates, risk hierarchy, key clinical rules,
+    GATA2 HSCT curative, RUNX1 donor exclusion, CEBPA biallelic pattern, DDX41 late onset."""
+    from scripts.hereditary_hematologic_malignancy_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-hematologic-malignancy-predisposition-atlas/breakdown")
+async def hereditary_hematologic_malignancy_predisposition_atlas_breakdown():
+    """Hereditary-Hematologic-Malignancy-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    AML/MDS/ALL counts, onset ages, CEBPA biallelic pattern, GATA2 syndrome spectrum, ATM avoid rules."""
+    from scripts.hereditary_hematologic_malignancy_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-hematologic-malignancy-predisposition-atlas/definitions")
+async def hereditary_hematologic_malignancy_predisposition_atlas_definitions():
+    """Hereditary-Hematologic-Malignancy-Predisposition-Atlas definitions — clinical definitions per gene,
+    key clinical concepts (CEBPA biallelic AML, GATA2 HSCT curative, RUNX1 donor exclusion,
+    DDX41 late onset R525H, ATM avoid alkylating/RT, BRCA2 FA-D1 avoid alkylating/RT sibling exclusion)."""
+    from scripts.hereditary_hematologic_malignancy_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/overview")
+async def hereditary_cervical_cancer_predisposition_atlas_overview():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas overview — 8 genes (MLH1, MSH6, RAD51C, RAD51D, CHEK2, PALB2, CDKN2A, NBN),
+    320-patient aggregate (8x40, seeds 3510-3517), checkpoint/PARPi rates, HPV vaccination rates, key clinical rules,
+    MLH1 Lynch1 HPV-amplified, MSH6 MSI-L pitfall, RAD51C/D HRD RRSO, CHEK2 founders, PALB2 FA-N, CDKN2A p16-HPV synergy, NBN 657del5 Slavic."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/breakdown")
+async def hereditary_cervical_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    cervical tumour types, variant distribution, PARPi/RRSO/HPV-vaccination rates, key avoid rules per gene."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/definitions")
+async def hereditary_cervical_cancer_predisposition_atlas_definitions():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas definitions — clinical definitions per gene,
+    key distinctions (MLH1 HPV-Lynch amplification, MSH6 MSI-L pitfall, RAD51C/D HRD olaparib,
+    CHEK2 I157T-Eastern 1100delC-Western no-PARPi, PALB2 FA-N avoid-alkylating/RT, CDKN2A p16-null palbociclib-resistance,
+    NBN 657del5 Slavic biallelic-radiation-absolutely-CI heterozygote-moderate-radiosensitivity)."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-biliary-cancer-predisposition-atlas/overview")
+async def hereditary_biliary_cancer_predisposition_atlas_overview():
+    """Hereditary-Biliary-Cancer-Predisposition-Atlas overview (BAP1-BRCA1-BRCA2-ATM-MLH1-MSH2-CDKN2A-STK11; 320-patient aggregate 8x40 seeds 3518-3525; BAP1-iCCA-40-50pct-HIGHEST-AVOID-ASBESTOS-ABSOLUTELY; BRCA2-biliary-3-4x-POLO-maintenance; ATM-RADIOSENSITIVITY-ABSOLUTE-RT-reduce-20-30pct; MLH1-MSI-H-PATHOGNOMONIC-pembrolizumab-FDA2017; CDKN2A-palbociclib-RESISTANCE-p16-null; STK11-EARLIEST-surveillance-30yr)."""
+    from scripts.hereditary_biliary_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-biliary-cancer-predisposition-atlas/breakdown")
+async def hereditary_biliary_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Biliary-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; BAP1-biliary_pct-40-50pct-iCCA; BRCA1-biliary_pct-2-4x; BRCA2-biliary_pct-3-4x; ATM-biliary_pct-radiosensitivity; MLH1-biliary_pct-Lynch1; MSH2-biliary_pct-Lynch2-urothelial-HIGHEST; CDKN2A-biliary_pct-pancreatic-palbociclib-resistance; STK11-biliary-polyps-pancreatic-30yr; mean_age_onset per gene)."""
+    from scripts.hereditary_biliary_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-biliary-cancer-predisposition-atlas/definitions")
+async def hereditary_biliary_cancer_predisposition_atlas_definitions():
+    """Hereditary-Biliary-Cancer-Predisposition-Atlas clinical definitions (BAP1-TPDS-MBAITs-AVOID-ASBESTOS; BRCA2-POLO-cisplatin-HRD-biliary; ATM-RADIOSENSITIVITY-ceralasertib; MLH1-Lynch1-MSI-H-pembrolizumab; MSH2-Muir-Torre-EPCAM-MLPA; CDKN2A-FAMM-palbociclib-resistance; STK11-PJS-earliest-30yr; CASCADE-Hereditary-Biliary)."""
+    from scripts.hereditary_biliary_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
