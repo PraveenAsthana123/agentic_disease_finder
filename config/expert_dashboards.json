@@ -21996,5 +21996,24 @@
     "built_date": "2026-09-23",
     "api_base": "/api/hereditary-esophageal-cancer-predisposition-atlas",
     "portal_path": "/hereditary-esophageal-cancer-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-cutaneous-malignancy-predisposition-atlas",
+    "title": "Hereditary-Cutaneous-Malignancy-Predisposition-Atlas Complete-8-Gene-PTCH1-MSH2-XPC-ERCC2-CYLD-TP53-SUFU-PTCH2",
+    "status": "built",
+    "category": "hereditary_cancer_predisposition_atlas",
+    "seeds": "3470-3477",
+    "genes": ["PTCH1","MSH2","XPC","ERCC2","CYLD","TP53","SUFU","PTCH2"],
+    "patients": 320,
+    "routes": [
+      "/api/hereditary-cutaneous-malignancy-predisposition-atlas/overview",
+      "/api/hereditary-cutaneous-malignancy-predisposition-atlas/breakdown",
+      "/api/hereditary-cutaneous-malignancy-predisposition-atlas/definitions"
+    ],
+    "page": "/hereditary-cutaneous-malignancy-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "PTCH1-Gorlin-NBCCS-BCC-100s-1000s-OKC-PATHOGNOMONIC-Calcified-Falx-AVOID-RADIATION-ABSOLUTELY-Vismodegib-FDA2012 MSH2-Muir-Torre-Sebaceous-Carcinoma-PATHOGNOMONIC-IHC-MANDATORY-EPCAM-MLPA-Pembrolizumab-FDA2017 XPC-XP-C-GGR-NER-SCC-BCC-10000x-NO-Neurodegeneration ERCC2-XPD-SCC-BCC-10000x-Neurodegeneration-TFIIH-Dual-Role CYLD-Brooke-Spiegler-Cylindromas-PATHOGNOMONIC-Turban-Tumor-Malignant-5-10pct TP53-LFS-SCC-BCC-5-10x-AVOID-RADIATION SUFU-Adult-BCC-5-10x-Meningioma PTCH2-Gorlin-Variant-BCC-5-20x",
+    "api_base": "/api/hereditary-cutaneous-malignancy-predisposition-atlas",
+    "portal_path": "/hereditary-cutaneous-malignancy-predisposition-atlas"
   }
 ]

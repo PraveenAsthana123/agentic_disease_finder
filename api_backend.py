@@ -50981,6 +50981,24 @@ async def hereditary_esophageal_cancer_predisposition_atlas_definitions():
     from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-cutaneous-malignancy-predisposition-atlas/overview")
+async def hereditary_cutaneous_malignancy_predisposition_atlas_overview():
+    """Hereditary-Cutaneous-Malignancy-Predisposition-Atlas overview (PTCH1-MSH2-XPC-ERCC2-CYLD-TP53-SUFU-PTCH2; 320-patient aggregate seeds 3470-3477; PTCH1-Gorlin-BCC-1000s-AVOID-RADIATION-ABSOLUTELY; MSH2-Muir-Torre-sebaceous-carcinoma-PATHOGNOMONIC-IHC-MANDATORY; XPC-ERCC2-XP-SCC-BCC-10000x-SUNLIGHT-ABSOLUTE-CI; CYLD-Brooke-Spiegler-cylindromas-PATHOGNOMONIC; TP53-LFS-AVOID-RADIATION; SUFU-adult-BCC-5-10x-meningioma)."""
+    from scripts.hereditary_cutaneous_malignancy_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-cutaneous-malignancy-predisposition-atlas/breakdown")
+async def hereditary_cutaneous_malignancy_predisposition_atlas_breakdown():
+    """Hereditary-Cutaneous-Malignancy-Predisposition-Atlas breakdown (per-gene BCC/SCC/sebaceous/cylindroma rates; XPC-vs-ERCC2-neurodegeneration-distinction; SHH-pathway-PTCH1-PTCH2-SUFU-comparison; Muir-Torre-EPCAM-MLPA; radiation-CI-PTCH1-TP53; Gorlin-OKC-74pct; CYLD-malignant-5-10pct)."""
+    from scripts.hereditary_cutaneous_malignancy_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-cutaneous-malignancy-predisposition-atlas/definitions")
+async def hereditary_cutaneous_malignancy_predisposition_atlas_definitions():
+    """Hereditary-Cutaneous-Malignancy-Predisposition-Atlas definitions (gene structures, Gorlin-NBCCS mechanism, Muir-Torre sebaceous IHC, XP NER subtypes GGR-vs-TC-NER, Brooke-Spiegler CYLD K63-DUB, SHH pathway inhibitors vismodegib-sonidegib, radiation-CI rationale, abbreviations)."""
+    from scripts.hereditary_cutaneous_malignancy_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 @app.get("/api/hereditary-uterine-endometrial-cancer-predisposition-atlas/overview")
 async def hereditary_uterine_endometrial_cancer_predisposition_atlas_overview():
