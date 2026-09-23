@@ -50776,6 +50776,27 @@ async def hereditary_osteosarcoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ewing-sarcoma-predisposition-atlas/overview")
+async def hereditary_ewing_sarcoma_predisposition_atlas_overview():
+    """Hereditary-Ewing-Sarcoma-Predisposition-Atlas overview (TP53-BRCA2-NF1-RB1-CDKN2A-DICER1-SMARCB1-EXT1; 320-patient aggregate 8x40 seeds 3318-3325; TP53-393aa-17p13.1-AD-LOF-LFS-ES-5-8pct-LFS-Families-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; BRCA2-3418aa-13q12.3-AD-LOF-FA-D1-ES-Like-Round-Cell-Sarcomas-AVOID-Alkylating-ABSOLUTELY-Sibling-Exclusion-MANDATORY; NF1-2839aa-17q11.2-AD-LOF-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-ES-2-3x-Selumetinib-FDA2020; RB1-928aa-13q14.2-AD-LOF-Bilateral-RB-PATHOGNOMONIC-Secondary-ES-10-15x-Post-RT-CDK4-6i-INACTIVE-RB1-Null; CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-p16-IHC-Loss-PATHOGNOMONIC-ES-9p21-Deleted-20-25pct-Palbociclib-Pancreatic-20x; DICER1-1922aa-14q32.13-AD-LOF-PPB-PATHOGNOMONIC-Small-Cell-Undifferentiated-Sarcomas-2-4x-CT-Chest-Siblings-LT-8yr; SMARCB1-385aa-22q11.23-AD-LOF-ATRT-Under-3yr-PATHOGNOMONIC-INI1-IHC-Nuclear-Loss-CIC-Sarcoma-Tazemetostat-EZH2i-FDA2020; EXT1-746aa-8q24.11-AD-LOF-HME-Type1-Multiple-Osteochondromas-PATHOGNOMONIC-Secondary-Chondrosarcoma-1-5pct-MLPA-Mandatory)."""
+    from scripts.hereditary_ewing_sarcoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ewing-sarcoma-predisposition-atlas/breakdown")
+async def hereditary_ewing_sarcoma_predisposition_atlas_breakdown():
+    """Hereditary-Ewing-Sarcoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-LFS-ES-5-8pct-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; BRCA2-FA-D1-ES-Like-AVOID-Alkylating-Sibling-Exclusion-MANDATORY; NF1-Cafe-au-Lait-PATHOGNOMONIC-ES-2-3x-Selumetinib-FDA2020; RB1-Bilateral-RB-PATHOGNOMONIC-Secondary-ES-10-15x-CDK4-6i-INACTIVE; CDKN2A-p16-IHC-Loss-PATHOGNOMONIC-9p21-Deleted-Palbociclib; DICER1-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr-Undifferentiated-Sarcomas-2-4x; SMARCB1-ATRT-Under-3yr-PATHOGNOMONIC-INI1-IHC-Nuclear-Loss-Tazemetostat-EZH2i; EXT1-Multiple-Osteochondromas-PATHOGNOMONIC-Secondary-ES-Chondrosarcoma-MLPA-Mandatory; mean_age_dx per gene; CR pct; radiation pct; relapse pct)."""
+    from scripts.hereditary_ewing_sarcoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ewing-sarcoma-predisposition-atlas/definitions")
+async def hereditary_ewing_sarcoma_predisposition_atlas_definitions():
+    """Hereditary-Ewing-Sarcoma-Predisposition-Atlas clinical definitions (TP53-AVOID-RADIATION-ABSOLUTELY-SECONDARY-SARCOMA-ACCELERATION; BRCA2-FA-D1-AVOID-ALKYLATING-ABSOLUTELY-SIBLING-EXCLUSION-MANDATORY; NF1-CAFE-AU-LAIT-PATHOGNOMONIC-MPNST-8-13PCT-SELUMETINIB-FDA2020; RB1-BILATERAL-RB-PATHOGNOMONIC-CDK4-6I-INACTIVE-RB1-NULL; CDKN2A-P16-IHC-LOSS-PATHOGNOMONIC-PANCREATIC-20X; DICER1-PPB-PATHOGNOMONIC-CT-CHEST-SIBLINGS-LT-8YR-MANDATORY; SMARCB1-INI1-IHC-NUCLEAR-LOSS-PATHOGNOMONIC-TAZEMETOSTAT-EZH2I-FDA2020; EXT1-HME1-OSTEOCHONDROMAS-PATHOGNOMONIC-MLPA-MANDATORY-LARGE-DELETIONS; CASCADE-Testing-Hereditary-Ewing-Sarcoma)."""
+    from scripts.hereditary_ewing_sarcoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
