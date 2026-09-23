@@ -50881,6 +50881,27 @@ async def hereditary_gastric_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-rcc-predisposition-atlas/overview")
+async def hereditary_rcc_predisposition_atlas_overview():
+    """Hereditary-RCC-Predisposition-Atlas overview (VHL-FH-FLCN-SDHB-BAP1-MET-TSC2-PTEN; 320-patient aggregate seeds 3358-3365; belzutifan-HIF2alpha-FDA2021-VHL; no-watchful-waiting-FH-HLRCC; alpha-blockade-PPGL-SDHB; 177Lu-DOTATATE-FDA2018; avoid-asbestos-BAP1; nephron-sparing-MET-HPRC; everolimus-TSC2-triple-FDA2012; Lhermitte-Duclos-PATHOGNOMONIC-PTEN)."""
+    from scripts.hereditary_rcc_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-rcc-predisposition-atlas/breakdown")
+async def hereditary_rcc_predisposition_atlas_breakdown():
+    """Hereditary-RCC-Predisposition-Atlas per-gene breakdown (VHL-ccRCC-80-85pct-belzutifan; FH-type2-papillary-very-aggressive-2SC-IHC; FLCN-chromophobe-fibrofolliculomas-pneumothorax; SDHB-malignant-PPGL-40pct-succinate-IHC; BAP1-ccRCC-uveal-mesothelioma-MBAITs; MET-HPRC-bilateral-papillary-cabozantinib; TSC2-angiomyolipoma-everolimus; PTEN-Cowden-RCC-34pct-macrocephaly)."""
+    from scripts.hereditary_rcc_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-rcc-predisposition-atlas/definitions")
+async def hereditary_rcc_predisposition_atlas_definitions():
+    """Hereditary-RCC-Predisposition-Atlas clinical definitions (VHL-BELZUTIFAN-FDA2021; FH-NO-WATCHFUL-WAITING; FLCN-BHD-FIBROFOLLICULOMAS-PATHOGNOMONIC; SDHB-ALPHA-BLOCKADE-MANDATORY; BAP1-AVOID-ASBESTOS-ABSOLUTELY; MET-NEPHRON-SPARING-MANDATORY; TSC2-EVEROLIMUS-TRIPLE-FDA2012; PTEN-LHERMITTE-DUCLOS-PATHOGNOMONIC; CASCADE-Testing-Hereditary-RCC-Predisposition)."""
+    from scripts.hereditary_rcc_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

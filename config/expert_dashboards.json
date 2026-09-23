@@ -21632,10 +21632,19 @@
   {
     "id": "hereditary-gastric-cancer-predisposition-atlas",
     "title": "Hereditary Gastric Cancer Predisposition Atlas",
-    "subtitle": "Complete 8-Gene Reference · CDH1-CTNNA1-APC-SMAD4-STK11-MLH1-TP53-BRCA2 · 320-Patient Aggregate (8×40, seeds 3350–3357)",
+    "subtitle": "Complete 8-Gene Reference \u00b7 CDH1-CTNNA1-APC-SMAD4-STK11-MLH1-TP53-BRCA2 \u00b7 320-Patient Aggregate (8\u00d740, seeds 3350\u20133357)",
     "category": "Hereditary Cancer Predisposition Atlases",
     "status": "built",
-    "genes": ["CDH1", "CTNNA1", "APC", "SMAD4", "STK11", "MLH1", "TP53", "BRCA2"],
+    "genes": [
+      "CDH1",
+      "CTNNA1",
+      "APC",
+      "SMAD4",
+      "STK11",
+      "MLH1",
+      "TP53",
+      "BRCA2"
+    ],
     "seeds": "3350-3357",
     "patients": 320,
     "endpoints": [
@@ -21644,6 +21653,15 @@
       "/api/hereditary-gastric-cancer-predisposition-atlas/definitions"
     ],
     "portal_page": "/hereditary-gastric-cancer-predisposition-atlas",
+    "registered": "2026-09-23"
+  },
+  {
+    "id": "hereditary_rcc_predisposition_atlas",
+    "name": "Hereditary-RCC-Predisposition-Atlas Complete-8-Gene-VHL-FH-FLCN-SDHB-BAP1-MET-TSC2-PTEN VHL-284aa-3p25.3-AD-LOF-VHL-Syndrome-ccRCC-80-85pct-HIGHEST-Haemangioblastoma-CNS-Retinal-PATHOGNOMONIC-Belzutifan-HIF2alpha-FDA2021-3cm-Surgery-Rule FH-510aa-1q43-AD-LOF-HLRCC-Type2-Papillary-RCC-VERY-AGGRESSIVE-NO-Watchful-Waiting-2SC-IHC-PATHOGNOMONIC-Uterine-Fibroids-PATHOGNOMONIC-Annual-MRI-8yr FLCN-579aa-17p11.2-AD-LOF-Birt-Hogg-Dube-Chromophobe-Hybrid-RCC-25-34pct-Fibrofolliculomas-PATHOGNOMONIC-Pulmonary-Cysts-Pneumothorax-30-50pct SDHB-280aa-1p36.13-AD-LOF-SDH-Deficient-PPGL-RCC-Malignant-Pheo-40pct-HIGHEST-SDHx-Succinate-IHC-PATHOGNOMONIC-177Lu-DOTATATE-FDA2018 BAP1-729aa-3p21.1-AD-LOF-TPDS-ccRCC-50pct-Uveal-Melanoma-HIGHEST-Mesothelioma-30-60pct-MBAITs-PATHOGNOMONIC-AVOID-ASBESTOS-ABSOLUTELY MET-1390aa-7q31.2-AD-GOF-HPRC-Type1-Papillary-RCC-Bilateral-Multifocal-Cabozantinib-FDA2016-Tepotinib-FDA2021-Nephron-Sparing-MANDATORY TSC2-1807aa-16p13.3-AD-LOF-TSC-Angiomyolipoma-PATHOGNOMONIC-Cortical-Tubers-Everolimus-mTOR-FDA2012-Embolisation-AML-4cm PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-RCC-34pct-Macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-PATHOGNOMONIC-Everolimus-Lenvatinib-FDA2019 320-Patient-Aggregate-8x40-seeds-3358-3365",
+    "status": "built",
+    "api": "/api/hereditary-rcc-predisposition-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 3358,
     "registered": "2026-09-23"
   }
 ]
