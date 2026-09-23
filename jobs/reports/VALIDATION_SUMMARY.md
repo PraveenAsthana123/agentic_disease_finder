@@ -1,5 +1,5 @@
 # Validation Summary
-_generated 2026-09-22T03:00:01-06:00_
+_generated 2026-09-23T03:00:02-06:00_
 
 | Metric | Value | 95% CI (subject bootstrap) |
 |---|---|---|
@@ -7,7 +7,7 @@ _generated 2026-09-22T03:00:01-06:00_
 | Patient-specific sensitivity | 0.9403 | 0.9403 [0.8662, 0.9908] |
 | Cross-patient RF accuracy | 0.7277 | 0.7277 [0.4035, 0.9269] |
 | Bonn external (RF) accuracy | 1.0 | 5-fold |
-| ICA variance removed | 42.08% | mean |
+| ICA variance removed | 19.6% | mean |
 
 ## Honest notes
 - Patient-specific (calibrated detector) is the clinical use case; high + tight CI.
