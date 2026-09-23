@@ -50923,6 +50923,32 @@ async def hereditary_breast_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/trigger-logs/overview")
+async def trigger_logs_overview():
+    """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
+    sleep quality breakdown, monthly trend, lifestyle averages with/without seizure, stress vs seizure.
+    Real data: seizure_trigger_logs (203 rows, 40 patients)."""
+    from scripts.trigger_logs_dashboard import overview
+    return overview()
+
+
+@app.get("/api/trigger-logs/breakdown")
+async def trigger_logs_breakdown():
+    """Trigger Logs & Lifestyle Diary breakdown — per-patient summary (seizure rate/sleep/stress/adherence),
+    high-risk days (stress≥7/sleep<5h/missed doses), recent 30 diary entries.
+    Real data: seizure_trigger_logs (203 rows, 40 patients)."""
+    from scripts.trigger_logs_dashboard import breakdown
+    return breakdown()
+
+
+@app.get("/api/trigger-logs/definitions")
+async def trigger_logs_definitions():
+    """Trigger Logs & Lifestyle Diary definitions — 9 trigger descriptions, lifestyle metric glossary,
+    table metadata (seizure_trigger_logs, 203 rows, 40 patients, 2026-01 to 2026-09)."""
+    from scripts.trigger_logs_dashboard import definitions
+    return definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
