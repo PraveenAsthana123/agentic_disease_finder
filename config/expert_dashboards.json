@@ -21499,5 +21499,32 @@
     ],
     "portal_page": "/hereditary-medulloblastoma-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-osteosarcoma-predisposition-atlas",
+    "title": "Hereditary Osteosarcoma Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Osteosarcoma Predisposition Reference — RB1-TP53-RECQL4-BRCA2-NF1-CDKN2A-DICER1-WRN",
+    "status": "built",
+    "description": "RB1-928aa-13q14.2-AD-LOF-Hereditary-Retinoblastoma-OS-40pct-Lifetime-HIGHEST-Bilateral-RB-PATHOGNOMONIC-CDK4-6i-INACTIVE-RB1-Null-AVOID-High-Dose-RT-OS-Site TP53-393aa-17p13.1-AD-LOF-LFS-OS-Number1-Cancer-LFS-Children-Anaplastic-Pleomorphic-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto RECQL4-1208aa-8q24.12-AR-LOF-RTS2-Rothmund-Thomson-OS-30-50pct-Poikiloderma-3-6months-PATHOGNOMONIC-Rapadilino-FIRES-Allelic BRCA2-3418aa-13q12.3-AD-LOF-FA-D1-OS-Bone-Tumours-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion-MANDATORY NF1-2839aa-17q11.2-AD-LOF-NF1-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-OS-2-3x-Selumetinib-FDA2020 CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-OS-Post-Irradiated-Sites-p16-IHC-Loss-PATHOGNOMONIC-CDK4-6i-Palbociclib-CDK4-Amp-Pancreatic-20x DICER1-1922aa-14q32.13-AD-LOF-DICER1-Syndrome-PPB-PATHOGNOMONIC-Mesenchymal-OS-2-4x-CT-Chest-Siblings-LT-8yr-AVOID-Radiation WRN-1432aa-8p12-AR-LOF-Werner-Adult-Bilateral-Cataracts-PATHOGNOMONIC-Mesenchymal-OS-DM-Scleroderma-PATHOGNOMONIC-Vemurafenib 320-Patient-Aggregate-8x40-seeds-3310-3317",
+    "genes": [
+      "RB1",
+      "TP53",
+      "RECQL4",
+      "BRCA2",
+      "NF1",
+      "CDKN2A",
+      "DICER1",
+      "WRN"
+    ],
+    "seeds": "3310-3317",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-osteosarcoma-predisposition-atlas/overview",
+      "/api/hereditary-osteosarcoma-predisposition-atlas/breakdown",
+      "/api/hereditary-osteosarcoma-predisposition-atlas/definitions"
+    ],
+    "frontend_page": "portal-next/app/hereditary-osteosarcoma-predisposition-atlas/page.jsx",
+    "portal_page": "/hereditary-osteosarcoma-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]

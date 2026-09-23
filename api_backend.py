@@ -50755,6 +50755,27 @@ async def hereditary_medulloblastoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-osteosarcoma-predisposition-atlas/overview")
+async def hereditary_osteosarcoma_predisposition_atlas_overview():
+    """Hereditary-Osteosarcoma-Predisposition-Atlas overview (RB1-TP53-RECQL4-BRCA2-NF1-CDKN2A-DICER1-WRN; 320-patient aggregate 8x40 seeds 3310-3317; RB1-928aa-13q14.2-AD-LOF-Hereditary-Retinoblastoma-OS-40pct-Lifetime-HIGHEST-Bilateral-RB-PATHOGNOMONIC-CDK4-6i-INACTIVE-RB1-Null-AVOID-High-Dose-RT-OS-Site; TP53-393aa-17p13.1-AD-LOF-LFS-OS-Number1-Cancer-LFS-Children-Anaplastic-Pleomorphic-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; RECQL4-1208aa-8q24.12-AR-LOF-RTS2-Rothmund-Thomson-OS-30-50pct-Poikiloderma-3-6months-PATHOGNOMONIC-Rapadilino-FIRES-Allelic; BRCA2-3418aa-13q12.3-AD-LOF-FA-D1-OS-Bone-Tumours-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion-MANDATORY; NF1-2839aa-17q11.2-AD-LOF-NF1-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-OS-2-3x-Selumetinib-FDA2020; CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-OS-Post-Irradiated-Sites-p16-IHC-Loss-PATHOGNOMONIC-CDK4-6i-Palbociclib-CDK4-Amp-Pancreatic-20x; DICER1-1922aa-14q32.13-AD-LOF-DICER1-Syndrome-PPB-PATHOGNOMONIC-Mesenchymal-OS-2-4x-CT-Chest-Siblings-LT-8yr-AVOID-Radiation; WRN-1432aa-8p12-AR-LOF-Werner-Adult-Bilateral-Cataracts-PATHOGNOMONIC-Mesenchymal-OS-DM-Scleroderma-PATHOGNOMONIC-Vemurafenib)."""
+    from scripts.hereditary_osteosarcoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-osteosarcoma-predisposition-atlas/breakdown")
+async def hereditary_osteosarcoma_predisposition_atlas_breakdown():
+    """Hereditary-Osteosarcoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; RB1-OS-40pct-Lifetime-HIGHEST-CDK4-6i-INACTIVE-RB1-Null-AVOID-High-Dose-RT; TP53-LFS-OS-Anaplastic-Pleomorphic-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; RECQL4-RTS2-Poikiloderma-3-6months-PATHOGNOMONIC-OS-30-50pct; BRCA2-FA-D1-OS-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion-MANDATORY; NF1-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-OS-2-3x-Selumetinib-FDA2020; CDKN2A-p16-IHC-Loss-PATHOGNOMONIC-OS-Post-Irradiated-Palbociclib-CDK4-Amp; DICER1-PPB-PATHOGNOMONIC-CT-Chest-Siblings-LT-8yr-Mesenchymal-OS-2-4x; WRN-Adult-Cataracts-Scleroderma-PATHOGNOMONIC-Mesenchymal-OS-Vemurafenib; mean_age_dx per gene; CR pct; radiation pct; chemo pct; HSCT pct)."""
+    from scripts.hereditary_osteosarcoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-osteosarcoma-predisposition-atlas/definitions")
+async def hereditary_osteosarcoma_predisposition_atlas_definitions():
+    """Hereditary-Osteosarcoma-Predisposition-Atlas clinical definitions (RB1-OS-40PCT-LIFETIME-HIGHEST-CDK4-6I-INACTIVE-RB1-NULL-BILATERAL-RB-PATHOGNOMONIC; TP53-LFS-OS-ANAPLASTIC-PLEOMORPHIC-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-WBMRI; RECQL4-RTS2-POIKILODERMA-3-6-MONTHS-PATHOGNOMONIC-OS-30-50PCT; BRCA2-FA-D1-OS-BONE-TUMOURS-PATHOGNOMONIC-AVOID-ALKYLATING-SIBLING-EXCLUSION; NF1-CAFE-AU-LAIT-PATHOGNOMONIC-MPNST-8-13PCT-SELUMETINIB-FDA2020; CDKN2A-P16-IHC-LOSS-PATHOGNOMONIC-POST-IRRADIATED-OS-PALBOCICLIB-CDK4; DICER1-PPB-PATHOGNOMONIC-CT-CHEST-SIBLINGS-LT-8YR-AVOID-RADIATION; WRN-BILATERAL-CATARACTS-SCLERODERMA-PATHOGNOMONIC-MESENCHYMAL-PREDOMINANCE; CASCADE-Testing-Hereditary-Osteosarcoma)."""
+    from scripts.hereditary_osteosarcoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
