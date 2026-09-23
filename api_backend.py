@@ -50965,6 +50965,25 @@ async def hereditary_uterine_endometrial_cancer_predisposition_atlas_definitions
     return generate_definitions()
 
 
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/overview")
+async def hereditary_prostate_cancer_predisposition_atlas_overview():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas overview — 8 genes (BRCA2-BRCA1-ATM-CHEK2-HOXB13-MSH2-PALB2-NBN), 320 patients, seeds 3390-3397. BRCA2-15-20x-RR-Lethal-PROfound-Olaparib-HR-0.22-PSMA-PET-MANDATORY; BRCA1-2-3x-RR-Weaker-PARPi-HR-0.82; ATM-2-4x-RR-PROfound-Modest-HR-0.72-Ceralasertib; CHEK2-2-3x-RR-NO-PARPi-NOT-HRD; HOXB13-G84E-4-8x-RR-Prostate-ONLY; MSH2-dMMR-5-10x-Pembrolizumab-mPRIMO; PALB2-HRD-2-4x-Emerging; NBN-657del5-Slavic-3-4x-RR."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/breakdown")
+async def hereditary_prostate_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas per-gene breakdown — BRCA2-FANCD1-HR-Mediator-384kDa-BRC-Repeats-RAD51-Loader; BRCA1-RING-E3-Ligase-208kDa-BARD1; ATM-PI3K-Like-Kinase-350kDa-DSB-Sensor; CHEK2-Checkpoint-Kinase2-61kDa-FHA; HOXB13-Homeodomain-TF-32kDa-G84E-Founder; MSH2-MutSalpha-MutSbeta-Scaffold-105kDa-Lynch2; PALB2-WD40-BRCA1-BRCA2-Bridge-131kDa-FANCN; NBN-Nibrin-MRN-Complex-85kDa-657del5-Slavic."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/definitions")
+async def hereditary_prostate_cancer_predisposition_atlas_definitions():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas clinical definitions — BRCA2-PROSTATE-15-20X-RR-LETHAL; BRCA1-VS-BRCA2-PARPi-HR-0.22-VS-0.82-CRITICAL-DISTINCTION; ATM-VS-CHEK2-DDR-VS-CHECKPOINT-ONLY-NO-PARPi-CHEK2; HOXB13-G84E-PROSTATE-ONLY-NO-OTHER-CANCER; MSH2-dMMR-PEMBROLIZUMAB-FIRST-LINE-mPRIMO; PALB2-HRD-GENE-PARPi-SENSITIVE-BRCA1-BRCA2-BRIDGE; NBN-657del5-SLAVIC-INTERMEDIATE-RT-SENSITIVITY; CASCADE-Universal-Germline-Testing-mCRPC."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,

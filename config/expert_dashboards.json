@@ -21739,5 +21739,26 @@
     "patients": 320,
     "category": "hereditary-cancer-predisposition",
     "registered": "2026-09-23"
+  },
+  {
+    "id": "1311",
+    "title": "Hereditary-Prostate-Cancer-Predisposition-Atlas Complete-8-Gene-BRCA2-BRCA1-ATM-CHEK2-HOXB13-MSH2-PALB2-NBN-Atlas BRCA2-3418aa-13q12.3-AD-LOF-HBOC-Prostate-15-20x-RR-HIGHEST-Lethal-Metastatic-Enriched-PROfound-HR-0.22-Olaparib-FDA2020 BRCA1-1863aa-17q21.31-AD-LOF-HBOC1-Prostate-2-3x-RR-Not-Dominant-BRCA1-Phenotype ATM-3056aa-11q22.3-AD-LOF-A-T-Prostate-2-4x-RR-Monoallelic-PROfound-ATM-Cohort-HR-0.72-Ceralasertib CHEK2-543aa-22q12.1-AD-LOF-Moderate-Prostate-2-3x-RR-NOT-HRD-NO-PARPi-Standard HOXB13-247aa-17q21.2-AD-LOF-HPRC-G84E-Founder-Prostate-4-8x-RR-PROSTATE-ONLY-Gene MSH2-935aa-2p21-AD-LOF-Lynch-Type2-Prostate-5-10x-RR-dMMR-Pembrolizumab-mPRIMO-FDA2022 PALB2-1186aa-16p12.2-AD-LOF-FANCN-Prostate-2-4x-RR-PARPi-Sensitive-HRD-Emerging NBN-754aa-8q21.3-AD-LOF-NBS1-Prostate-3-4x-RR-657del5-Slavic-Founder 320-Patient-Aggregate-8x40-seeds-3390-3397",
+    "route": "/hereditary-prostate-cancer-predisposition-atlas",
+    "api_base": "/api/hereditary-prostate-cancer-predisposition-atlas",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "BRCA2",
+      "BRCA1",
+      "ATM",
+      "CHEK2",
+      "HOXB13",
+      "MSH2",
+      "PALB2",
+      "NBN"
+    ],
+    "patients": 320,
+    "seed_range": "3390-3397",
+    "status": "built",
+    "registered": "2026-09-23"
   }
 ]
