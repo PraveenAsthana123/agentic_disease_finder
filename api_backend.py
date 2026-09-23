@@ -50818,6 +50818,27 @@ async def hereditary_thyroid_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-acc-predisposition-atlas/overview")
+async def hereditary_acc_predisposition_atlas_overview():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas overview (TP53-CTNNB1-CDKN2A-NF1-MEN1-PRKAR1A-ARMC5-MAX; 320-patient aggregate 8x40 seeds 3334-3341; TP53-393aa-17p13.1-AD-LOF-LFS-Pediatric-ACC-50-80pct-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto; CTNNB1-781aa-3p22.1-AD-GOF-Beta-Catenin-Nuclear-IHC-PATHOGNOMONIC-Aggressive-ACC; CDKN2A-156aa-9p21.3-AD-LOF-FAMMM-p16-IHC-Loss-PATHOGNOMONIC-Palbociclib; NF1-2839aa-17q11.2-AD-LOF-Cafe-au-Lait-PATHOGNOMONIC-Adrenocortical-Tumors-1-3x-Selumetinib-FDA2020; MEN1-610aa-11q13.1-AD-LOF-MEN1-Triad-Adrenocortical-Adenoma-20-40pct-Nonfunctional; PRKAR1A-381aa-17q24.2-AD-LOF-Carney-Complex-PPNAD-PATHOGNOMONIC-Annual-Cortisol-MANDATORY-Cardiac-Myxoma-LIFE-THREATENING; ARMC5-1059aa-2p13.3-AD-LOF-PBMAH-Bilateral-Adrenal-Masses-PATHOGNOMONIC-ACTH-Independent-Cushing-40-80pct-Annual-Adrenal-MRI; MAX-236aa-14q23.3-AD-LOF-Hereditary-Pheo-ACC-Overlap-Bilateral-Pheo-2-3x-SDHx-Pathway)."""
+    from scripts.hereditary_acc_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-acc-predisposition-atlas/breakdown")
+async def hereditary_acc_predisposition_atlas_breakdown():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-LFS-Pediatric-ACC-50-80pct-AVOID-RADIATION-ABSOLUTELY-WBMRI-Toronto-Annual; CTNNB1-Beta-Catenin-Nuclear-IHC-PATHOGNOMONIC-Aggressive-ACC-Somatic-GOF-15-25pct; CDKN2A-FAMMM-p16-IHC-Loss-PATHOGNOMONIC-Palbociclib-Pancreatic-20x; NF1-Cafe-au-Lait-PATHOGNOMONIC-Adrenocortical-Tumors-Selumetinib-FDA2020; MEN1-MEN1-Triad-Adenoma-20-40pct-3pt5-Gland-Parathyroid; PRKAR1A-PPNAD-PATHOGNOMONIC-Annual-Cortisol-Cardiac-Myxoma-MANDATORY; ARMC5-PBMAH-Bilateral-Adrenal-PATHOGNOMONIC-Meningioma-25pct-Annual-MRI; MAX-Bilateral-Pheo-SDHx-Overlap-MAX-IHC-Nuclear-Loss; mean_age_dx per gene; CR pct; radiation pct; relapse pct)."""
+    from scripts.hereditary_acc_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-acc-predisposition-atlas/definitions")
+async def hereditary_acc_predisposition_atlas_definitions():
+    """Hereditary-Adrenocortical-Carcinoma-Predisposition-Atlas clinical definitions (TP53-AVOID-RADIATION-ABSOLUTELY-LFS-Pediatric-ACC; PRKAR1A-PPNAD-BILATERAL-MICRONODULAR-PATHOGNOMONIC-ANNUAL-CORTISOL-MANDATORY; ARMC5-PBMAH-BILATERAL-ADRENAL-MASSES-PATHOGNOMONIC-ANNUAL-MRI; CTNNB1-NUCLEAR-BETA-CATENIN-IHC-PATHOGNOMONIC-AGGRESSIVE-ACC; CDKN2A-P16-IHC-LOSS-PATHOGNOMONIC-PALBOCICLIB-INVESTIGATIONAL; NF1-CAFE-AU-LAIT-PATHOGNOMONIC-ADRENOCORTICAL-SURVEILLANCE; MEN1-3pt5-GLAND-PARATHYROID-RESECTION-MANDATORY; MAX-BILATERAL-PHEO-SDHx-OVERLAP-TESTING; CASCADE-Testing-Hereditary-ACC-Predisposition)."""
+    from scripts.hereditary_acc_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

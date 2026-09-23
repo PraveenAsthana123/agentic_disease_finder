@@ -21578,5 +21578,30 @@
     ],
     "portal_page": "/hereditary-thyroid-cancer-predisposition-atlas",
     "registered": "2026-09-22"
+  },
+  {
+    "id": "hereditary-acc-predisposition-atlas",
+    "title": "Hereditary Adrenocortical Carcinoma Predisposition Atlas",
+    "subtitle": "Complete 8-Gene Hereditary Adrenocortical Carcinoma Predisposition Reference \u2014 TP53-CTNNB1-CDKN2A-NF1-MEN1-PRKAR1A-ARMC5-MAX",
+    "status": "built",
+    "genes": [
+      "TP53",
+      "CTNNB1",
+      "CDKN2A",
+      "NF1",
+      "MEN1",
+      "PRKAR1A",
+      "ARMC5",
+      "MAX"
+    ],
+    "seeds": "3334-3341",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-acc-predisposition-atlas/overview",
+      "/api/hereditary-acc-predisposition-atlas/breakdown",
+      "/api/hereditary-acc-predisposition-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-acc-predisposition-atlas",
+    "registered": "2026-09-22"
   }
 ]
