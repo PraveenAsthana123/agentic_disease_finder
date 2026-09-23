@@ -50860,6 +50860,27 @@ async def hereditary_pancreatic_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/overview")
+async def hereditary_prostate_cancer_predisposition_atlas_overview():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas overview (BRCA2-BRCA1-ATM-PALB2-MLH1-MSH2-HOXB13-CHEK2; 320-patient aggregate 8x40 seeds 3486-3493; BRCA2-3418aa-13q12.3-AD-LOF-HBOC-PCa-15pct-mCRPC-Olaparib-PROfound-HR-0.34; BRCA1-1863aa-17q21.31-AD-LOF-HBOC-PCa-2-3x-PROfound-HR-0.35; ATM-3056aa-11q22.3-AD-LOF-HIGH-GRADE-Gleason-8-10-RT-Sensitive-PROfound-Cohort-B; PALB2-1186aa-16p12.2-AD-LOF-FANCN-PCa-2-3x-Breast-53pct-HRD-Olaparib; MLH1-756aa-3p22.2-AD-LOF-Lynch1-MSI-H-PCa-3-8x-Pembrolizumab-FDA2017; MSH2-936aa-2p21-AD-LOF-Lynch2-PCa-HIGHEST-11-14x-EPCAM-MLPA-MANDATORY; HOXB13-283aa-17q21.2-AD-LOF-G84E-Founder-3.5pct-N-European-PCa-3-6x-PROSTATE-SPECIFIC; CHEK2-543aa-22q12.1-AD-LOF-I157T-E-European-1100delC-W-European-PCa-2-3x-Moderate)."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/breakdown")
+async def hereditary_prostate_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; BRCA2-mCRPC-15pct-Olaparib-PROfound-HR-0.34; BRCA1-PCa-2-3x-PROfound-Cohort-A; ATM-HIGH-GRADE-Gleason-8-10-RT-Reduce-20-30pct; PALB2-PCa-2-3x-Breast-53pct; MLH1-Lynch1-MSI-H-Pembrolizumab; MSH2-Lynch2-PCa-11-14x-HIGHEST-EPCAM-MLPA; HOXB13-G84E-3.5pct-Founder-Early-Onset-Lt60yr; CHEK2-I157T-1100delC-Moderate-Risk; mean_age_dx per gene; high_grade_pct; metastatic_pct; msi_h_n; hrd_pct)."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-prostate-cancer-predisposition-atlas/definitions")
+async def hereditary_prostate_cancer_predisposition_atlas_definitions():
+    """Hereditary-Prostate-Cancer-Predisposition-Atlas clinical definitions (BRCA2-OLAPARIB-PROFOUND-HR-0.34-FDA2020; BRCA1-PROFOUND-COHORT-A-HR-0.35; ATM-HIGH-GRADE-RT-REDUCE-20-30PCT; PALB2-HRD-EMERGING; MLH1-MSI-H-PEMBROLIZUMAB-FDA2017; MSH2-EPCAM-MLPA-MANDATORY-HIGHEST-LYNCH-PCa; HOXB13-G84E-PROSTATE-SPECIFIC-NO-BREAST-OVARIAN; CHEK2-I157T-1100DELC-MODERATE-NO-PARPI; CASCADE-Testing-Hereditary-Prostate-Cancer-Predisposition)."""
+    from scripts.hereditary_prostate_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-gastric-cancer-predisposition-atlas/overview")
 async def hereditary_gastric_cancer_predisposition_atlas_overview():
     """Hereditary-Gastric-Cancer-Predisposition-Atlas overview (CDH1-PROPHYLACTIC-GASTRECTOMY-MANDATORY-20-30YR; CTNNA1-CAMBRIDGE-PROTOCOL-ANNUAL; APC-FUNDIC-GLAND-POLYPOSIS-PATHOGNOMONIC; SMAD4-PULMONARY-AVM-CT-MANDATORY; STK11-GI-ENDOSCOPY-8YR; MLH1-HPYLORI-ERADICATION-MANDATORY; TP53-AVOID-RADIATION-ABSOLUTELY; BRCA2-PLATINUM-HRD; seeds-3350-3357)."""

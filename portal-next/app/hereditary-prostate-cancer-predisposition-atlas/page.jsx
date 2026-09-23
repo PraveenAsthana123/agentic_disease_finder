@@ -2,37 +2,39 @@
 import { useEffect, useState } from "react";
 
 const GENE_COLORS = {
-  BRCA2:  "#1a6b4a",
-  BRCA1:  "#c0392b",
+  BRCA2:  "#e67e22",
+  BRCA1:  "#f39c12",
   ATM:    "#2980b9",
-  CHEK2:  "#8e44ad",
-  HOXB13: "#d35400",
-  MSH2:   "#16a085",
-  PALB2:  "#f39c12",
-  NBN:    "#27ae60",
+  PALB2:  "#8e44ad",
+  MLH1:   "#16a085",
+  MSH2:   "#1abc9c",
+  HOXB13: "#e74c3c",
+  CHEK2:  "#7f8c8d",
 };
 
 const GENE_INFO = {
-  BRCA2:  { full: "BRCA2 (FANCD1-HR-Mediator / HBOC1 / Lethal Prostate)", locus: "13q12.3", size: "3418 aa / 384 kDa", inh: "AD LOF", risk: "15-20x RR prostate" },
-  BRCA1:  { full: "BRCA1 (RING-BRCT HR Scaffold / HBOC1 / Weaker Prostate)", locus: "17q21.31", size: "1863 aa / 208 kDa", inh: "AD LOF", risk: "2-3x RR prostate" },
-  ATM:    { full: "ATM (PI3K-Like Kinase / DSB Sensor / A-T Biallelic)", locus: "11q22.3", size: "3056 aa / 350 kDa", inh: "AD/AR LOF", risk: "2-4x RR prostate" },
-  CHEK2:  { full: "CHEK2 (Checkpoint Kinase 2 / NOT HRD / c.1100delC)", locus: "22q12.1", size: "543 aa / 61 kDa", inh: "AD LOF", risk: "2-3x RR moderate" },
-  HOXB13: { full: "HOXB13 (Homeodomain TF / G84E Founder / Prostate-ONLY)", locus: "17q21.32", size: "284 aa / 32 kDa", inh: "AD LOF", risk: "4-8x RR prostate-ONLY" },
-  MSH2:   { full: "MSH2 (MutSα+MutSβ / Lynch Type 2 / dMMR Prostate)", locus: "2p21", size: "934 aa / 105 kDa", inh: "AD LOF", risk: "5-10x RR dMMR prostate" },
-  PALB2:  { full: "PALB2 (BRCA1-BRCA2 Bridge / FANCN / HRD Prostate)", locus: "16p12.2", size: "1186 aa / 131 kDa", inh: "AD LOF", risk: "2-4x RR emerging HRD" },
-  NBN:    { full: "NBN (Nibrin / MRN Complex / 657del5 Slavic Founder)", locus: "8q21.3", size: "754 aa / 85 kDa", inh: "AD/AR LOF", risk: "3-4x RR 657del5" },
+  BRCA2:  { full: "BRCA2 / FANCD1 (HR Mediator, RAD51 Loader)",           locus: "13q12.3",  size: "3418 aa / 384 kDa", inh: "AD LOF" },
+  BRCA1:  { full: "BRCA1 / FANCS (HR Scaffold, RING-BRCT)",               locus: "17q21.31", size: "1863 aa / 208 kDa", inh: "AD LOF" },
+  ATM:    { full: "ATM (PI3K-like DSB Kinase; HIGH GRADE PCa)",            locus: "11q22.3",  size: "3056 aa / 350 kDa", inh: "AD LOF" },
+  PALB2:  { full: "PALB2 / FANCN (BRCA2 Bridge, WD40 Scaffold)",          locus: "16p12.2",  size: "1186 aa / 131 kDa", inh: "AD LOF" },
+  MLH1:   { full: "MLH1 (MMR MutL Homologue 1, Lynch Type 1)",            locus: "3p22.2",   size: "756 aa / 85 kDa",   inh: "AD LOF" },
+  MSH2:   { full: "MSH2 (MutSalpha/MutSbeta; Lynch Type 2; HIGHEST PCa)", locus: "2p21",     size: "936 aa / 105 kDa",  inh: "AD LOF" },
+  HOXB13: { full: "HOXB13 (AR Coregulator; G84E Founder; Prostate-Specific)", locus: "17q21.2", size: "283 aa / 31 kDa", inh: "AD LOF" },
+  CHEK2:  { full: "CHEK2 (ATM Effector; I157T / 1100delC Founders)",      locus: "22q12.1",  size: "543 aa / 60 kDa",   inh: "AD LOF" },
 };
 
-export default function HereditaryProstateCancerPredispositionAtlasPage() {
-  const [overview, setOverview] = useState(null);
-  const [breakdown, setBreakdown] = useState(null);
+const SLUG = "hereditary-prostate-cancer-predisposition-atlas";
+
+export default function HeredProstateCancerPredispositionAtlasPage() {
+  const [overview, setOverview]       = useState(null);
+  const [breakdown, setBreakdown]     = useState(null);
   const [definitions, setDefinitions] = useState(null);
-  const [tab, setTab] = useState("overview");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [tab, setTab]                 = useState("overview");
+  const [loading, setLoading]         = useState(true);
+  const [error, setError]             = useState(null);
 
   useEffect(() => {
-    const base = "/api/hereditary-prostate-cancer-predisposition-atlas";
+    const base = `/api/${SLUG}`;
     Promise.all([
       fetch(`${base}/overview`).then(r => r.json()),
       fetch(`${base}/breakdown`).then(r => r.json()),
@@ -45,210 +47,261 @@ export default function HereditaryProstateCancerPredispositionAtlasPage() {
   if (loading) return <div className="p-6 text-white">Loading Hereditary Prostate Cancer Predisposition Atlas…</div>;
   if (error)   return <div className="p-6 text-red-400">Error: {error}</div>;
 
-  const genes = overview?.genes || [];
+  const geneSummary  = overview?.gene_summary  || [];
+  const hierarchy    = overview?.prostate_risk_hierarchy || {};
+  const keyRules     = overview?.key_clinical_rules || [];
+  const profound     = overview?.profound_trial_summary || {};
+  const perGene      = breakdown?.per_gene      || [];
+  const profound_a   = breakdown?.profound_trial_cohort_a || {};
+  const profound_b   = breakdown?.profound_trial_cohort_b || {};
+  const msiVsHrd     = breakdown?.msi_h_vs_hrd_treatment  || {};
+  const hoxb13Rules  = breakdown?.hoxb13_g84e_key_rules    || {};
+  const defGenes     = definitions?.genes                  || [];
+  const keyConcepts  = definitions?.key_concepts           || {};
+  const atlasMetadata = definitions?.atlas_metadata        || {};
+
+  const tabs = ["overview", "breakdown", "profound", "definitions"];
 
   return (
-    <div style={{ background: "#0f1117", minHeight: "100vh", color: "#e0e0e0", fontFamily: "monospace", padding: "24px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 24, borderBottom: "2px solid #1a6b4a", paddingBottom: 16 }}>
-          <div style={{ fontSize: 11, color: "#7f8c8d", marginBottom: 6 }}>
-            🧬 Expert Dashboards → Hereditary Cancer Predisposition Atlases
-          </div>
-          <h1 style={{ fontSize: 22, fontWeight: 700, color: "#1a6b4a", margin: 0 }}>
-            🏥 Hereditary Prostate Cancer Predisposition Atlas
-          </h1>
-          <div style={{ fontSize: 12, color: "#95a5a6", marginTop: 6 }}>
-            Complete 8-Gene Reference · BRCA2-BRCA1-ATM-CHEK2-HOXB13-MSH2-PALB2-NBN ·
-            320-Patient Aggregate (8×40, seeds 3390-3397) · HBOC / Lynch / DDR / Prostate-Only
-          </div>
-          <div style={{ marginTop: 8, padding: "6px 12px", background: "#1a1a2e", borderRadius: 4, fontSize: 11, color: "#e74c3c", display: "inline-block" }}>
-            ⚠ KEY RULES: BRCA2 = 15-20x RR LETHAL; olaparib HR 0.22 | ATM ≠ CHEK2: PARPi HR 0.72 vs NO PARPi | HOXB13 = PROSTATE-ONLY | MSH2 = dMMR pembrolizumab FIRST
-          </div>
+    <div style={{ background: "#0f172a", minHeight: "100vh", color: "#e2e8f0", fontFamily: "monospace" }}>
+      <div style={{ background: "#1e293b", borderBottom: "2px solid #334155", padding: "1.5rem 2rem" }}>
+        <h1 style={{ fontSize: "1.4rem", fontWeight: 700, color: "#f8fafc", marginBottom: "0.25rem" }}>
+          &#x1f9ec; Hereditary Prostate Cancer Predisposition Atlas
+        </h1>
+        <div style={{ color: "#94a3b8", fontSize: "0.8rem" }}>
+          Complete 8-Gene BRCA2-BRCA1-ATM-PALB2-MLH1-MSH2-HOXB13-CHEK2 Reference &nbsp;·&nbsp;
+          {overview?.total_patients} patients &nbsp;·&nbsp; seeds {overview?.seeds}
         </div>
+      </div>
 
-        {/* Cohort Summary */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 10, marginBottom: 20 }}>
-          {[
-            { label: "Total Patients", value: overview?.total_patients },
-            { label: "Genes", value: (overview?.genes||[]).length },
-            { label: "PARPi Eligible %", value: `${overview?.parpi_eligible_rate_pct}%` },
-            { label: "Immunotherapy Eligible %", value: `${overview?.immunotherapy_eligible_rate_pct}%` },
-            { label: "PSMA-PET Done %", value: `${overview?.psma_pet_done_rate_pct}%` },
-            { label: "Mean Age Dx", value: overview?.mean_age_at_dx },
-          ].map(s => (
-            <div key={s.label} style={{ background: "#1a1a2e", borderRadius: 6, padding: "10px 12px", textAlign: "center" }}>
-              <div style={{ fontSize: 18, fontWeight: 700, color: "#1a6b4a" }}>{s.value ?? "—"}</div>
-              <div style={{ fontSize: 10, color: "#95a5a6", marginTop: 2 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
+      {/* Tabs */}
+      <div style={{ display: "flex", gap: "0.5rem", padding: "1rem 2rem", borderBottom: "1px solid #334155" }}>
+        {tabs.map(t => (
+          <button key={t} onClick={() => setTab(t)}
+            style={{
+              padding: "0.4rem 1rem", borderRadius: "4px", cursor: "pointer", fontSize: "0.8rem",
+              background: tab === t ? "#3b82f6" : "#1e293b",
+              color: tab === t ? "#fff" : "#94a3b8",
+              border: tab === t ? "none" : "1px solid #334155",
+            }}>
+            {t.charAt(0).toUpperCase() + t.slice(1)}
+          </button>
+        ))}
+      </div>
 
-        {/* Stage */}
-        <div style={{ marginBottom: 16, padding: "8px 12px", background: "#1a1a2e", borderRadius: 6, fontSize: 11 }}>
-          <span style={{ color: "#e74c3c", fontWeight: 700 }}>Metastatic/mCRPC: {overview?.metastatic_pct}% </span>
-          <span style={{ color: "#95a5a6", marginLeft: 16 }}>Seed range: {overview?.seed_range}</span>
-          <span style={{ color: "#f39c12", marginLeft: 16 }}>{overview?.atm_nbn_rt_avoidance_note}</span>
-        </div>
+      <div style={{ padding: "1.5rem 2rem" }}>
 
-        {/* Tabs */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 20, borderBottom: "1px solid #2c2c44" }}>
-          {["overview", "gene-table", "clinical-atlas", "definitions"].map(t => (
-            <button key={t} onClick={() => setTab(t)}
-              style={{
-                padding: "8px 16px", border: "none", borderRadius: "4px 4px 0 0",
-                background: tab === t ? "#1a6b4a" : "#1a1a2e",
-                color: tab === t ? "#fff" : "#95a5a6",
-                cursor: "pointer", fontSize: 12, fontFamily: "monospace",
-                borderBottom: tab === t ? "2px solid #1a6b4a" : "2px solid transparent",
-              }}
-            >
-              {t === "overview" ? "📊 Overview" : t === "gene-table" ? "🧬 Gene Table" : t === "clinical-atlas" ? "🏥 Clinical Atlas" : "📖 Definitions"}
-            </button>
-          ))}
-        </div>
-
-        {/* Overview Tab */}
+        {/* ── OVERVIEW ── */}
         {tab === "overview" && (
           <div>
-            <h2 style={{ color: "#1a6b4a", fontSize: 16, marginBottom: 12 }}>Gene Distribution & Key Facts</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
-              {genes.map(gene => (
-                <div key={gene} style={{ background: "#1a1a2e", borderRadius: 6, padding: "10px 14px", borderLeft: `3px solid ${GENE_COLORS[gene] || "#555"}` }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: GENE_COLORS[gene] || "#fff" }}>{gene}</div>
-                  <div style={{ fontSize: 10, color: "#bdc3c7", marginTop: 2 }}>{GENE_INFO[gene]?.locus} · {GENE_INFO[gene]?.size}</div>
-                  <div style={{ fontSize: 10, color: "#f39c12", marginTop: 2 }}>Risk: {GENE_INFO[gene]?.risk}</div>
-                  <div style={{ fontSize: 10, color: "#95a5a6", marginTop: 2 }}>n={overview?.gene_counts?.[gene]}</div>
+            {/* KPI bar */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: "0.75rem", marginBottom: "1.5rem" }}>
+              {[
+                { label: "Total Patients", value: overview?.total_patients },
+                { label: "PCa Cases", value: `${overview?.pca_cases} (${overview?.pca_rate_pct}%)` },
+                { label: "High Grade", value: overview?.high_grade_cases },
+                { label: "Metastatic", value: overview?.metastatic_cases },
+                { label: "HRD Cases", value: `${overview?.hrd_cases} (${overview?.hrd_rate_pct}%)` },
+                { label: "MSI-H Cases", value: overview?.msi_h_cases },
+                { label: "Early Onset", value: overview?.early_onset_cases },
+                { label: "RT Sensitive", value: overview?.rt_sensitivity_cases },
+              ].map(k => (
+                <div key={k.label} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: "6px", padding: "0.75rem", textAlign: "center" }}>
+                  <div style={{ fontSize: "1.3rem", fontWeight: 700, color: "#60a5fa" }}>{k.value ?? "—"}</div>
+                  <div style={{ fontSize: "0.7rem", color: "#94a3b8" }}>{k.label}</div>
                 </div>
               ))}
             </div>
-            <div style={{ background: "#1a1a2e", borderRadius: 6, padding: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#1a6b4a", marginBottom: 8 }}>Key Clinical Facts</div>
-              {(overview?.key_facts || []).map((f, i) => (
-                <div key={i} style={{ fontSize: 11, color: "#bdc3c7", marginBottom: 5, paddingLeft: 12, borderLeft: "2px solid #1a6b4a" }}>
-                  {f}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Gene Table Tab */}
-        {tab === "gene-table" && (
-          <div>
-            <h2 style={{ color: "#1a6b4a", fontSize: 16, marginBottom: 12 }}>Complete 8-Gene Reference Table</h2>
-            <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11 }}>
+            {/* Gene summary table */}
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>Gene Cohort Summary</h2>
+            <div style={{ overflowX: "auto", marginBottom: "1.5rem" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.78rem" }}>
                 <thead>
-                  <tr style={{ background: "#1a6b4a", color: "#fff" }}>
-                    {["Gene", "Locus", "Size", "Syndrome", "Inheritance", "Prostate Risk", "Pathognomonic"].map(h => (
-                      <th key={h} style={{ padding: "8px 10px", textAlign: "left", whiteSpace: "nowrap" }}>{h}</th>
+                  <tr style={{ background: "#1e293b" }}>
+                    {["Gene", "N", "PCa %", "High Grade", "Metastatic", "HRD %", "MSI-H", "Mean Age"].map(h => (
+                      <th key={h} style={{ padding: "0.5rem", borderBottom: "1px solid #334155", color: "#94a3b8", textAlign: "left" }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {genes.map((gene, idx) => {
-                    const info = breakdown?.breakdown?.[gene]?.gene_info || {};
-                    return (
-                      <tr key={gene} style={{ background: idx % 2 === 0 ? "#1a1a2e" : "#0f1117", borderBottom: "1px solid #2c2c44" }}>
-                        <td style={{ padding: "8px 10px", fontWeight: 700, color: GENE_COLORS[gene] || "#fff" }}>{gene}</td>
-                        <td style={{ padding: "8px 10px", color: "#95a5a6" }}>{info.locus || GENE_INFO[gene]?.locus}</td>
-                        <td style={{ padding: "8px 10px", color: "#bdc3c7" }}>{GENE_INFO[gene]?.size}</td>
-                        <td style={{ padding: "8px 10px", color: "#bdc3c7", maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis" }}>{info.syndrome}</td>
-                        <td style={{ padding: "8px 10px", color: "#95a5a6" }}>{info.inheritance}</td>
-                        <td style={{ padding: "8px 10px", color: "#f39c12", fontWeight: 600 }}>{info.prostate_risk}</td>
-                        <td style={{ padding: "8px 10px", color: "#e74c3c", maxWidth: 220, overflow: "hidden", textOverflow: "ellipsis" }}>{info.pathognomonic}</td>
-                      </tr>
-                    );
-                  })}
+                  {geneSummary.map(g => (
+                    <tr key={g.gene} style={{ borderBottom: "1px solid #1e293b" }}>
+                      <td style={{ padding: "0.4rem 0.5rem", color: GENE_COLORS[g.gene] || "#e2e8f0", fontWeight: 700 }}>{g.gene}</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.n}</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.pca_pct}%</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.high_grade}</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.metastatic}</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.hrd_pct}%</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.msi_h}</td>
+                      <td style={{ padding: "0.4rem 0.5rem" }}>{g.mean_age}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
-          </div>
-        )}
 
-        {/* Clinical Atlas Tab */}
-        {tab === "clinical-atlas" && (
-          <div>
-            <h2 style={{ color: "#1a6b4a", fontSize: 16, marginBottom: 12 }}>Per-Gene Clinical Atlas</h2>
-            {genes.map(gene => {
-              const bd = breakdown?.breakdown?.[gene];
-              if (!bd) return null;
-              return (
-                <div key={gene} style={{ background: "#1a1a2e", borderRadius: 6, marginBottom: 14, borderLeft: `4px solid ${GENE_COLORS[gene] || "#555"}` }}>
-                  <div style={{ padding: "12px 14px", borderBottom: "1px solid #2c2c44" }}>
-                    <span style={{ fontSize: 15, fontWeight: 700, color: GENE_COLORS[gene] || "#fff" }}>{gene}</span>
-                    <span style={{ fontSize: 11, color: "#95a5a6", marginLeft: 12 }}>{bd.gene_info?.locus} · {GENE_INFO[gene]?.size} · {bd.gene_info?.inheritance}</span>
-                    <span style={{ fontSize: 11, color: "#f39c12", marginLeft: 12 }}>n={bd.n} · mean age {bd.mean_age}yr</span>
-                  </div>
-                  <div style={{ padding: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
-                    {[
-                      { label: "PARPi Eligible %", val: `${bd.parpi_eligible_pct}%` },
-                      { label: "Immunotherapy %", val: `${bd.immunotherapy_eligible_pct}%` },
-                      { label: "PSMA-PET %", val: `${bd.psma_pet_pct}%` },
-                      { label: "Relapse %", val: `${bd.relapse_pct}%` },
-                    ].map(m => (
-                      <div key={m.label} style={{ textAlign: "center" }}>
-                        <div style={{ fontSize: 16, fontWeight: 700, color: GENE_COLORS[gene] || "#fff" }}>{m.val}</div>
-                        <div style={{ fontSize: 10, color: "#7f8c8d" }}>{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ padding: "8px 14px", fontSize: 11 }}>
-                    <div style={{ color: "#e74c3c", marginBottom: 4 }}><strong>⚠ Avoid:</strong> {bd.gene_info?.key_avoid}</div>
-                    <div style={{ color: "#27ae60", marginBottom: 4 }}><strong>✓ Rule:</strong> {bd.gene_info?.key_rule}</div>
-                    <div style={{ color: "#3498db", marginBottom: 4 }}><strong>Surveillance:</strong> {bd.gene_info?.surveillance}</div>
-                    <div style={{ color: "#f39c12" }}><strong>Treatment:</strong> {bd.gene_info?.targeted_rx}</div>
-                  </div>
-                  <div style={{ padding: "6px 14px 10px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                    <div>
-                      <div style={{ fontSize: 10, color: "#7f8c8d", marginBottom: 3 }}>Top Tumour Types</div>
-                      {(bd.top_tumour_types || []).map(t => (
-                        <div key={t.type} style={{ fontSize: 10, color: "#bdc3c7" }}>• {t.type} ({t.count})</div>
-                      ))}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 10, color: "#7f8c8d", marginBottom: 3 }}>Top Variants</div>
-                      {(bd.top_variants || []).map(v => (
-                        <div key={v.variant} style={{ fontSize: 10, color: "#95a5a6", fontFamily: "monospace" }}>• {v.variant} ({v.count})</div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Definitions Tab */}
-        {tab === "definitions" && definitions && (
-          <div>
-            <h2 style={{ color: "#1a6b4a", fontSize: 16, marginBottom: 12 }}>Clinical Definitions & Key Distinctions</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
-              {Object.entries(definitions.definitions || {}).map(([key, text]) => (
-                <div key={key} style={{ background: "#1a1a2e", borderRadius: 6, padding: 12, borderLeft: "3px solid #1a6b4a" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#1a6b4a", marginBottom: 6, textTransform: "uppercase" }}>
-                    {key.replace(/_/g, " ")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "#bdc3c7", lineHeight: 1.5 }}>{text}</div>
-                </div>
+            {/* Risk hierarchy */}
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>Prostate Cancer Risk Hierarchy</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {Object.entries(hierarchy).map(([gene, risk]) => (
+                <><div key={gene + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: GENE_COLORS[gene.split("_")[0]] || "#f59e0b", fontWeight: 700, fontSize: "0.78rem" }}>{gene}</div>
+                  <div key={gene + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{risk}</div></>
               ))}
             </div>
-            <div style={{ background: "#1a1a2e", borderRadius: 6, padding: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#e74c3c", marginBottom: 8 }}>⚠ Key Clinical Distinctions</div>
-              {(definitions.key_clinical_distinctions || []).map((d, i) => (
-                <div key={i} style={{ fontSize: 11, color: "#bdc3c7", marginBottom: 5, paddingLeft: 12, borderLeft: "2px solid #e74c3c" }}>
-                  {d}
+
+            {/* Key clinical rules */}
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>Key Clinical Rules</h2>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {keyRules.map((r, i) => (
+                <li key={i} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: "6px", padding: "0.75rem", marginBottom: "0.5rem", fontSize: "0.8rem", lineHeight: 1.5 }}>
+                  <span style={{ color: "#f59e0b", marginRight: "0.4rem" }}>&#9658;</span>{r}
+                </li>
+              ))}
+            </ul>
+
+            {/* PROfound trial summary */}
+            {Object.keys(profound).length > 0 && (
+              <>
+                <h2 style={{ color: "#93c5fd", marginTop: "1.5rem", marginBottom: "0.75rem", fontSize: "1rem" }}>PROfound Trial Summary</h2>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem" }}>
+                  {Object.entries(profound).map(([k, v]) => (
+                    <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#60a5fa", fontSize: "0.78rem" }}>{k}</div>
+                      <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{String(v)}</div></>
+                  ))}
                 </div>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* ── BREAKDOWN ── */}
+        {tab === "breakdown" && (
+          <div>
+            {perGene.map(g => (
+              <div key={g.gene} style={{ background: "#1e293b", border: `1px solid ${GENE_COLORS[g.gene] || "#334155"}`, borderRadius: "8px", padding: "1rem", marginBottom: "1rem" }}>
+                <h3 style={{ color: GENE_COLORS[g.gene] || "#e2e8f0", marginBottom: "0.5rem" }}>
+                  {g.gene} — {g.syndrome}
+                </h3>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))", gap: "0.5rem", marginBottom: "0.75rem" }}>
+                  {[
+                    { label: "N", value: g.n },
+                    { label: "PCa %", value: `${g.pca_pct}%` },
+                    { label: "High Grade", value: g.high_grade_n },
+                    { label: "Metastatic", value: g.metastatic_n },
+                    { label: "HRD %", value: `${g.hrd_pct}%` },
+                    { label: "MSI-H", value: g.msi_h_n },
+                    { label: "Early Onset", value: g.early_onset_n },
+                    { label: "Mean Age", value: g.mean_age },
+                  ].map(k => (
+                    <div key={k.label} style={{ background: "#0f172a", borderRadius: "4px", padding: "0.5rem", textAlign: "center" }}>
+                      <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#60a5fa" }}>{k.value}</div>
+                      <div style={{ fontSize: "0.65rem", color: "#64748b" }}>{k.label}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
+                  <div style={{ background: "#0f172a", borderRadius: "4px", padding: "0.6rem" }}>
+                    <div style={{ color: "#f87171", fontSize: "0.72rem", marginBottom: "0.3rem", fontWeight: 700 }}>&#9888; AVOID</div>
+                    <div style={{ fontSize: "0.78rem", lineHeight: 1.5 }}>{g.key_avoid}</div>
+                  </div>
+                  <div style={{ background: "#0f172a", borderRadius: "4px", padding: "0.6rem" }}>
+                    <div style={{ color: "#4ade80", fontSize: "0.72rem", marginBottom: "0.3rem", fontWeight: 700 }}>&#10003; KEY RULE</div>
+                    <div style={{ fontSize: "0.78rem", lineHeight: 1.5 }}>{g.key_rule}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* HOXB13 G84E rules */}
+            <h2 style={{ color: "#93c5fd", marginTop: "1.5rem", marginBottom: "0.75rem", fontSize: "1rem" }}>HOXB13 G84E — Prostate-Specific Rules</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {Object.entries(hoxb13Rules).map(([k, v]) => (
+                <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#e74c3c", fontSize: "0.78rem" }}>{k}</div>
+                  <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{String(v)}</div></>
+              ))}
+            </div>
+
+            {/* MSI vs HRD */}
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>MSI-H vs HRD Treatment Strategies</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem" }}>
+              {Object.entries(msiVsHrd).map(([k, v]) => (
+                <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#94a3b8", fontSize: "0.78rem" }}>{k}</div>
+                  <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{String(v)}</div></>
               ))}
             </div>
           </div>
         )}
 
-        <div style={{ marginTop: 24, fontSize: 10, color: "#4a4a6a", textAlign: "center" }}>
-          Hereditary-Prostate-Cancer-Predisposition-Atlas · 320 patients (8×40, seeds 3390-3397) ·
-          BRCA2-BRCA1-ATM-CHEK2-HOXB13-MSH2-PALB2-NBN · AgenticFinder Portal
-        </div>
+        {/* ── PROFOUND ── */}
+        {tab === "profound" && (
+          <div>
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>PROfound Trial — Cohort A (BRCA1/BRCA2)</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {Object.entries(profound_a).map(([k, v]) => (
+                <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#f59e0b", fontSize: "0.78rem" }}>{k}</div>
+                  <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{String(v)}</div></>
+              ))}
+            </div>
+
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>PROfound Trial — Cohort B (ATM + Others)</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {Object.entries(profound_b).map(([k, v]) => (
+                <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#2980b9", fontSize: "0.78rem" }}>{k}</div>
+                  <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{String(v)}</div></>
+              ))}
+            </div>
+
+            {/* Atlas metadata */}
+            <h2 style={{ color: "#93c5fd", marginBottom: "0.75rem", fontSize: "1rem" }}>Atlas Metadata</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "0.4rem" }}>
+              {Object.entries(atlasMetadata).map(([k, v]) => (
+                <><div key={k + "k"} style={{ background: "#1e293b", padding: "0.4rem 0.7rem", borderRadius: "4px", color: "#94a3b8", fontSize: "0.78rem" }}>{k}</div>
+                  <div key={k + "v"} style={{ background: "#0f172a", padding: "0.4rem 0.7rem", borderRadius: "4px", fontSize: "0.78rem", color: "#e2e8f0" }}>{Array.isArray(v) ? v.join(", ") : String(v)}</div></>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── DEFINITIONS ── */}
+        {tab === "definitions" && (
+          <div>
+            {defGenes.map(g => (
+              <div key={g.gene} style={{ background: "#1e293b", border: `1px solid ${GENE_COLORS[g.gene] || "#334155"}`, borderRadius: "8px", padding: "1rem", marginBottom: "1rem" }}>
+                <h3 style={{ color: GENE_COLORS[g.gene] || "#e2e8f0", marginBottom: "0.25rem" }}>{g.gene} — {g.full_name}</h3>
+                <div style={{ color: "#64748b", fontSize: "0.75rem", marginBottom: "0.5rem" }}>{g.locus} · {GENE_INFO[g.gene]?.size || "—"} · {GENE_INFO[g.gene]?.inh || "—"}</div>
+                <div style={{ fontSize: "0.78rem", lineHeight: 1.6, marginBottom: "0.75rem", color: "#cbd5e1" }}>{g.protein_size}</div>
+
+                <div style={{ marginBottom: "0.75rem" }}>
+                  <div style={{ color: "#60a5fa", fontSize: "0.72rem", marginBottom: "0.4rem", fontWeight: 700 }}>KEY MUTATIONS</div>
+                  {(g.key_mutations || []).map((m, i) => (
+                    <div key={i} style={{ background: "#0f172a", borderRadius: "4px", padding: "0.5rem", marginBottom: "0.3rem", fontSize: "0.76rem" }}>
+                      <span style={{ color: "#f59e0b" }}>{m.variant}</span> — <span style={{ color: "#94a3b8" }}>{m.protein_effect}</span> — <span style={{ color: "#64748b" }}>{m.location}</span><br />
+                      <span style={{ color: "#cbd5e1" }}>{m.phenotype}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <div style={{ color: "#4ade80", fontSize: "0.72rem", marginBottom: "0.4rem", fontWeight: 700 }}>SURVEILLANCE PROTOCOL</div>
+                  {(g.surveillance || []).map((s, i) => (
+                    <div key={i} style={{ background: "#0f172a", borderRadius: "4px", padding: "0.4rem 0.6rem", marginBottom: "0.25rem", fontSize: "0.76rem", color: "#e2e8f0" }}>&#x2022; {s}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Key concepts */}
+            <h2 style={{ color: "#93c5fd", marginTop: "1.5rem", marginBottom: "0.75rem", fontSize: "1rem" }}>Key Clinical Concepts</h2>
+            {Object.entries(keyConcepts).map(([k, v]) => (
+              <div key={k} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: "6px", padding: "0.75rem", marginBottom: "0.5rem" }}>
+                <div style={{ color: "#f59e0b", fontSize: "0.78rem", fontWeight: 700, marginBottom: "0.3rem" }}>{k}</div>
+                <div style={{ fontSize: "0.78rem", lineHeight: 1.6, color: "#cbd5e1" }}>{v}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   );

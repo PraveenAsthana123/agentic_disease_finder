@@ -22003,7 +22003,16 @@
     "status": "built",
     "category": "hereditary_cancer_predisposition_atlas",
     "seeds": "3470-3477",
-    "genes": ["PTCH1","MSH2","XPC","ERCC2","CYLD","TP53","SUFU","PTCH2"],
+    "genes": [
+      "PTCH1",
+      "MSH2",
+      "XPC",
+      "ERCC2",
+      "CYLD",
+      "TP53",
+      "SUFU",
+      "PTCH2"
+    ],
     "patients": 320,
     "routes": [
       "/api/hereditary-cutaneous-malignancy-predisposition-atlas/overview",
@@ -22015,5 +22024,33 @@
     "notes": "PTCH1-Gorlin-NBCCS-BCC-100s-1000s-OKC-PATHOGNOMONIC-Calcified-Falx-AVOID-RADIATION-ABSOLUTELY-Vismodegib-FDA2012 MSH2-Muir-Torre-Sebaceous-Carcinoma-PATHOGNOMONIC-IHC-MANDATORY-EPCAM-MLPA-Pembrolizumab-FDA2017 XPC-XP-C-GGR-NER-SCC-BCC-10000x-NO-Neurodegeneration ERCC2-XPD-SCC-BCC-10000x-Neurodegeneration-TFIIH-Dual-Role CYLD-Brooke-Spiegler-Cylindromas-PATHOGNOMONIC-Turban-Tumor-Malignant-5-10pct TP53-LFS-SCC-BCC-5-10x-AVOID-RADIATION SUFU-Adult-BCC-5-10x-Meningioma PTCH2-Gorlin-Variant-BCC-5-20x",
     "api_base": "/api/hereditary-cutaneous-malignancy-predisposition-atlas",
     "portal_path": "/hereditary-cutaneous-malignancy-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-prostate-cancer-predisposition-atlas",
+    "title": "Hereditary-Prostate-Cancer-Predisposition-Atlas Complete-8-Gene-BRCA2-BRCA1-ATM-PALB2-MLH1-MSH2-HOXB13-CHEK2",
+    "status": "built",
+    "category": "hereditary_cancer_predisposition_atlas",
+    "seeds": "3486-3493",
+    "genes": [
+      "BRCA2",
+      "BRCA1",
+      "ATM",
+      "PALB2",
+      "MLH1",
+      "MSH2",
+      "HOXB13",
+      "CHEK2"
+    ],
+    "patients": 320,
+    "routes": [
+      "/api/hereditary-prostate-cancer-predisposition-atlas/overview",
+      "/api/hereditary-prostate-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-prostate-cancer-predisposition-atlas/definitions"
+    ],
+    "page": "/hereditary-prostate-cancer-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "BRCA2-PCa-15pct-mCRPC-Olaparib-PROfound-HR-0.34-FDA2020 BRCA1-PCa-2-3x-PROfound-Cohort-A-HR-0.35 ATM-HIGH-GRADE-Gleason-8-10-RT-Reduce-20-30pct-PROfound-Cohort-B PALB2-PCa-2-3x-Breast-53pct-HRD-Emerging MLH1-Lynch1-MSI-H-PCa-3-8x-Pembrolizumab-FDA2017 MSH2-Lynch2-PCa-HIGHEST-11-14x-EPCAM-MLPA-MANDATORY HOXB13-G84E-3.5pct-N-European-PCa-3-6x-PROSTATE-SPECIFIC CHEK2-I157T-1100delC-Moderate-PCa-2-3x-No-PARPi",
+    "api_base": "/api/hereditary-prostate-cancer-predisposition-atlas",
+    "portal_path": "/hereditary-prostate-cancer-predisposition-atlas"
   }
 ]
