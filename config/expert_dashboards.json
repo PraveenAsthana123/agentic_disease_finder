@@ -21429,5 +21429,25 @@
     "patient_count": 320,
     "status": "built",
     "built_date": "2026-09-22"
+  },
+  {
+    "id": "hereditary-leukemia-predisposition-atlas",
+    "title": "Hereditary Leukemia Predisposition Atlas",
+    "slug": "hereditary-leukemia-predisposition-atlas",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "RUNX1",
+      "GATA2",
+      "CEBPA",
+      "DDX41",
+      "ETV6",
+      "SAMD9L",
+      "TP53",
+      "BRCA2"
+    ],
+    "seeds": "3286-3293",
+    "patient_count": 320,
+    "status": "built",
+    "built_date": "2026-09-22"
   }
 ]

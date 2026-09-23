@@ -50692,6 +50692,27 @@ async def hereditary_rhabdomyosarcoma_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-leukemia-predisposition-atlas/overview")
+async def hereditary_leukemia_predisposition_atlas_overview():
+    """Hereditary-Leukemia-Predisposition-Atlas overview (RUNX1-GATA2-CEBPA-DDX41-ETV6-SAMD9L-TP53-BRCA2; 320-patient aggregate 8x40 seeds 3286-3293; RUNX1-FPD-AML-35-44pct-NO-FAMILY-HSCT-WITHOUT-GERMLINE-EXCLUSION; GATA2-MDS-80pct-Monosomy7-PATHOGNOMONIC-HSCT-Curative-Lymphedema; CEBPA-Biallelic-AML-90-100pct-GOOD-PROGNOSIS-HSCT-NOT-CR1; DDX41-LATE-ONSET-60-70yr-SIBLING-EXCLUSION-MANDATORY; ETV6-ALL-20-30x-PATHOGNOMONIC-NOT-t1221-SOMATIC; SAMD9L-Monosomy7-ADAPTIVE-REVERSION-Cerebellar-Ataxia-DOES-NOT-RESOLVE; TP53-t-AML-Complex-Karyotype-AVOID-RADIATION-ABSOLUTELY; BRCA2-FA-D1-AML-PATHOGNOMONIC-AVOID-Alkylating-Sibling-Exclusion)."""
+    from scripts.hereditary_leukemia_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-leukemia-predisposition-atlas/breakdown")
+async def hereditary_leukemia_predisposition_atlas_breakdown():
+    """Hereditary-Leukemia-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; RUNX1-Dense-Granule-Defect-FPD-AML; GATA2-Monosomy7-Emberger-MonoMAC; CEBPA-Biallelic-Good-Prognosis-HiDAC; DDX41-D140G-Y259C-R525H-Second-Hit; ETV6-B-ALL-Thrombocytopenia-Macrocytosis; SAMD9L-ATXPC-Adaptive-Reversion; TP53-t-AML-APR246-Magrolimab; BRCA2-FA-D1-DEB-MMC-Alkylating-Free; mean_age_dx per gene; CR pct; transplant pct)."""
+    from scripts.hereditary_leukemia_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-leukemia-predisposition-atlas/definitions")
+async def hereditary_leukemia_predisposition_atlas_definitions():
+    """Hereditary-Leukemia-Predisposition-Atlas clinical definitions (RUNX1-FPD-AML-35-44PCT-NO-FAMILY-HSCT-WITHOUT-EXCLUSION; GATA2-MDS-80PCT-MONOSOMY7-PATHOGNOMONIC-HSCT-CURATIVE; CEBPA-BIALLELIC-90-100PCT-GOOD-PROGNOSIS-HSCT-NOT-CR1; DDX41-LATE-ONSET-SIBLING-EXCLUSION; ETV6-ALL-20-30X-NOT-SOMATIC-t1221; SAMD9L-ADAPTIVE-REVERSION-MONOSOMY7-ATXPC; TP53-T-AML-AVOID-RADIATION-ABSOLUTELY; BRCA2-FA-D1-AML-PATHOGNOMONIC-AVOID-ALKYLATING; CASCADE-Testing-Hereditary-Leukemia)."""
+    from scripts.hereditary_leukemia_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
