@@ -51137,6 +51137,33 @@ async def hereditary_soft_tissue_sarcoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/overview")
+async def hereditary_bladder_urothelial_cancer_predisposition_atlas_overview():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas overview — 8 genes (MSH2, MLH1, MSH6, BRCA1, BRCA2, RB1, TP53, PTEN),
+    320-patient aggregate (8x40, seeds 3446-3453), MSI-H/MMR-d rates, HRD rates, upper-tract rates,
+    radiation-CI rates, pembrolizumab/olaparib eligibility, key clinical facts per gene."""
+    from scripts.hereditary_bladder_urothelial_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/breakdown")
+async def hereditary_bladder_urothelial_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas breakdown — per-gene patient cohort (n=40 each),
+    top tumour types, top variants, treatment protocols, surveillance protocols, gene info."""
+    from scripts.hereditary_bladder_urothelial_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/definitions")
+async def hereditary_bladder_urothelial_cancer_predisposition_atlas_definitions():
+    """Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas definitions — clinical definitions per gene,
+    key clinical distinctions (MSH2 urothelial HIGHEST Lynch, EPCAM MLPA mandatory, BRCA1/2 HRD cisplatin/olaparib,
+    RB1 secondary TCC AVOID radiation CDK4-6i inactive, TP53 LFS AVOID radiation cystectomy mandatory,
+    PTEN Cowden macrocephaly mTOR urothelial)."""
+    from scripts.hereditary_bladder_urothelial_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

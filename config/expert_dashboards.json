@@ -21896,5 +21896,31 @@
     ],
     "patients": 320,
     "category": "hereditary_cancer_predisposition_atlas"
+  },
+  {
+    "id": "hereditary-bladder-urothelial-cancer-predisposition-atlas",
+    "title": "Hereditary-Bladder-Urothelial-Cancer-Predisposition-Atlas Complete-8-Gene-MSH2-MLH1-MSH6-BRCA1-BRCA2-RB1-TP53-PTEN",
+    "status": "built",
+    "category": "hereditary_cancer_predisposition_atlas",
+    "seeds": "3446-3453",
+    "genes": [
+      "MSH2",
+      "MLH1",
+      "MSH6",
+      "BRCA1",
+      "BRCA2",
+      "RB1",
+      "TP53",
+      "PTEN"
+    ],
+    "patients": 320,
+    "routes": [
+      "/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/overview",
+      "/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/breakdown",
+      "/api/hereditary-bladder-urothelial-cancer-predisposition-atlas/definitions"
+    ],
+    "page": "/hereditary-bladder-urothelial-cancer-predisposition-atlas",
+    "built_date": "2026-09-23",
+    "notes": "MSH2-urothelial-10-14pct-HIGHEST-Lynch-EPCAM-MLPA-MANDATORY MLH1-MSI-H-pembrolizumab-FDA2017-constitutional-methylation-NOT-inherited MSH6-endometrial-71pct-HIGHEST-4-pseudogenes-MLPA BRCA1-cisplatin-PREFERRED-olaparib-FDA2020-HRD BRCA2-urothelial-2-3x-HIGHER-cisplatin-HRD-olaparib RB1-secondary-TCC-post-RT-5x-AVOID-radiation-CDK4-6i-INACTIVE TP53-LFS-AVOID-RADIATION-ABSOLUTELY-trimodality-RT-CONTRAINDICATED-cystectomy PTEN-Cowden-macrocephaly-PATHOGNOMONIC-Lhermitte-Duclos-mTOR-everolimus"
   }
 ]
