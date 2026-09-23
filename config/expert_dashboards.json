@@ -21607,7 +21607,7 @@
   {
     "id": "hereditary-pancreatic-cancer-predisposition-atlas",
     "title": "Hereditary Pancreatic Cancer Predisposition Atlas",
-    "subtitle": "Complete 8-Gene Hereditary Pancreatic Cancer Predisposition Reference \u2014 BRCA2-CDKN2A-ATM-PALB2-STK11-MLH1-TP53-PRSS1",
+    "subtitle": "Complete 8-Gene Reference \u00b7 BRCA2-CDKN2A-ATM-PALB2-STK11-BRCA1-MLH1-TP53 \u00b7 320-Patient Aggregate (8\u00d740, seeds 3478\u20133485)",
     "status": "built",
     "genes": [
       "BRCA2",
@@ -21615,11 +21615,11 @@
       "ATM",
       "PALB2",
       "STK11",
+      "BRCA1",
       "MLH1",
-      "TP53",
-      "PRSS1"
+      "TP53"
     ],
-    "seeds": "3342-3349",
+    "seeds": "3478-3485",
     "patients": 320,
     "endpoints": [
       "/api/hereditary-pancreatic-cancer-predisposition-atlas/overview",
