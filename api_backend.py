@@ -51003,6 +51003,25 @@ async def hereditary_crc_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-net-carcinoid-predisposition-atlas/overview")
+async def hereditary_net_carcinoid_predisposition_atlas_overview():
+    """Hereditary-NET-Carcinoid-Predisposition-Atlas overview — 8 genes (MEN1-VHL-RET-NF1-TSC2-CDKN1B-PRKAR1A-SDHB), 320 patients, seeds 3406-3413. MEN1-pNETs-40-70pct-Gastrinoma-ZES-PATHOGNOMONIC-HPT-95pct-Pituitary-30-50pct; VHL-pNETs-15-17pct-ClearCell-NonFunctional-ONLY-Belzutifan-FDA2021; RET-MTC-100pct-Codon-Based-Thyroidectomy-Selpercatinib-FDA2020; NF1-DuodenalSomatostatinoma-PATHOGNOMONIC-PsammomaBodies-Periampullary; TSC2-mTOR-Direct-Everolimus-FDA2016-SEGA-CorticalTubers-PATHOGNOMONIC; CDKN1B-MEN4-ExcludeMEN1-First-Overlap-Phenotype; PRKAR1A-CardiacMyxoma-LIFE-THREATENING-AnnualEcho-MANDATORY-PPNAD; SDHB-MalignantPGL-35-40pct-HIGHEST-SSTR-PET-MANDATORY-IHC-Universal-Marker."""
+    from scripts.hereditary_net_carcinoid_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-net-carcinoid-predisposition-atlas/breakdown")
+async def hereditary_net_carcinoid_predisposition_atlas_breakdown():
+    """Hereditary-NET-Carcinoid-Predisposition-Atlas per-gene breakdown — MEN1-610aa-11q13.1-Menin-Nuclear-Scaffold-LOF; VHL-213aa-3p25.3-HIF-Substrate-Adaptor-LOF; RET-1114aa-10q11.21-RTK-GOF-MEN2A-2B-FMTC; NF1-2839aa-17q11.2-RAS-GAP-LOF; TSC2-1807aa-16p13.3-Tuberin-mTOR-GAP-LOF; CDKN1B-196aa-12p13.1-p27-KIP1-CDK2-Inhibitor-LOF; PRKAR1A-381aa-17q24.2-PKA-RegulatorySubunit-LOF; SDHB-280aa-1p36.13-SDH-B-Iron-Sulfur-Subunit-LOF."""
+    from scripts.hereditary_net_carcinoid_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-net-carcinoid-predisposition-atlas/definitions")
+async def hereditary_net_carcinoid_predisposition_atlas_definitions():
+    """Hereditary-NET-Carcinoid-Predisposition-Atlas clinical definitions — MEN1-CONCURRENT-HPT-PITUITARY-pNET-PATHOGNOMONIC; VHL-pNETs-CLEAR-CELL-ONLY-NON-FUNCTIONAL; RET-CODON-BASED-THYROIDECTOMY-M918T-6MONTHS-URGENT; NF1-DUODENAL-SOMATOSTATINOMA-PATHOGNOMONIC-PERIAMPULLARY; TSC2-EVEROLIMUS-mTOR-DIRECT-TARGET-FDA2016; CDKN1B-MEN4-EXCLUDE-MEN1-FIRST; PRKAR1A-CARDIAC-MYXOMA-ANNUAL-ECHO-MANDATORY; SDHB-MALIGNANT-PGL-35-40PCT-HIGHEST-SDHx."""
+    from scripts.hereditary_net_carcinoid_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
