@@ -51022,6 +51022,25 @@ async def hereditary_net_carcinoid_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lung-cancer-predisposition-atlas/overview")
+async def hereditary_lung_cancer_predisposition_atlas_overview():
+    """Hereditary-Lung-Cancer-Predisposition-Atlas overview — EGFR-germline-sensitizing-osimertinib; BRCA2-HRD-PARPi-eligible; TP53-LFS-AVOID-RADIATION; STK11-PJS-NSCLC-16x-RR-HIGHEST; DICER1-PPB-PATHOGNOMONIC; BAP1-mesothelioma-asbestos-avoidance; FLCN-BHD-pneumothorax-40pct; NF1-MPNST-sarcoma-NOT-lung-cancer. 320-patient aggregate 8x40 seeds 3414-3421."""
+    from scripts.hereditary_lung_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-lung-cancer-predisposition-atlas/breakdown")
+async def hereditary_lung_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Lung-Cancer-Predisposition-Atlas breakdown — per-gene: EGFR-TKI-eligibility; BRCA2-PARPi; TP53-radiation-avoidance; STK11-immunotherapy-resistance; DICER1-PPB-type; BAP1-mesothelioma; FLCN-pneumothorax; NF1-MPNST-risk."""
+    from scripts.hereditary_lung_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-lung-cancer-predisposition-atlas/definitions")
+async def hereditary_lung_cancer_predisposition_atlas_definitions():
+    """Hereditary-Lung-Cancer-Predisposition-Atlas clinical definitions — EGFR-germline-osimertinib-T790M; BRCA2-HRD-cisplatin-PARPi; TP53-LFS-WB-MRI-Toronto-RADIATION-AVOIDANCE; STK11-KRAS-immunotherapy-cold; DICER1-PPB-annual-CT-birth; BAP1-asbestos-MANDATORY-avoided; FLCN-BHD-pneumothorax-pleurodesis; NF1-MPNST-vs-NSCLC-distinction."""
+    from scripts.hereditary_lung_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/trigger-logs/overview")
 async def trigger_logs_overview():
     """Trigger Logs & Lifestyle Diary overview — total logs, seizure rate, trigger distribution,
