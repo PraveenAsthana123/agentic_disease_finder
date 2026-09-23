@@ -50629,6 +50629,27 @@ async def hereditary_soft_tissue_sarcoma_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-nephroblastoma-wilms-tumor-atlas/overview")
+async def hereditary_nephroblastoma_wilms_tumor_atlas_overview():
+    """Hereditary-Nephroblastoma-Wilms-Tumor-Predisposition-Atlas overview (WT1-CDKN1C-SIX1-SIX2-DICER1-TP53-WTX-BRCA2; 320-patient aggregate 8x40 seeds 3262-3269; WT1-WAGR-Aniridia-PATHOGNOMONIC-DDS-DMS-PATHOGNOMONIC-Frasier-FSGS-XY-Gonadal-Dysgenesis-PATHOGNOMONIC; CDKN1C-BWS-IC2-Macroglossia-Omphalocele-Hemihypertrophy-PATHOGNOMONIC-Wilms-7-10pct; SIX1-Q177R-Hotspot-Blastemal-Predominant-3-4pct-Wilms; SIX2-Q177R-Hotspot-1-2pct-Wilms; DICER1-Cystic-Nephroma-PATHOGNOMONIC-PPB-PATHOGNOMONIC-AVOID-Radiation-Children; TP53-Anaplastic-Wilms-GT90pct-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-LFS; WTX-AMER1-Somatic-15-20pct-Sporadic-OSCS-Osteopathia-Striata-PATHOGNOMONIC; BRCA2-FA-D1-Bilateral-Wilms-PATHOGNOMONIC-DEB-MMC-Test-PATHOGNOMONIC-Sibling-Donor-Exclusion)."""
+    from scripts.hereditary_nephroblastoma_wilms_tumor_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-nephroblastoma-wilms-tumor-atlas/breakdown")
+async def hereditary_nephroblastoma_wilms_tumor_atlas_breakdown():
+    """Hereditary-Nephroblastoma-Wilms-Tumor-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; WT1-Wilms-95pct-DDS-Denys-Drash-Frasier-WAGR-Aniridia; CDKN1C-BWS-Wilms-7-10pct-Hepatoblastoma-2-3pct-Hyperinsulinism; SIX1-Q177R-Blastemal-Wilms-3-4pct; SIX2-Q177R-Wilms-1-2pct; DICER1-Cystic-Nephroma-PPB-Cervical-ERMS-AVOID-Radiation; TP53-Anaplastic-Wilms-GT90pct-UH-1-AVOID-RADIATION; WTX-X-Linked-Somatic-15-20pct-OSCS; BRCA2-FA-D1-Bilateral-Wilms-Cisplatin-AVOID-Alkylating-Agents; mean_age_dx per gene; CR pct)."""
+    from scripts.hereditary_nephroblastoma_wilms_tumor_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-nephroblastoma-wilms-tumor-atlas/definitions")
+async def hereditary_nephroblastoma_wilms_tumor_atlas_definitions():
+    """Hereditary-Nephroblastoma-Wilms-Tumor-Predisposition-Atlas clinical definitions (WT1-WAGR-Aniridia-PATHOGNOMONIC-11p13-GU-Anomalies-US-3m-to-7yr; WT1-DDS-DMS-Mesangial-Sclerosis-PATHOGNOMONIC-Wilms-90-95pct; WT1-Frasier-FSGS-Progressive-PATHOGNOMONIC-XY-Gonadal-Dysgenesis-PATHOGNOMONIC; CDKN1C-BWS-IC2-Macroglossia-Omphalocele-Hemihypertrophy-PATHOGNOMONIC-Wilms-7-10pct; SIX1-Q177R-Blastemal-Predominant-Wilms-COG-High-Risk; DICER1-Cystic-Nephroma-PATHOGNOMONIC-PPB-PATHOGNOMONIC-Cervical-ERMS-PATHOGNOMONIC-AVOID-Radiation-CT-Chest-Siblings-LT-8yr; TP53-Anaplastic-Wilms-GT90pct-PATHOGNOMONIC-AVOID-RADIATION-ABSOLUTELY-LFS-WBMRI-Toronto-UH-1-Regimen; WTX-AMER1-X-Linked-LOF-Somatic-15-20pct-OSCS-Osteopathia-Striata-PATHOGNOMONIC-GOF-Females; BRCA2-FA-D1-Bilateral-Wilms-PATHOGNOMONIC-DEB-MMC-PATHOGNOMONIC-Sibling-Donor-Exclusion-MANDATORY-AVOID-Alkylating-Agents; CASCADE-Testing-Hereditary-Wilms-Tumor)."""
+    from scripts.hereditary_nephroblastoma_wilms_tumor_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

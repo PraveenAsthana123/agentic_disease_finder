@@ -21380,5 +21380,13 @@
     ],
     "seed_range": "3254-3261",
     "patients": 320
+  },
+  {
+    "id": "hereditary-nephroblastoma-wilms-tumor-atlas",
+    "name": "Hereditary-Nephroblastoma-Wilms-Tumor-Predisposition-Atlas Complete-8-Gene-WT1-CDKN1C-SIX1-SIX2-DICER1-TP53-WTX-BRCA2",
+    "status": "built",
+    "category": "hereditary-cancer-atlas",
+    "seed_range": "3262-3269",
+    "patients": 320
   }
 ]
