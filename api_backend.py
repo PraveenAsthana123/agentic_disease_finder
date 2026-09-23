@@ -50902,6 +50902,27 @@ async def hereditary_rcc_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-breast-cancer-predisposition-atlas/overview")
+async def hereditary_breast_cancer_predisposition_atlas_overview():
+    """Hereditary-Breast-Cancer-Predisposition-Atlas overview (BRCA1-BRCA2-PALB2-CHEK2-ATM-CDH1-STK11-NF1; 320-patient aggregate seeds 3366-3373; olaparib-OlympiAD-OlympiA-FDA; RRSO-35-40yr-BRCA1; TBCRC048-PALB2-82pct-ORR; no-PARPi-standard-CHEK2; radiosensitivity-absolute-ATM-biallelic; total-gastrectomy-CDH1-mandatory; breast-50pct-STK11-HIGHEST; annual-MRI-NF1-30yr)."""
+    from scripts.hereditary_breast_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-breast-cancer-predisposition-atlas/breakdown")
+async def hereditary_breast_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Breast-Cancer-Predisposition-Atlas per-gene breakdown (BRCA1-TNBC-70pct-RRSO-35-40yr; BRCA2-male-breast-6pct-highest; PALB2-53pct-HIGHEST-non-BRCA2; CHEK2-moderate-no-PARPi; ATM-telangiectasias-PATHOGNOMONIC; CDH1-lobular-ILC-PATHOGNOMONIC-gastrectomy; STK11-mucocutaneous-macules-PATHOGNOMONIC; NF1-cafe-au-lait-PATHOGNOMONIC)."""
+    from scripts.hereditary_breast_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-breast-cancer-predisposition-atlas/definitions")
+async def hereditary_breast_cancer_predisposition_atlas_definitions():
+    """Hereditary-Breast-Cancer-Predisposition-Atlas clinical definitions (BRCA1-OLAPARIB-OlympiAD-OlympiA; BRCA2-FANCD1-MALE-BREAST; PALB2-TBCRC048-82PCT-ORR; CHEK2-NO-PARP-STANDARD; ATM-RADIOSENSITIVITY-ABSOLUTE; CDH1-TOTAL-GASTRECTOMY-MANDATORY; STK11-GI-ENDOSCOPY-8YR; NF1-SELUMETINIB-FDA2020; CASCADE-Testing-Hereditary-Breast-Cancer-Predisposition)."""
+    from scripts.hereditary_breast_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
