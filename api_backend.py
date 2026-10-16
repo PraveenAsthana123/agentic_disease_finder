@@ -51357,6 +51357,69 @@ async def hereditary_multiple_myeloma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
+async def hereditary_head_neck_cancer_predisposition_atlas_overview():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/breakdown")
+async def hereditary_head_neck_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; FANCA-FA-A-most-common-65pct; FANCC-Ashkenazi; FANCD2-K561-ubiquitination; FANCG-NBS1-scaffold; TP53-LFS-HNSCC-30-35pct; ATM-2-5x-heterozyg; NBN-2-3x-heterozyg; CDKN2A-FAMMM-5-10x-HPV-neg; mean_age_onset per gene)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/definitions")
+async def hereditary_head_neck_cancer_predisposition_atlas_definitions():
+    """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas clinical definitions (FANCA-FA-alkylating-CI-absolutely; FANCC-IVS4-Ashkenazi; FANCD2-DEB-MMC-test-gold-standard; FANCG-NBS1-interaction; TP53-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto; ATM-reduce-RT-20-30pct; NBN-MRN-complex; CDKN2A-CDK4-6i-INACTIVE-p16-null)."""
+    from scripts.hereditary_head_neck_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/overview")
+async def hereditary_esophageal_cancer_predisposition_atlas_overview():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas overview (RHBDF2-TP53-CDH1-BRCA2-ATM-MLH1-MSH2-PALB2; 320-patient aggregate 8x40 seeds 3462-3469; RHBDF2-Tylosis-Howel-Evans-95pct-MOST-SPECIFIC; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; CDH1-HDGC-Barrett-prophylactic-gastrectomy; BRCA2-HRD-olaparib; MLH1-MSI-H-pembrolizumab)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/breakdown")
+async def hereditary_esophageal_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; RHBDF2-PPK-PATHOGNOMONIC-95pct; TP53-3-5pct-LFS; CDH1-GEJ-2-3x; BRCA2-2-3x-SCC-adeno; ATM-2-3x-heterozyg; MLH1-0.4-1pct-Lynch; MSH2-0.5pct-Muir-Torre; PALB2-1.8x-emerging; mean_age_onset per gene)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-esophageal-cancer-predisposition-atlas/definitions")
+async def hereditary_esophageal_cancer_predisposition_atlas_definitions():
+    """Hereditary-Esophageal-Cancer-Predisposition-Atlas clinical definitions (RHBDF2-ADAM17-TACE-EGFR-shedding-Tylosis; TP53-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto; CDH1-prophylactic-gastrectomy-20-30yr-MANDATORY; BRCA2-HRD-cisplatin-preferred; ATM-reduce-RT-20-30pct; MLH1-pembrolizumab-FDA2017; MSH2-EPCAM-MLPA-MANDATORY; PALB2-HRD-olaparib-sensitivity)."""
+    from scripts.hereditary_esophageal_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/overview")
+async def hereditary_cervical_cancer_predisposition_atlas_overview():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas overview (MLH1-MSH6-RAD51C-RAD51D-CHEK2-PALB2-CDKN2A-NBN; 320-patient aggregate 8x40 seeds 3510-3517; MLH1-Lynch1-cervical-adeno-2-3x-HPV-amplified; MSH6-endometrial-71pct-DOMINANT; RAD51C-FANCO-HGSOC-ovarian; RAD51D-ovarian-10-13pct; CHEK2-moderate-risk; NBN-657del5-Slavic)."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/breakdown")
+async def hereditary_cervical_cancer_predisposition_atlas_breakdown():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; MLH1-cervical-adeno-2-3x; MSH6-Lynch3-endometrial-71pct; RAD51C-BCDX2-ovarian-dominant; RAD51D-ovarian-10-13pct; CHEK2-1.5-2x-moderate; PALB2-1.8-2.5x-HRD; CDKN2A-2-3x-HPV-synergy; NBN-SCC-2-4x-Slavic; mean_age_onset per gene)."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cervical-cancer-predisposition-atlas/definitions")
+async def hereditary_cervical_cancer_predisposition_atlas_definitions():
+    """Hereditary-Cervical-Cancer-Predisposition-Atlas clinical definitions (MLH1-pembrolizumab-FDA2017-MSI-H; MSH6-MSI-L-30pct-pitfall; RAD51C-olaparib-HRD; RAD51D-RRSO-40-45yr; CHEK2-NOT-HRD-no-PARPi; PALB2-BRCA2-anchor-FANCN; CDKN2A-FAMMM-p16-ARF-dual; NBN-657del5-Slavic-MRN-complex-AVOID-RT-biallelic)."""
+    from scripts.hereditary_cervical_cancer_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
