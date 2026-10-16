@@ -51336,6 +51336,27 @@ async def hereditary_biliary_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-multiple-myeloma-predisposition-atlas/overview")
+async def hereditary_multiple_myeloma_predisposition_atlas_overview():
+    """Hereditary-Multiple-Myeloma-Predisposition-Atlas overview (FAM46C-BRCA2-ATM-TP53-TRAF3-CDKN2A-NBN-PALB2; 320-patient aggregate 8x40 seeds 3526-3533; FAM46C-first-FMM-gene-Ashkenazi-S103N; TRAF3-NF-κB-non-canonical-BCMA-upregulated; ATM-RADIOSENSITIVITY-ABSOLUTE-TBI-avoid; TP53-del17p-worst-prognosis-AVOID-RADIATION-ABSOLUTELY; CDKN2A-CDK4-6i-INACTIVE-p16-null; NBN-657del5-Slavic-NHL-60x-HIGHEST)."""
+    from scripts.hereditary_multiple_myeloma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-multiple-myeloma-predisposition-atlas/breakdown")
+async def hereditary_multiple_myeloma_predisposition_atlas_breakdown():
+    """Hereditary-Multiple-Myeloma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; FAM46C-mm_pct-familial; BRCA2-hrd_pct-olaparib; ATM-radiosensitivity-TBI-avoid; TP53-del17p-worst-cytogenetics; TRAF3-NF-κB-BCMA; CDKN2A-del9p21-CDK4-6i-inactive; NBN-NHL-60x-Slavic; PALB2-TBCRC048-82pct-ORR; mean_age_onset per gene)."""
+    from scripts.hereditary_multiple_myeloma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-multiple-myeloma-predisposition-atlas/definitions")
+async def hereditary_multiple_myeloma_predisposition_atlas_definitions():
+    """Hereditary-Multiple-Myeloma-Predisposition-Atlas clinical definitions (FAM46C-FMM-Ashkenazi-bortezomib-sensitivity; BRCA2-POLO-olaparib-HRD-niraparib; ATM-ceralasertib-ATRi-radiosensitivity; TP53-del17p-daratumumab-TBI-AVOID; TRAF3-NF-κB-teclistamab-BCMA; CDKN2A-FAMM-CDK4-6i-resistance-venetoclax; NBN-MRN-PARP-657del5-Slavic; PALB2-TBCRC048-cascade-hereditary-MM)."""
+    from scripts.hereditary_multiple_myeloma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

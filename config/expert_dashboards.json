@@ -22176,5 +22176,26 @@
     "script": "scripts/hereditary_biliary_cancer_predisposition_atlas_dashboard.py",
     "built_date": "2026-09-23",
     "notes": "Built scripts/hereditary_biliary_cancer_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-biliary-cancer-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-biliary-cancer-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-Hematologic-Malignancy-Predisposition-Atlas, expert_dashboards.json count 1327->1328. Built 2026-09-23. Genes: BAP1-BRCA1-BRCA2-ATM-MLH1-MSH2-CDKN2A-STK11 seeds 3518-3525."
+  },
+  {
+    "id": "hereditary-multiple-myeloma-predisposition-atlas",
+    "name": "Hereditary Multiple Myeloma Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "FAM46C",
+      "BRCA2",
+      "ATM",
+      "TP53",
+      "TRAF3",
+      "CDKN2A",
+      "NBN",
+      "PALB2"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3526-3533",
+    "registered": "2026-10-16",
+    "slug": "hereditary-multiple-myeloma-predisposition-atlas",
+    "api_base": "/api/hereditary-multiple-myeloma-predisposition-atlas"
   }
 ]
