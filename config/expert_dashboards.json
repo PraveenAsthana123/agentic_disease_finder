@@ -22198,5 +22198,26 @@
     "registered": "2026-10-16",
     "slug": "hereditary-multiple-myeloma-predisposition-atlas",
     "api_base": "/api/hereditary-multiple-myeloma-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-wm-lpl-predisposition-atlas",
+    "name": "Hereditary Waldenström Macroglobulinemia / LPL Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "MYD88",
+      "CXCR4",
+      "BTK",
+      "ATM",
+      "TP53",
+      "NBN",
+      "CARD11",
+      "PIK3CD"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3534-3541",
+    "registered": "2026-10-16",
+    "slug": "hereditary-wm-lpl-predisposition-atlas",
+    "api_base": "/api/hereditary-wm-lpl-predisposition-atlas"
   }
 ]

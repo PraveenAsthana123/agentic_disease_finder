@@ -51357,6 +51357,27 @@ async def hereditary_multiple_myeloma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-wm-lpl-predisposition-atlas/overview")
+async def hereditary_wm_lpl_predisposition_atlas_overview():
+    """Hereditary-WM-LPL-Predisposition-Atlas overview (MYD88-CXCR4-BTK-ATM-TP53-NBN-CARD11-PIK3CD; 320-patient aggregate 8x40 seeds 3534-3541; MYD88-L265P->90pct-WM-MOST-COMMON-BTKi-ibrutinib-zanubrutinib; CXCR4WHIM-40pct-WM-inferior-BTKi-zanubrutinib+venetoclax; BTK-XLA-drug-target; ATM-RADIOSENSITIVITY-ABSOLUTE; TP53-del17p-WORST; NBN-657del5-Slavic-NHL-60x; CARD11-BENTA-NF-kB; PIK3CD-APDS1-leniolisib-FDA2023)."""
+    from scripts.hereditary_wm_lpl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-wm-lpl-predisposition-atlas/breakdown")
+async def hereditary_wm_lpl_predisposition_atlas_breakdown():
+    """Hereditary-WM-LPL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; MYD88-WM-80pct-L265P-90pct; CXCR4WHIM-40pct-WM-inferior-BTKi; BTK-XLA-IVIG-kinase-target; ATM-WM-2x-RADIOSENSITIVITY-ceralasertib; TP53-del17p-WORST-venetoclax; NBN-657del5-NHL-60x; CARD11-BENTA-NF-kB-DLBCL; PIK3CD-APDS1-PI3Kdelta-leniolisib; mean_age_onset per gene)."""
+    from scripts.hereditary_wm_lpl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-wm-lpl-predisposition-atlas/definitions")
+async def hereditary_wm_lpl_predisposition_atlas_definitions():
+    """Hereditary-WM-LPL-Predisposition-Atlas clinical definitions (MYD88-L265P-NF-kB-ibrutinib-zanubrutinib-ASPEN; CXCR4WHIM-SDF1-plerixafor-FDA2024; BTK-XLA-IVIG-lifelong-C481S-pirtobrutinib; ATM-ceralasertib-ATRi-synthetic-lethality-AVOID-TBI; TP53-del17p-venetoclax-zanubrutinib-AVOID-RADIATION-ABSOLUTELY; NBN-MRN-PARP-657del5-Slavic; CARD11-DLBCL-ibrutinib-BENTA; PIK3CD-leniolisib-FDA2023-idelalisib)."""
+    from scripts.hereditary_wm_lpl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
