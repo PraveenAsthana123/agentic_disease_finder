@@ -22597,5 +22597,31 @@
     "script": "scripts/hereditary_nk_t_cell_lymphoma_predisposition_atlas_dashboard.py",
     "seeds": "3654-3661",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary_aml_predisposition_atlas",
+    "title": "Hereditary-AML-Predisposition-Atlas",
+    "status": "built",
+    "category": "hereditary-cancer-predisposition",
+    "genes": [
+      "CEBPA",
+      "DDX41",
+      "RUNX1",
+      "GATA2",
+      "TP53",
+      "ANKRD26",
+      "ETV6",
+      "SAMD9L"
+    ],
+    "seeds": "3662-3669",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-aml-predisposition-atlas/overview",
+      "/api/hereditary-aml-predisposition-atlas/breakdown",
+      "/api/hereditary-aml-predisposition-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_aml_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-aml-predisposition-atlas/page.jsx",
+    "built_date": "2026-10-17"
   }
 ]

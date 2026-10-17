@@ -51443,21 +51443,21 @@ async def hereditary_t_all_predisposition_atlas_definitions():
 
 @app.get("/api/hereditary-aml-predisposition-atlas/overview")
 async def hereditary_aml_predisposition_atlas_overview():
-    """Hereditary-AML-Predisposition-Atlas overview (CEBPA-RUNX1-GATA2-DDX41-TP53-BRCA2-FANCA-NF1; 320-patient aggregate 8x40 seeds 3566-3573; CEBPA-biallelic-ELN-fav-CR-90pct; RUNX1-FPD-AML-30-50pct; GATA2-MonoMAC-MDS-30-70x; DDX41-late-onset-55-65yr; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; BRCA2-FA-D1-AML-HIGHEST; FANCA-FA-A-AML-50x; NF1-JMML-200-500x)."""
+    """Hereditary-AML-Predisposition-Atlas overview (CEBPA-biallelic-N+C-PATHOGNOMONIC; DDX41-late-onset-55-65yr-HALLMARK; RUNX1-thrombocytopenia-PATHOGNOMONIC; GATA2-NK-lymphopenia-PATHOGNOMONIC; TP53-complex-karyotype-PATHOGNOMONIC; ANKRD26-5UTR-panel-MANDATORY; ETV6-RUNX1-fusion-ABSENT-germline; SAMD9L-monosomy7-80pct-PATHOGNOMONIC; 320-patient-aggregate; seeds-3662-3669)."""
     from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_overview
     return generate_overview()
 
 
 @app.get("/api/hereditary-aml-predisposition-atlas/breakdown")
 async def hereditary_aml_predisposition_atlas_breakdown():
-    """Hereditary-AML-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; CEBPA-biallelic-relapse-new-clone; RUNX1-FPD-thrombocytopenia; GATA2-del7q-monosomy7; DDX41-R525H-late-onset; TP53-complex-karyotype; BRCA2-HRD-olaparib; FANCA-biallelic-BMF; NF1-JMML-HSCT; mean_age_onset per gene)."""
+    """Hereditary-AML-Predisposition-Atlas per-gene breakdown (CEBPA-DDX41-RUNX1-GATA2-TP53-ANKRD26-ETV6-SAMD9L; 320-patient-aggregate; seeds-3662-3669; ELN-2022-risk; monosomy7; complex-karyotype)."""
     from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_breakdown
     return generate_breakdown()
 
 
 @app.get("/api/hereditary-aml-predisposition-atlas/definitions")
 async def hereditary_aml_predisposition_atlas_definitions():
-    """Hereditary-AML-Predisposition-Atlas clinical definitions (CEBPA-biallelic-ELN-fav-new-clone-relapse; RUNX1-FPD-sibling-donor-CI; GATA2-MonoMAC-HSCT-curative; DDX41-R525H-HMA-venetoclax; TP53-LFS-decitabine-APR246; BRCA2-FA-D1-AVOID-ALKYLATING-PARP; FANCA-FA-A-AVOID-ALKYLATING-FLUDARABINE-HSCT; NF1-JMML-selumetinib)."""
+    """Hereditary-AML-Predisposition-Atlas clinical definitions (CEBPA-NOT-allograft-CR1; DDX41-DONOR-MANDATORY; RUNX1-SIBLING-CI; GATA2-HSCT-CURATIVE-DO-NOT-DELAY; TP53-AVOID-RADIATION-ABSOLUTELY; ANKRD26-5UTR-PANEL-MANDATORY; ETV6-AVOID-NSAIDs-HIGH-DOSE-MTX; SAMD9L-HSCT-CORRECTS-AML-NOT-ATAXIA)."""
     from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_definitions
     return generate_definitions()
 
