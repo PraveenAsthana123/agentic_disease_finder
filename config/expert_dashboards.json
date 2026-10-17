@@ -22565,5 +22565,25 @@
     "seeds": "3638-3645",
     "patients": 320,
     "note": "Hereditary-MDS-Predisposition-Atlas-Complete-8-Gene-Reference"
+  },
+  {
+    "id": "hereditary-cll-predisposition-atlas",
+    "title": "Hereditary-CLL-Predisposition-Atlas Complete-8-Gene-ATM-TP53-POT1-NBN-BRCA2-CHEK2-CDKN2A-RB1 ATM-3056aa-11q22.3-AD-LOF-A-T-Monoallelic-CLL-2-3x-del11q-20-25pct-WORST-PROGNOSIS-RADIOSENSITIVITY-ABSOLUTE TP53-393aa-17p13.1-AD-LOF-LFS-CLL-2-4x-del17p-8-10pct-FCR-CI-ABSOLUTELY-AVOID-RADIATION-ABSOLUTELY-Venetoclax-Backbone POT1-634aa-7q31.33-AD-LOF-Familial-CLL-8pct-MOST-ESTABLISHED-Short-Telomeres-PATHOGNOMONIC-Ibrutinib-Venetoclax NBN-754aa-8q21.3-AD-AR-LOF-NBS-657del5-Slavic-1in150-CLL-NHL-60x-HIGHEST-Cranial-RT-CI BRCA2-3418aa-13q12.3-AD-LOF-HBOC-del13q-Somatic-55pct-MOST-COMMON-GOOD-PROGNOSIS-HRD-Cisplatin CHEK2-543aa-22q12.1-AD-LOF-1100delC-1in200-NOT-HRD-NO-PARPi CDKN2A-156aa-9p21.3-AD-LOF-FAMM-del9p21-20pct-Richter-10-15pct-CDK4-6i-INACTIVE RB1-928aa-13q14.2-AD-LOF-del13q14-55pct-MOST-COMMON-Sole-GOOD-PROGNOSIS-CDK4-6i-INACTIVE-Venetoclax-Active 320-Patient-Aggregate-8x40-seeds-3646-3653",
+    "status": "built",
+    "category": "hereditary-predisposition-atlas",
+    "slug": "hereditary-cll-predisposition-atlas",
+    "genes": [
+      "ATM",
+      "TP53",
+      "POT1",
+      "NBN",
+      "BRCA2",
+      "CHEK2",
+      "CDKN2A",
+      "RB1"
+    ],
+    "n_patients": 320,
+    "seeds": "3646-3653",
+    "built_date": "2026-10-17"
   }
 ]

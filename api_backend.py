@@ -51710,6 +51710,27 @@ async def hereditary_cervical_cancer_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cll-predisposition-atlas/overview")
+async def hereditary_cll_predisposition_atlas_overview():
+    """Hereditary-CLL-Predisposition-Atlas overview (ATM-TP53-POT1-NBN-BRCA2-CHEK2-CDKN2A-RB1; 320-patient aggregate 8x40 seeds 3646-3653; ATM-monoallelic-CLL-2-3x-del11q-20-25pct; TP53-del17p-WORST-PROGNOSIS; POT1-FAMILIAL-CLL-8PCT-short-telomeres-PATHOGNOMONIC; NBN-657del5-Slavic-60x-HIGHEST; BRCA2-del13q-SOLE-GOOD-PROGNOSIS; CHEK2-NOT-HRD-NO-PARPi; CDKN2A-CDK4-6i-INACTIVE; RB1-venetoclax-ACTIVE)."""
+    from scripts.hereditary_cll_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cll-predisposition-atlas/breakdown")
+async def hereditary_cll_predisposition_atlas_breakdown():
+    """Hereditary-CLL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-del11q-FCR-inferior; TP53-del17p-FCR-CI; POT1-familial-CLL-ibrutinib; NBN-cranial-RT-CI; BRCA2-del13q-HRD-cisplatin; CHEK2-1100delC-I157T; CDKN2A-Richter-del9p21; RB1-del13q-sole-good-prognosis; mean_age_onset per gene)."""
+    from scripts.hereditary_cll_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cll-predisposition-atlas/definitions")
+async def hereditary_cll_predisposition_atlas_definitions():
+    """Hereditary-CLL-Predisposition-Atlas clinical definitions (ATM-RADIOSENSITIVITY-ABSOLUTE; TP53-AVOID-RADIATION-ABSOLUTELY-venetoclax-backbone; POT1-short-telomeres-flow-FISH-PATHOGNOMONIC; NBN-657del5-Slavic-cranial-RT-CI; BRCA2-del13q-sole-GOOD-PROGNOSIS; CHEK2-NOT-HRD-NO-PARPi; CDKN2A-CDK4-6i-INACTIVE-CLL; RB1-venetoclax-active-BCL2-upregulated)."""
+    from scripts.hereditary_cll_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
