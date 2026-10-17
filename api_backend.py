@@ -51892,6 +51892,24 @@ async def hereditary_pah_pvod_predisposition_atlas_definitions():
     from scripts.hereditary_pulmonary_arterial_hypertension_pvod_predisposition_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-primary-ciliary-dyskinesia-atlas/overview")
+async def hereditary_pcd_atlas_overview():
+    """Hereditary-PCD-Atlas overview (DNAH5-most-common-28-38pct-absent-ODA-PATHOGNOMONIC; DNAI1-CILD1-absent-ODA; CCDC39-CILD14-IDA+MT-most-severe; CCDC40-CILD15-IDA+MT; DNAI2-CILD9-ODA; DNAH11-CILD7-normal-TEM-PATHOGNOMONIC; RSPH4A-CILD11-central-pair-situs-RARE; CCNO-RGMC-reduced-cilia-number)."""
+    from scripts.hereditary_primary_ciliary_dyskinesia_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-primary-ciliary-dyskinesia-atlas/breakdown")
+async def hereditary_pcd_atlas_breakdown():
+    """Hereditary-PCD-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3726-3733; nNO-lt77-PATHOGNOMONIC; DNAH11-normal-TEM-waveform-mandatory; Kartagener-triad; CCNO-female-subfertility-65pct; CCDC39-lowest-FEV1; macrolide-prophylaxis)."""
+    from scripts.hereditary_primary_ciliary_dyskinesia_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-primary-ciliary-dyskinesia-atlas/definitions")
+async def hereditary_pcd_atlas_definitions():
+    """Hereditary-PCD-Atlas clinical definitions (nNO-lt77-PATHOGNOMONIC; DNAH11-normal-TEM-PATHOGNOMONIC; Kartagener; ODA-IDA-central-pair-RGMC; waveform-video-analysis; azithromycin-prophylaxis; male-infertility-ICSI; CCNO-female-subfertility; situs-inversus-ECG-reversed)."""
+    from scripts.hereditary_primary_ciliary_dyskinesia_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

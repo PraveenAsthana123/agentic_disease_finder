@@ -22792,5 +22792,26 @@
     "category": "hereditary-cardiopulmonary-predisposition",
     "built_date": "2026-10-17",
     "note": "Hereditary PAH and PVOD predisposition: BMPR2 (75% familial PAH; RHC mandatory; sotatercept FDA2024), ACVRL1 (HHT2; telangiectases PATHOGNOMONIC; PAH 10%), ENG (HHT1; cerebral AVM MRI mandatory), SMAD9 (BMP pathway; rare PAH), KCNK3 (TASK1 channel), CAV1 (lipodystrophy PATHOGNOMONIC), EIF2AK4 (biallelic PVOD; prostanoids ABSOLUTELY CI; lung transplant only cure), TBX4 (pediatric PAH; small patella PATHOGNOMONIC)"
+  },
+  {
+    "id": "hereditary-primary-ciliary-dyskinesia-atlas",
+    "title": "Hereditary-Primary-Ciliary-Dyskinesia-Atlas",
+    "description": "Complete-8-Gene-DNAH5-DNAI1-CCDC39-CCDC40-DNAI2-DNAH11-RSPH4A-CCNO seeds-3726-3733",
+    "route": "/hereditary-primary-ciliary-dyskinesia-atlas",
+    "api_base": "/api/hereditary-primary-ciliary-dyskinesia-atlas",
+    "category": "Hereditary-Pulmonary-Disease-Cilia",
+    "genes": [
+      "DNAH5",
+      "DNAI1",
+      "CCDC39",
+      "CCDC40",
+      "DNAI2",
+      "DNAH11",
+      "RSPH4A",
+      "CCNO"
+    ],
+    "seed_base": 3726,
+    "patients": 320,
+    "status": "built"
   }
 ]
