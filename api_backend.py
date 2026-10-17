@@ -51731,6 +51731,27 @@ async def hereditary_cll_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-nk-t-cell-lymphoma-predisposition-atlas/overview")
+async def hereditary_nk_t_cell_lymphoma_predisposition_atlas_overview():
+    """Hereditary-NK-T-Cell-Lymphoma-Predisposition-Atlas overview (SH2D1A-XLP1-iNKT-absent-PATHOGNOMONIC-EBV-50-80x-HIGHEST; XIAP-XLP2-IBD-HLH-COMBINATION-PATHOGNOMONIC; CD27-EBV-NK-T-LPD-30-50x-Rituximab-INEFFECTIVE; ITK-EBV-NK-T-LPD-90pct-HLH-50pct; GATA2-NK-lymphopenia-PATHOGNOMONIC; PIK3CD-APDS1-Leniolisib-FDA2023; STAT5B-GOF-NK-LGL-Ruxolitinib; RASGRP1-EBV-T-NK-LPD-HSCT-beneficial)."""
+    from scripts.hereditary_nk_t_cell_lymphoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-nk-t-cell-lymphoma-predisposition-atlas/breakdown")
+async def hereditary_nk_t_cell_lymphoma_predisposition_atlas_breakdown():
+    """Hereditary-NK-T-Cell-Lymphoma-Predisposition-Atlas per-gene breakdown (SH2D1A-XIAP-CD27-ITK-GATA2-PIK3CD-STAT5B-RASGRP1 cohort data 8x40 seeds 3654-3661)."""
+    from scripts.hereditary_nk_t_cell_lymphoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-nk-t-cell-lymphoma-predisposition-atlas/definitions")
+async def hereditary_nk_t_cell_lymphoma_predisposition_atlas_definitions():
+    """Hereditary-NK-T-Cell-Lymphoma-Predisposition-Atlas clinical definitions (SH2D1A-HSCT-MANDATORY-BEFORE-EBV; XIAP-NOT-EBV-EXCLUSIVE-IBD-HLH-PATHOGNOMONIC; CD27-Rituximab-INEFFECTIVE; ITK-HSCT-MANDATORY; GATA2-NK-LYMPHOPENIA-PATHOGNOMONIC-EBV-CMV-Q3M; PIK3CD-Leniolisib-FDA2023-LIVE-VACCINES-CI; STAT5B-Ruxolitinib-METHOTREXATE-AVOID; RASGRP1-HSCT-BENEFICIAL)."""
+    from scripts.hereditary_nk_t_cell_lymphoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

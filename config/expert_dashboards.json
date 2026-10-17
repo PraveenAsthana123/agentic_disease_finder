@@ -22587,5 +22587,15 @@
     "n_patients": 320,
     "seeds": "3646-3653",
     "built_date": "2026-10-17"
+  },
+  {
+    "id": "hereditary_nk_t_cell_lymphoma_predisposition_atlas",
+    "title": "Hereditary-NK-T-Cell-Lymphoma-Predisposition-Atlas Complete-8-Gene-SH2D1A-XIAP-CD27-ITK-GATA2-PIK3CD-STAT5B-RASGRP1 SH2D1A-128aa-Xq25-XLR-LOF-XLP1-SAP-iNKT-Absent-PATHOGNOMONIC-EBV-NK-T-LPD-50-80x-HIGHEST-HSCT-MANDATORY-BEFORE-EBV XIAP-497aa-Xq25-XLR-LOF-XLP2-IBD-HLH-COMBINATION-PATHOGNOMONIC-NOT-EBV-EXCLUSIVE-Ruxolitinib-Bridge-HSCT CD27-260aa-12p13.31-AR-LOF-CD27-Deficiency-EBV-NK-T-LPD-30-50x-HIGHEST-Rituximab-INEFFECTIVE-NK-CD20-negative-HSCT-MANDATORY ITK-620aa-5q33.3-AR-LOF-ITK-Deficiency-EBV-NK-T-LPD-90pct-HLH-50pct-HSCT-MANDATORY-BEFORE-EBV-Rituximab-INEFFECTIVE GATA2-480aa-3q21.3-AD-LOF-NK-Lymphopenia-PATHOGNOMONIC-NK-T-Lymphoma-EBV-CMV-Q3M-MANDATORY-HSCT-Curative PIK3CD-1044aa-1p36.22-AD-GOF-APDS1-EBV-NK-T-Lymphoma-10-15pct-Leniolisib-FDA2023-Live-Vaccines-CI-Acyclovir-MANDATORY STAT5B-787aa-17q21.2-AD-GOF-NK-LGL-NK-T-Lymphoma-Cytopenia-HALLMARK-Ruxolitinib-JAKi-Methotrexate-AVOID RASGRP1-795aa-15q14-AR-LOF-EBV-T-NK-LPD-RAS-MAPK-Dysregulation-HSCT-Beneficial-Ruxolitinib 320-Patient-Aggregate-8x40-seeds-3654-3661",
+    "status": "built",
+    "route": "/hereditary-nk-t-cell-lymphoma-predisposition-atlas",
+    "api_prefix": "/api/hereditary-nk-t-cell-lymphoma-predisposition-atlas",
+    "script": "scripts/hereditary_nk_t_cell_lymphoma_predisposition_atlas_dashboard.py",
+    "seeds": "3654-3661",
+    "registered": "2026-10-17"
   }
 ]
