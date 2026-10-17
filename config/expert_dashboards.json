@@ -22325,5 +22325,32 @@
     "seed_range": "3566-3573",
     "registered": "2026-10-16",
     "slug": "hereditary-aml-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-hlh-predisposition-atlas",
+    "name": "Hereditary-HLH-Predisposition-Atlas",
+    "title": "Hereditary-HLH-Predisposition-Atlas",
+    "status": "built",
+    "api": "/api/hereditary-hlh-predisposition-atlas",
+    "cohort_n": 320,
+    "seeds": "3574-3581",
+    "genes": [
+      "PRF1",
+      "UNC13D",
+      "STX11",
+      "STXBP2",
+      "RAB27A",
+      "LYST",
+      "SH2D1A",
+      "XIAP"
+    ],
+    "script": "scripts/hereditary_hlh_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-hlh-predisposition-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-hlh-predisposition-atlas/overview",
+      "/api/hereditary-hlh-predisposition-atlas/breakdown",
+      "/api/hereditary-hlh-predisposition-atlas/definitions"
+    ],
+    "note": "Hereditary HLH Predisposition Atlas: FHL2(PRF1) FHL3(UNC13D) FHL4(STX11) FHL5(STXBP2) GS2(RAB27A) CHS(LYST) XLP1(SH2D1A) XLP2(XIAP). Seeds 3574-3581. Built 2026-10-16."
   }
 ]

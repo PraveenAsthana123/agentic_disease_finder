@@ -51462,6 +51462,27 @@ async def hereditary_aml_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hlh-predisposition-atlas/overview")
+async def hereditary_hlh_predisposition_atlas_overview():
+    """Hereditary-HLH-Predisposition-Atlas overview (PRF1-UNC13D-STX11-STXBP2-RAB27A-LYST-SH2D1A-XIAP; 320-patient aggregate 8x40 seeds 3574-3581; PRF1-FHL2-CD107a-NORMAL-cytotoxicity-ABSENT; UNC13D-FHL3-CD107a-ABSENT; STX11-FHL4-Kurdish; STXBP2-FHL5-IBD-40pct; RAB27A-GS2-silvery-hair; LYST-CHS-giant-granules; SH2D1A-XLP1-iNKT-absent; XIAP-XLP2-IBD-50pct; emapalumab-FDA2018)."""
+    from scripts.hereditary_hlh_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hlh-predisposition-atlas/breakdown")
+async def hereditary_hlh_predisposition_atlas_breakdown():
+    """Hereditary-HLH-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; PRF1-perforin-null-NK-cytotox-absent; UNC13D-CD107a-absent-Middle-East; STX11-later-onset-Kurdish; STXBP2-IBD-hallmark-SNHL; RAB27A-silvery-hair-HLH-no-neuro; LYST-giant-granules-smear-diagnostic; SH2D1A-iNKT-absent-EBV-triggered; XIAP-splenomegaly-IBD-recurrent-milder; mean_age_onset per gene)."""
+    from scripts.hereditary_hlh_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hlh-predisposition-atlas/definitions")
+async def hereditary_hlh_predisposition_atlas_definitions():
+    """Hereditary-HLH-Predisposition-Atlas clinical definitions (PRF1-FHL2-emapalumab-HSCT; UNC13D-FHL3-IVS27-founder; STX11-FHL4-SNARE-STXBP2-complex; STXBP2-FHL5-IBD-HSCT-treats-both; RAB27A-GS2-HSCT-not-hair; LYST-CHS-HSCT-not-neurodegeneration; SH2D1A-XLP1-iNKT-absent-rituximab; XIAP-XLP2-splenomegaly-IBD-ruxolitinib)."""
+    from scripts.hereditary_hlh_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
