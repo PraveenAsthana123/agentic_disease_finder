@@ -23165,5 +23165,25 @@
     "feature": "Complete HIES differential: AD-STAT3 vs AR-DOCK8 vs PGM3-CDG vs CARD11-GOF vs gp130 vs ZNF341 vs IL21R vs TYK2",
     "why": "HIES is underdiagnosed; gene-specific features (retained teeth, viral dominance, coronary aneurysm, cryptosporidium) guide urgent management decisions (BCG-CI, HSCT urgency, echo)",
     "priority": "P1"
+  },
+  {
+    "id": "hereditary-agammaglobulinemia-cvid-atlas",
+    "name": "Hereditary-Agammaglobulinemia-CVID-Atlas Complete-8-Gene-BTK-IGHM-IGLL1-BLNK-PIK3CD-PIK3R1-LRBA-NFKB1 B-Cell-Antibody-Deficiency-Primary-Immunodeficiency-Reference",
+    "status": "built",
+    "api": "/api/hereditary-agammaglobulinemia-cvid-atlas",
+    "route": "/hereditary-agammaglobulinemia-cvid-atlas",
+    "built_date": "2026-10-17",
+    "seeds": "3878-3885",
+    "patients": 320,
+    "genes": [
+      "BTK",
+      "IGHM",
+      "IGLL1",
+      "BLNK",
+      "PIK3CD",
+      "PIK3R1",
+      "LRBA",
+      "NFKB1"
+    ]
   }
 ]

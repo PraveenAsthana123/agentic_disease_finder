@@ -52263,6 +52263,27 @@ async def hereditary_hies_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-agammaglobulinemia-cvid-atlas/overview")
+async def hereditary_agammaglobulinemia_cvid_atlas_overview():
+    """Hereditary-Agammaglobulinemia-CVID-Atlas overview — B-Cell-Antibody-Deficiency-BTK-IGHM-IGLL1-BLNK-PIK3CD-PIK3R1-LRBA-NFKB1 seeds-3878-3885."""
+    from scripts.hereditary_agammaglobulinemia_cvid_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-agammaglobulinemia-cvid-atlas/breakdown")
+async def hereditary_agammaglobulinemia_cvid_atlas_breakdown():
+    """Hereditary-Agammaglobulinemia-CVID-Atlas breakdown — per-gene cohort n=40 each; BTK-XLA-absent-B-cells; echovirus-encephalitis-PATHOGNOMONIC; IGHM-AR-female; IGLL1-lambda5; BLNK-SLP65; PIK3CD-APDS1-leniolisib; PIK3R1-APDS2; LRBA-abatacept; NFKB1-CVID7 seeds-3878-3885."""
+    from scripts.hereditary_agammaglobulinemia_cvid_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-agammaglobulinemia-cvid-atlas/definitions")
+async def hereditary_agammaglobulinemia_cvid_atlas_definitions():
+    """Hereditary-Agammaglobulinemia-CVID-Atlas definitions — BTK-XLA-Bruton; echovirus-PATHOGNOMONIC; IGHM-IGLL1-BLNK-AR-agamma; PIK3CD-APDS1-leniolisib-FDA2023; PIK3R1-APDS2; LRBA-CTLA4-abatacept; NFKB1-CVID7-splenomegaly-IBD seeds-3878-3885."""
+    from scripts.hereditary_agammaglobulinemia_cvid_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
