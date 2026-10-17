@@ -22240,5 +22240,33 @@
     "registered": "2026-10-16",
     "slug": "hereditary-cll-sll-predisposition-atlas",
     "api_base": "/api/hereditary-cll-sll-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-b-all-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-B-ALL-Predisposition-Atlas",
+    "route": "/hereditary-b-all-predisposition-atlas",
+    "api_prefix": "/api/hereditary-b-all-predisposition-atlas",
+    "endpoints": [
+      "/api/hereditary-b-all-predisposition-atlas/overview",
+      "/api/hereditary-b-all-predisposition-atlas/breakdown",
+      "/api/hereditary-b-all-predisposition-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-b-all-predisposition-atlas/page.jsx",
+    "script": "scripts/hereditary_b_all_predisposition_atlas_dashboard.py",
+    "genes": [
+      "ETV6",
+      "PAX5",
+      "IKZF1",
+      "TP53",
+      "ATM",
+      "CDKN2A",
+      "NBN",
+      "BRCA2"
+    ],
+    "seeds": "3550-3557",
+    "patients": 320,
+    "note": "Hereditary B-ALL Predisposition Atlas \u2014 8-gene reference (ETV6-PAX5-IKZF1-TP53-ATM-CDKN2A-NBN-BRCA2); 320-patient aggregate; seeds 3550-3557",
+    "built_note": "Built 2026-10-16. scripts/hereditary_b_all_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-b-all-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-b-all-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-CLL-SLL-Predisposition-Atlas, expert_dashboards.json count 1331->1332."
   }
 ]

@@ -51399,6 +51399,27 @@ async def hereditary_cll_sll_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-b-all-predisposition-atlas/overview")
+async def hereditary_b_all_predisposition_atlas_overview():
+    """Hereditary-B-ALL-Predisposition-Atlas overview (ETV6-PAX5-IKZF1-TP53-ATM-CDKN2A-NBN-BRCA2; 320-patient aggregate 8x40 seeds 3550-3557; ETV6-THC5-B-ALL-10-15x-MOST-COMMON-hereditary-ALL; PAX5-P80R-autosomal-dominant-B-ALL-40-80pct-MOST-SPECIFIC; IKZF1-Ph-like-ALL-haploinsufficiency; TP53-LFS-B-ALL-15x-AVOID-RADIATION-ABSOLUTELY; ATM-A-T-biallelic-T-ALL-75x-B-ALL-2-3x-monoallelic; CDKN2A-del9p21-ALL-5-10x-palbociclib-INACTIVE; NBN-657del5-NBS-ALL-60x-RADIOSENSITIVITY-ABSOLUTE; BRCA2-FA-D1-biallelic-ALL-AML-HIGHEST-AVOID-ALKYLATING)."""
+    from scripts.hereditary_b_all_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-b-all-predisposition-atlas/breakdown")
+async def hereditary_b_all_predisposition_atlas_breakdown():
+    """Hereditary-B-ALL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ETV6-B-ALL-90pct-t12-21; PAX5-P80R-B-ALL-77pct-familial; IKZF1-Ph-like-60pct-del7p12; TP53-LFS-adult-onset; ATM-biallelic-T-ALL-75x; CDKN2A-del9p21-80pct-p16-null; NBN-657del5-childhood-ALL; BRCA2-FA-D1-youngest-onset; mean_age_onset per gene)."""
+    from scripts.hereditary_b_all_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-b-all-predisposition-atlas/definitions")
+async def hereditary_b_all_predisposition_atlas_definitions():
+    """Hereditary-B-ALL-Predisposition-Atlas clinical definitions (ETV6-THC5-ETV6-RUNX1-somatic-vs-germline; PAX5-P80R-40-80pct-B-ALL-MOST-SPECIFIC; IKZF1-Ph-like-emerging-germline; TP53-LFS-AVOID-CRANIAL-RT-ABSOLUTELY; ATM-A-T-IgA-deficiency-PATHOGNOMONIC-RADIOSENSITIVITY-ABSOLUTE; CDKN2A-p16-p14ARF-CDK4-6i-INACTIVE; NBN-657del5-NBS-CRANIAL-RT-ABSOLUTELY-CONTRAINDICATED; BRCA2-FA-D1-AVOID-ALKYLATING-ABSOLUTELY)."""
+    from scripts.hereditary_b_all_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
