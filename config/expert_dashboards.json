@@ -22501,5 +22501,41 @@
       "PIK3CD"
     ],
     "patients": 320
+  },
+  {
+    "key": "hereditary_bl_predisposition_atlas",
+    "id": "hereditary-bl-predisposition-atlas",
+    "title": "Hereditary-BL-Predisposition-Atlas Complete-8-Gene-ATM-TP53-BRCA2-PIK3CD-CARD11-TNFRSF13B-CD27-NF1 ATM-3056aa-11q22.3-AD-LOF-A-T-BL-5-15x-HIGHEST-Biallelic-RADIOSENSITIVITY-ABSOLUTE-Cranial-RT-CI TP53-393aa-17p13.1-AD-LOF-LFS-BL-2-4x-17p-del-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto-Venetoclax BRCA2-3418aa-13q12.3-AD-AR-LOF-FA-D1-Childhood-BL-PATHOGNOMONIC-AVOID-ALKYLATING-Olaparib-MMC-Fragility PIK3CD-1044aa-1p36.22-AD-GOF-APDS1-EBV-Driven-BL-10-15pct-Leniolisib-FDA2023-Live-Vaccines-CI CARD11-1154aa-7p22.2-AD-LOF-GOF-BENTA-NF-kB-BL-Venetoclax-CID-LOF-HSCT-Urgent-MALT1i-JNJ TNFRSF13B-293aa-17p11.2-AD-LOF-CVID2-NHL-10-12x-HIGHEST-IVIG-NEVER-STOP-C104R-1in500 CD27-260aa-12p13.31-AR-LOF-CD27-Deficiency-EBV-BL-30-50x-HIGHEST-HSCT-MANDATORY-HLH-2004 NF1-2839aa-17q11.2-AD-LOF-NF1-BL-2-3x-Cafe-au-Lait-PATHOGNOMONIC-MPNST-8-13pct-Selumetinib-FDA2020 320-Patient-Aggregate-8x40-seeds-3630-3637",
+    "name": "Hereditary Burkitt Lymphoma (BL) Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "ATM",
+      "TP53",
+      "BRCA2",
+      "PIK3CD",
+      "CARD11",
+      "TNFRSF13B",
+      "CD27",
+      "NF1"
+    ],
+    "cohort_n": 320,
+    "seeds_start": 3630,
+    "seeds_end": 3637,
+    "seed_range": "3630-3637",
+    "registered": "2026-10-17",
+    "slug": "hereditary-bl-predisposition-atlas",
+    "api_base": "/api/hereditary-bl-predisposition-atlas",
+    "api_prefix": "/api/hereditary-bl-predisposition-atlas",
+    "endpoints": [
+      "/api/hereditary-bl-predisposition-atlas/overview",
+      "/api/hereditary-bl-predisposition-atlas/breakdown",
+      "/api/hereditary-bl-predisposition-atlas/definitions"
+    ],
+    "route": "/hereditary-bl-predisposition-atlas",
+    "frontend": "portal-next/app/hereditary-bl-predisposition-atlas/page.jsx",
+    "script": "scripts/hereditary_bl_predisposition_atlas_dashboard.py",
+    "note": "Total: 1342 dashboards",
+    "built_note": "Built scripts/hereditary_bl_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-bl-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-bl-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-PTCL-Predisposition-Atlas, expert_dashboards.json count 1341->1342. Built 2026-10-17."
   }
 ]
