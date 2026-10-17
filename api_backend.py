@@ -52305,6 +52305,27 @@ async def hereditary_innate_immunity_tlr_nfkb_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-immune-dysregulation-hlh-alps-atlas/overview")
+async def hereditary_immune_dysregulation_hlh_alps_atlas_overview():
+    """Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas overview — PRF1-FHL2-perforin-absent; UNC13D-FHL3-CD107a-absent-perforin-PRESENT; STX11-FHL4-Kurdish-founder; STXBP2-FHL5-neonatal-HLH-IBD-enteropathy; LYST-Chediak-Higashi-GIANT-GRANULES-PATHOGNOMONIC; RAB27A-Griscelli-type2-SILVERY-HAIR-PATHOGNOMONIC; FAS-ALPS-DNT-cells-PATHOGNOMONIC-Evans; FOXP3-IPEX-neonatal-T1DM-PATHOGNOMONIC seeds-3894-3901."""
+    from scripts.hereditary_immune_dysregulation_hlh_alps_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-immune-dysregulation-hlh-alps-atlas/breakdown")
+async def hereditary_immune_dysregulation_hlh_alps_atlas_breakdown():
+    """Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas breakdown — 8x40 patient cohorts; FHL2-5 granule-secretion-defects; LYST-vs-RAB27A-giant-granules-vs-silvery-hair; ALPS-FAS-DNT-Evans-lymphoma; IPEX-FOXP3-Treg-absent-HSCT-curative seeds-3894-3901."""
+    from scripts.hereditary_immune_dysregulation_hlh_alps_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-immune-dysregulation-hlh-alps-atlas/definitions")
+async def hereditary_immune_dysregulation_hlh_alps_atlas_definitions():
+    """Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas definitions — FHL2-perforin-pore-former; FHL3-MUNC13-4-priming; FHL4-STX11-docking; FHL5-STXBP2-IBD-neonatal; CHS-LYST-neurodegeneration-post-HSCT; GS2-RAB27A-HSCT-curative; ALPS-sirolimus-avoid-splenectomy; IPEX-calcineurin-HSCT-urgent seeds-3894-3901."""
+    from scripts.hereditary_immune_dysregulation_hlh_alps_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

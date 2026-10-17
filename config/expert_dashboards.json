@@ -23213,5 +23213,18 @@
       "/api/hereditary-innate-immunity-tlr-nfkb-atlas/definitions"
     ],
     "note": "Hereditary Innate Immunity TLR-NF-kB Atlas: IRAK4/MYD88 (pyogenic no-fever) NEMO/IkBa (EDA-ID) IRF3/TLR3/UNC93B1 (HSE) IRF7 (influenza). Seeds 3886-3893. Built 2026-10-17."
+  },
+  {
+    "id": "hereditary-immune-dysregulation-hlh-alps-atlas",
+    "name": "Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas (PRF1-555aa-10q22.1-AR-FHL2-Most-Common-FHL-30-40pct-Perforin-Absent-PATHOGNOMONIC / UNC13D-1090aa-17q25.3-AR-FHL3-MUNC13-4-CD107a-Absent-Perforin-PRESENT-DISTINGUISHER / STX11-287aa-6q24.2-AR-FHL4-Kurdish-Turkish-Founder-SNARE-Docking / STXBP2-592aa-19p13.2-AR-FHL5-IBD-Enteropathy-Neonatal-HLH-DISTINGUISHING / LYST-3801aa-1q42.3-AR-Chediak-Higashi-GIANT-GRANULES-PATHOGNOMONIC-Neurodegeneration-Post-HSCT / RAB27A-221aa-15q21.3-AR-Griscelli-Type2-SILVERY-HAIR-PATHOGNOMONIC-No-Giant-Granules / FAS-335aa-10q23.31-AD-AR-ALPS-TypeIa-DNT-Cells-PATHOGNOMONIC-Evans-Lymphoma-10-15x-Sirolimus / FOXP3-431aa-Xp11.22-XL-IPEX-Neonatal-T1DM-PATHOGNOMONIC-Treg-Absent-HSCT-Urgent)",
+    "status": "built",
+    "api": [
+      "/api/hereditary-immune-dysregulation-hlh-alps-atlas/overview",
+      "/api/hereditary-immune-dysregulation-hlh-alps-atlas/breakdown",
+      "/api/hereditary-immune-dysregulation-hlh-alps-atlas/definitions"
+    ],
+    "cohort_n": 320,
+    "seed": "3894-3901",
+    "registered": "2026-10-17"
   }
 ]
