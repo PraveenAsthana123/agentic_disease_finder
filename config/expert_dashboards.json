@@ -22863,5 +22863,22 @@
     "frontend": "portal-next/app/autonomic-analysis/page.jsx",
     "built_date": "2026-10-17",
     "description": "900 wearable readings, 30 patients, ADS scoring + HRV trends + seizure-autonomic correlation + risk stratification. 4-tab frontend (Overview/Patient Profiles/Seizure Correlation/Definitions), 3 endpoints /api/autonomic-analysis/overview|breakdown|definitions verified 200, portal-next/app/autonomic-analysis/page.jsx + SiteNav wired after Wearable Readings."
+  },
+  {
+    "id": "hereditary-taad-atlas",
+    "name": "Hereditary-TAAD-Atlas Complete-8-Gene-FBN1-TGFBR1-TGFBR2-ACTA2-MYH11-SMAD3-COL3A1-LOX",
+    "status": "built",
+    "route": "/hereditary-taad-atlas",
+    "api_prefix": "/api/hereditary-taad-atlas",
+    "endpoints": [
+      "/api/hereditary-taad-atlas/overview",
+      "/api/hereditary-taad-atlas/breakdown",
+      "/api/hereditary-taad-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-taad-atlas/page.jsx",
+    "script": "scripts/hereditary_taad_atlas_dashboard.py",
+    "seeds": "3758-3765",
+    "note": "Total: 1358 dashboards",
+    "built_note": "Built 2026-10-17. 3 endpoints /api/hereditary-taad-atlas/overview|breakdown|definitions verified 200. SiteNav wired after Hereditary-Cardiomyopathy-Atlas."
   }
 ]

@@ -45555,6 +45555,27 @@ async def hereditary_cardiomyopathy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-taad-atlas/overview")
+async def hereditary_taad_atlas_overview():
+    """Hereditary-TAAD-Atlas overview — FBN1-Marfan-aortic-root-ectopia-lentis-tall-stature-PATHOGNOMONIC; TGFBR1-LDS1A-bifid-uvula-tortuosity-4cm; TGFBR2-LDS1B-dissection-lt4cm-PATHOGNOMONIC; ACTA2-Moyamoya-livedo-reticularis-iris-flocculi-PATHOGNOMONIC; MYH11-PDA-TAAD-PATHOGNOMONIC; SMAD3-AOS-early-OA-PATHOGNOMONIC; COL3A1-vEDS-rupture-ANY-diameter-surgery-CI; LOX-BAV-FTAAD seeds-3758-3765."""
+    from scripts.hereditary_taad_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-taad-atlas/breakdown")
+async def hereditary_taad_atlas_breakdown():
+    """Hereditary-TAAD-Atlas breakdown — per-gene cohort stats; dissection/rupture events; surgery rates; stroke rates; pathognomonic signs; clinical categories; surgery thresholds comparison; fluoroquinolones-AVOID-all; celiprolol-COL3A1-RCT; losartan-FBN1-LDS-specific seeds-3758-3765."""
+    from scripts.hereditary_taad_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-taad-atlas/definitions")
+async def hereditary_taad_atlas_definitions():
+    """Hereditary-TAAD-Atlas definitions — TAAD-thresholds-comparison; Marfan-Ghent-2010; vEDS-COL3A1-surgery-CI; Moyamoya-ACTA2; PDA-MYH11; AOS-SMAD3-OA-PATHOGNOMONIC; LDS-4cm-threshold; fluoroquinolones-AVOID; cascade-all-genes seeds-3758-3765."""
+    from scripts.hereditary_taad_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-haemolytic-anaemia-atlas/overview")
 async def hereditary_haemolytic_anaemia_atlas_overview():
     try:
