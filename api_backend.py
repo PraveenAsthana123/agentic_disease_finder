@@ -52137,6 +52137,27 @@ async def hereditary_peripheral_neuropathy_cmt_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ehlers-danlos-syndrome-atlas/overview")
+async def hereditary_ehlers_danlos_syndrome_atlas_overview():
+    """Hereditary-Ehlers-Danlos-Syndrome-Atlas overview — COL5A1-cEDS-atrophic-scar-PATHOGNOMONIC; COL5A2-cEDS2; TNXB-TNX-EDS-hEDS-like; PLOD1-kEDS-LP-HLP-ratio-PATHOGNOMONIC-vascular-risk; FKBP14-kEDS-hearing-loss-PATHOGNOMONIC; ADAMTS2-dEDS-skin-fragility-PATHOGNOMONIC; CHST14-mcEDS-adducted-thumbs-birth-PATHOGNOMONIC; SLC39A13-spEDS-fish-eye-cornea-PATHOGNOMONIC seeds-3830-3837."""
+    from scripts.hereditary_ehlers_danlos_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ehlers-danlos-syndrome-atlas/breakdown")
+async def hereditary_ehlers_danlos_syndrome_atlas_breakdown():
+    """Hereditary-Ehlers-Danlos-Syndrome-Atlas breakdown — 320-patient-8x40-COL5A1-COL5A2-TNXB-PLOD1-FKBP14-ADAMTS2-CHST14-SLC39A13 seeds-3830-3837."""
+    from scripts.hereditary_ehlers_danlos_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ehlers-danlos-syndrome-atlas/definitions")
+async def hereditary_ehlers_danlos_syndrome_atlas_definitions():
+    """Hereditary-Ehlers-Danlos-Syndrome-Atlas definitions — COL5A1-atrophic-scar-PATHOGNOMONIC; PLOD1-LP-HLP-ratio-PATHOGNOMONIC; FKBP14-hearing-loss-PATHOGNOMONIC; ADAMTS2-skin-fragility-PATHOGNOMONIC; CHST14-adducted-thumbs-birth-PATHOGNOMONIC; SLC39A13-fish-eye-cornea-PATHOGNOMONIC seeds-3830-3837."""
+    from scripts.hereditary_ehlers_danlos_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

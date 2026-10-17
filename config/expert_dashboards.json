@@ -23063,5 +23063,13 @@
     "status": "built",
     "seeds": "3822-3829",
     "category": "hereditary_atlas"
+  },
+  {
+    "id": "hereditary-ehlers-danlos-syndrome-atlas",
+    "name": "Hereditary-Ehlers-Danlos-Syndrome-Atlas Complete-8-Gene-COL5A1-COL5A2-TNXB-PLOD1-FKBP14-ADAMTS2-CHST14-SLC39A13 COL5A1-1838aa-9q34.3-AD-cEDS-Most-Common-90pct-Atrophic-Scar-PATHOGNOMONIC-No-Vascular-Rupture COL5A2-1499aa-2q31.1-AD-cEDS-Type2-Allelic-COL5A1-Glycine-Substitution TNXB-4243aa-6p21.32-AR-TNX-EDS-hEDS-Like-5-10pct-hEDS-TNXB-Panel-Mandatory PLOD1-727aa-1p36.22-AR-kEDS-PLOD1-LP-HLP-Ratio-GT3x-PATHOGNOMONIC-Vascular-Rupture-Risk-Aortic-Imaging-Mandatory FKBP14-174aa-7p14.3-AR-kEDS-FKBP14-Hearing-Loss-PATHOGNOMONIC-LP-Ratio-Normal-No-Vascular-Risk ADAMTS2-1211aa-5q35.3-AR-dEDS-Extreme-Skin-Fragility-Sagging-Birth-PATHOGNOMONIC-NOT-Hyperextensible CHST14-376aa-15q15.1-AR-mcEDS-Adducted-Thumbs-Clubfoot-Birth-PATHOGNOMONIC-Progressive-Contractures SLC39A13-356aa-11p11.2-AR-spEDS-Protruding-Eyes-Fish-Eye-Cornea-PATHOGNOMONIC-Short-Stature 320-Patient-Aggregate-8x40-seeds-3830-3837",
+    "status": "built",
+    "seeds": "3830-3837",
+    "category": "hereditary_atlas",
+    "registered": "2026-10-17"
   }
 ]
