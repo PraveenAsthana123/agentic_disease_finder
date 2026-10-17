@@ -51836,6 +51836,25 @@ async def hereditary_bone_marrow_failure_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/overview")
+async def hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_overview():
+    """Hereditary-Wilms-Tumor-Nephroblastoma-Predisposition-Atlas overview (WT1-WAGR-Aniridia-PATHOGNOMONIC-Denys-Drash-DMS-90pct-Frasier-FSGS-Gonadoblastoma; AMER1-OSCS-PATHOGNOMONIC-XLR-Wilms-males; DROSHA-E1147K-blastemal-unfavorable; DGCR8-22q11.2-miRNA-axis; SIX1-Q177R-10-12pct-unfavorable-PATHOGNOMONIC; SIX2-Q177R-paired-panel; CTR9-AR-biallelic-PLNR-excellent-Px; CTNNB1-GOF-ID-epilepsy-AFP-hepatoblastoma)."""
+    from scripts.hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/breakdown")
+async def hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_breakdown():
+    """Hereditary-Wilms-Tumor-Nephroblastoma-Predisposition-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3710-3717; WT1-bilateral-20pct-WAGR-Denys-Drash-Frasier; AMER1-somatic-15-20pct-sporadic; DROSHA-E1147K-bilateral; DGCR8-R1353H-22q11.2; SIX1-Q177R-10-12pct-unfavorable; SIX2-Q177R-3-5pct; CTR9-AR-biallelic-PLNR; CTNNB1-exon3-GOF-PLNR)."""
+    from scripts.hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/definitions")
+async def hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_definitions():
+    """Hereditary-Wilms-Tumor-Nephroblastoma-Predisposition-Atlas clinical definitions (WAGR-aniridia; Denys-Drash-DMS; Frasier-gonadoblastoma; ILNR-PLNR; OSCS-AMER1; miRNA-Microprocessor; SIX1-SIX2-Q177R-unfavorable; blastemal-WT; CTR9-PAF1-recessive; CTNNB1-phosphodegron; NSS-bilateral-WT; Wilms-surveillance)."""
+    from scripts.hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/overview")
 async def hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_overview():
     """Hereditary-Retinoblastoma-Pediatric-Solid-Tumor-Predisposition-Atlas overview (RB1-bilateral-Rb-PATHOGNOMONIC-CDK46i-INACTIVE; DICER1-PPB-PATHOGNOMONIC-<8yr-2nd-hit-hotspot; SMARCB1-AT/RT-radiation-CI-<36m; SMARCA4-SCCOHT-hypercalcemia-PATHOGNOMONIC; PTCH1-Gorlin-radiation-ABSOLUTELY-CI; SUFU-vismodegib-NOT-effective; GPC3-SGB-AFP-USS-3mo; ALK-F1174L-lorlatinib-bilateral-adrenal-NB)."""

@@ -22736,5 +22736,33 @@
     "note": "RB1-928aa-13q14.2-Rb-110kDa-AD-LOF / DICER1-1922aa-14q32.13-DICER1-218kDa-AD-LOF / SMARCB1-385aa-22q11.23-INI1-BAF47-44kDa-AD-LOF / SMARCA4-1647aa-19p13.2-BRG1-185kDa-AD-LOF / PTCH1-1447aa-9q22.32-Patched1-162kDa-AD-LOF / SUFU-484aa-10q24.32-SUFU-55kDa-AD-LOF / GPC3-580aa-Xq26.2-Glypican3-70kDa-XLR-LOF / ALK-1620aa-2p23.2-ALK-177kDa-AD-GOF",
     "count": 1351,
     "updated_at": "2026-10-17"
+  },
+  {
+    "id": "hereditary-wilms-tumor-nephroblastoma-predisposition-atlas",
+    "title": "Hereditary-Wilms-Tumor-Nephroblastoma-Predisposition-Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 WT1 / AMER1 / DROSHA / DGCR8 / SIX1 / SIX2 / CTR9 / CTNNB1",
+    "genes": [
+      "WT1",
+      "AMER1",
+      "DROSHA",
+      "DGCR8",
+      "SIX1",
+      "SIX2",
+      "CTR9",
+      "CTNNB1"
+    ],
+    "seeds": "3710-3717",
+    "total_patients": 320,
+    "status": "built",
+    "script": "scripts/hereditary_wilms_tumor_nephroblastoma_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/overview",
+      "/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/breakdown",
+      "/api/hereditary-wilms-tumor-nephroblastoma-predisposition-atlas/definitions"
+    ],
+    "category": "hereditary-pediatric-cancer-predisposition",
+    "built_date": "2026-10-17",
+    "note": "Hereditary Wilms tumour predisposition: WT1 (WAGR/Denys-Drash/Frasier), AMER1/WTX (OSCS-XLR), DROSHA+DGCR8 (miRNA Microprocessor-bilateral WT), SIX1+SIX2 (Q177R-unfavorable histology), CTR9 (PAF1-AR-PLNR), CTNNB1 (Wnt-beta-catenin-ID-hepatoblastoma)"
   }
 ]
