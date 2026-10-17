@@ -52179,6 +52179,27 @@ async def hereditary_autoinflammatory_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-complement-system-deficiency-atlas/overview")
+async def hereditary_complement_system_deficiency_atlas_overview():
+    """Hereditary-Complement-System-Deficiency-Atlas overview — C1QA-SLE-93pct; C2-most-common-European; C3-central-pivot; CFB-AP-absent; CFP-properdin-meningococcal-7000x; C7-terminal-MAC-neisserial; CFH-aHUS-eculizumab-FDA2007; CD46-aHUS-incomplete-penetrance seeds-3846-3853."""
+    from scripts.hereditary_complement_system_deficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-complement-system-deficiency-atlas/breakdown")
+async def hereditary_complement_system_deficiency_atlas_breakdown():
+    """Hereditary-Complement-System-Deficiency-Atlas breakdown — C1QA-C2-C3-CFB-CFP-C7-CFH-CD46 per-gene cohort data seeds-3846-3853."""
+    from scripts.hereditary_complement_system_deficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-complement-system-deficiency-atlas/definitions")
+async def hereditary_complement_system_deficiency_atlas_definitions():
+    """Hereditary-Complement-System-Deficiency-Atlas definitions — complement-pathway-CH50-AH50; eculizumab-mandate; aHUS-workup; meningococcal-prophylaxis; neisserial-tropism seeds-3846-3853."""
+    from scripts.hereditary_complement_system_deficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

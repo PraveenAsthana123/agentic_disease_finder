@@ -23094,5 +23094,25 @@
     "status": "built",
     "note": "Total: 1369 dashboards",
     "built_note": "Built scripts/hereditary_autoinflammatory_syndrome_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-autoinflammatory-syndrome-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-autoinflammatory-syndrome-atlas/page.jsx + SiteNav wired after Hereditary-Ehlers-Danlos-Syndrome-Atlas, expert_dashboards.json count 1368->1369. Built 2026-10-17."
+  },
+  {
+    "id": "hereditary-complement-system-deficiency-atlas",
+    "title": "Hereditary-Complement-System-Deficiency-Atlas",
+    "role": "Complement Pathway Deficiency Reference \u2014 C1QA/C1q-SLE-93pct-HIGHEST \u00b7 C2/Most-Common-European \u00b7 C3/Central-Pivot \u00b7 CFB/AP-Absent \u00b7 CFP/Properdin-Meningococcal-7000x \u00b7 C7/Terminal-MAC-Neisserial \u00b7 CFH/aHUS-Eculizumab-FDA2007 \u00b7 CD46/MCP-aHUS-Incomplete-Penetrance",
+    "gene": "C1QA-C2-C3-CFB-CFP-C7-CFH-CD46",
+    "route": "/hereditary-complement-system-deficiency-atlas",
+    "api_prefix": "/api/hereditary-complement-system-deficiency-atlas",
+    "endpoints": [
+      "/api/hereditary-complement-system-deficiency-atlas/overview",
+      "/api/hereditary-complement-system-deficiency-atlas/breakdown",
+      "/api/hereditary-complement-system-deficiency-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-complement-system-deficiency-atlas/page.jsx",
+    "script": "scripts/hereditary_complement_system_deficiency_atlas_dashboard.py",
+    "seeds": "3846-3853",
+    "locus": "C1QA-1p36.11/C2-6p21.32/C3-19p13.3/CFB-6p21.32/CFP-Xp11.23/C7-5p13.1/CFH-1q31.3/CD46-1q32.2",
+    "status": "built",
+    "color": "#b71c1c",
+    "built_note": "Built 2026-10-17. 320-patient-aggregate-8x40-seeds-3846-3853. 3 endpoints verified 200. SiteNav wired after Hereditary-Autoinflammatory-Syndrome-Atlas."
   }
 ]
