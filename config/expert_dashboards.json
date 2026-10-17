@@ -23185,5 +23185,33 @@
       "LRBA",
       "NFKB1"
     ]
+  },
+  {
+    "id": "hereditary-innate-immunity-tlr-nfkb-atlas",
+    "name": "Hereditary-Innate-Immunity-TLR-NF-kB-Atlas Complete-8-Gene-IRAK4-MYD88-IKBKG-NFKBIA-IRF3-TLR3-UNC93B1-IRF7 NF-kB-Axis-Pyogenic-Bacteria-No-Fever-PATHOGNOMONIC IFN-Axis-HSE-Influenza-PATHOGNOMONIC",
+    "status": "built",
+    "api": "/api/hereditary-innate-immunity-tlr-nfkb-atlas",
+    "route": "/hereditary-innate-immunity-tlr-nfkb-atlas",
+    "built_date": "2026-10-17",
+    "seeds": "3886-3893",
+    "patients": 320,
+    "genes": [
+      "IRAK4",
+      "MYD88",
+      "IKBKG",
+      "NFKBIA",
+      "IRF3",
+      "TLR3",
+      "UNC93B1",
+      "IRF7"
+    ],
+    "script": "scripts/hereditary_innate_immunity_tlr_nfkb_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-innate-immunity-tlr-nfkb-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-innate-immunity-tlr-nfkb-atlas/overview",
+      "/api/hereditary-innate-immunity-tlr-nfkb-atlas/breakdown",
+      "/api/hereditary-innate-immunity-tlr-nfkb-atlas/definitions"
+    ],
+    "note": "Hereditary Innate Immunity TLR-NF-kB Atlas: IRAK4/MYD88 (pyogenic no-fever) NEMO/IkBa (EDA-ID) IRF3/TLR3/UNC93B1 (HSE) IRF7 (influenza). Seeds 3886-3893. Built 2026-10-17."
   }
 ]

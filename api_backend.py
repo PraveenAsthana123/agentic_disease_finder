@@ -52284,6 +52284,27 @@ async def hereditary_agammaglobulinemia_cvid_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-innate-immunity-tlr-nfkb-atlas/overview")
+async def hereditary_innate_immunity_tlr_nfkb_atlas_overview():
+    """Hereditary-Innate-Immunity-TLR-NF-kB-Atlas overview — IRAK4-MYD88-IKBKG-NFKBIA-IRF3-TLR3-UNC93B1-IRF7 seeds-3886-3893 NF-kB-axis-pyogenic-bacteria-no-fever IFN-axis-HSE-influenza."""
+    from scripts.hereditary_innate_immunity_tlr_nfkb_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-innate-immunity-tlr-nfkb-atlas/breakdown")
+async def hereditary_innate_immunity_tlr_nfkb_atlas_breakdown():
+    """Hereditary-Innate-Immunity-TLR-NF-kB-Atlas breakdown — per-gene cohort n=40 each; IRAK4-no-fever-PATHOGNOMONIC; MYD88-identical-IRAK4; NEMO-EDA-ID-conical-teeth; IkBa-more-severe-NEMO; IRF3-HSE; TLR3-HSE-most-common; UNC93B1-broadest-endosomal; IRF7-influenza-PATHOGNOMONIC seeds-3886-3893."""
+    from scripts.hereditary_innate_immunity_tlr_nfkb_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-innate-immunity-tlr-nfkb-atlas/definitions")
+async def hereditary_innate_immunity_tlr_nfkb_atlas_definitions():
+    """Hereditary-Innate-Immunity-TLR-NF-kB-Atlas definitions — IRAK4-MYD88-pyogenic-no-inflammation; NEMO-EDA-ID-BCG-CI; IkBa-AD-GOF-herpesvirus-fatal; IRF3-TLR3-UNC93B1-HSE; IRF7-influenza-vaccine-mandatory seeds-3886-3893."""
+    from scripts.hereditary_innate_immunity_tlr_nfkb_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

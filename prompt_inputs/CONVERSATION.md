@@ -37748,3 +37748,63 @@ All 3 endpoints return 200. Now update STATUS.md and add to next_pending.py, the
 
 ### [2026-10-17 15:42:50 MDT] ASSISTANT
 All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-10-17 15:56:04 MDT] ASSISTANT
+**Built + pushed: Hereditary-SCID-Atlas** (commit `f9bc8792`)
+
+**What was built:**
+- `scripts/hereditary_scid_atlas_dashboard.py` — 8-gene SCID reference data generator (seeds 3854–3861, 320 patients)
+- `portal-next/app/hereditary-scid-atlas/page.jsx` — 4-tab frontend (Overview, Gene Table, Immunophenotype Map, Definitions)
+- 3 new API endpoints verified 200: `/api/hereditary-scid-atlas/overview|breakdown|definitions`
+- Registered in `config/expert_dashboards.json` (count: 1370 → 1371)
+- Wired in SiteNav after Hereditary-Complement-System-Deficiency-Atlas
+
+**8 genes covered:**
+
+| Gene | Phenotype | Key Fact |
+|---|---|---|
+| IL2RG | T−B+NK− | Most common SCID (40-50%); gene therapy first approved |
+| ADA | T−B−NK− | Strimvelis EMA 2016; elapegademase enzyme replacement |
+| RAG1 | T−B−NK+ / Omenn | 11p13 — always sequence RAG1+RAG2 together |
+| RAG2 | T−B−NK+ / Omenn | R229Q North African founder → Omenn |
+| DCLRE1C | T−B−NK+ radiosensitive | Busulfan/TBI ABSOLUTELY CONTRAINDICATED; Navajo/Apache founder |
+| JAK3 | T−B+NK− AR | Female with T−B+NK− → test JAK3 not IL2RG |
+| IL7R | T−B+NK+ | UNIQUE — only T absent; best HSCT outcome of all SCID |
+| AK2 | T−B−NK− + agranulocytosis | Bilateral deafness PATHOGNOMONIC; reticular dysgenesis |
+
+⏳ **Pending:** Only ictal/interictal retrain remains (skipped — too heavy).
+
+### [2026-10-17 16:00:59 MDT] ASSISTANT
+**Autonomous build — iteration result: queue empty**
+
+- `python3 scripts/next_pending.py` → `IndexError: list index out of range` (BUILDABLE list empty)
+- `config/expert_dashboards.json`: 1371/1371 items = `built`, 0 = `planned`
+- STATUS.md pending: only "Retrain on same-setup ictal/interictal" → skipped per instructions
+- No commit, no push — nothing to build
+
+⏳ **Pending:** ictal/interictal retrain (skipped — too heavy / requires operator decision) · Gmail/Slack/Drive live (blocked — credentials) · multi-user auth (blocked) · EMR/FHIR (blocked)
+
+### [2026-10-17 16:32:22 MDT] ASSISTANT
+Good. The built record is already in the inline comment system. Now commit and push:
+
+### [2026-10-17 16:58:01 MDT] ASSISTANT
+Committed `f86ff25e`, pushed to `origin/main`, tracked. HIES atlas complete.
+
+**Built:** `Hereditary-HIES-Atlas` — STAT3·DOCK8·PGM3·CARD11·IL6ST·ZNF341·IL21R·TYK2 · 320 patients · seeds 3870-3877 · 3 endpoints verified 200 · SiteNav wired · `expert_dashboards.json` count 1373.
+
+### [2026-10-17 17:12:38 MDT] ASSISTANT
+**Done.** One iteration completed:
+
+**Built + pushed: Hereditary-Agammaglobulinemia-CVID-Atlas**
+
+- **8 genes:** BTK · IGHM · IGLL1 · BLNK · PIK3CD · PIK3R1 · LRBA · NFKB1
+- **320 patients** (n=40 each), seeds 3878–3885
+- **3 API endpoints verified 200:** `/api/hereditary-agammaglobulinemia-cvid-atlas/overview|breakdown|definitions`
+- **Portal page:** `/hereditary-agammaglobulinemia-cvid-atlas` with 4 tabs (Overview, Gene Table, CVID Classification Map, Definitions)
+- **SiteNav wired** after Hereditary-HIES-Atlas
+- **expert_dashboards.json:** 1373 → 1374
+- **Pushed** to `PraveenAsthana123/agentic_disease_finder` (fast-forward, commit `9275f249`)
+
+Key clinical content captured: BTK-XLA (echovirus encephalitis PATHOGNOMONIC, males only, first PID 1952), IGHM/IGLL1/BLNK (AR agammaglobulinemia — females affected, sequence IGHM first in females), PIK3CD/PIK3R1 APDS (B cells present, leniolisib FDA2023, EBV/CMV susceptibility), LRBA (CTLA4 surface loss, abatacept HIGHLY EFFECTIVE), NFKB1 CVID7 (most common genetic CVID ~10%, splenomegaly + IBD distinguishers).
+
+⏳ **Pending:** Retrain ictal/interictal (skipped — too heavy) · Gmail/Slack/Drive (credentials blocked) · multi-user auth · EMR/FHIR
