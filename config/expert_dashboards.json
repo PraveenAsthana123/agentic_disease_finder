@@ -22453,5 +22453,29 @@
     "registered": "2026-10-16",
     "slug": "hereditary-mzl-predisposition-atlas",
     "api_base": "/api/hereditary-mzl-predisposition-atlas"
+  },
+  {
+    "key": "hereditary_hl_predisposition_atlas",
+    "title": "Hereditary-HL-Predisposition-Atlas Complete-8-Gene-ATM-NBN-BRCA2-TP53-CHEK2-BLM-KLHDC8B-RB1 ATM-3056aa-11q22.3-AD-LOF-A-T-HL-3-4x-Monoallelic-RADIOSENSITIVITY-ABSOLUTE-BV-AVD-Preferred-Ceralasertib-ATRi NBN-754aa-8q21.3-AD-AR-LOF-NBS-HL-NHL-60x-HIGHEST-657del5-Slavic-1in150-Cranial-RT-Absolutely-CI-RIC-HSCT BRCA2-3418aa-13q12.3-AD-LOF-HBOC-HL-2-3x-HRD-60pct-Cisplatin-Preferred-Olaparib-PARP-FA-D1-Biallelic TP53-393aa-17p13.1-AD-LOF-LFS-HL-3-5x-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto-Venetoclax-Backbone CHEK2-543aa-22q12.1-AD-LOF-1100delC-European-1in200-HL-2-3x-NOT-HRD-NO-PARPi-ATM-CHEK2-Additive-8-10x BLM-1417aa-15q26.1-AR-LOF-Bloom-Syndrome-HL-150-300x-Biallelic-SCE-PATHOGNOMONIC-AVOID-ALKYLATING-AVOID-RT KLHDC8B-560aa-3q22.3-AD-LOF-NLPHL-Specific-EBV-Negative-LP-CD20+-Young-Onset-20-40yr-Rituximab-Preferred RB1-928aa-13q14.2-AD-LOF-Hereditary-Rb-Secondary-HL-Post-RT-5-10x-CDK4-6i-INACTIVE-Venetoclax-Active 320-Patient-Aggregate-8x40-seeds-3614-3621",
+    "status": "built",
+    "built_date": "2026-10-17",
+    "api_routes": [
+      "/api/hereditary-hl-predisposition-atlas/overview",
+      "/api/hereditary-hl-predisposition-atlas/breakdown",
+      "/api/hereditary-hl-predisposition-atlas/definitions"
+    ],
+    "portal_page": "portal-next/app/hereditary-hl-predisposition-atlas/page.jsx",
+    "seed_range": "3614-3621",
+    "genes": [
+      "ATM",
+      "NBN",
+      "BRCA2",
+      "TP53",
+      "CHEK2",
+      "BLM",
+      "KLHDC8B",
+      "RB1"
+    ],
+    "patients": 320
   }
 ]

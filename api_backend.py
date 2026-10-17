@@ -51565,6 +51565,27 @@ async def hereditary_mzl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hl-predisposition-atlas/overview")
+async def hereditary_hl_predisposition_atlas_overview():
+    """Hereditary-HL-Predisposition-Atlas overview (ATM-NBN-BRCA2-TP53-CHEK2-BLM-KLHDC8B-RB1; 320-patient aggregate 8x40 seeds 3614-3621; ATM-RADIOSENSITIVITY-ABSOLUTE-HL-3-4x-monoallelic; NBN-657del5-Slavic-NHL-60x-HIGHEST; BLM-Bloom-SCE-PATHOGNOMONIC-HL-150-300x-biallelic; KLHDC8B-NLPHL-EBV-negative-rituximab; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; RB1-CDK4-6i-INACTIVE)."""
+    from scripts.hereditary_hl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hl-predisposition-atlas/breakdown")
+async def hereditary_hl_predisposition_atlas_breakdown():
+    """Hereditary-HL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-del11q-30pct; NBN-cranial-RT-absolutely-CI; BRCA2-HRD-60pct-cisplatin; TP53-venetoclax-backbone; CHEK2-NOT-HRD-NO-PARPi; BLM-alkylating-ABSOLUTELY-CI; KLHDC8B-NLPHL-90pct; RB1-CDK4-6i-INACTIVE-secondary-HL)."""
+    from scripts.hereditary_hl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hl-predisposition-atlas/definitions")
+async def hereditary_hl_predisposition_atlas_definitions():
+    """Hereditary-HL-Predisposition-Atlas clinical definitions (ATM-RADIOSENSITIVITY-ABSOLUTE-BV-AVD-preferred; NBN-657del5-NBS-RIC-HSCT-no-TBI; BRCA2-cisplatin-olaparib-maintenance; TP53-WB-MRI-Toronto-venetoclax; CHEK2-1100delC-European-1in200-NOT-HRD; BLM-SCE-PATHOGNOMONIC-gemcitabine-based; KLHDC8B-NLPHL-rituximab-R-CHOP; RB1-secondary-HL-post-RT-venetoclax)."""
+    from scripts.hereditary_hl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
