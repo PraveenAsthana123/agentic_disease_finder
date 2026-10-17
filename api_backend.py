@@ -52158,6 +52158,27 @@ async def hereditary_ehlers_danlos_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-autoinflammatory-syndrome-atlas/overview")
+async def hereditary_autoinflammatory_syndrome_atlas_overview():
+    """Hereditary-Autoinflammatory-Syndrome-Atlas overview — MEFV/FMF-colchicine-CURATIVE; NLRP3/CAPS-IL1-HIGHLY-EFFECTIVE; TNFRSF1A/TRAPS-attacks-GT5d-migratory-rash-PATHOGNOMONIC; MVK/HIDS-IgD-elevated-80pct; NOD2/Blau-granulomatous-triad-PATHOGNOMONIC; PSTPIP1/PAPA-pyoderma-sterile-arthritis-acne-PATHOGNOMONIC; ADA2/DADA2-strokes-TNFi-PREVENTS; NLRP12/FCAS2-cold-triggered seeds-3838-3845."""
+    from scripts.hereditary_autoinflammatory_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-autoinflammatory-syndrome-atlas/breakdown")
+async def hereditary_autoinflammatory_syndrome_atlas_breakdown():
+    """Hereditary-Autoinflammatory-Syndrome-Atlas breakdown — MEFV/FMF; NLRP3/CAPS-FCAS-MWS-NOMID; TNFRSF1A/TRAPS; MVK/MKD-HIDS; NOD2/Blau; PSTPIP1/PAPA; ADA2/DADA2; NLRP12/FCAS2 treatment-matrix surveillance-matrix seeds-3838-3845."""
+    from scripts.hereditary_autoinflammatory_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-autoinflammatory-syndrome-atlas/definitions")
+async def hereditary_autoinflammatory_syndrome_atlas_definitions():
+    """Hereditary-Autoinflammatory-Syndrome-Atlas definitions — FMF-colchicine-curative; CAPS-IL1-mandatory; TRAPS-attacks-GT5d; HIDS-IgD-biomarker; Blau-granuloma-triad; PAPA-sterile-arthritis; DADA2-strokes-TNFi; FCAS2-cold-triggered seeds-3838-3845."""
+    from scripts.hereditary_autoinflammatory_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

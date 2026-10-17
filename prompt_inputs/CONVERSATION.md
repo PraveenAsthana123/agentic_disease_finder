@@ -37678,3 +37678,67 @@ Done. One iteration complete:
 Key clinical rules encoded: NPC1 VSGP + cataplexy + filipin PATHOGNOMONIC · HEXA no ERT available · GALC HSCT presymptomatic-only · ARSA Libmeldy EMA2020/FDA2024 · ASAH1 Farber TRIAD (nodules+joints+hoarseness) PATHOGNOMONIC · SMPD1 olipudase alfa Type B only · GBA Parkinson risk 5× heterozygotes.
 
 **⏳ Pending:** Retrain ictal/interictal (skipped — heavy) · Gmail/Slack/Drive (credentials) · multi-user auth · EMR/FHIR
+
+### [2026-10-17 13:47:27 MDT] ASSISTANT
+I'll add the new atlas as a comment inside BUILDABLE and also after the lysosomal storage entry:
+
+### [2026-10-17 14:17:28 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed.
+
+**Hereditary-Congenital-Myasthenic-Syndrome-Atlas** — seeds 3814-3821 — 8 genes, 320 patients:
+
+| Gene | Locus | Key Clinical Rule |
+|------|-------|-------------------|
+| CHRNE | 17p13.2 AR | Most common AR CMS; slow-channel GOF → quinidine (pyridostigmine CI); fast-channel LOF → pyridostigmine |
+| COLQ | 3p25.1 AR | Absent pupillary reflex PATHOGNOMONIC; pyridostigmine **ABSOLUTELY CONTRAINDICATED** → ephedrine |
+| RAPSN | 11p11.2 AR | N88K Northern European founder; neonatal hypotonia+arthrogryposis; fever-triggered apnea HALLMARK; pyridostigmine EFFECTIVE |
+| DOK7 | 4p16.3 AR | Limb-girdle WITHOUT ptosis PATHOGNOMONIC; pyridostigmine **ABSOLUTELY CONTRAINDICATED**; salbutamol SPECIFIC first-line |
+| AGRN | 1p36.33 AR | Distal-predominant ATYPICAL; salbutamol/ephedrine; pyridostigmine variable |
+| MUSK | 9q31.3 AR | Distinguish from autoimmune anti-MuSK MG (no antibodies in CMS); ephedrine+3,4-DAP preferred |
+| SCN4A | 17q23.3 AD | Nav1.4 — NOT nicotinic AChR; acetazolamide first-line; pyridostigmine NOT indicated |
+| GFPT1 | 2p13.1 AR | Glycosylation CMS; tubular aggregates on biopsy PATHOGNOMONIC; 3,4-DAP+pyridostigmine EFFECTIVE |
+
+3 endpoints verified 200 · expert_dashboards.json 1365→1366 · pushed to `main`.
+
+### [2026-10-17 14:42:19 MDT] ASSISTANT
+Commit `34368d63` is live and all 3 endpoints verified 200.
+
+**Built + pushed: Hereditary-Peripheral-Neuropathy-CMT-Atlas**
+
+- **Script:** `scripts/hereditary_peripheral_neuropathy_cmt_atlas_dashboard.py` — 320 patients (8×40), seeds 3822–3829
+- **Genes:** PMP22 · MPZ · GJB1 · MFN2 · GDAP1 · SH3TC2 · PRX · NEFL
+- **Key pathognomonic facts encoded:**
+  - GJB1: intermediate NCV 25–45 m/s PATHOGNOMONIC (not purely demyelinating, not purely axonal)
+  - MFN2: optic atrophy 20–30% PATHOGNOMONIC for CMT2A
+  - GDAP1: vocal cord/phrenic nerve involvement PATHOGNOMONIC
+  - SH3TC2: scoliosis + cranial nerve involvement PATHOGNOMONIC for CMT4C; R954W European founder
+  - PRX: onion bulb severe, NCV <10 m/s PATHOGNOMONIC; 38/40 onion bulb
+  - PMP22: pes cavus + hammertoe + hyporeflexia triad PATHOGNOMONIC
+- **API:** 3 endpoints `/api/hereditary-peripheral-neuropathy-cmt-atlas/overview|breakdown|definitions` → all 200
+- **Frontend:** Next.js page with Overview/Gene Table/NCV Analysis/Definitions tabs + SiteNav wired
+- **Registry:** expert\_dashboards.json count 1366→1367
+- **Pushed to:** `origin/main`
+
+⏳ **Pending:** Only the ictal/interictal retrain (skipped — too heavy) and credential-gated items (Gmail/Slack/Drive/FHIR) remain. Queue is otherwise empty.
+
+### [2026-10-17 15:00:36 MDT] ASSISTANT
+**Done.** Built, verified, committed, and pushed:
+
+**Hereditary-Ehlers-Danlos-Syndrome-Atlas** — 8-gene EDS reference (seeds 3830-3837)
+
+| Gene | EDS Type | Key Pathognomonic Feature |
+|------|----------|--------------------------|
+| COL5A1 | cEDS (most common, 90%) | Atrophic papyraceous scars; NO vascular rupture |
+| COL5A2 | cEDS type 2 | Allelic with COL5A1; glycine substitutions |
+| TNXB | TNX-EDS/hEDS-like | TNXB panel MANDATORY in hEDS (5-10% positive) |
+| PLOD1 | kEDS-PLOD1 | Urine LP/HLP ratio >3× PATHOGNOMONIC; vascular rupture risk → aortic imaging MANDATORY |
+| FKBP14 | kEDS-FKBP14 | Sensorineural hearing loss PATHOGNOMONIC; LP ratio NORMAL (distinguishes from PLOD1) |
+| ADAMTS2 | dEDS | Extreme skin fragility + sagging skin at birth; NOT hyperextensible |
+| CHST14 | mcEDS | Adducted thumbs + clubfoot at BIRTH PATHOGNOMONIC |
+| SLC39A13 | spEDS | Protruding eyes + fish-eye cornea PATHOGNOMONIC |
+
+- 3 API endpoints verified 200: `/api/hereditary-ehlers-danlos-syndrome-atlas/overview|breakdown|definitions`
+- Portal page: `portal-next/app/hereditary-ehlers-danlos-syndrome-atlas/page.jsx`
+- SiteNav wired after Hereditary-Peripheral-Neuropathy-CMT-Atlas
+- `expert_dashboards.json`: 1367 → 1368
+- Pushed to `origin/main` (`e2718b45`)

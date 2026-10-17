@@ -23071,5 +23071,28 @@
     "seeds": "3830-3837",
     "category": "hereditary_atlas",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-autoinflammatory-syndrome-atlas",
+    "title": "Hereditary-Autoinflammatory-Syndrome-Atlas",
+    "role": "Monogenic Autoinflammatory Syndrome Reference \u2014 MEFV/FMF-Colchicine-CURATIVE \u00b7 NLRP3/CAPS-IL1-HIGHLY-EFFECTIVE \u00b7 TNFRSF1A/TRAPS-GT5d-Migratory-Rash \u00b7 MVK/HIDS-IgD-Biomarker \u00b7 NOD2/Blau-Granulomatous-Triad \u00b7 PSTPIP1/PAPA-Sterile-Arthritis \u00b7 ADA2/DADA2-Strokes-TNFi-PREVENTS \u00b7 NLRP12/FCAS2-Cold-Triggered",
+    "gene": "MEFV-NLRP3-TNFRSF1A-MVK-NOD2-PSTPIP1-ADA2-NLRP12",
+    "route": "/hereditary-autoinflammatory-syndrome-atlas",
+    "api_prefix": "/api/hereditary-autoinflammatory-syndrome-atlas",
+    "locus": "MEFV-16p13.3-AR / NLRP3-1q44-AD-GOF / TNFRSF1A-12p13.31-AD / MVK-12q24.11-AR / NOD2-16q21-AD-GOF / PSTPIP1-15q24.3-AD-GOF / ADA2-22q11.1-AR / NLRP12-19q13.42-AD",
+    "syndrome": "FMF / CAPS-FCAS-MWS-NOMID / TRAPS / MKD-HIDS / Blau-syndrome / PAPA / DADA2 / FCAS2",
+    "omim": "FMF-249100 / CAPS-120100 / TRAPS-142680 / HIDS-260920 / Blau-186580 / PAPA-604416 / DADA2-615688",
+    "color": "#c62828",
+    "seeds": "3838-3845",
+    "endpoints": [
+      "/api/hereditary-autoinflammatory-syndrome-atlas/overview",
+      "/api/hereditary-autoinflammatory-syndrome-atlas/breakdown",
+      "/api/hereditary-autoinflammatory-syndrome-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-autoinflammatory-syndrome-atlas/page.jsx",
+    "script": "scripts/hereditary_autoinflammatory_syndrome_atlas_dashboard.py",
+    "status": "built",
+    "note": "Total: 1369 dashboards",
+    "built_note": "Built scripts/hereditary_autoinflammatory_syndrome_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-autoinflammatory-syndrome-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-autoinflammatory-syndrome-atlas/page.jsx + SiteNav wired after Hereditary-Ehlers-Danlos-Syndrome-Atlas, expert_dashboards.json count 1368->1369. Built 2026-10-17."
   }
 ]
