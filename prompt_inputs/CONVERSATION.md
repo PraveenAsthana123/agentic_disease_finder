@@ -37275,3 +37275,6 @@ The BUILDABLE queue was empty (all prior items built), so I extended the series 
 3 endpoints verified 200 · expert_dashboards.json: 1335→1336 · SiteNav wired after Hereditary-HLH-Predisposition-Atlas · pushed to origin/main.
 
 ⏳ **Pending:** Retrain ictal/interictal (excluded — too heavy) · Gmail/Slack/Drive live (credentials) · multi-user auth · EMR/FHIR
+
+### [2026-10-16 22:58:06 MDT] ASSISTANT
+Now push:

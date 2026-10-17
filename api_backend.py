@@ -51525,6 +51525,25 @@ async def hereditary_follicular_lymphoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mcl-predisposition-atlas/overview")
+async def hereditary_mcl_predisposition_atlas_overview():
+    """Hereditary-MCL-Predisposition-Atlas overview (ATM-NBN-BRCA2-CHEK2-CDKN2A-RB1-TP53-MAP2K1; 320-patient aggregate 8x40 seeds 3598-3605; ATM-del11q-40-75pct-ibrutinib-active-RADIOSENSITIVITY-ABSOLUTE; TP53-blastoid-30-35pct-AVOID-RADIATION-ABSOLUTELY-venetoclax; CDKN2A-del9p21-CDK4-6i-INACTIVE-MONARCL; RB1-del13q14-secondary-MCL-CDK4-6i-INACTIVE; NBN-NHL-60x-657del5-Slavic; BRCA2-HRD-cisplatin-olaparib; CHEK2-NOT-HRD-no-PARPi; MAP2K1-GOF-cobimetinib-MEKi)."""
+    from scripts.hereditary_mcl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-mcl-predisposition-atlas/breakdown")
+async def hereditary_mcl_predisposition_atlas_breakdown():
+    """Hereditary-MCL-Predisposition-Atlas per-gene breakdown (ATM-del11q-75pct-ceralasertib-ATRi; TP53-complex-karyotype-80pct-venetoclax; CDKN2A-del9p21-60pct-blastoid-CDK4-6i-INACTIVE; RB1-del13q14-shortPFS-BTKi-doublet; NBN-657del5-Slavic-NHL-60x-radiosensitivity; BRCA2-HRD-60pct-cisplatin-olaparib-PARP; CHEK2-1100delC-European-NOT-HRD; MAP2K1-NRR-deletion-cobimetinib-BRAF-co-test)."""
+    from scripts.hereditary_mcl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-mcl-predisposition-atlas/definitions")
+async def hereditary_mcl_predisposition_atlas_definitions():
+    """Hereditary-MCL-Predisposition-Atlas clinical definitions (ATM-RADIOSENSITIVITY-ABSOLUTE-del11q-ceralasertib; TP53-LFS-blastoid-AVOID-RADIATION-venetoclax; CDKN2A-FAMM-del9p21-CDK4-6i-INACTIVE-MONARCL; RB1-HereditaryRb-del13q14-secondary-MCL; NBN-NBS-NHL-60x-657del5-Slavic; BRCA2-HBOC-HRD-cisplatin-olaparib; CHEK2-NOT-HRD-no-PARPi; MAP2K1-CFC-cobimetinib-MEKi-BRAF-V600E)."""
+    from scripts.hereditary_mcl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
