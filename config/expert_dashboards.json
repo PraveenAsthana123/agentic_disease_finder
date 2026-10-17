@@ -23012,8 +23012,39 @@
     "title": "Hereditary-Lysosomal-Storage-Disease-Atlas",
     "category": "Hereditary Metabolic Disease",
     "status": "built",
-    "genes": ["GBA", "SMPD1", "NPC1", "HEXA", "GALC", "ARSA", "GLB1", "ASAH1"],
+    "genes": [
+      "GBA",
+      "SMPD1",
+      "NPC1",
+      "HEXA",
+      "GALC",
+      "ARSA",
+      "GLB1",
+      "ASAH1"
+    ],
     "patients": 320,
     "seeds": "3798-3805"
+  },
+  {
+    "id": "hereditary-urea-cycle-disorder-atlas",
+    "title": "Hereditary-Urea-Cycle-Disorder-Atlas",
+    "status": "built",
+    "genes": [
+      "OTC",
+      "ASS1",
+      "ASL",
+      "ARG1",
+      "CPS1",
+      "NAGS",
+      "SLC25A13",
+      "SLC25A15"
+    ],
+    "seeds": "3806-3813",
+    "registered": "2026-10-17",
+    "api_routes": [
+      "/api/hereditary-urea-cycle-disorder-atlas/overview",
+      "/api/hereditary-urea-cycle-disorder-atlas/breakdown",
+      "/api/hereditary-urea-cycle-disorder-atlas/definitions"
+    ]
   }
 ]

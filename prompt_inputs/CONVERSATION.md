@@ -37495,3 +37495,186 @@ All buildable pending items are complete:
 Remaining pending items cannot proceed autonomously:
 - **SKIP**: Ictal/interictal retrain (too heavy for unattended run)
 - **Blocked**: Gmail/Slack/Drive live credentials · multi-user auth · EMR/FHIR integration
+
+### [2026-10-17 07:28:35 MDT] ASSISTANT
+Now commit:
+
+### [2026-10-17 07:31:18 MDT] ASSISTANT
+Queue is empty — nothing to build this iteration.
+
+**Status:**
+- `next_pending.py` returned `IndexError: list index out of range` — the `BUILDABLE` list has 0 un-built dict entries (all items are marked as built in comments)
+- `expert_dashboards.json`: 1352/1352 dashboards built, 0 planned/partial remaining
+- `STATUS.md` pending section shows only one item: **"Retrain on same-setup ictal/interictal"** — explicitly in the SKIP list (too heavy)
+- Blocked items: Gmail/Slack/Drive live (credentials) · multi-user auth · EMR/FHIR — all operator-gated
+
+No commit, no push — queue exhausted per §57.7 honesty. Tracked via `scripts/track.sh`.
+
+### [2026-10-17 08:03:54 MDT] ASSISTANT
+Staged files confirmed. Committing now.
+
+### [2026-10-17 08:23:58 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Primary-Ciliary-Dyskinesia-Atlas**
+
+- **SEED_BASE**: 3726 · seeds 3726–3733 · 320 patients (8×40)
+- **Genes**: DNAH5 · DNAI1 · CCDC39 · CCDC40 · DNAI2 · DNAH11 · RSPH4A · CCNO
+- **Key pathognomonic rules encoded**:
+  - DNAH11: **Normal TEM PATHOGNOMONIC** — TEM-only diagnosis MISSES this subtype; waveform analysis mandatory
+  - nNO <77 nL/min PATHOGNOMONIC for PCD
+  - Kartagener triad (situs inversus + bronchiectasis + sinusitis) PATHOGNOMONIC
+  - CCNO/RGMC: female subfertility 65% — reduced cilia number, near-normal TEM
+  - CCDC39: most severe bronchiectasis/lowest FEV1 of all subtypes
+- **3 endpoints**: `/api/hereditary-primary-ciliary-dyskinesia-atlas/{overview|breakdown|definitions}` — all 200 ✅
+- **Portal page**: `/hereditary-primary-ciliary-dyskinesia-atlas` — Overview / Gene Table / Clinical Atlas / Definitions tabs
+- **expert_dashboards.json**: 1353 → 1354
+- **SiteNav**: wired after PAH/PVOD atlas
+- **Committed**: `2dcb0e83` · **Pushed**: `main → origin/main` ✅
+
+### [2026-10-17 08:46:49 MDT] ASSISTANT
+**Done.** Built and pushed: `hereditary-skeletal-muscle-channelopathy-atlas`
+
+**What was built:**
+- `scripts/hereditary_skeletal_muscle_channelopathy_atlas_dashboard.py` (517 lines) — 8-gene dashboard with seeded 320-patient aggregate (seeds 3734–3741), real clinical facts per gene
+- `portal-next/app/hereditary-skeletal-muscle-channelopathy-atlas/page.jsx` (301 lines) — 4-tab portal page
+- 3 API routes in `api_backend.py` — all verified 200: `/overview`, `/breakdown`, `/definitions`
+- `config/expert_dashboards.json` — count 1354 → **1355**
+- `portal-next/app/components/SiteNav.jsx` — nav entry wired after PCD atlas
+
+**8 genes covered (clinically significant):**
+| Gene | Disease | Key PATHOGNOMONIC |
+|------|---------|-------------------|
+| SCN4A | HyperKPP / PMC / HypoPP2 | Cold-triggered PMC; carbonic anhydrase inhibitor Rx |
+| CACNA1S | HypoPP type 1 / MHS5 | Most common HypoPP; volatile anesthetics + succinylcholine ABSOLUTELY CI |
+| KCNJ2 | Andersen-Tawil Syndrome | TRIAD (paralysis + LQT7 + dysmorphia) PATHOGNOMONIC; bidirectional VT PATHOGNOMONIC |
+| CLCN1 | Myotonia Congenita (Thomsen/Becker) | Warm-up phenomenon PATHOGNOMONIC; mexiletine first-line |
+| KCNJ18 | Thyrotoxic Periodic Paralysis | Treat thyrotoxicosis FIRST; propranolol acute; NOT K+ alone |
+| RYR1 | MHS1 + Central Core Disease | Dantrolene IV MANDATORY on-site; IVCT/CHCT gold standard |
+| DMPK | Myotonic Dystrophy type 1 | Anticipation PATHOGNOMONIC; annual ECG+Holter MANDATORY |
+| CNBP | Myotonic Dystrophy type 2 | Proximal weakness; NO anticipation (contrast with DM1) |
+
+⏳ **Pending:** ictal/interictal retrain (skipped — too heavy) · Gmail/Slack/Drive (credentials) · multi-user auth · EMR/FHIR
+
+### [2026-10-17 09:02:55 MDT] ASSISTANT
+The buildable queue is empty — nothing to do this iteration.
+
+**Summary:**
+- `next_pending.py` crashes with `IndexError: list index out of range` because `BUILDABLE = []` (every item is commented out as "Built")
+- Only non-skipped entry in the list is `ictal_interictal` (explicitly excluded per task instructions)
+- STATUS.md confirms: 1355/1355 expert dashboards built, 9/9 API endpoints live
+- All remaining pending items fall into two blocked categories:
+  - **Credential-gated:** Gmail, Slack, Drive, EMR/FHIR, multi-user auth
+  - **Skip-listed:** ictal/interictal retrain
+- Logged to `track.sh` and exiting per §57.7 — no commit, no fabricated work.
+
+### [2026-10-17 09:26:46 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Inherited-Arrhythmia-Syndrome-Atlas** (seeds 3742–3749)
+
+- **Dashboard script:** `scripts/hereditary_inherited_arrhythmia_syndrome_atlas_dashboard.py` — 8 genes × 40 patients = 320-patient aggregate
+- **Portal page:** `portal-next/app/hereditary-inherited-arrhythmia-syndrome-atlas/page.jsx` — 4-tab UI (Overview, Gene Table, Clinical Atlas, Definitions)
+- **3 API endpoints verified 200:**
+  - `/api/hereditary-inherited-arrhythmia-syndrome-atlas/overview`
+  - `/api/hereditary-inherited-arrhythmia-syndrome-atlas/breakdown`
+  - `/api/hereditary-inherited-arrhythmia-syndrome-atlas/definitions`
+- **SiteNav wired** after Hereditary-Skeletal-Muscle-Channelopathy-Atlas
+- **Registry updated:** 1355 → 1356 entries
+- **Pushed:** `cf14d18a..de0f45a8`
+
+**Key clinical content:** KCNQ1 swim/exertion = LQT1 PATHOGNOMONIC + JLNS deafness; KCNH2 auditory arousal = LQT2 PATHOGNOMONIC; SCN5A fever = Brugada PATHOGNOMONIC + Na-channel blockers ABSOLUTE CI; RYR2 bidirectional VT + normal resting ECG = CPVT PATHOGNOMONIC; PKP2 epsilon wave + sport ABSOLUTE CI; DSP LV-dominant ARVC + Carvajal syndrome; CACNA1C Timothy 2:1 AV block + syndactyly; HCN4 pacemaker mandatory + ivermectin ABSOLUTE CI.
+
+### [2026-10-17 09:51:36 MDT] ASSISTANT
+Now commit:
+
+### [2026-10-17 10:15:18 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Cardiomyopathy-Atlas**
+
+- **Genes (8):** MYH7 · MYBPC3 · LMNA · PLN · FLNC · RBM20 · MYH6 · TTN
+- **Dataset:** 320 patients (8×40), seeds 3750–3757
+- **API:** 3 endpoints `/api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions` — all return 200
+- **Frontend:** `portal-next/app/hereditary-cardiomyopathy-atlas/page.jsx` (4-tab layout)
+- **SiteNav:** wired after Hereditary-Inherited-Arrhythmia-Syndrome-Atlas
+- **Registry:** `config/expert_dashboards.json` updated, 1357 entries all built
+- **Commit:** `3efbb26c` → pushed to `origin/main`
+
+**Clinical scope:** Structural heart disease (HCM + DCM) complementing the previously built Arrhythmia atlas. Key pathognomonic flags: LMNA AV-block, PLN R14del Dutch-founder, MYH7 R403Q, RBM20 R634W aggressive-young phenotype.
+
+⏳ **Pending:** ictal/interictal retrain (excluded — too heavy) · Gmail/Slack/Drive (credentials blocked) · queue otherwise empty.
+
+### [2026-10-17 10:41:40 MDT] ASSISTANT
+Now commit:
+
+### [2026-10-17 10:48:48 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit.
+
+### [2026-10-17 11:11:26 MDT] ASSISTANT
+All 3 endpoints return 200. Now update next_pending.py and refresh STATUS.md:
+
+### [2026-10-17 11:41:47 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-10-17 11:58:55 MDT] ASSISTANT
+Done. Built, verified, committed, and pushed:
+
+**Hereditary Transthyretin Amyloidosis Atlas** — 8-gene complete reference, 320 patients (8×40), seeds 3782–3789:
+
+| Gene | Amyloid Type | Key Fact |
+|------|-------------|----------|
+| **TTR** | ATTR | V30M polyneuropathy; V122I cardiac (African-American); Tafamidis/Patisiran/Vutrisiran FDA; Apical-sparing + 99mTc-DPD Grade 2-3 PATHOGNOMONIC; DIGOXIN/VERAPAMIL AVOID |
+| **APOA1** | AApoAI | Multi-organ (renal+hepatic+cardiac+neuropathic); HDL-C near-zero PATHOGNOMONIC |
+| **FGA** | AFib | Most common hereditary renal amyloidosis; Glu526Val; NO neuropathy; Liver transplant CURATIVE |
+| **LYZ** | ALys | Hepatomegaly+splenomegaly PATHOGNOMONIC combination; D67H/I56T UK founders |
+| **GSN** | AGel | MERETOJA TRIAD: lattice corneal dystrophy TYPE II + facial nerve VII + cutis laxa PATHOGNOMONIC; D187N Finnish founder |
+| **APOA2** | AApoAII | Renal dominant; stop codon Ter94; late onset 50-70yr |
+| **B2M** | AB2M | Bilateral CTS in dialysis patient >10yr PATHOGNOMONIC; renal transplant CURATIVE |
+| **OSMR** | PLCA | Pruritic papules interscapular PATHOGNOMONIC; NO systemic organs (distinguishes from all others) |
+
+3 endpoints verified 200 · SiteNav wired after Hereditary-Cerebrovascular-Disease-Atlas · expert_dashboards.json: 1361→1362 · pushed `1ac7ae17`
+
+### [2026-10-17 12:02:47 MDT] ASSISTANT
+The `BUILDABLE` queue in `next_pending.py` is exhausted — all 1362 expert dashboards are `built`, all configs show 0 pending items, and the only remaining `STATUS.md` item (ictal/interictal retrain) is explicitly excluded from autonomous builds. Blocked items (Gmail/Slack/Drive/auth/EMR/FHIR) need operator credentials.
+
+### [2026-10-17 12:16:16 MDT] ASSISTANT
+The pending queue is empty — all 1362 dashboards are built and all pending tools are either in terminal states (built/external/installed/commercial) or fall into the explicitly-skipped categories (ictal/interictal retrain is too heavy; Gmail/Slack/Drive/auth/EMR/FHIR need credentials).
+
+### [2026-10-17 12:44:12 MDT] ASSISTANT
+**Done.** One iteration complete:
+
+**Built: Hereditary-Metabolic-Cardiomyopathy-Atlas** (seeds 3790-3797)
+
+| Gene | Disease | Key Fact |
+|------|---------|----------|
+| **GLA** | Fabry | CMR low T1 + basal-inferolateral LGE = PATHOGNOMONIC; enzyme assay normal in females → gene sequencing MANDATORY |
+| **LAMP2** | Danon | TRIAD: massive HCM + myopathy + intellectual disability = PATHOGNOMONIC; cardiac transplant ONLY definitive |
+| **GAA** | Pompe | IOPD ECG triad (short PR + high voltage + left axis) = PATHOGNOMONIC; CRIM status before ERT |
+| **PRKAG2** | PRKAG2-CMP | WPW+HCM+conduction TRIAD; ICD alone DANGEROUS with active WPW — catheter ablation FIRST |
+| **TAZ** | Barth | DCM/LVNC + neutropenia + 3-MGA urine = PATHOGNOMONIC; males only |
+| **SLC22A5** | CDSP | NBS C0 <5 μM PATHOGNOMONIC; L-carnitine CURATIVE; pivalate antibiotics ABSOLUTELY AVOID |
+| **HADHA** | LCHAD | Mother with AFLP/HELLP → test baby for LCHAD IMMEDIATELY (PATHOGNOMONIC association) |
+| **ACAD9** | Complex-I | Riboflavin 100-300mg/day FIRST-LINE ALWAYS; metformin ABSOLUTELY AVOID |
+
+- 3 endpoints verified 200 · expert_dashboards.json 1362→1363 · SiteNav wired · committed `59b8165c` · pushed
+
+⏳ **Pending** (top buildable): Queue now empty — all scheduled atlas items built. Blocked: retrain ictal/interictal (heavy) · Gmail/Slack/Drive credentials · multi-user auth · EMR/FHIR.
+
+### [2026-10-17 12:46:01 MDT] ASSISTANT
+The queue is genuinely empty — all 1363 expert dashboards are built, the only pending item is the ictal/interictal retrain which is explicitly on the skip list, and no other buildable work is registered.
+
+### [2026-10-17 13:15:32 MDT] ASSISTANT
+Done. One iteration complete:
+
+**Built + pushed: Hereditary-Lysosomal-Storage-Disease-Atlas**
+
+- **8 genes:** GBA · SMPD1 · NPC1 · HEXA · GALC · ARSA · GLB1 · ASAH1
+- **320 patients** (8 × 40, seeds 3798–3805)
+- **3 endpoints** verified 200: `/api/hereditary-lysosomal-storage-disease-atlas/overview|breakdown|definitions`
+- **expert_dashboards.json:** 1363 → 1364 total
+- **Pushed:** `59b8165c → 973caefe` on `main`
+
+Key clinical rules encoded: NPC1 VSGP + cataplexy + filipin PATHOGNOMONIC · HEXA no ERT available · GALC HSCT presymptomatic-only · ARSA Libmeldy EMA2020/FDA2024 · ASAH1 Farber TRIAD (nodules+joints+hoarseness) PATHOGNOMONIC · SMPD1 olipudase alfa Type B only · GBA Parkinson risk 5× heterozygotes.
+
+**⏳ Pending:** Retrain ictal/interictal (skipped — heavy) · Gmail/Slack/Drive (credentials) · multi-user auth · EMR/FHIR

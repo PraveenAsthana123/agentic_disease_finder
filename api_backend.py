@@ -52074,6 +52074,27 @@ async def hereditary_lysosomal_storage_disease_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/overview")
+async def hereditary_urea_cycle_disorder_atlas_overview():
+    """Hereditary-Urea-Cycle-Disorder-Atlas overview — OTC/X-linked-citrulline-low-orotic-high-PATHOGNOMONIC; ASS1/CTLN1-citrulline-gt1000-PATHOGNOMONIC; ASL/argininosuccinic-acid-PATHOGNOMONIC-liver-brain-dissociation; ARG1/spastic-diplegia-PATHOGNOMONIC; CPS1/carglumic-NOT-effective; NAGS/carglumic-CURATIVE-ONLY-UCD; SLC25A13/CTLN2-alcohol-TRIGGER-PATHOGNOMONIC; SLC25A15/HHH-homocitrulline-PATHOGNOMONIC seeds-3806-3813."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/breakdown")
+async def hereditary_urea_cycle_disorder_atlas_breakdown():
+    """Hereditary-Urea-Cycle-Disorder-Atlas breakdown — 320-patient-8x40-OTC-ASS1-ASL-ARG1-CPS1-NAGS-SLC25A13-SLC25A15 seeds-3806-3813."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/definitions")
+async def hereditary_urea_cycle_disorder_atlas_definitions():
+    """Hereditary-Urea-Cycle-Disorder-Atlas definitions — OTC-fasting-AVOID; NAGS-carglumic-CURATIVE-ONLY; CPS1-vs-NAGS-distinction; ASL-liver-brain-dissociation; CTLN2-alcohol-TRIGGER; HHH-homocitrulline-PATHOGNOMONIC seeds-3806-3813."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
