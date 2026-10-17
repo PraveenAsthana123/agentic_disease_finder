@@ -52095,6 +52095,27 @@ async def hereditary_urea_cycle_disorder_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-congenital-myasthenic-syndrome-atlas/overview")
+async def hereditary_congenital_myasthenic_syndrome_atlas_overview():
+    """Hereditary-Congenital-Myasthenic-Syndrome-Atlas overview — CHRNE-most-common-AR-CMS-slow-channel-quinidine-vs-fast-channel-pyridostigmine; COLQ-pupillary-reflex-ABSENT-PATHOGNOMONIC-pyridostigmine-ABSOLUTELY-CI; RAPSN-N88K-neonatal-apnea; DOK7-limb-girdle-pyridostigmine-ABSOLUTELY-CI-salbutamol-FIRST-LINE; AGRN-distal-ATYPICAL; MUSK-distinguish-autoimmune; SCN4A-Nav1-4-NOT-nicotinic-acetazolamide; GFPT1-tubular-aggregates-PATHOGNOMONIC seeds-3814-3821."""
+    from scripts.hereditary_congenital_myasthenic_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-congenital-myasthenic-syndrome-atlas/breakdown")
+async def hereditary_congenital_myasthenic_syndrome_atlas_breakdown():
+    """Hereditary-Congenital-Myasthenic-Syndrome-Atlas breakdown — 320-patient-8x40-CHRNE-COLQ-RAPSN-DOK7-AGRN-MUSK-SCN4A-GFPT1 seeds-3814-3821."""
+    from scripts.hereditary_congenital_myasthenic_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-congenital-myasthenic-syndrome-atlas/definitions")
+async def hereditary_congenital_myasthenic_syndrome_atlas_definitions():
+    """Hereditary-Congenital-Myasthenic-Syndrome-Atlas definitions — DOK7-pyridostigmine-ABSOLUTELY-CI-salbutamol-FIRST-LINE; COLQ-pupil-ABSENT-PATHOGNOMONIC; slow-channel-GOF-quinidine; GFPT1-tubular-aggregates-PATHOGNOMONIC; pyridostigmine-treatment-polarity seeds-3814-3821."""
+    from scripts.hereditary_congenital_myasthenic_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -1,5 +1,5 @@
-# ⚡ STATUS NOW — 2026-10-17 13:45:01 MDT
-- Backend: ✅ UP  ·  Frontend: ⚠ 000
+# ⚡ STATUS NOW — 2026-10-17 14:15:02 MDT
+- Backend: ❌ DOWN (000)  ·  Frontend: ⚠ 000
 - Inputs: 383 total · 187 unaddressed
 - Advisor P0/P1 issues: 0
 - **Do you need to input?** 🔴 INPUT NEEDED

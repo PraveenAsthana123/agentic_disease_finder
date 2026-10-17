@@ -23046,5 +23046,15 @@
       "/api/hereditary-urea-cycle-disorder-atlas/breakdown",
       "/api/hereditary-urea-cycle-disorder-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-congenital-myasthenic-syndrome-atlas",
+    "name": "Hereditary-Congenital-Myasthenic-Syndrome-Atlas Complete-8-Gene-CHRNE-COLQ-RAPSN-DOK7-AGRN-MUSK-SCN4A-GFPT1 CHRNE-493aa-17p13.2-AR-Most-Common-AR-CMS-40-50pct-Slow-Channel-GOF-Quinidine-vs-Fast-Channel-LOF-Pyridostigmine COLQ-461aa-3p25.1-AR-Endplate-AChE-Deficiency-Pupil-ABSENT-PATHOGNOMONIC-Pyridostigmine-ABSOLUTELY-CI DOK7-504aa-4p16.3-AR-Limb-Girdle-WITHOUT-Ptosis-PATHOGNOMONIC-Pyridostigmine-ABSOLUTELY-CI-Salbutamol-FIRST-LINE RAPSN-412aa-11p11.2-AR-N88K-Northern-European-Neonatal-Hypotonia-Fever-Apnea AGRN-2045aa-1p36.33-AR-Neural-Agrin-Distal-ATYPICAL MUSK-869aa-9q31.3-AR-Distinguish-Autoimmune-Anti-MuSK-MG SCN4A-1836aa-17q23.3-AD-Nav1-4-NOT-Nicotinic-Acetazolamide GFPT1-699aa-2p13.1-AR-Glycosylation-Tubular-Aggregates-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-3814-3821",
+    "title": "Hereditary-Congenital-Myasthenic-Syndrome-Atlas Complete-8-Gene-CHRNE-COLQ-RAPSN-DOK7-AGRN-MUSK-SCN4A-GFPT1",
+    "route": "/api/hereditary-congenital-myasthenic-syndrome-atlas",
+    "page": "/hereditary-congenital-myasthenic-syndrome-atlas",
+    "seeds": "3814-3821",
+    "status": "built",
+    "registered": "2026-10-17"
   }
 ]
