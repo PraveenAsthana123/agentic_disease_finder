@@ -23114,5 +23114,22 @@
     "status": "built",
     "color": "#b71c1c",
     "built_note": "Built 2026-10-17. 320-patient-aggregate-8x40-seeds-3846-3853. 3 endpoints verified 200. SiteNav wired after Hereditary-Autoinflammatory-Syndrome-Atlas."
+  },
+  {
+    "id": "hereditary-scid-atlas",
+    "title": "Hereditary-SCID-Atlas",
+    "status": "built",
+    "route": "/hereditary-scid-atlas",
+    "api_prefix": "/api/hereditary-scid-atlas",
+    "endpoints": [
+      "/api/hereditary-scid-atlas/overview",
+      "/api/hereditary-scid-atlas/breakdown",
+      "/api/hereditary-scid-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_scid_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-scid-atlas/page.jsx",
+    "gene": "IL2RG-ADA-RAG1-RAG2-DCLRE1C-JAK3-IL7R-AK2",
+    "seeds": "3854-3861",
+    "role": "SCID Immunophenotype Reference \u2014 IL2RG/XL-SCID-T-B+NK--Most-Common-Gene-Therapy \u00b7 ADA/T-B-NK--Enzyme-Replacement-Strimvelis-EMA2016 \u00b7 RAG1/T-B-NK+-Omenn-Syndrome-Spectrum \u00b7 RAG2/T-B-NK+-R229Q-North-African-Omenn \u00b7 DCLRE1C/Artemis-Radiosensitive-SCID-No-Radiation-Navajo \u00b7 JAK3/AR-T-B+NK--Female-Key-Phenocopy-XL-SCID \u00b7 IL7R/T-B+NK+-Best-HSCT-Outcome-Selective-T \u00b7 AK2/Reticular-Dysgenesis-Deafness-Agranulocytosis"
   }
 ]

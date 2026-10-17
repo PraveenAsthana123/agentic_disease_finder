@@ -52200,6 +52200,27 @@ async def hereditary_complement_system_deficiency_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-scid-atlas/overview")
+async def hereditary_scid_atlas_overview():
+    """Hereditary-SCID-Atlas overview — IL2RG-XL-SCID-T-B+NK--Most-Common; ADA-T-B-NK--Strimvelis; RAG1-RAG2-Omenn; DCLRE1C-Radiosensitive-No-TBI; JAK3-AR-Female-Key; IL7R-T-B+NK+-Best-HSCT; AK2-Reticular-Dysgenesis-Deafness seeds-3854-3861."""
+    from scripts.hereditary_scid_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-scid-atlas/breakdown")
+async def hereditary_scid_atlas_breakdown():
+    """Hereditary-SCID-Atlas breakdown — per-gene SCID phenotype T-B-NK profile; radiosensitivity; HSCT curative rate; gene therapy eligibility; Omenn syndrome; maternal engraftment seeds-3854-3861."""
+    from scripts.hereditary_scid_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-scid-atlas/definitions")
+async def hereditary_scid_atlas_definitions():
+    """Hereditary-SCID-Atlas definitions — TREC-NBS; V(D)J-recombination; HSCT-conditioning; gene-therapy-IL2RG-ADA; radiosensitivity-assay; Omenn-syndrome; reticular-dysgenesis seeds-3854-3861."""
+    from scripts.hereditary_scid_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

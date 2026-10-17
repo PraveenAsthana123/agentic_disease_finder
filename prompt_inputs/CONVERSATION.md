@@ -37742,3 +37742,9 @@ Commit `34368d63` is live and all 3 endpoints verified 200.
 - SiteNav wired after Hereditary-Peripheral-Neuropathy-CMT-Atlas
 - `expert_dashboards.json`: 1367 → 1368
 - Pushed to `origin/main` (`e2718b45`)
+
+### [2026-10-17 15:26:14 MDT] ASSISTANT
+All 3 endpoints return 200. Now update STATUS.md and add to next_pending.py, then commit:
+
+### [2026-10-17 15:42:50 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
