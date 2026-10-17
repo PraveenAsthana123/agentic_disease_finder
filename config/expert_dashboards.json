@@ -22764,5 +22764,33 @@
     "category": "hereditary-pediatric-cancer-predisposition",
     "built_date": "2026-10-17",
     "note": "Hereditary Wilms tumour predisposition: WT1 (WAGR/Denys-Drash/Frasier), AMER1/WTX (OSCS-XLR), DROSHA+DGCR8 (miRNA Microprocessor-bilateral WT), SIX1+SIX2 (Q177R-unfavorable histology), CTR9 (PAF1-AR-PLNR), CTNNB1 (Wnt-beta-catenin-ID-hepatoblastoma)"
+  },
+  {
+    "id": "hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas",
+    "title": "Hereditary-Pulmonary-Arterial-Hypertension-PVOD-Predisposition-Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 BMPR2 / ACVRL1 / ENG / SMAD9 / KCNK3 / CAV1 / EIF2AK4 / TBX4",
+    "genes": [
+      "BMPR2",
+      "ACVRL1",
+      "ENG",
+      "SMAD9",
+      "KCNK3",
+      "CAV1",
+      "EIF2AK4",
+      "TBX4"
+    ],
+    "seeds": "3718-3725",
+    "total_patients": 320,
+    "status": "built",
+    "script": "scripts/hereditary_pulmonary_arterial_hypertension_pvod_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/overview",
+      "/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/breakdown",
+      "/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/definitions"
+    ],
+    "category": "hereditary-cardiopulmonary-predisposition",
+    "built_date": "2026-10-17",
+    "note": "Hereditary PAH and PVOD predisposition: BMPR2 (75% familial PAH; RHC mandatory; sotatercept FDA2024), ACVRL1 (HHT2; telangiectases PATHOGNOMONIC; PAH 10%), ENG (HHT1; cerebral AVM MRI mandatory), SMAD9 (BMP pathway; rare PAH), KCNK3 (TASK1 channel), CAV1 (lipodystrophy PATHOGNOMONIC), EIF2AK4 (biallelic PVOD; prostanoids ABSOLUTELY CI; lung transplant only cure), TBX4 (pediatric PAH; small patella PATHOGNOMONIC)"
   }
 ]

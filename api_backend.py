@@ -51874,6 +51874,25 @@ async def hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_definit
     return generate_definitions()
 
 
+@app.get("/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/overview")
+async def hereditary_pah_pvod_predisposition_atlas_overview():
+    """Hereditary-PAH-PVOD-Predisposition-Atlas overview (BMPR2-75pct-familial-PAH-RHC-mandatory; ACVRL1-HHT2-telangiectases-PATHOGNOMONIC; ENG-HHT1-cerebral-AVM-MRI-mandatory; SMAD9-BMP-pathway; KCNK3-TASK1-vasoconstriction; CAV1-lipodystrophy-PATHOGNOMONIC; EIF2AK4-PVOD-prostanoids-ABSOLUTELY-CI-lung-transplant; TBX4-pediatric-PAH-small-patella-PATHOGNOMONIC)."""
+    from scripts.hereditary_pulmonary_arterial_hypertension_pvod_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/breakdown")
+async def hereditary_pah_pvod_predisposition_atlas_breakdown():
+    """Hereditary-PAH-PVOD-Predisposition-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3718-3725; BMPR2-incomplete-penetrance-20pct-F-10pct-M; ACVRL1-PAH-10pct-HHT2; ENG-pAVM-30-50pct; EIF2AK4-biallelic-PVOD-lung-transplant-only; TBX4-pediatric-predominant; sotatercept-FDA2024)."""
+    from scripts.hereditary_pulmonary_arterial_hypertension_pvod_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-pulmonary-arterial-hypertension-pvod-predisposition-atlas/definitions")
+async def hereditary_pah_pvod_predisposition_atlas_definitions():
+    """Hereditary-PAH-PVOD-Predisposition-Atlas clinical definitions (RHC-mandatory-echo-insufficient; PVOD-CT-GGO-triad; prostanoids-CI-PVOD; HHT-Curacao-criteria; pAVM-embolisation; VRT-positive-CCB-only; sotatercept-STELLAR; TBX4-small-patella-ICPS; CAV1-lipodystrophy; ERA-teratogenic; pregnancy-maternal-mortality-30pct)."""
+    from scripts.hereditary_pulmonary_arterial_hypertension_pvod_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
