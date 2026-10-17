@@ -22653,5 +22653,26 @@
     "registered": "2026-10-17",
     "slug": "hereditary-vte-thrombophilia-predisposition-atlas",
     "api_base": "/api/hereditary-vte-thrombophilia-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-hemophilia-rare-factor-deficiency-atlas",
+    "name": "Hereditary Hemophilia & Rare Coagulation Factor Deficiency Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "F8",
+      "F9",
+      "VWF",
+      "F11",
+      "F7",
+      "F13A1",
+      "SERPINE1",
+      "ADAMTS13"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3686-3693",
+    "registered": "2026-10-17",
+    "slug": "hereditary-hemophilia-rare-factor-deficiency-atlas",
+    "api_base": "/api/hereditary-hemophilia-rare-factor-deficiency-atlas"
   }
 ]

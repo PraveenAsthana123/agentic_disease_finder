@@ -51794,6 +51794,27 @@ async def hereditary_vte_thrombophilia_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hemophilia-rare-factor-deficiency-atlas/overview")
+async def hereditary_hemophilia_rare_factor_deficiency_atlas_overview():
+    """Hereditary-Hemophilia-Rare-Coagulation-Factor-Deficiency-Atlas overview (F8-emicizumab-FEIBA-TMA-rFVIIa; F9-Leyden-puberty-improvement-PATHOGNOMONIC; VWF-Type2B-DDAVP-CI-ABSOLUTELY; VWF-Type2N-mimics-HA; F11-bleeding-NOT-proportional-to-FXI-level; F7-PT-elevated-APTT-NORMAL-PATHOGNOMONIC; F13A1-PT-APTT-TT-ALL-NORMAL-PATHOGNOMONIC; SERPINE1-TXA-FIRST-LINE; ADAMTS13-plasma-infusion-CURATIVE-NO-immunosuppression)."""
+    from scripts.hereditary_hemophilia_rare_factor_deficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hemophilia-rare-factor-deficiency-atlas/breakdown")
+async def hereditary_hemophilia_rare_factor_deficiency_atlas_breakdown():
+    """Hereditary-Hemophilia-Rare-Coagulation-Factor-Deficiency-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3686-3693; F8-FVIII-inhibitor-6-Bethesda; F13A1-ICH-highest-risk; ADAMTS13-MAHA-40; VWF-Type1-55pct-most-common)."""
+    from scripts.hereditary_hemophilia_rare_factor_deficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hemophilia-rare-factor-deficiency-atlas/definitions")
+async def hereditary_hemophilia_rare_factor_deficiency_atlas_definitions():
+    """Hereditary-Hemophilia-Rare-Coagulation-Factor-Deficiency-Atlas clinical definitions (F8-Intron22-inversion-40-50pct-severe-HA; F9-Leyden-ARE-promoter-androgen; VWF-2B-DDAVP-CI; VWF-2N-FVIII-binding-defect; F11-Ashkenazi-1in190; F7-shortest-half-life-4-6h; F13A1-urea-solubility-test-PATHOGNOMONIC; SERPINE1-delayed-wound-bleed; ADAMTS13-USS-FFP-CURATIVE)."""
+    from scripts.hereditary_hemophilia_rare_factor_deficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
