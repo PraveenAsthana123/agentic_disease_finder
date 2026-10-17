@@ -51836,6 +51836,25 @@ async def hereditary_bone_marrow_failure_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/overview")
+async def hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_overview():
+    """Hereditary-Retinoblastoma-Pediatric-Solid-Tumor-Predisposition-Atlas overview (RB1-bilateral-Rb-PATHOGNOMONIC-CDK46i-INACTIVE; DICER1-PPB-PATHOGNOMONIC-<8yr-2nd-hit-hotspot; SMARCB1-AT/RT-radiation-CI-<36m; SMARCA4-SCCOHT-hypercalcemia-PATHOGNOMONIC; PTCH1-Gorlin-radiation-ABSOLUTELY-CI; SUFU-vismodegib-NOT-effective; GPC3-SGB-AFP-USS-3mo; ALK-F1174L-lorlatinib-bilateral-adrenal-NB)."""
+    from scripts.hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/breakdown")
+async def hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_breakdown():
+    """Hereditary-Retinoblastoma-Pediatric-Solid-Tumor-Predisposition-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3702-3709; RB1-bilateral-45pct-germline; DICER1-PPB-70pct-germline; SMARCB1-AT/RT-50-70pct-germline-infant; SMARCA4-SCCOHT-43pct-germline; PTCH1-BCC-OKC-falx; SUFU-25pct-MB-risk; GPC3-10pct-embryonal-tumor; ALK-75pct-penetrance-familial-NB)."""
+    from scripts.hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/definitions")
+async def hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_definitions():
+    """Hereditary-Retinoblastoma-Pediatric-Solid-Tumor-Predisposition-Atlas clinical definitions (bilateral-Rb-germline; trilateral-Rb; CDK46i-inactive-Rb-null; DICER1-two-hit-somatic-hotspot; PPB-DICER1; SMARCB1-IHC-loss; SCCOHT; Gorlin-radiation-CI; OKC-jaw-cysts; SUFU-vs-PTCH1-vismodegib; SGB-AFP-surveillance; familial-NB-ALK; desmoplastic-nodular-MB)."""
+    from scripts.hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

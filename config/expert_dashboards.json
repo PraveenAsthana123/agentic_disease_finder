@@ -22705,5 +22705,36 @@
     "note": "FANCA-1455aa-16q24.3-FA-163kDa-AR-LOF / FANCC-558aa-9q22.32-FA-63kDa-AR-LOF / FANCG-622aa-9p13.3-FA-XRCC9-68kDa-AR-LOF / DKC1-514aa-Xq28-Dyskerin-58kDa-XLR-LOF / TERC-451nt-3q26.2-Telomerase-RNA-AD-LOF / RPS19-145aa-19q13.2-Ribosomal-S19-17kDa-AD-LOF / SBDS-250aa-7q11.21-SBDS-29kDa-AR-LOF / MPL-635aa-1p34.2-TPO-Receptor-84kDa-AR-LOF",
     "count": 1350,
     "updated_at": "2026-10-17"
+  },
+  {
+    "id": "hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas",
+    "title": "Hereditary-Retinoblastoma-Pediatric-Solid-Tumor-Predisposition-Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 Rb / DICER1-Syndrome / Rhabdoid / Gorlin / SGB / Familial-NB",
+    "status": "built",
+    "category": "Hereditary Pediatric Solid Tumor Predisposition Atlas",
+    "genes": [
+      "RB1",
+      "DICER1",
+      "SMARCB1",
+      "SMARCA4",
+      "PTCH1",
+      "SUFU",
+      "GPC3",
+      "ALK"
+    ],
+    "gene_count": 8,
+    "patient_count": 320,
+    "seeds": "3702-3709",
+    "endpoints": [
+      "/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/overview",
+      "/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/breakdown",
+      "/api/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_retinoblastoma_pediatric_tumor_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-retinoblastoma-pediatric-tumor-predisposition-atlas/page.jsx",
+    "viz": "4-tab (Overview / Gene Table / Clinical Atlas / Definitions)",
+    "note": "RB1-928aa-13q14.2-Rb-110kDa-AD-LOF / DICER1-1922aa-14q32.13-DICER1-218kDa-AD-LOF / SMARCB1-385aa-22q11.23-INI1-BAF47-44kDa-AD-LOF / SMARCA4-1647aa-19p13.2-BRG1-185kDa-AD-LOF / PTCH1-1447aa-9q22.32-Patched1-162kDa-AD-LOF / SUFU-484aa-10q24.32-SUFU-55kDa-AD-LOF / GPC3-580aa-Xq26.2-Glypican3-70kDa-XLR-LOF / ALK-1620aa-2p23.2-ALK-177kDa-AD-GOF",
+    "count": 1351,
+    "updated_at": "2026-10-17"
   }
 ]

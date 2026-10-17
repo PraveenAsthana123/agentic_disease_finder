@@ -37470,3 +37470,9 @@ Key clinical distinctions encoded: DDAVP is INEFFECTIVE in BSS (GP1BA/GP1BB) but
 
 ### [2026-10-17 05:43:35 MDT] ASSISTANT
 Now commit and push:
+
+### [2026-10-17 05:58:31 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-10-17 06:11:30 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
