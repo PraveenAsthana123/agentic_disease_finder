@@ -22847,5 +22847,21 @@
     ],
     "seeds": "3742-3749",
     "status": "built"
+  },
+  {
+    "id": "autonomic-analysis",
+    "name": "Autonomic Analysis Dashboard",
+    "status": "built",
+    "category": "wearable",
+    "route": "/autonomic-analysis",
+    "api_prefix": "/api/autonomic-analysis",
+    "endpoints": [
+      "/api/autonomic-analysis/overview",
+      "/api/autonomic-analysis/breakdown",
+      "/api/autonomic-analysis/definitions"
+    ],
+    "frontend": "portal-next/app/autonomic-analysis/page.jsx",
+    "built_date": "2026-10-17",
+    "description": "900 wearable readings, 30 patients, ADS scoring + HRV trends + seizure-autonomic correlation + risk stratification. 4-tab frontend (Overview/Patient Profiles/Seizure Correlation/Definitions), 3 endpoints /api/autonomic-analysis/overview|breakdown|definitions verified 200, portal-next/app/autonomic-analysis/page.jsx + SiteNav wired after Wearable Readings."
   }
 ]

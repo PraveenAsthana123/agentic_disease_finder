@@ -156,6 +156,7 @@ export default function SiteNav() {
           <li className="nav-item"><Link className="nav-link text-white" href="/wearables-digital-twin">&#x1f9ec; Digital Twin</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/wearable-devices">&#x231a; Wearable Devices</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/wearable-readings">&#x1f4c8; Wearable Readings</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" href="/autonomic-analysis">&#x1fac0; Autonomic Analysis</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/smartwatch">&#x231a; Smartwatch</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/emotiv-wearable">&#x1fa7a; Emotiv Wearable</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" href="/emotiv-epoc-x">&#x1f9e0; Emotiv EPOC X</Link></li>
