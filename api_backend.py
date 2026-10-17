@@ -51441,6 +51441,27 @@ async def hereditary_t_all_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-aml-predisposition-atlas/overview")
+async def hereditary_aml_predisposition_atlas_overview():
+    """Hereditary-AML-Predisposition-Atlas overview (CEBPA-RUNX1-GATA2-DDX41-TP53-BRCA2-FANCA-NF1; 320-patient aggregate 8x40 seeds 3566-3573; CEBPA-biallelic-ELN-fav-CR-90pct; RUNX1-FPD-AML-30-50pct; GATA2-MonoMAC-MDS-30-70x; DDX41-late-onset-55-65yr; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; BRCA2-FA-D1-AML-HIGHEST; FANCA-FA-A-AML-50x; NF1-JMML-200-500x)."""
+    from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-aml-predisposition-atlas/breakdown")
+async def hereditary_aml_predisposition_atlas_breakdown():
+    """Hereditary-AML-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; CEBPA-biallelic-relapse-new-clone; RUNX1-FPD-thrombocytopenia; GATA2-del7q-monosomy7; DDX41-R525H-late-onset; TP53-complex-karyotype; BRCA2-HRD-olaparib; FANCA-biallelic-BMF; NF1-JMML-HSCT; mean_age_onset per gene)."""
+    from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-aml-predisposition-atlas/definitions")
+async def hereditary_aml_predisposition_atlas_definitions():
+    """Hereditary-AML-Predisposition-Atlas clinical definitions (CEBPA-biallelic-ELN-fav-new-clone-relapse; RUNX1-FPD-sibling-donor-CI; GATA2-MonoMAC-HSCT-curative; DDX41-R525H-HMA-venetoclax; TP53-LFS-decitabine-APR246; BRCA2-FA-D1-AVOID-ALKYLATING-PARP; FANCA-FA-A-AVOID-ALKYLATING-FLUDARABINE-HSCT; NF1-JMML-selumetinib)."""
+    from scripts.hereditary_aml_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""

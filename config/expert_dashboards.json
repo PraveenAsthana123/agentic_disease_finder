@@ -22298,5 +22298,32 @@
     "built_note": "Built 2026-10-16. scripts/hereditary_t_all_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-t-all-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-t-all-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-B-ALL-Predisposition-Atlas, expert_dashboards.json count 1332->1333.",
     "registered": "2026-10-16",
     "slug": "hereditary-t-all-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-aml-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-AML-Predisposition-Atlas",
+    "route": "/hereditary-aml-predisposition-atlas",
+    "api_prefix": "/api/hereditary-aml-predisposition-atlas",
+    "endpoints": [
+      "/api/hereditary-aml-predisposition-atlas/overview",
+      "/api/hereditary-aml-predisposition-atlas/breakdown",
+      "/api/hereditary-aml-predisposition-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-aml-predisposition-atlas/page.jsx",
+    "genes": [
+      "CEBPA",
+      "RUNX1",
+      "GATA2",
+      "DDX41",
+      "TP53",
+      "BRCA2",
+      "FANCA",
+      "NF1"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3566-3573",
+    "registered": "2026-10-16",
+    "slug": "hereditary-aml-predisposition-atlas"
   }
 ]
