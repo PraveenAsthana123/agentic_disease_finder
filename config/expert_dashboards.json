@@ -16702,20 +16702,20 @@
   },
   {
     "id": "hereditary-cardiomyopathy-atlas",
-    "name": "Hereditary-Cardiomyopathy-Atlas Complete-8-Gene-MYH7-MYBPC3-TNNT2-TNNI3-TPM1-ACTC1-MYL2-MYL3-Atlas MYH7-1935aa-14q11.2-AD-Beta-Myosin-Heavy-Chain-HCM-35pct-MAVACAMTEN-FDA2022-DISOPYRAMIDE-ICD MYBPC3-1274aa-11p11.2-AD-Myosin-Binding-Protein-C3-HCM-35pct-Founder-South-Asian-Incomplete-Penetrance TNNT2-298aa-1q32.1-AD-Cardiac-TnT-MALIGNANT-SCD-Without-Hypertrophy-LOWER-ICD-THRESHOLD TNNI3-210aa-19q13.42-AD-Cardiac-TnI-AR-BIALLELIC-RCM-INFANTILE-MOST-SEVERE TPM1-284aa-15q22.2-AD-Tropomyosin-Alpha-SAME-GENE-HCM-OR-DCM-Variant-Class ACTC1-375aa-15q14-AD-Alpha-Cardiac-Actin-APICAL-HCM-GIANT-NEGATIVE-T-WAVES MYL2-166aa-12q24.11-AD-Regulatory-Light-Chain-MID-VENTRICULAR-OBSTRUCTION-AR-NEONATAL-LETHAL MYL3-195aa-3p21.31-AD-Essential-Light-Chain-Asp94Ala-MIDDLE-EAST-FOUNDER 320-Patient-Aggregate-8x40-seeds-2590-2597",
+    "name": "Hereditary-Cardiomyopathy-Atlas Complete-8-Gene-MYH7-MYBPC3-LMNA-PLN-FLNC-RBM20-MYH6-TTN MYH7-1935aa-14q11.2-AD-GOF-beta-MHC-HCM-35-50pct-R403Q-R453C-PATHOGNOMONIC-mavacamten-disopyramide MYBPC3-1274aa-11p11.2-AD-LOF-MyBP-C-HCM-30-40pct-Frameshift-Late-Onset-70yr-mavacamten-FDA2022 LMNA-664aa-1q22-AD-LOF-Lamin-A/C-DCM-AV-Block-PATHOGNOMONIC-ICD-Wahbi PLN-52aa-6q22.31-AD-LOF-Phospholamban-R14del-Dutch-Founder-PATHOGNOMONIC-ICD-MANDATORY FLNC-2725aa-7q32.1-AD-LOF-Filamin-C-HCM-DCM-ARVC-Truncating-ICD-preserved-EF RBM20-1227aa-10q25.2-AD-GOF-R634W-DCM-Aggressive-Young-Highest-Transplant MYH6-1939aa-14q11.2-AD-LOF-alpha-MHC-DCM-ASD-SSS-CRT-Excellent TTN-34350aa-2q31.2-AD-AR-LOF-Titin-DCM-25pct-Incomplete-Penetrance-PPCM",
     "status": "built",
-    "category": "hereditary-atlas",
+    "category": "cardiology",
     "route": "/hereditary-cardiomyopathy-atlas",
-    "api": "/api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions",
-    "api_endpoints": [
+    "api_prefix": "/api/hereditary-cardiomyopathy-atlas",
+    "endpoints": [
       "/api/hereditary-cardiomyopathy-atlas/overview",
       "/api/hereditary-cardiomyopathy-atlas/breakdown",
       "/api/hereditary-cardiomyopathy-atlas/definitions"
     ],
-    "seeds": "2590-2597",
-    "count": 1204,
-    "date_built": "2026-09-14",
-    "registered": "2026-09-14"
+    "frontend": "portal-next/app/hereditary-cardiomyopathy-atlas/page.jsx",
+    "built_date": "2026-10-17",
+    "seeds": "3750-3757",
+    "description": "320 patients aggregate (8x40), seeds 3750-3757. MYH7-R403Q-HCM-35-50pct-mavacamten; MYBPC3-HCM-30-40pct-late-onset-70yr-mavacamten-FDA2022; LMNA-DCM-AV-Block-PATHOGNOMONIC-ICD-Wahbi; PLN-R14del-Dutch-Founder-DCM-ARVC-PATHOGNOMONIC-ICD-MANDATORY; FLNC-truncating-ICD-preserved-EF; RBM20-R634W-aggressive-young-biventricular-fibrosis-highest-transplant; MYH6-ASD-SSS-CRT-excellent; TTN-DCM-25pct-incomplete-penetrance-PPCM. 4-tab frontend (Overview/Gene Table/Clinical Atlas/Definitions), 3 endpoints /api/hereditary-cardiomyopathy-atlas/overview|breakdown|definitions verified 200, SiteNav wired after Hereditary-Inherited-Arrhythmia-Syndrome-Atlas. Registered-2026-10-17"
   },
   {
     "name": "Hereditary-Amyloidosis-Atlas \u2014 Complete 8-Gene Hereditary Systemic Amyloidosis Atlas",

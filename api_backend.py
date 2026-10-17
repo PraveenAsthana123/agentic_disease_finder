@@ -45536,21 +45536,21 @@ async def hereditary_thrombophilia_atlas_definitions():
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/overview")
 async def hereditary_cardiomyopathy_atlas_overview():
-    """Hereditary-Cardiomyopathy-Atlas overview — MYH7-dominant-negative-HCM-35pct-Mavacamten-FDA2022 MYBPC3-haploinsufficiency-HCM-35pct-SouthAsian-founder-incomplete-penetrance TNNT2-MALIGNANT-SCD-without-hypertrophy-ICD-lower-threshold TNNI3-AR-RCM-infantile-most-severe TPM1-HCM-OR-DCM-same-gene-calcium-sensitisation ACTC1-apical-HCM-giant-negative-T-waves MYL2-mid-ventricular-obstruction-AR-neonatal-lethal MYL3-Asp94Ala-Middle-East-founder 320 patients seeds 2590-2597."""
+    """Hereditary-Cardiomyopathy-Atlas overview — MYH7-1935aa-14q11.2-AD-GOF-HCM-35-50pct-R403Q-PATHOGNOMONIC-mavacamten-FDA2022 MYBPC3-1274aa-11p11.2-AD-LOF-HCM-30-40pct-Late-Onset-70yr LMNA-664aa-1q22-AD-LOF-DCM-AV-Block-PATHOGNOMONIC-VT-Storm-ICD-Early PLN-52aa-6q22.31-AD-LOF-R14del-Dutch-Founder-DCM-ARVC-PATHOGNOMONIC FLNC-2725aa-7q32.1-AD-LOF-HCM-DCM-ARVC-Truncating-ICD-SCD RBM20-1227aa-10q25.2-AD-GOF-DCM-Aggressive-Young-R634W-Hotspot-Transplant MYH6-1939aa-14q11.2-AD-LOF-DCM-ASD-SSS-CRT-Excellent TTN-34350aa-2q31.2-AD-LOF-DCM-25pct-Most-Common-PPCM 320 patients seeds 3750-3757."""
     from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_overview
     return generate_overview()
 
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/breakdown")
 async def hereditary_cardiomyopathy_atlas_breakdown():
-    """Hereditary-Cardiomyopathy-Atlas per-gene breakdown — MYH7-Arg403Gln-malignant, MYBPC3-South-Asian-founder, TNNT2-CMR-LGE-mandatory, TNNI3-RCM-vs-constrictive-pericarditis, TPM1-calcium-sensitisation-dual-phenotype, ACTC1-apical-spade-LV, MYL2-mid-ventricular-obstruction-neonatal-lethal, MYL3-Asp94Ala-founder."""
+    """Hereditary-Cardiomyopathy-Atlas per-gene breakdown — MYH7-disopyramide-LVOTO-septal-reduction, MYBPC3-AF-mavacamten-CYP2C19, LMNA-Wahbi-ICD-score->=4pct, PLN-R14del-ICD-MANDATORY, FLNC-truncating-ICD-preserved-EF, RBM20-R634W-early-transplant, MYH6-CRT-D-preferred, TTN-PPCM-bromocriptine seeds-3750-3757."""
     from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_breakdown
     return generate_breakdown()
 
 
 @app.get("/api/hereditary-cardiomyopathy-atlas/definitions")
 async def hereditary_cardiomyopathy_atlas_definitions():
-    """Hereditary-Cardiomyopathy-Atlas glossary — HCM phenotypic classification, mavacamten REMS, ICD thresholds, septal reduction myectomy vs ASA, disopyramide QTc monitoring, genetic cascade testing, AF anticoagulation mandatory, exercise restriction competitive sports CONTRAINDICATED."""
+    """Hereditary-Cardiomyopathy-Atlas definitions — HCM-MYH7-MYBPC3-mavacamten-REMS-LVOTO; DCM-LMNA-PLN-RBM20-TTN-FLNC; LMNA-AV-Block-PATHOGNOMONIC-Wahbi-4pct-ICD; PLN-R14del-PATHOGNOMONIC-SERCA2a; RBM20-R634W-biventricular-fibrosis; TTNtv-PPCM-incomplete-penetrance; ESC-HCM-SCD-Risk-Score; GDMT-CRT seeds-3750-3757."""
     from scripts.hereditary_cardiomyopathy_atlas_dashboard import generate_definitions
     return generate_definitions()
 
