@@ -22352,5 +22352,32 @@
       "/api/hereditary-hlh-predisposition-atlas/definitions"
     ],
     "note": "Hereditary HLH Predisposition Atlas: FHL2(PRF1) FHL3(UNC13D) FHL4(STX11) FHL5(STXBP2) GS2(RAB27A) CHS(LYST) XLP1(SH2D1A) XLP2(XIAP). Seeds 3574-3581. Built 2026-10-16."
+  },
+  {
+    "id": "hereditary-dlbcl-predisposition-atlas",
+    "name": "Hereditary-DLBCL-Predisposition-Atlas",
+    "title": "Hereditary-DLBCL-Predisposition-Atlas",
+    "status": "built",
+    "api": "/api/hereditary-dlbcl-predisposition-atlas",
+    "cohort_n": 320,
+    "seeds": "3582-3589",
+    "genes": [
+      "TP53",
+      "ATM",
+      "BRCA2",
+      "CHEK2",
+      "PIK3CD",
+      "KMT2D",
+      "CARD11",
+      "TNFRSF13B"
+    ],
+    "script": "scripts/hereditary_dlbcl_predisposition_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-dlbcl-predisposition-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-dlbcl-predisposition-atlas/overview",
+      "/api/hereditary-dlbcl-predisposition-atlas/breakdown",
+      "/api/hereditary-dlbcl-predisposition-atlas/definitions"
+    ],
+    "note": "Hereditary DLBCL Predisposition Atlas: TP53-LFS-DLBCL-5-8x-AVOID-RADIATION ATM-RADIOSENSITIVITY-ABSOLUTE-Ceralasertib BRCA2-HRD-Cisplatin-Olaparib CHEK2-1100delC-ATM-Additive PIK3CD-APDS1-EBV-Leniolisib-FDA2023 KMT2D-Kabuki1-Tazemetostat-EZH2 CARD11-BENTA-GOF-Venetoclax-MALT1 TNFRSF13B-CVID2-10-12x-IVIG-Mandatory. Seeds 3582-3589. Built 2026-10-16."
   }
 ]

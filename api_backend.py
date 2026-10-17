@@ -51483,6 +51483,27 @@ async def hereditary_hlh_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-dlbcl-predisposition-atlas/overview")
+async def hereditary_dlbcl_predisposition_atlas_overview():
+    """Hereditary-DLBCL-Predisposition-Atlas overview (TP53-ATM-BRCA2-CHEK2-PIK3CD-KMT2D-CARD11-TNFRSF13B; 320-patient aggregate 8x40 seeds 3582-3589; TP53-LFS-DLBCL-5-8x-AVOID-RADIATION-ABSOLUTELY; ATM-RADIOSENSITIVITY-ABSOLUTE-ceralasertib; BRCA2-HRD-cisplatin-olaparib; CHEK2-1100delC-ATM-additive; PIK3CD-APDS1-EBV-leniolisib-FDA2023; KMT2D-Kabuki-tazemetostat; CARD11-BENTA-venetoclax-GOF; TNFRSF13B-CVID2-IVIG-mandatory-10-12x)."""
+    from scripts.hereditary_dlbcl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-dlbcl-predisposition-atlas/breakdown")
+async def hereditary_dlbcl_predisposition_atlas_breakdown():
+    """Hereditary-DLBCL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; TP53-complex-karyotype-60pct-WB-MRI-Toronto; ATM-del11q-40pct-ceralasertib-ATRi; BRCA2-HRD-SBS3-cisplatin-preferred; CHEK2-1100delC-breast-40pct-concurrent; PIK3CD-EBV-70pct-leniolisib-sirolimus; KMT2D-tazemetostat-EZH2; CARD11-GOF-venetoclax-LOF-IVIG; TNFRSF13B-CVID-granulomatous-30pct; mean_age_dx per gene)."""
+    from scripts.hereditary_dlbcl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-dlbcl-predisposition-atlas/definitions")
+async def hereditary_dlbcl_predisposition_atlas_definitions():
+    """Hereditary-DLBCL-Predisposition-Atlas clinical definitions (TP53-LFS-AVOID-RADIATION-APR246-venetoclax; ATM-RADIOSENSITIVITY-ceralasertib-ATRi; BRCA2-HRD-olaparib-cisplatin; CHEK2-1100delC-ATM-additive-breast; PIK3CD-APDS1-leniolisib-FDA2023-EBV; KMT2D-Kabuki-tazemetostat-EZH2; CARD11-GOF-venetoclax-MALT1-inhibitor; TNFRSF13B-CVID2-IVIG-mandatory)."""
+    from scripts.hereditary_dlbcl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
