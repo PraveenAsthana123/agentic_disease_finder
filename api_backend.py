@@ -52032,6 +52032,27 @@ async def hereditary_transthyretin_amyloidosis_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-metabolic-cardiomyopathy-atlas/overview")
+async def hereditary_metabolic_cardiomyopathy_atlas_overview():
+    """Hereditary-Metabolic-Cardiomyopathy-Atlas overview — GLA/Fabry-CMR-low-T1-PATHOGNOMONIC; LAMP2/Danon-TRIAD-PATHOGNOMONIC; GAA/Pompe-ECG-triad-PATHOGNOMONIC; PRKAG2-WPW-ICD-DANGEROUS; TAZ/Barth-3MGA-PATHOGNOMONIC; SLC22A5-L-carnitine-CURATIVE; HADHA-AFLP-mother-PATHOGNOMONIC; ACAD9-riboflavin-FIRST-LINE seeds-3790-3797."""
+    from scripts.hereditary_metabolic_cardiomyopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-metabolic-cardiomyopathy-atlas/breakdown")
+async def hereditary_metabolic_cardiomyopathy_atlas_breakdown():
+    """Hereditary-Metabolic-Cardiomyopathy-Atlas breakdown — 320-patient-8x40-GLA-LAMP2-GAA-PRKAG2-TAZ-SLC22A5-HADHA-ACAD9 seeds-3790-3797."""
+    from scripts.hereditary_metabolic_cardiomyopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-metabolic-cardiomyopathy-atlas/definitions")
+async def hereditary_metabolic_cardiomyopathy_atlas_definitions():
+    """Hereditary-Metabolic-Cardiomyopathy-Atlas definitions — Fabry-Danon-Pompe-PRKAG2-Barth-CDSP-LCHAD-ACAD9 clinical-rules riboflavin-responsive-ACAD9 AFLP-HADHA WPW-PRKAG2-ICD-dangerous seeds-3790-3797."""
+    from scripts.hereditary_metabolic_cardiomyopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

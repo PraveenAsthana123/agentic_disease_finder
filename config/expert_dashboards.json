@@ -22983,5 +22983,28 @@
       "/api/hereditary-transthyretin-amyloidosis-atlas/breakdown",
       "/api/hereditary-transthyretin-amyloidosis-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-metabolic-cardiomyopathy-atlas",
+    "title": "Hereditary-Metabolic-Cardiomyopathy-Atlas Complete-8-Gene-GLA-LAMP2-GAA-PRKAG2-TAZ-SLC22A5-HADHA-ACAD9",
+    "name": "Hereditary-Metabolic-Cardiomyopathy-Atlas Complete-8-Gene-GLA-LAMP2-GAA-PRKAG2-TAZ-SLC22A5-HADHA-ACAD9 GLA-429aa-Xq22.1-X-linked-Fabry-CMR-low-T1-PATHOGNOMONIC-ERT-Migalastat LAMP2-410aa-Xq24-X-linked-Danon-TRIAD-massive-HCM-myopathy-intellectual-disability-PATHOGNOMONIC-cardiac-transplant-ONLY GAA-952aa-17q25.3-AR-Pompe-IOPD-cardiomegaly-ECG-triad-PATHOGNOMONIC-ERT PRKAG2-569aa-7q36.1-AD-WPW-HCM-conduction-TRIAD-PATHOGNOMONIC-ICD-DANGEROUS-ablation-FIRST TAZ-292aa-Xq28-X-linked-Barth-DCM-neutropenia-3-MGA-TRIAD-PATHOGNOMONIC SLC22A5-557aa-5q31.1-AR-OCTN2-CDSP-L-carnitine-CURATIVE-pivalate-AVOID HADHA-763aa-2p23.3-AR-LCHAD-AFLP-mother-PATHOGNOMONIC-retinopathy-MCT-diet ACAD9-621aa-3q21.3-AR-Complex-I-riboflavin-FIRST-LINE-ALWAYS-metformin-AVOID 320-Patient-Aggregate-8x40-seeds-3790-3797",
+    "route": "/hereditary-metabolic-cardiomyopathy-atlas",
+    "api_base": "/api/hereditary-metabolic-cardiomyopathy-atlas",
+    "api": "/api/hereditary-metabolic-cardiomyopathy-atlas",
+    "status": "built",
+    "seeds": "3790-3797",
+    "genes": [
+      "GLA",
+      "LAMP2",
+      "GAA",
+      "PRKAG2",
+      "TAZ",
+      "SLC22A5",
+      "HADHA",
+      "ACAD9"
+    ],
+    "category": "Hereditary-Metabolic-Cardiomyopathy",
+    "patient_count": 320,
+    "registered": "2026-10-17"
   }
 ]
