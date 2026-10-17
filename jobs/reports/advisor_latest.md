@@ -1,9 +1,7 @@
-# 🧭 Advisor — issues you may not be aware of (2026-10-16 12:35 MDT)
+# 🧭 Advisor — issues you may not be aware of (2026-10-17 03:16 MDT)
 
-**4 findings**
+**3 findings**
 
-- **[P1] model** — Drift monitor reports SEVERE drift (live features vs training distribution)
-    ↳ Retrain on same-setup ictal/interictal data; until then trust confidence only with human sign-off.
 - **[P2] frontend** — Dev server :3003 not reachable (http=000)
     ↳ Run: cd frontend && npm run dev -- --port 3003 (or operator opens the UI).
 - **[P2] data** — Only 4 CHB-MIT subjects on disk

@@ -22632,5 +22632,26 @@
     "cohort_n": 320,
     "seed": "3670-3677",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-vte-thrombophilia-predisposition-atlas",
+    "name": "Hereditary VTE / Thrombophilia Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "F5",
+      "F2",
+      "PROC",
+      "PROS1",
+      "SERPINC1",
+      "THBD",
+      "PLG",
+      "FGG"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3678-3685",
+    "registered": "2026-10-17",
+    "slug": "hereditary-vte-thrombophilia-predisposition-atlas",
+    "api_base": "/api/hereditary-vte-thrombophilia-predisposition-atlas"
   }
 ]

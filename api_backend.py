@@ -51773,6 +51773,27 @@ async def hereditary_platelet_function_disorder_predisposition_atlas_definitions
     return generate_definitions()
 
 
+@app.get("/api/hereditary-vte-thrombophilia-predisposition-atlas/overview")
+async def hereditary_vte_thrombophilia_predisposition_atlas_overview():
+    """Hereditary-VTE-Thrombophilia-Predisposition-Atlas overview (F5-Factor-V-Leiden-R506Q-APC-resistance-5pct-Europeans-3-8x-VTE; F2-Prothrombin-G20210A-2nd-most-common-2-5x-VTE-CVST-enriched; PROC-Protein-C-deficiency-NPF-AR-PATHOGNOMONIC-warfarin-skin-necrosis; PROS1-Protein-S-PROS2-pseudogene-WES-MANDATORY; SERPINC1-AT-III-most-severe-heparin-resistance-Type-II-HBS-PATHOGNOMONIC; THBD-arterial-thrombosis-young-MI-stroke-coronary-normal-PATHOGNOMONIC; PLG-ligneous-conjunctivitis-PATHOGNOMONIC-tranexamic-acid-CI-Ryplazim-FDA2021; FGG-thrombophilic-dysfibrinogenemia-TCT-prolonged-PATHOGNOMONIC; 320-patient-aggregate; seeds-3678-3685)."""
+    from scripts.hereditary_vte_thrombophilia_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-vte-thrombophilia-predisposition-atlas/breakdown")
+async def hereditary_vte_thrombophilia_predisposition_atlas_breakdown():
+    """Hereditary-VTE-Thrombophilia-Predisposition-Atlas per-gene breakdown (F5-F2-PROC-PROS1-SERPINC1-THBD-PLG-FGG; 320-patient-aggregate; seeds-3678-3685; VTE-rate; arterial-events; heparin-resistance; ligneous; warfarin-necrosis)."""
+    from scripts.hereditary_vte_thrombophilia_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-vte-thrombophilia-predisposition-atlas/definitions")
+async def hereditary_vte_thrombophilia_predisposition_atlas_definitions():
+    """Hereditary-VTE-Thrombophilia-Predisposition-Atlas clinical definitions (F5-OCP-MULTIPLICATIVE-risk; F2-not-detectable-standard-coag; PROC-LMWH-bridge-warfarin-ALWAYS; PROS1-PROS2-pseudogene-WES-MANDATORY; SERPINC1-Type-II-HBS-heparin-resistance-AT-concentrate; THBD-young-MI-normal-coronaries-PATHOGNOMONIC; PLG-ligneous-conjunctivitis-Ryplazim-FDA2021; FGG-TCT-prolonged-Clauss-ratio-less-0.7-PATHOGNOMONIC)."""
+    from scripts.hereditary_vte_thrombophilia_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

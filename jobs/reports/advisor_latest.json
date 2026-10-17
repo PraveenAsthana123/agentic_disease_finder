@@ -1,13 +1,7 @@
 {
-  "scanned_at": "2026-10-16 12:35 MDT",
-  "count": 4,
+  "scanned_at": "2026-10-17 03:16 MDT",
+  "count": 3,
   "issues": [
-    {
-      "severity": "P1",
-      "surface": "model",
-      "issue": "Drift monitor reports SEVERE drift (live features vs training distribution)",
-      "guidance": "Retrain on same-setup ictal/interictal data; until then trust confidence only with human sign-off."
-    },
     {
       "severity": "P2",
       "surface": "frontend",
