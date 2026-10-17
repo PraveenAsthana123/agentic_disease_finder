@@ -1,4 +1,4 @@
-# 🧭 Advisor — issues you may not be aware of (2026-08-31 10:55 MDT)
+# 🧭 Advisor — issues you may not be aware of (2026-10-16 12:35 MDT)
 
 **4 findings**
 

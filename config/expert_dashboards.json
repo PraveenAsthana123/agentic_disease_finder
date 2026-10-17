@@ -22201,7 +22201,7 @@
   },
   {
     "id": "hereditary-wm-lpl-predisposition-atlas",
-    "name": "Hereditary Waldenström Macroglobulinemia / LPL Predisposition Atlas",
+    "name": "Hereditary Waldenstr\u00f6m Macroglobulinemia / LPL Predisposition Atlas",
     "type": "hereditary_predisposition_atlas",
     "status": "built",
     "genes": [
@@ -22219,5 +22219,26 @@
     "registered": "2026-10-16",
     "slug": "hereditary-wm-lpl-predisposition-atlas",
     "api_base": "/api/hereditary-wm-lpl-predisposition-atlas"
+  },
+  {
+    "id": "hereditary-cll-sll-predisposition-atlas",
+    "name": "Hereditary CLL / SLL Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "ATM",
+      "TP53",
+      "POT1",
+      "CHEK2",
+      "NBN",
+      "BRCA2",
+      "CARD11",
+      "CDKN2A"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3542-3549",
+    "registered": "2026-10-16",
+    "slug": "hereditary-cll-sll-predisposition-atlas",
+    "api_base": "/api/hereditary-cll-sll-predisposition-atlas"
   }
 ]

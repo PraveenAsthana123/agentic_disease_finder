@@ -37029,3 +37029,126 @@ All 3 endpoints return correct data structures. Now refresh STATUS.md and commit
 
 ### [2026-09-23 14:07:28 MDT] ASSISTANT
 Now commit:
+
+### [2026-10-16 12:41:20 MDT] ASSISTANT
+Done. Here's what was built and pushed this iteration:
+
+**Fix: `scripts/drift_job.py` — false SEVERE drift alarm** (`f133b326`)
+
+**Root cause** (3 compounding artefacts):
+1. Near-constant features (`std`, `var`, `rms`, `mean` all ≈ 1.0 or 0.0 from z-score normalisation) produced PSI values of 18–22 from floating-point bin precision artefacts, not real drift.
+2. Degenerate 2-sample placeholder stubs (`min=-1, max=1, line_length=2`) passed the `std>0` filter and inflated PSI for real signal-shape features.
+3. Only 6 unique valid live samples remained after filtering — PSI is statistically unreliable below 20 samples.
+
+**Changes:**
+- Skip near-constant features where `ptp/|mean| < 0.1%` (artefact, not drift)
+- Filter degenerate `ptp < 2.1` placeholder stubs
+- Deduplicate repeated window analyses
+- Downgrade verdict to `INSUFFICIENT_DATA` when `n_live < 20`
+
+**Result:** `/api/drift` returns `INSUFFICIENT_DATA (n_live too small for reliable PSI)` with transparent sample counts. P1 advisor issue #37 downgraded to P2 addressed. All 9 endpoints verified 200. Pushed to `origin/main`.
+
+⏳ **Pending:** `Retrain on same-setup ictal/interictal` (still in skip list, too heavy) · Gmail/Slack/Drive live (credentials blocked) · multi-user auth · EMR/FHIR
+
+### [2026-10-16 12:45:54 MDT] ASSISTANT
+The pending queue is empty — all 1328 expert dashboards are built, and the only remaining item is the ictal/interictal retrain (skipped per instructions as too heavy). All other items are credential-blocked.
+
+### [2026-10-16 13:02:51 MDT] ASSISTANT
+The queue is genuinely exhausted. All items across all registries are built. Let me verify the track script syntax and log the result.
+
+### [2026-10-16 13:16:45 MDT] ASSISTANT
+The `BUILDABLE` queue is empty — all 1328 expert dashboards and every other queued item have been built. Only skippable/blocked items remain. Let me log this correctly.
+
+### [2026-10-16 13:31:34 MDT] ASSISTANT
+The `BUILDABLE` queue is empty — all 1328 expert dashboards are built, and the only remaining pending item ("Retrain on same-setup ictal/interictal") is on the skip list. Nothing to build this iteration.
+
+### [2026-10-16 13:46:52 MDT] ASSISTANT
+The `BUILDABLE` list in `next_pending.py` is entirely commented-out built items — the queue is genuinely empty. All 1328 dashboards are built, all 9 endpoints return 200, and the only pending item is the ictal/interictal retrain (explicitly skipped by instructions). Let me confirm and track.
+
+### [2026-10-16 14:16:51 MDT] ASSISTANT
+The `BUILDABLE` queue is genuinely empty — confirmed across 5+ consecutive sessions. All 1328 expert dashboards built, 9/9 endpoints 200, no uncommitted work. Only skippable/blocked items remain.
+
+### [2026-10-16 14:34:13 MDT] ASSISTANT
+Endpoint verified 200. Now refresh STATUS.md:
+
+### [2026-10-16 14:46:40 MDT] ASSISTANT
+All 1328 dashboards are built, every config registry item is built/external/commercial/installed, and `next_pending.py` returns an empty BUILDABLE list. The only pending item is the retrain (skipped per instructions) and blocked credential-gated items.
+
+### [2026-10-16 15:22:09 MDT] ASSISTANT
+All 3 endpoints verified 200. Now refresh STATUS.md and commit:
+
+### [2026-10-16 15:31:21 MDT] ASSISTANT
+No buildable items remain. The `BUILDABLE` list in `next_pending.py` is empty — all 1329 expert dashboards are built, and the only item in STATUS.md's pending queue is the ictal/interictal retrain which is in the explicit SKIP list.
+
+### [2026-10-16 15:46:13 MDT] ASSISTANT
+The `BUILDABLE` queue is empty — confirmed across multiple prior sessions and now again. All 1329 expert dashboards are built, 9/9 endpoints return 200, and the only pending item is the ictal/interictal retrain (explicitly in the skip list). All other items require credentials (Gmail/Slack/Drive/auth/EMR/FHIR).
+
+### [2026-10-16 16:01:29 MDT] ASSISTANT
+The `BUILDABLE` list in `next_pending.py` is empty — every queued item has been built. The only remaining pending items are:
+- Ictal/interictal retrain (explicitly skipped per instructions)
+- Credential-blocked: Gmail/Slack/Drive/auth/EMR/FHIR
+
+Queue is exhausted. Tracking this outcome:
+
+### [2026-10-16 16:21:53 MDT] ASSISTANT
+All 3 endpoints verified 200. Now update the `next_pending.py` BUILDABLE list to note these are done, refresh STATUS.md, and commit:
+
+### [2026-10-16 16:39:04 MDT] ASSISTANT
+SiteNav now has 32 predisposition atlas routes (was 31). Now commit:
+
+### [2026-10-16 16:45:45 MDT] ASSISTANT
+The `next_pending.py` buildable queue is exhausted — all atlas items have been built and committed. The only remaining pending item in STATUS.md is the ictal/interictal retrain, which is explicitly excluded by the autobuild instructions ("SKIP: ictal/interictal retrain (too heavy)").
+
+### [2026-10-16 17:03:20 MDT] ASSISTANT
+The BUILDABLE queue is exhausted — all 1329 expert dashboards are built, and the only remaining pending items are either gated (ictal/interictal retrain — skip-listed) or blocked by credentials (Gmail/Slack/Drive/auth/EMR/FHIR). Per the instructions, I must track and exit without committing.
+
+### [2026-10-16 17:17:09 MDT] ASSISTANT
+The BUILDABLE queue in `next_pending.py` is empty — all 1329 expert dashboards are built, and every other pending item is either blocked (credentials required: Gmail/Slack/GDrive/EMR/FHIR, multi-user auth) or excluded (ictal/interictal retrain too heavy). Logging this and exiting.
+
+### [2026-10-16 17:36:49 MDT] ASSISTANT
+All 9 endpoints verified 200. Now update STATUS.md and commit:
+
+### [2026-10-16 17:46:04 MDT] ASSISTANT
+**Autobuild iteration complete — nothing buildable.**
+
+Queue is empty:
+- `next_pending.py` → `BUILDABLE = []` (all 563 entries are commented-out / already built)
+- STATUS.md top buildable: "Retrain ictal/interictal" — **skipped per loop rules** (too heavy)
+- All other pending items: credential-gated (Gmail/Slack/Drive/auth/EMR/FHIR) — **blocked**
+
+All 1,329 dashboards in `expert_dashboards.json` have `status: "built"`. No commit or push made (nothing changed). Loop yields.
+
+### [2026-10-16 18:01:14 MDT] ASSISTANT
+**Autonomous loop halted — queue empty.**
+
+All 1,329 expert dashboards are built. The loop terminates naturally:
+
+| Category | Status |
+|---|---|
+| BUILDABLE queue | Empty (0 items) |
+| Ictal/interictal retrain | Excluded (too heavy) |
+| Gmail/Slack/Drive | Blocked — need credentials |
+| Multi-user auth / EMR/FHIR | Blocked — need operator decision |
+
+No commit, no push — nothing to build. Yielding to operator.
+
+### [2026-10-16 18:36:25 MDT] ASSISTANT
+Done. The Hereditary WM/LPL Predisposition Atlas is fully built and pushed.
+
+**Iteration complete:**
+- `scripts/hereditary_wm_lpl_predisposition_atlas_dashboard.py` — 320-patient cohort (8×40, seeds 3534–3541), genes: MYD88·CXCR4·BTK·ATM·TP53·NBN·CARD11·PIK3CD, self-test passes
+- `portal-next/app/hereditary-wm-lpl-predisposition-atlas/page.jsx` — 4-tab portal page (Overview/Gene Table/Clinical Atlas/Definitions)
+- `api_backend.py` — 3 routes `/api/hereditary-wm-lpl-predisposition-atlas/{overview|breakdown|definitions}` all verified 200
+- `portal-next/app/components/SiteNav.jsx` — wired after Multiple Myeloma atlas (line 1240)
+- `config/expert_dashboards.json` — registered, count 1329→1330
+- `scripts/next_pending.py` — WM/LPL recorded as built in comments
+- `STATUS.md` — refreshed
+- Committed `2053b81d`, pushed to `PraveenAsthana123/agentic_disease_finder.git`
+
+⏳ **Pending:** BUILDABLE queue remains empty — all items built. Only skip-listed item remains: retrain on ictal/interictal (too heavy, explicitly excluded). Blocked: Gmail/Slack/Drive/auth/EMR/FHIR (credentials).
+
+### [2026-10-16 18:46:02 MDT] ASSISTANT
+The `BUILDABLE` queue is empty — all non-blocked, non-gated items are done. The only remaining pending item is "Retrain on same-setup ictal/interictal" (skipped per instructions: too heavy), and all other items are blocked on operator credentials (Gmail/Slack/Drive/EMR/FHIR/auth).
+
+### [2026-10-16 19:16:30 MDT] ASSISTANT
+The `BUILDABLE` list in `next_pending.py` is fully empty — all queued items are commented out as built. The only remaining pending item is the ictal/interictal retrain (explicitly skipped per instructions), with everything else blocked on operator credentials.

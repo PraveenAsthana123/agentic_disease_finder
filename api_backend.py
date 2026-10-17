@@ -51378,6 +51378,27 @@ async def hereditary_wm_lpl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cll-sll-predisposition-atlas/overview")
+async def hereditary_cll_sll_predisposition_atlas_overview():
+    """Hereditary-CLL-SLL-Predisposition-Atlas overview (ATM-TP53-POT1-CHEK2-NBN-BRCA2-CARD11-CDKN2A; 320-patient aggregate 8x40 seeds 3542-3549; ATM-CLL-4-5x-del11q-HIGHEST-ibrutinib; TP53-del17p-WORST-venetoclax-AVOID-RADIATION-ABSOLUTELY; POT1-familial-CLL-MOST-SPECIFIC-4-6x; CHEK2-1100delC-European-founder; NBN-657del5-Slavic-NHL-60x; BRCA2-HRD-PARP; CARD11-BENTA-GOF-ibrutinib-less-effective; CDKN2A-FAMM-palbociclib-INACTIVE-p16-null)."""
+    from scripts.hereditary_cll_sll_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cll-sll-predisposition-atlas/breakdown")
+async def hereditary_cll_sll_predisposition_atlas_breakdown():
+    """Hereditary-CLL-SLL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-CLL-87pct-del11q-ibrutinib; TP53-del17p-80pct-venetoclax-WORST; POT1-familial-CLL-MOST-SPECIFIC-younger-onset; CHEK2-1100delC-CLL-2-3x; NBN-657del5-NHL-60x-CLL-3-5x; BRCA2-HRD-PARP-sensitivity; CARD11-GOF-NF-kB-venetoclax-preferred; CDKN2A-del9p21-p16-null-CDK4-6i-INACTIVE; mean_age_onset per gene)."""
+    from scripts.hereditary_cll_sll_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cll-sll-predisposition-atlas/definitions")
+async def hereditary_cll_sll_predisposition_atlas_definitions():
+    """Hereditary-CLL-SLL-Predisposition-Atlas clinical definitions (ATM-ceralasertib-del11q-RADIOSENSITIVITY-ABSOLUTE; TP53-del17p-venetoclax-ibrutinib-AVOID-RADIATION-ABSOLUTELY; POT1-shelterin-telomere-familial-CLL; CHEK2-1100delC-IVS2G>A-ATM-additive; NBN-657del5-Slavic-NHL-60x-MRN-PARP; BRCA2-HRD-olaparib-FA-D1; CARD11-BENTA-MALT1-ibrutinib-bypass; CDKN2A-FAMM-pancreatic-EUS-palbociclib-INACTIVE)."""
+    from scripts.hereditary_cll_sll_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
