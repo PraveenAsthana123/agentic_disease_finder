@@ -23151,5 +23151,19 @@
     "color": "#b71c1c",
     "role": "CGD & Phagocyte Defect Reference \u2014 CYBB/XL-CGD-gp91phox-65pct-IFN-gamma-FDA1990-First-Cytokine-Immunotherapy \u00b7 CYBA/p22phox-AR-Obligate-Heterodimer-gp91-Absent-CYBB-Intact \u00b7 NCF1/p47phox-Most-Common-AR-CGD-Pseudogene-MLPA-MANDATORY \u00b7 NCF2/p67phox-Activation-Domain-No-Pseudogene \u00b7 NCF4/p40phox-IBD-DOMINANT-Partial-DHR \u00b7 EROS/CYBC1-ER-Chaperone-2019 \u00b7 RAC2/Leukocytosis-PATHOGNOMONIC \u00b7 MPO/Most-Common-Phagocyte-Disorder-Clinically-Silent-Diabetes-Candida",
     "built_note": "Built 2026-10-17. 320-patient-aggregate-8x40-seeds-3862-3869. 3 endpoints verified 200. SiteNav wired after Hereditary-SCID-Atlas. expert_dashboards.json count 1371->1372."
+  },
+  {
+    "id": "hereditary-hies-atlas",
+    "name": "Hereditary-HIES-Atlas Complete-8-Gene-STAT3-DOCK8-PGM3-CARD11-IL6ST-ZNF341-IL21R-TYK2 Hyper-IgE-Syndrome-Reference",
+    "status": "built",
+    "api": "/api/hereditary-hies-atlas/overview|breakdown|definitions",
+    "cohort_n": "320",
+    "seed": "3870-3877",
+    "registered": "2026-10-17",
+    "role": "Immunologist",
+    "viz": "IgE distribution + Th17 absence + cold abscess vs viral infection matrix + coronary aneurysm + skeletal dysplasia",
+    "feature": "Complete HIES differential: AD-STAT3 vs AR-DOCK8 vs PGM3-CDG vs CARD11-GOF vs gp130 vs ZNF341 vs IL21R vs TYK2",
+    "why": "HIES is underdiagnosed; gene-specific features (retained teeth, viral dominance, coronary aneurysm, cryptosporidium) guide urgent management decisions (BCG-CI, HSCT urgency, echo)",
+    "priority": "P1"
   }
 ]

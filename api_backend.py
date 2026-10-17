@@ -52242,6 +52242,27 @@ async def hereditary_cgd_phagocyte_defect_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-hies-atlas/overview")
+async def hereditary_hies_atlas_overview():
+    """Hereditary-HIES-Atlas overview — Hyper-IgE-Syndrome-STAT3-DOCK8-PGM3-CARD11-IL6ST-ZNF341-IL21R-TYK2 seeds-3870-3877."""
+    from scripts.hereditary_hies_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-hies-atlas/breakdown")
+async def hereditary_hies_atlas_breakdown():
+    """Hereditary-HIES-Atlas breakdown — per-gene cohort n=40 each; Th17-absent; cold-abscesses; retained-teeth; viral-NK-defect; skeletal-dysplasia; coronary-aneurysm; cryptosporidium seeds-3870-3877."""
+    from scripts.hereditary_hies_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-hies-atlas/definitions")
+async def hereditary_hies_atlas_definitions():
+    """Hereditary-HIES-Atlas definitions — NIH-HIES-score; Th17-absent-cold-abscess; STAT3-DN; DOCK8-NK; PGM3-CDG; CARD11-BENTA; IL6ST-gp130; ZNF341-STAT3-promoter; IL21R-cryptosporidium; TYK2-multi-cytokine seeds-3870-3877."""
+    from scripts.hereditary_hies_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
