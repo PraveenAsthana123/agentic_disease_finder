@@ -52011,6 +52011,27 @@ async def hereditary_cerebrovascular_disease_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-transthyretin-amyloidosis-atlas/overview")
+async def hereditary_transthyretin_amyloidosis_atlas_overview():
+    """Hereditary-Transthyretin-Amyloidosis-Atlas overview — TTR-127aa-18q12.1-AD-ATTR-V30M-polyneuropathy-V122I-cardiac-African-American-Tafamidis-Patisiran-Vutrisiran APOA1-267aa-11q23.3-AD-AApoAI-HDL-near-zero-PATHOGNOMONIC FGA-866aa-4q28.1-AD-AFib-renal-dominant-Liver-Tx-CURATIVE LYZ-148aa-12q15-AD-ALys-hepatomegaly-splenomegaly-PATHOGNOMONIC GSN-782aa-9q33.2-AD-AGel-MERETOJA-TRIAD-lattice-corneal-II-facial-VII-cutis-laxa APOA2-100aa-1q23.3-AD-AApoAII-renal-Ter94-late-onset B2M-119aa-15q21.1-AB2M-CTS-dialysis-PATHOGNOMONIC OSMR-979aa-5p13.1-AD-PLCA-pruritic-interscapular-NO-systemic 320 patients seeds 3782-3789."""
+    from scripts.hereditary_transthyretin_amyloidosis_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-transthyretin-amyloidosis-atlas/breakdown")
+async def hereditary_transthyretin_amyloidosis_atlas_breakdown():
+    """Hereditary-Transthyretin-Amyloidosis-Atlas per-gene breakdown — TTR-apical-sparing-DPD-PATHOGNOMONIC-DIGOXIN-AVOID, APOA1-HDL-zero-multi-organ, FGA-renal-dominant-NO-neuropathy-liver-Tx-CURATIVE, LYZ-hepatomegaly-splenomegaly, GSN-MERETOJA-TRIAD, APOA2-renal-Ter94, B2M-CTS-dialysis-HDF, OSMR-PLCA-NO-systemic seeds-3782-3789."""
+    from scripts.hereditary_transthyretin_amyloidosis_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-transthyretin-amyloidosis-atlas/definitions")
+async def hereditary_transthyretin_amyloidosis_atlas_definitions():
+    """Hereditary-Transthyretin-Amyloidosis-Atlas definitions — ATTR-apical-sparing-DPD-PATHOGNOMONIC; AFib-liver-Tx-CURATIVE; MERETOJA-TRIAD-GSN-PATHOGNOMONIC; AB2M-CTS-dialysis-PATHOGNOMONIC; PLCA-OSMR-NO-systemic; Exclude-AL-MANDATORY; Mass-spectrometry-fibril-typing seeds-3782-3789."""
+    from scripts.hereditary_transthyretin_amyloidosis_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

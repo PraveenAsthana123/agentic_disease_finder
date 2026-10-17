@@ -22952,5 +22952,36 @@
       "/api/hereditary-cerebrovascular-disease-atlas/breakdown",
       "/api/hereditary-cerebrovascular-disease-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-transthyretin-amyloidosis-atlas",
+    "name": "Hereditary-Transthyretin-Amyloidosis-Atlas Complete-8-Gene-TTR-APOA1-FGA-LYZ-GSN-APOA2-B2M-OSMR",
+    "status": "built",
+    "api": "/api/hereditary-transthyretin-amyloidosis-atlas",
+    "cohort_n": 320,
+    "seed": "3782-3789",
+    "registered": "2026-10-17",
+    "route": "/hereditary-transthyretin-amyloidosis-atlas",
+    "api_base": "/api/hereditary-transthyretin-amyloidosis-atlas",
+    "seeds": "3782-3789",
+    "genes": [
+      "TTR",
+      "APOA1",
+      "FGA",
+      "LYZ",
+      "GSN",
+      "APOA2",
+      "B2M",
+      "OSMR"
+    ],
+    "patients": 320,
+    "category": "hereditary_systemic_amyloidosis_atlas",
+    "built_date": "2026-10-17",
+    "built_note": "Hereditary-Transthyretin-Amyloidosis-Atlas Complete-8-Gene-TTR-APOA1-FGA-LYZ-GSN-APOA2-B2M-OSMR TTR-127aa-18q12.1-AD-ATTR-V30M-polyneuropathy-V122I-cardiac-AA-Tafamidis-Patisiran-Vutrisiran-FDA-Apical-Sparing-DPD-PATHOGNOMONIC APOA1-267aa-11q23.3-AD-AApoAI-HDL-near-zero-PATHOGNOMONIC FGA-866aa-4q28.1-AD-AFib-renal-dominant-Glu526Val-NO-neuropathy-Liver-Tx-CURATIVE LYZ-148aa-12q15-AD-ALys-hepatomegaly-splenomegaly-PATHOGNOMONIC GSN-782aa-9q33.2-AD-AGel-MERETOJA-TRIAD-lattice-corneal-II-facial-VII-cutis-laxa-PATHOGNOMONIC APOA2-100aa-1q23.3-AD-AApoAII-renal-Ter94-late-onset B2M-119aa-15q21.1-AB2M-DRA-CTS-PATHOGNOMONIC-Renal-Tx-CURATIVE OSMR-979aa-5p13.1-AD-PLCA-pruritic-interscapular-NO-systemic 320-Patient-Aggregate-8x40-seeds-3782-3789. Built scripts/hereditary_transthyretin_amyloidosis_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-transthyretin-amyloidosis-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-transthyretin-amyloidosis-atlas/page.jsx + SiteNav wired after Hereditary-Cerebrovascular-Disease-Atlas, expert_dashboards.json count 1361->1362. Built 2026-10-17.",
+    "endpoints": [
+      "/api/hereditary-transthyretin-amyloidosis-atlas/overview",
+      "/api/hereditary-transthyretin-amyloidosis-atlas/breakdown",
+      "/api/hereditary-transthyretin-amyloidosis-atlas/definitions"
+    ]
   }
 ]
