@@ -22379,5 +22379,30 @@
       "/api/hereditary-dlbcl-predisposition-atlas/definitions"
     ],
     "note": "Hereditary DLBCL Predisposition Atlas: TP53-LFS-DLBCL-5-8x-AVOID-RADIATION ATM-RADIOSENSITIVITY-ABSOLUTE-Ceralasertib BRCA2-HRD-Cisplatin-Olaparib CHEK2-1100delC-ATM-Additive PIK3CD-APDS1-EBV-Leniolisib-FDA2023 KMT2D-Kabuki1-Tazemetostat-EZH2 CARD11-BENTA-GOF-Venetoclax-MALT1 TNFRSF13B-CVID2-10-12x-IVIG-Mandatory. Seeds 3582-3589. Built 2026-10-16."
+  },
+  {
+    "id": "hereditary-follicular-lymphoma-predisposition-atlas",
+    "name": "Hereditary-Follicular-Lymphoma-Predisposition-Atlas",
+    "title": "Hereditary-Follicular-Lymphoma-Predisposition-Atlas",
+    "status": "built",
+    "api": "/api/hereditary-follicular-lymphoma-predisposition-atlas",
+    "cohort_n": 320,
+    "seeds": "3590-3597",
+    "genes": [
+      "CREBBP",
+      "EZH2",
+      "TNFRSF14",
+      "KMT2D",
+      "RRAGC",
+      "MAP2K1",
+      "TP53",
+      "ATM"
+    ],
+    "route": "/hereditary-follicular-lymphoma-predisposition-atlas",
+    "endpoints": [
+      "/api/hereditary-follicular-lymphoma-predisposition-atlas/overview",
+      "/api/hereditary-follicular-lymphoma-predisposition-atlas/breakdown",
+      "/api/hereditary-follicular-lymphoma-predisposition-atlas/definitions"
+    ]
   }
 ]

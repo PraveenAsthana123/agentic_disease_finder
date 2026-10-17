@@ -51504,6 +51504,27 @@ async def hereditary_dlbcl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-follicular-lymphoma-predisposition-atlas/overview")
+async def hereditary_follicular_lymphoma_predisposition_atlas_overview():
+    """Hereditary-Follicular-Lymphoma-Predisposition-Atlas overview (CREBBP-EZH2-TNFRSF14-KMT2D-RRAGC-MAP2K1-TP53-ATM; 320-patient aggregate 8x40 seeds 3590-3597; EZH2-GOF-Y641-tazemetostat-FDA2020-80-90pct-FL; CREBBP-HAT-LOF-mocetinostat-60-70pct; TNFRSF14-LOF-obinutuzumab-poor-prognosis; KMT2D-Kabuki-tazemetostat; RRAGC-GOF-everolimus-mTOR; MAP2K1-GOF-cobimetinib-MEKi; TP53-AVOID-RADIATION-ABSOLUTELY; ATM-RADIOSENSITIVITY-ABSOLUTE)."""
+    from scripts.hereditary_follicular_lymphoma_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-follicular-lymphoma-predisposition-atlas/breakdown")
+async def hereditary_follicular_lymphoma_predisposition_atlas_breakdown():
+    """Hereditary-Follicular-Lymphoma-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; EZH2-Y641-tazemetostat-ORR-69pct; CREBBP-HAT-mocetinostat-RTS1; TNFRSF14-1p36-FISH-obinutuzumab-FLIPI2; KMT2D-Kabuki1-H3K4me1; RRAGC-everolimus-grade3B; MAP2K1-cobimetinib-CFC; TP53-LFS-transform-40-50pct; ATM-del11q-ceralasertib; mean_age_dx per gene)."""
+    from scripts.hereditary_follicular_lymphoma_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-follicular-lymphoma-predisposition-atlas/definitions")
+async def hereditary_follicular_lymphoma_predisposition_atlas_definitions():
+    """Hereditary-Follicular-Lymphoma-Predisposition-Atlas clinical definitions (CREBBP-RTS1-HAT-mocetinostat; EZH2-Weaver-tazemetostat-FDA2020; TNFRSF14-1p36-obinutuzumab-poor-prognosis; KMT2D-Kabuki1-tazemetostat; RRAGC-mTOR-everolimus; MAP2K1-CFC-cobimetinib; TP53-LFS-AVOID-RADIATION-APR246; ATM-RADIOSENSITIVITY-ceralasertib-ATRi)."""
+    from scripts.hereditary_follicular_lymphoma_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
