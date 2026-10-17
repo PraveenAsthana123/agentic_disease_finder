@@ -51586,6 +51586,27 @@ async def hereditary_hl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ptcl-predisposition-atlas/overview")
+async def hereditary_ptcl_predisposition_atlas_overview():
+    """Hereditary-PTCL-Predisposition-Atlas overview (ATM-TP53-CD27-ITK-GATA2-TET2-STAT3-PIK3CD; 320-patient aggregate 8x40 seeds 3622-3629; ATM-biallelic-A-T-T-cell-lymphoma-75x-HIGHEST-TBI-CI; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; CD27-Rituximab-NOT-appropriate-T-cell; ITK-HSCT-MANDATORY-EBV; GATA2-Emberger-NK-lymphopenia; TET2-IDH2-co-mutation-enasidenib; STAT3-GOF-T-LGL-ruxolitinib; PIK3CD-APDS1-leniolisib-FDA2023)."""
+    from scripts.hereditary_ptcl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-ptcl-predisposition-atlas/breakdown")
+async def hereditary_ptcl_predisposition_atlas_breakdown():
+    """Hereditary-PTCL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-AITL-35pct-PTCL-NOS-30pct-NK-T-15pct; TP53-complex-karyotype-50-60pct; CD27-EBV-T-NK-LPD-60-70x-HLH-45pct; ITK-EBV-CD4-T-LPD-90pct; GATA2-NK-lymphopenia-NK-T-50pct; TET2-AITL-65pct-IDH2-R172K; STAT3-T-LGL-55pct-cytopenia-hallmark; PIK3CD-EBV-T-LPD-50pct)."""
+    from scripts.hereditary_ptcl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-ptcl-predisposition-atlas/definitions")
+async def hereditary_ptcl_predisposition_atlas_definitions():
+    """Hereditary-PTCL-Predisposition-Atlas clinical definitions (ATM-BV-CHP-preferred-ceralasertib-ATRi; TP53-venetoclax-pralatrexate-FOLR1; CD27-HSCT-MANDATORY-EBV-IGIV-bridge; ITK-HSCT-before-EBV-exposure; GATA2-Emberger-SMILE-AspaMetDex; TET2-azacitidine-enasidenib-IDH2i; STAT3-ruxolitinib-JAKi-FDA2023-methotrexate-AVOID; PIK3CD-leniolisib-FDA2023-acyclovir-MANDATORY)."""
+    from scripts.hereditary_ptcl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""

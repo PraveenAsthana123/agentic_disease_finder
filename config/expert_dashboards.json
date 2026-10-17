@@ -22477,5 +22477,29 @@
       "RB1"
     ],
     "patients": 320
+  },
+  {
+    "key": "hereditary_ptcl_predisposition_atlas",
+    "title": "Hereditary-PTCL-Predisposition-Atlas Complete-8-Gene-ATM-TP53-CD27-ITK-GATA2-TET2-STAT3-PIK3CD ATM-3056aa-11q22.3-AD-LOF-A-T-T-cell-lymphoma-75x-HIGHEST-Biallelic-PTCL-3-5x-Monoallelic-RADIOSENSITIVITY-ABSOLUTE-TBI-CI-BV-CHP-Preferred-Ceralasertib-ATRi TP53-393aa-17p13.1-AD-LOF-LFS-PTCL-3-4x-Complex-Karyotype-50-60pct-AVOID-RADIATION-ABSOLUTELY-WB-MRI-Toronto-Venetoclax-Pralatrexate-FOLR1 CD27-260aa-12p13.31-AR-LOF-CD27-Deficiency-EBV-T-NK-LPD-60-70x-HIGHEST-HLH-HSCT-MANDATORY-Rituximab-NOT-Appropriate ITK-620aa-5q33.3-AR-LOF-ITK-Deficiency-EBV-CD4-T-LPD-90pct-HSCT-MANDATORY-Before-EBV-HLH-50pct-Rituximab-INEFFECTIVE GATA2-480aa-3q21.3-AD-LOF-Emberger-Syndrome-NK-Lymphopenia-NK-T-Cell-Lymphoma-HSCT-Curative-EBV-CMV-Q3M TET2-2002aa-4q24-AD-LOF-Germline-CHIP-AITL-65pct-IDH2-R172K-Co-Mutation-MANDATORY-Test-Enasidenib-Azacitidine-HMA STAT3-770aa-17q21.2-AD-GOF-T-LGL-Leukemia-Cytopenia-HALLMARK-Ruxolitinib-JAKi-FDA2023-Methotrexate-AVOID-LGL PIK3CD-1044aa-1p36.22-AD-GOF-APDS1-EBV-CMV-T-LPD-10-15pct-Leniolisib-FDA2023-Acyclovir-MANDATORY-Live-Vaccines-CI 320-Patient-Aggregate-8x40-seeds-3622-3629",
+    "status": "built",
+    "built_date": "2026-10-17",
+    "api_routes": [
+      "/api/hereditary-ptcl-predisposition-atlas/overview",
+      "/api/hereditary-ptcl-predisposition-atlas/breakdown",
+      "/api/hereditary-ptcl-predisposition-atlas/definitions"
+    ],
+    "portal_page": "portal-next/app/hereditary-ptcl-predisposition-atlas/page.jsx",
+    "seed_range": "3622-3629",
+    "genes": [
+      "ATM",
+      "TP53",
+      "CD27",
+      "ITK",
+      "GATA2",
+      "TET2",
+      "STAT3",
+      "PIK3CD"
+    ],
+    "patients": 320
   }
 ]
