@@ -22901,5 +22901,29 @@
     "patients": 320,
     "category": "hereditary_cancer_predisposition_atlas",
     "built_date": "2026-09-22"
+  },
+  {
+    "id": "hereditary-familial-hypercholesterolemia-lipid-disorders-atlas",
+    "title": "Hereditary-Familial-Hypercholesterolaemia-Lipid-Disorders-Atlas Complete-8-Gene-LDLR-APOB-PCSK9-LDLRAP1-APOE-LPL-APOA5-ABCG5 LDLR-1324aa-19p13.2-AD-LOF-LDL-Receptor-FH1-Most-Common-60-80pct-Corneal-Arcus-lt45yr-PATHOGNOMONIC APOB-4563aa-2p24.1-AD-LOF-ApoB-100-FDB-FH2-R3527Q-PCSK9i-Less-Effective PCSK9-692aa-1p32.3-AD-GOF-D374Y-FH3-PATHOGNOMONIC-LOF-R46L-Natural-Protection-47pct LDLRAP1-308aa-1p36.11-AR-LOF-ARH-Splenomegaly-PATHOGNOMONIC-Evinacumab APOE-299aa-19q13.32-e2e2-FH3-Palmar-Xanthoma-PATHOGNOMONIC-Fibrates-First LPL-475aa-8p21.3-AR-LOF-FCS-Pancreatitis-PATHOGNOMONIC-Volanesorsen-FDA2019 APOA5-366aa-11q23.3-AD-LOF-HTG-Type-V-REDUCE-IT ABCG5-651aa-2p21-AR-LOF-Sitosterolaemia-Childhood-Xanthomas-PATHOGNOMONIC-Haemolytic-Ezetimibe 320-Patient-Aggregate-8x40-seeds-3766-3773",
+    "status": "built",
+    "route": "/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas",
+    "api_routes": [
+      "/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/overview",
+      "/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/breakdown",
+      "/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/definitions"
+    ],
+    "genes": [
+      "LDLR",
+      "APOB",
+      "PCSK9",
+      "LDLRAP1",
+      "APOE",
+      "LPL",
+      "APOA5",
+      "ABCG5"
+    ],
+    "seeds": "3766-3773",
+    "patients": 320,
+    "built_date": "2026-10-17"
   }
 ]

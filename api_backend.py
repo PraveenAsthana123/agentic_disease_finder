@@ -51969,6 +51969,27 @@ async def hereditary_inherited_arrhythmia_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/overview")
+async def hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_overview():
+    """Hereditary-Familial-Hypercholesterolaemia-Lipid-Disorders-Atlas overview — LDLR-FH1-corneal-arcus-lt45yr-PATHOGNOMONIC; APOB-FDB-R3527Q-PCSK9i-less-effective; PCSK9-D374Y-GOF-PATHOGNOMONIC-most-severe; LDLRAP1-ARH-splenomegaly-PATHOGNOMONIC; APOE-e2e2-palmar-xanthoma-PATHOGNOMONIC-fibrates-first; LPL-FCS-pancreatitis-PATHOGNOMONIC-volanesorsen; APOA5-HTG-REDUCE-IT; ABCG5-sitosterolaemia-childhood-xanthomas-haemolysis-ezetimibe seeds-3766-3773."""
+    from scripts.hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/breakdown")
+async def hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_breakdown():
+    """Hereditary-Familial-Hypercholesterolaemia-Lipid-Disorders-Atlas breakdown — per-gene cohort stats; pancreatitis events; CV events; xanthoma rates; PCSK9i-efficacy comparison; ezetimibe-ABCG5-mechanism-matched; stanol-foods-CI; fibrates-first-APOE; volanesorsen-LPL seeds-3766-3773."""
+    from scripts.hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-familial-hypercholesterolemia-lipid-disorders-atlas/definitions")
+async def hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_definitions():
+    """Hereditary-Familial-Hypercholesterolaemia-Lipid-Disorders-Atlas definitions — FH-corneal-arcus-PATHOGNOMONIC; HoFH-evinacumab-ANGPTL3i; palmar-xanthoma-PATHOGNOMONIC-FH3; LPL-fibrates-omega3-INEFFECTIVE; ABCG5-stanol-CATASTROPHIC-CI; PCSK9-D374Y-GOF; cascade-all-FH-genes seeds-3766-3773."""
+    from scripts.hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
