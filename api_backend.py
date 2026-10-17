@@ -51815,6 +51815,27 @@ async def hereditary_hemophilia_rare_factor_deficiency_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-bone-marrow-failure-syndrome-atlas/overview")
+async def hereditary_bone_marrow_failure_syndrome_atlas_overview():
+    """Hereditary-Bone-Marrow-Failure-Syndrome-Atlas overview (FANCA-DEB/MMC-RIC-HSCT; FANCC-IVS4+4A>T-Ashkenazi; FANCG-highest-AML-monosomy7; DKC1-mucocutaneous-triad-PATHOGNOMONIC; TERC-anticipation-PATHOGNOMONIC; RPS19-eADA-elevated-PATHOGNOMONIC; SBDS-EPI-at-birth-i7q-SDS-benign; MPL-CAMT-TPO-RAs-INACTIVE-HSCT-only)."""
+    from scripts.hereditary_bone_marrow_failure_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-bone-marrow-failure-syndrome-atlas/breakdown")
+async def hereditary_bone_marrow_failure_syndrome_atlas_breakdown():
+    """Hereditary-Bone-Marrow-Failure-Syndrome-Atlas gene-level breakdown (320-patient aggregate 8x40 seeds-3694-3701; FA-aplasia-84; FA-AML-MDS-24; DKC1-IPF-dominant-death; TERC-danazol-TERT-upregulation; RPS19-steroid-response-30; SBDS-EPI-38; MPL-ICH-12)."""
+    from scripts.hereditary_bone_marrow_failure_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-bone-marrow-failure-syndrome-atlas/definitions")
+async def hereditary_bone_marrow_failure_syndrome_atlas_definitions():
+    """Hereditary-Bone-Marrow-Failure-Syndrome-Atlas clinical definitions (DEB/MMC-test; IVS4+4A>T-Ashkenazi; DC-mucocutaneous-triad; TERC-anticipation; eADA-DBA; EPI-SDS; i7q-SDS-benign; CAMT-amegakaryocytosis-TPO-elevated; TPO-RAs-INACTIVE-CAMT; RIC-conditioning-FA-mandatory; somatic-mosaicism-FA)."""
+    from scripts.hereditary_bone_marrow_failure_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -22674,5 +22674,36 @@
     "registered": "2026-10-17",
     "slug": "hereditary-hemophilia-rare-factor-deficiency-atlas",
     "api_base": "/api/hereditary-hemophilia-rare-factor-deficiency-atlas"
+  },
+  {
+    "id": "hereditary-bone-marrow-failure-syndrome-atlas",
+    "title": "Hereditary-Bone-Marrow-Failure-Syndrome-Atlas",
+    "subtitle": "Complete 8-Gene BMF Reference \u2014 FA / DC / DBA / SDS / CAMT",
+    "status": "built",
+    "category": "Hereditary BMF Syndrome Atlas",
+    "genes": [
+      "FANCA",
+      "FANCC",
+      "FANCG",
+      "DKC1",
+      "TERC",
+      "RPS19",
+      "SBDS",
+      "MPL"
+    ],
+    "gene_count": 8,
+    "patient_count": 320,
+    "seeds": "3694-3701",
+    "endpoints": [
+      "/api/hereditary-bone-marrow-failure-syndrome-atlas/overview",
+      "/api/hereditary-bone-marrow-failure-syndrome-atlas/breakdown",
+      "/api/hereditary-bone-marrow-failure-syndrome-atlas/definitions"
+    ],
+    "script": "scripts/hereditary_bone_marrow_failure_syndrome_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-bone-marrow-failure-syndrome-atlas/page.jsx",
+    "viz": "4-tab (Overview / Gene Table / Clinical Atlas / Definitions)",
+    "note": "FANCA-1455aa-16q24.3-FA-163kDa-AR-LOF / FANCC-558aa-9q22.32-FA-63kDa-AR-LOF / FANCG-622aa-9p13.3-FA-XRCC9-68kDa-AR-LOF / DKC1-514aa-Xq28-Dyskerin-58kDa-XLR-LOF / TERC-451nt-3q26.2-Telomerase-RNA-AD-LOF / RPS19-145aa-19q13.2-Ribosomal-S19-17kDa-AD-LOF / SBDS-250aa-7q11.21-SBDS-29kDa-AR-LOF / MPL-635aa-1p34.2-TPO-Receptor-84kDa-AR-LOF",
+    "count": 1350,
+    "updated_at": "2026-10-17"
   }
 ]
