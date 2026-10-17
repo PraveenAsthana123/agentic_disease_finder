@@ -52053,6 +52053,27 @@ async def hereditary_metabolic_cardiomyopathy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-lysosomal-storage-disease-atlas/overview")
+async def hereditary_lysosomal_storage_disease_atlas_overview():
+    """Hereditary-Lysosomal-Storage-Disease-Atlas overview — GBA/Gaucher-splenomegaly-PATHOGNOMONIC; SMPD1/Niemann-Pick-A-B-sea-blue-histiocytes-PATHOGNOMONIC; NPC1/Niemann-Pick-C-VSGP-cataplexy-PATHOGNOMONIC; HEXA/Tay-Sachs-cherry-red-spot-PATHOGNOMONIC; GALC/Krabbe-psychosine-PATHOGNOMONIC; ARSA/MLD-sulfatide-Libmeldy; GLB1/GM1-Morquio-B; ASAH1/Farber-TRIAD-PATHOGNOMONIC seeds-3798-3805."""
+    from scripts.hereditary_lysosomal_storage_disease_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-lysosomal-storage-disease-atlas/breakdown")
+async def hereditary_lysosomal_storage_disease_atlas_breakdown():
+    """Hereditary-Lysosomal-Storage-Disease-Atlas breakdown — 320-patient-8x40-GBA-SMPD1-NPC1-HEXA-GALC-ARSA-GLB1-ASAH1 seeds-3798-3805."""
+    from scripts.hereditary_lysosomal_storage_disease_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-lysosomal-storage-disease-atlas/definitions")
+async def hereditary_lysosomal_storage_disease_atlas_definitions():
+    """Hereditary-Lysosomal-Storage-Disease-Atlas definitions — Gaucher-ERT-SRT-Parkinson-risk; NPC1-VSGP-cataplexy-filipin-PATHOGNOMONIC; HEXA-cherry-red-spot-Ashkenazi; GALC-psychosine-HSCT-presymptomatic; ARSA-Libmeldy-EMA2020; ASAH1-Farber-TRIAD seeds-3798-3805."""
+    from scripts.hereditary_lysosomal_storage_disease_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

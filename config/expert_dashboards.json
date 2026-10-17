@@ -23006,5 +23006,14 @@
     "category": "Hereditary-Metabolic-Cardiomyopathy",
     "patient_count": 320,
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-lysosomal-storage-disease-atlas",
+    "title": "Hereditary-Lysosomal-Storage-Disease-Atlas",
+    "category": "Hereditary Metabolic Disease",
+    "status": "built",
+    "genes": ["GBA", "SMPD1", "NPC1", "HEXA", "GALC", "ARSA", "GLB1", "ASAH1"],
+    "patients": 320,
+    "seeds": "3798-3805"
   }
 ]
