@@ -22818,8 +22818,34 @@
     "id": "hereditary-skeletal-muscle-channelopathy-atlas",
     "title": "Hereditary-Skeletal-Muscle-Channelopathy-Myotonic-Disorder-Atlas",
     "category": "hereditary_atlas",
-    "genes": ["SCN4A","CACNA1S","KCNJ2","CLCN1","KCNJ18","RYR1","DMPK","CNBP"],
+    "genes": [
+      "SCN4A",
+      "CACNA1S",
+      "KCNJ2",
+      "CLCN1",
+      "KCNJ18",
+      "RYR1",
+      "DMPK",
+      "CNBP"
+    ],
     "seeds": "3734-3741",
+    "status": "built"
+  },
+  {
+    "id": "hereditary-inherited-arrhythmia-syndrome-atlas",
+    "title": "Hereditary-Inherited-Arrhythmia-Syndrome-Atlas",
+    "category": "hereditary_atlas",
+    "genes": [
+      "KCNQ1",
+      "KCNH2",
+      "SCN5A",
+      "RYR2",
+      "PKP2",
+      "DSP",
+      "CACNA1C",
+      "HCN4"
+    ],
+    "seeds": "3742-3749",
     "status": "built"
   }
 ]

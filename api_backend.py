@@ -51929,6 +51929,25 @@ async def hereditary_skeletal_muscle_channelopathy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-inherited-arrhythmia-syndrome-atlas/overview")
+async def hereditary_inherited_arrhythmia_syndrome_atlas_overview():
+    """Hereditary-Inherited-Arrhythmia-Syndrome-Atlas overview (320-patient-aggregate 8x40 seeds-3742-3749; KCNQ1-swim-LQT1-JLNS-deafness; KCNH2-auditory-LQT2; SCN5A-LQT3-Brugada-fever-PATHOGNOMONIC; RYR2-CPVT-bidirectional-VT; PKP2-ARVC-epsilon-wave; DSP-LV-dominant-Carvajal; CACNA1C-Timothy-2:1-AV-block; HCN4-SSS2-ivermectin-CI)."""
+    from scripts.hereditary_inherited_arrhythmia_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-inherited-arrhythmia-syndrome-atlas/breakdown")
+async def hereditary_inherited_arrhythmia_syndrome_atlas_breakdown():
+    """Hereditary-Inherited-Arrhythmia-Syndrome-Atlas breakdown (320-patient-aggregate 8x40 seeds-3742-3749; KCNQ1-JLNS-cochlear-implant-ICD; SCN5A-coved-ST-PATHOGNOMONIC-Na-channel-blockers-CI; RYR2-isoproterenol-ABSOLUTE-CI; PKP2-DSP-sport-ABSOLUTE-CI; HCN4-pacemaker-mandatory)."""
+    from scripts.hereditary_inherited_arrhythmia_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-inherited-arrhythmia-syndrome-atlas/definitions")
+async def hereditary_inherited_arrhythmia_syndrome_atlas_definitions():
+    """Hereditary-Inherited-Arrhythmia-Syndrome-Atlas definitions (LQT1-IKs; LQT2-IKr-hERG; Brugada-coved-ST-fever-trigger; CPVT-bidirectional-VT; ARVC-epsilon-wave-Task-Force-2010; Timothy-syndrome-2:1-AV-block-syndactyly; SSS2-pacemaker; Carvajal-wooly-hair-keratoderma; ivermectin-ABSOLUTE-CI-HCN4)."""
+    from scripts.hereditary_inherited_arrhythmia_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
