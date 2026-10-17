@@ -22432,5 +22432,26 @@
     "frontend": "portal-next/app/hereditary-mcl-predisposition-atlas/page.jsx",
     "built_date": "2026-10-16",
     "note": "MCL-del11q-ATM-RADIOSENSITIVITY-ABSOLUTE-Ibrutinib-Active; TP53-Blastoid-AVOID-RADIATION-ABSOLUTELY-Venetoclax; CDKN2A-del9p21-CDK4-6i-INACTIVE-MONARCL; RB1-del13q14-Secondary-MCL-CDK4-6i-INACTIVE; NBN-NHL-60x-657del5-Slavic; BRCA2-HRD-Cisplatin-Olaparib; CHEK2-NOT-HRD-NO-PARPi; MAP2K1-GOF-Cobimetinib-BRAF-co-test"
+  },
+  {
+    "id": "hereditary-mzl-predisposition-atlas",
+    "name": "Hereditary Marginal Zone Lymphoma Predisposition Atlas",
+    "type": "hereditary_predisposition_atlas",
+    "status": "built",
+    "genes": [
+      "MYD88",
+      "TNFRSF13B",
+      "ATM",
+      "TP53",
+      "CDKN2A",
+      "BRCA2",
+      "CARD11",
+      "PIK3CD"
+    ],
+    "cohort_n": 320,
+    "seed_range": "3606-3613",
+    "registered": "2026-10-16",
+    "slug": "hereditary-mzl-predisposition-atlas",
+    "api_base": "/api/hereditary-mzl-predisposition-atlas"
   }
 ]

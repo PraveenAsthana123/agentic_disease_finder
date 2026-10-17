@@ -51544,6 +51544,27 @@ async def hereditary_mcl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mzl-predisposition-atlas/overview")
+async def hereditary_mzl_predisposition_atlas_overview():
+    """Hereditary-MZL-Predisposition-Atlas overview (MYD88-TNFRSF13B-ATM-TP53-CDKN2A-BRCA2-CARD11-PIK3CD; 320-patient aggregate 8x40 seeds 3606-3613; MYD88-L265P-HP-eradication-resistant-MALT; TNFRSF13B-CVID2-NHL-10-12x-HIGHEST-IVIG-mandatory; ATM-RADIOSENSITIVITY-ABSOLUTE-del11q; TP53-LFS-AVOID-RADIATION-venetoclax; CDKN2A-gastric-MALT-5-10x-CDK4-6i-INACTIVE; BRCA2-HRD-cisplatin-olaparib; CARD11-BENTA-venetoclax-MALT1i; PIK3CD-APDS1-leniolisib-FDA2023)."""
+    from scripts.hereditary_mzl_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-mzl-predisposition-atlas/breakdown")
+async def hereditary_mzl_predisposition_atlas_breakdown():
+    """Hereditary-MZL-Predisposition-Atlas per-gene breakdown (MYD88-TNFRSF13B-ATM-TP53-CDKN2A-BRCA2-CARD11-PIK3CD; extranodal-MALT-50pct/nodal-MZL-25pct/splenic-MZL-25pct; H-pylori-positivity; EBV-status; L265P-somatic; del11q; transformation-rate; CR; 5yr-OS per-gene)."""
+    from scripts.hereditary_mzl_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-mzl-predisposition-atlas/definitions")
+async def hereditary_mzl_predisposition_atlas_definitions():
+    """Hereditary-MZL-Predisposition-Atlas clinical definitions (MYD88-L265P-HP-resistance-rituximab-mandatory; TNFRSF13B-CVID2-10-12x-IVIG-NEVER-STOP; ATM-RADIOSENSITIVITY-ABSOLUTE-ceralasertib; TP53-LFS-AVOID-RADIATION-WB-MRI-Toronto-venetoclax; CDKN2A-FAMM-gastric-MALT-H-pylori-synergy-CDK4-6i-INACTIVE; BRCA2-HRD-cisplatin-olaparib; CARD11-BENTA-venetoclax-MALT1-inhibitor; PIK3CD-APDS1-leniolisib-FDA2023-EBV-q3M)."""
+    from scripts.hereditary_mzl_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
