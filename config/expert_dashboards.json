@@ -22537,5 +22537,33 @@
     "script": "scripts/hereditary_bl_predisposition_atlas_dashboard.py",
     "note": "Total: 1342 dashboards",
     "built_note": "Built scripts/hereditary_bl_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-bl-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-bl-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-PTCL-Predisposition-Atlas, expert_dashboards.json count 1341->1342. Built 2026-10-17."
+  },
+  {
+    "id": "hereditary-mds-predisposition-atlas",
+    "name": "Hereditary MDS Predisposition Atlas",
+    "title": "Hereditary-MDS-Predisposition-Atlas Complete-8-Gene-GATA2-DDX41-SAMD9L-RUNX1-ETV6-ANKRD26-TERT-TP53",
+    "status": "built",
+    "category": "hereditary-predisposition-atlas",
+    "disease": "MDS",
+    "script": "scripts/hereditary_mds_predisposition_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-mds-predisposition-atlas/overview",
+      "/api/hereditary-mds-predisposition-atlas/breakdown",
+      "/api/hereditary-mds-predisposition-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-mds-predisposition-atlas/page.jsx",
+    "genes": [
+      "GATA2",
+      "DDX41",
+      "SAMD9L",
+      "RUNX1",
+      "ETV6",
+      "ANKRD26",
+      "TERT",
+      "TP53"
+    ],
+    "seeds": "3638-3645",
+    "patients": 320,
+    "note": "Hereditary-MDS-Predisposition-Atlas-Complete-8-Gene-Reference"
   }
 ]

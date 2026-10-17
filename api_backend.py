@@ -51628,6 +51628,25 @@ async def hereditary_bl_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mds-predisposition-atlas/overview")
+async def hereditary_mds_predisposition_atlas_overview():
+    """Hereditary-MDS-Predisposition-Atlas overview (GATA2-MonoMAC-MDS-30-70x-HSCT-curative; DDX41-late-onset-55-65yr-HMA-venetoclax; SAMD9L-ATAD-monosomy7-cerebellar-ataxia; RUNX1-FPD-sibling-donors-CI; ETV6-THC5-avoid-NSAIDs; ANKRD26-5UTR-panel-mandatory; TERT-TBD-avoid-alkylating; TP53-LFS-avoid-radiation; 320 patients seeds 3638-3645)."""
+    from scripts.hereditary_mds_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-mds-predisposition-atlas/breakdown")
+async def hereditary_mds_predisposition_atlas_breakdown():
+    """Hereditary-MDS-Predisposition-Atlas per-gene breakdown (GATA2-NK-lymphopenia-NK<100; DDX41-R525H-50pct-Ashkenazi; SAMD9L-reversion-mosaicism; RUNX1-dense-granule-deficiency; ETV6-ETV6-RUNX1-absent-germline; ANKRD26-5UTR-c.-127A>T; TERT-danazol-70pct; TP53-venetoclax-decitabine)."""
+    from scripts.hereditary_mds_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-mds-predisposition-atlas/definitions")
+async def hereditary_mds_predisposition_atlas_definitions():
+    """Hereditary-MDS-Predisposition-Atlas clinical definitions (GATA2-HSCT-curative-do-not-delay; DDX41-late-onset-HMA-venetoclax-preferred; SAMD9L-HSCT-corrects-MDS-NOT-ataxia; RUNX1-sibling-donors-CI; ETV6-standard-sequencing-misses; ANKRD26-5UTR-panel-mandatory; TERT-avoid-alkylating-ABSOLUTELY; TP53-avoid-radiation-ABSOLUTELY)."""
+    from scripts.hereditary_mds_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""
