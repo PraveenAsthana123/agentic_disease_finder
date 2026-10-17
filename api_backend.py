@@ -51910,6 +51910,24 @@ async def hereditary_pcd_atlas_definitions():
     from scripts.hereditary_primary_ciliary_dyskinesia_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-skeletal-muscle-channelopathy-atlas/overview")
+async def hereditary_skeletal_muscle_channelopathy_atlas_overview():
+    """Hereditary-Skeletal-Muscle-Channelopathy-Atlas overview (SCN4A-Nav1.4-HyperKPP-PMC; CACNA1S-HypoPP1-MHS5; KCNJ2-ATS-LQT7-TRIAD-PATHOGNOMONIC; CLCN1-Myotonia-Congenita-warm-up-PATHOGNOMONIC; KCNJ18-Thyrotoxic-PP; RYR1-MHS1-CCD-volatile-ABSOLUTELY-CI; DMPK-DM1-anticipation-PATHOGNOMONIC; CNBP-DM2-proximal-no-anticipation)."""
+    from scripts.hereditary_skeletal_muscle_channelopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-skeletal-muscle-channelopathy-atlas/breakdown")
+async def hereditary_skeletal_muscle_channelopathy_atlas_breakdown():
+    """Hereditary-Skeletal-Muscle-Channelopathy-Atlas breakdown (320-patient-aggregate 8x40 seeds-3734-3741; SCN4A-carbonic-anhydrase-inhibitor; KCNJ2-bidirectional-VT-PATHOGNOMONIC; CLCN1-warm-up-phenomenon; RYR1-IVCT-CHCT-gold-standard; DMPK-annual-ECG-Holter-mandatory)."""
+    from scripts.hereditary_skeletal_muscle_channelopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-skeletal-muscle-channelopathy-atlas/definitions")
+async def hereditary_skeletal_muscle_channelopathy_atlas_definitions():
+    """Hereditary-Skeletal-Muscle-Channelopathy-Atlas definitions (HyperKPP-vs-HypoPP-triggers; ATS-TRIAD; Myotonia-warm-up-phenomenon; MH-volatile-succinylcholine-ABSOLUTE-CI; dantrolene-IV; DM1-vs-DM2-anticipation-distal-vs-proximal; KCNJ18-treat-thyroid-FIRST)."""
+    from scripts.hereditary_skeletal_muscle_channelopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

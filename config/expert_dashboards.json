@@ -22813,5 +22813,13 @@
     "seed_base": 3726,
     "patients": 320,
     "status": "built"
+  },
+  {
+    "id": "hereditary-skeletal-muscle-channelopathy-atlas",
+    "title": "Hereditary-Skeletal-Muscle-Channelopathy-Myotonic-Disorder-Atlas",
+    "category": "hereditary_atlas",
+    "genes": ["SCN4A","CACNA1S","KCNJ2","CLCN1","KCNJ18","RYR1","DMPK","CNBP"],
+    "seeds": "3734-3741",
+    "status": "built"
   }
 ]
