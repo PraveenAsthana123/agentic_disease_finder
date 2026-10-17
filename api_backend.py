@@ -52221,6 +52221,27 @@ async def hereditary_scid_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cgd-phagocyte-defect-atlas/overview")
+async def hereditary_cgd_phagocyte_defect_atlas_overview():
+    """Hereditary-CGD-Phagocyte-Defect-Atlas overview — CYBB-XL-CGD-65pct-IFN-gamma-FDA1990; CYBA-AR-CGD-heterodimer; NCF1-pseudogene-MLPA-mandatory; NCF2-NCF4; EROS-ER-chaperone; RAC2-leukocytosis; MPO-benign-1-in-2000 seeds-3862-3869."""
+    from scripts.hereditary_cgd_phagocyte_defect_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cgd-phagocyte-defect-atlas/breakdown")
+async def hereditary_cgd_phagocyte_defect_atlas_breakdown():
+    """Hereditary-CGD-Phagocyte-Defect-Atlas breakdown — per-gene NBT/DHR result; aspergillus/staph risk; IBD frequency; IFN-gamma eligibility; HSCT curative rate; gene therapy eligibility seeds-3862-3869."""
+    from scripts.hereditary_cgd_phagocyte_defect_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cgd-phagocyte-defect-atlas/definitions")
+async def hereditary_cgd_phagocyte_defect_atlas_definitions():
+    """Hereditary-CGD-Phagocyte-Defect-Atlas definitions — NADPH-oxidase-assembly; NBT-vs-DHR; gp91-p22-heterodimer; NCF1-pseudogene; EROS-ER-chaperone; RAC2-GTPase; MPO-HOCl-diabetes-candida seeds-3862-3869."""
+    from scripts.hereditary_cgd_phagocyte_defect_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
