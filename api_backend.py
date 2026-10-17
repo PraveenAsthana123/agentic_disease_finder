@@ -51420,6 +51420,27 @@ async def hereditary_b_all_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-t-all-predisposition-atlas/overview")
+async def hereditary_t_all_predisposition_atlas_overview():
+    """Hereditary-T-ALL-Predisposition-Atlas overview (ATM-TP53-CDKN2A-PTEN-NF1-NBN-RB1-ETV6; 320-patient aggregate 8x40 seeds 3558-3565; ATM-A-T-biallelic-T-ALL-75x-HIGHEST; TP53-LFS-T-ALL-AVOID-RADIATION-ABSOLUTELY; CDKN2A-del9p21-T-ALL-5-10x-palbociclib-INACTIVE; PTEN-PHTS-T-ALL-mTOR-everolimus; NF1-T-ALL-T-LBL-5-10x-Ras; NBN-NBS-biallelic-ALL-60x-T-ALL-RADIOSENSITIVITY-ABSOLUTE; RB1-hereditary-Rb-secondary-T-ALL-post-RT; ETV6-THC5-T-ALL-elevated)."""
+    from scripts.hereditary_t_all_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-t-all-predisposition-atlas/breakdown")
+async def hereditary_t_all_predisposition_atlas_breakdown():
+    """Hereditary-T-ALL-Predisposition-Atlas per-gene breakdown (8 genes 40 patients each; ATM-biallelic-T-ALL-75x; TP53-LFS-T-ALL; CDKN2A-del9p21-T-ALL; PTEN-PHTS-T-ALL; NF1-T-LBL-mediastinal; NBN-657del5-T-ALL-biallelic; RB1-secondary-T-ALL-post-RT; ETV6-THC5-T-ALL; mean_age_onset per gene; nelarabine T-lineage)."""
+    from scripts.hereditary_t_all_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-t-all-predisposition-atlas/definitions")
+async def hereditary_t_all_predisposition_atlas_definitions():
+    """Hereditary-T-ALL-Predisposition-Atlas clinical definitions (ATM-A-T-IgA-deficiency-AFP-PATHOGNOMONIC-RADIOSENSITIVITY-ABSOLUTE-TBI-CI; TP53-LFS-AVOID-RADIATION-ABSOLUTELY-cranial-RT-CI; CDKN2A-del9p21-T-ALL-NOTCH1-co-deletion; PTEN-PHTS-mTOR-everolimus; NF1-T-LBL-selumetinib; NBN-657del5-cranial-RT-ABSOLUTELY-CI; RB1-bilateral-Rb-PATHOGNOMONIC-secondary-T-ALL; ETV6-THC5-T-ALL-nelarabine)."""
+    from scripts.hereditary_t_all_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 @app.get("/api/hereditary-head-neck-cancer-predisposition-atlas/overview")
 async def hereditary_head_neck_cancer_predisposition_atlas_overview():
     """Hereditary-Head-and-Neck-Cancer-Predisposition-Atlas overview (FANCA-FANCC-FANCD2-FANCG-TP53-ATM-NBN-CDKN2A; 320-patient aggregate 8x40 seeds 3454-3461; FANCA-65pct-FA-HNSCC-500-700x; FANCC-Ashkenazi-IVS4-founder; TP53-LFS-AVOID-RADIATION-ABSOLUTELY; ATM-CDKN2A-radiation-hypersensitivity; NBN-657del5-Slavic; DEB-MMC-fragility-test-mandatory)."""

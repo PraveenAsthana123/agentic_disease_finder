@@ -22268,5 +22268,35 @@
     "patients": 320,
     "note": "Hereditary B-ALL Predisposition Atlas \u2014 8-gene reference (ETV6-PAX5-IKZF1-TP53-ATM-CDKN2A-NBN-BRCA2); 320-patient aggregate; seeds 3550-3557",
     "built_note": "Built 2026-10-16. scripts/hereditary_b_all_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-b-all-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-b-all-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-CLL-SLL-Predisposition-Atlas, expert_dashboards.json count 1331->1332."
+  },
+  {
+    "id": "hereditary-t-all-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-T-ALL-Predisposition-Atlas",
+    "route": "/hereditary-t-all-predisposition-atlas",
+    "api_prefix": "/api/hereditary-t-all-predisposition-atlas",
+    "endpoints": [
+      "/api/hereditary-t-all-predisposition-atlas/overview",
+      "/api/hereditary-t-all-predisposition-atlas/breakdown",
+      "/api/hereditary-t-all-predisposition-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-t-all-predisposition-atlas/page.jsx",
+    "script": "scripts/hereditary_t_all_predisposition_atlas_dashboard.py",
+    "genes": [
+      "ATM",
+      "TP53",
+      "CDKN2A",
+      "PTEN",
+      "NF1",
+      "NBN",
+      "RB1",
+      "ETV6"
+    ],
+    "seeds": "3558-3565",
+    "patients": 320,
+    "note": "Hereditary T-ALL Predisposition Atlas \u2014 8-gene reference (ATM-TP53-CDKN2A-PTEN-NF1-NBN-RB1-ETV6); 320-patient aggregate; seeds 3558-3565",
+    "built_note": "Built 2026-10-16. scripts/hereditary_t_all_predisposition_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-t-all-predisposition-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-t-all-predisposition-atlas/page.jsx + SiteNav wired after Hereditary-B-ALL-Predisposition-Atlas, expert_dashboards.json count 1332->1333.",
+    "registered": "2026-10-16",
+    "slug": "hereditary-t-all-predisposition-atlas"
   }
 ]
