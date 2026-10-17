@@ -22476,7 +22476,8 @@
       "KLHDC8B",
       "RB1"
     ],
-    "patients": 320
+    "patients": 320,
+    "id": "hereditary-hl-predisposition-atlas"
   },
   {
     "key": "hereditary_ptcl_predisposition_atlas",
@@ -22500,7 +22501,8 @@
       "STAT3",
       "PIK3CD"
     ],
-    "patients": 320
+    "patients": 320,
+    "id": "hereditary-ptcl-predisposition-atlas"
   },
   {
     "key": "hereditary_bl_predisposition_atlas",
