@@ -51990,6 +51990,27 @@ async def hereditary_familial_hypercholesterolemia_lipid_disorders_atlas_definit
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cerebrovascular-disease-atlas/overview")
+async def hereditary_cerebrovascular_disease_atlas_overview():
+    """Hereditary-Cerebrovascular-Disease-Atlas overview — NOTCH3-2321aa-19p13.2-AD-GOF-CADASIL-GOM-PATHOGNOMONIC-lacunar-40-50yr-migraine-aura COL4A1-1454aa-13q34-AD-LOF-Porencephaly-PATHOGNOMONIC-ICH-young-ANTICOAG-CI COL4A2-1712aa-13q34-AD-LOF-ICH-dominant-panel-COL4A1-COL4A2-together ACTA2-377aa-10q23.31-AD-GOF-Moyamoya-iris-flocculi-livedo-TRIAD-PATHOGNOMONIC HTRA1-480aa-10q26.13-AR-LOF-CARASIL-alopecia-PATHOGNOMONIC-spondylosis-stroke TREX1-314aa-3p21.31-AR-LOF-AGS1-interferon-signature-PATHOGNOMONIC-baricitinib-FDA2023 CST3-146aa-20p11.21-AD-GOF-HCHWA-I-Icelandic-CAA-ICH-20-30yr-ANTICOAG-ABSOLUTELY-CI APP-770aa-21q21.3-AD-GOF-HCHWA-D-Dutch-Iowa-CAA-ICH-40-60yr-ANTICOAG-ABSOLUTELY-CI 320 patients seeds 3774-3781."""
+    from scripts.hereditary_cerebrovascular_disease_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-cerebrovascular-disease-atlas/breakdown")
+async def hereditary_cerebrovascular_disease_atlas_breakdown():
+    """Hereditary-Cerebrovascular-Disease-Atlas per-gene breakdown — NOTCH3-antiplatelet-AVOID-anticoag, COL4A1-porencephaly-ANTICOAG-CI, COL4A2-ICH-dominant-panel-together, ACTA2-Moyamoya-EC-IC-bypass, HTRA1-alopecia-spondylosis-stroke, TREX1-baricitinib, CST3-HCHWA-I-ANTICOAG-ABSOLUTELY-CI, APP-HCHWA-D-ANTICOAG-ABSOLUTELY-CI seeds-3774-3781."""
+    from scripts.hereditary_cerebrovascular_disease_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-cerebrovascular-disease-atlas/definitions")
+async def hereditary_cerebrovascular_disease_atlas_definitions():
+    """Hereditary-Cerebrovascular-Disease-Atlas definitions — CADASIL-GOM-PATHOGNOMONIC; CARASIL-alopecia-PATHOGNOMONIC; CAA-hemorrhagic-ANTICOAG-ABSOLUTELY-CI; Moyamoya-ACTA2-TRIAD; AGS-interferon-PATHOGNOMONIC-baricitinib; porencephaly-COL4A1; young-stroke-panel seeds-3774-3781."""
+    from scripts.hereditary_cerebrovascular_disease_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

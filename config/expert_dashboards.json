@@ -22925,5 +22925,32 @@
     "seeds": "3766-3773",
     "patients": 320,
     "built_date": "2026-10-17"
+  },
+  {
+    "id": "hereditary-cerebrovascular-disease-atlas",
+    "title": "Hereditary-Cerebrovascular-Disease-Atlas Complete-8-Gene-NOTCH3-COL4A1-COL4A2-ACTA2-HTRA1-TREX1-CST3-APP",
+    "route": "/hereditary-cerebrovascular-disease-atlas",
+    "api_base": "/api/hereditary-cerebrovascular-disease-atlas",
+    "status": "built",
+    "seeds": "3774-3781",
+    "genes": [
+      "NOTCH3",
+      "COL4A1",
+      "COL4A2",
+      "ACTA2",
+      "HTRA1",
+      "TREX1",
+      "CST3",
+      "APP"
+    ],
+    "patients": 320,
+    "category": "hereditary_cardiovascular_cerebrovascular_atlas",
+    "built_date": "2026-10-17",
+    "built_note": "Hereditary-Cerebrovascular-Disease-Atlas Complete-8-Gene-NOTCH3-COL4A1-COL4A2-ACTA2-HTRA1-TREX1-CST3-APP NOTCH3-2321aa-19p13.2-AD-GOF-CADASIL-GOM-PATHOGNOMONIC COL4A1-1454aa-13q34-AD-LOF-Porencephaly-PATHOGNOMONIC-ANTICOAG-CI COL4A2-1712aa-13q34-AD-LOF-ICH-dominant-panel-together ACTA2-377aa-10q23.31-AD-GOF-Moyamoya-TRIAD-PATHOGNOMONIC HTRA1-480aa-10q26.13-AR-LOF-CARASIL-alopecia-PATHOGNOMONIC TREX1-314aa-3p21.31-AR-LOF-AGS1-IFN-PATHOGNOMONIC-baricitinib-FDA2023 CST3-146aa-20p11.21-AD-GOF-HCHWA-I-Icelandic-CAA-ANTICOAG-ABSOLUTELY-CI APP-770aa-21q21.3-AD-GOF-HCHWA-D-Dutch-Iowa-CAA-ANTICOAG-ABSOLUTELY-CI 320-Patient-Aggregate-8x40-seeds-3774-3781. Built scripts/hereditary_cerebrovascular_disease_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-cerebrovascular-disease-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-cerebrovascular-disease-atlas/page.jsx + SiteNav wired after Hereditary-FH-Lipid-Disorders-Atlas, expert_dashboards.json count 1360->1361. Built 2026-10-17.",
+    "endpoints": [
+      "/api/hereditary-cerebrovascular-disease-atlas/overview",
+      "/api/hereditary-cerebrovascular-disease-atlas/breakdown",
+      "/api/hereditary-cerebrovascular-disease-atlas/definitions"
+    ]
   }
 ]
