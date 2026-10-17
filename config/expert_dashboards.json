@@ -22880,5 +22880,26 @@
     "seeds": "3758-3765",
     "note": "Total: 1358 dashboards",
     "built_note": "Built 2026-10-17. 3 endpoints /api/hereditary-taad-atlas/overview|breakdown|definitions verified 200. SiteNav wired after Hereditary-Cardiomyopathy-Atlas."
+  },
+  {
+    "id": "hereditary-soft-tissue-sarcoma-atlas",
+    "title": "Hereditary-Soft-Tissue-Sarcoma-Desmoid-Predisposition-Atlas Complete-8-Gene-TP53-NF1-APC-DICER1-SMARCB1-BRCA2-RB1-FH",
+    "route": "/hereditary-soft-tissue-sarcoma-atlas",
+    "api_base": "/api/hereditary-soft-tissue-sarcoma-atlas",
+    "status": "built",
+    "seeds": "3254-3261",
+    "genes": [
+      "TP53",
+      "NF1",
+      "APC",
+      "DICER1",
+      "SMARCB1",
+      "BRCA2",
+      "RB1",
+      "FH"
+    ],
+    "patients": 320,
+    "category": "hereditary_cancer_predisposition_atlas",
+    "built_date": "2026-09-22"
   }
 ]
