@@ -52116,6 +52116,27 @@ async def hereditary_congenital_myasthenic_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-peripheral-neuropathy-cmt-atlas/overview")
+async def hereditary_peripheral_neuropathy_cmt_atlas_overview():
+    """Hereditary-Peripheral-Neuropathy-CMT-Atlas overview — PMP22-CMT1A-duplication-most-common-60-70pct-CMT; MPZ-mutation-class-determines-severity; GJB1-intermediate-NCV-PATHOGNOMONIC; MFN2-optic-atrophy-PATHOGNOMONIC; GDAP1-vocal-cord-phrenic-PATHOGNOMONIC; SH3TC2-scoliosis-cranial-nerve-PATHOGNOMONIC; PRX-onion-bulb-severe; NEFL-same-gene-CMT2E-CMT1F seeds-3822-3829."""
+    from scripts.hereditary_peripheral_neuropathy_cmt_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-peripheral-neuropathy-cmt-atlas/breakdown")
+async def hereditary_peripheral_neuropathy_cmt_atlas_breakdown():
+    """Hereditary-Peripheral-Neuropathy-CMT-Atlas breakdown — 320-patient-8x40-PMP22-MPZ-GJB1-MFN2-GDAP1-SH3TC2-PRX-NEFL seeds-3822-3829."""
+    from scripts.hereditary_peripheral_neuropathy_cmt_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-peripheral-neuropathy-cmt-atlas/definitions")
+async def hereditary_peripheral_neuropathy_cmt_atlas_definitions():
+    """Hereditary-Peripheral-Neuropathy-CMT-Atlas definitions — GJB1-intermediate-NCV-PATHOGNOMONIC; MFN2-optic-atrophy-PATHOGNOMONIC; GDAP1-vocal-cord-PATHOGNOMONIC; SH3TC2-scoliosis-cranial-PATHOGNOMONIC; PMP22-pes-cavus-triad seeds-3822-3829."""
+    from scripts.hereditary_peripheral_neuropathy_cmt_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

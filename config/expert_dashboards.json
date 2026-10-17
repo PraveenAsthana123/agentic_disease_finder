@@ -23056,5 +23056,12 @@
     "seeds": "3814-3821",
     "status": "built",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-peripheral-neuropathy-cmt-atlas",
+    "name": "Hereditary-Peripheral-Neuropathy-CMT-Atlas Complete-8-Gene-PMP22-MPZ-GJB1-MFN2-GDAP1-SH3TC2-PRX-NEFL PMP22-160aa-17p12-AD-CMT1A-Most-Common-60-70pct-CMT-Duplication-HNPP-Deletion-Pes-Cavus-Triad MPZ-248aa-1q23.3-AD-CMT1B-Mutation-Class-Determines-Severity-Thr124Met-Late-Mild-Onion-Bulb-Severe GJB1-283aa-Xq13.1-XLD-CMT1X-Intermediate-NCV-25-45ms-PATHOGNOMONIC-Males-Severe-Females-Mild MFN2-757aa-1p36.22-AD-CMT2A-Most-Common-Axonal-Optic-Atrophy-20-30pct-PATHOGNOMONIC GDAP1-358aa-8q21.11-AR-CMT4A-Vocal-Cord-Phrenic-PATHOGNOMONIC-Wheelchair-2nd-3rd-Decade SH3TC2-1288aa-5q32-AR-CMT4C-Most-Common-AR-CMT-Europeans-Scoliosis-Cranial-Nerve-PATHOGNOMONIC-R954W PRX-1461aa-19q13.2-AR-CMT4F-Onion-Bulb-Severe-NCV-lt10-PATHOGNOMONIC-Dejerine-Sottas NEFL-543aa-8p21.2-AD-CMT2E-CMT1F-Same-Gene-Two-Phenotypes-Neurofilament-Accumulation-PATHOGNOMONIC",
+    "status": "built",
+    "seeds": "3822-3829",
+    "category": "hereditary_atlas"
   }
 ]
