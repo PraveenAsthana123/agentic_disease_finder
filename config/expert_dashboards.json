@@ -22623,5 +22623,14 @@
     "script": "scripts/hereditary_aml_predisposition_atlas_dashboard.py",
     "frontend": "portal-next/app/hereditary-aml-predisposition-atlas/page.jsx",
     "built_date": "2026-10-17"
+  },
+  {
+    "id": "hereditary-platelet-function-disorder-predisposition-atlas",
+    "name": "Hereditary Platelet Function Disorder Predisposition Atlas",
+    "status": "built",
+    "api": "/api/hereditary-platelet-function-disorder-predisposition-atlas/overview",
+    "cohort_n": 320,
+    "seed": "3670-3677",
+    "registered": "2026-10-17"
   }
 ]

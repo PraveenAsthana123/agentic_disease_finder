@@ -51752,6 +51752,27 @@ async def hereditary_nk_t_cell_lymphoma_predisposition_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-platelet-function-disorder-predisposition-atlas/overview")
+async def hereditary_platelet_function_disorder_predisposition_atlas_overview():
+    """Hereditary-Platelet-Function-Disorder-Predisposition-Atlas overview (ITGA2B-GT-ALL-agonist-aggregation-ABSENT-eptifibatide-CI-ABSOLUTELY; ITGB3-GT-NAITP-HPA-1a-eptifibatide-CI-ABSOLUTELY; GP1BA-BSS-giant-platelets-PATHOGNOMONIC-DDAVP-INEFFECTIVE; GP1BB-BSS-22q-DiGeorge-cardiac-75pct-PATHOGNOMONIC; NBEAL2-GPS-alpha-granule-ABSENT-myelofibrosis-35pct; MYH9-RD-Dohle-bodies-PATHOGNOMONIC-BLEEDING-MILD-ACEi-nephritis; HPS1-OCA-pulmonary-fibrosis-DOMINANT-CAUSE-DEATH-pirfenidone; P2RY12-clopidogrel-prasugrel-ticagrelor-CONTRAINDICATED-ABSOLUTELY; 320-patient-aggregate; seeds-3670-3677)."""
+    from scripts.hereditary_platelet_function_disorder_predisposition_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-platelet-function-disorder-predisposition-atlas/breakdown")
+async def hereditary_platelet_function_disorder_predisposition_atlas_breakdown():
+    """Hereditary-Platelet-Function-Disorder-Predisposition-Atlas per-gene breakdown (ITGA2B-ITGB3-GP1BA-GP1BB-NBEAL2-MYH9-HPS1-P2RY12; 320-patient-aggregate; seeds-3670-3677; aggregation-pattern; bleeding-severity; MPV; platelet-count)."""
+    from scripts.hereditary_platelet_function_disorder_predisposition_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-platelet-function-disorder-predisposition-atlas/definitions")
+async def hereditary_platelet_function_disorder_predisposition_atlas_definitions():
+    """Hereditary-Platelet-Function-Disorder-Predisposition-Atlas clinical definitions (ITGA2B-rFVIIa-first-line-eptifibatide-CI; ITGB3-NAITP-maternal-IVIG; GP1BA-DDAVP-INEFFECTIVE-rFVIIa; GP1BB-CARDIAC-SCREEN-MANDATORY-MLPA; NBEAL2-splenectomy-AVOID; MYH9-ACEi-MANDATORY-BLEEDING-MILD; HPS1-pirfenidone-PFTs-annually; P2RY12-thienopyridines-CONTRAINDICATED-ABSOLUTELY)."""
+    from scripts.hereditary_platelet_function_disorder_predisposition_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
