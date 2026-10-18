@@ -52517,6 +52517,25 @@ async def hereditary_ipex_treg_immune_dysregulation_atlas_definitions():
     return ipex_treg_definitions()
 
 
+@app.get("/api/hereditary-complement-deficiency-atlas/overview")
+async def hereditary_complement_deficiency_atlas_overview():
+    """Hereditary-Complement-Deficiency-Atlas overview — C1QA-SLE-90pct-Lupus-Rash-PATHOGNOMONIC; C2-Most-Common-Western-1:20000-Pneumococcal-Vaccines; C4A-NULL-European-SLE-Partial; C3-MPGN-PATHOGNOMONIC-Eculizumab; CFB-Dense-Deposit-Disease; CFD-RAREST-North-Africa-2xVaccination; C5-Neisseria-Eculizumab-FDA2007; CFP-Only-XLR-Fulminant-Meningococcemia-30pct-Mortality seeds-3982-3989."""
+    from scripts.hereditary_complement_deficiency_atlas_dashboard import generate_overview as complement_overview
+    return complement_overview()
+
+@app.get("/api/hereditary-complement-deficiency-atlas/breakdown")
+async def hereditary_complement_deficiency_atlas_breakdown():
+    """Hereditary-Complement-Deficiency-Atlas breakdown — classical-pathway-autoimmune; central-complement-severe; alternative-pathway-neisseria; terminal-pathway-neisseria; properdin-xlr; CH50-AP50-diagnostic-algorithm; cascade-testing; pathognomonic seeds-3982-3989."""
+    from scripts.hereditary_complement_deficiency_atlas_dashboard import generate_breakdown as complement_breakdown
+    return complement_breakdown()
+
+@app.get("/api/hereditary-complement-deficiency-atlas/definitions")
+async def hereditary_complement_deficiency_atlas_definitions():
+    """Hereditary-Complement-Deficiency-Atlas definitions — C1q-deficiency; C2-deficiency; C4A-deficiency; C3-deficiency; Factor-B-deficiency; Factor-D-deficiency; C5-deficiency; Properdin-types-I-II-III; eculizumab-mechanism; CH50-AP50-algorithm; meningococcal-vaccination; complement-autoimmunity seeds-3982-3989."""
+    from scripts.hereditary_complement_deficiency_atlas_dashboard import generate_definitions as complement_definitions
+    return complement_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

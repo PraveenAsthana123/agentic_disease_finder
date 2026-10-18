@@ -23477,5 +23477,27 @@
     "color": "#1a237e",
     "built_date": "2026-10-17",
     "notes": "FOXP3-256aa-Xp11.23-XLR-IPEX-Neonatal-HSCT-Curative CTLA4-223aa-AD-LOF-Haploinsufficiency-Abatacept LRBA-2863aa-AR-CTLA4-Lysosomal-Abatacept-Curative STAT3-770aa-AD-GOF-Multi-Organ-JAKi IL2RA-272aa-AR-CD25-Lymphoproliferation AIRE-545aa-AR-APECED-Addison-Candidiasis-Hypoparathyroidism CARD11-1154aa-AD-GOF-BENTA-Severe-Atopy BACH2-641aa-AD-LOF-BRIDA-Enteropathy"
+  },
+  {
+    "id": "hereditary-complement-deficiency-atlas",
+    "title": "Hereditary-Complement-Deficiency-Atlas",
+    "subtitle": "Complete 8-Gene Complement System Deficiency Reference — C1QA/SLE-90pct/Lupus-Rash-PATHOGNOMONIC + C2/Most-Common-Western/Pneumococcal-Vaccines + C4A/NULL-European/SLE-Partial + C3/Central/MPGN-PATHOGNOMONIC + CFB/AP-Factor-B/Dense-Deposit + CFD/RAREST/North-Africa + C5/Terminal/Eculizumab-FDA2007 + CFP/Properdin/Only-XLR/Fulminant-Meningococcemia-30pct",
+    "category": "hereditary-complement-deficiency",
+    "status": "built",
+    "route": "/hereditary-complement-deficiency-atlas",
+    "api_prefix": "/api/hereditary-complement-deficiency-atlas",
+    "script": "scripts/hereditary_complement_deficiency_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-complement-deficiency-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-complement-deficiency-atlas/overview",
+      "/api/hereditary-complement-deficiency-atlas/breakdown",
+      "/api/hereditary-complement-deficiency-atlas/definitions"
+    ],
+    "genes": ["C1QA","C2","C4A","C3","CFB","CFD","C5","CFP"],
+    "seed_range": "3982-3989",
+    "total_patients": 320,
+    "color": "#880e4f",
+    "built_date": "2026-10-17",
+    "notes": "C1QA-245aa-1p36.12-AR-SLE-90pct-Lupus-Rash-PATHOGNOMONIC-Anti-dsDNA-Negative-HCQ C2-752aa-AR-Most-Common-Western-1:20000-Pneumococcal-Vaccines-Penicillin-Prophylaxis C4A-1744aa-AR+AD-Classical-Amplifier-C4A-NULL-European-SLE-Partial-2-3x C3-1663aa-AR-Central-All-Pathways-MPGN-PATHOGNOMONIC-Eculizumab CFB-764aa-AR-Alternative-Pathway-Dense-Deposit-Disease-AP50-ZERO CFD-259aa-AR-RAREST-North-Africa-Founder-2x-Vaccination C5-1676aa-AR-Terminal-Neisseria-PATHOGNOMONIC-Eculizumab-FDA2007 CFP-442aa-XLR-Properdin-Only-XLR-Fulminant-Meningococcemia-30pct-Males-Only"
   }
 ]
