@@ -52554,6 +52554,24 @@ async def hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_definitions():
     from scripts.hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_dashboard import generate_definitions as ebv_xlp_definitions
     return ebv_xlp_definitions()
 
+@app.get("/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/overview")
+async def hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_overview():
+    """Hereditary-ICF-Syndrome-CBM-Signalosome-Combined-Immunodeficiency-Atlas overview — DNMT3B-ICF1-Centromeric-Instability-PATHOGNOMONIC; ZBTB24-ICF2-Milder-Neuro; CDCA7-ICF3; HELLS-ICF4; CARD11-LOF-CID-HSCT-URGENT; BCL10-LOF-CID; MALT1-LOF-Treg-Colitis; CTPS1-EBV-VZV-Selective seeds-3998-4005."""
+    from scripts.hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_dashboard import generate_overview as icf_cbm_overview
+    return icf_cbm_overview()
+
+@app.get("/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/breakdown")
+async def hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_breakdown():
+    """Hereditary-ICF-Syndrome-CBM-Signalosome-Combined-Immunodeficiency-Atlas breakdown — ICF1-ICF4-methylation-gradient; CARD11-GOF-vs-LOF-axis; MALT1-paracaspase-assay; CTPS1-dCTP-pool; cascade-testing-10-steps; NF-kB-pathway seeds-3998-4005."""
+    from scripts.hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_dashboard import generate_breakdown as icf_cbm_breakdown
+    return icf_cbm_breakdown()
+
+@app.get("/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/definitions")
+async def hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_definitions():
+    """Hereditary-ICF-Syndrome-CBM-Signalosome-Combined-Immunodeficiency-Atlas definitions — ICF-syndrome-types-I-IV; centromeric-instability; methylation-by-bisulfite; CARD11-LOF-vs-GOF; CBM-complex-NF-kB; MALT1-paracaspase; CTPS1-CTP-synthase; EBV-VZV-selective; agammaglobulinemia-ICF; HSCT-curative seeds-3998-4005."""
+    from scripts.hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_dashboard import generate_definitions as icf_cbm_definitions
+    return icf_cbm_definitions()
+
 
 if __name__ == "__main__":
     import os

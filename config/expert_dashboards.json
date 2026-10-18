@@ -23541,5 +23541,29 @@
     "seeds": "3990-3997",
     "total_patients": 320,
     "built_date": "2026-10-18"
+  },
+  {
+    "id": "hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas",
+    "name": "Hereditary-ICF-Syndrome-CBM-Signalosome-Combined-Immunodeficiency-Atlas (DNMT3B-853aa-20q11.21-AR-ICF1-Centromeric-Instability-Chr1-9-16-PATHOGNOMONIC-Facial-Anomalies-Agammaglobulinemia ZBTB24-570aa-6q25.3-AR-ICF2-Milder-Neuro CDCA7-372aa-2q31.1-AR-ICF3-Very-Rare HELLS-838aa-10q23.33-AR-ICF4-Rarest-Lymphoid-Helicase CARD11-LOF-1154aa-7p22.2-AR-CID-HSCT-URGENT-CRITICAL-DDx-GOF-BENTA-Opposite BCL10-LOF-233aa-1p22.3-AR-CID-T-B-Activation-Absent-Very-Rare MALT1-LOF-824aa-18q21.31-AR-Treg-Dysregulation-Colitis-PATHOGNOMONIC-Paracaspase-Assay CTPS1-591aa-1p34.2-AR-T-Cell-dCTP-EBV-VZV-Proliferation-Failure-PATHOGNOMONIC-Resting-Normal 320-Patient-Aggregate-8x40-seeds-3998-4005)",
+    "status": "built",
+    "route": "/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas",
+    "api_endpoints": [
+      "/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/overview",
+      "/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/breakdown",
+      "/api/hereditary-icf-cbm-signalosome-combined-immunodeficiency-atlas/definitions"
+    ],
+    "genes": [
+      "DNMT3B",
+      "ZBTB24",
+      "CDCA7",
+      "HELLS",
+      "CARD11",
+      "BCL10",
+      "MALT1",
+      "CTPS1"
+    ],
+    "seeds": "3998-4005",
+    "total_patients": 320,
+    "built_date": "2026-10-18"
   }
 ]
