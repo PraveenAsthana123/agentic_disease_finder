@@ -23239,5 +23239,22 @@
     "cohort_n": 320,
     "seed": "3902-3909",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-msmd-atlas",
+    "name": "Hereditary-MSMD-Atlas Complete-8-Gene-IFNGR1-IFNGR2-IL12B-IL12RB1-STAT1-IRF8-ISG15-CYBB",
+    "status": "built",
+    "route": "/hereditary-msmd-atlas",
+    "api_prefix": "/api/hereditary-msmd-atlas",
+    "endpoints": [
+      "/api/hereditary-msmd-atlas/overview",
+      "/api/hereditary-msmd-atlas/breakdown",
+      "/api/hereditary-msmd-atlas/definitions"
+    ],
+    "viz": "4-tab: Overview / Gene-Table / Pathway-Map / Definitions",
+    "role": "Clinical Immunologist / Infectious Disease Physician / Paediatric Immunologist",
+    "priority": "P0",
+    "script": "scripts/hereditary_msmd_atlas_dashboard.py",
+    "note": "MSMD 8-gene atlas: IFNGR1 (most common MSMD; AD partial + AR complete; serum IFN-\u03b3 elevated PATHOGNOMONIC), IFNGR2 (AR complete; IFNGR1 surface normal on flow distinguishes), IL12B (AR; Salmonella bacteremia; IFN-\u03b3 therapy effective), IL12RB1 (most common AR MSMD worldwide; IL-12R\u03b21 absent on flow), STAT1 LOF (AD LOF MSMD+HSE most common genetic HSE in children; AR LOF fatal; OPPOSITE of STAT1 GOF), IRF8 (AD T80A = selective cDC1 absence; AR K108E = total DC absence SCID-severity), ISG15 (CNS calcifications PATHOGNOMONIC; dual MSMD+IFN excess; USP18), CYBB hypomorphic (DHR NORMAL diagnostic trap; macrophage-selective NOX2; XL males only). Seeds 3910-3917. BCG ABSOLUTELY CI all 8 genes. Built 2026-10-17."
   }
 ]

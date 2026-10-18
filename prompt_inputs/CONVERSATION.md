@@ -37816,3 +37816,6 @@ All 3 endpoints return 200. Now refresh STATUS.md and commit:
 Done. Committed `5d01bd3a`, pushed to `origin/main`, tracked.
 
 **Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas** — PRF1·UNC13D·STX11·STXBP2·LYST·RAB27A·FAS·FOXP3 — 320 patients (8×40), seeds 3894–3901, 3 endpoints 200 ✅, expert_dashboards.json count 1375→1376, SiteNav wired.
+
+### [2026-10-17 18:16:30 MDT] ASSISTANT
+The backend needs to be reloaded with the new routes. Let me force-restart it:

@@ -52347,6 +52347,27 @@ async def hereditary_mucocutaneous_candidiasis_cmc_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-msmd-atlas/overview")
+async def hereditary_msmd_atlas_overview():
+    """Hereditary-MSMD-Atlas overview — IFNGR1-AD-Partial+AR-Complete-Most-Common-Serum-IFNg-Elevated; IFNGR2-AR-Complete-IFNg-R2; IL12B-AR-BCG-Salmonella; IL12RB1-AR-Most-Common-AR-MSMD-Worldwide; STAT1-LOF-MSMD+HSE-Opposite-GOF; IRF8-cDC1-Absent; ISG15-CNS-Calcif-PATHOGNOMONIC; CYBB-Hypomorphic-DHR-Normal-Trap seeds-3910-3917."""
+    from scripts.hereditary_msmd_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-msmd-atlas/breakdown")
+async def hereditary_msmd_atlas_breakdown():
+    """Hereditary-MSMD-Atlas breakdown — IFNGR1-two-phenotypes-AD-partial-AR-complete; IFNGR2-IFNGR1-surface-normal; IL12B-salmonella-distinguisher; IL12RB1-flow-IL12Rb1-absent; STAT1-LOF-vs-GOF; IRF8-AD-cDC1-AR-total-DC-absence; ISG15-dual-MSMD-CNS-IFN; CYBB-macrophage-selective seeds-3910-3917."""
+    from scripts.hereditary_msmd_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-msmd-atlas/definitions")
+async def hereditary_msmd_atlas_definitions():
+    """Hereditary-MSMD-Atlas definitions — IFNGR-serum-IFNg-triage; IL12-axis-Salmonella; STAT1-LOF-GOF-opposite; IRF8-cDC1-flow-diagnosis; ISG15-paradox-USP18; CYBB-DHR-normal-trap; BCG-CI-all-genes; IFNg-therapy-responders-vs-non seeds-3910-3917."""
+    from scripts.hereditary_msmd_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
