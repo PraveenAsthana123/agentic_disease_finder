@@ -52405,6 +52405,25 @@ async def hereditary_type_i_interferonopathy_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mhc-bare-lymphocyte-syndrome-atlas/overview")
+async def hereditary_mhc_bare_lymphocyte_syndrome_atlas_overview():
+    """Hereditary-MHC-Bare-Lymphocyte-Syndrome-Atlas overview — CIITA-RFXANK-RFX5-RFXAP-TAP1-TAP2-TAPBP-ZAP70 BLS-II MHC-Class-II-deficiency / BLS-I MHC-Class-I-deficiency / ZAP70-selective-CD8-absence seeds-3934-3941."""
+    from scripts.hereditary_mhc_bare_lymphocyte_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-mhc-bare-lymphocyte-syndrome-atlas/breakdown")
+async def hereditary_mhc_bare_lymphocyte_syndrome_atlas_breakdown():
+    """Hereditary-MHC-Bare-Lymphocyte-Syndrome-Atlas breakdown — BLS-IIA/B/C/D-groups RFXANK-Moroccan-founder BLS-I-skin-granulomas-PATHOGNOMONIC ZAP70-CD8-absent-PATHOGNOMONIC Cryptosporidium-BLS-II-PATHOGNOMONIC seeds-3934-3941."""
+    from scripts.hereditary_mhc_bare_lymphocyte_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-mhc-bare-lymphocyte-syndrome-atlas/definitions")
+async def hereditary_mhc_bare_lymphocyte_syndrome_atlas_definitions():
+    """Hereditary-MHC-Bare-Lymphocyte-Syndrome-Atlas definitions — HLA-DR-absent-BLS-II; HLA-ABC-absent-BLS-I; CD8-absent-ZAP70; Cryptosporidium-BLS-II; necrotising-granuloma-BLS-I; RFXANK-Moroccan-founder; Mennonite-ZAP70-p.Cys319Arg seeds-3934-3941."""
+    from scripts.hereditary_mhc_bare_lymphocyte_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

@@ -23294,5 +23294,16 @@
     "page": "/hereditary-type-i-interferonopathy-atlas",
     "count_before": 1379,
     "count_after": 1380
+  },
+  {
+    "id": "hereditary-mhc-bare-lymphocyte-syndrome-atlas",
+    "status": "built",
+    "title": "Hereditary-MHC-Bare-Lymphocyte-Syndrome-Atlas Complete-8-Gene-CIITA-RFXANK-RFX5-RFXAP-TAP1-TAP2-TAPBP-ZAP70 CIITA-1130aa-16p13.13-AR-BLS-IIA-MHC-II-Master-Transactivator-CD4+Lymphopenia-HLA-DR-Absent-Cryptosporidium-PATHOGNOMONIC RFXANK-260aa-19q13.11-AR-BLS-IIB-Moroccan-North-African-33nt-Founder-del-Most-Common-BLS-II-50-60pct RFX5-616aa-1q21.3-AR-BLS-IIC-X1-Box-DNA-Binding-Pan-Ethnic-10-15pct RFXAP-272aa-13q14.2-AR-BLS-IID-Rarest-Less-5pct-50-Patients-Worldwide TAP1-811aa-6p21.32-AR-BLS-I-MHC-Class-I-Skin-Granulomas-PATHOGNOMONIC-HLA-ABC-Absent TAP2-703aa-6p21.32-AR-BLS-I-Most-Common-70pct-Bronchiectasis-Gram-Negative-Sinopulmonary TAPBP-428aa-6p21.32-AR-BLS-I-Tapasin-Rarest-Mildest-Partial-MHC-I-Loading ZAP70-619aa-2q11.2-AR-ZAP-70-CID-Selective-CD8-Absence-PATHOGNOMONIC-Mennonite-p.Cys319Arg-Founder 320-Patient-Aggregate-8x40-seeds-3934-3941",
+    "seeds": "3934-3941",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-mhc-bare-lymphocyte-syndrome-atlas",
+    "page": "portal-next/app/hereditary-mhc-bare-lymphocyte-syndrome-atlas/page.jsx",
+    "count_before": 1380,
+    "count_after": 1381
   }
 ]
