@@ -52460,6 +52460,24 @@ async def hereditary_cd3_tcr_orai1_stim1_atlas_definitions():
     from scripts.hereditary_cd3_tcr_orai1_stim1_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-scid-rag-il2rg-ada-atlas/overview")
+async def hereditary_scid_rag_il2rg_ada_atlas_overview():
+    """Hereditary-SCID-RAG-IL2RG-ADA-Atlas overview — IL2RG-X-SCID-most-common-PCP-infant-boy JAK3-AR-phenocopy-XL-SCID-both-sexes RAG1-RAG2-T-B-NK+-SCID-Omenn-11p13-cotesting DCLRE1C-Artemis-radiosensitive-TBI-CI ADA-PEG-ADA-gene-therapy-Strimvelis-calcifications IL7R-T-B+NK+-SCID-T-only AK2-Reticular-Dysgenesis-SCID+agranulocytosis-BCG-ABSOLUTELY-CI seeds-3958-3965."""
+    from scripts.hereditary_scid_rag_il2rg_ada_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-scid-rag-il2rg-ada-atlas/breakdown")
+async def hereditary_scid_rag_il2rg_ada_atlas_breakdown():
+    """Hereditary-SCID-RAG-IL2RG-ADA-Atlas breakdown — gamma-c-chain-IL2RG-JAK3; V(D)J-RAG1-RAG2-DCLRE1C; metabolic-ADA-enzyme-replacement; cytokine-IL7R; mitochondrial-AK2-reticular-dysgenesis; NK-triage; radiosensitivity-screen; BCG-ABSOLUTELY-CI seeds-3958-3965."""
+    from scripts.hereditary_scid_rag_il2rg_ada_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-scid-rag-il2rg-ada-atlas/definitions")
+async def hereditary_scid_rag_il2rg_ada_atlas_definitions():
+    """Hereditary-SCID-RAG-IL2RG-ADA-Atlas definitions — T-B+NK--SCID; T-B-NK+-SCID; T-B+NK+-SCID; X-SCID; Omenn-syndrome; PEG-ADA-enzyme-replacement; radiosensitive-SCID-DCLRE1C; reticular-dysgenesis-AK2; TREC-NBS; BCG-osis; gene-therapy-ADA-Strimvelis; NHEJ-V(D)J seeds-3958-3965."""
+    from scripts.hereditary_scid_rag_il2rg_ada_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

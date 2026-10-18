@@ -23415,5 +23415,18 @@
     "page": "portal-next/app/hereditary-cd3-tcr-orai1-stim1-atlas/page.jsx",
     "count_before": 1390,
     "count_after": 1391
+  },
+  {
+    "id": "hereditary-scid-rag-il2rg-ada-atlas",
+    "name": "Hereditary-SCID-RAG-IL2RG-ADA-Atlas (IL2RG-256aa-Xq13.1-XLR-X-SCID-Most-Common-45-50pct-T-B+NK--SCID-PCP-Infant-Boy-PATHOGNOMONIC-Gene-Therapy-Strimvelis-Approved JAK3-1124aa-19p13.11-AR-T-B+NK--SCID-FEMALE=JAK3-Not-IL2RG-Phenocopy-XL-SCID RAG1-1043aa-11p13-AR-T-B-NK+-SCID-Null-or-Omenn-Hypomorphic-NK-PRESENT-RAG2-Cotesting-Mandatory RAG2-527aa-11p13-AR-T-B-NK+-SCID-Null-or-Omenn-Clinically-Identical-RAG1-11p13-Same-Panel DCLRE1C-692aa-10p13-AR-Artemis-Radiosensitive-SCID-TBI-ABSOLUTELY-CI-RIC-Without-TBI-Mandatory-Navajo-p.Thr347Ile ADA-363aa-20q13.11-AR-Metabolic-dATP-Toxic-T-B-NK--SCID-PEG-ADA-LIFE-SAVING-Strimvelis-FIRST-APPROVED-Gene-Therapy-EU-2016-Calcifications-SNHL-50pct IL7R-459aa-5p13.2-AR-T-B+NK+-SCID-T-Lymphopenia-ONLY-B-NK-Normal AK2-239aa-1p34.1-AR-Reticular-Dysgenesis-Most-Severe-SCID-SCID+Agranulocytosis-URGENT-HSCT-SNHL-60pct 320-Patient-Aggregate-8x40-seeds-3958-3965",
+    "status": "built",
+    "api": [
+      "/api/hereditary-scid-rag-il2rg-ada-atlas/overview",
+      "/api/hereditary-scid-rag-il2rg-ada-atlas/breakdown",
+      "/api/hereditary-scid-rag-il2rg-ada-atlas/definitions"
+    ],
+    "cohort_n": 320,
+    "seed": "3958-3965",
+    "registered": "2026-10-17"
   }
 ]
