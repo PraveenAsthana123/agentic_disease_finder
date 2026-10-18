@@ -23404,5 +23404,16 @@
     "page": "portal-next/app/hereditary-higm-syndrome-atlas/page.jsx",
     "count_before": 1389,
     "count_after": 1390
+  },
+  {
+    "id": "hereditary-cd3-tcr-orai1-stim1-atlas",
+    "status": "built",
+    "title": "Hereditary-CD3-TCR-ORAI1-STIM1-Atlas Complete-8-Gene-CD3D-CD3E-CD3G-CD247-LCK-LAT-ORAI1-STIM1 CD3D-171aa-11q23.3-AR-T-B+NK+-SCID-CD3-Absent-Flow-DIAGNOSTIC-BCG-Absolutely-CI CD3E-207aa-11q23.3-AR-T-B+NK+-SCID-Morocco-p.Cys68Tyr-Founder-CD3-Absent-Flow CD3G-182aa-11q23.3-AR-MILDER-Partial-T-Lymphopenia-CD3-Reduced-NOT-Absent-Residual-T-10-30pct CD247-164aa-1q24.2-AR-T-B+NK+-SCID-ULTRA-RARE-Turkey-p.Arg103Ter-Founder LCK-509aa-1p35.1-AR-LOF-T-Lymphopenia-AD-GOF-Lymphoproliferation-OPPOSITE-Phenotypes-Same-Gene LAT-262aa-16q24.1-AR-Surface-CD3-PRESENT-TCR-Downstream-Absent-pTyr132-LAT-Assay-DIAGNOSTIC ORAI1-301aa-12q24.31-AR-CRAC-Channel-SOCE-Combined-ID-ANHIDROSIS-MYOPATHY-PATHOGNOMONIC-Tuebingen-p.Arg91Trp STIM1-685aa-11p15.5-AR-ER-Ca2+-Sensor-SOCE-TUBULAR-AGGREGATE-MYOPATHY-CARDIAC-ARRHYTHMIA-Annual-ECG-MANDATORY 320-Patient-Aggregate-8x40-seeds-3950-3957",
+    "seeds": "3950-3957",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-cd3-tcr-orai1-stim1-atlas",
+    "page": "portal-next/app/hereditary-cd3-tcr-orai1-stim1-atlas/page.jsx",
+    "count_before": 1390,
+    "count_after": 1391
   }
 ]

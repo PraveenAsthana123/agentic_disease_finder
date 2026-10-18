@@ -52442,6 +52442,25 @@ async def hereditary_higm_syndrome_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-cd3-tcr-orai1-stim1-atlas/overview")
+async def hereditary_cd3_tcr_orai1_stim1_atlas_overview():
+    """Hereditary-CD3-TCR-ORAI1-STIM1-Atlas overview — CD3D-CD3E-CD3G-CD247-LCK-LAT-ORAI1-STIM1 CD3-complex-assembly TCR-proximal-kinase-adapter SOCE-calcium-entry CD3D-T-B+NK+-SCID-absent-CD3-flow CD3E-Morocco-Cys68Tyr-Founder CD3G-MILDER-partial CD247-ULTRA-RARE-Turkish-Arg103Ter LCK-LOF-GOF-OPPOSITE LAT-TCR-downstream-absent ORAI1-ANHIDROSIS-MYOPATHY-PATHOGNOMONIC STIM1-TUBULAR-AGGREGATE-MYOPATHY-CARDIAC-ARRHYTHMIA-ECG-MANDATORY seeds-3950-3957."""
+    from scripts.hereditary_cd3_tcr_orai1_stim1_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-cd3-tcr-orai1-stim1-atlas/breakdown")
+async def hereditary_cd3_tcr_orai1_stim1_atlas_breakdown():
+    """Hereditary-CD3-TCR-ORAI1-STIM1-Atlas breakdown — CD3-complex-3-groups TCR-proximal-kinase-adapter SOCE-calcium-entry ORAI1-Tuebingen-p.Arg91Trp-founder STIM1-ECG-mandatory LCK-LOF-GOF-opposite-phenotypes LAT-pTyr132-LAT-assay-diagnostic BCG-ABSOLUTELY-CI-all-8 seeds-3950-3957."""
+    from scripts.hereditary_cd3_tcr_orai1_stim1_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-cd3-tcr-orai1-stim1-atlas/definitions")
+async def hereditary_cd3_tcr_orai1_stim1_atlas_definitions():
+    """Hereditary-CD3-TCR-ORAI1-STIM1-Atlas definitions — CD3-complex-assembly; T-B+NK+-SCID-CD3-absent-flow; CD3G-milder-partial; CD247-ultra-rare; LCK-LOF-GOF; LAT-surface-CD3-present; ORAI1-CRAC-channel-SOCE; STIM1-ER-sensor-tubular-aggregate-myopathy; BCG-ABSOLUTELY-CI seeds-3950-3957."""
+    from scripts.hereditary_cd3_tcr_orai1_stim1_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
