@@ -592,7 +592,11 @@ def main():
     print("════ NEXT BUILDABLE (autonomous loop queue) ════")
     for i, b in enumerate(BUILDABLE):
         print(f"  {i+1:2d}. [{b['value']}] {b['title']}  ({b['effort']})")
-    print(f"\n▸ TOP PICK: {BUILDABLE[0]['title']}")
+    if not BUILDABLE:
+        print("✅ QUEUE EMPTY — all buildable items completed.")
+        print("   Loop terminates: no unblocked, non-gated items remain.")
+    else:
+        print(f"\n▸ TOP PICK: {BUILDABLE[0]['title']}")
     print(f"\n🔒 BLOCKED (need operator): {' · '.join(BLOCKED)}")
     print(f"🔴 GATED (need go-ahead): {' · '.join(GATED)}")
     return 0
