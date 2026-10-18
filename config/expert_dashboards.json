@@ -23305,5 +23305,93 @@
     "page": "portal-next/app/hereditary-mhc-bare-lymphocyte-syndrome-atlas/page.jsx",
     "count_before": 1380,
     "count_after": 1381
+  },
+  {
+    "id": "hereditary-red-cell-enzymopathy-atlas",
+    "status": "built",
+    "title": "Hereditary-Red-Cell-Enzymopathy-Atlas Complete-8-Gene-G6PD-PKLR-HK1-GPI-PGK1-TPI1-ALDOA-PFKM G6PD-515aa-Xq28-XL-CNSHA-G6PD-Deficiency-Most-Common-Enzymopathy-Favism-Heinz-Bodies-PATHOGNOMONIC PKLR-574aa-1q22-AR-PKD-Most-Common-AR-CNSHA-Splenomegaly-Echinocytes-PATHOGNOMONIC HK1-917aa-10q22.1-AR-HK-Deficiency-Severe-CNSHA-2,3-DPG-Elevated TPI1-249aa-12p13.31-AR-TPI-Deficiency-Neurodegeneration-PATHOGNOMONIC-Glu104Asp-Ashkenazi GPI-558aa-19q13.11-AR-GPI-Deficiency-Hydrops-Fetalis-Neurological PGK1-417aa-Xq21.1-XL-Myopathy-Rhabdomyolysis-CNS-Three-Tissue ALDOA-364aa-16p11.2-AR-ALDOA-Deficiency-Myopathy-Hemolytic-Anemia PFKM-780aa-12q13.11-AR-GSD7-Tarui-Myopathy-Hemolytic-Anemia-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-2838-2845",
+    "seeds": "2838-2845",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-red-cell-enzymopathy-atlas",
+    "page": "portal-next/app/hereditary-red-cell-enzymopathy-atlas/page.jsx",
+    "count_before": 1381,
+    "count_after": 1382
+  },
+  {
+    "id": "hereditary-rett-spectrum-atlas",
+    "status": "built",
+    "title": "Hereditary-Rett-Spectrum-Atlas Complete-8-Gene-MECP2-CDKL5-FOXG1-MEF2C-WDR45-DDX3X-PURA-HNRNPH2 MECP2-498aa-Xq28-XLD-Classic-Rett-Hand-Stereotypies-Breathing-Irregularities-PATHOGNOMONIC-Regression-6-18mo CDKL5-1030aa-Xp22.13-XLD-CDD-Early-Onset-Seizures-Before-5-Months-PATHOGNOMONIC FOXG1-481aa-14q12-AD-Congenital-Rett-NO-REGRESSION-PATHOGNOMONIC-Hypersalivation-Dyskinesia MEF2C-473aa-5q14.3-AD-LOF-MEF2C-Haploinsufficiency-Hyperkinesis-Myeloid-Leukemia-Risk WDR45-364aa-Xp11.23-XLD-BPAN-NBIA5-Biphasic-Childhood-ID-Young-Adult-Parkinsonism-Iron-PATHOGNOMONIC DDX3X-662aa-Xp11.3-XLD-Most-Common-X-Linked-ID-Females-Autism-50pct PURA-322aa-5q31.2-AD-LOF-Neonatal-Hypotonia-Apnoea-Excessive-Sleepiness-PATHOGNOMONIC HNRNPH2-449aa-Xq22.1-XLD-Prominent-Forehead-Hypertelorism-Broad-Nasal-Tip-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-3054-3061",
+    "seeds": "3054-3061",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-rett-spectrum-atlas",
+    "page": "portal-next/app/hereditary-rett-spectrum-atlas/page.jsx",
+    "count_before": 1382,
+    "count_after": 1383
+  },
+  {
+    "id": "hereditary-thyroid-cancer-atlas",
+    "status": "built",
+    "title": "Hereditary-Thyroid-Cancer-Atlas Complete-8-Gene-RET-TP53-PTEN-APC-PRKAR1A-DICER1-CDC73-VHL RET-1114aa-10q11.21-AD-GOF-MEN2A-MEN2B-MTC-100pct-Codon-Based-Thyroidectomy-MANDATORY-Codon918-MOST-AGGRESSIVE TP53-393aa-17p13.1-AD-LOF-LFS-ATC-Avoid-Radiation-Absolutely PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-FTC-Most-Common-Macrocephaly-PATHOGNOMONIC APC-2843aa-5q22.2-AD-LOF-FAP-Cribriform-Morular-PTC-PATHOGNOMONIC-Thyroidectomy-Before-Colectomy PRKAR1A-381aa-17q24.2-AD-LOF-Carney-Complex-Follicular-Adenoma-PPNAD-PATHOGNOMONIC DICER1-1922aa-14q32.13-AD-LOF-DRS-Multinodular-Goiter-First-Sign-Age-20-30 CDC73-531aa-1q31.2-AD-LOF-HPT-JT-PTC-Ossifying-Fibroma-PATHOGNOMONIC-OXYPHILIC VHL-213aa-3p25.3-AD-LOF-CCRC-Hemangioblastoma-Occasional-Thyroid-Clear-Cell-Rare 320-Patient-Aggregate-8x40-seeds-3134-3141",
+    "seeds": "3134-3141",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-thyroid-cancer-atlas",
+    "page": "portal-next/app/hereditary-thyroid-cancer-atlas/page.jsx",
+    "count_before": 1383,
+    "count_after": 1384
+  },
+  {
+    "id": "hereditary-lung-cancer-atlas",
+    "status": "built",
+    "title": "Hereditary-Lung-Cancer-Atlas Complete-8-Gene-EGFR-STK11-TP53-RB1-BRCA2-FLCN-ATM-BAP1 EGFR-1210aa-7p11.2-AD-GOF-Erlotinib-Gefitinib-Osimertinib-Responder-Exon19del-L858R-Most-Common STK11-433aa-19p13.3-AD-LOF-LKB1-PJS-Lung-17pct-NSCLC-Pembrolizumab-Resistant-PATHOGNOMONIC TP53-393aa-17p13.1-AD-LOF-LFS-SCLC-All-Histologies-WBMRI-Toronto-Protocol RB1-928aa-13q14.2-AD-LOF-Hereditary-Rb-SCLC-Late-Effect-RT-Survivors BRCA2-3418aa-13q12.3-AD-LOF-NSCLC-3x-Risk-ATM-PATHWAY-Olaparib FLCN-579aa-17p11.2-AD-LOF-BHD-Pneumothorax-PATHOGNOMONIC-Chromophobe-RCC ATM-3056aa-11q22.3-AD-LOF-A-T-NSCLC-Radiosensitivity-ABSOLUTE BAP1-729aa-3p21.1-AD-LOF-Mesothelioma-PATHOGNOMONIC-Uveal-Melanoma-Asbestos-Synergy 320-Patient-Aggregate-8x40-seeds-3142-3149",
+    "seeds": "3142-3149",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-lung-cancer-atlas",
+    "page": "portal-next/app/hereditary-lung-cancer-atlas/page.jsx",
+    "count_before": 1384,
+    "count_after": 1385
+  },
+  {
+    "id": "hereditary-brain-cns-tumour-atlas",
+    "status": "built",
+    "title": "Hereditary-Brain-CNS-Tumour-Predisposition-Atlas Complete-8-Gene-TP53-PTCH1-SUFU-PTEN-APC-VHL-SMARCB1-PMS2 TP53-393aa-17p13.1-AD-LOF-LFS-Glioblastoma-Choroid-Plexus-PATHOGNOMONIC-WBMRI-Protocol PTCH1-1447aa-9q22.32-AD-LOF-Gorlin-Medulloblastoma-Desmoplastic-Falx-Calcification-PATHOGNOMONIC-RT-ABSOLUTELY-CI SUFU-484aa-10q24.32-AD-LOF-SUFU-Medulloblastoma-Meningioma-Multiple-More-Penetrant-Than-PTCH1 PTEN-403aa-10q23.31-AD-LOF-Cowden-LDD-PATHOGNOMONIC-Macrocephaly-PATHOGNOMONIC APC-2843aa-5q22.2-AD-LOF-Turcot-Type2-Medulloblastoma-FAP-Phenotype-Also VHL-213aa-3p25.3-AD-LOF-Hemangioblastoma-PATHOGNOMONIC-Cerebellum-Spine-Retina SMARCB1-385aa-22q11.23-AD-LOF-AT-RT-Infants-PATHOGNOMONIC-Most-Lethal-Pediatric-CNS PMS2-862aa-7p22.1-AD-LOF-CMMRD-Biallelic-Brain-Tumour-Glioblastoma-Lymphoma-CRC 320-Patient-Aggregate-8x40-seeds-3150-3157",
+    "seeds": "3150-3157",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-brain-cns-tumour-atlas",
+    "page": "portal-next/app/hereditary-brain-cns-tumour-atlas/page.jsx",
+    "count_before": 1385,
+    "count_after": 1386
+  },
+  {
+    "id": "hereditary-rcc-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-RCC-Predisposition-Atlas Complete-8-Gene-VHL-FH-FLCN-SDHB-BAP1-MET-TSC2-PTEN VHL-213aa-3p25.3-AD-LOF-Clear-Cell-RCC-Most-Common-75pct-Belzutifan-FDA2021-Hemangioblastoma-Retinal-MANDATORY FH-510aa-1q43-AD-LOF-HLRCC-Aggressive-Type2-Papillary-Solitary-Operate-Immediately-Cutaneous-Leiomyomas-PATHOGNOMONIC FLCN-579aa-17p11.2-AD-LOF-BHD-Chromophobe-Hybrid-Pneumothorax-PATHOGNOMONIC-Fibrofolliculomas SDHB-280aa-1p36.13-AR-SDHx-Clear-Cell-Chromophobe-Highest-Malignant-40pct BAP1-729aa-3p21.1-AD-LOF-Clear-Cell-Aggressive-Mesothelioma-Uveal-BAP1-TPDS MET-1390aa-7q31.2-AD-GOF-Hereditary-Papillary-RCC-Type1-Bilateral-Multifocal-Cabozantinib TSC2-1807aa-16p13.3-AD-LOF-AML-Bilateral-RCC-Everolimus-Rapamycin PTEN-403aa-10q23.31-AD-LOF-Cowden-PHTS-FTC-Most-Common-PI3K-mTOR 320-Patient-Aggregate-8x40-seeds-3358-3365",
+    "seeds": "3358-3365",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-rcc-predisposition-atlas",
+    "page": "portal-next/app/hereditary-rcc-predisposition-atlas/page.jsx",
+    "count_before": 1386,
+    "count_after": 1387
+  },
+  {
+    "id": "hereditary-breast-cancer-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-Breast-Cancer-Predisposition-Atlas Complete-8-Gene-BRCA1-BRCA2-PALB2-CHEK2-ATM-CDH1-STK11-NF1 BRCA1-1863aa-17q21.31-AD-LOF-Breast-72pct-Ovarian-44pct-TNBC-PATHOGNOMONIC-PARP-Olaparib BRCA2-3418aa-13q12.3-AD-LOF-Breast-69pct-Pancreatic-7pct-Fanconi-D1-Biallelic PALB2-1186aa-16p12.2-AD-LOF-Breast-35pct-BRCA2-Interactor-Pancreatic-Elevated CHEK2-543aa-22q12.1-AD-LOF-Moderate-Risk-20-30pct-1100delC-European-Founder ATM-3056aa-11q22.3-AD-LOF-Moderate-Risk-20-30pct-Radiosensitivity-Avoid-RT CDH1-882aa-16q22.1-AD-LOF-HDGC-Lobular-ILC-54pct-Gastric-Prophylactic-Gastrectomy STK11-433aa-19p13.3-AD-LOF-PJS-Breast-50pct-Adenoma-Malignum-Cervix-PATHOGNOMONIC NF1-2839aa-17q11.2-AD-LOF-Breast-30pct-Age-50-Cafe-au-Lait-PATHOGNOMONIC-MRI-from-30 320-Patient-Aggregate-8x40-seeds-3366-3373",
+    "seeds": "3366-3373",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-breast-cancer-predisposition-atlas",
+    "page": "portal-next/app/hereditary-breast-cancer-predisposition-atlas/page.jsx",
+    "count_before": 1387,
+    "count_after": 1388
+  },
+  {
+    "id": "hereditary-nk-t-cell-lymphoma-predisposition-atlas",
+    "status": "built",
+    "title": "Hereditary-NK-T-Cell-Lymphoma-Predisposition-Atlas Complete-8-Gene-SH2D1A-XIAP-CD27-ITK-GATA2-PIK3CD-STAT5B-RASGRP1 SH2D1A-128aa-Xq25-XL-XLP1-SAP-EBV-Fatal-Fulminant-IM-PATHOGNOMONIC-HLH-Dysgammaglobulinemia XIAP-497aa-Xq25-XL-XLP2-BIRC4-Splenomegaly-IBD-PATHOGNOMONIC-Partial-EBV-Vulnerability CD27-260aa-12p13.31-AR-CD27-EBV-Lymphoproliferation-Hypogammaglobulinemia ITK-620aa-5q33.3-AR-ITK-EBV-T-Cell-Lymphoma-All-Males-Affected-High-Penetrance GATA2-480aa-3q21.3-AD-LOF-MonoMAC-Lymphedema-PATHOGNOMONIC-AML-MDS-Deafness PIK3CD-1044aa-1p36.22-AD-GOF-APDS1-EBV-CMV-Lymphoproliferation-Idelalisib STAT5B-787aa-17q21.2-AD-LOF-NK-Cell-Lymphocytosis-IGHD-Growth-Failure RASGRP1-797aa-15q14-AR-LOF-RASGRP1-EBV-T-Cell-Lymphoma-SLE-Overlap 320-Patient-Aggregate-8x40-seeds-3654-3661",
+    "seeds": "3654-3661",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-nk-t-cell-lymphoma-predisposition-atlas",
+    "page": "portal-next/app/hereditary-nk-t-cell-lymphoma-predisposition-atlas/page.jsx",
+    "count_before": 1388,
+    "count_after": 1389
   }
 ]
