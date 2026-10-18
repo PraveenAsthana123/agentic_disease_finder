@@ -23393,5 +23393,16 @@
     "page": "portal-next/app/hereditary-nk-t-cell-lymphoma-predisposition-atlas/page.jsx",
     "count_before": 1388,
     "count_after": 1389
+  },
+  {
+    "id": "hereditary-higm-syndrome-atlas",
+    "status": "built",
+    "title": "Hereditary-HIGM-Syndrome-Atlas Complete-8-Gene-CD40LG-CD40-AICDA-UNG-IKBKG-MSH5-RBCK1-NFKB2 CD40LG-261aa-Xq26.3-XLR-HIGM1-Most-Common-PCP-Infant-Boy-PATHOGNOMONIC-CD40L-Absent-Flow-Cryptosporidium CD40-277aa-20q13.12-AR-HIGM3-Both-Sexes-CD40-Absent-B-cells-Flow-CD40L-NORMAL-Distinguishes AICDA-198aa-12p13.31-AR-HIGM2-GC-Hyperplasia-Massive-Lymphadenopathy-PATHOGNOMONIC-AID-Intracellular UNG-313aa-12q24.11-AR-HIGM5-Normal-LN-Architecture-IgE-Elevated-Paradoxical-Mildest IKBKG-419aa-Xq28-XLR-EDA-ID-NEMO-Anhidrosis-Hypodontia-Thin-Hair-Triad-PATHOGNOMONIC-Mycobacteria MSH5-833aa-6p21.33-AR-CSR-Deficiency-IBD-Sinopulmonary-Normal-CD4-MHC-Region RBCK1-380aa-6p25.2-AR-LUBAC-HOIL1L-Polyglucosan-Myopathy-PATHOGNOMONIC-Amylopectinosis-IBD-Autoinflammation NFKB2-968aa-10q24.32-AD-LOF-CVID3-Pituitary-Stalk-Thickening-PATHOGNOMONIC-CDI-Adrenal-Insufficiency 320-Patient-Aggregate-8x40-seeds-3942-3949",
+    "seeds": "3942-3949",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-higm-syndrome-atlas",
+    "page": "portal-next/app/hereditary-higm-syndrome-atlas/page.jsx",
+    "count_before": 1389,
+    "count_after": 1390
   }
 ]

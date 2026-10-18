@@ -52423,6 +52423,24 @@ async def hereditary_mhc_bare_lymphocyte_syndrome_atlas_definitions():
     from scripts.hereditary_mhc_bare_lymphocyte_syndrome_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-higm-syndrome-atlas/overview")
+async def hereditary_higm_syndrome_atlas_overview():
+    """Hereditary-Hyper-IgM-Syndrome-Atlas overview — CD40LG-CD40-AICDA-UNG-IKBKG-MSH5-RBCK1-NFKB2 HIGM1-HIGM2-HIGM3-HIGM5-EDA-ID-CSR-Deficiency-LUBAC-CVID3 seeds-3942-3949."""
+    from scripts.hereditary_higm_syndrome_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-higm-syndrome-atlas/breakdown")
+async def hereditary_higm_syndrome_atlas_breakdown():
+    """Hereditary-Hyper-IgM-Syndrome-Atlas breakdown — CD40L-absent-HIGM1-PATHOGNOMONIC GC-hyperplasia-AICDA-PATHOGNOMONIC EDA-triad-IKBKG-PATHOGNOMONIC polyglucosan-RBCK1-PATHOGNOMONIC pituitary-stalk-NFKB2-PATHOGNOMONIC seeds-3942-3949."""
+    from scripts.hereditary_higm_syndrome_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-higm-syndrome-atlas/definitions")
+async def hereditary_higm_syndrome_atlas_definitions():
+    """Hereditary-Hyper-IgM-Syndrome-Atlas definitions — HIGM-CSR-deficiency; CD40L-flow-diagnostic; GC-hyperplasia-AICDA; EDA-triad-IKBKG; polyglucosan-RBCK1; pituitary-stalk-NFKB2; BCG-ABSOLUTELY-CI-all-8 seeds-3942-3949."""
+    from scripts.hereditary_higm_syndrome_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os
