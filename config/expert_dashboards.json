@@ -23226,5 +23226,18 @@
     "cohort_n": 320,
     "seed": "3894-3901",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-mucocutaneous-candidiasis-cmc-atlas",
+    "name": "Hereditary-Mucocutaneous-Candidiasis-CMC-Atlas (STAT1-750aa-2q32.2-AD-GOF-CMC-Most-Common-GT50pct-Th17-Suppressed-Autoimmune-Endo-Viral-JAKi-Ruxolitinib IL17RA-866aa-22q11.1-AR-CMC1-Complete-IL17-Signal-Absent-Severe IL17F-163aa-6p12.2-AD-CMC3-Haploinsufficiency-Mild TRAF3IP2-574aa-6q21-AR-CMC4-ACT1-IL17-Adaptor-Serum-IL17-NORMAL IL17RC-734aa-3p24.3-AR-CMC5-Selective-IL17E-SPARED RORC-519aa-1q23.3-AR-CMC7-BCG-ABSOLUTELY-CI-Triple CARD9-536aa-9q34.3-AR-CNS-Candida-PATHOGNOMONIC CLEC7A-247aa-12p13.2-AD-Dectin1-Y238X-Mucosal-Only)",
+    "status": "built",
+    "api": [
+      "/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/overview",
+      "/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/breakdown",
+      "/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/definitions"
+    ],
+    "cohort_n": 320,
+    "seed": "3902-3909",
+    "registered": "2026-10-17"
   }
 ]

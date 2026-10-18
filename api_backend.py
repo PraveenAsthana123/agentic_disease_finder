@@ -52326,6 +52326,27 @@ async def hereditary_immune_dysregulation_hlh_alps_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/overview")
+async def hereditary_mucocutaneous_candidiasis_cmc_atlas_overview():
+    """Hereditary-Mucocutaneous-Candidiasis-CMC-Atlas overview — STAT1-GOF-Th17-Suppressed-JAKi-Ruxolitinib-Most-Common; IL17RA-AR-CMC1-Complete-Signal-Absent; IL17F-AD-CMC3-Mild-Haploinsufficiency; TRAF3IP2-ACT1-AR-CMC4-IL17-Normal-Serum; IL17RC-AR-CMC5-Selective-IL17E-Spared; RORC-AR-CMC7-BCG-CI-Triple; CARD9-AR-CNS-Candida-PATHOGNOMONIC; CLEC7A-Dectin1-AD-Y238X seeds-3902-3909."""
+    from scripts.hereditary_mucocutaneous_candidiasis_cmc_atlas_dashboard import generate_overview
+    return generate_overview()
+
+
+@app.get("/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/breakdown")
+async def hereditary_mucocutaneous_candidiasis_cmc_atlas_breakdown():
+    """Hereditary-Mucocutaneous-Candidiasis-CMC-Atlas breakdown — STAT1-GOF-autoimmune-endocrinopathy-viral; IL17RA-severe-bacterial-too; IL17F-mild-candida-only; TRAF3IP2-functional-assay-required; IL17RC-IL17E-intact-distinguisher; RORC-ILC3-absent-IBD; CARD9-invasive-fungal-GM-CSF; CLEC7A-Y238X-mucosal-only seeds-3902-3909."""
+    from scripts.hereditary_mucocutaneous_candidiasis_cmc_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+
+@app.get("/api/hereditary-mucocutaneous-candidiasis-cmc-atlas/definitions")
+async def hereditary_mucocutaneous_candidiasis_cmc_atlas_definitions():
+    """Hereditary-Mucocutaneous-Candidiasis-CMC-Atlas definitions — STAT1-JAKi-Th17-restoration; TRAF3IP2-serum-IL17-NORMAL-trap; CARD9-CNS-candida-pathognomonic; RORC-BCG-absolutely-CI; CLEC7A-Y238X-polymorphism; CMC-severity-spectrum-CARD9-RORC-IL17RA-to-IL17F seeds-3902-3909."""
+    from scripts.hereditary_mucocutaneous_candidiasis_cmc_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

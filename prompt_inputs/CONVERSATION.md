@@ -37808,3 +37808,11 @@ Committed `f86ff25e`, pushed to `origin/main`, tracked. HIES atlas complete.
 Key clinical content captured: BTK-XLA (echovirus encephalitis PATHOGNOMONIC, males only, first PID 1952), IGHM/IGLL1/BLNK (AR agammaglobulinemia — females affected, sequence IGHM first in females), PIK3CD/PIK3R1 APDS (B cells present, leniolisib FDA2023, EBV/CMV susceptibility), LRBA (CTLA4 surface loss, abatacept HIGHLY EFFECTIVE), NFKB1 CVID7 (most common genetic CVID ~10%, splenomegaly + IBD distinguishers).
 
 ⏳ **Pending:** Retrain ictal/interictal (skipped — too heavy) · Gmail/Slack/Drive (credentials blocked) · multi-user auth · EMR/FHIR
+
+### [2026-10-17 17:29:48 MDT] ASSISTANT
+All 3 endpoints return 200. Now refresh STATUS.md and commit:
+
+### [2026-10-17 17:45:51 MDT] ASSISTANT
+Done. Committed `5d01bd3a`, pushed to `origin/main`, tracked.
+
+**Hereditary-Immune-Dysregulation-HLH-ALPS-Atlas** — PRF1·UNC13D·STX11·STXBP2·LYST·RAB27A·FAS·FOXP3 — 320 patients (8×40), seeds 3894–3901, 3 endpoints 200 ✅, expert_dashboards.json count 1375→1376, SiteNav wired.
