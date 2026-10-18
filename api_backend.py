@@ -52498,6 +52498,25 @@ async def hereditary_autoinflammatory_disease_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-ipex-treg-immune-dysregulation-atlas/overview")
+async def hereditary_ipex_treg_immune_dysregulation_atlas_overview():
+    """Hereditary-IPEX-Treg-Immune-Dysregulation-Atlas overview — FOXP3-IPEX-neonatal-triad-HSCT-curative CTLA4-haploinsufficiency-abatacept-first-line LRBA-AR-CTLA4-lysosomal-abatacept-curative STAT3-GOF-multi-organ-JAKi AIRE-APECED-Addison-candidiasis-hypoparathyroidism CARD11-BENTA-severe-atopy IL2RA-CD25-paradoxical-lymphoproliferation BACH2-BRIDA-enteropathy seeds-3974-3981."""
+    from scripts.hereditary_ipex_treg_immune_dysregulation_atlas_dashboard import generate_overview as ipex_treg_overview
+    return ipex_treg_overview()
+
+@app.get("/api/hereditary-ipex-treg-immune-dysregulation-atlas/breakdown")
+async def hereditary_ipex_treg_immune_dysregulation_atlas_breakdown():
+    """Hereditary-IPEX-Treg-Immune-Dysregulation-Atlas breakdown — foxp3-treg; ctla4-lrba-abatacept; stat3-gof-jaki; il2ra-cd25-paradoxical; aire-apeced-anti-ifn; card11-benta; bach2-brida; cascade-testing; pathognomonic seeds-3974-3981."""
+    from scripts.hereditary_ipex_treg_immune_dysregulation_atlas_dashboard import generate_breakdown as ipex_treg_breakdown
+    return ipex_treg_breakdown()
+
+@app.get("/api/hereditary-ipex-treg-immune-dysregulation-atlas/definitions")
+async def hereditary_ipex_treg_immune_dysregulation_atlas_definitions():
+    """Hereditary-IPEX-Treg-Immune-Dysregulation-Atlas definitions — IPEX/FOXP3; CTLA4-haploinsufficiency; LRBA-deficiency; STAT3-GOF; CD25-deficiency; APECED/APS-1; BENTA-CARD11-GOF; BRIDA-BACH2-LOF; abatacept-mechanism; JAK-inhibitors; Treg-biology; anti-IFN-autoantibodies seeds-3974-3981."""
+    from scripts.hereditary_ipex_treg_immune_dysregulation_atlas_dashboard import generate_definitions as ipex_treg_definitions
+    return ipex_treg_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

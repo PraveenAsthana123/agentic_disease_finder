@@ -23457,5 +23457,25 @@
     "color": "#b71c1c",
     "built_date": "2026-10-17",
     "notes": "MEFV-781aa-16p13.3-AR+AD-FMF-Colchicine-Amyloidosis-PATHOGNOMONIC NLRP3-1036aa-1q44-AD-GOF-CAPS-Cold-Urticaria-SNHL-Canakinumab TNFRSF1A-234aa-AD-GOF-TRAPS-Periorbital-Edema-Etanercept-NOT MVK-396aa-AR-MKD-HIDS-Statins-CI PSTPIP1-415aa-AD-GOF-PAPA-Triad LPIN2-890aa-AR-Majeed-CRMO-CDA IL1RN-177aa-AR-DIRA-Neonatal-Anakinra-CURATIVE NOD2-1040aa-AD-GOF-Blau-EOS-Uveitis-Blindness"
+  },
+  {
+    "id": "hereditary-ipex-treg-immune-dysregulation-atlas",
+    "title": "Hereditary-IPEX-Treg-Immune-Dysregulation-Atlas",
+    "subtitle": "Complete 8-Gene Regulatory T-Cell Immune Dysregulation Reference — FOXP3/IPEX/Neonatal-Triad/HSCT-Curative + CTLA4/Haploinsufficiency/Abatacept + LRBA/AR/Abatacept-Curative + STAT3-GOF/Multi-Organ/JAKi + IL2RA/CD25/Lymphoproliferation + AIRE/APECED/Addison-Candidiasis-Hypoparathyroidism + CARD11-GOF/BENTA/Severe-Atopy + BACH2/BRIDA/Enteropathy",
+    "category": "hereditary-immune-dysregulation",
+    "status": "built",
+    "script": "scripts/hereditary_ipex_treg_immune_dysregulation_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-ipex-treg-immune-dysregulation-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-ipex-treg-immune-dysregulation-atlas/overview",
+      "/api/hereditary-ipex-treg-immune-dysregulation-atlas/breakdown",
+      "/api/hereditary-ipex-treg-immune-dysregulation-atlas/definitions"
+    ],
+    "genes": ["FOXP3","CTLA4","LRBA","STAT3","IL2RA","AIRE","CARD11","BACH2"],
+    "seed_range": "3974-3981",
+    "total_patients": 320,
+    "color": "#1a237e",
+    "built_date": "2026-10-17",
+    "notes": "FOXP3-256aa-Xp11.23-XLR-IPEX-Neonatal-HSCT-Curative CTLA4-223aa-AD-LOF-Haploinsufficiency-Abatacept LRBA-2863aa-AR-CTLA4-Lysosomal-Abatacept-Curative STAT3-770aa-AD-GOF-Multi-Organ-JAKi IL2RA-272aa-AR-CD25-Lymphoproliferation AIRE-545aa-AR-APECED-Addison-Candidiasis-Hypoparathyroidism CARD11-1154aa-AD-GOF-BENTA-Severe-Atopy BACH2-641aa-AD-LOF-BRIDA-Enteropathy"
   }
 ]
