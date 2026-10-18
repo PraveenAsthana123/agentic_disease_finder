@@ -52386,6 +52386,24 @@ async def hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_definit
     from scripts.hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_dashboard import generate_definitions
     return generate_definitions()
 
+@app.get("/api/hereditary-type-i-interferonopathy-atlas/overview")
+async def hereditary_type_i_interferonopathy_atlas_overview():
+    """Hereditary-Type-I-Interferonopathy-Atlas overview — TREX1-RNASEH2B-RNASEH2A-RNASEH2C-SAMHD1-ADAR-IFIH1-USP18 Aicardi-Goutières/AGS spectrum nucleic-acid-sensing-defects seeds-3926-3933."""
+    from scripts.hereditary_type_i_interferonopathy_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-type-i-interferonopathy-atlas/breakdown")
+async def hereditary_type_i_interferonopathy_atlas_breakdown():
+    """Hereditary-Type-I-Interferonopathy-Atlas breakdown — DNA-exonuclease vs RNase-H2 vs SAMHD1 vs dsRNA-editing vs MDA5-GOF vs USP18 groups; pathognomonic-per-gene chilblains-TREX1 striatal-necrosis-ADAR pseudo-TORCH-USP18 seeds-3926-3933."""
+    from scripts.hereditary_type_i_interferonopathy_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-type-i-interferonopathy-atlas/definitions")
+async def hereditary_type_i_interferonopathy_atlas_definitions():
+    """Hereditary-Type-I-Interferonopathy-Atlas definitions — IFN-score-Crow-Manel; chilblains-TREX1-pathognomonic; bilateral-striatal-necrosis-ADAR; pseudo-TORCH-USP18-neonatal-emergency; JAKi-ruxolitinib-life-saving; Singleton-Merten-SAMHD1-IFIH1 seeds-3926-3933."""
+    from scripts.hereditary_type_i_interferonopathy_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
 
 if __name__ == "__main__":
     import os

@@ -23283,5 +23283,16 @@
     "patients": 320,
     "built_date": "2026-10-17",
     "note": "Total: 1379 dashboards. Built scripts/hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_dashboard.py, api_backend.py 3 routes /api/hereditary-wiskott-aldrich-cytoskeletal-immunodeficiency-atlas/overview|breakdown|definitions verified 200, portal-next/app/hereditary-wiskott-aldrich-cytoskeletal-immunodeficiency-atlas/page.jsx + SiteNav wired after Hereditary-MSMD-Atlas, expert_dashboards.json count 1378->1379. Built 2026-10-17."
+  },
+  {
+    "id": "hereditary-type-i-interferonopathy-atlas",
+    "status": "built",
+    "title": "Hereditary-Type-I-Interferonopathy-Atlas Complete-8-Gene-TREX1-RNASEH2B-RNASEH2A-RNASEH2C-SAMHD1-ADAR-IFIH1-USP18",
+    "seeds": "3926-3933",
+    "built_date": "2026-10-17",
+    "endpoint_prefix": "/api/hereditary-type-i-interferonopathy-atlas",
+    "page": "/hereditary-type-i-interferonopathy-atlas",
+    "count_before": 1379,
+    "count_after": 1380
   }
 ]

@@ -37819,3 +37819,26 @@ Done. Committed `5d01bd3a`, pushed to `origin/main`, tracked.
 
 ### [2026-10-17 18:16:30 MDT] ASSISTANT
 The backend needs to be reloaded with the new routes. Let me force-restart it:
+
+### [2026-10-17 18:42:50 MDT] ASSISTANT
+Now push and track:
+
+### [2026-10-17 18:47:01 MDT] ASSISTANT
+**Queue exhausted — nothing to build this iteration.**
+
+`python3 scripts/next_pending.py` returned an empty BUILDABLE list. Every registered item is accounted for:
+
+| Registry | Total | Status |
+|---|---|---|
+| Expert dashboards | 1378 / 1378 | all `built` |
+| Neuro AI ecosystem tools | 64 / 64 | `built` / `installed` / `external` / `commercial` |
+| EEG AI stack tools | 58 / 58 | `built` / `installed` / `external` |
+
+**Remaining pending (non-actionable this iteration):**
+- **Skipped (too heavy):** ictal/interictal retrain — removes dataset confound, needs operator go-ahead
+- **Blocked (credentials/decisions):** Gmail/Slack/Drive live · multi-user auth/RBAC · EMR/FHIR + device streaming
+
+Backend is healthy (HTTP 200). Outcome tracked via `scripts/track.sh`. No commit made (nothing changed).
+
+### [2026-10-17 19:16:11 MDT] ASSISTANT
+Now I'll append the Wiskott-Aldrich entry to `next_pending.py`:
