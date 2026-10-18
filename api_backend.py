@@ -52368,6 +52368,25 @@ async def hereditary_msmd_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-wiskott-aldrich-cytoskeletal-immunodeficiency-atlas/overview")
+async def hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_overview():
+    """Hereditary-Wiskott-Aldrich-Cytoskeletal-Immunodeficiency-Atlas overview — WAS-WIPF1-ARPC1B-CORONIN1A-RAC2-RHOH-CARMIL2-STK4 actin/cytoskeletal PID seeds-3918-3925."""
+    from scripts.hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-wiskott-aldrich-cytoskeletal-immunodeficiency-atlas/breakdown")
+async def hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_breakdown():
+    """Hereditary-Wiskott-Aldrich-Cytoskeletal-Immunodeficiency-Atlas breakdown — WASp-family vs Arp2/3 vs Rho GTPase vs CD28-Hippo groups; pathognomonic-per-gene seeds-3918-3925."""
+    from scripts.hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-wiskott-aldrich-cytoskeletal-immunodeficiency-atlas/definitions")
+async def hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_definitions():
+    """Hereditary-Wiskott-Aldrich-Cytoskeletal-Immunodeficiency-Atlas definitions — small-MPV-pathognomonic; absent-WASP-normal-WAS-gene-WIPF1-trap; ARPC1B-eosinophilia; CORONIN1A-thymic-shadow; RAC2-D57N-cord-delay; RHOH-HPV-warts; CARMIL2-CD28-assay; STK4-cardiac-triad seeds-3918-3925."""
+    from scripts.hereditary_wiskott_aldrich_cytoskeletal_immunodeficiency_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
