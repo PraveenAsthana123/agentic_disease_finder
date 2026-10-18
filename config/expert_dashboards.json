@@ -23461,7 +23461,7 @@
   {
     "id": "hereditary-ipex-treg-immune-dysregulation-atlas",
     "title": "Hereditary-IPEX-Treg-Immune-Dysregulation-Atlas",
-    "subtitle": "Complete 8-Gene Regulatory T-Cell Immune Dysregulation Reference — FOXP3/IPEX/Neonatal-Triad/HSCT-Curative + CTLA4/Haploinsufficiency/Abatacept + LRBA/AR/Abatacept-Curative + STAT3-GOF/Multi-Organ/JAKi + IL2RA/CD25/Lymphoproliferation + AIRE/APECED/Addison-Candidiasis-Hypoparathyroidism + CARD11-GOF/BENTA/Severe-Atopy + BACH2/BRIDA/Enteropathy",
+    "subtitle": "Complete 8-Gene Regulatory T-Cell Immune Dysregulation Reference \u2014 FOXP3/IPEX/Neonatal-Triad/HSCT-Curative + CTLA4/Haploinsufficiency/Abatacept + LRBA/AR/Abatacept-Curative + STAT3-GOF/Multi-Organ/JAKi + IL2RA/CD25/Lymphoproliferation + AIRE/APECED/Addison-Candidiasis-Hypoparathyroidism + CARD11-GOF/BENTA/Severe-Atopy + BACH2/BRIDA/Enteropathy",
     "category": "hereditary-immune-dysregulation",
     "status": "built",
     "script": "scripts/hereditary_ipex_treg_immune_dysregulation_atlas_dashboard.py",
@@ -23471,7 +23471,16 @@
       "/api/hereditary-ipex-treg-immune-dysregulation-atlas/breakdown",
       "/api/hereditary-ipex-treg-immune-dysregulation-atlas/definitions"
     ],
-    "genes": ["FOXP3","CTLA4","LRBA","STAT3","IL2RA","AIRE","CARD11","BACH2"],
+    "genes": [
+      "FOXP3",
+      "CTLA4",
+      "LRBA",
+      "STAT3",
+      "IL2RA",
+      "AIRE",
+      "CARD11",
+      "BACH2"
+    ],
     "seed_range": "3974-3981",
     "total_patients": 320,
     "color": "#1a237e",
@@ -23481,7 +23490,7 @@
   {
     "id": "hereditary-complement-deficiency-atlas",
     "title": "Hereditary-Complement-Deficiency-Atlas",
-    "subtitle": "Complete 8-Gene Complement System Deficiency Reference — C1QA/SLE-90pct/Lupus-Rash-PATHOGNOMONIC + C2/Most-Common-Western/Pneumococcal-Vaccines + C4A/NULL-European/SLE-Partial + C3/Central/MPGN-PATHOGNOMONIC + CFB/AP-Factor-B/Dense-Deposit + CFD/RAREST/North-Africa + C5/Terminal/Eculizumab-FDA2007 + CFP/Properdin/Only-XLR/Fulminant-Meningococcemia-30pct",
+    "subtitle": "Complete 8-Gene Complement System Deficiency Reference \u2014 C1QA/SLE-90pct/Lupus-Rash-PATHOGNOMONIC + C2/Most-Common-Western/Pneumococcal-Vaccines + C4A/NULL-European/SLE-Partial + C3/Central/MPGN-PATHOGNOMONIC + CFB/AP-Factor-B/Dense-Deposit + CFD/RAREST/North-Africa + C5/Terminal/Eculizumab-FDA2007 + CFP/Properdin/Only-XLR/Fulminant-Meningococcemia-30pct",
     "category": "hereditary-complement-deficiency",
     "status": "built",
     "route": "/hereditary-complement-deficiency-atlas",
@@ -23493,11 +23502,44 @@
       "/api/hereditary-complement-deficiency-atlas/breakdown",
       "/api/hereditary-complement-deficiency-atlas/definitions"
     ],
-    "genes": ["C1QA","C2","C4A","C3","CFB","CFD","C5","CFP"],
+    "genes": [
+      "C1QA",
+      "C2",
+      "C4A",
+      "C3",
+      "CFB",
+      "CFD",
+      "C5",
+      "CFP"
+    ],
     "seed_range": "3982-3989",
     "total_patients": 320,
     "color": "#880e4f",
     "built_date": "2026-10-17",
     "notes": "C1QA-245aa-1p36.12-AR-SLE-90pct-Lupus-Rash-PATHOGNOMONIC-Anti-dsDNA-Negative-HCQ C2-752aa-AR-Most-Common-Western-1:20000-Pneumococcal-Vaccines-Penicillin-Prophylaxis C4A-1744aa-AR+AD-Classical-Amplifier-C4A-NULL-European-SLE-Partial-2-3x C3-1663aa-AR-Central-All-Pathways-MPGN-PATHOGNOMONIC-Eculizumab CFB-764aa-AR-Alternative-Pathway-Dense-Deposit-Disease-AP50-ZERO CFD-259aa-AR-RAREST-North-Africa-Founder-2x-Vaccination C5-1676aa-AR-Terminal-Neisseria-PATHOGNOMONIC-Eculizumab-FDA2007 CFP-442aa-XLR-Properdin-Only-XLR-Fulminant-Meningococcemia-30pct-Males-Only"
+  },
+  {
+    "id": "hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas",
+    "name": "Hereditary-EBV-XLP-NK-T-Cell-Susceptibility-Atlas (SH2D1A-128aa-Xq25-XLR-XLP1-NKT-Absent-PATHOGNOMONIC-SAP-Absent-Flow-EBV-Fatal-HLH-Rituximab-HSCT XIAP-497aa-Xq25-XLR-XLP2-EBV-HLH+IBD-DUAL-PATHOGNOMONIC-XIAP-Absent-Flow-NKT-Present-DDx-Iloprost ITK-620aa-5q33.3-AR-EBV-CID-Both-Sexes-CD4-Lymphopenia-SAP-PRESENT-DDx-XLP1 MAGT1-335aa-Xq21.1-XLR-XMEN-Syndrome-CD4-Very-Low-NKG2D-ABSENT-Mg2plus-Supp-Level-B CD27-260aa-12p13.31-AR-NK-Cytotoxicity-NORMAL-DDx-XLP1 CD70-193aa-19p13.3-AR-T-Cell-Exhaustion-PATHOGNOMONIC-Very-High-Lymphoma TNFRSF9-255aa-1p36.23-AR-4-1BB-4-1BB-Agonist-CONTRAINDICATED RASGRP1-797aa-15q14-AR-Autoimmunity-Overlap-UNIQUE-Phospho-ERK-Absent 320-Patient-Aggregate-8x40-seeds-3990-3997)",
+    "status": "built",
+    "route": "/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas",
+    "api_endpoints": [
+      "/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/overview",
+      "/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/breakdown",
+      "/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/definitions"
+    ],
+    "genes": [
+      "SH2D1A",
+      "XIAP",
+      "ITK",
+      "MAGT1",
+      "CD27",
+      "CD70",
+      "TNFRSF9",
+      "RASGRP1"
+    ],
+    "seeds": "3990-3997",
+    "total_patients": 320,
+    "built_date": "2026-10-18"
   }
 ]

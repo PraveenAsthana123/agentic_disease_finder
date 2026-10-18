@@ -52536,6 +52536,25 @@ async def hereditary_complement_deficiency_atlas_definitions():
     return complement_definitions()
 
 
+@app.get("/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/overview")
+async def hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_overview():
+    """Hereditary-EBV-XLP-NK-T-Cell-Susceptibility-Atlas overview — SH2D1A-XLP1-NKT-Absent-PATHOGNOMONIC; XIAP-XLP2-EBV-IBD-Dual; ITK-EBV-CID-CD4-Lymphopenia; MAGT1-XMEN-NKG2D-Absent; CD27-NK-Normal; CD70-T-Cell-Exhaustion; TNFRSF9-4-1BB; RASGRP1-Autoimmunity-Overlap seeds-3990-3997."""
+    from scripts.hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_dashboard import generate_overview as ebv_xlp_overview
+    return ebv_xlp_overview()
+
+@app.get("/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/breakdown")
+async def hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_breakdown():
+    """Hereditary-EBV-XLP-NK-T-Cell-Susceptibility-Atlas breakdown — XLP1-vs-XLP2-flow-diagnostic-axis; XMEN-NKG2D; CD27-CD70-costimulatory-axis; 4-1BB-agonist-CI; RASGRP1-phospho-ERK; cascade-testing-10-steps seeds-3990-3997."""
+    from scripts.hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_dashboard import generate_breakdown as ebv_xlp_breakdown
+    return ebv_xlp_breakdown()
+
+@app.get("/api/hereditary-ebv-xlp-nk-t-cell-susceptibility-atlas/definitions")
+async def hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_definitions():
+    """Hereditary-EBV-XLP-NK-T-Cell-Susceptibility-Atlas definitions — XLP1-SAP; XLP2-XIAP; ITK-PLCg1; XMEN-MAGT1; CD27-deficiency; CD70-deficiency; 4-1BB-deficiency; RASGRP1-deficiency; EBV-HLH-criteria; intracellular-flow-protocol; HSCT-in-EBV-PID; NK-NKT-panel seeds-3990-3997."""
+    from scripts.hereditary_ebv_xlp_nk_t_cell_susceptibility_atlas_dashboard import generate_definitions as ebv_xlp_definitions
+    return ebv_xlp_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
