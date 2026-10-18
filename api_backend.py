@@ -52479,6 +52479,25 @@ async def hereditary_scid_rag_il2rg_ada_atlas_definitions():
     return generate_definitions()
 
 
+@app.get("/api/hereditary-autoinflammatory-disease-atlas/overview")
+async def hereditary_autoinflammatory_disease_atlas_overview():
+    """Hereditary-Autoinflammatory-Disease-Atlas overview — MEFV-FMF-colchicine-amyloidosis NLRP3-CAPS-cold-urticaria-SNHL-canakinumab TNFRSF1A-TRAPS-periorbital-edema-long-episodes MVK-MKD-cervical-adenopathy-statins-CI PSTPIP1-PAPA-pyoderma-gangrenosum LPIN2-Majeed-CRMO-CDA IL1RN-DIRA-neonatal-anakinra-curative seeds-3966-3973."""
+    from scripts.hereditary_autoinflammatory_disease_atlas_dashboard import generate_overview
+    return generate_overview()
+
+@app.get("/api/hereditary-autoinflammatory-disease-atlas/breakdown")
+async def hereditary_autoinflammatory_disease_atlas_breakdown():
+    """Hereditary-Autoinflammatory-Disease-Atlas breakdown — pyrin-inflammasome-MEFV-PSTPIP1; NLRP3-constitutive; TNFRSF1A-ER-retention; mevalonate-MVK-statins-CI; IL1Ra-absent-DIRA; NOD2-granuloma-Blau; LPIN2-lipid-CRMO; cascade-testing; pathognomonic seeds-3966-3973."""
+    from scripts.hereditary_autoinflammatory_disease_atlas_dashboard import generate_breakdown
+    return generate_breakdown()
+
+@app.get("/api/hereditary-autoinflammatory-disease-atlas/definitions")
+async def hereditary_autoinflammatory_disease_atlas_definitions():
+    """Hereditary-Autoinflammatory-Disease-Atlas definitions — FMF/CAPS/TRAPS/MKD/PAPA/Blau/DIRA/Majeed; AA-amyloidosis; colchicine-FMF; anakinra-DIRA-curative; canakinumab-CAPS-MKD; pathergy-PAPA; mevalonate-pathway; statins-MVK-CI; NOD2-GOF-vs-LOF-Crohn seeds-3966-3973."""
+    from scripts.hereditary_autoinflammatory_disease_atlas_dashboard import generate_definitions
+    return generate_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

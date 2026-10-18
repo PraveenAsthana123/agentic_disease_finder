@@ -23428,5 +23428,34 @@
     "cohort_n": 320,
     "seed": "3958-3965",
     "registered": "2026-10-17"
+  },
+  {
+    "id": "hereditary-autoinflammatory-disease-atlas",
+    "title": "Hereditary-Autoinflammatory-Disease-Atlas",
+    "subtitle": "Complete 8-Gene Monogenic AID Reference \u2014 MEFV/FMF/Colchicine/Amyloidosis + NLRP3/CAPS/Cold-Urticaria/SNHL/Canakinumab + TNFRSF1A/TRAPS/Periorbital-Edema + MVK/MKD/Statins-CI + PSTPIP1/PAPA/Pyoderma + NOD2/Blau/Uveitis + IL1RN/DIRA/Neonatal/Anakinra-Curative + LPIN2/Majeed/CRMO+CDA",
+    "category": "hereditary-autoinflammatory",
+    "status": "built",
+    "script": "scripts/hereditary_autoinflammatory_disease_atlas_dashboard.py",
+    "frontend": "portal-next/app/hereditary-autoinflammatory-disease-atlas/page.jsx",
+    "endpoints": [
+      "/api/hereditary-autoinflammatory-disease-atlas/overview",
+      "/api/hereditary-autoinflammatory-disease-atlas/breakdown",
+      "/api/hereditary-autoinflammatory-disease-atlas/definitions"
+    ],
+    "genes": [
+      "MEFV",
+      "NLRP3",
+      "TNFRSF1A",
+      "MVK",
+      "PSTPIP1",
+      "NOD2",
+      "IL1RN",
+      "LPIN2"
+    ],
+    "seed_range": "3966-3973",
+    "total_patients": 320,
+    "color": "#b71c1c",
+    "built_date": "2026-10-17",
+    "notes": "MEFV-781aa-16p13.3-AR+AD-FMF-Colchicine-Amyloidosis-PATHOGNOMONIC NLRP3-1036aa-1q44-AD-GOF-CAPS-Cold-Urticaria-SNHL-Canakinumab TNFRSF1A-234aa-AD-GOF-TRAPS-Periorbital-Edema-Etanercept-NOT MVK-396aa-AR-MKD-HIDS-Statins-CI PSTPIP1-415aa-AD-GOF-PAPA-Triad LPIN2-890aa-AR-Majeed-CRMO-CDA IL1RN-177aa-AR-DIRA-Neonatal-Anakinra-CURATIVE NOD2-1040aa-AD-GOF-Blau-EOS-Uveitis-Blindness"
   }
 ]
