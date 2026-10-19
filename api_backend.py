@@ -52573,6 +52573,25 @@ async def hereditary_icf_cbm_signalosome_combined_immunodeficiency_atlas_definit
     return icf_cbm_definitions()
 
 
+@app.get("/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/overview")
+async def hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_overview():
+    """Hereditary-LAD-DADA2-Lectin-Complement-Granulocyte-Defect-Atlas overview — ITGB2-LAD-I-CD18-absent; FERMT3-LAD-III-Kindlin3-integrin-activation; ADA2-DADA2-vasculopathy-stroke-livedo; CEBPE-SGD-bilobed-nuclei; CXCR2-SCN6-chemotaxis; MBL2-lectin-opsonization; MASP2-lectin-effector; COLEC11-3MC-syndrome seeds-4006-4013."""
+    from scripts.hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_dashboard import generate_overview as lad_dada2_overview
+    return lad_dada2_overview()
+
+@app.get("/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/breakdown")
+async def hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_breakdown():
+    """Hereditary-LAD-DADA2-Lectin-Complement-Granulocyte-Defect-Atlas breakdown — LAD-I-vs-LAD-III-DDx; DADA2-PAN-Kawasaki-DDx; SGD-vs-CGD-NBT-normal; CXCR2-exit-failure; lectin-CH50-AH50-normal; 3MC-posterior-embryotoxon seeds-4006-4013."""
+    from scripts.hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_dashboard import generate_breakdown as lad_dada2_breakdown
+    return lad_dada2_breakdown()
+
+@app.get("/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/definitions")
+async def hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_definitions():
+    """Hereditary-LAD-DADA2-Lectin-Complement-Granulocyte-Defect-Atlas definitions — LAD-types; CD18-flow; Kindlin3-integrin-activation; ADA2-enzyme-activity; SGD-granule-assay; lectin-pathway; 3MC-syndrome; cascade-testing seeds-4006-4013."""
+    from scripts.hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_dashboard import generate_definitions as lad_dada2_definitions
+    return lad_dada2_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

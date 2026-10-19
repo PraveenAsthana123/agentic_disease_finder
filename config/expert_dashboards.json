@@ -23565,5 +23565,30 @@
     "seeds": "3998-4005",
     "total_patients": 320,
     "built_date": "2026-10-18"
+  },
+  {
+    "id": "hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas",
+    "name": "Hereditary-LAD-DADA2-Lectin-Complement-Granulocyte-Defect-Atlas Complete-8-Gene-ITGB2-FERMT3-ADA2-CEBPE-CXCR2-MBL2-MASP2-COLEC11 ITGB2-769aa-21q22.3-AR-LAD-I-CD18-Absent-PATHOGNOMONIC-Delayed-Cord-Separation-Omphalitis FERMT3-667aa-11q13.1-AR-LAD-III-Kindlin-3-Combined-Infections-Bleeding-PATHOGNOMONIC-HSCT ADA2-511aa-22q11.1-AR-DADA2-Vasculopathy-Stroke-Livedo-PATHOGNOMONIC-Anti-TNF-CURATIVE CEBPE-317aa-14q11.2-AR-SGD-Bilobed-PMN-Nuclei-PATHOGNOMONIC-Absent-Lactoferrin-NBT-Normal CXCR2-360aa-2q35-AR-SCN6-Exit-Failure-Normal-Marrow-G-CSF-Effective MBL2-244aa-10q11.22-AR-MBL-Deficiency-Partial-Immunodeficiency-Lectin-Pathway MASP2-686aa-1p36.22-AR-Lectin-Effector-Pyogenic-RA-Like COLEC11-344aa-2p25.3-AR-3MC-Syndrome-Craniosynostosis-Posterior-Embryotoxon-Cleft-PATHOGNOMONIC 320-Patient-Aggregate-8x40-seeds-4006-4013",
+    "title": "Hereditary-LAD-DADA2-Lectin-Complement-Granulocyte-Defect-Atlas Complete-8-Gene-ITGB2-FERMT3-ADA2-CEBPE-CXCR2-MBL2-MASP2-COLEC11",
+    "status": "built",
+    "route": "/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas",
+    "api_endpoints": [
+      "/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/overview",
+      "/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/breakdown",
+      "/api/hereditary-lad-dada2-lectin-complement-granulocyte-defect-atlas/definitions"
+    ],
+    "genes": [
+      "ITGB2",
+      "FERMT3",
+      "ADA2",
+      "CEBPE",
+      "CXCR2",
+      "MBL2",
+      "MASP2",
+      "COLEC11"
+    ],
+    "seeds": "4006-4013",
+    "total_patients": 320,
+    "built_date": "2026-10-19"
   }
 ]
