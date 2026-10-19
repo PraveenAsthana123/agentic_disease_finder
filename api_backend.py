@@ -52591,6 +52591,24 @@ async def hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_defini
     from scripts.hereditary_lad_dada2_lectin_complement_granulocyte_defect_atlas_dashboard import generate_definitions as lad_dada2_definitions
     return lad_dada2_definitions()
 
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/overview")
+async def hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_overview():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas overview — CYBB-X-CGD-gp91phox-65pct-XLR; NCF1-p47-CGD-25pct-deltaGT; CYBA-p22-CGD; NCF2-p67-CGD; NCF4-p40-CGD-IBD-dominant; CYBC1-EROS-2019; RAC2-NIS; MPO-deficiency; DHR-pattern-guide; seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_overview as cgd_overview
+    return cgd_overview()
+
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/breakdown")
+async def hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_breakdown():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas breakdown — X-CGD-vs-AR-CGD; cytochrome-b558-spectroscopy; deltaGT-deletion-NCF1; phagosomal-oxidase-NCF4; EROS-chaperone-CYBC1; RAC2-NIS-partial-DHR; MPO-vs-CGD-DHR; catalase-positive-pathogens; cascade-testing seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_breakdown as cgd_breakdown
+    return cgd_breakdown()
+
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/definitions")
+async def hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_definitions():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas definitions — DHR-gold-standard; cytochrome-b558; NCF1-deltaGT; catalase-positive-rule; IFN-gamma; MPO-vs-CGD; CYBC1-EROS; RAC2-NIS; CGD-colitis; HSCT-gene-therapy seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_definitions as cgd_definitions
+    return cgd_definitions()
+
 
 if __name__ == "__main__":
     import os

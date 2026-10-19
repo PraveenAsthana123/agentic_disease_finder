@@ -23590,5 +23590,14 @@
     "seeds": "4006-4013",
     "total_patients": 320,
     "built_date": "2026-10-19"
+  },
+  {
+    "id": "hereditary_cgd_neutrophil_oxidative_burst_defect_atlas",
+    "title": "Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas Complete-8-Gene-CYBB-NCF1-CYBA-NCF2-NCF4-CYBC1-RAC2-MPO CYBB-570aa-Xq21.1-XLR-X-CGD-Most-Common-65pct-gp91phox-Absent-DHR-ABSENT-PATHOGNOMONIC-Carrier-Female-BIMODAL-DHR-Liver-Abscess-Aspergillus-IFN-gamma-HSCT NCF1-390aa-7q11.23-AR-p47-CGD-25pct-deltaGT-Deletion-Most-Common-AR-CGD-Mutation-Cytochrome-b558-PRESENT CYBA-195aa-16q24.2-AR-p22-CGD-5pct-gp91phox-Also-Absent-Mutual-Destabilization NCF2-526aa-1q25.3-AR-p67-CGD-5pct-Activation-Domain-Absent NCF4-339aa-22q13.1-AR-p40-CGD-1-2pct-Rarest-IBD-DOMINANT-DHR-May-Be-NORMAL-Phagosomal-Oxidase CYBC1-291aa-1p22.1-AR-EROS-Chaperone-2019-Standard-Panel-NEGATIVE-Exome-Required RAC2-192aa-22q13.1-AD-GOF-p.D57N-Dominant-Negative-NIS-DHR-INTERMEDIATE-Combined-PMN-Defects MPO-745aa-17q22-AR-Most-Common-1in4000-DHR-NORMAL-Mildest-Candida-DM-Auto-Analyzer 320-Patient-Aggregate-8x40-seeds-4014-4021",
+    "status": "built",
+    "api": "/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed_range": "4014-4021",
+    "registered": "2026-10-19"
   }
 ]
