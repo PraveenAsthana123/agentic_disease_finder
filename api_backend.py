@@ -52694,6 +52694,27 @@ async def hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_definitio
     return skel_bm_definitions()
 
 
+@app.get("/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/overview")
+async def hereditary_jak3_il7r_cid_atlas_overview():
+    """Hereditary-JAK3-IL7R-CD25-ZAP70-CD45-IL2RB-DOCK2-SP110-CID-Variant-Atlas overview — cytokine-receptor-signaling and proximal TCR/BCR defects; JAK3-SCID; IL7RA-SCID; CD25-Treg; ZAP70-selective-CD8-absent; CD45-pan-lymphocyte; IL2RB-NK-dysregulation; DOCK2-NK-degranulation; SP110-VODI; seeds-4054-4061."""
+    from scripts.hereditary_jak3_il7r_cd25_zap70_cd45_il2rb_dock2_sp110_cid_atlas_dashboard import generate_overview as jak3_cid_overview
+    return jak3_cid_overview()
+
+
+@app.get("/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/breakdown")
+async def hereditary_jak3_il7r_cid_atlas_breakdown():
+    """Hereditary-JAK3-IL7R-CD25-ZAP70-CD45-IL2RB-DOCK2-SP110-CID-Variant-Atlas breakdown — gamma-common-chain-JAK3; IL7RA-T-only; ZAP70-CD8-selective; CD45-phosphatase-SCID; IL2RA-treg-dysregulation; IL2RB-NK-HLH; DOCK2-actin-viral; SP110-VODI; cascade-testing; seeds-4054-4061."""
+    from scripts.hereditary_jak3_il7r_cd25_zap70_cd45_il2rb_dock2_sp110_cid_atlas_dashboard import generate_breakdown as jak3_cid_breakdown
+    return jak3_cid_breakdown()
+
+
+@app.get("/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/definitions")
+async def hereditary_jak3_il7r_cid_atlas_definitions():
+    """Hereditary-JAK3-IL7R-CD25-ZAP70-CD45-IL2RB-DOCK2-SP110-CID-Variant-Atlas definitions — JAK3-BCG-HSCT; IL7RA-T-B+NK+; CD25-Treg-lymphoproliferation; ZAP70-CD8-absent-autoimmune; CD45-flow-diagnosis; IL2RB-2019; DOCK2-CD107a-assay; SP110-spontaneous-VOD-defibrotide; cascade-testing; seeds-4054-4061."""
+    from scripts.hereditary_jak3_il7r_cd25_zap70_cd45_il2rb_dock2_sp110_cid_atlas_dashboard import generate_definitions as jak3_cid_definitions
+    return jak3_cid_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

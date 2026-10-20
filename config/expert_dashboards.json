@@ -23660,5 +23660,27 @@
     "name": "Hereditary-Skeletal-Bone-Marrow-CID-Syndromic-Features-Atlas",
     "status": "built",
     "registered": "2026-10-20"
+  },
+  {
+    "id": "hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas",
+    "name": "Hereditary-JAK3-IL7R-CD25-ZAP70-CD45-IL2RB-DOCK2-SP110-CID-Variant-Atlas Complete-8-Gene-JAK3-IL7RA-IL2RA-ZAP70-PTPRC-IL2RB-DOCK2-SP110 JAK3-1124aa-19p13.11-AR-SCID-T-B+NK--Jak3-Protein-Absent-PATHOGNOMONIC-IL2RG-Phenocopy IL7RA-459aa-5p13.2-AR-SCID-T-B+NK+-IL7R-Alpha-Chain-Gamma-Delta-Expansion-PATHOGNOMONIC IL2RA-272aa-10p15.1-AR-CD25-Deficiency-Treg-Absent-Multiorgan-Autoimmune-PATHOGNOMONIC ZAP70-619aa-2q11.2-AR-Selective-CD8-Absence-PATHOGNOMONIC-CD4-Normal-Paradox PTPRC-1304aa-1q31.3-AR-CD45-Deficiency-T-B-NK--Omenn-Overlap-Exome-Only SP110-697aa-2q37.1-AR-VODI-Hepatic-VOD-Without-HSCT-PATHOGNOMONIC-Lymphocyte-Absent-Liver IL2RB-525aa-22q12.3-AR-CD122-IL2-IL15-Dual-Cytokine-Signaling-NK-Absent-EBV IL2RB-NK-CD8-Expansion-Paradox DOCK2-1862aa-5q35.1-AR-NK-Numerically-Present-CD107a-Degranulation-Absent-PATHOGNOMONIC-Chemotaxis-Defect 320-Patient-Aggregate-8x40-seeds-4054-4061",
+    "status": "built",
+    "registered": "2026-10-20",
+    "seeds": "4054-4061",
+    "genes": [
+      "JAK3",
+      "IL7RA",
+      "IL2RA",
+      "ZAP70",
+      "PTPRC",
+      "IL2RB",
+      "DOCK2",
+      "SP110"
+    ],
+    "endpoints": [
+      "/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/overview",
+      "/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/breakdown",
+      "/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/definitions"
+    ]
   }
 ]
