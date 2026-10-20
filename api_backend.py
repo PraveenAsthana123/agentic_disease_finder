@@ -52736,6 +52736,27 @@ async def hereditary_alps_fas_fasl_atlas_definitions():
     return alps_definitions()
 
 
+@app.get("/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/overview")
+async def hereditary_hse_tlr3_atlas_overview():
+    """Hereditary-HSE-TLR3-Encephalitis-Susceptibility-Atlas overview — TLR3-10pct-sporadic-HSE-Casanova2006; UNC93B1-all-endosomal-TLRs-lost; TICAM1-TRIF-adaptor; TRAF3-myeloma-risk; TBK1-dual-HSE-ALS; IRF3-IFN-beta-TF; IFNAR1-live-vaccine-CI; DBR1-brainstem-PATHOGNOMONIC; seeds-4070-4077."""
+    from scripts.hereditary_hse_tlr3_encephalitis_susceptibility_atlas_dashboard import generate_overview as hse_overview
+    return hse_overview()
+
+
+@app.get("/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/breakdown")
+async def hereditary_hse_tlr3_atlas_breakdown():
+    """Hereditary-HSE-TLR3-Encephalitis-Susceptibility-Atlas breakdown — TLR3-direct-sensors; TRIF-TRAF3-adaptors; TBK1-IRF3-kinase-TF; IFNAR1-receptor; DBR1-RNA-lariat; pathway-groups; brainstem-vs-temporal; live-vaccine-CI; seeds-4070-4077."""
+    from scripts.hereditary_hse_tlr3_encephalitis_susceptibility_atlas_dashboard import generate_breakdown as hse_breakdown
+    return hse_breakdown()
+
+
+@app.get("/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/definitions")
+async def hereditary_hse_tlr3_atlas_definitions():
+    """Hereditary-HSE-TLR3-Encephalitis-Susceptibility-Atlas definitions — TLR3-pathway-5-step; DBR1-brainstem-vs-temporal; IFNAR1-live-vaccine-absolute-CI; TBK1-dual-HSE-ALS; TRAF3-myeloma; UNC93B1-4-TLR-panel; CSF-EEG-acute-HSE; cascade-diagnostic; seeds-4070-4077."""
+    from scripts.hereditary_hse_tlr3_encephalitis_susceptibility_atlas_dashboard import generate_definitions as hse_definitions
+    return hse_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

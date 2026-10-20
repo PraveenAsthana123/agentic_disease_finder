@@ -23716,5 +23716,39 @@
     ],
     "status": "built",
     "built_date": "2026-10-20"
+  },
+  {
+    "id": "hereditary-hse-tlr3-encephalitis-susceptibility-atlas",
+    "name": "Hereditary-HSE-TLR3-Encephalitis-Susceptibility-Atlas",
+    "title": "Hereditary-HSE-TLR3-Encephalitis-Susceptibility-Atlas Complete-8-Gene-TLR3-904aa-4q35.1-AD-pLOF-HSE-10pct-Sporadic-Casanova2006 UNC93B1-598aa-11q13.1-AR-All-Endosomal-TLRs-3-7-8-9-Lost TICAM1-TRIF-712aa-19p13.3-AD-pLOF-Sole-TLR3-Adaptor TRAF3-568aa-14q32.32-AD-pLOF-Germline-HSE-Somatic-Myeloma TBK1-729aa-12q14.2-AD-pLOF-DUAL-HSE-ALS-PATHOGNOMONIC IRF3-427aa-19q13.33-AD-pLOF-Terminal-IFN-Beta-TF IFNAR1-557aa-21q22.11-AR-YFV-Fatal-MMR-Encephalitis-Live-Vaccine-CI DBR1-431aa-2q24.2-AR-Brainstem-Rhombencephalitis-PATHOGNOMONIC-RNA-Lariat 320-Patient-Aggregate-8x40-seeds-4070-4077",
+    "status": "built",
+    "dashboard_page": "/hereditary-hse-tlr3-encephalitis-susceptibility-atlas",
+    "api_endpoints": [
+      "/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/overview",
+      "/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/breakdown",
+      "/api/hereditary-hse-tlr3-encephalitis-susceptibility-atlas/definitions"
+    ],
+    "genes": [
+      "TLR3",
+      "UNC93B1",
+      "TICAM1",
+      "TRAF3",
+      "TBK1",
+      "IRF3",
+      "IFNAR1",
+      "DBR1"
+    ],
+    "seeds": {
+      "TLR3": 4070,
+      "UNC93B1": 4071,
+      "TICAM1": 4072,
+      "TRAF3": 4073,
+      "TBK1": 4074,
+      "IRF3": 4075,
+      "IFNAR1": 4076,
+      "DBR1": 4077
+    },
+    "total_patients": 320,
+    "registered": "2026-10-20"
   }
 ]
