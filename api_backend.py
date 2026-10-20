@@ -52631,6 +52631,27 @@ async def hereditary_jak_stat_gof_immune_dysregulation_atlas_definitions():
     return jak_stat_definitions()
 
 
+@app.get("/api/hereditary-interferonopathy-ags-sting-type-i-ifn-axis-atlas/overview")
+async def hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_overview():
+    """Hereditary-Interferonopathy-AGS-STING-Type-I-IFN-Axis-Atlas overview — TREX1-RNASEH2B-RNASEH2A-RNASEH2C-SAMHD1-ADAR-IFIH1-STING1; Aicardi-Goutières AGS1-7; SAVI; cGAS-STING pathway; ISG score; baricitinib; seeds-4030-4037."""
+    from scripts.hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_dashboard import generate_overview as ags_sting_overview
+    return ags_sting_overview()
+
+
+@app.get("/api/hereditary-interferonopathy-ags-sting-type-i-ifn-axis-atlas/breakdown")
+async def hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_breakdown():
+    """Hereditary-Interferonopathy-AGS-STING-Type-I-IFN-Axis-Atlas breakdown — diagnostic groups; RNASEH2-complex AGS2-3-4; TREX1-SAMHD1-DNA-sensing; ADAR-IFIH1-RNA-sensing; STING1-SAVI-downstream; pathognomonic features; cascade testing; seeds-4030-4037."""
+    from scripts.hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_dashboard import generate_breakdown as ags_sting_breakdown
+    return ags_sting_breakdown()
+
+
+@app.get("/api/hereditary-interferonopathy-ags-sting-type-i-ifn-axis-atlas/definitions")
+async def hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_definitions():
+    """Hereditary-Interferonopathy-AGS-STING-Type-I-IFN-Axis-Atlas definitions — cGAS-STING pathway; AGS classification; RNase-H2 complex; TREX1-retrotransposon; ADAR1-MDA5-connection; SAVI-mechanism; baricitinib; ISG-score-pitfalls; seeds-4030-4037."""
+    from scripts.hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_dashboard import generate_definitions as ags_sting_definitions
+    return ags_sting_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
