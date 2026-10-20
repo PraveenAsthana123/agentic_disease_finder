@@ -23654,5 +23654,11 @@
       "/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/breakdown",
       "/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-skeletal-bone-marrow-cid-syndromic-features-atlas",
+    "name": "Hereditary-Skeletal-Bone-Marrow-CID-Syndromic-Features-Atlas",
+    "status": "built",
+    "registered": "2026-10-20"
   }
 ]

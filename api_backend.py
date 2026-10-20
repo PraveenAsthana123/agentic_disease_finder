@@ -52673,6 +52673,27 @@ async def hereditary_hlh_fhl_cytotoxicity_defect_atlas_definitions():
     return hlh_fhl_definitions()
 
 
+@app.get("/api/hereditary-skeletal-bone-marrow-cid-syndromic-features-atlas/overview")
+async def hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_overview():
+    """Hereditary-Skeletal-Bone-Marrow-CID-Syndromic-Features-Atlas overview — SBDS-RMRP-AK2-SMARCAL1-CORO1A-ARPC1B-WIPF1-DNAJC21; Shwachman-Diamond SDS1+2; cartilage-hair hypoplasia; reticular dysgenesis; SIOD; Coronin-1A; ARPC1B; WIP; seeds-4046-4053."""
+    from scripts.hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_dashboard import generate_overview as skel_bm_overview
+    return skel_bm_overview()
+
+
+@app.get("/api/hereditary-skeletal-bone-marrow-cid-syndromic-features-atlas/breakdown")
+async def hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_breakdown():
+    """Hereditary-Skeletal-Bone-Marrow-CID-Syndromic-Features-Atlas breakdown — ribosome-biogenesis-SDS; reticular-dysgenesis-AK2; SIOD-SMARCAL1; actin-WASp-ARPC1B-WIPF1; thymic-egress-CORO1A; eosinophilia-ARPC1B; microplatelets-WIPF1; cascade-testing; seeds-4046-4053."""
+    from scripts.hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_dashboard import generate_breakdown as skel_bm_breakdown
+    return skel_bm_breakdown()
+
+
+@app.get("/api/hereditary-skeletal-bone-marrow-cid-syndromic-features-atlas/definitions")
+async def hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_definitions():
+    """Hereditary-Skeletal-Bone-Marrow-CID-Syndromic-Features-Atlas definitions — SDS-diagnosis-marrow-surveillance; reticular-dysgenesis-emergency; CHH-RMRP-immune-spectrum; SIOD-renal-immune; ARPC1B-eosinophilia-vasculitis; WIP-WIPF1-WASp-secondary-loss; CORO1A-thymus-paradox; cascade-testing; seeds-4046-4053."""
+    from scripts.hereditary_skeletal_bone_marrow_cid_syndromic_features_atlas_dashboard import generate_definitions as skel_bm_definitions
+    return skel_bm_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
