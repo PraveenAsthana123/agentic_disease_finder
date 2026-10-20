@@ -23750,5 +23750,54 @@
     },
     "total_patients": 320,
     "registered": "2026-10-20"
+  },
+  {
+    "id": "hereditary-autoinflammatory-periodic-fever-syndrome-atlas",
+    "title": "Hereditary-Autoinflammatory-Periodic-Fever-Syndrome-Atlas",
+    "status": "built",
+    "route": "/api/hereditary-autoinflammatory-periodic-fever-syndrome-atlas",
+    "genes": [
+      "MEFV",
+      "NLRP3",
+      "MVK",
+      "TNFRSF1A",
+      "NLRC4",
+      "PSTPIP1",
+      "NOD2",
+      "IL36RN"
+    ],
+    "seeds": [
+      4078,
+      4079,
+      4080,
+      4081,
+      4082,
+      4083,
+      4084,
+      4085
+    ],
+    "patients": 320,
+    "registered": "2026-10-20",
+    "tags": [
+      "autoinflammatory",
+      "periodic-fever",
+      "inflammasome",
+      "FMF",
+      "CAPS",
+      "HIDS",
+      "TRAPS",
+      "NLRC4-MAS",
+      "PAPA",
+      "Blau",
+      "DITRA",
+      "GPP",
+      "IL-1",
+      "IL-18",
+      "IL-36",
+      "colchicine",
+      "canakinumab",
+      "anakinra",
+      "spesolimab"
+    ]
   }
 ]

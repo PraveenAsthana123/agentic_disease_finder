@@ -52757,6 +52757,27 @@ async def hereditary_hse_tlr3_atlas_definitions():
     return hse_definitions()
 
 
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-syndrome-atlas/overview")
+async def hereditary_autoinflammatory_atlas_overview():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Syndrome-Atlas overview — MEFV-FMF-colchicine-90pct; NLRP3-CAPS-canakinumab-FDA2009; MVK-HIDS-mevalonic-acid; TNFRSF1A-TRAPS-7-21day-attacks; NLRC4-MAS-extreme-ferritin-IL18; PSTPIP1-PAPA-PG-surgery-CI; NOD2-Blau-no-lung; IL36RN-DITRA-spesolimab-FDA2022; seeds-4078-4085."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_syndrome_atlas_dashboard import generate_overview as autoinflam_overview
+    return autoinflam_overview()
+
+
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-syndrome-atlas/breakdown")
+async def hereditary_autoinflammatory_atlas_breakdown():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Syndrome-Atlas breakdown — Pyrin-inflammasome-MEFV-PSTPIP1; NLRP3-inflammasome; Isoprenoid-MVK; TNF-TNFR-axis; NLRC4-IL18; NF-kB-granuloma-NOD2; IL36-skin; pathway-groups; colchicine-unique-MEFV; seeds-4078-4085."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_syndrome_atlas_dashboard import generate_breakdown as autoinflam_breakdown
+    return autoinflam_breakdown()
+
+
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-syndrome-atlas/definitions")
+async def hereditary_autoinflammatory_atlas_definitions():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Syndrome-Atlas definitions — attack-duration-FMF-MVK-TRAPS; inflammasome-3-platforms; AA-amyloid-colchicine-mandate; NLRC4-MAS-IL18-extreme; Blau-no-lung; PAPA-PG-surgery-CI; spesolimab-FDA2022-GPP; cascade-diagnostic; seeds-4078-4085."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_syndrome_atlas_dashboard import generate_definitions as autoinflam_definitions
+    return autoinflam_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
