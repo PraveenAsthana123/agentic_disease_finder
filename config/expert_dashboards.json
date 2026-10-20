@@ -23682,5 +23682,39 @@
       "/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/breakdown",
       "/api/hereditary-jak3-il7r-cd25-zap70-cd45-il2rb-dock2-sp110-cid-atlas/definitions"
     ]
+  },
+  {
+    "id": "hereditary-alps-fas-fasl-lymphoproliferation-atlas",
+    "title": "Hereditary-ALPS-FAS-FASL-Lymphoproliferation-Atlas Complete-8-Gene-FAS-TNFRSF6-335aa-10q23.31-AD-DN-AR-ALPS-Ia-Most-Common-GT70pct-DNT-Cells-PATHOGNOMONIC-Sirolimus-First-50x-Lymphoma FASLG-TNFSF6-281aa-1q24.3-AD-AR-ALPS-Ib-SLE-Like-Anti-dsDNA-Lupus-Nephritis CASP10-521aa-2q33.1-AD-DN-ALPS-IIb-Defective-T-Cell-Apoptosis CASP8-479aa-2q33.1-AR-CED-Dual-Immunodeficiency-AND-Lymphoproliferation-UNIQUE FADD-208aa-11q13.3-AR-Cardiomyopathy-65pct-DISTINCTIVE PRKCD-683aa-3p21.3-AR-PKCdelta-B-Cell-Tolerance-SLE-Like NRAS-189aa-1p13.2-Somatic-GOF-RALD-Type1-MEKi-Cobimetinib KRAS-189aa-12p12.1-Somatic-GOF-RALD-Type2-Monocytosis 320-Patient-Aggregate-8x40-seeds-4062-4069",
+    "slug": "hereditary-alps-fas-fasl-lymphoproliferation-atlas",
+    "category": "Primary Immunodeficiency / Lymphoproliferation",
+    "genes": [
+      "FAS",
+      "FASLG",
+      "CASP10",
+      "CASP8",
+      "FADD",
+      "PRKCD",
+      "NRAS",
+      "KRAS"
+    ],
+    "seeds": [
+      4062,
+      4063,
+      4064,
+      4065,
+      4066,
+      4067,
+      4068,
+      4069
+    ],
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/overview",
+      "/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/breakdown",
+      "/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/definitions"
+    ],
+    "status": "built",
+    "built_date": "2026-10-20"
   }
 ]

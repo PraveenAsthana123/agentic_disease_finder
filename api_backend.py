@@ -52715,6 +52715,27 @@ async def hereditary_jak3_il7r_cid_atlas_definitions():
     return jak3_cid_definitions()
 
 
+@app.get("/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/overview")
+async def hereditary_alps_fas_fasl_atlas_overview():
+    """Hereditary-ALPS-FAS-FASL-Lymphoproliferation-Atlas overview — FAS-ALPS-Ia-most-common; FASLG-Ib-SLE-like; CASP10-IIb; CASP8-CED-dual; FADD-cardiomyopathy; PKCdelta-B-tolerance; NRAS-RALD1-MEKi; KRAS-RALD2-monocytosis; DNT-cells-pathognomonic; seeds-4062-4069."""
+    from scripts.hereditary_alps_fas_fasl_lymphoproliferation_atlas_dashboard import generate_overview as alps_overview
+    return alps_overview()
+
+
+@app.get("/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/breakdown")
+async def hereditary_alps_fas_fasl_atlas_breakdown():
+    """Hereditary-ALPS-FAS-FASL-Lymphoproliferation-Atlas breakdown — FAS-pathway-classic; CID-overlap-CASP8-FADD; PKCdelta-B-tolerance; RALD-somatic; apoptosis-assay; sirolimus-response; MEK-inhibitors; seeds-4062-4069."""
+    from scripts.hereditary_alps_fas_fasl_lymphoproliferation_atlas_dashboard import generate_breakdown as alps_breakdown
+    return alps_breakdown()
+
+
+@app.get("/api/hereditary-alps-fas-fasl-lymphoproliferation-atlas/definitions")
+async def hereditary_alps_fas_fasl_atlas_definitions():
+    """Hereditary-ALPS-FAS-FASL-Lymphoproliferation-Atlas definitions — DNT-cells-diagnostic; apoptosis-assay-FAS-vs-RALD; CASP8-CED-dual; FADD-cardiomyopathy-triad; PKCdelta-SLE-lupus; RALD-MEKi-cobimetinib; sirolimus-monitoring; cascade-testing; seeds-4062-4069."""
+    from scripts.hereditary_alps_fas_fasl_lymphoproliferation_atlas_dashboard import generate_definitions as alps_definitions
+    return alps_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
