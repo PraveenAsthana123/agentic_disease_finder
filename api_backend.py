@@ -52652,6 +52652,27 @@ async def hereditary_interferonopathy_ags_sting_type_i_ifn_axis_atlas_definition
     return ags_sting_definitions()
 
 
+@app.get("/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/overview")
+async def hereditary_hlh_fhl_cytotoxicity_defect_atlas_overview():
+    """Hereditary-HLH-FHL-Cytotoxicity-Defect-Atlas overview — PRF1-UNC13D-STX11-STXBP2-RAB27A-LYST-AP3B1-DOCK8; FHL2-5; Griscelli Syndrome Type 2; Chediak-Higashi; HPS2; DOCK8-deficiency; cytotoxic granule pathway; seeds-4038-4045."""
+    from scripts.hereditary_hlh_fhl_cytotoxicity_defect_atlas_dashboard import generate_overview as hlh_fhl_overview
+    return hlh_fhl_overview()
+
+
+@app.get("/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/breakdown")
+async def hereditary_hlh_fhl_cytotoxicity_defect_atlas_breakdown():
+    """Hereditary-HLH-FHL-Cytotoxicity-Defect-Atlas breakdown — FHL2-5-SNARE-perforin; GS2-CHS-hypopigmentation; HPS2-DOCK8-overlap; pathognomonic features; cascade testing; emapalumab; seeds-4038-4045."""
+    from scripts.hereditary_hlh_fhl_cytotoxicity_defect_atlas_dashboard import generate_breakdown as hlh_fhl_breakdown
+    return hlh_fhl_breakdown()
+
+
+@app.get("/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/definitions")
+async def hereditary_hlh_fhl_cytotoxicity_defect_atlas_definitions():
+    """Hereditary-HLH-FHL-Cytotoxicity-Defect-Atlas definitions — HLH-2004 diagnostic criteria; cytotoxic granule pathway; FHL-differential-diagnosis; Griscelli-types; Chediak-Higashi-giant-granules; HPS2-AP3; DOCK8-genetics; emapalumab; seeds-4038-4045."""
+    from scripts.hereditary_hlh_fhl_cytotoxicity_defect_atlas_dashboard import generate_definitions as hlh_fhl_definitions
+    return hlh_fhl_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

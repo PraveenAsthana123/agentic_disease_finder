@@ -23632,5 +23632,27 @@
     "cohort_n": 320,
     "seed": 4030,
     "registered": "2026-10-19"
+  },
+  {
+    "id": "hereditary-hlh-fhl-cytotoxicity-defect-atlas",
+    "name": "Hereditary-HLH-FHL-Cytotoxicity-Defect-Atlas Complete-8-Gene-PRF1-UNC13D-STX11-STXBP2-RAB27A-LYST-AP3B1-DOCK8 PRF1-555aa-10q22.1-AR-FHL2-Perforin-Absent-PATHOGNOMONIC-MostCommon-40-50pct UNC13D-1090aa-17q25.1-AR-FHL3-Munc13-4-NK-Degranulation-ABSENT STX11-287aa-6q24.2-AR-FHL4-Turkish-Kurdish-p.L58P-Founder STXBP2-593aa-19p13.2-AR-FHL5-HLH-Neutropenia-Bleeding-TRIAD RAB27A-221aa-15q21.3-AR-Griscelli-Type2-Silver-Hair-PATHOGNOMONIC LYST-3801aa-1q42.3-AR-Chediak-Higashi-Giant-Granules-PATHOGNOMONIC AP3B1-1094aa-5q14.1-AR-HPS2-Dense-Granule-Absent-NK-Defect DOCK8-2099aa-9p24.3-AR-IgE-GT1000-Molluscum-Warts-HSV-aCGH-Mandatory 320-Patient-Aggregate-8x40-seeds-4038-4045",
+    "status": "built",
+    "registered": "2026-10-19",
+    "seeds": "4038-4045",
+    "genes": [
+      "PRF1",
+      "UNC13D",
+      "STX11",
+      "STXBP2",
+      "RAB27A",
+      "LYST",
+      "AP3B1",
+      "DOCK8"
+    ],
+    "endpoints": [
+      "/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/overview",
+      "/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/breakdown",
+      "/api/hereditary-hlh-fhl-cytotoxicity-defect-atlas/definitions"
+    ]
   }
 ]
