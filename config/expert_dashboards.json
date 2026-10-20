@@ -23833,5 +23833,39 @@
     ],
     "portal_page": "/hereditary-hae-bradykinin-swelling-atlas",
     "script": "scripts/hereditary_hae_bradykinin_swelling_atlas_dashboard.py"
+  },
+  {
+    "id": "hereditary-nfkb-innate-immune-signaling-defect-atlas",
+    "name": "Hereditary-NF-kB-Innate-Immune-Signaling-Defect-Atlas",
+    "status": "built",
+    "genes": [
+      "IRAK4",
+      "MYD88",
+      "TIRAP",
+      "IKBKG",
+      "IKBKB",
+      "IRAK1",
+      "RELA",
+      "NFKBIA"
+    ],
+    "seeds": [
+      4094,
+      4095,
+      4096,
+      4097,
+      4098,
+      4099,
+      4100,
+      4101
+    ],
+    "patients": 320,
+    "registered": "2026-10-20",
+    "endpoints": [
+      "/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/overview",
+      "/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/breakdown",
+      "/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-nfkb-innate-immune-signaling-defect-atlas",
+    "script": "scripts/hereditary_nfkb_innate_immune_signaling_defect_atlas_dashboard.py"
   }
 ]

@@ -52799,6 +52799,25 @@ async def hereditary_hae_bradykinin_atlas_definitions():
     return hae_definitions()
 
 
+@app.get("/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/overview")
+async def hereditary_nfkb_innate_atlas_overview():
+    """Hereditary-NF-kB-Innate-Immune-Signaling-Defect-Atlas overview — IRAK4-MYD88-TIRAP-IKBKG-IKBKB-IRAK1-RELA-NFKBIA; pyogenic-bacterial-susceptibility; EDA-ID; age-resistance; seeds-4094-4101."""
+    from scripts.hereditary_nfkb_innate_immune_signaling_defect_atlas_dashboard import generate_overview as nfkb_overview
+    return nfkb_overview()
+
+@app.get("/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/breakdown")
+async def hereditary_nfkb_innate_atlas_breakdown():
+    """Hereditary-NF-kB-Innate-Immune-Signaling-Defect-Atlas breakdown — myddosome-kinases; IKK-complex; NF-kB-downstream; TLR-stimulation-panel; seeds-4094-4101."""
+    from scripts.hereditary_nfkb_innate_immune_signaling_defect_atlas_dashboard import generate_breakdown as nfkb_breakdown
+    return nfkb_breakdown()
+
+@app.get("/api/hereditary-nfkb-innate-immune-signaling-defect-atlas/definitions")
+async def hereditary_nfkb_innate_atlas_definitions():
+    """Hereditary-NF-kB-Innate-Immune-Signaling-Defect-Atlas definitions — IRAK4-master-node; EDA-ID-two-genes; RELA-paradox-autoinflammation; BCG-CI-NEMO-IKKb; TLR-panel-protocol; TIRAP-malaria-balance; IkBa-degradation-assay; cascade-algorithm; seeds-4094-4101."""
+    from scripts.hereditary_nfkb_innate_immune_signaling_defect_atlas_dashboard import generate_definitions as nfkb_definitions
+    return nfkb_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
