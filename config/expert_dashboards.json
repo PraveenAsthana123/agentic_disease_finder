@@ -23599,5 +23599,29 @@
     "cohort_n": 320,
     "seed_range": "4014-4021",
     "registered": "2026-10-19"
+  },
+  {
+    "id": "hereditary-jak-stat-gof-immune-dysregulation-atlas",
+    "name": "Hereditary-JAK-STAT-GOF-Immune-Dysregulation-Atlas Complete-8-Gene-STAT1-STAT3-STAT5B-STAT6-JAK1-SOCS1-CARD11-IL4RA STAT1-GOF-750aa-2q32.2-AD-CMC5-Esophageal-Candida-PATHOGNOMONIC STAT3-GOF-770aa-17q21.2-AD-Neonatal-T1DM-Short-Stature STAT5B-GOF-787aa-17q21.2-AD-NK-LGL-Leukemia-p.N642H STAT6-GOF-847aa-12q13.3-AD-IgE->10000-Ultra-Atopy-2022 JAK1-GOF-1142aa-1p31.3-AD-Multi-STAT-Polyarthritis SOCS1-LOF-212aa-16p13.13-AD-SLE-MPN-2021 CARD11-GOF-BENTA-1154aa-7p22.2-AD-B-Expansion-NF-kB IL4RA-GOF-825aa-16p12.1-AD-Severe-Atopy-Dupilumab 320-Patient-Aggregate-8x40-seeds-4022-4029",
+    "status": "built",
+    "category": "hereditary-jak-stat-gof",
+    "genes": [
+      "STAT1",
+      "STAT3",
+      "STAT5B",
+      "STAT6",
+      "JAK1",
+      "SOCS1",
+      "CARD11",
+      "IL4RA"
+    ],
+    "seeds": "4022-4029",
+    "n": 320,
+    "registered": "2026-10-19",
+    "api_routes": [
+      "/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/overview",
+      "/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/breakdown",
+      "/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/definitions"
+    ]
   }
 ]

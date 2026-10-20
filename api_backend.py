@@ -52610,6 +52610,27 @@ async def hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_definitions():
     return cgd_definitions()
 
 
+@app.get("/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/overview")
+async def hereditary_jak_stat_gof_immune_dysregulation_atlas_overview():
+    """Hereditary-JAK-STAT-GOF-Immune-Dysregulation-Atlas overview — STAT1-GOF-CMC5; STAT3-GOF-T1DM-LPD; STAT5B-GOF-NK-LGL; STAT6-GOF-atopy; JAK1-GOF-autoimmunity; SOCS1-LOF-SLE-MPN; CARD11-GOF-BENTA; IL4RA-GOF-atopy seeds-4022-4029."""
+    from scripts.hereditary_jak_stat_gof_immune_dysregulation_atlas_dashboard import generate_overview as jak_stat_overview
+    return jak_stat_overview()
+
+
+@app.get("/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/breakdown")
+async def hereditary_jak_stat_gof_immune_dysregulation_atlas_breakdown():
+    """Hereditary-JAK-STAT-GOF-Immune-Dysregulation-Atlas breakdown — diagnostic groups; pathognomonic features; ruxolitinib vs dupilumab vs ibrutinib; cascade testing; PhosFlow assay seeds-4022-4029."""
+    from scripts.hereditary_jak_stat_gof_immune_dysregulation_atlas_dashboard import generate_breakdown as jak_stat_breakdown
+    return jak_stat_breakdown()
+
+
+@app.get("/api/hereditary-jak-stat-gof-immune-dysregulation-atlas/definitions")
+async def hereditary_jak_stat_gof_immune_dysregulation_atlas_definitions():
+    """Hereditary-JAK-STAT-GOF-Immune-Dysregulation-Atlas definitions — JAK-STAT pathway; CMC genetics; PhosFlow; ruxolitinib mechanism; BENTA vs CID; dupilumab for STAT6-IL4RA; SOCS1 haploinsufficiency seeds-4022-4029."""
+    from scripts.hereditary_jak_stat_gof_immune_dysregulation_atlas_dashboard import generate_definitions as jak_stat_definitions
+    return jak_stat_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
