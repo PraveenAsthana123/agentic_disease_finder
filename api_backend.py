@@ -52778,6 +52778,27 @@ async def hereditary_autoinflammatory_atlas_definitions():
     return autoinflam_definitions()
 
 
+@app.get("/api/hereditary-hae-bradykinin-swelling-atlas/overview")
+async def hereditary_hae_bradykinin_atlas_overview():
+    """Hereditary-HAE-Bradykinin-Swelling-Atlas overview — SERPING1-HAE-I-II-C4-low-C1INH; F12-HAE-III-estrogen-OCP-CI; PLG-HAE-IV-K311E-facial; ANGPT1-HAE-V-Tie2; KNG1-HAE-VI-HMWK; MYOF-nCI-2020; HS3ST6-nCI-XLD; KLKB1-Fletcher-PTT; 320-patients-seeds-4086-4093."""
+    from scripts.hereditary_hae_bradykinin_swelling_atlas_dashboard import generate_overview as hae_overview
+    return hae_overview()
+
+
+@app.get("/api/hereditary-hae-bradykinin-swelling-atlas/breakdown")
+async def hereditary_hae_bradykinin_atlas_breakdown():
+    """Hereditary-HAE-Bradykinin-Swelling-Atlas breakdown — contact-activation-C1INH; F12-platform-HS3ST6; plasmin-PLG; endothelial-ANGPT1-MYOF-KNG1; pathway-groups; icatibant-all-types; seeds-4086-4093."""
+    from scripts.hereditary_hae_bradykinin_swelling_atlas_dashboard import generate_breakdown as hae_breakdown
+    return hae_breakdown()
+
+
+@app.get("/api/hereditary-hae-bradykinin-swelling-atlas/definitions")
+async def hereditary_hae_bradykinin_atlas_definitions():
+    """Hereditary-HAE-Bradykinin-Swelling-Atlas definitions — C4-screening-SERPING1; antihistamines-fail-bradykinin; laryngeal-airway-mandate; surgical-prophylaxis-dental; F12-estrogen-OCP-CI; ACE-inhibitor-CI; KLKB1-PTT-no-bleeding; cascade-diagnostic; seeds-4086-4093."""
+    from scripts.hereditary_hae_bradykinin_swelling_atlas_dashboard import generate_definitions as hae_definitions
+    return hae_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
