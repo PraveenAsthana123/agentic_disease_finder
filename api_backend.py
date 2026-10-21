@@ -52970,6 +52970,25 @@ async def hereditary_pku_biopterin_atlas_definitions():
     return pku_definitions()
 
 
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/overview")
+async def hereditary_cgd_atlas_overview():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas overview — CYBB-570aa-Xq21.1-XLR-X-CGD-65pct-gp91phox-DHR-ABSENT-Carrier-BIMODAL-DHR-PATHOGNOMONIC-IFN-gamma-HSCT; NCF1-390aa-7q11.23-AR-p47-CGD-25pct-DeltaGT-Most-Common-AR-Mutation-Cytochrome-b558-PRESENT; CYBA-195aa-16q24.2-AR-p22-CGD-5pct-gp91phox-Also-Absent-Mutual-Destabilization; NCF2-526aa-1q25.3-AR-p67-CGD-5pct-Activation-Domain-Absent-Severe; NCF4-339aa-22q13.1-AR-p40-CGD-Rarest-IBD-DOMINANT-DHR-MAY-BE-NORMAL; CYBC1-291aa-1p22.1-AR-EROS-2019-Standard-Panel-NEGATIVE-Exome-Required; RAC2-192aa-22q13.1-AD-GOF-AR-LOF-NIS-DHR-Intermediate-Combined-PMN-Defects; MPO-745aa-17q22-AR-DHR-NORMAL-Mildest-Candida-DM-Only; seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_overview as cgd_overview
+    return cgd_overview()
+
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/breakdown")
+async def hereditary_cgd_atlas_breakdown():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas breakdown — X-CGD-CYBB-gp91phox-absent-DHR-absent; AR-membrane-CYBA-CYBC1-cytochrome-b558-absent; AR-cytosol-NCF1-NCF2-NCF4-cytochrome-b558-present; NIS-RAC2-DHR-intermediate-combined-PMN; MPO-deficiency-DHR-normal; cascade-DHR-cytochrome-b558-gene-panel-algorithm; seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_breakdown as cgd_breakdown
+    return cgd_breakdown()
+
+@app.get("/api/hereditary-cgd-neutrophil-oxidative-burst-defect-atlas/definitions")
+async def hereditary_cgd_atlas_definitions():
+    """Hereditary-CGD-Neutrophil-Oxidative-Burst-Defect-Atlas definitions — CGD-catalase-positive-organisms; DHR-gold-standard; cytochrome-b558-absent-CYBB-CYBA-CYBC1-present-NCF1-NCF2-NCF4; NCF1-DeltaGT-most-common-AR; IFN-gamma-X-CGD-HSCT-curative; MPO-vs-CGD-DHR-normal; CYBC1-EROS-2019-standard-panel-negative; RAC2-NIS-intermediate; CGD-colitis-IBD-infliximab; seeds-4014-4021."""
+    from scripts.hereditary_cgd_neutrophil_oxidative_burst_defect_atlas_dashboard import generate_definitions as cgd_definitions
+    return cgd_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
