@@ -52932,6 +52932,25 @@ async def hereditary_galactosemia_atlas_definitions():
     return gal_definitions()
 
 
+@app.get("/api/hereditary-pku-biopterin-deficiency-atlas/overview")
+async def hereditary_pku_biopterin_atlas_overview():
+    """Hereditary-PKU-Biopterin-Deficiency-Atlas overview — PAH-452aa-12q23.2-PKU-Most-Common-NBS-Metabolic-Disorder-R408W-Sapropterin-BH4-Responsive; PTS-145aa-11q23.1-PTPS-Most-Common-BH4-Deficiency-Neopterin-HIGH-Biopterin-LOW-Triple-Therapy; GCH1-250aa-14q22.2-AR-Severe-AD-Segawa-DRD-SAME-GENE-UNIQUE-Diurnal-Variation-L-DOPA-Curative; QDPR-244aa-4p15.32-DHPR-Brain-Calcification-Folinic-Acid-Mandatory; PCBD1-104aa-10q22.1-Primapterinuria-BENIGN-Transient; SPR-261aa-2p14-NBS-Misses-CSF-Sepiapterin-PATHOGNOMONIC; DNAJC12-198aa-10q21.3-HSP40-Chaperone-Pterins-NORMAL-BH4-Loading-NORMAL; TH-528aa-11p15.5-Oculogyric-Crises-L-DOPA-CURATIVE-5-HIAA-NORMAL; seeds-4142-4149."""
+    from scripts.hereditary_pku_biopterin_deficiency_atlas_dashboard import generate_overview as pku_overview
+    return pku_overview()
+
+@app.get("/api/hereditary-pku-biopterin-deficiency-atlas/breakdown")
+async def hereditary_pku_biopterin_atlas_breakdown():
+    """Hereditary-PKU-Biopterin-Deficiency-Atlas breakdown — Phe-elevated-NBS-detected-PAH-PTS-GCH1-QDPR-PCBD1-DNAJC12; DOPA-responsive-dystonia-GCH1-SPR-TH-NBS-MISSES; BH4-synthesis-PTS-GCH1-PCBD1-SPR; BH4-regeneration-QDPR-folinic-acid; neurotransmitter-deficiency-triple-therapy; seeds-4142-4149."""
+    from scripts.hereditary_pku_biopterin_deficiency_atlas_dashboard import generate_breakdown as pku_breakdown
+    return pku_breakdown()
+
+@app.get("/api/hereditary-pku-biopterin-deficiency-atlas/definitions")
+async def hereditary_pku_biopterin_atlas_definitions():
+    """Hereditary-PKU-Biopterin-Deficiency-Atlas definitions — PAH-PKU-sapropterin-maternal-PKU; PTS-triple-therapy-mandatory-Phe-diet-alone-FATAL; GCH1-AD-Segawa-DRD-AR-severe-same-gene; QDPR-folinic-acid-brain-calcification; PCBD1-primapterin-benign; SPR-CSF-diagnosis-NBS-miss; DNAJC12-chaperone-pterins-normal; TH-oculogyric-L-DOPA-curative-5-HIAA-normal; cascade-algorithm; seeds-4142-4149."""
+    from scripts.hereditary_pku_biopterin_deficiency_atlas_dashboard import generate_definitions as pku_definitions
+    return pku_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

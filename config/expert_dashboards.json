@@ -24023,5 +24023,23 @@
     ],
     "seeds": "4134-4141",
     "patients": 320
+  },
+  {
+    "id": "hereditary-pku-biopterin-deficiency-atlas",
+    "name": "Hereditary-PKU-Biopterin-Deficiency-Atlas Complete-8-Gene-PAH-PTS-GCH1-QDPR-PCBD1-SPR-DNAJC12-TH PAH-452aa-12q23.2-AR-LOF-PKU-Most-Common-NBS-Metabolic-Disorder-R408W-30-40pct-N-European-Sapropterin-BH4-Responsive-30-50pct PTS-145aa-11q23.1-AR-LOF-PTPS-Most-Common-BH4-Deficiency-60pct-Neopterin-HIGH-Biopterin-LOW-PATHOGNOMONIC-Triple-Therapy-MANDATORY GCH1-250aa-14q22.2-AR-LOF-Severe-BH4D-AD-LOF-Segawa-DRD1-SAME-GENE-Diurnal-Variation-Dystonia-Female-3x-Imprinting QDPR-244aa-4p15.32-AR-LOF-DHPR-BH4-Regeneration-Failure-Brain-Calcification-PATHOGNOMONIC-Folinic-Acid-MANDATORY PCBD1-104aa-10q22.1-AR-LOF-Primapterinuria-7-Biopterin-PATHOGNOMONIC-TRANSIENT-BENIGN-No-Treatment SPR-261aa-2p14-AR-LOF-NBS-MISSES-Phe-NORMAL-CSF-Sepiapterin-PATHOGNOMONIC-DRD-CP-Misdiagnosis DNAJC12-198aa-10q21.3-AR-LOF-HSP40-Chaperone-Pterins-NORMAL-BH4-Loading-NORMAL-Key-DDx TH-528aa-11p15.5-AR-LOF-Dopamine-Norepinephrine-Deficiency-NBS-MISSES-Oculogyric-Crises-LDOPA-CURATIVE-5HIAA-NORMAL 320-Patient-Aggregate-8x40-seeds-4142-4149",
+    "status": "built",
+    "category": "hereditary_metabolic_atlas",
+    "genes": [
+      "PAH",
+      "PTS",
+      "GCH1",
+      "QDPR",
+      "PCBD1",
+      "SPR",
+      "DNAJC12",
+      "TH"
+    ],
+    "seeds": "4142-4149",
+    "patients": 320
   }
 ]
