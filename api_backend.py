@@ -52913,6 +52913,25 @@ async def hereditary_madd_etf_atlas_definitions():
     return madd_definitions()
 
 
+@app.get("/api/hereditary-galactosemia-fructosemia-sugar-metabolism-atlas/overview")
+async def hereditary_galactosemia_atlas_overview():
+    """Hereditary-Galactosemia-Fructosemia-Sugar-Metabolism-Atlas overview — GALT-379aa-9p13.3-Classic-Galactosemia-E.coli-Sepsis-POI-Q188R; GALK1-379aa-17q25.1-Cataracts-Only-Galactitol; GALE-348aa-1p36.11-Epimerase-Spectrum; GALM-342aa-2p22.3-Mutarotase-Benign; ALDOB-364aa-9q22.33-HFI-Fructose-Toxic-A149P-Fructose-Loading-CI; KHK-298aa-2p23.3-Essential-Fructosuria-Benign; FBP1-338aa-9q22.32-FBPase-Fasting-Crisis-Fructose-NOT-Toxic; SLC2A2-524aa-3q26.2-GLUT2-Fanconi-Bickel-Glucosuria-Hypoglycemia-Simultaneously; seeds-4134-4141."""
+    from scripts.hereditary_galactosemia_fructosemia_sugar_metabolism_atlas_dashboard import generate_overview as gal_overview
+    return gal_overview()
+
+@app.get("/api/hereditary-galactosemia-fructosemia-sugar-metabolism-atlas/breakdown")
+async def hereditary_galactosemia_atlas_breakdown():
+    """Hereditary-Galactosemia-Fructosemia-Sugar-Metabolism-Atlas breakdown — galactosemia-spectrum-GALT-GALK1-GALE-GALM; fructose-metabolism-ALDOB-KHK; gluconeogenesis-FBP1-fasting-safe-fructose; transporter-SLC2A2-Fanconi-Bickel; seeds-4134-4141."""
+    from scripts.hereditary_galactosemia_fructosemia_sugar_metabolism_atlas_dashboard import generate_breakdown as gal_breakdown
+    return gal_breakdown()
+
+@app.get("/api/hereditary-galactosemia-fructosemia-sugar-metabolism-atlas/definitions")
+async def hereditary_galactosemia_atlas_definitions():
+    """Hereditary-Galactosemia-Fructosemia-Sugar-Metabolism-Atlas definitions — GALT-Gal1P-E.coli-POI-Q188R-Duarte; GALK1-Galactitol-cataracts-only; GALE-peripheral-benign-generalized-severe; GALM-mutarotase-benign; ALDOB-HFI-F1P-toxic-A149P-no-loading-test; KHK-benign-fructosuria; FBP1-gluconeogenesis-block-fasting-trigger; SLC2A2-GLUT2-Fanconi-Bickel-glucosuria-rickets; cascade-algorithm; seeds-4134-4141."""
+    from scripts.hereditary_galactosemia_fructosemia_sugar_metabolism_atlas_dashboard import generate_definitions as gal_definitions
+    return gal_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

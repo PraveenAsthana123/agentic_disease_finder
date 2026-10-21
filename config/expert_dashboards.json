@@ -24005,5 +24005,23 @@
     "api_base": "/api/hereditary-madd-etf-primary-carnitine-deficiency-atlas",
     "portal_page": "/hereditary-madd-etf-primary-carnitine-deficiency-atlas",
     "built_date": "2026-10-21"
+  },
+  {
+    "id": "hereditary-galactosemia-fructosemia-sugar-metabolism-atlas",
+    "name": "Hereditary-Galactosemia-Fructosemia-Sugar-Metabolism-Atlas Complete-8-Gene-GALT-GALK1-GALE-GALM-ALDOB-KHK-FBP1-SLC2A2 GALT-379aa-9p13.3-AR-LOF-Classic-Galactosemia-Type-I-E.coli-Neonatal-Sepsis-PATHOGNOMONIC-POI-50-70pct-Females GALK1-379aa-17q25.1-AR-LOF-Cataracts-ONLY-Galactitol-Lens-Gal1P-NORMAL GALE-348aa-1p36.11-AR-LOF-Epimerase-Spectrum-Peripheral-BENIGN-Generalized-Severe GALM-342aa-2p22.3-AR-LOF-Mutarotase-Type-0-Mildest-BENIGN ALDOB-364aa-9q22.33-AR-LOF-HFI-A149P-80pct-European-Fructose-AVERSION-Loading-Test-ABSOLUTELY-CI KHK-298aa-2p23.3-AR-LOF-Essential-Fructosuria-BENIGN-No-Treatment FBP1-338aa-9q22.32-AR-LOF-FBPase-Fasting-Crisis-Hyperketotic-FRUCTOSE-NOT-TOXIC-DDx-HFI SLC2A2-524aa-3q26.2-AR-LOF-GLUT2-Fanconi-Bickel-Glucosuria-Hypoglycemia-SIMULTANEOUSLY-Rickets 320-Patient-Aggregate-8x40-seeds-4134-4141",
+    "status": "built",
+    "category": "hereditary_metabolic_atlas",
+    "genes": [
+      "GALT",
+      "GALK1",
+      "GALE",
+      "GALM",
+      "ALDOB",
+      "KHK",
+      "FBP1",
+      "SLC2A2"
+    ],
+    "seeds": "4134-4141",
+    "patients": 320
   }
 ]
