@@ -24041,5 +24041,23 @@
     ],
     "seeds": "4142-4149",
     "patients": 320
+  },
+  {
+    "id": "hereditary-organic-acidemia-mma-pa-iva-ga1-atlas",
+    "name": "Hereditary-Organic-Acidemia-MMA-PA-IVA-GA1-Atlas Complete-8-Gene-MUT-MMACHC-PCCA-PCCB-IVD-GCDH-HMGCL-ACAT1 MUT-750aa-6p12.3-AR-LOF-Isolated-MMA-C3-NBS-mut0-No-B12-Metabolic-Stroke-Globus-Pallidus MMACHC-282aa-1p34.1-AR-LOF-cblC-Combined-MMA-HCU-c.271dupA-Neonatal-HUS-PATHOGNOMONIC-Retinal-Degen-OHCbl-Betaine PCCA-728aa-13q32.3-AR-LOF-PA-Alpha-3-OH-Propionic-Methylcitric-PATHOGNOMONIC-DCM-Leading-Death PCCB-539aa-3q22.3-AR-LOF-PA-Beta-Identical-PCCA-Inuit-Founder IVD-394aa-15q15.1-AR-LOF-IVA-Sweaty-Feet-C5-PATHOGNOMONIC-A282V-Mild GCDH-438aa-19p13.13-AR-LOF-GA1-Macrocephaly-Bat-Wing-MRI-Striatal-Necrosis-Fever-Protocol HMGCL-325aa-1p36.11-AR-LOF-Hypoketotic-Hypoglycemia-PATHOGNOMONIC-Fasting-CI-Saudi-Arg41Gln ACAT1-427aa-11q22.3-AR-LOF-Episodic-Ketoacidosis-Normal-Intervals-C5-OH-C5:1-2M3HBA 320-Patient-Aggregate-8x40-seeds-4150-4157",
+    "status": "built",
+    "category": "hereditary_metabolic_atlas",
+    "genes": [
+      "MUT",
+      "MMACHC",
+      "PCCA",
+      "PCCB",
+      "IVD",
+      "GCDH",
+      "HMGCL",
+      "ACAT1"
+    ],
+    "seeds": "4150-4157",
+    "patients": 320
   }
 ]

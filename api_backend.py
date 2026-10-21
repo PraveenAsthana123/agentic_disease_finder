@@ -52932,6 +52932,25 @@ async def hereditary_galactosemia_atlas_definitions():
     return gal_definitions()
 
 
+@app.get("/api/hereditary-organic-acidemia-mma-pa-iva-ga1-atlas/overview")
+async def hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_overview():
+    """Hereditary-Organic-Acidemia-MMA-PA-IVA-GA1-Atlas overview — MUT-750aa-6p12.3-MMA-Isolated-C3-NBS-mut0-No-B12-Response-Metabolic-Stroke-Globus-Pallidus; MMACHC-282aa-1p34.1-cblC-Combined-MMA-HCU-c.271dupA-Neonatal-HUS-PATHOGNOMONIC-Retinal-Degeneration-OHCbl-Betaine; PCCA-728aa-13q32.3-PA-Alpha-3-OH-Propionic-Methylcitric-PATHOGNOMONIC-C3-NBS-DCM-Leading-Cause-Death; PCCB-539aa-3q22.3-PA-Beta-Identical-PCCA-IVS12-3A>G-Inuit-Founder; IVD-394aa-15q15.1-IVA-Sweaty-Feet-Odor-PATHOGNOMONIC-C5-NBS-A282V-Mild; GCDH-438aa-19p13.13-GA1-Macrocephaly-Bat-Wing-MRI-Striatal-Necrosis-Fever-Protocol; HMGCL-325aa-1p36.11-Hypoketotic-Hypoglycemia-PATHOGNOMONIC-Fasting-CI-Saudi-Arg41Gln; ACAT1-427aa-11q22.3-Episodic-Ketoacidosis-Normal-Intervals-C5-OH-C5:1-NBS; seeds-4150-4157."""
+    from scripts.hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_dashboard import generate_overview as oa_overview
+    return oa_overview()
+
+@app.get("/api/hereditary-organic-acidemia-mma-pa-iva-ga1-atlas/breakdown")
+async def hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_breakdown():
+    """Hereditary-Organic-Acidemia-MMA-PA-IVA-GA1-Atlas breakdown — MMA-group-MUT-MMACHC-C3-metabolic-stroke-retinal; PA-group-PCCA-PCCB-methylcitric-cardiomyopathy-identical-phenotype; ketoacidosis-group-IVD-ACAT1-sweaty-feet-episodic; striatal-group-GCDH-PCCA-PCCB-fever-protocol-window; hypoketotic-HMGCL-fasting-CI; cascade-C3-C5-C5DC-C6DC; seeds-4150-4157."""
+    from scripts.hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_dashboard import generate_breakdown as oa_breakdown
+    return oa_breakdown()
+
+@app.get("/api/hereditary-organic-acidemia-mma-pa-iva-ga1-atlas/definitions")
+async def hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_definitions():
+    """Hereditary-Organic-Acidemia-MMA-PA-IVA-GA1-Atlas definitions — MUT-MMA-AdoCbl-metabolic-stroke-liver-transplant; MMACHC-cblC-OHCbl-betaine-HUS-retinal; PCCA-PA-alpha-methylcitric-cardiomyopathy; PCCB-PA-beta-IVS12-Inuit-founder; IVD-IVA-sweaty-feet-C5-A282V; GCDH-GA1-macrocephaly-bat-wing-striatal-necrosis; HMGCL-hypoketotic-hypoglycemia-3-HMG-fasting-CI-Saudi; ACAT1-T2-episodic-ketoacidosis-2M3HBA; cascade-NBS-C3-C5-C5DC-C6DC-algorithm; seeds-4150-4157."""
+    from scripts.hereditary_organic_acidemia_mma_pa_iva_ga1_atlas_dashboard import generate_definitions as oa_definitions
+    return oa_definitions()
+
+
 @app.get("/api/hereditary-pku-biopterin-deficiency-atlas/overview")
 async def hereditary_pku_biopterin_atlas_overview():
     """Hereditary-PKU-Biopterin-Deficiency-Atlas overview — PAH-452aa-12q23.2-PKU-Most-Common-NBS-Metabolic-Disorder-R408W-Sapropterin-BH4-Responsive; PTS-145aa-11q23.1-PTPS-Most-Common-BH4-Deficiency-Neopterin-HIGH-Biopterin-LOW-Triple-Therapy; GCH1-250aa-14q22.2-AR-Severe-AD-Segawa-DRD-SAME-GENE-UNIQUE-Diurnal-Variation-L-DOPA-Curative; QDPR-244aa-4p15.32-DHPR-Brain-Calcification-Folinic-Acid-Mandatory; PCBD1-104aa-10q22.1-Primapterinuria-BENIGN-Transient; SPR-261aa-2p14-NBS-Misses-CSF-Sepiapterin-PATHOGNOMONIC; DNAJC12-198aa-10q21.3-HSP40-Chaperone-Pterins-NORMAL-BH4-Loading-NORMAL; TH-528aa-11p15.5-Oculogyric-Crises-L-DOPA-CURATIVE-5-HIAA-NORMAL; seeds-4142-4149."""
