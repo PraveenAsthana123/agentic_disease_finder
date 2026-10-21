@@ -52875,6 +52875,25 @@ async def hereditary_faod_atlas_definitions():
     return faod_definitions()
 
 
+@app.get("/api/hereditary-crc-predisposition-atlas/overview")
+async def hereditary_crc_predisposition_atlas_overview():
+    """Hereditary-CRC-Predisposition-Atlas overview — APC-FAP-100pct-CRC-lifetime-CHRPE-PATHOGNOMONIC-prophylactic-colectomy-20-25yr; MUTYH-MAP-biallelic-Y179C-G396D-attenuated-polyposis; MLH1-Lynch1-MSI-H-BRAF-V600E-absent-confirms-germline-aspirin-CAPP2; MSH2-Lynch2-Muir-Torre-sebaceous-PATHOGNOMONIC-urothelial-14pct-EPCAM-MLPA; MSH6-Lynch3-endometrial-71pct-HIGHEST-MSI-L-30pct-false-negative; PMS2-Lynch4-LOWEST-penetrance-4-pseudogenes-MLPA-MANDATORY-biallelic-CMMRD; STK11-PJS-perioral-pigmentation-PATHOGNOMONIC-SCTAT-GI-intussusception-EMERGENCY; SMAD4-JPS-HHT-overlap-juvenile-polyposis-telangiectasia-aortic-dilatation; seeds-3398-3405."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_overview as crc_overview
+    return crc_overview()
+
+@app.get("/api/hereditary-crc-predisposition-atlas/breakdown")
+async def hereditary_crc_predisposition_atlas_breakdown():
+    """Hereditary-CRC-Predisposition-Atlas breakdown — APC-WNT-pathway-gate; MUTYH-base-excision-repair-biallelic; MLH1-MSH2-MSH6-PMS2-MMR-Lynch-syndrome; STK11-LKB1-serine-threonine-kinase-PJS; SMAD4-TGF-beta-SMAD-JPS-HHT-aortic; seeds-3398-3405."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_breakdown as crc_breakdown
+    return crc_breakdown()
+
+@app.get("/api/hereditary-crc-predisposition-atlas/definitions")
+async def hereditary_crc_predisposition_atlas_definitions():
+    """Hereditary-CRC-Predisposition-Atlas definitions — MSI-H-dMMR-immunotherapy-pembrolizumab; BRAF-V600E-gate-somatic-vs-germline-MLH1; Muir-Torre-sebaceous-MSH2; IHC-primary-test-four-MMR-proteins; CHRPE-congenital-hypertrophy-retinal-pigment-epithelium-APC; CMMRD-biallelic-PMS2-childhood-brain-haematologic; cascade-germline-testing-algorithm; seeds-3398-3405."""
+    from scripts.hereditary_crc_predisposition_atlas_dashboard import generate_definitions as crc_definitions
+    return crc_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
