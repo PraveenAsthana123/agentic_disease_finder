@@ -23872,8 +23872,26 @@
     "id": "hereditary-cvid-spectrum-bcell-deficiency-atlas",
     "name": "Hereditary-CVID-Spectrum-B-Cell-Deficiency-Atlas",
     "status": "built",
-    "genes": ["ICOS", "TNFRSF13B", "TNFRSF13C", "CD19", "CD81", "LRBA", "CTLA4", "PIK3CD"],
-    "seeds": [4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109],
+    "genes": [
+      "ICOS",
+      "TNFRSF13B",
+      "TNFRSF13C",
+      "CD19",
+      "CD81",
+      "LRBA",
+      "CTLA4",
+      "PIK3CD"
+    ],
+    "seeds": [
+      4102,
+      4103,
+      4104,
+      4105,
+      4106,
+      4107,
+      4108,
+      4109
+    ],
     "patients": 320,
     "registered": "2026-10-20",
     "endpoints": [
@@ -23883,5 +23901,39 @@
     ],
     "portal_page": "/hereditary-cvid-spectrum-bcell-deficiency-atlas",
     "script": "scripts/hereditary_cvid_spectrum_bcell_deficiency_atlas_dashboard.py"
+  },
+  {
+    "id": "hereditary-complement-pathway-terminal-regulatory-deficiency-atlas",
+    "name": "Hereditary-Complement-Pathway-Terminal-Regulatory-Deficiency-Atlas",
+    "status": "built",
+    "genes": [
+      "C3",
+      "C1QB",
+      "C2",
+      "C5",
+      "C6",
+      "CFH",
+      "CFI",
+      "CFP"
+    ],
+    "seeds": [
+      4110,
+      4111,
+      4112,
+      4113,
+      4114,
+      4115,
+      4116,
+      4117
+    ],
+    "patients": 320,
+    "registered": "2026-10-20",
+    "endpoints": [
+      "/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/overview",
+      "/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/breakdown",
+      "/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas",
+    "script": "scripts/hereditary_complement_pathway_terminal_regulatory_deficiency_atlas_dashboard.py"
   }
 ]

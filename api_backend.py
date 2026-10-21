@@ -52837,6 +52837,25 @@ async def hereditary_cvid_spectrum_atlas_definitions():
     return cvid_definitions()
 
 
+@app.get("/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/overview")
+async def hereditary_complement_pathway_atlas_overview():
+    """Hereditary-Complement-Pathway-Terminal-Regulatory-Deficiency-Atlas overview — C3-all-pathways-fail; C1QB-c1q-strongest-sle-predisposition; C2-most-common-caucasians-type-I-null-allele; C5-terminal-neisseria-mandatory-vaccine; C6-african-descent-adult-onset; CFH-aHUS-eculizumab-FDA; CFI-infections-autoimmunity-paradox; CFP-only-x-linked-complement-properdin; seeds-4110-4117."""
+    from scripts.hereditary_complement_pathway_terminal_regulatory_deficiency_atlas_dashboard import generate_overview as complement_overview
+    return complement_overview()
+
+@app.get("/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/breakdown")
+async def hereditary_complement_pathway_atlas_breakdown():
+    """Hereditary-Complement-Pathway-Terminal-Regulatory-Deficiency-Atlas breakdown — classical-pathway-C1QB-C2; central-amplification-C3; terminal-MAC-C5-C6; alternative-pathway-regulation-CFH-CFI; properdin-x-linked-CFP; CH50-AH50-diagnostic-algorithm; pathway-groups; seeds-4110-4117."""
+    from scripts.hereditary_complement_pathway_terminal_regulatory_deficiency_atlas_dashboard import generate_breakdown as complement_breakdown
+    return complement_breakdown()
+
+@app.get("/api/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas/definitions")
+async def hereditary_complement_pathway_atlas_definitions():
+    """Hereditary-Complement-Pathway-Terminal-Regulatory-Deficiency-Atlas definitions — CH50-AH50-algorithm; terminal-neisseria-vaccination; C1q-apoptotic-clearance-SLE; CFH-aHUS-eculizumab-mechanism; CFI-C3-hyperconversion-paradox; CFP-x-linked-properdin-males-fatal; C2-type-I-null-allele; cascade-diagnostic-algorithm; seeds-4110-4117."""
+    from scripts.hereditary_complement_pathway_terminal_regulatory_deficiency_atlas_dashboard import generate_definitions as complement_definitions
+    return complement_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
