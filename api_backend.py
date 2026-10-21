@@ -52856,6 +52856,25 @@ async def hereditary_complement_pathway_atlas_definitions():
     return complement_definitions()
 
 
+@app.get("/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/overview")
+async def hereditary_faod_atlas_overview():
+    """Hereditary-FAOD-Mitochondrial-Fatty-Acid-Oxidation-Atlas overview — ACADM-MCAD-most-common-FAOD-K304E-C8-hexanoylglycine; ACADVL-VLCAD-C14:1-cardiac-myopathic-rhabdomyolysis; HADHA-LCHAD-retinopathy-neuropathy-AFLP-c.1528G>A; CPT1A-liver-C0/(C16+C18)-Arctic-P479L; CPT2-rhabdomyolysis-anesthesia-CI-bezafibrate; SLC25A20-CACT-neonatal-hyperammonemia-carnitine-trap; HADHB-MTP-beta-complete-MTP; HADH-SCHAD-hyperinsulinism-GDH-disinhibition; seeds-4118-4125."""
+    from scripts.hereditary_faod_mitochondrial_fatty_acid_oxidation_atlas_dashboard import generate_overview as faod_overview
+    return faod_overview()
+
+@app.get("/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/breakdown")
+async def hereditary_faod_atlas_breakdown():
+    """Hereditary-FAOD-Mitochondrial-Fatty-Acid-Oxidation-Atlas breakdown — medium-chain-ACADM; very-long-chain-ACADVL; long-chain-hydroxyacyl-HADHA-HADHB-maternal-AFLP; carnitine-transport-CPT1A-CPT2-SLC25A20; short-chain-hyperinsulinism-HADH; metabolic-groups; seeds-4118-4125."""
+    from scripts.hereditary_faod_mitochondrial_fatty_acid_oxidation_atlas_dashboard import generate_breakdown as faod_breakdown
+    return faod_breakdown()
+
+@app.get("/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/definitions")
+async def hereditary_faod_atlas_definitions():
+    """Hereditary-FAOD-Mitochondrial-Fatty-Acid-Oxidation-Atlas definitions — beta-oxidation-cycle; MCAD-K304E-fasting-protocol; LCHAD-retinopathy-maternal-AFLP; CPT2-anesthesia-CI-bezafibrate; SCHAD-hyperinsulinism-GDH; CACT-hyperammonemia-carnitine; CPT1A-Arctic-P479L-inverted-ratio; cascade-diagnostic-algorithm; seeds-4118-4125."""
+    from scripts.hereditary_faod_mitochondrial_fatty_acid_oxidation_atlas_dashboard import generate_definitions as faod_definitions
+    return faod_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

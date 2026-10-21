@@ -23935,5 +23935,33 @@
     ],
     "portal_page": "/hereditary-complement-pathway-terminal-regulatory-deficiency-atlas",
     "script": "scripts/hereditary_complement_pathway_terminal_regulatory_deficiency_atlas_dashboard.py"
+  },
+  {
+    "id": "hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas",
+    "title": "Hereditary FAOD / Mitochondrial Fatty Acid Oxidation Atlas",
+    "subtitle": "Complete 8-Gene Reference \u2014 ACADM/ACADVL/HADHA/CPT1A/CPT2/SLC25A20/HADHB/HADH",
+    "genes": [
+      "ACADM",
+      "ACADVL",
+      "HADHA",
+      "CPT1A",
+      "CPT2",
+      "SLC25A20",
+      "HADHB",
+      "HADH"
+    ],
+    "n_patients": 320,
+    "seeds": "4118-4125",
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/overview",
+      "/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/breakdown",
+      "/api/hereditary-faod-mitochondrial-fatty-acid-oxidation-atlas/definitions"
+    ],
+    "registered": "2026-10-21",
+    "role": "Metabolic Disease Specialist",
+    "viz": "Hypoketotic hypoglycemia + acylcarnitine profile + NBS markers + organ involvement matrix (cardiac/retinal/neurologic) + maternal AFLP indicator + treatment matrix (fasting protocol/MCT/diazoxide/bezafibrate)",
+    "feature": "Complete FAOD differential: MCAD-K304E vs VLCAD-C14:1 vs LCHAD-c.1528G>A-retinopathy-AFLP vs CPT1A-inverted-C0-ratio-Arctic vs CPT2-rhabdomyolysis-anesthesia-CI vs CACT-neonatal-hyperammonemia vs MTP-beta-HADHB vs SCHAD-hyperinsulinism",
+    "name": "Hereditary-FAOD-Mitochondrial-Fatty-Acid-Oxidation-Atlas Complete-8-Gene-ACADM-ACADVL-HADHA-CPT1A-CPT2-SLC25A20-HADHB-HADH ACADM-421aa-1p31.1-AR-LOF-MCAD-Most-Common-FAOD-Caucasians-K304E-C8-NBS-Hexanoylglycine ACADVL-655aa-17p13.1-AR-LOF-VLCAD-C14:1-NBS-3Forms-Cardiac-Myopathic HADHA-763aa-3p25.3-AR-LOF-LCHAD-c.1528G>A-Retinopathy-Neuropathy-AFLP CPT1A-773aa-11q13.3-AR-LOF-Liver-C0/C16+C18-GT100-Arctic-P479L CPT2-658aa-1p32.3-AR-LOF-Rhabdomyolysis-S113L-Anesthesia-CI-Bezafibrate SLC25A20-301aa-3p21.31-AR-LOF-CACT-Neonatal-Hyperammonemia-Carnitine-Trap HADHB-474aa-2p23.3-AR-LOF-MTP-Beta-Complete-MTP HADH-261aa-4q25-AR-LOF-SCHAD-Hyperinsulinism-GDH-Disinhibition-Diazoxide 320-Patient-Aggregate-8x40-seeds-4118-4125"
   }
 ]
