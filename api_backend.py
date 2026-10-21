@@ -52818,6 +52818,25 @@ async def hereditary_nfkb_innate_atlas_definitions():
     return nfkb_definitions()
 
 
+@app.get("/api/hereditary-cvid-spectrum-bcell-deficiency-atlas/overview")
+async def hereditary_cvid_spectrum_atlas_overview():
+    """Hereditary-CVID-Spectrum-B-Cell-Deficiency-Atlas overview — ICOS-AR-LOF-germinal-center-failure; TACI-most-prevalent-CVID-gene-10-15pct; BAFF-R-mild-IgM-first; CD19-normal-B-cells-agammaglobulinemia; CD81-TAPA1-CD19-secondary; LRBA-abatacept-CTLA4-trafficking; CTLA4-AD-LOF-organ-infiltration; PIK3CD-APDS1-leniolisib-FDA2023; seeds-4102-4109."""
+    from scripts.hereditary_cvid_spectrum_bcell_deficiency_atlas_dashboard import generate_overview as cvid_overview
+    return cvid_overview()
+
+@app.get("/api/hereditary-cvid-spectrum-bcell-deficiency-atlas/breakdown")
+async def hereditary_cvid_spectrum_atlas_breakdown():
+    """Hereditary-CVID-Spectrum-B-Cell-Deficiency-Atlas breakdown — B-cell-co-receptor-CD19-CD81; BAFF-APRIL-axis-TACI-BAFF-R; germinal-center-ICOS; CTLA4-LRBA-lysosomal-trafficking; PIK3CD-PI3K-mTOR; pathway-groups; abatacept-responsive-cluster; seeds-4102-4109."""
+    from scripts.hereditary_cvid_spectrum_bcell_deficiency_atlas_dashboard import generate_breakdown as cvid_breakdown
+    return cvid_breakdown()
+
+@app.get("/api/hereditary-cvid-spectrum-bcell-deficiency-atlas/definitions")
+async def hereditary_cvid_spectrum_atlas_definitions():
+    """Hereditary-CVID-Spectrum-B-Cell-Deficiency-Atlas definitions — CVID-diagnostic-criteria; TACI-C104R-A181E-variants; LRBA-CTLA4-surface-assay; APDS1-senescent-CD8-pathognomonic; leniolisib-FDA2023; abatacept-mechanism-CTLA4-Ig; cascade-diagnostic; seeds-4102-4109."""
+    from scripts.hereditary_cvid_spectrum_bcell_deficiency_atlas_dashboard import generate_definitions as cvid_definitions
+    return cvid_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
