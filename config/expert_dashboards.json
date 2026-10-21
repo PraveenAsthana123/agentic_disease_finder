@@ -23983,5 +23983,27 @@
     "n_patients": 320,
     "seeds": "3398-3405",
     "registered": "2026-10-21"
+  },
+  {
+    "id": "hereditary-madd-etf-primary-carnitine-deficiency-atlas",
+    "title": "Hereditary-MADD-ETF-Primary-Carnitine-Deficiency-Atlas",
+    "subtitle": "Hereditary MADD-ETF and Primary Carnitine Deficiency \u2014 8-Gene Complete Reference (ETFA/ETFB/ETFDH/SLC22A5/ACADS/ACADL/HSD17B10/DECR1)",
+    "category": "hereditary-metabolic",
+    "status": "built",
+    "genes": [
+      "ETFA",
+      "ETFB",
+      "ETFDH",
+      "SLC22A5",
+      "ACADS",
+      "ACADL",
+      "HSD17B10",
+      "DECR1"
+    ],
+    "seeds": "4126-4133",
+    "patients": 320,
+    "api_base": "/api/hereditary-madd-etf-primary-carnitine-deficiency-atlas",
+    "portal_page": "/hereditary-madd-etf-primary-carnitine-deficiency-atlas",
+    "built_date": "2026-10-21"
   }
 ]

@@ -52894,6 +52894,25 @@ async def hereditary_crc_predisposition_atlas_definitions():
     return crc_definitions()
 
 
+@app.get("/api/hereditary-madd-etf-primary-carnitine-deficiency-atlas/overview")
+async def hereditary_madd_etf_atlas_overview():
+    """Hereditary-MADD-ETF-Primary-Carnitine-Deficiency-Atlas overview — ETFA-333aa-15q23-MADD-GA2-type-I-ETF-alpha-neonatal-severe; ETFB-255aa-19q13.41-MADD-GA2-type-II-ETF-beta; ETFDH-617aa-4q32.1-MADD-type-III-MOST-riboflavin-responsive-adult-myopathic-Ala84Thr-Asian; SLC22A5-557aa-5q31.1-OCTN2-primary-carnitine-deficiency-DCM-L-carnitine-CURATIVE; ACADS-412aa-12q24.31-SCAD-NBS-usually-benign-C4; ACADL-429aa-2q34-LCAD-very-rare-C12-C14; HSD17B10-261aa-Xp11.22-XLR-ONLY-X-linked-FAO-neurodegeneration; DECR1-340aa-8q21.3-DECR1-deficiency-C10:2; seeds-4126-4133."""
+    from scripts.hereditary_madd_etf_primary_carnitine_deficiency_atlas_dashboard import generate_overview as madd_overview
+    return madd_overview()
+
+@app.get("/api/hereditary-madd-etf-primary-carnitine-deficiency-atlas/breakdown")
+async def hereditary_madd_etf_atlas_breakdown():
+    """Hereditary-MADD-ETF-Primary-Carnitine-Deficiency-Atlas breakdown — ETF-complex-MADD-ETFA-ETFB-ETFDH; carnitine-transport-SLC22A5-DCM-reversal; short-long-chain-dehydrogenases-ACADS-ACADL; X-linked-rare-HSD17B10-DECR1; riboflavin-response-groups; seeds-4126-4133."""
+    from scripts.hereditary_madd_etf_primary_carnitine_deficiency_atlas_dashboard import generate_breakdown as madd_breakdown
+    return madd_breakdown()
+
+@app.get("/api/hereditary-madd-etf-primary-carnitine-deficiency-atlas/definitions")
+async def hereditary_madd_etf_atlas_definitions():
+    """Hereditary-MADD-ETF-Primary-Carnitine-Deficiency-Atlas definitions — ETF-electron-transfer-chain; riboflavin-responsive-ETFDH-Ala84Thr; SLC22A5-OCTN2-carnitine-wasting-DCM-curative; SCAD-NBS-benign-debate; HSD10-X-linked-only-FAO; MADD-multiple-acylcarnitines-diagnostic; cascade-NBS-algorithm; seeds-4126-4133."""
+    from scripts.hereditary_madd_etf_primary_carnitine_deficiency_atlas_dashboard import generate_definitions as madd_definitions
+    return madd_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
