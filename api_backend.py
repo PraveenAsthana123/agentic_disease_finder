@@ -53083,6 +53083,24 @@ async def hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_definitio
     from scripts.hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_dashboard import generate_definitions as hcys_definitions
     return hcys_definitions()
 
+@app.get("/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/overview")
+async def hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_overview():
+    """Hereditary-NKH-Glycine-Encephalopathy-Hyperekplexia-Atlas overview — GLDC-1020aa-9p24.1-AR-P-protein-80pct-NKH-BurstSuppression-Hiccupping-PATHOGNOMONIC-CSFglycine-ratio-GT0.08; AMT-403aa-3p21.31-AR-T-protein-10pct-NKH-IDENTICAL-GLDC-biochem; GCSH-173aa-16q23.2-AR-H-protein-LT1pct-NKH-ULTRARARE; DLD-509aa-7q31.1-AR-L-protein-COMBINED-PDH-KGDH-BCKDH-GCS-LacticAcidosis-PATHOGNOMONIC; GLRA1-464aa-5q33.1-AD-AR-Hyperekplexia1-StarTleDisease-NoseTap-PATHOGNOMONIC-ClonazepamEffective; GLRB-474aa-4q32.1-AR-Hyperekplexia2-IDENTICAL-GLRA1; SLC6A5-799aa-11p15.1-AD-AR-GlyT2-Hyperekplexia3-PresynapticGlycineDepletion; SLC6A9-706aa-1p34.1-AR-GlyT1-GlycineEncephalopathy-CSFglycineElevated-GCS-NORMAL; seeds-4198-4205."""
+    from scripts.hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_dashboard import generate_overview as nkh_overview
+    return nkh_overview()
+
+@app.get("/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/breakdown")
+async def hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_breakdown():
+    """Hereditary-NKH-Glycine-Encephalopathy-Hyperekplexia-Atlas breakdown — nkh-gcs-GLDC-AMT-GCSH-DLD; hyperekplexia-GLRA1-GLRB-SLC6A5-SLC6A9; CSF-plasma-glycine-ratio-GT0.08-NKH; DLD-lactic-acidosis-PATHOGNOMONIC-DDx; GLRA1-nose-tap-PATHOGNOMONIC; clonazepam-hyperekplexia-vs-NaB-dextromethorphan-NKH; GCS-enzyme-NORMAL-SLC6A9-DDx-true-NKH; cascade-algorithm; seeds-4198-4205."""
+    from scripts.hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_dashboard import generate_breakdown as nkh_breakdown
+    return nkh_breakdown()
+
+@app.get("/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/definitions")
+async def hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_definitions():
+    """Hereditary-NKH-Glycine-Encephalopathy-Hyperekplexia-Atlas definitions — NKH-CSF-plasma-ratio-GT0.08; hyperekplexia-startle-disease; nose-tap-test-PATHOGNOMONIC; GCS-four-proteins; burst-suppression-EEG; sodium-benzoate-mechanism; dextromethorphan-NMDA; gephyrin-GLRB-synaptic-clustering; GlyT2-presynaptic-vs-GlyT1-astrocytic; DLD-combined-deficiency; ketotic-hyperglycinemia-DDx; attenuated-NKH; vigabatrin-AVOID-NKH; seeds-4198-4205."""
+    from scripts.hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_dashboard import generate_definitions as nkh_definitions
+    return nkh_definitions()
+
 
 if __name__ == "__main__":
     import os

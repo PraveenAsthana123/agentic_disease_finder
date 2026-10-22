@@ -24151,5 +24151,30 @@
     ],
     "portal_page": "/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas",
     "registered": "2026-10-22"
+  },
+  {
+    "id": "hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas",
+    "name": "Hereditary-NKH-Glycine-Encephalopathy-Hyperekplexia-Atlas",
+    "status": "built",
+    "category": "hereditary-metabolic-neurological",
+    "genes": [
+      "GLDC",
+      "AMT",
+      "GCSH",
+      "DLD",
+      "GLRA1",
+      "GLRB",
+      "SLC6A5",
+      "SLC6A9"
+    ],
+    "seeds": "4198-4205",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/overview",
+      "/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/breakdown",
+      "/api/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas",
+    "registered": "2026-10-22"
   }
 ]
