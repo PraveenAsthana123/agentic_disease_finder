@@ -24068,5 +24068,35 @@
     "cohort_n": 320,
     "seed": null,
     "registered": "2026-10-21"
+  },
+  {
+    "id": "hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas",
+    "name": "Hereditary-Tyrosinemia-Aromatic-Aminoacidopathy-Atlas Complete-8-Gene-FAH-TAT-HPD-HGD-SLC7A7-OAT-DDC-SLC7A9 FAH-419aa-15q25.1-AR-HT1-Succinylacetone-NBS-PATHOGNOMONIC-Nitisinone-FDA1998 TAT-454aa-16q22.2-AR-HT2-Corneal-Crystals-PATHOGNOMONIC HPD-393aa-12q24.31-AR-HT3-Mildest-No-SA HGD-445aa-3q13.33-AR-Alkaptonuria-Dark-Urine-PATHOGNOMONIC-Ochronosis SLC7A7-511aa-14q11.2-AR-LPI-Protein-Aversion-PATHOGNOMONIC OAT-439aa-10q26.13-AR-Gyrate-Atrophy-Chorioretinal-PATHOGNOMONIC-B6 DDC-480aa-7p12.2-AR-AADC-Oculogyric-Crises-PATHOGNOMONIC-Upstaza-EU2023 SLC7A9-531aa-19q13.11-AR-Cystinuria-TypeB-Hexagonal-Crystals-PATHOGNOMONIC seeds-4158-4165",
+    "status": "built",
+    "route": "/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas",
+    "api": [
+      "/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/overview",
+      "/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/breakdown",
+      "/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/page.jsx",
+    "cohort_n": 320,
+    "seed": null,
+    "registered": "2026-10-21"
+  },
+  {
+    "id": "hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas",
+    "name": "Hereditary-SCN-Granulocyte-Cytotoxic-Granule-Defect-Atlas Complete-8-Gene-ELANE-HAX1-G6PC3-WASP-CXCR4-LYST-RAB27A-AP3B1 ELANE-218aa-19p13.3-AD-SCN-I-CyclicNeutropenia-21day-PATHOGNOMONIC-AML-15pct-G-CSF HAX1-279aa-1q21.3-AR-SCN-III-Kostmann-RS-Variant-Neurodegeneration-isoform1+2 G6PC3-346aa-17q21.31-AR-SCN-IV-VenousAngiectasias-PATHOGNOMONIC-CardiacDefects WASP-502aa-Xp11.22-XLR-WAS-Microplatelets-MPV-lt7fL-PATHOGNOMONIC-HSCT CXCR4-360aa-2q22.1-AD-GOF-WHIM-Myelokathexis-PATHOGNOMONIC-Plerixafor-FDA2024 LYST-3801aa-1q42.3-AR-CHS-GiantGranules-PBS-PATHOGNOMONIC-NK-Absent-HLH-Accelerated RAB27A-221aa-15q21.3-AR-GS2-SilveryHair-PATHOGNOMONIC-HLH-No-Neurological-HSCT AP3B1-1094aa-5q14.1-AR-HPS2-OCA-Neutropenia-HLH-AbsentDenseGranules seeds-4166-4173",
+    "status": "built",
+    "route": "/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas",
+    "api": [
+      "/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/overview",
+      "/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/breakdown",
+      "/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/definitions"
+    ],
+    "frontend": "portal-next/app/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/page.jsx",
+    "cohort_n": 320,
+    "seed": null,
+    "registered": "2026-10-21"
   }
 ]

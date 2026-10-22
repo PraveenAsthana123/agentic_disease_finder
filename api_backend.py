@@ -52989,6 +52989,44 @@ async def hereditary_cgd_atlas_definitions():
     return cgd_definitions()
 
 
+@app.get("/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/overview")
+async def hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_overview():
+    """Hereditary-Tyrosinemia-Aromatic-Aminoacidopathy-Atlas overview — FAH-419aa-15q25.1-AR-HT1-Succinylacetone-NBS-PATHOGNOMONIC-Nitisinone-FDA1998-HCC-Surveillance; TAT-454aa-16q22.2-AR-HT2-Richner-Hanhart-Corneal-Crystals-PATHOGNOMONIC-Keratoderma-Diet-ONLY; HPD-393aa-12q24.31-AR-HT3-Mild-Neurological-No-SA-No-Liver; HGD-445aa-3q13.33-AR-Alkaptonuria-Dark-Urine-PATHOGNOMONIC-Ochronosis; SLC7A7-511aa-14q11.2-AR-LPI-Protein-Aversion-PATHOGNOMONIC-Hyperammonemia-Citrulline; OAT-439aa-10q26.13-AR-Gyrate-Atrophy-Chorioretinal-PATHOGNOMONIC-B6-Responsive; DDC-480aa-7p12.2-AR-AADC-Deficiency-Oculogyric-Crises-PATHOGNOMONIC-Upstaza-EU2023; SLC7A9-531aa-19q13.11-AR-Cystinuria-TypeB-Hexagonal-Crystals-Tiopronin; seeds-4158-4165."""
+    from scripts.hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_dashboard import generate_overview as tyr_aa_overview
+    return tyr_aa_overview()
+
+@app.get("/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/breakdown")
+async def hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_breakdown():
+    """Hereditary-Tyrosinemia-Aromatic-Aminoacidopathy-Atlas breakdown — tyrosine-catabolism-FAH-TAT-HPD-HGD; amino-acid-transport-SLC7A7-SLC7A9; ornithine-OAT; aromatic-synthesis-DDC; nitisinone-spectrum-HT1-AKU; seeds-4158-4165."""
+    from scripts.hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_dashboard import generate_breakdown as tyr_aa_breakdown
+    return tyr_aa_breakdown()
+
+@app.get("/api/hereditary-tyrosinemia-aromatic-aminoacidopathy-atlas/definitions")
+async def hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_definitions():
+    """Hereditary-Tyrosinemia-Aromatic-Aminoacidopathy-Atlas definitions — HT1-succinylacetone-nitisinone; HT2-corneal-crystals-diet; HT3-HPD-neurological; AKU-dark-urine-ochronosis; LPI-protein-aversion-citrulline; GA-gyrate-atrophy-ornithine; AADC-oculogyric-3OMD-Upstaza; cystinuria-tiopronin-alkalinise; seeds-4158-4165."""
+    from scripts.hereditary_tyrosinemia_aromatic_aminoacidopathy_atlas_dashboard import generate_definitions as tyr_aa_definitions
+    return tyr_aa_definitions()
+
+
+@app.get("/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/overview")
+async def hereditary_scn_granulocyte_atlas_overview():
+    """Hereditary-SCN-Granulocyte-Cytotoxic-Granule-Defect-Atlas overview — ELANE-218aa-19p13.3-AD-SCN-I-CyclicNeutropenia-21day-PATHOGNOMONIC-AML-15pct-G-CSF; HAX1-279aa-1q21.3-AR-SCN-III-Kostmann-RS-Variant-Neurodegeneration; G6PC3-346aa-17q21.31-AR-SCN-IV-VenousAngiectasias-PATHOGNOMONIC-CardiacDefects; WASP-502aa-Xp11.22-XLR-WAS-Microplatelets-PATHOGNOMONIC-MPV-lt7fL-Eczema-HSCT; CXCR4-360aa-2q22.1-AD-GOF-WHIM-Myelokathexis-PATHOGNOMONIC-Plerixafor-FDA2024; LYST-3801aa-1q42.3-AR-CHS-GiantGranules-PBS-PATHOGNOMONIC-NK-Absent-HLH-Accelerated; RAB27A-221aa-15q21.3-AR-GS2-SilveryHair-PATHOGNOMONIC-HLH-No-Neurological; AP3B1-1094aa-5q14.1-AR-HPS2-OCA-Neutropenia-HLH-AbsentDenseGranules; seeds-4166-4173."""
+    from scripts.hereditary_scn_granulocyte_cytotoxic_granule_defect_atlas_dashboard import generate_overview as scn_overview
+    return scn_overview()
+
+@app.get("/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/breakdown")
+async def hereditary_scn_granulocyte_atlas_breakdown():
+    """Hereditary-SCN-Granulocyte-Cytotoxic-Granule-Defect-Atlas breakdown — SCN-maturation-arrest-ELANE-HAX1-G6PC3; actin-cytoskeleton-WASP-WAS-XLN; chemokine-retention-CXCR4-myelokathexis; granule-biogenesis-LYST-RAB27A-AP3B1-HLH; plerixafor-WHIM-FDA2024; HSCT-indications; cascade-ANC-cycling-silvery-hair; seeds-4166-4173."""
+    from scripts.hereditary_scn_granulocyte_cytotoxic_granule_defect_atlas_dashboard import generate_breakdown as scn_breakdown
+    return scn_breakdown()
+
+@app.get("/api/hereditary-scn-granulocyte-cytotoxic-granule-defect-atlas/definitions")
+async def hereditary_scn_granulocyte_atlas_definitions():
+    """Hereditary-SCN-Granulocyte-Cytotoxic-Granule-Defect-Atlas definitions — SCN-cycling-ELANE-myelokathexis-CXCR4; giant-granules-LYST-PBS-PATHOGNOMONIC; silvery-hair-GS2-RAB27A-no-PBS-granules; microplatelets-MPV-WAS-WASP; WHIM-tetrad-warts-myelokathexis; HPS2-AP3B1-OCA-neutropenia-HLH-no-fibrosis; plerixafor-mechanism-WHIM; cascade-algorithm; seeds-4166-4173."""
+    from scripts.hereditary_scn_granulocyte_cytotoxic_granule_defect_atlas_dashboard import generate_definitions as scn_definitions
+    return scn_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
