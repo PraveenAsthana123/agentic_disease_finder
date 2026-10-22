@@ -24201,5 +24201,29 @@
     ],
     "portal_page": "/hereditary-thiamine-biotin-lipoate-cofactor-atlas",
     "registered": "2026-10-22"
+  },
+  {
+    "id": "hereditary-urea-cycle-disorder-atlas",
+    "name": "Hereditary-Urea-Cycle-Disorder-Atlas",
+    "status": "built",
+    "category": "hereditary-metabolic",
+    "genes": [
+      "CPS1",
+      "OTC",
+      "ASS1",
+      "ASL",
+      "ARG1",
+      "NAGS",
+      "SLC25A15",
+      "SLC25A13"
+    ],
+    "seeds": "4214-4221",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-urea-cycle-disorder-atlas/overview",
+      "/api/hereditary-urea-cycle-disorder-atlas/breakdown",
+      "/api/hereditary-urea-cycle-disorder-atlas/definitions"
+    ],
+    "registered": "2026-10-22"
   }
 ]

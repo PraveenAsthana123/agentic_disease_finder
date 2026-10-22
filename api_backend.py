@@ -53120,6 +53120,25 @@ async def hereditary_thiamine_biotin_lipoate_cofactor_atlas_definitions():
     return tbl_definitions()
 
 
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/overview")
+async def hereditary_urea_cycle_disorder_atlas_overview():
+    """Hereditary-Urea-Cycle-Disorder-Atlas overview — CPS1-1500aa-2q35-AR-CPS1Deficiency-OroticAcid-ABSENT-NCG-Trial-NAGS-DDx-LiverTx; OTC-354aa-Xp11.4-XLR-MostCommon-UCD-OroticAcid-MARKEDLY-ELEVATED-AllopurinolTest-Carriers; ASS1-412aa-9q34.11-AR-CTLN1-Citrulline-GT1000-NBS-DETECTABLE-ArgSupplementation; ASL-464aa-7q11.21-AR-ASA-ArgininosuccinatePathognomonic-HairFragility-HTN; ARG1-330aa-6q23.2-AR-Arginemia-SpasticDiplegia-Arginine-MARKEDLY-HIGH-Hyperammonemia-MILD; NAGS-534aa-17q21.31-AR-RarestUCD-Carglumate-CURATIVE-Empirical; SLC25A15-301aa-13q14.11-AR-HHH-Homocitrullinuria-PATHOGNOMONIC-FrenchCanadian; SLC25A13-675aa-7q21.3-AR-CitrinNICCD-CTLN2-EastAsian-FoodCravings-LiverTxURGENT; seeds-4214-4221."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_overview as ucd_overview
+    return ucd_overview()
+
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/breakdown")
+async def hereditary_urea_cycle_disorder_atlas_breakdown():
+    """Hereditary-Urea-Cycle-Disorder-Atlas breakdown — proximal-CPS1-OTC-orotic-absent-vs-elevated; activator-NAGS-NCG-curative; distal-ASS1-ASL-ARG1-NBS-detectable; transport-SLC25A15-HHH-SLC25A13-citrin; orotic-acid-algorithm; carglumic-acid-empirical-MANDATORY; ARG1-arginine-restriction-OPPOSITE; ASL-hair-HTN-post-transplant; CTLN2-IV-glycerol-CI; cascade-algorithm; seeds-4214-4221."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_breakdown as ucd_breakdown
+    return ucd_breakdown()
+
+@app.get("/api/hereditary-urea-cycle-disorder-atlas/definitions")
+async def hereditary_urea_cycle_disorder_atlas_definitions():
+    """Hereditary-Urea-Cycle-Disorder-Atlas definitions — orotic-acid-first-branch; NCG-trial-mandatory-CPS1-like; ASL-hair-fragility-HTN-persist-post-transplant; arginemia-spastic-diplegia-not-hyperammonemia; HHH-homocitrulline-pathognomonic; CTLN2-food-cravings-pathognomonic; OTC-female-carriers-allopurinol-test; NICCD-vs-ASS1-citrullinemia-NBS; primary-cascade-split; seeds-4214-4221."""
+    from scripts.hereditary_urea_cycle_disorder_atlas_dashboard import generate_definitions as ucd_definitions
+    return ucd_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

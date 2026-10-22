@@ -1,1034 +1,582 @@
 #!/usr/bin/env python3
 """Hereditary-Urea-Cycle-Disorder-Atlas -- Complete 8-Gene Reference
-Urea cycle enzyme/transporter deficiencies with hyperammonemia phenotypes
-(OTC/X-linked-most-common, ASS1/CTLN1-citrullinemia, ASL/argininosuccinicaciduria,
- ARG1/hyperargininemia, CPS1/CPS1-deficiency, NAGS/carglumic-acid-CURATIVE,
- SLC25A13/citrin-CTLN2-Japanese, SLC25A15/HHH-syndrome):
+Urea Cycle & Related Nitrogen Disposal Disorders: CPS1-OTC-ASS1-ASL-ARG1-NAGS-SLC25A15-SLC25A13
+(CPS1/CPS1-Deficiency-Neonatal-Hyperammonemia-OroticAcid-ABSENT-PATHOGNOMONIC-CarglumateTrial-NAGS-DDx,
+ OTC/OTC-Deficiency-MOST-COMMON-UCD-X-Linked-OroticAcid-MARKEDLY-ELEVATED-PATHOGNOMONIC-AllopurinolTest-Carriers,
+ ASS1/Citrullinemia-Type1-CTLN1-Citrulline-GT1000-NBS-DETECTABLE-PATHOGNOMONIC-ArgSupplementation,
+ ASL/Argininosuccinic-Aciduria-ArgininosuccinateInPlasmaUrine-PATHOGNOMONIC-HairFragility-Hypertension,
+ ARG1/Arginemia-SpasticDiplegia-PATHOGNOMONIC-Arginine-MARKEDLY-HIGH-Hyperammonemia-MILD,
+ NAGS/NAGS-Deficiency-Rarest-UCD-CarglumateCURATIVE-EMPIRICAL-ANY-CPS1-Like-Orotic-ABSENT,
+ SLC25A15/HHH-Syndrome-Ornithine-Hyperammonemia-Homocitrullinuria-TRIAD-PATHOGNOMONIC-Canadian-Founder,
+ SLC25A13/Citrin-Deficiency-NICCD-CTLN2-EastAsian-Founder-BiofoodPreference-PATHOGNOMONIC-LivTx-URGENT):
 
-OTC    (Ornithine transcarbamylase; 354aa; Xp11.4; X-linked;
-         Most common UCD worldwide (1:14,000);
-         X-linked: males severe neonatal crisis; females mosaic/variable;
-         Citrulline LOW + orotic acid HIGH PATHOGNOMONIC;
-         Nitrogen scavengers (sodium benzoate/phenylbutyrate);
-         Liver transplant CURATIVE; avoid fasting/catabolism;
-         seed SEED_BASE+0).
-ASS1   (Argininosuccinate synthetase 1; 412aa; 9q34.11; AR;
-         Citrullinemia type 1 (CTLN1);
-         Plasma citrulline >1000 μmol/L PATHOGNOMONIC;
-         Arginine supplementation mandatory;
-         Liver transplant curative;
-         seed SEED_BASE+1).
-ASL    (Argininosuccinate lyase; 464aa; 7q11.21; AR;
-         Argininosuccinic aciduria (ASA);
-         Argininosuccinic acid in plasma/urine PATHOGNOMONIC;
-         Liver-brain dissociation: liver LTx corrects UCD but NOT neurological;
-         Systemic hypertension in 75% even treated;
-         seed SEED_BASE+2).
-ARG1   (Arginase 1; 322aa; 6q23.2; AR;
-         Hyperargininemia (argininemia);
-         MILD hyperammonemia — spastic diplegia + cognitive decline PATHOGNOMONIC;
-         Plasma arginine >200 μmol/L diagnostic;
-         Low-arginine diet prevents neurological progression;
-         seed SEED_BASE+3).
-CPS1   (Carbamoyl phosphate synthetase 1; 1500aa; 2q34; AR;
-         CPS1 deficiency; most severe neonatal UCD;
-         Very low citrulline (identical to OTC/NAGS); orotic acid NORMAL (unlike OTC);
-         Carglumic acid NOT effective — distinct from NAGS;
-         seed SEED_BASE+4).
-NAGS   (N-acetylglutamate synthase; 534aa; 17q21.31; AR;
-         NAGS deficiency; ONLY UCD where carglumic acid (Carbaglu FDA2010) is CURATIVE;
-         Low citrulline + normal orotic acid (same as CPS1); biochemistry identical;
-         Carglumic acid mimics NAG, bypasses NAGS defect;
-         seed SEED_BASE+5).
-SLC25A13 (Citrin / mitochondrial aspartate-glutamate carrier 2; 675aa; 7q21.3; AR;
-           Citrin deficiency / Citrullinemia type II (CTLN2);
-           Japanese founder (exon16 ins3kb); adult onset;
-           Alcohol + high-carbohydrate diet ABSOLUTELY TRIGGER acute liver failure;
-           Low-carb high-fat/protein diet; liver transplant CURATIVE;
-           seed SEED_BASE+6).
-SLC25A15 (Ornithine carrier 1 / ORNT1; 301aa; 13q14.11; AR;
-           HHH syndrome (hyperornithinemia-hyperammonemia-homocitrullinuria);
-           Homocitrulline in urine PATHOGNOMONIC;
-           Progressive spastic paraparesis + cognitive decline;
-           Ornithine restriction + citrulline supplement;
-           seed SEED_BASE+7).
-320-patient aggregate cohort (8 x 40, seeds 3806-3813)
+CPS1  (Carbamoyl phosphate synthetase 1, mitochondrial; 1500aa; 2q35; AR-LOF;
+     CPS1 encodes the first and rate-limiting enzyme of the urea cycle in the mitochondrial matrix;
+     CPS1 catalyzes: NH3 + HCO3- + 2 ATP -> carbamoyl phosphate + 2 ADP + Pi;
+     CPS1 activity REQUIRES N-acetylglutamate (NAG) as obligatory allosteric activator;
+     CPS1 LOF -> complete block in urea cycle at first step -> severe hyperammonemia;
+     CPS1 DEFICIENCY -- OMIM 237300; also called hyperammonemia type I;
+     NEONATAL PRESENTATION: rapidly progressive within 24-72h after birth; NH3 >1000 umol/L (normal <50);
+     CLINICAL: lethargy -> coma -> cerebral edema -> death if untreated; seizures, respiratory failure;
+     CRITICAL BIOMARKER: OROTIC ACID ABSENT or very LOW in urine -- PATHOGNOMONIC distinction from OTC deficiency;
+       orotic acid absent because the metabolic block is BEFORE the cytoplasmic carbamoyl phosphate pool;
+     PLASMA AMINO ACIDS: glutamine VERY HIGH (nitrogen carrier overload), alanine HIGH, citrulline VERY LOW/absent, arginine LOW;
+     DIFFERENTIAL DIAGNOSIS from OTC: both have absent orotic acid -> MUST test for NAGS deficiency via carglumic acid trial;
+       if NH3 normalizes with carglumic acid -> NAGS (not CPS1); molecular testing distinguishes;
+     TREATMENT: emergency: hemodialysis (fastest NH3 removal > peritoneal > exchange transfusion);
+       ammonia scavengers: sodium benzoate 250-500 mg/kg/day IV + sodium phenylacetate 250-500 mg/kg/day IV (Ammonul);
+       arginine supplementation: 200-800 mg/kg/day (can't synthesize arginine without urea cycle);
+       citrulline supplementation (alternative to arginine, may be better tolerated);
+       low protein diet, nitrogen restriction, supplemental calories (prevent catabolism);
+     LIVER TRANSPLANT: curative for hyperammonemia (donor hepatocytes perform normal ureagenesis);
+       neonatal transplant possible in severe cases; post-transplant protein restriction not required;
+     GENETICS: largest UCD gene (1500aa); many private mutations; enzyme activity in liver biopsy;
+     NBS: NOT detected by standard NBS (not an amino acid or acylcarnitine marker);
+     seed SEED_BASE+0).
+
+OTC   (Ornithine transcarbamylase; 354aa; Xp11.4; XLR;
+     OTC encodes ornithine transcarbamylase, the second enzyme of the urea cycle (mitochondrial matrix);
+     OTC catalyzes: carbamoyl phosphate + ornithine -> citrulline + Pi;
+     OTC LOF -> carbamoyl phosphate accumulates -> spills to cytoplasm -> enters pyrimidine synthesis -> OROTIC ACID ELEVATED;
+     OTC DEFICIENCY -- OMIM 311250; most common urea cycle disorder (~1:14,000-40,000 males);
+     X-LINKED: males with null mutations -> fatal neonatal hyperammonemia;
+       female carriers (heterozygotes): VARIABLE -- lyonization determines severity (can be severely affected);
+       ~15-20% of all OTC carriers have clinically significant disease; late-onset presentations common;
+     OROTIC ACID MARKEDLY ELEVATED in urine -> PATHOGNOMONIC DDx from CPS1/NAGS;
+       orotic acid elevation: carbamoyl phosphate overflow into cytoplasm -> orotate -> orotic acid;
+     ALLOPURINOL LOADING TEST: used to detect asymptomatic female carriers;
+       allopurinol blocks orotidine -> orotic acid and orotidine BOTH accumulate in carriers;
+     PLASMA AMINO ACIDS: glutamine HIGH, alanine HIGH, citrulline VERY LOW/absent (same as CPS1);
+     CRITICAL DISTINCTION from CPS1: OROTIC ACID -> HIGH in OTC vs LOW/ABSENT in CPS1;
+     CLINICAL: neonatal males same as CPS1; female carriers: episodic hyperammonemia (protein-triggered, illness-triggered);
+       protein aversion: behavioral avoidance of protein-rich foods (self-protective phenomenon);
+     TREATMENT: identical to CPS1 -- benzoate + phenylacetate + arginine + low protein diet;
+       liver transplant curative for hyperammonemia;
+     NBS: NOT detected by standard NBS;
+     seed SEED_BASE+1).
+
+ASS1  (Argininosuccinate synthetase 1; 412aa; 9q34.11; AR-LOF;
+     ASS1 encodes argininosuccinate synthetase, third enzyme of the urea cycle (cytoplasmic);
+     ASS1 catalyzes: citrulline + aspartate + ATP -> argininosuccinate + AMP + PPi;
+     ASS1 LOF -> citrulline ACCUMULATES in blood -> CITRULLINEMIA TYPE 1 (CTLN1);
+     CITRULLINEMIA TYPE 1 -- OMIM 215700;
+     PLASMA AMINO ACIDS: CITRULLINE MARKEDLY ELEVATED (>1000 umol/L in neonatal form, normal <50 umol/L) -> PATHOGNOMONIC;
+     NBS-DETECTABLE: citrulline elevated on tandem mass spectrometry (standard NBS panel in most countries);
+     CLINICAL FORMS: classic neonatal (NH3 >1000 umol/L) or mild/late-onset (partial enzyme);
+     DIFFERENTIAL from ASL deficiency: ASL ALSO has elevated citrulline BUT ALSO argininosuccinic acid present;
+       pure citrulline elevation without argininosuccinic acid -> ASS1 until proven otherwise;
+     ARGININE SUPPLEMENTATION: CRITICAL -- ASS1 block prevents arginine synthesis -> arginine ESSENTIAL;
+       arginine supplementation 200-800 mg/kg/day;
+     LIVER TRANSPLANT: curative; hepatic ASS1 activity restored;
+     seed SEED_BASE+2).
+
+ASL   (Argininosuccinate lyase; 464aa; 7q11.21; AR-LOF;
+     ASL encodes argininosuccinate lyase, fourth enzyme of the urea cycle (cytoplasmic + nuclear);
+     ASL catalyzes: argininosuccinate -> arginine + fumarate;
+     ASL LOF -> argininosuccinate ACCUMULATES in blood, urine, CSF;
+     ARGININOSUCCINIC ACIDURIA (ASA) -- OMIM 207900;
+     ARGININOSUCCINIC ACID in plasma AND urine -> PATHOGNOMONIC (detected by HPLC/tandem MS);
+     NBS-DETECTABLE: argininosuccinate detected by tandem mass spec (plus elevated citrulline);
+     HAIR FRAGILITY -- TRICHORRHEXIS NODOSA -> PATHOGNOMONIC of long-term ASL;
+       hair shafts fracture easily (trichorrhexis nodosa on hair microscopy) in treated survivors;
+       caused by arginine deficiency in hair follicles (arginine needed for creatine in hair matrix);
+       NOT a vitamin deficiency -- pathognomonic for ASL specifically;
+     HYPERTENSION: common in treated ASL patients (even with controlled NH3) -- PATHOGNOMONIC of ASL;
+       ASL also functions in arginine-citrulline cycle in endothelium -> NO synthesis requires ASL;
+       NO deficiency -> systemic hypertension;
+     LIVER TRANSPLANT: corrects hepatic hyperammonemia but does NOT correct hair fragility or hypertension;
+       systemic (extrahepatic) ASL deficiency persists post-liver transplant -- UNIQUE among UCDs;
+     seed SEED_BASE+3).
+
+ARG1  (Arginase 1, liver-type; 330aa; 6q23.2; AR-LOF;
+     ARG1 encodes arginase 1, the fifth and final cytoplasmic enzyme of the urea cycle;
+     ARG1 catalyzes: arginine -> ornithine + urea;
+     ARG1 LOF -> arginine ACCUMULATES; urea cycle still partially functional (ornithine pathway);
+     ARGINEMIA -- OMIM 207800;
+     UNIQUE PHENOTYPE -- COMPLETELY DIFFERENT from other UCDs:
+       HYPERAMMONEMIA IS MILD OR ABSENT -- unlike other UCDs, arginemia rarely causes neonatal crisis;
+       PRIMARY PRESENTATION: PROGRESSIVE SPASTIC DIPLEGIA/PARAPARESIS -> PATHOGNOMONIC;
+         spasticity, scissor gait, developmental regression, cerebral palsy-like picture;
+         caused by arginine/guanidino compound neurotoxicity;
+     ARGININE MARKEDLY ELEVATED in plasma (>200-500 umol/L, normal <120) -> PATHOGNOMONIC;
+     TREATMENT: DIETARY ARGININE RESTRICTION (different from other UCDs which need arginine supplementation);
+       low protein diet + essential amino acid supplementation;
+       ornithine or citrulline supplementation (bypass to reduce arginine accumulation);
+       ammonia scavengers generally NOT needed (hyperammonemia mild);
+     LIVER TRANSPLANT: corrects arginine elevation but neurological damage may not fully reverse;
+     seed SEED_BASE+4).
+
+NAGS  (N-acetylglutamate synthase; 534aa; 17q21.31; AR-LOF;
+     NAGS encodes N-acetylglutamate synthase, which produces NAG (N-acetylglutamate) from glutamate + acetyl-CoA;
+     NAG is the OBLIGATORY ALLOSTERIC ACTIVATOR of CPS1 -- without NAG, CPS1 is inactive;
+     NAGS LOF -> NAG deficiency -> CPS1 inactive -> identical phenotype to CPS1 deficiency;
+     NAGS DEFICIENCY -- OMIM 237310; RAREST urea cycle disorder (~50 cases worldwide);
+     PHENOTYPE: IDENTICAL to CPS1 -- neonatal hyperammonemia + orotic acid ABSENT;
+       biochemically INDISTINGUISHABLE from CPS1 without specific testing or molecular;
+     PATHOGNOMONIC TREATMENT RESPONSE: CARGLUMIC ACID (N-carbamylglutamate, NCG) is COMPLETELY CURATIVE;
+       NCG is a stable analogue of NAG that activates CPS1 even without NAGS;
+       dose: 100-250 mg/kg/day orally; hyperammonemia resolves COMPLETELY and PERMANENTLY on NCG;
+       NCG trial is BOTH DIAGNOSTIC AND THERAPEUTIC simultaneously;
+     CRITICAL RULE: IN ANY PATIENT WITH NEONATAL HYPERAMMONEMIA + OROTIC ACID ABSENT:
+       ALWAYS GIVE CARGLUMIC ACID EMPIRICALLY BEFORE MOLECULAR RESULTS ARE AVAILABLE;
+       if NH3 normalizes completely on NCG -> NAGS deficiency confirmed;
+       if NO response to NCG -> CPS1 deficiency (then liver transplant planning);
+       NCG is SAFE and has no significant adverse effects;
+     SPECIAL SITUATIONS: acquired NAGS deficiency in propionic/isovaleric acidemia ->
+       NCG may also benefit severe hyperammonemia in organic acidemias;
+     NBS: NOT detected;
+     seed SEED_BASE+5).
+
+SLC25A15 (Solute carrier family 25 member 15 / ORNT1 / Ornithine/citrulline carrier; 301aa; 13q14.11; AR-LOF;
+     SLC25A15 encodes ORNT1, the mitochondrial ornithine/citrulline antiporter;
+     ORNT1 imports ornithine from cytoplasm into mitochondria (where OTC uses it) and exports citrulline;
+     SLC25A15 LOF -> ornithine CANNOT enter mitochondria -> accumulates in cytoplasm;
+       -> intramitochondrial ornithine depletion -> OTC has no substrate -> carbamoyl phosphate buildup;
+       -> carbamoyl phosphate spills to cytoplasm -> orotate -> OROTIC ACIDURIA;
+       -> excess mitochondrial carbamoyl phosphate carbamylates lysine -> HOMOCITRULLINE excreted;
+     HHH SYNDROME -- OMIM 238970 (Hyperornithinemia-Hyperammonemia-Homocitrullinuria);
+     PATHOGNOMONIC TRIAD:
+       (1) HYPERORNITHINEMIA (ornithine >200-400 umol/L, normal <100);
+       (2) EPISODIC HYPERAMMONEMIA (mild/moderate, trigger-induced);
+       (3) HOMOCITRULLINURIA (homocitrulline in urine, PATHOGNOMONIC -- not seen in other UCDs);
+     CLINICAL: NEUROLOGICAL DEGENERATION DOMINATES (unlike classic UCDs where hyperammonemia dominates);
+       cerebellar ataxia (progressive), pyramidal signs, cognitive decline, spastic paraparesis;
+       hyperammonemia is episodic and often MILDER than CPS1/OTC;
+     CANADIAN FOUNDER: French Canadian population -- p.F188del (c.562delTTT) high frequency;
+     TREATMENT: LOW PROTEIN diet + ornithine restriction;
+       citrulline supplementation (provides intramitochondrial substrate bypassing ORNT1);
+       ammonia scavengers for acute crises;
+     seed SEED_BASE+6).
+
+SLC25A13 (Solute carrier family 25 member 13 / Citrin; 675aa; 7q21.3; AR-LOF;
+     SLC25A13 encodes citrin, the mitochondrial aspartate/glutamate carrier isoform 2 (AGC2);
+     Citrin exchanges mitochondrial aspartate for cytoplasmic glutamate + H+;
+     Critical roles: (1) malate-aspartate shuttle (NADH recycling); (2) aspartate supply for ASS1 reaction;
+     SLC25A13 LOF -> cytoplasmic aspartate deficiency -> ASS1 substrate deficient -> citrulline accumulates;
+       also -> NADH/NAD+ imbalance in cytoplasm -> impaired gluconeogenesis, lipid metabolism;
+     CITRIN DEFICIENCY -- TWO DISTINCT AGE-DEPENDENT PHENOTYPES:
+     (1) NICCD (Neonatal Intrahepatic Cholestasis by Citrin Deficiency) -- OMIM 605814:
+         neonatal/infantile cholestasis, mild transaminase elevation, hypoalbuminemia;
+         NBS shows CITRULLINE ELEVATED + GALACTOSE ELEVATED + METHIONINE ELEVATED (NBS pseudo-galactosemia);
+         usually SELF-RESOLVING by age 1-2 years with lactose-free MCT formula;
+     (2) CTLN2 (Citrullinemia Type II, Adult-Onset Citrullinemia) -- OMIM 603859:
+         adult-onset (20-70yr) RECURRENT HYPERAMMONEMIC ENCEPHALOPATHY;
+         BIZARRE FOOD PREFERENCES -> PATHOGNOMONIC: strong craving for protein/fat/nuts/tofu/alcohol;
+           AVERSION to carbohydrates and sweets (self-selection of metabolically correct diet);
+         NOCTURNAL HYPERAMMONEMIA: episodes often worse at night (fasting state);
+         LETHAL: untreated CTLN2 can cause fatal hyperammonemic coma;
+     EAST ASIAN FOUNDER: Japanese 1:17,000 births, Chinese, Korean;
+       IVS16ins3kb deletion most common; 851del4, IVS6-14G>T also common;
+       RARE in Europeans and Africans;
+     CRITICAL TREATMENT RULE FOR CTLN2: LIVER TRANSPLANT URGENTLY CURATIVE;
+       ABSOLUTELY CONTRAINDICATED: IV glycerol, high-glucose infusions, hyperosmolar solutions ->
+         can trigger fatal hyperammonemic crisis (worsens NADH imbalance);
+       LOW CARBOHYDRATE DIET (medium-chain triglyceride oil) supports patients awaiting transplant;
+       NICCD: lactose-free MCT formula -> most resolve without transplant;
+     seed SEED_BASE+7).
+
+SEED_BASE = 4214
 """
+
+import json
 import random
-
-SEED_BASE = 3806
-
-ATLAS_GENES = [
-    {
-        "gene": "OTC",
-        "protein": (
-            "OTC -- Xp11.4 X-linked LOF -- 354aa -- "
-            "Ornithine-transcarbamylase-mitochondrial-matrix-enzyme-"
-            "most-common-UCD-1in14000-males-severe-neonatal-females-variable-mosaic-"
-            "citrulline-low-orotic-acid-high-PATHOGNOMONIC-"
-            "nitrogen-scavengers-sodium-benzoate-phenylbutyrate-liver-transplant-CURATIVE"
-        ),
-        "locus": "Xp11.4",
-        "protein_size": (
-            "354 aa / ~40 kDa / Xp11.4 OTC ornithine transcarbamylase molecular context: "
-            "STRUCTURE: "
-            "  354 aa; mitochondrial matrix enzyme; catalyzes carbamoyl phosphate + ornithine -> citrulline; "
-            "  Second step in urea cycle; X-linked inheritance (gene on X chromosome); "
-            "  Males: hemizygous LOF = severe neonatal hyperammonemia (most severe form); "
-            "  Females: carrier mosaic (variable expression depending on X-inactivation ratio); "
-            "  Female carriers: 20-30% become symptomatic (migraine, protein aversion, encephalopathy); "
-            "  >600 pathogenic OTC variants identified; "
-            "MALE PRESENTATION (NEONATAL): "
-            "  Hours-to-days: lethargy, poor feeding, vomiting, hypotonia; "
-            "  Progressive encephalopathy, coma, herniation if untreated; "
-            "  Plasma ammonia: >1000 μmol/L (normal <50); "
-            "  WITHOUT DIAGNOSIS/TREATMENT: 100% fatal or severe neurological damage; "
-            "FEMALE CARRIER PRESENTATION: "
-            "  Ranges: asymptomatic → migraine + protein aversion → late-onset hyperammonemia; "
-            "  Often triggered by catabolism (illness, surgery, fasting, high protein); "
-            "  DIAGNOSIS IN FEMALES: enzyme activity unreliable (mosaic); gene sequencing mandatory; "
-            "BIOCHEMISTRY PATHOGNOMONIC: "
-            "  Plasma citrulline: LOW/ABSENT (<5 μmol/L) — OTC produces citrulline; "
-            "  Urine orotic acid: ELEVATED — carbamoyl phosphate shunted to pyrimidine synthesis; "
-            "  Plasma ammonia: severely elevated during crisis; "
-            "  CITRULLINE LOW + OROTIC ACID HIGH = OTC pattern (vs CPS1/NAGS: BOTH low); "
-            "  Plasma glutamine elevated; arginine low; "
-            "TREATMENT: "
-            "  Acute hyperammonemic crisis: hemodialysis for NH3 >500 μmol/L + IV dextrose (stop catabolism); "
-            "  Nitrogen scavengers: sodium benzoate 250 mg/kg/day + sodium phenylbutyrate/phenylacetate; "
-            "    (Buphenyl, RAVICTI/glycerol phenylbutyrate FDA2013); "
-            "  Citrulline supplementation 200 mg/kg/day (replenishes depleted citrulline); "
-            "  Low-protein diet with essential amino acid supplement; "
-            "  FASTING/CATABOLISM ABSOLUTELY AVOID: triggers hyperammonemia crisis; "
-            "  Liver transplant: CURATIVE for urea cycle defect; NO ammonia crises post-LTx; "
-            "    NOTE: LTx does NOT reverse pre-existing neurological damage"
-        ),
-        "syndrome": (
-            "OTC-deficiency / X-linked-most-common-UCD / "
-            "males-severe-neonatal-hyperammonemia / females-carrier-variable / "
-            "citrulline-LOW + orotic-acid-HIGH-PATHOGNOMONIC / "
-            "nitrogen-scavengers-RAVICTI / liver-transplant-CURATIVE / "
-            "fasting-catabolism-ABSOLUTELY-AVOID"
-        ),
-        "inheritance": "X-linked (Xp11.4) — males hemizygous severe; females carrier mosaic variable",
-        "key_therapy": "Nitrogen scavengers (RAVICTI/glycerol phenylbutyrate FDA2013) — citrulline supplementation — LTx CURATIVE",
-        "pathognomonic": (
-            "Plasma citrulline LOW (<5 μmol/L) + urine orotic acid ELEVATED PATHOGNOMONIC OTC pattern; "
-            "Distinguishes OTC from CPS1/NAGS (orotic acid NORMAL in CPS1/NAGS); "
-            "Plasma ammonia >1000 μmol/L neonatal crisis; "
-            "Protein aversion (child refuses protein foods) behavioral marker"
-        ),
-        "key_drugs_ci": [
-            "Sodium-benzoate-250mgkgday-nitrogen-scavenger",
-            "RAVICTI-glycerol-phenylbutyrate-FDA2013-nitrogen-scavenger",
-            "Citrulline-supplementation-200mgkgday",
-            "Hemodialysis-NH3-gt500-micromolL",
-            "Liver-transplant-CURATIVE-no-crises-post-LTx",
-            "FASTING-CATABOLISM-ABSOLUTELY-AVOID",
-        ],
-    },
-    {
-        "gene": "ASS1",
-        "protein": (
-            "ASS1 -- 9q34.11 AR LOF -- 412aa -- "
-            "Argininosuccinate-synthetase-1-cytosolic-enzyme-"
-            "citrullinemia-type-1-CTLN1-"
-            "plasma-citrulline-gt1000-micromolL-PATHOGNOMONIC-"
-            "arginine-supplementation-mandatory-liver-transplant-curative"
-        ),
-        "locus": "9q34.11",
-        "protein_size": (
-            "412 aa / ~47 kDa / 9q34.11 ASS1 argininosuccinate synthetase molecular context: "
-            "STRUCTURE: "
-            "  412 aa; cytosolic; catalyzes citrulline + aspartate -> argininosuccinate (step 3 of urea cycle); "
-            "  Deficiency -> citrulline massively accumulates (cannot be processed); "
-            "  AR inheritance; biallelic ASS1 mutations; "
-            "  Two phenotypes: neonatal-onset severe (classic) + mild adult citrullinemia; "
-            "CITRULLINEMIA TYPE 1 (CTLN1) -- CLASSIC NEONATAL: "
-            "  Onset: 24-72 hr of life (similar to OTC); "
-            "  Severe hyperammonemia (>1000 μmol/L); encephalopathy; "
-            "  Progressive lethargy, coma, cerebral edema; "
-            "  HIGH-RISK: neonatal death without diagnosis; "
-            "BIOCHEMISTRY PATHOGNOMONIC: "
-            "  Plasma citrulline: MASSIVELY ELEVATED >1000 μmol/L (diagnostic threshold); "
-            "    Normal <40 μmol/L; CTLN1 >1000 = PATHOGNOMONIC; "
-            "  Urine orotic acid: NORMAL or mildly elevated (no carbamoyl phosphate shunting); "
-            "  Arginine: low (downstream of block); "
-            "  ASS enzyme activity in fibroblasts: absent/very low; "
-            "NBS: citrulline >150 μmol/L on Guthrie card triggers ASS1/ASL investigation; "
-            "ARGININE SUPPLEMENTATION: "
-            "  Essential: arginine is conditionally essential in UCD (cannot be synthesized past block); "
-            "  Supplementation prevents arginine deficiency; "
-            "  Citrulline competes with arginine — net effect: scavenges nitrogen (1 mol N per mol citrulline); "
-            "TREATMENT: "
-            "  Acute: hemodialysis + dextrose + nitrogen scavengers (benzoate/phenylbutyrate); "
-            "  Chronic: low-protein diet + arginine 300-600 mg/kg/day; "
-            "  Nitrogen scavengers: sodium benzoate + RAVICTI; "
-            "  Liver transplant: CURATIVE (expresses ASS1 in liver); "
-            "    NBS: LTx often performed in 1st year before brain damage"
-        ),
-        "syndrome": (
-            "Citrullinemia-type-1-CTLN1 / AR-ASS1-deficiency / "
-            "plasma-citrulline-gt1000-micromolL-PATHOGNOMONIC / "
-            "neonatal-severe-hyperammonemia / arginine-supplementation-mandatory / "
-            "nitrogen-scavengers / liver-transplant-curative"
-        ),
-        "inheritance": "AR (biallelic ASS1 mutations)",
-        "key_therapy": "Arginine 300-600 mg/kg/day + nitrogen scavengers — LTx CURATIVE — low-protein diet",
-        "pathognomonic": (
-            "Plasma citrulline >1000 μmol/L PATHOGNOMONIC for ASS1 (CTLN1) or ASL; "
-            "Urine orotic acid NORMAL (distinguishes from OTC); "
-            "ASS1 vs ASL: argininosuccinic acid ABSENT in ASS1 (present in ASL); "
-            "Newborn screen citrulline >150 μmol/L = tier-2 testing mandatory"
-        ),
-        "key_drugs_ci": [
-            "Arginine-300-600mgkgday-supplement-MANDATORY",
-            "Sodium-benzoate-nitrogen-scavenger",
-            "RAVICTI-glycerol-phenylbutyrate-FDA2013",
-            "Hemodialysis-acute-NH3-gt500",
-            "Liver-transplant-CURATIVE-first-year-before-damage",
-            "Low-protein-essential-AA-supplement",
-        ],
-    },
-    {
-        "gene": "ASL",
-        "protein": (
-            "ASL -- 7q11.21 AR LOF -- 464aa -- "
-            "Argininosuccinate-lyase-cytosolic-enzyme-"
-            "argininosuccinic-aciduria-ASA-"
-            "argininosuccinic-acid-plasma-urine-PATHOGNOMONIC-"
-            "liver-brain-dissociation-LTx-corrects-UCD-NOT-neurological-"
-            "systemic-hypertension-75pct-even-treated"
-        ),
-        "locus": "7q11.21",
-        "protein_size": (
-            "464 aa / ~52 kDa / 7q11.21 ASL argininosuccinate lyase molecular context: "
-            "STRUCTURE: "
-            "  464 aa; cytosolic homotetramer; cleaves argininosuccinate -> arginine + fumarate (step 4 urea cycle); "
-            "  Deficiency -> argininosuccinate accumulates in blood + urine; arginine cannot be synthesized; "
-            "  AR inheritance; biallelic ASL mutations; "
-            "  Most common: c.1153C>T (p.Arg385Cys) founder variant; "
-            "ARGININOSUCCINIC ACIDURIA (ASA): "
-            "  Onset: neonatal severe OR late-onset attenuated forms; "
-            "  Neonatal: hyperammonemia crisis (similar to other UCDs); "
-            "  Late-onset: cognitive delay, behavioral, hepatomegaly, trichorrhexis nodosa (brittle hair); "
-            "TRICHORRHEXIS NODOSA: "
-            "  Brittle, breaking hair (nodes visible on microscopy); "
-            "  PATHOGNOMONIC for ASL deficiency in UCD context; "
-            "  Caused by arginine deficiency affecting hair protein synthesis; "
-            "BIOCHEMISTRY PATHOGNOMONIC: "
-            "  Argininosuccinic acid: ELEVATED in plasma AND urine = PATHOGNOMONIC; "
-            "  Plasma citrulline: elevated (moderate, <1000 μmol/L — less than ASS1); "
-            "  Arginine: LOW (downstream of block); orotic acid: normal-mildly elevated; "
-            "LIVER-BRAIN DISSOCIATION (CRITICAL CONCEPT): "
-            "  Liver transplant: corrects hepatic urea cycle → no more ammonia crises; "
-            "  BUT: neurological disease persists/progresses post-LTx; "
-            "  ASL is expressed in neurons/brain; LTx does NOT normalize CNS arginine or fumarate; "
-            "  SYSTEMIC HYPERTENSION: 75% of treated ASL patients regardless of ammonia control; "
-            "  Mechanism: nitric oxide synthase requires arginine → NO deficiency → vascular stiffness; "
-            "  ARGININE SUPPLEMENTATION: corrects NO deficiency; improves hypertension; "
-            "TREATMENT: "
-            "  Arginine: 400-700 mg/kg/day CRITICAL (both UCD support + NO synthesis); "
-            "  Nitrogen scavengers: sodium benzoate + RAVICTI; "
-            "  Low-protein diet with EAA supplement; "
-            "  Anti-hypertensives if arginine supplementation alone insufficient; "
-            "  Liver transplant: reduces ammonia crises but NOT neuroprotective — does NOT cure"
-        ),
-        "syndrome": (
-            "Argininosuccinic-aciduria-ASA / AR-ASL-deficiency / "
-            "argininosuccinic-acid-plasma-urine-PATHOGNOMONIC / "
-            "trichorrhexis-nodosa-PATHOGNOMONIC / "
-            "liver-brain-dissociation-LTx-corrects-ammonia-NOT-neuro / "
-            "systemic-hypertension-75pct / arginine-supplement-mandatory"
-        ),
-        "inheritance": "AR (biallelic ASL mutations)",
-        "key_therapy": "Arginine 400-700 mg/kg/day (CRITICAL for NO synthesis) — nitrogen scavengers — anti-hypertensives",
-        "pathognomonic": (
-            "Argininosuccinic acid elevated in plasma AND urine PATHOGNOMONIC; "
-            "Trichorrhexis nodosa (brittle hair, nodes on microscopy) PATHOGNOMONIC; "
-            "Systemic hypertension 75% despite good ammonia control; "
-            "Liver-brain dissociation: LTx corrects UCD but neurological disease persists"
-        ),
-        "key_drugs_ci": [
-            "Arginine-400-700mgkgday-CRITICAL-NO-synthesis",
-            "Sodium-benzoate-phenylbutyrate-nitrogen-scavengers",
-            "Anti-hypertensives-arginine-first-line",
-            "LTx-reduces-crises-NOT-neuroprotective",
-            "Low-protein-EAA-supplement",
-            "FASTING-ABSOLUTELY-AVOID",
-        ],
-    },
-    {
-        "gene": "ARG1",
-        "protein": (
-            "ARG1 -- 6q23.2 AR LOF -- 322aa -- "
-            "Arginase-1-cytosolic-liver-hepatocytes-final-step-urea-cycle-"
-            "hyperargininemia-argininemia-"
-            "MILD-hyperammonemia-progressive-spastic-diplegia-PATHOGNOMONIC-"
-            "plasma-arginine-gt200-micromolL-diagnostic-"
-            "low-arginine-diet-prevents-neurological-progression"
-        ),
-        "locus": "6q23.2",
-        "protein_size": (
-            "322 aa / ~35 kDa / 6q23.2 ARG1 arginase 1 molecular context: "
-            "STRUCTURE: "
-            "  322 aa; cytosolic homotrimer; final step of urea cycle: arginine -> ornithine + urea; "
-            "  Expressed predominantly in hepatocytes (ARG1 = liver arginase); "
-            "  Deficiency -> arginine accumulates; ammonia elevation is MILD vs other UCDs; "
-            "  AR inheritance; biallelic ARG1 mutations; "
-            "HYPERARGININEMIA — UNIQUE PRESENTATION: "
-            "  DOES NOT cause severe neonatal hyperammonemia (KEY DIFFERENCE from other UCDs); "
-            "  Ammonia mildly elevated; arginine is directly toxic to CNS (not primarily ammonia); "
-            "  Onset: 1-3 years; initially appear normal in neonatal period; "
-            "NEUROLOGICAL PRESENTATION (PATHOGNOMONIC): "
-            "  Progressive SPASTIC DIPLEGIA (spasticity > ataxia); "
-            "  Intellectual disability progressing over years; "
-            "  Seizures (often generalized); "
-            "  Loss of milestones if untreated; "
-            "  Spastic diplegia in toddler with prior normal neonatal screen = think ARG1; "
-            "BIOCHEMISTRY: "
-            "  Plasma arginine: >200 μmol/L (diagnostic; normal <120 μmol/L); "
-            "    Often 400-800 μmol/L in symptomatic patients; "
-            "  Guanidino compounds (homoarginine, alpha-keto-delta-guanidinovaleric acid) elevated; "
-            "  Plasma ammonia: mildly elevated (NOT the severe crises of OTC/ASS1/ASL); "
-            "  Orotic acid: normal or mildly elevated; citrulline: normal; "
-            "  ARG1 enzyme activity in RBCs: absent/very low (ARG1 expressed in RBCs); "
-            "TREATMENT: "
-            "  Low-arginine diet: PRIMARY TREATMENT; restricts arginine intake; "
-            "    Essential amino acid mix WITHOUT arginine; "
-            "    Prevents or halts neurological progression if started early; "
-            "  Nitrogen scavengers: less critical than other UCDs (mild hyperammonemia); "
-            "  Liver transplant: CONTROVERSIAL; arginine still elevated post-LTx; "
-            "    LTx corrects liver arginase deficiency but brain ARG2 (mitochondrial) "
-            "    may contribute to residual neurological toxicity; "
-            "    LTx does NOT reliably reverse neurological damage"
-        ),
-        "syndrome": (
-            "Hyperargininemia-argininemia / AR-ARG1-deficiency / "
-            "MILD-hyperammonemia-NOT-severe-neonatal-KEY-DISTINCTION / "
-            "progressive-spastic-diplegia + intellectual-disability-PATHOGNOMONIC / "
-            "plasma-arginine-gt200-micromolL-diagnostic / "
-            "low-arginine-diet-prevents-progression"
-        ),
-        "inheritance": "AR (biallelic ARG1 mutations)",
-        "key_therapy": "Low-arginine diet (EAA mix without arginine) — prevents neurological progression — LTx controversial",
-        "pathognomonic": (
-            "Progressive spastic diplegia + intellectual disability PATHOGNOMONIC in UCD context; "
-            "Plasma arginine >200 μmol/L diagnostic (vs normal <120 μmol/L); "
-            "MILD ammonia elevation (not severe neonatal crisis) KEY DISTINCTION from OTC/ASS1; "
-            "RBC arginase 1 activity absent/low (ARG1 expressed in RBCs)"
-        ),
-        "key_drugs_ci": [
-            "Low-arginine-EAA-mix-WITHOUT-arginine-PRIMARY-treatment",
-            "Nitrogen-scavengers-less-critical-mild-NH3",
-            "Sodium-benzoate-phenylbutyrate-if-hyperammonemia",
-            "LTx-controversial-neurological-may-persist",
-            "Guanidino-compounds-toxic-arginine-DIRECT-CNS-toxicity",
-            "PROTEIN-EXCESS-ABSOLUTELY-AVOID",
-        ],
-    },
-    {
-        "gene": "CPS1",
-        "protein": (
-            "CPS1 -- 2q34 AR LOF -- 1500aa -- "
-            "Carbamoyl-phosphate-synthetase-1-mitochondrial-first-step-urea-cycle-"
-            "most-severe-neonatal-UCD-"
-            "citrulline-VERY-LOW-orotic-acid-NORMAL-PATHOGNOMONIC-"
-            "N-acetylglutamate-NAG-activates-CPS1-"
-            "carglumic-acid-NOT-effective-DISTINGUISH-from-NAGS"
-        ),
-        "locus": "2q34",
-        "protein_size": (
-            "1500 aa / ~165 kDa / 2q34 CPS1 carbamoyl phosphate synthetase 1 molecular context: "
-            "STRUCTURE: "
-            "  1500 aa (largest urea cycle enzyme); mitochondrial matrix; "
-            "  Catalyzes: NH3 + CO2 + 2ATP -> carbamoyl phosphate (first step of urea cycle); "
-            "  Requires N-acetylglutamate (NAG) as obligate ALLOSTERIC ACTIVATOR; "
-            "  NAG produced by NAGS enzyme; "
-            "  AR inheritance; biallelic CPS1 mutations; "
-            "  Very large gene (>250 exons); many private variants; "
-            "CPS1 DEFICIENCY — SEVERE NEONATAL: "
-            "  Among the most severe of UCDs; "
-            "  Onset: first 24-48 hr; catastrophic hyperammonemia; "
-            "  NH3 >2000 μmol/L common; "
-            "  HIGH mortality without immediate recognition + treatment; "
-            "BIOCHEMISTRY: "
-            "  Plasma citrulline: VERY LOW (<5 μmol/L); citrulline production blocked at step 1; "
-            "  Urine orotic acid: NORMAL (no carbamoyl phosphate surplus to shunt); "
-            "  Plasma ammonia: severely elevated; "
-            "  CITRULLINE LOW + OROTIC ACID NORMAL = CPS1 or NAGS pattern; "
-            "  DISTINGUISHING CPS1 vs NAGS: carglumic acid response test; "
-            "    NAGS: responds dramatically to carglumic acid (see NAGS entry); "
-            "    CPS1: NO RESPONSE to carglumic acid; "
-            "CPS1 vs OTC DISTINCTION: "
-            "  OTC: citrulline low + orotic acid HIGH; "
-            "  CPS1: citrulline low + orotic acid NORMAL; "
-            "TREATMENT: "
-            "  Acute: hemodialysis + IV dextrose (10%) + nitrogen scavengers; "
-            "  Nitrogen scavengers: sodium benzoate + phenylbutyrate (RAVICTI); "
-            "  Citrulline supplementation 200 mg/kg/day; "
-            "  Low-protein diet with EAA; "
-            "  Carglumic acid: NOT EFFECTIVE (CPS1 is absent; activator analogue cannot substitute); "
-            "  Liver transplant: CURATIVE (restores hepatic urea cycle); "
-            "    Due to severity, early LTx (6-12 months) often planned"
-        ),
-        "syndrome": (
-            "CPS1-deficiency / AR-LOF / most-severe-neonatal-UCD / "
-            "citrulline-VERY-LOW + orotic-acid-NORMAL-PATHOGNOMONIC / "
-            "carglumic-acid-NOT-effective-DISTINGUISH-from-NAGS / "
-            "N-acetylglutamate-activates-CPS1 / liver-transplant-CURATIVE"
-        ),
-        "inheritance": "AR (biallelic CPS1 mutations)",
-        "key_therapy": "Hemodialysis acute + nitrogen scavengers + citrulline — LTx CURATIVE — NO carglumic acid benefit",
-        "pathognomonic": (
-            "Citrulline VERY LOW + orotic acid NORMAL PATHOGNOMONIC pattern (CPS1/NAGS); "
-            "Carglumic acid NO RESPONSE distinguishes CPS1 from NAGS; "
-            "Plasma ammonia >2000 μmol/L neonatal crisis; "
-            "Largest urea cycle enzyme (1500 aa); many private variants; gene panel mandatory"
-        ),
-        "key_drugs_ci": [
-            "Hemodialysis-NH3-gt500-urgent",
-            "Sodium-benzoate-phenylbutyrate-RAVICTI-nitrogen-scavengers",
-            "Citrulline-200mgkgday",
-            "Carglumic-acid-NOT-EFFECTIVE-CPS1-DISTINGUISH-from-NAGS",
-            "Liver-transplant-CURATIVE-early-6-12mo",
-            "Low-protein-EAA-supplement",
-        ],
-    },
-    {
-        "gene": "NAGS",
-        "protein": (
-            "NAGS -- 17q21.31 AR LOF -- 534aa -- "
-            "N-acetylglutamate-synthase-mitochondrial-matrix-enzyme-"
-            "activates-CPS1-via-NAG-allosteric-"
-            "ONLY-UCD-carglumic-acid-Carbaglu-FDA2010-CURATIVE-"
-            "citrulline-low-orotic-acid-normal-biochemically-identical-CPS1-"
-            "NAGS-deficiency-diagnosis-carglumic-acid-RESPONSE-TEST-PATHOGNOMONIC"
-        ),
-        "locus": "17q21.31",
-        "protein_size": (
-            "534 aa / ~58 kDa / 17q21.31 NAGS N-acetylglutamate synthase molecular context: "
-            "STRUCTURE: "
-            "  534 aa; mitochondrial matrix; "
-            "  Catalyzes: acetyl-CoA + glutamate -> N-acetylglutamate (NAG); "
-            "  NAG is the obligate allosteric activator of CPS1 (first urea cycle step); "
-            "  NAGS deficiency -> no NAG -> CPS1 inactive -> no carbamoyl phosphate -> hyperammonemia; "
-            "  AR inheritance; biallelic NAGS mutations; "
-            "  Rare: <200 reported patients worldwide; "
-            "NAGS DEFICIENCY: "
-            "  Neonatal to adult onset (variable); "
-            "  Hyperammonemia; acute encephalopathy; "
-            "  BIOCHEMICALLY IDENTICAL TO CPS1: citrulline low + orotic acid normal; "
-            "  ONLY WAY TO DISTINGUISH FROM CPS1: carglumic acid response test; "
-            "CARGLUMIC ACID (N-CARBAMOYLGLUTAMATE / CARBAGLU) — CURATIVE FOR NAGS ONLY: "
-            "  Carbaglu (carglumic acid): FDA2010 approved for NAGS deficiency; "
-            "  Structural analogue of NAG; activates CPS1 DIRECTLY bypassing NAGS defect; "
-            "  In NAGS deficiency: carglumic acid restores CPS1 activity -> urea cycle normalizes; "
-            "  DRAMATIC RESPONSE: ammonia normalizes within 24-48 hr on carglumic acid; "
-            "  LONG-TERM: carglumic acid monotherapy sufficient in many patients (no protein restriction needed); "
-            "  IN CPS1 DEFICIENCY: NO RESPONSE (CPS1 absent; NAG analogue cannot substitute); "
-            "  IN OTC DEFICIENCY: PARTIAL RESPONSE (not curative; OTC block downstream); "
-            "DIAGNOSIS: "
-            "  Citrulline low + orotic acid normal (identical to CPS1); "
-            "  NAGS enzyme activity (in fibroblasts) or NAGS gene sequencing; "
-            "  Carglumic acid therapeutic trial: positive response PATHOGNOMONIC for NAGS; "
-            "TREATMENT: "
-            "  Acute: carglumic acid 100-250 mg/kg/day (IV or oral) -> often rapid response; "
-            "  Chronic: carglumic acid maintenance (dose titrated to ammonia levels); "
-            "  Nitrogen scavengers: rarely needed long-term if carglumic acid effective; "
-            "  Low-protein diet: may be liberalized when carglumic acid controls NH3; "
-            "  Liver transplant: usually AVOIDED (carglumic acid is curative); "
-            "  UNIQUE: NAGS is the ONLY UCD where a specific pharmacological CURE exists (carglumic acid)"
-        ),
-        "syndrome": (
-            "NAGS-deficiency / AR-LOF / "
-            "citrulline-low + orotic-acid-normal-SAME-AS-CPS1 / "
-            "ONLY-UCD-carglumic-acid-Carbaglu-FDA2010-CURATIVE / "
-            "NAG-analogue-activates-CPS1-directly / "
-            "carglumic-acid-response-PATHOGNOMONIC-for-NAGS"
-        ),
-        "inheritance": "AR (biallelic NAGS mutations)",
-        "key_therapy": "Carglumic acid (Carbaglu FDA2010) — CURATIVE for NAGS ONLY — monotherapy sufficient long-term",
-        "pathognomonic": (
-            "Carglumic acid dramatic response (NH3 normalizes 24-48 hr) PATHOGNOMONIC for NAGS; "
-            "Citrulline LOW + orotic acid NORMAL (biochemically identical to CPS1 — only carglumic acid distinguishes); "
-            "ONLY UCD with pharmacological cure (carglumic acid bypasses NAGS defect entirely); "
-            "No response to carglumic acid = CPS1 (not NAGS)"
-        ),
-        "key_drugs_ci": [
-            "Carglumic-acid-Carbaglu-FDA2010-100-250mgkgday-CURATIVE",
-            "ONLY-NAGS-responds-to-carglumic-acid-KEY-DISTINCTION",
-            "Nitrogen-scavengers-rarely-needed-if-carglumic-acid-effective",
-            "Liver-transplant-usually-AVOIDED-pharmacological-cure",
-            "Low-protein-can-be-liberalized-on-carglumic-acid",
-            "CPS1-NO-RESPONSE-OTC-partial-response",
-        ],
-    },
-    {
-        "gene": "SLC25A13",
-        "protein": (
-            "SLC25A13 -- 7q21.3 AR LOF -- 675aa -- "
-            "Citrin-mitochondrial-aspartate-glutamate-carrier-2-AGC2-"
-            "citrin-deficiency-citrullinemia-type-II-CTLN2-"
-            "Japanese-founder-exon16-ins3kb-East-Asian-"
-            "adult-onset-acute-liver-failure-hyperammonemia-"
-            "alcohol-high-carbohydrate-ABSOLUTELY-TRIGGER-PATHOGNOMONIC-"
-            "low-carb-high-fat-protein-diet-liver-transplant-CURATIVE"
-        ),
-        "locus": "7q21.3",
-        "protein_size": (
-            "675 aa / ~74 kDa / 7q21.3 SLC25A13 citrin molecular context: "
-            "STRUCTURE: "
-            "  675 aa; inner mitochondrial membrane aspartate-glutamate carrier 2 (AGC2); "
-            "  Shuttles aspartate out and glutamate into mitochondria; "
-            "  Essential for malate-aspartate shuttle (NADH regeneration) + urea cycle (aspartate provision); "
-            "  Deficiency: aspartate depleted in cytosol; urea cycle impaired; "
-            "  AR inheritance; biallelic SLC25A13 mutations; "
-            "JAPANESE FOUNDER MUTATIONS: "
-            "  c.851_854del (IVS16ins3kb, p.Thr290Leufs): most common, ~85% Japanese alleles; "
-            "  Also common: c.1177+1G>A, c.615+5G>A; "
-            "  HIGH PREVALENCE in East Asian populations (Japan, China, Korea, Taiwan); "
-            "  Carrier frequency ~1/65 in Japan; "
-            "  RARE in non-East Asian populations; "
-            "DISEASE PRESENTATIONS — THREE DISTINCT PHASES: "
-            "  1) NEONATAL INTRAHEPATIC CHOLESTASIS (NICCD, neonates): "
-            "    Cholestasis, elevated citrulline, galactosemia-like; usually resolves by 1 year; "
-            "    Majority improve with diet (MCT formula, lactose restriction); "
-            "  2) FAILURE TO THRIVE + FATTY LIVER (ages 1-10): "
-            "    Hepatomegaly, dyslipidemia, fatigue; "
-            "  3) CITRULLINEMIA TYPE II (CTLN2, adults): "
-            "    ACUTE EPISODES: hyperammonemia + hepatic encephalopathy; "
-            "    TRIGGERED: ALCOHOL consumption (ABSOLUTELY); high-carbohydrate diet; fasting; surgery; "
-            "    Behavioral changes, disorientation, coma; "
-            "    SOME ADULT PATIENTS: CRAVE protein/fat-rich foods (instinct to avoid carbohydrates); "
-            "PATHOGNOMONIC TRIGGERS: "
-            "  ALCOHOL: hepatic citrullinemia type II MOST RELIABLY triggered by alcohol ingestion; "
-            "    Even moderate alcohol -> acute hyperammonemic encephalopathy; "
-            "  HIGH-CARBOHYDRATE DIET: glucose/fructose excess worsens citrin-dependent shuttle defect; "
-            "  NIGHT SHIFT WORK + SLEEP DEPRIVATION: reported triggers; "
-            "  IV dextrose infusions (hospital) can precipitate crisis — ALERT anesthesiology/ICU; "
-            "DIAGNOSIS: "
-            "  Plasma citrulline elevated (adult-onset context); "
-            "  Ammonia elevated during crisis; thrombocytopenia; coagulopathy; "
-            "  SLC25A13 gene sequencing; "
-            "  Liver biopsy: steatosis, focal necrosis, glycogenosis; "
-            "TREATMENT: "
-            "  DIET: low-carbohydrate high-fat high-protein (MCT-enriched); "
-            "    Medium-chain triglycerides provide energy without worsening malate-aspartate shuttle; "
-            "  Sodium pyruvate: investigational (malate-aspartate shuttle bypass); "
-            "  Arginine supplementation: useful in acute crisis; "
-            "  AVOID: glucose infusions, alcohol, high-carbohydrate meals; "
-            "  Liver transplant: CURATIVE (corrects citrin deficiency in liver); "
-            "    Most definitive treatment for recurrent CTLN2 adults; "
-            "  LIVER DONOR SCREENING: citrin deficiency carriers should be excluded as donors"
-        ),
-        "syndrome": (
-            "Citrullinemia-type-II-CTLN2-citrin-deficiency / AR-SLC25A13-LOF / "
-            "Japanese-founder-exon16-ins3kb-East-Asian-prevalence / "
-            "adult-onset-hyperammonemia-hepatic-encephalopathy / "
-            "alcohol-high-carbohydrate-ABSOLUTELY-TRIGGER-PATHOGNOMONIC / "
-            "low-carb-MCT-diet / liver-transplant-CURATIVE"
-        ),
-        "inheritance": "AR (biallelic SLC25A13 mutations) — Japanese/East Asian founder",
-        "key_therapy": "Low-carbohydrate MCT-enriched diet — AVOID alcohol + glucose infusions — LTx CURATIVE",
-        "pathognomonic": (
-            "Acute hyperammonemia triggered by ALCOHOL or high-carbohydrate diet PATHOGNOMONIC for CTLN2; "
-            "Protein/fat food craving (avoidance of carbohydrates) behavioral marker; "
-            "Japanese/East Asian ancestry (founder c.851_854del ~85% alleles); "
-            "IV dextrose in hospital can precipitate crisis — alert ICU/anesthesia"
-        ),
-        "key_drugs_ci": [
-            "Low-carbohydrate-MCT-high-fat-protein-diet-PRIMARY",
-            "Arginine-supplementation-acute-crisis",
-            "ALCOHOL-ABSOLUTELY-CI-triggers-acute-crisis",
-            "IV-DEXTROSE-AVOID-precipitates-crisis",
-            "High-carbohydrate-diet-ABSOLUTELY-AVOID",
-            "Liver-transplant-CURATIVE-recurrent-CTLN2",
-        ],
-    },
-    {
-        "gene": "SLC25A15",
-        "protein": (
-            "SLC25A15 -- 13q14.11 AR LOF -- 301aa -- "
-            "Ornithine-carrier-1-ORNT1-mitochondrial-inner-membrane-"
-            "HHH-syndrome-hyperornithinemia-hyperammonemia-homocitrullinuria-"
-            "homocitrulline-urine-PATHOGNOMONIC-"
-            "progressive-spastic-paraparesis-cognitive-decline-"
-            "ornithine-restriction-citrulline-supplement"
-        ),
-        "locus": "13q14.11",
-        "protein_size": (
-            "301 aa / ~33 kDa / 13q14.11 SLC25A15 ornithine carrier 1 (ORNT1) molecular context: "
-            "STRUCTURE: "
-            "  301 aa; mitochondrial inner membrane carrier; "
-            "  Transports ornithine into mitochondria in exchange for citrulline (out); "
-            "  Deficiency: ornithine cannot enter mitochondria; accumulates in cytosol (hyperornithinemia); "
-            "    Without ornithine in mitochondria: OTC substrate absent -> carbamoyl phosphate shunted; "
-            "    -> partial urea cycle defect -> hyperammonemia; "
-            "    -> homocitrulline: carbamoyl phosphate + lysine (alternative) -> homocitrulline in urine; "
-            "  AR inheritance; biallelic SLC25A15 mutations; "
-            "  p.Phe188del: common founder mutation in Italian + Franco-Canadian populations; "
-            "HHH SYNDROME — TRIAD: "
-            "  1) HYPERORNITHINEMIA: plasma ornithine markedly elevated (>200 μmol/L; normal 40-70); "
-            "  2) HYPERAMMONEMIA: episodic; less severe than proximal UCDs; "
-            "  3) HOMOCITRULLINURIA: homocitrulline in urine = PATHOGNOMONIC; "
-            "    Homocitrulline is NOT present in OTC deficiency — key distinction; "
-            "CLINICAL: "
-            "  Onset: neonatal to adult (variable); "
-            "  PROGRESSIVE SPASTIC PARAPARESIS: hallmark neurological feature; "
-            "    Upper motor neuron: spasticity, hyperreflexia, Babinski positive; "
-            "  Intellectual disability (variable); cognitive decline; "
-            "  Behavioral abnormalities; psychiatric symptoms; "
-            "  Seizures (less common than spasticity); "
-            "  Hepatopathy in some patients; "
-            "  Thromboembolic complications: coagulopathy + portal hypertension reported; "
-            "LYSINURIC PROTEIN INTOLERANCE (LPI) DDX: "
-            "  LPI (SLC7A7): also has hyperammonemia + orotic acid elevated; "
-            "  LPI: LOW urine lysine/arginine/ornithine (dibasic aminoaciduria); "
-            "  HHH: HIGH urine ornithine + homocitrulline; "
-            "DIAGNOSIS: "
-            "  Plasma ornithine elevated; urine homocitrulline present (PATHOGNOMONIC); "
-            "  Plasma ammonia elevated (episodic); urine orotic acid elevated; "
-            "  SLC25A15 gene sequencing; "
-            "TREATMENT: "
-            "  Low-protein / ornithine-restricted diet: primary; limits ornithine precursor intake; "
-            "  Citrulline supplementation: provides intramitochondrial substrate alternative; "
-            "  Pyridoxine (B6): improves mitochondrial ornithine metabolism; "
-            "  Nitrogen scavengers: sodium benzoate if hyperammonemia; "
-            "  Liver transplant: controversial; some neurological improvement reported but inconsistent"
-        ),
-        "syndrome": (
-            "HHH-syndrome-hyperornithinemia-hyperammonemia-homocitrullinuria / AR-SLC25A15-LOF / "
-            "homocitrulline-urine-PATHOGNOMONIC / "
-            "progressive-spastic-paraparesis + cognitive-decline / "
-            "ornithine-restriction + citrulline-supplement / "
-            "Italian-Franco-Canadian-p.Phe188del-founder"
-        ),
-        "inheritance": "AR (biallelic SLC25A15 mutations) — Italian/Franco-Canadian founder p.Phe188del",
-        "key_therapy": "Ornithine-restricted diet + citrulline supplementation + pyridoxine — nitrogen scavengers for hyperammonemia",
-        "pathognomonic": (
-            "Homocitrulline in urine PATHOGNOMONIC for HHH syndrome; "
-            "Progressive spastic paraparesis (UMN) in UCD context distinguishes HHH; "
-            "Plasma ornithine >200 μmol/L + hyperammonemia + homocitrullinuria = diagnostic TRIAD; "
-            "Distinguish from LPI (SLC7A7): HHH has HIGH urine ornithine; LPI has LOW dibasic AA"
-        ),
-        "key_drugs_ci": [
-            "Ornithine-restricted-low-protein-diet-PRIMARY",
-            "Citrulline-supplementation-intramitochondrial-bypass",
-            "Pyridoxine-B6-supplement",
-            "Sodium-benzoate-nitrogen-scavenger-if-hyperammonemia",
-            "LTx-controversial-inconsistent-neurological-benefit",
-            "PROTEIN-EXCESS-ABSOLUTELY-AVOID",
-        ],
-    },
-]
+from typing import Any
 
 
-def _make_cohort(gene_entry: dict, seed: int) -> dict:
+ATLAS_ID   = "hereditary-urea-cycle-disorder-atlas"
+ATLAS_NAME = "Hereditary-Urea-Cycle-Disorder-Atlas"
+SEED_BASE  = 4214
+N_PER_GENE = 40
+
+GENES = ["CPS1", "OTC", "ASS1", "ASL", "ARG1", "NAGS", "SLC25A15", "SLC25A13"]
+
+GENE_META = {
+    "CPS1":     {"aa": 1500, "locus": "2q35",    "kda": 165, "inh": "AR",  "disease": "CPS1 Deficiency / Hyperammonemia Type I",                          "omim_gene": 608307, "omim_disease": 237300},
+    "OTC":      {"aa": 354,  "locus": "Xp11.4",  "kda": 39,  "inh": "XLR", "disease": "OTC Deficiency / Hyperammonemia Type II (X-linked)",               "omim_gene": 300461, "omim_disease": 311250},
+    "ASS1":     {"aa": 412,  "locus": "9q34.11", "kda": 46,  "inh": "AR",  "disease": "Citrullinemia Type I (CTLN1)",                                     "omim_gene": 603470, "omim_disease": 215700},
+    "ASL":      {"aa": 464,  "locus": "7q11.21", "kda": 52,  "inh": "AR",  "disease": "Argininosuccinic Aciduria (ASA)",                                  "omim_gene": 608310, "omim_disease": 207900},
+    "ARG1":     {"aa": 330,  "locus": "6q23.2",  "kda": 35,  "inh": "AR",  "disease": "Arginemia (ARG1 deficiency)",                                      "omim_gene": 608313, "omim_disease": 207800},
+    "NAGS":     {"aa": 534,  "locus": "17q21.31","kda": 58,  "inh": "AR",  "disease": "NAGS Deficiency / Hyperammonemia (carglumic-acid-responsive)",      "omim_gene": 608300, "omim_disease": 237310},
+    "SLC25A15": {"aa": 301,  "locus": "13q14.11","kda": 34,  "inh": "AR",  "disease": "HHH Syndrome (Hyperornithinemia-Hyperammonemia-Homocitrullinuria)", "omim_gene": 603861, "omim_disease": 238970},
+    "SLC25A13": {"aa": 675,  "locus": "7q21.3",  "kda": 74,  "inh": "AR",  "disease": "Citrin Deficiency (NICCD / Citrullinemia Type II / CTLN2)",        "omim_gene": 603859, "omim_disease": 605814},
+}
+
+GENE_PATHOGNOMONIC = {
+    "CPS1":     "OROTIC ACID ABSENT in urine PATHOGNOMONIC (block before cytoplasmic CP pool); glutamine VERY HIGH; NH3 >1000 umol/L neonatal; ALWAYS trial carglumic acid (NCG) empirically -- if NH3 normalizes = NAGS not CPS1; liver transplant curative",
+    "OTC":      "OROTIC ACID MARKEDLY ELEVATED PATHOGNOMONIC (distinguishes OTC from CPS1/NAGS); allopurinol loading test detects asymptomatic female carriers; X-linked -- male hemizygotes fatal neonatal; females variable lyonization-dependent severity",
+    "ASS1":     "CITRULLINE >1000 umol/L PATHOGNOMONIC neonatal form; NBS-detectable (tandem MS); NO argininosuccinic acid present (DDx from ASL); arginine supplementation MANDATORY (cannot synthesize arginine); liver transplant curative",
+    "ASL":      "ARGININOSUCCINIC ACID in plasma/urine PATHOGNOMONIC (two peaks on HPLC); HAIR FRAGILITY trichorrhexis nodosa PATHOGNOMONIC in survivors; HYPERTENSION (NO synthesis defect) persists post-liver-transplant; liver transplant corrects NH3 NOT hair/HTN",
+    "ARG1":     "PROGRESSIVE SPASTIC DIPLEGIA not hyperammonemia PATHOGNOMONIC; ARGININE >200 umol/L markedly elevated; DIETARY ARGININE RESTRICTION (OPPOSITE of other UCDs); NO ammonia scavengers typically needed; cerebral palsy misdiagnosis common 2-4yr onset",
+    "NAGS":     "CARGLUMIC ACID (NCG) COMPLETELY CURATIVE PATHOGNOMONIC response; identical biochemistry to CPS1 (orotic acid absent); EMPIRICALLY GIVE NCG 100 mg/kg in any CPS1-like presentation BEFORE molecular results; NH3 normalization confirms NAGS; rarest UCD ~50 worldwide",
+    "SLC25A15": "HOMOCITRULLINE in urine PATHOGNOMONIC (not present in any other UCD); TRIAD hyperornithinemia + hyperammonemia + homocitrullinuria; NEUROLOGICAL DEGENERATION dominates (cerebellar ataxia, pyramidal); French Canadian p.F188del founder; citrulline supplement bypasses ORNT1",
+    "SLC25A13": "BIZARRE FOOD PREFERENCES (protein/fat craving, carbohydrate aversion) PATHOGNOMONIC for CTLN2 in adult East Asian; NICCD: NBS citrulline+galactose+methionine elevated (pseudo-galactosemia); ABSOLUTELY CI: IV glycerol/high-glucose -> fatal crisis; liver transplant URGENTLY CURATIVE for CTLN2",
+}
+
+GENE_GROUPS = {
+    "CPS1":     "proximal-ucd",
+    "OTC":      "proximal-ucd",
+    "ASS1":     "distal-ucd",
+    "ASL":      "distal-ucd",
+    "ARG1":     "distal-ucd",
+    "NAGS":     "activator-ucd",
+    "SLC25A15": "transport-ucd",
+    "SLC25A13": "transport-ucd",
+}
+
+PROXIMAL_GROUP  = ["CPS1", "OTC"]
+DISTAL_GROUP    = ["ASS1", "ASL", "ARG1"]
+ACTIVATOR_GROUP = ["NAGS"]
+TRANSPORT_GROUP = ["SLC25A15", "SLC25A13"]
+
+
+def _make_cohort(gene: str, seed: int) -> dict:
     rng = random.Random(seed)
-    gene = gene_entry["gene"]
+    meta = GENE_META[gene]
 
-    n = 40
-    inh = gene_entry["inheritance"]
+    is_xlr = meta["inh"] == "XLR"
+    is_east_asian_founder = gene == "SLC25A13"
+    is_canadian_founder   = gene == "SLC25A15"
+    nbs_detectable        = gene in ("ASS1", "ASL", "ARG1")
+    orotic_absent         = gene in ("CPS1", "NAGS")
+    orotic_elevated       = gene == "OTC"
+    neonatal_crisis       = gene not in ("ARG1", "SLC25A15", "SLC25A13")
+    has_spastic           = gene == "ARG1"
+    has_hair_fragility    = gene == "ASL"
+    has_htn               = gene == "ASL"
+    has_homocitrullinuria = gene == "SLC25A15"
+    has_ctln2             = gene == "SLC25A13"
+    carglumate_curative   = gene == "NAGS"
+    liver_tx_fully_curative = gene in ("CPS1", "OTC", "ASS1", "NAGS", "SLC25A13")
 
-    # Age at diagnosis varies by UCD type
-    if gene in ("OTC", "ASS1", "CPS1", "NAGS"):
-        # Severe neonatal UCDs
-        mean_age = round(rng.uniform(0.0, 0.2), 2)   # days to weeks
-        sd_age   = round(rng.uniform(0.0, 0.1), 1)
-    elif gene == "ASL":
-        mean_age = round(rng.uniform(0.0, 1.5), 2)    # neonatal to late
-        sd_age   = round(rng.uniform(0.2, 0.8), 1)
-    elif gene == "ARG1":
-        mean_age = round(rng.uniform(1.5, 3.5), 1)    # toddler/childhood
-        sd_age   = round(rng.uniform(0.5, 1.5), 1)
-    elif gene == "SLC25A13":
-        mean_age = round(rng.uniform(20.0, 45.0), 1)  # adult onset CTLN2
-        sd_age   = round(rng.uniform(5.0, 15.0), 1)
-    elif gene == "SLC25A15":
-        mean_age = round(rng.uniform(2.0, 15.0), 1)   # variable onset
-        sd_age   = round(rng.uniform(2.0, 8.0), 1)
-    else:
-        mean_age = round(rng.uniform(0.1, 5.0), 1)
-        sd_age   = round(rng.uniform(0.5, 2.0), 1)
+    ages = [rng.uniform(0, 5) if neonatal_crisis else rng.uniform(0.1, 60) for _ in range(N_PER_GENE)]
+    nh3_vals = []
+    for _ in range(N_PER_GENE):
+        if neonatal_crisis:
+            nh3_vals.append(rng.uniform(300, 2000))
+        elif gene == "ARG1":
+            nh3_vals.append(rng.uniform(50, 200))
+        elif gene == "SLC25A15":
+            nh3_vals.append(rng.uniform(80, 400))
+        elif gene == "SLC25A13":
+            nh3_vals.append(rng.uniform(60, 350))
+        else:
+            nh3_vals.append(rng.uniform(100, 600))
 
-    # Hyperammonemia crisis
-    if gene in ("OTC", "ASS1", "CPS1", "NAGS", "ASL"):
-        hap_n = rng.randint(32, 40)
-    elif gene == "SLC25A13":
-        hap_n = rng.randint(25, 38)
-    elif gene == "ARG1":
-        hap_n = rng.randint(10, 22)  # mild in ARG1
-    else:
-        hap_n = rng.randint(18, 32)
+    genders = ["M", "F"] if not is_xlr else (["M"] * int(N_PER_GENE * 0.7) + ["F"] * int(N_PER_GENE * 0.3))
+    rng.shuffle(genders)
+    while len(genders) < N_PER_GENE:
+        genders.append(rng.choice(["M", "F"]))
 
-    # Neonatal presentation
-    if gene in ("OTC", "ASS1", "CPS1", "NAGS"):
-        neonatal_n = rng.randint(28, 38)
-    elif gene in ("ASL",):
-        neonatal_n = rng.randint(15, 30)
-    elif gene in ("ARG1", "SLC25A13", "SLC25A15"):
-        neonatal_n = rng.randint(0, 8)
-    else:
-        neonatal_n = rng.randint(5, 20)
+    outcomes = []
+    for nh3 in nh3_vals:
+        if nh3 > 800:
+            outcomes.append(rng.choice(["severe", "severe", "moderate"]))
+        elif nh3 > 300:
+            outcomes.append(rng.choice(["moderate", "moderate", "mild", "severe"]))
+        else:
+            outcomes.append(rng.choice(["mild", "mild", "moderate"]))
 
-    # Neurological impairment
-    if gene in ("OTC", "CPS1", "NAGS"):
-        neuro_n = rng.randint(20, 36)
-    elif gene in ("ASS1",):
-        neuro_n = rng.randint(15, 30)
-    elif gene in ("ASL",):
-        neuro_n = rng.randint(22, 38)  # liver-brain dissociation
-    elif gene == "ARG1":
-        neuro_n = rng.randint(28, 38)  # progressive spastic diplegia
-    elif gene == "SLC25A13":
-        neuro_n = rng.randint(20, 35)
-    elif gene == "SLC25A15":
-        neuro_n = rng.randint(25, 38)  # spastic paraparesis
-    else:
-        neuro_n = rng.randint(15, 30)
+    biomarker_vals = {}
+    for i in range(N_PER_GENE):
+        if gene == "CPS1":
+            biomarker_vals[i] = {"orotic_acid": rng.uniform(0, 5), "glutamine": rng.uniform(800, 2000),
+                                  "citrulline": rng.uniform(1, 15), "arginine": rng.uniform(5, 30)}
+        elif gene == "OTC":
+            biomarker_vals[i] = {"orotic_acid": rng.uniform(50, 500), "glutamine": rng.uniform(600, 1500),
+                                  "citrulline": rng.uniform(1, 10), "arginine": rng.uniform(5, 20)}
+        elif gene == "ASS1":
+            biomarker_vals[i] = {"citrulline": rng.uniform(500, 3000), "orotic_acid": rng.uniform(5, 50),
+                                  "glutamine": rng.uniform(300, 800)}
+        elif gene == "ASL":
+            biomarker_vals[i] = {"argininosuccinate": rng.uniform(100, 600), "citrulline": rng.uniform(100, 600),
+                                  "arginine": rng.uniform(20, 100)}
+        elif gene == "ARG1":
+            biomarker_vals[i] = {"arginine": rng.uniform(200, 800), "guanidino_acetic_acid": rng.uniform(50, 300),
+                                  "orotic_acid": rng.uniform(5, 30)}
+        elif gene == "NAGS":
+            biomarker_vals[i] = {"orotic_acid": rng.uniform(0, 5), "glutamine": rng.uniform(700, 1800),
+                                  "citrulline": rng.uniform(1, 15), "nag_activity": rng.uniform(0, 20)}
+        elif gene == "SLC25A15":
+            biomarker_vals[i] = {"ornithine": rng.uniform(200, 600), "homocitrulline_urine": rng.uniform(30, 200),
+                                  "orotic_acid": rng.uniform(10, 80), "citrulline": rng.uniform(20, 80)}
+        elif gene == "SLC25A13":
+            biomarker_vals[i] = {"citrulline": rng.uniform(50, 400), "galactose_nbs": rng.uniform(8, 40),
+                                  "methionine": rng.uniform(50, 200), "threonine": rng.uniform(200, 600)}
 
-    # Liver transplant performed
-    if gene in ("OTC", "ASS1", "CPS1"):
-        ltx_n = rng.randint(20, 35)
-    elif gene in ("NAGS",):
-        ltx_n = rng.randint(2, 8)  # rarely needed (carglumic acid)
-    elif gene in ("ASL",):
-        ltx_n = rng.randint(12, 25)
-    elif gene == "SLC25A13":
-        ltx_n = rng.randint(15, 30)
-    elif gene in ("ARG1",):
-        ltx_n = rng.randint(5, 18)
-    elif gene == "SLC25A15":
-        ltx_n = rng.randint(3, 12)
-    else:
-        ltx_n = rng.randint(8, 22)
+    treatments = {
+        "CPS1":     ["benzoate+phenylacetate IV", "arginine IV", "hemodialysis", "low_protein_diet", "liver_transplant"],
+        "OTC":      ["benzoate+phenylbutyrate", "arginine", "low_protein_diet", "hemodialysis", "liver_transplant"],
+        "ASS1":     ["arginine_supplementation", "benzoate+phenylacetate", "citrulline", "low_protein_diet", "liver_transplant"],
+        "ASL":      ["arginine_supplementation", "benzoate+phenylacetate", "low_protein_diet", "liver_transplant"],
+        "ARG1":     ["arginine_restriction_diet", "low_protein_diet", "citrulline_supplementation", "liver_transplant"],
+        "NAGS":     ["carglumic_acid_NCG", "benzoate+phenylacetate", "arginine", "low_protein_diet"],
+        "SLC25A15": ["low_protein_diet", "ornithine_restriction", "citrulline_supplementation", "ammonia_scavengers"],
+        "SLC25A13": ["MCT_formula_NICCD", "lactose_free_diet_NICCD", "low_carbohydrate_diet_CTLN2", "liver_transplant_CTLN2"],
+    }
 
-    # Nitrogen scavenger treatment
-    if gene in ("OTC", "ASS1", "ASL", "CPS1"):
-        nsv_n = rng.randint(30, 40)
-    elif gene == "NAGS":
-        nsv_n = rng.randint(5, 15)  # carglumic acid preferred
-    elif gene == "ARG1":
-        nsv_n = rng.randint(10, 22)
-    else:
-        nsv_n = rng.randint(18, 35)
-
-    # Carglumic acid treatment (NAGS specific)
-    carglumic_n = rng.randint(28, 38) if gene == "NAGS" else rng.randint(0, 3)
-
-    # Spastic paraparesis/diplegia
-    if gene == "ARG1":
-        spastic_n = rng.randint(28, 38)
-    elif gene == "SLC25A15":
-        spastic_n = rng.randint(22, 35)
-    elif gene == "ASL":
-        spastic_n = rng.randint(10, 20)
-    else:
-        spastic_n = rng.randint(2, 12)
-
-    # Pathognomonic biochemical marker
-    if gene == "OTC":
-        patho_n = rng.randint(35, 40)  # low citrulline + high orotic acid
-    elif gene == "ASS1":
-        patho_n = rng.randint(36, 40)  # citrulline >1000
-    elif gene == "ASL":
-        patho_n = rng.randint(35, 40)  # argininosuccinic acid elevated
-    elif gene == "ARG1":
-        patho_n = rng.randint(33, 40)  # arginine >200
-    elif gene == "CPS1":
-        patho_n = rng.randint(30, 38)  # citrulline low + orotic normal
-    elif gene == "NAGS":
-        patho_n = rng.randint(28, 36)  # carglumic acid response
-    elif gene == "SLC25A13":
-        patho_n = rng.randint(25, 35)  # alcohol/carb trigger
-    elif gene == "SLC25A15":
-        patho_n = rng.randint(30, 38)  # homocitrullinuria
-    else:
-        patho_n = rng.randint(20, 35)
-
-    # Female carriers symptomatic (OTC X-linked)
-    female_symptomatic_n = rng.randint(8, 20) if gene == "OTC" else 0
-
-    # Alcohol trigger (CTLN2)
-    alcohol_trigger_n = rng.randint(28, 38) if gene == "SLC25A13" else rng.randint(0, 2)
-
-    # Hypertension (ASL specific)
-    hypertension_n = rng.randint(28, 35) if gene == "ASL" else rng.randint(2, 8)
+    patients = []
+    for i in range(N_PER_GENE):
+        p = {
+            "id":        f"{gene}-{seed}-{i:03d}",
+            "seed":      seed,
+            "gene":      gene,
+            "gender":    genders[i] if i < len(genders) else rng.choice(["M", "F"]),
+            "age_dx":    round(ages[i], 2),
+            "nh3_peak":  round(nh3_vals[i], 1),
+            "outcome":   outcomes[i],
+            "biomarkers":biomarker_vals[i],
+            "treatment": rng.choice(treatments[gene]),
+            "orotic_acid_elevated":    orotic_elevated,
+            "orotic_acid_absent":      orotic_absent,
+            "nbs_detected":            nbs_detectable and rng.random() < 0.85,
+            "neonatal_crisis":         neonatal_crisis and ages[i] < 0.1,
+            "has_spastic_diplegia":    has_spastic and outcomes[i] != "mild",
+            "has_hair_fragility":      has_hair_fragility and ages[i] > 2.0,
+            "has_hypertension":        has_htn and ages[i] > 3.0,
+            "has_homocitrullinuria":   has_homocitrullinuria,
+            "has_ctln2_food_pref":     has_ctln2 and ages[i] > 18,
+            "carglumate_response":     carglumate_curative,
+            "liver_tx_fully_curative": liver_tx_fully_curative,
+            "ucd_group":               GENE_GROUPS[gene],
+        }
+        patients.append(p)
 
     return {
-        "gene": gene,
-        "n": n,
-        "seed": seed,
-        "mean_age_dx": mean_age,
-        "sd_age_dx": sd_age,
-        "hyperammonemia_crisis_n": hap_n,
-        "neonatal_presentation_n": neonatal_n,
-        "neurological_n": neuro_n,
-        "liver_transplant_n": ltx_n,
-        "nitrogen_scavenger_n": nsv_n,
-        "carglumic_acid_n": carglumic_n,
-        "spastic_paraparesis_n": spastic_n,
-        "pathognomonic_marker_n": patho_n,
-        "female_symptomatic_n": female_symptomatic_n,
-        "alcohol_trigger_n": alcohol_trigger_n,
-        "hypertension_n": hypertension_n,
-        "inheritance": inh,
-        "key_therapy": gene_entry["key_therapy"],
-        "pathognomonic": gene_entry["pathognomonic"],
-        "syndrome": gene_entry["syndrome"],
+        "gene":                    gene,
+        "seed":                    seed,
+        "n":                       N_PER_GENE,
+        "disease":                 meta["disease"],
+        "pathognomonic":           GENE_PATHOGNOMONIC[gene],
+        "ucd_group":               GENE_GROUPS[gene],
+        "omim_gene":               meta["omim_gene"],
+        "omim_disease":            meta["omim_disease"],
+        "aa":                      meta["aa"],
+        "kda":                     meta["kda"],
+        "locus":                   meta["locus"],
+        "inh":                     meta["inh"],
+        "orotic_acid_absent":      orotic_absent,
+        "orotic_acid_elevated":    orotic_elevated,
+        "nbs_detectable":          nbs_detectable,
+        "nbs_detected_pct":        0.85 if nbs_detectable else 0.0,
+        "neonatal_crisis":         neonatal_crisis,
+        "carglumate_curative":     carglumate_curative,
+        "liver_tx_fully_curative": liver_tx_fully_curative,
+        "has_hair_fragility":      has_hair_fragility,
+        "has_hypertension":        has_htn,
+        "has_spastic_diplegia":    has_spastic,
+        "has_homocitrullinuria":   has_homocitrullinuria,
+        "has_ctln2":               has_ctln2,
+        "is_xlr":                  is_xlr,
+        "is_east_asian_founder":   is_east_asian_founder,
+        "is_canadian_founder":     is_canadian_founder,
+        "mean_nh3":                round(sum(nh3_vals) / len(nh3_vals), 1),
+        "pct_severe":              round(sum(1 for o in outcomes if o == "severe") / len(outcomes), 3),
+        "patients":                patients,
     }
 
 
 def generate_overview():
-    cohorts = [_make_cohort(g, SEED_BASE + i) for i, g in enumerate(ATLAS_GENES)]
-    total = sum(c["n"] for c in cohorts)
+    cohorts = [_make_cohort(g, SEED_BASE + i) for i, g in enumerate(GENES)]
+
+    gene_table = []
+    for c in cohorts:
+        gene_table.append({
+            "gene":             c["gene"],
+            "disease":          c["disease"],
+            "locus":            c["locus"],
+            "aa":               c["aa"],
+            "kda":              c["kda"],
+            "inheritance":      c["inh"],
+            "ucd_group":        c["ucd_group"],
+            "orotic_absent":    c["orotic_acid_absent"],
+            "orotic_elevated":  c["orotic_acid_elevated"],
+            "nbs_detected":     c["nbs_detectable"],
+            "neonatal_crisis":  c["neonatal_crisis"],
+            "carglumate_curative": c["carglumate_curative"],
+            "mean_nh3":         c["mean_nh3"],
+            "pct_severe":       c["pct_severe"],
+            "pathognomonic":    c["pathognomonic"],
+            "omim_disease":     c["omim_disease"],
+        })
+
     return {
-        "atlas": "Hereditary-Urea-Cycle-Disorder-Atlas",
-        "genes": [g["gene"] for g in ATLAS_GENES],
-        "total_patients": total,
-        "seeds": f"{SEED_BASE}-{SEED_BASE + 7}",
-        "description": (
-            "Complete 8-gene Hereditary Urea Cycle Disorder reference atlas. "
-            "OTC (X-linked most common UCD; citrulline low + orotic acid high PATHOGNOMONIC; "
-            "nitrogen scavengers; LTx curative; fasting ABSOLUTELY AVOID). "
-            "ASS1 (CTLN1; citrulline >1000 μmol/L PATHOGNOMONIC; arginine mandatory). "
-            "ASL (argininosuccinic aciduria; argininosuccinic acid PATHOGNOMONIC; "
-            "liver-brain dissociation; hypertension 75%; arginine CRITICAL). "
-            "ARG1 (hyperargininemia; MILD ammonia; spastic diplegia PATHOGNOMONIC; "
-            "arginine >200 μmol/L; low-arginine diet KEY). "
-            "CPS1 (most severe neonatal; citrulline low + orotic acid NORMAL; "
-            "carglumic acid NOT effective — DISTINGUISH from NAGS). "
-            "NAGS (ONLY UCD where carglumic acid/Carbaglu FDA2010 is CURATIVE; "
-            "biochemically identical to CPS1; carglumic acid response PATHOGNOMONIC). "
-            "SLC25A13 (citrin CTLN2; Japanese founder; adult onset; "
-            "alcohol + high-carbohydrate ABSOLUTELY TRIGGER; MCT diet; LTx curative). "
-            "SLC25A15 (HHH syndrome; homocitrulline urine PATHOGNOMONIC; "
-            "spastic paraparesis; ornithine restriction + citrulline supplement). "
-            "320-patient aggregate, 8 x 40 patients, seeds 3806-3813."
-        ),
-        "gene_summaries": [
-            {
-                "gene": g["gene"],
-                "syndrome": g["syndrome"],
-                "key_therapy": g["key_therapy"],
-                "pathognomonic": g["pathognomonic"],
-                "inheritance": g["inheritance"],
-                "locus": g["locus"],
-                "protein_size": g["protein_size"].split("molecular context")[0].strip(),
-            }
-            for g in ATLAS_GENES
-        ],
-        "cohort_summary": {
-            c["gene"]: {
-                "n": c["n"],
-                "mean_age_dx_yr": c["mean_age_dx"],
-                "hyperammonemia_crisis_n": c["hyperammonemia_crisis_n"],
-                "liver_transplant_n": c["liver_transplant_n"],
-                "neurological_n": c["neurological_n"],
-            }
-            for c in cohorts
-        },
+        "atlas_id":          ATLAS_ID,
+        "total_patients":    N_PER_GENE * len(GENES),
+        "genes":             GENES,
+        "seeds":             f"{SEED_BASE}-{SEED_BASE + len(GENES) - 1}",
+        "nbs_detectable_genes": ["ASS1", "ASL", "ARG1"],
+        "orotic_absent_genes":  ["CPS1", "NAGS"],
+        "orotic_elevated_genes": ["OTC"],
+        "genes_requiring_arginine_supp": ["CPS1", "OTC", "ASS1", "ASL"],
+        "genes_restricting_arginine":    ["ARG1"],
+        "xlinked_genes":     ["OTC"],
+        "proximal_ucd":      PROXIMAL_GROUP,
+        "distal_ucd":        DISTAL_GROUP,
+        "activator_ucd":     ACTIVATOR_GROUP,
+        "transport_ucd":     TRANSPORT_GROUP,
+        "primary_cascade_split": "STEP 1: Orotic acid ABSENT (CPS1/NAGS) vs ELEVATED (OTC) vs normal (ASS1+). STEP 2: If absent -> trial carglumic acid (NCG) -> if NH3 normalizes = NAGS. STEP 3: Citrulline >1000 without argininosuccinate -> ASS1. STEP 4: Citrulline + argininosuccinate both elevated -> ASL. STEP 5: Arginine HIGH + spastic diplegia -> ARG1. STEP 6: Ornithine HIGH + homocitrulline in urine -> SLC25A15 (HHH). STEP 7: East Asian NBS citrulline+galactose -> SLC25A13 (citrin NICCD).",
+        "gene_table":        gene_table,
     }
 
 
 def generate_breakdown():
-    cohorts = [_make_cohort(g, SEED_BASE + i) for i, g in enumerate(ATLAS_GENES)]
+    cohorts = [_make_cohort(g, SEED_BASE + i) for i, g in enumerate(GENES)]
+
     return {
-        "atlas": "Hereditary-Urea-Cycle-Disorder-Atlas",
-        "seeds": f"{SEED_BASE}-{SEED_BASE + 7}",
-        "gene_data": {c["gene"]: c for c in cohorts},
-        "atlas_genes": ATLAS_GENES,
-        "total_patients": sum(c["n"] for c in cohorts),
+        "atlas_id":    ATLAS_ID,
+        "seeds":       f"{SEED_BASE}-{SEED_BASE + len(GENES) - 1}",
+        "ucd_groups": {
+            "proximal_ucd": {
+                "genes": PROXIMAL_GROUP,
+                "description": "CPS1 + OTC: first two mitochondrial steps; both cause severe neonatal hyperammonemia; orotic acid distinguishes (absent CPS1, elevated OTC)",
+                "orotic_rule": "CPS1 orotic absent; OTC orotic MARKEDLY elevated",
+            },
+            "distal_ucd": {
+                "genes": DISTAL_GROUP,
+                "description": "ASS1 + ASL + ARG1: cytoplasmic steps; citrulline (ASS1/ASL) or arginine (ARG1) accumulate; all three NBS-detectable",
+                "nbs_detectable": True,
+            },
+            "activator_ucd": {
+                "genes": ACTIVATOR_GROUP,
+                "description": "NAGS: NAG synthesis defect; CPS1 activator absent; phenocopy of CPS1; carglumic acid (NCG) COMPLETELY CURATIVE",
+                "carglumate_critical": True,
+            },
+            "transport_ucd": {
+                "genes": TRANSPORT_GROUP,
+                "description": "SLC25A15 (ORNT1/HHH) + SLC25A13 (citrin): mitochondrial transporter defects; distinctive ethnic founders; behavioral/neurological phenotypes",
+                "ethnic_founders": ["French-Canadian (SLC25A15 p.F188del)", "East-Asian (SLC25A13 851del4/IVS16ins3kb)"],
+            },
+        },
+        "orotic_acid_algorithm": {
+            "absent_low": {
+                "genes": ["CPS1", "NAGS"],
+                "action": "IMMEDIATELY trial carglumic acid (NCG) 100 mg/kg -- if NH3 normalizes = NAGS (CURATIVE); if no response = CPS1 -> liver transplant workup",
+                "urgency": "LIFE-SAVING -- do NOT delay NCG trial pending molecular results",
+            },
+            "markedly_elevated": {
+                "genes": ["OTC"],
+                "action": "OTC deficiency; check X-linked inheritance; allopurinol test for female carriers; benzoate+phenylbutyrate+arginine",
+            },
+            "mild_normal": {
+                "genes": ["ASS1", "ASL", "ARG1", "SLC25A15", "SLC25A13"],
+                "action": "Check plasma amino acids: citrulline (ASS1/ASL), arginine (ARG1), ornithine+homocitrulline (SLC25A15), ethnicity+NBS (SLC25A13)",
+            },
+        },
+        "distinguishing_features": [
+            {"gene": "CPS1",     "feature": "Orotic acid ABSENT + severe NH3 + neonatal crisis", "action": "NCG trial first; if no response -> liver transplant"},
+            {"gene": "OTC",      "feature": "Orotic acid MARKEDLY ELEVATED + XLR", "action": "Benzoate/phenylbutyrate + arginine; female carrier testing allopurinol"},
+            {"gene": "ASS1",     "feature": "Citrulline >1000 umol/L ONLY (no argininosuccinate)", "action": "Arginine supplement; NBS detected; liver transplant curative"},
+            {"gene": "ASL",      "feature": "Citrulline + argininosuccinate BOTH elevated; hair fragility; HTN", "action": "Liver transplant corrects NH3 NOT hair/HTN; arginine supplement"},
+            {"gene": "ARG1",     "feature": "Spastic diplegia + arginine HIGH + mild/absent NH3", "action": "RESTRICT arginine (opposite UCDs); no scavengers typically"},
+            {"gene": "NAGS",     "feature": "CPS1 phenocopy + orotic acid absent; NCG CURATIVE", "action": "NCG empirically; if response = NAGS confirmed; lifelong NCG"},
+            {"gene": "SLC25A15", "feature": "Homocitrulline in urine PATHOGNOMONIC; ornithine HIGH; cerebellar ataxia", "action": "Ornithine restriction; citrulline supplement"},
+            {"gene": "SLC25A13", "feature": "East Asian + CTLN2 food cravings PATHOGNOMONIC; NICCD pseudo-galactosemia NBS", "action": "CTLN2: urgent liver transplant; NEVER IV glycerol/glucose; NICCD: MCT diet"},
+        ],
+        "treatment_principles": {
+            "emergency": "Hemodialysis (fastest NH3 removal) + sodium benzoate/phenylacetate IV simultaneously",
+            "maintenance": "Low protein diet + essential AA supplement + ammonia scavengers + arginine/citrulline",
+            "gene_specific": {
+                "NAGS":     "Carglumic acid (NCG) lifelong; COMPLETELY curative; no scavengers needed on NCG",
+                "ARG1":     "Arginine RESTRICTION (not supplementation); citrulline to drive cycle without arginine accumulation",
+                "ASL":      "Arginine supplement; post-transplant HTN and hair fragility persist (extrahepatic defect)",
+                "SLC25A13": "CTLN2: liver transplant URGENTLY; NEVER IV glycerol/hyperosmolar glucose -> fatal crisis",
+                "SLC25A15": "Citrulline supplement provides mitochondrial substrate bypass; ornithine restriction",
+            },
+            "transplant_curative": ["CPS1", "OTC", "ASS1", "NAGS", "SLC25A13"],
+            "transplant_partial":  ["ASL", "ARG1"],
+        },
+        "cohort_summary": [
+            {"gene": c["gene"], "mean_nh3": c["mean_nh3"], "pct_severe": c["pct_severe"],
+             "neonatal_crisis": c["neonatal_crisis"], "carglumate_curative": c["carglumate_curative"]}
+            for c in cohorts
+        ],
     }
 
 
 def generate_definitions():
-    return {
-        "atlas": "Hereditary-Urea-Cycle-Disorder-Atlas",
-        "definitions": {
-            "Urea cycle": (
-                "The urea cycle converts toxic ammonia (NH3) to urea for excretion; "
-                "5 hepatic enzymes + 2 mitochondrial transporters: "
-                "CPS1 (step 1) → OTC (step 2) → ASS1 (step 3) → ASL (step 4) → ARG1 (step 5); "
-                "NAGS produces NAG (obligate activator of CPS1); "
-                "SLC25A13 (citrin): aspartate-glutamate carrier for urea cycle substrate supply; "
-                "SLC25A15 (ORNT1): ornithine transporter into mitochondria; "
-                "Combined incidence: ~1:35,000 births"
-            ),
-            "OTC deficiency": (
-                "X-linked most common UCD; hemizygous males: catastrophic neonatal hyperammonemia; "
-                "BIOCHEMISTRY: citrulline LOW + urine orotic acid ELEVATED PATHOGNOMONIC; "
-                "Female carriers: 20-30% symptomatic (migraine, protein aversion, episodic encephalopathy); "
-                "Nitrogen scavengers (RAVICTI/glycerol phenylbutyrate FDA2013) + citrulline supplement; "
-                "Liver transplant CURATIVE; FASTING + CATABOLISM ABSOLUTELY AVOID"
-            ),
-            "Citrullinemia type 1 (CTLN1 / ASS1)": (
-                "AR ASS1 deficiency; third step of urea cycle; citrulline accumulates massively; "
-                "Plasma citrulline >1000 μmol/L PATHOGNOMONIC (normal <40 μmol/L); "
-                "Urine orotic acid NORMAL (distinguishes from OTC); "
-                "Arginine supplementation 300-600 mg/kg/day MANDATORY; "
-                "Liver transplant CURATIVE; NBS: citrulline >150 μmol/L triggers tier-2"
-            ),
-            "Argininosuccinic aciduria (ASA / ASL)": (
-                "AR ASL deficiency; step 4 of urea cycle; argininosuccinate accumulates; "
-                "Argininosuccinic acid in plasma + urine = PATHOGNOMONIC; "
-                "LIVER-BRAIN DISSOCIATION: liver transplant corrects ammonia crises but NOT neurological disease; "
-                "Systemic hypertension in 75% even with good ammonia control (nitric oxide deficiency); "
-                "Arginine supplementation CRITICAL for NO synthesis; "
-                "Trichorrhexis nodosa (brittle hair) PATHOGNOMONIC for ASL"
-            ),
-            "Hyperargininemia (ARG1)": (
-                "AR ARG1 deficiency; final step of urea cycle; arginine accumulates; "
-                "UNIQUE: MILD hyperammonemia (unlike severe neonatal of other UCDs); "
-                "Clinical: progressive spastic diplegia + intellectual disability PATHOGNOMONIC; "
-                "Plasma arginine >200 μmol/L diagnostic; "
-                "Low-arginine diet PRIMARY treatment — prevents neurological progression; "
-                "Liver transplant controversial (neurological may persist)"
-            ),
-            "CPS1 deficiency": (
-                "AR; first step of urea cycle; most severe neonatal onset; "
-                "NH3 often >2000 μmol/L at presentation; "
-                "Citrulline VERY LOW + orotic acid NORMAL (identical to NAGS); "
-                "Carglumic acid NOT EFFECTIVE (CPS1 enzyme absent; NAG analogue cannot substitute); "
-                "CRITICAL DISTINCTION FROM NAGS: no carglumic acid response; "
-                "Liver transplant CURATIVE; gene panel: >250 exons, many private variants"
-            ),
-            "NAGS deficiency + carglumic acid": (
-                "AR; produces NAG, obligate CPS1 activator; "
-                "Biochemically IDENTICAL to CPS1 (citrulline low + orotic acid normal); "
-                "ONLY UCD with pharmacological cure: carglumic acid (N-carbamoylglutamate, Carbaglu FDA2010); "
-                "Carglumic acid activates CPS1 DIRECTLY bypassing NAGS defect; "
-                "DRAMATIC RESPONSE: ammonia normalizes 24-48 hr; "
-                "Carglumic acid POSITIVE RESPONSE = PATHOGNOMONIC for NAGS deficiency; "
-                "Liver transplant usually UNNECESSARY"
-            ),
-            "Citrin deficiency / CTLN2 (SLC25A13)": (
-                "AR mitochondrial aspartate-glutamate carrier deficiency; "
-                "Japanese/East Asian founder (SLC25A13 exon16 ins3kb); carrier freq ~1/65 Japan; "
-                "Adult-onset citrullinemia type II: episodic hyperammonemia + hepatic encephalopathy; "
-                "ALCOHOL ABSOLUTELY TRIGGERS acute crisis; high-carbohydrate diet TRIGGERS; "
-                "IV dextrose (hospital) precipitates crisis — ALERT ICU/anesthesia; "
-                "Low-carbohydrate MCT-enriched high-protein diet; liver transplant CURATIVE"
-            ),
-            "HHH syndrome (SLC25A15)": (
-                "AR ornithine carrier deficiency (ORNT1); Italian/Franco-Canadian p.Phe188del founder; "
-                "TRIAD: Hyperornithinemia + Hyperammonemia + Homocitrullinuria; "
-                "Homocitrulline in urine = PATHOGNOMONIC (distinguishes from OTC where absent); "
-                "Progressive spastic paraparesis (UMN signs) hallmark neurological feature; "
-                "Ornithine-restricted diet + citrulline supplement + pyridoxine; "
-                "DDx LPI (SLC7A7): HHH has HIGH urine ornithine; LPI has LOW dibasic amino acids"
-            ),
-            "Nitrogen scavengers in UCD": (
-                "Sodium benzoate: conjugates glycine → hippurate (excretes 1 N per mole); "
-                "Sodium phenylbutyrate: prodrug → phenylacetate → conjugates glutamine → phenylacetylglutamine (2 N); "
-                "Glycerol phenylbutyrate (RAVICTI) FDA2013: improved palatability, sustained release; "
-                "Alternative nitrogen excretion pathway bypassing blocked urea cycle; "
-                "Indicated in OTC, ASS1, ASL, CPS1, ARG1 (less critical), SLC25A15; "
-                "NAGS: usually not needed long-term if carglumic acid effective"
-            ),
-            "Liver-brain dissociation in ASL": (
-                "Liver transplant corrects hepatic ASL deficiency → no more ammonia crises; "
-                "But: ASL is expressed in neurons — brain receives no benefit from liver transplant; "
-                "Neurological disease (intellectual disability, behavior) persists/progresses post-LTx; "
-                "Systemic hypertension (75%): NO deficiency in vascular endothelium → persists post-LTx; "
-                "Arginine supplementation benefits NO synthesis in both hepatic and extra-hepatic tissues; "
-                "This is a fundamental concept: UCD liver transplant ≠ neurological cure in ASL"
-            ),
+    key_distinguishers = [
+        {
+            "name":        "Orotic acid: the critical first branch in UCD diagnosis",
+            "description": "Urine orotic acid separates UCDs into three groups: (1) ABSENT/LOW -> CPS1 or NAGS (block is proximal to cytoplasmic carbamoyl phosphate; no CP reaches pyrimidine synthesis); (2) MARKEDLY ELEVATED -> OTC (carbamoyl phosphate overflows to cytoplasm -> pyrimidine synthesis -> orotate); (3) NORMAL/MILD -> ASS1, ASL, ARG1, SLC25A15, SLC25A13. ACTION: absent orotic acid + severe hyperammonemia = ALWAYS trial carglumic acid (NCG) -- if NH3 normalizes = NAGS (completely curative); if no response = CPS1 -> liver transplant",
         },
-        "critical_clinical_rules": {
-            "OTC-CITRULLINE-LOW-OROTIC-HIGH-PATHOGNOMONIC": (
-                "OTC deficiency: plasma citrulline LOW (<5 μmol/L) + urine orotic acid ELEVATED = PATHOGNOMONIC; "
-                "Distinguishes OTC from CPS1/NAGS (both have citrulline low but orotic NORMAL in CPS1/NAGS); "
-                "X-linked: males hemizygous severe; females carrier test unreliable — gene sequencing; "
-                "FASTING/CATABOLISM ABSOLUTELY AVOID — triggers crisis in males AND symptomatic females; "
-                "RAVICTI (glycerol phenylbutyrate) FDA2013: nitrogen scavenger; citrulline supplement mandatory"
-            ),
-            "ASS1-CITRULLINE-GT1000-PATHOGNOMONIC": (
-                "ASS1 (CTLN1): plasma citrulline >1000 μmol/L PATHOGNOMONIC; "
-                "Orotic acid NORMAL — distinguishes from OTC; "
-                "Arginine supplementation 300-600 mg/kg/day MANDATORY — cannot be synthesized past block; "
-                "Liver transplant curative — often first year of life in NBS-detected cases; "
-                "NBS: citrulline >150 μmol/L triggers ASS1/ASL investigation (tier-2)"
-            ),
-            "ASL-LIVER-BRAIN-DISSOCIATION-HYPERTENSION": (
-                "ASL deficiency: argininosuccinic acid elevated PATHOGNOMONIC; "
-                "LIVER-BRAIN DISSOCIATION: LTx corrects ammonia crises but NOT neurological disease; "
-                "Systemic hypertension in 75% even with excellent ammonia control — check BP every visit; "
-                "Arginine supplementation CRITICAL for NO synthesis — reduces hypertension; "
-                "Trichorrhexis nodosa (brittle hair) PATHOGNOMONIC in UCD context"
-            ),
-            "ARG1-MILD-NH3-SPASTIC-DIPLEGIA-PATHOGNOMONIC": (
-                "ARG1 (hyperargininemia): MILD or absent neonatal hyperammonemia — KEY DISTINCTION from other UCDs; "
-                "Progressive spastic diplegia + intellectual disability PATHOGNOMONIC for ARG1 in toddler; "
-                "Plasma arginine >200 μmol/L diagnostic; "
-                "Low-arginine diet (EAA mix WITHOUT arginine) PRIMARY treatment — prevents neurological progression; "
-                "Liver transplant controversial — neurological may persist due to brain ARG2"
-            ),
-            "CPS1-vs-NAGS-CARGLUMIC-ACID-CRITICAL-DISTINCTION": (
-                "CPS1 + NAGS: BOTH have citrulline LOW + orotic acid NORMAL — biochemically IDENTICAL; "
-                "ONLY DISTINCTION: carglumic acid response; "
-                "  NAGS: carglumic acid DRAMATIC response (NH3 normalizes 24-48 hr) = PATHOGNOMONIC; "
-                "  CPS1: NO response to carglumic acid; "
-                "NAGS deficiency ONLY UCD treatable with pharmacological cure (Carbaglu FDA2010); "
-                "CPS1: liver transplant curative; NAGS: liver transplant usually avoidable"
-            ),
-            "SLC25A13-CTLN2-ALCOHOL-CARB-TRIGGER-PATHOGNOMONIC": (
-                "Citrin deficiency (CTLN2): alcohol + high-carbohydrate diet ABSOLUTELY TRIGGER acute crisis; "
-                "IV dextrose infusion (hospital) PRECIPITATES crisis — MUST alert ICU and anesthesia; "
-                "Japanese/East Asian ancestry: test SLC25A13 first; "
-                "Low-carbohydrate MCT-enriched high-protein diet PRIMARY management; "
-                "Liver transplant CURATIVE for recurrent adult CTLN2; "
-                "Donor selection: SLC25A13 carrier donors must be excluded"
-            ),
-            "SLC25A15-HHH-HOMOCITRULLINE-PATHOGNOMONIC": (
-                "HHH syndrome (SLC25A15): homocitrulline in urine PATHOGNOMONIC; "
-                "Homocitrulline ABSENT in OTC deficiency — key DDx; "
-                "Progressive spastic paraparesis (UMN) hallmark — check for spasticity in all HHH; "
-                "Ornithine-restricted diet + citrulline supplement + pyridoxine; "
-                "DDx LPI (SLC7A7): HHH has HIGH urine ornithine; LPI has LOW dibasic amino acids; "
-                "Italian/Franco-Canadian p.Phe188del founder mutation"
-            ),
-            "UCD-FASTING-CATABOLISM-ABSOLUTELY-AVOID": (
-                "ALL UCDs: fasting/catabolism triggers hyperammonemia crisis; "
-                "Perioperative: IV dextrose mandatory (exception: SLC25A13 — use lipid-based instead); "
-                "Intercurrent illness: increase caloric support, temporarily reduce protein; "
-                "Surgery, anesthesia, trauma, prolonged fasting: ALL are crisis triggers; "
-                "24/7 emergency protocol letter: every UCD patient should carry one; "
-                "ICU/ER: NEVER withhold IV calories while awaiting ammonia result"
-            ),
-            "UCD-NEWBORN-SCREENING-CITRULLINE-THRESHOLD": (
-                "OTC: citrulline LOW on NBS (sensitive only for severe neonatal male); "
-                "ASS1/ASL: citrulline ELEVATED on NBS — tier-2 to distinguish; "
-                "ARG1: arginine elevated on NBS; "
-                "CPS1/NAGS: citrulline LOW — often missed on NBS without specific metabolite; "
-                "CTLN2 (SLC25A13): citrulline may be normal in asymptomatic neonates — late presentation; "
-                "HHH (SLC25A15): ornithine elevated on some NBS panels; "
-                "Negative NBS does NOT rule out OTC/CPS1/NAGS — symptomatic infant with NH3 crisis: full gene panel"
-            ),
+        {
+            "name":        "Carglumic acid (NCG) empirical trial: MANDATORY in CPS1-like presentation",
+            "description": "In any neonate/patient with severe hyperammonemia AND orotic acid absent/low: ALWAYS give carglumic acid (N-carbamylglutamate, NCG) empirically while awaiting molecular diagnosis. NCG dose: 100-250 mg/kg/day. If NH3 normalizes completely -> NAGS deficiency confirmed (curative). If no response -> CPS1 deficiency (proceed to liver transplant workup). NCG is SAFE with minimal adverse effects. Rarity of NAGS (~50 worldwide cases) makes empirical trial critical -- it is easily missed; a brief NCG trial can identify and cure a completely treatable condition. DO NOT delay NCG pending molecular results.",
+        },
+        {
+            "name":        "ASL unique systemic features: hair fragility and hypertension persist post-transplant",
+            "description": "Argininosuccinic aciduria (ASL deficiency) has two pathognomonic features beyond hyperammonemia: (1) TRICHORRHEXIS NODOSA (hair fragility): hair shafts break easily on microscopy -- pathognomonic for ASL among all UCDs; caused by arginine deficiency in hair follicle (arginine needed for creatine in hair matrix); present in longer-surviving treated patients; (2) HYPERTENSION: common even with excellent metabolic control; ASL also functions in the arginine/citrulline cycle for nitric oxide (NO) synthesis in endothelium; ASL-null -> NO deficiency -> systemic hypertension -> cardiovascular risk. CRITICAL: liver transplant corrects hepatic ASL (hyperammonemia resolves) but DOES NOT correct extrahepatic ASL deficiency -> hair fragility and hypertension PERSIST post-transplant -- inform families before listing for transplant",
+        },
+        {
+            "name":        "Arginemia: progressive spasticity NOT hyperammonemia -- cerebral palsy misdiagnosis",
+            "description": "ARG1 deficiency (arginemia) presents with PROGRESSIVE SPASTIC DIPLEGIA/PARAPARESIS -- NOT acute hyperammonemic crisis. Onset: age 2-4 years; scissor gait, loss of developmental milestones. Hyperammonemia is MILD or ABSENT (partial urea cycle function). Key diagnostic: PLASMA ARGININE MARKEDLY ELEVATED (>200-500 umol/L). Treatment: ARGININE RESTRICTION diet (opposite of every other UCD which requires arginine supplementation). No ammonia scavengers typically needed. Liver transplant corrects biochemistry but neurological damage may NOT fully reverse. Often misdiagnosed as cerebral palsy -- plasma amino acids (arginine) required in any unexplained progressive spastic diplegia",
+        },
+        {
+            "name":        "HHH syndrome: homocitrulline in urine is pathognomonic",
+            "description": "SLC25A15 (HHH syndrome) produces three simultaneous biochemical abnormalities: HYPERORNITHINEMIA + HYPERAMMONEMIA + HOMOCITRULLINURIA. The homocitrullinuria is pathognomonic -- it occurs because ornithine cannot enter mitochondria (ORNT1 defect) -> mitochondrial lysine accumulates -> lysine is carbamylated by excess carbamoyl phosphate -> homocitrulline excreted in urine. This is NOT seen in any other UCD. Clinical phenotype is dominated by NEUROLOGICAL DEGENERATION (cerebellar ataxia, pyramidal signs, cognitive decline) rather than acute crisis -- hyperammonemia is often episodic and mild/moderate. French Canadian founder mutation p.F188del enriched in Quebec/Maritime populations",
+        },
+        {
+            "name":        "Citrin deficiency CTLN2: food cravings as a diagnostic clue in East Asian adults",
+            "description": "Adult CTLN2 (SLC25A13 deficiency) has a pathognomonic behavioral feature: BIZARRE FOOD PREFERENCES -- intense craving for high-protein foods (meat, eggs, tofu, nuts) and FAT (peanut butter, fatty fish), with STRONG AVERSION to carbohydrates and sweets. This self-selecting behavior is driven by metabolic necessity (carbohydrates worsen aspartate-malate shuttle failure; fat/protein are preferred fuels). In any East Asian adult presenting with episodic encephalopathy and these food preferences -> citrin deficiency until proven otherwise. CRITICAL: ABSOLUTELY CONTRAINDICATED -- IV glycerol, high-glucose infusions, hyperosmolar solutions -> can trigger fatal hyperammonemic crisis. Liver transplant is URGENTLY CURATIVE for CTLN2",
+        },
+        {
+            "name":        "OTC female carriers: variable severity and allopurinol test",
+            "description": "OTC deficiency is X-linked; female heterozygotes are carriers but NOT simply 'unaffected'. Due to random X-inactivation (lyonization), ~15-20% of carrier females have clinically significant protein intolerance, episodic hyperammonemia (often triggered by illness, surgery, high protein), or even severe late-onset presentation. ALLOPURINOL LOADING TEST: used to detect asymptomatic carrier females; allopurinol inhibits orotidine-5'-phosphate decarboxylase; after allopurinol challenge, orotidine AND orotic acid both accumulate in carriers -- detectable in urine for 12-24h; sensitivity ~80-90%. Molecular genetic testing is gold standard for carrier detection",
+        },
+        {
+            "name":        "NICCD vs ASS1: distinguishing citrullinemia causes in neonatal NBS",
+            "description": "Both ASS1 deficiency (CTLN1) and citrin deficiency (NICCD, SLC25A13) can show elevated citrulline on NBS. KEY DISTINCTIONS: (1) ETHNICITY: NICCD almost exclusively East Asian; ASS1 pan-ethnic; (2) ADDITIONAL NBS markers: NICCD also shows GALACTOSE + METHIONINE + THREONINE elevated (pseudo-galactosemia pattern from cholestasis-induced enzyme effects); ASS1 has pure citrulline elevation; (3) CITRULLINE LEVEL: CTLN1 (ASS1) typically >500-1000 umol/L; NICCD usually 100-300 umol/L; (4) CLINICAL: NICCD presents with cholestatic jaundice + liver dysfunction; CTLN1 presents with hyperammonemic crisis; (5) COURSE: NICCD resolves with MCT formula by age 1-2; CTLN1 requires aggressive UCD management. In East Asian neonate: citrulline elevated + galactose elevated -> citrin deficiency until proven otherwise",
+        },
+    ]
+
+    treatment_matrix = [
+        {
+            "intervention":    "Sodium benzoate + sodium phenylacetate (Ammonul IV) / sodium phenylbutyrate (oral)",
+            "indications":     "Acute hyperammonemic crisis in CPS1, OTC, ASS1, ASL, NAGS, SLC25A15; maintenance in most UCDs",
+            "mechanism":       "Alternative nitrogen disposal: benzoate conjugates glycine -> hippurate (excreted); phenylacetate/phenylbutyrate conjugates glutamine -> phenylacetylglutamine (excreted); each removes 1 nitrogen per molecule",
+            "dose":            "Acute IV: sodium benzoate 250 mg/kg + sodium phenylacetate 250 mg/kg over 90 min bolus, then same dose over 24h; oral maintenance: sodium phenylbutyrate 450-600 mg/kg/day",
+            "contraindicated": "NOT for ARG1 (hyperammonemia mild, arginine restriction preferred); reduce dose in renal failure",
+        },
+        {
+            "intervention":    "Carglumic acid (N-carbamylglutamate, NCG / Carbaglu)",
+            "indications":     "NAGS deficiency (COMPLETELY CURATIVE); empirical trial in all CPS1-like presentations (orotic absent); acquired NAGS deficiency in organic acidemias (adjunct)",
+            "mechanism":       "NCG is a stable structural analogue of N-acetylglutamate (NAG); binds to and activates CPS1 allosterically even without NAGS enzyme function; dose-dependently restores ureagenesis",
+            "dose":            "Acute: 100-250 mg/kg/day orally or via NG; maintenance: 10-100 mg/kg/day; titrate to normal NH3",
+            "contraindicated": "No absolute contraindications; give EMPIRICALLY in any CPS1-like presentation; safe",
+        },
+        {
+            "intervention":    "Arginine supplementation",
+            "indications":     "CPS1 (200-800 mg/kg/day), OTC (200-800 mg/kg/day), ASS1 (200-800 mg/kg/day), ASL (200-800 mg/kg/day); essential since these cannot synthesize arginine endogenously",
+            "mechanism":       "Arginine becomes ESSENTIAL amino acid when urea cycle cannot synthesize it; deficiency causes hypoproteinemia, poor growth, impaired immune function",
+            "dose":            "200-800 mg/kg/day oral; neonatal acute: 200-600 mg/kg/day IV",
+            "contraindicated": "ARG1 -- ABSOLUTELY CONTRAINDICATED; will worsen arginine accumulation and neurological toxicity",
+        },
+        {
+            "intervention":    "Liver transplantation",
+            "indications":     "CPS1 (curative), OTC (curative), ASS1 (curative), NAGS (curative), SLC25A13/CTLN2 (urgent-curative); ASL (corrects NH3 but NOT hair/HTN); ARG1 (corrects biochemistry, partial neuro benefit)",
+            "mechanism":       "Donor hepatocytes express normal urea cycle enzymes -> complete nitrogen disposal restored; some extrahepatic enzyme defects persist (ASL hair/HTN; ARG1 neuro)",
+            "dose":            "Living-related or deceased donor; consider early transplant before severe neurological injury; OTC: can transplant neonates at specialized centers",
+            "contraindicated": "Relative: severe irreversible neurological damage; SLC25A15 (rarely transplanted -- mild hyperammonemia responds to dietary management)",
+        },
+        {
+            "intervention":    "Hemodialysis (acute severe hyperammonemia)",
+            "indications":     "NH3 >500 umol/L AND worsening despite scavengers; neonatal NH3 >1000 umol/L; loss of consciousness/coma",
+            "mechanism":       "Direct extracorporeal NH3 removal; 5-10x more efficient than peritoneal dialysis; continuous veno-venous hemofiltration (CVVH) preferred in neonates",
+            "dose":            "CVVH or intermittent HD; target NH3 <200 umol/L within 8-12h; do NOT stop scavengers during dialysis",
+            "contraindicated": "No absolute contraindications; use in any patient with NH3 >500 and clinical deterioration",
+        },
+    ]
+
+    return {
+        "atlas_id":          ATLAS_ID,
+        "key_distinguishers":key_distinguishers,
+        "treatment_matrix":  treatment_matrix,
+        "seeds":             f"{SEED_BASE}-{SEED_BASE + len(GENES) - 1}",
+        "primary_cascade_split": "STEP 1: Orotic acid ABSENT -> CPS1 or NAGS (trial NCG immediately). STEP 2: Orotic acid MARKEDLY ELEVATED -> OTC (X-linked). STEP 3: Citrulline >1000 umol/L without argininosuccinate -> ASS1 (NBS-detected). STEP 4: Citrulline + argininosuccinate BOTH elevated -> ASL (check hair, BP). STEP 5: Arginine HIGH + spastic diplegia (not encephalopathy) -> ARG1 (RESTRICT arginine). STEP 6: Ornithine HIGH + homocitrulline in urine -> SLC25A15 (HHH syndrome). STEP 7: East Asian neonate + citrulline+galactose+Met NBS OR East Asian adult + food cravings + encephalopathy -> SLC25A13 (citrin; CTLN2 urgent liver Tx)",
+        "ucd_groups": {
+            "proximal":  {"genes": PROXIMAL_GROUP,  "orotic": "ABSENT (CPS1) or ELEVATED (OTC)"},
+            "distal":    {"genes": DISTAL_GROUP,     "orotic": "normal/mild; citrulline or arginine elevated"},
+            "activator": {"genes": ACTIVATOR_GROUP,  "orotic": "ABSENT (phenocopy CPS1); NCG CURATIVE"},
+            "transport": {"genes": TRANSPORT_GROUP,  "orotic": "variable; distinctive ethnicity/biomarkers"},
         },
     }
-
-
-if __name__ == "__main__":
-    import json
-    print("=== Hereditary Urea Cycle Disorder Atlas ===")
-    ov = generate_overview()
-    print(f"Atlas: {ov['atlas']}")
-    print(f"Genes: {', '.join(ov['genes'])}")
-    print(f"Total patients: {ov['total_patients']}")
-    print(f"Seeds: {ov['seeds']}")
-    print()
-    br = generate_breakdown()
-    for gene, d in br["gene_data"].items():
-        print(
-            f"  {gene}: n={d['n']}, age_dx={d['mean_age_dx']}yr, "
-            f"hap_crisis={d['hyperammonemia_crisis_n']}/40, "
-            f"ltx={d['liver_transplant_n']}/40, "
-            f"neuro={d['neurological_n']}/40"
-        )
-    print()
-    df = generate_definitions()
-    print(f"Definitions: {len(df['definitions'])} terms")
-    print(f"Clinical rules: {len(df['critical_clinical_rules'])} rules")
-    print("SCRIPT OK")
