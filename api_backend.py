@@ -53046,6 +53046,25 @@ async def hereditary_autoinflammatory_periodic_fever_atlas_definitions():
     return aipf_definitions()
 
 
+@app.get("/api/hereditary-msud-bcaa-disorder-atlas/overview")
+async def hereditary_msud_bcaa_disorder_atlas_overview():
+    """Hereditary-MSUD-BCAA-Disorder-Atlas overview — BCKDHA-445aa-19q13.2-MSUD-Ia-Alloisoleucine-PATHOGNOMONIC-Leucine-Toxic-Mennonite-p.Y393N-Thiamine-LiTx-Curative; BCKDHB-392aa-6q14.1-MSUD-Ib-E1beta-Heterotetramer-LessThiamineResponsive; DBT-482aa-1p21.2-MSUD-II-Intermittent-NBS-TRAP-Normal-BetweenCrises; DLD-474aa-7q31.1-MSUD-III-COMBINED-PDH-KGDH-BCKDH-LacticAcidosis-AlphaKetoglutarate-Alloisoleucine-PATHOGNOMONIC-AshkenaziJewish; BCKDK-382aa-16q22.1-BCAA-LOW-OPPOSITE-MSUD-Autism-Epilepsy-NBS-MISSES-BCAA-Supplement-PATHOGNOMONIC; PPM1K-359aa-4q22.1-MSUD-V-Intermittent-FebrileRegression-LeighLike; HIBCH-378aa-2q32.2-VCatabolism-MethacrylylCoA-CysteineToxicity-LeighLike-Normal-BCCAs-PATHOGNOMONIC; MCCC1-725aa-3q27.1-3MCC-LeucineCatabolism-BENIGN-C5OH-NBS-MaternalFirst-PATHOGNOMONIC; seeds-4182-4189."""
+    from scripts.hereditary_msud_bcaa_disorder_atlas_dashboard import generate_overview as msud_overview
+    return msud_overview()
+
+@app.get("/api/hereditary-msud-bcaa-disorder-atlas/breakdown")
+async def hereditary_msud_bcaa_disorder_atlas_breakdown():
+    """Hereditary-MSUD-BCAA-Disorder-Atlas breakdown — bckdh-core-complex-BCKDHA-BCKDHB-DBT-DLD; bckdh-regulatory-kinase-phosphatase-BCKDK-PPM1K; peripheral-bcaa-catabolism-HIBCH-MCCC1; bcaa-direction-cascade-HIGH-LOW-normal-intermittent; treatment-leucine-restriction-thiamine-LiTx-BCAA-supp-carnitine; combined-triad-DLD-lactic-ketoglutarate-alloisoleucine; maternal-3mcc-NBS-trap; seeds-4182-4189."""
+    from scripts.hereditary_msud_bcaa_disorder_atlas_dashboard import generate_breakdown as msud_breakdown
+    return msud_breakdown()
+
+@app.get("/api/hereditary-msud-bcaa-disorder-atlas/definitions")
+async def hereditary_msud_bcaa_disorder_atlas_definitions():
+    """Hereditary-MSUD-BCAA-Disorder-Atlas definitions — alloisoleucine-rule; bcaa-direction-rule; nbs-miss-alert-BCKDK-PPM1K-HIBCH; combined-triad-DLD; maternal-3mcc-NBS-trap; BCKDH-complex-subunits; methacrylyl-CoA-toxicity-HIBCH; Mennonite-founder-BCKDHA; Ashkenazi-founder-DLD; cascade-algorithm; seeds-4182-4189."""
+    from scripts.hereditary_msud_bcaa_disorder_atlas_dashboard import generate_definitions as msud_definitions
+    return msud_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

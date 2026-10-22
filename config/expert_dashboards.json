@@ -24107,5 +24107,24 @@
     "cohort_n": 320,
     "seed": 4174,
     "registered": "2026-10-21"
+  },
+  {
+    "id": "hereditary-msud-bcaa-disorder-atlas",
+    "label": "Hereditary MSUD BCAA Disorder Atlas",
+    "status": "built",
+    "genes": [
+      "BCKDHA",
+      "BCKDHB",
+      "DBT",
+      "DLD",
+      "BCKDK",
+      "PPM1K",
+      "HIBCH",
+      "MCCC1"
+    ],
+    "seeds": "4182-4189",
+    "patients": 320,
+    "endpoint": "/api/hereditary-msud-bcaa-disorder-atlas",
+    "registered": "2026-10-22"
   }
 ]
