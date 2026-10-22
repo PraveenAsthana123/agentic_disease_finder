@@ -24176,5 +24176,30 @@
     ],
     "portal_page": "/hereditary-nkh-glycine-encephalopathy-hyperekplexia-atlas",
     "registered": "2026-10-22"
+  },
+  {
+    "id": "hereditary-thiamine-biotin-lipoate-cofactor-atlas",
+    "name": "Hereditary-Thiamine-Biotin-Lipoate-Cofactor-Atlas",
+    "status": "built",
+    "category": "hereditary-metabolic-neurological",
+    "genes": [
+      "SLC19A3",
+      "SLC19A2",
+      "TPK1",
+      "SLC25A19",
+      "BTD",
+      "HLCS",
+      "LIAS",
+      "LIPT1"
+    ],
+    "seeds": "4206-4213",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/overview",
+      "/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/breakdown",
+      "/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-thiamine-biotin-lipoate-cofactor-atlas",
+    "registered": "2026-10-22"
   }
 ]

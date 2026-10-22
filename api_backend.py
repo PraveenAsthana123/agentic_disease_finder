@@ -53101,6 +53101,24 @@ async def hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_definitions(
     from scripts.hereditary_nkh_glycine_encephalopathy_hyperekplexia_atlas_dashboard import generate_definitions as nkh_definitions
     return nkh_definitions()
 
+@app.get("/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/overview")
+async def hereditary_thiamine_biotin_lipoate_cofactor_atlas_overview():
+    """Hereditary-Thiamine-Biotin-Lipoate-Cofactor-Atlas overview — SLC19A3-496aa-2q37.3-AR-THTR2-BTBGD-Bilateral-BG-PATHOGNOMONIC-Biotin+Thiamine-COMPLETE-REVERSAL; SLC19A2-497aa-1q24.2-AR-THTR1-TRMA-Rogers-Megaloblastic+DM+SNHL-Thiamine; TPK1-262aa-7q35-AR-THMD1-Lactic-Acidosis-Thiamine-Responsive; SLC25A19-320aa-17q25.3-AR-Amish-Microcephaly-2-OG-Aciduria-Founder-pG177A; BTD-543aa-3p25.1-AR-Biotinidase-NBS-DETECTABLE-Biotin-5mg-CURATIVE; HLCS-726aa-21q22.13-AR-MCD1-NBS-Misses-BTD-Normal-Biotin-10mg; LIAS-370aa-4q32.3-AR-Lipoate-Synthesis-Combined-Leigh-Like; LIPT1-376aa-2q11.2-AR-Lipoate-Attachment-PDH+alphaKGDH+GCS; seeds-4206-4213."""
+    from scripts.hereditary_thiamine_biotin_lipoate_cofactor_atlas_dashboard import generate_overview as tbl_overview
+    return tbl_overview()
+
+@app.get("/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/breakdown")
+async def hereditary_thiamine_biotin_lipoate_cofactor_atlas_breakdown():
+    """Hereditary-Thiamine-Biotin-Lipoate-Cofactor-Atlas breakdown — thiamine-SLC19A3-SLC19A2-TPK1-SLC25A19; biotin-BTD-HLCS; lipoate-LIAS-LIPT1; BTBGD-bilateral-BG-empirical-treat; BTD-NBS-vs-HLCS-NBS-misses; LIAS-vs-LIPT1-BCKDH-discriminates; keto-diet-CONTRAINDICATED-LIAS-LIPT1; cascade-algorithm; seeds-4206-4213."""
+    from scripts.hereditary_thiamine_biotin_lipoate_cofactor_atlas_dashboard import generate_breakdown as tbl_breakdown
+    return tbl_breakdown()
+
+@app.get("/api/hereditary-thiamine-biotin-lipoate-cofactor-atlas/definitions")
+async def hereditary_thiamine_biotin_lipoate_cofactor_atlas_definitions():
+    """Hereditary-Thiamine-Biotin-Lipoate-Cofactor-Atlas definitions — BTBGD-empirical-treatment-principle; BTD-vs-HLCS-BTD-enzyme-activity; LIAS-vs-LIPT1-BCKDH-activity; SLC19A3-blood-thiamine-NORMAL-brain-specific; TRMA-SNHL-IRREVERSIBLE; biotin-lab-test-interference-FDA2019; Amish-microcephaly-SLC25A19-founder-pG177A; keto-diet-contraindication-lipoate; primary-cascade-split; seeds-4206-4213."""
+    from scripts.hereditary_thiamine_biotin_lipoate_cofactor_atlas_dashboard import generate_definitions as tbl_definitions
+    return tbl_definitions()
+
 
 if __name__ == "__main__":
     import os
