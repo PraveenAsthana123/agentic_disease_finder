@@ -24126,5 +24126,30 @@
     "patients": 320,
     "endpoint": "/api/hereditary-msud-bcaa-disorder-atlas",
     "registered": "2026-10-22"
+  },
+  {
+    "id": "hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas",
+    "name": "Hereditary-Homocystinuria-Sulfur-Amino-Acid-Metabolism-Atlas",
+    "status": "built",
+    "category": "hereditary-metabolic",
+    "genes": [
+      "CBS",
+      "MTHFR",
+      "MTR",
+      "MTRR",
+      "MAT1A",
+      "GNMT",
+      "AHCY",
+      "CTH"
+    ],
+    "seeds": "4190-4197",
+    "patients": 320,
+    "endpoints": [
+      "/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/overview",
+      "/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/breakdown",
+      "/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/definitions"
+    ],
+    "portal_page": "/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas",
+    "registered": "2026-10-22"
   }
 ]

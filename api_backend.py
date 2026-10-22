@@ -53065,6 +53065,25 @@ async def hereditary_msud_bcaa_disorder_atlas_definitions():
     return msud_definitions()
 
 
+@app.get("/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/overview")
+async def hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_overview():
+    """Hereditary-Homocystinuria-Sulfur-Amino-Acid-Metabolism-Atlas overview — CBS-551aa-21q22.3-AR-ClassicalHomocystinuria-EctopiaLentis-PATHOGNOMONIC-Marfanoid-VTE-B6-Responsive-50pct-Betaine; MTHFR-656aa-1p36.22-AR-SevereDeficiency-Remethylation-Methionine-LOW-DDx-CBS-NOT-C677T-Polymorphism; MTR-1265aa-1q43-AR-cblG-MegaloblasticAnemia-Homocystinuria-WITHOUT-MMA; MTRR-698aa-5p15.31-AR-cblE-IndistinguishablecblG-HydroxocobalaminTreatment; MAT1A-395aa-10q22.3-AR-IsolatedHypermethioninemia-MostlyBenign-LiverDisease; GNMT-294aa-6p12.1-AR-HypermethionemiaPlusAFP-ELEVATED-PATHOGNOMONIC-VeryRare; AHCY-432aa-20q11.22-AR-SAHHydrolase-Myopathy-DISTINCTIVE-DevelopmentalDelay-Hepatopathy; CTH-405aa-1p31.3-AR-Cystathioninuria-MOSTLY-BENIGN-B6-Responsive; seeds-4190-4197."""
+    from scripts.hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_dashboard import generate_overview as hcys_overview
+    return hcys_overview()
+
+@app.get("/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/breakdown")
+async def hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_breakdown():
+    """Hereditary-Homocystinuria-Sulfur-Amino-Acid-Metabolism-Atlas breakdown — transsulfuration-CBS-CTH; remethylation-MTHFR-MTR-MTRR; SAM-catabolism-MAT1A-GNMT-AHCY; methionine-direction-HIGH-LOW-NORMAL; hcy-ddx; mma-absent-universal; cascade-algorithm; n2o-contraindication; seeds-4190-4197."""
+    from scripts.hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_dashboard import generate_breakdown as hcys_breakdown
+    return hcys_breakdown()
+
+@app.get("/api/hereditary-homocystinuria-sulfur-amino-acid-metabolism-atlas/definitions")
+async def hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_definitions():
+    """Hereditary-Homocystinuria-Sulfur-Amino-Acid-Metabolism-Atlas definitions — methionine-direction-primary-ddx; mthfr-c677t-not-disease; mtrr-i22m-not-pathogenic; cblg-cble-identical; ectopia-lentis-downward-CBS; gnmt-afp-pathognomonic; ahcy-myopathy-distinctive; cth-mostly-benign; betaine-role; n2o-contraindication; cascade-algorithm; seeds-4190-4197."""
+    from scripts.hereditary_homocystinuria_sulfur_amino_acid_metabolism_atlas_dashboard import generate_definitions as hcys_definitions
+    return hcys_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
