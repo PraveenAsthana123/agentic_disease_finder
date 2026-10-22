@@ -53027,6 +53027,25 @@ async def hereditary_scn_granulocyte_atlas_definitions():
     return scn_definitions()
 
 
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-atlas/overview")
+async def hereditary_autoinflammatory_periodic_fever_atlas_overview():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Atlas overview — MEFV-781aa-16p13.3-FMF-ShortAttacks-lt72h-PATHOGNOMONIC-Serositis-Colchicine-Curative-AAamyloid-M694V; TNFRSF1A-455aa-12p13.31-TRAPS-ProlongedAttacks-gt7days-PATHOGNOMONIC-MonocyteSkinPatches-Etanercept-NOT-Infliximab-Canakinumab; MVK-396aa-12q24.11-HIDS-MKD-3-7d-IgD-gt100-PATHOGNOMONIC-CervicalLN-DutchFounder-Canakinumab; NLRP3-1036aa-1q44-CAPS-NonPruriticUrticaria-PATHOGNOMONIC-MWS-Deafness-NOMID-Neonatal-Canakinumab; PSTPIP1-416aa-15q24.3-PAPA-SterileArthritis-PATHOGNOMONIC-PyodermaGangrenosum-Acne-IL1-TNF; NOD2-1040aa-16q12.1-Blau-GranulomatousUveitis-Camptodactyly-Dermatitis-Triad-PATHOGNOMONIC-NoLungs-AdalimumaB; IL1RN-177aa-2q14.1-DIRA-NeonatalPeriostitis-PATHOGNOMONIC-Osteomyelitis-Pustulosis-Anakinra-Curative-48-72h; LPIN2-986aa-18p11.31-Majeed-MultifocalOsteomyelitis-CDA-PATHOGNOMONIC-UniqueAutoinflammatory-Anakinra; seeds-4174-4181."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_atlas_dashboard import generate_overview as aipf_overview
+    return aipf_overview()
+
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-atlas/breakdown")
+async def hereditary_autoinflammatory_periodic_fever_atlas_breakdown():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Atlas breakdown — pyrin-inflammasome-MEFV-PSTPIP1; tnfr1-shedding-TNFRSF1A; mevalonate-pathway-MVK-HIDS-IgD; nlrp3-constitutive-CAPS-FCAS-MWS-NOMID; nod2-nfkb-granulomatous-Blau; il1ra-deficiency-IL1RN-DIRA-LPIN2-Majeed; attack-duration-cascade-lt72h-3-7d-gt7d-continuous; il1-treatment-spectrum-colchicine-canakinumab-anakinra; seeds-4174-4181."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_atlas_dashboard import generate_breakdown as aipf_breakdown
+    return aipf_breakdown()
+
+@app.get("/api/hereditary-autoinflammatory-periodic-fever-atlas/definitions")
+async def hereditary_autoinflammatory_periodic_fever_atlas_definitions():
+    """Hereditary-Autoinflammatory-Periodic-Fever-Atlas definitions — MEFV-FMF-colchicine-AA-amyloid; TNFRSF1A-TRAPS-no-infliximab-cysteine-mutations; MVK-HIDS-IgD-mevalonic-acid; NLRP3-CAPS-non-pruritic-urticaria-canakinumab; PSTPIP1-PAPA-sterile-arthritis-PG-pathergy; NOD2-Blau-granuloma-no-lung-adalimumab; IL1RN-DIRA-anakinra-curative-periostitis; LPIN2-Majeed-CDA-unique-anakinra; cascade-algorithm; seeds-4174-4181."""
+    from scripts.hereditary_autoinflammatory_periodic_fever_atlas_dashboard import generate_definitions as aipf_definitions
+    return aipf_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

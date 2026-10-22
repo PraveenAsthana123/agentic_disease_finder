@@ -24098,5 +24098,14 @@
     "cohort_n": 320,
     "seed": null,
     "registered": "2026-10-21"
+  },
+  {
+    "id": "hereditary-autoinflammatory-periodic-fever-atlas",
+    "name": "Hereditary-Autoinflammatory-Periodic-Fever-Atlas Complete-8-Gene-MEFV-TNFRSF1A-MVK-NLRP3-PSTPIP1-NOD2-IL1RN-LPIN2 (FMF-ShortAttacks-lt72h-Colchicine-Curative-AAamyloid / TRAPS-ProlongedAttacks-gt7days-PATHOGNOMONIC-Etanercept-NOT-Infliximab / HIDS-MKD-IgD-gt100-PATHOGNOMONIC-DutchFounder-Canakinumab / CAPS-NonPruriticUrticaria-PATHOGNOMONIC-MWS-Deafness-NOMID-Canakinumab / PAPA-SterileArthritis-PyodermaGangrenosum-Acne-TRIAD-IL1-TNF / Blau-GranulomatousUveitis-Camptodactyly-Dermatitis-NoLungs-Adalimumab / DIRA-NeonatalPeriostitis-Osteomyelitis-Pustulosis-PATHOGNOMONIC-Anakinra-Curative / Majeed-MultifocalOsteomyelitis-CDA-PATHOGNOMONIC-Unique-Anakinra / seeds-4174-4181)",
+    "status": "built",
+    "api": "/api/hereditary-autoinflammatory-periodic-fever-atlas/overview|breakdown|definitions",
+    "cohort_n": 320,
+    "seed": 4174,
+    "registered": "2026-10-21"
   }
 ]
