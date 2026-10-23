@@ -53158,6 +53158,25 @@ async def hereditary_faod_atlas_definitions():
     return faod_definitions()
 
 
+@app.get("/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/overview")
+async def hereditary_biogenic_amine_atlas_overview():
+    """Hereditary-Biogenic-Amine-Catecholamine-Synthesis-Transport-Atlas overview — TH-528aa-11p15.5-AR-TyrosineHydroxylase-DRD3-TH-Deficiency-L-DOPA-responsive-DiurnalVariation-HVA-LOW-5HIAA-NORMAL; DDC-480aa-7p12.2-AR-AADC-OculogyricCrises-PATHOGNOMONIC-HVA-5HIAA-LOW-LDOPA-5HTP-ELEVATED-GeneTherapy; DBH-617aa-9q33.2-AR-NorepinephrineDEFICIENT-DopamineHIGH-OrthostaticHypotension-Droxidopa-CURATIVE; SLC18A2-514aa-10q25.3-AR-VMAT2-AllMonoaminesDepleted-InfantileParkinsonismDystonia; SLC6A3-620aa-5p15.33-AR-DAT-HVA-PARADOXICALLY-HIGH-DATScintigraphy-ABSENT; MAOA-527aa-Xp11.3-XLR-BrunnerSyndrome-Aggression-MonoamineAccumulation; SPR-261aa-2p13.2-AR-SepiapterinReductase-BH4-BioopterinELEVATED-BOTH-dopamine-serotonin-low; GCH1-250aa-14q22.2-AD-LOF-Segawa-DRD1-DiurnalVariation-DRAMATIC-L-DOPA-response; seeds-4230-4237."""
+    from scripts.hereditary_biogenic_amine_catecholamine_synthesis_transport_atlas_dashboard import generate_overview as bca_overview
+    return bca_overview()
+
+@app.get("/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/breakdown")
+async def hereditary_biogenic_amine_atlas_breakdown():
+    """Hereditary-Biogenic-Amine-Catecholamine-Synthesis-Transport-Atlas breakdown — synthesis-TH-DDC-DBH; vesicular-transport-SLC18A2-VMAT2; reuptake-SLC6A3-DAT; degradation-MAOA; BH4-synthesis-SPR-GCH1; CSF-algorithm-HVA-5HIAA-L-DOPA-5HTP-biopterin-neopterin; TH-vs-GCH1-diurnal-variation; SLC6A3-HVA-paradox; SPR-biopterin-elevated-vs-GCH1-biopterin-low; AADC-oculogyric-crises; seeds-4230-4237."""
+    from scripts.hereditary_biogenic_amine_catecholamine_synthesis_transport_atlas_dashboard import generate_breakdown as bca_breakdown
+    return bca_breakdown()
+
+@app.get("/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/definitions")
+async def hereditary_biogenic_amine_atlas_definitions():
+    """Hereditary-Biogenic-Amine-Catecholamine-Synthesis-Transport-Atlas definitions — oculogyric-crises-AADC-pathognomonic; diurnal-variation-TH-GCH1; BH4-cofactor-TH-TPH-NOS; DAT-paradox-HVA-elevated-parkinsonism; Brunner-syndrome-MAOA-XLR; droxidopa-L-DOPS-DBH-curative; CSF-neurotransmitter-metabolites-HVA-5HIAA-MHPG-neopterin-biopterin; SPR-biopterin-elevated-vs-GCH1-biopterin-low; AAV2-DDC-gene-therapy; primary-cascade-split; seeds-4230-4237."""
+    from scripts.hereditary_biogenic_amine_catecholamine_synthesis_transport_atlas_dashboard import generate_definitions as bca_definitions
+    return bca_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn

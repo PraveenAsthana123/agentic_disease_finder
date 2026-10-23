@@ -24249,5 +24249,29 @@
     ],
     "note": "Total: 1427 dashboards",
     "built_note": "ACADVL-655aa-17p13.1-70kDa-AR-LOF; ACADM-421aa-1p31.1-45kDa-AR-LOF; HADHA-763aa-2p23.3-83kDa-AR-LOF; ACADS-412aa-12q24.31-44kDa-AR-LOF; CPT1A-773aa-11q13.3-88kDa-AR-LOF; CPT2-658aa-1p32.3-74kDa-AR-LOF; SLC25A20-301aa-3p21.31-33kDa-AR-LOF; HADH-314aa-4q25-35kDa-AR-LOF; ACADVL-C14:1-PATHOGNOMONIC; ACADM-MOST-COMMON-FAOD; ACADM-C8-PATHOGNOMONIC; HADHA-3-OH-C16-RETINOPATHY-MATERNAL-AFLP; ACADS-OFTEN-BENIGN; CPT1A-C0-HIGH-OPPOSITE-PATTERN-Arctic-Founder; CPT2-MYOPATHIC-ADOLESCENT-RHABDOMYOLYSIS; SLC25A20-NEONATAL-ARRHYTHMIAS; HADH-PROTEIN-SENSITIVE-HI-GDH-DISINHIBITION-DIAZOXIDE; seeds-4222-4229"
+  },
+  {
+    "id": "hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas",
+    "name": "Hereditary-Biogenic-Amine-Catecholamine-Synthesis-Transport-Atlas",
+    "status": "built",
+    "role": "Metabolic-Biochemical-Genetics-Atlas",
+    "viz": "csf-algorithm-gene-table-pathway-map-treatment-definitions",
+    "feature": "TH-DDC-DBH-SLC18A2-SLC6A3-MAOA-SPR-GCH1",
+    "why": "8-gene-biogenic-amine-atlas-CSF-HVA-5HIAA-cascade-dopamine-serotonin-norepinephrine-BH4",
+    "priority": "high",
+    "route": "/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas",
+    "api_prefix": "/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas",
+    "locus": "TH-11p15.5-DDC-7p12.2-DBH-9q33.2-SLC18A2-10q25.3-SLC6A3-5p15.33-MAOA-Xp11.3-SPR-2p13.2-GCH1-14q22.2",
+    "syndrome": "Biogenic-Amine-Catecholamine-Synthesis-Transport-Atlas",
+    "color": "#1a237e",
+    "frontend": "portal-next/app/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/page.jsx",
+    "script": "scripts/hereditary_biogenic_amine_catecholamine_synthesis_transport_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/overview",
+      "/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/breakdown",
+      "/api/hereditary-biogenic-amine-catecholamine-synthesis-transport-atlas/definitions"
+    ],
+    "note": "Total: 1428 dashboards",
+    "built_note": "TH-528aa-11p15.5-45kDa-AR-LOF; DDC-480aa-7p12.2-54kDa-AR-LOF; DBH-617aa-9q33.2-75kDa-AR-LOF; SLC18A2-514aa-10q25.3-55kDa-AR-LOF; SLC6A3-620aa-5p15.33-69kDa-AR-LOF; MAOA-527aa-Xp11.3-60kDa-XLR-LOF; SPR-261aa-2p13.2-28kDa-AR-LOF; GCH1-250aa-14q22.2-28kDa-AD-LOF; TH-DIURNAL-VARIATION-PATHOGNOMONIC; DDC-OCULOGYRIC-CRISES-PATHOGNOMONIC; DBH-NE-ABSENT-DA-HIGH-DROXIDOPA-CURATIVE; SLC18A2-ALL-MONOAMINES-DEPLETED; SLC6A3-HVA-PARADOXICALLY-HIGH; MAOA-BRUNNER-XLR-AGGRESSION; SPR-BIOPTERIN-ELEVATED; GCH1-SEGAWA-DRAMATIC-LDOPA; seeds-4230-4237"
   }
 ]
