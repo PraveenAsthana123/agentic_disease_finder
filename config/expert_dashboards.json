@@ -24297,5 +24297,29 @@
     ],
     "note": "Total: 1429 dashboards",
     "built_note": "ALDH7A1-539aa-5q31.2-58kDa-AR-LOF; PNPO-261aa-17q21.32-30kDa-AR-LOF; PLPBP-321aa-8p11.23-35kDa-AR-LOF; ALDH4A1-563aa-1p36.13-62kDa-AR-LOF; MOCS1-481aa-6p21.2-54kDa-AR-LOF; MOCS2-362aa-5q11.2-41kDa-AR-LOF; GPHN-736aa-14q23.3-83kDa-AR-LOF; SUOX-545aa-12q13.11-60kDa-AR-LOF; ALDH7A1-AASA-PIPECOLIC-ACID-PERMANENT; PNPO-PLP-ONLY-NOT-PYRIDOXINE-CRITICAL; PLPBP-BOTH-B6-FORMS-WORK; ALDH4A1-P5C-INACTIVATES-PLP; MOCS1-cPMP-ABSENT-FOSDENOPTERIN-FDA2021; MOCS2-cPMP-ELEVATED-FOSDENOPTERIN-FAILS; GPHN-DUAL-MOCO\u0414-SYNAPSE; SUOX-URIC-ACID-NORMAL-KEY-DDx; seeds-4238-4245"
+  },
+  {
+    "id": "hereditary-cdg-n-linked-glycosylation-atlas",
+    "name": "Hereditary-CDG-N-Linked-Glycosylation-Atlas",
+    "status": "built",
+    "role": "Metabolic-Biochemical-Genetics-Atlas",
+    "viz": "transferrin-ief-triage-gene-table-cascade-algorithm-treatment-definitions",
+    "feature": "PMM2-MPI-ALG6-SRD5A3-SLC35C1-PGM1-TMEM165-ATP6AP1",
+    "why": "8-gene-CDG-N-linked-glycosylation-atlas-PMM2-CDG-Ia-MPI-CDG-Ib-ALG6-CDG-Ic-SRD5A3-CDG-Iq-SLC35C1-CDG-IIc-LADII-PGM1-mixed-TMEM165-Golgi-ATP6AP1-XLR",
+    "priority": "high",
+    "route": "/hereditary-cdg-n-linked-glycosylation-atlas",
+    "api_prefix": "/api/hereditary-cdg-n-linked-glycosylation-atlas",
+    "locus": "PMM2-16p13.2-MPI-15q24.1-ALG6-1p31.3-SRD5A3-4q11-SLC35C1-11p11.2-PGM1-1p31.3-TMEM165-4q12-ATP6AP1-Xq28",
+    "syndrome": "Congenital-Disorder-of-Glycosylation-N-Linked-8-Gene-Atlas",
+    "color": "#1b5e20",
+    "frontend": "portal-next/app/hereditary-cdg-n-linked-glycosylation-atlas/page.jsx",
+    "script": "scripts/hereditary_cdg_n_linked_glycosylation_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-cdg-n-linked-glycosylation-atlas/overview",
+      "/api/hereditary-cdg-n-linked-glycosylation-atlas/breakdown",
+      "/api/hereditary-cdg-n-linked-glycosylation-atlas/definitions"
+    ],
+    "note": "Total: 1430 dashboards",
+    "built_note": "PMM2-259aa-16p13.2-28kDa-AR-LOF; MPI-423aa-15q24.1-47kDa-AR-LOF; ALG6-507aa-1p31.3-57kDa-AR-LOF; SRD5A3-318aa-4q11-35kDa-AR-LOF; SLC35C1-364aa-11p11.2-40kDa-AR-LOF; PGM1-562aa-1p31.3-63kDa-AR-LOF; TMEM165-324aa-4q12-36kDa-AR-LOF; ATP6AP1-394aa-Xq28-45kDa-XLR-LOF; PMM2-INVERTED-NIPPLES-PEAU-DORANGE-PATHOGNOMONIC; MPI-NO-NEUROLOGICAL-PATHOGNOMONIC; MPI-MANNOSE-CURATIVE; ALG6-NO-INVERTED-NIPPLES-DDx-PMM2; SRD5A3-ICHTHYOSIS-PATHOGNOMONIC; SLC35C1-BOMBAY-BLOOD-GROUP-PATHOGNOMONIC; PGM1-BIFID-UVULA-RHABDOMYOLYSIS; TMEM165-MANGANESE-RESPONSIVE; ATP6AP1-XLR-LIVER-DOMINANT; seeds-4246-4253"
   }
 ]

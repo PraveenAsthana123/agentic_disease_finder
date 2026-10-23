@@ -53177,6 +53177,25 @@ async def hereditary_biogenic_amine_atlas_definitions():
     return bca_definitions()
 
 
+@app.get("/api/hereditary-cdg-n-linked-glycosylation-atlas/overview")
+async def hereditary_cdg_n_linked_atlas_overview():
+    """Hereditary-CDG-N-Linked-Glycosylation-Atlas overview — PMM2-259aa-16p13.2-AR-CDG-Ia-MostCommon-InvertedNipples-PeauDOrange-PATHOGNOMONIC-CerebellarHypoplasia; MPI-423aa-15q24.1-AR-CDG-Ib-NO-Neurological-PATHOGNOMONIC-MannoseSupplement-CURATIVE; ALG6-507aa-1p31.3-AR-CDG-Ic-2ndMostCommon-Milder; SRD5A3-318aa-4q11-AR-CDG-Iq-Ichthyosis-PATHOGNOMONIC-CerebellarHypoplasia-DolicholDeficiency; SLC35C1-364aa-11p11.2-AR-CDG-IIc-LADII-BombayBloodGroup-PATHOGNOMONIC; PGM1-562aa-1p31.3-AR-PGM1-CDG-MixedGlycosylation-ExerciseIntolerance-MannoseGalactose-RESPONSIVE; TMEM165-324aa-4q12-AR-GolgiMnCaPump-ManganeseResponsive; ATP6AP1-394aa-Xq28-XLR-VATPase-LiverDisease-CopperAbnormal; seeds-4246-4253."""
+    from scripts.hereditary_cdg_n_linked_glycosylation_atlas_dashboard import generate_overview as cdg_nlinked_overview
+    return cdg_nlinked_overview()
+
+@app.get("/api/hereditary-cdg-n-linked-glycosylation-atlas/breakdown")
+async def hereditary_cdg_n_linked_atlas_breakdown():
+    """Hereditary-CDG-N-Linked-Glycosylation-Atlas breakdown — transferrin-IEF-type1-PMM2-MPI-ALG6-SRD5A3; type2-SLC35C1-TMEM165-ATP6AP1; mixed-PGM1; MPI-treatable-mannose-CURATIVE-NO-neurological; PMM2-enzyme-assay-then-MPI-enzyme-assay; Bombay-blood-group-SLC35C1; manganese-TMEM165; galactose-mannose-PGM1; seeds-4246-4253."""
+    from scripts.hereditary_cdg_n_linked_glycosylation_atlas_dashboard import generate_breakdown as cdg_nlinked_breakdown
+    return cdg_nlinked_breakdown()
+
+@app.get("/api/hereditary-cdg-n-linked-glycosylation-atlas/definitions")
+async def hereditary_cdg_n_linked_atlas_definitions():
+    """Hereditary-CDG-N-Linked-Glycosylation-Atlas definitions — transferrin-IEF-primary-split; PMM2-vs-MPI-CRITICAL-same-IEF-enzyme-assay-distinguishes; mannose-CURATIVE-MPI-NOT-PMM2; Bombay-blood-group-SLC35C1-blood-bank-ALERT; PGM1-bifid-uvula-rhabdomyolysis-galactose-mannose; ATP6AP1-XLR-liver-copper-ceruloplasmin; SRD5A3-ichthyosis-polyprenol-dolichol; TMEM165-manganese-responsive; seeds-4246-4253."""
+    from scripts.hereditary_cdg_n_linked_glycosylation_atlas_dashboard import generate_definitions as cdg_nlinked_definitions
+    return cdg_nlinked_definitions()
+
+
 @app.get("/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/overview")
 async def hereditary_pdmcos_atlas_overview():
     """Hereditary-Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas overview — ALDH7A1-539aa-5q31.2-AR-PDE1-Antiquitin-AASA-PipecolicAcid-PATHOGNOMONIC-Pyridoxine100mgIV; PNPO-261aa-17q21.32-AR-PNPO-Deficiency-PLP-ONLY-NOT-Pyridoxine-CRITICAL-DISTINCTION; PLPBP-321aa-8p11.23-AR-PLPHP-Deficiency-Both-B6-Forms-Work; ALDH4A1-563aa-1p36.13-AR-P5CDH-HyperprolinemiaII-P5C-PLP-Inactivation; MOCS1-481aa-6p21.2-AR-MoCoD-TypeA-cPMP-Absent-Fosdenopterin-FDA2021; MOCS2-362aa-5q11.2-AR-MoCoD-TypeB-cPMP-Elevated-Fosdenopterin-FAILS; GPHN-736aa-14q23.3-AR-MoCoD-TypeC-DUAL-InhibitorySynapse-Scaffold; SUOX-545aa-12q13.11-AR-IsolatedSulfiteOxidase-UricAcid-NORMAL-DDx-MoCoD; seeds-4238-4245."""
