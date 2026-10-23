@@ -24273,5 +24273,29 @@
     ],
     "note": "Total: 1428 dashboards",
     "built_note": "TH-528aa-11p15.5-45kDa-AR-LOF; DDC-480aa-7p12.2-54kDa-AR-LOF; DBH-617aa-9q33.2-75kDa-AR-LOF; SLC18A2-514aa-10q25.3-55kDa-AR-LOF; SLC6A3-620aa-5p15.33-69kDa-AR-LOF; MAOA-527aa-Xp11.3-60kDa-XLR-LOF; SPR-261aa-2p13.2-28kDa-AR-LOF; GCH1-250aa-14q22.2-28kDa-AD-LOF; TH-DIURNAL-VARIATION-PATHOGNOMONIC; DDC-OCULOGYRIC-CRISES-PATHOGNOMONIC; DBH-NE-ABSENT-DA-HIGH-DROXIDOPA-CURATIVE; SLC18A2-ALL-MONOAMINES-DEPLETED; SLC6A3-HVA-PARADOXICALLY-HIGH; MAOA-BRUNNER-XLR-AGGRESSION; SPR-BIOPTERIN-ELEVATED; GCH1-SEGAWA-DRAMATIC-LDOPA; seeds-4230-4237"
+  },
+  {
+    "id": "hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas",
+    "name": "Hereditary-Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas",
+    "status": "built",
+    "role": "Metabolic-Biochemical-Genetics-Atlas",
+    "viz": "sulfite-cascade-gene-table-b6-trial-moco\u0434-subtype-treatment-definitions",
+    "feature": "ALDH7A1-PNPO-PLPBP-ALDH4A1-MOCS1-MOCS2-GPHN-SUOX",
+    "why": "8-gene-B6-responsive-epilepsy-MoCoD-sulfite-oxidase-atlas-PDE1-PNPO-PLPHP-hyperprolinemiaII-MoCoD-types-ABC-SUOX",
+    "priority": "high",
+    "route": "/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas",
+    "api_prefix": "/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas",
+    "locus": "ALDH7A1-5q31.2-PNPO-17q21.32-PLPBP-8p11.23-ALDH4A1-1p36.13-MOCS1-6p21.2-MOCS2-5q11.2-GPHN-14q23.3-SUOX-12q13.11",
+    "syndrome": "Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas",
+    "color": "#1b5e20",
+    "frontend": "portal-next/app/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/page.jsx",
+    "script": "scripts/hereditary_pyridoxine_dependent_molybdenum_cofactor_sulfite_oxidase_epilepsy_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/overview",
+      "/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/breakdown",
+      "/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/definitions"
+    ],
+    "note": "Total: 1429 dashboards",
+    "built_note": "ALDH7A1-539aa-5q31.2-58kDa-AR-LOF; PNPO-261aa-17q21.32-30kDa-AR-LOF; PLPBP-321aa-8p11.23-35kDa-AR-LOF; ALDH4A1-563aa-1p36.13-62kDa-AR-LOF; MOCS1-481aa-6p21.2-54kDa-AR-LOF; MOCS2-362aa-5q11.2-41kDa-AR-LOF; GPHN-736aa-14q23.3-83kDa-AR-LOF; SUOX-545aa-12q13.11-60kDa-AR-LOF; ALDH7A1-AASA-PIPECOLIC-ACID-PERMANENT; PNPO-PLP-ONLY-NOT-PYRIDOXINE-CRITICAL; PLPBP-BOTH-B6-FORMS-WORK; ALDH4A1-P5C-INACTIVATES-PLP; MOCS1-cPMP-ABSENT-FOSDENOPTERIN-FDA2021; MOCS2-cPMP-ELEVATED-FOSDENOPTERIN-FAILS; GPHN-DUAL-MOCO\u0414-SYNAPSE; SUOX-URIC-ACID-NORMAL-KEY-DDx; seeds-4238-4245"
   }
 ]

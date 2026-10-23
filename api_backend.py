@@ -53177,6 +53177,25 @@ async def hereditary_biogenic_amine_atlas_definitions():
     return bca_definitions()
 
 
+@app.get("/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/overview")
+async def hereditary_pdmcos_atlas_overview():
+    """Hereditary-Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas overview — ALDH7A1-539aa-5q31.2-AR-PDE1-Antiquitin-AASA-PipecolicAcid-PATHOGNOMONIC-Pyridoxine100mgIV; PNPO-261aa-17q21.32-AR-PNPO-Deficiency-PLP-ONLY-NOT-Pyridoxine-CRITICAL-DISTINCTION; PLPBP-321aa-8p11.23-AR-PLPHP-Deficiency-Both-B6-Forms-Work; ALDH4A1-563aa-1p36.13-AR-P5CDH-HyperprolinemiaII-P5C-PLP-Inactivation; MOCS1-481aa-6p21.2-AR-MoCoD-TypeA-cPMP-Absent-Fosdenopterin-FDA2021; MOCS2-362aa-5q11.2-AR-MoCoD-TypeB-cPMP-Elevated-Fosdenopterin-FAILS; GPHN-736aa-14q23.3-AR-MoCoD-TypeC-DUAL-InhibitorySynapse-Scaffold; SUOX-545aa-12q13.11-AR-IsolatedSulfiteOxidase-UricAcid-NORMAL-DDx-MoCoD; seeds-4238-4245."""
+    from scripts.hereditary_pyridoxine_dependent_molybdenum_cofactor_sulfite_oxidase_epilepsy_atlas_dashboard import generate_overview as pdmcos_overview
+    return pdmcos_overview()
+
+@app.get("/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/breakdown")
+async def hereditary_pdmcos_atlas_breakdown():
+    """Hereditary-Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas breakdown — B6-responsive-ALDH7A1-PNPO-PLPBP-ALDH4A1; MoCoD-MOCS1-MOCS2-GPHN; isolated-SUOX; sulfite-stick-test-first; uric-acid-splits-MoCoD-from-SUOX; cPMP-absent-MOCS1-fosdenopterin; pyridoxine-vs-PLP-trial; AASA-pipecolic-acid-PDE1; seeds-4238-4245."""
+    from scripts.hereditary_pyridoxine_dependent_molybdenum_cofactor_sulfite_oxidase_epilepsy_atlas_dashboard import generate_breakdown as pdmcos_breakdown
+    return pdmcos_breakdown()
+
+@app.get("/api/hereditary-pyridoxine-dependent-molybdenum-cofactor-sulfite-oxidase-epilepsy-atlas/definitions")
+async def hereditary_pdmcos_atlas_definitions():
+    """Hereditary-Pyridoxine-Dependent-Molybdenum-Cofactor-Sulfite-Oxidase-Epilepsy-Atlas definitions — sulfite-stick-test-triage; uric-acid-MoCoD-vs-SUOX; cPMP-typeA-vs-typeB; pyridoxine-vs-PLP-PNPO-distinction; AASA-pipecolic-acid-permanent-PDE1-markers; fosdenopterin-NULIBRY-cPMP-replacement-TypeA-ONLY; S-sulfocysteine-pan-sulfite-overload; gephyrin-dual-role-MoCoD-scaffold-inhibitory-synapse; primary-cascade-split-algorithm; seeds-4238-4245."""
+    from scripts.hereditary_pyridoxine_dependent_molybdenum_cofactor_sulfite_oxidase_epilepsy_atlas_dashboard import generate_definitions as pdmcos_definitions
+    return pdmcos_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
