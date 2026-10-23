@@ -24225,5 +24225,29 @@
       "/api/hereditary-urea-cycle-disorder-atlas/definitions"
     ],
     "registered": "2026-10-22"
+  },
+  {
+    "id": "hereditary-fatty-acid-oxidation-disorder-atlas",
+    "name": "Hereditary-Fatty-Acid-Oxidation-Disorder-Atlas",
+    "status": "built",
+    "role": "Metabolic-Biochemical-Genetics-Atlas",
+    "viz": "acylcarnitine-profile-algorithm-gene-table-fao-map-treatment-definitions",
+    "feature": "ACADVL-ACADM-HADHA-ACADS-CPT1A-CPT2-SLC25A20-HADH",
+    "why": "8-gene-FAOD-atlas-acylcarnitine-profile-diagnosis-C14:1-C8-3OH-C16-C4-C0-cascade",
+    "priority": "high",
+    "route": "/hereditary-fatty-acid-oxidation-disorder-atlas",
+    "api_prefix": "/api/hereditary-fatty-acid-oxidation-disorder-atlas",
+    "locus": "ACADVL-17p13.1-ACADM-1p31.1-HADHA-2p23.3-ACADS-12q24.31-CPT1A-11q13.3-CPT2-1p32.3-SLC25A20-3p21.31-HADH-4q25",
+    "syndrome": "Fatty-Acid-Oxidation-Disorders-FAO-Atlas",
+    "color": "#1a237e",
+    "frontend": "portal-next/app/hereditary-fatty-acid-oxidation-disorder-atlas/page.jsx",
+    "script": "scripts/hereditary_fatty_acid_oxidation_disorder_atlas_dashboard.py",
+    "endpoints": [
+      "/api/hereditary-fatty-acid-oxidation-disorder-atlas/overview",
+      "/api/hereditary-fatty-acid-oxidation-disorder-atlas/breakdown",
+      "/api/hereditary-fatty-acid-oxidation-disorder-atlas/definitions"
+    ],
+    "note": "Total: 1427 dashboards",
+    "built_note": "ACADVL-655aa-17p13.1-70kDa-AR-LOF; ACADM-421aa-1p31.1-45kDa-AR-LOF; HADHA-763aa-2p23.3-83kDa-AR-LOF; ACADS-412aa-12q24.31-44kDa-AR-LOF; CPT1A-773aa-11q13.3-88kDa-AR-LOF; CPT2-658aa-1p32.3-74kDa-AR-LOF; SLC25A20-301aa-3p21.31-33kDa-AR-LOF; HADH-314aa-4q25-35kDa-AR-LOF; ACADVL-C14:1-PATHOGNOMONIC; ACADM-MOST-COMMON-FAOD; ACADM-C8-PATHOGNOMONIC; HADHA-3-OH-C16-RETINOPATHY-MATERNAL-AFLP; ACADS-OFTEN-BENIGN; CPT1A-C0-HIGH-OPPOSITE-PATTERN-Arctic-Founder; CPT2-MYOPATHIC-ADOLESCENT-RHABDOMYOLYSIS; SLC25A20-NEONATAL-ARRHYTHMIAS; HADH-PROTEIN-SENSITIVE-HI-GDH-DISINHIBITION-DIAZOXIDE; seeds-4222-4229"
   }
 ]

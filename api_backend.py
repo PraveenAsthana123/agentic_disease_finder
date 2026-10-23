@@ -53139,6 +53139,25 @@ async def hereditary_urea_cycle_disorder_atlas_definitions():
     return ucd_definitions()
 
 
+@app.get("/api/hereditary-fatty-acid-oxidation-disorder-atlas/overview")
+async def hereditary_faod_atlas_overview():
+    """Hereditary-Fatty-Acid-Oxidation-Disorder-Atlas overview — ACADVL-655aa-17p13.1-AR-VLCAD-C14:1-PATHOGNOMONIC-NBS-Cardiac+Hepatic+Myopathic-3-Phenotypes; ACADM-421aa-1p31.1-AR-MCAD-MOST-COMMON-FAOD-C8-PATHOGNOMONIC-Hypoketotic-Hypoglycemia-NBS; HADHA-763aa-2p23.3-AR-LCHAD-TFP-3OH-C16-Retinopathy-PATHOGNOMONIC-Maternal-AFLP; ACADS-412aa-12q24.31-AR-SCAD-C4-Often-Benign-Riboflavin; CPT1A-773aa-11q13.3-AR-C0-HIGH-LC-AC-LOW-OPPOSITE-PATTERN-Arctic-Founder-pP479L; CPT2-658aa-1p32.3-AR-Most-Common-CPT-Myopathic-Adolescent-Rhabdomyolysis-pS113L; SLC25A20-301aa-3p21.31-AR-CACT-Severe-Neonatal-Arrhythmias-C16-C18-HIGH; HADH-314aa-4q25-AR-SCHAD-Protein-Sensitive-Hyperinsulinism-GDH-Disinhibition-Diazoxide; seeds-4222-4229."""
+    from scripts.hereditary_fatty_acid_oxidation_disorder_atlas_dashboard import generate_overview as faod_overview
+    return faod_overview()
+
+@app.get("/api/hereditary-fatty-acid-oxidation-disorder-atlas/breakdown")
+async def hereditary_faod_atlas_breakdown():
+    """Hereditary-Fatty-Acid-Oxidation-Disorder-Atlas breakdown — long-chain-ACADVL-HADHA; medium-chain-ACADM-C8-most-common; short-chain-ACADS-benign-HADH-hyperinsulinism; carnitine-shuttle-CPT1A-CPT2-CACT; acylcarnitine-algorithm-C14:1-C8-3OH-C16-C4-C0-high; cascade-algorithm; seeds-4222-4229."""
+    from scripts.hereditary_fatty_acid_oxidation_disorder_atlas_dashboard import generate_breakdown as faod_breakdown
+    return faod_breakdown()
+
+@app.get("/api/hereditary-fatty-acid-oxidation-disorder-atlas/definitions")
+async def hereditary_faod_atlas_definitions():
+    """Hereditary-Fatty-Acid-Oxidation-Disorder-Atlas definitions — MCAD-hypoketotic-hypoglycemia-NBS-success; LCHAD-retinopathy-maternal-AFLP-pathognomonic; CPT1A-C0-high-Arctic-founder-opposite-pattern; HADH-hyperinsulinism-GDH-disinhibition-protein-sensitive; CACT-vs-CPT2-neonatal-arrhythmias; VLCAD-3-phenotype-spectrum; SCAD-often-benign-avoid-overtreatment; fasting-protocols-emergency-cards; seeds-4222-4229."""
+    from scripts.hereditary_fatty_acid_oxidation_disorder_atlas_dashboard import generate_definitions as faod_definitions
+    return faod_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
