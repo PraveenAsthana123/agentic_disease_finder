@@ -24321,5 +24321,31 @@
     ],
     "note": "Total: 1430 dashboards",
     "built_note": "PMM2-259aa-16p13.2-28kDa-AR-LOF; MPI-423aa-15q24.1-47kDa-AR-LOF; ALG6-507aa-1p31.3-57kDa-AR-LOF; SRD5A3-318aa-4q11-35kDa-AR-LOF; SLC35C1-364aa-11p11.2-40kDa-AR-LOF; PGM1-562aa-1p31.3-63kDa-AR-LOF; TMEM165-324aa-4q12-36kDa-AR-LOF; ATP6AP1-394aa-Xq28-45kDa-XLR-LOF; PMM2-INVERTED-NIPPLES-PEAU-DORANGE-PATHOGNOMONIC; MPI-NO-NEUROLOGICAL-PATHOGNOMONIC; MPI-MANNOSE-CURATIVE; ALG6-NO-INVERTED-NIPPLES-DDx-PMM2; SRD5A3-ICHTHYOSIS-PATHOGNOMONIC; SLC35C1-BOMBAY-BLOOD-GROUP-PATHOGNOMONIC; PGM1-BIFID-UVULA-RHABDOMYOLYSIS; TMEM165-MANGANESE-RESPONSIVE; ATP6AP1-XLR-LIVER-DOMINANT; seeds-4246-4253"
+  },
+  {
+    "id": "hereditary-amino-acid-transport-disorder-atlas",
+    "name": "Hereditary-Amino-Acid-Transport-Disorder-Atlas",
+    "title": "Hereditary-Amino-Acid-Transport-Disorder-Atlas Complete-8-Gene-SLC6A19-SLC3A1-SLC7A9-SLC7A7-SLC17A5-SLC6A8-SLC6A5-SLC25A22 SLC6A19-634aa-5p15.33-AR-B0AT1-Hartnup-NeutralAminoaciduria-PellagraLike-Nicotinamide-CURATIVE SLC3A1-685aa-2p21-AR-rBAT-CystinuriaTypeA-DibasicAA-CystineStones-Tiopronin SLC7A9-487aa-19q13.11-AR-b0+AT-CystinuriaTypeB-HeterozygoteIntermediateAminoaciduria SLC7A7-511aa-14q11.2-AR-y+LAT1-LPI-AlveolarProteinosis-60-70pct-PATHOGNOMONIC-CitrullineFirstLine SLC17A5-495aa-6q13-AR-Sialin-SallaDisease-ISSD-FinnishFounder-p.R39C SLC6A8-636aa-Xq28-XLR-CrT1-AbsentBrainCreatineMRS-PATHOGNOMONIC-CreatineSupplementFails SLC6A5-799aa-11p15.1-AR-GlyT2-Hyperekplexia3-NonHabituatingStartle-EEG-NORMAL-Clonazepam-Heimlich SLC25A22-323aa-11p15.5-AR-GC1-NeonatalMyoclonicEE-BurstSuppression-Hypsarrhythmia-KD 320-Patient-Aggregate-8x40-seeds-4254-4261",
+    "type": "hereditary-atlas",
+    "genes": [
+      "SLC6A19",
+      "SLC3A1",
+      "SLC7A9",
+      "SLC7A7",
+      "SLC17A5",
+      "SLC6A8",
+      "SLC6A5",
+      "SLC25A22"
+    ],
+    "seeds": "4254-4261",
+    "patients": 320,
+    "status": "built",
+    "api_endpoints": [
+      "/api/hereditary-amino-acid-transport-disorder-atlas/overview",
+      "/api/hereditary-amino-acid-transport-disorder-atlas/breakdown",
+      "/api/hereditary-amino-acid-transport-disorder-atlas/definitions"
+    ],
+    "page": "/hereditary-amino-acid-transport-disorder-atlas",
+    "registered": "2026-10-23"
   }
 ]

@@ -53215,6 +53215,25 @@ async def hereditary_pdmcos_atlas_definitions():
     return pdmcos_definitions()
 
 
+@app.get("/api/hereditary-amino-acid-transport-disorder-atlas/overview")
+async def hereditary_aatd_atlas_overview():
+    """Hereditary-Amino-Acid-Transport-Disorder-Atlas overview — SLC6A19-634aa-5p15.33-AR-B0AT1-Hartnup-NeutralAminoaciduria-PellagraLike-Nicotinamide-CURATIVE; SLC3A1-685aa-2p21-AR-rBAT-CystinuriaTypeA-DibasicAA-CystineStones; SLC7A9-487aa-19q13.11-AR-b0+AT-CystinuriaTypeB-HeterozygoteIntermediate; SLC7A7-511aa-14q11.2-AR-y+LAT1-LPI-AlveolarProteinosis-PATHOGNOMONIC-CitrullineFirstLine; SLC17A5-495aa-6q13-AR-Sialin-SallaDisease-ISSD-FinnishFounder-UrineFreeSialicAcid; SLC6A8-636aa-Xq28-XLR-CrT1-AbsentBrainCreatineMRS-PATHOGNOMONIC-CreatineSupplementFails; SLC6A5-799aa-11p15.1-AR-GlyT2-Hyperekplexia3-NonHabituatingStartle-PATHOGNOMONIC-Clonazepam; SLC25A22-323aa-11p15.5-AR-GC1-NeonatalMyoclonicEE-BurstSuppressionHypsarrhythmia-KD; seeds-4254-4261."""
+    from scripts.hereditary_amino_acid_transport_disorder_atlas_dashboard import generate_overview as aatd_overview
+    return aatd_overview()
+
+@app.get("/api/hereditary-amino-acid-transport-disorder-atlas/breakdown")
+async def hereditary_aatd_atlas_breakdown():
+    """Hereditary-Amino-Acid-Transport-Disorder-Atlas breakdown — urineAA-neutral-SLC6A19-dibasic-SLC3A1-SLC7A9-dibasicLowPlasma-SLC7A7; freeSialicAcid-SLC17A5; brainMRS-SLC6A8; hyperekplexia-SLC6A5; neonatalBurstSuppression-SLC25A22; tiopronin-cystinuria; citrulline-LPI; clonazepam-GlyT2; ketogenic-SLC25A22; seeds-4254-4261."""
+    from scripts.hereditary_amino_acid_transport_disorder_atlas_dashboard import generate_breakdown as aatd_breakdown
+    return aatd_breakdown()
+
+@app.get("/api/hereditary-amino-acid-transport-disorder-atlas/definitions")
+async def hereditary_aatd_atlas_definitions():
+    """Hereditary-Amino-Acid-Transport-Disorder-Atlas definitions — urine-AA-cascade-primary-split; neutral-vs-dibasic-aminoaciduria; SLC3A1-vs-SLC7A9-carrier-distinction-CRITICAL; LPI-PAP-pathognomonic-60-70pct; Salla-vs-ISSD-same-gene; SLC6A8-creatine-supplement-FAILS-brain; hyperekplexia-vs-epilepsy-EEG-normal; SLC25A22-vs-NKH-glycine-ratio; Heimlich-maneuver-life-saving-GlyT2; seeds-4254-4261."""
+    from scripts.hereditary_amino_acid_transport_disorder_atlas_dashboard import generate_definitions as aatd_definitions
+    return aatd_definitions()
+
+
 if __name__ == "__main__":
     import os
     import uvicorn
